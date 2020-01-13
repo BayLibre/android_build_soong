@@ -235,6 +235,24 @@ func (d *dexpreoptBootJars) GenerateBuildActions(ctx android.SingletonContext) {
 	dumpOatRules(ctx, d.defaultBootImage)
 }
 
+func checkNoUpdatableJarsInBootImage(ctx android.SingletonContext, image *bootImageConfig, module android.Module) {
+	am, ok := module.(android.ApexModule)
+
+	// This module is not an updatable apex => ok.
+	if !(ok && !am.IsForPlatform()) {
+		return
+	}
+
+	// One exception is the ART boot image, which contains jars from the (updatable) ART apex.
+	isArtImage := image.name == artBootImageName
+	isArtApex := strings.HasPrefix(am.ApexName(), "com.android.art.")
+	if isArtImage && isArtApex {
+		return
+	}
+
+	ctx.Errorf("updatable module '%s:%s' should not be in the boot image", am.ApexName(), ctx.ModuleName(module))
+}
+
 // buildBootImage takes a bootImageConfig, creates rules to build it, and returns the image.
 func buildBootImage(ctx android.SingletonContext, image *bootImageConfig) *bootImageConfig {
 	bootDexJars := make(android.Paths, len(image.modules))
@@ -244,6 +262,7 @@ func buildBootImage(ctx android.SingletonContext, image *bootImageConfig) *bootI
 			name := ctx.ModuleName(module)
 			if i := android.IndexList(name, image.modules); i != -1 {
 				bootDexJars[i] = j.DexJar()
+				checkNoUpdatableJarsInBootImage(ctx, image, module)
 			}
 		}
 	})
