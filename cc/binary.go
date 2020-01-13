@@ -104,7 +104,12 @@ type binaryDecorator struct {
 	post_install_cmds []string
 }
 
+type binaryInterface interface {
+	staticBinary() bool
+}
+
 var _ linker = (*binaryDecorator)(nil)
+var _ binaryInterface = (*binaryDecorator)(nil)
 
 func (binary *binaryDecorator) linkerProps() []interface{} {
 	return append(binary.baseLinker.linkerProps(),
