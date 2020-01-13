@@ -27,6 +27,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/dexpreopt"
 	"android/soong/java"
 )
 
@@ -4142,6 +4143,174 @@ func TestAppBundle(t *testing.T) {
 
 	ensureContains(t, content, `"compression":{"uncompressed_glob":["apex_payload.img","apex_manifest.*"]}`)
 	ensureContains(t, content, `"apex_config":{"apex_embedded_apk_config":[{"package_name":"com.android.foo","path":"app/AppFoo/AppFoo.apk"}]}`)
+}
+
+func testNoUpdatableJarsInBootImage(t *testing.T, pattern, bp string, transformDexpreoptConfig func(*dexpreopt.GlobalConfig)) {
+	t.Helper()
+
+	bp = bp + `
+		filegroup {
+			name: "fooapex-file_contexts",
+			srcs: [
+				"system/sepolicy/apex/fooapex-file_contexts",
+			],
+		}
+	`
+	bp += cc.GatherRequiredDepsForTest(android.Android)
+	bp += java.GatherRequiredDepsForTest()
+	bp += dexpreopt.BpToolModulesForTest()
+
+	fs := map[string][]byte{
+		"a.java":                             nil,
+		"a.jar":                              nil,
+		"build/make/target/product/security": nil,
+		"apex_manifest.json":                 nil,
+		"AndroidManifest.xml":                nil,
+		"system/sepolicy/apex/fooapex-file_contexts":                 nil,
+		"system/sepolicy/apex/com.android.art.release-file_contexts": nil,
+		"framework/aidl/a.aidl":                                      nil,
+	}
+	cc.GatherRequiredFilesForTest(fs)
+
+	ctx := android.NewTestArchContext()
+	ctx.RegisterModuleType("apex", BundleFactory)
+	ctx.RegisterModuleType("apex_key", ApexKeyFactory)
+	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
+	cc.RegisterRequiredBuildComponentsForTest(ctx)
+	java.RegisterJavaBuildComponents(ctx)
+	java.RegisterSystemModulesBuildComponents(ctx)
+	java.RegisterAppBuildComponents(ctx)
+	ctx.RegisterSingletonType("dex_bootjars", java.DexpreoptBootJarsFactory)
+	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
+	ctx.PreDepsMutators(RegisterPreDepsMutators)
+	ctx.PostDepsMutators(RegisterPostDepsMutators)
+
+	config := android.TestArchConfig(buildDir, nil, bp, fs)
+	ctx.Register(config)
+
+	_ = dexpreopt.GlobalSoongConfigForTests(config)
+	dexpreopt.RegisterToolModulesForTest(ctx)
+	pathCtx := android.PathContextForTesting(config)
+	dexpreoptConfig := dexpreopt.GlobalConfigForTests(pathCtx)
+	transformDexpreoptConfig(dexpreoptConfig)
+	dexpreopt.SetTestGlobalConfig(config, dexpreoptConfig)
+
+	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+	android.FailIfErrored(t, errs)
+
+	_, errs = ctx.PrepareBuildActions(config)
+	if pattern == "" {
+		android.FailIfErrored(t, errs)
+	} else if len(errs) > 0 {
+		android.FailIfNoMatchingErrors(t, pattern, errs)
+		return
+	} else {
+		t.Fatalf("missing expected error %q (0 errors are returned)", pattern)
+	}
+}
+
+func TestNoUpdatableJarsInBootImage(t *testing.T) {
+	bp := `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			apex_available: [
+				"fooapex",
+			],
+		}
+
+		java_library {
+			name: "bar",
+			srcs: ["a.java"],
+			installable: true,
+		}
+
+		java_library {
+			name: "apache-xml",
+			srcs: ["a.java"],
+			apex_available: [
+				"com.android.art.release",
+			],
+		}
+
+		apex {
+			name: "fooapex",
+			key: "fooapex.key",
+			java_libs: ["foo"],
+		}
+
+		apex_key {
+			name: "fooapex.key",
+		}
+
+		apex {
+			name: "com.android.art.release",
+			key: "com.android.art.release.key",
+			java_libs: ["apache-xml"],
+		}
+
+		apex_key {
+			name: "com.android.art.release.key",
+		}
+	`
+
+	var error string
+	var transform func(*dexpreopt.GlobalConfig)
+
+	// updatable jar from ART apex in the ART boot image => ok
+	transform = func(config *dexpreopt.GlobalConfig) {
+		config.ArtApexJars = []string{"apache-xml"}
+	}
+	testNoUpdatableJarsInBootImage(t, "", bp, transform)
+
+	// updatable jar from ART apex in the framework boot image => error
+	error = "module 'apache-xml' from updatable apex 'com.android.art.release' is not allowed in the framework boot image"
+	transform = func(config *dexpreopt.GlobalConfig) {
+		config.BootJars = []string{"apache-xml"}
+	}
+	testNoUpdatableJarsInBootImage(t, error, bp, transform)
+
+	// updatable jar from some other apex in the ART boot image => error
+	error = "module 'foo' from updatable apex 'fooapex' is not allowed in the ART boot image"
+	transform = func(config *dexpreopt.GlobalConfig) {
+		config.ArtApexJars = []string{"foo"}
+	}
+	testNoUpdatableJarsInBootImage(t, error, bp, transform)
+
+	// updatable jar from some other apex in the framework boot image => error
+	error = "module 'foo' from updatable apex 'fooapex' is not allowed in the framework boot image"
+	transform = func(config *dexpreopt.GlobalConfig) {
+		config.BootJars = []string{"foo"}
+	}
+	testNoUpdatableJarsInBootImage(t, error, bp, transform)
+
+	// nonexistent jar in the ART boot image => error
+	error = "failed to find a dex jar path for module 'nonexistent', note that some jars may be filtered out by module constraints"
+	transform = func(config *dexpreopt.GlobalConfig) {
+		config.ArtApexJars = []string{"nonexistent"}
+	}
+	testNoUpdatableJarsInBootImage(t, error, bp, transform)
+
+	// nonexistent jar in the framework boot image => error
+	error = "failed to find a dex jar path for module 'nonexistent', note that some jars may be filtered out by module constraints"
+	transform = func(config *dexpreopt.GlobalConfig) {
+		config.BootJars = []string{"nonexistent"}
+	}
+	testNoUpdatableJarsInBootImage(t, error, bp, transform)
+
+	// platform jar in the ART boot image => error
+	error = "failed to find a dex jar path for module 'bar', note that some jars may be filtered out by module constraints"
+	transform = func(config *dexpreopt.GlobalConfig) {
+		config.ArtApexJars = []string{"bar"}
+	}
+	testNoUpdatableJarsInBootImage(t, error, bp, transform)
+
+	// platform jar in the framework boot image => ok
+	transform = func(config *dexpreopt.GlobalConfig) {
+		config.BootJars = []string{"bar"}
+	}
+	testNoUpdatableJarsInBootImage(t, "", bp, transform)
 }
 
 func TestMain(m *testing.M) {
