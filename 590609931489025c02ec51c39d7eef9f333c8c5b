@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d8b670c_ee110cc7",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-13T17:26:40Z",
+      "side": 1,
+      "message": "Well, we don\u0027t want to get boot images from other APEX modules into the ART boot image either (even though that problem wouldn\u0027t be quite so severe).\n\nIdeally we\u0027d check that the APEX that the module goes into corresponds to the install path of the boot image. Is there a simple correlation between e.g. am.ApexName() and config.name, or some path in it, that can be used?",
+      "range": {
+        "startLine": 243,
+        "startChar": 7,
+        "endLine": 243,
+        "endChar": 56
+      },
+      "revId": "590609931489025c02ec51c39d7eef9f333c8c5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3405549_0cafa9f4",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-13T17:26:40Z",
+      "side": 1,
+      "message": "You\u0027re using the implication \"it\u0027s an extension\" -\u003e \"it\u0027s the framework boot image\" here, iiuc. Is it possible to add a more direct property? (Possibly moot depending on the resolution of the comment above.)",
+      "range": {
+        "startLine": 244,
+        "startChar": 75,
+        "endLine": 244,
+        "endChar": 91
+      },
+      "revId": "590609931489025c02ec51c39d7eef9f333c8c5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
