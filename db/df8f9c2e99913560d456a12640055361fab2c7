@@ -1,0 +1,11 @@
+Code-Review+2: Ulyana Trafimovich <skvadrik@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Code-Review+1: Jiyong Park <jiyong@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Yo Chiang <yochiang@google.com>
+Submitted-at: Mon, 13 Jan 2020 03:15:48 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1202710
+Project: platform/build/soong
+Branch: refs/heads/master
