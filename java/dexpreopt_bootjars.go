@@ -238,6 +238,12 @@ func buildBootImage(ctx android.SingletonContext, config bootImageConfig) *bootI
 			name := ctx.ModuleName(module)
 			if i := android.IndexList(name, image.modules); i != -1 {
 				bootDexJars[i] = j.DexJar()
+
+				// Do not dexpreopt java libraries from updatable modules,
+				// except for the primary boot image in the ART apex.
+				if am, ok := module.(android.ApexModule); ok && !am.IsForPlatform() && config.extension {
+					ctx.Errorf("trying to dexpreopt an updatable module %s", name)
+				}
 			}
 		}
 	})
