@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0279d07_e170f0e4",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-13T15:40:51Z",
+      "side": 1,
+      "message": "Can we have a friendlier message? For example, \"You might need to add %s:%s to PRODUCT_UPDATABLE_BOOT_JARS\", am.ApexName(), name",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 67
+      },
+      "revId": "b3096aae79edc69635085d36e5dd1d49e87464a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
