@@ -183,6 +183,12 @@ var (
 		},
 		"windresCmd", "flags")
 
+	llvmRc = pctx.AndroidStaticRule("llvm-rc",
+		blueprint.RuleParams{
+			Command:     "$llvmRcCmd /I $$(dirname $in) /FO $out $in",
+			CommandDeps: []string{"$llvmRcCmd"},
+		}, "llvmRcCmd", "flags")
+
 	_ = pctx.SourcePathVariable("sAbiDumper", "prebuilts/clang-tools/${config.HostPrebuiltTag}/bin/header-abi-dumper")
 
 	// -w has been added since header-abi-dumper does not need to produce any sort of diagnostic information.
@@ -430,15 +436,15 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			continue
 		case ".rc":
 			ctx.Build(pctx, android.BuildParams{
-				Rule:        windres,
-				Description: "windres " + srcFile.Rel(),
+				Rule:        llvmRc,
+				Description: "llvm-rc " + srcFile.Rel(),
 				Output:      objFile,
 				Input:       srcFile,
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"windresCmd": gccCmd(flags.toolchain, "windres"),
-					"flags":      flags.toolchain.WindresFlags(),
+					"llvmRcCmd": "${config.ClangBin}/llvm-rc",
+					"flags":     "",
 				},
 			})
 			continue
