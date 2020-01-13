@@ -22,6 +22,30 @@
       "revId": "b3096aae79edc69635085d36e5dd1d49e87464a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1b2652_7f6f80b7",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-13T16:01:11Z",
+      "side": 1,
+      "message": "Good idea! I updated the message as you suggested.",
+      "parentUuid": "c0279d07_e170f0e4",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 67
+      },
+      "revId": "b3096aae79edc69635085d36e5dd1d49e87464a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
