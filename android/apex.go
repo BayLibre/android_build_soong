@@ -54,12 +54,6 @@ type ApexModule interface {
 	// This is a shortcut for ApexName() == ""
 	IsForPlatform() bool
 
-	// Tests if this module could have APEX variants. APEX variants are
-	// created only for the modules that returns true here. This is useful
-	// for not creating APEX variants for certain types of shared libraries
-	// such as NDK stubs.
-	CanHaveApexVariants() bool
-
 	// Tests if this module can be installed to APEX as a file. For example,
 	// this would return true for shared libs while return false for static
 	// libs.
@@ -128,12 +122,22 @@ func (m *ApexModuleBase) setApexName(apexName string) {
 	m.ApexProperties.ApexName = apexName
 }
 
-func (m *ApexModuleBase) CanHaveApexVariants() bool {
-	return m.canHaveApexVariants
-}
-
 func (m *ApexModuleBase) IsInstallableToApex() bool {
 	// should be overriden if needed
+	return false
+}
+
+// Tests if this module could have APEX variants. APEX variants are created only
+// for the modules that returns true here. This is useful for not creating APEX
+// variants for host and certain types of shared libraries such as NDK stubs.
+func CanHaveApexVariants(m Module) bool {
+	osClass := m.Target().Os.Class
+	if osClass == Host || osClass == HostCross {
+		return false
+	}
+	if am, ok := m.(ApexModule); ok {
+		return am.apexModuleBase().canHaveApexVariants
+	}
 	return false
 }
 
@@ -176,6 +180,9 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 
 func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []Module {
 	if len(m.apexVariations) > 0 {
+		if mctx.Host() {
+			panic("Should not create apex variations for host")
+		}
 		m.checkApexAvailableProperty(mctx)
 		sort.Strings(m.apexVariations)
 		variations := []string{}

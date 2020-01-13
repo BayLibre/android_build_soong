@@ -105,7 +105,7 @@ func apexDepsMutator(mctx android.BottomUpMutatorContext) {
 				android.UpdateApexDependency(apexBundleName, depName, directDep)
 			}
 
-			if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() &&
+			if am, ok := child.(android.ApexModule); ok && android.CanHaveApexVariants(child) &&
 				(directDep || am.DepIsInSameApex(mctx, child)) {
 				am.BuildForApex(apexBundleName)
 				return true
@@ -118,7 +118,7 @@ func apexDepsMutator(mctx android.BottomUpMutatorContext) {
 
 // Create apex variations if a module is included in APEX(s).
 func apexMutator(mctx android.BottomUpMutatorContext) {
-	if am, ok := mctx.Module().(android.ApexModule); ok && am.CanHaveApexVariants() {
+	if am, ok := mctx.Module().(android.ApexModule); ok && android.CanHaveApexVariants(mctx.Module()) {
 		am.CreateApexVariations(mctx)
 	} else if _, ok := mctx.Module().(*apexBundle); ok {
 		// apex bundle itself is mutated so that it and its modules have same
@@ -1161,7 +1161,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				} else if java.IsJniDepTag(depTag) {
 					// Do nothing for JNI dep. JNI libraries are always embedded in APK-in-APEX.
 					return true
-				} else if am.CanHaveApexVariants() && am.IsInstallableToApex() {
+				} else if android.CanHaveApexVariants(child.(android.Module)) && am.IsInstallableToApex() {
 					ctx.ModuleErrorf("unexpected tag %q for indirect dependency %q", depTag, depName)
 				}
 			}
