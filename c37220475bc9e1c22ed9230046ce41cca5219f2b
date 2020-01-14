@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb7364f4_1b416d3c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-14T06:44:38Z",
+      "side": 1,
+      "message": "this still doesn\u0027t look right to me.\n\nthe scopes are javaCore \u003c javaSdk \u003c javaSystem \u003c javaPlatform",
+      "revId": "c37220475bc9e1c22ed9230046ce41cca5219f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
