@@ -1,0 +1,10 @@
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Code-Review+2: Alex Light <allight@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Ready+1: Lokesh Gidra <lokeshgidra@google.com>
+Submitted-by: Lokesh Gidra <lokeshgidra@google.com>
+Submitted-at: Tue, 14 Jan 2020 00:08:14 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1207383
+Project: platform/build/soong
+Branch: refs/heads/master
