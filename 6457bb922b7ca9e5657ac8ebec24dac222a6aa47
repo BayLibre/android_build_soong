@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "914f49a4_5bccd5ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-01-14T04:38:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0121b9e5_c6b92b66",
+      "revId": "6457bb922b7ca9e5657ac8ebec24dac222a6aa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d3241e7_2482ce01",
         "filename": "cc/ccdeps.go",
         "patchSetId": 1
