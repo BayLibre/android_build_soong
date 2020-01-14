@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ea59976_8ab3cff5",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T00:19:20Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need to copy the file in Soong, just set the output path to the input path,",
+      "revId": "f9d3c348e65ade5d59636f9d63684421814861a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed2e9d6_554991c5",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T00:19:20Z",
+      "side": 1,
+      "message": "Maybe something like:\n\noutputPath :\u003d srcApk\nif !ctx.InstallInTestcases() \u0026\u0026 !Bool(a.properties.Presigned) {\n    jnisUncompressed :\u003d android.PathForModuleOut(ctx, \"jnis-uncompressed\", ctx.ModuleName()+\".apk\")\n    a.uncompressEmbeddedJniLibs(ctx, srcApk, jnisUncompressed.OutputPath)\n    outputPath :\u003d jniUncompressed\n}\n...\ndexOutput :\u003d a.dexpreopter.dexpreopt(ctx, outputPath)",
+      "revId": "f9d3c348e65ade5d59636f9d63684421814861a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
