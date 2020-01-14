@@ -94,6 +94,30 @@
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10377a3c_cc2ae7b8",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-14T01:22:48Z",
+      "side": 1,
+      "message": "ACK, well, I\u0027ve uploaded this as PS2, but I get the following error:\n--- FAIL: TestBpfDataDependency (0.05s)\n    bpf_test.go:91: [Android.bp:7:3: dependency \"bpf.o\" of \"vts_test_binary_bpf_module\" missing variant:\n          os:android, image:, arch:arm64_armv8-a, version:\n        available variants:\n          os:android, image:, arch:common\n          os:android, image:vendor, arch:common]\n\nNot quite seeing what the issue is and few examples. Could this be related to the ordering? Or someething else I\u0027m not seeing?\n\nAnyway, will upload PS3 as PS1 to move this topic forward.",
+      "parentUuid": "645306d6_bb1f5a3d",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
