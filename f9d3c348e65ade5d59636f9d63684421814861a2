@@ -33,6 +33,24 @@
       "revId": "f9d3c348e65ade5d59636f9d63684421814861a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6114f7d4_280e21b1",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-14T00:28:21Z",
+      "side": 1,
+      "message": "The problem is, dexpreopt takes an outputPath because it too optionally performs an action on the input, i.e. it returns the input path as it is sometimes, and the output value type is ModuleOutPath. Is there any other solution that doesn\u0027t involve significant refactoring?",
+      "parentUuid": "5ed2e9d6_554991c5",
+      "revId": "f9d3c348e65ade5d59636f9d63684421814861a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
