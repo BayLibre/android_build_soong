@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "1af79938_a7318cf8",
+        "filename": "android/vendor_vars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-14T22:30:17Z",
+      "side": 1,
+      "message": "Hmm, good question. I suppose that would match the direction we\u0027re headed, but at the same time \"../\" is forbidden in most places too, and that\u0027s mostly how I\u0027d expect relative paths to work. We may end up needing a visibility list for those imports (which is an argument not to mix them with Android.bp files, since they\u0027re not using the same visibility rules)",
+      "parentUuid": "33b81eb7_e8123d61",
+      "range": {
+        "startLine": 132,
+        "startChar": 19,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "acbc188701471e033efa8c2c69462b5a0b44171e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "670f353b_6140f147",
         "filename": "android/vendor_vars.go",
         "patchSetId": 6
