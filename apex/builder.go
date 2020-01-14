@@ -233,6 +233,16 @@ func (a *apexBundle) buildNoticeFile(ctx android.ModuleContext, apexFileName str
 	return android.BuildNoticeOutput(ctx, a.installDir, apexFileName, android.FirstUniquePaths(noticeFiles)).HtmlGzOutput
 }
 
+func (a *apexBundle) buildInstalledFilesFile(ctx android.ModuleContext, builtApex android.Path) android.OutputPath {
+	output := android.PathForModuleOut(ctx, "installed-files.txt")
+	rule := android.NewRuleBuilder()
+	rule.Command().BuiltTool(ctx, "deapexer").
+		FlagWithInput("list --size", builtApex).
+		FlagWithOutput("| sort -nr >", output)
+	rule.Build(pctx, ctx, "installed-files."+a.Name(), "Installed files")
+	return output.OutputPath
+}
+
 func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	var abis []string
 	for _, target := range ctx.MultiTargets() {
@@ -474,6 +484,9 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		ctx.InstallFile(a.installDir, a.Name()+suffix, a.outputFile)
 	}
 	a.buildFilesInfo(ctx)
+
+	// installed-files.txt is dist'ed
+	a.installedFilesFile = a.buildInstalledFilesFile(ctx, a.outputFile)
 }
 
 func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
