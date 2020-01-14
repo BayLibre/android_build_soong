@@ -16,6 +16,24 @@
       "revId": "406bb1ff47fdc455e8f98fb8d56c4ec0ac00f9b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f639b5_3765d51e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-14T15:18:08Z",
+      "side": 1,
+      "message": "(duplicating the comment from art) Thanks Roland, I actually don\u0027t plan to land this, just created the CL for my local experiments. I tried to mark it as [WIP], but I used the \"Revers submission\" button and it ate my [WIP] and my reason for revert as well.",
+      "parentUuid": "206b24f4_4a9a96a6",
+      "revId": "406bb1ff47fdc455e8f98fb8d56c4ec0ac00f9b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
