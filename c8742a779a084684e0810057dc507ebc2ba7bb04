@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cd5fde5_10ca7579",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T01:20:19Z",
+      "side": 1,
+      "message": "This is the type of error RuleBuilder helps prevent",
+      "revId": "c8742a779a084684e0810057dc507ebc2ba7bb04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
