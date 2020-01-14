@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91764145_a0e0273a",
+        "filename": "android/vendor_vars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T22:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c90b3780_b07aa1ef",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 4
+      },
+      "revId": "acbc188701471e033efa8c2c69462b5a0b44171e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc228482_52e22cfc",
         "filename": "android/vendor_vars.go",
         "patchSetId": 6
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "bddc11be_0b499c39",
+        "filename": "android/vendor_vars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T22:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc228482_52e22cfc",
+      "revId": "acbc188701471e033efa8c2c69462b5a0b44171e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f809079_01ef339f",
         "filename": "android/vendor_vars.go",
         "patchSetId": 6
@@ -53,6 +95,30 @@
       "writtenOn": "2020-01-14T18:27:39Z",
       "side": 1,
       "message": "I kinda wonder if supporting relative paths would be nice (in particular for moving vendor code around in the vendor tree, since we do that, but I suppose that can be an import transform)",
+      "range": {
+        "startLine": 132,
+        "startChar": 19,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "acbc188701471e033efa8c2c69462b5a0b44171e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b81eb7_e8123d61",
+        "filename": "android/vendor_vars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T22:13:52Z",
+      "side": 1,
+      "message": "Would you assume it was relative unless it started with //?",
+      "parentUuid": "2f809079_01ef339f",
       "range": {
         "startLine": 132,
         "startChar": 19,
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "4589c241_258d33bf",
+        "filename": "android/vendor_vars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T22:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670f353b_6140f147",
+      "revId": "acbc188701471e033efa8c2c69462b5a0b44171e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "241afe38_8330a2bf",
         "filename": "android/vendor_vars.go",
         "patchSetId": 6
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "5901e5eb_f5127a3c",
+        "filename": "android/vendor_vars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T22:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "241afe38_8330a2bf",
+      "range": {
+        "startLine": 417,
+        "startChar": 2,
+        "endLine": 417,
+        "endChar": 3
+      },
+      "revId": "acbc188701471e033efa8c2c69462b5a0b44171e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08ec6dc7_57119086",
         "filename": "android/vendor_vars.go",
         "patchSetId": 6
@@ -125,6 +233,30 @@
       "revId": "acbc188701471e033efa8c2c69462b5a0b44171e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081327e3_8460a293",
+        "filename": "android/vendor_vars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T22:13:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ec6dc7_57119086",
+      "range": {
+        "startLine": 424,
+        "startChar": 5,
+        "endLine": 424,
+        "endChar": 21
+      },
+      "revId": "acbc188701471e033efa8c2c69462b5a0b44171e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
