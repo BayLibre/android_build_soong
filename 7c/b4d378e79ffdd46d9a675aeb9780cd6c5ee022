@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Jiyong Park <jiyong@google.com>
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Code-Review+2: Roland Levillain <rpl@google.com>
+Presubmit-Ready+1: Jiyong Park <jiyong@google.com>
+Submitted-by: Jiyong Park <jiyong@google.com>
+Submitted-at: Tue, 14 Jan 2020 08:58:15 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1207467
+Project: platform/build/soong
+Branch: refs/heads/master
