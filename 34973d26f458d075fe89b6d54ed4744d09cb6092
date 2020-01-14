@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa35b73_d3bfd520",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T22:35:18Z",
+      "side": 1,
+      "message": "How does this change cause system_search_path to be added?",
+      "revId": "34973d26f458d075fe89b6d54ed4744d09cb6092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
