@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "18d2d441_ff978a0c",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T01:47:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ea59976_8ab3cff5",
+      "revId": "f9d3c348e65ade5d59636f9d63684421814861a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ed2e9d6_554991c5",
         "filename": "java/app.go",
         "patchSetId": 2
@@ -51,6 +69,24 @@
       "revId": "f9d3c348e65ade5d59636f9d63684421814861a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6b8c230_564eb96c",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-14T01:47:48Z",
+      "side": 1,
+      "message": "Ack, we have the same android.Cp in DexImport to deal with this.",
+      "parentUuid": "6114f7d4_280e21b1",
+      "revId": "f9d3c348e65ade5d59636f9d63684421814861a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
