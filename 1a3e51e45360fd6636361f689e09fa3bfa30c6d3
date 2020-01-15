@@ -16,6 +16,24 @@
       "revId": "1a3e51e45360fd6636361f689e09fa3bfa30c6d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64ce5559_6bb1e4f5",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-01-15T05:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39eb2dfb_667b4fe2",
+      "revId": "1a3e51e45360fd6636361f689e09fa3bfa30c6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
