@@ -731,7 +731,7 @@ func TestApexWithStubs(t *testing.T) {
 	ensureNotContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_12_myapex/mylib3.so")
 
 	// Ensure that stubs libs are built without -include flags
-	mylib2Cflags := ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_static_myapex").Rule("cc").Args["cFlags"]
+	mylib2Cflags := ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_static").Rule("cc").Args["cFlags"]
 	ensureNotContains(t, mylib2Cflags, "-include ")
 
 	// Ensure that genstub is invoked with --apex
@@ -2973,7 +2973,7 @@ func TestApexWithTestHelperApp(t *testing.T) {
 
 func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 	// libfoo's apex_available comes from cc_defaults
-	testApexError(t, `"myapex" .*: requires "libfoo" that is not available for the APEX`, `
+	testApexError(t, `"libfoo" is not available for APEX "myapex"`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -3007,7 +3007,7 @@ func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 
 func TestApexAvailable(t *testing.T) {
 	// libfoo is not available to myapex, but only to otherapex
-	testApexError(t, "requires \"libfoo\" that is not available for the APEX", `
+	testApexError(t, `"libfoo" is not available for APEX "myapex"`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -3040,7 +3040,7 @@ func TestApexAvailable(t *testing.T) {
 	}`)
 
 	// libbar is an indirect dep
-	testApexError(t, "requires \"libbar\" that is not available for the APEX", `
+	testApexError(t, `"libbar" is not available for APEX "myapex"`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -3080,7 +3080,7 @@ func TestApexAvailable(t *testing.T) {
 		apex_available: ["otherapex"],
 	}`)
 
-	testApexError(t, "\"otherapex\" is not a valid module name", `
+	testApexError(t, `"libfoo" is not available for APEX "myapex"`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",

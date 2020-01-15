@@ -107,7 +107,13 @@ func apexDepsMutator(mctx android.BottomUpMutatorContext) {
 
 			if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() &&
 				(directDep || am.DepIsInSameApex(mctx, child)) {
-				am.BuildForApex(apexBundleName)
+				availabilityCheckRequired := !mctx.Host() && !a.testApex
+				if !availabilityCheckRequired || am.AvailableFor(apexBundleName) {
+					am.BuildForApex(apexBundleName)
+				} else {
+					mctx.ModuleErrorf("%q is not available for APEX %q", depName, apexBundleName)
+				}
+
 				return true
 			} else {
 				return false
@@ -1228,18 +1234,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	sort.Slice(filesInfo, func(i, j int) bool {
 		return filesInfo[i].builtFile.String() < filesInfo[j].builtFile.String()
 	})
-
-	// check apex_available requirements
-	if !ctx.Host() && !a.testApex {
-		for _, fi := range filesInfo {
-			if am, ok := fi.module.(android.ApexModule); ok {
-				if !am.AvailableFor(ctx.ModuleName()) {
-					ctx.ModuleErrorf("requires %q that is not available for the APEX", fi.module.Name())
-					// don't stop so that we can report other violations in the same run
-				}
-			}
-		}
-	}
 
 	// prepend the name of this APEX to the module names. These names will be the names of
 	// modules that will be defined if the APEX is flattened.
