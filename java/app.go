@@ -509,13 +509,18 @@ func collectAppDeps(ctx android.ModuleContext, shouldCollectRecursiveNativeDeps 
 	var certificates []Certificate
 	seenModulePaths := make(map[string]bool)
 
+	inApex := false
+	if am, ok := ctx.Module().(android.ApexModule); ok && !am.IsForPlatform() {
+		inApex = true
+	}
+
 	ctx.WalkDeps(func(module android.Module, parent android.Module) bool {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
 
 		if IsJniDepTag(tag) || tag == cc.SharedDepTag {
 			if dep, ok := module.(*cc.Module); ok {
-				if dep.IsNdk() || dep.IsStubs() {
+				if dep.IsNdk() || dep.IsStubs() || (inApex && !dep.DepIsInSameApex(ctx, module)) {
 					return false
 				}
 

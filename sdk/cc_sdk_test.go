@@ -47,6 +47,10 @@ func TestSdkIsCompileMultilibBoth(t *testing.T) {
 			srcs: ["Test.cpp"],
 			system_shared_libs: [],
 			stl: "none",
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 	`)
 
@@ -75,6 +79,10 @@ func TestBasicSdkWithCc(t *testing.T) {
 
 		cc_library_shared {
 			name: "sdkmember",
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 
 		sdk_snapshot {
@@ -93,6 +101,10 @@ func TestBasicSdkWithCc(t *testing.T) {
 			prefer: false,
 			system_shared_libs: [],
 			stl: "none",
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 
 		cc_prebuilt_library_shared {
@@ -101,10 +113,9 @@ func TestBasicSdkWithCc(t *testing.T) {
 			srcs: ["libfoo.so"],
 			system_shared_libs: [],
 			stl: "none",
-			// TODO: remove //apex_available:platform
 			apex_available: [
 				"//apex_available:platform",
-				"myapex",
+				"//apex_available:anyapex",
 			],
 		}
 
@@ -117,7 +128,7 @@ func TestBasicSdkWithCc(t *testing.T) {
 			// TODO: remove //apex_available:platform
 			apex_available: [
 				"//apex_available:platform",
-				"myapex2",
+				"//apex_available:anyapex",
 			],
 		}
 
@@ -128,8 +139,7 @@ func TestBasicSdkWithCc(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 			apex_available: [
-				"myapex",
-				"myapex2",
+				"//apex_available:anyapex",
 			],
 		}
 
