@@ -464,6 +464,10 @@ func TestBasicApex(t *testing.T) {
 			sdk_version: "none",
 			system_modules: "none",
 			compile_dex: true,
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
 		}
 
 		java_library {
@@ -755,7 +759,7 @@ func TestApexWithStubs(t *testing.T) {
 	ensureNotContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_12_myapex/mylib3.so")
 
 	// Ensure that stubs libs are built without -include flags
-	mylib2Cflags := ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_static_myapex").Rule("cc").Args["cFlags"]
+	mylib2Cflags := ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_static").Rule("cc").Args["cFlags"]
 	ensureNotContains(t, mylib2Cflags, "-include ")
 
 	// Ensure that genstub is invoked with --apex
@@ -881,6 +885,7 @@ func TestApexWithRuntimeLibsDependency(t *testing.T) {
 			stubs: {
 				versions: ["10", "20", "30"],
 			},
+			apex_available: [ "myapex" ],
 		}
 
 		cc_library {
@@ -1568,6 +1573,7 @@ func TestHeaderLibsDependency(t *testing.T) {
 			export_include_dirs: ["my_include"],
 			system_shared_libs: [],
 			stl: "none",
+			apex_available: [ "myapex" ],
 		}
 
 		cc_library {
@@ -2144,8 +2150,8 @@ func TestDependenciesInApexManifest(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 			apex_available: [
-				"myapex_provider",
-				"myapex_selfcontained",
+				"//apex_available:anyapex",
+				"//apex_available:platform",
 			],
 		}
 	`)
@@ -2907,6 +2913,7 @@ func TestErrorsIfDepsAreNotEnabled(t *testing.T) {
 			stl: "none",
 			system_shared_libs: [],
 			enabled: false,
+			apex_available: [ "myapex" ],
 		}
 	`)
 	testApexError(t, `module "myapex" .* depends on disabled module "myjar"`, `
@@ -2929,6 +2936,7 @@ func TestErrorsIfDepsAreNotEnabled(t *testing.T) {
 			system_modules: "none",
 			compile_dex: true,
 			enabled: false,
+			apex_available: [ "myapex" ],
 		}
 	`)
 }
@@ -2973,6 +2981,7 @@ func TestApexWithApps(t *testing.T) {
 			srcs: ["mylib.cpp"],
 			stl: "none",
 			system_shared_libs: [],
+			apex_available: [ "myapex" ],
 		}
 	`)
 
@@ -3073,7 +3082,7 @@ func TestApexWithTestHelperApp(t *testing.T) {
 
 func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 	// libfoo's apex_available comes from cc_defaults
-	testApexError(t, `"myapex" .*: requires "libfoo" that is not available for the APEX`, `
+	testApexError(t, `"libfoo" is not available for APEX "myapex"`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -3107,7 +3116,7 @@ func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 
 func TestApexAvailable(t *testing.T) {
 	// libfoo is not available to myapex, but only to otherapex
-	testApexError(t, "requires \"libfoo\" that is not available for the APEX", `
+	testApexError(t, `"libfoo" is not available for APEX "myapex"`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -3140,7 +3149,7 @@ func TestApexAvailable(t *testing.T) {
 	}`)
 
 	// libbar is an indirect dep
-	testApexError(t, "requires \"libbar\" that is not available for the APEX", `
+	testApexError(t, `"libbar" is not available for APEX "myapex"`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -3180,7 +3189,7 @@ func TestApexAvailable(t *testing.T) {
 		apex_available: ["otherapex"],
 	}`)
 
-	testApexError(t, "\"otherapex\" is not a valid module name", `
+	testApexError(t, `"libfoo" is not available for APEX "myapex"`, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -3440,6 +3449,7 @@ func TestRejectNonInstallableJavaLibrary(t *testing.T) {
 			srcs: ["foo/bar/MyClass.java"],
 			sdk_version: "none",
 			system_modules: "none",
+			apex_available: [ "myapex" ],
 		}
 	`)
 }
