@@ -16,6 +16,24 @@
       "revId": "34973d26f458d075fe89b6d54ed4744d09cb6092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef66ffc_1c3f0724",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-01-15T01:47:34Z",
+      "side": 1,
+      "message": "I find the root cause now. It\u0027s a typo. If I change,\n\ncase systemHeaderSearchPath:\n    if i \u003c len(params)-1 {\n\nto\n\ncase systemHeaderSearchPath:\n    if i \u003c len(cparams)-1 {\n\nThe data will be correct.\nThanks.",
+      "parentUuid": "9aa35b73_d3bfd520",
+      "revId": "34973d26f458d075fe89b6d54ed4744d09cb6092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
