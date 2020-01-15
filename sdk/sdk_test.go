@@ -39,12 +39,20 @@ func TestDepNotInRequiredSdks(t *testing.T) {
 			name: "sdkmember",
 			prefer: false,
 			host_supported: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 
 		java_import {
 			name: "sdkmember_mysdk_1",
 			sdk_member_name: "sdkmember",
 			host_supported: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 
 		java_library {
@@ -58,6 +66,10 @@ func TestDepNotInRequiredSdks(t *testing.T) {
 			sdk_version: "none",
 			compile_dex: true,
 			host_supported: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 
 		// this lib is no in mysdk

@@ -137,6 +137,10 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 			nocrt: true,
 			system_shared_libs: [],
 			recovery_available: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 		llndk_library {
 			name: "libc",
@@ -148,6 +152,10 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 			nocrt: true,
 			system_shared_libs: [],
 			recovery_available: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 		llndk_library {
 			name: "libm",
@@ -159,6 +167,10 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 			nocrt: true,
 			system_shared_libs: [],
 			recovery_available: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 		llndk_library {
 			name: "libdl",
@@ -184,6 +196,10 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 			stl: "none",
 			vendor_available: true,
 			recovery_available: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 		cc_library {
 			name: "libc++",
@@ -197,6 +213,10 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 				enabled: true,
 				support_system_process: true,
 			},
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 		cc_library {
 			name: "libc++demangle",
@@ -207,6 +227,10 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 			host_supported: false,
 			vendor_available: true,
 			recovery_available: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 		cc_library {
 			name: "libunwind_llvm",
