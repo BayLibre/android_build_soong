@@ -183,7 +183,15 @@ func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []Mod
 		if availableForPlatform {
 			variations = append(variations, "") // Original variation for platform
 		}
-		variations = append(variations, m.apexVariations...)
+		for _, v := range m.apexVariations {
+			if mctx.Module().(ApexModule).AvailableFor(v) || mctx.Host() {
+				variations = append(variations, v)
+			}
+		}
+
+		if len(variations) == 0 {
+			return nil
+		}
 
 		defaultVariation := ""
 		mctx.SetDefaultDependencyVariation(&defaultVariation)
