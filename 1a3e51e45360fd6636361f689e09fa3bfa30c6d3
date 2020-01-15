@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39eb2dfb_667b4fe2",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-15T03:53:29Z",
+      "side": 1,
+      "message": "What is this change for?  The old way is better, IsEnvTrue handles multiple cases like \"1\", \"true\", \"t\", \"TRUE\", etc.",
+      "revId": "1a3e51e45360fd6636361f689e09fa3bfa30c6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
