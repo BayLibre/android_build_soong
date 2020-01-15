@@ -2459,6 +2459,10 @@ func (c *Module) AvailableFor(what string) bool {
 	}
 }
 
+func (c *Module) HasStubs() bool {
+	return c.HasStubsVariants()
+}
+
 func (c *Module) installable() bool {
 	ret := c.installer != nil && !c.Properties.PreventInstall && c.outputFile.Valid()
 

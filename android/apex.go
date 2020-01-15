@@ -79,6 +79,9 @@ type ApexModule interface {
 	// DepIsInSameApex tests if the other module 'dep' is installed to the same
 	// APEX as this module
 	DepIsInSameApex(ctx BaseModuleContext, dep Module) bool
+
+	// HasStubs tests if this module has a stub variant.
+	HasStubs() bool
 }
 
 type ApexProperties struct {
@@ -163,6 +166,10 @@ func (m *ApexModuleBase) DepIsInSameApex(ctx BaseModuleContext, dep Module) bool
 	return true
 }
 
+func (m *ApexModuleBase) HasStubs() bool {
+	return false
+}
+
 func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 	for _, n := range m.ApexProperties.Apex_available {
 		if n == AvailableToPlatform || n == availableToAnyApex {
@@ -179,12 +186,13 @@ func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []Mod
 		m.checkApexAvailableProperty(mctx)
 		sort.Strings(m.apexVariations)
 		variations := []string{}
-		availableForPlatform := mctx.Module().(ApexModule).AvailableFor(AvailableToPlatform) || mctx.Host()
+		am := mctx.Module().(ApexModule)
+		availableForPlatform := am.AvailableFor(AvailableToPlatform) || mctx.Host()
 		if availableForPlatform {
 			variations = append(variations, "") // Original variation for platform
 		}
 		for _, v := range m.apexVariations {
-			if mctx.Module().(ApexModule).AvailableFor(v) || mctx.Host() {
+			if am.AvailableFor(v) || am.HasStubs() || mctx.Host() {
 				variations = append(variations, v)
 			}
 		}
@@ -193,8 +201,11 @@ func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []Mod
 			return nil
 		}
 
-		defaultVariation := ""
-		mctx.SetDefaultDependencyVariation(&defaultVariation)
+		if am.HasStubs() {
+			defaultVariation := ""
+			mctx.SetDefaultDependencyVariation(&defaultVariation)
+		}
+
 		modules := mctx.CreateVariations(variations...)
 		for i, m := range modules {
 			if availableForPlatform && i == 0 {
