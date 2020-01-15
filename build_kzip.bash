@@ -18,15 +18,17 @@
 declare -r out="${OUT_DIR:-out}"
 # Build extraction files for C++ and Java. Build `merge_zips` which we use later.
 build/soong/soong_ui.bash --build-mode --all-modules --dir=$PWD -k merge_zips xref_cxx xref_java
-#Build extraction file for Go files in build/soong directory.
+#Build extraction files for Go files in build/soong and build/blueprint directories.
 declare -r abspath_out=$(realpath "${out}")
-(cd build/soong;
- ../../prebuilts/build-tools/linux-x86/bin/go_extractor \
+for dir in blueprint soong; do
+  (cd build/$dir;
+   ../../prebuilts/build-tools/linux-x86/bin/go_extractor \
     --goroot="${PWD}/../../prebuilts/go/linux-x86" \
     --rules=vnames.go.json \
     --canonicalize_package_corpus \
-    --output "${abspath_out}/soong/all.go.kzip" \
+    --output "${abspath_out}/soong/build_$dir.go.kzip" \
     ./... )
+done
 
 declare -r kzip_count=$(find "$out" -name '*.kzip' | wc -l)
 (($kzip_count>100000)) || { printf "Too few kzip files were generated: %d\n" $kzip_count; exit 1; }
