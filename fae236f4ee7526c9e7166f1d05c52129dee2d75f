@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "874cbaa9_b7100b62",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-15T20:21:19Z",
+      "side": 1,
+      "message": "out of curiosity, why not remove this check entirely?",
+      "range": {
+        "startLine": 166,
+        "startChar": 36,
+        "endLine": 166,
+        "endChar": 59
+      },
+      "revId": "fae236f4ee7526c9e7166f1d05c52129dee2d75f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
