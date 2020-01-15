@@ -22,6 +22,30 @@
       "revId": "fae236f4ee7526c9e7166f1d05c52129dee2d75f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "379d5654_1d15ec92",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-01-15T20:24:55Z",
+      "side": 1,
+      "message": "I will probably remove it in a follow-up change after deleting the builds for it. I didn\u0027t want to do anything too premature.",
+      "parentUuid": "874cbaa9_b7100b62",
+      "range": {
+        "startLine": 166,
+        "startChar": 36,
+        "endLine": 166,
+        "endChar": 59
+      },
+      "revId": "fae236f4ee7526c9e7166f1d05c52129dee2d75f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
