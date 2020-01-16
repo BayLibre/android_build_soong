@@ -22,6 +22,30 @@
       "revId": "e35e961aa925e6ab75daf455d36875b3d6511081",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76bd642a_073d3b6a",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2020-01-16T23:37:47Z",
+      "side": 0,
+      "message": "Done. From what I can tell reading llvm-rc\u0027s source code and tests, I can\u0027t seem to find anything that differentiate\u0027s word size of the target. Maybe this was for MinGW to invoke GCC correctly?  Host tests pass showing we can invoke mdnsd.exe and get a 0 exit code.",
+      "parentUuid": "eaa1c4af_b6ac4642",
+      "range": {
+        "startLine": 441,
+        "startChar": 19,
+        "endLine": 441,
+        "endChar": 49
+      },
+      "revId": "e35e961aa925e6ab75daf455d36875b3d6511081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
