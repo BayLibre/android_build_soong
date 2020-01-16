@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74f482d4_60e6e87e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-16T09:05:52Z",
+      "side": 1,
+      "message": "Is this true? In my memory, there could be a 32-bit Android build using binder64 (kernel is 64-bit while userspace is 32-bit)",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "0521c566156bcbfa18003f61bbcac41a4ca3dd2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
