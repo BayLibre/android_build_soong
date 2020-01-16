@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8179485b_2ae0f907",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-16T20:13:12Z",
+      "side": 1,
+      "message": "out/soong/go_kzip/$dir/go.kzip?\n\nThat can be as separate change though, I\u0027m just thinking ahead to indexing all the plugins.",
+      "parentUuid": "7fd703e0_af7ef5c6",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "ef222addf6bda453df8867259a1989b7b66243ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6472f986_df41db50",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "out/soong/go_kzip/$dir/go.kzip?",
       "parentUuid": "b958ddfd_f60a6bcc",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "ef222addf6bda453df8867259a1989b7b66243ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32310652_55fd004b",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-16T20:13:12Z",
+      "side": 1,
+      "message": "Oops, wrong comment.",
+      "parentUuid": "402236fb_ac497ba4",
       "range": {
         "startLine": 25,
         "startChar": 3,
