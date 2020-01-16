@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48097989_47cce281",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-16T01:30:07Z",
+      "side": 1,
+      "message": "This seems to be using a pattern for LOCAL_OVERRIDES_MODULES, which I don\u0027t think is intentionally supported.  Why is a pattern necessary?",
+      "range": {
+        "startLine": 186,
+        "startChar": 34,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "4a74479907d7088814d5756652a0a25589aee7ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
