@@ -1758,6 +1758,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	for _, lib := range deps.SharedLibs {
 		depTag := SharedDepTag
+		if c.static() {
+			depTag = SharedFromStaticDepTag
+		}
 		if inList(lib, deps.ReexportSharedLibHeaders) {
 			depTag = sharedExportDepTag
 		}
@@ -2171,7 +2174,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		depFile := android.OptionalPath{}
 
 		switch depTag {
-		case ndkStubDepTag, SharedDepTag, sharedExportDepTag:
+		case ndkStubDepTag, SharedDepTag, SharedFromStaticDepTag, sharedExportDepTag:
 			ptr = &depPaths.SharedLibs
 			depPtr = &depPaths.SharedLibsDeps
 			depFile = ccDep.Toc()
@@ -2516,9 +2519,17 @@ func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Write
 
 func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
 	if depTag, ok := ctx.OtherModuleDependencyTag(dep).(DependencyTag); ok {
-		if cc, ok := dep.(*Module); ok && cc.HasStubsVariants() && depTag.Shared && depTag.Library {
-			// dynamic dep to a stubs lib crosses APEX boundary
-			return false
+		if cc, ok := dep.(*Module); ok {
+			if cc.HasStubsVariants() && depTag.Shared && depTag.Library {
+				// dynamic dep to a stubs lib crosses APEX boundary
+				return false
+			}
+			if depTag.FromStatic {
+				// shared_lib dependency from a static lib is considered as
+				// crossing the APEX boundary because the dependency
+				// doesn't actually is linked
+				return false
+			}
 		}
 	}
 	return true
