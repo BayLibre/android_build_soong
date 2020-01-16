@@ -185,3 +185,5 @@ func TestModuleString(t *testing.T) {
 		t.Errorf("want module String() values:\n%q\ngot:\n%q", want, moduleStrings)
 	}
 }
+
+// FIXME: FinalDeps tests
