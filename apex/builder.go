@@ -588,8 +588,8 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 		return
 	}
 
-	internalDeps := a.internalDeps
-	externalDeps := a.externalDeps
+	internalDeps := a.properties.InternalDeps
+	externalDeps := a.properties.ExternalDeps
 
 	internalDeps = android.SortedUniqueStrings(internalDeps)
 	externalDeps = android.SortedUniqueStrings(externalDeps)
