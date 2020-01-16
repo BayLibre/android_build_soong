@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ae4972e2_32481ae8",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-01-16T21:22:28Z",
+      "side": 1,
+      "message": "Will cross that bridge later.",
+      "parentUuid": "8179485b_2ae0f907",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "ef222addf6bda453df8867259a1989b7b66243ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6472f986_df41db50",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Oops, wrong comment.",
       "parentUuid": "402236fb_ac497ba4",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "ef222addf6bda453df8867259a1989b7b66243ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a7ba324_5b272c65",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-01-16T21:22:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32310652_55fd004b",
       "range": {
         "startLine": 25,
         "startChar": 3,
