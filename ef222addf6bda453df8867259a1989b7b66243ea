@@ -93,6 +93,30 @@
       "revId": "ef222addf6bda453df8867259a1989b7b66243ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "402236fb_ac497ba4",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-16T19:34:31Z",
+      "side": 1,
+      "message": "out/soong/go_kzip/$dir/go.kzip?",
+      "parentUuid": "b958ddfd_f60a6bcc",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "ef222addf6bda453df8867259a1989b7b66243ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
