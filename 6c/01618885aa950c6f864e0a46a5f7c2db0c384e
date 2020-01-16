@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Vic Yang <victoryang@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Wei Wang <wvw@google.com>
+Submitted-at: Thu, 16 Jan 2020 22:35:39 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1208707
+Project: platform/build/soong
+Branch: refs/heads/master
