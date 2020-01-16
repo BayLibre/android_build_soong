@@ -912,6 +912,7 @@ func apexDepsMutator(mctx android.BottomUpMutatorContext) {
 				availabilityCheckRequired := !mctx.Host() && !a.testApex
 				if !availabilityCheckRequired || am.AvailableFor(apexBundleName) ||
 					whitelistedApexAvailable(apexBundleName, a.vndkApex, depName) {
+					a.properties.InternalDeps = append(a.properties.InternalDeps, depName)
 					am.BuildForApex(apexBundleName)
 				} else {
 					mctx.ModuleErrorf("%q is not available for APEX %q", depName, apexBundleName)
@@ -919,6 +920,7 @@ func apexDepsMutator(mctx android.BottomUpMutatorContext) {
 
 				return true
 			} else {
+				a.properties.ExternalDeps = append(a.properties.ExternalDeps, depName)
 				return false
 			}
 		})
@@ -1152,6 +1154,11 @@ type apexBundleProperties struct {
 	Legacy_android10_support *bool
 
 	IsCoverageVariant bool `blueprint:"mutated"`
+
+	// list of module names that this APEX is depending on (to be shown via *-deps-info target)
+	InternalDeps []string `blueprint:"mutated"`
+	// list of module names that this APEX is including (to be shown via *-deps-info target)
+	ExternalDeps []string `blueprint:"mutated"`
 }
 
 type apexTargetBundleProperties struct {
@@ -1333,11 +1340,6 @@ type apexBundle struct {
 
 	// list of module names that should be installed along with this APEX
 	requiredDeps []string
-
-	// list of module names that this APEX is depending on (to be shown via *-deps-info target)
-	externalDeps []string
-	// list of module names that this APEX is including (to be shown via *-deps-info target)
-	internalDeps []string
 
 	testApex        bool
 	vndkApex        bool
@@ -1826,9 +1828,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		depTag := ctx.OtherModuleDependencyTag(child)
 		depName := ctx.OtherModuleName(child)
 		if _, isDirectDep := parent.(*apexBundle); isDirectDep {
-			if depTag != keyTag && depTag != certificateTag {
-				a.internalDeps = append(a.internalDeps, depName)
-			}
 			switch depTag {
 			case sharedLibTag:
 				if cc, ok := child.(*cc.Module); ok {
@@ -1962,7 +1961,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 							if !android.DirectlyInAnyApex(ctx, cc.Name()) && !android.InList(cc.Name(), a.requiredDeps) {
 								a.requiredDeps = append(a.requiredDeps, cc.Name())
 							}
-							a.externalDeps = append(a.externalDeps, depName)
 							requireNativeLibs = append(requireNativeLibs, cc.OutputFile().Path().Base())
 							// Don't track further
 							return false
@@ -1970,8 +1968,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						af := apexFileForNativeLibrary(ctx, cc, handleSpecialLibs)
 						af.transitiveDep = true
 						filesInfo = append(filesInfo, af)
-						a.internalDeps = append(a.internalDeps, depName)
-						a.internalDeps = append(a.internalDeps, cc.AllStaticDeps()...)
 						return true // track transitive dependencies
 					}
 				} else if cc.IsTestPerSrcDepTag(depTag) {
@@ -1987,10 +1983,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						return true // track transitive dependencies
 					}
 				} else if java.IsJniDepTag(depTag) {
-					a.externalDeps = append(a.externalDeps, depName)
 					return true
-				} else if java.IsStaticLibDepTag(depTag) {
-					a.internalDeps = append(a.internalDeps, depName)
 				} else if am.CanHaveApexVariants() && am.IsInstallableToApex() {
 					ctx.ModuleErrorf("unexpected tag %q for indirect dependency %q", depTag, depName)
 				}
