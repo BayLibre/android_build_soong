@@ -1967,7 +1967,7 @@ func TestVndkApexWithBinder32(t *testing.T) {
 		vndk_prebuilt_shared {
 			name: "libvndk27",
 			version: "27",
-			target_arch: "arm",
+			target_arch: "arm64",
 			vendor_available: true,
 			vndk: {
 				enabled: true,
@@ -1982,7 +1982,7 @@ func TestVndkApexWithBinder32(t *testing.T) {
 		vndk_prebuilt_shared {
 			name: "libvndk27",
 			version: "27",
-			target_arch: "arm",
+			target_arch: "arm64",
 			binder32bit: true,
 			vendor_available: true,
 			vndk: {
