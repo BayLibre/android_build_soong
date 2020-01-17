@@ -20,10 +20,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/google/blueprint/proptools"
-
 	"android/soong/android"
 	"android/soong/java/config"
+	"github.com/google/blueprint/proptools"
 )
 
 func TestClasspath(t *testing.T) {
@@ -123,7 +122,7 @@ func TestClasspath(t *testing.T) {
 			properties:     `sdk_version: "core_current",`,
 			bootclasspath:  []string{"core.current.stubs", "core-lambda-stubs"},
 			system:         "core-current-stubs-system-modules",
-			java9classpath: []string{"core.current.stubs"},
+			java9classpath: []string{},
 		},
 		{
 

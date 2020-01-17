@@ -160,11 +160,17 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext sdkContext) sdkDep 
 	}
 
 	toModule := func(m, r string, aidl android.Path) sdkDep {
+		// If the module is "core.current.stubs" then don't add it to the java 9
+		// classpath as the classes will already be provided by the system modules.
+		var java9Classpath []string
+		if m != "core.current.stubs" {
+			java9Classpath = []string{m}
+		}
 		return sdkDep{
 			useModule:          true,
 			bootclasspath:      []string{m, config.DefaultLambdaStubsLibrary},
 			systemModules:      "core-current-stubs-system-modules",
-			java9Classpath:     []string{m},
+			java9Classpath:     java9Classpath,
 			frameworkResModule: r,
 			aidl:               android.OptionalPathForPath(aidl),
 		}
