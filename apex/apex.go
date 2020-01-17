@@ -70,7 +70,7 @@ func makeApexAvailableWhitelist() map[string][]string {
 	//
 	// Module separator
 	//
-	m["com.android.adbd"] = []string{"adbd", "libcrypto"}
+	m["com.android.adbd"] = []string{"adbd", "libcrypto", "libadbd_auth"}
 	//
 	// Module separator
 	//
