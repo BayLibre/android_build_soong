@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fefa261_0fea64a1",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-17T18:46:04Z",
+      "side": 1,
+      "message": "This will fail if the symlink already exists.  Use ln -sfn to overwrite any existing file and to avoid problems if the target of the existing symlink is a directory.",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4171b64b_7fcdd93b",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-17T18:46:04Z",
+      "side": 1,
+      "message": "After Dan\u0027s recent changes symlinks can be part of the build graph, which means we no longer need to use LOCAL_POST_INSTALL_CMD for them.  I think we\u0027ll need something added to base_rules.mk to create them during installation though, so that can be a separate patch.",
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c870987_335281e3",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-17T18:46:04Z",
+      "side": 1,
+      "message": "ln -sfn or rm -rf destPath at the beginning of the rule",
+      "range": {
+        "startLine": 272,
+        "startChar": 43,
+        "endLine": 272,
+        "endChar": 45
+      },
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b69dfa1f_bd950ec4",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-17T18:46:04Z",
+      "side": 1,
+      "message": "cp -f?",
+      "range": {
+        "startLine": 274,
+        "startChar": 40,
+        "endLine": 274,
+        "endChar": 42
+      },
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be810fb_d243f76e",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-17T18:46:04Z",
+      "side": 1,
+      "message": "ln -sfn",
+      "range": {
+        "startLine": 280,
+        "startChar": 43,
+        "endLine": 280,
+        "endChar": 45
+      },
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
