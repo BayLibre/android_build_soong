@@ -101,6 +101,15 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 		targetSdkVersion += fmt.Sprintf(".$$(cat %s)", apiFingerprint.String())
 		deps = append(deps, apiFingerprint)
 	}
+	minSdkVersion := sdkVersionOrDefault(ctx, sdkContext.minSdkVersion())
+	if minSdkVersion == ctx.Config().PlatformSdkCodename() &&
+		ctx.Config().UnbundledBuild() &&
+		!ctx.Config().UnbundledBuildUsePrebuiltSdks() &&
+		ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") {
+		apiFingerprint := ApiFingerprintPath(ctx)
+		minSdkVersion += fmt.Sprintf(".$$(cat %s)", apiFingerprint.String())
+		deps = append(deps, apiFingerprint)
+	}
 
 	fixedManifest := android.PathForModuleOut(ctx, "manifest_fixer", "AndroidManifest.xml")
 	ctx.Build(pctx, android.BuildParams{
@@ -110,7 +119,7 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 		Implicits:   deps,
 		Output:      fixedManifest,
 		Args: map[string]string{
-			"minSdkVersion":    sdkVersionOrDefault(ctx, sdkContext.minSdkVersion()),
+			"minSdkVersion":    minSdkVersion,
 			"targetSdkVersion": targetSdkVersion,
 			"args":             strings.Join(args, " "),
 		},
