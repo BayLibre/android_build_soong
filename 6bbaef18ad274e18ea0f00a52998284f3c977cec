@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93f26b5b_9379f56c",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-19T04:52:51Z",
+      "side": 1,
+      "message": "I think the common part of this conditional and the targetSdkVersion one should be moved out, with the targetSdkVersion \u003d\u003d ctx.Config().PlatformSdkCodename() and minSdkVersion \u003d\u003d ctx.Config().PlatformSdkCodename() checks inside.",
+      "revId": "6bbaef18ad274e18ea0f00a52998284f3c977cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
