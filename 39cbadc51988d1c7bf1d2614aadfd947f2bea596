@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaeb0805_f0dc4024",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T05:33:24Z",
+      "side": 1,
+      "message": "indentation should be tabs",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 24
+      },
+      "revId": "39cbadc51988d1c7bf1d2614aadfd947f2bea596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
