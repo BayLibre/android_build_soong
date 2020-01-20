@@ -15,9 +15,8 @@
 package java
 
 import (
-	"strings"
-
 	"github.com/google/blueprint"
+	"strings"
 
 	"android/soong/android"
 )
@@ -28,9 +27,11 @@ var hiddenAPIGenerateCSVRule = pctx.AndroidStaticRule("hiddenAPIGenerateCSV", bl
 }, "outFlag", "stubAPIFlags")
 
 type hiddenAPI struct {
-	flagsCSVPath    android.Path
-	metadataCSVPath android.Path
-	bootDexJarPath  android.Path
+	bootDexJarPath          android.Path
+	dexJarPath              android.Path
+	flagsCSVPath            android.Path
+	generatedSourceDirPaths android.Paths
+	metadataCSVPath         android.Path
 }
 
 func (h *hiddenAPI) flagsCSV() android.Path {
@@ -45,17 +46,26 @@ func (h *hiddenAPI) bootDexJar() android.Path {
 	return h.bootDexJarPath
 }
 
+func (h *hiddenAPI) dexJar() android.Path {
+	return h.dexJarPath
+}
+
+func (h *hiddenAPI) generatedSourceDirs() android.Paths {
+	return h.generatedSourceDirPaths
+}
+
 type hiddenAPIIntf interface {
-	flagsCSV() android.Path
-	metadataCSV() android.Path
 	bootDexJar() android.Path
+	dexJar() android.Path
+	flagsCSV() android.Path
+	generatedSourceDirs() android.Paths
+	metadataCSV() android.Path
 }
 
 var _ hiddenAPIIntf = (*hiddenAPI)(nil)
 
 func (h *hiddenAPI) hiddenAPI(ctx android.ModuleContext, dexJar android.ModuleOutPath, implementationJar android.Path,
 	uncompressDex bool, processorGeneratedDirs android.OutputPaths) android.ModuleOutPath {
-
 	if !ctx.Config().IsEnvTrue("UNSAFE_DISABLE_HIDDENAPI_FLAGS") {
 		name := ctx.ModuleName()
 
@@ -77,9 +87,7 @@ func (h *hiddenAPI) hiddenAPI(ctx android.ModuleContext, dexJar android.ModuleOu
 			// Derive the greylist from classes jar.
 			flagsCSV := android.PathForModuleOut(ctx, "hiddenapi", "flags.csv")
 			metadataCSV := android.PathForModuleOut(ctx, "hiddenapi", "metadata.csv")
-			hiddenAPIGenerateCSV(ctx, flagsCSV, metadataCSV, implementationJar)
-			h.flagsCSVPath = flagsCSV
-			h.metadataCSVPath = metadataCSV
+			h.hiddenAPIGenerateCSV(ctx, flagsCSV, metadataCSV, implementationJar)
 
 			// If this module is actually on the boot jars list and not providing
 			// hiddenapi information for a module on the boot jars list then encode
@@ -90,13 +98,19 @@ func (h *hiddenAPI) hiddenAPI(ctx android.ModuleContext, dexJar android.ModuleOu
 				hiddenAPIEncodeDex(ctx, hiddenAPIJar, dexJar, uncompressDex)
 				dexJar = hiddenAPIJar
 			}
+
+			//if contains(processorClasses, "android.processor.unsupportedappusage.UnsupportedAppUsageProcessor") {
+			for _, p := range processorGeneratedDirs {
+				h.generatedSourceDirPaths = append(h.generatedSourceDirPaths, p)
+			}
+			h.dexJarPath = dexJar
 		}
 	}
 
 	return dexJar
 }
 
-func hiddenAPIGenerateCSV(ctx android.ModuleContext, flagsCSV, metadataCSV android.WritablePath,
+func (h *hiddenAPI) hiddenAPIGenerateCSV(ctx android.ModuleContext, flagsCSV, metadataCSV android.WritablePath,
 	classesJar android.Path) {
 
 	stubFlagsCSV := hiddenAPISingletonPaths(ctx).stubFlags
@@ -112,6 +126,7 @@ func hiddenAPIGenerateCSV(ctx android.ModuleContext, flagsCSV, metadataCSV andro
 			"stubAPIFlags": stubFlagsCSV.String(),
 		},
 	})
+	h.flagsCSVPath = flagsCSV
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        hiddenAPIGenerateCSVRule,
@@ -124,7 +139,7 @@ func hiddenAPIGenerateCSV(ctx android.ModuleContext, flagsCSV, metadataCSV andro
 			"stubAPIFlags": stubFlagsCSV.String(),
 		},
 	})
-
+	h.metadataCSVPath = metadataCSV
 }
 
 var hiddenAPIEncodeDexRule = pctx.AndroidStaticRule("hiddenAPIEncodeDex", blueprint.RuleParams{
