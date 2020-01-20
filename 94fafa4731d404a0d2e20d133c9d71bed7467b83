@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a85b4e4_c363516d",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T15:47:30Z",
+      "side": 1,
+      "message": "Thanks for the note. Fixed.",
+      "parentUuid": "374af911_6aef045a",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 78
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b39bca8_bd1e61fc",
         "filename": "apex/builder.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013d1023_a97bba96",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T15:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b39bca8_bd1e61fc",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 59
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "98eeeceb_17c005e0",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T15:47:30Z",
+      "side": 1,
+      "message": "Thanks - done.",
+      "parentUuid": "136b9b4f_bf4eb1c1",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9383d54a_dc3f2a1a",
         "filename": "java/sdk.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11fd962d_5c44fd37",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T15:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9383d54a_dc3f2a1a",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "36ed134b_18ff74b3",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T15:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5efa6162_a510a88a",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e742168b_a8500ee0",
         "filename": "java/sdk.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2904a2d6_c8a80fdb",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T15:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e742168b_a8500ee0",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
