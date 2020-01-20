@@ -1265,6 +1265,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	}
 
 	jars := append(android.Paths(nil), kotlinJars...)
+	var processorGeneratedDirs android.OutputPaths
 
 	// Store the list of .java files that was passed to javac
 	j.compiledJavaSrcs = uniqueSrcFiles
@@ -1305,19 +1306,22 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			if len(uniqueSrcFiles) > 0 {
 				shardSrcs = android.ShardPaths(uniqueSrcFiles, shardSize)
 				for idx, shardSrc := range shardSrcs {
-					classes := j.compileJavaClasses(ctx, jarName, idx, shardSrc,
+					classes, javacDestinationDirs := j.compileJavaClasses(ctx, jarName, idx, shardSrc,
 						nil, flags, extraJarDeps)
 					jars = append(jars, classes)
+					processorGeneratedDirs = append(processorGeneratedDirs, javacDestinationDirs.generated)
 				}
 			}
 			if len(srcJars) > 0 {
-				classes := j.compileJavaClasses(ctx, jarName, len(shardSrcs),
+				classes, javacDestinationDirs := j.compileJavaClasses(ctx, jarName, len(shardSrcs),
 					nil, srcJars, flags, extraJarDeps)
 				jars = append(jars, classes)
+				processorGeneratedDirs = append(processorGeneratedDirs, javacDestinationDirs.generated)
 			}
 		} else {
-			classes := j.compileJavaClasses(ctx, jarName, -1, uniqueSrcFiles, srcJars, flags, extraJarDeps)
+			classes, javacDestinationDirs := j.compileJavaClasses(ctx, jarName, -1, uniqueSrcFiles, srcJars, flags, extraJarDeps)
 			jars = append(jars, classes)
+			processorGeneratedDirs = append(processorGeneratedDirs, javacDestinationDirs.generated)
 		}
 		if ctx.Failed() {
 			return
@@ -1494,7 +1498,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 		// Hidden API CSV generation and dex encoding
 		dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, dexOutputFile, j.implementationJarFile,
-			j.deviceProperties.UncompressDex)
+			j.deviceProperties.UncompressDex, processorGeneratedDirs)
 
 		// merge dex jar with resources if necessary
 		if j.resourceJar != nil {
@@ -1534,7 +1538,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 }
 
 func (j *Module) compileJavaClasses(ctx android.ModuleContext, jarName string, idx int,
-	srcFiles, srcJars android.Paths, flags javaBuilderFlags, extraJarDeps android.Paths) android.WritablePath {
+	srcFiles, srcJars android.Paths, flags javaBuilderFlags, extraJarDeps android.Paths) (android.WritablePath, javacOutputDirs) {
 
 	kzipName := pathtools.ReplaceExtension(jarName, "kzip")
 	if idx >= 0 {
@@ -1543,7 +1547,7 @@ func (j *Module) compileJavaClasses(ctx android.ModuleContext, jarName string, i
 	}
 
 	classes := android.PathForModuleOut(ctx, "javac", jarName)
-	TransformJavaToClasses(ctx, classes, idx, srcFiles, srcJars, flags, extraJarDeps)
+	javacDestinationDirs := TransformJavaToClasses(ctx, classes, idx, srcFiles, srcJars, flags, extraJarDeps)
 
 	if ctx.Config().EmitXrefRules() {
 		extractionFile := android.PathForModuleOut(ctx, kzipName)
@@ -1551,7 +1555,7 @@ func (j *Module) compileJavaClasses(ctx android.ModuleContext, jarName string, i
 		j.kytheFiles = append(j.kytheFiles, extractionFile)
 	}
 
-	return classes
+	return classes, javacDestinationDirs
 }
 
 // Check for invalid kotlinc flags. Only use this for flags explicitly passed by the user,

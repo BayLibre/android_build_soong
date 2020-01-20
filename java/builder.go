@@ -202,16 +202,19 @@ type javaBuilderFlags struct {
 	proto android.ProtoFlags
 }
 
-func TransformJavaToClasses(ctx android.ModuleContext, outputFile android.WritablePath, shardIdx int,
-	srcFiles, srcJars android.Paths, flags javaBuilderFlags, deps android.Paths) {
+type javacOutputDirs struct {
+	classes   android.OutputPath
+	generated android.OutputPath
+}
 
+func TransformJavaToClasses(ctx android.ModuleContext, outputFile android.WritablePath, shardIdx int, srcFiles, srcJars android.Paths, flags javaBuilderFlags, deps android.Paths) javacOutputDirs {
 	// Compile java sources into .class files
 	desc := "javac"
 	if shardIdx >= 0 {
 		desc += strconv.Itoa(shardIdx)
 	}
 
-	transformJavaToClasses(ctx, outputFile, shardIdx, srcFiles, srcJars, flags, deps, "javac", desc)
+	return transformJavaToClasses(ctx, outputFile, shardIdx, srcFiles, srcJars, flags, deps, "javac", desc)
 }
 
 func RunErrorProne(ctx android.ModuleContext, outputFile android.WritablePath,
@@ -346,11 +349,7 @@ func TransformJavaToHeaderClasses(ctx android.ModuleContext, outputFile android.
 // be printed at build time.  The stem argument provides the file name of the output jar, and
 // suffix will be appended to various intermediate files and directories to avoid collisions when
 // this function is called twice in the same module directory.
-func transformJavaToClasses(ctx android.ModuleContext, outputFile android.WritablePath,
-	shardIdx int, srcFiles, srcJars android.Paths,
-	flags javaBuilderFlags, deps android.Paths,
-	intermediatesDir, desc string) {
-
+func transformJavaToClasses(ctx android.ModuleContext, outputFile android.WritablePath, shardIdx int, srcFiles, srcJars android.Paths, flags javaBuilderFlags, deps android.Paths, intermediatesDir, desc string) javacOutputDirs {
 	deps = append(deps, srcJars...)
 
 	classpath := flags.classpath
@@ -389,6 +388,12 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 		outDir = filepath.Join(shardDir, outDir)
 		annoDir = filepath.Join(shardDir, annoDir)
 	}
+
+	javacDestinationDirs := javacOutputDirs{
+		classes:   android.PathForModuleOut(ctx, intermediatesDir, outDir).OutputPath,
+		generated: android.PathForModuleOut(ctx, intermediatesDir, annoDir).OutputPath,
+	}
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        javac,
 		Description: desc,
@@ -403,11 +408,13 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 			"processor":     processor,
 			"srcJars":       strings.Join(srcJars.Strings(), " "),
 			"srcJarDir":     android.PathForModuleOut(ctx, intermediatesDir, srcJarDir).String(),
-			"outDir":        android.PathForModuleOut(ctx, intermediatesDir, outDir).String(),
-			"annoDir":       android.PathForModuleOut(ctx, intermediatesDir, annoDir).String(),
+			"outDir":        javacDestinationDirs.classes.String(),
+			"annoDir":       javacDestinationDirs.generated.String(),
 			"javaVersion":   flags.javaVersion.String(),
 		},
 	})
+
+	return javacDestinationDirs
 }
 
 func TransformResourcesToJar(ctx android.ModuleContext, outputFile android.WritablePath,
