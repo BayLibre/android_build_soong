@@ -59,7 +59,7 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 	if isLibrary {
 		args = append(args, "--library")
 	} else {
-		minSdkVersion, err := sdkVersionToNumber(ctx, sdkContext.minSdkVersion())
+		minSdkVersion, err := sdkContext.minSdkVersion().VersionForAppManifest(ctx)
 		if err != nil {
 			ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 		}
@@ -92,7 +92,10 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 	}
 
 	var deps android.Paths
-	targetSdkVersion := sdkVersionOrDefault(ctx, sdkContext.targetSdkVersion())
+	targetSdkVersion, err := sdkContext.targetSdkVersion().VersionStringForAppManifest(ctx)
+	if err != nil {
+		ctx.ModuleErrorf("invalid targetSdkVersion: %s", err)
+	}
 	if targetSdkVersion == ctx.Config().PlatformSdkCodename() &&
 		ctx.Config().UnbundledBuild() &&
 		!ctx.Config().UnbundledBuildUsePrebuiltSdks() &&
@@ -102,7 +105,15 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 		deps = append(deps, apiFingerprint)
 	}
 
+	minSdkVersion, err := sdkContext.minSdkVersion().VersionStringForAppManifest(ctx)
+	if err != nil {
+		ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
+	}
+
 	fixedManifest := android.PathForModuleOut(ctx, "manifest_fixer", "AndroidManifest.xml")
+	if err != nil {
+		ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
+	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        manifestFixerRule,
 		Description: "fix manifest",
@@ -110,7 +121,7 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 		Implicits:   deps,
 		Output:      fixedManifest,
 		Args: map[string]string{
-			"minSdkVersion":    sdkVersionOrDefault(ctx, sdkContext.minSdkVersion()),
+			"minSdkVersion":    minSdkVersion,
 			"targetSdkVersion": targetSdkVersion,
 			"args":             strings.Join(args, " "),
 		},

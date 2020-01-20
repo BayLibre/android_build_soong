@@ -73,12 +73,12 @@ func (j *Module) dexCommonFlags(ctx android.ModuleContext) []string {
 			"--verbose")
 	}
 
-	minSdkVersion, err := sdkVersionToNumberAsString(ctx, j.minSdkVersion())
+	minSdkVersion, err := j.minSdkVersion().VersionForAppManifest(ctx)
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "%s", err)
 	}
 
-	flags = append(flags, "--min-api "+minSdkVersion)
+	flags = append(flags, "--min-api "+minSdkVersion.AsNumberString())
 	return flags
 }
 
