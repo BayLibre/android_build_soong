@@ -54,7 +54,7 @@ type hiddenAPIIntf interface {
 var _ hiddenAPIIntf = (*hiddenAPI)(nil)
 
 func (h *hiddenAPI) hiddenAPI(ctx android.ModuleContext, dexJar android.ModuleOutPath, implementationJar android.Path,
-	uncompressDex bool) android.ModuleOutPath {
+	uncompressDex bool, processorGeneratedDirs android.OutputPaths) android.ModuleOutPath {
 
 	if !ctx.Config().IsEnvTrue("UNSAFE_DISABLE_HIDDENAPI_FLAGS") {
 		name := ctx.ModuleName()
