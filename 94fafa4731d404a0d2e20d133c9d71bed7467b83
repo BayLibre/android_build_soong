@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "374af911_6aef045a",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T06:00:14Z",
+      "side": 1,
+      "message": "You have already defined useApiFingerPrint. Using that, this could be simplified as\n\nif useApiFingerPrint(ctx, targetSdkVersion) {\n    targetSdkVersion +\u003d fmt.Sprintf(...)\n    implicitInputs \u003d append(implicitInputs, java.ApiFingerprintPath(ctx))\n}\nif useApiFingerPrint(ctx, minSdkVersion) {\n    minSdkVersion +\u003d fmt.Sprintf(...)\n    implicitInputs \u003d append(implicitInputs, java.ApiFingerprintPath(ctx))\n}",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 78
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b39bca8_bd1e61fc",
+        "filename": "apex/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T06:00:14Z",
+      "side": 1,
+      "message": "this should actually be implicitInputs only when 386 or 389 is true.",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 59
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136b9b4f_bf4eb1c1",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T06:00:14Z",
+      "side": 1,
+      "message": "sorry, but here as well. 😊\nI thought gofmt detects these formatting errors...",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9383d54a_dc3f2a1a",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T06:00:14Z",
+      "side": 1,
+      "message": "nit: useApiFingerprint to be consistent with casing",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5efa6162_a510a88a",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T06:00:14Z",
+      "side": 1,
+      "message": "here",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e742168b_a8500ee0",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T06:00:14Z",
+      "side": 1,
+      "message": "here",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 8
+      },
+      "revId": "94fafa4731d404a0d2e20d133c9d71bed7467b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
