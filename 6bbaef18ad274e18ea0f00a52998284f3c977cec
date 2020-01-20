@@ -34,6 +34,24 @@
       "revId": "6bbaef18ad274e18ea0f00a52998284f3c977cec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e80013d9_08480e3e",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T04:49:11Z",
+      "side": 1,
+      "message": "PTAL (PS2).\n\nI was able to add a utility function in sdk.go [ useApiFingerPrint() ], which is used in apex_manifest.go.  However, I was unable to use it in apex/builder.go [ any pointers would be great ]",
+      "parentUuid": "c406709a_6a1b774c",
+      "revId": "6bbaef18ad274e18ea0f00a52998284f3c977cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

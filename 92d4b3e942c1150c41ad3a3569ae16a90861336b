@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3618397e_2d6255e7",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T04:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a144676_a977312e",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 16
+      },
+      "revId": "92d4b3e942c1150c41ad3a3569ae16a90861336b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7112acc_a5157136",
         "filename": "apex/builder.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-20T04:00:47Z",
       "side": 1,
       "message": "this doesn\u0027t look right because you\u0027ve already made OptFlags before min/targetSdkVersions are appended with fingerprints here",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 25
+      },
+      "revId": "92d4b3e942c1150c41ad3a3569ae16a90861336b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e2a2ef4_fd0f5e83",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-01-20T04:49:11Z",
+      "side": 1,
+      "message": "Ah, good catch - fixed.",
+      "parentUuid": "a7112acc_a5157136",
       "range": {
         "startLine": 389,
         "startChar": 0,
