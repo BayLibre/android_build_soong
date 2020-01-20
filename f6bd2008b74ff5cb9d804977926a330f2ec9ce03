@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2f9ddaa_17ee5583",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T05:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fefa261_0fea64a1",
+      "range": {
+        "startLine": 62,
+        "startChar": 18,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4171b64b_7fcdd93b",
         "filename": "apex/androidmk.go",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7e478bd_ec50b0f6",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T05:12:07Z",
+      "side": 1,
+      "message": "Yes, I am aware of it. I will create a follow-up change to make all symlinks in the apex package via build rules.",
+      "parentUuid": "4171b64b_7fcdd93b",
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "891d28d6_c8c0f999",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T05:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c870987_335281e3",
+      "range": {
+        "startLine": 272,
+        "startChar": 43,
+        "endLine": 272,
+        "endChar": 45
+      },
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b69dfa1f_bd950ec4",
         "filename": "apex/builder.go",
         "patchSetId": 6
@@ -85,6 +151,30 @@
       "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4563f15_dc0d807d",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-20T05:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b69dfa1f_bd950ec4",
+      "range": {
+        "startLine": 274,
+        "startChar": 40,
+        "endLine": 274,
+        "endChar": 42
+      },
+      "revId": "f6bd2008b74ff5cb9d804977926a330f2ec9ce03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
