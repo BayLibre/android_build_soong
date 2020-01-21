@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e87767d7_884642d9",
+        "filename": "apex/vndk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T18:53:18Z",
+      "side": 1,
+      "message": "Import ordering:\n\nimport (\n    \"testing\"\n\n    \"github.com/google/blueprint/proptools\"\n\n    \"android/soong/android\"\n)",
+      "revId": "36f5638eba288b582f6f6b33f15cc31b44fbfb9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
