@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "984834c9_d2c8532f",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T18:26:17Z",
+      "side": 1,
+      "message": "The whole transform and tagging concept is a lot of complexity for what ends up being a very simple use case.  Would it be better to replace it with allowing the SdkAware module to participate in the versioning?  Something like:\n\ninterface SdkAware {\n    ...\n    UnversionedToVersioned(ps *bpPropertySet, versionedName func(string) string)\n}",
+      "revId": "457614b1246469bfc68554d9d0c14fbf7da3c4dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
