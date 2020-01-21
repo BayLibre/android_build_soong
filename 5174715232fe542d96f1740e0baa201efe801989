@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6e0c7b3_8e489516",
+        "filename": "java/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T20:57:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is worth the special case.  I don\u0027t see any significant cost here, and it seems possible that packages in core.current.stubs get moved out of the system modules, requiring the jar to be on the classpath too.",
+      "revId": "5174715232fe542d96f1740e0baa201efe801989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95ded59_a93be052",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T20:57:45Z",
+      "side": 1,
+      "message": "Keep this separate from the android imports.",
+      "revId": "5174715232fe542d96f1740e0baa201efe801989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
