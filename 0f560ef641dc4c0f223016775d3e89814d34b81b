@@ -34,6 +34,24 @@
       "revId": "0f560ef641dc4c0f223016775d3e89814d34b81b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4aec899_e2450c51",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T11:06:28Z",
+      "side": 1,
+      "message": "Oops, sorry. I have no idea how I missed that. Thanks.",
+      "parentUuid": "76241df1_4390a47b",
+      "revId": "0f560ef641dc4c0f223016775d3e89814d34b81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
