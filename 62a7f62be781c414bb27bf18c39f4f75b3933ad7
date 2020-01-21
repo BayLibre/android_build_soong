@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1537f52a_b1eb1dc2",
+        "filename": "docs/perf.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-01-21T22:57:58Z",
+      "side": 1,
+      "message": "delete special character",
+      "range": {
+        "startLine": 152,
+        "startChar": 75,
+        "endLine": 152,
+        "endChar": 76
+      },
+      "revId": "62a7f62be781c414bb27bf18c39f4f75b3933ad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
