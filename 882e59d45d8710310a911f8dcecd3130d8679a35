@@ -22,6 +22,30 @@
       "revId": "882e59d45d8710310a911f8dcecd3130d8679a35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d18d9a_df5cdfa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2020-01-21T18:38:42Z",
+      "side": 1,
+      "message": "I thought about this before, but I don\u0027t really have a good answer (yet). In some cases, a library may have the same or different variants depending on the target configuration, so an error is definitely out. I\u0027m open to giving an warning in that case though, but we need to be careful not to make it so noisy that people just ignore it.",
+      "parentUuid": "c16061f4_82351d9c",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "882e59d45d8710310a911f8dcecd3130d8679a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
