@@ -16,6 +16,24 @@
       "revId": "52698fd04ecec5beb61027441f38a45c1d15bd59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69ce038c_4e1a4457",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-21T19:55:09Z",
+      "side": 1,
+      "message": "Mainly because this takes a more restricted PathContext while the one above requires a ModuleContext to query the dependency. I\u0027ll extend the docstring.",
+      "parentUuid": "47ab0294_173cf1b4",
+      "revId": "52698fd04ecec5beb61027441f38a45c1d15bd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
