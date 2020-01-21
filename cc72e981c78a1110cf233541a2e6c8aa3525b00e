@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23906ae9_bf94c488",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T18:05:56Z",
+      "side": 1,
+      "message": "Will this ever need to support a *string, etc?  Right now you are not deep copying those.\n\nproptools.CloneProperties might be a better solution for this, it already knows how to deal with all of the valid property types and will be kept up to date as new types are added.\n\nThis is probably better written as a type switch:\n\nswitch x :\u003d v.(type) {\ncase *bpPropertySet:\n    ...\ncase []string:\n    ...\ndefault:\n    ...\n}",
+      "revId": "cc72e981c78a1110cf233541a2e6c8aa3525b00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4d159f_601e6efc",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T18:05:56Z",
+      "side": 1,
+      "message": "Not a big deal, but bpPropertySet will be tiny.  A map is just a pointer, and a slice is a pointer into an array plus length and capacity integers.",
+      "revId": "cc72e981c78a1110cf233541a2e6c8aa3525b00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
