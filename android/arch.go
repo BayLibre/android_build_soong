@@ -1036,11 +1036,22 @@ func filterArchStruct(field reflect.StructField, prefix string) (bool, reflect.S
 		// 16-bit limit on structure name length. The name is constructed
 		// based on the Go source representation of the structure, so
 		// the tag names count towards that length.
-		//
-		// TODO: handle the uncommon case of other tags being involved
-		if field.Tag == `android:"arch_variant"` {
-			field.Tag = ""
+
+		androidTag := field.Tag.Get("android")
+		values := strings.Split(androidTag, ",")
+
+		if string(field.Tag) != `android:"`+strings.Join(values, ",")+`"` {
+			panic(fmt.Errorf("unexpected tag format %q", field.Tag))
 		}
+		for _, v := range values {
+			switch v {
+			case "arch_variant", "variant_prepend", "path":
+				// these tags don't need to be present in the runtime generated struct type.
+			default:
+				panic(fmt.Errorf("unknown tag %q in field %q", v, prefix+field.Name))
+			}
+		}
+		field.Tag = ""
 		return true, field
 	}
 	return false, field
