@@ -22,6 +22,30 @@
       "revId": "a3dde892645f70f1cc92e383fa68184481e92c41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f01bf7d_db692069",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-01-21T13:20:47Z",
+      "side": 1,
+      "message": "Nope, not needed. Used it to debug locally. Removed.",
+      "parentUuid": "0c032d9e_215ee111",
+      "range": {
+        "startLine": 297,
+        "startChar": 2,
+        "endLine": 297,
+        "endChar": 13
+      },
+      "revId": "a3dde892645f70f1cc92e383fa68184481e92c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
