@@ -1037,9 +1037,28 @@ func filterArchStruct(field reflect.StructField, prefix string) (bool, reflect.S
 		// based on the Go source representation of the structure, so
 		// the tag names count towards that length.
 		//
-		// TODO: handle the uncommon case of other tags being involved
-		if field.Tag == `android:"arch_variant"` {
-			field.Tag = ""
+
+		isComma := func(r rune) bool { return r == ',' }
+		androidTag := field.Tag.Get("android")
+		values := strings.FieldsFunc(androidTag, isComma)
+
+		if len(values) > 0 {
+			if string(field.Tag) != `android:"`+strings.Join(values, ",")+`"` {
+				panic(fmt.Errorf("unexpected tag format %q", field.Tag))
+			}
+			for i := 0; i < len(values); i++ {
+				switch values[i] {
+				case "arch_variant", "variant_prepend", "path":
+					values = append(values[:i], values[i+1:]...)
+				default:
+					panic(fmt.Errorf("unknown tag %q", values[i]))
+				}
+			}
+			if len(values) > 0 {
+				field.Tag = reflect.StructTag(`android:"` + strings.Join(values, ",") + `"`)
+			} else {
+				field.Tag = ""
+			}
 		}
 		return true, field
 	}
