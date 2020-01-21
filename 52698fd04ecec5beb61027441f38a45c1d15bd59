@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47ab0294_173cf1b4",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T19:27:20Z",
+      "side": 1,
+      "message": "Why is this needed vs. calling GetGlobalSoongConfig?  If it is needed, mention that it will panic if called before GetGlobalSoongConfig.",
+      "revId": "52698fd04ecec5beb61027441f38a45c1d15bd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
