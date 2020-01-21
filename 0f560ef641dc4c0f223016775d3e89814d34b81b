@@ -16,6 +16,24 @@
       "revId": "0f560ef641dc4c0f223016775d3e89814d34b81b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76241df1_4390a47b",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-21T10:38:32Z",
+      "side": 1,
+      "message": "In \"t.builder.versionedSdkMemberName(name)\" in the transformModule below.",
+      "parentUuid": "a25ed052_1ab40f2b",
+      "revId": "0f560ef641dc4c0f223016775d3e89814d34b81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
