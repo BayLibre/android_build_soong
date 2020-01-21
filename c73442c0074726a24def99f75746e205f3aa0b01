@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ff6de2a8_740e5c66",
+        "filename": "android/module.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T19:05:45Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be in a properties struct, it is only written in GenerateAndroidBuildActions which is after all mutators have run, so it can be a field on the ModuleBase type.",
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4623189f_793971fb",
         "filename": "cc/cc.go",
         "patchSetId": 13
