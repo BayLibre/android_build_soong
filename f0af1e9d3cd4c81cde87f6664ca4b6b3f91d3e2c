@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52aec0e2_d69ba606",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T03:47:17Z",
+      "side": 1,
+      "message": "could be `var newOrder []string`",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "f0af1e9d3cd4c81cde87f6664ca4b6b3f91d3e2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
