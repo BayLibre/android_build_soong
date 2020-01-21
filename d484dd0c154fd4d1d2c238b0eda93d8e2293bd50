@@ -140,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "04689687_bcfd5dd9",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T22:23:19Z",
+      "side": 1,
+      "message": "Correction - the issue is not related to calling append with slices of a slice. It\u0027s a common pitfall in Go, but has nothing to do with this code.\n\nThe problem in this code is you\u0027re modifying a slice while iterating over it with a for loop.",
+      "parentUuid": "0b4281b7_cc0b197b",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8349de4_c7871d61",
         "filename": "android/arch.go",
         "patchSetId": 1
