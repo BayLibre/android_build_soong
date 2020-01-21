@@ -34,6 +34,24 @@
       "revId": "52698fd04ecec5beb61027441f38a45c1d15bd59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff64680b_9f4c7c8c",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-21T20:01:33Z",
+      "side": 1,
+      "message": "Oh, and requiring ModuleContext in the call to GetGlobalSoongConfig isn\u0027t really necessary until https://r.android.com/1205730 where the call to dex2oatPathFromDep is added, but it ended up in this CL. It\u0027s the same topic anyway.",
+      "parentUuid": "69ce038c_4e1a4457",
+      "revId": "52698fd04ecec5beb61027441f38a45c1d15bd59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
