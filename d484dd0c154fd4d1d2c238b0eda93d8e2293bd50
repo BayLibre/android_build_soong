@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b83bfc8_1d7b5146",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T21:26:37Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand the changes in this func. Is this change ready for review? Some of them don\u0027t appear to make sense to me.",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
