@@ -16,6 +16,24 @@
       "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516b9cc1_606251e4",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T21:31:42Z",
+      "side": 1,
+      "message": "Yes, this is ready for review.\n\nThis function determines which fields will be in the runtime-generated architecture-specific properties structs.  It also rewrites the StructField to remove any unnecessary information to reduce the size of the resulting struct.  It originally only removed `android:\"arch_variant\"` tags, the changes make it also handle tags like `android:\"arch_variant,path\".",
+      "parentUuid": "0b83bfc8_1d7b5146",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
