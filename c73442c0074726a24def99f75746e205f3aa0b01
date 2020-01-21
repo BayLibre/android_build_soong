@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4623189f_793971fb",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "isVndkPrebuiltLibrary?",
+      "range": {
+        "startLine": 918,
+        "startChar": 17,
+        "endLine": 918,
+        "endChar": 35
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cdda47_8cef8cf7",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "This and SharedRuntimeLibs are introduced in the child change :( aosp/1199569",
+      "range": {
+        "startLine": 2319,
+        "startChar": 16,
+        "endLine": 2319,
+        "endChar": 34
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88509d59_051329c1",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef5b2e84_e07283b8",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "this is not used anywhere",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62476343_c76ad732",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "please have a bug number",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 9
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "056720c4_025c6f81",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cbdd920_465705f2",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "have a bug number",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c53010e_61dcb506",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "why is the default true?",
+      "range": {
+        "startLine": 114,
+        "startChar": 69,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9df8283_1fb44d23",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "why is the default true?",
+      "range": {
+        "startLine": 129,
+        "startChar": 67,
+        "endLine": 129,
+        "endChar": 71
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436968bd_0afc946e",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-21T13:58:22Z",
+      "side": 1,
+      "message": "move this condition inso isVendorSnapshotModule?",
+      "range": {
+        "startLine": 308,
+        "startChar": 12,
+        "endLine": 308,
+        "endChar": 24
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
