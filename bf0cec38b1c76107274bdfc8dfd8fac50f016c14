@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23a9e960_f22267af",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T20:43:48Z",
+      "side": 1,
+      "message": "put blueprint imports before android imports",
+      "revId": "bf0cec38b1c76107274bdfc8dfd8fac50f016c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc22185c_a7ae3a45",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T20:43:48Z",
+      "side": 1,
+      "message": "This could be unexported to ensure no module can implement DexPreoptModule without embedding it.",
+      "revId": "bf0cec38b1c76107274bdfc8dfd8fac50f016c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bab0ba_f5d8118c",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-21T20:43:48Z",
+      "side": 1,
+      "message": "This already embeds DexPreoptModule through Library.Module",
+      "revId": "bf0cec38b1c76107274bdfc8dfd8fac50f016c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
