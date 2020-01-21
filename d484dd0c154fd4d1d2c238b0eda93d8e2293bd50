@@ -34,6 +34,126 @@
       "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e438390f_a9586096",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T22:15:06Z",
+      "side": 1,
+      "message": "If I\u0027m reading the code correctly, it\u0027ll remove all known android tag values only if \"arch_variant\" is included.\n\nIn other words, it\u0027ll remove `android:\"arch_variant\"` and `android:\"arch_variant,path\"`, but not `android:\"path\"`.\n\nIs this intended?\n\nAdding a few test cases to arch_test.go would be nice. It already has a well-structured test func for this one, TestFilterArchStruct.",
+      "parentUuid": "516b9cc1_606251e4",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b56f594b_254ee52a",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T22:15:06Z",
+      "side": 1,
+      "message": "nit: You can simply use Split instead given you do string match in line 1046?",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de89e5e2_8fb35ad1",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T22:15:06Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this if check. (Or, were you going to remove the if check in line 1033?)",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ddbdc8_85cf030f",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T22:15:06Z",
+      "side": 1,
+      "message": "So, basically, you\u0027re making sure the tag only has the android key. Is that right?",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b192dc35_57471656",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T22:15:06Z",
+      "side": 1,
+      "message": "In this switch, I think you try to remove all known android tag values and panic if there are any unknown ones. Which means, it either ends up with an empty slice or panics. Can this be a simple value check instead?",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4281b7_cc0b197b",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T22:15:06Z",
+      "side": 1,
+      "message": "Are you sure this is what you want to do?\n\nCalling append with slices of a slice often results in very weird behavior as in this example:\nhttps://play.golang.org/p/PTpmkZfEuJG\n(BTW, I think this is why this code ran without an error when you used i+1 without a range check.)\n\nIf this is really what you intended, please add a comment to explain what you\u0027re trying to achieve.",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8349de4_c7871d61",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-21T22:15:06Z",
+      "side": 1,
+      "message": "I don\u0027t think this code will ever be executed. If the above code didn\u0027t panic, values must be empty at this point.",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
