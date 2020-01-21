@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c032d9e_215ee111",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2020-01-21T08:10:03Z",
+      "side": 1,
+      "message": "is this strictly necessary? Just makes the build rule more brittle to changes in the csv file?",
+      "range": {
+        "startLine": 297,
+        "startChar": 2,
+        "endLine": 297,
+        "endChar": 13
+      },
+      "revId": "a3dde892645f70f1cc92e383fa68184481e92c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
