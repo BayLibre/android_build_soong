@@ -692,6 +692,8 @@ func (module *SdkLibrary) sdkJars(
 		var paths *scopePaths
 		if strings.HasPrefix(sdkVersion, "system_") {
 			paths = module.getScopePaths(apiScopeSystem)
+		} else if strings.HasPrefix(sdkVersion, "test_") {
+			paths = module.getScopePaths(apiScopeTest)
 		} else {
 			paths = module.getScopePaths(apiScopePublic)
 		}
