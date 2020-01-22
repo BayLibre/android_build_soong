@@ -693,6 +693,8 @@ func (module *SdkLibrary) sdkJars(
 		switch sdkVersion.kind {
 		case sdkSystem:
 			paths = module.getScopePaths(apiScopeSystem)
+		case sdkTest:
+			paths = module.getScopePaths(apiScopeTest)
 		case sdkPrivate:
 			return module.Library.HeaderJars()
 		default:
