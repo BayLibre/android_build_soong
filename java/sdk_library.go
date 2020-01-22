@@ -685,6 +685,8 @@ func (module *SdkLibrary) sdkJars(
 	} else {
 		if strings.HasPrefix(sdkVersion, "system_") {
 			return scopePathsAccessor(module.getScopePaths(apiScopeSystem))
+		} else if strings.HasPrefix(sdkVersion, "test_") {
+			return module.getScopePaths(apiScopeTest).stubsHeaderPath
 		} else if sdkVersion == "" {
 			return libraryPathsAccessor(module)
 		} else {
