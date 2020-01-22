@@ -22,6 +22,30 @@
       "revId": "979b9300841a39458deaf296bd609746524b5e92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44f64a88_76c99d6f",
+        "filename": "apex/vndk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-22T03:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff1d96ae_53c410d1",
+      "range": {
+        "startLine": 43,
+        "startChar": 71,
+        "endLine": 43,
+        "endChar": 79
+      },
+      "revId": "979b9300841a39458deaf296bd609746524b5e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
