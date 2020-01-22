@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b9c22d1_f5e6c6b6",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-22T18:33:02Z",
+      "side": 1,
+      "message": "How about something like this?\n\nunknownTags :\u003d RemoveListFromList(values, []string{\"arch_variant\", \"variant_prepend\", \"path\"})\nif len(unknownTags) \u003e 0 {\n  panic(fmt.Errorf(\"unknown tags %v in field %q\", unknownTags, prefix+field.Name))\n}\n\nIt\u0027s more concise and outputs all unknown tags in a single execution if there are many.",
+      "revId": "e3c044889de522406e6944d52134e3c37fff4cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
