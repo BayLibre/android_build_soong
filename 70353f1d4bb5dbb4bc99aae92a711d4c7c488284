@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0730580_f95356e8",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-01-22T03:03:12Z",
+      "side": 1,
+      "message": "This is wrong.",
+      "revId": "70353f1d4bb5dbb4bc99aae92a711d4c7c488284",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
