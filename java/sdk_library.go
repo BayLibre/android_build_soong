@@ -646,31 +646,33 @@ func (module *SdkLibrary) createXmlFile(mctx android.LoadHookContext) {
 	mctx.CreateModule(android.PrebuiltEtcFactory, &etcProps)
 }
 
-func (module *SdkLibrary) PrebuiltJars(ctx android.BaseModuleContext, sdkVersion string) android.Paths {
-	var api, v string
+func parseSdkVersion(ctx android.BaseModuleContext, sdkVersion string) (*apiScope, string) {
+	var scope *apiScope
+	var version string
 	if sdkVersion == "" || sdkVersion == "none" {
-		api = "system"
-		v = "current"
+		scope = nil
+		version = "current"
 	} else if strings.Contains(sdkVersion, "_") {
 		t := strings.Split(sdkVersion, "_")
-		api = t[0]
-		v = t[1]
-	} else {
-		api = "public"
-		v = sdkVersion
-	}
-	dir := filepath.Join("prebuilts", "sdk", v, api)
-	jar := filepath.Join(dir, module.BaseModuleName()+".jar")
-	jarPath := android.ExistentPathForSource(ctx, jar)
-	if !jarPath.Valid() {
-		if ctx.Config().AllowMissingDependencies() {
-			return android.Paths{android.PathForSource(ctx, jar)}
-		} else {
-			ctx.PropertyErrorf("sdk_library", "invalid sdk version %q, %q does not exist", sdkVersion, jar)
+		stringScope := t[0]
+		for _, s := range allApiScopes {
+			if s.name == stringScope {
+				scope = s
+				break
+			}
 		}
-		return nil
+		if scope == nil {
+			ctx.PropertyErrorf("sdk_version", "invalid api scope %q, expected one of %s",
+				stringScope, strings.Join(allApiScopes.Strings(func(s *apiScope) string { return s.sdkVersion }), ", "))
+			scope = apiScopePublic
+		}
+		version = t[1]
+	} else {
+		scope = apiScopePublic
+		version = sdkVersion
 	}
-	return android.Paths{jarPath.Path()}
+
+	return scope, version
 }
 
 func (module *SdkLibrary) sdkJars(
@@ -679,25 +681,49 @@ func (module *SdkLibrary) sdkJars(
 	headerJars bool) android.Paths {
 
 	// This module is just a wrapper for the stubs.
-	if ctx.Config().UnbundledBuildUsePrebuiltSdks() {
-		return module.PrebuiltJars(ctx, sdkVersion)
-	} else {
-		if sdkVersion == "" {
-			if headerJars {
-				return module.Library.HeaderJars()
-			} else {
-				return module.Library.ImplementationJars()
-			}
-		}
-		var paths *scopePaths
-		if strings.HasPrefix(sdkVersion, "system_") {
-			paths = module.getScopePaths(apiScopeSystem)
-		} else if strings.HasPrefix(sdkVersion, "test_") {
-			paths = module.getScopePaths(apiScopeTest)
-		} else {
-			paths = module.getScopePaths(apiScopePublic)
+
+	scope, version := parseSdkVersion(ctx, sdkVersion)
+	// If a specific numeric version has been requested or the build is explicitly configured
+	// for it then use prebuilt versions of the sdk.
+	if version != "current" || ctx.Config().UnbundledBuildUsePrebuiltSdks() {
+		// If no scope has been specified (sdk_version = "" or "none") then default to using the
+		// system scope. This is not really safe to do so as any target that actually requires the
+		// platform API will fail when building against the system api. However, there are targets
+		// that don't require the platform API but do not specify an sdk_version either and they
+		// will work.
+		if scope == nil {
+			scope = apiScopeSystem
 		}
 
+		dir := filepath.Join("prebuilts", "sdk", version, scope.name)
+		jar := filepath.Join(dir, module.BaseModuleName()+".jar")
+		jarPath := android.ExistentPathForSource(ctx, jar)
+		if !jarPath.Valid() {
+			if ctx.Config().AllowMissingDependencies() {
+				return android.Paths{android.PathForSource(ctx, jar)}
+			} else {
+				ctx.PropertyErrorf("sdk_library", "invalid sdk version %q, %q does not exist", sdkVersion, jar)
+			}
+			return nil
+		}
+		return android.Paths{jarPath.Path()}
+	}
+
+	if sdkVersion == "" {
+		if headerJars {
+			return module.Library.HeaderJars()
+		} else {
+			return module.Library.ImplementationJars()
+		}
+	} else {
+		if scope == nil {
+			// This only occurs if the sdk version should be set to none. In that case
+			// default to using the public scope as the referencing library (in ART) will
+			// not be able to use the system or test API surfaces anyway.
+			scope = apiScopePublic
+		}
+
+		paths := module.getScopePaths(scope)
 		if headerJars {
 			return paths.stubsHeaderPath
 		} else {
