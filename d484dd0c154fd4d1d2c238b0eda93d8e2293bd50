@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3feced53_04399d3c",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-22T18:02:18Z",
+      "side": 1,
+      "message": "Added tests.\n\n`android:\"path\"` is not relevant here, the check on line 1033 means that any  field that does not have arch_variant is stripped completely.",
+      "parentUuid": "e438390f_a9586096",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b56f594b_254ee52a",
         "filename": "android/arch.go",
         "patchSetId": 1
@@ -69,6 +87,24 @@
       "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52f17e8_6bfea648",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-22T18:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b56f594b_254ee52a",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "76ff690b_5f5a86ea",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-22T18:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de89e5e2_8fb35ad1",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0ddbdc8_85cf030f",
         "filename": "android/arch.go",
         "patchSetId": 1
@@ -106,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "0e26bf56_b59b59f8",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1046,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-22T18:02:18Z",
+      "side": 1,
+      "message": "Yeah, I didn\u0027t handle the case of:\n`blueprint:\"mutated\",android:\"arch_variant\"`\n\nThis is basically a sanity check that I\u0027m not accidentally losing information.",
+      "parentUuid": "e0ddbdc8_85cf030f",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b192dc35_57471656",
         "filename": "android/arch.go",
         "patchSetId": 1
@@ -120,6 +192,24 @@
       "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d02b7d98_4afe5325",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-22T18:02:18Z",
+      "side": 1,
+      "message": "I originally wrote this to leave \"path\" in, so `android:\"arch_variant,path\"` becomes `android:\"path\"`, but then I realized the path properties are handled after the arch mutator, so all known tags are removed.  I guess I\u0027ll use the simple check since the complex one had bugs.",
+      "parentUuid": "b192dc35_57471656",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -172,6 +262,24 @@
       "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8626c72_c79ebeba",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-22T18:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8349de4_c7871d61",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
