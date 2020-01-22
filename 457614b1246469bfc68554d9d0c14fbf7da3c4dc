@@ -16,6 +16,24 @@
       "revId": "457614b1246469bfc68554d9d0c14fbf7da3c4dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4d1c2e9_c963de81",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-22T18:43:36Z",
+      "side": 1,
+      "message": "The tag is not just needed to drive the unversioned -\u003e versioned transformation. It is also needed to transform the unversioned module itself in the case where the module contains transitive dependencies that should not be exposed outside the sdk.\n\ne.g. given java_system_modules {... libs: \"private-module\"} where private-module is private to the package that contains the java_system_modules. The snapshot must not contain private-module because that could conflict with the source module. So, in that case the unversioned module also needs to be transformed and replace \"private-module\" with \"sdk_private-module\".\n\nThat creates additional complexity in each sdk member. At the moment it is only java_system_modules but I anticipate that there could be others, e.g. I believe that there are some cc_library modules rely on shared native libraries which are not intended to be exposed outside the sdk.\n\nIt is quite complex but it seemed the best way to insulate the sdk members from having to know too much about the internals. I based the tag / transform model on the way that the blueprint properties structures use struct tags and mutators to handle issues that cross multiple modules.",
+      "parentUuid": "984834c9_d2c8532f",
+      "revId": "457614b1246469bfc68554d9d0c14fbf7da3c4dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
