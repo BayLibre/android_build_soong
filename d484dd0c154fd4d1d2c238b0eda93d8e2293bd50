@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "0b50f486_5b9a1fd8",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-22T18:10:33Z",
+      "side": 1,
+      "message": "Modifying the slice would have been fine if I\u0027d remembered the i-- I planned, that\u0027s why the for loop uses an integer loop instead of the range syntax.",
+      "parentUuid": "04689687_bcfd5dd9",
+      "revId": "d484dd0c154fd4d1d2c238b0eda93d8e2293bd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8349de4_c7871d61",
         "filename": "android/arch.go",
         "patchSetId": 1
