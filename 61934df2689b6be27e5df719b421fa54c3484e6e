@@ -50,6 +50,30 @@
     },
     {
       "key": {
+        "uuid": "aa04170e_790bcb9d",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-01-22T17:30:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8a91476_01556db1",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 93
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99c08df3_33a36a54",
         "filename": "ui/build/config.go",
         "patchSetId": 5
@@ -146,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "d654bb12_50afd439",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-01-22T17:30:04Z",
+      "side": 1,
+      "message": "Oh! It\u0027s quite odd. You can see how in line 734 gofmt added spaces.",
+      "parentUuid": "6209d3a0_f62072c8",
+      "range": {
+        "startLine": 745,
+        "startChar": 27,
+        "endLine": 745,
+        "endChar": 28
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cafb0b0a_0489903b",
         "filename": "ui/build/config.go",
         "patchSetId": 5
@@ -217,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "1e7b3156_66103aad",
+        "filename": "ui/build/config_darwin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-01-22T17:30:04Z",
+      "side": 1,
+      "message": "You\u0027re missing the err variable to print the err.",
+      "parentUuid": "3add26ec_3d040553",
+      "range": {
+        "startLine": 25,
+        "startChar": 48,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9a92882_09e07820",
         "filename": "ui/build/config_darwin.go",
         "patchSetId": 5
@@ -228,6 +300,30 @@
       "writtenOn": "2019-12-20T19:07:41Z",
       "side": 1,
       "message": "expecting 8",
+      "range": {
+        "startLine": 35,
+        "startChar": 67,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc458c7_ed4a3a8b",
+        "filename": "ui/build/config_darwin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-01-22T17:30:04Z",
+      "side": 1,
+      "message": "nit: What I meant is add \"expecting 8 bytes\" so it\u0027s clear to the user.",
+      "parentUuid": "f9a92882_09e07820",
       "range": {
         "startLine": 35,
         "startChar": 67,
