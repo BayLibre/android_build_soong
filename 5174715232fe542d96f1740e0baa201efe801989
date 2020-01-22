@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b4e2ed9d_8991af67",
+        "filename": "java/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-22T10:31:55Z",
+      "side": 1,
+      "message": "Ok. This change won\u0027t make those changes any more difficult. It may be that this change is a necessary step in the process of modularizing the current.txt file but I will leave it for now.",
+      "parentUuid": "c6e0c7b3_8e489516",
+      "revId": "5174715232fe542d96f1740e0baa201efe801989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c95ded59_a93be052",
         "filename": "java/sdk_test.go",
         "patchSetId": 3
