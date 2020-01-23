@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb92a28a_e2cb898e",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T19:40:37Z",
+      "side": 1,
+      "message": "CloneProperties won\u0027t work as it expects a struct as input not a map. I did consider having this work with structs but it seemed a lot more complex that a map. I did not realize the amount of support that there was for that in blueprint though.\n\nI did not realize that a type switch did implicit casting. Pretty cool.",
+      "parentUuid": "23906ae9_bf94c488",
+      "revId": "cc72e981c78a1110cf233541a2e6c8aa3525b00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b4d159f_601e6efc",
         "filename": "sdk/bp.go",
         "patchSetId": 1
