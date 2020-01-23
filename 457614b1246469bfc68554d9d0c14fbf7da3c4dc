@@ -34,6 +34,24 @@
       "revId": "457614b1246469bfc68554d9d0c14fbf7da3c4dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "690b3872_4eaa5a4f",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T19:49:06Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t think snapshots of shared libraries require shared_libs to be propagated.\n\nWould you be happy for me to submit this as is and come back and revisit it later on if we do not need something this complex? There are a lot of changes stacked on top and it would be easier to change this after applying those than having to do it before and resolve all the conflicts that would cause.",
+      "parentUuid": "a4d1c2e9_c963de81",
+      "revId": "457614b1246469bfc68554d9d0c14fbf7da3c4dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
