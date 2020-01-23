@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3460e26c_6108b901",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-23T05:30:03Z",
+      "side": 1,
+      "message": "To me, the introduction of these two function arguments made it **much** harder to follow the code. I don\u0027t think deduping SdkHeaderJars and SdkImplementationJars is that worth doing.",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 53
+      },
+      "revId": "6890497a26b8f02c04cefdd5d8d5392c8e17d25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
