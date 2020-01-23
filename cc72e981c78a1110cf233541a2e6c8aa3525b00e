@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ef2d0295_e35c7223",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T19:45:15Z",
+      "side": 1,
+      "message": "I don\u0027t think this will need to support a *string. If a property is not set then it just does not have an entry in the map.",
+      "parentUuid": "fb92a28a_e2cb898e",
+      "revId": "cc72e981c78a1110cf233541a2e6c8aa3525b00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b4d159f_601e6efc",
         "filename": "sdk/bp.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2020-01-21T18:05:56Z",
       "side": 1,
       "message": "Not a big deal, but bpPropertySet will be tiny.  A map is just a pointer, and a slice is a pointer into an array plus length and capacity integers.",
+      "revId": "cc72e981c78a1110cf233541a2e6c8aa3525b00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1ada843_36d0e858",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T19:45:15Z",
+      "side": 1,
+      "message": "Useful to know. I didn\u0027t do it to save space but to make the code for traversing/copying more consistent.",
+      "parentUuid": "5b4d159f_601e6efc",
       "revId": "cc72e981c78a1110cf233541a2e6c8aa3525b00e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
