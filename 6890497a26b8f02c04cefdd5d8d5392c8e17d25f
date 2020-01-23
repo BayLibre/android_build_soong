@@ -22,6 +22,30 @@
       "revId": "6890497a26b8f02c04cefdd5d8d5392c8e17d25f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f343cd01_3b5ab945",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T17:47:45Z",
+      "side": 1,
+      "message": "It did look slightly better when I started because it only had one function parameter but I did not notice that there were two different sources of Header/Implementation jars. I could have defined an interface that they could both share (e.g. a subset of the interface that Library already implements) but that would not have made it clear that it was retrieving the stubs jars and not the main library ones.\n\nI refactored it because the code is identical (apart from header/implementation difference) and not trivial and I had/have a number of changes to make to it that I did not want to make twice each, in a slightly different way with all the potential for copy/paste errors that would cause. This refactoring simplifies the follow up changes quite significantly.\n\nI switched it to passing in a parameter to indicate whether headers/implementations is needed and refactored to avoid duplicating the code for retrieving the correct jars. Is that better?\n\nIf you don\u0027t like this then how about changing it to return a pair of (headers, implementations) and have the callers extract the one they want?",
+      "parentUuid": "3460e26c_6108b901",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 53
+      },
+      "revId": "6890497a26b8f02c04cefdd5d8d5392c8e17d25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
