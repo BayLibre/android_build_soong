@@ -52,6 +52,24 @@
       "revId": "3512c672ba3d29846c5ed2f35b8641852f7f6de2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44454ddf_a00f65c1",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-01-23T22:36:03Z",
+      "side": 1,
+      "message": "Oops, done.\n\nI don\u0027t think \"overlay\" here has any special meaning to it other than the literal definition. If you want me to explain how the resource overlay is done in Android, I think that\u0027s an overkill given the expected target users of Soong and this module. (Plus, I\u0027m not the right or qualified person to do it either.)",
+      "parentUuid": "576a8277_06faf184",
+      "revId": "3512c672ba3d29846c5ed2f35b8641852f7f6de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
