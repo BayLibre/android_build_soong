@@ -22,6 +22,29 @@
       "revId": "dd9874746a988db709b685c86d8520e5ec1cfec5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb22f33_2782df4d",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-23T05:15:32Z",
+      "side": 1,
+      "message": "FYI: I have WIP CL for abstracting sdk_version. see aosp/1212908 So I don\u0027t want this change to refactor the parsing routine.",
+      "range": {
+        "startLine": 649,
+        "startChar": 5,
+        "endLine": 649,
+        "endChar": 20
+      },
+      "revId": "dd9874746a988db709b685c86d8520e5ec1cfec5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
