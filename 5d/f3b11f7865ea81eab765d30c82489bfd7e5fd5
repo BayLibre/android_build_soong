@@ -1,0 +1,8 @@
+Build-Cop-Override+1: Dan Willemsen <dwillemsen@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Ready+1: Jooyung Han <jooyung@google.com>
+Submitted-by: Jooyung Han <jooyung@google.com>
+Submitted-at: Thu, 23 Jan 2020 05:34:40 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1215099
+Project: platform/build/soong
+Branch: refs/heads/master
