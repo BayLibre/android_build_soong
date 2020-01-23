@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54a9c808_4d27959b",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-23T05:01:42Z",
+      "side": 1,
+      "message": "update the comment",
+      "range": {
+        "startLine": 1098,
+        "startChar": 42,
+        "endLine": 1098,
+        "endChar": 60
+      },
+      "revId": "dd9874746a988db709b685c86d8520e5ec1cfec5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
