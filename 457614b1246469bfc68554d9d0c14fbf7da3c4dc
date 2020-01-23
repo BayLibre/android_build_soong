@@ -52,6 +52,24 @@
       "revId": "457614b1246469bfc68554d9d0c14fbf7da3c4dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec28387b_726890d9",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T19:50:29Z",
+      "side": 1,
+      "message": "By this I actually meant the changes that lead up to this as this can\u0027t be submitted yet because of issues with java_sdk_library. Which are blocked by Jiyong\u0027s refactoring of sdkSpec.",
+      "parentUuid": "690b3872_4eaa5a4f",
+      "revId": "457614b1246469bfc68554d9d0c14fbf7da3c4dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
