@@ -73,6 +73,14 @@ func TestVndkApexUsesVendorVariant(t *testing.T) {
 				stl: "none",
 				notice: "custom_notice",
 			}
+			cc_library {
+				name: "libprofile-clang-extras",
+				vendor_available: true,
+				native_coverage: false,
+				system_shared_libs: [],
+				stl: "none",
+				notice: "custom_notice",
+			}
 		`, func(fs map[string][]byte, config android.Config) {
 			config.TestProductVariables.NativeCoverage = proptools.BoolPtr(true)
 		})
