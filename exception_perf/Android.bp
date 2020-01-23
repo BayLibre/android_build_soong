@@ -1,0 +1,27 @@
+cc_defaults {
+    name: "exception_perf_defaults",
+    host_supported: true,
+    srcs: ["test.cpp"],
+
+    // _FORTIFY_SOURCE disables inlining of std::string with bionic, leading to
+    // very different output in this test.
+    cflags: ["-U_FORTIFY_SOURCE"],
+
+    target: {
+        windows: {
+            enabled: true,
+        },
+    },
+}
+
+cc_library_static {
+    name: "exception_perf",
+    defaults: ["exception_perf_defaults"],
+    cppflags: ["-fexceptions"],
+}
+
+cc_library_static {
+    name: "noexception_perf",
+    defaults: ["exception_perf_defaults"],
+    cppflags: ["-fno-exceptions"],
+}
