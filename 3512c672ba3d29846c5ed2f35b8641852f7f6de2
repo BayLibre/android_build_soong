@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "038c4f33_adbdf901",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-01-23T18:00:51Z",
+      "side": 1,
+      "message": "What does overlay what?",
+      "revId": "3512c672ba3d29846c5ed2f35b8641852f7f6de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
