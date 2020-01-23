@@ -34,6 +34,24 @@
       "revId": "3512c672ba3d29846c5ed2f35b8641852f7f6de2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "576a8277_06faf184",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-01-23T22:21:53Z",
+      "side": 1,
+      "message": "The sentence is just grammatically wrong. It can be either \"... that can be overlaid by application and system resources\", or \"... that can overlay application and system resources\". Ideally it should also briefly explain what \"overlay\" means, or at least point to the place where it is described.",
+      "parentUuid": "2f81fda4_e86d22ae",
+      "revId": "3512c672ba3d29846c5ed2f35b8641852f7f6de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
