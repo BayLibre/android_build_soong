@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d5b5e6e_36752cd6",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "A double negative makes this hard to follow. Given that the body of this is also conditional on the usePlatformAPI setting it might be cleaner to collapse this check down into the others.\n\ne.g.\nusePlatformAPI :\u003d ...\nsdkVersionSpecified :\u003d sc.sdkVersion().Specified()\nif usePlatformAPI \u0026\u0026 sdkVersionSpecified {\n   ...\n} else if !usePlatformAPI \u0026\u0026 !sdkVersionSpecified {\n   ...\n}",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1dc4e0_b53f2a85",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "I don\u0027t think that sdkCore is a separate kind. I think it is orthogonal to that. Core is essentially just a partition of the public API space that relates to the core libraries, i.e. art, i18n and conscrypt.\n\nSimilarly, core_platform is a partition of the \"platform\" kind. Where \"platform\" is more akin to \"private\" than any of the others.\n\nI think core would be better represented by adding another field to sdkSpec, say partition, so core_current would be \"public\", \"core\", \"current\", core_platform would be \"private\", \"core\", \"current\" and system_current would be \"system\", \"\u003csomething, maybe base or an empty string\u003e\", \"current\".",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "531a2427_cd547683",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "Would it not be safer to expose this as an interface rather than a struct? It would prevent fields being modified and if it was a pointer to a struct would make passing them around easier?",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48fc73f_26c1b66d",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "Presumably it works because those modules that come through this block claim that they need to build against the private API but actually can be built against the public (or are never built for the PDK build). Either way this is probably something that should be investigated and fixed if possible. Maybe add a TODO and raise a bug to follow up on it?",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f1e2b6_b06e97fc",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "spelling \"sdkVeresion\"",
+      "range": {
+        "startLine": 172,
+        "startChar": 58,
+        "endLine": 172,
+        "endChar": 69
+      },
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7bb06c2_56f48ec7",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "This appears to be used to replace sdkVersionOrDefault(). However, this has an extra check for pdk build. Which seems like a behavioral change for some of the usages of this method (but not for the one from getJavaVersion(...).",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b31e84a9_47e06f72",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "This is duplicating a lot of code in the above method (and is similarly changing behavior for pdk builds). Can it call the above and then check for and handle the special case of the unreleased SDK?",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c7893ff_404d9bbc",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "Why is this exported when the type is not and this is not used outside java package?",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4145acc4_dc69da58",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 1,
+      "message": "Adding a separate field for the \u0027partition\u0027 of the api being used would allow sdkCore to be removed from here.",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

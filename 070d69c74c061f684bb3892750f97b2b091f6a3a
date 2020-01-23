@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f532935f_fc8f05e8",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-23T15:34:12Z",
+      "side": 0,
+      "message": "This change (and the matching one below) changes the behavior. Previously, the default was \"module.publicApiStubsPath\" but here the default is \"module.Library.HeaderJars()\".",
+      "revId": "070d69c74c061f684bb3892750f97b2b091f6a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
