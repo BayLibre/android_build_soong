@@ -242,6 +242,7 @@ type productVariables struct {
 	ClangTidy  *bool   `json:",omitempty"`
 	TidyChecks *string `json:",omitempty"`
 
+	NativeLineCoverage   *bool    `json:",omitempty"`
 	NativeCoverage       *bool    `json:",omitempty"`
 	ClangCoverage        *bool    `json:",omitempty"`
 	CoveragePaths        []string `json:",omitempty"`
