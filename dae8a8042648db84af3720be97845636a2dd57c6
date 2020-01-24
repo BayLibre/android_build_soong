@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d216dfed_ba71fbeb",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-24T22:22:24Z",
+      "side": 1,
+      "message": "Hrm, this file needed a rebase and a fix that I expected Gerrit to tell me about. PTAL.",
+      "revId": "dae8a8042648db84af3720be97845636a2dd57c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
