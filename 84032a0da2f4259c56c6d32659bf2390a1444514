@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8f65a2a_94128633",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-24T17:33:07Z",
+      "side": 1,
+      "message": "Do we really need to repeat the example?",
+      "revId": "84032a0da2f4259c56c6d32659bf2390a1444514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec37be59_4b1f54c4",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-24T17:33:07Z",
+      "side": 1,
+      "message": "The docs for this are... special. Do we need to have this be an InitAndroidModule?\n\nhttps://android-build.googleplex.com/builds/pending/P11688223/linux/latest/android.html#soong_config_bool_variable\n\n(This really applies to all of these module types, but this is the most obvious)",
+      "revId": "84032a0da2f4259c56c6d32659bf2390a1444514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
