@@ -22,6 +22,23 @@
       "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa7d15d4_7d469c7a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-24T18:15:52Z",
+      "side": 1,
+      "message": "This does not imply that the current module is in an apex (there can be multiple variants that share a single name, and namespaces can also make things weird).",
+      "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
