@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18bd473d_68a72f7e",
+        "filename": "java/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T18:01:21Z",
+      "side": 1,
+      "message": "Can you add godoc for these functions that explain their semantics?",
+      "revId": "008f08c23c7244f142ae197157ad50ef80a7f5dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0dc63c_ace22ef4",
+        "filename": "java/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T18:01:21Z",
+      "side": 1,
+      "message": "can this be unexported?",
+      "revId": "008f08c23c7244f142ae197157ad50ef80a7f5dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa2ce67_dc21246a",
+        "filename": "java/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T18:01:21Z",
+      "side": 1,
+      "message": "can this be unexported?",
+      "revId": "008f08c23c7244f142ae197157ad50ef80a7f5dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
