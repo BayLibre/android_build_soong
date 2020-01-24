@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cda36aa_2bee5825",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T22:10:11Z",
+      "side": 1,
+      "message": "This seems odd, LineCoverage enables coverage everywhere?  If that is intentional, can you document the semantics of the various coverage options somewhere?",
+      "range": {
+        "startLine": 178,
+        "startChar": 68,
+        "endLine": 178,
+        "endChar": 95
+      },
+      "revId": "48e9c92078ab3587728503d1484fb7da03389ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
