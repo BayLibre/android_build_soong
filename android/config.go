@@ -1023,8 +1023,12 @@ func (c *deviceConfig) DeviceKernelHeaderDirs() []string {
 	return c.config.productVariables.DeviceKernelHeaders
 }
 
+func (c *config) NativeLineCoverage() bool {
+	return Bool(c.productVariables.NativeLineCoverage)
+}
+
 func (c *deviceConfig) NativeCoverageEnabled() bool {
-	return Bool(c.config.productVariables.NativeCoverage)
+	return Bool(c.config.productVariables.NativeCoverage) || Bool(c.config.productVariables.NativeLineCoverage)
 }
 
 func (c *deviceConfig) ClangCoverageEnabled() bool {
