@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7802e4f0_382cfb55",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3017,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-01-24T13:27:03Z",
+      "side": 1,
+      "message": "Thanks for finding this :)",
+      "range": {
+        "startLine": 3017,
+        "startChar": 69,
+        "endLine": 3017,
+        "endChar": 80
+      },
+      "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
