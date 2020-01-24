@@ -16,6 +16,24 @@
       "revId": "a97ad32ef29be741141de86a2be52fa4beb37146",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47711795_dbe0938f",
+        "filename": "ui/build/config_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T19:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db9a769_4ce07893",
+      "revId": "a97ad32ef29be741141de86a2be52fa4beb37146",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

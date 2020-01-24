@@ -289,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "2cc00fa0_89719342",
+        "filename": "ui/build/config_darwin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T19:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e7b3156_66103aad",
+      "range": {
+        "startLine": 25,
+        "startChar": 48,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9a92882_09e07820",
         "filename": "ui/build/config_darwin.go",
         "patchSetId": 5
@@ -336,6 +360,30 @@
     },
     {
       "key": {
+        "uuid": "ee1fae63_4a9e7be7",
+        "filename": "ui/build/config_darwin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T19:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc458c7_ed4a3a8b",
+      "range": {
+        "startLine": 35,
+        "startChar": 67,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f59a9bd_d362f68c",
         "filename": "ui/build/config_linux.go",
         "patchSetId": 5
@@ -359,6 +407,30 @@
     },
     {
       "key": {
+        "uuid": "5be08722_67b774ec",
+        "filename": "ui/build/config_linux.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T19:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f59a9bd_d362f68c",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1c8294c_ee0758c9",
         "filename": "ui/build/config_linux.go",
         "patchSetId": 5
@@ -379,6 +451,30 @@
       "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b007132_c678c4df",
+        "filename": "ui/build/config_linux.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T19:46:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1c8294c_ee0758c9",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

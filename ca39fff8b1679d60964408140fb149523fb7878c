@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "5d4f88c7_1a70856a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-24T19:46:45Z",
+      "side": 1,
+      "message": "Marking resolved",
+      "parentUuid": "90121256_21b6f1ab",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "ca39fff8b1679d60964408140fb149523fb7878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "833e4da5_4411db02",
         "filename": "ui/build/config.go",
         "patchSetId": 3
