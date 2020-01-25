@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "d05beedf_bb14bb87",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-25T13:05:38Z",
+      "side": 1,
+      "message": "Yeah, I also felt it difficult. IMHO, interface should be used when there are multiple concrete types implementing it. Using it for things like sdkSpec seems to be an misuse. For struct v.s. *struct, I think the decision could be based on how large the struct is. If it\u0027s small and short-lived, the copy overhead shouldn\u0027t be treated as significant. In that case, *struct might be the worse choice since it gives unnecessary pressure to the heap and GC.",
+      "parentUuid": "a7683bed_1e3b281f",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e48fc73f_26c1b66d",
         "filename": "java/sdk.go",
         "patchSetId": 6
@@ -284,6 +302,24 @@
       "side": 1,
       "message": "The PDK check was previously present in the getJavaVersion(...) method and so it is is needed for the call to this method that comes from there. However, this method is also called from other places that did not previously do the PDK check.\n\nI removed the check from here and the test failed as you described. I then moved this check into getJavaVersion(...) so it looked something like this:\n\n\tsdkSpec :\u003d sdkContext.sdkVersion()\n\tif ctx.Config().IsPdkBuild() {\n\t\tsdkSpec \u003d sdkSpec.ForPdkBuild(ctx)\n\t}\n\tsdk, err :\u003d sdkSpec.EffectiveVersion(ctx)\n\nThe test passed. Removing the check from EffectiveVersionString() caused no test failures.\n\nIt may be that it is better (more consistent) for the test to be here. My concern is the effect that this check will have on the other usages of this method that did not previously perform this check.\n\nI think it would be safer if this check is moved to getJavaVersion() and removed completely from EffectiveVersionString(). Would need to add a valid check to ForPdkBuild() to be safe.\n\nA follow up change that moves the test in here could also verify that the callers all require this behavior, and ideally add tests for it.",
       "parentUuid": "bef3a95a_bf4fbe98",
+      "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41c8a1ef_306d0a50",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-25T13:05:38Z",
+      "side": 1,
+      "message": "Ok, but based on Dan\u0027s comment b/148271073#comment2, it looks like we don\u0027t need to be too serious about this change.",
+      "parentUuid": "97696ddf_82b04677",
       "revId": "698d6c7e9b4d435f21000b37fa5a998b2a6a83ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
