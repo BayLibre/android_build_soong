@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "22245dd3_3aa6016f",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-25T00:44:29Z",
+      "side": 1,
+      "message": "I wanted it to be visible in go/Android.bp",
+      "parentUuid": "b8f65a2a_94128633",
+      "revId": "84032a0da2f4259c56c6d32659bf2390a1444514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec37be59_4b1f54c4",
         "filename": "android/soong_config_modules.go",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "84032a0da2f4259c56c6d32659bf2390a1444514",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fb17c6_1cdb76a7",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-25T00:44:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec37be59_4b1f54c4",
+      "revId": "84032a0da2f4259c56c6d32659bf2390a1444514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
