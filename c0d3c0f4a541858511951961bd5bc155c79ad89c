@@ -57,6 +57,24 @@
       "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0942da35_dc253485",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-01-25T15:07:27Z",
+      "side": 1,
+      "message": "IIUC,\n- InAnyApex(ctx.ModuleName()) -\u003e module is depended on by an APEX, however this doesn\u0027t mean module is ApexModule or module is included in an APEX\n- ctx.Module() is ApexModule and !am.IsForPlatform() -\u003e module is included in an APEX\n\n?",
+      "parentUuid": "ae5cec5a_f02ef259",
+      "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
