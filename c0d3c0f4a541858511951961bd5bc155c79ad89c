@@ -39,6 +39,24 @@
       "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae5cec5a_f02ef259",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-25T12:21:02Z",
+      "side": 1,
+      "message": "Right. This should be \n\nif am, ok :\u003d ctx.Module.(android.ApexModule); ok \u0026\u0026 !am.IsForPlatform() { ... }",
+      "parentUuid": "fa7d15d4_7d469c7a",
+      "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
