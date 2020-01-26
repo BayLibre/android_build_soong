@@ -169,6 +169,15 @@ func init() {
 		"-Wno-reorder-init-list",
 		// http://b/145211066
 		"-Wno-implicit-int-float-conversion",
+		// Warnings from clang-10 that are too aggressive
+		"-Wno-error-bitwise-conditional-parentheses",
+		"-Wno-error-bool-operation",
+		"-Wno-error-deprecated-volatile",
+		"-Wno-error-int-in-bool-context",
+		"-Wno-error-invalid-partial-specialization",
+		"-Wno-error-sizeof-array-div",
+		"-Wno-error-tautological-bitwise-compare",
+		"-Wno-error-tautological-overlap-compare",
 	}, " "))
 
 	// Extra cflags for external third-party projects to disable warnings that
