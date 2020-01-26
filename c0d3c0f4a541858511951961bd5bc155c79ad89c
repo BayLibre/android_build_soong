@@ -75,6 +75,24 @@
       "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d99c902_5d719524",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-26T07:13:04Z",
+      "side": 1,
+      "message": "InAnyApex can just tell if there is a module whose name is \u0027foo\u0027 is included in an APEX. It does **NOT** tell if the **current** module is as such. Note that there could be multiple variants of a module having the same name.\n\n!am.IsForPlatform() means the module `am` is a variant that is for an apex.",
+      "parentUuid": "0942da35_dc253485",
+      "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
