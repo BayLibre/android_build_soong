@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e46ddff_f81143db",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-01-27T10:27:35Z",
+      "side": 1,
+      "message": "As this is the same as line 1775 (and causes some confusion), could you add a helper with some comments on what the checks mean?",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1745,
+        "endChar": 76
+      },
+      "revId": "f491dde8ea62e8a7e900eec62ff2bce7778a87d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
