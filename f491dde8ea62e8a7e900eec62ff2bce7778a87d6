@@ -22,6 +22,30 @@
       "revId": "f491dde8ea62e8a7e900eec62ff2bce7778a87d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2d1f93_8e4ac02d",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-27T12:29:45Z",
+      "side": 1,
+      "message": "The checks on lines 1745 and 1775 are not the same (one uses InAnyApex, the other doesn\u0027t), so currently they cannot use the same helper. The check on line 1745 is used in few other places, so it may be worth adding a helper (but better in a separate CL).\n\nJiyong, I still don\u0027t understand why the checks on lines 1745 and 1775 are different. Shouldn\u0027t they be the same?",
+      "parentUuid": "3e46ddff_f81143db",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1745,
+        "endChar": 76
+      },
+      "revId": "f491dde8ea62e8a7e900eec62ff2bce7778a87d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
