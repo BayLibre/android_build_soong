@@ -93,6 +93,24 @@
       "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b44c060_71ae1e36",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-27T10:24:01Z",
+      "side": 1,
+      "message": "Thanks for the clarification, fixed.",
+      "parentUuid": "8d99c902_5d719524",
+      "revId": "c0d3c0f4a541858511951961bd5bc155c79ad89c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
