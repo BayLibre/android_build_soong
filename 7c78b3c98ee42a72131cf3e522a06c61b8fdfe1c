@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "070492b8_3df29904",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-01-28T10:55:07Z",
+      "side": 0,
+      "message": "It cannot be reached because sdkVersion.usePrebuilt(ctx) is always true if this condition is true.",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 335,
+        "endChar": 67
+      },
+      "revId": "7c78b3c98ee42a72131cf3e522a06c61b8fdfe1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
