@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cf03c94_f9b3e08f",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-01-28T23:05:21Z",
+      "side": 1,
+      "message": "rprichard: switching to just `relr` here is a mistake, i think? i should change this back to android+relr? (but drop the `--use-android-relr-tags`.)",
+      "range": {
+        "startLine": 56,
+        "startChar": 25,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "a2aeddbceaa1bab0c656d1bacb8618278c1b24a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
