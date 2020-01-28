@@ -53,8 +53,7 @@ var (
 		"-Wl,--warn-shared-textrel",
 		"-Wl,--fatal-warnings",
 
-		"-Wl,--pack-dyn-relocs=android+relr",
-		"-Wl,--use-android-relr-tags",
+		"-Wl,--pack-dyn-relocs=relr",
 		"-Wl,--no-undefined",
 		"-Wl,--hash-style=gnu",
 	}
