@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62add8f6_5fe05e2d",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-28T11:10:17Z",
+      "side": 1,
+      "message": "allowedVersions",
+      "range": {
+        "startLine": 289,
+        "startChar": 2,
+        "endLine": 289,
+        "endChar": 18
+      },
+      "revId": "a855056d039412f12598507ac2cb8bb1d7ce2dad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3802a4ca_f9263520",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-28T11:10:17Z",
+      "side": 1,
+      "message": "remove log message",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 74
+      },
+      "revId": "a855056d039412f12598507ac2cb8bb1d7ce2dad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b11e97_cfff8475",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-28T11:10:17Z",
+      "side": 1,
+      "message": "Could you please make this as a method of the sdkVersion struct?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 2
+      },
+      "revId": "a855056d039412f12598507ac2cb8bb1d7ce2dad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
