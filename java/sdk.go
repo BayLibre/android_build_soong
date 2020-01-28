@@ -330,11 +330,10 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext sdkContext) sdkDep 
 		}
 	}
 
-	// Ensures that the specificed system SDK version is one of BOARD_SYSTEMSDK_VERSIONS (for vendor apks)
-	// or PRODUCT_SYSTEMSDK_VERSIONS (for other apks or when BOARD_SYSTEMSDK_VERSIONS is not set)
+	// Ensures that the specificed system SDK version is one of BOARD_SYSTEMSDK_VERSIONS (for vendor/product apks)
 	if sdkVersion.kind == sdkSystem && sdkVersion.version.isNumbered() {
 		allowed_versions := ctx.DeviceConfig().PlatformSystemSdkVersions()
-		if ctx.DeviceSpecific() || ctx.SocSpecific() {
+		if ctx.DeviceSpecific() || ctx.SocSpecific() || (ctx.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface()) {
 			if len(ctx.DeviceConfig().SystemSdkVersions()) > 0 {
 				allowed_versions = ctx.DeviceConfig().SystemSdkVersions()
 			}
