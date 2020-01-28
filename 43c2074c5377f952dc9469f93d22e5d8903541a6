@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfa4c792_18993d58",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-28T19:04:01Z",
+      "side": 1,
+      "message": "Doc comment is wrong",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 24
+      },
+      "revId": "43c2074c5377f952dc9469f93d22e5d8903541a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
