@@ -22,6 +22,30 @@
       "revId": "43c2074c5377f952dc9469f93d22e5d8903541a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e866a4d8_1cf38c64",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2020-01-28T20:03:24Z",
+      "side": 1,
+      "message": "Made the comment actually relevant.",
+      "parentUuid": "cfa4c792_18993d58",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 24
+      },
+      "revId": "43c2074c5377f952dc9469f93d22e5d8903541a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
