@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66858e5e_a500fb77",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e0eefe_3d507d1d",
+      "range": {
+        "startLine": 443,
+        "startChar": 8,
+        "endLine": 443,
+        "endChar": 9
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd872fec_372e8e32",
         "filename": "cc/androidmk.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "38761c1c_0fbbe6b9",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd872fec_372e8e32",
+      "range": {
+        "startLine": 469,
+        "startChar": 19,
+        "endLine": 469,
+        "endChar": 54
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f2a7bf1_2eaed779",
         "filename": "cc/binary.go",
         "patchSetId": 6
@@ -62,6 +110,24 @@
       "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc738cc5_68a8ce4b",
+        "filename": "cc/binary.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Removed and changed to manually check binaryDecorator / prebuiltBinaryLinker / vendorSnapshotBinaryLinker.",
+      "parentUuid": "6f2a7bf1_2eaed779",
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "dc95d18b_892db826",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Instead of plain string maps and naming function, I\u0027ve introduced a new type \"snapshotMap\" for better readability.",
+      "parentUuid": "b40f7536_5cd713fa",
+      "range": {
+        "startLine": 1669,
+        "startChar": 47,
+        "endLine": 1669,
+        "endChar": 84
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "446f44df_d4355210",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -108,6 +198,30 @@
       "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c5d3f4_c8371ce3",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "446f44df_d4355210",
+      "range": {
+        "startLine": 1733,
+        "startChar": 33,
+        "endLine": 1733,
+        "endChar": 70
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "8ec91755_c2a86cd5",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2352,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "This is to redirect names like \"libfoo.vendor.29.arm64\" to \"libfoo\" or \"libfoo.vendor\". The reason why the arch suffix is from ctx.DeviceConfig() is that the suffix represents the primary arch of target devices. For example, \"libfoo.vendor.29.arm64\" might have both arm and arm64 .so files, and they will be used for arm64 devices. Whileas \"libbar.vendor.29.arm\" will only have one arm64 .so file.\n\nBut thinking again, this logic seems very fragile and unstable. I changed this logic to directly use dep module.",
+      "parentUuid": "6b0bbb23_acbc0907",
+      "range": {
+        "startLine": 2352,
+        "startChar": 0,
+        "endLine": 2352,
+        "endChar": 46
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a506ea9f_fa2ab383",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -154,6 +292,30 @@
       "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b548e0_fdf4fefa",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2413,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "created a function that trims prefixes and suffixes like this.",
+      "parentUuid": "a506ea9f_fa2ab383",
+      "range": {
+        "startLine": 2413,
+        "startChar": 4,
+        "endLine": 2413,
+        "endChar": 51
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "0b7acca5_a40afe6d",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2796,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eab1e51_a65f0d8f",
+      "range": {
+        "startLine": 2794,
+        "startChar": 50,
+        "endLine": 2796,
+        "endChar": 4
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd9fe102_1ba2cbe1",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -200,6 +386,30 @@
       "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66052cc4_eac4d260",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2812,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "reverted",
+      "parentUuid": "bd9fe102_1ba2cbe1",
+      "range": {
+        "startLine": 2810,
+        "startChar": 0,
+        "endLine": 2812,
+        "endChar": 64
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "c8ab0ba5_57703ddb",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2883,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ffb248b_74e8f006",
+      "range": {
+        "startLine": 2879,
+        "startChar": 0,
+        "endLine": 2883,
+        "endChar": 3
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fc1d926_99330cb9",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "21a2b5aa_68424ee2",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fc1d926_99330cb9",
+      "range": {
+        "startLine": 927,
+        "startChar": 30,
+        "endLine": 927,
+        "endChar": 67
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33170e98_a0f2f1c7",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
@@ -269,6 +527,30 @@
       "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e938f1_a95dfd99",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-28T10:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33170e98_a0f2f1c7",
+      "range": {
+        "startLine": 942,
+        "startChar": 29,
+        "endLine": 942,
+        "endChar": 77
+      },
+      "revId": "2e4fff75bd7831666572588eaedf11ce7aaba3ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
