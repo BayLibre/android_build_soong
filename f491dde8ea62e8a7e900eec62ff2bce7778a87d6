@@ -70,6 +70,30 @@
       "revId": "f491dde8ea62e8a7e900eec62ff2bce7778a87d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5fdcfc0_20b7a28e",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-28T10:47:27Z",
+      "side": 1,
+      "message": "Jiyong: ok, it makes sense, thanks for the explanation.\n\nNicolas: marking this comment \"Resolved\" as the checks need to be different and can\u0027t use a common helper.",
+      "parentUuid": "48691dd6_028b2efb",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1745,
+        "endChar": 76
+      },
+      "revId": "f491dde8ea62e8a7e900eec62ff2bce7778a87d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
