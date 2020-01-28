@@ -46,6 +46,30 @@
       "revId": "f491dde8ea62e8a7e900eec62ff2bce7778a87d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48691dd6_028b2efb",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1745,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-28T03:15:04Z",
+      "side": 1,
+      "message": "In 1775, \n\na) the check for ApexModule type is not necessary there as the type Library is already a subtype of ApexModule.\n\nb) the additional check for InAnyApex is necessary there, because we wanted to install a java library only when it is not available for any apex. If we omit the check then, we will end up installing the platform variant of a java library (although we won\u0027t install the apex variants of the lib).",
+      "parentUuid": "7a2d1f93_8e4ac02d",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1745,
+        "endChar": 76
+      },
+      "revId": "f491dde8ea62e8a7e900eec62ff2bce7778a87d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
