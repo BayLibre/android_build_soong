@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4a75cb2_d1548518",
+        "filename": "android/module.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-28T22:44:57Z",
+      "side": 1,
+      "message": "This tag is meaningless outside a property struct",
+      "range": {
+        "startLine": 667,
+        "startChar": 27,
+        "endLine": 667,
+        "endChar": 48
+      },
+      "revId": "0f9ebab67021ca4e05d5da0ae03d73b6bf0212e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
