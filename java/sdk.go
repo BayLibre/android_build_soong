@@ -284,6 +284,22 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext sdkContext) sdkDep 
 		sdkVersion = sdkVersion.forPdkBuild(ctx)
 	}
 
+	// Ensures that the specificed system SDK version is one of BOARD_SYSTEMSDK_VERSIONS (for vendor/product apks)
+	if sdkVersion.kind == sdkSystem && sdkVersion.version.isNumbered() {
+		allowed_versions := ctx.DeviceConfig().PlatformSystemSdkVersions()
+		fmt.Println("platform:", ctx.DeviceConfig().PlatformSystemSdkVersions())
+		if ctx.DeviceSpecific() || ctx.SocSpecific() || (ctx.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface()) {
+			if len(ctx.DeviceConfig().SystemSdkVersions()) > 0 {
+				fmt.Println("SystemSdkVersions:", ctx.DeviceConfig().PlatformSystemSdkVersions())
+				allowed_versions = ctx.DeviceConfig().SystemSdkVersions()
+			}
+		}
+		if len(allowed_versions) > 0 && !android.InList(sdkVersion.version.String(), allowed_versions) {
+			ctx.PropertyErrorf("sdk_version", "incompatible sdk version %q. System SDK version should be one of %q",
+				sdkVersion.raw, allowed_versions)
+		}
+	}
+
 	if sdkVersion.usePrebuilt(ctx) {
 		dir := filepath.Join("prebuilts", "sdk", sdkVersion.version.String(), sdkVersion.kind.String())
 		jar := filepath.Join(dir, "android.jar")
@@ -327,21 +343,6 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext sdkContext) sdkDep 
 			java9Classpath:     []string{m},
 			frameworkResModule: r,
 			aidl:               android.OptionalPathForPath(aidl),
-		}
-	}
-
-	// Ensures that the specificed system SDK version is one of BOARD_SYSTEMSDK_VERSIONS (for vendor apks)
-	// or PRODUCT_SYSTEMSDK_VERSIONS (for other apks or when BOARD_SYSTEMSDK_VERSIONS is not set)
-	if sdkVersion.kind == sdkSystem && sdkVersion.version.isNumbered() {
-		allowed_versions := ctx.DeviceConfig().PlatformSystemSdkVersions()
-		if ctx.DeviceSpecific() || ctx.SocSpecific() {
-			if len(ctx.DeviceConfig().SystemSdkVersions()) > 0 {
-				allowed_versions = ctx.DeviceConfig().SystemSdkVersions()
-			}
-		}
-		if len(allowed_versions) > 0 && !android.InList(sdkVersion.version.String(), allowed_versions) {
-			ctx.PropertyErrorf("sdk_version", "incompatible sdk version %q. System SDK version should be one of %q",
-				sdkVersion.raw, allowed_versions)
 		}
 	}
 
