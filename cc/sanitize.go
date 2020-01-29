@@ -334,8 +334,8 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Diag.Cfi = nil
 	}
 
-	// Disable sanitizers that depend on the UBSan runtime for host builds.
-	if ctx.Host() {
+	// Disable sanitizers that depend on the UBSan runtime for windows/darwin builds.
+	if ctx.Darwin() || ctx.Windows() {
 		s.Cfi = nil
 		s.Diag.Cfi = nil
 		s.Misc_undefined = nil
@@ -434,7 +434,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	minimalRuntimeLib := config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(ctx.toolchain()) + ".a"
 	minimalRuntimePath := "${config.ClangAsanLibDir}/" + minimalRuntimeLib
 
-	if ctx.Device() && sanitize.Properties.MinimalRuntimeDep {
+	if sanitize.Properties.MinimalRuntimeDep {
 		flags.Local.LdFlags = append(flags.Local.LdFlags,
 			minimalRuntimePath,
 			"-Wl,--exclude-libs,"+minimalRuntimeLib)
@@ -541,12 +541,12 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			// there will always be undefined symbols in intermediate libraries.
 			_, flags.Global.LdFlags = removeFromList("-Wl,--no-undefined", flags.Global.LdFlags)
 			flags.Local.LdFlags = append(flags.Local.LdFlags, sanitizeArg)
-		} else {
-			if enableMinimalRuntime(sanitize) {
-				flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(minimalRuntimeFlags, " "))
-				flags.libFlags = append([]string{minimalRuntimePath}, flags.libFlags...)
-				flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--exclude-libs,"+minimalRuntimeLib)
-			}
+		}
+
+		if enableMinimalRuntime(sanitize) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(minimalRuntimeFlags, " "))
+			flags.libFlags = append([]string{minimalRuntimePath}, flags.libFlags...)
+			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--exclude-libs,"+minimalRuntimeLib)
 		}
 
 		if Bool(sanitize.Properties.Sanitize.Fuzzer) {
