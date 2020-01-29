@@ -46,6 +46,30 @@
       "revId": "48e9c92078ab3587728503d1484fb7da03389ac7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "965d969e_f2e114a9",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-29T20:21:19Z",
+      "side": 1,
+      "message": "This line is for selecting which modules have coverage enabled.  For example, m NATIVE_COVERAGE\u003dtrue COVERAGE_PATHS\u003dsystem/core would build with native coverage for all modules under system/core.  I would expect NATIVE_LINE_COVERAGE to take the place of NATIVE_COVERAGE, and still be filtered by COVERAGE_PATHS.",
+      "parentUuid": "c862b46e_7a789a80",
+      "range": {
+        "startLine": 178,
+        "startChar": 68,
+        "endLine": 178,
+        "endChar": 95
+      },
+      "revId": "48e9c92078ab3587728503d1484fb7da03389ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
