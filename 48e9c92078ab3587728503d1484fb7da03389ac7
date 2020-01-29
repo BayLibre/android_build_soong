@@ -22,6 +22,30 @@
       "revId": "48e9c92078ab3587728503d1484fb7da03389ac7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c862b46e_7a789a80",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1181388
+      },
+      "writtenOn": "2020-01-29T19:56:48Z",
+      "side": 1,
+      "message": "My apologies if I misunderstand the question, but I think this is fine, since COVERAGE_PATHS can be \u0027*\u0027 as well. The coverage options here are boolean (is enabled everywhere when true). But we need to enable line coverage for every source file in the module, as we need to generate the corresponding *.gcno file for the reports.",
+      "parentUuid": "0cda36aa_2bee5825",
+      "range": {
+        "startLine": 178,
+        "startChar": 68,
+        "endLine": 178,
+        "endChar": 95
+      },
+      "revId": "48e9c92078ab3587728503d1484fb7da03389ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
