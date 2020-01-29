@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "bc4b38f2_8e233e80",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-29T08:32:32Z",
+      "side": 1,
+      "message": "ack, but then why don\u0027t you change the name of the interface? anyway, I think this is a marginal issue. You could resolve this in a follow-up change.",
+      "parentUuid": "8cfa9d44_cca32bae",
+      "range": {
+        "startLine": 918,
+        "startChar": 17,
+        "endLine": 918,
+        "endChar": 35
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1cdda47_8cef8cf7",
         "filename": "cc/cc.go",
         "patchSetId": 13
@@ -410,6 +434,30 @@
       "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4062a81f_7e52e370",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-29T08:32:32Z",
+      "side": 1,
+      "message": "then I think replacing `true` with `m.inVendor()` is better",
+      "parentUuid": "9b3a0766_8f2f874e",
+      "range": {
+        "startLine": 114,
+        "startChar": 69,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
