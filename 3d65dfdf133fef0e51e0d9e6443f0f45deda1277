@@ -22,6 +22,30 @@
       "revId": "3d65dfdf133fef0e51e0d9e6443f0f45deda1277",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68e6425_86a1a1a9",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-30T11:53:41Z",
+      "side": 1,
+      "message": "I will leave it to you, but probably in a different change. I am not sure which CL will be merged first though. We could anyway rebase.",
+      "parentUuid": "3f1fb906_b201c3a9",
+      "range": {
+        "startLine": 795,
+        "startChar": 15,
+        "endLine": 795,
+        "endChar": 49
+      },
+      "revId": "3d65dfdf133fef0e51e0d9e6443f0f45deda1277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
