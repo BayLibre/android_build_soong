@@ -122,13 +122,8 @@ func intMax(a int, b int) int {
 	}
 }
 
-func normalizeNdkApiLevel(ctx android.BaseModuleContext, apiLevel string,
-	arch android.Arch) (string, error) {
-
-	if apiLevel == "current" {
-		return apiLevel, nil
-	}
-
+func NormalizeNdkApiLevelInt(ctx android.BaseModuleContext, apiLevel string,
+	arch android.Arch) (int, error) {
 	minVersion := ctx.Config().MinSupportedSdkVersion()
 	firstArchVersions := map[android.ArchType]int{
 		android.Arm:    minVersion,
@@ -141,11 +136,12 @@ func normalizeNdkApiLevel(ctx android.BaseModuleContext, apiLevel string,
 
 	firstArchVersion, ok := firstArchVersions[arch.ArchType]
 	if !ok {
-		panic(fmt.Errorf("Arch %q not found in firstArchVersions", arch.ArchType))
+		panic(
+			fmt.Errorf("Arch %q not found in firstArchVersions", arch.ArchType))
 	}
 
 	if apiLevel == "minimum" {
-		return strconv.Itoa(firstArchVersion), nil
+		return firstArchVersion, nil
 	}
 
 	// If the NDK drops support for a platform version, we don't want to have to
@@ -153,11 +149,25 @@ func normalizeNdkApiLevel(ctx android.BaseModuleContext, apiLevel string,
 	// supported version here instead.
 	version, err := strconv.Atoi(apiLevel)
 	if err != nil {
-		return "", fmt.Errorf("API level must be an integer (is %q)", apiLevel)
+		return 0, fmt.Errorf("API level must be an integer (is %q)", apiLevel)
 	}
-	version = intMax(version, minVersion)
 
-	return strconv.Itoa(intMax(version, firstArchVersion)), nil
+	return intMax(version, firstArchVersion), nil
+}
+
+func normalizeNdkApiLevel(ctx android.BaseModuleContext, apiLevel string,
+	arch android.Arch) (string, error) {
+
+	if apiLevel == "current" {
+		return apiLevel, nil
+	}
+
+	normalized, err := NormalizeNdkApiLevelInt(ctx, apiLevel, arch)
+	if err != nil {
+		return "", err
+	}
+
+	return strconv.Itoa(normalized), nil
 }
 
 func getFirstGeneratedVersion(firstSupportedVersion string, platformVersion int) (int, error) {

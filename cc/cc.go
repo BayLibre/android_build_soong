@@ -483,6 +483,15 @@ func (c *Module) ApiLevel() string {
 	panic(fmt.Errorf("ApiLevel() called on non-stub library module: %q", c.BaseModuleName()))
 }
 
+func (c *Module) IsLibrary() bool {
+	if c.linker != nil {
+		if _, ok := c.linker.(libraryInterface); ok {
+			return true
+		}
+	}
+	return false
+}
+
 func (c *Module) Static() bool {
 	if c.linker != nil {
 		if library, ok := c.linker.(libraryInterface); ok {
@@ -1200,6 +1209,11 @@ func (c *Module) Symlinks() []string {
 		return p.symlinkList()
 	}
 	return nil
+}
+
+func (c *Module) NdkApiLevelInt(ctx android.ModuleContext,
+	arch android.Arch) (int, error) {
+	return NormalizeNdkApiLevelInt(ctx, c.SdkVersion(), arch)
 }
 
 // orderDeps reorders dependencies into a list such that if module A depends on B, then

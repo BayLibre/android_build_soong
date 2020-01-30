@@ -48,6 +48,7 @@ func RegisterAARBuildComponents(ctx android.RegistrationContext) {
 
 type androidLibraryProperties struct {
 	BuildAAR bool `blueprint:"mutated"`
+	Prefab   prefabProperties
 }
 
 type aaptProperties struct {
@@ -411,6 +412,8 @@ type AndroidLibrary struct {
 
 	exportedProguardFlagFiles android.Paths
 	exportedStaticPackages    android.Paths
+
+	prefabOutPath android.OutputPath
 }
 
 func (a *AndroidLibrary) ExportedProguardFlagFiles() android.Paths {
@@ -428,6 +431,31 @@ func (a *AndroidLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	sdkDep := decodeSdkDep(ctx, sdkContext(a))
 	if sdkDep.hasFrameworkLibs() {
 		a.aapt.deps(ctx, sdkDep)
+	}
+	for _, jniTarget := range ctx.MultiTargets() {
+		// CoreVariation isn't really right because it indicates system image
+		// libraries, and we want NDK libraries, but there isn't a right option
+		// for this variation.
+		variations := append(jniTarget.Variations(), blueprint.Variation{
+			Mutator:   "image",
+			Variation: android.CoreVariation,
+		}, blueprint.Variation{
+			Mutator:   "version",
+			Variation: "",
+		})
+		sharedVariations := append(variations, blueprint.Variation{
+			Mutator:   "link",
+			Variation: "shared",
+		})
+		staticVariations := append(variations, blueprint.Variation{
+			Mutator:   "link",
+			Variation: "static",
+		})
+
+		ctx.AddVariationDependencies(sharedVariations, nil,
+			a.androidLibraryProperties.Prefab.Shared_libraries...)
+		ctx.AddVariationDependencies(staticVariations, nil,
+			a.androidLibraryProperties.Prefab.Static_libraries...)
 	}
 }
 
@@ -449,9 +477,11 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	a.Module.compile(ctx, a.aaptSrcJar)
 
 	a.aarFile = android.PathForModuleOut(ctx, ctx.ModuleName()+".aar")
+	a.prefabOutPath = android.PathForModuleOut(ctx, "prefab").OutputPath
 	var res android.Paths
 	if a.androidLibraryProperties.BuildAAR {
-		BuildAAR(ctx, a.aarFile, a.outputFile, a.manifestPath, a.rTxt, res)
+		BuildAAR(ctx, a.aarFile, a.outputFile, a.manifestPath, a.rTxt, res,
+			a.androidLibraryProperties.Prefab, a.prefabOutPath)
 		ctx.CheckbuildFile(a.aarFile)
 	}
 
