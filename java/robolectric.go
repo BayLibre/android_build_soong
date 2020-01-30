@@ -21,6 +21,8 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/java/config"
+	"android/soong/tradefed"
 )
 
 func init() {
@@ -32,6 +34,8 @@ var robolectricDefaultLibs = []string{
 	"Robolectric_all-target",
 	"mockito-robolectric-prebuilt",
 	"truth-prebuilt",
+	// TODO(ccross): this is not needed at link time
+	"junitxml",
 }
 
 var (
@@ -58,11 +62,20 @@ type robolectricTest struct {
 	Library
 
 	robolectricProperties robolectricProperties
+	testProperties        testProperties
 
 	libs  []string
 	tests []string
 
+	manifest    android.Path
+	resourceApk android.Path
+
+	combinedJar android.WritablePath
+
 	roboSrcJar android.Path
+
+	testConfig android.Path
+	data       android.Paths
 }
 
 func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -80,6 +93,11 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	r.testConfig = tradefed.AutoGenRobolectricTestConfig(ctx, r.testProperties.Test_config,
+		r.testProperties.Test_config_template, r.testProperties.Test_suites,
+		r.testProperties.Auto_gen_config)
+	r.data = android.PathsForModuleSrc(ctx, r.testProperties.Data)
+
 	roboTestConfig := android.PathForModuleGen(ctx, "robolectric").
 		Join(ctx, "com/android/tools/test_config.properties")
 
@@ -95,6 +113,11 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		ctx.PropertyErrorf("instrumentation_for", "dependency must be an android_app")
 	}
 
+	r.manifest = instrumentedApp.mergedManifestFile
+	r.resourceApk = instrumentedApp.outputFile
+
+	// TODO(ccross): do we need to generate a different robolectric.properties for the tradefed
+	//  version that expects the APK and manifest in the same directory (or packaged into the jar?)
 	generateRoboTestConfig(ctx, roboTestConfig, instrumentedApp)
 	r.extraResources = android.Paths{roboTestConfig}
 
@@ -104,9 +127,19 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	r.generateRoboSrcJar(ctx, roboSrcJar, instrumentedApp)
 	r.roboSrcJar = roboSrcJar
 
+	combinedJarJars := android.Paths{r.outputFile, instrumentedApp.implementationAndResourcesJar}
+
 	for _, dep := range ctx.GetDirectDepsWithTag(libTag) {
-		r.libs = append(r.libs, dep.(Dependency).BaseModuleName())
+		m := dep.(Dependency)
+		r.libs = append(r.libs, m.BaseModuleName())
+		if !android.InList(m.BaseModuleName(), config.DefaultLibraries) {
+			combinedJarJars = append(combinedJarJars, m.ImplementationAndResourcesJars()...)
+		}
 	}
+
+	r.combinedJar = android.PathForModuleOut(ctx, "robolectric_combined", r.outputFile.Base())
+	TransformJarsToJar(ctx, r.combinedJar, "combine jars", combinedJarJars, android.OptionalPath{},
+		false, nil, nil)
 
 	// TODO: this could all be removed if tradefed was used as the test runner, it will find everything
 	// annotated as a test and run it.
@@ -121,13 +154,16 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		}
 		r.tests = append(r.tests, s)
 	}
+
+	// TODO(ccross): should this be embedded in the jar instead of packaged alongside?
+	r.data = append(r.data, r.manifest, r.resourceApk)
 }
 
 func generateRoboTestConfig(ctx android.ModuleContext, outputFile android.WritablePath, instrumentedApp *AndroidApp) {
+	rule := android.NewRuleBuilder()
+
 	manifest := instrumentedApp.mergedManifestFile
 	resourceApk := instrumentedApp.outputFile
-
-	rule := android.NewRuleBuilder()
 
 	rule.Command().Text("rm -f").Output(outputFile)
 	rule.Command().
@@ -186,6 +222,8 @@ func (r *robolectricTest) AndroidMkEntries() []android.AndroidMkEntries {
 		},
 	}
 
+	entriesList = append(entriesList, r.hostCopyAndroidMkEntries())
+
 	return entriesList
 }
 
@@ -202,7 +240,26 @@ func (r *robolectricTest) writeTestRunner(w io.Writer, module, name string, test
 		fmt.Fprintln(w, "LOCAL_ROBOTEST_TIMEOUT :=", *t)
 	}
 	fmt.Fprintln(w, "-include external/robolectric-shadows/run_robotests.mk")
+}
 
+func (r *robolectricTest) hostCopyAndroidMkEntries() android.AndroidMkEntries {
+	// TODO(ccross): if tradefed were the only test runner we could make this the only copy of the
+	//  module in Make (and leave it as a device module?) instead of duplicating it.
+	entries := r.Library.AndroidMkEntries()[0]
+	entries.OutputFile = android.OptionalPathForPath(r.combinedJar)
+
+	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+		entries.SetString("LOCAL_IS_HOST_MODULE", "true")
+		testSuiteComponent(entries, r.testProperties.Test_suites)
+		if r.testConfig != nil {
+			entries.SetPath("LOCAL_FULL_TEST_CONFIG", r.testConfig)
+		}
+		androidMkWriteTestData(r.data, entries)
+		if !BoolDefault(r.testProperties.Auto_gen_config, true) {
+			entries.SetString("LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG", "true")
+		}
+	})
+	return entries
 }
 
 // An android_robolectric_test module compiles tests against the Robolectric framework that can run on the local host
@@ -219,7 +276,8 @@ func RobolectricTestFactory() android.Module {
 		&module.Module.properties,
 		&module.Module.deviceProperties,
 		&module.Module.protoProperties,
-		&module.robolectricProperties)
+		&module.robolectricProperties,
+		&module.testProperties)
 
 	module.Module.dexpreopter.isTest = true
 
