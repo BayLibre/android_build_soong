@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76541245_f19f306b",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-30T07:43:22Z",
+      "side": 1,
+      "message": "these are const",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 47
+      },
+      "revId": "0f55844b3ae1b2d534f4fcbed2912e1c4d2140fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6a463a_8a56c861",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-30T07:43:22Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be needed here. Suffix is per type. So it can be determined by calling buildStatic(), buildShared(), etc. and combinations of them.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "0f55844b3ae1b2d534f4fcbed2912e1c4d2140fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce278292_df2106ce",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-30T07:43:22Z",
+      "side": 1,
+      "message": "can you comment why?",
+      "range": {
+        "startLine": 206,
+        "startChar": 21,
+        "endLine": 206,
+        "endChar": 53
+      },
+      "revId": "0f55844b3ae1b2d534f4fcbed2912e1c4d2140fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f7477d_4a1c05bc",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-30T07:43:22Z",
+      "side": 1,
+      "message": "why isn\u0027t this *string?",
+      "range": {
+        "startLine": 264,
+        "startChar": 6,
+        "endLine": 264,
+        "endChar": 14
+      },
+      "revId": "0f55844b3ae1b2d534f4fcbed2912e1c4d2140fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
