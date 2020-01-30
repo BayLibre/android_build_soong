@@ -122,6 +122,13 @@ func (r *RuleBuilder) Sbox(outputDir WritablePath) *RuleBuilder {
 	return r
 }
 
+func (r *RuleBuilder) OutputDir() WritablePath {
+	if !r.sbox {
+		panic("OutputDir only valid with Sbox")
+	}
+	return r.sboxOutDir
+}
+
 // Install associates an output of the rule with an install location, which can be retrieved later using
 // RuleBuilder.Installs.
 func (r *RuleBuilder) Install(from Path, to string) {
@@ -484,6 +491,10 @@ func (c *RuleBuilderCommand) outputStr(path Path) string {
 	return path.String()
 }
 
+func (c *RuleBuilderCommand) SboxPath(path Path) *RuleBuilderCommand {
+	return c.Text(c.outputStr(path))
+}
+
 // Text adds the specified raw text to the command line.  The text should not contain input or output paths or the
 // rule will not have them listed in its dependencies or outputs.
 func (c *RuleBuilderCommand) Text(text string) *RuleBuilderCommand {
@@ -573,10 +584,25 @@ func (c *RuleBuilderCommand) PrebuiltBuildTool(ctx PathContext, tool string) *Ru
 	return c.Tool(ctx.Config().PrebuiltBuildTool(ctx, tool))
 }
 
+func (c *RuleBuilderCommand) WriteFile(path WritablePath,
+	contents string) *RuleBuilderCommand {
+
+	return c.
+		Textf(
+			"/bin/bash -c 'echo -e $0 > %s' '%s'", c.outputStr(path), contents).
+		ImplicitOutput(path)
+}
+
 // Input adds the specified input path to the command line.  The path will also be added to the dependencies returned by
 // RuleBuilder.Inputs.
 func (c *RuleBuilderCommand) Input(path Path) *RuleBuilderCommand {
 	return c.Text(c.addInput(path))
+}
+
+func (c *RuleBuilderCommand) Inputf(format string,
+	path Path) *RuleBuilderCommand {
+
+	return c.Text(fmt.Sprintf(format, c.addInput(path)))
 }
 
 // Inputs adds the specified input paths to the command line, separated by spaces.  The paths will also be added to the

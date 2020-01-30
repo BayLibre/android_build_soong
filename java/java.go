@@ -463,7 +463,8 @@ func (j *Module) XrefJavaFiles() android.Paths {
 }
 
 func InitJavaModule(module android.DefaultableModule, hod android.HostOrDeviceSupported) {
-	android.InitAndroidArchModule(module, hod, android.MultilibCommon)
+	android.InitAndroidMultiTargetsArchModule(module, hod,
+		android.MultilibCommon)
 	android.InitDefaultableModule(module)
 }
 
