@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "f0a91617_7ae63cbd",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-30T01:56:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc4b38f2_8e233e80",
+      "range": {
+        "startLine": 918,
+        "startChar": 17,
+        "endLine": 918,
+        "endChar": 35
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1cdda47_8cef8cf7",
         "filename": "cc/cc.go",
         "patchSetId": 13
@@ -449,6 +473,30 @@
       "side": 1,
       "message": "then I think replacing `true` with `m.inVendor()` is better",
       "parentUuid": "9b3a0766_8f2f874e",
+      "range": {
+        "startLine": 114,
+        "startChar": 69,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "c73442c0074726a24def99f75746e205f3aa0b01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b19b39_0cfd1fe0",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-30T01:56:54Z",
+      "side": 1,
+      "message": "What I mean was that m.inVendor() is already guaranteed to be true with Line 99:\n\nif !m.installable() || m.isSnapshotPrebuilt() || !m.inVendor() {\n\treturn false\n}",
+      "parentUuid": "4062a81f_7e52e370",
       "range": {
         "startLine": 114,
         "startChar": 69,
