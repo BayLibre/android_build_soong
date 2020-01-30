@@ -77,6 +77,7 @@ bootstrap_go_package {
         "android/sh_binary.go",
         "android/singleton.go",
         "android/soong_config_modules.go",
+        "android/test_suites.go",
         "android/testing.go",
         "android/util.go",
         "android/variable.go",
