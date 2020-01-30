@@ -96,13 +96,15 @@ var buildAAR = pctx.AndroidStaticRule("buildAAR",
 			`cp ${manifest} ${outDir}/AndroidManifest.xml && ` +
 			`cp ${classesJar} ${outDir}/classes.jar && ` +
 			`cp ${rTxt} ${outDir}/R.txt && ` +
+			`if [[ -n "${prefabDir}" ]]; then cp -r ${prefabDir} ${outDir}; fi && ` +
 			`${config.SoongZipCmd} -jar -o $out -C ${outDir} -D ${outDir}`,
 		CommandDeps: []string{"${config.SoongZipCmd}"},
 	},
-	"manifest", "classesJar", "rTxt", "outDir")
+	"manifest", "classesJar", "rTxt", "outDir", "prefabDir")
 
 func BuildAAR(ctx android.ModuleContext, outputFile android.WritablePath,
-	classesJar, manifest, rTxt android.Path, res android.Paths) {
+	classesJar, manifest, rTxt android.Path, res android.Paths,
+	prefabProps prefabProperties) {
 
 	// TODO(ccross): uniquify and copy resources with dependencies
 
@@ -111,6 +113,14 @@ func BuildAAR(ctx android.ModuleContext, outputFile android.WritablePath,
 	if classesJar != nil {
 		deps = append(deps, classesJar)
 		classesJarPath = classesJar.String()
+	}
+
+	prefabDir := ""
+	if prefabProps.HasModules() {
+		prefabOutPath := android.PathForModuleOut(ctx, "prefab").OutputPath
+		deps = append(deps,
+			buildPrefabPackage(ctx, prefabOutPath, prefabProps)...)
+		prefabDir = prefabOutPath.String()
 	}
 
 	ctx.Build(pctx, android.BuildParams{
@@ -123,6 +133,7 @@ func BuildAAR(ctx android.ModuleContext, outputFile android.WritablePath,
 			"classesJar": classesJarPath,
 			"rTxt":       rTxt.String(),
 			"outDir":     android.PathForModuleOut(ctx, "aar").String(),
+			"prefabDir":  prefabDir,
 		},
 	})
 }

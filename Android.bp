@@ -312,6 +312,7 @@ bootstrap_go_package {
         "java/platform_compat_config.go",
         "java/plugin.go",
         "java/prebuilt_apis.go",
+        "java/prefab.go",
         "java/proto.go",
         "java/robolectric.go",
         "java/sdk.go",

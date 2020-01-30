@@ -92,6 +92,8 @@ type EarlyModuleContext interface {
 
 	Glob(globPattern string, excludes []string) Paths
 	GlobFiles(globPattern string, excludes []string) Paths
+	IsRegular(path Path) bool
+	IsDir(path Path) bool
 	IsSymlink(path Path) bool
 	Readlink(path Path) string
 }
@@ -1191,12 +1193,24 @@ func (e *earlyModuleContext) GlobFiles(globPattern string, excludes []string) Pa
 	return pathsForModuleSrcFromFullPath(e, ret, false)
 }
 
-func (b *earlyModuleContext) IsSymlink(path Path) bool {
+func (b *earlyModuleContext) getFileMode(path Path) os.FileMode {
 	fileInfo, err := b.config.fs.Lstat(path.String())
 	if err != nil {
 		b.ModuleErrorf("os.Lstat(%q) failed: %s", path.String(), err)
 	}
-	return fileInfo.Mode()&os.ModeSymlink == os.ModeSymlink
+	return fileInfo.Mode()
+}
+
+func (b *earlyModuleContext) IsRegular(path Path) bool {
+	return b.getFileMode(path).IsRegular()
+}
+
+func (b *earlyModuleContext) IsDir(path Path) bool {
+	return b.getFileMode(path).IsDir()
+}
+
+func (b *earlyModuleContext) IsSymlink(path Path) bool {
+	return b.getFileMode(path)&os.ModeSymlink == os.ModeSymlink
 }
 
 func (b *earlyModuleContext) Readlink(path Path) string {
@@ -1258,16 +1272,20 @@ type baseModuleContext struct {
 	strictVisitDeps bool // If true, enforce that all dependencies are enabled
 }
 
-func (b *baseModuleContext) OtherModuleName(m blueprint.Module) string { return b.bp.OtherModuleName(m) }
-func (b *baseModuleContext) OtherModuleDir(m blueprint.Module) string  { return b.bp.OtherModuleDir(m) }
+func (b *baseModuleContext) OtherModuleName(m blueprint.Module) string {
+	return b.bp.OtherModuleName(m)
+}
+func (b *baseModuleContext) OtherModuleDir(m blueprint.Module) string { return b.bp.OtherModuleDir(m) }
 func (b *baseModuleContext) OtherModuleErrorf(m blueprint.Module, fmt string, args ...interface{}) {
 	b.bp.OtherModuleErrorf(m, fmt, args)
 }
 func (b *baseModuleContext) OtherModuleDependencyTag(m blueprint.Module) blueprint.DependencyTag {
 	return b.bp.OtherModuleDependencyTag(m)
 }
-func (b *baseModuleContext) OtherModuleExists(name string) bool        { return b.bp.OtherModuleExists(name) }
-func (b *baseModuleContext) OtherModuleType(m blueprint.Module) string { return b.bp.OtherModuleType(m) }
+func (b *baseModuleContext) OtherModuleExists(name string) bool { return b.bp.OtherModuleExists(name) }
+func (b *baseModuleContext) OtherModuleType(m blueprint.Module) string {
+	return b.bp.OtherModuleType(m)
+}
 
 func (b *baseModuleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module {
 	return b.bp.GetDirectDepWithTag(name, tag)

@@ -49,6 +49,7 @@ func RegisterAARBuildComponents(ctx android.RegistrationContext) {
 
 type androidLibraryProperties struct {
 	BuildAAR bool `blueprint:"mutated"`
+	Prefab   prefabProperties
 }
 
 type aaptProperties struct {
@@ -433,6 +434,31 @@ func (a *AndroidLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if sdkDep.hasFrameworkLibs() {
 		a.aapt.deps(ctx, sdkDep)
 	}
+	for _, jniTarget := range ctx.MultiTargets() {
+		// CoreVariation isn't really right because it indicates system image
+		// libraries, and we want NDK libraries, but there isn't a right option
+		// for this variation.
+		variations := append(jniTarget.Variations(), blueprint.Variation{
+			Mutator:   "image",
+			Variation: android.CoreVariation,
+		}, blueprint.Variation{
+			Mutator:   "version",
+			Variation: "",
+		})
+		sharedVariations := append(variations, blueprint.Variation{
+			Mutator:   "link",
+			Variation: "shared",
+		})
+		staticVariations := append(variations, blueprint.Variation{
+			Mutator:   "link",
+			Variation: "static",
+		})
+
+		ctx.AddVariationDependencies(sharedVariations, nil,
+			a.androidLibraryProperties.Prefab.Shared_libraries...)
+		ctx.AddVariationDependencies(staticVariations, nil,
+			a.androidLibraryProperties.Prefab.Static_libraries...)
+	}
 }
 
 func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -455,7 +481,8 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	a.aarFile = android.PathForModuleOut(ctx, ctx.ModuleName()+".aar")
 	var res android.Paths
 	if a.androidLibraryProperties.BuildAAR {
-		BuildAAR(ctx, a.aarFile, a.outputFile, a.manifestPath, a.rTxt, res)
+		BuildAAR(ctx, a.aarFile, a.outputFile, a.manifestPath, a.rTxt, res,
+			a.androidLibraryProperties.Prefab)
 		ctx.CheckbuildFile(a.aarFile)
 	}
 
