@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "344ff802_7e158531",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-31T18:31:00Z",
+      "side": 1,
+      "message": "r.certificate.AndroidMkString()",
+      "range": {
+        "startLine": 702,
+        "startChar": 41,
+        "endLine": 702,
+        "endChar": 58
+      },
+      "revId": "fc6d83e469ed6792192849d968bcdaaa6c41ee3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
