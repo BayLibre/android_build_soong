@@ -70,6 +70,30 @@
       "revId": "48e9c92078ab3587728503d1484fb7da03389ac7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c751eb5_9f0b1dc3",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1181388
+      },
+      "writtenOn": "2020-01-31T19:44:32Z",
+      "side": 1,
+      "message": "That makes sense. so I removed this variable as ou suggested. Code works without this check.",
+      "parentUuid": "965d969e_f2e114a9",
+      "range": {
+        "startLine": 178,
+        "startChar": 68,
+        "endLine": 178,
+        "endChar": 95
+      },
+      "revId": "48e9c92078ab3587728503d1484fb7da03389ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
