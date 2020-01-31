@@ -16,6 +16,24 @@
       "revId": "8b8bec3b3a3f2738dfbf3597964e9c790d60e3bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a81571ae_2a190160",
+        "filename": "ui/build/build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-31T02:04:13Z",
+      "side": 1,
+      "message": "For incremental soong-only builds you may need to delete the combined-* file once, due to line 62-67 below",
+      "parentUuid": "c519f912_d81c84fe",
+      "revId": "8b8bec3b3a3f2738dfbf3597964e9c790d60e3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
