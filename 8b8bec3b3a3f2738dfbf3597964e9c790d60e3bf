@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c519f912_d81c84fe",
+        "filename": "ui/build/build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-01-31T01:54:58Z",
+      "side": 1,
+      "message": "It seems this doesn\u0027t get created for soong-only builds (I\u0027m getting \"FAILED: ninja: out-aar/soong/build.ninja:1274384: unknown pool name \u0027highmem_pool\u0027\" in the build I\u0027m trying to add with https://android-review.googlesource.com/c/platform/build/soong/+/1223637). I don\u0027t see anywhere that local_pool is being explicitly created for those either though. Is this missing a matching change elsewhere?",
+      "revId": "8b8bec3b3a3f2738dfbf3597964e9c790d60e3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
