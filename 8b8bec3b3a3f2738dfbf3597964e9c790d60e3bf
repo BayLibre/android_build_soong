@@ -52,6 +52,24 @@
       "revId": "8b8bec3b3a3f2738dfbf3597964e9c790d60e3bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00574dd5_566276f7",
+        "filename": "ui/build/build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-01-31T20:12:04Z",
+      "side": 1,
+      "message": "It looks like it was just a clean build issue. Soong has mostly trained me to think those are never needed :) Sorry for the noise.",
+      "parentUuid": "c976b678_23c11e0d",
+      "revId": "8b8bec3b3a3f2738dfbf3597964e9c790d60e3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
