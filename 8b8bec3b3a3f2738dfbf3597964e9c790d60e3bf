@@ -34,6 +34,24 @@
       "revId": "8b8bec3b3a3f2738dfbf3597964e9c790d60e3bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c976b678_23c11e0d",
+        "filename": "ui/build/build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-31T02:04:30Z",
+      "side": 1,
+      "message": "A Soong-only build won\u0027t emit references to local_pool unless you turn on RBE or Goma.  We\u0027ll need to either make Soong-only builds go through this file and conditionalize the kati references, or make Soong emit the highmem pool for Soong-only builds.",
+      "parentUuid": "c519f912_d81c84fe",
+      "revId": "8b8bec3b3a3f2738dfbf3597964e9c790d60e3bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
