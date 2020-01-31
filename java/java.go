@@ -29,7 +29,6 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
-	"android/soong/dexpreopt"
 	"android/soong/java/config"
 	"android/soong/tradefed"
 )
@@ -80,7 +79,9 @@ func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_host_for_device", HostForDeviceFactory)
 	ctx.RegisterModuleType("dex_import", DexImportFactory)
 
-	ctx.FinalDepsMutators(dexpreopt.RegisterToolDepsMutator)
+	ctx.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("dexpreopt_tool_deps", dexpreopToolDepsMutator).Parallel()
+	})
 
 	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
 	ctx.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
@@ -337,7 +338,6 @@ type Module struct {
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 	android.SdkBase
-	dexpreopt.DexPreoptModule
 
 	properties       CompilerProperties
 	protoProperties  android.ProtoProperties
@@ -1515,16 +1515,6 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 	} else {
 		outputFile = implementationAndResourcesJar
-
-		// dexpreopt.GetGlobalSoongConfig needs to be called at least once even if
-		// no module actually is dexpreopted, to ensure there's a cached
-		// GlobalSoongConfig for the dexpreopt singletons, which will run
-		// regardless.
-		// TODO(b/147613152): Remove when the singletons no longer rely on the
-		// cached GlobalSoongConfig.
-		if !dexpreopt.GetGlobalConfig(ctx).DisablePreopt {
-			_ = dexpreopt.GetGlobalSoongConfig(ctx)
-		}
 	}
 
 	ctx.CheckbuildFile(outputFile)
@@ -1730,6 +1720,10 @@ func (j *Module) JacocoReportClassesFile() android.Path {
 	return j.jacocoReportClassesFile
 }
 
+func (j *Module) IsInstallable() bool {
+	return Bool(j.properties.Installable)
+}
+
 //
 // Java libraries (.jar file)
 //
@@ -1767,7 +1761,6 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.checkSdkVersion(ctx)
 	j.dexpreopter.installPath = android.PathForModuleInstall(ctx, "framework", j.Stem()+".jar")
 	j.dexpreopter.isSDKLibrary = j.deviceProperties.IsSDKLibrary
-	j.dexpreopter.isInstallable = Bool(j.properties.Installable)
 	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter)
 	j.deviceProperties.UncompressDex = j.dexpreopter.uncompressedDex
 	j.compile(ctx, nil)
@@ -2280,7 +2273,6 @@ type Import struct {
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
 	android.SdkBase
-	dexpreopt.DexPreoptModule
 
 	properties ImportProperties
 
@@ -2483,7 +2475,6 @@ type DexImport struct {
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
-	dexpreopt.DexPreoptModule
 
 	properties DexImportProperties
 
@@ -2509,13 +2500,16 @@ func (j *DexImport) Stem() string {
 	return proptools.StringDefault(j.properties.Stem, j.ModuleBase.Name())
 }
 
+func (j *DexImport) IsInstallable() bool {
+	return true
+}
+
 func (j *DexImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if len(j.properties.Jars) != 1 {
 		ctx.PropertyErrorf("jars", "exactly one jar must be provided")
 	}
 
 	j.dexpreopter.installPath = android.PathForModuleInstall(ctx, "framework", j.Stem()+".jar")
-	j.dexpreopter.isInstallable = true
 	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter)
 
 	inputJar := ctx.ExpandSource(j.properties.Jars[0], "jars")
