@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcdccd01_a0d8a717",
+        "filename": "java/sdk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-01-31T00:37:49Z",
+      "side": 1,
+      "message": "Not all SDK versions in soong are a targetSdkVersion. Pretty much anything NDK is going to be minSdkVersion.\n\nDoes this type need to be split into separate minSdkVersionSpec, targetSdkVersionSpec, etc?",
+      "range": {
+        "startLine": 212,
+        "startChar": 32,
+        "endLine": 212,
+        "endChar": 56
+      },
+      "revId": "6a927c4e6ad5c53dcca7b0db2fec129d1f0d3f82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
