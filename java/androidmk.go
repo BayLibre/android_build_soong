@@ -699,6 +699,7 @@ func (r *RuntimeResourceOverlay) AndroidMkEntries() []android.AndroidMkEntries {
 		Include:    "$(BUILD_SYSTEM)/soong_app_prebuilt.mk",
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(entries *android.AndroidMkEntries) {
+				entries.SetPath("LOCAL_CERTIFICATE", r.certificate.Pem)
 				entries.SetPath("LOCAL_MODULE_PATH", r.installDir.ToMakePath())
 			},
 		},
