@@ -46,6 +46,30 @@
       "revId": "6890497a26b8f02c04cefdd5d8d5392c8e17d25f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f317f00_50ac2dce",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-31T06:54:34Z",
+      "side": 1,
+      "message": "Sorry that I wasn\u0027t responsive here. Lunar new year holidays and etc. Yeah, this looks much better to me. Thanks.",
+      "parentUuid": "f343cd01_3b5ab945",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 53
+      },
+      "revId": "6890497a26b8f02c04cefdd5d8d5392c8e17d25f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
