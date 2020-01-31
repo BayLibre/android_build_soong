@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfcdea99_bd5ec331",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-01-31T14:15:09Z",
+      "side": 1,
+      "message": "\"module_\u003cversion\u003e\" LGTM. Seems clearer than module_lib_\u003cversion\u003e. This stub lib is still a little misnamed given that, but I think leaving all the stubs like module_lib is probably fine? It\u0027s a bit more exact given the annotation name anyway.",
+      "range": {
+        "startLine": 795,
+        "startChar": 23,
+        "endLine": 795,
+        "endChar": 33
+      },
+      "revId": "50146e9c8eadac8f71ab4e1ae689a0545aaed5a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
