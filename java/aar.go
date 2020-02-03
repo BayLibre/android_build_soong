@@ -50,6 +50,7 @@ func RegisterAARBuildComponents(ctx android.RegistrationContext) {
 type androidLibraryProperties struct {
 	BuildAAR bool `blueprint:"mutated"`
 	Prefab   prefabProperties
+	Pom_file *string `android:"path"`
 }
 
 type aaptProperties struct {
@@ -482,6 +483,8 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	var res android.Paths
 	if a.androidLibraryProperties.BuildAAR {
 		BuildAAR(ctx, a.aarFile, a.outputFile, a.manifestPath, a.rTxt, res,
+			android.OptionalPathForModuleSrc(
+				ctx, a.androidLibraryProperties.Pom_file),
 			a.androidLibraryProperties.Prefab)
 		ctx.CheckbuildFile(a.aarFile)
 	}

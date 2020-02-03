@@ -104,7 +104,7 @@ var buildAAR = pctx.AndroidStaticRule("buildAAR",
 
 func BuildAAR(ctx android.ModuleContext, outputFile android.WritablePath,
 	classesJar, manifest, rTxt android.Path, res android.Paths,
-	prefabProps prefabProperties) {
+	pomInput android.OptionalPath, prefabProps prefabProperties) {
 
 	// TODO(ccross): uniquify and copy resources with dependencies
 
@@ -117,10 +117,24 @@ func BuildAAR(ctx android.ModuleContext, outputFile android.WritablePath,
 
 	prefabDir := ""
 	if prefabProps.HasModules() {
+		if !pomInput.Valid() {
+			ctx.PropertyErrorf("pom_file", "prefab modules require a POM file")
+		}
 		prefabOutPath := android.PathForModuleOut(ctx, "prefab").OutputPath
 		deps = append(deps,
 			buildPrefabPackage(ctx, prefabOutPath, prefabProps)...)
 		prefabDir = prefabOutPath.String()
+	}
+
+	if pomInput.Valid() {
+		pomOutput := android.PathForModuleOut(ctx,
+			filepath.Base(pomInput.Path().String()))
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Cp,
+			Input:  pomInput.Path(),
+			Output: pomOutput,
+		})
+		deps = append(deps, pomOutput)
 	}
 
 	ctx.Build(pctx, android.BuildParams{
