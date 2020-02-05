@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "52699957_b7fe0d46",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-02-05T18:33:05Z",
+      "side": 1,
+      "message": "I\u0027ve tried with LinuxBionic \u0026 asan -- for those we\u0027ve been using the android x86_64 prebuilts, and they kinda-sorta work.",
+      "parentUuid": "96e51523_428c309e",
+      "revId": "987abfb9b074c0524bb5786d76a6631ae5138d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc98989_6858cfbe",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
