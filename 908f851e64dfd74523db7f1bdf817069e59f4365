@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca883e8b_bc069892",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-05T12:59:09Z",
+      "side": 1,
+      "message": "this and other usages are okay with apexName.",
+      "range": {
+        "startLine": 58,
+        "startChar": 65,
+        "endLine": 58,
+        "endChar": 73
+      },
+      "revId": "908f851e64dfd74523db7f1bdf817069e59f4365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b564138_7aaa0652",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-05T12:59:09Z",
+      "side": 1,
+      "message": "but, this must be apexModuleName",
+      "range": {
+        "startLine": 76,
+        "startChar": 38,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "908f851e64dfd74523db7f1bdf817069e59f4365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20fef8bf_b876c0ba",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-05T12:59:09Z",
+      "side": 1,
+      "message": "without this change, this would be a bug since a.overridableProperties.Overrides has moduleNames (not apexNames)",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 50
+      },
+      "revId": "908f851e64dfd74523db7f1bdf817069e59f4365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99eba49c_5d1fd6c1",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-05T12:59:09Z",
+      "side": 1,
+      "message": "we need to pass both name (or apexModuleName) and apexName.",
+      "revId": "908f851e64dfd74523db7f1bdf817069e59f4365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
