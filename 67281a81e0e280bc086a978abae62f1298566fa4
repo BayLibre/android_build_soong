@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b48df72_7bb0cd9d",
+        "filename": "java/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-05T11:17:38Z",
+      "side": 1,
+      "message": "nit - specified\n\nThis is quite a complicated method. I know you didn\u0027t write it but it could really do with some more comments to explain what it is doing an why.",
+      "range": {
+        "startLine": 277,
+        "startChar": 21,
+        "endLine": 277,
+        "endChar": 31
+      },
+      "revId": "67281a81e0e280bc086a978abae62f1298566fa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
