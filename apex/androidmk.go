@@ -22,8 +22,6 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
-
-	"github.com/google/blueprint/proptools"
 )
 
 func (a *apexBundle) AndroidMk() android.AndroidMkData {
@@ -235,8 +233,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 			moduleNames := []string{}
 			apexType := a.properties.ApexType
 			if a.installable() {
-				apexName := proptools.StringDefault(a.properties.Apex_name, name)
-				moduleNames = a.androidMkForFiles(w, apexName, moduleDir)
+				moduleNames = a.androidMkForFiles(w, name, moduleDir)
 			}
 
 			if apexType == flattenedApex {
