@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96e51523_428c309e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-05T18:31:28Z",
+      "side": 1,
+      "message": "This will match LinuxBionic too, which I don\u0027t think supports sanitizers because we have no way to export a host bionic sysroot to the clang build.",
+      "revId": "987abfb9b074c0524bb5786d76a6631ae5138d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc98989_6858cfbe",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-05T18:31:28Z",
+      "side": 1,
+      "message": "Can this be added to line 937 (possibly refactoring the append above line 934)",
+      "range": {
+        "startLine": 941,
+        "startChar": 42,
+        "endLine": 941,
+        "endChar": 82
+      },
+      "revId": "987abfb9b074c0524bb5786d76a6631ae5138d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5798ffae_c6eb845d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-05T18:31:28Z",
+      "side": 1,
+      "message": "these are added twice",
+      "range": {
+        "startLine": 941,
+        "startChar": 85,
+        "endLine": 941,
+        "endChar": 100
+      },
+      "revId": "987abfb9b074c0524bb5786d76a6631ae5138d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
