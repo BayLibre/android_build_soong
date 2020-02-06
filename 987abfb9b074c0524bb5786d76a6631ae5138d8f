@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e04bba0e_fe0cef63",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-02-06T15:01:05Z",
+      "side": 1,
+      "message": "This seems to work with UBSan as well -- built the LinuxBionic art tests with sanitizers enabled, they compiled and ran okay.\n\nI changed some of the logic to check if we\u0027re building against bionic instead. If you think we should just exclude LinuxBionic for now though I can do that instead.",
+      "parentUuid": "52699957_b7fe0d46",
+      "revId": "987abfb9b074c0524bb5786d76a6631ae5138d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc98989_6858cfbe",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
@@ -80,6 +98,54 @@
       "revId": "987abfb9b074c0524bb5786d76a6631ae5138d8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e2adc4_6022c04c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-02-06T15:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5798ffae_c6eb845d",
+      "range": {
+        "startLine": 941,
+        "startChar": 85,
+        "endLine": 941,
+        "endChar": 100
+      },
+      "revId": "987abfb9b074c0524bb5786d76a6631ae5138d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd1e900e_e227ef38",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-02-06T15:01:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc98989_6858cfbe",
+      "range": {
+        "startLine": 941,
+        "startChar": 42,
+        "endLine": 941,
+        "endChar": 82
+      },
+      "revId": "987abfb9b074c0524bb5786d76a6631ae5138d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
