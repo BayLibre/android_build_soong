@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbe34d2b_f0870e9c",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-06T01:37:18Z",
+      "side": 1,
+      "message": "Is this a short term or a long term TODO?  Can you file a bug for it?  We are eventually going to need to move away from the ctx.Once() style global state if we ever want to support incremental or partial analysis of Android.bp files.",
+      "revId": "0117b1b1df87d23747abc73737701881c7da8092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
