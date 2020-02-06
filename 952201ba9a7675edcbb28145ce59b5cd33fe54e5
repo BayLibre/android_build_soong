@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d1298b6_496ee46b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1074438
+      },
+      "writtenOn": "2020-02-06T14:29:15Z",
+      "side": 1,
+      "message": "this looks weird to me - \u0027arm\u0027 is 32-bit, why having stuff under /lib64 ?\n\nfor arm native_bridge, I\u0027d expect /lib/arm/\nfor arm64 native_bridge, I\u0027d expect /lib64/arm64/",
+      "range": {
+        "startLine": 1218,
+        "startChar": 3,
+        "endLine": 1218,
+        "endChar": 13
+      },
+      "revId": "952201ba9a7675edcbb28145ce59b5cd33fe54e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
