@@ -106,7 +106,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"android.hardware.bluetooth.audio@2.0",
 		"android.hidl.safe_union@1.0",
 		"libbase",
-		"libbinderthreadstate",
 		"libbluetooth",
 		"libbluetooth_jni",
 		"libc++",
@@ -145,7 +144,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libaacextractor",
 		"libamrextractor",
 		"libbase",
-		"libbinderthreadstate",
 		"libc++",
 		"libcrypto",
 		"libcutils",
@@ -193,7 +191,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libavservices_minijail",
 		"libbacktrace",
 		"libbase",
-		"libbinderthreadstate",
 		"libc++",
 		"libcap",
 		"libcodec2",
@@ -288,7 +285,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 	//
 	m["com.android.vndk"] = []string{
 		"libbacktrace",
-		"libbinderthreadstate",
 		"libblas",
 		"libcompiler_rt",
 		"libgui",
