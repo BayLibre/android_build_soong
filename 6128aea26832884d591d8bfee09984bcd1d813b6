@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc350d13_f97b2794",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-02-06T19:00:32Z",
+      "side": 1,
+      "message": "This was the case before, so it wouldn\u0027t be a new issue, but does this continue to do the right thing if a CrtBegin or CrtEnd library is added? I wouldn\u0027t think we\u0027d want to propagate them as -lfoo args, but maybe I\u0027m missing something.",
+      "revId": "6128aea26832884d591d8bfee09984bcd1d813b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
