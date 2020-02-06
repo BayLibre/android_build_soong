@@ -180,11 +180,13 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 		cc_object {
 			name: "crtbegin_static",
 			stl: "none",
+			native_bridge_supported: true,
 		}
 
 		cc_object {
 			name: "crtend_android",
 			stl: "none",
+			native_bridge_supported: true,
 		}
 
 		llndk_library {
@@ -1163,6 +1165,60 @@ func TestFilesInSubDir(t *testing.T) {
 	ensureListContains(t, dirs, "bin/foo/bar")
 }
 
+func TestFilesInSubDirWhenNativeBridgeEnabled(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			multilib: {
+				both: {
+					native_shared_libs: ["mylib"],
+					binaries: ["mybin"],
+				},
+			},
+			compile_multilib: "both",
+			native_bridge_supported: true,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "mylib",
+			relative_install_path: "foo/bar",
+			system_shared_libs: [],
+			stl: "none",
+			apex_available: [ "myapex" ],
+			native_bridge_supported: true,
+		}
+
+		cc_binary {
+			name: "mybin",
+			relative_install_path: "foo/bar",
+			system_shared_libs: [],
+			static_executable: true,
+			stl: "none",
+			apex_available: [ "myapex" ],
+			native_bridge_supported: true,
+			compile_multilib: "both", // default is "first" for binary
+		}
+	`, withTargets(map[android.OsType][]android.Target{
+		android.Android: []android.Target{
+			{Os: android.Android, Arch: android.Arch{ArchType: android.Arm64, ArchVariant: "armv8-a", Abi: []string{"arm64-v8a"}}, NativeBridge: android.NativeBridgeDisabled, NativeBridgeHostArchName: "", NativeBridgeRelativePath: ""},
+			{Os: android.Android, Arch: android.Arch{ArchType: android.X86_64, ArchVariant: "silvermont", Abi: []string{"x86_64"}}, NativeBridge: android.NativeBridgeEnabled, NativeBridgeHostArchName: "x86_64", NativeBridgeRelativePath: "arm64"},
+		},
+	}))
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+		"bin/foo/bar/mybin",
+		"bin/arm64/foo/bar/mybin",
+		"lib64/foo/bar/mylib.so",
+		"lib64/arm64/foo/bar/mylib.so",
+	})
+}
+
 func TestUseVendor(t *testing.T) {
 	ctx, _ := testApex(t, `
 		apex {
@@ -1661,13 +1717,17 @@ func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName, var
 	var surplus []string
 	filesMatched := make(map[string]bool)
 	for _, file := range getFiles(t, ctx, moduleName, variant) {
+		matchFound := false
 		for _, expected := range files {
 			if matched, _ := path.Match(expected, file.path); matched {
 				filesMatched[expected] = true
-				return
+				matchFound = true
+				break
 			}
 		}
-		surplus = append(surplus, file.path)
+		if !matchFound {
+			surplus = append(surplus, file.path)
+		}
 	}
 
 	if len(surplus) > 0 {
