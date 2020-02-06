@@ -897,7 +897,7 @@ func sdkLibraryImportFactory() android.Module {
 
 	module.AddProperties(&module.properties)
 
-	android.InitPrebuiltModule(module, &[]string{})
+	android.InitPrebuiltModule(module, &[]string{""})
 	InitJavaModule(module, android.HostAndDeviceSupported)
 
 	android.AddLoadHook(module, func(mctx android.LoadHookContext) { module.createInternalModules(mctx) })
