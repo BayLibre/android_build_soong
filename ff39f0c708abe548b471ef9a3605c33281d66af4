@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cef3b2d_a9764e00",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-02-06T17:12:03Z",
+      "side": 1,
+      "message": "Please run this function through the formatter.",
+      "revId": "ff39f0c708abe548b471ef9a3605c33281d66af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c3bfe2_27d23c3c",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-02-06T17:12:03Z",
+      "side": 1,
+      "message": "If condition is negated, one nesting level can be eliminated:\n  if s.kind !\u003d  sdkSystem || !s.version.isNumbered() {\n    return true\n  }",
+      "revId": "ff39f0c708abe548b471ef9a3605c33281d66af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c4cba9e_dee93b85",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-02-06T17:12:03Z",
+      "side": 1,
+      "message": "The function is called twice for no reason",
+      "revId": "ff39f0c708abe548b471ef9a3605c33281d66af4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
