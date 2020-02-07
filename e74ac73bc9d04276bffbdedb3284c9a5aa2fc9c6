@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6593553c_218725ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-07T10:37:03Z",
+      "side": 1,
+      "message": "It is an implementation detail in the same way that the implementation jar (which is also not provided by the java_sdk_library_import) is an implementation detail.\n\nYou cannot replace a java_sdk_library with java_sdk_library_import and build a working system because the implementation library is missing.\n\nThis is similar to how you cannot build a working system by building against an sdk snapshot, you also need the apex.\n\nIn fact when a java_sdk_library is added to an APEX the permissions file is added to the APEX alongside the implementation jar.",
+      "parentUuid": "88ea100f_41115bbc",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "e74ac73bc9d04276bffbdedb3284c9a5aa2fc9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e63e1b39_c80a6a61",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e74ac73bc9d04276bffbdedb3284c9a5aa2fc9c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a25af1a_8c996f98",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-07T10:37:03Z",
+      "side": 1,
+      "message": "It is exported for use during apex testing.",
+      "parentUuid": "e63e1b39_c80a6a61",
+      "range": {
+        "startLine": 629,
+        "startChar": 26,
+        "endLine": 629,
+        "endChar": 27
+      },
+      "revId": "e74ac73bc9d04276bffbdedb3284c9a5aa2fc9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
