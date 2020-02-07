@@ -16,6 +16,24 @@
       "revId": "6128aea26832884d591d8bfee09984bcd1d813b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e3e2a1_23a0c3c1",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-02-07T13:41:43Z",
+      "side": 1,
+      "message": "Yup, this is gated by exportDep, which only SharedDepTag sets to true.",
+      "parentUuid": "cc350d13_f97b2794",
+      "revId": "6128aea26832884d591d8bfee09984bcd1d813b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
