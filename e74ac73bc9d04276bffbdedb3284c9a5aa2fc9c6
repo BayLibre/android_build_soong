@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88ea100f_41115bbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-07T06:05:10Z",
+      "side": 1,
+      "message": "I don\u0027t consider that as an implementation detail. java_sdk_library_import replaces java_sdk_library. So the former should be able to provide information to satisfy any of the existing clients (things that are depending on it) of the latter. The xml file is nothing but a pair of (logical_lib_name, jar_file_path). Why can\u0027t the import generate this?",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "e74ac73bc9d04276bffbdedb3284c9a5aa2fc9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e63e1b39_c80a6a61",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-07T06:05:10Z",
+      "side": 1,
+      "message": "doesn\u0027t need to be exported I guess?",
+      "range": {
+        "startLine": 629,
+        "startChar": 26,
+        "endLine": 629,
+        "endChar": 27
+      },
+      "revId": "e74ac73bc9d04276bffbdedb3284c9a5aa2fc9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
