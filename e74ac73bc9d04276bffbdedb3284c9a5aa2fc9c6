@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b40389cc_3e1d334e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-07T11:16:17Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t understand why you choose to drop the implementation jar from java_sdk_library_import. In general, if module type X can replace module type Y, then I think X should satisfy all the existing clients of Y.\n\nAnyway, I agree with you that the xml is close to the implementation detail if the module doesn\u0027t provide the impl jar.",
+      "parentUuid": "6593553c_218725ce",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "e74ac73bc9d04276bffbdedb3284c9a5aa2fc9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e63e1b39_c80a6a61",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
