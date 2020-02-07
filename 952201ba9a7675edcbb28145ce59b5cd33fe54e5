@@ -46,6 +46,64 @@
       "revId": "952201ba9a7675edcbb28145ce59b5cd33fe54e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da44d93b_a266e594",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1074438
+      },
+      "writtenOn": "2020-02-07T14:57:36Z",
+      "side": 1,
+      "message": "Expected output looks good to me now.\n\nI\u0027m sorry I don\u0027t know much about test configurations.\n\nHowever, comparing this with similar cases below, it looks like either here or below host and emulated architectures are messed up.\n\nif \u0027abi\u0027 means emulated abi, \nif we emulate arm on x86 host, I suppose it should be \n  abi\u003darm-v7a, NativeBridgeHostArcName\u003dx86, NativeBridgeRelativePath\u003darm\nif we emulate arm64 on x86_64 host, I suppose it should be \n  abi\u003darm64-v8a, NativeBridgeHostArcName\u003dx86_64, NativeBridgeRelativePath\u003darm64\n\nif \u0027abi\u0027 means host arch abi, then configurations below are not sane.",
+      "parentUuid": "d40a9424_7ae54346",
+      "range": {
+        "startLine": 1218,
+        "startChar": 3,
+        "endLine": 1218,
+        "endChar": 13
+      },
+      "revId": "952201ba9a7675edcbb28145ce59b5cd33fe54e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3368d5d3_5c2315fe",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2061,
+      "author": {
+        "id": 1074438
+      },
+      "writtenOn": "2020-02-07T14:57:36Z",
+      "side": 1,
+      "message": "what does it mean here? emulated x86_64 on arm64 host or vice versa?\n\nif arm64-v8a is emulated abi, I\u0027d expect hostArchName\u003dx86_64 relativePath\u003darm64",
+      "revId": "952201ba9a7675edcbb28145ce59b5cd33fe54e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb0d923_75e37b83",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2062,
+      "author": {
+        "id": 1074438
+      },
+      "writtenOn": "2020-02-07T14:57:36Z",
+      "side": 1,
+      "message": "what does it mean here? emulated x86 on arm host or vice versa?\n\nplease see above.",
+      "revId": "952201ba9a7675edcbb28145ce59b5cd33fe54e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
