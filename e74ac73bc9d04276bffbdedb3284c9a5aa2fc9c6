@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3b2513a7_d05348c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-07T11:27:45Z",
+      "side": 1,
+      "message": "I didn\u0027t drop it. It was never added. It may be that in future there will be a use case that will require it to support importing the implementation jar/permissions file in which case adding it won\u0027t be a big problem.",
+      "parentUuid": "b40389cc_3e1d334e",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "e74ac73bc9d04276bffbdedb3284c9a5aa2fc9c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e63e1b39_c80a6a61",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
