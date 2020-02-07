@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d34d782_695df93a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-07T03:18:51Z",
+      "side": 1,
+      "message": "This should never happen, MakeVarsContext is a Singleton, which always happens long after mutators are done.",
+      "range": {
+        "startLine": 77,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 56
+      },
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e39e78_1517ce0a",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-07T03:18:51Z",
+      "side": 1,
+      "message": "Global variables like this make testing hard because the state will not be cleared between tests.  Use a ctx.Once() to store the SyncedJarList (or just store a []string in the Once() and use a global mutex).",
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80bab841_11a611a5",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-07T03:18:51Z",
+      "side": 1,
+      "message": "mast@ made \"late mutator\" a specific concept, which this doesn\u0027t seem to be.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31fab310_25e4e6de",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-07T03:18:51Z",
+      "side": 1,
+      "message": "I assume the final result is deterministic, what adds the determinism?",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8501c0e4_49f51f80",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-07T03:18:51Z",
+      "side": 1,
+      "message": "InList returns a bool",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
