@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06854589_888cab9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2020-02-07T12:58:35Z",
+      "side": 1,
+      "message": "product_services is no more, please amend message\n\n\"Include NOTICE from extra directories\"\n\nor something",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "143bd5ca02dd1564cd0b942357bc3a506e27b36a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
