@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9b2c4fc3_9bd0c20f",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-07T16:06:56Z",
+      "side": 1,
+      "message": "Thanks for explanation. I\u0027ll fix them.\nWell, those values were probably just copy-pasted from somewhere else ;-).",
+      "parentUuid": "da44d93b_a266e594",
+      "range": {
+        "startLine": 1218,
+        "startChar": 3,
+        "endLine": 1218,
+        "endChar": 13
+      },
+      "revId": "952201ba9a7675edcbb28145ce59b5cd33fe54e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3368d5d3_5c2315fe",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
