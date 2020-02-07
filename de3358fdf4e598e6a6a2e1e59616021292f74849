@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "117190bb_0f4c8de7",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-07T12:43:38Z",
+      "side": 1,
+      "message": "Yes, I know, I wanted to have this check anyway as a warning in case someone copy-pasted code or changes the context (and it\u0027s in Once() anyway).\n\nI moved the check to DexpreotedSystemServerJars() in the next PS and updated the comment.",
+      "parentUuid": "9d34d782_695df93a",
+      "range": {
+        "startLine": 77,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 56
+      },
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4e39e78_1517ce0a",
         "filename": "java/java.go",
         "patchSetId": 15
@@ -36,6 +60,24 @@
       "writtenOn": "2020-02-07T03:18:51Z",
       "side": 1,
       "message": "Global variables like this make testing hard because the state will not be cleared between tests.  Use a ctx.Once() to store the SyncedJarList (or just store a []string in the Once() and use a global mutex).",
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61c47bec_941501a6",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-07T12:43:38Z",
+      "side": 1,
+      "message": "I agree about the badness of global variables, but I don\u0027t see how it\u0027s possible to use Once() instead of a global list: the list is constructed incrementally during the added mutator pass, and the partially constructed list is used by the pass to add dependencies.\n\nI applied some of your suggestions:\n\n- use []string and a global mutex instead of the struct\n- use Once() to provide a getter function for the list",
+      "parentUuid": "f4e39e78_1517ce0a",
       "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "777141dd_4bfa3d81",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-07T12:43:38Z",
+      "side": 1,
+      "message": "Changed to PostDepsMutator (yes, this is not the final mutator pass added by Martin).",
+      "parentUuid": "80bab841_11a611a5",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 17
+      },
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31fab310_25e4e6de",
         "filename": "java/java.go",
         "patchSetId": 15
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "7d1c5b98_99ae793b",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-07T12:43:38Z",
+      "side": 1,
+      "message": "This pass adds it --- it walks jars in some partially defined order and freezes the partial order into a total order by adding dependencies.\n\nI updated the comment.",
+      "parentUuid": "31fab310_25e4e6de",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 41
+      },
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8501c0e4_49f51f80",
         "filename": "java/java.go",
         "patchSetId": 15
@@ -108,6 +198,30 @@
       "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ee1b16_de22f5d8",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-07T12:43:38Z",
+      "side": 1,
+      "message": "Thanks. Changed here and in other places.",
+      "parentUuid": "8501c0e4_49f51f80",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
