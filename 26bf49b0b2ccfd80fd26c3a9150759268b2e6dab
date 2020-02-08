@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f62c655_1ddca58d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-02-08T20:38:12Z",
+      "side": 1,
+      "message": "This, and much of the stuff below is duplicated from java.go. I\u0027m not sure why",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 2
+      },
+      "revId": "26bf49b0b2ccfd80fd26c3a9150759268b2e6dab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
