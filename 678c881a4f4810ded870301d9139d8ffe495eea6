@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbdb794c_89546e32",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-08T10:13:52Z",
+      "side": 1,
+      "message": "I don\u0027t get it. Can a module be external and internal via different dep-paths? Or, is this \"just in case\"?",
+      "range": {
+        "startLine": 2003,
+        "startChar": 0,
+        "endLine": 2003,
+        "endChar": 51
+      },
+      "revId": "678c881a4f4810ded870301d9139d8ffe495eea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd49e435_529243ec",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-08T10:13:52Z",
+      "side": 1,
+      "message": "Personal preference here is to represent dependency like \"from -\u003e to\". (then we can use it to generate dependency graph go/graphviz). But, nevermind ;-)",
+      "range": {
+        "startLine": 606,
+        "startChar": 24,
+        "endLine": 606,
+        "endChar": 37
+      },
+      "revId": "678c881a4f4810ded870301d9139d8ffe495eea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
