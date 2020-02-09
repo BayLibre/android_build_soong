@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "368cdf24_a414d124",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-09T05:52:42Z",
+      "side": 1,
+      "message": "Yes it can. DepsIsInSameApex returns false for the static dependency from a shared library.",
+      "parentUuid": "bbdb794c_89546e32",
+      "range": {
+        "startLine": 2003,
+        "startChar": 0,
+        "endLine": 2003,
+        "endChar": 51
+      },
+      "revId": "678c881a4f4810ded870301d9139d8ffe495eea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd49e435_529243ec",
         "filename": "apex/builder.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-08T10:13:52Z",
       "side": 1,
       "message": "Personal preference here is to represent dependency like \"from -\u003e to\". (then we can use it to generate dependency graph go/graphviz). But, nevermind ;-)",
+      "range": {
+        "startLine": 606,
+        "startChar": 24,
+        "endLine": 606,
+        "endChar": 37
+      },
+      "revId": "678c881a4f4810ded870301d9139d8ffe495eea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85bb2ca1_4709ae20",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-09T05:52:42Z",
+      "side": 1,
+      "message": "our main concern here is \u0027what are included\u0027, rather than \u0027why is this included\u0027. So I thought \u0027to\u0027 should come first. Also, for popular libraries like libbase, the \u0027from\u0027 part tends to be very long; not readable.",
+      "parentUuid": "bd49e435_529243ec",
       "range": {
         "startLine": 606,
         "startChar": 24,
