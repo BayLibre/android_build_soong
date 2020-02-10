@@ -22,6 +22,30 @@
       "revId": "981553bb799dc4d9e1e769ebfbb6d6e7ab40e1bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be9988b1_b5b65358",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-02-10T23:39:11Z",
+      "side": 1,
+      "message": "Let\u0027s discuss later.",
+      "parentUuid": "3639ac12_5ecd8001",
+      "range": {
+        "startLine": 42,
+        "startChar": 42,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "981553bb799dc4d9e1e769ebfbb6d6e7ab40e1bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

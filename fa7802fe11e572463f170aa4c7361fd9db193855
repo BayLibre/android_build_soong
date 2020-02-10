@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c098b954_bac32c76",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-02-10T23:39:11Z",
+      "side": 1,
+      "message": "marking as resolved",
+      "parentUuid": "a457f599_72a2e431",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8447994f_d271d53a",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 6
