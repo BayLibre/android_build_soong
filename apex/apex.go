@@ -106,8 +106,10 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libpackagelistparser",
 		"libpcre2",
 		"libprocessgroup_headers",
+		"libprotobuf-cpp-lite",
 		"libqemu_pipe",
 		"libselinux",
+		"libssl",
 		"libsystem_headers",
 		"libutils_headers",
 	}
