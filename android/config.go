@@ -923,8 +923,22 @@ func (c *config) ModulesLoadedByPrivilegedModules() []string {
 	return c.productVariables.ModulesLoadedByPrivilegedModules
 }
 
+func splitApexJarPair(apexJarValue string) (string, string) {
+	var apexJarPair []string = strings.SplitN(apexJarValue, ":", 2)
+	if apexJarPair == nil || len(apexJarPair) != 2 {
+		panic(fmt.Errorf("malformed apexJarValue: %q, expected format: <apex>:<jar>",
+			apexJarValue))
+	}
+	return apexJarPair[0], apexJarPair[1]
+}
+
 func (c *config) BootJars() []string {
-	return c.productVariables.BootJars
+	jars := c.productVariables.BootJars
+	for _, p := range c.productVariables.UpdatableBootJars {
+		_, jar := splitApexJarPair(p)
+		jars = append(jars, jar)
+	}
+	return jars
 }
 
 func (c *config) DexpreoptGlobalConfig(ctx PathContext) ([]byte, error) {
