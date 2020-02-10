@@ -34,6 +34,24 @@
       "revId": "6128aea26832884d591d8bfee09984bcd1d813b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9811489c_4f043a9b",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-02-10T16:50:31Z",
+      "side": 1,
+      "message": "(Marking resolved)",
+      "parentUuid": "12e3e2a1_23a0c3c1",
+      "revId": "6128aea26832884d591d8bfee09984bcd1d813b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
