@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "f8517c35_3f5fd174",
+        "filename": "java/java.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-11T23:04:07Z",
+      "side": 1,
+      "message": "Use the Once to allocate a *[]string that can be updated by each call to the mutator.  See for example https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/vendor_public_library.go;l\u003d31",
+      "parentUuid": "61c47bec_941501a6",
+      "revId": "de3358fdf4e598e6a6a2e1e59616021292f74849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80bab841_11a611a5",
         "filename": "java/java.go",
         "patchSetId": 15
