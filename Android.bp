@@ -193,7 +193,6 @@ bootstrap_go_package {
         "cc/util.go",
         "cc/vndk.go",
         "cc/vndk_prebuilt.go",
-        "cc/xom.go",
 
         "cc/cflag_artifacts.go",
         "cc/cmakelists.go",
