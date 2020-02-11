@@ -6,6 +6,22 @@ import (
 	"github.com/google/blueprint"
 )
 
+type PlatformSanitizeable interface {
+	LinkableInterface
+
+	SanitizePropDefined() bool
+	IsDependencyRoot() bool
+	IsSanitizerEnabled(t SanitizerType) bool
+	IsSanitizerExplicitlyDisabled(t SanitizerType) bool
+	SanitizeDep() bool
+	SetSanitizer(t SanitizerType, b bool)
+	SetSanitizeDep(b bool)
+	StaticallyLinked() bool
+	SetInSanitizerDir()
+	SanitizeNever() bool
+	SanitizerSupported(t SanitizerType) bool
+}
+
 type LinkableInterface interface {
 	Module() android.Module
 	CcLibrary() bool
@@ -40,6 +56,8 @@ type LinkableInterface interface {
 	SetShared()
 	Static() bool
 	Shared() bool
+	Header() bool
+	IsPrebuilt() bool
 	Toc() android.OptionalPath
 
 	Host() bool
@@ -49,6 +67,8 @@ type LinkableInterface interface {
 
 	InRecovery() bool
 	OnlyInRecovery() bool
+
+	InVendor() bool
 
 	UseSdk() bool
 	UseVndk() bool
@@ -63,6 +83,11 @@ type LinkableInterface interface {
 	ToolchainLibrary() bool
 	NdkPrebuiltStl() bool
 	StubDecorator() bool
+	GetImageVariantType() ImageVariantType
+
+	SetPreventInstall()
+	SetHideFromMake()
+	ExportedToMake() bool
 }
 
 var (

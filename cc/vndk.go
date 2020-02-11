@@ -382,7 +382,7 @@ func IsForVndkApex(mctx android.BottomUpMutatorContext, m *Module) bool {
 
 		useCoreVariant := m.VndkVersion() == mctx.DeviceConfig().PlatformVndkVersion() &&
 			mctx.DeviceConfig().VndkUseCoreVariant() && !m.MustUseVendorVariant()
-		return lib.shared() && m.inVendor() && m.IsVndk() && !m.isVndkExt() && !useCoreVariant
+		return lib.shared() && m.InVendor() && m.IsVndk() && !m.isVndkExt() && !useCoreVariant
 	}
 	return false
 }
@@ -537,7 +537,7 @@ func isVndkSnapshotLibrary(config android.DeviceConfig, m *Module) (i snapshotLi
 	if m.Target().NativeBridge == android.NativeBridgeEnabled {
 		return nil, "", false
 	}
-	if !m.inVendor() || !m.installable() || m.isSnapshotPrebuilt() {
+	if !m.InVendor() || !m.installable() || m.isSnapshotPrebuilt() {
 		return nil, "", false
 	}
 	l, ok := m.linker.(snapshotLibraryInterface)
