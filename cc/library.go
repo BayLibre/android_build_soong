@@ -1104,7 +1104,7 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 			if ctx.isVndkSp() {
 				library.baseInstaller.subDir = "vndk-sp"
 			} else if ctx.isVndk() {
-				mayUseCoreVariant := true
+				/*mayUseCoreVariant := true
 
 				if ctx.mustUseVendorVariant() {
 					mayUseCoreVariant = false
@@ -1116,9 +1116,9 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 
 				if ctx.Config().CFIEnabledForPath(ctx.ModuleDir()) && ctx.Arch().ArchType == android.Arm64 {
 					mayUseCoreVariant = false
-				}
+				}*/
 
-				if mayUseCoreVariant {
+				if !ctx.mustUseVendorVariant() {
 					library.checkSameCoreVariant = true
 					if ctx.DeviceConfig().VndkUseCoreVariant() {
 						library.useCoreVariant = true

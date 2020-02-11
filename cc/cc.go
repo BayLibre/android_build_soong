@@ -1092,7 +1092,25 @@ func (ctx *moduleContextImpl) isVndkExt() bool {
 }
 
 func (ctx *moduleContextImpl) mustUseVendorVariant() bool {
-	return ctx.mod.MustUseVendorVariant()
+	if ctx.mod.MustUseVendorVariant() {
+		return true
+	}
+
+	if ctx.isVndkExt() {
+		return true
+	}
+
+	if ctx.ctx.Arch().ArchType == android.Arm64 {
+		if ctx.ctx.Config().CFIEnabledForPath(ctx.ctx.ModuleDir()) {
+			return true
+		}
+
+		if Bool(ctx.mod.sanitize.Properties.Sanitize.Cfi) || Bool(ctx.mod.sanitize.Properties.Sanitize.Diag.Cfi) {
+			return true
+		}
+	}
+
+	return false
 }
 
 func (ctx *moduleContextImpl) inProduct() bool {
