@@ -17,6 +17,8 @@ package main
 import (
 	"fmt"
 	"strings"
+
+	"android/soong/android"
 )
 
 const targetFilesPattern = "*-target_files-*.zip"
@@ -59,10 +61,8 @@ outer:
 					found = true
 				}
 			}
-			for _, filter := range targetZipFilter {
-				if strings.HasPrefix(f.Name, filter) {
-					continue outer
-				}
+			if android.HasAnyPrefix(f.Name, targetZipFilter) {
+				continue outer
 			}
 
 			if !found {
