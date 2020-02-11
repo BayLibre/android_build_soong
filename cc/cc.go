@@ -61,8 +61,8 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		ctx.TopDown("hwasan_deps", sanitizerDepsMutator(hwasan))
 		ctx.BottomUp("hwasan", sanitizerMutator(hwasan)).Parallel()
 
-		ctx.TopDown("fuzzer_deps", sanitizerDepsMutator(fuzzer))
-		ctx.BottomUp("fuzzer", sanitizerMutator(fuzzer)).Parallel()
+		ctx.TopDown("fuzzer_deps", sanitizerDepsMutator(Fuzzer))
+		ctx.BottomUp("fuzzer", sanitizerMutator(Fuzzer)).Parallel()
 
 		// cfi mutator shouldn't run before sanitizers that return true for
 		// incompatibleWithCfi()
@@ -664,6 +664,14 @@ type Module struct {
 	hideApexVariantFromMake bool
 }
 
+func (c *Module) SetPreventInstall() {
+	c.Properties.PreventInstall = true
+}
+
+func (c *Module) SetHideFromMake() {
+	c.Properties.HideFromMake = true
+}
+
 func (c *Module) Toc() android.OptionalPath {
 	if c.linker != nil {
 		if library, ok := c.linker.(libraryInterface); ok {
@@ -905,7 +913,7 @@ func (c *Module) Init() android.Module {
 
 // Returns true for dependency roots (binaries)
 // TODO(ccross): also handle dlopenable libraries
-func (c *Module) isDependencyRoot() bool {
+func (c *Module) IsDependencyRoot() bool {
 	if root, ok := c.linker.(interface {
 		isDependencyRoot() bool
 	}); ok {
@@ -1108,7 +1116,7 @@ func (ctx *moduleContextImpl) staticBinary() bool {
 }
 
 func (ctx *moduleContextImpl) header() bool {
-	return ctx.mod.header()
+	return ctx.mod.Header()
 }
 
 func (ctx *moduleContextImpl) binary() bool {
@@ -1291,6 +1299,10 @@ func (c *Module) Prebuilt() *android.Prebuilt {
 		return p.prebuilt()
 	}
 	return nil
+}
+
+func (c *Module) IsPrebuilt() bool {
+	return c.Prebuilt() != nil
 }
 
 func (c *Module) Name() string {
@@ -2759,7 +2771,7 @@ func (c *Module) staticBinary() bool {
 	return false
 }
 
-func (c *Module) header() bool {
+func (c *Module) Header() bool {
 	if h, ok := c.linker.(interface {
 		header() bool
 	}); ok {

@@ -24,33 +24,33 @@ import (
 
 var _ android.ImageInterface = (*Module)(nil)
 
-type imageVariantType string
+type ImageVariantType string
 
 const (
-	coreImageVariant          imageVariantType = "core"
-	vendorImageVariant        imageVariantType = "vendor"
-	productImageVariant       imageVariantType = "product"
-	ramdiskImageVariant       imageVariantType = "ramdisk"
-	vendorRamdiskImageVariant imageVariantType = "vendor_ramdisk"
-	recoveryImageVariant      imageVariantType = "recovery"
-	hostImageVariant          imageVariantType = "host"
+	CoreImageVariant          ImageVariantType = "core"
+	VendorImageVariant        ImageVariantType = "vendor"
+	productImageVariant       ImageVariantType = "product"
+	RamdiskImageVariant       ImageVariantType = "ramdisk"
+	vendorRamdiskImageVariant ImageVariantType = "vendor_ramdisk"
+	RecoveryImageVariant      ImageVariantType = "recovery"
+	HostImageVariant          ImageVariantType = "host"
 )
 
-func (c *Module) getImageVariantType() imageVariantType {
+func (c *Module) GetImageVariantType() ImageVariantType {
 	if c.Host() {
-		return hostImageVariant
-	} else if c.inVendor() {
-		return vendorImageVariant
+		return HostImageVariant
+	} else if c.InVendor() {
+		return VendorImageVariant
 	} else if c.inProduct() {
 		return productImageVariant
 	} else if c.InRamdisk() {
-		return ramdiskImageVariant
+		return RamdiskImageVariant
 	} else if c.InVendorRamdisk() {
 		return vendorRamdiskImageVariant
 	} else if c.InRecovery() {
-		return recoveryImageVariant
+		return RecoveryImageVariant
 	} else {
-		return coreImageVariant
+		return CoreImageVariant
 	}
 }
 
@@ -72,7 +72,7 @@ func (ctx *moduleContext) ProductSpecific() bool {
 
 func (ctx *moduleContext) SocSpecific() bool {
 	return ctx.ModuleContext.SocSpecific() ||
-		(ctx.mod.HasVendorVariant() && ctx.mod.inVendor())
+		(ctx.mod.HasVendorVariant() && ctx.mod.InVendor())
 }
 
 func (ctx *moduleContextImpl) inProduct() bool {
@@ -80,7 +80,7 @@ func (ctx *moduleContextImpl) inProduct() bool {
 }
 
 func (ctx *moduleContextImpl) inVendor() bool {
-	return ctx.mod.inVendor()
+	return ctx.mod.InVendor()
 }
 
 func (ctx *moduleContextImpl) inRamdisk() bool {
@@ -116,7 +116,7 @@ func (c *Module) inProduct() bool {
 }
 
 // Returns true if the module is "vendor" variant. Usually these modules are installed in /vendor
-func (c *Module) inVendor() bool {
+func (c *Module) InVendor() bool {
 	return c.Properties.ImageVariationPrefix == VendorVariationPrefix
 }
 
