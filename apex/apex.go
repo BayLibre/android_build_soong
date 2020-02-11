@@ -1027,7 +1027,7 @@ func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
 }
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
-	ctx.BottomUp("apex_deps", apexDepsMutator)
+	ctx.TopDown("apex_deps", apexDepsMutator)
 	ctx.BottomUp("apex", apexMutator).Parallel()
 	ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 	ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
@@ -1035,23 +1035,26 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 
 // Mark the direct and transitive dependencies of apex bundles so that they
 // can be built for the apex bundles.
-func apexDepsMutator(mctx android.BottomUpMutatorContext) {
-	if a, ok := mctx.Module().(*apexBundle); ok && !a.vndkApex {
-		apexBundleName := mctx.ModuleName()
-		mctx.WalkDeps(func(child, parent android.Module) bool {
+func apexDepsMutator(mctx android.TopDownMutatorContext) {
+	visitDirectDeps := func(apexBundleNames []string) {
+		mctx.VisitDirectDeps(func(child android.Module) {
 			depName := mctx.OtherModuleName(child)
 			// If the parent is apexBundle, this child is directly depended.
-			_, directDep := parent.(*apexBundle)
-			android.UpdateApexDependency(apexBundleName, depName, directDep)
-
+			_, directDep := mctx.Module().(*apexBundle)
 			if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() &&
 				(directDep || am.DepIsInSameApex(mctx, child)) {
-				am.BuildForApex(apexBundleName)
-				return true
-			} else {
-				return false
+				for _, n := range apexBundleNames {
+					android.UpdateApexDependency(n, depName, directDep)
+					am.BuildForApex(n)
+				}
 			}
 		})
+	}
+
+	if a, ok := mctx.Module().(*apexBundle); ok && !a.vndkApex {
+		visitDirectDeps([]string{mctx.ModuleName()})
+	} else if am, ok := mctx.Module().(android.ApexModule); ok {
+		visitDirectDeps(am.ApexVariations())
 	}
 }
 

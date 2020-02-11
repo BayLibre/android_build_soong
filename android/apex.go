@@ -42,6 +42,9 @@ type ApexModule interface {
 	// Call this before apex.apexMutator is run.
 	BuildForApex(apexName string)
 
+	// Returns the name of the APEXes that this modoule will be built for
+	ApexVariations() []string
+
 	// Returns the name of APEX that this module will be built for. Empty string
 	// is returned when 'IsForPlatform() == true'. Note that a module can be
 	// included in multiple APEXes, in which case, the module is mutated into
@@ -117,6 +120,10 @@ func (m *ApexModuleBase) BuildForApex(apexName string) {
 	if !InList(apexName, m.apexVariations) {
 		m.apexVariations = append(m.apexVariations, apexName)
 	}
+}
+
+func (m *ApexModuleBase) ApexVariations() []string {
+	return m.apexVariations
 }
 
 func (m *ApexModuleBase) ApexName() string {
