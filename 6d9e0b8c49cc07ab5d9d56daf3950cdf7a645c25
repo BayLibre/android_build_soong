@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44e41974_fdb487dd",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-11T23:28:36Z",
+      "side": 1,
+      "message": "Will this turn on compile_dex for java_library modules that are included as a static_lib in a java_library that is included in an apex?",
+      "revId": "6d9e0b8c49cc07ab5d9d56daf3950cdf7a645c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
