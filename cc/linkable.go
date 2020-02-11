@@ -30,7 +30,6 @@ type PlatformSanitizeable interface {
 // LinkableInterface is an interface for a type of module that is linkable in a C++ library.
 type LinkableInterface interface {
 	android.Module
-	android.ImageInterface
 
 	Module() android.Module
 	CcLibrary() bool
