@@ -121,6 +121,7 @@ type baseCompiler struct {
 	relative string
 	path     android.InstallPath
 	location installLocation
+	sanitize *sanitize
 
 	coverageOutputZipFile android.OptionalPath
 	unstrippedOutputFile  android.Path
@@ -193,6 +194,10 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 
 func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
 	panic(fmt.Errorf("baseCrater doesn't know how to crate things!"))
+}
+
+func (compiler *baseCompiler) isDependencyRoot() bool {
+	return false
 }
 
 func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {

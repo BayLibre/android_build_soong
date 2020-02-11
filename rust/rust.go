@@ -40,6 +40,10 @@ func init() {
 	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("rust_libraries", LibraryMutator).Parallel()
 		ctx.BottomUp("rust_begin", BeginMutator).Parallel()
+
+	})
+	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("rust_sanitizers", rustSanitizerRuntimeMutator).Parallel()
 	})
 	pctx.Import("android/soong/rust/config")
 	pctx.ImportAs("ccConfig", "android/soong/cc/config")
@@ -67,6 +71,8 @@ type BaseProperties struct {
 
 	PreventInstall bool
 	HideFromMake   bool
+
+	ImageVariationPrefix string `blueprint:"mutated"`
 }
 
 type Module struct {
@@ -81,12 +87,66 @@ type Module struct {
 	compiler         compiler
 	coverage         *coverage
 	clippy           *clippy
+	sanitize         *sanitize
 	cachedToolchain  config.Toolchain
 	sourceProvider   SourceProvider
 	subAndroidMkOnce map[SubAndroidMkProvider]bool
 
 	outputFile    android.OptionalPath
 	generatedFile android.OptionalPath
+}
+
+func (mod *Module) Header() bool {
+	//TODO: If Rust libraries provide header variants, this needs to be updated.
+	return false
+}
+
+func (mod *Module) GetImageVariantType() cc.ImageVariantType {
+	//TODO: Update this with Product variant when Rust supports these
+	if mod.Host() {
+		return cc.HostImageVariant
+	} else if mod.InRamdisk() {
+		return cc.RamdiskImageVariant
+	} else if mod.InVendor() {
+		return cc.VendorImageVariant
+	} else if mod.InRecovery() {
+		return cc.RecoveryImageVariant
+	} else {
+		return cc.CoreImageVariant
+	}
+}
+
+func (mod *Module) SetPreventInstall() {
+	mod.Properties.PreventInstall = true
+}
+
+// Returns true if the module is "vendor" variant. Usually these modules are installed in /vendor
+func (mod *Module) InVendor() bool {
+	return mod.Properties.ImageVariationPrefix == cc.VendorVariationPrefix
+}
+
+func (mod *Module) SetHideFromMake() {
+	mod.Properties.HideFromMake = true
+}
+
+func (mod *Module) SanitizePropDefined() bool {
+	// Because compiler is not set for some Rust modules where sanitize might be set, check that compiler is also not
+	// nil since we need compiler to actually sanitize.
+	return mod.sanitize != nil && mod.compiler != nil
+}
+
+func (mod *Module) IsDependencyRoot() bool {
+	if mod.compiler != nil {
+		return mod.compiler.isDependencyRoot()
+	}
+	panic("IsDependencyRoot called on a non-compiler Rust module")
+}
+
+func (mod *Module) IsPrebuilt() bool {
+	if _, ok := mod.compiler.(*prebuiltLibraryDecorator); ok {
+		return true
+	}
+	return false
 }
 
 func (mod *Module) OutputFiles(tag string) (android.Paths, error) {
@@ -289,6 +349,8 @@ type compiler interface {
 
 	Disabled() bool
 	SetDisabled()
+
+	isDependencyRoot() bool
 }
 
 type exportedFlagsProducer interface {
@@ -378,6 +440,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&TestProperties{},
 		&cc.CoverageProperties{},
 		&ClippyProperties{},
+		&SanitizeProperties{},
 	)
 
 	android.InitDefaultsModule(module)
@@ -539,6 +602,9 @@ func (mod *Module) Init() android.Module {
 	if mod.sourceProvider != nil {
 		mod.AddProperties(mod.sourceProvider.SourceProviderProps()...)
 	}
+	if mod.sanitize != nil {
+		mod.AddProperties(mod.sanitize.props()...)
+	}
 
 	android.InitAndroidArchModule(mod, mod.hod, mod.multilib)
 
@@ -571,6 +637,7 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	module := newBaseModule(hod, multilib)
 	module.coverage = &coverage{}
 	module.clippy = &clippy{}
+	module.sanitize = &sanitize{}
 	return module
 }
 
@@ -670,6 +737,9 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if mod.clippy != nil {
 		flags, deps = mod.clippy.flags(ctx, flags, deps)
 	}
+	if mod.sanitize != nil {
+		flags, deps = mod.sanitize.flags(ctx, flags, deps)
+	}
 
 	// SourceProvider needs to call GenerateSource() before compiler calls compile() so it can provide the source.
 	// TODO(b/162588681) This shouldn't have to run for every variant.
@@ -701,6 +771,10 @@ func (mod *Module) deps(ctx DepsContext) Deps {
 
 	if mod.coverage != nil {
 		deps = mod.coverage.deps(ctx, deps)
+	}
+
+	if mod.sanitize != nil {
+		deps = mod.sanitize.deps(ctx, deps)
 	}
 
 	deps.Rlibs = android.LastUniqueStrings(deps.Rlibs)
@@ -746,6 +820,9 @@ type autoDeppable interface {
 func (mod *Module) begin(ctx BaseModuleContext) {
 	if mod.coverage != nil {
 		mod.coverage.begin(ctx)
+	}
+	if mod.sanitize != nil {
+		mod.sanitize.begin(ctx)
 	}
 }
 

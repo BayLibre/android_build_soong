@@ -139,3 +139,7 @@ func (binary *binaryDecorator) autoDep() autoDep {
 		return rlibAutoDep
 	}
 }
+
+func (binary *binaryDecorator) isDependencyRoot() bool {
+	return true
+}
