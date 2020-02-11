@@ -6,6 +6,27 @@ import (
 	"github.com/google/blueprint"
 )
 
+type PlatformSanitizeable interface {
+	LinkableInterface
+
+	SanitizePropDefined() bool
+	IsDependencyRoot() bool
+	IsSanitizerEnabled(t SanitizerType) bool
+	IsSanitizerExplicitlyDisabled(t SanitizerType) bool
+	SanitizeDep() bool
+	SetSanitizer(t SanitizerType, b bool)
+	SetSanitizeDep(b bool)
+	StaticallyLinked() bool
+	SetInSanitizerDir()
+	SanitizeNever() bool
+	SanitizerSupported(t SanitizerType) bool
+
+	// SanitizableDepTagChecker should handle all possible dependency tags in the dependency tree.
+	// For example, Rust modules can depend on both Rust and CC libraries, so the Rust module implementation
+	// should handle tags from both.
+	SanitizableDepTagChecker() SantizableDependencyTagChecker
+}
+
 type LinkableInterface interface {
 	Module() android.Module
 	CcLibrary() bool
@@ -24,6 +45,8 @@ type LinkableInterface interface {
 	SetShared()
 	Static() bool
 	Shared() bool
+	Header() bool
+	IsPrebuilt() bool
 	Toc() android.OptionalPath
 
 	Host() bool
@@ -37,6 +60,8 @@ type LinkableInterface interface {
 	InRecovery() bool
 	OnlyInRecovery() bool
 
+	InVendor() bool
+
 	UseSdk() bool
 	UseVndk() bool
 	MustUseVendorVariant() bool
@@ -48,6 +73,11 @@ type LinkableInterface interface {
 	IsSdkVariant() bool
 
 	SplitPerApiLevel() bool
+
+	GetImageVariantType() ImageVariantType
+	SetPreventInstall()
+	SetHideFromMake()
+	ExportedToMake() bool
 }
 
 var (

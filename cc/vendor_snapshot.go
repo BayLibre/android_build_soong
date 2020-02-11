@@ -157,8 +157,8 @@ type vendorSnapshotLibraryProperties struct {
 }
 
 type snapshotSanitizer interface {
-	isSanitizerEnabled(t sanitizerType) bool
-	setSanitizerVariation(t sanitizerType, enabled bool)
+	isSanitizerEnabled(t SanitizerType) bool
+	setSanitizerVariation(t SanitizerType, enabled bool)
 }
 
 type vendorSnapshotLibraryDecorator struct {
@@ -256,7 +256,7 @@ func (p *vendorSnapshotLibraryDecorator) nativeCoverage() bool {
 	return false
 }
 
-func (p *vendorSnapshotLibraryDecorator) isSanitizerEnabled(t sanitizerType) bool {
+func (p *vendorSnapshotLibraryDecorator) isSanitizerEnabled(t SanitizerType) bool {
 	switch t {
 	case cfi:
 		return p.sanitizerProperties.Cfi.Src != nil
@@ -265,7 +265,7 @@ func (p *vendorSnapshotLibraryDecorator) isSanitizerEnabled(t sanitizerType) boo
 	}
 }
 
-func (p *vendorSnapshotLibraryDecorator) setSanitizerVariation(t sanitizerType, enabled bool) {
+func (p *vendorSnapshotLibraryDecorator) setSanitizerVariation(t SanitizerType, enabled bool) {
 	if !enabled {
 		return
 	}
@@ -580,7 +580,7 @@ func isVendorSnapshotModule(m *Module, inVendorProprietaryPath bool, apexInfo an
 		return false
 	}
 	// the module must be installed in /vendor
-	if !apexInfo.IsForPlatform() || m.isSnapshotPrebuilt() || !m.inVendor() {
+	if !apexInfo.IsForPlatform() || m.isSnapshotPrebuilt() || !m.InVendor() {
 		return false
 	}
 	// skip kernel_headers which always depend on vendor
@@ -601,7 +601,7 @@ func isVendorSnapshotModule(m *Module, inVendorProprietaryPath bool, apexInfo an
 		if m.sanitize != nil {
 			// scs and hwasan export both sanitized and unsanitized variants for static and header
 			// Always use unsanitized variants of them.
-			for _, t := range []sanitizerType{scs, hwasan} {
+			for _, t := range []SanitizerType{scs, hwasan} {
 				if !l.shared() && m.sanitize.isSanitizerEnabled(t) {
 					return false
 				}
