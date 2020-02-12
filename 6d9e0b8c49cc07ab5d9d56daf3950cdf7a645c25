@@ -16,6 +16,24 @@
       "revId": "6d9e0b8c49cc07ab5d9d56daf3950cdf7a645c25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eca11c8_9f14d119",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-12T01:25:53Z",
+      "side": 1,
+      "message": "ah, that\u0027s a good point. Yes, d8 rules are created for them, and I think that\u0027s not desirable for checkbuild...\n\nBut then how can I do this right? We don\u0027t know if a lib will be statically linked or not. Should we record it when creating deps?",
+      "parentUuid": "44e41974_fdb487dd",
+      "revId": "6d9e0b8c49cc07ab5d9d56daf3950cdf7a645c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
