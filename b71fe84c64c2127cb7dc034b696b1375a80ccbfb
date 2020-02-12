@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01b1732e_a3a4e57b",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1076971
+      },
+      "writtenOn": "2020-02-12T17:13:51Z",
+      "side": 1,
+      "message": "Steven: Not actually sure if I need to modify this but compilation failed and the error message used this word ... so least friction was just to add android.hardware.identity-ndk_platform to make the error go away. Please advise if this is correct.",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 32
+      },
+      "revId": "b71fe84c64c2127cb7dc034b696b1375a80ccbfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
