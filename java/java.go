@@ -652,7 +652,10 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	// Framework libraries need special handling in static coverage builds: they should not have
 	// static dependency on jacoco, otherwise there would be multiple conflicting definitions of
 	// the same jacoco classes coming from different bootclasspath jars.
-	if inList(ctx.ModuleName(), config.InstrumentFrameworkModules) {
+	if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && !j.IsForPlatform() {
+		// A jar library that is directly included in an APEX gets instrumented
+		j.properties.Instrument = true
+	} else if inList(ctx.ModuleName(), config.InstrumentFrameworkModules) {
 		if ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
 			j.properties.Instrument = true
 		}
