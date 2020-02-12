@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8370b91e_69fa76f3",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-12T07:37:26Z",
+      "side": 1,
+      "message": "not related to this change, but should this be a.Name()? (afaik, when there is `apex_override`, mctx.ModuleName() differs from a.Name() and a.Name() is the overriding name). Let\u0027s revisit this later.",
+      "range": {
+        "startLine": 1042,
+        "startChar": 29,
+        "endLine": 1042,
+        "endChar": 46
+      },
+      "revId": "02e7a24f6b544cbf97a2bc80dc568bb0f3ee9f55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca15c4af_3b25b49e",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-12T07:37:26Z",
+      "side": 1,
+      "message": "How about adding a guard to avoid VisitDirectDeps() when len(apexBundleNames) \u003d\u003d 0?",
+      "range": {
+        "startLine": 1049,
+        "startChar": 0,
+        "endLine": 1049,
+        "endChar": 50
+      },
+      "revId": "02e7a24f6b544cbf97a2bc80dc568bb0f3ee9f55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a62fb9c_4d72b59d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-12T07:37:26Z",
+      "side": 1,
+      "message": "Can we make BuildForApex() to BuildForApexes() and pass apexBundleNames? ditto for UpdateApexDependency()? The fact that both functions involves lock/unlock bothers me. ;-)\n\nYou may ignore this.",
+      "range": {
+        "startLine": 1054,
+        "startChar": 0,
+        "endLine": 1055,
+        "endChar": 22
+      },
+      "revId": "02e7a24f6b544cbf97a2bc80dc568bb0f3ee9f55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
