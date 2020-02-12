@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "431c8b1c_70b40f3c",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-12T21:13:19Z",
+      "side": 1,
+      "message": "Unnecessary whitespace changes",
+      "revId": "ee532361c499b66e9f21d734b996997eadf2f2b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97802f4a_c0f9a0ab",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-12T21:13:19Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "range": {
+        "startLine": 990,
+        "startChar": 8,
+        "endLine": 990,
+        "endChar": 9
+      },
+      "revId": "ee532361c499b66e9f21d734b996997eadf2f2b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51a8886_aaf6268d",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-12T21:13:19Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "range": {
+        "startLine": 1445,
+        "startChar": 8,
+        "endLine": 1445,
+        "endChar": 9
+      },
+      "revId": "ee532361c499b66e9f21d734b996997eadf2f2b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
