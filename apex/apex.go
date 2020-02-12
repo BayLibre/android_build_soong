@@ -1969,6 +1969,12 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 		return
 	}
 
+	// We don't need to turn this check for coverage builds as it will require us to make the
+	// jacoco libraries be available to any APEXes, which doesn't give much value.
+	if ctx.Config().IsEnvTrue("EMMA_INSTRUMENT") {
+		return
+	}
+
 	a.walkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) {
 		apexName := ctx.ModuleName()
 		if externalDep || to.AvailableFor(apexName) || whitelistedApexAvailable(apexName, to) {
