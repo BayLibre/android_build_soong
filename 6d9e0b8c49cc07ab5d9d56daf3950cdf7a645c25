@@ -34,6 +34,24 @@
       "revId": "6d9e0b8c49cc07ab5d9d56daf3950cdf7a645c25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b503d824_6ee20906",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-12T01:49:21Z",
+      "side": 1,
+      "message": "Nevermind. I was able to fix that by doing this only for the jars that are directly included in an APEX. Please refer to the PS2.",
+      "parentUuid": "0eca11c8_9f14d119",
+      "revId": "6d9e0b8c49cc07ab5d9d56daf3950cdf7a645c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
