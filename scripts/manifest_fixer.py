@@ -51,6 +51,8 @@ def parse_args():
                       help='specify additional <uses-library> tag to add. android:requred is set to false')
   parser.add_argument('--uses-non-sdk-api', dest='uses_non_sdk_api', action='store_true',
                       help='manifest is for a package built against the platform')
+  parser.add_argument('--logging-parent', dest='logging_parent', default='',
+                      help='specify logging parent as an additional <meta-data> tag.')
   parser.add_argument('--use-embedded-dex', dest='use_embedded_dex', action='store_true',
                       help=('specify if the app wants to use embedded dex and avoid extracted,'
                             'locally compiled code. Must not conflict if already declared '
@@ -122,6 +124,49 @@ def raise_min_sdk_version(doc, min_sdk_version, target_sdk_version, library):
     else:
       target_attr.value = target_sdk_version
     element.setAttributeNode(target_attr)
+
+def add_logging_parent(doc, logging_parent):
+  """Add logging parent as an additional <meta-data> tag.
+
+  Args:
+    doc: The XML document. May be modified by this function.
+    logging_parent: A string representing the logging parent value.
+  Raises:
+    RuntimeError: Invalid manifest
+  """
+  LOGGING_PARENT_KEY = 'android.content.pm.LOGGING_PARENT'
+  manifest = parse_manifest(doc)
+  elems = get_children_with_tag(manifest, 'application')
+  application = elems[0] if len(elems) == 1 else None
+  if len(elems) > 1:
+    raise RuntimeError('found multiple <application> tags')
+  elif not elems:
+    application = doc.createElement('application')
+    indent = get_indent(manifest.firstChild, 1)
+    first = manifest.firstChild
+    manifest.insertBefore(doc.createTextNode(indent), first)
+    manifest.insertBefore(application, first)
+
+  indent = get_indent(application.firstChild, 2)
+
+  last = application.lastChild
+  if last is not None and last.nodeType != minidom.Node.TEXT_NODE:
+    last = None
+
+  if not find_child_with_attribute(application, 'meta-data',
+                                   android_ns,
+                                   'name', LOGGING_PARENT_KEY) is not None:
+    ul = doc.createElement('meta-data')
+    ul.setAttributeNS(android_ns, 'android:name', LOGGING_PARENT_KEY)
+    ul.setAttributeNS(android_ns, 'android:value', logging_parent)
+    application.insertBefore(doc.createTextNode(indent), last)
+    application.insertBefore(ul, last)
+
+  # align the closing tag with the opening tag if it's not
+  # indented
+  if application.lastChild.nodeType != minidom.Node.TEXT_NODE:
+    indent = get_indent(application.previousSibling, 1)
+    application.appendChild(doc.createTextNode(indent))
 
 
 def add_uses_libraries(doc, new_uses_libraries, required):
@@ -290,6 +335,9 @@ def main():
 
     if args.uses_non_sdk_api:
       add_uses_non_sdk_api(doc)
+
+    if args.logging_parent:
+      add_logging_parent(doc, args.logging_parent)
 
     if args.use_embedded_dex:
       add_use_embedded_dex(doc)
