@@ -1181,6 +1181,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 			name: "bar",
 			base: "foo",
 			certificate: ":new_certificate",
+			logging_parent: "bah",
 		}
 
 		android_app_certificate {
@@ -1203,6 +1204,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 		signFlag    string
 		overrides   []string
 		aaptFlag    string
+		logging_parent string
 	}{
 		{
 			moduleName:  "foo",
@@ -1211,6 +1213,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 			signFlag:    "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
 			overrides:   []string{"qux"},
 			aaptFlag:    "",
+			logging_parent: "",
 		},
 		{
 			moduleName:  "bar",
@@ -1219,6 +1222,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 			signFlag:    "cert/new_cert.x509.pem cert/new_cert.pk8",
 			overrides:   []string{"qux", "foo"},
 			aaptFlag:    "",
+			logging_parent: "bah",
 		},
 		{
 			moduleName:  "baz",
@@ -1227,6 +1231,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 			signFlag:    "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
 			overrides:   []string{"qux", "foo"},
 			aaptFlag:    "--rename-manifest-package org.dandroid.bp",
+			logging_parent: "",
 		},
 	}
 	for _, expected := range expectedVariants {
@@ -1255,9 +1260,17 @@ func TestOverrideAndroidApp(t *testing.T) {
 
 		// Check if the overrides field values are correctly aggregated.
 		mod := variant.Module().(*AndroidApp)
+		//fmt.Printf("---> Output: %v\n", mod)
 		if !reflect.DeepEqual(expected.overrides, mod.appProperties.Overrides) {
 			t.Errorf("Incorrect overrides property value, expected: %q, got: %q",
 				expected.overrides, mod.appProperties.Overrides)
+		}
+
+		// Test Overridable property: Logging_parent
+		logging_parent := mod.aapt.LoggingParent
+		if !reflect.DeepEqual(expected.logging_parent, logging_parent) {
+			t.Errorf("Incorrect overrides property value for logging parent, expected: %v, got: %v",
+				expected.logging_parent, &logging_parent)
 		}
 
 		// Check the package renaming flag, if exists.
