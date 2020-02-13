@@ -16,6 +16,24 @@
       "revId": "5147ddaeedd67da1cb7dab8d1e1979944a7a0c40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f68b9c4_99cd4f00",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-13T17:13:04Z",
+      "side": 1,
+      "message": "This is ensured by the if condition that searches for the module name on NonUpdatableSystemServerJars.",
+      "parentUuid": "81340534_43ec711b",
+      "revId": "5147ddaeedd67da1cb7dab8d1e1979944a7a0c40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
