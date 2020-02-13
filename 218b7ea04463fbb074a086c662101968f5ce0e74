@@ -16,6 +16,24 @@
       "revId": "218b7ea04463fbb074a086c662101968f5ce0e74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf66953_c420184f",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-13T21:29:39Z",
+      "side": 1,
+      "message": "We could, but I thought it is against the original intention of the apex_available property. We would like to use the \nproperty as a marker for cross-dessert support. Coverage builds don\u0027t need to be cross-dessert (do they?), and I think\nblindly adding apex_availabilty properties is against the intention.",
+      "parentUuid": "af138efa_3d234b0f",
+      "revId": "218b7ea04463fbb074a086c662101968f5ce0e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
