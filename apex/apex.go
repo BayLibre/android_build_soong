@@ -120,7 +120,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libprotobuf-cpp-lite",
 		"libstatslog",
 		"libtinyxml2",
-		"libutils",
 		"libz",
 	}
 	//
@@ -159,7 +158,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libmpeg2extractor",
 		"liboggextractor",
 		"libprocessgroup",
-		"libutils",
 		"libwavextractor",
 		"updatable-media",
 	}
@@ -258,7 +256,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libsync",
 		"libui",
 		"libunwindstack",
-		"libutils",
 		"libvorbisidec",
 		"libvpx",
 		"mediaswcodec",
