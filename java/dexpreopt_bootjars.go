@@ -176,11 +176,6 @@ func skipDexpreoptBootJars(ctx android.PathContext) bool {
 		return true
 	}
 
-	if len(ctx.Config().Targets[android.Android]) == 0 {
-		// Host-only build
-		return true
-	}
-
 	return false
 }
 
@@ -305,9 +300,9 @@ func buildBootImageVariant(ctx android.SingletonContext, image *bootImageVariant
 	global := dexpreopt.GetGlobalConfig(ctx)
 
 	arch := image.target.Arch.ArchType
-	symbolsDir := image.symbolsDir.Join(ctx, image.installSubdir, arch.String())
+	symbolsDir := image.symbolsDir.Join(ctx, image.target.Os.String(), image.installSubdir, arch.String())
 	symbolsFile := symbolsDir.Join(ctx, image.stem+".oat")
-	outputDir := image.dir.Join(ctx, image.installSubdir, arch.String())
+	outputDir := image.dir.Join(ctx, image.target.Os.String(), image.installSubdir, arch.String())
 	outputPath := outputDir.Join(ctx, image.stem+".oat")
 	oatLocation := dexpreopt.PathToLocation(outputPath, arch)
 	imagePath := outputPath.ReplaceExtension(ctx, "art")
@@ -375,11 +370,16 @@ func buildBootImageVariant(ctx android.SingletonContext, image *bootImageVariant
 		FlagWithArg("--oat-location=", oatLocation).
 		FlagWithArg("--image=", imagePath.String()).
 		FlagWithArg("--instruction-set=", arch.String()).
-		FlagWithArg("--instruction-set-variant=", global.CpuVariant[arch]).
-		FlagWithArg("--instruction-set-features=", global.InstructionSetFeatures[arch]).
 		FlagWithArg("--android-root=", global.EmptyDirectory).
 		FlagWithArg("--no-inline-from=", "core-oj.jar").
 		Flag("--abort-on-hard-verifier-error")
+
+	// Use the default variant/features for host builds.
+	// The map below contains only device CPU info (which might be x86 on some devices).
+	if image.target.Os != android.BuildOs {
+		cmd.FlagWithArg("--instruction-set-variant=", global.CpuVariant[arch])
+		cmd.FlagWithArg("--instruction-set-features=", global.InstructionSetFeatures[arch])
+	}
 
 	if global.BootFlags != "" {
 		cmd.Flag(global.BootFlags)
@@ -392,7 +392,6 @@ func buildBootImageVariant(ctx android.SingletonContext, image *bootImageVariant
 	cmd.Textf(`|| ( echo %s ; false )`, proptools.ShellEscape(failureMessage))
 
 	installDir := filepath.Join("/", image.installSubdir, arch.String())
-	vdexInstallDir := filepath.Join("/", image.installSubdir)
 
 	var vdexInstalls android.RuleBuilderInstalls
 	var unstrippedInstalls android.RuleBuilderInstalls
@@ -411,11 +410,10 @@ func buildBootImageVariant(ctx android.SingletonContext, image *bootImageVariant
 		cmd.ImplicitOutput(vdex)
 		zipFiles = append(zipFiles, vdex)
 
-		// The vdex files are identical between architectures, install them to a shared location.  The Make rules will
-		// only use the install rules for one architecture, and will create symlinks into the architecture-specific
-		// directories.
+		// Note that the vdex files are identical between architectures.
+		// Make rules will create symlinks to share them between architectures.
 		vdexInstalls = append(vdexInstalls,
-			android.RuleBuilderInstall{vdex, filepath.Join(vdexInstallDir, vdex.Base())})
+			android.RuleBuilderInstall{vdex, filepath.Join(installDir, vdex.Base())})
 	}
 
 	for _, unstrippedOat := range image.moduleFiles(ctx, symbolsDir, ".oat") {
@@ -426,7 +424,7 @@ func buildBootImageVariant(ctx android.SingletonContext, image *bootImageVariant
 			android.RuleBuilderInstall{unstrippedOat, filepath.Join(installDir, unstrippedOat.Base())})
 	}
 
-	rule.Build(pctx, ctx, image.name+"JarsDexpreopt_"+arch.String(), "dexpreopt "+image.name+" jars "+arch.String())
+	rule.Build(pctx, ctx, image.name+"JarsDexpreopt_"+image.target.String(), "dexpreopt "+image.name+" jars "+arch.String())
 
 	// save output and installed files for makevars
 	image.installs = rule.Installs()
@@ -545,7 +543,7 @@ func dumpOatRules(ctx android.SingletonContext, image *bootImageConfig) {
 	for _, image := range image.variants {
 		arch := image.target.Arch.ArchType
 		// Create a rule to call oatdump.
-		output := android.PathForOutput(ctx, "boot."+arch.String()+".oatdump.txt")
+		output := android.PathForOutput(ctx, "boot."+image.target.String()+".oatdump.txt")
 		rule := android.NewRuleBuilder()
 		rule.Command().
 			// TODO: for now, use the debug version for better error reporting
@@ -555,16 +553,16 @@ func dumpOatRules(ctx android.SingletonContext, image *bootImageConfig) {
 			FlagWithArg("--image=", strings.Join(image.imageLocations, ":")).Implicits(image.imagesDeps.Paths()).
 			FlagWithOutput("--output=", output).
 			FlagWithArg("--instruction-set=", arch.String())
-		rule.Build(pctx, ctx, "dump-oat-boot-"+arch.String(), "dump oat boot "+arch.String())
+		rule.Build(pctx, ctx, "dump-oat-boot-"+image.target.String(), "dump oat boot "+arch.String())
 
 		// Create a phony rule that depends on the output file and prints the path.
-		phony := android.PathForPhony(ctx, "dump-oat-boot-"+arch.String())
+		phony := android.PathForPhony(ctx, "dump-oat-boot-"+image.target.String())
 		rule = android.NewRuleBuilder()
 		rule.Command().
 			Implicit(output).
 			ImplicitOutput(phony).
 			Text("echo").FlagWithArg("Output in ", output.String())
-		rule.Build(pctx, ctx, "phony-dump-oat-boot-"+arch.String(), "dump oat boot "+arch.String())
+		rule.Build(pctx, ctx, "phony-dump-oat-boot-"+image.target.String(), "dump oat boot "+arch.String())
 
 		allPhonies = append(allPhonies, phony)
 	}
@@ -608,7 +606,11 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 		for _, current := range append(d.otherImages, image) {
 			imageNames = append(imageNames, current.name)
 			for _, current := range current.variants {
-				sfx := current.name + "_" + current.target.Arch.ArchType.String()
+				suffix := "target"
+				if current.target.Os == android.BuildOs {
+					suffix = "host"
+				}
+				sfx := current.name + "_" + suffix + "_" + current.target.Arch.ArchType.String()
 				ctx.Strict("DEXPREOPT_IMAGE_VDEX_BUILT_INSTALLED_"+sfx, current.vdexInstalls.String())
 				ctx.Strict("DEXPREOPT_IMAGE_"+sfx, current.images.String())
 				ctx.Strict("DEXPREOPT_IMAGE_DEPS_"+sfx, strings.Join(current.imagesDeps.Strings(), " "))

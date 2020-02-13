@@ -52,6 +52,10 @@ func dexpreoptTargets(ctx android.PathContext) []android.Target {
 			targets = append(targets, target)
 		}
 	}
+	// We may also need the images on host in order to run host-based tests.
+	for _, target := range ctx.Config().Targets[android.BuildOs] {
+		targets = append(targets, target)
+	}
 
 	return targets
 }
@@ -151,7 +155,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			// Create target-specific variants.
 			for _, target := range targets {
 				arch := target.Arch.ArchType
-				imageDir := c.dir.Join(ctx, c.installSubdir, arch.String())
+				imageDir := c.dir.Join(ctx, target.Os.String(), c.installSubdir, arch.String())
 				variant := &bootImageVariant{
 					bootImageConfig: c,
 					target:          target,
