@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5c02863_e7e5d613",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-13T11:30:49Z",
+      "side": 1,
+      "message": "Added, thanks.",
+      "parentUuid": "501ae21a_59c141ba",
+      "revId": "08d50492d505d3950e0721f3cfc184ba6e5bdb13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59fbff0b_a4959e7a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "08d50492d505d3950e0721f3cfc184ba6e5bdb13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e86b49c_5bafeb61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-13T11:30:49Z",
+      "side": 1,
+      "message": "It is the internal Change-Id (it is the same as with the related change aosp/1231072, see my reply there).",
+      "parentUuid": "59fbff0b_a4959e7a",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "08d50492d505d3950e0721f3cfc184ba6e5bdb13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
