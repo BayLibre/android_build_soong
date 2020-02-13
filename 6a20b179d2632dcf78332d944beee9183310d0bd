@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "268128e3_319fd663",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-13T23:02:34Z",
+      "side": 0,
+      "message": "we should probably clean this up at the same time",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "6a20b179d2632dcf78332d944beee9183310d0bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
