@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af138efa_3d234b0f",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-13T20:31:40Z",
+      "side": 1,
+      "message": "This seems a little odd, why not just mark the jacoco static library as apex_available to all apexes?",
+      "revId": "218b7ea04463fbb074a086c662101968f5ce0e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
