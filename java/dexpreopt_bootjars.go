@@ -173,11 +173,6 @@ func skipDexpreoptBootJars(ctx android.PathContext) bool {
 		return true
 	}
 
-	if len(ctx.Config().Targets[android.Android]) == 0 {
-		// Host-only build
-		return true
-	}
-
 	return false
 }
 
@@ -278,7 +273,7 @@ func buildBootImage(ctx android.SingletonContext, config bootImageConfig) *bootI
 
 	var allFiles android.Paths
 	for _, target := range image.targets {
-		files := buildBootImageRuleForArch(ctx, image, target.Arch.ArchType, profile, missingDeps)
+		files := buildBootImageRuleForTarget(ctx, image, target, profile, missingDeps)
 		allFiles = append(allFiles, files.Paths()...)
 	}
 
@@ -296,15 +291,16 @@ func buildBootImage(ctx android.SingletonContext, config bootImageConfig) *bootI
 	return image
 }
 
-func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
-	arch android.ArchType, profile android.Path, missingDeps []string) android.WritablePaths {
+func buildBootImageRuleForTarget(ctx android.SingletonContext, image *bootImage,
+	target android.Target, profile android.Path, missingDeps []string) android.WritablePaths {
+	arch := target.Arch.ArchType
 
 	globalSoong := dexpreopt.GetCachedGlobalSoongConfig(ctx)
 	global := dexpreopt.GetGlobalConfig(ctx)
 
-	symbolsDir := image.symbolsDir.Join(ctx, image.installSubdir, arch.String())
+	symbolsDir := image.symbolsDir.Join(ctx, target.Os.String(), image.installSubdir, arch.String())
 	symbolsFile := symbolsDir.Join(ctx, image.stem+".oat")
-	outputDir := image.dir.Join(ctx, image.installSubdir, arch.String())
+	outputDir := image.dir.Join(ctx, target.Os.String(), image.installSubdir, arch.String())
 	outputPath := outputDir.Join(ctx, image.stem+".oat")
 	oatLocation := dexpreopt.PathToLocation(outputPath, arch)
 	imagePath := outputPath.ReplaceExtension(ctx, "art")
@@ -389,7 +385,6 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 	cmd.Textf(`|| ( echo %s ; false )`, proptools.ShellEscape(failureMessage))
 
 	installDir := filepath.Join("/", image.installSubdir, arch.String())
-	vdexInstallDir := filepath.Join("/", image.installSubdir)
 
 	var vdexInstalls android.RuleBuilderInstalls
 	var unstrippedInstalls android.RuleBuilderInstalls
@@ -408,11 +403,10 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 		cmd.ImplicitOutput(vdex)
 		zipFiles = append(zipFiles, vdex)
 
-		// The vdex files are identical between architectures, install them to a shared location.  The Make rules will
-		// only use the install rules for one architecture, and will create symlinks into the architecture-specific
-		// directories.
+		// Note that the vdex files are identical between architectures.
+		// Make rules will create symlinks to share them between architectures.
 		vdexInstalls = append(vdexInstalls,
-			android.RuleBuilderInstall{vdex, filepath.Join(vdexInstallDir, vdex.Base())})
+			android.RuleBuilderInstall{vdex, filepath.Join(installDir, vdex.Base())})
 	}
 
 	for _, unstrippedOat := range image.moduleFiles(ctx, symbolsDir, ".oat") {
@@ -423,7 +417,7 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 			android.RuleBuilderInstall{unstrippedOat, filepath.Join(installDir, unstrippedOat.Base())})
 	}
 
-	rule.Build(pctx, ctx, image.name+"JarsDexpreopt_"+arch.String(), "dexpreopt "+image.name+" jars "+arch.String())
+	rule.Build(pctx, ctx, image.name+"JarsDexpreopt_"+target.String(), "dexpreopt "+image.name+" jars "+arch.String())
 
 	// save output and installed files for makevars
 	image.installs[arch] = rule.Installs()

@@ -81,23 +81,23 @@ func TestDexpreoptBootJars(t *testing.T) {
 	}
 
 	expectedOutputs := []string{
-		"dex_bootjars/system/framework/arm64/boot.invocation",
+		"dex_bootjars/android/system/framework/arm64/boot.invocation",
 
-		"dex_bootjars/system/framework/arm64/boot-foo.art",
-		"dex_bootjars/system/framework/arm64/boot-bar.art",
-		"dex_bootjars/system/framework/arm64/boot-baz.art",
+		"dex_bootjars/android/system/framework/arm64/boot-foo.art",
+		"dex_bootjars/android/system/framework/arm64/boot-bar.art",
+		"dex_bootjars/android/system/framework/arm64/boot-baz.art",
 
-		"dex_bootjars/system/framework/arm64/boot-foo.oat",
-		"dex_bootjars/system/framework/arm64/boot-bar.oat",
-		"dex_bootjars/system/framework/arm64/boot-baz.oat",
+		"dex_bootjars/android/system/framework/arm64/boot-foo.oat",
+		"dex_bootjars/android/system/framework/arm64/boot-bar.oat",
+		"dex_bootjars/android/system/framework/arm64/boot-baz.oat",
 
-		"dex_bootjars/system/framework/arm64/boot-foo.vdex",
-		"dex_bootjars/system/framework/arm64/boot-bar.vdex",
-		"dex_bootjars/system/framework/arm64/boot-baz.vdex",
+		"dex_bootjars/android/system/framework/arm64/boot-foo.vdex",
+		"dex_bootjars/android/system/framework/arm64/boot-bar.vdex",
+		"dex_bootjars/android/system/framework/arm64/boot-baz.vdex",
 
-		"dex_bootjars_unstripped/system/framework/arm64/boot-foo.oat",
-		"dex_bootjars_unstripped/system/framework/arm64/boot-bar.oat",
-		"dex_bootjars_unstripped/system/framework/arm64/boot-baz.oat",
+		"dex_bootjars_unstripped/android/system/framework/arm64/boot-foo.oat",
+		"dex_bootjars_unstripped/android/system/framework/arm64/boot-bar.oat",
+		"dex_bootjars_unstripped/android/system/framework/arm64/boot-baz.oat",
 	}
 
 	for i := range expectedOutputs {
