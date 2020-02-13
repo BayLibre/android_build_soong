@@ -1823,7 +1823,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.deviceProperties.UncompressDex = j.dexpreopter.uncompressedDex
 	j.compile(ctx, nil)
 
-	exclusivelyForApex := android.InAnyApex(ctx.ModuleName()) && !j.IsForPlatform()
+	exclusivelyForApex := android.InAnyApex(ctx, ctx.ModuleName()) && !j.IsForPlatform()
 	if (Bool(j.properties.Installable) || ctx.Host()) && !exclusivelyForApex {
 		var extraInstallDeps android.Paths
 		if j.InstallMixin != nil {

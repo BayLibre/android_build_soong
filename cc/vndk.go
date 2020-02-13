@@ -793,7 +793,7 @@ func (c *vndkSnapshotSingleton) MakeVars(ctx android.MakeVarsContext) {
 	movedToApexLlndkLibraries := []string{}
 	for lib := range llndkLibraries(ctx.Config()) {
 		// Skip bionic libs, they are handled in different manner
-		if android.DirectlyInAnyApex(&notOnHostContext{}, lib) && !isBionic(lib) {
+		if android.DirectlyInAnyApex(ctx, lib) && !isBionic(lib) {
 			movedToApexLlndkLibraries = append(movedToApexLlndkLibraries, lib)
 		}
 	}

@@ -156,7 +156,7 @@ func stubFlagsRule(ctx android.SingletonContext) {
 				// the platform variant, and skip the variants for APEXes.
 				// Otherwise, the hiddenapi tool will complain about duplicated classes
 				if a, ok := module.(android.ApexModule); ok {
-					if android.InAnyApex(module.Name()) && !a.IsForPlatform() {
+					if android.InAnyApex(ctx, module.Name()) && !a.IsForPlatform() {
 						return
 					}
 				}

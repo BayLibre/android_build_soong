@@ -201,18 +201,21 @@ func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []Mod
 	return nil
 }
 
-var apexData OncePer
 var apexNamesMapMutex sync.Mutex
 var apexNamesKey = NewOnceKey("apexNames")
+
+type configProvider interface {
+	Config() Config
+}
 
 // This structure maintains the global mapping in between modules and APEXes.
 // Examples:
 //
-// apexNamesMap()["foo"]["bar"] == true: module foo is directly depended on by APEX bar
-// apexNamesMap()["foo"]["bar"] == false: module foo is indirectly depended on by APEX bar
-// apexNamesMap()["foo"]["bar"] doesn't exist: foo is not built for APEX bar
-func apexNamesMap() map[string]map[string]bool {
-	return apexData.Once(apexNamesKey, func() interface{} {
+// apexNamesMap(ctx)["foo"]["bar"] == true: module foo is directly depended on by APEX bar
+// apexNamesMap(ctx)["foo"]["bar"] == false: module foo is indirectly depended on by APEX bar
+// apexNamesMap(ctx)["foo"]["bar"] doesn't exist: foo is not built for APEX bar
+func apexNamesMap(ctx configProvider) map[string]map[string]bool {
+	return ctx.Config().Once(apexNamesKey, func() interface{} {
 		return make(map[string]map[string]bool)
 	}).(map[string]map[string]bool)
 }
@@ -221,49 +224,40 @@ func apexNamesMap() map[string]map[string]bool {
 // depended on by an APEX named apexName. Directly depending means that a module
 // is explicitly listed in the build definition of the APEX via properties like
 // native_shared_libs, java_libs, etc.
-func UpdateApexDependency(apexName string, moduleName string, directDep bool) {
+func UpdateApexDependency(ctx configProvider, apexName string, moduleName string, directDep bool) {
 	apexNamesMapMutex.Lock()
 	defer apexNamesMapMutex.Unlock()
-	apexNames, ok := apexNamesMap()[moduleName]
+	apexNames, ok := apexNamesMap(ctx)[moduleName]
 	if !ok {
 		apexNames = make(map[string]bool)
-		apexNamesMap()[moduleName] = apexNames
+		apexNamesMap(ctx)[moduleName] = apexNames
 	}
 	apexNames[apexName] = apexNames[apexName] || directDep
 }
 
-// TODO(b/146393795): remove this when b/146393795 is fixed
-func ClearApexDependency() {
-	m := apexNamesMap()
-	for k := range m {
-		delete(m, k)
-	}
-}
-
 // Tests whether a module named moduleName is directly depended on by an APEX
 // named apexName.
-func DirectlyInApex(apexName string, moduleName string) bool {
+func DirectlyInApex(ctx configProvider, apexName string, moduleName string) bool {
 	apexNamesMapMutex.Lock()
 	defer apexNamesMapMutex.Unlock()
-	if apexNames, ok := apexNamesMap()[moduleName]; ok {
+	if apexNames, ok := apexNamesMap(ctx)[moduleName]; ok {
 		return apexNames[apexName]
 	}
 	return false
 }
 
-type hostContext interface {
-	Host() bool
-}
-
 // Tests whether a module named moduleName is directly depended on by any APEX.
-func DirectlyInAnyApex(ctx hostContext, moduleName string) bool {
-	if ctx.Host() {
+func DirectlyInAnyApex(ctx configProvider, moduleName string) bool {
+	if c, ok := ctx.(interface {
+		Host() bool
+	}); ok && c.Host() {
 		// Host has no APEX.
 		return false
 	}
+
 	apexNamesMapMutex.Lock()
 	defer apexNamesMapMutex.Unlock()
-	if apexNames, ok := apexNamesMap()[moduleName]; ok {
+	if apexNames, ok := apexNamesMap(ctx)[moduleName]; ok {
 		for an := range apexNames {
 			if apexNames[an] {
 				return true
@@ -275,18 +269,18 @@ func DirectlyInAnyApex(ctx hostContext, moduleName string) bool {
 
 // Tests whether a module named module is depended on (including both
 // direct and indirect dependencies) by any APEX.
-func InAnyApex(moduleName string) bool {
+func InAnyApex(ctx configProvider, moduleName string) bool {
 	apexNamesMapMutex.Lock()
 	defer apexNamesMapMutex.Unlock()
-	apexNames, ok := apexNamesMap()[moduleName]
+	apexNames, ok := apexNamesMap(ctx)[moduleName]
 	return ok && len(apexNames) > 0
 }
 
-func GetApexesForModule(moduleName string) []string {
+func GetApexesForModule(ctx configProvider, moduleName string) []string {
 	ret := []string{}
 	apexNamesMapMutex.Lock()
 	defer apexNamesMapMutex.Unlock()
-	if apexNames, ok := apexNamesMap()[moduleName]; ok {
+	if apexNames, ok := apexNamesMap(ctx)[moduleName]; ok {
 		for an := range apexNames {
 			ret = append(ret, an)
 		}

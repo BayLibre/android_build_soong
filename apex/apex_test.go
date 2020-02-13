@@ -96,8 +96,6 @@ func withUnbundledBuild(fs map[string][]byte, config android.Config) {
 }
 
 func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*android.TestContext, android.Config) {
-	android.ClearApexDependency()
-
 	bp = bp + `
 		toolchain_library {
 			name: "libcompiler_rt-extras",
@@ -2266,8 +2264,16 @@ func TestApexName(t *testing.T) {
 	ensureNotContains(t, androidMk, "LOCAL_MODULE := mylib.com.android.myapex\n")
 }
 
+type configProvider struct {
+	config *android.Config
+}
+
+func (c configProvider) Config() android.Config {
+	return *c.config
+}
+
 func TestNonTestApex(t *testing.T) {
-	ctx, _ := testApex(t, `
+	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -2312,16 +2318,13 @@ func TestNonTestApex(t *testing.T) {
 	// Ensure that the platform variant ends with _shared
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib_common"), "android_arm64_armv8-a_shared")
 
-	if !android.InAnyApex("mylib_common") {
+	if !android.InAnyApex(configProvider{&config}, "mylib_common") {
 		t.Log("Found mylib_common not in any apex!")
 		t.Fail()
 	}
 }
 
 func TestTestApex(t *testing.T) {
-	if android.InAnyApex("mylib_common_test") {
-		t.Fatal("mylib_common_test must not be used in any other tests since this checks that global state is not updated in an illegal way!")
-	}
 	ctx, _ := testApex(t, `
 		apex_test {
 			name: "myapex",

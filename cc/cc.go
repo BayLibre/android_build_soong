@@ -2188,7 +2188,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			if ccDep.CcLibrary() && !depIsStatic {
 				depIsStubs := ccDep.BuildStubs()
 				depHasStubs := ccDep.HasStubsVariants()
-				depInSameApex := android.DirectlyInApex(c.ApexName(), depName)
+				depInSameApex := android.DirectlyInApex(ctx, c.ApexName(), depName)
 				depInPlatform := !android.DirectlyInAnyApex(ctx, depName)
 
 				var useThisDep bool
@@ -2399,10 +2399,10 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		switch depTag {
 		case SharedDepTag, sharedExportDepTag, lateSharedDepTag, earlySharedDepTag:
 			if ccDep.CcLibrary() {
-				if ccDep.BuildStubs() && android.InAnyApex(depName) {
+				if ccDep.BuildStubs() && android.InAnyApex(ctx, depName) {
 					// Add the dependency to the APEX(es) providing the library so that
 					// m <module> can trigger building the APEXes as well.
-					for _, an := range android.GetApexesForModule(depName) {
+					for _, an := range android.GetApexesForModule(ctx, depName) {
 						c.Properties.ApexesProvidingSharedLibs = append(
 							c.Properties.ApexesProvidingSharedLibs, an)
 					}
