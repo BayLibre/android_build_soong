@@ -1046,7 +1046,7 @@ func apexDepsMutator(mctx android.BottomUpMutatorContext) {
 
 			if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() &&
 				(directDep || am.DepIsInSameApex(mctx, child)) {
-				am.BuildForApex(apexBundleName)
+				am.BuildForApex(apexBundleName, proptools.Bool(a.properties.Legacy_android10_support))
 				return true
 			} else {
 				return false

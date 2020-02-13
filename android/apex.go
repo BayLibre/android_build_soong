@@ -40,7 +40,7 @@ type ApexModule interface {
 
 	// Marks that this module should be built for the APEX of the specified name.
 	// Call this before apex.apexMutator is run.
-	BuildForApex(apexName string)
+	BuildForApex(apexName string, legacyAndroid10Support bool)
 
 	// Returns the name of APEX that this module will be built for. Empty string
 	// is returned when 'IsForPlatform() == true'. Note that a module can be
@@ -69,10 +69,6 @@ type ApexModule interface {
 	// for an APEX marked via BuildForApex().
 	CreateApexVariations(mctx BottomUpMutatorContext) []Module
 
-	// Sets the name of the apex variant of this module. Called inside
-	// CreateApexVariations.
-	setApexName(apexName string)
-
 	// Tests if this module is available for the specified APEX or ":platform"
 	AvailableFor(what string) bool
 
@@ -93,6 +89,9 @@ type ApexProperties struct {
 
 	// Name of the apex variant that this module is mutated into
 	ApexName string `blueprint:"mutated"`
+
+	// Whether this apex variant needs to target Android 10
+	LegacyAndroid10Support bool `blueprint:"mutated"`
 }
 
 // Provides default implementation for the ApexModule interface. APEX-aware
@@ -102,19 +101,27 @@ type ApexModuleBase struct {
 
 	canHaveApexVariants bool
 
-	apexVariationsLock sync.Mutex // protects apexVariations during parallel apexDepsMutator
-	apexVariations     []string
+	apexVariationsLock            sync.Mutex // protects apexVariations, apexHasLegacyAndroid10Support during parallel apexDepsMutator
+	apexVariations                []string
+	apexHasLegacyAndroid10Support map[string]bool
 }
 
 func (m *ApexModuleBase) apexModuleBase() *ApexModuleBase {
 	return m
 }
 
-func (m *ApexModuleBase) BuildForApex(apexName string) {
+func (m *ApexModuleBase) BuildForApex(apexName string, legacyAndroid10Support bool) {
 	m.apexVariationsLock.Lock()
 	defer m.apexVariationsLock.Unlock()
 	if !InList(apexName, m.apexVariations) {
 		m.apexVariations = append(m.apexVariations, apexName)
+		if m.apexHasLegacyAndroid10Support == nil {
+			m.apexHasLegacyAndroid10Support = make(map[string]bool)
+		}
+		m.apexHasLegacyAndroid10Support[apexName] = legacyAndroid10Support
+		for k, v := range m.apexHasLegacyAndroid10Support {
+			println(k, v)
+		}
 	}
 }
 
@@ -124,10 +131,6 @@ func (m *ApexModuleBase) ApexName() string {
 
 func (m *ApexModuleBase) IsForPlatform() bool {
 	return m.ApexProperties.ApexName == ""
-}
-
-func (m *ApexModuleBase) setApexName(apexName string) {
-	m.ApexProperties.ApexName = apexName
 }
 
 func (m *ApexModuleBase) CanHaveApexVariants() bool {
@@ -189,12 +192,16 @@ func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []Mod
 		mctx.SetDefaultDependencyVariation(&defaultVariation)
 
 		modules := mctx.CreateVariations(variations...)
-		for i, m := range modules {
+		for i, mod := range modules {
 			platformVariation := i == 0
-			if platformVariation && !mctx.Host() && !m.(ApexModule).AvailableFor(AvailableToPlatform) {
-				m.SkipInstall()
+			if platformVariation && !mctx.Host() && !mod.(ApexModule).AvailableFor(AvailableToPlatform) {
+				mod.SkipInstall()
 			}
-			m.(ApexModule).setApexName(variations[i])
+			props := &mod.(ApexModule).apexModuleBase().ApexProperties
+			props.ApexName = variations[i]
+			if m.apexHasLegacyAndroid10Support != nil {
+				props.LegacyAndroid10Support = m.apexHasLegacyAndroid10Support[variations[i]]
+			}
 		}
 		return modules
 	}

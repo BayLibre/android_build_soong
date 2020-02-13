@@ -151,6 +151,14 @@ func needsLibAndroidSupport(ctx BaseModuleContext) bool {
 	return version < 21
 }
 
+func appendStaticUnwinder(ctx BaseModuleContext, staticLibs []string) []string {
+	if ctx.Arch().ArchType == android.Arm {
+		return append(staticLibs, "libunwind_llvm")
+	} else {
+		return append(staticLibs, "libgcc_stripped")
+	}
+}
+
 func (stl *stl) deps(ctx BaseModuleContext, deps Deps) Deps {
 	switch stl.Properties.SelectedStl {
 	case "libstdc++":
@@ -173,12 +181,11 @@ func (stl *stl) deps(ctx BaseModuleContext, deps Deps) Deps {
 		if ctx.toolchain().Bionic() {
 			if ctx.staticBinary() {
 				deps.StaticLibs = append(deps.StaticLibs, "libm", "libc")
-				if ctx.Arch().ArchType == android.Arm {
-					deps.StaticLibs = append(deps.StaticLibs, "libunwind_llvm")
-				} else {
-					deps.StaticLibs = append(deps.StaticLibs, "libgcc_stripped")
-				}
+				deps.StaticLibs = appendStaticUnwinder(ctx, deps.StaticLibs)
 			}
+		}
+		if ctx.Module().(*Module).ApexProperties.LegacyAndroid10Support {
+			deps.StaticLibs = appendStaticUnwinder(ctx, deps.StaticLibs)
 		}
 	case "":
 		// None or error.
@@ -268,6 +275,11 @@ func (stl *stl) flags(ctx ModuleContext, flags Flags) Flags {
 		}
 	default:
 		panic(fmt.Errorf("Unknown stl: %q", stl.Properties.SelectedStl))
+	}
+
+	flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-u,by_the_way_my_apex_is_" + ctx.Module().(*Module).ApexProperties.ApexName)
+	if ctx.Module().(*Module).ApexProperties.LegacyAndroid10Support {
+		flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-u,by_the_way_i_need_legacy_support")
 	}
 
 	return flags
