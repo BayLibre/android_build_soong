@@ -187,7 +187,7 @@ awk -v sep="${sep}" '{
 }' "${allDeps}" | sort -n
 
 if ${interactive}; then
-    echo -n "`date '+%F %-k:%M:%S'` Delete ${tmpFiles}? [n] " >&2
+    echo -n "`date '+%F %-k:%M:%S'` Delete ${tmpFiles} ? [n] " >&2
     read answer
     case "${answer}" in [yY]*) rm -fr "${tmpFiles}";; esac
 else

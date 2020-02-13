@@ -34,6 +34,11 @@ notices_out=''              # where to output the list of license/notice files
 
 sep=" "                     # separator between md5sum and notice filename
 
+nofollow=''                 # regularexp must fully match targets to skip
+
+# files with the following extensions include dependencies as content
+container_types='apex|apk|zip|jar|tar|tgz'
+
 use_stdin=false             # whether to read targets from stdin i.e. target -
 
 while [ $# -gt 0 ]; do
@@ -44,55 +49,76 @@ while [ $# -gt 0 ]; do
       -*)
         flag=$(expr "${1}" : '^-*\(.*\)$')
         case "${flag:-}" in
-        order_deps)
+          order_deps)
             include_order_deps=true;;
-        noorder_deps)
+          noorder_deps)
             include_order_deps=false;;
-        implicit)
+          implicit)
             include_implicit_deps=true;;
-        noimplicit)
+          noimplicit)
             include_implicit_deps=false;;
-        direct)
+          direct)
             include_deps=true;;
-        nodirect)
+          nodirect)
             include_deps=false;;
-        csv)
+          csv)
             sep=",";;
-        sep)
+          sep)
             sep="${2?"${usage}"}"; shift;;
-        sep=)
+          sep=)
             sep=$(expr "${flag}" : '^sep=\(.*\)$');;
-        q) ;&
-        quiet)
+          q) ;&
+          quiet)
             quiet=true;;
-        noq) ;&
-        noquiet)
+          noq) ;&
+          noquiet)
             quiet=false;;
-        p) ;&
-        projects)
+          nofollow)
+            case "${nofollow}" in
+              '')
+                nofollow="${2?"${usage}"}";;
+              *)
+                nofollow="${nofollow}|${2?"${usage}"}";;
+            esac
+            shift
+          ;;
+          nofollow=*)
+            case "${nofollow}" in
+              '')
+                nofollow=$(expr "${flag}" : '^nofollow=\(.*\)$');;
+              *)
+                nofollow="${nofollow}|"$(expr "${flag}" : '^nofollow=\(.*\)$');;
+            esac
+          ;;
+          container)
+            container_types="${container_types}|${2?"${usage}"}";;
+          container=*)
+            container_types="${container_types}|"$(expr "${flag}" : '^container=\(.*\)$');;
+          p) ;&
+          projects)
             projects_out="${2?"${usage}"}"; shift;;
-        p=*) ;&
-        projects=*)
+          p=*) ;&
+          projects=*)
             projects_out=$(expr "${flag}" : '^.*=\(.*\)$');;
-        d) ;&
-        directores)
+          d) ;&
+          directores)
             directories_out="${2?"${usage}"}"; shift;;
-        d=*) ;&
-        directories=*)
+          d=*) ;&
+          directories=*)
             directories_out=$(expr "${flag}" : '^.*=\(.*\)$');;
-        t) ;&
-        targets)
+          t) ;&
+          targets)
             targets_out="${2?"${usage}"}"; shift;;
-        t=*) ;&
-        targets=)
+          t=*) ;&
+          targets=)
             targets_out=$(expr "${flag}" : '^.*=\(.*\)$');;
-        n) ;&
-        notices)
+          n) ;&
+          notices)
             notices_out="${2?"${usage}"}"; shift;;
-        n=*) ;&
-        notices=)
+          n=*) ;&
+          notices=)
             notices_out=$(expr "${flag}" : '^.*=\(.*\)$');;
-        *)
+          *)
             die "Unknown flag ${1}";;
         esac
       ;;
@@ -138,51 +164,59 @@ fi
 # isnotice in {0,1} with 1 for output targets believed to be license or notice
 function getDeps() {
     (
-      tr '\n' '\0' | xargs -0 \
+      tr '\n' '\0' | xargs -0 -r \
           "${ANDROID_BUILD_TOP}/prebuilts/build-tools/linux-x86/bin/ninja" \
           -f "${ANDROID_BUILD_TOP}/out/combined-${TARGET_PRODUCT}.ninja" \
           -t query
     ) | awk -v include_order="${include_order_deps}" \
         -v include_implicit="${include_implicit_deps}" \
         -v include_direct="${include_deps}" \
+        -v containers="${container_types}" \
     '
       BEGIN {
         ininput = 0
         isnotice = 0
+        currFileName = ""
+        currExt = ""
       }
       $1 == "outputs:" {
         ininput = 0
       }
       ininput == 0 && $0 ~ /^\S\S*:$/ {
         isnotice = ($0 ~ /.*NOTICE.*[.]txt:$/)
+        currFileName = gensub(/^.*[/]([^/]*)[:]$/, "\\1", "g")
+        currExt = gensub(/^.*[.]([^./]*)[:]$/, "\\1", "g")
       }
       ininput != 0 && $1 !~ /^[|][|]?/ {
         if (include_direct == "true") {
+          fileName = gensub(/^.*[/]([^/]*)$/, "\\1", "g")
           print ( \
               (isnotice && $0 !~ /^\s*build[/]soong[/]scripts[/]/) \
               || $0 ~ /NOTICE|LICEN[CS]E/ \
               || $0 ~ /(notice|licen[cs]e)[.]txt/ \
-          )" "gensub(/^\s*/, "", "g")
+          )" "(fileName == currFileName||currExt ~ "^(" containers ")$")" "gensub(/^\s*/, "", "g")
         }
       }
       ininput != 0 && $1 == "|" {
         if (include_implicit == "true") {
+          fileName = gensub(/^.*[/]([^/]*)$/, "\\1", "g")
           $1 = ""
           print ( \
               (isnotice && $0 !~ /^\s*build[/]soong[/]scripts[/]/) \
               || $0 ~ /NOTICE|LICEN[CS]E/ \
               || $0 ~ /(notice|licen[cs]e)[.]txt/ \
-          )" "gensub(/^\s*/, "", "g")
+          )" "(fileName == currFileName||currExt ~ "^(" containers ")$")" "gensub(/^\s*/, "", "g")
         }
       }
       ininput != 0 && $1 == "||" {
         if (include_order == "true") {
+          fileName = gensub(/^.*[/]([^/]*)$/, "\\1", "g")
           $1 = ""
           print ( \
               (isnotice && $0 !~ /^\s*build[/]soong[/]scripts[/]/) \
               || $0 ~ /NOTICE|LICEN[CS]E/ \
               || $0 ~ /(notice|licen[cs]e)[.]txt/ \
-          )" "gensub(/^\s*/, "", "g")
+          )" "(fileName == currFileName||currExt ~ "^(" containers ")$")" "gensub(/^\s*/, "", "g")
         }
       }
       $1 == "input:" {
@@ -232,9 +266,9 @@ for idx in "${!targets[*]}"; do
       *LICEN[CS]E*) ;&
       *notice.txt) ;&
       *licen[cs]e.txt)
-        echo "1 ${targets[${idx}]}" >>"${newDeps}";;
+        echo "1 1 ${targets[${idx}]}" >>"${newDeps}";;
       *)
-        echo "0 ${targets[${idx}]}" >>"${newDeps}";;
+        echo "0 1 ${targets[${idx}]}" >>"${newDeps}";;
     esac
 done
 
@@ -246,13 +280,15 @@ cp "${allDeps}" "${oldDeps}"
 # report depth of dependenciens when showProgress
 depth=0
 
+# 1st iteration always unfiltered
+filter='cat'
 while true; do
     if ${showProgress}; then
         echo "depth ${depth} has "$(cat "${newDeps}" | wc -l)" targets" >&2
         depth=$(expr ${depth} + 1)
     fi
     ( # recalculate dependencies by combining unique inputs of new deps w. old
-        cut -d\  -f2- "${newDeps}" | getDeps
+        sh -c "${filter}" <"${newDeps}" | cut -d\  -f3- | getDeps
         cat "${oldDeps}"
     ) | sort -u >"${allDeps}"
     # recalculate new dependencies as net additions to old dependencies
@@ -261,6 +297,14 @@ while true; do
     then # stop when none found
         break
     fi
+    # apply filters on subsequent iterations
+    case "${nofollow}" in
+      '')
+        filter='cat';;
+      *)
+        filter="egrep -v '^[01] 0 (${nofollow})$'"
+      ;;
+    esac
     # recalculate old dependencies for next iteration
     cp "${allDeps}" "${oldDeps}"
 done
@@ -274,7 +318,7 @@ if ${showProgress}; then
 fi
 
 if [ -n "${targets_out}" ]; then
-    cut -d\  -f2- "${allDeps}" >"${targets_out}"
+    cut -d\  -f3- "${allDeps}" | sort -u >"${targets_out}"
 fi
 
 if [ -n "${directories_out}" ] \
@@ -283,7 +327,7 @@ if [ -n "${directories_out}" ] \
 then
     readonly allDirs="${tmpFiles}/dirs"
     (
-        cut -d\  -f2- "${allDeps}" | tr '\n' '\0' | xargs -0 dirname
+        cut -d\  -f3- "${allDeps}" | tr '\n' '\0' | xargs -0 dirname
     ) | sort -u >"${allDirs}"
     if ${showProgress}; then
         echo $(cat "${allDirs}" | wc -l)" directories" >&2
@@ -291,7 +335,6 @@ then
 
     case "${directories_out}" in
       '')        : do nothing;;
-      /dev/null) : do nothing;;
       *)
         cat "${allDirs}" >"${directories_out}"
       ;;
@@ -309,7 +352,6 @@ then
 
     case "${projects_out}" in
       '')        : do nothing;;
-      /dev/null) : do nothing;;
       *)
         cat "${allProj}" >"${projects_out}"
       ;;
@@ -318,10 +360,9 @@ fi
 
 case "${notices_out}" in
   '')        : do nothing;;
-  /dev/null) : do nothing;;
   *)
     readonly allNotice="${tmpFiles}/notices"
-    egrep '^1' "${allDeps}" | cut -d\  -f2- | egrep -v '^out/' >"${allNotice}"
+    egrep '^1' "${allDeps}" | cut -d\  -f3- | egrep -v '^out/' >"${allNotice}"
     cat "${allProj}" | while read proj; do
         for f in LICENSE LICENCE NOTICE license.txt notice.txt; do
             if [ -f "${proj}/${f}" ]; then
@@ -338,14 +379,15 @@ case "${notices_out}" in
       # use sed to replace space and indicator with separator
     ) >"${hashedNotice}"
     if ${showProgress}; then
+        echo $(cut -d\  -f2- "${hashedNotice}" | sort -u | wc -l)" notice files" >&2
         echo $(cut -d\  -f1 "${hashedNotice}" | sort -u | wc -l)" distinct notices" >&2
     fi
-    sed 's/^\([^ ]*\) [* ]/\1'"${sep}"'/g' "${hashedNotice}" | sort
+    sed 's/^\([^ ]*\) [* ]/\1'"${sep}"'/g' "${hashedNotice}" | sort >"${notices_out}"
   ;;
 esac
 
 if ${interactive}; then
-    echo -n "`date '+%F %-k:%M:%S'` Delete ${tmpFiles}? [n] " >&2
+    echo -n "`date '+%F %-k:%M:%S'` Delete ${tmpFiles} ? [n] " >&2
     read answer
     case "${answer}" in [yY]*) rm -fr "${tmpFiles}";; esac
 else
