@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc261f46_1b3a2eac",
+        "filename": "android/vts_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-13T23:33:26Z",
+      "side": 1,
+      "message": "Fprintln doesn\u0027t take format specifiers, it prints all the arguments separated by spaces.  This will put a literal %s in the output as well as the additional test suites.",
+      "revId": "6aff386fb02df54c5655638a0e3ddbd61e590408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
