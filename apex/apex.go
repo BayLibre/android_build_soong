@@ -842,14 +842,18 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 	var apexBundles []android.ApexInfo
 	var directDep bool
 	if a, ok := mctx.Module().(*apexBundle); ok && !a.vndkApex {
+		directDep = true
 		apexBundles = []android.ApexInfo{{
 			ApexName:      mctx.ModuleName(),
 			MinSdkVersion: a.minSdkVersion(mctx),
 		}}
-		directDep = true
 	} else if am, ok := mctx.Module().(android.ApexModule); ok {
 		apexBundles = am.ApexVariations()
 		directDep = false
+	}
+
+	for i, _ := range apexBundles {
+		apexBundles[i].DirectlyIncluded = directDep
 	}
 
 	if len(apexBundles) == 0 {
@@ -862,7 +866,7 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 		depName := mctx.OtherModuleName(child)
 		if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() &&
 			(cur.DepIsInSameApex(mctx, child) || inAnySdk(child)) {
-			android.UpdateApexDependency(apexBundles, depName, directDep)
+			android.UpdateApexDependency(mctx, apexBundles, depName, directDep)
 			am.BuildForApexes(apexBundles)
 		}
 	})
@@ -2112,7 +2116,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 							// don't include it in this APEX
 							return false
 						}
-						if !a.Host() && !android.DirectlyInApex(ctx.ModuleName(), ctx.OtherModuleName(cc)) && (cc.IsStubs() || cc.HasStubsVariants()) {
+						if !a.Host() && !android.DirectlyInApex(ctx, ctx.ModuleName(), ctx.OtherModuleName(cc)) && (cc.IsStubs() || cc.HasStubsVariants()) {
 							// If the dependency is a stubs lib, don't include it in this APEX,
 							// but make sure that the lib is installed on the device.
 							// In case no APEX is having the lib, the lib is installed to the system
