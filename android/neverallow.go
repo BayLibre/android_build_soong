@@ -133,6 +133,7 @@ func createTrebleRules() []Rule {
 
 func createLibcoreRules() []Rule {
 	var coreLibraryProjects = []string{
+		"art/test",
 		"libcore",
 		"external/apache-harmony",
 		"external/apache-xml",
