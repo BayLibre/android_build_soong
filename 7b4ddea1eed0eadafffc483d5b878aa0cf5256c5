@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3ada373_6bbba40e",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-13T17:04:20Z",
+      "side": 1,
+      "message": "This may need to be changed, if you still want to run ART tests for host-only builds.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 0
+      },
+      "revId": "7b4ddea1eed0eadafffc483d5b878aa0cf5256c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c4e49a_7139322b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-02-13T17:04:20Z",
+      "side": 1,
+      "message": "I think you should adjust CpuVariant map in the dexpreopt.config, here: https://source.corp.google.com/aosp-master/build/make/core/dex_preopt_config.mk;l\u003d108-120\n\nThen you can avoid the ifs, and arches are handled more uniformly.",
+      "range": {
+        "startLine": 373,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 2
+      },
+      "revId": "7b4ddea1eed0eadafffc483d5b878aa0cf5256c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
