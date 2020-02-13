@@ -366,12 +366,17 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 		FlagWithArg("--oat-file=", outputPath.String()).
 		FlagWithArg("--oat-location=", oatLocation).
 		FlagWithArg("--image=", imagePath.String()).
-		FlagWithArg("--instruction-set=", arch.String()).
-		FlagWithArg("--instruction-set-variant=", global.CpuVariant[arch]).
-		FlagWithArg("--instruction-set-features=", global.InstructionSetFeatures[arch]).
 		FlagWithArg("--android-root=", global.EmptyDirectory).
 		FlagWithArg("--no-inline-from=", "core-oj.jar").
 		Flag("--abort-on-hard-verifier-error")
+
+	cmd.FlagWithArg("--instruction-set=", arch.String())
+	if global.CpuVariant[arch] != "" {
+		cmd.FlagWithArg("--instruction-set-variant=", global.CpuVariant[arch])
+	}
+	if global.InstructionSetFeatures[arch] != "" {
+		cmd.FlagWithArg("--instruction-set-features=", global.InstructionSetFeatures[arch])
+	}
 
 	if global.BootFlags != "" {
 		cmd.Flag(global.BootFlags)
@@ -384,7 +389,6 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 	cmd.Textf(`|| ( echo %s ; false )`, proptools.ShellEscape(failureMessage))
 
 	installDir := filepath.Join("/", image.installSubdir, arch.String())
-	vdexInstallDir := filepath.Join("/", image.installSubdir)
 
 	var vdexInstalls android.RuleBuilderInstalls
 	var unstrippedInstalls android.RuleBuilderInstalls
@@ -403,11 +407,10 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 		cmd.ImplicitOutput(vdex)
 		zipFiles = append(zipFiles, vdex)
 
-		// The vdex files are identical between architectures, install them to a shared location.  The Make rules will
-		// only use the install rules for one architecture, and will create symlinks into the architecture-specific
-		// directories.
+		// Note that the vdex files are identical between architectures.
+		// Make rules will create symlinks to share them between architectures.
 		vdexInstalls = append(vdexInstalls,
-			android.RuleBuilderInstall{vdex, filepath.Join(vdexInstallDir, vdex.Base())})
+			android.RuleBuilderInstall{vdex, filepath.Join(installDir, vdex.Base())})
 	}
 
 	for _, unstrippedOat := range image.moduleFiles(ctx, symbolsDir, ".oat") {

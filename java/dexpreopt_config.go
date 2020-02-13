@@ -98,6 +98,10 @@ func dexpreoptTargets(ctx android.PathContext) []android.Target {
 			targets = append(targets, target)
 		}
 	}
+	// We may also need the images on host in order to run host-based tests.
+	for _, target := range ctx.Config().Targets[android.BuildOs] {
+		targets = append(targets, target)
+	}
 
 	return targets
 }
@@ -122,9 +126,9 @@ func getJarsFromApexJarPairs(apexJarPairs []string) []string {
 }
 
 var (
-	bootImageConfigKey       = android.NewOnceKey("bootImageConfig")
-	artBootImageName         = "art"
-	frameworkBootImageName   = "boot"
+	bootImageConfigKey     = android.NewOnceKey("bootImageConfig")
+	artBootImageName       = "art"
+	frameworkBootImageName = "boot"
 )
 
 // Construct the global boot image configs.
@@ -179,8 +183,8 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		}
 
 		configs := map[string]*bootImageConfig{
-			artBootImageName:         &artCfg,
-			frameworkBootImageName:   &frameworkCfg,
+			artBootImageName:       &artCfg,
+			frameworkBootImageName: &frameworkCfg,
 		}
 
 		// common to all configs
