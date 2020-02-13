@@ -34,6 +34,24 @@
       "revId": "218b7ea04463fbb074a086c662101968f5ce0e74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9da5ab18_aad83fb2",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-13T21:43:24Z",
+      "side": 1,
+      "message": "I don\u0027t see why you couldn\u0027t run a coverage build on an older release.",
+      "parentUuid": "2cf66953_c420184f",
+      "revId": "218b7ea04463fbb074a086c662101968f5ce0e74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
