@@ -16,6 +16,24 @@
       "revId": "6ca80908ec69c34cfcf359b9fca5387f470c5464",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5705bf7_12ef30ef",
+        "filename": "cmd/diff_target_files/target_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-13T22:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ea1a3e7_0bfde5fe",
+      "revId": "6ca80908ec69c34cfcf359b9fca5387f470c5464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
