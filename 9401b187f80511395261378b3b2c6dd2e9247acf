@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77d39e6a_1975e5b7",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-13T01:57:12Z",
+      "side": 1,
+      "message": "nit: you could also help clean this up as well 😊\n\nif you want!",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 21
+      },
+      "revId": "9401b187f80511395261378b3b2c6dd2e9247acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41d8b086_b8dbdb9b",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-13T01:57:12Z",
+      "side": 1,
+      "message": "nit: you could also help clean this up as well 😊\n\nif you want!",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 21
+      },
+      "revId": "9401b187f80511395261378b3b2c6dd2e9247acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
