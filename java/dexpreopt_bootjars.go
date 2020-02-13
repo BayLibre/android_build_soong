@@ -173,11 +173,6 @@ func skipDexpreoptBootJars(ctx android.PathContext) bool {
 		return true
 	}
 
-	if len(ctx.Config().Targets[android.Android]) == 0 {
-		// Host-only build
-		return true
-	}
-
 	return false
 }
 
@@ -384,7 +379,6 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 	cmd.Textf(`|| ( echo %s ; false )`, proptools.ShellEscape(failureMessage))
 
 	installDir := filepath.Join("/", image.installSubdir, arch.String())
-	vdexInstallDir := filepath.Join("/", image.installSubdir)
 
 	var vdexInstalls android.RuleBuilderInstalls
 	var unstrippedInstalls android.RuleBuilderInstalls
@@ -403,11 +397,10 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 		cmd.ImplicitOutput(vdex)
 		zipFiles = append(zipFiles, vdex)
 
-		// The vdex files are identical between architectures, install them to a shared location.  The Make rules will
-		// only use the install rules for one architecture, and will create symlinks into the architecture-specific
-		// directories.
+		// Note that the vdex files are identical between architectures.
+		// Make rules will create symlinks to share them between architectures.
 		vdexInstalls = append(vdexInstalls,
-			android.RuleBuilderInstall{vdex, filepath.Join(vdexInstallDir, vdex.Base())})
+			android.RuleBuilderInstall{vdex, filepath.Join(installDir, vdex.Base())})
 	}
 
 	for _, unstrippedOat := range image.moduleFiles(ctx, symbolsDir, ".oat") {
