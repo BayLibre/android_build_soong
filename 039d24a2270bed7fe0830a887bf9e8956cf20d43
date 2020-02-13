@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71669f69_9745fa27",
+        "filename": "cc/stl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-13T18:50:34Z",
+      "side": 1,
+      "message": "This is a very odd pattern, how about:\n\n    deps.StaticLibs \u003d append(deps.StaticLibs, staticUnwinder(ctx))",
+      "range": {
+        "startLine": 184,
+        "startChar": 22,
+        "endLine": 184,
+        "endChar": 64
+      },
+      "revId": "039d24a2270bed7fe0830a887bf9e8956cf20d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
