@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ea1a3e7_0bfde5fe",
+        "filename": "cmd/diff_target_files/target_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-13T20:45:33Z",
+      "side": 1,
+      "message": "I\u0027d prefer to avoid the android dependency here and just leave the loop, this code is completely standalone and copied from google3.",
+      "revId": "6ca80908ec69c34cfcf359b9fca5387f470c5464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
