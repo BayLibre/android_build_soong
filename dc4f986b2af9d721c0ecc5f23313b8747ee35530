@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "00926472_5d5e4608",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-02-14T16:10:29Z",
+      "side": 1,
+      "message": "Not sure how? We already have plenty of code assuming that these are returned in the correct order, e.g.\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch.go;l\u003d778\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch.go;l\u003d882",
+      "parentUuid": "da86b0f0_4eb5e925",
+      "range": {
+        "startLine": 218,
+        "startChar": 77,
+        "endLine": 218,
+        "endChar": 80
+      },
+      "revId": "dc4f986b2af9d721c0ecc5f23313b8747ee35530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "089b4a25_f4468eb6",
         "filename": "cc/stl.go",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2020-02-14T08:26:33Z",
       "side": 1,
       "message": "why do we need this not only for libc++, but also for other cc modules?",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 38
+      },
+      "revId": "dc4f986b2af9d721c0ecc5f23313b8747ee35530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f27e70bc_ccda5430",
+        "filename": "cc/stl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-02-14T16:10:29Z",
+      "side": 1,
+      "message": "Because libraries other than libc++ might have a dependency on the unwinder (e.g. because they contain an exception handler and therefore depend on _Unwind_Resume). Without this, the library will attempt to dynamically link against the unwinder in libc which will fail on Android 10.",
+      "parentUuid": "089b4a25_f4468eb6",
       "range": {
         "startLine": 185,
         "startChar": 4,
