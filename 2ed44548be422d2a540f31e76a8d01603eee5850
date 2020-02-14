@@ -1,0 +1,220 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437574fa_cde74b72",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e4b12ad_897d157c",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "You can simply do:\na.aapt.LoggingParent \u003d String(a.overridableAppProperties.Logging_parent)",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff159300_db499d2f",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "Did you run gofmt? I wonder how repo upload didn\u0027t catch this misalignment.",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af8b3996_670016ce",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "Remove this?",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a72bd2a4_0b412a64",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "I don\u0027t think you need DeepEqual here. Simple string comparison should suffice.",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dc3f640_c4242769",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "nit: %q instead?",
+      "range": {
+        "startLine": 1272,
+        "startChar": 78,
+        "endLine": 1272,
+        "endChar": 80
+      },
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc70d42_36d2f830",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "Why take address?",
+      "range": {
+        "startLine": 1273,
+        "startChar": 29,
+        "endLine": 1273,
+        "endChar": 44
+      },
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6eda9ed_31fdc676",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be a global variable?",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c09d3319_c86267a6",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "Add a blank line.",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a0ee94_b0c12fd8",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "Add a blank line above to be consistent with other functions?",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d46399c_10f773e7",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "Why double negative here?",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "559d173b_e4d6a401",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-14T18:11:59Z",
+      "side": 1,
+      "message": "So, you don\u0027t touch an existing logging parent tag, even if it\u0027s different from the one requested? Is this a desired behavior? If so, please describe it in the flag help message.",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
