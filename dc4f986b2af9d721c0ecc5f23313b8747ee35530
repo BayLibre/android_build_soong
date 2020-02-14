@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1043624d_fde51a00",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-14T17:53:41Z",
+      "side": 1,
+      "message": "by making ApexInfo to represent the platform variant as well? Or at least a comment?",
+      "parentUuid": "00926472_5d5e4608",
+      "range": {
+        "startLine": 218,
+        "startChar": 77,
+        "endLine": 218,
+        "endChar": 80
+      },
+      "revId": "dc4f986b2af9d721c0ecc5f23313b8747ee35530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "089b4a25_f4468eb6",
         "filename": "cc/stl.go",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "Because libraries other than libc++ might have a dependency on the unwinder (e.g. because they contain an exception handler and therefore depend on _Unwind_Resume). Without this, the library will attempt to dynamically link against the unwinder in libc which will fail on Android 10.",
       "parentUuid": "089b4a25_f4468eb6",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 38
+      },
+      "revId": "dc4f986b2af9d721c0ecc5f23313b8747ee35530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6b4bf0_485673c2",
+        "filename": "cc/stl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-14T17:53:41Z",
+      "side": 1,
+      "message": "I thought we don\u0027t use exception in Android.. at least the code for apexes.",
+      "parentUuid": "f27e70bc_ccda5430",
       "range": {
         "startLine": 185,
         "startChar": 4,
