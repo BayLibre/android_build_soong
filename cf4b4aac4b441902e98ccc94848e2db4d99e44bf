@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1d856dec_e2a7277d",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-02-14T18:31:42Z",
+      "side": 1,
+      "message": "Ah, of course.",
+      "parentUuid": "21c07743_44fd1dec",
+      "revId": "cf4b4aac4b441902e98ccc94848e2db4d99e44bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77ab616e_6e838193",
         "filename": "android/metrics.go",
         "patchSetId": 1
