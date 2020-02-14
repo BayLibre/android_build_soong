@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "023853d1_16614f95",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-02-14T17:17:38Z",
+      "side": 1,
+      "message": "Should this be done fairly late so that the usage stats are better?",
+      "revId": "cf4b4aac4b441902e98ccc94848e2db4d99e44bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ab616e_6e838193",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-02-14T17:17:38Z",
+      "side": 1,
+      "message": "Would memStats.GCCPUFraction be interesting? syscall.Getrusage(syscall.RUSAGE_SELF, ...) could also give us cpu timing information.\n\n(We can leave this until later too, I\u0027d rather get it in and extend than discuss which metrics are interesting)",
+      "revId": "cf4b4aac4b441902e98ccc94848e2db4d99e44bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
