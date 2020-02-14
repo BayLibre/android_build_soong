@@ -951,6 +951,11 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libstatssocket",
 		"libsystem_headers",
 		"libutils_headers",
+		"libgtest_prod",
+		"libbase",
+		"libsysutils",
+		"libprotobuf-cpp-lite",
+		"fmtlib",
 	}
 	//
 	// Module separator
