@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "21c07743_44fd1dec",
+        "filename": "android/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-14T18:29:12Z",
+      "side": 1,
+      "message": "The usage stats are collected during WriteMetrics, which is called from Main().  This is only collecting the count of modules and variants, which shouldn\u0027t change during singletons.",
+      "parentUuid": "023853d1_16614f95",
+      "revId": "cf4b4aac4b441902e98ccc94848e2db4d99e44bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77ab616e_6e838193",
         "filename": "android/metrics.go",
         "patchSetId": 1
