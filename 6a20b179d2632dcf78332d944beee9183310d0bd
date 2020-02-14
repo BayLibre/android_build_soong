@@ -46,6 +46,30 @@
       "revId": "6a20b179d2632dcf78332d944beee9183310d0bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3eb698_6c416622",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-14T00:24:45Z",
+      "side": 0,
+      "message": "Yes, but I made the same comment on https://android-review.googlesource.com/c/platform/build/soong/+/1234170, so I was hoping you (and anyone else) would do it from here on out.",
+      "parentUuid": "356fa04b_2710e44f",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "6a20b179d2632dcf78332d944beee9183310d0bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
