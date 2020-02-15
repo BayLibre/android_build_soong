@@ -164,6 +164,30 @@
       "revId": "dc4f986b2af9d721c0ecc5f23313b8747ee35530",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8446e3a_3272edd9",
+        "filename": "cc/stl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-02-15T01:20:32Z",
+      "side": 1,
+      "message": "That\u0027s not true at the moment. /apex/com.android.vndk.vR/lib64/libyuv.so is built with -fexceptions (see https://cs.android.com/android/platform/superproject/+/master:external/libyuv/files/Android.bp;l\u003d59 ). Furthermore libraries can depend on the unsinder without being built with exceptions, e.g. /apex/com.android.art.debug/lib64/libpac.so contains references to _Unwind_Backtrace and _Unwind_GetIP via https://cs.android.com/android/platform/superproject/+/master:external/libchrome/base/debug/stack_trace_android.cc.",
+      "parentUuid": "9c6b4bf0_485673c2",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 38
+      },
+      "revId": "dc4f986b2af9d721c0ecc5f23313b8747ee35530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
