@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9969890b_85d448b5",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Good catch, it was there as an earlier impl and I had forgotten to remove.\nDone.",
+      "parentUuid": "437574fa_cde74b72",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e4b12ad_897d157c",
         "filename": "java/app.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae7e2d91_57963074",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "\u003e You can simply do:\n\u003e a.aapt.LoggingParent \u003d String(a.overridableAppProperties.Logging_parent)\n\nThanks",
+      "parentUuid": "3e4b12ad_897d157c",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b38131b3_372adcdb",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff159300_db499d2f",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af8b3996_670016ce",
         "filename": "java/app_test.go",
         "patchSetId": 3
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "e32ac536_338ec8fd",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8b3996_670016ce",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a72bd2a4_0b412a64",
         "filename": "java/app_test.go",
         "patchSetId": 3
@@ -84,6 +156,24 @@
       "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29945bd9_44ac902d",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a72bd2a4_0b412a64",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "dba85b2c_254872d1",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "5dc3f640_c4242769",
+      "range": {
+        "startLine": 1272,
+        "startChar": 78,
+        "endLine": 1272,
+        "endChar": 80
+      },
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abc70d42_36d2f830",
         "filename": "java/app_test.go",
         "patchSetId": 3
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "64cef575_d5d4fbeb",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abc70d42_36d2f830",
+      "range": {
+        "startLine": 1273,
+        "startChar": 29,
+        "endLine": 1273,
+        "endChar": 44
+      },
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6eda9ed_31fdc676",
         "filename": "scripts/manifest_fixer.py",
         "patchSetId": 3
@@ -147,6 +285,24 @@
       "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93527601_c46ce7d8",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6eda9ed_31fdc676",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "3e5465f7_e2271db6",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c09d3319_c86267a6",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8a0ee94_b0c12fd8",
         "filename": "scripts/manifest_fixer.py",
         "patchSetId": 3
@@ -181,6 +355,24 @@
       "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d411416e_13133c25",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a0ee94_b0c12fd8",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -201,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "00da56d0_e431ae89",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d46399c_10f773e7",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "559d173b_e4d6a401",
         "filename": "scripts/manifest_fixer.py",
         "patchSetId": 3
@@ -215,6 +425,24 @@
       "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37c670f_7742bfd1",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2020-02-15T01:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "559d173b_e4d6a401",
+      "revId": "2ed44548be422d2a540f31e76a8d01603eee5850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
