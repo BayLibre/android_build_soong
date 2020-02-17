@@ -29,13 +29,22 @@ func systemServerClasspath(ctx android.MakeVarsContext) []string {
 	return ctx.Config().OnceStringSlice(systemServerClasspathKey, func() []string {
 		global := dexpreopt.GetGlobalConfig(ctx)
 		var systemServerClasspathLocations []string
+		// 1) The jars that are dexpreopted.
 		for _, m := range *DexpreoptedSystemServerJars(ctx.Config()) {
 			systemServerClasspathLocations = append(systemServerClasspathLocations,
 				filepath.Join("/system/framework", m+".jar"))
 		}
+		// 2) The jars that are from an updatable apex.
 		for _, m := range global.UpdatableSystemServerJars {
 			systemServerClasspathLocations = append(systemServerClasspathLocations,
 				dexpreopt.GetJarLocationFromApexJarPair(m))
+		}
+		// 3) The jars from make (which are not dexpreopted).
+		for _, m := range dexpreopt.NonUpdatableSystemServerJars(ctx, global) {
+			if _, ok := ctx.(android.ModuleContext); !ok {
+				systemServerClasspathLocations = append(systemServerClasspathLocations,
+					filepath.Join("/system/framework", m+".jar"))
+			}
 		}
 		return systemServerClasspathLocations
 	})
