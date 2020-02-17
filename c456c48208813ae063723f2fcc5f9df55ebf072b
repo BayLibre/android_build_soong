@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9751874a_8d89ea36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-02-17T17:44:48Z",
+      "side": 1,
+      "message": "Maybe also mention Bug 147814778 here?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "c456c48208813ae063723f2fcc5f9df55ebf072b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b38ba14_47453ecf",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-02-17T17:44:48Z",
+      "side": 1,
+      "message": "Out of curiosity, where is this logic defined?",
+      "range": {
+        "startLine": 407,
+        "startChar": 5,
+        "endLine": 407,
+        "endChar": 73
+      },
+      "revId": "c456c48208813ae063723f2fcc5f9df55ebf072b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2855b867_87cc0146",
+        "filename": "java/dexpreopt_bootjars_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-02-17T17:44:48Z",
+      "side": 1,
+      "message": "Maybe also add a test for host boot JARs Dex pre-opting?",
+      "revId": "c456c48208813ae063723f2fcc5f9df55ebf072b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
