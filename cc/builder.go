@@ -57,7 +57,7 @@ var (
 
 	ccNoDeps = pctx.AndroidRemoteStaticRule("ccNoDeps", android.RemoteRuleSupports{Goma: true},
 		blueprint.RuleParams{
-			Command:     "$relPwd ${config.CcWrapper}$ccCmd -c $cFlags -o $out $in",
+			Command:     "$relPwd $ccCmd -c $cFlags -o $out $in",
 			CommandDeps: []string{"$ccCmd"},
 		},
 		"ccCmd", "cFlags")
