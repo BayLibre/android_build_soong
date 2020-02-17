@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2146a3aa_c07918bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-02-17T17:46:04Z",
+      "side": 1,
+      "message": "Sorry, I meant Bug 147819342.",
+      "parentUuid": "9751874a_8d89ea36",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "c456c48208813ae063723f2fcc5f9df55ebf072b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b38ba14_47453ecf",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 3
