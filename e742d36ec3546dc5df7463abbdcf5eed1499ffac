@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a104c51_5273d29b",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-18T16:29:39Z",
+      "side": 1,
+      "message": "For readability, and also in order to make it clear that this is a deliberately chosen if clause structure, add a comment on the testcases partition being available both for device and host while others are only for devices?",
+      "revId": "e742d36ec3546dc5df7463abbdcf5eed1499ffac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
