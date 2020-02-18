@@ -1402,6 +1402,8 @@ type apexFile struct {
 
 	jacocoReportClassesFile android.Path     // only for javalibs and apps
 	certificate             java.Certificate // only for apps
+
+	isJniLib bool
 }
 
 func newApexFile(ctx android.BaseModuleContext, builtFile android.Path, moduleName string, installDir string, class apexFileClass, module android.Module) apexFile {
@@ -1828,7 +1830,9 @@ func apexFileForNativeLibrary(ctx android.BaseModuleContext, ccMod *cc.Module, h
 	}
 
 	fileToCopy := ccMod.OutputFile().Path()
-	return newApexFile(ctx, fileToCopy, ccMod.Name(), dirInApex, nativeSharedLib, ccMod)
+	af := newApexFile(ctx, fileToCopy, ccMod.Name(), dirInApex, nativeSharedLib, ccMod)
+	af.isJniLib = ccMod.IsJniLib()
+	return af
 }
 
 func apexFileForExecutable(ctx android.BaseModuleContext, cc *cc.Module) apexFile {
