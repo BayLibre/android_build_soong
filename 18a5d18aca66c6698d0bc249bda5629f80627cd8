@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3041b17a_c75d4426",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-18T15:56:16Z",
+      "side": 1,
+      "message": "Is this required if the module type cannot be created directly in a .bp file?",
+      "revId": "18a5d18aca66c6698d0bc249bda5629f80627cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
