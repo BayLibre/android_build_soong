@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a698573_e3ce46d2",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-18T08:38:06Z",
+      "side": 1,
+      "message": "this should better be a field in fi. Having pointers to the modules is bad and the existing use cases should eventually be fixed.",
+      "range": {
+        "startLine": 187,
+        "startChar": 46,
+        "endLine": 187,
+        "endChar": 54
+      },
+      "revId": "3083dd322bd8a2dc74a929b7153a7b4c85e7e23e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
