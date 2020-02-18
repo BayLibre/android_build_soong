@@ -109,6 +109,9 @@ type LibraryProperties struct {
 
 	// Inject boringssl hash into the shared library.  This is only intended for use by external/boringssl.
 	Inject_bssl_hash *bool `android:"arch_variant"`
+
+	// Whether this is a jni library or not
+	Is_jni *bool
 }
 
 type StaticProperties struct {

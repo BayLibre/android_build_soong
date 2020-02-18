@@ -2573,6 +2573,16 @@ func (c *Module) getMakeLinkType(actx android.ModuleContext) string {
 	}
 }
 
+// IsJniLib returns this is a module marked as "is_jni: true"
+func (c *Module) IsJniLib() bool {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok && Bool(library.Properties.Is_jni) {
+			return true
+		}
+	}
+	return false
+}
+
 // Overrides ApexModule.IsInstallabeToApex()
 // Only shared/runtime libraries and "test_per_src" tests are installable to APEX.
 func (c *Module) IsInstallableToApex() bool {
