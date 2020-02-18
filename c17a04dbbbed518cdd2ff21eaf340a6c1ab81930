@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5059c31a_357cfeba",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-02-18T23:13:07Z",
+      "side": 0,
+      "message": "fyi, this library was actually removed from the VNDK. You could consider adding a check to detect that",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "c17a04dbbbed518cdd2ff21eaf340a6c1ab81930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
