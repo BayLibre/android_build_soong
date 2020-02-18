@@ -3688,6 +3688,34 @@ func TestSymlinksFromApexToSystem(t *testing.T) {
 	ensureSymlinkExists(t, files, "lib64/myotherlib.so") // this is symlink
 }
 
+func TestApexMarksItselfAsProvidingJniLibs(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["mylib"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "mylib",
+			srcs: ["mylib.cpp"],
+			is_jni: true,
+			system_shared_libs: [],
+			stl: "none",
+			apex_available: [ "myapex" ],
+		}
+	`)
+
+	rule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
+	ensureContains(t, rule.Args["opt"], "-a jniLibs mylib.so")
+}
+
 func TestMain(m *testing.M) {
 	run := func() int {
 		setUp()

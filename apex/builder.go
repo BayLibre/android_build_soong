@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/java"
 
 	"github.com/google/blueprint"
@@ -178,6 +179,17 @@ func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs,
 	optCommands := []string{}
 	if a.properties.Apex_name != nil {
 		optCommands = append(optCommands, "-v name "+*a.properties.Apex_name)
+	}
+
+	// collect jniLibs
+	var jniLibs []string
+	for _, fi := range a.filesInfo {
+		if c, ok := fi.module.(*cc.Module); ok && c.IsJniLib() {
+			jniLibs = append(jniLibs, fi.builtFile.Base())
+		}
+	}
+	if len(jniLibs) > 0 {
+		optCommands = append(optCommands, "-a jniLibs "+strings.Join(jniLibs, " "))
 	}
 
 	ctx.Build(pctx, android.BuildParams{
