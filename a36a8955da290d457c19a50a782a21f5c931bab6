@@ -22,6 +22,30 @@
       "revId": "a36a8955da290d457c19a50a782a21f5c931bab6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44be620a_43561ca2",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2020-02-19T20:52:16Z",
+      "side": 1,
+      "message": "The intention is to use the hash of the list of names. Clarified that and also updated the change list description.",
+      "parentUuid": "7c9fe2fb_4d98498d",
+      "range": {
+        "startLine": 56,
+        "startChar": 56,
+        "endLine": 56,
+        "endChar": 77
+      },
+      "revId": "a36a8955da290d457c19a50a782a21f5c931bab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
