@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3ca88e82_cf2bb31e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-02-19T15:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2146a3aa_c07918bc",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "c456c48208813ae063723f2fcc5f9df55ebf072b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b38ba14_47453ecf",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 3
@@ -69,6 +93,30 @@
       "revId": "c456c48208813ae063723f2fcc5f9df55ebf072b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14020225_7a8b5b06",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-02-19T15:37:45Z",
+      "side": 1,
+      "message": "See https://android-review.googlesource.com/c/platform/build/+/1234340 (in topic with this CL)",
+      "parentUuid": "8b38ba14_47453ecf",
+      "range": {
+        "startLine": 407,
+        "startChar": 5,
+        "endLine": 407,
+        "endChar": 73
+      },
+      "revId": "c456c48208813ae063723f2fcc5f9df55ebf072b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
