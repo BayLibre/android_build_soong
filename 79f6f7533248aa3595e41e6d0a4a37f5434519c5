@@ -46,6 +46,30 @@
       "revId": "79f6f7533248aa3595e41e6d0a4a37f5434519c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d69c83_329b11ec",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-02-19T17:12:43Z",
+      "side": 1,
+      "message": "aog/1239027 pulls the header file and removes the comment that explicitly said not to do that:\n\"We need access to them from ebpf C code for map definitions and thus don\u0027t want to pull in the entire header file.\"\nSo why not fix b/149785767 in way that does not require pulling in the whole file?\nI apologize if I am missing relevant history here.",
+      "parentUuid": "94b616e3_6513184f",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "79f6f7533248aa3595e41e6d0a4a37f5434519c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
