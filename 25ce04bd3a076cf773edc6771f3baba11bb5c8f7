@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dddc020d_a8338b00",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-19T17:35:06Z",
+      "side": 1,
+      "message": "It\u0027s not entirely clear to me how this gets populated, but I suspect that we want to filter out host targets from it and then add mctx.Config().BuildOSTarget to get (effectively) linux x86_64 for host (until we can do something to properly adapt to the targets in each cc_binary rule, which probably involves moving this mutator before the arch mutator).",
+      "revId": "25ce04bd3a076cf773edc6771f3baba11bb5c8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a29f7b1_74c18b08",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-19T17:35:06Z",
+      "side": 1,
+      "message": "Why \"shared\"?",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 16
+      },
+      "revId": "25ce04bd3a076cf773edc6771f3baba11bb5c8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "289325bc_f8c0433c",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-19T17:35:06Z",
+      "side": 1,
+      "message": "Code health nit: Could the corresponding nativeLibInfo stuff in library_sdk_member.go extend this?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 1
+      },
+      "revId": "25ce04bd3a076cf773edc6771f3baba11bb5c8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
