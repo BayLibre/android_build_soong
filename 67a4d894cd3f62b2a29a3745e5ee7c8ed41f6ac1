@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97ee4528_791bd7dc",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-02-19T11:00:46Z",
+      "side": 1,
+      "message": "maybe add that this may enforce additional rules, control what optimizations are done etc.\n\nand document what the default is (false I guess?)",
+      "range": {
+        "startLine": 1278,
+        "startChar": 0,
+        "endLine": 1279,
+        "endChar": 53
+      },
+      "revId": "67a4d894cd3f62b2a29a3745e5ee7c8ed41f6ac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
