@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37dde273_e0adbff1",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-02-19T00:53:56Z",
+      "side": 1,
+      "message": "Please fix b/149785767",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "79f6f7533248aa3595e41e6d0a4a37f5434519c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
