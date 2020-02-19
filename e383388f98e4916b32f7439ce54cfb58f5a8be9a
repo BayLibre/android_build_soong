@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5239d06d_277512e6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-19T00:49:12Z",
+      "side": 1,
+      "message": "I didn\u0027t know that the builtin echo for ubuntu 14.04 doesn\u0027t support \"-e\" option :(",
+      "range": {
+        "startLine": 1062,
+        "startChar": 8,
+        "endLine": 1062,
+        "endChar": 31
+      },
+      "revId": "e383388f98e4916b32f7439ce54cfb58f5a8be9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
