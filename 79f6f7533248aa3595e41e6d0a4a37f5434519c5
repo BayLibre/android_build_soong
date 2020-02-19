@@ -70,6 +70,30 @@
       "revId": "79f6f7533248aa3595e41e6d0a4a37f5434519c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b03fe1c_a78cbae8",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2020-02-19T17:20:18Z",
+      "side": 1,
+      "message": "Ah.  I added that comment a few days ago, and it was mostly resolved by the\n\n#define EXCLUDE_FS_CONFIG_STRUCTURES\n\nIt\u0027s still not done per say, because we get \u003csys/types.h\u003e included even though we don\u0027t need it, but that\u0027s a very minor nuisance.\n\nMore annoying is that we can potentially include other .h files from this directory\nthat we don\u0027t actually want/need.\n\nBut it\u0027s still better then having the AID_* constants redefined, and having the include directory in the build system is better than having it in the include list of every user.",
+      "parentUuid": "47d69c83_329b11ec",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "79f6f7533248aa3595e41e6d0a4a37f5434519c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
