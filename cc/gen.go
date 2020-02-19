@@ -162,7 +162,7 @@ func genLex(ctx android.ModuleContext, lexFile android.Path, outFile android.Mod
 	})
 }
 
-func genSysprop(ctx android.ModuleContext, syspropFile android.Path) (android.Path, android.Path) {
+func genSysprop(ctx android.ModuleContext, syspropFile android.Path) (android.Path, android.Paths) {
 	headerFile := android.PathForModuleGen(ctx, "sysprop", "include", syspropFile.Rel()+".h")
 	publicHeaderFile := android.PathForModuleGen(ctx, "sysprop/public", "include", syspropFile.Rel()+".h")
 	cppFile := android.PathForModuleGen(ctx, "sysprop", syspropFile.Rel()+".cpp")
@@ -181,7 +181,7 @@ func genSysprop(ctx android.ModuleContext, syspropFile android.Path) (android.Pa
 		},
 	})
 
-	return cppFile, headerFile
+	return cppFile, android.Paths{headerFile, publicHeaderFile}
 }
 
 func genWinMsg(ctx android.ModuleContext, srcFile android.Path, flags builderFlags) (android.Path, android.Path) {
@@ -259,9 +259,9 @@ func genSources(ctx android.ModuleContext, srcFiles android.Paths,
 			srcFiles[i] = rcFile
 			deps = append(deps, headerFile)
 		case ".sysprop":
-			cppFile, headerFile := genSysprop(ctx, srcFile)
+			cppFile, headerFiles := genSysprop(ctx, srcFile)
 			srcFiles[i] = cppFile
-			deps = append(deps, headerFile)
+			deps = append(deps, headerFiles...)
 		}
 	}
 
