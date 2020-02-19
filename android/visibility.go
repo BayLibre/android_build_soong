@@ -312,6 +312,7 @@ func visibilityRuleGatherer(ctx BottomUpMutatorContext) {
 func parseRules(ctx BaseModuleContext, currentPkg string, visibility []string) compositeRule {
 	rules := make(compositeRule, 0, len(visibility))
 	hasPrivateRule := false
+	hasPublicRule := false
 	hasNonPrivateRule := false
 	for _, v := range visibility {
 		ok, pkg, name := splitRule(v, currentPkg)
@@ -328,6 +329,7 @@ func parseRules(ctx BaseModuleContext, currentPkg string, visibility []string) c
 				isPrivateRule = true
 			case "public":
 				r = publicRule{}
+				hasPublicRule = true
 			}
 		} else {
 			switch name {
@@ -353,6 +355,11 @@ func parseRules(ctx BaseModuleContext, currentPkg string, visibility []string) c
 		ctx.PropertyErrorf("visibility",
 			"cannot mix \"//visibility:private\" with any other visibility rules")
 		return compositeRule{privateRule{}}
+	}
+
+	if hasPublicRule {
+		// Public overrides all other rules so just return it.
+		return compositeRule{publicRule{}}
 	}
 
 	return rules
