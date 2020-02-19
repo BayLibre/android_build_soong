@@ -255,7 +255,9 @@ func (s *sdk) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if !s.snapshot() {
 		// We don't need to create a snapshot out of sdk_snapshot.
 		// That doesn't make sense. We need a snapshot to create sdk_snapshot.
-		s.snapshotFile = android.OptionalPathForPath(s.buildSnapshot(ctx))
+		p := s.buildSnapshot(ctx)
+		s.snapshotFile = android.OptionalPathForPath(p)
+		ctx.InstallFile(android.PathForModuleInstall(ctx, "sdk"), s.Name()+"-current.zip", p)
 	}
 }
 
