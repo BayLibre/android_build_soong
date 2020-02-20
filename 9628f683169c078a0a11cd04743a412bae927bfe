@@ -22,6 +22,30 @@
       "revId": "9628f683169c078a0a11cd04743a412bae927bfe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ea1a14_d5a8ceec",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-02-20T08:45:42Z",
+      "side": 1,
+      "message": "Changed to static_libs",
+      "parentUuid": "18814cd5_2e2e8895",
+      "range": {
+        "startLine": 410,
+        "startChar": 21,
+        "endLine": 410,
+        "endChar": 38
+      },
+      "revId": "9628f683169c078a0a11cd04743a412bae927bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
