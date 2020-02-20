@@ -94,6 +94,30 @@
       "revId": "79f6f7533248aa3595e41e6d0a4a37f5434519c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c056dee6_6b13c345",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-02-20T16:27:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b03fe1c_a78cbae8",
+      "range": {
+        "startLine": 69,
+        "startChar": 29,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "79f6f7533248aa3595e41e6d0a4a37f5434519c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
