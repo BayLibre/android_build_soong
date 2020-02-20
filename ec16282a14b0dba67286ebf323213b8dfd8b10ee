@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afe69eac_7161436b",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-20T19:16:42Z",
+      "side": 1,
+      "message": "Keep stdlib imports separate from blueprint and android imports.",
+      "revId": "ec16282a14b0dba67286ebf323213b8dfd8b10ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c34261_5f3ea6ee",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-20T19:16:42Z",
+      "side": 1,
+      "message": "wrap at ~100 characters",
+      "range": {
+        "startLine": 61,
+        "startChar": 118,
+        "endLine": 61,
+        "endChar": 119
+      },
+      "revId": "ec16282a14b0dba67286ebf323213b8dfd8b10ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5348048_ea2c9c81",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-20T19:16:42Z",
+      "side": 1,
+      "message": "keep stdlib imports before android imports",
+      "revId": "ec16282a14b0dba67286ebf323213b8dfd8b10ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
