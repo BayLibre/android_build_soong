@@ -890,6 +890,7 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"androidx.annotation_annotation",
 		"androidx.annotation_annotation-nodeps",
 		"bouncycastle-unbundled",
+		"dnsresolver_aidl_interface-unstable-java",
 		"dnsresolver_aidl_interface-V2-java",
 		"error_prone_annotations",
 		"ipmemorystore-aidl-interfaces-V3-java",
