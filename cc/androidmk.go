@@ -29,6 +29,7 @@ var (
 	vendorSuffix       = ".vendor"
 	ramdiskSuffix      = ".ramdisk"
 	recoverySuffix     = ".recovery"
+	sdkSuffix          = ".sdk"
 )
 
 type AndroidMkContext interface {
@@ -101,6 +102,19 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 						if !c.isVndkExt() {
 							fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
 						}
+					}
+				}
+				if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake {
+					nameWithoutSuffix := "$(patsubst %.sdk,%,$(LOCAL_MODULE))"
+					fmt.Fprintln(w, "SOONG_SDK_VARIANT_MODULES := $(SOONG_SDK_VARIANT_MODULES) "+nameWithoutSuffix)
+					fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+					// Using the SDK variant as a JNI library needs a copy of the .so that
+					// is not named .sdk.so so that it can be packaged into the APK with
+					// the right name.
+					if c.CcLibraryInterface() && c.Shared() {
+						fmt.Fprintln(w, "$(eval $(call copy-one-file,"+
+							"$(local-intermediates-dir)/$(LOCAL_MODULE).so,"+
+							"$(local-intermediates-dir)/"+nameWithoutSuffix+".so))")
 					}
 				}
 			},

@@ -202,6 +202,10 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 	for _, jniTarget := range ctx.MultiTargets() {
 		variation := append(jniTarget.Variations(),
 			blueprint.Variation{Mutator: "link", Variation: "shared"})
+		if a.sdkVersion().specified() && a.sdkVersion().kind != sdkCorePlatform &&
+			!Bool(a.appProperties.Jni_uses_platform_apis) {
+			variation = append(variation, blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
+		}
 		ctx.AddFarVariationDependencies(variation, tag, a.appProperties.Jni_libs...)
 	}
 

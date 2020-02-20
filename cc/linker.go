@@ -158,6 +158,19 @@ type BaseLinkerProperties struct {
 			// the ramdisk variant of the C/C++ module.
 			Exclude_static_libs []string
 		}
+		Sdk struct {
+			// list of shared libs that should be use to build the SDK variant of a
+			// module that sets sdk_version.  This should rarely be necessary, in most
+			// cases the same libraries are available for the SDK and platform variants.
+			Shared_libs []string
+		}
+		Platform struct {
+			// list of shared libs that should be use to build the platform variant
+			// of a module that sets sdk_version.  This should rarely be necessary,
+			// in most cases the same libraries are available for the SDK and platform
+			// variants.
+			Shared_libs []string
+		}
 	}
 
 	// make android::build:GetBuildNumber() available containing the build ID.
@@ -253,6 +266,12 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.StaticLibs = removeListFromList(deps.StaticLibs, linker.Properties.Target.Recovery.Exclude_static_libs)
 		deps.ReexportStaticLibHeaders = removeListFromList(deps.ReexportStaticLibHeaders, linker.Properties.Target.Recovery.Exclude_static_libs)
 		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, linker.Properties.Target.Recovery.Exclude_static_libs)
+	}
+
+	if ctx.useSdk() {
+		deps.SharedLibs = append(deps.SharedLibs, linker.Properties.Target.Sdk.Shared_libs...)
+	} else {
+		deps.SharedLibs = append(deps.SharedLibs, linker.Properties.Target.Platform.Shared_libs...)
 	}
 
 	if ctx.toolchain().Bionic() {
