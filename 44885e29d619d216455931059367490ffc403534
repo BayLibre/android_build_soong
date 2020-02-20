@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0ab68a2_7ed6426d",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-02-20T14:28:13Z",
+      "side": 1,
+      "message": "Nit: Trailing whitespace here, but not worth another TH run to fix.",
+      "range": {
+        "startLine": 116,
+        "startChar": 31,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "44885e29d619d216455931059367490ffc403534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
