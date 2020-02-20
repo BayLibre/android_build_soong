@@ -172,6 +172,7 @@ func NewLLndkStubLibrary() *Module {
 		libraryDecorator: library,
 	}
 	stub.Properties.Vendor_available = BoolPtr(true)
+	module.Properties.Sdk_version = StringPtr("current")
 	module.compiler = stub
 	module.linker = stub
 	module.installer = nil
@@ -217,6 +218,7 @@ func llndkHeadersFactory() android.Module {
 		libraryDecorator: library,
 	}
 
+	module.Properties.Sdk_version = StringPtr("current")
 	module.compiler = nil
 	module.linker = decorator
 	module.installer = nil

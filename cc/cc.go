@@ -42,6 +42,7 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_defaults", defaultsFactory)
 
 	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("sdk", sdkMutator).Parallel()
 		ctx.BottomUp("vndk", VndkMutator).Parallel()
 		ctx.BottomUp("link", LinkageMutator).Parallel()
 		ctx.BottomUp("ndk_api", NdkApiMutator).Parallel()
@@ -250,6 +251,15 @@ type BaseProperties struct {
 	// Used by vendor snapshot to record dependencies from snapshot modules.
 	SnapshotSharedLibs  []string `blueprint:"mutated"`
 	SnapshotRuntimeLibs []string `blueprint:"mutated"`
+
+	// Set by factories of module types that can only be referenced from variants compiled against
+	// the SDK.
+	AlwaysSdk bool `blueprint:"mutated"`
+
+	// Variant is an SDK variant created by sdkMutator
+	IsSdkVariant bool `blueprint:"mutated"`
+	// Both SDK and platform variants are exported to Make
+	SdkAndPlatformVariantVisibleToMake bool `blueprint:"mutated"`
 }
 
 type VendorProperties struct {
@@ -541,6 +551,10 @@ func (c *Module) SdkVersion() string {
 	return String(c.Properties.Sdk_version)
 }
 
+func (c *Module) AlwaysSdk() bool {
+	return c.Properties.AlwaysSdk
+}
+
 func (c *Module) IncludeDirs() android.Paths {
 	if c.linker != nil {
 		if library, ok := c.linker.(exportedFlagsProducer); ok {
@@ -778,6 +792,13 @@ func (c *Module) isDependencyRoot() bool {
 // "product_specific: true" modules are included here.
 func (c *Module) UseVndk() bool {
 	return c.Properties.VndkVersion != ""
+}
+
+func (c *Module) UseSdk() bool {
+	if c.Os() == android.Android && !c.UseVndk() && !c.InRamdisk() && !c.InRecovery() {
+		return String(c.Properties.Sdk_version) != ""
+	}
+	return false
 }
 
 func (c *Module) isCoverageVariant() bool {
@@ -1037,10 +1058,7 @@ func (ctx *moduleContextImpl) header() bool {
 }
 
 func (ctx *moduleContextImpl) useSdk() bool {
-	if ctx.ctx.Device() && !ctx.useVndk() && !ctx.inRamdisk() && !ctx.inRecovery() && !ctx.ctx.Fuchsia() {
-		return String(ctx.mod.Properties.Sdk_version) != ""
-	}
-	return false
+	return ctx.mod.UseSdk()
 }
 
 func (ctx *moduleContextImpl) sdkVersion() string {
@@ -1355,6 +1373,8 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		c.Properties.SubName += ramdiskSuffix
 	} else if c.InRecovery() && !c.OnlyInRecovery() {
 		c.Properties.SubName += recoverySuffix
+	} else if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake {
+		c.Properties.SubName += sdkSuffix
 	}
 
 	ctx := &moduleContext{
