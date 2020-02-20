@@ -89,6 +89,7 @@ func TestVndkApexUsesVendorVariant(t *testing.T) {
 				native_coverage: false,
 				system_shared_libs: [],
 				stl: "none",
+				sdk_version: "current",
 				notice: "custom_notice",
 			}
 			cc_library {
@@ -97,6 +98,7 @@ func TestVndkApexUsesVendorVariant(t *testing.T) {
 				native_coverage: false,
 				system_shared_libs: [],
 				stl: "none",
+				sdk_version: "current",
 				notice: "custom_notice",
 			}
 		`, func(fs map[string][]byte, config android.Config) {
