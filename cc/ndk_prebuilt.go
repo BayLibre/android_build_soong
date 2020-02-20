@@ -76,6 +76,7 @@ func NdkPrebuiltObjectFactory() android.Module {
 			baseLinker: NewBaseLinker(nil),
 		},
 	}
+	module.Properties.AlwaysSdk = true
 	module.Properties.HideFromMake = true
 	return module.Init()
 }
@@ -115,10 +116,9 @@ func NdkPrebuiltSharedStlFactory() android.Module {
 		libraryDecorator: library,
 	}
 	module.installer = nil
-	minVersionString := "minimum"
-	noStlString := "none"
-	module.Properties.Sdk_version = &minVersionString
-	module.stl.Properties.Stl = &noStlString
+	module.Properties.Sdk_version = StringPtr("minimum")
+	module.Properties.AlwaysSdk = true
+	module.stl.Properties.Stl = StringPtr("none")
 	return module.Init()
 }
 
@@ -135,6 +135,8 @@ func NdkPrebuiltStaticStlFactory() android.Module {
 	}
 	module.installer = nil
 	module.Properties.HideFromMake = true
+	module.Properties.AlwaysSdk = true
+	module.stl.Properties.Stl = StringPtr("none")
 	module.ModuleBase.EnableNativeBridgeSupportByDefault()
 	return module.Init()
 }
