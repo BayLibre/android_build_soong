@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7441260_481e263c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-20T12:02:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70df1958_5bd06470",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "9dec928626f78edcbc038d180842164b65975e12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f93553cd_8165aefd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c1539dd5_6f1d2461",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-20T12:02:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f93553cd_8165aefd",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "9dec928626f78edcbc038d180842164b65975e12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af848aec_6ddaf45f",
         "filename": "android/visibility.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "9dec928626f78edcbc038d180842164b65975e12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda925e1_aeee650e",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-20T12:02:20Z",
+      "side": 1,
+      "message": "Done. Added extra checking on an existing unit test to verify the effective visibility rules. Also updated the test of sdk snapshot visibility to cover this situation. Both modified tests fail without this change and pass with it.",
+      "parentUuid": "af848aec_6ddaf45f",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 362,
+        "endChar": 36
+      },
+      "revId": "9dec928626f78edcbc038d180842164b65975e12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
