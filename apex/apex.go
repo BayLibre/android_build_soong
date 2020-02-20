@@ -1527,27 +1527,56 @@ type apexBundle struct {
 	mergedNotices android.NoticeOutputs
 }
 
-func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
+func (a *apexBundle) nativeSharedLibVariations(target android.Target, imageVariation string) []blueprint.Variation {
+	sharedLibVariations := append(target.Variations(),
+		blueprint.Variation{Mutator: "image", Variation: imageVariation},
+		blueprint.Variation{Mutator: "link", Variation: "shared"},
+		blueprint.Variation{Mutator: "version", Variation: ""}, // "" is the non-stub variant
+	)
+	if String(a.properties.Min_sdk_version) != "" {
+		sharedLibVariations = append(sharedLibVariations,
+			blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
+	}
+	return sharedLibVariations
+}
+
+func (a *apexBundle) nativeBinaryVariations(target android.Target, imageVariation string) []blueprint.Variation {
+	binaryVariations := append(target.Variations(),
+		blueprint.Variation{Mutator: "image", Variation: imageVariation})
+	if String(a.properties.Min_sdk_version) != "" {
+		binaryVariations = append(binaryVariations,
+			blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
+	}
+	return binaryVariations
+}
+
+func (a *apexBundle) nativeTestVariations(target android.Target, imageVariation string) []blueprint.Variation {
+	testVariations := append(target.Variations(),
+		blueprint.Variation{Mutator: "image", Variation: imageVariation},
+		blueprint.Variation{Mutator: "test_per_src", Variation: ""}, // "" is the all-tests variant
+	)
+	if String(a.properties.Min_sdk_version) != "" {
+		testVariations = append(testVariations,
+			blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
+	}
+	return testVariations
+}
+
+func (a *apexBundle) addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
 	native_shared_libs []string, binaries []string, tests []string,
 	target android.Target, imageVariation string) {
 	// Use *FarVariation* to be able to depend on modules having
 	// conflicting variations with this module. This is required since
 	// arch variant of an APEX bundle is 'common' but it is 'arm' or 'arm64'
 	// for native shared libs.
-	ctx.AddFarVariationDependencies(append(target.Variations(), []blueprint.Variation{
-		{Mutator: "image", Variation: imageVariation},
-		{Mutator: "link", Variation: "shared"},
-		{Mutator: "version", Variation: ""}, // "" is the non-stub variant
-	}...), sharedLibTag, native_shared_libs...)
+	ctx.AddFarVariationDependencies(a.nativeSharedLibVariations(target, imageVariation),
+		sharedLibTag, native_shared_libs...)
 
-	ctx.AddFarVariationDependencies(append(target.Variations(),
-		blueprint.Variation{Mutator: "image", Variation: imageVariation}),
+	ctx.AddFarVariationDependencies(a.nativeBinaryVariations(target, imageVariation),
 		executableTag, binaries...)
 
-	ctx.AddFarVariationDependencies(append(target.Variations(), []blueprint.Variation{
-		{Mutator: "image", Variation: imageVariation},
-		{Mutator: "test_per_src", Variation: ""}, // "" is the all-tests variant
-	}...), testTag, tests...)
+	ctx.AddFarVariationDependencies(a.nativeTestVariations(target, imageVariation),
+		testTag, tests...)
 }
 
 func (a *apexBundle) combineProperties(ctx android.BottomUpMutatorContext) {
@@ -1582,20 +1611,16 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	for i, target := range targets {
 		// When multilib.* is omitted for native_shared_libs, it implies
 		// multilib.both.
-		ctx.AddFarVariationDependencies(append(target.Variations(), []blueprint.Variation{
-			{Mutator: "image", Variation: a.getImageVariation(config)},
-			{Mutator: "link", Variation: "shared"},
-		}...), sharedLibTag, a.properties.Native_shared_libs...)
+		ctx.AddFarVariationDependencies(a.nativeSharedLibVariations(target, a.getImageVariation(config)),
+			sharedLibTag, a.properties.Native_shared_libs...)
 
 		// When multilib.* is omitted for tests, it implies
 		// multilib.both.
-		ctx.AddFarVariationDependencies(append(target.Variations(), []blueprint.Variation{
-			{Mutator: "image", Variation: a.getImageVariation(config)},
-			{Mutator: "test_per_src", Variation: ""}, // "" is the all-tests variant
-		}...), testTag, a.properties.Tests...)
+		ctx.AddFarVariationDependencies(a.nativeTestVariations(target, a.getImageVariation(config)),
+			testTag, a.properties.Tests...)
 
 		// Add native modules targetting both ABIs
-		addDependenciesForNativeModules(ctx,
+		a.addDependenciesForNativeModules(ctx,
 			a.properties.Multilib.Both.Native_shared_libs,
 			a.properties.Multilib.Both.Binaries,
 			a.properties.Multilib.Both.Tests,
@@ -1606,12 +1631,11 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		if isPrimaryAbi {
 			// When multilib.* is omitted for binaries, it implies
 			// multilib.first.
-			ctx.AddFarVariationDependencies(append(target.Variations(),
-				blueprint.Variation{Mutator: "image", Variation: a.getImageVariation(config)}),
+			ctx.AddFarVariationDependencies(a.nativeBinaryVariations(target, a.getImageVariation(config)),
 				executableTag, a.properties.Binaries...)
 
 			// Add native modules targetting the first ABI
-			addDependenciesForNativeModules(ctx,
+			a.addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.First.Native_shared_libs,
 				a.properties.Multilib.First.Binaries,
 				a.properties.Multilib.First.Tests,
@@ -1622,14 +1646,14 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		switch target.Arch.ArchType.Multilib {
 		case "lib32":
 			// Add native modules targetting 32-bit ABI
-			addDependenciesForNativeModules(ctx,
+			a.addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib32.Native_shared_libs,
 				a.properties.Multilib.Lib32.Binaries,
 				a.properties.Multilib.Lib32.Tests,
 				target,
 				a.getImageVariation(config))
 
-			addDependenciesForNativeModules(ctx,
+			a.addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Prefer32.Native_shared_libs,
 				a.properties.Multilib.Prefer32.Binaries,
 				a.properties.Multilib.Prefer32.Tests,
@@ -1637,7 +1661,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 				a.getImageVariation(config))
 		case "lib64":
 			// Add native modules targetting 64-bit ABI
-			addDependenciesForNativeModules(ctx,
+			a.addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib64.Native_shared_libs,
 				a.properties.Multilib.Lib64.Binaries,
 				a.properties.Multilib.Lib64.Tests,
@@ -1645,7 +1669,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 				a.getImageVariation(config))
 
 			if !has32BitTarget {
-				addDependenciesForNativeModules(ctx,
+				a.addDependenciesForNativeModules(ctx,
 					a.properties.Multilib.Prefer32.Native_shared_libs,
 					a.properties.Multilib.Prefer32.Binaries,
 					a.properties.Multilib.Prefer32.Tests,
@@ -1656,7 +1680,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			if strings.HasPrefix(ctx.ModuleName(), "com.android.runtime") && target.Os.Class == android.Device {
 				for _, sanitizer := range ctx.Config().SanitizeDevice() {
 					if sanitizer == "hwaddress" {
-						addDependenciesForNativeModules(ctx,
+						a.addDependenciesForNativeModules(ctx,
 							[]string{"libclang_rt.hwasan-aarch64-android"},
 							nil, nil, target, a.getImageVariation(config))
 						break
