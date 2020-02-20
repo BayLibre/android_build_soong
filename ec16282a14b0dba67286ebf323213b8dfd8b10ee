@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cdb4a9f3_209f8550",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-02-20T20:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afe69eac_7161436b",
+      "revId": "ec16282a14b0dba67286ebf323213b8dfd8b10ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5c34261_5f3ea6ee",
         "filename": "java/hiddenapi.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "23887077_f8f20c0d",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-02-20T20:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c34261_5f3ea6ee",
+      "range": {
+        "startLine": 61,
+        "startChar": 118,
+        "endLine": 61,
+        "endChar": 119
+      },
+      "revId": "ec16282a14b0dba67286ebf323213b8dfd8b10ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5348048_ea2c9c81",
         "filename": "java/hiddenapi_singleton.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "ec16282a14b0dba67286ebf323213b8dfd8b10ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc596e1_a18a4c35",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-02-20T20:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5348048_ea2c9c81",
+      "revId": "ec16282a14b0dba67286ebf323213b8dfd8b10ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
