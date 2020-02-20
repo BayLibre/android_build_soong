@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f1279b47_4e0571a1",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-20T20:02:48Z",
+      "side": 1,
+      "message": "It gets populated by the arch mutator. See decodeMultilib() in android/arch.go. It seems to contain the correct things if you set device_supported: false, host_supported: true on the sdk/module_exports.",
+      "parentUuid": "dddc020d_a8338b00",
+      "revId": "25ce04bd3a076cf773edc6771f3baba11bb5c8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a29f7b1_74c18b08",
         "filename": "cc/binary_sdk_member.go",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b469fe44_103af7eb",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-20T20:02:48Z",
+      "side": 1,
+      "message": "Copy/paste error.",
+      "parentUuid": "4a29f7b1_74c18b08",
+      "range": {
+        "startLine": 99,
+        "startChar": 10,
+        "endLine": 99,
+        "endChar": 16
+      },
+      "revId": "25ce04bd3a076cf773edc6771f3baba11bb5c8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "289325bc_f8c0433c",
         "filename": "cc/binary_sdk_member.go",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2020-02-19T17:35:06Z",
       "side": 1,
       "message": "Code health nit: Could the corresponding nativeLibInfo stuff in library_sdk_member.go extend this?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 1
+      },
+      "revId": "25ce04bd3a076cf773edc6771f3baba11bb5c8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf441183_fb219f5e",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-20T20:02:48Z",
+      "side": 1,
+      "message": "Possibly. I tend not to refactor unless I have three things that are similar to each other, or where it is easy to see the commonality.",
+      "parentUuid": "289325bc_f8c0433c",
       "range": {
         "startLine": 125,
         "startChar": 0,
