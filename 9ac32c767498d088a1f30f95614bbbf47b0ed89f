@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5da5db2_bb3c62e1",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-21T01:55:13Z",
+      "side": 1,
+      "message": "c.Os() \u003d\u003d android.Linux is confusingly not the same thing as c.Os().Linux(), is that intentional here?",
+      "revId": "9ac32c767498d088a1f30f95614bbbf47b0ed89f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
