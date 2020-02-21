@@ -16,6 +16,24 @@
       "revId": "9ac32c767498d088a1f30f95614bbbf47b0ed89f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcac1878_8ac5dbbc",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-02-21T02:13:32Z",
+      "side": 1,
+      "message": "Yea, this is intentional. Passing in the builtins library is only required for Linux_glibc, not Linux_bionic (which gets it via linkerDeps in linker.go).\n\nI originally tried this as !c.toolchain(mctx).Bionic() to make this more clear, but that would eventually reach an empty arch module and panic on \"Toolchain not found\". I figured just checking for Linux as the Os was more straight forward.",
+      "parentUuid": "c5da5db2_bb3c62e1",
+      "revId": "9ac32c767498d088a1f30f95614bbbf47b0ed89f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
