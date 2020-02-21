@@ -23,6 +23,7 @@ var VndkMustUseVendorVariantList = []string{
 	"android.hardware.nfc@1.2",
 	"android.hardware.power-ndk_platform",
 	"android.hardware.vibrator-ndk_platform",
+	"android.hardware.vibrator-unstable-ndk_platform",
 	"libbinder",
 	"libcrypto",
 	"libexpat",
