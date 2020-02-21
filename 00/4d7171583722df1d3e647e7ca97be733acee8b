@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Baligh Uddin <baligh@google.com>
+Code-Review+1: Baligh Uddin <baligh@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Presubmit-Ready+1: Baligh Uddin <baligh@google.com>
+Submitted-by: Baligh Uddin <baligh@google.com>
+Submitted-at: Fri, 21 Feb 2020 16:59:39 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1240252
+Project: platform/build/soong
+Branch: refs/heads/master
