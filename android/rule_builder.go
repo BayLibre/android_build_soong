@@ -193,6 +193,28 @@ func (r *RuleBuilder) Inputs() Paths {
 	return inputList
 }
 
+// OrderOnlys returns the list of paths that were passed to the RuleBuilderCommand.OrderOnly or
+// RuleBuilderCommand.OrderOnlys.
+func (r *RuleBuilder) OrderOnlys() Paths {
+	orderOnlys := make(map[string]Path)
+	for _, c := range r.commands {
+		for _, orderOnly := range c.orderOnlys {
+			orderOnlys[orderOnly.String()] = orderOnly
+		}
+	}
+
+	var orderOnlyList Paths
+	for _, orderOnly := range orderOnlys {
+		orderOnlyList = append(orderOnlyList, orderOnly)
+	}
+
+	sort.Slice(orderOnlyList, func(i, j int) bool {
+		return orderOnlyList[i].String() < orderOnlyList[j].String()
+	})
+
+	return orderOnlyList
+}
+
 func (r *RuleBuilder) outputSet() map[string]WritablePath {
 	outputs := make(map[string]WritablePath)
 	for _, c := range r.commands {
@@ -337,6 +359,7 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 		ctx.Build(pctx, BuildParams{
 			Rule:        ErrorRule,
 			Outputs:     r.Outputs(),
+			OrderOnly:   r.OrderOnlys(),
 			Description: desc,
 			Args: map[string]string{
 				"error": "missing dependencies: " + strings.Join(r.missingDeps, ", "),
@@ -453,6 +476,7 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 type RuleBuilderCommand struct {
 	buf           strings.Builder
 	inputs        Paths
+	orderOnlys    Paths
 	outputs       WritablePaths
 	depFiles      WritablePaths
 	tools         Paths
@@ -473,6 +497,10 @@ func (c *RuleBuilderCommand) addInput(path Path) string {
 	}
 	c.inputs = append(c.inputs, path)
 	return path.String()
+}
+
+func (c *RuleBuilderCommand) addOrderOnly(path Path) {
+	c.orderOnlys = append(c.orderOnlys, path)
 }
 
 func (c *RuleBuilderCommand) outputStr(path Path) string {
@@ -600,6 +628,22 @@ func (c *RuleBuilderCommand) Implicit(path Path) *RuleBuilderCommand {
 func (c *RuleBuilderCommand) Implicits(paths Paths) *RuleBuilderCommand {
 	for _, path := range paths {
 		c.addInput(path)
+	}
+	return c
+}
+
+// OrderOnly adds the specified input path to the dependencies returned by RuleBuilder.OrderOnlys
+// without modifying the command line.
+func (c *RuleBuilderCommand) OrderOnly(path Path) *RuleBuilderCommand {
+	c.addOrderOnly(path)
+	return c
+}
+
+// OrderOnlys adds the specified input paths to the dependencies returned by RuleBuilder.OrderOnlys
+// without modifying the command line.
+func (c *RuleBuilderCommand) OrderOnlys(paths Paths) *RuleBuilderCommand {
+	for _, path := range paths {
+		c.addOrderOnly(path)
 	}
 	return c
 }
