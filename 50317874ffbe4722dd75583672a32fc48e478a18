@@ -46,6 +46,30 @@
       "revId": "50317874ffbe4722dd75583672a32fc48e478a18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e4ad97_fd4caf6e",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-02-24T17:05:41Z",
+      "side": 1,
+      "message": "Maybe we should then disallow specifying it in the manifest",
+      "parentUuid": "43e9b9f9_d203a292",
+      "range": {
+        "startLine": 1190,
+        "startChar": 0,
+        "endLine": 1193,
+        "endChar": 41
+      },
+      "revId": "50317874ffbe4722dd75583672a32fc48e478a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
