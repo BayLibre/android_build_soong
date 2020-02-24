@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7da3d826_4a47c49a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-24T12:21:27Z",
+      "side": 1,
+      "message": "Sorry for not explaining the reason. I couldn\u0027t understand this part, perhaps due to my limited knowledge on Go. So I thought Colin could make a better review on this change.",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "6e1bf30288d6abaa9c6e99485000f91bcfeb2aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
