@@ -70,6 +70,30 @@
       "revId": "50317874ffbe4722dd75583672a32fc48e478a18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1260cd_4dceb5dd",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-24T21:37:23Z",
+      "side": 1,
+      "message": "For APKs, we override the one in the manifest with the higher of the manifest or Android.bp value.  That\u0027s a little confusing (especially because the default if the sdk version is unspecified in the Android.bp file is effectively \"current\"), but it is at least correct in that it won\u0027t be less than either value.",
+      "parentUuid": "47e4ad97_fd4caf6e",
+      "range": {
+        "startLine": 1190,
+        "startChar": 0,
+        "endLine": 1193,
+        "endChar": 41
+      },
+      "revId": "50317874ffbe4722dd75583672a32fc48e478a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
