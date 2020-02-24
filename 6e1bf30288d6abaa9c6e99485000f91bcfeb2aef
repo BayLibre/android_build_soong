@@ -22,6 +22,30 @@
       "revId": "6e1bf30288d6abaa9c6e99485000f91bcfeb2aef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0068a3_58d6e814",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-24T14:48:48Z",
+      "side": 1,
+      "message": "Ah ok. https://tour.golang.org/methods/12 may help.\n\nSay you have:\nstruct fred {t bool}\nfunc (f *fred) foo() {\n  if f.t fmt.Printf(\"True\\n\")\n}\n\nvar xyz *fred \u003d nil\nvar abc interface{foo()} \u003d xyz\nif abc !\u003d nil {\n  abc.foo()\n}\n\n\nThe code will panic in *fred.foo() because the check abc !\u003d nil will pass because abc is not nil it is {*fred, nil} but when foo() is called the receiver f is nil.\n\nThere was some code that assigned *bpPropertySet to a variable of type interface{} and then tried to compare that variable with nil. The fix is to assign an untyped nil, i.e. just a literal nil itself to the variable. e.g.\n\nvar xyz *fred \u003d nil\n\nvar abc interface{foo()}\nif xyz \u003d\u003d nil {\n  abc \u003d nil\n} else {\n  abc \u003d xyz\n}\n\nif abc !\u003d nil {\n  abc.foo()\n}\n\nThe above code will not panic as abc is nil so will not call *fred.foo().",
+      "parentUuid": "7da3d826_4a47c49a",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "6e1bf30288d6abaa9c6e99485000f91bcfeb2aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
