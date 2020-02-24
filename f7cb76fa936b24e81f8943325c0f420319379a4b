@@ -16,6 +16,24 @@
       "revId": "f7cb76fa936b24e81f8943325c0f420319379a4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51962c3f_6c6b0082",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-24T15:51:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca4b1ca_e1cb8f36",
+      "revId": "f7cb76fa936b24e81f8943325c0f420319379a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
