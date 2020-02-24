@@ -367,6 +367,15 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 			return
 		}
 
+		// Discard modules that are set to not be exported to the fuzzing infrastructure.
+		if config := fuzzModule.Properties.Fuzz_config; config != nil {
+			if ccModule.Host() && !Bool(config.Fuzz_on_haiku_host) {
+				return
+			} else if !Bool(config.Fuzz_on_haiku_device) {
+				return
+			}
+		}
+
 		s.fuzzTargets[module.Name()] = true
 
 		hostOrTargetString := "target"
