@@ -46,6 +46,30 @@
       "revId": "6e1bf30288d6abaa9c6e99485000f91bcfeb2aef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e930c4c_04bf9104",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-25T01:17:27Z",
+      "side": 1,
+      "message": "Got it. Thanks for the detailed explanation. I\u0027ve learned a lot :)",
+      "parentUuid": "9a0068a3_58d6e814",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "6e1bf30288d6abaa9c6e99485000f91bcfeb2aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

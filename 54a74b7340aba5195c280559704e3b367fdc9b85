@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dd0a294_1278340d",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-25T01:17:27Z",
+      "side": 0,
+      "message": "then I think\n\nif v, ok :\u003d newValue.(*bpPropertySet); ok \u0026\u0026 v \u003d\u003d nil\n\nwould have been a simpler solution",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "54a74b7340aba5195c280559704e3b367fdc9b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
