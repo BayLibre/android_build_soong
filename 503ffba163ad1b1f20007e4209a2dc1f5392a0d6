@@ -51,6 +51,24 @@
       "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d255962a_93c1bda6",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-25T22:20:03Z",
+      "side": 1,
+      "message": "There is still a user of this one in Apex, which I didn\u0027t want to convert to AndroidMkEntries as part of this change.",
+      "parentUuid": "099de477_7d7619bf",
+      "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
