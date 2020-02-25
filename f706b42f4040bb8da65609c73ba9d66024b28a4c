@@ -22,6 +22,30 @@
       "revId": "f706b42f4040bb8da65609c73ba9d66024b28a4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86635936_97107deb",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2901,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-25T11:49:11Z",
+      "side": 1,
+      "message": "The line \"ensureListContains(t, appZipRule.Implicits.Strings(), libjniOutput.String())\" checks it.\n\nI split/moved the comment a bit to show the intent clearly.",
+      "parentUuid": "39647c06_32f75f04",
+      "range": {
+        "startLine": 2901,
+        "startChar": 9,
+        "endLine": 2901,
+        "endChar": 18
+      },
+      "revId": "f706b42f4040bb8da65609c73ba9d66024b28a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
