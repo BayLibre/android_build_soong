@@ -16,6 +16,24 @@
       "revId": "d335b3ab043c7a9ed92404bf183e0cf7a6c3a63c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a01647f_fc16b721",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1343198
+      },
+      "writtenOn": "2020-02-25T07:01:31Z",
+      "side": 1,
+      "message": "Thanks.\nApex module \"com.android.wifi\" is only exists in internal master and would\ncause build error if we use dnsresolver_aidl_interface-unstable-java.\nI phase in code to ag/10408986 first.",
+      "parentUuid": "7162bed8_85a23de7",
+      "revId": "d335b3ab043c7a9ed92404bf183e0cf7a6c3a63c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
