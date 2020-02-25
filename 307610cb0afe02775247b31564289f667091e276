@@ -22,6 +22,30 @@
       "revId": "307610cb0afe02775247b31564289f667091e276",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf0da096_0deef632",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-25T07:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7378cfc_e9e5efb0",
+      "range": {
+        "startLine": 170,
+        "startChar": 44,
+        "endLine": 170,
+        "endChar": 50
+      },
+      "revId": "307610cb0afe02775247b31564289f667091e276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
