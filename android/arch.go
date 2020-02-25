@@ -607,6 +607,8 @@ var (
 	Android     = NewOsType("android", Device, false)
 	Fuchsia     = NewOsType("fuchsia", Device, false)
 
+	Umbrella = NewOsType("umbrella", Generic, true)
+
 	osArchTypeMap = map[OsType][]ArchType{
 		Linux:       []ArchType{X86, X86_64},
 		LinuxBionic: []ArchType{X86_64},
@@ -775,13 +777,32 @@ func osMutator(mctx BottomUpMutatorContext) {
 		osNames[i] = os.String()
 	}
 
-	modules := mctx.CreateVariations(osNames...)
-	for i, m := range modules {
-		m.(Module).base().commonProperties.CompileOS = moduleOSList[i]
-		m.(Module).base().setOSProperties(mctx)
+	if base.CreateUmbrellaVariant() {
+		//osNames = append([]string{Umbrella.Name}, osNames...)
+		//moduleOSList = append([]OsType{Umbrella}, moduleOSList...)
+		osNames = append(osNames, Umbrella.Name)
+		moduleOSList = append(moduleOSList, Umbrella)
 	}
 
+	modules := mctx.CreateVariations(osNames...)
+	for i, m := range modules {
+		m.base().commonProperties.CompileOS = moduleOSList[i]
+		m.base().setOSProperties(mctx)
+	}
+
+	if base.CreateUmbrellaVariant() {
+		last := len(modules) - 1
+		umbrellaVariant := modules[last]
+		umbrellaVariant.base().commonProperties.UmbrellaVariant = true
+		for _, module := range modules[0:last] {
+			mctx.AddInterVariantDependency(UmbrellaTag, umbrellaVariant, module)
+		}
+	}
 }
+
+type umbrellaTag struct{ blueprint.BaseDependencyTag }
+
+var UmbrellaTag = umbrellaTag{}
 
 // archMutator splits a module into a variant for each Target requested by the module.  Target selection
 // for a module is in three levels, OsClass, mulitlib, and then Target.
@@ -821,6 +842,10 @@ func archMutator(mctx BottomUpMutatorContext) {
 	}
 
 	os := base.commonProperties.CompileOS
+	if os == Umbrella {
+		return
+	}
+
 	osTargets := mctx.Config().Targets[os]
 	image := base.commonProperties.ImageVariation
 	// Filter NativeBridge targets unless they are explicitly supported

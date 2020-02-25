@@ -53,6 +53,8 @@ type sdk struct {
 	// The set of exported members.
 	exportedMembers map[string]struct{}
 
+	osMemberInfo osSpecificMembers
+
 	properties sdkProperties
 
 	snapshotFile android.OptionalPath
@@ -201,7 +203,7 @@ func newSdkModule(moduleExports bool) *sdk {
 	// properties for the member type specific list properties.
 	s.dynamicMemberTypeListProperties = s.dynamicSdkMemberTypes.createMemberListProperties()
 	s.AddProperties(&s.properties, s.dynamicMemberTypeListProperties)
-	android.InitAndroidMultiTargetsArchModule(s, android.HostAndDeviceSupported, android.MultilibCommon)
+	android.InitUmbrellaAndroidMultiTargetsArchModule(s, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(s)
 	android.AddLoadHook(s, func(ctx android.LoadHookContext) {
 		type props struct {
@@ -251,10 +253,39 @@ func (s *sdk) snapshot() bool {
 	return s.properties.Snapshot
 }
 
+type osSpecificMembers struct {
+	members         []*sdkMember
+	compileMultilib string
+}
+
 func (s *sdk) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	if !s.snapshot() {
+	if s.snapshot() {
 		// We don't need to create a snapshot out of sdk_snapshot.
 		// That doesn't make sense. We need a snapshot to create sdk_snapshot.
+		return
+	}
+
+	if !s.IsUmbrellaVariant() {
+		members, compileMultilib := s.collectMembers(ctx)
+		s.osMemberInfo = osSpecificMembers{members, compileMultilib}
+	} else {
+		var osSpecificVariants []*sdk
+		ctx.VisitDirectDeps(func(m android.Module) {
+			if ctx.OtherModuleDependencyTag(m) == android.UmbrellaTag {
+				if sdkVariant, ok := m.(*sdk); ok {
+					osSpecificVariants = append(osSpecificVariants, sdkVariant)
+				}
+			}
+		})
+
+		if len(osSpecificVariants) != 1 {
+			ctx.ModuleErrorf("Expected 1 sdk variant for %s, found %q", s.String(), osSpecificVariants)
+			return
+		}
+
+		osSpecificVariant := osSpecificVariants[0]
+		s.osMemberInfo = osSpecificVariant.osMemberInfo
+
 		s.snapshotFile = android.OptionalPathForPath(s.buildSnapshot(ctx))
 	}
 }
@@ -320,11 +351,14 @@ func (t sdkMemberVersionedDepTag) ExcludeFromVisibilityEnforcement() {}
 // Step 1: create dependencies from an SDK module to its members.
 func memberMutator(mctx android.BottomUpMutatorContext) {
 	if s, ok := mctx.Module().(*sdk); ok {
-		if s.Enabled() {
+		// Add dependencies from enabled and non umbrella variants to the sdk member variants.
+		if s.Enabled() && !s.IsUmbrellaVariant() {
 			for _, memberListProperty := range s.memberListProperties() {
 				names := memberListProperty.getter(s.dynamicMemberTypeListProperties)
-				tag := memberListProperty.dependencyTag
-				memberListProperty.memberType.AddDependencies(mctx, tag, names)
+				if len(names) > 0 {
+					tag := memberListProperty.dependencyTag
+					memberListProperty.memberType.AddDependencies(mctx, tag, names)
+				}
 			}
 		}
 	}

@@ -228,7 +228,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 	}
 	s.builderForTests = builder
 
-	members, multilib := s.collectMembers(ctx)
+	members := s.osMemberInfo.members
 	for _, member := range members {
 		member.memberType.BuildSnapshot(ctx, builder, member)
 	}
@@ -278,6 +278,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 	// Compile_multilib defaults to both and must always be set to both on the
 	// device and so only needs to be set when targeted at the host and is neither
 	// unspecified or both.
+	multilib := s.osMemberInfo.compileMultilib
 	if s.HostSupported() && multilib != "" && multilib != "both" {
 		targetSet := snapshotModule.AddPropertySet("target")
 		hostSet := targetSet.AddPropertySet("host")

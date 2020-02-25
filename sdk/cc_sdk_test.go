@@ -54,7 +54,7 @@ func TestSdkIsCompileMultilibBoth(t *testing.T) {
 	arm64Output := result.Module("sdkmember", "android_arm64_armv8-a_shared").(*cc.Module).OutputFile()
 
 	var inputs []string
-	buildParams := result.Module("mysdk", "android_common").BuildParamsForTests()
+	buildParams := result.Module("mysdk", "umbrella").BuildParamsForTests()
 	for _, bp := range buildParams {
 		if bp.Input != nil {
 			inputs = append(inputs, bp.Input.String())
@@ -250,7 +250,7 @@ func TestSnapshotWithCcDuplicateHeaders(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "android_common", "",
+	result.CheckSnapshot("mysdk", "umbrella", "",
 		checkAllCopyRules(`
 include/Test.h -> include/include/Test.h
 .intermediates/mynativelib1/android_arm64_armv8-a_shared/mynativelib1.so -> arm64/lib/mynativelib1.so
@@ -287,7 +287,7 @@ func TestSnapshotWithCcSharedLibraryCommonProperties(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "android_common", "",
+	result.CheckSnapshot("mysdk", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -356,7 +356,7 @@ func TestSnapshotWithCcBinary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mymodule_exports", "android_common", "",
+	result.CheckSnapshot("mymodule_exports", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -422,7 +422,7 @@ func TestSnapshotWithCcSharedLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "android_common", "",
+	result.CheckSnapshot("mysdk", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -510,7 +510,7 @@ func TestHostSnapshotWithCcSharedLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "linux_glibc_common", "",
+	result.CheckSnapshot("mysdk", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -597,7 +597,7 @@ func TestSnapshotWithCcStaticLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "android_common", "",
+	result.CheckSnapshot("myexports", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -685,7 +685,7 @@ func TestHostSnapshotWithCcStaticLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "linux_glibc_common", "",
+	result.CheckSnapshot("myexports", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -784,7 +784,7 @@ func TestHostSnapshotWithMultiLib64(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "linux_glibc_common", "",
+	result.CheckSnapshot("myexports", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -856,7 +856,7 @@ func TestSnapshotWithCcHeadersLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "android_common", "",
+	result.CheckSnapshot("mysdk", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -909,7 +909,7 @@ func TestHostSnapshotWithCcHeadersLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "linux_glibc_common", "",
+	result.CheckSnapshot("mysdk", "umbrella", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 

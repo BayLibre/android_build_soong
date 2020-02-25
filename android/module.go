@@ -479,6 +479,9 @@ type commonProperties struct {
 	HostOrDeviceSupported HostOrDeviceSupported `blueprint:"mutated"`
 	ArchSpecific          bool                  `blueprint:"mutated"`
 
+	CreateUmbrellaVariant bool `blueprint:"mutated"`
+	UmbrellaVariant       bool `blueprint:"mutated"`
+
 	SkipInstall bool `blueprint:"mutated"`
 
 	NamespaceExportedToMake bool `blueprint:"mutated"`
@@ -609,6 +612,12 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 func InitAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
 	InitAndroidArchModule(m, hod, defaultMultilib)
 	m.base().commonProperties.UseTargetVariants = false
+}
+
+func InitUmbrellaAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
+	InitAndroidArchModule(m, hod, defaultMultilib)
+	m.base().commonProperties.UseTargetVariants = false
+	m.base().commonProperties.CreateUmbrellaVariant = true
 }
 
 // A ModuleBase object contains the properties that are common to all Android
@@ -800,6 +809,14 @@ func (m *ModuleBase) Arch() Arch {
 
 func (m *ModuleBase) ArchSpecific() bool {
 	return m.commonProperties.ArchSpecific
+}
+
+func (m *ModuleBase) CreateUmbrellaVariant() bool {
+	return m.commonProperties.CreateUmbrellaVariant
+}
+
+func (m *ModuleBase) IsUmbrellaVariant() bool {
+	return m.commonProperties.UmbrellaVariant
 }
 
 func (m *ModuleBase) OsClassSupported() []OsClass {
