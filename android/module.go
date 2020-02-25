@@ -479,6 +479,22 @@ type commonProperties struct {
 	HostOrDeviceSupported HostOrDeviceSupported `blueprint:"mutated"`
 	ArchSpecific          bool                  `blueprint:"mutated"`
 
+	// If set to true then an Umbrella variant will be created which will have dependencies
+	// on all its OsType specific variants. Used by sdk/module_exports to create a snapshot
+	// that covers all os and architecture variants.
+	//
+	// The OsType specific variants can be retrieved by calling
+	// GetOsSpecificVariantsOfUmbrella
+	//
+	// Set at module initialization time by calling InitUmbrellaAndroidMultiTargetsArchModule
+	CreateUmbrellaVariant bool `blueprint:"mutated"`
+
+	// If set to true then this variant is the umbrella variant that has dependencies on its
+	// OsType specific variants.
+	//
+	// Set by osMutator.
+	UmbrellaVariant bool `blueprint:"mutated"`
+
 	SkipInstall bool `blueprint:"mutated"`
 
 	NamespaceExportedToMake bool `blueprint:"mutated"`
@@ -609,6 +625,14 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 func InitAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
 	InitAndroidArchModule(m, hod, defaultMultilib)
 	m.base().commonProperties.UseTargetVariants = false
+}
+
+// As InitAndroidMultiTargetsArchModule except it creates an additional umbrella variant that
+// has dependencies on all the OsType specific variants.
+func InitUmbrellaAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
+	InitAndroidArchModule(m, hod, defaultMultilib)
+	m.base().commonProperties.UseTargetVariants = false
+	m.base().commonProperties.CreateUmbrellaVariant = true
 }
 
 // A ModuleBase object contains the properties that are common to all Android
@@ -800,6 +824,11 @@ func (m *ModuleBase) Arch() Arch {
 
 func (m *ModuleBase) ArchSpecific() bool {
 	return m.commonProperties.ArchSpecific
+}
+
+// True if the current variants is an umbrella variant, false otherwise.
+func (m *ModuleBase) IsUmbrellaVariant() bool {
+	return m.commonProperties.UmbrellaVariant
 }
 
 func (m *ModuleBase) OsClassSupported() []OsClass {
@@ -1128,8 +1157,11 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	blueprintCtx.GetMissingDependencies()
 
 	// For the final GenerateAndroidBuildActions pass, require that all visited dependencies Soong modules and
-	// are enabled.
-	ctx.baseModuleContext.strictVisitDeps = true
+	// are enabled. Unless the module is an umbrella variant which may have dependencies on disabled variants
+	// (because the dependencies are added before the modules are disabled). The
+	// GetOsSpecificVariantsOfUmbrella(...) method will ensure that the disabled variants are
+	// ignored.
+	ctx.baseModuleContext.strictVisitDeps = !m.IsUmbrellaVariant()
 
 	if ctx.config.captureBuild {
 		ctx.ruleParams = make(map[blueprint.Rule]blueprint.RuleParams)
