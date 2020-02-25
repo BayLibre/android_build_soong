@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58ccfebd_a96b13c9",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-25T21:16:39Z",
+      "side": 1,
+      "message": "This isn\u0027t entirely accurate, it could be for multiple architectures, not just 32 bit vs 64 bit.  In a build in Make it will always be 32 bit vs. 64 bit though.",
+      "range": {
+        "startLine": 136,
+        "startChar": 27,
+        "endLine": 136,
+        "endChar": 55
+      },
+      "revId": "a46b7de19a9970bd9714c4f5556f09e2bee0e078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
