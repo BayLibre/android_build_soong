@@ -22,6 +22,30 @@
       "revId": "54a74b7340aba5195c280559704e3b367fdc9b85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c70ac8b_cbffabfd",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-25T10:21:13Z",
+      "side": 0,
+      "message": "That wouldn\u0027t catch the situation when the transformProperty method returned nil. Which is not affected by this issue because the return type is interface{} so assigning that to a variable of type interface{} does not change nil -\u003e {interface{}, nil}.\n\nIn order to do that you would need to do something like:\n\nif v, ok :\u003d newValue.(*bpPropertySet); (ok \u0026\u0026 v \u003d\u003d nil) || newValue \u003d\u003d nil\n\nThat is starting to get slightly more complicated.",
+      "parentUuid": "4dd0a294_1278340d",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 22
+      },
+      "revId": "54a74b7340aba5195c280559704e3b367fdc9b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
