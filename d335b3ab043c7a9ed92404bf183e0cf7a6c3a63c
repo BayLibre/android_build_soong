@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7162bed8_85a23de7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-25T05:22:03Z",
+      "side": 1,
+      "message": "Please don\u0027t add more to this list. This list has to be eliminated eventually.\n\nAdding com.android.wifi to the apex_available property of dnsresolver_aidl_interface is the preferred way of handling this.",
+      "revId": "d335b3ab043c7a9ed92404bf183e0cf7a6c3a63c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
