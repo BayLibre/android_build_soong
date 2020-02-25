@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88926915_8ebebded",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-25T20:54:34Z",
+      "side": 1,
+      "message": "The design of AndroidMkEntries leads to some unfortunate patterns here, where some of these helper methods are called on a AndroidMkEntries that has not yet been returned by the top level AndroidMkEntries() method, and some are called on an AndroidMkEntries that is passed to an ExtraEntries method.  In the former case, the method must add a lambda to entries.ExtraEntries, but in the latter case it should just call entries.SetString, etc.\n\nDoing it wrong either causes a panic when SetString writes to the map in AndroidMkEntries when it is nil, or silently drops a new ExtraEntries function that is added from inside an ExtraEntries function.  Neither is easy to debug.",
+      "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
