@@ -359,6 +359,9 @@ func NewConfig(srcDir, buildDir string) (Config, error) {
 		return Config{}, err
 	}
 
+	// Make the Umbrella OsType available for all products.
+	targets[Umbrella] = []Target{commonTargetMap[Umbrella.Name]}
+
 	var archConfig []archConfig
 	if Bool(config.Mega_device) {
 		archConfig = getMegaDeviceConfig()
