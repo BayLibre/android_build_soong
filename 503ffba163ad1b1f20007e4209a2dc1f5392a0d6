@@ -16,6 +16,41 @@
       "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47c2214_2a9e0845",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-25T22:17:10Z",
+      "side": 1,
+      "message": "Yeah, I vaguely remember not being 100% satisfied with the design choice, which I made just for easier transitions. I\u0027ll try to refactor it a bit so that it\u0027s hard to misuse.",
+      "parentUuid": "88926915_8ebebded",
+      "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099de477_7d7619bf",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-25T22:17:10Z",
+      "side": 1,
+      "message": "Delete this and rename the above one androidMkWriteAdditionalDependenciesForSourceAbiDiff now?",
+      "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
