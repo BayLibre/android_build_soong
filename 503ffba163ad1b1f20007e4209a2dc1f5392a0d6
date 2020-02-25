@@ -87,6 +87,24 @@
       "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "548d5628_8e9c3144",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-25T22:31:28Z",
+      "side": 1,
+      "message": "Done.\n\nI don\u0027t plan to update apex/androidmk.go, it is currently a giant Custom call.",
+      "parentUuid": "359d9768_cb4e4317",
+      "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
