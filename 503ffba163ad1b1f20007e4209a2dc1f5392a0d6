@@ -69,6 +69,24 @@
       "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "359d9768_cb4e4317",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-25T22:24:42Z",
+      "side": 1,
+      "message": "Makes sense. Can you add a brief comment about the situation then? Unless you plan to update the apex code any time soon?",
+      "parentUuid": "d255962a_93c1bda6",
+      "revId": "503ffba163ad1b1f20007e4209a2dc1f5392a0d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
