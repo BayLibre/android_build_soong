@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39647c06_32f75f04",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2901,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-25T09:52:22Z",
+      "side": 1,
+      "message": "can you also make sure that libfoo is included in the apk?",
+      "range": {
+        "startLine": 2901,
+        "startChar": 9,
+        "endLine": 2901,
+        "endChar": 18
+      },
+      "revId": "f706b42f4040bb8da65609c73ba9d66024b28a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
