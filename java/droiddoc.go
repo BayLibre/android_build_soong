@@ -2042,8 +2042,9 @@ func (mt *droidStubsSdkMemberType) IsInstance(module android.Module) bool {
 
 func (mt *droidStubsSdkMemberType) BuildSnapshot(sdkModuleContext android.ModuleContext, builder android.SnapshotBuilder, member android.SdkMember) {
 	variants := member.Variants()
-	if len(variants) != 1 {
-		sdkModuleContext.ModuleErrorf("sdk contains %d variants of member %q but only one is allowed", len(variants), member.Name())
+	// TODO(150451422) - Temporarily work around build breakages caused by attempting to build for multiple os types.
+	if len(variants) == 0 {
+		sdkModuleContext.ModuleErrorf("sdk contains no variants of member %q but at least one is required", member.Name())
 	}
 	variant := variants[0]
 	d, _ := variant.(*Droidstubs)

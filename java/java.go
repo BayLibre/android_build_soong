@@ -1901,8 +1901,9 @@ func (mt *librarySdkMemberType) buildSnapshot(
 	jarToExportGetter func(j *Library) android.Path) {
 
 	variants := member.Variants()
-	if len(variants) != 1 {
-		sdkModuleContext.ModuleErrorf("sdk contains %d variants of member %q but only one is allowed", len(variants), member.Name())
+	// TODO(150451422) - Temporarily work around build breakages caused by attempting to build for multiple os types.
+	if len(variants) == 0 {
+		sdkModuleContext.ModuleErrorf("sdk contains no variants of member %q but at least one is required", member.Name())
 		for _, variant := range variants {
 			sdkModuleContext.ModuleErrorf("    %q", variant)
 		}
