@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8c67fd3_5fda5aab",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-25T23:00:32Z",
+      "side": 1,
+      "message": "image.target.Os \u003d\u003d android.Android seems more accurate",
+      "range": {
+        "startLine": 379,
+        "startChar": 4,
+        "endLine": 379,
+        "endChar": 38
+      },
+      "revId": "c88390a7028bef5ce56ada8cb13a4f3b1e6c014a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3e73a97_0ba6d6bd",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-25T23:00:32Z",
+      "side": 1,
+      "message": "current.target.Os \u003d\u003d android.Android or current.target.Os.Class \u003d\u003d android.Host",
+      "range": {
+        "startLine": 610,
+        "startChar": 7,
+        "endLine": 610,
+        "endChar": 43
+      },
+      "revId": "c88390a7028bef5ce56ada8cb13a4f3b1e6c014a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
