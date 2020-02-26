@@ -22,6 +22,30 @@
       "revId": "a46b7de19a9970bd9714c4f5556f09e2bee0e078",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bab2453_e3fbc03d",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-02-26T16:12:03Z",
+      "side": 1,
+      "message": "Fixed.\n\nI spent some time looking at the code around this and could not see how it could be anything other than 32/64 bit. This method returns CompileMultiTargets, that property is only set in archMutator to a Target slice returned by decodeMultilibTargets(..) which can only return lib32/lib64 and (if compile_multilib was set to \"common\") then the common architecture for the target os\u0027s. As the sdk module type hard codes compile_multilib to \"both\" I ignored the \"common\" possibility. So, you\u0027re right that the documentation is inaccurate.\n\nI personally find the MultiTargets name confusing as it seems like it should be related to multilib. Then again, I find multilib itself confusing as it is a pretty generic name that refers to 32/64 bit. Is there a better name to use to describe the 32/64 bit variants/targets?\n\nWould it make sense to rename MultiTargets() and CompileMultiTargets to say ...MultiArchTargets() or ExtraArchTargets()?",
+      "parentUuid": "58ccfebd_a96b13c9",
+      "range": {
+        "startLine": 136,
+        "startChar": 27,
+        "endLine": 136,
+        "endChar": 55
+      },
+      "revId": "a46b7de19a9970bd9714c4f5556f09e2bee0e078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
