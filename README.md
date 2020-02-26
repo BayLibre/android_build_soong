@@ -510,6 +510,23 @@ written to a [ninja](http://ninja-build.org) build file.
 
 ## Developing for Soong
 
+### Setting IntelliJ IDEA project for Soong Development
+
+If you have a modern version of IntelliJ IDEA (tested at 2019.3), the script
+`build/soong/scripts/soong_idea_project` creates an IDEA project 
+allowing to conduct all Soong development: edit, test, debug and conduct
+Git operations without leaving IDE. There is no need to use BindFS anymore. 
+
+You can use a script to create IntelliJ IDEA project outside Android source tree:
+```shell script
+build/soong/scripts/soong_idea_project.sh /path/to/idea/project
+```  
+It will create the IDEA project in `/path/to/idea/project` with three modules: 
+`blueprint`, `protobuf` and `soong`. You can the start IDEA, click File>Open...,
+navigate to `/path/to/idea/project` and press "OK".
+
+### Other/older IDEs
+
 To load Soong code in a Go-aware IDE, create a directory outside your android tree and then:
 ```bash
 apt install bindfs
