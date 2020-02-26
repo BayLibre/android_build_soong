@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ef7c26e_988e2231",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-26T17:49:35Z",
+      "side": 1,
+      "message": "nit: out/soong/build_number.txt?",
+      "range": {
+        "startLine": 347,
+        "startChar": 30,
+        "endLine": 347,
+        "endChar": 50
+      },
+      "revId": "cd1cdfccf74d1ed212feeab64d39e68620e81f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
