@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ee7005c_95d26169",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-26T15:36:56Z",
+      "side": 1,
+      "message": "If I\u0027m reading the code correctly, it also dedupes and sorts order only paths to be returned? Maybe mention it in the comment?",
+      "revId": "0a37aad3773c6e7fa922a4945bedc443aa9924aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
