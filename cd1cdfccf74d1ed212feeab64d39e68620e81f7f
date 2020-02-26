@@ -22,6 +22,30 @@
       "revId": "cd1cdfccf74d1ed212feeab64d39e68620e81f7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "696eda89_6681dfef",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-02-26T21:32:30Z",
+      "side": 1,
+      "message": "Not that I saw the other change, \"build_number.txt\" seems to be the better choice, though this probably won\u0027t matter.",
+      "parentUuid": "1ef7c26e_988e2231",
+      "range": {
+        "startLine": 347,
+        "startChar": 30,
+        "endLine": 347,
+        "endChar": 50
+      },
+      "revId": "cd1cdfccf74d1ed212feeab64d39e68620e81f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
