@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf237d08_a3f26dcd",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-27T05:22:39Z",
+      "side": 1,
+      "message": "In this refactoring, the only behavioral change is this line. Previous code doesn\u0027t have this variation for a.properties.native_shared_libs. It\u0027s partly motivation for this refactoring. It looks okay, but want to be sure. Jiyong, is this okay?",
+      "range": {
+        "startLine": 1536,
+        "startChar": 2,
+        "endLine": 1536,
+        "endChar": 68
+      },
+      "revId": "01a868d0966af2088798aabbdb792524c95f48e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
