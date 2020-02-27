@@ -166,6 +166,7 @@ sdk_snapshot {
 		checkAllCopyRules(`
 .intermediates/myjavalib/android_common/turbine-combined/myjavalib.jar -> java/myjavalib.jar
 aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
+.intermediates/mysdk/android_common/mysdk-current.zip -> mysdk-current.zip
 `),
 	)
 }
@@ -226,6 +227,7 @@ sdk_snapshot {
 		checkAllCopyRules(`
 .intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/myjavalib.jar
 aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
+.intermediates/mysdk/linux_glibc_common/mysdk-current.zip -> mysdk-current.zip
 `),
 	)
 }
@@ -275,6 +277,7 @@ module_exports_snapshot {
 		checkAllCopyRules(`
 .intermediates/myjavalib/android_common/javac/myjavalib.jar -> java/myjavalib.jar
 aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
+.intermediates/myexports/android_common/myexports-current.zip -> myexports-current.zip
 `),
 	)
 }
@@ -335,6 +338,7 @@ module_exports_snapshot {
 		checkAllCopyRules(`
 .intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/myjavalib.jar
 aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
+.intermediates/myexports/linux_glibc_common/myexports-current.zip -> myexports-current.zip
 `),
 	)
 }
@@ -382,6 +386,7 @@ module_exports_snapshot {
 		checkAllCopyRules(`
 .intermediates/myjavatests/android_common/javac/myjavatests.jar -> java/myjavatests.jar
 .intermediates/myjavatests/android_common/myjavatests.config -> java/myjavatests-AndroidTest.xml
+.intermediates/myexports/android_common/myexports-current.zip -> myexports-current.zip
 `),
 	)
 }
@@ -441,6 +446,7 @@ module_exports_snapshot {
 		checkAllCopyRules(`
 .intermediates/myjavatests/linux_glibc_common/javac/myjavatests.jar -> java/myjavatests.jar
 .intermediates/myjavatests/linux_glibc_common/myjavatests.config -> java/myjavatests-AndroidTest.xml
+.intermediates/myexports/linux_glibc_common/myexports-current.zip -> myexports-current.zip
 `),
 	)
 }
@@ -525,8 +531,8 @@ module_exports_snapshot {
 }
 
 `),
-		checkAllCopyRules(""),
-		checkMergeZip(".intermediates/myexports/common_os/tmp/java/myjavaapistubs_stubs_sources.zip"),
+		checkAllCopyRules(".intermediates/myexports/common_os/tmp/myexports-current.zip -> myexports-current.zip"),
+		checkMergeZip(".intermediates/myexports/common_os/tmp/tmp/java/myjavaapistubs_stubs_sources.zip"),
 	)
 }
 
@@ -579,7 +585,7 @@ module_exports_snapshot {
     stubs_sources: ["myexports_myjavaapistubs@current"],
 }
 `),
-		checkAllCopyRules(""),
+		checkAllCopyRules(".intermediates/myexports/common_os/tmp/myexports-current.zip -> myexports-current.zip"),
 		checkMergeZip(".intermediates/myexports/common_os/tmp/java/myjavaapistubs_stubs_sources.zip"),
 	)
 }
@@ -669,6 +675,7 @@ sdk_snapshot {
 		checkAllCopyRules(`
 .intermediates/exported-system-module/android_common/turbine-combined/exported-system-module.jar -> java/exported-system-module.jar
 .intermediates/system-module/android_common/turbine-combined/system-module.jar -> java/system-module.jar
+.intermediates/mysdk/android_common/mysdk-current.zip -> mysdk-current.zip
 `),
 	)
 }
@@ -747,6 +754,9 @@ sdk_snapshot {
     java_system_modules: ["mysdk_my-system-modules@current"],
 }
 `),
-		checkAllCopyRules(".intermediates/system-module/linux_glibc_common/javac/system-module.jar -> java/system-module.jar"),
+		checkAllCopyRules(`
+.intermediates/system-module/linux_glibc_common/javac/system-module.jar -> java/system-module.jar
+.intermediates/mysdk/linux_glibc_common/mysdk-current.zip -> mysdk-current.zip
+`),
 	)
 }
