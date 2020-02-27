@@ -1247,6 +1247,15 @@ func PathForNdkInstall(ctx PathContext, paths ...string) InstallPath {
 	return InstallPath{basePath{path, ctx.Config(), ""}, ""}
 }
 
+func PathForMainlineSdksInstall(ctx PathContext, paths ...string) InstallPath {
+	paths = append([]string{"mainline-sdks"}, paths...)
+	path, err := validatePath(paths...)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+	return InstallPath{basePath{path, ctx.Config(), ""}, ""}
+}
+
 func InstallPathToOnDevicePath(ctx PathContext, path InstallPath) string {
 	rel := Rel(ctx, PathForOutput(ctx, "target", "product", ctx.Config().DeviceName()).String(), path.String())
 

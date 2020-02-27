@@ -256,6 +256,7 @@ include/Test.h -> include/include/Test.h
 .intermediates/mynativelib1/android_arm_armv7-a-neon_shared/mynativelib1.so -> arm/lib/mynativelib1.so
 .intermediates/mynativelib2/android_arm64_armv8-a_shared/mynativelib2.so -> arm64/lib/mynativelib2.so
 .intermediates/mynativelib2/android_arm_armv7-a-neon_shared/mynativelib2.so -> arm/lib/mynativelib2.so
+.intermediates/mysdk/android_common/mysdk-current.zip -> mysdk-current.zip
 `),
 	)
 }
@@ -333,7 +334,9 @@ sdk_snapshot {
 include/Test.h -> include/include/Test.h
 .intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
 arm64/include/Arm64Test.h -> arm64/include/arm64/include/Arm64Test.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so`),
+.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so
+.intermediates/mysdk/android_common/mysdk-current.zip -> mysdk-current.zip
+`),
 	)
 }
 
@@ -395,6 +398,7 @@ module_exports_snapshot {
 		checkAllCopyRules(`
 .intermediates/mynativebinary/android_arm64_armv8-a/mynativebinary -> arm64/bin/mynativebinary
 .intermediates/mynativebinary/android_arm_armv7-a-neon/mynativebinary -> arm/bin/mynativebinary
+.intermediates/mymodule_exports/android_common/mymodule_exports-current.zip -> mymodule_exports-current.zip
 `),
 	)
 }
@@ -476,6 +480,7 @@ include/Test.h -> include/include/Test.h
 .intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/Test.h -> arm/include_gen/mynativelib/aidl/foo/bar/Test.h
 .intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BnTest.h
 .intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+.intermediates/mysdk/android_common/mysdk-current.zip -> mysdk-current.zip
 `),
 	)
 }
@@ -570,6 +575,7 @@ include/Test.h -> include/include/Test.h
 .intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/Test.h -> x86/include_gen/mynativelib/aidl/foo/bar/Test.h
 .intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BnTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BnTest.h
 .intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BpTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+.intermediates/mysdk/linux_glibc_common/mysdk-current.zip -> mysdk-current.zip
 `),
 	)
 }
@@ -651,6 +657,7 @@ include/Test.h -> include/include/Test.h
 .intermediates/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/Test.h -> arm/include_gen/mynativelib/aidl/foo/bar/Test.h
 .intermediates/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/BnTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BnTest.h
 .intermediates/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/BpTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+.intermediates/myexports/android_common/myexports-current.zip -> myexports-current.zip
 `),
 	)
 }
@@ -745,6 +752,7 @@ include/Test.h -> include/include/Test.h
 .intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/Test.h -> x86/include_gen/mynativelib/aidl/foo/bar/Test.h
 .intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BnTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BnTest.h
 .intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BpTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+.intermediates/myexports/linux_glibc_common/myexports-current.zip -> myexports-current.zip
 `),
 	)
 }
