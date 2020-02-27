@@ -1254,13 +1254,21 @@ func pathForInstall(ctx PathContext, os OsType, partition string, debug bool,
 	return ret
 }
 
-func PathForNdkInstall(ctx PathContext, paths ...string) InstallPath {
-	paths = append([]string{"ndk"}, paths...)
+func pathForInstall(ctx PathContext, prefix string, paths []string) InstallPath {
+	paths = append([]string{prefix}, paths...)
 	path, err := validatePath(paths...)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
 	return InstallPath{basePath{path, ctx.Config(), ""}, ""}
+}
+
+func PathForNdkInstall(ctx PathContext, paths ...string) InstallPath {
+	return pathForInstall(ctx, "ndk", paths)
+}
+
+func PathForMainlineSdksInstall(ctx PathContext, paths ...string) InstallPath {
+	return pathForInstall(ctx, "mainline-sdks", paths)
 }
 
 func InstallPathToOnDevicePath(ctx PathContext, path InstallPath) string {
