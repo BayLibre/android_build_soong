@@ -22,6 +22,30 @@
       "revId": "01a868d0966af2088798aabbdb792524c95f48e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "531372e7_800dce7e",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-02-27T05:30:03Z",
+      "side": 1,
+      "message": "yes this is fine. all cc_libraries have `version:\"\"` variant, regardless of whether they have stubs defined or not.",
+      "parentUuid": "bf237d08_a3f26dcd",
+      "range": {
+        "startLine": 1536,
+        "startChar": 2,
+        "endLine": 1536,
+        "endChar": 68
+      },
+      "revId": "01a868d0966af2088798aabbdb792524c95f48e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
