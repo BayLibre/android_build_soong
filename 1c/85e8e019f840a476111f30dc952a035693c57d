@@ -1,0 +1,10 @@
+Autosubmit+1: Colin Cross <ccross@android.com>
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Colin Cross <ccross@android.com>
+Submitted-at: Thu, 27 Feb 2020 21:08:08 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1245307
+Project: platform/build/soong
+Branch: refs/heads/master
