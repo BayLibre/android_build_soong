@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f34626c6_3f5bb647",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-02-28T07:22:49Z",
+      "side": 1,
+      "message": "No, they are added because `HasVendorVariant()` is `true` for either `vendor_available: true` or `vndk.enabled: true`. Originally `vendorSpecific` was filtered out because the vndk-ext for vendor partition must not enter here.\nWe also need to filter out \u0027productSpecific\u0027 as well for vndk-ext on product except for non-VNDK case with `product_specific: true` + `vendor_available: true` which must enter here.",
+      "parentUuid": "912cb232_5846c3d1",
+      "range": {
+        "startLine": 2818,
+        "startChar": 56,
+        "endLine": 2818,
+        "endChar": 71
+      },
+      "revId": "d459462b5c829a398e968596db370fd0231af6f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5064dc1e_ec5830ab",
         "filename": "cc/cc_test.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-28T07:05:35Z",
       "side": 1,
       "message": "how about passing variant rather than \u0027bool\u0027?",
+      "range": {
+        "startLine": 221,
+        "startChar": 32,
+        "endLine": 221,
+        "endChar": 49
+      },
+      "revId": "d459462b5c829a398e968596db370fd0231af6f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d851065_bb80a9f7",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-02-28T07:22:49Z",
+      "side": 1,
+      "message": "That will be better for readability.\nLet me update with it.",
+      "parentUuid": "5064dc1e_ec5830ab",
       "range": {
         "startLine": 221,
         "startChar": 32,
