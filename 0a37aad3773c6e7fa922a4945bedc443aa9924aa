@@ -16,6 +16,24 @@
       "revId": "0a37aad3773c6e7fa922a4945bedc443aa9924aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a8aebd2_70882554",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-28T18:16:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ee7005c_95d26169",
+      "revId": "0a37aad3773c6e7fa922a4945bedc443aa9924aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
