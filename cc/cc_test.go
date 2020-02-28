@@ -218,11 +218,15 @@ func TestVendorSrc(t *testing.T) {
 }
 
 func checkVndkModule(t *testing.T, ctx *android.TestContext, name, subDir string,
-	isVndkSp bool, extends string) {
+	isVndkSp bool, extends string, useProductVariant bool) {
 
 	t.Helper()
 
-	mod := ctx.ModuleForTests(name, vendorVariant).Module().(*Module)
+	variant := vendorVariant
+	if useProductVariant {
+		variant = productVariant
+	}
+	mod := ctx.ModuleForTests(name, variant).Module().(*Module)
 	if !mod.HasVendorVariant() {
 		t.Errorf("%q must have vendor variant", name)
 	}
@@ -375,10 +379,10 @@ func TestVndk(t *testing.T) {
 
 	ctx := testCcWithConfig(t, config)
 
-	checkVndkModule(t, ctx, "libvndk", "vndk-VER", false, "")
-	checkVndkModule(t, ctx, "libvndk_private", "vndk-VER", false, "")
-	checkVndkModule(t, ctx, "libvndk_sp", "vndk-sp-VER", true, "")
-	checkVndkModule(t, ctx, "libvndk_sp_private", "vndk-sp-VER", true, "")
+	checkVndkModule(t, ctx, "libvndk", "vndk-VER", false, "", false)
+	checkVndkModule(t, ctx, "libvndk_private", "vndk-VER", false, "", false)
+	checkVndkModule(t, ctx, "libvndk_sp", "vndk-sp-VER", true, "", false)
+	checkVndkModule(t, ctx, "libvndk_sp_private", "vndk-sp-VER", true, "", false)
 
 	// Check VNDK snapshot output.
 
@@ -1001,24 +1005,9 @@ func TestDoubleLoadableDepError(t *testing.T) {
 	`)
 }
 
-func TestVndkMustNotBeProductSpecific(t *testing.T) {
-	// Check whether an error is emitted when a vndk lib has 'product_specific: true'.
-	testCcError(t, "product_specific must not be true when `vndk: {enabled: true}`", `
-		cc_library {
-			name: "libvndk",
-			product_specific: true,  // Cause error
-			vendor_available: true,
-			vndk: {
-				enabled: true,
-			},
-			nocrt: true,
-		}
-	`)
-}
-
 func TestVndkExt(t *testing.T) {
 	// This test checks the VNDK-Ext properties.
-	ctx := testCc(t, `
+	bp := `
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
@@ -1060,12 +1049,42 @@ func TestVndkExt(t *testing.T) {
 			},
 			nocrt: true,
 		}
-	`)
 
-	checkVndkModule(t, ctx, "libvndk_ext", "vndk", false, "libvndk")
+		cc_library {
+			name: "libvndk_ext_product",
+			product_specific: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk",
+			},
+			nocrt: true,
+		}
 
-	mod := ctx.ModuleForTests("libvndk2_ext", vendorVariant).Module().(*Module)
-	assertString(t, mod.outputFile.Path().Base(), "libvndk2-suffix.so")
+		cc_library {
+			name: "libvndk2_ext_product",
+			product_specific: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk2",
+			},
+			nocrt: true,
+		}
+	`
+	config := TestConfig(buildDir, android.Android, nil, bp, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.ProductVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+
+	ctx := testCcWithConfig(t, config)
+
+	checkVndkModule(t, ctx, "libvndk_ext", "vndk", false, "libvndk", false)
+	checkVndkModule(t, ctx, "libvndk_ext_product", "vndk", false, "libvndk", true)
+
+	mod_vendor := ctx.ModuleForTests("libvndk2_ext", vendorVariant).Module().(*Module)
+	assertString(t, mod_vendor.outputFile.Path().Base(), "libvndk2-suffix.so")
+
+	mod_product := ctx.ModuleForTests("libvndk2_ext_product", productVariant).Module().(*Module)
+	assertString(t, mod_product.outputFile.Path().Base(), "libvndk2-suffix.so")
 }
 
 func TestVndkExtWithoutBoardVndkVersion(t *testing.T) {
@@ -1100,7 +1119,7 @@ func TestVndkExtWithoutBoardVndkVersion(t *testing.T) {
 
 func TestVndkExtError(t *testing.T) {
 	// This test ensures an error is emitted in ill-formed vndk-ext definition.
-	testCcError(t, "must set `vendor: true` to set `extends: \".*\"`", `
+	testCcError(t, "must set `vendor: true` or `product_specific: true` to set `extends: \".*\"`", `
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
@@ -1133,6 +1152,17 @@ func TestVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk_ext",
 			vendor: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+	`)
+
+	testCcError(t, "must set `extends: \"\\.\\.\\.\"` to vndk extension", `
+		cc_library {
+			name: "libvndk_ext",
+			product_specific: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1619,8 +1649,8 @@ func TestEnforceProductVndkVersion(t *testing.T) {
 
 	ctx := testCcWithConfig(t, config)
 
-	checkVndkModule(t, ctx, "libvndk", "vndk-VER", false, "")
-	checkVndkModule(t, ctx, "libvndk_sp", "vndk-sp-VER", true, "")
+	checkVndkModule(t, ctx, "libvndk", "vndk-VER", false, "", true)
+	checkVndkModule(t, ctx, "libvndk_sp", "vndk-sp-VER", true, "", true)
 }
 
 func TestEnforceProductVndkVersionErrors(t *testing.T) {
