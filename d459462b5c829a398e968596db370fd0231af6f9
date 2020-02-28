@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "912cb232_5846c3d1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-28T07:05:35Z",
+      "side": 1,
+      "message": "this is very hard to follow. Here, productSpecific doesn\u0027t mean that it is only available to product. But (productSpecific \u0026\u0026 isVndkExt) jointly means the module is only available to product partition, right?\n\nTo interpret the condition, \n\n* HasVendorVariant ⇒ available to non-system partitions: vendor, product\n* but, not specific to vendor nor product\n\nproductSpecific is quite confusing.",
+      "range": {
+        "startLine": 2818,
+        "startChar": 56,
+        "endLine": 2818,
+        "endChar": 71
+      },
+      "revId": "d459462b5c829a398e968596db370fd0231af6f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5064dc1e_ec5830ab",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-28T07:05:35Z",
+      "side": 1,
+      "message": "how about passing variant rather than \u0027bool\u0027?",
+      "range": {
+        "startLine": 221,
+        "startChar": 32,
+        "endLine": 221,
+        "endChar": 49
+      },
+      "revId": "d459462b5c829a398e968596db370fd0231af6f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
