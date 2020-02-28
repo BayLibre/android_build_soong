@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "863f7e8c_5eb359a2",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-02-28T08:36:08Z",
+      "side": 1,
+      "message": "Then, can it be simplified like..\n\n```\nm.HasVendorVariant() \u0026\u0026 !m.isVndkExt()\n```",
+      "parentUuid": "f34626c6_3f5bb647",
+      "range": {
+        "startLine": 2818,
+        "startChar": 56,
+        "endLine": 2818,
+        "endChar": 71
+      },
+      "revId": "d459462b5c829a398e968596db370fd0231af6f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5064dc1e_ec5830ab",
         "filename": "cc/cc_test.go",
         "patchSetId": 1
