@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b8fb4ae_ead6e511",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-02-28T19:21:15Z",
+      "side": 1,
+      "message": "Nice trick!",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "b72c9098997203d611bc9210de9444fda9322fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
