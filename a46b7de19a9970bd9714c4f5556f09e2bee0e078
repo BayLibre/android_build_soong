@@ -46,6 +46,30 @@
       "revId": "a46b7de19a9970bd9714c4f5556f09e2bee0e078",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93cccb1_27c30771",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-29T01:13:35Z",
+      "side": 1,
+      "message": "MultiArchTargets SGTM.  I haven\u0027t heard any better term for 32/64 than \"multilib\", and we\u0027ve used that pretty extensively.\n\nThere may not be any way to get more than 32/64 bit into CompileMultiTargets now, but I predict in the future we\u0027ll have a 6-archictecture soong only build (x86, x86-on-x86_64, x86_64, arm, arm-on-arm64, arm64) that could produce a single APK with 6 JNI architectures.",
+      "parentUuid": "4bab2453_e3fbc03d",
+      "range": {
+        "startLine": 136,
+        "startChar": 27,
+        "endLine": 136,
+        "endChar": 55
+      },
+      "revId": "a46b7de19a9970bd9714c4f5556f09e2bee0e078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
