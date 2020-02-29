@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16923333_8f2bda1a",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-02-29T01:00:57Z",
+      "side": 1,
+      "message": "That\u0027s an odd name for a variant :)",
+      "range": {
+        "startLine": 784,
+        "startChar": 5,
+        "endLine": 784,
+        "endChar": 51
+      },
+      "revId": "494dfde772287c8a87fbc8e0d578f0e7715b46a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
