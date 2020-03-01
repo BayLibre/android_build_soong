@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "275ed5ab_716aa15a",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-01T11:25:22Z",
+      "side": 1,
+      "message": "Which parts do you think are duplication? I personally wouldn\u0027t overthink too much these scripts, they serve related yet different purposes.",
+      "parentUuid": "6a0e50b4_9c2832e3",
+      "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "660a6a43_a0ebc882",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-28T12:37:16Z",
       "side": 1,
       "message": "What\u0027s the difference between these and the target products used in the internal script?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5232573_b22c0ad2",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-01T11:25:22Z",
+      "side": 1,
+      "message": "You mean the \"mainline_modules_*\" ones? If you follow the mk definitions, the difference is this file gets included in the mainline_* products:\nmainline_modules_common.mk\n\nWhich is package renaming and signing related. We don\u0027t need those here.",
+      "parentUuid": "660a6a43_a0ebc882",
       "range": {
         "startLine": 28,
         "startChar": 0,
