@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6c5958eb_ef54d091",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-02T16:59:21Z",
+      "side": 1,
+      "message": "Signing and names should be only it - they should pick up the same arch / flags / variables, etc",
+      "parentUuid": "4fee62a2_c36f731d",
+      "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "660a6a43_a0ebc882",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
