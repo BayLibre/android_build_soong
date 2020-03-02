@@ -816,3 +816,86 @@ sdk_snapshot {
 		checkAllCopyRules(".intermediates/system-module/linux_glibc_common/javac/system-module.jar -> java/system-module.jar"),
 	)
 }
+
+func TestDeviceAndHostSnapshotWithOsSpecificMembers(t *testing.T) {
+	// b/145598135 - Generating host snapshots for anything other than linux is not supported.
+	SkipIfNotLinux(t)
+
+	result := testSdkWithJava(t, `
+		sdk {
+			name: "mysdk",
+			host_supported: true,
+			target: {
+				android: {
+					java_header_libs: ["androidjavalib"],
+				},
+				host: {
+					java_header_libs: ["hostjavalib"],
+				},
+			},
+		}
+
+		java_library {
+			name: "androidjavalib",
+			srcs: ["Test.java"],
+			system_modules: "none",
+			sdk_version: "none",
+		}
+
+		java_library_host {
+			name: "hostjavalib",
+			srcs: ["Test.java"],
+		}
+	`)
+
+	result.CheckSnapshot("mysdk", "",
+		checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+java_import {
+    name: "mysdk_hostjavalib@current",
+    sdk_member_name: "hostjavalib",
+    device_supported: false,
+    host_supported: true,
+    jars: ["java/hostjavalib.jar"],
+}
+
+java_import {
+    name: "hostjavalib",
+    prefer: false,
+    device_supported: false,
+    host_supported: true,
+    jars: ["java/hostjavalib.jar"],
+}
+
+java_import {
+    name: "mysdk_androidjavalib@current",
+    sdk_member_name: "androidjavalib",
+    jars: ["java/androidjavalib.jar"],
+}
+
+java_import {
+    name: "androidjavalib",
+    prefer: false,
+    jars: ["java/androidjavalib.jar"],
+}
+
+sdk_snapshot {
+    name: "mysdk@current",
+    host_supported: true,
+    target: {
+        android: {
+            java_header_libs: ["mysdk_androidjavalib@current"],
+        },
+        linux_glibc: {
+            java_header_libs: ["mysdk_hostjavalib@current"],
+        },
+    },
+}
+`),
+		checkAllCopyRules(`
+.intermediates/hostjavalib/linux_glibc_common/javac/hostjavalib.jar -> java/hostjavalib.jar
+.intermediates/androidjavalib/android_common/turbine-combined/androidjavalib.jar -> java/androidjavalib.jar
+`),
+	)
+}
