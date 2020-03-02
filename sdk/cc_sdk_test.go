@@ -25,11 +25,13 @@ func testSdkWithCc(t *testing.T, bp string) *testSdkResult {
 	t.Helper()
 
 	fs := map[string][]byte{
-		"Test.cpp":                  nil,
-		"include/Test.h":            nil,
-		"arm64/include/Arm64Test.h": nil,
-		"libfoo.so":                 nil,
-		"aidl/foo/bar/Test.aidl":    nil,
+		"Test.cpp":                      nil,
+		"include/Test.h":                nil,
+		"include-android/AndroidTest.h": nil,
+		"include-host/HostTest.h":       nil,
+		"arm64/include/Arm64Test.h":     nil,
+		"libfoo.so":                     nil,
+		"aidl/foo/bar/Test.aidl":        nil,
 	}
 	return testSdkWithFs(t, bp, fs)
 }
@@ -943,6 +945,86 @@ sdk_snapshot {
 `),
 		checkAllCopyRules(`
 include/Test.h -> include/include/Test.h
+`),
+	)
+}
+
+func TestDeviceAndHostSnapshotWithCcHeadersLibrary(t *testing.T) {
+	// b/145598135 - Generating host snapshots for anything other than linux is not supported.
+	SkipIfNotLinux(t)
+
+	result := testSdkWithCc(t, `
+		sdk {
+			name: "mysdk",
+			host_supported: true,
+			native_header_libs: ["mynativeheaders"],
+		}
+
+		cc_library_headers {
+			name: "mynativeheaders",
+			host_supported: true,
+			system_shared_libs: [],
+			stl: "none",
+			export_system_include_dirs: ["include"],
+			target: {
+				android: {
+					export_include_dirs: ["include-android"],
+				},
+				host: {
+					export_include_dirs: ["include-host"],
+				},
+			},
+		}
+	`)
+
+	result.CheckSnapshot("mysdk", "",
+		checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library_headers {
+    name: "mysdk_mynativeheaders@current",
+    sdk_member_name: "mynativeheaders",
+    host_supported: true,
+    export_system_include_dirs: ["include/include"],
+    target: {
+        android: {
+            export_include_dirs: ["include/include-android"],
+        },
+        linux_glibc: {
+            export_include_dirs: ["include/include-host"],
+        },
+    },
+    stl: "none",
+    system_shared_libs: [],
+}
+
+cc_prebuilt_library_headers {
+    name: "mynativeheaders",
+    prefer: false,
+    host_supported: true,
+    export_system_include_dirs: ["include/include"],
+    target: {
+        android: {
+            export_include_dirs: ["include/include-android"],
+        },
+        linux_glibc: {
+            export_include_dirs: ["include/include-host"],
+        },
+    },
+    stl: "none",
+    system_shared_libs: [],
+}
+
+sdk_snapshot {
+    name: "mysdk@current",
+    host_supported: true,
+    native_header_libs: ["mysdk_mynativeheaders@current"],
+}
+`),
+		checkAllCopyRules(`
+include/Test.h -> include/include/Test.h
+include-android/AndroidTest.h -> include/include-android/AndroidTest.h
+include-host/HostTest.h -> include/include-host/HostTest.h
 `),
 	)
 }
