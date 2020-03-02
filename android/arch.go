@@ -621,6 +621,19 @@ var (
 	}
 )
 
+// The list of device os types supported by sdk snapshots.
+var DeviceOsTypesSupportedBySdkSnapshots = []OsType{
+	Android,
+}
+
+// The list of host os types supported by sdk snapshots.
+var HostOsTypesSupportedBySdkSnapshots = []OsType{
+	Linux,
+	LinuxBionic,
+	Darwin,
+	Windows,
+}
+
 type OsType struct {
 	Name, Field string
 	Class       OsClass
