@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33268ec6_65b5a856",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-02T16:17:36Z",
+      "side": 1,
+      "message": "Lowercase \"p\" to keep it internal, and maybe also pass paths as an array to avoid a bit of stack shuffling.",
+      "range": {
+        "startLine": 1257,
+        "startChar": 5,
+        "endLine": 1257,
+        "endChar": 6
+      },
+      "revId": "70cc76f3007460a9b5cf6a30650cac09ffb48b3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
