@@ -70,6 +70,30 @@
       "revId": "a46b7de19a9970bd9714c4f5556f09e2bee0e078",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9029c07_5c229848",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-02T10:18:46Z",
+      "side": 1,
+      "message": "Are you ok for this to be submitted as it is? With a follow up change to rename MultiTargets to MultiArchTargets?",
+      "parentUuid": "c93cccb1_27c30771",
+      "range": {
+        "startLine": 136,
+        "startChar": 27,
+        "endLine": 136,
+        "endChar": 55
+      },
+      "revId": "a46b7de19a9970bd9714c4f5556f09e2bee0e078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
