@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4fee62a2_c36f731d",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-02T16:28:39Z",
+      "side": 1,
+      "message": "I reacted mainly to the list of architectures, but these script tend to attract more build settings over time, and I think they would be prone to diverge. But fair enough, it might be premature now.\n\nThe difference is in the signing and names, right? Should they otherwise be built differently?",
+      "parentUuid": "275ed5ab_716aa15a",
+      "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "660a6a43_a0ebc882",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
@@ -81,6 +99,30 @@
       "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2655cc5b_cae72c5c",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-02T16:28:39Z",
+      "side": 1,
+      "message": "Aha, thanks for the explanation.",
+      "parentUuid": "a5232573_b22c0ad2",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 15
+      },
+      "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
