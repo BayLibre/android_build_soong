@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "10c47e5e_8287ec48",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-03-02T23:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8330e475_02a7fd29",
+      "range": {
+        "startLine": 227,
+        "startChar": 11,
+        "endLine": 227,
+        "endChar": 46
+      },
+      "revId": "5737e887e307bf3d5aed704e2a6d33e447a1c3c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a01fd7a_7cfe850e",
         "filename": "cc/cc_test.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "be3f62c4_e31c69b6",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-03-02T23:37:23Z",
+      "side": 1,
+      "message": "No, it is a PRODUCT variable for the \"product vndk version\". That\u0027s why it has two PRODUCT prefix.",
+      "parentUuid": "2a01fd7a_7cfe850e",
+      "range": {
+        "startLine": 1117,
+        "startChar": 58,
+        "endLine": 1117,
+        "endChar": 66
+      },
+      "revId": "5737e887e307bf3d5aed704e2a6d33e447a1c3c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1eb1dc4_36fad330",
         "filename": "cc/cc_test.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-02T23:03:46Z",
       "side": 1,
       "message": "Do we have product_available?  Or are we using vendor_available for both available-to-vendor and available-to-product?",
+      "range": {
+        "startLine": 1191,
+        "startChar": 3,
+        "endLine": 1191,
+        "endChar": 19
+      },
+      "revId": "5737e887e307bf3d5aed704e2a6d33e447a1c3c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db581d2_e95914a0",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1191,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-03-02T23:37:23Z",
+      "side": 1,
+      "message": "We don\u0027t have product_available. vendor_available generates both vendor and product variants.",
+      "parentUuid": "d1eb1dc4_36fad330",
       "range": {
         "startLine": 1191,
         "startChar": 3,
