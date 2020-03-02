@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02b70573_08138159",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-02T08:42:06Z",
+      "side": 1,
+      "message": "+pcc@ for this change.",
+      "range": {
+        "startLine": 1803,
+        "startChar": 31,
+        "endLine": 1803,
+        "endChar": 64
+      },
+      "revId": "70798aeb0ba279b54de9cec958d9d8e2bf7a423e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
