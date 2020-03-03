@@ -16,6 +16,24 @@
       "revId": "9eaa4de4fd7a0b400c333f2e4c2cab9a4e952a54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e21b7339_0eaffc9c",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-03T20:29:46Z",
+      "side": 1,
+      "message": "That part of the test is checking to make sure that the rules to copy the generated files into the snapshot are working correctly. It should not have been picking up the copy related to the install which is separate. I fixed a bug in the code that generates that list to restrict it just to the copies that end up inside the snapshot directory, that avoids every single test having to be modified to check the installation copy.\n\nArguably there should be a test to ensure that the install works correctly but that should be a standalone, self contained test, not one that affects every test.",
+      "parentUuid": "09c32b33_6f6bd60a",
+      "revId": "9eaa4de4fd7a0b400c333f2e4c2cab9a4e952a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
