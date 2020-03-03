@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecce21e6_250937e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-03T14:27:40Z",
+      "side": 1,
+      "message": "how was the result? could you share the number in the test?",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "4ce858c19dbdc1d3d98a0749ede6c20aed5c8521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d0e28f_52d51abc",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-03T14:27:40Z",
+      "side": 1,
+      "message": "why don\u0027t you just define this as a boolean variable?",
+      "range": {
+        "startLine": 1471,
+        "startChar": 3,
+        "endLine": 1471,
+        "endChar": 16
+      },
+      "revId": "4ce858c19dbdc1d3d98a0749ede6c20aed5c8521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "888be547_acfd6b84",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-03T14:27:40Z",
+      "side": 1,
+      "message": "this still seems costly because it runs for all variants of a module, but the outcome will  be the same for those variants\n\ncan we just keep a map of (header path, list of headers in the path) to avoid the duplicated globbing?",
+      "range": {
+        "startLine": 411,
+        "startChar": 3,
+        "endLine": 411,
+        "endChar": 54
+      },
+      "revId": "4ce858c19dbdc1d3d98a0749ede6c20aed5c8521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
