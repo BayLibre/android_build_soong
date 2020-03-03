@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "878ea69b_a331e21a",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-03-03T21:37:31Z",
+      "side": 1,
+      "message": "Are you planning to phase this attribute out?",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b71c7b88_53b56737",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-03-03T21:37:31Z",
+      "side": 1,
+      "message": "This could break cases where code in the 29-targeting APEXes throw exceptions in HWASAN builds, and also wastes a bit of disk space.\n\nWhy are you making this change? Ah - is it because the rest of the change causes link failures otherwise? What do you think about going in the other direction and only using the older stubs in unbundled builds?",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
