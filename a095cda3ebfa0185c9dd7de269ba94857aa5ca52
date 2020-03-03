@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7576ccb6_03e96537",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-03T23:50:57Z",
+      "side": 1,
+      "message": "Yes. b/150431944\n\nIt can be covered with min_sdk_version: 29, right?",
+      "parentUuid": "878ea69b_a331e21a",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b71c7b88_53b56737",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-03T21:37:31Z",
       "side": 1,
       "message": "This could break cases where code in the 29-targeting APEXes throw exceptions in HWASAN builds, and also wastes a bit of disk space.\n\nWhy are you making this change? Ah - is it because the rest of the change causes link failures otherwise? What do you think about going in the other direction and only using the older stubs in unbundled builds?",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f352701_414e180e",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-03T23:50:57Z",
+      "side": 1,
+      "message": "\u003e This could break cases where code in the 29-targeting APEXes throw exceptions in HWASAN builds,\n\nSorry, I can\u0027t understand how. can you explain a little bit more? Do you mean that when 29-targeting apexes are built as bundled? Then what about when they are built as unbundled and updated later? Could it also break? Is it because of HWASAN builds, in which we don\u0027t support unbundled build?\n\n\n\u003e What do you think about going in the other direction and only using the older stubs in unbundled builds?\n\nI thought this is just one of optimization for bundled build, and we don\u0027t want to do it with \"updatable\" apexes. And those 29-targeting apexes are updatable. But if this could cause a problem, using latest stubs for bundled built could be an option.",
+      "parentUuid": "b71c7b88_53b56737",
       "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
