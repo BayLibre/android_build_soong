@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09c32b33_6f6bd60a",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-03T16:25:54Z",
+      "side": 1,
+      "message": "Paul, why did all these disappear in PS6? Does the install rule still work?",
+      "revId": "9eaa4de4fd7a0b400c333f2e4c2cab9a4e952a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
