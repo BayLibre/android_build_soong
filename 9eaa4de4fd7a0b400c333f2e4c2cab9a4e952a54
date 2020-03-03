@@ -34,6 +34,24 @@
       "revId": "9eaa4de4fd7a0b400c333f2e4c2cab9a4e952a54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e37659f1_cdae1052",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-03T21:08:23Z",
+      "side": 1,
+      "message": "Ok, thanks.\n\n\u003e Arguably there should be a test to ensure that the install works correctly /.../\n\nYes, having one might save us from getting broken post-submit. Nicolas, WDYT about adding something?",
+      "parentUuid": "e21b7339_0eaffc9c",
+      "revId": "9eaa4de4fd7a0b400c333f2e4c2cab9a4e952a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
