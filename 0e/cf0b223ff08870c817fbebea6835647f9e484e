@@ -1,0 +1,11 @@
+Autosubmit+1: Justin Yun <justinyun@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+1: Logan Chien <loganchien@google.com>
+Code-Review+2: Jooyung Han <jooyung@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 04 Mar 2020 01:22:42 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1245712
+Project: platform/build/soong
+Branch: refs/heads/master
