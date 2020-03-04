@@ -250,6 +250,8 @@ type BaseProperties struct {
 	// Used by vendor snapshot to record dependencies from snapshot modules.
 	SnapshotSharedLibs  []string `blueprint:"mutated"`
 	SnapshotRuntimeLibs []string `blueprint:"mutated"`
+
+	Installable *bool
 }
 
 type VendorProperties struct {
@@ -371,6 +373,7 @@ type linker interface {
 type installer interface {
 	installerProps() []interface{}
 	install(ctx ModuleContext, path android.Path)
+	everInstallable() bool
 	inData() bool
 	inSanitizerDir() bool
 	hostToolPath() android.OptionalPath
@@ -1472,6 +1475,13 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		if ctx.Failed() {
 			return
 		}
+	} else if !proptools.BoolDefault(c.Properties.Installable, true) {
+		// If the module has been specifically configure to not be installed then
+		// skip the installation as otherwise it will break when running inside make
+		// as the output path to install will not be specified. Not all uninstallable
+		// modules can skip installation as some are needed for resolving make side
+		// dependencies.
+		c.SkipInstall()
 	}
 }
 
@@ -2598,8 +2608,17 @@ func (c *Module) AvailableFor(what string) bool {
 	}
 }
 
+func (c *Module) Installable() bool {
+	return c.installable()
+}
+
 func (c *Module) installable() bool {
-	ret := c.installer != nil && !c.Properties.PreventInstall && c.outputFile.Valid()
+	ret := c.installer != nil &&
+		// Check to see whether the module is actually ever installable.
+		c.installer.everInstallable() &&
+		// Check to see whether the module has been configured to not be installed.
+		proptools.BoolDefault(c.Properties.Installable, true) &&
+		!c.Properties.PreventInstall && c.outputFile.Valid()
 
 	// The platform variant doesn't need further condition. Apex variants however might not
 	// be installable because it will likely to be included in the APEX and won't appear
