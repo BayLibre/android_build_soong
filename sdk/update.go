@@ -408,7 +408,18 @@ type propertyTag struct {
 	name string
 }
 
+// A BpPropertyTag to add to a property that contains references to other sdk members.
+//
+// This will cause the references to be rewritten to a versioned reference in the version
+// specific instance of a snapshot module.
 var sdkMemberReferencePropertyTag = propertyTag{"sdkMemberReferencePropertyTag"}
+
+// A BpPropertyTag that indicates the property should only be present in the versioned
+// module.
+//
+// This will cause the property to be removed from the unversioned instance of a
+// snapshot module.
+var sdkVersionedOnlyPropertyTag = propertyTag{"sdkVersionedOnlyPropertyTag"}
 
 type unversionedToVersionedTransformation struct {
 	identityTransformation
@@ -451,6 +462,9 @@ func (t unversionedTransformation) transformModule(module *bpModule) *bpModule {
 func (t unversionedTransformation) transformProperty(name string, value interface{}, tag android.BpPropertyTag) (interface{}, android.BpPropertyTag) {
 	if tag == sdkMemberReferencePropertyTag {
 		return t.builder.unversionedSdkMemberNames(value.([]string)), tag
+	} else if tag == sdkVersionedOnlyPropertyTag {
+		// The property is not allowed in the unversioned module so remove it.
+		return nil, nil
 	} else {
 		return value, tag
 	}
@@ -627,6 +641,20 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 		apexAvailable := apexAware.ApexAvailable()
 		if len(apexAvailable) > 0 {
 			m.AddProperty("apex_available", apexAvailable)
+			fmt.Printf("Adding apex_available for %q\n", member.Name())
+		}
+	}
+
+	// Disable installation in the versioned module of those modules that are installable.
+	if installable, ok := variant.(interface{ Installable() bool }); ok {
+		if member.Name() == "libandroidio" {
+			fmt.Printf("%q implements installable\n", member.Name())
+		}
+		if installable.Installable() {
+			m.AddPropertyWithTag("installable", false, sdkVersionedOnlyPropertyTag)
+			fmt.Printf("Adding installable for %q\n", member.Name())
+		} else if member.Name() == "libandroidio" {
+			fmt.Printf("%q is not installable\n", member.Name())
 		}
 	}
 
