@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98d859bb_a78ddf33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-03-04T14:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecce21e6_250937e1",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 51
+      },
+      "revId": "4ce858c19dbdc1d3d98a0749ede6c20aed5c8521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d0e28f_52d51abc",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "4ce858c19dbdc1d3d98a0749ede6c20aed5c8521",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "240ec4bf_6ab0a64b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-03-04T14:42:32Z",
+      "side": 1,
+      "message": "Done (moved to snapshot utils)",
+      "parentUuid": "fb7d900e_bf4399f8",
+      "range": {
+        "startLine": 1471,
+        "startChar": 3,
+        "endLine": 1471,
+        "endChar": 16
+      },
+      "revId": "4ce858c19dbdc1d3d98a0749ede6c20aed5c8521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
