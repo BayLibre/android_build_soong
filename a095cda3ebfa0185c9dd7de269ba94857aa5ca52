@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "d5faffac_702ec2b7",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-04T23:54:25Z",
+      "side": 1,
+      "message": "Can I do this in another change? I\u0027d like to focus this CL to choosing the right stubs according to min_sdk_version.",
+      "parentUuid": "76bcb14a_5f7b7202",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b71c7b88_53b56737",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -123,6 +141,24 @@
       "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0852386_60e7cdf9",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-04T23:54:25Z",
+      "side": 1,
+      "message": "\u003e Can we make it so that min_sdk_version is only respected for unbundled builds (i.e. drop the check for updatable APEXes)?\n\nDone. I did this because this is not for size optimization of bundled build.\n\n\"updatable\" was introduced before \"min_sdk_version\" and its purpose is that to treat \"updatable\" module as \"unbundled\" even in bundled build. As described in b/149805758.\n\nby the way, I think that the property itself can be deprecated just like \"legacy_android10_support\".",
+      "parentUuid": "9a1ad899_7741b3c4",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
