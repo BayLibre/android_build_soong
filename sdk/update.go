@@ -593,6 +593,8 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 	m := s.bpFile.newModule(moduleType)
 	m.AddProperty("name", name)
 
+	variant := member.Variants()[0]
+
 	if s.sdk.isInternalMember(name) {
 		// An internal member is only referenced from the sdk snapshot which is in the
 		// same package so can be marked as private.
@@ -600,7 +602,7 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 	} else {
 		// Extract visibility information from a member variant. All variants have the same
 		// visibility so it doesn't matter which one is used.
-		visibility := android.EffectiveVisibilityRules(s.ctx, member.Variants()[0])
+		visibility := android.EffectiveVisibilityRules(s.ctx, variant)
 		if len(visibility) != 0 {
 			m.AddProperty("visibility", visibility)
 		}
@@ -619,6 +621,14 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 	}
 
 	addHostDeviceSupportedProperties(deviceSupported, hostSupported, m)
+
+	// Where available copy apex_available properties from the member.
+	if apexAware, ok := variant.(interface{ ApexAvailable() []string }); ok {
+		apexAvailable := apexAware.ApexAvailable()
+		if len(apexAvailable) > 0 {
+			m.AddProperty("apex_available", apexAvailable)
+		}
+	}
 
 	s.prebuiltModules[name] = m
 	s.prebuiltOrder = append(s.prebuiltOrder, m)
