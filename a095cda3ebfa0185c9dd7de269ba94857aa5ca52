@@ -69,6 +69,24 @@
       "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16ef69de_71ef4949",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-04T06:23:59Z",
+      "side": 1,
+      "message": "UnbundledBuild condition has moved to when setting MinSdkVersion. min_sdk_version is respected only when unbundled build or for updatable modules. Otherwise MinSdkVersion is set to FutureApiRelease(10000) so that the latest version of stubs is chosen.",
+      "parentUuid": "9f352701_414e180e",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
