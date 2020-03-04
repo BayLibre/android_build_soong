@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "76bcb14a_5f7b7202",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-03-04T18:57:37Z",
+      "side": 1,
+      "message": "Yes. Can we remove this field from this struct, make MinSdkVersion computed from Legacy_android10_support and replace the use with a comparison against MinSdkVersion?",
+      "parentUuid": "7576ccb6_03e96537",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b71c7b88_53b56737",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -87,6 +105,24 @@
       "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a1ad899_7741b3c4",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-03-04T18:57:37Z",
+      "side": 1,
+      "message": "\u003e Sorry, I can\u0027t understand how. can you explain a little bit more? Do you mean that when 29-targeting apexes are built as bundled? Then what about when they are built as unbundled and updated later? Could it also break? Is it because of HWASAN builds, in which we don\u0027t support unbundled build?\n\nYes, when the APEXes are built as bundled in a HWASAN build we may hit the issue mentioned in  b/144430859#comment1 due to static unwinders. And since we don\u0027t build APEX updates with HWASAN, the problem doesn\u0027t affect unbundled builds.\n\n\u003e min_sdk_version is respected only when unbundled build or for updatable modules.\n\nI don\u0027t really get why \"updatable\" is a separate property here. Shouldn\u0027t we have done something like \"if min_sdk_version is set then do all of the things that updatable: true currently implies\"? The current \"updatable\" field seems to mean \"updatable, but only a little bit\", which I find confusing.\n\nAnyway, this wouldn\u0027t entirely fix the HWASAN issue because it looks like almost every APEX has now been made updatable (so 29-targeting APEXes would still get static unwinders). Can we make it so that min_sdk_version is only respected for unbundled builds (i.e. drop the check for updatable APEXes)?",
+      "parentUuid": "16ef69de_71ef4949",
+      "revId": "a095cda3ebfa0185c9dd7de269ba94857aa5ca52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
