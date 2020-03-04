@@ -306,6 +306,10 @@ func TestArchConfig(buildDir string, env map[string]string, bp string, fs map[st
 	return testConfig
 }
 
+func SetInMakeForTests(config Config) {
+	config.inMake = true
+}
+
 // New creates a new Config object.  The srcDir argument specifies the path to
 // the root source directory. It also loads the config file, if found.
 func NewConfig(srcDir, buildDir string) (Config, error) {
