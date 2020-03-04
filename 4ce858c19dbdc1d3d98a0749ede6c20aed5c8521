@@ -116,6 +116,30 @@
       "revId": "4ce858c19dbdc1d3d98a0749ede6c20aed5c8521",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88a57d5_f8bd2a58",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-04T00:46:14Z",
+      "side": 1,
+      "message": "That\u0027s a good thing to know. Thanks!",
+      "parentUuid": "9f9a191c_872fd6c7",
+      "range": {
+        "startLine": 411,
+        "startChar": 3,
+        "endLine": 411,
+        "endChar": 54
+      },
+      "revId": "4ce858c19dbdc1d3d98a0749ede6c20aed5c8521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
