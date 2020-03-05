@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "cdd6021a_b838fd27",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-03-05T13:02:57Z",
+      "side": 1,
+      "message": "I\u0027ve followed the pattern of the internal script. I think we\u0027ll learn as we go on how this script is going to be used (for now, mostly for building ART).",
+      "parentUuid": "0f87bbc0_2bf1ec8b",
+      "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "660a6a43_a0ebc882",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
