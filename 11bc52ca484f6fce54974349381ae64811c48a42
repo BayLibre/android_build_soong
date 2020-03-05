@@ -70,6 +70,30 @@
       "revId": "11bc52ca484f6fce54974349381ae64811c48a42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11200b0d_20085925",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-05T17:17:47Z",
+      "side": 1,
+      "message": "As I noted in the comment, it\u0027s because overriding min_sdk_version in one place(here) was simple. But this looks controversial, I\u0027ll move it to cc.go.",
+      "parentUuid": "736db6ba_483a7393",
+      "range": {
+        "startLine": 1988,
+        "startChar": 0,
+        "endLine": 1991,
+        "endChar": 47
+      },
+      "revId": "11bc52ca484f6fce54974349381ae64811c48a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
