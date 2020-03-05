@@ -16,6 +16,24 @@
       "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d22a1dd_62c4a8c2",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-03-05T21:07:16Z",
+      "side": 0,
+      "message": "Unsure, but I pulled this out since it was causing cases where lld would link in the runtime library when it wasn\u0027t required as the fsanitize-trap\u003dall flag doesn\u0027t get added to LdFlags.",
+      "parentUuid": "4d3b6e28_83c94b96",
+      "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
