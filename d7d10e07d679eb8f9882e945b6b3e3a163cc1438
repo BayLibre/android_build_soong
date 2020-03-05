@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9ef3346_083453f7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T11:49:43Z",
+      "side": 1,
+      "message": "then is this description wrong?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 92
+      },
+      "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
