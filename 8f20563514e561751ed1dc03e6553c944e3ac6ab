@@ -34,6 +34,41 @@
       "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b29ef4d1_bc2cbb0d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-03-05T21:30:33Z",
+      "side": 0,
+      "message": "Linux ASan still behaves the same way.\nI don\u0027t know why this change works - a shared library built with ASan will have undef references to __asan* symbols, but no corresponding DT_NEEDED because the definitions are linked into the main executable.\n\nUnless you add -shared-libsan, which is a valid option, but requires testing as it is kind of a big change. Unless this is exactly what the runtimeLibrary change below does, in which case I\u0027m not sure how the runtime .so library in the toolchain directory is found at run time without DT_RUNPATH.",
+      "parentUuid": "5d22a1dd_62c4a8c2",
+      "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a0df454_36979368",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-03-05T21:30:33Z",
+      "side": 0,
+      "message": "Will this make ubsan failures non-fatal on host?",
+      "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
