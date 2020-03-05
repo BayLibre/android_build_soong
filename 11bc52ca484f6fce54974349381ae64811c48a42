@@ -22,6 +22,30 @@
       "revId": "11bc52ca484f6fce54974349381ae64811c48a42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a227de5a_2cc22165",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-03-05T16:22:58Z",
+      "side": 1,
+      "message": "See my reply to Jooyung, in particular:\n\n\u003e Anyway, this wouldn\u0027t entirely fix the HWASAN issue because it looks like almost every APEX has now been made updatable (so 29-targeting APEXes would still get static unwinders).",
+      "parentUuid": "2eebfaa2_600eccab",
+      "range": {
+        "startLine": 1988,
+        "startChar": 0,
+        "endLine": 1991,
+        "endChar": 47
+      },
+      "revId": "11bc52ca484f6fce54974349381ae64811c48a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
