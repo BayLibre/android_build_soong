@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aaa097a_44d8c3b7",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1988,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T11:59:52Z",
+      "side": 1,
+      "message": "so, then this function always returns 10000 for bundled build regardless of min_sdk_version value.\nIs this intended? If so, could you document the reason here?",
+      "range": {
+        "startLine": 1986,
+        "startChar": 0,
+        "endLine": 1988,
+        "endChar": 3
+      },
+      "revId": "7b225d46a41d35128b06bedd59c7700945600a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
