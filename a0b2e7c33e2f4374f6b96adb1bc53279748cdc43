@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2dede0de_98941234",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-05T17:30:47Z",
+      "side": 1,
+      "message": "No, the keys might overlap. The getExportedMembers() returns a map[string]struct{} - essentially a set. So, the overlaps do not matter.\n\nI could replace value with struct{}{} to make that clearer and/or improve the comment if you\u0027d like.",
+      "parentUuid": "75c05cfb_83963b94",
+      "range": {
+        "startLine": 234,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 23
+      },
+      "revId": "a0b2e7c33e2f4374f6b96adb1bc53279748cdc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "692cbc73_e146276d",
         "filename": "sdk/update.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "a0b2e7c33e2f4374f6b96adb1bc53279748cdc43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f58626a_1a02f9f2",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-05T17:30:47Z",
+      "side": 1,
+      "message": "Yes. It will also remove target: { host: {//empty}} as it works from the inside out.",
+      "parentUuid": "692cbc73_e146276d",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 53
+      },
+      "revId": "a0b2e7c33e2f4374f6b96adb1bc53279748cdc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
