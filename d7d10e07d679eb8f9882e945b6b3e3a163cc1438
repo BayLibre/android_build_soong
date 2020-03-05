@@ -22,6 +22,30 @@
       "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c28c3ac_34311621",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-03-05T13:47:58Z",
+      "side": 1,
+      "message": "I think so. I updated a comment in the bug to discuss this. (b/147017252#comment12)",
+      "parentUuid": "a9ef3346_083453f7",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 92
+      },
+      "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
