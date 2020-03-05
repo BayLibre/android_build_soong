@@ -17,6 +17,7 @@ package cc
 import (
 	"fmt"
 	"io"
+	"log"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -1367,6 +1368,8 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 
 		// Differentiate between header only and building an actual static/shared library
 		if library.buildStatic() || library.buildShared() {
+			blarg := fmt.Sprintf("%s", mctx.Module())
+			log.Printf("LinkageMutator cc_prebuilt %s", blarg)
 			// Always create both the static and shared variants for prebuilt libraries, and then disable the one
 			// that is not being used.  This allows them to share the name of a cc_library module, which requires that
 			// all the variants of the cc_library also exist on the prebuilt.
@@ -1383,11 +1386,14 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 			if !library.buildShared() {
 				shared.linker.(prebuiltLibraryInterface).disablePrebuilt()
 			}
+			log.Printf("LinkageMutator cc_prebuilt %s shared %s", blarg, shared)
 		} else {
 			// Header only
+			log.Printf("LinkageMutator cc_prebuilt %s header only", mctx.Module())
 		}
 
 	} else if library, ok := mctx.Module().(LinkableInterface); ok && library.CcLibraryInterface() {
+		log.Printf("LinkageMutator linkable %s", mctx.Module())
 
 		// Non-cc.Modules may need an empty variant for their mutators.
 		variations := []string{}

@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"log"
 	"testing"
 
 	"android/soong/android"
@@ -23,6 +24,7 @@ import (
 )
 
 func TestPrebuilt(t *testing.T) {
+	log.Printf("###################################")
 	bp := `
 		cc_library {
 			name: "liba",

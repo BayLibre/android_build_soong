@@ -16,6 +16,7 @@ package android
 
 import (
 	"fmt"
+	"log"
 	"reflect"
 
 	"github.com/google/blueprint"
@@ -27,7 +28,7 @@ import (
 
 func RegisterPrebuiltMutators(ctx RegistrationContext) {
 	ctx.PreArchMutators(RegisterPrebuiltsPreArchMutators)
-	ctx.PostDepsMutators(RegisterPrebuiltsPostDepsMutators)
+	ctx.FinalDepsMutators(RegisterPrebuiltsPostDepsMutators)
 }
 
 type prebuiltDependencyTag struct {
@@ -44,8 +45,9 @@ type PrebuiltProperties struct {
 	// a matching name.
 	Prefer *bool `android:"arch_variant"`
 
-	SourceExists bool `blueprint:"mutated"`
-	UsePrebuilt  bool `blueprint:"mutated"`
+	SourceExists  bool `blueprint:"mutated"`
+	UsePrebuilt   bool `blueprint:"mutated"`
+	AddReverseDep bool `blueprint:"mutated"`
 }
 
 type Prebuilt struct {
@@ -128,6 +130,7 @@ func RegisterPrebuiltsPreArchMutators(ctx RegisterMutatorsContext) {
 }
 
 func RegisterPrebuiltsPostDepsMutators(ctx RegisterMutatorsContext) {
+	ctx.BottomUp("prebuilts2", Prebuilt2Mutator).Parallel()
 	ctx.TopDown("prebuilt_select", PrebuiltSelectModuleMutator).Parallel()
 	ctx.BottomUp("prebuilt_postdeps", PrebuiltPostDepsMutator).Parallel()
 }
@@ -136,13 +139,27 @@ func RegisterPrebuiltsPostDepsMutators(ctx RegisterMutatorsContext) {
 // prebuilt modules that have both a prebuilt and a source module.
 func PrebuiltMutator(ctx BottomUpMutatorContext) {
 	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
+		name := m.base().BaseModuleName()
+		if !ctx.OtherModuleExists(name) {
+			log.Printf("PrebuiltMutator %s Rename %s", ctx.Module(), name)
+			ctx.Rename(name)
+		} else {
+			p := m.Prebuilt()
+			p.properties.AddReverseDep = true
+		}
+	}
+}
+
+// PrebuiltMutator ensures that there is always a module with an undecorated name, and marks
+// prebuilt modules that have both a prebuilt and a source module.
+func Prebuilt2Mutator(ctx BottomUpMutatorContext) {
+	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
 		p := m.Prebuilt()
 		name := m.base().BaseModuleName()
-		if ctx.OtherModuleExists(name) {
+		if p.properties.AddReverseDep {
+			log.Printf("Prebuilt2Mutator %s AddReverseDependency on %s", ctx.Module(), name)
 			ctx.AddReverseDependency(ctx.Module(), PrebuiltDepTag, name)
 			p.properties.SourceExists = true
-		} else {
-			ctx.Rename(name)
 		}
 	}
 }
@@ -151,6 +168,7 @@ func PrebuiltMutator(ctx BottomUpMutatorContext) {
 // because the source module doesn't exist.  It also disables installing overridden source modules.
 func PrebuiltSelectModuleMutator(ctx TopDownMutatorContext) {
 	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
+		//log.Printf("PrebuiltSelectModuleMutator %s", ctx.Module())
 		p := m.Prebuilt()
 		if p.srcs == nil && !p.srcProps.IsValid() {
 			panic(fmt.Errorf("prebuilt module did not have InitPrebuiltModule called on it"))
@@ -176,6 +194,7 @@ func PrebuiltSelectModuleMutator(ctx TopDownMutatorContext) {
 // in the prebuilt's 'Srcs' property.
 func PrebuiltPostDepsMutator(ctx BottomUpMutatorContext) {
 	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
+		//log.Printf("PrebuiltPostDepsMutator %s", ctx.Module())
 		p := m.Prebuilt()
 		name := m.base().BaseModuleName()
 		if p.properties.UsePrebuilt {
