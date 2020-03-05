@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d3b6e28_83c94b96",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-03-05T20:18:01Z",
+      "side": 0,
+      "message": "Does Linux ASan no longer behave this way?",
+      "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
