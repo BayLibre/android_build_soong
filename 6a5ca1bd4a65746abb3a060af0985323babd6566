@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "86df39b2_47fa4e10",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-05T13:28:00Z",
+      "side": 1,
+      "message": "\u003e a target in Soong that will build all of them automatically\n\nThere might be reasons to have SDKs and module exports that don\u0027t get built by the build system, and there\u0027s some merit to making it explicit opt-in since it may impact other teams.",
+      "parentUuid": "cdd6021a_b838fd27",
+      "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "660a6a43_a0ebc882",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
