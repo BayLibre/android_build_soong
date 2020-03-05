@@ -101,13 +101,14 @@ var preDeps = []RegisterMutatorFunc{
 
 var postDeps = []RegisterMutatorFunc{
 	registerPathDepsMutator,
-	RegisterPrebuiltsPostDepsMutators,
 	RegisterVisibilityRuleEnforcer,
 	registerNeverallowMutator,
 	RegisterOverridePostDepsMutators,
 }
 
-var finalDeps = []RegisterMutatorFunc{}
+var finalDeps = []RegisterMutatorFunc{
+	RegisterPrebuiltsFinalDepsMutators,
+}
 
 func PreArchMutators(f RegisterMutatorFunc) {
 	preArch = append(preArch, f)
