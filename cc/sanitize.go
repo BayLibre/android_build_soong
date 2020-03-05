@@ -220,7 +220,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	var globalSanitizers []string
 	var globalSanitizersDiag []string
 
-	if ctx.Host() {
+	if !ctx.toolchain().Bionic() {
 		if !ctx.Windows() {
 			globalSanitizers = ctx.Config().SanitizeHost()
 		}
@@ -550,16 +550,9 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 		flags.Local.CFlags = append(flags.Local.CFlags, sanitizeArg)
 		flags.Local.AsFlags = append(flags.Local.AsFlags, sanitizeArg)
-		if ctx.Host() {
-			// Host sanitizers only link symbols in the final executable, so
-			// there will always be undefined symbols in intermediate libraries.
-			_, flags.Global.LdFlags = removeFromList("-Wl,--no-undefined", flags.Global.LdFlags)
-			flags.Local.LdFlags = append(flags.Local.LdFlags, sanitizeArg)
-
-			// non-Bionic toolchain prebuilts are missing UBSan's vptr and function sanitizers
-			if !ctx.toolchain().Bionic() {
-				flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=vptr,function")
-			}
+		// non-Bionic toolchain prebuilts are missing UBSan's vptr and function sanitizers
+		if !ctx.toolchain().Bionic() {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize=vptr,function")
 		}
 
 		if enableMinimalRuntime(sanitize) {
@@ -574,8 +567,6 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		if Bool(sanitize.Properties.Sanitize.Fuzzer) {
 			// When fuzzing, we wish to crash with diagnostics on any bug.
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize-trap=all", "-fno-sanitize-recover=all")
-		} else if ctx.Host() {
-			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize-recover=all")
 		} else {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
 		}
@@ -928,7 +919,7 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)
 		}
 
-		if runtimeLibrary != "" && (toolchain.Bionic() || c.sanitize.Properties.UbsanRuntimeDep) {
+		if runtimeLibrary != "" {
 			// UBSan is supported on non-bionic linux host builds as well
 			if isLlndkLibrary(runtimeLibrary, mctx.Config()) && !c.static() && c.UseVndk() {
 				runtimeLibrary = runtimeLibrary + llndkLibrarySuffix
