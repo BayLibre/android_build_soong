@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75c05cfb_83963b94",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T12:14:44Z",
+      "side": 1,
+      "message": "is it guaranteed that keys are all different?\n\nthen could add an assert for it?",
+      "range": {
+        "startLine": 234,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 23
+      },
+      "revId": "a0b2e7c33e2f4374f6b96adb1bc53279748cdc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "692cbc73_e146276d",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T12:14:44Z",
+      "side": 1,
+      "message": "so this will remove `target: {// empty}`, right?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 53
+      },
+      "revId": "a0b2e7c33e2f4374f6b96adb1bc53279748cdc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
