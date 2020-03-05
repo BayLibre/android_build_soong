@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f72af45d_175f7d82",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-03-05T21:56:38Z",
+      "side": 0,
+      "message": "Yup, just tested this, address sanitizing a library and trying to run the dependent binary results in a segfault at runtime. I\u0027ll probably address b/150336284 separately so it\u0027s not blocked on resolving this, especially if this is going to be a big change. Thanks for the insight!",
+      "parentUuid": "b29ef4d1_bc2cbb0d",
+      "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a0df454_36979368",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -69,6 +87,24 @@
       "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c31fad2_e40fb0f1",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-03-05T21:56:38Z",
+      "side": 0,
+      "message": "They\u0027re fatal since we pass the -fsanitize-trap\u003dall instead.",
+      "parentUuid": "6a0df454_36979368",
+      "revId": "8f20563514e561751ed1dc03e6553c944e3ac6ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
