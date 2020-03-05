@@ -30,7 +30,7 @@ func systemServerClasspath(ctx android.MakeVarsContext) []string {
 	return ctx.Config().OnceStringSlice(systemServerClasspathKey, func() []string {
 		global := dexpreopt.GetGlobalConfig(ctx)
 		var systemServerClasspathLocations []string
-		var dexpreoptJars = *DexpreoptedSystemServerJars(ctx.Config())
+		var dexpreoptJars = DexpreoptedSystemServerJars(ctx.Config())
 		// 1) The jars that are dexpreopted.
 		for _, m := range dexpreoptJars {
 			systemServerClasspathLocations = append(systemServerClasspathLocations,

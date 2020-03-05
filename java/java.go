@@ -21,6 +21,7 @@ package java
 import (
 	"fmt"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -91,40 +92,84 @@ func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
 }
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("update_system_server_jar_tiers", updateSystemServerJarTiersDepsMutator)
 	ctx.BottomUp("ordered_system_server_jars", systemServerJarsDepsMutator)
 }
 
 var (
-	dexpreoptedSystemServerJarsKey  = android.NewOnceKey("dexpreoptedSystemServerJars")
-	dexpreoptedSystemServerJarsLock sync.Mutex
+	dexpreoptedSystemServerTiersKey    = android.NewOnceKey("dexpreoptedSystemServerTiers")
+	dexpreoptedSystemServerTierMapsKey = android.NewOnceKey("dexpreoptedSystemServerTierMaps")
+	dexpreoptedSystemServerJarsKey     = android.NewOnceKey("dexpreoptedSystemServerJars")
+	dexpreoptedSystemServerJarsLock    sync.Mutex
 )
 
-func DexpreoptedSystemServerJars(config android.Config) *[]string {
-	return config.Once(dexpreoptedSystemServerJarsKey, func() interface{} {
-		return &[]string{}
-	}).(*[]string)
+func DexpreoptedSystemServerTiers(config android.Config) map[string]int {
+	return config.Once(dexpreoptedSystemServerTiersKey, func() interface{} {
+		return make(map[string]int)
+	}).(map[string]int)
+}
+
+func DexpreoptedSystemServerTierMaps(config android.Config) map[int][]string {
+	return config.Once(dexpreoptedSystemServerTierMapsKey, func() interface{} {
+		return make(map[int][]string)
+	}).(map[int][]string)
 }
 
 // A PostDepsMutator pass that enforces total order on non-updatable system server jars. A total
-// order is neededed because such jars must be dexpreopted together (each jar on the list must have
-// all preceding jars in its class loader context). The total order must be compatible with the
-// partial order imposed by genuine dependencies between system server jars (which is not always
-// respected by the PRODUCT_SYSTEM_SERVER_JARS variable).
+// order is needed because such jars must be dexpreopted together. The total order must be
+// compatible with the partial order imposed by genuine dependencies between system server jars
+// (which is not always respected by the PRODUCT_SYSTEM_SERVER_JARS variable).
 //
-// An earlier mutator pass creates genuine dependencies, and this pass traverses the jars in that
-// order (which is partial and non-deterministic). This pass adds additional dependencies between
-// jars, making the order total and deterministic. It also constructs a global ordered list.
-func systemServerJarsDepsMutator(ctx android.BottomUpMutatorContext) {
+// Create dependency tier map by visiting direct deps.
+func updateSystemServerJarTiersDepsMutator(ctx android.BottomUpMutatorContext) {
 	jars := dexpreopt.NonUpdatableSystemServerJars(ctx, dexpreopt.GetGlobalConfig(ctx))
 	name := ctx.ModuleName()
 	if android.InList(name, jars) {
 		dexpreoptedSystemServerJarsLock.Lock()
 		defer dexpreoptedSystemServerJarsLock.Unlock()
-		jars := DexpreoptedSystemServerJars(ctx.Config())
-		for _, dep := range *jars {
+		tier := 0
+		tiers := DexpreoptedSystemServerTiers(ctx.Config())
+		tierMap := DexpreoptedSystemServerTierMaps(ctx.Config())
+		ctx.VisitDirectDeps(func(m android.Module) {
+			dep_name := m.Name()
+			if android.InList(dep_name, jars) {
+				dep_tier := tiers[dep_name]
+				if dep_tier >= tier {
+					tier = dep_tier + 1
+				}
+			}
+		})
+		tiers[name] = tier
+		tierMap[tier] = append(tierMap[tier], name)
+	}
+}
+
+// Returns the list that are sorted by the tiers and names.
+func DexpreoptedSystemServerJars(config android.Config) []string {
+	return config.Once(dexpreoptedSystemServerJarsKey, func() interface{} {
+		tierMap := DexpreoptedSystemServerTierMaps(config)
+		jar := []string{}
+		for _, v := range tierMap {
+			sort.Strings(v)
+			jar = append(jar, v...)
+		}
+		return jar
+	}).([]string)
+}
+
+// An earlier mutator pass creates genuine dependencies, and this pass traverses the jars in that
+// order (which is partial and non-deterministic). This pass adds additional dependencies between
+// jars, making the order total and deterministic. It also constructs a global ordered list.
+func systemServerJarsDepsMutator(ctx android.BottomUpMutatorContext) {
+	jars := DexpreoptedSystemServerJars(ctx.Config())
+	name := ctx.ModuleName()
+	if android.InList(name, jars) {
+		for _, dep := range jars {
+			if dep == name {
+				break
+			}
 			ctx.AddDependency(ctx.Module(), dexpreopt.SystemServerDepTag, dep)
 		}
-		*jars = append(*jars, name)
 	}
 }
 
