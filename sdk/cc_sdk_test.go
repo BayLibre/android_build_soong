@@ -414,7 +414,6 @@ func TestSnapshotWithCcSharedLibrary(t *testing.T) {
 				"Test.cpp",
 				"aidl/foo/bar/Test.aidl",
 			],
-			apex_available: ["apex1", "apex2"],
 			export_include_dirs: ["include"],
 			aidl: {
 				export_aidl_headers: true,
@@ -431,10 +430,6 @@ func TestSnapshotWithCcSharedLibrary(t *testing.T) {
 cc_prebuilt_library_shared {
     name: "mysdk_mynativelib@current",
     sdk_member_name: "mynativelib",
-    apex_available: [
-        "apex1",
-        "apex2",
-    ],
     export_include_dirs: ["include/include"],
     arch: {
         arm64: {
@@ -453,10 +448,6 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "mynativelib",
     prefer: false,
-    apex_available: [
-        "apex1",
-        "apex2",
-    ],
     export_include_dirs: ["include/include"],
     arch: {
         arm64: {
