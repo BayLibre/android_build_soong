@@ -27,7 +27,7 @@ import (
 
 func RegisterPrebuiltMutators(ctx RegistrationContext) {
 	ctx.PreArchMutators(RegisterPrebuiltsPreArchMutators)
-	ctx.PostDepsMutators(RegisterPrebuiltsPostDepsMutators)
+	ctx.FinalDepsMutators(RegisterPrebuiltsFinalDepsMutators)
 }
 
 type prebuiltDependencyTag struct {
@@ -44,8 +44,9 @@ type PrebuiltProperties struct {
 	// a matching name.
 	Prefer *bool `android:"arch_variant"`
 
-	SourceExists bool `blueprint:"mutated"`
-	UsePrebuilt  bool `blueprint:"mutated"`
+	SourceExists            bool `blueprint:"mutated"`
+	UsePrebuilt             bool `blueprint:"mutated"`
+	PrebuiltRenamedToSource bool `blueprint:"mutated"`
 }
 
 type Prebuilt struct {
@@ -127,22 +128,32 @@ func RegisterPrebuiltsPreArchMutators(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("prebuilts", PrebuiltMutator).Parallel()
 }
 
-func RegisterPrebuiltsPostDepsMutators(ctx RegisterMutatorsContext) {
+func RegisterPrebuiltsFinalDepsMutators(ctx RegisterMutatorsContext) {
+	ctx.BottomUp("prebuilt_deps", PrebuiltDepsMutator).Parallel()
 	ctx.TopDown("prebuilt_select", PrebuiltSelectModuleMutator).Parallel()
 	ctx.BottomUp("prebuilt_postdeps", PrebuiltPostDepsMutator).Parallel()
 }
 
-// PrebuiltMutator ensures that there is always a module with an undecorated name, and marks
-// prebuilt modules that have both a prebuilt and a source module.
+// PrebuiltMutator ensures that there is always a module with an undecorated name.
 func PrebuiltMutator(ctx BottomUpMutatorContext) {
+	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
+		name := m.base().BaseModuleName()
+		if !ctx.OtherModuleExists(name) {
+			ctx.Rename(name)
+			m.Prebuilt().properties.PrebuiltRenamedToSource = true
+		}
+	}
+}
+
+// PrebuiltDepsMutator adds dependencies to the prebuilt module from the
+// corresponding source module, if one exists for the same variant.
+func PrebuiltDepsMutator(ctx BottomUpMutatorContext) {
 	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
 		p := m.Prebuilt()
 		name := m.base().BaseModuleName()
-		if ctx.OtherModuleExists(name) {
+		if !p.properties.PrebuiltRenamedToSource && ctx.OtherModuleVariantExists(name) {
 			ctx.AddReverseDependency(ctx.Module(), PrebuiltDepTag, name)
 			p.properties.SourceExists = true
-		} else {
-			ctx.Rename(name)
 		}
 	}
 }
