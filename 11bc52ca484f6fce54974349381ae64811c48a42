@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eebfaa2_600eccab",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T15:46:09Z",
+      "side": 1,
+      "message": "well, I am still unsure if this can be the reason for ignoring min_sdk_version.\n\nwhy don\u0027t you use the updatable property? We ignoring min_sdk_version could be justified for non-updatable modules.",
+      "range": {
+        "startLine": 1988,
+        "startChar": 0,
+        "endLine": 1991,
+        "endChar": 47
+      },
+      "revId": "11bc52ca484f6fce54974349381ae64811c48a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
