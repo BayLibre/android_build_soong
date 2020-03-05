@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "241dff50_c99605e1",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T09:01:55Z",
+      "side": 1,
+      "message": "I would rather move this to testing.go",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 1
+      },
+      "revId": "bfb92f7e3bcbafe55412f9c53b28f20ca7264c94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
