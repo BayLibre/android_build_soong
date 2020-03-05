@@ -21,6 +21,7 @@ package java
 import (
 	"fmt"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -125,6 +126,7 @@ func systemServerJarsDepsMutator(ctx android.BottomUpMutatorContext) {
 			ctx.AddDependency(ctx.Module(), dexpreopt.SystemServerDepTag, dep)
 		}
 		*jars = append(*jars, name)
+		sort.Strings(*jars)
 	}
 }
 
