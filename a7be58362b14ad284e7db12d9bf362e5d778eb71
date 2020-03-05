@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7982be0_ca0b26db",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T08:57:57Z",
+      "side": 1,
+      "message": "I am surprised to know that this isn\u0027t in android.Module.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 18
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fbb7530_7ff0765e",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T08:57:57Z",
+      "side": 1,
+      "message": "I wonder why we need this. installable() returned false for cc_library_headers, even without this change, didn\u0027t it?",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 376,
+        "endChar": 23
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea02685d_0c843a6d",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2618,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T08:57:57Z",
+      "side": 1,
+      "message": "This is a public method, but no one outside of this package seems to be calling this.",
+      "range": {
+        "startLine": 2618,
+        "startChar": 17,
+        "endLine": 2618,
+        "endChar": 30
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3c6ac1e_8008760d",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T08:57:57Z",
+      "side": 1,
+      "message": "This is really confusing to me.",
+      "range": {
+        "startLine": 2626,
+        "startChar": 0,
+        "endLine": 2627,
+        "endChar": 23
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e61611d1_1fa9e602",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T08:57:57Z",
+      "side": 1,
+      "message": "for debugging?",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 652,
+        "endChar": 3
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffbabe11_a7dc69ec",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T08:57:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 3
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
