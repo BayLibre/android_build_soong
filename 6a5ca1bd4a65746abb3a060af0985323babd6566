@@ -73,6 +73,23 @@
     },
     {
       "key": {
+        "uuid": "0f87bbc0_2bf1ec8b",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-05T10:54:45Z",
+      "side": 1,
+      "message": "Is the intent of this script that it would be modified to build all sdks/module-exports across all mainline modules? If so then it might be better to add a target in Soong that will build all of them automatically and just add that here rather than requiring every module author to add their sdks/module-exports here.\n\nIf it is only for art and conscrypt then it should probably be renamed, probably not live in build/soong and probably be split into two (one for art and one for conscrypt) with maybe a third common part to shared that could live here.",
+      "revId": "6a5ca1bd4a65746abb3a060af0985323babd6566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "660a6a43_a0ebc882",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
