@@ -46,6 +46,30 @@
       "revId": "11bc52ca484f6fce54974349381ae64811c48a42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736db6ba_483a7393",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-05T16:34:29Z",
+      "side": 1,
+      "message": "What I don\u0027t understand is the reason why minSdkVersion function should be aware of things like libc++, unwinder function, and HWASAN.\n\nThat information should be used at the place where the linking to libc+++ is being made, not here.",
+      "parentUuid": "a227de5a_2cc22165",
+      "range": {
+        "startLine": 1988,
+        "startChar": 0,
+        "endLine": 1991,
+        "endChar": 47
+      },
+      "revId": "11bc52ca484f6fce54974349381ae64811c48a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
