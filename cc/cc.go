@@ -313,6 +313,7 @@ type ModuleContextIntf interface {
 	useClangLld(actx ModuleContext) bool
 	isForPlatform() bool
 	apexName() string
+	apexSdkVersion() int
 	hasStubsVariants() bool
 	isStubs() bool
 	bootstrap() bool
@@ -1177,6 +1178,10 @@ func (ctx *moduleContextImpl) isForPlatform() bool {
 
 func (ctx *moduleContextImpl) apexName() string {
 	return ctx.mod.ApexName()
+}
+
+func (ctx *moduleContextImpl) apexSdkVersion() int {
+	return ctx.mod.ApexProperties.Info.MinSdkVersion
 }
 
 func (ctx *moduleContextImpl) hasStubsVariants() bool {
