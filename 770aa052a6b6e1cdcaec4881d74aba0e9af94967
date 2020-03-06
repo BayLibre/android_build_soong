@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "503004d2_eff99d8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-06T19:12:28Z",
+      "side": 1,
+      "message": "What about making this non-APEX-specific? E.g. __SDK_VERSION__ that\u0027s identical to this in APEXes or a hardcoded 10000 when in platform. I reckon that would be more convenient to avoid extra cpp conditionals in common libs.",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "770aa052a6b6e1cdcaec4881d74aba0e9af94967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
