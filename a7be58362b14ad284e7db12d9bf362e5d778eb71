@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf6b5bba_a9e8f4f3",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-06T08:25:38Z",
+      "side": 1,
+      "message": "Me too.",
+      "parentUuid": "f7982be0_ca0b26db",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 18
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fbb7530_7ff0765e",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83ea4257_acfebf09",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-06T08:25:38Z",
+      "side": 1,
+      "message": "That\u0027s what I originally though but unfortunately, no.",
+      "parentUuid": "2fbb7530_7ff0765e",
+      "range": {
+        "startLine": 376,
+        "startChar": 1,
+        "endLine": 376,
+        "endChar": 23
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5abcbbf3_ffb05d1c",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2618,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-06T08:25:38Z",
+      "side": 1,
+      "message": "It is called from update.go.",
+      "parentUuid": "ea02685d_0c843a6d",
+      "range": {
+        "startLine": 2618,
+        "startChar": 17,
+        "endLine": 2618,
+        "endChar": 30
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3c6ac1e_8008760d",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e53f9693_d66d1c38",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-06T08:25:38Z",
+      "side": 1,
+      "message": "Agreed. Corrected a mistake and renamed Installable() to EverInstallable().",
+      "parentUuid": "a3c6ac1e_8008760d",
+      "range": {
+        "startLine": 2626,
+        "startChar": 0,
+        "endLine": 2627,
+        "endChar": 23
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3e5c80ef_7f3557a9",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-06T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e61611d1_1fa9e602",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 652,
+        "endChar": 3
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffbabe11_a7dc69ec",
         "filename": "sdk/update.go",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4241f511_6df88abe",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-06T08:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffbabe11_a7dc69ec",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 3
+      },
+      "revId": "a7be58362b14ad284e7db12d9bf362e5d778eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
