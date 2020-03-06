@@ -924,7 +924,13 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		} else if len(diagSanitizers) > 0 || c.sanitize.Properties.UbsanRuntimeDep ||
 			Bool(c.sanitize.Properties.Sanitize.Fuzzer) ||
 			Bool(c.sanitize.Properties.Sanitize.Undefined) ||
-			Bool(c.sanitize.Properties.Sanitize.All_undefined) {
+			Bool(c.sanitize.Properties.Sanitize.All_undefined) ||
+
+			// TODO(b/150822854)Hosts have a different default behavior and assume the runtime library is used.
+			// Remove when this is longer true.
+			(c.Host() && (len(c.sanitize.Properties.Sanitize.Misc_undefined) > 0 ||
+				Bool(c.sanitize.Properties.Sanitize.Integer_overflow))) {
+
 			runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)
 		}
 
