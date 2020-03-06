@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8f2908f_1133f4cf",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2619,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-06T04:40:02Z",
+      "side": 1,
+      "message": "make this a private method?",
+      "range": {
+        "startLine": 2619,
+        "startChar": 17,
+        "endLine": 2619,
+        "endChar": 18
+      },
+      "revId": "60f712101d82ebd51ee7280c9781cf739ea08fd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
