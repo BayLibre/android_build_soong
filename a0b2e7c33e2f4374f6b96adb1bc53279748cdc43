@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d59f50d3_121305a5",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-06T04:37:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5348fad_dd0390f8",
+      "range": {
+        "startLine": 234,
+        "startChar": 3,
+        "endLine": 234,
+        "endChar": 23
+      },
+      "revId": "a0b2e7c33e2f4374f6b96adb1bc53279748cdc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "692cbc73_e146276d",
         "filename": "sdk/update.go",
         "patchSetId": 4
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Yes. It will also remove target: { host: {//empty}} as it works from the inside out.",
       "parentUuid": "692cbc73_e146276d",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 53
+      },
+      "revId": "a0b2e7c33e2f4374f6b96adb1bc53279748cdc43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "537a7893_10f1e22b",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-06T04:37:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f58626a_1a02f9f2",
       "range": {
         "startLine": 345,
         "startChar": 0,
