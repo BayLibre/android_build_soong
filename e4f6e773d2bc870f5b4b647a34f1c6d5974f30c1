@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3cea1be_4d875da2",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-03-06T18:18:16Z",
+      "side": 1,
+      "message": "What do these do? Why shouldn\u0027t they be forwarded by the build rules so that you get correct incremental builds?",
+      "revId": "e4f6e773d2bc870f5b4b647a34f1c6d5974f30c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
