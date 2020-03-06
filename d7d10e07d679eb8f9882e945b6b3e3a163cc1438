@@ -69,6 +69,30 @@
       "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f981022d_97ba5794",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-06T16:19:37Z",
+      "side": 1,
+      "message": "Yes, I think this function needs to collect lists of dependency-ordered jars from each dependency, sort those lists against each other (but not internally), remove duplicates, and then propagate to dependants.\n\nWith a global structure that\u0027d require a map of jar lists, but I think a better way would be to add the jar list as a mutated module property that this function reads from each dependency, sorts, dedupes, and sets in ctx.Module(). That\u0027d avoid the global Once storage with locking, and the extra deps added above to connect up a total order.",
+      "parentUuid": "69dfee75_0a06e35d",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
