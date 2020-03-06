@@ -812,6 +812,12 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		var sanitizers []string
 		var diagSanitizers []string
 
+		// TODO(b/150822854) Hosts have a different default behavior and assume the runtime library is used.
+		if c.Host() && (len(c.sanitize.Properties.Sanitize.Misc_undefined) > 0 ||
+			Bool(c.sanitize.Properties.Sanitize.Integer_overflow)) {
+			c.sanitize.Properties.UbsanRuntimeDep = true
+		}
+
 		if Bool(c.sanitize.Properties.Sanitize.All_undefined) {
 			sanitizers = append(sanitizers, "undefined")
 		} else {
