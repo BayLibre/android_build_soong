@@ -17,8 +17,10 @@ package sdk
 import (
 	"fmt"
 	"reflect"
+	"sort"
 	"strings"
 
+	"android/soong/apex"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -639,7 +641,15 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 	// Where available copy apex_available properties from the member.
 	if apexAware, ok := variant.(interface{ ApexAvailable() []string }); ok {
 		apexAvailable := apexAware.ApexAvailable()
+
+		// Add in any white listed apex available settings.
+		apexAvailable = append(apexAvailable, apex.WhitelistedApexAvailable(member.Name())...)
+
 		if len(apexAvailable) > 0 {
+			// Remove duplicates and sort.
+			apexAvailable = android.FirstUniqueStrings(apexAvailable)
+			sort.Strings(apexAvailable)
+
 			m.AddProperty("apex_available", apexAvailable)
 		}
 	}
