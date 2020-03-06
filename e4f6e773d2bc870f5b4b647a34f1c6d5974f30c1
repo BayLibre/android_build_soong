@@ -16,6 +16,24 @@
       "revId": "e4f6e773d2bc870f5b4b647a34f1c6d5974f30c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e7be1c9_8a9e6c6d",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-03-06T18:48:33Z",
+      "side": 1,
+      "message": "They could be used in a way to break incremental builds, but the intention is to pass some debug related flags such as \"--verbose\", so I don\u0027t want to make them real build parameters.",
+      "parentUuid": "d3cea1be_4d875da2",
+      "revId": "e4f6e773d2bc870f5b4b647a34f1c6d5974f30c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
