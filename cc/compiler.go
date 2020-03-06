@@ -315,6 +315,18 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 			"-isystem "+getCurrentIncludePath(ctx).Join(ctx, config.NDKTriple(tc)).String())
 	}
 
+	if ctx.Device() && !ctx.useVndk() && !ctx.inRamdisk() && !ctx.inRecovery() && !ctx.Fuchsia() {
+		sdkVersion := ctx.sdkVersion()
+		if sdkVersion == "" || sdkVersion == "current" {
+			if ctx.isForPlatform() {
+				sdkVersion = strconv.Itoa(android.FutureApiLevel)
+			} else {
+				sdkVersion = strconv.Itoa(ctx.apexSdkVersion())
+			}
+		}
+		flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_SDK_VERSION__="+sdkVersion)
+	}
+
 	if ctx.useVndk() {
 		flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_VNDK__")
 	}
