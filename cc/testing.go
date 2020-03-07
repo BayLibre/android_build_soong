@@ -243,6 +243,10 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 			host_supported: false,
 			vendor_available: true,
 			recovery_available: true,
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
 		}
 		cc_library {
 			name: "libunwind_llvm",
