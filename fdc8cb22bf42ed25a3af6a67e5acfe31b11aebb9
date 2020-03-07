@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c7b495e_0879a1c4",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-07T03:30:29Z",
+      "side": 1,
+      "message": "How about adding __ANDROID prefix?",
+      "range": {
+        "startLine": 327,
+        "startChar": 67,
+        "endLine": 327,
+        "endChar": 70
+      },
+      "revId": "fdc8cb22bf42ed25a3af6a67e5acfe31b11aebb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
