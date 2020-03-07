@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "0a38e58f_be7f93e3",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-07T07:57:21Z",
+      "side": 1,
+      "message": "go/android3p is google\u0027s internal policy. there is no guarantee that the same is followed out there.",
+      "parentUuid": "7d66a17d_0bb12e11",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "64501b9c5cd68ec35bf2cf0388df00dc456add9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68d44a81_d0242103",
         "filename": "scripts/notices/create-lic.sh",
         "patchSetId": 1
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "That\u0027s interesting.\n\nIf not using git, how do these partners get the make and soong build code+rules? Does the build team have to do anything in particular to support non-git partners?",
       "parentUuid": "68d44a81_d0242103",
+      "range": {
+        "startLine": 95,
+        "startChar": 15,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "64501b9c5cd68ec35bf2cf0388df00dc456add9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd04fe7_87fa7dbf",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-07T07:57:21Z",
+      "side": 1,
+      "message": "they download via git, but convert it into other vcs like perforce locally",
+      "parentUuid": "533c3b3d_7745d135",
       "range": {
         "startLine": 95,
         "startChar": 15,
