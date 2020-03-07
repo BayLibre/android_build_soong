@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "66b829ff_2cb0781a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-07T07:31:54Z",
+      "side": 1,
+      "message": "Ack\n\nThere are several buganizers. After the design is complete and we get to the stage where we will have code to merge, I will create an umbrella buganizer for all of them.",
+      "parentUuid": "e92b70a0_01f6f36f",
+      "revId": "64501b9c5cd68ec35bf2cf0388df00dc456add9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b78a33c8_c2dec22a",
         "filename": "scripts/notices/create-lic.sh",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "7d66a17d_0bb12e11",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-07T07:31:54Z",
+      "side": 1,
+      "message": "Empirically.\n\nFirst, they are components of project names where non-Apache2 code is allowed per http://go/android3p . Second, I looked at the paths to all of the NOTICE and LICENSE files on the 3 AOSP hosts, and I chose these to eliminate any partial path that could be model a number or product name.\n\nThe -a flag, the ability to customize the build, and the proposed rollout with partner outreach will give partners an opportunity to intercede before anything gets displayed in any UI.\n\nI don\u0027t see anything in your comment to suggest the approach is unsound.",
+      "parentUuid": "b78a33c8_c2dec22a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 13
+      },
+      "revId": "64501b9c5cd68ec35bf2cf0388df00dc456add9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68d44a81_d0242103",
         "filename": "scripts/notices/create-lic.sh",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2020-03-07T06:16:07Z",
       "side": 1,
       "message": "not all partners use git for Android.",
+      "range": {
+        "startLine": 95,
+        "startChar": 15,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "64501b9c5cd68ec35bf2cf0388df00dc456add9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "533c3b3d_7745d135",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-07T07:31:54Z",
+      "side": 1,
+      "message": "That\u0027s interesting.\n\nIf not using git, how do these partners get the make and soong build code+rules? Does the build team have to do anything in particular to support non-git partners?",
+      "parentUuid": "68d44a81_d0242103",
       "range": {
         "startLine": 95,
         "startChar": 15,
