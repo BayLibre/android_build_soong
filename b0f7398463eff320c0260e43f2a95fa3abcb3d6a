@@ -70,6 +70,30 @@
       "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222c1b2e_cfcce3a1",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T00:34:39Z",
+      "side": 1,
+      "message": "Can we make sdkVersion() to return \"current\" when ctx is either vndk, ramdisk, recovery, or fuchsia?",
+      "parentUuid": "40539d38_8f13d34d",
+      "range": {
+        "startLine": 318,
+        "startChar": 17,
+        "endLine": 318,
+        "endChar": 93
+      },
+      "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
