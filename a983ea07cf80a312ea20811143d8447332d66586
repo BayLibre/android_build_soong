@@ -1,0 +1,590 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50ba8f15_f5bfb1ea",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "Could you add a description text here to briefly explain what the script does?\n\nHere is an example: http://cs/aosp-android10/build/soong/scripts/setup_go_workspace_for_soong.sh?l\u003d4\u0026rcl\u003d8fa121dc8905d109dc9461c7810c8d70449132f8",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 0
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f11118d_fcd59148",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "Before this line of code is executed, could you add \"set -e\" as if a command fails, the script fails.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 8
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adb74fb_58b264c3",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "You could set it up using the function I wrote in this script:\n\nhttps://cs.corp.google.com/aosp-android10/build/soong/scripts/setup_go_workspace_for_soong.sh?sq\u003dpackage:android\u0026dr\u003dC\u0026g\u003d0\u0026l\u003d54",
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5128d4d_287dd0e7",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "How about -z \"${TARGET_PRODUCT}\"? (and same with the one at the top)",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ba290f_81cdffde",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "If the script is being called from Soong (indirectly) and is going to be run in Android CI, this should be changed to $OUT_DIR. OUT_DIR can be override by setting in the build command line (as seen here: https://cs.corp.google.com/piper///depot/google3/configs/wireless/android/busytown/platform/git_qt/git_qt-release.gcl?q\u003dOUT_DIR+busytown\u0026sq\u003dpackage:piper+file://depot/google3+-file:google3/experimental\u0026dr\u003dC\u0026l\u003d2667) in the Android CI.\n\nYou can check if OUT_DIR is set first. If it is not, you can set it to \"out\" by default. You should test this by running \n\nOUT_DIR\u003d\"/tmp/try\" lunch\nOUT_DIR\u003d\"/tmp/try\" m",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba59fac_d2f570f5",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "move the function at the top of the script. It\u0027s a common practice which helps us to figure out what functions this script has.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 20
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a9dd39_cf07dd2c",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "Save it to a variable as you have it declared in the code above.",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 71
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feef8727_833a143d",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "you should check if tmpFiles is not empty. mktemp can fail and the string is blank. This is of course if you put \"set -e\" at the top of the script.",
+      "range": {
+        "startLine": 111,
+        "startChar": 9,
+        "endLine": 111,
+        "endChar": 17
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ebd58a_e1e4161f",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "nit: space",
+      "range": {
+        "startLine": 131,
+        "startChar": 34,
+        "endLine": 131,
+        "endChar": 35
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12de56b3_f221a178",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "nit: space",
+      "range": {
+        "startLine": 135,
+        "startChar": 9,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6b1fc19_bfaa5672",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "wc -l \u003c \"${newDeps}\"",
+      "range": {
+        "startLine": 144,
+        "startChar": 36,
+        "endLine": 144,
+        "endChar": 60
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1186de9_ad1d551e",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "((depth++))",
+      "range": {
+        "startLine": 146,
+        "startChar": 4,
+        "endLine": 146,
+        "endChar": 30
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5330da4c_7812f676",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "I think it would be better if you use a condition in the while loop instead of breaking the look. It\u0027s easier for someone to see when the loop ends.",
+      "range": {
+        "startLine": 168,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 13
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb2d131_705e012a",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "rm -f",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b4230f_1191b652",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "wc -l \u003c \"${allDeps}\"",
+      "range": {
+        "startLine": 179,
+        "startChar": 11,
+        "endLine": 179,
+        "endChar": 35
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63a4ca6c_487a18ce",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "$(date ...)",
+      "range": {
+        "startLine": 190,
+        "startChar": 13,
+        "endLine": 190,
+        "endChar": 35
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaabfa69_d63965a2",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "set -e",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 0
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e6c835_74204c8b",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "As I mentioned in the previous file, could you put a description at the top of the script?",
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bd1542f_837d79a5",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "See the other script file for the comment.",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "659d1b24_d5789c97",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "As mentioned in the other script, save this line to a variable.",
+      "range": {
+        "startLine": 169,
+        "startChar": 13,
+        "endLine": 169,
+        "endChar": 71
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d968ffc_5e2f025b",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "outputs are",
+      "range": {
+        "startLine": 228,
+        "startChar": 49,
+        "endLine": 228,
+        "endChar": 56
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e205ad7d_5ad95e0a",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "The two lines of code are almost identical. Basically have a bit variable initialized to 0. Set to one if the cases are satisfied and then have something like this:\n\necho \"${var} 1 ${targets[${idx}]}\" \u003e\u003e\"${newDeps}\";",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 54
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43683b70_25c4019e",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "wc -l \u003c \"${newDeps}\"",
+      "range": {
+        "startLine": 287,
+        "startChar": 36,
+        "endLine": 287,
+        "endChar": 60
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5856e9aa_32253bd5",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "((depth++))",
+      "range": {
+        "startLine": 288,
+        "startChar": 8,
+        "endLine": 288,
+        "endChar": 34
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50925813_59f33dfc",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "-f",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 3
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e590535_02cbca39",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T14:23:20Z",
+      "side": 1,
+      "message": "wc -l \u003c \"${allDeps}\" (and there\u0027s more below)",
+      "range": {
+        "startLine": 317,
+        "startChar": 11,
+        "endLine": 317,
+        "endChar": 35
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
