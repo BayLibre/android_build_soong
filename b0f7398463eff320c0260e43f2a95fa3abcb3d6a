@@ -118,6 +118,30 @@
       "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11d9136a_a2dceeb9",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T00:51:19Z",
+      "side": 1,
+      "message": "For the vendor context, we might be able to make sdkVersion to return BOARD_VNDK_VERSION. (or minimum of BOARD_VNDK_VERSION and sdk version of the library)",
+      "parentUuid": "62312476_878e8304",
+      "range": {
+        "startLine": 318,
+        "startChar": 17,
+        "endLine": 318,
+        "endChar": 93
+      },
+      "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
