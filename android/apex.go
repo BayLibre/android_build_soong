@@ -25,6 +25,8 @@ type ApexInfo struct {
 	// Name of the apex variant that this module is mutated into
 	ApexName string
 
+	SkipApexAvailableCheck bool
+
 	// Whether this apex variant needs to target Android 10
 	LegacyAndroid10Support bool
 
@@ -229,8 +231,6 @@ func (a byApexName) Less(i, j int) bool { return a[i].ApexName < a[j].ApexName }
 
 func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []Module {
 	if len(m.apexVariations) > 0 {
-		m.checkApexAvailableProperty(mctx)
-
 		sort.Sort(byApexName(m.apexVariations))
 		variations := []string{}
 		variations = append(variations, "") // Original variation for platform
@@ -270,6 +270,28 @@ func apexNamesMap() map[string]map[string]bool {
 	return apexData.Once(apexNamesKey, func() interface{} {
 		return make(map[string]map[string]bool)
 	}).(map[string]map[string]bool)
+}
+
+func CheckApexAvailable(ctx BaseModuleContext, apexes []ApexInfo, module ApexModule, whiltelisted func(apex, moduleName string) bool) {
+	module.apexModuleBase().checkApexAvailableProperty(ctx)
+
+	moduleName := ctx.OtherModuleName(module)
+	availableApexes := module.apexModuleBase().ApexProperties.Apex_available
+
+	for _, available := range availableApexes {
+		if available == availableToAnyApex {
+			return
+		}
+	}
+
+	for _, apex := range apexes {
+		if apex.SkipApexAvailableCheck || whiltelisted(apex.ApexName, moduleName) {
+			continue
+		}
+		if !InList(apex.ApexName, availableApexes) {
+			ctx.ModuleErrorf("requires %q that is not available for the APEX %q", moduleName, apex.ApexName)
+		}
+	}
 }
 
 // Update the map to mark that a module named moduleName is directly or indirectly
@@ -323,6 +345,24 @@ func DirectlyInAnyApex(ctx hostContext, moduleName string) bool {
 	if apexNames, ok := apexNamesMap()[moduleName]; ok {
 		for an := range apexNames {
 			if apexNames[an] {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+// Tests whether a moduleName is depended on by an apexName.
+func InApex(ctx hostContext, moduleName string, apexName string) bool {
+	if ctx.Host() {
+		// Host has no APEX.
+		return false
+	}
+	apexNamesMapMutex.Lock()
+	defer apexNamesMapMutex.Unlock()
+	if apexNames, ok := apexNamesMap()[moduleName]; ok {
+		for an := range apexNames {
+			if apexName == an {
 				return true
 			}
 		}

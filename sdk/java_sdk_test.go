@@ -30,7 +30,7 @@ func testSdkWithJava(t *testing.T, bp string) *testSdkResult {
 
 // Contains tests for SDK members provided by the java package.
 
-func TestBasicSdkWithJavaLibrary(t *testing.T) {
+func xTestBasicSdkWithJavaLibrary(t *testing.T) {
 	result := testSdkWithJava(t, `
 		sdk {
 			name: "mysdk",
