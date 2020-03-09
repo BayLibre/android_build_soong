@@ -22,6 +22,30 @@
       "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9487be6_06cfb0d2",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-09T00:17:44Z",
+      "side": 1,
+      "message": "Copied \"useSdk(). (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d1048?q\u003d%22useSdk()%20bool%22)\n\nI wanted to put __ANDROID_SDK_VESION__ in only the regular platform variants, in which building against SDK makes sense. For example, a vendor variant is supposed to be built with vndk version, not sdk. And ramdisk/recovery variants would be always against platform. ... we could put macro for ramdisk/recover variants we well. \n\nJiyong \u0026 Colin, can you give a better answer?",
+      "parentUuid": "b24c5fc7_82abad98",
+      "range": {
+        "startLine": 318,
+        "startChar": 17,
+        "endLine": 318,
+        "endChar": 93
+      },
+      "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
