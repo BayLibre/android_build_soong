@@ -1,0 +1,406 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04bd0742_6b307f14",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "Most build scripts (including aosp/1250515), we use bash. We should keep it consistent.",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaaaac2b_90c94477",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "Add a description of what this script does.",
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c9baba_a04a2165",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "-ue",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27e4c75_44f63d22",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "$\u0027\\t\u0027\n\nThis will eliminate of running two commands.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "136b46ff_ef597a18",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "You should declare as an array and then use the operators like this one:\n\nlicenses+\u003d(${1})",
+      "range": {
+        "startLine": 63,
+        "startChar": 12,
+        "endLine": 63,
+        "endChar": 39
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ff9ed1_0648dd57",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "Should we print out as a warning or the script just accepts a list of paths to check if there is a license, process it?",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 6
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c84fe0a2_78d415c5",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "missing ;",
+      "range": {
+        "startLine": 102,
+        "startChar": 34,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5db9b53b_a1e53ba9",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "project\u003d\"$(dirname \"${license}\")/\"\necho ${project}\nwhile [ \"${project}\" !\u003d \u0027./\u0027 ] \u0026\u0026\n      [ ! -d \"${project}/.git\" ] \u0026\u0026\n      [ \"${project}\" !\u003d \"/\" ]; do\n  project\u003d\"$(dirname \"${project}\")/\"\ndone",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1587926a_5a662d86",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "function helper() { \n  case \"${1}\" in\n      *hardware*)\n        echo \"${prefix}hardware/${2}\"\n        ;;\n      *vendor*)\n        echo \"${prefix}vendor/${2}\"\n        ;;\n      *device*)\n        echo \"${prefix}device/${2}\"\n        ;;\n      *kernel*)\n        echo \"${prefix}kernel/${2}\"\n        ;;\n       *)\n        return 1\n        ;;\n    esac\n    return 0\n}\n\nif helper \"${rest}\" \"${fname}\"; then\n  continue\nfi\n\n# If hardware, vendor, device or kernel appear in project name, obscure# project name only preserving the subdirectory name within the project.\nif helper \"${project}\" \"${rest}\" then\n  continue\nfi",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 8
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bbbd374_d5a51a74",
+        "filename": "scripts/notices/flatten-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "bash",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7382fe23_e3f124fb",
+        "filename": "scripts/notices/flatten-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "-eu",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb6da18_aff2cab0",
+        "filename": "scripts/notices/flatten-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "\"$0\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 14,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18159c9f_37fde048",
+        "filename": "scripts/notices/flatten-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "awk -v FS\u003d\u0027\\t\u0027 -v OFS\u003d\u0027\\t\u0027 -v target\u003d\"${target}\" \\\n        \u0027{ $1 \u003d target; print }\u0027 \"$*\" | sort -u \u003e \"${ofile}\"",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873e6187_85b9d56f",
+        "filename": "scripts/notices/lic-to-txt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "I recommend moving the go files and placed then under a new directory (license?) inside of this one:\n\nhttps://cs.corp.google.com/android/build/soong/cmd/?q\u003dsoong_met\u0026sq\u003dpackage:android\u0026dr\u003dC\n\nSetup an Android.bp file so we can build your binary during soong execution. That way, we can validate that it builds and runs unit test cases. Also, it would help to export your library for future cases.",
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cecdd65_4696aa9a",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "bash",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a197193_498864fa",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "eu",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b78b94b_7e5ac67f",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "\"$0\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171f0318_7f279472",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T18:09:49Z",
+      "side": 1,
+      "message": "awk -v FS\u003d\u0027\\t\u0027 -v OFS\u003d\u0027\\t\u0027 \u0027{print}\u0027 \"$*\" | sort -u \u003e \"${ofile}\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
