@@ -190,6 +190,30 @@
       "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9137699_eca3490b",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-09T01:50:03Z",
+      "side": 1,
+      "message": "Done.\n\nI just wanted to double-check before further refactoring. ;-)",
+      "parentUuid": "55233431_fb3adb8d",
+      "range": {
+        "startLine": 318,
+        "startChar": 17,
+        "endLine": 318,
+        "endChar": 93
+      },
+      "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
