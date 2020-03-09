@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94333723_3cc28915",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T14:59:46Z",
+      "side": 1,
+      "message": "nice",
+      "range": {
+        "startLine": 739,
+        "startChar": 8,
+        "endLine": 739,
+        "endChar": 26
+      },
+      "revId": "5b8b5b4448985ed5178bdebc6e9418b8976022fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e437ad77_e87cd0d3",
+        "filename": "sdk/update.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T14:59:46Z",
+      "side": 1,
+      "message": "it would be nicer if this list can be given from arch.go",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 685,
+        "endChar": 1
+      },
+      "revId": "5b8b5b4448985ed5178bdebc6e9418b8976022fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
