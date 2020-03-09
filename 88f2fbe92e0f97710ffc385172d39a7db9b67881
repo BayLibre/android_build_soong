@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcbc5920_576e96ab",
+        "filename": "sdk/update.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-09T23:37:02Z",
+      "side": 1,
+      "message": "Only one question: The unit testing of all the snapshot build logic here, is that in the concrete SDK member types?",
+      "revId": "88f2fbe92e0f97710ffc385172d39a7db9b67881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
