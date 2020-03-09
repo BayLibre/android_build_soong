@@ -166,6 +166,30 @@
       "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55233431_fb3adb8d",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T01:06:11Z",
+      "side": 1,
+      "message": "well, it is already the case even without this change.\n\nI think Martin\u0027s request is to make the condition in #318 be abstracted in somewhere. Perhaps you could just make it as a method and use it here, in useSdk(), etc.",
+      "parentUuid": "b2117ca2_38f76744",
+      "range": {
+        "startLine": 318,
+        "startChar": 17,
+        "endLine": 318,
+        "endChar": 93
+      },
+      "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
