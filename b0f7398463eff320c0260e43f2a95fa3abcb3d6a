@@ -46,6 +46,30 @@
       "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40539d38_8f13d34d",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-09T00:23:01Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s good enough. Can you contain that logic in a single place? In particular it helps explaining what this set of exclusions means.",
+      "parentUuid": "d9487be6_06cfb0d2",
+      "range": {
+        "startLine": 318,
+        "startChar": 17,
+        "endLine": 318,
+        "endChar": 93
+      },
+      "revId": "b0f7398463eff320c0260e43f2a95fa3abcb3d6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
