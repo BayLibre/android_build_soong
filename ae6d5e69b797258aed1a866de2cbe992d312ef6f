@@ -22,6 +22,30 @@
       "revId": "ae6d5e69b797258aed1a866de2cbe992d312ef6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c3ed6a_c63e81ce",
+        "filename": "android/arch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T15:25:00Z",
+      "side": 1,
+      "message": "Or we could simply export osTypeList and let sdk package to filter it.",
+      "parentUuid": "949e4a65_0e1b45f5",
+      "range": {
+        "startLine": 624,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 1
+      },
+      "revId": "ae6d5e69b797258aed1a866de2cbe992d312ef6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
