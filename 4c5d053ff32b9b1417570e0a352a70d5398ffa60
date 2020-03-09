@@ -22,6 +22,23 @@
       "revId": "4c5d053ff32b9b1417570e0a352a70d5398ffa60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51c7c958_1bcdfdc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-03-09T14:16:42Z",
+      "side": 1,
+      "message": "Bug: 150934453",
+      "revId": "4c5d053ff32b9b1417570e0a352a70d5398ffa60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
