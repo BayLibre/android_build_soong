@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b319d8a1_1a5ff942",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T14:47:19Z",
+      "side": 1,
+      "message": "this should be reflected as well when doing the inverse mapping.",
+      "range": {
+        "startLine": 2400,
+        "startChar": 0,
+        "endLine": 2402,
+        "endChar": 76
+      },
+      "revId": "b3471c18652fbb28ae9b8851e13c7f357107621d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
