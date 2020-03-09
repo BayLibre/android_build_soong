@@ -46,6 +46,30 @@
       "revId": "b3471c18652fbb28ae9b8851e13c7f357107621d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f86e0396_4eedae9b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T16:05:20Z",
+      "side": 1,
+      "message": "unfortunately yes, except for the test_ thing because the apex_available check is not done for test apexes. (so #2400 is no op now)\n\nmy goal is to remove the whitelist but I don\u0027t think it will be finished anytime soon.",
+      "parentUuid": "5cfcc2af_0efd68b8",
+      "range": {
+        "startLine": 2400,
+        "startChar": 0,
+        "endLine": 2402,
+        "endChar": 76
+      },
+      "revId": "b3471c18652fbb28ae9b8851e13c7f357107621d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
