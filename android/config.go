@@ -878,6 +878,12 @@ func (c *config) ArtUseReadBarrier() bool {
 
 func (c *config) EnforceRROForModule(name string) bool {
 	enforceList := c.productVariables.EnforceRROTargets
+	exemptedList := c.productVariables.EnforceRROExemptedTargets
+	if exemptedList != nil {
+		if InList(name, exemptedList) {
+			return false
+		}
+	}
 	if enforceList != nil {
 		if InList("*", enforceList) {
 			return true

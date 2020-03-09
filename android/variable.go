@@ -191,6 +191,7 @@ type productVariables struct {
 	DeviceResourceOverlays     []string `json:",omitempty"`
 	ProductResourceOverlays    []string `json:",omitempty"`
 	EnforceRROTargets          []string `json:",omitempty"`
+	EnforceRROExemptedTargets  []string `json:",omitempty"`
 	EnforceRROExcludedOverlays []string `json:",omitempty"`
 
 	AAPTCharacteristics *string  `json:",omitempty"`
