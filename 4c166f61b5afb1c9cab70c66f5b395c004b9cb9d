@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16efc89b_87d5329a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-03-09T07:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb64fad0_5c6511f1",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "4c166f61b5afb1c9cab70c66f5b395c004b9cb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feab278e_a945680c",
         "filename": "android/config.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "cdecf9b0_1711b71a",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-03-09T07:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feab278e_a945680c",
+      "revId": "4c166f61b5afb1c9cab70c66f5b395c004b9cb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d466271b_bdc267ec",
         "filename": "android/variable.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "4c166f61b5afb1c9cab70c66f5b395c004b9cb9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7c32be_96713c64",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-03-09T07:08:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d466271b_bdc267ec",
+      "revId": "4c166f61b5afb1c9cab70c66f5b395c004b9cb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
