@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "3feb712a_b5ea4003",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T23:13:37Z",
+      "side": 1,
+      "message": "ah ok. I see the message \"Run lunch or set ANDROID_BUILD_TOP\u003d...\" so I wasn\u0027t sure where this script gets executed.",
+      "parentUuid": "d94771e3_282263a4",
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5128d4d_287dd0e7",
         "filename": "scripts/reverse-deps.sh",
         "patchSetId": 1
@@ -178,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "c63e9c0f_305cf57e",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T23:13:37Z",
+      "side": 1,
+      "message": "I don\u0027t see the change...",
+      "parentUuid": "e3f960e6_f1f47721",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 31
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51ba290f_81cdffde",
         "filename": "scripts/reverse-deps.sh",
         "patchSetId": 1
@@ -213,6 +255,30 @@
       "side": 1,
       "message": "This script will not run from within soong. To add a similar feature to soong, golang would be a better choice. It\u0027s not clear to me that adding a query language to soong makes sense at this time.\n\nThis is a quick and dirty way to leverage what\u0027s already available in ninja to use as a tool alongside soong. Basically, it is good enough to get done what I need now until a better option comes along.",
       "parentUuid": "51ba290f_81cdffde",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "a983ea07cf80a312ea20811143d8447332d66586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dec54b7_ffa94726",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T23:13:37Z",
+      "side": 1,
+      "message": "Sounds good. I now recall our conversation about it.",
+      "parentUuid": "38e56845_13d707c0",
       "range": {
         "startLine": 17,
         "startChar": 32,

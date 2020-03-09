@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6739b5c2_f5714a0e",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T23:13:37Z",
+      "side": 1,
+      "message": "Would you removing this part of the message so the user is restricted to use lunch only? I got confused as I thought it could run under the Android build CI.",
+      "range": {
+        "startLine": 81,
+        "startChar": 26,
+        "endLine": 81,
+        "endChar": 54
+      },
+      "revId": "fc0a63e2293e67881ae7a035d1e99f07ef5d2a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab763fa3_ff7762c9",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T23:13:37Z",
+      "side": 1,
+      "message": "readonly ninja_file (to keep it consistent with other variables such as use_stdin)",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 9
+      },
+      "revId": "fc0a63e2293e67881ae7a035d1e99f07ef5d2a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1d22091_75911c67",
+        "filename": "scripts/reverse-deps.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T23:13:37Z",
+      "side": 1,
+      "message": "same as line 88",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "fc0a63e2293e67881ae7a035d1e99f07ef5d2a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee328323_1ee81edf",
+        "filename": "scripts/transitive-deps.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-09T23:13:37Z",
+      "side": 1,
+      "message": "ninja_file",
+      "range": {
+        "startLine": 170,
+        "startChar": 9,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "fc0a63e2293e67881ae7a035d1e99f07ef5d2a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
