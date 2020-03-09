@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb64fad0_5c6511f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T05:49:10Z",
+      "side": 1,
+      "message": "this is the name of the Make emulator. Shouldn\u0027t we call it Make?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "4c166f61b5afb1c9cab70c66f5b395c004b9cb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feab278e_a945680c",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T05:49:10Z",
+      "side": 1,
+      "message": "add a TODO for removing this when problem with Settings is fixed",
+      "revId": "4c166f61b5afb1c9cab70c66f5b395c004b9cb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d466271b_bdc267ec",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-09T05:49:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4c166f61b5afb1c9cab70c66f5b395c004b9cb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
