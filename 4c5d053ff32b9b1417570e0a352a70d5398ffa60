@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8081375_31babcb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-09T14:20:03Z",
+      "side": 1,
+      "message": "Thanks, fixed!",
+      "parentUuid": "07962a1a_36d99e9f",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "4c5d053ff32b9b1417570e0a352a70d5398ffa60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51c7c958_1bcdfdc3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "4c5d053ff32b9b1417570e0a352a70d5398ffa60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6bf82c_9b7cd8cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-09T14:20:03Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "51c7c958_1bcdfdc3",
+      "revId": "4c5d053ff32b9b1417570e0a352a70d5398ffa60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
