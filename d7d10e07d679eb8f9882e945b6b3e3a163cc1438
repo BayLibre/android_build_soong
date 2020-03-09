@@ -93,6 +93,30 @@
       "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4ecfb73_adb11ced",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-03-09T11:28:52Z",
+      "side": 1,
+      "message": "I updated with the former using maps.",
+      "parentUuid": "f981022d_97ba5794",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
