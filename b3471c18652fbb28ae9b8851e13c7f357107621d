@@ -22,6 +22,30 @@
       "revId": "b3471c18652fbb28ae9b8851e13c7f357107621d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cfcc2af_0efd68b8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-09T16:00:44Z",
+      "side": 1,
+      "message": "So, if I find com.android.art in the white list then I would need to add com.android.art.debug and com.android.art.release and test_ versions of those to the apex_available property. If I find xyz_apex in the white list then I would just need to add xyz_apex and test_xyz_apex to the apex_available property?\n\nI was hoping to avoid that because this seems like a yeuchy hack.",
+      "parentUuid": "b319d8a1_1a5ff942",
+      "range": {
+        "startLine": 2400,
+        "startChar": 0,
+        "endLine": 2402,
+        "endChar": 76
+      },
+      "revId": "b3471c18652fbb28ae9b8851e13c7f357107621d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
