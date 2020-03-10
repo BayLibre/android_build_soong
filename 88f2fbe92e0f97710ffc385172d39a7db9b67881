@@ -16,6 +16,24 @@
       "revId": "88f2fbe92e0f97710ffc385172d39a7db9b67881",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e70a41a8_5c5581b2",
+        "filename": "sdk/update.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-10T10:30:58Z",
+      "side": 1,
+      "message": "Yes. I didn\u0027t add any extract tests because there didn\u0027t seem much value in adding a whole set of standalone tests just for this code. The overhead is quite high, new module types, etc. I think the coverage of the code is quite good and during development the existing tests did fail revealing issues with the refactoring which I then fixed.",
+      "parentUuid": "bcbc5920_576e96ab",
+      "revId": "88f2fbe92e0f97710ffc385172d39a7db9b67881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
