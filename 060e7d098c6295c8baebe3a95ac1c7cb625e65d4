@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e7269a83_452ed8f2",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-10T07:28:26Z",
+      "side": 1,
+      "message": "apexBundle has DepIsInSameApex() method as well.",
+      "parentUuid": "9e9c6f8b_19cd5a68",
+      "range": {
+        "startLine": 1066,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 3
+      },
+      "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bac303a7_28f40816",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "1edb8f6c_2ff81bb8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-10T07:28:26Z",
+      "side": 1,
+      "message": "Just removed directDep because apexBundle.DepIsInSameApex handles correctly.",
+      "parentUuid": "f783c8ad_c3bd7bc3",
+      "range": {
+        "startLine": 1074,
+        "startChar": 11,
+        "endLine": 1074,
+        "endChar": 29
+      },
+      "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f34da3df_00d91ba9",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
@@ -116,6 +164,30 @@
       "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93673b1b_73f43c45",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-10T07:28:26Z",
+      "side": 1,
+      "message": "I figured it out!\n\njava.Library(or Import).DepIsInSameApex() was using wrong parameter to check sdk-membership.",
+      "parentUuid": "f34da3df_00d91ba9",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
