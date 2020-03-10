@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "20896319_25bcaff7",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-10T18:59:58Z",
+      "side": 1,
+      "message": "I am with you on portability as well but it\u0027s set to bash for other scripts.",
+      "parentUuid": "27a9e70a_c0fdc5b9",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaaaac2b_90c94477",
         "filename": "scripts/notices/create-lic.sh",
         "patchSetId": 2
@@ -636,6 +660,24 @@
     },
     {
       "key": {
+        "uuid": "8ecbc2a4_e8a989f7",
+        "filename": "scripts/notices/lic-to-txt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-10T18:59:58Z",
+      "side": 1,
+      "message": "ah yes. SGTM!",
+      "parentUuid": "dfd3c0d0_8bb00ee6",
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cecdd65_4696aa9a",
         "filename": "scripts/notices/merge-lic.sh",
         "patchSetId": 2
@@ -812,6 +854,30 @@
       "side": 1,
       "message": "Ack\n\nAdded clarifying comment.",
       "parentUuid": "171f0318_7f279472",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49992633_48ae3e17",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-10T18:59:58Z",
+      "side": 1,
+      "message": "Ah, forgot about the case.",
+      "parentUuid": "f5c3c712_70131cdf",
       "range": {
         "startLine": 47,
         "startChar": 0,
