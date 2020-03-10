@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c34a973d_122ace02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-10T13:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "914862cb_2af11602",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67e1e5bd_50d4f499",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cfd11e8_566bbac1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-10T13:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67e1e5bd_50d4f499",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6d5084ce_c6be7f7c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-10T13:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a82714e7_8d10de4f",
+      "range": {
+        "startLine": 305,
+        "startChar": 42,
+        "endLine": 305,
+        "endChar": 57
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a54ce640_3140814a",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9e4beca8_7b69de43",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-10T13:35:49Z",
+      "side": 1,
+      "message": "I am not really...  I just included the arch in the path.\n\nTo make it work, I also had to refactor the make side (see the other CL in the topic).\n\nIncluding the arch makes the make side easier.",
+      "parentUuid": "a54ce640_3140814a",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 0
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a7b54df_b0eb44ea",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26db32cb_1fe174da",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-10T13:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a7b54df_b0eb44ea",
+      "range": {
+        "startLine": 548,
+        "startChar": 47,
+        "endLine": 548,
+        "endChar": 68
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
