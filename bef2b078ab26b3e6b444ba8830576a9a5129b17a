@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "5abaf64c_2818cdb3",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-10T14:26:53Z",
+      "side": 1,
+      "message": "Ok, thanks for the explanation. It seemed to me that if you didn\u0027t change `vdexInstallDir` to `installDir` here, you\u0027d have to make fewer changes on the Make side, but maybe I\u0027m wrong.",
+      "parentUuid": "9e4beca8_7b69de43",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 0
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a7b54df_b0eb44ea",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 7
