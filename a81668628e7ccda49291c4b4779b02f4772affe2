@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a49c60b9_431c58bc",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-10T12:07:12Z",
+      "side": 0,
+      "message": "Why did you delete this? It is important and explains what it means to be \"dexpreopted together\" and why the order of jars is relevant.",
+      "range": {
+        "startLine": 109,
+        "startChar": 67,
+        "endLine": 110,
+        "endChar": 50
+      },
+      "revId": "a81668628e7ccda49291c4b4779b02f4772affe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -117,6 +117,30 @@
       "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f2d3d22_d1c9acea",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-10T12:07:12Z",
+      "side": 1,
+      "message": "Martin: Adding additional deps to enforce total order is essential, because the rule generation phase uses it to get an ordered dependency list to generate class loader context (which requires not only the names of modules, but also paths to the built jar files, so doing it via dependencies is essential).",
+      "parentUuid": "b4ecfb73_adb11ced",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
