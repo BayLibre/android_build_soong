@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57332d0d_f0116a7c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-03-10T22:26:28Z",
+      "side": 1,
+      "message": "It will increase on basically every build. It might decrease. (And can we put this in the proto comments?)",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "c221f952477f152609a1ea39bd3f6639ee7cc285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
