@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "914862cb_2af11602",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-10T10:44:53Z",
+      "side": 1,
+      "message": "nit: the ART boot image",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e1e5bd_50d4f499",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-10T10:44:53Z",
+      "side": 1,
+      "message": "Please add a comment explaining that we don\u0027t need host arches in the apex.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a82714e7_8d10de4f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-10T10:44:53Z",
+      "side": 1,
+      "message": "nit: Add a local variable \u0027os\u0027 for this subexpression (it is used often).",
+      "range": {
+        "startLine": 305,
+        "startChar": 42,
+        "endLine": 305,
+        "endChar": 57
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a54ce640_3140814a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-10T10:44:53Z",
+      "side": 1,
+      "message": "Why are you changing .vdex directory in this patch?",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 0
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7b54df_b0eb44ea",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-10T10:44:53Z",
+      "side": 1,
+      "message": "nit: Add a local variable for this subexpression (it is repeated often).",
+      "range": {
+        "startLine": 548,
+        "startChar": 47,
+        "endLine": 548,
+        "endChar": 68
+      },
+      "revId": "bef2b078ab26b3e6b444ba8830576a9a5129b17a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
