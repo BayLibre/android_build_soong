@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dce5c25_7dbd88a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-10T14:34:19Z",
+      "side": 1,
+      "message": "We can\u0027t strengthen this more and require references to be strictly either members or non-members?",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef695d9_1c386b43",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-10T14:34:19Z",
+      "side": 1,
+      "message": "I think there\u0027s no test of this case.",
+      "range": {
+        "startLine": 193,
+        "startChar": 70,
+        "endLine": 193,
+        "endChar": 78
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244a65a1_e0e57cf5",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-10T14:34:19Z",
+      "side": 1,
+      "message": "Typo: Delete.",
+      "range": {
+        "startLine": 201,
+        "startChar": 27,
+        "endLine": 201,
+        "endChar": 29
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a50de1_5c461249",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-10T14:34:19Z",
+      "side": 1,
+      "message": "Is there a reason for using such a canonical system lib in shared_libs (and not system_shared_libs)? If not, maybe a different name is better to avoid confusion.",
+      "range": {
+        "startLine": 643,
+        "startChar": 8,
+        "endLine": 643,
+        "endChar": 12
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d17039_c7fd361c",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-10T14:34:19Z",
+      "side": 1,
+      "message": "Why has the \"android\" variant disappeared here?",
+      "range": {
+        "startLine": 681,
+        "startChar": 9,
+        "endLine": 681,
+        "endChar": 13
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
