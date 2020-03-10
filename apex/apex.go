@@ -89,7 +89,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libpackagelistparser",
 		"libpcre2",
 		"libprocessgroup_headers",
-		"libselinux",
 	}
 	//
 	// Module separator
@@ -396,7 +395,6 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libprocessgroup",
 		"libprocessgroup_headers",
 		"libprocinfo",
-		"libselinux",
 		"libsonivox",
 		"libspeexresampler",
 		"libspeexresampler",
