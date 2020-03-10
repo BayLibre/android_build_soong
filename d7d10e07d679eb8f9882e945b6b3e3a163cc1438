@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fd9b05d3_2bbccb68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-10T13:37:18Z",
+      "side": 1,
+      "message": "Side note: Thanks for detailed test descriptions! It\u0027s quite helpful for reviewers like myself who aren\u0027t intimately familiar with oatdump.",
+      "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9ef3346_083453f7",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -132,6 +149,30 @@
       "side": 1,
       "message": "Martin: Adding additional deps to enforce total order is essential, because the rule generation phase uses it to get an ordered dependency list to generate class loader context (which requires not only the names of modules, but also paths to the built jar files, so doing it via dependencies is essential).",
       "parentUuid": "b4ecfb73_adb11ced",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66599291_166be4bd",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-10T13:37:18Z",
+      "side": 1,
+      "message": "Sorry I still don\u0027t understand how that makes extra dependencies necessary. Can\u0027t it use the same deterministic topological order created here? If it\u0027s just a matter of retrieving more info later then it ought to work to store the module objects instead the jar paths, so that they can be queried for whatever is called for.\n\nBtw connecting up a dense graph like this is O(n^2), although I reckon it won\u0027t get seriously large.",
+      "parentUuid": "2f2d3d22_d1c9acea",
       "range": {
         "startLine": 129,
         "startChar": 0,
