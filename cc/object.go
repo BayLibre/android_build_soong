@@ -26,6 +26,17 @@ import (
 
 func init() {
 	android.RegisterModuleType("cc_object", ObjectFactory)
+	android.RegisterSdkMemberType(ccObjectSdkMemberType)
+}
+
+var ccObjectSdkMemberType = &librarySdkMemberType{
+	SdkMemberTypeBase: android.SdkMemberTypeBase{
+		PropertyName: "native_objects",
+		SupportsSdk:  true,
+	},
+	prebuiltModuleType: "cc_prebuilt_object",
+	linkTypes:          nil,
+	skipStl:            true,
 }
 
 type objectLinker struct {
@@ -62,6 +73,7 @@ func ObjectFactory() android.Module {
 	module.compiler.appendCflags([]string{"-fno-addrsig"})
 
 	module.stl = &stl{}
+	module.sdkMemberTypes = []android.SdkMemberType{ccObjectSdkMemberType}
 	return module.Init()
 }
 

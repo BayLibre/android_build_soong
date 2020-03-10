@@ -18,6 +18,7 @@ import (
 	"path/filepath"
 
 	"android/soong/android"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -53,7 +54,11 @@ type librarySdkMemberType struct {
 
 	prebuiltModuleType string
 
-	// The set of link types supported, set of "static", "shared".
+	noOutputFiles bool // True if there are no srcs files.
+	skipStl       bool
+
+	// The set of link types supported. A set of "static", "shared", or nil to
+	// skip link type variations.
 	linkTypes []string
 }
 
@@ -106,9 +111,11 @@ func (mt *librarySdkMemberType) AddPrebuiltModule(sdkModuleContext android.Modul
 		pbm.AddProperty("sdk_version", sdkVersion)
 	}
 
-	stl := ccModule.stl.Properties.Stl
-	if stl != nil {
-		pbm.AddProperty("stl", proptools.String(stl))
+	if !mt.skipStl {
+		stl := ccModule.stl.Properties.Stl
+		if stl != nil {
+			pbm.AddProperty("stl", proptools.String(stl))
+		}
 	}
 	return pbm
 }
@@ -327,7 +334,7 @@ func (p *nativeLibInfoProperties) PopulateFromVariant(variant android.SdkAware) 
 
 	// If the library has some link types then it produces an output binary file, otherwise it
 	// is header only.
-	if p.memberType.linkTypes != nil {
+	if !p.memberType.noOutputFiles {
 		p.outputFile = ccModule.OutputFile().Path()
 	}
 
