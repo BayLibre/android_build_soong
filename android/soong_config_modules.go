@@ -125,7 +125,7 @@ func soongConfigModuleTypeImportFactory() Module {
 }
 
 func (m *soongConfigModuleTypeImport) Name() string {
-	return "soong_config_module_type_import_" + soongconfig.CanonicalizeToProperty(m.properties.From)
+	return "soong_config_module_type_import_" + soongconfig.CanonicalizeToProperty(m.properties.From) + fmt.Sprintf("%p", m)
 }
 
 func (*soongConfigModuleTypeImport) Nameless()                                 {}
