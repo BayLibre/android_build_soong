@@ -70,6 +70,30 @@
       "revId": "b3471c18652fbb28ae9b8851e13c7f357107621d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52d7590_be39a5d1",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-10T14:13:35Z",
+      "side": 1,
+      "message": "Ok. Rather than complicate the code to handle these special cases I just added both com.android.art.debug/release to the white list and removed special handling for test apexes (those changes should be in your review queue).",
+      "parentUuid": "f86e0396_4eedae9b",
+      "range": {
+        "startLine": 2400,
+        "startChar": 0,
+        "endLine": 2402,
+        "endChar": 76
+      },
+      "revId": "b3471c18652fbb28ae9b8851e13c7f357107621d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
