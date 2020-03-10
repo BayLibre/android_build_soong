@@ -22,6 +22,30 @@
       "revId": "c221f952477f152609a1ea39bd3f6639ee7cc285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3723df06_1b33f4f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-10T23:21:26Z",
+      "side": 1,
+      "message": "Good idea. I added in the proto comments.",
+      "parentUuid": "57332d0d_f0116a7c",
+      "range": {
+        "startLine": 13,
+        "startChar": 60,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "c221f952477f152609a1ea39bd3f6639ee7cc285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
