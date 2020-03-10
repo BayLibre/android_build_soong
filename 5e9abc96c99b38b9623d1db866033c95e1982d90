@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27a9e70a_c0fdc5b9",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done\n\nI went with portability for anything that would run in the build system, but if soong has already gone full bash, full bash it is.",
+      "parentUuid": "04bd0742_6b307f14",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaaaac2b_90c94477",
         "filename": "scripts/notices/create-lic.sh",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa0c4c0_b49c6ac5",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "It\u0027s already there just below the copyright notice where it is in other scripts.",
+      "parentUuid": "aaaaac2b_90c94477",
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c3218025_e7b2715d",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82c9baba_a04a2165",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c27e4c75_44f63d22",
         "filename": "scripts/notices/create-lic.sh",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af3d762_767f2d45",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c27e4c75_44f63d22",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c2a55420_5c31a32f",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "136b46ff_ef597a18",
+      "range": {
+        "startLine": 63,
+        "startChar": 12,
+        "endLine": 63,
+        "endChar": 39
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79ff9ed1_0648dd57",
         "filename": "scripts/notices/create-lic.sh",
         "patchSetId": 2
@@ -131,6 +245,30 @@
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e736e19b_52239b77",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Ack\n\nThe default would be \u0027LICENSE LICENCE NOTICE\u0027 so having one or more non-existent files in the list will be the norm not an exception.",
+      "parentUuid": "79ff9ed1_0648dd57",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 6
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "71ed42ad_cb6f50f6",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c84fe0a2_78d415c5",
+      "range": {
+        "startLine": 102,
+        "startChar": 34,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5db9b53b_a1e53ba9",
         "filename": "scripts/notices/create-lic.sh",
         "patchSetId": 2
@@ -177,6 +339,30 @@
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32dc3459_0eab5114",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5db9b53b_a1e53ba9",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "4242473f_b6e94490",
+        "filename": "scripts/notices/create-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1587926a_5a662d86",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 8
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bbbd374_d5a51a74",
         "filename": "scripts/notices/flatten-lic.sh",
         "patchSetId": 2
@@ -223,6 +433,30 @@
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2be282c_09ab32c3",
+        "filename": "scripts/notices/flatten-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bbbd374_d5a51a74",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "43c1cc77_637d41aa",
+        "filename": "scripts/notices/flatten-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7382fe23_e3f124fb",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bb6da18_aff2cab0",
         "filename": "scripts/notices/flatten-lic.sh",
         "patchSetId": 2
@@ -269,6 +527,30 @@
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c81514_457089e3",
+        "filename": "scripts/notices/flatten-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bb6da18_aff2cab0",
+      "range": {
+        "startLine": 22,
+        "startChar": 14,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -295,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "11a1cc17_0067a65b",
+        "filename": "scripts/notices/flatten-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Ack\n\nThat would truncate \"${ofile}\" prematurely in the case where it appears in \"$*\"\n\nAdded a comment to clarify.",
+      "parentUuid": "18159c9f_37fde048",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "873e6187_85b9d56f",
         "filename": "scripts/notices/lic-to-txt.go",
         "patchSetId": 2
@@ -306,6 +612,24 @@
       "writtenOn": "2020-03-09T18:09:49Z",
       "side": 1,
       "message": "I recommend moving the go files and placed then under a new directory (license?) inside of this one:\n\nhttps://cs.corp.google.com/android/build/soong/cmd/?q\u003dsoong_met\u0026sq\u003dpackage:android\u0026dr\u003dC\n\nSetup an Android.bp file so we can build your binary during soong execution. That way, we can validate that it builds and runs unit test cases. Also, it would help to export your library for future cases.",
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd3c0d0_8bb00ee6",
+        "filename": "scripts/notices/lic-to-txt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Will do in the design and in the eventual implementation.",
+      "parentUuid": "873e6187_85b9d56f",
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -335,6 +659,30 @@
     },
     {
       "key": {
+        "uuid": "2834b922_c43f797c",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cecdd65_4696aa9a",
+      "range": {
+        "startLine": 1,
+        "startChar": 7,
+        "endLine": 1,
+        "endChar": 9
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a197193_498864fa",
         "filename": "scripts/notices/merge-lic.sh",
         "patchSetId": 2
@@ -355,6 +703,30 @@
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e802ecf_34b321b9",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a197193_498864fa",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -381,6 +753,30 @@
     },
     {
       "key": {
+        "uuid": "e183eb9d_846803d9",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b78b94b_7e5ac67f",
+      "range": {
+        "startLine": 21,
+        "startChar": 14,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "171f0318_7f279472",
         "filename": "scripts/notices/merge-lic.sh",
         "patchSetId": 2
@@ -401,6 +797,30 @@
       "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c3c712_70131cdf",
+        "filename": "scripts/notices/merge-lic.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-03-10T01:04:55Z",
+      "side": 1,
+      "message": "Ack\n\nAdded clarifying comment.",
+      "parentUuid": "171f0318_7f279472",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "5e9abc96c99b38b9623d1db866033c95e1982d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
