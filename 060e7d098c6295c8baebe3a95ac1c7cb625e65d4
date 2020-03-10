@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5c613b53_cfc7000a",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-10T08:09:46Z",
+      "side": 1,
+      "message": "Got it. Thanks for fix the bug.",
+      "parentUuid": "e7269a83_452ed8f2",
+      "range": {
+        "startLine": 1066,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 3
+      },
+      "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bac303a7_28f40816",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Just removed directDep because apexBundle.DepIsInSameApex handles correctly.",
       "parentUuid": "f783c8ad_c3bd7bc3",
+      "range": {
+        "startLine": 1074,
+        "startChar": 11,
+        "endLine": 1074,
+        "endChar": 29
+      },
+      "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d645eb2e_ac75114b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-10T08:09:46Z",
+      "side": 1,
+      "message": "I meant the check for apex_available. Anyway, this became irrelevant in PS4.",
+      "parentUuid": "1edb8f6c_2ff81bb8",
       "range": {
         "startLine": 1074,
         "startChar": 11,
