@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e9c6f8b_19cd5a68",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-10T03:08:09Z",
+      "side": 1,
+      "message": "Oh, this was ad-hoc change. I have to clean this up. \n\nThe bug was `am.DepIsInSameAepx(mctx, child)`. Because am \u003d\u003d\u003d child, it fails when parent and child are of different types. For example, java_sdk_library and its permission xml.\n\nUntil now, DepIsInSameAepx implementation was borrowed from child\u0027s type. Typically dependencies forms between the same group of types, that why it\u0027s worked, .. almost? ;)",
+      "parentUuid": "1327d8ef_6961d937",
+      "range": {
+        "startLine": 1066,
+        "startChar": 0,
+        "endLine": 1068,
+        "endChar": 3
+      },
+      "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bac303a7_28f40816",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -41,6 +65,53 @@
         "startChar": 11,
         "endLine": 1074,
         "endChar": 29
+      },
+      "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f783c8ad_c3bd7bc3",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-10T03:08:09Z",
+      "side": 1,
+      "message": "Do you mean \"cur, _ :\u003d ..\" type assertion? Or, checks for apex_available?",
+      "parentUuid": "bac303a7_28f40816",
+      "range": {
+        "startLine": 1074,
+        "startChar": 11,
+        "endLine": 1074,
+        "endChar": 29
+      },
+      "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f34da3df_00d91ba9",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-10T03:08:09Z",
+      "side": 1,
+      "message": "Paul, It\u0027s quite a bit difficult for me to follow how sdk works and make this test (and corresponding test for java) pass. Can you help?\n\nTo make this test pass, I had to add apex_available to \"sdkmember\" (both cc_library_shared and prebuilt one). And it looks like not what you intended with this test.\n\nAnd I couldn\u0027t make \"java\" test pass. It fails with sdk\u0027s additional requirement checks. I guess, it\u0027s because the check relies on DepIsInSameApex, which is affected by this change.",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 24
       },
       "revId": "060e7d098c6295c8baebe3a95ac1c7cb625e65d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
