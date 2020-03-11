@@ -41,20 +41,11 @@ import (
 
 	"android/soong/android"
 
-	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 )
 
 const SystemPartition = "/system/"
 const SystemOtherPartition = "/system_other/"
-
-type dependencyTag struct {
-	blueprint.BaseDependencyTag
-	name string
-}
-
-var SystemServerDepTag = dependencyTag{name: "system-server-dep"}
-var SystemServerForcedDepTag = dependencyTag{name: "system-server-forced-dep"}
 
 // GenerateDexpreoptRule generates a set of commands that will preopt a module based on a GlobalConfig and a
 // ModuleConfig.  The produced files and their install locations will be available through rule.Installs().
@@ -112,13 +103,6 @@ func dexpreoptDisabled(ctx android.PathContext, global *GlobalConfig, module *Mo
 	// Don't preopt system server jars that are updatable.
 	for _, p := range global.UpdatableSystemServerJars {
 		if _, jar := android.SplitApexJarPair(p); jar == module.Name {
-			return true
-		}
-	}
-
-	// Don't preopt system server jars that are not Soong modules.
-	if android.InList(module.Name, NonUpdatableSystemServerJars(ctx, global)) {
-		if _, ok := ctx.(android.ModuleContext); !ok {
 			return true
 		}
 	}
@@ -300,27 +284,24 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 			filepath.Join("/system/framework", hidlBase+".jar"))
 
 		classLoaderContextHostString = strings.Join(classLoaderContextHost.Strings(), ":")
-	} else if android.InList(module.Name, NonUpdatableSystemServerJars(ctx, global)) {
-		// We expect that all dexpreopted system server jars are Soong modules.
-		mctx, isModule := ctx.(android.ModuleContext)
-		if !isModule {
-			panic("Cannot dexpreopt system server jar that is not a soong module.")
-		}
-
+	} else if k := android.IndexList(module.Name, NonUpdatableSystemServerJars(ctx, global)); k >= 0 {
 		// System server jars should be dexpreopted together: class loader context of each jar
 		// should include preceding jars (which can be found as dependencies of the current jar
 		// with a special tag).
+
+		// Copy system server dex jar to a predefined location where dex2oat will find it.
+		dexPathHost := SystemServerDexJarHostPath(ctx, module.Name)
+		rule.Command().Text("mkdir -p").Flag(filepath.Dir(dexPathHost.String()))
+		rule.Command().Text("cp -f").Input(module.DexPath).Output(dexPathHost)
+
+		// Build class loader context.
 		var jarsOnHost android.Paths
 		var jarsOnDevice []string
-		mctx.VisitDirectDepsWithTag(SystemServerDepTag, func(dep android.Module) {
-			depName := mctx.OtherModuleName(dep)
-			if jar, ok := dep.(interface{ DexJar() android.Path }); ok {
-				jarsOnHost = append(jarsOnHost, jar.DexJar())
-				jarsOnDevice = append(jarsOnDevice, "/system/framework/"+depName+".jar")
-			} else {
-				mctx.ModuleErrorf("module \"%s\" is not a jar", depName)
-			}
-		})
+		for i := 0; i < k; i++ {
+			jar := NonUpdatableSystemServerJars(ctx, global)[i]
+			jarsOnHost = append(jarsOnHost, SystemServerDexJarHostPath(ctx, jar))
+			jarsOnDevice = append(jarsOnDevice, "/system/framework/"+jar+".jar")
+		}
 		classLoaderContextHostString = strings.Join(jarsOnHost.Strings(), ":")
 		classLoaderContextDeviceString = strings.Join(jarsOnDevice, ":")
 		classLoaderDeps = jarsOnHost
@@ -607,6 +588,10 @@ func NonUpdatableSystemServerJars(ctx android.PathContext, global *GlobalConfig)
 		return android.RemoveListFromList(global.SystemServerJars,
 			GetJarsFromApexJarPairs(global.UpdatableSystemServerJars))
 	}).([]string)
+}
+
+func SystemServerDexJarHostPath(ctx android.PathContext, jar string) android.OutputPath {
+	return android.PathForOutput(ctx, ctx.Config().DeviceName(), "system_server_dexjars", jar+".jar")
 }
 
 func contains(l []string, s string) bool {
