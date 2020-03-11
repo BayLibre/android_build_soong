@@ -362,9 +362,6 @@ type SdkMemberType interface {
 	//
 	AddPrebuiltModule(sdkModuleContext ModuleContext, builder SnapshotBuilder, member SdkMember) BpModule
 
-	// Add any additional properties to the end of the module.
-	FinalizeModule(sdkModuleContext ModuleContext, builder SnapshotBuilder, member SdkMember, bpModule BpModule)
-
 	// Create a structure into which variant specific properties can be added.
 	CreateVariantPropertiesStruct() SdkMemberProperties
 }
@@ -395,10 +392,6 @@ func (b *SdkMemberTypeBase) BuildSnapshot(sdkModuleContext ModuleContext, builde
 func (b *SdkMemberTypeBase) AddPrebuiltModule(sdkModuleContext ModuleContext, builder SnapshotBuilder, member SdkMember) BpModule {
 	// Returning nil causes the legacy BuildSnapshot method to be used.
 	return nil
-}
-
-func (b *SdkMemberTypeBase) FinalizeModule(sdkModuleContext ModuleContext, builder SnapshotBuilder, member SdkMember, module BpModule) {
-	// Do nothing by default
 }
 
 func (b *SdkMemberTypeBase) CreateVariantPropertiesStruct() SdkMemberProperties {
