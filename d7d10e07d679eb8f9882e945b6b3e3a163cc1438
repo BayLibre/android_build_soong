@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "68b87135_1e711588",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-03-11T01:39:32Z",
+      "side": 1,
+      "message": "I also learnt it from aosp/1180134. Thanks Ulya.",
+      "parentUuid": "fd9b05d3_2bbccb68",
+      "revId": "d7d10e07d679eb8f9882e945b6b3e3a163cc1438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9ef3346_083453f7",
         "filename": "java/java.go",
         "patchSetId": 1
