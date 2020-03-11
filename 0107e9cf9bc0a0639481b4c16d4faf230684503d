@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75a3c7f7_3f82a31a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T12:26:06Z",
+      "side": 1,
+      "message": "No as shared libraries can straddle module boundaries. e.g. liblog is used by code inside art but is not itself part of art.",
+      "parentUuid": "1dce5c25_7dbd88a5",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bef695d9_1c386b43",
         "filename": "android/sdk.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc1f1c6_9558265d",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T12:26:06Z",
+      "side": 1,
+      "message": "The internal member handling is checked by the java_system_modules tests.",
+      "parentUuid": "bef695d9_1c386b43",
+      "range": {
+        "startLine": 193,
+        "startChar": 70,
+        "endLine": 193,
+        "endChar": 78
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "416e5f2c_cd02c357",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T12:26:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "244a65a1_e0e57cf5",
+      "range": {
+        "startLine": 201,
+        "startChar": 27,
+        "endLine": 201,
+        "endChar": 29
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6a50de1_5c461249",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ca7e7d92_0177cb96",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T12:26:06Z",
+      "side": 1,
+      "message": "Convenience.\n\nIn order to ensure that the generated Android.bp file is valid it is processed in CheckSnapshot() below in the same way as this input is processed. A reference to a module that is not an sdk member is passed straight through to the snapshot\u0027s Android.bp file and so in order for that Android.bp file to be valid the passed through module must be in the default set of modules that are provided for this test. That includes \"libc\" and \"libm\".\n\nThe \"libc\" module is used in shared_libs just to make sure that the shared_libs property is processed correctly. The \"libm\" module is use in system_shared_libs for the same purpose. It avoids having to create special modules in the default set just for this test.",
+      "parentUuid": "b6a50de1_5c461249",
+      "range": {
+        "startLine": 643,
+        "startChar": 8,
+        "endLine": 643,
+        "endChar": 12
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d17039_c7fd361c",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd6e43f_1ff74b1e",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T12:26:06Z",
+      "side": 1,
+      "message": "Because android was the only os type variant. The reason for using android specific logic in the input to the test was to ensure that the shared libs settings were being picked up from the shared specific section.",
+      "parentUuid": "c1d17039_c7fd361c",
+      "range": {
+        "startLine": 681,
+        "startChar": 9,
+        "endLine": 681,
+        "endChar": 13
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
