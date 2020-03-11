@@ -1917,6 +1917,51 @@ func (a *apexBundle) collectDepsInfo(ctx android.ModuleContext) {
 	})
 }
 
+// Ensures that a lib providing stub isn't statically linked
+func (a *apexBundle) checkStaticLinks(ctx android.ModuleContext) {
+	// Practically, we only care about regular APEXes on the device.
+	if ctx.Host() || a.testApex || a.vndkApex {
+		return
+	}
+
+	a.walkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+		if ccm, ok := to.(*cc.Module); ok {
+			apexName := ctx.ModuleName()
+			fromName := ctx.OtherModuleName(from)
+			toName := ctx.OtherModuleName(to)
+
+			// If `to` is not actually in the same APEX as `from` then it does not need apex_available and neither
+			// do any of its dependencies.
+			if am, ok := from.(android.DepIsInSameApex); ok && !am.DepIsInSameApex(ctx, to) {
+				// As soon as the dependency graph crosses the APEX boundary, don't go further.
+				return false
+			}
+
+			// The dynamic linker and crash_dump tool in the runtime APEX is the only exception to this rule.
+			// It can't make the static dependencies dynamic because it can't
+			// do the dynamic linking for itself.
+			if apexName == "com.android.runtime" && (fromName == "linker" || fromName == "crash_dump") {
+				return false
+			}
+
+			isStubLibraryFromOtherApex := ccm.HasStubsVariants() && !android.DirectlyInApex(apexName, toName)
+			if isStubLibraryFromOtherApex && !externalDep {
+				message := ""
+				tagPath := ctx.GetTagPath()
+				// Skip the first module as that will be added at the start of the error message by ctx.ModuleErrorf().
+				walkPath := ctx.GetWalkPath()[1:]
+				for i, m := range walkPath {
+					message = fmt.Sprintf("%s\n           via tag %s\n    -> %s", message, PrettyPrintTag(tagPath[i]), m.String())
+				}
+				ctx.ModuleErrorf("%q required by %q is a native library providing stub. "+
+					"It shouldn't be included in this APEX via static linking. Dependency path: %s", to.String(), fromName, message)
+			}
+
+		}
+		return true
+	})
+}
+
 func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	buildFlattenedAsDefault := ctx.Config().FlattenApex() && !ctx.Config().UnbundledBuild()
 	switch a.properties.ApexType {
@@ -1956,6 +2001,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.checkUpdatable(ctx)
 
 	a.collectDepsInfo(ctx)
+
+	a.checkStaticLinks(ctx)
 
 	handleSpecialLibs := !android.Bool(a.properties.Ignore_system_library_special_case)
 
