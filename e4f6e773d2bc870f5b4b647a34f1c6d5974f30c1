@@ -34,6 +34,24 @@
       "revId": "e4f6e773d2bc870f5b4b647a34f1c6d5974f30c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b141b3e_1699c825",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-03-11T22:51:15Z",
+      "side": 1,
+      "message": "I\u0027m not comfortable forwarding PREPEND/APPEND_ARGS. You may only use them for --verbose, but they can be use for more than just that. Maybe we should add a METALAVA_VERBOSE flag that soong can read and trigger the addition of --verbose here: https://cs.android.com/android/platform/superproject/+/master:build/soong/java/droiddoc.go;drc\u003d2a2e0db2a2ebc75d5f8dea674c84c2019530a543;l\u003d1492\n\nFor METALAVA_DUMP_ARGV it would be nice to forward that manually too (as we\u0027re currently experimenting with remotely executing metalava off of your local machine, and unless we know to pass along specific variables, they\u0027ll be dropped there too). Is there an associated command line flag? We don\u0027t have a cmd.Env(...) method right now, but that wouldn\u0027t be too hard to add.",
+      "parentUuid": "4e7be1c9_8a9e6c6d",
+      "revId": "e4f6e773d2bc870f5b4b647a34f1c6d5974f30c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
