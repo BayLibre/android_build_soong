@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "147fc783_0ac5cabd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T18:15:19Z",
+      "side": 1,
+      "message": "No liblog is never a member of the art sdk. Sdk member in this context means \"a member of the same sdk as the referring module\".",
+      "parentUuid": "a76ea9c2_83aafff1",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bef695d9_1c386b43",
         "filename": "android/sdk.go",
         "patchSetId": 2
@@ -141,6 +165,30 @@
       "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba84874b_613607d3",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T18:15:19Z",
+      "side": 1,
+      "message": "There is no situation (currently) where you can have an internal reference in the shared_libs property. The only module type that can add internal members (and hence reference them) is the java_system_modules and its internal members are all java_library and so cannot be referenced from shared_libs.",
+      "parentUuid": "bb38c301_95f47d4f",
+      "range": {
+        "startLine": 193,
+        "startChar": 70,
+        "endLine": 193,
+        "endChar": 78
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -306,6 +354,30 @@
       "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58fcf2a9_a03e4fda",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T18:15:19Z",
+      "side": 1,
+      "message": "\"Are SDKs implicitly limited to android OS type?\" - yes. device_supported defaults to true, host_supported defaults to false. The prebuilts are the same. That will prevent the .so\u0027s being used in a host arm build. We may need to explicitly disable some os types in here (e.g. darwin and fuchsia) that may pick up android/host properties but that is a separate and general issue.",
+      "parentUuid": "b5e7dbb6_7875cf9d",
+      "range": {
+        "startLine": 681,
+        "startChar": 9,
+        "endLine": 681,
+        "endChar": 13
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

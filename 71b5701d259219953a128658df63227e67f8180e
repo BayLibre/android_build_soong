@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "49b1c435_91952a40",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T18:15:19Z",
+      "side": 1,
+      "message": "Not really. The \"left alone\" is being used in the sense of \"unchanged\". Would using \"unchanged\" here be clearer?",
+      "parentUuid": "48644e3f_d1ed3844",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 9
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b939441c_6f8d4cfb",
         "filename": "android/sdk.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8bd050a5_5d11fb9c",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T18:15:19Z",
+      "side": 1,
+      "message": "As mentioned in another comment there are no internal cc members yet.\n\nIf libdexfile_external depends on libdexfile then if the libdexfile should not be depended on by other parties then libdexfile_external should be stubs and in the sdk and libdexfile should only be in the apex not in the sdk.\n\nIf libdexfile_external is needed on the host then we would also need to add libdexfile to the host to make that work.\n\n\"If that\u0027s correct, then why not instead transitively collect the external dependencies of the internal members and add them to the exported members?\"\n\nAFAIK there is no distinction made between external/internal dependencies of a library. e.g. there is nothing in libdexfile_external (except the name which we cannot rely on) that distinguishes it from libdexfile and nothing in that which distinguishes it from say liblog. So, we could not tell which ones to include internally and which ones not to include.\n\nAlso, we need to make sure that we do not accidentally include libraries that belong in other sdks.\n\nLonger term I expect each sdk/module_exports to reference the other sdks/module_exports that it relies upon so that we can differentiate between internal / external members better. That is going to be difficult though as there are cycles between them that would need to be broken, e.g. conscrypt sdk -\u003e art sdk -\u003e conscrypt sdk",
+      "parentUuid": "b939441c_6f8d4cfb",
+      "range": {
+        "startLine": 196,
+        "startChar": 19,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300e555f_295b8009",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-11T17:49:01Z",
       "side": 1,
       "message": "Really unrelated to this CL, but I\u0027d like to know why this prefixing is necessary on the versioned prebuilts. I thought the name itself would always be globally unique, and even if a lib moves between SDKs (ignoring all the other issues with that), it\u0027d still be unique for a specific version number.",
+      "range": {
+        "startLine": 537,
+        "startChar": 11,
+        "endLine": 537,
+        "endChar": 17
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9edfe7bb_6b536188",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T18:15:19Z",
+      "side": 1,
+      "message": "I am not 100% sure. That naming convention is something Jiyong added.",
+      "parentUuid": "300e555f_295b8009",
       "range": {
         "startLine": 537,
         "startChar": 11,
