@@ -52,6 +52,24 @@
       "revId": "f5dc5b23064f0e379aa087d76111286c968d7dd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51096f5d_99dc540b",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T18:30:44Z",
+      "side": 1,
+      "message": "\u003e It\u0027d use the prebuilt. Where does the mixture come from?\n\nSetting prefer: true just on say the prebuilt of dex2oat would cause the prebuilt dex2oat to be used but other bp modules from the same mainline module would use source. Unless you think that we should set prefer: true on every sdk member.\n\n\u003e Also, what are the use cases where the source should win?\n\nWhen a developer has both prebuilts and source checked out and wants to build against the source without removing the prebuilts and without having to go and modify a dozen or more modules to set prefer: false.\n\nSwitching between them should be easy which is why I think the switch needs to be driven from something external to the build itself.",
+      "parentUuid": "687054c2_ac9a75ad",
+      "revId": "f5dc5b23064f0e379aa087d76111286c968d7dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
