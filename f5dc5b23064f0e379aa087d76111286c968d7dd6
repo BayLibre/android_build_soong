@@ -16,6 +16,24 @@
       "revId": "f5dc5b23064f0e379aa087d76111286c968d7dd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70c4690_4c69c865",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-11T12:33:14Z",
+      "side": 1,
+      "message": "This needs to be installable in the case when the source is not available and not preferred so I think adding installable:false to this would be a mistake. If having this alongside a source version doesn\u0027t work because both try and get installed then that is a bug.\n\nSetting this to prefer: true would also be a bad idea because then when you do have both prebuilts and source available you would end up with a mixture of them being used. Selecting between source and prebuilts when both are available is a more general issue that needs to be addressed with some build configuration options. e.g. By specifying on the command line a list of sdks/module_exports that should prefer prebuilts over source, or vice versa.",
+      "parentUuid": "68adee78_ef49d0e4",
+      "revId": "f5dc5b23064f0e379aa087d76111286c968d7dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
