@@ -53,3 +53,12 @@ bootstrap_go_package {
         "build_error_proto/build_error.pb.go",
     ],
 }
+
+bootstrap_go_package {
+    name: "soong-ui-status-build_progress_proto",
+    pkgPath: "android/soong/ui/status/build_progress_proto",
+    deps: ["golang-protobuf-proto"],
+    srcs: [
+        "completion_proto/build_progress.pb.go",
+    ],
+}
