@@ -20,12 +20,14 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/golang/protobuf/proto"
 
 	"android/soong/ui/logger"
 	"android/soong/ui/status/build_error_proto"
+	"android/soong/ui/status/completion_proto"
 )
 
 type verboseLog struct {
@@ -197,4 +199,70 @@ func (e *errorProtoLog) Message(level MsgLevel, message string) {
 
 func (e *errorProtoLog) Write(p []byte) (int, error) {
 	return 0, errors.New("not supported")
+}
+
+type buildCompletionLog struct {
+	filename string
+	log      logger.Logger
+}
+
+func NewBuildCompletionLog(log logger.Logger, filename string) StatusOutput {
+	return &buildCompletionLog{
+		filename: filename,
+		log:      log,
+	}
+}
+
+func (b *buildCompletionLog) StartAction(action *Action, counts Counts) {
+	b.updateCounters(counts)
+}
+
+func (b *buildCompletionLog) FinishAction(result ActionResult, counts Counts) {
+	b.updateCounters(counts)
+}
+
+func (b *buildCompletionLog) Flush() {
+	//Not required.
+}
+
+func (b *buildCompletionLog) Message(level MsgLevel, message string) {
+	// Not required.
+}
+
+func (b *buildCompletionLog) Write(p []byte) (int, error) {
+	return 0, errors.New("not supported")
+}
+
+func (b *buildCompletionLog) updateCounters(counts Counts) {
+	err := writeToFile(
+		&soong_build_completion_status_proto.BuildCompletionStatus{
+			CurrentActions:  proto.Uint64(uint64(counts.RunningActions)),
+			FinishedActions: proto.Uint64(uint64(counts.FinishedActions)),
+			TotalActions:    proto.Uint64(uint64(counts.TotalActions)),
+		},
+		b.filename,
+	)
+	if err != nil {
+		b.log.Printf("Failed to write file %s: %v\n", b.filename, err)
+	}
+}
+
+func writeToFile(pb proto.Message, outputPath string) (err error) {
+	data, err := proto.Marshal(pb)
+	if err != nil {
+		return err
+	}
+
+	tempPath := outputPath + ".tmp"
+	err = ioutil.WriteFile(tempPath, []byte(data), 0644)
+	if err != nil {
+		return err
+	}
+
+	err = os.Rename(tempPath, outputPath)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
