@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48644e3f_d1ed3844",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-11T17:49:01Z",
+      "side": 1,
+      "message": "Is \"out\" a less ambiguous word here?",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 9
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b939441c_6f8d4cfb",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-11T17:49:01Z",
+      "side": 1,
+      "message": "\"dependency\", for clarity?\n\nFor example, in the ART module libdexfile_external will be an external member listed in native_shared_libs. It depends on libdexfile (among others) which is in the ART module but not part of the SDK. I take it that libdexfile is an internal member?\n\nIf so, I understand from the below that libdexfile will also get a cc_prebuilt_library module in the snapshot, just for the sake of the dependency tracking (otherwise it wouldn\u0027t be known to Soong in the prefixed and suffixed form).\n\nIf that\u0027s correct, then why not instead transitively collect the external dependencies of the internal members and add them to the exported members?",
+      "range": {
+        "startLine": 196,
+        "startChar": 19,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "300e555f_295b8009",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-11T17:49:01Z",
+      "side": 1,
+      "message": "Really unrelated to this CL, but I\u0027d like to know why this prefixing is necessary on the versioned prebuilts. I thought the name itself would always be globally unique, and even if a lib moves between SDKs (ignoring all the other issues with that), it\u0027d still be unique for a specific version number.",
+      "range": {
+        "startLine": 537,
+        "startChar": 11,
+        "endLine": 537,
+        "endChar": 17
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

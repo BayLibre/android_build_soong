@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a76ea9c2_83aafff1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-11T17:49:01Z",
+      "side": 1,
+      "message": "liblog is never a member of the ART SDK, is it? I\u0027d call it an external dependency. Maybe it\u0027s unclear what you mean with \"SDK member\" in this context.",
+      "parentUuid": "75a3c7f7_3f82a31a",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bef695d9_1c386b43",
         "filename": "android/sdk.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb38c301_95f47d4f",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-11T17:49:01Z",
+      "side": 1,
+      "message": "I meant wrt testing (system_)shared_libs propagation.",
+      "parentUuid": "efc1f1c6_9558265d",
+      "range": {
+        "startLine": 193,
+        "startChar": 70,
+        "endLine": 193,
+        "endChar": 78
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -234,6 +282,30 @@
       "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5e7dbb6_7875cf9d",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-11T17:49:01Z",
+      "side": 1,
+      "message": "\u003e Because android was the only os type variant.\n\nAre SDKs implicitly limited to android OS type?\n\nDoesn\u0027t this prebuilt module need to be restricted to explicitly anyhow? What\u0027s otherwise stopping the .so\u0027s below from being used in an (admittedly hypothetical) host arm build?",
+      "parentUuid": "4cd6e43f_1ff74b1e",
+      "range": {
+        "startLine": 681,
+        "startChar": 9,
+        "endLine": 681,
+        "endChar": 13
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
