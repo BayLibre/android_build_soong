@@ -34,6 +34,24 @@
       "revId": "f5dc5b23064f0e379aa087d76111286c968d7dd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "687054c2_ac9a75ad",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-11T18:09:46Z",
+      "side": 1,
+      "message": "\u003e then that is a bug.\n\nYes, that\u0027s the bug I\u0027m trying to iron out here.\n\nI think we need to look closer at the use cases to work out how to handle this.\n\nThe one I\u0027m targeting is platform builds when the ART SDK is present with prebuilts that platform should use, but ART is still present in the source tree. We\u0027d have that case (at least) when testing ART and platform ToT against each other, to avoid build chaining between different git branches (requiring separate source trees to build): the ART prebuilts are built first, and then they\u0027re put in place and used for the platform build.\n\nAt least in the second build there, we want the newly built prebuilts to override the sources, without having to remove the sources from the tree.\n\n\u003e adding installable:false to this would be a mistake\n\nWhen the Soong dependency resolution for dex2oat is working as intended, it\u0027ll find the binary without having to install it. We could use the same approach for hiddenapi. But it probably needs to be controlled per binary, and shouldn\u0027t be false by default.\n\n\u003e because then when you do have both prebuilts and source available you would end up with a mixture of them being used.\n\nIt\u0027d use the prebuilt. Where does the mixture come from?\n\nAlso, what are the use cases where the source should win?",
+      "parentUuid": "a70c4690_4c69c865",
+      "revId": "f5dc5b23064f0e379aa087d76111286c968d7dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
