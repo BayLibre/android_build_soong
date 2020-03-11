@@ -59,6 +59,15 @@ func TestPrebuilt(t *testing.T) {
 			name: "libe",
 			srcs: ["libe.a"],
 		}
+
+		cc_object {
+			name: "crtx",
+		}
+
+		cc_prebuilt_object {
+			name: "crtx",
+			srcs: ["crtx.o"],
+		}
 	`
 
 	fs := map[string][]byte{
@@ -66,6 +75,7 @@ func TestPrebuilt(t *testing.T) {
 		"libb.a":  nil,
 		"libd.so": nil,
 		"libe.a":  nil,
+		"crtx.o":  nil,
 	}
 
 	config := TestConfig(buildDir, android.Android, nil, bp, fs)
@@ -84,11 +94,13 @@ func TestPrebuilt(t *testing.T) {
 	libb := ctx.ModuleForTests("libb", "android_arm64_armv8-a_static").Module()
 	libd := ctx.ModuleForTests("libd", "android_arm64_armv8-a_shared").Module()
 	libe := ctx.ModuleForTests("libe", "android_arm64_armv8-a_static").Module()
+	crtx := ctx.ModuleForTests("crtx", "android_arm64_armv8-a").Module()
 
 	prebuiltLiba := ctx.ModuleForTests("prebuilt_liba", "android_arm64_armv8-a_shared").Module()
 	prebuiltLibb := ctx.ModuleForTests("prebuilt_libb", "android_arm64_armv8-a_static").Module()
 	prebuiltLibd := ctx.ModuleForTests("prebuilt_libd", "android_arm64_armv8-a_shared").Module()
 	prebuiltLibe := ctx.ModuleForTests("prebuilt_libe", "android_arm64_armv8-a_static").Module()
+	prebuiltCrtx := ctx.ModuleForTests("prebuilt_crtx", "android_arm64_armv8-a").Module()
 
 	hasDep := func(m android.Module, wantDep android.Module) bool {
 		t.Helper()
@@ -115,5 +127,9 @@ func TestPrebuilt(t *testing.T) {
 
 	if !hasDep(libe, prebuiltLibe) {
 		t.Errorf("libe missing dependency on prebuilt_libe")
+	}
+
+	if !hasDep(crtx, prebuiltCrtx) {
+		t.Errorf("crtx missing dependency on prebuilt_crtx")
 	}
 }
