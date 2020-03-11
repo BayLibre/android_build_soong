@@ -335,6 +335,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	for _, fi := range a.filesInfo {
 		destPath := android.PathForModuleOut(ctx, "image"+suffix, fi.Path()).String()
 		copyCommands = append(copyCommands, "mkdir -p "+filepath.Dir(destPath))
+
 		if a.linkToSystemLib && fi.transitiveDep && fi.AvailableToPlatform() {
 			// TODO(jiyong): pathOnDevice should come from fi.module, not being calculated here
 			pathOnDevice := filepath.Join("/system", fi.Path())
@@ -343,10 +344,21 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			copyCommands = append(copyCommands, "cp -f "+fi.builtFile.String()+" "+destPath)
 			implicitInputs = append(implicitInputs, fi.builtFile)
 		}
+
 		// create additional symlinks pointing the file inside the APEX
 		for _, symlinkPath := range fi.SymlinkPaths() {
 			symlinkDest := android.PathForModuleOut(ctx, "image"+suffix, symlinkPath).String()
-			copyCommands = append(copyCommands, "ln -sfn "+filepath.Base(destPath)+" "+symlinkDest)
+
+			// TODO(jiyong): pathOnDevice should come from fi.module, not being calculated here
+			name := ctx.ModuleName()
+			if a.artApex {
+				// For the ART apex, module name has a suffix and is not equal to the apex name.
+				name = "com.android.art"
+			}
+			pathOnDevice := filepath.Join("/apex", name, fi.Path())
+
+			copyCommands = append(copyCommands, "mkdir -p "+filepath.Dir(symlinkDest))
+			copyCommands = append(copyCommands, "ln -sfn "+pathOnDevice+" "+symlinkDest)
 		}
 	}
 
@@ -409,6 +421,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 				}
 			} else {
 				readOnlyPaths = append(readOnlyPaths, pathInApex)
+				readOnlyPaths = append(readOnlyPaths, f.SymlinkPaths()...)
 			}
 			dir := f.installDir
 			for !android.InList(dir, executablePaths) && dir != "" {

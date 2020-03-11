@@ -437,7 +437,7 @@ func TestBasicApex(t *testing.T) {
 	found_foo_link_64 := false
 	found_foo := false
 	for _, cmd := range strings.Split(copyCmds, " && ") {
-		if strings.HasPrefix(cmd, "ln -sfn foo64") {
+		if strings.HasPrefix(cmd, "ln -sfn /apex/myapex/bin/foo64") {
 			if strings.HasSuffix(cmd, "bin/foo") {
 				found_foo = true
 			} else if strings.HasSuffix(cmd, "bin/foo_link_64") {
