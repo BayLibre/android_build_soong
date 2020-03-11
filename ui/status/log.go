@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"os"
 	"strings"
 
 	"github.com/golang/protobuf/proto"
@@ -154,6 +155,7 @@ type errorProtoLog struct {
 }
 
 func NewProtoErrorLog(log logger.Logger, filename string) StatusOutput {
+	os.Remove(filename)
 	return &errorProtoLog{
 		errorProto: soong_build_error_proto.BuildError{},
 		filename:   filename,
@@ -183,6 +185,12 @@ func (e *errorProtoLog) Flush() {
 		e.log.Printf("Failed to marshal build status proto: %v\n", err)
 		return
 	}
+
+	// Don't create the build error proto file if there is no data.
+	if len(data) == 0 {
+		return
+	}
+
 	err = ioutil.WriteFile(e.filename, []byte(data), 0644)
 	if err != nil {
 		e.log.Printf("Failed to write file %s: %v\n", e.filename, err)
