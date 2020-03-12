@@ -17,6 +17,7 @@ package terminal
 import (
 	"fmt"
 	"io"
+	"time"
 
 	"android/soong/ui/status"
 )
@@ -25,6 +26,8 @@ type simpleStatusOutput struct {
 	writer    io.Writer
 	formatter formatter
 }
+
+var startTime = time.Now()
 
 // NewSimpleStatusOutput returns a StatusOutput that represents the
 // current build status similarly to Ninja's built-in terminal
@@ -51,15 +54,38 @@ func (s *simpleStatusOutput) FinishAction(result status.ActionResult, counts sta
 		str = result.Command
 	}
 
-	progress := s.formatter.progress(counts) + str
+	st := result.StartTime
+	et := result.EndTime
+	dur := et.Sub(st)
+
+	rst := result.StartTime.Sub(startTime) // relative start time
+
+	progress := s.formatter.progress(counts) + str + fmt.Sprintf(
+		" ,%02d:%02d:%02d.%3d,%02d:%02d:%02d.%3d,%0.2f,%0.2f",
+		st.Hour(),
+		st.Minute(),
+		st.Second(),
+		st.Nanosecond()/1_000_000,
+
+		et.Hour(),
+		et.Minute(),
+		et.Second(),
+		et.Nanosecond()/1_000_000,
+
+		rst.Seconds(),
+		dur.Seconds())
 
 	output := s.formatter.result(result)
 	output = string(stripAnsiEscapes([]byte(output)))
 
+	fmt.Fprintln(s.writer, progress)
+	// Show the command line
+	if result.Command != "" {
+		fmt.Fprintln(s.writer, result.Command)
+	}
+	// Show the command output
 	if output != "" {
-		fmt.Fprint(s.writer, progress, "\n", output)
-	} else {
-		fmt.Fprintln(s.writer, progress)
+		fmt.Fprint(s.writer, output)
 	}
 }
 
