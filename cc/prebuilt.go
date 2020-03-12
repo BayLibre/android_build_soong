@@ -23,6 +23,7 @@ func init() {
 }
 
 func RegisterPrebuiltBuildComponents(ctx android.RegistrationContext) {
+	ctx.RegisterModuleType("cc_prebuilt_library", PrebuiltLibraryFactory)
 	ctx.RegisterModuleType("cc_prebuilt_library_shared", PrebuiltSharedLibraryFactory)
 	ctx.RegisterModuleType("cc_prebuilt_library_static", PrebuiltStaticLibraryFactory)
 	ctx.RegisterModuleType("cc_prebuilt_binary", prebuiltBinaryFactory)
@@ -151,6 +152,17 @@ func NewPrebuiltLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDec
 	// Prebuilt libraries can be used in SDKs.
 	android.InitSdkAwareModule(module)
 	return module, library
+}
+
+// cc_prebuilt_library installs a precompiled shared library that are
+// listed in the srcs property in the device's directory.
+func PrebuiltLibraryFactory() android.Module {
+	module, _ := NewPrebuiltLibrary(android.HostAndDeviceSupported)
+
+	// Prebuilt shared libraries can be included in APEXes
+	android.InitApexModule(module)
+
+	return module.Init()
 }
 
 // cc_prebuilt_library_shared installs a precompiled shared library that are
