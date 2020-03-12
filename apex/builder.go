@@ -84,12 +84,6 @@ var (
 		Description: "prepare ${out}",
 	}, "provideNativeLibs", "requireNativeLibs", "opt")
 
-	stripApexManifestRule = pctx.StaticRule("stripApexManifestRule", blueprint.RuleParams{
-		Command:     `rm -f $out && ${conv_apex_manifest} strip $in -o $out`,
-		CommandDeps: []string{"${conv_apex_manifest}"},
-		Description: "strip ${in}=>${out}",
-	})
-
 	pbApexManifestRule = pctx.StaticRule("pbApexManifestRule", blueprint.RuleParams{
 		Command:     `rm -f $out && ${conv_apex_manifest} proto $in -o $out`,
 		CommandDeps: []string{"${conv_apex_manifest}"},
@@ -141,8 +135,7 @@ var (
 		Command: `${zip2zip} -i $in -o $out.base ` +
 			`apex_payload.img:apex/${abi}.img ` +
 			`apex_build_info.pb:apex/${abi}.build_info.pb ` +
-			`apex_manifest.json:root/apex_manifest.json ` +
-			`apex_manifest.pb:root/apex_manifest.pb ` +
+			`apex_manifest.*:root/ ` +
 			`AndroidManifest.xml:manifest/AndroidManifest.xml ` +
 			`assets/NOTICE.html.gz:assets/NOTICE.html.gz &&` +
 			`${soong_zip} -o $out.config -C $$(dirname ${config}) -f ${config} && ` +
@@ -206,17 +199,6 @@ func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs,
 			"opt":               strings.Join(optCommands, " "),
 		},
 	})
-
-	if a.minSdkVersion(ctx) == android.SdkVersion_Android10 {
-		// b/143654022 Q apexd can't understand newly added keys in apex_manifest.json
-		// prepare stripped-down version so that APEX modules built from R+ can be installed to Q
-		a.manifestJsonOut = android.PathForModuleOut(ctx, "apex_manifest.json")
-		ctx.Build(pctx, android.BuildParams{
-			Rule:   stripApexManifestRule,
-			Input:  manifestJsonFullOut,
-			Output: a.manifestJsonOut,
-		})
-	}
 
 	// from R+, protobuf binary format (.pb) is the standard format for apex_manifest
 	a.manifestPbOut = android.PathForModuleOut(ctx, "apex_manifest.pb")
@@ -500,8 +482,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		}
 
 		if a.minSdkVersion(ctx) == android.SdkVersion_Android10 {
-			implicitInputs = append(implicitInputs, a.manifestJsonOut)
-			optFlags = append(optFlags, "--manifest_json "+a.manifestJsonOut.String())
+			optFlags = append(optFlags, "--support_android10")
 		}
 
 		ctx.Build(pctx, android.BuildParams{

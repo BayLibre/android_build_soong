@@ -3757,7 +3757,7 @@ func TestLegacyAndroid10Support(t *testing.T) {
 
 	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
 	args := module.Rule("apexRule").Args
-	ensureContains(t, args["opt_flags"], "--manifest_json "+module.Output("apex_manifest.json").Output.String())
+	ensureContains(t, args["opt_flags"], "--support_android10")
 	ensureNotContains(t, args["opt_flags"], "--no_hashtree")
 
 	// The copies of the libraries in the apex should have one more dependency than
