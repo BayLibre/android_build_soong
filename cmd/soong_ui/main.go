@@ -123,7 +123,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	output := terminal.NewStatusOutput(c.stdio().Stdout(), os.Getenv("NINJA_STATUS"), c.forceDumbOutput,
+	output := terminal.NewStatusOutput(c.stdio().Stdout(), os.Getenv("NINJA_STATUS"), os.Getenv("SOONG_FORCE_DUMB_STATUS") == "1",
 		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD"))
 
 	log := logger.New(output)
@@ -168,6 +168,7 @@ func main() {
 
 	os.MkdirAll(logsDir, 0777)
 	log.SetOutput(filepath.Join(logsDir, c.logsPrefix+"soong.log"))
+	log.SetVerbose(true)
 	trace.SetOutput(filepath.Join(logsDir, c.logsPrefix+"build.trace"))
 	stat.AddOutput(status.NewVerboseLog(log, filepath.Join(logsDir, c.logsPrefix+"verbose.log")))
 	stat.AddOutput(status.NewErrorLog(log, filepath.Join(logsDir, c.logsPrefix+"error.log")))

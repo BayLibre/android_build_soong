@@ -16,6 +16,7 @@ package tracer
 
 import (
 	"android/soong/ui/status"
+	"strings"
 	"time"
 )
 
@@ -71,6 +72,10 @@ func (s *statusOutput) FinishAction(result status.ActionResult, counts status.Co
 	str := result.Action.Description
 	if len(result.Action.Outputs) > 0 {
 		str = result.Action.Outputs[0]
+	}
+
+	if strings.Contains(result.Command, "/bin/metalava ") {
+		str = "[M]" + result.Description + ";" + str + ";" + result.Command
 	}
 
 	s.tracer.writeEvent(&viewerEvent{

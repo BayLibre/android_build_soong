@@ -155,6 +155,12 @@ func runNinja(ctx Context, config Config) {
 			"CCACHE_BASEDIR",
 			"CCACHE_CPP2",
 			"CCACHE_DIR",
+
+			// metalava
+			"METALAVA_DUMP_ARGV",
+			"METALAVA_PREPEND_ARGS",
+			"METALAVA_APPEND_ARGS",
+                        "METALAVA_TEMP",
 		}, config.BuildBrokenNinjaUsesEnvVars()...)...)
 	}
 
