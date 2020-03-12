@@ -207,7 +207,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 					fmt.Fprintln(w, "LOCAL_OVERRIDES_MODULES :=", strings.Join(patterns, " "))
 
 					if len(a.compatSymlinks) > 0 {
-						// For flattened apexes, compat symlinks are attached to apex_manifest.json which is guaranteed for every apex
+						// For flattened apexes, compat symlinks are attached to apex_manifest which is guaranteed for every apex
 						postInstallCommands = append(postInstallCommands, a.compatSymlinks...)
 					}
 				}

@@ -1541,8 +1541,7 @@ type apexBundle struct {
 	artApex         bool
 	primaryApexType bool
 
-	manifestJsonOut android.WritablePath
-	manifestPbOut   android.WritablePath
+	manifestPbOut android.WritablePath
 
 	// list of commands to create symlinks for backward compatibility.
 	// these commands will be attached as LOCAL_POST_INSTALL_CMD to
@@ -2390,7 +2389,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		a.linkToSystemLib = false
 	}
 
-	// prepare apex_manifest.json
 	a.buildManifest(ctx, provideNativeLibs, requireNativeLibs)
 
 	a.setCertificateAndPrivateKey(ctx)
