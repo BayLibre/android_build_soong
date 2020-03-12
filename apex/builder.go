@@ -205,7 +205,7 @@ func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs,
 		},
 	})
 
-	if proptools.Bool(a.properties.Legacy_android10_support) {
+	if a.minSdkVersion(ctx) == 29 {
 		// b/143654022 Q apexd can't understand newly added keys in apex_manifest.json
 		// prepare stripped-down version so that APEX modules built from R+ can be installed to Q
 		a.manifestJsonOut = android.PathForModuleOut(ctx, "apex_manifest.json")
@@ -354,7 +354,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	var emitCommands []string
 	imageContentFile := android.PathForModuleOut(ctx, "content.txt")
 	emitCommands = append(emitCommands, "echo ./apex_manifest.pb >> "+imageContentFile.String())
-	if proptools.Bool(a.properties.Legacy_android10_support) {
+	if a.minSdkVersion(ctx) == 29 {
 		emitCommands = append(emitCommands, "echo ./apex_manifest.json >> "+imageContentFile.String())
 	}
 	for _, fi := range a.filesInfo {
@@ -452,21 +452,15 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 
 		targetSdkVersion := ctx.Config().DefaultAppTargetSdk()
 		minSdkVersion := ctx.Config().DefaultAppTargetSdk()
-
-		// TODO: this should be based on min_sdk_version property of an APEX.
-		if proptools.Bool(a.properties.Legacy_android10_support) {
-			targetSdkVersion = "29"
+		if a.minSdkVersion(ctx) == 29 {
 			minSdkVersion = "29"
+			targetSdkVersion = "29"
+		} else if java.UseApiFingerprint(ctx) {
+			targetSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", java.ApiFingerprintPath(ctx).String())
+			minSdkVersion = targetSdkVersion
+			implicitInputs = append(implicitInputs, java.ApiFingerprintPath(ctx))
 		}
 
-		if java.UseApiFingerprint(ctx) {
-			targetSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", java.ApiFingerprintPath(ctx).String())
-			implicitInputs = append(implicitInputs, java.ApiFingerprintPath(ctx))
-		}
-		if java.UseApiFingerprint(ctx) {
-			minSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", java.ApiFingerprintPath(ctx).String())
-			implicitInputs = append(implicitInputs, java.ApiFingerprintPath(ctx))
-		}
 		optFlags = append(optFlags, "--target_sdk_version "+targetSdkVersion)
 		optFlags = append(optFlags, "--min_sdk_version "+minSdkVersion)
 
@@ -485,7 +479,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			ctx.PropertyErrorf("test_only_no_hashtree", "not available")
 			return
 		}
-		if !proptools.Bool(a.properties.Legacy_android10_support) || a.testOnlyShouldSkipHashtreeGeneration() {
+		if a.minSdkVersion(ctx) > 29 || a.testOnlyShouldSkipHashtreeGeneration() {
 			// Apexes which are supposed to be installed in builtin dirs(/system, etc)
 			// don't need hashtree for activation. Therefore, by removing hashtree from
 			// apex bundle (filesystem image in it, to be specific), we can save storage.
@@ -498,7 +492,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			optFlags = append(optFlags, "--do_not_check_keyname")
 		}
 
-		if proptools.Bool(a.properties.Legacy_android10_support) {
+		if a.minSdkVersion(ctx) == 29 {
 			implicitInputs = append(implicitInputs, a.manifestJsonOut)
 			optFlags = append(optFlags, "--manifest_json "+a.manifestJsonOut.String())
 		}
