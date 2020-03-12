@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff8d1014_a8687213",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-12T21:24:07Z",
+      "side": 1,
+      "message": "No unit tests are affected by this? Will it be tested in a later CL?",
+      "revId": "564d1e8507d24212c4a43ce2e59346379b35374f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
