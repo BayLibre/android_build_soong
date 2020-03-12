@@ -43,6 +43,7 @@ func (s *dumbStatusOutput) Message(level status.MsgLevel, message string) {
 }
 
 func (s *dumbStatusOutput) StartAction(action *status.Action, counts status.Counts) {
+
 }
 
 func (s *dumbStatusOutput) FinishAction(result status.ActionResult, counts status.Counts) {
@@ -56,10 +57,14 @@ func (s *dumbStatusOutput) FinishAction(result status.ActionResult, counts statu
 	output := s.formatter.result(result)
 	output = string(stripAnsiEscapes([]byte(output)))
 
+	fmt.Fprintln(s.writer, progress)
+	// Show the command line
+	if result.Command != "" {
+		fmt.Fprintln(s.writer, result.Command)
+	}
+	// Show the command output
 	if output != "" {
-		fmt.Fprint(s.writer, progress, "\n", output)
-	} else {
-		fmt.Fprintln(s.writer, progress)
+		fmt.Fprint(s.writer, output)
 	}
 }
 
