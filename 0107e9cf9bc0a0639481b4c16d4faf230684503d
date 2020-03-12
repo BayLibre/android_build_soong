@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "9186afc6_f8a30c5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-12T17:16:40Z",
+      "side": 1,
+      "message": "I think the aspect I was missing here is that the required/optional flag is set statically for a property type in the BpModule, without any regard to the module being referenced.",
+      "parentUuid": "147fc783_0ac5cabd",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bef695d9_1c386b43",
         "filename": "android/sdk.go",
         "patchSetId": 2
@@ -369,6 +393,30 @@
       "side": 1,
       "message": "\"Are SDKs implicitly limited to android OS type?\" - yes. device_supported defaults to true, host_supported defaults to false. The prebuilts are the same. That will prevent the .so\u0027s being used in a host arm build. We may need to explicitly disable some os types in here (e.g. darwin and fuchsia) that may pick up android/host properties but that is a separate and general issue.",
       "parentUuid": "b5e7dbb6_7875cf9d",
+      "range": {
+        "startLine": 681,
+        "startChar": 9,
+        "endLine": 681,
+        "endChar": 13
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "148cf9a5_e0d3042b",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-12T17:16:40Z",
+      "side": 1,
+      "message": "I see. So if the cc_library rule had host_supported:true this one would output an android target specialisation?\n\nThere are tests elsewhere that tests the logic for target specialisation wrt host_supported and device_supported flags? I can\u0027t find any obvious ones in this file.",
+      "parentUuid": "58fcf2a9_a03e4fda",
       "range": {
         "startLine": 681,
         "startChar": 9,

@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bb8615e7_146c908d",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-12T17:16:40Z",
+      "side": 1,
+      "message": "But there\u0027s no change due to this flag, is it? What about: \"true will cause an error if a name in the property is not member of the sdk, otherwise it is accepted.\"",
+      "parentUuid": "49b1c435_91952a40",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 9
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b939441c_6f8d4cfb",
         "filename": "android/sdk.go",
         "patchSetId": 5
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "4d08c93c_319a179d",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-12T17:16:40Z",
+      "side": 1,
+      "message": "\u003e there is nothing in libdexfile_external /.../ that distinguishes it from libdexfile\n\nlibdexfile_external will be mentioned in native_shared_libraries in the SDK rule, libdexfile won\u0027t, and neither is it in a native_shared_libraries for any other SDK or module_export.\n\nSo maybe part of the confusion here is that when I said \"internal\" I meant a library dependency that is neither exported nor imported anywhere. I didn\u0027t mean one that for some reason needs to be mentioned in the snapshot even though it isn\u0027t part of the exported interface (which is apparently the case for system_java_modules).\n\nLet\u0027s take an example:\n\nPlatform SDK/NDK:\n\n  cc_library {\n    name: \"liblog\", ...\n  }\n\nART:\n\n  cc_library {\n    name: \"libdexfile\",\n    shared_libs: [\"liblog\"],\n  }\n\n  cc_library {\n    name: \"libdexfile_external\",\n    shared_libs: [\"libdexfile\"],\n  }\n\n  sdk {\n    name: \"art_module_sdk\",\n    native_shared_libs: [\"libdexfile_external\"],\n  }\n\nHere the ART SDK snapshot should transitively include the deps of the ART internal libdexfile? Like so:\n\n  cc_prebuilt_library_shared {\n    name: \"libdexfile_external\",\n    srcs: [\n      \".../libdexfile_external.so\",\n    ],\n    shared_libs: [\"liblog\"],\n  }",
+      "parentUuid": "8bd050a5_5d11fb9c",
+      "range": {
+        "startLine": 196,
+        "startChar": 19,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300e555f_295b8009",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 5
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "I am not 100% sure. That naming convention is something Jiyong added.",
       "parentUuid": "300e555f_295b8009",
+      "range": {
+        "startLine": 537,
+        "startChar": 11,
+        "endLine": 537,
+        "endChar": 17
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55414060_39304bef",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-12T17:16:40Z",
+      "side": 1,
+      "message": "Jiyong, care to comment?",
+      "parentUuid": "9edfe7bb_6b536188",
       "range": {
         "startLine": 537,
         "startChar": 11,
