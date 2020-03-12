@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c0e0aa21_c6b89cfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-03-12T10:16:31Z",
+      "side": 1,
+      "message": "Test: adb shell ls -l /apex/com.android.art/javalib/{,arm*/}\nBug number.",
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2920e30c_41ec492f",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -88,6 +105,47 @@
         "endLine": 358,
         "endChar": 58
       },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5274f9_00877ebf",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-03-12T10:16:31Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ec8f9e2b_189cbc84",
+      "range": {
+        "startLine": 358,
+        "startChar": 19,
+        "endLine": 358,
+        "endChar": 58
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be7738a9_455244ff",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-03-12T10:16:31Z",
+      "side": 1,
+      "message": "It would be nice to add a `diff` command across archs to ensure vdex files are indeed identical.",
       "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
