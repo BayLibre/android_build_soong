@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93902c37_4a13cd33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-12T11:49:25Z",
+      "side": 1,
+      "message": "Thanks! All done.",
+      "parentUuid": "c0e0aa21_c6b89cfd",
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "222cd4af_1338bcfc",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac1c69f_55adf8b0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2301,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-12T11:49:25Z",
+      "side": 1,
+      "message": "For symmetry we copy the real .vdex files to the arch-independent directory (javalib), and the symlinks are in arch-dependent directories (javalib/arm, javalib/arm64).\n\n(The dump of \u0027ls\u0027 in the commit message also shows the layout.)",
+      "parentUuid": "222cd4af_1338bcfc",
+      "range": {
+        "startLine": 2299,
+        "startChar": 0,
+        "endLine": 2301,
+        "endChar": 4
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "e8d7e3ad_b9f3508b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2303,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-12T11:49:25Z",
+      "side": 1,
+      "message": "There is a test case in art/build/apex/art_apex_test.py (see the related CL).",
+      "parentUuid": "2920e30c_41ec492f",
+      "range": {
+        "startLine": 2295,
+        "startChar": 0,
+        "endLine": 2303,
+        "endChar": 3
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8124723f_fe09d9cd",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2104e4_c5ce5417",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-12T11:49:25Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "8124723f_fe09d9cd",
+      "range": {
+        "startLine": 440,
+        "startChar": 37,
+        "endLine": 440,
+        "endChar": 53
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "05922c8d_5c7d5dc3",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-12T11:49:25Z",
+      "side": 1,
+      "message": "Ah, I tried using a.properties.Apex_name, but saw that it is \u003cnil\u003e and assumes it is not supported by Soong. We should fix this in ART.\n\nThe code is removed in the new PS, so it is obsolete.\n\nJooyung: thanks for the tip about a.Name()!",
+      "parentUuid": "21eb0b96_852fc26a",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 28
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec8f9e2b_189cbc84",
         "filename": "apex/builder.go",
         "patchSetId": 1
@@ -182,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "7df8712c_d555f5e3",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-12T11:49:25Z",
+      "side": 1,
+      "message": "Yes. I reworked the patch to use relative symlinks. This is much better, as the symlinks are now correct both on host and on target, and they are portable across on-device directories with different apex versions. Thanks for the tip.",
+      "parentUuid": "ec8f9e2b_189cbc84",
+      "range": {
+        "startLine": 358,
+        "startChar": 19,
+        "endLine": 358,
+        "endChar": 58
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be7738a9_455244ff",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 1
@@ -193,6 +331,24 @@
       "writtenOn": "2020-03-12T10:16:31Z",
       "side": 1,
       "message": "It would be nice to add a `diff` command across archs to ensure vdex files are indeed identical.",
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dcc2620_1c938304",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-12T11:49:25Z",
+      "side": 1,
+      "message": "Yes. If you dont\u0027t mind, I\u0027ll do that in a follow-up CL.",
+      "parentUuid": "be7738a9_455244ff",
       "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
