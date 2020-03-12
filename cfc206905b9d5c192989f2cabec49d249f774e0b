@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "2e3fae60_5d482c16",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2301,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-12T11:56:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ac1c69f_55adf8b0",
+      "range": {
+        "startLine": 2299,
+        "startChar": 0,
+        "endLine": 2301,
+        "endChar": 4
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2920e30c_41ec492f",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -237,6 +261,30 @@
       "side": 1,
       "message": "Ah, I tried using a.properties.Apex_name, but saw that it is \u003cnil\u003e and assumes it is not supported by Soong. We should fix this in ART.\n\nThe code is removed in the new PS, so it is obsolete.\n\nJooyung: thanks for the tip about a.Name()!",
       "parentUuid": "21eb0b96_852fc26a",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 28
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e1302c7_e3689b35",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-12T11:56:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "05922c8d_5c7d5dc3",
       "range": {
         "startLine": 355,
         "startChar": 0,
