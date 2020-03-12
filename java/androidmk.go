@@ -525,7 +525,7 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, ddoc.Name()+"-check-last-released-api:",
 						ddoc.checkLastReleasedApiTimestamp.String())
 
-					if ddoc.Name() == "api-stubs-docs" || ddoc.Name() == "system-api-stubs-docs" {
+					if ddoc.Name() == "android_stubs_srcs" || ddoc.Name() == "android_system_stubs_srcs" {
 						fmt.Fprintln(w, ".PHONY: checkapi")
 						fmt.Fprintln(w, "checkapi:",
 							ddoc.checkLastReleasedApiTimestamp.String())
