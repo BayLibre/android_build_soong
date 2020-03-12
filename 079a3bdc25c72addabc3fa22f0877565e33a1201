@@ -22,6 +22,30 @@
       "revId": "079a3bdc25c72addabc3fa22f0877565e33a1201",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f448a071_3d9a96c7",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-12T11:33:40Z",
+      "side": 1,
+      "message": "I\u0027m not sure android/apex.go is the right place for the constant ;-)",
+      "parentUuid": "f6296ba3_4c7573dd",
+      "range": {
+        "startLine": 208,
+        "startChar": 28,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "079a3bdc25c72addabc3fa22f0877565e33a1201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
