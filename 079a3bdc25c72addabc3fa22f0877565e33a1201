@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6296ba3_4c7573dd",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-12T11:04:58Z",
+      "side": 1,
+      "message": "nit: could you define a constant for this?",
+      "range": {
+        "startLine": 208,
+        "startChar": 28,
+        "endLine": 208,
+        "endChar": 30
+      },
+      "revId": "079a3bdc25c72addabc3fa22f0877565e33a1201",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
