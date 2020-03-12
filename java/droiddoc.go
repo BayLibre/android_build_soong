@@ -1481,7 +1481,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 		}).NoVarTemplate(ctx.Config()))
 	}
 
-	cmd.BuiltTool(ctx, "metalava").
+	cmd.Text("/usr/bin/time -v").BuiltTool(ctx, "metalava").
 		Flag(config.JavacVmFlags).
 		FlagWithArg("-encoding ", "UTF-8").
 		FlagWithArg("-source ", javaVersion.String()).
@@ -1518,7 +1518,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 
 	cmd.Flag("--no-banner").
 		Flag("--color").
-		Flag("--quiet").
+		Flag("--verbose").
 		Flag("--format=v2").
 		FlagWithArg("--repeat-errors-max ", "10").
 		FlagWithArg("--hide ", "UnresolvedImport")
@@ -1993,7 +1993,7 @@ func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 }
 
 func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.ModuleOutPath) {
-	rule.Command().Text("rm -rf").Text(srcJarDir.String())
+	//rule.Command().Text("rm -rf").Text(srcJarDir.String())
 }
 
 var _ android.PrebuiltInterface = (*PrebuiltStubsSources)(nil)

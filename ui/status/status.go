@@ -19,6 +19,7 @@ package status
 
 import (
 	"sync"
+	"time"
 )
 
 // Action describes an action taken (or as Ninja calls them, Edges).
@@ -40,6 +41,12 @@ type Action struct {
 	// It's optional, but one of either Description or Command should be
 	// set.
 	Command string
+
+	// Command start time
+	StartTime time.Time
+
+	// Command end time
+	EndTime time.Time
 }
 
 // ActionResult describes the result of running an Action.
@@ -302,6 +309,7 @@ func (d *toolStatus) StartAction(action *Action) {
 	d.lock.Lock()
 	d.counts.RunningActions += 1
 	d.counts.StartedActions += 1
+	action.StartTime = time.Now()
 
 	if d.counts.StartedActions > d.counts.TotalActions {
 		totalDiff = d.counts.StartedActions - d.counts.TotalActions
@@ -320,6 +328,8 @@ func (d *toolStatus) FinishAction(result ActionResult) {
 	d.counts.RunningActions -= 1
 	d.counts.FinishedActions += 1
 	d.lock.Unlock()
+
+	result.EndTime = time.Now()
 
 	d.status.finishAction(result)
 }
