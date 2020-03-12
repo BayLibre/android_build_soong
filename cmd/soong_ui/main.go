@@ -123,7 +123,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	output := terminal.NewStatusOutput(c.stdio().Stdout(), os.Getenv("NINJA_STATUS"), c.forceDumbOutput,
+	output := terminal.NewStatusOutput(c.stdio().Stdout(), os.Getenv("NINJA_STATUS"), os.Getenv("SOONG_FORCE_DUMB_STATUS") == "1",
 		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD"))
 
 	log := logger.New(output)
