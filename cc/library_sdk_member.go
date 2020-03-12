@@ -42,10 +42,20 @@ var staticLibrarySdkMemberType = &librarySdkMemberType{
 	linkTypes:          []string{"static"},
 }
 
+var staticAndSharedLibrarySdkMemberType = &librarySdkMemberType{
+	SdkMemberTypeBase: android.SdkMemberTypeBase{
+		PropertyName: "native_libs",
+		SupportsSdk:  true,
+	},
+	prebuiltModuleType: "cc_prebuilt_library",
+	linkTypes:          []string{"static", "shared"},
+}
+
 func init() {
 	// Register sdk member types.
 	android.RegisterSdkMemberType(sharedLibrarySdkMemberType)
 	android.RegisterSdkMemberType(staticLibrarySdkMemberType)
+	android.RegisterSdkMemberType(staticAndSharedLibrarySdkMemberType)
 }
 
 type librarySdkMemberType struct {
