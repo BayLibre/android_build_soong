@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1bdd6f8_92c3c978",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-12T22:06:28Z",
+      "side": 1,
+      "message": "Would make more sense in the next CL https://r.android.com/c/1255591 since it\u0027s always nil here, but nvm.",
+      "range": {
+        "startLine": 1052,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 4
+      },
+      "revId": "d82615464584fc5a06c616cfd1900991b3cbe385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e3acf3b_aa961887",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-12T22:06:28Z",
+      "side": 1,
+      "message": "Nit: Slightly neater to leave out the condition here and instead check for Struct in the switch and exit with a labelled break.",
+      "range": {
+        "startLine": 1070,
+        "startChar": 5,
+        "endLine": 1070,
+        "endChar": 35
+      },
+      "revId": "d82615464584fc5a06c616cfd1900991b3cbe385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
