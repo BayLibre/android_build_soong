@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "222cd4af_1338bcfc",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2301,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-12T11:10:59Z",
+      "side": 1,
+      "message": "if vdexFiles are built from first variant, should we skip adding symlinks for that arch variant?",
+      "range": {
+        "startLine": 2299,
+        "startChar": 0,
+        "endLine": 2301,
+        "endChar": 4
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2920e30c_41ec492f",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -76,6 +99,30 @@
       "writtenOn": "2020-03-12T09:36:35Z",
       "side": 1,
       "message": "a.properties.Apex_name will give the true name of the apex which is com.android.art in case of the art apex.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 28
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21eb0b96_852fc26a",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-12T11:10:59Z",
+      "side": 1,
+      "message": "Unfortunately, art apex doesn\u0027t use apex_name. Each flavor (release/debug/testing) has its own name. I recommend to use apex.apex_name property.\n\nAnd minor thing, please use a.Name() instead of ctx.ModuleName() here.",
+      "parentUuid": "a950cacd_4e1ff5e4",
       "range": {
         "startLine": 355,
         "startChar": 0,
