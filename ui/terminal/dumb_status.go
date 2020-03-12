@@ -43,6 +43,7 @@ func (s *dumbStatusOutput) Message(level status.MsgLevel, message string) {
 }
 
 func (s *dumbStatusOutput) StartAction(action *status.Action, counts status.Counts) {
+
 }
 
 func (s *dumbStatusOutput) FinishAction(result status.ActionResult, counts status.Counts) {
@@ -51,15 +52,35 @@ func (s *dumbStatusOutput) FinishAction(result status.ActionResult, counts statu
 		str = result.Command
 	}
 
-	progress := s.formatter.progress(counts) + str
+	st := result.StartTime
+	et := result.EndTime
+	dur := et.Sub(st)
+
+	progress := s.formatter.progress(counts) + str + fmt.Sprintf(
+		" ,%02d:%02d:%02d.%3d,%02d:%02d:%02d.%3d,%0.2f",
+		st.Hour(),
+		st.Minute(),
+		st.Second(),
+		st.Nanosecond()/1_000_000,
+
+		et.Hour(),
+		et.Minute(),
+		et.Second(),
+		et.Nanosecond()/1_000_000,
+
+		dur.Seconds())
 
 	output := s.formatter.result(result)
 	output = string(stripAnsiEscapes([]byte(output)))
 
+	fmt.Fprintln(s.writer, progress)
+	// Show the command line
+	if result.Command != "" {
+		fmt.Fprintln(s.writer, result.Command)
+	}
+	// Show the command output
 	if output != "" {
-		fmt.Fprint(s.writer, progress, "\n", output)
-	} else {
-		fmt.Fprintln(s.writer, progress)
+		fmt.Fprint(s.writer, output)
 	}
 }
 
