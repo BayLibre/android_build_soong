@@ -225,6 +225,8 @@ type Module interface {
 	VintfFragments() Paths
 	NoticeFiles() Paths
 
+	GetMutatorVariationName(mutator string) string
+
 	AddProperties(props ...interface{})
 	GetProperties() []interface{}
 
@@ -983,6 +985,16 @@ func (m *ModuleBase) ImageVariation() blueprint.Variation {
 		Mutator:   "image",
 		Variation: m.base().commonProperties.ImageVariation,
 	}
+}
+
+func (m *ModuleBase) GetMutatorVariationName(mutator string) string {
+	for i, v := range m.commonProperties.DebugMutators {
+		if v == mutator {
+			return m.commonProperties.DebugVariations[i]
+		}
+	}
+
+	return ""
 }
 
 func (m *ModuleBase) InRamdisk() bool {
