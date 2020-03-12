@@ -211,6 +211,13 @@ type Module interface {
 	Disable()
 	Enabled() bool
 	Target() Target
+
+	// Get the link type of the variant
+	//
+	// If the variant is not differentiated by link type then it returns "",
+	// otherwise it returns one of "static" or "shared".
+	LinkType() string
+
 	InstallInData() bool
 	InstallInTestcases() bool
 	InstallInSanitizerDir() bool
@@ -983,6 +990,20 @@ func (m *ModuleBase) ImageVariation() blueprint.Variation {
 		Mutator:   "image",
 		Variation: m.base().commonProperties.ImageVariation,
 	}
+}
+
+func (m *ModuleBase) LinkType() string {
+	return m.getVariationByMutatorName("link")
+}
+
+func (m *ModuleBase) getVariationByMutatorName(mutator string) string {
+	for i, v := range m.commonProperties.DebugMutators {
+		if v == mutator {
+			return m.commonProperties.DebugVariations[i]
+		}
+	}
+
+	return ""
 }
 
 func (m *ModuleBase) InRamdisk() bool {
