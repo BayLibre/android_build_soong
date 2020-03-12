@@ -871,6 +871,9 @@ func (osInfo *osTypeSpecificInfo) optimizeProperties(commonValueExtractor *commo
 
 	var archPropertiesList []android.SdkMemberProperties
 	for _, archInfo := range osInfo.archInfos {
+		// Optimize the arch properties first.
+		archInfo.optimizeProperties(commonValueExtractor)
+
 		archPropertiesList = append(archPropertiesList, archInfo.Properties)
 	}
 
@@ -966,6 +969,8 @@ type archTypeSpecificInfo struct {
 	baseInfo
 
 	archType android.ArchType
+
+	linkInfos []*linkTypeSpecificInfo
 }
 
 // Create a new archTypeSpecificInfo for the specified arch type and its properties
@@ -988,10 +993,37 @@ func newArchSpecificInfo(
 	if len(variants) == 1 {
 		archInfo.Properties.PopulateFromVariant(variants[0])
 	} else {
-		panic(fmt.Errorf("expected one arch specific variant but found %d", len(variants)))
+
+		for _, variant := range variants {
+			linkType := variant.GetMutatorVariationName("link")
+			if linkType == "" {
+				// There must be more than one arch specific variant which is invalid when
+				// they are not differentiated by link type.
+				panic(fmt.Errorf("expected one arch specific variant as it is not identified by link type but found %d", len(variants)))
+			} else {
+				linkInfo := newLinkSpecificInfo(linkType, variantPropertiesFactory, variant)
+
+				archInfo.linkInfos = append(archInfo.linkInfos, linkInfo)
+			}
+		}
 	}
 
 	return archInfo
+}
+
+// Optimize the properties by extracting common properties from link type specific
+// properties into arch type specific properties.
+func (archInfo *archTypeSpecificInfo) optimizeProperties(commonValueExtractor *commonValueExtractor) {
+	if len(archInfo.linkInfos) == 0 {
+		return
+	}
+
+	var propertiesList []android.SdkMemberProperties
+	for _, linkInfo := range archInfo.linkInfos {
+		propertiesList = append(propertiesList, linkInfo.Properties)
+	}
+
+	commonValueExtractor.extractCommonProperties(archInfo.Properties, propertiesList)
 }
 
 // Add the properties for an arch type to a property set.
@@ -1003,6 +1035,36 @@ func (archInfo *archTypeSpecificInfo) addToPropertySet(
 	archTypeName := archInfo.archType.Name
 	archTypePropertySet := archPropertySet.AddPropertySet(archOsPrefix + archTypeName)
 	archInfo.Properties.AddToPropertySet(builder.ctx, builder, archTypePropertySet)
+
+	for _, linkInfo := range archInfo.linkInfos {
+		linkPropertySet := archTypePropertySet.AddPropertySet(linkInfo.linkType)
+		linkInfo.Properties.AddToPropertySet(builder.ctx, builder, linkPropertySet)
+	}
+}
+
+type linkTypeSpecificInfo struct {
+	baseInfo
+
+	linkType string
+}
+
+// Create a new linkTypeSpecificInfo for the specified link type and its properties
+// structures populated with information from the variant.
+func newLinkSpecificInfo(
+	linkType string,
+	variantPropertiesFactory variantPropertiesFactoryFunc,
+	variant android.SdkAware) *linkTypeSpecificInfo {
+
+	linkInfo := &linkTypeSpecificInfo{
+		baseInfo: baseInfo{
+			// Create the properties into which the link type specific properties will be
+			// added.
+			Properties: variantPropertiesFactory(),
+		},
+		linkType: linkType,
+	}
+	linkInfo.Properties.PopulateFromVariant(variant)
+	return linkInfo
 }
 
 func (s *sdk) createMemberSnapshot(sdkModuleContext android.ModuleContext, builder *snapshotBuilder, member *sdkMember, bpModule android.BpModule) {
