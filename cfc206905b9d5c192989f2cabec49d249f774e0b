@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2920e30c_41ec492f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2303,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-12T09:36:35Z",
+      "side": 1,
+      "message": "please add a test case for this",
+      "range": {
+        "startLine": 2295,
+        "startChar": 0,
+        "endLine": 2303,
+        "endChar": 3
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8124723f_fe09d9cd",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-12T09:36:35Z",
+      "side": 1,
+      "message": "Can we remove this part? I don\u0027t want the symlinks within an APEX to be absolute.",
+      "range": {
+        "startLine": 440,
+        "startChar": 37,
+        "endLine": 440,
+        "endChar": 53
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a950cacd_4e1ff5e4",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-12T09:36:35Z",
+      "side": 1,
+      "message": "a.properties.Apex_name will give the true name of the apex which is com.android.art in case of the art apex.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 28
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8f9e2b_189cbc84",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-12T09:36:35Z",
+      "side": 1,
+      "message": "can we use relative path?",
+      "range": {
+        "startLine": 358,
+        "startChar": 19,
+        "endLine": 358,
+        "endChar": 58
+      },
+      "revId": "cfc206905b9d5c192989f2cabec49d249f774e0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
