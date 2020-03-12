@@ -1943,7 +1943,7 @@ func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 }
 
 func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.ModuleOutPath) {
-	rule.Command().Text("rm -rf").Text(srcJarDir.String())
+	//rule.Command().Text("rm -rf").Text(srcJarDir.String())
 }
 
 var _ android.PrebuiltInterface = (*PrebuiltStubsSources)(nil)
