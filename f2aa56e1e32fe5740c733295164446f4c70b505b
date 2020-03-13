@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ccfe060_6a9e105e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T07:52:52Z",
+      "side": 1,
+      "message": "use isLlndkLibrary instead",
+      "range": {
+        "startLine": 1856,
+        "startChar": 22,
+        "endLine": 1856,
+        "endChar": 65
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a010c24_374f8303",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T07:52:52Z",
+      "side": 1,
+      "message": "remove this condition instead?",
+      "range": {
+        "startLine": 1871,
+        "startChar": 25,
+        "endLine": 1871,
+        "endChar": 39
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8591863_ad9dc5d9",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T07:52:52Z",
+      "side": 1,
+      "message": "why is this needed?",
+      "range": {
+        "startLine": 1109,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 2
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67861402_fbe5b6f2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T07:52:52Z",
+      "side": 1,
+      "message": "I am not sure why this is needed. Are we interested in the stubs versions of an LLNDK library? IIUC, we are only interested in the specific version of the variations of the LLNDK library.",
+      "range": {
+        "startLine": 1507,
+        "startChar": 3,
+        "endLine": 1507,
+        "endChar": 31
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cff41b4_6d265cf7",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T07:52:52Z",
+      "side": 1,
+      "message": "I wish we could dedup this with the above",
+      "range": {
+        "startLine": 1504,
+        "startChar": 0,
+        "endLine": 1518,
+        "endChar": 9
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
