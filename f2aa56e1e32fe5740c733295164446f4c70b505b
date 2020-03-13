@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e22bc292_51427952",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T08:38:11Z",
+      "side": 1,
+      "message": "Ah, I see. So \u0027name\u0027 here is already a re-written one. Bit I think this is not safe as we in theory could have a non-llndk library named foo.llndk.",
+      "parentUuid": "a18cd4be_cea6118d",
+      "range": {
+        "startLine": 1856,
+        "startChar": 22,
+        "endLine": 1856,
+        "endChar": 65
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a010c24_374f8303",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Can we? The condition above handles ctx.useVndk \u0026\u0026 llndk, not ctx.useVndk. It might work but VersionMutator seems to make stubs for vendor variants as well. Can we keep this as it is and revisit it later?",
       "parentUuid": "2a010c24_374f8303",
+      "range": {
+        "startLine": 1871,
+        "startChar": 25,
+        "endLine": 1871,
+        "endChar": 39
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4334c082_2c3af02f",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T08:38:11Z",
+      "side": 1,
+      "message": "when !llndk, stubsVersionsFor will give 0 versions. \n\nI am just concerned about making this really complicated just for the only exceptional case of the media.swcodec apex.",
+      "parentUuid": "04803737_f9f3894b",
       "range": {
         "startLine": 1871,
         "startChar": 25,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "f3b6df5a_21d7f7c2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T08:38:11Z",
+      "side": 1,
+      "message": "Yeah, I meant why the line below can\u0027t deal with llndk libraries.",
+      "parentUuid": "203ccfb8_b5b18d4f",
+      "range": {
+        "startLine": 1109,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 2
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67861402_fbe5b6f2",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -178,6 +250,30 @@
       "side": 1,
       "message": "When VersionMutator runs, we don\u0027t know which specific version is needed for the lib. Because apex_deps mutator is run way more later. I think this is the same reason we create all stubs and add them as deps. (so that choose the right one later.)",
       "parentUuid": "67861402_fbe5b6f2",
+      "range": {
+        "startLine": 1507,
+        "startChar": 3,
+        "endLine": 1507,
+        "endChar": 31
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83566e0_a940e381",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-13T08:38:11Z",
+      "side": 1,
+      "message": "I understand the reason for creating variations here. My question was about \"keeping the list of versions\" in the module struct.",
+      "parentUuid": "5b179599_aa3f9209",
       "range": {
         "startLine": 1507,
         "startChar": 3,
