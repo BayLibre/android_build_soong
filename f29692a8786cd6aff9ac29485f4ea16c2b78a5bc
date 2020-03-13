@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "840c035f_b6ad5a5b",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T19:19:23Z",
+      "side": 1,
+      "message": "Test the shared dependency too?",
+      "range": {
+        "startLine": 85,
+        "startChar": 59,
+        "endLine": 85,
+        "endChar": 65
+      },
+      "revId": "f29692a8786cd6aff9ac29485f4ea16c2b78a5bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1cc335b_e3db6ee1",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T19:19:23Z",
+      "side": 1,
+      "message": "Maybe also test a prebuilt library with a common srcs. (If that can actually happen; if it can\u0027t then it ought not be supported in prebuiltLibraryLinker.prebuiltSrcs.)",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 20
+      },
+      "revId": "f29692a8786cd6aff9ac29485f4ea16c2b78a5bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
