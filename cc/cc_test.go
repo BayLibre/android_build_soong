@@ -2817,6 +2817,18 @@ func TestVersionedStubs(t *testing.T) {
 	}
 }
 
+func TestVersioningMacro(t *testing.T) {
+	for _, tc := range []struct{ moduleName, expected string }{
+		{"libc", "__LIBC_API__"},
+		{"libfoo", "__LIBFOO_API__"},
+		{"libfoo@1", "__LIBFOO_1_API__"},
+		{"libfoo-v1", "__LIBFOO_V1_API__"},
+		{"libfoo.v1", "__LIBFOO_V1_API__"},
+	} {
+		checkEquals(t, tc.moduleName, tc.expected, versioningMacroName(tc.moduleName))
+	}
+}
+
 func TestStaticExecutable(t *testing.T) {
 	ctx := testCc(t, `
 		cc_binary {
