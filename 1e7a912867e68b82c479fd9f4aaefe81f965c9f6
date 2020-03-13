@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9b5b001_80fab31a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T18:55:47Z",
+      "side": 1,
+      "message": "Typo: \"insulates\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d11707d_e9b5bfca",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T18:55:47Z",
+      "side": 1,
+      "message": "Nit: Do these checks add enough value?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79469cd9_aa33f2e7",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T18:55:47Z",
+      "side": 1,
+      "message": "Nit: Same here.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36efcd01_128753fd",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T18:55:47Z",
+      "side": 1,
+      "message": "Nit: It\u0027s a field in a struct, not a field that is a struct, so \"srcStructField\"?",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "245d5c0d_346ab126",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T18:55:47Z",
+      "side": 1,
+      "message": "Nit: Shouldn\u0027t FieldByName already have failed if this is the case?",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 87
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d1b167e_9770aff2",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T18:55:47Z",
+      "side": 1,
+      "message": "Unused argument.",
+      "range": {
+        "startLine": 235,
+        "startChar": 58,
+        "endLine": 235,
+        "endChar": 79
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3225882f_b1bcbf83",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T18:55:47Z",
+      "side": 1,
+      "message": "Isn\u0027t srcsSupplier always set?",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
