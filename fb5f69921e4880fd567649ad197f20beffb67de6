@@ -22,6 +22,30 @@
       "revId": "fb5f69921e4880fd567649ad197f20beffb67de6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46748e56_cfcefb38",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T17:29:54Z",
+      "side": 1,
+      "message": "Well spotted.",
+      "parentUuid": "f7e90367_f6df444e",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 59
+      },
+      "revId": "fb5f69921e4880fd567649ad197f20beffb67de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
