@@ -16,6 +16,40 @@
       "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e87a3786_6c4879ea",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T08:59:32Z",
+      "side": 1,
+      "message": "This file is duplicating a lot of functionality provided by the library_sdk_member.go file. Can you not just use that instead?",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e3c83c_5a33a49c",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T08:59:32Z",
+      "side": 1,
+      "message": "This might clash with the handling of compile_multilib in sdk/update.go. Why is this necessary? Does cc_object not default to \"both\"?",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
