@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "098541ff_dea32fe5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T09:04:03Z",
+      "side": 1,
+      "message": "You could just try adding vendor_available: true and recovery_available: true to the snapshot generated Android.bp file as that does work around the missing variant issue. It will let you verify that the object file has been handled properly.",
+      "parentUuid": "45f19798_e7ea8e9f",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e87a3786_6c4879ea",
         "filename": "cc/object_sdk_member.go",
         "patchSetId": 2
