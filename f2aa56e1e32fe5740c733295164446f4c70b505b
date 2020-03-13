@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "1858a70f_6acaa0c7",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T10:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8af2b04_0a6c72ff",
+      "range": {
+        "startLine": 1856,
+        "startChar": 22,
+        "endLine": 1856,
+        "endChar": 65
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a010c24_374f8303",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -192,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "47a104cc_c0ee17ae",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T10:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd57c37_8388ad5a",
+      "range": {
+        "startLine": 1871,
+        "startChar": 25,
+        "endLine": 1871,
+        "endChar": 39
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8591863_ad9dc5d9",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -263,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "9ad4e7a8_b559f0d7",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T10:51:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b6df5a_21d7f7c2",
+      "range": {
+        "startLine": 1109,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 2
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67861402_fbe5b6f2",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -331,6 +403,30 @@
       "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f6b8ac_1d5e582b",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T10:51:11Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "f83566e0_a940e381",
+      "range": {
+        "startLine": 1507,
+        "startChar": 3,
+        "endLine": 1507,
+        "endChar": 31
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
