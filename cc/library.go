@@ -232,14 +232,36 @@ func LibraryHostSharedFactory() android.Module {
 	return module.Init()
 }
 
+// A unique list of paths that preserves order.
+//
+// Lazily removes duplicates when contents are requested.
+type uniquePaths struct {
+	contents android.Paths
+	unique   bool
+}
+
+func (l *uniquePaths) append(paths ...android.Path) {
+	l.contents = append(l.contents, paths...)
+	l.unique = false
+}
+
+func (l *uniquePaths) paths() android.Paths {
+	if !l.unique {
+		l.contents = android.FirstUniquePaths(l.contents)
+		l.unique = true
+	}
+	return l.contents
+}
+
 type flagExporter struct {
 	Properties FlagExporterProperties
 
-	dirs       android.Paths
-	systemDirs android.Paths
-	flags      []string
-	deps       android.Paths
-	headers    android.Paths
+	dirs       uniquePaths
+	systemDirs uniquePaths
+
+	flags   []string
+	deps    android.Paths
+	headers android.Paths
 }
 
 func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
@@ -251,22 +273,22 @@ func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
 }
 
 func (f *flagExporter) exportIncludes(ctx ModuleContext) {
-	f.dirs = append(f.dirs, f.exportedIncludes(ctx)...)
-	f.systemDirs = append(f.systemDirs, android.PathsForModuleSrc(ctx, f.Properties.Export_system_include_dirs)...)
+	f.dirs.append(f.exportedIncludes(ctx)...)
+	f.systemDirs.append(android.PathsForModuleSrc(ctx, f.Properties.Export_system_include_dirs)...)
 }
 
 func (f *flagExporter) exportIncludesAsSystem(ctx ModuleContext) {
 	// all dirs are force exported as system
-	f.systemDirs = append(f.systemDirs, f.exportedIncludes(ctx)...)
-	f.systemDirs = append(f.systemDirs, android.PathsForModuleSrc(ctx, f.Properties.Export_system_include_dirs)...)
+	f.systemDirs.append(f.exportedIncludes(ctx)...)
+	f.systemDirs.append(android.PathsForModuleSrc(ctx, f.Properties.Export_system_include_dirs)...)
 }
 
 func (f *flagExporter) reexportDirs(dirs ...android.Path) {
-	f.dirs = append(f.dirs, dirs...)
+	f.dirs.append(dirs...)
 }
 
 func (f *flagExporter) reexportSystemDirs(dirs ...android.Path) {
-	f.systemDirs = append(f.systemDirs, dirs...)
+	f.systemDirs.append(dirs...)
 }
 
 func (f *flagExporter) reexportFlags(flags ...string) {
@@ -288,11 +310,11 @@ func (f *flagExporter) addExportedGeneratedHeaders(headers ...android.Path) {
 }
 
 func (f *flagExporter) exportedDirs() android.Paths {
-	return f.dirs
+	return f.dirs.paths()
 }
 
 func (f *flagExporter) exportedSystemDirs() android.Paths {
-	return f.systemDirs
+	return f.systemDirs.paths()
 }
 
 func (f *flagExporter) exportedFlags() []string {
