@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a18cd4be_cea6118d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T08:22:39Z",
+      "side": 1,
+      "message": "isLlndkLibrary requires baseModuleName, which is typically useful when we have android.Module instance. But here we\u0027re \"rewriting\" lib names and what we have is only its name. In order to get baseModuleName, we have to check it has llndkLibrarySuffix and then trim it. In this function, which handles names as data, this seems to be reasonable.",
+      "parentUuid": "7ccfe060_6a9e105e",
+      "range": {
+        "startLine": 1856,
+        "startChar": 22,
+        "endLine": 1856,
+        "endChar": 65
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a010c24_374f8303",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-13T07:52:52Z",
       "side": 1,
       "message": "remove this condition instead?",
+      "range": {
+        "startLine": 1871,
+        "startChar": 25,
+        "endLine": 1871,
+        "endChar": 39
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04803737_f9f3894b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T08:22:39Z",
+      "side": 1,
+      "message": "Can we? The condition above handles ctx.useVndk \u0026\u0026 llndk, not ctx.useVndk. It might work but VersionMutator seems to make stubs for vendor variants as well. Can we keep this as it is and revisit it later?",
+      "parentUuid": "2a010c24_374f8303",
       "range": {
         "startLine": 1871,
         "startChar": 25,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "203ccfb8_b5b18d4f",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T08:22:39Z",
+      "side": 1,
+      "message": "I tried to follow the following lines. What if some header files of LLNDK are shared with NDK libs and they use those macros like __LIBFOO_API__\u003e29 etc ?\nIf it\u0027s not the case we can remove this.",
+      "parentUuid": "b8591863_ad9dc5d9",
+      "range": {
+        "startLine": 1109,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 2
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67861402_fbe5b6f2",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5b179599_aa3f9209",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T08:22:39Z",
+      "side": 1,
+      "message": "When VersionMutator runs, we don\u0027t know which specific version is needed for the lib. Because apex_deps mutator is run way more later. I think this is the same reason we create all stubs and add them as deps. (so that choose the right one later.)",
+      "parentUuid": "67861402_fbe5b6f2",
+      "range": {
+        "startLine": 1507,
+        "startChar": 3,
+        "endLine": 1507,
+        "endChar": 31
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cff41b4_6d265cf7",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2020-03-13T07:52:52Z",
       "side": 1,
       "message": "I wish we could dedup this with the above",
+      "range": {
+        "startLine": 1504,
+        "startChar": 0,
+        "endLine": 1518,
+        "endChar": 9
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b524caf_891e7c19",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T08:22:39Z",
+      "side": 1,
+      "message": "I\u0027d like to. ;-) and I tried to merge two branches in a few different ways. I\u0027ll think about it.",
+      "parentUuid": "2cff41b4_6d265cf7",
       "range": {
         "startLine": 1504,
         "startChar": 0,
