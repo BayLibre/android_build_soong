@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "23cf678f_a11cbc83",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T11:15:58Z",
+      "side": 1,
+      "message": "Updated documentation to try and clarify.",
+      "parentUuid": "bb8615e7_146c908d",
+      "range": {
+        "startLine": 191,
+        "startChar": 4,
+        "endLine": 191,
+        "endChar": 9
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b939441c_6f8d4cfb",
         "filename": "android/sdk.go",
         "patchSetId": 5
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "\u003e there is nothing in libdexfile_external /.../ that distinguishes it from libdexfile\n\nlibdexfile_external will be mentioned in native_shared_libraries in the SDK rule, libdexfile won\u0027t, and neither is it in a native_shared_libraries for any other SDK or module_export.\n\nSo maybe part of the confusion here is that when I said \"internal\" I meant a library dependency that is neither exported nor imported anywhere. I didn\u0027t mean one that for some reason needs to be mentioned in the snapshot even though it isn\u0027t part of the exported interface (which is apparently the case for system_java_modules).\n\nLet\u0027s take an example:\n\nPlatform SDK/NDK:\n\n  cc_library {\n    name: \"liblog\", ...\n  }\n\nART:\n\n  cc_library {\n    name: \"libdexfile\",\n    shared_libs: [\"liblog\"],\n  }\n\n  cc_library {\n    name: \"libdexfile_external\",\n    shared_libs: [\"libdexfile\"],\n  }\n\n  sdk {\n    name: \"art_module_sdk\",\n    native_shared_libs: [\"libdexfile_external\"],\n  }\n\nHere the ART SDK snapshot should transitively include the deps of the ART internal libdexfile? Like so:\n\n  cc_prebuilt_library_shared {\n    name: \"libdexfile_external\",\n    srcs: [\n      \".../libdexfile_external.so\",\n    ],\n    shared_libs: [\"liblog\"],\n  }",
       "parentUuid": "8bd050a5_5d11fb9c",
+      "range": {
+        "startLine": 196,
+        "startChar": 19,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41aaa981_6e1c10ff",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T11:15:58Z",
+      "side": 1,
+      "message": "In this case when I traverse the transitive dependencies from libdexfile_external I will visit both libdexfile and liblog. There is nothing that differentiates libdexfile from liblog which would allow the code to decide that one belongs as a member of the sdk and one does not.\n\nIn your example you separate liblog and libdexfile into separate parts but that distinction does not exist inside Soong. I suppose that you could use module path (the path to the declaring .bp file) to differentiate them but that would require additional information in the sdk/module_exports and could cause problems if they overlapped.\n\nAlternatively, you could just add a list of \"internal members\" to the sdk/module_exports. They would not have to be differentiated by type because they wouldn\u0027t be used to create dependencies to the module but would simply be used to filter the transitive dependencies of the exported members.",
+      "parentUuid": "4d08c93c_319a179d",
       "range": {
         "startLine": 196,
         "startChar": 19,

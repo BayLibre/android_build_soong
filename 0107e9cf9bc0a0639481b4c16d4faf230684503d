@@ -426,6 +426,30 @@
       "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b189c3_eca869af",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T11:15:58Z",
+      "side": 1,
+      "message": "The setting of host_supported/device_supported would be determined by the variants of the mynativelib cc_library which are included in the sdk which would in turn depend on the sdk\u0027s host_supported/device_supported and which native_shared_libs properties (which are arch variant) contains the \"mynativelib\".\n\nYou could look at the art-module-sdk in art/build/sdk/Android.bp. It supports both android and host and has different members in each. If you build it and look at the Android.bp file you can see how it works.\n\nThere are tests for handling target specialization around host/device_supported. Lots of tests come in pairs TestSnaphot... and TestHostSnapshot.... There are three TestDeviceAndHostSnapshot... tests, one in cc_sdk_test.go and two in java_sdk_test.go that test various combinations of them. There are also TestMultiple... tests that test multiple os tests.",
+      "parentUuid": "148cf9a5_e0d3042b",
+      "range": {
+        "startLine": 681,
+        "startChar": 9,
+        "endLine": 681,
+        "endChar": 13
+      },
+      "revId": "0107e9cf9bc0a0639481b4c16d4faf230684503d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
