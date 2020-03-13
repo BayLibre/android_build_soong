@@ -22,6 +22,30 @@
       "revId": "b07fa511964fd68a36295bb7318ebb142a0bc835",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "257a6bf0_661e834b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T15:35:06Z",
+      "side": 1,
+      "message": "Copies won\u0027t work as it is the code that does the formatting that uses that information. I did previously special case that by name but it was yeuchy which is why I went this route.",
+      "parentUuid": "f1906bad_44860fde",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "b07fa511964fd68a36295bb7318ebb142a0bc835",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
