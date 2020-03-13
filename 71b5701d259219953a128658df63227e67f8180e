@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "23b367a6_3448f367",
+        "filename": "android/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T14:11:00Z",
+      "side": 1,
+      "message": "APEX does exactly that, and I think the same logic applies here. It basically looks for the stubs property: https://devops-console-stagingoss.corp.google.com/android/_/android/platform/build/soong/+/0a4c18e83760cd35b184749ac914d1bd9c7e412c:cc/cc.go;l\u003d2692;drc\u003d845f65501131dab336f448489f0f644e0ba3c718\n\nNot that this issue blocks this CL, but it looks fairly important for correct dependencies, since it\u0027s common that internal libs expand the dependency set.",
+      "parentUuid": "41aaa981_6e1c10ff",
+      "range": {
+        "startLine": 196,
+        "startChar": 19,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "71b5701d259219953a128658df63227e67f8180e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "300e555f_295b8009",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 5
