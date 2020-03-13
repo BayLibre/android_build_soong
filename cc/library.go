@@ -727,9 +727,15 @@ func (library *libraryDecorator) linkerInit(ctx BaseModuleContext) {
 	// it can omit things that are not required for linking stubs.
 	library.baseLinker.dynamicProperties.BuildStubs = library.buildStubs()
 
-	if library.buildStubs() {
+	if library.buildStubs() && !isLlndkLibrary(ctx.baseModuleName(), ctx.Config()) {
 		macroNames := versioningMacroNamesList(ctx.Config())
-		myName := versioningMacroName(ctx.ModuleName())
+
+		moduleName := ctx.ModuleName()
+		if isLlndkLibrary(ctx.baseModuleName(), ctx.Config()) {
+			moduleName = ctx.baseModuleName()
+		}
+
+		myName := versioningMacroName(moduleName)
 		versioningMacroNamesListMutex.Lock()
 		defer versioningMacroNamesListMutex.Unlock()
 		if (*macroNames)[myName] == "" {
@@ -1124,7 +1130,11 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 	}
 
 	if library.buildStubs() {
-		library.reexportFlags("-D" + versioningMacroName(ctx.ModuleName()) + "=" + library.stubsVersion())
+		moduleName := ctx.ModuleName()
+		if isLlndkLibrary(ctx.baseModuleName(), ctx.Config()) {
+			moduleName = ctx.baseModuleName()
+		}
+		library.reexportFlags("-D" + versioningMacroName(moduleName) + "=" + library.stubsVersion())
 	}
 
 	return out
@@ -1486,6 +1496,19 @@ func checkVersions(ctx android.BaseModuleContext, versions []string) {
 	}
 }
 
+func createVersionVariations(mctx android.BottomUpMutatorContext, versions []string) {
+	// "" is for the non-stubs variant
+	versions = append([]string{""}, versions...)
+
+	modules := mctx.CreateVariations(versions...)
+	for i, m := range modules {
+		if versions[i] != "" {
+			m.(LinkableInterface).SetBuildStubs()
+			m.(LinkableInterface).SetStubsVersions(versions[i])
+		}
+	}
+}
+
 // Version mutator splits a module into the mandatory non-stubs variant
 // (which is unnamed) and zero or more stubs variants.
 func VersionMutator(mctx android.BottomUpMutatorContext) {
@@ -1502,19 +1525,20 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 			defer stubsVersionsLock.Unlock()
 			stubsVersionsFor(mctx.Config())[mctx.ModuleName()] = versions
 
-			// "" is for the non-stubs variant
-			versions = append([]string{""}, versions...)
-
-			modules := mctx.CreateVariations(versions...)
-			for i, m := range modules {
-				if versions[i] != "" {
-					m.(LinkableInterface).SetBuildStubs()
-					m.(LinkableInterface).SetStubsVersions(versions[i])
-				}
-			}
-		} else {
-			mctx.CreateVariations("")
+			createVersionVariations(mctx, versions)
+			return
 		}
+		if c, ok := library.(*Module); ok && c.IsStubs() {
+			// Since llndk_library has dependency to its implementation library,
+			// we can safely access stubsVersionsFor() with its baseModuleName.
+			stubsVersionsLock.Lock()
+			defer stubsVersionsLock.Unlock()
+			versions := stubsVersionsFor(mctx.Config())[c.BaseModuleName()]
+
+			createVersionVariations(mctx, versions)
+			return
+		}
+		mctx.CreateVariations("")
 		return
 	}
 	if genrule, ok := mctx.Module().(*genrule.Module); ok {
