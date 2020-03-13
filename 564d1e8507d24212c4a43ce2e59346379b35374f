@@ -16,6 +16,24 @@
       "revId": "564d1e8507d24212c4a43ce2e59346379b35374f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb549112_db83990f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-13T10:48:40Z",
+      "side": 1,
+      "message": "Some tests were broken by the change to visit the embedded structure because it cleared properties in SdkMemberPropertiesBase which should not have been cleared. I had to add the `sdk:\"keep\"` support to fix that.\n\nAdded unit test.",
+      "parentUuid": "ff8d1014_a8687213",
+      "revId": "564d1e8507d24212c4a43ce2e59346379b35374f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
