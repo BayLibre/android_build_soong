@@ -70,6 +70,30 @@
       "revId": "577ceb725f1c0a634db6ff2ff9e658d49f053eb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c57345a_fd8bee30",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T11:15:49Z",
+      "side": 1,
+      "message": "Nikita, are you okay with the change?",
+      "parentUuid": "245a3c5c_02923e6e",
+      "range": {
+        "startLine": 459,
+        "startChar": 4,
+        "endLine": 459,
+        "endChar": 8
+      },
+      "revId": "577ceb725f1c0a634db6ff2ff9e658d49f053eb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
