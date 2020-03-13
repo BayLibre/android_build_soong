@@ -321,12 +321,12 @@ func (mod *Module) SetBuildStubs() {
 	panic("SetBuildStubs not yet implemented for rust modules")
 }
 
-func (mod *Module) SetStubsVersions(string) {
-	panic("SetStubsVersions not yet implemented for rust modules")
+func (mod *Module) SetStubsVersion(string) {
+	panic("SetStubsVersion not yet implemented for rust modules")
 }
 
 func (mod *Module) StubsVersion() string {
-	panic("SetStubsVersions not yet implemented for rust modules")
+	panic("StubsVersion not yet implemented for rust modules")
 }
 
 func (mod *Module) BuildStaticVariant() bool {
@@ -370,6 +370,10 @@ func (mod *Module) StubsVersions() []string {
 		}
 	}
 	panic(fmt.Errorf("StubsVersions called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetStubsVersions(versions []string) {
+	panic(fmt.Errorf("SetStubsVersions called on non-library module: %q", mod.BaseModuleName()))
 }
 
 func (mod *Module) OutputFile() android.OptionalPath {

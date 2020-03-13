@@ -1106,6 +1106,9 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 		library.addExportedGeneratedHeaders(library.baseCompiler.pathDeps...)
 	}
 
+	if ctx.useVndk() && ctx.isStubs() {
+		library.reexportFlags("-D" + versioningMacroName(ctx.baseModuleName()) + "=" + library.stubsVersion())
+	}
 	if library.buildStubs() {
 		library.reexportFlags("-D" + versioningMacroName(ctx.ModuleName()) + "=" + library.stubsVersion())
 	}
@@ -1492,12 +1495,29 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 			for i, m := range modules {
 				if versions[i] != "" {
 					m.(LinkableInterface).SetBuildStubs()
-					m.(LinkableInterface).SetStubsVersions(versions[i])
+					m.(LinkableInterface).SetStubsVersion(versions[i])
 				}
 			}
-		} else {
-			mctx.CreateVariations("")
+			return
 		}
+		if c, ok := library.(*Module); ok && c.IsStubs() {
+			stubsVersionsLock.Lock()
+			defer stubsVersionsLock.Unlock()
+			versions := stubsVersionsFor(mctx.Config())[c.BaseModuleName()]
+			c.SetStubsVersions(versions)
+			// "" is also a stub, but it represents "current" vndk version
+			versions = append([]string{""}, versions...)
+
+			modules := mctx.CreateVariations(versions...)
+			for i, m := range modules {
+				if versions[i] != "" {
+					m.(LinkableInterface).SetStubsVersion(versions[i])
+					m.(*Module).Properties.HideFromMake = true
+				}
+			}
+			return
+		}
+		mctx.CreateVariations("")
 		return
 	}
 	if genrule, ok := mctx.Module().(*genrule.Module); ok {

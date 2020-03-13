@@ -23,9 +23,10 @@ type LinkableInterface interface {
 	NonCcVariants() bool
 
 	StubsVersions() []string
+	SetStubsVersions([]string)
 	BuildStubs() bool
 	SetBuildStubs()
-	SetStubsVersions(string)
+	SetStubsVersion(string)
 	StubsVersion() string
 	HasStubsVariants() bool
 	SelectedStl() string
