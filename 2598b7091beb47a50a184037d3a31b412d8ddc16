@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45f19798_e7ea8e9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-13T01:31:51Z",
+      "side": 1,
+      "message": "I tried to test this by dropping a runtime-module-sdk including prebuilts for crtbegin_dynamic, crtbegin_static, and crtend_android into a master-art tree, but it snagged on missing image:recovery variants, so was inconclusive. I\u0027m open for suggestion on how to bypass that, but otherwise I guess we\u0027ll just need to revisit later if necessary.",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
