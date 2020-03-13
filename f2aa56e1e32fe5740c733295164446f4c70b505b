@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a8af2b04_0a6c72ff",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T09:09:20Z",
+      "side": 1,
+      "message": "\u003e in theory could have a non-llndk library named foo.llndk.\n\nGot it. Then have to double-check with condition: hasSuffix \u0026\u0026 isLlndkLibrary(without suffix)",
+      "parentUuid": "e22bc292_51427952",
+      "range": {
+        "startLine": 1856,
+        "startChar": 22,
+        "endLine": 1856,
+        "endChar": 65
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a010c24_374f8303",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "when !llndk, stubsVersionsFor will give 0 versions. \n\nI am just concerned about making this really complicated just for the only exceptional case of the media.swcodec apex.",
       "parentUuid": "04803737_f9f3894b",
+      "range": {
+        "startLine": 1871,
+        "startChar": 25,
+        "endLine": 1871,
+        "endChar": 39
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd57c37_8388ad5a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-13T09:09:20Z",
+      "side": 1,
+      "message": "\u003e when !llndk, stubsVersionsFor will give 0 versions. \n\nGot it.\n\n\u003e I am just concerned about making this really complicated just for the only exceptional case of the media.swcodec apex.\n\nSigh, I agree. you know what? this is my third trial which is simplest. (including the one with hard-coding here and there.)",
+      "parentUuid": "4334c082_2c3af02f",
       "range": {
         "startLine": 1871,
         "startChar": 25,
