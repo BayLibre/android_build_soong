@@ -63,6 +63,8 @@ func testConfig(bp string) android.Config {
 		"src/bar.rs": nil,
 		"liby.so":    nil,
 		"libz.so":    nil,
+		"include":    nil,
+		"header.h":   nil,
 	}
 
 	cc.GatherRequiredFilesForTest(fs)

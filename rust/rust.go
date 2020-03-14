@@ -220,13 +220,14 @@ type Deps struct {
 }
 
 type PathDeps struct {
-	DyLibs     RustLibraries
-	RLibs      RustLibraries
-	SharedLibs android.Paths
-	StaticLibs android.Paths
-	ProcMacros RustLibraries
-	linkDirs   []string
-	depFlags   []string
+	DyLibs      RustLibraries
+	RLibs       RustLibraries
+	SharedLibs  android.Paths
+	StaticLibs  android.Paths
+	ProcMacros  RustLibraries
+	linkDirs    []string
+	depFlags    []string
+	IncludeDirs android.Paths
 	//ReexportedDeps android.Paths
 
 	coverageFiles android.Paths
@@ -437,10 +438,9 @@ func (mod *Module) CoverageFiles() android.Paths {
 			if library.coverageFile != nil {
 				return android.Paths{library.coverageFile}
 			}
-			return android.Paths{}
 		}
 	}
-	panic(fmt.Errorf("CoverageFiles called on non-library module: %q", mod.BaseModuleName()))
+	return android.Paths{}
 }
 
 var _ cc.LinkableInterface = (*Module)(nil)
@@ -726,12 +726,14 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.coverageFiles = append(depPaths.coverageFiles, ccDep.CoverageFiles()...)
 				directStaticLibDeps = append(directStaticLibDeps, ccDep)
 				mod.Properties.AndroidMkStaticLibs = append(mod.Properties.AndroidMkStaticLibs, depName)
+				depPaths.IncludeDirs = append(depPaths.IncludeDirs, ccDep.IncludeDirs()...)
 			case cc.SharedDepTag:
 				depFlag = "-ldylib=" + libName
 				depPaths.linkDirs = append(depPaths.linkDirs, linkPath)
 				depPaths.depFlags = append(depPaths.depFlags, depFlag)
 				directSharedLibDeps = append(directSharedLibDeps, ccDep)
 				mod.Properties.AndroidMkSharedLibs = append(mod.Properties.AndroidMkSharedLibs, depName)
+				depPaths.IncludeDirs = append(depPaths.IncludeDirs, ccDep.IncludeDirs()...)
 				exportDep = true
 			case cc.CrtBeginDepTag:
 				depPaths.CrtBegin = linkFile

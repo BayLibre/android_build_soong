@@ -25,6 +25,7 @@ import (
 
 var (
 	_     = pctx.SourcePathVariable("rustcCmd", "${config.RustBin}/rustc")
+	_     = pctx.SourcePathVariable("rustfmtCmd", "${config.RustBin}/rustfmt")
 	rustc = pctx.AndroidStaticRule("rustc",
 		blueprint.RuleParams{
 			Command: "$rustcCmd " +
@@ -45,6 +46,17 @@ var (
 			Rspfile:        "$out.rsp",
 			RspfileContent: "$in",
 		})
+
+	bindingsGenerator = pctx.AndroidStaticRule("bindingsGenerator",
+		blueprint.RuleParams{
+			Command: "LLVM_CONFIG_PATH=${config.LlvmConfig} " +
+				"CLANG_PATH=${config.Clang} " +
+				"RUSTFMT=$rustfmtCmd " +
+				"$generator " +
+				"$in -- $extraFlags > $out",
+			CommandDeps: []string{"$generator", "$rustfmtCmd"},
+		},
+		"generator", "extraFlags")
 )
 
 type buildOutput struct {
