@@ -220,13 +220,14 @@ type Deps struct {
 }
 
 type PathDeps struct {
-	DyLibs     RustLibraries
-	RLibs      RustLibraries
-	SharedLibs android.Paths
-	StaticLibs android.Paths
-	ProcMacros RustLibraries
-	linkDirs   []string
-	depFlags   []string
+	DyLibs      RustLibraries
+	RLibs       RustLibraries
+	SharedLibs  android.Paths
+	StaticLibs  android.Paths
+	ProcMacros  RustLibraries
+	linkDirs    []string
+	depFlags    []string
+	IncludeDirs android.Paths
 	//ReexportedDeps android.Paths
 
 	coverageFiles android.Paths
@@ -254,6 +255,7 @@ type compiler interface {
 	relativeInstallPath() string
 
 	nativeCoverage() bool
+	getCoverageFile() android.Path
 }
 
 func (mod *Module) isCoverageVariant() bool {
@@ -433,14 +435,11 @@ func (mod *Module) HasStaticVariant() bool {
 
 func (mod *Module) CoverageFiles() android.Paths {
 	if mod.compiler != nil {
-		if library, ok := mod.compiler.(*libraryDecorator); ok {
-			if library.coverageFile != nil {
-				return android.Paths{library.coverageFile}
-			}
-			return android.Paths{}
+		if coverageFile := mod.compiler.getCoverageFile(); coverageFile != nil {
+			return android.Paths{coverageFile}
 		}
 	}
-	panic(fmt.Errorf("CoverageFiles called on non-library module: %q", mod.BaseModuleName()))
+	return android.Paths{}
 }
 
 var _ cc.LinkableInterface = (*Module)(nil)
@@ -726,12 +725,14 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.coverageFiles = append(depPaths.coverageFiles, ccDep.CoverageFiles()...)
 				directStaticLibDeps = append(directStaticLibDeps, ccDep)
 				mod.Properties.AndroidMkStaticLibs = append(mod.Properties.AndroidMkStaticLibs, depName)
+				depPaths.IncludeDirs = append(depPaths.IncludeDirs, ccDep.IncludeDirs()...)
 			case cc.SharedDepTag:
 				depFlag = "-ldylib=" + libName
 				depPaths.linkDirs = append(depPaths.linkDirs, linkPath)
 				depPaths.depFlags = append(depPaths.depFlags, depFlag)
 				directSharedLibDeps = append(directSharedLibDeps, ccDep)
 				mod.Properties.AndroidMkSharedLibs = append(mod.Properties.AndroidMkSharedLibs, depName)
+				depPaths.IncludeDirs = append(depPaths.IncludeDirs, ccDep.IncludeDirs()...)
 				exportDep = true
 			case cc.CrtBeginDepTag:
 				depPaths.CrtBegin = linkFile

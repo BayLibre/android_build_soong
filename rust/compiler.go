@@ -244,6 +244,10 @@ func (compiler *baseCompiler) nativeCoverage() bool {
 	return false
 }
 
+func (compiler *baseCompiler) getCoverageFile() android.Path {
+	return compiler.coverageFile
+}
+
 func (compiler *baseCompiler) install(ctx ModuleContext, file android.Path) {
 	compiler.path = ctx.InstallFile(compiler.installDir(ctx), file.Base(), file)
 }
