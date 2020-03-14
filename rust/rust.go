@@ -215,13 +215,14 @@ type Deps struct {
 }
 
 type PathDeps struct {
-	DyLibs     RustLibraries
-	RLibs      RustLibraries
-	SharedLibs android.Paths
-	StaticLibs android.Paths
-	ProcMacros RustLibraries
-	linkDirs   []string
-	depFlags   []string
+	DyLibs      RustLibraries
+	RLibs       RustLibraries
+	SharedLibs  android.Paths
+	StaticLibs  android.Paths
+	ProcMacros  RustLibraries
+	linkDirs    []string
+	depFlags    []string
+	IncludeDirs android.Paths
 	//ReexportedDeps android.Paths
 
 	CrtBegin android.OptionalPath
@@ -644,12 +645,14 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.depFlags = append(depPaths.depFlags, depFlag)
 				directStaticLibDeps = append(directStaticLibDeps, ccDep)
 				mod.Properties.AndroidMkStaticLibs = append(mod.Properties.AndroidMkStaticLibs, depName)
+				depPaths.IncludeDirs = append(depPaths.IncludeDirs, ccDep.IncludeDirs()...)
 			case cc.SharedDepTag:
 				depFlag = "-ldylib=" + libName
 				depPaths.linkDirs = append(depPaths.linkDirs, linkPath)
 				depPaths.depFlags = append(depPaths.depFlags, depFlag)
 				directSharedLibDeps = append(directSharedLibDeps, ccDep)
 				mod.Properties.AndroidMkSharedLibs = append(mod.Properties.AndroidMkSharedLibs, depName)
+				depPaths.IncludeDirs = append(depPaths.IncludeDirs, ccDep.IncludeDirs()...)
 				exportDep = true
 			case cc.CrtBeginDepTag:
 				depPaths.CrtBegin = linkFile
