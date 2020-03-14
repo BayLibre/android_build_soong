@@ -391,6 +391,7 @@ bootstrap_go_package {
         "rust/androidmk.go",
         "rust/compiler.go",
         "rust/binary.go",
+        "rust/bindgen.go",
         "rust/builder.go",
         "rust/library.go",
         "rust/prebuilt.go",
