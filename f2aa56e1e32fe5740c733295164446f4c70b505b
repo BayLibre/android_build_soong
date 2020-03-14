@@ -474,6 +474,30 @@
       "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd3fd92c_e0dcf56c",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-14T13:12:47Z",
+      "side": 1,
+      "message": "I couldn\u0027t dudup entirely, but just extracted CreateVariations/For-Range part.",
+      "parentUuid": "7b524caf_891e7c19",
+      "range": {
+        "startLine": 1504,
+        "startChar": 0,
+        "endLine": 1518,
+        "endChar": 9
+      },
+      "revId": "f2aa56e1e32fe5740c733295164446f4c70b505b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
