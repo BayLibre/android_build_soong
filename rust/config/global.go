@@ -84,6 +84,9 @@ func init() {
 	pctx.StaticVariable("RustLinker", "${ccConfig.ClangBin}/clang++")
 	pctx.StaticVariable("RustLinkerArgs", "-B ${ccConfig.ClangBin} -fuse-ld=lld")
 
+	pctx.StaticVariable("LlvmConfig", "${ccConfig.ClangBin}/llvm-config")
+	pctx.StaticVariable("Clang", "${ccConfig.ClangBin}/clang")
+
 	pctx.StaticVariable("DeviceGlobalLinkFlags", strings.Join(deviceGlobalLinkFlags, " "))
 
 }

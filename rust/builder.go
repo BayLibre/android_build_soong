@@ -24,6 +24,7 @@ import (
 
 var (
 	_     = pctx.SourcePathVariable("rustcCmd", "${config.RustBin}/rustc")
+	_     = pctx.SourcePathVariable("rustfmtCmd", "${config.RustBin}/rustfmt")
 	rustc = pctx.AndroidStaticRule("rustc",
 		blueprint.RuleParams{
 			Command: "$rustcCmd " +
@@ -36,6 +37,16 @@ var (
 			Depfile: "$out.d",
 		},
 		"rustcFlags", "linkFlags", "libFlags", "crtBegin", "crtEnd")
+	bindingsGenerator = pctx.AndroidStaticRule("bindingsGenerator",
+		blueprint.RuleParams{
+			Command: "LLVM_CONFIG_PATH=${config.LlvmConfig} " +
+				"CLANG_PATH=${config.Clang} " +
+				"RUSTFMT=$rustfmtCmd " +
+				"$generator " +
+				"$in -- $extraFlags > $out",
+			CommandDeps: []string{"$generator", "$rustfmtCmd"},
+		},
+		"generator", "extraFlags")
 )
 
 func init() {
