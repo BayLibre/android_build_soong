@@ -22,6 +22,47 @@
       "revId": "42f4c0368be626a6e38f1249b53c451d793cedc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "766341f6_b71ebc71",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3667,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-16T17:49:39Z",
+      "side": 1,
+      "message": "Let\u0027s go with package_name. We use the name in android_app already and need to be consistent whenever possible.",
+      "parentUuid": "918942e5_74439b78",
+      "range": {
+        "startLine": 3667,
+        "startChar": 3,
+        "endLine": 3667,
+        "endChar": 25
+      },
+      "revId": "42f4c0368be626a6e38f1249b53c451d793cedc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c01000_89e3dbfb",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-16T17:49:39Z",
+      "side": 1,
+      "message": "In android_app, the make product variable precedes package_name. Let\u0027s be consistent here too. (And, I personally think it makes more sense than the other way around.)",
+      "revId": "42f4c0368be626a6e38f1249b53c451d793cedc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
