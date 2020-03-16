@@ -1232,7 +1232,14 @@ func AndroidAppImportFactory() android.Module {
 	})
 
 	InitJavaModule(module, android.DeviceSupported)
-	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Apk")
+	apkSupplier := func() []string {
+		if module.properties.Apk == nil {
+			return nil
+		} else {
+			return []string{*module.properties.Apk}
+		}
+	}
+	android.InitPrebuiltModuleWithSrcSupplier(module, apkSupplier, "apk")
 
 	return module
 }
@@ -1269,7 +1276,14 @@ func AndroidTestImportFactory() android.Module {
 	})
 
 	InitJavaModule(module, android.DeviceSupported)
-	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Apk")
+	apkSupplier := func() []string {
+		if module.properties.Apk == nil {
+			return nil
+		} else {
+			return []string{*module.properties.Apk}
+		}
+	}
+	android.InitPrebuiltModuleWithSrcSupplier(module, apkSupplier, "apk")
 
 	return module
 }

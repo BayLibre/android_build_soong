@@ -106,7 +106,10 @@ func (p *Prebuilt) Name() string {
 func PrebuiltFactory() android.Module {
 	module := &Prebuilt{}
 	module.AddProperties(&module.properties)
-	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Source")
+	sourceSupplier := func() []string {
+		return []string{module.properties.Source}
+	}
+	android.InitPrebuiltModuleWithSrcSupplier(module, sourceSupplier, "source")
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	return module
 }
