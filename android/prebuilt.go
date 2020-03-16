@@ -16,7 +16,6 @@ package android
 
 import (
 	"fmt"
-	"reflect"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -138,38 +137,6 @@ func InitPrebuiltModule(module PrebuiltInterface, srcs *[]string) {
 	}
 
 	InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, "srcs")
-}
-
-func InitSingleSourcePrebuiltModule(module PrebuiltInterface, srcProps interface{}, srcField string) {
-	srcPropsValue := reflect.ValueOf(srcProps).Elem()
-	srcStructField, _ := srcPropsValue.Type().FieldByName(srcField)
-	if !srcPropsValue.IsValid() || srcStructField.Name == "" {
-		panic(fmt.Errorf("invalid single source prebuilt %+v", module))
-	}
-
-	if srcPropsValue.Kind() != reflect.Struct && srcPropsValue.Kind() != reflect.Interface {
-		panic(fmt.Errorf("invalid single source prebuilt %+v", srcProps))
-	}
-
-	srcFieldIndex := srcStructField.Index
-	srcPropertyName := proptools.PropertyNameForField(srcField)
-
-	srcsSupplier := func() []string {
-		value := srcPropsValue.FieldByIndex(srcFieldIndex)
-		if value.Kind() == reflect.Ptr {
-			value = value.Elem()
-		}
-		if value.Kind() != reflect.String {
-			panic(fmt.Errorf("prebuilt src field %q should be a string or a pointer to one but was %d %q", srcPropertyName, value.Kind(), value))
-		}
-		src := value.String()
-		if src == "" {
-			return nil
-		}
-		return []string{src}
-	}
-
-	InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, srcPropertyName)
 }
 
 type PrebuiltInterface interface {
