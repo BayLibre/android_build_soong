@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63498581_9cffadcc",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-16T23:52:53Z",
+      "side": 1,
+      "message": "Nit: I\u0027d appreciate a few newlines in here to make it easier to tease apart the braces.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 123
+      },
+      "revId": "f3ee14a4c6c27f2608c6750672448546b85e58a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
