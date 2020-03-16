@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38e2bc61_1707617a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-16T14:25:52Z",
+      "side": 1,
+      "message": "Are you sure it has the word \"host-\" in it? Looking at the failed Lucy builds, I see \"dump-oat-boot-x86\".",
+      "range": {
+        "startLine": 552,
+        "startChar": 12,
+        "endLine": 552,
+        "endChar": 28
+      },
+      "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1313320b_6827bee8",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-16T14:25:52Z",
+      "side": 1,
+      "message": "Please add a comment here explaining why host builds are special.",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 553,
+        "endChar": 3
+      },
+      "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
