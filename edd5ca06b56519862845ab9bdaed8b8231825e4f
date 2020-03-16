@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "68f541de_de5b6e73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-16T15:32:59Z",
+      "side": 1,
+      "message": "+1 for making the change on the LUCI side. I think it needs to be something like:\n  dump-oat-boot-android_arm_armv8-a_cortex-a73\n  dump-oat-boot-linux_glibc_x86\n  ...\nThis is what grepping the Ninja rules shows:\n  `fgrep \u0027dump-oat-boot-\u0027 $ANDROID_BUILD_TOP/out/soong/build.ninja`",
+      "parentUuid": "d1db3708_b0a4c477",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52a8970b_ebbf9585",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
