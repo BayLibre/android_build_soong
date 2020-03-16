@@ -45,6 +45,30 @@
       "revId": "f29692a8786cd6aff9ac29485f4ea16c2b78a5bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9752a57_5793f89c",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-16T15:59:07Z",
+      "side": 1,
+      "message": "The prebuiltLibraryLinker.prebuiltSrcs() is used for cc_prebuilt_library_shared/static as well  and those rely on the common srcs. Although this change did not add those member types (and they are tested to some extent in cc_sdk_test.go) I have added some tests for them.",
+      "parentUuid": "a1cc335b_e3db6ee1",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 20
+      },
+      "revId": "f29692a8786cd6aff9ac29485f4ea16c2b78a5bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
