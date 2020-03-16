@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99ff6654_32b24c4a",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-16T18:38:16Z",
+      "side": 1,
+      "message": "nit: why not simply \"must not be \\\"\\\"\" or \"must not be empty\"?",
+      "range": {
+        "startLine": 112,
+        "startChar": 49,
+        "endLine": 112,
+        "endChar": 51
+      },
+      "revId": "f81b0c7d98dc87aa0bd6e92a3273b835094f75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
