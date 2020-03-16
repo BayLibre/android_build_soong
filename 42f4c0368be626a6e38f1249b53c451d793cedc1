@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "918942e5_74439b78",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3667,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2020-03-16T11:00:39Z",
+      "side": 1,
+      "message": "obligatory bikeshed on the name:\n\n- apk_package_name\n- package_name\n\nOr more consistently with the name of the existing variable:\n- override_package_name\n- manifest_package_name\n\nI\u0027d like the soong team to pick one :)",
+      "range": {
+        "startLine": 3667,
+        "startChar": 3,
+        "endLine": 3667,
+        "endChar": 25
+      },
+      "revId": "42f4c0368be626a6e38f1249b53c451d793cedc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
