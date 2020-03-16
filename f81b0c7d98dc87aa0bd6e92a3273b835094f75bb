@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "102a6c02_81875941",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-16T19:06:12Z",
+      "side": 1,
+      "message": "Please mention in the comment that this supplier func may be called multiple times, so users should be careful of doing any mutating jobs in it.",
+      "revId": "f81b0c7d98dc87aa0bd6e92a3273b835094f75bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99ff6654_32b24c4a",
         "filename": "android/prebuilt.go",
         "patchSetId": 4
