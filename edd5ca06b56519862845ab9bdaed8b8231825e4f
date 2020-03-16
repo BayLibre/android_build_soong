@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "d1db3708_b0a4c477",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-03-16T15:18:54Z",
+      "side": 1,
+      "message": "I\u0027m happy to make the change for \"target\" build targets on LUCI. Would `dump-oat-boot-target-\u003carch\u003e` be OK?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a8970b_ebbf9585",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-03-16T15:18:54Z",
+      "side": 1,
+      "message": "Maybe also:\n\n  Test: m dump-oat-boot-host-x86\n\n?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38e2bc61_1707617a",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
