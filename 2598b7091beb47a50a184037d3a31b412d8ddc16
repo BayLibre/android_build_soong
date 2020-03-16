@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e747b9a5_5ef88938",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-16T21:40:00Z",
+      "side": 1,
+      "message": "That helped, along with several other options. It\u0027s clear a lot more work is necessary to make a fully working Bionic SDK, so I haven\u0027t bothered taking it past the Soong stage for now.",
+      "parentUuid": "098541ff_dea32fe5",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e87a3786_6c4879ea",
         "filename": "cc/object_sdk_member.go",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "ccd326c4_2fb84690",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-16T21:40:00Z",
+      "side": 1,
+      "message": "I\u0027ve looked a bit more into it, but I\u0027m not sure it\u0027s a good idea. The cc_library code contains lots of logic to deal with shared vs static, headers, sdk_version, stl, and probably more. None of that is applicable to prebuilt objects (at least not for my current examples in bionic/libc/Android.bp). I suspect the extra flags and checks to support these different code paths are worse than the duplication here, and it\u0027s likely to get more involved over time.\n\nAlso, there\u0027s duplication with IsInstance and maybe a few other functions, but I think that\u0027s an issue for all the modules in cc/ - they should extend a common ccSdkMemberType to deal with that, but that\u0027d be a separate cleanup.",
+      "parentUuid": "e87a3786_6c4879ea",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65e3c83c_5a33a49c",
         "filename": "cc/object_sdk_member.go",
         "patchSetId": 2
@@ -68,6 +104,24 @@
       "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11034374_8210b9fa",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-16T21:40:00Z",
+      "side": 1,
+      "message": "It doesn\u0027t have any observable effect in my test - removed. This was copy\u0027n\u0027paste mindlessness from binary_sdk_member, so maybe it should be cleaned up there too.",
+      "parentUuid": "65e3c83c_5a33a49c",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
