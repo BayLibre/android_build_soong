@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7e73a33_fb1ba390",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-16T14:33:35Z",
+      "side": 1,
+      "message": "We didn\u0027t have host builds before. \ndump-oat-boot-x86 is the target.\nAnd we want to preserve that name.",
+      "parentUuid": "38e2bc61_1707617a",
+      "range": {
+        "startLine": 552,
+        "startChar": 12,
+        "endLine": 552,
+        "endChar": 28
+      },
+      "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1313320b_6827bee8",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
