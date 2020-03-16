@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0da27b1c_835a4faf",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-16T02:17:06Z",
+      "side": 1,
+      "message": "Can\u0027t we also get mix-ups between platform and the ART module?",
+      "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342f6128_a9a22dda",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-16T02:17:06Z",
+      "side": 1,
+      "message": "The Soong module name is always one of the com.android.art.\u003cxxx\u003e flavours here, right? Then test for a \"com.android.art.\" prefix to avoid unintentionally matching some other module that starts with \"art\".",
+      "range": {
+        "startLine": 250,
+        "startChar": 70,
+        "endLine": 250,
+        "endChar": 87
+      },
+      "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "627fb92f_7a5c2784",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-16T02:17:06Z",
+      "side": 1,
+      "message": "Nit: The module name already contains the APEX name, doesn\u0027t it? Then this is unnecessary repetition.",
+      "range": {
+        "startLine": 251,
+        "startChar": 61,
+        "endLine": 251,
+        "endChar": 74
+      },
+      "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
