@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000001987349",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1256664?revision\u003d6",
+      "fixSuggestions": [
+        {
+          "fixId": "8ed0305b_6f626760",
+          "description": "Change to \"android/prebuilt.go\"",
+          "replacements": [
+            {
+              "path": "android/prebuilt.go",
+              "range": {
+                "startLine": 115,
+                "startChar": 58,
+                "endLine": 115,
+                "endChar": 67
+              },
+              "replacement": "more than"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "04d0a57f_f7c6e810",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-16T19:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"more then\" -- should it be \"more than\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 115,
+        "startChar": 58,
+        "endLine": 115,
+        "endChar": 67
+      },
+      "revId": "f2e40d880c36eaadf81faec75fcbdbfc0bc68e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
