@@ -547,7 +547,10 @@ func dumpOatRules(ctx android.SingletonContext, image *bootImageConfig) {
 	var allPhonies android.Paths
 	for _, image := range image.variants {
 		arch := image.target.Arch.ArchType
-		suffix := image.target.String()
+		suffix := arch.String()
+		if image.target.Os.Class == android.Host {
+			suffix = "host-" + suffix
+		}
 		// Create a rule to call oatdump.
 		output := android.PathForOutput(ctx, "boot."+suffix+".oatdump.txt")
 		rule := android.NewRuleBuilder()
