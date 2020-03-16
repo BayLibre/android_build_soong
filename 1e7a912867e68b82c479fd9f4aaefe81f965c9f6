@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "dbf58605_4cd50b84",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-16T15:58:04Z",
+      "side": 1,
+      "message": "There is nothing stopping this method being called on a Prebuilt object that has not been initialized in which case this produces a more useful error message than a nil access panic. Again it is replicating previous behavior.",
+      "parentUuid": "6e6f57f8_755aa6af",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d11707d_e9b5bfca",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7013aa6b_43f28a15",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-16T15:58:04Z",
+      "side": 1,
+      "message": "They preserve the existing behavior of failing fast if nil or empty string is passed. I think the checks are worth having as the alternative if passing an invalid value is a failure elsewhere which would be difficult to debug.",
+      "parentUuid": "1d11707d_e9b5bfca",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "321cb724_738e7fa4",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-16T15:58:04Z",
+      "side": 1,
+      "message": "While the previous code did not fail here when passing nil it did result in a confusing error message later on explaining that this method had not been called, when it fact it was. A failure here is much easier to debug.",
+      "parentUuid": "79469cd9_aa33f2e7",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36efcd01_128753fd",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -114,6 +186,30 @@
       "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b937960_11a55578",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-16T15:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36efcd01_128753fd",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "293ad95c_019374bc",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-16T15:58:04Z",
+      "side": 1,
+      "message": "Probably. I just refactored the existing code as this code is quite complicated and I wanted to avoid making any unnecessary changes that could introduce behavioral changes.\n\nPersonally, I think that the complexity of this code is too high and it would be better and simpler to have all the code that invokes this method simply provide a custom supplier and delete this code altogether. I would rather leave this code as is in this change and make any significant changes (which are unrelated to the cc_prebuilt_library changes which require this) in a separate change. See https://r.android.com/1259827.",
+      "parentUuid": "245d5c0d_346ab126",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 87
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d1b167e_9770aff2",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "32d89988_3a7d276f",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-16T15:58:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1b167e_9770aff2",
+      "range": {
+        "startLine": 235,
+        "startChar": 58,
+        "endLine": 235,
+        "endChar": 79
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3225882f_b1bcbf83",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -183,6 +327,30 @@
       "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52823e87_627a30b0",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-16T15:58:04Z",
+      "side": 1,
+      "message": "On one path to this method it is checked (as it is an error if it is not set) but on the other path to this method it is not checked and could be set. At least that is how the previous code behaved and tests fail if this check is not present.",
+      "parentUuid": "3225882f_b1bcbf83",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
