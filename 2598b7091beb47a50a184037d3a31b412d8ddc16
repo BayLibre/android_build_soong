@@ -122,6 +122,24 @@
       "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d51f5039_a293f12d",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-16T23:32:56Z",
+      "side": 1,
+      "message": "That wasn\u0027t quite right: I had to remove the compile_multilib:both lines from the unit tests, but my runtime-module-sdk test didn\u0027t get them regardless, I don\u0027t know why.",
+      "parentUuid": "11034374_8210b9fa",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
