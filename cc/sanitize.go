@@ -307,8 +307,8 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		}
 	}
 
-	// Is CFI actually enabled?
-	if !ctx.Config().EnableCFI() {
+	// CFI needs gold linker, and mips toolchain does not have one.
+	if !ctx.Config().EnableCFI() || ctx.Arch().ArchType == android.Mips || ctx.Arch().ArchType == android.Mips64 {
 		s.Cfi = nil
 		s.Diag.Cfi = nil
 	}

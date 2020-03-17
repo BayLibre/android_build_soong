@@ -17,6 +17,7 @@ package cc
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/google/blueprint"
 
@@ -129,6 +130,14 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	m.licensePath = android.PathForModuleSrc(ctx, String(m.properties.License))
+
+	// When generating NDK prebuilts, skip installing MIPS headers,
+	// but keep them when doing regular platform build.
+	// Ndk_abis property is only set to true with build/soong/scripts/build-ndk-prebuilts.sh
+	// TODO: Revert this once MIPS is supported in NDK again.
+	if ctx.Config().NdkAbis() && strings.Contains(ctx.ModuleName(), "mips") {
+		return
+	}
 
 	srcFiles := android.PathsForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs)
 	for _, header := range srcFiles {
