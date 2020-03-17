@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "5b39a871_f2b76ded",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-17T13:38:40Z",
+      "side": 1,
+      "message": "The cc_object, cc_library, cc_library_shared, cc_library_static, cc_library_headers are all supported using the same code base with some tweaks to cope with the different criteria of each.\n\nCurrently, the sdk member support for cc_library (when submitted), cc_library_shared, cc_library_static, cc_library_headers all use the same code base in a similar way.\n\nIt would be very inconsistent for cc_object to be different to all the others. It opens up the possibility that differences in behavior will creep in between cc_object and the others, makes any refactorings of the sdk (more are coming) slightly more expensive and can lead to further duplication if it does need to support functionality that is already supported by librarySdkMemberType.\n\nThe librarySdkMemberType code can already handle cc_library_headers which does not have the concept of static/shared so that is already in there. It would need tweaking to differentiate between cc_library_headers (no link types, no object file) and cc_object (no link types, has object file).\n\nYou also mentioned \u0027stl\u0027 but based on your test you specify stl: \"none\" on the cc_object but it does not seem to be supported on cc_prebuilt_object. If it has no effect on cc_object then it should not be specified on it for the test. If it does have an effect on cc_object then maybe it should also be supported on the cc_prebuilt_object.\n\nI understand where you\u0027re coming from with the library code becoming overly complicated trying to deal with too many different types (and the binary/library duplication of some code) but I think a better solution is to refactor the library code to extract what is common and push the type specific functionality down to each type not simply duplicating all of this code.\n\nWhat are the specific tweaks needed in librarySdkMemberType to support cc_object?\n* Differentiate between cc_library_headers and cc_object.\n\nAnything else?",
+      "parentUuid": "ccd326c4_2fb84690",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65e3c83c_5a33a49c",
         "filename": "cc/object_sdk_member.go",
         "patchSetId": 2
@@ -140,6 +158,23 @@
       "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "090cef4e_b06875ee",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-17T13:38:40Z",
+      "side": 1,
+      "message": "This does not seem to have been registered for the tests to use. You need to register it in RegisterRequiredBuildComponentsForTest().",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
