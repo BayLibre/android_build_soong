@@ -519,6 +519,30 @@
       "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2652f7e9_8c4bf776",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-17T13:46:16Z",
+      "side": 1,
+      "message": "\u003e You\u0027ve replaced srcs with the *return value* from srcsSupplier.\n\nsrcs is *[]string which is equivalent to srcsSupplier.\n*srcs is []string which is the return value from srcsSupplier.\n\nIf I don\u0027t allow for srcsSupplier to be nil I change the behavior of the usePrebuilt() method as it will now fail if an Init... method had not been called on the Prebuilt. That would be equivalent to the previous code failing if srcs was nil and srcProps was not valid.\n\nNow, it may be that change is ok (it certainly doesn\u0027t break any unit tests) but it is a change in behavior which I wanted to avoid as much as possible in this change. The purpose of this change was simply to allow for custom suppliers to be added not to change existing behavior.",
+      "parentUuid": "33cf5d52_afb4b1a3",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
