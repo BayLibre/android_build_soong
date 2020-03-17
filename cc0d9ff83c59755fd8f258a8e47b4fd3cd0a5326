@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff090939_09d3c96d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-17T05:44:08Z",
+      "side": 1,
+      "message": "I wish this was done as a separate CL, which would have given me enough confidence to approve this change.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "cc0d9ff83c59755fd8f258a8e47b4fd3cd0a5326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

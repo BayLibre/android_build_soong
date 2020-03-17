@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a872ebcc_1631c85a",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-17T05:44:08Z",
+      "side": 0,
+      "message": "this part seems to have been refactored a lot. It was difficult for me to track the differences. Thus I am not confident here.",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 874,
+        "endChar": 3
+      },
+      "revId": "bce90daf45f712c3b752805cd993c6cd5e2b3f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
