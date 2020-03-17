@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54ad96df_600e9df7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T02:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9b5b001_80fab31a",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 40
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e6f57f8_755aa6af",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b3e0ba6b_8810e96d",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T02:35:00Z",
+      "side": 1,
+      "message": "Let\u0027s discuss in the other comment.",
+      "parentUuid": "dbf58605_4cd50b84",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d11707d_e9b5bfca",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "They preserve the existing behavior of failing fast if nil or empty string is passed. I think the checks are worth having as the alternative if passing an invalid value is a failure elsewhere which would be difficult to debug.",
       "parentUuid": "1d11707d_e9b5bfca",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7ec5b35_13d6abc1",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T02:35:00Z",
+      "side": 1,
+      "message": "It relates to my other comment below about silently carrying on when srcsSupplier isn\u0027t set. If that doesn\u0027t happen it\u0027d be a crash with an obvious stack trace whenever p.srcsSupplier() is called.\n\nAs for srcsPropertyName, afaics it\u0027s only used in messages. In that case it seems checking for \"\" is just ad-hoc - it could still be anything else that\u0027s also not the right name. And Go normally doesn\u0027t conjure up empty strings implicitly either. But very well, this one might not be in scope here.",
+      "parentUuid": "7013aa6b_43f28a15",
       "range": {
         "startLine": 108,
         "startChar": 0,
@@ -260,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "021e0c4e_0b565070",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T02:35:00Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "293ad95c_019374bc",
+      "range": {
+        "startLine": 138,
+        "startChar": 4,
+        "endLine": 138,
+        "endChar": 87
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d1b167e_9770aff2",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -351,6 +447,30 @@
       "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4017071a_311bdffa",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T02:35:00Z",
+      "side": 1,
+      "message": "Isn\u0027t srcsSupplier added in this CL? Then there\u0027s no previous behaviour. It\u0027d be simpler if it can always be assumed to be set, and just crash if not. It may perhaps make sense to allow it to return nil, although judging from the comment you added there\u0027s no difference between nil and an empty array, so I think it\u0027d be better to not allow that either.\n\nIf there are code paths that need a dummy srcsSupplier that only returns an empty array then so be it; less tolerance for different representations is still better.",
+      "parentUuid": "52823e87_627a30b0",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

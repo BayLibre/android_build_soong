@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5318f963_55557520",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T02:35:00Z",
+      "side": 1,
+      "message": "Please fix.",
+      "parentUuid": "04d0a57f_f7c6e810",
+      "range": {
+        "startLine": 115,
+        "startChar": 58,
+        "endLine": 115,
+        "endChar": 67
+      },
+      "revId": "f2e40d880c36eaadf81faec75fcbdbfc0bc68e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
