@@ -22,6 +22,30 @@
       "revId": "bce90daf45f712c3b752805cd993c6cd5e2b3f37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf00eb0_b1eb2914",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-17T16:38:09Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "a872ebcc_1631c85a",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 874,
+        "endChar": 3
+      },
+      "revId": "bce90daf45f712c3b752805cd993c6cd5e2b3f37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
