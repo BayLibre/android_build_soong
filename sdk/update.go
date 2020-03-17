@@ -1084,6 +1084,8 @@ func newLinkSpecificInfo(ctx *memberPropertiesContext, linkType string, variantP
 type memberPropertiesContext struct {
 	sdkMemberContext android.ModuleContext
 	builder          *snapshotBuilder
+	memberType       android.SdkMemberType
+	name             string
 }
 
 func (m *memberPropertiesContext) SdkModuleContext() android.ModuleContext {
@@ -1094,11 +1096,19 @@ func (m *memberPropertiesContext) SnapshotBuilder() android.SnapshotBuilder {
 	return m.builder
 }
 
+func (m *memberPropertiesContext) MemberType() android.SdkMemberType {
+	return m.memberType
+}
+
+func (m *memberPropertiesContext) Name() string {
+	return m.name
+}
+
 func (s *sdk) createMemberSnapshot(sdkModuleContext android.ModuleContext, builder *snapshotBuilder, member *sdkMember, bpModule android.BpModule) {
 
 	memberType := member.memberType
 
-	ctx := &memberPropertiesContext{sdkModuleContext, builder}
+	ctx := &memberPropertiesContext{sdkModuleContext, builder, memberType, member.name}
 
 	// Group the variants by os type.
 	variantsByOsType := make(map[android.OsType][]android.Module)
