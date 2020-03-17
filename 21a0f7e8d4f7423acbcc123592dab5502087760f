@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b90f593_f9a93daf",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1878,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-17T06:40:45Z",
+      "side": 1,
+      "message": "The main difference between the reset and this branch is `stubsVersionsFor(actx.Config())[baseModuleName]`.\n(And I wanted to be specific about the conditions where this rule is applied: useVndk\u0027s llndk dep).\n\nBy storing stubsVersions for LLNDK libs in VersionMutator, I removed this branch.",
+      "parentUuid": "f9f593b5_e4f23518",
+      "range": {
+        "startLine": 1863,
+        "startChar": 0,
+        "endLine": 1878,
+        "endChar": 3
+      },
+      "revId": "21a0f7e8d4f7423acbcc123592dab5502087760f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf07f8a8_9fcd052a",
         "filename": "cc/library.go",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "7554e5c6_c2099dd8",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1527,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-17T06:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf07f8a8_9fcd052a",
+      "revId": "21a0f7e8d4f7423acbcc123592dab5502087760f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a57ada86_eaf7c3ad",
         "filename": "cc/library.go",
         "patchSetId": 5
@@ -56,6 +98,24 @@
       "revId": "21a0f7e8d4f7423acbcc123592dab5502087760f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b108ddc_b90782ec",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-17T06:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a57ada86_eaf7c3ad",
+      "revId": "21a0f7e8d4f7423acbcc123592dab5502087760f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
