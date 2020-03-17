@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a258bccf_e68d35eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-17T11:07:40Z",
+      "side": 1,
+      "message": "Maybe we need more intuitive names then dump-oat-boot-android_arm_armv8-a_cortex-a73\n\nI am happy to debate renaming on LUCI changes, but I would prefer committing this for now to fix tests.",
+      "parentUuid": "68f541de_de5b6e73",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52a8970b_ebbf9585",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d9e26e_b04110d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-17T11:07:40Z",
+      "side": 1,
+      "message": "That is the issue Vladimir mentioned.\nI tested locally on x86 lunch target so it seemed to work for me.\nBut it is still broken on ARM and needs more work to fix.\nI will do a quick fix to fix Vladimirs flow now, and do proper fix later.\n(note that dump-oat-boot-host-x86 didn\u0027t exist before, so I would not call it a regression)",
+      "parentUuid": "52a8970b_ebbf9585",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "edd5ca06b56519862845ab9bdaed8b8231825e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
