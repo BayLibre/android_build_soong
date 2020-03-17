@@ -495,6 +495,30 @@
       "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33cf5d52_afb4b1a3",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T12:23:25Z",
+      "side": 1,
+      "message": "\u003e The srcsSupplier is new but it replaces srcs \n\nNo. You\u0027ve replaced srcs with the *return value* from srcsSupplier. There\u0027s still an opportunity to avoid dealing with srcsSupplier itself being null, without affecting the old logic.\n\nIn fact, it looks possible to do away with the srcsSupplier pointer entirely by splitting Prebuilt into an interface and a base struct, and instead let InitPrebuiltModuleWithSrcSupplier take the implementation struct. I wouldn\u0027t necessarily go that far, though.",
+      "parentUuid": "83fba803_a4f401ba",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "1e7a912867e68b82c479fd9f4aaefe81f965c9f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
