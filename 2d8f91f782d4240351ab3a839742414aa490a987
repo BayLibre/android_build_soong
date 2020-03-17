@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7eb2b2b6_d6313c04",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T01:48:52Z",
+      "side": 1,
+      "message": "I first thought this did some kind of translation between different kinds of variation identifiers, whereas it actually looks up the variation value. Suggest something along the lines of GetVariationByMutatorName instead (but maybe moot depending on the comment below).",
+      "range": {
+        "startLine": 990,
+        "startChar": 21,
+        "endLine": 990,
+        "endChar": 44
+      },
+      "revId": "2d8f91f782d4240351ab3a839742414aa490a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e805873d_9249ef81",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-17T01:48:52Z",
+      "side": 1,
+      "message": "I\u0027ve wanted something similar to this a few times, but I thought there was a design decision behind the lack of support for it. Judging from existing patterns, a more consistent approach would be to instead add BaseModuleContext.LinkType(), similar to the existing Arch(), Os(), etc.",
+      "range": {
+        "startLine": 991,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 2
+      },
+      "revId": "2d8f91f782d4240351ab3a839742414aa490a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
