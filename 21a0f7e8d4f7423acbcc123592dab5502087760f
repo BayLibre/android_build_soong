@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9f593b5_e4f23518",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1878,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-17T05:50:54Z",
+      "side": 1,
+      "message": "hmm, do we still need this even when !ctx.useVndk() is removed below?",
+      "range": {
+        "startLine": 1863,
+        "startChar": 0,
+        "endLine": 1878,
+        "endChar": 3
+      },
+      "revId": "21a0f7e8d4f7423acbcc123592dab5502087760f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf07f8a8_9fcd052a",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1527,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-17T05:50:54Z",
+      "side": 1,
+      "message": "add a new line to make it explicit that these blocks are independent from each other",
+      "revId": "21a0f7e8d4f7423acbcc123592dab5502087760f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57ada86_eaf7c3ad",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-17T05:50:54Z",
+      "side": 1,
+      "message": "here as well",
+      "revId": "21a0f7e8d4f7423acbcc123592dab5502087760f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
