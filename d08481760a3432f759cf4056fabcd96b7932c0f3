@@ -22,6 +22,30 @@
       "revId": "d08481760a3432f759cf4056fabcd96b7932c0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b382280_b6a80f17",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2334,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-17T13:38:24Z",
+      "side": 1,
+      "message": "No, this is the path to the *.vdex file (not *.art or *.oat file). I know it\u0027s confusing, but I\u0027m only iterating over artAndOatFiles in the inner loop to get all architectures that need a symlink. I have added comments to clarify this.",
+      "parentUuid": "2ce4099c_2fa67947",
+      "range": {
+        "startLine": 2334,
+        "startChar": 81,
+        "endLine": 2334,
+        "endChar": 85
+      },
+      "revId": "d08481760a3432f759cf4056fabcd96b7932c0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
