@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e004581_c7819449",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-18T08:03:25Z",
+      "side": 1,
+      "message": "Was this requested in the bug? It was about stemp not being respected; it wasn\u0027t about \u0027name\u0027.\n\nThis could be a breaking change for those who have been accessing the prebuilt lib at runtime via its srcfile name (libf.so). I am not sure how destructive this change would be.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 65
+      },
+      "revId": "578562086bbf2f992333fec8aa1db3068951ce2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914114fe_d3555cbb",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-18T08:03:25Z",
+      "side": 1,
+      "message": "name of an archive doesn\u0027t really matter, does it?",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 63
+      },
+      "revId": "578562086bbf2f992333fec8aa1db3068951ce2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
