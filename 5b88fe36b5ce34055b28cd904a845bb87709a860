@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "908db330_3d3c9472",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2337,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-18T20:09:42Z",
+      "side": 1,
+      "message": "I found that symlinks to different directories doesn\u0027t supported.\nhttps://source.corp.google.com/aosp-master/build/make/core/base_rules.mk;l\u003d492?q\u003dbase_rules.mk\u0026sq\u003dpackage:aosp-master\n\nFor flattened apexes, symlinks are handled by .mk but I found that symlinks are pointing wrong paths like..\n/system/apex/com.android.art.debug/javalib/x86/boot-apache-xml.vdex ⇒ boot-apache-xml.vdex instead of ../boot-apache-xml.vdex.\n\nWe might need to fix base_rules.mk to support symlinks to different directories or to fix apex/androidmk.go to workaround symlinks not relying on LOCAL_MODULE_SYMLINKS",
+      "range": {
+        "startLine": 2337,
+        "startChar": 0,
+        "endLine": 2337,
+        "endChar": 97
+      },
+      "revId": "5b88fe36b5ce34055b28cd904a845bb87709a860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
