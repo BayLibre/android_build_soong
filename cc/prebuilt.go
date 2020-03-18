@@ -108,26 +108,47 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 
 		in := android.PathForModuleSrc(ctx, srcs[0])
 
+		libName := p.libraryDecorator.getLibName(ctx) + p.libraryExtension(flags)
+		outputFile := android.PathForModuleOut(ctx, libName)
+
 		if p.shared() {
 			p.unstrippedOutputFile = in
-			libName := p.libraryDecorator.getLibName(ctx) + flags.Toolchain.ShlibSuffix()
 			if p.needsStrip(ctx) {
 				stripped := android.PathForModuleOut(ctx, "stripped", libName)
 				p.stripExecutableOrSharedLib(ctx, in, stripped, builderFlags)
 				in = stripped
 			}
+		}
 
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        android.Cp,
+			Description: "prebuilt library",
+			Output:      outputFile,
+			Input:       in,
+		})
+
+		if p.shared() {
 			// Optimize out relinking against shared libraries whose interface hasn't changed by
 			// depending on a table of contents file instead of the library itself.
 			tocFile := android.PathForModuleOut(ctx, libName+".toc")
 			p.tocFile = android.OptionalPathForPath(tocFile)
-			TransformSharedObjectToToc(ctx, in, tocFile, builderFlags)
+			TransformSharedObjectToToc(ctx, outputFile, tocFile, builderFlags)
 		}
 
-		return in
+		return outputFile
 	}
 
 	return nil
+}
+
+func (p *prebuiltLibraryLinker) libraryExtension(flags Flags) string {
+	if p.static() {
+		return staticLibraryExtension
+	}
+	if p.shared() {
+		return flags.Toolchain.ShlibSuffix()
+	}
+	return ""
 }
 
 func (p *prebuiltLibraryLinker) prebuiltSrcs() []string {

@@ -167,7 +167,7 @@ func TestPrebuiltLibraryShared(t *testing.T) {
 	`)
 
 	shared := ctx.ModuleForTests("libtest", "android_arm64_armv8-a_shared").Module().(*Module)
-	assertString(t, shared.OutputFile().String(), "libf.so")
+	assertString(t, shared.OutputFile().Path().Base(), "libtest.so")
 }
 
 func TestPrebuiltLibraryStatic(t *testing.T) {
@@ -179,7 +179,7 @@ func TestPrebuiltLibraryStatic(t *testing.T) {
 	`)
 
 	static := ctx.ModuleForTests("libtest", "android_arm64_armv8-a_static").Module().(*Module)
-	assertString(t, static.OutputFile().String(), "libf.a")
+	assertString(t, static.OutputFile().Path().Base(), "libtest.a")
 }
 
 func TestPrebuiltLibrary(t *testing.T) {
@@ -199,8 +199,48 @@ func TestPrebuiltLibrary(t *testing.T) {
 	`)
 
 	shared := ctx.ModuleForTests("libtest", "android_arm64_armv8-a_shared").Module().(*Module)
-	assertString(t, shared.OutputFile().String(), "libf.so")
+	assertString(t, shared.OutputFile().Path().Base(), "libtest.so")
 
 	static := ctx.ModuleForTests("libtest", "android_arm64_armv8-a_static").Module().(*Module)
-	assertString(t, static.OutputFile().String(), "libf.a")
+	assertString(t, static.OutputFile().Path().Base(), "libtest.a")
+}
+
+func TestPrebuiltLibraryStem(t *testing.T) {
+	ctx := testPrebuilt(t, `
+	cc_prebuilt_library {
+		name: "libfoo",
+		stem: "libbar",
+		static: {
+			srcs: ["libf.a"],
+		},
+		shared: {
+			srcs: ["libf.so"],
+		},
+		strip: {
+			none: true,
+		},
+	}
+	`)
+
+	static := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_static").Module().(*Module)
+	assertString(t, static.OutputFile().Path().Base(), "libbar.a")
+
+	shared := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared").Module().(*Module)
+	assertString(t, shared.OutputFile().Path().Base(), "libbar.so")
+}
+
+func TestPrebuiltLibrarySharedStem(t *testing.T) {
+	ctx := testPrebuilt(t, `
+	cc_prebuilt_library_shared {
+		name: "libfoo",
+		stem: "libbar",
+		srcs: ["libf.so"],
+		strip: {
+			none: true,
+		},
+	}
+	`)
+
+	shared := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared").Module().(*Module)
+	assertString(t, shared.OutputFile().Path().Base(), "libbar.so")
 }
