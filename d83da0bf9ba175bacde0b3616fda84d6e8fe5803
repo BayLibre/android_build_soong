@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b097bbd6_f046a1d5",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-18T03:49:16Z",
+      "side": 1,
+      "message": "Review note: Setting this afterwards only starts to make sense in https://r.android.com/1260803",
+      "range": {
+        "startLine": 832,
+        "startChar": 30,
+        "endLine": 832,
+        "endChar": 46
+      },
+      "revId": "d83da0bf9ba175bacde0b3616fda84d6e8fe5803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6623641d_b65b886e",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-18T03:49:16Z",
+      "side": 1,
+      "message": "Review note: This business with lexical binding, instead of passing osType as argument like the old code did, only starts to make sense in the child CL.",
+      "range": {
+        "startLine": 848,
+        "startChar": 26,
+        "endLine": 848,
+        "endChar": 32
+      },
+      "revId": "d83da0bf9ba175bacde0b3616fda84d6e8fe5803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b9aa8f0_cabf10b3",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-18T03:49:16Z",
+      "side": 1,
+      "message": "Nit: Does it serve any purpose to feed an error object to panic() instead of a string?",
+      "range": {
+        "startLine": 885,
+        "startChar": 15,
+        "endLine": 885,
+        "endChar": 21
+      },
+      "revId": "d83da0bf9ba175bacde0b3616fda84d6e8fe5803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3596a1d_cdbbe6fc",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-18T03:49:16Z",
+      "side": 1,
+      "message": "Move this into the else branch above where there\u0027s more than one arch?",
+      "range": {
+        "startLine": 899,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 85
+      },
+      "revId": "d83da0bf9ba175bacde0b3616fda84d6e8fe5803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
