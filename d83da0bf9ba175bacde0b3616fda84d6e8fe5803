@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "d2e82ce7_d0056b6d",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-18T11:35:46Z",
+      "side": 1,
+      "message": "I honestly don\u0027t know.\n\nThere are:\n~140 usages of panic(\"\n~50 usages of panic(fmt.Sprintf\n~198 usages of panic(fmt.Errorf\n\nPresumably the first is used when the string is constant, the latter two forms when it is parameterized in some way. So, using fmt.Errorf() is the most popular choice for doing that. The fmt.Errorf() function does have some additional capabilities such as wrapping another error which can be tested for later. The errors package (https://golang.org/pkg/errors/) has more information on it.\n\nI chose to use fmt.Errorf() because it was more common than fmt.Sprintf() and seems semantically more useful.",
+      "parentUuid": "5b9aa8f0_cabf10b3",
+      "range": {
+        "startLine": 885,
+        "startChar": 15,
+        "endLine": 885,
+        "endChar": 21
+      },
+      "revId": "d83da0bf9ba175bacde0b3616fda84d6e8fe5803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3596a1d_cdbbe6fc",
         "filename": "sdk/update.go",
         "patchSetId": 1
@@ -91,6 +115,30 @@
       "revId": "d83da0bf9ba175bacde0b3616fda84d6e8fe5803",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b1a0e9_977abcdc",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-18T11:35:46Z",
+      "side": 1,
+      "message": "They are separate because the population of the properties from the variant and the optimization of the properties are two separate steps. Follow up changes will move the code into separate methods.",
+      "parentUuid": "c3596a1d_cdbbe6fc",
+      "range": {
+        "startLine": 899,
+        "startChar": 0,
+        "endLine": 905,
+        "endChar": 85
+      },
+      "revId": "d83da0bf9ba175bacde0b3616fda84d6e8fe5803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
