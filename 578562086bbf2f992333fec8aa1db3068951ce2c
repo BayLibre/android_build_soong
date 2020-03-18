@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78efc2e3_9e3dbc92",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-03-18T08:13:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure too, hope Dan can give some insights..\nFrom what I observed, this is the same behavior when we install prebuilt with $(BUILD_PREBUILT), the install name is modules name + suffix or stem + suffix.\nIMO, to have module install name to rely on source name just sounds error prone.\nI\u0027m trying to run some pre-submit build to make sure this doesn\u0027t break anything, but I suspect the impact should be minimal as we don\u0027t have that many soong prebuilt modules (compared to Android.mk prebuilts).\nHowever I\u0027m encountering some build errors, I guess is related to CleanSpec.mk, and merge error too, so I\u0027m testing from internal ag/10708605",
+      "parentUuid": "2e004581_c7819449",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 65
+      },
+      "revId": "578562086bbf2f992333fec8aa1db3068951ce2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "914114fe_d3555cbb",
         "filename": "cc/prebuilt_test.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-18T08:03:25Z",
       "side": 1,
       "message": "name of an archive doesn\u0027t really matter, does it?",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 63
+      },
+      "revId": "578562086bbf2f992333fec8aa1db3068951ce2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cdb5476_44d5dc7d",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-03-18T08:13:11Z",
+      "side": 1,
+      "message": "I think archives are never installed, not on device and not on host? so doesn\u0027t matter, i think so ..?",
+      "parentUuid": "914114fe_d3555cbb",
       "range": {
         "startLine": 226,
         "startChar": 1,
