@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3cc9dde_024cd423",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-18T04:07:22Z",
+      "side": 0,
+      "message": "Reviewer\u0027s note: Basically everything above this line moves into newOsTypeSpecificInfo, the rest of the stuff in the loop moves into osInfo.optimizeProperties.",
+      "revId": "8b070847d1081fc987cb5a860f6ee7f2703eb228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
