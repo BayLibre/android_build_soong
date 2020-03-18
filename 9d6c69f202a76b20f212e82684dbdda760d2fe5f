@@ -22,6 +22,30 @@
       "revId": "9d6c69f202a76b20f212e82684dbdda760d2fe5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97179724_8a191aa7",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-18T11:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5371054_0e400fd4",
+      "range": {
+        "startLine": 808,
+        "startChar": 26,
+        "endLine": 811,
+        "endChar": 57
+      },
+      "revId": "9d6c69f202a76b20f212e82684dbdda760d2fe5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
