@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ec76bcbb_33219731",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-18T12:50:30Z",
+      "side": 1,
+      "message": "I think LinkType() string is a better method to use, will rename this method along the lines you suggest but make it a private implementation detail rather than a publicly accessible method.",
+      "parentUuid": "7eb2b2b6_d6313c04",
+      "range": {
+        "startLine": 990,
+        "startChar": 21,
+        "endLine": 990,
+        "endChar": 44
+      },
+      "revId": "2d8f91f782d4240351ab3a839742414aa490a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e805873d_9249ef81",
         "filename": "android/module.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "2d8f91f782d4240351ab3a839742414aa490a987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b29454_d30e89c8",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-18T12:50:30Z",
+      "side": 1,
+      "message": "Unfortunately, that won\u0027t work because the BaseModuleContext only supplies information on the current variant that is being processed in a mutator. The code that uses this needs to access the information from any variant.\n\nThe Arch(), Os() etc is available via the Module.Target() Target method as it is encapsulated inside Target you just have to extract it yourself.\n\nI am not sure why Target does not include things like link type and image as they seem to be part of what differentiates one \u0027target\u0027 from another but the documentation does not explain what role Target is supposed to fulfill.",
+      "parentUuid": "e805873d_9249ef81",
+      "range": {
+        "startLine": 991,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 2
+      },
+      "revId": "2d8f91f782d4240351ab3a839742414aa490a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
