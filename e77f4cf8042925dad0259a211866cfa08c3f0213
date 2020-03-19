@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "67cd0b85_8d3d1a02",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-19T23:15:28Z",
+      "side": 1,
+      "message": "ImageVariant is provided here because the android package provides the imageMutator, which is why it can be implemented without reaching into DebugMutators, which is only intended for debugging.\n\nWhy would android.Module need to provide LinkType?  You can create whatever interface you want and type assert to it, and then implement it in the modules that participate in the linkageMutator.",
+      "parentUuid": "d6bfaeba_2be7a536",
+      "range": {
+        "startLine": 996,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 43
+      },
+      "revId": "e77f4cf8042925dad0259a211866cfa08c3f0213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc314585_67a3cf3d",
         "filename": "sdk/update.go",
         "patchSetId": 8
