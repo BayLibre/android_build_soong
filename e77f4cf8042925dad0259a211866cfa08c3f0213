@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a91c55f_da0cdee2",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-19T03:58:50Z",
+      "side": 1,
+      "message": "this looks like a dependency inversion. the android package shouldn\u0027t be aware of the cc package. Colin might want to chime in.",
+      "range": {
+        "startLine": 996,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 43
+      },
+      "revId": "e77f4cf8042925dad0259a211866cfa08c3f0213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc314585_67a3cf3d",
+        "filename": "sdk/update.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-19T03:58:50Z",
+      "side": 1,
+      "message": "can we do this in cc/library_sdk_member? i.e. when archInfo.Properties.AddToPropertySet is called?",
+      "range": {
+        "startLine": 1023,
+        "startChar": 0,
+        "endLine": 1026,
+        "endChar": 2
+      },
+      "revId": "e77f4cf8042925dad0259a211866cfa08c3f0213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9639b3_ce81ed86",
+        "filename": "sdk/update.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-19T03:58:50Z",
+      "side": 1,
+      "message": "nit: style",
+      "range": {
+        "startLine": 1037,
+        "startChar": 24,
+        "endLine": 1040,
+        "endChar": 52
+      },
+      "revId": "e77f4cf8042925dad0259a211866cfa08c3f0213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
