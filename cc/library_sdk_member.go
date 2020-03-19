@@ -332,7 +332,7 @@ type nativeLibInfoProperties struct {
 	outputFile android.Path
 }
 
-func (p *nativeLibInfoProperties) PopulateFromVariant(variant android.SdkAware) {
+func (p *nativeLibInfoProperties) PopulateFromVariant(ctx android.SdkMemberPropertiesContext, variant android.Module) {
 	ccModule := variant.(*Module)
 
 	// If the library has some link types then it produces an output binary file, otherwise it
@@ -365,6 +365,6 @@ func (p *nativeLibInfoProperties) PopulateFromVariant(variant android.SdkAware) 
 	p.exportedGeneratedHeaders = ccModule.ExportedGeneratedHeaders()
 }
 
-func (p *nativeLibInfoProperties) AddToPropertySet(sdkModuleContext android.ModuleContext, builder android.SnapshotBuilder, propertySet android.BpPropertySet) {
-	addPossiblyArchSpecificProperties(sdkModuleContext, builder, p, propertySet)
+func (p *nativeLibInfoProperties) AddToPropertySet(ctx android.SdkMemberPropertiesContext, propertySet android.BpPropertySet) {
+	addPossiblyArchSpecificProperties(ctx.SdkModuleContext(), ctx.SnapshotBuilder(), p, propertySet)
 }

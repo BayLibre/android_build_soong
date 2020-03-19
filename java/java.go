@@ -1926,15 +1926,18 @@ type librarySdkMemberProperties struct {
 	jarToExport android.Path
 }
 
-func (p *librarySdkMemberProperties) PopulateFromVariant(variant android.SdkAware) {
+func (p *librarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMemberPropertiesContext, variant android.Module) {
 	j := variant.(*Library)
 
 	p.library = j
 	p.jarToExport = p.memberType.jarToExportGetter(j)
 }
 
-func (p *librarySdkMemberProperties) AddToPropertySet(sdkModuleContext android.ModuleContext, builder android.SnapshotBuilder, propertySet android.BpPropertySet) {
+func (p *librarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberPropertiesContext, propertySet android.BpPropertySet) {
 	if p.jarToExport != nil {
+		sdkModuleContext := ctx.SdkModuleContext()
+		builder := ctx.SnapshotBuilder()
+
 		exportedJar := p.jarToExport
 		snapshotRelativeJavaLibPath := sdkSnapshotFilePathForJar(p.OsPrefix(), p.library.Name())
 		builder.CopyToSnapshot(exportedJar, snapshotRelativeJavaLibPath)
@@ -2128,7 +2131,7 @@ type testSdkMemberProperties struct {
 	jarToExport android.Path
 }
 
-func (p *testSdkMemberProperties) PopulateFromVariant(variant android.SdkAware) {
+func (p *testSdkMemberProperties) PopulateFromVariant(ctx android.SdkMemberPropertiesContext, variant android.Module) {
 	test := variant.(*Test)
 
 	implementationJars := test.ImplementationJars()
@@ -2140,8 +2143,10 @@ func (p *testSdkMemberProperties) PopulateFromVariant(variant android.SdkAware) 
 	p.jarToExport = implementationJars[0]
 }
 
-func (p *testSdkMemberProperties) AddToPropertySet(sdkModuleContext android.ModuleContext, builder android.SnapshotBuilder, propertySet android.BpPropertySet) {
+func (p *testSdkMemberProperties) AddToPropertySet(ctx android.SdkMemberPropertiesContext, propertySet android.BpPropertySet) {
 	if p.jarToExport != nil {
+		builder := ctx.SnapshotBuilder()
+
 		snapshotRelativeJavaLibPath := sdkSnapshotFilePathForJar(p.OsPrefix(), p.test.Name())
 		builder.CopyToSnapshot(p.jarToExport, snapshotRelativeJavaLibPath)
 

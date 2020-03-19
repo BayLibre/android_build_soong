@@ -491,6 +491,16 @@ func (b *SdkMemberPropertiesBase) Base() *SdkMemberPropertiesBase {
 	return b
 }
 
+// Provides access to information common to a specific member.
+type SdkMemberPropertiesContext interface {
+
+	// The module context of the sdk common os variant which is creating the snapshot.
+	SdkModuleContext() ModuleContext
+
+	// The builder of the snapshot.
+	SnapshotBuilder() SnapshotBuilder
+}
+
 // Interface to be implemented on top of a structure that contains variant specific
 // information.
 //
@@ -500,9 +510,9 @@ type SdkMemberProperties interface {
 	// Access the base structure.
 	Base() *SdkMemberPropertiesBase
 
-	// Populate the structure with information from the variant.
-	PopulateFromVariant(variant SdkAware)
+	// Populate this structure with information from the variant.
+	PopulateFromVariant(ctx SdkMemberPropertiesContext, variant Module)
 
-	// Add the information from the structure to the property set.
-	AddToPropertySet(sdkModuleContext ModuleContext, builder SnapshotBuilder, propertySet BpPropertySet)
+	// Add the information from this structure to the property set.
+	AddToPropertySet(ctx SdkMemberPropertiesContext, propertySet BpPropertySet)
 }
