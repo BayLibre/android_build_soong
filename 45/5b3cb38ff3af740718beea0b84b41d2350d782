@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Autosubmit+1: Bob Badour <bbadour@google.com>
+Presubmit-Ready+1: Bob Badour <bbadour@google.com>
+Code-Review+2: Patrice Arruda <patricearruda@google.com>
+Code-Review+1: Dan Willemsen <dwillemsen@google.com>
+Submitted-by: Bob Badour <bbadour@google.com>
+Submitted-at: Thu, 19 Mar 2020 01:02:57 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1261505
+Project: platform/build/soong
+Branch: refs/heads/master
