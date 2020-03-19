@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca91e3fa_3b964d41",
+        "filename": "ui/status/log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-19T15:04:03Z",
+      "side": 1,
+      "message": "How about a more explicit check like len(e.errorProto.ActionErrors) \u003e 0?",
+      "revId": "934579f69aeff7a7c018a72283d8f5da05cc1865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
