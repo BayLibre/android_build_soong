@@ -193,6 +193,24 @@
       "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28965e29_09fabb8e",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-19T04:17:01Z",
+      "side": 1,
+      "message": "(Missed this, sorry.)\n\nIt\u0027s registered through RegisterPrebuiltBuildComponents. (If it wasn\u0027t, the tests would fail, wouldn\u0027t they?)",
+      "parentUuid": "090cef4e_b06875ee",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
