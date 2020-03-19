@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "b929525b_ed61d920",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-19T14:52:05Z",
+      "side": 1,
+      "message": "binarySdkMemberType should share more functionality with librarySdkMemberType for reasons that I will cover below.\n\n#1 adding stl is not such a bad idea. In fact I think that you might have to do that. Either that or change the behavior around stl (and maybe sdk_version) for prebuilts. The reason I think that is because I recently came across an issue with cc_prebuilt_binary where it was failing because it could not find a suitable variant of some c++ library. Setting stl: \"none\" fixed it.\n\nI think having stl setting supported on cc_prebuilt_binary is necessary to ensure that the appopriate c++ library (or none) is available for it to use (both at build and runtime).\n\nThe properties structures are a bit horrible and it has caught me out a couple of times. It\u0027s not just an issue with cc. I think it is possible to clean it up a bit by splitting the existing properties out into smaller sets and then picking and choosing the ones that are needed. However, that is a huge job in its own right.\n\n#2 sounds really complex. I did look into having the output represented as actual structs from the prebuilt module types that were being created, e.g. when generating a cc_prebuilt_object use the property structs added by cc_prebuilt_object but it was really complicated. Also, because of the issues you mentioned in #1 it would not give much protection against outputting invalid or unused values. This sounds like something similar.\n\n#3 that does not sound like an unreasonable approach either. However, I don\u0027t think it is necessary for stl handling.",
+      "parentUuid": "4e73c674_2d40eab3",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65e3c83c_5a33a49c",
         "filename": "cc/object_sdk_member.go",
         "patchSetId": 2
@@ -208,6 +226,24 @@
       "side": 1,
       "message": "(Missed this, sorry.)\n\nIt\u0027s registered through RegisterPrebuiltBuildComponents. (If it wasn\u0027t, the tests would fail, wouldn\u0027t they?)",
       "parentUuid": "090cef4e_b06875ee",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00c444a9_42e45de8",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-19T14:52:05Z",
+      "side": 1,
+      "message": "My mistake. I thought that cc_prebuilt_object had been submitted but it hadn\u0027t.",
+      "parentUuid": "28965e29_09fabb8e",
       "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false

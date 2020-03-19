@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14777cc9_fb152da5",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-19T14:52:05Z",
+      "side": 1,
+      "message": "I think adding stl support in cc_prebuilt_object might be better. Stl support was explicitly added to cc_object for a reason (assuming it wasn\u0027t a copy/paste accident). If stl is not supported then it appears as if it behaves as if it was supported but set to \"none\". If so, then support was added to allow a cc_object to depend on a specific c++ library. Assuming that dependency is shared not static then the cc_prebuilt_object would also need to set \"stl\" to the same value to ensure that it is a plugin replacement for cc_object.",
+      "revId": "0a03ee8c3da32627247f719433c2f709e35d11c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
