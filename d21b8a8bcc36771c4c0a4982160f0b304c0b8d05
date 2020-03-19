@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdad463d_19883ecc",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-19T17:44:21Z",
+      "side": 1,
+      "message": "This will be non-deterministic, I think we need a way to get the path to the bp file into the name.",
+      "range": {
+        "startLine": 128,
+        "startChar": 101,
+        "endLine": 128,
+        "endChar": 121
+      },
+      "revId": "d21b8a8bcc36771c4c0a4982160f0b304c0b8d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
