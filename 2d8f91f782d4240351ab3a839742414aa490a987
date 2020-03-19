@@ -93,6 +93,30 @@
       "revId": "2d8f91f782d4240351ab3a839742414aa490a987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "441bd534_e6c5a12f",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-19T21:48:09Z",
+      "side": 1,
+      "message": "Seems to me that Target should get link type added to it, but Colin better comment on that.",
+      "parentUuid": "a9b29454_d30e89c8",
+      "range": {
+        "startLine": 991,
+        "startChar": 0,
+        "endLine": 995,
+        "endChar": 2
+      },
+      "revId": "2d8f91f782d4240351ab3a839742414aa490a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
