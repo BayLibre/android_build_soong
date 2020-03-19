@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a124b0f0_8d4c725d",
+        "filename": "ui/status/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-19T17:38:16Z",
+      "side": 1,
+      "message": "Oh my fault. I submitted the file in a different cl (aosp/1254630) and I forgot to update the build file. aosp/1254630 was submitted first so I can configure copybara to copy the protobuf file from git master to third party folder in Google3.",
+      "parentUuid": "b10a6976_f3c76349",
+      "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b309726e_0a13a415",
         "filename": "ui/status/log.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "8d24cc7f_cad0aba5",
+        "filename": "ui/status/log.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-19T17:38:16Z",
+      "side": 1,
+      "message": "Yeah, makes more sense. Changed to progress everywhere.",
+      "parentUuid": "b309726e_0a13a415",
+      "range": {
+        "startLine": 204,
+        "startChar": 10,
+        "endLine": 204,
+        "endChar": 20
+      },
+      "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6d2db9_b9db9355",
         "filename": "ui/status/log.go",
         "patchSetId": 3
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "192aa2e2_20ff8873",
+        "filename": "ui/status/log.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-19T17:38:16Z",
+      "side": 1,
+      "message": "Sure, that\u0027s a good idea. Done.\n\nAs for the reporting of the error, I will sync up with wenjiah@ on the mechanism to retrieve the list of build errors that happened so far. We can use the build_error protobuf to retrieve the errors once the FailedActions \u003e 0.",
+      "parentUuid": "9a6d2db9_b9db9355",
+      "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91b22bc8_add5d179",
         "filename": "ui/status/log.go",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75940188_fb737d00",
+        "filename": "ui/status/log.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-03-19T17:38:16Z",
+      "side": 1,
+      "message": "From the design doc (go/soong-build-completion-status-one-pager) we decided to go with the single proto instead of proto stream. Dan mentioned that there was some issues with proto stream. We\u0027re (buildbot team and us) will try this first and if it is not feasible, we\u0027ll switch to proto stream.",
+      "parentUuid": "91b22bc8_add5d179",
+      "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
