@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "4e73c674_2d40eab3",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-19T04:10:37Z",
+      "side": 1,
+      "message": "It\u0027s a matter of trade-off. I gave it a go, and this far it\u0027s reasonably simple but still had some illustrative snags I\u0027ll discuss below. It\u0027ll get worse though as the code gets more complicated, unless we\u0027re careful.\n\n\u003e It would be very inconsistent for cc_object to be different to all the others.\n\nSide point, but doesn\u0027t that apply to cc_binary as well? In several ways cc_binary is closer to cc_library than cc_object is.\n\n\u003e can already handle cc_library_headers which does not have the concept of static/shared so that is already in there.\n\nI had to add a new flag anyway, because the existing linkTypes handling coupled the lack of that with the lack of output files, which doesn\u0027t work for cc_object.\n\n\u003e If [stl] has no effect on cc_object then it should not be specified on it for the test.\n\nThe real cc_object\u0027s I need to support set stl:none, and as you note cc_prebuilt_object doesn\u0027t support it. Hence the snapshot builder needs to filter it out, and then the tests should test that.\n\nIn PS6 I just added an ugly bool to skip stl propagation. It\u0027s only for illustrative purposes - I don\u0027t intend to submit that. I can see a couple of options here:\n\n1. Add stl to cc_prebuilt_object, even though it\u0027d do absolutely nothing there. Ugly design-wise and confusing for people reading the bp files, but keeps things simple. This already seems to be a pattern, e.g. cc_library_headers has shared_libs, static_libs, and many other properties that are meaningless but possible to set and - worse - documented on go/Android.bp.\n\n2. Implement more or less generic property filtering. The fancy way would be to use reflection to detect which properties actually can be set and filter everything else out. Less fancy is perhaps a list of properties to exclude, but even then it\u0027d either require inventing a wrapper abstraction for all property assignments, or a bunch of ad-hoc if tests which aren\u0027t much better than my skipStl hack in PS6.\n\n3. Function pointer or factory abstraction to allow member types to specialise PopulateFromVariant.\n\n#3 seems viable, at the cost of the usual Go boilerplate required for such a thing, but I\u0027m open for suggestions.",
+      "parentUuid": "5b39a871_f2b76ded",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65e3c83c_5a33a49c",
         "filename": "cc/object_sdk_member.go",
         "patchSetId": 2
