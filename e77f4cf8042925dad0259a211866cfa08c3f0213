@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6bfaeba_2be7a536",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-19T11:13:12Z",
+      "side": 1,
+      "message": "The preceding method ImageVariant() is provided for the use of cc and a couple of packages that have to handle cc modules (apex) or compile to platform specific code (rust). The arch/image mutators (all of which are provided by android) are similar. As are Target, ArchType, etc. Many different packages from java, cc, rust, apex already have to deal with \"link\" so I don\u0027t see why adding it here would be an issue.\n\nIf you would prefer I can always go back to the previous approach which provided a general method to get access to the variation by mutator name.",
+      "parentUuid": "0a91c55f_da0cdee2",
+      "range": {
+        "startLine": 996,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 43
+      },
+      "revId": "e77f4cf8042925dad0259a211866cfa08c3f0213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc314585_67a3cf3d",
         "filename": "sdk/update.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d5df8b16_729bc407",
+        "filename": "sdk/update.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-19T11:13:12Z",
+      "side": 1,
+      "message": "Not without a lot of effort.\n\nThis block cannot be moved on its own without changes to the API provided by SdkMemberType as that is built around each properties struct being able to add its own properties to the set and moving this back would result in multiple properties structs that would have to be generated on their own.\n\nMoving all link related stuff to cc would require making the common value extracting code available to cc and then duplicating the code that uses that.\n\nI presume that you ask that question because you are concerned with this having to deal with \"link\" type. However, I don\u0027t see this is any different to apex and java and rust all having to do something similar.\n\nIt *may* be possible to parameterize the dimensions of the variants that each sdk member type supports and allow an sdk member type to provide a custom dimension. Whether it is feasible given that there are interactions between dimensions (in the way that the properties are output) and whether it is worth it to save a few lines in this module is unclear. If it is then it should be done as a follow up change.",
+      "parentUuid": "cc314585_67a3cf3d",
+      "range": {
+        "startLine": 1023,
+        "startChar": 0,
+        "endLine": 1026,
+        "endChar": 2
+      },
+      "revId": "e77f4cf8042925dad0259a211866cfa08c3f0213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba9639b3_ce81ed86",
         "filename": "sdk/update.go",
         "patchSetId": 8
@@ -68,6 +116,30 @@
       "revId": "e77f4cf8042925dad0259a211866cfa08c3f0213",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad131a9_73914044",
+        "filename": "sdk/update.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-19T11:13:12Z",
+      "side": 1,
+      "message": "I had thought that I had fixed all those. Done.",
+      "parentUuid": "ba9639b3_ce81ed86",
+      "range": {
+        "startLine": 1037,
+        "startChar": 24,
+        "endLine": 1040,
+        "endChar": 52
+      },
+      "revId": "e77f4cf8042925dad0259a211866cfa08c3f0213",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
