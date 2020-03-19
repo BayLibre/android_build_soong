@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b10a6976_f3c76349",
+        "filename": "ui/status/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-19T14:59:13Z",
+      "side": 1,
+      "message": "The CL is missing this file",
+      "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b309726e_0a13a415",
+        "filename": "ui/status/log.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-19T14:59:13Z",
+      "side": 1,
+      "message": "Maybe s/Completion/Progress/ everywhere?  Completion makes it sound like a pass/fail result to me.",
+      "range": {
+        "startLine": 204,
+        "startChar": 10,
+        "endLine": 204,
+        "endChar": 20
+      },
+      "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a6d2db9_b9db9355",
+        "filename": "ui/status/log.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-19T14:59:13Z",
+      "side": 1,
+      "message": "Can we also report failed actions?  One possible use of this proto would be to make the build servers build with make -k to catch all failures, but report the failure to the build page as soon as failed FailedActions \u003e 0.",
+      "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b22bc8_add5d179",
+        "filename": "ui/status/log.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-19T14:59:13Z",
+      "side": 1,
+      "message": "Should this file be a single proto or a proto stream?",
+      "revId": "93a64f3a2cee7b606220ef3a74e7052220872d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
