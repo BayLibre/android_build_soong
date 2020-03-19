@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94bb3ad4_80d6b868",
+        "filename": "ui/status/log.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-19T20:12:19Z",
+      "side": 1,
+      "message": "This might as well go above the proto.Marshal call",
+      "revId": "d23fa3faf096d45298069fd0b33161eafc0bed61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
