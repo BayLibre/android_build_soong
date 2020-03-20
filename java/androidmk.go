@@ -508,8 +508,8 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, "checkapi:",
 						ddoc.checkCurrentApiTimestamp.String())
 
-					fmt.Fprintln(w, ".PHONY: droidcore")
-					fmt.Fprintln(w, "droidcore: checkapi")
+					fmt.Fprintln(w, ".PHONY: update-api")
+					fmt.Fprintln(w, "update-api: checkapi")
 				}
 				if ddoc.updateCurrentApiTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", ddoc.Name()+"-update-current-api")
@@ -530,8 +530,8 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 						fmt.Fprintln(w, "checkapi:",
 							ddoc.checkLastReleasedApiTimestamp.String())
 
-						fmt.Fprintln(w, ".PHONY: droidcore")
-						fmt.Fprintln(w, "droidcore: checkapi")
+						fmt.Fprintln(w, ".PHONY: update-api")
+						fmt.Fprintln(w, "update-api: checkapi")
 					}
 				}
 			},
@@ -599,8 +599,8 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, "checkapi:",
 						dstubs.checkCurrentApiTimestamp.String())
 
-					fmt.Fprintln(w, ".PHONY: droidcore")
-					fmt.Fprintln(w, "droidcore: checkapi")
+					fmt.Fprintln(w, ".PHONY: update-api")
+					fmt.Fprintln(w, "update-api: checkapi")
 				}
 				if dstubs.updateCurrentApiTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-update-current-api")
@@ -621,8 +621,8 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 						fmt.Fprintln(w, "checkapi:",
 							dstubs.checkLastReleasedApiTimestamp.String())
 
-						fmt.Fprintln(w, ".PHONY: droidcore")
-						fmt.Fprintln(w, "droidcore: checkapi")
+						fmt.Fprintln(w, ".PHONY: update-api")
+						fmt.Fprintln(w, "update-api: checkapi")
 					}
 				}
 				if dstubs.apiLintTimestamp != nil {
@@ -634,8 +634,8 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, "checkapi:",
 						dstubs.Name()+"-api-lint")
 
-					fmt.Fprintln(w, ".PHONY: droidcore")
-					fmt.Fprintln(w, "droidcore: checkapi")
+					fmt.Fprintln(w, ".PHONY: update-api")
+					fmt.Fprintln(w, "update-api: checkapi")
 
 					if dstubs.apiLintReport != nil {
 						fmt.Fprintf(w, "$(call dist-for-goals,%s,%s:%s)\n", dstubs.Name()+"-api-lint",
@@ -647,8 +647,8 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, dstubs.Name()+"-check-nullability-warnings:",
 						dstubs.checkNullabilityWarningsTimestamp.String())
 
-					fmt.Fprintln(w, ".PHONY:", "droidcore")
-					fmt.Fprintln(w, "droidcore: ", dstubs.Name()+"-check-nullability-warnings")
+					fmt.Fprintln(w, ".PHONY:", "update-api")
+					fmt.Fprintln(w, "update-api: ", dstubs.Name()+"-check-nullability-warnings")
 				}
 			},
 		},
