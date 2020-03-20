@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f034673f_02b3f1f9",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T14:02:37Z",
+      "side": 1,
+      "message": "What about SdkMemberContext? It\u0027s a bit shorter, and it helps avoiding confusion with SdkMemberPropertiesBase, i.e. that this would be the interface to that one.\n\nRelated, I suggest moving this declaration a bit so that the SdkMemberPropertiesBase struct and its SdkMemberProperties interface are kept together.",
+      "range": {
+        "startLine": 495,
+        "startChar": 5,
+        "endLine": 495,
+        "endChar": 31
+      },
+      "revId": "6e70072c33eacb6bf61882d7d92fe80a370c9e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "180fe680_b89cd185",
         "filename": "android/sdk.go",
         "patchSetId": 1
