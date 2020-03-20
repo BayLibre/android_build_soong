@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io"
 	"path"
+	"sync"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -151,10 +152,29 @@ type syspropLibraryProperties struct {
 	Public_stub *bool `blueprint:"mutated"`
 }
 
+type SyspropLibraryInterface interface {
+	CurrentSyspropApiFile() android.Path
+}
+
+var _ SyspropLibraryInterface = (*syspropLibrary)(nil)
+
 var (
 	pctx         = android.NewPackageContext("android/soong/sysprop")
 	syspropCcTag = dependencyTag{name: "syspropCc"}
+
+	syspropLibrariesKey  = android.NewOnceKey("syspropLibraries")
+	syspropLibrariesLock sync.Mutex
 )
+
+func syspropLibraries(config android.Config) *[]string {
+	return config.Once(syspropLibrariesKey, func() interface{} {
+		return &[]string{}
+	}).(*[]string)
+}
+
+func SyspropLibraries(config android.Config) []string {
+	return append([]string{}, *syspropLibraries(config)...)
+}
 
 func init() {
 	android.RegisterModuleType("sysprop_library", syspropLibraryFactory)
@@ -193,6 +213,10 @@ func (m *syspropLibrary) BaseModuleName() string {
 
 func (m *syspropLibrary) HasPublicStub() bool {
 	return proptools.Bool(m.properties.Public_stub)
+}
+
+func (m *syspropLibrary) CurrentSyspropApiFile() android.Path {
+	return m.currentApiFile
 }
 
 func (m *syspropLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -463,6 +487,12 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 			Stem:        proptools.StringPtr(m.BaseModuleName()),
 		})
 	}
+
+	syspropLibrariesLock.Lock()
+	defer syspropLibrariesLock.Unlock()
+
+	libraries := syspropLibraries(ctx.Config())
+	*libraries = append(*libraries, ctx.ModuleName())
 }
 
 func syspropDepsMutator(ctx android.BottomUpMutatorContext) {
