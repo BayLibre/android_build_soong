@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb16668f_c255ac0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2020-03-20T09:28:45Z",
+      "side": 1,
+      "message": "+1\n\nwe should have the following dependencies:\n\ndroid -\u003e check current api\nupdateapi -\u003e check last api + lint",
+      "parentUuid": "535b89dc_a548c80a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "57bef968644df73b22e3e43657bec2a9d9d9ac64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b36a9c41_643356ff",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
