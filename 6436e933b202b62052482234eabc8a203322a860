@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb77870b_82410164",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T13:24:10Z",
+      "side": 1,
+      "message": "This is only ok if the image is in system, right?",
+      "range": {
+        "startLine": 242,
+        "startChar": 12,
+        "endLine": 242,
+        "endChar": 31
+      },
+      "revId": "6436e933b202b62052482234eabc8a203322a860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb0c556_b970d1cf",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T13:24:10Z",
+      "side": 1,
+      "message": "Maybe both are useful, but this makes it look like some kind of identifier format, which I don\u0027t believe exists. What about something like \"module %s in APEX %s\"?",
+      "range": {
+        "startLine": 253,
+        "startChar": 30,
+        "endLine": 253,
+        "endChar": 37
+      },
+      "revId": "6436e933b202b62052482234eabc8a203322a860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

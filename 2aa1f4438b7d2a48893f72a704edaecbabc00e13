@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "d6ebfddb_abc89571",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T13:24:10Z",
+      "side": 1,
+      "message": "Commented on the new patchset.",
+      "parentUuid": "461d6bf9_26284c87",
+      "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "627fb92f_7a5c2784",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 3
@@ -128,6 +146,30 @@
       "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81cf16e3_7475a34a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T13:24:10Z",
+      "side": 1,
+      "message": "Commented on that in the new patchset.",
+      "parentUuid": "62ef510e_43be49f6",
+      "range": {
+        "startLine": 251,
+        "startChar": 61,
+        "endLine": 251,
+        "endChar": 74
+      },
+      "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
