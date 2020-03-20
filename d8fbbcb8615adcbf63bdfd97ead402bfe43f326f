@@ -22,6 +22,30 @@
       "revId": "d8fbbcb8615adcbf63bdfd97ead402bfe43f326f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b959e728_021f9da2",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-20T15:41:20Z",
+      "side": 1,
+      "message": "There is already an interface for sdkMember but it provides access to the list of variants too. That is something I want to avoid exposing the individual types too if I can because part of the motivation behind the new API was to avoid having the sdk member type implementations having to deal with multiple variants.",
+      "parentUuid": "630f6708_99c4604b",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 14
+      },
+      "revId": "d8fbbcb8615adcbf63bdfd97ead402bfe43f326f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
