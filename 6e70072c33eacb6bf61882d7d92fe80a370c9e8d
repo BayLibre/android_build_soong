@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "10f20d88_d349ca07",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-20T16:25:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f034673f_02b3f1f9",
+      "range": {
+        "startLine": 495,
+        "startChar": 5,
+        "endLine": 495,
+        "endChar": 31
+      },
+      "revId": "6e70072c33eacb6bf61882d7d92fe80a370c9e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "180fe680_b89cd185",
         "filename": "android/sdk.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d83ae4ba_4f731853",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-20T16:25:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "180fe680_b89cd185",
+      "range": {
+        "startLine": 514,
+        "startChar": 61,
+        "endLine": 514,
+        "endChar": 67
+      },
+      "revId": "6e70072c33eacb6bf61882d7d92fe80a370c9e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ef0f9fc_6d8c4837",
         "filename": "cc/library_sdk_member.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "6e70072c33eacb6bf61882d7d92fe80a370c9e8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ff0326_fb5816b9",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-20T16:25:39Z",
+      "side": 1,
+      "message": "I was going to just inline that method here.",
+      "parentUuid": "2ef0f9fc_6d8c4837",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 34
+      },
+      "revId": "6e70072c33eacb6bf61882d7d92fe80a370c9e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
