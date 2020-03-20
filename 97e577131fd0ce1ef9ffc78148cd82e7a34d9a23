@@ -46,6 +46,30 @@
       "revId": "97e577131fd0ce1ef9ffc78148cd82e7a34d9a23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "640e3576_8a7e1f60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-20T14:47:11Z",
+      "side": 1,
+      "message": "The shared variant ends up with a different set of include directories to the static variant. That prevents the include directories from being treated as common so they end up with separate shared/static include directory properties which aren\u0027t yet supported on cc_prebuilt_library. Fixing the duplicate headers was easier than adding support for that. It also makes the test cleaner and easier to read.",
+      "parentUuid": "8169f0f3_b376b64f",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "97e577131fd0ce1ef9ffc78148cd82e7a34d9a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
