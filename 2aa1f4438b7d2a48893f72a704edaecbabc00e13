@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "461d6bf9_26284c87",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-20T11:39:24Z",
+      "side": 1,
+      "message": "I reworked the patch. Now it forbids all updatable apexes, the only exception is if both 1) the the boot image is the ART boot image, and 2) the apex is the ART apex.",
+      "parentUuid": "0da27b1c_835a4faf",
+      "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cfbf5ac_3bcbcf97",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-20T11:39:24Z",
+      "side": 1,
+      "message": "Good catch, thank you. Fixed.",
+      "parentUuid": "342f6128_a9a22dda",
+      "range": {
+        "startLine": 250,
+        "startChar": 70,
+        "endLine": 250,
+        "endChar": 87
+      },
+      "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "627fb92f_7a5c2784",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2020-03-16T02:17:06Z",
       "side": 1,
       "message": "Nit: The module name already contains the APEX name, doesn\u0027t it? Then this is unnecessary repetition.",
+      "range": {
+        "startLine": 251,
+        "startChar": 61,
+        "endLine": 251,
+        "endChar": 74
+      },
+      "revId": "2aa1f4438b7d2a48893f72a704edaecbabc00e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ef510e_43be49f6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-20T11:39:24Z",
+      "side": 1,
+      "message": "They may be slightly different (see the example \u0027com.android.ipsec:android.net.ipsec.ike\u0027 in the commit message), so it\u0027s probably better to have both in the error message.\n\nI\u0027m not sure we should keep the colon-separated format though.",
+      "parentUuid": "627fb92f_7a5c2784",
       "range": {
         "startLine": 251,
         "startChar": 61,
