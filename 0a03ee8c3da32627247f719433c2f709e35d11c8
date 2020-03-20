@@ -16,6 +16,24 @@
       "revId": "0a03ee8c3da32627247f719433c2f709e35d11c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad093ce_30f6c629",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T00:31:33Z",
+      "side": 1,
+      "message": "I thought stl wasn\u0027t applicable to object files, but looking at [1] it\u0027s clear it can affect the implicit dependencies, and that should also be reflected by the prebuilts.\n\nI\u0027ve changed the parent CL a bit to share more code between cc_object and cc_prebuilt_object, to help avoid more mistakes in this regard. It also adds sanitizer to cc_prebuilt_object, since that too can affect dependencies [2], although I don\u0027t think we need to support it here in the snapshot creation.\n\n[1] http://cs/aosp-master/build/soong/cc/stl.go?l\u003d162\u0026rcl\u003db8eefa8956090cd4fea0d2dfec91706bc9be9cbd\n[2] https://devops-console-stagingoss.corp.google.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d1588-1590;drc\u003d752edec2904d5c72e17a50ed0a439ddeac84b812",
+      "parentUuid": "14777cc9_fb152da5",
+      "revId": "0a03ee8c3da32627247f719433c2f709e35d11c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "de141195_5ef07be3",
+        "filename": "cc/object_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T00:31:33Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll go with #1 then, see other comment thread.",
+      "parentUuid": "b929525b_ed61d920",
+      "revId": "2598b7091beb47a50a184037d3a31b412d8ddc16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65e3c83c_5a33a49c",
         "filename": "cc/object_sdk_member.go",
         "patchSetId": 2
