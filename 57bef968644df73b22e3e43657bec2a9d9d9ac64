@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "39ae788c_1c9fa45c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-03-20T11:41:43Z",
+      "side": 1,
+      "message": "another concern, which I don\u0027t know if it makes sense, is.. do OEMs run checkbuilds? Or do we actually have compatibility testing of every single API? We need to make sure OEMs that don\u0027t run checkbuilds don\u0027t accidentally remove some apis.",
+      "parentUuid": "cb16668f_c255ac0b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "57bef968644df73b22e3e43657bec2a9d9d9ac64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b36a9c41_643356ff",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
