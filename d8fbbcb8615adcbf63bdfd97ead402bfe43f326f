@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "630f6708_99c4604b",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T14:15:12Z",
+      "side": 1,
+      "message": "Another option is to add an interface for sdkMember and add a single accessor for it here. Seems more scalable if it grows, although I don\u0027t have a good feeling for how likely that is.",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 14
+      },
+      "revId": "d8fbbcb8615adcbf63bdfd97ead402bfe43f326f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
