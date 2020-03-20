@@ -16,6 +16,24 @@
       "revId": "0b92ac8e43a43945fb5407989093535eb62c681d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "127f7098_e6e7333c",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-20T16:29:23Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "b9606cc7_4d5e7d5b",
+      "revId": "0b92ac8e43a43945fb5407989093535eb62c681d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
