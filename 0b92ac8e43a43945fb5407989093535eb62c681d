@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9606cc7_4d5e7d5b",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T00:26:03Z",
+      "side": 1,
+      "message": "I\u0027d appreciate a sanity check of the object init here, in particular wrt the stuff shared with cc_object.",
+      "revId": "0b92ac8e43a43945fb5407989093535eb62c681d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
