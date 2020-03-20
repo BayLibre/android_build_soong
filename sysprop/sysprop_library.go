@@ -25,6 +25,7 @@ import (
 	"android/soong/android"
 	"android/soong/cc"
 	"android/soong/java"
+	"android/soong/selinux"
 )
 
 type dependencyTag struct {
@@ -59,6 +60,8 @@ var (
 				"$soongZipCmd",
 			},
 		}, "scope")
+
+	contextsDependencyTag = dependencyTag{name: "contexts"}
 )
 
 func init() {
@@ -198,6 +201,16 @@ func (m *syspropLibrary) HasPublicStub() bool {
 func (m *syspropLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	baseModuleName := m.BaseModuleName()
 
+	var ctxFiles android.Paths
+	ctx.VisitDirectDepsWithTag(contextsDependencyTag, func(c android.Module) {
+		i, ok := c.(selinux.SelinuxContextsInterface)
+		if !ok {
+			panic(fmt.Errorf("unknown dependency %q for %q", ctx.OtherModuleName(c), ctx.ModuleName()))
+		}
+
+		ctxFiles = append(ctxFiles, i.OutputPath())
+	})
+
 	for _, syspropFile := range android.PathsForModuleSrc(ctx, m.properties.Srcs) {
 		if syspropFile.Ext() != ".sysprop" {
 			ctx.PropertyErrorf("srcs", "srcs contains non-sysprop file %q", syspropFile.String())
@@ -250,6 +263,21 @@ func (m *syspropLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 		BuiltTool(ctx, "sysprop_api_checker").
 		Input(m.latestApiFile).
 		Input(m.currentApiFile).
+		Text(" || ( echo").Flag("-e").
+		Flag(`"` + msg + `"`).
+		Text("; exit 38) )")
+
+	// 3. current.txt <-> property_context files
+	msg = fmt.Sprintf(`\n******************************\n`+
+		`API of sysprop_library %s doesn't match with property_contexts\n`+
+		`Please fix the breakage and rebuild.\n`+
+		`******************************\n`, baseModuleName)
+
+	rule.Command().
+		Text("( ").
+		BuiltTool(ctx, "sysprop_type_checker").
+		Input(m.currentApiFile).
+		Inputs(ctxFiles).
 		Text(" || ( echo").Flag("-e").
 		Flag(`"` + msg + `"`).
 		Text("; exit 38) )")
@@ -471,6 +499,10 @@ func syspropDepsMutator(ctx android.BottomUpMutatorContext) {
 
 		if proptools.Bool(m.properties.Public_stub) {
 			ctx.AddReverseDependency(m, nil, m.javaGenPublicStubName())
+		}
+
+		for _, ctxModule := range selinux.PropertyContextsModules(ctx.Config()) {
+			ctx.AddFarVariationDependencies([]blueprint.Variation{}, contextsDependencyTag, ctxModule)
 		}
 	}
 }
