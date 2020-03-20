@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36a9c41_643356ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-20T01:02:51Z",
+      "side": 1,
+      "message": "Why make updateapi depend on checkapi?  \n\nThis may not be doing what you want - it will ensure the checkapi rules run, but it won\u0027t guarantee any ordering between the individual checkapi and updateapi rules.",
+      "revId": "57bef968644df73b22e3e43657bec2a9d9d9ac64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37210e62_906c62a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-20T01:02:51Z",
+      "side": 1,
+      "message": "How does checkbuild depend on checkapi?",
+      "revId": "57bef968644df73b22e3e43657bec2a9d9d9ac64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02d9d5f_056fab27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-20T01:02:51Z",
+      "side": 1,
+      "message": "Can you also test changing an API and verify that it is still caught by `m checkapi` and `m checkbuild`, and that `m update-api` works?",
+      "revId": "57bef968644df73b22e3e43657bec2a9d9d9ac64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
