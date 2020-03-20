@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "180fe680_b89cd185",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T13:49:26Z",
+      "side": 1,
+      "message": "Can you please explain in the commit message why this type is getting less specific?",
+      "range": {
+        "startLine": 514,
+        "startChar": 61,
+        "endLine": 514,
+        "endChar": 67
+      },
+      "revId": "6e70072c33eacb6bf61882d7d92fe80a370c9e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ef0f9fc_6d8c4837",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T13:49:26Z",
+      "side": 1,
+      "message": "Change this function to take the new context too?",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 34
+      },
+      "revId": "6e70072c33eacb6bf61882d7d92fe80a370c9e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
