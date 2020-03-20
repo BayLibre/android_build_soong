@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint/proptools"
 
@@ -77,8 +78,17 @@ type selinuxContextsModule struct {
 	installPath            android.InstallPath
 }
 
+type SelinuxContextsInterface interface {
+	OutputPath() android.Path
+}
+
+var _ SelinuxContextsInterface = (*selinuxContextsModule)(nil)
+
 var (
 	reuseContextsDepTag = dependencyTag{name: "reuseContexts"}
+
+	propertyContextsModulesKey   = android.NewOnceKey("propertyContextsModules")
+	propertyContextsModulesMutex sync.Mutex
 )
 
 func init() {
@@ -92,6 +102,16 @@ func init() {
 	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("selinux_contexts", selinuxContextsMutator).Parallel()
 	})
+}
+
+func propertyContextsModules(config android.Config) *[]string {
+	return config.Once(propertyContextsModulesKey, func() interface{} {
+		return &[]string{}
+	}).(*[]string)
+}
+
+func PropertyContextsModules(config android.Config) []string {
+	return append([]string{}, *propertyContextsModules(config)...)
 }
 
 func (m *selinuxContextsModule) inRecovery() bool {
@@ -165,6 +185,10 @@ func (m *selinuxContextsModule) GenerateAndroidBuildActions(ctx android.ModuleCo
 	}
 
 	m.build(ctx, inputs)
+}
+
+func (m *selinuxContextsModule) OutputPath() android.Path {
+	return m.outputPath
 }
 
 func newModule() *selinuxContextsModule {
@@ -361,6 +385,13 @@ func hwServiceFactory() android.Module {
 func propertyFactory() android.Module {
 	m := newModule()
 	m.build = m.buildGeneralContexts
+	android.AddLoadHook(m, func(ctx android.LoadHookContext) {
+		propertyContextsModulesMutex.Lock()
+		defer propertyContextsModulesMutex.Unlock()
+
+		modules := propertyContextsModules(ctx.Config())
+		*modules = append(*modules, ctx.ModuleName())
+	})
 	return m
 }
 
