@@ -22,6 +22,30 @@
       "revId": "97e577131fd0ce1ef9ffc78148cd82e7a34d9a23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8169f0f3_b376b64f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T13:27:22Z",
+      "side": 1,
+      "message": "Still curious. ;)",
+      "parentUuid": "dd76ccaa_5b9f03ce",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 42
+      },
+      "revId": "97e577131fd0ce1ef9ffc78148cd82e7a34d9a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
