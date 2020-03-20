@@ -255,12 +255,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) andro
 	for _, member := range members {
 		memberType := member.memberType
 		prebuiltModule := memberType.AddPrebuiltModule(ctx, builder, member)
-		if prebuiltModule == nil {
-			// Fall back to legacy method of building a snapshot
-			memberType.BuildSnapshot(ctx, builder, member)
-		} else {
-			s.createMemberSnapshot(ctx, builder, member, prebuiltModule)
-		}
+		s.createMemberSnapshot(ctx, builder, member, prebuiltModule)
 	}
 
 	// Create a transformer that will transform an unversioned module into a versioned module.
