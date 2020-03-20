@@ -22,6 +22,30 @@
       "revId": "3992e375995c4f1feeea325f9a5b0256001663f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5e7a22_e31bee6e",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1644759
+      },
+      "writtenOn": "2020-03-20T13:16:05Z",
+      "side": 1,
+      "message": "We implemented the RBE_ support (https://cs.corp.google.com/foundry-x-re-client/internal/pkg/rbeflag/rbeflag.go?rcl\u003d3e20ddd6614ec2ace51e05bef819d2c29af4f79d\u0026l\u003d27). A bit too late to change it again now, so we should stick with that, I think.",
+      "parentUuid": "482729d6_e1173093",
+      "range": {
+        "startLine": 131,
+        "startChar": 4,
+        "endLine": 131,
+        "endChar": 7
+      },
+      "revId": "3992e375995c4f1feeea325f9a5b0256001663f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
