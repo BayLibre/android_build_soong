@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6afde76e_e0946d32",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-20T13:33:28Z",
+      "side": 1,
+      "message": "Nit: Personally I tend to look for helpers like this near the top of the file, but there might not be any official style guideline about that.",
+      "revId": "35e5f720a60c2729718a645c9ac2c4d760892beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
