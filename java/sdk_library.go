@@ -1049,16 +1049,7 @@ func (module *sdkLibraryXml) implPath() string {
 		// this can be wrong.
 		return fmt.Sprintf("/apex/%s/javalib/%s.jar", apexName, implName)
 	}
-	partition := "system"
-	if module.SocSpecific() {
-		partition = "vendor"
-	} else if module.DeviceSpecific() {
-		partition = "odm"
-	} else if module.ProductSpecific() {
-		partition = "product"
-	} else if module.SystemExtSpecific() {
-		partition = "system_ext"
-	}
+	partition := module.PartitionTag()
 	return "/" + partition + "/framework/" + implName + ".jar"
 }
 
