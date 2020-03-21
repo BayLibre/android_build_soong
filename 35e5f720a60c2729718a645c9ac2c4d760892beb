@@ -16,6 +16,24 @@
       "revId": "35e5f720a60c2729718a645c9ac2c4d760892beb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0cf5762_d93a3568",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-21T17:49:50Z",
+      "side": 1,
+      "message": "I can move it if it necessary but I\u0027d rather do that in a follow up as there are other changes stacked on top that may conflict if I move this.",
+      "parentUuid": "6afde76e_e0946d32",
+      "revId": "35e5f720a60c2729718a645c9ac2c4d760892beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
