@@ -894,6 +894,30 @@ func (m *ModuleBase) SystemExtSpecific() bool {
 	return Bool(m.commonProperties.System_ext_specific)
 }
 
+func (m *ModuleBase) PartitionTag(config DeviceConfig) string {
+	partition := "system"
+	if m.SocSpecific() {
+		if config.VendorPath() == "vendor" {
+			partition = "vendor"
+		}
+	} else if m.DeviceSpecific() {
+		if config.OdmPath() == "odm" {
+			partition = "odm"
+		} else if strings.HasPrefix(config.OdmPath (), "vendor/") {
+			partition = "vendor"
+		}
+	} else if m.ProductSpecific() {
+		if config.ProductPath() == "product" {
+			partition = "product"
+		}
+	} else if m.SystemExtSpecific() {
+		if config.SystemExtPath() == "system_ext" {
+			partition = "system_ext"
+		}
+	}
+	return partition
+}
+
 func (m *ModuleBase) Enabled() bool {
 	if m.commonProperties.Enabled == nil {
 		return !m.Os().DefaultDisabled
