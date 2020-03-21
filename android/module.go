@@ -894,6 +894,20 @@ func (m *ModuleBase) SystemExtSpecific() bool {
 	return Bool(m.commonProperties.System_ext_specific)
 }
 
+func (m *ModuleBase) PartitionTag() string {
+	partition := "system"
+	if m.SocSpecific() {
+		partition = "vendor"
+	} else if m.DeviceSpecific() {
+		partition = "odm"
+	} else if m.ProductSpecific() {
+		partition = "product"
+	} else if m.SystemExtSpecific() {
+		partition = "system_ext"
+	}
+	return partition
+}
+
 func (m *ModuleBase) Enabled() bool {
 	if m.commonProperties.Enabled == nil {
 		return !m.Os().DefaultDisabled
