@@ -101,6 +101,12 @@ type BaseProperties struct {
 	Actual_version string `blueprint:"mutated"`
 }
 
+type hostTestProperties struct {
+	// Whether host test should run with `m checkbuild`.
+	// Test failure breaks build, which is helpful when the test should run with host tools on continuous build environment
+	Run_test_as_checkbuild *bool
+}
+
 type pathMapping struct {
 	dest string
 	src  android.Path
@@ -112,6 +118,9 @@ type Module struct {
 
 	properties      BaseProperties
 	protoProperties android.ProtoProperties
+
+	// only used by python_test_host
+	hostTestProperties hostTestProperties
 
 	// initialize before calling Init
 	hod      android.HostOrDeviceSupported
@@ -412,6 +421,18 @@ func (p *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		if p.installSource.Valid() {
 			p.installer.install(ctx, p.installSource.Path())
 		}
+	}
+
+	if proptools.Bool(p.hostTestProperties.Run_test_as_checkbuild) {
+		testOutput := p.installer.(*testDecorator).path
+		testRunTimestamp := android.PathForModuleOut(ctx, ctx.ModuleName()+"-test_run_timestamp")
+		rule := android.NewRuleBuilder()
+		rule.Command().
+			Input(testOutput).
+			Text("&& touch").
+			Output(testRunTimestamp)
+		rule.Build(pctx, ctx, ctx.ModuleName()+".run", "Run test as checkbuild")
+		ctx.CheckbuildFile(testRunTimestamp)
 	}
 
 }
