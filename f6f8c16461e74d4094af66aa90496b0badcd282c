@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49ad4623_6bd30d3e",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-23T13:57:24Z",
+      "side": 1,
+      "message": "In the context of apks, the term package refers to the name in AndroidManifest.xml that uniquely identifies an apk. So calling this a package name seems wrong to me. This is just a \u0027module name\u0027.",
+      "range": {
+        "startLine": 467,
+        "startChar": 28,
+        "endLine": 467,
+        "endChar": 31
+      },
+      "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
