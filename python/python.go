@@ -101,6 +101,16 @@ type BaseProperties struct {
 	Actual_version string `blueprint:"mutated"`
 }
 
+type hostTestProperties struct {
+	// Whether host test should run when building the checkbuild target.
+	// In general, it is not preferred to run tests at buildtime. However, in cases that tests relying on host tools
+	// (e.g. python_binary_host) are supposed to be run as PRESUBMIT, it is impossible to do so because host tools are
+	// not available on continuous build environment. (b/152115623)
+	// As a workaround, we could make a build target so that it can triggers a test to be run when building checkbuild target,
+	// which is one of continuous build targets. When a test fails, the build would fail as well.
+	Run_in_checkbuild *bool
+}
+
 type pathMapping struct {
 	dest string
 	src  android.Path
@@ -112,6 +122,9 @@ type Module struct {
 
 	properties      BaseProperties
 	protoProperties android.ProtoProperties
+
+	// only used by python_test_host
+	hostTestProperties hostTestProperties
 
 	// initialize before calling Init
 	hod      android.HostOrDeviceSupported
@@ -412,6 +425,20 @@ func (p *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		if p.installSource.Valid() {
 			p.installer.install(ctx, p.installSource.Path())
 		}
+	}
+
+	// As a workaround of (b/152115623), emits additional build target which triggers the test
+	// so that the test can be run even on a continuous build environment when building "checkbuild" target.
+	if proptools.Bool(p.hostTestProperties.Run_in_checkbuild) {
+		testOutput := p.installer.(*testDecorator).path
+		testRunTimestamp := android.PathForModuleOut(ctx, ctx.ModuleName()+"-test_run_timestamp")
+		rule := android.NewRuleBuilder()
+		rule.Command().
+			Input(testOutput).
+			Text("&& touch").
+			Output(testRunTimestamp)
+		rule.Build(pctx, ctx, ctx.ModuleName()+".run", "Run a test")
+		ctx.CheckbuildFile(testRunTimestamp)
 	}
 
 }

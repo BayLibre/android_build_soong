@@ -76,7 +76,7 @@ func NewTest(hod android.HostOrDeviceSupported) *Module {
 
 func PythonTestHostFactory() android.Module {
 	module := NewTest(android.HostSupportedNoCross)
-
+	module.AddProperties(&module.hostTestProperties)
 	return module.Init()
 }
 
