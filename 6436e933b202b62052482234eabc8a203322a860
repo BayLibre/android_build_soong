@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d73a6739_d3014508",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-23T03:08:11Z",
+      "side": 1,
+      "message": "Indeed, but it returns without error regardless of the image. If it\u0027s e.g. the ART image it\u0027d be wrong, wouldn\u0027t it?\n\n(Btw, I suggest using deMorgans\u0027 here to avoid the double negation.)",
+      "parentUuid": "c90d5e2d_b8dfb6d9",
+      "range": {
+        "startLine": 242,
+        "startChar": 12,
+        "endLine": 242,
+        "endChar": 31
+      },
+      "revId": "6436e933b202b62052482234eabc8a203322a860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbb0c556_b970d1cf",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 4
