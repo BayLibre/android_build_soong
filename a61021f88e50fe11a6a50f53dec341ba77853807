@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea3e23dc_70762b92",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-23T01:30:45Z",
+      "side": 1,
+      "message": "wait.. this is defined in system/selinux. I don\u0027t think build/soong depending on system/selinux is desirable. Colin might comment more.",
+      "revId": "a61021f88e50fe11a6a50f53dec341ba77853807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
