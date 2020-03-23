@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cbb3f25_fbfdc7af",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-23T03:28:02Z",
+      "side": 1,
+      "message": "why can\u0027t this be SdkMemberContext interface?",
+      "range": {
+        "startLine": 837,
+        "startChar": 31,
+        "endLine": 837,
+        "endChar": 46
+      },
+      "revId": "70712f1b85393f593211f7100e1a540c3bb35ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6c833f6_d41bdbbb",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-23T03:28:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 918,
+        "startChar": 55,
+        "endLine": 918,
+        "endChar": 69
+      },
+      "revId": "70712f1b85393f593211f7100e1a540c3bb35ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f428cfff_620ab830",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-23T03:28:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 990,
+        "startChar": 29,
+        "endLine": 990,
+        "endChar": 43
+      },
+      "revId": "70712f1b85393f593211f7100e1a540c3bb35ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
