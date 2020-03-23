@@ -33,8 +33,10 @@ import (
 )
 
 type Test struct {
-	name string
-	args []string
+	name   string
+	args   []string
+	before func() error
+	after  func() error
 
 	results TestResults
 }
@@ -119,6 +121,16 @@ func (t *Test) Run(logsDir string) {
 	t.results.metrics = met
 }
 
+func touchIntentFile() error {
+	const intentFileName = "frameworks/base/core/java/android/content/Intent.java"
+	currentTime := time.Now().Local()
+	err := os.Chtimes(intentFileName, currentTime, currentTime)
+	if err != nil {
+		fmt.Printf("File touched: %s\n", intentFileName)
+	}
+	return err
+}
+
 func main() {
 	outDir := os.Getenv("OUT_DIR")
 	if outDir == "" {
@@ -170,6 +182,36 @@ func main() {
 			name: "framework_rebuild_twice",
 			args: []string{"framework"},
 		},
+		{
+			// Scenario major_inc_build (b/152046247): tracking build speed of major incremental build.
+			name: "major_inc_build_droid",
+			args: []string{"droid"},
+		},
+		{
+			name:   "major_inc_build_framework_minus_apex_after_droid_build",
+			args:   []string{"framework-minus-apex"},
+			before: touchIntentFile,
+		},
+		{
+			name:   "major_inc_build_framework_after_droid_build",
+			args:   []string{"framework"},
+			before: touchIntentFile,
+		},
+		{
+			name:   "major_inc_build_sync_after_droid_build",
+			args:   []string{"sync"},
+			before: touchIntentFile,
+		},
+		{
+			name:   "major_inc_build_droid_rebuild",
+			args:   []string{"droid"},
+			before: touchIntentFile,
+		},
+		{
+			name:   "major_inc_build_update_api_after_droid_rebuild",
+			args:   []string{"update-api"},
+			before: touchIntentFile,
+		},
 	}
 
 	cujMetrics := metrics.NewCriticalUserJourneysMetrics()
@@ -178,6 +220,12 @@ func main() {
 	for i, t := range tests {
 		logsSubDir := fmt.Sprintf("%02d_%s", i, t.name)
 		logsDir := filepath.Join(cujDir, "logs", logsSubDir)
+		if t.before != nil {
+			if err := t.before(); err != nil {
+				fmt.Printf("error running before function on test %q: %v\n", t.name, err)
+				break
+			}
+		}
 		t.Run(logsDir)
 		if t.results.err != nil {
 			fmt.Printf("error running test %q: %s\n", t.name, t.results.err)
