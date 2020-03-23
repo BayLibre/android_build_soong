@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b3a6336_5a494f93",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-23T08:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cbb3f25_fbfdc7af",
+      "range": {
+        "startLine": 837,
+        "startChar": 31,
+        "endLine": 837,
+        "endChar": 46
+      },
+      "revId": "70712f1b85393f593211f7100e1a540c3bb35ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6c833f6_d41bdbbb",
         "filename": "sdk/update.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1ce5a47b_c442c281",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-23T08:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6c833f6_d41bdbbb",
+      "range": {
+        "startLine": 918,
+        "startChar": 55,
+        "endLine": 918,
+        "endChar": 69
+      },
+      "revId": "70712f1b85393f593211f7100e1a540c3bb35ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f428cfff_620ab830",
         "filename": "sdk/update.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "70712f1b85393f593211f7100e1a540c3bb35ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270522ee_2f0369e3",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-23T08:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f428cfff_620ab830",
+      "range": {
+        "startLine": 990,
+        "startChar": 29,
+        "endLine": 990,
+        "endChar": 43
+      },
+      "revId": "70712f1b85393f593211f7100e1a540c3bb35ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
