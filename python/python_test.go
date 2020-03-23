@@ -328,37 +328,52 @@ var (
 func TestPythonModule(t *testing.T) {
 	for _, d := range data {
 		t.Run(d.desc, func(t *testing.T) {
-			config := android.TestConfig(buildDir, nil, "", d.mockFiles)
-			ctx := android.NewTestContext()
-			ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
-				ctx.BottomUp("version_split", versionSplitMutator()).Parallel()
-			})
-			ctx.RegisterModuleType("python_library_host", PythonLibraryHostFactory)
-			ctx.RegisterModuleType("python_binary_host", PythonBinaryHostFactory)
-			ctx.RegisterModuleType("python_defaults", defaultsFactory)
-			ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
-			ctx.Register(config)
-			_, testErrs := ctx.ParseBlueprintsFiles(bpFile)
-			android.FailIfErrored(t, testErrs)
-			_, actErrs := ctx.PrepareBuildActions(config)
-			if len(actErrs) > 0 {
-				testErrs = append(testErrs, expectErrors(t, actErrs, d.errors)...)
-			} else {
-				for _, e := range d.expectedBinaries {
-					testErrs = append(testErrs,
-						expectModule(t, ctx, buildDir, e.name,
-							e.actualVersion,
-							e.srcsZip,
-							e.pyRunfiles,
-							e.depsSrcsZips)...)
-				}
+			ctx, _ := testPython(t, "", d.errors, d.mockFiles)
+			for _, e := range d.expectedBinaries {
+				android.FailIfErrored(t, expectModule(t, ctx, buildDir, e.name,
+					e.actualVersion,
+					e.srcsZip,
+					e.pyRunfiles,
+					e.depsSrcsZips))
 			}
-			android.FailIfErrored(t, testErrs)
 		})
 	}
 }
 
+func testPython(t *testing.T, bp string, errors []string, files map[string][]byte) (*android.TestContext, android.Config) {
+	t.Helper()
+
+	mockFiles := map[string][]byte{
+		stubTemplateHost: []byte(`PYTHON_BINARY = '%interpreter%'
+		MAIN_FILE = '%main%'`),
+	}
+	for f, c := range files {
+		mockFiles[f] = c
+	}
+	config := android.TestConfig(buildDir, nil, bp, mockFiles)
+	ctx := android.NewTestContext()
+	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("version_split", versionSplitMutator()).Parallel()
+	})
+	ctx.RegisterModuleType("python_library_host", PythonLibraryHostFactory)
+	ctx.RegisterModuleType("python_binary_host", PythonBinaryHostFactory)
+	ctx.RegisterModuleType("python_test_host", PythonTestHostFactory)
+	ctx.RegisterModuleType("python_defaults", defaultsFactory)
+	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	ctx.Register(config)
+	_, testErrs := ctx.ParseBlueprintsFiles(bpFile)
+	android.FailIfErrored(t, testErrs)
+	_, actErrs := ctx.PrepareBuildActions(config)
+
+	if len(actErrs) > 0 {
+		testErrs = append(testErrs, expectErrors(t, actErrs, errors)...)
+	}
+	android.FailIfErrored(t, testErrs)
+	return ctx, config
+}
+
 func expectErrors(t *testing.T, actErrs []error, expErrs []string) (testErrs []error) {
+	t.Helper()
 	actErrStrs := []string{}
 	for _, v := range actErrs {
 		actErrStrs = append(actErrStrs, v.Error())
@@ -366,6 +381,9 @@ func expectErrors(t *testing.T, actErrs []error, expErrs []string) (testErrs []e
 	sort.Strings(actErrStrs)
 	if len(actErrStrs) != len(expErrs) {
 		t.Errorf("got (%d) errors, expected (%d) errors!", len(actErrStrs), len(expErrs))
+		for i, v := range expErrs {
+			t.Logf("expected[%v]: %v", i, v)
+		}
 		for _, v := range actErrStrs {
 			testErrs = append(testErrs, errors.New(v))
 		}
@@ -446,4 +464,23 @@ func TestMain(m *testing.M) {
 	}
 
 	os.Exit(run())
+}
+
+func TestPythonTestHost_run_in_checkbuild(t *testing.T) {
+	ctx, _ := testPython(t, `
+		python_test_host {
+			name: "test",
+			srcs: ["test.py"],
+			run_in_checkbuild: true,
+		}
+	`, nil, map[string][]byte{
+		"test.py": nil,
+	})
+
+	test := ctx.ModuleForTests("test", "PY3")
+	testRunTimestamp := test.Description("Run a test").Output.String()
+	checkbuildInputs := test.Output("test-checkbuild").Implicits.Strings()
+	if !android.InList(testRunTimestamp, checkbuildInputs) {
+		t.Errorf("checkbuild should run test")
+	}
 }
