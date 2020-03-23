@@ -34,6 +34,24 @@
       "revId": "35e5f720a60c2729718a645c9ac2c4d760892beb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80b804da_90b8f1de",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-23T17:27:31Z",
+      "side": 1,
+      "message": "Not necessary, it was only a nit.",
+      "parentUuid": "c0cf5762_d93a3568",
+      "revId": "35e5f720a60c2729718a645c9ac2c4d760892beb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
