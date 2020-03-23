@@ -22,6 +22,30 @@
       "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63e80a4_69651c17",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-23T14:48:47Z",
+      "side": 1,
+      "message": "I just borrowed the name from apexFileForAndroidApp()\u0027s last parameter.\n\nIn \"func (a *AndroidApp) generateAndroidBuildActions()\" there is \"a.installApkName\" for this and it is used for both installDir and actual .apk filename.\n\nIn \"func (a *AndroidAppImport) generateAndroidBuildActions()\" there is no such thing but BaseModuleName() is used in installDir.\n\nOne alternative I thought about was InstallDir() which returns \"app/AppName\" part. It might be complementary to OutputFile().\n\nWhat do you think?",
+      "parentUuid": "49ad4623_6bd30d3e",
+      "range": {
+        "startLine": 467,
+        "startChar": 28,
+        "endLine": 467,
+        "endChar": 31
+      },
+      "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
