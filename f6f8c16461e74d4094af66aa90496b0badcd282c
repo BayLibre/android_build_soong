@@ -141,6 +141,30 @@
       "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c4db53_485fd027",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-23T15:16:25Z",
+      "side": 1,
+      "message": "No I meant that the name for prebuilt apks should be an overridden name like installApkName.",
+      "parentUuid": "bc211d50_b60dd067",
+      "range": {
+        "startLine": 467,
+        "startChar": 28,
+        "endLine": 467,
+        "endChar": 31
+      },
+      "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
