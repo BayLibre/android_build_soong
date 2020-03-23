@@ -464,6 +464,10 @@ func processMainCert(m android.ModuleBase, certPropValue string, certificates []
 	return certificates
 }
 
+func (a *AndroidApp) InstallPkgName() string {
+	return a.Name()
+}
+
 func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	var apkDeps android.Paths
 
@@ -1054,6 +1058,10 @@ func (a *AndroidAppImport) GenerateAndroidBuildActions(ctx android.ModuleContext
 	a.generateAndroidBuildActions(ctx)
 }
 
+func (a *AndroidAppImport) InstallPkgName() string {
+	return a.BaseModuleName()
+}
+
 func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext) {
 	numCertPropsSet := 0
 	if String(a.properties.Certificate) != "" {
@@ -1111,6 +1119,8 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 		dexOutput = dexUncompressed
 	}
 
+	apkFilename := proptools.StringDefault(a.properties.Filename, a.BaseModuleName()+".apk")
+
 	// Sign or align the package
 	// TODO: Handle EXTERNAL
 	if !Bool(a.properties.Presigned) {
@@ -1121,11 +1131,11 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 			ctx.ModuleErrorf("Unexpected number of certificates were extracted: %q", certificates)
 		}
 		a.certificate = certificates[0]
-		signed := android.PathForModuleOut(ctx, "signed", ctx.ModuleName()+".apk")
+		signed := android.PathForModuleOut(ctx, "signed", apkFilename)
 		SignAppPackage(ctx, signed, dexOutput, certificates)
 		a.outputFile = signed
 	} else {
-		alignedApk := android.PathForModuleOut(ctx, "zip-aligned", ctx.ModuleName()+".apk")
+		alignedApk := android.PathForModuleOut(ctx, "zip-aligned", apkFilename)
 		TransformZipAlign(ctx, alignedApk, dexOutput)
 		a.outputFile = alignedApk
 		a.certificate = presignedCertificate
@@ -1133,8 +1143,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 
 	// TODO: Optionally compress the output apk.
 
-	a.installPath = ctx.InstallFile(installDir,
-		proptools.StringDefault(a.properties.Filename, a.BaseModuleName()+".apk"), a.outputFile)
+	a.installPath = ctx.InstallFile(installDir, apkFilename, a.outputFile)
 
 	// TODO: androidmk converter jni libs
 }
