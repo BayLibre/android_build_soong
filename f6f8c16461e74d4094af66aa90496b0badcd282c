@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8aaa05c8_6e8853f3",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3763,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-03-23T14:52:48Z",
+      "side": 1,
+      "message": "by the way, a path for \"App\" would be in format of something similar to \"app/App/App.apk\". But not all the time. Is there any restriction or constraints about it?\n\nFor example, this one was \"app/app/override_app.apk\", which makes me think that the directory in the middle isn\u0027t so important",
+      "range": {
+        "startLine": 3763,
+        "startChar": 45,
+        "endLine": 3763,
+        "endChar": 57
+      },
+      "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49ad4623_6bd30d3e",
         "filename": "java/app.go",
         "patchSetId": 1
