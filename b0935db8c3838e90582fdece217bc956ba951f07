@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b4a4ac_fe6f85a1",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-24T18:48:28Z",
+      "side": 1,
+      "message": "Any reason this has to be a separate property?  Are you worried about spurious % substitutions?  In the rare case that happens I think you could use %% in the SOONG_CONFIG definition.",
+      "revId": "b0935db8c3838e90582fdece217bc956ba951f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
