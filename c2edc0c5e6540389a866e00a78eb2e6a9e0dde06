@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "30c2c061_e43560ae",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-24T21:56:21Z",
+      "side": 1,
+      "message": "I think it would help when reading it not to have to navigate to the code that sets the SystemSharedLibs field and then back to the property from which it is being copied to understand the behavior.",
+      "parentUuid": "47d5c795_16b35a9c",
+      "revId": "c2edc0c5e6540389a866e00a78eb2e6a9e0dde06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8908b6da_5d85c860",
         "filename": "cc/library.go",
         "patchSetId": 2

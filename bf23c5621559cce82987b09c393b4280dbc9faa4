@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8a13678_9c2f2639",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-24T21:56:21Z",
+      "side": 1,
+      "message": "This condition is also superfluous as it behaves exactly the same as:\n\nspecifiedDeps.systemSharedLibs \u003d append(specifiedDeps.systemSharedLibs, properties.System_shared_libs...)",
+      "revId": "bf23c5621559cce82987b09c393b4280dbc9faa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ecf2ba_2f62cbfe",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-24T21:56:21Z",
+      "side": 1,
+      "message": "I think it would be better to improve the documentation for FirstUniqueStrings (and add tests) rather than have unnecessary checks here and elsewhere.",
+      "revId": "bf23c5621559cce82987b09c393b4280dbc9faa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
