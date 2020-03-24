@@ -491,7 +491,13 @@ func (linker *baseLinker) link(ctx ModuleContext,
 
 func (linker *baseLinker) linkerSpecifiedDeps(specifiedDeps specifiedDeps) specifiedDeps {
 	specifiedDeps.sharedLibs = append(specifiedDeps.sharedLibs, linker.Properties.Shared_libs...)
-	specifiedDeps.systemSharedLibs = append(specifiedDeps.systemSharedLibs, linker.Properties.System_shared_libs...)
+	if linker.Properties.System_shared_libs != nil {
+		if specifiedDeps.systemSharedLibs == nil {
+			specifiedDeps.systemSharedLibs = linker.Properties.System_shared_libs
+		} else {
+			specifiedDeps.systemSharedLibs = append(specifiedDeps.systemSharedLibs, linker.Properties.System_shared_libs...)
+		}
+	}
 	return specifiedDeps
 }
 
