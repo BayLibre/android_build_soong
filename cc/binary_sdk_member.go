@@ -18,6 +18,7 @@ import (
 	"path/filepath"
 
 	"android/soong/android"
+
 	"github.com/google/blueprint"
 )
 
@@ -137,7 +138,8 @@ func (p *nativeBinaryInfoProperties) AddToPropertySet(ctx android.SdkMemberConte
 		propertySet.AddPropertyWithTag("shared_libs", p.SharedLibs, builder.SdkMemberReferencePropertyTag(false))
 	}
 
-	if len(p.SystemSharedLibs) > 0 {
+	// Compare with nil because an empty list needs to be propagated.
+	if p.SystemSharedLibs != nil {
 		propertySet.AddPropertyWithTag("system_shared_libs", p.SystemSharedLibs, builder.SdkMemberReferencePropertyTag(false))
 	}
 }
