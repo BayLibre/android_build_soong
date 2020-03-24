@@ -34,6 +34,24 @@
       "revId": "b0935db8c3838e90582fdece217bc956ba951f07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7dea3a_b837afee",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-24T19:13:01Z",
+      "side": 1,
+      "message": "What about using a top level value in a string variable (outside a value) to support %s.",
+      "parentUuid": "c4707938_df48e666",
+      "revId": "b0935db8c3838e90582fdece217bc956ba951f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
