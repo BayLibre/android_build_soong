@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "47d5c795_16b35a9c",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-24T17:42:16Z",
+      "side": 1,
+      "message": "I\u0027ve added notes about it to the various struct fields that propagate BaseLinkerProperties.System_shared_libs. Do you think it\u0027s necessary to point out at every use as well? The code around BaseLinkerProperties.System_shared_libs is already doing this, without any ado.",
+      "parentUuid": "d81c9bc4_1ec495ff",
+      "revId": "c2edc0c5e6540389a866e00a78eb2e6a9e0dde06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8908b6da_5d85c860",
         "filename": "cc/library.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "c2edc0c5e6540389a866e00a78eb2e6a9e0dde06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "550ae0ed_03f8b9f3",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-24T17:42:16Z",
+      "side": 1,
+      "message": "You\u0027re right, the outer if is actually superfluous. Simplified and added a comment.\n\nAs for FirstUniqueStrings, to be able to assume that we\u0027d need to both document and test it for that function. Could do that, but it\u0027s a bit of an oddball case for it to support, and it gets less obvious here that it\u0027s handled correctly. I think this is more clear.",
+      "parentUuid": "8908b6da_5d85c860",
+      "revId": "c2edc0c5e6540389a866e00a78eb2e6a9e0dde06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
