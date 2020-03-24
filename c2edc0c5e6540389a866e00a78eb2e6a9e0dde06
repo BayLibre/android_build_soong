@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d81c9bc4_1ec495ff",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-24T10:37:52Z",
+      "side": 1,
+      "message": "Could you add a comment here why you are checking against nil and not len() \u003d\u003d 0 as they are usually viewed as being equivalent.",
+      "revId": "c2edc0c5e6540389a866e00a78eb2e6a9e0dde06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8908b6da_5d85c860",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-24T10:37:52Z",
+      "side": 1,
+      "message": "Are you 100% sure that these complex checks are needed. As I understand it append and FirstUniqueStrings both return nil if passed a nil list that is appended to a nil list.\n\nI wasn\u0027t sure myself (and the documentation does not cover it) and ran the following test:\n\nfunc TestNilList(t *testing.T) {\n\th :\u003d TestHelper{t}\n\t\n\tvar a []string\n\th.AssertDeepEquals(\"nil\", []string(nil), a)\n\th.AssertDeepEquals(\"nil - append nil\", []string(nil), append(a, a...))\n\th.AssertDeepEquals(\"nil - append a\", []string{\"a\"}, append(a, \"a\"))\n\th.AssertDeepEquals(\"{b} - append nil\", []string{\"b\"}, append([]string{\"b\"}, a...))\n\th.AssertDeepEquals(\"nil - [:0]\", []string(nil), a[:0])\n}",
+      "revId": "c2edc0c5e6540389a866e00a78eb2e6a9e0dde06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f20c707_bfda0808",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-24T10:37:52Z",
+      "side": 1,
+      "message": "Ditto for comment.",
+      "revId": "c2edc0c5e6540389a866e00a78eb2e6a9e0dde06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2792038b_18f1586e",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-24T10:37:52Z",
+      "side": 1,
+      "message": "Ditto for check if needed.",
+      "revId": "c2edc0c5e6540389a866e00a78eb2e6a9e0dde06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
