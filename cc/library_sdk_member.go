@@ -212,7 +212,7 @@ func addPossiblyArchSpecificProperties(sdkModuleContext android.ModuleContext, b
 		outputProperties.AddPropertyWithTag("shared_libs", libInfo.SharedLibs, builder.SdkMemberReferencePropertyTag(false))
 	}
 
-	if len(libInfo.SystemSharedLibs) > 0 {
+	if libInfo.SystemSharedLibs != nil {
 		outputProperties.AddPropertyWithTag("system_shared_libs", libInfo.SystemSharedLibs, builder.SdkMemberReferencePropertyTag(false))
 	}
 
@@ -327,7 +327,8 @@ type nativeLibInfoProperties struct {
 	// This field is exported as its contents may not be arch specific.
 	SharedLibs []string
 
-	// The set of system shared libraries
+	// The set of system shared libraries. Note nil and [] are semantically
+	// distinct - see BaseLinkerProperties.System_shared_libs.
 	//
 	// This field is exported as its contents may not be arch specific.
 	SystemSharedLibs []string
