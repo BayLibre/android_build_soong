@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a3046a3_0c088004",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-24T04:42:08Z",
+      "side": 1,
+      "message": "this actually doesn\u0027t need to be \"system\" but could be anything as long as the tags are unique, right?",
+      "range": {
+        "startLine": 898,
+        "startChar": 15,
+        "endLine": 898,
+        "endChar": 21
+      },
+      "revId": "a05785afa1657997a6017ef2c0755488fdc2372c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a969f81_3b540bd5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-24T04:42:08Z",
+      "side": 1,
+      "message": "Thanks for fixing here, but calling these tags doesn\u0027t seem right to me. These are actual paths, not tags which are meaningful only during build time.\n\nRefactoring here might be out of scope of this change, but if you want to, I suggest you to replace string literals such as \"vendor\" with VendorPath(), etc.\n\nYou will have to add android.Config as a new argument to use the functions.",
+      "range": {
+        "startLine": 1052,
+        "startChar": 30,
+        "endLine": 1052,
+        "endChar": 33
+      },
+      "revId": "a05785afa1657997a6017ef2c0755488fdc2372c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
