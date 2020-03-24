@@ -16,6 +16,24 @@
       "revId": "b0935db8c3838e90582fdece217bc956ba951f07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4707938_df48e666",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-03-24T18:58:56Z",
+      "side": 1,
+      "message": "It\u0027s not really compatible with any of the other variable types -- string_variable requires explicit options, and bool_variable doesn\u0027t pass anything through unless it\u0027s a true-like value.\n\nI originally had called this string_value_variable, but decided that was just confusing. If we could start over, I\u0027d consider renaming what is currently string_variable to something around option/switch/case/map/etc.\n\nAll of my hikey use cases ended up actually being integers, so I almost implemented %d, but figured that that\u0027s really only error checking on top of %s.",
+      "parentUuid": "86b4a4ac_fe6f85a1",
+      "revId": "b0935db8c3838e90582fdece217bc956ba951f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
