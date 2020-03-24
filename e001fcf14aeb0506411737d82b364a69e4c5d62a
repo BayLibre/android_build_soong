@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd2ac6a4_74a5a330",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-24T23:36:54Z",
+      "side": 1,
+      "message": "is this a must? We can let the soong-selinux to cast with an unnamed interface `interface { CurrentSyspropApiFile() android.Path }`",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 54
+      },
+      "revId": "e001fcf14aeb0506411737d82b364a69e4c5d62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
