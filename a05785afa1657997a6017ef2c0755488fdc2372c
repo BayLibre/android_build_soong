@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "df132850_9089dd17",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2020-03-25T03:44:32Z",
+      "side": 1,
+      "message": "Actually, now it *should* be system because merge_target_files uses that to classify the module as a framework module.",
+      "parentUuid": "26d5206a_89985a0e",
+      "range": {
+        "startLine": 898,
+        "startChar": 15,
+        "endLine": 898,
+        "endChar": 21
+      },
+      "revId": "a05785afa1657997a6017ef2c0755488fdc2372c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a969f81_3b540bd5",
         "filename": "java/sdk_library.go",
         "patchSetId": 3
@@ -141,6 +165,30 @@
       "revId": "a05785afa1657997a6017ef2c0755488fdc2372c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b0f181_756f1219",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2020-03-25T03:44:32Z",
+      "side": 1,
+      "message": "Reverted this.",
+      "parentUuid": "09532442_66ec4fb4",
+      "range": {
+        "startLine": 1052,
+        "startChar": 30,
+        "endLine": 1052,
+        "endChar": 33
+      },
+      "revId": "a05785afa1657997a6017ef2c0755488fdc2372c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
