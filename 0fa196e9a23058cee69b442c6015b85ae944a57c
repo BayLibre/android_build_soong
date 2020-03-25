@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbecb73f_62809c2c",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-25T23:13:19Z",
+      "side": 1,
+      "message": "I\u0027d suggest adding it here instead, and copy the comment from global.go too.",
+      "revId": "0fa196e9a23058cee69b442c6015b85ae944a57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
