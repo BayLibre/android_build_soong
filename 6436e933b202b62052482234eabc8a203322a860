@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c097e503_23f83530",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-25T14:52:13Z",
+      "side": 1,
+      "message": "I finally realized why this check was behaving in a weird way. VisitAllModules finds the bootcasspath jars multiple times in different modules, and each time a different part of the check was failing. Therefore I made it more relaxed than it should be.\n\nThis is subtle. Someting like apache-xml may be found both in the ART apex and in some other non-updatable module, and it is ok (second jar should be skipped, but it\u0027s not an error). But if the jar is found in an updatable apex (different than ART in case of the ART boot image), then this is a hard error (as opposed to skipping the jar and continuing the search).",
+      "parentUuid": "eb77870b_82410164",
+      "range": {
+        "startLine": 242,
+        "startChar": 12,
+        "endLine": 242,
+        "endChar": 31
+      },
+      "revId": "6436e933b202b62052482234eabc8a203322a860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbb0c556_b970d1cf",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 4
@@ -93,6 +117,30 @@
       "revId": "6436e933b202b62052482234eabc8a203322a860",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e6de00_b365e122",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-25T14:52:13Z",
+      "side": 1,
+      "message": "Done. I also felt the common-separated format is misleading.",
+      "parentUuid": "bbb0c556_b970d1cf",
+      "range": {
+        "startLine": 253,
+        "startChar": 30,
+        "endLine": 253,
+        "endChar": 37
+      },
+      "revId": "6436e933b202b62052482234eabc8a203322a860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
