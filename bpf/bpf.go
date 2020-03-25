@@ -37,7 +37,7 @@ var (
 		blueprint.RuleParams{
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
-			Command:     "$ccCmd --target=bpf -c $cFlags -MD -MF ${out}.d -o $out $in",
+			Command:     "$ccCmd --target=bpf -c -no-canonical-prefixes $cFlags -MD -MF ${out}.d -o $out $in",
 			CommandDeps: []string{"$ccCmd"},
 		},
 		"ccCmd", "cFlags")
