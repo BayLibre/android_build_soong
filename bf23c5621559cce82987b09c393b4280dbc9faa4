@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "22e06502_2fd47f5d",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-25T16:59:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a82c03c9_a5d109c9",
+      "revId": "bf23c5621559cce82987b09c393b4280dbc9faa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9ecf2ba_2f62cbfe",
         "filename": "cc/library.go",
         "patchSetId": 4
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "I realised the \"!\u003d nil\" check still depended on FirstUniqueStrings not converting [] to nil, so I\u0027ve changed it in PS6 and added a comment anyway since the new check isn\u0027t sufficiently obvious. My salient point with division of concerns still holds though.",
       "parentUuid": "5628a9fd_13b8d664",
+      "revId": "bf23c5621559cce82987b09c393b4280dbc9faa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e70dad8b_01eea939",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-25T16:59:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c66bf702_539ea465",
       "revId": "bf23c5621559cce82987b09c393b4280dbc9faa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false

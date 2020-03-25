@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cba9c762_2550049d",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-25T16:59:35Z",
+      "side": 1,
+      "message": "This is a little confusing as it doesn\u0027t explain how the first clause relates to the second clause or why the second clause is important.\n\n\"Compare against nil instead of len() \u003d\u003d 0 as setting system_shared_libs to an empty list behaves differently to not setting it at all.\"\n\nOr maybe just use something similar to what you said below:\n\n\"Compare System_shared_libs property with nil because an empty list is semantically significant.\"",
+      "revId": "ee1fa3433d0c98548975267eae398e224c7ff0ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
