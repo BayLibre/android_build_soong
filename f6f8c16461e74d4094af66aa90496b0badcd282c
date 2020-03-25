@@ -189,6 +189,30 @@
       "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c023dba4_63c8b9b6",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-25T15:05:57Z",
+      "side": 1,
+      "message": "1. \u0027Package name\u0027 confusion\n- I agree with Jiyong. \u0027Package name\u0027 is a very overloaded term. I try to avoid it whenever possible, especially in this file because the term normally refers to the one in the manifest file in this context as Jiyong said.\n\n2. Adding name overriding to android_app_import\n- The override product variables, for which this \u0027installApkName\u0027 was introduced, were a stop gap solution. My preference now is using the override module framework. Having said that, I suppose the complex situations around source-based apps vs their prebuilt counterparts vs their overrride counterparts may require us to make android_app_import support the variables in the future?",
+      "parentUuid": "45a95592_96367180",
+      "range": {
+        "startLine": 467,
+        "startChar": 28,
+        "endLine": 467,
+        "endChar": 31
+      },
+      "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
