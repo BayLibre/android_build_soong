@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a82c03c9_a5d109c9",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-25T15:06:27Z",
+      "side": 1,
+      "message": "No. append(nil, []string{}...) \u003d\u003d append(nil) \u003d\u003d nil, and that case needs to return an empty slice. Restoring the original linkerSpecifiedDeps functions will cause the tests I\u0027ve added to fail; that\u0027s how I discovered them.",
+      "parentUuid": "e8a13678_9c2f2639",
+      "revId": "bf23c5621559cce82987b09c393b4280dbc9faa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9ecf2ba_2f62cbfe",
         "filename": "cc/library.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "bf23c5621559cce82987b09c393b4280dbc9faa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5628a9fd_13b8d664",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-25T15:06:27Z",
+      "side": 1,
+      "message": "I don\u0027t think it improves FirstUniqueStrings, rather the opposite: it adds an oddball corner case for it to support that it just happens to handle correctly right now.\n\nIt also makes it less obvious here that we retain nil vs empty slice properly - similar to the comments you request elsewhere, one would be called for here to point out that it indeed doesn\u0027t mix those two up.\n\nBottom line, this is a better division of concerns for both sides. The only upside I can see is the performance win, but that\u0027s completely negligible.\n\n\u003e and elsewhere.\n\nIf this is a common situation I\u0027d be a bit more inclined to agree, but I don\u0027t think it will be. (For the same reason I\u0027ve opted to not add an empty-slice-preserving append() variant to android/util.go, even though it would find use in two places.)",
+      "parentUuid": "c9ecf2ba_2f62cbfe",
+      "revId": "bf23c5621559cce82987b09c393b4280dbc9faa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
