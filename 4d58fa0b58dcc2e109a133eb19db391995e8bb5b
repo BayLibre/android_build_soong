@@ -22,6 +22,30 @@
       "revId": "4d58fa0b58dcc2e109a133eb19db391995e8bb5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07899a0_b7d4c17b",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2020-03-25T17:14:16Z",
+      "side": 1,
+      "message": "Setting partition to system as the default allows all module types to fall back to system. The device-specific module type is unique in that it could be on the odm partition (path odm), the vendor partition (path vendor/odm), or the system partition (path system/vendor/odm). Adding the comments as you suggest is the best way to clarify this.",
+      "parentUuid": "2aece070_0d95ae27",
+      "range": {
+        "startLine": 906,
+        "startChar": 5,
+        "endLine": 906,
+        "endChar": 61
+      },
+      "revId": "4d58fa0b58dcc2e109a133eb19db391995e8bb5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
