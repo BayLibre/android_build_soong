@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2aece070_0d95ae27",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-25T04:53:50Z",
+      "side": 1,
+      "message": "why does only odm have this special case? Shouldn\u0027t we tag /system/product, /system/vendor, and /system/system_ext as system?\n\nI think this deserves a comment here.",
+      "range": {
+        "startLine": 906,
+        "startChar": 5,
+        "endLine": 906,
+        "endChar": 61
+      },
+      "revId": "4d58fa0b58dcc2e109a133eb19db391995e8bb5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
