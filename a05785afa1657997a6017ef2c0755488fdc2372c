@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "26d5206a_89985a0e",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-25T00:00:55Z",
+      "side": 1,
+      "message": "Ack. I just wanted to be sure.",
+      "parentUuid": "5a184db1_66f88f22",
+      "range": {
+        "startLine": 898,
+        "startChar": 15,
+        "endLine": 898,
+        "endChar": 21
+      },
+      "revId": "a05785afa1657997a6017ef2c0755488fdc2372c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a969f81_3b540bd5",
         "filename": "java/sdk_library.go",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Yeah, I think I\u0027ll revert this part of the change. The logic that detects the tag needs to be more sophisticated to deal with the situation of, for example, the module being SystemExtSpecific, yet still landing on the system partition in the /system/system_ext directory.",
       "parentUuid": "3a969f81_3b540bd5",
+      "range": {
+        "startLine": 1052,
+        "startChar": 30,
+        "endLine": 1052,
+        "endChar": 33
+      },
+      "revId": "a05785afa1657997a6017ef2c0755488fdc2372c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09532442_66ec4fb4",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-25T00:00:55Z",
+      "side": 1,
+      "message": "Ah, yeah, that\u0027s a good point.",
+      "parentUuid": "73d7b774_37ffe282",
       "range": {
         "startLine": 1052,
         "startChar": 30,
