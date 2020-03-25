@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b872dfb2_c5fd1000",
+        "filename": "cuj/cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-25T14:12:30Z",
+      "side": 1,
+      "message": "A brief comment about why this file would be nice.",
+      "revId": "21e2b137bbdb670a5dbec0a5949fbbb291b8fd54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003956ec_21219e57",
+        "filename": "cuj/cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-25T14:12:30Z",
+      "side": 1,
+      "message": "nit: if err :\u003d os.Chtimes(intentFileName, currentTime, currentTime); err !\u003d nil {",
+      "revId": "21e2b137bbdb670a5dbec0a5949fbbb291b8fd54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc8f18b_bb2652f6",
+        "filename": "cuj/cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-25T14:12:30Z",
+      "side": 1,
+      "message": "Why do you want to print this message if there\u0027s an error? Also, this seems like a bit of duplicate given you handle the returned err below in line 223.",
+      "revId": "21e2b137bbdb670a5dbec0a5949fbbb291b8fd54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
