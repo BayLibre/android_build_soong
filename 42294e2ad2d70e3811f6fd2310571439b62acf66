@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9495d764_816ebf3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-26T16:59:04Z",
+      "side": 1,
+      "message": "Related, if you can do a programmatic test there are more combinations that might be worth including. Exploring a dense graph between PRODUCT_UPDATABLE_BOOT_JARS, ART_APEX_JARS, PRODUCT_BOOT_JARS and \u003cnon-updatable\u003e, I also get:\n\n- Move/add from ART_APEX_JARS to PRODUCT_UPDATABLE_BOOT_JARS\n- Move/add from ART_APEX_JARS to PRODUCT_BOOT_JARS\n- Move/add from PRODUCT_BOOT_JARS to PRODUCT_UPDATABLE_BOOT_JARS\n- Move/add from PRODUCT_BOOT_JARS to ART_APEX_JARS\n- Add non-updatable to ART_APEX_JARS\n\nNot sure all of these make sense, but at least moves between PRODUCT_BOOT_JARS and ART_APEX_JARS deserves to be tested.",
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a21147f_da1e92fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-26T16:59:04Z",
+      "side": 1,
+      "message": "There\u0027s nontrivial logic at work here, and since it\u0027s also a build safety check it seems worth some effort to construct a test for this, even if it cannot test all the way from the make variables. Is that feasible?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 150
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3c3c70_d1afa8db",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-26T16:59:04Z",
+      "side": 1,
+      "message": "Nit: This doesn\u0027t add much beyond the code itself. Suggest dropping it.",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 41
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27caaad8_20eb7e7b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-26T16:59:04Z",
+      "side": 1,
+      "message": "Nit: Same here.",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 72
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3b4b43_14133404",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-26T16:59:04Z",
+      "side": 1,
+      "message": "Nit: One can think this means the module is e.g. com.android.art.release itself. Might be worth making it \"isApexModule\" even though it\u0027s a bit long.",
+      "range": {
+        "startLine": 256,
+        "startChar": 7,
+        "endLine": 256,
+        "endChar": 13
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c694926d_51eeae9d",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-26T16:59:04Z",
+      "side": 1,
+      "message": "So this means bootDexJars[i] in buildBootImage will be nil, which will get caught in the missingDeps loop there, right?\n\nAn error message here would be able to provide more context, but I suppose it\u0027s this way to not get an error in AllowMissingDependencies mode. If that\u0027s correct, then what is the condition where a module here needs to be considered missing? I thought AllowMissingDependencies was only for cases where the source tree is incomplete, and then I\u0027d reckon we wouldn\u0027t get here.",
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5df5c90_0c1beb2f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-03-26T16:59:04Z",
+      "side": 1,
+      "message": "Suggest reversing this and start with a fall-through block as you do for the ART image case above. It\u0027s nice to see explicitly the condition where we *don\u0027t* fail.",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 36
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
