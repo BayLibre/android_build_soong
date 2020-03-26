@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "91658566_9e706aa9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T17:01:46Z",
+      "side": 1,
+      "message": "I checked the device boots.",
+      "parentUuid": "ac4c8374_d4f20999",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a09365d_0abcab87",
         "filename": "java/dexpreopt.go",
         "patchSetId": 1
@@ -213,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "df027bba_93e97d1f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T17:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901dcc98_7f51dcd9",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74fa36ae_631af576",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 1
@@ -272,6 +320,30 @@
       "side": 1,
       "message": "Hmm, I find it easier to understand if all configuration happens in one place and at the same time (when boot image config is generated). But I may be wrong.\n\n\u003e Code clarity should win.\n\nNot with regard to build systems --- they need to be fast, and appending lists all over Soong doesn\u0027t help. Note that if this was a heavyweight computation, you also had the option to wrap it in Once().",
       "parentUuid": "07db044e_af8c5dd3",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 98
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "558ab057_2fcf038f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T17:01:46Z",
+      "side": 1,
+      "message": "I would not consider it part of configuration.\n\nIn general, I am biased against \"trivial derived state\" in programming.  It just invites bugs when the state goes out of sync.\n\nI don\u0027t think append is heavy weight enough to worry.  And we are talking about 3 calls vs 1 call here.",
+      "parentUuid": "9bf7e1c1_bfe9c01c",
       "range": {
         "startLine": 146,
         "startChar": 0,
@@ -352,6 +424,54 @@
       "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a28874e_2fb92f45",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T17:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff09e86a_ed2d218a",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 5
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30cbdce2_7f1d0062",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T17:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff09e86a_ed2d218a",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 5
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
