@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ac4c8374_d4f20999",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T14:27:32Z",
+      "side": 1,
+      "message": "I meant flashing the device and booting.",
+      "parentUuid": "1eae3207_1a2f6121",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a09365d_0abcab87",
         "filename": "java/dexpreopt.go",
         "patchSetId": 1
@@ -236,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9bf7e1c1_bfe9c01c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T14:27:32Z",
+      "side": 1,
+      "message": "Hmm, I find it easier to understand if all configuration happens in one place and at the same time (when boot image config is generated). But I may be wrong.\n\n\u003e Code clarity should win.\n\nNot with regard to build systems --- they need to be fast, and appending lists all over Soong doesn\u0027t help. Note that if this was a heavyweight computation, you also had the option to wrap it in Once().",
+      "parentUuid": "07db044e_af8c5dd3",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 98
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fcf74b6_3c774bef",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 1
@@ -280,6 +328,30 @@
       "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff09e86a_ed2d218a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T14:27:32Z",
+      "side": 1,
+      "message": "I was confused by the name shadowing (\u0027current\u0027 in the outer loop is an image config, and in the inner loop it is a variant config). Please rename one of them.",
+      "parentUuid": "5830bf88_16c4c13c",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 5
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
