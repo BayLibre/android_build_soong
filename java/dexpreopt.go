@@ -149,11 +149,13 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 	var archs []android.ArchType
 	var images android.Paths
 	var imagesDeps []android.OutputPaths
+	var imageLocations []string
 	for _, target := range targets {
 		archs = append(archs, target.Arch.ArchType)
 		variant := bootImage.getVariant(target)
 		images = append(images, variant.images)
 		imagesDeps = append(imagesDeps, variant.imagesDeps)
+		imageLocations = variant.imageLocations() // Locations are identical per-OS.
 	}
 
 	dexLocation := android.InstallPathToOnDevicePath(ctx, d.installPath)
@@ -198,7 +200,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		Archs:                   archs,
 		DexPreoptImages:         images,
 		DexPreoptImagesDeps:     imagesDeps,
-		DexPreoptImageLocations: bootImage.imageLocations,
+		DexPreoptImageLocations: imageLocations,
 
 		PreoptBootClassPathDexFiles:     dexFiles,
 		PreoptBootClassPathDexLocations: dexLocations,
