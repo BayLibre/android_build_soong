@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36b80f3_c041fd0b",
+        "filename": "apex/key.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-26T02:51:12Z",
+      "side": 1,
+      "message": "this addition of a new property shouldn\u0027t be a breaking change I believe. +baligh",
+      "range": {
+        "startLine": 145,
+        "startChar": 92,
+        "endLine": 145,
+        "endChar": 104
+      },
+      "revId": "6e061f7ccf9fa7f5daae20bee1fbe3916c6c9806",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
