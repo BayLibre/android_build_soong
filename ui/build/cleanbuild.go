@@ -99,7 +99,7 @@ func installClean(ctx Context, config Config, what int) {
 		hostOut("sdk_addon"),
 		hostOut("testcases"),
 		hostOut("vts10"),
-		hostOut("vts-core"),
+		hostOut("vts"),
 		productOut("*.img"),
 		productOut("*.zip"),
 		productOut("android-info.txt"),
