@@ -1,0 +1,12 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Martin Stjernholm <mast@google.com>
+Autosubmit+1: Martin Stjernholm <mast@google.com>
+Presubmit-Ready+1: Martin Stjernholm <mast@google.com>
+Code-Review+2: Ian Kasprzak <iankaz@google.com>
+Code-Review+2: Kelly Rossmoyer <krossmo@google.com>
+Build-Cop-Override+1: Ian Kasprzak <iankaz@google.com>
+Submitted-by: Martin Stjernholm <mast@google.com>
+Submitted-at: Thu, 26 Mar 2020 17:49:35 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1269693
+Project: platform/build/soong
+Branch: refs/heads/master
