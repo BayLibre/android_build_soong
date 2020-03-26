@@ -492,6 +492,26 @@ modules (`cc_defaults`, `java_defaults`, etc.), which can then be referenced
 by all of the vendor's other modules using the normal namespace and visibility
 rules.
 
+Furthermore, commonly used product build variables are available to modules
+inside soong, albeit only for restricted purposes such as setting `cflags`:
+```
+cc_binary {
+  ...
+  product_variables: {
+      platform_sdk_version: { // int
+          cflags: ["-DPLATFORM_SDK_VERSION=%d"],
+      },
+      debuggable: { // bool
+          init_rc: ["init.debuggable.rc"],
+      },
+  },
+}
+```
+
+The conditional product variables for use in blueprint files are currently
+different per variable, unstable and subject to change.
+See [android/variable.go](https://android.googlesource.com/platform/build/soong/+/refs/heads/master/android/variable.go).
+
 ## Build logic
 
 The build logic is written in Go using the
