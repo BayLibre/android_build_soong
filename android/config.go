@@ -777,6 +777,23 @@ func (c *config) DisableScudo() bool {
 	return Bool(c.productVariables.DisableScudo)
 }
 
+func (c *config) DefaultHardening() string {
+	s := ""
+	if c.productVariables.Hardening != nil {
+		s = *c.productVariables.Hardening
+	}
+	switch s {
+	case "":
+		//TODO For a transition period the default value is set to "disabled",
+		// later it will be "enabled" and only if needed disable at module level.
+		return "disabled"
+	case "enabled", "disabled", "enforced":
+		return s
+	default:
+		panic(fmt.Errorf("Unknown hardening set for PRODUCT_HARDENING: %q", s))
+	}
+}
+
 func (c *config) Android64() bool {
 	for _, t := range c.Targets[Android] {
 		if t.Arch.ArchType.Multilib == "lib64" {

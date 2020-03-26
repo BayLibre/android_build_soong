@@ -29,6 +29,7 @@ type LinkableInterface interface {
 	StubsVersion() string
 	HasStubsVariants() bool
 	SelectedStl() string
+	SelectedHardening() string
 	ApiLevel() string
 
 	BuildStaticVariant() bool

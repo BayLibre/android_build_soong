@@ -112,6 +112,10 @@ func (mod *Module) SelectedStl() string {
 	return ""
 }
 
+func (mod *Module) SelectedHardening() string {
+	return ""
+}
+
 func (mod *Module) NonCcVariants() bool {
 	if mod.compiler != nil {
 		if library, ok := mod.compiler.(libraryInterface); ok {

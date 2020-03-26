@@ -125,6 +125,10 @@ type variableProperties struct {
 			Enabled *bool
 		}
 
+		Hardening struct {
+			Cflags []string `android:"arch_variant"`
+		} `android:"arch_variant"`
+
 		Experimental_mte struct {
 			Cflags []string `android:"arch_variant"`
 		} `android:"arch_variant"`
@@ -243,6 +247,8 @@ type productVariables struct {
 	CFIIncludePaths []string `json:",omitempty"`
 
 	DisableScudo *bool `json:",omitempty"`
+
+	Hardening *string `json:",omitempty"`
 
 	Experimental_mte *bool `json:",omitempty"`
 
