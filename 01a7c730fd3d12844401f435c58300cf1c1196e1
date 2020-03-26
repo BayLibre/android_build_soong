@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dd67c09_191be733",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T12:51:26Z",
+      "side": 1,
+      "message": "Can you be more specific:\n- what was broken?\n- how you fixed it?\nIt is not clear what is changed by this patch: build rules, build targets, locations in some of the build images, etc.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8065872a_aa4b9835",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T12:51:26Z",
+      "side": 1,
+      "message": "I\u0027d also test boot on device (after something like `m clean-oat-host`). Although presubmit checks would likely show incorrect locations in the boot image.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a09365d_0abcab87",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T12:51:26Z",
+      "side": 1,
+      "message": "Resetting the variable in a loop is confusing, I\u0027d move it out of loop:\n  imageLocations :\u003d bootImage.getVariant(targets[0]).imageLocations()\n\nWhen you say \"identical per-OS\", do you mean (1) that all locations for the same OS are identical (like arm and arm64 for OS android), or (2) that locations of different OS-es are the same? Initially I read your comment as (2), but I think (2) is incorrect and you mean (1).\n\nIn any case, this code seems to use the same location for all OSes. This looks wrong, why should location for the image on host be the same as on device?",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 78
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6288e6fb_91c0d663",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T12:51:26Z",
+      "side": 1,
+      "message": "Nice, this starts to resemble a decent boot image tree.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 25
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "901dcc98_7f51dcd9",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T12:51:26Z",
+      "side": 1,
+      "message": "I think the example in the comment is outdated. Can you please update it, including locations for host and device images, and locations for primary and extensions? And also re-format to make the line length more regular (Go uses soft limit 100 characters)?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fa36ae_631af576",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T12:51:26Z",
+      "side": 1,
+      "message": "I think this should be cached in a field in the boot image config (or its variant sub-config), since all the information is known at config generation time. Having this generic function is much nicer than the previous ad-hoc location construction in getBootImageConfigs(), but I think it should be called once when the config is constructed. There is no reason to recompute the location every time it is used.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 98
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fcf74b6_3c774bef",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-26T12:51:26Z",
+      "side": 1,
+      "message": "I think this should be moved out of loop:\n  imageLocations :\u003d current.imageLocations()\n\nBut see also the comment regarding caching imageLocations in a field in the config; then maybe the changes in this function can be avoided at all.",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 5
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
