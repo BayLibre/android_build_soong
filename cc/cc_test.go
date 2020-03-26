@@ -3316,3 +3316,70 @@ func TestProductVariableDefaults(t *testing.T) {
 		t.Errorf("expected -DBAR in cppflags, got %q", libfoo.flags.Local.CppFlags)
 	}
 }
+
+func TestHardening(t *testing.T) {
+	bp := `
+	cc_library {
+		name: "libdefault",
+		stl: "none",
+		hardening: "enabled",
+	}
+	cc_binary {
+		name: "SecurityCritical",
+		shared_libs: ["libdefault"],
+		stl: "none",
+		hardening: "enforced",
+	}`
+	config := TestConfig(buildDir, android.Android, nil, bp, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	ctx := CreateTestContext()
+	t.Helper()
+	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.TopDown("hardening", hardeningDepsMutator()).Parallel()
+	})
+	ctx.Register(config)
+
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
+	android.FailIfErrored(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	android.FailIfErrored(t, errs)
+
+	mod := ctx.ModuleForTests("libdefault", coreVariant).Module().(*Module)
+	if mod.GetHardening() != "enforced" {
+		t.Errorf("hardening of libdefault must be \"enforced\", but was %#v", mod.GetHardening())
+	}
+}
+
+func TestHardeningError(t *testing.T) {
+	bp := `
+	cc_library {
+		name: "libdisabled",
+		stl: "none",
+		hardening: "disabled",
+	}
+	cc_binary {
+		name: "SecurityCritical",
+		shared_libs: ["libdisabled"],
+		stl: "none",
+		hardening: "enforced",
+	}`
+	config := TestConfig(buildDir, android.Android, nil, bp, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	ctx := CreateTestContext()
+	t.Helper()
+	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.TopDown("hardening", hardeningDepsMutator()).Parallel()
+	})
+	ctx.Register(config)
+
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
+	android.FailIfErrored(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	if len(errs) > 0 {
+		android.FailIfNoMatchingErrors(t, "Hardening on module \".*\" is disabled but requested by \".*\"", errs)
+		return
+	}
+	t.Fatalf("missing expected disabled hardening error")
+}

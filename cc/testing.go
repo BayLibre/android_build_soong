@@ -45,6 +45,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			recovery_available: true,
 			native_bridge_supported: true,
 			src: "",
+			hardening: "enabled",
 		}
 
 		toolchain_library {
@@ -67,6 +68,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			vendor_available: true,
 			recovery_available: true,
 			native_bridge_supported: true,
+			hardening: "enabled",
 			src: "",
 		}
 
@@ -171,6 +173,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			stl: "none",
 			system_shared_libs: [],
 			recovery_available: true,
+			hardening: "enabled",
 			stubs: {
 				versions: ["27", "28", "29"],
 			},
@@ -186,6 +189,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			no_libcrt: true,
 			nocrt: true,
 			stl: "none",
+			hardening: "enabled",
 			system_shared_libs: [],
 			recovery_available: true,
 			stubs: {
@@ -246,6 +250,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			no_libcrt: true,
 			nocrt: true,
 			stl: "none",
+			hardening: "enabled",
 			system_shared_libs: [],
 			recovery_available: true,
 			stubs: {
@@ -354,6 +359,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			native_bridge_supported: true,
 			min_sdk_version: "29",
 			stl: "none",
+			hardening: "enabled",
 		}
 
 		cc_object {
@@ -363,6 +369,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			vendor_available: true,
 			native_bridge_supported: true,
 			stl: "none",
+			hardening: "enabled",
 		}
 
 		cc_object {
@@ -382,6 +389,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			native_bridge_supported: true,
 			min_sdk_version: "29",
 			stl: "none",
+			hardening: "enabled",
 		}
 
 		cc_object {
@@ -391,6 +399,7 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			vendor_available: true,
 			native_bridge_supported: true,
 			stl: "none",
+			hardening: "enabled",
 		}
 
 		cc_library {

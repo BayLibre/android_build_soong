@@ -342,6 +342,7 @@ type ModuleContextIntf interface {
 	inRecovery() bool
 	shouldCreateSourceAbiDump() bool
 	selectedStl() string
+	selectedHardening() string
 	baseModuleName() string
 	getVndkExtendsModuleName() string
 	isPgoCompile() bool
@@ -501,6 +502,7 @@ type Module struct {
 	linker    linker
 	installer installer
 	stl       *stl
+	hardening *hardening
 	sanitize  *sanitize
 	coverage  *coverage
 	sabi      *sabi
@@ -574,6 +576,10 @@ func (c *Module) SelectedStl() string {
 		return c.stl.Properties.SelectedStl
 	}
 	return ""
+}
+
+func (c *Module) SelectedHardening() string {
+	return c.hardening.Properties.SelectedHardening
 }
 
 func (c *Module) ToolchainLibrary() bool {
@@ -814,6 +820,9 @@ func (c *Module) Init() android.Module {
 	}
 	if c.stl != nil {
 		c.AddProperties(c.stl.props()...)
+	}
+	if c.hardening != nil {
+		c.AddProperties(c.hardening.props()...)
 	}
 	if c.sanitize != nil {
 		c.AddProperties(c.sanitize.props()...)
@@ -1259,6 +1268,13 @@ func (ctx *moduleContextImpl) selectedStl() string {
 	return ""
 }
 
+func (ctx *moduleContextImpl) selectedHardening() string {
+	if hardening := ctx.mod.hardening; hardening != nil {
+		return hardening.Properties.SelectedHardening
+	}
+	return ""
+}
+
 func (ctx *moduleContextImpl) useClangLld(actx ModuleContext) bool {
 	return ctx.mod.linker.useClangLld(actx)
 }
@@ -1312,6 +1328,7 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 		&tidyFeature{},
 	}
 	module.stl = &stl{}
+	module.hardening = &hardening{}
 	module.sanitize = &sanitize{}
 	module.coverage = &coverage{}
 	module.sabi = &sabi{}
@@ -1511,6 +1528,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if c.stl != nil {
 		flags = c.stl.flags(ctx, flags)
 	}
+	if c.hardening != nil {
+		flags = c.hardening.flags(ctx, flags)
+	}
 	if c.sanitize != nil {
 		flags = c.sanitize.flags(ctx, flags)
 	}
@@ -1629,6 +1649,9 @@ func (c *Module) begin(ctx BaseModuleContext) {
 	}
 	if c.stl != nil {
 		c.stl.begin(ctx)
+	}
+	if c.hardening != nil {
+		c.hardening.begin(ctx)
 	}
 	if c.sanitize != nil {
 		c.sanitize.begin(ctx)
@@ -3019,6 +3042,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&BenchmarkProperties{},
 		&FuzzProperties{},
 		&StlProperties{},
+		&HardeningProperties{},
 		&SanitizeProperties{},
 		&StripProperties{},
 		&InstallerProperties{},

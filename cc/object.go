@@ -78,6 +78,8 @@ func ObjectFactory() android.Module {
 	module.compiler.appendCflags([]string{"-fno-addrsig"})
 
 	module.sdkMemberTypes = []android.SdkMemberType{ccObjectSdkMemberType}
+	module.hardening = &hardening{}
+
 	return module.Init()
 }
 
