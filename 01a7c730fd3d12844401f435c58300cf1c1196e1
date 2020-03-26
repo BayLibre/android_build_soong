@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cc41cce7_fe24fc74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T13:37:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd67c09_191be733",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8065872a_aa4b9835",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1eae3207_1a2f6121",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T13:37:28Z",
+      "side": 1,
+      "message": "This command tests both host and target.",
+      "parentUuid": "8065872a_aa4b9835",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a09365d_0abcab87",
         "filename": "java/dexpreopt.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047020ac_3b68cdac",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T13:37:28Z",
+      "side": 1,
+      "message": "Done.\n\nThe location for host is indeed different to location for target.",
+      "parentUuid": "4a09365d_0abcab87",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 78
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "07db044e_af8c5dd3",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T13:37:28Z",
+      "side": 1,
+      "message": "I did that intentionally.\n\nAt the moment the the struct has dozen fields holding paths... all of which are slightly different variations of each other, with trivial differences, and with field names which give little clue of their mutual relationship. I would rather try to reduce the number of such fields.\n\nIn this case .image points to existing physical file, so it is better candidate to be the canonical field.  ImageLocation is trivially-derived and does not actually represent real file, and thus I prefer to recomputed it on-demand, with the comment moved here to explain it.\n\nI am not really worried about the computational cost of stripping the x86 directory from the string. Code clarity should win.",
+      "parentUuid": "74fa36ae_631af576",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 98
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fcf74b6_3c774bef",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 1
@@ -160,6 +256,30 @@
       "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5830bf88_16c4c13c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-03-26T13:37:28Z",
+      "side": 1,
+      "message": "imageLocations() is per-variant (per-os really).\nIt does not exist on the outer object.\nIt is also not easy to index outside the loop.",
+      "parentUuid": "5fcf74b6_3c774bef",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 5
+      },
+      "revId": "01a7c730fd3d12844401f435c58300cf1c1196e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
