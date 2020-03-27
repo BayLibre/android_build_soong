@@ -1,0 +1,10 @@
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Code-Review+2: Pirama Arumuga Nainar <pirama@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Evgenii Stepanov <eugenis@google.com>
+Submitted-at: Fri, 27 Mar 2020 20:17:30 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1270761
+Project: platform/build/soong
+Branch: refs/heads/master
