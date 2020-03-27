@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e27ac316_a8b6912d",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-03-27T23:15:07Z",
+      "side": 1,
+      "message": "I suspect this means that the source/output/dist/tmp/home directories will be readonly? (I\u0027d love it if home isn\u0027t in the list, but iirc, things like Java like to write things there)",
+      "revId": "84c16ff1a1460c7027a7c76be6ad76f0f45b885c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
