@@ -77,7 +77,7 @@ func (c *Cmd) sandboxSupported() bool {
 			"-e",
 			"-u", "nobody",
 			"-g", sandboxConfig.group,
-			"-B", "/",
+			"-R", "/",
 			"--disable_clone_newcgroup",
 			"--",
 			"/bin/bash", "-c", `if [ $(hostname) == "android-build" ]; then echo "Android" "Success"; else echo Failure; fi`)
@@ -145,7 +145,7 @@ func (c *Cmd) wrapSandbox() {
 		"--rlimit_nofile", "soft",
 
 		// For now, just map everything. Eventually we should limit this, especially to make most things readonly.
-		"-B", "/",
+		"-R", "/",
 
 		// Disable newcgroup for now, since it may require newer kernels
 		// TODO: try out cgroups
