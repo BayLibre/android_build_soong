@@ -555,6 +555,8 @@ var localModuleUpdate = map[string][]etcPrebuiltModuleUpdate{
 	"TARGET_OUT_ODM":            {{prefix: "/etc", flags: []string{"device_specific"}}},
 	"TARGET_OUT_SYSTEM_EXT":     {{prefix: "/etc", flags: []string{"system_ext_specific"}}},
 	"TARGET_OUT_SYSTEM_EXT_ETC": {{prefix: "", flags: []string{"system_ext_specific"}}},
+	"TARGET_OUT_GMS":            {{prefix: "/etc", flags: []string{"gms_specific"}}},
+	"TARGET_OUT_GMS_ETC":        {{prefix: "", flags: []string{"gms_specific"}}},
 	"TARGET_OUT_VENDOR":         {{prefix: "/etc", flags: []string{"proprietary"}}, {prefix: "/firmware", modType: "prebuilt_firmware", flags: []string{"proprietary"}}},
 	"TARGET_OUT_VENDOR_ETC":     {{prefix: "", flags: []string{"proprietary"}}},
 	"TARGET_RECOVERY_ROOT_OUT":  {{prefix: "/system/etc", flags: []string{"recovery"}}},

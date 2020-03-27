@@ -1024,6 +1024,13 @@ func (c *deviceConfig) SystemExtPath() string {
 	return "system_ext"
 }
 
+func (c *deviceConfig) GmsPath() string {
+	if c.config.productVariables.GmsPath != nil {
+		return *c.config.productVariables.GmsPath
+	}
+	return "gms"
+}
+
 func (c *deviceConfig) BtConfigIncludeDir() string {
 	return String(c.config.productVariables.BtConfigIncludeDir)
 }
