@@ -76,6 +76,7 @@ type EarlyModuleContext interface {
 	SocSpecific() bool
 	ProductSpecific() bool
 	SystemExtSpecific() bool
+	GmsSpecific() bool
 	Platform() bool
 
 	Config() Config
@@ -404,6 +405,10 @@ type commonProperties struct {
 	// (or /system/system_ext if system_ext partition does not exist).
 	System_ext_specific *bool
 
+	// whether this module is part of gms. When set to true, it is installed into /gms
+	// (or /system/gms if gms partition does not exist).
+	Gms_specific *bool
+
 	// Whether this module is installed to recovery partition
 	Recovery *bool
 
@@ -566,6 +571,7 @@ const (
 	socSpecificModule
 	productSpecificModule
 	systemExtSpecificModule
+	gmsSpecificModule
 )
 
 func (k moduleKind) String() string {
@@ -580,6 +586,8 @@ func (k moduleKind) String() string {
 		return "product-specific"
 	case systemExtSpecificModule:
 		return "systemext-specific"
+	case gmsSpecificModule:
+		return "gms-specific"
 	default:
 		panic(fmt.Errorf("unknown module kind %d", k))
 	}
@@ -875,7 +883,7 @@ func (m *ModuleBase) HostSupported() bool {
 }
 
 func (m *ModuleBase) Platform() bool {
-	return !m.DeviceSpecific() && !m.SocSpecific() && !m.ProductSpecific() && !m.SystemExtSpecific()
+	return !m.DeviceSpecific() && !m.SocSpecific() && !m.ProductSpecific() && !m.SystemExtSpecific() && !m.GmsSpecific()
 }
 
 func (m *ModuleBase) DeviceSpecific() bool {
@@ -892,6 +900,10 @@ func (m *ModuleBase) ProductSpecific() bool {
 
 func (m *ModuleBase) SystemExtSpecific() bool {
 	return Bool(m.commonProperties.System_ext_specific)
+}
+
+func (m *ModuleBase) GmsSpecific() bool {
+	return Bool(m.commonProperties.Gms_specific)
 }
 
 func (m *ModuleBase) Enabled() bool {
@@ -1084,6 +1096,7 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.EarlyModuleContext) module
 	var deviceSpecific = Bool(m.commonProperties.Device_specific)
 	var productSpecific = Bool(m.commonProperties.Product_specific)
 	var systemExtSpecific = Bool(m.commonProperties.System_ext_specific)
+	var gmsSpecific = Bool(m.commonProperties.Gms_specific)
 
 	msg := "conflicting value set here"
 	if socSpecific && deviceSpecific {
@@ -1099,16 +1112,18 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.EarlyModuleContext) module
 		}
 	}
 
-	if productSpecific && systemExtSpecific {
+	if productSpecific && (systemExtSpecific || gmsSpecific) {
 		ctx.PropertyErrorf("product_specific", "a module cannot be specific to product and system_ext at the same time.")
 		ctx.PropertyErrorf("system_ext_specific", msg)
 	}
 
-	if (socSpecific || deviceSpecific) && (productSpecific || systemExtSpecific) {
+	if (socSpecific || deviceSpecific) && (productSpecific || systemExtSpecific || gmsSpecific) {
 		if productSpecific {
 			ctx.PropertyErrorf("product_specific", "a module cannot be specific to SoC or device and product at the same time.")
-		} else {
+		} else if systemExtSpecific {
 			ctx.PropertyErrorf("system_ext_specific", "a module cannot be specific to SoC or device and system_ext at the same time.")
+		} else {
+			ctx.PropertyErrorf("gms_specific", "a module cannot be specific to SoC or device and gms at the same time.")
 		}
 		if deviceSpecific {
 			ctx.PropertyErrorf("device_specific", msg)
@@ -1129,6 +1144,8 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.EarlyModuleContext) module
 		return productSpecificModule
 	} else if systemExtSpecific {
 		return systemExtSpecificModule
+	} else if gmsSpecific {
+		return gmsSpecificModule
 	} else if deviceSpecific {
 		return deviceSpecificModule
 	} else if socSpecific {
@@ -1354,6 +1371,10 @@ func (e *earlyModuleContext) ProductSpecific() bool {
 
 func (e *earlyModuleContext) SystemExtSpecific() bool {
 	return e.kind == systemExtSpecificModule
+}
+
+func (e *earlyModuleContext) GmsSpecific() bool {
+	return e.kind == gmsSpecificModule
 }
 
 type baseModuleContext struct {
@@ -1745,13 +1766,14 @@ func (b *baseModuleContext) PrimaryArch() bool {
 }
 
 // Makes this module a platform module, i.e. not specific to soc, device,
-// product, or system_ext.
+// product, system_ext or gms.
 func (m *ModuleBase) MakeAsPlatform() {
 	m.commonProperties.Vendor = boolPtr(false)
 	m.commonProperties.Proprietary = boolPtr(false)
 	m.commonProperties.Soc_specific = boolPtr(false)
 	m.commonProperties.Product_specific = boolPtr(false)
 	m.commonProperties.System_ext_specific = boolPtr(false)
+	m.commonProperties.Gms_specific = boolPtr(false)
 }
 
 func (m *ModuleBase) EnableNativeBridgeSupportByDefault() {
