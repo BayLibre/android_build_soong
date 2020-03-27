@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "971abe91_f05d672c",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-03-27T17:40:34Z",
+      "side": 1,
+      "message": "That can take care of both vts and vts10. But I\u0027d like to make it explicit as they are 2 different suite.",
+      "parentUuid": "8bfd6e56_e3b00ccd",
+      "range": {
+        "startLine": 101,
+        "startChar": 14,
+        "endLine": 101,
+        "endChar": 16
+      },
+      "revId": "8a668e8299b6c3722d6c79b236a5c4a9b469d1f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c1c9aa1_293905b5",
         "filename": "ui/build/cleanbuild.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "8a668e8299b6c3722d6c79b236a5c4a9b469d1f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fea7bdba_dc3fbe43",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-03-27T17:40:34Z",
+      "side": 1,
+      "message": "It\u0027s the builder cleanup script, each suite should have one. cts is in line 96.",
+      "parentUuid": "8c1c9aa1_293905b5",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "8a668e8299b6c3722d6c79b236a5c4a9b469d1f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
