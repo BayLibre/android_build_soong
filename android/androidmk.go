@@ -235,6 +235,7 @@ func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod bluep
 		a.SetBoolIfTrue("LOCAL_ODM_MODULE", Bool(amod.commonProperties.Device_specific))
 		a.SetBoolIfTrue("LOCAL_PRODUCT_MODULE", Bool(amod.commonProperties.Product_specific))
 		a.SetBoolIfTrue("LOCAL_SYSTEM_EXT_MODULE", Bool(amod.commonProperties.System_ext_specific))
+		a.SetBoolIfTrue("LOCAL_GMS_MODULE", Bool(amod.commonProperties.Gms_specific))
 		if amod.commonProperties.Owner != nil {
 			a.SetString("LOCAL_MODULE_OWNER", *amod.commonProperties.Owner)
 		}
