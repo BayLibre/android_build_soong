@@ -16,6 +16,24 @@
       "revId": "0f80c1848a0eff945fac9486230e1122a833a9b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51c3d3b8_4616a65c",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1723,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-27T04:50:20Z",
+      "side": 1,
+      "message": "Let\u0027s say we have two apexes each of which uses a different version of the same sdk module.\n\napex { name: \"apex1\", java_libs: [\"mylib\"], uses_sdks: [\"mysdk#1\"]}\napex { name: \"apex2\", java_libs: [\"mylib\"], uses_sdks: [\"mysdk#2\"]}\njava_library { name: \"mylib\", libs: [\"sdkmember\"]}\nsdk { name: [\"mysdk\"], java_libs: [\"sdkmember\"] }\n\nwhen mylib is built for apex1, it should link against version 1 snapshot of sdkmember, while it is built for apex2, it should link against version 2 snapshot of sdkmember.\n\nIn order for each of the versioned prebuilt libraries (sdkmember@mysdk#1, sdkmember@mysdk#2) to replace the source built library (sdkmember) differently depending on which apex they are in, the source built one should also be mutated for the apexes. Otherwise, replacing sdkmember with sdkmember@mysdk#1 for the apex1 would affect apex2 as well.",
+      "parentUuid": "36437eb0_da1ef42b",
+      "revId": "0f80c1848a0eff945fac9486230e1122a833a9b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
