@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bfd6e56_e3b00ccd",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-27T17:36:11Z",
+      "side": 1,
+      "message": "I wonder if we should \u0027vts*\u0027",
+      "range": {
+        "startLine": 101,
+        "startChar": 14,
+        "endLine": 101,
+        "endChar": 16
+      },
+      "revId": "8a668e8299b6c3722d6c79b236a5c4a9b469d1f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1c9aa1_293905b5",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-27T17:36:11Z",
+      "side": 1,
+      "message": "is this still needed btw? or was it needed before? I thought that tradefed might not have needed to delete this folder. Should there be one for cts as well?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 17
+      },
+      "revId": "8a668e8299b6c3722d6c79b236a5c4a9b469d1f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
