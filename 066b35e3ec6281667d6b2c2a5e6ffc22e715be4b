@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a1b243cd_33e07674",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-03-28T06:25:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc04837e_f0dd80c6",
+      "revId": "066b35e3ec6281667d6b2c2a5e6ffc22e715be4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac711f73_419386b6",
         "filename": "cc/prebuilt.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-27T23:38:15Z",
       "side": 1,
       "message": "I\u0027d prefer to use cp -L to dereference the symlink at copy time than try to manually follow it here.",
+      "revId": "066b35e3ec6281667d6b2c2a5e6ffc22e715be4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d24bc3c_c8d9e4fd",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-03-28T06:25:24Z",
+      "side": 1,
+      "message": "Does this mean I\u0027ll need to add a BuildRule because \"android.Cp\" doesn\u0027t follow links? or is there existing \"cp -L\" rules?",
+      "parentUuid": "ac711f73_419386b6",
       "revId": "066b35e3ec6281667d6b2c2a5e6ffc22e715be4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
