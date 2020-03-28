@@ -117,6 +117,30 @@
       "revId": "578562086bbf2f992333fec8aa1db3068951ce2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea5a8eec_17e9fe34",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-28T03:15:05Z",
+      "side": 1,
+      "message": "Yeah, they are never installed. They however appear in the license file in case when they are linked to other modules that are installed.\n\nIn that case its (fake) path appears in the license file; /system/lib/libfoo.a.\n\nBut I don\u0027t think stem doesn\u0027t really matter here.",
+      "parentUuid": "1cdb5476_44d5dc7d",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 63
+      },
+      "revId": "578562086bbf2f992333fec8aa1db3068951ce2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
