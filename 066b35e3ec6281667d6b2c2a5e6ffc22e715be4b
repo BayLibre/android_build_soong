@@ -69,6 +69,24 @@
       "revId": "066b35e3ec6281667d6b2c2a5e6ffc22e715be4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "debd3c46_1791de3a",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-03-28T08:01:21Z",
+      "side": 1,
+      "message": "Ah I see what you mean now, I can specify flags to pass to `cp` in the BuildParams",
+      "parentUuid": "3d24bc3c_c8d9e4fd",
+      "revId": "066b35e3ec6281667d6b2c2a5e6ffc22e715be4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
