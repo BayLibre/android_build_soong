@@ -34,6 +34,24 @@
       "revId": "84c16ff1a1460c7027a7c76be6ad76f0f45b885c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb12974_4be59bee",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-03-30T16:31:10Z",
+      "side": 1,
+      "message": "Yeah, I think/hope that should work",
+      "parentUuid": "bf5f956b_4e5e0852",
+      "revId": "84c16ff1a1460c7027a7c76be6ad76f0f45b885c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
