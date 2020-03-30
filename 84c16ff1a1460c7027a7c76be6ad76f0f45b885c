@@ -16,6 +16,24 @@
       "revId": "84c16ff1a1460c7027a7c76be6ad76f0f45b885c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf5f956b_4e5e0852",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1124149
+      },
+      "writtenOn": "2020-03-30T16:29:39Z",
+      "side": 1,
+      "message": "I see. What if I explicitly mount source, output, dist, tmp and home as read-write, and leave the rest of the system as read-only?",
+      "parentUuid": "e27ac316_a8b6912d",
+      "revId": "84c16ff1a1460c7027a7c76be6ad76f0f45b885c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
