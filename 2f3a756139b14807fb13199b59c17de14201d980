@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f69b116b_511d80b0",
+        "filename": "android/variable_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-30T15:59:14Z",
+      "side": 1,
+      "message": "What additional coverage is this test adding?  We don\u0027t need a test for every property, and we already have some testing above for combining defaults and product variables.  Do you see a gap in the coverage?",
+      "revId": "2f3a756139b14807fb13199b59c17de14201d980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
