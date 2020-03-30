@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7639007_af534da8",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-30T22:45:07Z",
+      "side": 1,
+      "message": "Can you add a comment here that this is non-deterministic, but it is OK because these modules never generate any ninja rules so they don\u0027t make build.ninja non-deterministic?",
+      "revId": "28fb4fa8fcc396a7b231ee731ee13df78087454c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
