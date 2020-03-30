@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c2ff889_5925c3de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-30T15:55:20Z",
+      "side": 1,
+      "message": "This is something we plan to change eventually, we would like to link against transitive dependencies of static libs.  It could also lead to the header parts of a vndk-private library statically included any static library.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "fd83bd53a48c9faa5265903e18bceb322e1ff012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
