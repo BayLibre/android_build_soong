@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cabf9e07_e4220b9a",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2020-03-30T11:31:32Z",
+      "side": 1,
+      "message": "nit: use one condition instead (module name in set of string or just if)",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 75
+      },
+      "revId": "3ddb93c51d542dad3d1be23c05723313cb8f9a3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
