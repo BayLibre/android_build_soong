@@ -1031,6 +1031,7 @@ func init() {
 
 	android.PreDepsMutators(RegisterPreDepsMutators)
 	android.PostDepsMutators(RegisterPostDepsMutators)
+	android.FinalDepsMutators(RegisterFinalDepsMutators)
 
 	android.RegisterMakeVarsProvider(pctx, func(ctx android.MakeVarsContext) {
 		apexFileContextsInfos := apexFileContextsInfos(ctx.Config())
@@ -1049,6 +1050,10 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.BottomUp("apex", apexMutator).Parallel()
 	ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 	ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
+}
+
+func RegisterFinalDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("available_to_platform", availableToPlatformMutator).Parallel()
 }
 
 // Mark the direct and transitive dependencies of apex bundles so that they
@@ -1161,6 +1166,24 @@ func apexFlattenedMutator(mctx android.BottomUpMutatorContext) {
 func apexUsesMutator(mctx android.BottomUpMutatorContext) {
 	if ab, ok := mctx.Module().(*apexBundle); ok {
 		mctx.AddFarVariationDependencies(nil, usesTag, ab.properties.Uses...)
+	}
+}
+
+func availableToPlatformMutator(mctx android.BottomUpMutatorContext) {
+	if mctx.Host() {
+		return
+	}
+	if _, ok := mctx.Module().(*apexBundle); ok {
+		return
+	}
+	am, ok := mctx.Module().(android.ApexModule)
+	if !ok || am.AvailableFor(android.AvailableToPlatform) {
+		mctx.VisitDirectDeps(func(child android.Module) {
+			childAm, ok := child.(android.ApexModule)
+			if ok && !childAm.AvailableFor(android.AvailableToPlatform) {
+				mctx.ModuleErrorf("requires %q that is not available for platform", childAm.Name())
+			}
+		})
 	}
 }
 
