@@ -1889,9 +1889,6 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	for _, lib := range deps.SharedLibs {
 		depTag := SharedDepTag
-		if c.static() {
-			depTag = SharedFromStaticDepTag
-		}
 		if inList(lib, deps.ReexportSharedLibHeaders) {
 			depTag = sharedExportDepTag
 		}
@@ -2356,7 +2353,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		depFile := android.OptionalPath{}
 
 		switch depTag {
-		case ndkStubDepTag, SharedDepTag, SharedFromStaticDepTag, sharedExportDepTag:
+		case ndkStubDepTag, SharedDepTag, sharedExportDepTag:
 			ptr = &depPaths.SharedLibs
 			depPtr = &depPaths.SharedLibsDeps
 			depFile = ccDep.Toc()
@@ -2751,12 +2748,6 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 					// runtime dep to a stubs lib also crosses APEX boundary
 					return false
 				}
-			}
-			if depTag.FromStatic {
-				// shared_lib dependency from a static lib is considered as crossing
-				// the APEX boundary because the dependency doesn't actually is
-				// linked; the dependency is used only during the compilation phase.
-				return false
 			}
 		}
 	}
