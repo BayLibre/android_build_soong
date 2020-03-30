@@ -22,6 +22,12 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+// Extracted from SdkAware to make it easier to define custom subsets of the
+// SdkAware interface and improve code navigation within the IDE.
+type RequiredSdks interface {
+	RequiredSdks() SdkRefs
+}
+
 // SdkAware is the interface that must be supported by any module to become a member of SDK or to be
 // built with SDK
 type SdkAware interface {
@@ -32,7 +38,7 @@ type SdkAware interface {
 	ContainingSdk() SdkRef
 	MemberName() string
 	BuildWithSdks(sdks SdkRefs)
-	RequiredSdks() SdkRefs
+	RequiredSdks
 }
 
 // SdkRef refers to a version of an SDK
