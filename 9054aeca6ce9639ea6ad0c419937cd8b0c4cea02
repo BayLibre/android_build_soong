@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c8c8f2d_11c9bd0a",
+        "filename": "android/neverallow.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-30T23:51:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7ba5fcb_1df90533",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 31
+      },
+      "revId": "9054aeca6ce9639ea6ad0c419937cd8b0c4cea02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a5fd419_72a57b4f",
         "filename": "cc/androidmk.go",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-28T15:16:11Z",
       "side": 1,
       "message": "I\u0027m not sure what this controls. It seems like this dictates whether the sdk variant is installed, not its visibility?",
+      "range": {
+        "startLine": 107,
+        "startChar": 49,
+        "endLine": 107,
+        "endChar": 84
+      },
+      "revId": "9054aeca6ce9639ea6ad0c419937cd8b0c4cea02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f17e875b_b42adc27",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-30T23:51:13Z",
+      "side": 1,
+      "message": "Added comment here and improved the comment in cc.go.",
+      "parentUuid": "3a5fd419_72a57b4f",
       "range": {
         "startLine": 107,
         "startChar": 49,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9f719ede_517fda70",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-30T23:51:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53874f3c_57cf6c40",
+      "range": {
+        "startLine": 212,
+        "startChar": 65,
+        "endLine": 212,
+        "endChar": 67
+      },
+      "revId": "9054aeca6ce9639ea6ad0c419937cd8b0c4cea02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01a1ba7_830d45a2",
         "filename": "java/app.go",
         "patchSetId": 13
@@ -85,6 +157,24 @@
       "revId": "9054aeca6ce9639ea6ad0c419937cd8b0c4cea02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a4f0137_09f1d073",
+        "filename": "java/app.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-03-30T23:51:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d01a1ba7_830d45a2",
+      "revId": "9054aeca6ce9639ea6ad0c419937cd8b0c4cea02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
