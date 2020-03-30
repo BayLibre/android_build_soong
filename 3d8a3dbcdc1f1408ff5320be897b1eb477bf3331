@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "899a802a_984242f9",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-30T12:17:53Z",
+      "side": 1,
+      "message": "Why are these being white listed? It is better to make any difference in behavior explicit in the definition of the module (e.g. by adding a property that triggers the special behavior). If there is no other way of doing this then please add a comment to explain what is happening.",
+      "revId": "3d8a3dbcdc1f1408ff5320be897b1eb477bf3331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
