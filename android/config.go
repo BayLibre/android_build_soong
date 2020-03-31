@@ -1075,12 +1075,12 @@ func (c *deviceConfig) OdmSepolicyDirs() []string {
 	return c.config.productVariables.BoardOdmSepolicyDirs
 }
 
-func (c *deviceConfig) PlatPublicSepolicyDirs() []string {
-	return c.config.productVariables.BoardPlatPublicSepolicyDirs
+func (c *deviceConfig) SystemExtPublicSepolicyDirs() []string {
+	return c.config.productVariables.BoardSystemExtPublicSepolicyDirs
 }
 
-func (c *deviceConfig) PlatPrivateSepolicyDirs() []string {
-	return c.config.productVariables.BoardPlatPrivateSepolicyDirs
+func (c *deviceConfig) SystemExtPrivateSepolicyDirs() []string {
+	return c.config.productVariables.BoardSystemExtPrivateSepolicyDirs
 }
 
 func (c *deviceConfig) SepolicyM4Defs() []string {

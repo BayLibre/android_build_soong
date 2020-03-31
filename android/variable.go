@@ -290,8 +290,8 @@ type productVariables struct {
 
 	BoardVendorSepolicyDirs      []string `json:",omitempty"`
 	BoardOdmSepolicyDirs         []string `json:",omitempty"`
-	BoardPlatPublicSepolicyDirs  []string `json:",omitempty"`
-	BoardPlatPrivateSepolicyDirs []string `json:",omitempty"`
+	BoardSystemExtPublicSepolicyDirs  []string `json:",omitempty"`
+	BoardSystemExtPrivateSepolicyDirs []string `json:",omitempty"`
 	BoardSepolicyM4Defs          []string `json:",omitempty"`
 
 	BoardVndkRuntimeDisable *bool `json:",omitempty"`
