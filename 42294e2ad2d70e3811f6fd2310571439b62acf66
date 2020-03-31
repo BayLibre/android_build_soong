@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "492220f2_1a33b1df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T12:58:33Z",
+      "side": 1,
+      "message": "Added a test in apex/apex_test.go, please take a look. The Make error is not covered by it, but the remaining cases are somewhat covered (although not in terms of \"move from ... to ...\", but I think most of the plausible and faulty scenarios are covered).",
+      "parentUuid": "9495d764_816ebf3a",
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd2bd77f_b7e5beeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T12:58:33Z",
+      "side": 1,
+      "message": "Done, see the above answer.",
+      "parentUuid": "6a21147f_da1e92fd",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 150
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3c3c70_d1afa8db",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 5
@@ -62,6 +104,30 @@
       "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345c09bf_fd669de5",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T12:58:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3c3c3c70_d1afa8db",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 41
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "fc10587f_e113d1cf",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T12:58:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "27caaad8_20eb7e7b",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 72
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb3b4b43_14133404",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 5
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c68ac16d_a57258bd",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T12:58:33Z",
+      "side": 1,
+      "message": "Good suggestion, thank you. Done.",
+      "parentUuid": "cb3b4b43_14133404",
+      "range": {
+        "startLine": 256,
+        "startChar": 7,
+        "endLine": 256,
+        "endChar": 13
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c694926d_51eeae9d",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 5
@@ -122,6 +236,24 @@
       "writtenOn": "2020-03-26T16:59:04Z",
       "side": 1,
       "message": "So this means bootDexJars[i] in buildBootImage will be nil, which will get caught in the missingDeps loop there, right?\n\nAn error message here would be able to provide more context, but I suppose it\u0027s this way to not get an error in AllowMissingDependencies mode. If that\u0027s correct, then what is the condition where a module here needs to be considered missing? I thought AllowMissingDependencies was only for cases where the source tree is incomplete, and then I\u0027d reckon we wouldn\u0027t get here.",
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a3463b1_70f54dfc",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T12:58:33Z",
+      "side": 1,
+      "message": "You are right in suspecting that this will result in an obscure error message in some cases (missing jar, when in fact there is one which doesn\u0027t satisfy constraints). Giving a precise message would require creating a map of modules to sets of candidate jars, then picking the best candidate for each module (if it exists) or raising an error explaining why none of the candidates is good enough. Not that it is too much work, but I considered that the resulting code would be too complex for what it\u0027s doing.\n\nNot sure why AllowMissingDependencies was originally used here, perhaps in some configurations this path is taken, but I\u0027m not sure which. Removing, then running presubmit checks and building master-art may give a clue.",
+      "parentUuid": "c694926d_51eeae9d",
       "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -148,6 +280,30 @@
       "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ef15be_8b1c71dd",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T12:58:33Z",
+      "side": 1,
+      "message": "Done, thanks.",
+      "parentUuid": "d5df5c90_0c1beb2f",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 36
+      },
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
