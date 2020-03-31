@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7f098d9_dc5e6bc4",
+        "filename": "cc/sdk.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-03-31T20:50:44Z",
+      "side": 1,
+      "message": "Can you copy and paste the commit message as comments here? That\u0027ll be super helpful to understanding what it is for.",
+      "revId": "46b163a3e1405ccbfe1eef2a607671e7f66b9899",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
