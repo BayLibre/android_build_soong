@@ -16,6 +16,24 @@
       "revId": "2f3a756139b14807fb13199b59c17de14201d980",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4036080a_545be21d",
+        "filename": "android/variable_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1309980
+      },
+      "writtenOn": "2020-03-31T05:43:27Z",
+      "side": 1,
+      "message": "This test is only for testing the added property. My development habits/convention is to modify add related tests for the modified part. It not only help me to verified the modified code but also help to increase the testing speed. For example: if the xxx.go is modified by me, I would expected the newest test added in xxx_test.go. The other developers can find the related tests and only run xxx_test.go without running all of go tests.\n\nAnd, to add the tests help me to understand the build system/soong architecture quickly. To write the tests not only increase the coverage but also provide the example.\n\nThat\u0027s why I write this test.",
+      "parentUuid": "f69b116b_511d80b0",
+      "revId": "2f3a756139b14807fb13199b59c17de14201d980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
