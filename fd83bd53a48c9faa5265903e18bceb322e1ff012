@@ -22,6 +22,30 @@
       "revId": "fd83bd53a48c9faa5265903e18bceb322e1ff012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c86c350_e43c2418",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-03-31T02:39:47Z",
+      "side": 1,
+      "message": "Then, do we need to make the static libs inherit the vndk linktypes from their shared libs? If we don\u0027t have direct dependencies between the libs, we may not check the linktype violations if the static lib depends on VNDK-private libs when we submit this change.\n\nOr we can abandon this change and keep static libs has the same linktype checks as we don\u0027t have immediate demands for this change.",
+      "parentUuid": "2c2ff889_5925c3de",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 56
+      },
+      "revId": "fd83bd53a48c9faa5265903e18bceb322e1ff012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
