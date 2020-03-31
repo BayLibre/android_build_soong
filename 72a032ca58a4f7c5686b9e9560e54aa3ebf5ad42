@@ -22,6 +22,30 @@
       "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a014582f_c97907f3",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-03-31T14:43:15Z",
+      "side": 1,
+      "message": "I added GetTagPath() to keep the changes to a minimum and avoid having to change any existing code; although there is only one existing use that I can find.",
+      "parentUuid": "c94d119b_1ded36dc",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
