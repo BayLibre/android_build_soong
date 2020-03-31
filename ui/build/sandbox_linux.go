@@ -54,6 +54,7 @@ var sandboxConfig struct {
 
 	working bool
 	group   string
+	srcDir  string
 }
 
 func (c *Cmd) sandboxSupported() bool {
@@ -72,12 +73,23 @@ func (c *Cmd) sandboxSupported() bool {
 			sandboxConfig.group = "nobody"
 		}
 
+		sandboxConfig.srcDir = absPath(c.ctx, ".")
+		if strings.ContainsRune(sandboxConfig.srcDir, ' ') {
+			c.ctx.Println("You are building in a directory whose absolute path contains a space character:")
+			c.ctx.Println()
+			c.ctx.Printf("%q\n", sandboxConfig.srcDir)
+			c.ctx.Println()
+			c.ctx.Fatalln("Directory names containing spaces are not supported")
+		}
+
 		cmd := exec.CommandContext(c.ctx.Context, nsjailPath,
 			"-H", "android-build",
 			"-e",
 			"-u", "nobody",
 			"-g", sandboxConfig.group,
-			"-B", "/",
+			"-R", "/",
+			"-B", sandboxConfig.srcDir,
+			"-B", "/tmp",
 			"--disable_clone_newcgroup",
 			"--",
 			"/bin/bash", "-c", `if [ $(hostname) == "android-build" ]; then echo "Android" "Success"; else echo Failure; fi`)
@@ -144,8 +156,14 @@ func (c *Cmd) wrapSandbox() {
 		"--rlimit_fsize", "soft",
 		"--rlimit_nofile", "soft",
 
-		// For now, just map everything. Eventually we should limit this, especially to make most things readonly.
-		"-B", "/",
+		// For now, just map everything. Make most things readonly.
+		"-R", "/",
+
+		// Mount source are read-write
+		"-B", sandboxConfig.srcDir,
+
+		// Mount a writable tmp dir
+		"-B", "/tmp",
 
 		// Disable newcgroup for now, since it may require newer kernels
 		// TODO: try out cgroups
