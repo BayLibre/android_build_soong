@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c94d119b_1ded36dc",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-31T14:02:44Z",
+      "side": 1,
+      "message": "why don\u0027t we make this to return ([]Module, []blueprint.DependencyTag)?",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
