@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c8dc28b_9d2840ca",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T08:32:52Z",
+      "side": 1,
+      "message": "Nit: I\u0027d use a helper function, something like:\n\n func getLocationRoot(target android.Target) string {\n  if target.Os.Class \u003d\u003d android.Host {\n    return filepath.Join(\"out\", \"host\", ctx.Config().PrebuiltOS())\n  } else {\n    return \"/\"\n  }\n }",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 5
+      },
+      "revId": "c1f552988d768472c280e295dcfa970751bcb383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c639ebbe_5af04329",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-03-31T08:32:52Z",
+      "side": 1,
+      "message": "c.modules ?",
+      "range": {
+        "startLine": 163,
+        "startChar": 22,
+        "endLine": 163,
+        "endChar": 32
+      },
+      "revId": "c1f552988d768472c280e295dcfa970751bcb383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
