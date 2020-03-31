@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"path"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -2016,6 +2017,10 @@ func (a *apexBundle) minSdkVersion(ctx android.BaseModuleContext) int {
 	return android.FutureApiLevel
 }
 
+// A regexp for removing boilerplate from BaseDependencyTag from the string representation of
+// a dependency tag.
+var tagCleaner = regexp.MustCompile(`\QBaseDependencyTag:blueprint.BaseDependencyTag{}\E(, )?`)
+
 // Ensures that the dependencies are marked as available for this APEX
 func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 	// Let's be practical. Availability for test, host, and the VNDK apex isn't important
@@ -2043,8 +2048,14 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 			return true
 		}
 		message := ""
-		for _, m := range ctx.GetWalkPath()[1:] {
-			message = fmt.Sprintf("%s\n    -> %s", message, m.String())
+		tagPath := ctx.GetTagPath()
+		// Skip the first module as that will be added at the start of the error message by ctx.ModuleErrorf().
+		walkPath := ctx.GetWalkPath()[1:]
+		for i, m := range walkPath {
+			// Get string representation of tag without the boilerplate from BaseDependencyTag.
+			tagString := fmt.Sprintf("%#v", tagPath[i])
+			tagString = tagCleaner.ReplaceAllString(tagString, "")
+			message = fmt.Sprintf("%s\n           via tag %s\n    -> %s", message, tagString, m.String())
 		}
 		ctx.ModuleErrorf("%q requires %q that is not available for the APEX. Dependency path:%s", fromName, toName, message)
 		// Visit this module's dependencies to check and report any issues with their availability.
