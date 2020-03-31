@@ -46,6 +46,30 @@
       "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f6dc4c_5ffa1039",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-03-31T14:53:23Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s my expectation too. But I\u0027d rather choose better API design, especially when the existing use case is only one.\n\nAnyway, this feels like a stylistic discussion. Over to Colin. I don\u0027t have a strong opinion here.",
+      "parentUuid": "a014582f_c97907f3",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
