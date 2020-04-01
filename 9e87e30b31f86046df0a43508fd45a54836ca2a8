@@ -22,6 +22,30 @@
       "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61d13cb8_80b752c6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-01T13:27:37Z",
+      "side": 1,
+      "message": "I think hyphens are common, and it looks odd when the \".txt\" is emitted.",
+      "parentUuid": "040fa427_33555ae4",
+      "range": {
+        "startLine": 576,
+        "startChar": 46,
+        "endLine": 576,
+        "endChar": 74
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
