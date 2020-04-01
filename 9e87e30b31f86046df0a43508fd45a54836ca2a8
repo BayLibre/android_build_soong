@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "151f179c_bc4253e7",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-01T14:37:51Z",
+      "side": 1,
+      "message": "It\u0027s very remotely related as it describes the things that have been taken out.\n\nNote that the other functions that fill profileInstalls are also executed only for the first image. That\u0027s why I added the TODO in lines 591-592 (rather than dealing with it in this CL).",
+      "parentUuid": "72fc204d_ba19e9cf",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 50
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28796b29_04a76c9b",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-01T14:02:53Z",
       "side": 1,
       "message": "I assume you verified that these conditions make sense, because I\u0027m not sure.",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 2
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e715126e_8ebd96c7",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-01T14:37:51Z",
+      "side": 1,
+      "message": "This is a copy of the condition from bootFrameworkProfileRule with the DisableGenerateProfile removed. If _you_ are not sure, who can tell us?",
+      "parentUuid": "28796b29_04a76c9b",
       "range": {
         "startLine": 545,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "754dfcca_cbffdf6f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-01T14:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30d92b81_86a20bbb",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 0
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72aab426_ca81fe37",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "036590c3_f3416e25",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-01T14:37:51Z",
+      "side": 1,
+      "message": "I didn\u0027t know going over 100 characters is OK. Done.",
+      "parentUuid": "72aab426_ca81fe37",
+      "range": {
+        "startLine": 564,
+        "startChar": 7,
+        "endLine": 564,
+        "endChar": 12
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +224,54 @@
       "writtenOn": "2020-04-01T14:02:53Z",
       "side": 1,
       "message": "This list reconstruction is a bit hard to understand (also perhaps inefficient), I\u0027d use an array of booleans:\n  updatableModulesFound :\u003d make([]bool, len(updatableModules))\n\nIf you want to be paranoid you can ensure that all elements are true after VisitAllModules (but I wouldn\u0027t bother).",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 32
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a550c5_2117223c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-01T14:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd91ec3_562db8d5",
+      "range": {
+        "startLine": 568,
+        "startChar": 6,
+        "endLine": 568,
+        "endChar": 32
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b5970c8_1ba38045",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-01T14:37:51Z",
+      "side": 1,
+      "message": "I just searched the web for something like \"golang remove array element\" and found an article that says this is how you do it.",
+      "parentUuid": "16127c92_9b4292d0",
       "range": {
         "startLine": 566,
         "startChar": 0,
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "65b4f015_dd6041c8",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-01T14:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61d13cb8_80b752c6",
+      "range": {
+        "startLine": 576,
+        "startChar": 46,
+        "endLine": 576,
+        "endChar": 74
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40546850_4e9c659d",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
@@ -207,6 +375,30 @@
       "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8517eaf_a4fa5b4c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-01T14:37:51Z",
+      "side": 1,
+      "message": "Looked at other places and glued two lines together, twice.",
+      "parentUuid": "40546850_4e9c659d",
+      "range": {
+        "startLine": 582,
+        "startChar": 3,
+        "endLine": 586,
+        "endChar": 13
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
