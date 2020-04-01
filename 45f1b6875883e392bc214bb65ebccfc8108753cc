@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1a9e8429_4436a366",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-01T19:05:50Z",
+      "side": 1,
+      "message": "In principle yes, however, this is not a good place to add highly complex arguments. 72 characters wide, fixed width, no style or formatting, etc. Requiring the bugs to be public would be better but I suspect that would require a significant change in developer practices.",
+      "parentUuid": "147dc7db_0b4778d6",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "45f1b6875883e392bc214bb65ebccfc8108753cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c1ef44a_dc07a316",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
@@ -93,6 +117,30 @@
       "revId": "45f1b6875883e392bc214bb65ebccfc8108753cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fe8e660_db7c47b1",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3546,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-01T19:05:50Z",
+      "side": 1,
+      "message": "Less clear than what? \"shared from static\"?\n\nThere is no loss of information by switching to this. The previous line clearly indicates that it is a static variant and the following line clearly indicates that it is a shared variant. Given that this removes any special handling of static -\u003e shared the distinction between \"shared\" and \"shared from static\" becomes irrelevant.",
+      "parentUuid": "4c1ef44a_dc07a316",
+      "range": {
+        "startLine": 3546,
+        "startChar": 0,
+        "endLine": 3546,
+        "endChar": 39
+      },
+      "revId": "45f1b6875883e392bc214bb65ebccfc8108753cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
