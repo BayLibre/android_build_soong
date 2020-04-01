@@ -52,6 +52,24 @@
       "revId": "2f3a756139b14807fb13199b59c17de14201d980",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5267fe2f_c6b19ce8",
+        "filename": "android/variable_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1309980
+      },
+      "writtenOn": "2020-04-01T12:25:29Z",
+      "side": 1,
+      "message": "Done. Thank you for Colin\u0027 help to code review this patch.\n\nin https://android-review.googlesource.com/c/platform/build/soong/+/988204/4..5/android/variable_test.go#b345\n\nThe existed coverage should cover this patch range in https://android-review.googlesource.com/c/platform/build/soong/+/1128243/3/android/variable_test.go",
+      "parentUuid": "897ca718_d9473800",
+      "revId": "2f3a756139b14807fb13199b59c17de14201d980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
