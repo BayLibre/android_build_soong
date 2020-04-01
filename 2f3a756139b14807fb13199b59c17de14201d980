@@ -34,6 +34,24 @@
       "revId": "2f3a756139b14807fb13199b59c17de14201d980",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "897ca718_d9473800",
+        "filename": "android/variable_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-01T03:56:40Z",
+      "side": 1,
+      "message": "But this doesn\u0027t increase the coverage of the variable.go file at all, it is testing the code in variable.go but it injects its own product variables struct.  You only changed the product variable struct in variable.go, which is not used by these tests.  If there is something that you feel is not covered from either a coverage or example perspective in TestProductVariables feel free to extend that test, but this new test isn\u0027t adding anything.",
+      "parentUuid": "4036080a_545be21d",
+      "revId": "2f3a756139b14807fb13199b59c17de14201d980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
