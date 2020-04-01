@@ -260,6 +260,24 @@
     },
     {
       "key": {
+        "uuid": "815fe327_434532ff",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-01T13:24:35Z",
+      "side": 1,
+      "message": "Oh, it\u0027s not about skipping out to the AllowMissingDependencies check, it\u0027s about leaving it undecided for later visited jars. Now I see the comment actually does mention that, but I didn\u0027t connect the dots earlier.\n\nYes, propagating errors better would require a bit more infrastructure, something like a third return value with a prospective error message to be stored in an array on the caller side and reported if no hit is found. Perhaps not worth the complexity.",
+      "parentUuid": "3a3463b1_70f54dfc",
+      "revId": "42294e2ad2d70e3811f6fd2310571439b62acf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5df5c90_0c1beb2f",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 5
