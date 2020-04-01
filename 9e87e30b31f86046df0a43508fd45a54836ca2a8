@@ -427,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "351c4321_92cebfde",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-01T15:37:21Z",
+      "side": 1,
+      "message": "Actually, I meant \"it looks odd when the \".txt\" is Omitted.\" :) Which means my preference would go with updatable-bcp-packages.txt.",
+      "parentUuid": "65b4f015_dd6041c8",
+      "range": {
+        "startLine": 576,
+        "startChar": 46,
+        "endLine": 576,
+        "endChar": 74
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40546850_4e9c659d",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
