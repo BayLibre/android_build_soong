@@ -16,6 +16,24 @@
       "revId": "28fb4fa8fcc396a7b231ee731ee13df78087454c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca487e2_a1c66091",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-04-01T18:11:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7639007_af534da8",
+      "revId": "28fb4fa8fcc396a7b231ee731ee13df78087454c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
