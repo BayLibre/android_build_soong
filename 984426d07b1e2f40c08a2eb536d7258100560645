@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7db02fb0_5811a394",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1124149
+      },
+      "writtenOn": "2020-04-01T19:38:39Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "61335fb6_7c619c83",
+      "revId": "984426d07b1e2f40c08a2eb536d7258100560645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "110eb7ca_47539608",
         "filename": "ui/build/sandbox_linux.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "984426d07b1e2f40c08a2eb536d7258100560645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01fe77b0_dbbd9c34",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1124149
+      },
+      "writtenOn": "2020-04-01T19:38:39Z",
+      "side": 1,
+      "message": "Added explicit OutDir and DistDir mounts",
+      "parentUuid": "110eb7ca_47539608",
+      "revId": "984426d07b1e2f40c08a2eb536d7258100560645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
