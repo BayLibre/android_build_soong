@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61335fb6_7c619c83",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-01T00:48:44Z",
+      "side": 1,
+      "message": "We already do this check here: https://source.corp.google.com/android/build/soong/ui/build/config.go;l\u003d197?q\u003dfile:build%2Fsoong%2Fui%2Fbuild%2Fconfig.go\u0026ct\u003dos\u0026sq\u003dpackage:%5Eandroid$",
+      "revId": "984426d07b1e2f40c08a2eb536d7258100560645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "110eb7ca_47539608",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-01T00:48:44Z",
+      "side": 1,
+      "message": "The treehugger failure is because DistDir is readonly (hidden in the build.log):\n\n  ninja: error: mkdir(/buildbot/dist_dirs/.../P13275057/0/dtc): Read-only file system\n\nOutDir can also be disjoint from both DistDir and SrcDir.",
+      "revId": "984426d07b1e2f40c08a2eb536d7258100560645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
