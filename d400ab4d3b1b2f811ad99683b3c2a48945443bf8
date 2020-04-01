@@ -22,6 +22,30 @@
       "revId": "d400ab4d3b1b2f811ad99683b3c2a48945443bf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fcce890_3dde830f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-01T15:37:15Z",
+      "side": 1,
+      "message": "There\u0027s a WriteFile rule that can be used for this sort of thing, see example in writeGlobalConfigForMake below. Not sure this has any particular downsides though, maybe it works just as well.",
+      "parentUuid": "609d6c86_4bf98476",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 0
+      },
+      "revId": "d400ab4d3b1b2f811ad99683b3c2a48945443bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
