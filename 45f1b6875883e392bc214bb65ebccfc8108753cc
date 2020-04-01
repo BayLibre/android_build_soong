@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0bac8cf3_b1ba713a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-01T08:45:48Z",
+      "side": 1,
+      "message": "True but that applies to the vast majority of changes in AOSP that reference a bug that more often than not implicitly provide additional context for the change.\n\nI have updated to provide a bit more context but a commit message is not a good place for the detailed and complex explanation underlying this change.",
+      "parentUuid": "c39729fd_489d84f8",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "45f1b6875883e392bc214bb65ebccfc8108753cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c1ef44a_dc07a316",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
