@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5b5cb64_35601d4c",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-01T10:18:23Z",
+      "side": 1,
+      "message": "The challenge in this CL is to make this execute for modules even when they earlier have been marked with SkipInstall(). My approach is to keep it as localised as possible (SkipInstall call site in apex.go shouldn\u0027t need to know about this special case), but it is a bit brittle since it doesn\u0027t ascertain that AndroidMkEntries always gets here. I\u0027m open for suggestions on better ways to do it.",
+      "revId": "bf37d165f086982fad418c318f10949c514e8155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
