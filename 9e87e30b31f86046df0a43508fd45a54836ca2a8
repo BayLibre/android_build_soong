@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "72fc204d_ba19e9cf",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:02:53Z",
+      "side": 1,
+      "message": "Are these updatable packages in any way related to the framework boot image (or any other boot image)? Why should they be generated as part of a boot image? I understand that you are using profileInstalls to hook the generated file to the Make installation rules, but if it is a logically unrelated thing, maybe it should be decoupled from boot image rules?\n\nNote that the body of the function will be executed only once for the first build image that is generated (which is the framework extension), but it is a hack and I\u0027d rather not use it.",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 50
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28796b29_04a76c9b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:02:53Z",
+      "side": 1,
+      "message": "I assume you verified that these conditions make sense, because I\u0027m not sure.",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 2
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d92b81_86a20bbb",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:02:53Z",
+      "side": 1,
+      "message": "Why is this outside of Once()?",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 0
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72aab426_ca81fe37",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:02:53Z",
+      "side": 1,
+      "message": "Nit: keep on the same line. In Go the preferred style is to use long lines (soft limit 100 chars).",
+      "range": {
+        "startLine": 564,
+        "startChar": 7,
+        "endLine": 564,
+        "endChar": 12
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd91ec3_562db8d5",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:02:53Z",
+      "side": 1,
+      "message": "Nit: keep on the same line.",
+      "range": {
+        "startLine": 568,
+        "startChar": 6,
+        "endLine": 568,
+        "endChar": 32
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16127c92_9b4292d0",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:02:53Z",
+      "side": 1,
+      "message": "This list reconstruction is a bit hard to understand (also perhaps inefficient), I\u0027d use an array of booleans:\n  updatableModulesFound :\u003d make([]bool, len(updatableModules))\n\nIf you want to be paranoid you can ensure that all elements are true after VisitAllModules (but I wouldn\u0027t bother).",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 32
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "040fa427_33555ae4",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
@@ -46,6 +184,52 @@
       "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40546850_4e9c659d",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:02:53Z",
+      "side": 1,
+      "message": "I would glue it all together in one FlagWithOutput(), as ussed in other places.",
+      "range": {
+        "startLine": 582,
+        "startChar": 3,
+        "endLine": 586,
+        "endChar": 13
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aef37fe_2e6c34ef",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:02:53Z",
+      "side": 1,
+      "message": "This sounds like a good clean-up idea (related to the comment above).",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 0
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
