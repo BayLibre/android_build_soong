@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7a06866d_d126c3b7",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:59:28Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "151f179c_bc4253e7",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 50
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28796b29_04a76c9b",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825b0aac_c750e9b3",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:59:28Z",
+      "side": 1,
+      "message": "Note that I\u0027m not the author of any of these functions. :)\nI will mark this as resolved and ask build system specialists to satisfy my curiosity.",
+      "parentUuid": "e715126e_8ebd96c7",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 2
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -281,6 +329,30 @@
       "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1aad56_6ba11efb",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-01T14:59:28Z",
+      "side": 1,
+      "message": "I think the primary goal here is not to remove element, but to mask it. Marking resolved as this is personal preference.",
+      "parentUuid": "3b5970c8_1ba38045",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 32
+      },
+      "revId": "9e87e30b31f86046df0a43508fd45a54836ca2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
