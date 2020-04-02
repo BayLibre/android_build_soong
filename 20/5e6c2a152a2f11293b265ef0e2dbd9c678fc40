@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+1: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+2: Ulyana Trafimovich <skvadrik@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Vladimir Marko <vmarko@google.com>
+Submitted-at: Thu, 02 Apr 2020 11:42:05 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1276272
+Project: platform/build/soong
+Branch: refs/heads/master
