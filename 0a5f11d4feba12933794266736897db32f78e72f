@@ -46,6 +46,30 @@
       "revId": "0a5f11d4feba12933794266736897db32f78e72f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be12ee74_5c8bc7ff",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-02T09:00:56Z",
+      "side": 1,
+      "message": "I see, thanks.",
+      "parentUuid": "ec953335_39a02ddc",
+      "range": {
+        "startLine": 589,
+        "startChar": 2,
+        "endLine": 589,
+        "endChar": 84
+      },
+      "revId": "0a5f11d4feba12933794266736897db32f78e72f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
