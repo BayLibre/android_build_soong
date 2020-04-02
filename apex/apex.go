@@ -606,6 +606,7 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"media_ndk_headers",
 		"media_plugin_headers",
 		"mediaswcodec",
+		"codecs_g711dec",
 	}
 	//
 	// Module separator
