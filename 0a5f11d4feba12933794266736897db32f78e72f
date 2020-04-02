@@ -22,6 +22,30 @@
       "revId": "0a5f11d4feba12933794266736897db32f78e72f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec953335_39a02ddc",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-02T08:59:01Z",
+      "side": 1,
+      "message": "It was needed while I had the explicit building of the rule with \"echo\". Now that we\u0027re using the WriteRule it\u0027s unnecessary and while it was OK to have it when I tested locally, it failed in TreeHugger builds with\n\n  internal error: panic in GenerateBuildActions for singleton dex_bootjars\n  Outputs param has no elements",
+      "parentUuid": "d46e4dde_61e3e9ad",
+      "range": {
+        "startLine": 589,
+        "startChar": 2,
+        "endLine": 589,
+        "endChar": 84
+      },
+      "revId": "0a5f11d4feba12933794266736897db32f78e72f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
