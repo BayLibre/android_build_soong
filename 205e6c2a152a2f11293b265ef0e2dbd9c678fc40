@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01c22f61_e2385e73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2020-04-02T11:44:42Z",
+      "side": 1,
+      "message": "Missing \".txt\" but too late for that after submitting.",
+      "range": {
+        "startLine": 14,
+        "startChar": 32,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "205e6c2a152a2f11293b265ef0e2dbd9c678fc40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
