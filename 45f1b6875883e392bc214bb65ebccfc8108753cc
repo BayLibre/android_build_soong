@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "69678cda_efbd6fe2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-02T12:05:49Z",
+      "side": 1,
+      "message": "I have updated the comment with some more detail.",
+      "parentUuid": "445b4bbd_06a7b6ed",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "45f1b6875883e392bc214bb65ebccfc8108753cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c1ef44a_dc07a316",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
