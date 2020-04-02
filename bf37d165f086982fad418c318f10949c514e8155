@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3574893b_d6e55570",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-02T12:47:58Z",
+      "side": 1,
+      "message": "\u003e the plan is to mark those corner cases explicitly\n\nThat\u0027s correct. With a Soong-based platform availability check in place, an explicit flag would be necessary to disable it.\n\n\u003e So, it would be nicer if emitting the static library to the Make world is done only when it is being referenced from those legitimately exempted modules.\n\nYes, but the drawback is we\u0027d have to couple implementation details in two different subsystems (APEX payload checks leading to SkipInstall calls, and the NOTICE targets implementation in make). SkipInstall would have to take a no_dependencies_from_non_platform_and_non_apex_modules bool flag, or something.\n\nProvided we\u0027ll have a Soong-based check we\u0027re confident with, that shouldn\u0027t be necessary to improve build safety, and then it\u0027s a matter of whether the win in fewer AndroidMk entries is worth the complexity.\n\nIn any case, we can continue that discussion on b/152241137. Thanks for the approval.",
+      "parentUuid": "d8e15e8b_a6e7ada3",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 53
+      },
+      "revId": "bf37d165f086982fad418c318f10949c514e8155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5b5cb64_35601d4c",
         "filename": "cc/androidmk.go",
         "patchSetId": 4
