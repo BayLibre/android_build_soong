@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d82af671_cc8c1bfb",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4148,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-02T10:40:13Z",
+      "side": 1,
+      "message": "Renamed to \u0027errmsg\u0027.",
+      "parentUuid": "afd497de_efc512a4",
+      "range": {
+        "startLine": 4148,
+        "startChar": 50,
+        "endLine": 4148,
+        "endChar": 57
+      },
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0efa0a0c_8aae613f",
         "filename": "apex/apex_test.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-01T13:24:35Z",
       "side": 1,
       "message": "It is a bit strange to have a dexpreopt test in the apex dir. Is it because you need access to apex package internals somewhere? These factory functions seems to be accessible from the outside though.\n\nThe apex package could use a bit of cleanup to use RegisterBlahComponents functions like the java package does, but that\u0027s a separate issue. For now, if you need to export some more apex package identifiers to move this test into java/dexpreopt_test.go then I think that\u0027d be preferable to having the test here.",
+      "range": {
+        "startLine": 4176,
+        "startChar": 0,
+        "endLine": 4177,
+        "endChar": 51
+      },
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b081f00e_bbe80f23",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4177,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-02T10:40:13Z",
+      "side": 1,
+      "message": "\u003e Is it because you need access to apex package internals somewhere?\n\nNot because of the internals, but because I cannot import the apex package from java (because java already imports apex, thus causing an import loop). I have to keep this test somewhere I can import both apex and java, and here seems good enough.",
+      "parentUuid": "0efa0a0c_8aae613f",
       "range": {
         "startLine": 4176,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6127eac5_bfe9b3d0",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4216,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-02T10:40:13Z",
+      "side": 1,
+      "message": "Renamed things to be more descriptive. Also, changed some real-world names to be explicitly fake (to not confuse anyone grepping for a real-world name).",
+      "parentUuid": "9b4537e2_623aba90",
+      "range": {
+        "startLine": 4216,
+        "startChar": 10,
+        "endLine": 4216,
+        "endChar": 13
+      },
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "221a030a_db3eace1",
         "filename": "apex/apex_test.go",
         "patchSetId": 6
@@ -82,6 +154,24 @@
       "writtenOn": "2020-04-01T13:24:35Z",
       "side": 1,
       "message": "Nice work making these tests comparatively easy to follow!\n\n(Btw, a classic Go pattern is to put the data for the test cases in an array and loop through them, but I really don\u0027t see that would be an improvement here.)",
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f3d2c79_453b60ab",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4265,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-02T10:40:13Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "221a030a_db3eace1",
       "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "f5e02883_94c73f76",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4289,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-02T10:40:13Z",
+      "side": 1,
+      "message": "Removed the tail.",
+      "parentUuid": "737c8483_019428d3",
+      "range": {
+        "startLine": 4289,
+        "startChar": 64,
+        "endLine": 4289,
+        "endChar": 127
+      },
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b53c0df3_019fb2c7",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 6
@@ -125,6 +239,24 @@
       "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ce38ce_cd62dd45",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-02T10:40:13Z",
+      "side": 1,
+      "message": "This branch is tested, because all java libraries that go in apexes also have a variant for platform (I ensured this by inserting debug output in this branch). I don\u0027t even know how to make a library that goes into apex but doesn\u0027t have a platform variant.",
+      "parentUuid": "b53c0df3_019fb2c7",
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
