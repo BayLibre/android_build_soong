@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d8e15e8b_a6e7ada3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-02T05:43:57Z",
+      "side": 1,
+      "message": "Yes, there certainly are corner cases where doing this is not harmful. But, IIUC, the plan is to mark those corner cases explicitly (via a property in a bp file). \n\nSo, it would be nicer if emitting the static library to the Make world is done only when it is being referenced from those legitimately exempted modules.\n\nI am not saying that should be done in this CL, but am asking you to consider this when you implement the exemption mechanism.",
+      "range": {
+        "startLine": 17,
+        "startChar": 39,
+        "endLine": 19,
+        "endChar": 53
+      },
+      "revId": "bf37d165f086982fad418c318f10949c514e8155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5b5cb64_35601d4c",
         "filename": "cc/androidmk.go",
         "patchSetId": 4
