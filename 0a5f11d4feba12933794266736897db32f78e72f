@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d46e4dde_61e3e9ad",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-02T08:52:39Z",
+      "side": 1,
+      "message": "Can you explain why this is not needed? Was it needed in previous patch sets?",
+      "range": {
+        "startLine": 589,
+        "startChar": 2,
+        "endLine": 589,
+        "endChar": 84
+      },
+      "revId": "0a5f11d4feba12933794266736897db32f78e72f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
