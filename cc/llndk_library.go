@@ -95,6 +95,10 @@ func (stub *llndkStubDecorator) compile(ctx ModuleContext, flags Flags, deps Pat
 	return objs
 }
 
+func (stub *llndkStubDecorator) compilerDeps(ctx DepsContext, deps Deps) Deps {
+	return deps
+}
+
 func (stub *llndkStubDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	headers := addSuffix(stub.Properties.Export_llndk_headers, llndkHeadersSuffix)
 	deps.HeaderLibs = append(deps.HeaderLibs, headers...)

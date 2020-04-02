@@ -42,6 +42,11 @@ type toolchainLibraryDecorator struct {
 	Properties toolchainLibraryProperties
 }
 
+func (*toolchainLibraryDecorator) compilerDeps(ctx DepsContext, deps Deps) Deps {
+	// toolchain libraries can't have any dependencies
+	return deps
+}
+
 func (*toolchainLibraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	// toolchain libraries can't have any dependencies
 	return deps

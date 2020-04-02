@@ -306,10 +306,13 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	if ctx.Fuchsia() {
 		if ctx.ModuleName() != "libbioniccompat" &&
 			ctx.ModuleName() != "libcompiler_rt-extras" &&
-			ctx.ModuleName() != "libcompiler_rt" {
+			ctx.ModuleName() != "libcompiler_rt" &&
+			ctx.ModuleName() != "jni_headers" {
 			deps.StaticLibs = append(deps.StaticLibs, "libbioniccompat")
 		}
-		if ctx.ModuleName() != "libcompiler_rt" && ctx.ModuleName() != "libcompiler_rt-extras" {
+		if ctx.ModuleName() != "libcompiler_rt" &&
+			ctx.ModuleName() != "libcompiler_rt-extras" &&
+			ctx.ModuleName() != "jni_headers" {
 			deps.LateStaticLibs = append(deps.LateStaticLibs, "libcompiler_rt")
 		}
 

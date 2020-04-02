@@ -378,6 +378,26 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 		ndk_prebuilt_shared_stl {
 			name: "ndk_libc++_shared",
 		}
+
+		cc_library_headers {
+			name: "jni_headers",
+			host_supported: true,
+			native_bridge_supported: true,
+			vendor_available: true,
+			target: {
+				windows: {
+					enabled: true,
+				},
+			},
+			apex_available: [
+				"//apex_available:platform",
+				"//apex_available:anyapex",
+			],
+			visibility: ["//visibility:public"],
+			stl: "none",
+			system_shared_libs: [],
+			sdk_version: "minimum",
+		}
 	`
 
 	for _, os := range oses {

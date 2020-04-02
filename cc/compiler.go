@@ -238,6 +238,12 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.StaticLibs = append(deps.StaticLibs, "libomp")
 	}
 
+	if !(ctx.useSdk() || ctx.useVndk() || ctx.inRecovery() || ctx.inRamdisk()) || ctx.Host() {
+		if ctx.ModuleName() != "jni_headers" {
+			deps.HeaderLibs = append(deps.HeaderLibs, "jni_headers")
+		}
+	}
+
 	return deps
 }
 
@@ -300,8 +306,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	if !(ctx.useSdk() || ctx.useVndk()) || ctx.Host() {
 		flags.SystemIncludeFlags = append(flags.SystemIncludeFlags,
 			"${config.CommonGlobalIncludes}",
-			tc.IncludeFlags(),
-			"${config.CommonNativehelperInclude}")
+			tc.IncludeFlags())
 	}
 
 	if ctx.useSdk() {
