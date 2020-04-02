@@ -22,6 +22,30 @@
       "revId": "6b1ab97e5cfc70ed9311372949ab45d5966da279",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f4f0895_11bec373",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-02T13:11:53Z",
+      "side": 1,
+      "message": "Yeah, just mentioning this to VNDK would be better. Thanks for pointing this out.",
+      "parentUuid": "de0b1b43_e8559da4",
+      "range": {
+        "startLine": 313,
+        "startChar": 82,
+        "endLine": 313,
+        "endChar": 89
+      },
+      "revId": "6b1ab97e5cfc70ed9311372949ab45d5966da279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
