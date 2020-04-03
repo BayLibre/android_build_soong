@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f663b1e2_a87b5fd7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-03T13:10:25Z",
+      "side": 1,
+      "message": "Sorry for the comment on merged commit.\n\nShould we keep \"return false\" in this case? Otherwise, do() may return true even for externalDep\u003dtrue case, and walkPayloadDeps() may go beyond where it is supposed not to visit.\n\nI might be wrong, though.",
+      "range": {
+        "startLine": 2003,
+        "startChar": 0,
+        "endLine": 2003,
+        "endChar": 52
+      },
+      "revId": "be5a5be5494962159a50d47143ff1e516604c3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
