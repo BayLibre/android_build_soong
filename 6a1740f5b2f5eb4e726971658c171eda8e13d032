@@ -22,6 +22,30 @@
       "revId": "6a1740f5b2f5eb4e726971658c171eda8e13d032",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522c1cf2_92571b7d",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-03T11:21:38Z",
+      "side": 1,
+      "message": "Yes. Without that change the test fails as follows:\n\n--- FAIL: TestBasicSdkWithJavaLibrary (0.06s) java_sdk_test.go:34: Android.bp:17:3: module \"sdkmember\" variant \"android_common_myapex2\": depends on \"prebuilt_sdkmember_mysdk_1\" (in SDK \"mysdk@1\") that isn\u0027t part of the required SDKs: [mysdk@2]\n\nThe reason for the change in behavior is because the DepIsInSameApex() call below previously returned true for java libraries if IsInAnySdk() returned true. That essentially prevented the sdk check from actually being performed on java libraries.\n\nThis change removes the check against IsInAnySdk() from the java library implementation of DepIsInSameApex() and so the sdk check is now being performed and failing.\n\nThe reason it is failing is because of the dependency structure.\n\nmemberInterVersionMutator creates the following dependencies:\n    sdkmember -\u003e sdkmember_mysdk_1, sdkmember_mysdk_2\n\nThen variants are created for each apex by apexDepsMutator/apexMutator resulting in:\n    myapex1(myapex1) -\u003e sdkmember(myapex1)\n    sdkmember(myapex1) -\u003e sdkmember_mysdk_1(myapex1), sdkmember_mysdk_2(myapex1)\n\n    myapex2(myapex2) -\u003e sdkmember(myapex2)\n    sdkmember(myapex2) -\u003e sdkmember_mysdk_1(myapex2), sdkmember_mysdk_2(myapex2)\n\nThen sdkDepsMutator pushes the [required sdks] down:\n    myapex1(myapex1) [mysdk_1] -\u003e sdkmember(myapex1) [mysdk_1]\n    sdkmember(myapex1) [mysdk_1] -\u003e sdkmember_mysdk_1(myapex1) [mysdk_1], sdkmember_mysdk_2(myapex1) [mysdk_1]\n\n    myapex2(myapex2) [mysdk_2] -\u003e sdkmember(myapex2) [mysdk_2]\n    sdkmember(myapex2) [mysdk_2] -\u003e sdkmember_mysdk_1(myapex2) [mysdk_2], sdkmember_mysdk_2(myapex2) [mysdk_2]\n\nThen this mutator runs across all dependencies and breaks when it checks the following dependencies:\n    sdkmember(myapex1) [mysdk_1] -\u003e sdkmember_mysdk_2(myapex1) [mysdk_1]\n    sdkmember(myapex2) [mysdk_2] -\u003e sdkmember_mysdk_1(myapex2) [mysdk_2]\n\nThe first one fails because sdkmember_mysdk_2(myapex1) is part of mysdk_2 but is required to be part of mysdk_1. The second one fails because sdkmember_mysdk_1(myapex2) is part of mysdk_1 but is required to be part of mysdk_2.\n\nThe reason this does not break the TestBasicSdkWithCc test which is similarly constructed is because all of the modules in that are part of the APEX and so in that case m.DepIsInSameApex() always returns true so never checks the SDK.\n\nIt is possible that there is a better way of fixing this issue by skipping this path in previous mutators or only following it for specific versions but it is not clear to me where to put it.",
+      "parentUuid": "06299ad5_f7869e64",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 4
+      },
+      "revId": "6a1740f5b2f5eb4e726971658c171eda8e13d032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
