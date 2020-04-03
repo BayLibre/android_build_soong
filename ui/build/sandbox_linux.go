@@ -88,7 +88,6 @@ func (c *Cmd) sandboxSupported() bool {
 			"-B", sandboxConfig.srcDir,
 			"-B", "/tmp",
 			"-B", sandboxConfig.outDir,
-			"-B", sandboxConfig.distDir,
 			"--disable_clone_newcgroup",
 			"--",
 			"/bin/bash", "-c", `if [ $(hostname) == "android-build" ]; then echo "Android" "Success"; else echo Failure; fi`)
@@ -164,9 +163,6 @@ func (c *Cmd) wrapSandbox() {
 		//Mount out dir as read-write
 		"-B", sandboxConfig.outDir,
 
-		//Mount dist dir as read-write
-		"-B", sandboxConfig.distDir,
-
 		// Mount a writable tmp dir
 		"-B", "/tmp",
 
@@ -176,6 +172,12 @@ func (c *Cmd) wrapSandbox() {
 
 		// Only log important warnings / errors
 		"-q",
+	}
+
+	if _, err := os.Stat(sandboxConfig.distDir); !os.IsNotExist(err) {
+		//Mount dist dir as read-write if it already exists
+		sandboxArgs = append(sandboxArgs, "-B")
+		sandboxArgs = append(sandboxArgs, sandboxConfig.distDir)
 	}
 
 	if c.Sandbox.AllowBuildBrokenUsesNetwork && c.config.BuildBrokenUsesNetwork() {
