@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "13b5224a_09eec998",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-03T20:32:25Z",
+      "side": 1,
+      "message": "I\u0027m fairly sure we shouldn\u0027t have two separate version axes to deal with.\n\nIn any case, I should have taken Autosubmit off this one. I\u0027ll make a follow-up CL that reverts the symbol file handling. It\u0027s better we implement that when we have a clear use case for it.",
+      "parentUuid": "3c80aaf2_7c43a5d0",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3cb4f75_2fc44f56",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
