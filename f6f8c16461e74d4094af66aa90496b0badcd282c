@@ -261,6 +261,30 @@
       "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61268802_0768c9eb",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-03T17:18:03Z",
+      "side": 1,
+      "message": "Yes, it\u0027s an orthogonal issue.",
+      "parentUuid": "a532e16a_fa1acdd3",
+      "range": {
+        "startLine": 467,
+        "startChar": 28,
+        "endLine": 467,
+        "endChar": 31
+      },
+      "revId": "f6f8c16461e74d4094af66aa90496b0badcd282c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
