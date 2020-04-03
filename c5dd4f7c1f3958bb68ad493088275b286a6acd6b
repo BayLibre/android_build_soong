@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2f1ae9fb_dc3f6582",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-03T17:02:56Z",
+      "side": 1,
+      "message": "I think OptionalPath should only be used if the input (symbol_file property in this case) is allowed to be null or non-null. However, in this case it is not. What flagged this usage up for me was that you never call the OptionalPath.Valid() method.\n\nGenerally using OptionalPath for what is essentially a required Path prevents failing fast which can make things more difficult to debug. Obviously, in this case that is not true because if symbol_file is not set then the call to compileStubLibrary() will fail. However, it seems a little fragile to rely on that.\n\nIf you used Path then in the non-stubs case you would just end up with a nil Path.\n\nI didn\u0027t realize that compileStubLibrary was used in quite so many places.",
+      "parentUuid": "e8d0d995_908dd021",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fec52ffc_f81fba14",
         "filename": "cc/library_sdk_member.go",
         "patchSetId": 1
@@ -87,6 +105,24 @@
       "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c80aaf2_7c43a5d0",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-03T17:02:56Z",
+      "side": 1,
+      "message": "I must admit I don\u0027t know much about how map files work or how they relate to these versions. Or how these versions will relate to the module versions. That\u0027s probably a discussion to have with Jiyong.",
+      "parentUuid": "c2f472bf_420da52d",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
