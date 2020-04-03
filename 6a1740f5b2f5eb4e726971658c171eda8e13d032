@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06299ad5_f7869e64",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-03T07:13:23Z",
+      "side": 1,
+      "message": "This doesn\u0027t look bad, but is this a critical part of this change?",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 4
+      },
+      "revId": "6a1740f5b2f5eb4e726971658c171eda8e13d032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
