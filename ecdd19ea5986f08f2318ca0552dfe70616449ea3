@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59849385_08c1ed76",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-03T15:13:54Z",
+      "side": 1,
+      "message": "Rather than export the factory you should use a similar approach to say java.RegisterAppBuildComponents(ctx) where you export a method to register things into the context and then update init() to call that method passing in android.InitRegistrationContext as the context.\n\nThe advantage of that is it avoids duplicating the registration code in the tests. In this case the benefit is minimal at the moment but it is a good pattern to follow as it makes it easy to add new registration code without having to update lots of tests.",
+      "revId": "ecdd19ea5986f08f2318ca0552dfe70616449ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
