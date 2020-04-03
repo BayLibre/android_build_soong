@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002281497",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1264649?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "cbff28a3_0a9a5eca",
+          "description": "Change to \"python/python.go\"",
+          "replacements": [
+            {
+              "path": "python/python.go",
+              "range": {
+                "startLine": 431,
+                "startChar": 42,
+                "endLine": 431,
+                "endChar": 51
+              },
+              "replacement": "continuous"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "527e2002_0f344d94",
+        "filename": "python/python.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-03T18:28:05Z",
+      "side": 1,
+      "message": "Common typo found: \"continous\" -- should it be \"continuous\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 431,
+        "startChar": 42,
+        "endLine": 431,
+        "endChar": 51
+      },
+      "revId": "93b2c0e0f5b2eb7db6fc43adb11fc96a0ca2b307",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
