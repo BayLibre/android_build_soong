@@ -70,6 +70,30 @@
       "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bb49be_6b7b376b",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-03T23:18:41Z",
+      "side": 1,
+      "message": "I\u0027m ambivalent, especially since the []Module and []blueprint.DependencyTag return values will be different lengths.  That seems like a hard API to describe.  These methods are basically zero cost to call, so calling them separately won\u0027t be an issue.",
+      "parentUuid": "29f6dc4c_5ffa1039",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
