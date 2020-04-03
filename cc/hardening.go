@@ -100,11 +100,23 @@ func (hardening *hardening) flags(ctx ModuleContext, flags Flags) Flags {
 		s = ctx.Config().DefaultHardening()
 	}
 
-	switch s {
-	case "enabled", "disabled", "enforced":
-		// These are the default values.
-	default:
-		panic(fmt.Errorf("Unknown hardening: [%q]", s))
+	if ctx.Device() && ctx.Arch().ArchType == android.Arm64 {
+		switch  s {
+		case "enabled", "enforced":
+			flags.Local.CFlags = append(flags.Local.CFlags, "-mbranch-protection=standard")
+			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--force-bti")
+		case "disabled":
+			// Nothing to do.
+		default:
+			panic(fmt.Errorf("Unknown hardening: %q", s))
+		}
+	} else {
+		switch s {
+		case "enabled", "disabled", "enforced":
+			// These are the default values.
+		default:
+			panic(fmt.Errorf("Unknown hardening: [%q]", s))
+		}
 	}
 	return flags
 }
