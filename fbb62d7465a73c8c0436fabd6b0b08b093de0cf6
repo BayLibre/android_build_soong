@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13ee0fd9_8eea34e2",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-03T23:16:58Z",
+      "side": 1,
+      "message": "Can you add a String() method that pretty prints the tags instead?",
+      "range": {
+        "startLine": 1874,
+        "startChar": 29,
+        "endLine": 1874,
+        "endChar": 32
+      },
+      "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
