@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "715206ad_457d3854",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-03T17:06:29Z",
+      "side": 1,
+      "message": "\"run when building the checkbuild target\"?",
+      "range": {
+        "startLine": 105,
+        "startChar": 29,
+        "endLine": 105,
+        "endChar": 52
+      },
+      "revId": "79c15a104afbf6c5d948e151640965802327caea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d2fd6e_d20e8720",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-03T17:06:29Z",
+      "side": 1,
+      "message": "Can you be more explicit about why this workaround is being introduced in this comment? Also please emphasize this is a workaround.",
+      "revId": "79c15a104afbf6c5d948e151640965802327caea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91ae9c7c_5bbf2fd5",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-03T17:06:29Z",
+      "side": 1,
+      "message": "How about Run_in_checkbuild?",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 24
+      },
+      "revId": "79c15a104afbf6c5d948e151640965802327caea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d990995c_4b219296",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-03T17:06:29Z",
+      "side": 1,
+      "message": "Please add a comment.",
+      "revId": "79c15a104afbf6c5d948e151640965802327caea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66d8932e_66e677cf",
+        "filename": "python/python_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-03T17:06:29Z",
+      "side": 1,
+      "message": "Can this be generalized enough to be used in TestPythonModule too?",
+      "revId": "79c15a104afbf6c5d948e151640965802327caea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
