@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e8d0d995_908dd021",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-03T16:33:41Z",
+      "side": 1,
+      "message": "stubsSymbolFile has to be OptionalPath for the non-stub cases. Handling a nil Symbol_file here is indeed unnecessary, but using OptionalPathForModuleSrc is more convenient since it both takes and returns what I want, and as you point out it\u0027ll fail anyway below if it\u0027s missing.\n\n\u003e Could you pass this directly into compileStubLibrary()\n\nI considered that, but it means refactoring in a bunch of places not really relevant to this CL.\n\n\u003e or maybe initialize it in there?\n\ncompileStubLibrary doesn\u0027t have access to the library object.",
+      "parentUuid": "16acc359_5d039b98",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fec52ffc_f81fba14",
         "filename": "cc/library_sdk_member.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ea3a2e5e_19b985f8",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-03T16:33:41Z",
+      "side": 1,
+      "message": "I reason that each SDK snapshot should only expose a specific version, so the user instead picks the appropriate snapshot. Having the version axis twice can only lead to confusion. \n\nIdeally we ought to filter the symbol file itself too to only contain one version. Actually, propagating it wholesale like this will probably lead to a problem down the line in that we\u0027ll get meaningless updates in old snapshots as the symbol file is extended for new future versions.",
+      "parentUuid": "fec52ffc_f81fba14",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3cb4f75_2fc44f56",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e92d6eda_8408454e",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-03T16:33:41Z",
+      "side": 1,
+      "message": "Ack. Let\u0027s discuss in the other thread.",
+      "parentUuid": "f3cb4f75_2fc44f56",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
