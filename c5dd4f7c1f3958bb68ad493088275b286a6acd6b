@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c2f472bf_420da52d",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-03T16:39:02Z",
+      "side": 1,
+      "message": "Come to think of it, I\u0027m actually inclined to leave out propagation of the symbol file completely for that reason. We don\u0027t currently have any concrete need for it anyway.",
+      "parentUuid": "ea3a2e5e_19b985f8",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3cb4f75_2fc44f56",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
