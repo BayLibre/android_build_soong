@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16acc359_5d039b98",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-03T16:11:20Z",
+      "side": 1,
+      "message": "Why is this optional? AFAICT it is required in the very next line. Could you pass this directly into compileStubLibrary() or maybe initialize it in there?",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fec52ffc_f81fba14",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-03T16:11:20Z",
+      "side": 1,
+      "message": "Rather than use the StubsVersion() - which is the version of the current variant I think you should be using the list of stub versions specified in the Stubs.Versions property?",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3cb4f75_2fc44f56",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-03T16:11:20Z",
+      "side": 1,
+      "message": "I think that this should be \"1\", \"2\", \"3\".",
+      "revId": "c5dd4f7c1f3958bb68ad493088275b286a6acd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
