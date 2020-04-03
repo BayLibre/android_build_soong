@@ -22,6 +22,30 @@
       "revId": "be5a5be5494962159a50d47143ff1e516604c3ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63cea186_0a9565c7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2003,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-03T14:16:25Z",
+      "side": 1,
+      "message": "If that is not allowed then I think we should check that the return from the call to do() is already false, panicking otherwise. Based on our experience with WalkDeps() silently ignoring a return value requesting it visit the children doing the same here could be quite confusing.",
+      "parentUuid": "f663b1e2_a87b5fd7",
+      "range": {
+        "startLine": 2003,
+        "startChar": 0,
+        "endLine": 2003,
+        "endChar": 52
+      },
+      "revId": "be5a5be5494962159a50d47143ff1e516604c3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
