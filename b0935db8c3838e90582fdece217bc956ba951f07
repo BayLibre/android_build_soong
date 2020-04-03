@@ -52,6 +52,24 @@
       "revId": "b0935db8c3838e90582fdece217bc956ba951f07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "950d65bc_24c3049d",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-03T05:03:46Z",
+      "side": 1,
+      "message": "It mixes the user-defined values with the properties at the same level, so there\u0027s a chance of conflicts (and general confusion)\n\nAnd partially, string variables require a lot more setup -- another module type, or at least a list of structs if I implement a similar shortcut to bool_variables. Versus a list of strings.\n\nIt just feels like it\u0027s mixing two different concepts that have two different usage patterns most of the time -- it\u0027s either an arbitrary value, or one of a list of known values. (There are times where you could mix, like GRALLOC_DEPTH here: https://android-review.googlesource.com/c/device/linaro/hikey/+/1266869/1  but I just don\u0027t see it as much)",
+      "parentUuid": "1d7dea3a_b837afee",
+      "revId": "b0935db8c3838e90582fdece217bc956ba951f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
