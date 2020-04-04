@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9500ac4_ae5d822f",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-04T06:25:36Z",
+      "side": 1,
+      "message": "sorry, I missed this part.\n\nThis actually is a change, right? Previously it was ModuleName,but now it is BaseModuleName. This name is used as the file name when this prebuilt apk is put to an APEX.",
+      "range": {
+        "startLine": 1134,
+        "startChar": 51,
+        "endLine": 1134,
+        "endChar": 63
+      },
+      "revId": "4b11a5113dfd3bfc1cb538e06fb251f427ea9c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
