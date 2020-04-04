@@ -45,6 +45,16 @@ func (k *katiOutputParser) flushAction() {
 		return
 	}
 
+	output := k.buf.String()
+
+	if len(output) != 0 {
+		k.st.Print(k.action.Command)
+		k.st.Print(k.action.Description)
+		k.st.Print(output)
+		k.st.Error("makefile produced output")
+		return
+	}
+
 	var err error
 	if k.hasError {
 		err = fmt.Errorf("makefile error")
@@ -52,7 +62,7 @@ func (k *katiOutputParser) flushAction() {
 
 	k.st.FinishAction(ActionResult{
 		Action: k.action,
-		Output: k.buf.String(),
+		Output: output,
 		Error:  err,
 	})
 

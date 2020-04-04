@@ -152,6 +152,14 @@ func (n *NinjaReader) run() {
 			if started, ok := running[msg.EdgeFinished.GetId()]; ok {
 				delete(running, msg.EdgeFinished.GetId())
 
+				if len(msg.EdgeFinished.GetOutput()) != 0 {
+					n.status.Print(started.Command)
+					n.status.Print(started.Description)
+					n.status.Print(msg.EdgeFinished.GetOutput())
+					n.status.Error("created output")
+					return
+				}
+
 				var err error
 				exitCode := int(msg.EdgeFinished.GetStatus())
 				if exitCode != 0 {
