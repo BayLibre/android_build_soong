@@ -22,6 +22,30 @@
       "revId": "4b11a5113dfd3bfc1cb538e06fb251f427ea9c58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f299f9f_287b7af9",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-04T07:02:58Z",
+      "side": 1,
+      "message": "Yes, this is THE change I intended with this. APK-in-APEX is installed with a.outputFile which was \"ctx.ModuleName() + \".apk\", but with this change, it will be \"StringDefault(a.propoerties.Filename, a.BaseModuleName() + \".apk\")\".\n\nSo, it changes in two ways\n\n- use BaseModuleName instead of ModuleName(which is prefixed like \"prebuilt_Name\" when there is a source-built module with the same name)\n- prefer \"filename\" property if set",
+      "parentUuid": "b9500ac4_ae5d822f",
+      "range": {
+        "startLine": 1134,
+        "startChar": 51,
+        "endLine": 1134,
+        "endChar": 63
+      },
+      "revId": "4b11a5113dfd3bfc1cb538e06fb251f427ea9c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
