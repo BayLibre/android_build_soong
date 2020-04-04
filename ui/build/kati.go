@@ -123,7 +123,7 @@ func runKati(ctx Context, config Config, extraSuffix string, args []string, envF
 	}
 
 	cmd.StartOrFatal()
-	status.KatiReader(ctx.Status.StartTool(), pipe)
+	status.KatiReader(config.IsRequireSilent(), ctx.Status.StartTool(), pipe)
 	cmd.WaitOrFatal()
 }
 

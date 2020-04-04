@@ -30,7 +30,7 @@ import (
 
 // NewNinjaReader reads the protobuf frontend format from ninja and translates it
 // into calls on the ToolStatus API.
-func NewNinjaReader(ctx logger.Logger, status ToolStatus, fifo string) *NinjaReader {
+func NewNinjaReader(requireSilent bool, ctx logger.Logger, status ToolStatus, fifo string) *NinjaReader {
 	os.Remove(fifo)
 
 	err := syscall.Mkfifo(fifo, 0666)
@@ -39,10 +39,11 @@ func NewNinjaReader(ctx logger.Logger, status ToolStatus, fifo string) *NinjaRea
 	}
 
 	n := &NinjaReader{
-		status: status,
-		fifo:   fifo,
-		done:   make(chan bool),
-		cancel: make(chan bool),
+		status:        status,
+		fifo:          fifo,
+		done:          make(chan bool),
+		cancel:        make(chan bool),
+		requireSilent: requireSilent,
 	}
 
 	go n.run()
@@ -51,10 +52,11 @@ func NewNinjaReader(ctx logger.Logger, status ToolStatus, fifo string) *NinjaRea
 }
 
 type NinjaReader struct {
-	status ToolStatus
-	fifo   string
-	done   chan bool
-	cancel chan bool
+	status        ToolStatus
+	fifo          string
+	done          chan bool
+	cancel        chan bool
+	requireSilent bool
 }
 
 const NINJA_READER_CLOSE_TIMEOUT = 5 * time.Second
@@ -151,6 +153,14 @@ func (n *NinjaReader) run() {
 		if msg.EdgeFinished != nil {
 			if started, ok := running[msg.EdgeFinished.GetId()]; ok {
 				delete(running, msg.EdgeFinished.GetId())
+
+				if n.requireSilent && len(msg.EdgeFinished.GetOutput()) != 0 {
+					n.status.Print(started.Command)
+					n.status.Print(started.Description)
+					n.status.Print(msg.EdgeFinished.GetOutput())
+					n.status.Error("created output")
+					return
+				}
 
 				var err error
 				exitCode := int(msg.EdgeFinished.GetStatus())

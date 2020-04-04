@@ -106,8 +106,7 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 		ctx.Fatalln("Error getting output pipe for ckati:", err)
 	}
 	cmd.StartOrFatal()
-	// TODO: error out when Stderr contains any content
-	status.KatiReader(ctx.Status.StartTool(), pipe)
+	status.KatiReader(config.IsRequireSilent(), ctx.Status.StartTool(), pipe)
 	cmd.WaitOrFatal()
 
 	ret := make(map[string]string, len(vars))
@@ -221,6 +220,9 @@ func runMakeProductConfig(ctx Context, config Config) {
 		// Extra environment variables to be exported to ninja
 		"BUILD_BROKEN_NINJA_USES_ENV_VARS",
 
+		// Whether to consider all build output as errors
+		"BUILD_REQUIRE_SILENT",
+
 		// Not used, but useful to be in the soong.log
 		"BOARD_VNDK_VERSION",
 
@@ -290,4 +292,5 @@ func runMakeProductConfig(ctx Context, config Config) {
 	config.SetBuildBrokenDupRules(make_vars["BUILD_BROKEN_DUP_RULES"] == "true")
 	config.SetBuildBrokenUsesNetwork(make_vars["BUILD_BROKEN_USES_NETWORK"] == "true")
 	config.SetBuildBrokenNinjaUsesEnvVars(strings.Fields(make_vars["BUILD_BROKEN_NINJA_USES_ENV_VARS"]))
+	config.SetRequireSilent(make_vars["BUILD_REQUIRE_SILENT"] == "true")
 }
