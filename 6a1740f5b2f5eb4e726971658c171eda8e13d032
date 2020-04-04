@@ -46,6 +46,30 @@
       "revId": "6a1740f5b2f5eb4e726971658c171eda8e13d032",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0e3a750_0a10f8e1",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-04T07:41:22Z",
+      "side": 1,
+      "message": "\u003e the DepIsInSameApex() call below previously returned true for java libraries if IsInAnySdk() returned true\n\nAh, that explains it. Thanks!",
+      "parentUuid": "522c1cf2_92571b7d",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 4
+      },
+      "revId": "6a1740f5b2f5eb4e726971658c171eda8e13d032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
