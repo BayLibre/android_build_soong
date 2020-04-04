@@ -35,13 +35,24 @@ type katiOutputParser struct {
 	total int
 	extra int
 
-	action   *Action
-	buf      strings.Builder
-	hasError bool
+	action        *Action
+	buf           strings.Builder
+	hasError      bool
+	requireSilent bool
 }
 
 func (k *katiOutputParser) flushAction() {
 	if k.action == nil {
+		return
+	}
+
+	output := k.buf.String()
+
+	if k.requireSilent && len(output) != 0 {
+		k.st.Print(k.action.Command)
+		k.st.Print(k.action.Description)
+		k.st.Print(output)
+		k.st.Error("makefile produced output")
 		return
 	}
 
@@ -52,7 +63,7 @@ func (k *katiOutputParser) flushAction() {
 
 	k.st.FinishAction(ActionResult{
 		Action: k.action,
-		Output: k.buf.String(),
+		Output: output,
 		Error:  err,
 	})
 
@@ -115,9 +126,10 @@ func (k *katiOutputParser) parseLine(line string) {
 
 // KatiReader reads the output from Kati, and turns it into Actions and
 // messages that are passed into the ToolStatus API.
-func KatiReader(st ToolStatus, pipe io.ReadCloser) {
+func KatiReader(requireSilent bool, st ToolStatus, pipe io.ReadCloser) {
 	parser := &katiOutputParser{
-		st: st,
+		st:            st,
+		requireSilent: requireSilent,
 	}
 
 	scanner := bufio.NewScanner(pipe)
