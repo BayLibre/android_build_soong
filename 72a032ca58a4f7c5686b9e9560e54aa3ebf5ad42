@@ -94,6 +94,30 @@
       "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12412d1_f92dd341",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-04T06:08:08Z",
+      "side": 1,
+      "message": "\u003e will be different lengths\n\noh, will they? if I am reading the code correctly, walkPath and tagPath are updated always together.",
+      "parentUuid": "c7bb49be_6b7b376b",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
