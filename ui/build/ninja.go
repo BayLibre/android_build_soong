@@ -32,7 +32,7 @@ func runNinja(ctx Context, config Config) {
 	defer ctx.EndTrace()
 
 	fifo := filepath.Join(config.OutDir(), ".ninja_fifo")
-	nr := status.NewNinjaReader(ctx, ctx.Status.StartTool(), fifo)
+	nr := status.NewNinjaReader(config.IsRequireSilent(), ctx, ctx.Status.StartTool(), fifo)
 	defer nr.Close()
 
 	executable := config.PrebuiltBuildTool("ninja")

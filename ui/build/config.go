@@ -49,6 +49,7 @@ type configImpl struct {
 	katiSuffix      string
 	targetDevice    string
 	targetDeviceDir string
+	requireSilent   bool
 
 	// Autodetected
 	totalRAM uint64
@@ -996,4 +997,12 @@ func (c *configImpl) SetPdkBuild(pdk bool) {
 
 func (c *configImpl) IsPdkBuild() bool {
 	return c.pdkBuild
+}
+
+func (c *configImpl) SetRequireSilent(silent bool) {
+	c.requireSilent = silent
+}
+
+func (c *configImpl) IsRequireSilent() bool {
+	return c.requireSilent
 }
