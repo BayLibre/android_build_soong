@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6abaeb97_9f6eeda9",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-04-06T19:18:10Z",
+      "side": 1,
+      "message": "So what is the expression that should go here?\n\nMind you this is singleton.  So no module?",
+      "parentUuid": "e927393e_d8e5626b",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "847bf3fc_cf726945",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fef0797_1aa8c11b",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-04-06T19:18:10Z",
+      "side": 1,
+      "message": "It is meta-data for ART.  Think of it as unique id rather than path.\n\nI agree.  I didn\u0027t name it.  \"Deps\" confusingly means \"if this is extension, include the parent data\". Maybe \"All\", \"Recursive\", or \"WithParents\" would be better.\n\nPersonally, I would just drop the field, and add helper to do the concatenation of lists.",
+      "parentUuid": "847bf3fc_cf726945",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
