@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e008b5dc_b1fda958",
+        "filename": "python/python.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-06T13:43:32Z",
+      "side": 1,
+      "message": "This comment is extracted and published as the Soong public reference doc. Internal bug links won\u0027t be very useful.",
+      "range": {
+        "startLine": 108,
+        "startChar": 51,
+        "endLine": 108,
+        "endChar": 64
+      },
+      "revId": "3e0abb347251d48128f4fd73a8c3e98915f3dc8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eda1b48_860540df",
+        "filename": "python/python_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-06T13:43:32Z",
+      "side": 1,
+      "message": "Did you intend to remove this?",
+      "revId": "3e0abb347251d48128f4fd73a8c3e98915f3dc8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
