@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3dabdc5b_c71b60cb",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T13:27:06Z",
+      "side": 1,
+      "message": "It has to be.\n\nThe issue is the order of mutators. At the point when this is running the SDK has already set containing SDK for its members. However, the required SDKs have not yet been propagated down from the APEX to its contents as that requires this step to be completed first.",
+      "parentUuid": "2d732fb2_e2918602",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 24
+      },
+      "revId": "227694313c509c4fce85063e507432634114a0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56eb867d_a3cc15e2",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "227694313c509c4fce85063e507432634114a0fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80de8027_e276b1e0",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T13:27:06Z",
+      "side": 1,
+      "message": "It is. At least there are cases where this block returns false when externalDeps is false.\n\nThe reason for that appears to be that the walkPayloadDeps() method uses ApexName() !\u003d \"\" to determine whether a module is in the APEX or not. That is not strictly true. Modules which are members of an SDK have APEX specific variants (for handling replacing dependencies with versioned dependencies) and so will return ApexName() !\u003d \"\" but are not considered to be part  but which are not part of the APEX.\n\nIt may be that this test should be pushed down into walkPayloadDeps() but I didn\u0027t want to do that in this change as it will affect other usages of walkPayloadDeps() and I don\u0027t understand them well enough to know if that would be good or bad.",
+      "parentUuid": "56eb867d_a3cc15e2",
+      "range": {
+        "startLine": 1856,
+        "startChar": 0,
+        "endLine": 1863,
+        "endChar": 0
+      },
+      "revId": "227694313c509c4fce85063e507432634114a0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
