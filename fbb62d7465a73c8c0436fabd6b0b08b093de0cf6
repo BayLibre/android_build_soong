@@ -70,6 +70,30 @@
       "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92156712_742e461e",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T15:43:35Z",
+      "side": 1,
+      "message": "I closed that pull request as it will only ever print the BaseDependencyTag structure not the structures that embed it.\n\nSo, back to square one. Where would that String() method go? I don\u0027t want to have to add it to every struct that embeds BaseDependencyTag.",
+      "parentUuid": "3d84855f_3669d79d",
+      "range": {
+        "startLine": 1874,
+        "startChar": 29,
+        "endLine": 1874,
+        "endChar": 32
+      },
+      "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
