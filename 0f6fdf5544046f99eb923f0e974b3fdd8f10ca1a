@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c652f267_0e116bd6",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-04-06T19:51:18Z",
+      "side": 1,
+      "message": "How come?",
+      "parentUuid": "a3e81959_41981c22",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e927393e_d8e5626b",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Unfortunately it\u0027s not a singleton.  If it was a singleton it would be easy, you could use ctx.VisitAllModules to find the module and query its dex location.  The problem here is that these values need to be known at each module\u0027s dexpreopt rule generation time.  The ideal solution would be for the modules to have a dependency on the bootclasspath and query the bootclasspath dex locations at dexpreopt rule generation time.  That\u0027s the b/143682396 TODO below.",
       "parentUuid": "6abaeb97_9f6eeda9",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54b41448_57eeb7e3",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-04-06T19:51:18Z",
+      "side": 1,
+      "message": "Oh, right, it runs on first use of dexpreopt, potentially.\n\nI am not sure if it would help much though.  The location does not represent existing file at build time.  It is more of a promise where the file will when ART is executing.\n\nBut sure, fixing the referenced bug would be nice.",
+      "parentUuid": "9fb8daf3_2b602cf9",
       "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
