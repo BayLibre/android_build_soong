@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d732fb2_e2918602",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-06T12:13:22Z",
+      "side": 1,
+      "message": "Is it okay to be \"any\" sdk? I think it should be one of sdks which the current apex uses via \"uses_sdk\".",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 24
+      },
+      "revId": "227694313c509c4fce85063e507432634114a0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56eb867d_a3cc15e2",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-06T12:13:22Z",
+      "side": 1,
+      "message": "Can you verify this branch is required? IIUC, when from.DepIsInSameApex(ctx,to) is false, externalDep would be true.",
+      "range": {
+        "startLine": 1856,
+        "startChar": 0,
+        "endLine": 1863,
+        "endChar": 0
+      },
+      "revId": "227694313c509c4fce85063e507432634114a0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
