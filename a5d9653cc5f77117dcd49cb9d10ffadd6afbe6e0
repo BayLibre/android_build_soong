@@ -52,6 +52,24 @@
       "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e04f4497_422faf90",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1124149
+      },
+      "writtenOn": "2020-04-06T22:48:36Z",
+      "side": 1,
+      "message": "I filed bug 153378837 for investigating if locking down the chroot has silently disabled sandboxing on some targets.",
+      "parentUuid": "e77acee6_9a0877e6",
+      "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
