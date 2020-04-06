@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd34dfe2_29dd0132",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-06T18:31:17Z",
+      "side": 1,
+      "message": "If you don\u0027t want this to be reverted from internal master, use:\n\n  Merged-In: I70d6f7dc751510311b03e245b2189a76b395a49c\n\n(or another random rvc-dev-plus-aosp change-id)",
+      "revId": "027ecd173c38d04cc9cf12653653845ee84550db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
