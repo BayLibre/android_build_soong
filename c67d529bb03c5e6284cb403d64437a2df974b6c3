@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d946a42a_4e0223a5",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T11:32:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46facbdf_f240ce4d",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "c67d529bb03c5e6284cb403d64437a2df974b6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adb33818_fefdda9b",
         "filename": "android/apex.go",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "5375d18e_c339b6f2",
+        "filename": "android/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T11:32:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb33818_fefdda9b",
+      "revId": "c67d529bb03c5e6284cb403d64437a2df974b6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fc62053_624a84e1",
         "filename": "android/sdk.go",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "c67d529bb03c5e6284cb403d64437a2df974b6c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46316377_80c55521",
+        "filename": "android/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T11:32:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fc62053_624a84e1",
+      "revId": "c67d529bb03c5e6284cb403d64437a2df974b6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
