@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b840773_b999ae54",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1124149
+      },
+      "writtenOn": "2020-04-06T22:09:30Z",
+      "side": 1,
+      "message": "I added back the distDir mounting here. I was assuming that this was a self-contained command solely for the purposes of testing, but perhaps it has some side-effects that some targets depend on.",
+      "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
