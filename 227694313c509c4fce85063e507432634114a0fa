@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bd09a1e4_90d4cb45",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-06T14:49:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3dabdc5b_c71b60cb",
+      "range": {
+        "startLine": 885,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 24
+      },
+      "revId": "227694313c509c4fce85063e507432634114a0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56eb867d_a3cc15e2",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "It is. At least there are cases where this block returns false when externalDeps is false.\n\nThe reason for that appears to be that the walkPayloadDeps() method uses ApexName() !\u003d \"\" to determine whether a module is in the APEX or not. That is not strictly true. Modules which are members of an SDK have APEX specific variants (for handling replacing dependencies with versioned dependencies) and so will return ApexName() !\u003d \"\" but are not considered to be part  but which are not part of the APEX.\n\nIt may be that this test should be pushed down into walkPayloadDeps() but I didn\u0027t want to do that in this change as it will affect other usages of walkPayloadDeps() and I don\u0027t understand them well enough to know if that would be good or bad.",
       "parentUuid": "56eb867d_a3cc15e2",
+      "range": {
+        "startLine": 1856,
+        "startChar": 0,
+        "endLine": 1863,
+        "endChar": 0
+      },
+      "revId": "227694313c509c4fce85063e507432634114a0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c5c36ba_3de17376",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-06T14:49:35Z",
+      "side": 1,
+      "message": "I see. In this change, apexDepsMutator() is changed as well to check:\n\n  (cur.DepIsInSameApex(mctx, child) || inAnySdk(child))\n\nSo, it is when DepIsInSameApex \u003d\u003d false and inAnySdk \u003d\u003d true.\n\nThe reason why walkPayloadDeps uses `ApexName() !\u003d \"\"` was the bug of WalkDeps, which you\u0027ve already fixed. We could revert the line: https://android-review.googlesource.com/c/platform/build/soong/+/1252774/5/apex/apex.go#b1967\n\nI\u0027m curious if there are other cases like SDK members which have apex variants but not supposed to be part of the apex. If SDK is the only case, can we avoid making apex variants of SDK members? It seems necessary for SDK\u0027s ReplaceDependencies to work though.",
+      "parentUuid": "80de8027_e276b1e0",
       "range": {
         "startLine": 1856,
         "startChar": 0,
