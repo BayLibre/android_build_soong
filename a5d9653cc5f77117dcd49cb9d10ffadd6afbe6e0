@@ -16,6 +16,24 @@
       "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69cab4ba_b42c5c1f",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-06T22:12:23Z",
+      "side": 1,
+      "message": "It\u0027s just an if/echo, so that shouldn\u0027t be the case. But if we do fail this command, it\u0027ll just turn off sandboxing and print the warning, so even a \"PASS\" in treehugger will need to be investigated to see if it that happened",
+      "parentUuid": "2b840773_b999ae54",
+      "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
