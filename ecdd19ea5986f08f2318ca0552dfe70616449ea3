@@ -16,6 +16,24 @@
       "revId": "ecdd19ea5986f08f2318ca0552dfe70616449ea3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686775e1_5e331767",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-06T15:33:56Z",
+      "side": 1,
+      "message": "Fixed as you suggested. Thanks for the tip!",
+      "parentUuid": "59849385_08c1ed76",
+      "revId": "ecdd19ea5986f08f2318ca0552dfe70616449ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
