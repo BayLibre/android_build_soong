@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e927393e_d8e5626b",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-06T19:11:58Z",
+      "side": 1,
+      "message": "This is better than before, but for paths like this you should really be getting them by visiting the module and asking for its install path.",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "847bf3fc_cf726945",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-06T19:11:58Z",
+      "side": 1,
+      "message": "This seems wrong, getDexLocation might have returned an on-device path \"/...\", which will never exist on the host and should not be a dependency.  I don\u0027t actually see it used as a dependency, maybe it just needs renaming?",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
