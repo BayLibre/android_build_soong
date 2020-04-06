@@ -112,6 +112,7 @@ func main() {
 	ctx.SetNameInterface(newNameResolver(configuration))
 
 	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
+	ctx.SetLazyMissingDependencies(configuration.LazyMissingDependencies())
 
 	extraNinjaDeps := []string{configuration.ConfigFileName, configuration.ProductVariablesFileName}
 

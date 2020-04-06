@@ -174,7 +174,7 @@ func stubFlagsRule(ctx android.SingletonContext) {
 		for i := range pathList {
 			if pathList[i] == nil {
 				pathList[i] = android.PathForOutput(ctx, "missing")
-				if ctx.Config().AllowMissingDependencies() {
+				if ctx.Config().LazyMissingDependencies() {
 					missingDeps = append(missingDeps, (*moduleList)[i])
 				} else {
 					ctx.Errorf("failed to find dex jar path for module %q",

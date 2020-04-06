@@ -467,10 +467,10 @@ func TestGenruleCmd(t *testing.T) {
 			bp += "}\n"
 
 			config := testConfig(bp, nil)
-			config.TestProductVariables.Allow_missing_dependencies = proptools.BoolPtr(test.allowMissingDependencies)
+			config.TestProductVariables.Lazy_missing_dependencies = proptools.BoolPtr(test.allowMissingDependencies)
 
 			ctx := testContext(config)
-			ctx.SetAllowMissingDependencies(test.allowMissingDependencies)
+			ctx.SetLazyMissingDependencies(test.allowMissingDependencies)
 
 			_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 			if errs == nil {

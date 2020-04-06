@@ -1346,7 +1346,7 @@ func orderStaticModuleDeps(module LinkableInterface, staticDeps []LinkableInterf
 	allTransitiveDeps := make(map[android.Path][]android.Path, len(staticDeps))
 	staticDepFiles := []android.Path{}
 	for _, dep := range staticDeps {
-		// The OutputFile may not be valid for a variant not present, and the AllowMissingDependencies flag is set.
+		// The OutputFile may not be valid for a variant not present, and the LazyMissingDependencies flag is set.
 		if dep.OutputFile().Valid() {
 			allTransitiveDeps[dep.OutputFile().Path()] = dep.GetDepsInLinkOrder()
 			staticDepFiles = append(staticDepFiles, dep.OutputFile().Path())
@@ -2483,10 +2483,10 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 		if ptr != nil {
 			if !linkFile.Valid() {
-				if !ctx.Config().AllowMissingDependencies() {
+				if !ctx.Config().LazyMissingDependencies() {
 					ctx.ModuleErrorf("module %q missing output file", depName)
 				} else {
-					ctx.AddMissingDependencies([]string{depName})
+					ctx.AddMissingDependenciesWithReason([]string{depName}, "Missing output file")
 				}
 				return
 			}

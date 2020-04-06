@@ -123,10 +123,10 @@ func TestDefaultsAllowMissingDependencies(t *testing.T) {
 	`
 
 	config := TestConfig(buildDir, nil, bp, nil)
-	config.TestProductVariables.Allow_missing_dependencies = proptools.BoolPtr(true)
+	config.TestProductVariables.Lazy_missing_dependencies = proptools.BoolPtr(true)
 
 	ctx := NewTestContext()
-	ctx.SetAllowMissingDependencies(true)
+	ctx.SetLazyMissingDependencies(true)
 
 	ctx.RegisterModuleType("test", defaultsTestModuleFactory)
 	ctx.RegisterModuleType("defaults", defaultsTestDefaultsFactory)

@@ -72,7 +72,7 @@ func (installs RuleBuilderInstalls) String() string {
 // MissingDeps adds modules to the list of missing dependencies.  If MissingDeps
 // is called with a non-empty input, any call to Build will result in a rule
 // that will print an error listing the missing dependencies and fail.
-// MissingDeps should only be called if Config.AllowMissingDependencies() is
+// MissingDeps should only be called if Config.LazyMissingDependencies() is
 // true.
 func (r *RuleBuilder) MissingDeps(missingDeps []string) {
 	r.missingDeps = append(r.missingDeps, missingDeps...)

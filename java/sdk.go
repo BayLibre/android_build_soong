@@ -329,7 +329,7 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext sdkContext) sdkDep 
 		aidlPath := android.ExistentPathForSource(ctx, aidl)
 		lambdaStubsPath := android.PathForSource(ctx, config.SdkLambdaStubsPath)
 
-		if (!jarPath.Valid() || !aidlPath.Valid()) && ctx.Config().AllowMissingDependencies() {
+		if (!jarPath.Valid() || !aidlPath.Valid()) && ctx.Config().LazyMissingDependencies() {
 			return sdkDep{
 				invalidVersion: true,
 				bootclasspath:  []string{fmt.Sprintf("sdk_%s_%s_android", sdkVersion.kind, sdkVersion.version.String())},
@@ -489,7 +489,7 @@ func createSdkFrameworkAidl(ctx android.SingletonContext) {
 
 	for i := range stubsJars {
 		if stubsJars[i] == nil {
-			if ctx.Config().AllowMissingDependencies() {
+			if ctx.Config().LazyMissingDependencies() {
 				missingDeps = append(missingDeps, stubsModules[i])
 			} else {
 				ctx.Errorf("failed to find dex jar path for module %q",

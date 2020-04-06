@@ -136,6 +136,7 @@ type BaseModuleContext interface {
 	GetTagPath() []blueprint.DependencyTag
 
 	AddMissingDependencies(missingDeps []string)
+	AddMissingDependenciesWithReason(missingDeps []string, reason string)
 
 	Target() Target
 	TargetPrimary() bool
@@ -201,6 +202,7 @@ type ModuleContext interface {
 	VisitAllModuleVariants(visit func(Module))
 
 	GetMissingDependencies() []string
+	GetMissingDependenciesWithReasons() map[string]string
 	Namespace() blueprint.Namespace
 }
 
@@ -511,7 +513,8 @@ type commonProperties struct {
 
 	NamespaceExportedToMake bool `blueprint:"mutated"`
 
-	MissingDeps []string `blueprint:"mutated"`
+	MissingDeps       []string `blueprint:"mutated"`
+	MissingDepReasons []string `blueprint:"mutated"`
 
 	// Name and variant strings stored by mutators to enable Module.String()
 	DebugName       string   `blueprint:"mutated"`
@@ -1214,7 +1217,7 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	}
 
 	// Temporarily continue to call blueprintCtx.GetMissingDependencies() to maintain the previous behavior of never
-	// reporting missing dependency errors in Blueprint when AllowMissingDependencies == true.
+	// reporting missing dependency errors in Blueprint when LazyMissingDependencies == true.
 	// TODO: This will be removed once defaults modules handle missing dependency errors
 	blueprintCtx.GetMissingDependencies()
 
@@ -1306,10 +1309,10 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		m.checkbuildFiles = append(m.checkbuildFiles, ctx.checkbuildFiles...)
 		m.initRcPaths = PathsForModuleSrc(ctx, m.commonProperties.Init_rc)
 		m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments)
-	} else if ctx.Config().AllowMissingDependencies() {
+	} else if ctx.Config().LazyMissingDependencies() {
 		// If the module is not enabled it will not create any build rules, nothing will call
 		// ctx.GetMissingDependencies(), and blueprint will consider the missing dependencies to be unhandled
-		// and report them as an error even when AllowMissingDependencies = true.  Call
+		// and report them as an error even when LazyMissingDependencies = true.  Call
 		// ctx.GetMissingDependencies() here to tell blueprint not to handle them.
 		ctx.GetMissingDependencies()
 	}
@@ -1546,9 +1549,13 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 		params.Description = "${moduleDesc}" + params.Description + "${moduleDescSuffix}"
 	}
 
-	if missingDeps := m.GetMissingDependencies(); len(missingDeps) > 0 {
-		pctx, params = m.ninjaError(params, fmt.Errorf("module %s missing dependencies: %s\n",
-			m.ModuleName(), strings.Join(missingDeps, ", ")))
+	if missingDeps := m.GetMissingDependenciesWithReasons(); len(missingDeps) > 0 {
+		var errorSb strings.Builder
+		for dep, reason := range missingDeps {
+			fmt.Fprintf(&errorSb, "%s: %s\n", dep, reason)
+		}
+		pctx, params = m.ninjaError(params, fmt.Errorf("module %s missing dependencies: \n%s",
+			m.ModuleName(), errorSb.String()))
 	}
 
 	if m.config.captureBuild {
@@ -1557,19 +1564,39 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 
 	m.bp.Build(pctx.PackageContext, convertBuildParams(params))
 }
+
 func (m *moduleContext) GetMissingDependencies() []string {
 	var missingDeps []string
-	missingDeps = append(missingDeps, m.Module().base().commonProperties.MissingDeps...)
-	missingDeps = append(missingDeps, m.bp.GetMissingDependencies()...)
-	missingDeps = FirstUniqueStrings(missingDeps)
+	for dep, _ := range m.GetMissingDependenciesWithReasons() {
+		missingDeps = append(missingDeps, dep)
+	}
+	return missingDeps
+}
+
+func (m *moduleContext) GetMissingDependenciesWithReasons() map[string]string {
+	missingDeps := make(map[string]string)
+	for i, dep := range m.Module().base().commonProperties.MissingDeps {
+		missingDeps[dep] = m.Module().base().commonProperties.MissingDepReasons[i]
+	}
+	for _, dep := range m.bp.GetMissingDependencies() {
+		missingDeps[dep] = "Unknown dependency in Android.bp"
+	}
 	return missingDeps
 }
 
 func (b *baseModuleContext) AddMissingDependencies(deps []string) {
+	b.AddMissingDependenciesWithReason(deps, "Unknown dependency")
+}
+
+func (b *baseModuleContext) AddMissingDependenciesWithReason(deps []string, reason string) {
 	if deps != nil {
 		missingDeps := &b.Module().base().commonProperties.MissingDeps
+		missingDepReasons := &b.Module().base().commonProperties.MissingDepReasons
+
 		*missingDeps = append(*missingDeps, deps...)
-		*missingDeps = FirstUniqueStrings(*missingDeps)
+		for i := 0; i < len(deps); i++ {
+			*missingDepReasons = append(*missingDepReasons, reason)
+		}
 	}
 }
 
@@ -1586,8 +1613,8 @@ func (b *baseModuleContext) validateAndroidModule(module blueprint.Module, stric
 	}
 
 	if !aModule.Enabled() {
-		if b.Config().AllowMissingDependencies() {
-			b.AddMissingDependencies([]string{b.OtherModuleName(aModule)})
+		if b.Config().LazyMissingDependencies() {
+			b.AddMissingDependenciesWithReason([]string{b.OtherModuleName(aModule)}, "Module is not enabled")
 		} else {
 			b.ModuleErrorf("depends on disabled module %q", b.OtherModuleName(aModule))
 		}

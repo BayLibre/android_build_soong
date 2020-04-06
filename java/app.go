@@ -1493,8 +1493,8 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) map[string]and
 					ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must produce a dex jar, does it have installable: true?",
 						ctx.OtherModuleName(m))
 				}
-			} else if ctx.Config().AllowMissingDependencies() {
-				ctx.AddMissingDependencies([]string{ctx.OtherModuleName(m)})
+			} else if ctx.Config().LazyMissingDependencies() {
+				ctx.AddMissingDependenciesWithReason([]string{ctx.OtherModuleName(m)}, "Module in uses_libs or optional_uses_libs must be a java library")
 			} else {
 				ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must be a java library",
 					ctx.OtherModuleName(m))

@@ -225,8 +225,8 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 				if t, ok := module.(android.HostToolProvider); ok {
 					if !t.(android.Module).Enabled() {
-						if ctx.Config().AllowMissingDependencies() {
-							ctx.AddMissingDependencies([]string{tool})
+						if ctx.Config().LazyMissingDependencies() {
+							ctx.AddMissingDependenciesWithReason([]string{tool}, "Module is disabled")
 						} else {
 							ctx.ModuleErrorf("depends on disabled module %q", tool)
 						}
@@ -255,12 +255,12 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			}
 		})
 
-		// If AllowMissingDependencies is enabled, the build will not have stopped when
+		// If LazyMissingDependencies is enabled, the build will not have stopped when
 		// AddFarVariationDependencies was called on a missing tool, which will result in nonsensical
 		// "cmd: unknown location label ..." errors later.  Add a dummy file to the local label.  The
 		// command that uses this dummy file will never be executed because the rule will be replaced with
 		// an android.Error rule reporting the missing dependencies.
-		if ctx.Config().AllowMissingDependencies() {
+		if ctx.Config().LazyMissingDependencies() {
 			for _, tool := range g.properties.Tools {
 				if !seenTools[tool] {
 					addLocationLabel(tool, []string{"***missing tool " + tool + "***"})
@@ -283,12 +283,12 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	for _, in := range g.properties.Srcs {
 		paths, missingDeps := android.PathsAndMissingDepsForModuleSrcExcludes(ctx, []string{in}, g.properties.Exclude_srcs)
 		if len(missingDeps) > 0 {
-			if !ctx.Config().AllowMissingDependencies() {
+			if !ctx.Config().LazyMissingDependencies() {
 				panic(fmt.Errorf("should never get here, the missing dependencies %q should have been reported in DepsMutator",
 					missingDeps))
 			}
 
-			// If AllowMissingDependencies is enabled, the build will not have stopped when
+			// If LazyMissingDependencies is enabled, the build will not have stopped when
 			// the dependency was added on a missing SourceFileProducer module, which will result in nonsensical
 			// "cmd: label ":..." has no files" errors later.  Add a dummy file to the local label.  The
 			// command that uses this dummy file will never be executed because the rule will be replaced with

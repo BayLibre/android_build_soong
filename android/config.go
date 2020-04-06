@@ -720,6 +720,10 @@ func (c *config) AllowMissingDependencies() bool {
 	return Bool(c.productVariables.Allow_missing_dependencies)
 }
 
+func (c *config) LazyMissingDependencies() bool {
+	return Bool(c.productVariables.Lazy_missing_dependencies) || c.AllowMissingDependencies()
+}
+
 func (c *config) UnbundledBuild() bool {
 	return Bool(c.productVariables.Unbundled_build)
 }

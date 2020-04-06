@@ -18,6 +18,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"sort"
 	"strconv"
 	"strings"
 	"testing"
@@ -904,6 +905,7 @@ func (p *pathForModuleSrcTestModule) GenerateAndroidBuildActions(ctx ModuleConte
 
 	if !p.props.Module_handles_missing_deps {
 		p.missingDeps = ctx.GetMissingDependencies()
+		sort.Strings(p.missingDeps)
 	}
 
 	ctx.Build(pctx, BuildParams{
@@ -1190,10 +1192,10 @@ func TestPathsForModuleSrc_AllowMissingDependencies(t *testing.T) {
 	`
 
 	config := TestConfig(buildDir, nil, bp, nil)
-	config.TestProductVariables.Allow_missing_dependencies = proptools.BoolPtr(true)
+	config.TestProductVariables.Lazy_missing_dependencies = proptools.BoolPtr(true)
 
 	ctx := NewTestContext()
-	ctx.SetAllowMissingDependencies(true)
+	ctx.SetLazyMissingDependencies(true)
 
 	ctx.RegisterModuleType("test", pathForModuleSrcTestModuleFactory)
 

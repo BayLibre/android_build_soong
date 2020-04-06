@@ -313,7 +313,7 @@ func buildBootImage(ctx android.SingletonContext, image *bootImageConfig) *bootI
 	// Ensure all modules were converted to paths
 	for i := range bootDexJars {
 		if bootDexJars[i] == nil {
-			if ctx.Config().AllowMissingDependencies() {
+			if ctx.Config().LazyMissingDependencies() {
 				missingDeps = append(missingDeps, image.modules[i])
 				bootDexJars[i] = android.PathForOutput(ctx, "missing")
 			} else {

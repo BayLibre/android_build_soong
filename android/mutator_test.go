@@ -31,7 +31,7 @@ type mutatorTestModule struct {
 		Mutator_missing_deps []string
 	}
 
-	missingDeps []string
+	missingDeps map[string]string
 }
 
 func mutatorTestModuleFactory() Module {
@@ -47,7 +47,7 @@ func (m *mutatorTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 		Output: PathForModuleOut(ctx, "output"),
 	})
 
-	m.missingDeps = ctx.GetMissingDependencies()
+	m.missingDeps = ctx.GetMissingDependenciesWithReasons()
 }
 
 func (m *mutatorTestModule) DepsMutator(ctx BottomUpMutatorContext) {
@@ -68,10 +68,10 @@ func TestMutatorAddMissingDependencies(t *testing.T) {
 	`
 
 	config := TestConfig(buildDir, nil, bp, nil)
-	config.TestProductVariables.Allow_missing_dependencies = proptools.BoolPtr(true)
+	config.TestProductVariables.Lazy_missing_dependencies = proptools.BoolPtr(true)
 
 	ctx := NewTestContext()
-	ctx.SetAllowMissingDependencies(true)
+	ctx.SetLazyMissingDependencies(true)
 
 	ctx.RegisterModuleType("test", mutatorTestModuleFactory)
 	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
@@ -86,7 +86,7 @@ func TestMutatorAddMissingDependencies(t *testing.T) {
 
 	foo := ctx.ModuleForTests("foo", "").Module().(*mutatorTestModule)
 
-	if g, w := foo.missingDeps, []string{"added_missing_dep", "regular_missing_dep"}; !reflect.DeepEqual(g, w) {
+	if g, w := foo.missingDeps, map[string]string{"added_missing_dep": "Unknown dependency", "regular_missing_dep": "Unknown dependency in Android.bp"}; !reflect.DeepEqual(g, w) {
 		t.Errorf("want foo missing deps %q, got %q", w, g)
 	}
 }

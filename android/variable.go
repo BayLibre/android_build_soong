@@ -208,6 +208,7 @@ type productVariables struct {
 	AppsDefaultVersionName *string `json:",omitempty"`
 
 	Allow_missing_dependencies       *bool `json:",omitempty"`
+	Lazy_missing_dependencies        *bool `json:",omitempty"`
 	Unbundled_build                  *bool `json:",omitempty"`
 	Unbundled_build_sdks_from_source *bool `json:",omitempty"`
 	Malloc_not_svelte                *bool `json:",omitempty"`
@@ -255,7 +256,7 @@ type productVariables struct {
 	ClangTidy  *bool   `json:",omitempty"`
 	TidyChecks *string `json:",omitempty"`
 
-	SamplingPGO  *bool   `json:",omitempty"`
+	SamplingPGO *bool `json:",omitempty"`
 
 	NativeLineCoverage   *bool    `json:",omitempty"`
 	Native_coverage      *bool    `json:",omitempty"`

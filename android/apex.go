@@ -223,8 +223,15 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 		if n == AvailableToPlatform || n == AvailableToAnyApex {
 			continue
 		}
-		if !mctx.OtherModuleExists(n) && !mctx.Config().AllowMissingDependencies() {
-			mctx.PropertyErrorf("apex_available", "%q is not a valid module name", n)
+		if !mctx.OtherModuleExists(n) {
+			reason := fmt.Sprintf("%q is not a valid module name", n)
+			if mctx.Config().AllowMissingDependencies() {
+				continue
+			} else if mctx.Config().LazyMissingDependencies() {
+				mctx.AddMissingDependenciesWithReason([]string{n}, reason)
+			} else {
+				mctx.PropertyErrorf("apex_available", reason)
+			}
 		}
 	}
 }
