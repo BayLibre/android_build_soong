@@ -141,6 +141,30 @@
       "revId": "227694313c509c4fce85063e507432634114a0fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b6f3125_9c9ed931",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T16:02:10Z",
+      "side": 1,
+      "message": "I think reverting that line is good but would you mind doing that (along with removing this block) in a follow up change after this has been submitted? It is just I am concerned about the impact of that change and it is not on my critical path. I have spent at least a week, if not two digging into this problem due to it blocking my main task and would really like to get back to that.",
+      "parentUuid": "7c5c36ba_3de17376",
+      "range": {
+        "startLine": 1856,
+        "startChar": 0,
+        "endLine": 1863,
+        "endChar": 0
+      },
+      "revId": "227694313c509c4fce85063e507432634114a0fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
