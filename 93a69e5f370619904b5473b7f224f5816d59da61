@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "6dbb16a6_fa84146e",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4177,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-06T17:11:40Z",
+      "side": 1,
+      "message": "\u003e As to the import order there is nothing much you can do about that.\n\nThat\u0027s why I mentioned the registration mechanism used in real runs, which after all avoids import cycles. To be useful for tests it\u0027d need an extension so that tests can enable registrations only in the packages they need in the test configs. If we had that we wouldn\u0027t need the RegisterBlahComponents functions - the init() code would do it.\n\nAnyway, that\u0027s a whole different matter from this CL.",
+      "parentUuid": "55ee99fa_6961a30b",
+      "range": {
+        "startLine": 4176,
+        "startChar": 0,
+        "endLine": 4177,
+        "endChar": 51
+      },
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b4537e2_623aba90",
         "filename": "apex/apex_test.go",
         "patchSetId": 6
