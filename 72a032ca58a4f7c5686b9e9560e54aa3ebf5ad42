@@ -118,6 +118,30 @@
       "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa5cc7ed_67b2ea27",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T11:22:58Z",
+      "side": 1,
+      "message": "The walkPath is initialized with the starting module, the tagPath is initialized empty. I did try and explain this in the GetTagPath() documentation below.",
+      "parentUuid": "e12412d1_f92dd341",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "72a032ca58a4f7c5686b9e9560e54aa3ebf5ad42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

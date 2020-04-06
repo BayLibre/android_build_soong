@@ -22,6 +22,30 @@
       "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a19e9cf4_1e82a7c7",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-06T11:22:58Z",
+      "side": 1,
+      "message": "Where would that go? On blueprint.BaseDependencyTag?",
+      "parentUuid": "13ee0fd9_8eea34e2",
+      "range": {
+        "startLine": 1874,
+        "startChar": 29,
+        "endLine": 1874,
+        "endChar": 32
+      },
+      "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
