@@ -34,6 +34,24 @@
       "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77acee6_9a0877e6",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1124149
+      },
+      "writtenOn": "2020-04-06T22:15:57Z",
+      "side": 1,
+      "message": "Yep, that\u0027s what I was assuming. So far this is the only effective functional difference in automated builds for this CL. Otherwise I can\u0027t account for the failing targets.",
+      "parentUuid": "69cab4ba_b42c5c1f",
+      "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
