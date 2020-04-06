@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a3e81959_41981c22",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-06T19:35:23Z",
+      "side": 1,
+      "message": "This line seems to conflict with these changes, it will never use the art image dexLocationsDeps",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e927393e_d8e5626b",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
@@ -31,6 +48,24 @@
       "side": 1,
       "message": "So what is the expression that should go here?\n\nMind you this is singleton.  So no module?",
       "parentUuid": "e927393e_d8e5626b",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fb8daf3_2b602cf9",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-06T19:35:23Z",
+      "side": 1,
+      "message": "Unfortunately it\u0027s not a singleton.  If it was a singleton it would be easy, you could use ctx.VisitAllModules to find the module and query its dex location.  The problem here is that these values need to be known at each module\u0027s dexpreopt rule generation time.  The ideal solution would be for the modules to have a dependency on the bootclasspath and query the bootclasspath dex locations at dexpreopt rule generation time.  That\u0027s the b/143682396 TODO below.",
+      "parentUuid": "6abaeb97_9f6eeda9",
       "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
