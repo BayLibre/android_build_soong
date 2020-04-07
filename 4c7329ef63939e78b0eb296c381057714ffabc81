@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "991bc5c7_3b4183ac",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-07T23:56:45Z",
+      "side": 1,
+      "message": "Put this with the stdlib imports below (and ideally put the android imports at the bottom after the blueprint imports, although that\u0027s not from this change)",
+      "revId": "4c7329ef63939e78b0eb296c381057714ffabc81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
