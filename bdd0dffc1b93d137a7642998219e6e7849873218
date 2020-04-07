@@ -22,6 +22,30 @@
       "revId": "bdd0dffc1b93d137a7642998219e6e7849873218",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd196c62_3cf02717",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-07T12:43:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f59e2f35_f69327da",
+      "range": {
+        "startLine": 1769,
+        "startChar": 0,
+        "endLine": 1769,
+        "endChar": 24
+      },
+      "revId": "bdd0dffc1b93d137a7642998219e6e7849873218",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
