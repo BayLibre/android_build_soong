@@ -1171,6 +1171,11 @@ func (ctx *moduleContextImpl) shouldCreateSourceAbiDump() bool {
 		return false
 	}
 
+	// Coverage builds have extra symbols.
+	if ctx.ctx.DeviceConfig().NativeCoverageEnabled() {
+		return false
+	}
+
 	if ctx.ctx.Fuchsia() {
 		return false
 	}
