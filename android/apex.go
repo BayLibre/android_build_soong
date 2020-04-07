@@ -98,6 +98,16 @@ type ApexModule interface {
 	// Tests if this module is available for the specified APEX or ":platform"
 	AvailableFor(what string) bool
 
+	// Return true if this module is not available to platform (i.e. apex_available
+	// property doesn't have "//apex_available:platform"), or shoudn't be available
+	// to platform, which is the case when this module depends on other module that
+	// isn't available to platform.
+	NotAvailableForPlatform() bool
+
+	// Mark that this module is not available to platform. Set by the
+	// check-platform-availability mutator in the apex package.
+	SetNotAvailableForPlatform()
+
 	// Returns the highest version which is <= maxSdkVersion.
 	// For example, with maxSdkVersion is 10 and versionList is [9,11]
 	// it returns 9 as string
@@ -115,6 +125,8 @@ type ApexProperties struct {
 	Apex_available []string
 
 	Info ApexInfo `blueprint:"mutated"`
+
+	NotAvailableForPlatform bool `blueprint:"mutated"`
 }
 
 // Provides default implementation for the ApexModule interface. APEX-aware
@@ -188,6 +200,14 @@ func CheckAvailableForApex(what string, apex_available []string) bool {
 
 func (m *ApexModuleBase) AvailableFor(what string) bool {
 	return CheckAvailableForApex(what, m.ApexProperties.Apex_available)
+}
+
+func (m *ApexModuleBase) NotAvailableForPlatform() bool {
+	return m.ApexProperties.NotAvailableForPlatform
+}
+
+func (m *ApexModuleBase) SetNotAvailableForPlatform() {
+	m.ApexProperties.NotAvailableForPlatform = true
 }
 
 func (m *ApexModuleBase) DepIsInSameApex(ctx BaseModuleContext, dep Module) bool {
