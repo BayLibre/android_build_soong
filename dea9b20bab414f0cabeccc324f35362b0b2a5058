@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecdbd82b_eb5ddf48",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-07T15:58:56Z",
+      "side": 1,
+      "message": "nit: Is this necessary to make the test fail?\nI think that cc_library shows the same result.",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 21
+      },
+      "revId": "dea9b20bab414f0cabeccc324f35362b0b2a5058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
