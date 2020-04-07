@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81517bdf_05a95c3d",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-07T15:45:20Z",
+      "side": 1,
+      "message": "Change this to:\n    RegisterDexpreoptBootJarsComponents(android.InitRegistrationContext)\n\nThat way you avoid having to duplicate this registration. Not much gain when it is only one but a good pattern to follow.",
+      "revId": "9e9de82d741c0854dd7e54cc21c939cad11753ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
