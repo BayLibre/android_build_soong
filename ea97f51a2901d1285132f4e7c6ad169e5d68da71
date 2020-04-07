@@ -46,6 +46,30 @@
       "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bec10a4_280f81f8",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-07T21:19:56Z",
+      "side": 1,
+      "message": "Well, it might not be stable APIs. For instance, it could be someone just wanting to be explicit about their current API. For instance, as an example, as an alternative to changing default visibility to hidden. Orthogonality is king.",
+      "parentUuid": "13ec9303_d38882cc",
+      "range": {
+        "startLine": 313,
+        "startChar": 39,
+        "endLine": 313,
+        "endChar": 67
+      },
+      "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
