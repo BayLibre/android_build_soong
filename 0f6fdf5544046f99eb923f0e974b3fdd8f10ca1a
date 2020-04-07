@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "722b1822_0395b390",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-07T09:02:17Z",
+      "side": 1,
+      "message": "This should be fixed by providing the necessary path in PathContext, which already has ctx.Config().BuildDir() that resolves to \"out/soong\". Perhaps it should also have OutDir(). Also please consider testing the host path in java/dexpreopt_bootjars_test.go.",
+      "parentUuid": "54b41448_57eeb7e3",
+      "revId": "0f6fdf5544046f99eb923f0e974b3fdd8f10ca1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "847bf3fc_cf726945",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
