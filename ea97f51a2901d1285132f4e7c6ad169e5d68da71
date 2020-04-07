@@ -22,6 +22,30 @@
       "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ec9303_d38882cc",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-07T07:19:34Z",
+      "side": 1,
+      "message": "\u003e we automatically start using the library as llndk\n\nThat is probably just because the dynamic linker tries to search the platform namespace prior to the vndk namespace.\n\nhttps://android.googlesource.com/platform/system/linkerconfig/+/refs/heads/master/testdata/golden_output/stage2/ld.config.txt#329\n\n(note that \"system\" comes before \"vndk\")\n\nBut I think there is no benefit in allowing vendor to keep using it as a vndk lib even when the same lib is guaranteed to provide stable C APIs. Allowing it will cause another problem like double loading of the lib as well.",
+      "parentUuid": "219c0a1e_a30fe0d4",
+      "range": {
+        "startLine": 313,
+        "startChar": 39,
+        "endLine": 313,
+        "endChar": 67
+      },
+      "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
