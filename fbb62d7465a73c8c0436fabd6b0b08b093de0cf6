@@ -94,6 +94,30 @@
       "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4faf53b5_fcc46351",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-07T23:25:56Z",
+      "side": 1,
+      "message": "There aren\u0027t that many structs that embed BaseDependencyTag, especially not that are relevant to apexes.  I\u0027d suggest adding a String() method to the ones that are useful, and then check if each tag implements fmt.Stringer() to decide whether to call String() on it or use fmt.Sprintf(\"%#v\") as a fallback.",
+      "parentUuid": "92156712_742e461e",
+      "range": {
+        "startLine": 1874,
+        "startChar": 29,
+        "endLine": 1874,
+        "endChar": 32
+      },
+      "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
