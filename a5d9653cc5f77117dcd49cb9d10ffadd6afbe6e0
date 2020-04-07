@@ -70,6 +70,24 @@
       "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "134584b2_b59aef3e",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1124149
+      },
+      "writtenOn": "2020-04-07T15:38:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e04f4497_422faf90",
+      "revId": "a5d9653cc5f77117dcd49cb9d10ffadd6afbe6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
