@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "cc098649_0b385b63",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-07T15:27:53Z",
+      "side": 1,
+      "message": "The calling of the init() functions and the import cycle checking is a fundamental part of go and is cooked into it from the compiler to the runtime. If package X depends on package Y and Z then all the init() functions in package Y and Z are run before the init() function in X, well before any tests have been run.",
+      "parentUuid": "6dbb16a6_fa84146e",
+      "range": {
+        "startLine": 4176,
+        "startChar": 0,
+        "endLine": 4177,
+        "endChar": 51
+      },
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b4537e2_623aba90",
         "filename": "apex/apex_test.go",
         "patchSetId": 6
