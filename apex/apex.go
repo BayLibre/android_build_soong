@@ -831,6 +831,7 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.BottomUp("apex", apexMutator).Parallel()
 	ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 	ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
+	ctx.BottomUp("mark_platform_availability", markPlatformAvailability).Parallel()
 }
 
 // Mark the direct and transitive dependencies of apex bundles so that they
@@ -863,6 +864,54 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 			am.BuildForApexes(apexBundles)
 		}
 	})
+}
+
+// mark if a module cannot be available to platform. A module cannot be available
+// to platform if 1) it is explicitly marked as not available (i.e. "//apex_available:platform"
+// is absent) or 2) it depends on another module that isn't (or can't be) available to platform
+func markPlatformAvailability(mctx android.BottomUpMutatorContext) {
+	// Host and recovery are not considered as platform
+	if mctx.Host() || mctx.Module().InstallInRecovery() {
+		return
+	}
+
+	if am, ok := mctx.Module().(android.ApexModule); ok {
+		availableToPlatform := am.AvailableFor(android.AvailableToPlatform)
+
+		// In a rare case when a lib is marked as available only to an apex
+		// but the apex doesn't exist (e.g., in the master-art branch),
+		// treat the lib as being available to platform because otherwise
+		// the lib would be available to nowhere.
+		if !availableToPlatform && !android.InAnyApex(am.Name()) {
+			availableToPlatform = true
+		}
+
+		// If any of the dep is not available to platform, this module is also considered
+		// as being not available to platform even if it has "//apex_available:platform"
+		mctx.VisitDirectDeps(func(child android.Module) {
+			if !am.DepIsInSameApex(mctx, child) {
+				// if the dependency crosses apex boundary, don't consider it
+				return
+			}
+			if dep, ok := child.(android.ApexModule); ok && dep.NotAvailableForPlatform() {
+				availableToPlatform = false
+			}
+		})
+
+		// Exception 1: stub libraries are always available to platform
+		if cc, ok := mctx.Module().(*cc.Module); ok && cc.IsStubs() {
+			availableToPlatform = true
+		}
+
+		// Exception 2: bootstrap bionic libraries are also always available to platform
+		if cc.InstallToBootstrap(mctx.ModuleName(), mctx.Config()) {
+			availableToPlatform = true
+		}
+
+		if !availableToPlatform {
+			am.SetNotAvailableForPlatform()
+		}
+	}
 }
 
 // If a module in an APEX depends on a module from an SDK then it needs an APEX
