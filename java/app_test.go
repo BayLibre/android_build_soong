@@ -264,6 +264,79 @@ func TestAndroidAppLinkType(t *testing.T) {
 	`)
 }
 
+func TestUpdatableApps(t *testing.T) {
+	testJava(t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "29",
+			updatable: true,
+		}
+	`)
+
+	testJava(t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "current",
+			updatable: true,
+		}
+	`)
+
+	testJava(t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "system_current",
+			updatable: true,
+		}
+	`)
+
+	testJava(t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "module_current",
+			updatable: true,
+		}
+	`)
+
+	testJava(t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "core_current",
+			updatable: true,
+		}
+	`)
+
+	testJavaError(t, "Updatable apps must use stable SDKs", `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			platform_apis: true,
+			updatable: true,
+		}
+	`)
+
+	testJavaError(t, "Updatable apps must use stable SDKs", `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "core_platform",
+			updatable: true,
+		}
+	`)
+
+	testJavaError(t, "Updatable apps must use stable SDKs", `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			updatable: true,
+		}
+	`)
+}
+
 func TestResourceDirs(t *testing.T) {
 	testCases := []struct {
 		name      string
