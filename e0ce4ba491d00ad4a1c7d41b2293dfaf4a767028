@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7448d40_bf6a051f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-08T16:02:27Z",
+      "side": 1,
+      "message": "I don\u0027t understand Jacoco and the EMMA_INSTRUMENT stuff well enough to tell if this exception is ok, or if it might be a necessary temporary measure with a TODO attached, or something else. A comment that clarifies it a bit more would be nice.",
+      "revId": "e0ce4ba491d00ad4a1c7d41b2293dfaf4a767028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
