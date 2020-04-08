@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20e2509a_3afe2099",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4319,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-08T14:34:32Z",
+      "side": 1,
+      "message": "I would format this across multiple lines, e.g. something like this:\n{\n   // updatable jar from ART apex in the ART boot image \u003d\u003e ok\n   []string{\"some-art-lib\"},\n   []string{},\n   \"\",\n},\n\nMaybe even adding the field names too (will make it easier to add extra fields in future) and the field names help document the values.",
+      "revId": "21db21bc01595af2a5c5e69d6c2b172fa251eaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
