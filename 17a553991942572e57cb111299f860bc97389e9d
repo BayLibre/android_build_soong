@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002347864",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1281957?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "0342f480_537f5f2f",
+          "description": "Change to \"android/apex.go\"",
+          "replacements": [
+            {
+              "path": "android/apex.go",
+              "range": {
+                "startLine": 102,
+                "startChar": 59,
+                "endLine": 102,
+                "endChar": 67
+              },
+              "replacement": "shouldn\u0027t"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "4c19ff91_1d3a40d2",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-08T07:29:55Z",
+      "side": 1,
+      "message": "Common typo found: \"shoudn\u0027t\" -- should it be \"shouldn\u0027t\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 102,
+        "startChar": 59,
+        "endLine": 102,
+        "endChar": 67
+      },
+      "revId": "17a553991942572e57cb111299f860bc97389e9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
