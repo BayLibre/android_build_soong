@@ -81,6 +81,24 @@
       "revId": "fb4e7b6afe61bf4d10d2c2a3fd0a9a111f1cd6ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7126f908_2a39e4da",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-04-08T23:27:41Z",
+      "side": 1,
+      "message": "I think \"vndk\" is the obsolete spelling of \"llndk\". That was fixed somewhat recently.\n\n\u003e From an \"API perspective\", is there a big difference between llndk and vndk methods? IIUC they\u0027re both NDK APIs that are only visible to vendor code - do you think it\u0027s worth distinguishing between the two types when reporting coverage?\n\nLL-NDK has the same permanence as the NDK does: the API must continue to exist *forever*. Non-LL-NDK VNDK APIs (the naming here always confuses me, so I could have some terms in the wrong order) only need to exist for the duration of a single dessert release.\n\nI don\u0027t think it\u0027s useful to distinguish between them from a coverage perspective. The only argument for that I can see is that, if for some reason you\u0027re not going to test everything, make damn sure the LL-NDK APIs are covered because you can\u0027t take them back. I don\u0027t buy that argument though, because *everything* needs to be covered anyway.",
+      "parentUuid": "6ac2a2ae_839ba412",
+      "revId": "fb4e7b6afe61bf4d10d2c2a3fd0a9a111f1cd6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
