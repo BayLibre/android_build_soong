@@ -370,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "5e9467f8_469bee65",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4265,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-08T09:35:23Z",
+      "side": 1,
+      "message": "This is just an FYI and doesn\u0027t require or suggest changes to this change. Just thought it might be useful to know.\n\nThe iterative approach using subtests (https://blog.golang.org/subtests) is definitely a better approach.\n\nThere are a number of disadvantages of mixing in multiple tests into one test function.\n1) It harder to debug. You end up having to comment out the tests that you don\u0027t want to debug. \n2) If one test fails fatally then it prevents any following tests from reporting problems. Not so much a problem in our go tests as we don\u0027t tend to use Fatal().\n3) It is only reported as a single test failure.\n\nUsing the subtests approach avoids the last two and (while the IDE support is pretty bad) it does make debugging a little easier as you can filter out all but the test that you want to debug. You cannot just right-click on the failing test in the test result window (that brings up \"Nothing here\" menu) but you can configure it manually, e.g.\n\nGo to the soong/android directory in IntelliJ and right-click -\u003e Run -\u003e go test android\n\nThat will run all the tests in the android package. Next open up the Run/Test Configuration entry that just created and add \"TestVisibility/invalid visibility: unqualified\" into the Pattern field. If you click run now it will just run that single TestVisibility subtest.",
+      "parentUuid": "3f3d2c79_453b60ab",
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "737c8483_019428d3",
         "filename": "apex/apex_test.go",
         "patchSetId": 6
