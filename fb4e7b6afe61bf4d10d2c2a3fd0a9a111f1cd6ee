@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4fa5251_d39d60f0",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-04-08T22:05:12Z",
+      "side": 1,
+      "message": "Vulgarized",
+      "parentUuid": "eae946b4_69bd3070",
+      "range": {
+        "startLine": 54,
+        "startChar": 32,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "fb4e7b6afe61bf4d10d2c2a3fd0a9a111f1cd6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71816bc8_c47840bc",
         "filename": "docs/map_files.md",
         "patchSetId": 1
