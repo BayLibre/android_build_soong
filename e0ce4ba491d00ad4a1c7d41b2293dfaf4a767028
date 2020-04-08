@@ -16,6 +16,24 @@
       "revId": "e0ce4ba491d00ad4a1c7d41b2293dfaf4a767028",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "059756c3_88b35706",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-08T16:55:59Z",
+      "side": 1,
+      "message": "I will merge this fix to unbreak the build, but I\u0027m investigating the possibility of a better fix that will instead get rid of the platform variant.",
+      "parentUuid": "f7448d40_bf6a051f",
+      "revId": "e0ce4ba491d00ad4a1c7d41b2293dfaf4a767028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
