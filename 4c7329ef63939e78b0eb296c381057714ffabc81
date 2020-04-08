@@ -16,6 +16,24 @@
       "revId": "4c7329ef63939e78b0eb296c381057714ffabc81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bc05dd_ee04bfac",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-08T07:22:32Z",
+      "side": 1,
+      "message": "Done. FYI I had a look and it seems as though there is some inconsistency in ordering in those files that import from android and github. 2/3s of them have android after, the rest have android before, or some android before and some after.",
+      "parentUuid": "991bc5c7_3b4183ac",
+      "revId": "4c7329ef63939e78b0eb296c381057714ffabc81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
