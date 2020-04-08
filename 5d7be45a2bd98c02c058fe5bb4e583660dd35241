@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0932c31_08497c0f",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4320,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-08T14:02:04Z",
+      "side": 0,
+      "message": "I was happy to see this _not_ using Go\u0027s traditional table-based testing, as I commented in the original CL. Why not just wrap these in t.Run?",
+      "range": {
+        "startLine": 4316,
+        "startChar": 0,
+        "endLine": 4320,
+        "endChar": 53
+      },
+      "revId": "5d7be45a2bd98c02c058fe5bb4e583660dd35241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
