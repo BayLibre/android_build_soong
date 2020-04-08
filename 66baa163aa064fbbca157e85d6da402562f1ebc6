@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0383f75_19c62b93",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-08T03:02:20Z",
+      "side": 1,
+      "message": "i would like the codec_g711dec name here -- since the code it outside / independent of\nstagefright, let\u0027s not perpetuate the linkage.",
+      "range": {
+        "startLine": 617,
+        "startChar": 3,
+        "endLine": 617,
+        "endChar": 27
+      },
+      "revId": "66baa163aa064fbbca157e85d6da402562f1ebc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
