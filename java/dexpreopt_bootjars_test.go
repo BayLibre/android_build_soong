@@ -53,7 +53,7 @@ func TestDexpreoptBootJars(t *testing.T) {
 
 	ctx := testContext()
 
-	RegisterDexpreoptBootJarsComponents(ctx)
+	ctx.RegisterSingletonType("dex_bootjars", dexpreoptBootJarsFactory)
 
 	run(t, ctx, config)
 
