@@ -118,6 +118,30 @@
       "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd4c56a0_1bf189ac",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-08T07:44:42Z",
+      "side": 1,
+      "message": "I have added in a check for Stringer so that dependency tags can provide their own if they wish but I will leave the creation of custom String() methods to a later date as this is blocking some other changes that are becoming quite urgent.",
+      "parentUuid": "4faf53b5_fcc46351",
+      "range": {
+        "startLine": 1874,
+        "startChar": 29,
+        "endLine": 1874,
+        "endChar": 32
+      },
+      "revId": "fbb62d7465a73c8c0436fabd6b0b08b093de0cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
