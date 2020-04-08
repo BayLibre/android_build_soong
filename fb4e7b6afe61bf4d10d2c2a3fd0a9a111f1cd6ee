@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71816bc8_c47840bc",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-04-08T21:29:55Z",
+      "side": 1,
+      "message": "jiyong: Anything need to be added to this note for llndk/apex?",
+      "revId": "fb4e7b6afe61bf4d10d2c2a3fd0a9a111f1cd6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
