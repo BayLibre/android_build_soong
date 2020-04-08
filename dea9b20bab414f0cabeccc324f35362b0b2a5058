@@ -22,6 +22,30 @@
       "revId": "dea9b20bab414f0cabeccc324f35362b0b2a5058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40bc47a_4747ab60",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-08T14:28:42Z",
+      "side": 1,
+      "message": "No but cc_prebuilt_library is more complicated to setup and the static variant of this is not used in the apex.",
+      "parentUuid": "ecdbd82b_eb5ddf48",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 21
+      },
+      "revId": "dea9b20bab414f0cabeccc324f35362b0b2a5058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
