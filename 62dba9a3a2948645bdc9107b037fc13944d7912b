@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96b7d837_79b17caf",
+        "filename": "java/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-08T23:39:12Z",
+      "side": 1,
+      "message": "how about putting a separator?",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 44
+      },
+      "revId": "62dba9a3a2948645bdc9107b037fc13944d7912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03a55d63_72a71fb9",
+        "filename": "java/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-08T23:39:12Z",
+      "side": 1,
+      "message": "why not sdkSystemServer?",
+      "range": {
+        "startLine": 171,
+        "startChar": 6,
+        "endLine": 171,
+        "endChar": 47
+      },
+      "revId": "62dba9a3a2948645bdc9107b037fc13944d7912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
