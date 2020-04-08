@@ -388,6 +388,24 @@
     },
     {
       "key": {
+        "uuid": "2c17edaa_4bfb36a0",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4265,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-08T10:47:09Z",
+      "side": 1,
+      "message": "Agreed, using subtests is a good idea. It doesn\u0027t necessarily imply changing to a table-driven approach though. I think this is superior to a table because it\u0027s less boilerplate and line numbers in stack traces get more accurate.",
+      "parentUuid": "5e9467f8_469bee65",
+      "revId": "93a69e5f370619904b5473b7f224f5816d59da61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "737c8483_019428d3",
         "filename": "apex/apex_test.go",
         "patchSetId": 6
