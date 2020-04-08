@@ -15,6 +15,7 @@
 package apex
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
@@ -4199,10 +4200,53 @@ func TestAppBundle(t *testing.T) {
 	ensureContains(t, content, `"apex_config":{"apex_embedded_apk_config":[{"package_name":"com.android.foo","path":"app/AppFoo/AppFoo.apk"}]}`)
 }
 
-func testNoUpdatableJarsInBootImage(t *testing.T, errmsg, bp string, transformDexpreoptConfig func(*dexpreopt.GlobalConfig)) {
+func testNoUpdatableJarsInBootImage(t *testing.T, errmsg string, transformDexpreoptConfig func(*dexpreopt.GlobalConfig)) {
 	t.Helper()
 
-	bp = bp + `
+	bp := `
+		java_library {
+			name: "some-updatable-apex-lib",
+			srcs: ["a.java"],
+			apex_available: [
+				"some-updatable-apex",
+			],
+		}
+
+		java_library {
+			name: "some-platform-lib",
+			srcs: ["a.java"],
+			installable: true,
+		}
+
+		java_library {
+			name: "some-art-lib",
+			srcs: ["a.java"],
+			apex_available: [
+				"com.android.art.something",
+			],
+			hostdex: true,
+		}
+
+		apex {
+			name: "some-updatable-apex",
+			key: "some-updatable-apex.key",
+			java_libs: ["some-updatable-apex-lib"],
+		}
+
+		apex_key {
+			name: "some-updatable-apex.key",
+		}
+
+		apex {
+			name: "com.android.art.something",
+			key: "com.android.art.something.key",
+			java_libs: ["some-art-lib"],
+		}
+
+		apex_key {
+			name: "com.android.art.something.key",
+		}
+
 		filegroup {
 			name: "some-updatable-apex-file_contexts",
 			srcs: [
@@ -4210,6 +4254,7 @@ func testNoUpdatableJarsInBootImage(t *testing.T, errmsg, bp string, transformDe
 			],
 		}
 	`
+
 	bp += cc.GatherRequiredDepsForTest(android.Android)
 	bp += java.GatherRequiredDepsForTest()
 	bp += dexpreopt.BpToolModulesForTest()
@@ -4265,107 +4310,44 @@ func testNoUpdatableJarsInBootImage(t *testing.T, errmsg, bp string, transformDe
 }
 
 func TestNoUpdatableJarsInBootImage(t *testing.T) {
-	bp := `
-		java_library {
-			name: "some-updatable-apex-lib",
-			srcs: ["a.java"],
-			apex_available: [
-				"some-updatable-apex",
-			],
-		}
+	testCases := []struct {
+		artApexJars []string
+		bootJars    []string
+		errmsg      string
+	}{
+		// updatable jar from ART apex in the ART boot image => ok
+		{[]string{"some-art-lib"}, []string{}, ""},
 
-		java_library {
-			name: "some-platform-lib",
-			srcs: ["a.java"],
-			installable: true,
-		}
+		// updatable jar from ART apex in the framework boot image => error
+		{[]string{}, []string{"some-art-lib"}, "module 'some-art-lib' from updatable apex 'com.android.art.something' is not allowed in the framework boot image"},
 
-		java_library {
-			name: "some-art-lib",
-			srcs: ["a.java"],
-			apex_available: [
-				"com.android.art.something",
-			],
-			hostdex: true,
-		}
+		// updatable jar from some other apex in the ART boot image => error
+		{[]string{"some-updatable-apex-lib"}, []string{}, "module 'some-updatable-apex-lib' from updatable apex 'some-updatable-apex' is not allowed in the ART boot image"},
 
-		apex {
-			name: "some-updatable-apex",
-			key: "some-updatable-apex.key",
-			java_libs: ["some-updatable-apex-lib"],
-		}
+		// updatable jar from some other apex in the framework boot image => error
+		{[]string{}, []string{"some-updatable-apex-lib"}, "module 'some-updatable-apex-lib' from updatable apex 'some-updatable-apex' is not allowed in the framework boot image"},
 
-		apex_key {
-			name: "some-updatable-apex.key",
-		}
+		// nonexistent jar in the ART boot image => error
+		{[]string{"nonexistent"}, []string{}, "failed to find a dex jar path for module 'nonexistent'"},
 
-		apex {
-			name: "com.android.art.something",
-			key: "com.android.art.something.key",
-			java_libs: ["some-art-lib"],
-		}
+		// nonexistent jar in the framework boot image => error
+		{[]string{}, []string{"nonexistent"}, "failed to find a dex jar path for module 'nonexistent'"},
 
-		apex_key {
-			name: "com.android.art.something.key",
-		}
-	`
+		// platform jar in the ART boot image => error
+		{[]string{"some-platform-lib"}, []string{}, "module 'some-platform-lib' is part of the platform and not allowed in the ART boot image"},
 
-	var error string
-	var transform func(*dexpreopt.GlobalConfig)
-
-	// updatable jar from ART apex in the ART boot image => ok
-	transform = func(config *dexpreopt.GlobalConfig) {
-		config.ArtApexJars = []string{"some-art-lib"}
+		// platform jar in the framework boot image => ok
+		{[]string{}, []string{"some-platform-lib"}, ""},
 	}
-	testNoUpdatableJarsInBootImage(t, "", bp, transform)
-
-	// updatable jar from ART apex in the framework boot image => error
-	error = "module 'some-art-lib' from updatable apex 'com.android.art.something' is not allowed in the framework boot image"
-	transform = func(config *dexpreopt.GlobalConfig) {
-		config.BootJars = []string{"some-art-lib"}
+	for _, tc := range testCases {
+		t.Run(fmt.Sprintf("art jars:%v, boot jars:%v", tc.artApexJars, tc.bootJars), func(t *testing.T) {
+			transform := func(config *dexpreopt.GlobalConfig) {
+				config.ArtApexJars = tc.artApexJars
+				config.BootJars = tc.bootJars
+			}
+			testNoUpdatableJarsInBootImage(t, tc.errmsg, transform)
+		})
 	}
-	testNoUpdatableJarsInBootImage(t, error, bp, transform)
-
-	// updatable jar from some other apex in the ART boot image => error
-	error = "module 'some-updatable-apex-lib' from updatable apex 'some-updatable-apex' is not allowed in the ART boot image"
-	transform = func(config *dexpreopt.GlobalConfig) {
-		config.ArtApexJars = []string{"some-updatable-apex-lib"}
-	}
-	testNoUpdatableJarsInBootImage(t, error, bp, transform)
-
-	// updatable jar from some other apex in the framework boot image => error
-	error = "module 'some-updatable-apex-lib' from updatable apex 'some-updatable-apex' is not allowed in the framework boot image"
-	transform = func(config *dexpreopt.GlobalConfig) {
-		config.BootJars = []string{"some-updatable-apex-lib"}
-	}
-	testNoUpdatableJarsInBootImage(t, error, bp, transform)
-
-	// nonexistent jar in the ART boot image => error
-	error = "failed to find a dex jar path for module 'nonexistent'"
-	transform = func(config *dexpreopt.GlobalConfig) {
-		config.ArtApexJars = []string{"nonexistent"}
-	}
-	testNoUpdatableJarsInBootImage(t, error, bp, transform)
-
-	// nonexistent jar in the framework boot image => error
-	error = "failed to find a dex jar path for module 'nonexistent'"
-	transform = func(config *dexpreopt.GlobalConfig) {
-		config.BootJars = []string{"nonexistent"}
-	}
-	testNoUpdatableJarsInBootImage(t, error, bp, transform)
-
-	// platform jar in the ART boot image => error
-	error = "module 'some-platform-lib' is part of the platform and not allowed in the ART boot image"
-	transform = func(config *dexpreopt.GlobalConfig) {
-		config.ArtApexJars = []string{"some-platform-lib"}
-	}
-	testNoUpdatableJarsInBootImage(t, error, bp, transform)
-
-	// platform jar in the framework boot image => ok
-	transform = func(config *dexpreopt.GlobalConfig) {
-		config.BootJars = []string{"some-platform-lib"}
-	}
-	testNoUpdatableJarsInBootImage(t, "", bp, transform)
 }
 
 func TestMain(m *testing.M) {
