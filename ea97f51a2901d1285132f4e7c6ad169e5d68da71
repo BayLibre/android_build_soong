@@ -94,6 +94,30 @@
       "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49161fc0_b1eb73c1",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-08T17:05:47Z",
+      "side": 1,
+      "message": "\u003e But given that the most (in fact all) of the existing uses of stubs are to have stable C API\n\nOf course they do now, since they must! What else could we expect? :)\n\n\u003e expecting module owners to know the storage/ram implication of the decision doesn\u0027t seem right.\n\nAgreed. This check is a step in the right direction. We should definitely not allow \"llndk\" + \"vndk\", definitely not allow a VNDK library which cannot be used. In fact, we could make a stronger statement here: \"there should be no installed library which cannot be used\". That might be worth checking.\n\nWhat I am trying to point out is that there are in fact two different concepts:\n1). module has version script/stub\n2). module has stable C ABI (and therefore goes through ABI checks)\n\nRight now we don\u0027t distinguish between these two things, so (1) \u003c\u003d\u003e (2). My argument is that (1) and (2) should be orthogonal to each other. This is because they are in fact unrelated. Let me share those usecases which are impossible now because of this:\n\nusecase a). I want to have no stubs. I want a module which has -fvisibility\u003dhidden, and all exported symbols will be part of the stable API. Therefore, I don\u0027t need a map file. Of course, this decision means that the library is somewhat limited, but for an llndk (and non-sdk) lib you could do this, and only add symbols.\n\nusecase b). I want to have a map file but I don\u0027t want a stable C ABI. For instance, take libbase. It may be accidentally exporting symbols. Perhaps as a developer, I don\u0027t want -fvisibility\u003dhidden, since this requires making a huge number of changes to files. However, I can add a map file, and using this, I can restrict which symbols dependent libraries are allowed to use while living symbols available at runtime for prebuilts. However, there is no stability requirement for libbase.\n\n(also... ndk-api-review should be based on (2) instead of \u0027.*map.txt\u0027 file changed)\n\nSo this is what I mean about orthogonality. We don\u0027t need it now, but I feel it is important to distinguish between these concepts. Version script, (1), is an external tool people made and use independently from Android. Stability, (2), is an Android-specific requirement and external to compilation.\n\nOf course, I understand these two concepts are tied together now, and perhaps it is quite a lot of work to differentiate them, but at least, I think it is useful to differentiate them when speaking/thinking now. Differentiating these is also how I thought you were going to fix this bug. If they were differentiated, we could potentially allow vendor to use VNDK and system+apex to use the LLNDK copy. There is no reason, necessarily, why vendor needs the ll-ndk stubs here which cost us extra RAM (although I would agree having the same setup for vendor+apex is cleaner).",
+      "parentUuid": "0d1004f0_60010d82",
+      "range": {
+        "startLine": 313,
+        "startChar": 39,
+        "endLine": 313,
+        "endChar": 67
+      },
+      "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
