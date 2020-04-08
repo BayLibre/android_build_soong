@@ -63,6 +63,24 @@
       "revId": "fb4e7b6afe61bf4d10d2c2a3fd0a9a111f1cd6ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac2a2ae_839ba412",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-04-08T22:44:56Z",
+      "side": 1,
+      "message": "I think there\u0027s also \"vndk\" as described in b/137979870.\n\nFrom an \"API perspective\", is there a big difference between llndk and vndk methods? IIUC they\u0027re both NDK APIs that are only visible to vendor code - do you think it\u0027s worth distinguishing between the two types when reporting coverage?",
+      "parentUuid": "71816bc8_c47840bc",
+      "revId": "fb4e7b6afe61bf4d10d2c2a3fd0a9a111f1cd6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
