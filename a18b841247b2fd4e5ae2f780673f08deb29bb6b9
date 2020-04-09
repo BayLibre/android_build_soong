@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32090e59_d83c3361",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-09T13:43:53Z",
+      "side": 1,
+      "message": "Yes, as a follow up I\u0027ll expand this to all relevant module types.",
+      "parentUuid": "3d9c8837_913e5703",
+      "range": {
+        "startLine": 103,
+        "startChar": 47,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "921d333b_388a284a",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-09T12:58:38Z",
       "side": 1,
       "message": "calling checkLinkType inside checkSdkVersion doesn\u0027t seem to be intuitive. Could you explain the reason why this was moved from collectDeps?",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a32d776_84fdb63d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-09T13:43:53Z",
+      "side": 1,
+      "message": "I thought it\u0027s actually better here, happy to change it back though if you think it\u0027s better there:\n\n1. Easier to share the logic with android_app (and other places in the future)\n2. We are actually checking sdk_version property\n3. collectDeps splits collection of the deps already, it may do something differently in the future as well. As in, it is a helper method and it is not meant to check anything but just to collect deps?",
+      "parentUuid": "921d333b_388a284a",
       "range": {
         "startLine": 107,
         "startChar": 4,
@@ -68,6 +116,30 @@
       "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6efe5b_a1a539b5",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-09T13:43:53Z",
+      "side": 1,
+      "message": "I thought doing that but it is not strictly needed. If anyone wants to compile a module against a new stable sdk, they will have to update this function. OTOH, we are not asking everyone to put their non-stable sdks here, since we are only tracking stable ones.\n\nWDYT?",
+      "parentUuid": "22c13ce6_b43a977d",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -22,6 +22,30 @@
       "revId": "846e60dbc7d4c8ace22caaf4ab9fef52913897d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30e2d71e_5a4db505",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-09T13:43:53Z",
+      "side": 0,
+      "message": "Trying to minimize number of cherry-picks I have to do.. :p\n\nPaul, any concerns here? Would you prefer a separate change?",
+      "parentUuid": "abc24037_cc8783db",
+      "range": {
+        "startLine": 788,
+        "startChar": 46,
+        "endLine": 788,
+        "endChar": 74
+      },
+      "revId": "846e60dbc7d4c8ace22caaf4ab9fef52913897d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
