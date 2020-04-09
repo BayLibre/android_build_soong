@@ -50,6 +50,9 @@ type LibraryCompilerProperties struct {
 
 	// path to include directories to pass to cc_* modules, only relevant for static/shared variants.
 	Include_dirs []string `android:"path,arch_variant"`
+
+	// whether this library is a sysroot library.
+	Sysroot *bool
 }
 
 type LibraryMutatedProperties struct {
@@ -87,6 +90,7 @@ type libraryInterface interface {
 	dylib() bool
 	static() bool
 	shared() bool
+	sysroot() bool
 
 	// Returns true if the build options for the module have selected a particular build type
 	buildRlib() bool
@@ -137,6 +141,10 @@ func (library *libraryDecorator) shared() bool {
 
 func (library *libraryDecorator) static() bool {
 	return library.MutatedProperties.VariantIsStatic
+}
+
+func (library *libraryDecorator) sysroot() bool {
+	return Bool(library.Properties.Sysroot)
 }
 
 func (library *libraryDecorator) buildRlib() bool {
