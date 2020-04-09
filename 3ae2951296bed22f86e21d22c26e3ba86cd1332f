@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b9a36da_0d175551",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-04-09T14:07:59Z",
+      "side": 1,
+      "message": "What if generate_stubs is false and check_api is not specified (I think apiFile is nil if so)?",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 2
+      },
+      "revId": "3ae2951296bed22f86e21d22c26e3ba86cd1332f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
