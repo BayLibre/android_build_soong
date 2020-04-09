@@ -99,6 +99,24 @@
       "revId": "fb4e7b6afe61bf4d10d2c2a3fd0a9a111f1cd6ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f68b949c_aceb6416",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-09T05:56:37Z",
+      "side": 1,
+      "message": "yep. # vndk was renamed to # llndk. I myself sometimes get confused with this 😞\n\n\n\u003e the API must continue to exist *forever*.\n\nPerhaps not forever :) We deserve the right to deprecate LLNDK APIs after a certain period of time (e.g. 3-4 years)\n\n\u003e Non-LL-NDK VNDK APIs\n\nWe call it just VNDK APIs or VNDK-Core APIs. Sorry for all the confusions that we have created with the terms.",
+      "parentUuid": "7126f908_2a39e4da",
+      "revId": "fb4e7b6afe61bf4d10d2c2a3fd0a9a111f1cd6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
