@@ -22,6 +22,30 @@
       "revId": "3ae2951296bed22f86e21d22c26e3ba86cd1332f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7405f823_19504e24",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-09T14:34:04Z",
+      "side": 1,
+      "message": "That would be pretty pointless but in that case neither distFile or outputFile will be valid and the AndroidMkEntries will be ignored.",
+      "parentUuid": "4b9a36da_0d175551",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 2
+      },
+      "revId": "3ae2951296bed22f86e21d22c26e3ba86cd1332f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
