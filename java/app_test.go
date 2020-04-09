@@ -309,32 +309,68 @@ func TestUpdatableApps(t *testing.T) {
 			updatable: true,
 		}
 	`)
+}
 
-	testJavaError(t, "Updatable apps must use stable SDKs", `
-		android_app {
-			name: "foo",
-			srcs: ["a.java"],
-			platform_apis: true,
-			updatable: true,
-		}
-	`)
+func TestUpdatableAppsNeverallow(t *testing.T) {
+	testCases := []struct {
+		name           string
+		bp             string
+		expectedErrors []string
+	}{
+		{
+			name: "Neverallow platform apis",
+			bp: `android_app {
+					name: "foo",
+					srcs: ["a.java"],
+					platform_apis: true,
+					updatable: true,
+				}`,
+			expectedErrors: []string{"Updatable apps must use stable SDKs"},
+		},
+		{
+			name: "Neverallow core platform apis",
+			bp: `android_app {
+					name: "foo",
+					srcs: ["a.java"],
+					sdk_version: "core_platform",
+					updatable: true,
+				}`,
+			expectedErrors: []string{"Updatable apps must use stable SDKs"},
+		},
+		{
+			name: "Neverallow non-specified sdk_version",
+			bp: `android_app {
+					name: "foo",
+					srcs: ["a.java"],
+					updatable: true,
+				}`,
+			expectedErrors: []string{"Updatable apps must use stable SDKs"},
+		},
+	}
 
-	testJavaError(t, "Updatable apps must use stable SDKs", `
-		android_app {
-			name: "foo",
-			srcs: ["a.java"],
-			sdk_version: "core_platform",
-			updatable: true,
-		}
-	`)
+	for _, test := range testCases {
+		config := testConfig(nil, test.bp, nil)
+		android.SetTestNeverallowRules(config, createAndroidAppNeverallowRules())
+		t.Run(test.name, func(t *testing.T) {
+			errs := testNeverallow(t, config)
+			android.CheckErrorsAgainstExpectations(t, errs, test.expectedErrors)
+		})
+	}
+}
 
-	testJavaError(t, "Updatable apps must use stable SDKs", `
-		android_app {
-			name: "foo",
-			srcs: ["a.java"],
-			updatable: true,
-		}
-	`)
+func testNeverallow(t *testing.T, config android.Config) []error {
+	t.Helper()
+
+	ctx := testContext()
+	ctx.PostDepsMutators(android.RegisterNeverallowMutator)
+	ctx.Register(config)
+
+	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+	if len(errs) > 0 {
+		return errs
+	}
+	_, errs = ctx.PrepareBuildActions(config)
+	return errs
 }
 
 func TestResourceDirs(t *testing.T) {
