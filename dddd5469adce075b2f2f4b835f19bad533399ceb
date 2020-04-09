@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9af635ce_3b111d37",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-09T12:31:52Z",
+      "side": 1,
+      "message": "Nice, thanks. Then just a test to check it would be good to have.",
+      "parentUuid": "e105e016_daa99338",
+      "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16b40080_9f3eab74",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -81,6 +99,47 @@
       "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe2aeb89_8d5329db",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-09T12:31:52Z",
+      "side": 1,
+      "message": "Looking a bit closer at DepsMutator, dependencyTag seems to be only used for the dependencies from the APEX bundle to the modules, so they\u0027re not the same thing.",
+      "parentUuid": "26d5264f_21c1aa01",
+      "range": {
+        "startLine": 1793,
+        "startChar": 2,
+        "endLine": 1794,
+        "endChar": 16
+      },
+      "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9af0964f_f4d4fbb0",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2109,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-09T12:31:52Z",
+      "side": 1,
+      "message": "I think dependencyTags, and therefore the whole \"if isDirectDep {\" clause above, only are used for direct dependencies from the apexBundle.\n\nYour test on ExcludeFromApexContentsTag isn\u0027t applicable there, so to make the logic more clear (i.e. to avoid the sort of confusion I had with my other comment about dependencyTag), I suggest moving it down here.\n\nIiuc all you actually need to do is to avoid reaching the ModuleErrorf where you added the PrettyPrintTag call below.",
+      "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
