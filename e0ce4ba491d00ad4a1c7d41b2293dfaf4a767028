@@ -34,6 +34,24 @@
       "revId": "e0ce4ba491d00ad4a1c7d41b2293dfaf4a767028",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b41ff95d_3545492e",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-09T08:41:09Z",
+      "side": 1,
+      "message": "I tried a patch that removes the platform variant of jacocoagent, it does break the build: https://android-build.googleplex.com/builds/forrest/run/L18000000521851191\n\nFAILED: ninja: \u0027out/target/common/obj/JAVA_LIBRARIES/jacocoagent_intermediates/classes-header.jar\u0027, needed by \u0027out/target/common/obj/APPS/Camera2_intermediates/classes-full-debug.jar\u0027, missing and no known rule to make it\n\nBesides, I think platform variant of jacocoagent is still needed for coverage build without framework coverage (that is, EMMA_INSTRUMENT\u003dtrue, but not EMMA_INSTRUMENT_FRAMEWORK\u003dtrue). Abandoning the alternative approach https://r.android.com/1282054 and https://r.android.com/1281879.",
+      "parentUuid": "059756c3_88b35706",
+      "revId": "e0ce4ba491d00ad4a1c7d41b2293dfaf4a767028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
