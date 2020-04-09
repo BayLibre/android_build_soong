@@ -142,6 +142,30 @@
       "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc4087a5_856c059d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-04-09T17:10:58Z",
+      "side": 1,
+      "message": "\u003e  I don\u0027t know how to check that in a generic way. The \"cannot\" part is hard to be abstracted IMO.\n\nWe could try to compute this in linkerconfig, but yes, it\u0027s hard.\n\n\u003e We should at least have \u0027stable: true\u0027 in the bp file and rely on the module owner being honest to the setting. I don\u0027t think that will work in scale.\n\nI am surprised to hear you don\u0027t think it would work. We would check this property exactly like the stubs property now, and make ABI dumps based on it as well.\n\n\u003e usecase b) is already supported. cc_library supports version_script property\n\nCool ! :)",
+      "parentUuid": "313993b5_5ae4bb10",
+      "range": {
+        "startLine": 313,
+        "startChar": 39,
+        "endLine": 313,
+        "endChar": 67
+      },
+      "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
