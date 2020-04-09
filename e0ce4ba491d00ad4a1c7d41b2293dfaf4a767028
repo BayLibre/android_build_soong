@@ -52,6 +52,24 @@
       "revId": "e0ce4ba491d00ad4a1c7d41b2293dfaf4a767028",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c28a8f2_508e3c9e",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-09T09:50:55Z",
+      "side": 1,
+      "message": "Ok. Just curious, how do dependencies into APEXes usually work for java code? I bet that app has plenty of them for libcore stuff, and they don\u0027t lead to missing build dependencies. I figured this would be just another one.",
+      "parentUuid": "b41ff95d_3545492e",
+      "revId": "e0ce4ba491d00ad4a1c7d41b2293dfaf4a767028",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
