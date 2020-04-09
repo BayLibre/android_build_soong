@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e105e016_daa99338",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-09T01:03:19Z",
+      "side": 1,
+      "message": "It won\u0027t affect the result. \"prefer\" works by replacing dependencies of normal DepTags. PrebuiltDepTag is only used internally across prebuilt-related mutators.",
+      "parentUuid": "55498fa8_675eebe4",
+      "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16b40080_9f3eab74",
         "filename": "apex/apex.go",
         "patchSetId": 3
