@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28ef85bc_3a7069a6",
+        "filename": "java/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-09T10:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96b7d837_79b17caf",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 44
+      },
+      "revId": "62dba9a3a2948645bdc9107b037fc13944d7912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03a55d63_72a71fb9",
         "filename": "java/sdk.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "62dba9a3a2948645bdc9107b037fc13944d7912b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99afba9_0e76f242",
+        "filename": "java/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-09T10:30:09Z",
+      "side": 1,
+      "message": "Right.. it\u0027s also a managed API, and we expect modules to build against it.",
+      "parentUuid": "03a55d63_72a71fb9",
+      "range": {
+        "startLine": 171,
+        "startChar": 6,
+        "endLine": 171,
+        "endChar": 47
+      },
+      "revId": "62dba9a3a2948645bdc9107b037fc13944d7912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
