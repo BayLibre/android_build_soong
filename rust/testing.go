@@ -22,54 +22,16 @@ import (
 func GatherRequiredDepsForTest() string {
 	bp := `
 		rust_prebuilt_dylib {
-				name: "libarena_x86_64-unknown-linux-gnu",
-				srcs: [""],
-				host_supported: true,
-		}
-		rust_prebuilt_dylib {
-				name: "libfmt_macros_x86_64-unknown-linux-gnu",
-				srcs: [""],
-				host_supported: true,
-		}
-		rust_prebuilt_dylib {
-				name: "libgraphviz_x86_64-unknown-linux-gnu",
-				srcs: [""],
-				host_supported: true,
-		}
-		rust_prebuilt_dylib {
-				name: "libserialize_x86_64-unknown-linux-gnu",
-				srcs: [""],
-				host_supported: true,
-		}
-		rust_prebuilt_dylib {
 				name: "libstd_x86_64-unknown-linux-gnu",
 				srcs: [""],
 				host_supported: true,
-		}
-		rust_prebuilt_dylib {
-				name: "libsyntax_x86_64-unknown-linux-gnu",
-				srcs: [""],
-				host_supported: true,
-		}
-		rust_prebuilt_dylib {
-				name: "libsyntax_ext_x86_64-unknown-linux-gnu",
-				srcs: [""],
-				host_supported: true,
-		}
-		rust_prebuilt_dylib {
-				name: "libsyntax_pos_x86_64-unknown-linux-gnu",
-				srcs: [""],
-				host_supported: true,
-		}
-		rust_prebuilt_dylib {
-				name: "libterm_x86_64-unknown-linux-gnu",
-				srcs: [""],
-				host_supported: true,
+				sysroot: true,
 		}
 		rust_prebuilt_dylib {
 				name: "libtest_x86_64-unknown-linux-gnu",
 				srcs: [""],
 				host_supported: true,
+				sysroot: true,
 		}
 
 		//////////////////////////////
@@ -81,6 +43,21 @@ func GatherRequiredDepsForTest() string {
 			nocrt: true,
 			system_shared_libs: [],
 		}
+		rust_library_dylib {
+			name: "libstd",
+			crate_name: "std",
+			srcs: ["foo.rs"],
+			no_stdlibs: true,
+			sysroot: true,
+		}
+		rust_library_dylib {
+			name: "libtest",
+			crate_name: "test",
+			srcs: ["foo.rs"],
+			no_stdlibs: true,
+			sysroot: true,
+		}
+
 ` + cc.GatherRequiredDepsForTest(android.NoOsType)
 	return bp
 }
