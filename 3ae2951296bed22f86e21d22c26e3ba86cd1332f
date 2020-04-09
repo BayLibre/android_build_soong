@@ -69,6 +69,30 @@
       "revId": "3ae2951296bed22f86e21d22c26e3ba86cd1332f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fd8d1d0_754c45ff",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-09T15:44:19Z",
+      "side": 1,
+      "message": "That was intentional. I don\u0027t want people to use this any more than strictly necessary. I suppose I could add a neverallow to prevent misuse but I had already spent more time than I expected on this.",
+      "parentUuid": "c0578f16_39ab03da",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 306,
+        "endChar": 98
+      },
+      "revId": "3ae2951296bed22f86e21d22c26e3ba86cd1332f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
