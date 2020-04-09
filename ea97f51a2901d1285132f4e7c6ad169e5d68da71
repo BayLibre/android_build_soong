@@ -118,6 +118,30 @@
       "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313993b5_5ae4bb10",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-09T04:34:59Z",
+      "side": 1,
+      "message": "\u003e \"there should be no installed library which cannot be used\". That might be worth checking.\n\nI agree, but I don\u0027t know how to check that in a generic way. The \"cannot\" part is hard to be abstracted IMO.\n\n---- \nFor the orthogonality, I agree with you that (1) and (2) not always equivalent. We have been using a stub created from a map file (i.e. the existence of stubs:{...} struct) as a mean to say that the module has stable C APIs. In theory, that\u0027s not the only way. Exporting only a few C APIs and keeping the rest manually with -fvisibility\u003dhidden would work as well. But that\u0027s not how the current build system can keep tracking of modules having stable C APIs. We should at least have \u0027stable: true\u0027 in the bp file and rely on the module owner being honest to the setting. I don\u0027t think that will work in scale.\n\nThe usecase b) is already supported. cc_library supports version_script property not under stubs: {...} struct. In that case, the lib is not considered as having stable C API.",
+      "parentUuid": "49161fc0_b1eb73c1",
+      "range": {
+        "startLine": 313,
+        "startChar": 39,
+        "endLine": 313,
+        "endChar": 67
+      },
+      "revId": "ea97f51a2901d1285132f4e7c6ad169e5d68da71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
