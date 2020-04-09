@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30907164_47b68ba3",
+        "filename": "ui/metrics/upload_proto/upload.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-09T19:10:00Z",
+      "side": 1,
+      "message": "Unit confusion is one of the most common causes of production outages. I know you\u0027ve already named other timestamp fields without unit suffixes, and so think just adding one here can confuse users. Still, you\u0027ll at least want to clarify it in the comment.",
+      "revId": "11091060a2e7bd935869039e5a9453817e05810f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58973b70_239c16a8",
+        "filename": "ui/metrics/upload_proto/upload.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-09T19:10:00Z",
+      "side": 1,
+      "message": "Why just \u0027branch\u0027 above and the \u0027_name\u0027 suffix here? I\u0027d try to be consistent unless there\u0027s a good reason for this.",
+      "revId": "11091060a2e7bd935869039e5a9453817e05810f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
