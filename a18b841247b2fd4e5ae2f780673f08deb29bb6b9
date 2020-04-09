@@ -45,6 +45,29 @@
       "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22c13ce6_b43a977d",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-04-09T13:15:24Z",
+      "side": 1,
+      "message": "default should be to throw an error, to make sure this case is exhaustive",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

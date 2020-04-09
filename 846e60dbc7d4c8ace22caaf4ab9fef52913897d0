@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abc24037_cc8783db",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-04-09T13:15:24Z",
+      "side": 0,
+      "message": "This move deserves a separate CL IMO (for paulduffin), but LGTM.",
+      "range": {
+        "startLine": 788,
+        "startChar": 46,
+        "endLine": 788,
+        "endChar": 74
+      },
+      "revId": "846e60dbc7d4c8ace22caaf4ab9fef52913897d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
