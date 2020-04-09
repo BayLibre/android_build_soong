@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caa559c2_42be836e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-09T21:25:22Z",
+      "side": 1,
+      "message": "I\u0027d like to do some checks of my own to verify that the ordering of includes isn\u0027t changing in too strange of a way (I\u0027ve had problems in the past with header shadowing when making changes like this)\n\nHow many different devices have you checked? There are a decent number of vendor makefiles (and even Android.bp files) that directly reference bionic/... as well.",
+      "revId": "d9ade220256839c252d7fd46cdfdfdcd755d1fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
