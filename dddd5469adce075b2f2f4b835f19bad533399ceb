@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55498fa8_675eebe4",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-09T00:45:29Z",
+      "side": 1,
+      "message": "What if the prebuilt is preferred (and not a stub lib)? It ought to be included in the APEX then. Does that happen with this? If so, can you please add a test for it?",
+      "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b40080_9f3eab74",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-09T00:45:29Z",
+      "side": 1,
+      "message": "Isn\u0027t the new ExcludeFromApexContentsTag close to this payload flag, although it works as an exclusion marker from it? If so that could deserve a mention in the payload bool above.\n\nAlso, shouldn\u0027t ExcludeFromApexContentsTag be checked here?",
+      "range": {
+        "startLine": 1793,
+        "startChar": 2,
+        "endLine": 1794,
+        "endChar": 16
+      },
+      "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
