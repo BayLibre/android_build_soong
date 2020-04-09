@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a62cf889_4db36fe9",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-09T15:03:28Z",
+      "side": 1,
+      "message": "Thank you! We probably want to change existing tests that follow the same pattern (and leave your comment as a doc).\n\nWrapped in t.Run() for now.",
+      "parentUuid": "b0bb0a1d_1b204219",
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d9c8837_913e5703",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -219,6 +237,30 @@
       "writtenOn": "2020-04-09T14:30:48Z",
       "side": 1,
       "message": "That is also a good point.\n\nIt is a shame that sdkKind (of which sdkCore is an instance) is a specialization of int rather than a struct as it would be easy to add a field to it. What about adding some structure into the bits of the sdkKind. e.g. designate a bit that if set means that the sdk is stable. That would have to be specified in the enumeration where sdkCore and others are defined so it should be clear to someone adding a new one that they need to decide whether it should be considered stable or not.",
+      "parentUuid": "978eb672_eb492c99",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a97b4821_6570d52e",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-09T15:03:28Z",
+      "side": 1,
+      "message": "Done for panic().\n\nI do want to spend more time refactoring sdkSpec a bit, but I\u0027d say it\u0027s out of scope for this CL.",
       "parentUuid": "978eb672_eb492c99",
       "range": {
         "startLine": 169,
