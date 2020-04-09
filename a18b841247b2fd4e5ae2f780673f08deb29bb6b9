@@ -205,6 +205,30 @@
       "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c608578_80bff41a",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-09T14:30:48Z",
+      "side": 1,
+      "message": "That is also a good point.\n\nIt is a shame that sdkKind (of which sdkCore is an instance) is a specialization of int rather than a struct as it would be easy to add a field to it. What about adding some structure into the bits of the sdkKind. e.g. designate a bit that if set means that the sdk is stable. That would have to be specified in the enumeration where sdkCore and others are defined so it should be clear to someone adding a new one that they need to decide whether it should be considered stable or not.",
+      "parentUuid": "978eb672_eb492c99",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
