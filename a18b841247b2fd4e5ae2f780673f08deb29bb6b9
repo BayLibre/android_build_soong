@@ -181,6 +181,30 @@
       "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "978eb672_eb492c99",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-04-09T14:18:53Z",
+      "side": 1,
+      "message": "Chances are high that the next person to add a flavor of SDK is going to forget to update this, which is going to waste someone\u0027s time at some point :) not the end of the world, just seems like an error prone setup. Fine as-is too.",
+      "parentUuid": "d4b1d394_837b0348",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
