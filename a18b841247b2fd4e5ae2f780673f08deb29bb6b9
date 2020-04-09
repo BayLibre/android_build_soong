@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d9c8837_913e5703",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-09T12:58:38Z",
+      "side": 1,
+      "message": "and jni deps as well",
+      "range": {
+        "startLine": 103,
+        "startChar": 47,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921d333b_388a284a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-09T12:58:38Z",
+      "side": 1,
+      "message": "calling checkLinkType inside checkSdkVersion doesn\u0027t seem to be intuitive. Could you explain the reason why this was moved from collectDeps?",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
