@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3d36e47a_eddfd465",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-09T14:07:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73a1ef52_8d08c44c",
+      "range": {
+        "startLine": 373,
+        "startChar": 3,
+        "endLine": 373,
+        "endChar": 21
+      },
+      "revId": "3d1248ceb6d8c1ce7d2f3f2e62f98700f668e4dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "877aac8f_6b7e6efd",
         "filename": "sdk/java_sdk_test.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Because that is a directory not a zip file. The .srcjar containing the stubs .java files isn\u0027t copied into the snapshot zip it is merged with it. So, if the .srcjar contains foo/bar/Baz.java and it is merged into the above directory then when the snapshot zip is unpackaged it will be placed in \"sdk_library/public/myjavalib_stub_sources/foo/bar/Baz.java\".\n\nThe intent was to store the source files as text files (rather than wrapped in a binary zip) so that they would be easier for git to handle and, more importantly, will allow gerrit to show the actual differences rather than just reporting \"binary file changed\".",
       "parentUuid": "877aac8f_6b7e6efd",
+      "range": {
+        "startLine": 1000,
+        "startChar": 62,
+        "endLine": 1000,
+        "endChar": 63
+      },
+      "revId": "3d1248ceb6d8c1ce7d2f3f2e62f98700f668e4dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5989d9b3_215a7706",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-09T14:07:37Z",
+      "side": 1,
+      "message": "got it. makes sense. but then this doesn\u0027t need to be an array, right?",
+      "parentUuid": "91813674_e6d7c111",
       "range": {
         "startLine": 1000,
         "startChar": 62,
