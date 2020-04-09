@@ -231,6 +231,15 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		captureBuild: true,
 		env:          envCopy,
 	}
+
+	// Add product variables for native coverage.
+	if native_coverage, ok := envCopy["NATIVE_COVERAGE"]; ok {
+		if ok, _ := strconv.ParseBool(native_coverage); ok {
+			config.productVariables.Native_coverage = boolPtr(true)
+			config.productVariables.CoveragePaths = strings.Split(envCopy["COVERAGE_PATHS"], " ")
+		}
+	}
+
 	config.deviceConfig = &deviceConfig{
 		config: config,
 	}

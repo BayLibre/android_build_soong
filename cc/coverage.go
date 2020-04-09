@@ -65,10 +65,10 @@ func (cov *coverage) deps(ctx DepsContext, deps Deps) Deps {
 	if cov.Properties.NeedCoverageVariant {
 		ctx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
-		}, coverageDepTag, getGcovProfileLibraryName(ctx))
+		}, CoverageDepTag, getGcovProfileLibraryName(ctx))
 		ctx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
-		}, coverageDepTag, getClangProfileLibraryName(ctx))
+		}, CoverageDepTag, getClangProfileLibraryName(ctx))
 	}
 	return deps
 }
@@ -134,14 +134,14 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 		if gcovCoverage {
 			flags.Local.LdFlags = append(flags.Local.LdFlags, "--coverage")
 
-			coverage := ctx.GetDirectDepWithTag(getGcovProfileLibraryName(ctx), coverageDepTag).(*Module)
+			coverage := ctx.GetDirectDepWithTag(getGcovProfileLibraryName(ctx), CoverageDepTag).(*Module)
 			deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
 
 			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,getenv")
 		} else if clangCoverage {
 			flags.Local.LdFlags = append(flags.Local.LdFlags, "-fprofile-instr-generate")
 
-			coverage := ctx.GetDirectDepWithTag(getClangProfileLibraryName(ctx), coverageDepTag).(*Module)
+			coverage := ctx.GetDirectDepWithTag(getClangProfileLibraryName(ctx), CoverageDepTag).(*Module)
 			deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
 		}
 	}
@@ -190,6 +190,7 @@ type Coverage interface {
 	PreventInstall()
 	HideFromMake()
 	MarkAsCoverageVariant(bool)
+	CoverageEnabled()
 }
 
 func coverageMutator(mctx android.BottomUpMutatorContext) {
@@ -212,14 +213,17 @@ func coverageMutator(mctx android.BottomUpMutatorContext) {
 			m[1].(*Module).coverage.Properties.IsCoverageVariant = true
 		}
 	} else if cov, ok := mctx.Module().(Coverage); ok && cov.IsNativeCoverageNeeded(mctx) {
-		// APEX modules fall here
+		// APEX and Rust modules fall here
 
 		// Note: variant "" is also created because an APEX can be depended on by another
 		// module which are split into "" and "cov" variants. e.g. when cc_test refers
 		// to an APEX via 'data' property.
 		m := mctx.CreateVariations("", "cov")
-		m[0].(Coverage).MarkAsCoverageVariant(true)
+		m[0].(Coverage).MarkAsCoverageVariant(false)
 		m[0].(Coverage).PreventInstall()
 		m[0].(Coverage).HideFromMake()
+
+		m[1].(Coverage).CoverageEnabled()
+		m[1].(Coverage).MarkAsCoverageVariant(true)
 	}
 }

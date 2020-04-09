@@ -53,10 +53,15 @@ func TestMain(m *testing.M) {
 }
 
 func testConfig(bp string) android.Config {
+	return testConfigEnv(bp, nil)
+}
+
+func testConfigEnv(bp string, env map[string]string) android.Config {
 	bp = bp + GatherRequiredDepsForTest()
 
 	fs := map[string][]byte{
 		"foo.rs":     nil,
+		"foo.c":      nil,
 		"src/bar.rs": nil,
 		"liby.so":    nil,
 		"libz.so":    nil,
@@ -64,17 +69,20 @@ func testConfig(bp string) android.Config {
 
 	cc.GatherRequiredFilesForTest(fs)
 
-	return android.TestArchConfig(buildDir, nil, bp, fs)
+	return android.TestArchConfig(buildDir, env, bp, fs)
+}
+func testRust(t *testing.T, bp string) *android.TestContext {
+	return testRustEnv(t, bp, nil)
 }
 
-func testRust(t *testing.T, bp string) *android.TestContext {
+func testRustEnv(t *testing.T, bp string, env map[string]string) *android.TestContext {
 	// TODO (b/140435149)
 	if runtime.GOOS != "linux" {
 		t.Skip("Only the Linux toolchain is supported for Rust")
 	}
 
 	t.Helper()
-	config := testConfig(bp)
+	config := testConfigEnv(bp, env)
 
 	t.Helper()
 	ctx := CreateTestContext()
