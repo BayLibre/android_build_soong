@@ -57,6 +57,30 @@
       "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26d5264f_21c1aa01",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-09T10:26:26Z",
+      "side": 1,
+      "message": "\u003e Isn\u0027t the new ExcludeFromApexContentsTag close to this payload flag, although it works as an exclusion marker from it? If so that could deserve a mention in the payload bool above.\n\u003e \n\nI am not sure if or how the two relate to each other, apart from the fact they both cause APEX to ignore certain dependencies.\n\n\u003e Also, shouldn\u0027t ExcludeFromApexContentsTag be checked here?\n\nProbably. I have added a comment in b/152878661 to look at that. I didn\u0027t add that here for two reasons, firstly it wouldn\u0027t fix the bug because that code that broke didn\u0027t use walkPayloadDeps(), secondly it would change the behavior and may cause unanticipated side effects.",
+      "parentUuid": "16b40080_9f3eab74",
+      "range": {
+        "startLine": 1793,
+        "startChar": 2,
+        "endLine": 1794,
+        "endChar": 16
+      },
+      "revId": "dddd5469adce075b2f2f4b835f19bad533399ceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
