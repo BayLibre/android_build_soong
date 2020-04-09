@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b0bb0a1d_1b204219",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-09T14:15:13Z",
+      "side": 1,
+      "message": "Could you either wrap these in a call to t.Run(), maybe create new methods, testJavaAsSubtest and testJavaErrorAsSubtest to allow it to be reused.\n\nSee https://blog.golang.org/subtests for more information about t.Run() and subtests.\n\nExtracted from a similar comment I made on a previous commit:\n\nThere are a number of disadvantages of mixing in multiple tests into one test function.\n1) It harder to debug. You end up having to comment out the tests that you don\u0027t want to debug. \n2) If one test fails fatally then it prevents any following tests from reporting problems. Not so much a problem in our go tests as we don\u0027t tend to use Fatal().\n3) It is only reported as a single test failure.\n\nUsing the subtests approach avoids the last two and (while the IDE support is pretty bad) it does make debugging a little easier as you can filter out all but the test that you want to debug. You cannot just right-click on the failing test in the test result window (that brings up \"Nothing here\" menu) but you can configure it manually, e.g.\n\nGo to the soong/android directory in IntelliJ and right-click -\u003e Run -\u003e go test android\n\nThat will run all the tests in the android package. Next open up the Run/Test Configuration entry that just created and add \"TestVisibility/invalid visibility: unqualified\" into the Pattern field. If you click run now it will just run that single TestVisibility subtest.",
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d9c8837_913e5703",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -131,6 +148,30 @@
       "side": 1,
       "message": "I thought doing that but it is not strictly needed. If anyone wants to compile a module against a new stable sdk, they will have to update this function. OTOH, we are not asking everyone to put their non-stable sdks here, since we are only tracking stable ones.\n\nWDYT?",
       "parentUuid": "22c13ce6_b43a977d",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 13
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4b1d394_837b0348",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-09T14:15:13Z",
+      "side": 1,
+      "message": "It errs on the side of caution so seems quite reasonable to me. If something is missing then it will be reported as a build error.",
+      "parentUuid": "da6efe5b_a1a539b5",
       "range": {
         "startLine": 169,
         "startChar": 2,

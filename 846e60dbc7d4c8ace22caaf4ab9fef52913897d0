@@ -46,6 +46,30 @@
       "revId": "846e60dbc7d4c8ace22caaf4ab9fef52913897d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0cfc9bc_3a7a9ab8",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-09T14:15:13Z",
+      "side": 0,
+      "message": "Yes, this should probably be separate. This is a change in existing behavior and has the potential to break stuff. Also, as moving it didn\u0027t seem to break any tests it means that the test coverage is lacking so it could do with its own test as well.",
+      "parentUuid": "30e2d71e_5a4db505",
+      "range": {
+        "startLine": 788,
+        "startChar": 46,
+        "endLine": 788,
+        "endChar": 74
+      },
+      "revId": "846e60dbc7d4c8ace22caaf4ab9fef52913897d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
