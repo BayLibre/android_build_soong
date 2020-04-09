@@ -33,6 +33,7 @@ import (
 var supportedDpis = []string{"ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"}
 
 func init() {
+	android.AddNeverAllowRules(createAndroidAppNeverallowRules()...)
 	RegisterAppBuildComponents(android.InitRegistrationContext)
 
 	initAndroidAppImportVariantGroupTypes()
@@ -112,7 +113,9 @@ type appProperties struct {
 	IsCoverageVariant bool `blueprint:"mutated"`
 
 	// Whether this app is considered mainline updatable or not. When set to true, this will enforce
-	// additional rules for making sure that the APK is truly updatable. Default is false.
+	// additional rules to make sure an app can safely be updated. Default is false.
+	// Prefer using other specific properties if build behaviour must be changed; avoid using this
+	// flag for anything but neverallow rules (unless the behaviour change is invisible to owners).
 	Updatable *bool
 }
 
@@ -257,15 +260,29 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.generateAndroidBuildActions(ctx)
 }
 
-func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
-	if Bool(a.appProperties.Updatable) {
-		if !a.sdkVersion().stable() {
-			ctx.PropertyErrorf("sdk_version", "Updatable apps must use stable SDKs, found %v", a.sdkVersion())
-		}
+func createAndroidAppNeverallowRules() []android.Rule {
+	return []android.Rule{
+		android.NeverAllow().
+			ModuleType("android_app").
+			With("updatable", "true").
+			WithoutMatcher("sdk_version", &stableSdkMatcher{}).
+			Because("updatable apps must use stable SDKs."),
 	}
+}
 
+func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
 	a.checkPlatformAPI(ctx)
 	a.checkSdkVersions(ctx)
+}
+
+type stableSdkMatcher struct{}
+
+func (m *stableSdkMatcher) Test(value string) bool {
+	return sdkSpecFrom(value).stable()
+}
+
+func (m *stableSdkMatcher) String() string {
+	return " expected to be a stable SDK"
 }
 
 // Returns true if the native libraries should be stored in the APK uncompressed and the

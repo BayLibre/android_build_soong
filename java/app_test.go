@@ -324,35 +324,6 @@ func TestUpdatableApps(t *testing.T) {
 					updatable: true,
 				}`,
 		},
-		{
-			name: "No Platform APIs",
-			bp: `android_app {
-					name: "foo",
-					srcs: ["a.java"],
-					platform_apis: true,
-					updatable: true,
-				}`,
-			expectedError: "Updatable apps must use stable SDKs",
-		},
-		{
-			name: "No Core Platform APIs",
-			bp: `android_app {
-					name: "foo",
-					srcs: ["a.java"],
-					sdk_version: "core_platform",
-					updatable: true,
-				}`,
-			expectedError: "Updatable apps must use stable SDKs",
-		},
-		{
-			name: "No unspecified APIs",
-			bp: `android_app {
-					name: "foo",
-					srcs: ["a.java"],
-					updatable: true,
-				}`,
-			expectedError: "Updatable apps must use stable SDK",
-		},
 	}
 
 	for _, test := range testCases {
@@ -364,6 +335,68 @@ func TestUpdatableApps(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestUpdatableAppsNeverallow(t *testing.T) {
+	testCases := []struct {
+		name           string
+		bp             string
+		expectedErrors []string
+	}{
+		{
+			name: "Neverallow platform apis",
+			bp: `android_app {
+					name: "app_with_platform_apis",
+					srcs: ["a.java"],
+					platform_apis: true,
+					updatable: true,
+				}`,
+			expectedErrors: []string{"updatable apps must use stable SDKs"},
+		},
+		{
+			name: "Neverallow core platform apis",
+			bp: `android_app {
+					name: "app_with_core_platform",
+					srcs: ["a.java"],
+					sdk_version: "core_platform",
+					updatable: true,
+				}`,
+			expectedErrors: []string{"updatable apps must use stable SDKs"},
+		},
+		{
+			name: "Neverallow non-specified sdk_version",
+			bp: `android_app {
+					name: "app_without_sdk_version",
+					srcs: ["a.java"],
+					updatable: true,
+				}`,
+			expectedErrors: []string{"updatable apps must use stable SDKs"},
+		},
+	}
+
+	for _, test := range testCases {
+		config := testConfig(nil, test.bp, nil)
+		android.SetTestNeverallowRules(config, createAndroidAppNeverallowRules())
+		t.Run(test.name, func(t *testing.T) {
+			errs := testNeverallow(t, config)
+			android.CheckErrorsAgainstExpectations(t, errs, test.expectedErrors)
+		})
+	}
+}
+
+func testNeverallow(t *testing.T, config android.Config) []error {
+	t.Helper()
+
+	ctx := testContext()
+	ctx.PostDepsMutators(android.RegisterNeverallowMutator)
+	ctx.Register(config)
+
+	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+	if len(errs) > 0 {
+		return errs
+	}
+	_, errs = ctx.PrepareBuildActions(config)
+	return errs
 }
 
 func TestResourceDirs(t *testing.T) {
