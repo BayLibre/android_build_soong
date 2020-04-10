@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Yabin Cui <yabinc@google.com>
+Code-Review+2: Chih-hung Hsieh <chh@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Yabin Cui <yabinc@google.com>
+Submitted-at: Fri, 10 Apr 2020 05:39:56 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1284294
+Project: platform/build/soong
+Branch: refs/heads/master
