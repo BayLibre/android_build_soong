@@ -48,6 +48,8 @@ var ClangUnknownCflags = sorted([]string{
 	"-Wunused-but-set-parameter",
 	"-Wunused-but-set-variable",
 	"-fdiagnostics-color",
+	// http://b/153759688
+	"-fuse-init-array",
 
 	// arm + arm64
 	"-fgcse-after-reload",
@@ -168,6 +170,13 @@ func init() {
 		"-Wno-int-in-bool-context",          // http://b/148287349
 		"-Wno-sizeof-array-div",             // http://b/148815709
 		"-Wno-tautological-overlap-compare", // http://b/148815696
+		// New warnings to be fixed after clang-r383902.
+		"-Wno-deprecated-copy",                      // http://b/153746672
+		"-Wno-range-loop-construct",                 // http://b/153747076
+		"-Wno-misleading-indentation",               // http://b/153746954
+		"-Wno-zero-as-null-pointer-constant",        // http://b/153746882
+		"-Wno-deprecated-anon-enum-enum-conversion", // http://b/153746485
+		"-Wno-deprecated-enum-enum-conversion",      // http://b/153746563
 	}, " "))
 
 	// Extra cflags for external third-party projects to disable warnings that
