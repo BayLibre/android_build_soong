@@ -18,6 +18,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/remoteexec"
 )
 
 var (
@@ -255,6 +256,35 @@ func init() {
 		}
 		return ""
 	})
+
+	pctx.VariableFunc("REWrapper", func(ctx android.PackageVarContext) string {
+		if override := ctx.Config().Getenv("RBE_WRAPPER"); override != "" {
+			return override
+		}
+		return "prebuilts/remoteexecution-client/live/rewrapper"
+	})
+
+	pctx.VariableFunc("REContainerImage", func(ctx android.PackageVarContext) string {
+		if override := ctx.Config().Getenv("RE_CONTAINER_IMAGE"); override != "" {
+			return override
+		}
+		return remoteexec.DefaultImage
+	})
+
+	pctx.VariableFunc("RECXXLinksPool", func(ctx android.PackageVarContext) string {
+		if override := ctx.Config().Getenv("RBE_CXX_LINKS_POOL"); override != "" {
+			return override
+		}
+		return ""
+	})
+
+	pctx.VariableFunc("RECXXLinksExecStrategy", func(ctx android.PackageVarContext) string {
+		if override := ctx.Config().Getenv("RBE_CXX_LINKS_EXEC_STRATEGY"); override != "" {
+			return override
+		}
+		return "local"
+	})
+
 }
 
 var HostPrebuiltTag = pctx.VariableConfigMethod("HostPrebuiltTag", android.Config.PrebuiltOS)

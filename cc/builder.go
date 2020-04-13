@@ -29,6 +29,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc/config"
+	"android/soong/remoteexec"
 )
 
 const (
@@ -62,6 +63,18 @@ var (
 		},
 		"ccCmd", "cFlags")
 
+	ldREParams = &remoteexec.REParams{
+		Labels:          map[string]string{"type": "link", "tool": "clang"},
+		ExecStrategy:    "${config.RECXXLinksExecStrategy}",
+		Inputs:          []string{"${out}.rsp"},
+		RSPFile:         "${out}.rsp",
+		OutputFiles:     []string{"${out}"},
+		ToolchainInputs: []string{"$ldCmd"},
+		Platform: map[string]string{
+			remoteexec.ContainerImageKey: "${config.REContainerImage}",
+			remoteexec.PoolKey:           "${config.RECXXLinksPool}",
+		},
+	}
 	ld = pctx.AndroidStaticRule("ld",
 		blueprint.RuleParams{
 			Command: "$ldCmd ${crtBegin} @${out}.rsp " +
@@ -73,7 +86,29 @@ var (
 			Restat: true,
 		},
 		"ldCmd", "crtBegin", "libFlags", "crtEnd", "ldFlags", "extraLibFlags")
+	ldRE = pctx.AndroidRemoteStaticRule("ldRE", android.RemoteRuleSupports{RBE: true},
+		blueprint.RuleParams{
+			Command: ldREParams.Template() + "$ldCmd ${crtBegin} @${out}.rsp " +
+				"${libFlags} ${crtEnd} -o ${out} ${ldFlags} ${extraLibFlags}",
+			CommandDeps:    []string{"$ldCmd"},
+			Rspfile:        "${out}.rsp",
+			RspfileContent: "${in}",
+			// clang -Wl,--out-implib doesn't update its output file if it hasn't changed.
+			Restat: true,
+		},
+		"ldCmd", "crtBegin", "libFlags", "crtEnd", "ldFlags", "extraLibFlags")
 
+	partialLdREParams = &remoteexec.REParams{
+		Labels:          map[string]string{"type": "link", "tool": "clang"},
+		ExecStrategy:    "${config.RECXXLinksExecStrategy}",
+		Inputs:          []string{"$inCommaList"},
+		OutputFiles:     []string{"${out}"},
+		ToolchainInputs: []string{"$ldCmd"},
+		Platform: map[string]string{
+			remoteexec.ContainerImageKey: "${config.REContainerImage}",
+			remoteexec.PoolKey:           "${config.RECXXLinksPool}",
+		},
+	}
 	partialLd = pctx.AndroidStaticRule("partialLd",
 		blueprint.RuleParams{
 			// Without -no-pie, clang 7.0 adds -pie to link Android files,
@@ -82,6 +117,14 @@ var (
 			CommandDeps: []string{"$ldCmd"},
 		},
 		"ldCmd", "ldFlags")
+	partialLdRE = pctx.AndroidRemoteStaticRule("partialLdRE", android.RemoteRuleSupports{RBE: true},
+		blueprint.RuleParams{
+			// Without -no-pie, clang 7.0 adds -pie to link Android files,
+			// but -r and -pie cannot be used together.
+			Command:     partialLdREParams.Template() + "$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} -o ${out} ${ldFlags}",
+			CommandDeps: []string{"$ldCmd"},
+		},
+		"ldCmd", "ldFlags", "inCommaList")
 
 	ar = pctx.AndroidStaticRule("ar",
 		blueprint.RuleParams{
@@ -657,8 +700,13 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 		deps = append(deps, crtBegin.Path(), crtEnd.Path())
 	}
 
+	rule := ld
+	if ctx.Config().IsEnvTrue("RBE_CXX_LINKS") {
+		rule = ldRE
+	}
+
 	ctx.Build(pctx, android.BuildParams{
-		Rule:            ld,
+		Rule:            rule,
 		Description:     "link " + outputFile.Base(),
 		Output:          outputFile,
 		ImplicitOutputs: implicitOutputs,
@@ -798,16 +846,22 @@ func TransformObjsToObj(ctx android.ModuleContext, objFiles android.Paths,
 
 	ldCmd := "${config.ClangBin}/clang++"
 
+	rule := partialLd
+	args := map[string]string{
+		"ldCmd":   ldCmd,
+		"ldFlags": flags.globalLdFlags + " " + flags.localLdFlags,
+	}
+	if ctx.Config().IsEnvTrue("RBE_CXX_LINKS") {
+		rule = partialLdRE
+		args["inCommaList"] = strings.Join(objFiles.Strings(), ",")
+	}
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        partialLd,
+		Rule:        rule,
 		Description: "link " + outputFile.Base(),
 		Output:      outputFile,
 		Inputs:      objFiles,
 		Implicits:   deps,
-		Args: map[string]string{
-			"ldCmd":   ldCmd,
-			"ldFlags": flags.globalLdFlags + " " + flags.localLdFlags,
-		},
+		Args:        args,
 	})
 }
 
