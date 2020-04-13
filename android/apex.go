@@ -116,6 +116,11 @@ type ApexProperties struct {
 	// Default is ["//apex_available:platform"].
 	Apex_available []string
 
+	// List of APEXes that this module is bundled with. The module has access to
+	// the private part of the listed APEXes even when it is not included in the
+	// APEXes. This is useful for tests.
+	Bundled_with_apexes []string
+
 	Info ApexInfo `blueprint:"mutated"`
 }
 
@@ -145,6 +150,10 @@ func (m *ApexModuleBase) apexModuleBase() *ApexModuleBase {
 
 func (m *ApexModuleBase) ApexAvailable() []string {
 	return m.ApexProperties.Apex_available
+}
+
+func (m *ApexModuleBase) BundledWithApexes() []string {
+	return m.ApexProperties.Bundled_with_apexes
 }
 
 func (m *ApexModuleBase) BuildForApexes(apexes []ApexInfo) {
