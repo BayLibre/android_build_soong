@@ -116,6 +116,11 @@ type ApexProperties struct {
 	// Default is ["//apex_available:platform"].
 	Apex_available []string
 
+	// List of APEXes that this module tests. The module has access to
+	// the private part of the listed APEXes even when it is not included in the
+	// APEXes.
+	Test_for []string
+
 	Info ApexInfo `blueprint:"mutated"`
 }
 
@@ -145,6 +150,10 @@ func (m *ApexModuleBase) apexModuleBase() *ApexModuleBase {
 
 func (m *ApexModuleBase) ApexAvailable() []string {
 	return m.ApexProperties.Apex_available
+}
+
+func (m *ApexModuleBase) TestFor() []string {
+	return m.ApexProperties.Test_for
 }
 
 func (m *ApexModuleBase) BuildForApexes(apexes []ApexInfo) {
