@@ -4435,6 +4435,49 @@ func TestNoUpdatableJarsInBootImage(t *testing.T) {
 	testNoUpdatableJarsInBootImage(t, "", bp, transform)
 }
 
+func TestTestFor(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["mylib"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "mylib",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+			stubs: {
+				versions: ["1"],
+			},
+			apex_available: ["myapex"],
+		}
+
+		cc_test {
+			name: "mytest",
+			gtest: false,
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+			shared_libs: ["mylib"],
+			test_for: ["myapex"]
+		}
+	`)
+
+	// the test 'mytest' is a test for the apex, therefore is linked to the
+	// actual implementation of mylib instead of its stub.
+	ldFlags := ctx.ModuleForTests("mytest", "android_arm64_armv8-a").Rule("ld").Args["libFlags"]
+	ensureContains(t, ldFlags, "mylib/android_arm64_armv8-a_shared/mylib.so")
+	ensureNotContains(t, ldFlags, "mylib/android_arm64_armv8-a_shared_1/mylib.so")
+}
+
 func TestMain(m *testing.M) {
 	run := func() int {
 		setUp()
