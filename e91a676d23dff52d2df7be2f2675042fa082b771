@@ -22,6 +22,30 @@
       "revId": "e91a676d23dff52d2df7be2f2675042fa082b771",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7ee0f7f_4cf976c0",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-14T16:17:56Z",
+      "side": 1,
+      "message": "As this corresponds to explicitly writing sdk_version: \"none\" and does not add any classes onto the classpath it seems reasonable for this to be treated as stable, in the sense of \"unlikely to change\". Whether it means stable() in the same required by this method (which says \"managed and stable\") is unclear.",
+      "parentUuid": "194243ac_9d6f3730",
+      "range": {
+        "startLine": 173,
+        "startChar": 6,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "e91a676d23dff52d2df7be2f2675042fa082b771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
