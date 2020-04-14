@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "194243ac_9d6f3730",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-14T16:11:33Z",
+      "side": 1,
+      "message": "Should this be considered as stable?",
+      "range": {
+        "startLine": 173,
+        "startChar": 6,
+        "endLine": 173,
+        "endChar": 13
+      },
+      "revId": "e91a676d23dff52d2df7be2f2675042fa082b771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
