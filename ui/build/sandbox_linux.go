@@ -77,6 +77,14 @@ func (c *Cmd) sandboxSupported() bool {
 
 		sandboxConfig.srcDir = absPath(c.ctx, ".")
 		sandboxConfig.outDir = absPath(c.ctx, c.config.OutDir())
+		//TODO: remove this debug section
+		fi, err := os.Lstat(c.config.DistDir())
+		if (fi.Mode() & os.ModeSymlink) == os.ModeSymlink {
+			c.ctx.Println("The dist dir is a symlink and needs to be dereferenced")
+		} else {
+			c.ctx.Println("The dist dir is not a symlink")
+		}
+		//TODO: dereference dist dir symlink
 		sandboxConfig.distDir = absPath(c.ctx, c.config.DistDir())
 
 		sandboxArgs := []string{
