@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2097125f_1d49ebe6",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-14T05:17:57Z",
+      "side": 1,
+      "message": "We should have a README for this package. Does not have to be in this CL, but probably file a bug so that we can followup on it?",
+      "range": {
+        "startLine": 553,
+        "startChar": 28,
+        "endLine": 553,
+        "endChar": 38
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "021528c7_5a017393",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-14T05:17:57Z",
+      "side": 1,
+      "message": "nit: make this common between non-RBE and RBE rules, that way:\n\n1. The underlying link command is present at only one place and when someone is modifying it they might accidentally miss changing one or the other it its at two places.\n2. You can have the comment about \"-no-pie\" at once place instead of two 😊\n\nSame for ld/ldRE.\n\nI guess if you could do the variable initialization in the init() function, then it might make it easier to do the reuse of other params as well between RBE/non-RBE rules.",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 120
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a29528_ad00fc20",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-14T05:17:57Z",
+      "side": 1,
+      "message": "All of these follow the common pattern of:\nDefine variablefunc \"foo\" based on env variable \"bar\" that returns value of \"bar\" if its set, or return a \"default\" value. I think its better to make a config of these three and run a for-loop to define them, so that its easier to add new ones. Something like:\n\n```\ntype rbeVariableDefinition {\n    envVar string\n    default string\n}\n\nvar (\n    rbeVars :\u003d map[string]rbeVariableDefinition{\n        \"REWrapper\": rbeVariableDefinition{envVar: \"RBE_WRAPPER\", default: \"prebuilts/remoteexecution-client/live/rewrapper\"},\n        ...\n    }\n)\n\nfunc init() {\n    ...\n\n    for var, def :\u003d range rbeVars {\n        pctx.VariableFunc(var, func(ctx android.PackageVarContext) string {\n\t\tif override :\u003d ctx.Config().Getenv(def.envVar); override !\u003d \"\" {\n\t\t\treturn override\n\t\t}\n\t\treturn def.default\n\t})\n    }\n}\n```\n\nwdyt?",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74cfda6_779bc0ea",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-14T05:17:57Z",
+      "side": 1,
+      "message": "Can you also add a comment that the image was built with the Dockerfile at https://android.googlesource.com/platform/prebuilts/remoteexecution-client/+/refs/heads/master/docker/Dockerfile ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 82
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0cf1b49_d64360ed",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-14T05:17:57Z",
+      "side": 1,
+      "message": "nit: \"template\" / \"rbeTemplate\" ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d43eae8f_c1dc645f",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-14T05:17:57Z",
+      "side": 1,
+      "message": "nit: Name the variable as \"platform\"/ \"platformProperties\" - http://go/gocomments#variable-names",
+      "range": {
+        "startLine": 74,
+        "startChar": 13,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
