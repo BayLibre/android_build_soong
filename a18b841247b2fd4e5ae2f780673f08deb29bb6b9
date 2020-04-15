@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "f1e7a61f_49531789",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-15T06:28:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32090e59_d83c3361",
+      "range": {
+        "startLine": 103,
+        "startChar": 47,
+        "endLine": 103,
+        "endChar": 59
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "921d333b_388a284a",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -152,6 +176,30 @@
       "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47ef80d9_3b33682b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-15T06:28:04Z",
+      "side": 1,
+      "message": "Ok, I wondered if the move was the critical part of this change, but it seems not. \n\n\u003e Will need this in a more common place that collect_deps to share logic in apex as well (for java_libs and android_apps that go into apex).\n\nI don\u0027t understand this part. We can\u0027t call either of checkSdkVersions and collectDeps from outside of the java package. The ctx has to be that of the java (java_lib, android_app, ...) module. ctx is that of the apex in the apex package.",
+      "parentUuid": "ba873639_38016dac",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
