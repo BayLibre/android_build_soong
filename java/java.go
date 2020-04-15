@@ -1767,6 +1767,24 @@ func (j *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 	return false
 }
 
+func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	sdkSpec := j.minSdkVersion()
+	if !sdkSpec.specified() {
+		return fmt.Errorf("min_sdk_version is not specified")
+	}
+	if !sdkSpec.stable() {
+		return fmt.Errorf("min_sdk_version is not stable: %v", sdkSpec.raw)
+	}
+	ver, err := sdkSpec.effectiveVersion(ctx)
+	if err != nil {
+		return err
+	}
+	if int(ver) > sdkVersion {
+		return fmt.Errorf("newer SDK(%v)", ver)
+	}
+	return nil
+}
+
 func (j *Module) Stem() string {
 	return proptools.StringDefault(j.deviceProperties.Stem, j.Name())
 }

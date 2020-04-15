@@ -1881,6 +1881,32 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 	})
 }
 
+func (a *apexBundle) checkMinSdkVersion(ctx android.ModuleContext) {
+	// do not enforce min_sdk_version for host/test/vndk apexes
+	if ctx.Host() || a.testApex || a.vndkApex {
+		return
+	}
+
+	// do not enforce if apex doesn't set its min_sdk_version
+	if a.minSdkVersion(ctx) == android.FutureApiLevel {
+		return
+	}
+
+	a.walkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+		if externalDep {
+			return false
+		}
+		if am, ok := from.(android.DepIsInSameApex); ok && !am.DepIsInSameApex(ctx, to) {
+			return false
+		}
+		if err := to.ShouldSupportSdkVersion(ctx, a.minSdkVersion(ctx)); err != nil {
+			ctx.OtherModuleErrorf(to, "should support %v for APEX %q: %v", a.minSdkVersion(ctx), a.Name(), err.Error())
+			return false
+		}
+		return true
+	})
+}
+
 // Collects the list of module names that directly or indirectly contributes to the payload of this APEX
 func (a *apexBundle) collectDepsInfo(ctx android.ModuleContext) {
 	a.depInfos = make(map[string]depInfo)
@@ -1946,6 +1972,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	a.checkApexAvailability(ctx)
+	a.checkMinSdkVersion(ctx)
 
 	a.collectDepsInfo(ctx)
 

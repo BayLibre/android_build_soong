@@ -580,6 +580,10 @@ func (c *Module) SdkVersion() string {
 	return String(c.Properties.Sdk_version)
 }
 
+func (c *Module) minSdkVersion() string {
+	return String(c.Properties.Min_sdk_version)
+}
+
 func (c *Module) AlwaysSdk() bool {
 	return c.Properties.AlwaysSdk || Bool(c.Properties.Sdk_variant_only)
 }
@@ -2827,6 +2831,29 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 		}
 	}
 	return true
+}
+
+func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	// We ignore libclang_rt.* prebuilt libs since they declare sdk_version: 14(b/121358700)
+	if strings.HasPrefix(ctx.OtherModuleName(c), "libclang_rt") {
+		return nil
+	}
+	// b/154569636: set min_sdk_version correctly for toolchain_libraries
+	if c.ToolchainLibrary() {
+		return nil
+	}
+	minSdkVersion := c.minSdkVersion()
+	if minSdkVersion == "" {
+		return fmt.Errorf("min_sdk_version is not specified")
+	}
+	ver, err := android.ApiStrToNum(ctx, minSdkVersion)
+	if err != nil {
+		return err
+	}
+	if ver > sdkVersion {
+		return fmt.Errorf("newer SDK(%v)", ver)
+	}
+	return nil
 }
 
 //
