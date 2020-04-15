@@ -1946,7 +1946,9 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	a.checkApexAvailability(ctx)
-
+	if proptools.Bool(a.properties.Updatable) {
+		a.checkJavaStableSdkVersion(ctx)
+	}
 	a.collectDepsInfo(ctx)
 
 	handleSpecialLibs := !android.Bool(a.properties.Ignore_system_library_special_case)
@@ -2258,6 +2260,23 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.compatSymlinks = makeCompatSymlinks(a.BaseModuleName(), ctx)
 
 	a.buildApexDependencyInfo(ctx)
+}
+
+// Enforce that Java deps of the apex are using stable SDKs to compile
+func (a *apexBundle) checkJavaStableSdkVersion(ctx android.ModuleContext) {
+	// Visit direct deps only. As long as we guarantee top-level deps are using
+	// stable SDKs, java's checkLinkType guarantees correct usage for transitive deps
+	ctx.VisitDirectDepsBlueprint(func(module blueprint.Module) {
+		tag := ctx.OtherModuleDependencyTag(module)
+		switch tag {
+		case javaLibTag, androidAppTag:
+			if m, ok := module.(interface{ CheckStableSdkVersion() error }); ok {
+				if err := m.CheckStableSdkVersion(); err != nil {
+					ctx.ModuleErrorf("cannot depend on \"%v\": %v", ctx.OtherModuleName(module), err)
+				}
+			}
+		}
+	})
 }
 
 func whitelistedApexAvailable(apex, moduleName string) bool {
