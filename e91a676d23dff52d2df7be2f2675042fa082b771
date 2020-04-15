@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a456e04c_1ad77b9a",
+        "filename": "java/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-15T11:11:32Z",
+      "side": 1,
+      "message": "Reworded to mention \"managed and versioned\".",
+      "parentUuid": "b9759972_eba7df94",
+      "range": {
+        "startLine": 165,
+        "startChar": 42,
+        "endLine": 165,
+        "endChar": 48
+      },
+      "revId": "e91a676d23dff52d2df7be2f2675042fa082b771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "194243ac_9d6f3730",
         "filename": "java/sdk.go",
         "patchSetId": 4
