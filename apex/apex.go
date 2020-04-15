@@ -1728,13 +1728,8 @@ func (c *flattenedApexContext) InstallBypassMake() bool {
 	return true
 }
 
-// Function called while walking an APEX's payload dependencies.
-//
-// Return true if the `to` module should be visited, false otherwise.
-type payloadDepsCallback func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool
-
 // Visit dependencies that contributes to the payload of this APEX
-func (a *apexBundle) walkPayloadDeps(ctx android.ModuleContext, do payloadDepsCallback) {
+func (a *apexBundle) WalkPayloadDeps(ctx android.ModuleContext, do android.PayloadDepsCallback) {
 	ctx.WalkDeps(func(child, parent android.Module) bool {
 		am, ok := child.(android.ApexModule)
 		if !ok || !am.CanHaveApexVariants() {
@@ -1760,7 +1755,21 @@ func (a *apexBundle) walkPayloadDeps(ctx android.ModuleContext, do payloadDepsCa
 }
 
 func (a *apexBundle) minSdkVersion(ctx android.BaseModuleContext) int {
-	ver := proptools.StringDefault(a.properties.Min_sdk_version, "current")
+	ver := proptools.String(a.properties.Min_sdk_version)
+	if ver == "" {
+		return android.FutureApiLevel
+	}
+	// Treat the current codenames as "current", which means future API version (10000)
+	// Otherwise, ApiStrToNum converts codename(non-finalized) to a value from [9000...]
+	// and would fail to build against "current".
+	if android.InList(ver, ctx.Config().PlatformVersionActiveCodenames()) {
+		return android.FutureApiLevel
+	}
+	// In "REL" branch, "current" is mapped to finalized sdk version
+	if ctx.Config().PlatformSdkCodename() == "REL" && ver == "current" {
+		return ctx.Config().PlatformSdkVersionInt()
+	}
+	// Finalized codenames are OKAY and will be converted to int
 	intVer, err := android.ApiStrToNum(ctx, ver)
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "%s", err.Error())
@@ -1788,7 +1797,7 @@ func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 		return
 	}
 
-	a.walkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+	a.WalkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
 		if externalDep {
 			// As soon as the dependency graph crosses the APEX boundary, don't go further.
 			return false
@@ -1824,6 +1833,17 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 	}
 }
 
+func (a *apexBundle) checkMinSdkVersion(ctx android.ModuleContext) {
+	if a.testApex || a.vndkApex {
+		return
+	}
+	// Meaningless to check min_sdk_version when building use_vendor modules against non-Trebleized targets
+	if proptools.Bool(a.properties.Use_vendor) && ctx.DeviceConfig().VndkVersion() == "" {
+		return
+	}
+	android.CheckMinSdkVersion(a, ctx, a.minSdkVersion(ctx))
+}
+
 // Ensures that a lib providing stub isn't statically linked
 func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext) {
 	// Practically, we only care about regular APEXes on the device.
@@ -1831,7 +1851,7 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 		return
 	}
 
-	a.walkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+	a.WalkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
 		if ccm, ok := to.(*cc.Module); ok {
 			apexName := ctx.ModuleName()
 			fromName := ctx.OtherModuleName(from)
@@ -1906,6 +1926,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	a.checkApexAvailability(ctx)
 	a.checkUpdatable(ctx)
+	a.checkMinSdkVersion(ctx)
 	a.checkStaticLinkingToStubLibraries(ctx)
 
 	handleSpecialLibs := !android.Bool(a.properties.Ignore_system_library_special_case)
@@ -1939,7 +1960,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	})
 
 	var filesInfo []apexFile
-	// TODO(jiyong) do this using walkPayloadDeps
+	// TODO(jiyong) do this using WalkPayloadDeps
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
 		depTag := ctx.OtherModuleDependencyTag(child)
 		if _, ok := depTag.(android.ExcludeFromApexContentsTag); ok {
