@@ -653,6 +653,67 @@ func makeApexAvailableWhitelist() map[string][]string {
 	return m
 }
 
+// TODO(b/158059172): remove minSdkVersion whitelist
+var minSdkVersionWhitelist = map[string]int{
+	"adbd":                  30,
+	"android.net.ipsec.ike": 30,
+	"androidx-constraintlayout_constraintlayout-solver": 30,
+	"bouncycastle_ike_digests":                          30,
+	"flatbuffer_headers":                                30,
+	"framework-permission":                              30,
+	"framework-statsd":                                  30,
+	"gemmlowp_headers":                                  30,
+	"ike-internals":                                     30,
+	"kotlinx-coroutines-android":                        30,
+	"kotlinx-coroutines-core":                           30,
+	"libadb_crypto":                                     30,
+	"libadb_pairing_auth":                               30,
+	"libadb_pairing_connection":                         30,
+	"libadb_pairing_server":                             30,
+	"libadb_protos":                                     30,
+	"libadb_tls_connection":                             30,
+	"libadbconnection_client":                           30,
+	"libadbconnection_server":                           30,
+	"libadbd_core":                                      30,
+	"libadbd_services":                                  30,
+	"libadbd":                                           30,
+	"libapp_processes_protos_lite":                      30,
+	"libasyncio":                                        30,
+	"libbrotli":                                         30,
+	"libbuildversion":                                   30,
+	"libcrypto_static":                                  30,
+	"libcrypto_utils":                                   30,
+	"libdiagnose_usb":                                   30,
+	"libeigen":                                          30,
+	"liblz4":                                            30,
+	"libmdnssd":                                         30,
+	"libneuralnetworks_common":                          30,
+	"libneuralnetworks_headers":                         30,
+	"libneuralnetworks":                                 30,
+	"libprocpartition":                                  30,
+	"libprotobuf-java-lite":                             30,
+	"libprotoutil":                                      30,
+	"libqemu_pipe":                                      30,
+	"libstats_jni":                                      30,
+	"libstatslog_statsd":                                30,
+	"libstatsmetadata":                                  30,
+	"libstatspull":                                      30,
+	"libstatssocket":                                    30,
+	"libsync":                                           30,
+	"libtextclassifier_hash_headers":                    30,
+	"libtextclassifier_hash_static":                     30,
+	"libtflite_kernel_utils":                            30,
+	"libzstd":                                           30,
+	"permissioncontroller-statsd":                       30,
+	"philox_random_headers":                             30,
+	"philox_random":                                     30,
+	"service-permission":                                30,
+	"service-statsd":                                    30,
+	"statsd-aidl-ndk_platform":                          30,
+	"statsd":                                            30,
+	"tensorflow_headers":                                30,
+}
+
 func init() {
 	android.RegisterModuleType("apex", BundleFactory)
 	android.RegisterModuleType("apex_test", testApexBundleFactory)
@@ -1759,7 +1820,21 @@ func (a *apexBundle) walkPayloadDeps(ctx android.ModuleContext, do payloadDepsCa
 }
 
 func (a *apexBundle) minSdkVersion(ctx android.BaseModuleContext) int {
-	ver := proptools.StringDefault(a.properties.Min_sdk_version, "current")
+	ver := proptools.String(a.properties.Min_sdk_version)
+	if ver == "" {
+		return android.FutureApiLevel
+	}
+	// Treat the current codenames as "current", which means future API version (10000)
+	// Otherwise, ApiStrToNum converts codename(non-finalized) to a value from [9000...]
+	// and would fail to build against "current".
+	if android.InList(ver, ctx.Config().PlatformVersionActiveCodenames()) {
+		return android.FutureApiLevel
+	}
+	// In "REL" branch, "current" is mapped to finalized sdk version
+	if ctx.Config().PlatformSdkCodename() == "REL" && ver == "current" {
+		return ctx.Config().PlatformSdkVersionInt()
+	}
+	// Finalized codenames are OKAY and will be converted to int
 	intVer, err := android.ApiStrToNum(ctx, ver)
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "%s", err.Error())
@@ -1821,6 +1896,40 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 
 		a.checkJavaStableSdkVersion(ctx)
 	}
+}
+
+func (a *apexBundle) checkMinSdkVersion(ctx android.ModuleContext) {
+	// do not enforce min_sdk_version for host/test/vndk apexes
+	if ctx.Host() || a.testApex || a.vndkApex {
+		return
+	}
+
+	// do not enforce deps.min_sdk_version if apex doesn't set min_sdk_version or
+	// min_sdk_version is not finalized (e.g. current or codenames)
+	minSdkVersion := a.minSdkVersion(ctx)
+	if minSdkVersion == android.FutureApiLevel {
+		return
+	}
+
+	a.walkPayloadDeps(ctx, func(ctx android.ModuleContext, from blueprint.Module, to android.ApexModule, externalDep bool) bool {
+		if externalDep {
+			// external deps are outside the apex boundary, which is "stable" interface.
+			// We don't have to check min_sdk_version for external dependencies.
+			return false
+		}
+		if am, ok := from.(android.DepIsInSameApex); ok && !am.DepIsInSameApex(ctx, to) {
+			return false
+		}
+		if err := to.ShouldSupportSdkVersion(ctx, minSdkVersion); err != nil {
+			toName := normalizeModuleName(ctx.OtherModuleName(to))
+			if ver, ok := minSdkVersionWhitelist[toName]; !ok || ver > minSdkVersion {
+				ctx.OtherModuleErrorf(to, "should support min_sdk_version(%v) for APEX %q: %v. Dependency path: %s",
+					minSdkVersion, a.Name(), err.Error(), ctx.GetPathString(false))
+				return false
+			}
+		}
+		return true
+	})
 }
 
 // Ensures that a lib providing stub isn't statically linked
@@ -1905,6 +2014,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	a.checkApexAvailability(ctx)
 	a.checkUpdatable(ctx)
+	a.checkMinSdkVersion(ctx)
 	a.checkStaticLinkingToStubLibraries(ctx)
 
 	handleSpecialLibs := !android.Bool(a.properties.Ignore_system_library_special_case)
