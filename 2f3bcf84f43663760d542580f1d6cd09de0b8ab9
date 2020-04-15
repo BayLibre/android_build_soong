@@ -45,6 +45,30 @@
       "revId": "2f3bcf84f43663760d542580f1d6cd09de0b8ab9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47b8a96_f58b321a",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-15T05:16:50Z",
+      "side": 1,
+      "message": "Ah I figured why. Ignore.",
+      "parentUuid": "cf777483_4f7c7b11",
+      "range": {
+        "startLine": 193,
+        "startChar": 3,
+        "endLine": 193,
+        "endChar": 14
+      },
+      "revId": "2f3bcf84f43663760d542580f1d6cd09de0b8ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
