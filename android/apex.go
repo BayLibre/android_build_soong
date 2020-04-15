@@ -104,6 +104,10 @@ type ApexModule interface {
 	// For example, with maxSdkVersion is 10 and versionList is [9,11]
 	// it returns 9 as string
 	ChooseSdkVersion(versionList []string, maxSdkVersion int) (string, error)
+
+	// Returns nil if this module supports sdkVersion
+	// Otherwise, returns error with reason
+	ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion int) error
 }
 
 type ApexProperties struct {
@@ -227,6 +231,11 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 			mctx.PropertyErrorf("apex_available", "%q is not a valid module name", n)
 		}
 	}
+}
+
+// ShouldSupportSdkVersion should be overridden
+func (m *ApexModuleBase) ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion int) error {
+	return fmt.Errorf("not implemented")
 }
 
 type byApexName []ApexInfo
