@@ -16,6 +16,24 @@
       "revId": "d9ade220256839c252d7fd46cdfdfdcd755d1fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b664accf_cf433bd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-15T15:17:39Z",
+      "side": 1,
+      "message": "Since I changed libc_headers to use export_system_include_dirs, the order should mostly stay the same, but there might be some changes.\n\nI also intend to stage this change by pushing https://r.android.com/1281852 and the other cleanup CLs first, do the corresponding fixes on internal master, and then submit this. So temporarily there will be some duplicate -isystem paths, if that might affect something.\n\n\u003e How many different devices have you checked?\n\nAdded the two I tested to the message.\n\n\u003e There are a decent number of vendor makefiles (and even Android.bp files) that directly reference bionic/... as well.\n\nI\u0027ll fix what I find in internal master too. Are direct references affected? I can imagine implicit ones are. If vendor build files are affected that aren\u0027t visible to us then now seems like a good time to make this cleanup for S and forward (not aiming to land it in R).",
+      "parentUuid": "caa559c2_42be836e",
+      "revId": "d9ade220256839c252d7fd46cdfdfdcd755d1fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
