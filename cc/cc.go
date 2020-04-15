@@ -2821,6 +2821,13 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 	return true
 }
 
+func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	if strings.HasPrefix(ctx.OtherModuleName(c), "libclang_rt") || c.ToolchainLibrary() {
+		return nil
+	}
+	return c.ApexModuleBase.ShouldSupportSdkVersion(ctx, sdkVersion)
+}
+
 //
 // Defaults
 //

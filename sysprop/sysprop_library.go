@@ -432,8 +432,7 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 	ccProps.Recovery_available = m.properties.Recovery_available
 	ccProps.Vendor_available = m.properties.Vendor_available
 	ccProps.Host_supported = m.properties.Host_supported
-	ccProps.Apex_available = m.ApexProperties.Apex_available
-	ctx.CreateModule(cc.LibraryFactory, &ccProps)
+	ctx.CreateModule(cc.LibraryFactory, &ccProps, &m.ApexProperties)
 
 	scope := "internal"
 
@@ -463,7 +462,7 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 		Installable:      m.properties.Installable,
 		Sdk_version:      proptools.StringPtr("core_current"),
 		Libs:             []string{stub},
-	})
+	}, &m.ApexProperties)
 
 	// if platform sysprop_library is installed in /system or /system-ext, we regard it as an API
 	// and allow any modules (even from different partition) to link against the sysprop_library.
