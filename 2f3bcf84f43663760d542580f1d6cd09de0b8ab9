@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7157cac_208cc741",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-15T05:07:16Z",
+      "side": 1,
+      "message": "nit: add package description here.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 0
+      },
+      "revId": "2f3bcf84f43663760d542580f1d6cd09de0b8ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf777483_4f7c7b11",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-15T05:07:16Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "range": {
+        "startLine": 193,
+        "startChar": 3,
+        "endLine": 193,
+        "endChar": 14
+      },
+      "revId": "2f3bcf84f43663760d542580f1d6cd09de0b8ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

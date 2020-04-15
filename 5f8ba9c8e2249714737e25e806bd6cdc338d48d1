@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "72e526df_6b78022c",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-04-15T05:07:16Z",
+      "side": 1,
+      "message": "I was hoping instructions on how to add support for new action types for external contributors. But then remote-execution client is not OSS yet, so it won\u0027t be super useful right now.",
+      "parentUuid": "35efb7be_dd53a181",
+      "range": {
+        "startLine": 553,
+        "startChar": 28,
+        "endLine": 553,
+        "endChar": 38
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "021528c7_5a017393",
         "filename": "cc/builder.go",
         "patchSetId": 2
