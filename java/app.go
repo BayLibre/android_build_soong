@@ -1566,6 +1566,11 @@ func (a *AndroidAppImport) minSdkVersion() sdkSpec {
 	return sdkSpecFrom("")
 }
 
+func (j *AndroidAppImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	// Do not check for prebuilts against the min_sdk_version of enclosing APEX
+	return nil
+}
+
 func createVariantGroupType(variants []string, variantGroupName string) reflect.Type {
 	props := reflect.TypeOf((*AndroidAppImportProperties)(nil))
 
