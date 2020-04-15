@@ -124,6 +124,10 @@ type ApexModule interface {
 	// the private part of the listed APEXes even when it is not included in the
 	// APEXes.
 	TestFor() []string
+
+	// Returns nil if this module supports sdkVersion
+	// Otherwise, returns error with reason
+	ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion int) error
 }
 
 type ApexProperties struct {
@@ -266,6 +270,11 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 
 func (m *ApexModuleBase) Updatable() bool {
 	return m.ApexProperties.Info.Updatable
+}
+
+// ShouldSupportSdkVersion should be overridden by ApexModule-implementing modules
+func (m *ApexModuleBase) ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion int) error {
+	return fmt.Errorf("not implemented")
 }
 
 type byApexName []ApexInfo
