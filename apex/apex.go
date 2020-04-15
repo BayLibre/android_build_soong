@@ -1936,7 +1936,27 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	a.checkApexAvailability(ctx)
-
+	if proptools.Bool(a.properties.Updatable) {
+		ctx.VisitDirectDepsBlueprint(func(module blueprint.Module) {
+			tag := ctx.OtherModuleDependencyTag(module)
+			switch tag {
+			case javaLibTag, androidAppTag:
+				var javaModule java.Module
+				// TODO(satayev): cover other types as well, e.g. imports
+				switch module.(type) {
+				case *java.Library, *java.AndroidLibrary:
+					javaModule = module.(*java.Library).Module
+				case *java.AndroidApp:
+					javaModule = module.(*java.AndroidApp).Module
+				}
+				if err := javaModule.CheckStableSdkVersion(); err != nil {
+					otherName := ctx.OtherModuleName(module)
+					ctx.ModuleErrorf("Dependency %v of updatable module must use stable SDK, found %v", otherName, err)
+				}
+			}
+			return
+		})
+	}
 	a.collectDepsInfo(ctx)
 
 	handleSpecialLibs := !android.Bool(a.properties.Ignore_system_library_special_case)
