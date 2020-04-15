@@ -104,6 +104,10 @@ type ApexModule interface {
 	// For example, with maxSdkVersion is 10 and versionList is [9,11]
 	// it returns 9 as string
 	ChooseSdkVersion(versionList []string, maxSdkVersion int) (string, error)
+
+	// Returns nil if this module supports sdkVersion
+	// Otherwise, returns error with reason
+	ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion int) error
 }
 
 type ApexProperties struct {
@@ -117,6 +121,13 @@ type ApexProperties struct {
 	Apex_available []string
 
 	Info ApexInfo `blueprint:"mutated"`
+
+	// Minimum version of the sdk that the compiled artifacts will run against.
+	// For example, when a module is used by two APEXes and their min_sdk_versions are set to 29 and 30,
+	// then the module should support both versions even if it is compiled against 30.
+	// Therefore, min_sdk_version of the module needs to be set 29 in that case. In general,
+	// this is set as the minimum value of min_sdk_vesions of APEXes.
+	Min_sdk_version *string
 }
 
 // Marker interface that identifies dependencies that are excluded from APEX
@@ -227,6 +238,22 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 			mctx.PropertyErrorf("apex_available", "%q is not a valid module name", n)
 		}
 	}
+}
+
+// ShouldSupportSdkVersion provides default implementation for ApexModule types and checks if min_sdk_version <= sdkVersion.
+// This should be overridden for modules types such as java_library which defines its own min_sdk_version property.
+func (m *ApexModuleBase) ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion int) error {
+	if m.ApexProperties.Min_sdk_version == nil {
+		return fmt.Errorf("min_sdk_version is not specified")
+	}
+	ver, err := ApiStrToNum(ctx, *m.ApexProperties.Min_sdk_version)
+	if err != nil {
+		return err
+	}
+	if ver > sdkVersion {
+		return fmt.Errorf("newer SDK(%v)", ver)
+	}
+	return nil
 }
 
 type byApexName []ApexInfo
