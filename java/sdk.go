@@ -169,9 +169,9 @@ func (s sdkSpec) stable() bool {
 		return false
 	}
 	switch s.kind {
-	case sdkCore, sdkPublic, sdkSystem, sdkModule, sdkSystemServer:
+	case sdkNone, sdkCore, sdkPublic, sdkSystem, sdkModule, sdkSystemServer:
 		return true
-	case sdkNone, sdkCorePlatform, sdkTest, sdkPrivate:
+	case sdkCorePlatform, sdkTest, sdkPrivate:
 		return false
 	default:
 		panic(fmt.Errorf("unknown sdkKind=%v", s.kind))
