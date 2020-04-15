@@ -1284,6 +1284,10 @@ func (a *AndroidAppImport) DepIsInSameApex(ctx android.BaseModuleContext, dep an
 	return false
 }
 
+func (j *AndroidAppImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	return nil
+}
+
 func createVariantGroupType(variants []string, variantGroupName string) reflect.Type {
 	props := reflect.TypeOf((*AndroidAppImportProperties)(nil))
 

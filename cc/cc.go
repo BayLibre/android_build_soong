@@ -580,6 +580,10 @@ func (c *Module) SdkVersion() string {
 	return String(c.Properties.Sdk_version)
 }
 
+func (c *Module) minSdkVersion() string {
+	return String(c.Properties.Min_sdk_version)
+}
+
 func (c *Module) AlwaysSdk() bool {
 	return c.Properties.AlwaysSdk || Bool(c.Properties.Sdk_variant_only)
 }
@@ -2826,6 +2830,39 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 		}
 	}
 	return true
+}
+
+// b/154667674: refactor this to handle "current" in a consistent way
+func decodeSdkVersionString(ctx android.BaseModuleContext, versionString string) (int, error) {
+	if versionString == "" {
+		return 0, fmt.Errorf("not specified")
+	}
+	if versionString == "current" {
+		if ctx.Config().PlatformSdkCodename() == "REL" {
+			return ctx.Config().PlatformSdkVersionInt(), nil
+		}
+		return android.FutureApiLevel, nil
+	}
+	return android.ApiStrToNum(ctx, versionString)
+}
+
+func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	// We ignore libclang_rt.* prebuilt libs since they declare sdk_version: 14(b/121358700)
+	if strings.HasPrefix(ctx.OtherModuleName(c), "libclang_rt") {
+		return nil
+	}
+	// b/154569636: set min_sdk_version correctly for toolchain_libraries
+	if c.ToolchainLibrary() {
+		return nil
+	}
+	ver, err := decodeSdkVersionString(ctx, c.minSdkVersion())
+	if err != nil {
+		return err
+	}
+	if ver > sdkVersion {
+		return fmt.Errorf("newer SDK(%v)", ver)
+	}
+	return nil
 }
 
 //

@@ -198,6 +198,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 	config.TestProductVariables.CertificateOverrides = []string{"myapex_keytest:myapex.certificate.override"}
 	config.TestProductVariables.Platform_sdk_codename = proptools.StringPtr("Q")
 	config.TestProductVariables.Platform_sdk_final = proptools.BoolPtr(false)
+	config.TestProductVariables.Platform_version_active_codenames = []string{"R"}
 	config.TestProductVariables.Platform_vndk_version = proptools.StringPtr("VER")
 
 	for _, handler := range handlers {
@@ -895,13 +896,13 @@ func TestApexDependsOnLLNDKTransitively(t *testing.T) {
 	}{
 		{
 			name:          "should link to the latest",
-			minSdkVersion: "current",
+			minSdkVersion: "",
 			shouldLink:    "30",
 			shouldNotLink: []string{"29"},
 		},
 		{
 			name:          "should link to llndk#29",
-			minSdkVersion: "29",
+			minSdkVersion: "min_sdk_version: \"29\",",
 			shouldLink:    "29",
 			shouldNotLink: []string{"30"},
 		},
@@ -914,7 +915,7 @@ func TestApexDependsOnLLNDKTransitively(t *testing.T) {
 				key: "myapex.key",
 				use_vendor: true,
 				native_shared_libs: ["mylib"],
-				min_sdk_version: "`+tc.minSdkVersion+`",
+				`+tc.minSdkVersion+`
 			}
 
 			apex_key {
@@ -931,6 +932,7 @@ func TestApexDependsOnLLNDKTransitively(t *testing.T) {
 				system_shared_libs: [],
 				stl: "none",
 				apex_available: [ "myapex" ],
+				min_sdk_version: "29",
 			}
 
 			cc_library {
@@ -1061,24 +1063,24 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 	ensureContains(t, libFlags, "libdl/android_arm64_armv8-a_shared/libdl.so")
 }
 
-func TestApexUseStubsAccordingToMinSdkVersionInUnbundledBuild(t *testing.T) {
+func TestApexMinSdkVersion_NativeModulesShouldBeBuiltAgainstStubs(t *testing.T) {
 	// there are three links between liba --> libz
-	// 1) myapex -> libx -> liba -> libz    : this should be #2 link, but fallback to #1
-	// 2) otherapex -> liby -> liba -> libz : this should be #3 link
+	// 1) myapex -> libx -> liba -> libz    : this should be #29 link, but fallback to #28
+	// 2) otherapex -> liby -> liba -> libz : this should be #30 link
 	// 3) (platform) -> liba -> libz        : this should be non-stub link
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
 			native_shared_libs: ["libx"],
-			min_sdk_version: "2",
+			min_sdk_version: "29",
 		}
 
 		apex {
 			name: "otherapex",
 			key: "myapex.key",
 			native_shared_libs: ["liby"],
-			min_sdk_version: "3",
+			min_sdk_version: "30",
 		}
 
 		apex_key {
@@ -1093,6 +1095,7 @@ func TestApexUseStubsAccordingToMinSdkVersionInUnbundledBuild(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 			apex_available: [ "myapex" ],
+			min_sdk_version: "29",
 		}
 
 		cc_library {
@@ -1101,6 +1104,7 @@ func TestApexUseStubsAccordingToMinSdkVersionInUnbundledBuild(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 			apex_available: [ "otherapex" ],
+			min_sdk_version: "29",
 		}
 
 		cc_library {
@@ -1112,6 +1116,7 @@ func TestApexUseStubsAccordingToMinSdkVersionInUnbundledBuild(t *testing.T) {
 				"//apex_available:anyapex",
 				"//apex_available:platform",
 			],
+			min_sdk_version: "29",
 		}
 
 		cc_library {
@@ -1119,10 +1124,10 @@ func TestApexUseStubsAccordingToMinSdkVersionInUnbundledBuild(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 			stubs: {
-				versions: ["1", "3"],
+				versions: ["28", "30"],
 			},
 		}
-	`, withUnbundledBuild)
+	`)
 
 	expectLink := func(from, from_variant, to, to_variant string) {
 		ldArgs := ctx.ModuleForTests(from, "android_arm64_armv8-a_"+from_variant).Rule("ld").Args["libFlags"]
@@ -1134,17 +1139,17 @@ func TestApexUseStubsAccordingToMinSdkVersionInUnbundledBuild(t *testing.T) {
 	}
 	// platform liba is linked to non-stub version
 	expectLink("liba", "shared", "libz", "shared")
-	// liba in myapex is linked to #1
-	expectLink("liba", "shared_myapex", "libz", "shared_1")
-	expectNoLink("liba", "shared_myapex", "libz", "shared_3")
+	// liba in myapex is linked to #28
+	expectLink("liba", "shared_myapex", "libz", "shared_28")
+	expectNoLink("liba", "shared_myapex", "libz", "shared_30")
 	expectNoLink("liba", "shared_myapex", "libz", "shared")
-	// liba in otherapex is linked to #3
-	expectLink("liba", "shared_otherapex", "libz", "shared_3")
-	expectNoLink("liba", "shared_otherapex", "libz", "shared_1")
+	// liba in otherapex is linked to #30
+	expectLink("liba", "shared_otherapex", "libz", "shared_30")
+	expectNoLink("liba", "shared_otherapex", "libz", "shared_28")
 	expectNoLink("liba", "shared_otherapex", "libz", "shared")
 }
 
-func TestApexMinSdkVersionDefaultsToLatest(t *testing.T) {
+func TestApexMinSdkVersion_DefaultsToLatest(t *testing.T) {
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -1253,6 +1258,7 @@ func TestQApexesUseLatestStubsInBundledBuildsAndHWASAN(t *testing.T) {
 			name: "libx",
 			shared_libs: ["libbar"],
 			apex_available: [ "myapex" ],
+			min_sdk_version: "29",
 		}
 
 		cc_library {
@@ -1290,6 +1296,7 @@ func TestQTargetApexUsesStaticUnwinder(t *testing.T) {
 		cc_library {
 			name: "libx",
 			apex_available: [ "myapex" ],
+			min_sdk_version: "29",
 		}
 	`)
 
@@ -1301,7 +1308,7 @@ func TestQTargetApexUsesStaticUnwinder(t *testing.T) {
 	ensureListNotContains(t, cm.Properties.AndroidMkStaticLibs, "libgcc_stripped")
 }
 
-func TestInvalidMinSdkVersion(t *testing.T) {
+func TestApexMinSdkVersion_ErrorIfIncompatibleStubs(t *testing.T) {
 	testApexError(t, `"libz" .*: not found a version\(<=29\)`, `
 		apex {
 			name: "myapex",
@@ -1322,6 +1329,7 @@ func TestInvalidMinSdkVersion(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 			apex_available: [ "myapex" ],
+			min_sdk_version: "29",
 		}
 
 		cc_library {
@@ -1333,12 +1341,15 @@ func TestInvalidMinSdkVersion(t *testing.T) {
 			},
 		}
 	`)
+}
 
-	testApexError(t, `"myapex" .*: min_sdk_version: should be "current" or <number>`, `
+func TestApexMinSdkVersion_ErrorIfIncompatibleVersion(t *testing.T) {
+	testApexError(t, `module "mylib".*: should support min_sdk_version\(29\)`, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
-			min_sdk_version: "R",
+			native_shared_libs: ["mylib"],
+			min_sdk_version: "29",
 		}
 
 		apex_key {
@@ -1346,7 +1357,197 @@ func TestInvalidMinSdkVersion(t *testing.T) {
 			public_key: "testkey.avbpubkey",
 			private_key: "testkey.pem",
 		}
+
+		cc_library {
+			name: "mylib",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+			apex_available: [
+				"myapex",
+			],
+			min_sdk_version: "30",
+		}
 	`)
+}
+
+func TestApexMinSdkVersion_Okay(t *testing.T) {
+	testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["libfoo"],
+			java_libs: ["libbar"],
+			min_sdk_version: "29",
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "libfoo",
+			srcs: ["mylib.cpp"],
+			shared_libs: ["libfoo_dep"],
+			apex_available: ["myapex"],
+			min_sdk_version: "29",
+		}
+
+		cc_library {
+			name: "libfoo_dep",
+			srcs: ["mylib.cpp"],
+			apex_available: ["myapex"],
+			min_sdk_version: "29",
+		}
+
+		java_library {
+			name: "libbar",
+			sdk_version: "current",
+			srcs: ["a.java"],
+			static_libs: ["libbar_dep"],
+			apex_available: ["myapex"],
+			min_sdk_version: "29",
+		}
+
+		java_library {
+			name: "libbar_dep",
+			sdk_version: "current",
+			srcs: ["a.java"],
+			apex_available: ["myapex"],
+			min_sdk_version: "29",
+		}
+	`)
+}
+
+func TestApexMinSdkVersion_ErrorIfDepIsNewer(t *testing.T) {
+	testApexError(t, `module "mylib2".*: should support min_sdk_version\(29\) for APEX "myapex"`, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["mylib"],
+			min_sdk_version: "29",
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "mylib",
+			srcs: ["mylib.cpp"],
+			shared_libs: ["mylib2"],
+			system_shared_libs: [],
+			stl: "none",
+			apex_available: [
+				"myapex",
+			],
+			min_sdk_version: "29",
+		}
+
+		// indirect part of the apex
+		cc_library {
+			name: "mylib2",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+			apex_available: [
+				"myapex",
+			],
+			min_sdk_version: "30",
+		}
+	`)
+}
+
+func TestApexMinSdkVersion_ErrorIfDepIsNewer_Java(t *testing.T) {
+	testApexError(t, `module "bar".*: should support min_sdk_version\(29\) for APEX "myapex"`, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			apps: ["AppFoo"],
+			min_sdk_version: "29",
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		android_app {
+			name: "AppFoo",
+			srcs: ["foo/bar/MyClass.java"],
+			sdk_version: "current",
+			min_sdk_version: "29",
+			system_modules: "none",
+			stl: "none",
+			static_libs: ["bar"],
+			apex_available: [ "myapex" ],
+		}
+
+		java_library {
+			name: "bar",
+			sdk_version: "current",
+			srcs: ["a.java"],
+			apex_available: [ "myapex" ],
+		}
+	`)
+}
+
+func TestApexMinSdkVersion_OkayEvenWhenDepIsNewer_IfItSatisfiesApexMinSdkVersion(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["mylib"],
+			min_sdk_version: "29",
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		// mylib in myapex will link to mylib2#29
+		// mylib in otherapex will link to mylib2(non-stub) in otherapex as well
+		cc_library {
+			name: "mylib",
+			srcs: ["mylib.cpp"],
+			shared_libs: ["mylib2"],
+			system_shared_libs: [],
+			stl: "none",
+			apex_available: ["myapex", "otherapex"],
+			min_sdk_version: "29",
+		}
+
+		cc_library {
+			name: "mylib2",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+			apex_available: ["otherapex"],
+			stubs: { versions: ["29", "30"] },
+			min_sdk_version: "30",
+		}
+
+		apex {
+			name: "otherapex",
+			key: "myapex.key",
+			native_shared_libs: ["mylib", "mylib2"],
+			min_sdk_version: "30",
+		}
+	`)
+	expectLink := func(from, from_variant, to, to_variant string) {
+		ld := ctx.ModuleForTests(from, "android_arm64_armv8-a_"+from_variant).Rule("ld")
+		libFlags := ld.Args["libFlags"]
+		ensureContains(t, libFlags, "android_arm64_armv8-a_"+to_variant+"/"+to+".so")
+	}
+	expectLink("mylib", "shared_myapex", "mylib2", "shared_29")
+	expectLink("mylib", "shared_otherapex", "mylib2", "shared_otherapex")
 }
 
 func TestFilesInSubDir(t *testing.T) {
@@ -1838,6 +2039,7 @@ func TestMacro(t *testing.T) {
 				"otherapex",
 			],
 			recovery_available: true,
+			min_sdk_version: "29",
 		}
 		cc_library {
 			name: "mylib2",
@@ -1849,6 +2051,7 @@ func TestMacro(t *testing.T) {
 				"otherapex",
 			],
 			use_apex_name_macro: true,
+			min_sdk_version: "29",
 		}
 	`)
 
@@ -3873,6 +4076,7 @@ func TestLegacyAndroid10Support(t *testing.T) {
 			stl: "libc++",
 			system_shared_libs: [],
 			apex_available: [ "myapex" ],
+			min_sdk_version: "29",
 		}
 	`, withUnbundledBuild)
 
