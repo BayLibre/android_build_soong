@@ -50,10 +50,10 @@ func testForDanglingRules(ctx Context, config Config) {
 	// Get a list of leaf nodes in the dependency graph from ninja
 	executable := config.PrebuiltBuildTool("ninja")
 
-	args := []string{}
-	args = append(args, config.NinjaArgs()...)
-	args = append(args, "-f", config.CombinedNinjaFile())
-	args = append(args, "-t", "targets", "rule")
+	common_args := []string{}
+	common_args = append(common_args, config.NinjaArgs()...)
+	common_args = append(common_args, "-f", config.CombinedNinjaFile())
+	args := append(common_args, "-t", "targets", "rule")
 
 	cmd := Command(ctx, config, "ninja", executable, args...)
 	stdout, err := cmd.StdoutPipe()
@@ -96,9 +96,25 @@ func testForDanglingRules(ctx Context, config Config) {
 		sb := &strings.Builder{}
 		title := "Dependencies in out found with no rule to create them:"
 		fmt.Fprintln(sb, title)
+
 		for _, dep := range danglingRulesList {
-			fmt.Fprintln(sb, "  ", dep)
+			// It's helpful to see the reverse dependencies. ninja -t query is the
+			// best tool we got for that. Its output starts with the dependency
+			// itself.
+			queryCmd := Command(ctx, config, "ninja", executable,
+				append(common_args, "-t", "query", dep)...)
+			queryStdout, err := queryCmd.StdoutPipe()
+			if err != nil {
+				ctx.Fatal(err)
+			}
+			queryCmd.StartOrFatal()
+			scanner := bufio.NewScanner(queryStdout)
+			for scanner.Scan() {
+				fmt.Fprintln(sb, " ", scanner.Text())
+			}
+			queryCmd.WaitOrFatal()
 		}
+
 		ts.FinishAction(status.ActionResult{
 			Action: action,
 			Error:  fmt.Errorf(title),
