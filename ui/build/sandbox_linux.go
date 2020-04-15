@@ -19,6 +19,7 @@ import (
 	"os"
 	"os/exec"
 	"os/user"
+	"path/filepath"
 	"strings"
 	"sync"
 )
@@ -77,6 +78,14 @@ func (c *Cmd) sandboxSupported() bool {
 
 		sandboxConfig.srcDir = absPath(c.ctx, ".")
 		sandboxConfig.outDir = absPath(c.ctx, c.config.OutDir())
+		//TODO: remove this debug section
+		distDirNoSymlinks, err := filepath.EvalSymlinks(c.config.DistDir())
+		if distDirNoSymlinks == c.config.DistDir() {
+			c.ctx.Println("The dist dir is not a symlink")
+		} else {
+			c.ctx.Println("The dist dir is a symlink and needs to be dereferenced")
+		}
+		//TODO: dereference dist dir symlink
 		sandboxConfig.distDir = absPath(c.ctx, c.config.DistDir())
 
 		sandboxArgs := []string{
