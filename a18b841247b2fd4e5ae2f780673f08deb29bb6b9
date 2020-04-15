@@ -203,6 +203,30 @@
     },
     {
       "key": {
+        "uuid": "9eb369f4_f625ed49",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-15T14:26:51Z",
+      "side": 1,
+      "message": "I am sorry, I thought I did reply.. but perhaps my network was spotty and the comment wasn\u0027t posted. 😞\n\nIt is not directly callable now, but I\u0027d want to have a central place to verify sdk version stuff for apex \u0026 apk, and also a better logic sharing for different modules (library \u0026 imports). I am thinking as a follow up to extract sdkContext / sdkSpec and make checkLintType work with those.",
+      "parentUuid": "47ef80d9_3b33682b",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 17
+      },
+      "revId": "a18b841247b2fd4e5ae2f780673f08deb29bb6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22c13ce6_b43a977d",
         "filename": "java/sdk.go",
         "patchSetId": 2
