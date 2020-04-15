@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b590d97c_d4434e16",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-15T23:09:37Z",
+      "side": 1,
+      "message": "Can you leave a big comment here explaining what this does?",
+      "revId": "9d79e5bd6eeb0ee8086840ab8baf544131713e48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
