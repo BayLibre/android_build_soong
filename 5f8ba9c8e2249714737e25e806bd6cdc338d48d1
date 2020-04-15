@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35efb7be_dd53a181",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-15T02:48:00Z",
+      "side": 1,
+      "message": "What would be in the readme beyond the documentation in the source code?",
+      "parentUuid": "2097125f_1d49ebe6",
+      "range": {
+        "startLine": 553,
+        "startChar": 28,
+        "endLine": 553,
+        "endChar": 38
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "021528c7_5a017393",
         "filename": "cc/builder.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fab64a3_4a79f9aa",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-15T02:48:00Z",
+      "side": 1,
+      "message": "Good suggestion! Done.",
+      "parentUuid": "021528c7_5a017393",
+      "range": {
+        "startLine": 124,
+        "startChar": 47,
+        "endLine": 124,
+        "endChar": 120
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f60ec5bf_ac03e45d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-15T02:48:00Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I did something similar (roughly same number of lines). ptal.",
+      "parentUuid": "07a29528_ad00fc20",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 3
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b74cfda6_779bc0ea",
         "filename": "remoteexec/remoteexec.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85cd4d0f_f6aab239",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-15T02:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b74cfda6_779bc0ea",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 82
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bc3d4eb7_7275ed58",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-15T02:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0cf1b49_d64360ed",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d43eae8f_c1dc645f",
         "filename": "remoteexec/remoteexec.go",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cef7e37_8c51dd2c",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-15T02:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d43eae8f_c1dc645f",
+      "range": {
+        "startLine": 74,
+        "startChar": 13,
+        "endLine": 74,
+        "endChar": 18
+      },
+      "revId": "5f8ba9c8e2249714737e25e806bd6cdc338d48d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
