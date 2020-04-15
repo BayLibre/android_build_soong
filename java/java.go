@@ -1887,6 +1887,24 @@ func (j *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 	return j.depIsInSameApex(ctx, dep)
 }
 
+func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	sdkSpec := j.minSdkVersion()
+	if !sdkSpec.specified() {
+		return fmt.Errorf("min_sdk_version is not specified")
+	}
+	if sdkSpec.kind == sdkCore {
+		return nil
+	}
+	ver, err := sdkSpec.effectiveVersion(ctx)
+	if err != nil {
+		return err
+	}
+	if int(ver) > sdkVersion {
+		return fmt.Errorf("newer SDK(%v)", ver)
+	}
+	return nil
+}
+
 func (j *Module) Stem() string {
 	return proptools.StringDefault(j.deviceProperties.Stem, j.Name())
 }
@@ -2649,6 +2667,11 @@ func (j *Import) SrcJarArgs() ([]string, android.Paths) {
 
 func (j *Import) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
 	return j.depIsInSameApex(ctx, dep)
+}
+
+func (j *Import) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	// Do not check for prebuilts against the min_sdk_version of enclosing APEX
+	return nil
 }
 
 // Add compile time check for interface implementation
