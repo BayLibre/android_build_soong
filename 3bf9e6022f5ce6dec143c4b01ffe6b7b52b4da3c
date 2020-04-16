@@ -34,6 +34,24 @@
       "revId": "3bf9e6022f5ce6dec143c4b01ffe6b7b52b4da3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c304097_6fb33509",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-16T15:56:05Z",
+      "side": 1,
+      "message": "Opted to limit both.",
+      "parentUuid": "e0c179ba_f6ed1b51",
+      "revId": "3bf9e6022f5ce6dec143c4b01ffe6b7b52b4da3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
