@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "984cac5a_8e45feb8",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-16T22:38:47Z",
+      "side": 1,
+      "message": "Sorry, part of my intent with this is that we could inline everything into a single (multi-line) call similar to the removed section above -- the blueprint.RuleParams could stay in place, with the REParams right after it",
+      "revId": "e360a48a6f6de18713d7996ff10a7c34d9132e54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
