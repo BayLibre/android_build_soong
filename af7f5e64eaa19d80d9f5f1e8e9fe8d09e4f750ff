@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16e1a51d_f400f087",
+        "filename": "ui/metrics/upload_proto/upload.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-16T21:00:40Z",
+      "side": 1,
+      "message": "how about creation_timestamp_ms?  The comment won\u0027t be obvious to anyone working with the compiled proto.",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "af7f5e64eaa19d80d9f5f1e8e9fe8d09e4f750ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
