@@ -97,6 +97,22 @@ func (j *Module) checkSdkVersions(ctx android.ModuleContext) {
 		}
 	}
 
+	if ctx.Host() {
+		return
+	}
+
+	sdkVersion, err := j.sdkVersion().effectiveVersion(ctx)
+	if err != nil {
+		ctx.PropertyErrorf("sdk_version", "%v", err)
+	}
+	minSdkVersion, err := j.minSdkVersion().effectiveVersion(ctx)
+	if err != nil {
+		ctx.PropertyErrorf("min_sdk_version", "%v", err)
+	}
+	if minSdkVersion > sdkVersion {
+		ctx.ModuleErrorf("sdkVersion=%v must be greater or equal to minSdkVersion=%v", sdkVersion, minSdkVersion)
+	}
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
 		switch module.(type) {
@@ -105,9 +121,79 @@ func (j *Module) checkSdkVersions(ctx android.ModuleContext) {
 			switch tag {
 			case bootClasspathTag, libTag, staticLibTag, java9LibTag:
 				checkLinkType(ctx, j, module.(linkTypeContext), tag.(dependencyTag))
+
+				if j.deviceProperties.Min_sdk_version != nil {
+					checkChildMinSdkVersion(ctx, minSdkVersion, module)
+				}
 			}
 		}
 	})
+}
+
+// List of java modules that do not set min_sdk_version, but are being
+// referenced by other modules that *do* set min_sdk_version. The list is not
+// exhaustive, as any of their transitive dependencies may be missing the prop
+// as well.
+// DO NOT ADD TO THIS LIST; instead add min_sdk_version as appropriate.
+var javaMinSdkVersionBurndownList = []string{
+	"android-support-annotations",
+	"android.hardware.wifi-V1.0-java",
+	"android.hardware.wifi-V1.1-java",
+	"android.hardware.wifi-V1.2-java",
+	"android.hardware.wifi-V1.3-java",
+	"android.hardware.wifi.hostapd-V1.0-java",
+	"android.hardware.wifi.hostapd-V1.1-java",
+	"android.hardware.wifi.supplicant-V1.0-java",
+	"android.hardware.wifi.supplicant-V1.1-java",
+	"android.hardware.wifi.supplicant-V1.2-java",
+	"android.hidl.manager-V1.2-java",
+	"androidx.annotation_annotation",
+	"androidx.lifecycle_lifecycle-common-java8",
+	"apache-commons-compress",
+	"app-helpers-handheld-interfaces",
+	"captiveportal-lib",
+	"datastallprotosnano",
+	"ext",
+	"framework",
+	"guava",
+	"handheld-app-helpers",
+	"jsr305",
+	"jsr330",
+	"junit",
+	"ksoap2",
+	"latinime-common",
+	"libnanohttpd",
+	"libprotobuf-java-lite",
+	"metrics-constants-protos",
+	"netd_aidl_interface-V3-java",
+	"netlink-client",
+	"networkstack-client",
+	"networkstackprotosnano",
+	"permissioncontroller-statsd",
+	"platform-test-composers",
+	"platform-test-rules",
+	"services",
+	"telephony-common",
+	"unsupportedappusage",
+	"wifi_service_proto",
+}
+
+func checkChildMinSdkVersion(ctx android.ModuleContext, minSdkVersion sdkVersion, child android.Module) {
+	otherName := ctx.OtherModuleName(child)
+	if android.InList(otherName, javaMinSdkVersionBurndownList) {
+		return
+	}
+
+	_, otherIsStubs := child.(linkTypeContext).getLinkType(otherName)
+	// TODO(satayev): stubs must set min_sdk_version as well
+	if otherIsStubs {
+		return
+	}
+
+	otherMinSdkVersion, _ := child.(sdkContext).minSdkVersion().effectiveVersion(ctx)
+	if otherMinSdkVersion > minSdkVersion {
+		ctx.ModuleErrorf("with minSdkVersion=%v cannot depend on module \"%v\" with higher minSdkVersion=%v", minSdkVersion, otherName, otherMinSdkVersion)
+	}
 }
 
 func (j *Module) checkPlatformAPI(ctx android.ModuleContext) {
@@ -833,10 +919,6 @@ func (m *Module) getLinkType(name string) (ret linkType, stubs bool) {
 }
 
 func checkLinkType(ctx android.ModuleContext, from *Module, to linkTypeContext, tag dependencyTag) {
-	if ctx.Host() {
-		return
-	}
-
 	myLinkType, stubs := from.getLinkType(ctx.ModuleName())
 	if stubs {
 		return
