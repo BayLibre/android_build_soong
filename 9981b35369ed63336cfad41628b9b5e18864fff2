@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2aaceafa_11a7aa33",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-16T13:08:29Z",
+      "side": 1,
+      "message": "How about separating this into..\n- \"updatable: true\" mandates \"enforce_stable_sdk_version: true\" being set.\n- if \"enforce_stable_sdk_version\", every direct deps should be compiled against \"stable\" sdk_version",
+      "range": {
+        "startLine": 1939,
+        "startChar": 0,
+        "endLine": 1939,
+        "endChar": 44
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
