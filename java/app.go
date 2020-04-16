@@ -33,6 +33,7 @@ import (
 var supportedDpis = []string{"ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"}
 
 func init() {
+	android.AddNeverAllowRules(createAndroidAppNeverallowRules()...)
 	RegisterAppBuildComponents(android.InitRegistrationContext)
 
 	initAndroidAppImportVariantGroupTypes()
@@ -112,7 +113,9 @@ type appProperties struct {
 	IsCoverageVariant bool `blueprint:"mutated"`
 
 	// Whether this app is considered mainline updatable or not. When set to true, this will enforce
-	// additional rules for making sure that the APK is truly updatable. Default is false.
+	// additional rules to make sure an app can safely be updated. Default is false.
+	// Prefer using other specific properties if build behaviour must be changed; avoid using this
+	// flag for anything but neverallow rules (unless the behaviour change is invisible to owners).
 	Updatable *bool
 }
 
@@ -255,6 +258,16 @@ func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleCon
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.checkAppSdkVersions(ctx)
 	a.generateAndroidBuildActions(ctx)
+}
+
+func createAndroidAppNeverallowRules() []android.Rule {
+	return []android.Rule{
+		android.NeverAllow().
+			ModuleType("android_app").
+			With("updatable", "true").
+			With("min_sdk_version", "").
+			Because("updatable apps must set min_sdk_version they support."),
+	}
 }
 
 func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {

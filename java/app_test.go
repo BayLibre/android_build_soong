@@ -331,6 +331,7 @@ func TestUpdatableApps(t *testing.T) {
 					srcs: ["a.java"],
 					platform_apis: true,
 					updatable: true,
+					min_sdk_version: "29",
 				}`,
 			expectedError: "Updatable apps must use stable SDKs",
 		},
@@ -341,6 +342,7 @@ func TestUpdatableApps(t *testing.T) {
 					srcs: ["a.java"],
 					sdk_version: "core_platform",
 					updatable: true,
+					min_sdk_version: "29",
 				}`,
 			expectedError: "Updatable apps must use stable SDKs",
 		},
@@ -350,6 +352,7 @@ func TestUpdatableApps(t *testing.T) {
 					name: "foo",
 					srcs: ["a.java"],
 					updatable: true,
+					min_sdk_version: "29",
 				}`,
 			expectedError: "Updatable apps must use stable SDK",
 		},
@@ -364,6 +367,49 @@ func TestUpdatableApps(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestUpdatableAppsNeverallow(t *testing.T) {
+	testCases := []struct {
+		name           string
+		bp             string
+		expectedErrors []string
+	}{
+		{
+			name: "Neverallow non-specified min_sdk_version",
+			bp: `android_app {
+					name: "app_without_min_sdk_version",
+					srcs: ["a.java"],
+					sdk_version: "29",
+					updatable: true,
+				}`,
+			expectedErrors: []string{"updatable apps must set min_sdk_version they support."},
+		},
+	}
+
+	for _, test := range testCases {
+		config := testConfig(nil, test.bp, nil)
+		android.SetTestNeverallowRules(config, createAndroidAppNeverallowRules())
+		t.Run(test.name, func(t *testing.T) {
+			errs := testNeverallow(t, config)
+			android.CheckErrorsAgainstExpectations(t, errs, test.expectedErrors)
+		})
+	}
+}
+
+func testNeverallow(t *testing.T, config android.Config) []error {
+	t.Helper()
+
+	ctx := testContext()
+	ctx.PostDepsMutators(android.RegisterNeverallowMutator)
+	ctx.Register(config)
+
+	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+	if len(errs) > 0 {
+		return errs
+	}
+	_, errs = ctx.PrepareBuildActions(config)
+	return errs
 }
 
 func TestResourceDirs(t *testing.T) {
