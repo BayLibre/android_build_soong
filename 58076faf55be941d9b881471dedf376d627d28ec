@@ -34,6 +34,24 @@
       "revId": "58076faf55be941d9b881471dedf376d627d28ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32377815_8e24a92d",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-16T23:48:16Z",
+      "side": 1,
+      "message": "You might ask why not always 29, why not reuse sdk_version. It could be done with that, but as described above, I wanted to loosen the restriction a bit so that module authors can choose how to support min_sdk_version. They might simply make the module rely on older SDK version. Or they could conditional compilation and add more sophisticated features when it is compiled against newer SDK version.\n\nWell, I\u0027m open to the idea of linking libbase always to 29, and re-using sdk_version instead of min_sdk_version. But..\n- sdk_version has been used for NDK stubs and the recent SDK mutator doesn\u0027t care about APEX stubs. We might need to change it and encode a new version scheme to support APEX stubs like what Java does about it.\n- This change is still valid because there are other module types which need this, such as genrule.\n\nPlease note that the main purpose of this property is to let module authors know that the module should work with \"min_sdk_version\".\n\nJiyong, do you have more to say on this?",
+      "parentUuid": "a6759d99_6fbef245",
+      "revId": "58076faf55be941d9b881471dedf376d627d28ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
