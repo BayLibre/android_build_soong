@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62e3e578_c8954ee0",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-16T21:17:04Z",
+      "side": 1,
+      "message": "This could break the output of -t query in a weird place.  I\u0027d just limit the number of dangling rules on which you call query, which should be good enough.  Something like:\n\n const maxDanglingRulesToReport \u003d 10\n danglingRulesToReport :\u003d len(danglingRulesList)\n if danglingRulesToReport \u003e \nmaxDanglingRulesToReport {\n     danglingRulesToReport \u003d maxDanglingRulesToReport\n }\n \n for _, dep :\u003d range danglingRulesList[:danglingRulesToReport] {\n     ...\n }\n \n if len(danglingRulesList) \u003e maxDanglingRulesToReport {\n     fmt.Printf(\"and %d more.\\n\", \n len(danglingRulesList) - maxDanglingRulesToReport)\n }",
+      "revId": "0976f386ec25e360cb7ee26c0cfacc4aee3b3b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
