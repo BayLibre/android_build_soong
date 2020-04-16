@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7578746e_316b31f9",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-16T20:53:32Z",
+      "side": 1,
+      "message": "This early return could trip someone up later if they try to add code below it that is supposed to run for the host.  Can you move the rest of this function into a helper and then make this something like:\n\n    if ctx.Device() {\n        checkDeviceValidLink(ctx, ...)\n    }",
+      "revId": "122d3111147f8dd12043d61d523b0ae00d1204d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
