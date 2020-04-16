@@ -414,6 +414,95 @@ func TestSdkVersionByPartition(t *testing.T) {
 	}
 }
 
+func TestMinSdkVersion(t *testing.T) {
+	testCases := []struct {
+		name          string
+		expectedError string
+		bp            string
+	}{
+		{
+			name: "No minSdkVersion",
+			bp: `
+				java_library {
+					name: "foo",
+					libs: ["bar"],
+				}
+
+				java_library {
+					name: "bar",
+					min_sdk_version: "29",
+				}
+			`,
+		},
+		{
+			name: "Equal minSdkVersion",
+			bp: `
+				java_library {
+					name: "foo",
+					libs: ["bar"],
+					min_sdk_version: "29",
+				}
+
+				java_library {
+					name: "bar",
+					min_sdk_version: "29",
+				}
+			`,
+		},
+		{
+			name:          "Smaller minSdkVersion",
+			expectedError: "with minSdkVersion=28 cannot depend on module \"bar\" with higher minSdkVersion=29",
+			bp: `
+				java_library {
+					name: "foo",
+					libs: ["bar"],
+					min_sdk_version: "28",
+				}
+
+				java_library {
+					name: "bar",
+					min_sdk_version: "29",
+				}
+			`,
+		},
+		{
+			name: "Bigger minSdkVersion",
+			bp: `
+				java_library {
+					name: "foo",
+					libs: ["bar"],
+					min_sdk_version: "30",
+				}
+
+				java_library {
+					name: "bar",
+					min_sdk_version: "29",
+				}
+			`,
+		},
+		{
+			name:          "minSdkVersion is greater than sdkVersion",
+			expectedError: "sdkVersion=29 must be greater or equal to minSdkVersion=30",
+			bp: `
+				java_library {
+					name: "foo",
+					min_sdk_version: "30",
+					sdk_version: "29",
+				}
+			`,
+		},
+	}
+	for _, test := range testCases {
+		t.Run(test.name, func(t *testing.T) {
+			if test.expectedError == "" {
+				testJava(t, test.bp)
+			} else {
+				testJavaError(t, test.expectedError, test.bp)
+			}
+		})
+	}
+}
+
 func TestArchSpecific(t *testing.T) {
 	ctx, _ := testJava(t, `
 		java_library {
