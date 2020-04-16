@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "7def83ec_8880b0af",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-16T20:38:33Z",
+      "side": 1,
+      "message": "You should get a context passed in, then you can get the config similar to how you were initializing this variable in the android/soong/cc/config package",
+      "parentUuid": "9131ab95_7db591ef",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "266d255919c06f967bce8734704b4a5c46f7cd21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "003db501_6926b6da",
         "filename": "remoteexec/remoteexec_test.go",
         "patchSetId": 5
