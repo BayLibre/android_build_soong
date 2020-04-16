@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44dc59cf_cbb0a76e",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-16T12:41:49Z",
+      "side": 1,
+      "message": "SG. Removed from here but will keep Platform a map in case we want to override the image for some specific action type in the future, and also to set action specific platform properties like absolute input root.",
+      "parentUuid": "439909c6_566f1971",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 62
+      },
+      "revId": "266d255919c06f967bce8734704b4a5c46f7cd21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b86caff4_54ea6e4b",
         "filename": "cc/builder.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "266d255919c06f967bce8734704b4a5c46f7cd21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b5ec5b8_8843245e",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-16T12:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86caff4_54ea6e4b",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 100
+      },
+      "revId": "266d255919c06f967bce8734704b4a5c46f7cd21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9131ab95_7db591ef",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-16T12:41:49Z",
+      "side": 1,
+      "message": "How can I read the environment variable here? Does calling os.Getenv break some soong pattern?",
+      "parentUuid": "1846c9e6_0fa7df13",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "266d255919c06f967bce8734704b4a5c46f7cd21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "003db501_6926b6da",
         "filename": "remoteexec/remoteexec_test.go",
         "patchSetId": 5
@@ -85,6 +157,24 @@
       "revId": "266d255919c06f967bce8734704b4a5c46f7cd21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f4d304_3c39bf77",
+        "filename": "remoteexec/remoteexec_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-04-16T12:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003db501_6926b6da",
+      "revId": "266d255919c06f967bce8734704b4a5c46f7cd21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
