@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "000766c1_9472c234",
+        "filename": "ui/metrics/upload_proto/upload.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-04-16T18:54:45Z",
+      "side": 1,
+      "message": "I agree. I get confused sometimes when working with build infra code. Added comment to specify this is in milliseconds.",
+      "parentUuid": "30907164_47b68ba3",
+      "revId": "11091060a2e7bd935869039e5a9453817e05810f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58973b70_239c16a8",
         "filename": "ui/metrics/upload_proto/upload.proto",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "11091060a2e7bd935869039e5a9453817e05810f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f526e5f2_c6eb4252",
+        "filename": "ui/metrics/upload_proto/upload.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-04-16T18:54:45Z",
+      "side": 1,
+      "message": "Renamed to branch_name for consistency.",
+      "parentUuid": "58973b70_239c16a8",
+      "revId": "11091060a2e7bd935869039e5a9453817e05810f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
