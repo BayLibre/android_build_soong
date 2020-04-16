@@ -16,6 +16,24 @@
       "revId": "58076faf55be941d9b881471dedf376d627d28ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6759d99_6fbef245",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-16T23:37:34Z",
+      "side": 1,
+      "message": "This prop is for modules which embeds ApexModuleBase and can be part of mainline modules(APEX).\nThe main purpose is to let module authors know that the module should work with \"min_sdk_version\".\nThe default implementation of ShouldSupportSdkVersion relies on min_sdk_version property, but can be overridden by those module which have its own property or different version scheme (e.g. java_library)\n\nFor native modules, this looks like duplicate. But the purpose is a bit different.\nFor example, libbase for com.android.art is built against liblog(30) while libbase for com.android.media is built against liblog(29). libbase may have \"min_sdk_version: 29\" in this case, but it doesn\u0027t necessarily mean it is always built against 29.\n(Note, 29 or 30 here refer the API level of APEX stubs.)",
+      "parentUuid": "f7e79fa5_ea766a96",
+      "revId": "58076faf55be941d9b881471dedf376d627d28ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
