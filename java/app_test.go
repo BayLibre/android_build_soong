@@ -350,6 +350,7 @@ func TestUpdatableAppsNeverallow(t *testing.T) {
 					srcs: ["a.java"],
 					platform_apis: true,
 					updatable: true,
+					min_sdk_version: "29",
 				}`,
 			expectedErrors: []string{"updatable apps must use stable SDKs"},
 		},
@@ -360,6 +361,7 @@ func TestUpdatableAppsNeverallow(t *testing.T) {
 					srcs: ["a.java"],
 					sdk_version: "core_platform",
 					updatable: true,
+					min_sdk_version: "29",
 				}`,
 			expectedErrors: []string{"updatable apps must use stable SDKs"},
 		},
@@ -369,8 +371,19 @@ func TestUpdatableAppsNeverallow(t *testing.T) {
 					name: "app_without_sdk_version",
 					srcs: ["a.java"],
 					updatable: true,
+					min_sdk_version: "29",
 				}`,
 			expectedErrors: []string{"updatable apps must use stable SDKs"},
+		},
+		{
+			name: "Neverallow non-specified min_sdk_version",
+			bp: `android_app {
+					name: "app_without_min_sdk_version",
+					srcs: ["a.java"],
+                    sdk_version: "29",
+					updatable: true,
+				}`,
+			expectedErrors: []string{"updatable apps must set min_sdk_version they support."},
 		},
 	}
 

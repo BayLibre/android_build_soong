@@ -267,6 +267,11 @@ func createAndroidAppNeverallowRules() []android.Rule {
 			With("updatable", "true").
 			WithoutMatcher("sdk_version", &stableSdkMatcher{}).
 			Because("updatable apps must use stable SDKs."),
+		android.NeverAllow().
+			ModuleType("android_app").
+			With("updatable", "true").
+			With("min_sdk_version", "").
+			Because("updatable apps must set min_sdk_version they support."),
 	}
 }
 
