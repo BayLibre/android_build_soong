@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64577834_f5bacc96",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1659,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-17T02:10:09Z",
+      "side": 1,
+      "message": "ctx.PropertyErrorf() instead of panic() because this is a user error?",
+      "range": {
+        "startLine": 1659,
+        "startChar": 3,
+        "endLine": 1659,
+        "endChar": 8
+      },
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7807b031_80002dc2",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1695,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-17T02:10:09Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 1695,
+        "startChar": 25,
+        "endLine": 1695,
+        "endChar": 33
+      },
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
