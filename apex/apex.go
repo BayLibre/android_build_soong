@@ -373,6 +373,7 @@ type apexFile struct {
 	class      apexFileClass
 	module     android.Module
 	symlinks   []string
+	moduleDir  string
 }
 
 type apexBundle struct {
@@ -673,6 +674,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	handleSpecialLibs := !android.Bool(a.properties.Ignore_system_library_special_case)
 
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
+		depPath := ctx.OtherModuleDir(child)
 		if _, ok := parent.(*apexBundle); ok {
 			// direct dependencies
 			depTag := ctx.OtherModuleDependencyTag(child)
@@ -681,7 +683,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case sharedLibTag:
 				if cc, ok := child.(*cc.Module); ok {
 					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil, depPath})
 					return true
 				} else {
 					ctx.PropertyErrorf("native_shared_libs", "%q is not a cc_library or cc_library_shared module", depName)
@@ -694,20 +696,20 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						return true
 					}
 					fileToCopy, dirInApex := getCopyManifestForExecutable(cc)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeExecutable, cc, cc.Symlinks()})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeExecutable, cc, cc.Symlinks(), depPath})
 					return true
 				} else if sh, ok := child.(*android.ShBinary); ok {
 					fileToCopy, dirInApex := getCopyManifestForShBinary(sh)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, shBinary, sh, nil})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, shBinary, sh, nil, depPath})
 				} else if py, ok := child.(*python.Module); ok && py.HostToolPath().Valid() {
 					fileToCopy, dirInApex := getCopyManifestForPyBinary(py)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, pyBinary, py, nil})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, pyBinary, py, nil, depPath})
 				} else if gb, ok := child.(bootstrap.GoBinaryTool); ok && a.Host() {
 					fileToCopy, dirInApex := getCopyManifestForGoBinary(ctx, gb)
 					// NB: Since go binaries are static we don't need the module for anything here, which is
 					// good since the go tool is a blueprint.Module not an android.Module like we would
 					// normally use.
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, goBinary, nil, nil})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, goBinary, nil, nil, depPath})
 				} else {
 					ctx.PropertyErrorf("binaries", "%q is neither cc_binary, (embedded) py_binary, (host) blueprint_go_binary, (host) bootstrap_go_binary, nor sh_binary", depName)
 				}
@@ -717,7 +719,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					if fileToCopy == nil {
 						ctx.PropertyErrorf("java_libs", "%q is not configured to be compiled into dex", depName)
 					} else {
-						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, javaSharedLib, java, nil})
+						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, javaSharedLib, java, nil, depPath})
 					}
 					return true
 				} else {
@@ -726,7 +728,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case prebuiltTag:
 				if prebuilt, ok := child.(*android.PrebuiltEtc); ok {
 					fileToCopy, dirInApex := getCopyManifestForPrebuiltEtc(prebuilt)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, etc, prebuilt, nil})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, etc, prebuilt, nil, depPath})
 					return true
 				} else {
 					ctx.PropertyErrorf("prebuilts", "%q is not a prebuilt_etc module", depName)
@@ -768,7 +770,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					}
 					depName := ctx.OtherModuleName(child)
 					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil, depPath})
 					return true
 				}
 			}
@@ -1058,7 +1060,7 @@ func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
 			Input:  manifest,
 			Output: copiedManifest,
 		})
-		a.filesInfo = append(a.filesInfo, apexFile{copiedManifest, ctx.ModuleName() + ".apex_manifest.json", ".", etc, nil, nil})
+		a.filesInfo = append(a.filesInfo, apexFile{copiedManifest, ctx.ModuleName() + ".apex_manifest.json", ".", etc, nil, nil, ""})
 
 		// rename to apex_pubkey
 		copiedPubkey := android.PathForModuleOut(ctx, "apex_pubkey")
@@ -1067,7 +1069,7 @@ func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
 			Input:  a.public_key_file,
 			Output: copiedPubkey,
 		})
-		a.filesInfo = append(a.filesInfo, apexFile{copiedPubkey, ctx.ModuleName() + ".apex_pubkey", ".", etc, nil, nil})
+		a.filesInfo = append(a.filesInfo, apexFile{copiedPubkey, ctx.ModuleName() + ".apex_pubkey", ".", etc, nil, nil, ""})
 
 		if ctx.Config().FlattenApex() {
 			for _, fi := range a.filesInfo {
@@ -1108,7 +1110,11 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, name, moduleDir string, apex
 			moduleNames = append(moduleNames, fi.moduleName)
 		}
 		fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
-		fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
+		if fi.moduleDir != "" {
+			fmt.Fprintln(w, "LOCAL_PATH :=", fi.moduleDir)
+		} else {
+			fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
+		}
 		fmt.Fprintln(w, "LOCAL_MODULE :=", fi.moduleName)
 		// /apex/<name>/{lib|framework|...}
 		pathWhenActivated := filepath.Join("$(PRODUCT_OUT)", "apex",

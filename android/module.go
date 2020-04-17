@@ -138,6 +138,7 @@ type ModuleContext interface {
 	// These are duplicated instead of embedded so that can eventually be wrapped to take an
 	// android.Module instead of a blueprint.Module
 	OtherModuleName(m blueprint.Module) string
+	OtherModuleDir(m blueprint.Module) string
 	OtherModuleErrorf(m blueprint.Module, fmt string, args ...interface{})
 	OtherModuleDependencyTag(m blueprint.Module) blueprint.DependencyTag
 
