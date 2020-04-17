@@ -112,6 +112,24 @@
     },
     {
       "key": {
+        "uuid": "20803886_be42b01f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2020-04-17T15:32:30Z",
+      "side": 1,
+      "message": "Depends;\n- if there change relevant for binary compatibility (e.g. you added method / changed signature / etc), metalava will explain that in a human-readable way\n\n- if anything else changed (e.g. annotations), it will just print a diff.\n\nIMO it\u0027s not really worth the runtime cost.",
+      "parentUuid": "e5bba950_ce30d3df",
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7807b031_80002dc2",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
