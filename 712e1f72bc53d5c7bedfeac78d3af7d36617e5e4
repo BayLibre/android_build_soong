@@ -16,6 +16,24 @@
       "revId": "712e1f72bc53d5c7bedfeac78d3af7d36617e5e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c961a598_3755f995",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1470412
+      },
+      "writtenOn": "2020-04-17T18:19:54Z",
+      "side": 1,
+      "message": "agree, I\u0027ll update it. \nWith more pessimist deployment plan that option would be removed in phase 3..",
+      "parentUuid": "11d4219f_1b8f51ab",
+      "revId": "712e1f72bc53d5c7bedfeac78d3af7d36617e5e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
