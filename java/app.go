@@ -732,7 +732,7 @@ func AndroidAppFactory() android.Module {
 		&module.usesLibrary.usesLibraryProperties)
 
 	module.Prefer32(func(ctx android.BaseModuleContext, base *android.ModuleBase, class android.OsClass) bool {
-		return class == android.Device && ctx.Config().DevicePrefer32BitApps()
+		return false
 	})
 
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)

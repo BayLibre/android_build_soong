@@ -262,9 +262,7 @@ type productVariables struct {
 	CoveragePaths        []string `json:",omitempty"`
 	CoverageExcludePaths []string `json:",omitempty"`
 
-	DevicePrefer32BitApps        *bool `json:",omitempty"`
-	DevicePrefer32BitExecutables *bool `json:",omitempty"`
-	HostPrefer32BitExecutables   *bool `json:",omitempty"`
+	HostPrefer32BitExecutables *bool `json:",omitempty"`
 
 	SanitizeHost       []string `json:",omitempty"`
 	SanitizeDevice     []string `json:",omitempty"`
