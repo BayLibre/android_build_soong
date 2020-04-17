@@ -851,8 +851,7 @@ func (library *libraryDecorator) linkerSpecifiedDeps(specifiedDeps specifiedDeps
 func (library *libraryDecorator) linkStatic(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
 
-	library.objects = deps.WholeStaticLibObjs.Copy()
-	library.objects = library.objects.Append(objs)
+	library.objects = objs.Copy()
 
 	fileName := ctx.ModuleName() + staticLibraryExtension
 	outputFile := android.PathForModuleOut(ctx, fileName)
@@ -870,7 +869,7 @@ func (library *libraryDecorator) linkStatic(ctx ModuleContext,
 		}
 	}
 
-	TransformObjToStaticLib(ctx, library.objects.objFiles, builderFlags, outputFile, objs.tidyFiles)
+	TransformObjToStaticLib(ctx, library.objects.objFiles, deps.WholeStaticLibs, builderFlags, outputFile, objs.tidyFiles)
 
 	library.coverageOutputFile = TransformCoverageFilesToZip(ctx, library.objects, ctx.ModuleName())
 
