@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "90566494_e94c7ba7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-17T16:01:01Z",
+      "side": 1,
+      "message": "yup, updated the comment.",
+      "parentUuid": "65234d0f_50a4f1f3",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64577834_f5bacc96",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ab930386_85862c24",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1659,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-17T16:01:01Z",
+      "side": 1,
+      "message": "Thx, didn\u0027t know that one.\n\nAlso added a \"Test:\" for this case.",
+      "parentUuid": "64577834_f5bacc96",
+      "range": {
+        "startLine": 1659,
+        "startChar": 3,
+        "endLine": 1659,
+        "endChar": 8
+      },
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5639444_3d3d0b8d",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -92,6 +140,30 @@
       "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9073eb29_a38831fe",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-17T16:01:01Z",
+      "side": 1,
+      "message": "Good point -- I just changed it to \"{$\". :D\nShould be enough.",
+      "parentUuid": "f5639444_3d3d0b8d",
+      "range": {
+        "startLine": 1666,
+        "startChar": 42,
+        "endLine": 1666,
+        "endChar": 51
+      },
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +202,24 @@
     },
     {
       "key": {
+        "uuid": "58ed73f5_aed774f5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-17T16:01:01Z",
+      "side": 1,
+      "message": "Yeah, given people are familiar with the concept of API signature files, I think it\u0027s an acceptable tradeoff.\n\nI\u0027m also going to send a PSA to android-eng@.",
+      "parentUuid": "20803886_be42b01f",
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7807b031_80002dc2",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -150,6 +240,30 @@
       "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d288b39_884af88a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1695,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-17T16:01:01Z",
+      "side": 1,
+      "message": "This matches the \"metalavaCurrentApiUpdate\" rule below. I think we want to keep the \"metalava\" word here, because it at least depends on the main \"metalava\" rule?",
+      "parentUuid": "7807b031_80002dc2",
+      "range": {
+        "startLine": 1695,
+        "startChar": 25,
+        "endLine": 1695,
+        "endChar": 33
+      },
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
