@@ -124,7 +124,10 @@ type PathDeps struct {
 	StaticLibs, LateStaticLibs, WholeStaticLibs android.Paths
 
 	// Paths to .o files
-	Objs               Objects
+	Objs Objects
+	// TODO(b/154248570): The following two lists aren't complete if any
+	// dependency is a prebuilt static lib, because cc_prebuilt_library_static
+	// doesn't retain the object files.
 	StaticLibObjs      Objects
 	WholeStaticLibObjs Objects
 
