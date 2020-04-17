@@ -16,6 +16,24 @@
       "revId": "0976f386ec25e360cb7ee26c0cfacc4aee3b3b0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f13efb_9387e445",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-17T15:06:50Z",
+      "side": 1,
+      "message": "I didn\u0027t want to assume that the query for a single dependency won\u0027t get too long, but ok. Changed to break between deps.\n\nCaveat: I haven\u0027t tested this with a case that produces a long enough list to be cut.",
+      "parentUuid": "62e3e578_c8954ee0",
+      "revId": "0976f386ec25e360cb7ee26c0cfacc4aee3b3b0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
