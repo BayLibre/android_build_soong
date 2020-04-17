@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "103aa0f9_5a3ad154",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-17T06:35:20Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be better to check the condition from the very beginning? e.g.,\n\nif !mctx.Module().Enabled() { return }",
+      "revId": "c438065d5dffdc9d751c3fecaee41850a6093009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
