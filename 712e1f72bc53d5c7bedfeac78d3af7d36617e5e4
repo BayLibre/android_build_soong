@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11d4219f_1b8f51ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-04-17T14:59:08Z",
+      "side": 1,
+      "message": "shouldn\u0027t this line be in \"phase 1\", and then \"phase 2\" should talk about _removing_ PRODUCT_HARDENING?",
+      "revId": "712e1f72bc53d5c7bedfeac78d3af7d36617e5e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
