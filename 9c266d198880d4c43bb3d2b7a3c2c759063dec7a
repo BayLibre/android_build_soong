@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "f5639444_3d3d0b8d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2020-04-17T08:29:24Z",
+      "side": 1,
+      "message": "\u0027^  \\([^ ].* \\)\\?\\(class\\|@\\?interface\\|enum\\) \u0027\n\n(current pattern doesn\u0027t match @interface, and it wouldn\u0027t match if there are no modifiers, e.g. \"  class FooBar\")",
+      "range": {
+        "startLine": 1666,
+        "startChar": 42,
+        "endLine": 1666,
+        "endChar": 51
+      },
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7807b031_80002dc2",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
