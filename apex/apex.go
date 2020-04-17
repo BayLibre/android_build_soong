@@ -838,8 +838,8 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 func apexDepsMutator(mctx android.TopDownMutatorContext) {
 	var apexBundles []android.ApexInfo
 	var directDep bool
-	if a, ok := mctx.Module().(*apexBundle); ok && !a.vndkApex {
-		apexBundles = []android.ApexInfo{android.ApexInfo{
+	if a, ok := mctx.Module().(*apexBundle); ok && a.Enabled() && !a.vndkApex {
+		apexBundles = []android.ApexInfo{{
 			ApexName:      mctx.ModuleName(),
 			MinSdkVersion: a.minSdkVersion(mctx),
 		}}
@@ -879,7 +879,7 @@ func inAnySdk(module android.Module) bool {
 func apexMutator(mctx android.BottomUpMutatorContext) {
 	if am, ok := mctx.Module().(android.ApexModule); ok && am.CanHaveApexVariants() {
 		am.CreateApexVariations(mctx)
-	} else if a, ok := mctx.Module().(*apexBundle); ok && !a.vndkApex {
+	} else if a, ok := mctx.Module().(*apexBundle); ok && a.Enabled() && !a.vndkApex {
 		// apex bundle itself is mutated so that it and its modules have same
 		// apex variant.
 		apexBundleName := mctx.ModuleName()
@@ -914,7 +914,7 @@ func addFlattenedFileContextsInfos(ctx android.BaseModuleContext, fileContextsIn
 }
 
 func apexFlattenedMutator(mctx android.BottomUpMutatorContext) {
-	if ab, ok := mctx.Module().(*apexBundle); ok {
+	if ab, ok := mctx.Module().(*apexBundle); ok && ab.Enabled() {
 		var variants []string
 		switch proptools.StringDefault(ab.properties.Payload_type, "image") {
 		case "image":
