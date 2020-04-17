@@ -230,7 +230,7 @@ func InitShBinaryModule(s *ShBinary) {
 func ShBinaryFactory() android.Module {
 	module := &ShBinary{}
 	module.Prefer32(func(ctx android.BaseModuleContext, base *android.ModuleBase, class android.OsClass) bool {
-		return class == android.Device && ctx.Config().DevicePrefer32BitExecutables()
+		return false
 	})
 	InitShBinaryModule(module)
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibFirst)
