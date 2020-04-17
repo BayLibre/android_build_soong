@@ -95,6 +95,23 @@
     },
     {
       "key": {
+        "uuid": "e5bba950_ce30d3df",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-17T13:43:49Z",
+      "side": 1,
+      "message": "Is it worth invoking the full metalava check in the event that either of these diffs fail? Just wondering whether the error messages reported by metalava are significantly more useful/understandable than the diff output?",
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7807b031_80002dc2",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
