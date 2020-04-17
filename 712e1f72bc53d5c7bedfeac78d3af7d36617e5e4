@@ -34,6 +34,23 @@
       "revId": "712e1f72bc53d5c7bedfeac78d3af7d36617e5e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ef84b29_ae229efe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-17T18:45:36Z",
+      "side": 1,
+      "message": "This spooky action at a distance is confusing for users of the build system.  A change anywhere in the build system could trigger errors far away by turning on hardening.  Can you just enforce that dependencies have compatible hardening options?",
+      "revId": "712e1f72bc53d5c7bedfeac78d3af7d36617e5e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
