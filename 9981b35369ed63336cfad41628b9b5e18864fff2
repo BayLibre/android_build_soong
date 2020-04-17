@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "7ffb4f71_e729c694",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-17T11:33:45Z",
+      "side": 1,
+      "message": "Artur\u0027s intention might be that ensuring all transitive deps meet the requirements by checking\n- apex checks if direct deps have stable sdk version\n- each deps checks if its direct deps are stable and compatible to its sdk version.\n\nI think this approach may work for java side.\n\nBy the way, for simplicity, I\u0027d like to check all deps here just like what I did in aosp/1287253\n\nHow about doing the stability checks in ShouldSupportSdkVersion() in aosp/1287253 by overriding the method in java.Module?\n\nI mean..\n- for native modules, checking min_sdk_version is enought because apex variants are all built against stable interface\n- for java modules, check if sdk_version/min_sdk_version.stable() AND min_sdk_version \u003c\u003d apex.min_sdk_version",
+      "parentUuid": "54173683_b7c756ee",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
