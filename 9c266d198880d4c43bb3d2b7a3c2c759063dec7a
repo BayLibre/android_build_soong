@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65234d0f_50a4f1f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-04-17T13:14:45Z",
+      "side": 1,
+      "message": "oh I see, the stubs srcs generates it if checkapi is on.",
+      "parentUuid": "f4ba1cd2_d2e03848",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "9c266d198880d4c43bb3d2b7a3c2c759063dec7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64577834_f5bacc96",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
