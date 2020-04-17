@@ -472,34 +472,6 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 				if ddoc.Javadoc.stubsSrcJar != nil {
 					entries.SetPath("LOCAL_DROIDDOC_STUBS_SRCJAR", ddoc.Javadoc.stubsSrcJar)
 				}
-				apiFilePrefix := "INTERNAL_PLATFORM_"
-				if String(ddoc.properties.Api_tag_name) != "" {
-					apiFilePrefix += String(ddoc.properties.Api_tag_name) + "_"
-				}
-				if ddoc.apiFile != nil {
-					entries.SetPath(apiFilePrefix+"API_FILE", ddoc.apiFile)
-				}
-				if ddoc.dexApiFile != nil {
-					entries.SetPath(apiFilePrefix+"DEX_API_FILE", ddoc.dexApiFile)
-				}
-				if ddoc.privateApiFile != nil {
-					entries.SetPath(apiFilePrefix+"PRIVATE_API_FILE", ddoc.privateApiFile)
-				}
-				if ddoc.privateDexApiFile != nil {
-					entries.SetPath(apiFilePrefix+"PRIVATE_DEX_API_FILE", ddoc.privateDexApiFile)
-				}
-				if ddoc.removedApiFile != nil {
-					entries.SetPath(apiFilePrefix+"REMOVED_API_FILE", ddoc.removedApiFile)
-				}
-				if ddoc.removedDexApiFile != nil {
-					entries.SetPath(apiFilePrefix+"REMOVED_DEX_API_FILE", ddoc.removedDexApiFile)
-				}
-				if ddoc.exactApiFile != nil {
-					entries.SetPath(apiFilePrefix+"EXACT_API_FILE", ddoc.exactApiFile)
-				}
-				if ddoc.proguardFile != nil {
-					entries.SetPath(apiFilePrefix+"PROGUARD_FILE", ddoc.proguardFile)
-				}
 			},
 		},
 		ExtraFooters: []android.AndroidMkExtraFootersFunc{
