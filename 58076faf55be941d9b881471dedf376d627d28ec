@@ -52,6 +52,24 @@
       "revId": "58076faf55be941d9b881471dedf376d627d28ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a4f829_3067c72a",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-17T03:26:37Z",
+      "side": 1,
+      "message": "Right. min_sdk_verison doesn\u0027t always need to be sdk_version. Also, we want to use the Java model for native modules. Please see [1]. \n\n[1] https://docs.google.com/document/d/14Y9Vfrh2XuQTns8fLbL9PdRDz0sHOs6Ieflijiqvebo/edit?usp\u003dsharing",
+      "parentUuid": "32377815_8e24a92d",
+      "revId": "58076faf55be941d9b881471dedf376d627d28ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
