@@ -70,6 +70,24 @@
       "revId": "58076faf55be941d9b881471dedf376d627d28ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4f6d55_97b01494",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-18T01:57:09Z",
+      "side": 1,
+      "message": "Isn\u0027t it always true that sdk_version \u003c\u003d min_sdk_version?  And I don\u0027t see any reason for sdk_version \u003c min_sdk_version, so most likely sdk_version \u003d\u003d min_sdk_version.\n\nI agree with your design except for having a new property called min_sdk_version for native modules, which I think is confusing.  Couldn\u0027t you do everything you are planning, but use \"sdk_version\" instead of \"min_sdk_version\"?  The sdk_version property would have different meanings in different contexts:\n- in the platform variant it is ignored\n- in the sdk variant (which only exists if it is set) it is used\n- in the apex variants it is used to check against min_sdk_version of the apex, but the actual SDK version used to compile the variant is the apex min_sdk_version.\n\nYou shouldn\u0027t add the module here if it is not used by all modules that use ApexProperties, the min_sdk_version property will show up in go/Android.bp for all of them which may be confusing.  Putting the property in each module type would also let you have more specific help text for each module type.",
+      "parentUuid": "41a4f829_3067c72a",
+      "revId": "58076faf55be941d9b881471dedf376d627d28ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
