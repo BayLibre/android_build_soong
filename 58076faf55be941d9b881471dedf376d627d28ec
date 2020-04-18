@@ -88,6 +88,24 @@
       "revId": "58076faf55be941d9b881471dedf376d627d28ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1815262_41f94e96",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-18T02:38:35Z",
+      "side": 1,
+      "message": "\u003e in the sdk variant (which only exists if it is set) it is used\n\nThis part was tricky when I tried. When I set sdk_version for apex variants, \"sdk\" mutator splits the module into (\"\", \"sdk\") variations and nullifies sdk_version for \"\" variation. \"apex\" mutator typically run on \"\" variation(from \"sdk\" mutator) and it sees `sdk_version: \"\"`.\n\nIf \"sdk\" mutator leave \"sdk_version\" property for \"\" variation, then cc.Module.DepsMutator() does its job by rewriting the deps to NDK stubs for \"\" variation(from \"sdk\" mutator).\n\nWell, this could be fixed somehow, but I wanted to do it with smaller change.\n\n- \"sdk\" mutator creates (\"\", \"sdk\") variations if sdk_version is set and nullifies sdk_version for \"\" variation. but moves the value to some internal mutated property.\n- \"apex\" mutator refers that mutated property instead of \"sdk_version\"\n- \"sdk\" variations might not be used elsewhere but this way would work.\n\nOr,\n\n- sdk_version property may have different value for apex.min_sdk_version case, say \"module_29\" or something.\n- then \"sdk\" mutator doesn\u0027t kicks in if sdk_version starts with \"module_\"",
+      "parentUuid": "db4f6d55_97b01494",
+      "revId": "58076faf55be941d9b881471dedf376d627d28ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
