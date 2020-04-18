@@ -106,6 +106,24 @@
       "revId": "58076faf55be941d9b881471dedf376d627d28ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bf5db5b_d1dba301",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-18T03:23:31Z",
+      "side": 1,
+      "message": "Yeah, we\u0027ll need access to the original Sdk_version value.  I made it empty so that everywhere that checked it would treat it as not set, but maybe I should do a follow up change that leaves the value for the platform variant and adds a helper function that checks IsSdkVariant to use everywhere that currently checks Sdk_version manually.",
+      "parentUuid": "b1815262_41f94e96",
+      "revId": "58076faf55be941d9b881471dedf376d627d28ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
