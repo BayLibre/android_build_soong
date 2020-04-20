@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "5888e815_a7b95606",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T15:07:06Z",
+      "side": 1,
+      "message": "One drawback of doing the check only for direct dep is you loose context unless the context is passed down via a top-down mutator.\n\nFor example, we might not want to check these for the java modules that are included in a non-updatable apex or a test apex. But you can\u0027t prune that out because each java module doesn\u0027t know whether it is built for which apex.\n\nAlso, checking the direct deps is bad for readability IMO. The same check routine is spread across here and the java package.",
+      "parentUuid": "2669c35c_eb54ebcd",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "It\u0027s easy to miss any other modules that should implement this method?\n\nSee the other comment:\n```\nI don\u0027t think [the method] belongs to ApexModule? Would it return \"true\" for cc_library and genrule that implement ApexModule?\n\nShould I rather export SdkSpec / SdkContext and use that? What we really want is for anyone who implements SdkContext to have this check in there. (Ideally, we would also have commonSdkProperties shared in all places if possible).\n```",
       "parentUuid": "19337a44_43323c16",
+      "range": {
+        "startLine": 1946,
+        "startChar": 0,
+        "endLine": 1951,
+        "endChar": 5
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "824e08fe_603348c0",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T15:07:06Z",
+      "side": 1,
+      "message": "I wanted to point out that java.AndroidApp IS java.Library.\n\ntype AndroidApp struct {\n    Library \n    ...\n}\n\nSo, you really don\u0027t need to distinguish java.Library and java.AndroidApp (and other types embedding java.Library).",
+      "parentUuid": "d3bad31a_9b66504b",
       "range": {
         "startLine": 1946,
         "startChar": 0,
