@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2780241_04e5c4f7",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-20T17:51:14Z",
+      "side": 1,
+      "message": "This is going to be confusing on modules that are not tests.  Can you move the property into cc_test and give it an implementation of TestFor(), leave a default implementation in ApexModuleBase that returns nil, and add it to the ApexModule interface?",
+      "revId": "425ac830206f551cd26cdb2211cc9d3b44504468",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
