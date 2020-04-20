@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "90f832bb_6cd80d1d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T15:30:56Z",
+      "side": 1,
+      "message": "I think the real question here is why someone with min_sdk_version set depends on these targets? I don\u0027t know the historic context here, but that seems like a tech debt from the past?",
+      "parentUuid": "6bbe5007_c4cd1f4c",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
