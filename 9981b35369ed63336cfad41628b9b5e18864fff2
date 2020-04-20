@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56027f33_b7f87066",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T14:44:29Z",
+      "side": 1,
+      "message": "Do we actually want a separate prop in this case? From developer\u0027s perspective it doesn\u0027t bring much value I think, for transitioning modules they can still modify sdk_version to essentially enable the check on transitive deps (instead of 2 props now).",
+      "parentUuid": "2aaceafa_11a7aa33",
+      "range": {
+        "startLine": 1939,
+        "startChar": 0,
+        "endLine": 1939,
+        "endChar": 44
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54173683_b7c756ee",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2669c35c_eb54ebcd",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T14:44:29Z",
+      "side": 1,
+      "message": "Correct, just direct deps mostly for two reasons:\n1. It covers AndroidApps (or any extension of java module, e.g. test rules).\n2. Avoids tech debt in build system. Each transitive dep being checked dozen of times (or even hundreds once we do this for tests) is unnecessary work that adds time to build. Avoids \"death by thousand cuts\" scenario.\n\nHow close is that CL to being submitted? I\u0027d rather submitted Java as well, so I can focus on other stuff and prevent any regressions. ShouldSupportSdkVersion is equivalent to CheckStableSdkVersion introduced here (WIP).",
+      "parentUuid": "7ffb4f71_e729c694",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -83,6 +131,30 @@
       "writtenOn": "2020-04-17T08:01:53Z",
       "side": 1,
       "message": "we just need to check the existence of CheckStableSdkVersion(). Define an interface having the method, and check if module satisfies the interface type.",
+      "range": {
+        "startLine": 1946,
+        "startChar": 0,
+        "endLine": 1951,
+        "endChar": 5
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bad31a_9b66504b",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T14:44:29Z",
+      "side": 1,
+      "message": "It\u0027s easy to miss any other modules that should implement this method?\n\nSee the other comment:\n```\nI don\u0027t think [the method] belongs to ApexModule? Would it return \"true\" for cc_library and genrule that implement ApexModule?\n\nShould I rather export SdkSpec / SdkContext and use that? What we really want is for anyone who implements SdkContext to have this check in there. (Ideally, we would also have commonSdkProperties shared in all places if possible).\n```",
+      "parentUuid": "19337a44_43323c16",
       "range": {
         "startLine": 1946,
         "startChar": 0,
@@ -115,6 +187,30 @@
       "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13db8762_12f48366",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T14:44:29Z",
+      "side": 1,
+      "message": "yeah, sorry, I thought I marked this as WIP. Didn\u0027t mean for a full review before.",
+      "parentUuid": "7955eba9_e347bb8b",
+      "range": {
+        "startLine": 1939,
+        "startChar": 0,
+        "endLine": 1959,
+        "endChar": 2
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
