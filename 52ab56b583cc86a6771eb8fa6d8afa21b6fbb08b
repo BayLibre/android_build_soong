@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "217a31a2_0981a270",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T15:46:49Z",
+      "side": 1,
+      "message": "I see a few: https://cs.corp.google.com/search/?q\u003df:cts+c:min_sdk_version+f:%5C.bp+-c:%5C+sdk_version\u0026m\u003d100\u0026sort\u003d1\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\n\nThey specify min_sdk_version but not sdk_version, which means that are by default linked to \u0027framework\u0027. By definition, all cts tests should built against SDK, but certain tests actually depend on private APIs for various reasons.\n\nYeah, these are technical debts, but even so, I don\u0027t think they can justify that we have to set min_sdk_version also for framework, ext, etc.\n\nI think we don\u0027t need to check this across dynamic dependencies (i.e. libs), but only for static dependencies, because that\u0027s where the dependency becomes part of the dependent.",
+      "parentUuid": "90f832bb_6cd80d1d",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
