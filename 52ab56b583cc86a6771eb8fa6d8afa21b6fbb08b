@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b0bbcc7_dfc9add6",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T14:40:45Z",
+      "side": 1,
+      "message": "these never go into any apex or an app. why do we have to set min_sdk_version for them?",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "357c16a3_7daa33e6",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T14:40:45Z",
+      "side": 1,
+      "message": "nit: min_sdk_version",
+      "range": {
+        "startLine": 197,
+        "startChar": 25,
+        "endLine": 197,
+        "endChar": 38
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec5dc46_9269ea30",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T14:40:45Z",
+      "side": 1,
+      "message": "just %q",
+      "range": {
+        "startLine": 197,
+        "startChar": 66,
+        "endLine": 197,
+        "endChar": 72
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d57f7b1_641ae083",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T14:40:45Z",
+      "side": 1,
+      "message": "min_sdk_version",
+      "range": {
+        "startLine": 197,
+        "startChar": 85,
+        "endLine": 197,
+        "endChar": 98
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
