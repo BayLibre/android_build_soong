@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34851426_80939c6d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T14:57:42Z",
+      "side": 1,
+      "message": "Note that the check is generic to java, it does not care in which binary the library ends up eventually. These two are needed for some tests (not 100% why, as they are added as DefaultLibraries) and some other existing java_library that already set min_sdk_version (outside of mainline requirement).",
+      "parentUuid": "1b0bbcc7_dfc9add6",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -91,6 +115,78 @@
       "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9e2098_6d626fc6",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T14:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d57f7b1_641ae083",
+      "range": {
+        "startLine": 197,
+        "startChar": 85,
+        "endLine": 197,
+        "endChar": 98
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2fc1fd4_fa67c787",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T14:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "357c16a3_7daa33e6",
+      "range": {
+        "startLine": 197,
+        "startChar": 25,
+        "endLine": 197,
+        "endChar": 38
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "612b159c_565a63a3",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T14:57:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ec5dc46_9269ea30",
+      "range": {
+        "startLine": 197,
+        "startChar": 66,
+        "endLine": 197,
+        "endChar": 72
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
