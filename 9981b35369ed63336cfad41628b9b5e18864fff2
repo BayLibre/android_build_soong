@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "479d58b7_35468b71",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T15:30:34Z",
+      "side": 1,
+      "message": "What I have been suggesting is to do the check at the apex for all of its transitive dependencies (we already have a walker method for that; walkPayloadDeps). That either doesn\u0027t require you to look beyond the build graph that you are rooted at. \n\n\u003e We have to do checks in two different places regardless: one for APKs and one for APEXes, right?\n\nRight. But given that the long-term plan is to put APKs into APEXes, I think the check for APKs will go away in the future.",
+      "parentUuid": "ca2777cd_1977ebdd",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
