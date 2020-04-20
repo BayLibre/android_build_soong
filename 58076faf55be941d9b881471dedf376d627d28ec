@@ -142,6 +142,24 @@
       "revId": "58076faf55be941d9b881471dedf376d627d28ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31e0387_37fbad72",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-20T17:46:08Z",
+      "side": 1,
+      "message": "I see, I got confused in the alternatives section.  I guess this SGTM then, although I\u0027d still suggest moving the Min_sdk_version property into each module type so that it can have more specific, accurate documentation and doesn\u0027t accidentally show up in any module types that already have their own min_sdk_version or shouldn\u0027t have a min_sdk_version.",
+      "parentUuid": "83745dc4_c495e46b",
+      "revId": "58076faf55be941d9b881471dedf376d627d28ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
