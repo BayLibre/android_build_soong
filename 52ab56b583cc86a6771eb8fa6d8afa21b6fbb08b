@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6bbe5007_c4cd1f4c",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-20T15:15:16Z",
+      "side": 1,
+      "message": "I meant that these are the framework itself and therefore having to specify min_sdk_version for them is really odd. It\u0027s a property which is meaningful only for a build module that will be part of an unbundle-able entity like apex and app. \n\nThis is the documented definition: \"set the minimum version of the sdk that the compiled artifacts will run against\"\n\nLet me ask differently. What should be the min_sdk_version of the \u0027framework\u0027 library?",
+      "parentUuid": "34851426_80939c6d",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
