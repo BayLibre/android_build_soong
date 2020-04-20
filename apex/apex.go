@@ -403,6 +403,9 @@ type apexBundle struct {
 	flattened bool
 
 	testApex bool
+
+	// Struct holding the merged notice file paths in different formats
+	mergedNotices android.NoticeOutputs
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -823,7 +826,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 }
 
-func (a *apexBundle) buildNoticeFile(ctx android.ModuleContext, apexFileName string) android.OptionalPath {
+func (a *apexBundle) buildNoticeFiles(ctx android.ModuleContext, apexFileName string) android.NoticeOutputs {
 	noticeFiles := []android.Path{}
 	for _, f := range a.filesInfo {
 		if f.module != nil {
@@ -839,10 +842,10 @@ func (a *apexBundle) buildNoticeFile(ctx android.ModuleContext, apexFileName str
 	}
 
 	if len(noticeFiles) == 0 {
-		return android.OptionalPath{}
+		return android.NoticeOutputs{}
 	}
 
-	return android.BuildNoticeOutput(ctx, a.installDir, apexFileName, android.FirstUniquePaths(noticeFiles)).HtmlGzOutput
+	return android.BuildNoticeOutput(ctx, a.installDir, apexFileName, android.FirstUniquePaths(noticeFiles))
 }
 
 func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType apexPackaging) {
@@ -967,11 +970,11 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 		}
 		optFlags = append(optFlags, "--target_sdk_version "+targetSdkVersion)
 
-		noticeFile := a.buildNoticeFile(ctx, ctx.ModuleName()+suffix)
-		if noticeFile.Valid() {
+		a.mergedNotices = a.buildNoticeFiles(ctx, ctx.ModuleName()+suffix)
+		if a.mergedNotices.HtmlGzOutput.Valid() {
 			// If there's a NOTICE file, embed it as an asset file in the APEX.
-			implicitInputs = append(implicitInputs, noticeFile.Path())
-			optFlags = append(optFlags, "--assets_dir "+filepath.Dir(noticeFile.String()))
+			implicitInputs = append(implicitInputs, a.mergedNotices.HtmlGzOutput.Path())
+			optFlags = append(optFlags, "--assets_dir "+filepath.Dir(a.mergedNotices.HtmlGzOutput.String()))
 		}
 
 		ctx.Build(pctx, android.BuildParams{
@@ -1126,6 +1129,11 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, name, moduleDir string, apex
 			}
 		} else {
 			fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", pathWhenActivated)
+
+			// For non-flattend APEXes, the merged notice file is attached to the APEX itself.
+			// We don't need to have notice file for the individual modules in it. Otherwise,
+			// we will have duplicated notice entries.
+			fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
 		}
 		fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", fi.builtFile.String())
 		fmt.Fprintln(w, "LOCAL_MODULE_CLASS :=", fi.class.NameInMake())
@@ -1219,6 +1227,11 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				if len(a.externalDeps) > 0 {
 					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES +=", strings.Join(a.externalDeps, " "))
 				}
+
+				if a.mergedNotices.Merged.Valid() {
+					fmt.Fprintln(w, "LOCAL_NOTICE_FILE :=", a.mergedNotices.Merged.Path().String())
+				}
+
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
 
 				if apexType == imageApex {
