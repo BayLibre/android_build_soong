@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "ca2777cd_1977ebdd",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-20T15:17:21Z",
+      "side": 1,
+      "message": "I honestly think that\u0027s actually a good thing. From a build perspective, a node in a build graph should not know where it goes to. It cares about itself and the subgraph rooted at it. This creates a nice abstraction and avoids long-term scalability issues (e.g. it\u0027d be a disaster if java_libraries in google3 knew which binaries depend on them).\n\nWe have to do checks in two different places regardless: one for APKs and one for APEXes, right? Unless there is a way to move this to ApexModule (we\u0027ll need to have updatable prop there and checkStableSdkVersion method shared)? I guess this is partially why I am considering moving SdkContext to a common place as well..",
+      "parentUuid": "5888e815_a7b95606",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
