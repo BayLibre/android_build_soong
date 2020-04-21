@@ -160,6 +160,24 @@
       "revId": "58076faf55be941d9b881471dedf376d627d28ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b14d0750_137dc19e",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-21T07:54:54Z",
+      "side": 1,
+      "message": "moved min_sdk_version property to cc_library",
+      "parentUuid": "c31e0387_37fbad72",
+      "revId": "58076faf55be941d9b881471dedf376d627d28ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
