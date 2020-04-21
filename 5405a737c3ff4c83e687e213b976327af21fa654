@@ -22,6 +22,30 @@
       "revId": "5405a737c3ff4c83e687e213b976327af21fa654",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3050fe3b_50a551c8",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1661,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2020-04-21T11:20:35Z",
+      "side": 1,
+      "message": "We use baseline for the last-released api check; they currently share their property struct, but separating that should be done in a different CL if at all.",
+      "parentUuid": "2863194a_6cfb7cac",
+      "range": {
+        "startLine": 1657,
+        "startChar": 0,
+        "endLine": 1661,
+        "endChar": 0
+      },
+      "revId": "5405a737c3ff4c83e687e213b976327af21fa654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
