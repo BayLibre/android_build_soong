@@ -986,6 +986,7 @@ func OverrideAndroidTestModuleFactory() android.Module {
 type AndroidAppImport struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	android.ApexModuleBase
 	prebuilt android.Prebuilt
 
 	properties   AndroidAppImportProperties
@@ -1274,6 +1275,14 @@ func (a *AndroidAppImport) Privileged() bool {
 	return Bool(a.properties.Privileged)
 }
 
+func (a *AndroidAppImport) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
+	// dependencies other than the static linkage are all considered crossing APEX boundary
+	if staticLibTag == ctx.OtherModuleDependencyTag(dep) {
+		return true
+	}
+	return false
+}
+
 func createVariantGroupType(variants []string, variantGroupName string) reflect.Type {
 	props := reflect.TypeOf((*AndroidAppImportProperties)(nil))
 
@@ -1320,6 +1329,7 @@ func AndroidAppImportFactory() android.Module {
 		module.processVariants(ctx)
 	})
 
+	android.InitApexModule(module)
 	InitJavaModule(module, android.DeviceSupported)
 	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Apk")
 
@@ -1357,6 +1367,7 @@ func AndroidTestImportFactory() android.Module {
 		module.processVariants(ctx)
 	})
 
+	android.InitApexModule(module)
 	InitJavaModule(module, android.DeviceSupported)
 	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Apk")
 
