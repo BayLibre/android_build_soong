@@ -626,6 +626,9 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 }
 
 func (a *AndroidAppImport) AndroidMkEntries() []android.AndroidMkEntries {
+	if !a.IsForPlatform() {
+		return nil
+	}
 	return []android.AndroidMkEntries{android.AndroidMkEntries{
 		Class:      "APPS",
 		OutputFile: android.OptionalPathForPath(a.outputFile),
