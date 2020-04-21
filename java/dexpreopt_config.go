@@ -79,12 +79,22 @@ func stemOf(moduleName string) string {
 	return moduleName
 }
 
-func getDexLocation(ctx android.PathContext, target android.Target, subdir string, name string) string {
-	if target.Os.Class == android.Host {
-		return filepath.Join(ctx.Config().Getenv("OUT_DIR"), "host", ctx.Config().PrebuiltOS(), subdir, name)
+func bootImageSubdir(apex string) string {
+	if apex == "platform" {
+		return "system/framework"
 	} else {
-		return filepath.Join("/", subdir, name)
+		return filepath.Join("apex", apex, "javalib")
 	}
+}
+
+func getDexLocation(ctx android.PathContext, target android.Target, module string) string {
+	apex, jar := android.SplitApexJarPair(module)
+	name := stemOf(jar) + ".jar"
+	subdir := bootImageSubdir(apex)
+	if target.Os.Class == android.Host {
+		subdir = filepath.Join(ctx.Config().Getenv("OUT_DIR"), "host", ctx.Config().PrebuiltOS(), subdir)
+	}
+	return filepath.Join("/", subdir, name)
 }
 
 var (
@@ -106,29 +116,23 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		if ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
 			artModules = append(artModules, "jacocoagent")
 		}
-		frameworkModules := android.RemoveListFromList(global.BootJars,
-			concat(artModules, dexpreopt.GetJarsFromApexJarPairs(global.UpdatableBootJars)))
-
-		artSubdir := "apex/com.android.art/javalib"
-		frameworkSubdir := "system/framework"
+		frameworkModules := android.RemoveListFromList(global.BootJars, artModules)
 
 		// ART config for the primary boot image in the ART apex.
 		// It includes the Core Libraries.
 		artCfg := bootImageConfig{
-			name:          artBootImageName,
-			stem:          "boot",
-			installSubdir: artSubdir,
-			modules:       artModules,
+			name:    artBootImageName,
+			stem:    "boot",
+			modules: artModules,
 		}
 
 		// Framework config for the boot image extension.
 		// It includes framework libraries and depends on the ART config.
 		frameworkCfg := bootImageConfig{
-			extends:       &artCfg,
-			name:          frameworkBootImageName,
-			stem:          "boot",
-			installSubdir: frameworkSubdir,
-			modules:       frameworkModules,
+			extends: &artCfg,
+			name:    frameworkBootImageName,
+			stem:    "boot",
+			modules: frameworkModules,
 		}
 
 		configs := map[string]*bootImageConfig{
@@ -141,31 +145,27 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			c.dir = deviceDir.Join(ctx, "dex_"+c.name+"jars")
 			c.symbolsDir = deviceDir.Join(ctx, "dex_"+c.name+"jars_unstripped")
 
-			// expands to <stem>.art for primary image and <stem>-<1st module>.art for extension
-			imageName := c.firstModuleNameOrStem() + ".art"
-
 			// The path to bootclasspath dex files needs to be known at module
 			// GenerateAndroidBuildAction time, before the bootclasspath modules have been compiled.
 			// Set up known paths for them, the singleton rules will copy them there.
 			// TODO(b/143682396): use module dependencies instead
 			inputDir := deviceDir.Join(ctx, "dex_"+c.name+"jars_input")
 			for _, m := range c.modules {
-				c.dexPaths = append(c.dexPaths, inputDir.Join(ctx, stemOf(m)+".jar"))
+				_, jar := android.SplitApexJarPair(m)
+				c.dexPaths = append(c.dexPaths, inputDir.Join(ctx, stemOf(jar)+".jar"))
 			}
 			c.dexPathsDeps = c.dexPaths
 
 			// Create target-specific variants.
 			for _, target := range targets {
-				arch := target.Arch.ArchType
-				imageDir := c.dir.Join(ctx, target.Os.String(), c.installSubdir, arch.String())
 				variant := &bootImageVariant{
 					bootImageConfig: c,
 					target:          target,
-					images:          imageDir.Join(ctx, imageName),
-					imagesDeps:      c.moduleFiles(ctx, imageDir, ".art", ".oat", ".vdex"),
 				}
+				variant.images = variant.moduleFileHost(ctx, 0, c.dir, ".art")
+				variant.imagesDeps = variant.moduleFilesHost(ctx, c.dir, ".art", ".oat", ".vdex")
 				for _, m := range c.modules {
-					variant.dexLocations = append(variant.dexLocations, getDexLocation(ctx, target, c.installSubdir, stemOf(m)+".jar"))
+					variant.dexLocations = append(variant.dexLocations, getDexLocation(ctx, target, m))
 				}
 				variant.dexLocationsDeps = variant.dexLocations
 				c.variants = append(c.variants, variant)

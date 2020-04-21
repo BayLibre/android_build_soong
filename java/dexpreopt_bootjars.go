@@ -46,9 +46,6 @@ type bootImageConfig struct {
 	// Output directory for the image files with debug symbols.
 	symbolsDir android.OutputPath
 
-	// Subdirectory where the image files are installed.
-	installSubdir string
-
 	// The names of jars that constitute this image.
 	modules []string
 
@@ -113,7 +110,7 @@ func (image bootImageConfig) moduleName(idx int) string {
 	// Dexpreopt on the boot class path produces multiple files. The first dex file
 	// is converted into 'name'.art (to match the legacy assumption that 'name'.art
 	// exists), and the rest are converted to 'name'-<jar>.art.
-	m := image.modules[idx]
+	_, m := android.SplitApexJarPair(image.modules[idx])
 	name := image.stem
 	if idx != 0 || image.extends != nil {
 		name += "-" + stemOf(m)
@@ -121,20 +118,38 @@ func (image bootImageConfig) moduleName(idx int) string {
 	return name
 }
 
-func (image bootImageConfig) firstModuleNameOrStem() string {
+func (image bootImageVariant) moduleFileHost(ctx android.PathContext, idx int, dir android.OutputPath, ext string) android.OutputPath {
+	var name, subdir string
 	if len(image.modules) > 0 {
-		return image.moduleName(0)
+		if idx == -1 {
+			// not a real file but a special location for dex2oat
+			name = image.stem
+		} else {
+			// expands to <stem>.art for primary image and <stem>-<1st module>.art for extension
+			name = image.moduleName(idx)
+		}
+		apex, _ := android.SplitApexJarPair(image.modules[0])
+		subdir = bootImageSubdir(apex)
 	} else {
-		return image.stem
+		// empty module list happens in some Soong tests
+		name = image.stem
+		subdir = "nonexistent"
 	}
+	return dir.Join(ctx, image.target.Os.String(), subdir, image.target.Arch.ArchType.String(), name+ext)
 }
 
-func (image bootImageConfig) moduleFiles(ctx android.PathContext, dir android.OutputPath, exts ...string) android.OutputPaths {
+func (image bootImageVariant) moduleFileTarget(idx int, ext string) string {
+	apex, _ := android.SplitApexJarPair(image.modules[idx])
+	subdir := bootImageSubdir(apex)
+	name := image.moduleName(idx) + ext
+	return filepath.Join("/", subdir, image.target.Arch.ArchType.String(), name)
+}
+
+func (image bootImageVariant) moduleFilesHost(ctx android.PathContext, dir android.OutputPath, exts ...string) android.OutputPaths {
 	ret := make(android.OutputPaths, 0, len(image.modules)*len(exts))
 	for i := range image.modules {
-		name := image.moduleName(i)
 		for _, ext := range exts {
-			ret = append(ret, dir.Join(ctx, name+ext))
+			ret = append(ret, image.moduleFileHost(ctx, i, dir, ext))
 		}
 	}
 	return ret
@@ -261,7 +276,7 @@ func getBootImageJar(ctx android.SingletonContext, image *bootImageConfig, modul
 	}
 
 	name := ctx.ModuleName(module)
-	index := android.IndexList(name, image.modules)
+	index := android.IndexList(name, android.GetJarsFromApexJarPairs(image.modules))
 	if index == -1 {
 		return -1, nil
 	}
@@ -314,13 +329,13 @@ func buildBootImage(ctx android.SingletonContext, image *bootImageConfig) *bootI
 	// Ensure all modules were converted to paths
 	for i := range bootDexJars {
 		if bootDexJars[i] == nil {
+			_, m := android.SplitApexJarPair(image.modules[i])
 			if ctx.Config().AllowMissingDependencies() {
-				missingDeps = append(missingDeps, image.modules[i])
+				missingDeps = append(missingDeps, m)
 				bootDexJars[i] = android.PathForOutput(ctx, "missing")
 			} else {
 				ctx.Errorf("failed to find a dex jar path for module '%s'"+
-					", note that some jars may be filtered out by module constraints",
-					image.modules[i])
+					", note that some jars may be filtered out by module constraints", m)
 			}
 		}
 	}
@@ -367,26 +382,20 @@ func buildBootImageVariant(ctx android.SingletonContext, image *bootImageVariant
 	global := dexpreopt.GetGlobalConfig(ctx)
 
 	arch := image.target.Arch.ArchType
-	os := image.target.Os.String() // We need to distinguish host-x86 and device-x86.
-	symbolsDir := image.symbolsDir.Join(ctx, os, image.installSubdir, arch.String())
-	symbolsFile := symbolsDir.Join(ctx, image.stem+".oat")
-	outputDir := image.dir.Join(ctx, os, image.installSubdir, arch.String())
-	outputPath := outputDir.Join(ctx, image.stem+".oat")
+
+	outputPath := image.moduleFileHost(ctx, -1, image.dir, ".oat")
 	oatLocation := dexpreopt.PathToLocation(outputPath, arch)
-	imagePath := outputPath.ReplaceExtension(ctx, "art")
+	imagePath := image.moduleFileHost(ctx, -1, image.dir, ".art")
+	symbolsFile := image.moduleFileHost(ctx, -1, image.symbolsDir, ".oat")
 
 	rule := android.NewRuleBuilder()
 	rule.MissingDeps(missingDeps)
 
-	rule.Command().Text("mkdir").Flag("-p").Flag(symbolsDir.String())
-	rule.Command().Text("rm").Flag("-f").
-		Flag(symbolsDir.Join(ctx, "*.art").String()).
-		Flag(symbolsDir.Join(ctx, "*.oat").String()).
-		Flag(symbolsDir.Join(ctx, "*.invocation").String())
-	rule.Command().Text("rm").Flag("-f").
-		Flag(outputDir.Join(ctx, "*.art").String()).
-		Flag(outputDir.Join(ctx, "*.oat").String()).
-		Flag(outputDir.Join(ctx, "*.invocation").String())
+	for i := range image.modules {
+		dir := filepath.Dir(image.moduleFileHost(ctx, i, image.dir, ".art").String())
+		rule.Command().Text("mkdir -p " + dir)
+		rule.Command().Text("rm -f " + dir + "/*.{art,oat,vdex,invocation}")
+	}
 
 	cmd := rule.Command()
 
@@ -460,37 +469,34 @@ func buildBootImageVariant(ctx android.SingletonContext, image *bootImageVariant
 
 	cmd.Textf(`|| ( echo %s ; false )`, proptools.ShellEscape(failureMessage))
 
-	installDir := filepath.Join("/", image.installSubdir, arch.String())
-
 	var vdexInstalls android.RuleBuilderInstalls
 	var unstrippedInstalls android.RuleBuilderInstalls
-
 	var zipFiles android.WritablePaths
 
-	for _, artOrOat := range image.moduleFiles(ctx, outputDir, ".art", ".oat") {
-		cmd.ImplicitOutput(artOrOat)
-		zipFiles = append(zipFiles, artOrOat)
+	for i := range image.modules {
+		artHost := image.moduleFileHost(ctx, i, image.dir, ".art")
+		oatHost := image.moduleFileHost(ctx, i, image.dir, ".oat")
+		vdexHost := image.moduleFileHost(ctx, i, image.dir, ".vdex")
+		oatSymHost := image.moduleFileHost(ctx, i, image.symbolsDir, ".oat")
 
-		// Install the .oat and .art files
-		rule.Install(artOrOat, filepath.Join(installDir, artOrOat.Base()))
-	}
+		artTarget := image.moduleFileTarget(i, ".art")
+		oatTarget := image.moduleFileTarget(i, ".oat")
+		vdexTarget := image.moduleFileTarget(i, ".vdex")
+		oatSymTarget := image.moduleFileTarget(i, ".oat")
 
-	for _, vdex := range image.moduleFiles(ctx, outputDir, ".vdex") {
-		cmd.ImplicitOutput(vdex)
-		zipFiles = append(zipFiles, vdex)
+		cmd.ImplicitOutput(artHost)
+		cmd.ImplicitOutput(oatHost)
+		cmd.ImplicitOutput(vdexHost)
+		cmd.ImplicitOutput(oatSymHost)
 
-		// Note that the vdex files are identical between architectures.
-		// Make rules will create symlinks to share them between architectures.
-		vdexInstalls = append(vdexInstalls,
-			android.RuleBuilderInstall{vdex, filepath.Join(installDir, vdex.Base())})
-	}
+		zipFiles = append(zipFiles, artHost)
+		zipFiles = append(zipFiles, oatHost)
+		zipFiles = append(zipFiles, vdexHost)
 
-	for _, unstrippedOat := range image.moduleFiles(ctx, symbolsDir, ".oat") {
-		cmd.ImplicitOutput(unstrippedOat)
-
-		// Install the unstripped oat files.  The Make rules will put these in $(TARGET_OUT_UNSTRIPPED)
-		unstrippedInstalls = append(unstrippedInstalls,
-			android.RuleBuilderInstall{unstrippedOat, filepath.Join(installDir, unstrippedOat.Base())})
+		rule.Install(artHost, artTarget)
+		rule.Install(oatHost, oatTarget)
+		vdexInstalls = append(vdexInstalls, android.RuleBuilderInstall{vdexHost, vdexTarget})
+		unstrippedInstalls = append(unstrippedInstalls, android.RuleBuilderInstall{oatSymHost, oatSymTarget})
 	}
 
 	rule.Build(pctx, ctx, image.name+"JarsDexpreopt_"+image.target.String(), "dexpreopt "+image.name+" jars "+arch.String())
@@ -614,7 +620,7 @@ func updatableBcpPackagesRule(ctx android.SingletonContext, image *bootImageConf
 
 	return ctx.Config().Once(updatableBcpPackagesRuleKey, func() interface{} {
 		global := dexpreopt.GetGlobalConfig(ctx)
-		updatableModules := dexpreopt.GetJarsFromApexJarPairs(global.UpdatableBootJars)
+		updatableModules := android.GetJarsFromApexJarPairs(global.UpdatableBootJars)
 
 		// Collect `permitted_packages` for updatable boot jars.
 		var updatablePackages []string
