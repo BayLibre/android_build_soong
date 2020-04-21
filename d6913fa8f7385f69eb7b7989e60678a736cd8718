@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c80df3c5_b2c1afa0",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-21T10:27:56Z",
+      "side": 1,
+      "message": "I am not sure what externalDe\u0027s are to be honest. Something that doesn\u0027t end up in the binary?\n\nI am not sure we want to skip those either. If you depend on them, it doesn\u0027t matter where the code is located, the contract is that you expect to be able to run that code on a certain min_sdk_version platform. What if that contract is not fulfilled at runtime?\n\n(Again, in practice, in java land at the very least there will be cases where you would not be executing that code path, thus avoiding the crash, but we need lint setup for that).",
+      "parentUuid": "cb79ecde_68d9360d",
+      "range": {
+        "startLine": 1887,
+        "startChar": 10,
+        "endLine": 1887,
+        "endChar": 15
+      },
+      "revId": "d6913fa8f7385f69eb7b7989e60678a736cd8718",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70ca8478_338ad005",
         "filename": "cc/cc.go",
         "patchSetId": 2
