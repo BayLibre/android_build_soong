@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb79ecde_68d9360d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-21T08:00:22Z",
+      "side": 1,
+      "message": "Well, I think the comment might repeat the code itself. \"skip external dependencies\"?",
+      "parentUuid": "8eaf067a_ce07fd2d",
+      "range": {
+        "startLine": 1887,
+        "startChar": 10,
+        "endLine": 1887,
+        "endChar": 15
+      },
+      "revId": "d6913fa8f7385f69eb7b7989e60678a736cd8718",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70ca8478_338ad005",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "d6913fa8f7385f69eb7b7989e60678a736cd8718",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe55b431_69f3d49e",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2825,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-21T08:00:22Z",
+      "side": 1,
+      "message": "Added comments with bug number.",
+      "parentUuid": "70ca8478_338ad005",
+      "range": {
+        "startLine": 2825,
+        "startChar": 1,
+        "endLine": 2825,
+        "endChar": 86
+      },
+      "revId": "d6913fa8f7385f69eb7b7989e60678a736cd8718",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
