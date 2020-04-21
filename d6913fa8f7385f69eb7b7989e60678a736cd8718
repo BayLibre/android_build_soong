@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8a2d22f3_21027aad",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-21T11:55:11Z",
+      "side": 1,
+      "message": "Okay, then we might need to improve walkPayloadDeps() for better readability.\n\n\u003e Something that doesn\u0027t end up in the binary?\n\nRight. for some reason, walkPayloadDeps() visits deps one step further beyond the apex boundary. \"externalDep\" flag tells that \"to\" module is not part of the apex. By the way, there is additional edge case when \"sdk\" things are involved. That\u0027s why we need to check \"DepIsInSameApex()\" again below.\n\nLet me fix this in another CL.",
+      "parentUuid": "c80df3c5_b2c1afa0",
+      "range": {
+        "startLine": 1887,
+        "startChar": 10,
+        "endLine": 1887,
+        "endChar": 15
+      },
+      "revId": "d6913fa8f7385f69eb7b7989e60678a736cd8718",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70ca8478_338ad005",
         "filename": "cc/cc.go",
         "patchSetId": 2
