@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "aec1bfe2_ce9bae46",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-21T15:00:21Z",
+      "side": 1,
+      "message": "Totally agree, I don\u0027t expect we mark framework with min_sdk_version. That just doesn\u0027t make sense. This list to \"burndown\" violations, which could mean adding minsdkversion props, or fixing deps, or making the exceptions part of the full workflow. I didn\u0027t fully understand each of these exceptions, so I just put them all into a single burndown list.\n\nThe last bit is something I am not 100% positive about though. It doesn\u0027t really matter whether the dependency is static or not, as long as you are expecting it to function on certain platforms. If its a libs dependency, then you are likely expecting it to be available at runtime to functioning according to specification. Why would that not classify for min_sdk_version?\n\n(There are nuances, where in java world as long as you guarantee that the code path is not executed, it\u0027s okay. So we don\u0027t need a full check for minSdkVersion, but that will be fixed after we introduce lint).",
+      "parentUuid": "217a31a2_0981a270",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
