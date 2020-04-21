@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bee5bb5b_c33ba1b7",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-21T21:05:31Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like it needs its own mutator, can it just be done in GenerateAndroidBuildActions?",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
