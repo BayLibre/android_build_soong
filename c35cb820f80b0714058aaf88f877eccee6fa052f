@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "720f23da_06bf0dd9",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-21T18:34:12Z",
+      "side": 1,
+      "message": "java_test for this?",
+      "range": {
+        "startLine": 1770,
+        "startChar": 17,
+        "endLine": 1770,
+        "endChar": 40
+      },
+      "revId": "c35cb820f80b0714058aaf88f877eccee6fa052f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b0efa6_8335fbd0",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-21T18:34:12Z",
+      "side": 1,
+      "message": "Since we only set _versrion_ for minSdkVersion, sdkSpec stable would always be true, as it interpretes that as public stable SDK. For stability check you need sdkVersion check, not minSdkVersion.",
+      "range": {
+        "startLine": 1775,
+        "startChar": 1,
+        "endLine": 1777,
+        "endChar": 2
+      },
+      "revId": "c35cb820f80b0714058aaf88f877eccee6fa052f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
