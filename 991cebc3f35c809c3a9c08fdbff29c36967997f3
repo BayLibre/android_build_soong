@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "74f9db3b_f16d3364",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-22T20:26:37Z",
+      "side": 1,
+      "message": "GenerateAndroidBuildActions is always bottom-up, and you only need to visit your direct dependencies to propagate the value.",
+      "parentUuid": "9f7be8c2_541967ec",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1f64102_e3fe8814",
         "filename": "apex/apex.go",
         "patchSetId": 5
