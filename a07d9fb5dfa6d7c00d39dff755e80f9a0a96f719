@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df06ab50_c43d1324",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-22T04:37:49Z",
+      "side": 1,
+      "message": "In make, this now puts the device-specific kernel headers after the bionic headers, instead of before (both using isystem), which could change how headers are shadowed:\n\n  {+-isystem bionic/libc/include -isystem bionic/libc/kernel/uapi -isystem bionic/libc/kernel/android/scsi -isystem bionic/libc/kernel/android/uapi -isystem bionic/libc/kernel/uapi/asm-arm64+}\n  -D__LIBM_API__\u003d10000\n  ...\n  -I frameworks/av/include\n  -isystem device/linaro/hikey/kernel-headers\n  [--isystem bionic/libc/include -isystem bionic/libc/kernel/uapi -isystem bionic/libc/kernel/uapi/asm-arm64 -isystem bionic/libc/kernel/android/scsi -isystem bionic/libc/kernel/android/uapi-]\n\nThis is because here:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/make/core/binary.mk;drc\u003de0c5e443605e88b1323c54bc8c123646f8a284d0;l\u003d1586\n\n  ...PROJECT_SYSTEM_INCLUDES included the *_KERNEL_HEADERS\n  ...C_SYSTEM_INCLUDES included the bionic headers\n\nThis is also broken for the VNDK, but we\u0027re separately adding device_kernel_headers into the header library list in that case:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/make/core/binary.mk;drc\u003de0c5e443605e88b1323c54bc8c123646f8a284d0;l\u003d1679\n\nSo it\u0027s both before and after the bionic includes.\n\nWe probably should remove the device-specific kernel headers from the system build in the first place (they\u0027re already opt-in-only in Soong with the device_kernel_headers header library), and remove PROJECT_SYSTEM_INCLUDES in general (as the automatic device_kernel_headers should handle the VNDK case).",
+      "revId": "a07d9fb5dfa6d7c00d39dff755e80f9a0a96f719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
