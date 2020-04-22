@@ -241,6 +241,30 @@
     },
     {
       "key": {
+        "uuid": "1b603939_9e80fd06",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-22T10:01:17Z",
+      "side": 1,
+      "message": "s/agree/follow/\n\nI\u0027ve also lost a track here to be honest. What\u0027s the proposal here? That I move this check to \nAndroidApp and only check for static_libs?",
+      "parentUuid": "f1def97f_34063fb6",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
