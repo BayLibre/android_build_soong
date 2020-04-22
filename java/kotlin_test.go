@@ -140,7 +140,7 @@ func TestKapt(t *testing.T) {
 	if kapt.Args["kaptProcessorPath"] != expectedProcessorPath {
 		t.Errorf("expected kaptProcessorPath %q, got %q", expectedProcessorPath, kapt.Args["kaptProcessorPath"])
 	}
-	expectedProcessor := "-P plugin:org.jetbrains.kotlin.kapt3:processors=com.bar"
+	expectedProcessor := "-P plugin:org.jetbrains.kotlin.kapt3:processors={com.bar}"
 	if kapt.Args["kaptProcessor"] != expectedProcessor {
 		t.Errorf("expected kaptProcessor %q, got %q", expectedProcessor, kapt.Args["kaptProcessor"])
 	}
