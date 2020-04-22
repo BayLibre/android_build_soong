@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bdfcc1cb_c5596720",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-22T03:06:37Z",
+      "side": 1,
+      "message": "Addded one test for java, which might be enough to show this work.",
+      "parentUuid": "720f23da_06bf0dd9",
+      "range": {
+        "startLine": 1770,
+        "startChar": 17,
+        "endLine": 1770,
+        "endChar": 40
+      },
+      "revId": "c35cb820f80b0714058aaf88f877eccee6fa052f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27b0efa6_8335fbd0",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c35cb820f80b0714058aaf88f877eccee6fa052f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "955ebf36_406c7075",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-22T03:06:37Z",
+      "side": 1,
+      "message": "removed.\n\nGiven than java.Module.minSdkVersion() falls back to sdkVersion(), I thought this might be necessary. Well, if sdkVersion.stable() is checked in other place, then it will be okay.",
+      "parentUuid": "27b0efa6_8335fbd0",
+      "range": {
+        "startLine": 1775,
+        "startChar": 1,
+        "endLine": 1777,
+        "endChar": 2
+      },
+      "revId": "c35cb820f80b0714058aaf88f877eccee6fa052f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
