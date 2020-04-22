@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0486a47d_a453768d",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1905,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-22T09:33:21Z",
+      "side": 1,
+      "message": "\"should support min_sdk_version %v...\"? Otherwise it\u0027s unclear how to fix this error",
+      "range": {
+        "startLine": 1905,
+        "startChar": 30,
+        "endLine": 1905,
+        "endChar": 48
+      },
+      "revId": "0761ff9481c7049a9a450226bc8fa147cb475c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa510bd_273f5739",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-22T09:33:21Z",
+      "side": 1,
+      "message": "test success case as well for java",
+      "range": {
+        "startLine": 1452,
+        "startChar": 27,
+        "endLine": 1452,
+        "endChar": 49
+      },
+      "revId": "0761ff9481c7049a9a450226bc8fa147cb475c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "463300c9_f1509387",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2851,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-22T09:33:21Z",
+      "side": 1,
+      "message": "can you also amend the if check to verify that they actually have sdk_version 14?",
+      "range": {
+        "startLine": 2851,
+        "startChar": 60,
+        "endLine": 2851,
+        "endChar": 76
+      },
+      "revId": "0761ff9481c7049a9a450226bc8fa147cb475c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

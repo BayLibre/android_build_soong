@@ -93,6 +93,30 @@
       "revId": "c35cb820f80b0714058aaf88f877eccee6fa052f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5484fc28_0f39ac8d",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-22T09:33:21Z",
+      "side": 1,
+      "message": "I\u0027ll flash out aosp/1285396 then",
+      "parentUuid": "955ebf36_406c7075",
+      "range": {
+        "startLine": 1775,
+        "startChar": 1,
+        "endLine": 1777,
+        "endChar": 2
+      },
+      "revId": "c35cb820f80b0714058aaf88f877eccee6fa052f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
