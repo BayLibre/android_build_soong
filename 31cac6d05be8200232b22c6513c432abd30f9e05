@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55ced48b_8741d788",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-22T09:06:36Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but can we return nil here?",
+      "range": {
+        "startLine": 630,
+        "startChar": 9,
+        "endLine": 632,
+        "endChar": 4
+      },
+      "revId": "31cac6d05be8200232b22c6513c432abd30f9e05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87b47ea3_c923f6e8",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-22T09:06:36Z",
+      "side": 1,
+      "message": "Does AndroidAppImport have staticLib dependencies?\nI think we can safely \"return false\" here.",
+      "range": {
+        "startLine": 1281,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 2
+      },
+      "revId": "31cac6d05be8200232b22c6513c432abd30f9e05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
