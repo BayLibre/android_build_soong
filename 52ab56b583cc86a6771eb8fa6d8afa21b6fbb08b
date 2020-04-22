@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "c39940ac_0f63abf5",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-22T09:16:48Z",
+      "side": 1,
+      "message": "I don\u0027t fully grasp realities of platform side, but purely from java/build perspective: If you are compiling against libB APIs, then you are potentially using them at runtime. How do we guarantee that you aren\u0027t 100% using them at runtime on the wrong platform? Ideally, at some point lint would cover that, but until then I\u0027d rather enforce this at build time to guarantee some safety for R-on-Q. IIUC, this is not a problem for native, because at build time you are picking a different variation that was compiled against different stubs, we don\u0027t have these variations for java.",
+      "parentUuid": "f5d37e54_9f038031",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
