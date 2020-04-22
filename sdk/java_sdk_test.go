@@ -180,12 +180,14 @@ func TestSnapshotWithJavaHeaderLibrary(t *testing.T) {
 java_import {
     name: "mysdk_myjavalib@current",
     sdk_member_name: "myjavalib",
+    host_supported: true,
     jars: ["java/myjavalib.jar"],
 }
 
 java_import {
     name: "myjavalib",
     prefer: false,
+    host_supported: true,
     jars: ["java/myjavalib.jar"],
 }
 
@@ -355,12 +357,14 @@ func TestSnapshotWithJavaImplLibrary(t *testing.T) {
 java_import {
     name: "myexports_myjavalib@current",
     sdk_member_name: "myjavalib",
+    host_supported: true,
     jars: ["java/myjavalib.jar"],
 }
 
 java_import {
     name: "myjavalib",
     prefer: false,
+    host_supported: true,
     jars: ["java/myjavalib.jar"],
 }
 
@@ -461,6 +465,7 @@ func TestSnapshotWithJavaTest(t *testing.T) {
 java_test_import {
     name: "myexports_myjavatests@current",
     sdk_member_name: "myjavatests",
+    host_supported: true,
     jars: ["java/myjavatests.jar"],
     test_config: "java/myjavatests-AndroidTest.xml",
 }
@@ -468,6 +473,7 @@ java_test_import {
 java_test_import {
     name: "myjavatests",
     prefer: false,
+    host_supported: true,
     jars: ["java/myjavatests.jar"],
     test_config: "java/myjavatests-AndroidTest.xml",
 }

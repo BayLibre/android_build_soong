@@ -22,6 +22,7 @@ import (
 
 	"android/soong/apex"
 	"android/soong/cc"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -637,19 +638,7 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 		}
 	}
 
-	deviceSupported := false
-	hostSupported := false
-
-	for _, variant := range member.Variants() {
-		osClass := variant.Target().Os.Class
-		if osClass == android.Host || osClass == android.HostCross {
-			hostSupported = true
-		} else if osClass == android.Device {
-			deviceSupported = true
-		}
-	}
-
-	addHostDeviceSupportedProperties(deviceSupported, hostSupported, m)
+	addHostDeviceSupportedProperties(variant.DeviceSupported(), variant.HostSupported(), m)
 
 	// Where available copy apex_available properties from the member.
 	if apexAware, ok := variant.(interface{ ApexAvailable() []string }); ok {

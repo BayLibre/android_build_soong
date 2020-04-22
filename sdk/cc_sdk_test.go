@@ -1572,6 +1572,7 @@ func TestSystemSharedLibPropagation(t *testing.T) {
 cc_prebuilt_library_shared {
     name: "mysdk_sslnil@current",
     sdk_member_name: "sslnil",
+    host_supported: true,
     installable: false,
     arch: {
         arm64: {
@@ -1586,6 +1587,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "sslnil",
     prefer: false,
+    host_supported: true,
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslnil.so"],

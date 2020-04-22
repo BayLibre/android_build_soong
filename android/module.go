@@ -218,6 +218,8 @@ type Module interface {
 	Disable()
 	Enabled() bool
 	Target() Target
+	DeviceSupported() bool
+	HostSupported() bool
 	InstallInData() bool
 	InstallInTestcases() bool
 	InstallInSanitizerDir() bool
