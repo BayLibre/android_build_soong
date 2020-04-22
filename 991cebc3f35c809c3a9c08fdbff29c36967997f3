@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55ac2928_22578b2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-22T06:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "977533ea_b32680a0",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f190fc01_35d13d29",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "0a1c120b_1028c673",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-22T06:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f190fc01_35d13d29",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bee5bb5b_c33ba1b7",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -53,6 +95,24 @@
       "writtenOn": "2020-04-21T21:05:31Z",
       "side": 1,
       "message": "This doesn\u0027t seem like it needs its own mutator, can it just be done in GenerateAndroidBuildActions?",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f7be8c2_541967ec",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-22T06:57:26Z",
+      "side": 1,
+      "message": "I don\u0027t think this can be done there. When libA -\u003e libB and if libB is not available to the platform, we mark libA as such.  To do this, we need to traverse the tree in the bottom-up direction. Can we do that in GenerateAndroidBuildActions? WalkDeps doesn\u0027t seem to fit.",
+      "parentUuid": "bee5bb5b_c33ba1b7",
       "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "eb61bd2a_748e59c1",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-22T06:57:26Z",
+      "side": 1,
+      "message": "The problem is that they are actually being required in the branch.",
+      "parentUuid": "a1f64102_e3fe8814",
+      "range": {
+        "startLine": 883,
+        "startChar": 58,
+        "endLine": 884,
+        "endChar": 42
+      },
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baf84b0b_af9b3b3c",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "a23fb3b9_ae50f366",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-22T06:57:26Z",
+      "side": 1,
+      "message": "This is a good point. But I think that\u0027s stricter than necessary. I don\u0027t want to bother unless that violator is actually installed.\n\nFor example, \"abb\" and \"dexdump\" are such violators. They are marked as available to platform for SDK purpose, but they depend on some libraries that are not available to platform.",
+      "parentUuid": "baf84b0b_af9b3b3c",
+      "range": {
+        "startLine": 890,
+        "startChar": 40,
+        "endLine": 890,
+        "endChar": 82
+      },
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1c1beae_b61c1793",
         "filename": "apex/apex_test.go",
         "patchSetId": 5
@@ -119,6 +227,24 @@
       "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26508eb2_231e0603",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3685,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-22T06:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1c1beae_b61c1793",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
