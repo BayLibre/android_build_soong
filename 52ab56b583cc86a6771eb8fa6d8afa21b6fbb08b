@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "f5d37e54_9f038031",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-22T04:29:10Z",
+      "side": 1,
+      "message": "For the last point:\n\njava_library {name: \"libA\", libs: [\"libB\"]} doesn\u0027t mean that libB.jar will be used at runtime. It could be a entirely different library in the classpath which will serve the APIs that libB provided to libA at build-time. (Consider android.jar as libB and framework.jar as libC) So, whether libB.jar supports a certain SDK or not doesn\u0027t affect libA.jar\u0027s ability to run on the SDK.",
+      "parentUuid": "aec1bfe2_ce9bae46",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
