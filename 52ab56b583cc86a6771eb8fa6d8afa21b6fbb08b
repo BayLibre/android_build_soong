@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "f1def97f_34063fb6",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-22T09:51:36Z",
+      "side": 1,
+      "message": "As you mentioned, framework is not a dependency that goes into a mainline module though.\n\nRemember that we usually compile java libraries against latest SDKs and have runtime if-checks. You cannot request that all deps compile against SDK 29.\n\nI am not sure I fully agree with your argument there. Note that this covers apps by definition, if an app with msv\u003d29 depends on a list of java_libraries, they all have to satisfy msv\u003d29, instead of doing one check at the root of an app node, and checking every library dozen of times (death by thousand cuts), I am checking at recursively.\n\nAt some point for Java we would have to lift this restriction all together (in S and beyond likely) though.",
+      "parentUuid": "ae7b5754_a50b967d",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
