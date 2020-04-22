@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "ae7b5754_a50b967d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-22T09:35:57Z",
+      "side": 1,
+      "message": "I don\u0027t think that could guarantee the safety for R-on-Q. The reason is that libB.jar might not be used at runtime. framework.jar is a good counter example. It\u0027s a build-time only artifact. It is never installed on the device (it has installable: false). What\u0027s installed on the device are framework-minus-apex.jar and various framework-\u003cmodule\u003e.jar.\n\nTo guarantee R-on-Q, I think we need the following two checks:\n\n1) everything that are \"part\" of an app (or an apex) should have min_sdk_version: 29.\n2) all the external dependencies (things that are not part of the app or apex) should be satisfied by SDK 29.\n\n(1) is where static dependencies play a role, while (2) is for dynamic dependencies. This cannot be determined just by looking at the dependency from libA to libB. If they are both included in the same app or an apex, we only need to check their min_sdk_version are \u003c\u003d 29.\nIf libA is part of the app (or apex) but libB isn\u0027t, that should trigger an error unless libB is one of the SDK stubs (prebuilt/sdk/29/[public|system|...]/android.jar).",
+      "parentUuid": "c39940ac_0f63abf5",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
