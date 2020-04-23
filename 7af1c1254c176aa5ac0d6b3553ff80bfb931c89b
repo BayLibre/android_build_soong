@@ -105,6 +105,24 @@
       "revId": "7af1c1254c176aa5ac0d6b3553ff80bfb931c89b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a07c565c_155090be",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-23T10:56:28Z",
+      "side": 1,
+      "message": "!fromUpdatableApex would also have been acceptable which is why I suggested \"and/or\". If you want feel free to switch the if/else back so the ok branch is first.",
+      "parentUuid": "0cf2fc38_5e2c88a1",
+      "revId": "7af1c1254c176aa5ac0d6b3553ff80bfb931c89b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
