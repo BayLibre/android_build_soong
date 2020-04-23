@@ -141,6 +141,29 @@ func TestAppSplits(t *testing.T) {
 	}
 }
 
+func TestApkSet(t *testing.T) {
+	ctx, config := testJava(t, `
+		apk_set {
+			name: "foo",
+			set: "prebuilts/apks/app.apks",
+        }
+        `)
+	module := ctx.ModuleForTests("foo", "android_common")
+	const packedSplitApks = "splitapks.zip"
+	if module.Output(packedSplitApks).Rule == nil {
+		t.Errorf("expected output %s is missing", packedSplitApks)
+	}
+	// TODO(asmundak): verify androidmk
+	entries := android.AndroidMkEntriesForTest(
+		t, config, "", module.Module().(*ApkSet))
+	const expected = "system/app/foo"
+	if actual := entries[0].EntryMap["LOCAL_MODULE_PATH"][0]; false && expected != actual {
+		t.Errorf(
+			"Incorrect LOCAL_MODULE_PATH value: expected '%s', got '%s'",
+			expected, actual)
+	}
+}
+
 func TestPlatformAPIs(t *testing.T) {
 	testJava(t, `
 		android_app {

@@ -681,3 +681,21 @@ func (r *RuntimeResourceOverlay) AndroidMkEntries() []android.AndroidMkEntries {
 		},
 	}}
 }
+
+func (apkSet *ApkSet) AndroidMkEntries() []android.AndroidMkEntries {
+	return []android.AndroidMkEntries{
+		android.AndroidMkEntries{
+			Class:      "APPS",
+			OutputFile: android.OptionalPathForPath(apkSet.packedOutput),
+			Include:    "$(BUILD_SYSTEM)/soong_apk_set.mk",
+			ExtraEntries: []android.AndroidMkExtraEntriesFunc{
+				func(entries *android.AndroidMkEntries) {
+					// TODO(asmundak): add needed entries
+					entries.SetBoolIfTrue("LOCAL_PRIVILEGED_MODULE", apkSet.Privileged())
+					entries.SetString("LOCAL_MODULE_PATH",
+						apkSet.InstallDir)
+				},
+			},
+		},
+	}
+}

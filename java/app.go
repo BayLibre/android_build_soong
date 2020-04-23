@@ -17,6 +17,7 @@ package java
 // This file contains the module types for compiling Android apps.
 
 import (
+	"fmt"
 	"path/filepath"
 	"reflect"
 	"sort"
@@ -39,6 +40,8 @@ func init() {
 }
 
 func RegisterAppBuildComponents(ctx android.RegistrationContext) {
+	ctx.RegisterSingletonType("bundletool_device_config",
+		bundletoolDeviceConfigFactory)
 	ctx.RegisterModuleType("android_app", AndroidAppFactory)
 	ctx.RegisterModuleType("android_test", AndroidTestFactory)
 	ctx.RegisterModuleType("android_test_helper_app", AndroidTestHelperAppFactory)
@@ -49,6 +52,134 @@ func RegisterAppBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_app_import", AndroidAppImportFactory)
 	ctx.RegisterModuleType("android_test_import", AndroidTestImportFactory)
 	ctx.RegisterModuleType("runtime_resource_overlay", RuntimeResourceOverlayFactory)
+	ctx.RegisterModuleType("apk_set", AndroidApkSetFactory)
+}
+
+func bundletoolDeviceConfigPath(ctx android.PathContext) android.OutputPath {
+	return android.PathForOutput(ctx, "bundletool_device_config.json")
+}
+
+type bundletoolDeviceConfig struct {
+	output android.OutputPath
+}
+
+var screenDensities = map[string]int{
+	"ldpi":    120,
+	"mdpi":    160,
+	"hdpi":    240,
+	"xhdpi":   320,
+	"xxhdpi":  480,
+	"xxxhdpi": 640,
+}
+
+func (b *bundletoolDeviceConfig) GenerateBuildActions(ctx android.SingletonContext) {
+	b.output = bundletoolDeviceConfigPath(ctx)
+	var device_config strings.Builder
+	c := ctx.Config()
+	screen_density := 65534
+	dpi := c.ProductAAPTPreferredConfig()
+	if dpi != "" {
+		var ok bool
+		if screen_density, ok = screenDensities[dpi]; !ok {
+			panic(fmt.Sprintf("Invalid DPI %s", dpi))
+		}
+	}
+	fmt.Fprintf(&device_config,
+		`{"supported_abis": ["arm64-v8a"],`+
+			`"supported_locales": ["en", "es"],`+
+			`"device_features": [], `+
+			`"gl_extensions": [], `+
+			`"screen_density": %d,`+
+			`"sdk_version": %s}`,
+		screen_density,
+		c.PlatformSdkVersion())
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.WriteFile,
+		Description: "Device config for bundletool",
+		Output:      b.output,
+		Args:        map[string]string{"content": device_config.String()},
+	})
+}
+
+func bundletoolDeviceConfigFactory() android.Singleton {
+	return &bundletoolDeviceConfig{}
+}
+
+type ApkSetProperties struct {
+	// APK Set path
+	Set *string
+
+	// Specifies that this app should be installed to the priv-app directory,
+	// where the system will grant it additional privileges not available to
+	// normal apps.
+	Privileged *bool
+}
+
+type ApkSet struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	prebuilt     android.Prebuilt
+	properties   ApkSetProperties
+	packedOutput android.WritablePath
+	InstallDir   string
+}
+
+func (as *ApkSet) Name() string {
+	// TODO: should there be -master added
+	return as.prebuilt.Name(as.ModuleBase.Name())
+}
+
+func (as *ApkSet) IsInstallable() bool {
+	return true
+}
+
+func (as *ApkSet) Prebuilt() *android.Prebuilt {
+	return &as.prebuilt
+}
+
+func (as *ApkSet) Privileged() bool {
+	return Bool(as.properties.Privileged)
+}
+
+func (as *ApkSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	as.packedOutput = android.PathForModuleOut(ctx, "splitapks.zip")
+	inputs := make(android.Paths, 0, 2)
+	apkSet := as.prebuilt.SingleSourcePath(ctx)
+	deviceConfigPath := bundletoolDeviceConfigPath(ctx)
+	inputs = append(inputs, apkSet, deviceConfigPath)
+
+	var installDir android.InstallPath
+	if Bool(as.properties.Privileged) {
+		installDir = android.PathForModuleInstall(ctx, "priv-app", as.BaseModuleName())
+	} else if ctx.InstallInTestcases() {
+		installDir = android.PathForModuleInstall(ctx, as.BaseModuleName(), ctx.DeviceConfig().DeviceArch())
+	} else {
+		installDir = android.PathForModuleInstall(ctx, "app", as.BaseModuleName())
+	}
+	as.InstallDir = installDir.ToMakePath().String()
+	ctx.Build(pctx,
+		android.BuildParams{
+			Rule:        bundletoolExtract,
+			Description: "Extract APKs from APK set",
+			Output:      as.packedOutput,
+			Inputs:      inputs,
+			//		Implicits:,
+			Args: map[string]string{
+				"apkSet":       apkSet.String(),
+				"deviceConfig": deviceConfigPath.String(),
+			},
+		})
+}
+
+// apk_set extracts a set of APKs based on the target device
+// configuration and installs this set as "split APKs"
+func AndroidApkSetFactory() android.Module {
+	module := &ApkSet{}
+	module.AddProperties(&module.properties)
+	InitJavaModule(module, android.DeviceSupported)
+	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Set")
+
+	return module
 }
 
 // AndroidManifest.xml merging
