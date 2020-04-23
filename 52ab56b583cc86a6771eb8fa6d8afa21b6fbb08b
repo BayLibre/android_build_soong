@@ -289,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "520dcb78_0a2aa39d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-23T14:42:06Z",
+      "side": 1,
+      "message": "I think we are speaking past each other somewhere here... :-) Let me know if you want to chat f2f.\n\nIt does recognizes stubs. There is an if check for stubs to ignore them. It does still check any other non-static-libs for compliance though. For example, annotation jars and unsupportedappusage that go in libs and don\u0027t end up in the binary (ideally, unless annotation has runtime retention). Note that \"framework\" is not a stub per se; also it doesn\u0027t go into any mainline modules. It was just a side-effect, because the check was implmenented for all java modules.\n\nFor your points:\n1) This is something that Jooyung is doing for Apexes in aosp/1287253. Jooyung, you also mentioned that you are going to cover APKS as well, since you are fixing native code there as well. With that we are guaranteed with msv of a binary \u003c\u003d msv of a library.\n2) This cannot really happen for java. In java, sdk_version is always \"current\" if the library is under active development (e.g. networkstack). So, we are going to guarantee that it compiles against a stable SDK separately via checkLintType.\n\nSo, external deps are not really covered for minSdkVersion by your proposal. Which may be okay if we guarantee they are behind a stable interface (since I assume most mainline modules aren\u0027t doing anything funky with external deps). Eventually we do want a static analysis on the boundaries to enforce min_sdk_version requirements then. (Or we submit this change and have partial enforcement at build time).\n\ntl;dr we need stable sdk check for java (aosp/1285396), Jooyung is working on adding binary level min_sdk_version check for transitive deps (both for apex and apk). Both of these should cover near-term requirements, but we need something more robust (lint) going forward, since we should allow for java to depend on something with higher min_sdk_version.",
+      "parentUuid": "92758360_c61d3fba",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
