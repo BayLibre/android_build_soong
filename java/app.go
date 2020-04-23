@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"reflect"
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -49,6 +50,118 @@ func RegisterAppBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_app_import", AndroidAppImportFactory)
 	ctx.RegisterModuleType("android_test_import", AndroidTestImportFactory)
 	ctx.RegisterModuleType("runtime_resource_overlay", RuntimeResourceOverlayFactory)
+	ctx.RegisterModuleType("apk_set", AndroidApkSetFactory)
+}
+
+type ApkSetProperties struct {
+	// APK Set path
+	Set *string
+
+	// Specifies that this app should be installed to the priv-app directory,
+	// where the system will grant it additional privileges not available to
+	// normal apps.
+	Privileged *bool
+
+	// APKs in this set use prerelease SDK version
+	Prerelease *bool
+}
+
+type ApkSet struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	prebuilt android.Prebuilt
+
+	properties   ApkSetProperties
+	packedOutput android.WritablePath
+}
+
+func (as *ApkSet) Name() string {
+	return as.prebuilt.Name(as.ModuleBase.Name())
+}
+
+func (as *ApkSet) IsInstallable() bool {
+	return true
+}
+
+func (as *ApkSet) Prebuilt() *android.Prebuilt {
+	return &as.prebuilt
+}
+
+func (as *ApkSet) Privileged() bool {
+	return Bool(as.properties.Privileged)
+}
+
+var targetCpuAbi = map[string]string{
+	"arm":    "ARMEABI_V7A",
+	"arm64":  "ARM64_V8A",
+	"x86":    "X86",
+	"x86_64": "X86_64",
+}
+
+func supportedAbis(ctx android.ModuleContext) []string {
+	abiName := func(archVar string, deviceArch string) string {
+		if abi, found := targetCpuAbi[deviceArch]; found {
+			return abi
+		}
+		ctx.ModuleErrorf("Invalid %s: %s", archVar, deviceArch)
+		return "BAD_ABI"
+	}
+
+	result := []string{abiName("TARGET_ARCH", ctx.DeviceConfig().DeviceArch())}
+	if s := ctx.DeviceConfig().DeviceSecondaryArch(); s != "" {
+		result = append(result, abiName("TARGET_2ND_ARCH", s))
+	}
+	return result
+}
+
+func (as *ApkSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	as.packedOutput = android.PathForModuleOut(ctx, "extracted.zip")
+	apkSet := as.prebuilt.SingleSourcePath(ctx)
+	screenDensities := "all"
+	if dpis := ctx.Config().ProductAAPTPrebuiltDPI(); len(dpis) > 0 {
+		screenDensities = strings.ToUpper(strings.Join(dpis, ","))
+	}
+	// TODO(asmundak): handle locales.
+	// TODO(asmundak): do we support device features
+	ctx.Build(pctx,
+		android.BuildParams{
+			Rule:        extractMatchingApks,
+			Description: "Extract APKs from APK set",
+			Output:      as.packedOutput,
+			Inputs:      android.Paths{apkSet},
+			Args: map[string]string{
+				"abis":              strings.Join(supportedAbis(ctx), ","),
+				"allow-prereleased": strconv.FormatBool(proptools.Bool(as.properties.Prerelease)),
+				"screen-densities":  screenDensities,
+				"sdk-version":       ctx.Config().PlatformSdkVersion(),
+			},
+		})
+	// TODO(asmundak): add this:
+	/*
+		var installDir android.InstallPath
+		if Bool(as.properties.Privileged) {
+			installDir = android.PathForModuleInstall(ctx, "priv-app", as.BaseModuleName())
+		} else if ctx.InstallInTestcases() {
+			installDir = android.PathForModuleInstall(ctx, as.BaseModuleName(), ctx.DeviceConfig().DeviceArch())
+		} else {
+			installDir = android.PathForModuleInstall(ctx, "app", as.BaseModuleName())
+		}
+		ctx.InstallFile(installDir, "base-master.apk", as.packedOutput)
+	*/
+}
+
+// apk_set extracts a set of APKs based on the target device
+// configuration and installs this set as "split APKs".
+// The set will always contain `base-master.apk` and every APK built
+// to the target device. All density-specific APK will be included, too,
+// unless PRODUCT_APPT_PREBUILT_DPI is defined (should contain comma-sepearated
+// list of density names (LDPI, MDPI, HDPI, etc.)
+func AndroidApkSetFactory() android.Module {
+	module := &ApkSet{}
+	module.AddProperties(&module.properties)
+	InitJavaModule(module, android.DeviceSupported)
+	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Set")
+	return module
 }
 
 // AndroidManifest.xml merging
