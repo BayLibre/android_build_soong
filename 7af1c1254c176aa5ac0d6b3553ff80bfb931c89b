@@ -70,6 +70,23 @@
       "revId": "7af1c1254c176aa5ac0d6b3553ff80bfb931c89b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc99d17a_497a8a4a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-23T09:34:54Z",
+      "side": 1,
+      "message": "I found this !(... \u0026\u0026 ...) difficult to parse. Rather than negate this could you just swap the if/else bodies.\n\nAnd/or \"isApexModule \u0026\u0026 apex.Updatable()\" is used above, it would make the core more readable if you extracted that into a variable, e.g. isUpdatableApex :\u003d isApexModule \u0026\u0026 apex.Updatable().",
+      "revId": "7af1c1254c176aa5ac0d6b3553ff80bfb931c89b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
