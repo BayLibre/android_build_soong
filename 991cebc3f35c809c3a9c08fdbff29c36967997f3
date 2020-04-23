@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "8d75a4ce_e2e3c759",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-23T03:48:05Z",
+      "side": 1,
+      "message": "You would have to call something on ApexModuleBase from each module that uses it.\n\nMaybe we need a mixin where module types can register functions to be called juist before GenerateAndroidBuildActions as a lightweight alternative to mutators.  Then InitApexModule can register it for all apex modules instead of having to visit every module and check if it implements the interface.",
+      "parentUuid": "aae3f348_6973cad3",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1f64102_e3fe8814",
         "filename": "apex/apex.go",
         "patchSetId": 5
