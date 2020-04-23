@@ -69,6 +69,24 @@
       "revId": "b549c137ddbedf559a765936c65411acec2d6a85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbb76e5_43354767",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-23T10:45:15Z",
+      "side": 1,
+      "message": "Thanks. What happens if one of the extra dependencies added via uses_libs property is not also part of the APEX?",
+      "parentUuid": "57328d95_6149a0fa",
+      "revId": "b549c137ddbedf559a765936c65411acec2d6a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
