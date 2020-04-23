@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "aae3f348_6973cad3",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T01:26:40Z",
+      "side": 1,
+      "message": "Yes, but then I have to do this in all of GenerateAndroidBuildActions of module types that can be in APEX. That looks like a quite duplication.",
+      "parentUuid": "74f9db3b_f16d3364",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1f64102_e3fe8814",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -208,6 +226,30 @@
     },
     {
       "key": {
+        "uuid": "527591d7_5d234729",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T01:26:40Z",
+      "side": 1,
+      "message": "libstatssocket is the concrete example. It\u0027s a library providing stable C API and is in the statsd APEX. So, normally the dependency to the lib from outside of the APEX is satisfied by the stub of the library. But the APEX doesn\u0027t exist in the master or master-art branch. In that case, we have to install it to the platform, otherwise, we will experience runtime error.\n\nSee the build error for PS3 where this fixup doesn\u0027t exist.",
+      "parentUuid": "bcf27b05_448cb00e",
+      "range": {
+        "startLine": 883,
+        "startChar": 58,
+        "endLine": 884,
+        "endChar": 42
+      },
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "baf84b0b_af9b3b3c",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -267,6 +309,30 @@
       "side": 1,
       "message": "Why do they need to be available to platform for the SDK? The SDK isn\u0027t platform, at least not in the sense that\u0027s relevant here, is it?",
       "parentUuid": "a23fb3b9_ae50f366",
+      "range": {
+        "startLine": 890,
+        "startChar": 40,
+        "endLine": 890,
+        "endChar": 82
+      },
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d67fc14e_c32d0db8",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T01:26:40Z",
+      "side": 1,
+      "message": "ok, SDK seems to be a wrong example.\n\nframework-all (available only to platform) -\u003e ike-internal (available only to the ipsec apex) is another instance. framework-all doesn\u0027t actually installed to the platform; it\u0027s a build-only artifact. but we are specifying apex_available to prevent accidental inclusion of the library in any apex.",
+      "parentUuid": "6d77b667_b23e357a",
       "range": {
         "startLine": 890,
         "startChar": 40,
