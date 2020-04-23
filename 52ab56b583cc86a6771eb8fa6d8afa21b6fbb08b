@@ -313,6 +313,30 @@
     },
     {
       "key": {
+        "uuid": "169d6d6b_80d7c035",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-23T14:51:02Z",
+      "side": 1,
+      "message": "and a slight note to expand on above. It is still error-prone to blindly compile against any stubs, we still need some form of a check (hopefully we would be able to expand lint for those too).",
+      "parentUuid": "520dcb78_0a2aa39d",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
