@@ -104,6 +104,17 @@ var (
 		"javacFlags", "bootClasspath", "classpath", "processorpath", "processor", "srcJars", "srcJarDir",
 		"outDir", "annoDir", "javaVersion")
 
+	extractMatchingApks = pctx.StaticRule(
+		"extractMatchingApks",
+		blueprint.RuleParams{
+			Command: `rm -rf "$out" && ` +
+				`${config.ExtractApksCmd} -o "${out}" ` +
+				`-sdk-version=${sdk-version} -abis=${abis} --screen-densities=${screen-densities} ` +
+				`${in}`,
+			CommandDeps: []string{"${config.ExtractApksCmd}"},
+		},
+		"sdk-version", "abis", "screen-densities")
+
 	turbine = pctx.AndroidStaticRule("turbine",
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
