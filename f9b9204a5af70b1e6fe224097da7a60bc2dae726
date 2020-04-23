@@ -118,6 +118,30 @@
       "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ea2969_c2df9842",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T10:08:28Z",
+      "side": 1,
+      "message": "\u003e I\u0027ll remove the fallback behavior.\n\nAck. But FTR, I am fine with the fallback behavior.\n\n\u003e because sdkMutator clears Sdk_version property for non-sdk variants.\n\nI see. I thought c.SdkVersion() would return \"\" in that case, but it\u0027s not; it returns what\u0027s written in sdk_version property.",
+      "parentUuid": "22e77b60_454e0a9b",
+      "range": {
+        "startLine": 2861,
+        "startChar": 0,
+        "endLine": 2863,
+        "endChar": 2
+      },
+      "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
