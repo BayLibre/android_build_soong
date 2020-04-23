@@ -70,6 +70,30 @@
       "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "159e8c68_84f652de",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T09:48:47Z",
+      "side": 1,
+      "message": "Since this is a fallback behavior, we can have \u0027sdk_version:30\u0027 \u0026\u0026 \u0027min_sdk_version:29\u0027 at the same time, right? If so, I feel fine with this change.\n\nAlso, if I am okay with this, I wonder why we even have the \u0027c.UseSdk()\u0027 condition.",
+      "parentUuid": "a84104fd_196318c0",
+      "range": {
+        "startLine": 2861,
+        "startChar": 0,
+        "endLine": 2863,
+        "endChar": 2
+      },
+      "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
