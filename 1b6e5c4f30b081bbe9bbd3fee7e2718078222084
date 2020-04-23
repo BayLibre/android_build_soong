@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cdd4091_f01f4b19",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-23T10:53:48Z",
+      "side": 1,
+      "message": "This is wrong as it claims that this has a host specific variant but does not provide a host specific library for it. Ditto other test changes.",
+      "revId": "1b6e5c4f30b081bbe9bbd3fee7e2718078222084",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
