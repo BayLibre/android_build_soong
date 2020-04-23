@@ -22,6 +22,30 @@
       "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3b24f0_4149d5e6",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T07:27:48Z",
+      "side": 1,
+      "message": "Hmm, does this prevent us from doing the __builtin_available check that we will be doing? If so, no. If not, yes.\n\nWhy do you want to fallback to sdk_version in case when min_sdk_version is not set? Can\u0027t we just set min_sdk_version anyway?",
+      "parentUuid": "b22754b2_f335faf0",
+      "range": {
+        "startLine": 2861,
+        "startChar": 0,
+        "endLine": 2863,
+        "endChar": 2
+      },
+      "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
