@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "882e71c8_79bc601b",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1905,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-23T06:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0486a47d_a453768d",
+      "range": {
+        "startLine": 1905,
+        "startChar": 30,
+        "endLine": 1905,
+        "endChar": 48
+      },
+      "revId": "0761ff9481c7049a9a450226bc8fa147cb475c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aa510bd_273f5739",
         "filename": "apex/apex_test.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3b40479b_372aa99c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-23T06:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa510bd_273f5739",
+      "range": {
+        "startLine": 1452,
+        "startChar": 27,
+        "endLine": 1452,
+        "endChar": 49
+      },
+      "revId": "0761ff9481c7049a9a450226bc8fa147cb475c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "463300c9_f1509387",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "0761ff9481c7049a9a450226bc8fa147cb475c1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4093511_b5dd7941",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2851,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-23T06:45:00Z",
+      "side": 1,
+      "message": "For now it is hard to test it because sdk_version is cleared for non-sdk variant.",
+      "parentUuid": "463300c9_f1509387",
+      "range": {
+        "startLine": 2851,
+        "startChar": 60,
+        "endLine": 2851,
+        "endChar": 76
+      },
+      "revId": "0761ff9481c7049a9a450226bc8fa147cb475c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
