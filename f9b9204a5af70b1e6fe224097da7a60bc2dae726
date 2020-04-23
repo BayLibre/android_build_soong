@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b22754b2_f335faf0",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-23T06:48:11Z",
+      "side": 1,
+      "message": "Jiyong, in this change, I added support \"apex\" variants that are spawned from \"sdk\" variants.\nFor example, when a module sets sdk_version and sdk_variant_only, apex will bundle the apex variant spawned from sdk variant, which have set sdk_version.  I think we could accept that cc.sdk_version \u003c\u003d apex.min_sdk_version for native modules.",
+      "range": {
+        "startLine": 2861,
+        "startChar": 0,
+        "endLine": 2863,
+        "endChar": 2
+      },
+      "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
