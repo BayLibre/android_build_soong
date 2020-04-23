@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efd0dcf4_197f6f32",
+        "filename": "java/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-23T09:39:39Z",
+      "side": 1,
+      "message": "This does not seem to be a standard part of the check so a comment to explain what this is doing and why would be really useful.",
+      "revId": "b549c137ddbedf559a765936c65411acec2d6a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17b72e0_f00c3474",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-23T09:39:39Z",
+      "side": 1,
+      "message": "This is overriding the default of true so a comment to explain why would be helpful.",
+      "revId": "b549c137ddbedf559a765936c65411acec2d6a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
