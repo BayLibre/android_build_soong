@@ -94,6 +94,30 @@
       "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22e77b60_454e0a9b",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-23T09:58:15Z",
+      "side": 1,
+      "message": "For now, there is no checks about relation between sdk_version and min_sdk_version.\n\nUseSdk() is required because sdkMutator clears Sdk_version property for non-sdk variants. \n\n  cc_library{\n   name: \"foo\",\n   sdk_version: \"current\",\n   min_sdk_version: \"29\",\n   apex_available: [\"com.foo\"],\n   ..\n  }\n\nFor the library \"foo\", sdk variant has sdk_version: current, but platform variant and apex(com.foo) variant doesn\u0027t have sdk_version. So we can\u0027t fallback to it in most cases. Very confusing. ;-)\n\nI\u0027ll remove the fallback behavior. I think it is just adding complexity on top of already complicated things.",
+      "parentUuid": "159e8c68_84f652de",
+      "range": {
+        "startLine": 2861,
+        "startChar": 0,
+        "endLine": 2863,
+        "endChar": 2
+      },
+      "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
