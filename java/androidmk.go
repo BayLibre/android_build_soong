@@ -680,3 +680,20 @@ func (r *RuntimeResourceOverlay) AndroidMkEntries() []android.AndroidMkEntries {
 		},
 	}}
 }
+
+func (apkSet *ApkSet) AndroidMkEntries() []android.AndroidMkEntries {
+	return []android.AndroidMkEntries{
+		android.AndroidMkEntries{
+			Class:      "ETC",
+			OutputFile: android.OptionalPathForPath(apkSet.packedOutput),
+			Include:    "$(BUILD_PREBUILT)",
+			ExtraEntries: []android.AndroidMkExtraEntriesFunc{
+				func(entries *android.AndroidMkEntries) {
+					// TODO(asmundak): add needed entries
+					entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE",
+						!apkSet.IsInstallable())
+				},
+			},
+		},
+	}
+}

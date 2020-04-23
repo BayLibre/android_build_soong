@@ -100,6 +100,23 @@ var (
 		"javacFlags", "bootClasspath", "classpath", "processorpath", "processor", "srcJars", "srcJarDir",
 		"outDir", "annoDir", "javaVersion")
 
+	_                 = pctx.SourcePathVariable("bundletoolJar", "prebuilts/bundletool/bundletool-all.jar")
+	bundletoolExtract = pctx.AndroidStaticRule("bundletoolExtract",
+		blueprint.RuleParams{
+			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
+				`${config.JavaCmd} ${config.JavaVmFlags} -jar ${bundletoolJar}` +
+				` extract-apks --device-spec="$deviceConfig" --apks "$apkSet"` +
+				` --output-dir="$outDir" &&` +
+				// TODO(asmundak): remove this, use --output-zip option for bundletool when readyq
+				`${config.SoongZipCmd} -o "$packedOutput" -L 0 -C "$outDir" -D "$outDir"`,
+			CommandDeps: []string{
+				"${config.JavaCmd}",
+				"${bundletoolJar}",
+				"${config.SoongZipCmd}", // TODO(asmundak): remove, see above
+			},
+		},
+		"apkSet", "outDir", "deviceConfig", "packedOutput")
+
 	turbine = pctx.AndroidStaticRule("turbine",
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
