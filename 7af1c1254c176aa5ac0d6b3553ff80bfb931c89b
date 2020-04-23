@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8ca4afa_e56446bf",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T01:46:21Z",
+      "side": 1,
+      "message": "can you add a test that covers this path? I wonder when this path is triggered.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 71
+      },
+      "revId": "7af1c1254c176aa5ac0d6b3553ff80bfb931c89b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
