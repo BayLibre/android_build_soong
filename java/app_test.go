@@ -141,6 +141,27 @@ func TestAppSplits(t *testing.T) {
 	}
 }
 
+func TestAndroidAppSet(t *testing.T) {
+	ctx, config := testJava(t, `
+		android_app_set {
+			name: "foo",
+			set: "prebuilts/apks/app.apks",
+        }
+        `)
+	module := ctx.ModuleForTests("foo", "android_common")
+	const packedSplitApks = "extracted.zip"
+	if module.Output(packedSplitApks).Rule == nil {
+		t.Errorf("expected output %s is missing", packedSplitApks)
+	}
+	mkEntries := android.AndroidMkEntriesForTest(t, config, "", module.Module())[0]
+	actualMaster := mkEntries.EntryMap["LOCAL_APK_SET_MASTER_FILE"]
+	expectedMaster := []string{"foo.apk"}
+	if !reflect.DeepEqual(actualMaster, expectedMaster) {
+		t.Errorf("Unexpected LOCAL_APK_SET_MASTER_FILE value: '%s', expected: '%s',",
+			actualMaster, expectedMaster)
+	}
+}
+
 func TestPlatformAPIs(t *testing.T) {
 	testJava(t, `
 		android_app {
