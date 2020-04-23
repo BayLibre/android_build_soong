@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "994f0bba_aae2f1cc",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-23T14:08:33Z",
+      "side": 1,
+      "message": "Resolving for now.",
+      "parentUuid": "56027f33_b7f87066",
+      "range": {
+        "startLine": 1939,
+        "startChar": 0,
+        "endLine": 1939,
+        "endChar": 44
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54173683_b7c756ee",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -192,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "c895b863_e66c5a0c",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-23T14:08:33Z",
+      "side": 1,
+      "message": "Note that this is for stable sdks only, we do that on the java side via checkLinkType already. So, updatable apps are already covered, this change is only to enforce the same for java deps that go into the apex. Without duplicating logic more.\n\nGiven that we don\u0027t need top-down mutator, I\u0027d like to avoid this \"spooky action at distance\". SdkVersion in this case is a property of a java_library, and it is its responsibility to adhere to the semantics.",
+      "parentUuid": "479d58b7_35468b71",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -260,6 +308,30 @@
       "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7828dcb3_72d33886",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-23T14:08:33Z",
+      "side": 1,
+      "message": "Done. The fact that apex only accepts java libs and android apps makes it easier. We don\u0027t have to worry about vairous imports (aar_import) for example (not in apex.go at the very least, the todo is still there for checklinktype).",
+      "parentUuid": "824e08fe_603348c0",
+      "range": {
+        "startLine": 1946,
+        "startChar": 0,
+        "endLine": 1951,
+        "endChar": 5
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
