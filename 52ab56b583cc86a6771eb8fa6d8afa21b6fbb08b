@@ -265,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "92758360_c61d3fba",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T07:19:46Z",
+      "side": 1,
+      "message": "Sorry, if I have made you feel confused. The existence of \u0027framework\u0027 and \u0027ext\u0027 in the whitelist made me to think that this implementation doesn\u0027t distinguish dependency that will be part of the app and those won\u0027t.\n\nMy proposal is doing the two checks that I presented just above.\n\n\u003e 1) everything that are \"part\" of an app (or an apex) should have min_sdk_version: 29.\n\u003e 2) all the external dependencies (things that are not part of the app or apex) should be satisfied by SDK 29.\n\nAbove is about \u0027what\u0027, not \u0027how\u0027 though. \n\nAs for \"how\", I suggest implementing this by traversing the graph from the root node (app); you gather all dependencies that becomes part of the app. It includes static java dependencies and static/dynamic native dependencies except for the libraries providing stub. Then you make sure that they all satisfy msv \u003c\u003d 29 and don\u0027t have any extra dynamic java dependency other than SDK stubs.\n\n\u003e checking every library dozen of times (death by thousand cuts)\n\nYes, for some of the commonly used libraries, we will be running the check multiple times (per app). However, I believe build performance less important than making the check correct. Also, given that we only have a few Mainline module apks, I don\u0027t think the performance hit is significant. Nevertheless, if there is any way to improve the performance while keeping the check correct, I am on it.",
+      "parentUuid": "1b603939_9e80fd06",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
