@@ -46,6 +46,30 @@
       "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84104fd_196318c0",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2863,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-23T09:07:42Z",
+      "side": 1,
+      "message": "In general apex variants don\u0027t have sdk_version because sdk mutator clears sdk_version for platform variants and apex variants are based on platform variants. By the way, when a native module sets \"sdk_variant_only\", apex will bundle \"sdk\" variant of the module (and its transitive deps from \"sdk\" variants as well). For those sdk variants which set \"sdk_version\", setting \"min_sdk_version\" seems to be redundant. This fallback happens only when it is apex variant and also sdk variant.\n\nYeah, instead we could set min_sdk_version. eg for libbase_ndk, libfmt_ndk, .. \n\nIn fact, I ran into this with sdkext apex with derive_sdk. aosp/1287137 tried to make derive_sdk cc_binary a normal apex variant but it gets reverted with some selinux violations. However, at the moment, I thought people(at least, Anton) might get confused when they find that sdk variant(or its sdk_version setting) is not used for apex.\n\nHonestly, I\u0027m not sure which is better: enforcing strictly on min_sdk_version, or fallback to sdk_version (for sdk variants). For me both seems fine. ;)\n\nIf you still have concerns about fallback behavior, I\u0027m fine to revert it.",
+      "parentUuid": "df3b24f0_4149d5e6",
+      "range": {
+        "startLine": 2861,
+        "startChar": 0,
+        "endLine": 2863,
+        "endChar": 2
+      },
+      "revId": "f9b9204a5af70b1e6fe224097da7a60bc2dae726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
