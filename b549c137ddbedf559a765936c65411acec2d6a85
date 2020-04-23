@@ -87,6 +87,24 @@
       "revId": "b549c137ddbedf559a765936c65411acec2d6a85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7e960f_e301b849",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T11:22:54Z",
+      "side": 1,
+      "message": "Like other dynamic dependency for java libs, the app will experience ClassNotFound exceptions.",
+      "parentUuid": "0dbb76e5_43354767",
+      "revId": "b549c137ddbedf559a765936c65411acec2d6a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
