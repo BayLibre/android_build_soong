@@ -16,6 +16,24 @@
       "revId": "f21dfa27c762855350d04fda8f2d2538c34b266a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b37ac57_68d31d13",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-23T18:38:11Z",
+      "side": 1,
+      "message": "I was told that we prefer neverallow... :-) When should we be using neverallow?\n\nReplaced with an if check.",
+      "parentUuid": "94728d91_a8a5f2c6",
+      "revId": "f21dfa27c762855350d04fda8f2d2538c34b266a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
