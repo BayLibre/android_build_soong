@@ -22,6 +22,30 @@
       "revId": "7af1c1254c176aa5ac0d6b3553ff80bfb931c89b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12beb73_ff70f864",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-23T08:43:25Z",
+      "side": 1,
+      "message": "There is a test for this in apex/apex_test.go, at lines 4431-4436 and 4466-4470.",
+      "parentUuid": "e8ca4afa_e56446bf",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 71
+      },
+      "revId": "7af1c1254c176aa5ac0d6b3553ff80bfb931c89b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
