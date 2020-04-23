@@ -141,6 +141,21 @@ func TestAppSplits(t *testing.T) {
 	}
 }
 
+func TestAndroidAppSet(t *testing.T) {
+	ctx, _ := testJava(t, `
+		android_app_set {
+			name: "foo",
+			set: "prebuilts/apks/app.apks",
+        }
+        `)
+	module := ctx.ModuleForTests("foo", "android_common")
+	const packedSplitApks = "extracted.zip"
+	if module.Output(packedSplitApks).Rule == nil {
+		t.Errorf("expected output %s is missing", packedSplitApks)
+	}
+	// TODO(asmundak): verify androidmk?
+}
+
 func TestPlatformAPIs(t *testing.T) {
 	testJava(t, `
 		android_app {
