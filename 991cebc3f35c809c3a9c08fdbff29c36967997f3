@@ -173,6 +173,24 @@
     },
     {
       "key": {
+        "uuid": "ec01c234_49b74950",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-23T04:11:06Z",
+      "side": 1,
+      "message": "Having to manually call something on ApexModuleBase from each module is quite error-prone, isn\u0027t it? I don\u0027t understand why that is preferred over this mutator.\n\nThe mixin idea you suggested looks good; I expect it might be useful in some other places as well. But that seems to be out of scope of this change. Can I do that as a separate follow-up change?",
+      "parentUuid": "8d75a4ce_e2e3c759",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1f64102_e3fe8814",
         "filename": "apex/apex.go",
         "patchSetId": 5
