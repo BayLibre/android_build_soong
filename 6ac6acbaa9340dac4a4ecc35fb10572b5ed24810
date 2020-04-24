@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8ad8869_c9d55b97",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-24T11:23:51Z",
+      "side": 1,
+      "message": "Done.\n\nThe check isn\u0027t really named \"checkUpdatable\"; also eventually we probably want more things in the if(Updatable) clause. Moved for now though.",
+      "parentUuid": "e7b6e7c8_6a090160",
+      "range": {
+        "startLine": 1949,
+        "startChar": 4,
+        "endLine": 1949,
+        "endChar": 43
+      },
+      "revId": "6ac6acbaa9340dac4a4ecc35fb10572b5ed24810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73ccfc8d_fd73c63c",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6ac6acbaa9340dac4a4ecc35fb10572b5ed24810",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20902cd5_ad687ad5",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-24T11:23:51Z",
+      "side": 1,
+      "message": "Done. Oops, you can tell I was just copy-pasting...",
+      "parentUuid": "73ccfc8d_fd73c63c",
+      "range": {
+        "startLine": 1362,
+        "startChar": 20,
+        "endLine": 1362,
+        "endChar": 23
+      },
+      "revId": "6ac6acbaa9340dac4a4ecc35fb10572b5ed24810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

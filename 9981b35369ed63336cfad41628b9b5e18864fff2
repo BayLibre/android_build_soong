@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "264c89e8_007c34bd",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-24T11:23:51Z",
+      "side": 1,
+      "message": "I am getting mixed signals here. Jooyung, is this something you are looking into now? What does it take to make sure they use the stable interfaces? Sdk_Version?",
+      "parentUuid": "766bd74e_429e4902",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
