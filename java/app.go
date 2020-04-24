@@ -1452,6 +1452,14 @@ func (r *RuntimeResourceOverlay) targetSdkVersion() sdkSpec {
 	return r.sdkVersion()
 }
 
+func (r *RuntimeResourceOverlay) Certificate() Certificate {
+	return r.certificate
+}
+
+func (r *RuntimeResourceOverlay) OutputFile() android.Path {
+	return r.outputFile
+}
+
 // runtime_resource_overlay generates a resource-only apk file that can overlay application and
 // system resources at run time.
 func RuntimeResourceOverlayFactory() android.Module {

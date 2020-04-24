@@ -520,7 +520,7 @@ func TestDefaults(t *testing.T) {
 			prebuilts: ["myetc"],
 			native_shared_libs: ["mylib"],
 			java_libs: ["myjar"],
-			apps: ["AppFoo"],
+			apps: ["AppFoo", "rro"],
 		}
 
 		prebuilt_etc {
@@ -561,12 +561,18 @@ func TestDefaults(t *testing.T) {
 			system_modules: "none",
 			apex_available: [ "myapex" ],
 		}
+
+		runtime_resource_overlay {
+			name: "rro",
+		}
+
 	`)
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
 		"etc/myetc",
 		"javalib/myjar.jar",
 		"lib64/mylib.so",
 		"app/AppFoo/AppFoo.apk",
+		"overlay/rro.apk",
 	})
 }
 

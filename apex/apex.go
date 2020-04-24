@@ -1764,6 +1764,24 @@ func apexFileForAndroidApp(ctx android.BaseModuleContext, aapp interface {
 	return af
 }
 
+func apexFileForRuntimeResourceOverlay(ctx android.BaseModuleContext, rro interface {
+	android.Module
+	OutputFile() android.Path
+	Certificate() java.Certificate
+}) apexFile {
+	rroDir := "overlay"
+	fileToCopy := rro.OutputFile()
+	af := newApexFile(ctx, fileToCopy, rro.Name(), rroDir, app, rro)
+	af.certificate = rro.Certificate()
+
+	if a, ok := rro.(interface {
+		OverriddenManifestPackageName() string
+	}); ok {
+		af.overriddenPackageName = a.OverriddenManifestPackageName()
+	}
+	return af
+}
+
 // Context "decorator", overriding the InstallBypassMake method to always reply `true`.
 type flattenedApexContext struct {
 	android.ModuleContext
@@ -2048,6 +2066,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					filesInfo = append(filesInfo, apexFileForAndroidApp(ctx, ap))
 				} else if ap, ok := child.(*java.AndroidTestHelperApp); ok {
 					filesInfo = append(filesInfo, apexFileForAndroidApp(ctx, ap))
+				} else if rro, ok := child.(*java.RuntimeResourceOverlay); ok {
+					filesInfo = append(filesInfo, apexFileForRuntimeResourceOverlay(ctx, rro))
 				} else {
 					ctx.PropertyErrorf("apps", "%q is not an android_app module", depName)
 				}
