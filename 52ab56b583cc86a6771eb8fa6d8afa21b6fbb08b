@@ -337,6 +337,30 @@
     },
     {
       "key": {
+        "uuid": "91241226_0876acbe",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T13:10:50Z",
+      "side": 1,
+      "message": "\u003e we should allow for java to depend on something with higher min_sdk_version.\n\nI agree with this. I actually want that even for the native side.  https://docs.google.com/document/d/14Y9Vfrh2XuQTns8fLbL9PdRDz0sHOs6Ieflijiqvebo/edit#heading\u003dh.169k8aww7wiu\n\nSo, yeah, we need some kind of lint tool runnin so that newer APIs are allowed while they are guaranteed to be behind version checks.",
+      "parentUuid": "169d6d6b_80d7c035",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "52ab56b583cc86a6771eb8fa6d8afa21b6fbb08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "357c16a3_7daa33e6",
         "filename": "java/java.go",
         "patchSetId": 2
