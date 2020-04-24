@@ -101,34 +101,57 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		targets := dexpreoptTargets(ctx)
 		deviceDir := android.PathForOutput(ctx, ctx.Config().DeviceName())
 
-		artModules := global.ArtApexJars
+		artSubdir := "apex/com.android.art/javalib"
+		frameworkSubdir := "system/framework"
+		frameworkSystemExtSubdir := "system/system_ext/framework"
+
+		var artModules []string
+		var artModulesSubdirs []string
+		for _, jar := range global.ArtApexJars {
+			_, module := android.SplitJarPair(jar)
+			artModules = append(artModules, module)
+			artModulesSubdirs = append(artModulesSubdirs, artSubdir)
+		}
+
 		// With EMMA_INSTRUMENT_FRAMEWORK=true the Core libraries depend on jacoco.
 		if ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
 			artModules = append(artModules, "jacocoagent")
+			artModulesSubdirs = append(artModulesSubdirs, artSubdir)
 		}
-		frameworkModules := android.RemoveListFromList(global.BootJars,
-			concat(artModules, dexpreopt.GetJarsFromApexJarPairs(global.UpdatableBootJars)))
 
-		artSubdir := "apex/com.android.art/javalib"
-		frameworkSubdir := "system/framework"
+		var frameworkModules []string
+		var frameworkModulesSubdirs []string
+		for _, jar := range global.BootJars {
+			partition, module := android.SplitJarPair(jar)
+			if partition == "system" {
+				frameworkModulesSubdirs = append(frameworkModulesSubdirs, frameworkSubdir)
+				frameworkModules = append(frameworkModules, module)
+			} else if partition == "system_ext" {
+				frameworkModulesSubdirs = append(frameworkModulesSubdirs, frameworkSystemExtSubdir)
+				frameworkModules = append(frameworkModules, module)
+			}
+			// Ignore any other partiton
+		}
 
 		// ART config for the primary boot image in the ART apex.
 		// It includes the Core Libraries.
 		artCfg := bootImageConfig{
-			name:          artBootImageName,
-			stem:          "boot",
-			installSubdir: artSubdir,
-			modules:       artModules,
+			name:           artBootImageName,
+			stem:           "boot",
+			installSubdir:  artSubdir,
+			modules:        artModules,
+			modulesSubdirs: artModulesSubdirs,
 		}
 
 		// Framework config for the boot image extension.
 		// It includes framework libraries and depends on the ART config.
 		frameworkCfg := bootImageConfig{
-			extends:       &artCfg,
-			name:          frameworkBootImageName,
-			stem:          "boot",
-			installSubdir: frameworkSubdir,
-			modules:       frameworkModules,
+			extends:        &artCfg,
+			name:           frameworkBootImageName,
+			stem:           "boot",
+			installSubdir:  frameworkSubdir,
+			modules:        frameworkModules,
+			modulesSubdirs: frameworkModulesSubdirs,
 		}
 
 		configs := map[string]*bootImageConfig{
@@ -164,8 +187,8 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 					images:          imageDir.Join(ctx, imageName),
 					imagesDeps:      c.moduleFiles(ctx, imageDir, ".art", ".oat", ".vdex"),
 				}
-				for _, m := range c.modules {
-					variant.dexLocations = append(variant.dexLocations, getDexLocation(ctx, target, c.installSubdir, stemOf(m)+".jar"))
+				for i, m := range c.modules {
+					variant.dexLocations = append(variant.dexLocations, getDexLocation(ctx, target, c.modulesSubdirs[i], stemOf(m)+".jar"))
 				}
 				variant.dexLocationsDeps = variant.dexLocations
 				c.variants = append(c.variants, variant)

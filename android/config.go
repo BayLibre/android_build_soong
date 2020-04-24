@@ -896,20 +896,20 @@ func (c *config) ModulesLoadedByPrivilegedModules() []string {
 	return c.productVariables.ModulesLoadedByPrivilegedModules
 }
 
-// Expected format for apexJarValue = <apex name>:<jar name>
-func SplitApexJarPair(apexJarValue string) (string, string) {
-	var apexJarPair []string = strings.SplitN(apexJarValue, ":", 2)
-	if apexJarPair == nil || len(apexJarPair) != 2 {
-		panic(fmt.Errorf("malformed apexJarValue: %q, expected format: <apex>:<jar>",
-			apexJarValue))
+// Expected format for jarValue = <prefix>:<jar name>
+func SplitJarPair(jarValue string) (string, string) {
+	var jarPair []string = strings.SplitN(jarValue, ":", 2)
+	if jarPair == nil || len(jarPair) != 2 {
+		panic(fmt.Errorf("malformed jarValue: %q, expected format: <prefix>:<jar>",
+			jarValue))
 	}
-	return apexJarPair[0], apexJarPair[1]
+	return jarPair[0], jarPair[1]
 }
 
 func (c *config) BootJars() []string {
-	jars := c.productVariables.BootJars
-	for _, p := range c.productVariables.UpdatableBootJars {
-		_, jar := SplitApexJarPair(p)
+	var jars []string
+	for _, p := range append(c.productVariables.UpdatableBootJars, c.productVariables.BootJars...) {
+		_, jar := SplitJarPair(p)
 		jars = append(jars, jar)
 	}
 	return jars

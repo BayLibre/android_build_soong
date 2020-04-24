@@ -46,11 +46,14 @@ type bootImageConfig struct {
 	// Output directory for the image files with debug symbols.
 	symbolsDir android.OutputPath
 
-	// Subdirectory where the image files are installed.
+	// The directories that this image installs to.
 	installSubdir string
 
 	// The names of jars that constitute this image.
 	modules []string
+
+	// The installation subdirs for jars that constitute this image.
+	modulesSubdirs []string
 
 	// File paths to jars.
 	dexPaths     android.WritablePaths // for this image
