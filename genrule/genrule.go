@@ -226,7 +226,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				if t, ok := module.(android.HostToolProvider); ok {
 					if !t.(android.Module).Enabled() {
 						if ctx.Config().AllowMissingDependencies() {
-							ctx.AddMissingDependencies([]string{tool})
+							ctx.AddMissingDependenciesWithReason([]string{tool}, "Module is disabled")
 						} else {
 							ctx.ModuleErrorf("depends on disabled module %q", tool)
 						}

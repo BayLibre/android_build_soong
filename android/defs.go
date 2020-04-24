@@ -76,7 +76,7 @@ var (
 
 	ErrorRule = pctx.AndroidStaticRule("Error",
 		blueprint.RuleParams{
-			Command:     `echo "$error" && false`,
+			Command:     `echo -e "$error" && false`,
 			Description: "error building $out",
 		},
 		"error")

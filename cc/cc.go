@@ -2445,11 +2445,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			if ccWholeStaticLib, ok := ccDep.(*Module); ok {
 				staticLib := ccWholeStaticLib.linker.(libraryInterface)
 				if missingDeps := staticLib.getWholeStaticMissingDeps(); missingDeps != nil {
-					postfix := " (required by " + ctx.OtherModuleName(dep) + ")"
-					for i := range missingDeps {
-						missingDeps[i] += postfix
-					}
-					ctx.AddMissingDependencies(missingDeps)
+					ctx.AddMissingDependenciesWithReason(missingDeps, "Required by "+ctx.OtherModuleName(dep))
 				}
 				depPaths.WholeStaticLibObjs = depPaths.WholeStaticLibObjs.Append(staticLib.objs())
 			} else {
@@ -2494,7 +2490,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				if !ctx.Config().AllowMissingDependencies() {
 					ctx.ModuleErrorf("module %q missing output file", depName)
 				} else {
-					ctx.AddMissingDependencies([]string{depName})
+					ctx.AddMissingDependenciesWithReason([]string{depName}, "Missing output file")
 				}
 				return
 			}
