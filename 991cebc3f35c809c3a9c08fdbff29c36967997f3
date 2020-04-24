@@ -209,6 +209,24 @@
     },
     {
       "key": {
+        "uuid": "b436e701_d95aa91f",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T07:03:14Z",
+      "side": 1,
+      "message": "I guess this is a question to Colin. I agree with you Martin.",
+      "parentUuid": "4b43d3b2_d7425589",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1f64102_e3fe8814",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -328,6 +346,30 @@
     },
     {
       "key": {
+        "uuid": "50b4ed52_f5782d40",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T07:03:14Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion.",
+      "parentUuid": "af83b6d1_ffcf3ff2",
+      "range": {
+        "startLine": 883,
+        "startChar": 58,
+        "endLine": 884,
+        "endChar": 42
+      },
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baf84b0b_af9b3b3c",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -444,6 +486,30 @@
       "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d85ded_8aec8b48",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T07:03:14Z",
+      "side": 1,
+      "message": "Yeah, \"//apex_available:nowhere\" could be a solution for the issue. Thanks. Filed a bug and left a TODO.",
+      "parentUuid": "15b73fa2_678d84b1",
+      "range": {
+        "startLine": 890,
+        "startChar": 40,
+        "endLine": 890,
+        "endChar": 82
+      },
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
