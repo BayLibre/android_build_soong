@@ -105,6 +105,24 @@
       "revId": "b549c137ddbedf559a765936c65411acec2d6a85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ddcd64_4b47d35f",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-24T08:17:53Z",
+      "side": 1,
+      "message": "So, there\u0027s no build time checking done on that. Is that possible to do? Seems like it might be useful?",
+      "parentUuid": "ac7e960f_e301b849",
+      "revId": "b549c137ddbedf559a765936c65411acec2d6a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
