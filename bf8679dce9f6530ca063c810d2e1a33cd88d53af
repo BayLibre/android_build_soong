@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9b0cd04_96141934",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-24T21:14:32Z",
+      "side": 1,
+      "message": "An android.PathContext could be something besides android.ModuleContext and still be a Soong module, for example android.TopDownMutatorContext.  android.EarlyModuleContext would be better, or something hacky like:\n\nin dexpreopt/dexpreopt.go:\n\n   var DexpreoptRunningInSoong \u003d false\n\nin java/dexpreopt.go:\n\n   func init() {\n       dexpreopt.DexpreoptRunningInSoong \u003d true\n   }",
+      "revId": "bf8679dce9f6530ca063c810d2e1a33cd88d53af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
