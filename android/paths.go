@@ -255,7 +255,7 @@ func PathsForModuleSrc(ctx ModuleContext, paths []string) Paths {
 func PathsForModuleSrcExcludes(ctx ModuleContext, paths, excludes []string) Paths {
 	ret, missingDeps := PathsAndMissingDepsForModuleSrcExcludes(ctx, paths, excludes)
 	if ctx.Config().AllowMissingDependencies() {
-		ctx.AddMissingDependencies(missingDeps)
+		ctx.AddMissingDependenciesWithReason(missingDeps, `Is the property annotated with android:"path"?`)
 	} else {
 		for _, m := range missingDeps {
 			ctx.ModuleErrorf(`missing dependency on %q, is the property annotated with android:"path"?`, m)
@@ -777,7 +777,7 @@ func PathForSource(ctx PathContext, pathComponents ...string) SourcePath {
 			reportPathError(ctx, err)
 		}
 		if !exists {
-			modCtx.AddMissingDependencies([]string{path.String()})
+			modCtx.AddMissingDependenciesWithReason([]string{path.String()}, "Source path does not exist")
 		}
 	} else if exists, _, err := ctx.Config().fs.Exists(path.String()); err != nil {
 		reportPathErrorf(ctx, "%s: %s", path, err.Error())
@@ -971,10 +971,11 @@ func PathForModuleSrc(ctx ModuleContext, pathComponents ...string) Path {
 	paths, err := expandOneSrcPath(ctx, p, nil)
 	if err != nil {
 		if depErr, ok := err.(missingDependencyError); ok {
+			reason := fmt.Sprintf(`%s, is the property annotated with android:"path"?`, depErr.Error())
 			if ctx.Config().AllowMissingDependencies() {
-				ctx.AddMissingDependencies(depErr.missingDeps)
+				ctx.AddMissingDependenciesWithReason(depErr.missingDeps, reason)
 			} else {
-				ctx.ModuleErrorf(`%s, is the property annotated with android:"path"?`, depErr.Error())
+				ctx.ModuleErrorf(reason)
 			}
 		} else {
 			reportPathError(ctx, err)

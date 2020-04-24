@@ -499,8 +499,9 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 
 	sdkDep := decodeSdkDep(ctx, sdkContext(j))
 	if sdkDep.invalidVersion {
-		ctx.AddMissingDependencies(sdkDep.bootclasspath)
-		ctx.AddMissingDependencies(sdkDep.java9Classpath)
+		reason := "Invalid SDK version"
+		ctx.AddMissingDependenciesWithReason(sdkDep.bootclasspath, reason)
+		ctx.AddMissingDependenciesWithReason(sdkDep.java9Classpath, reason)
 	} else if sdkDep.useFiles {
 		deps.bootClasspath = append(deps.bootClasspath, sdkDep.jars...)
 		deps.aidlPreprocess = sdkDep.aidl

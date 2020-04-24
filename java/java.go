@@ -887,8 +887,9 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	if ctx.Device() {
 		sdkDep := decodeSdkDep(ctx, sdkContext(j))
 		if sdkDep.invalidVersion {
-			ctx.AddMissingDependencies(sdkDep.bootclasspath)
-			ctx.AddMissingDependencies(sdkDep.java9Classpath)
+			reason := "Invalid SDK version"
+			ctx.AddMissingDependenciesWithReason(sdkDep.bootclasspath, reason)
+			ctx.AddMissingDependenciesWithReason(sdkDep.java9Classpath, reason)
 		} else if sdkDep.useFiles {
 			// sdkDep.jar is actually equivalent to turbine header.jar.
 			deps.classpath = append(deps.classpath, sdkDep.jars...)
