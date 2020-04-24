@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7b6e7c8_6a090160",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T05:30:15Z",
+      "side": 1,
+      "message": "nit: perhaps this is stylistic issue, but can we move this check inside the function?",
+      "range": {
+        "startLine": 1949,
+        "startChar": 4,
+        "endLine": 1949,
+        "endChar": 43
+      },
+      "revId": "6ac6acbaa9340dac4a4ecc35fb10572b5ed24810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ccfc8d_fd73c63c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T05:30:15Z",
+      "side": 1,
+      "message": "nit: remove these whitespaces",
+      "range": {
+        "startLine": 1362,
+        "startChar": 20,
+        "endLine": 1362,
+        "endChar": 23
+      },
+      "revId": "6ac6acbaa9340dac4a4ecc35fb10572b5ed24810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

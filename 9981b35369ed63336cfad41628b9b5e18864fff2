@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "766bd74e_429e4902",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T05:30:15Z",
+      "side": 1,
+      "message": "ok, but checkLinkType doesn\u0027t cover jni dependencies. you will have to extend it to cover that.",
+      "parentUuid": "c895b863_e66c5a0c",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
