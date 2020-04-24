@@ -102,7 +102,7 @@ func dexpreoptDisabled(ctx android.PathContext, global *GlobalConfig, module *Mo
 
 	// Don't preopt system server jars that are updatable.
 	for _, p := range global.UpdatableSystemServerJars {
-		if _, jar := android.SplitApexJarPair(p); jar == module.Name {
+		if _, jar := android.SplitJarPair(p); jar == module.Name {
 			return true
 		}
 	}
@@ -560,14 +560,14 @@ func makefileMatch(pattern, s string) bool {
 
 // Expected format for apexJarValue = <apex name>:<jar name>
 func GetJarLocationFromApexJarPair(apexJarValue string) string {
-	apex, jar := android.SplitApexJarPair(apexJarValue)
+	apex, jar := android.SplitJarPair(apexJarValue)
 	return filepath.Join("/apex", apex, "javalib", jar+".jar")
 }
 
-func GetJarsFromApexJarPairs(apexJarPairs []string) []string {
-	modules := make([]string, len(apexJarPairs))
-	for i, p := range apexJarPairs {
-		_, jar := android.SplitApexJarPair(p)
+func GetJarsFromJarPairs(jarPairs []string) []string {
+	modules := make([]string, len(jarPairs))
+	for i, p := range jarPairs {
+		_, jar := android.SplitJarPair(p)
 		modules[i] = jar
 	}
 	return modules
@@ -580,7 +580,7 @@ var nonUpdatableSystemServerJarsKey = android.NewOnceKey("nonUpdatableSystemServ
 func NonUpdatableSystemServerJars(ctx android.PathContext, global *GlobalConfig) []string {
 	return ctx.Config().Once(nonUpdatableSystemServerJarsKey, func() interface{} {
 		return android.RemoveListFromList(global.SystemServerJars,
-			GetJarsFromApexJarPairs(global.UpdatableSystemServerJars))
+			GetJarsFromJarPairs(global.UpdatableSystemServerJars))
 	}).([]string)
 }
 
