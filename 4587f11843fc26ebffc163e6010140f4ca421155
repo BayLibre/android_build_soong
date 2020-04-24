@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a649aa2_f1da6636",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T12:51:51Z",
+      "side": 1,
+      "message": "Done. That\u0027s better! Thanks.",
+      "parentUuid": "58c0a564_b41c9ad0",
+      "range": {
+        "startLine": 888,
+        "startChar": 5,
+        "endLine": 889,
+        "endChar": 43
+      },
+      "revId": "4587f11843fc26ebffc163e6010140f4ca421155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6452c190_9ddc71e5",
         "filename": "apex/apex.go",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0a3d24e9_9e24dd36",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T12:51:51Z",
+      "side": 1,
+      "message": "Right. But when the APEX is in the tree (unlike the master-art case), this problem doesn\u0027t happen. So, once we fix the libstatssocket case, we can fix this check.",
+      "parentUuid": "6452c190_9ddc71e5",
+      "range": {
+        "startLine": 890,
+        "startChar": 80,
+        "endLine": 891,
+        "endChar": 46
+      },
+      "revId": "4587f11843fc26ebffc163e6010140f4ca421155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b06b752d_112c9b88",
         "filename": "apex/apex.go",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "4587f11843fc26ebffc163e6010140f4ca421155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae18c3b_3323f0c5",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-24T12:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b06b752d_112c9b88",
+      "range": {
+        "startLine": 905,
+        "startChar": 6,
+        "endLine": 905,
+        "endChar": 7
+      },
+      "revId": "4587f11843fc26ebffc163e6010140f4ca421155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
