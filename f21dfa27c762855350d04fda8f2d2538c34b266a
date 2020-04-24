@@ -34,6 +34,24 @@
       "revId": "f21dfa27c762855350d04fda8f2d2538c34b266a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c021ef_13b3bdd2",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-24T21:05:41Z",
+      "side": 1,
+      "message": "I\u0027d suggest using neverallow to encode policy that isn\u0027t a natural requirement of the module.  Things like \"only use this property in these directories\" or \"only in these modules\".  It\u0027s useful when you want to poke a hole in a safety net, but don\u0027t want it widely used, but you also don\u0027t want to clutter the actual module code with these extra policy checks.  Something fundamental like \"updatable\" doesn\u0027t make sense without a \"min_sdk_version\" is more readable inline with the rest of the module that is actually using those properties.",
+      "parentUuid": "3b37ac57_68d31d13",
+      "revId": "f21dfa27c762855350d04fda8f2d2538c34b266a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
