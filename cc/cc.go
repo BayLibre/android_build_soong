@@ -2833,7 +2833,7 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 }
 
 // b/154667674: refactor this to handle "current" in a consistent way
-func decodeSdkVersionString(ctx android.BaseModuleContext, versionString string) (int, error) {
+func DecodeNativeSdkVersionString(ctx android.BaseModuleContext, versionString string) (int, error) {
 	if versionString == "" {
 		return 0, fmt.Errorf("not specified")
 	}
@@ -2855,7 +2855,13 @@ func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersi
 	if c.ToolchainLibrary() {
 		return nil
 	}
-	ver, err := decodeSdkVersionString(ctx, c.minSdkVersion())
+	versionString := c.minSdkVersion()
+	if versionString == "" {
+		// for JNI libs of APK-in-APEX might fall into here
+		// for them, setting sdk_version might be enough
+		versionString = c.SdkVersion()
+	}
+	ver, err := DecodeNativeSdkVersionString(ctx, versionString)
 	if err != nil {
 		return err
 	}

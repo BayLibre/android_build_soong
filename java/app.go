@@ -258,10 +258,12 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
-	if Bool(a.appProperties.Updatable) {
+	if Bool(a.appProperties.Updatable) || a.ApexModuleBase.Updatable() {
 		if !a.sdkVersion().stable() {
 			ctx.PropertyErrorf("sdk_version", "Updatable apps must use stable SDKs, found %v", a.sdkVersion())
 		}
+
+		a.checkJniLibsSdkVersion(ctx)
 	}
 
 	a.checkPlatformAPI(ctx)
@@ -601,6 +603,44 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 			ctx.InstallFile(a.installDir, extra.Base(), extra)
 		}
 	}
+}
+
+// if minSdkVersion is set as stable, sdk_vesion of JNI libs should match with it
+// this check is enforced for "updatable" apps (including APK in APEX)
+func (a *AndroidApp) checkJniLibsSdkVersion(ctx android.ModuleContext) {
+	minSdkVersion := a.minSdkVersion()
+	if !minSdkVersion.specified() || !minSdkVersion.stable() {
+		return
+	}
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if !IsJniDepTag(ctx.OtherModuleDependencyTag(m)) {
+			return
+		}
+
+		dep, _ := m.(*cc.Module)
+
+		// to compare two version strings in the same context
+		// get "string" from app and use DecodeNativeSdkVersionString()
+		versionString := minSdkVersion.version.String()
+		effectiveVersion, err := cc.DecodeNativeSdkVersionString(ctx, versionString)
+		if err != nil {
+			ctx.OtherModuleErrorf(dep, "can't compare (min_)sdk_version=%v: %s",
+				minSdkVersion.raw, err.Error())
+			return
+		}
+		depVersion, err := cc.DecodeNativeSdkVersionString(ctx, dep.SdkVersion())
+		if err != nil {
+			ctx.OtherModuleErrorf(dep, "invalid sdk_version: %s", err.Error())
+			return
+		}
+		if int(effectiveVersion) < depVersion {
+			ctx.OtherModuleErrorf(dep, "should support sdk_version(%v) for the APK %q: %v",
+				effectiveVersion, ctx.ModuleName(), depVersion)
+			return
+		}
+
+	})
+
 }
 
 func collectAppDeps(ctx android.ModuleContext, shouldCollectRecursiveNativeDeps bool,

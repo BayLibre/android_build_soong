@@ -1550,6 +1550,86 @@ func TestApexMinSdkVersion_OkayEvenWhenDepIsNewer_IfItSatisfiesApexMinSdkVersion
 	expectLink("mylib", "shared_otherapex", "mylib2", "shared_otherapex")
 }
 
+func TestApexMinSdkVersion_EnforcesApkJniLibs_withSdkVersion_Ok(t *testing.T) {
+	testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			apps: ["AppFoo"],
+			min_sdk_version: "29", // enforces apex.min_sdk_version >= dep.min_sdk_version
+			updatable: true, // enforces app.min_sdk_version >= jni.sdk_version
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		android_app {
+			name: "AppFoo",
+			srcs: ["foo/bar/MyClass.java"],
+			sdk_version: "current",
+			min_sdk_version: "29",
+			system_modules: "none",
+			jni_libs: ["libjni"],
+			stl: "none",
+			apex_available: ["myapex"],
+		}
+
+		cc_library_shared {
+			name: "libjni",
+			srcs: ["mylib.cpp"],
+			stl: "none",
+			system_shared_libs: [],
+			apex_available: ["myapex"],
+			sdk_version: "29",
+		}
+	`)
+
+}
+
+func TestApexMinSdkVersion_EnforcesApkJniLibs_withSdkVersion(t *testing.T) {
+	testApexError(t, `"libjni" .*: should support sdk_version\(29\)`, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			apps: ["AppFoo"],
+			min_sdk_version: "29", // enforces apex.min_sdk_version >= dep.min_sdk_version
+			updatable: true, // enforces app.min_sdk_version >= jni.sdk_version
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		android_app {
+			name: "AppFoo",
+			srcs: ["foo/bar/MyClass.java"],
+			sdk_version: "current",
+			min_sdk_version: "29",
+			system_modules: "none",
+			jni_libs: ["libjni"],
+			stl: "none",
+			apex_available: ["myapex"],
+		}
+
+		// Here, min_sdk_version looks fine but sdk_version
+		cc_library_shared {
+			name: "libjni",
+			srcs: ["mylib.cpp"],
+			stl: "none",
+			system_shared_libs: [],
+			apex_available: ["myapex"],
+			sdk_version: "current",
+			min_sdk_version: "29",
+		}
+	`)
+
+}
+
 func TestFilesInSubDir(t *testing.T) {
 	ctx, _ := testApex(t, `
 		apex {

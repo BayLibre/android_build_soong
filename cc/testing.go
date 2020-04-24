@@ -386,6 +386,16 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 		}
 
 		ndk_prebuilt_object {
+			name: "ndk_crtbegin_so.29",
+			sdk_version: "29",
+		}
+
+		ndk_prebuilt_object {
+			name: "ndk_crtend_so.29",
+			sdk_version: "29",
+		}
+
+		ndk_prebuilt_object {
 			name: "ndk_crtbegin_dynamic.27",
 			sdk_version: "27",
 		}
@@ -434,14 +444,18 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 
 func GatherRequiredFilesForTest(fs map[string][]byte) {
 	fs["prebuilts/ndk/current/sources/cxx-stl/llvm-libc++/libs/arm64-v8a/libc++_shared.so"] = nil
-	fs["prebuilts/ndk/current/platforms/android-27/arch-arm/usr/lib/crtbegin_so.o"] = nil
-	fs["prebuilts/ndk/current/platforms/android-27/arch-arm/usr/lib/crtend_so.o"] = nil
-	fs["prebuilts/ndk/current/platforms/android-27/arch-arm64/usr/lib/crtbegin_so.o"] = nil
-	fs["prebuilts/ndk/current/platforms/android-27/arch-arm64/usr/lib/crtend_so.o"] = nil
-	fs["prebuilts/ndk/current/platforms/android-27/arch-x86/usr/lib/crtbegin_so.o"] = nil
-	fs["prebuilts/ndk/current/platforms/android-27/arch-x86/usr/lib/crtend_so.o"] = nil
-	fs["prebuilts/ndk/current/platforms/android-27/arch-x86_64/usr/lib64/crtbegin_so.o"] = nil
-	fs["prebuilts/ndk/current/platforms/android-27/arch-x86_64/usr/lib64/crtend_so.o"] = nil
+	// adding prebuilt crt* for DNK for testing
+	for _, api := range []string{"27", "29"} {
+		path := "prebuilts/ndk/current/platforms/android-" + api
+		fs[path+"/arch-arm/usr/lib/crtbegin_so.o"] = nil
+		fs[path+"/arch-arm/usr/lib/crtend_so.o"] = nil
+		fs[path+"/arch-arm64/usr/lib/crtbegin_so.o"] = nil
+		fs[path+"/arch-arm64/usr/lib/crtend_so.o"] = nil
+		fs[path+"/arch-x86/usr/lib/crtbegin_so.o"] = nil
+		fs[path+"/arch-x86/usr/lib/crtend_so.o"] = nil
+		fs[path+"/arch-x86_64/usr/lib64/crtbegin_so.o"] = nil
+		fs[path+"/arch-x86_64/usr/lib64/crtend_so.o"] = nil
+	}
 }
 
 func TestConfig(buildDir string, os android.OsType, env map[string]string,
