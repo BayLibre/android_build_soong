@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58c0a564_b41c9ad0",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-24T10:22:10Z",
+      "side": 1,
+      "message": "Still find this confusing. What about: \"Include the lib in platform because the module SDK that ought to provide it doesn\u0027t exist, so it would otherwise be left out completely.\"",
+      "range": {
+        "startLine": 888,
+        "startChar": 5,
+        "endLine": 889,
+        "endChar": 43
+      },
+      "revId": "4587f11843fc26ebffc163e6010140f4ca421155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6452c190_9ddc71e5",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-24T10:22:10Z",
+      "side": 1,
+      "message": "Isn\u0027t the goal to have SDKs for all modules so that this check can be removed completely? I read the filed ticket as specifically for the libstatssocket case, but I thought there could easily be more until everyone has gotten their module SDKs in order.",
+      "range": {
+        "startLine": 890,
+        "startChar": 80,
+        "endLine": 891,
+        "endChar": 46
+      },
+      "revId": "4587f11843fc26ebffc163e6010140f4ca421155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06b752d_112c9b88",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-24T10:22:10Z",
+      "side": 1,
+      "message": "Thanks for filing. Nit: \"TODO\" here",
+      "range": {
+        "startLine": 905,
+        "startChar": 6,
+        "endLine": 905,
+        "endChar": 7
+      },
+      "revId": "4587f11843fc26ebffc163e6010140f4ca421155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
