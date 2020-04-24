@@ -227,6 +227,24 @@
     },
     {
       "key": {
+        "uuid": "2b42d251_41695b45",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-24T15:52:26Z",
+      "side": 1,
+      "message": "It\u0027s something we\u0027ve considered, but its not generally the most pressing because most mutators do significant work that swamps the time spent doing the type assertion on unintersting modules.  Its only the most trivial mutators that would benefit from not visiting everything.  Fixing in a follow up (or not at all if the time spent in the mutator is too small to be worth optimizing) is fine.",
+      "parentUuid": "b436e701_d95aa91f",
+      "revId": "991cebc3f35c809c3a9c08fdbff29c36967997f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1f64102_e3fe8814",
         "filename": "apex/apex.go",
         "patchSetId": 5
