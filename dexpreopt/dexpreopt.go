@@ -589,7 +589,14 @@ func NonUpdatableSystemServerJars(ctx android.PathContext, global *GlobalConfig)
 // at that time (Soong processes the jars in dependency order, which may be different from the
 // the system server classpath order).
 func SystemServerDexJarHostPath(ctx android.PathContext, jar string) android.OutputPath {
-	return android.PathForOutput(ctx, "system_server_dexjars", jar+".jar")
+	if _, ok := ctx.(android.ModuleContext); ok {
+		// Soong module, just use the default output directory $OUT/soong.
+		return android.PathForOutput(ctx, "system_server_dexjars", jar+".jar")
+	} else {
+		// Make module, default output directory is $OUT (passed via the "null config" created
+		// by dexpreopt_gen). Append Soong subdirectory to match Soong module paths.
+		return android.PathForOutput(ctx, "soong", "system_server_dexjars", jar+".jar")
+	}
 }
 
 func contains(l []string, s string) bool {
