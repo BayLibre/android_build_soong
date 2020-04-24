@@ -288,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "bd203bcd_7c8c7ebd",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-24T16:37:46Z",
+      "side": 1,
+      "message": "I\u0027m working on enforcing jni dependencies so that jni deps(including transitive deps) should have \"sdk_version\" to be set older than app.min_sdk_version. (aosp/1295266)\nAnd min_sdk_version of all deps will be enforced as well. (aosp/1287253)",
+      "parentUuid": "264c89e8_007c34bd",
+      "range": {
+        "startLine": 1940,
+        "startChar": 17,
+        "endLine": 1940,
+        "endChar": 21
+      },
+      "revId": "9981b35369ed63336cfad41628b9b5e18864fff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19337a44_43323c16",
         "filename": "apex/apex.go",
         "patchSetId": 2
