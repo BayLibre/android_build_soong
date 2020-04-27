@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc7769cc_21f983a6",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-27T13:45:03Z",
+      "side": 1,
+      "message": "The need for this is dependent on the build tree rather than this script. Does it work to expand ${SOONG_ALLOW_MISSING_DEPENDENCIES} here?",
+      "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
