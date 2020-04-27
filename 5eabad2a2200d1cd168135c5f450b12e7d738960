@@ -22,6 +22,30 @@
       "revId": "5eabad2a2200d1cd168135c5f450b12e7d738960",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d840406_eaba0c01",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2020-04-27T06:44:58Z",
+      "side": 1,
+      "message": "-Wno-zero-as-null-pointer-constant was detected by test_compiler.py. Let\u0027s see if removing it works.",
+      "parentUuid": "38c22993_a67fc40b",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 68
+      },
+      "revId": "5eabad2a2200d1cd168135c5f450b12e7d738960",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
