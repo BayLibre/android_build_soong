@@ -1,0 +1,10 @@
+Verified+1: Bill Peckham <bpeckham@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+1: Daniel Norman <danielnorman@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Bill Peckham <bpeckham@google.com>
+Submitted-at: Mon, 27 Apr 2020 20:59:45 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1292356
+Project: platform/build/soong
+Branch: refs/heads/master
