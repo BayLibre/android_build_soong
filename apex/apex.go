@@ -68,7 +68,7 @@ var (
 	inverseApexAvailWl = invertApexWhiteList(apexAvailWl)
 )
 
-// Transform the map of apex -> modules to module -> apexes.
+// Transform t modules to module -> apexes.
 func invertApexWhiteList(m map[string][]string) map[string][]string {
 	r := make(map[string][]string)
 	for apex, modules := range m {
