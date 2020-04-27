@@ -52,6 +52,24 @@
       "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab2dbd1_ca50bb9c",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-27T17:40:09Z",
+      "side": 1,
+      "message": "FORCE_BUILD_LLVM_COMPONENTS\u003dtrue in the environment would be the better solution here, as we don\u0027t have linux_bionic prebuilts for llvm.",
+      "parentUuid": "4d826159_e72e5bd0",
+      "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
