@@ -699,10 +699,16 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 			info.IsExternal = info.IsExternal && externalDep
 			depInfos[to.Name()] = info
 		} else {
+			toMinSdkVersion := ""
+			if m, ok := to.(interface{ MinSdkVersion() string }); ok {
+				toMinSdkVersion = m.MinSdkVersion()
+			}
+
 			depInfos[to.Name()] = android.ApexModuleDepInfo{
-				To:         to.Name(),
-				From:       []string{from.Name()},
-				IsExternal: externalDep,
+				To:            to.Name(),
+				From:          []string{from.Name()},
+				IsExternal:    externalDep,
+				MinSdkVersion: toMinSdkVersion,
 			}
 		}
 
@@ -710,7 +716,7 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 		return !externalDep
 	})
 
-	a.ApexBundleDepsInfo.BuildDepsInfoLists(ctx, depInfos)
+	a.ApexBundleDepsInfo.BuildDepsInfoLists(ctx, proptools.String(a.properties.Min_sdk_version), depInfos)
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   android.Phony,

@@ -580,6 +580,10 @@ func (c *Module) SdkVersion() string {
 	return String(c.Properties.Sdk_version)
 }
 
+func (c *Module) MinSdkVersion() string {
+	return StringDefault(c.Properties.Min_sdk_version, "(no version)")
+}
+
 func (c *Module) AlwaysSdk() bool {
 	return c.Properties.AlwaysSdk || Bool(c.Properties.Sdk_variant_only)
 }
@@ -3166,4 +3170,5 @@ var Bool = proptools.Bool
 var BoolDefault = proptools.BoolDefault
 var BoolPtr = proptools.BoolPtr
 var String = proptools.String
+var StringDefault = proptools.StringDefault
 var StringPtr = proptools.StringPtr
