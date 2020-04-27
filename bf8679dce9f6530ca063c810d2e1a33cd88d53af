@@ -16,6 +16,24 @@
       "revId": "bf8679dce9f6530ca063c810d2e1a33cd88d53af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23529704_a83d6937",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-27T08:58:01Z",
+      "side": 1,
+      "message": "Thanks. Fixed using the variable approach.",
+      "parentUuid": "a9b0cd04_96141934",
+      "revId": "bf8679dce9f6530ca063c810d2e1a33cd88d53af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
