@@ -34,6 +34,24 @@
       "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d826159_e72e5bd0",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-27T16:22:38Z",
+      "side": 1,
+      "message": "+bionic-team. That sounds like a dependency problem in host Bionic builds. Is there a ticket tracking it? A TODO pointing to it would be good here, since this afaics is a workaround.",
+      "parentUuid": "5f2c86f0_b214a7a0",
+      "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
