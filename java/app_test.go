@@ -1362,44 +1362,65 @@ func TestOverrideAndroidApp(t *testing.T) {
 			base: "foo",
 			package_name: "org.dandroid.bp",
 		}
+
+		override_android_app {
+			name: "quuz",
+			base: "foo",
+			package_name: "org.dandroid.bp",
+			overlay_target_package_name: "org.dandroid.bp",
+		}
 		`)
 
 	expectedVariants := []struct {
-		moduleName     string
-		variantName    string
-		apkName        string
-		apkPath        string
-		signFlag       string
-		overrides      []string
-		aaptFlag       string
-		logging_parent string
+		moduleName                  string
+		variantName                 string
+		apkName                     string
+		apkPath                     string
+		signFlag                    string
+		overrides                   []string
+		aaptFlag                    string
+		logging_parent              string
+		overlay_target_package_name string
 	}{
 		{
-			moduleName:     "foo",
-			variantName:    "android_common",
-			apkPath:        "/target/product/test_device/system/app/foo/foo.apk",
-			signFlag:       "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
-			overrides:      []string{"qux"},
-			aaptFlag:       "",
-			logging_parent: "",
+			moduleName:                  "foo",
+			variantName:                 "android_common",
+			apkPath:                     "/target/product/test_device/system/app/foo/foo.apk",
+			signFlag:                    "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
+			overrides:                   []string{"qux"},
+			aaptFlag:                    "",
+			logging_parent:              "",
+			overlay_target_package_name: "",
 		},
 		{
-			moduleName:     "bar",
-			variantName:    "android_common_bar",
-			apkPath:        "/target/product/test_device/system/app/bar/bar.apk",
-			signFlag:       "cert/new_cert.x509.pem cert/new_cert.pk8",
-			overrides:      []string{"qux", "foo"},
-			aaptFlag:       "",
-			logging_parent: "bah",
+			moduleName:                  "bar",
+			variantName:                 "android_common_bar",
+			apkPath:                     "/target/product/test_device/system/app/bar/bar.apk",
+			signFlag:                    "cert/new_cert.x509.pem cert/new_cert.pk8",
+			overrides:                   []string{"qux", "foo"},
+			aaptFlag:                    "",
+			logging_parent:              "bah",
+			overlay_target_package_name: "",
 		},
 		{
-			moduleName:     "baz",
-			variantName:    "android_common_baz",
-			apkPath:        "/target/product/test_device/system/app/baz/baz.apk",
-			signFlag:       "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
-			overrides:      []string{"qux", "foo"},
-			aaptFlag:       "--rename-manifest-package org.dandroid.bp",
-			logging_parent: "",
+			moduleName:                  "baz",
+			variantName:                 "android_common_baz",
+			apkPath:                     "/target/product/test_device/system/app/baz/baz.apk",
+			signFlag:                    "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
+			overrides:                   []string{"qux", "foo"},
+			aaptFlag:                    "--rename-manifest-package org.dandroid.bp",
+			logging_parent:              "",
+			overlay_target_package_name: "",
+		},
+		{
+			moduleName:                  "quuz",
+			variantName:                 "android_common_quuz",
+			apkPath:                     "/target/product/test_device/system/app/quuz/quuz.apk",
+			signFlag:                    "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
+			overrides:                   []string{"qux", "foo"},
+			aaptFlag:                    "--rename-manifest-package org.dandroid.bp --rename-overlay-target-package org.dandroid.bp",
+			logging_parent:              "",
+			overlay_target_package_name: "org.dandroid.bp",
 		},
 	}
 	for _, expected := range expectedVariants {
