@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38c22993_a67fc40b",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2020-04-27T05:30:53Z",
+      "side": 1,
+      "message": "Some of these are duplicates of ClangExtraCflags.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 68
+      },
+      "revId": "5eabad2a2200d1cd168135c5f450b12e7d738960",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
