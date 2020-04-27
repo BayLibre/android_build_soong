@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0b710da_bf351708",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-27T20:29:02Z",
+      "side": 1,
+      "message": "Remove this or make it Original-Change-Id",
+      "revId": "e003ab996b27e8169d92e8aa81149e6003027f83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "991aac04_3f9450e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-27T20:29:02Z",
+      "side": 1,
+      "message": "Remove the blank line, Merged-In might be ignored if it is not in the last paragraph.",
+      "revId": "e003ab996b27e8169d92e8aa81149e6003027f83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
