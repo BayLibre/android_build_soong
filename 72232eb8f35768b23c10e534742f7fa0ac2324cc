@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3fe4bd_563545ed",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-27T02:14:41Z",
+      "side": 1,
+      "message": "Piggybacking \"apps\" property seems a bit confusing, in that \"rro\" here is installed under different directory (\u003capex\u003e/overlay/).",
+      "range": {
+        "startLine": 523,
+        "startChar": 3,
+        "endLine": 523,
+        "endChar": 8
+      },
+      "revId": "72232eb8f35768b23c10e534742f7fa0ac2324cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b505a19_8de79a8d",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-04-27T02:14:41Z",
+      "side": 1,
+      "message": "Is it okay to ignore \"Theme\" property for RRO-in-APEX?\n\nI\u0027m not familiar with RRO. But in general, the file system image in the APEX container follows the file system structure in other partitions.",
+      "range": {
+        "startLine": 1432,
+        "startChar": 16,
+        "endLine": 1432,
+        "endChar": 88
+      },
+      "revId": "72232eb8f35768b23c10e534742f7fa0ac2324cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
