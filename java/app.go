@@ -127,6 +127,9 @@ type overridableAppProperties struct {
 
 	// the logging parent of this app.
 	Logging_parent *string
+
+	// the target package name of this overlay app. The target package name in the manifest file is used if one was not given.
+	Overlay_target_package_name *string
 }
 
 type AndroidApp struct {
@@ -342,6 +345,11 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 		}
 		aaptLinkFlags = append(aaptLinkFlags, "--rename-manifest-package "+manifestPackageName)
 		a.overriddenManifestPackageName = manifestPackageName
+	}
+
+	if a.overridableAppProperties.Overlay_target_package_name != nil {
+		aaptLinkFlags = append(aaptLinkFlags,
+			"--rename-overlay-target-package "+*a.overridableAppProperties.Overlay_target_package_name)
 	}
 
 	aaptLinkFlags = append(aaptLinkFlags, a.additionalAaptFlags...)
