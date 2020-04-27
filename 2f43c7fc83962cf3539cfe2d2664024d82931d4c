@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e25ad50c_b627adf7",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1685708
+      },
+      "writtenOn": "2020-04-27T17:24:54Z",
+      "side": 1,
+      "message": "If I understand that we are not discarding vendor ndk with this change, should vendor-NDK-linked be removed from comment?",
+      "range": {
+        "startLine": 369,
+        "startChar": 13,
+        "endLine": 369,
+        "endChar": 30
+      },
+      "revId": "2f43c7fc83962cf3539cfe2d2664024d82931d4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
