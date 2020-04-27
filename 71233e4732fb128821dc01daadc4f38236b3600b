@@ -16,6 +16,24 @@
       "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2c86f0_b214a7a0",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-27T16:12:55Z",
+      "side": 1,
+      "message": "No - it looks like enabling bionic requires targets that are \"disabled\" (IIRC libllvm_Android and libclang_Android) and therefore soong complains.",
+      "parentUuid": "bc7769cc_21f983a6",
+      "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
