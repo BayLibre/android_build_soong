@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12f26418_e9c24247",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-28T01:58:05Z",
+      "side": 1,
+      "message": "when \u0027to\u0027 doesn\u0027t have MinSdkVersion(), toMinSdkVersion becomes \"\". Is that okay?",
+      "range": {
+        "startLine": 703,
+        "startChar": 55,
+        "endLine": 703,
+        "endChar": 59
+      },
+      "revId": "936d2027023acaf230f87f7502561a136080b0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fded5e52_591ad3b0",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-28T01:58:05Z",
+      "side": 1,
+      "message": "I think we need to define a type for sdk version and implement String() method on it. e.g., \n\ntype SdkVersion string\n\nfunc (s *SdkVersion) String() {\n    if s \u003d\u003d nil { return \"(no version\")}\n    return string(s)\n}",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 1
+      },
+      "revId": "936d2027023acaf230f87f7502561a136080b0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
