@@ -148,10 +148,20 @@ var (
 		sdkVersion:     "test_current",
 		droidstubsArgs: []string{"-showAnnotation android.annotation.TestApi"},
 	})
+	apiScopeModuleLib = initApiScope(&apiScope{
+		name:          "module_lib",
+		apiFilePrefix: "module-lib-",
+		moduleSuffix:  ".module_lib",
+		sdkVersion:    "module_current",
+		droidstubsArgs: []string{
+			"--show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.MODULE_LIBRARIES\\)",
+		},
+	})
 	allApiScopes = apiScopes{
 		apiScopePublic,
 		apiScopeSystem,
 		apiScopeTest,
+		apiScopeModuleLib,
 	}
 )
 
@@ -187,6 +197,14 @@ func RegisterSdkLibraryBuildComponents(ctx android.RegistrationContext) {
 }
 
 type sdkLibraryProperties struct {
+	// Visibility for stubs library modules. If not specified then defaults to the
+	// visibility property.
+	Stub_library_visibility []string
+
+	// Visibility for stubs source modules. If not specified then defaults to the
+	// visibility property.
+	Stub_source_visibility []string
+
 	// List of Java libraries that will be in the classpath when building stubs
 	Stub_only_libs []string `android:"arch_variant"`
 
@@ -425,6 +443,7 @@ func (module *SdkLibrary) latestRemovedApiFilegroupName(apiScope *apiScope) stri
 func (module *SdkLibrary) createStubsLibrary(mctx android.LoadHookContext, apiScope *apiScope) {
 	props := struct {
 		Name                *string
+		Visibility          []string
 		Srcs                []string
 		Installable         *bool
 		Sdk_version         *string
@@ -455,6 +474,15 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.LoadHookContext, apiSc
 	}{}
 
 	props.Name = proptools.StringPtr(module.stubsName(apiScope))
+
+	// If stub_library_visibility is not set then the created module will use the
+	// visibility of this module.
+	visibility := module.sdkLibraryProperties.Stub_library_visibility
+	if visibility == nil {
+		visibility = module.Visibility()
+	}
+	props.Visibility = visibility
+
 	// sources are generated from the droiddoc
 	props.Srcs = []string{":" + module.docsName(apiScope)}
 	sdkVersion := module.sdkVersionForStubsLibrary(mctx, apiScope)
@@ -496,6 +524,7 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.LoadHookContext, apiSc
 func (module *SdkLibrary) createStubsSources(mctx android.LoadHookContext, apiScope *apiScope) {
 	props := struct {
 		Name                             *string
+		Visibility                       []string
 		Srcs                             []string
 		Installable                      *bool
 		Sdk_version                      *string
@@ -529,6 +558,15 @@ func (module *SdkLibrary) createStubsSources(mctx android.LoadHookContext, apiSc
 	// * libs (static_libs/libs)
 
 	props.Name = proptools.StringPtr(module.docsName(apiScope))
+
+	// If stub_source_visibility is not set then the created module will use the
+	// visibility of this module.
+	visibility := module.sdkLibraryProperties.Stub_source_visibility
+	if visibility == nil {
+		visibility = module.Visibility()
+	}
+	props.Visibility = visibility
+
 	props.Srcs = append(props.Srcs, module.Library.Module.properties.Srcs...)
 	props.Sdk_version = module.Library.Module.deviceProperties.Sdk_version
 	props.System_modules = module.Library.Module.deviceProperties.System_modules
@@ -613,6 +651,7 @@ func (module *SdkLibrary) DepIsInSameApex(mctx android.BaseModuleContext, dep an
 func (module *SdkLibrary) createXmlFile(mctx android.LoadHookContext) {
 	props := struct {
 		Name                *string
+		Visibility          []string
 		Lib_name            *string
 		Soc_specific        *bool
 		Device_specific     *bool
@@ -621,6 +660,7 @@ func (module *SdkLibrary) createXmlFile(mctx android.LoadHookContext) {
 		Apex_available      []string
 	}{
 		Name:           proptools.StringPtr(module.xmlFileName()),
+		Visibility:     module.Visibility(),
 		Lib_name:       proptools.StringPtr(module.BaseModuleName()),
 		Apex_available: module.ApexProperties.Apex_available,
 	}
@@ -777,6 +817,10 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.LoadHookContext) {
 		return
 	}
 
+	// Prevent visibility property from being automatically inherited by the modules created
+	// by this module.
+	android.PreventVisibilityBeingInherited(mctx)
+
 	for _, scope := range generatedScopes {
 		module.createStubsLibrary(mctx, scope)
 		module.createStubsSources(mctx, scope)
@@ -817,6 +861,9 @@ func SdkLibraryFactory() android.Module {
 	module.InitSdkLibraryProperties()
 	android.InitApexModule(module)
 	InitJavaModule(module, android.HostAndDeviceSupported)
+	// Add the properties containing visibility rules so that they are checked.
+	android.AddVisibilityProperty(module, "stub_library_visibility", &module.sdkLibraryProperties.Stub_library_visibility)
+	android.AddVisibilityProperty(module, "stub_source_visibility", &module.sdkLibraryProperties.Stub_source_visibility)
 	android.AddLoadHook(module, func(ctx android.LoadHookContext) { module.CreateInternalModules(ctx) })
 	return module
 }
