@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 var visibilityTests = []struct {
@@ -903,6 +904,105 @@ var visibilityTests = []struct {
 				}`),
 		},
 	},
+	{
+		name: "ensure visibility properties are checked for correctness",
+		fs: map[string][]byte{
+			"top/Blueprints": []byte(`
+				mock_parent {
+					name: "parent",
+					visibility: ["//top/nested"],
+					child: {
+						name: "libchild",
+						visibility: ["top/other"],
+					},
+				}`),
+		},
+		expectedErrors: []string{
+			`module "parent": child.visibility: invalid visibility pattern "top/other"`,
+		},
+	},
+	{
+		name: "automatic visibility inheritance enabled",
+		fs: map[string][]byte{
+			"top/Blueprints": []byte(`
+				mock_parent {
+					name: "parent",
+					visibility: ["//top/nested"],
+					child: {
+						name: "libchild",
+						visibility: ["//top/other"],
+					},
+				}`),
+			"top/nested/Blueprints": []byte(`
+				mock_library {
+					name: "libnested",
+					deps: ["libchild"],
+				}`),
+			"top/other/Blueprints": []byte(`
+				mock_library {
+					name: "libother",
+					deps: ["libchild"],
+				}`),
+		},
+	},
+	{
+		name: "automatic visibility inheritance enabled",
+		fs: map[string][]byte{
+			"top/Blueprints": []byte(`
+				mock_parent {
+					name: "parent",
+					visibility: ["//top/nested"],
+					child: {
+						name: "libchild",
+						auto_visibility_inheritance: false,
+						visibility: ["//top/other"],
+					},
+				}`),
+			"top/nested/Blueprints": []byte(`
+				mock_library {
+					name: "libnested",
+					deps: ["libchild"],
+				}`),
+			"top/other/Blueprints": []byte(`
+				mock_library {
+					name: "libother",
+					deps: ["libchild"],
+				}`),
+		},
+		expectedErrors: []string{
+			`module "libnested" variant "android_common": depends on //top:libchild which is not visible to this module`,
+		},
+	},
+	{
+		// Ensures that disabling automatic inheritance does not change the value
+		// returned by Module.Visibility().
+		name: "manual visibility inheritance enabled",
+		fs: map[string][]byte{
+			"top/Blueprints": []byte(`
+				mock_parent {
+					name: "parent",
+					visibility: ["//top/nested"],
+					child: {
+						name: "libchild",
+						auto_visibility_inheritance: false,
+						manual_visibility_inheritance: true,
+					},
+				}`),
+			"top/nested/Blueprints": []byte(`
+				mock_library {
+					name: "libnested",
+					deps: ["libchild"],
+				}`),
+			"top/other/Blueprints": []byte(`
+				mock_library {
+					name: "libother",
+					deps: ["libchild"],
+				}`),
+		},
+		expectedErrors: []string{
+			`module "libother" variant "android_common": depends on //top:libchild which is not visible to this module`,
+		},
+	},
 }
 
 func TestVisibility(t *testing.T) {
@@ -936,6 +1036,7 @@ func testVisibility(buildDir string, fs map[string][]byte) (*TestContext, []erro
 
 	ctx := NewTestArchContext()
 	ctx.RegisterModuleType("mock_library", newMockLibraryModule)
+	ctx.RegisterModuleType("mock_parent", newMockParentFactory)
 	ctx.RegisterModuleType("mock_defaults", defaultsFactory)
 
 	// Order of the following method calls is significant.
@@ -995,4 +1096,54 @@ func defaultsFactory() Module {
 	m := &mockDefaults{}
 	InitDefaultsModule(m)
 	return m
+}
+
+type mockParentProperties struct {
+	Child struct {
+		Name                          *string
+		Auto_visibility_inheritance   *bool
+		Manual_visibility_inheritance *bool
+		Visibility                    []string
+	}
+}
+
+type mockParent struct {
+	ModuleBase
+	DefaultableModuleBase
+	properties mockParentProperties
+}
+
+func (p *mockParent) GenerateAndroidBuildActions(ModuleContext) {
+}
+
+func newMockParentFactory() Module {
+	m := &mockParent{}
+	m.AddProperties(&m.properties)
+	InitAndroidArchModule(m, HostAndDeviceSupported, MultilibCommon)
+	InitDefaultableModule(m)
+	AddVisibilityProperty(m, "child.visibility", &m.properties.Child.Visibility)
+
+	m.SetDefaultableHook(func(ctx DefaultableHookContext) {
+		var filter proptools.ExtendPropertyFilterFunc
+		if !proptools.BoolDefault(m.properties.Child.Auto_visibility_inheritance, true) {
+			filter = excludeVisibilityFromInheritance
+		}
+		visibility := m.properties.Child.Visibility
+		if visibility == nil && proptools.Bool(m.properties.Child.Manual_visibility_inheritance) {
+			visibility = m.Visibility()
+		}
+		ctx.CreateModuleFilterInherited(newMockLibraryModule, filter, &struct {
+			Name       *string
+			Visibility []string
+		}{m.properties.Child.Name, visibility})
+	})
+	return m
+}
+
+func excludeVisibilityFromInheritance(property string, _ reflect.StructField, _ reflect.StructField, _ interface{}, _ interface{}) (bool, error) {
+	if property == "visibility" {
+		return false, nil
+	}
+
+	return true, nil
 }
