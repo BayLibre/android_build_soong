@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8519ee4e_e9663576",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T18:48:13Z",
+      "side": 1,
+      "message": "Factor out into isBuildHost or similar?",
+      "revId": "4c0de7d251e381ea7cd2946467f8937bfe5e79e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "615f32aa_735d0bbe",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-04-28T18:48:13Z",
+      "side": 1,
+      "message": "As above",
+      "revId": "4c0de7d251e381ea7cd2946467f8937bfe5e79e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
