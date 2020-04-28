@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b94749b_4f65aeec",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-28T12:25:32Z",
+      "side": 1,
+      "message": "Done. Thanks for catching!",
+      "parentUuid": "12f26418_e9c24247",
+      "range": {
+        "startLine": 703,
+        "startChar": 55,
+        "endLine": 703,
+        "endChar": 59
+      },
+      "revId": "936d2027023acaf230f87f7502561a136080b0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fded5e52_591ad3b0",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "936d2027023acaf230f87f7502561a136080b0c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67737ff_b1a43736",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-28T12:25:32Z",
+      "side": 1,
+      "message": "Yeah, agreed. But honestly, instead of introducing a new type, I\u0027d like to export Java\u0027s SdkVersion as a follow up. And bring some consistency. MinSdkVersion should always just be a version, not a kind of an SDK, but that\u0027s out of scope here.",
+      "parentUuid": "fded5e52_591ad3b0",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 1
+      },
+      "revId": "936d2027023acaf230f87f7502561a136080b0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
