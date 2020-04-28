@@ -76,6 +76,7 @@ type visibilityPropertyImpl struct {
 type visibilityProperty interface {
 	getName() string
 	getStrings() []string
+	getStringsProperty() *[]string
 }
 
 func newVisibilityProperty(name string, stringsProperty *[]string) visibilityProperty {
@@ -91,6 +92,10 @@ func (p visibilityPropertyImpl) getName() string {
 
 func (p visibilityPropertyImpl) getStrings() []string {
 	return *p.stringsProperty
+}
+
+func (p visibilityPropertyImpl) getStringsProperty() *[]string {
+	return p.stringsProperty
 }
 
 // A compositeRule is a visibility rule composed from a list of atomic visibility rules.
@@ -301,8 +306,8 @@ func visibilityRuleGatherer(ctx BottomUpMutatorContext) {
 
 	// Parse the visibility rules that control access to the module and store them by id
 	// for use when enforcing the rules.
-	if visibility := m.visibility(); visibility != nil {
-		rule := parseRules(ctx, currentPkg, m.visibility())
+	if visibility := m.Visibility(); visibility != nil {
+		rule := parseRules(ctx, currentPkg, m.Visibility())
 		if rule != nil {
 			moduleToVisibilityRuleMap(ctx.Config()).Store(qualifiedModuleId, rule)
 		}
@@ -479,4 +484,38 @@ func EffectiveVisibilityRules(ctx BaseModuleContext, module Module) []string {
 	rule := effectiveVisibilityRules(ctx.Config(), qualified)
 
 	return rule.Strings()
+}
+
+// The visibility property is part of the commonProperties structure and so is automatically
+// inherited from their creating module by modules that are explicitly created. i.e. if
+// module X creates module Y then module Y will automatically inherit the visibility
+// property of module X. Module Y can only add additional values to the property.
+//
+// Sometimes, that behavior is unhelpful, e.g. when a creating module wants to create a
+// module with more restrictive visibility. This method prevents the inheritance of the
+// visibility property in commonProperties by copying the visibility out of the property
+// and clearing it and updating the visibilityProperty instances that are used to access
+// the property value to retrieve it from the copy instead.
+func PreventVisibilityBeingInherited(ctx LoadHookContext) {
+	base := ctx.Module().base()
+	visibilityProperties := base.visibilityPropertyInfo
+	for i, property := range visibilityProperties {
+		if property.getStringsProperty() == &base.commonProperties.Visibility {
+			visibilityPropertyCopy := base.commonProperties.Visibility
+			base.commonProperties.Visibility = nil
+			newVisibilityProperty := newVisibilityProperty("visibility", &visibilityPropertyCopy)
+
+			visibilityProperties[i] = newVisibilityProperty
+			if base.primaryVisibilityProperty == property {
+				base.primaryVisibilityProperty = newVisibilityProperty
+			}
+		}
+	}
+}
+
+// Add a property that contains visibility rules so that they are checked for
+// correctness.
+func AddVisibilityProperty(module Module, name string, stringsProperty *[]string) {
+	base := module.base()
+	base.visibilityPropertyInfo = append(base.visibilityPropertyInfo, newVisibilityProperty(name, stringsProperty))
 }
