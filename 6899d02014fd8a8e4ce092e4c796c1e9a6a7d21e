@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b87a9927_1d7c82fd",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-28T18:35:35Z",
+      "side": 1,
+      "message": "Ack. That\u0027ll stay on the TODO list then (we\u0027d need to write new accessor functions for ClangBin, and that\u0027s a rather decent number of things to change)",
+      "parentUuid": "76ab57c6_b3d4ab49",
+      "revId": "6899d02014fd8a8e4ce092e4c796c1e9a6a7d21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b103814d_4b7d4927",
         "filename": "cc/library.go",
         "patchSetId": 4
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Personally I see value in avoiding different data flows. That\u0027s why I also added the TODO in cc.go, to clean up the reliance on objects in parallel with the libs, which currently has the same issue for coverage and sAbiDump cases. But very well then.\n\nSince depsToPaths collects WholeStaticLibs and WholeStaticLibObjs in parallel I think I\u0027d have to introduce a separate PathDeps.WholeStaticLibsFromPrebuilts to keep the prebuilts and non-prebuilts apart. Is that the way to go here?",
       "parentUuid": "b103814d_4b7d4927",
+      "range": {
+        "startLine": 873,
+        "startChar": 45,
+        "endLine": 873,
+        "endChar": 65
+      },
+      "revId": "6899d02014fd8a8e4ce092e4c796c1e9a6a7d21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f3e785b_aea46cf3",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-28T18:35:35Z",
+      "side": 1,
+      "message": "Yeah, I can see an argument, but this was meant as an optimization, one that I\u0027d prefer not to lose.\n\nAnd yeah, WholeStaticLibsFromPrebuilts probably makes sense. I\u0027m a little worried about maintaining ordering, but with lld that shouldn\u0027t matter as much anymore.",
+      "parentUuid": "eb486cce_17f160f0",
       "range": {
         "startLine": 873,
         "startChar": 45,
