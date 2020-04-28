@@ -35,6 +35,9 @@ type FuzzConfig struct {
 	Componentid *int64 `json:"componentid,omitempty"`
 	// Hotlists in Google's bug tracking system that bugs should be marked with.
 	Hotlists []string `json:"hotlists,omitempty"`
+	// Specify whether this fuzz target is eligible for the VRP program. Defaults
+	// to false.
+	Vrp_eligible *bool `json:"vrp_eligible,omitempty"`
 }
 
 func (f *FuzzConfig) String() string {
