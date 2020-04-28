@@ -731,6 +731,10 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 	a.ApexBundleDepsInfo.BuildDepsInfoLists(ctx, a.MinSdkVersion(), depsInfo)
 }
 
+func (a *AndroidApp) Updatable() bool {
+	return Bool(a.appProperties.Updatable)
+}
+
 func (a *AndroidApp) getCertString(ctx android.BaseModuleContext) string {
 	certificate, overridden := ctx.DeviceConfig().OverrideCertificateFor(ctx.ModuleName())
 	if overridden {
