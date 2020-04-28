@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c0a13d3_5735ebee",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-04-28T21:32:51Z",
+      "side": 1,
+      "message": "comment was removed as part of aosp/1295709.",
+      "range": {
+        "startLine": 372,
+        "startChar": 13,
+        "endLine": 372,
+        "endChar": 33
+      },
+      "revId": "db169ddfb4a7ce0c4aa56942d919be93fb3442fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "166c72c7_493162ab",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-04-28T21:32:51Z",
+      "side": 1,
+      "message": "We removed this filter in aosp/1295709 to allow for the widevine fuzzers to be included.",
+      "range": {
+        "startLine": 375,
+        "startChar": 3,
+        "endLine": 375,
+        "endChar": 21
+      },
+      "revId": "db169ddfb4a7ce0c4aa56942d919be93fb3442fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
