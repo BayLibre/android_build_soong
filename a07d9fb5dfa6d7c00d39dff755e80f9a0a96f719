@@ -16,6 +16,24 @@
       "revId": "a07d9fb5dfa6d7c00d39dff755e80f9a0a96f719",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b268439e_3e72eb5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-28T01:49:25Z",
+      "side": 1,
+      "message": "I\u0027ve no idea what it would entail to remove PROJECT_SYSTEM_INCLUDES altogether. I instead came up with https://r.android.com/1296145 to keep the order compatible.\n\nIt\u0027s a bit of an opportunistic kludge, but since export_system_include_dirs is recent (from https://r.android.com/1149256, I believe) there shouldn\u0027t be any big compat issues from it. PTAL.",
+      "parentUuid": "df06ab50_c43d1324",
+      "revId": "a07d9fb5dfa6d7c00d39dff755e80f9a0a96f719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
