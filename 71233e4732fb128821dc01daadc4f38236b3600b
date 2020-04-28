@@ -70,6 +70,24 @@
       "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0434e923_808bbe5c",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-28T14:56:04Z",
+      "side": 1,
+      "message": "Thanks Dan. Done here:\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1297217",
+      "parentUuid": "eab2dbd1_ca50bb9c",
+      "revId": "71233e4732fb128821dc01daadc4f38236b3600b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
