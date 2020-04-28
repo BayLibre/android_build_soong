@@ -250,7 +250,7 @@ type Module interface {
 	visibilityProperties() []visibilityProperty
 
 	// Get the visibility rules that control the visibility of this module.
-	visibility() []string
+	Visibility() []string
 
 	RequiredModuleNames() []string
 	HostRequiredModuleNames() []string
@@ -799,7 +799,7 @@ func (m *ModuleBase) visibilityProperties() []visibilityProperty {
 	return m.visibilityPropertyInfo
 }
 
-func (m *ModuleBase) visibility() []string {
+func (m *ModuleBase) Visibility() []string {
 	// The soong_namespace module does not initialize the primaryVisibilityProperty.
 	if m.primaryVisibilityProperty != nil {
 		return m.primaryVisibilityProperty.getStrings()
