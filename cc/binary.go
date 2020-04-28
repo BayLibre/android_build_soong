@@ -87,6 +87,8 @@ type binaryDecorator struct {
 	*baseInstaller
 	stripper Stripper
 
+	sanitize *sanitize
+
 	Properties BinaryLinkerProperties
 
 	toolPath android.OptionalPath
@@ -203,6 +205,7 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	binary := &binaryDecorator{
 		baseLinker:    NewBaseLinker(module.sanitize),
 		baseInstaller: NewBaseInstaller("bin", "", InstallInSystem),
+		sanitize:      module.sanitize,
 	}
 	module.compiler = NewBaseCompiler()
 	module.linker = binary
