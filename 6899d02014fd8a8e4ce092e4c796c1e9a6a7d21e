@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "76ab57c6_b3d4ab49",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-28T18:24:39Z",
+      "side": 1,
+      "message": "Yes I tried that, but RuleBuilder forces escaping of \"${config.ClangBin}\" so I cannot use that path with it, and I couldn\u0027t find another way to construct a Path object for ClangBin.",
+      "parentUuid": "89e76a20_159f9e49",
+      "revId": "6899d02014fd8a8e4ce092e4c796c1e9a6a7d21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b103814d_4b7d4927",
         "filename": "cc/library.go",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2020-04-28T16:53:27Z",
       "side": 1,
       "message": "I\u0027d prefer to keep the existing whole static libs that we know about as objects, just using .a files for prebuilts, is that plausible? We\u0027d prefer not generating the .a files if we don\u0027t have to (and expect that will be better cache-wise for remote builds)",
+      "range": {
+        "startLine": 873,
+        "startChar": 45,
+        "endLine": 873,
+        "endChar": 65
+      },
+      "revId": "6899d02014fd8a8e4ce092e4c796c1e9a6a7d21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb486cce_17f160f0",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-28T18:24:39Z",
+      "side": 1,
+      "message": "Personally I see value in avoiding different data flows. That\u0027s why I also added the TODO in cc.go, to clean up the reliance on objects in parallel with the libs, which currently has the same issue for coverage and sAbiDump cases. But very well then.\n\nSince depsToPaths collects WholeStaticLibs and WholeStaticLibObjs in parallel I think I\u0027d have to introduce a separate PathDeps.WholeStaticLibsFromPrebuilts to keep the prebuilts and non-prebuilts apart. Is that the way to go here?",
+      "parentUuid": "b103814d_4b7d4927",
       "range": {
         "startLine": 873,
         "startChar": 45,
