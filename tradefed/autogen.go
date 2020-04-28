@@ -44,7 +44,7 @@ var autogenTestConfig = pctx.StaticRule("autogenTestConfig", blueprint.RuleParam
 	CommandDeps: []string{"$template"},
 }, "name", "template", "extraConfigs")
 
-func testConfigPath(ctx android.ModuleContext, prop *string, testSuites []string, autoGenConfig *bool, testConfigTemplateProp *string) (path android.Path, autogenPath android.WritablePath) {
+func testConfigPath(ctx android.ModuleContext, prop *string, testSuites []string, autoGenConfig *bool, testConfigTemplateProp *string, testMainlineModules []string) (path android.Path, autogenPath android.WritablePath) {
 	p := getTestConfig(ctx, prop)
 	if !Bool(autoGenConfig) && p != nil {
 		return p, nil
@@ -71,6 +71,20 @@ var _ Config = Option{}
 
 func (o Option) Config() string {
 	return fmt.Sprintf(`<option name="%s" value="%s" />`, o.Name, o.Value)
+}
+
+type MainlineConfig interface {
+        MainlineConfig() string
+}
+
+type MainlineOption struct {
+        Value string
+}
+
+var _ MainlineConfig = MainlineOption{}
+
+func (o MainlineOption) MainlineConfig string {
+	return fmt.Sprintf(`<option name="config-descriptor:metadata" key="mainline-param" value="%s"/>`, o.Value)
 }
 
 // It can be a template of object or target_preparer.
@@ -128,8 +142,8 @@ func autogenTemplateWithName(ctx android.ModuleContext, name string, output andr
 }
 
 func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string, testSuites []string, config []Config, autoGenConfig *bool) android.Path {
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	testConfigTemplateProp *string, testSuites []string, config []Config, autoGenConfig *bool, testMainlineModules []string) android.Path {
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp, testMainlineModules)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
@@ -147,8 +161,8 @@ func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
 }
 
 func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string, testSuites []string, configs []Config, autoGenConfig *bool) android.Path {
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	testConfigTemplateProp *string, testSuites []string, configs []Config, autoGenConfig *bool, testMainlineModules []string) android.Path {
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp, testMainlineModules)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
