@@ -148,10 +148,20 @@ var (
 		sdkVersion:     "test_current",
 		droidstubsArgs: []string{"-showAnnotation android.annotation.TestApi"},
 	})
+	apiScopeModuleLib = initApiScope(&apiScope{
+		name:          "module_lib",
+		apiFilePrefix: "module-lib-",
+		moduleSuffix:  ".module_lib",
+		sdkVersion:    "module_current",
+		droidstubsArgs: []string{
+			"--show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.MODULE_LIBRARIES\\)",
+		},
+	})
 	allApiScopes = apiScopes{
 		apiScopePublic,
 		apiScopeSystem,
 		apiScopeTest,
+		apiScopeModuleLib,
 	}
 )
 
