@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "f4f3b13a_5a81076a",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-28T12:30:38Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "74ed1e7a_bc0d28cc",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 1
+      },
+      "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76dfe41c_1b065c53",
         "filename": "android/apex.go",
         "patchSetId": 3
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "I will later (in a singleton) need to access these paths without calling this method.",
       "parentUuid": "76dfe41c_1b065c53",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 445,
+        "endChar": 78
+      },
+      "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf0ad8c1_e6c37f8c",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-28T12:30:38Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "35cd02f1_b27858fd",
       "range": {
         "startLine": 445,
         "startChar": 1,
