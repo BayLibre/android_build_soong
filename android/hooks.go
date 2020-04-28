@@ -35,6 +35,9 @@ type LoadHookContext interface {
 	PrependProperties(...interface{})
 	CreateModule(ModuleFactory, ...interface{}) Module
 
+	// Create a module that only inherits the common properties that match the supplied filter.
+	CreateModuleFilterInherited(factory ModuleFactory, inheritanceFilter proptools.ExtendPropertyFilterFunc, props ...interface{}) Module
+
 	registerScopedModuleType(name string, factory blueprint.ModuleFactory)
 	moduleFactories() map[string]blueprint.ModuleFactory
 }
@@ -94,7 +97,11 @@ func (l *loadHookContext) PrependProperties(props ...interface{}) {
 }
 
 func (l *loadHookContext) CreateModule(factory ModuleFactory, props ...interface{}) Module {
-	inherited := []interface{}{&l.Module().base().commonProperties}
+	return l.CreateModuleFilterInherited(factory, nil, props...)
+}
+
+func (l *loadHookContext) CreateModuleFilterInherited(factory ModuleFactory, inheritanceFilter proptools.ExtendPropertyFilterFunc, props ...interface{}) Module {
+	inherited := []interface{}{filterCommonProperties(l.Module(), inheritanceFilter)}
 	module := l.bp.CreateModule(ModuleFactoryAdaptor(factory), append(inherited, props...)...).(Module)
 
 	if l.Module().base().variableProperties != nil && module.base().variableProperties != nil {
@@ -105,7 +112,7 @@ func (l *loadHookContext) CreateModule(factory ModuleFactory, props ...interface
 			// don't cause a "failed to find property to extend" error.
 			proptools.CloneEmptyProperties(reflect.ValueOf(src)).Interface(),
 		}
-		err := proptools.AppendMatchingProperties(dst, src, nil)
+		err := proptools.AppendMatchingProperties(dst, src, inheritanceFilter)
 		if err != nil {
 			panic(err)
 		}
