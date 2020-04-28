@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9155f67_a1fcc885",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-28T01:38:33Z",
+      "side": 1,
+      "message": "please explain what the key is for",
+      "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26682304_977b4cb0",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-28T01:38:33Z",
+      "side": 1,
+      "message": "Why do we need this interface when we export ApexBundleDepsInfo?",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 1
+      },
+      "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76dfe41c_1b065c53",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-04-28T01:38:33Z",
+      "side": 1,
+      "message": "why don\u0027t you just return this output path?",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 445,
+        "endChar": 78
+      },
+      "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
