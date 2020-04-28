@@ -722,7 +722,11 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 		return !externalDep
 	})
 
-	a.ApexBundleDepsInfo.BuildDepsInfoLists(ctx, proptools.String(a.properties.Min_sdk_version), depInfos)
+	a.ApexBundleDepsInfo.BuildDepsInfoLists(
+		ctx,
+		proptools.String(a.properties.Min_sdk_version),
+		proptools.Bool(a.properties.Updatable),
+		depInfos)
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   android.Phony,
