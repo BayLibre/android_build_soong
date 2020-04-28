@@ -160,10 +160,24 @@ var (
 		droidstubsArgs:            []string{"-showAnnotation android.annotation.TestApi"},
 		isGenerated:               areTestAndSystemScopesGenerated,
 	})
+	apiScopeModuleLib = initApiScope(&apiScope{
+		name:                      "module_lib",
+		apiFilePrefix:             "module-lib-",
+		moduleSuffix:              ".module_lib",
+		apiFileMakeVariableSuffix: "_TEST",
+		sdkVersion:                "module_current",
+		droidstubsArgs: []string{
+			"--show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.MODULE_LIBRARIES\\)",
+		},
+		isGenerated: func(module *SdkLibrary) bool {
+			return proptools.Bool(module.sdkLibraryProperties.Generate_module_lib_api)
+		},
+	})
 	allApiScopes = apiScopes{
 		apiScopePublic,
 		apiScopeSystem,
 		apiScopeTest,
+		apiScopeModuleLib,
 	}
 )
 
@@ -242,6 +256,9 @@ type sdkLibraryProperties struct {
 
 	// indicates whether system and test apis should be managed.
 	Generate_system_and_test_apis bool `blueprint:"mutated"`
+
+	// Indicates whether the module lib api should be generated for this library.
+	Generate_module_lib_api *bool
 
 	// TODO: determines whether to create HTML doc or not
 	//Html_doc *bool
