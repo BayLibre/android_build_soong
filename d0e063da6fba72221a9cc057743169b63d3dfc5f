@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baa2e088_340eaf81",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-28T12:24:36Z",
+      "side": 1,
+      "message": "Done. I am also considering replacing this map with passing a walkPayloadDeps func as a parameter instead.",
+      "parentUuid": "b9155f67_a1fcc885",
+      "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26682304_977b4cb0",
         "filename": "android/apex.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "74ed1e7a_bc0d28cc",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-28T12:24:36Z",
+      "side": 1,
+      "message": "To avoid exposing mutable fields on ApexBundleDepsInfo.",
+      "parentUuid": "26682304_977b4cb0",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 1
+      },
+      "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76dfe41c_1b065c53",
         "filename": "android/apex.go",
         "patchSetId": 3
@@ -62,6 +104,30 @@
       "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35cd02f1_b27858fd",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-04-28T12:24:36Z",
+      "side": 1,
+      "message": "I will later (in a singleton) need to access these paths without calling this method.",
+      "parentUuid": "76dfe41c_1b065c53",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 445,
+        "endChar": 78
+      },
+      "revId": "d0e063da6fba72221a9cc057743169b63d3dfc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
