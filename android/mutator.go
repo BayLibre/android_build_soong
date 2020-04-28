@@ -184,6 +184,9 @@ type TopDownMutatorContext interface {
 	Rename(name string)
 
 	CreateModule(ModuleFactory, ...interface{}) Module
+
+	// Create a module that only inherits the common properties that match the supplied filter.
+	CreateModuleFilterInherited(factory ModuleFactory, inheritanceFilter proptools.ExtendPropertyFilterFunc, props ...interface{}) Module
 }
 
 type topDownMutatorContext struct {
@@ -311,8 +314,24 @@ func (t *topDownMutatorContext) Rename(name string) {
 
 func (t *topDownMutatorContext) CreateModule(factory ModuleFactory, props ...interface{}) Module {
 	inherited := []interface{}{&t.Module().base().commonProperties}
-	module := t.bp.CreateModule(ModuleFactoryAdaptor(factory), append(inherited, props...)...).(Module)
+	return t.createModule(factory, append(inherited, props...))
+}
 
+func (t *topDownMutatorContext) CreateModuleFilterInherited(factory ModuleFactory, inheritanceFilter proptools.ExtendPropertyFilterFunc, props ...interface{}) Module {
+	inherited := &t.Module().base().commonProperties
+
+	// Create an empty structure containing the inherited properties and then copy across only those fields
+	// that match the filter.
+	filtered := &commonProperties{}
+	if err := proptools.AppendProperties(filtered, inherited, inheritanceFilter); err != nil {
+		panic(err)
+	}
+
+	return t.createModule(factory, append([]interface{}{filtered}, props...))
+}
+
+func (t *topDownMutatorContext) createModule(factory ModuleFactory, props []interface{}) Module {
+	module := t.bp.CreateModule(ModuleFactoryAdaptor(factory), props...).(Module)
 	if t.Module().base().variableProperties != nil && module.base().variableProperties != nil {
 		src := t.Module().base().variableProperties
 		dst := []interface{}{
@@ -326,7 +345,6 @@ func (t *topDownMutatorContext) CreateModule(factory ModuleFactory, props ...int
 			panic(err)
 		}
 	}
-
 	return module
 }
 
