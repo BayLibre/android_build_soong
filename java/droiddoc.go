@@ -1448,6 +1448,84 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		cmd.ImplicitOutput(android.PathForModuleGen(ctx, o))
 	}
 
+	// Add options for the other optional tasks: API-lint and check-released.
+	// We generate separate timestamp files for them.
+
+	doApiLint := false
+	doCheckReleased := false
+
+	// Add API lint options.
+
+	if BoolDefault(d.properties.Check_api.Api_lint.Enabled, false) && !ctx.Config().IsPdkBuild() {
+		doApiLint = true
+
+		newSince := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Api_lint.New_since)
+		if newSince.Valid() {
+			cmd.FlagWithInput("--api-lint ", newSince.Path())
+		} else {
+			cmd.Flag("--api-lint")
+		}
+		d.apiLintReport = android.PathForModuleOut(ctx, "api_lint_report.txt")
+		cmd.FlagWithOutput("--report-even-if-suppressed ", d.apiLintReport) // TODO:  Change to ":api-lint"
+
+		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Api_lint.Baseline_file)
+		updatedBaselineOutput := android.PathForModuleOut(ctx, "api_lint_baseline.txt")
+		d.apiLintTimestamp = android.PathForModuleOut(ctx, "api_lint.timestamp")
+
+		if baselineFile.Valid() {
+			cmd.FlagWithInput("--baseline:api-lint ", baselineFile.Path())
+			cmd.FlagWithOutput("--update-baseline:api-lint ", updatedBaselineOutput)
+		}
+
+		// Note this string includes quote ($' ... '), which decodes the "\n"s.
+		// However, because $' ... ' doesn't expand environmental variables, we can't just embed
+		// $PWD, so we have to terminate $'...', use "$PWD", then start $' ... ' again,
+		// which is why we have '"$PWD"$' in it.
+		msg := fmt.Sprintf(`$'\n******************************\n`+
+			`Your API changes are triggering API Lint warnings or errors.\n\n`+
+			`To make these errors go away, you have two choices:\n`+
+			`   1. You can suppress the errors with @SuppressLint(\"<id>\").\n\n`+
+			`   2. You can update the baseline by executing the following command:\n`+
+			`         cp "'"$PWD"$'/%s" "'"$PWD"$'/%s"\n\n`+
+			`******************************\n'`, updatedBaselineOutput, baselineFile.Path())
+
+		cmd.FlagWithArg("--error-message:api-lint ", msg)
+	}
+
+	// Add "check released" options. (Detect incompatible API changes from the last public release)
+
+	if apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") &&
+		!ctx.Config().IsPdkBuild() {
+		doCheckReleased = true
+
+		if len(d.Javadoc.properties.Out) > 0 {
+			ctx.PropertyErrorf("out", "out property may not be combined with check_api")
+		}
+
+		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Api_file))
+		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Removed_api_file))
+		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Last_released.Baseline_file)
+		updatedBaselineOutput := android.PathForModuleOut(ctx, "last_released_baseline.txt")
+
+		d.checkLastReleasedApiTimestamp = android.PathForModuleOut(ctx, "check_last_released_api.timestamp")
+
+		cmd.FlagWithInput("--check-compatibility:api:released ", apiFile)
+		cmd.FlagWithInput("--check-compatibility:removed:released ", removedApiFile)
+
+		if baselineFile.Valid() {
+			cmd.FlagWithInput("--baseline:compatibility:released ", baselineFile.Path())
+			cmd.FlagWithOutput("--update-baseline:compatibility:released ", updatedBaselineOutput)
+		}
+
+		// Note this string includes quote ($' ... '), which decodes the "\n"s.
+		msg := `$'\n******************************\n` +
+			`You have tried to change the API from what has been previously released in\n` +
+			`an SDK.  Please fix the errors listed above.\n` +
+			`******************************\n'`
+
+		cmd.FlagWithArg("--error-message:compatibility:released ", msg)
+	}
+
 	if generateStubs {
 		rule.Command().
 			BuiltTool(ctx, "soong_zip").
@@ -1469,66 +1547,18 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			FlagWithArg("-D ", d.metadataDir.String())
 	}
 
+	if doApiLint {
+		rule.Command().Text("touch").Output(d.apiLintTimestamp)
+	}
+	if doCheckReleased {
+		rule.Command().Text("touch").Output(d.checkLastReleasedApiTimestamp)
+	}
+
 	rule.Restat()
 
 	zipSyncCleanupCmd(rule, srcJarDir)
 
-	rule.Build(pctx, ctx, "metalava", "metalava")
-
-	// Create rule for apicheck
-
-	if BoolDefault(d.properties.Check_api.Api_lint.Enabled, false) && !ctx.Config().IsPdkBuild() {
-		rule := android.NewRuleBuilder()
-		rule.Command().Text("( true")
-
-		srcJarDir := android.PathForModuleOut(ctx, "api_lint", "srcjars")
-		srcJarList := zipSyncCmd(ctx, rule, srcJarDir, d.Javadoc.srcJars)
-
-		cmd := metalavaCmd(ctx, rule, javaVersion, d.Javadoc.srcFiles, srcJarList,
-			deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths)
-
-		cmd.Flag(d.Javadoc.args).Implicits(d.Javadoc.argFiles)
-
-		newSince := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Api_lint.New_since)
-		if newSince.Valid() {
-			cmd.FlagWithInput("--api-lint ", newSince.Path())
-		} else {
-			cmd.Flag("--api-lint")
-		}
-		d.apiLintReport = android.PathForModuleOut(ctx, "api_lint_report.txt")
-		cmd.FlagWithOutput("--report-even-if-suppressed ", d.apiLintReport)
-
-		d.inclusionAnnotationsFlags(ctx, cmd)
-		d.mergeAnnoDirFlags(ctx, cmd)
-
-		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Api_lint.Baseline_file)
-		updatedBaselineOutput := android.PathForModuleOut(ctx, "api_lint_baseline.txt")
-		d.apiLintTimestamp = android.PathForModuleOut(ctx, "api_lint.timestamp")
-
-		if baselineFile.Valid() {
-			cmd.FlagWithInput("--baseline ", baselineFile.Path())
-			cmd.FlagWithOutput("--update-baseline ", updatedBaselineOutput)
-		}
-
-		zipSyncCleanupCmd(rule, srcJarDir)
-
-		msg := fmt.Sprintf(`\n******************************\n`+
-			`Your API changes are triggering API Lint warnings or errors.\n\n`+
-			`To make these errors go away, you have two choices:\n`+
-			`   1. You can suppress the errors with @SuppressLint(\"<id>\").\n\n`+
-			`   2. You can update the baseline by executing the following command:\n`+
-			`         cp \"$PWD/%s\" \"$PWD/%s\"\n\n`+
-			`******************************\n`, updatedBaselineOutput, baselineFile.Path())
-		rule.Command().
-			Text("touch").Output(d.apiLintTimestamp).
-			Text(") || (").
-			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
-			Text("; exit 38").
-			Text(")")
-
-		rule.Build(pctx, ctx, "metalavaApiLint", "metalava API lint")
-
-	}
+	rule.Build(pctx, ctx, "metalava", "metalava merged")
 
 	if apiCheckEnabled(ctx, d.properties.Check_api.Current, "current") &&
 		!ctx.Config().IsPdkBuild() {
@@ -1542,7 +1572,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Current.Baseline_file)
 
 		if baselineFile.Valid() {
-			ctx.PropertyErrorf("current API check can't have a baseline file. (module %s)", ctx.ModuleName())
+			ctx.PropertyErrorf("baseline_file", "current API check can't have a baseline file. (module %s)", ctx.ModuleName())
 		}
 
 		d.checkCurrentApiTimestamp = android.PathForModuleOut(ctx, "check_current_api.timestamp")
@@ -1550,8 +1580,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		rule := android.NewRuleBuilder()
 
 		// Diff command line.
-		// -F matches the closest "opening" line, such as "package xxx{"
-		// and "  public class Yyy {".
+		// -F matches the closest "opening" line, such as "package android {"
+		// and "  public class Intent {".
 		diff := `diff -u -F '{ *$'`
 
 		rule.Command().Text("( true")
@@ -1608,60 +1638,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			Text(")")
 
 		rule.Build(pctx, ctx, "metalavaCurrentApiUpdate", "update current API")
-	}
-
-	if apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") &&
-		!ctx.Config().IsPdkBuild() {
-
-		if len(d.Javadoc.properties.Out) > 0 {
-			ctx.PropertyErrorf("out", "out property may not be combined with check_api")
-		}
-
-		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Api_file))
-		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Removed_api_file))
-		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Last_released.Baseline_file)
-		updatedBaselineOutput := android.PathForModuleOut(ctx, "last_released_baseline.txt")
-
-		d.checkLastReleasedApiTimestamp = android.PathForModuleOut(ctx, "check_last_released_api.timestamp")
-
-		rule := android.NewRuleBuilder()
-
-		rule.Command().Text("( true")
-
-		srcJarDir := android.PathForModuleOut(ctx, "last-apicheck", "srcjars")
-		srcJarList := zipSyncCmd(ctx, rule, srcJarDir, d.Javadoc.srcJars)
-
-		cmd := metalavaCmd(ctx, rule, javaVersion, d.Javadoc.srcFiles, srcJarList,
-			deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths)
-
-		cmd.Flag(d.Javadoc.args).Implicits(d.Javadoc.argFiles).
-			FlagWithInput("--check-compatibility:api:released ", apiFile)
-
-		d.inclusionAnnotationsFlags(ctx, cmd)
-
-		cmd.FlagWithInput("--check-compatibility:removed:released ", removedApiFile)
-
-		d.mergeAnnoDirFlags(ctx, cmd)
-
-		if baselineFile.Valid() {
-			cmd.FlagWithInput("--baseline ", baselineFile.Path())
-			cmd.FlagWithOutput("--update-baseline ", updatedBaselineOutput)
-		}
-
-		zipSyncCleanupCmd(rule, srcJarDir)
-
-		msg := `\n******************************\n` +
-			`You have tried to change the API from what has been previously released in\n` +
-			`an SDK.  Please fix the errors listed above.\n` +
-			`******************************\n`
-		rule.Command().
-			Text("touch").Output(d.checkLastReleasedApiTimestamp).
-			Text(") || (").
-			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
-			Text("; exit 38").
-			Text(")")
-
-		rule.Build(pctx, ctx, "metalavaLastApiCheck", "metalava check last API")
 	}
 
 	if String(d.properties.Check_nullability_warnings) != "" {
