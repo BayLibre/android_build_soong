@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89e76a20_159f9e49",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-28T16:53:27Z",
+      "side": 1,
+      "message": "If you wanted to, I suspect that this would be more readable using RuleBuilder. It\u0027s been on my TODO list to migrate these existing users, but it makes conditionally appending to rules much simpler.",
+      "revId": "6899d02014fd8a8e4ce092e4c796c1e9a6a7d21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b103814d_4b7d4927",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-04-28T16:53:27Z",
+      "side": 1,
+      "message": "I\u0027d prefer to keep the existing whole static libs that we know about as objects, just using .a files for prebuilts, is that plausible? We\u0027d prefer not generating the .a files if we don\u0027t have to (and expect that will be better cache-wise for remote builds)",
+      "range": {
+        "startLine": 873,
+        "startChar": 45,
+        "endLine": 873,
+        "endChar": 65
+      },
+      "revId": "6899d02014fd8a8e4ce092e4c796c1e9a6a7d21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
