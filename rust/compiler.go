@@ -183,8 +183,8 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 
 	if !Bool(compiler.Properties.No_stdlibs) {
 		for _, stdlib := range config.Stdlibs {
-			// If we're building for host, use the compiler's stdlibs
-			if ctx.Host() {
+			// If we're building for 64-bit host, use the compiler's stdlibs
+			if ctx.Host() && ctx.toolchain().Is64Bit() {
 				stdlib = stdlib + "_" + ctx.toolchain().RustTriple()
 			}
 
@@ -192,7 +192,7 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 			// static linking is the default, if one of our static
 			// dependencies uses a dynamic library, we need to dynamically
 			// link the stdlib as well.
-			if (len(deps.Dylibs) > 0) || (!ctx.Host()) {
+			if (len(deps.Dylibs) > 0) || ctx.Device() || (ctx.Host() && !ctx.toolchain().Is64Bit()) {
 				// Dynamically linked stdlib
 				deps.Dylibs = append(deps.Dylibs, stdlib)
 			}
