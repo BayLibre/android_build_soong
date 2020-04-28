@@ -102,6 +102,9 @@ type DefaultableHookContext interface {
 	EarlyModuleContext
 
 	CreateModule(ModuleFactory, ...interface{}) Module
+
+	// Create a module that only inherits the common properties that match the supplied filter.
+	CreateModuleFilterInherited(factory ModuleFactory, inheritanceFilter proptools.ExtendPropertyFilterFunc, props ...interface{}) Module
 }
 
 type DefaultableHook func(ctx DefaultableHookContext)
