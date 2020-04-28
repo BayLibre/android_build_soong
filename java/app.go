@@ -114,6 +114,10 @@ type appProperties struct {
 	// Whether this app is considered mainline updatable or not. When set to true, this will enforce
 	// additional rules for making sure that the APK is truly updatable. Default is false.
 	Updatable *bool
+
+	// Add parameterized mainline modules to auto generated test config. The options will be
+	// handled by TradeFed to do downloading and installing the specified modules on the device.
+	Test_mainline_modules []string
 }
 
 // android_app properties that can be overridden by override_android_app
@@ -139,6 +143,7 @@ type AndroidApp struct {
 	certificate Certificate
 
 	appProperties appProperties
+	testProperties testProperties
 
 	overridableAppProperties overridableAppProperties
 
@@ -732,6 +737,7 @@ func AndroidAppFactory() android.Module {
 		&module.Module.protoProperties,
 		&module.aaptProperties,
 		&module.appProperties,
+		&module.testProperties,
 		&module.overridableAppProperties,
 		&module.usesLibrary.usesLibraryProperties)
 
@@ -752,6 +758,10 @@ type appTestProperties struct {
 
 	// if specified, the instrumentation target package name in the manifest is overwritten by it.
 	Instrumentation_target_package *string
+
+	// Add parameterized mainline modules to auto generated test config. The options will be
+	// handled by TradeFed to do downloading and installing the specified modules on the device.
+	Test_mainline_modules []string
 }
 
 type AndroidTest struct {
@@ -781,9 +791,8 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	}
 	a.generateAndroidBuildActions(ctx)
-
 	testConfig := tradefed.AutoGenInstrumentationTestConfig(ctx, a.testProperties.Test_config,
-		a.testProperties.Test_config_template, a.manifestPath, a.testProperties.Test_suites, a.testProperties.Auto_gen_config)
+		a.testProperties.Test_config_template, a.manifestPath, a.testProperties.Test_suites, a.testProperties.Auto_gen_config, a.appProperties.Test_mainline_modules)
 	a.testConfig = a.FixTestConfig(ctx, testConfig)
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
 }
@@ -842,7 +851,6 @@ func AndroidTestFactory() android.Module {
 	module.appProperties.Use_embedded_native_libs = proptools.BoolPtr(true)
 	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
-
 	module.AddProperties(
 		&module.Module.properties,
 		&module.Module.deviceProperties,
@@ -854,7 +862,6 @@ func AndroidTestFactory() android.Module {
 		&module.overridableAppProperties,
 		&module.usesLibrary.usesLibraryProperties,
 		&module.testProperties)
-
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	android.InitOverridableModule(module, &module.appProperties.Overrides)
