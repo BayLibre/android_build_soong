@@ -94,15 +94,18 @@ type apiScope struct {
 
 // Initialize a scope, creating and adding appropriate dependency tags
 func initApiScope(scope *apiScope) *apiScope {
-	scope.fieldName = proptools.FieldNameForProperty(scope.name)
+	name := scope.name
+	scope.fieldName = proptools.FieldNameForProperty(name)
 	scope.stubsTag = scopeDependencyTag{
-		name:     scope.name + "-stubs",
+		name:     name + "-stubs",
 		apiScope: scope,
 	}
 	scope.apiFileTag = scopeDependencyTag{
-		name:     scope.name + "-api",
+		name:     name + "-api",
 		apiScope: scope,
 	}
+	apiScopeByName[name] = scope
+	apiScopeNames = append(apiScopeNames, name)
 	return scope
 }
 
@@ -125,6 +128,8 @@ func (scopes apiScopes) Strings(accessor func(*apiScope) string) []string {
 }
 
 var (
+	apiScopeByName = make(map[string]*apiScope)
+	apiScopeNames  = []string{}
 	apiScopePublic = initApiScope(&apiScope{
 		name:       "public",
 		sdkVersion: "current",
@@ -223,8 +228,13 @@ type sdkLibraryProperties struct {
 	// don't create dist rules.
 	No_dist *bool `blueprint:"mutated"`
 
-	// indicates whether system and test apis should be managed.
-	Has_system_and_test_apis bool `blueprint:"mutated"`
+	// indicates whether system and test apis should be generated.
+	Generate_system_and_test_apis bool `blueprint:"mutated"`
+
+	// The names of the API surfaces to use. If not specified then the default API surfaces
+	// are determined by the sdk_version. If sdk_version is set to "none" then this will
+	// only generate "public", otherwise it will generate "public", "system" and "test".
+	Api_surfaces []string
 
 	// TODO: determines whether to create HTML doc or not
 	//Html_doc *bool
@@ -267,12 +277,26 @@ type SdkLibrary struct {
 var _ Dependency = (*SdkLibrary)(nil)
 var _ SdkLibraryDependency = (*SdkLibrary)(nil)
 
-func (module *SdkLibrary) getActiveApiScopes() apiScopes {
-	if module.sdkLibraryProperties.Has_system_and_test_apis {
-		return allApiScopes
+func (module *SdkLibrary) getGeneratedApiScopes(ctx android.EarlyModuleContext) apiScopes {
+	var generatedScopes apiScopes
+	apis := module.sdkLibraryProperties.Api_surfaces
+	if apis == nil {
+		if module.sdkLibraryProperties.Generate_system_and_test_apis {
+			generatedScopes = apiScopes{apiScopePublic, apiScopeSystem, apiScopeTest}
+		} else {
+			generatedScopes = apiScopes{apiScopePublic}
+		}
 	} else {
-		return apiScopes{apiScopePublic}
+		for _, api := range apis {
+			if scope, ok := apiScopeByName[api]; ok {
+				generatedScopes = append(generatedScopes, scope)
+			} else {
+				ctx.PropertyErrorf("api_surfaces", "invalid api surface %q, expected one of %s", api, strings.Join(apiScopeNames, ", "))
+			}
+		}
 	}
+
+	return generatedScopes
 }
 
 var xmlPermissionsFileTag = dependencyTag{name: "xml-permissions-file"}
@@ -285,7 +309,7 @@ func IsXmlPermissionsFileDepTag(depTag blueprint.DependencyTag) bool {
 }
 
 func (module *SdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
-	for _, apiScope := range module.getActiveApiScopes() {
+	for _, apiScope := range module.getGeneratedApiScopes(ctx) {
 		// Add dependencies to the stubs library
 		ctx.AddVariationDependencies(nil, apiScope.stubsTag, module.stubsName(apiScope))
 
@@ -720,15 +744,15 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.LoadHookContext) {
 	// also assume it does not contribute to the dist build.
 	sdkDep := decodeSdkDep(mctx, sdkContext(&module.Library))
 	hasSystemAndTestApis := sdkDep.hasStandardLibs()
-	module.sdkLibraryProperties.Has_system_and_test_apis = hasSystemAndTestApis
+	module.sdkLibraryProperties.Generate_system_and_test_apis = hasSystemAndTestApis
 	module.sdkLibraryProperties.No_dist = proptools.BoolPtr(!hasSystemAndTestApis)
 
 	missing_current_api := false
 
-	activeScopes := module.getActiveApiScopes()
+	generatedScopes := module.getGeneratedApiScopes(mctx)
 
 	apiDir := module.getApiDir()
-	for _, scope := range activeScopes {
+	for _, scope := range generatedScopes {
 		for _, api := range []string{"current.txt", "removed.txt"} {
 			path := path.Join(mctx.ModuleDir(), apiDir, scope.apiFilePrefix+api)
 			p := android.ExistentPathForSource(mctx, path)
@@ -751,11 +775,11 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.LoadHookContext) {
 			"You can update them by:\n"+
 			"%s %q %s && m update-api",
 			script, filepath.Join(mctx.ModuleDir(), apiDir),
-			strings.Join(activeScopes.Strings(func(s *apiScope) string { return s.apiFilePrefix }), " "))
+			strings.Join(generatedScopes.Strings(func(s *apiScope) string { return s.apiFilePrefix }), " "))
 		return
 	}
 
-	for _, scope := range activeScopes {
+	for _, scope := range generatedScopes {
 		module.createStubsLibrary(mctx, scope)
 		module.createStubsSources(mctx, scope)
 	}
