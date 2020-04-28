@@ -712,7 +712,11 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 		}
 	})
 
-	a.ApexBundleDepsInfo.BuildDepsInfoLists(ctx, a.MinSdkVersion(), depsInfo)
+	a.ApexBundleDepsInfo.BuildDepsInfoLists(
+		ctx,
+		a.MinSdkVersion(),
+		Bool(a.appProperties.Updatable),
+		depsInfo)
 
 	if a == ctx.FinalModule() {
 		ctx.Build(pctx, android.BuildParams{

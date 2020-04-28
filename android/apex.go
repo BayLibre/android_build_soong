@@ -422,18 +422,24 @@ type DepNameToDepInfoMap map[string]ApexModuleDepInfo
 
 type ApexBundleDepsInfo struct {
 	minSdkVersion string
+	updatable     bool
 	flatListPath  OutputPath
 	fullListPath  OutputPath
 }
 
-type ApexDepsInfoIntf interface {
+type ApexBundleDepsInfoIntf interface {
 	MinSdkVersion() string
+	Updatable() bool
 	FlatListPath() Path
 	FullListPath() Path
 }
 
 func (d *ApexBundleDepsInfo) MinSdkVersion() string {
 	return d.minSdkVersion
+}
+
+func (d *ApexBundleDepsInfo) Updatable() bool {
+	return d.updatable
 }
 
 func (d *ApexBundleDepsInfo) FlatListPath() Path {
@@ -444,13 +450,14 @@ func (d *ApexBundleDepsInfo) FullListPath() Path {
 	return d.fullListPath
 }
 
-var _ ApexDepsInfoIntf = (*ApexBundleDepsInfo)(nil)
+var _ ApexBundleDepsInfoIntf = (*ApexBundleDepsInfo)(nil)
 
 // Generate two module out files:
 // 1. FullList with transitive deps and their parents in the dep graph
 // 2. FlatList with a flat list of transitive deps
-func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion string, depInfos DepNameToDepInfoMap) {
+func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion string, updatable bool, depInfos DepNameToDepInfoMap) {
 	d.minSdkVersion = minSdkVersion
+	d.updatable = updatable
 
 	var fullContent strings.Builder
 	var flatContent strings.Builder
