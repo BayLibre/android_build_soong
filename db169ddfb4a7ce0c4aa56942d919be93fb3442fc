@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c254e39f_f3453236",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-04-28T21:55:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7c0a13d3_5735ebee",
+      "range": {
+        "startLine": 372,
+        "startChar": 13,
+        "endLine": 372,
+        "endChar": 33
+      },
+      "revId": "db169ddfb4a7ce0c4aa56942d919be93fb3442fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "166c72c7_493162ab",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "db169ddfb4a7ce0c4aa56942d919be93fb3442fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16205936_db4218c9",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-04-28T21:55:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "166c72c7_493162ab",
+      "range": {
+        "startLine": 375,
+        "startChar": 3,
+        "endLine": 375,
+        "endChar": 21
+      },
+      "revId": "db169ddfb4a7ce0c4aa56942d919be93fb3442fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
