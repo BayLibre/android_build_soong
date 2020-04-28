@@ -89,6 +89,7 @@ const (
 	cfi
 	scs
 	fuzzer
+	memtag_heap
 )
 
 // Name of the sanitizer variation for this sanitizer type
@@ -106,6 +107,8 @@ func (t sanitizerType) variationName() string {
 		return "cfi"
 	case scs:
 		return "scs"
+	case memtag_heap:
+		return "memtag_heap"
 	case fuzzer:
 		return "fuzzer"
 	default:
@@ -120,6 +123,8 @@ func (t sanitizerType) name() string {
 		return "address"
 	case hwasan:
 		return "hwaddress"
+	case memtag_heap:
+		return "memtag_heap"
 	case tsan:
 		return "thread"
 	case intOverflow:
@@ -157,6 +162,7 @@ type SanitizeUserProps struct {
 	Integer_overflow *bool    `android:"arch_variant"`
 	Scudo            *bool    `android:"arch_variant"`
 	Scs              *bool    `android:"arch_variant"`
+	Memtag_heap      *bool    `android:"arch_variant"`
 
 	// A modifier for ASAN and HWASAN for write only instrumentation
 	Writeonly *bool `android:"arch_variant"`
@@ -168,6 +174,7 @@ type SanitizeUserProps struct {
 		Undefined        *bool    `android:"arch_variant"`
 		Cfi              *bool    `android:"arch_variant"`
 		Integer_overflow *bool    `android:"arch_variant"`
+		Memtag_heap      *bool    `android:"arch_variant"`
 		Misc_undefined   []string `android:"arch_variant"`
 		No_recover       []string `android:"arch_variant"`
 	} `android:"arch_variant"`
@@ -308,6 +315,9 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			}
 			s.Writeonly = boolPtr(true)
 		}
+		if found, globalSanitizers = removeFromList("memtag_heap", globalSanitizers); found && s.Memtag_heap == nil {
+			s.Memtag_heap = boolPtr(true)
+		}
 
 		if len(globalSanitizers) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
@@ -327,6 +337,12 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		if len(globalSanitizersDiag) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer diagnostics option %s", globalSanitizersDiag[0])
 		}
+	}
+
+	// cc_test targets default to SYNC MemTag.
+	if ctx.testBinary() && s.Memtag_heap == nil {
+		s.Memtag_heap = boolPtr(true)
+		s.Diag.Memtag_heap = boolPtr(true)
 	}
 
 	// Enable CFI for all components in the include paths (for Aarch64 only)
@@ -357,6 +373,11 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	// SCS is only implemented on AArch64.
 	if ctx.Arch().ArchType != android.Arm64 {
 		s.Scs = nil
+	}
+
+	// memtag_heap is only implemented on AArch64.
+	if ctx.Arch().ArchType != android.Arm64 {
+		s.Memtag_heap = nil
 	}
 
 	// Also disable CFI if ASAN is enabled.
@@ -413,7 +434,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	if ctx.Os() != android.Windows && (Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
 		Bool(s.Fuzzer) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer_overflow) || len(s.Misc_undefined) > 0 ||
-		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs)) {
+		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs) || Bool(s.Memtag_heap)) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -674,6 +695,8 @@ func (sanitize *sanitize) getSanitizerBoolPtr(t sanitizerType) *bool {
 		return sanitize.Properties.Sanitize.Cfi
 	case scs:
 		return sanitize.Properties.Sanitize.Scs
+	case memtag_heap:
+		return sanitize.Properties.Sanitize.Memtag_heap
 	case fuzzer:
 		return sanitize.Properties.Sanitize.Fuzzer
 	default:
@@ -687,6 +710,7 @@ func (sanitize *sanitize) isUnsanitizedVariant() bool {
 		!sanitize.isSanitizerEnabled(tsan) &&
 		!sanitize.isSanitizerEnabled(cfi) &&
 		!sanitize.isSanitizerEnabled(scs) &&
+		!sanitize.isSanitizerEnabled(memtag_heap) &&
 		!sanitize.isSanitizerEnabled(fuzzer)
 }
 
@@ -711,6 +735,8 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 		sanitize.Properties.Sanitize.Cfi = boolPtr(b)
 	case scs:
 		sanitize.Properties.Sanitize.Scs = boolPtr(b)
+	case memtag_heap:
+		sanitize.Properties.Sanitize.Memtag_heap = boolPtr(b)
 	case fuzzer:
 		sanitize.Properties.Sanitize.Fuzzer = boolPtr(b)
 	default:
@@ -963,6 +989,20 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 
 		if Bool(c.sanitize.Properties.Sanitize.Scs) {
 			sanitizers = append(sanitizers, "shadow-call-stack")
+		}
+
+		if Bool(c.sanitize.Properties.Sanitize.Memtag_heap) && c.binary() {
+			noteDep := "note_memtag_heap_async"
+			if Bool(c.sanitize.Properties.Sanitize.Diag.Memtag_heap) {
+				noteDep = "note_memtag_heap_sync"
+			}
+			depTag := libraryDependencyTag{Kind: staticLibraryDependency, wholeStatic: true}
+			variations := append(mctx.Target().Variations(),
+				blueprint.Variation{Mutator: "link", Variation: "static"})
+			if c.Device() {
+				variations = append(variations, c.ImageVariation())
+			}
+			mctx.AddFarVariationDependencies(variations, depTag, noteDep)
 		}
 
 		if Bool(c.sanitize.Properties.Sanitize.Fuzzer) {
