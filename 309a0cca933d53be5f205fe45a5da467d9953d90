@@ -69,6 +69,24 @@
       "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ec5097_e615792a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-29T18:44:42Z",
+      "side": 1,
+      "message": "If you modify the Android.bp file Soong will rerun to regenerate the command lines, and if the command line changes ninja will consider it dirty and rerun it.  A single timestamp file should work fine.",
+      "parentUuid": "7c403d8a_182e9a2a",
+      "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
