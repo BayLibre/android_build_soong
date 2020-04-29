@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "851c6ced_7fe5406c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-29T17:56:58Z",
+      "side": 1,
+      "message": "Thanks for the suggestion; I stole that. :)",
+      "parentUuid": "7d2d7d24_96d4fcca",
+      "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "142ed9ef_a9d11796",
         "filename": "java/droiddoc.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-29T08:51:29Z",
       "side": 1,
       "message": "Why do we need separate timestamp files if they are all being run in the same command. Surely they can all just use one file? That can then be copied into the individual fields for use when creating phony targets in make.",
+      "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c403d8a_182e9a2a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-29T17:56:58Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure what\u0027d happen, if we merged the timestamp files, that when you an existing target that has \"api-lint\" but not \"check-released\", then add \"check-released\", and then do an incremental build. I\u0027ll add a comment.",
+      "parentUuid": "142ed9ef_a9d11796",
       "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
