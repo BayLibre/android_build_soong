@@ -52,6 +52,24 @@
       "revId": "ec86ed3f9b9507571d2e0f42a326425049af4ece",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c28174a_631229a4",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-29T15:59:25Z",
+      "side": 1,
+      "message": "Thanks, but let\u0027s roll back to patchset 1 and submit it instead. Given this is a cherry-pick change, I think it\u0027s better to keep both sides as identical as possible in case someone wants to cherry-pick them to other branches and/or revert them.",
+      "parentUuid": "0e111579_a6b7c278",
+      "revId": "ec86ed3f9b9507571d2e0f42a326425049af4ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
