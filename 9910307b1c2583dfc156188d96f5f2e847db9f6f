@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecddcd67_5fbcd1ca",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-29T23:58:39Z",
+      "side": 1,
+      "message": "Any reason not to just put these messages into metalava?",
+      "revId": "9910307b1c2583dfc156188d96f5f2e847db9f6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
