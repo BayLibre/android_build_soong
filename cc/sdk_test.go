@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"strings"
 	"testing"
 
 	"android/soong/android"
@@ -99,4 +100,39 @@ func TestSdkMutator(t *testing.T) {
 
 	assertDep(t, libsdkNDK, libcxxNDK)
 	assertDep(t, libsdkPlatform, libcxxPlatform)
+}
+
+func TestSdkVariantRespectsMinSdkVersion(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libsdk",
+			sdk_version: "current",
+			min_sdk_version: "27",
+			stl: "none",
+			system_shared_libs: [],
+		}
+	`)
+
+	linkRule := ctx.ModuleForTests("libsdk", "android_arm64_armv8-a_sdk_shared").Description("link")
+	ldFlags := linkRule.Args["ldFlags"]
+	expectedTargetTriple := "aarch64-linux-android27"
+	if !strings.Contains(ldFlags, "-target "+expectedTargetTriple) {
+		t.Errorf("-target should be %q, but not found in %q", expectedTargetTriple, ldFlags)
+	}
+}
+
+func TestSdkVariant_SdkVesionIsOverriddenWithSmallerMinSdkVersion(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libsdk",
+			sdk_version: "29",
+			min_sdk_version: "27",
+			stl: "none",
+			system_shared_libs: [],
+		}
+	`)
+	m := ctx.ModuleForTests("libsdk", "android_arm64_armv8-a_sdk_shared").Module().(*Module)
+	if expected, actual := "27", m.SdkVersion(); expected != actual {
+		t.Errorf("sdk_version(%v) should be overridden with min_sdk_version(%v)", actual, expected)
+	}
 }

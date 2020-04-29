@@ -260,17 +260,47 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
-	if Bool(a.appProperties.Updatable) {
+	if Bool(a.appProperties.Updatable) || a.ApexModuleBase.Updatable() {
 		if !a.sdkVersion().stable() {
 			ctx.PropertyErrorf("sdk_version", "Updatable apps must use stable SDKs, found %v", a.sdkVersion())
 		}
 		if String(a.deviceProperties.Min_sdk_version) == "" {
 			ctx.PropertyErrorf("updatable", "updatable apps must set min_sdk_version.")
 		}
+		if !ctx.Failed() {
+			a.checkJniLibsSdkVersion(ctx)
+		}
 	}
 
 	a.checkPlatformAPI(ctx)
 	a.checkSdkVersions(ctx)
+}
+
+// if an updatable APK sets min_sdk_version, min_sdk_vesion of JNI libs should match with it.
+// this check is enforced for "updatable" APKs (including APK-in-APEX).
+// b/155209650: until min_sdk_version is properly supported, use sdk_version instead.
+// because, sdk_version is overridden by min_sdk_version (if set as smaller)
+// and linkType is checked with dependencies so we can be sure that the whole dependency tree
+// will meet the requirements.
+func (a *AndroidApp) checkJniLibsSdkVersion(ctx android.ModuleContext) {
+	sdkVersion, err := android.ApiStrToNum(ctx, String(a.deviceProperties.Min_sdk_version))
+	if err != nil {
+		ctx.PropertyErrorf("min_sdk_version", "%s", err.Error())
+		return
+	}
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if !IsJniDepTag(ctx.OtherModuleDependencyTag(m)) {
+			return
+		}
+		dep, _ := m.(*cc.Module)
+		jniSdkVersion, err := android.ApiStrToNum(ctx, dep.SdkVersion())
+		if err != nil || int(sdkVersion) < jniSdkVersion {
+			ctx.OtherModuleErrorf(dep, "should support sdk_version(%v) for the APK %q: %v",
+				String(a.deviceProperties.Min_sdk_version), ctx.ModuleName(), dep.MinSdkVersion())
+			return
+		}
+
+	})
 }
 
 // Returns true if the native libraries should be stored in the APK uncompressed and the
