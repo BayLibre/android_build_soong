@@ -90,10 +90,6 @@ var preArch = []RegisterMutatorFunc{
 	// be given a synthetic temporary name which is then fixed up by these mutators.
 	RegisterPackageRenamer,
 
-	// Create an association between prebuilt modules and their corresponding source
-	// modules (if any).
-	RegisterPrebuiltsPreArchMutators,
-
 	// Check the visibility rules are valid.
 	//
 	// This must run after the package renamer mutators so that any issues found during
@@ -123,6 +119,10 @@ var preArch = []RegisterMutatorFunc{
 
 	// Apply properties from defaults modules to the referencing modules.
 	RegisterDefaultsPreArchMutators,
+
+	// Create an association between prebuilt modules and their corresponding source
+	// modules (if any).
+	RegisterPrebuiltsPreArchMutators,
 
 	// Gather the visibility rules for all modules for us during visibility enforcement.
 	//
