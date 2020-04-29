@@ -87,6 +87,24 @@
       "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba651b5e_91cfad7c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-29T19:39:19Z",
+      "side": 1,
+      "message": "Oh great, but I\u0027ll keep it as-is just to minimize the chrun/risk..  I just added a comment.",
+      "parentUuid": "43ec5097_e615792a",
+      "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
