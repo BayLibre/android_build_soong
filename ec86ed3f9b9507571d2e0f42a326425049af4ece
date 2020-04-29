@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5531ba7_833194cc",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-04-29T14:32:28Z",
+      "side": 1,
+      "message": "Sorry, I missed this line in the original change. Why did you change it? Did you actually need it for your use case or you just copied it from other overridable modules in this file?",
+      "revId": "ec86ed3f9b9507571d2e0f42a326425049af4ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
