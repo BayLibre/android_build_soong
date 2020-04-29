@@ -1308,7 +1308,9 @@ func modulePartition(ctx ModuleInstallPathContext, os OsType) string {
 		if ctx.InstallInData() {
 			partition = "data"
 		} else if ctx.InstallInRamdisk() {
-			if ctx.DeviceConfig().BoardUsesRecoveryAsBoot() {
+			if ctx.DeviceConfig().BuildingVendorBootImage() {
+				partition = "vendor-ramdisk/first_stage_ramdisk"
+			} else if ctx.DeviceConfig().BoardUsesRecoveryAsBoot() {
 				partition = "recovery/root/first_stage_ramdisk"
 			} else {
 				partition = "ramdisk"

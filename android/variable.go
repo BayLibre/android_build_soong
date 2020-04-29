@@ -334,6 +334,8 @@ type productVariables struct {
 	InstallExtraFlattenedApexes *bool `json:",omitempty"`
 
 	BoardUsesRecoveryAsBoot *bool `json:",omitempty"`
+
+	BuildingVendorBootImage *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

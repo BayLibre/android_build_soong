@@ -1221,3 +1221,7 @@ func (c *deviceConfig) DeviceSecondaryArchVariant() string {
 func (c *deviceConfig) BoardUsesRecoveryAsBoot() bool {
 	return Bool(c.config.productVariables.BoardUsesRecoveryAsBoot)
 }
+
+func (c *deviceConfig) BuildingVendorBootImage() bool {
+	return Bool(c.config.productVariables.BuildingVendorBootImage)
+}
