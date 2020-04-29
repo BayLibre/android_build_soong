@@ -314,6 +314,7 @@ type ModuleContextIntf interface {
 	canUseSdk() bool
 	useSdk() bool
 	sdkVersion() string
+	minSdkVersion() string
 	useVndk() bool
 	isNdk() bool
 	isLlndk(config android.Config) bool
@@ -579,6 +580,10 @@ func (c *Module) StubDecorator() bool {
 
 func (c *Module) SdkVersion() string {
 	return String(c.Properties.Sdk_version)
+}
+
+func (c *Module) MinSdkVersion() string {
+	return String(c.Properties.Min_sdk_version)
 }
 
 func (c *Module) AlwaysSdk() bool {
@@ -1129,6 +1134,20 @@ func (ctx *moduleContextImpl) sdkVersion() string {
 			return vndkVer
 		}
 		return String(ctx.mod.Properties.Sdk_version)
+	}
+	return ""
+}
+
+func (ctx *moduleContextImpl) minSdkVersion() string {
+	if ctx.ctx.Device() {
+		if ctx.useVndk() {
+			vndkVer := ctx.mod.VndkVersion()
+			if inList(vndkVer, ctx.ctx.Config().PlatformVersionActiveCodenames()) {
+				return "current"
+			}
+			return vndkVer
+		}
+		return String(ctx.mod.Properties.Min_sdk_version)
 	}
 	return ""
 }
