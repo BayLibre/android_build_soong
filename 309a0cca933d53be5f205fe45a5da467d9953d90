@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d2d7d24_96d4fcca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-29T08:51:29Z",
+      "side": 1,
+      "message": "Some more detailed explanation here as to what changes were made and why would be useful. Especially as Gerrit is not very good at detecting when you have moved (and slightly changed) blocks of code. From my quick scan what you have done is (correct me if I am wrong otherwise feel free to copy the following if you think it is helpful):\n\nFor each of the existing separate rules for api lint and check released this change:\n1) Stopped creating a separate rule containing its own metalava invocation.\n2) Moved the code for creating the rule earlier so it can add extra flags to the combined metalava command.\n3) Moved the message handling into metalava, allowing the message to be passed in.\n4) Added a flag to record whether the specific check was needed so that you can separate the timestamp file creation out to run after the merged metalava command.\n\nA couple of minor bug fixes and clarifications.",
+      "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142ed9ef_a9d11796",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-29T08:51:29Z",
+      "side": 1,
+      "message": "Why do we need separate timestamp files if they are all being run in the same command. Surely they can all just use one file? That can then be copied into the individual fields for use when creating phony targets in make.",
+      "revId": "309a0cca933d53be5f205fe45a5da467d9953d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
