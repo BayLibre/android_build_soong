@@ -22,6 +22,30 @@
       "revId": "67c1d715f6cd1d9748c6f36d26fbcab527ce77eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac40bbb9_e78fa2d2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-04-29T08:05:15Z",
+      "side": 1,
+      "message": "I originally did this as a boolean but hansson@ did not like that so he suggested we use this instead. It actually makes things easier and addressed two problems, adding \"module_lib\" and removing \"test\".\n\nIndividual booleans work well when they are orthogonal to one another as they can be easily handled by defaults. However, API surfaces are not orthogonal, at least not completely.",
+      "parentUuid": "89d5d9e7_20399c7e",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 22
+      },
+      "revId": "67c1d715f6cd1d9748c6f36d26fbcab527ce77eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
