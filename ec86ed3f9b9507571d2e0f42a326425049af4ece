@@ -34,6 +34,24 @@
       "revId": "ec86ed3f9b9507571d2e0f42a326425049af4ece",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e111579_a6b7c278",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2020-04-29T15:54:13Z",
+      "side": 1,
+      "message": "Fixed now. Will fix internally as well.",
+      "parentUuid": "838a2d2e_82cc5671",
+      "revId": "ec86ed3f9b9507571d2e0f42a326425049af4ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
