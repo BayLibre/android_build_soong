@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a9fd462c_6738f620",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-04-29T08:38:03Z",
+      "side": 1,
+      "message": "Seems like this should be removed now?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 57
+      },
+      "revId": "67c1d715f6cd1d9748c6f36d26fbcab527ce77eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89d5d9e7_20399c7e",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "I originally did this as a boolean but hansson@ did not like that so he suggested we use this instead. It actually makes things easier and addressed two problems, adding \"module_lib\" and removing \"test\".\n\nIndividual booleans work well when they are orthogonal to one another as they can be easily handled by defaults. However, API surfaces are not orthogonal, at least not completely.",
       "parentUuid": "89d5d9e7_20399c7e",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 22
+      },
+      "revId": "67c1d715f6cd1d9748c6f36d26fbcab527ce77eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2556552_5dbeaebc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-04-29T08:38:03Z",
+      "side": 1,
+      "message": "well, it seems like we don\u0027t have enum support but need to use a string list. This seems a little less ad-hoc than the N bools though, I like it better.",
+      "parentUuid": "ac40bbb9_e78fa2d2",
       "range": {
         "startLine": 234,
         "startChar": 0,
