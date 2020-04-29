@@ -984,6 +984,8 @@ func TestSnapshotWithJavaSdkLibrary(t *testing.T) {
 			apex_available: ["//apex_available:anyapex"],
 			srcs: ["Test.java"],
 			sdk_version: "current",
+			stubs_library_visibility: ["//other"],
+			stubs_source_visibility: ["//another"],
 		}
 	`)
 
