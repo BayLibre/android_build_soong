@@ -16,6 +16,24 @@
       "revId": "ec86ed3f9b9507571d2e0f42a326425049af4ece",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "838a2d2e_82cc5671",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2020-04-29T14:45:03Z",
+      "side": 1,
+      "message": "Yeah, I had copied it from the other override modules. Also, I had initially tried to change RuntimeResourceOverlay from \"DefaultableModuleBase\" to \"OverridableModuleBase\". So, InitJavaModule() was not working. But, that changed as I was working on it.",
+      "parentUuid": "c5531ba7_833194cc",
+      "revId": "ec86ed3f9b9507571d2e0f42a326425049af4ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
