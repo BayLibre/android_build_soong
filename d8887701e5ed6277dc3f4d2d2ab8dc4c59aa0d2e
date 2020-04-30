@@ -46,6 +46,76 @@
       "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4430256a_25d26112",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-30T13:19:07Z",
+      "side": 1,
+      "message": "I see - lgtm if it also looks good to Dan/Colin",
+      "parentUuid": "085701a3_dc86bc04",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "669f7049_c05b52e1",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-30T13:19:07Z",
+      "side": 1,
+      "message": "nit: apexName ?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47ed2c7b_1580e832",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-04-30T13:19:07Z",
+      "side": 1,
+      "message": "nit: add a comment what this means.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
