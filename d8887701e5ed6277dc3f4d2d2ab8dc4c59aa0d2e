@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "3140b9aa_136baf84",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-30T13:53:49Z",
+      "side": 1,
+      "message": "I see. Yes, it looks odd. I picked the idea from \"//apex_available:platform\" used in other parts of Soong.",
+      "parentUuid": "5d6eaa9f_6b2eb0ae",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47ed2c7b_1580e832",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 4
