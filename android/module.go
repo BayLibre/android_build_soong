@@ -1811,6 +1811,7 @@ func (m *ModuleBase) MakeAsPlatform() {
 	m.commonProperties.Vendor = boolPtr(false)
 	m.commonProperties.Proprietary = boolPtr(false)
 	m.commonProperties.Soc_specific = boolPtr(false)
+	m.commonProperties.Device_specific = boolPtr(false)
 	m.commonProperties.Product_specific = boolPtr(false)
 	m.commonProperties.System_ext_specific = boolPtr(false)
 }
@@ -1823,6 +1824,7 @@ func (m *ModuleBase) MakeAsSystemExt() {
 	m.commonProperties.Vendor = boolPtr(false)
 	m.commonProperties.Proprietary = boolPtr(false)
 	m.commonProperties.Soc_specific = boolPtr(false)
+	m.commonProperties.Device_specific = boolPtr(false)
 	m.commonProperties.Product_specific = boolPtr(false)
 	m.commonProperties.System_ext_specific = boolPtr(true)
 }
