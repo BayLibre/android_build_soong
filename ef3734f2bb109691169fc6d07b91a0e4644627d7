@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4230bc3_37149142",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-30T22:30:09Z",
+      "side": 1,
+      "message": "Is there anything specific to apps here or could this be shared with the apex copy?",
+      "revId": "ef3734f2bb109691169fc6d07b91a0e4644627d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
