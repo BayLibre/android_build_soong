@@ -144,6 +144,7 @@ func (n *NinjaReader) run() {
 				Outputs:     msg.EdgeStarted.Outputs,
 				Inputs:      msg.EdgeStarted.Inputs,
 				Command:     msg.EdgeStarted.GetCommand(),
+				Start:       msg.EdgeStarted.GetStartTime(),
 			}
 			n.status.StartAction(action)
 			running[msg.EdgeStarted.GetId()] = action
@@ -152,6 +153,7 @@ func (n *NinjaReader) run() {
 			if started, ok := running[msg.EdgeFinished.GetId()]; ok {
 				delete(running, msg.EdgeFinished.GetId())
 
+				started.End = msg.EdgeFinished.GetEndTime()
 				var err error
 				exitCode := int(msg.EdgeFinished.GetStatus())
 				if exitCode != 0 {

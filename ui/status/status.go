@@ -40,6 +40,14 @@ type Action struct {
 	// It's optional, but one of either Description or Command should be
 	// set.
 	Command string
+
+	// Start indicates the time offset in milli-seconds from when the action
+	// started executing since ninja started running the graph.
+	Start uint32
+
+	// End indicates the time offset in milli-seconds of when the action
+	// finished executing since ninja started running the graph.
+	End uint32
 }
 
 // ActionResult describes the result of running an Action.

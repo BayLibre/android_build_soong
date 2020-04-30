@@ -60,7 +60,7 @@ func (v *verboseLog) FinishAction(result ActionResult, counts Counts) {
 		cmd = result.Description
 	}
 
-	fmt.Fprintf(v.w, "[%d/%d] %s\n", counts.FinishedActions, counts.TotalActions, cmd)
+	fmt.Fprintf(v.w, "[%d/%d] %v %v %s\n", counts.FinishedActions, counts.TotalActions, result.Action.Start, result.Action.End, cmd)
 
 	if result.Error != nil {
 		fmt.Fprintf(v.w, "FAILED: %s\n", strings.Join(result.Outputs, " "))
