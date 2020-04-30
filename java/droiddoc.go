@@ -112,6 +112,9 @@ type JavadocProperties struct {
 	// local files that are used within user customized droiddoc options.
 	Arg_files []string `android:"path"`
 
+	// paths where source files are searched for implicitly when generating documentation.
+	Implicits []string `android:"path"`
+
 	// user customized droiddoc args.
 	// Available variables for substitution:
 	//
@@ -357,6 +360,7 @@ type Javadoc struct {
 	srcFiles    android.Paths
 	sourcepaths android.Paths
 	argFiles    android.Paths
+	implicits   android.Paths
 
 	args string
 
@@ -596,6 +600,7 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 	}
 	j.sourcepaths = android.PathsForModuleSrc(ctx, j.properties.Local_sourcepaths)
 
+	j.implicits = android.PathsForModuleSrc(ctx, j.properties.Implicits)
 	j.argFiles = android.PathsForModuleSrc(ctx, j.properties.Arg_files)
 	argFilesMap := map[string]string{}
 	argFileLabels := []string{}
@@ -1373,10 +1378,12 @@ func (d *Droidstubs) apiToXmlFlags(ctx android.ModuleContext, cmd *android.RuleB
 }
 
 func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersion javaVersion, srcs android.Paths,
-	srcJarList android.Path, bootclasspath, classpath classpath, sourcepaths android.Paths) *android.RuleBuilderCommand {
+	srcJarList android.Path, bootclasspath, classpath classpath, sourcepaths android.Paths, implicits android.Paths, implicitsRsp android.Path) *android.RuleBuilderCommand {
 	// Metalava uses lots of memory, restrict the number of metalava jobs that can run in parallel.
 	rule.HighMem()
 	cmd := rule.Command()
+	cmd.Implicits(implicits)
+	cmd.Implicit(implicitsRsp)
 	if ctx.Config().IsEnvTrue("RBE_METALAVA") {
 		rule.Remoteable(android.RemoteRuleSupports{RBE: true})
 		execStrategy := remoteexec.LocalExecStrategy
@@ -1395,6 +1402,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 			Labels:          map[string]string{"type": "compile", "lang": "java", "compiler": "metalava"},
 			ExecStrategy:    execStrategy,
 			Inputs:          inputs,
+			RSPFile:         implicitsRsp.String(),
 			ToolchainInputs: []string{config.JavaCmd(ctx).String()},
 			Platform:        map[string]string{remoteexec.PoolKey: pool},
 		}).NoVarTemplate(ctx.Config()))
@@ -1437,6 +1445,15 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Create rule for metalava
 
 	srcJarDir := android.PathForModuleOut(ctx, "srcjars")
+	implicitsRsp := android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"implicits.rsp")
+	impRule := android.NewRuleBuilder()
+	impCmd := impRule.Command()
+	// A dummy action that copies the ninja generated rsp file to a new location. This allows us to
+	// add a large number of inputs to a file without exceeding bash command length limits (which
+	// would happen if we use the WriteFile rule). The cp is needed because RuleBuilder sets the
+	// rsp file to be ${output}.rsp.
+	impCmd.Text("cp").FlagWithRspFileInputList("", d.Javadoc.implicits).Output(implicitsRsp)
+	impRule.Build(pctx, ctx, "implicitsGen", "implicits generation")
 
 	rule := android.NewRuleBuilder()
 
@@ -1452,7 +1469,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	srcJarList := zipSyncCmd(ctx, rule, srcJarDir, d.Javadoc.srcJars)
 
 	cmd := metalavaCmd(ctx, rule, javaVersion, d.Javadoc.srcFiles, srcJarList,
-		deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths)
+		deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths, d.Javadoc.implicits, implicitsRsp)
 
 	d.stubsFlags(ctx, cmd, stubsDir)
 
