@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2c826fa_04788a3d",
+        "filename": "android/paths_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-04-30T22:36:49Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "revId": "401b32d52ef0e9eec9e303fa58342e1abd11dcbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
