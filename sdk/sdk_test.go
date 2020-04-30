@@ -280,10 +280,13 @@ func TestCommonValueOptimization(t *testing.T) {
 	}
 
 	extractor := newCommonValueExtractor(common)
-	extractor.extractCommonProperties(common, structs)
 
 	h := TestHelper{t}
-	h.AssertDeepEquals("common properties not correct", common,
+
+	err := extractor.extractCommonProperties(common, structs)
+	h.AssertDeepEquals("unexpected error", nil, err)
+
+	h.AssertDeepEquals("common properties not correct",
 		&testPropertiesStruct{
 			private:     "",
 			Public_Kept: "",
@@ -297,9 +300,10 @@ func TestCommonValueOptimization(t *testing.T) {
 				S_Embedded_Common:    "embedded_common",
 				S_Embedded_Different: "",
 			},
-		})
+		},
+		common)
 
-	h.AssertDeepEquals("updated properties[0] not correct", structs[0],
+	h.AssertDeepEquals("updated properties[0] not correct",
 		&testPropertiesStruct{
 			private:     "common",
 			Public_Kept: "common",
@@ -313,9 +317,10 @@ func TestCommonValueOptimization(t *testing.T) {
 				S_Embedded_Common:    "",
 				S_Embedded_Different: "embedded_upper",
 			},
-		})
+		},
+		structs[0])
 
-	h.AssertDeepEquals("updated properties[1] not correct", structs[1],
+	h.AssertDeepEquals("updated properties[1] not correct",
 		&testPropertiesStruct{
 			private:     "common",
 			Public_Kept: "common",
@@ -329,5 +334,101 @@ func TestCommonValueOptimization(t *testing.T) {
 				S_Embedded_Common:    "",
 				S_Embedded_Different: "embedded_lower",
 			},
-		})
+		},
+		structs[1])
+}
+
+type ignoreOnHostStructProperties struct {
+	onHost bool
+
+	IgnoreOnHost string `sdk:"ignored-on-host"`
+}
+
+func (p *ignoreOnHostStructProperties) optimizableProperties() interface{} {
+	return p
+}
+
+func (p *ignoreOnHostStructProperties) isHostVariant() bool {
+	return p.onHost
+}
+
+func (p *ignoreOnHostStructProperties) String() string {
+	if p.onHost {
+		return "host"
+	} else {
+		return "not-host"
+	}
+}
+
+var _ isHostVariant = (*ignoreOnHostStructProperties)(nil)
+
+func TestCommonValueOptimization_IgnoreOnHostFilter(t *testing.T) {
+	common := &ignoreOnHostStructProperties{}
+	extractor := newCommonValueExtractor(common)
+
+	structs := []propertiesContainer{
+		&ignoreOnHostStructProperties{
+			IgnoreOnHost: "not-host",
+		},
+		&ignoreOnHostStructProperties{
+			IgnoreOnHost: "not-host",
+		},
+		&ignoreOnHostStructProperties{
+			onHost:       true,
+			IgnoreOnHost: "",
+		},
+	}
+
+	h := TestHelper{t}
+
+	err := extractor.extractCommonProperties(common, structs)
+	h.AssertDeepEquals("unexpected error", nil, err)
+
+	h.AssertDeepEquals("common properties not correct",
+		&ignoreOnHostStructProperties{
+			IgnoreOnHost: "not-host",
+		},
+		common)
+
+	h.AssertDeepEquals("updated properties[0] not correct",
+		&ignoreOnHostStructProperties{
+			onHost:       false,
+			IgnoreOnHost: "",
+		},
+		structs[0])
+
+	h.AssertDeepEquals("updated properties[1] not correct",
+		&ignoreOnHostStructProperties{
+			IgnoreOnHost: "",
+		},
+		structs[1])
+
+	h.AssertDeepEquals("updated properties[2] not correct",
+		&ignoreOnHostStructProperties{
+			onHost:       true,
+			IgnoreOnHost: "",
+		},
+		structs[2])
+}
+
+func TestCommonValueOptimization_IgnoreOnHostFilter_NotEmpty(t *testing.T) {
+	common := &ignoreOnHostStructProperties{}
+	extractor := newCommonValueExtractor(common)
+
+	structs := []propertiesContainer{
+		&ignoreOnHostStructProperties{
+			IgnoreOnHost: "not-host",
+		},
+		&ignoreOnHostStructProperties{
+			IgnoreOnHost: "not-host",
+		},
+		&ignoreOnHostStructProperties{
+			onHost:       true,
+			IgnoreOnHost: "invalid-not-empty",
+		},
+	}
+
+	h := TestHelper{t}
+	err := extractor.extractCommonProperties(common, structs)
+	h.AssertErrorMessageEquals("unexpected error", `property "ignoreOnHost" is supposed to be ignored for "host" but is set to "invalid-not-empty" instead of ""`, err)
 }
