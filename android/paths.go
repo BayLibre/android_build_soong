@@ -52,6 +52,7 @@ type ModuleInstallPathContext interface {
 	InstallInRamdisk() bool
 	InstallInRecovery() bool
 	InstallInRoot() bool
+	InstallInVendorRamdisk() bool
 	InstallBypassMake() bool
 	InstallForceOS() *OsType
 }
@@ -1308,7 +1309,7 @@ func modulePartition(ctx ModuleInstallPathContext, os OsType) string {
 		if ctx.InstallInData() {
 			partition = "data"
 		} else if ctx.InstallInRamdisk() {
-			if ctx.DeviceConfig().BuildingVendorBootImage() {
+			if ctx.DeviceConfig().BuildingVendorBootImage() && ctx.InstallInVendorRamdisk() {
 				partition = "vendor-ramdisk/first_stage_ramdisk"
 			} else if ctx.DeviceConfig().BoardUsesRecoveryAsBoot() {
 				partition = "recovery/root/first_stage_ramdisk"
@@ -1319,11 +1320,20 @@ func modulePartition(ctx ModuleInstallPathContext, os OsType) string {
 				partition += "/system"
 			}
 		} else if ctx.InstallInRecovery() {
-			if ctx.InstallInRoot() {
-				partition = "recovery/root"
+			if ctx.DeviceConfig().BuildingVendorBootImage() && ctx.InstallInVendorRamdisk() {
+				if ctx.InstallInRoot() {
+					partition = "vendor-ramdisk"
+				} else {
+					// the layout of recovery partion is the same as that of system partition
+					partition = "vendor-ramdisk/system"
+				}
 			} else {
-				// the layout of recovery partion is the same as that of system partition
-				partition = "recovery/root/system"
+				if ctx.InstallInRoot() {
+					partition = "recovery/root"
+				} else {
+					// the layout of recovery partion is the same as that of system partition
+					partition = "recovery/root/system"
+				}
 			}
 		} else if ctx.SocSpecific() {
 			partition = ctx.DeviceConfig().VendorPath()

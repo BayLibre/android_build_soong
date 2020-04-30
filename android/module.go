@@ -181,6 +181,7 @@ type ModuleContext interface {
 	InstallInRamdisk() bool
 	InstallInRecovery() bool
 	InstallInRoot() bool
+	InstallInVendorRamdisk() bool
 	InstallBypassMake() bool
 	InstallForceOS() *OsType
 
@@ -224,6 +225,7 @@ type Module interface {
 	InstallInRamdisk() bool
 	InstallInRecovery() bool
 	InstallInRoot() bool
+	InstallInVendorRamdisk() bool
 	InstallBypassMake() bool
 	InstallForceOS() *OsType
 	SkipInstall()
@@ -417,6 +419,10 @@ type commonProperties struct {
 
 	// Whether this module is installed to ramdisk
 	Ramdisk *bool
+
+	// Whether this module is installed to the ramdisk on vendor_boot.img
+	// This is applicable to both ramdisk and recovery modules
+	Vendor_ramdisk *bool
 
 	// Whether this module is built for non-native architecures (also known as native bridge binary)
 	Native_bridge_supported *bool `android:"arch_variant"`
@@ -998,6 +1004,12 @@ func (m *ModuleBase) InstallInRamdisk() bool {
 
 func (m *ModuleBase) InstallInRecovery() bool {
 	return Bool(m.commonProperties.Recovery)
+}
+
+func (m *ModuleBase) InstallInVendorRamdisk() bool {
+	return Bool(m.commonProperties.Vendor_ramdisk) || Bool(m.commonProperties.Vendor) ||
+		Bool(m.commonProperties.Proprietary) || Bool(m.commonProperties.Soc_specific) ||
+		Bool(m.commonProperties.Device_specific) || Bool(m.commonProperties.Product_specific)
 }
 
 func (m *ModuleBase) InstallInRoot() bool {
@@ -1808,6 +1820,11 @@ func (b *baseModuleContext) PrimaryArch() bool {
 // Makes this module a platform module, i.e. not specific to soc, device,
 // product, or system_ext.
 func (m *ModuleBase) MakeAsPlatform() {
+	if Bool(m.commonProperties.Vendor) || Bool(m.commonProperties.Proprietary) ||
+		Bool(m.commonProperties.Soc_specific) || Bool(m.commonProperties.Device_specific) ||
+		Bool(m.commonProperties.Product_specific) {
+		m.commonProperties.Vendor_ramdisk = boolPtr(true)
+	}
 	m.commonProperties.Vendor = boolPtr(false)
 	m.commonProperties.Proprietary = boolPtr(false)
 	m.commonProperties.Soc_specific = boolPtr(false)
@@ -1856,6 +1873,10 @@ func (m *moduleContext) InstallInRecovery() bool {
 
 func (m *moduleContext) InstallInRoot() bool {
 	return m.module.InstallInRoot()
+}
+
+func (m *moduleContext) InstallInVendorRamdisk() bool {
+	return m.module.InstallInVendorRamdisk()
 }
 
 func (m *moduleContext) InstallBypassMake() bool {
