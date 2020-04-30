@@ -783,7 +783,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.generateAndroidBuildActions(ctx)
 
 	testConfig := tradefed.AutoGenInstrumentationTestConfig(ctx, a.testProperties.Test_config,
-		a.testProperties.Test_config_template, a.manifestPath, a.testProperties.Test_suites, a.testProperties.Auto_gen_config)
+		a.testProperties.Test_config_template, a.manifestPath, a.testProperties.Test_suites, a.testProperties.Auto_gen_config, a.testProperties.Test_mainline_modules)
 	a.testConfig = a.FixTestConfig(ctx, testConfig)
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
 }

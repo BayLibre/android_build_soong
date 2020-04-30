@@ -215,16 +215,16 @@ func AutoGenRustTestConfig(ctx android.ModuleContext, name string, testConfigPro
 }
 
 var autogenInstrumentationTest = pctx.StaticRule("autogenInstrumentationTest", blueprint.RuleParams{
-	Command: "${AutoGenTestConfigScript} $out $in ${EmptyTestConfig} $template",
+	Command: "${AutoGenTestConfigScript} $out $in ${EmptyTestConfig} $template ${parameterizedStrings}",
 	CommandDeps: []string{
 		"${AutoGenTestConfigScript}",
 		"${EmptyTestConfig}",
 		"$template",
 	},
-}, "name", "template")
+}, "name", "template", "parameterizedStrings")
 
 func AutoGenInstrumentationTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string, manifest android.Path, testSuites []string, autoGenConfig *bool) android.Path {
+	testConfigTemplateProp *string, manifest android.Path, testSuites []string, autoGenConfig *bool, testMainlineModules []string) android.Path {
 	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
 	if autogenPath != nil {
 		template := "${InstrumentationTestConfigTemplate}"
@@ -232,14 +232,24 @@ func AutoGenInstrumentationTestConfig(ctx android.ModuleContext, testConfigProp 
 		if moduleTemplate.Valid() {
 			template = moduleTemplate.String()
 		}
+		parameterizedStrings := ""
+		if testMainlineModules != nil {
+			var mainlineStrings []string
+			for _, module := range testMainlineModules {
+				mainlineStrings = append(mainlineStrings, fmt.Sprintf(`<option name="config-descriptor:metadata" key="mainline-param" value="%s" />`, module))
+			}
+			parameterizedStrings += strings.Join(mainlineStrings, fmt.Sprintf("\\n%s", test_xml_indent))
+		}
+		parameterizedStrings = fmt.Sprintf("--paramModules '%s'", parameterizedStrings)
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        autogenInstrumentationTest,
 			Description: "test config",
 			Input:       manifest,
 			Output:      autogenPath,
 			Args: map[string]string{
-				"name":     ctx.ModuleName(),
-				"template": template,
+				"name":                 ctx.ModuleName(),
+				"template":             template,
+				"parameterizedStrings": parameterizedStrings,
 			},
 		})
 		return autogenPath
