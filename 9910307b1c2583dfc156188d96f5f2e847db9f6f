@@ -16,6 +16,24 @@
       "revId": "9910307b1c2583dfc156188d96f5f2e847db9f6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547ef38a_a6e9d34e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-30T00:03:37Z",
+      "side": 1,
+      "message": "Metalava is apparently used in other places than the platform build too, where the policy or the build structure may be different, so we don\u0027t want to hard code the messages. For example, @SuppressLint may not be available, or baseline is frozen and shouldn\u0027t be updated.",
+      "parentUuid": "ecddcd67_5fbcd1ca",
+      "revId": "9910307b1c2583dfc156188d96f5f2e847db9f6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
