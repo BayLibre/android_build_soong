@@ -22,6 +22,30 @@
       "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "085701a3_dc86bc04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-30T13:16:16Z",
+      "side": 1,
+      "message": "Correct, we are not requiring it in the PRODUCT_BOOT_JARS and PRODUCT_BOOT_JARS_EXTRA components. But as soon as these variables are constructed we patch them and add \u0027platform:\u0027 to all unqualified components (see the related CL in Make). After that in Soong and in Make we assume 2-column format. I thought this is a cleaner approach than checking the format everywhere.",
+      "parentUuid": "414d487a_855ef0be",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
