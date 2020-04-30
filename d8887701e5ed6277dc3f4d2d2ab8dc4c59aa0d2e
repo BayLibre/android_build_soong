@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b2a292df_cbeacde8",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-30T13:44:11Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to have just \"apex\" here. It literally means \"the name of apex where this module comes from\", but by the same logic \"jar\" should be \"jarName\", and I\u0027d rather keep the names short. (And \"apex\" is used in the same context in other places).",
+      "parentUuid": "669f7049_c05b52e1",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47ed2c7b_1580e832",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 4
@@ -116,6 +140,30 @@
       "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ee71bf_e532b6db",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-04-30T13:44:11Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "47ed2c7b_1580e832",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
