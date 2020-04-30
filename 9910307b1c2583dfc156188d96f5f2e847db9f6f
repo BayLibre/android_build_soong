@@ -52,6 +52,24 @@
       "revId": "9910307b1c2583dfc156188d96f5f2e847db9f6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88a5f259_34b0f9f4",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-04-30T18:45:43Z",
+      "side": 1,
+      "message": "Oh that\u0027s a \"warning\" message. I think we show that when the lint won\u0027t fail. The message here is what would be shown when the lint fails with (non-warning) errors. This message here is what used to happen when metalava returns with a non-zero status code, and this change isn\u0027t changing that.\n\nOkay I think we should unify them, but I don\u0027t want to change any semantics in this change, so I\u0027ll just add a TODO.",
+      "parentUuid": "6a745524_8c7b2925",
+      "revId": "9910307b1c2583dfc156188d96f5f2e847db9f6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
