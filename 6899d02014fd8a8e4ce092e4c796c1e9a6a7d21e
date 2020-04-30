@@ -123,6 +123,30 @@
       "revId": "6899d02014fd8a8e4ce092e4c796c1e9a6a7d21e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a49a57_0fb8efcb",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-04-30T23:07:10Z",
+      "side": 1,
+      "message": "Done. I don\u0027t follow what lld solves regarding ordering, but ensuring the same order in the .a files would require replacing both WholeStaticLibObjs and the new WholeStaticLibsFromPrebuilts with a common container. It would also more or less require fixing RuleBuilder so it can used instead. Is the worry about symbol overrides or something else?",
+      "parentUuid": "3f3e785b_aea46cf3",
+      "range": {
+        "startLine": 873,
+        "startChar": 45,
+        "endLine": 873,
+        "endChar": 65
+      },
+      "revId": "6899d02014fd8a8e4ce092e4c796c1e9a6a7d21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
