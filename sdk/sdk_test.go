@@ -233,7 +233,7 @@ type EmbeddedPropertiesStruct struct {
 type testPropertiesStruct struct {
 	name        string
 	private     string
-	Public_Kept string `sdk:"keep"`
+	Public_Kept string `sdk:"keep",android:"arch_variant"`
 	S_Common    string
 	S_Different string `android:"arch_variant"`
 	A_Common    []string
@@ -289,9 +289,12 @@ func TestCommonValueOptimization(t *testing.T) {
 	}
 
 	extractor := newCommonValueExtractor(common)
-	extractor.extractCommonProperties(common, structs)
 
 	h := TestHelper{t}
+
+	err := extractor.extractCommonProperties(common, structs)
+	h.AssertDeepEquals("unexpected error", nil, err)
+
 	h.AssertDeepEquals("common properties not correct",
 		&testPropertiesStruct{
 			name:        "common",
