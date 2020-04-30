@@ -34,6 +34,24 @@
       "revId": "9910307b1c2583dfc156188d96f5f2e847db9f6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a745524_8c7b2925",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1484,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-04-30T15:57:18Z",
+      "side": 1,
+      "message": "The lint message actually is in metalava. If you introduce new lint errors in the platform, you get the message defined in metalava, not the one here.\n\nI know this because I recently updated the metalava one :)  go/ag/11194554",
+      "parentUuid": "547ef38a_a6e9d34e",
+      "revId": "9910307b1c2583dfc156188d96f5f2e847db9f6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
