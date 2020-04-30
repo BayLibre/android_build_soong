@@ -219,31 +219,35 @@ func AutoGenRustTestConfig(ctx android.ModuleContext, name string, testConfigPro
 }
 
 var autogenInstrumentationTest = pctx.StaticRule("autogenInstrumentationTest", blueprint.RuleParams{
-	Command: "${AutoGenTestConfigScript} $out $in ${EmptyTestConfig} $template",
+	Command: "${AutoGenTestConfigScript} $out $in ${EmptyTestConfig} $template ${mainlineModules}",
 	CommandDeps: []string{
 		"${AutoGenTestConfigScript}",
 		"${EmptyTestConfig}",
 		"$template",
 	},
-}, "name", "template")
+}, "name", "template", "mainlineModules")
 
 func AutoGenInstrumentationTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string, manifest android.Path, testSuites []string, autoGenConfig *bool) android.Path {
+	testConfigTemplateProp *string, manifest android.Path, testSuites []string, autoGenConfig *bool, mainlineStrings []string) android.Path {
 	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
 	if autogenPath != nil {
 		template := "${InstrumentationTestConfigTemplate}"
+		mainlineModules := ""
 		moduleTemplate := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if moduleTemplate.Valid() {
 			template = moduleTemplate.String()
 		}
+		mainlineModules += strings.Join(mainlineStrings, fmt.Sprintf("\\n%s", test_xml_indent))
+		mainlineModules = fmt.Sprintf("--mainlineModules '%s'", mainlineModules)
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        autogenInstrumentationTest,
 			Description: "test config",
 			Input:       manifest,
 			Output:      autogenPath,
 			Args: map[string]string{
-				"name":     ctx.ModuleName(),
-				"template": template,
+				"name":            ctx.ModuleName(),
+				"template":        template,
+				"mainlineModules": mainlineModules,
 			},
 		})
 		return autogenPath
