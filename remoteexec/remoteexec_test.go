@@ -64,6 +64,22 @@ func TestTemplate(t *testing.T) {
 	}
 }
 
+func TestNoVarTemplate(t *testing.T) {
+	params := &REParams{
+		Labels:      map[string]string{"type": "compile", "lang": "cpp", "compiler": "clang"},
+		Inputs:      []string{"$in"},
+		OutputFiles: []string{"$out"},
+		Platform: map[string]string{
+			ContainerImageKey: DefaultImage,
+			PoolKey:           "default",
+		},
+	}
+	want := fmt.Sprintf("prebuilts/remoteexecution-client/live/rewrapper --labels=compiler=clang,lang=cpp,type=compile --platform=\"Pool=default,container-image=%s\" --exec_strategy=local --inputs=$in --output_files=$out -- ", DefaultImage)
+	if got := params.NoVarTemplate(); got != want {
+		t.Errorf("NoVarTemplate() returned\n%s\nwant\n%s", got, want)
+	}
+}
+
 func TestTemplateDeterminism(t *testing.T) {
 	r := &REParams{
 		Labels:      map[string]string{"type": "compile", "lang": "cpp", "compiler": "clang"},
