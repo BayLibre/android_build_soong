@@ -75,6 +75,9 @@ type REParams struct {
 	// OutputFiles is a list of output file paths or ninja variables as placeholders for rule
 	// outputs.
 	OutputFiles []string
+	// OutputDirectories is a list of output directories or ninja variables as placeholders for
+	// rule output directories.
+	OutputDirectories []string
 	// ToolchainInputs is a list of paths or ninja variables pointing to the location of
 	// toolchain binaries used by the rule.
 	ToolchainInputs []string
@@ -99,7 +102,7 @@ func (r *REParams) Template() string {
 	return "${remoteexec.Wrapper}" + r.wrapperArgs()
 }
 
-// NoVarTemplate generate the remote execution wrapper template without variables, to be used in
+// NoVarTemplate generates the remote execution wrapper template without variables, to be used in
 // RuleBuilder.
 func (r *REParams) NoVarTemplate(cfg android.Config) string {
 	return wrapper(cfg) + r.wrapperArgs()
@@ -149,6 +152,10 @@ func (r *REParams) wrapperArgs() string {
 
 	if len(r.OutputFiles) > 0 {
 		args += " --output_files=" + strings.Join(r.OutputFiles, ",")
+	}
+
+	if len(r.OutputDirectories) > 0 {
+		args += " --output_directories=" + strings.Join(r.OutputDirectories, ",")
 	}
 
 	if len(r.ToolchainInputs) > 0 {
