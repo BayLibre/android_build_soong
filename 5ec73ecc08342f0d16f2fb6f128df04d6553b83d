@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0e1bb5d_40bd2b0b",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-01T22:42:20Z",
+      "side": 1,
+      "message": "why have both the exported and unexported versions?",
+      "revId": "5ec73ecc08342f0d16f2fb6f128df04d6553b83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
