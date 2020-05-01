@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0bf2a98_735ee7bb",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-01T21:21:41Z",
+      "side": 1,
+      "message": "I\u0027d suggest setting these in the test after creating the TestConfig using config.TestProductVariables.Native_coverage.  That way you\u0027re not duplicating the environment parsing rules here, and we don\u0027t need to clutter TestConfig with test-specific behavior.",
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807e1d36_8a32f5b7",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-01T21:21:41Z",
+      "side": 1,
+      "message": "How is this different from MarkAsCoverageVariant(true)?",
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f71979c_fa45a83d",
+        "filename": "rust/coverage_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-01T21:21:41Z",
+      "side": 1,
+      "message": "put android imports after stdlib imports",
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
