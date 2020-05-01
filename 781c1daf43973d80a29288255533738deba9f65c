@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82b32152_dd9fb166",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-05-01T21:42:28Z",
+      "side": 1,
+      "message": "download and install",
+      "range": {
+        "startLine": 90,
+        "startChar": 27,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "781c1daf43973d80a29288255533738deba9f65c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fada13cf_bff24691",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-05-01T21:42:28Z",
+      "side": 1,
+      "message": "Let\u0027s add `MAINLINE_` prefix. or just MAINLINE_MODULES?",
+      "range": {
+        "startLine": 43,
+        "startChar": 82,
+        "endLine": 43,
+        "endChar": 83
+      },
+      "revId": "781c1daf43973d80a29288255533738deba9f65c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c608931d_9b7ca452",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-05-01T21:42:28Z",
+      "side": 1,
+      "message": "mainlineModules?",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 60
+      },
+      "revId": "781c1daf43973d80a29288255533738deba9f65c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
