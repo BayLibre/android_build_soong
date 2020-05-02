@@ -57,15 +57,7 @@ var Log = PathConfig{
 }
 
 // The configuration used if the tool is not listed in the config below.
-// Currently this will create the symlink, but log and error when it's used. In
-// the future, I expect the symlink to be removed, and this will be equivalent
-// to Forbidden. This applies to every tool not specifically mentioned in the
-// configuration.
-var Missing = PathConfig{
-	Symlink: true,
-	Log:     true,
-	Error:   true,
-}
+var Missing = Forbidden
 
 // This is used for binaries for which we have prebuilt versions, but only for
 // Linux. Thus, their execution from $PATH is only allowed on Mac OS.
