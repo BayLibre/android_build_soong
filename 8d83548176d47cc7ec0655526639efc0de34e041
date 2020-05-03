@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "899a1591_d29dc007",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-03T09:10:39Z",
+      "side": 1,
+      "message": "This sounds like a query method, but it actually has a side effect. Can you rename this?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 16
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "807e1d36_8a32f5b7",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -36,6 +59,75 @@
     },
     {
       "key": {
+        "uuid": "7e258c94_e51f3ec1",
+        "filename": "rust/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-03T09:10:39Z",
+      "side": 1,
+      "message": "nit: just `var coverageFiles android.Paths`?",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 33
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "983aa7e2_a8030d81",
+        "filename": "rust/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-03T09:10:39Z",
+      "side": 1,
+      "message": "can we reuse cc.CoverageProperties?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d5eb11_50d865f2",
+        "filename": "rust/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-03T09:10:39Z",
+      "side": 1,
+      "message": "This is very similar to the function  in cc/coverage.go. Can we dedup?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 1
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f71979c_fa45a83d",
         "filename": "rust/coverage_test.go",
         "patchSetId": 1
@@ -47,6 +139,29 @@
       "writtenOn": "2020-05-01T21:21:41Z",
       "side": 1,
       "message": "put android imports after stdlib imports",
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "705e360c_9cfda1be",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-03T09:10:39Z",
+      "side": 1,
+      "message": "nit: same as before. var coverageFles android.Paths?",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 381,
+        "endChar": 33
+      },
       "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
