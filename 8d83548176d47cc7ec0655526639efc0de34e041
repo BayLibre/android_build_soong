@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ea9383e_16729833",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-04T17:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0bf2a98_735ee7bb",
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "899a1591_d29dc007",
         "filename": "cc/coverage.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5b2dbe5c_c1443051",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-04T17:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "899a1591_d29dc007",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 16
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "807e1d36_8a32f5b7",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2020-05-01T21:21:41Z",
       "side": 1,
       "message": "How is this different from MarkAsCoverageVariant(true)?",
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0881ef_2c4a5a0f",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-04T17:40:57Z",
+      "side": 1,
+      "message": "There\u0027s an additional flag in CC/Rust for marking whether the coverage variant should actually be built based on the coverage enabled paths (handled in the begin() call for each), which is what this function is checking against in rust.go. The new function name should make this more clear.\n\nAs for what app.go should do for this call specifically, I left this blank since it\u0027s not clear to me whether the coverage paths is checked for app coverage.\n\n(I\u0027ll leave you to mark this resolved or not)",
+      "parentUuid": "807e1d36_8a32f5b7",
       "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a1924442_ecd36fdc",
+        "filename": "rust/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-04T17:40:57Z",
+      "side": 1,
+      "message": "Ah thanks, that\u0027s cleaner! Done.",
+      "parentUuid": "7e258c94_e51f3ec1",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 33
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "983aa7e2_a8030d81",
         "filename": "rust/coverage.go",
         "patchSetId": 1
@@ -102,6 +186,30 @@
       "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9049cdba_d774381a",
+        "filename": "rust/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-04T17:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "983aa7e2_a8030d81",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 1
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "83b866dc_d98646e6",
+        "filename": "rust/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-04T17:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d5eb11_50d865f2",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 1
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f71979c_fa45a83d",
         "filename": "rust/coverage_test.go",
         "patchSetId": 1
@@ -142,6 +274,24 @@
       "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d9b2e21_7e2a7ed0",
+        "filename": "rust/coverage_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-04T17:40:57Z",
+      "side": 1,
+      "message": "Whoops, thanks!",
+      "parentUuid": "6f71979c_fa45a83d",
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +315,30 @@
       "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad69e990_34fa3a33",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-04T17:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705e360c_9cfda1be",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 381,
+        "endChar": 33
+      },
+      "revId": "8d83548176d47cc7ec0655526639efc0de34e041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
