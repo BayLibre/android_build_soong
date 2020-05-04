@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5377d345_340797f7",
+        "filename": "ui/build/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-05-04T19:52:43Z",
+      "side": 1,
+      "message": "nit: method",
+      "range": {
+        "startLine": 181,
+        "startChar": 77,
+        "endLine": 181,
+        "endChar": 84
+      },
+      "revId": "4bc8be746c61b49629601a043891e6e36f84d91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
