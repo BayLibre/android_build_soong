@@ -980,6 +980,13 @@ func (osInfo *osTypeSpecificInfo) addToPropertySet(ctx *memberContext, bpModule 
 	}
 }
 
+func (osInfo *osTypeSpecificInfo) isHostVariant() bool {
+	osClass := osInfo.osType.Class
+	return osClass == android.Host || osClass == android.HostCross
+}
+
+var _ isHostVariant = (*osTypeSpecificInfo)(nil)
+
 type archTypeSpecificInfo struct {
 	baseInfo
 
