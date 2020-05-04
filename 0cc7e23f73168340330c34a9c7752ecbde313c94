@@ -22,6 +22,30 @@
       "revId": "0cc7e23f73168340330c34a9c7752ecbde313c94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5d2a89_a433f0b0",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-04T17:10:34Z",
+      "side": 1,
+      "message": "Done.\n\nI would eventually need to make minSdkVersion a struct in \"android\" to avoid more inconsistencies.",
+      "parentUuid": "0000d556_7e215b03",
+      "range": {
+        "startLine": 584,
+        "startChar": 52,
+        "endLine": 584,
+        "endChar": 66
+      },
+      "revId": "0cc7e23f73168340330c34a9c7752ecbde313c94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
