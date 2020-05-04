@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+1: Diego Wilson <diegowilson@google.com>
+Code-Review+2: Elliott Hughes <enh@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 04 May 2020 22:11:17 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1300435
+Project: platform/build/soong
+Branch: refs/heads/master
