@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e183d9d_7fd92f65",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-04T19:54:29Z",
+      "side": 1,
+      "message": "The clang-sys crate with the `runtime` feature uses llvm-config to find the path to the LLVM libs, then dynamically loads libclang.so out of this path. This means that we are dynamically using the libclang.so from prebuilts here.",
+      "revId": "d1f9c7d008d1a03075a54d966002ec94977d0839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
