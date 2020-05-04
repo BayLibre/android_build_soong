@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1af55f30_41faaecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-04T08:57:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4430256a_25d26112",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "669f7049_c05b52e1",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 4
@@ -165,6 +189,30 @@
       "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2251c3c_5ce086ee",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-04T08:57:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3140b9aa_136baf84",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "d8887701e5ed6277dc3f4d2d2ab8dc4c59aa0d2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
