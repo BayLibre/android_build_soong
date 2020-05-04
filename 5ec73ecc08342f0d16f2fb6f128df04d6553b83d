@@ -52,6 +52,24 @@
       "revId": "5ec73ecc08342f0d16f2fb6f128df04d6553b83d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c29f6347_ebde09db",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-04T17:24:55Z",
+      "side": 1,
+      "message": "Ack, I missed the extra return type",
+      "parentUuid": "76dcbb3b_016e685c",
+      "revId": "5ec73ecc08342f0d16f2fb6f128df04d6553b83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
