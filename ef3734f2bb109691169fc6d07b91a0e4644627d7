@@ -16,6 +16,24 @@
       "revId": "ef3734f2bb109691169fc6d07b91a0e4644627d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6744ba9d_d85e9b1d",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-04T17:07:02Z",
+      "side": 1,
+      "message": "WalkPayloadDeps is different, I can provide the func as a method paramater to a shared code though.\n\nPhony target is different, because it\u0027s only created for the final module though.",
+      "parentUuid": "e4230bc3_37149142",
+      "revId": "ef3734f2bb109691169fc6d07b91a0e4644627d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
