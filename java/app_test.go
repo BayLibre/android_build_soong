@@ -1545,7 +1545,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 		apkPath        string
 		signFlag       string
 		overrides      []string
-		aaptFlag       string
+		packageFlag    string
 		logging_parent string
 	}{
 		{
@@ -1554,7 +1554,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 			apkPath:        "/target/product/test_device/system/app/foo/foo.apk",
 			signFlag:       "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
 			overrides:      []string{"qux"},
-			aaptFlag:       "",
+			packageFlag:    "",
 			logging_parent: "",
 		},
 		{
@@ -1563,7 +1563,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 			apkPath:        "/target/product/test_device/system/app/bar/bar.apk",
 			signFlag:       "cert/new_cert.x509.pem cert/new_cert.pk8",
 			overrides:      []string{"qux", "foo"},
-			aaptFlag:       "",
+			packageFlag:    "",
 			logging_parent: "bah",
 		},
 		{
@@ -1572,7 +1572,7 @@ func TestOverrideAndroidApp(t *testing.T) {
 			apkPath:        "/target/product/test_device/system/app/baz/baz.apk",
 			signFlag:       "build/make/target/product/security/expiredkey.x509.pem build/make/target/product/security/expiredkey.pk8",
 			overrides:      []string{"qux", "foo"},
-			aaptFlag:       "--rename-manifest-package org.dandroid.bp",
+			packageFlag:    "org.dandroid.bp",
 			logging_parent: "",
 		},
 	}
@@ -1614,12 +1614,11 @@ func TestOverrideAndroidApp(t *testing.T) {
 				expected.logging_parent, logging_parent)
 		}
 
-		// Check the package renaming flag, if exists.
+		// Check the package renaming flags, if exists.
 		res := variant.Output("package-res.apk")
 		aapt2Flags := res.Args["flags"]
-		if !strings.Contains(aapt2Flags, expected.aaptFlag) {
-			t.Errorf("package renaming flag, %q is missing in aapt2 link flags, %q", expected.aaptFlag, aapt2Flags)
-		}
+		checkAapt2LinkFlag(t, aapt2Flags, "rename-manifest-package", expected.packageFlag)
+		checkAapt2LinkFlag(t, aapt2Flags, "rename-resources-package", expected.packageFlag)
 	}
 }
 
@@ -1756,6 +1755,7 @@ func TestOverrideAndroidTest(t *testing.T) {
 		res := variant.Output("package-res.apk")
 		aapt2Flags := res.Args["flags"]
 		checkAapt2LinkFlag(t, aapt2Flags, "rename-manifest-package", expected.packageFlag)
+		checkAapt2LinkFlag(t, aapt2Flags, "rename-resources-package", expected.packageFlag)
 		checkAapt2LinkFlag(t, aapt2Flags, "rename-instrumentation-target-package", expected.targetPackageFlag)
 	}
 }
@@ -2793,6 +2793,7 @@ func TestOverrideRuntimeResourceOverlay(t *testing.T) {
 		res := variant.Output("package-res.apk")
 		aapt2Flags := res.Args["flags"]
 		checkAapt2LinkFlag(t, aapt2Flags, "rename-manifest-package", expected.packageFlag)
+		checkAapt2LinkFlag(t, aapt2Flags, "rename-resources-package", expected.packageFlag)
 		checkAapt2LinkFlag(t, aapt2Flags, "rename-overlay-target-package", expected.targetPackageFlag)
 	}
 }
