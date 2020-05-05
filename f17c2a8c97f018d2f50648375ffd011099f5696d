@@ -22,6 +22,30 @@
       "revId": "f17c2a8c97f018d2f50648375ffd011099f5696d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9fc1cd_64adcc09",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-05T09:38:49Z",
+      "side": 1,
+      "message": "\u003e Sorry, but this notion of \"child\" modules is news to me. I know that there are java modules that implicitly creates more than one module under the hood. Is that connected to this?\n\nYes. A child module (my terminology) is one that was created using ctx.CreateModule(....).\n\n\u003e If so, have they been modelled explicitly this way before?\n\nI use nested \"child\" block here simply to indicate that the properties are passed to the child not for the parent. This pattern (of a nested structure) has been used in java_sdk_library_import. See prebuilts/sdk/current/Android.bp for examples.\n\n\u003e More related to the current CL, is the notion of \"inheritance\" of visibility that you\u0027re adding only for these parent/child relationships, or is it used for changing the defaults propagation generally?\n\nI am not adding \"inheritance\" of visibility, that already exists. All properties in ModuleBase.commonProperties are copied down into the child module in a similar way to what happens with defaults (uses the same underlying mechanism) but other than similar behavior it has nothing to do with defaults.\n\nWhat I am doing in this change is preventing visibility properties from being merged down into the child module so that java_sdk_library can control the visibility of its child modules.",
+      "parentUuid": "f94ff2fe_98c774d9",
+      "range": {
+        "startLine": 979,
+        "startChar": 5,
+        "endLine": 979,
+        "endChar": 10
+      },
+      "revId": "f17c2a8c97f018d2f50648375ffd011099f5696d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
