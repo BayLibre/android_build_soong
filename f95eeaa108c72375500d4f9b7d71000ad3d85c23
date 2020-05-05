@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "687f1202_7882cf26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-05T21:43:31Z",
+      "side": 1,
+      "message": "I wonder if this is the right abstraction. For stubs it\u0027s somewhat incidental that they apply to device only; in reality it\u0027s a global attribute that only is applicable for certain builds, i.e. those that pay heed to the apex dimension.\n\nWhat we would like to be able to is to say that some property always has to be defined globally, so the common value optimisation has to succeed fully. For a particular variant the value can be either X or N/A, and over all variants where it isn\u0027t N/A it has to have the same value X, or else it\u0027s a panic (because it should have come from the same property in the source module). It probably works well enough to use the Zero value as N/A here.\n\nWhat do you think?",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
