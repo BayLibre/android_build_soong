@@ -34,6 +34,24 @@
       "revId": "a07d9fb5dfa6d7c00d39dff755e80f9a0a96f719",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bb36d0d_855227f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-05T01:57:26Z",
+      "side": 1,
+      "message": "Thanks Dan for cleanup up the project includes in https://r.android.com/1299882. Then this problem should be addressed and I can abandon my kludge, right? Then this change should be ok now?",
+      "parentUuid": "b268439e_3e72eb5a",
+      "revId": "a07d9fb5dfa6d7c00d39dff755e80f9a0a96f719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
