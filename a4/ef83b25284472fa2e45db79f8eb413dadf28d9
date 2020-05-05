@@ -1,0 +1,11 @@
+Verified+1: Alexander Smundak <asmundak@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+1: Shahms King <shahms@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Alexander Smundak <asmundak@google.com>
+Submitted-at: Tue, 05 May 2020 15:54:46 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1295994
+Project: platform/build/soong
+Branch: refs/heads/master
