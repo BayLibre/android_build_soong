@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c6ce8a4_0af6ba68",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-05T16:19:52Z",
+      "side": 1,
+      "message": "What\u0027s the point with this, why not just use Child.Visibility? It\u0027s also not clear to me in what sense it\u0027s \"manual\".",
+      "range": {
+        "startLine": 1162,
+        "startChar": 2,
+        "endLine": 1165,
+        "endChar": 0
+      },
+      "revId": "d9dcddaf980f3fcdb4b16dbbaede69df4be77220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

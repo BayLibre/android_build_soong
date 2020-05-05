@@ -46,6 +46,30 @@
       "revId": "f17c2a8c97f018d2f50648375ffd011099f5696d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd54fe4d_127301d2",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-05T16:19:52Z",
+      "side": 1,
+      "message": "Ok, that use case seems fairly reasonable, but I\u0027m a bit wary that this can be abused to create hard-to-follow implicit behaviour. Colin better have a say on it.\n\nDoes it have to be exported both from the hook and the TopDown mutator contexts?",
+      "parentUuid": "af9fc1cd_64adcc09",
+      "range": {
+        "startLine": 979,
+        "startChar": 5,
+        "endLine": 979,
+        "endChar": 10
+      },
+      "revId": "f17c2a8c97f018d2f50648375ffd011099f5696d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
