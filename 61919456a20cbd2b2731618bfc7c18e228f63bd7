@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80a0581d_4f6d716d",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-05T02:38:44Z",
+      "side": 1,
+      "message": "Can\u0027t you just add these to extraConfigs?  They could also get passed in through configs too.",
+      "revId": "61919456a20cbd2b2731618bfc7c18e228f63bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
