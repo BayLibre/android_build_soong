@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f97d4f11_ee54d6f1",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-05T14:37:46Z",
+      "side": 1,
+      "message": "I removed phony rule for app.Name()+\"-deps-info\". It fails when multiple product/system_ext specific apps are defined with the same name.\n\nGiven that there are no requirements for -deps-info for apps, aside from a follow up singleton I am introducing; I\u0027ll just leave it out. Unless there is a quick fix for this?",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 2
+      },
+      "revId": "142ffa0df7421d273a263e4c7b7c2bd419d7bbcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
