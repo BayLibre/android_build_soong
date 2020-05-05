@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1c4a874_890c45d2",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-05T17:26:09Z",
+      "side": 1,
+      "message": "Unfinished sentence.",
+      "range": {
+        "startLine": 1282,
+        "startChar": 3,
+        "endLine": 1282,
+        "endChar": 16
+      },
+      "revId": "b85df907131f7f8b0b4fc268b67f64975401cac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
