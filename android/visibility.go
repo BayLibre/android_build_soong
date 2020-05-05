@@ -48,12 +48,26 @@ import (
 // TODO(b/130631145) - Make visibility work properly with prebuilts.
 // TODO(b/130796911) - Make visibility work properly with defaults.
 
+type visibilityKeyword string
+
 // Patterns for the values that can be specified in visibility property.
 const (
 	packagePattern        = `//([^/:]+(?:/[^/:]+)*)`
 	namePattern           = `:([^/:]+)`
 	visibilityRulePattern = `^(?:` + packagePattern + `)?(?:` + namePattern + `)?$`
+
+	publicKeyword       visibilityKeyword = "public"
+	privateKeyword      visibilityKeyword = "private"
+	legacyPublicKeyword visibilityKeyword = "legacy_public"
 )
+
+// Check the status of the keyword in the list of rules.
+func (k visibilityKeyword) checkStatus(count int) error {
+	if count != 1 {
+		return fmt.Errorf(`cannot mix "//visibility:%s" with any other visibility rules`, k)
+	}
+	return nil
+}
 
 var visibilityRuleRegexp = regexp.MustCompile(visibilityRulePattern)
 
@@ -252,17 +266,18 @@ func checkRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 		}
 
 		if pkg == "visibility" {
-			switch name {
-			case "private", "public":
-			case "legacy_public":
+			keyword := visibilityKeyword(name)
+			switch keyword {
+			case privateKeyword, publicKeyword:
+			case legacyPublicKeyword:
 				ctx.PropertyErrorf(property, "//visibility:legacy_public must not be used")
 				continue
 			default:
 				ctx.PropertyErrorf(property, "unrecognized visibility rule %q", v)
 				continue
 			}
-			if ruleCount != 1 {
-				ctx.PropertyErrorf(property, "cannot mix %q with any other visibility rules", v)
+			if err := keyword.checkStatus(ruleCount); err != nil {
+				ctx.PropertyErrorf(property, "%s", err.Error())
 				continue
 			}
 		}
@@ -320,11 +335,12 @@ func parseRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 		var r visibilityRule
 		isPrivateRule := false
 		if pkg == "visibility" {
-			switch name {
-			case "private":
+			keyword := visibilityKeyword(name)
+			switch keyword {
+			case privateKeyword:
 				r = privateRule{}
 				isPrivateRule = true
-			case "public":
+			case publicKeyword:
 				r = publicRule{}
 				hasPublicRule = true
 			}
