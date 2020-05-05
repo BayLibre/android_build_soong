@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e11703a2_f1da1cdd",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-05T14:00:34Z",
+      "side": 1,
+      "message": "This and Module.MinSdkVersion have very similar name, but different semantic. I think the difference should be documented clearly.",
+      "range": {
+        "startLine": 1141,
+        "startChar": 30,
+        "endLine": 1141,
+        "endChar": 45
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af185173_9e79f5b4",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-05T14:00:34Z",
+      "side": 1,
+      "message": "cts.mod.MinSdkVersion()?",
+      "range": {
+        "startLine": 1150,
+        "startChar": 9,
+        "endLine": 1150,
+        "endChar": 51
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96216708_882047f1",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-05T14:00:34Z",
+      "side": 1,
+      "message": "why is this for !ctx.ctx.Device()?",
+      "range": {
+        "startLine": 1152,
+        "startChar": 1,
+        "endLine": 1152,
+        "endChar": 10
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db48f551_c6997188",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-05T14:00:34Z",
+      "side": 1,
+      "message": "I think this check should be done in checkAppSdkVersions",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 2
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a45f74f_614571b5",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-05T14:00:34Z",
+      "side": 1,
+      "message": "why only direct deps?",
+      "range": {
+        "startLine": 301,
+        "startChar": 5,
+        "endLine": 301,
+        "endChar": 21
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2231614_ee35975a",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-05T14:00:34Z",
+      "side": 1,
+      "message": "\"sdk_version(\u003cdep.MinSdkVersion\u003e) is higher than min_sdk_version(\u003ca.deviceProperties.Min_sdk_version) of the containing android_app \u003cctx.ModuleName()\u003e\"",
+      "range": {
+        "startLine": 308,
+        "startChar": 31,
+        "endLine": 308,
+        "endChar": 80
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e3576a_d58d8349",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-05T14:00:34Z",
+      "side": 1,
+      "message": "can we have another test case for a transitive dep? For example,\n\napp(min_sdk_version: 10) -\u003e libfoo(sdk_version: 9) -\u003e libbar(sdk_version:11)",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 3
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
