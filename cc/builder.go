@@ -191,14 +191,16 @@ var (
 		"windresCmd", "flags")
 
 	_ = pctx.SourcePathVariable("sAbiDumper", "prebuilts/clang-tools/${config.HostPrebuiltTag}/bin/header-abi-dumper")
+	_ = pctx.SourcePathVariable("sAbiDumperResourceDir", "prebuilts/clang-tools/${config.HostPrebuiltTag}/lib64/clang/10.0.5")
 
 	// -w has been added since header-abi-dumper does not need to produce any sort of diagnostic information.
 	sAbiDump, sAbiDumpRE = remoteexec.StaticRules(pctx, "sAbiDump",
 		blueprint.RuleParams{
-			Command:     "rm -f $out && $reTemplate$sAbiDumper -o ${out} $in $exportDirs -- $cFlags -w -isystem prebuilts/clang-tools/${config.HostPrebuiltTag}/clang-headers",
-			CommandDeps: []string{"$sAbiDumper"},
+			Command:     "rm -f $out && $reTemplate$sAbiDumper -o ${out} $in $exportDirs -- -resource-dir $sAbiDumperResourceDir $cFlags -w -isystem prebuilts/clang-tools/${config.HostPrebuiltTag}/clang-headers",
+			CommandDeps: []string{"$sAbiDumper", "$sAbiDumperResourceDir"},
 		}, &remoteexec.REParams{
 			Labels:       map[string]string{"type": "abi-dump", "tool": "header-abi-dumper"},
+			Inputs:       []string{"$sAbiDumper"},
 			ExecStrategy: "${config.REAbiDumperExecStrategy}",
 			Platform: map[string]string{
 				remoteexec.PoolKey:      "${config.RECXXPool}",
