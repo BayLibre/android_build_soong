@@ -59,11 +59,15 @@ const (
 	publicKeyword       visibilityKeyword = "public"
 	privateKeyword      visibilityKeyword = "private"
 	legacyPublicKeyword visibilityKeyword = "legacy_public"
+	overrideKeyword     visibilityKeyword = "override"
 )
 
-// Check the status of the keyword in the list of rules.
-func (k visibilityKeyword) checkStatus(count int) error {
-	if count != 1 {
+func (k visibilityKeyword) checkStatus(count, index int) error {
+	if k == overrideKeyword {
+		if index != 0 {
+			return fmt.Errorf(`"//visibility:%s" may only be used at the start of the visibility rules`, k)
+		}
+	} else if count != 1 {
 		return fmt.Errorf(`cannot mix "//visibility:%s" with any other visibility rules`, k)
 	}
 	return nil
@@ -259,7 +263,7 @@ func checkRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 		return
 	}
 
-	for _, v := range visibility {
+	for i, v := range visibility {
 		ok, pkg, name := splitRule(ctx, v, currentPkg, property)
 		if !ok {
 			continue
@@ -272,11 +276,14 @@ func checkRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 			case legacyPublicKeyword:
 				ctx.PropertyErrorf(property, "//visibility:legacy_public must not be used")
 				continue
+			case overrideKeyword:
+				// This keyword does not create a rule so pretend it does not exist.
+				ruleCount -= 1
 			default:
 				ctx.PropertyErrorf(property, "unrecognized visibility rule %q", v)
 				continue
 			}
-			if err := keyword.checkStatus(ruleCount); err != nil {
+			if err := keyword.checkStatus(ruleCount, i); err != nil {
 				ctx.PropertyErrorf(property, "%s", err.Error())
 				continue
 			}
@@ -343,6 +350,14 @@ func parseRules(ctx BaseModuleContext, currentPkg, property string, visibility [
 			case publicKeyword:
 				r = publicRule{}
 				hasPublicRule = true
+			case overrideKeyword:
+				// Discard all proceeding rules and any state based on them.
+				rules = nil
+				hasPrivateRule = false
+				hasPublicRule = false
+				hasNonPrivateRule = false
+				// This does not actually create a rule so continue onto the next rule.
+				continue
 			}
 		} else {
 			switch name {
