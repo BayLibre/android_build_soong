@@ -16,6 +16,24 @@
       "revId": "61919456a20cbd2b2731618bfc7c18e228f63bd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b46e6eff_13018af7",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1330217
+      },
+      "writtenOn": "2020-05-05T13:15:20Z",
+      "side": 1,
+      "message": "Ack. Done. Could you PTAL? Thanks.",
+      "parentUuid": "80a0581d_4f6d716d",
+      "revId": "61919456a20cbd2b2731618bfc7c18e228f63bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
