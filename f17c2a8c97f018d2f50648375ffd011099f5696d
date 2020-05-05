@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f94ff2fe_98c774d9",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-05T01:44:21Z",
+      "side": 1,
+      "message": "Sorry, but this notion of \"child\" modules is news to me. I know that there are java modules that implicitly creates more than one module under the hood. Is that connected to this? If so, have they been modelled explicitly this way before?\n\nMore related to the current CL, is the notion of \"inheritance\" of visibility that you\u0027re adding only for these parent/child relationships, or is it used for changing the defaults propagation generally?",
+      "range": {
+        "startLine": 979,
+        "startChar": 5,
+        "endLine": 979,
+        "endChar": 10
+      },
+      "revId": "f17c2a8c97f018d2f50648375ffd011099f5696d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
