@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc9a9bf0_3791f058",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T12:16:21Z",
+      "side": 1,
+      "message": "Is this intended to replace https://r.android.com/1297676?\n\nI had some thoughts on this approach in b/155787200, not entirely convinced it\u0027s altogether a better option than aosp/1297676 for the current use cases.",
+      "revId": "d0baba7a07927dc8edb04f08429e3212711f3f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1cac5e6_6209f37f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T12:16:21Z",
+      "side": 1,
+      "message": "Please add bug 155787200.",
+      "revId": "d0baba7a07927dc8edb04f08429e3212711f3f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
