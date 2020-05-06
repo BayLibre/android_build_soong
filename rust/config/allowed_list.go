@@ -7,6 +7,7 @@ var (
 		"external/crosvm",
 		"external/adhd",
 		"prebuilts/rust",
+		"frameworks/native/libs/binder/rust",
 	}
 
 	RustModuleTypes = []string{
