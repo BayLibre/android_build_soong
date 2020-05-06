@@ -22,6 +22,30 @@
       "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d022a698_d7696866",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-06T09:03:11Z",
+      "side": 1,
+      "message": "So basically mark properties that are \"not-arch-variant\". Or maybe just require properties that are arch specific to be marked as such and assume if not marked they are not arch specific. That will match the properties structures used by the modules and make it easier to understand (and possibly allow sharing of structures).\n\nI like your suggestion about failing if we detect that a non-arch variant property has arch specific values as it would detect any issues early on and would avoid situations where we don\u0027t find out until the snapshot is unpacked that there was a problem.\n\nHowever, I think it is orthogonal to this mechanism. This mechanism requires positive confirmation (on host) that it is ok to ignore the X value (which may be significant in some cases).",
+      "parentUuid": "687f1202_7882cf26",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
