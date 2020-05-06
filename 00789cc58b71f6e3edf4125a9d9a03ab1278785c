@@ -22,6 +22,30 @@
       "revId": "00789cc58b71f6e3edf4125a9d9a03ab1278785c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac6966a_5d09c6d3",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-06T14:57:05Z",
+      "side": 0,
+      "message": "It is ok while the behavior is the same for all of the keywords but it will not be true for //visibility:override. Abstracting the check away will make it easier to add other types of behavior.",
+      "parentUuid": "c85be1a3_15ce9efb",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 84
+      },
+      "revId": "00789cc58b71f6e3edf4125a9d9a03ab1278785c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
