@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba2863ed_9220d7ec",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-06T03:30:00Z",
+      "side": 1,
+      "message": "Removed this method.\nFor now this method is not used because we enforce sdk_version of JNI libs instead of min_sdk_version.",
+      "parentUuid": "e11703a2_f1da1cdd",
+      "range": {
+        "startLine": 1141,
+        "startChar": 30,
+        "endLine": 1141,
+        "endChar": 45
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af185173_9e79f5b4",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d908f9_326a7498",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-06T03:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af185173_9e79f5b4",
+      "range": {
+        "startLine": 1150,
+        "startChar": 9,
+        "endLine": 1150,
+        "endChar": 51
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b97c819f_173522fc",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-06T03:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96216708_882047f1",
+      "range": {
+        "startLine": 1152,
+        "startChar": 1,
+        "endLine": 1152,
+        "endChar": 10
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db48f551_c6997188",
         "filename": "java/app.go",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efadeab5_635a0b2f",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-06T03:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db48f551_c6997188",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 2
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d6994dda_c433f007",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-06T03:30:00Z",
+      "side": 1,
+      "message": "Because sdk_version is checked in cc.checkLinkType, min_sdk_version of transitive deps will meet the requirements.\nAdded a comment as well.",
+      "parentUuid": "4a45f74f_614571b5",
+      "range": {
+        "startLine": 301,
+        "startChar": 5,
+        "endLine": 301,
+        "endChar": 21
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2231614_ee35975a",
         "filename": "java/app.go",
         "patchSetId": 5
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "3942f63a_ba8655bf",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-06T03:30:00Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c2231614_ee35975a",
+      "range": {
+        "startLine": 308,
+        "startChar": 31,
+        "endLine": 308,
+        "endChar": 80
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06e3576a_d58d8349",
         "filename": "java/app_test.go",
         "patchSetId": 5
@@ -160,6 +304,30 @@
       "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8af869e6_658c190b",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-06T03:30:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e3576a_d58d8349",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 3
+      },
+      "revId": "b322c804292d5a760bcd792cc58d234371ec01f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
