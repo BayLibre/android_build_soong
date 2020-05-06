@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d8ba376c_18faa3ce",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T21:56:29Z",
+      "side": 1,
+      "message": "Thanks for the comments. This ended up on the back burner a bit, but I\u0027ve now addressed them in https://r.android.com/1304155.",
+      "parentUuid": "0f5f92a7_5e5bcae5",
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "199e11d3_f8475fc1",
         "filename": "scripts/build-aml-prebuilts.sh",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd96bb46_f84ffcf7",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T21:56:29Z",
+      "side": 1,
+      "message": "Judging from other uses (e.g. http://devops-console-stagingoss/search?q\u003dOUT_DIR%20f:(mk%7Csh)$\u0026sq\u003d\u0026ss\u003dandroid%2Fplatform%2Fsuperproject) having such an out directory is a non-starter, so although I agree it\u0027s good code health in general, it\u0027s detracting from common OUT_DIR practice to the extent that it arguably even makes the code less readable (readers might suspect some non-standard out dir here).",
+      "parentUuid": "199e11d3_f8475fc1",
+      "range": {
+        "startLine": 3,
+        "startChar": 15,
+        "endLine": 3,
+        "endChar": 30
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "7d8dee21_bc300f5d",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T21:56:29Z",
+      "side": 1,
+      "message": "It\u0027d be necessary for SOONG_VARS and other derived vars below too, but see above.",
+      "parentUuid": "c2f1476b_fc035af8",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdab8e55_f6ebf7ee",
         "filename": "scripts/build-aml-prebuilts.sh",
         "patchSetId": 6
@@ -85,6 +151,30 @@
       "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43bc5bec_41e4740a",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T21:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdab8e55_f6ebf7ee",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c71c2096_8fbde5b3",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T21:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b750218e_d8c75a6a",
+      "range": {
+        "startLine": 25,
+        "startChar": 21,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dbc2e24_6628e614",
         "filename": "scripts/build-aml-prebuilts.sh",
         "patchSetId": 6
@@ -131,6 +245,30 @@
       "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d86ddf86_f13ff7af",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T21:56:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dbc2e24_6628e614",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
