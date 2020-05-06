@@ -203,6 +203,16 @@ def symbol_versioned_in_api(tags, api):
     return True
 
 
+def current_line_validation(current_line):
+    """Pre-check of current line."""
+    if ';' not in current_line:
+        raise ParseError(
+            'Expected ; to terminate symbol: ' + current_line)
+    if '*' in current_line:
+        raise ParseError(
+            'Wildcard global symbols are not permitted.')
+
+
 class ParseError(RuntimeError):
     """An error that occurred while parsing a symbol file."""
     pass
@@ -245,6 +255,7 @@ class Symbol(object):
 
     def __eq__(self, other):
         return self.name == other.name and set(self.tags) == set(other.tags)
+
 
 class SymbolFileParser(object):
     """Parses NDK symbol files."""
@@ -340,12 +351,7 @@ class SymbolFileParser(object):
 
     def parse_symbol(self):
         """Parses a single symbol line and returns a Symbol object."""
-        if ';' not in self.current_line:
-            raise ParseError(
-                'Expected ; to terminate symbol: ' + self.current_line)
-        if '*' in self.current_line:
-            raise ParseError(
-                'Wildcard global symbols are not permitted.')
+        current_line_validation(self.current_line)
         # Line is now in the format "<symbol-name>; # tags"
         name, _, _ = self.current_line.strip().partition(';')
         tags = get_tags(self.current_line)
