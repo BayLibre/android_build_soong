@@ -93,6 +93,30 @@
       "revId": "67c1d715f6cd1d9748c6f36d26fbcab527ce77eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0f3763_e0ac596a",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-06T21:34:42Z",
+      "side": 1,
+      "message": "I removed api_surfaces and added scope specific sections, public, system, test each of which has an enabled property. I went this route as it is a familiar pattern in Soong and it makes it easy to add additional per scope properties which will be needed in order to support more use cases,",
+      "parentUuid": "b2556552_5dbeaebc",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 22
+      },
+      "revId": "67c1d715f6cd1d9748c6f36d26fbcab527ce77eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
