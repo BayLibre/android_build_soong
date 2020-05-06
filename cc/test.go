@@ -324,12 +324,23 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
+func isTestConfigSelfSpecified(ctx ModuleContext, testConfigProp *string) bool {
+	p := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "AndroidTest.xml")
+	if p.Valid() || testConfigProp != nil {
+		return true
+	}
+	return false
+}
+
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	test.data = android.PathsForModuleSrc(ctx, test.Properties.Data)
 	var api_level_prop string
 	var configs []tradefed.Config
 	var min_level string
 	if Bool(test.Properties.Require_root) {
+		if !Bool(test.Properties.Auto_gen_config) && isTestConfigSelfSpecified(ctx, test.Properties.Test_config) {
+			ctx.ModuleErrorf("error: require_root can only be applied for auto generated test config.\n")
+		}
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
 	} else {
 		var options []tradefed.Option
@@ -495,6 +506,9 @@ func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Pat
 	benchmark.data = android.PathsForModuleSrc(ctx, benchmark.Properties.Data)
 	var configs []tradefed.Config
 	if Bool(benchmark.Properties.Require_root) {
+		if !Bool(benchmark.Properties.Auto_gen_config) && isTestConfigSelfSpecified(ctx, benchmark.Properties.Test_config) {
+			ctx.ModuleErrorf("error: require_root can only be applied for auto generated test config.\n")
+		}
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
 	}
 	benchmark.testConfig = tradefed.AutoGenNativeBenchmarkTestConfig(ctx, benchmark.Properties.Test_config,
