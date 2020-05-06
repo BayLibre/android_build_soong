@@ -15,6 +15,7 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/google/blueprint"
@@ -33,6 +34,11 @@ type LoadHookContext interface {
 
 	AppendProperties(...interface{})
 	PrependProperties(...interface{})
+
+	// Set each module property that matches one of the supplied properties to the matching property's
+	// value. If the module property has already been set (i.e. is anything other than the default value
+	// for the property type) from the module definition then fail with an error.
+	FixProperties(...interface{})
 	CreateModule(ModuleFactory, ...interface{}) Module
 
 	registerScopedModuleType(name string, factory blueprint.ModuleFactory)
@@ -59,10 +65,10 @@ func (l *loadHookContext) moduleFactories() map[string]blueprint.ModuleFactory {
 	return l.bp.ModuleFactories()
 }
 
-func (l *loadHookContext) AppendProperties(props ...interface{}) {
+func (l *loadHookContext) extendMatchingProperties(props []interface{}, filter proptools.ExtendPropertyFilterFunc, order proptools.ExtendPropertyOrderFunc) {
 	for _, p := range props {
-		err := proptools.AppendMatchingProperties(l.Module().base().customizableProperties,
-			p, nil)
+		err := proptools.ExtendMatchingProperties(l.Module().base().customizableProperties,
+			p, filter, order)
 		if err != nil {
 			if propertyErr, ok := err.(*proptools.ExtendPropertyError); ok {
 				l.PropertyErrorf(propertyErr.Property, "%s", propertyErr.Err.Error())
@@ -73,18 +79,52 @@ func (l *loadHookContext) AppendProperties(props ...interface{}) {
 	}
 }
 
+func (l *loadHookContext) AppendProperties(props ...interface{}) {
+	l.extendMatchingProperties(props, nil, proptools.OrderAppend)
+}
+
 func (l *loadHookContext) PrependProperties(props ...interface{}) {
-	for _, p := range props {
-		err := proptools.PrependMatchingProperties(l.Module().base().customizableProperties,
-			p, nil)
-		if err != nil {
-			if propertyErr, ok := err.(*proptools.ExtendPropertyError); ok {
-				l.PropertyErrorf(propertyErr.Property, "%s", propertyErr.Err.Error())
+	l.extendMatchingProperties(props, nil, proptools.OrderPrepend)
+}
+
+func checkDestinationNotSet(property string, dstField, srcField reflect.StructField, dstValue, srcValue interface{}) (bool, error) {
+	// If the destination matches the zero value then it is fine.
+	zeroValue := reflect.Zero(dstField.Type).Interface()
+	if reflect.DeepEqual(dstValue, zeroValue) {
+		return true, nil
+	}
+
+	if reflect.DeepEqual(dstValue, srcValue) {
+		srcValue = stringRepresentation(srcValue, false)
+		return false, fmt.Errorf("is fixed to %s so setting it to the same value is redundant", srcValue)
+	} else {
+		srcValue = stringRepresentation(srcValue, false)
+		dstValue = stringRepresentation(dstValue, true)
+		return false, fmt.Errorf("is fixed to %s and cannot be set to %v", srcValue, dstValue)
+	}
+}
+
+func stringRepresentation(value interface{}, useZeroForNil bool) string {
+	reflectValue := reflect.ValueOf(value)
+	if reflectValue.Kind() == reflect.Ptr {
+		if reflectValue.IsNil() {
+			if useZeroForNil {
+				// Cannot deference a nil pointer so use the zero value instead.
+				value = reflect.Zero(reflectValue.Type().Elem()).Interface()
 			} else {
-				panic(err)
+				return "nil"
 			}
+		} else {
+			reflectValue = reflectValue.Elem()
+			value = reflectValue.Interface()
 		}
 	}
+
+	return fmt.Sprintf("%#v", value)
+}
+
+func (l *loadHookContext) FixProperties(props ...interface{}) {
+	l.extendMatchingProperties(props, checkDestinationNotSet, proptools.OrderReplace)
 }
 
 func (l *loadHookContext) CreateModule(factory ModuleFactory, props ...interface{}) Module {
