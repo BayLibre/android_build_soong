@@ -25,6 +25,15 @@ func TestMain(m *testing.M) {
 	runTestWithBuildDir(m)
 }
 
+func TestCompileMultilibFixed_DoesNotMatch(t *testing.T) {
+	testSdkError(t, `compile_multilib: is fixed to "both" and cannot be set to "32"`, `
+		sdk {
+			name: "mysdk",
+			compile_multilib: "32",
+		}
+	`)
+}
+
 func TestDepNotInRequiredSdks(t *testing.T) {
 	testSdkError(t, `module "myjavalib".*depends on "otherlib".*that isn't part of the required SDKs:.*`, `
 		sdk {
