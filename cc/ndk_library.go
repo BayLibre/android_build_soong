@@ -16,6 +16,7 @@ package cc
 
 import (
 	"fmt"
+	//"path"
 	"strconv"
 	"strings"
 	"sync"
@@ -34,6 +35,14 @@ var (
 				"$apiMap $flags $in $out",
 			CommandDeps: []string{"$toolPath"},
 		}, "arch", "apiLevel", "apiMap", "flags")
+
+	ndkApiCoverageToolPath = pctx.SourcePathVariable("ndkApiCoverageToolPath", "build/soong/cc/ndk_api_coverage_parser.py")
+
+	parseNdkApi = pctx.AndroidStaticRule("parseNdkApi",
+		blueprint.RuleParams{
+			Command: "ndkApiCoverageToolPath --api-map $apiMap $in $out",
+			CommandDeps: []string{"$ndkApiCoverageToolPath"},
+		}, "apiMap")
 
 	ndkLibrarySuffix = ".ndk"
 
@@ -300,6 +309,22 @@ func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile, apiLevel, ge
 			"apiLevel": apiLevel,
 			"apiMap":   apiLevelsJson.String(),
 			"flags":    genstubFlags,
+		},
+	})
+	//
+	//if ctx.DeviceConfig().NativeCoverageEnabled() || ctx.DeviceConfig().ClangCoverageEnabled() {
+	//parseGen := android.PathForOutput(ctx, symbolFilePath.Rel(), "ndk_api.xml")
+
+	parseGen := android.PathForModuleGen(ctx, "ndk_api_gens.xml")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        parseNdkApi,
+		Description: "parse ndk api symbol file for api coverage: " + symbolFilePath.Rel(),
+		Outputs:     []android.WritablePath{parseGen},
+		Input:       symbolFilePath,
+		Implicits:   []android.Path{apiLevelsJson},
+		Args: map[string]string{
+			"apiMap":   apiLevelsJson.String(),
+			//"parsedFile":	parseResult.String(),
 		},
 	})
 
