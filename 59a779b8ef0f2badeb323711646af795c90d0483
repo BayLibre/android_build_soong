@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a5f462c_0ed62492",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-06T03:47:25Z",
+      "side": 1,
+      "message": "show the actual min_sdk_version here?",
+      "range": {
+        "startLine": 306,
+        "startChar": 62,
+        "endLine": 306,
+        "endChar": 77
+      },
+      "revId": "59a779b8ef0f2badeb323711646af795c90d0483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
