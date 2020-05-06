@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f288ec4_2a944a19",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T12:25:32Z",
+      "side": 1,
+      "message": "Replacing the literal constants with longer symbolic ones and dislocating their values to elsewhere in the code doesn\u0027t make it simpler and easier to read. The only upside I can see with it is that it slightly lessens the risk of typos in the string literals, but it\u0027s small. Personally I wouldn\u0027t do this, but it\u0027s not clearly the wrong thing to do either.",
+      "range": {
+        "startLine": 271,
+        "startChar": 8,
+        "endLine": 272,
+        "endChar": 27
+      },
+      "revId": "c095194e5e1d99f2f7803e6983108d36e89046a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

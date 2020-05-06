@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c85be1a3_15ce9efb",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T12:25:32Z",
+      "side": 0,
+      "message": "What\u0027s wrong with this? It contains the error message and the logic in one place, has less code lines and is imo overall simpler.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 84
+      },
+      "revId": "00789cc58b71f6e3edf4125a9d9a03ab1278785c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
