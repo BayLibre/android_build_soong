@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002841635",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1304641?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "8cc99d59_33abdadc",
+          "description": "Change to \"cc/ndk_api_coverage_parser.py\"",
+          "replacements": [
+            {
+              "path": "cc/ndk_api_coverage_parser.py",
+              "range": {
+                "startLine": 88,
+                "startChar": 46,
+                "endLine": 88,
+                "endChar": 55
+              },
+              "replacement": "visibility"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "3b18d26d_1efcaeb1",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-05-06T23:02:42Z",
+      "side": 1,
+      "message": "Common typo found: \"visiblity\" -- should it be \"visibility\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 88,
+        "startChar": 46,
+        "endLine": 88,
+        "endChar": 55
+      },
+      "revId": "4534cdff52d0bb6e812bcf09a641fae64b0caa13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
