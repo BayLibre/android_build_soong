@@ -46,6 +46,30 @@
       "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adfb310f_9e5e2454",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-06T11:34:30Z",
+      "side": 1,
+      "message": "It wouldn\u0027t ignore an X value, it would only ignore an N/A value. The logic to not propagate some non-X and non-N/A value for host (if necessary) would instead be in PopulateFromVariant, and hence no need for this tag.\n\n\u003e (which may be significant in some cases)\n\nHow do you mean? If it\u0027s significant then it by definition shouldn\u0027t be ignored, by tag or other means, so we either need to support the property being an arch-variant, or fail. This is not the case for stubs at least.",
+      "parentUuid": "d022a698_d7696866",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
