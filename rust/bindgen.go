@@ -15,6 +15,8 @@
 package rust
 
 import (
+	"strings"
+
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -41,6 +43,7 @@ type bindgenDecorator struct {
 
 	Properties           BindgenProperties
 	unstrippedOutputFile android.Path
+	bindingsFile         android.WritablePath
 }
 
 // rust_bindgen builds Rust bindings to C/C++ using rust-bindgen
@@ -65,13 +68,15 @@ func (bindgen *bindgenDecorator) generatorToolName(moduleName string) string {
 func (bindgen *bindgenDecorator) createGeneratorModule(mctx android.LoadHookContext) {
 	if module, ok := mctx.Module().(*Module); ok {
 		props := struct {
-			Name  *string
-			Srcs  []string
-			Rlibs []string
+			Name       *string
+			Srcs       []string
+			Rlibs      []string
+			Crate_name string
 		}{}
 		props.Name = proptools.StringPtr(bindgen.generatorToolName(module.BaseModuleName()))
 		props.Srcs = bindgen.Properties.Srcs
 		props.Rlibs = []string{"libbindgen"}
+		props.Crate_name = strings.Replace(*props.Name, `-`, `_`, -1)
 		mctx.CreateModule(RustBinaryHostFactory, &props)
 	}
 }
@@ -89,9 +94,13 @@ func (bindgen *bindgenDecorator) compilerFlags(ctx ModuleContext, flags Flags) F
 	return flags
 }
 
+func (bindgen *bindgenDecorator) srcPath() android.Path {
+	return bindgen.bindingsFile
+}
+
 func (bindgen *bindgenDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
 	baseModuleName := ctx.baseModuleName()
-	bindingsFile := android.PathForModuleGen(ctx, "bindings.rs")
+	bindgen.bindingsFile = android.PathForModuleGen(ctx, "bindings.rs")
 
 	includes := make([]string, len(deps.IncludeDirs))
 	for i, v := range deps.IncludeDirs {
@@ -103,7 +112,7 @@ func (bindgen *bindgenDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		Rule:        bindingsGenerator,
 		Description: "bindgen " + baseModuleName,
 		Inputs:      headers,
-		Output:      bindingsFile,
+		Output:      bindgen.bindingsFile,
 		Args: map[string]string{
 			"generator":  ctx.Config().HostToolPath(ctx, bindgen.generatorToolName(baseModuleName)).String(),
 			"extraFlags": android.JoinWithPrefix(includes, "-I"),
@@ -117,7 +126,7 @@ func (bindgen *bindgenDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	fileName := bindgen.getStem(ctx) + ctx.toolchain().RlibSuffix()
 	outputFile := android.PathForModuleOut(ctx, fileName)
 
-	outputs := TransformSrctoRlib(ctx, bindingsFile, deps, flags, outputFile, deps.linkDirs)
+	outputs := TransformSrctoRlib(ctx, bindgen.bindingsFile, deps, flags, outputFile, deps.linkDirs)
 	bindgen.coverageFile = outputs.coverageFile
 	bindgen.unstrippedOutputFile = outputFile
 	return outputFile

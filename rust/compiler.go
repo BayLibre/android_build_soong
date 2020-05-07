@@ -125,6 +125,12 @@ func (compiler *baseCompiler) coverageOutputZipPath() android.OptionalPath {
 	panic("baseCompiler does not implement coverageOutputZipPath()")
 }
 
+type compilerInterface interface {
+	getEdition() string
+	getFeatures() []string
+	getFlags() []string
+}
+
 var _ compiler = (*baseCompiler)(nil)
 
 func (compiler *baseCompiler) inData() bool {
@@ -225,6 +231,10 @@ func (compiler *baseCompiler) crateName() string {
 	return compiler.Properties.Crate_name
 }
 
+func (compiler *baseCompiler) srcPath() android.Path {
+	return compiler.src
+}
+
 func (compiler *baseCompiler) installDir(ctx ModuleContext) android.InstallPath {
 	dir := compiler.dir
 	if ctx.toolchain().Is64Bit() && compiler.dir64 != "" {
@@ -269,10 +279,23 @@ func (compiler *baseCompiler) relativeInstallPath() string {
 	return String(compiler.Properties.Relative_install_path)
 }
 
-func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) android.Path {
+func (compiler *baseCompiler) setSrcPathFromModuleSrcs(ctx ModuleContext, srcs []string) android.Path {
 	srcPaths := android.PathsForModuleSrc(ctx, srcs)
 	if len(srcPaths) != 1 {
 		ctx.PropertyErrorf("srcs", "srcs can only contain one path for rust modules")
 	}
-	return srcPaths[0]
+	compiler.src = srcPaths[0]
+	return compiler.src
+}
+
+func (compiler *baseCompiler) getEdition() string {
+	return proptools.StringDefault(compiler.Properties.Edition, config.DefaultEdition)
+}
+
+func (compiler *baseCompiler) getFeatures() []string {
+	return compiler.Properties.Features
+}
+
+func (compiler *baseCompiler) getFlags() []string {
+	return compiler.Properties.Flags
 }

@@ -390,6 +390,7 @@ bootstrap_go_package {
     ],
     srcs: [
         "rust/androidmk.go",
+        "rust/cargo_manifest.go",
         "rust/compiler.go",
         "rust/coverage.go",
         "rust/binary.go",
