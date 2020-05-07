@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "750d348f_544311d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-07T16:03:33Z",
+      "side": 1,
+      "message": "\u003e Is this intended to replace https://r.android.com/1297676?\n\nYes and no. They can both be used to achieve the behavior that is needed by java_sdk_library to control the visibility of its child modules. But otherwise they are orthogonal to one another.\n\nhttps://r.android.com/1297676 can control the inheritance of properties other than visibility. This change can be used for overriding visibility in defaults as well as inherited from module that calls CreateModule.\n\nI created this because I wasn\u0027t sure that the new methods added in https://r.android.com/1297676 were going to be generally useful and this mechanism will provide functionality outside this one use case.",
+      "parentUuid": "fc9a9bf0_3791f058",
+      "revId": "d0baba7a07927dc8edb04f08429e3212711f3f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1cac5e6_6209f37f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "d0baba7a07927dc8edb04f08429e3212711f3f1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e95e68d1_8e8262be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-07T16:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1cac5e6_6209f37f",
+      "revId": "d0baba7a07927dc8edb04f08429e3212711f3f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
