@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3c9e9cc_6ea3ec25",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-07T05:23:26Z",
+      "side": 1,
+      "message": "I think this deserves some explanation. This condition says that a lib providing stub should be \"external\" unless it is part of the same APEX. This is right because we treat static linkage as internal. But the method name and the condition itself might not be clear for others. Otherwise, renaming the method would work as well.",
+      "range": {
+        "startLine": 1915,
+        "startChar": 37,
+        "endLine": 1915,
+        "endChar": 48
+      },
+      "revId": "db1d18aae83c389e3cb48effd0194c9575433f40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd05df4_82486473",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-07T05:23:26Z",
+      "side": 1,
+      "message": "nit: How about extracting this as helper?",
+      "range": {
+        "startLine": 1916,
+        "startChar": 0,
+        "endLine": 1922,
+        "endChar": 5
+      },
+      "revId": "db1d18aae83c389e3cb48effd0194c9575433f40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
