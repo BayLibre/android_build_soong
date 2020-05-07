@@ -16,6 +16,24 @@
       "revId": "3d0d2125b3c28fa3a933d4eba898e5af9280885f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca57aed_dca1968d",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1330217
+      },
+      "writtenOn": "2020-05-07T05:27:17Z",
+      "side": 1,
+      "message": "Offline chat with Colin, changing to store these with Option in a Config object. PTAL. Thanks.",
+      "parentUuid": "ce669e51_e6948524",
+      "revId": "3d0d2125b3c28fa3a933d4eba898e5af9280885f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
