@@ -24,6 +24,7 @@ import (
 	"text/scanner"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/parser"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -210,6 +211,28 @@ type ModuleContext interface {
 
 	GetMissingDependencies() []string
 	Namespace() blueprint.Namespace
+
+	// Check the syntax of a generated blueprint file.
+	//
+	// This is intended to perform a quick sanity check for generated blueprint
+	// code to ensure that it is syntactically correct, where syntactically correct
+	// means:
+	// * No variable definitions.
+	// * Valid module types.
+	// * Valid property names.
+	// * Valid values for the property type.
+	//
+	// It does not perform any semantic checking of properties, existence of referenced
+	// files, or dependencies.
+	//
+	// At a low level it:
+	// * Parses the contents.
+	// * Invokes relevant factory to create Module instances.
+	// * Unpacks the properties into the Module.
+	// * Does not invoke load hooks or any mutators.
+	//
+	// The filename is only used for reporting errors.
+	BlueprintSyntaxChecker(filename string, contents string) []error
 }
 
 type Module interface {
@@ -1440,6 +1463,54 @@ func (b *baseModuleContext) OtherModuleType(m blueprint.Module) string {
 
 func (b *baseModuleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module {
 	return b.bp.GetDirectDepWithTag(name, tag)
+}
+
+func (b *baseModuleContext) BlueprintSyntaxChecker(filename string, contents string) []error {
+	scope := parser.NewScope(nil)
+	file, errs := parser.Parse(filename, strings.NewReader(contents), scope)
+	if len(errs) != 0 {
+		return errs
+	}
+
+	moduleFactories := b.bp.ModuleFactories()
+
+	var propertyErrs []error
+
+	for _, def := range file.Defs {
+		switch def := def.(type) {
+		case *parser.Module:
+			{
+				factory, ok := moduleFactories[def.Type]
+				if !ok {
+					propertyErrs = append(propertyErrs, &blueprint.BlueprintError{
+						Err: fmt.Errorf("unrecognized module type %q", def.Type),
+						Pos: def.TypePos,
+					})
+				} else {
+					_, properties := factory()
+
+					_, errs := proptools.UnpackProperties(def.Properties, properties...)
+					if len(errs) > 0 {
+						for _, err := range errs {
+							if unpackErr, ok := err.(*proptools.UnpackError); ok {
+								err = &blueprint.BlueprintError{
+									Err: unpackErr.Err,
+									Pos: unpackErr.Pos,
+								}
+							}
+
+							propertyErrs = append(propertyErrs, err)
+						}
+					}
+				}
+			}
+
+		default:
+			panic(fmt.Errorf("unknown definition type: %T", def))
+		}
+	}
+
+	return propertyErrs
 }
 
 type moduleContext struct {
