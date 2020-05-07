@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22b1c732_4cce2c0b",
+        "filename": "sdk/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T16:09:09Z",
+      "side": 1,
+      "message": "I suggest AssertErrorMessageContains that checks a substring. Oftentimes matching the whole error message is brittle, so it\u0027s good to not encourage that.",
+      "range": {
+        "startLine": 176,
+        "startChar": 21,
+        "endLine": 176,
+        "endChar": 45
+      },
+      "revId": "4b8b79394fa5eeddc532aa9e38870dd1c3a291b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3b54da_ea06ded3",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T16:09:09Z",
+      "side": 1,
+      "message": "Things would generally get a bit simpler if commonValueExtractor.extractCommonProperties took the context instead. The drawback is only that the test would need a fake ModuleContext, don\u0027t know how icky that\u0027d get.",
+      "range": {
+        "startLine": 392,
+        "startChar": 5,
+        "endLine": 392,
+        "endChar": 28
+      },
+      "revId": "4b8b79394fa5eeddc532aa9e38870dd1c3a291b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
