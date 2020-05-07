@@ -249,6 +249,7 @@ type compiler interface {
 	compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path
 	compilerDeps(ctx DepsContext, deps Deps) Deps
 	crateName() string
+	srcPath() android.Path
 
 	inData() bool
 	install(ctx ModuleContext, path android.Path)

@@ -58,7 +58,7 @@ func (prebuilt *prebuiltLibraryDecorator) compilerProps() []interface{} {
 }
 
 func (prebuilt *prebuiltLibraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
-	srcPath := srcPathFromModuleSrcs(ctx, prebuilt.Properties.Srcs)
+	srcPath := prebuilt.setSrcPathFromModuleSrcs(ctx, prebuilt.Properties.Srcs)
 
 	prebuilt.unstrippedOutputFile = srcPath
 
