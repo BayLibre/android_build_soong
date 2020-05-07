@@ -34,6 +34,24 @@
       "revId": "d9ade220256839c252d7fd46cdfdfdcd755d1fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6c9b0a_16a97edb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T13:35:02Z",
+      "side": 1,
+      "message": "I only got one failure in internal, fixed by https://r.android.com/1304993. Submitting this now, but I\u0027ll keep an eye on build failures.",
+      "parentUuid": "b664accf_cf433bd7",
+      "revId": "d9ade220256839c252d7fd46cdfdfdcd755d1fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
