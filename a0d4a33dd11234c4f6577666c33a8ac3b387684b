@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9bf32b5_496b4c53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T16:14:50Z",
+      "side": 1,
+      "message": "While this is good and well, aren\u0027t there any number of other ways that the generated blueprint might be invalid? Would it be possible to parse it before it\u0027s written, just like the tests do? Then maybe we don\u0027t need special handling of this particular inconsistency.",
+      "revId": "a0d4a33dd11234c4f6577666c33a8ac3b387684b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
