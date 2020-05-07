@@ -34,6 +34,24 @@
       "revId": "a0d4a33dd11234c4f6577666c33a8ac3b387684b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a86f01a_fd40f326",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T18:01:48Z",
+      "side": 1,
+      "message": "Can\u0027t say I know the details of the parsing step, but I hoped it would be possible to just parse and assign the properties and stop short of anything else (including e.g. interpreting a string as a path). It would still mean calling the real factory functions, but they shouldn\u0027t be able to act on any value anyway since they haven\u0027t been assigned at that point.\n\nIf that\u0027s possible I\u0027d think it\u0027d catch invalid arch-specific properties, but then again I\u0027m not very familiar with those parts.\n\nI\u0027ll review this as if that idea won\u0027t work.",
+      "parentUuid": "99df1797_1b17c14d",
+      "revId": "a0d4a33dd11234c4f6577666c33a8ac3b387684b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
