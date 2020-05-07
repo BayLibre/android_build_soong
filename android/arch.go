@@ -1026,6 +1026,7 @@ func createArchPropTypeDesc(props reflect.Type) []archPropTypeDesc {
 			"Not_windows",
 			"Arm_on_x86",
 			"Arm_on_x86_64",
+			"Native_bridge",
 		}
 		for _, os := range OsTypeList {
 			targets = append(targets, os.Field)
@@ -1413,6 +1414,11 @@ func (m *ModuleBase) setArchProperties(ctx BottomUpMutatorContext) {
 					prefix := "target.arm_on_x86_64"
 					m.appendProperties(ctx, genProps, targetProp, field, prefix)
 				}
+				if os == Android && isNativeBridgeArch(arch, ctx.Config().Targets[Android]) {
+					field := "Native_bridge"
+					prefix := "target.native_bridge"
+					m.appendProperties(ctx, genProps, targetProp, field, prefix)
+				}
 			}
 		}
 	}
@@ -1571,6 +1577,15 @@ func hasX86AndroidArch(targets []Target) bool {
 func hasX8664AndroidArch(targets []Target) bool {
 	for _, target := range targets {
 		if target.Os == Android && target.Arch.ArchType == X86_64 {
+			return true
+		}
+	}
+	return false
+}
+
+func isNativeBridgeArch(arch Arch, targets []Target) bool {
+	for _, target := range targets {
+		if target.Arch.ArchType == arch.ArchType && target.NativeBridge == NativeBridgeEnabled {
 			return true
 		}
 	}
