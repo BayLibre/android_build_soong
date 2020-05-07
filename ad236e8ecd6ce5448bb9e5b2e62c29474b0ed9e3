@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d10be9df_60551522",
+        "filename": "java/java_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-07T10:32:10Z",
+      "side": 1,
+      "message": "Having public as a default seems reasonable given that java_sdk_library is pretty useless without it. However, I don\u0027t understand why those others should be enabled, particularly test. It seems as though it is just the list of API surfaces that are currently supported which is pretty arbitrary.",
+      "parentUuid": "7012e9f8_0aee1c7d",
+      "range": {
+        "startLine": 1233,
+        "startChar": 70,
+        "endLine": 1233,
+        "endChar": 94
+      },
+      "revId": "ad236e8ecd6ce5448bb9e5b2e62c29474b0ed9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8741bec0_23268a7b",
         "filename": "java/sdk_library.go",
         "patchSetId": 5
