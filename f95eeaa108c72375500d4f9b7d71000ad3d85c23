@@ -94,6 +94,30 @@
       "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6be8cd7a_ee31647c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T17:12:40Z",
+      "side": 1,
+      "message": "In your examples it looks like the N/A value isn\u0027t actually an N/A value. The premise was that it wouldn\u0027t be something that properties have otherwise (and be significant). Using Zero for it is perhaps a bit too lazy, and properly extending the value domain (likely through an extra pointer indirection) might very well get overly clumsy (haven\u0027t thought that much about it).\n\nIf it\u0027s possible to do without getting too annoying it has the benefit that we don\u0027t need to tag the fields with this out-of-band info when they are applicable, which is slightly more brittle, and in theory we might grow any number of different conditions requiring tags.\n\nSo it\u0027s worth some thought, but if you think this is the best way then I\u0027m ok with it.",
+      "parentUuid": "971fe1dd_072497f5",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
