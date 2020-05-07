@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d2f10ce1_3ea22f2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T17:27:54Z",
+      "side": 1,
+      "message": "My question was if you actually intend to land both. If this goes in I don\u0027t think the use case for https://r.android.com/1297676 is strong enough, considering its drawbacks.\n\nThis also has the nice property that visibility overrides get explicit, even in the child module case. So all things considered I\u0027m a bit in favour of this one after all.",
+      "parentUuid": "750d348f_544311d9",
+      "revId": "d0baba7a07927dc8edb04f08429e3212711f3f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1cac5e6_6209f37f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
