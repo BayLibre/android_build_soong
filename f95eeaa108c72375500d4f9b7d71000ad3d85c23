@@ -118,6 +118,30 @@
       "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7953356b_b67f7ecf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-07T17:38:48Z",
+      "side": 1,
+      "message": "I\u0027d be happy to follow this up at a later date. Please raise a bug if you feel it is worth tracking.",
+      "parentUuid": "6be8cd7a_ee31647c",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

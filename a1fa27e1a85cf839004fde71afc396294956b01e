@@ -22,6 +22,30 @@
       "revId": "a1fa27e1a85cf839004fde71afc396294956b01e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8932d749_dcc234e0",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-07T17:38:48Z",
+      "side": 1,
+      "message": "No. Removed.",
+      "parentUuid": "6d0001d0_2f2d4dc0",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 55
+      },
+      "revId": "a1fa27e1a85cf839004fde71afc396294956b01e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
