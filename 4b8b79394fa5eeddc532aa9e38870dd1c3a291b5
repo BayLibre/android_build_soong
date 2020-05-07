@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "357cf5b2_966f6182",
+        "filename": "sdk/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T17:48:20Z",
+      "side": 1,
+      "message": "Well, my point was to not encourage brittle assertions, which this one does. Adding another one doesn\u0027t fix that.",
+      "parentUuid": "93855baf_cb6b6b49",
+      "range": {
+        "startLine": 176,
+        "startChar": 21,
+        "endLine": 176,
+        "endChar": 45
+      },
+      "revId": "4b8b79394fa5eeddc532aa9e38870dd1c3a291b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d3b54da_ea06ded3",
         "filename": "sdk/update.go",
         "patchSetId": 2
