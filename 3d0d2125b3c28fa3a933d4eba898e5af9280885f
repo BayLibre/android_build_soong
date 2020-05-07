@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce669e51_e6948524",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-07T02:15:02Z",
+      "side": 1,
+      "message": "Why not store these in a Config object and pass them in through the configs parameter?  You could make this change entirely in cc/test.go.",
+      "revId": "3d0d2125b3c28fa3a933d4eba898e5af9280885f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
