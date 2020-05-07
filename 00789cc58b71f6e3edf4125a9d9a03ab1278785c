@@ -70,6 +70,30 @@
       "revId": "00789cc58b71f6e3edf4125a9d9a03ab1278785c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb29d21f_430d1272",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-07T17:31:24Z",
+      "side": 0,
+      "message": "Agreed. Not worth the complexity. Not yet anyway.",
+      "parentUuid": "f5d78273_2f018d14",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 84
+      },
+      "revId": "00789cc58b71f6e3edf4125a9d9a03ab1278785c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
