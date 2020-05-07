@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ba324fb_6ebe4120",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-07T07:21:20Z",
+      "side": 1,
+      "message": "Renamed the method.",
+      "parentUuid": "b3c9e9cc_6ea3ec25",
+      "range": {
+        "startLine": 1915,
+        "startChar": 37,
+        "endLine": 1915,
+        "endChar": 48
+      },
+      "revId": "db1d18aae83c389e3cb48effd0194c9575433f40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cd05df4_82486473",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-07T05:23:26Z",
       "side": 1,
       "message": "nit: How about extracting this as helper?",
+      "range": {
+        "startLine": 1916,
+        "startChar": 0,
+        "endLine": 1922,
+        "endChar": 5
+      },
+      "revId": "db1d18aae83c389e3cb48effd0194c9575433f40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccbf5cd8_296fd9e8",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-07T07:21:20Z",
+      "side": 1,
+      "message": "Done. See the parent change.",
+      "parentUuid": "8cd05df4_82486473",
       "range": {
         "startLine": 1916,
         "startChar": 0,
