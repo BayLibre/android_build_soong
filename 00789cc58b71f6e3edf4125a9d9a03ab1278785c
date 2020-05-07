@@ -46,6 +46,30 @@
       "revId": "00789cc58b71f6e3edf4125a9d9a03ab1278785c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5d78273_2f018d14",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-07T15:29:16Z",
+      "side": 0,
+      "message": "Possibly, but with the override keyword change in https://r.android.com/1301758 it\u0027s still only dislocating code that belongs here, without anything getting simpler afaics.\n\nIt would perhaps be somewhat cleaner if all the keyword-specific logic moved to the visibilityKeyword type, but even then I don\u0027t see the point with dislocating it when everything still is this simple. (It would be a different matter if there were tenths of keywords, each with lots of logic, but we\u0027re not there.)",
+      "parentUuid": "8ac6966a_5d09c6d3",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 84
+      },
+      "revId": "00789cc58b71f6e3edf4125a9d9a03ab1278785c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
