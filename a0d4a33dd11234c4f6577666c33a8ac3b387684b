@@ -16,6 +16,24 @@
       "revId": "a0d4a33dd11234c4f6577666c33a8ac3b387684b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99df1797_1b17c14d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-07T16:26:15Z",
+      "side": 1,
+      "message": "There are but I think this is the main one that this code can introduce.\n\nI did think about parsing the generated Android.bp file the tests do but that is really difficult (maybe impossible) to do in general.\n1) Will have references to things defined outside it.\n2) Some module types try and access the files that are referenced, but those files won\u0027t be present until the ninja code runs so the parsing would have to be done then.\n\nThe tests manages this by:\n1) Processing the generated Android.bp file in the same configuration/similar context as the original test was run.\n2) Using information recorded by the snapshot code about what files were copied into it to make sure that those files are present in the mock file system.\n\nDoing that in a ninja rule will be very tricky and fragile given all the issues we have mixing prebuilts and sources.",
+      "parentUuid": "e9bf32b5_496b4c53",
+      "revId": "a0d4a33dd11234c4f6577666c33a8ac3b387684b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
