@@ -70,6 +70,30 @@
       "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "971fe1dd_072497f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-07T15:11:55Z",
+      "side": 1,
+      "message": "Sorry, I meant would ignore a significant N/A value. In the rest of this I am going to assume N/A is represented by Zero value.\n\nIf the only criteria we have for ignoring an N/A value is that the property is not marked as `arch_variant` then we have no way of identifying a \u0027significant\u0027 N/A value. It is possible that we could ignore an N/A value that is significant which could cause problems.\n\nSo, despite the stubs.versions property not being marked as `arch_variant`, the StubsVersion() method returns different values for host than it does for android.\n\nLets, say that for some reason one Android variant ends up with a different value to the rest.\n\nSo, we have:\nandroid variant1: StubsVersion() -\u003e \"1\"\nandroid variant2: StubsVersion() -\u003e N/A\nandroid variant3: StubsVersion() -\u003e \"1\"\n\nMy change will detect the inconsistency and fail because the N/A value in StubsVersion() will only be ignored on host variants.\n\nSimilarly, if a host variant ends up with a non-N/A value for some reason, e.g.\nhost variant1: StubsVersion() -\u003e \"1\"\nhost variant2: StubsVersion() -\u003e N/A\n\nThen my change will detect that because it only ignores N/A values on host variants.\n\nObviously, this is not something that is likely with StubsVersion() but there are/will be many properties over which we have little control.\n\nIt is all about protecting this code against incompatible changes in other parts of Soong. I\u0027d rather detect the issue as early as possible.",
+      "parentUuid": "adfb310f_9e5e2454",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "f95eeaa108c72375500d4f9b7d71000ad3d85c23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
