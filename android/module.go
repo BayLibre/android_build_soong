@@ -2364,3 +2364,8 @@ type IdeInfo struct {
 	Installed_paths   []string `json:"installed,omitempty"`
 	SrcJars           []string `json:"srcjars,omitempty"`
 }
+
+func CheckBlueprintSyntax(ctx BaseModuleContext, filename string, contents string) []error {
+	b := ctx.(*baseModuleContext)
+	return blueprint.CheckBlueprintSyntax(b.bp, filename, contents)
+}
