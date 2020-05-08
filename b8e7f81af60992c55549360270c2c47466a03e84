@@ -70,6 +70,30 @@
       "revId": "b8e7f81af60992c55549360270c2c47466a03e84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b48deade_de618021",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2020-05-08T16:23:38Z",
+      "side": 1,
+      "message": "Sounds good. Thanks for the quick review!",
+      "parentUuid": "1ba541a6_f93f6a7f",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "b8e7f81af60992c55549360270c2c47466a03e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
