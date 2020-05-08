@@ -441,6 +441,8 @@ func (c *commonToSdkLibraryAndImport) initCommonAfterDefaultsApplied(ctx android
 	switch schemeProperty {
 	case "default":
 		c.namingScheme = &defaultNamingScheme{}
+	case "framework-modules":
+		c.namingScheme = &frameworkModulesNamingScheme{}
 	default:
 		ctx.PropertyErrorf("naming_scheme", "expected 'default' but was %q", schemeProperty)
 		return false
@@ -1157,6 +1159,31 @@ func (s *defaultNamingScheme) apiModuleName(scope *apiScope, baseName string) st
 }
 
 var _ sdkLibraryComponentNamingScheme = (*defaultNamingScheme)(nil)
+
+type frameworkModulesNamingScheme struct {
+}
+
+func (s *frameworkModulesNamingScheme) moduleSuffix(scope *apiScope) string {
+	suffix := scope.name
+	if scope == apiScopeModuleLib {
+		suffix = "module_libs_"
+	}
+	return suffix
+}
+
+func (s *frameworkModulesNamingScheme) stubsLibraryModuleName(scope *apiScope, baseName string) string {
+	return fmt.Sprintf("%s-stubs-%sapi", baseName, s.moduleSuffix(scope))
+}
+
+func (s *frameworkModulesNamingScheme) stubsSourceModuleName(scope *apiScope, baseName string) string {
+	return fmt.Sprintf("%s-stubs-srcs-%sapi", baseName, s.moduleSuffix(scope))
+}
+
+func (s *frameworkModulesNamingScheme) apiModuleName(scope *apiScope, baseName string) string {
+	return fmt.Sprintf("%s-api-%sapi", baseName, s.moduleSuffix(scope))
+}
+
+var _ sdkLibraryComponentNamingScheme = (*frameworkModulesNamingScheme)(nil)
 
 // java_sdk_library is a special Java library that provides optional platform APIs to apps.
 // In practice, it can be viewed as a combination of several modules: 1) stubs library that clients
