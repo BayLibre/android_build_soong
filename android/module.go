@@ -2360,4 +2360,5 @@ type IdeInfo struct {
 	Classes           []string `json:"class,omitempty"`
 	Installed_paths   []string `json:"installed,omitempty"`
 	SrcJars           []string `json:"srcjars,omitempty"`
+	Paths             []string `json:"path,omitempty"`
 }

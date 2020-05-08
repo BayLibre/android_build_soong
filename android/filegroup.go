@@ -45,6 +45,9 @@ type fileGroup struct {
 	ModuleBase
 	properties fileGroupProperties
 	srcs       Paths
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 var _ SourceFileProducer = (*fileGroup)(nil)
@@ -65,6 +68,9 @@ func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
 	}
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	fg.modulePaths = append(fg.modulePaths, ctx.ModuleDir())
 }
 
 func (fg *fileGroup) Srcs() Paths {
@@ -90,4 +96,16 @@ func (fg *fileGroup) AndroidMk() AndroidMkData {
 			}
 		},
 	}
+}
+
+// Collect modules' info for IDE info in java/jdeps.go.
+func (fg *fileGroup) IDEInfo(dpInfo *IdeInfo) {
+	dpInfo.Srcs = append(dpInfo.Srcs, fg.Srcs().Strings()...)
+	for _, src := range fg.properties.Srcs {
+		if strings.HasPrefix(src, ":") {
+			src = strings.Trim(src, ":")
+			dpInfo.Deps = append(dpInfo.Deps, src)
+		}
+	}
+	dpInfo.Paths = append(dpInfo.Paths, fg.modulePaths...)
 }
