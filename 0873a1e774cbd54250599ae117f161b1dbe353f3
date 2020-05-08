@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08871b5b_8fa7ad52",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-05-08T09:43:47Z",
+      "side": 1,
+      "message": "Should just be return Bool(m.commonProperties.Vendor_ramdisk) imo\nAll the vendor_ramdisk modules should explicitly set the flag",
+      "range": {
+        "startLine": 1010,
+        "startChar": 0,
+        "endLine": 1012,
+        "endChar": 87
+      },
+      "revId": "0873a1e774cbd54250599ae117f161b1dbe353f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d81ad4f8_492e49b0",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-05-08T09:43:47Z",
+      "side": 1,
+      "message": "I think you got this wrong\nAll you should do is\nm.commonProperties.Vendor_ramdisk \u003d boolPtr(false)",
+      "range": {
+        "startLine": 1823,
+        "startChar": 0,
+        "endLine": 1827,
+        "endChar": 2
+      },
+      "revId": "0873a1e774cbd54250599ae117f161b1dbe353f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
