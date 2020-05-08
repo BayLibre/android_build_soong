@@ -1784,11 +1784,21 @@ func (j *Module) logtags() android.Paths {
 // Collect information for opening IDE project files in java/jdeps.go.
 func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
+	dpInfo.Deps = append(dpInfo.Deps, j.properties.Plugins...)
+	for _, src := range j.properties.Srcs {
+		if strings.HasPrefix(src, ":") {
+			src = strings.Trim(src, ":")
+			dpInfo.Deps = append(dpInfo.Deps, src)
+		}
+	}
 	dpInfo.Srcs = append(dpInfo.Srcs, j.expandIDEInfoCompiledSrcs...)
 	dpInfo.SrcJars = append(dpInfo.SrcJars, j.compiledSrcJars.Strings()...)
 	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
 	if j.expandJarjarRules != nil {
 		dpInfo.Jarjar_rules = append(dpInfo.Jarjar_rules, j.expandJarjarRules.String())
+	}
+	if String(j.deviceProperties.Sdk_version) == "current" {
+		dpInfo.Deps = append(dpInfo.Deps, "prebuilts/jdk/jdk8")
 	}
 	dpInfo.Paths = append(dpInfo.Paths, j.modulePaths...)
 }
@@ -2114,6 +2124,9 @@ type Test struct {
 
 	testConfig android.Path
 	data       android.Paths
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 type TestHelperLibrary struct {
@@ -2135,7 +2148,22 @@ func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.testProperties.Test_suites, j.testProperties.Auto_gen_config)
 	j.data = android.PathsForModuleSrc(ctx, j.testProperties.Data)
 
+	// Collect the module directory for IDE info in java/jdeps.go.
+	j.modulePaths = append(j.modulePaths, ctx.ModuleDir())
+
 	j.Library.GenerateAndroidBuildActions(ctx)
+}
+
+// Collect information for opening IDE project files in java/jdeps.go.
+func (j *Test) IDEInfo(dpInfo *android.IdeInfo) {
+	for _, data := range j.testProperties.Data {
+		if strings.HasPrefix(data, ":") {
+			data = strings.Trim(data, ":")
+		}
+		dpInfo.Deps = append(dpInfo.Deps, data)
+	}
+	dpInfo.Deps = append(dpInfo.Deps, j.Library.Module.properties.Static_libs...)
+	dpInfo.Paths = append(dpInfo.Paths, j.modulePaths...)
 }
 
 func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
