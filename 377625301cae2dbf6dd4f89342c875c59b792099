@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6d79454_8518773f",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-05-08T20:52:53Z",
+      "side": 1,
+      "message": "Should we also add test cases for these errors?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 0
+      },
+      "revId": "377625301cae2dbf6dd4f89342c875c59b792099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
