@@ -144,6 +144,9 @@ type Module struct {
 
 	subName string
 	subDir  string
+
+	// Unpack filegroup srcs in grenrule for IDEInfo data collected in java/jdeps.go.
+	filegroupSrcs []string
 }
 
 type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask
@@ -298,6 +301,11 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		} else {
 			srcFiles = append(srcFiles, paths...)
 			addLocationLabel(in, paths.Strings())
+		}
+		// Unpack filegroup srcs in grenrule for IDEInfo data collected in java/jdeps.go.
+		filegroupSrcs := android.PathsForModuleSrc(ctx, []string{in})
+		if len(filegroupSrcs.Strings()) > 0 {
+			g.filegroupSrcs = append(g.filegroupSrcs, filegroupSrcs.Strings()...)
 		}
 	}
 
@@ -522,13 +530,10 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 
 // Collect information for opening IDE project files in java/jdeps.go.
 func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
-	dpInfo.Srcs = append(dpInfo.Srcs, g.Srcs().Strings()...)
-	for _, src := range g.properties.Srcs {
-		if strings.HasPrefix(src, ":") {
-			src = strings.Trim(src, ":")
-			dpInfo.Deps = append(dpInfo.Deps, src)
-		}
+	if len(g.filegroupSrcs) > 0 {
+		dpInfo.Srcs = append(dpInfo.Srcs, g.filegroupSrcs...)
 	}
+	dpInfo.Srcs = append(dpInfo.Srcs, g.Srcs().Strings()...)
 }
 
 func (g *Module) AndroidMk() android.AndroidMkData {
