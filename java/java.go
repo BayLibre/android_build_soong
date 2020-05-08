@@ -1747,6 +1747,12 @@ func (j *Module) logtags() android.Paths {
 // Collect information for opening IDE project files in java/jdeps.go.
 func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
+	for _, src := range j.properties.Srcs {
+		if strings.HasPrefix(src, ":") {
+			src = strings.Trim(src, ":")
+			dpInfo.Deps = append(dpInfo.Deps, src)
+		}
+	}
 	dpInfo.Srcs = append(dpInfo.Srcs, j.expandIDEInfoCompiledSrcs...)
 	dpInfo.SrcJars = append(dpInfo.SrcJars, j.compiledSrcJars.Strings()...)
 	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
