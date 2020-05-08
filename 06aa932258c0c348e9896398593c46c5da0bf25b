@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0939ee2c_50e6e0cb",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-08T19:40:06Z",
+      "side": 1,
+      "message": "Can these both be moved to builder.go?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "06aa932258c0c348e9896398593c46c5da0bf25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b000379b_f5404903",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-08T19:40:06Z",
+      "side": 1,
+      "message": "Define this as a StaticVariable in config/global.go, similar to RustLinker",
+      "range": {
+        "startLine": 28,
+        "startChar": 30,
+        "endLine": 28,
+        "endChar": 60
+      },
+      "revId": "06aa932258c0c348e9896398593c46c5da0bf25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "961e3797_e5ad525a",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-08T19:40:06Z",
+      "side": 1,
+      "message": "If clang++ works for this then we can just reuse $config.RustLinker (which we\u0027d probably want to rename). Otherwise similar to llvm-config, define a StaticVariable for it in config/global.go.",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "06aa932258c0c348e9896398593c46c5da0bf25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89f5359_279b43e2",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-08T19:40:06Z",
+      "side": 1,
+      "message": "nit: rust_bindgen_rlib to make it clear these are declared as rlibs",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "06aa932258c0c348e9896398593c46c5da0bf25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "185d68d3_14157f30",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-08T19:40:06Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer Srcs []string for consistency with other Rust modules.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 8
+      },
+      "revId": "06aa932258c0c348e9896398593c46c5da0bf25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37bb5c6_f1f2b482",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-08T19:40:06Z",
+      "side": 1,
+      "message": "Headers to avoid confusion as other rust modules use the Srcs field for their rs files.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "06aa932258c0c348e9896398593c46c5da0bf25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f8edbf_b9d5cffe",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-08T19:40:06Z",
+      "side": 1,
+      "message": "This seems unnecessary once there are static variables for the llvm-config and clang invocation.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 56
+      },
+      "revId": "06aa932258c0c348e9896398593c46c5da0bf25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
