@@ -22,6 +22,30 @@
       "revId": "b8e7f81af60992c55549360270c2c47466a03e84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582904f4_650975a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2020-05-08T03:00:27Z",
+      "side": 1,
+      "message": "It includes avb_*_footer_args fields, which uses BUILD_FINGERPRINT_FROM_FILE, which uses BUILD_FINGERPRINT, which uses BUILD_ID.\n\nAn incremental build that included a change to build_id.mk (which occurs every time we merge from rvc-release into our branch) didn\u0027t cause misc_info.txt to refresh. I\u0027m guessing master doesn\u0027t see this because build_id.mk in master is `MASTER`.\n\nThink it\u0027d be better to instead make misc_info.txt depend on build_id.mk as a source?",
+      "parentUuid": "c2519a3d_97ef5807",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "b8e7f81af60992c55549360270c2c47466a03e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
