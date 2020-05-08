@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2519a3d_97ef5807",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-05-08T02:20:04Z",
+      "side": 1,
+      "message": "It doesn\u0027t appear to depend on any inputs, so it should only need to be refreshed when the static contents changes (which ninja takes care of by comparing the command line since the last build). If it did use other built inputs it could be a flaky build issue -- what problematic behavior are you seeing?",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "b8e7f81af60992c55549360270c2c47466a03e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
