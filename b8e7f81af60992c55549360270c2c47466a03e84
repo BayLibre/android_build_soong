@@ -46,6 +46,30 @@
       "revId": "b8e7f81af60992c55549360270c2c47466a03e84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba541a6_f93f6a7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-05-08T03:31:48Z",
+      "side": 1,
+      "message": "Ah, a few layers deep. And no, just depending on build_id.mk doesn\u0027t really help. There are a lot of other ways for the build fingerprint to change (it also includes the build number which changes every build).",
+      "parentUuid": "582904f4_650975a3",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "b8e7f81af60992c55549360270c2c47466a03e84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
