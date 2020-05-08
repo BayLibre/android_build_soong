@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4cc53e40_6a7a644f",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-08T17:01:33Z",
+      "side": 1,
+      "message": "Not yet. It is still needed for those java_sdk_library usages that rely on legacy behavior.",
+      "parentUuid": "a9fd462c_6738f620",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 57
+      },
+      "revId": "67c1d715f6cd1d9748c6f36d26fbcab527ce77eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89d5d9e7_20399c7e",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
