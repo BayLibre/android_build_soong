@@ -999,6 +999,9 @@ type AndroidTest struct {
 
 	testConfig android.Path
 	data       android.Paths
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 func (a *AndroidTest) InstallInTestcases() bool {
@@ -1022,6 +1025,9 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	for _, module := range a.testProperties.Test_mainline_modules {
 		configs = append(configs, tradefed.Option{Name: "config-descriptor:metadata", Key: "mainline-param", Value: module})
 	}
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	a.modulePaths = append(a.modulePaths, ctx.ModuleDir())
 
 	testConfig := tradefed.AutoGenInstrumentationTestConfig(ctx, a.testProperties.Test_config,
 		a.testProperties.Test_config_template, a.manifestPath, a.testProperties.Test_suites, a.testProperties.Auto_gen_config, configs)
@@ -1068,6 +1074,21 @@ func (a *AndroidTest) OverridablePropertiesDepsMutator(ctx android.BottomUpMutat
 		// but not added to the aapt2 link includes like a normal android_app or android_library dependency, so
 		// use instrumentationForTag instead of libTag.
 		ctx.AddVariationDependencies(nil, instrumentationForTag, String(a.appTestProperties.Instrumentation_for))
+	}
+}
+
+// Collect modules' info for IDE info in java/jdeps.go.
+func (a *AndroidTest) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Paths = append(dpInfo.Paths, a.modulePaths...)
+	if a.appTestProperties.Instrumentation_for != nil {
+		dpInfo.Deps = append(dpInfo.Deps, String(a.appTestProperties.Instrumentation_for))
+	}
+	dpInfo.Deps = append(dpInfo.Deps, a.Library.Module.properties.Static_libs...)
+	for _, data := range a.testProperties.Data {
+		if strings.HasPrefix(data, ":") {
+			data = strings.Trim(data, ":")
+		}
+		dpInfo.Deps = append(dpInfo.Deps, data)
 	}
 }
 
