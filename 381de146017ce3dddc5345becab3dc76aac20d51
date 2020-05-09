@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71e5abf7_8e24635f",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-05-09T01:27:49Z",
+      "side": 1,
+      "message": "I relaxed this function a bit to take more than just a libraryDecorator compiler, since we also have rlibs that are compiled by bindgenDecorators now. Look ok?",
+      "revId": "381de146017ce3dddc5345becab3dc76aac20d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
