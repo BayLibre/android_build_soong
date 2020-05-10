@@ -1770,11 +1770,15 @@ func (j *Module) logtags() android.Paths {
 // Collect information for opening IDE project files in java/jdeps.go.
 func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
+	dpInfo.Deps = append(dpInfo.Deps, j.properties.Plugins...)
 	dpInfo.Srcs = append(dpInfo.Srcs, j.expandIDEInfoCompiledSrcs...)
 	dpInfo.SrcJars = append(dpInfo.SrcJars, j.compiledSrcJars.Strings()...)
 	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
 	if j.expandJarjarRules != nil {
 		dpInfo.Jarjar_rules = append(dpInfo.Jarjar_rules, j.expandJarjarRules.String())
+	}
+	if String(j.deviceProperties.Sdk_version) == "current" {
+		dpInfo.Deps = append(dpInfo.Deps, "prebuilts/jdk/jdk8")
 	}
 }
 
