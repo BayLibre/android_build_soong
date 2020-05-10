@@ -142,6 +142,9 @@ type Module struct {
 	installSource android.OptionalPath
 
 	subAndroidMkOnce map[subAndroidMkProvider]bool
+
+	// Collect module directory for IDE info in android/non_java_deps.go.
+	modulePaths []string
 }
 
 func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {
@@ -466,6 +469,9 @@ func (p *Module) GeneratePythonBuildActions(ctx android.ModuleContext) {
 	p.genModulePathMappings(ctx, pkgPath, expandedSrcs, expandedData)
 
 	p.srcsZip = p.createSrcsZip(ctx, pkgPath)
+
+	// Collect the module directory for IDE info in android/non_java_deps.go.
+	p.modulePaths = append(p.modulePaths, ctx.ModuleDir())
 }
 
 // generate current module unique pathMappings: <dest: runfiles_path, src: source_path>
@@ -674,3 +680,12 @@ func (p *Module) InstallInData() bool {
 var Bool = proptools.Bool
 var BoolDefault = proptools.BoolDefault
 var String = proptools.String
+
+// Collect module info for IDE info in android/non_java_deps.go.
+func (p *Module) IDEInfoNonJava(dpInfo *android.IdeInfoNonJava) {
+	dpInfo.Deps = append(dpInfo.Deps, p.properties.Libs...)
+	dpInfo.Deps = append(dpInfo.Deps, p.properties.Version.Py2.Libs...)
+	dpInfo.Deps = append(dpInfo.Deps, p.properties.Version.Py3.Libs...)
+	dpInfo.Srcs = append(dpInfo.Srcs, p.properties.Srcs...)
+	dpInfo.Paths = append(dpInfo.Paths, p.modulePaths...)
+}

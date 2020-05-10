@@ -60,6 +60,7 @@ bootstrap_go_package {
         "android/mutator.go",
         "android/namespace.go",
         "android/neverallow.go",
+        "android/non_java_deps.go",
         "android/notices.go",
         "android/onceper.go",
         "android/override_module.go",
