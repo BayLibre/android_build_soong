@@ -29,6 +29,7 @@ bootstrap_go_package {
         "mutator.go",
         "namespace.go",
         "neverallow.go",
+        "njdeps.go",
         "notices.go",
         "onceper.go",
         "override_module.go",

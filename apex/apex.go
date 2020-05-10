@@ -1286,6 +1286,9 @@ type apexBundle struct {
 
 	// Struct holding the merged notice file paths in different formats
 	mergedNotices android.NoticeOutputs
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	modulePaths []string
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -1867,6 +1870,9 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 }
 
 func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Collect the module directory for IDE info in android/njdeps.go.
+	a.modulePaths = append(a.modulePaths, ctx.ModuleDir())
+
 	buildFlattenedAsDefault := ctx.Config().FlattenApex() && !ctx.Config().UnbundledBuild()
 	switch a.properties.ApexType {
 	case imageApex:
@@ -2237,6 +2243,16 @@ func (a *apexBundle) checkJavaStableSdkVersion(ctx android.ModuleContext) {
 			}
 		}
 	})
+}
+
+// Collect modules' info for IDE info in android/njdeps.go.
+func (a *apexBundle) IDEInfoNonJava(dpInfo *android.IdeInfoNonJava) {
+	dpInfo.Deps = append(dpInfo.Deps, a.properties.Native_shared_libs...)
+	dpInfo.Deps = append(dpInfo.Deps, a.properties.Multilib.First.Binaries...)
+	dpInfo.Deps = append(dpInfo.Deps, a.properties.Java_libs...)
+	dpInfo.Deps = append(dpInfo.Deps, a.overridableProperties.Apps...)
+	a.DefaultableModuleBase.IDEInfoNonJava(dpInfo)
+	dpInfo.Paths = append(dpInfo.Paths, a.modulePaths...)
 }
 
 func whitelistedApexAvailable(apex, moduleName string) bool {
