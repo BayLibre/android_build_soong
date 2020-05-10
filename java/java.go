@@ -1776,6 +1776,9 @@ func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	if j.expandJarjarRules != nil {
 		dpInfo.Jarjar_rules = append(dpInfo.Jarjar_rules, j.expandJarjarRules.String())
 	}
+	if String(j.deviceProperties.Sdk_version) == "current" {
+		dpInfo.Deps = append(dpInfo.Deps, "prebuilts/jdk/jdk8")
+	}
 }
 
 func (j *Module) CompilerDeps() []string {
