@@ -89,6 +89,9 @@ type headerModule struct {
 
 	installPaths android.Paths
 	licensePath  android.Path
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 func getHeaderInstallDir(ctx android.ModuleContext, header android.Path, from string,
@@ -129,6 +132,9 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	m.licensePath = android.PathForModuleSrc(ctx, String(m.properties.License))
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	m.modulePaths = append(m.modulePaths, ctx.ModuleDir())
 
 	srcFiles := android.PathsForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs)
 	for _, header := range srcFiles {
@@ -367,4 +373,9 @@ func preprocessedNdkHeadersFactory() android.Module {
 	android.InitAndroidModule(module)
 
 	return module
+}
+
+// Collect module info for IDE info in java/jdeps.go.
+func (m *headerModule) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Paths = append(dpInfo.Paths, m.modulePaths...)
 }
