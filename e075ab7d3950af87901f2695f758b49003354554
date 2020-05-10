@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5a7baf2_1c927924",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-10T22:54:28Z",
+      "side": 1,
+      "message": "The reason for making these changes is because a follow up change would have broken those assumptions. i.e. Instead of having stubs source and API files being provided by the single dependency that implements ApiStubsProvider each of those would have been provided by separate dependencies that both implement ApiStubsProvided. This change avoids that situation by using the tag to determine what is retrieved. If the dependency does not provide the information that the tag requires, e.g. does not implement the appropriate interface then it does error.",
+      "parentUuid": "b51a55c1_d87d1faf",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "e075ab7d3950af87901f2695f758b49003354554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "930358ee_2c6fbc75",
         "filename": "java/sdk_library.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e075ab7d3950af87901f2695f758b49003354554",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d54c65_5ecfc9c6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-10T22:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930358ee_2c6fbc75",
+      "range": {
+        "startLine": 476,
+        "startChar": 63,
+        "endLine": 476,
+        "endChar": 80
+      },
+      "revId": "e075ab7d3950af87901f2695f758b49003354554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
