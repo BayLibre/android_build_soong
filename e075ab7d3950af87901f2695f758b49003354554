@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b51a55c1_d87d1faf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-10T14:47:39Z",
+      "side": 1,
+      "message": "how realistic are these concerns? how about asserting these?",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "e075ab7d3950af87901f2695f758b49003354554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930358ee_2c6fbc75",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-10T14:47:39Z",
+      "side": 1,
+      "message": "stylistic: I am not a fan of in/out params. Can these two functions be member of the scopePaths struct?",
+      "range": {
+        "startLine": 476,
+        "startChar": 63,
+        "endLine": 476,
+        "endChar": 80
+      },
+      "revId": "e075ab7d3950af87901f2695f758b49003354554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
