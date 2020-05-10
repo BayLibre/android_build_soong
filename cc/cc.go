@@ -516,6 +516,9 @@ type Module struct {
 
 	// For apex variants, this is set as apex.min_sdk_version
 	apexSdkVersion int
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	modulePaths []string
 }
 
 func (c *Module) Toc() android.OptionalPath {
@@ -1478,6 +1481,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		},
 	}
 	ctx.ctx = ctx
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	c.modulePaths = append(c.modulePaths, ctx.ModuleDir())
 
 	deps := c.depsToPaths(ctx)
 	if ctx.Failed() {
@@ -3205,3 +3211,13 @@ var BoolDefault = proptools.BoolDefault
 var BoolPtr = proptools.BoolPtr
 var String = proptools.String
 var StringPtr = proptools.StringPtr
+
+// Collect modules' info for IDE info in android/njdeps.go.
+func (c *Module) IDEInfoNonJava(dpInfo *android.IdeInfoNonJava) {
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkSharedLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkStaticLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkRuntimeLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkWholeStaticLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkHeaderLibs...)
+	dpInfo.Paths = append(dpInfo.Paths, c.modulePaths...)
+}
