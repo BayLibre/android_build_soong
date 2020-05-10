@@ -1339,6 +1339,9 @@ type apexBundle struct {
 
 	// Struct holding the merged notice file paths in different formats
 	mergedNotices android.NoticeOutputs
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	modulePaths []string
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -1866,6 +1869,9 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 }
 
 func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Collect the module directory for IDE info in android/njdeps.go.
+	a.modulePaths = append(a.modulePaths, ctx.ModuleDir())
+
 	buildFlattenedAsDefault := ctx.Config().FlattenApex() && !ctx.Config().UnbundledBuild()
 	switch a.properties.ApexType {
 	case imageApex:
@@ -2348,4 +2354,10 @@ func overrideApexFactory() android.Module {
 	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	android.InitOverrideModule(m)
 	return m
+}
+
+// Collect modules' info for IDE info in android/njdeps.go.
+func (a *apexBundle) IDEInfoNonJava(dpInfo *android.IdeInfoNonJava) {
+	dpInfo.Deps = append(dpInfo.Deps, a.properties.Multilib.First.Binaries...)
+	dpInfo.Paths = append(dpInfo.Paths, a.modulePaths...)
 }
