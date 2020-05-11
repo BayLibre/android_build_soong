@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7ab51c6_2b893c79",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2020-05-11T06:32:17Z",
+      "side": 1,
+      "message": "ccdeps",
+      "range": {
+        "startLine": 514,
+        "startChar": 54,
+        "endLine": 514,
+        "endChar": 59
+      },
+      "revId": "f30d6d591b6d4e834274ce9017ba55efbe77ce45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
