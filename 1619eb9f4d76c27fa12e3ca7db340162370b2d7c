@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5a6b8ef_65791f6f",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-11T17:36:46Z",
+      "side": 1,
+      "message": "Since this is a bit of a fringe function I suggest moving the doc comment to the implementation to keep it out of the way in this central interface.\n\nOn the same note, can it be moved out of the context and into a utility file? Ideally I think this would be in bp.go together with generateBpContents so all the blueprint generation/checking code is in one place, but then it\u0027d have to move from sdk to android, which is arguably a bit out of scope for this CL.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 51
+      },
+      "revId": "1619eb9f4d76c27fa12e3ca7db340162370b2d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e890a185_ad3d9e2c",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-11T17:36:46Z",
+      "side": 1,
+      "message": "Can this have some unit tests, to check that a few cases where we expect errors really do generate them?",
+      "range": {
+        "startLine": 1468,
+        "startChar": 28,
+        "endLine": 1468,
+        "endChar": 50
+      },
+      "revId": "1619eb9f4d76c27fa12e3ca7db340162370b2d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9805104_b7371211",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-05-11T17:36:46Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "range": {
+        "startLine": 399,
+        "startChar": 20,
+        "endLine": 399,
+        "endChar": 53
+      },
+      "revId": "1619eb9f4d76c27fa12e3ca7db340162370b2d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
