@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53e8b9de_e5c97060",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-11T17:48:37Z",
+      "side": 1,
+      "message": "It has to be in android package as it needs access to the blueprint context in order to get the blueprint module factories that have been registered. Pulling it out of there would require some additional methods to be added to the context which would expose blueprint specific types elsewhere.\n\nIt could go into a helper method in android package but it would have to cast the context interface to the implementation in order to retrieve the module factories.",
+      "parentUuid": "f5a6b8ef_65791f6f",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 51
+      },
+      "revId": "1619eb9f4d76c27fa12e3ca7db340162370b2d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e890a185_ad3d9e2c",
         "filename": "android/module.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "75308e7b_7253f51e",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-11T17:48:37Z",
+      "side": 1,
+      "message": "It could but I don\u0027t want to do any more work on this without some feedback from Colin about whether he thinks this is a good idea and where it should go. At the moment this is just a proof of concept that shows that it can be done.",
+      "parentUuid": "e890a185_ad3d9e2c",
+      "range": {
+        "startLine": 1468,
+        "startChar": 28,
+        "endLine": 1468,
+        "endChar": 50
+      },
+      "revId": "1619eb9f4d76c27fa12e3ca7db340162370b2d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9805104_b7371211",
         "filename": "sdk/update.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-11T17:36:46Z",
       "side": 1,
       "message": "Why is this necessary?",
+      "range": {
+        "startLine": 399,
+        "startChar": 20,
+        "endLine": 399,
+        "endChar": 53
+      },
+      "revId": "1619eb9f4d76c27fa12e3ca7db340162370b2d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c71a28d_e3fa9ced",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-11T17:48:37Z",
+      "side": 1,
+      "message": "Because the code that populates the contents outputs a literal \\n rather than a newline character because it was needed when generating the bash command that generates the files. I suspect that it would be better to have the contents contain a newline character and have the code that generates the bash command replace that with a literal \\n but I didn\u0027t need to do that for this.",
+      "parentUuid": "e9805104_b7371211",
       "range": {
         "startLine": 399,
         "startChar": 20,
