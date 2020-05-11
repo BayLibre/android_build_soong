@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "71fecc52_2d074f31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-11T14:47:09Z",
+      "side": 1,
+      "message": "Ack. I thought we could just introduce a new dependency tag then. I found it a little bit difficult to understand these \u0027smart\u0027 dependency tags. Anyway, it\u0027s a flavor and I don\u0027t think this design is wrong. So, +2\u0027ing.",
+      "parentUuid": "f5a7baf2_1c927924",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "e075ab7d3950af87901f2695f758b49003354554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "930358ee_2c6fbc75",
         "filename": "java/sdk_library.go",
         "patchSetId": 2
