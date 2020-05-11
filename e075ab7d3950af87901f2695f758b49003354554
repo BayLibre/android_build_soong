@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "50ff827f_9a212e62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-11T16:04:22Z",
+      "side": 1,
+      "message": "Introducing a new dependency tag is essentially what I did but because the dependency tag was not used to determine how to handle the dependency then the last dependency that was processed won.\ni.e.\n\nWe had two dependencies (one for stubs source/api file and one for java library). Whenever the code saw a Dependency (java_library) then it assumed it was for java library and extracted the stubs jar path from it. Whenever the code saw an ApiStubsProvider (droidstubs) it assumed it was for the stubs source/api file and extracted the paths to those pieces from it. \n\nIt never used the dependency tag. Which is why when I did add new dependency tags to get the stubs source from one droidstubs invocation and the api file from a separate droidstubs invocation it broke that code.\n\nBasically, each time it saw a droidstubs it tried to extract both stubs source and api file from it. Depending on which droidstubs it was the information could be wrong, sometimes the stubs source would be provided and the api file missing and vice versa. Whichever dependency was processed last overrode the existing information.\n\nI could have just done a big switch on the different tags but it is easy to forget to wire the tag into the new switch and it can very quickly become unmanageable.",
+      "parentUuid": "71fecc52_2d074f31",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "e075ab7d3950af87901f2695f758b49003354554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "930358ee_2c6fbc75",
         "filename": "java/sdk_library.go",
         "patchSetId": 2
