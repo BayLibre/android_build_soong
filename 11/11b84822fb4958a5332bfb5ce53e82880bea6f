@@ -1,0 +1,8 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: satayev <satayev@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: satayev <satayev@google.com>
+Submitted-at: Mon, 11 May 2020 16:51:28 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1296631
+Project: platform/build/soong
+Branch: refs/heads/master
