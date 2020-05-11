@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "cf2eaac5_7c9c3a53",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-11T19:00:52Z",
+      "side": 1,
+      "message": "Seems fine in theory, I\u0027d prefer it to be outside of ModuleContext.  The bulk of the code seems like it should be in blueprint with the moduleFactories as an argument (possibly sharing with the existing unpacking in blueprint?).  You could then have a small wrapper in the android package that took a ModuleContext to extract the ModuleFactories and called the blueprint function, or just call the blueprint method directly.",
+      "parentUuid": "75308e7b_7253f51e",
+      "range": {
+        "startLine": 1468,
+        "startChar": 28,
+        "endLine": 1468,
+        "endChar": 50
+      },
+      "revId": "1619eb9f4d76c27fa12e3ca7db340162370b2d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9805104_b7371211",
         "filename": "sdk/update.go",
         "patchSetId": 3
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Because the code that populates the contents outputs a literal \\n rather than a newline character because it was needed when generating the bash command that generates the files. I suspect that it would be better to have the contents contain a newline character and have the code that generates the bash command replace that with a literal \\n but I didn\u0027t need to do that for this.",
       "parentUuid": "e9805104_b7371211",
+      "range": {
+        "startLine": 399,
+        "startChar": 20,
+        "endLine": 399,
+        "endChar": 53
+      },
+      "revId": "1619eb9f4d76c27fa12e3ca7db340162370b2d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab7abc2a_1f47b4f0",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-11T19:00:52Z",
+      "side": 1,
+      "message": "If you generated it with newlines proptools.ShellEscape might convert it to correct bash escaping for you.",
+      "parentUuid": "1c71a28d_e3fa9ced",
       "range": {
         "startLine": 399,
         "startChar": 20,
