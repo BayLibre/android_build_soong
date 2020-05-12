@@ -424,6 +424,24 @@
     },
     {
       "key": {
+        "uuid": "fcd5bad9_eca337d4",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T23:38:52Z",
+      "side": 1,
+      "message": "So you\u0027re gonna just silently ignore these number-based DPI variants? Shouldn\u0027t we fail and exit instead?",
+      "parentUuid": "3eac04e4_e36355ea",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58924a13_fcff7169",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -711,6 +729,24 @@
       "side": 1,
       "message": "I have added it to the body of `flag.Usage`.",
       "parentUuid": "acc79d09_e2558b2c",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2215b6be_60cd6e61",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T23:38:52Z",
+      "side": 1,
+      "message": "Ah, I see it how it actually handles this now. Thanks.",
+      "parentUuid": "21553b85_11b9aaf9",
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
