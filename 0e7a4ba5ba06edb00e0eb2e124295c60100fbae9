@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6897c2bc_fc717c6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2020-05-12T02:10:38Z",
+      "side": 1,
+      "message": "The file is not created on my environment, do you know the reason?",
+      "range": {
+        "startLine": 12,
+        "startChar": 24,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "0e7a4ba5ba06edb00e0eb2e124295c60100fbae9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
