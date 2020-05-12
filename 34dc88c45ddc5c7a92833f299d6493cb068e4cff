@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "756b9625_149aa0e1",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T22:49:26Z",
+      "side": 1,
+      "message": "One would have to read the whole code and/or look into a real .apks file to understand what kind of ToC this refers to and why its type is BuildApksResult. Something like, \"When bundletool builds an apk set, a BuildApksResult value is serialized and embedded as ToC\" would be very helpful.",
+      "parentUuid": "8c4609cd_b6dfc72e",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "546ccb77_b841eb23",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -349,6 +367,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "479b3d0a_51a0c08c",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T22:49:26Z",
+      "side": 1,
+      "message": "Nothing has changed? Shouldn\u0027t this give some more hints as to why it failed? e.g. \"Unsupported ScreenDensity - %v. Only DPI aliases are supported.\"",
+      "parentUuid": "69412d4d_5dd4e9ff",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -606,6 +642,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acc79d09_e2558b2c",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T22:49:26Z",
+      "side": 1,
+      "message": "I see you added one above, but don\u0027t you need to call it here too? The tool should exit if any of the conditions are met, AFAICT.",
+      "parentUuid": "b7d694c6_34ee18b6",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
