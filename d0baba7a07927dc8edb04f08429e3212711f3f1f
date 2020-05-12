@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "05c51a79_285c26ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-12T19:08:36Z",
+      "side": 1,
+      "message": "Ack. I have no intention of submitting both and would prefer to submit this.",
+      "parentUuid": "d2f10ce1_3ea22f2d",
+      "revId": "d0baba7a07927dc8edb04f08429e3212711f3f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1cac5e6_6209f37f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2

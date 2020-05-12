@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d1e652c_585a1b0b",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-12T19:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e4b690_af3552db",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 73
+      },
+      "revId": "f685e91a0baf5e7039b7e6aa4bded13f9ef9b19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91c5c201_1754163b",
         "filename": "android/visibility.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "f685e91a0baf5e7039b7e6aa4bded13f9ef9b19a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3ae795_d94319a7",
+        "filename": "android/visibility.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-12T19:08:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c5c201_1754163b",
+      "range": {
+        "startLine": 338,
+        "startChar": 19,
+        "endLine": 338,
+        "endChar": 29
+      },
+      "revId": "f685e91a0baf5e7039b7e6aa4bded13f9ef9b19a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
