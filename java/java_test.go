@@ -1247,6 +1247,20 @@ func TestJavaSdkLibrary_InvalidScopes(t *testing.T) {
 		`)
 }
 
+func TestJavaSdkLibrary_SdkVersionForStubs(t *testing.T) {
+	testJava(t, `
+		java_sdk_library {
+			name: "foo",
+			srcs: ["a.java", "b.java"],
+			api_packages: ["foo"],
+			system: {
+				enabled: true,
+				sdk_version_for_stubs: "module_current",
+			},
+		}
+		`)
+}
+
 var compilerFlagsTestCases = []struct {
 	in  string
 	out bool
