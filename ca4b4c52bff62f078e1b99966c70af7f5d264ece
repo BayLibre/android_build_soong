@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6defaa10_2c8e392c",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T04:42:27Z",
+      "side": 1,
+      "message": "You can make this \u0027if abi, ok :\u003d targetCpuAbi[s]; !ok {\u0027 and delete 100 and 101.",
+      "revId": "ca4b4c52bff62f078e1b99966c70af7f5d264ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5db152cb_f8692244",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T04:42:27Z",
+      "side": 1,
+      "message": "Where is the install location decided? I don\u0027t see any code handling installation.",
+      "revId": "ca4b4c52bff62f078e1b99966c70af7f5d264ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
