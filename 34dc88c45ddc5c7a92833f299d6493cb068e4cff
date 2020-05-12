@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "891be6f4_87665a09",
+        "filename": "cmd/extract_apks/bundle_proto/commands.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "478f6fc9_690a9b32",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66b759fb_95b82ec1",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "377ef1b2_6f3ca9d8",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66b759fb_95b82ec1",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "aad34ae6_a9e15145",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2de0c21c_e21db28d",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "376ea5e3_53131584",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2020-05-12T03:57:21Z",
       "side": 1,
       "message": "A brief comment about why the proto can be used as a ToC struct would be nice.",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c4609cd_b6dfc72e",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Can you elaborate?",
+      "parentUuid": "376ea5e3_53131584",
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "34222d27_6d3bccaa",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "546ccb77_b841eb23",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ef761f5_39037190",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4fa448f_0d91f9f7",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "I have renamed them, hopefully it will it clearer (at the expense of \u003e30 character names.",
+      "parentUuid": "6ef761f5_39037190",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "c61b9d13_8d8df38f",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "201afb46_9237d88a",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7286ae9d_bcd73bb8",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -135,6 +261,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7be31990_c5a2e20c",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "I will remove them before commit. I wanted to run it in the current form against some real APK sets to ensure the code does not miss something important.",
+      "parentUuid": "7286ae9d_bcd73bb8",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "ddc9379b_a4613624",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa2e780c_ba60d1e1",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ed4b810_b6b966a5",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -169,6 +331,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69412d4d_5dd4e9ff",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4ed4b810_b6b966a5",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "648e2867_fa2a4de3",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Rewrote it.",
+      "parentUuid": "58924a13_fcff7169",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdfed154_737af730",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -203,6 +401,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08404beb_a542f39c",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Added an option for that.",
+      "parentUuid": "cdfed154_737af730",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "6bc17e15_5061b715",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b8475a2_1e32ca80",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c996846f_7340421d",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -237,6 +471,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06564fd1_63ec6fb3",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c996846f_7340421d",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -263,6 +515,30 @@
     },
     {
       "key": {
+        "uuid": "30dee9bd_736539e8",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3b59bd2_b8130e38",
+      "range": {
+        "startLine": 327,
+        "startChar": 42,
+        "endLine": 327,
+        "endChar": 43
+      },
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19b13a01_81239247",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -280,6 +556,24 @@
     },
     {
       "key": {
+        "uuid": "a3564446_bd273aeb",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "The comment should then be kept in sync, so I have added the explanation how to see the usage :-)",
+      "parentUuid": "19b13a01_81239247",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "361cf2e4_d434aa59",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -294,6 +588,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d694c6_34ee18b6",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T22:02:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361cf2e4_d434aa59",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
