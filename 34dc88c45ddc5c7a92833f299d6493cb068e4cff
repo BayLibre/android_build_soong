@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "0539e6b5_c02fb308",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T23:27:04Z",
+      "side": 1,
+      "message": "Ah. Such things look so obvious when writing the code :-)",
+      "parentUuid": "756b9625_149aa0e1",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "546ccb77_b841eb23",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
@@ -385,6 +403,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eac04e4_e36355ea",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T23:27:04Z",
+      "side": 1,
+      "message": "Sorry, I have explained above (line 160) that these will be removed, and Ack\u0027ed as duplicate.",
+      "parentUuid": "479b3d0a_51a0c08c",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -660,6 +696,24 @@
       "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21553b85_11b9aaf9",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-12T23:27:04Z",
+      "side": 1,
+      "message": "I have added it to the body of `flag.Usage`.",
+      "parentUuid": "acc79d09_e2558b2c",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
