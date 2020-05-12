@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e71a3ff2_8bdd49d7",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T14:26:17Z",
+      "side": 1,
+      "message": "ARMEABI_V7A",
+      "range": {
+        "startLine": 91,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 23
+      },
+      "revId": "ca4b4c52bff62f078e1b99966c70af7f5d264ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3466ef_f333f0e5",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T14:26:17Z",
+      "side": 1,
+      "message": "ARM64_V8A",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "ca4b4c52bff62f078e1b99966c70af7f5d264ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6defaa10_2c8e392c",
         "filename": "java/app.go",
         "patchSetId": 5
