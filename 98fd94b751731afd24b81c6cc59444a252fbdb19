@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a90fa297_c9da8735",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-05-12T00:01:25Z",
+      "side": 1,
+      "message": "Can we make this rule optional based on whether `implicits` actually has any contents? (That should make it so that the java_test.go wouldn\u0027t be necessary)\n\nIt may be simpler to move it into the metalavaCmd function, so that you only need to pass the implicits list, and it\u0027ll only create it when non-empty.",
+      "revId": "98fd94b751731afd24b81c6cc59444a252fbdb19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
