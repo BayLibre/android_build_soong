@@ -163,6 +163,24 @@
       "revId": "ca4b4c52bff62f078e1b99966c70af7f5d264ece",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0509b91b_82bcb7b9",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T23:26:32Z",
+      "side": 1,
+      "message": "Ah, right. I always forget that. You still need to call ctx.InstallFile in Soong, though. It\u0027s practically a no-op atm since Make does it instead as you already know, but Soong-only builds in the future will need them.",
+      "parentUuid": "48dbef50_7a5f0f0d",
+      "revId": "ca4b4c52bff62f078e1b99966c70af7f5d264ece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

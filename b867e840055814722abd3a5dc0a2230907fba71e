@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0efd18e_0a6dfd37",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-12T23:26:32Z",
+      "side": 1,
+      "message": "Please put a blank line after this, where the embedded struct list ends. I believe it\u0027s the convention, at least within Soong.",
+      "revId": "b867e840055814722abd3a5dc0a2230907fba71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
