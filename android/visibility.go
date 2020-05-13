@@ -140,7 +140,7 @@ func (r packageRule) matches(m qualifiedModuleName) bool {
 }
 
 func (r packageRule) String() string {
-	return fmt.Sprintf("//%s", r.pkg) // :__pkg__ is the default, so skip it.
+	return fmt.Sprintf("//%s", r.pkg) // :__pkg__ is the default - leave it out.
 }
 
 // A subpackagesRule is a visibility rule that matches modules in a specific package (i.e.
@@ -480,6 +480,13 @@ func EffectiveVisibilityRules(ctx BaseModuleContext, module Module) []string {
 	qualified := qualifiedModuleName{dir, moduleName}
 
 	rule := effectiveVisibilityRules(ctx.Config(), qualified)
+
+	// Modules are implicitly visible to other modules in the same package,
+	// without checking the visibility rules. Here we need to add that visibility
+	// explicitly.
+	if rule != nil && !rule.matches(qualified) {
+		rule = append(rule, packageRule{dir})
+	}
 
 	return rule.Strings()
 }
