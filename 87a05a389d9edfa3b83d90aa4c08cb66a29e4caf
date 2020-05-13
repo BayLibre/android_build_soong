@@ -118,6 +118,30 @@
       "revId": "87a05a389d9edfa3b83d90aa4c08cb66a29e4caf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7871b991_78387241",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-13T14:38:12Z",
+      "side": 1,
+      "message": "Ah, I now understand where this came from. Thanks!",
+      "parentUuid": "d55d979e_6504d117",
+      "range": {
+        "startLine": 1148,
+        "startChar": 0,
+        "endLine": 1151,
+        "endChar": 5
+      },
+      "revId": "87a05a389d9edfa3b83d90aa4c08cb66a29e4caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
