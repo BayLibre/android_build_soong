@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1d5a299_45d11826",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-13T19:46:45Z",
+      "side": 1,
+      "message": "unintentional change?",
+      "range": {
+        "startLine": 262,
+        "startChar": 60,
+        "endLine": 262,
+        "endChar": 63
+      },
+      "revId": "ed176e4c64072c3a620feb81e7a56da7da1446c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
