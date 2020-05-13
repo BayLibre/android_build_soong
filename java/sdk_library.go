@@ -426,6 +426,8 @@ type sdkLibraryProperties struct {
 	// Properties related to api linting.
 	Api_lint struct {
 		// Enable api linting.
+		//
+		// Defaults to true.
 		Enabled *bool
 	}
 
@@ -942,7 +944,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 				module.latestRemovedApiFilegroupName(apiScope))
 			props.Check_api.Ignore_missing_latest_api = proptools.BoolPtr(true)
 
-			if proptools.Bool(module.sdkLibraryProperties.Api_lint.Enabled) {
+			if proptools.BoolDefault(module.sdkLibraryProperties.Api_lint.Enabled, true) {
 				// Enable api lint.
 				props.Check_api.Api_lint.Enabled = proptools.BoolPtr(true)
 				props.Check_api.Api_lint.New_since = latestApiFilegroupName
