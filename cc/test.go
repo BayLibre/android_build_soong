@@ -94,6 +94,10 @@ type TestBinaryProperties struct {
 	// Add parameterized mainline modules to auto generated test config. The options will be
 	// handled by TradeFed to download and install the specified modules on the device.
 	Test_mainline_modules []string
+
+	// Add DeviceFeatureModuleController to auto generated test config. The test will only
+	// be run if the defined require feature exist.
+	Test_require_feature *string
 }
 
 func init() {
@@ -370,6 +374,11 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		options = append(options, tradefed.Option{Name: "api-level-prop", Value: api_level_prop})
 		configs = append(configs, tradefed.Object{"module_controller", "com.android.tradefed.testtype.suite.module.MinApiLevelModuleController", options})
 	}
+    if test.Properties.Test_require_feature != nil {
+        var options []tradefed.Option
+        options = append(options, tradefed.Option{Name: "required-feature", Value: *test.Properties.Test_require_feature})
+        configs = append(configs, tradefed.Object{"module_controller", "com.android.tradefed.testtype.suite.module.DeviceFeatureModuleController", options})
+    }
 
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,
 		test.Properties.Test_config_template, test.Properties.Test_suites, configs, test.Properties.Auto_gen_config)
