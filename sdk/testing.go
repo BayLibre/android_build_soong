@@ -29,7 +29,7 @@ import (
 	"android/soong/java"
 )
 
-func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, android.Config) {
+func testSdkContext(module_dir, bp string, fs map[string][]byte) (*android.TestContext, android.Config) {
 	bp = bp + `
 		apex_key {
 			name: "myapex.key",
@@ -43,15 +43,19 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 		}
 	` + cc.GatherRequiredDepsForTest(android.Android, android.Windows)
 
+	if module_dir != "" {
+		module_dir += "/"
+	}
+
 	mockFS := map[string][]byte{
 		"build/make/target/product/security":         nil,
-		"apex_manifest.json":                         nil,
 		"system/sepolicy/apex/myapex-file_contexts":  nil,
 		"system/sepolicy/apex/myapex2-file_contexts": nil,
-		"myapex.avbpubkey":                           nil,
-		"myapex.pem":                                 nil,
-		"myapex.x509.pem":                            nil,
-		"myapex.pk8":                                 nil,
+		module_dir + "apex_manifest.json":            nil,
+		module_dir + "myapex.avbpubkey":              nil,
+		module_dir + "myapex.pem":                    nil,
+		module_dir + "myapex.pk8":                    nil,
+		module_dir + "myapex.x509.pem":               nil,
 	}
 
 	cc.GatherRequiredFilesForTest(mockFS)
@@ -59,8 +63,9 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 	for k, v := range fs {
 		mockFS[k] = v
 	}
+	mockFS[module_dir+"Android.bp"] = []byte(bp)
 
-	config := android.TestArchConfig(buildDir, nil, bp, mockFS)
+	config := android.TestArchConfig(buildDir, nil, "", mockFS)
 
 	// Add windows as a default disable OS to test behavior when some OS variants
 	// are disabled.
@@ -115,10 +120,10 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 	return ctx, config
 }
 
-func testSdkWithFs(t *testing.T, bp string, fs map[string][]byte) *testSdkResult {
+func testSdkWithFs(t *testing.T, module_dir, bp string, fs map[string][]byte) *testSdkResult {
 	t.Helper()
-	ctx, config := testSdkContext(bp, fs)
-	_, errs := ctx.ParseBlueprintsFiles(".")
+	ctx, config := testSdkContext(module_dir, bp, fs)
+	_, errs := ctx.ParseBlueprintsFiles(module_dir)
 	android.FailIfErrored(t, errs)
 	_, errs = ctx.PrepareBuildActions(config)
 	android.FailIfErrored(t, errs)
@@ -131,8 +136,8 @@ func testSdkWithFs(t *testing.T, bp string, fs map[string][]byte) *testSdkResult
 
 func testSdkError(t *testing.T, pattern, bp string) {
 	t.Helper()
-	ctx, config := testSdkContext(bp, nil)
-	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
+	ctx, config := testSdkContext("mymod", bp, nil)
+	_, errs := ctx.ParseFileList("mymod", []string{"mymod/Android.bp"})
 	if len(errs) > 0 {
 		android.FailIfNoMatchingErrors(t, pattern, errs)
 		return
@@ -314,7 +319,7 @@ func (r *testSdkResult) CheckSnapshot(name string, dir string, checkers ...snaps
 	}
 
 	// Process the generated bp file to make sure it is valid.
-	testSdkWithFs(r.t, snapshotBuildInfo.androidBpContents, fs)
+	testSdkWithFs(r.t, "", snapshotBuildInfo.androidBpContents, fs)
 }
 
 type snapshotBuildInfoChecker func(info *snapshotBuildInfo)

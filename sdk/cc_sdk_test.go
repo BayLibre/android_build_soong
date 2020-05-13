@@ -25,16 +25,16 @@ func testSdkWithCc(t *testing.T, bp string) *testSdkResult {
 	t.Helper()
 
 	fs := map[string][]byte{
-		"Test.cpp":                      nil,
-		"include/Test.h":                nil,
-		"include-android/AndroidTest.h": nil,
-		"include-host/HostTest.h":       nil,
-		"arm64/include/Arm64Test.h":     nil,
-		"libfoo.so":                     nil,
-		"aidl/foo/bar/Test.aidl":        nil,
-		"some/where/stubslib.map.txt":   nil,
+		"mymod/Test.cpp":                      nil,
+		"mymod/include/Test.h":                nil,
+		"mymod/include-android/AndroidTest.h": nil,
+		"mymod/include-host/HostTest.h":       nil,
+		"mymod/arm64/include/Arm64Test.h":     nil,
+		"mymod/libfoo.so":                     nil,
+		"mymod/aidl/foo/bar/Test.aidl":        nil,
+		"mymod/some/where/stubslib.map.txt":   nil,
 	}
-	return testSdkWithFs(t, bp, fs)
+	return testSdkWithFs(t, "mymod", bp, fs)
 }
 
 // Contains tests for SDK members provided by the cc package.
@@ -232,7 +232,7 @@ func TestSnapshotWithObject(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -270,8 +270,8 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/crtobj/android_arm64_armv8-a/crtobj.o -> arm64/lib/crtobj.o
-.intermediates/crtobj/android_arm_armv7-a-neon/crtobj.o -> arm/lib/crtobj.o
+.intermediates/mymod/crtobj/android_arm64_armv8-a/crtobj.o -> arm64/lib/crtobj.o
+.intermediates/mymod/crtobj/android_arm_armv7-a-neon/crtobj.o -> arm/lib/crtobj.o
 `),
 	)
 }
@@ -302,13 +302,13 @@ func TestSnapshotWithCcDuplicateHeaders(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-.intermediates/mynativelib1/android_arm64_armv8-a_shared/mynativelib1.so -> arm64/lib/mynativelib1.so
-.intermediates/mynativelib1/android_arm_armv7-a-neon_shared/mynativelib1.so -> arm/lib/mynativelib1.so
-.intermediates/mynativelib2/android_arm64_armv8-a_shared/mynativelib2.so -> arm64/lib/mynativelib2.so
-.intermediates/mynativelib2/android_arm_armv7-a-neon_shared/mynativelib2.so -> arm/lib/mynativelib2.so
+mymod/include/Test.h -> include/mymod/include/Test.h
+.intermediates/mymod/mynativelib1/android_arm64_armv8-a_shared/mynativelib1.so -> arm64/lib/mynativelib1.so
+.intermediates/mymod/mynativelib1/android_arm_armv7-a-neon_shared/mynativelib1.so -> arm/lib/mynativelib1.so
+.intermediates/mymod/mynativelib2/android_arm64_armv8-a_shared/mynativelib2.so -> arm64/lib/mynativelib2.so
+.intermediates/mymod/mynativelib2/android_arm_armv7-a-neon_shared/mynativelib2.so -> arm/lib/mynativelib2.so
 `),
 	)
 }
@@ -338,7 +338,7 @@ func TestSnapshotWithCcSharedLibraryCommonProperties(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -347,11 +347,11 @@ cc_prebuilt_library_shared {
     sdk_member_name: "mynativelib",
     installable: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
-            export_system_include_dirs: ["arm64/include/arm64/include"],
+            export_system_include_dirs: ["arm64/include/mymod/arm64/include"],
         },
         arm: {
             srcs: ["arm/lib/mynativelib.so"],
@@ -363,11 +363,11 @@ cc_prebuilt_library_shared {
     name: "mynativelib",
     prefer: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
-            export_system_include_dirs: ["arm64/include/arm64/include"],
+            export_system_include_dirs: ["arm64/include/mymod/arm64/include"],
         },
         arm: {
             srcs: ["arm/lib/mynativelib.so"],
@@ -381,10 +381,10 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-.intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
-arm64/include/Arm64Test.h -> arm64/include/arm64/include/Arm64Test.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so`),
+mymod/include/Test.h -> include/mymod/include/Test.h
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
+mymod/arm64/include/Arm64Test.h -> arm64/include/mymod/arm64/include/Arm64Test.h
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so`),
 	)
 }
 
@@ -405,7 +405,7 @@ func TestSnapshotWithCcBinary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mymodule_exports", "",
+	result.CheckSnapshot("mymodule_exports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -444,8 +444,8 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/mynativebinary/android_arm64_armv8-a/mynativebinary -> arm64/bin/mynativebinary
-.intermediates/mynativebinary/android_arm_armv7-a-neon/mynativebinary -> arm/bin/mynativebinary
+.intermediates/mymod/mynativebinary/android_arm64_armv8-a/mynativebinary -> arm64/bin/mynativebinary
+.intermediates/mymod/mynativebinary/android_arm_armv7-a-neon/mynativebinary -> arm/bin/mynativebinary
 `),
 	)
 }
@@ -484,7 +484,7 @@ func TestMultipleHostOsTypesSnapshotWithCcBinary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -550,9 +550,9 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/mynativebinary/linux_glibc_x86_64/mynativebinary -> linux_glibc/x86_64/bin/mynativebinary
-.intermediates/mynativebinary/linux_glibc_x86/mynativebinary -> linux_glibc/x86/bin/mynativebinary
-.intermediates/mynativebinary/windows_x86_64/mynativebinary.exe -> windows/x86_64/bin/mynativebinary.exe
+.intermediates/mymod/mynativebinary/linux_glibc_x86_64/mynativebinary -> linux_glibc/x86_64/bin/mynativebinary
+.intermediates/mymod/mynativebinary/linux_glibc_x86/mynativebinary -> linux_glibc/x86/bin/mynativebinary
+.intermediates/mymod/mynativebinary/windows_x86_64/mynativebinary.exe -> windows/x86_64/bin/mynativebinary.exe
 `),
 	)
 }
@@ -579,7 +579,7 @@ func TestSnapshotWithCcSharedLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -592,7 +592,7 @@ cc_prebuilt_library_shared {
     ],
     installable: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -613,7 +613,7 @@ cc_prebuilt_library_shared {
         "apex2",
     ],
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -632,15 +632,15 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-.intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
-.intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/Test.h -> arm64/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/Test.h -> arm/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+mymod/include/Test.h -> include/mymod/include/Test.h
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/Test.h -> arm64/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/Test.h -> arm/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BpTest.h
 `),
 	)
 }
@@ -705,7 +705,7 @@ func TestSnapshotWithCcSharedLibrarySharedLibs(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -816,12 +816,12 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so
-.intermediates/myothernativelib/android_arm64_armv8-a_shared/myothernativelib.so -> arm64/lib/myothernativelib.so
-.intermediates/myothernativelib/android_arm_armv7-a-neon_shared/myothernativelib.so -> arm/lib/myothernativelib.so
-.intermediates/mysystemnativelib/android_arm64_armv8-a_shared/mysystemnativelib.so -> arm64/lib/mysystemnativelib.so
-.intermediates/mysystemnativelib/android_arm_armv7-a-neon_shared/mysystemnativelib.so -> arm/lib/mysystemnativelib.so
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so
+.intermediates/mymod/myothernativelib/android_arm64_armv8-a_shared/myothernativelib.so -> arm64/lib/myothernativelib.so
+.intermediates/mymod/myothernativelib/android_arm_armv7-a-neon_shared/myothernativelib.so -> arm/lib/myothernativelib.so
+.intermediates/mymod/mysystemnativelib/android_arm64_armv8-a_shared/mysystemnativelib.so -> arm64/lib/mysystemnativelib.so
+.intermediates/mymod/mysystemnativelib/android_arm_armv7-a-neon_shared/mysystemnativelib.so -> arm/lib/mysystemnativelib.so
 `),
 	)
 }
@@ -855,7 +855,7 @@ func TestHostSnapshotWithCcSharedLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -867,7 +867,7 @@ cc_prebuilt_library_shared {
     installable: false,
     sdk_version: "minimum",
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.so"],
@@ -887,7 +887,7 @@ cc_prebuilt_library_shared {
     host_supported: true,
     sdk_version: "minimum",
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.so"],
@@ -908,15 +908,15 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-.intermediates/mynativelib/linux_glibc_x86_64_shared/mynativelib.so -> x86_64/lib/mynativelib.so
-.intermediates/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/Test.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/BnTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/BpTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
-.intermediates/mynativelib/linux_glibc_x86_shared/mynativelib.so -> x86/lib/mynativelib.so
-.intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/Test.h -> x86/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BnTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BpTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+mymod/include/Test.h -> include/mymod/include/Test.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_shared/mynativelib.so -> x86_64/lib/mynativelib.so
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/Test.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/BnTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/BpTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_shared/mynativelib.so -> x86/lib/mynativelib.so
+.intermediates/mymod/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/Test.h -> x86/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BnTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BpTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BpTest.h
 `),
 	)
 }
@@ -954,7 +954,7 @@ func TestMultipleHostOsTypesSnapshotWithCcSharedLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1010,9 +1010,9 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/mynativelib/linux_glibc_x86_64_shared/mynativelib.so -> linux_glibc/x86_64/lib/mynativelib.so
-.intermediates/mynativelib/linux_glibc_x86_shared/mynativelib.so -> linux_glibc/x86/lib/mynativelib.so
-.intermediates/mynativelib/windows_x86_64_shared/mynativelib.dll -> windows/x86_64/lib/mynativelib.dll
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_shared/mynativelib.so -> linux_glibc/x86_64/lib/mynativelib.so
+.intermediates/mymod/mynativelib/linux_glibc_x86_shared/mynativelib.so -> linux_glibc/x86/lib/mynativelib.so
+.intermediates/mymod/mynativelib/windows_x86_64_shared/mynativelib.dll -> windows/x86_64/lib/mynativelib.dll
 `),
 	)
 }
@@ -1038,7 +1038,7 @@ func TestSnapshotWithCcStaticLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1047,7 +1047,7 @@ cc_prebuilt_library_static {
     sdk_member_name: "mynativelib",
     installable: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.a"],
@@ -1064,7 +1064,7 @@ cc_prebuilt_library_static {
     name: "mynativelib",
     prefer: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.a"],
@@ -1083,15 +1083,15 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-.intermediates/mynativelib/android_arm64_armv8-a_static/mynativelib.a -> arm64/lib/mynativelib.a
-.intermediates/mynativelib/android_arm64_armv8-a_static/gen/aidl/aidl/foo/bar/Test.h -> arm64/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/android_arm64_armv8-a_static/gen/aidl/aidl/foo/bar/BnTest.h -> arm64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/android_arm64_armv8-a_static/gen/aidl/aidl/foo/bar/BpTest.h -> arm64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_static/mynativelib.a -> arm/lib/mynativelib.a
-.intermediates/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/Test.h -> arm/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/BnTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/BpTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+mymod/include/Test.h -> include/mymod/include/Test.h
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_static/mynativelib.a -> arm64/lib/mynativelib.a
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_static/gen/aidl/aidl/foo/bar/Test.h -> arm64/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_static/gen/aidl/aidl/foo/bar/BnTest.h -> arm64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_static/gen/aidl/aidl/foo/bar/BpTest.h -> arm64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_static/mynativelib.a -> arm/lib/mynativelib.a
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/Test.h -> arm/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/BnTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_static/gen/aidl/aidl/foo/bar/BpTest.h -> arm/include_gen/mynativelib/aidl/foo/bar/BpTest.h
 `),
 	)
 }
@@ -1124,7 +1124,7 @@ func TestHostSnapshotWithCcStaticLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1135,7 +1135,7 @@ cc_prebuilt_library_static {
     host_supported: true,
     installable: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.a"],
@@ -1154,7 +1154,7 @@ cc_prebuilt_library_static {
     device_supported: false,
     host_supported: true,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.a"],
@@ -1175,15 +1175,15 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-.intermediates/mynativelib/linux_glibc_x86_64_static/mynativelib.a -> x86_64/lib/mynativelib.a
-.intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/Test.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BnTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BpTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
-.intermediates/mynativelib/linux_glibc_x86_static/mynativelib.a -> x86/lib/mynativelib.a
-.intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/Test.h -> x86/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BnTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BpTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+mymod/include/Test.h -> include/mymod/include/Test.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_static/mynativelib.a -> x86_64/lib/mynativelib.a
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/Test.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BnTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BpTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_static/mynativelib.a -> x86/lib/mynativelib.a
+.intermediates/mymod/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/Test.h -> x86/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BnTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BpTest.h -> x86/include_gen/mynativelib/aidl/foo/bar/BpTest.h
 `),
 	)
 }
@@ -1205,7 +1205,7 @@ func TestSnapshotWithCcLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1214,7 +1214,7 @@ cc_prebuilt_library {
     sdk_member_name: "mynativelib",
     installable: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         arm64: {
             static: {
@@ -1239,7 +1239,7 @@ cc_prebuilt_library {
     name: "mynativelib",
     prefer: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         arm64: {
             static: {
@@ -1266,11 +1266,11 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-.intermediates/mynativelib/android_arm64_armv8-a_static/mynativelib.a -> arm64/lib/mynativelib.a
-.intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
-.intermediates/mynativelib/android_arm_armv7-a-neon_static/mynativelib.a -> arm/lib/mynativelib.a
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so`),
+mymod/include/Test.h -> include/mymod/include/Test.h
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_static/mynativelib.a -> arm64/lib/mynativelib.a
+.intermediates/mymod/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_static/mynativelib.a -> arm/lib/mynativelib.a
+.intermediates/mymod/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so`),
 	)
 }
 
@@ -1307,7 +1307,7 @@ func TestHostSnapshotWithMultiLib64(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1318,7 +1318,7 @@ cc_prebuilt_library_static {
     host_supported: true,
     installable: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.a"],
@@ -1333,7 +1333,7 @@ cc_prebuilt_library_static {
     device_supported: false,
     host_supported: true,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.a"],
@@ -1354,11 +1354,11 @@ module_exports_snapshot {
     },
 }`),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-.intermediates/mynativelib/linux_glibc_x86_64_static/mynativelib.a -> x86_64/lib/mynativelib.a
-.intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/Test.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/Test.h
-.intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BnTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BpTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
+mymod/include/Test.h -> include/mymod/include/Test.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_static/mynativelib.a -> x86_64/lib/mynativelib.a
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/Test.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/Test.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BnTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BnTest.h
+.intermediates/mymod/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BpTest.h -> x86_64/include_gen/mynativelib/aidl/foo/bar/BpTest.h
 `),
 	)
 }
@@ -1377,7 +1377,7 @@ func TestSnapshotWithCcHeadersLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1385,14 +1385,14 @@ cc_prebuilt_library_headers {
     name: "mysdk_mynativeheaders@current",
     sdk_member_name: "mynativeheaders",
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
 }
 
 cc_prebuilt_library_headers {
     name: "mynativeheaders",
     prefer: false,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
 }
 
 sdk_snapshot {
@@ -1401,7 +1401,7 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
+mymod/include/Test.h -> include/mymod/include/Test.h
 `),
 	)
 }
@@ -1427,7 +1427,7 @@ func TestHostSnapshotWithCcHeadersLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1437,7 +1437,7 @@ cc_prebuilt_library_headers {
     device_supported: false,
     host_supported: true,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
 }
 
 cc_prebuilt_library_headers {
@@ -1446,7 +1446,7 @@ cc_prebuilt_library_headers {
     device_supported: false,
     host_supported: true,
     stl: "none",
-    export_include_dirs: ["include/include"],
+    export_include_dirs: ["include/mymod/include"],
 }
 
 sdk_snapshot {
@@ -1457,7 +1457,7 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
+mymod/include/Test.h -> include/mymod/include/Test.h
 `),
 	)
 }
@@ -1489,7 +1489,7 @@ func TestDeviceAndHostSnapshotWithCcHeadersLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1498,13 +1498,13 @@ cc_prebuilt_library_headers {
     sdk_member_name: "mynativeheaders",
     host_supported: true,
     stl: "none",
-    export_system_include_dirs: ["include/include"],
+    export_system_include_dirs: ["include/mymod/include"],
     target: {
         android: {
-            export_include_dirs: ["include/include-android"],
+            export_include_dirs: ["include/mymod/include-android"],
         },
         linux_glibc: {
-            export_include_dirs: ["include/include-host"],
+            export_include_dirs: ["include/mymod/include-host"],
         },
     },
 }
@@ -1514,13 +1514,13 @@ cc_prebuilt_library_headers {
     prefer: false,
     host_supported: true,
     stl: "none",
-    export_system_include_dirs: ["include/include"],
+    export_system_include_dirs: ["include/mymod/include"],
     target: {
         android: {
-            export_include_dirs: ["include/include-android"],
+            export_include_dirs: ["include/mymod/include-android"],
         },
         linux_glibc: {
-            export_include_dirs: ["include/include-host"],
+            export_include_dirs: ["include/mymod/include-host"],
         },
     },
 }
@@ -1532,9 +1532,9 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-include/Test.h -> include/include/Test.h
-include-android/AndroidTest.h -> include/include-android/AndroidTest.h
-include-host/HostTest.h -> include/include-host/HostTest.h
+mymod/include/Test.h -> include/mymod/include/Test.h
+mymod/include-android/AndroidTest.h -> include/mymod/include-android/AndroidTest.h
+mymod/include-host/HostTest.h -> include/mymod/include-host/HostTest.h
 `),
 	)
 }
@@ -1565,7 +1565,7 @@ func TestSystemSharedLibPropagation(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1682,7 +1682,7 @@ sdk_snapshot {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1762,7 +1762,7 @@ func TestStubsLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1833,7 +1833,7 @@ func TestDeviceAndHostSnapshotWithStubsLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 

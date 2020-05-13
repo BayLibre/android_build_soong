@@ -22,18 +22,18 @@ func testSdkWithJava(t *testing.T, bp string) *testSdkResult {
 	t.Helper()
 
 	fs := map[string][]byte{
-		"Test.java":              nil,
-		"aidl/foo/bar/Test.aidl": nil,
+		"mymod/Test.java":              nil,
+		"mymod/aidl/foo/bar/Test.aidl": nil,
 
 		// For java_sdk_library
-		"api/current.txt":                                   nil,
-		"api/removed.txt":                                   nil,
-		"api/system-current.txt":                            nil,
-		"api/system-removed.txt":                            nil,
-		"api/test-current.txt":                              nil,
-		"api/test-removed.txt":                              nil,
-		"api/module-lib-current.txt":                        nil,
-		"api/module-lib-removed.txt":                        nil,
+		"mymod/api/current.txt":                             nil,
+		"mymod/api/removed.txt":                             nil,
+		"mymod/api/system-current.txt":                      nil,
+		"mymod/api/system-removed.txt":                      nil,
+		"mymod/api/test-current.txt":                        nil,
+		"mymod/api/test-removed.txt":                        nil,
+		"mymod/api/module-lib-current.txt":                  nil,
+		"mymod/api/module-lib-removed.txt":                  nil,
 		"build/soong/scripts/gen-java-current-api-files.sh": nil,
 	}
 
@@ -74,7 +74,7 @@ java_import {
 }
 ` + bp
 
-	return testSdkWithFs(t, bp, fs)
+	return testSdkWithFs(t, "mymod", bp, fs)
 }
 
 // Contains tests for SDK members provided by the java package.
@@ -178,7 +178,7 @@ func TestSnapshotWithJavaHeaderLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -201,8 +201,8 @@ sdk_snapshot {
 
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib/android_common/turbine-combined/myjavalib.jar -> java/myjavalib.jar
-aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
+.intermediates/mymod/myjavalib/android_common/turbine-combined/myjavalib.jar -> java/myjavalib.jar
+mymod/aidl/foo/bar/Test.aidl -> aidl/mymod/aidl/foo/bar/Test.aidl
 `),
 	)
 }
@@ -233,7 +233,7 @@ func TestHostSnapshotWithJavaHeaderLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -261,8 +261,8 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/myjavalib.jar
-aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
+.intermediates/mymod/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/myjavalib.jar
+mymod/aidl/foo/bar/Test.aidl -> aidl/mymod/aidl/foo/bar/Test.aidl
 `),
 	)
 }
@@ -288,7 +288,7 @@ func TestDeviceAndHostSnapshotWithJavaHeaderLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -327,8 +327,8 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib/android_common/turbine-combined/myjavalib.jar -> java/android/myjavalib.jar
-.intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/linux_glibc/myjavalib.jar
+.intermediates/mymod/myjavalib/android_common/turbine-combined/myjavalib.jar -> java/android/myjavalib.jar
+.intermediates/mymod/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/linux_glibc/myjavalib.jar
 `),
 	)
 }
@@ -353,7 +353,7 @@ func TestSnapshotWithJavaImplLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -376,8 +376,8 @@ module_exports_snapshot {
 
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib/android_common/javac/myjavalib.jar -> java/myjavalib.jar
-aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
+.intermediates/mymod/myjavalib/android_common/javac/myjavalib.jar -> java/myjavalib.jar
+mymod/aidl/foo/bar/Test.aidl -> aidl/mymod/aidl/foo/bar/Test.aidl
 `),
 	)
 }
@@ -408,7 +408,7 @@ func TestHostSnapshotWithJavaImplLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -436,8 +436,8 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/myjavalib.jar
-aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
+.intermediates/mymod/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/myjavalib.jar
+mymod/aidl/foo/bar/Test.aidl -> aidl/mymod/aidl/foo/bar/Test.aidl
 `),
 	)
 }
@@ -459,7 +459,7 @@ func TestSnapshotWithJavaTest(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -483,8 +483,8 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavatests/android_common/javac/myjavatests.jar -> java/myjavatests.jar
-.intermediates/myjavatests/android_common/myjavatests.config -> java/myjavatests-AndroidTest.xml
+.intermediates/mymod/myjavatests/android_common/javac/myjavatests.jar -> java/myjavatests.jar
+.intermediates/mymod/myjavatests/android_common/myjavatests.config -> java/myjavatests-AndroidTest.xml
 `),
 	)
 }
@@ -512,7 +512,7 @@ func TestHostSnapshotWithJavaTest(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -542,8 +542,8 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavatests/linux_glibc_common/javac/myjavatests.jar -> java/myjavatests.jar
-.intermediates/myjavatests/linux_glibc_common/myjavatests.config -> java/myjavatests-AndroidTest.xml
+.intermediates/mymod/myjavatests/linux_glibc_common/javac/myjavatests.jar -> java/myjavatests.jar
+.intermediates/mymod/myjavatests/linux_glibc_common/myjavatests.config -> java/myjavatests-AndroidTest.xml
 `),
 	)
 }
@@ -552,10 +552,10 @@ func testSdkWithDroidstubs(t *testing.T, bp string) *testSdkResult {
 	t.Helper()
 
 	fs := map[string][]byte{
-		"foo/bar/Foo.java":               nil,
-		"stubs-sources/foo/bar/Foo.java": nil,
+		"mymod/foo/bar/Foo.java":               nil,
+		"mymod/stubs-sources/foo/bar/Foo.java": nil,
 	}
-	return testSdkWithFs(t, bp, fs)
+	return testSdkWithFs(t, "mymod", bp, fs)
 }
 
 // Note: This test does not verify that a droidstubs can be referenced, either
@@ -606,7 +606,7 @@ func TestSnapshotWithDroidstubs(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -629,7 +629,7 @@ module_exports_snapshot {
 
 `),
 		checkAllCopyRules(""),
-		checkMergeZips(".intermediates/myexports/common_os/tmp/java/myjavaapistubs_stubs_sources.zip"),
+		checkMergeZips(".intermediates/mymod/myexports/common_os/tmp/java/myjavaapistubs_stubs_sources.zip"),
 	)
 }
 
@@ -655,7 +655,7 @@ func TestHostSnapshotWithDroidstubs(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -683,7 +683,7 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(""),
-		checkMergeZips(".intermediates/myexports/common_os/tmp/java/myjavaapistubs_stubs_sources.zip"),
+		checkMergeZips(".intermediates/mymod/myexports/common_os/tmp/java/myjavaapistubs_stubs_sources.zip"),
 	)
 }
 
@@ -715,7 +715,7 @@ func TestSnapshotWithJavaSystemModules(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -770,8 +770,8 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/exported-system-module/android_common/turbine-combined/exported-system-module.jar -> java/exported-system-module.jar
-.intermediates/system-module/android_common/turbine-combined/system-module.jar -> java/system-module.jar
+.intermediates/mymod/exported-system-module/android_common/turbine-combined/exported-system-module.jar -> java/exported-system-module.jar
+.intermediates/mymod/system-module/android_common/turbine-combined/system-module.jar -> java/system-module.jar
 `),
 	)
 }
@@ -805,7 +805,7 @@ func TestHostSnapshotWithJavaSystemModules(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -850,7 +850,7 @@ sdk_snapshot {
     java_system_modules: ["mysdk_my-system-modules@current"],
 }
 `),
-		checkAllCopyRules(".intermediates/system-module/linux_glibc_common/javac/system-module.jar -> java/system-module.jar"),
+		checkAllCopyRules(".intermediates/mymod/system-module/linux_glibc_common/javac/system-module.jar -> java/system-module.jar"),
 	)
 }
 
@@ -894,7 +894,7 @@ func TestDeviceAndHostSnapshotWithOsSpecificMembers(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("myexports", "",
+	result.CheckSnapshot("myexports", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -969,10 +969,10 @@ module_exports_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/hostjavalib/linux_glibc_common/javac/hostjavalib.jar -> java/hostjavalib.jar
-.intermediates/androidjavalib/android_common/turbine-combined/androidjavalib.jar -> java/androidjavalib.jar
-.intermediates/myjavalib/android_common/javac/myjavalib.jar -> java/android/myjavalib.jar
-.intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/linux_glibc/myjavalib.jar
+.intermediates/mymod/hostjavalib/linux_glibc_common/javac/hostjavalib.jar -> java/hostjavalib.jar
+.intermediates/mymod/androidjavalib/android_common/turbine-combined/androidjavalib.jar -> java/androidjavalib.jar
+.intermediates/mymod/myjavalib/android_common/javac/myjavalib.jar -> java/android/myjavalib.jar
+.intermediates/mymod/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/linux_glibc/myjavalib.jar
 `),
 	)
 }
@@ -994,7 +994,7 @@ func TestSnapshotWithJavaSdkLibrary(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1058,20 +1058,20 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
-.intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
-.intermediates/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.test/android_common/javac/myjavalib.stubs.test.jar -> sdk_library/test/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source.test/android_common/myjavalib.stubs.source.test_api.txt -> sdk_library/test/myjavalib.txt
-.intermediates/myjavalib.stubs.source.test/android_common/myjavalib.stubs.source.test_api.txt -> sdk_library/test/myjavalib-removed.txt
+.intermediates/mymod/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/mymod/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/mymod/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib-removed.txt
+.intermediates/mymod/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
+.intermediates/mymod/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
+.intermediates/mymod/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib-removed.txt
+.intermediates/mymod/myjavalib.stubs.test/android_common/javac/myjavalib.stubs.test.jar -> sdk_library/test/myjavalib-stubs.jar
+.intermediates/mymod/myjavalib.stubs.source.test/android_common/myjavalib.stubs.source.test_api.txt -> sdk_library/test/myjavalib.txt
+.intermediates/mymod/myjavalib.stubs.source.test/android_common/myjavalib.stubs.source.test_api.txt -> sdk_library/test/myjavalib-removed.txt
 `),
 		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/test/myjavalib_stub_sources.zip"),
+			".intermediates/mymod/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mymod/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
+			".intermediates/mymod/mysdk/common_os/tmp/sdk_library/test/myjavalib_stub_sources.zip"),
 	)
 }
 
@@ -1096,7 +1096,7 @@ func TestSnapshotWithJavaSdkLibrary_ApiSurfaces(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1146,16 +1146,16 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
-.intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
-.intermediates/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib-removed.txt
+.intermediates/mymod/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/mymod/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/mymod/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib-removed.txt
+.intermediates/mymod/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
+.intermediates/mymod/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
+.intermediates/mymod/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib-removed.txt
 `),
 		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
+			".intermediates/mymod/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mymod/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
 		),
 	)
 }
@@ -1184,7 +1184,7 @@ func TestSnapshotWithJavaSdkLibrary_ModuleLib(t *testing.T) {
 		}
 	`)
 
-	result.CheckSnapshot("mysdk", "",
+	result.CheckSnapshot("mysdk", "mymod",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1248,20 +1248,20 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
-.intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
-.intermediates/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib-removed.txt
-.intermediates/myjavalib.stubs.module_lib/android_common/javac/myjavalib.stubs.module_lib.jar -> sdk_library/module_lib/myjavalib-stubs.jar
-.intermediates/myjavalib.stubs.source.module_lib/android_common/myjavalib.stubs.source.module_lib_api.txt -> sdk_library/module_lib/myjavalib.txt
-.intermediates/myjavalib.stubs.source.module_lib/android_common/myjavalib.stubs.source.module_lib_api.txt -> sdk_library/module_lib/myjavalib-removed.txt
+.intermediates/mymod/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
+.intermediates/mymod/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
+.intermediates/mymod/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib-removed.txt
+.intermediates/mymod/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
+.intermediates/mymod/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
+.intermediates/mymod/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib-removed.txt
+.intermediates/mymod/myjavalib.stubs.module_lib/android_common/javac/myjavalib.stubs.module_lib.jar -> sdk_library/module_lib/myjavalib-stubs.jar
+.intermediates/mymod/myjavalib.stubs.source.module_lib/android_common/myjavalib.stubs.source.module_lib_api.txt -> sdk_library/module_lib/myjavalib.txt
+.intermediates/mymod/myjavalib.stubs.source.module_lib/android_common/myjavalib.stubs.source.module_lib_api.txt -> sdk_library/module_lib/myjavalib-removed.txt
 `),
 		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/module_lib/myjavalib_stub_sources.zip",
+			".intermediates/mymod/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mymod/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
+			".intermediates/mymod/mysdk/common_os/tmp/sdk_library/module_lib/myjavalib_stub_sources.zip",
 		),
 	)
 }

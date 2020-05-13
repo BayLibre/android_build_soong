@@ -142,7 +142,7 @@ func TestSnapshotVisibility(t *testing.T) {
 		}
 	`
 
-	result := testSdkWithFs(t, ``,
+	result := testSdkWithFs(t, "", ``,
 		map[string][]byte{
 			"package/Test.java":  nil,
 			"package/Android.bp": []byte(packageBp),
@@ -209,19 +209,16 @@ sdk_snapshot {
 `))
 }
 
-func TestSDkInstall(t *testing.T) {
+func TestSdkInstall(t *testing.T) {
 	sdk := `
 		sdk {
 			name: "mysdk",
 		}
 	`
-	result := testSdkWithFs(t, ``,
-		map[string][]byte{
-			"Android.bp": []byte(sdk),
-		})
+	result := testSdkWithFs(t, "mymod", sdk, nil)
 
-	result.CheckSnapshot("mysdk", "",
-		checkAllOtherCopyRules(`.intermediates/mysdk/common_os/mysdk-current.zip -> mysdk-current.zip`),
+	result.CheckSnapshot("mysdk", "mymod",
+		checkAllOtherCopyRules(`.intermediates/mymod/mysdk/common_os/mysdk-current.zip -> mysdk-current.zip`),
 	)
 }
 

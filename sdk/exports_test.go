@@ -36,7 +36,7 @@ func TestModuleExportsSnapshot(t *testing.T) {
 		}
 	`
 
-	result := testSdkWithFs(t, ``,
+	result := testSdkWithFs(t, "", ``,
 		map[string][]byte{
 			"package/Test.java":  nil,
 			"package/Android.bp": []byte(packageBp),
