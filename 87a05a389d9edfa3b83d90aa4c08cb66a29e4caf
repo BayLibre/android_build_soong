@@ -70,6 +70,30 @@
       "revId": "87a05a389d9edfa3b83d90aa4c08cb66a29e4caf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1140950c_82258abd",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-13T14:15:05Z",
+      "side": 1,
+      "message": "java_sdk_library doesn\u0027t contribute to any of the *_current API surfaces. So I wonder how the circular dependency could be formed.",
+      "parentUuid": "556b29d9_c3955366",
+      "range": {
+        "startLine": 1148,
+        "startChar": 0,
+        "endLine": 1151,
+        "endChar": 5
+      },
+      "revId": "87a05a389d9edfa3b83d90aa4c08cb66a29e4caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
