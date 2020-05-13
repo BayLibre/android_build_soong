@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f326243f_637bfd97",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-13T11:06:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be sdk_version_for_stubs ?",
+      "range": {
+        "startLine": 1167,
+        "startChar": 8,
+        "endLine": 1167,
+        "endChar": 38
+      },
+      "revId": "42c1346de0021eaf06a1b360772615c5dbc11642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
