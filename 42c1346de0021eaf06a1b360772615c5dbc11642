@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f27867e5_72e5eee9",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-13T11:57:26Z",
+      "side": 1,
+      "message": "I think it\u0027d be nicer to have just sdk_version here actually. Inside the public: {} scope it can\u0027t really refer to anything other than the stubs, I think sdk_version_for_stubs is unnecessarily bloated",
+      "range": {
+        "startLine": 1149,
+        "startChar": 18,
+        "endLine": 1150,
+        "endChar": 44
+      },
+      "revId": "42c1346de0021eaf06a1b360772615c5dbc11642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f326243f_637bfd97",
         "filename": "sdk/java_sdk_test.go",
         "patchSetId": 2
