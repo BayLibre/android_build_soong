@@ -22,6 +22,30 @@
       "revId": "8ac0a553fef50859617a83db936cf895245fa66a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c777133_6d481d34",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-13T23:49:16Z",
+      "side": 1,
+      "message": "Given that naming_scheme is intended to be removed soon (hopefully) having a completely separate test makes that easier to do.",
+      "parentUuid": "2bb9a47b_14394771",
+      "range": {
+        "startLine": 1390,
+        "startChar": 36,
+        "endLine": 1390,
+        "endChar": 48
+      },
+      "revId": "8ac0a553fef50859617a83db936cf895245fa66a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
