@@ -22,6 +22,30 @@
       "revId": "7118a88c7105b4f8f885dfa913bca718a78f6a46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cccd082_92942341",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-13T19:44:34Z",
+      "side": 0,
+      "message": "It is encapsulated in the module.prebuilt.Prefer() value. If you look at line 1406 you can see that it forces the java_sdk_library_import to set prefer:true (ForcePrefe()) if mctx.Config().UnbundledBuildUsePrebuiltSdks() is true. The call to Prefer() here will pick up that value (or use the one specified in the java_sdk_library_import instead).",
+      "parentUuid": "5d8335ec_6b78dfc2",
+      "range": {
+        "startLine": 1455,
+        "startChar": 18,
+        "endLine": 1455,
+        "endChar": 47
+      },
+      "revId": "7118a88c7105b4f8f885dfa913bca718a78f6a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
