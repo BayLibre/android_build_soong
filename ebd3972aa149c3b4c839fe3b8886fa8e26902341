@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12861abd_9b7728be",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-13T21:30:53Z",
+      "side": 1,
+      "message": "Please add a TODO to call ctx.InstallFile",
+      "revId": "ebd3972aa149c3b4c839fe3b8886fa8e26902341",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
