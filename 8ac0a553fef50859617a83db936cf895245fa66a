@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bb9a47b_14394771",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1390,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-13T17:13:16Z",
+      "side": 1,
+      "message": "Tempting to just add a naming scheme to one of the above test cases to avoid the boilerplate/duplication.",
+      "range": {
+        "startLine": 1390,
+        "startChar": 36,
+        "endLine": 1390,
+        "endChar": 48
+      },
+      "revId": "8ac0a553fef50859617a83db936cf895245fa66a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
