@@ -46,6 +46,30 @@
       "revId": "42c1346de0021eaf06a1b360772615c5dbc11642",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee132b93_ccf25e17",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-13T11:49:46Z",
+      "side": 1,
+      "message": "This was created first and in this case there is only one place that it can be used which is on the stubs, hence it is not specific. In the case of java_sdk_library an sdk_version is needed for three different purposes, compiling the stubs library, generating the stubs source and generating the API txt file. The sdk_version_for_stubs only affects the first, the other two must use the same sdk_version as the implementation library. Hence why that property is a little more specific.\n\nThere is unfortunately a lot of duplication between source modules and prebuilt modules in Soong. It would be good to separate out the parts that are common so they can be reused but that is a big job.",
+      "parentUuid": "51942795_69d54507",
+      "range": {
+        "startLine": 1167,
+        "startChar": 8,
+        "endLine": 1167,
+        "endChar": 38
+      },
+      "revId": "42c1346de0021eaf06a1b360772615c5dbc11642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
