@@ -22,6 +22,30 @@
       "revId": "87a05a389d9edfa3b83d90aa4c08cb66a29e4caf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11f3773b_2bd34bb7",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-13T14:03:10Z",
+      "side": 1,
+      "message": "Anton can probably answer this best. AIUI we have modules that contribute to the current/system_current (for legacy reasons) but do not contribute to the module_current.",
+      "parentUuid": "d5b4db54_f4956cc7",
+      "range": {
+        "startLine": 1148,
+        "startChar": 0,
+        "endLine": 1151,
+        "endChar": 5
+      },
+      "revId": "87a05a389d9edfa3b83d90aa4c08cb66a29e4caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
