@@ -442,6 +442,24 @@
     },
     {
       "key": {
+        "uuid": "340c1703_170ab9fa",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-13T21:25:13Z",
+      "side": 1,
+      "message": "I am changing all panic\u0027s of this kind to specific fatal errors.",
+      "parentUuid": "fcd5bad9_eca337d4",
+      "revId": "34dc88c45ddc5c7a92833f299d6493cb068e4cff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58924a13_fcff7169",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 2
