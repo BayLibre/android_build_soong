@@ -94,6 +94,30 @@
       "revId": "87a05a389d9edfa3b83d90aa4c08cb66a29e4caf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55d979e_6504d117",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-13T14:22:44Z",
+      "side": 1,
+      "message": "we\u0027re converting the mainline modules to java_sdk_library and removing the manually-added boilerplate:) that\u0027s when we\u0027ll start hitting it",
+      "parentUuid": "1140950c_82258abd",
+      "range": {
+        "startLine": 1148,
+        "startChar": 0,
+        "endLine": 1151,
+        "endChar": 5
+      },
+      "revId": "87a05a389d9edfa3b83d90aa4c08cb66a29e4caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
