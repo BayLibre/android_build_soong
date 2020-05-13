@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d8335ec_6b78dfc2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-13T17:14:46Z",
+      "side": 0,
+      "message": "was this an abandoned design idea or does it need to make a return at some point ?",
+      "range": {
+        "startLine": 1455,
+        "startChar": 18,
+        "endLine": 1455,
+        "endChar": 47
+      },
+      "revId": "7118a88c7105b4f8f885dfa913bca718a78f6a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
