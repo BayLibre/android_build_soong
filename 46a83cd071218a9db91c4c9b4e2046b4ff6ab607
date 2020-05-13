@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "63a404e1_c7e59840",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-13T00:51:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c23a6a3d_f23bb0a1",
+      "range": {
+        "startLine": 14,
+        "startChar": 52,
+        "endLine": 15,
+        "endChar": 61
+      },
+      "revId": "46a83cd071218a9db91c4c9b4e2046b4ff6ab607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff01b7a7_95073b70",
         "filename": "java/app.go",
         "patchSetId": 4
