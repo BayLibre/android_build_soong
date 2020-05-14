@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84e1e5e2_4c0ee348",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1754,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2020-05-14T02:53:21Z",
+      "side": 1,
+      "message": "The filegroup might not be a dependency.\ne.g. The opt-telephony-common-srcs is a filegroup in frameworks/opt/telephony/Android.bp but no a dependency of telephony-common.\n\nAlso, the sources of the file group do exist in the srcs attribute of telephony-common.",
+      "range": {
+        "startLine": 1754,
+        "startChar": 3,
+        "endLine": 1754,
+        "endChar": 41
+      },
+      "revId": "6afbe4be52d873796d47cf3daea6b6421890fbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f1d271_38c3c8dc",
+        "filename": "java/jdeps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2020-05-14T02:53:21Z",
+      "side": 1,
+      "message": "Some modules still have no path attribute, such as core-all. Would it be solved in this CL?",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 14
+      },
+      "revId": "6afbe4be52d873796d47cf3daea6b6421890fbf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
