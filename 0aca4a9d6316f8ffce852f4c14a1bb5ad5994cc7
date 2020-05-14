@@ -46,6 +46,30 @@
       "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b23c56da_4ee6fa54",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T03:53:56Z",
+      "side": 1,
+      "message": "We use android_app to represent apk modules as you can see above.",
+      "parentUuid": "f3a10bcb_0cfb27e8",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
