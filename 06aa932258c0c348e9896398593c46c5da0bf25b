@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "2f3c6ce1_b8d8524b",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-14T19:55:43Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "98befc0c_45c71d45",
+      "range": {
+        "startLine": 29,
+        "startChar": 18,
+        "endLine": 29,
+        "endChar": 40
+      },
+      "revId": "06aa932258c0c348e9896398593c46c5da0bf25b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c89f5359_279b43e2",
         "filename": "rust/bindgen.go",
         "patchSetId": 2

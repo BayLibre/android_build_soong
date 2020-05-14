@@ -16,6 +16,24 @@
       "revId": "381de146017ce3dddc5345becab3dc76aac20d51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6824d6c4_ad312215",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-05-14T19:55:43Z",
+      "side": 1,
+      "message": "Yup! Thanks for the heads up.",
+      "parentUuid": "71e5abf7_8e24635f",
+      "revId": "381de146017ce3dddc5345becab3dc76aac20d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
