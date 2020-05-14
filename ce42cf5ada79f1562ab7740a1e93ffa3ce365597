@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46a8fa73_66b8c34d",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T22:06:23Z",
+      "side": 1,
+      "message": "Please move this below, right above selectApks.",
+      "revId": "ce42cf5ada79f1562ab7740a1e93ffa3ce365597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
