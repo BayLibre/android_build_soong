@@ -94,6 +94,30 @@
       "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8949c5c4_19f48f7f",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T04:07:30Z",
+      "side": 1,
+      "message": "What I\u0027m saying (and what I believe Colin has meant) is we use android_app instead of apk in all our module type names.\n\nAlso note that there\u0027s no point in using the original file type name, \u0027APK set\u0027, here. We\u0027ll define apex_set separately, and it\u0027ll ingest APK set files too. Making this android_app_set will make it less confusing.",
+      "parentUuid": "6ae9b5a6_a6e25cc2",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
