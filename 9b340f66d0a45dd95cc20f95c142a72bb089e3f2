@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf7d9418_cca67fb8",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T04:02:56Z",
+      "side": 1,
+      "message": "This method is fragile. There\u0027s no guarantee that the master module is named \u0027base-master\u0027.\nhttps://github.com/google/bundletool/blob/master/src/main/java/com/android/tools/build/bundletool/io/ApkPathManager.java#L63\n\nAlso, apexes and standalone apks must be renamed to \u003ctargetConfig.stem\u003e.(apex|apk), without a suffix.\n\nI think the best possible option is to make this func accept apk descriptions instead of apk paths (this is required for apex support anyway), find the master using is_master_split flag, and find the suffix using \u0027-\u0027 separator.\n\nIf it\u0027s not doable due to the time constraint, please add a note or TODO comment to warn about this.",
+      "revId": "9b340f66d0a45dd95cc20f95c142a72bb089e3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
