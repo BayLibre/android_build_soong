@@ -70,6 +70,30 @@
       "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ae9b5a6_a6e25cc2",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-14T04:02:30Z",
+      "side": 1,
+      "message": "There is no notion of \"app set\". There is a notion of APK set.",
+      "parentUuid": "b23c56da_4ee6fa54",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
