@@ -22,6 +22,30 @@
       "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a10bcb_0cfb27e8",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-14T03:17:09Z",
+      "side": 1,
+      "message": "I am guessing you mean \"android_apk_set\"?",
+      "parentUuid": "cc170701_dbf1311f",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
