@@ -118,6 +118,30 @@
       "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "373a4390_264f06b0",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-14T16:39:24Z",
+      "side": 1,
+      "message": "OK, once again I am at odds with the rest of the team wrt naming.",
+      "parentUuid": "8949c5c4_19f48f7f",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
