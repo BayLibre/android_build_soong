@@ -17,9 +17,9 @@
 package apex
 
 import (
-	"github.com/google/blueprint"
-
 	"android/soong/android"
+
+	"github.com/google/blueprint"
 )
 
 func init() {
@@ -27,20 +27,42 @@ func init() {
 }
 
 type apexDepsInfoSingleton struct {
-	// Output file with all flatlists from updatable modules' deps-info combined
-	updatableFlatListsPath android.OutputPath
+	allowedApexDepsInfoCheckResult android.OutputPath
 }
 
 func apexDepsInfoSingletonFactory() android.Singleton {
 	return &apexDepsInfoSingleton{}
 }
 
-var combineFilesRule = pctx.AndroidStaticRule("combineFilesRule",
-	blueprint.RuleParams{
+var (
+	mergeApexDepsInfoFilesRule = pctx.AndroidStaticRule("mergeApexDepsInfoFilesRule", blueprint.RuleParams{
 		Command:        "cat $out.rsp | xargs cat > $out",
 		Rspfile:        "$out.rsp",
 		RspfileContent: "$in",
-	},
+	})
+
+	filterOutExternalApexDepsRule = pctx.AndroidStaticRule("filterOutExternalApexDepsRule", blueprint.RuleParams{
+		Command: "cat ${in} | grep -v '(external)' > ${out}",
+	})
+
+	diffAllowedApexDepsInfoRule = pctx.AndroidStaticRule("diffAllowedApexDepsInfoRule", blueprint.RuleParams{
+		// Diff two given lists while ignoring comments in the allowed deps file
+		Description: "Diff ${allowed_flatlists} and ${merged_flatlists}",
+		Command: `
+			if grep -v '^#' ${allowed_flatlists} | diff -B ${merged_flatlists} -; then
+			   touch ${out};
+			else
+				echo -e "\n******************************";
+				echo "ERROR: go/apex-allowed-deps-error";
+				echo "******************************";
+				echo "Detected changes to allowed dependencies in updatable modules.";
+				echo "To fix and update build/soong/apex/allowed_deps.txt, please run:";
+				echo "$$ (croot && build/soong/scripts/update-apex-allowed-deps.sh)";
+				echo "Members of mainline-modularization@google.com will review the changes.";
+				echo -e "******************************\n";
+				exit 1;
+			fi;`,
+	}, "allowed_flatlists", "merged_flatlists")
 )
 
 func (s *apexDepsInfoSingleton) GenerateBuildActions(ctx android.SingletonContext) {
@@ -55,11 +77,37 @@ func (s *apexDepsInfoSingleton) GenerateBuildActions(ctx android.SingletonContex
 		}
 	})
 
-	s.updatableFlatListsPath = android.PathForOutput(ctx, "apex", "depsinfo", "updatable-flatlists.txt")
+	// Merge all individual flatlists of updatable modules into a single output file
+	updatableFlatListsPath := android.PathForOutput(ctx, "apex", "depsinfo", "updatable-flatlists.txt")
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        combineFilesRule,
-		Description: "Generate " + s.updatableFlatListsPath.String(),
-		Inputs:      updatableFlatLists,
-		Output:      s.updatableFlatListsPath,
+		Rule:   mergeApexDepsInfoFilesRule,
+		Inputs: updatableFlatLists,
+		Output: updatableFlatListsPath,
 	})
+
+	// Build a filtered version of updatable flatlists without external dependencies
+	filteredFlatLists := android.PathForOutput(ctx, "apex", "depsinfo", "filtered-updatable-flatlists.txt")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   filterOutExternalApexDepsRule,
+		Input:  updatableFlatListsPath,
+		Output: filteredFlatLists,
+	})
+
+	// Check filtered version against allowed deps
+	allowedDeps := android.ExistentPathForSource(ctx, "build/soong/apex/allowed_deps.txt").Path()
+	s.allowedApexDepsInfoCheckResult = android.PathForOutput(ctx, filteredFlatLists.Rel()+".check")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   diffAllowedApexDepsInfoRule,
+		Input:  filteredFlatLists,
+		Output: s.allowedApexDepsInfoCheckResult,
+		Args: map[string]string{
+			"allowed_flatlists": allowedDeps.String(),
+			"merged_flatlists":  filteredFlatLists.String(),
+		},
+	})
+}
+
+func (s *apexDepsInfoSingleton) MakeVars(ctx android.MakeVarsContext) {
+	// Export check result to Make. The path is added to droidcore.
+	ctx.Strict("APEX_ALLOWED_DEPS_CHECK", s.allowedApexDepsInfoCheckResult.String())
 }
