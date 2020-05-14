@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc170701_dbf1311f",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-14T02:45:22Z",
+      "side": 1,
+      "message": "Is there a name in Bazel we should match?  If not, maybe \"android_app_set\" for consistency?",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "0aca4a9d6316f8ffce852f4c14a1bb5ad5994cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
