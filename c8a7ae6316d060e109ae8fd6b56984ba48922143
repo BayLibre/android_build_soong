@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b69a9057_edde1d73",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T22:22:22Z",
+      "side": 1,
+      "message": "AndroidAppSetProperties",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "c8a7ae6316d060e109ae8fd6b56984ba48922143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d6dc62_e1a43908",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T22:22:22Z",
+      "side": 1,
+      "message": "apps",
+      "range": {
+        "startLine": 68,
+        "startChar": 72,
+        "endLine": 68,
+        "endChar": 80
+      },
+      "revId": "c8a7ae6316d060e109ae8fd6b56984ba48922143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58a61016_9c9f5b36",
+        "filename": "java/app.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T22:22:22Z",
+      "side": 1,
+      "message": "apexes will be handled in a different module, and so you can assume it always ends with .apk and allow it to fail if it isn\u0027t the case.",
+      "revId": "c8a7ae6316d060e109ae8fd6b56984ba48922143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd3d970_6589b2d4",
+        "filename": "java/app_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T22:22:22Z",
+      "side": 1,
+      "message": "Please check the indentation, tabs vs spaces.",
+      "revId": "c8a7ae6316d060e109ae8fd6b56984ba48922143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5efef1_365d1335",
+        "filename": "java/app_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-14T22:22:22Z",
+      "side": 1,
+      "message": "Check the rule parameters, sdk_version, screen-densities, abis, etc.?\n\nRefer to TestAndroidAppImport_DpiVariants to see how you change the device DPI settings before running tests.",
+      "revId": "c8a7ae6316d060e109ae8fd6b56984ba48922143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
