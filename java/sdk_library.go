@@ -578,6 +578,11 @@ type SdkLibrary struct {
 var _ Dependency = (*SdkLibrary)(nil)
 var _ SdkLibraryDependency = (*SdkLibrary)(nil)
 
+// Get the implementation library.
+func (module *SdkLibrary) ImplLibrary() *Library {
+	return &module.Library
+}
+
 func (module *SdkLibrary) generateTestAndSystemScopesByDefault() bool {
 	return module.sdkLibraryProperties.Generate_system_and_test_apis
 }
