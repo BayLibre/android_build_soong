@@ -548,6 +548,9 @@ type AARImport struct {
 	manifest              android.WritablePath
 
 	exportedStaticPackages android.Paths
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 func (a *AARImport) sdkVersion() sdkSpec {
@@ -647,6 +650,9 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		aar = android.PathForModuleOut(ctx, "jetifier", aarName)
 		TransformJetifier(ctx, aar.(android.WritablePath), inputFile)
 	}
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	a.modulePaths = append(a.modulePaths, ctx.ModuleDir())
 
 	extractedAARDir := android.PathForModuleOut(ctx, "aar")
 	a.classpathFile = extractedAARDir.Join(ctx, "classes.jar")
@@ -756,4 +762,12 @@ func AARImportFactory() android.Module {
 	android.InitPrebuiltModule(module, &module.properties.Aars)
 	InitJavaModule(module, android.DeviceSupported)
 	return module
+}
+
+// Collect module info for IDE info in java/jdeps.go.
+func (a *AARImport) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Deps = append(dpInfo.Deps, a.properties.Libs...)
+	dpInfo.Deps = append(dpInfo.Deps, a.properties.Static_libs...)
+	dpInfo.Paths = append(dpInfo.Paths, a.modulePaths...)
+	dpInfo.Aars = append(dpInfo.Aars, a.properties.Aars...)
 }
