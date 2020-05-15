@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dda5cea_e3477e4a",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-15T17:23:29Z",
+      "side": 1,
+      "message": "Please comment that it maps the name to its sequence number.",
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecaab95d_2ad27623",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-15T17:23:29Z",
+      "side": 1,
+      "message": "IMHO the main feature is that a single entry is extracted from Zip rather than it is uncompressed, something like --extract-one would be more appropriate.",
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e53ce041_7decd9dd",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-15T17:23:29Z",
+      "side": 1,
+      "message": "Please add --output-uncompressed",
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe3911ad_9458658d",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-15T17:23:29Z",
+      "side": 1,
+      "message": "This way it will fail it --output-uncompressed is not set?",
+      "range": {
+        "startLine": 495,
+        "startChar": 99,
+        "endLine": 495,
+        "endChar": 117
+      },
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee4ad62b_8f89e693",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-05-15T17:23:29Z",
+      "side": 1,
+      "message": "Optional: you can create another Zip2ZipWriter implementation and pass it to writeApks",
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
