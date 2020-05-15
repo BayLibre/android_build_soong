@@ -22,6 +22,30 @@
       "revId": "d5f32de1f1709c287d1cf555b411e407ead05866",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d756fa35_8a87a4e2",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-15T18:02:26Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "e9ba1f56_44a03e0f",
+      "range": {
+        "startLine": 490,
+        "startChar": 12,
+        "endLine": 490,
+        "endChar": 17
+      },
+      "revId": "d5f32de1f1709c287d1cf555b411e407ead05866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
