@@ -344,7 +344,9 @@ type CompilerDeviceProperties struct {
 	Stem *string
 
 	UncompressDex bool `blueprint:"mutated"`
-	IsSDKLibrary  bool `blueprint:"mutated"`
+
+	// True if the library is the implementation of a java_sdk_library.
+	IsSDKLibrary bool `blueprint:"mutated"`
 }
 
 func (me *CompilerDeviceProperties) EffectiveOptimizeEnabled() bool {
@@ -357,6 +359,12 @@ type Module struct {
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 	android.SdkBase
+
+	// State related to this being used as a component of a java_sdk_library.
+	//
+	// This is declared here so it can be used in the Module.collectDeps() method
+	// but it is only actually needed for and so only initialized by Library.
+	EmbeddableSdkLibraryComponent
 
 	properties       CompilerProperties
 	protoProperties  android.ProtoProperties
@@ -472,11 +480,6 @@ type Dependency interface {
 	SrcJarArgs() ([]string, android.Paths)
 	BaseModuleName() string
 	JacocoReportClassesFile() android.Path
-}
-
-type SdkLibraryDependency interface {
-	SdkHeaderJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths
-	SdkImplementationJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths
 }
 
 type xref interface {
@@ -906,6 +909,12 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 		}
 	}
 
+	// If this is a component library (stubs, etc.) for a java_sdk_library then
+	// add the name of that java_sdk_library to the exported sdk libs to make sure
+	// that, if necessary, a <uses-library> element for that java_sdk_library is
+	// added to the Android manifest.
+	j.exportedSdkLibs = append(j.exportedSdkLibs, j.OptionalImplicitSdkLibrary()...)
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -925,7 +934,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			case libTag:
 				deps.classpath = append(deps.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
 				// names of sdk libs that are directly depended are exported
-				j.exportedSdkLibs = append(j.exportedSdkLibs, otherName)
+				j.exportedSdkLibs = append(j.exportedSdkLibs, dep.OptionalImplicitSdkLibrary()...)
 			case staticLibTag:
 				ctx.ModuleErrorf("dependency on java_sdk_library %q can only be in libs", otherName)
 			}
@@ -1979,6 +1988,8 @@ func LibraryFactory() android.Module {
 		&module.Module.protoProperties,
 		&module.libraryProperties)
 
+	module.initSdkLibraryComponent(&module.ModuleBase)
+
 	android.InitApexModule(module)
 	android.InitSdkAwareModule(module)
 	InitJavaModule(module, android.HostAndDeviceSupported)
@@ -2387,6 +2398,9 @@ type Import struct {
 	prebuilt android.Prebuilt
 	android.SdkBase
 
+	// State related to this being used as a component of a java_sdk_library.
+	EmbeddableSdkLibraryComponent
+
 	properties ImportProperties
 
 	combinedClasspathFile android.Path
@@ -2443,6 +2457,12 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		TransformJetifier(ctx, outputFile, inputFile)
 	}
 	j.combinedClasspathFile = outputFile
+
+	// If this is a component library (impl, stubs, etc.) for a java_sdk_library then
+	// add the name of that java_sdk_library to the exported sdk libs to make sure
+	// that, if necessary, a <uses-library> element for that java_sdk_library is
+	// added to the Android manifest.
+	j.exportedSdkLibs = append(j.exportedSdkLibs, j.OptionalImplicitSdkLibrary()...)
 
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
@@ -2565,6 +2585,8 @@ func ImportFactory() android.Module {
 	module := &Import{}
 
 	module.AddProperties(&module.properties)
+
+	module.initSdkLibraryComponent(&module.ModuleBase)
 
 	android.InitPrebuiltModule(module, &module.properties.Jars)
 	android.InitApexModule(module)
