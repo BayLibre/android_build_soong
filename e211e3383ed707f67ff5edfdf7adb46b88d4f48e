@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bda87f2_ac21a098",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-15T17:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dda5cea_e3477e4a",
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecaab95d_2ad27623",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7f49a9d2_f30aa105",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-15T17:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecaab95d_2ad27623",
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e53ce041_7decd9dd",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "416946f1_1896f4ae",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-15T17:48:28Z",
+      "side": 1,
+      "message": "Hmm, I thought you wanted to add only mandatory flags here given you haven\u0027t added -allow-prereleased.\n\nAdded everything following Google developer guideline.",
+      "parentUuid": "e53ce041_7decd9dd",
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "a4f0650c_d37c923a",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-15T17:48:28Z",
+      "side": 1,
+      "message": "No, either stem or output-uncompressed (extract-single) needs to be set. Setting both is allowed, though stem would be ignored.",
+      "parentUuid": "fe3911ad_9458658d",
+      "range": {
+        "startLine": 495,
+        "startChar": 99,
+        "endLine": 495,
+        "endChar": 117
+      },
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee4ad62b_8f89e693",
         "filename": "cmd/extract_apks/main.go",
         "patchSetId": 1
@@ -90,6 +168,24 @@
       "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5acb0a93_316a5b14",
+        "filename": "cmd/extract_apks/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-15T17:48:28Z",
+      "side": 1,
+      "message": "Then, it would go through the renaming process and deliberately discard its result since it\u0027s not needed for extract-single. This is simpler and easier to understand, IMO.",
+      "parentUuid": "ee4ad62b_8f89e693",
+      "revId": "e211e3383ed707f67ff5edfdf7adb46b88d4f48e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
