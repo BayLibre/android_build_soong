@@ -96,6 +96,7 @@ func (prebuilt *prebuiltLibraryDecorator) compile(ctx ModuleContext, flags Flags
 	prebuilt.exportLinkDirs(android.PathsForModuleSrc(ctx, prebuilt.Properties.Link_dirs).Strings()...)
 
 	srcPath := srcPathFromModuleSrcs(ctx, prebuilt.prebuiltSrcs())
+	deps.SrcDeps = android.PathsForModuleSrc(ctx, prebuilt.prebuiltSrcs())
 
 	prebuilt.unstrippedOutputFile = srcPath
 

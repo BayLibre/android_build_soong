@@ -107,6 +107,7 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 	fileName := binary.getStem(ctx) + ctx.toolchain().ExecutableSuffix()
 
 	srcPath := srcPathFromModuleSrcs(ctx, binary.baseCompiler.Properties.Srcs)
+	deps.SrcDeps = android.PathsForModuleSrc(ctx, binary.baseCompiler.Properties.Srcs)
 
 	outputFile := android.PathForModuleOut(ctx, fileName)
 	binary.unstrippedOutputFile = outputFile
