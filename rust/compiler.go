@@ -254,9 +254,19 @@ func (compiler *baseCompiler) relativeInstallPath() string {
 }
 
 func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) android.Path {
-	srcPaths := android.PathsForModuleSrc(ctx, srcs)
-	if len(srcPaths) != 1 {
-		ctx.PropertyErrorf("srcs", "srcs can only contain one path for rust modules")
+	// The srcs can contain strings with prefix ":".
+	// They are dependent modules of this module, with android.SourceDepTag.
+	// They are not the main source file compiled by rustc.
+	numSrcs := 0
+	srcIndex := 0
+	for i, s := range srcs {
+		if android.SrcIsModule(s) == "" {
+			numSrcs++
+			srcIndex = i
+		}
 	}
-	return srcPaths[0]
+	if numSrcs != 1 {
+		ctx.PropertyErrorf("srcs", "srcs can only contain one path for a rust file")
+	}
+	return android.PathsForModuleSrc(ctx, srcs)[srcIndex]
 }
