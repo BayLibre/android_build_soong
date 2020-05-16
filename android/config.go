@@ -36,6 +36,12 @@ import (
 var Bool = proptools.Bool
 var String = proptools.String
 
+const ClangDefaultVersion = "clang-r383902b"
+
+const LibClangSoFile = "libclang.so.11git"
+
+const RustDefaultVersion = "1.43.0"
+
 const FutureApiLevel = 10000
 
 // The configuration file name

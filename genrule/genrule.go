@@ -46,6 +46,12 @@ func registerGenruleBuildComponents(ctx android.RegistrationContext) {
 }
 
 var (
+	clangVersion = android.ClangDefaultVersion
+
+	libclangSo = android.LibClangSoFile
+
+	rustVersion = android.RustDefaultVersion
+
 	pctx = android.NewPackageContext("android/soong/genrule")
 
 	gensrcsMerge = pctx.AndroidStaticRule("gensrcsMerge", blueprint.RuleParams{
@@ -81,6 +87,13 @@ type hostToolDependencyTag struct {
 	label string
 }
 
+type GenruleEnv string
+
+const (
+	GenruleEnvBindgen GenruleEnv = "bindgen"
+	GenruleEnvDefault GenruleEnv = ""
+)
+
 type generatorProperties struct {
 	// The command to run on one or more input files. Cmd supports substitution of a few variables
 	// (the actual substitution is implemented in GenerateAndroidBuildActions below)
@@ -98,6 +111,9 @@ type generatorProperties struct {
 	// All files used must be declared as inputs (to ensure proper up-to-date checks).
 	// Use "$(in)" directly in Cmd to ensure that all inputs used are declared.
 	Cmd *string
+
+	// Tools dependent environment variables to set up before cmd.
+	Env *string
 
 	// Enable reading a file containing dependencies in gcc format after the command completes
 	Depfile *bool
@@ -402,6 +418,32 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		depfilePlaceholder := ""
 		if Bool(g.properties.Depfile) {
 			depfilePlaceholder = "$depfileArgs"
+		}
+
+		// If Env is not empty, add environment variables before rawCommand
+		switch GenruleEnv(String(g.properties.Env)) {
+		case GenruleEnvDefault: // no env to set up
+			break
+		case GenruleEnvBindgen: // tools used by bindgen
+			os := ctx.Config().PrebuiltOS()
+			prebuiltClang := "prebuilts/clang/host/" + os + "/" + clangVersion
+			clangPath := prebuiltClang + "/bin/clang"
+			libclangPath := prebuiltClang + "/lib64/" + libclangSo
+			rustfmtPath := "prebuilts/rust/" + os + "/" + rustVersion + "/bin/rustfmt"
+			rawCommand = "CLANG_PATH=" + clangPath +
+				" LIBCLANG_PATH=" + libclangPath +
+				" RUSTFMT=" + rustfmtPath + " " + rawCommand
+			// Add dependencies of those tools
+			for _, tool := range []string{clangPath, libclangPath, rustfmtPath} {
+				p := android.ExistentPathForSource(ctx, tool)
+				if p.Valid() {
+					g.deps = append(g.deps, p.Path())
+				} else {
+					ctx.ModuleErrorf("Invalid path: %q", tool)
+				}
+			}
+		default:
+			ctx.ModuleErrorf("%q is not a valid 'env' value", String(g.properties.Env))
 		}
 
 		// Escape the command for the shell
