@@ -61,6 +61,7 @@ func testConfig(bp string) android.Config {
 		"foo.rs":     nil,
 		"foo.c":      nil,
 		"src/bar.rs": nil,
+		"src/any.h":  nil,
 		"liby.so":    nil,
 		"libz.so":    nil,
 	}
@@ -183,11 +184,19 @@ func TestDepsTracking(t *testing.T) {
 			name: "librlib",
 			srcs: ["foo.rs"],
 			crate_name: "rlib",
+			generated_sources: ["my_generator"],
 		}
 		rust_proc_macro {
 			name: "libpm",
 			srcs: ["foo.rs"],
 			crate_name: "pm",
+		}
+		genrule {
+			name: "my_generator",
+			tools: ["any_rust_binary"],
+			cmd: "$(location) -o $(out) $(in)",
+			srcs: ["src/any.h"],
+			out: ["src/any.rs"],
 		}
 		rust_binary_host {
 			name: "fizz-buzz",
@@ -197,9 +206,19 @@ func TestDepsTracking(t *testing.T) {
 			static_libs: ["libstatic"],
 			shared_libs: ["libshared"],
 			srcs: ["foo.rs"],
+			generated_sources: ["my_generator"],
 		}
 	`)
 	module := ctx.ModuleForTests("fizz-buzz", "linux_glibc_x86_64").Module().(*Module)
+	rlibmodule := ctx.ModuleForTests("librlib", "linux_glibc_x86_64_rlib").Module().(*Module)
+
+	if !android.InList("my_generator", module.compiler.(*binaryDecorator).baseCompiler.Properties.Generated_sources) {
+		t.Errorf("generated_sources dependency not detected in fizz-buzz)")
+	}
+
+	if !android.InList("my_generator", rlibmodule.compiler.(*libraryDecorator).baseCompiler.Properties.Generated_sources) {
+		t.Errorf("generated_sources dependency not detected in rlib)")
+	}
 
 	// Since dependencies are added to AndroidMk* properties, we can check these to see if they've been picked up.
 	if !android.InList("libdylib", module.Properties.AndroidMkDylibs) {
