@@ -81,6 +81,14 @@ type hostToolDependencyTag struct {
 	label string
 }
 
+type EnvProcessor func(m *Module, ctx android.ModuleContext) string
+
+var envProcessors map[string]EnvProcessor = make(map[string]EnvProcessor)
+
+func RegisterEnvProcessor(key string, processor EnvProcessor) {
+	envProcessors[key] = processor
+}
+
 type generatorProperties struct {
 	// The command to run on one or more input files. Cmd supports substitution of a few variables
 	// (the actual substitution is implemented in GenerateAndroidBuildActions below)
@@ -98,6 +106,9 @@ type generatorProperties struct {
 	// All files used must be declared as inputs (to ensure proper up-to-date checks).
 	// Use "$(in)" directly in Cmd to ensure that all inputs used are declared.
 	Cmd *string
+
+	// Name of the tool whose environment variables should be set up before cmd.
+	Env *string
 
 	// Enable reading a file containing dependencies in gcc format after the command completes
 	Depfile *bool
@@ -188,6 +199,10 @@ func toolDepsMutator(ctx android.BottomUpMutatorContext) {
 			ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), tag, tool)
 		}
 	}
+}
+
+func (g *Module) AddToDeps(path android.Path) {
+	g.deps = append(g.deps, path)
 }
 
 func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -402,6 +417,17 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		depfilePlaceholder := ""
 		if Bool(g.properties.Depfile) {
 			depfilePlaceholder = "$depfileArgs"
+		}
+
+		// If Env is not empty and the EnvProcessor is found,
+		// call it to add variables before rawCommand
+		envString := String(g.properties.Env)
+		if "" != envString {
+			if nil != envProcessors[envString] {
+				rawCommand = envProcessors[envString](g, ctx) + " " + rawCommand
+			} else {
+				ctx.ModuleErrorf("%q is not a valid 'env' value", envString)
+			}
 		}
 
 		// Escape the command for the shell

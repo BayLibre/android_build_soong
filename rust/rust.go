@@ -23,6 +23,8 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	ccConfig "android/soong/cc/config"
+	"android/soong/genrule"
 	"android/soong/rust/config"
 )
 
@@ -30,6 +32,8 @@ var pctx = android.NewPackageContext("android/soong/rust")
 
 func init() {
 	// Only allow rust modules to be defined for certain projects
+
+	genrule.RegisterEnvProcessor("bindgen", genrule.EnvProcessor(bindgenEnvProcessor))
 
 	android.AddNeverAllowRules(
 		android.NeverAllow().
@@ -42,6 +46,31 @@ func init() {
 		ctx.BottomUp("rust_begin", BeginMutator).Parallel()
 	})
 	pctx.Import("android/soong/rust/config")
+}
+
+func bindgenEnvProcessor(g *genrule.Module, ctx android.ModuleContext) string {
+	os := ctx.Config().PrebuiltOS()
+	prebuiltClang := "prebuilts/clang/host/" + os + "/" + ccConfig.ClangDefaultVersion
+	clangPath := prebuiltClang + "/bin/clang"
+	libclangFile := ccConfig.LinuxLibclangFile
+	if os == "darwin-x86" {
+		libclangFile = ccConfig.DarwinLibclangFile
+	}
+	libclangPath := prebuiltClang + "/lib64/" + libclangFile
+	prebuiltRust := "prebuilts/rust/" + os + "/" + config.RustDefaultVersion
+	rustfmtPath := prebuiltRust + "/bin/rustfmt"
+	// Add dependencies of those tools
+	for _, tool := range []string{clangPath, libclangPath, rustfmtPath} {
+		path := android.ExistentPathForSource(ctx, tool)
+		if path.Valid() {
+			g.AddToDeps(path.Path())
+		} else {
+			ctx.ModuleErrorf("Invalid path: %q", tool)
+		}
+	}
+	return "CLANG_PATH=" + clangPath +
+		" LIBCLANG_PATH=" + libclangPath +
+		" RUSTFMT=" + rustfmtPath
 }
 
 type Flags struct {
@@ -219,6 +248,9 @@ type Deps struct {
 	StaticLibs []string
 
 	CrtBegin, CrtEnd string
+
+	GeneratedSources []string
+	GeneratedDeps    []string
 }
 
 type PathDeps struct {
@@ -235,6 +267,10 @@ type PathDeps struct {
 
 	CrtBegin android.OptionalPath
 	CrtEnd   android.OptionalPath
+
+	// Paths to generated source files
+	GeneratedSources android.Paths
+	GeneratedDeps    android.Paths
 }
 
 type RustLibraries []RustLibrary
@@ -627,6 +663,7 @@ var (
 	dylibDepTag      = dependencyTag{name: "dylib", library: true}
 	procMacroDepTag  = dependencyTag{name: "procMacro", proc_macro: true}
 	testPerSrcDepTag = dependencyTag{name: "rust_unit_tests"}
+	genSourceDepTag  = dependencyTag{name: "gen source"}
 )
 
 func (mod *Module) begin(ctx BaseModuleContext) {
@@ -647,6 +684,16 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
+		if depTag == genSourceDepTag {
+			if genRule, ok := dep.(genrule.SourceFileGenerator); ok {
+				depPaths.GeneratedSources = append(depPaths.GeneratedSources,
+					genRule.GeneratedSourceFiles()...)
+				depPaths.GeneratedDeps = append(depPaths.GeneratedDeps,
+					genRule.GeneratedDeps()...)
+			} else {
+				ctx.ModuleErrorf("module %q is not a gensrcs or genrule", depName)
+			}
+		}
 		if rustDep, ok := dep.(*Module); ok {
 			//Handle Rust Modules
 
@@ -785,6 +832,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	// Dedup exported flags from dependencies
 	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
 	depPaths.depFlags = android.FirstUniqueStrings(depPaths.depFlags)
+	depPaths.GeneratedDeps = android.FirstUniquePaths(depPaths.GeneratedDeps)
 
 	return depPaths
 }
@@ -852,6 +900,8 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		actx.AddVariationDependencies(commonDepVariations, cc.CrtEndDepTag, deps.CrtEnd)
 	}
 
+	actx.AddDependency(mod, genSourceDepTag, deps.GeneratedSources...)
+
 	// proc_macros are compiler plugins, and so we need the host arch variant as a dependendcy.
 	actx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), procMacroDepTag, deps.ProcMacros...)
 }
@@ -887,6 +937,18 @@ func (mod *Module) Name() string {
 		name = p.Name(name)
 	}
 	return name
+}
+
+var _ android.HostToolProvider = (*Module)(nil)
+
+func (mod *Module) HostToolPath() android.OptionalPath {
+	if !mod.Host() {
+		return android.OptionalPath{}
+	}
+	if _, ok := mod.compiler.(*binaryDecorator); ok {
+		return mod.outputFile
+	}
+	return android.OptionalPath{}
 }
 
 var Bool = proptools.Bool

@@ -130,6 +130,8 @@ var (
 	ClangDefaultBase         = "prebuilts/clang/host"
 	ClangDefaultVersion      = "clang-r383902b"
 	ClangDefaultShortVersion = "11.0.2"
+	LinuxLibclangFile        = "libclang.so.11git"
+	DarwinLibclangFile       = "libclang.dylib"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
