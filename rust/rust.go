@@ -23,6 +23,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/genrule"
 	"android/soong/rust/config"
 )
 
@@ -222,6 +223,9 @@ type Deps struct {
 	StaticLibs []string
 
 	CrtBegin, CrtEnd string
+
+	GeneratedSources []string
+	GeneratedDeps    []string
 }
 
 type PathDeps struct {
@@ -238,6 +242,9 @@ type PathDeps struct {
 
 	CrtBegin android.OptionalPath
 	CrtEnd   android.OptionalPath
+
+	// Paths to generated dependent files
+	GeneratedDeps android.Paths
 }
 
 type RustLibraries []RustLibrary
@@ -638,6 +645,7 @@ var (
 	dylibDepTag      = dependencyTag{name: "dylib", library: true}
 	procMacroDepTag  = dependencyTag{name: "procMacro", proc_macro: true}
 	testPerSrcDepTag = dependencyTag{name: "rust_unit_tests"}
+	genSourceDepTag  = dependencyTag{name: "gen source"}
 )
 
 func (mod *Module) begin(ctx BaseModuleContext) {
@@ -658,6 +666,14 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
+		if depTag == genSourceDepTag {
+			if genRule, ok := dep.(genrule.SourceFileGenerator); ok {
+				depPaths.GeneratedDeps = append(depPaths.GeneratedDeps,
+					genRule.GeneratedDeps()...)
+			} else {
+				ctx.ModuleErrorf("module %q is not a gensrcs or genrule", depName)
+			}
+		}
 		if rustDep, ok := dep.(*Module); ok {
 			//Handle Rust Modules
 
@@ -863,6 +879,8 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		actx.AddVariationDependencies(commonDepVariations, cc.CrtEndDepTag, deps.CrtEnd)
 	}
 
+	actx.AddDependency(mod, genSourceDepTag, deps.GeneratedSources...)
+
 	// proc_macros are compiler plugins, and so we need the host arch variant as a dependendcy.
 	actx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), procMacroDepTag, deps.ProcMacros...)
 }
@@ -898,6 +916,18 @@ func (mod *Module) Name() string {
 		name = p.Name(name)
 	}
 	return name
+}
+
+var _ android.HostToolProvider = (*Module)(nil)
+
+func (mod *Module) HostToolPath() android.OptionalPath {
+	if !mod.Host() {
+		return android.OptionalPath{}
+	}
+	if _, ok := mod.compiler.(*binaryDecorator); ok {
+		return mod.outputFile
+	}
+	return android.OptionalPath{}
 }
 
 var Bool = proptools.Bool
