@@ -77,6 +77,10 @@ type BaseCompilerProperties struct {
 	// list of C static library dependencies
 	Static_libs []string `android:"arch_variant"`
 
+	// list of generated sources to compile. These are the names of gensrcs or
+	// genrule modules.
+	Generated_sources []string `android:"arch_variant"`
+
 	// crate name, required for libraries. This must be the expected extern crate name used in source
 	Crate_name string `android:"arch_variant"`
 
@@ -185,6 +189,7 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.ProcMacros = append(deps.ProcMacros, compiler.Properties.Proc_macros...)
 	deps.StaticLibs = append(deps.StaticLibs, compiler.Properties.Static_libs...)
 	deps.SharedLibs = append(deps.SharedLibs, compiler.Properties.Shared_libs...)
+	deps.GeneratedSources = append(deps.GeneratedSources, compiler.Properties.Generated_sources...)
 
 	if !Bool(compiler.Properties.No_stdlibs) {
 		for _, stdlib := range config.Stdlibs {
