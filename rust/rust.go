@@ -239,6 +239,9 @@ type PathDeps struct {
 
 	CrtBegin android.OptionalPath
 	CrtEnd   android.OptionalPath
+
+	// Paths to generated source files
+	SrcDeps android.Paths
 }
 
 type RustLibraries []RustLibrary
@@ -713,6 +716,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
+		if depTag == android.SourceDepTag {
+			paths := android.PathsForModuleSrc(ctx, []string{":" + depName})
+			depPaths.SrcDeps = append(depPaths.SrcDeps, paths[0])
+		}
 		if rustDep, ok := dep.(*Module); ok {
 			//Handle Rust Modules
 
@@ -843,6 +850,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	// Dedup exported flags from dependencies
 	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
 	depPaths.depFlags = android.FirstUniqueStrings(depPaths.depFlags)
+	depPaths.SrcDeps = android.FirstUniquePaths(depPaths.SrcDeps)
 
 	return depPaths
 }

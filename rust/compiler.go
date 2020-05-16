@@ -17,6 +17,7 @@ package rust
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/google/blueprint/proptools"
 
@@ -254,9 +255,23 @@ func (compiler *baseCompiler) relativeInstallPath() string {
 }
 
 func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) android.Path {
+	// The srcs can contain strings with prefix ":".
+	// They are dependent modules of this module, with android.SourceDepTag.
+	// They are not the main source file compiled by rustc.
 	srcPaths := android.PathsForModuleSrc(ctx, srcs)
-	if len(srcPaths) != 1 {
-		ctx.PropertyErrorf("srcs", "srcs can only contain one path for rust modules")
+	if len(srcs) == 1 {
+		return srcPaths[0]
 	}
-	return srcPaths[0]
+	numSrcs := 0
+	srcIndex := 0
+	for i, s := range srcs {
+		if !strings.HasPrefix(s, ":") {
+			numSrcs++
+			srcIndex = i
+		}
+	}
+	if numSrcs != 1 {
+		ctx.PropertyErrorf("srcs", "srcs can only contain one path for a rust file")
+	}
+	return srcPaths[srcIndex]
 }
