@@ -586,9 +586,11 @@ func (c *commonToSdkLibraryAndImport) getScopePaths(scope *apiScope) *scopePaths
 	return paths
 }
 
-func (c *commonToSdkLibraryAndImport) sdkComponentPropertiesForChildLibrary() interface{} {
+func (c *commonToSdkLibraryAndImport) sdkComponentPropertiesForChildLibrary(stubs bool) interface{} {
 	componentProps := &struct {
 		SdkLibraryToImplicitlyTrack *string
+
+		Stubs *bool
 	}{}
 
 	if c.sharedLibrary() {
@@ -598,6 +600,9 @@ func (c *commonToSdkLibraryAndImport) sdkComponentPropertiesForChildLibrary() in
 		// manifest if necessary.
 		componentProps.SdkLibraryToImplicitlyTrack = proptools.StringPtr(c.moduleBase.BaseModuleName())
 	}
+
+	// Mark the library as either containing stubs or not.
+	componentProps.Stubs = proptools.BoolPtr(stubs)
 
 	return componentProps
 }
@@ -915,7 +920,7 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 		props.Dist.Tag = proptools.StringPtr(".jar")
 	}
 
-	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary())
+	mctx.CreateModule(LibraryFactory, &props, module.sdkComponentPropertiesForChildLibrary(true))
 }
 
 // Creates a droidstubs module that creates stubs source files from the given full source
@@ -1155,6 +1160,12 @@ func (module *SdkLibrary) sdkJars(
 			return paths.stubsImplPath
 		}
 	}
+}
+
+func (module *SdkLibrary) providesStubs(sdkVersion sdkSpec) bool {
+	// Returns true if and only if sdkJars() returns a path from one of the stubs
+	// modules it creates.
+	return sdkVersion.specified() && sdkVersion.kind != sdkPrivate
 }
 
 // to satisfy SdkLibraryDependency interface
@@ -1547,7 +1558,7 @@ func (module *sdkLibraryImport) createJavaImportForStubs(mctx android.Defaultabl
 	// The imports are preferred if the java_sdk_library_import is preferred.
 	props.Prefer = proptools.BoolPtr(module.prebuilt.Prefer())
 
-	mctx.CreateModule(ImportFactory, &props, module.sdkComponentPropertiesForChildLibrary())
+	mctx.CreateModule(ImportFactory, &props, module.sdkComponentPropertiesForChildLibrary(true))
 }
 
 func (module *sdkLibraryImport) createPrebuiltStubsSources(mctx android.DefaultableHookContext, apiScope *apiScope, scopeProperties *sdkLibraryScopeProperties) {
@@ -1611,6 +1622,11 @@ func (module *sdkLibraryImport) sdkJars(
 
 	paths := module.getScopePaths(apiScope)
 	return paths.stubsHeaderPath
+}
+
+func (module *sdkLibraryImport) providesStubs(sdkVersion sdkSpec) bool {
+	// Only ever provides access to stubs.
+	return true
 }
 
 // to satisfy SdkLibraryDependency interface
