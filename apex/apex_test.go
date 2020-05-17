@@ -4131,6 +4131,110 @@ func TestApexAvailable_CreatedForApex(t *testing.T) {
 	}
 }
 
+var sdkLibraryFiles = withFiles(map[string][]byte{
+	"api/current.txt":        nil,
+	"api/removed.txt":        nil,
+	"api/system-current.txt": nil,
+	"api/system-removed.txt": nil,
+	"api/test-current.txt":   nil,
+	"api/test-removed.txt":   nil,
+})
+
+func TestApexAvailable_JavaSdkLibrary_Stubs(t *testing.T) {
+	// baz does not need to be available to myapex as foo depends directly on baz's
+	// public stubs library.
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		java_libs: ["foo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	java_library {
+		name: "foo",
+		srcs: ["a.java"],
+		libs: ["baz.stubs"],
+		apex_available: [ "myapex" ],
+	}
+
+	java_sdk_library {
+		name: "baz",
+		srcs: ["a.java"],
+		api_packages: ["baz"],
+	}
+`, sdkLibraryFiles)
+}
+
+func TestApexAvailable_JavaSdkLibrary_Unspecified(t *testing.T) {
+	// baz needs to be available to myapex as foo depends implicitly on baz's implementation
+	// because foo's sdk_version is unspecified.
+	testApexError(t, `"foo" requires "baz" that is not available for the APEX`, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		java_libs: ["foo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	java_library {
+		name: "foo",
+		srcs: ["a.java"],
+		libs: ["baz"],
+		apex_available: [ "myapex" ],
+	}
+
+	java_sdk_library {
+		name: "baz",
+		srcs: ["a.java"],
+		api_packages: ["baz"],
+	}
+`, sdkLibraryFiles)
+}
+
+func TestApexAvailable_JavaSdkLibrary_Current(t *testing.T) {
+	// baz does not need to be available to myapex as foo depends implicitly on baz's
+	// public stubs library because foo's sdk_version is set to "current".
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		java_libs: ["foo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	java_library {
+		name: "foo",
+		srcs: ["a.java"],
+		libs: ["baz"],
+		apex_available: [ "myapex" ],
+		sdk_version: "current",
+	}
+
+	java_sdk_library {
+		name: "baz",
+		srcs: ["a.java"],
+		api_packages: ["baz"],
+		sdk_version: "current",
+	}
+`, sdkLibraryFiles)
+}
+
 func TestOverrideApex(t *testing.T) {
 	ctx, config := testApex(t, `
 		apex {
@@ -4276,14 +4380,7 @@ func TestJavaSDKLibrary(t *testing.T) {
 			api_packages: ["foo"],
 			apex_available: [ "myapex" ],
 		}
-	`, withFiles(map[string][]byte{
-		"api/current.txt":        nil,
-		"api/removed.txt":        nil,
-		"api/system-current.txt": nil,
-		"api/system-removed.txt": nil,
-		"api/test-current.txt":   nil,
-		"api/test-removed.txt":   nil,
-	}))
+	`, sdkLibraryFiles)
 
 	// java_sdk_library installs both impl jar and permission XML
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
