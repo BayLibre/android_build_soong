@@ -350,18 +350,49 @@ func (me *CompilerDeviceProperties) EffectiveOptimizeEnabled() bool {
 	return BoolDefault(me.Optimize.Enabled, me.Optimize.EnabledByDefault)
 }
 
+// Interface for those java modules that may provide stubs.
+type providesStubs interface {
+	// Checks to see whether this module provides stubs to a module that depends on it and
+	// is building against the supplied sdk_version.
+	//
+	// If this returns false then this module does not provide stubs and so must be in the
+	// same APEX as the module that depends on it.
+	//
+	// Otherwise, this module can be in a separate APEX to the one that depends on it.
+	providesStubs(sdkVersion sdkSpec) bool
+}
+
+// Properties common to Module and Import.
+type moduleAndImportProperties struct {
+	// Indicates whether this module contains stubs.
+	//
+	// Set to true for stubs libraries created by java_sdk_library or java_sdk_library_import.
+	// Set to false for the implementation library created by java_sdk_library.
+	// Otherwise, is not set and cannot be specified in a module definition.
+	Stubs *bool `blueprint:"mutated"`
+}
+
 // Functionality common to Module and Import
 //
 // It is embedded in Module so its functionality can be used by methods in Module
 // but it is currently only initialized by Import and Library.
 type embeddableInModuleAndImport struct {
-
 	// Functionality related to this being used as a component of a java_sdk_library.
 	EmbeddableSdkLibraryComponent
+
+	// The containing module.
+	module android.Module
+
+	// The properties common to module and import.
+	moduleAndImportProperties moduleAndImportProperties
 }
 
-func (e *embeddableInModuleAndImport) initModuleAndImport(moduleBase *android.ModuleBase) {
+func (e *embeddableInModuleAndImport) initModuleAndImport(module android.Module, moduleBase *android.ModuleBase) {
+	e.module = module
+
 	e.initSdkLibraryComponent(moduleBase)
+
+	moduleBase.AddProperties(&e.moduleAndImportProperties)
 }
 
 // Module/Import's DepIsInSameApex(...) delegates to this method.
@@ -369,11 +400,34 @@ func (e *embeddableInModuleAndImport) initModuleAndImport(moduleBase *android.Mo
 // This cannot implement DepIsInSameApex(...) directly as that leads to ambiguity with
 // the one provided by ApexModuleBase.
 func (e *embeddableInModuleAndImport) depIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
-	// dependencies other than the static linkage are all considered crossing APEX boundary
-	if staticLibTag == ctx.OtherModuleDependencyTag(dep) {
+	tag := ctx.OtherModuleDependencyTag(dep)
+	switch tag {
+	case staticLibTag:
+		// Statically linking a java library means the code ends up in the linking module
+		// and so most definitely is part of the same APEX as that module.
 		return true
+
+	case libTag:
+		if sdkContext, ok := e.module.(sdkContext); ok {
+			if stubsProvider, ok := dep.(providesStubs); ok {
+				// Get the sdk_version for the current module. That affects whether the stubs provider
+				// (which might by a java_sdk_library) provides stubs or implementation jars.
+				sdkVersion := sdkContext.sdkVersion()
+
+				// If linking dynamically then the dependency being linked is considered outside the
+				// APEX if and only if it provides stubs.
+				return !stubsProvider.providesStubs(sdkVersion)
+			}
+		}
 	}
+
+	// Other dependencies are all considered crossing APEX boundary
 	return false
+}
+
+func (e *embeddableInModuleAndImport) providesStubs(sdkVersion sdkSpec) bool {
+	// If not explicitly specified as being false then assume it is true.
+	return proptools.BoolDefault(e.moduleAndImportProperties.Stubs, true)
 }
 
 // Module contains the properties and members used by all java module types
@@ -2004,7 +2058,7 @@ func LibraryFactory() android.Module {
 		&module.Module.protoProperties,
 		&module.libraryProperties)
 
-	module.initModuleAndImport(&module.ModuleBase)
+	module.initModuleAndImport(module, &module.ModuleBase)
 
 	android.InitApexModule(module)
 	android.InitSdkAwareModule(module)
@@ -2424,16 +2478,28 @@ type Import struct {
 	exportAidlIncludeDirs android.Paths
 }
 
+var _ sdkContext = (*Import)(nil)
+
 func (j *Import) sdkVersion() sdkSpec {
 	return sdkSpecFrom(String(j.properties.Sdk_version))
 }
 
+func (j *Import) systemModules() string {
+	return ""
+}
+
 func (j *Import) minSdkVersion() sdkSpec {
+	// TODO(b/156836604) - add min_sdk_version property.
 	return j.sdkVersion()
 }
 
 func (j *Import) MinSdkVersion() string {
 	return j.minSdkVersion().version.String()
+}
+
+func (j *Import) targetSdkVersion() sdkSpec {
+	// TODO(b/156836604) - add target_sdk_version property.
+	return j.sdkVersion()
 }
 
 func (j *Import) Prebuilt() *android.Prebuilt {
@@ -2598,7 +2664,7 @@ func ImportFactory() android.Module {
 
 	module.AddProperties(&module.properties)
 
-	module.initModuleAndImport(&module.ModuleBase)
+	module.initModuleAndImport(module, &module.ModuleBase)
 
 	android.InitPrebuiltModule(module, &module.properties.Jars)
 	android.InitApexModule(module)
