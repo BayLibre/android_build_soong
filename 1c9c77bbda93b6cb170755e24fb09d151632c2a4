@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b9d48aa_6867e930",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-05-17T21:10:06Z",
+      "side": 1,
+      "message": "Please update the docstring.",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "1c9c77bbda93b6cb170755e24fb09d151632c2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d034e8_123757cd",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-05-17T21:10:06Z",
+      "side": 1,
+      "message": "Nit: Sort these alphabetically.",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 94
+      },
+      "revId": "1c9c77bbda93b6cb170755e24fb09d151632c2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af65c655_4853d435",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-05-17T21:10:06Z",
+      "side": 1,
+      "message": "nit: Might be helpful to include details about what contents were expected. Something like \"expected \u0027{\u0027, got \u0027%s\u0027\".\n\nSee also go/tott/574 for general advice on logging.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 77
+      },
+      "revId": "1c9c77bbda93b6cb170755e24fb09d151632c2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb2e375a_1f8f2d99",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-05-17T21:10:06Z",
+      "side": 1,
+      "message": "nit: Prefer to use single assignment when possible instead of reusing local variables. At first, \u0027tags\u0027 refers to all tags, and then later it refers to just the api-level tags.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "1c9c77bbda93b6cb170755e24fb09d151632c2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dfd59a8_87e5eb3c",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-05-17T21:10:06Z",
+      "side": 1,
+      "message": "The return value from parse_tags is used to indicate whether the tags contain \"var\", but later we use global_scope to indicate whether we\u0027re inside a \"global:\" block.\n\nAs far as I can tell, this initial value won\u0027t be used.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 59
+      },
+      "revId": "1c9c77bbda93b6cb170755e24fb09d151632c2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00daa0e0_d91d8715",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-05-17T21:10:06Z",
+      "side": 1,
+      "message": "This logic could be performed once when we parse the version name rather than re-calculating is_platform / is_deprecated for every symbol.",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 75
+      },
+      "revId": "1c9c77bbda93b6cb170755e24fb09d151632c2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efa81e8a_705a71d6",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-05-17T21:10:06Z",
+      "side": 1,
+      "message": "I think it would be cleaner to return the attributes dictionary rather than having the caller pass in one.\n\nIt\u0027s a common pattern in python to return a (success, result_or_error) tuple to return both a status code as well as the result.\n\nThat said, I think it would cleaner if this function treated \"var\" as any other tag, and let the caller make the decision to drop symbols tagged as variables.",
+      "range": {
+        "startLine": 104,
+        "startChar": 21,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "1c9c77bbda93b6cb170755e24fb09d151632c2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
