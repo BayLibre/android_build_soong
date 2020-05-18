@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deff766c_4a0eb6dd",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-18T21:08:59Z",
+      "side": 1,
+      "message": "Could you put some more context in the comment so that readers can understand this without digging the bug up? Something like, \"We still need to keep the package name in the output srcjar, and so yadayada\"",
+      "revId": "e24abf320f6a2ef0185dff9d9b4446e806f7b8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
