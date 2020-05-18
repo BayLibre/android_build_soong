@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d857e43_48dc843c",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T04:06:06Z",
+      "side": 1,
+      "message": "I am afraid that this is against the common practice in Soong.",
+      "range": {
+        "startLine": 507,
+        "startChar": 76,
+        "endLine": 508,
+        "endChar": 12
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1f5692_1b962fc6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T04:06:06Z",
+      "side": 1,
+      "message": "Could you explain why we need this in addition to api_only?",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 21
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
