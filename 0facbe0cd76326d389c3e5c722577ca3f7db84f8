@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "4fefb215_6373a66c",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T08:38:21Z",
+      "side": 1,
+      "message": "As I commented on the other change, I think we could redirect to a different variant of a java_sdk_library (e.g. stub or real impl) depending on whether the two modules are in the same APEX or not.\n\nEven if we don\u0027t do that, I think we only need an option to link with the impl, not the stub because the later is the default. In other words, who will need quuz.stubs when quuz already means the stub variant.",
+      "parentUuid": "02729ce6_ec4eabb2",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9df8459_413f4aa1",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T08:38:21Z",
+      "side": 1,
+      "message": "I missed this part. I think it would have been clearer if we had EmbeddableSdkLibraryComponent, et. al. in java.go and let embeddableInModuleAndImport to directly implement it... because this is anyway part of Module/Import not sdkLibrary.",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 30
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "781f36f6_f8a54d97",
         "filename": "java/sdk_library.go",
         "patchSetId": 6
@@ -84,6 +131,30 @@
       "side": 1,
       "message": "For 99% of java libraries it is not set so no java_sdk_library is tracked.",
       "parentUuid": "781f36f6_f8a54d97",
+      "range": {
+        "startLine": 595,
+        "startChar": 16,
+        "endLine": 595,
+        "endChar": 27
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5ed12d7_bdb63cbb",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T08:38:21Z",
+      "side": 1,
+      "message": "Ah, I see. So this is the property of the java_library created.",
+      "parentUuid": "8446a768_cc6bcdcc",
       "range": {
         "startLine": 595,
         "startChar": 16,
