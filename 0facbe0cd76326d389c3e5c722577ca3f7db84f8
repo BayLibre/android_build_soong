@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "67c7f08f_8d24c976",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T09:09:23Z",
+      "side": 1,
+      "message": "I just realised that I misread the line you commented on and in my initial reply I was talking about \".impl\" not \".stubs\". Sorry for any confusion.\n\nThe framework modules in rvc-dev (which I am trying to cover to use java_sdk_library) use direct access to the stubs because that is the only way that they can access them at the moment because they are not java_sdk_library. Switching them over to reference the java_sdk_library instead cannot be done until after conversion. Doing it during conversion would just make the changes too big, and error/conflict prone.\n\nThis test is just making sure that direct access to the stubs (which resolves to a java_library ) behaves in the same was as implicit reference (which resolves to a java_sdk_library). They go through separate code paths so need separate testing.",
+      "parentUuid": "4fefb215_6373a66c",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
