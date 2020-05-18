@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "83fb304c_73da9d4d",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T20:58:00Z",
+      "side": 1,
+      "message": "EmbeddableSdkLibraryComponent is used by java_sdk_library and java_sdk_library_import, java_library and java_import. So, it cannot be implemented by embeddableInModuleAndImport because that would require duplicating the functionality in commonToSdkLibraryAndImport.\n\nI avoid the duplication by embedding it in both embeddableInModuleAndImport and commonToSdkLibraryAndImport.\n\nIt is in sdk_library.go because that is the only code outside the EmbeddableSdkLibraryComponent itself that needs to know about the SdkLibraryToImplicitlyTrack property (in order to populate it during creation). Everywhere else, including java.go treats the structure like a black box.",
+      "parentUuid": "c9df8459_413f4aa1",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 30
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "781f36f6_f8a54d97",
         "filename": "java/sdk_library.go",
         "patchSetId": 6
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Ah, I see. So this is the property of the java_library created.",
       "parentUuid": "8446a768_cc6bcdcc",
+      "range": {
+        "startLine": 595,
+        "startChar": 16,
+        "endLine": 595,
+        "endChar": 27
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "419a5cd9_19fb186d",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T20:58:00Z",
+      "side": 1,
+      "message": "Exactly.",
+      "parentUuid": "b5ed12d7_bdb63cbb",
       "range": {
         "startLine": 595,
         "startChar": 16,
