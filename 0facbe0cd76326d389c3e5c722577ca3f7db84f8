@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49940e54_533f8d57",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T04:01:21Z",
+      "side": 1,
+      "message": "Can we make this an error? I think \".stubs\" is an implementation detail that we shouldn\u0027t expose.",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781f36f6_f8a54d97",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T04:01:21Z",
+      "side": 1,
+      "message": "When can this happen?",
+      "range": {
+        "startLine": 595,
+        "startChar": 16,
+        "endLine": 595,
+        "endChar": 27
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
