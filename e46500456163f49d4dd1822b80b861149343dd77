@@ -189,6 +189,30 @@
       "revId": "e46500456163f49d4dd1822b80b861149343dd77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09691f4e_f8dccfa2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T09:21:28Z",
+      "side": 1,
+      "message": "Default false is definitely more popular than defaulting true but that\u0027s to be expected because it\u0027s more work to default to true.\n\nThere are ~430 usages of Bool(..) for resolving *bool to bool, where nil is false.\nThere are ~20 usages of BoolDefault(.., true) for resolving *bool to bool, where nil is true.\n\n\u003e bootclasspath_library: true could be used to make sure that they are actually listed in BCP.\n\nThat is a separate issue to this which is just trying to make sure that Apps cannot accidentally depend on libraries which are not intended to be accessible to them.",
+      "parentUuid": "d817a424_47cd8f85",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 21
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
