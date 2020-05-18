@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b48387a_478c338c",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T08:18:30Z",
+      "side": 1,
+      "message": "It is not common (not as common as defaulting to false for obvious reasons) but it is done. Given that we already have dozens of usages of java_sdk_library that rely on it being true we have no choice about the default. We could rename it to not_shared_library, flip the default and flip the checks but \"Not_\" or even \"No_\" is even less common than BoolDefault(..., true).",
+      "parentUuid": "8d857e43_48dc843c",
+      "range": {
+        "startLine": 507,
+        "startChar": 76,
+        "endLine": 508,
+        "endChar": 12
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d1f5692_1b962fc6",
         "filename": "java/sdk_library.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "e46500456163f49d4dd1822b80b861149343dd77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a05b319_ccccd5d6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T08:18:30Z",
+      "side": 1,
+      "message": "Because we have three use cases:\n1) Shared libraries which provide both API and implementation library and can be used as a shared library in an App via \u003cuses-library\u003e. - shared_library: true, api_only: true.\n2) Generating API surfaces like ART core platform that do not require an implementation library to be installed (as it is special or handled elsewhere). api_only: true.\n3) Android framework modules like framework-wifi, framework-tethering that provide an API and implementation library but which cannot be used as a shared library. shared_library: false, api_only: false.",
+      "parentUuid": "6d1f5692_1b962fc6",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 21
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
