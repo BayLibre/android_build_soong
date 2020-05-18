@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02729ce6_ec4eabb2",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T08:09:06Z",
+      "side": 1,
+      "message": "For 99.9% of the usages you are correct. However, there is one use case where it is not which is why I added this. e.g. We have an APEX that has a java_library \"framework-wifi\" and a service library \"service-wifi\". The \"framework-wifi\" exposes an API for other modules to use (which is why it needs to be converted to a java_sdk_library) but the \"service-wifi\" needs to access implementation specific methods of \"framework-wifi\". It manages to do that at the moment because \"framework-wifi\" is a reference to the implementation library. However, switching it to java_sdk_library makes \"framework-wifi\" resolve to a stubs library.\n\nThis change will ensure that a dependency on the implementation library for a java_sdk_library will only work within an APEX.\n\nAlso, I think having the dependency on the implementation be explicit is clearer.",
+      "parentUuid": "49940e54_533f8d57",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "781f36f6_f8a54d97",
         "filename": "java/sdk_library.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8446a768_cc6bcdcc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T08:09:06Z",
+      "side": 1,
+      "message": "For 99% of java libraries it is not set so no java_sdk_library is tracked.",
+      "parentUuid": "781f36f6_f8a54d97",
+      "range": {
+        "startLine": 595,
+        "startChar": 16,
+        "endLine": 595,
+        "endChar": 27
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
