@@ -757,7 +757,7 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 	if a, ok := mctx.Module().(*apexBundle); ok && !a.vndkApex {
 		apexBundles = []android.ApexInfo{{
 			ApexName:      mctx.ModuleName(),
-			MinSdkVersion: a.minSdkVersion(mctx),
+			MinSdkVersion: a.minSdkVersionInt(mctx),
 			Updatable:     proptools.Bool(a.properties.Updatable),
 		}}
 		directDep = true
@@ -1806,13 +1806,17 @@ func (a *apexBundle) walkPayloadDeps(ctx android.ModuleContext, do payloadDepsCa
 	})
 }
 
-func (a *apexBundle) minSdkVersion(ctx android.BaseModuleContext) int {
+func (a *apexBundle) minSdkVersionInt(ctx android.BaseModuleContext) int {
 	ver := proptools.StringDefault(a.properties.Min_sdk_version, "current")
 	intVer, err := android.ApiStrToNum(ctx, ver)
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "%s", err.Error())
 	}
 	return intVer
+}
+
+func (a *apexBundle) minSdkVersion(ctx android.BaseModuleContext) string {
+	return proptools.StringDefault(a.properties.Min_sdk_version, ctx.Config().DefaultAppTargetSdk())
 }
 
 // Ensures that the dependencies are marked as available for this APEX
