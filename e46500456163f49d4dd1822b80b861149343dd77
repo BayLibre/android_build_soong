@@ -141,6 +141,30 @@
       "revId": "e46500456163f49d4dd1822b80b861149343dd77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "543963c2_6cead63b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-18T08:53:12Z",
+      "side": 1,
+      "message": "Do all java_library instances in an APEX end up on the bootclasspath?\n\nMy problem with that name is that it is not reflecting the behavior of the code. It doesn\u0027t make the library end up on the bootclasspath (something else does that) it simply stops it being usable as a shared library. It is possible (now or in the future) that it could be not a shared library and not a bootclasspath. \n\nI don\u0027t really see what the problem is with default to true. e.g. the enabled property defaults to true.\n\nI\u0027d rather call it no(t)_shared_library.",
+      "parentUuid": "0f357ada_01b3ad81",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 21
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
