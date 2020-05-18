@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50be8dbd_425264e4",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-05-18T17:58:30Z",
+      "side": 1,
+      "message": "strictly, it\u0027s not API i\u0027m worried about. i actually think we have the symbol situation pretty well covered. it\u0027s actually the non-spec *behavioral* guarantees i worry about. the answer to \"will i get the exact same bits out, given the same input bits?\" is generally \"no, you\u0027ll get output bits that you can feed into the reverse algorithm to get back to where you started, but no guarantee about the exact bits of the compressed form\".",
+      "range": {
+        "startLine": 314,
+        "startChar": 27,
+        "endLine": 315,
+        "endChar": 51
+      },
+      "revId": "6c9748eed7a697add99ac26432694a3b12dae9ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
