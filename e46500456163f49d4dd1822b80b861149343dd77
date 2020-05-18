@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "43aceae7_c3ea08cd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T08:44:31Z",
+      "side": 1,
+      "message": "Let\u0027s discuss in the comment below.",
+      "parentUuid": "6b48387a_478c338c",
+      "range": {
+        "startLine": 507,
+        "startChar": 76,
+        "endLine": 508,
+        "endChar": 12
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d1f5692_1b962fc6",
         "filename": "java/sdk_library.go",
         "patchSetId": 5
@@ -93,6 +117,30 @@
       "revId": "e46500456163f49d4dd1822b80b861149343dd77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f357ada_01b3ad81",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-18T08:44:31Z",
+      "side": 1,
+      "message": "Thanks, I now understand. Then I suggest renaming this to `bootclasspath_library` (or similar) to clearly denote that this java_sdk_library is not actually a shared library, but a library that is (should be?) added to the bootclasspath. Then my worries about the default being true would be resolved.",
+      "parentUuid": "9a05b319_ccccd5d6",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 21
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
