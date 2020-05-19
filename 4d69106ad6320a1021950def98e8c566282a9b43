@@ -94,6 +94,30 @@
       "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e9872c_6cb4d321",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-19T12:01:04Z",
+      "side": 1,
+      "message": "Aha, I see that in builder.go. Yeah, I think I now understand what you are trying to do with this. Thanks for the clarification.",
+      "parentUuid": "f60c3aad_618abfc5",
+      "range": {
+        "startLine": 1819,
+        "startChar": 62,
+        "endLine": 1819,
+        "endChar": 96
+      },
+      "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
