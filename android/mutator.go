@@ -57,7 +57,7 @@ func registerMutators(ctx *blueprint.Context, preArch, preDeps, postDeps, finalD
 
 	register(preDeps)
 
-	mctx.BottomUp("deps", depsMutator).Parallel()
+	mctx.BottomUp("deps", depsMutator) //.Parallel()
 
 	register(postDeps)
 
