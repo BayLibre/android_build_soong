@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "a8858b88_7c6361f8",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-19T09:20:32Z",
+      "side": 1,
+      "message": "Ah, that\u0027s unfortunate. From this cs query [1], it looks like all (most?) of the existing use cases of the .stub is for android.test.base/test/mock. It looks like the existing uses of .stub were all before ag/734605 which changed those java_library modules into java_sdk_library by Sundong.\n\nIf needed, I can create a set of large-scale changes to eliminate the direct use of .stub libraries from java_sdk_library. Then we might be able to hide the .stub libraries. Fortunately, most of them are under /cts, so I don\u0027t expect I will have hundreds of changes. Just let me know.\n\n[1] https://cs.corp.google.com/search/?q\u003df:%5C.bp+%5C.stubs%5C%22\u0026m\u003d100\u0026det\u003dmat\u0026sort\u003d1\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs",
+      "parentUuid": "615efb0e_34bc80dc",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
