@@ -88,6 +88,24 @@
       "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5aa12cc_87338a67",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-19T14:32:31Z",
+      "side": 1,
+      "message": "No I don\u0027t. Just because module \"X\" depends on \"foo.impl\" when built against java_sdk_library does not mean that it requires access to the implementation. It is just getting the implementation because there is at least one module that does not specify sdk_version and which requires the implementation of one of the java_sdk_library instances on which it depends.\n\nIf you caused the build to break (rather than relied on compilation to check whether the implementation was actually needed) then you would potentially break working builds.\n\nBy allowing developers to be explicit about what they need we can avoid this issue of lowest common denominator.\n\nI had added another comment to the bug you raised to cover this specific case.",
+      "parentUuid": "7b269fd1_29ac94b1",
+      "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
