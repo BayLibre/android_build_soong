@@ -261,6 +261,30 @@
       "revId": "e46500456163f49d4dd1822b80b861149343dd77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8f8045b_fae64e07",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-19T11:05:06Z",
+      "side": 1,
+      "message": "But this isn\u0027t saying whether this library is on the bootclasspath it is simply stating whether it can be used as a shared library.\n\nColin, said the style was ok which was your main objection so would you be ok to +2 this?",
+      "parentUuid": "f033cb80_d0dc9e08",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 21
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
