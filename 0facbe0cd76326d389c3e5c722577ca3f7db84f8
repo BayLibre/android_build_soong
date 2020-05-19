@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "615efb0e_34bc80dc",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-19T09:01:42Z",
+      "side": 1,
+      "message": "It is already exposed. I am just testing that it works. If/when we can stop exposing/relying on it being exposed then we can remove the test but until then we need to verify that the existing code works. We can\u0027t stop exposing it until we have removed all references to the specific modules. Which can only happen after we have converted framework modules to use java_sdk_library. Converting them to java_sdk_library requires that this works properly.",
+      "parentUuid": "02d3ed1d_83a5fa1e",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
