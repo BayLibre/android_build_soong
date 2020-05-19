@@ -52,6 +52,24 @@
       "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80294ffa_153751ea",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-19T14:22:00Z",
+      "side": 1,
+      "message": "There is no need for it to be a drop in replacement. The java_sdk_library_import is intended to provide the API for the module, it is not intended to build the module itself. That would be like trying to build Android using the SDK we provide developers.\n\nHaving the prebuilt and source coexisting in one build is I think an achievable goal (and something you and I put a lot of work into with jsl/jsli) but we cannot build a module against its own prebuilts.",
+      "parentUuid": "37884530_8cbefb21",
+      "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
