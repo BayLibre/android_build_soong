@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff91d968_f895e6f2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-19T11:51:39Z",
+      "side": 1,
+      "message": "Hmm, I just realized that this behavior is different from that of sdkLibrary: https://android-review.googlesource.com/c/platform/build/soong/+/1215335/3/java/sdk_library.go#685\n\nSo, a module that doesn\u0027t have sdk_version might experience a build error when java_sdk_library is replaced with java_sdk_library_import.",
+      "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
