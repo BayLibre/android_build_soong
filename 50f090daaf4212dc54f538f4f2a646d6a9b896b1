@@ -213,6 +213,30 @@
       "revId": "50f090daaf4212dc54f538f4f2a646d6a9b896b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b35e6a4_ca106eb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-19T02:25:02Z",
+      "side": 1,
+      "message": "Ok, I have spent all day working on this and have got to the point where I have separate variants for the implementation and the primary variant (which is basically the variant that behaves as the code currently does). I have wired it up into the dep mutator and the GenerateAndroidBuildAction and have it switching between the implementation and primary variants depending on whether they are in the same APEX.\n\nUnfortunately, it does not work because the Apex availability checking in Java is broken. Without accurate information about apex availability it cannot correctly determine whether a library and its dependence are in the same APEX and so cannot choose between impl and stubs.\n\nI think, in order to make progress in rvc-dev that we are going to have to go with this approach for now and switch over once the issues have been resolved.\n\nI have raised http://b/156978407 to cover the main issue I found \nand which could be hiding potentially lots of problems in the build.",
+      "parentUuid": "f4be72d9_d2448bde",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 11
+      },
+      "revId": "50f090daaf4212dc54f538f4f2a646d6a9b896b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
