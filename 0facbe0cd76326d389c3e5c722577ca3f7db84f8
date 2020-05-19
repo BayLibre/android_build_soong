@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "2479e5f5_f6893886",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-19T11:21:12Z",
+      "side": 1,
+      "message": "You can\u0027t just globally replace android.test.mock.stubs with android.test.mock because that would change behavior in some cases. It would cause any library that does not set sdk_version to switch from using stubs to using the actual implementation code. I don\u0027t consider that a good change as it can open code up to accidentally using implementation details of a class that will cause compatibility issues in future. e.g. http://cs/android/cts/tests/tests/mimemap/Android.bp?l\u003d20 would change.\n\nEven if you could fix all the existing usages that would not be sufficient because of the framework modules that do not currently use java_sdk_library but which need to be converted to use java_sdk_library.\n\nThey reference the stubs library directly because they are currently created as standalone java_library modules and so have no other choice. Those references cannot be replaced with the name of the java_sdk_library until after the module has been converted to a java_sdk_library. The references could theoretically be updated in the same change as the conversion is done but that is not practical.\n\nIt is not practical because there are ~8 modules that need converting to java_sdk_library and references to the stubs library for those modules are used together so will be a source of conflict if they are changed in separate changes. Doing them all in one set of changes in one topic would be a nightmare.\n\nConverting them to java_sdk_library can be done separately with no conflicts. Once that conversion is done then we can change the names.\n\nCleaning up is a good thing to do but it is not a priority right now.",
+      "parentUuid": "a8858b88_7c6361f8",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
