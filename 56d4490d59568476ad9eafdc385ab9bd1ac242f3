@@ -34,6 +34,24 @@
       "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37884530_8cbefb21",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-19T14:03:06Z",
+      "side": 1,
+      "message": "Do you have a plan to make it a drop-in replacement? Or, does it mean we can\u0027t use this for the framework libraries?",
+      "parentUuid": "0f6b567b_9009fab1",
+      "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
