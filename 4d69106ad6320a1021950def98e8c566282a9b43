@@ -22,6 +22,30 @@
       "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bbd941f_096e6d9e",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-05-19T11:52:51Z",
+      "side": 1,
+      "message": "We need to pass minSdkVersion and targetSdkVersion to apexer. I\u0027m not sure passing 10000 is the right thing. E.g. for apks we will pass codename (\"R\", \"Q\", etc.) on non-release branches.\n\nAnyway, I\u0027ll move this cl to rvc-dev. We can continue discussion there.",
+      "parentUuid": "448ffeae_e0feee3b",
+      "range": {
+        "startLine": 1819,
+        "startChar": 62,
+        "endLine": 1819,
+        "endChar": 96
+      },
+      "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
