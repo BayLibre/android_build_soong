@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "02d3ed1d_83a5fa1e",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-19T05:18:00Z",
+      "side": 1,
+      "message": "Sorry, I think I still don\u0027t understand why the direct access to the stubs is required. If the redirection to either stub or impl happens inside java_sdk_library, then we don\u0027t need to expose this, right?",
+      "parentUuid": "67c7f08f_8d24c976",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "EmbeddableSdkLibraryComponent is used by java_sdk_library and java_sdk_library_import, java_library and java_import. So, it cannot be implemented by embeddableInModuleAndImport because that would require duplicating the functionality in commonToSdkLibraryAndImport.\n\nI avoid the duplication by embedding it in both embeddableInModuleAndImport and commonToSdkLibraryAndImport.\n\nIt is in sdk_library.go because that is the only code outside the EmbeddableSdkLibraryComponent itself that needs to know about the SdkLibraryToImplicitlyTrack property (in order to populate it during creation). Everywhere else, including java.go treats the structure like a black box.",
       "parentUuid": "c9df8459_413f4aa1",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 30
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "552d96b4_cedfde64",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-19T05:18:00Z",
+      "side": 1,
+      "message": "Ack. Makes sense.",
+      "parentUuid": "83fb304c_73da9d4d",
       "range": {
         "startLine": 359,
         "startChar": 0,
