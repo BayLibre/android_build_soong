@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "1f162d83_c9347b62",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-19T14:08:36Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think this is a big problem, we always had multiple CLs tied together as a topic.\n\nInstead of having 8 separate changes which can be submitted separately, each of which could introduce subtle behavioral differences which are only discovered after having been submitted and require reverting (already happened) we would have 9 or 10 separate changes in separate repositories that would all need reverting if even one of them failed. Submitting them would require gaining approval from 8 different teams over and over again until all the issues are resolved.\n\nNot to mention that those repositories are all developed in different places (some in AOSP, some in rvc-dev, some in git_master) so it may not be possible to submit them all in one go under one topic due to conflicts.\n\nIt\u0027s just not practical.\n\nSeparating the functional changes from the renaming changes will greatly reduce the cost. The renaming changes will be much simpler and will be much easier to review and test if done separately.\n\n\u003e In other words, I think such an exceptional and one-time use-case shouldn\u0027t be the reason for exposing stubs perhaps permanently.\n\nOnce again, this change is not exposing stubs, they are already exposed. This change is simply testing to ensure that they work properly.\n\nIf exposing stubs is a problem (which I am not convinced it is but I\u0027ll address that in your bug) this is not making the problem worse.\n\nIf we did decide to remove all the references then cleaning up the issue isn\u0027t going to happen any time soon and this test will be easy to fix.\n\nIf you don\u0027t have any other issues with this change could you +2 it so I can make some progress and then we can move this discussion to your bug?",
+      "parentUuid": "135d1c63_b5752505",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
