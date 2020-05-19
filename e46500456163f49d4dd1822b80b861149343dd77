@@ -237,6 +237,30 @@
       "revId": "e46500456163f49d4dd1822b80b861149343dd77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f033cb80_d0dc9e08",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-19T05:21:31Z",
+      "side": 1,
+      "message": "We don\u0027t have to use the double negative if we choose \u0027bootclasspath_library\u0027 (or similar).",
+      "parentUuid": "3bd1963a_cf434341",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 21
+      },
+      "revId": "e46500456163f49d4dd1822b80b861149343dd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
