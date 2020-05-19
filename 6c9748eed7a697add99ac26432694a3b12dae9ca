@@ -22,6 +22,30 @@
       "revId": "6c9748eed7a697add99ac26432694a3b12dae9ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd80c81d_66071137",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-19T02:03:31Z",
+      "side": 1,
+      "message": "I see. Thanks for clarifying that. I\u0027ve updated the comment a little bit.",
+      "parentUuid": "50be8dbd_425264e4",
+      "range": {
+        "startLine": 314,
+        "startChar": 27,
+        "endLine": 315,
+        "endChar": 51
+      },
+      "revId": "6c9748eed7a697add99ac26432694a3b12dae9ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
