@@ -16,6 +16,24 @@
       "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6b567b_9009fab1",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-19T13:52:10Z",
+      "side": 1,
+      "message": "It is. java_sdk_library_import is not a drop in replacement for java_sdk_library because it does not provide any implementation code.",
+      "parentUuid": "ff91d968_f895e6f2",
+      "revId": "56d4490d59568476ad9eafdc385ab9bd1ac242f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
