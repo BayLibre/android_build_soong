@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "acb55a55_028d8237",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-20T23:20:25Z",
+      "side": 1,
+      "message": "Define a new func, like below:\n\n```\nfunc createUncompressDexRules() []Rule {\n  return []Rule{\n    Neverallow().\n      NotIn(\"art\").\n      With(\"uncompress_dex\", \"*\"). // I forgot \"*\" in my last comment.\n      Because(\"uncompress_dex is only allowed for certain jars for test in art.\"),\n  }\n}\n```\n\nAnd, add this to init() using AddNeverAllowRules.",
+      "parentUuid": "7db412f1_9df0da7b",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25dd368d_c3d65983",
         "filename": "java/java.go",
         "patchSetId": 2
