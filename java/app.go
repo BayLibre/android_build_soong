@@ -576,7 +576,7 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
 	a.dexpreopter.manifestFile = a.mergedManifestFile
 
-	a.deviceProperties.UncompressDex = a.dexpreopter.uncompressedDex
+	a.deviceProperties.Uncompress_dex = proptools.BoolPtr(a.dexpreopter.uncompressedDex)
 
 	if ctx.ModuleName() != "framework-res" {
 		a.Module.compile(ctx, a.aaptSrcJar)
