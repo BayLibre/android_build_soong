@@ -16,6 +16,24 @@
       "revId": "258ab3ff10e7a2cb32ddd234fdd25a9d9512ddf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef9ddd93_3abe9ebd",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-20T22:56:38Z",
+      "side": 1,
+      "message": "Well, I guess force-dereferencing is indeed a good thing to do. :) There seems to be a potential issue with android_library where it doesn\u0027t call shouldUncompressDex. Not sure if it\u0027s intended though. Please use proptools.Bool here and below. I\u0027m gonna file a bug and investigate it myself. Thanks.",
+      "parentUuid": "a9b9a375_bda26da5",
+      "revId": "258ab3ff10e7a2cb32ddd234fdd25a9d9512ddf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
