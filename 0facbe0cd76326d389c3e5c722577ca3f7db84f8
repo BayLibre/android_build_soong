@@ -289,6 +289,30 @@
     },
     {
       "key": {
+        "uuid": "488e76ff_410145f7",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-20T08:20:56Z",
+      "side": 1,
+      "message": "\u003e But this change won\u0027t be needed when the direct dependencies to the stubs library is prohibited.\n\nAgreed. But adding support for explicit but not direct dependency on the stubs library plus the removal of all direct references to the stubs library is a long way away (if it ever happens) and in the meantime we have a hole in the build that makes using specific stubs library (when needed or by accident) more difficult then necessary as the developer has to add an explicit entry in their manifest. I think removing that hole is worth this change.\n\nI think that libs: [\"android.test.mock.stubs\"] should behave the same as libs: [\"android.test.mock\"].\n\nI know that direct (or even explicit) references should be avoided where possible but I don\u0027t think that we should be purposely making the build more difficult to use just to encourage people to do something for which they might not have an alternative and that lots of other people are doing already. It would be one thing if we reported an error during the build that explained what they should be doing instead but in this case the build will work fine, their code will run fine until the point at which they use the code that is provided by the shared library and then it will fail. Even if that happens during their own testing and they know exactly how to fix it that is a lot of wasted effort for them. The longer it takes to detect when that failure occurs the more costly it will become.\n\n\u003e I think this change is fixing the same problem in a different way.\n\nIt\u0027s more like it is working around issues caused by the direct references.\n\n\u003e Does this fix any existing place where \u003cuses-library\u003e is omitted mistakenly?\n\nNot AFAIK because in those cases the developer has already been through the pain above and added it to the manifest.\n\nMy intention was to make future use of sdk libraries a little bit easier given that we will be adding lots more in future.\n\nI think this is worth having. It will make developer\u0027s lives a little easier. It may lead to slightly more direct references than we currently have but given that we will have to automate the conversion from direct to explicit references I doubt that it will increase the cost of that much if at all.\n\nAlso, given that I have other changes stacked on top that will conflict if I try and rebase around this submitting it will make my life easier too ;)",
+      "parentUuid": "d0d1da48_458f6a05",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
