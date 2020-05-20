@@ -265,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "d0d1da48_458f6a05",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-20T05:40:45Z",
+      "side": 1,
+      "message": "\u003e Once again, this change is not exposing stubs, they are already exposed. This change is simply testing to ensure that they work properly.\n\nYes, I am aware of this. But this change won\u0027t be needed when the direct dependencies to the stubs library is prohibited. I think this change is fixing the same problem in a different way.\n\nDoes this fix any existing place where \u003cuses-library\u003e is omitted mistakenly? If so, we should fix those places directly by simply dropping the \".stub\" suffix there.",
+      "parentUuid": "e2f31a87_2efbf8df",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
