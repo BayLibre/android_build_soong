@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b31ba6f3_4b32e256",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-20T20:50:59Z",
+      "side": 1,
+      "message": "I wonder if there is a better place for this file.  Putting it here will force lots of cross-projects changes to update it that will trigger the extra presubmits in the build/soong project which are large and slow.  I think the idea was also to put it somewhere the mainline team would have OWNERS permission over.",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c33b0bb_12b96409",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-20T20:50:59Z",
+      "side": 1,
+      "message": "IIRC (and I may be wrong or out of date) the goal here was to list which modules had agreed to the extra mainline requirements and could be used as a dependency anywhere, and not to whitelist every individual dependency of every module?",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9292ff13_52f77595",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-20T20:50:59Z",
+      "side": 1,
+      "message": "you can use \u003c(grep -v \u0027^#\u0027 $({allowed_flatlists}) to do this without a temporary file if you want.  If you do need a temporary file I often use ${out}.tmp.",
+      "range": {
+        "startLine": 54,
+        "startChar": 34,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc8cf7c_7070b493",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-20T20:50:59Z",
+      "side": 1,
+      "message": "At some point we plan to make the source tree read-only during the build, so we\u0027d prefer if this was a shell script to run outside of the build instead of a build rule.",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ac83bb3_5a1d11c8",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-20T20:50:59Z",
+      "side": 1,
+      "message": "You can make a phony path using android.PathForPhony and then use an android.Phony rule to make it depend on the fakeOutput file.",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
