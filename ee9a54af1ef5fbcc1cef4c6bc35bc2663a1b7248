@@ -22,6 +22,30 @@
       "revId": "ee9a54af1ef5fbcc1cef4c6bc35bc2663a1b7248",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3920ee6_40ada744",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4102,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-20T13:31:37Z",
+      "side": 1,
+      "message": "What you are suggesting would cause all libraries that are in the same APEX as the java_sdk_library they depend upon to use the implementation of that library whether they need to or not unless they explicitly specify a stubs to use.\n\nOver time that will lead to those libraries using implementation details which will make any future work to say split that library out into its own APEX or extract it as a utility library harder to do. I\u0027m not saying that is likely to happen but it definitely could. By requiring the developer to explicitly decide to use impl it helps them and anyone else around them to understand what is happening.\n\nDo you have the same objection to \"foo(impl)\" - i.e. explicit but not direct access as you do to \"foo.impl\"? I just want to clarify whether your objection is to explicitly indicating that you want an impl or just the direct access to it that we currently have.\n\nIn my view I think we should move away from implicitly (and silently) using impl code not add more mechanisms to do make that easier. Depending on implementation code is something that should be avoided where possible and where necessary should be explicit in the build.\n\nAssuming that you agree and that \"foo(impl)\" is a valid end goal then adding more implicit dependencies on impl will make achieving that goal harder. It is a lot easier to transform \"foo.impl\" into \"foo(impl)\" than it is to translate all the \"foo\"s that implicitly resolve to \"foo.impl\" into \"foo(impl)\" while keeping all the \"foo\"s that implicitly resolve to the appropriate stubs alone.",
+      "parentUuid": "fd33495a_030e4cb4",
+      "range": {
+        "startLine": 4102,
+        "startChar": 0,
+        "endLine": 4102,
+        "endChar": 25
+      },
+      "revId": "ee9a54af1ef5fbcc1cef4c6bc35bc2663a1b7248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
