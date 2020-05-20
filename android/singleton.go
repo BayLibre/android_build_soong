@@ -73,6 +73,10 @@ type SingletonContext interface {
 	// builder whenever a file matching the pattern as added or removed, without rerunning if a
 	// file that does not match the pattern is added to a searched directory.
 	GlobWithDeps(pattern string, excludes []string) ([]string, error)
+
+	// ModuleListFile returns a string representation of the path to the file
+	// which lists blueprint files to parse.
+	ModuleListFile() string
 }
 
 type singletonAdaptor struct {
@@ -226,4 +230,8 @@ func (s *singletonContextAdaptor) PrimaryModule(module Module) Module {
 
 func (s *singletonContextAdaptor) FinalModule(module Module) Module {
 	return s.SingletonContext.FinalModule(module).(Module)
+}
+
+func (s *singletonContextAdaptor) ModuleListFile() string {
+	return s.SingletonContext.ModuleListFile()
 }
