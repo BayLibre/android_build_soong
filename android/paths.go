@@ -895,6 +895,27 @@ func (p OutputPath) buildDir() string {
 var _ Path = OutputPath{}
 var _ WritablePath = OutputPath{}
 
+// ToolDepPath is a Path representing a dependency of the build tool.
+type ToolDepPath struct {
+	basePath
+}
+
+var _ Path = ToolDepPath{}
+
+// PathForBuildToolDep joins the provided paths and returns a ToolDepPath that
+// is validated to not contain invalid characters.
+// There is no validation for the base directory of the constructed path.
+// Only use this function to construct paths for depenencies of the build
+// tool invocation.
+// On error, it will return a usable, but invalid ToolDepPath, and report a ModuleError.
+func PathForBuildToolDep(ctx PathContext, pathComponents ...string) ToolDepPath {
+	path, err := validatePath(pathComponents...)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+	return ToolDepPath{basePath{path, ctx.Config(), ""}}
+}
+
 // PathForOutput joins the provided paths and returns an OutputPath that is
 // validated to not escape the build dir.
 // On error, it will return a usable, but invalid OutputPath, and report a ModuleError.
