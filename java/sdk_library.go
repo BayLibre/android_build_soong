@@ -354,6 +354,10 @@ type sdkLibraryProperties struct {
 	// List of Java libraries that will be in the classpath when building stubs
 	Stub_only_libs []string `android:"arch_variant"`
 
+	// The java_version to be used for compiling stubs modules. If not specified then
+	// defaults to the java_version property.
+	Stubs_java_version *string
+
 	// list of package names that will be documented and publicized as API.
 	// This allows the API to be restricted to a subset of the source files provided.
 	// If this is unspecified then all the source files will be treated as being part
@@ -870,7 +874,12 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	props.Libs = append(props.Libs, module.properties.Static_libs...)
 	props.Aidl.Include_dirs = module.deviceProperties.Aidl.Include_dirs
 	props.Aidl.Local_include_dirs = module.deviceProperties.Aidl.Local_include_dirs
-	props.Java_version = module.properties.Java_version
+	// Use stubs_java_version if specified otherwise fallback to java_version.
+	if module.sdkLibraryProperties.Stubs_java_version == nil {
+		props.Java_version = module.properties.Java_version
+	} else {
+		props.Java_version = module.sdkLibraryProperties.Stubs_java_version
+	}
 
 	props.Merge_annotations_dirs = module.sdkLibraryProperties.Merge_annotations_dirs
 	props.Merge_inclusion_annotations_dirs = module.sdkLibraryProperties.Merge_inclusion_annotations_dirs
