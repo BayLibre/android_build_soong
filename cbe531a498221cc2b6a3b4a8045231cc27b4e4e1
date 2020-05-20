@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "beca36e0_12e11da5",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-05-20T22:41:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91e5235_8bc32159",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "887f5df7_322d8a97",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -82,6 +100,24 @@
       "writtenOn": "2020-05-20T22:11:11Z",
       "side": 1,
       "message": "Please replace proptools.Bool calls with * everywhere in your cl. deviceProperties.Uncompress_dex should be non-nil where it\u0027s currently used, so you don\u0027t need to call it. Plus, dereferencing it without a check will allow us to detect coding mistakes.",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c67105c4_c856f831",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-05-20T22:41:17Z",
+      "side": 1,
+      "message": "Hmmm.... there does seem to be some issue that I don\u0027t understand...\nruntime error: invalid memory address or nil pointer dereference\nandroid/soong/java.(*Module).compileDex(0xc05daa4000, 0xdb6e40, 0xc0d32adb00, 0xc2c4c1, 0xb, 0xc0b02b9980, 0x2, 0x2, 0xc0dac88fc0, 0x3, ...)\n        /ssd/aosp/build/soong/java/dex.go:191 +0x1df\nandroid/soong/java.(*Module).compile(0xc05daa4000, 0xdb6e40, 0xc0d32adb00, 0xd85a00, 0xc0d04c37c0)\n        /ssd/aosp/build/soong/java/java.go:1556 +0x25d5\nandroid/soong/java.(*AndroidLibrary).GenerateAndroidBuildActions(0xc05daa4000, 0xdb6e40, 0xc0d32adb00)\n        /ssd/aosp/build/soong/java/aar.go:476 +0x227",
+      "parentUuid": "25dd368d_c3d65983",
       "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
