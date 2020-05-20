@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9b9a375_bda26da5",
+        "filename": "java/dex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-05-20T22:52:34Z",
+      "side": 1,
+      "message": "I get null pointer exception here now.  I am not sure why.",
+      "revId": "258ab3ff10e7a2cb32ddd234fdd25a9d9512ddf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
