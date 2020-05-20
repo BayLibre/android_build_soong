@@ -313,6 +313,30 @@
     },
     {
       "key": {
+        "uuid": "92134d3a_c5eb4f55",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-20T08:29:32Z",
+      "side": 1,
+      "message": "I just remembered that I need the functionality in this change in order to enable the follow up shared library change.\n\nThe reason I created this change was because I needed to make the tracking of sdk library usage dependent on whether the java_sdk_library was available to be used as a shared library or not. Prior to this change the decision as to whether to do that was based on whether a referenced module implemented SdkLibraryDependency. That was not sufficient, I also needed to be able to ask the SdkLibraryDependency whether it should be tracked.\n\nIt was while I was working on that refactoring that I noticed the hole in the build and so I fixed that as part of this. I should probably have split the refactoring out into a separate change but I didn\u0027t. So, if this is not submitted I would not just have to rebase around it I would have to extract the refactoring separately.",
+      "parentUuid": "488e76ff_410145f7",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
