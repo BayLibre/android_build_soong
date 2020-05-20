@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e91e5235_8bc32159",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-20T22:11:11Z",
+      "side": 1,
+      "message": "This needs to be updated too.",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887f5df7_322d8a97",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-20T22:11:11Z",
+      "side": 1,
+      "message": "It\u0027s worth mentioning uncompressing actually saves memory in the end? Most users are not aware of it, and so may try set this to false without understanding the implication.",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fcf3ebe_1fe7dd1d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-20T22:11:11Z",
+      "side": 1,
+      "message": "I\u0027d like stronger wording here. Also, could you mention this should probably be used by tests only?",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25dd368d_c3d65983",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1563,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-20T22:11:11Z",
+      "side": 1,
+      "message": "Please replace proptools.Bool calls with * everywhere in your cl. deviceProperties.Uncompress_dex should be non-nil where it\u0027s currently used, so you don\u0027t need to call it. Plus, dereferencing it without a check will allow us to detect coding mistakes.",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
