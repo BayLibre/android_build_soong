@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd33495a_030e4cb4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-20T07:12:30Z",
+      "side": 1,
+      "message": "Let\u0027s assume that `baz` is also in the same APEX. Then `foo` can\u0027t use private APIs from `baz` unless it explicitly uses `libs: [\"baz.impl\"]`, which I want to avoid.   Alternatively, `foo` could drop `sdk_version`(as is done in the second test), but that has its own downside; it will prevent `foo` from depending on any java_sdk_library that is outside of the APEX.\n\nSo, I think this should best be handled automatically by the build system.\n\n`libs: [\"baz\"]` shall be redirected to `baz.stub` or `baz.impl` depending on whether `foo` and `bar` are in the same APEX or not. apex_availability check can be implemented by letting them to report differently on `DepIsInSameApex`; only `baz.impl` should return true.\n\nsdk_version of foo will be ignored for the dependency to baz.impl. It will however be used to select stubs from outside of the APEX, as is currently implemented.",
+      "range": {
+        "startLine": 4102,
+        "startChar": 0,
+        "endLine": 4102,
+        "endChar": 25
+      },
+      "revId": "ee9a54af1ef5fbcc1cef4c6bc35bc2663a1b7248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
