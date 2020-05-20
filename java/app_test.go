@@ -2071,6 +2071,36 @@ func TestAndroidAppImport_Presigned(t *testing.T) {
 	}
 }
 
+func TestAndroidAppImport_Preprocessed(t *testing.T) {
+	ctx, _ := testJava(t, `
+		android_app_import {
+			name: "foo",
+			apk: "prebuilts/apk/app.apk",
+			presigned: true,
+			preprocessed: true,
+			dex_preopt: {
+				enabled: true,
+			},
+		}
+		`)
+
+	variant := ctx.ModuleForTests("foo", "android_common")
+
+	// Check dexpreopt outputs. They should exist.
+	if variant.MaybeOutput("dexpreopt/oat/arm64/package.vdex").Rule == nil ||
+		variant.MaybeOutput("dexpreopt/oat/arm64/package.odex").Rule == nil {
+		t.Errorf("can't find dexpreopt outputs.")
+	}
+
+	// Make sure signing and aligning were skipped.
+	if variant.MaybeOutput("signed/foo.apk").Rule != nil {
+		t.Errorf("signing rule shouldn't be included.")
+	}
+	if variant.MaybeOutput("zip-aligned/foo.apk").Rule != nil {
+		t.Errorf("aligning rule shouldn't be")
+	}
+}
+
 func TestAndroidAppImport_DefaultDevCert(t *testing.T) {
 	ctx, _ := testJava(t, `
 		android_app_import {
