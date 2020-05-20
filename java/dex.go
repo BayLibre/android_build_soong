@@ -188,7 +188,7 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 	outDir := android.PathForModuleOut(ctx, "dex")
 
 	zipFlags := "--ignore_missing_files"
-	if j.deviceProperties.UncompressDex {
+	if *j.deviceProperties.Uncompress_dex {
 		zipFlags += " -L 0"
 	}
 
@@ -235,7 +235,7 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 			},
 		})
 	}
-	if j.deviceProperties.UncompressDex {
+	if *j.deviceProperties.Uncompress_dex {
 		alignedJavalibJar := android.PathForModuleOut(ctx, "aligned", jarName)
 		TransformZipAlign(ctx, alignedJavalibJar, javalibJar)
 		javalibJar = alignedJavalibJar
