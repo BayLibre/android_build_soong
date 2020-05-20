@@ -383,6 +383,9 @@ type sdkLibraryProperties struct {
 	//  $(location <label>): the path to the droiddoc_option_files with name <label>
 	Droiddoc_options []string
 
+	// is set to true, Metalava will allow framework SDK to contain annotations.
+	Annotations_enabled *bool
+
 	// a list of top-level directories containing files to merge qualifier annotations
 	// (i.e. those intended to be included in the stubs written) from.
 	Merge_annotations_dirs []string
@@ -826,6 +829,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		Arg_files                        []string
 		Args                             *string
 		Java_version                     *string
+		Annotations_enabled              *bool
 		Merge_annotations_dirs           []string
 		Merge_inclusion_annotations_dirs []string
 		Generate_stubs                   *bool
@@ -881,6 +885,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		props.Java_version = module.sdkLibraryProperties.Stubs_java_version
 	}
 
+	props.Annotations_enabled = module.sdkLibraryProperties.Annotations_enabled
 	props.Merge_annotations_dirs = module.sdkLibraryProperties.Merge_annotations_dirs
 	props.Merge_inclusion_annotations_dirs = module.sdkLibraryProperties.Merge_inclusion_annotations_dirs
 
