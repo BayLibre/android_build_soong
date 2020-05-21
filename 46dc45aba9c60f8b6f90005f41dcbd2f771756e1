@@ -94,6 +94,30 @@
       "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c2613aa_d1cd0e1e",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-21T09:15:45Z",
+      "side": 1,
+      "message": "\u003e but it should be done as a follow up change.\n\nAck.",
+      "parentUuid": "f12d38a0_8465ba38",
+      "range": {
+        "startLine": 1246,
+        "startChar": 25,
+        "endLine": 1246,
+        "endChar": 47
+      },
+      "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
