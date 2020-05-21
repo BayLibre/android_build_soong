@@ -215,6 +215,24 @@
     },
     {
       "key": {
+        "uuid": "e92bbf70_81a91223",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2020-05-21T00:05:51Z",
+      "side": 1,
+      "message": "I added the rules to the top of this file.\n\nIt is past 1am here, would you mind finishing the CL?",
+      "parentUuid": "81667520_4e84bee7",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25dd368d_c3d65983",
         "filename": "java/java.go",
         "patchSetId": 2
