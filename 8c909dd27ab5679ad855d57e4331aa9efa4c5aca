@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b834ef3_9e52742b",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-21T19:44:16Z",
+      "side": 1,
+      "message": "nit: consider adding the condition here as well, just in case. Check TestAndroidTestImport_NoJinUncompressForPresigned to see how to test it if you decide to do this.",
+      "revId": "8c909dd27ab5679ad855d57e4331aa9efa4c5aca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43740df2_a7028e7a",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-21T19:44:16Z",
+      "side": 1,
+      "message": "Do we need this indirectness?",
+      "revId": "8c909dd27ab5679ad855d57e4331aa9efa4c5aca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
