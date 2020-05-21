@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "59480554_856252a6",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-05-21T20:03:58Z",
+      "side": 1,
+      "message": "Since one of presigned, certificate, default_dev_cert is required, I had been relying on the user to specify Presigned, but added this specifically just in case.",
+      "parentUuid": "7b834ef3_9e52742b",
+      "revId": "8c909dd27ab5679ad855d57e4331aa9efa4c5aca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43740df2_a7028e7a",
         "filename": "java/app.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "8c909dd27ab5679ad855d57e4331aa9efa4c5aca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a352496c_6331ad37",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-05-21T20:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43740df2_a7028e7a",
+      "revId": "8c909dd27ab5679ad855d57e4331aa9efa4c5aca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
