@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11635ea3_09da609e",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-21T01:54:06Z",
+      "side": 1,
+      "message": "I plan to fix this with b/157173193.",
+      "revId": "a9e92420e48e9de91099b54f0a7e3b6ec514dbd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
