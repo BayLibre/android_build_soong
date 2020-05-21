@@ -197,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "81667520_4e84bee7",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-21T00:03:21Z",
+      "side": 1,
+      "message": "I don\u0027t see disallow.go in the changed file list. Did you add it to your commit?\n\nAlso, in case you missed it, please be sure to add a couple of test cases (positive and negative) to:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/neverallow_test.go;l\u003d23;drc\u003dc5570ac9b126df313539227db14d59119f96dbfe",
+      "parentUuid": "e098a35b_986139d4",
+      "revId": "cbe531a498221cc2b6a3b4a8045231cc27b4e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25dd368d_c3d65983",
         "filename": "java/java.go",
         "patchSetId": 2
