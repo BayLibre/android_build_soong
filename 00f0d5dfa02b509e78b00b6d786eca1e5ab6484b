@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3654da8_936fe761",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-05-21T01:16:43Z",
+      "side": 1,
+      "message": "Please add this only to android_test_import. People will abuse this without understanding the ramifications if we put this in android_app_import. I get questions like \"Why does android_app_import do this? How can I skip it?\" all the time. I don\u0027t see any reasons to use this except for testing purposes at the moment.",
+      "revId": "00f0d5dfa02b509e78b00b6d786eca1e5ab6484b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
