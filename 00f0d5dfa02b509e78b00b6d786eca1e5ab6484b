@@ -16,6 +16,24 @@
       "revId": "00f0d5dfa02b509e78b00b6d786eca1e5ab6484b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34cf733c_0d61d1c7",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-05-21T16:20:31Z",
+      "side": 1,
+      "message": "Done, but not sure if I connected it through in the most typically go or soong way.",
+      "parentUuid": "d3654da8_936fe761",
+      "revId": "00f0d5dfa02b509e78b00b6d786eca1e5ab6484b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
