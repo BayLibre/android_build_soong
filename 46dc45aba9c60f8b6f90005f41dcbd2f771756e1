@@ -22,6 +22,30 @@
       "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b250221_6dd24d50",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-21T08:00:07Z",
+      "side": 1,
+      "message": "No. Firstly the mechanism is not there to do it. The OutputFilesProducer is used in three different places and getting the sdk version to at least some of those places would be tricky.\n\nSecondly, there is currently only one usage (there are some more to come) and it is a bit hard to extrapolate any sort of pattern from there. FTR it\u0027s sdk_version is \"core_platform\".\n\nThirdly, if we ever get to the point where we are generating JavaDoc from the stubs then I can imagine that we would need to build the JavaDoc for public/system/module-lib using all the relevant stubs for each API surface with sdk_version: \"none\" in all cases. So, we wouldn\u0027t have anything to differentiate.",
+      "parentUuid": "e92b3409_3448ba1d",
+      "range": {
+        "startLine": 1246,
+        "startChar": 25,
+        "endLine": 1246,
+        "endChar": 47
+      },
+      "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
