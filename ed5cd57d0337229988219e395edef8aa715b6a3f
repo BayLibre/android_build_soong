@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "982819d1_f6dfc99a",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-21T01:08:33Z",
+      "side": 1,
+      "message": "we don\u0027t have extservice in aosp",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 2
+      },
+      "revId": "ed5cd57d0337229988219e395edef8aa715b6a3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
