@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4da3d56_e830fc91",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-05-21T07:58:09Z",
+      "side": 1,
+      "message": "worse?",
+      "range": {
+        "startLine": 411,
+        "startChar": 82,
+        "endLine": 411,
+        "endChar": 86
+      },
+      "revId": "1296db5c3010787cc9b9d7c159b207d0259d5878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "090d5782_6692a214",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-05-21T07:58:09Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 460,
+        "startChar": 22,
+        "endLine": 460,
+        "endChar": 24
+      },
+      "revId": "1296db5c3010787cc9b9d7c159b207d0259d5878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
