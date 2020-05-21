@@ -337,6 +337,30 @@
     },
     {
       "key": {
+        "uuid": "3e441561_30635d35",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-21T07:34:15Z",
+      "side": 1,
+      "message": "\u003e I think removing that hole is worth this change.\n\nI can\u0027t disagree with this.\n\n\u003e I think that libs: [\"android.test.mock.stubs\"] should behave the same as libs: [\"android.test.mock\"].\n\nFor now, yes, but I am going to remove all the direct dependencies. It won\u0027t take long. When that is done, perhaps we could partially revert this change as you also said \u0027direct dependency\u0027 is bad.\n\n\u003e Not AFAIK because in those cases the developer has already been through the pain above and added it to the manifest.\n\nYeah, that\u0027s a good to know.\n\n\u003e My intention was to make future use of sdk libraries a little bit easier given that we will be adding lots more in future.\n\nI understand. In my observation, many of the existing use of the \".stubs\" libraries seem to be just copy/pasted. Many users don\u0027t actually understand the difference between \"foo.stubs\" and \"foo\".. especially in the context of tests. So, I think it\u0027s more important to remove those bad examples than making those bad examples safer (which I don\u0027t think is unnecessary though).",
+      "parentUuid": "92134d3a_c5eb4f55",
+      "range": {
+        "startLine": 2449,
+        "startChar": 18,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "0facbe0cd76326d389c3e5c722577ca3f7db84f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9df8459_413f4aa1",
         "filename": "java/java.go",
         "patchSetId": 6
