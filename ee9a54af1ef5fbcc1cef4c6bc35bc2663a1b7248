@@ -46,6 +46,30 @@
       "revId": "ee9a54af1ef5fbcc1cef4c6bc35bc2663a1b7248",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0349777b_02b187f1",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-21T07:18:08Z",
+      "side": 1,
+      "message": "That\u0027s already the case for native libs. I don\u0027t think making it possible for a module author to depend on stubs even if they are in the same APEX won\u0027t make our life much better.\n\nAlso, it is unsure if we ever want to split an existing APEX. Rather, we will want to merge as more part of the OS are modularized.\n\n\u003e Do you have the same objection to \"foo(impl)\"\n\nHonestly, I feel fine allowing it, as long as ...\n\n1) `foo` (without any modifier) actually means `foo(auto)` which is interpreted as foo(impl) or foo(stub) depending on the context and\n2) the use of `foo(impl)` is strictly prohibited across APEXes\n\n\u003e Depending on implementation code is something that should be avoided\n\nI think this argument might be too opinionated. I don\u0027t agree with this. It\u0027s within the module. We don\u0027t have a good reason to discourage or demote the use of impl libs happening inside a module.",
+      "parentUuid": "d3920ee6_40ada744",
+      "range": {
+        "startLine": 4102,
+        "startChar": 0,
+        "endLine": 4102,
+        "endChar": 25
+      },
+      "revId": "ee9a54af1ef5fbcc1cef4c6bc35bc2663a1b7248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
