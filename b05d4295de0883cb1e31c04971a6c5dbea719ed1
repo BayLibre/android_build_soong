@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1900ec5b_692d6cf8",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-21T04:36:05Z",
+      "side": 1,
+      "message": "This should also be based on apex variant. I understand that\u0027s out of scope of this very change, but wanted to highlight that.",
+      "range": {
+        "startLine": 1041,
+        "startChar": 0,
+        "endLine": 1041,
+        "endChar": 29
+      },
+      "revId": "b05d4295de0883cb1e31c04971a6c5dbea719ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
