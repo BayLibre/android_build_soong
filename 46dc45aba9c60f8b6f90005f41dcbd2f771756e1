@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e92b3409_3448ba1d",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-21T04:54:17Z",
+      "side": 1,
+      "message": "do you think this should better be driven by the sdk_version of bar?",
+      "range": {
+        "startLine": 1246,
+        "startChar": 25,
+        "endLine": 1246,
+        "endChar": 47
+      },
+      "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
