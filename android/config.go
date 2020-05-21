@@ -854,7 +854,8 @@ func (c *config) ArtUseReadBarrier() bool {
 	return Bool(c.productVariables.ArtUseReadBarrier)
 }
 
-func (c *config) EnforceRROForModule(name string) bool {
+func (c *config) EnforceRROForModule(ctx ModuleContext) bool {
+	name := ctx.ModuleName()
 	enforceList := c.productVariables.EnforceRROTargets
 	// TODO(b/150820813) Some modules depend on static overlay, remove this after eliminating the dependency.
 	exemptedList := c.productVariables.EnforceRROExemptedTargets
@@ -865,7 +866,9 @@ func (c *config) EnforceRROForModule(name string) bool {
 	}
 	if enforceList != nil {
 		if InList("*", enforceList) {
-			return true
+			if ctx.Platform() || ctx.SystemExtSpecific() {
+				return true
+			}
 		}
 		return InList(name, enforceList)
 	}
