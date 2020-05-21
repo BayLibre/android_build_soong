@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "176e3927_04ddf9f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-05-21T09:07:38Z",
+      "side": 1,
+      "message": "Please put precise command here, it\u0027s hard for non-ART developers to find out how to run gtests.",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "a9e92420e48e9de91099b54f0a7e3b6ec514dbd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11635ea3_09da609e",
         "filename": "java/java.go",
         "patchSetId": 7
