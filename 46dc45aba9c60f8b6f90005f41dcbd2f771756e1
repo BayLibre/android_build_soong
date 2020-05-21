@@ -70,6 +70,30 @@
       "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12d38a0_8465ba38",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-21T09:01:45Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I just checked and \"\" is used in Library in quite a few tests and also in the build for real. It appears to be used most often for accessing CTS apps and tests in general but it is used for other things as well, like framework-minus-apex and \nservices.core.unboosted.\n\nI can\u0027t find any usages of \"\" on SdkLibrary so it might be possible to tighten that down but it should be done as a follow up change.",
+      "parentUuid": "15cf8469_c7854b20",
+      "range": {
+        "startLine": 1246,
+        "startChar": 25,
+        "endLine": 1246,
+        "endChar": 47
+      },
+      "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
