@@ -93,6 +93,30 @@
       "revId": "0f8faffdc0e039bb73305d2a53a2d17029cdb469",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84a08c54_c2df9557",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-21T07:36:19Z",
+      "side": 1,
+      "message": "\u003e There  are still stubs created for them.\n\nI see. So api_only is actually no_impl.",
+      "parentUuid": "c75635b2_7b43ff2d",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 28
+      },
+      "revId": "0f8faffdc0e039bb73305d2a53a2d17029cdb469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
