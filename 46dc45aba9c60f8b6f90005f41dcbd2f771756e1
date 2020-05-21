@@ -46,6 +46,30 @@
       "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15cf8469_c7854b20",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-21T08:07:34Z",
+      "side": 1,
+      "message": "Perhaps I was asking what should be the default (i.e. \":foo\"). Currently, in this CL, it looks like it is nil in case of import and the library itself in case of java_sdk_library. I wish we had a reasonable default (or don\u0027t allow it at all, i.e. fail fast)",
+      "parentUuid": "7b250221_6dd24d50",
+      "range": {
+        "startLine": 1246,
+        "startChar": 25,
+        "endLine": 1246,
+        "endChar": 47
+      },
+      "revId": "46dc45aba9c60f8b6f90005f41dcbd2f771756e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
