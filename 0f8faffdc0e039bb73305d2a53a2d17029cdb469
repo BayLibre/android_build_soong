@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f98b9866_6067c2ca",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-21T07:27:16Z",
+      "side": 1,
+      "message": "Stubs and txt files.",
+      "parentUuid": "bcbf8744_0a4e0ae5",
+      "range": {
+        "startLine": 436,
+        "startChar": 12,
+        "endLine": 436,
+        "endChar": 19
+      },
+      "revId": "0f8faffdc0e039bb73305d2a53a2d17029cdb469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db608d9e_b573c678",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "0f8faffdc0e039bb73305d2a53a2d17029cdb469",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c75635b2_7b43ff2d",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-21T07:27:16Z",
+      "side": 1,
+      "message": "No. api_only means no implementation not just the api.txt files. There  are still stubs created for them.",
+      "parentUuid": "db608d9e_b573c678",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 28
+      },
+      "revId": "0f8faffdc0e039bb73305d2a53a2d17029cdb469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
