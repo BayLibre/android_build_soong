@@ -33,6 +33,24 @@
       "revId": "e883e9b114f1a2b5043ab85ff57246c22ccc6be6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b8cc4f2_3464e373",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-25T04:08:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure.\n\nThis clause is for \"java_library_static\"(not .IsAar \u0026\u0026 not .IsHostOnly). I thought that \"java_library_static\" libraries described in .pom might not rely on SDK actually. In that case, I see \"14\" is used in many places as the lowest value for it. For example, https://cs.android.com/androidx/platform/frameworks/support/+/androidx-master-dev:buildSrc/src/main/kotlin/androidx/build/SupportConfig.kt;l\u003d24?q\u003dSupportConfig.kt",
+      "parentUuid": "3d8f311d_504ab9be",
+      "revId": "e883e9b114f1a2b5043ab85ff57246c22ccc6be6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
