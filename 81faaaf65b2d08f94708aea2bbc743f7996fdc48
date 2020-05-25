@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb840d47_d19f1be6",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3353,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-25T00:26:00Z",
+      "side": 1,
+      "message": "I think these should be without the \":\" char.",
+      "range": {
+        "startLine": 3353,
+        "startChar": 54,
+        "endLine": 3353,
+        "endChar": 55
+      },
+      "revId": "81faaaf65b2d08f94708aea2bbc743f7996fdc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
