@@ -625,7 +625,7 @@ func makeApexAvailableWhitelist() map[string][]string {
 		"libtetherutilsjni",
 		"libvndksupport",
 		"net-utils-framework-common",
-		"netd_aidl_interface-V3-java",
+		"netd_aidl_interface-V4-java",
 		"netlink-client",
 		"networkstack-aidl-interfaces-java",
 		"tethering-aidl-interfaces-java",
