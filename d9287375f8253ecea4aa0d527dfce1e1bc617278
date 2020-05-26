@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "423f12d1_eedd4139",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-05-26T19:16:41Z",
+      "side": 1,
+      "message": "Isn\u0027t this a case where we\u0027d want to combine the two remote executions so that we didn\u0027t need to serialize them (with a download in between)? It feels like this could negatively affect the incremental build case (even though that may only be one or two new files to download).",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 52
+      },
+      "revId": "d9287375f8253ecea4aa0d527dfce1e1bc617278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
