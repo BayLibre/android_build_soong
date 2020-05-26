@@ -46,6 +46,30 @@
       "revId": "d9287375f8253ecea4aa0d527dfce1e1bc617278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c6c2bd_9348e7f5",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-05-26T21:20:10Z",
+      "side": 1,
+      "message": "You can use [proptools.]ShellEscape/NinjaAndShellEscape, but that can quickly get complicated. Converting these to rulebuilder could be a better approach.",
+      "parentUuid": "7c2b9d65_d26cf782",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 52
+      },
+      "revId": "d9287375f8253ecea4aa0d527dfce1e1bc617278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
