@@ -87,6 +87,24 @@
       "revId": "e883e9b114f1a2b5043ab85ff57246c22ccc6be6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32012d32_ac2aa383",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-26T07:41:27Z",
+      "side": 1,
+      "message": "AFAIK, these libs are built with gradle and whether \"android.*\" is used or not is reflected in pom as packaging format is set to \"aar\" if it uses \"android.*\".",
+      "parentUuid": "60c4c475_a95a5e8c",
+      "revId": "e883e9b114f1a2b5043ab85ff57246c22ccc6be6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
