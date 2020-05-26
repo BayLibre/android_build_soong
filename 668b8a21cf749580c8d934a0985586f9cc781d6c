@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e5a6614_a421c634",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-26T17:11:45Z",
+      "side": 1,
+      "message": "I\u0027m guessing this whole \"extrafooters\" could be cleaned up significantly. now. Shouldn\u0027t one timestamp file be enough?",
+      "range": {
+        "startLine": 509,
+        "startChar": 5,
+        "endLine": 510,
+        "endChar": 50
+      },
+      "revId": "668b8a21cf749580c8d934a0985586f9cc781d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
