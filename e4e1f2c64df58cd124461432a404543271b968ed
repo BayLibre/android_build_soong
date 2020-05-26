@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9d95ba7_29932bbb",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-26T20:27:36Z",
+      "side": 1,
+      "message": "I guess there is no easy/dirty fix to exclude this file from presubmits? Assuming the diffAllowedApexDepsInfoRule check will be in droid, we don\u0027t need presubmits to modify it.\n\nThe other option is to put this somewhere in frameworks/base/. Is that better in terms of extra presubmits?\n\nAs a follow up I can also work on making the whitelist sharded, and have allowed_deps.txt next to the Android.bp files that define individual modules. However, I want this to be submitted as V0 for now, and focus on lint in Q2. (and obviously prioritize this if people complain.)\n\nI\u0027ve added OWNERS file here.",
+      "parentUuid": "b31ba6f3_4b32e256",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c33b0bb_12b96409",
         "filename": "apex/allowed_deps.txt",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-20T20:50:59Z",
       "side": 1,
       "message": "IIRC (and I may be wrong or out of date) the goal here was to list which modules had agreed to the extra mainline requirements and could be used as a dependency anywhere, and not to whitelist every individual dependency of every module?",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b803b6e_191756b0",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-26T20:27:36Z",
+      "side": 1,
+      "message": "We are propagating min_sdk_version attributes across the codebase and asking module owners to approve those. That covers part of the \"ownership\" problem, as people are now more aware.\n\nWe\u0027ll have to populate the whitelist somehow regardless, whether we start with all these or add them individually later. I don\u0027t think we\u0027ll realistically get to the later before end of Q2. De-facto these modules are being tested today with all these dependencies already. New changes will be caught here and prevent regressions.\n\nre: combined list of deps vs per module deps:\n- If we decide to shard this file (see other comment), we\u0027ll end up with per module deps anyhow.\n- Significant chunk of the deps are non-overlapping, as this list only tracks static deps.\n- Seeing per module deps is also nice to know whether the static dependency is expected or not (size bloat and correctness issues).\nThe major downside of \"all individual deps of every module\" is that with sharded whitelist, library owners will be required to update multiple files in different projects. I don\u0027t have a good intuition of the flatness of the android build graph though: are most of the dep changes happen at top apex/apk level, or transitively by library owners?\n\nI expect Dario to also chime in on the format once I add more people to review. :-)",
+      "parentUuid": "1c33b0bb_12b96409",
       "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "0e07a34f_ed30b9c6",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-26T20:27:36Z",
+      "side": 1,
+      "message": "Can\u0027t use process substitution like that: Soong complains about unexpected \"(\". Perhaps a bug in how soong substitutes variables and/or invokes bash?\n\nLet me know which you think is more readable: using ${out}.tmp or pipes like in the latest patch.",
+      "parentUuid": "9292ff13_52f77595",
+      "range": {
+        "startLine": 54,
+        "startChar": 34,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fc8cf7c_7070b493",
         "filename": "apex/apex_singleton.go",
         "patchSetId": 2
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "e0ec1737_d080aea0",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-26T20:27:36Z",
+      "side": 1,
+      "message": "Created a separate script.\n\nOOC, if the script is a standalone sh_binary that gets executed locally (if we can guarantee that somehow), would it be okay to have m apex-allowed-deps-update? This is roughly equivalent on how we did a similar \"update source file\" with `blaze run :script` in google3, as people there preferred running known commands (g4/blaze) to interact with the source. I guess the sentiment in android world is different when it comes to scripting though.",
+      "parentUuid": "3fc8cf7c_7070b493",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ac83bb3_5a1d11c8",
         "filename": "apex/apex_singleton.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3534a8f9_6bff6f4c",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-26T20:27:36Z",
+      "side": 1,
+      "message": "This isn\u0027t needed anymore, since I\u0027ve replaced it with a standalone shell script.",
+      "parentUuid": "9ac83bb3_5a1d11c8",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
