@@ -189,8 +189,8 @@ func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs,
 	// collect jniLibs. Notice that a.filesInfo is already sorted
 	var jniLibs []string
 	for _, fi := range a.filesInfo {
-		if fi.isJniLib {
-			jniLibs = append(jniLibs, fi.builtFile.Base())
+		if fi.IsJniLib {
+			jniLibs = append(jniLibs, fi.BuiltFile.Base())
 		}
 	}
 	if len(jniLibs) > 0 {
@@ -287,10 +287,10 @@ func (a *apexBundle) buildBundleConfig(ctx android.ModuleContext) android.Output
 	// collect the manifest names and paths of android apps
 	// if their manifest names are overridden
 	for _, fi := range a.filesInfo {
-		if fi.class != app {
+		if fi.Class != android.ApexFileClass_app {
 			continue
 		}
-		packageName := fi.overriddenPackageName
+		packageName := fi.OverriddenPackageName
 		if packageName != "" {
 			config.Apex_config.Apex_embedded_apk_config = append(
 				config.Apex_config.Apex_embedded_apk_config,
@@ -338,20 +338,20 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	for _, fi := range a.filesInfo {
 		destPath := android.PathForModuleOut(ctx, "image"+suffix, fi.Path()).String()
 		copyCommands = append(copyCommands, "mkdir -p "+filepath.Dir(destPath))
-		if a.linkToSystemLib && fi.transitiveDep && fi.AvailableToPlatform() {
+		if a.linkToSystemLib && fi.TransitiveDep && fi.AvailableToPlatform() {
 			// TODO(jiyong): pathOnDevice should come from fi.module, not being calculated here
 			pathOnDevice := filepath.Join("/system", fi.Path())
 			copyCommands = append(copyCommands, "ln -sfn "+pathOnDevice+" "+destPath)
 		} else {
-			copyCommands = append(copyCommands, "cp -f "+fi.builtFile.String()+" "+destPath)
-			implicitInputs = append(implicitInputs, fi.builtFile)
+			copyCommands = append(copyCommands, "cp -f "+fi.BuiltFile.String()+" "+destPath)
+			implicitInputs = append(implicitInputs, fi.BuiltFile)
 		}
 		// create additional symlinks pointing the file inside the APEX
 		for _, symlinkPath := range fi.SymlinkPaths() {
 			symlinkDest := android.PathForModuleOut(ctx, "image"+suffix, symlinkPath).String()
 			copyCommands = append(copyCommands, "ln -sfn "+filepath.Base(destPath)+" "+symlinkDest)
 		}
-		for _, d := range fi.dataPaths {
+		for _, d := range fi.DataPaths {
 			// TODO(eakammer): This is now the third repetition of ~this logic for test paths, refactoring should be possible
 			relPath := d.Rel()
 			dataPath := d.String()
@@ -359,7 +359,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 				panic(fmt.Errorf("path %q does not end with %q", dataPath, relPath))
 			}
 
-			dataDest := android.PathForModuleOut(ctx, "image"+suffix, fi.apexRelativePath(relPath)).String()
+			dataDest := android.PathForModuleOut(ctx, "image"+suffix, fi.ApexRelativePath(relPath)).String()
 
 			copyCommands = append(copyCommands, "cp -f "+d.String()+" "+dataDest)
 			implicitInputs = append(implicitInputs, d)
@@ -417,19 +417,19 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		var readOnlyPaths = []string{"apex_manifest.json", "apex_manifest.pb"}
 		var executablePaths []string // this also includes dirs
 		for _, f := range a.filesInfo {
-			pathInApex := filepath.Join(f.installDir, f.builtFile.Base())
-			if f.installDir == "bin" || strings.HasPrefix(f.installDir, "bin/") {
+			pathInApex := filepath.Join(f.InstallDir, f.BuiltFile.Base())
+			if f.InstallDir == "bin" || strings.HasPrefix(f.InstallDir, "bin/") {
 				executablePaths = append(executablePaths, pathInApex)
-				for _, d := range f.dataPaths {
-					readOnlyPaths = append(readOnlyPaths, filepath.Join(f.installDir, d.Rel()))
+				for _, d := range f.DataPaths {
+					readOnlyPaths = append(readOnlyPaths, filepath.Join(f.InstallDir, d.Rel()))
 				}
-				for _, s := range f.symlinks {
-					executablePaths = append(executablePaths, filepath.Join(f.installDir, s))
+				for _, s := range f.Symlinks {
+					executablePaths = append(executablePaths, filepath.Join(f.InstallDir, s))
 				}
 			} else {
 				readOnlyPaths = append(readOnlyPaths, pathInApex)
 			}
-			dir := f.installDir
+			dir := f.InstallDir
 			for !android.InList(dir, executablePaths) && dir != "" {
 				executablePaths = append(executablePaths, dir)
 				dir, _ = filepath.Split(dir) // move up to the parent
@@ -644,7 +644,7 @@ func (a *apexBundle) buildFilesInfo(ctx android.ModuleContext) {
 	if a.installable() {
 		// For flattened APEX, do nothing but make sure that APEX manifest and apex_pubkey are also copied along
 		// with other ordinary files.
-		a.filesInfo = append(a.filesInfo, newApexFile(ctx, a.manifestPbOut, "apex_manifest.pb", ".", etc, nil))
+		a.filesInfo = append(a.filesInfo, newApexFile(ctx, a.manifestPbOut, "apex_manifest.pb", ".", android.ApexFileClass_etc, nil))
 
 		// rename to apex_pubkey
 		copiedPubkey := android.PathForModuleOut(ctx, "apex_pubkey")
@@ -653,14 +653,14 @@ func (a *apexBundle) buildFilesInfo(ctx android.ModuleContext) {
 			Input:  a.public_key_file,
 			Output: copiedPubkey,
 		})
-		a.filesInfo = append(a.filesInfo, newApexFile(ctx, copiedPubkey, "apex_pubkey", ".", etc, nil))
+		a.filesInfo = append(a.filesInfo, newApexFile(ctx, copiedPubkey, "apex_pubkey", ".", android.ApexFileClass_etc, nil))
 
 		if a.properties.ApexType == flattenedApex {
 			apexBundleName := a.Name()
 			for _, fi := range a.filesInfo {
-				dir := filepath.Join("apex", apexBundleName, fi.installDir)
-				target := ctx.InstallFile(android.PathForModuleInstall(ctx, dir), fi.builtFile.Base(), fi.builtFile)
-				for _, sym := range fi.symlinks {
+				dir := filepath.Join("apex", apexBundleName, fi.InstallDir)
+				target := ctx.InstallFile(android.PathForModuleInstall(ctx, dir), fi.BuiltFile.Base(), fi.BuiltFile)
+				for _, sym := range fi.Symlinks {
 					ctx.InstallSymlink(android.PathForModuleInstall(ctx, dir), sym, target)
 				}
 			}

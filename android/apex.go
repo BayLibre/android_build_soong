@@ -16,6 +16,7 @@ package android
 
 import (
 	"fmt"
+	"path/filepath"
 	"sort"
 	"strconv"
 	"strings"
@@ -476,4 +477,114 @@ func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion
 			"content": flatContent.String(),
 		},
 	})
+}
+
+type ApexFileClass int
+
+const (
+	ApexFileClass_etc ApexFileClass = iota
+	ApexFileClass_nativeSharedLib
+	ApexFileClass_nativeExecutable
+	ApexFileClass_shBinary
+	ApexFileClass_pyBinary
+	ApexFileClass_goBinary
+	ApexFileClass_javaSharedLib
+	ApexFileClass_nativeTest
+	ApexFileClass_app
+)
+
+func (class ApexFileClass) NameInMake() string {
+	switch class {
+	case ApexFileClass_etc:
+		return "ETC"
+	case ApexFileClass_nativeSharedLib:
+		return "SHARED_LIBRARIES"
+	case ApexFileClass_nativeExecutable, ApexFileClass_shBinary,
+		ApexFileClass_pyBinary, ApexFileClass_goBinary:
+		return "EXECUTABLES"
+	case ApexFileClass_javaSharedLib:
+		return "JAVA_LIBRARIES"
+	case ApexFileClass_nativeTest:
+		return "NATIVE_TESTS"
+	case ApexFileClass_app:
+		// b/142537672 Why isn't this APP? We want to have full control over
+		// the paths and file names of the apk file under the flattend APEX.
+		// If this is set to APP, then the paths and file names are modified
+		// by the Make build system. For example, it is installed to
+		// /system/apex/<apexname>/app/<Appname>/<apexname>.<Appname>/ instead of
+		// /system/apex/<apexname>/app/<Appname> because the build system automatically
+		// appends Module name (which is <apexname>.<Appname> to the path.
+		return "ETC"
+	default:
+		panic(fmt.Errorf("unknown Class %d", class))
+	}
+}
+
+// ApexFile represents a file in an APEX bundle
+type ApexFile struct {
+	BuiltFile  Path
+	ModuleName string
+	InstallDir string
+	Class      ApexFileClass
+	Module     Module
+	// list of Symlinks that will be created in InstallDir that point to this ApexFile
+	Symlinks      []string
+	DataPaths     Paths
+	TransitiveDep bool
+	ModuleDir     string
+
+	RequiredModuleNames       []string
+	TargetRequiredModuleNames []string
+	HostRequiredModuleNames   []string
+
+	JacocoReportClassesFile Path        // only for javalibs and apps
+	Certificate             Certificate // only for apps
+	OverriddenPackageName   string      // only for apps
+
+	IsJniLib bool
+}
+
+func (af *ApexFile) Ok() bool {
+	return af.BuiltFile != nil && af.BuiltFile.String() != ""
+}
+
+func (af *ApexFile) ApexRelativePath(path string) string {
+	return filepath.Join(af.InstallDir, path)
+}
+
+// Path() returns path of this apex file relative to the APEX root
+func (af *ApexFile) Path() string {
+	return af.ApexRelativePath(af.BuiltFile.Base())
+}
+
+// SymlinkPaths() returns paths of the Symlinks (if any) relative to the APEX root
+func (af *ApexFile) SymlinkPaths() []string {
+	var ret []string
+	for _, symlink := range af.Symlinks {
+		ret = append(ret, af.ApexRelativePath(symlink))
+	}
+	return ret
+}
+
+func (af *ApexFile) AvailableToPlatform() bool {
+	if af.Module == nil {
+		return false
+	}
+	if am, ok := af.Module.(ApexModule); ok {
+		return am.AvailableFor(AvailableToPlatform)
+	}
+	return false
+}
+
+type Certificate struct {
+	Pem, Key  Path
+	Presigned bool
+}
+
+func (c Certificate) AndroidMkString() string {
+	if c.Presigned {
+		return "PRESIGNED"
+	} else {
+		return c.Pem.String()
+	}
 }

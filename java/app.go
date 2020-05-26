@@ -96,6 +96,25 @@ func (as *AndroidAppSet) Privileged() bool {
 	return Bool(as.properties.Privileged)
 }
 
+func (as *AndroidAppSet) ApexFileForModule(ctx android.BaseModuleContext, _ string) ([]android.ApexFile, bool) {
+	appDir := "app"
+	if as.Privileged() {
+		appDir = "priv-app"
+	}
+	return []android.ApexFile{{
+		BuiltFile:                 as.packedOutput,
+		ModuleName:                as.Name(),
+		InstallDir:                filepath.Join(appDir, as.BaseModuleName()),
+		Class:                     android.ApexFileClass_app,
+		Module:                    as,
+		ModuleDir:                 ctx.OtherModuleDir(as),
+		RequiredModuleNames:       as.RequiredModuleNames(),
+		TargetRequiredModuleNames: as.TargetRequiredModuleNames(),
+		HostRequiredModuleNames:   as.HostRequiredModuleNames(),
+		Certificate:               presignedCertificate,
+	}}, false
+}
+
 var TargetCpuAbi = map[string]string{
 	"arm":    "ARMEABI_V7A",
 	"arm64":  "ARM64_V8A",
@@ -277,7 +296,7 @@ type AndroidApp struct {
 
 	usesLibrary usesLibrary
 
-	certificate Certificate
+	certificate android.Certificate
 
 	appProperties appProperties
 
@@ -320,7 +339,7 @@ func (a *AndroidApp) OutputFile() android.Path {
 	return a.outputFile
 }
 
-func (a *AndroidApp) Certificate() Certificate {
+func (a *AndroidApp) Certificate() android.Certificate {
 	return a.certificate
 }
 
@@ -330,20 +349,7 @@ func (a *AndroidApp) JniCoverageOutputs() android.Paths {
 
 var _ AndroidLibraryDependency = (*AndroidApp)(nil)
 
-type Certificate struct {
-	Pem, Key  android.Path
-	presigned bool
-}
-
-var presignedCertificate = Certificate{presigned: true}
-
-func (c Certificate) AndroidMkString() string {
-	if c.presigned {
-		return "PRESIGNED"
-	} else {
-		return c.Pem.String()
-	}
-}
+var presignedCertificate = android.Certificate{Presigned: true}
 
 func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 	a.Module.deps(ctx)
@@ -663,23 +669,23 @@ func (a *AndroidApp) noticeBuildActions(ctx android.ModuleContext) {
 
 // Reads and prepends a main cert from the default cert dir if it hasn't been set already, i.e. it
 // isn't a cert module reference. Also checks and enforces system cert restriction if applicable.
-func processMainCert(m android.ModuleBase, certPropValue string, certificates []Certificate, ctx android.ModuleContext) []Certificate {
+func processMainCert(m android.ModuleBase, certPropValue string, certificates []android.Certificate, ctx android.ModuleContext) []android.Certificate {
 	if android.SrcIsModule(certPropValue) == "" {
-		var mainCert Certificate
+		var mainCert android.Certificate
 		if certPropValue != "" {
 			defaultDir := ctx.Config().DefaultAppCertificateDir(ctx)
-			mainCert = Certificate{
+			mainCert = android.Certificate{
 				Pem: defaultDir.Join(ctx, certPropValue+".x509.pem"),
 				Key: defaultDir.Join(ctx, certPropValue+".pk8"),
 			}
 		} else {
 			pem, key := ctx.Config().DefaultAppCertificate(ctx)
-			mainCert = Certificate{
+			mainCert = android.Certificate{
 				Pem: pem,
 				Key: key,
 			}
 		}
-		certificates = append([]Certificate{mainCert}, certificates...)
+		certificates = append([]android.Certificate{mainCert}, certificates...)
 	}
 
 	if !m.Platform() {
@@ -790,10 +796,10 @@ type appDepsInterface interface {
 
 func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 	shouldCollectRecursiveNativeDeps bool,
-	checkNativeSdkVersion bool) ([]jniLib, []Certificate) {
+	checkNativeSdkVersion bool) ([]jniLib, []android.Certificate) {
 
 	var jniLibs []jniLib
-	var certificates []Certificate
+	var certificates []android.Certificate
 	seenModulePaths := make(map[string]bool)
 
 	if checkNativeSdkVersion {
@@ -929,6 +935,10 @@ func (a *AndroidApp) Privileged() bool {
 	return Bool(a.appProperties.Privileged)
 }
 
+func (a *AndroidApp) ApexFileForModule(ctx android.BaseModuleContext, _ string) ([]android.ApexFile, bool) {
+	return []android.ApexFile{a.apexFile(ctx, ctx.OtherModuleDir(a))}, true
+}
+
 func (a *AndroidApp) IsNativeCoverageNeeded(ctx android.BaseModuleContext) bool {
 	return ctx.Device() && (ctx.DeviceConfig().NativeCoverageEnabled() || ctx.DeviceConfig().ClangCoverageEnabled())
 }
@@ -946,6 +956,26 @@ func (a *AndroidApp) MarkAsCoverageVariant(coverage bool) {
 }
 
 func (a *AndroidApp) EnableCoverageIfNeeded() {}
+
+func (a *AndroidApp) apexFile(ctx android.BaseModuleContext, moduleDir string) android.ApexFile {
+	appDir := "app"
+	if a.Privileged() {
+		appDir = "priv-app"
+	}
+	return android.ApexFile{
+		BuiltFile:                 a.outputFile,
+		ModuleName:                a.Name(),
+		InstallDir:                filepath.Join(appDir, a.installApkName),
+		Class:                     android.ApexFileClass_app,
+		Module:                    a,
+		ModuleDir:                 moduleDir,
+		RequiredModuleNames:       a.RequiredModuleNames(),
+		TargetRequiredModuleNames: a.TargetRequiredModuleNames(),
+		HostRequiredModuleNames:   a.HostRequiredModuleNames(),
+		Certificate:               a.Certificate(),
+		OverriddenPackageName:     a.overriddenManifestPackageName,
+	}
+}
 
 var _ cc.Coverage = (*AndroidApp)(nil)
 
@@ -1070,6 +1100,11 @@ func (a *AndroidTest) OverridablePropertiesDepsMutator(ctx android.BottomUpMutat
 	}
 }
 
+func (a *AndroidTest) ApexFileForModule(ctx android.BaseModuleContext, _ string) ([]android.ApexFile, bool) {
+	ctx.PropertyErrorf(ctx.OtherModuleType(a), "android_test module cannot be part of .apex")
+	return []android.ApexFile{}, false
+}
+
 // android_test compiles test sources and Android resources into an Android application package `.apk` file and
 // creates an `AndroidTest.xml` file to allow running the test with `atest` or a `TEST_MAPPING` file.
 func AndroidTestFactory() android.Module {
@@ -1122,6 +1157,10 @@ func (a *AndroidTestHelperApp) InstallInTestcases() bool {
 	return true
 }
 
+func (a *AndroidTestHelperApp) ApexFileForModule(ctx android.BaseModuleContext, _ string) ([]android.ApexFile, bool) {
+	return []android.ApexFile{a.apexFile(ctx, ctx.OtherModuleDir(a))}, false
+}
+
 // android_test_helper_app compiles sources and Android resources into an Android application package `.apk` file that
 // will be used by tests, but does not produce an `AndroidTest.xml` file so the module will not be run directly as a
 // test.
@@ -1155,7 +1194,7 @@ func AndroidTestHelperAppFactory() android.Module {
 type AndroidAppCertificate struct {
 	android.ModuleBase
 	properties  AndroidAppCertificateProperties
-	Certificate Certificate
+	Certificate android.Certificate
 }
 
 type AndroidAppCertificateProperties struct {
@@ -1174,7 +1213,7 @@ func AndroidAppCertificateFactory() android.Module {
 
 func (c *AndroidAppCertificate) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	cert := String(c.properties.Certificate)
-	c.Certificate = Certificate{
+	c.Certificate = android.Certificate{
 		Pem: android.PathForModuleSrc(ctx, cert+".x509.pem"),
 		Key: android.PathForModuleSrc(ctx, cert+".pk8"),
 	}
@@ -1255,7 +1294,7 @@ type AndroidAppImport struct {
 	archVariants interface{}
 
 	outputFile  android.Path
-	certificate Certificate
+	certificate android.Certificate
 
 	dexpreopter
 
@@ -1521,7 +1560,7 @@ func (a *AndroidAppImport) JacocoReportClassesFile() android.Path {
 	return nil
 }
 
-func (a *AndroidAppImport) Certificate() Certificate {
+func (a *AndroidAppImport) Certificate() android.Certificate {
 	return a.certificate
 }
 
@@ -1564,6 +1603,25 @@ func (a *AndroidAppImport) sdkVersion() sdkSpec {
 
 func (a *AndroidAppImport) minSdkVersion() sdkSpec {
 	return sdkSpecFrom("")
+}
+
+func (a *AndroidAppImport) ApexFileForModule(ctx android.BaseModuleContext, _ string) ([]android.ApexFile, bool) {
+	appDir := "app"
+	if a.Privileged() {
+		appDir = "priv-app"
+	}
+	return []android.ApexFile{{
+		BuiltFile:                 a.outputFile,
+		ModuleName:                a.Name(),
+		InstallDir:                filepath.Join(appDir, a.BaseModuleName()),
+		Class:                     android.ApexFileClass_app,
+		Module:                    a,
+		ModuleDir:                 ctx.OtherModuleDir(a),
+		RequiredModuleNames:       a.RequiredModuleNames(),
+		TargetRequiredModuleNames: a.TargetRequiredModuleNames(),
+		HostRequiredModuleNames:   a.HostRequiredModuleNames(),
+		Certificate:               a.Certificate(),
+	}}, false
 }
 
 func createVariantGroupType(variants []string, variantGroupName string) reflect.Type {
@@ -1679,7 +1737,7 @@ type RuntimeResourceOverlay struct {
 	properties            RuntimeResourceOverlayProperties
 	overridableProperties OverridableRuntimeResourceOverlayProperties
 
-	certificate Certificate
+	certificate android.Certificate
 
 	outputFile android.Path
 	installDir android.InstallPath
@@ -1721,7 +1779,7 @@ type RuntimeResourceOverlayProperties struct {
 type RuntimeResourceOverlayModule interface {
 	android.Module
 	OutputFile() android.Path
-	Certificate() Certificate
+	Certificate() android.Certificate
 	Theme() string
 }
 
@@ -1761,6 +1819,7 @@ func (r *RuntimeResourceOverlay) GenerateAndroidBuildActions(ctx android.ModuleC
 	r.aapt.buildActions(ctx, r, aaptLinkFlags...)
 
 	// Sign the built package
+	// Sign the built package
 	_, certificates := collectAppDeps(ctx, r, false, false)
 	certificates = processMainCert(r.ModuleBase, String(r.properties.Certificate), certificates, ctx)
 	signed := android.PathForModuleOut(ctx, "signed", r.Name()+".apk")
@@ -1791,7 +1850,7 @@ func (r *RuntimeResourceOverlay) targetSdkVersion() sdkSpec {
 	return r.sdkVersion()
 }
 
-func (r *RuntimeResourceOverlay) Certificate() Certificate {
+func (r *RuntimeResourceOverlay) Certificate() android.Certificate {
 	return r.certificate
 }
 
@@ -1801,6 +1860,23 @@ func (r *RuntimeResourceOverlay) OutputFile() android.Path {
 
 func (r *RuntimeResourceOverlay) Theme() string {
 	return String(r.properties.Theme)
+}
+
+func (r *RuntimeResourceOverlay) ApexFileForModule(
+	ctx android.BaseModuleContext, _ string) ([]android.ApexFile, bool) {
+	return []android.ApexFile{{
+		BuiltFile:                 r.outputFile,
+		ModuleName:                r.Name(),
+		InstallDir:                filepath.Join("overlay", r.Theme()),
+		Class:                     android.ApexFileClass_etc,
+		Module:                    r,
+		ModuleDir:                 ctx.OtherModuleDir(r),
+		RequiredModuleNames:       r.RequiredModuleNames(),
+		TargetRequiredModuleNames: r.TargetRequiredModuleNames(),
+		HostRequiredModuleNames:   r.HostRequiredModuleNames(),
+		Certificate:               r.Certificate(),
+		OverriddenPackageName:     "",
+	}}, false
 }
 
 // runtime_resource_overlay generates a resource-only apk file that can overlay application and

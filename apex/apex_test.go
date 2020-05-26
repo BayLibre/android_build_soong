@@ -15,6 +15,7 @@
 package apex
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
@@ -184,6 +185,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 		"dummy.txt":                                  nil,
 		"baz":                                        nil,
 		"bar/baz":                                    nil,
+		"AppSet.apks":                                nil,
 	}
 
 	cc.GatherRequiredFilesForTest(fs)
@@ -4719,12 +4721,37 @@ func TestAppBundle(t *testing.T) {
 			apex_available: [ "myapex" ],
 		}
 		`, withManifestPackageNameOverrides([]string{"AppFoo:com.android.foo"}))
-
 	bundleConfigRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Description("Bundle Config")
 	content := bundleConfigRule.Args["content"]
-
 	ensureContains(t, content, `"compression":{"uncompressed_glob":["apex_payload.img","apex_manifest.*"]}`)
 	ensureContains(t, content, `"apex_config":{"apex_embedded_apk_config":[{"package_name":"com.android.foo","path":"app/AppFoo/AppFoo.apk"}]}`)
+}
+
+func TestAppSetBundle(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			apps: ["AppSet"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		android_app_set {
+			name: "AppSet",
+			set: "AppSet.apks",
+		}`)
+	mod := ctx.ModuleForTests("myapex", "android_common_myapex_image")
+	bundleConfigRule := mod.Description("Bundle Config")
+	content := bundleConfigRule.Args["content"]
+	ensureContains(t, content, `"compression":{"uncompressed_glob":["apex_payload.img","apex_manifest.*"]}`)
+	copyCmds := mod.Rule("apexRule").Args["copy_commands"]
+	// FIXME(asmundak)
+	fmt.Fprintln(os.Stderr, copyCmds)
 }
 
 func testNoUpdatableJarsInBootImage(t *testing.T, errmsg string, transformDexpreoptConfig func(*dexpreopt.GlobalConfig)) {
