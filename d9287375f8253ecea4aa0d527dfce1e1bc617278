@@ -22,6 +22,30 @@
       "revId": "d9287375f8253ecea4aa0d527dfce1e1bc617278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c2b9d65_d26cf782",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-05-26T20:29:08Z",
+      "side": 1,
+      "message": "I had this concern too when I was doing this (filed https://b.corp.google.com/issues/157157273 for us to investigate this later) - one problem with wrapping both actions is we need to bash-escape the commands so that rewrapper receives it properly and doesn\u0027t get lost when ninja executes it (since this command is of the form \"commandA \u0026\u0026 commandB\"). And it looks like the shell-escaping functionality is easy to do with rules that use rulebuilder.\n\nIs there another way to get shell-escaping? I think even if I escape the template here, there might be other options in the command that would need to escaped.",
+      "parentUuid": "423f12d1_eedd4139",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 52
+      },
+      "revId": "d9287375f8253ecea4aa0d527dfce1e1bc617278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
