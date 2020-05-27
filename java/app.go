@@ -96,6 +96,10 @@ func (as *AndroidAppSet) Privileged() bool {
 	return Bool(as.properties.Privileged)
 }
 
+func (as *AndroidAppSet) OutputFile() android.Path {
+	return as.packedOutput
+}
+
 var TargetCpuAbi = map[string]string{
 	"arm":    "ARMEABI_V7A",
 	"arm64":  "ARM64_V8A",
@@ -335,7 +339,7 @@ type Certificate struct {
 	presigned bool
 }
 
-var presignedCertificate = Certificate{presigned: true}
+var PresignedCertificate = Certificate{presigned: true}
 
 func (c Certificate) AndroidMkString() string {
 	if c.presigned {
@@ -1474,7 +1478,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	// Sign or align the package if package has not been preprocessed
 	if a.preprocessed {
 		a.outputFile = srcApk
-		a.certificate = presignedCertificate
+		a.certificate = PresignedCertificate
 	} else if !Bool(a.properties.Presigned) {
 		// If the certificate property is empty at this point, default_dev_cert must be set to true.
 		// Which makes processMainCert's behavior for the empty cert string WAI.
@@ -1494,7 +1498,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 		alignedApk := android.PathForModuleOut(ctx, "zip-aligned", apkFilename)
 		TransformZipAlign(ctx, alignedApk, dexOutput)
 		a.outputFile = alignedApk
-		a.certificate = presignedCertificate
+		a.certificate = PresignedCertificate
 	}
 
 	// TODO: Optionally compress the output apk.
