@@ -178,7 +178,8 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 		if fi.jacocoReportClassesFile != nil {
 			fmt.Fprintln(w, "LOCAL_SOONG_JACOCO_REPORT_CLASSES_JAR :=", fi.jacocoReportClassesFile.String())
 		}
-		if fi.class == javaSharedLib {
+		switch fi.class {
+		case javaSharedLib:
 			javaModule := fi.module.(java.Dependency)
 			// soong_java_prebuilt.mk sets LOCAL_MODULE_SUFFIX := .jar  Therefore
 			// we need to remove the suffix from LOCAL_MODULE_STEM, otherwise
@@ -189,7 +190,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			fmt.Fprintln(w, "LOCAL_SOONG_DEX_JAR :=", fi.builtFile.String())
 			fmt.Fprintln(w, "LOCAL_DEX_PREOPT := false")
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_java_prebuilt.mk")
-		} else if fi.class == app {
+		case app:
 			fmt.Fprintln(w, "LOCAL_CERTIFICATE :=", fi.certificate.AndroidMkString())
 			// soong_app_prebuilt.mk sets LOCAL_MODULE_SUFFIX := .apk  Therefore
 			// we need to remove the suffix from LOCAL_MODULE_STEM, otherwise
@@ -199,7 +200,11 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 				fmt.Fprintln(w, "LOCAL_PREBUILT_COVERAGE_ARCHIVE :=", strings.Join(app.JniCoverageOutputs().Strings(), " "))
 			}
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_app_prebuilt.mk")
-		} else if fi.class == nativeSharedLib || fi.class == nativeExecutable || fi.class == nativeTest {
+		case appSet:
+			// TODO(asmundak): is anything needed here?
+			//fmt.Fprintln(w, "LOCAL_APK_SET_MASTER_FILE", .masterFile)
+			//fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_android_app_set.mk")
+		case nativeSharedLib, nativeExecutable, nativeTest:
 			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.Stem())
 			if cc, ok := fi.module.(*cc.Module); ok {
 				if cc.UnstrippedOutputFile() != nil {
@@ -211,7 +216,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 				}
 			}
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_cc_prebuilt.mk")
-		} else {
+		default:
 			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.Stem())
 			if fi.builtFile == a.manifestPbOut && apexType == flattenedApex {
 				if a.primaryApexType {
