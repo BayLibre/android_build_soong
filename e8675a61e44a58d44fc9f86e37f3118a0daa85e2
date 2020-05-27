@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59991256_da6e1589",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-27T22:17:09Z",
+      "side": 1,
+      "message": "This effectively bypasses all of the guard rails we have to ensure that paths are used correctly and don\u0027t point to arbitrary locations.  If we need something like this it has to be unexported so that plugins can\u0027t use it.",
+      "revId": "e8675a61e44a58d44fc9f86e37f3118a0daa85e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc6f3112_35fde615",
+        "filename": "android/singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-05-27T22:17:09Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like something we want to expose to all singletons.  Can you plumb it through an unexported method on ctx.Config() instead?  The call android.NewConfig in soong_build/main.go can pass it from bootstrap.ModuleListFile the same way it does for bootstrap.BuildDir.",
+      "revId": "e8675a61e44a58d44fc9f86e37f3118a0daa85e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
