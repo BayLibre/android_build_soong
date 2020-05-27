@@ -337,13 +337,22 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	var copyCommands []string
 	for _, fi := range a.filesInfo {
 		destPath := android.PathForModuleOut(ctx, "image"+suffix, fi.Path()).String()
-		copyCommands = append(copyCommands, "mkdir -p "+filepath.Dir(destPath))
+		destPathDir := filepath.Dir(destPath)
+		if fi.class == appSet {
+			copyCommands = append(copyCommands, "rm -rf "+destPathDir)
+		}
+		copyCommands = append(copyCommands, "mkdir -p "+destPathDir)
 		if a.linkToSystemLib && fi.transitiveDep && fi.AvailableToPlatform() {
 			// TODO(jiyong): pathOnDevice should come from fi.module, not being calculated here
 			pathOnDevice := filepath.Join("/system", fi.Path())
 			copyCommands = append(copyCommands, "ln -sfn "+pathOnDevice+" "+destPath)
 		} else {
-			copyCommands = append(copyCommands, "cp -f "+fi.builtFile.String()+" "+destPath)
+			if fi.class == appSet {
+				copyCommands = append(copyCommands,
+					fmt.Sprintf("unzip -q -d %s %s", destPathDir, fi.builtFile.String()))
+			} else {
+				copyCommands = append(copyCommands, "cp -f "+fi.builtFile.String()+" "+destPath)
+			}
 			implicitInputs = append(implicitInputs, fi.builtFile)
 		}
 		// create additional symlinks pointing the file inside the APEX
