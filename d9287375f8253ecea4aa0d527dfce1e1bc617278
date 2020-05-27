@@ -70,6 +70,30 @@
       "revId": "d9287375f8253ecea4aa0d527dfce1e1bc617278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00793515_17207d8e",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-05-27T14:52:19Z",
+      "side": 1,
+      "message": "Converting to rule builder is likely more effort that we wouldn\u0027t want to do right now (i.e., not until we begin the current rollout phase).\n\nFrom testing in our branch, a combination of soong-zip / jar / turbine action types speed up build times by 3% in the median and ~20% in the 95th percentile and there are no real degradation in build times. Given that can we go ahead with this patch (even if we have the additional download time), and do the switch to rule-builder separately?",
+      "parentUuid": "35c6c2bd_9348e7f5",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 52
+      },
+      "revId": "d9287375f8253ecea4aa0d527dfce1e1bc617278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
