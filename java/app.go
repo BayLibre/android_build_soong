@@ -96,6 +96,10 @@ func (as *AndroidAppSet) Privileged() bool {
 	return Bool(as.properties.Privileged)
 }
 
+func (as *AndroidAppSet) OutputFile() android.Path {
+	return as.packedOutput
+}
+
 var TargetCpuAbi = map[string]string{
 	"arm":    "ARMEABI_V7A",
 	"arm64":  "ARM64_V8A",
@@ -120,7 +124,7 @@ func SupportedAbis(ctx android.ModuleContext) []string {
 }
 
 func (as *AndroidAppSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	as.packedOutput = android.PathForModuleOut(ctx, "extracted.zip")
+	as.packedOutput = android.PathForModuleOut(ctx, ctx.ModuleName()+".zip")
 	// We are assuming here that the master file in the APK
 	// set has `.apk` suffix. If it doesn't the build will fail.
 	// APK sets containing APEX files are handled elsewhere.
@@ -145,18 +149,6 @@ func (as *AndroidAppSet) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 				"stem":              ctx.ModuleName(),
 			},
 		})
-	// TODO(asmundak): add this (it's wrong now, will cause copying extracted.zip)
-	/*
-		var installDir android.InstallPath
-		if Bool(as.properties.Privileged) {
-			installDir = android.PathForModuleInstall(ctx, "priv-app", as.BaseModuleName())
-		} else if ctx.InstallInTestcases() {
-			installDir = android.PathForModuleInstall(ctx, as.BaseModuleName(), ctx.DeviceConfig().DeviceArch())
-		} else {
-			installDir = android.PathForModuleInstall(ctx, "app", as.BaseModuleName())
-		}
-		ctx.InstallFile(installDir, as.masterFile", as.packedOutput)
-	*/
 }
 
 // android_app_set extracts a set of APKs based on the target device
@@ -335,7 +327,7 @@ type Certificate struct {
 	presigned bool
 }
 
-var presignedCertificate = Certificate{presigned: true}
+var PresignedCertificate = Certificate{presigned: true}
 
 func (c Certificate) AndroidMkString() string {
 	if c.presigned {
@@ -1474,7 +1466,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	// Sign or align the package if package has not been preprocessed
 	if a.preprocessed {
 		a.outputFile = srcApk
-		a.certificate = presignedCertificate
+		a.certificate = PresignedCertificate
 	} else if !Bool(a.properties.Presigned) {
 		// If the certificate property is empty at this point, default_dev_cert must be set to true.
 		// Which makes processMainCert's behavior for the empty cert string WAI.
@@ -1494,7 +1486,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 		alignedApk := android.PathForModuleOut(ctx, "zip-aligned", apkFilename)
 		TransformZipAlign(ctx, alignedApk, dexOutput)
 		a.outputFile = alignedApk
-		a.certificate = presignedCertificate
+		a.certificate = PresignedCertificate
 	}
 
 	// TODO: Optionally compress the output apk.
