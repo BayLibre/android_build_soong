@@ -431,6 +431,14 @@ type sdkLibraryProperties struct {
 	// disabled by default.
 	Module_lib ApiScopeProperties
 
+	// Determines whether the runtime implementation library is available for
+	// linking. By default, the runtime implementation library is used when
+	// the client doesn't specify sdk_version. When this is set to true, however,
+	// a module with no sdk_version is provided with the widest API surface that
+	// this lib provides. Use this when no one is expected to use private APIs
+	// from this library.
+	Hide_impl_lib *bool
+
 	// Properties related to api linting.
 	Api_lint struct {
 		// Enable api linting.
@@ -1313,8 +1321,8 @@ func (module *SdkLibrary) withinSameApexAs(other android.Module) bool {
 
 func (module *SdkLibrary) sdkJars(ctx android.BaseModuleContext, sdkVersion sdkSpec, headerJars bool) android.Paths {
 
-	// Only provide access to the implementation library if it is actually built.
-	if module.requiresRuntimeImplementationLibrary() {
+	// Only provide access to the implementation library if it is actually built and visible.
+	if module.requiresRuntimeImplementationLibrary() && !module.hideRuntimeImplementationLibrary() {
 		// Check any special cases for java_sdk_library.
 		//
 		// Only allow access to the implementation library in the following condition:
@@ -1327,6 +1335,14 @@ func (module *SdkLibrary) sdkJars(ctx android.BaseModuleContext, sdkVersion sdkS
 				return module.ImplementationJars()
 			}
 		}
+	}
+
+	// If the client doesn't set sdk_version, but if this library doesn't want to expose
+	// the impl library, let's provide the widest API surface possible. To do so,
+	// force override sdk_version to module_current so that the closet possible API
+	// surface could be found in selectHeaderJarsForSdkVersion
+	if module.hideRuntimeImplementationLibrary() && !sdkVersion.specified() {
+		sdkVersion = sdkSpecFrom("module_current")
 	}
 
 	return module.selectHeaderJarsForSdkVersion(ctx, sdkVersion)
@@ -1465,6 +1481,10 @@ func (module *SdkLibrary) InitSdkLibraryProperties() {
 
 func (module *SdkLibrary) requiresRuntimeImplementationLibrary() bool {
 	return !proptools.Bool(module.sdkLibraryProperties.Api_only)
+}
+
+func (module *SdkLibrary) hideRuntimeImplementationLibrary() bool {
+	return proptools.Bool(module.sdkLibraryProperties.Hide_impl_lib)
 }
 
 // Defines how to name the individual component modules the sdk library creates.
