@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81d75e4c_ff8f8ebc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-27T16:10:57Z",
+      "side": 1,
+      "message": "Neat!",
+      "range": {
+        "startLine": 21,
+        "startChar": 59,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec6f357_8af4207b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-27T16:10:57Z",
+      "side": 1,
+      "message": "I don\u0027t think that we need to completely hide the implementation, just prevent it from being used when not sdk_version is specified.\n\nDo_not_default_to_impl_when_no_sdk_version_is_specified is probably a bit long for a property name.\n\nHow about?\n\nIgnore_no_sdk_version *bool\n\nOr?\n\nDefault_scope *string - which if set must be set to one of the scope names, i.e. public/system/module-lib\n\nOr?\n\nDefault_to_stubs *bool",
+      "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "115ddeaf_8355dff7",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-27T16:10:57Z",
+      "side": 1,
+      "message": "I think this check should only be active when sdk_version is not specified.\n\nThere are good reasons for allowing access to the implementation from within the same APEX and that is safe to do so and this flag would prevent that access. That would mean that this flag could not be used any java_sdk_library that requires impl access within the same APEX (which is safe) but would mean that it was possible to use the impl from outside the APEX which is unsafe.\n\nA simple way to achieve that is to revert this change and then move the if statement below above this so that if the new property is set the sdkVersion will be module_current by the time it gets to this code so will not return the implementation path unless it is in the same APEX.",
+      "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de46b989_0ecbf7f6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-27T16:10:57Z",
+      "side": 1,
+      "message": "Nit: closest",
+      "range": {
+        "startLine": 1342,
+        "startChar": 61,
+        "endLine": 1342,
+        "endChar": 67
+      },
+      "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
