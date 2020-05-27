@@ -1293,22 +1293,31 @@ func PrebuiltJars(ctx android.BaseModuleContext, baseName string, s sdkSpec) and
 	return android.Paths{jarPath.Path()}
 }
 
-// Get the apex name for module, "" if it is for platform.
-func getApexNameForModule(module android.Module) string {
-	if apex, ok := module.(android.ApexModule); ok {
-		return apex.ApexName()
+// Check to see if it is safe to expose the implementation of the java_sdk_library
+// to the referencing module.
+//
+// In order for this to return true the referencing module must either be within
+// the same named APEX as this module or it must provide tests for the APEX
+// containing this module.
+func (module *SdkLibrary) safeToExposeImplementationTo(referencing android.Module) bool {
+	if referencingApexModule, ok := referencing.(android.ApexModule); ok {
+		// If this is in the same apex as the referencing module than return true.
+		apexName := module.ApexName()
+		if apexName != "" && referencingApexModule.ApexName() == apexName {
+			return true
+		}
+
+		// If this library is in any of the apex's for which the referencing apex provides
+		// tests then allow the referencing module to access the implementation of this
+		// module.
+		for _, testFor := range referencingApexModule.TestFor() {
+			if android.DirectlyInApex(testFor, module.BaseModuleName()) {
+				return true
+			}
+		}
 	}
 
-	return ""
-}
-
-// Check to see if the other module is within the same named APEX as this module.
-//
-// If either this or the other module are on the platform then this will return
-// false.
-func (module *SdkLibrary) withinSameApexAs(other android.Module) bool {
-	name := module.ApexName()
-	return name != "" && getApexNameForModule(other) == name
+	return false
 }
 
 func (module *SdkLibrary) sdkJars(ctx android.BaseModuleContext, sdkVersion sdkSpec, headerJars bool) android.Paths {
@@ -1320,7 +1329,7 @@ func (module *SdkLibrary) sdkJars(ctx android.BaseModuleContext, sdkVersion sdkS
 		// Only allow access to the implementation library in the following condition:
 		// * No sdk_version specified on the referencing module.
 		// * The referencing module is in the same apex as this.
-		if sdkVersion.kind == sdkPrivate || module.withinSameApexAs(ctx.Module()) {
+		if sdkVersion.kind == sdkPrivate || module.safeToExposeImplementationTo(ctx.Module()) {
 			if headerJars {
 				return module.HeaderJars()
 			} else {

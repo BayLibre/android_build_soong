@@ -249,6 +249,9 @@ type CompilerProperties struct {
 		Output_params []string
 	}
 
+	// The list of APEX's for which this module provides tests.
+	Test_for []string
+
 	Instrument bool `blueprint:"mutated"`
 
 	// List of files to include in the META-INF/services folder of the resulting jar.
@@ -1792,6 +1795,10 @@ func (j *Module) hasCode(ctx android.ModuleContext) bool {
 
 func (j *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
 	return j.depIsInSameApex(ctx, dep)
+}
+
+func (j *Module) TestFor() []string {
+	return j.properties.Test_for
 }
 
 func (j *Module) Stem() string {
