@@ -22,6 +22,30 @@
       "revId": "5bd365f1e551c706316651aadd3e7d5a90d13392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b38145ea_abb731af",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-05-28T16:57:25Z",
+      "side": 1,
+      "message": "This is currently blocking another change -- I\u0027ll go ahead and submit, if we come up with a more elegant solution later we can refactor.",
+      "parentUuid": "83f2ef16_c8609019",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "5bd365f1e551c706316651aadd3e7d5a90d13392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
