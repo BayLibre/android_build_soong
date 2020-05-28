@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "153bda7f_9594ede2",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T06:14:16Z",
+      "side": 1,
+      "message": "This is an apk. Could you tell me how the logic works for apks? apks doesn\u0027t implement FlatListPath().",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "29709eb1a7cfd39db03b401fb2cc9db99c21ebfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc42e7df_13e0e461",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T06:14:16Z",
+      "side": 1,
+      "message": "I think this could be moved into GenerateBuildActions as it\u0027s not referenced anywhere outside of the function.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "29709eb1a7cfd39db03b401fb2cc9db99c21ebfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a78bd4_9f696eff",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T06:14:16Z",
+      "side": 1,
+      "message": "It would be nicer if the diff is shown",
+      "range": {
+        "startLine": 55,
+        "startChar": 74,
+        "endLine": 55,
+        "endChar": 83
+      },
+      "revId": "29709eb1a7cfd39db03b401fb2cc9db99c21ebfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e2ed66e_7a247359",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T06:14:16Z",
+      "side": 1,
+      "message": "Will this trigger building of APEXes and APKs regardless of whether they are installed or not?",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 64
+      },
+      "revId": "29709eb1a7cfd39db03b401fb2cc9db99c21ebfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5bec8f_8bca7073",
+        "filename": "scripts/update-apex-allowed-deps.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T06:14:16Z",
+      "side": 1,
+      "message": "nit: This doesn\u0027t look elegant. Why don\u0027t we include the comment in the output from Soong, or prepend it by this script?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 80
+      },
+      "revId": "29709eb1a7cfd39db03b401fb2cc9db99c21ebfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
