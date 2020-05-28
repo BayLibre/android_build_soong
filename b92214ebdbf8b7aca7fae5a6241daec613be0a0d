@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd2912f9_d86f14ba",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-28T12:14:08Z",
+      "side": 1,
+      "message": "there\u0027s a lot of what is effectively build-system internals here",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53475ed_b1861a38",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-28T12:14:08Z",
+      "side": 1,
+      "message": "hmm this should be gone with r.android.com/1316257, is it still there?",
+      "range": {
+        "startLine": 364,
+        "startChar": 47,
+        "endLine": 365,
+        "endChar": 56
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee9f2d3f_1f5f8019",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-05-28T12:14:08Z",
+      "side": 1,
+      "message": "Before we submit this change, we should probably have some sort of policy / explanation doc of why this list is here, when it\u0027s okay to update it, and when we\u0027re getting rid of it",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 64
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
