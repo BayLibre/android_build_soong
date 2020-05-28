@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b2186b2c_79b10c15",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-28T20:45:33Z",
+      "side": 1,
+      "message": "I don\u0027t really know what this is. Is this not something that ends up in the apex? Is it defined by build-system, or something used only for compilation and shouldn\u0027t be listed here?",
+      "parentUuid": "bd2912f9_d86f14ba",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c53475ed_b1861a38",
         "filename": "apex/allowed_deps.txt",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "19fea204_ef3bf84c",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-28T20:45:33Z",
+      "side": 1,
+      "message": "Done. Sync-ed and re-generated.",
+      "parentUuid": "c53475ed_b1861a38",
+      "range": {
+        "startLine": 364,
+        "startChar": 47,
+        "endLine": 365,
+        "endChar": 56
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee9f2d3f_1f5f8019",
         "filename": "apex/apex_singleton.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-28T12:14:08Z",
       "side": 1,
       "message": "Before we submit this change, we should probably have some sort of policy / explanation doc of why this list is here, when it\u0027s okay to update it, and when we\u0027re getting rid of it",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 64
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d1ef718_41aec208",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-28T20:45:33Z",
+      "side": 1,
+      "message": "There is a summary comment in allowed_deps.txt with a todo to delete it. I can create a doc, but there won\u0027t be more content there tbh.",
+      "parentUuid": "ee9f2d3f_1f5f8019",
       "range": {
         "startLine": 56,
         "startChar": 10,

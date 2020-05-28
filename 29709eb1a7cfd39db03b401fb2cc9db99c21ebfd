@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "55015ea1_9e9fff86",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-28T20:45:33Z",
+      "side": 1,
+      "message": "Nothing. Also scanned out/ after `m clean` and building the check",
+      "parentUuid": "0a0db59e_fd8d9a5e",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 64
+      },
+      "revId": "29709eb1a7cfd39db03b401fb2cc9db99c21ebfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d5bec8f_8bca7073",
         "filename": "scripts/update-apex-allowed-deps.sh",
         "patchSetId": 3
