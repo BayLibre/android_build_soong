@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "de10b2c7_9680eccd",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-05-28T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59991256_da6e1589",
+      "revId": "e8675a61e44a58d44fc9f86e37f3118a0daa85e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc6f3112_35fde615",
         "filename": "android/singleton.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-27T22:17:09Z",
       "side": 1,
       "message": "This doesn\u0027t seem like something we want to expose to all singletons.  Can you plumb it through an unexported method on ctx.Config() instead?  The call android.NewConfig in soong_build/main.go can pass it from bootstrap.ModuleListFile the same way it does for bootstrap.BuildDir.",
+      "revId": "e8675a61e44a58d44fc9f86e37f3118a0daa85e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d94eb0a_ff76d2ec",
+        "filename": "android/singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-05-28T01:15:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc6f3112_35fde615",
       "revId": "e8675a61e44a58d44fc9f86e37f3118a0daa85e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
