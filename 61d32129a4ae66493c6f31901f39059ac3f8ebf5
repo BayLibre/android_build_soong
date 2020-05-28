@@ -22,6 +22,30 @@
       "revId": "61d32129a4ae66493c6f31901f39059ac3f8ebf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a05cfc2_249ef243",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4422,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-28T08:11:56Z",
+      "side": 1,
+      "message": "This is essentially how it works for native code. Although, I could not find any use of it.\n\nWhichever way we do it we need this information:\n1) Either to select access to impl.\n2) Or to make sure that an explicit reference to impl is allowed.",
+      "parentUuid": "d6148d47_7b5ccee1",
+      "range": {
+        "startLine": 4419,
+        "startChar": 0,
+        "endLine": 4422,
+        "endChar": 24
+      },
+      "revId": "61d32129a4ae66493c6f31901f39059ac3f8ebf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
