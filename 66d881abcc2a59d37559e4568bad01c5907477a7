@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ef3d7a8_cf44d5ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-28T08:59:30Z",
+      "side": 1,
+      "message": "Looks great. Just need to update the commit message.",
+      "revId": "66d881abcc2a59d37559e4568bad01c5907477a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
