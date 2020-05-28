@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83f2ef16_c8609019",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-05-28T15:56:34Z",
+      "side": 1,
+      "message": "The other alternative I see is creating a module for each LOCAL_MODULE_PATH contain only LOCAL_TEST_DATA -- not sure if that\u0027d be more straightforward.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 4
+      },
+      "revId": "5bd365f1e551c706316651aadd3e7d5a90d13392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
