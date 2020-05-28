@@ -317,6 +317,20 @@ type prebuiltBinaryLinker struct {
 
 var _ prebuiltLinkerInterface = (*prebuiltBinaryLinker)(nil)
 
+func (p *prebuiltBinaryLinker) linkerInit(ctx BaseModuleContext) {}
+
+func (p *prebuiltBinaryLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
+	return deps
+}
+
+func (p *prebuiltBinaryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+	return flags
+}
+
+func (p *prebuiltBinaryLinker) linkerProps() []interface{} {
+	return p.binaryDecorator.linkerProps()
+}
+
 func (p *prebuiltBinaryLinker) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
 	// TODO(ccross): verify shared library dependencies
