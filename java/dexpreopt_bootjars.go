@@ -511,7 +511,7 @@ func bootImageProfileRule(ctx android.SingletonContext, image *bootImageConfig, 
 	globalSoong := dexpreopt.GetCachedGlobalSoongConfig(ctx)
 	global := dexpreopt.GetGlobalConfig(ctx)
 
-	if global.DisableGenerateProfile || ctx.Config().IsPdkBuild() || ctx.Config().UnbundledBuild() {
+	if global.DisableGenerateProfile || ctx.Config().UnbundledBuild() {
 		return nil
 	}
 	profile := ctx.Config().Once(bootImageProfileRuleKey, func() interface{} {
@@ -566,7 +566,7 @@ func bootFrameworkProfileRule(ctx android.SingletonContext, image *bootImageConf
 	globalSoong := dexpreopt.GetCachedGlobalSoongConfig(ctx)
 	global := dexpreopt.GetGlobalConfig(ctx)
 
-	if global.DisableGenerateProfile || ctx.Config().IsPdkBuild() || ctx.Config().UnbundledBuild() {
+	if global.DisableGenerateProfile || ctx.Config().UnbundledBuild() {
 		return nil
 	}
 	return ctx.Config().Once(bootFrameworkProfileRuleKey, func() interface{} {
@@ -608,7 +608,7 @@ func bootFrameworkProfileRule(ctx android.SingletonContext, image *bootImageConf
 var bootFrameworkProfileRuleKey = android.NewOnceKey("bootFrameworkProfileRule")
 
 func updatableBcpPackagesRule(ctx android.SingletonContext, image *bootImageConfig, missingDeps []string) android.WritablePath {
-	if ctx.Config().IsPdkBuild() || ctx.Config().UnbundledBuild() {
+	if ctx.Config().UnbundledBuild() {
 		return nil
 	}
 
