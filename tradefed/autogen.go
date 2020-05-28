@@ -220,7 +220,7 @@ func AutoGenRustTestConfig(ctx android.ModuleContext, name string, testConfigPro
 
 func AutoGenRobolectricTestConfig(ctx android.ModuleContext, testConfigProp *string, testConfigTemplateProp *string,
 	testSuites []string, autoGenConfig *bool) android.Path {
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig)
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, nil)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
