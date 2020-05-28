@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a44891c0_f2245202",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T12:11:24Z",
+      "side": 1,
+      "message": "Sorry, I mis-read the code. It\u0027s done via android.ApexBundleDepsInfo.",
+      "parentUuid": "1d3bf772_0af03870",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "29709eb1a7cfd39db03b401fb2cc9db99c21ebfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc42e7df_13e0e461",
         "filename": "apex/apex_singleton.go",
         "patchSetId": 3
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "This should not trigger building anything but the .txt filed above, right?\n\nallowedApexDepsInfoCheckResult only requires the txt files that come from Soong iterating over build graph.\n\nDo you know if it is possible to add a test where I build allowedApexDepsInfoCheckResult and verify that no other relevant output is generated? I\u0027ll poke around.",
       "parentUuid": "2e2ed66e_7a247359",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 64
+      },
+      "revId": "29709eb1a7cfd39db03b401fb2cc9db99c21ebfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a0db59e_fd8d9a5e",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T12:11:24Z",
+      "side": 1,
+      "message": "prebuilts/build-tools/linux-x86/bin/ninja -f out/soong/build.ninja  -t path \u003cthe_path_to_the_check_file\u003e \u003cpath_to_any_file_that_is_part_of_an_apex\u003e\n\nmight be used. If it doesn\u0027t report anything, then we should be fine.",
+      "parentUuid": "eb51e774_976ed7b2",
       "range": {
         "startLine": 113,
         "startChar": 33,
