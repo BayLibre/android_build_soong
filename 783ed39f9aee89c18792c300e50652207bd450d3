@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99b30a67_e78615d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T07:21:18Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "81d75e4c_ff8f8ebc",
+      "range": {
+        "startLine": 21,
+        "startChar": 59,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bec6f357_8af4207b",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "8f2e6b22_bf9cedaf",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T07:21:18Z",
+      "side": 1,
+      "message": "Thanks for the suggestions. I have chosen default_to_stubs.",
+      "parentUuid": "bec6f357_8af4207b",
+      "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "115ddeaf_8355dff7",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ea16a6_2c7a8802",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T07:21:18Z",
+      "side": 1,
+      "message": "yeah, this is better. thanks. done.",
+      "parentUuid": "115ddeaf_8355dff7",
+      "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f6311c_8139515a",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-28T07:21:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de46b989_0ecbf7f6",
+      "range": {
+        "startLine": 1342,
+        "startChar": 61,
+        "endLine": 1342,
+        "endChar": 67
+      },
+      "revId": "783ed39f9aee89c18792c300e50652207bd450d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
