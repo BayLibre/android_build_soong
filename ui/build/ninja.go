@@ -119,6 +119,7 @@ func runNinja(ctx Context, config Config) {
 			"TARGET_PRODUCT",
 			// b/147197813 - used by art-check-debug-apex-gen
 			"EMMA_INSTRUMENT_FRAMEWORK",
+			"EMMA_INSTRUMENT_STATIC",
 
 			// Goma -- gomacc may not need all of these
 			"GOMA_DIR",

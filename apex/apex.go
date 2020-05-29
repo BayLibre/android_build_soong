@@ -1421,8 +1421,8 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
 		javaLibTag, a.properties.Java_libs...)
 
-	// With EMMA_INSTRUMENT_FRAMEWORK=true the ART boot image includes jacoco library.
-	if a.artApex && ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
+	// With EMMA_INSTRUMENT_FRAMEWORK=true or EMMA_INSTRUMENT_STATIC=true the ART boot image includes jacoco library.
+	if a.artApex && (ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") || ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_STATIC")) {
 		ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
 			javaLibTag, "jacocoagent")
 	}

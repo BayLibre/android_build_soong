@@ -275,7 +275,7 @@ func getBootImageJar(ctx android.SingletonContext, image *bootImageConfig, modul
 		} else if isApexModule && apex.IsForPlatform() && Bool(module.(*Library).deviceProperties.Hostdex) {
 			// exception (skip and continue): special "hostdex" platform variant
 			return -1, nil
-		} else if name == "jacocoagent" && ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
+		} else if name == "jacocoagent" && (ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") || ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_STATIC")) {
 			// exception (skip and continue): Jacoco platform variant for a coverage build
 			return -1, nil
 		} else if fromUpdatableApex {
