@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2d85651a_3b1616d5",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-05-29T11:14:42Z",
+      "side": 1,
+      "message": "If they are part of an apex, I\u0027d also prefer keeping them. Regardless whether they are manually added or not, the purpose of the check is to audit what goes int othe binary.",
+      "parentUuid": "044cb0a2_e541184a",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c53475ed_b1861a38",
         "filename": "apex/allowed_deps.txt",
         "patchSetId": 4
