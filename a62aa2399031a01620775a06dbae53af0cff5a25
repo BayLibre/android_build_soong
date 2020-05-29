@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5b5a536_90af7612",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-29T00:47:21Z",
+      "side": 1,
+      "message": "AFAIK, \"stem\" typically means the filename without extension. But in this case, stem means filename WITH extension, which might be confusing.\n\nAnd it looks like other types (such as native_libs, prebuilts, ...) use builtFile to which stem is already applied by module type itself. For example, prebuilt_etc with \"filename\" property and cc_library with \"stem\" property(see libraryDecorator.getLibNameHelper https://source.corp.google.com/aosp-master/build/soong/cc/library.go;l\u003d682?q\u003dlibraryDecorator%20getLibNameHelper\u0026sq\u003dpackage:aosp-master)\n\nCan we use the similar approach for java_library?",
+      "range": {
+        "startLine": 1147,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 18
+      },
+      "revId": "a62aa2399031a01620775a06dbae53af0cff5a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
