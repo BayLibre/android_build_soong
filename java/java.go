@@ -645,6 +645,17 @@ func (j *Module) AvailableFor(what string) bool {
 	return j.ApexModuleBase.AvailableFor(what)
 }
 
+// Provides access to the list of permitted packages from updatable boot jars.
+type PermittedPackagesForUpdatableBootJars interface {
+	PermittedPackages() []string
+}
+
+var _ PermittedPackagesForUpdatableBootJars = (*Module)(nil)
+
+func (j *Module) PermittedPackages() []string {
+	return j.properties.Permitted_packages
+}
+
 func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	if ctx.Device() {
 		sdkDep := decodeSdkDep(ctx, sdkContext(j))
