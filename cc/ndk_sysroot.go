@@ -98,6 +98,8 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	var staticLibInstallPaths android.Paths
 	var installPaths android.Paths
 	var licensePaths android.Paths
+	var coverageParsedPaths android.Paths
+
 	ctx.VisitAllModules(func(module android.Module) {
 		if m, ok := module.(android.Module); ok && !m.Enabled() {
 			return
@@ -136,6 +138,7 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 					installer.properties.Draft {
 					return
 				}
+				coverageParsedPaths = append(coverageParsedPaths, installer.parsedCoverageXmlPath)
 				installPaths = append(installPaths, installer.installPath)
 			}
 
@@ -160,7 +163,13 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 		Inputs:      licensePaths,
 	})
 
-	baseDepPaths := append(installPaths, combinedLicense)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:      android.CpToDir,
+		Inputs:	   coverageParsedPaths,
+		Output:    android.PathForOutput(ctx, "ndk_coverage_xml_dir"),
+	})
+
+	baseDepPaths := append(installPaths, combinedLicense, android.PathForOutput(ctx, "ndk_coverage_xml_dir"))
 
 	// There's a dummy "ndk" rule defined in ndk/Android.mk that depends on
 	// this. `m ndk` will build the sysroots.
