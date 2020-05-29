@@ -1532,9 +1532,12 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	// Force enable the instrumentation for java code that is built for APEXes ...
 	// except for the jacocoagent itself (because instrumenting jacocoagent using jacocoagent
-	// doesn't make sense)
+	// doesn't make sense) or for framework libraries. The decision to instrument framework
+	// libraries is done in the deps() method.
 	isJacocoAgent := ctx.ModuleName() == "jacocoagent"
-	if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && !isJacocoAgent && !j.IsForPlatform() {
+	isFrameworkModule := inList(ctx.ModuleName(), config.InstrumentFrameworkModules)
+
+	if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && !isJacocoAgent && !isFrameworkModule && !j.IsForPlatform() {
 		j.properties.Instrument = true
 	}
 
