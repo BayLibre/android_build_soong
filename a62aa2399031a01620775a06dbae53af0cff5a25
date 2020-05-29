@@ -46,6 +46,30 @@
       "revId": "a62aa2399031a01620775a06dbae53af0cff5a25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd35799_b7cfa356",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-05-29T06:20:46Z",
+      "side": 1,
+      "message": "No worries.\n\nI just felt that we\u0027re repeating ourselves about overriding with stem and making up filename by concating extension (e.g. \".jar\") to it.\n\n\u003e Clearly separating built file and installed file seems to be better.\n\nI agree with it.",
+      "parentUuid": "fb63465b_faf76338",
+      "range": {
+        "startLine": 1147,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 18
+      },
+      "revId": "a62aa2399031a01620775a06dbae53af0cff5a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
