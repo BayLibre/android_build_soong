@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Paul Duffin <paulduffin@google.com>
+Presubmit-Ready+1: Paul Duffin <paulduffin@google.com>
+Build-Cop-Override+1: Jason Chiu <chiujason@google.com>
+Submitted-by: Paul Duffin <paulduffin@google.com>
+Submitted-at: Fri, 29 May 2020 07:31:25 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1320215
+Project: platform/build/soong
+Branch: refs/heads/master
