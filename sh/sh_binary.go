@@ -19,9 +19,11 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/tradefed"
 )
 
@@ -88,6 +90,12 @@ type TestProperties struct {
 	// doesn't exist next to the Android.bp, this attribute doesn't need to be set to true
 	// explicitly.
 	Auto_gen_config *bool
+
+	Data_bins []string `android:"path,arch_variant"`
+	Data_libs []string `android:"path,arch_variant"`
+
+	Data_device_bins []string `android:"path,arch_variant"`
+	Data_device_libs []string `android:"path,arch_variant"`
 }
 
 type ShBinary struct {
@@ -111,6 +119,8 @@ type ShTest struct {
 
 	data       android.Paths
 	testConfig android.Path
+
+	dataModules map[string]android.Path
 }
 
 func (s *ShBinary) HostToolPath() android.OptionalPath {
@@ -192,6 +202,41 @@ func (s *ShBinary) customAndroidMkEntries(entries *android.AndroidMkEntries) {
 	}
 }
 
+type dependencyTag struct {
+	blueprint.BaseDependencyTag
+	name string
+}
+
+var (
+	shTestDataBinsTag       = dependencyTag{name: "dataBins"}
+	shTestDataLibsTag       = dependencyTag{name: "dataLibs"}
+	shTestDataDeviceBinsTag = dependencyTag{name: "dataDeviceBins"}
+	shTestDataDeviceLibsTag = dependencyTag{name: "dataDeviceLibs"}
+)
+
+var sharedLibVariations = []blueprint.Variation{{Mutator: "link", Variation: "shared"}}
+
+func (s *ShTest) DepsMutator(ctx android.BottomUpMutatorContext) {
+	s.ShBinary.DepsMutator(ctx)
+
+	ctx.AddFarVariationDependencies(ctx.Target().Variations(), shTestDataBinsTag, s.testProperties.Data_bins...)
+	ctx.AddFarVariationDependencies(append(ctx.Target().Variations(), sharedLibVariations...),
+		shTestDataLibsTag, s.testProperties.Data_libs...)
+	if ctx.Target().Os.Class == android.Host {
+		deviceVariations := ctx.Config().Targets[android.Android][0].Variations()
+		ctx.AddFarVariationDependencies(deviceVariations, shTestDataDeviceBinsTag, s.testProperties.Data_device_bins...)
+		ctx.AddFarVariationDependencies(append(deviceVariations, sharedLibVariations...),
+			shTestDataDeviceLibsTag, s.testProperties.Data_device_libs...)
+	} else {
+		if len(s.testProperties.Data_device_bins) > 0 {
+			ctx.PropertyErrorf("data_device_bins", "only available for host modules")
+		}
+		if len(s.testProperties.Data_device_libs) > 0 {
+			ctx.PropertyErrorf("data_device_libs", "only available for host modules")
+		}
+	}
+}
+
 func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	s.ShBinary.generateAndroidBuildActions(ctx)
 	testDir := "nativetest"
@@ -223,6 +268,48 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	s.testConfig = tradefed.AutoGenShellTestConfig(ctx, s.testProperties.Test_config,
 		s.testProperties.Test_config_template, s.testProperties.Test_suites, configs, s.testProperties.Auto_gen_config, s.outputFilePath.Base())
+
+	s.dataModules = make(map[string]android.Path)
+	ctx.VisitDirectDeps(func(dep android.Module) {
+		depTag := ctx.OtherModuleDependencyTag(dep)
+		switch depTag {
+		case shTestDataBinsTag, shTestDataDeviceBinsTag:
+			if cc, isCc := dep.(*cc.Module); isCc {
+				s.dataModules[cc.OutputFile().Path().Base()] = cc.OutputFile().Path()
+				return
+			}
+			property := "data_bins"
+			if depTag == shTestDataDeviceBinsTag {
+				property = "data_device_bins"
+			}
+			ctx.PropertyErrorf(property, "%q of type %q is not supported", dep.Name(), ctx.OtherModuleType(dep))
+		case shTestDataLibsTag, shTestDataDeviceLibsTag:
+			if cc, isCc := dep.(*cc.Module); isCc {
+				var relPath string
+				if cc.Arch().ArchType.Multilib == "lib64" {
+					relPath = filepath.Join("lib64", cc.OutputFile().Path().Base())
+				} else {
+					relPath = filepath.Join("lib", cc.OutputFile().Path().Base())
+				}
+				if _, exist := s.dataModules[relPath]; exist {
+					return
+				}
+				relocatedLib := android.PathForModuleOut(ctx, "relocated", relPath)
+				ctx.Build(pctx, android.BuildParams{
+					Rule:   android.Cp,
+					Input:  cc.OutputFile().Path(),
+					Output: relocatedLib,
+				})
+				s.dataModules[relPath] = relocatedLib
+				return
+			}
+			property := "data_libs"
+			if depTag == shTestDataDeviceBinsTag {
+				property = "data_device_libs"
+			}
+			ctx.PropertyErrorf(property, "%q of type %q is not supported", dep.Name(), ctx.OtherModuleType(dep))
+		}
+	})
 }
 
 func (s *ShTest) InstallInData() bool {
@@ -250,6 +337,10 @@ func (s *ShTest) AndroidMkEntries() []android.AndroidMkEntries {
 					}
 					path = strings.TrimSuffix(path, rel)
 					entries.AddStrings("LOCAL_TEST_DATA", path+":"+rel)
+				}
+				for relPath, path := range s.dataModules {
+					dir := strings.TrimSuffix(path.String(), relPath)
+					entries.AddStrings("LOCAL_TEST_DATA", dir+":"+relPath)
 				}
 			},
 		},
