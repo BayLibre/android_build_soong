@@ -22,6 +22,30 @@
       "revId": "a62aa2399031a01620775a06dbae53af0cff5a25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb63465b_faf76338",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-29T05:12:48Z",
+      "side": 1,
+      "message": "Sorry that I missed this.\n\nI tried this but soon felt that this isn\u0027t good because many places in the java package use modulename for the various intermediate files. dexjar also belons to the intermediate files. I feel uncomfortable with using stem only for dexjar knowing that it is directly consumed by apex. Clearly separating built file and installed file seems to be better.",
+      "parentUuid": "f5b5a536_90af7612",
+      "range": {
+        "startLine": 1147,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 18
+      },
+      "revId": "a62aa2399031a01620775a06dbae53af0cff5a25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
