@@ -1546,7 +1546,11 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	// doesn't make sense)
 	isJacocoAgent := ctx.ModuleName() == "jacocoagent"
 	if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && !isJacocoAgent && !j.IsForPlatform() {
-		j.properties.Instrument = true
+		if !inList(ctx.ModuleName(), config.InstrumentFrameworkModules) {
+			j.properties.Instrument = true
+		} else if ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
+			j.properties.Instrument = true
+		}
 	}
 
 	if j.shouldInstrument(ctx) {
