@@ -280,6 +280,17 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 			pathForLibrary(module, hidlBase))
 		conditionalClassLoaderContextTarget29 = append(conditionalClassLoaderContextTarget29,
 			filepath.Join("/system/framework", hidlBase+".jar"))
+
+		// android.test.base contains classes that were in the default classpath until API 29.
+		// If the targetSdkVersion in the manifest or APK is < 29 then implicitly add it to the
+		// classpath for dexpreopt.
+		const testBase = "android.test.base"
+		if !contains(usesLibs, testBase) {
+			conditionalClassLoaderContextHost29 = append(conditionalClassLoaderContextHost29,
+				pathForLibrary(module, testBase))
+			conditionalClassLoaderContextTarget29 = append(conditionalClassLoaderContextTarget29,
+				filepath.Join("/system/framework", testBase+".jar"))
+		}
 	} else if jarIndex := android.IndexList(module.Name, systemServerJars); jarIndex >= 0 {
 		// System server jars should be dexpreopted together: class loader context of each jar
 		// should include all preceding jars on the system server classpath.
