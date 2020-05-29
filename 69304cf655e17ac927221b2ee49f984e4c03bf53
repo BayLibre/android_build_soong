@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bd7877f_122893bc",
+        "filename": "android/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-05-29T07:08:22Z",
+      "side": 1,
+      "message": "If I switch this to windows then I get the same failure on linux as we got on mac. Switching it to host makes it work on linux and should make it work on mac.",
+      "revId": "69304cf655e17ac927221b2ee49f984e4c03bf53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
