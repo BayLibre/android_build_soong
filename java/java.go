@@ -1534,7 +1534,9 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	// except for the jacocoagent itself (because instrumenting jacocoagent using jacocoagent
 	// doesn't make sense)
 	isJacocoAgent := ctx.ModuleName() == "jacocoagent"
-	if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && !isJacocoAgent && !j.IsForPlatform() {
+	isFrameworkModule := inList(ctx.ModuleName(), config.InstrumentFrameworkModules)
+
+	if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && !isJacocoAgent && !isFrameworkModule && !j.IsForPlatform() {
 		j.properties.Instrument = true
 	}
 
