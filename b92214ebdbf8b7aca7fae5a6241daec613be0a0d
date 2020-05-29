@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "044cb0a2_e541184a",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-05-29T02:37:17Z",
+      "side": 1,
+      "message": "They are actually part of the apex. I think it\u0027s fine to have them here although they are auto-added ones.",
+      "parentUuid": "b2186b2c_79b10c15",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c53475ed_b1861a38",
         "filename": "apex/allowed_deps.txt",
         "patchSetId": 4
