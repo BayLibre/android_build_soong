@@ -59,6 +59,13 @@ var (
 		},
 		"cpFlags")
 
+	CpToDir = pctx.AndroidStaticRule("CpToDir",
+		blueprint.RuleParams{
+			Command:     "rm -rf $out && mkdir $out && cp $cpPreserveSymlinks $cpFlags $in $out",
+			Description: "cp file to $out directory",
+		},
+		"cpFlags")
+
 	// A timestamp touch rule.
 	Touch = pctx.AndroidStaticRule("Touch",
 		blueprint.RuleParams{
