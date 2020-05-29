@@ -1193,11 +1193,14 @@ func (af *apexFile) apexRelativePath(path string) string {
 
 // Path() returns path of this apex file relative to the APEX root
 func (af *apexFile) Path() string {
-	stem := af.builtFile.Base()
+	return af.apexRelativePath(af.Stem())
+}
+
+func (af *apexFile) Stem() string {
 	if af.stem != "" {
-		stem = af.stem
+		return af.stem
 	}
-	return af.apexRelativePath(stem)
+	return af.builtFile.Base()
 }
 
 // SymlinkPaths() returns paths of the symlinks (if any) relative to the APEX root
