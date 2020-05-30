@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "514fc680_091b948a",
+        "filename": "ui/build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-05-30T02:57:58Z",
+      "side": 1,
+      "message": "can you run bpfmt? this should be spaces, not a tab",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "22c1bfcd83e662682e8dc38cef84654756915c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "842ef96f_ae18cf1e",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-05-30T02:57:58Z",
+      "side": 1,
+      "message": "config.BuildDateTime() can be a user-provided timestamp, it\u0027s not necessarily related to when the build was \"created\" (I assume that means \"started\" in this context?)",
+      "revId": "22c1bfcd83e662682e8dc38cef84654756915c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
