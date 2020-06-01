@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d14c3bfc_1740a222",
+        "filename": "ui/build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-06-01T17:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "514fc680_091b948a",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "22c1bfcd83e662682e8dc38cef84654756915c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "842ef96f_ae18cf1e",
         "filename": "ui/build/upload.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "22c1bfcd83e662682e8dc38cef84654756915c67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2bd9f68_3a41a4bd",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-06-01T17:32:14Z",
+      "side": 1,
+      "message": "Oh, I thought this was controlled by us through the makefile system. I used this file as it captured the start time of the build.\n\nYes, created means started. In Android build infra, they refer to build created when the build is inserted.",
+      "parentUuid": "842ef96f_ae18cf1e",
+      "revId": "22c1bfcd83e662682e8dc38cef84654756915c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
