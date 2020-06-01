@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b45dce18_7b4adc45",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-01T16:11:27Z",
+      "side": 1,
+      "message": "It will be easier to maintain if these are created lazily on demand. As it is adding libraries in 31 will require adding new entry here.",
+      "revId": "a203b24185f4069de1e04dde45b487c06fb8b4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bafccc43_9834caec",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-01T16:11:27Z",
+      "side": 1,
+      "message": "I think it would be better for this to be on classLoaderContextMap and take the sdk version number as the first parameter. It can handle the lazy creation of the classLoaderContext information.",
+      "revId": "a203b24185f4069de1e04dde45b487c06fb8b4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e5b86e9_7ae5f7e6",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-01T16:11:27Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "a203b24185f4069de1e04dde45b487c06fb8b4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b83d7b_48772a1c",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-01T16:11:27Z",
+      "side": 1,
+      "message": "Map key order is not defined. Each time this is run it will generate a different command line which will cause ninja to regenerate the contents even if nothing has actually changed.\n\nYou need to define an order in which these are processed, e.g. increasing order from -1, 28, 29, 30 would be fine. I suggest that you provide a method on classLoaderContextMap to return the keys in some order, iterate over them and then get the value from the classLoaderContextMap.",
+      "revId": "a203b24185f4069de1e04dde45b487c06fb8b4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
