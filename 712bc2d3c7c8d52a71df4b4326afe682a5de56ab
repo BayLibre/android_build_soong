@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af1b08d7_05d9ae6f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-01T18:55:14Z",
+      "side": 1,
+      "message": "Bodies of two cases look identical. Can we merge them into one case?",
+      "range": {
+        "startLine": 1982,
+        "startChar": 0,
+        "endLine": 1987,
+        "endChar": 6
+      },
+      "revId": "712bc2d3c7c8d52a71df4b4326afe682a5de56ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
