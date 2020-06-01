@@ -140,11 +140,12 @@ func stubFlagsRule(ctx android.SingletonContext) {
 	}
 
 	var bootDexJars android.Paths
+	var bootDexJarModuleNames []string
 
 	ctx.VisitAllModules(func(module android.Module) {
+		name := ctx.ModuleName(module)
 		// Collect dex jar paths for the modules listed above.
 		if j, ok := module.(Dependency); ok {
-			name := ctx.ModuleName(module)
 			for moduleList, pathList := range moduleListToPathList {
 				if i := android.IndexList(name, *moduleList); i != -1 {
 					pathList[i] = j.DexJar()
@@ -153,18 +154,31 @@ func stubFlagsRule(ctx android.SingletonContext) {
 		}
 
 		// Collect dex jar paths for modules that had hiddenapi encode called on them.
-		if h, ok := module.(hiddenAPIIntf); ok {
-			if jar := h.bootDexJar(); jar != nil {
-				// For a java lib included in an APEX, only take the one built for
-				// the platform variant, and skip the variants for APEXes.
-				// Otherwise, the hiddenapi tool will complain about duplicated classes
-				if a, ok := module.(android.ApexModule); ok {
-					if android.InAnyApex(module.Name()) && !a.IsForPlatform() {
-						return
-					}
+		if h, ok := module.(hiddenAPIIntf); ok && h.bootDexJar() != nil {
+			if a, ok := module.(android.ApexModule); ok {
+				// For a java lib included in an APEX, take the one built
+				// for the APEX variant, skipping the platform variant.
+				if android.InAnyApex(name) && a.IsForPlatform() {
+					return // skip
 				}
-				bootDexJars = append(bootDexJars, jar)
+
+				// Also take care of the case where a java lib is included in
+				// multiple APEXes. Make sure that the same lib is not included
+				// more than twice.
+				if android.InList(name, bootDexJarModuleNames) {
+					// ... but there are known exceptions to this rule:
+					// Test APEXes and the ART APEXes are them.
+					exception := a.ApexName() == "com.android.art.release"
+					exception = exception || a.IsForTestApex()
+					if !exception {
+						ctx.Errorf("Module %q is a bootjar, but was found in multiple APEXes", name)
+					}
+					return
+				}
 			}
+
+			bootDexJars = append(bootDexJars, h.bootDexJar())
+			bootDexJarModuleNames = append(bootDexJarModuleNames, name)
 		}
 	})
 

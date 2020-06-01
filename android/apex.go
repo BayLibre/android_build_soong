@@ -34,6 +34,7 @@ type ApexInfo struct {
 
 	MinSdkVersion int
 	Updatable     bool
+	Test          bool
 }
 
 // Extracted from ApexModule to make it easier to define custom subsets of the
@@ -83,6 +84,9 @@ type ApexModule interface {
 	// Tests whether this module will be built for the platform or not.
 	// This is a shortcut for ApexName() == ""
 	IsForPlatform() bool
+
+	// Tests whether this module is built for a test APEX or not.
+	IsForTestApex() bool
 
 	// Tests if this module could have APEX variants. APEX variants are
 	// created only for the modules that returns true here. This is useful
@@ -194,6 +198,10 @@ func (m *ApexModuleBase) ApexVariations() []ApexInfo {
 
 func (m *ApexModuleBase) ApexName() string {
 	return m.ApexProperties.Info.ApexName
+}
+
+func (m *ApexModuleBase) IsForTestApex() bool {
+	return m.ApexProperties.Info.Test
 }
 
 func (m *ApexModuleBase) IsForPlatform() bool {

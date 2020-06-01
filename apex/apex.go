@@ -698,6 +698,7 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 			ApexName:      mctx.ModuleName(),
 			MinSdkVersion: a.minSdkVersion(mctx),
 			Updatable:     a.Updatable(),
+			Test:          a.testApex,
 		}}
 		directDep = true
 	} else if am, ok := mctx.Module().(android.ApexModule); ok {
