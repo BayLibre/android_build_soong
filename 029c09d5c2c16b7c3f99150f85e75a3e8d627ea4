@@ -16,6 +16,24 @@
       "revId": "029c09d5c2c16b7c3f99150f85e75a3e8d627ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe2b16d_c4deb15e",
+        "filename": "android/arch_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2020-06-01T19:36:25Z",
+      "side": 1,
+      "message": "Where should I write that? It\u0027s basically tests that \"native_bridge_supported: true\" works (it uses TestArchConfigNativeBridge which is not used anywhere thus I think it\u0027s good idea to test it, too), then it tests that \"not_native_bridge\" can be used and then, I guess, I need test to see if native_bridge could be used, too.\n\nI\u0027m not sure how to test native_bridge block without making test too complicated. But could use combination of \"native_bridge_supported: true\" and then \"native_bridge: enabled: false\".\n\nThis is a bit useless combo - but it ensures that native_bridge part works, too.",
+      "parentUuid": "aee60973_99694bfc",
+      "revId": "029c09d5c2c16b7c3f99150f85e75a3e8d627ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
