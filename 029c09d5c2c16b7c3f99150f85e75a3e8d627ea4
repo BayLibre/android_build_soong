@@ -34,6 +34,24 @@
       "revId": "029c09d5c2c16b7c3f99150f85e75a3e8d627ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0b63bfe_4d2f684f",
+        "filename": "android/arch_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-01T22:10:57Z",
+      "side": 1,
+      "message": "A comment here would do. It is difficult to understand exactly what the test is checking at the moment. e.g. why do all those foo/bar/baz variants mean? Why are they different?\n\nIf TestArchConfigNativeBridge isn\u0027t used then why does it exist? Is it being used downstream somewhere? If so then using it here is a good idea.\n\nThat sounds like an ok test for native_bridge. Just want to make sure that logic works fine.\n\nI am not sure how you plan to test that, whether you can do it as part of this or not it seems as though you may need separate bp content to do the test.\n\nIf you only have one test case in this list then it might be better to just have a single test case for the not_native_bridge case and one for the native_bridge case.",
+      "parentUuid": "dfe2b16d_c4deb15e",
+      "revId": "029c09d5c2c16b7c3f99150f85e75a3e8d627ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
