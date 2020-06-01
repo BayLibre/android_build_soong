@@ -22,6 +22,30 @@
       "revId": "b7ce473a4b90aab6f005af9ba4e3ae4224b14962",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985ab69f_d7312a71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-01T11:57:38Z",
+      "side": 1,
+      "message": "Right, thanks. Fixed in PS2.\n\nNow the code requires a cleanup to avoid manual repetition for versions 28, 29, 30. I\u0027ll address it in a follow-up CL.",
+      "parentUuid": "8e34e979_fb668d2a",
+      "range": {
+        "startLine": 7,
+        "startChar": 64,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "b7ce473a4b90aab6f005af9ba4e3ae4224b14962",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
