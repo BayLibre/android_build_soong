@@ -52,6 +52,24 @@
       "revId": "029c09d5c2c16b7c3f99150f85e75a3e8d627ea4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e426ba76_faf2ad5c",
+        "filename": "android/arch_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2020-06-01T22:25:52Z",
+      "side": 1,
+      "message": "I have no idea why TestArchConfigNativeBridge exist - but it was added here:\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/954099/3..7/android/config.go#237\n\nIt\u0027s not referenced in this CL and anywhere else.\n\nI think the idea was to add test as well - but that never happened, apparently.\n\nThat\u0027s why my plan to reuse native_bridge test failed: since three are no such test AFAICS.\n\nI have tried to add test for native_bridge case and not_native_bridge case - and also added some comments in last version of CL.",
+      "parentUuid": "b0b63bfe_4d2f684f",
+      "revId": "029c09d5c2c16b7c3f99150f85e75a3e8d627ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
