@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aee60973_99694bfc",
+        "filename": "android/arch_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-01T19:18:06Z",
+      "side": 1,
+      "message": "A more detailed explanation as to what this is intended to be testing would be useful.\n\nAlso, do you need a test for native_bridge: {...} block as well as not_native_bridge: {...}",
+      "revId": "029c09d5c2c16b7c3f99150f85e75a3e8d627ea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
