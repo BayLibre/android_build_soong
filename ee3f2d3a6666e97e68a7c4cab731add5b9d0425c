@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6242c963_59b59e25",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-01T19:57:43Z",
+      "side": 1,
+      "message": "\u003e jiyong@ comment carried over:\n\u003e Yeah, I think the next two lines should be uncommented. I however am not \u003e \u003e sure from where LOCAL_APK_SET_MASTER_FILE should come.\nThe rules in $(BUILD_SYSTEM)/soong_app_prebuilt.mk ensure that 1) the master file will be unzipped to the staging area, 2) during the install it will be copied from the staging area to the image, 3) the remaining extracted APKs will be unzipped to the image. Are any of these actions needed if the APEX case?",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 19
+      },
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "186e45cb_a8b28af4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 4783,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-01T19:57:43Z",
+      "side": 1,
+      "message": "\u003e jiyong@ comment:\n\u003e why don\u0027t we check complete commands (including arguments) \n\u003e not just fragments of them?\nDone",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22a9818f_407a953b",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-01T19:57:43Z",
+      "side": 1,
+      "message": "\u003e jiyong@ comment:\n\u003e This seems to be simpler than what\u0027s being done in \n\u003e soong_android_app_set.mk where LOCAL_APK_SET_MASTER_FILE is extracted\n\u003e first as \u003cappname\u003e.apk and then rest are extracted in the same directory.\nMy understanding of the installation process is far from perfect, so I tried to make soong_android_app_set.mk similar to other .mk files. cc:ing ccross@",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
