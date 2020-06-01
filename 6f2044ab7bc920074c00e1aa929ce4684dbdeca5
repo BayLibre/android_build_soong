@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98a61c1b_5ebbf694",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-01T18:20:20Z",
+      "side": 1,
+      "message": "Use tabs instead of spaces.  You should set up your IDE to run gofmt (or goimports, which avoids having to manually manage imports) automatically.",
+      "revId": "6f2044ab7bc920074c00e1aa929ce4684dbdeca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
