@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbcdacad_7ee9702e",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-06-02T13:58:51Z",
+      "side": 0,
+      "message": "Colin, given the build wasn\u0027t failing with the wrong path, can we remove this?",
+      "range": {
+        "startLine": 183,
+        "startChar": 39,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "b1e61be41d450b25d2fe7b410288968e496bf707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
