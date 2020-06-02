@@ -206,7 +206,7 @@ var (
 		blueprint.RuleParams{
 			Command: "rm -f $out && " +
 				"${config.PackageCheckCmd} $in $packages && " +
-				"touch $out",
+				"cp $in $out",
 			CommandDeps: []string{"${config.PackageCheckCmd}"},
 		},
 		"packages")
