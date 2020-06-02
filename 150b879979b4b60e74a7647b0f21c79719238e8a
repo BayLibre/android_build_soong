@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e82cb061_8b8644df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-02T12:56:11Z",
+      "side": 1,
+      "message": "To be extra careful, can you please build and diff out/soong/hiddenapi/hiddenapi-flags.csv before and after your patch?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "150b879979b4b60e74a7647b0f21c79719238e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0df57ec_c8899023",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-02T12:56:11Z",
+      "side": 1,
+      "message": "for my education, do we ever expect them to be different in content?",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 59
+      },
+      "revId": "150b879979b4b60e74a7647b0f21c79719238e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
