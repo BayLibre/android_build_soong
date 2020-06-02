@@ -838,7 +838,8 @@ type linkTypeContext interface {
 func (m *Module) getLinkType(name string) (ret linkType, stubs bool) {
 	ver := m.sdkVersion()
 	switch {
-	case name == "core.current.stubs" || name == "core.platform.api.stubs" ||
+	case name == "core.current.stubs" ||
+		name == "legacy.core.platform.api.stubs" || name == "stable.core.platform.api.stubs" ||
 		name == "stub-annotations" || name == "private-stub-annotations-jar" ||
 		name == "core-lambda-stubs" || name == "core-generated-annotation-stubs":
 		return javaCore, true
