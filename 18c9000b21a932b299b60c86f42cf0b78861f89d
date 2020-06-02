@@ -22,6 +22,30 @@
       "revId": "18c9000b21a932b299b60c86f42cf0b78861f89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc47a2c_4714f09d",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 4962,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-02T21:13:18Z",
+      "side": 1,
+      "message": "I am using IntelliJ IDE, and it issues a warning that the variable name \u0027error\u0027 is the same as builtin type. \nBTW, it also issues a warning when a function returns a value of type `error` and this value is not checked. I have fixed a couple of places like that, too.\nLikewise, using \u0027_\u0027 for an unused argument name suppresses yet another warning.\nFinally, I hope you don\u0027t mind replacing a long list if/else if/else if/else with the switch statement in apex/androidmk.go",
+      "parentUuid": "65a39ba3_4d99dfe6",
+      "range": {
+        "startLine": 4962,
+        "startChar": 0,
+        "endLine": 4962,
+        "endChar": 15
+      },
+      "revId": "18c9000b21a932b299b60c86f42cf0b78861f89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
