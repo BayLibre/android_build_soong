@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a8de2eb_db7da9d0",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-02T11:39:59Z",
+      "side": 1,
+      "message": "Yes, the actions are required. For the flattened APEX case, every files in an APEX are installed directly to /system/apex/\u003capex_name\u003e directory using Make.",
+      "parentUuid": "6242c963_59b59e25",
+      "range": {
+        "startLine": 204,
+        "startChar": 11,
+        "endLine": 204,
+        "endChar": 19
+      },
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "186e45cb_a8b28af4",
         "filename": "apex/apex_test.go",
         "patchSetId": 6
