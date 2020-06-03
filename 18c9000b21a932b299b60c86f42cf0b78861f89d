@@ -94,6 +94,30 @@
       "revId": "18c9000b21a932b299b60c86f42cf0b78861f89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4da7418_6a7513bb",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 4962,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-03T08:28:46Z",
+      "side": 1,
+      "message": "No. I personally feel fine having this in this change. I just wondered.",
+      "parentUuid": "4a0bd9e4_594626eb",
+      "range": {
+        "startLine": 4962,
+        "startChar": 0,
+        "endLine": 4962,
+        "endChar": 15
+      },
+      "revId": "18c9000b21a932b299b60c86f42cf0b78861f89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

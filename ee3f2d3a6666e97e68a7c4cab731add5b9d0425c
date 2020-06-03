@@ -140,6 +140,24 @@
       "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d896e251_b19c11dd",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-03T08:28:46Z",
+      "side": 1,
+      "message": "My expection is as follows:\n\n1) from the apks file (fi.builtFile), the master file is extracted as \u003cmoduleName\u003e.apk\n2) rest of the entries in the apks file are extracted as they are\n3) the apks file is added to the inputs of the apex packaging rule\n\n#2 and #3 are already there. Only #1 is missing.\n\nI think the situation here is slightly different from soong_android_app_set.mk. Here, the extraction of the apks file and packaging them into an apex all happens inside the single build rule: apexRule.  Therefore, intermediate files not being revealed in the build graph is not a problem here.\n\nHowever, in case of the mk file, the extraction of the apks file and the creation of system.img are two different build rules, in which case their inputs/outputs should better be revealed in the build graph.",
+      "parentUuid": "a1431ee4_28b7cba3",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
