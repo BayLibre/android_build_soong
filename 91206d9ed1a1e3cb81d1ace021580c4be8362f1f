@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4b8dc9e_950bddb5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-03T17:32:43Z",
+      "side": 1,
+      "message": "I\u0027m concerned with the extra disk space (and network I/O when we use RBE) introduced by this pattern.  There are more places we need something similar, for example lint checks, and copying the jar every time will be expensive.  A symlink would be cheaper, but could cause issues.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "91206d9ed1a1e3cb81d1ace021580c4be8362f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
