@@ -32,6 +32,10 @@ type TestProperties struct {
 	Test_config *string `android:"arch_variant"`
 
 	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
+	// support filegroup and genrules.
+	Gen_config []string `android:"path,arch_variant"`
+
+	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
 	// should be installed with the module.
 	Test_config_template *string `android:"arch_variant"`
 }
@@ -51,6 +55,7 @@ func (test *testDecorator) bootstrapperProps() []interface{} {
 func (test *testDecorator) install(ctx android.ModuleContext, file android.Path) {
 	test.testConfig = tradefed.AutoGenPythonBinaryHostTestConfig(ctx, test.testProperties.Test_config,
 		test.testProperties.Test_config_template, test.binaryDecorator.binaryProperties.Test_suites,
+		test.binaryDecorator.binaryProperties.Gen_config,
 		test.binaryDecorator.binaryProperties.Auto_gen_config)
 
 	test.binaryDecorator.pythonInstaller.dir = "nativetest"

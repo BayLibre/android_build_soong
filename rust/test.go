@@ -35,6 +35,10 @@ type TestProperties struct {
 	// installed into.
 	Test_suites []string `android:"arch_variant"`
 
+	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
+	// support filegroup and genrules.
+	Gen_config []string `android:"path,arch_variant"`
+
 	// Flag to indicate whether or not to create test config automatically. If AndroidTest.xml
 	// doesn't exist next to the Android.bp, this attribute doesn't need to be set to true
 	// explicitly.
@@ -97,6 +101,7 @@ func (test *testDecorator) install(ctx ModuleContext, file android.Path) {
 		test.Properties.Test_config,
 		test.Properties.Test_config_template,
 		test.Properties.Test_suites,
+		test.Properties.Gen_config,
 		test.Properties.Auto_gen_config)
 	// default relative install path is module name
 	if path == "" {

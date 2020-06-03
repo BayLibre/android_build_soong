@@ -44,7 +44,16 @@ var autogenTestConfig = pctx.StaticRule("autogenTestConfig", blueprint.RuleParam
 	CommandDeps: []string{"$template"},
 }, "name", "template", "extraConfigs")
 
-func testConfigPath(ctx android.ModuleContext, prop *string, testSuites []string, autoGenConfig *bool, testConfigTemplateProp *string) (path android.Path, autogenPath android.WritablePath) {
+func testConfigPath(ctx android.ModuleContext, prop *string, testSuites []string, genConfig []string, autoGenConfig *bool, testConfigTemplateProp *string) (path android.Path, autogenPath android.WritablePath) {
+	var genConfigs android.Paths
+	var genConfigPath android.Path
+	genConfigs = android.PathsForModuleSrc(ctx, genConfig)
+	for _, path := range genConfigs {
+		genConfigPath = path
+	}
+	if genConfigPath != nil {
+		return genConfigPath, nil
+	}
 	p := getTestConfig(ctx, prop)
 	if !Bool(autoGenConfig) && p != nil {
 		return p, nil
@@ -132,8 +141,8 @@ func autogenTemplateWithName(ctx android.ModuleContext, name string, output andr
 }
 
 func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string, testSuites []string, config []Config, autoGenConfig *bool) android.Path {
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	testConfigTemplateProp *string, testSuites []string, genConfig []string, config []Config, autoGenConfig *bool) android.Path {
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, genConfig, autoGenConfig, testConfigTemplateProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
@@ -151,8 +160,8 @@ func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
 }
 
 func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string, testSuites []string, configs []Config, autoGenConfig *bool) android.Path {
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	testConfigTemplateProp *string, testSuites []string, genConfig []string, configs []Config, autoGenConfig *bool) android.Path {
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, genConfig, autoGenConfig, testConfigTemplateProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
@@ -166,8 +175,8 @@ func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, testConfigProp 
 }
 
 func AutoGenJavaTestConfig(ctx android.ModuleContext, testConfigProp *string, testConfigTemplateProp *string,
-	testSuites []string, autoGenConfig *bool) android.Path {
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	testSuites []string, genConfig []string, autoGenConfig *bool) android.Path {
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, genConfig, autoGenConfig, testConfigTemplateProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
@@ -185,9 +194,9 @@ func AutoGenJavaTestConfig(ctx android.ModuleContext, testConfigProp *string, te
 }
 
 func AutoGenPythonBinaryHostTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string, testSuites []string, autoGenConfig *bool) android.Path {
+	testConfigTemplateProp *string, testSuites []string, genConfig []string, autoGenConfig *bool) android.Path {
 
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, genConfig, autoGenConfig, testConfigTemplateProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
@@ -201,8 +210,8 @@ func AutoGenPythonBinaryHostTestConfig(ctx android.ModuleContext, testConfigProp
 }
 
 func AutoGenRustTestConfig(ctx android.ModuleContext, name string, testConfigProp *string,
-	testConfigTemplateProp *string, testSuites []string, autoGenConfig *bool) android.Path {
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	testConfigTemplateProp *string, testSuites []string, genConfig []string, autoGenConfig *bool) android.Path {
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, genConfig, autoGenConfig, testConfigTemplateProp)
 	if autogenPath != nil {
 		templatePathString := "${RustHostTestConfigTemplate}"
 		if ctx.Device() {
@@ -228,8 +237,8 @@ var autogenInstrumentationTest = pctx.StaticRule("autogenInstrumentationTest", b
 }, "name", "template", "extraConfigs")
 
 func AutoGenInstrumentationTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string, manifest android.Path, testSuites []string, autoGenConfig *bool, configs []Config) android.Path {
-	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	testConfigTemplateProp *string, manifest android.Path, testSuites []string, genConfig []string, autoGenConfig *bool, configs []Config) android.Path {
+	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, genConfig, autoGenConfig, testConfigTemplateProp)
 	var configStrings []string
 	if autogenPath != nil {
 		template := "${InstrumentationTestConfigTemplate}"
