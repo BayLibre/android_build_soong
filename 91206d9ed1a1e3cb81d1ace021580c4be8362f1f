@@ -22,6 +22,30 @@
       "revId": "91206d9ed1a1e3cb81d1ace021580c4be8362f1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf52791_f9deb724",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-03T20:00:12Z",
+      "side": 1,
+      "message": "I did look at symlinks but it seems as though ninja doesn\u0027t handle them very well.\n\nThe other approach was to somehow make everything that depended on the output file also depend on the stamp file but that seemed like a lot of unnecessary work.\n\nThis approach only affects a very tiny number of libraries, those that have permitted_packages. While any library can add that property the only libraries that require that property are ones that end up on the bootclasspath. It didn\u0027t seem as though it would cause much effect on build time or storage.",
+      "parentUuid": "d4b8dc9e_950bddb5",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "91206d9ed1a1e3cb81d1ace021580c4be8362f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
