@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ded000b5_9ff2ba1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-06-03T20:48:49Z",
+      "side": 1,
+      "message": "need to be in the same topic for presubmit to work.",
+      "range": {
+        "startLine": 14,
+        "startChar": 38,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "687dea88e9817d0e66b920c563dbb7c1e0edfed9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608c3e99_d2ffddce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-06-03T20:48:49Z",
+      "side": 1,
+      "message": "break into 2 lines:\nBug: 148805488\nBug: 151761373",
+      "revId": "687dea88e9817d0e66b920c563dbb7c1e0edfed9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
