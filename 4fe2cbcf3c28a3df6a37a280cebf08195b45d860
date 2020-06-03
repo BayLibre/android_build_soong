@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003243887",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1287253?revision\u003d10",
+      "fixSuggestions": [
+        {
+          "fixId": "4f8bbd28_8cc345ab",
+          "description": "Change to \"cc/cc.go\"",
+          "replacements": [
+            {
+              "path": "cc/cc.go",
+              "range": {
+                "startLine": 2922,
+                "startChar": 13,
+                "endLine": 2922,
+                "endChar": 20
+              },
+              "replacement": "variant"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "041ddac3_d171dd4a",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2922,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-03T08:23:26Z",
+      "side": 1,
+      "message": "Common typo found: \"varaint\" -- should it be \"variant\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 2922,
+        "startChar": 13,
+        "endLine": 2922,
+        "endChar": 20
+      },
+      "revId": "4fe2cbcf3c28a3df6a37a280cebf08195b45d860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
