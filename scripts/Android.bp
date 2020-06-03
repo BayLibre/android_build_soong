@@ -148,3 +148,8 @@ python_test_host {
     ],
     test_suites: ["general-tests"],
 }
+
+sh_binary_host {
+    name: "lint-project-xml.sh",
+    src: "lint-project-xml.sh",
+}

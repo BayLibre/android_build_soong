@@ -349,6 +349,12 @@ type CompilerDeviceProperties struct {
 	Uncompress_dex *bool
 
 	IsSDKLibrary bool `blueprint:"mutated"`
+
+	Lint struct {
+		Error_checks   []string
+		Warning_checks []string
+		Disable_checks []string
+	}
 }
 
 func (me *CompilerDeviceProperties) EffectiveOptimizeEnabled() bool {
@@ -471,6 +477,7 @@ type Module struct {
 
 	hiddenAPI
 	dexpreopter
+	linter
 
 	// list of the xref extraction files
 	kytheFiles android.Paths
@@ -1612,6 +1619,28 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 	} else {
 		outputFile = implementationAndResourcesJar
+	}
+
+	if ctx.Device() {
+		var lintCompileSdkVersion string
+		// TODO: can Lint handle system_current?
+		if v := j.sdkVersion().version; v.isNumbered() {
+			lintCompileSdkVersion = v.String()
+		} else {
+			lintCompileSdkVersion = ctx.Config().DefaultAppTargetSdk()
+		}
+
+		j.linter.name = ctx.ModuleName()
+		j.linter.srcs = srcFiles // TODO: some are generated
+		j.linter.srcJars = srcJars
+		j.linter.classpath = flags.classpath
+		j.linter.compileSdkVersion = lintCompileSdkVersion
+		j.linter.javaLanguageLevel = flags.javaVersion.String()
+		j.linter.kotlinLanguageLevel = "1.3" // TODO
+		j.linter.errorChecks = j.deviceProperties.Lint.Error_checks
+		j.linter.warningChecks = j.deviceProperties.Lint.Warning_checks
+		j.linter.disableChecks = j.deviceProperties.Lint.Disable_checks
+		j.linter.lint(ctx)
 	}
 
 	ctx.CheckbuildFile(outputFile)
