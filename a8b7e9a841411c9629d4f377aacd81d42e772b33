@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c27c287_66f68df6",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-03T03:29:55Z",
+      "side": 1,
+      "message": "I am not sure when can this happen.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 4
+      },
+      "revId": "a8b7e9a841411c9629d4f377aacd81d42e772b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6327ff55_63668163",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-03T03:29:55Z",
+      "side": 1,
+      "message": "Why is this needed? The path to the apk is entirely determined in this file. See #118 for LOCAL_MODULE_PATH.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 4
+      },
+      "revId": "a8b7e9a841411c9629d4f377aacd81d42e772b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

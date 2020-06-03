@@ -46,6 +46,30 @@
       "revId": "18c9000b21a932b299b60c86f42cf0b78861f89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2e55ebc_93d5b3c7",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 4962,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-03T03:29:55Z",
+      "side": 1,
+      "message": "Thanks. I just wonder why you made this change since this doesn\u0027t seem to be related with the main topic of this change.",
+      "parentUuid": "8bc47a2c_4714f09d",
+      "range": {
+        "startLine": 4962,
+        "startChar": 0,
+        "endLine": 4962,
+        "endChar": 15
+      },
+      "revId": "18c9000b21a932b299b60c86f42cf0b78861f89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
