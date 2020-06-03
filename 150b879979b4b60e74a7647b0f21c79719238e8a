@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82552b38_f7da4af0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-03T01:46:22Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. Yeah, I compared the file before and after the change. They were the same. Updated the comment message as well.",
+      "parentUuid": "e82cb061_8b8644df",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "150b879979b4b60e74a7647b0f21c79719238e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0df57ec_c8899023",
         "filename": "java/hiddenapi_singleton.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-02T12:56:11Z",
       "side": 1,
       "message": "for my education, do we ever expect them to be different in content?",
+      "range": {
+        "startLine": 160,
+        "startChar": 8,
+        "endLine": 160,
+        "endChar": 59
+      },
+      "revId": "150b879979b4b60e74a7647b0f21c79719238e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d8a92a_7f00ad07",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-03T01:46:22Z",
+      "side": 1,
+      "message": "No. The contents are the same. But the platform variant should actually be used; otherwise we will be building the same thing again.",
+      "parentUuid": "c0df57ec_c8899023",
       "range": {
         "startLine": 160,
         "startChar": 8,
