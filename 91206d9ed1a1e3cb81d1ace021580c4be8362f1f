@@ -46,6 +46,30 @@
       "revId": "91206d9ed1a1e3cb81d1ace021580c4be8362f1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb91160_6feb397d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-03T20:16:06Z",
+      "side": 1,
+      "message": "(i don\u0027t have anything to add for the rest, at least at the moment)\n\n\u003e I did look at symlinks but it seems as though ninja doesn\u0027t handle them very well.\n\nOur fork of ninja uses `lstat` for known outputs, so symlinks can work rather normally (just don\u0027t expect to read through them unless there\u0027s also a dependency from the symlink to what it points to)",
+      "parentUuid": "2cf52791_f9deb724",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "91206d9ed1a1e3cb81d1ace021580c4be8362f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
