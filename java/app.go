@@ -742,6 +742,10 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 	a.proguardBuildActions(ctx)
 
+	a.linter.mergedManifest = a.aapt.mergedManifestFile
+	a.linter.manifest = a.aapt.manifestPath
+	a.linter.resources = a.aapt.resourceFiles
+
 	dexJarFile := a.dexBuildActions(ctx)
 
 	jniLibs, certificateDeps := collectAppDeps(ctx, a, a.shouldEmbedJnis(ctx), !Bool(a.appProperties.Jni_uses_platform_apis))
@@ -1082,6 +1086,7 @@ func AndroidTestFactory() android.Module {
 	module.appProperties.Use_embedded_native_libs = proptools.BoolPtr(true)
 	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
+	module.Module.linter.test = true
 
 	module.AddProperties(
 		&module.Module.properties,
@@ -1134,6 +1139,7 @@ func AndroidTestHelperAppFactory() android.Module {
 	module.appProperties.Use_embedded_native_libs = proptools.BoolPtr(true)
 	module.appProperties.AlwaysPackageNativeLibs = true
 	module.Module.dexpreopter.isTest = true
+	module.Module.linter.test = true
 
 	module.AddProperties(
 		&module.Module.properties,
