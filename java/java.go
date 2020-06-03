@@ -349,6 +349,8 @@ type CompilerDeviceProperties struct {
 	Uncompress_dex *bool
 
 	IsSDKLibrary bool `blueprint:"mutated"`
+
+	Lint_flags []string
 }
 
 func (me *CompilerDeviceProperties) EffectiveOptimizeEnabled() bool {
@@ -471,6 +473,7 @@ type Module struct {
 
 	hiddenAPI
 	dexpreopter
+	linter
 
 	// list of the xref extraction files
 	kytheFiles android.Paths
@@ -1614,6 +1617,27 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		outputFile = implementationAndResourcesJar
 	}
 
+	if ctx.Device() {
+		var lintCompileSdkVersion string
+		// TODO: can Lint handle system_current?
+		if v := j.sdkVersion().version; v.isNumbered() {
+			lintCompileSdkVersion = v.String()
+		} else {
+			lintCompileSdkVersion = ctx.Config().DefaultAppTargetSdk()
+		}
+
+		j.linter.name = ctx.ModuleName()
+		j.linter.srcs = srcFiles // TODO: some are generated
+		j.linter.srcJars = srcJars
+		j.linter.classpath = append(append(android.Paths(nil), flags.bootClasspath...), flags.classpath...)
+		j.linter.classes = j.implementationJarFile
+		j.linter.compileSdkVersion = lintCompileSdkVersion
+		j.linter.javaLanguageLevel = flags.javaVersion.String()
+		j.linter.kotlinLanguageLevel = "1.3" // TODO
+		j.linter.flags = j.deviceProperties.Lint_flags
+		j.linter.lint(ctx)
+	}
+
 	ctx.CheckbuildFile(outputFile)
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
@@ -2228,6 +2252,7 @@ func TestFactory() android.Module {
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
+	module.Module.linter.test = true
 
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
@@ -2246,6 +2271,7 @@ func TestHelperLibraryFactory() android.Module {
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
+	module.Module.linter.test = true
 
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
