@@ -158,6 +158,24 @@
       "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e30fbb31_fcbb24ed",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-03T18:08:35Z",
+      "side": 1,
+      "message": "Sorry, I am still not convinced. Is the current solution incorrect in some way? And, are you proposing to change how android_app_set is installed, or how it is added to an APEX?",
+      "parentUuid": "d896e251_b19c11dd",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
