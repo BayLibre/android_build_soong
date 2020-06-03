@@ -1511,6 +1511,17 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if generateStubs {
 		d.Javadoc.stubsSrcJar = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"stubs.srcjar")
 		stubsDir = android.OptionalPathForPath(android.PathForModuleOut(ctx, "stubsDir"))
+		if ctx.Config().IsEnvTrue("UNSAFE_DISABLE_DROIDSTUBS") {
+			rule.Command().Text("test").FlagWithOutput("-f ", d.Javadoc.stubsSrcJar).
+				Text(" || (echo 'Stubs not present, run once with UNSAFE_DISABLE_DROIDSTUBS=false'; exit 38)")
+			rule.Build(pctx, ctx, "metalava", "metalava (no-op because UNSAFE_DISABLE_DROIDSTUBS=true)")
+			rule.Restat()
+
+			dummyRule := android.NewRuleBuilder()
+			// Call stubsFlags to populate d.apiFile etc., but don't actually build the rule.
+			d.stubsFlags(ctx, dummyRule.Command(), stubsDir)
+			return
+		}
 		rule.Command().Text("rm -rf").Text(stubsDir.String())
 		rule.Command().Text("mkdir -p").Text(stubsDir.String())
 	}
