@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd5c62e6_0e3d3aa5",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-06-03T12:55:48Z",
+      "side": 1,
+      "message": "Could we share this logic with hiddenapi.go instead? This adds another instance that doesn\u0027t support \u0027stem\u0027 matching boot dex jars.",
+      "range": {
+        "startLine": 167,
+        "startChar": 23,
+        "endLine": 168,
+        "endChar": 52
+      },
+      "revId": "2fd2192735d8341cfacb9915acde695a5ffe1a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
