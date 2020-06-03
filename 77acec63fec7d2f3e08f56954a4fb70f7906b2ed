@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74eeb00b_25dccdc9",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1980,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-03T23:14:46Z",
+      "side": 1,
+      "message": "Do you want to restrict to these types or allow anything that matches the interface?  You could use:\n\n    switch t :\u003d child.(type) {\n    case javaDependency:\n        af :\u003d apexFileForJavaLibrary(ctx, t, child.(android.Module))",
+      "range": {
+        "startLine": 1980,
+        "startChar": 9,
+        "endLine": 1980,
+        "endChar": 57
+      },
+      "revId": "77acec63fec7d2f3e08f56954a4fb70f7906b2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
