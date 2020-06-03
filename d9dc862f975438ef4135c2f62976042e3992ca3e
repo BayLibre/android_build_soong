@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04c5a6a8_7a82d7eb",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-06-03T00:23:43Z",
+      "side": 1,
+      "message": "It\u0027s used at line 873, actx.AddDependency.",
+      "parentUuid": "efe8752a_2c9913d6",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 31
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7616d9ea_5ca77588",
         "filename": "rust/rust.go",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-01T16:22:53Z",
       "side": 1,
       "message": "nit: genSource",
+      "range": {
+        "startLine": 636,
+        "startChar": 41,
+        "endLine": 636,
+        "endChar": 51
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "606a8e00_e87a95e6",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-06-03T00:23:43Z",
+      "side": 1,
+      "message": "I copied the naming convention in cc.go. It uses \"gen source\" and \"gen header\".",
+      "parentUuid": "7616d9ea_5ca77588",
       "range": {
         "startLine": 636,
         "startChar": 41,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e1a60a08_4130b6ff",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-06-03T00:23:43Z",
+      "side": 1,
+      "message": "It\u0027s used at line 873, actx.AddDependency.",
+      "parentUuid": "36e16dba_f587d63b",
+      "range": {
+        "startLine": 659,
+        "startChar": 3,
+        "endLine": 660,
+        "endChar": 39
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5635ee20_3c1e987e",
         "filename": "rust/rust.go",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-01T16:22:53Z",
       "side": 1,
       "message": "I wouldn\u0027t expect these deps to be duplicated in the Android.bp, so is this necessary?",
+      "range": {
+        "startLine": 805,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 74
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a42327ae_de013910",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-06-03T00:23:43Z",
+      "side": 1,
+      "message": "I am not sure. I copied it from cc/cc.go.",
+      "parentUuid": "5635ee20_3c1e987e",
       "range": {
         "startLine": 805,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cd804d65_b0379486",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-06-03T00:23:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc97d89_a20e4b65",
+      "range": {
+        "startLine": 912,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 4
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e5a1168_1a0d1bd2",
         "filename": "rust/rust.go",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92369ae2_997e78f1",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-06-03T00:23:43Z",
+      "side": 1,
+      "message": "Done. Added check of mod.Host().",
+      "parentUuid": "9e5a1168_1a0d1bd2",
+      "range": {
+        "startLine": 914,
+        "startChar": 9,
+        "endLine": 914,
+        "endChar": 23
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
