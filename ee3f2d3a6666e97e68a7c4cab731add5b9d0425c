@@ -176,6 +176,24 @@
       "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db0344c5_d811c4f9",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-03T23:49:43Z",
+      "side": 1,
+      "message": "I meant changing the way it is added to an APEX. Currently, the master file is not extracted as \u003cmodulename\u003e.apk. That\u0027s my only concern here.",
+      "parentUuid": "e30fbb31_fcbb24ed",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
