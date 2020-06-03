@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d01c301_f33fb82f",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-03T18:49:20Z",
+      "side": 1,
+      "message": "use a ModuleOutPath for this, ModuleGenPath is usually for generated source files that will be used during the compile.",
+      "range": {
+        "startLine": 123,
+        "startChar": 23,
+        "endLine": 123,
+        "endChar": 44
+      },
+      "revId": "990191fa8c90febbb556c6549db388baabf7edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002446c6_0cf85e26",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-03T18:49:20Z",
+      "side": 1,
+      "message": "PathForModuleOut",
+      "range": {
+        "startLine": 324,
+        "startChar": 34,
+        "endLine": 324,
+        "endChar": 50
+      },
+      "revId": "990191fa8c90febbb556c6549db388baabf7edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f57e7eb_5f0fb057",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-03T18:49:20Z",
+      "side": 1,
+      "message": "Remove this line, a nil slice is equivalent to an empty slice but without performing an extra allocation.",
+      "revId": "990191fa8c90febbb556c6549db388baabf7edf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
