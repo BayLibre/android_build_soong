@@ -2077,6 +2077,10 @@ type testProperties struct {
 	// should be installed with the module.
 	Test_config_template *string `android:"path,arch_variant"`
 
+	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
+	// support filegroup and genrules.
+	Gen_config []string `android:"path,arch_variant"`
+
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test
 	Data []string `android:"path"`
@@ -2105,6 +2109,10 @@ type prebuiltTestProperties struct {
 	// the name of the test configuration (for example "AndroidTest.xml") that should be
 	// installed with the module.
 	Test_config *string `android:"path,arch_variant"`
+
+	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
+	// support filegroup and genrules.
+	Gen_config []string `android:"path,arch_variant"`
 }
 
 type Test struct {
@@ -2132,7 +2140,7 @@ type JavaTestImport struct {
 
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
-		j.testProperties.Test_suites, j.testProperties.Auto_gen_config)
+		j.testProperties.Test_suites, j.testProperties.Gen_config, j.testProperties.Auto_gen_config)
 	j.data = android.PathsForModuleSrc(ctx, j.testProperties.Data)
 
 	j.Library.GenerateAndroidBuildActions(ctx)
@@ -2144,7 +2152,7 @@ func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContex
 
 func (j *JavaTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.prebuiltTestProperties.Test_config, nil,
-		j.prebuiltTestProperties.Test_suites, nil)
+		j.prebuiltTestProperties.Test_suites, j.prebuiltTestProperties.Gen_config, nil)
 
 	j.Import.GenerateAndroidBuildActions(ctx)
 }

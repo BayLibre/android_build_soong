@@ -43,6 +43,10 @@ type BinaryProperties struct {
 	// installed into.
 	Test_suites []string `android:"arch_variant"`
 
+	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
+	// support filegroup and genrules.
+	Gen_config []string `android:"path,arch_variant"`
+
 	// whether to use `main` when starting the executable. The default is true, when set to
 	// false it will act much like the normal `python` executable, but with the sources and
 	// libraries automatically included in the PYTHONPATH.

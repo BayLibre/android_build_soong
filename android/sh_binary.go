@@ -63,6 +63,10 @@ type TestProperties struct {
 	// installed with the module.
 	Test_config *string `android:"arch_variant"`
 
+	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
+	// support filegroup and genrules.
+	Gen_config []string `android:"path,arch_variant"`
+
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test.
 	Data []string `android:"path,arch_variant"`
