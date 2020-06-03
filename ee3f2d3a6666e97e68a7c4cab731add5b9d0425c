@@ -122,6 +122,24 @@
       "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1431ee4_28b7cba3",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-03T05:22:14Z",
+      "side": 1,
+      "message": "I am not sure what am I supposed to do here, especially in view of the today\u0027s email thread \"Need to change how android_app_set.mk handles split apks\"",
+      "parentUuid": "3a749362_ed513ef8",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
