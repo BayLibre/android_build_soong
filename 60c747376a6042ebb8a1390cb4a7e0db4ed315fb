@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d158408_7c3ac4f1",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-06-04T17:49:22Z",
+      "side": 1,
+      "message": "Filtering by ctx.PrimaryArch() is probably an issue because it means we\u0027ll probably only ever see coverage for 64-bit code. +enh, think that\u0027s an issue for bionic, or are the differences between ABIs there sufficiently behind us?",
+      "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
