@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "508b914d_12342073",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-06-04T17:55:33Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "a6bdf9512c93dc992d756f45cd78eab4c999e7c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3e4b99_f91416e0",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-06-04T17:55:33Z",
+      "side": 1,
+      "message": "I think what you want is to follow the model of gen_stub_libs a bit more. Import SymbolFileParser and let the XML generation work be done separately, like how gen_stub_libs uses Generator to create the output from the SymbolFileParser rather than mixing the parsing and generation. Should save you a lot of copied code.",
+      "revId": "a6bdf9512c93dc992d756f45cd78eab4c999e7c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
