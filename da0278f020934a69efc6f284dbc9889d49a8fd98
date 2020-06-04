@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f60e5c84_e1aa30ea",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-04T16:45:56Z",
+      "side": 1,
+      "message": "It does ask for clean up, but there are other parts of config that also go through similar conversion. It would make more sense to clean up them all in one go, not in this CL.",
+      "parentUuid": "58bbb2b2_b27dd05d",
+      "revId": "da0278f020934a69efc6f284dbc9889d49a8fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14fd2234_80015ac6",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "da0278f020934a69efc6f284dbc9889d49a8fd98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2cd089b_3e0879ca",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-04T16:45:56Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "14fd2234_80015ac6",
+      "revId": "da0278f020934a69efc6f284dbc9889d49a8fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
