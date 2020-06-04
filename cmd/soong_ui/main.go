@@ -32,6 +32,11 @@ import (
 	"android/soong/ui/tracer"
 )
 
+const (
+	makeModeFlagName  = "--make-mode"
+	buildModeFlagName = "--build-mode"
+)
+
 // A command represents an operation to be executed in the soong build
 // system.
 type command struct {
@@ -57,7 +62,9 @@ type command struct {
 	run func(ctx build.Context, config build.Config, args []string, logsDir string)
 }
 
-const makeModeFlagName = "--make-mode"
+func (c *command) isBuild() bool {
+	return c.flag == makeModeFlagName || c.flag == buildModeFlagName
+}
 
 // list of supported commands (flags) supported by soong ui
 var commands []command = []command{
@@ -86,7 +93,7 @@ var commands []command = []command{
 		stdio:           customStdio,
 		run:             dumpVars,
 	}, {
-		flag:        "--build-mode",
+		flag:        buildModeFlagName,
 		description: "build modules based on the specified build action",
 		config:      buildActionConfig,
 		stdio:       stdio,
@@ -171,7 +178,9 @@ func main() {
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
 	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
-	defer build.UploadMetrics(buildCtx, config, buildStartedMilli, buildErrorFile, rbeMetricsFile, soongMetricsFile)
+	if c.isBuild() {
+		defer build.UploadMetrics(buildCtx, config, buildStartedMilli, buildErrorFile, rbeMetricsFile, soongMetricsFile)
+	}
 
 	os.MkdirAll(logsDir, 0777)
 	log.SetOutput(filepath.Join(logsDir, c.logsPrefix+"soong.log"))
