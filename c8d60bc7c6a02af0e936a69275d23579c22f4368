@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4f45805_635ef5c9",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-06-04T15:51:39Z",
+      "side": 1,
+      "message": "So you\u0027re going to introduce a new property to turn it into errors for selected projects in a follow up CL?",
+      "revId": "c8d60bc7c6a02af0e936a69275d23579c22f4368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
