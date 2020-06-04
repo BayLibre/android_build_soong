@@ -47,6 +47,9 @@ type command struct {
 	// Sets a prefix string to use for filenames of log files.
 	logsPrefix string
 
+	// Allow metrics to be uploaded when this command is executed.
+	uploadMetrics bool
+
 	// Creates the build configuration based on the args and build context.
 	config func(ctx build.Context, args ...string) build.Config
 
@@ -62,8 +65,9 @@ const makeModeFlagName = "--make-mode"
 // list of supported commands (flags) supported by soong ui
 var commands []command = []command{
 	{
-		flag:        makeModeFlagName,
-		description: "build the modules by the target name (i.e. soong_docs)",
+		flag:          makeModeFlagName,
+		description:   "build the modules by the target name (i.e. soong_docs)",
+		uploadMetrics: true,
 		config: func(ctx build.Context, args ...string) build.Config {
 			return build.NewConfig(ctx, args...)
 		},
@@ -86,11 +90,12 @@ var commands []command = []command{
 		stdio:           customStdio,
 		run:             dumpVars,
 	}, {
-		flag:        "--build-mode",
-		description: "build modules based on the specified build action",
-		config:      buildActionConfig,
-		stdio:       stdio,
-		run:         make,
+		flag:          "--build-mode",
+		description:   "build modules based on the specified build action",
+		uploadMetrics: true,
+		config:        buildActionConfig,
+		stdio:         stdio,
+		run:           make,
 	},
 }
 
@@ -171,7 +176,9 @@ func main() {
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
 	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
-	defer build.UploadMetrics(buildCtx, config, buildStartedMilli, buildErrorFile, rbeMetricsFile, soongMetricsFile)
+	if c.uploadMetrics {
+		defer build.UploadMetrics(buildCtx, config, buildStartedMilli, buildErrorFile, rbeMetricsFile, soongMetricsFile)
+	}
 
 	os.MkdirAll(logsDir, 0777)
 	log.SetOutput(filepath.Join(logsDir, c.logsPrefix+"soong.log"))
