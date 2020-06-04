@@ -16,6 +16,24 @@
       "revId": "c8d60bc7c6a02af0e936a69275d23579c22f4368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e5435f_35c03d61",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-06-04T19:23:16Z",
+      "side": 1,
+      "message": "Yes I\u0027ll do that in a follow up CL in a topic to add the property to api-stubs-docs.",
+      "parentUuid": "e4f45805_635ef5c9",
+      "revId": "c8d60bc7c6a02af0e936a69275d23579c22f4368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
