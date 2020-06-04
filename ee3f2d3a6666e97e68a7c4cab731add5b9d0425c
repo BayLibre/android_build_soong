@@ -230,6 +230,24 @@
       "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9e369c_34c9f475",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-04T17:19:06Z",
+      "side": 1,
+      "message": "Yes, extract_apks renames splits/base-master.apk to \u003cmodulename\u003e.apk:https://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/extract_apks/main.go;drc\u003d827c55f50242e83e8f7609cfeb0cf219bc8d1e9f;l\u003d370",
+      "parentUuid": "6dda2194_e6287257",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
