@@ -22,6 +22,30 @@
       "revId": "77acec63fec7d2f3e08f56954a4fb70f7906b2ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "459747e4_10626f01",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1980,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-04T05:06:07Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I know that that is possible, but I wanted to be specific about types of modules that we support.",
+      "parentUuid": "74eeb00b_25dccdc9",
+      "range": {
+        "startLine": 1980,
+        "startChar": 9,
+        "endLine": 1980,
+        "endChar": 57
+      },
+      "revId": "77acec63fec7d2f3e08f56954a4fb70f7906b2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
