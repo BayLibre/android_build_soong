@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58bbb2b2_b27dd05d",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-04T10:23:03Z",
+      "side": 1,
+      "message": "I presume you need this here because json -\u003e go won\u0027t convert a field to an android.Path.\n\nI did wonder whether you could implement https://golang.org/pkg/encoding/json/#Unmarshaler on LibraryPath instead but I think that would be much more complicated.",
+      "revId": "da0278f020934a69efc6f284dbc9889d49a8fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14fd2234_80015ac6",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-04T10:23:03Z",
+      "side": 1,
+      "message": "It is better to use a bug number here along with an explanation in the bug as to what is needed here. People leave and move on but bugs are here forever.",
+      "revId": "da0278f020934a69efc6f284dbc9889d49a8fd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
