@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc4fa376_8daba6c7",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-06-04T17:44:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3750fc14_a137d348",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 80
+      },
+      "revId": "f1a69158aaf33610b8936ef958170d6d2afe89ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2897983_c2457c95",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "f1a69158aaf33610b8936ef958170d6d2afe89ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d57b18_498ce473",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-06-04T17:44:01Z",
+      "side": 1,
+      "message": "Changed SHELL_SCRIPT to OUTPUT_FILENAME per offline discussion.",
+      "parentUuid": "b2897983_c2457c95",
+      "range": {
+        "startLine": 43,
+        "startChar": 79,
+        "endLine": 43,
+        "endChar": 108
+      },
+      "revId": "f1a69158aaf33610b8936ef958170d6d2afe89ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
