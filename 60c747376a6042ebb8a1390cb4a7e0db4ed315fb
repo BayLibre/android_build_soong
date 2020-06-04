@@ -34,6 +34,24 @@
       "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6bff9df_e021b458",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-06-04T23:39:23Z",
+      "side": 1,
+      "message": "This check is here so that we only generate one XML-formatted symbol file per NDK library (rather than creating a copy for each stub that gets generated).\n\nThe symbol file (and corresponding XML) contains the list of common as well as architecture-specific APIs, so we\u0027ll still see the 32-bit APIs even if we only generate the XML when compiling the 64-bit variant.\n\nOf course, we\u0027ll actually need to run the tests on a 32-bit target to see whether these APIs are covered, but this CL is only concerned with tracking the set of APIs that a library exposes.",
+      "parentUuid": "24eea568_d529ecb1",
+      "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
