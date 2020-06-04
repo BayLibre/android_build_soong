@@ -202,6 +202,8 @@ func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod bluep
 		a.SetBoolIfTrue("LOCAL_NOT_AVAILABLE_FOR_PLATFORM", am.NotAvailableForPlatform())
 	}
 
+	a.AddStrings("LOCAL_SOONG_VISIBILITY", mkVisibility(config, filepath.Dir(bpPath), mod.Name())...)
+
 	archStr := amod.Arch().ArchType.String()
 	host := false
 	switch amod.Os().Class {
