@@ -16,6 +16,24 @@
       "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24eea568_d529ecb1",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-06-04T21:59:10Z",
+      "side": 1,
+      "message": "i was wondering about that exact same question when i was looking at pirama\u0027s numbers recently. ideally we\u0027d have 32-bit coverage too, but realistically i suspect we\u0027ll have dropped support for 32-bit entirely before anyone has nothing better to do...\n\nthe media folks might care more, though? their 32-bit assembler is a lot more complicated than ours, with many more subtle ways to fail.",
+      "parentUuid": "8d158408_7c3ac4f1",
+      "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
