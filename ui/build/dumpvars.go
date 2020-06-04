@@ -60,6 +60,10 @@ func DumpMakeVars(ctx Context, config Config, goals, vars []string) (map[string]
 		}
 		defer os.RemoveAll(tmpDir)
 
+		if orgTmpDir, ok := config.Environment().Get("TMPDIR"); ok {
+			defer func() { config.Environment().Set("TMPDIR", orgTmpDir) }()
+		}
+
 		// It's not safe to use the same TMPDIR as the build, as that can be removed.
 		config.Environment().Set("TMPDIR", tmpDir)
 
