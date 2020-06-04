@@ -212,6 +212,24 @@
       "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dda2194_e6287257",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-04T06:57:41Z",
+      "side": 1,
+      "message": "Maybe I am missing something. What\u0027s the name of the master file in the APEX? Is it guaranteed to be \u003cmodulename\u003e.apk?",
+      "parentUuid": "8e423bec_1e6b5745",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
