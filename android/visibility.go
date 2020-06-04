@@ -66,6 +66,7 @@ type visibilityRule interface {
 	matches(m qualifiedModuleName) bool
 
 	String() string
+	MkString() string
 }
 
 // Describes the properties provided by a module that contain visibility rules.
@@ -119,6 +120,14 @@ func (c compositeRule) matches(m qualifiedModuleName) bool {
 	return false
 }
 
+func (c compositeRule) MkStrings() []string {
+	s := make([]string, 0, len(c))
+	for _, r := range c {
+		s = append(s, r.MkString())
+	}
+	return s
+}
+
 func (c compositeRule) String() string {
 	return "[" + strings.Join(c.Strings(), ", ") + "]"
 }
@@ -140,6 +149,10 @@ func (r packageRule) matches(m qualifiedModuleName) bool {
 	return m.pkg == r.pkg
 }
 
+func (r packageRule) MkString() string {
+	return r.pkg + "/"
+}
+
 func (r packageRule) String() string {
 	return fmt.Sprintf("//%s", r.pkg) // :__pkg__ is the default, so skip it.
 }
@@ -158,6 +171,10 @@ func isAncestor(p1 string, p2 string) bool {
 	return strings.HasPrefix(p2+"/", p1+"/")
 }
 
+func (r subpackagesRule) MkString() string {
+	return r.pkgPrefix + "/%"
+}
+
 func (r subpackagesRule) String() string {
 	return fmt.Sprintf("//%s:__subpackages__", r.pkgPrefix)
 }
@@ -169,6 +186,10 @@ func (r publicRule) matches(_ qualifiedModuleName) bool {
 	return true
 }
 
+func (r publicRule) MkString() string {
+	return ""
+}
+
 func (r publicRule) String() string {
 	return "//visibility:public"
 }
@@ -178,6 +199,10 @@ type privateRule struct{}
 
 func (r privateRule) matches(_ qualifiedModuleName) bool {
 	return false
+}
+
+func (r privateRule) MkString() string {
+	return ""
 }
 
 func (r privateRule) String() string {
@@ -454,6 +479,15 @@ func visibilityRuleEnforcer(ctx TopDownMutatorContext) {
 
 // Default visibility is public.
 var defaultVisibility = compositeRule{publicRule{}}
+
+func mkVisibility(config Config, dir, name string) []string {
+	qualified := qualifiedModuleName{dir, name}
+	rules := effectiveVisibilityRules(config, qualified)
+	if rules == nil || (len(rules) == 1 && rules[0] == publicRule{}) {
+		return nil
+	}
+	return append(rules.MkStrings(), dir+"/")
+}
 
 // Return the effective visibility rules.
 //
