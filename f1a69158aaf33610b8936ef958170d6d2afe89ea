@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3750fc14_a137d348",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-06-04T17:07:01Z",
+      "side": 1,
+      "message": "These can be merged to this?\noptions :\u003d []tradefed.Option{{Name: \"force-root\", Value: \"false\"}}",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 80
+      },
+      "revId": "f1a69158aaf33610b8936ef958170d6d2afe89ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2897983_c2457c95",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-06-04T17:07:01Z",
+      "side": 1,
+      "message": "This makes the reader think twice because the variable names look unrelated. Can you either make {SHELL_SCRIPT} more generic, like {BIN_FILE_NAME}, or vice versa?\n\nAlso, if you decide to change fileName to something like shellScriptName, please rename autogenTemplateWithNameAndOutputFile too so that it\u0027s clear they\u0027re for sh_test only.",
+      "range": {
+        "startLine": 43,
+        "startChar": 79,
+        "endLine": 43,
+        "endChar": 108
+      },
+      "revId": "f1a69158aaf33610b8936ef958170d6d2afe89ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
