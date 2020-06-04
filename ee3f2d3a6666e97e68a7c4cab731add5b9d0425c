@@ -194,6 +194,24 @@
       "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e423bec_1e6b5745",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-04T01:00:38Z",
+      "side": 1,
+      "message": "Instead of having two separate commands (explicitly extract master file first, then extract the rest), I have added the command to verify that the master file has been extracted.",
+      "parentUuid": "db0344c5_d811c4f9",
+      "revId": "ee3f2d3a6666e97e68a7c4cab731add5b9d0425c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
