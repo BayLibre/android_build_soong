@@ -60,14 +60,20 @@ type hiddenAPIIntf interface {
 var _ hiddenAPIIntf = (*hiddenAPI)(nil)
 
 func (h *hiddenAPI) hiddenAPI(ctx android.ModuleContext, dexJar android.ModuleOutPath,
-	implementationJar android.Path, uncompressDex bool) android.ModuleOutPath {
+	implementationJar android.Path, uncompressDex bool, stem string) android.ModuleOutPath {
 	if !ctx.Config().IsEnvTrue("UNSAFE_DISABLE_HIDDENAPI_FLAGS") {
-		name := ctx.ModuleName()
-
 		// Modules whose names are of the format <x>-hiddenapi provide hiddenapi information
 		// for the boot jar module <x>. Otherwise, the module provides information for itself.
 		// Either way extract the name of the boot jar module.
-		bootJarName := strings.TrimSuffix(name, "-hiddenapi")
+		bootJarName := strings.TrimSuffix(ctx.ModuleName(), "-hiddenapi")
+		isBootJar := inList(bootJarName, ctx.Config().BootJars())
+
+		// Alternatively, the module's stem can be used as well. This is useful for creating
+		// the csv file for a test variant of a boot jar whose name is test_<x> and stem is <x>.
+		if !isBootJar && inList(stem, ctx.Config().BootJars()) {
+			bootJarName = stem
+			isBootJar = true
+		}
 
 		// If this module is on the boot jars list (or providing information for a module
 		// on the list) then extract the hiddenapi information from it, and if necessary
@@ -78,7 +84,7 @@ func (h *hiddenAPI) hiddenAPI(ctx android.ModuleContext, dexJar android.ModuleOu
 		// to the hidden API for the bootclassloader. If information is gathered for modules
 		// not on the list then that will cause failures in the CtsHiddenApiBlacklist...
 		// tests.
-		if inList(bootJarName, ctx.Config().BootJars()) {
+		if isBootJar {
 			// Derive the greylist from classes jar.
 			flagsCSV := android.PathForModuleOut(ctx, "hiddenapi", "flags.csv")
 			metadataCSV := android.PathForModuleOut(ctx, "hiddenapi", "metadata.csv")
@@ -88,8 +94,8 @@ func (h *hiddenAPI) hiddenAPI(ctx android.ModuleContext, dexJar android.ModuleOu
 			// If this module is actually on the boot jars list and not providing
 			// hiddenapi information for a module on the boot jars list then encode
 			// the gathered information in the generated dex file.
-			if name == bootJarName {
-				hiddenAPIJar := android.PathForModuleOut(ctx, "hiddenapi", name+".jar")
+			if !strings.HasSuffix(ctx.ModuleName(), "-hiddenapi") {
+				hiddenAPIJar := android.PathForModuleOut(ctx, "hiddenapi", bootJarName+".jar")
 				h.bootDexJarPath = dexJar
 				hiddenAPIEncodeDex(ctx, hiddenAPIJar, dexJar, uncompressDex)
 				dexJar = hiddenAPIJar
