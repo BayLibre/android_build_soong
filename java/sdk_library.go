@@ -856,6 +856,9 @@ type SdkLibrary struct {
 	scopeToProperties map[*apiScope]*ApiScopeProperties
 
 	commonToSdkLibraryAndImport
+
+	// List of module names that should be installed along with this module
+	requiredDeps []string
 }
 
 var _ Dependency = (*SdkLibrary)(nil)
@@ -986,6 +989,13 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 			scopeTag.extractDepInfo(ctx, to, scopePaths)
 		}
 	})
+
+	// Record the module name of the generated XML permission file. This name is
+	// passed to AndroidMkEntries.Required so that the XML file is installed
+	// whenever the SdkLibrary is installed.
+	ctx.VisitDirectDepsWithTag(xmlPermissionsFileTag, func(xml android.Module) {
+		module.requiredDeps = append(module.requiredDeps, xml.Name())
+	})
 }
 
 func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
@@ -994,7 +1004,7 @@ func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
 	}
 	entriesList := module.Library.AndroidMkEntries()
 	entries := &entriesList[0]
-	entries.Required = append(entries.Required, module.xmlFileName())
+	entries.Required = append(entries.Required, module.requiredDeps...)
 	return entriesList
 }
 
