@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3608023b_2b07d40b",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2020-06-05T08:59:23Z",
+      "side": 1,
+      "message": "This may need another CL for this fix and after my test there are still some errors after remove it.\n\ne.g.\nerror: test/vts-testcase/kernel/ltp/testcase/Android.bp:17:1: module \"vts_ltp_test_arm_64\" variant \"android_arm64_armv8-a\": missing dependencies: ltp_config_arm_64, is the property annotated with android:\"path\"?\n\nThat\u0027s because genrule is not type of android:\"path",
+      "parentUuid": "e1ef1313_61e5c58c",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 12
+      },
+      "revId": "f1a69158aaf33610b8936ef958170d6d2afe89ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2897983_c2457c95",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
