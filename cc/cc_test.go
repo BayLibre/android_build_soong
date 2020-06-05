@@ -492,6 +492,44 @@ func TestVndkUsingCoreVariant(t *testing.T) {
 	checkVndkLibrariesOutput(t, ctx, "vndkcorevariant.libraries.txt", []string{"libc++.so", "libvndk2.so", "libvndk_sp.so"})
 }
 
+func TestDataLibs(t *testing.T) {
+	bp := `
+		cc_test_library {
+			name: "test_lib",
+			srcs: ["test_lib.cpp"],
+      gtest: false,
+		}
+
+		cc_test {
+			name: "main_test",
+			data_libs: ["test_lib"],
+      gtest: false,
+		}
+  `
+
+	config := TestConfig(buildDir, android.Android, nil, bp, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	config.TestProductVariables.VndkUseCoreVariant = BoolPtr(true)
+
+	ctx := testCcWithConfig(t, config)
+	module := ctx.ModuleForTests("main_test", "android_arm_armv7-a-neon").Module()
+	testBinary, _ := module.(*Module).linker.(*testBinary)
+	outputFiles, _ := module.(android.OutputFileProducer).OutputFiles("")
+
+	outputPath := outputFiles[0].String()
+	testBinaryPath := testBinary.dataPaths()[0].String()
+
+	if !strings.HasSuffix(outputPath, "/main_test") {
+		t.Errorf("expected test output file to be 'main_test', but was '%s'", outputPath)
+		return
+	}
+	if !strings.HasSuffix(testBinaryPath, "/test_lib.so") {
+		t.Errorf("expected test data file to be 'test_lib.so', but was '%s'", testBinaryPath)
+		return
+	}
+}
+
 func TestVndkWhenVndkVersionIsNotSet(t *testing.T) {
 	ctx := testCcNoVndk(t, `
 		cc_library {
