@@ -88,6 +88,24 @@
       "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ad4b566_a8ab30d5",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-05T20:01:38Z",
+      "side": 1,
+      "message": "the media 32/64 differences are concentrated within the lower level codec implementations.\nThose libraries are several levels removed from NDK-advertised interfaces found in libmediandk.\nBased on that, I don\u0027t think that media has any issue with this -- as long as it stays at the advertised NDK level.\n\n\n\nI do think that there is value in collecting both the 32-bit and the 64-bit lists. as a final step, those should be the same at the NDK level. This would guarantee that the NDK is consistent between the two modes; that\u0027s probably a really good thing.",
+      "parentUuid": "b27b9e54_794acd40",
+      "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
