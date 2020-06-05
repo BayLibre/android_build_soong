@@ -856,6 +856,9 @@ type SdkLibrary struct {
 	scopeToProperties map[*apiScope]*ApiScopeProperties
 
 	commonToSdkLibraryAndImport
+
+	// List of module names that should be installed along with this module
+	requiredDeps []string
 }
 
 var _ Dependency = (*SdkLibrary)(nil)
@@ -994,7 +997,7 @@ func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
 	}
 	entriesList := module.Library.AndroidMkEntries()
 	entries := &entriesList[0]
-	entries.Required = append(entries.Required, module.xmlFileName())
+	entries.Required = append(entries.Required, module.requiredDeps...)
 	return entriesList
 }
 
@@ -1491,6 +1494,7 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 		// as a shared library if required.
 		if module.sharedLibrary() {
 			module.createXmlFile(mctx)
+			module.requiredDeps = append(module.requiredDeps, module.xmlFileName())
 		}
 
 		// record java_sdk_library modules so that they are exported to make
