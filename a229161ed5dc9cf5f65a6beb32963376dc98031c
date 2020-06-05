@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe78dfc8_de0e344c",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-05T12:48:42Z",
+      "side": 1,
+      "message": "This wouldn\u0027t work I think. If the test_\u003cx\u003e has more APIs introduced for testing (dummy api in sdkext apex for testing) then it would end up in the monolith .csv file.\n\nOne way around that is to call hiddenAPIEncodeDex, but *not* assign h.bootDexJarPath. This way singleton rule would not pick up stem/test jars.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 90
+      },
+      "revId": "a229161ed5dc9cf5f65a6beb32963376dc98031c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
