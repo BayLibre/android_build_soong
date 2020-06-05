@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1251969e_bdde6861",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-05T17:48:41Z",
+      "side": 1,
+      "message": "Even adding a couple seconds to a regular build can be a problem (less so for a big build, but small incrementals can be \u003c10s). Are you taking measures to reduce this (grab what\u0027s needed and go into the background/etc)?\n\nAnd stats of dumpvars could still be interesting the next time we\u0027re refactoring our UIs (or even to track performance of these pieces that tend to have the user watching the vast majority of the time, so need to stay interactive)",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "c25249d7a33f16a33c7c132fb3133662001a4ccb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
