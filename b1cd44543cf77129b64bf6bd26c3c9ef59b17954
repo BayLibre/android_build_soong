@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c7e5eb6_4af8229f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-05T20:38:14Z",
+      "side": 1,
+      "message": "Can you use a python_test_host in an Android.bp so that our test infra can run this too?",
+      "revId": "b1cd44543cf77129b64bf6bd26c3c9ef59b17954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4812a60f_dc252c55",
+        "filename": "cc/__init__.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-05T20:38:14Z",
+      "side": 1,
+      "message": "Why is this here? We automatically create them when necessary with `python_binary_host`\n\nThis is primarily a Go package, so if we\u0027re adding lots of related python we pay want a subfolder (or to go into a subfolder of build/soong/scripts/...)",
+      "revId": "b1cd44543cf77129b64bf6bd26c3c9ef59b17954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
