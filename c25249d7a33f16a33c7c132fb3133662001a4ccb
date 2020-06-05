@@ -22,6 +22,30 @@
       "revId": "c25249d7a33f16a33c7c132fb3133662001a4ccb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba00dcaf_5370c3e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-06-05T20:24:46Z",
+      "side": 1,
+      "message": "I did my initial measurements in the specialty cloud machine and I am not getting consistent numbers so I switched to my desktop machine. One of the issues I am seeing is the startup time of metrics_uploader takes on average 396 ms. After disabling a few features (since a bunch of stuff is added in to the metrics_uploader binary), I brought it down to 140ms. There\u0027s two runs in lunch so in total, it now takes 2.4 seconds where 1.5 seconds it\u0027s just lunch itself (a total of 900ms overhead to trigger the upload). I will spend time next week to bring the startup of metrics_uploader down and adding fixes to it.\n\nI will be adding alerting for metrics_uploader for measurements and also setting up a stress test system to make sure the metrics_uploader is within range before rolling to production.\n\nAfter I created this CL, I put a lot of thought about having these metrics in place. We should be collecting these metrics because we have nothing today how often lunch is executed. I see the value of it so I switched to true.\n\nI would like to still submit this CL in case new commands are added or we need to disable a\ncommand from uploading the metrics.",
+      "parentUuid": "1251969e_bdde6861",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "c25249d7a33f16a33c7c132fb3133662001a4ccb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
