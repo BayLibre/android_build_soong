@@ -52,6 +52,24 @@
       "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1897b2a5_12a45866",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-05T02:30:09Z",
+      "side": 1,
+      "message": "i\u0027m coming in with limited context, so some of my observations may be based on incorrect assumptions. Some of my questions may seem silly.\n\n\u003e\u003e The symbol file (and corresponding XML) contains the list of common as well as \n\u003e\u003e architecture- specific APIs, so we\u0027ll still see the 32-bit APIs even if we only \n\u003e\u003e generate the XML when compiling the 64-bit variant.\n\nwithin the media world, we have situations such as common.c,foo32.c and foo64.c  \na 64-bit build will not look at foo32.c at all; so I don\u0027t follow how we get any of those\n32-bit symbols if we only compile common.c and foo64.c  [there will be different symbols\nin foo32.c and foo64.c]\n\nand just so I\u0027m not too far behind, by \"ndk library\" do we really mean \"libraries and interfaces defined as part of the NDK\" or do we mean \"any native library\".  the abi-specific native code doesn\u0027t have a surface to the \u0027published NDK\u0027.  I\u0027m looking to make sure that I understand the terms here.\n\nand for \"APIs\" -- help me with a more detailed definition.  Does this equate to \"public symbol table entries\"? or \"documented in the NDK on developer.android.com APIs\"",
+      "parentUuid": "d6bff9df_e021b458",
+      "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
