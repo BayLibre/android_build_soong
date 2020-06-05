@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e26e3170_b3b16a04",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-05T03:48:03Z",
+      "side": 1,
+      "message": "Can you make dumpMakeVars use its own modified copy of the environment instead of changing and then restoring the global environment?",
+      "revId": "0c92f833072c17bc4d15588349ae027ffdfadb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
