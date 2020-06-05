@@ -497,6 +497,7 @@ func CreateTestContext() *android.TestContext {
 	ctx := android.NewTestArchContext()
 	ctx.RegisterModuleType("cc_fuzz", FuzzFactory)
 	ctx.RegisterModuleType("cc_test", TestFactory)
+	ctx.RegisterModuleType("cc_test_library", TestLibraryFactory)
 	ctx.RegisterModuleType("llndk_headers", llndkHeadersFactory)
 	ctx.RegisterModuleType("ndk_library", NdkLibraryFactory)
 	ctx.RegisterModuleType("vendor_public_library", vendorPublicLibraryFactory)
