@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81e941be_cd658ed2",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-06-05T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "508b914d_12342073",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "a6bdf9512c93dc992d756f45cd78eab4c999e7c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3e4b99_f91416e0",
         "filename": "cc/ndk_api_coverage_parser.py",
         "patchSetId": 6
@@ -39,6 +63,24 @@
       "revId": "a6bdf9512c93dc992d756f45cd78eab4c999e7c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8c923c4_0465c21f",
+        "filename": "cc/ndk_api_coverage_parser.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-06-05T17:53:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3e4b99_f91416e0",
+      "revId": "a6bdf9512c93dc992d756f45cd78eab4c999e7c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
