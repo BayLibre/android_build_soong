@@ -562,7 +562,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			}
 		}
 
-		if enableMinimalRuntime(sanitize) {
+		if enableMinimalRuntime(sanitize, ctx.Host()) {
 			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(minimalRuntimeFlags, " "))
 			flags.libFlags = append([]string{minimalRuntimePath}, flags.libFlags...)
 			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--exclude-libs,"+minimalRuntimeLib)
@@ -766,11 +766,11 @@ func sanitizerRuntimeDepsMutator(mctx android.TopDownMutatorContext) {
 				return false
 			}
 			if d.sanitize != nil {
-				if enableMinimalRuntime(d.sanitize) {
+				if enableMinimalRuntime(d.sanitize, mctx.Host()) {
 					// If a static dependency is built with the minimal runtime,
 					// make sure we include the ubsan minimal runtime.
 					c.sanitize.Properties.MinimalRuntimeDep = true
-				} else if enableUbsanRuntime(d.sanitize) {
+				} else if enableUbsanRuntime(d.sanitize, mctx.Host()) {
 					// If a static dependency runs with full ubsan diagnostics,
 					// make sure we include the ubsan runtime.
 					c.sanitize.Properties.UbsanRuntimeDep = true
@@ -895,15 +895,15 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			sanitizers = append(sanitizers, "fuzzer-no-link")
 		}
 
-		// Save the list of sanitizers. These will be used again when generating
-		// the build rules (for Cflags, etc.)
-		c.sanitize.Properties.Sanitizers = sanitizers
-		c.sanitize.Properties.DiagSanitizers = diagSanitizers
-
 		// TODO(b/150822854) Hosts have a different default behavior and assume the runtime library is used.
 		if c.Host() {
 			diagSanitizers = sanitizers
 		}
+
+		// Save the list of sanitizers. These will be used again when generating
+		// the build rules (for Cflags, etc.)
+		c.sanitize.Properties.Sanitizers = sanitizers
+		c.sanitize.Properties.DiagSanitizers = diagSanitizers
 
 		// Determine the runtime library required
 		runtimeLibrary := ""
@@ -947,6 +947,10 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			// Note that by adding dependency with {static|shared}DepTag, the lib is
 			// added to libFlags and LOCAL_SHARED_LIBRARIES by cc.Module
 			if c.staticBinary() {
+				if c.Host() && strings.Contains(runtimeLibrary, "ubsan_standalone") {
+					// Host modules have a static ubsan runtime available since they always assume the full runtime.
+					runtimeLibrary = runtimeLibrary + ".static"
+				}
 				deps := append(extraStaticDeps, runtimeLibrary)
 				// If we're using snapshots and in vendor, redirect to snapshot whenever possible
 				if c.VndkVersion() == mctx.DeviceConfig().VndkVersion() {
@@ -1112,7 +1116,12 @@ func appendStringSync(item string, list *[]string, mutex *sync.Mutex) {
 	mutex.Unlock()
 }
 
-func enableMinimalRuntime(sanitize *sanitize) bool {
+func enableMinimalRuntime(sanitize *sanitize, host bool) bool {
+	// Host binaries don't use the minimal runtime.
+	if host {
+		return false
+	}
+
 	if !Bool(sanitize.Properties.Sanitize.Address) &&
 		!Bool(sanitize.Properties.Sanitize.Hwaddress) &&
 		!Bool(sanitize.Properties.Sanitize.Fuzzer) &&
@@ -1132,7 +1141,15 @@ func enableMinimalRuntime(sanitize *sanitize) bool {
 	return false
 }
 
-func enableUbsanRuntime(sanitize *sanitize) bool {
+func enableUbsanRuntime(sanitize *sanitize, host bool) bool {
+	// Host binaries always get the UBSAN runtime if a sanitizer is enabled.
+	if host {
+		return Bool(sanitize.Properties.Sanitize.Integer_overflow) ||
+			Bool(sanitize.Properties.Sanitize.Undefined) ||
+			len(sanitize.Properties.Sanitize.Misc_undefined) > 0
+	}
+
+	// Devices must explicitly request diagnostics.
 	return Bool(sanitize.Properties.Sanitize.Diag.Integer_overflow) ||
 		Bool(sanitize.Properties.Sanitize.Diag.Undefined) ||
 		len(sanitize.Properties.Sanitize.Diag.Misc_undefined) > 0
