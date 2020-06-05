@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ed37d368_c9f2a60d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-06-05T21:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c7e5eb6_4af8229f",
+      "revId": "b1cd44543cf77129b64bf6bd26c3c9ef59b17954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4812a60f_dc252c55",
         "filename": "cc/__init__.py",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2020-06-05T20:38:14Z",
       "side": 1,
       "message": "Why is this here? We automatically create them when necessary with `python_binary_host`\n\nThis is primarily a Go package, so if we\u0027re adding lots of related python we pay want a subfolder (or to go into a subfolder of build/soong/scripts/...)",
+      "revId": "b1cd44543cf77129b64bf6bd26c3c9ef59b17954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3594a122_3b279705",
+        "filename": "cc/__init__.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-06-05T21:58:27Z",
+      "side": 1,
+      "message": "Need this empty file so that I can import class defined in gen_stub_libs.py. Have moved all python scripts under cc to subfolder",
+      "parentUuid": "4812a60f_dc252c55",
       "revId": "b1cd44543cf77129b64bf6bd26c3c9ef59b17954",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
