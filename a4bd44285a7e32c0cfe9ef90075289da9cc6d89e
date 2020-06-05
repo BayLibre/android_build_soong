@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0af42950_219e30ec",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-05T15:12:29Z",
+      "side": 1,
+      "message": "not directly. See the thread I added you to with Tor. We will have to make it work for mainline modules as well.",
+      "range": {
+        "startLine": 1626,
+        "startChar": 0,
+        "endLine": 1626,
+        "endChar": 42
+      },
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa85873_09ff15a6",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1636,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-05T15:12:29Z",
+      "side": 1,
+      "message": "I wonder if lint works okay if SDK is also present on the classpath. Or is that meant to be?",
+      "range": {
+        "startLine": 1636,
+        "startChar": 10,
+        "endLine": 1636,
+        "endChar": 20
+      },
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a65d4fd_b90e6b41",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-05T15:12:29Z",
+      "side": 1,
+      "message": "does this also cover Kotlin code?",
+      "range": {
+        "startLine": 1639,
+        "startChar": 0,
+        "endLine": 1639,
+        "endChar": 46
+      },
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb47ec3_b72d6045",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-05T15:12:29Z",
+      "side": 1,
+      "message": "what would be your suggestion on enabling this on build/presubmit? I personally don\u0027t like how in google3 it has a separate macro that people have to put, that leads to issues. I like that it\u0027s part of java_library here!\n\nHowever, should it be an implicitinput for the main output?",
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ab12a1_c03c0747",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-05T15:12:29Z",
+      "side": 1,
+      "message": "you never really set these values I think?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
