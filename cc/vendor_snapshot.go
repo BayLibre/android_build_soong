@@ -594,8 +594,8 @@ func (c *vendorSnapshotSingleton) GenerateBuildActions(ctx android.SingletonCont
 				prop.SharedLibs = m.Properties.SnapshotSharedLibs
 			}
 			if l.static() && m.sanitize != nil {
-				prop.SanitizeMinimalDep = m.sanitize.Properties.MinimalRuntimeDep || enableMinimalRuntime(m.sanitize)
-				prop.SanitizeUbsanDep = m.sanitize.Properties.UbsanRuntimeDep || enableUbsanRuntime(m.sanitize)
+				prop.SanitizeMinimalDep = m.sanitize.Properties.MinimalRuntimeDep || enableMinimalRuntime(m.sanitize, m.Host())
+				prop.SanitizeUbsanDep = m.sanitize.Properties.UbsanRuntimeDep || enableUbsanRuntime(m.sanitize, m.Host())
 			}
 
 			var libType string
