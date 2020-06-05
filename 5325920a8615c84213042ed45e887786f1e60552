@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09e2f88d_91d07f76",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-05T00:55:22Z",
+      "side": 1,
+      "message": "This is repeating many times. So perhaps make it as a method in the java package?",
+      "range": {
+        "startLine": 278,
+        "startChar": 37,
+        "endLine": 278,
+        "endChar": 141
+      },
+      "revId": "5325920a8615c84213042ed45e887786f1e60552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
