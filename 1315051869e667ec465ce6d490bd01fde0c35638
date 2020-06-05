@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5da83ae_758d98b1",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-05T20:39:53Z",
+      "side": 1,
+      "message": "This isn\u0027t enough dependencies, as it imports other python files from the surrounding directory. The way we\u0027ve generally fixed this is by defining a `python_binary_host` module and then treating it as any other built host executable.",
+      "revId": "1315051869e667ec465ce6d490bd01fde0c35638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
