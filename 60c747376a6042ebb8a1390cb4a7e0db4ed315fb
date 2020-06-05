@@ -70,6 +70,24 @@
       "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27b9e54_794acd40",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-06-05T19:10:37Z",
+      "side": 1,
+      "message": "See go/ndk-api-coverage-design for more context.\n\nWe\u0027re parsing the Native API Map file (as described here: https://googleplex-android.git.corp.google.com/platform/build/soong/+/master/docs/map_files.md#versioned_version) to obtain the list of symbols exposed by each NDK library. The map file is a linker version script that is checked in as source, so we don\u0027t actually need to compile anything to parse it.\n\nNDK library means any targets with an ndk_library(..) rule defined in the Android tree. These libraries expose APIs for use by 3p apps, but also publish additional APIs for use by vendors and apex modules.\n\nFor media, the symbol file is https://source.corp.google.com/aosp-master/frameworks/av/media/ndk/libmediandk.map.txt, but I don\u0027t see any 32-bit specific APIs listed (I\u0027d expect to see the symbol tagged with introduced-x86\u003d or introduced-arm\u003d).",
+      "parentUuid": "1897b2a5_12a45866",
+      "revId": "60c747376a6042ebb8a1390cb4a7e0db4ed315fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
