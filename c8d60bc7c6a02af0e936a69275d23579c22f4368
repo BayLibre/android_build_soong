@@ -34,6 +34,29 @@
       "revId": "c8d60bc7c6a02af0e936a69275d23579c22f4368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3fdbf96_cea565df",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-06-05T15:04:44Z",
+      "side": 1,
+      "message": "Also, as commented on the other CL, you should be able to process the file with `grep -v \"/$\"` to create a file-only violation file.",
+      "range": {
+        "startLine": 1474,
+        "startChar": 99,
+        "endLine": 1474,
+        "endChar": 113
+      },
+      "revId": "c8d60bc7c6a02af0e936a69275d23579c22f4368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
