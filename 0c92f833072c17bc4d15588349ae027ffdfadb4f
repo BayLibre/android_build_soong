@@ -16,6 +16,24 @@
       "revId": "0c92f833072c17bc4d15588349ae027ffdfadb4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a01970f_5b903a98",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-06-05T14:00:48Z",
+      "side": 1,
+      "message": "I was able to. It\u0027s a much cleaner solution.",
+      "parentUuid": "e26e3170_b3b16a04",
+      "revId": "0c92f833072c17bc4d15588349ae027ffdfadb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
