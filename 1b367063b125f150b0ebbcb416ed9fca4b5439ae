@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5dd1d885_e58f3507",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-08T19:26:39Z",
+      "side": 1,
+      "message": "Apparently this is unused too? Can we remove it too?",
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "980c87be_5866f8e9",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2285,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-08T19:26:39Z",
+      "side": 1,
+      "message": "Just remove this section entirely (not calling Prefer32 is the same as always returning false)",
+      "range": {
+        "startLine": 2283,
+        "startChar": 1,
+        "endLine": 2285,
+        "endChar": 3
+      },
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2574f2da_67f3a82a",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-08T19:26:39Z",
+      "side": 1,
+      "message": "Maybe someday we can invert this...",
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c8017fe_1dd89b01",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-08T19:26:39Z",
+      "side": 1,
+      "message": "Just remove this section entirely (not calling Prefer32 is the same as always returning false)",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 978,
+        "endChar": 3
+      },
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10f56cdc_a1357a9d",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-08T19:26:39Z",
+      "side": 1,
+      "message": "Just remove this section entirely (not calling Prefer32 is the same as always returning false)",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 3
+      },
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
