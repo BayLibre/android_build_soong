@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a47ff386_c9795ba8",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T18:36:00Z",
+      "side": 1,
+      "message": "I\u0027d suggest moving the enabled: false to either its own module type:\n\n    cc_native_bridge_library {\n        ...\n    }\n\nor to a bool on cc_library:\n\n    cc_library {\n        native_bridge_stubs: true,\n    }\n\nFor the shared_libs, I\u0027d suggest:\n\n    shared_libs: [\"libnativewindow\"],\n    native_bridge: {\n        exclude_shared_libs: [\"libnativewindow\"],\n        shared_libs: [\"libndk_translation_guest_libnativewindow\"],\n    },\n\nAlternatively, if you\u0027re willing to keep a global mapping of libraries to your stub libraries somewhere, and this pattern should apply to all module that depend on a library that has stubs, we could rewrite those dependencies automatically for the m.Target().NativeBridgeEnabled case.  We do that for e.g. VNDK libraries, where IIRC a dependency on \"libc\" gets rewritten to \"libc.vendor\".",
+      "parentUuid": "26595e55_486f1784",
+      "revId": "a4c17d47c625258decb97d3d30a18a2bc55bda24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c054998_46a2e7df",
         "filename": "android/arch.go",
         "patchSetId": 4
