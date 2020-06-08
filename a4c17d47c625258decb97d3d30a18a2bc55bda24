@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "658564f3_cd497b44",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2020-06-08T20:49:29Z",
+      "side": 1,
+      "message": "Actually we could do the same with \"enabled\" as you suggest to do with shared_libs.\n\nIn fact that\u0027s already done more-or-less this way:\nhttps://source.corp.google.com/android/vendor/unbundled_google/libs/ndk_translation/native_bridge_support/Android.bp;rcl\u003d5efc200bbaa1ef77c0c2ca6f71f8243a346bd3b4;l\u003d43\n\nGlobal mapping looks a bit like an overkill at this point: we have dozens of libraries which are built as stubs and dozens as full libraries but only need a handful of libraries with these alternating dependencies.",
+      "parentUuid": "a47ff386_c9795ba8",
+      "revId": "a4c17d47c625258decb97d3d30a18a2bc55bda24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c054998_46a2e7df",
         "filename": "android/arch.go",
         "patchSetId": 4
