@@ -190,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "bbeceae7_dac09c82",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T21:15:42Z",
+      "side": 1,
+      "message": "You can use the lint_flags property to pass --check, but I don\u0027t think you would want to do that, that would mean we could never run other lint checks on that module.  I think you just want to enable extra lint checkers, and then you can filter the results you want out of the lint-report.xml files.\n\nExtra lint checkers will require a little extra work to get working, if you have example code for a lint checker I can try to make it work.",
+      "parentUuid": "a8f3a21c_e16af9c7",
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51ab12a1_c03c0747",
         "filename": "java/lint.go",
         "patchSetId": 1
