@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "526bb739_2d316c16",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-08T10:08:39Z",
+      "side": 1,
+      "message": "I think this should be merged into the previous call to VisitDirectDeps. e.g. something like this:\n\nif tag \u003d\u003d xmlPermissionsFileTag {\n    module.requiredDeps \u003d append(module.requiredDeps, xml.Name())\n}",
+      "revId": "6e90f1bc9c82b45f11c0134799e7f3042b16fadc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
