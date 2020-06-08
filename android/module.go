@@ -2240,6 +2240,10 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx SingletonContext) {
 	modulesInDir := make(map[string]Paths)
 
 	ctx.VisitAllModules(func(module Module) {
+		if ctx.Config().EmbeddedInMake() && !module.ExportedToMake() {
+			return
+		}
+
 		blueprintDir := module.base().blueprintDir
 		installTarget := module.base().installTarget
 		checkbuildTarget := module.base().checkbuildTarget
