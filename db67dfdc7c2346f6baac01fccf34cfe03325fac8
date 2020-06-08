@@ -22,6 +22,30 @@
       "revId": "db67dfdc7c2346f6baac01fccf34cfe03325fac8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36412ade_30a29e75",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-08T14:03:53Z",
+      "side": 1,
+      "message": "No. com.android.art.debug/release aren\u0027t like test/non-test. Both debug and release are installable to the device, whereas the test APEXes aren\u0027t actually installed to the device.",
+      "parentUuid": "f3adfb1a_407be1b2",
+      "range": {
+        "startLine": 171,
+        "startChar": 34,
+        "endLine": 171,
+        "endChar": 59
+      },
+      "revId": "db67dfdc7c2346f6baac01fccf34cfe03325fac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
