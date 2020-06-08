@@ -69,6 +69,24 @@
       "revId": "b1cd44543cf77129b64bf6bd26c3c9ef59b17954",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c047e818_3707cfd6",
+        "filename": "cc/__init__.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-06-08T17:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3594a122_3b279705",
+      "revId": "b1cd44543cf77129b64bf6bd26c3c9ef59b17954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
