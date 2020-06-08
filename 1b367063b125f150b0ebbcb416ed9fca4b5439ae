@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "cab9c1a9_638f9637",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-08T23:01:58Z",
+      "side": 1,
+      "message": "I think it just requires `target: { windows: { compile_multilib: \"32\" } }`. But the ordering of how that\u0027s evaluated could cause problems.",
+      "parentUuid": "975b8055_3cdc7d1f",
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c8017fe_1dd89b01",
         "filename": "java/app.go",
         "patchSetId": 3
