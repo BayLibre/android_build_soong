@@ -208,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "4060fbc1_673f3c7a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1483218
+      },
+      "writtenOn": "2020-06-08T21:24:47Z",
+      "side": 1,
+      "message": "Matt is working on a customized checker for API finder tool, will let you know when it\u0027s done.\n\nIt would be faster if we only enable API finder linter for API finder tool. I was thinking only enable this API finder linter in mainline module build script, so we can get the API list we want without running other linters. How do you think?\n\nbuild script,\nhttps://source.corp.google.com/android/vendor/google/build/build_unbundled_coverage_mainline_module.sh;l\u003d171?q\u003dbuild_unbundled_coverage_mainline_module.sh",
+      "parentUuid": "bbeceae7_dac09c82",
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51ab12a1_c03c0747",
         "filename": "java/lint.go",
         "patchSetId": 1
