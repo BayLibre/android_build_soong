@@ -16,6 +16,24 @@
       "revId": "1315051869e667ec465ce6d490bd01fde0c35638",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ea1ecc_3c3682e9",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-06-08T19:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5da83ae_758d98b1",
+      "revId": "1315051869e667ec465ce6d490bd01fde0c35638",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
