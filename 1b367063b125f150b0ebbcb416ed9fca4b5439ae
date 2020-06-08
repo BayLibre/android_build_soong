@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f79b3ea5_c6712001",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-06-08T22:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dd1d885_e58f3507",
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "980c87be_5866f8e9",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4fe6fa75_2534dfef",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2285,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-06-08T22:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "980c87be_5866f8e9",
+      "range": {
+        "startLine": 2283,
+        "startChar": 1,
+        "endLine": 2285,
+        "endChar": 3
+      },
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2574f2da_67f3a82a",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2020-06-08T19:26:39Z",
       "side": 1,
       "message": "Maybe someday we can invert this...",
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975b8055_3cdc7d1f",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-06-08T22:05:34Z",
+      "side": 1,
+      "message": "that day might be sooner than you think.\n\ni assume you\u0027ve seen https://android-developers.googleblog.com/2019/06/moving-android-studio-and-android.html ?\n\nadb/fastboot are still 32-bit-only, but if jmgao can switch to libusb he thinks that should solve the 32-bit DLL issue. if you had a way for adb/fastboot to say \"not yet\", you could probably remove this now?",
+      "parentUuid": "2574f2da_67f3a82a",
       "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "69a4d4b7_2d8877dc",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-06-08T22:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c8017fe_1dd89b01",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 978,
+        "endChar": 3
+      },
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10f56cdc_a1357a9d",
         "filename": "sh/sh_binary.go",
         "patchSetId": 3
@@ -102,6 +186,30 @@
       "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38709dc9_89dfce3e",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-06-08T22:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10f56cdc_a1357a9d",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 234,
+        "endChar": 3
+      },
+      "revId": "1b367063b125f150b0ebbcb416ed9fca4b5439ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
