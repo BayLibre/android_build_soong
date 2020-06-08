@@ -45,6 +45,29 @@
       "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d4adad_64326004",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1231296
+      },
+      "writtenOn": "2020-06-08T23:32:26Z",
+      "side": 1,
+      "message": "Based on conversations with matklad, I think here you want to include the source folder of each of crate, not just the paths that could have Rust.  See https://github.com/rust-analyzer/rust-analyzer/issues/4735#issuecomment-639408301",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 59
+      },
+      "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
