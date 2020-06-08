@@ -372,7 +372,10 @@ func (e missingDependencyError) Error() string {
 
 func expandOneSrcPath(ctx ModuleContext, s string, expandedExcludes []string) (Paths, error) {
 	if m, t := SrcIsModuleWithTag(s); m != "" {
+		fmt.Println("expandOneSrcPath() SrcIsModuleWithTag(s) m= %s t= %st ", m, t)
 		module := ctx.GetDirectDepWithTag(m, sourceOrOutputDepTag(t))
+		fmt.Println("expandOneSrcPath() sourceOrOutputDepTag(t) = ", sourceOrOutputDepTag(t))
+		fmt.Println("expandOneSrcPath() ctx.GetDirectDepWithTa() module= ", module)
 		if module == nil {
 			return nil, missingDependencyError{[]string{m}}
 		}
@@ -987,6 +990,7 @@ func PathForModuleSrc(ctx ModuleContext, pathComponents ...string) Path {
 	}
 	paths, err := expandOneSrcPath(ctx, p, nil)
 	if err != nil {
+		fmt.Println("PathForModuleSrc paths= %s err= %s\n\t ", paths, err)
 		if depErr, ok := err.(missingDependencyError); ok {
 			if ctx.Config().AllowMissingDependencies() {
 				ctx.AddMissingDependencies(depErr.missingDeps)

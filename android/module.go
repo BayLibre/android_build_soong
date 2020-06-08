@@ -1619,8 +1619,13 @@ func (b *baseModuleContext) getDirectDepInternal(name string, tag blueprint.Depe
 		tag blueprint.DependencyTag
 	}
 	var deps []dep
+	fmt.Println("b.getDirectDepInternal(name, tag): name, tag =   ", name, tag)
 	b.VisitDirectDepsBlueprint(func(module blueprint.Module) {
+		fmt.Println("b.VisitDirectDepsBlueprint(module):name, module =   ",name, module)
 		if aModule, _ := module.(Module); aModule != nil && aModule.base().BaseModuleName() == name {
+			fmt.Println("b.VisitDirectDepsBlueprint(module): module.(Module) =   ", module.(Module))
+			fmt.Println("b.VisitDirectDepsBlueprint(module): aModule.base().BaseModuleName() =  ", aModule.base().BaseModuleName())
+			fmt.Println("b.VisitDirectDepsBlueprint(module): return aModule =  ", aModule)
 			returnedTag := b.bp.OtherModuleDependencyTag(aModule)
 			if tag == nil || returnedTag == tag {
 				deps = append(deps, dep{aModule, returnedTag})
@@ -1650,7 +1655,10 @@ func (b *baseModuleContext) GetDirectDepsWithTag(tag blueprint.DependencyTag) []
 }
 
 func (m *moduleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module {
+	fmt.Println("m.GetDirectDepWithTag(name, tag) name= ", name)
+	fmt.Println("m.GetDirectDepWithTag(name, tag) tag= ", name)
 	module, _ := m.getDirectDepInternal(name, tag)
+	fmt.Println("m.GetDirectDepWithTag(name, tag) return module= ", module)
 	return module
 }
 
