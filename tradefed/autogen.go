@@ -45,6 +45,29 @@ var autogenTestConfig = pctx.StaticRule("autogenTestConfig", blueprint.RuleParam
 }, "name", "template", "extraConfigs")
 
 func testConfigPath(ctx android.ModuleContext, prop *string, testSuites []string, autoGenConfig *bool, testConfigTemplateProp *string) (path android.Path, autogenPath android.WritablePath) {
+	var genConfigPaths android.Paths
+	var genConfig []string
+	//var genConfig string
+	//genConfig = *prop
+	//fmt.Println("====== %s", prop)
+	if prop != nil {
+		fmt.Println("prop = %s", *prop)
+		if strings.HasPrefix(*prop, ":"){
+			fmt.Println("============HasPrefix ':'=========")
+			genConfig = append(genConfig, *prop)
+			fmt.Println("1====== %s", genConfig)
+			genConfigPaths = android.PathsForModuleSrc(ctx, genConfig)
+			fmt.Println("2 genConfigPaths = %s", genConfigPaths)
+			//return  genConfigPaths[0], nil
+		}
+	}
+	//fmt.Fprintln(os.Stderr, " prop = %s", *prop)
+	//if strings.HasPrefix(*prop, ":"){
+	//	ctx.ModuleErrorf(`prop = %q`, *prop)
+		//genConfig = append(genConfig, *prop)
+		//genConfigPaths = android.PathsForModuleSrc(ctx, genConfig)
+		//return  genConfigPaths[0], nil
+	//}
 	p := getTestConfig(ctx, prop)
 	if !Bool(autoGenConfig) && p != nil {
 		return p, nil
