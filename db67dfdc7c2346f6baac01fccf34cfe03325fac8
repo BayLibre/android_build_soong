@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3adfb1a_407be1b2",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-06-08T13:04:01Z",
+      "side": 1,
+      "message": "don\u0027t we want to treat .debug like a test apex and .release like the canonical one?",
+      "range": {
+        "startLine": 171,
+        "startChar": 34,
+        "endLine": 171,
+        "endChar": 59
+      },
+      "revId": "db67dfdc7c2346f6baac01fccf34cfe03325fac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
