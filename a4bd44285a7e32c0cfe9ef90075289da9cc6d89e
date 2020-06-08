@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "a8f3a21c_e16af9c7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1483218
+      },
+      "writtenOn": "2020-06-08T21:12:12Z",
+      "side": 1,
+      "message": "Android lint command lint has the (--check) option to only run certain checkers, is it still available?",
+      "parentUuid": "e7009927_76672cf2",
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51ab12a1_c03c0747",
         "filename": "java/lint.go",
         "patchSetId": 1
