@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0ee2a96_77efc85e",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T16:56:05Z",
+      "side": 1,
+      "message": "It would be highly preferable to avoid not_native_bridge.  Can the necessary use cases be handled by patterns like:\n\n    native_bridge: {\n        exclude_srcs: [...],\n    },",
+      "revId": "a4c17d47c625258decb97d3d30a18a2bc55bda24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c054998_46a2e7df",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T16:56:05Z",
+      "side": 1,
+      "message": "you shouldn\u0027t need to iterate the global targets list, this can be:\n\n m.Target().NativeBridge \u003d\u003d NativeBridgeEnabled",
+      "range": {
+        "startLine": 1418,
+        "startChar": 24,
+        "endLine": 1418,
+        "endChar": 79
+      },
+      "revId": "a4c17d47c625258decb97d3d30a18a2bc55bda24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
