@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "c3798f98_972d9ace",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T21:03:35Z",
+      "side": 1,
+      "message": "Yep, that works too.",
+      "parentUuid": "658564f3_cd497b44",
+      "revId": "a4c17d47c625258decb97d3d30a18a2bc55bda24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c054998_46a2e7df",
         "filename": "android/arch.go",
         "patchSetId": 4
