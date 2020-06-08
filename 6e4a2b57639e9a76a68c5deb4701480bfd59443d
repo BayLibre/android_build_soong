@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26e5b9e0_f16c9c14",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-06-08T21:25:33Z",
+      "side": 1,
+      "message": "Nit: finalized",
+      "range": {
+        "startLine": 50,
+        "startChar": 46,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5b210c2_156e6810",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-06-08T21:25:33Z",
+      "side": 1,
+      "message": "Nit: appends",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
