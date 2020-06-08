@@ -1417,7 +1417,7 @@ func TestEndToEnd(t *testing.T) {
 			t.Error(err)
 		}
 
-		got, errs := ConvertFile(fmt.Sprintf("<testcase %d>", i), bytes.NewBufferString(test.in))
+		got, errs := ConvertFile(fmt.Sprintf("<testcase %d>", i), bytes.NewBufferString(test.in), true)
 		if len(errs) > 0 {
 			t.Errorf("Unexpected errors: %q", errs)
 			continue

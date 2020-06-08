@@ -24,6 +24,16 @@ import (
 	"android/soong/androidmk/androidmk"
 )
 
+var (
+	runBpfix bool
+)
+
+func init() {
+	flag.BoolVar(&runBpfix, "run_bpfix", true,
+		"whether to run bpfix on conversion output. note that, if false, the result "+
+			"may not be a valid blueprint file. this may be useful for debugging")
+}
+
 var usage = func() {
 	fmt.Fprintf(os.Stderr, "usage: androidmk [flags] <inputFile>\n"+
 		"\nandroidmk parses <inputFile> as an Android.mk file and attempts to output an analogous Android.bp file (to standard out)\n")
@@ -44,7 +54,7 @@ func main() {
 		return
 	}
 
-	output, errs := androidmk.ConvertFile(os.Args[1], bytes.NewBuffer(b))
+	output, errs := androidmk.ConvertFile(os.Args[1], bytes.NewBuffer(b), runBpfix)
 	if len(errs) > 0 {
 		for _, err := range errs {
 			fmt.Fprintln(os.Stderr, "ERROR: ", err)

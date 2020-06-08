@@ -108,7 +108,7 @@ type conditional struct {
 	eq   bool
 }
 
-func ConvertFile(filename string, buffer *bytes.Buffer) (string, []error) {
+func ConvertFile(filename string, buffer *bytes.Buffer, runBpfix bool) (string, []error) {
 	p := mkparser.NewParser(filename, buffer)
 
 	nodes, errs := p.Parse()
@@ -124,6 +124,7 @@ func ConvertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 
 	var conds []*conditional
 	var assignmentCond *conditional
+	var tree *bpparser.File
 
 	for _, node := range nodes {
 		file.setMkPos(p.Unpack(node.Pos()), p.Unpack(node.End()))
@@ -200,16 +201,19 @@ func ConvertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 		}
 	}
 
-	tree := &bpparser.File{
+	tree = &bpparser.File{
 		Defs:     file.defs,
 		Comments: file.comments,
 	}
 
-	// check for common supported but undesirable structures and clean them up
-	fixer := bpfix.NewFixer(tree)
-	tree, err := fixer.Fix(bpfix.NewFixRequest().AddAll())
-	if err != nil {
-		return "", []error{err}
+	if runBpfix {
+		// check for common supported but undesirable structures and clean them up
+		fixer := bpfix.NewFixer(tree)
+		var err error
+		tree, err = fixer.Fix(bpfix.NewFixRequest().AddAll())
+		if err != nil {
+			return "", []error{err}
+		}
 	}
 
 	out, err := bpparser.Print(tree)
