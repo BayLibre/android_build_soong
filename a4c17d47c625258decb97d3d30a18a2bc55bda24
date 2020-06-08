@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "26595e55_486f1784",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2020-06-08T17:06:24Z",
+      "side": 1,
+      "message": "One of the necessary use cases is\n\nnot_native_bridge: {\n  enabled: false,\n},\n\nto make sure there are no conflict between stub libraries and original libraries.\n\nAnd then, in RenderScript itself:\n\nnot_native_bridge: {\n  shared_libs: [\n    \"libnativewindow\"\n  ],\n},\nnot_native_bridge: {\n  shared_libs: [\n    \"libndk_translation_guest_libnativewindow\"\n  ],\n},\n\nTo make sure it\u0027s build with library which would actually be used in runtime and we wouldn\u0027t need to build 100+ libraries which we don\u0027t intend to ever use.",
+      "parentUuid": "b0ee2a96_77efc85e",
+      "revId": "a4c17d47c625258decb97d3d30a18a2bc55bda24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c054998_46a2e7df",
         "filename": "android/arch.go",
         "patchSetId": 4
