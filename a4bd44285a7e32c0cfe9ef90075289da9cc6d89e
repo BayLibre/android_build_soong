@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "edd6cd80_2830f40e",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T00:05:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0af42950_219e30ec",
+      "range": {
+        "startLine": 1626,
+        "startChar": 0,
+        "endLine": 1626,
+        "endChar": 42
+      },
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fa85873_09ff15a6",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "6ab74462_d32f830b",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1639,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T00:05:50Z",
+      "side": 1,
+      "message": "Yes, .kt sources are in j.linter.srcs.",
+      "parentUuid": "7a65d4fd_b90e6b41",
+      "range": {
+        "startLine": 1639,
+        "startChar": 0,
+        "endLine": 1639,
+        "endChar": 46
+      },
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bb47ec3_b72d6045",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -82,6 +130,24 @@
       "writtenOn": "2020-06-05T15:12:29Z",
       "side": 1,
       "message": "what would be your suggestion on enabling this on build/presubmit? I personally don\u0027t like how in google3 it has a separate macro that people have to put, that leads to issues. I like that it\u0027s part of java_library here!\n\nHowever, should it be an implicitinput for the main output?",
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "361caa89_69fb9861",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T00:05:50Z",
+      "side": 1,
+      "message": "My next version will lint everything and product zip files of the results if you build `m lint-check`.  A few other options:\nWe could have phony targets for each module (`m Settings-lint`).\nWe could allow individual modules to turn on lint in all builds, although that would probably insert lint in the build graph between the module and its dependencies, slowing down the build.",
+      "parentUuid": "2bb47ec3_b72d6045",
       "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -108,6 +174,30 @@
       "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5666bf5b_5775701f",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-08T00:05:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51ab12a1_c03c0747",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
