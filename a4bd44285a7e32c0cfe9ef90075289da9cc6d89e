@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "e7009927_76672cf2",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-08T16:43:28Z",
+      "side": 1,
+      "message": "none of this needs to come now.\n\n+1, if we expect people to work and fix lint issues, we will need phony targets so they can focus on their own issues.\n\nAs long as it is on presubmit, it should be fine for now? We would still prevent regressions. That\u0027s how its setup for most of google3. If we ever want it to be part of build, we should try to make it smarter: for example, not check transitive library sources since those were already checked.",
+      "parentUuid": "361caa89_69fb9861",
+      "revId": "a4bd44285a7e32c0cfe9ef90075289da9cc6d89e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51ab12a1_c03c0747",
         "filename": "java/lint.go",
         "patchSetId": 1
