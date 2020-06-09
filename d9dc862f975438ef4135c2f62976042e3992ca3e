@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c3747f88_64597f85",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-09T00:55:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "606a8e00_e87a95e6",
+      "range": {
+        "startLine": 636,
+        "startChar": 41,
+        "endLine": 636,
+        "endChar": 51
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36e16dba_f587d63b",
         "filename": "rust/rust.go",
         "patchSetId": 5
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "11d8948d_0115f0e3",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-09T00:55:30Z",
+      "side": 1,
+      "message": "The GeneratedSources on line 873 is a Deps.GeneratedSources; this is a PathDeps.GeneratedSources. These ultimately end up in builder.go\u0027s transformSrctoCrate (through mod.compiler.compile()), which doesn\u0027t use the PathDeps.GeneratedSources. \n\nAs far as I can tell PathDeps.GeneratedSources isn\u0027t actually used and can be safely removed (along with Deps.GeneratedDeps).",
+      "parentUuid": "e1a60a08_4130b6ff",
+      "range": {
+        "startLine": 659,
+        "startChar": 3,
+        "endLine": 660,
+        "endChar": 39
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5635ee20_3c1e987e",
         "filename": "rust/rust.go",
         "patchSetId": 5
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "I am not sure. I copied it from cc/cc.go.",
       "parentUuid": "5635ee20_3c1e987e",
+      "range": {
+        "startLine": 805,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 74
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9dd6366_fd3ca2b9",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-09T00:55:30Z",
+      "side": 1,
+      "message": "GeneratedDeps needs to be de-duplicated in cc because it contains exported dependencies which might be similar for multiple genrule deps:\n\n  depPaths.GeneratedDeps \u003d append(depPaths.GeneratedDeps, i.exportedDeps()...)\n\nThat\u0027s not the case here, so I think this is unnecessary.",
+      "parentUuid": "a42327ae_de013910",
       "range": {
         "startLine": 805,
         "startChar": 1,
