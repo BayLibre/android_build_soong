@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97c1519d_fe743571",
+        "filename": "rust/project_json.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-09T17:38:52Z",
+      "side": 1,
+      "message": "nit: rlib is a type of rust library and this might be slightly confusing, maybe rustLib for clarity?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 5
+      },
+      "revId": "dd8e714548997abdaafc6a050a3dc7e84a26f245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1d17d0_a748c6fd",
+        "filename": "rust/project_json.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-09T17:38:52Z",
+      "side": 1,
+      "message": "We don\u0027t require crate names to be unique; are there be any issues if multiple modules share the same crate_name? An example would be when we have multiple versions of the same crate.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "dd8e714548997abdaafc6a050a3dc7e84a26f245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
