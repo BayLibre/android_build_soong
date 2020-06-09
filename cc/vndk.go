@@ -390,6 +390,10 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 		// Skip native_bridge modules
 		return
 	}
+	if m.Host() {
+		// Vndk doesn't make sense on host modules
+		return
+	}
 
 	if _, ok := m.linker.(*llndkStubDecorator); ok {
 		processLlndkLibrary(mctx, m)
