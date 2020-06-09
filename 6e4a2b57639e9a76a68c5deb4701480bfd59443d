@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb630192_fd28e44f",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-06-09T13:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26e5b9e0_f16c9c14",
+      "range": {
+        "startLine": 50,
+        "startChar": 46,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5b210c2_156e6810",
         "filename": "rust/project_json.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b5028e85_976ecfc9",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-06-09T13:51:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5b210c2_156e6810",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d4adad_64326004",
         "filename": "rust/project_json.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3757fd5b_98d840b1",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-06-09T13:51:38Z",
+      "side": 1,
+      "message": "Both work. This solution is slightly more concise, hence my preference. Either way, as you pointed out in that thread, the Roots are hopefully on their way out.",
+      "parentUuid": "c1d4adad_64326004",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 59
+      },
+      "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
