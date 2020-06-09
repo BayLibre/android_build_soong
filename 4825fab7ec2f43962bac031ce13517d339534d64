@@ -46,6 +46,30 @@
       "revId": "4825fab7ec2f43962bac031ce13517d339534d64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831f21f9_f2d3394f",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1479653
+      },
+      "writtenOn": "2020-06-09T20:36:29Z",
+      "side": 1,
+      "message": "Yep, SGTM. I augmented the comment starting at line 1544 with some details about the changes.",
+      "parentUuid": "5db235c3_4ee43e90",
+      "range": {
+        "startLine": 1549,
+        "startChar": 0,
+        "endLine": 1553,
+        "endChar": 3
+      },
+      "revId": "4825fab7ec2f43962bac031ce13517d339534d64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
