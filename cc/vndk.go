@@ -340,16 +340,25 @@ func processVndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
 	}
 }
 
-func IsForVndkApex(mctx android.BottomUpMutatorContext, m *Module) bool {
+// Sanity check for modules that mustn't be VNDK
+func shouldSkipProcessVndk(m *Module) bool {
 	if !m.Enabled() {
-		return false
+		// Skip native_bridge modules
+		return true
 	}
-
-	if !mctx.Device() {
-		return false
+	if !m.Device() {
+		// Skip non-device modules
+		return true
 	}
-
 	if m.Target().NativeBridge == android.NativeBridgeEnabled {
+		// Skip native_bridge modules
+		return true
+	}
+	return false
+}
+
+func IsForVndkApex(mctx android.BottomUpMutatorContext, m *Module) bool {
+	if shouldSkipProcessVndk(m) {
 		return false
 	}
 
@@ -383,11 +392,8 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 	if !ok {
 		return
 	}
-	if !m.Enabled() {
-		return
-	}
-	if m.Target().NativeBridge == android.NativeBridgeEnabled {
-		// Skip native_bridge modules
+
+	if shouldSkipProcessVndk(m) {
 		return
 	}
 
