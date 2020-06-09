@@ -22,6 +22,30 @@
       "revId": "2eae6d2923bb12511c165863e434a04e25e1f2d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff42675_7471bed4",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-06-09T10:07:14Z",
+      "side": 1,
+      "message": "sure! Is there any behavioral difference between m.Host() and !mctx.Device() ?",
+      "parentUuid": "ca55a587_b42f23f1",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 2
+      },
+      "revId": "2eae6d2923bb12511c165863e434a04e25e1f2d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
