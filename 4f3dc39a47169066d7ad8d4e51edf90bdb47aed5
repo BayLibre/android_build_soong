@@ -34,6 +34,24 @@
       "revId": "4f3dc39a47169066d7ad8d4e51edf90bdb47aed5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ebe15c_8f06b03f",
+        "filename": "androidmk/androidmk/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-06-09T20:05:08Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "804328f9_a6cdfc36",
+      "revId": "4f3dc39a47169066d7ad8d4e51edf90bdb47aed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
