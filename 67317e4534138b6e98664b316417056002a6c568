@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0787260c_ad7bfc0e",
+        "filename": "android/arch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-09T04:57:48Z",
+      "side": 1,
+      "message": "you can remove this now.",
+      "revId": "67317e4534138b6e98664b316417056002a6c568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
