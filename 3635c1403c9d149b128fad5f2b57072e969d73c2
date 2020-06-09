@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48f94165_39e8668b",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1894,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-09T18:34:50Z",
+      "side": 1,
+      "message": "Could probably do with a return statement at the end of the if block to avoid it dropping through to the following code.",
+      "revId": "3635c1403c9d149b128fad5f2b57072e969d73c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf776e64_dd5ad577",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1898,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-09T18:34:50Z",
+      "side": 1,
+      "message": "In what circumstance will DexJarBuildPath() return not nil but DexJarInstallPath() returns nil. It seems to me that they would either be nil or non-nil and that a mixture would indicate an error.",
+      "revId": "3635c1403c9d149b128fad5f2b57072e969d73c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0484914_f079dd6c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2774,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-09T18:34:50Z",
+      "side": 1,
+      "message": "Line 2765 above seems to indicate that this should be returning a non-nil value here.",
+      "revId": "3635c1403c9d149b128fad5f2b57072e969d73c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
