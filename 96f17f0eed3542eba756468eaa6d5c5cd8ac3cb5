@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e699a3b4_ef35e0d2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2020-06-09T23:58:14Z",
+      "side": 1,
+      "message": "Could you attach the build error log to the bug?\n\nI\u0027d like to know what modules have the problem. Maybe we have to add dumps for old versions.",
+      "range": {
+        "startLine": 1082,
+        "startChar": 5,
+        "endLine": 1082,
+        "endChar": 18
+      },
+      "revId": "96f17f0eed3542eba756468eaa6d5c5cd8ac3cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
