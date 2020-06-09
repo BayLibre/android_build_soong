@@ -471,7 +471,7 @@ func buildBootImageVariant(ctx android.SingletonContext, image *bootImageVariant
 		cmd.ImplicitOutput(artOrOat)
 		zipFiles = append(zipFiles, artOrOat)
 
-		// Install the .oat and .art files
+		// Install the .oat and .art files.
 		rule.Install(artOrOat, filepath.Join(installDir, artOrOat.Base()))
 	}
 
