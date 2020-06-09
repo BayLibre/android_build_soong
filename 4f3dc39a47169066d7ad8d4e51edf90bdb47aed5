@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c26ff56b_c5ea44f0",
+        "filename": "androidmk/androidmk/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-09T00:59:56Z",
+      "side": 0,
+      "message": "I\u0027m wondering if we shouldn\u0027t just return the old tree in the error case here, along with the errors found (and modify the main function to print the output if it\u0027s non-empty (to stdout), and also print any errors found (to stderr).\n\nOr go further and let the Fix function do something similar -- try to fix as much as possible, skipping any steps that error, then return both.",
+      "revId": "4f3dc39a47169066d7ad8d4e51edf90bdb47aed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
