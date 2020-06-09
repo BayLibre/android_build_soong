@@ -140,6 +140,30 @@
       "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6ec937_732e365a",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1231296
+      },
+      "writtenOn": "2020-06-09T21:28:48Z",
+      "side": 1,
+      "message": "Both \"work\", but the performance impact is substantial (the startup time for us was many minutes with a single root, vs. \u003c1 for 1500 roots).",
+      "parentUuid": "3757fd5b_98d840b1",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 59
+      },
+      "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
