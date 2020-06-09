@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca55a587_b42f23f1",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-09T10:01:48Z",
+      "side": 1,
+      "message": "Can we make the guards similar with these? (I mean, we could use same condition/sequence or refactor conditions into a helper)",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 2
+      },
+      "revId": "2eae6d2923bb12511c165863e434a04e25e1f2d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
