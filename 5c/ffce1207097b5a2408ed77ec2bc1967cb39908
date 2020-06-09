@@ -1,0 +1,10 @@
+Code-Review+2: Ulyana Trafimovich <skvadrik@google.com>
+Autosubmit+1: Orion Hodson <oth@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Orion Hodson <oth@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 09 Jun 2020 09:55:11 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1326314
+Project: platform/build/soong
+Branch: refs/heads/master
