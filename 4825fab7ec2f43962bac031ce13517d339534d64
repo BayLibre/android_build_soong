@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ba61d22_2d3d0fba",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-09T02:39:19Z",
+      "side": 1,
+      "message": "I think this part deserves some comments. If my understanding is correct,\n\n- framework jars in an APEX will be instrumented only when EMMA_INSTRUMENT_FRAMEWORK is on.\n- other jars in an APEX will be instrumented regardless of the env var.",
+      "range": {
+        "startLine": 1549,
+        "startChar": 0,
+        "endLine": 1553,
+        "endChar": 3
+      },
+      "revId": "4825fab7ec2f43962bac031ce13517d339534d64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
