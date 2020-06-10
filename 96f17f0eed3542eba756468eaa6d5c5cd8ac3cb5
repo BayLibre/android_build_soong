@@ -70,6 +70,30 @@
       "revId": "96f17f0eed3542eba756468eaa6d5c5cd8ac3cb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebff5ec7_b9b117e7",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2020-06-10T09:10:15Z",
+      "side": 1,
+      "message": "Inseob, Justin, and I had discussion. In the known cases, the version of the source code equals useVndk().",
+      "parentUuid": "a9ab4f81_89753bd2",
+      "range": {
+        "startLine": 1082,
+        "startChar": 5,
+        "endLine": 1082,
+        "endChar": 18
+      },
+      "revId": "96f17f0eed3542eba756468eaa6d5c5cd8ac3cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
