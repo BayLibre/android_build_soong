@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4cd96793_c06de588",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1894,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-10T13:54:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "48f94165_39e8668b",
+      "revId": "3635c1403c9d149b128fad5f2b57072e969d73c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf776e64_dd5ad577",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a2d14e43_23b8ccea",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1898,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-10T13:54:33Z",
+      "side": 1,
+      "message": "As I understand, install file is only set for some libraries: https://source.corp.google.com/aosp-master/build/soong/java/java.go;l\u003d1903-1904.\n\nIf I put an error on nil install path with non-nil build path, I hit it for module \"Tethering\" variant \"android_common_com.android.tethering\", for the library \"android.hidl.base-V1.0-java\".\n\nLater I may find out that I need to rework it to have installPaths in more cases. But now I don\u0027t have any use cases for this (my only use case, GoogleDialer app in goog/master, goes via the Make code).",
+      "parentUuid": "cf776e64_dd5ad577",
+      "revId": "3635c1403c9d149b128fad5f2b57072e969d73c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0484914_f079dd6c",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2020-06-09T18:34:50Z",
       "side": 1,
       "message": "Line 2765 above seems to indicate that this should be returning a non-nil value here.",
+      "revId": "3635c1403c9d149b128fad5f2b57072e969d73c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79cf42ba_6438a8e3",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2774,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-10T13:54:33Z",
+      "side": 1,
+      "message": "There is no installFile field in DexImport struct to match dexJarFile (see line 2686 above). Maybe it can be added if necessary, but for now the whole DexJarInstallPath() method in unused, so I removed it.",
+      "parentUuid": "c0484914_f079dd6c",
       "revId": "3635c1403c9d149b128fad5f2b57072e969d73c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
