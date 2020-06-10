@@ -46,6 +46,30 @@
       "revId": "96f17f0eed3542eba756468eaa6d5c5cd8ac3cb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ab4f81_89753bd2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2020-06-10T08:13:04Z",
+      "side": 1,
+      "message": "This function builds a library\u0027s dump file and compare it with the reference dump. If the reference dump file does not exist, the function skips the comparison.\n\nThe vndkVersion in this function represents the directory name of the reference dump. It doesn\u0027t represent the VNDK libraries linked with the library.\nIf a library links to an old VNDK version, does that imply the current source code of the library must be compatible with the old ABI of the library?\n\nWe need to check non-VNDK libraries. Please see classifySourceAbiDump in library.go.",
+      "parentUuid": "4effff47_1824c579",
+      "range": {
+        "startLine": 1082,
+        "startChar": 5,
+        "endLine": 1082,
+        "endChar": 18
+      },
+      "revId": "96f17f0eed3542eba756468eaa6d5c5cd8ac3cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
