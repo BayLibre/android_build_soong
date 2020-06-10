@@ -16,6 +16,24 @@
       "revId": "9e83f0b5313b0500d4ab8ce2f727ff7cdea38505",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bc72ecb_d28b8634",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-10T15:58:51Z",
+      "side": 1,
+      "message": "I somewhat blindlessly followed the existing Android.mk rules for standalone dex_import modules.\n\nhttps://cs.corp.google.com/android/build/soong/java/androidmk.go?rcl\u003df52de833dec258426038d2f1d19cfc0532130bb0\u0026l\u003d220",
+      "parentUuid": "d231fa26_3e2d382c",
+      "revId": "9e83f0b5313b0500d4ab8ce2f727ff7cdea38505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
