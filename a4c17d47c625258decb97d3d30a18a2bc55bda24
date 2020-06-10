@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "9108807e_3a8f55f2",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2020-06-10T22:11:25Z",
+      "side": 1,
+      "message": "Well, I was so happy when I found it that I could use enabled:false/enabled:true trick that I forgot to test exclude_shared_libs\n\nNow, I try to change my RS patches - and it doesn\u0027t work.\n\nApparently it\u0027s only supported to certain limited list of targets.\n\nSo... how could I change that? Is there a list of blessed targets which support that or something?",
+      "parentUuid": "6b4b1ace_b6a9df63",
+      "revId": "a4c17d47c625258decb97d3d30a18a2bc55bda24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c054998_46a2e7df",
         "filename": "android/arch.go",
         "patchSetId": 4
