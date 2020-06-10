@@ -240,7 +240,7 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 	java.RegisterJavaBuildComponents(ctx)
 	java.RegisterSystemModulesBuildComponents(ctx)
 	java.RegisterAppBuildComponents(ctx)
-	ctx.RegisterModuleType("java_sdk_library", java.SdkLibraryFactory)
+	java.RegisterSdkLibraryBuildComponents(ctx)
 
 	ctx.PreDepsMutators(RegisterPreDepsMutators)
 	ctx.PostDepsMutators(RegisterPostDepsMutators)
@@ -4321,6 +4321,9 @@ var filesForSdkLibrary = map[string][]byte{
 	"api/system-removed.txt": nil,
 	"api/test-current.txt":   nil,
 	"api/test-removed.txt":   nil,
+
+	// For java_sdk_library_import
+	"a.jar": nil,
 }
 
 func TestJavaSDKLibrary(t *testing.T) {
@@ -4444,6 +4447,54 @@ func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
 	barLibrary := ctx.ModuleForTests("bar", "android_common").Rule("javac")
 	if expected, actual := `^-classpath /[^:]*/turbine-combined/foo\.stubs\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
 		t.Errorf("expected %q, found %#q", expected, actual)
+	}
+}
+
+func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			java_libs: ["foo"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		java_sdk_library {
+			name: "foo",
+			srcs: ["a.java"],
+			api_packages: ["foo"],
+			apex_available: ["myapex"],
+			sdk_version: "none",
+			system_modules: "none",
+			public: {
+				enabled: true,
+			},
+		}
+
+		java_sdk_library_import {
+			name: "foo",
+			apex_available: ["myapex"],
+			prefer: true,
+			public: {
+				jars: ["a.jar"],
+			},
+		}
+
+	`, withFiles(filesForSdkLibrary))
+
+	// java_sdk_library_import installs an impl jar - which will be fake.
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+		"javalib/foo.jar",
+	})
+
+	fakeRule := ctx.ModuleForTests("prebuilt_foo", "android_common_myapex").Rule("invalid_implementation_jar")
+	if expected, actual := "non-existent-impl-jar/foo.jar", fakeRule.Output.Rel(); actual != expected {
+		t.Errorf("expected rule to create fake path %q, found %q", expected, actual)
 	}
 }
 

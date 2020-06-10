@@ -827,7 +827,7 @@ type SdkLibraryComponentDependency interface {
 var _ SdkLibraryComponentDependency = (*Library)(nil)
 var _ SdkLibraryComponentDependency = (*Import)(nil)
 var _ SdkLibraryComponentDependency = (*SdkLibrary)(nil)
-var _ SdkLibraryComponentDependency = (*sdkLibraryImport)(nil)
+var _ SdkLibraryComponentDependency = (*SdkLibraryImport)(nil)
 
 // Provides access to sdk_version related header and implentation jars.
 type SdkLibraryDependency interface {
@@ -1671,7 +1671,7 @@ type sdkLibraryImportProperties struct {
 	Libs []string
 }
 
-type sdkLibraryImport struct {
+type SdkLibraryImport struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 	prebuilt android.Prebuilt
@@ -1684,9 +1684,14 @@ type sdkLibraryImport struct {
 	scopeProperties map[*apiScope]*sdkLibraryScopeProperties
 
 	commonToSdkLibraryAndImport
+
+	// The path to a fake implementation dex jar path.
+	//
+	// Anything that depends on this will fail to build.
+	fakeImplDexJarBuildPath android.ModuleOutPath
 }
 
-var _ SdkLibraryDependency = (*sdkLibraryImport)(nil)
+var _ SdkLibraryDependency = (*SdkLibraryImport)(nil)
 
 // The type of a structure that contains a field of type sdkLibraryScopeProperties
 // for each apiscope in allApiScopes, e.g. something like:
@@ -1728,7 +1733,7 @@ func createPropertiesInstance() (interface{}, map[*apiScope]*sdkLibraryScopeProp
 
 // java_sdk_library_import imports a prebuilt java_sdk_library.
 func sdkLibraryImportFactory() android.Module {
-	module := &sdkLibraryImport{}
+	module := &SdkLibraryImport{}
 
 	allScopeProperties, scopeToProperties := createPropertiesInstance()
 	module.scopeProperties = scopeToProperties
@@ -1750,15 +1755,15 @@ func sdkLibraryImportFactory() android.Module {
 	return module
 }
 
-func (module *sdkLibraryImport) Prebuilt() *android.Prebuilt {
+func (module *SdkLibraryImport) Prebuilt() *android.Prebuilt {
 	return &module.prebuilt
 }
 
-func (module *sdkLibraryImport) Name() string {
+func (module *SdkLibraryImport) Name() string {
 	return module.prebuilt.Name(module.ModuleBase.Name())
 }
 
-func (module *sdkLibraryImport) createInternalModules(mctx android.DefaultableHookContext) {
+func (module *SdkLibraryImport) createInternalModules(mctx android.DefaultableHookContext) {
 
 	// If the build is configured to use prebuilts then force this to be preferred.
 	if mctx.Config().UnbundledBuildUsePrebuiltSdks() {
@@ -1783,7 +1788,7 @@ func (module *sdkLibraryImport) createInternalModules(mctx android.DefaultableHo
 	*javaSdkLibraries = append(*javaSdkLibraries, module.BaseModuleName())
 }
 
-func (module *sdkLibraryImport) createJavaImportForStubs(mctx android.DefaultableHookContext, apiScope *apiScope, scopeProperties *sdkLibraryScopeProperties) {
+func (module *SdkLibraryImport) createJavaImportForStubs(mctx android.DefaultableHookContext, apiScope *apiScope, scopeProperties *sdkLibraryScopeProperties) {
 	// Creates a java import for the jar with ".stubs" suffix
 	props := struct {
 		Name        *string
@@ -1805,7 +1810,7 @@ func (module *sdkLibraryImport) createJavaImportForStubs(mctx android.Defaultabl
 	mctx.CreateModule(ImportFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
 
-func (module *sdkLibraryImport) createPrebuiltStubsSources(mctx android.DefaultableHookContext, apiScope *apiScope, scopeProperties *sdkLibraryScopeProperties) {
+func (module *SdkLibraryImport) createPrebuiltStubsSources(mctx android.DefaultableHookContext, apiScope *apiScope, scopeProperties *sdkLibraryScopeProperties) {
 	props := struct {
 		Name   *string
 		Srcs   []string
@@ -1819,7 +1824,7 @@ func (module *sdkLibraryImport) createPrebuiltStubsSources(mctx android.Defaulta
 	props.Prefer = proptools.BoolPtr(module.prebuilt.Prefer())
 }
 
-func (module *sdkLibraryImport) DepsMutator(ctx android.BottomUpMutatorContext) {
+func (module *SdkLibraryImport) DepsMutator(ctx android.BottomUpMutatorContext) {
 	for apiScope, scopeProperties := range module.scopeProperties {
 		if len(scopeProperties.Jars) == 0 {
 			continue
@@ -1835,11 +1840,31 @@ func (module *sdkLibraryImport) DepsMutator(ctx android.BottomUpMutatorContext) 
 	}
 }
 
-func (module *sdkLibraryImport) OutputFiles(tag string) (android.Paths, error) {
+func (module *SdkLibraryImport) OutputFiles(tag string) (android.Paths, error) {
 	return module.commonOutputFiles(tag)
 }
 
-func (module *sdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+func (module *SdkLibraryImport) DepIsInSameApex(mctx android.BaseModuleContext, dep android.Module) bool {
+	// None of the dependencies of the java_sdk_library_import are in the same APEX.
+	return false
+}
+
+// Needed for apex.javaDependency
+func (module *SdkLibraryImport) DexJarBuildPath() android.Path {
+	return module.fakeImplDexJarBuildPath
+}
+
+// Needed for apex.javaDependency
+func (module *SdkLibraryImport) JacocoReportClassesFile() android.Path {
+	return nil
+}
+
+// Needed for apex.javaDependency
+func (module *SdkLibraryImport) Stem() string {
+	return module.BaseModuleName()
+}
+
+func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Record the paths to the prebuilt stubs library and stubs source.
 	ctx.VisitDirectDeps(func(to android.Module) {
 		tag := ctx.OtherModuleDependencyTag(to)
@@ -1865,20 +1890,34 @@ func (module *sdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		paths.currentApiFilePath = android.OptionalPathForModuleSrc(ctx, scopeProperties.Current_api)
 		paths.removedApiFilePath = android.OptionalPathForModuleSrc(ctx, scopeProperties.Removed_api)
 	}
+
+	// The java_sdk_library_import does not have an implementation jar.
+	//
+	// Rather than fail immediately in Soong if something, e.g. an APEX, requests an implementation
+	// jar, pretend that this does have an implementation jar so that the Ninja file will be generated.
+	// Instead, set up the ninja rule so that an error is reported if the fake implementation jar is
+	// ever needed.
+	name := module.BaseModuleName()
+	module.fakeImplDexJarBuildPath = android.PathForModuleOut(ctx, "non-existent-impl-jar", name+".jar")
+	ruleBuilder := android.NewRuleBuilder()
+	ruleBuilder.Command().
+		Textf(`echo "invalid dependency on non existent implementation jar for java_sdk_library_import \"%s\"" && touch `, name).
+		Output(module.fakeImplDexJarBuildPath).Text(` && exit 1`)
+	ruleBuilder.Build(pctx, ctx, "invalid_implementation_jar", "invalid dependency on non existent java_sdk_library_import implementation jar")
 }
 
-func (module *sdkLibraryImport) sdkJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths {
+func (module *SdkLibraryImport) sdkJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths {
 	return module.selectHeaderJarsForSdkVersion(ctx, sdkVersion)
 }
 
 // to satisfy SdkLibraryDependency interface
-func (module *sdkLibraryImport) SdkHeaderJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths {
+func (module *SdkLibraryImport) SdkHeaderJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths {
 	// This module is just a wrapper for the prebuilt stubs.
 	return module.sdkJars(ctx, sdkVersion)
 }
 
 // to satisfy SdkLibraryDependency interface
-func (module *sdkLibraryImport) SdkImplementationJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths {
+func (module *SdkLibraryImport) SdkImplementationJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths {
 	// This module is just a wrapper for the stubs.
 	return module.sdkJars(ctx, sdkVersion)
 }
