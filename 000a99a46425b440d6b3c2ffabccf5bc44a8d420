@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac37d3d6_67c150e2",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-10T12:43:22Z",
+      "side": 1,
+      "message": "FRAMEWORK (just a small typo).",
+      "range": {
+        "startLine": 1546,
+        "startChar": 132,
+        "endLine": 1546,
+        "endChar": 141
+      },
+      "revId": "000a99a46425b440d6b3c2ffabccf5bc44a8d420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5251b5c_29b4a42c",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-10T12:43:22Z",
+      "side": 1,
+      "message": "Nit (feel free to ignore): I would add a predicate function like shouldInstrumentInApex() to keep the logic simpler, and move the comment inside of it.",
+      "range": {
+        "startLine": 1547,
+        "startChar": 0,
+        "endLine": 1552,
+        "endChar": 0
+      },
+      "revId": "000a99a46425b440d6b3c2ffabccf5bc44a8d420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
