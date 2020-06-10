@@ -22,6 +22,30 @@
       "revId": "96f17f0eed3542eba756468eaa6d5c5cd8ac3cb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4effff47_1824c579",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-06-10T07:35:01Z",
+      "side": 1,
+      "message": "Every vendor/product variant module has its own VndkVersion that was assigned on image mutation (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d3193?q\u003df:cc.go%20vndkversion).\nThis could be different by some reasons (Some modules are using BOARD_VNDK_VERSION but some may use PRODUCT_PRODUCT_VNDK_VERSION, or some may use `current` even BOARD_VNDK_VERSION is not `current`.)\nSo we need to follow the VNDK version in the module instead of using a single version for all modules.\n\nBut I am not sure if we need abi dump checks for `not ctx.useVndk()` case which must be core variants. Moreover, as image variants use the same source tree, they must have the same vndkVersion.",
+      "parentUuid": "e699a3b4_ef35e0d2",
+      "range": {
+        "startLine": 1082,
+        "startChar": 5,
+        "endLine": 1082,
+        "endChar": 18
+      },
+      "revId": "96f17f0eed3542eba756468eaa6d5c5cd8ac3cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
