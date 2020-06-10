@@ -16,6 +16,7 @@ package build
 
 import (
 	"bufio"
+	"context"
 	"io"
 	"os/exec"
 	"strings"
@@ -40,8 +41,14 @@ type Cmd struct {
 }
 
 func Command(ctx Context, config Config, name string, executable string, args ...string) *Cmd {
-	ret := &Cmd{
-		Cmd:         exec.CommandContext(ctx.Context, executable, args...),
+	return command(ctx, ctx.Context, config, name, executable, args...)
+}
+
+// command allows an executable context to be passed in. For example, a command may have
+// a cancel or a timeout context.
+func command(ctx Context, execCtx context.Context, config Config, name, executable string, args ...string) *Cmd {
+	return &Cmd{
+		Cmd:         exec.CommandContext(execCtx, executable, args...),
 		Environment: config.Environment().Copy(),
 		Sandbox:     noSandbox,
 
@@ -49,8 +56,6 @@ func Command(ctx Context, config Config, name string, executable string, args ..
 		config: config,
 		name:   name,
 	}
-
-	return ret
 }
 
 func (c *Cmd) prepare() {
