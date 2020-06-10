@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc324102_4f59c02a",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-10T02:38:11Z",
+      "side": 1,
+      "message": "why don\u0027t you just pass mctx? Then we don\u0027t need to add Device() to android.Module.",
+      "range": {
+        "startLine": 395,
+        "startChar": 26,
+        "endLine": 395,
+        "endChar": 27
+      },
+      "revId": "bba545e039419a8eac4c061f2481826391726968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
