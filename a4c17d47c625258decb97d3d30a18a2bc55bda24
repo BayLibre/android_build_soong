@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "c6e33aed_09b46733",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1030,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2020-06-10T23:39:25Z",
+      "side": 1,
+      "message": "Yeah, it helps: now I can build it. Haven\u0027t run CTS tests yet, but don\u0027t expect any suprises there.",
+      "parentUuid": "888da48b_2df07513",
+      "revId": "a4c17d47c625258decb97d3d30a18a2bc55bda24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c054998_46a2e7df",
         "filename": "android/arch.go",
         "patchSetId": 4
