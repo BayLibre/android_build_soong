@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eabc596b_ff1144ae",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-06-10T23:52:07Z",
+      "side": 1,
+      "message": "The nil check is repeated.",
+      "range": {
+        "startLine": 1041,
+        "startChar": 5,
+        "endLine": 1041,
+        "endChar": 58
+      },
+      "revId": "1718f81a58509faae4380a9f29b602bb5e8d8959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
