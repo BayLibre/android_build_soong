@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d231fa26_3e2d382c",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-10T15:48:05Z",
+      "side": 1,
+      "message": "I am not sure that this is valid. AIUI the CLASSES and HEADER jars are supposed to be jars containing .class files that can be passed to the compiler. But builtFile is a jar containing a .dex files which cannot be passed to the compiler.",
+      "revId": "9e83f0b5313b0500d4ab8ce2f727ff7cdea38505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
