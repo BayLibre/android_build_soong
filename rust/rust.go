@@ -323,6 +323,16 @@ func (mod *Module) CcLibrary() bool {
 	return false
 }
 
+func (mod *Module) HostToolPath() android.OptionalPath {
+	if !mod.Host() {
+		return android.OptionalPath{}
+	}
+	if _, ok := mod.compiler.(*binaryDecorator); ok {
+		return mod.outputFile
+	}
+	return android.OptionalPath{}
+}
+
 func (mod *Module) CcLibraryInterface() bool {
 	if mod.compiler != nil {
 		if _, ok := mod.compiler.(libraryInterface); ok {
