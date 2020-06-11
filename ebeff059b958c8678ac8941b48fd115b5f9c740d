@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c90bb91_ff5339e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-11T18:01:08Z",
+      "side": 1,
+      "message": "nit: git commits are generally:\n\n \u003cshort subject\u003e\n \u003cblank line\u003e\n \u003cbody\u003e\n\nThat helps the subjects actually fit in the various text boxes on gerrit and `git log --oneline`/etc.",
+      "revId": "ebeff059b958c8678ac8941b48fd115b5f9c740d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
