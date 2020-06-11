@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f29f1d1_5111ae15",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-06-11T00:07:51Z",
+      "side": 1,
+      "message": "Just to confirm:\nWill the logic to combine the COVERAGE_PATHS and NATIVE_COVERAGE_PATHS environment variables in https://android-review.googlesource.com/c/platform/build/+/1325807/4/core/soong_config.mk get propogated from Make to Soong? Or do you need to do something similar in this CL?",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 20
+      },
+      "revId": "4f5297b4388175ea34f33ef431ae71dd000313ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
