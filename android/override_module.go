@@ -208,7 +208,19 @@ var overrideBaseDepTag overrideBaseDependencyTag
 // next phase.
 func overrideModuleDepsMutator(ctx BottomUpMutatorContext) {
 	if module, ok := ctx.Module().(OverrideModule); ok {
-		ctx.AddDependency(ctx.Module(), overrideBaseDepTag, *module.getOverrideModuleProperties().Base)
+		overriddenByPrebuilt := false
+		ctx.VisitDirectDeps(func(dep Module) {
+			if ctx.OtherModuleDependencyTag(dep) == PrebuiltDepTag {
+				prebuilt := dep.(PrebuiltInterface)
+				if prebuilt.Prebuilt().UsePrebuilt() {
+					overriddenByPrebuilt = true
+					return
+				}
+			}
+		})
+		if !overriddenByPrebuilt {
+			ctx.AddDependency(ctx.Module(), overrideBaseDepTag, *module.getOverrideModuleProperties().Base)
+		}
 	}
 }
 
