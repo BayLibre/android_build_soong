@@ -46,6 +46,30 @@
       "revId": "1718f81a58509faae4380a9f29b602bb5e8d8959",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc6475b_2f233969",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-06-11T17:32:16Z",
+      "side": 1,
+      "message": "The logic has been fixed in PS4.",
+      "parentUuid": "3bd971eb_5010e827",
+      "range": {
+        "startLine": 1041,
+        "startChar": 5,
+        "endLine": 1041,
+        "endChar": 58
+      },
+      "revId": "1718f81a58509faae4380a9f29b602bb5e8d8959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
