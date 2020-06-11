@@ -22,6 +22,30 @@
       "revId": "ac7e3393b17639212f099db89d3113fecbcf881f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0225bc31_891defba",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-11T05:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47a66b3a_ae9b849f",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "ac7e3393b17639212f099db89d3113fecbcf881f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
