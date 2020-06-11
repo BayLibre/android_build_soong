@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a408f37_b388324a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1479653
+      },
+      "writtenOn": "2020-06-11T23:36:56Z",
+      "side": 1,
+      "message": "D\u0027oh! That\u0027s embarrassing. Thanks for finding those! Apparently, it is a very hard word to spell. lol.",
+      "parentUuid": "01e849a0_fc219a02",
+      "range": {
+        "startLine": 13,
+        "startChar": 34,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "000a99a46425b440d6b3c2ffabccf5bc44a8d420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac37d3d6_67c150e2",
         "filename": "java/java.go",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "34a2ed76_c6748d0d",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1479653
+      },
+      "writtenOn": "2020-06-11T23:36:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac37d3d6_67c150e2",
+      "range": {
+        "startLine": 1546,
+        "startChar": 132,
+        "endLine": 1546,
+        "endChar": 141
+      },
+      "revId": "000a99a46425b440d6b3c2ffabccf5bc44a8d420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5251b5c_29b4a42c",
         "filename": "java/java.go",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-10T12:43:22Z",
       "side": 1,
       "message": "Nit (feel free to ignore): I would add a predicate function like shouldInstrumentInApex() to keep the logic simpler, and move the comment inside of it.",
+      "range": {
+        "startLine": 1547,
+        "startChar": 0,
+        "endLine": 1552,
+        "endChar": 0
+      },
+      "revId": "000a99a46425b440d6b3c2ffabccf5bc44a8d420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24203483_b7ae8c72",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1479653
+      },
+      "writtenOn": "2020-06-11T23:36:56Z",
+      "side": 1,
+      "message": "SGTM. I moved this entire block into a new function above called shouldInstrumentInApex, let me know if you agree.",
+      "parentUuid": "a5251b5c_29b4a42c",
       "range": {
         "startLine": 1547,
         "startChar": 0,
