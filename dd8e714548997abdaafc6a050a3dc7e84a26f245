@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84555190_86a7131f",
+        "filename": "rust/project_json.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-06-11T09:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97c1519d_fe743571",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 5
+      },
+      "revId": "dd8e714548997abdaafc6a050a3dc7e84a26f245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba1d17d0_a748c6fd",
         "filename": "rust/project_json.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "dd8e714548997abdaafc6a050a3dc7e84a26f245",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "886549ec_6260654a",
+        "filename": "rust/project_json.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-06-11T09:30:09Z",
+      "side": 1,
+      "message": "I\u0027ve modified the logic to merge any new dependencies, if a crate with the same name is processed. This applies if we come across different module definitions for the host vs for the device.\nIt makes sense to over-include dependencies. Worst case, rust-analyzer (or the IDE) will have the knowledge of extra crates.",
+      "parentUuid": "ba1d17d0_a748c6fd",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "dd8e714548997abdaafc6a050a3dc7e84a26f245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

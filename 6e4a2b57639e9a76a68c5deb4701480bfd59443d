@@ -164,6 +164,30 @@
       "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "904df219_c1ad26d0",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-06-11T09:30:09Z",
+      "side": 1,
+      "message": "Ack, I\u0027ve updated the Roots with each crate\u0027s directory.",
+      "parentUuid": "da6ec937_732e365a",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 59
+      },
+      "revId": "6e4a2b57639e9a76a68c5deb4701480bfd59443d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
