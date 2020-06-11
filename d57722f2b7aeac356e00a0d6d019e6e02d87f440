@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ddd0a54_207d6986",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-11T19:16:14Z",
+      "side": 1,
+      "message": "It took reading quite a bit of the code to figure out what this TODO meant. Maybe move it down into the lint function where we\u0027re calling srcs vs generated_srcs? I imagine that\u0027s probably where we\u0027d filter this into two lists as well",
+      "range": {
+        "startLine": 1637,
+        "startChar": 27,
+        "endLine": 1637,
+        "endChar": 54
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f15d1d_244951b4",
+        "filename": "java/lint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-11T19:16:14Z",
+      "side": 1,
+      "message": "FlagWithRspFileInputList already adds dependencies",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ac7fbd_4d5054a3",
+        "filename": "java/lint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-11T19:16:14Z",
+      "side": 1,
+      "message": "zipSyncCmd already adds dependencies",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 34
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa5fdc98_7182ddf1",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-11T19:16:14Z",
+      "side": 1,
+      "message": "nit: this is the default",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 6
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
