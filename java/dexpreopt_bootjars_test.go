@@ -117,7 +117,9 @@ func TestDexpreoptBootZip(t *testing.T) {
 	ruleFile := "boot.zip"
 
 	ctx := android.PathContextForTesting(testConfig(nil, "", nil))
-	expectedInputs := []string{}
+	expectedInputs := []string{
+		"zip_boot.config",
+	}
 	for _, target := range ctx.Config().Targets[android.Android] {
 		for _, ext := range []string{".art", ".oat", ".vdex"} {
 			for _, jar := range []string{"foo", "bar", "baz"} {

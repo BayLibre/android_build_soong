@@ -15,6 +15,7 @@
 package java
 
 import (
+	"encoding/json"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -88,6 +89,12 @@ type bootImageVariant struct {
 	installs           android.RuleBuilderInstalls
 	vdexInstalls       android.RuleBuilderInstalls
 	unstrippedInstalls android.RuleBuilderInstalls
+}
+
+// bootZipJsonConfig is a config for boot.zip.
+type bootZipJsonConfig struct {
+	Jars   []string
+	Images map[string]string
 }
 
 func (image bootImageConfig) getVariant(target android.Target) *bootImageVariant {
@@ -341,6 +348,31 @@ func buildBootImage(ctx android.SingletonContext, image *bootImageConfig) *bootI
 	}
 
 	if image.zip != nil {
+		zipConfigPath := android.PathForOutput(ctx, ctx.Config().DeviceName(), "zip_"+image.name+".config")
+
+		zipConfig := bootZipJsonConfig{
+			Jars:   image.dexPathsDeps.Strings(),
+			Images: make(map[string]string),
+		}
+		for _, variant := range image.variants {
+			arch := variant.target.Arch.ArchType.String()
+			zipConfig.Images[arch] = variant.images.String()
+		}
+
+		data, err := json.MarshalIndent(zipConfig, "", "    ")
+		if err != nil {
+			ctx.Errorf("failed to JSON marshal boot zip config: %v", err)
+		}
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.WriteFile,
+			Output: zipConfigPath,
+			Args: map[string]string{
+				"content": string(data),
+			},
+		})
+		zipFiles = append(zipFiles, zipConfigPath)
+
 		rule := android.NewRuleBuilder()
 		rule.Command().
 			BuiltTool(ctx, "soong_zip").
