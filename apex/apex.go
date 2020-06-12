@@ -41,6 +41,9 @@ const (
 	imageApexType     = "image"
 	zipApexType       = "zip"
 	flattenedApexType = "flattened"
+
+	ext4FsType = "ext4"
+	f2fsFsType = "f2fs"
 )
 
 type dependencyTag struct {
@@ -1012,6 +1015,10 @@ type apexBundleProperties struct {
 
 	// The minimum SDK version that this apex must be compatibile with.
 	Min_sdk_version *string
+
+	// The type of filesystem to use for an image apex. Either 'ext4' or 'f2fs'.
+	// Default 'ext4'.
+	Payload_fs_type *string
 }
 
 type apexTargetBundleProperties struct {
@@ -1216,6 +1223,24 @@ func (af *apexFile) AvailableToPlatform() bool {
 	return false
 }
 
+type fsType int
+
+const (
+	ext4 fsType = iota
+	f2fs
+)
+
+func (f fsType) string() string {
+	switch f {
+	case ext4:
+		return ext4FsType
+	case f2fs:
+		return f2fsFsType
+	default:
+		panic(fmt.Errorf("unknown APEX payload type %d", f))
+	}
+}
+
 type apexBundle struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -1278,6 +1303,8 @@ type apexBundle struct {
 
 	// Struct holding the merged notice file paths in different formats
 	mergedNotices android.NoticeOutputs
+
+	payloadFsType fsType
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -2227,6 +2254,15 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
 	a.filesInfo = filesInfo
+
+	switch proptools.StringDefault(a.properties.Payload_fs_type, ext4FsType) {
+	case ext4FsType:
+		a.payloadFsType = ext4
+	case f2fsFsType:
+		a.payloadFsType = f2fs
+	default:
+		ctx.PropertyErrorf("payload_fs_type", "%q is not a valid filesystem for apex [ext4, f2fs]", *a.properties.Payload_fs_type)
+	}
 
 	// Optimization. If we are building bundled APEX, for the files that are gathered due to the
 	// transitive dependencies, don't place them inside the APEX, but place a symlink pointing
