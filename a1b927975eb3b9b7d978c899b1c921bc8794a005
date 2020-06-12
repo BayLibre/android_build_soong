@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "abd76ae2_d2d83b8f",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1999,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-06-12T14:45:48Z",
+      "side": 1,
+      "message": "I\u0027ve spent some time reading through the code and I think this should really not be addSharedLibDependencies().\nAFAIK stubs are not real libraries, they are only a link-time artifact and should never be installed. Let\u0027s see if Dan or Colin can shed some light on this 🤔",
+      "parentUuid": "e1b5f688_549e6c23",
+      "range": {
+        "startLine": 1997,
+        "startChar": 1,
+        "endLine": 1999,
+        "endChar": 2
+      },
+      "revId": "a1b927975eb3b9b7d978c899b1c921bc8794a005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71961055_4e3f3e3a",
         "filename": "cc/test.go",
         "patchSetId": 1
