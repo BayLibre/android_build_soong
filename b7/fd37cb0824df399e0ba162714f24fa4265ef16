@@ -1,0 +1,13 @@
+Code-Review+1: Chih-hung Hsieh <chh@google.com>
+Code-Review+1: Jaewoong Jung <jungjw@google.com>
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Code-Review+2: Frank Feng <frankfeng@google.com>
+Verified+1: Jeffrey Vander Stoep <jeffv@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Chih-hung Hsieh <chh@google.com>
+Submitted-at: Fri, 12 Jun 2020 18:06:40 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1332077
+Project: platform/build/soong
+Branch: refs/heads/master
