@@ -240,7 +240,7 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 	java.RegisterJavaBuildComponents(ctx)
 	java.RegisterSystemModulesBuildComponents(ctx)
 	java.RegisterAppBuildComponents(ctx)
-	ctx.RegisterModuleType("java_sdk_library", java.SdkLibraryFactory)
+	java.RegisterSdkLibraryBuildComponents(ctx)
 	ctx.RegisterSingletonType("apex_keys_text", apexKeysTextFactory)
 
 	ctx.PreDepsMutators(RegisterPreDepsMutators)
@@ -4332,6 +4332,9 @@ var filesForSdkLibrary = map[string][]byte{
 	"api/system-removed.txt": nil,
 	"api/test-current.txt":   nil,
 	"api/test-removed.txt":   nil,
+
+	// For java_sdk_library_import
+	"a.jar": nil,
 }
 
 func TestJavaSDKLibrary(t *testing.T) {
@@ -4456,6 +4459,76 @@ func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
 	if expected, actual := `^-classpath /[^:]*/turbine-combined/foo\.stubs\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
 		t.Errorf("expected %q, found %#q", expected, actual)
 	}
+}
+
+func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			java_libs: ["foo"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		java_sdk_library {
+			name: "foo",
+			srcs: ["a.java"],
+			api_packages: ["foo"],
+			apex_available: ["myapex"],
+			sdk_version: "none",
+			system_modules: "none",
+			public: {
+				enabled: true,
+			},
+		}
+
+		java_sdk_library_import {
+			name: "foo",
+			apex_available: ["myapex"],
+			prefer: true,
+			public: {
+				jars: ["a.jar"],
+			},
+		}
+
+	`, withFiles(filesForSdkLibrary))
+
+	// java_sdk_library installs both impl jar and permission XML
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+		"javalib/foo.jar",
+		"etc/permissions/foo.xml",
+	})
+}
+
+func TestJavaSDKLibrary_ImportOnly(t *testing.T) {
+	testApexError(t, `java_libs: "foo" is not configured to be compiled into dex`, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			java_libs: ["foo"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		java_sdk_library_import {
+			name: "foo",
+			apex_available: ["myapex"],
+			prefer: true,
+			public: {
+				jars: ["a.jar"],
+			},
+		}
+
+	`, withFiles(filesForSdkLibrary))
 }
 
 func TestCompatConfig(t *testing.T) {
