@@ -140,6 +140,30 @@
       "revId": "000a99a46425b440d6b3c2ffabccf5bc44a8d420",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7c7e2a_4aae17a7",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-12T08:44:21Z",
+      "side": 1,
+      "message": "Great, thank you.",
+      "parentUuid": "24203483_b7ae8c72",
+      "range": {
+        "startLine": 1547,
+        "startChar": 0,
+        "endLine": 1552,
+        "endChar": 0
+      },
+      "revId": "000a99a46425b440d6b3c2ffabccf5bc44a8d420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
