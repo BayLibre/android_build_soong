@@ -19,6 +19,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/python"
 )
 
 func TestConfig(buildDir string, env map[string]string, bp string, fs map[string][]byte) android.Config {
@@ -87,6 +88,10 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		"api/system-server-current.txt":                     nil,
 		"api/system-server-removed.txt":                     nil,
 		"build/soong/scripts/gen-java-current-api-files.sh": nil,
+
+		"bin.py": nil,
+		python.StubTemplateHost: []byte(`PYTHON_BINARY = '%interpreter%'
+		MAIN_FILE = '%main%'`),
 	}
 
 	cc.GatherRequiredFilesForTest(mockFS)
