@@ -19,6 +19,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/python"
 )
 
 func TestConfig(buildDir string, env map[string]string, bp string, fs map[string][]byte) android.Config {
@@ -139,6 +140,10 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		"lineage.bin":            nil,
 
 		"testdata/data": nil,
+
+		"bin.py": nil,
+		python.StubTemplateHost: []byte(`PYTHON_BINARY = '%interpreter%'
+		MAIN_FILE = '%main%'`),
 
 		"stubs-sources/foo/Foo.java": nil,
 		"stubs/sources/foo/Foo.java": nil,
