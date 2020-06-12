@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38944fae_dca51e26",
+        "filename": "apex/key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-06-12T15:56:23Z",
+      "side": 1,
+      "message": "Wonder why you don\u0027t just remove them? Wouldn\u0027t this create duplicate entries without any identifiers in the final output?",
+      "revId": "5638108bf2290dac735c4a149e254fc3118d2879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
