@@ -520,7 +520,20 @@ func (j *Module) XrefJavaFiles() android.Paths {
 }
 
 func InitJavaModule(module android.DefaultableModule, hod android.HostOrDeviceSupported) {
-	android.InitAndroidArchModule(module, hod, android.MultilibCommon)
+	initJavaModule(module, hod, false)
+}
+
+func InitJavaModuleMultiTargets(module android.DefaultableModule, hod android.HostOrDeviceSupported) {
+	initJavaModule(module, hod, true)
+}
+
+func initJavaModule(module android.DefaultableModule, hod android.HostOrDeviceSupported, multiTargets bool) {
+	multilib := android.MultilibCommon
+	if multiTargets {
+		android.InitAndroidMultiTargetsArchModule(module, hod, multilib)
+	} else {
+		android.InitAndroidArchModule(module, hod, multilib)
+	}
 	android.InitDefaultableModule(module)
 }
 
@@ -539,6 +552,7 @@ func IsJniDepTag(depTag blueprint.DependencyTag) bool {
 }
 
 var (
+	dataNativeBinsTag     = dependencyTag{name: "dataNativeBins"}
 	staticLibTag          = dependencyTag{name: "staticlib"}
 	libTag                = dependencyTag{name: "javalib"}
 	java9LibTag           = dependencyTag{name: "java9lib"}
@@ -2115,6 +2129,11 @@ type testProperties struct {
 	Test_mainline_modules []string
 }
 
+type hostTestProperties struct {
+	// list of native binary modules that should be installed alongside the test
+	Data_native_bins []string `android:"arch_variant"`
+}
+
 type testHelperLibraryProperties struct {
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
@@ -2140,6 +2159,12 @@ type Test struct {
 	data       android.Paths
 }
 
+type TestHost struct {
+	Test
+
+	testHostProperties hostTestProperties
+}
+
 type TestHelperLibrary struct {
 	Library
 
@@ -2154,10 +2179,39 @@ type JavaTestImport struct {
 	testConfig android.Path
 }
 
+func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
+	if len(j.testHostProperties.Data_native_bins) > 0 {
+		for _, target := range ctx.MultiTargets() {
+			ctx.AddVariationDependencies(target.Variations(), dataNativeBinsTag, j.testHostProperties.Data_native_bins...)
+		}
+	}
+
+	j.deps(ctx)
+}
+
+func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
+	j.deps(ctx)
+}
+
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
 		j.testProperties.Test_suites, j.testProperties.Auto_gen_config)
+
 	j.data = android.PathsForModuleSrc(ctx, j.testProperties.Data)
+
+	ctx.VisitDirectDepsWithTag(dataNativeBinsTag, func(dep android.Module) {
+		// TODO(eakammer): limit to native binaries?
+		if outputFileProducer, ok := dep.(android.SingleOutputFileProducer); ok {
+			out := outputFileProducer.OutputFile()
+			if out.Valid() {
+				j.data = append(j.data, out.Path())
+			} else {
+				ctx.ModuleErrorf("Failed to get an output file from module %q", ctx.OtherModuleName(dep))
+			}
+		} else {
+			ctx.ModuleErrorf("module %q is not a SingleOutputFileProducer", ctx.OtherModuleName(dep))
+		}
+	})
 
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
@@ -2305,16 +2359,17 @@ func JavaTestImportFactory() android.Module {
 // A java_test_host has a single variant that produces a `.jar` file containing `.class` files that were
 // compiled against the host bootclasspath.
 func TestHostFactory() android.Module {
-	module := &Test{}
+	module := &TestHost{}
 
 	module.AddProperties(
 		&module.Module.properties,
 		&module.Module.protoProperties,
-		&module.testProperties)
+		&module.testProperties,
+		&module.testHostProperties)
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 
-	InitJavaModule(module, android.HostSupported)
+	InitJavaModuleMultiTargets(module, android.HostSupported)
 	return module
 }
 
