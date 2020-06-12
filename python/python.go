@@ -226,15 +226,20 @@ func versionSplitMutator() func(android.BottomUpMutatorContext) {
 	return func(mctx android.BottomUpMutatorContext) {
 		if base, ok := mctx.Module().(*Module); ok {
 			versionNames := []string{}
-			if base.properties.Version.Py2.Enabled != nil &&
-				*(base.properties.Version.Py2.Enabled) == true {
-				versionNames = append(versionNames, pyVersion2)
-			}
+			// PY3 is first so that we alias the PY3 variant rather than PY2 if both
+			// are available
 			if !(base.properties.Version.Py3.Enabled != nil &&
 				*(base.properties.Version.Py3.Enabled) == false) {
 				versionNames = append(versionNames, pyVersion3)
 			}
+			if base.properties.Version.Py2.Enabled != nil &&
+				*(base.properties.Version.Py2.Enabled) == true {
+				versionNames = append(versionNames, pyVersion2)
+			}
 			modules := mctx.CreateVariations(versionNames...)
+			if len(versionNames) > 0 {
+				mctx.AliasVariation(versionNames[0])
+			}
 			for i, v := range versionNames {
 				// set the actual version for Python module.
 				modules[i].(*Module).properties.Actual_version = v
@@ -249,6 +254,10 @@ func (p *Module) HostToolPath() android.OptionalPath {
 		return android.OptionalPath{}
 	}
 	return android.OptionalPathForPath(p.installer.(*binaryDecorator).path)
+}
+
+func (p *Module) OutputFile() android.OptionalPath {
+	return p.installSource
 }
 
 func (p *Module) isEmbeddedLauncherEnabled(actual_version string) bool {
