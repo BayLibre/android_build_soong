@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbdf9388_f0f8456e",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-12T16:04:49Z",
+      "side": 1,
+      "message": "Add an assertion above this that Module provides a HostToolProvider to make clear what this is used for and also make sure we don\u0027t miss any future changes.\n\n  var _ android.HostToolProvider \u003d (*Module)(nil)",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 4
+      },
+      "revId": "6f50df093252350e7f9a021417735380c510de81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
