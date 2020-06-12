@@ -42,6 +42,9 @@ const (
 	imageApexType     = "image"
 	zipApexType       = "zip"
 	flattenedApexType = "flattened"
+
+	ext4FsType = "ext4"
+	f2fsFsType = "f2fs"
 )
 
 type dependencyTag struct {
@@ -1024,6 +1027,10 @@ type apexBundleProperties struct {
 
 	// The minimum SDK version that this apex must be compatibile with.
 	Min_sdk_version *string
+
+	// The type of filesystem to use for an image apex. Either 'ext4' or 'f2fs'.
+	// Default 'ext4'.
+	Payload_fs_type *string
 }
 
 type apexTargetBundleProperties struct {
@@ -1287,6 +1294,8 @@ type apexBundle struct {
 
 	// Struct holding the merged notice file paths in different formats
 	mergedNotices android.NoticeOutputs
+
+	payloadFsType string
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -2191,6 +2200,20 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			return
 		}
 	}
+
+	if a.properties.Payload_fs_type == nil {
+		a.payloadFsType = ext4FsType
+	} else {
+		switch *a.properties.Payload_fs_type {
+		case ext4FsType:
+			a.payloadFsType = ext4FsType
+		case f2fsFsType:
+			a.payloadFsType = f2fsFsType
+		default:
+			ctx.PropertyErrorf("payload_fs_type", "%q is not a valid filesystem for apex [ext4, f2fs]", *a.properties.Payload_fs_type)
+		}
+	}
+
 	// Optimization. If we are building bundled APEX, for the files that are gathered due to the
 	// transitive dependencies, don't place them inside the APEX, but place a symlink pointing
 	// the same library in the system partition, thus effectively sharing the same libraries
