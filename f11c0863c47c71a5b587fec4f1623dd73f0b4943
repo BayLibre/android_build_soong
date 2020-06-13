@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "064c4539_6e000d5b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-13T09:01:17Z",
+      "side": 1,
+      "message": "nit: this condition actually isn\u0027t needed, right? the xml module exists only when sharedLibrary() \u003d\u003d true",
+      "range": {
+        "startLine": 1850,
+        "startChar": 5,
+        "endLine": 1850,
+        "endChar": 30
+      },
+      "revId": "f11c0863c47c71a5b587fec4f1623dd73f0b4943",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
