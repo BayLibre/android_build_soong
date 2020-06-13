@@ -121,6 +121,10 @@ type JavadocProperties struct {
 
 	// names of the output files used in args that will be generated
 	Out []string
+
+	// If set, metalava is sandboxed to only read files explicitly specified on the command
+	// line. Defaults to false.
+	Sandbox *bool
 }
 
 type ApiToCheck struct {
@@ -1419,12 +1423,14 @@ func (d *Droidstubs) apiToXmlFlags(ctx android.ModuleContext, cmd *android.RuleB
 }
 
 func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersion javaVersion, srcs android.Paths,
-	srcJarList android.Path, bootclasspath, classpath classpath, sourcepaths android.Paths, implicits android.Paths) *android.RuleBuilderCommand {
+	srcJarList android.Path, bootclasspath, classpath classpath, sourcepaths android.Paths, implicits android.Paths, sandbox bool) *android.RuleBuilderCommand {
 	// Metalava uses lots of memory, restrict the number of metalava jobs that can run in parallel.
 	rule.HighMem()
 	cmd := rule.Command()
-
 	var implicitsRsp android.WritablePath
+	if javaHome := ctx.Config().Getenv("ANDROID_JAVA_HOME"); javaHome != "" {
+		implicits = append(implicits, android.PathForSource(ctx, javaHome))
+	}
 	if len(implicits) > 0 {
 		implicitsRsp = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"implicits.rsp")
 		impRule := android.NewRuleBuilder()
@@ -1444,6 +1450,11 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 		if v := ctx.Config().Getenv("RBE_METALAVA_EXEC_STRATEGY"); v != "" {
 			execStrategy = v
 		}
+		labels := map[string]string{"type": "compile", "lang": "java", "compiler": "metalava"}
+		if !sandbox {
+			execStrategy = remoteexec.LocalExecStrategy
+			labels["shallow"] = "true"
+		}
 		pool := "metalava"
 		if v := ctx.Config().Getenv("RBE_METALAVA_POOL"); v != "" {
 			pool = v
@@ -1453,7 +1464,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 			inputs = append(inputs, strings.Split(v, ",")...)
 		}
 		cmd.Text((&remoteexec.REParams{
-			Labels:          map[string]string{"type": "compile", "lang": "java", "compiler": "metalava", "shallow": "true"},
+			Labels:          labels,
 			ExecStrategy:    execStrategy,
 			Inputs:          inputs,
 			RSPFile:         implicitsRsp.String(),
@@ -1467,8 +1478,13 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 		FlagWithArg("-encoding ", "UTF-8").
 		FlagWithArg("-source ", javaVersion.String()).
 		FlagWithRspFileInputList("@", srcs).
-		FlagWithInput("@", srcJarList).
-		FlagWithOutput("--strict-input-files:warn ", android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"violations.txt"))
+		FlagWithInput("@", srcJarList)
+
+	if sandbox {
+		cmd.FlagWithOutput("--strict-input-files ", android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"violations.txt"))
+	} else {
+		cmd.FlagWithOutput("--strict-input-files:warn ", android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"violations.txt"))
+	}
 
 	if implicitsRsp != nil {
 		cmd.FlagWithArg("--strict-input-files-exempt ", "@"+implicitsRsp.String())
@@ -1519,7 +1535,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	srcJarList := zipSyncCmd(ctx, rule, srcJarDir, d.Javadoc.srcJars)
 
 	cmd := metalavaCmd(ctx, rule, javaVersion, d.Javadoc.srcFiles, srcJarList,
-		deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths, d.Javadoc.implicits)
+		deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths, d.Javadoc.implicits,
+		Bool(d.Javadoc.properties.Sandbox))
 
 	d.stubsFlags(ctx, cmd, stubsDir)
 
