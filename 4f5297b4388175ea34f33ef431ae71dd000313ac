@@ -22,6 +22,30 @@
       "revId": "4f5297b4388175ea34f33ef431ae71dd000313ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae33a60b_2c19dff3",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-06-14T16:53:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to do anything to do here; AIUI, the logic in https://android-review.googlesource.com/c/platform/build/+/1325807/4/core/soong_config.mk is enough.",
+      "parentUuid": "8f29f1d1_5111ae15",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 20
+      },
+      "revId": "4f5297b4388175ea34f33ef431ae71dd000313ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
