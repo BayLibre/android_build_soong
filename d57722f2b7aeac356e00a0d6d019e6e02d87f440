@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee15187d_4e77393c",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-15T17:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ddd0a54_207d6986",
+      "range": {
+        "startLine": 1637,
+        "startChar": 27,
+        "endLine": 1637,
+        "endChar": 54
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88f15d1d_244951b4",
         "filename": "java/lint.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "06a92573_b79defbb",
+        "filename": "java/lint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-15T17:58:12Z",
+      "side": 1,
+      "message": "This is a little odd, because the RspFileInputList is for the command that generates the project.xml, but the lint command is the one that reads the files.  I originally had them as two separate rules, and in the interest of having the deps right if they are split again I left them here.",
+      "parentUuid": "88f15d1d_244951b4",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8ac7fbd_4d5054a3",
         "filename": "java/lint.go",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-11T19:16:14Z",
       "side": 1,
       "message": "zipSyncCmd already adds dependencies",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 34
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9925410_9ef2b92b",
+        "filename": "java/lint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-15T17:58:12Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "f8ac7fbd_4d5054a3",
       "range": {
         "startLine": 101,
         "startChar": 1,
