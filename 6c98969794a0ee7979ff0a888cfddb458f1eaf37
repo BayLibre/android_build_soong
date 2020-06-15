@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ba27ad7_d1d1a445",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-15T17:32:45Z",
+      "side": 1,
+      "message": "Why not just surround this with an if module.sharedLibrary() {...}?",
+      "revId": "6c98969794a0ee7979ff0a888cfddb458f1eaf37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
