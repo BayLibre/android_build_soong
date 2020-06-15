@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2771d177_0018691e",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-15T13:26:12Z",
+      "side": 1,
+      "message": "I\u0027ve made it so that the dependency onto the .impl library is not checked for visibility. Neither is the dependency on .xml module.",
+      "parentUuid": "8cb1fce7_9dd73a9c",
+      "range": {
+        "startLine": 1846,
+        "startChar": 37,
+        "endLine": 1847,
+        "endChar": 61
+      },
+      "revId": "f11c0863c47c71a5b587fec4f1623dd73f0b4943",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "064c4539_6e000d5b",
         "filename": "java/sdk_library.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "f11c0863c47c71a5b587fec4f1623dd73f0b4943",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b112a1b_c9c901ea",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-15T13:26:12Z",
+      "side": 1,
+      "message": "The problem with relying on the presence of a module with a specific name is that it does not mean that the module is actually the correct type. This check is here just to make sure that it is reasonable to assume that the source version of this module should have an xml permissions module before checking for its presence.\n\nIdeally, I\u0027d like to check - if the source version of this module exists and that it is a *SdkLibrary but I can\u0027t do that here because that information is only available after the deps phase.",
+      "parentUuid": "064c4539_6e000d5b",
+      "range": {
+        "startLine": 1850,
+        "startChar": 5,
+        "endLine": 1850,
+        "endChar": 30
+      },
+      "revId": "f11c0863c47c71a5b587fec4f1623dd73f0b4943",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
