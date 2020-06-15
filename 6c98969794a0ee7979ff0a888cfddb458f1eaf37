@@ -16,6 +16,24 @@
       "revId": "6c98969794a0ee7979ff0a888cfddb458f1eaf37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2039a3d0_b6fe6836",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-06-15T18:28:22Z",
+      "side": 1,
+      "message": "I think it\u0027s more clear to detect the dependency tag then to duplicate the same logic here.\nFrom the git log the xml generation logic changed recently, and I want to consider for the possibility that it might change again.",
+      "parentUuid": "7ba27ad7_d1d1a445",
+      "revId": "6c98969794a0ee7979ff0a888cfddb458f1eaf37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
