@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8cb1fce7_9dd73a9c",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-06-15T11:36:48Z",
+      "side": 1,
+      "message": "Can we make implLibrary automatically visibility-whitelisted for the SdkLibraryImport ?",
+      "range": {
+        "startLine": 1846,
+        "startChar": 37,
+        "endLine": 1847,
+        "endChar": 61
+      },
+      "revId": "f11c0863c47c71a5b587fec4f1623dd73f0b4943",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "064c4539_6e000d5b",
         "filename": "java/sdk_library.go",
         "patchSetId": 3
