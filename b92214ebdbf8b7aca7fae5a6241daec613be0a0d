@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f8fa23ee_1d0f2e1d",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-15T14:36:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d85651a_3b1616d5",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c53475ed_b1861a38",
         "filename": "apex/allowed_deps.txt",
         "patchSetId": 4
@@ -188,6 +212,30 @@
       "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f9d77e_813b9360",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-15T14:36:12Z",
+      "side": 1,
+      "message": "go/apex-allowed-deps-error",
+      "parentUuid": "0d1ef718_41aec208",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 64
+      },
+      "revId": "b92214ebdbf8b7aca7fae5a6241daec613be0a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

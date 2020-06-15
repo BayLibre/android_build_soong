@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ddf65397_dcb29976",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-15T14:36:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9d95ba7_29932bbb",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c33b0bb_12b96409",
         "filename": "apex/allowed_deps.txt",
         "patchSetId": 2
@@ -69,6 +87,24 @@
       "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74bd8833_0fd1bae0",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-15T14:36:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b803b6e_191756b0",
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +152,30 @@
       "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12ab7a6_fa3486fe",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-15T14:36:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e07a34f_ed30b9c6",
+      "range": {
+        "startLine": 54,
+        "startChar": 34,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "e4e1f2c64df58cd124461432a404543271b968ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
