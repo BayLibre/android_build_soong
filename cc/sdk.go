@@ -40,14 +40,8 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 			modules := ctx.CreateVariations("", "sdk")
 			modules[0].(*Module).Properties.Sdk_version = nil
 			modules[1].(*Module).Properties.IsSdkVariant = true
-
-			if ctx.Config().UnbundledBuild() {
-				modules[0].(*Module).Properties.HideFromMake = true
-				modules[0].(*Module).Properties.PreventInstall = true
-			} else {
-				modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
-				modules[1].(*Module).Properties.PreventInstall = true
-			}
+			modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
+			modules[1].(*Module).Properties.PreventInstall = true
 			ctx.AliasVariation("")
 		} else {
 			ctx.CreateVariations("")
