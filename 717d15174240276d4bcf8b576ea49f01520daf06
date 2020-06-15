@@ -22,6 +22,30 @@
       "revId": "717d15174240276d4bcf8b576ea49f01520daf06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46114924_75c14e71",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-15T14:04:46Z",
+      "side": 1,
+      "message": "No. It extends apiScopePublic to work around an issue with metalava but fundamentally it is a completely separate API scope from the others.",
+      "parentUuid": "88feef9a_91d8c2d7",
+      "range": {
+        "startLine": 285,
+        "startChar": 11,
+        "endLine": 285,
+        "endChar": 25
+      },
+      "revId": "717d15174240276d4bcf8b576ea49f01520daf06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
