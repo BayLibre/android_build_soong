@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b4a94c1_3c01d064",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-16T02:13:58Z",
+      "side": 1,
+      "message": "assuming $generator is bindgen, this may yield unexpected results because bindgen prints some errors and warnings to stdout. Better use \"-o $out\" before \"--\".",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "75958bcdb9b570bf7cd8a88ac61991b53c723667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
