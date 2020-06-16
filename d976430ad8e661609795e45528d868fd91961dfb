@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27c6ef06_ec599b27",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-06-16T19:06:08Z",
+      "side": 1,
+      "message": "Good to know - thanks. Done.",
+      "parentUuid": "6367c76f_c53273fa",
+      "range": {
+        "startLine": 835,
+        "startChar": 9,
+        "endLine": 835,
+        "endChar": 41
+      },
+      "revId": "d976430ad8e661609795e45528d868fd91961dfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4989e09e_e16a25b8",
         "filename": "android/paths.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "d976430ad8e661609795e45528d868fd91961dfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f18358c3_15a9d1fb",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-06-16T19:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4989e09e_e16a25b8",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 17
+      },
+      "revId": "d976430ad8e661609795e45528d868fd91961dfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
