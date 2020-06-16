@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003463113",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324098?revision\u003d9",
+      "fixSuggestions": [
+        {
+          "fixId": "ae7b2c23_894ae205",
+          "description": "Change to \"java/lint_defaults.txt\"",
+          "replacements": [
+            {
+              "path": "java/lint_defaults.txt",
+              "range": {
+                "startLine": 26,
+                "startChar": 16,
+                "endLine": 26,
+                "endChar": 26
+              },
+              "replacement": "JavaScript"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "39b68a07_460118a3",
+        "filename": "java/lint_defaults.txt",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-16T22:45:31Z",
+      "side": 1,
+      "message": "Common typo found: \"Javascript\" -- should it be \"JavaScript\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "014489c1e6cbd2801970b88d5b608dc5c45b403c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
