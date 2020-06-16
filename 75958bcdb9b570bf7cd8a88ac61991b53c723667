@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74504256_6bb0f89e",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-06-16T03:22:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9adef20e_e2464083",
+      "range": {
+        "startLine": 35,
+        "startChar": 52,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "75958bcdb9b570bf7cd8a88ac61991b53c723667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8a68455_f81528cf",
         "filename": "rust/bindgen.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-16T02:49:45Z",
       "side": 1,
       "message": "Can we get a bit more documentation? E.g., an example config, an explanation of the relevant attributes, which artifacts get generated and where to find them, how this interacts with other modules, how it observes build variants for different architectures, which build targets this module generates (if not equal to the \"name:\" attribute). A synopsis of the primitive build command(s) this actually generates to get a better understanding of what is actually happening.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "75958bcdb9b570bf7cd8a88ac61991b53c723667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a393ba3_46af3edb",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-06-16T03:22:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d8a68455_f81528cf",
       "range": {
         "startLine": 46,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c7612313_6b89890c",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-06-16T03:22:26Z",
+      "side": 1,
+      "message": "Yes, this is just for dependencies, currently. The user is writing the tool to generate bindings in this incarnation, so they can put extra flags in the sources, but they have access to the dependency paths to add include directory flags.",
+      "parentUuid": "b71f22b3_bcbdf423",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "75958bcdb9b570bf7cd8a88ac61991b53c723667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b4a94c1_3c01d064",
         "filename": "rust/builder.go",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-16T02:13:58Z",
       "side": 1,
       "message": "assuming $generator is bindgen, this may yield unexpected results because bindgen prints some errors and warnings to stdout. Better use \"-o $out\" before \"--\".",
+      "range": {
+        "startLine": 56,
+        "startChar": 23,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "75958bcdb9b570bf7cd8a88ac61991b53c723667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b599ee13_c02a3af1",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-06-16T03:22:26Z",
+      "side": 1,
+      "message": "$generator isn\u0027t bindgen for this module, instead it\u0027s a small tool specific to each crate which needs to generate bindings. Printing the bindings to standard out is much simpler than doing extra argument parsing in each of these small scripts.",
+      "parentUuid": "4b4a94c1_3c01d064",
       "range": {
         "startLine": 56,
         "startChar": 23,
