@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "9adef20e_e2464083",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-16T02:49:45Z",
+      "side": 1,
+      "message": "ends mid sentence.",
+      "range": {
+        "startLine": 35,
+        "startChar": 52,
+        "endLine": 35,
+        "endChar": 56
+      },
+      "revId": "75958bcdb9b570bf7cd8a88ac61991b53c723667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a68455_f81528cf",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-16T02:49:45Z",
+      "side": 1,
+      "message": "Can we get a bit more documentation? E.g., an example config, an explanation of the relevant attributes, which artifacts get generated and where to find them, how this interacts with other modules, how it observes build variants for different architectures, which build targets this module generates (if not equal to the \"name:\" attribute). A synopsis of the primitive build command(s) this actually generates to get a better understanding of what is actually happening.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "75958bcdb9b570bf7cd8a88ac61991b53c723667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b71f22b3_bcbdf423",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-06-16T02:49:45Z",
+      "side": 1,
+      "message": "Does this initialize extraFlags with the includes gathered from library dependencies? Can users still add more free form flags?",
+      "range": {
+        "startLine": 109,
+        "startChar": 17,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "75958bcdb9b570bf7cd8a88ac61991b53c723667",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b4a94c1_3c01d064",
         "filename": "rust/builder.go",
         "patchSetId": 6
