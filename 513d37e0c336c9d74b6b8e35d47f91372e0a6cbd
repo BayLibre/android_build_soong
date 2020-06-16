@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "230c6432_a2519cae",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-06-16T03:57:24Z",
+      "side": 1,
+      "message": "You can just call ctx.BaseModuleName() to achieve the same goal.",
+      "revId": "513d37e0c336c9d74b6b8e35d47f91372e0a6cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
