@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a04e2e42_e281b347",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-16T10:51:07Z",
+      "side": 1,
+      "message": "it would be nice if this is typed. for example, \n\npayloadFsType fsType\n\n\ntype fsType int\nconst (\n   ext4 fsType \u003d iota\n   f2fs\n   ...\n)",
+      "range": {
+        "startLine": 1298,
+        "startChar": 15,
+        "endLine": 1298,
+        "endChar": 21
+      },
+      "revId": "7340b208e8a6ac83947264538fd2fee0ecaa1192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fcef968_c79d9b9f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2215,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-16T10:51:07Z",
+      "side": 1,
+      "message": "switch(proptools.BoolDefault(a.properties.Payload_fs_type, ext4FsType)) {\ncase ext4FsType:\n   ...\ncase f2fsFsType:\n   ...\ndefault:\n   ...\n}\n\nwould be simpler",
+      "range": {
+        "startLine": 2204,
+        "startChar": 1,
+        "endLine": 2215,
+        "endChar": 2
+      },
+      "revId": "7340b208e8a6ac83947264538fd2fee0ecaa1192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0400f9cb_c0ebb945",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-16T10:51:07Z",
+      "side": 1,
+      "message": "you are using internal data type as an argument for an external program. i wish that relationship is more explicitly shown.\n\nalso, why don\u0027t you put this to optFlags?",
+      "range": {
+        "startLine": 564,
+        "startChar": 24,
+        "endLine": 564,
+        "endChar": 39
+      },
+      "revId": "7340b208e8a6ac83947264538fd2fee0ecaa1192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
