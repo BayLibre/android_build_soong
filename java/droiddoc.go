@@ -1344,7 +1344,8 @@ func (d *Droidstubs) annotationsFlags(ctx android.ModuleContext, cmd *android.Ru
 		// TODO(tnorbye): find owners to fix these warnings when annotation was enabled.
 		cmd.FlagWithArg("--hide ", "HiddenTypedefConstant").
 			FlagWithArg("--hide ", "SuperfluousPrefix").
-			FlagWithArg("--hide ", "AnnotationExtraction")
+			FlagWithArg("--hide ", "AnnotationExtraction").
+			FlagWithArg("--hide ", "ShowingMemberInHiddenClass") // b/159121253 -- remove it once all the violations are fixed.
 	}
 }
 
