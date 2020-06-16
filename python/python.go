@@ -251,6 +251,10 @@ func (p *Module) HostToolPath() android.OptionalPath {
 	return android.OptionalPathForPath(p.installer.(*binaryDecorator).path)
 }
 
+func (p *Module) OutputFile() android.OptionalPath {
+	return p.installSource
+}
+
 func (p *Module) isEmbeddedLauncherEnabled(actual_version string) bool {
 	switch actual_version {
 	case pyVersion2:

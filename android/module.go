@@ -2173,6 +2173,13 @@ func outputFilesForModule(ctx PathContext, module blueprint.Module, tag string) 
 	}
 }
 
+// A module that implements SingleOutputFileProducer can be referenced from any
+// property using the "module" syntax and provides an output file to be used as
+// if it were listed in the property.
+type SingleOutputFileProducer interface {
+	OutputFile() OptionalPath
+}
+
 type HostToolProvider interface {
 	HostToolPath() OptionalPath
 }
