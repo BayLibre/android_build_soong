@@ -879,6 +879,7 @@ func (d *Droiddoc) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuilde
 	if Bool(d.properties.Write_sdk_values) {
 		cmd.FlagWithArg("-sdkvalues ", android.PathForModuleOut(ctx, "out").String())
 	}
+	cmd.FlagWithArg("--hide ", "ShowingMemberInHiddenClass") // b/159121253 -- remove it once all the violations are fixed.
 }
 
 func (d *Droiddoc) postDoclavaCmds(ctx android.ModuleContext, rule *android.RuleBuilder) {
