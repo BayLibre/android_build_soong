@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1de21c9a_63903da7",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-16T23:26:09Z",
+      "side": 1,
+      "message": "Seems like this probably doesn\u0027t belong in annotationsFlags() if it\u0027s enabled even when annotations aren\u0027t.",
+      "revId": "1db280416538003b0fc3f844abdd7f49ba1936ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
