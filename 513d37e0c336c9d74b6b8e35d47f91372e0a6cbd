@@ -16,6 +16,24 @@
       "revId": "513d37e0c336c9d74b6b8e35d47f91372e0a6cbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70dcd185_ebc56f6a",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-06-16T16:45:04Z",
+      "side": 1,
+      "message": "Thanks. I think it\u0027s as.BaseModuleName",
+      "parentUuid": "230c6432_a2519cae",
+      "revId": "513d37e0c336c9d74b6b8e35d47f91372e0a6cbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
