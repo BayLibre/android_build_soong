@@ -1346,6 +1346,7 @@ func (d *Droidstubs) annotationsFlags(ctx android.ModuleContext, cmd *android.Ru
 			FlagWithArg("--hide ", "SuperfluousPrefix").
 			FlagWithArg("--hide ", "AnnotationExtraction")
 	}
+	cmd.FlagWithArg("--hide ", "ShowingMemberInHiddenClass") // b/159121253 -- remove it once all the violations are fixed.
 }
 
 func (d *Droidstubs) mergeAnnoDirFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand) {
