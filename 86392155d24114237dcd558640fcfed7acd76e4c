@@ -52,6 +52,24 @@
       "revId": "86392155d24114237dcd558640fcfed7acd76e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b723e4_74a526b8",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-06-17T03:52:36Z",
+      "side": 1,
+      "message": "Hmm, yes it could be a lost cause to aim for function rather than intent in the name here.\n\nChanged to UnbundledBuildApps and added some comments to clarify the difference between the two. Several other UnbundledBuild() calls ought to change to UnbundledBuildApps() too, e.g. those that disable uncompressed dex files, but I prefer to address that separately after http://r.android.com/q/topic:bionic-prebuilt-2 (WIP CL https://r.android.com/1336941).",
+      "parentUuid": "59128a0e_f609e6cc",
+      "revId": "86392155d24114237dcd558640fcfed7acd76e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
