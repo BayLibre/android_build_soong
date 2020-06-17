@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b03f15be_29e9fdea",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-06-17T14:16:00Z",
+      "side": 1,
+      "message": "Out of curiosity, is this style preferred to this style:\n\n\tif Bool(config.productVariables.GcovCoverage) \u0026\u0026\n \t\tBool(config.productVariables.ClangCoverage) {\n\t\treturn Config{}, fmt.Errorf(\"GcovCoverage and ClangCoverage cannot both be set\")\n\t}\n\n?",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 0
+      },
+      "revId": "79ab0e1307657d804669680d58b284af7b5a43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
