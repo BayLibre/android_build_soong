@@ -482,7 +482,7 @@ func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
 		return true
 	}
 
-	if ctx.Config().UnbundledBuild() {
+	if ctx.Config().UnbundledBuildApps() {
 		return false
 	}
 
@@ -490,7 +490,7 @@ func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
 }
 
 func (a *AndroidApp) shouldEmbedJnis(ctx android.BaseModuleContext) bool {
-	return ctx.Config().UnbundledBuild() || Bool(a.appProperties.Use_embedded_native_libs) ||
+	return ctx.Config().UnbundledBuildApps() || Bool(a.appProperties.Use_embedded_native_libs) ||
 		!a.IsForPlatform() || a.appProperties.AlwaysPackageNativeLibs
 }
 
@@ -1376,7 +1376,7 @@ func (a *AndroidAppImport) uncompressEmbeddedJniLibs(
 
 // Returns whether this module should have the dex file stored uncompressed in the APK.
 func (a *AndroidAppImport) shouldUncompressDex(ctx android.ModuleContext) bool {
-	if ctx.Config().UnbundledBuild() || a.preprocessed {
+	if ctx.Config().UnbundledBuildApps() || a.preprocessed {
 		return false
 	}
 
