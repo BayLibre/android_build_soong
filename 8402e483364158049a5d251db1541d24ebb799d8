@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4261f1f_74cff29e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-06-17T22:14:02Z",
+      "side": 1,
+      "message": "I haven\u0027t spent time on setting up a test case to check that the generated prebuilt fully works as a replacement. Nicolas, if it doesn\u0027t work then just point me to yours.",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "8402e483364158049a5d251db1541d24ebb799d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
