@@ -34,6 +34,7 @@ type bpFile struct {
 	defs              []bpparser.Definition
 	localAssignments  map[string]*bpparser.Property
 	globalAssignments map[string]*bpparser.Expression
+	variableRenames   map[string]string
 	scope             mkparser.Scope
 	module            *bpparser.Module
 
@@ -120,6 +121,7 @@ func ConvertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 		scope:             androidScope(),
 		localAssignments:  make(map[string]*bpparser.Property),
 		globalAssignments: make(map[string]*bpparser.Expression),
+		variableRenames:   make(map[string]string),
 	}
 
 	var conds []*conditional
@@ -224,6 +226,21 @@ func ConvertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 	return string(out), errs
 }
 
+func renameVariableWithInvalidCharacters(name string) string {
+	invalidStrings := map[string]string{
+		"-": "_dash_",
+	}
+
+	renamed := ""
+	for invalid, replacement := range invalidStrings {
+		if strings.Contains(name, invalid) {
+			renamed = strings.ReplaceAll(name, invalid, replacement)
+		}
+	}
+
+	return renamed
+}
+
 func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditional) {
 	if !assignment.Name.Const() {
 		file.errorf(assignment, "unsupported non-const variable name")
@@ -237,6 +254,11 @@ func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditio
 
 	name := assignment.Name.Value(nil)
 	prefix := ""
+
+	if newName := renameVariableWithInvalidCharacters(name); newName != "" {
+		file.variableRenames[name] = newName
+		name = newName
+	}
 
 	if strings.HasPrefix(name, "LOCAL_") {
 		for _, x := range propertyPrefixes {
@@ -341,11 +363,11 @@ func makeVariableToBlueprint(file *bpFile, val *mkparser.MakeString,
 	var err error
 	switch typ {
 	case bpparser.ListType:
-		exp, err = makeToListExpression(val, file.scope)
+		exp, err = makeToListExpression(val, file)
 	case bpparser.StringType:
-		exp, err = makeToStringExpression(val, file.scope)
+		exp, err = makeToStringExpression(val, file)
 	case bpparser.BoolType:
-		exp, err = makeToBoolExpression(val)
+		exp, err = makeToBoolExpression(val, file)
 	default:
 		panic("unknown type")
 	}
@@ -358,7 +380,6 @@ func makeVariableToBlueprint(file *bpFile, val *mkparser.MakeString,
 }
 
 func setVariable(file *bpFile, plusequals bool, prefix, name string, value bpparser.Expression, local bool) error {
-
 	if prefix != "" {
 		name = prefix + "." + name
 	}
