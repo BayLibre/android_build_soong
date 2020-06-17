@@ -16,6 +16,24 @@
       "revId": "86392155d24114237dcd558640fcfed7acd76e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb27616_94680e1f",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-06-17T01:18:53Z",
+      "side": 1,
+      "message": "Yeah, s/Sdk/Ndk/ would be more accurate, but since it\u0027s sdkMutator, sdk_version etc elsewhere I figured it\u0027d be confusing in that respect. But I\u0027m open for suggestions.",
+      "parentUuid": "9bafb3c7_67d04d3e",
+      "revId": "86392155d24114237dcd558640fcfed7acd76e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
