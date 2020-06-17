@@ -720,6 +720,10 @@ func (c *config) UnbundledBuildUsePrebuiltSdks() bool {
 	return Bool(c.productVariables.Unbundled_build) && !Bool(c.productVariables.Unbundled_build_sdks_from_source)
 }
 
+func (c *config) BuildAgainstSdk() bool {
+	return Bool(c.productVariables.Build_against_sdk)
+}
+
 func (c *config) Fuchsia() bool {
 	return Bool(c.productVariables.Fuchsia)
 }
