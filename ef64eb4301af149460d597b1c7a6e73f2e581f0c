@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa77f3c_0e20d7a5",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-17T01:38:31Z",
+      "side": 1,
+      "message": "This won\u0027t copy anything, copy copies min(len(src), len(dst)) elements\n\nThe idiomatic way to make copies in Go is to use append:\n\n distCopy :\u003d append([]Dist(nil), m.commonProperties.Dists...)",
+      "revId": "ef64eb4301af149460d597b1c7a6e73f2e581f0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
