@@ -118,7 +118,8 @@ func TestVndkApexUsesVendorVariant(t *testing.T) {
 
 	t.Run("VNDK APEX supports coverage variants", func(t *testing.T) {
 		ctx, _ := testApex(t, bp, func(fs map[string][]byte, config android.Config) {
-			config.TestProductVariables.Native_coverage = proptools.BoolPtr(true)
+			config.TestProductVariables.GcovCoverage = proptools.BoolPtr(true)
+			config.TestProductVariables.Native_coverage = true
 		})
 
 		files := getFiles(t, ctx, "myapex", "android_common_image")
