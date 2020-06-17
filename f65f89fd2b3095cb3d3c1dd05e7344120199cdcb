@@ -16,6 +16,24 @@
       "revId": "f65f89fd2b3095cb3d3c1dd05e7344120199cdcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429f08c6_2cd6cba8",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2179,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-06-17T17:33:22Z",
+      "side": 1,
+      "message": "I don\u0027t think so. At least in some cases, there is only one variant of a python_host_binary, and implementing the OutputFileProducer interface would allow those to be referenced in a `data` property as \":module\", which I think we\u0027d prefer to avoid (though if I\u0027m wrong on that assumption, there\u0027s a quite simple solution to this bug).\n\nI chose the method OutputFile() as it is already implemented in LinkableInterface (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/linkable.go;l\u003d14;drc\u003d2286afd0efed2e8417113152bae31bc0529b28b7) and seems to have similar uses currently.\n\nI was struggling with an interface name/description to help clarify this distinction if anyone has suggestions.",
+      "parentUuid": "85b7062f_50cf1883",
+      "revId": "f65f89fd2b3095cb3d3c1dd05e7344120199cdcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
