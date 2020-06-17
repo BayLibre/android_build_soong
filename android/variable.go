@@ -266,11 +266,13 @@ type productVariables struct {
 
 	SamplingPGO *bool `json:",omitempty"`
 
-	NativeLineCoverage         *bool    `json:",omitempty"`
-	Native_coverage            *bool    `json:",omitempty"`
+	GcovCoverage               *bool    `json:",omitempty"`
 	ClangCoverage              *bool    `json:",omitempty"`
 	NativeCoveragePaths        []string `json:",omitempty"`
 	NativeCoverageExcludePaths []string `json:",omitempty"`
+
+	// Set by NewConfig
+	Native_coverage bool
 
 	SanitizeHost       []string `json:",omitempty"`
 	SanitizeDevice     []string `json:",omitempty"`
