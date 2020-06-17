@@ -34,6 +34,24 @@
       "revId": "86392155d24114237dcd558640fcfed7acd76e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59128a0e_f609e6cc",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-17T01:35:28Z",
+      "side": 1,
+      "message": "This doesn\u0027t actually make anything build against the Sdk in Soong, it exports the sdk variant to Make so that everything in Make builds against the Sdk.  It also only affects native modules, but it sounds like it would make Java modules build against the SDK.  You\u0027ll never get a name that covers all the nuances, so a big comment is probably your best bet.\n\nI wonder if we should just call this UnbundledBuildApps, since it\u0027s a behavior that is specifically desired for building unbundled apps.",
+      "parentUuid": "cbb27616_94680e1f",
+      "revId": "86392155d24114237dcd558640fcfed7acd76e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
