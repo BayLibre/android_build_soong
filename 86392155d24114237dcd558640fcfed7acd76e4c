@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bafb3c7_67d04d3e",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-17T01:10:30Z",
+      "side": 1,
+      "message": "This is vague, it needs to be very specific about what it does.",
+      "revId": "86392155d24114237dcd558640fcfed7acd76e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
