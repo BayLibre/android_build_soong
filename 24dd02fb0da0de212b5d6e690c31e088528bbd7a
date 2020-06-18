@@ -22,6 +22,30 @@
       "revId": "24dd02fb0da0de212b5d6e690c31e088528bbd7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd97fe98_a3022307",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-06-18T16:24:46Z",
+      "side": 1,
+      "message": "Ah this was something I wasn\u0027t sure about 😊 if clang-tidy actually changes the input file, then isn\u0027t input the output as well?",
+      "parentUuid": "0e9e8ea3_2eecaf70",
+      "range": {
+        "startLine": 186,
+        "startChar": 27,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "24dd02fb0da0de212b5d6e690c31e088528bbd7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
