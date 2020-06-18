@@ -70,6 +70,30 @@
       "revId": "24dd02fb0da0de212b5d6e690c31e088528bbd7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f581470_2452fc1b",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-06-18T16:35:06Z",
+      "side": 1,
+      "message": "$out here is actually a file generated to indicate to ninja that the clang-tidy action has been run. So for example, the command is something like:\n\n```\nrm -f out/soong/.intermediates/packages/providers/MediaProvider/jni/libfuse_jni/android_arm64_armv8-a_sdk_shared_com.android.mediaprovider/obj/packages/providers/MediaProvider/jni/node.tidy \\\n\u0026\u0026 \u003c..... clang tidy action .....\u003e \u0026\u0026 \\\ntouch out/soong/.intermediates/packages/providers/MediaProvider/jni/libfuse_jni/android_arm64_armv8-a_sdk_shared_com.android.mediaprovider/obj/packages/providers/MediaProvider/jni/node.tidy\n```\n\nAdded a comment",
+      "parentUuid": "a4b3250e_2262af2d",
+      "range": {
+        "startLine": 186,
+        "startChar": 27,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "24dd02fb0da0de212b5d6e690c31e088528bbd7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
