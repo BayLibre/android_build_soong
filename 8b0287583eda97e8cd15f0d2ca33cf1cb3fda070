@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63fd95f9_1c3eeb61",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-06-18T18:21:34Z",
+      "side": 1,
+      "message": "list of free-formed strings",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "8b0287583eda97e8cd15f0d2ca33cf1cb3fda070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
