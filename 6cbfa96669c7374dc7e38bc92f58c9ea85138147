@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52ca90e3_3703bdcd",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-06-18T18:06:16Z",
+      "side": 1,
+      "message": "how about make this a string array? A test can have multiple test suite tag.",
+      "revId": "6cbfa96669c7374dc7e38bc92f58c9ea85138147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
