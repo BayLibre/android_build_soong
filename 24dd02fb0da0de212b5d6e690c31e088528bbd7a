@@ -46,6 +46,30 @@
       "revId": "24dd02fb0da0de212b5d6e690c31e088528bbd7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b3250e_2262af2d",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-06-18T16:27:28Z",
+      "side": 1,
+      "message": "Oh interesting. Then what is $out in the original template? Just a dummy file? If that\u0027s a case then you\u0027re right, $in in both Inputs and OutputFiles. Worth a comment.",
+      "parentUuid": "cd97fe98_a3022307",
+      "range": {
+        "startLine": 186,
+        "startChar": 27,
+        "endLine": 186,
+        "endChar": 30
+      },
+      "revId": "24dd02fb0da0de212b5d6e690c31e088528bbd7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
