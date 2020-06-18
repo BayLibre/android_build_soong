@@ -16,6 +16,24 @@
       "revId": "1db280416538003b0fc3f844abdd7f49ba1936ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ecdb297_12a965a5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-06-18T19:05:13Z",
+      "side": 1,
+      "message": "Hm I think `Annotations_enabled` is a misnomer -- it should have been named \"include annotations enabled\". ShowingMemberInHiddenClass *is* related to annotations, it\u0027s just not related to include-annotations. But yeah this can be confusing; I\u0027ll move it to somewhere else.",
+      "parentUuid": "1de21c9a_63903da7",
+      "revId": "1db280416538003b0fc3f844abdd7f49ba1936ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
