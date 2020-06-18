@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "416b195c_dace3e9b",
+        "filename": "java/lint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-18T01:16:32Z",
+      "side": 1,
+      "message": "Leaving like this.",
+      "parentUuid": "06a92573_b79defbb",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8ac7fbd_4d5054a3",
         "filename": "java/lint.go",
         "patchSetId": 5
@@ -140,6 +164,30 @@
       "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e664024d_d951174c",
+        "filename": "java/lint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-18T01:16:32Z",
+      "side": 1,
+      "message": "Leaving like this.",
+      "parentUuid": "a9925410_9ef2b92b",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 34
+      },
+      "revId": "d57722f2b7aeac356e00a0d6d019e6e02d87f440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
