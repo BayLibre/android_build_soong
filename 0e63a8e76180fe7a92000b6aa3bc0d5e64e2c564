@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bab9355_58df5eea",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-06-18T18:55:19Z",
+      "side": 0,
+      "message": "this appears to be the only entry changing -- any reason to not maintain the function for the remaining entries?",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 88
+      },
+      "revId": "0e63a8e76180fe7a92000b6aa3bc0d5e64e2c564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
