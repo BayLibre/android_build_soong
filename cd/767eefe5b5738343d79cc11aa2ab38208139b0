@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Build-Cop-Override+1: Chih-hung Hsieh <chh@google.com>
+Presubmit-Ready+1: Christopher Parsons <cparsons@google.com>
+Bypass-Presubmit+1: Chih-hung Hsieh <chh@google.com>
+Submitted-by: Chih-hung Hsieh <chh@google.com>
+Submitted-at: Thu, 18 Jun 2020 21:53:42 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1344316
+Project: platform/build/soong
+Branch: refs/heads/master
