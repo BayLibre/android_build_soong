@@ -234,7 +234,7 @@ func init() {
 		}
 		return ClangDefaultShortVersion
 	})
-	pctx.StaticVariable("ClangAsanLibDir", "${ClangBase}/linux-x86/${ClangVersion}/lib64/clang/${ClangShortVersion}/lib/linux")
+	pctx.StaticVariable("ClangAsanLibDir", "${ClangBase}/${HostPrebuiltTag}/${ClangVersion}/lib64/clang/${ClangShortVersion}/lib/linux")
 
 	// These are tied to the version of LLVM directly in external/llvm, so they might trail the host prebuilts
 	// being used for the rest of the build process.

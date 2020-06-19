@@ -20,6 +20,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"sort"
 	"strings"
 
@@ -1268,14 +1269,15 @@ func pathForInstall(ctx PathContext, os OsType, partition string, debug bool,
 	if os.Class == Device {
 		outPaths = []string{"target", "product", ctx.Config().DeviceName(), partition}
 	} else {
+		var arch = func() string { if runtime.GOARCH == "amd64" { return "x86" } else if runtime.GOARCH == "arm64" { return "arm" } else { return "" } }()
 		switch os {
 		case Linux:
-			outPaths = []string{"host", "linux-x86", partition}
+			outPaths = []string{"host", "linux-" + arch, partition}
 		case LinuxBionic:
-			// TODO: should this be a separate top level, or shared with linux-x86?
-			outPaths = []string{"host", "linux_bionic-x86", partition}
+			// TODO: should this be a separate top level, or shared with linux-(arch)?
+			outPaths = []string{"host", "linux_bionic-" + arch, partition}
 		default:
-			outPaths = []string{"host", os.String() + "-x86", partition}
+			outPaths = []string{"host", os.String() + "-" + arch, partition}
 		}
 	}
 	if debug {

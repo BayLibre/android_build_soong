@@ -8,6 +8,7 @@ bootstrap_go_package {
     srcs: [
         "arm_device.go",
         "arm64_device.go",
+        "arm64_linux_host.go",
         "global.go",
         "toolchain.go",
         "allowed_list.go",

@@ -902,11 +902,19 @@ func (c *configImpl) hostCrossOut() string {
 }
 
 func (c *configImpl) HostPrebuiltTag() string {
-	if runtime.GOOS == "linux" {
-		return "linux-x86"
-	} else if runtime.GOOS == "darwin" {
+	switch runtime.GOOS {
+	case "linux":
+		switch runtime.GOARCH {
+		case "amd64":
+			return "linux-x86"
+		case "arm64":
+			return "linux-arm"
+		default:
+			panic("Unsupported ARCH")
+		}
+	case "darwin":
 		return "darwin-x86"
-	} else {
+	default:
 		panic("Unsupported OS")
 	}
 }

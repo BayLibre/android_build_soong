@@ -568,8 +568,8 @@ var (
 	CommonOS = NewOsType("common_os", Generic, false)
 
 	osArchTypeMap = map[OsType][]ArchType{
-		Linux:       []ArchType{X86, X86_64},
-		LinuxBionic: []ArchType{X86_64},
+		Linux:       []ArchType{Arm64, X86, X86_64},
+		LinuxBionic: []ArchType{Arm64, X86_64},
 		Darwin:      []ArchType{X86_64},
 		Windows:     []ArchType{X86, X86_64},
 		Android:     []ArchType{Arm, Arm64, X86, X86_64},
@@ -1487,7 +1487,7 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 	}
 
 	if Bool(config.Host_bionic) {
-		addTarget(LinuxBionic, "x86_64", nil, nil, nil, NativeBridgeDisabled, nil, nil)
+		addTarget(LinuxBionic, runtime.GOARCH, nil, nil, nil, NativeBridgeDisabled, nil, nil)
 	}
 
 	if String(variables.CrossHost) != "" {

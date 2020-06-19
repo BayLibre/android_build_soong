@@ -18,6 +18,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"runtime"
 	"strconv"
 	"strings"
 	"testing"
@@ -272,7 +273,7 @@ func TestPathForModuleInstall(t *testing.T) {
 				},
 			},
 			in:  []string{"bin", "my_test"},
-			out: "host/linux-x86/bin/my_test",
+			out: "host/linux-"+ func() string { if runtime.GOARCH == "amd64" { return "x86" } else if runtime.GOARCH == "arm64" { return "arm" } else { return "" } }() +"/bin/my_test",
 		},
 
 		{
@@ -625,7 +626,7 @@ func TestPathForModuleInstall(t *testing.T) {
 				inTestcases: true,
 			},
 			in:  []string{"my_test", "my_test_bin"},
-			out: "host/linux-x86/testcases/my_test/my_test_bin",
+			out: "host/linux-"+ func() string { if runtime.GOARCH == "amd64" { return "x86" } else if runtime.GOARCH == "arm64" { return "arm" } else { return "" } }() +"/testcases/my_test/my_test_bin",
 		}, {
 			name: "forced host testcases",
 			ctx: &moduleInstallPathContextImpl{
@@ -637,7 +638,7 @@ func TestPathForModuleInstall(t *testing.T) {
 				forceOS:     &Linux,
 			},
 			in:  []string{"my_test", "my_test_bin"},
-			out: "host/linux-x86/testcases/my_test/my_test_bin",
+			out: "host/linux-"+ func() string { if runtime.GOARCH == "amd64" { return "x86" } else if runtime.GOARCH == "arm64" { return "arm" } else { return "" } }() +"/testcases/my_test/my_test_bin",
 		},
 	}
 
