@@ -20,7 +20,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"runtime"
 	"strings"
 
 	"github.com/google/blueprint/microfactory"
@@ -106,7 +105,7 @@ func SetupLitePath(ctx Context, config Config, tmpDir string) {
 	myPath, _ = filepath.Abs(myPath)
 
 	// Set up the checked-in prebuilts path directory for the current host OS.
-	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + runtime.GOOS + "-x86")
+	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + config.HostPrebuiltTag())
 	myPath = prebuiltsPath + string(os.PathListSeparator) + myPath
 
 	// Set $PATH to be the directories containing the host tool symlinks, and
@@ -241,7 +240,9 @@ func SetupPath(ctx Context, config Config) {
 
 	// We put some prebuilts in $PATH, since it's infeasible to add dependencies
 	// for all of them.
-	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + runtime.GOOS + "-x86")
+	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + config.HostPrebuiltTag())
+	// We put some prebuilts in $PATH, since it's infeasible to add dependencies for all of
+	// them.
 	myPath = prebuiltsPath + string(os.PathListSeparator) + myPath
 
 	// Replace the $PATH variable with the path_interposer symlinks, and

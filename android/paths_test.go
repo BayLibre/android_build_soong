@@ -245,8 +245,8 @@ func TestPathForModuleInstall(t *testing.T) {
 				},
 			},
 			in:           []string{"bin", "my_test"},
-			out:          "host/linux-x86/bin/my_test",
-			partitionDir: "host/linux-x86",
+			out:          "host/"+ testConfig.PrebuiltOS() +"/bin/my_test",
+			partitionDir: "host/"+ testConfig.PrebuiltOS(),
 		},
 
 		{
@@ -690,8 +690,8 @@ func TestPathForModuleInstall(t *testing.T) {
 				inTestcases: true,
 			},
 			in:           []string{"my_test", "my_test_bin"},
-			out:          "host/linux-x86/testcases/my_test/my_test_bin",
-			partitionDir: "host/linux-x86/testcases",
+			out:          "host/l"+ testConfig.PrebuiltOS() +"/testcases/my_test/my_test_bin",
+			partitionDir: "host/"+ testConfig.PrebuiltOS() +"/testcases",t
 		}, {
 			name: "forced host testcases",
 			ctx: &testModuleInstallPathContext{
@@ -701,11 +701,10 @@ func TestPathForModuleInstall(t *testing.T) {
 				},
 				inTestcases: true,
 				forceOS:     &Linux,
-				forceArch:   &X86,
 			},
 			in:           []string{"my_test", "my_test_bin"},
-			out:          "host/linux-x86/testcases/my_test/my_test_bin",
-			partitionDir: "host/linux-x86/testcases",
+			out:          "host/"+ testConfig.PrebuiltOS() +"/testcases/my_test/my_test_bin",
+			partitionDir: "host/"+ testConfig.PrebuiltOS() +"/testcases",
 		},
 	}
 

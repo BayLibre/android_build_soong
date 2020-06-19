@@ -307,6 +307,8 @@ var BuildArch = func() ArchType {
 	switch runtime.GOARCH {
 	case "amd64":
 		return X86_64
+	case "arm64":
+		return Arm64
 	default:
 		panic(fmt.Sprintf("unsupported Arch: %s", runtime.GOARCH))
 	}
@@ -325,7 +327,7 @@ var (
 	// NoOsType is a placeholder for when no OS is needed.
 	NoOsType OsType
 	// Linux is the OS for the Linux kernel plus the glibc runtime.
-	Linux = newOsType("linux_glibc", Host, false, X86, X86_64)
+	Linux = newOsType("linux_glibc", Host, false, Arm64, X86, X86_64)
 	// Darwin is the OS for MacOS/Darwin host machines.
 	Darwin = newOsType("darwin", Host, false, X86_64)
 	// LinuxBionic is the OS for the Linux kernel plus the Bionic libc runtime, but without the
