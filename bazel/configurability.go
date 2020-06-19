@@ -44,6 +44,7 @@ const (
 	osArchFuchsiaX86_64     = "fuchsia_x86_64"
 	osArchLinuxX86          = "linux_glibc_x86"
 	osArchLinuxX86_64       = "linux_glibc_x86_64"
+	osArchLinuxArm64       = "linux_glibc_arm64"
 	osArchLinuxBionicArm64  = "linux_bionic_arm64"
 	osArchLinuxBionicX86_64 = "linux_bionic_x86_64"
 	osArchWindowsX86        = "windows_x86"
@@ -101,6 +102,7 @@ var (
 		osArchFuchsiaX86_64:     "//build/bazel/platforms/os_arch:fuchsia_x86_64",
 		osArchLinuxX86:          "//build/bazel/platforms/os_arch:linux_glibc_x86",
 		osArchLinuxX86_64:       "//build/bazel/platforms/os_arch:linux_glibc_x86_64",
+		osArchLinuxArm64:        "//build/bazel/platforms/os_arch:linux_glibc_arm64",
 		osArchLinuxBionicArm64:  "//build/bazel/platforms/os_arch:linux_bionic_arm64",
 		osArchLinuxBionicX86_64: "//build/bazel/platforms/os_arch:linux_bionic_x86_64",
 		osArchWindowsX86:        "//build/bazel/platforms/os_arch:windows_x86",
