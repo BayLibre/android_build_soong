@@ -273,7 +273,7 @@ func TestPathForModuleInstall(t *testing.T) {
 				},
 			},
 			in:  []string{"bin", "my_test"},
-			out: "host/linux-x86/bin/my_test",
+			out: "host/"+ testConfig.PrebuiltOS() +"/bin/my_test",
 		},
 
 		{
@@ -626,7 +626,7 @@ func TestPathForModuleInstall(t *testing.T) {
 				inTestcases: true,
 			},
 			in:  []string{"my_test", "my_test_bin"},
-			out: "host/linux-x86/testcases/my_test/my_test_bin",
+			out: "host/"+ testConfig.PrebuiltOS() +"/testcases/my_test/my_test_bin",
 		}, {
 			name: "forced host testcases",
 			ctx: &moduleInstallPathContextImpl{
@@ -636,10 +636,9 @@ func TestPathForModuleInstall(t *testing.T) {
 				},
 				inTestcases: true,
 				forceOS:     &Linux,
-				forceArch:   &X86,
 			},
 			in:  []string{"my_test", "my_test_bin"},
-			out: "host/linux-x86/testcases/my_test/my_test_bin",
+			out: "host/"+ testConfig.PrebuiltOS() +"/testcases/my_test/my_test_bin",
 		},
 	}
 
