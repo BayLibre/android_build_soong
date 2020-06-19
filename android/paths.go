@@ -1678,10 +1678,14 @@ func pathForInstall(ctx PathContext, os OsType, arch ArchType, partition string,
 		// Let's keep using x86 for the existing cases until we have a need to support
 		// other architectures.
 		archName := arch.String()
-		if os.Class == Host && (arch == X86_64 || arch == Common) {
+		if os.Class == Host && (arch == X86_64) {
 			archName = "x86"
 		}
-		partionPaths = []string{"host", osName + "-" + archName, partition}
+		if arch == Common {
+			partionPaths = []string{"host", ctx.Config().PrebuiltOS(), partition}
+		} else {
+			partionPaths = []string{"host", osName + "-" + archName, partition}
+		}
 	}
 	if debug {
 		partionPaths = append([]string{"debug"}, partionPaths...)

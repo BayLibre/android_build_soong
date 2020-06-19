@@ -217,7 +217,7 @@ func checkBootJarsPackageCheckRule(t *testing.T, result *android.TestResult, exp
 	platformBcp := result.ModuleForTests("platform-bootclasspath", "android_common")
 	bootJarsCheckRule := platformBcp.Rule("boot_jars_package_check")
 	command := bootJarsCheckRule.RuleParams.Command
-	expectedCommandArgs := " out/soong/host/linux-x86/bin/dexdump build/soong/scripts/check_boot_jars/package_allowed_list.txt " + expectedModule + " &&"
+	expectedCommandArgs := " out/soong/host/"+ result.Config.PrebuiltOS() +"/bin/dexdump build/soong/scripts/check_boot_jars/package_allowed_list.txt " + expectedModule + " &&"
 	android.AssertStringDoesContain(t, "boot jars package check", command, expectedCommandArgs)
 }
 
