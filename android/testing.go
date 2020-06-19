@@ -178,6 +178,10 @@ type TestContext struct {
 	preSingletonOrder, mutatorOrder, singletonOrder []string
 }
 
+func (ctx *TestContext) Config() (c Config) {
+	return ctx.config
+}
+
 func (ctx *TestContext) PreArchMutators(f RegisterMutatorFunc) {
 	ctx.preArch = append(ctx.preArch, f)
 }
