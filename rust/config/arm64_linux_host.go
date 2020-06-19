@@ -19,6 +19,32 @@ import (
 )
 
 func init() {
+	registerToolchainFactory(android.Linux, android.Arm64, LinuxArm64ToolchainFactory)
 	// Linux_cross-arm64 uses the same rust toolchain as the Android-arm64
 	registerToolchainFactory(android.LinuxBionic, android.Arm64, Arm64ToolchainFactory)
+}
+
+type toolchainLinuxArm64 struct {
+	toolchainArm64
+	toolchainLinux
+}
+
+func (toolchainLinuxArm64) Supported() bool {
+	return true
+}
+
+func (toolchainLinuxArm64) Bionic() bool {
+	return false
+}
+
+func (t *toolchainLinuxArm64) Name() string {
+	return "aarch64"
+}
+
+func (t *toolchainLinuxArm64) RustTriple() string {
+	return "aarch64-unknown-linux-gnu"
+}
+
+func LinuxArm64ToolchainFactory(arch android.Arch) Toolchain {
+	return &toolchainLinuxArm64{}
 }
