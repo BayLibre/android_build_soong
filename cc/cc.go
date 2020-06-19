@@ -193,6 +193,7 @@ type Flags struct {
 	GcovCoverage bool
 	SAbiDump     bool
 	EmitXrefs    bool // If true, generate Ninja rules to generate emitXrefs input files for Kythe
+	ForFilecheck bool
 
 	RequiredInstructionSet string
 	DynamicLinker          string

@@ -153,6 +153,10 @@ type LibraryMutatedProperties struct {
 	BuildStubs bool `blueprint:"mutated"`
 	// Version of the stubs lib
 	StubsVersion string `blueprint:"mutated"`
+
+	// This variant is for a filecheck; clang may not produce an output, in which
+	// case an empty output will be created.
+	ForFilecheck bool `blueprint:"mutated"`
 }
 
 type FlagExporterProperties struct {
@@ -187,6 +191,7 @@ func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library", LibraryFactory)
 	ctx.RegisterModuleType("cc_library_host_static", LibraryHostStaticFactory)
 	ctx.RegisterModuleType("cc_library_host_shared", LibraryHostSharedFactory)
+	ctx.RegisterModuleType("cc_filecheck", FileCheckFactory)
 }
 
 // cc_library creates both static and/or shared libraries for a device and/or
@@ -201,6 +206,15 @@ func LibraryFactory() android.Module {
 		staticLibrarySdkMemberType,
 		staticAndSharedLibrarySdkMemberType,
 	}
+	return module.Init()
+}
+
+// TODO: Write docs
+func FileCheckFactory() android.Module {
+	module, library := NewLibrary(android.HostAndDeviceSupported)
+	library.BuildOnlyStatic()
+	library.setForFilecheck()
+	module.sdkMemberTypes = []android.SdkMemberType{staticLibrarySdkMemberType}
 	return module.Init()
 }
 
@@ -665,6 +679,8 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 			flags.SAbiDump = true
 		}
 	}
+	flags.ForFilecheck = library.MutatedProperties.ForFilecheck
+
 	objs := library.baseCompiler.compile(ctx, flags, deps)
 	library.reuseObjects = objs
 	buildFlags := flagsToBuilderFlags(flags)
@@ -1314,6 +1330,10 @@ func (library *libraryDecorator) setStatic() {
 func (library *libraryDecorator) setShared() {
 	library.MutatedProperties.VariantIsStatic = false
 	library.MutatedProperties.VariantIsShared = true
+}
+
+func (library *libraryDecorator) setForFilecheck() {
+	library.MutatedProperties.ForFilecheck = true
 }
 
 func (library *libraryDecorator) BuildOnlyStatic() {
