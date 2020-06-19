@@ -22,6 +22,30 @@
       "revId": "296cf331718245660881e3c19893de2b9adc11be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "170f2e73_18765f3b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-19T18:22:50Z",
+      "side": 1,
+      "message": "If we do not want to instrument a module then there are other mechanisms we can use to control that, i.e. JavaCoveragePaths and JavaCoverageExcludePaths.",
+      "parentUuid": "c79518e2_bca26853",
+      "range": {
+        "startLine": 1095,
+        "startChar": 2,
+        "endLine": 1095,
+        "endChar": 95
+      },
+      "revId": "296cf331718245660881e3c19893de2b9adc11be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
