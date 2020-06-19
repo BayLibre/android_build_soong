@@ -20,7 +20,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"runtime"
 	"strings"
 
 	"github.com/google/blueprint/microfactory"
@@ -95,8 +94,7 @@ func SetupLitePath(ctx Context, config Config, tmpDir string) {
 	}
 
 	myPath, _ = filepath.Abs(myPath)
-
-	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + runtime.GOOS + "-x86")
+	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + config.HostPrebuiltTag())
 	myPath = prebuiltsPath + string(os.PathListSeparator) + myPath
 
 	config.Environment().Set("PATH", myPath)
@@ -199,10 +197,9 @@ func SetupPath(ctx Context, config Config) {
 	}
 
 	myPath, _ = filepath.Abs(myPath)
-
+	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + config.HostPrebuiltTag())
 	// We put some prebuilts in $PATH, since it's infeasible to add dependencies for all of
 	// them.
-	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + runtime.GOOS + "-x86")
 	myPath = prebuiltsPath + string(os.PathListSeparator) + myPath
 
 	config.Environment().Set("PATH", myPath)
