@@ -22,6 +22,30 @@
       "revId": "0e63a8e76180fe7a92000b6aa3bc0d5e64e2c564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11847960_06861233",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-06-19T00:16:10Z",
+      "side": 0,
+      "message": "Good idea. Done.",
+      "parentUuid": "3bab9355_58df5eea",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 88
+      },
+      "revId": "0e63a8e76180fe7a92000b6aa3bc0d5e64e2c564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
