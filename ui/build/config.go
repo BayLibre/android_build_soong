@@ -636,7 +636,7 @@ func (c *configImpl) Tapas(ctx Context, apps []string, arch, variant string) {
 	case "arm", "":
 		product = "aosp_arm"
 	case "arm64":
-		product = "aosm_arm64"
+		product = "aosp_arm64"
 	case "x86":
 		product = "aosp_x86"
 	case "x86_64":
@@ -993,11 +993,19 @@ func (c *configImpl) hostCrossOut() string {
 }
 
 func (c *configImpl) HostPrebuiltTag() string {
-	if runtime.GOOS == "linux" {
-		return "linux-x86"
-	} else if runtime.GOOS == "darwin" {
+	switch runtime.GOOS {
+	case "linux":
+		switch runtime.GOARCH {
+		case "amd64":
+			return "linux-x86"
+		case "arm64":
+			return "linux-arm"
+		default:
+			panic("Unsupported ARCH")
+		}
+	case "darwin":
 		return "darwin-x86"
-	} else {
+	default:
 		panic("Unsupported OS")
 	}
 }
