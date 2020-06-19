@@ -565,6 +565,8 @@ var BuildArch = func() ArchType {
 	switch runtime.GOARCH {
 	case "amd64":
 		return X86_64
+	case "arm64":
+		return Arm64
 	default:
 		panic(fmt.Sprintf("unsupported Arch: %s", runtime.GOARCH))
 	}
@@ -587,7 +589,7 @@ var (
 	CommonOS = NewOsType("common_os", Generic, false)
 
 	osArchTypeMap = map[OsType][]ArchType{
-		Linux:       []ArchType{X86, X86_64},
+		Linux:       []ArchType{Arm64, X86, X86_64},
 		LinuxBionic: []ArchType{Arm64, X86_64},
 		Darwin:      []ArchType{X86_64},
 		Windows:     []ArchType{X86, X86_64},
@@ -1529,7 +1531,7 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 	}
 
 	if Bool(config.Host_bionic) {
-		addTarget(LinuxBionic, "x86_64", nil, nil, nil, NativeBridgeDisabled, nil, nil)
+		addTarget(LinuxBionic, *variables.HostArch, nil, nil, nil, NativeBridgeDisabled, nil, nil)
 	}
 
 	if String(variables.CrossHost) != "" {

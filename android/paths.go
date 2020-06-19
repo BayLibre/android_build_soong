@@ -1305,21 +1305,7 @@ func pathForInstall(ctx PathContext, os OsType, arch ArchType, partition string,
 	if os.Class == Device {
 		outPaths = []string{"target", "product", ctx.Config().DeviceName(), partition}
 	} else {
-		osName := os.String()
-		if os == Linux {
-			// instead of linux_glibc
-			osName = "linux"
-		}
-		// SOONG_HOST_OUT is set to out/host/$(HOST_OS)-$(HOST_PREBUILT_ARCH)
-		// and HOST_PREBUILT_ARCH is forcibly set to x86 even on x86_64 hosts. We don't seem
-		// to have a plan to fix it (see the comment in build/make/core/envsetup.mk).
-		// Let's keep using x86 for the existing cases until we have a need to support
-		// other architectures.
-		archName := arch.String()
-		if os.Class == Host && (arch == X86_64 || arch == Common) {
-			archName = "x86"
-		}
-		outPaths = []string{"host", osName + "-" + archName, partition}
+		outPaths = []string{"host", ctx.Config().PrebuiltOS(), partition}
 	}
 	if debug {
 		outPaths = append([]string{"debug"}, outPaths...)

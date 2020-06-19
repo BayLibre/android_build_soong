@@ -56,6 +56,10 @@ type TestContext struct {
 	config                                Config
 }
 
+func (ctx *TestContext) Config() (c Config) {
+	return ctx.config
+}
+
 func (ctx *TestContext) PreArchMutators(f RegisterMutatorFunc) {
 	ctx.preArch = append(ctx.preArch, f)
 }
