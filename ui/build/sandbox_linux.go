@@ -20,6 +20,7 @@ import (
 	"os/exec"
 	"os/user"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 )
@@ -48,7 +49,8 @@ var (
 	}
 )
 
-const nsjailPath = "prebuilts/build-tools/linux-x86/bin/nsjail"
+var arch = func() string { if runtime.GOARCH == "amd64" { return "x86" } else if runtime.GOARCH == "arm64" { return "arm" } else { return "" } }()
+var nsjailPath = "prebuilts/build-tools/linux-" + arch + "/bin/nsjail"
 
 var sandboxConfig struct {
 	once sync.Once

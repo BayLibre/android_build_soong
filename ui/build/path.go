@@ -96,7 +96,7 @@ func SetupLitePath(ctx Context, config Config, tmpDir string) {
 
 	myPath, _ = filepath.Abs(myPath)
 
-	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + runtime.GOOS + "-x86")
+	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + runtime.GOOS + "-" + func() string { if runtime.GOARCH == "amd64" { return "x86" } else if runtime.GOARCH == "arm64" { return "arm" } else { return "" } }())
 	myPath = prebuiltsPath + string(os.PathListSeparator) + myPath
 
 	config.Environment().Set("PATH", myPath)
@@ -202,7 +202,7 @@ func SetupPath(ctx Context, config Config) {
 
 	// We put some prebuilts in $PATH, since it's infeasible to add dependencies for all of
 	// them.
-	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + runtime.GOOS + "-x86")
+	prebuiltsPath, _ := filepath.Abs("prebuilts/build-tools/path/" + runtime.GOOS + "-" + func() string { if runtime.GOARCH == "amd64" { return "x86" } else if runtime.GOARCH == "arm64" { return "arm" } else { return "" } }())
 	myPath = prebuiltsPath + string(os.PathListSeparator) + myPath
 
 	config.Environment().Set("PATH", myPath)
