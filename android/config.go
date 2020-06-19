@@ -513,7 +513,14 @@ func (c *config) HostSystemTool(name string) string {
 func (c *config) PrebuiltOS() string {
 	switch runtime.GOOS {
 	case "linux":
-		return "linux-x86"
+		switch runtime.GOARCH {
+		case "amd64":
+			return "linux-x86"
+		case "arm64":
+			return "linux-arm"
+		default:
+			panic("Unknown GOARCH")
+		}
 	case "darwin":
 		return "darwin-x86"
 	default:
