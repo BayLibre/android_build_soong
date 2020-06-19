@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c79518e2_bca26853",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-19T04:48:17Z",
+      "side": 1,
+      "message": "Why don\u0027t we let each module to decide it? Some java_sdk_library might not want to join this.",
+      "range": {
+        "startLine": 1095,
+        "startChar": 2,
+        "endLine": 1095,
+        "endChar": 95
+      },
+      "revId": "296cf331718245660881e3c19893de2b9adc11be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
