@@ -1520,7 +1520,7 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 	}
 
 	if Bool(config.Host_bionic) {
-		addTarget(LinuxBionic, "x86_64", nil, nil, nil, NativeBridgeDisabled, nil, nil)
+		addTarget(LinuxBionic, *variables.HostArch, nil, nil, nil, NativeBridgeDisabled, nil, nil)
 	}
 
 	if String(variables.CrossHost) != "" {
