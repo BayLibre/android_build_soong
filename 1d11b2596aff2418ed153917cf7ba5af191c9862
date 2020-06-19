@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26371b9b_aba2e3ce",
+        "filename": "ui/build/path.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-06-19T11:13:43Z",
+      "side": 1,
+      "message": "replace with ${config.HostPrebuiltTag}",
+      "revId": "1d11b2596aff2418ed153917cf7ba5af191c9862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fceafee_29391fd7",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-06-19T11:13:43Z",
+      "side": 1,
+      "message": "you need to create an util function to get the tag for the arch\nHostPrebuiltTag is already a good candidate to be used, all you have to do is move all the class vars that hardcode x86 into init {} and then use ${HostPrebuiltTag}",
+      "parentUuid": "",
+      "revId": "1d11b2596aff2418ed153917cf7ba5af191c9862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
