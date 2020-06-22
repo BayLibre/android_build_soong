@@ -22,6 +22,30 @@
       "revId": "79ab0e1307657d804669680d58b284af7b5a43cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb34c05a_e11d860a",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-22T18:14:16Z",
+      "side": 1,
+      "message": "Fixed, that was left over from when there were more checks inside the first if.",
+      "parentUuid": "b03f15be_29e9fdea",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 0
+      },
+      "revId": "79ab0e1307657d804669680d58b284af7b5a43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
