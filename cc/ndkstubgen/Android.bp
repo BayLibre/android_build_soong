@@ -14,19 +14,36 @@
 // limitations under the License.
 //
 
-python_test_host {
-    name: "test_ndk_api_coverage_parser",
-    main: "test_ndk_api_coverage_parser.py",
+python_binary_host {
+    name: "ndkstubgen",
+    pkg_path: "ndkstubgen",
+    main: "__init__.py",
     srcs: [
-        "test_ndk_api_coverage_parser.py",
+        "__init__.py",
+    ],
+    libs: [
+        "symbolfile",
     ],
 }
 
-python_binary_host {
-    name: "ndk_api_coverage_parser",
-    main: "ndk_api_coverage_parser.py",
+python_library_host {
+    name: "ndkstubgenlib",
+    pkg_path: "ndkstubgen",
     srcs: [
-        "gen_stub_libs.py",
-        "ndk_api_coverage_parser.py",
+        "__init__.py",
+    ],
+    libs: [
+        "symbolfile",
     ],
 }
+
+python_test_host {
+    name: "test_ndkstubgen",
+    srcs: [
+        "test_ndkstubgen.py",
+    ],
+    libs: [
+        "ndkstubgenlib",
+    ],
+}
+
