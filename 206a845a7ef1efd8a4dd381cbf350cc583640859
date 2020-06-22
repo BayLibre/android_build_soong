@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cee19d8_bd1acaf9",
+        "filename": "android/apex.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-22T09:51:09Z",
+      "side": 1,
+      "message": "\"28\" may look weird. It\u0027s added because somd mainline APKs had set min_sdk_version: 28 in the internal branches when they wanted to set it 29 and 29 was not available yet. Fixes are uploaded separately and when they get merged these will be removed from here.",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 57
+      },
+      "revId": "206a845a7ef1efd8a4dd381cbf350cc583640859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
