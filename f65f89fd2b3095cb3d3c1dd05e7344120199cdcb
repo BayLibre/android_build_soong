@@ -34,6 +34,24 @@
       "revId": "f65f89fd2b3095cb3d3c1dd05e7344120199cdcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9422d22c_0fb9a90c",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2179,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-22T18:04:41Z",
+      "side": 1,
+      "message": "I think it\u0027s fine if a python_host_binary can be referenced through the data property.",
+      "parentUuid": "429f08c6_2cd6cba8",
+      "revId": "f65f89fd2b3095cb3d3c1dd05e7344120199cdcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
