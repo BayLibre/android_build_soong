@@ -52,6 +52,24 @@
       "revId": "f65f89fd2b3095cb3d3c1dd05e7344120199cdcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9eb5601d_77a3c21f",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2179,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-06-22T22:53:32Z",
+      "side": 1,
+      "message": "If folks aren\u0027t opposed, then I\u0027ll abandon this change in favor of https://android-review.googlesource.com/c/platform/build/soong/+/1346683",
+      "parentUuid": "9422d22c_0fb9a90c",
+      "revId": "f65f89fd2b3095cb3d3c1dd05e7344120199cdcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
