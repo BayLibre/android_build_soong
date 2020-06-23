@@ -24,9 +24,11 @@ import (
 
 func init() {
 	android.RegisterModuleType("rust_library", RustLibraryFactory)
+	android.RegisterModuleType("rust_library_foreign", RustLibraryForeignFactory)
 	android.RegisterModuleType("rust_library_dylib", RustLibraryDylibFactory)
 	android.RegisterModuleType("rust_library_rlib", RustLibraryRlibFactory)
 	android.RegisterModuleType("rust_library_host", RustLibraryHostFactory)
+	android.RegisterModuleType("rust_library_host_foreign", RustLibraryForeignHostFactory)
 	android.RegisterModuleType("rust_library_host_dylib", RustLibraryDylibHostFactory)
 	android.RegisterModuleType("rust_library_host_rlib", RustLibraryRlibHostFactory)
 	android.RegisterModuleType("rust_library_shared", RustLibrarySharedFactory)
@@ -96,6 +98,7 @@ type libraryInterface interface {
 	setStatic()
 
 	// Build a specific library variant
+	BuildOnlyForeign()
 	BuildOnlyRlib()
 	BuildOnlyDylib()
 	BuildOnlyStatic()
@@ -185,9 +188,16 @@ func (library *libraryDecorator) setStatic() {
 var _ compiler = (*libraryDecorator)(nil)
 var _ libraryInterface = (*libraryDecorator)(nil)
 
-// rust_library produces all variants.
+// rust_library produces all rust variants.
 func RustLibraryFactory() android.Module {
 	module, _ := NewRustLibrary(android.HostAndDeviceSupported)
+	return module.Init()
+}
+
+// rust_library_foreign produces all foreign variants.
+func RustLibraryForeignFactory() android.Module {
+	module, library := NewRustLibrary(android.HostAndDeviceSupported)
+	library.BuildOnlyForeign()
 	return module.Init()
 }
 
@@ -219,9 +229,16 @@ func RustLibraryStaticFactory() android.Module {
 	return module.Init()
 }
 
-// rust_library_host produces all variants.
+// rust_library_host produces all rust variants.
 func RustLibraryHostFactory() android.Module {
 	module, _ := NewRustLibrary(android.HostSupported)
+	return module.Init()
+}
+
+// rust_library_host_foreign produces all foreign variants.
+func RustLibraryForeignHostFactory() android.Module {
+	module, library := NewRustLibrary(android.HostSupported)
+	library.BuildOnlyForeign()
 	return module.Init()
 }
 
@@ -253,30 +270,39 @@ func RustLibrarySharedHostFactory() android.Module {
 	return module.Init()
 }
 
+func (library *libraryDecorator) BuildOnlyForeign() {
+	library.MutatedProperties.BuildDylib = false
+	library.MutatedProperties.BuildRlib = false
+	library.MutatedProperties.BuildShared = true
+	library.MutatedProperties.BuildStatic = true
+}
+
 func (library *libraryDecorator) BuildOnlyDylib() {
+	library.MutatedProperties.BuildDylib = true
 	library.MutatedProperties.BuildRlib = false
 	library.MutatedProperties.BuildShared = false
 	library.MutatedProperties.BuildStatic = false
-
 }
 
 func (library *libraryDecorator) BuildOnlyRlib() {
 	library.MutatedProperties.BuildDylib = false
+	library.MutatedProperties.BuildRlib = true
 	library.MutatedProperties.BuildShared = false
 	library.MutatedProperties.BuildStatic = false
 }
 
 func (library *libraryDecorator) BuildOnlyStatic() {
-	library.MutatedProperties.BuildShared = false
 	library.MutatedProperties.BuildRlib = false
 	library.MutatedProperties.BuildDylib = false
-
+	library.MutatedProperties.BuildShared = false
+	library.MutatedProperties.BuildStatic = true
 }
 
 func (library *libraryDecorator) BuildOnlyShared() {
-	library.MutatedProperties.BuildStatic = false
 	library.MutatedProperties.BuildRlib = false
 	library.MutatedProperties.BuildDylib = false
+	library.MutatedProperties.BuildStatic = false
+	library.MutatedProperties.BuildShared = true
 }
 
 func NewRustLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
@@ -286,8 +312,8 @@ func NewRustLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorat
 		MutatedProperties: LibraryMutatedProperties{
 			BuildDylib:  true,
 			BuildRlib:   true,
-			BuildShared: true,
-			BuildStatic: true,
+			BuildShared: false,
+			BuildStatic: false,
 		},
 		baseCompiler: NewBaseCompiler("lib", "lib64", InstallInSystem),
 	}
