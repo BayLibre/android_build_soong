@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4c09aa56_59c30481",
+        "filename": "android/apex.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-23T05:44:19Z",
+      "side": 1,
+      "message": "Can we remove this so that we can statically ensure that all types implementing ApexModule have this defined?",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 0
+      },
+      "revId": "206a845a7ef1efd8a4dd381cbf350cc583640859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cee19d8_bd1acaf9",
         "filename": "android/apex.go",
         "patchSetId": 17
