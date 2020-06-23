@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e1ca24d_1e77157d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-23T13:53:32Z",
+      "side": 1,
+      "message": "nit: every *payload* dep, right? we are not enforcing this on external ones.",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b18d82f8_4cd586ca",
+        "filename": "android/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-23T13:53:32Z",
+      "side": 1,
+      "message": "ooc, why not make this part of ApexModule?",
+      "range": {
+        "startLine": 565,
+        "startChar": 1,
+        "endLine": 565,
+        "endChar": 16
+      },
+      "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48a04c19_65fa05b8",
+        "filename": "android/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-23T13:53:32Z",
+      "side": 1,
+      "message": "out of topic, but how/when do we plan to replace \u0027R\u0027 version code with \u002730\u0027 for example? and in the future, what\u0027s the process for module/library authors?",
+      "range": {
+        "startLine": 581,
+        "startChar": 4,
+        "endLine": 581,
+        "endChar": 63
+      },
+      "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b42b9d4_c9b579f8",
+        "filename": "java/aar.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2020-06-23T13:53:32Z",
+      "side": 1,
+      "message": "nit: eventually, we do want min_sdk_version on import module as well? Including prebuilts, right?",
+      "range": {
+        "startLine": 766,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 11
+      },
+      "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
