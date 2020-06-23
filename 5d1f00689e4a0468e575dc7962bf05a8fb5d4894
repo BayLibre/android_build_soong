@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d089fcb_2adb0514",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-23T14:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e1ca24d_1e77157d",
+      "range": {
+        "startLine": 9,
+        "startChar": 28,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b18d82f8_4cd586ca",
         "filename": "android/apex.go",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-23T13:53:32Z",
       "side": 1,
       "message": "ooc, why not make this part of ApexModule?",
+      "range": {
+        "startLine": 565,
+        "startChar": 1,
+        "endLine": 565,
+        "endChar": 16
+      },
+      "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d949e98_eba617b2",
+        "filename": "android/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-23T14:20:03Z",
+      "side": 1,
+      "message": "apexBundle is not ApexModule.\n\nI was thinking that making an UpdatableModuleBase or something so that apexBundle and andoridApp can share the common implementation. But, a plain function was simpler ;-) If we find more common functionality in the future, we could extract them as a common base.",
+      "parentUuid": "b18d82f8_4cd586ca",
       "range": {
         "startLine": 565,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "acfc655d_0772a3fe",
+        "filename": "android/apex.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-23T14:20:03Z",
+      "side": 1,
+      "message": "Well, we could do set apex.min_sdk_version to 30 when we make it public? If we\u0027re in a hurry, we could start in the rvc-dev-plus-aosp branch, which might bring divergence between aosp and internal branches.",
+      "parentUuid": "48a04c19_65fa05b8",
+      "range": {
+        "startLine": 581,
+        "startChar": 4,
+        "endLine": 581,
+        "endChar": 63
+      },
+      "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b42b9d4_c9b579f8",
         "filename": "java/aar.go",
         "patchSetId": 18
@@ -91,6 +163,30 @@
       "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b9c4ec_f5d6d1b5",
+        "filename": "java/aar.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-23T14:20:03Z",
+      "side": 1,
+      "message": "Yeah, we\u0027re going to want it. But I\u0027m not sure when it would be. ;-)",
+      "parentUuid": "8b42b9d4_c9b579f8",
+      "range": {
+        "startLine": 766,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 11
+      },
+      "revId": "5d1f00689e4a0468e575dc7962bf05a8fb5d4894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
