@@ -254,6 +254,7 @@ func RustLibrarySharedHostFactory() android.Module {
 }
 
 func (library *libraryDecorator) BuildOnlyDylib() {
+	library.MutatedProperties.BuildDylib = true
 	library.MutatedProperties.BuildRlib = false
 	library.MutatedProperties.BuildShared = false
 	library.MutatedProperties.BuildStatic = false
@@ -262,21 +263,23 @@ func (library *libraryDecorator) BuildOnlyDylib() {
 
 func (library *libraryDecorator) BuildOnlyRlib() {
 	library.MutatedProperties.BuildDylib = false
+	library.MutatedProperties.BuildRlib = true
 	library.MutatedProperties.BuildShared = false
 	library.MutatedProperties.BuildStatic = false
 }
 
 func (library *libraryDecorator) BuildOnlyStatic() {
-	library.MutatedProperties.BuildShared = false
 	library.MutatedProperties.BuildRlib = false
 	library.MutatedProperties.BuildDylib = false
-
+	library.MutatedProperties.BuildShared = false
+	library.MutatedProperties.BuildStatic = true
 }
 
 func (library *libraryDecorator) BuildOnlyShared() {
-	library.MutatedProperties.BuildStatic = false
 	library.MutatedProperties.BuildRlib = false
 	library.MutatedProperties.BuildDylib = false
+	library.MutatedProperties.BuildStatic = false
+	library.MutatedProperties.BuildShared = true
 }
 
 func NewRustLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
@@ -286,8 +289,8 @@ func NewRustLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorat
 		MutatedProperties: LibraryMutatedProperties{
 			BuildDylib:  true,
 			BuildRlib:   true,
-			BuildShared: true,
-			BuildStatic: true,
+			BuildShared: false,
+			BuildStatic: false,
 		},
 		baseCompiler: NewBaseCompiler("lib", "lib64", InstallInSystem),
 	}

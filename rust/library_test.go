@@ -29,13 +29,23 @@ func TestLibraryVariants(t *testing.T) {
 			name: "libfoo",
 			srcs: ["foo.rs"],
 			crate_name: "foo",
-		}`)
+		}
+                rust_library_host_static {
+                        name: "libfoo.static",
+                        srcs: ["foo.rs"],
+                        crate_name: "foo"
+                }
+                rust_library_host_shared {
+                        name: "libfoo.shared",
+                        srcs: ["foo.rs"],
+                        crate_name: "foo"
+                }`)
 
 	// Test all variants are being built.
 	libfooRlib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_rlib").Output("libfoo.rlib")
 	libfooDylib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_dylib").Output("libfoo.dylib.so")
-	libfooStatic := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_static").Output("libfoo.a")
-	libfooShared := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_shared").Output("libfoo.so")
+	libfooStatic := ctx.ModuleForTests("libfoo.static", "linux_glibc_x86_64_static").Output("libfoo.static.a")
+	libfooShared := ctx.ModuleForTests("libfoo.shared", "linux_glibc_x86_64_shared").Output("libfoo.shared.so")
 
 	rlibCrateType := "rlib"
 	dylibCrateType := "dylib"
@@ -119,7 +129,7 @@ func TestValidateLibraryStem(t *testing.T) {
 
 func TestSharedLibrary(t *testing.T) {
 	ctx := testRust(t, `
-		rust_library {
+		rust_library_shared {
 			name: "libfoo",
 			srcs: ["foo.rs"],
 			crate_name: "foo",

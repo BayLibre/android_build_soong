@@ -56,6 +56,7 @@ type Flags struct {
 type BaseProperties struct {
 	AndroidMkRlibs         []string
 	AndroidMkDylibs        []string
+	AndroidMkRustlibs      []string
 	AndroidMkProcMacroLibs []string
 	AndroidMkSharedLibs    []string
 	AndroidMkStaticLibs    []string
@@ -214,6 +215,7 @@ func (mod *Module) StubDecorator() bool {
 type Deps struct {
 	Dylibs     []string
 	Rlibs      []string
+	Rustlibs   []string
 	ProcMacros []string
 	SharedLibs []string
 	StaticLibs []string
@@ -599,6 +601,7 @@ func (mod *Module) deps(ctx DepsContext) Deps {
 
 	deps.Rlibs = android.LastUniqueStrings(deps.Rlibs)
 	deps.Dylibs = android.LastUniqueStrings(deps.Dylibs)
+	deps.Rustlibs = android.LastUniqueStrings(deps.Rustlibs)
 	deps.ProcMacros = android.LastUniqueStrings(deps.ProcMacros)
 	deps.SharedLibs = android.LastUniqueStrings(deps.SharedLibs)
 	deps.StaticLibs = android.LastUniqueStrings(deps.StaticLibs)
@@ -837,6 +840,28 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			{Mutator: "rust_libraries", Variation: "dylib"},
 			{Mutator: "link", Variation: ""}}...),
 		dylibDepTag, deps.Dylibs...)
+
+	// TODO support grabbing dyn opportunistically even when rlib, or rlib when dyn, if other doesn't exist
+	if deps.Rustlibs != nil {
+		if mod.compiler.(libraryInterface).rlib() && mod.compiler.(libraryInterface).dylib() {
+			panic("dylib and rlib passed to DepsMutator")
+		}
+		if mod.compiler.(libraryInterface).rlib() {
+			actx.AddVariationDependencies(
+				append(commonDepVariations, []blueprint.Variation{
+					{Mutator: "rust_libraries", Variation: "rlib"},
+					{Mutator: "link", Variation: ""}}...),
+				rlibDepTag, deps.Rustlibs...)
+		} else if mod.compiler.(libraryInterface).dylib() {
+			actx.AddVariationDependencies(
+				append(commonDepVariations, []blueprint.Variation{
+					{Mutator: "rust_libraries", Variation: "dylib"},
+					{Mutator: "link", Variation: ""}}...),
+				dylibDepTag, deps.Rustlibs...)
+		} else {
+			panic("rustlibs used by something neither dylib nor rlib, eek")
+		}
+	}
 
 	actx.AddVariationDependencies(append(commonDepVariations,
 		blueprint.Variation{Mutator: "link", Variation: "shared"}),
