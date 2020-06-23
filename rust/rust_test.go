@@ -185,7 +185,7 @@ func TestDepsTracking(t *testing.T) {
 			srcs: ["foo.rs"],
 			crate_name: "rlib",
 		}
-		rust_proc_macro {
+                rust_proc_macro {
 			name: "libpm",
 			srcs: ["foo.rs"],
 			crate_name: "pm",

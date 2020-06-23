@@ -99,6 +99,7 @@ type libraryInterface interface {
 
 	// Build a specific library variant
 	BuildOnlyForeign()
+	BuildOnlyNative()
 	BuildOnlyRlib()
 	BuildOnlyDylib()
 	BuildOnlyStatic()
@@ -183,6 +184,16 @@ func (library *libraryDecorator) setStatic() {
 	library.MutatedProperties.VariantIsShared = false
 	library.MutatedProperties.VariantIsRlib = false
 	library.MutatedProperties.VariantIsDylib = false
+}
+
+func (library *libraryDecorator) autoDep() autoDep {
+	if library.rlib() || library.static() {
+		return rlibAutoDep
+	} else if library.dylib() || library.shared() {
+		return dylibAutoDep
+	} else {
+		return rlibAutoDep
+	}
 }
 
 var _ compiler = (*libraryDecorator)(nil)
@@ -275,6 +286,13 @@ func (library *libraryDecorator) BuildOnlyForeign() {
 	library.MutatedProperties.BuildRlib = false
 	library.MutatedProperties.BuildShared = true
 	library.MutatedProperties.BuildStatic = true
+}
+
+func (library *libraryDecorator) BuildOnlyNative() {
+	library.MutatedProperties.BuildDylib = true
+	library.MutatedProperties.BuildRlib = true
+	library.MutatedProperties.BuildShared = false
+	library.MutatedProperties.BuildStatic = false
 }
 
 func (library *libraryDecorator) BuildOnlyDylib() {
