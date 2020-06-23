@@ -56,6 +56,7 @@ type Flags struct {
 type BaseProperties struct {
 	AndroidMkRlibs         []string
 	AndroidMkDylibs        []string
+	AndroidMkRustlibs      []string
 	AndroidMkProcMacroLibs []string
 	AndroidMkSharedLibs    []string
 	AndroidMkStaticLibs    []string
@@ -214,6 +215,7 @@ func (mod *Module) StubDecorator() bool {
 type Deps struct {
 	Dylibs     []string
 	Rlibs      []string
+	Rustlibs   []string
 	ProcMacros []string
 	SharedLibs []string
 	StaticLibs []string
@@ -599,6 +601,7 @@ func (mod *Module) deps(ctx DepsContext) Deps {
 
 	deps.Rlibs = android.LastUniqueStrings(deps.Rlibs)
 	deps.Dylibs = android.LastUniqueStrings(deps.Dylibs)
+	deps.Rustlibs = android.LastUniqueStrings(deps.Rustlibs)
 	deps.ProcMacros = android.LastUniqueStrings(deps.ProcMacros)
 	deps.SharedLibs = android.LastUniqueStrings(deps.SharedLibs)
 	deps.StaticLibs = android.LastUniqueStrings(deps.StaticLibs)
@@ -628,6 +631,20 @@ var (
 	procMacroDepTag  = dependencyTag{name: "procMacro", proc_macro: true}
 	testPerSrcDepTag = dependencyTag{name: "rust_unit_tests"}
 )
+
+type autoDep struct {
+	variation string
+	depTag    dependencyTag
+}
+
+var (
+	rlibAutoDep  = autoDep{variation: "rlib", depTag: rlibDepTag}
+	dylibAutoDep = autoDep{variation: "dylib", depTag: dylibDepTag}
+)
+
+type autoDeppable interface {
+	autoDep() autoDep
+}
 
 func (mod *Module) begin(ctx BaseModuleContext) {
 	if mod.coverage != nil {
@@ -837,6 +854,15 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			{Mutator: "rust_libraries", Variation: "dylib"},
 			{Mutator: "link", Variation: ""}}...),
 		dylibDepTag, deps.Dylibs...)
+
+	if deps.Rustlibs != nil {
+		autoDep := mod.compiler.(autoDeppable).autoDep()
+		actx.AddVariationDependencies(
+			append(commonDepVariations, []blueprint.Variation{
+				{Mutator: "rust_libraries", Variation: autoDep.variation},
+				{Mutator: "link", Variation: ""}}...),
+			autoDep.depTag, deps.Rustlibs...)
+	}
 
 	actx.AddVariationDependencies(append(commonDepVariations,
 		blueprint.Variation{Mutator: "link", Variation: "shared"}),
