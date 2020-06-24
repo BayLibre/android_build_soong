@@ -77,6 +77,7 @@ type EarlyModuleContext interface {
 	SocSpecific() bool
 	ProductSpecific() bool
 	SystemExtSpecific() bool
+	VendorDlkmSpecific() bool
 	Platform() bool
 
 	Config() Config
@@ -427,6 +428,12 @@ type commonProperties struct {
 	// (or /system/system_ext if system_ext partition does not exist).
 	System_ext_specific *bool
 
+	// whether this module is specific to VENDOR Dynamically Loadable Kernel Modules.
+	// When set to true, it is installed to /vendor_dlkm (or /vendor/vendor_dlkm if vendor_dlkm
+	// partition does not exist, or /system/vendor/vendor_dlkm if both vendor_dlkm and vendor
+	// partitions does not exist.)
+	Vendor_dlkm_specific *bool
+
 	// Whether this module is installed to recovery partition
 	Recovery *bool
 
@@ -586,6 +593,7 @@ type moduleKind int
 const (
 	platformModule moduleKind = iota
 	deviceSpecificModule
+	vendorDlkmSpecificModule
 	socSpecificModule
 	productSpecificModule
 	systemExtSpecificModule
@@ -597,6 +605,8 @@ func (k moduleKind) String() string {
 		return "platform"
 	case deviceSpecificModule:
 		return "device-specific"
+	case vendorDlkmSpecificModule:
+		return "vendordlkm-specific"
 	case socSpecificModule:
 		return "soc-specific"
 	case productSpecificModule:
@@ -903,6 +913,10 @@ func (m *ModuleBase) SocSpecific() bool {
 	return Bool(m.commonProperties.Vendor) || Bool(m.commonProperties.Proprietary) || Bool(m.commonProperties.Soc_specific)
 }
 
+func (m *ModuleBase) VendorDlkmSpecific() bool {
+	return Bool(m.commonProperties.Vendor_dlkm_specific)
+}
+
 func (m *ModuleBase) ProductSpecific() bool {
 	return Bool(m.commonProperties.Product_specific)
 }
@@ -933,6 +947,15 @@ func (m *ModuleBase) PartitionTag(config DeviceConfig) string {
 		if config.OdmPath() == "odm" {
 			partition = "odm"
 		} else if strings.HasPrefix(config.OdmPath(), "vendor/") {
+			partition = "vendor"
+		}
+	} else if m.VendorDlkmSpecific() {
+		// A vendor_dlkm-specific module could be on the vendor_dlkm partition at
+		// "vendor_dlkm", the vendor partition at "vendor/vendor_dlkm", or the system
+		// partition at "system/vendor/vendor_dlkm".
+		if config.VendorDlkmPath() == "vendor_dlkm" {
+			partition = "vendor_dlkm"
+		} else if strings.HasPrefix(config.VendorDlkmPath(), "vendor/") {
 			partition = "vendor"
 		}
 	} else if m.ProductSpecific() {
@@ -1130,12 +1153,13 @@ func (m *ModuleBase) generateModuleTarget(ctx ModuleContext) {
 func determineModuleKind(m *ModuleBase, ctx blueprint.EarlyModuleContext) moduleKind {
 	var socSpecific = Bool(m.commonProperties.Vendor) || Bool(m.commonProperties.Proprietary) || Bool(m.commonProperties.Soc_specific)
 	var deviceSpecific = Bool(m.commonProperties.Device_specific)
+	var vendorDlkmSpecific = Bool(m.commonProperties.Vendor_dlkm_specific)
 	var productSpecific = Bool(m.commonProperties.Product_specific)
 	var systemExtSpecific = Bool(m.commonProperties.System_ext_specific)
 
 	msg := "conflicting value set here"
-	if socSpecific && deviceSpecific {
-		ctx.PropertyErrorf("device_specific", "a module cannot be specific to SoC and device at the same time.")
+	if (socSpecific && deviceSpecific) || (socSpecific && vendorDlkmSpecific) || (deviceSpecific && vendorDlkmSpecific) {
+		ctx.PropertyErrorf("device_specific", "a module can only be specific to one of SoC, device, and vendor_dlkm.")
 		if Bool(m.commonProperties.Vendor) {
 			ctx.PropertyErrorf("vendor", msg)
 		}
@@ -1145,6 +1169,12 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.EarlyModuleContext) module
 		if Bool(m.commonProperties.Soc_specific) {
 			ctx.PropertyErrorf("soc_specific", msg)
 		}
+		if Bool(m.commonProperties.Device_specific) {
+			ctx.PropertyErrorf("device_specific", msg)
+		}
+		if Bool(m.commonProperties.Vendor_dlkm_specific) {
+			ctx.PropertyErrorf("vendor_dlkm_specific", msg)
+		}
 	}
 
 	if productSpecific && systemExtSpecific {
@@ -1152,14 +1182,16 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.EarlyModuleContext) module
 		ctx.PropertyErrorf("system_ext_specific", msg)
 	}
 
-	if (socSpecific || deviceSpecific) && (productSpecific || systemExtSpecific) {
+	if (socSpecific || deviceSpecific || vendorDlkmSpecific) && (productSpecific || systemExtSpecific) {
 		if productSpecific {
-			ctx.PropertyErrorf("product_specific", "a module cannot be specific to SoC or device and product at the same time.")
+			ctx.PropertyErrorf("product_specific", "a module cannot be specific to SoC or device or vendor_dlkm and product at the same time.")
 		} else {
-			ctx.PropertyErrorf("system_ext_specific", "a module cannot be specific to SoC or device and system_ext at the same time.")
+			ctx.PropertyErrorf("system_ext_specific", "a module cannot be specific to SoC or device or vendor_dlkm and system_ext at the same time.")
 		}
 		if deviceSpecific {
 			ctx.PropertyErrorf("device_specific", msg)
+		} else if vendorDlkmSpecific {
+			ctx.PropertyErrorf("vendor_dlkm_specific", msg)
 		} else {
 			if Bool(m.commonProperties.Vendor) {
 				ctx.PropertyErrorf("vendor", msg)
@@ -1179,6 +1211,8 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.EarlyModuleContext) module
 		return systemExtSpecificModule
 	} else if deviceSpecific {
 		return deviceSpecificModule
+	} else if vendorDlkmSpecific {
+		return vendorDlkmSpecificModule
 	} else if socSpecific {
 		return socSpecificModule
 	} else {
@@ -1397,6 +1431,10 @@ func (e *earlyModuleContext) DeviceSpecific() bool {
 
 func (e *earlyModuleContext) SocSpecific() bool {
 	return e.kind == socSpecificModule
+}
+
+func (e *earlyModuleContext) VendorDlkmSpecific() bool {
+	return e.kind == vendorDlkmSpecificModule
 }
 
 func (e *earlyModuleContext) ProductSpecific() bool {

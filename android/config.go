@@ -1010,6 +1010,13 @@ func (c *deviceConfig) OdmPath() string {
 	return "odm"
 }
 
+func (c *deviceConfig) VendorDlkmPath() string {
+	if c.config.productVariables.VendorDlkmPath != nil {
+		return *c.config.productVariables.VendorDlkmPath
+	}
+	return "vendor_dlkm"
+}
+
 func (c *deviceConfig) ProductPath() string {
 	if c.config.productVariables.ProductPath != nil {
 		return *c.config.productVariables.ProductPath

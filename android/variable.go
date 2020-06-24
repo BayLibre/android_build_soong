@@ -257,10 +257,11 @@ type productVariables struct {
 
 	Experimental_mte *bool `json:",omitempty"`
 
-	VendorPath    *string `json:",omitempty"`
-	OdmPath       *string `json:",omitempty"`
-	ProductPath   *string `json:",omitempty"`
-	SystemExtPath *string `json:",omitempty"`
+	VendorPath     *string `json:",omitempty"`
+	OdmPath        *string `json:",omitempty"`
+	VendorDlkmPath *string `json:",omitempty"`
+	ProductPath    *string `json:",omitempty"`
+	SystemExtPath  *string `json:",omitempty"`
 
 	ClangTidy  *bool   `json:",omitempty"`
 	TidyChecks *string `json:",omitempty"`
