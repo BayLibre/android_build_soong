@@ -1329,6 +1329,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	targets := ctx.MultiTargets()
 	config := ctx.DeviceConfig()
+	imageVariation := a.getImageVariation(ctx)
 
 	a.combineProperties(ctx)
 
@@ -1348,13 +1349,13 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 				Jni_libs:           a.properties.Jni_libs,
 				Binaries:           nil,
 			},
-			target, a.getImageVariation(config))
+			target, imageVariation)
 
 		// Add native modules targetting both ABIs
 		addDependenciesForNativeModules(ctx,
 			a.properties.Multilib.Both,
 			target,
-			a.getImageVariation(config))
+			imageVariation)
 
 		isPrimaryAbi := i == 0
 		if isPrimaryAbi {
@@ -1367,13 +1368,13 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 					Jni_libs:           nil,
 					Binaries:           a.properties.Binaries,
 				},
-				target, a.getImageVariation(config))
+				target, imageVariation)
 
 			// Add native modules targetting the first ABI
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.First,
 				target,
-				a.getImageVariation(config))
+				imageVariation)
 		}
 
 		switch target.Arch.ArchType.Multilib {
@@ -1382,24 +1383,24 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib32,
 				target,
-				a.getImageVariation(config))
+				imageVariation)
 
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Prefer32,
 				target,
-				a.getImageVariation(config))
+				imageVariation)
 		case "lib64":
 			// Add native modules targetting 64-bit ABI
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib64,
 				target,
-				a.getImageVariation(config))
+				imageVariation)
 
 			if !has32BitTarget {
 				addDependenciesForNativeModules(ctx,
 					a.properties.Multilib.Prefer32,
 					target,
-					a.getImageVariation(config))
+					imageVariation)
 			}
 		}
 	}
@@ -1501,15 +1502,31 @@ func (a *apexBundle) testOnlyShouldSkipPayloadSign() bool {
 	return proptools.Bool(a.properties.Test_only_unsigned_payload)
 }
 
-func (a *apexBundle) getImageVariation(config android.DeviceConfig) string {
+func (a *apexBundle) getImageVariation(ctx android.BottomUpMutatorContext) string {
+	config := ctx.Config()
+	deviceConfig := ctx.DeviceConfig()
 	if a.vndkApex {
-		return cc.VendorVariationPrefix + a.vndkVersion(config)
+		return cc.VendorVariationPrefix + a.vndkVersion(deviceConfig)
 	}
-	if config.VndkVersion() != "" && proptools.Bool(a.properties.Use_vendor) {
-		return cc.VendorVariationPrefix + config.PlatformVndkVersion()
-	} else {
-		return android.CoreVariation
+
+	var vndkVersion string
+	if deviceConfig.VndkVersion() != "" {
+		switch {
+		case proptools.Bool(a.properties.Use_vendor):
+			vndkVersion = deviceConfig.PlatformVndkVersion()
+		case a.SocSpecific() || a.DeviceSpecific():
+			vndkVersion = deviceConfig.VndkVersion()
+		case a.ProductSpecific() && config.EnforceProductPartitionInterface():
+			vndkVersion = deviceConfig.ProductVndkVersion()
+		}
 	}
+	if vndkVersion == "current" {
+		return cc.VendorVariationPrefix + deviceConfig.PlatformVndkVersion()
+	}
+	if vndkVersion != "" {
+		return cc.VendorVariationPrefix + vndkVersion
+	}
+	return android.CoreVariation
 }
 
 func (a *apexBundle) EnableSanitizer(sanitizerName string) {
@@ -1541,7 +1558,7 @@ func (a *apexBundle) AddSanitizerDependencies(ctx android.BottomUpMutatorContext
 		for _, target := range ctx.MultiTargets() {
 			if target.Arch.ArchType.Multilib == "lib64" {
 				ctx.AddFarVariationDependencies(append(target.Variations(), []blueprint.Variation{
-					{Mutator: "image", Variation: a.getImageVariation(ctx.DeviceConfig())},
+					{Mutator: "image", Variation: a.getImageVariation(ctx)},
 					{Mutator: "link", Variation: "shared"},
 					{Mutator: "version", Variation: ""}, // "" is the non-stub variant
 				}...), sharedLibTag, "libclang_rt.hwasan-aarch64-android")
@@ -1773,6 +1790,10 @@ var _ android.ApexBundleDepsInfoIntf = (*apexBundle)(nil)
 func (a *apexBundle) checkApexAvailability(ctx android.ModuleContext) {
 	// Let's be practical. Availability for test, host, and the VNDK apex isn't important
 	if ctx.Host() || a.testApex || a.vndkApex {
+		return
+	}
+
+	if ctx.SocSpecific() || ctx.DeviceSpecific() || ctx.ProductSpecific() {
 		return
 	}
 
@@ -2180,7 +2201,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// in the APEX.
 	a.linkToSystemLib = !ctx.Config().UnbundledBuild() &&
 		a.installable() &&
-		!proptools.Bool(a.properties.Use_vendor)
+		!proptools.Bool(a.properties.Use_vendor) &&
+		!(a.SocSpecific() || a.DeviceSpecific() || a.ProductSpecific())
 
 	// We don't need the optimization for updatable APEXes, as it might give false signal
 	// to the system health when the APEXes are still bundled (b/149805758)
