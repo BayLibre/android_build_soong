@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"github.com/google/blueprint/proptools"
 	"path/filepath"
 
 	"android/soong/android"
@@ -25,6 +26,10 @@ import (
 type InstallerProperties struct {
 	// install to a subdirectory of the default install path for the module
 	Relative_install_path *string `android:"arch_variant"`
+}
+
+func (me *InstallerProperties) Unpack(ctx *proptools.UnpackContext, prefix string) {
+	ctx.MaybeSetString(prefix, "relative_install_path", &me.Relative_install_path)
 }
 
 type installLocation int

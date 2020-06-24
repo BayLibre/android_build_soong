@@ -320,6 +320,10 @@ type nameProperties struct {
 	Name *string
 }
 
+func (me *nameProperties) Unpack(ctx *proptools.UnpackContext, prefix string) {
+	ctx.MaybeSetString(prefix, "name", &me.Name)
+}
+
 type commonProperties struct {
 	// emit build rules for this module
 	//
@@ -535,6 +539,34 @@ type commonProperties struct {
 
 	// set by ImageMutator
 	ImageVariation string `blueprint:"mutated"`
+}
+
+func (me *commonProperties) Unpack(ctx *proptools.UnpackContext, prefix string) {
+	ctx.MaybeSetBool(prefix, "enabled", &me.Enabled)
+	ctx.MaybeSetStringList(prefix, "visibility", &me.Visibility)
+	ctx.MaybeSetString(prefix, "compile_multilib", &me.Compile_multilib)
+	if _, ok := ctx.FindAndMark(prefix + "target"); ok {
+		ctx.UnpackToObject(prefix, "target", &me.Target)
+	}
+	ctx.MaybeSetBool(prefix, "proprietary", &me.Proprietary)
+	ctx.MaybeSetString(prefix, "owner", &me.Owner)
+	ctx.MaybeSetBool(prefix, "vendor", &me.Vendor)
+	ctx.MaybeSetBool(prefix, "soc_specific", &me.Soc_specific)
+	ctx.MaybeSetBool(prefix, "device_specific", &me.Device_specific)
+	ctx.MaybeSetBool(prefix, "product_specific", &me.Product_specific)
+	ctx.MaybeSetBool(prefix, "system_ext_specific", &me.System_ext_specific)
+	ctx.MaybeSetBool(prefix, "recovery", &me.Recovery)
+	ctx.MaybeSetBool(prefix, "ramdisk", &me.Ramdisk)
+	ctx.MaybeSetBool(prefix, "native_bridge_supported", &me.Native_bridge_supported)
+	ctx.MaybeSetStringList(prefix, "init_rc", &me.Init_rc)
+	ctx.MaybeSetStringList(prefix, "vintf_fragments", &me.Vintf_fragments)
+	ctx.MaybeSetStringList(prefix, "required", &me.Required)
+	ctx.MaybeSetStringList(prefix, "host_required", &me.Host_required)
+	ctx.MaybeSetStringList(prefix, "target_required", &me.Target_required)
+	ctx.MaybeSetString(prefix, "notice", &me.Notice)
+	if _, ok := ctx.FindAndMark(prefix + "dist"); ok {
+		ctx.UnpackToObject(prefix, "dist", &me.Dist)
+	}
 }
 
 type hostAndDeviceProperties struct {

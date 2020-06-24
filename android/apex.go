@@ -16,6 +16,7 @@ package android
 
 import (
 	"fmt"
+	"github.com/google/blueprint/proptools"
 	"sort"
 	"strconv"
 	"strings"
@@ -139,6 +140,10 @@ type ApexProperties struct {
 	Info ApexInfo `blueprint:"mutated"`
 
 	NotAvailableForPlatform bool `blueprint:"mutated"`
+}
+
+func (me *ApexProperties) Unpack(ctx *proptools.UnpackContext, prefix string) {
+	ctx.MaybeSetStringList(prefix, "apex_available", &me.Apex_available)
 }
 
 // Marker interface that identifies dependencies that are excluded from APEX
