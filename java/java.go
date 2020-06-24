@@ -342,6 +342,12 @@ type CompilerDeviceProperties struct {
 	// otherwise provides defaults libraries to add to the bootclasspath.
 	System_modules *string
 
+	// The name of the installed library.
+	//
+	// Allows a library to separate its actual name from the name used in various lists
+	// such as ctx.Config().BootJars().
+	InstallableName *string `blueprint:"mutated"`
+
 	// set the name of the output
 	Stem *string
 
@@ -1631,8 +1637,11 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			return
 		}
 
+		installableName := j.InstallableName()
+		primary := installableName == ctx.ModuleName()
+
 		// Hidden API CSV generation and dex encoding
-		dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, dexOutputFile, j.implementationJarFile,
+		dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, installableName, primary, dexOutputFile, j.implementationJarFile,
 			proptools.Bool(j.deviceProperties.Uncompress_dex))
 
 		// merge dex jar with resources if necessary
@@ -1907,6 +1916,10 @@ func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersi
 
 func (j *Module) Stem() string {
 	return proptools.StringDefault(j.deviceProperties.Stem, j.Name())
+}
+
+func (j *Module) InstallableName() string {
+	return proptools.StringDefault(j.deviceProperties.InstallableName, j.BaseModuleName())
 }
 
 func (j *Module) JacocoReportClassesFile() android.Path {
