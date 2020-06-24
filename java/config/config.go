@@ -1,4 +1,3 @@
-// Copyright 2017 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,7 +34,8 @@ var (
 	DefaultLambdaStubsLibrary     = "core-lambda-stubs"
 	SdkLambdaStubsPath            = "prebuilts/sdk/tools/core-lambda-stubs.jar"
 
-	DefaultJacocoExcludeFilter = []string{"org.junit.*", "org.jacoco.*", "org.mockito.*"}
+	DefaultMakeJacocoExcludeFilter  = []string{"org.junit.*", "org.jacoco.*", "org.mockito.*"}
+	DefaultSoongJacocoExcludeFilter = []string{"org.junit.**", "org.jacoco.**", "org.mockito.**"}
 
 	InstrumentFrameworkModules = []string{
 		"framework",
