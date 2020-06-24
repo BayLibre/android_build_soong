@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "152d359f_71f2a826",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-24T17:51:36Z",
+      "side": 1,
+      "message": "This seems dangerous, can you get it from a property instead?",
+      "range": {
+        "startLine": 68,
+        "startChar": 29,
+        "endLine": 68,
+        "endChar": 36
+      },
+      "revId": "ea8fafb43b84621c37ebb789480fb2d9e06f9657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
