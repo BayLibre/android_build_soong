@@ -458,6 +458,9 @@ func setVariable(file *bpFile, plusequals bool, prefix, name string, value bppar
 			}
 			file.defs = append(file.defs, a)
 		} else {
+			if _, repeated := file.globalAssignments[name]; repeated {
+				return fmt.Errorf("cannot assign a variable multiple times: \"%s\"", name)
+			}
 			a := &bpparser.Assignment{
 				Name:      name,
 				NamePos:   pos,
