@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adced012_b4bdf9be",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-25T10:55:53Z",
+      "side": 1,
+      "message": "For LLNDK libraries, \u003cname\u003e.vendor refers to the stub which isn\u0027t installable. In that case we should just use \u003cname\u003e.",
+      "range": {
+        "startLine": 2267,
+        "startChar": 57,
+        "endLine": 2267,
+        "endChar": 93
+      },
+      "revId": "efb184e499edd2f0a1f717ab68e2052eb597adab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
