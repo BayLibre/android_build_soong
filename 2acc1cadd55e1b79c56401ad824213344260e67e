@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aaa30a8_8f6ce5b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-25T18:36:02Z",
+      "side": 1,
+      "message": "Should we also be doing this for Kati\u0027s build-*.ninja file(s)?",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "2acc1cadd55e1b79c56401ad824213344260e67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d64010_5aac1110",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-25T18:36:02Z",
+      "side": 1,
+      "message": "config.DistDir() is always set, you need to check config.Dist() to see if it should be used",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 17
+      },
+      "revId": "2acc1cadd55e1b79c56401ad824213344260e67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e595328_50933b8a",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-25T18:36:02Z",
+      "side": 1,
+      "message": "Same here, config.Dist()",
+      "revId": "2acc1cadd55e1b79c56401ad824213344260e67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
