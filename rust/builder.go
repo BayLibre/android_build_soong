@@ -58,37 +58,37 @@ func init() {
 }
 
 func TransformSrcToBinary(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, includeDirs []string) buildOutput {
+	outputFile android.WritablePath, linkDirs []string) buildOutput {
 	flags.RustFlags = append(flags.RustFlags, "-C lto")
 
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "bin", includeDirs)
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "bin", linkDirs)
 }
 
 func TransformSrctoRlib(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, includeDirs []string) buildOutput {
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "rlib", includeDirs)
+	outputFile android.WritablePath, linkDirs []string) buildOutput {
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "rlib", linkDirs)
 }
 
 func TransformSrctoDylib(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, includeDirs []string) buildOutput {
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "dylib", includeDirs)
+	outputFile android.WritablePath, linkDirs []string) buildOutput {
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "dylib", linkDirs)
 }
 
 func TransformSrctoStatic(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, includeDirs []string) buildOutput {
+	outputFile android.WritablePath, linkDirs []string) buildOutput {
 	flags.RustFlags = append(flags.RustFlags, "-C lto")
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "staticlib", includeDirs)
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "staticlib", linkDirs)
 }
 
 func TransformSrctoShared(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, includeDirs []string) buildOutput {
+	outputFile android.WritablePath, linkDirs []string) buildOutput {
 	flags.RustFlags = append(flags.RustFlags, "-C lto")
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "cdylib", includeDirs)
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "cdylib", linkDirs)
 }
 
 func TransformSrctoProcMacro(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps,
-	flags Flags, outputFile android.WritablePath, includeDirs []string) buildOutput {
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "proc-macro", includeDirs)
+	flags Flags, outputFile android.WritablePath, linkDirs []string) buildOutput {
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "proc-macro", linkDirs)
 }
 
 func rustLibsToPaths(libs RustLibraries) android.Paths {
@@ -100,7 +100,7 @@ func rustLibsToPaths(libs RustLibraries) android.Paths {
 }
 
 func transformSrctoCrate(ctx android.ModuleContext, main android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, crate_type string, includeDirs []string) buildOutput {
+	outputFile android.WritablePath, crate_type string, linkDirs []string) buildOutput {
 
 	var inputs android.Paths
 	var implicits android.Paths
@@ -125,12 +125,10 @@ func transformSrctoCrate(ctx android.ModuleContext, main android.Path, deps Path
 		rustcFlags = append(rustcFlags, "--target="+targetTriple)
 		linkFlags = append(linkFlags, "-target "+targetTriple)
 	}
-	// TODO once we have static libraries in the host prebuilt .bp, this
-	// should be unconditionally added.
-	if !(ctx.Host() && ctx.TargetPrimary()) {
-		// If we're not targeting the host primary arch, do not use an implicit sysroot
-		rustcFlags = append(rustcFlags, "--sysroot=/dev/null")
-	}
+
+	// Suppress an implicit sysroot
+	rustcFlags = append(rustcFlags, "--sysroot=/dev/null")
+
 	// Collect linker flags
 	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
 	linkFlags = append(linkFlags, flags.LinkFlags...)
@@ -146,7 +144,7 @@ func transformSrctoCrate(ctx android.ModuleContext, main android.Path, deps Path
 		libFlags = append(libFlags, "--extern "+proc_macro.CrateName+"="+proc_macro.Path.String())
 	}
 
-	for _, path := range includeDirs {
+	for _, path := range linkDirs {
 		libFlags = append(libFlags, "-L "+path)
 	}
 

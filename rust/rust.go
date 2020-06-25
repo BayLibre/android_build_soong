@@ -260,6 +260,13 @@ type compiler interface {
 	nativeCoverage() bool
 }
 
+type exportedFlagsProducer interface {
+	exportedLinkDirs() []string
+	exportedDepFlags() []string
+	exportLinkDirs(...string)
+	exportDepFlags(...string)
+}
+
 func (mod *Module) isCoverageVariant() bool {
 	return mod.coverage.Properties.IsCoverageVariant
 }
@@ -413,7 +420,7 @@ func (mod *Module) Module() android.Module {
 func (mod *Module) StubsVersions() []string {
 	// For now, Rust has no stubs versions.
 	if mod.compiler != nil {
-		if _, ok := mod.compiler.(*libraryDecorator); ok {
+		if _, ok := mod.compiler.(libraryInterface); ok {
 			return []string{}
 		}
 	}
@@ -699,19 +706,15 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 
 			//Append the dependencies exportedDirs
-			if lib, ok := rustDep.compiler.(*libraryDecorator); ok {
-				depPaths.linkDirs = append(depPaths.linkDirs, lib.exportedDirs()...)
+			if lib, ok := rustDep.compiler.(exportedFlagsProducer); ok {
+				depPaths.linkDirs = append(depPaths.linkDirs, lib.exportedLinkDirs()...)
 				depPaths.depFlags = append(depPaths.depFlags, lib.exportedDepFlags()...)
 			}
 
-			// Append this dependencies output to this mod's linkDirs so they can be exported to dependencies
-			// This can be probably be refactored by defining a common exporter interface similar to cc's
 			if depTag == dylibDepTag || depTag == rlibDepTag || depTag == procMacroDepTag {
 				linkDir := linkPathFromFilePath(linkFile.Path())
-				if lib, ok := mod.compiler.(*libraryDecorator); ok {
-					lib.linkDirs = append(lib.linkDirs, linkDir)
-				} else if procMacro, ok := mod.compiler.(*procMacroDecorator); ok {
-					procMacro.linkDirs = append(procMacro.linkDirs, linkDir)
+				if lib, ok := mod.compiler.(exportedFlagsProducer); ok {
+					lib.exportLinkDirs(linkDir)
 				}
 			}
 
@@ -762,14 +765,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 
 			// Make sure these dependencies are propagated
-			if lib, ok := mod.compiler.(*libraryDecorator); ok && exportDep {
-				lib.linkDirs = append(lib.linkDirs, linkPath)
-				lib.depFlags = append(lib.depFlags, depFlag)
-			} else if procMacro, ok := mod.compiler.(*procMacroDecorator); ok && exportDep {
-				procMacro.linkDirs = append(procMacro.linkDirs, linkPath)
-				procMacro.depFlags = append(procMacro.depFlags, depFlag)
+			if lib, ok := mod.compiler.(exportedFlagsProducer); ok && exportDep {
+				lib.exportLinkDirs(linkPath)
+				lib.exportDepFlags(depFlag)
 			}
-
 		}
 	})
 
