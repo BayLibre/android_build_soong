@@ -166,6 +166,30 @@
       "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbc02a89_e7d107bb",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-06-25T12:24:17Z",
+      "side": 1,
+      "message": "Short-term hack for R seems okay-ish, just two comments to ensure we\u0027ve really exhausted the (IMO) better solution:\n\n- I wonder if `conscrypt-host` really needs to set installable: true?\n\n- IIUC you\u0027re saying framework-minus-apex is not getting hiddenapi-encoded? We want it to be hiddenapi encoded, this is the module that ends up on device. The module called framework is purely meant for build-time use.",
+      "parentUuid": "4f3f484f_25f2a4ba",
+      "range": {
+        "startLine": 1921,
+        "startChar": 17,
+        "endLine": 1921,
+        "endChar": 32
+      },
+      "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
