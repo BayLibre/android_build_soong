@@ -190,6 +190,30 @@
       "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36abca87_68498482",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-25T12:40:17Z",
+      "side": 1,
+      "message": "The conscrypt-host target is defined in ART and is used in their host side testing. I am not going down into that rabbit hole to see if that flag is really needed.\n\nFTR I had it a little backwards with framework-minus-apex (stem: framework). The boot jars list contains \"framework-minus-apex\" not \"framework\". So, using the stem (of \"framework\") to search that list prevents it from being hiddenapi encoded which leads to errors in the global flags set due to missing classes.\n\nThere are no guarantees that these are the only problems that I would face due to unintended side effects of using stem in this way.",
+      "parentUuid": "bbc02a89_e7d107bb",
+      "range": {
+        "startLine": 1921,
+        "startChar": 17,
+        "endLine": 1921,
+        "endChar": 32
+      },
+      "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
