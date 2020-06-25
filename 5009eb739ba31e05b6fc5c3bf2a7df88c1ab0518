@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "cb08241b_4d786ca6",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-25T03:54:56Z",
+      "side": 1,
+      "message": "Is it the common Go-style to prefer switch/case over if/else?",
+      "range": {
+        "startLine": 1514,
+        "startChar": 0,
+        "endLine": 1515,
+        "endChar": 7
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67b0a7f9_ed5d9495",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -209,6 +232,46 @@
         "endLine": 1524,
         "endChar": 33
       },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c438fb_519ae1da",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1798,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-25T03:54:56Z",
+      "side": 1,
+      "message": "add some comment about why",
+      "range": {
+        "startLine": 1796,
+        "startChar": 0,
+        "endLine": 1798,
+        "endChar": 2
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9621d0ad_7f299658",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-25T03:54:56Z",
+      "side": 1,
+      "message": "here too",
       "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
