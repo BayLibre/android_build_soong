@@ -19,6 +19,7 @@ import (
 )
 
 func init() {
+	android.RegisterModuleType("rust_prebuilt_library", PrebuiltLibraryFactory)
 	android.RegisterModuleType("rust_prebuilt_dylib", PrebuiltDylibFactory)
 }
 
@@ -34,21 +35,43 @@ type prebuiltLibraryDecorator struct {
 
 var _ compiler = (*prebuiltLibraryDecorator)(nil)
 
+func PrebuiltLibraryFactory() android.Module {
+	module, _ := NewPrebuiltLibrary(android.HostAndDeviceSupported)
+	return module.Init()
+}
+
 func PrebuiltDylibFactory() android.Module {
 	module, _ := NewPrebuiltDylib(android.HostAndDeviceSupported)
 	return module.Init()
 }
 
+func NewPrebuiltLibrary(hod android.HostOrDeviceSupported) (*Module, *prebuiltLibraryDecorator) {
+	module, library := NewRustLibrary(hod)
+
+	library.setNoStdlibs()
+	library.BuildOnlyNative()
+
+	prebuilt := &prebuiltLibraryDecorator{
+		libraryDecorator: library,
+	}
+
+	module.compiler = prebuilt
+	module.AddProperties(&library.Properties)
+	module.AddProperties(&library.MutatedProperties)
+
+	return module, prebuilt
+}
+
 func NewPrebuiltDylib(hod android.HostOrDeviceSupported) (*Module, *prebuiltLibraryDecorator) {
 	module, library := NewRustLibrary(hod)
-	library.BuildOnlyDylib()
 	library.setNoStdlibs()
-	library.setDylib()
+	library.BuildOnlyDylib()
 	prebuilt := &prebuiltLibraryDecorator{
 		libraryDecorator: library,
 	}
 	module.compiler = prebuilt
 	module.AddProperties(&library.Properties)
+	module.AddProperties(&library.MutatedProperties)
 	return module, prebuilt
 }
 
@@ -58,7 +81,7 @@ func (prebuilt *prebuiltLibraryDecorator) compilerProps() []interface{} {
 }
 
 func (prebuilt *prebuiltLibraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
-	srcPath := srcPathFromModuleSrcs(ctx, prebuilt.Properties.Srcs)
+	srcPath := srcPathFromModuleSrcs(ctx, prebuilt.prebuiltSrcs())
 
 	prebuilt.unstrippedOutputFile = srcPath
 
@@ -72,4 +95,16 @@ func (prebuilt *prebuiltLibraryDecorator) compilerDeps(ctx DepsContext, deps Dep
 
 func (prebuilt *prebuiltLibraryDecorator) nativeCoverage() bool {
 	return false
+}
+
+func (prebuilt *prebuiltLibraryDecorator) prebuiltSrcs() []string {
+	srcs := prebuilt.Properties.Srcs
+	if prebuilt.rlib() {
+		srcs = append(srcs, prebuilt.libraryDecorator.Properties.Rlib.Srcs...)
+	}
+	if prebuilt.dylib() {
+		srcs = append(srcs, prebuilt.libraryDecorator.Properties.Dylib.Srcs...)
+	}
+
+	return srcs
 }
