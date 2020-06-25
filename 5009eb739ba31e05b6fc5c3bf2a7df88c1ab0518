@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0322297e_031d5d11",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-06-25T01:35:05Z",
+      "side": 1,
+      "message": "I am sorry, I am not familiar with the vendor APEX. Let me ask some naive questions.\nDoes it mean that this module is from AOSP source tree and uses vendor modules that was also from the AOSP source tree? Can\u0027t vendors define this value for their own source tree?\nI don\u0027t understand why these modules must use the platform VNDK version.",
+      "range": {
+        "startLine": 1515,
+        "startChar": 35,
+        "endLine": 1515,
+        "endChar": 45
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67b0a7f9_ed5d9495",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -18,6 +41,53 @@
         "startChar": 0,
         "endLine": 1521,
         "endChar": 3
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61378774_7d2faa42",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-06-25T01:35:05Z",
+      "side": 1,
+      "message": "No. `EnforceProductPartitionInterface()` is for the app side enforcement. You must check if `ProductVndkVersion()` is empty or not.",
+      "parentUuid": "67b0a7f9_ed5d9495",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1521,
+        "endChar": 3
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052e5b53_722e8be0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-06-25T01:35:05Z",
+      "side": 1,
+      "message": "If the module was from product, it must be also `ProductVariationPrefix`.\nBut is `use_vendor` also available for product variants?",
+      "range": {
+        "startLine": 1524,
+        "startChar": 12,
+        "endLine": 1524,
+        "endChar": 33
       },
       "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
