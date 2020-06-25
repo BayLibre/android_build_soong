@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "eb84489b_c3231242",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-06-25T02:59:49Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. If `ProductVndkVersion()` has value, this is a product variant, Otherwise it is a core variant. So I agree that removing `EnforceProductPartitionInterface()` is sufficient.",
+      "parentUuid": "cea4cb5b_1ec57c12",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1521,
+        "endChar": 3
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "052e5b53_722e8be0",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "I\u0027m thinking that apex { product_specific: true } might be possible.\nAnd, you\u0027re suggesting to use ProductVariationPrefix for product-specific case, right?\n\nThanks.",
       "parentUuid": "052e5b53_722e8be0",
+      "range": {
+        "startLine": 1524,
+        "startChar": 12,
+        "endLine": 1524,
+        "endChar": 33
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b91ca7_e92cdbc6",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-06-25T02:59:49Z",
+      "side": 1,
+      "message": "Yes. Which will be true for `vndkVersion !\u003d \"\"` below as well.",
+      "parentUuid": "0e123fa1_b5aab314",
       "range": {
         "startLine": 1524,
         "startChar": 12,
