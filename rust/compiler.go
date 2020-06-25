@@ -266,3 +266,19 @@ func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) android.Path {
 	}
 	return srcPaths[0]
 }
+
+func (compiler *baseCompiler) exportedLinkDirs() []string {
+	return compiler.linkDirs
+}
+
+func (compiler *baseCompiler) exportedDepFlags() []string {
+	return compiler.depFlags
+}
+
+func (compiler *baseCompiler) exportLinkDirs(dirs ...string) {
+	compiler.linkDirs = android.FirstUniqueStrings(append(compiler.linkDirs, dirs...))
+}
+
+func (compiler *baseCompiler) exportDepFlags(flags ...string) {
+	compiler.depFlags = android.FirstUniqueStrings(append(compiler.depFlags, flags...))
+}
