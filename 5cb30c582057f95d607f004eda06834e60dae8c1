@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003621950",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1348986?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "984d5577_c6c0adef",
+          "description": "Change to \"scripts/construct_context.sh\"",
+          "replacements": [
+            {
+              "path": "scripts/construct_context.sh",
+              "range": {
+                "startLine": 22,
+                "startChar": 47,
+                "endLine": 22,
+                "endChar": 53
+              },
+              "replacement": "context"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "83266df7_9b6d969e",
+        "filename": "scripts/construct_context.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-25T13:48:36Z",
+      "side": 1,
+      "message": "Common typo found: \"conext\" -- should it be \"context\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 22,
+        "startChar": 47,
+        "endLine": 22,
+        "endChar": 53
+      },
+      "revId": "5cb30c582057f95d607f004eda06834e60dae8c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
