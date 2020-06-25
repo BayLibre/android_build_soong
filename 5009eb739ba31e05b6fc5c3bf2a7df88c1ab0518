@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9904b34f_60239205",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-25T01:53:05Z",
+      "side": 1,
+      "message": "apex.use_vendor is used by com.android.media.swcodec and its main purpose is to use literally vendor variants for the sake of reducing the size. We do not allow other apexes to use the property(use_vendor). Even though swcodec apex uses vendor variants, it will run on across many API levels (from Q and later). Because swcodec apex packages most dependencies (VNDK libs) within it, it is built against \"platform vndk version\". It doesn\u0027t have to use \"board vndk version\".",
+      "parentUuid": "0322297e_031d5d11",
+      "range": {
+        "startLine": 1515,
+        "startChar": 35,
+        "endLine": 1515,
+        "endChar": 45
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67b0a7f9_ed5d9495",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "cea4cb5b_1ec57c12",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-25T01:53:05Z",
+      "side": 1,
+      "message": "In the below, vndkVersion is checked against \"\" and if it is empty, \"core variant\" is used, which may cover what you said.\n\nSo, you mean that checking EnforceProductPartitionInterface() flag is not necessary here, right?\n\nThanks. I\u0027ll update this.",
+      "parentUuid": "61378774_7d2faa42",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1521,
+        "endChar": 3
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "052e5b53_722e8be0",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2020-06-25T01:35:05Z",
       "side": 1,
       "message": "If the module was from product, it must be also `ProductVariationPrefix`.\nBut is `use_vendor` also available for product variants?",
+      "range": {
+        "startLine": 1524,
+        "startChar": 12,
+        "endLine": 1524,
+        "endChar": 33
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e123fa1_b5aab314",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-25T01:53:05Z",
+      "side": 1,
+      "message": "I\u0027m thinking that apex { product_specific: true } might be possible.\nAnd, you\u0027re suggesting to use ProductVariationPrefix for product-specific case, right?\n\nThanks.",
+      "parentUuid": "052e5b53_722e8be0",
       "range": {
         "startLine": 1524,
         "startChar": 12,
