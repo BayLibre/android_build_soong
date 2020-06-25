@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9193530e_b63142a6",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-25T19:34:22Z",
+      "side": 1,
+      "message": "this should be moved down into runKatiPackage",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 57
+      },
+      "revId": "c1e8d4245ecb79ac8e0825f5260bace52f470e85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
