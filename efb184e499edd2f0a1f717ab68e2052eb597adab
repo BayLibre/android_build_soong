@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8ca59018_6d35bf44",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2140,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-06-25T14:43:51Z",
+      "side": 1,
+      "message": "Please correct me if I\u0027m wrong.\n\nIIUC, \"use_vendor: true\" makes the APEX to use vndk libraries instead of core variant libraries, so it\u0027s /system-APEX using a \".vendor\" variant library and such \".vendor\" variant library is installed in /system?\n\nSo I think we actually do want the \".vendor\" suffix here? At least for vndk libs?",
+      "range": {
+        "startLine": 2139,
+        "startChar": 9,
+        "endLine": 2140,
+        "endChar": 56
+      },
+      "revId": "efb184e499edd2f0a1f717ab68e2052eb597adab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adced012_b4bdf9be",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -70,6 +93,30 @@
       "revId": "efb184e499edd2f0a1f717ab68e2052eb597adab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3737fa73_87574703",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-06-25T14:43:51Z",
+      "side": 1,
+      "message": "If these are uninstallable, shouldn\u0027t the LOCAL_REQUIRED_MODULES be empty?",
+      "parentUuid": "e356bedb_0439e37d",
+      "range": {
+        "startLine": 2267,
+        "startChar": 57,
+        "endLine": 2267,
+        "endChar": 93
+      },
+      "revId": "efb184e499edd2f0a1f717ab68e2052eb597adab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
