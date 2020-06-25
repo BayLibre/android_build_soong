@@ -15,6 +15,9 @@
 package build
 
 import (
+	"compress/gzip"
+	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -139,9 +142,41 @@ func runSoong(ctx Context, config Config) {
 	soongBuildMetrics := loadSoongBuildMetrics(ctx, config)
 	logSoongBuildMetrics(ctx, soongBuildMetrics)
 
+	if config.DistDir() != "" {
+		buildNinja := filepath.Join(config.SoongOutDir(), "build.ninja")
+		buildNinjaGz := filepath.Join(config.DistDir(), "soong", "build.ninja.gz")
+		err := gzipFileToFile(buildNinja, buildNinjaGz)
+		if err != nil {
+			ctx.Printf("failed to dist build.ninja.gz: %s", err.Error())
+		}
+	}
+
 	if ctx.Metrics != nil {
 		ctx.Metrics.SetSoongBuildMetrics(soongBuildMetrics)
 	}
+}
+
+func gzipFileToFile(src, dest string) error {
+	in, err := os.Open(src)
+	if err != nil {
+		return fmt.Errorf("failed to open %s: %s", src, err.Error())
+	}
+	defer in.Close()
+
+	out, err := os.OpenFile(dest, os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		return fmt.Errorf("failed to open %s: %s", dest, err.Error())
+	}
+	defer out.Close()
+	gz := gzip.NewWriter(out)
+	defer gz.Close()
+
+	_, err = io.Copy(gz, in)
+	if err != nil {
+		return fmt.Errorf("failed to gzip %s: %s", dest, err.Error())
+	}
+
+	return nil
 }
 
 func loadSoongBuildMetrics(ctx Context, config Config) *soong_metrics_proto.SoongBuildMetrics {
