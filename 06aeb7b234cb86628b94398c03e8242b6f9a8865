@@ -118,6 +118,30 @@
       "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd6209a_46faadfe",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-06-25T10:42:02Z",
+      "side": 1,
+      "message": "http://cs/android/packages/modules/SdkExtensions/testing/Android.bp?l\u003d69\u0026rcl\u003dc7a0b4273eb291b5250bf38b016b1b98b1cd0e9b\n\n(commented out, because hiddenapi doesn\u0027t use Stem)",
+      "parentUuid": "8f85c087_e100790f",
+      "range": {
+        "startLine": 1921,
+        "startChar": 17,
+        "endLine": 1921,
+        "endChar": 32
+      },
+      "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
