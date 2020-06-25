@@ -156,6 +156,9 @@ func runKatiBuild(ctx Context, config Config) {
 
 	runKati(ctx, config, katiBuildSuffix, args, func(env *Environment) {})
 
+	distGzipFile(ctx, config, config.KatiBuildNinjaFile())
+	distGzipFile(ctx, config, config.KatiPackageNinjaFile())
+
 	cleanCopyHeaders(ctx, config)
 	cleanOldInstalledFiles(ctx, config)
 }
