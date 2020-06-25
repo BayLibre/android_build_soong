@@ -111,22 +111,6 @@ func (library *libraryDecorator) nativeCoverage() bool {
 	return true
 }
 
-func (library *libraryDecorator) exportedDirs() []string {
-	return library.linkDirs
-}
-
-func (library *libraryDecorator) exportedDepFlags() []string {
-	return library.depFlags
-}
-
-func (library *libraryDecorator) reexportDirs(dirs ...string) {
-	library.linkDirs = android.FirstUniqueStrings(append(library.linkDirs, dirs...))
-}
-
-func (library *libraryDecorator) reexportDepFlags(flags ...string) {
-	library.depFlags = android.FirstUniqueStrings(append(library.depFlags, flags...))
-}
-
 func (library *libraryDecorator) rlib() bool {
 	return library.MutatedProperties.VariantIsRlib
 }
@@ -199,6 +183,7 @@ func (library *libraryDecorator) autoDep() autoDep {
 
 var _ compiler = (*libraryDecorator)(nil)
 var _ libraryInterface = (*libraryDecorator)(nil)
+var _ exportedFlagsProducer = (*libraryDecorator)(nil)
 
 // rust_library produces all rust variants.
 func RustLibraryFactory() android.Module {
@@ -438,8 +423,8 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	library.coverageOutputZipFile = TransformCoverageFilesToZip(ctx, coverageFiles, library.getStem(ctx))
 
 	if library.rlib() || library.dylib() {
-		library.reexportDirs(deps.linkDirs...)
-		library.reexportDepFlags(deps.depFlags...)
+		library.exportLinkDirs(deps.linkDirs...)
+		library.exportDepFlags(deps.depFlags...)
 	}
 	library.unstrippedOutputFile = outputFile
 
