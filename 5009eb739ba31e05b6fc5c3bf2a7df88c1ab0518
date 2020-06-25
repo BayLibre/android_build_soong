@@ -412,6 +412,30 @@
       "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "094ff892_35247638",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-25T08:21:51Z",
+      "side": 1,
+      "message": "fixed in aosp/1348951",
+      "parentUuid": "b61c1866_9691627a",
+      "range": {
+        "startLine": 1998,
+        "startChar": 1,
+        "endLine": 1998,
+        "endChar": 10
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
