@@ -95,11 +95,11 @@ func main() {
 	// TODO(ccross): make this a command line argument.  Requires plumbing through blueprint
 	//  to affect the command line of the primary builder.
 	if docFile == "" {
-		metricsFile := filepath.Join(bootstrap.BuildDir, "soong_build_metrics.pb")
-		err = android.WriteMetrics(configuration, metricsFile)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "error writing soong_build metrics %s: %s", metricsFile, err)
-			os.Exit(1)
-		}
+		// metricsFile := filepath.Join(bootstrap.BuildDir, "soong_build_metrics.pb")
+		// err = android.WriteMetrics(configuration, metricsFile)
+		// if err != nil {
+		// 	fmt.Fprintf(os.Stderr, "error writing soong_build metrics %s: %s", metricsFile, err)
+		// 	os.Exit(1)
+		// }
 	}
 }

@@ -203,6 +203,9 @@ func runMakeProductConfig(ctx Context, config Config) {
 		"CCACHE_SLOPPINESS",
 		"CCACHE_BASEDIR",
 		"CCACHE_CPP2",
+
+		"DUMP_MODULE_GRAPH_PROTO",
+		"DUMP_MODULE_GRAPH_TEXT_PROTO",
 	}
 
 	allVars := append(append([]string{
@@ -275,6 +278,9 @@ func runMakeProductConfig(ctx Context, config Config) {
 			env.Set(name, make_vars[name])
 		}
 	}
+
+	config.SetDumpModuleGraphProto(make_vars["DUMP_MODULE_GRAPH_PROTO"] == "true")
+	config.SetDumpModuleGraphTextProto(make_vars["DUMP_MODULE_GRAPH_TEXT_PROTO"] == "true")
 
 	config.SetKatiArgs(strings.Fields(make_vars["KATI_GOALS"]))
 	config.SetNinjaArgs(strings.Fields(make_vars["NINJA_GOALS"]))

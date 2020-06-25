@@ -85,6 +85,7 @@ func runSoong(ctx Context, config Config) {
 
 	var cfg microfactory.Config
 	cfg.Map("github.com/google/blueprint", "build/blueprint")
+	cfg.Map("github.com/golang/protobuf/proto", "external/golang-protobuf/proto")
 
 	cfg.TrimPath = absPath(ctx, ".")
 
@@ -108,7 +109,7 @@ func runSoong(ctx Context, config Config) {
 		}
 	}()
 
-	ninja := func(name, file string) {
+	ninja := func(name, file string, targets ...string) {
 		ctx.BeginTrace(metrics.RunSoong, name)
 		defer ctx.EndTrace()
 
@@ -116,8 +117,7 @@ func runSoong(ctx Context, config Config) {
 		nr := status.NewNinjaReader(ctx, ctx.Status.StartTool(), fifo)
 		defer nr.Close()
 
-		cmd := Command(ctx, config, "soong "+name,
-			config.PrebuiltBuildTool("ninja"),
+		args := append([]string{
 			"-d", "keepdepfile",
 			"-d", "stats",
 			"-o", "usesphonyoutputs=yes",
@@ -127,14 +127,32 @@ func runSoong(ctx Context, config Config) {
 			"-w", "missingoutfile=err",
 			"-j", strconv.Itoa(config.Parallel()),
 			"--frontend_file", fifo,
-			"-f", filepath.Join(config.SoongOutDir(), file))
-		cmd.Environment.Set("SOONG_SANDBOX_SOONG_BUILD", "true")
-		cmd.Sandbox = soongSandbox
+			"-f", filepath.Join(config.SoongOutDir(), file),
+		}, targets...)
+
+		cmd := Command(
+			ctx, config,
+			"soong "+name,
+			config.PrebuiltBuildTool("ninja"),
+			args...)
+		if !(config.dumpProto || config.dumpTextProto) {
+			// Why?
+			cmd.Environment.Set("SOONG_SANDBOX_SOONG_BUILD", "true")
+			cmd.Sandbox = soongSandbox
+		}
 		cmd.RunAndStreamOrFatal()
 	}
 
 	ninja("minibootstrap", ".minibootstrap/build.ninja")
-	ninja("bootstrap", ".bootstrap/build.ninja")
+
+	targets := []string{filepath.Join(config.SoongOutDir(), "build.ninja")}
+	if config.dumpProto {
+		targets = append(targets, filepath.Join(config.SoongOutDir(), "build.proto"))
+	}
+	if config.dumpTextProto {
+		targets = append(targets, filepath.Join(config.SoongOutDir(), "build.textproto"))
+	}
+	ninja("bootstrap", ".bootstrap/build.ninja", targets...)
 
 	soongBuildMetrics := loadSoongBuildMetrics(ctx, config)
 	logSoongBuildMetrics(ctx, soongBuildMetrics)

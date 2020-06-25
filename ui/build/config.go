@@ -60,6 +60,9 @@ type configImpl struct {
 	brokenNinjaEnvVars []string
 
 	pathReplaced bool
+
+	dumpProto     bool
+	dumpTextProto bool
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
@@ -819,6 +822,14 @@ func (c *configImpl) RemoteParallel() int {
 		return i
 	}
 	return 500
+}
+
+func (c *configImpl) SetDumpModuleGraphProto(dump bool) {
+	c.dumpProto = dump
+}
+
+func (c *configImpl) SetDumpModuleGraphTextProto(dump bool) {
+	c.dumpTextProto = dump
 }
 
 func (c *configImpl) SetKatiArgs(args []string) {
