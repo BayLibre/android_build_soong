@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f73735fc_6ab4fc6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-25T19:21:59Z",
+      "side": 1,
+      "message": "Done, and also the Android-*.mk and makevars-*.mk files.",
+      "parentUuid": "3aaa30a8_8f6ce5b7",
+      "range": {
+        "startLine": 10,
+        "startChar": 37,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "2acc1cadd55e1b79c56401ad824213344260e67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23d64010_5aac1110",
         "filename": "ui/build/finder.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "aed4d900_f1936e8b",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-25T19:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d64010_5aac1110",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 17
+      },
+      "revId": "2acc1cadd55e1b79c56401ad824213344260e67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e595328_50933b8a",
         "filename": "ui/build/soong.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "2acc1cadd55e1b79c56401ad824213344260e67e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb71ab7f_7ba05494",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-25T19:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e595328_50933b8a",
+      "revId": "2acc1cadd55e1b79c56401ad824213344260e67e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
