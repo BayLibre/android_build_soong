@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8c25771_3e1e7cdd",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-25T22:54:26Z",
+      "side": 1,
+      "message": "this comment is now stale",
+      "range": {
+        "startLine": 914,
+        "startChar": 23,
+        "endLine": 919,
+        "endChar": 88
+      },
+      "revId": "d3a25bc520f2efdbd191cffdf39eb031903e7f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
