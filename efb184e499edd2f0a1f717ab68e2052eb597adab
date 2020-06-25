@@ -22,6 +22,30 @@
       "revId": "efb184e499edd2f0a1f717ab68e2052eb597adab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d726e721_8c158a10",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-25T11:07:03Z",
+      "side": 1,
+      "message": "AFAIK, vendor modules don\u0027t cause system modules to be installed. For example, suppose that there\u0027s a vendor binary (e.g. `/vendor/bin/mybin`) which depends on a LLNDK lib(e.g. `liblog`), then Makefile for this binary would require `liblog.vendor`, which doesn\u0027t install `liblog` in `/system/lib` when we do `m mybin`.\n\nI tried to do the same thing in this change. When we package mybin in a vendor apex (e.g. com.android.mybin), then `m com.android.mybin` shouldn\u0027t install `liblog`.\n\nWell, as you said, LLNDK stubs are not installable, so keeping them as required might be no-op. But, it is more correct technically than to use just \"BaseModuleName\".",
+      "parentUuid": "adced012_b4bdf9be",
+      "range": {
+        "startLine": 2267,
+        "startChar": 57,
+        "endLine": 2267,
+        "endChar": 93
+      },
+      "revId": "efb184e499edd2f0a1f717ab68e2052eb597adab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
