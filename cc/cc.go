@@ -1944,7 +1944,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		// If the version is not specified, add dependency to all stubs libraries.
 		// The stubs library will be used when the depending module is built for APEX and
 		// the dependent module is not in the same APEX.
-		if version == "" && VersionVariantAvailable(c) {
+		if version == "" && VersionVariantAvailable(c) && !c.IsSdkVariant() {
 			for _, ver := range stubsVersionsFor(actx.Config())[name] {
 				// Note that depTag.ExplicitlyVersioned is false in this case.
 				actx.AddVariationDependencies([]blueprint.Variation{
