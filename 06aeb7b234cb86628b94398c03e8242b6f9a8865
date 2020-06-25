@@ -22,6 +22,30 @@
       "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4d30a08_6327b48e",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-25T10:09:39Z",
+      "side": 1,
+      "message": "No. I did think about using Stem but that is already being used and it is possible that there exists a module which uses Stem to set a name which happens to match one of the names in some of the lists. A new property/method avoids that issue altogether.",
+      "parentUuid": "be33ce6f_33c10bf5",
+      "range": {
+        "startLine": 1921,
+        "startChar": 17,
+        "endLine": 1921,
+        "endChar": 32
+      },
+      "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
