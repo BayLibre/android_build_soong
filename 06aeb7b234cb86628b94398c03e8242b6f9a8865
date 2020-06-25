@@ -142,6 +142,30 @@
       "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3f484f_25f2a4ba",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-25T12:14:42Z",
+      "side": 1,
+      "message": "That seems like a reasonable use case. I switched to Stem() locally but unfortunately, that caused a couple of issues with conscrypt-host (sets stem to \"conscrypt\" and also builds on the device) and framework-minus-apex (sets stem to \"framework\"). They both caused a problem building the global set of hiddenapi flags.\n\nIn order to prevent adding the same library twice I only added the library whose ModuleName() matched the Stem(). That prevented \"framework-minus-apex\" being added. Switching to only add a library that was installed, i.e. IsInstalled() \u003d\u003d true resulted in duplicate classes for \"conscrypt\" and \"conscrypt-host\". The latter sets installable: true.\n\nIt was to avoid these sorts of issues that I decided to use a completely new property and method. I am happy to investigate whether it is possible in future to move everything over to using Stem instead of InstallableName but that is not something that can be done in the rvc-dev timeframe.\n\nBug 159786352 tracks the follow up work.",
+      "parentUuid": "7dd6209a_46faadfe",
+      "range": {
+        "startLine": 1921,
+        "startChar": 17,
+        "endLine": 1921,
+        "endChar": 32
+      },
+      "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
