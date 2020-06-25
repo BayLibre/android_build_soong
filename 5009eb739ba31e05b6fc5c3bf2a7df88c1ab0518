@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67b0a7f9_ed5d9495",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-25T01:02:30Z",
+      "side": 1,
+      "message": "Justin, can you check this is okay?",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1521,
+        "endChar": 3
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b61c1866_9691627a",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-25T01:02:30Z",
+      "side": 1,
+      "message": "REQUIRED_MODULES should list \"libc.llndk\", not \"libc\"",
+      "range": {
+        "startLine": 1998,
+        "startChar": 1,
+        "endLine": 1998,
+        "endChar": 10
+      },
+      "revId": "5009eb739ba31e05b6fc5c3bf2a7df88c1ab0518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
