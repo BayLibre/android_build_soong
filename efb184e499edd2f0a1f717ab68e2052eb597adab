@@ -46,6 +46,30 @@
       "revId": "efb184e499edd2f0a1f717ab68e2052eb597adab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e356bedb_0439e37d",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-25T12:38:29Z",
+      "side": 1,
+      "message": "Ah, if this is the same as the non-APEX case, I feel fine.",
+      "parentUuid": "d726e721_8c158a10",
+      "range": {
+        "startLine": 2267,
+        "startChar": 57,
+        "endLine": 2267,
+        "endChar": 93
+      },
+      "revId": "efb184e499edd2f0a1f717ab68e2052eb597adab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
