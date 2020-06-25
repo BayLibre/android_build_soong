@@ -46,6 +46,30 @@
       "revId": "580eb4fe38cd71c93b47274f19d9ae3d5d47d4ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f7033a1_1f42440d",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-25T05:08:29Z",
+      "side": 1,
+      "message": "Without \u0027rm\u0027, the other commands below append the contents to the old file.\nI could get the same effect by \u0027cat\u0027ing with \u0027\u003e\u0027 instead of \u0027\u003e\u003e\u0027. But I thought \u0027rm -f \u003cold\u003e\u0027 reveals the intention better and I found that the same pattern in many other places.\n\nThanks.",
+      "parentUuid": "b8d5a283_2138a01e",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 56
+      },
+      "revId": "580eb4fe38cd71c93b47274f19d9ae3d5d47d4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
