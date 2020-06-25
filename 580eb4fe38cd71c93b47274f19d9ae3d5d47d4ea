@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8075292_9a3e79fe",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-06-25T04:19:05Z",
+      "side": 1,
+      "message": "I think this isn\u0027t unnecessary as output is always deleted by ninja (I believe). Can you give it a try?",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 56
+      },
+      "revId": "580eb4fe38cd71c93b47274f19d9ae3d5d47d4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
