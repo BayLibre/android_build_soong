@@ -94,6 +94,30 @@
       "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f85c087_e100790f",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-25T10:39:01Z",
+      "side": 1,
+      "message": "If you check in the sdk_library.go file you can see that I set both Stem and InstallableName to be consistent.",
+      "parentUuid": "0004c5e5_1b285d1b",
+      "range": {
+        "startLine": 1921,
+        "startChar": 17,
+        "endLine": 1921,
+        "endChar": 32
+      },
+      "revId": "06aeb7b234cb86628b94398c03e8242b6f9a8865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
