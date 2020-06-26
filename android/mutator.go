@@ -202,6 +202,7 @@ type BottomUpMutatorContext interface {
 	AddFarVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string)
 	AddInterVariantDependency(tag blueprint.DependencyTag, from, to blueprint.Module)
 	ReplaceDependencies(string)
+	ReplaceDependenciesIf(string, blueprint.ReplaceDependencyPredicate)
 	AliasVariation(variationName string)
 }
 
@@ -401,6 +402,10 @@ func (b *bottomUpMutatorContext) AddInterVariantDependency(tag blueprint.Depende
 
 func (b *bottomUpMutatorContext) ReplaceDependencies(name string) {
 	b.bp.ReplaceDependencies(name)
+}
+
+func (b *bottomUpMutatorContext) ReplaceDependenciesIf(name string, predicate blueprint.ReplaceDependencyPredicate) {
+	b.bp.ReplaceDependenciesIf(name, predicate)
 }
 
 func (b *bottomUpMutatorContext) AliasVariation(variationName string) {
