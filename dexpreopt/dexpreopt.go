@@ -283,6 +283,9 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 	// A flag indicating if the '&' class loader context is used.
 	unknownClassLoaderContext := false
 
+	systemServerJarIndex := android.IndexList(module.Name, systemServerJars)
+	isSystemServerJar := systemServerJarIndex >= 0
+
 	if module.EnforceUsesLibraries {
 		// Unconditional class loader context.
 		usesLibs := append(copyOf(module.UsesLibraries), module.OptionalUsesLibraries...)
@@ -306,17 +309,18 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 		if !contains(usesLibs, testBase) {
 			classLoaderContexts.addLibs(30, module, testBase)
 		}
-	} else if jarIndex := android.IndexList(module.Name, systemServerJars); jarIndex >= 0 {
+	} else if isSystemServerJar {
 		// System server jars should be dexpreopted together: class loader context of each jar
 		// should include all preceding jars on the system server classpath.
-		classLoaderContexts.addSystemServerLibs(anySdkVersion, ctx, module, systemServerJars[:jarIndex]...)
+		classLoaderContexts.addSystemServerLibs(anySdkVersion, ctx, module,
+			systemServerJars[:systemServerJarIndex]...)
 
 		// Copy the system server jar to a predefined location where dex2oat will find it.
 		dexPathHost := SystemServerDexJarHostPath(ctx, module.Name)
 		rule.Command().Text("mkdir -p").Flag(filepath.Dir(dexPathHost.String()))
 		rule.Command().Text("cp -f").Input(module.DexPath).Output(dexPathHost)
 
-		checkSystemServerOrder(ctx, jarIndex)
+		checkSystemServerOrder(ctx, systemServerJarIndex)
 	} else {
 		// Pass special class loader context to skip the classpath and collision check.
 		// This will get removed once LOCAL_USES_LIBRARIES is enforced.
@@ -327,50 +331,6 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	rule.Command().FlagWithArg("mkdir -p ", filepath.Dir(odexPath.String()))
 	rule.Command().FlagWithOutput("rm -f ", odexPath)
-	// Set values in the environment of the rule.  These may be modified by construct_context.sh.
-	if unknownClassLoaderContext {
-		rule.Command().
-			Text(`class_loader_context_arg=--class-loader-context=\&`).
-			Text(`stored_class_loader_context_arg=""`)
-	} else {
-		clc := classLoaderContexts[anySdkVersion]
-		rule.Command().
-			Text("class_loader_context_arg=--class-loader-context=PCL[" + strings.Join(clc.Host.Strings(), ":") + "]").
-			Implicits(clc.Host).
-			Text("stored_class_loader_context_arg=--stored-class-loader-context=PCL[" + strings.Join(clc.Target, ":") + "]")
-	}
-
-	if module.EnforceUsesLibraries {
-		if module.ManifestPath != nil {
-			rule.Command().Text(`target_sdk_version="$(`).
-				Tool(globalSoong.ManifestCheck).
-				Flag("--extract-target-sdk-version").
-				Input(module.ManifestPath).
-				Text(`)"`)
-		} else {
-			// No manifest to extract targetSdkVersion from, hope that DexJar is an APK
-			rule.Command().Text(`target_sdk_version="$(`).
-				Tool(globalSoong.Aapt).
-				Flag("dump badging").
-				Input(module.DexPath).
-				Text(`| grep "targetSdkVersion" | sed -n "s/targetSdkVersion:'\(.*\)'/\1/p"`).
-				Text(`)"`)
-		}
-		for _, ver := range classLoaderContexts.getSortedKeys() {
-			clc := classLoaderContexts.getValue(ver)
-			var varHost, varTarget string
-			if ver == anySdkVersion {
-				varHost = "dex_preopt_host_libraries"
-				varTarget = "dex_preopt_target_libraries"
-			} else {
-				varHost = fmt.Sprintf("conditional_host_libs_%d", ver)
-				varTarget = fmt.Sprintf("conditional_target_libs_%d", ver)
-			}
-			rule.Command().Textf(varHost+`="%s"`, strings.Join(clc.Host.Strings(), " ")).Implicits(clc.Host)
-			rule.Command().Textf(varTarget+`="%s"`, strings.Join(clc.Target, " "))
-		}
-		rule.Command().Text("source").Tool(globalSoong.ConstructContext).Input(module.DexPath)
-	}
 
 	// Devices that do not have a product partition use a symlink from /product to /system/product.
 	// Because on-device dexopt will see dex locations starting with /product, we change the paths
@@ -388,10 +348,49 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 		Flag("--runtime-arg").FlagWithArg("-Xms", global.Dex2oatXms).
 		Flag("--runtime-arg").FlagWithArg("-Xmx", global.Dex2oatXmx).
 		Flag("--runtime-arg").FlagWithInputList("-Xbootclasspath:", module.PreoptBootClassPathDexFiles, ":").
-		Flag("--runtime-arg").FlagWithList("-Xbootclasspath-locations:", module.PreoptBootClassPathDexLocations, ":").
-		Flag("${class_loader_context_arg}").
-		Flag("${stored_class_loader_context_arg}").
-		FlagWithArg("--boot-image=", strings.Join(module.DexPreoptImageLocations, ":")).Implicits(module.DexPreoptImagesDeps[archIdx].Paths()).
+		Flag("--runtime-arg").FlagWithList("-Xbootclasspath-locations:", module.PreoptBootClassPathDexLocations, ":")
+
+	if isSystemServerJar {
+		clc := classLoaderContexts[anySdkVersion]
+		cmd.Text("--class-loader-context=PCL[" + strings.Join(clc.Host.Strings(), ":") + "]").Implicits(clc.Host).
+			Text("--stored-class-loader-context=PCL[" + strings.Join(clc.Target, ":") + "]")
+	} else if !unknownClassLoaderContext {
+		// Invoke external tool that will generate class loader context. This is necessary
+		// because the context depends on the target SDK version, which has to be extracted
+		// from the manifest or the APK.
+		cmd.Text("$(").Tool(globalSoong.ConstructContext)
+
+		// Pass argument --target-sdk-version (invoke another external tool to construct version).
+		cmd.Text(` --target-sdk-version "$(`)
+		if module.ManifestPath != nil {
+			cmd.Tool(globalSoong.ManifestCheck).Flag("--extract-target-sdk-version").
+				Input(module.ManifestPath)
+		} else {
+			// No manifest to extract targetSdkVersion from, hope that DexJar is an APK
+			cmd.Tool(globalSoong.Aapt).Flag("dump badging").Input(module.DexPath).
+				Text(`| grep "targetSdkVersion" | sed -n "s/targetSdkVersion:'\(.*\)'/\1/p"`)
+		}
+		cmd.Text(`)"`)
+
+		// Pass arguments --host-classpath-for-sdk and --target-classpath-for-sdk for different
+		// SDK versions ("any" is a special keyword that means any SDK version).
+		for _, ver := range classLoaderContexts.getSortedKeys() {
+			clc := classLoaderContexts.getValue(ver)
+			verString := fmt.Sprintf("%d", ver)
+			if ver == anySdkVersion {
+				verString = "any"
+			}
+			cmd.Textf(`--host-classpath-for-sdk "%s" "%s"`, verString, strings.Join(clc.Host.Strings(), ":")).Implicits(clc.Host)
+			cmd.Textf(`--target-classpath-for-sdk "%s" "%s"`, verString, strings.Join(clc.Target, ":"))
+		}
+
+		// End of the external tool invocation.
+		cmd.Text(")")
+	} else {
+		cmd.Text(`--class-loader-context=\&`)
+	}
+
+	cmd.FlagWithArg("--boot-image=", strings.Join(module.DexPreoptImageLocations, ":")).Implicits(module.DexPreoptImagesDeps[archIdx].Paths()).
 		FlagWithInput("--dex-file=", module.DexPath).
 		FlagWithArg("--dex-location=", dexLocationArg).
 		FlagWithOutput("--oat-file=", odexPath).ImplicitOutput(vdexPath).
