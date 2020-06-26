@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ce84a73_e7a71930",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-06-26T14:18:13Z",
+      "side": 1,
+      "message": "Those are the implementation libraries needed for running the tests. a module_exports will only provide the stubs.",
+      "parentUuid": "dd52cfce_be7efb92",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 10
+      },
+      "revId": "0d9a99cafc0ebc704530cf3d3f3afa56b6b94fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b59ad8d3_42d57e21",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "0d9a99cafc0ebc704530cf3d3f3afa56b6b94fec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed2c637_818cbd81",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-06-26T14:18:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b59ad8d3_42d57e21",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "0d9a99cafc0ebc704530cf3d3f3afa56b6b94fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
