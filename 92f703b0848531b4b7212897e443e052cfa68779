@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9d5e663_e5be83b8",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-06-26T20:32:33Z",
+      "side": 1,
+      "message": "This should probably be a separate chance, but it\u0027s small and correct so I\u0027m not going to block on it.",
+      "revId": "92f703b0848531b4b7212897e443e052cfa68779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
