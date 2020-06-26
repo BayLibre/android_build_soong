@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "464f5ee7_281f7db1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1999,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-26T23:51:23Z",
+      "side": 1,
+      "message": "Agreed, this should match runtimeDepTag.",
+      "parentUuid": "abd76ae2_d2d83b8f",
+      "range": {
+        "startLine": 1997,
+        "startChar": 1,
+        "endLine": 1999,
+        "endChar": 2
+      },
+      "revId": "a1b927975eb3b9b7d978c899b1c921bc8794a005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71961055_4e3f3e3a",
         "filename": "cc/test.go",
         "patchSetId": 1
