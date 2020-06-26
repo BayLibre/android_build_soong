@@ -2491,7 +2491,7 @@ func TestStl(t *testing.T) {
 	}
 }
 
-func TestUsesLibraries(t *testing.T) {
+func TeestUsesLibraries(t *testing.T) {
 	bp := `
 		java_sdk_library {
 			name: "foo",
