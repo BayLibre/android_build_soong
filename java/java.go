@@ -140,9 +140,13 @@ func (j *Module) checkPlatformAPI(ctx android.ModuleContext) {
 // Findbugs
 
 type CompilerProperties struct {
-	// list of source files used to compile the Java module.  May be .java, .logtags, .proto,
+	// list of source files used to compile the Java module.  May be .java, .kt, .logtags, .proto,
 	// or .aidl files.
 	Srcs []string `android:"path,arch_variant"`
+
+	// list of Kotlin common multi-platform source files used to compile the module.  May be only
+	// be .kt files.
+	Common_srcs []string `android:"path,arch_variant"`
 
 	// list of source files that should not be used to build the Java module.
 	// This is most useful in the arch/multilib variants to remove non-common files
@@ -1293,6 +1297,11 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		flags = protoFlags(ctx, &j.properties, &j.protoProperties, flags)
 	}
 
+	kotlinCommonSrcFiles := android.PathsForModuleSrcExcludes(ctx, j.properties.Common_srcs, nil)
+	if len(kotlinCommonSrcFiles.FilterOutByExt(".kt")) > 0 {
+		ctx.PropertyErrorf("common_srcs", "common_srcs must be .kt files")
+	}
+
 	srcFiles = j.genSources(ctx, srcFiles, flags)
 
 	srcJars := srcFiles.FilterByExt(".srcjar")
@@ -1346,6 +1355,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 		// Collect .kt files for AIDEGen
 		j.expandIDEInfoCompiledSrcs = append(j.expandIDEInfoCompiledSrcs, srcFiles.FilterByExt(".kt").Strings()...)
+		j.expandIDEInfoCompiledSrcs = append(j.expandIDEInfoCompiledSrcs, kotlinCommonSrcFiles.Strings()...)
 
 		flags.classpath = append(flags.classpath, deps.kotlinStdlib...)
 		flags.classpath = append(flags.classpath, deps.kotlinAnnotations...)
@@ -1357,7 +1367,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			// Use kapt for annotation processing
 			kaptSrcJar := android.PathForModuleOut(ctx, "kapt", "kapt-sources.jar")
 			kaptResJar := android.PathForModuleOut(ctx, "kapt", "kapt-res.jar")
-			kotlinKapt(ctx, kaptSrcJar, kaptResJar, kotlinSrcFiles, srcJars, flags)
+			kotlinKapt(ctx, kaptSrcJar, kaptResJar, kotlinSrcFiles, kotlinCommonSrcFiles, srcJars, flags)
 			srcJars = append(srcJars, kaptSrcJar)
 			kotlinJars = append(kotlinJars, kaptResJar)
 			// Disable annotation processing in javac, it's already been handled by kapt
@@ -1366,7 +1376,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 
 		kotlinJar := android.PathForModuleOut(ctx, "kotlin", jarName)
-		kotlinCompile(ctx, kotlinJar, kotlinSrcFiles, srcJars, flags)
+		kotlinCompile(ctx, kotlinJar, kotlinSrcFiles, kotlinCommonSrcFiles, srcJars, flags)
 		if ctx.Failed() {
 			return
 		}

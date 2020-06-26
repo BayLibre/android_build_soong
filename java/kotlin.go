@@ -33,7 +33,7 @@ var kotlinc = pctx.AndroidRemoteStaticRule("kotlinc", android.RemoteRuleSupports
 			`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
 			`${config.GenKotlinBuildFileCmd} --classpath "$classpath" --name "$name"` +
 			` --out_dir "$classesDir" --srcs "$out.rsp" --srcs "$srcJarDir/list"` +
-			` --out "$kotlinBuildFile" && ` +
+			` $commonSrcFilesArg --out "$kotlinBuildFile" && ` +
 			`${config.KotlincCmd} ${config.JavacHeapFlags} $kotlincFlags ` +
 			`-jvm-target $kotlinJvmTarget -Xbuild-file=$kotlinBuildFile -kotlin-home $emptyDir && ` +
 			`${config.SoongZipCmd} -jar -o $out -C $classesDir -D $classesDir && ` +
@@ -54,12 +54,12 @@ var kotlinc = pctx.AndroidRemoteStaticRule("kotlinc", android.RemoteRuleSupports
 		Rspfile:        "$out.rsp",
 		RspfileContent: `$in`,
 	},
-	"kotlincFlags", "classpath", "srcJars", "srcJarDir", "classesDir", "kotlinJvmTarget", "kotlinBuildFile",
-	"emptyDir", "name")
+	"kotlincFlags", "classpath", "srcJars", "commonSrcFilesArg", "srcJarDir", "classesDir",
+	"kotlinJvmTarget", "kotlinBuildFile", "emptyDir", "name")
 
 // kotlinCompile takes .java and .kt sources and srcJars, and compiles the .kt sources into a classes jar in outputFile.
 func kotlinCompile(ctx android.ModuleContext, outputFile android.WritablePath,
-	srcFiles, srcJars android.Paths,
+	srcFiles, commonSrcFiles, srcJars android.Paths,
 	flags javaBuilderFlags) {
 
 	var deps android.Paths
@@ -69,6 +69,21 @@ func kotlinCompile(ctx android.ModuleContext, outputFile android.WritablePath,
 	kotlinName := filepath.Join(ctx.ModuleDir(), ctx.ModuleSubDir(), ctx.ModuleName())
 	kotlinName = strings.ReplaceAll(kotlinName, "/", "__")
 
+	commonSrcFilesArg := ""
+
+	if len(commonSrcFiles) > 0 {
+		// The list of common_srcs may be too long to put on the command line, but
+		// we can't use the rsp file because it is already being used for srcs.
+		// Insert a second rule to write out the list of resources to a file.
+		commonSrcsList := android.PathForModuleOut(ctx, "kotlinc_common_srcs.list")
+		rule := android.NewRuleBuilder()
+		rule.Command().Text("cp").FlagWithRspFileInputList("", commonSrcFiles).Output(commonSrcsList)
+		rule.Build(pctx, ctx, "kotlin_common_srcs_list", "kotlin common_srcs list")
+		deps = append(deps, commonSrcsList)
+		deps = append(deps, commonSrcFiles...)
+		commonSrcFilesArg = "--common_srcs " + commonSrcsList.String()
+	}
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        kotlinc,
 		Description: "kotlinc",
@@ -76,13 +91,14 @@ func kotlinCompile(ctx android.ModuleContext, outputFile android.WritablePath,
 		Inputs:      srcFiles,
 		Implicits:   deps,
 		Args: map[string]string{
-			"classpath":       flags.kotlincClasspath.FormJavaClassPath(""),
-			"kotlincFlags":    flags.kotlincFlags,
-			"srcJars":         strings.Join(srcJars.Strings(), " "),
-			"classesDir":      android.PathForModuleOut(ctx, "kotlinc", "classes").String(),
-			"srcJarDir":       android.PathForModuleOut(ctx, "kotlinc", "srcJars").String(),
-			"kotlinBuildFile": android.PathForModuleOut(ctx, "kotlinc-build.xml").String(),
-			"emptyDir":        android.PathForModuleOut(ctx, "kotlinc", "empty").String(),
+			"classpath":         flags.kotlincClasspath.FormJavaClassPath(""),
+			"kotlincFlags":      flags.kotlincFlags,
+			"commonSrcFilesArg": commonSrcFilesArg,
+			"srcJars":           strings.Join(srcJars.Strings(), " "),
+			"classesDir":        android.PathForModuleOut(ctx, "kotlinc", "classes").String(),
+			"srcJarDir":         android.PathForModuleOut(ctx, "kotlinc", "srcJars").String(),
+			"kotlinBuildFile":   android.PathForModuleOut(ctx, "kotlinc-build.xml").String(),
+			"emptyDir":          android.PathForModuleOut(ctx, "kotlinc", "empty").String(),
 			// http://b/69160377 kotlinc only supports -jvm-target 1.6 and 1.8
 			"kotlinJvmTarget": "1.8",
 			"name":            kotlinName,
@@ -130,8 +146,11 @@ var kapt = pctx.AndroidRemoteStaticRule("kapt", android.RemoteRuleSupports{Goma:
 // added as an additional input to kotlinc and javac rules, and the javac rule should have annotation processing
 // disabled.
 func kotlinKapt(ctx android.ModuleContext, srcJarOutputFile, resJarOutputFile android.WritablePath,
-	srcFiles, srcJars android.Paths,
+	srcFiles, commonSrcFiles, srcJars android.Paths,
 	flags javaBuilderFlags) {
+
+	srcFiles = append(android.Paths(nil), srcFiles...)
+	srcFiles = append(srcFiles, commonSrcFiles...)
 
 	var deps android.Paths
 	deps = append(deps, flags.kotlincClasspath...)
