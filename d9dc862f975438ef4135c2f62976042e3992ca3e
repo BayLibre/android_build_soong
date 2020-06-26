@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "26ac5924_1689af57",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-06-26T21:20:23Z",
+      "side": 1,
+      "message": "Done, removed GeneratedSources, but GeneratedDeps is still needed in builder.go.",
+      "parentUuid": "11d8948d_0115f0e3",
+      "range": {
+        "startLine": 659,
+        "startChar": 3,
+        "endLine": 660,
+        "endChar": 39
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5635ee20_3c1e987e",
         "filename": "rust/rust.go",
         "patchSetId": 5
@@ -259,6 +283,30 @@
       "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23683494_755624f7",
+        "filename": "rust/rust.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-06-26T21:20:23Z",
+      "side": 1,
+      "message": "Done; removed; although i think de-dup is future-change-proof and harmless",
+      "parentUuid": "d9dd6366_fd3ca2b9",
+      "range": {
+        "startLine": 805,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 74
+      },
+      "revId": "d9dc862f975438ef4135c2f62976042e3992ca3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
