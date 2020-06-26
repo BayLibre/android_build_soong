@@ -31,7 +31,9 @@ var kotlinc = pctx.AndroidRemoteStaticRule("kotlinc", android.RemoteRuleSupports
 		Command: `rm -rf "$classesDir" "$srcJarDir" "$kotlinBuildFile" "$emptyDir" && ` +
 			`mkdir -p "$classesDir" "$srcJarDir" "$emptyDir" && ` +
 			`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
-			`${config.GenKotlinBuildFileCmd} $classpath "$name" $classesDir $out.rsp $srcJarDir/list > $kotlinBuildFile &&` +
+			`${config.GenKotlinBuildFileCmd} --classpath "$classpath" --name "$name"` +
+			` --out_dir "$classesDir" --srcs "$out.rsp" --srcs "$srcJarDir/list"` +
+			` --out "$kotlinBuildFile" && ` +
 			`${config.KotlincCmd} ${config.JavacHeapFlags} $kotlincFlags ` +
 			`-jvm-target $kotlinJvmTarget -Xbuild-file=$kotlinBuildFile -kotlin-home $emptyDir && ` +
 			`${config.SoongZipCmd} -jar -o $out -C $classesDir -D $classesDir && ` +
@@ -74,7 +76,7 @@ func kotlinCompile(ctx android.ModuleContext, outputFile android.WritablePath,
 		Inputs:      srcFiles,
 		Implicits:   deps,
 		Args: map[string]string{
-			"classpath":       flags.kotlincClasspath.FormJavaClassPath("-classpath"),
+			"classpath":       flags.kotlincClasspath.FormJavaClassPath(""),
 			"kotlincFlags":    flags.kotlincFlags,
 			"srcJars":         strings.Join(srcJars.Strings(), " "),
 			"classesDir":      android.PathForModuleOut(ctx, "kotlinc", "classes").String(),
