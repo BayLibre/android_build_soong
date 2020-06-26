@@ -228,6 +228,14 @@ type Module interface {
 	// For more information, see Module.GenerateBuildActions within Blueprint's module_ctx.go
 	GenerateAndroidBuildActions(ModuleContext)
 
+	// Add dependencies to the components of a module, i.e. modules that are created
+	// by the module. This is run before prebuilts are renamed so as to allow a
+	// dependency to be added directly to a prebuilt child module instead of depending
+	// on a source module and relying on prebuilt processing to switch to the prebuilt
+	// module if preferred. A dependency on a prebuilt must include the "prebuilt_"
+	// prefix.
+	ComponentDepsMutator(ctx BottomUpMutatorContext)
+
 	DepsMutator(BottomUpMutatorContext)
 
 	base() *ModuleBase
@@ -748,6 +756,8 @@ type ModuleBase struct {
 
 	prefer32 func(ctx BaseModuleContext, base *ModuleBase, class OsClass) bool
 }
+
+func (m *ModuleBase) ComponentDepsMutator(BottomUpMutatorContext) {}
 
 func (m *ModuleBase) DepsMutator(BottomUpMutatorContext) {}
 

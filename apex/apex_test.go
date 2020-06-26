@@ -233,6 +233,7 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 	ctx.RegisterModuleType("apex_set", apexSetFactory)
 
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	ctx.PreArchMutators(android.RegisterComponentsMutator)
 	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
@@ -4787,7 +4788,7 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 	// The bar library should depend on the implementation jar.
 	barLibrary := ctx.ModuleForTests("bar", "android_common_myapex").Rule("javac")
 	if expected, actual := `^-classpath /[^:]*/turbine-combined/foo\.impl\.jar$`, barLibrary.Args["classpath"]; !regexp.MustCompile(expected).MatchString(actual) {
-		t.Errorf("expected %q, found %#q", expected, actual)
+		t.Errorf("expected %#q, found %#q", expected, actual)
 	}
 }
 
