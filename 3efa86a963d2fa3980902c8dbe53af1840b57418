@@ -88,6 +88,24 @@
       "revId": "3efa86a963d2fa3980902c8dbe53af1840b57418",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4805c2e1_12c9413a",
+        "filename": "rust/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-06-29T19:43:13Z",
+      "side": 1,
+      "message": "One option would be to include all source files from genrule dependencies of Rust modules, and then glob all rust sources in subdirs from rustc (e.g. if the source file is foo/bar/baz.rs, then foo/bar/**/*.rs gets shipped over, in addition to any generated sources.\n\nI also think the current mechanism will fail on RBE builds since it copies back the generated file into the source tree, but that\u0027s a separate issue.",
+      "parentUuid": "9fd854f3_2633ae45",
+      "revId": "3efa86a963d2fa3980902c8dbe53af1840b57418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
