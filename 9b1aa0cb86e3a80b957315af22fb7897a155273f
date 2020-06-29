@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf8bb35d_4037129d",
+        "filename": "scripts/gen-kotlin-build-file.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-06-29T15:46:34Z",
+      "side": 1,
+      "message": "Optional: would it make sense to default out_dir to the empty string instead?",
+      "range": {
+        "startLine": 65,
+        "startChar": 89,
+        "endLine": 65,
+        "endChar": 107
+      },
+      "revId": "9b1aa0cb86e3a80b957315af22fb7897a155273f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
