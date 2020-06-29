@@ -591,7 +591,7 @@ func IsStaticLibDepTag(depTag blueprint.DependencyTag) bool {
 }
 
 type sdkDep struct {
-	useModule, useFiles, useDefaultLibs, invalidVersion bool
+	useModule, useFiles, invalidVersion bool
 
 	// The modules that will be added to the bootclasspath when targeting 1.8 or lower
 	bootclasspath []string
@@ -599,6 +599,8 @@ type sdkDep struct {
 	// The default system modules to use. Will be an empty string if no system
 	// modules are to be used.
 	systemModules string
+
+	classpath []string
 
 	// The modules that will be added ot the classpath when targeting 1.9 or higher
 	java9Classpath []string
@@ -694,17 +696,14 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 		j.linter.deps(ctx)
 
 		sdkDep := decodeSdkDep(ctx, sdkContext(j))
-		if sdkDep.useDefaultLibs {
-			ctx.AddVariationDependencies(nil, bootClasspathTag, config.LegacyCorePlatformBootclasspathLibraries...)
-			ctx.AddVariationDependencies(nil, systemModulesTag, config.LegacyCorePlatformSystemModules)
-			if sdkDep.hasFrameworkLibs() {
-				ctx.AddVariationDependencies(nil, libTag, config.FrameworkLibraries...)
-			}
-		} else if sdkDep.useModule {
+		if sdkDep.useModule {
 			ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
 			ctx.AddVariationDependencies(nil, java9LibTag, sdkDep.java9Classpath...)
+			ctx.AddVariationDependencies(nil, libTag, sdkDep.classpath...)
 			if j.deviceProperties.EffectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
 				ctx.AddVariationDependencies(nil, proguardRaiseTag, config.LegacyCorePlatformBootclasspathLibraries...)
+			}
+			if j.deviceProperties.EffectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
 				ctx.AddVariationDependencies(nil, proguardRaiseTag, config.FrameworkLibraries...)
 			}
 		}
