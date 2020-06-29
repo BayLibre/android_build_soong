@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b5c6196e_7ff94548",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-29T17:56:42Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any need to split this over two lines.",
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a029dc2_bcbcc15a",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 3
@@ -13,6 +30,30 @@
       "writtenOn": "2020-06-29T17:40:41Z",
       "side": 1,
       "message": "Can you add a comment about why `isSystemServerJar` is handled differently?",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 353,
+        "endChar": 23
+      },
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5d7c02e_d3315698",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-29T17:56:42Z",
+      "side": 1,
+      "message": "This seems like a functional change mixed in with a refactoring. If it is then it would be better to extract that into a separate change.",
+      "parentUuid": "8a029dc2_bcbcc15a",
       "range": {
         "startLine": 353,
         "startChar": 1,
