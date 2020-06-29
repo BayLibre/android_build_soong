@@ -22,6 +22,30 @@
       "revId": "9b1aa0cb86e3a80b957315af22fb7897a155273f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f85ace9_6a344e62",
+        "filename": "scripts/gen-kotlin-build-file.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-29T19:02:16Z",
+      "side": 1,
+      "message": "I considered that, but it seemed more subtle an inconsistent with the rest of the arguments than making it explicit here.",
+      "parentUuid": "bf8bb35d_4037129d",
+      "range": {
+        "startLine": 65,
+        "startChar": 89,
+        "endLine": 65,
+        "endChar": 107
+      },
+      "revId": "9b1aa0cb86e3a80b957315af22fb7897a155273f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
