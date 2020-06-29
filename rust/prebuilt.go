@@ -65,9 +65,6 @@ func NewPrebuiltLibrary(hod android.HostOrDeviceSupported) (*Module, *prebuiltLi
 	}
 
 	module.compiler = prebuilt
-	module.AddProperties(&library.Properties)
-	module.AddProperties(&library.MutatedProperties)
-
 	return module, prebuilt
 }
 
@@ -79,8 +76,6 @@ func NewPrebuiltDylib(hod android.HostOrDeviceSupported) (*Module, *prebuiltLibr
 		libraryDecorator: library,
 	}
 	module.compiler = prebuilt
-	module.AddProperties(&library.Properties)
-	module.AddProperties(&library.MutatedProperties)
 	return module, prebuilt
 }
 
@@ -92,13 +87,11 @@ func NewPrebuiltRlib(hod android.HostOrDeviceSupported) (*Module, *prebuiltLibra
 		libraryDecorator: library,
 	}
 	module.compiler = prebuilt
-	module.AddProperties(&library.Properties)
-	module.AddProperties(&library.MutatedProperties)
 	return module, prebuilt
 }
 
 func (prebuilt *prebuiltLibraryDecorator) compilerProps() []interface{} {
-	return append(prebuilt.baseCompiler.compilerProps(),
+	return append(prebuilt.libraryDecorator.compilerProps(),
 		&prebuilt.Properties)
 }
 
