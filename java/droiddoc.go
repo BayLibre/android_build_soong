@@ -1456,12 +1456,13 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 			inputs = append(inputs, strings.Split(v, ",")...)
 		}
 		cmd.Text((&remoteexec.REParams{
-			Labels:          labels,
-			ExecStrategy:    execStrategy,
-			Inputs:          inputs,
-			RSPFile:         implicitsRsp.String(),
-			ToolchainInputs: []string{config.JavaCmd(ctx).String()},
-			Platform:        map[string]string{remoteexec.PoolKey: pool},
+			Labels:               labels,
+			ExecStrategy:         execStrategy,
+			Inputs:               inputs,
+			RSPFile:              implicitsRsp.String(),
+			ToolchainInputs:      []string{config.JavaCmd(ctx).String()},
+			Platform:             map[string]string{remoteexec.PoolKey: pool},
+			EnvironmentWhitelist: []string{"TMPDIR"},
 		}).NoVarTemplate(ctx.Config()))
 	}
 

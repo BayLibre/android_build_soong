@@ -53,8 +53,9 @@ func TestTemplate(t *testing.T) {
 					ContainerImageKey: DefaultImage,
 					PoolKey:           "default",
 				},
+				EnvironmentWhitelist: []string{"FOO"},
 			},
-			want: fmt.Sprintf("${remoteexec.Wrapper} --labels=compiler=clang,lang=cpp,type=compile --platform=\"Pool=default,container-image=%s\" --exec_strategy=remote --inputs=$in --input_list_paths=$out.rsp --output_files=$out --toolchain_inputs=clang++ -- ", DefaultImage),
+			want: fmt.Sprintf("${remoteexec.Wrapper} --labels=compiler=clang,lang=cpp,type=compile --platform=\"Pool=default,container-image=%s\" --exec_strategy=remote --inputs=$in --input_list_paths=$out.rsp --output_files=$out --toolchain_inputs=clang++ --env_var_whitelist=FOO -- ", DefaultImage),
 		},
 	}
 	for _, test := range tests {
