@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7c34f14_105fbdd1",
+        "filename": "rust/compiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-30T20:10:28Z",
+      "side": 1,
+      "message": "Does this comment still apply?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 0
+      },
+      "revId": "04e3caf7d5b338ebbe95c53bbb0678328f247366",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
