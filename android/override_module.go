@@ -28,6 +28,7 @@ package android
 // module based on it.
 
 import (
+	"sort"
 	"sync"
 
 	"github.com/google/blueprint"
@@ -156,6 +157,11 @@ func (b *OverridableModuleBase) setOverridableProperties(prop []interface{}) {
 func (b *OverridableModuleBase) addOverride(o OverrideModule) {
 	b.overridesLock.Lock()
 	b.overrides = append(b.overrides, o)
+	if len(b.overrides) > 1 {
+		sort.Slice(b.overrides, func(i, j int) bool {
+			return b.overrides[i].Name() < b.overrides[j].Name()
+		})
+	}
 	b.overridesLock.Unlock()
 }
 
