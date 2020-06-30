@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "530c56b9_f6f4b933",
+        "filename": "rust/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-06-30T17:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3720782_5f49c68d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "b7909ece49dccc517896991b1d0c2d7fcd3fc936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d755375f_8620e840",
         "filename": "rust/library.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "13c4fdf3_6f129653",
+        "filename": "rust/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-06-30T17:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d755375f_8620e840",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "b7909ece49dccc517896991b1d0c2d7fcd3fc936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2731ff78_8b29db97",
         "filename": "rust/library.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "b7909ece49dccc517896991b1d0c2d7fcd3fc936",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb54ad2_e988a17a",
+        "filename": "rust/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-06-30T17:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2731ff78_8b29db97",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 0
+      },
+      "revId": "b7909ece49dccc517896991b1d0c2d7fcd3fc936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
