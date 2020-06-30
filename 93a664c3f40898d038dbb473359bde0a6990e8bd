@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5eece953_31fa28d7",
+        "filename": "scripts/construct_context.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-06-30T20:12:24Z",
+      "side": 1,
+      "message": "Sorry for my lack of clarity previously, constants are commonly upper snake case (https://www.python.org/dev/peps/pep-0008/#constants)",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "93a664c3f40898d038dbb473359bde0a6990e8bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "648a6c10_de0d09dc",
+        "filename": "scripts/construct_context.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-06-30T20:12:24Z",
+      "side": 1,
+      "message": "I believe this is default and can be omitted.",
+      "range": {
+        "startLine": 57,
+        "startChar": 36,
+        "endLine": 57,
+        "endChar": 40
+      },
+      "revId": "93a664c3f40898d038dbb473359bde0a6990e8bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
