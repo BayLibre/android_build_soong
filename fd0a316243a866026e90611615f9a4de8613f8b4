@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "089a655f_49280c61",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-30T14:32:50Z",
+      "side": 1,
+      "message": "Ok, obsolete in https://r.android.com/1353464",
+      "parentUuid": "b5c6196e_7ff94548",
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a029dc2_bcbcc15a",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 3
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "51171c1c_a07ab493",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-30T14:32:50Z",
+      "side": 1,
+      "message": "Agreed, that can be done it two steps. I split this CL into https://r.android.com/1353464 and https://r.android.com/1353554.",
+      "parentUuid": "b5d7c02e_d3315698",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 353,
+        "endChar": 23
+      },
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25f67f24_f11e92d6",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 3
@@ -86,6 +128,30 @@
       "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc690b88_2b497719",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-30T14:32:50Z",
+      "side": 1,
+      "message": "Not really, I returned it back.",
+      "parentUuid": "25f67f24_f11e92d6",
+      "range": {
+        "startLine": 366,
+        "startChar": 3,
+        "endLine": 371,
+        "endChar": 81
+      },
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "970259f3_640d4c3c",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2494,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-30T14:32:50Z",
+      "side": 1,
+      "message": "Oops, nice catch! It\u0027s just my way of temporarily disabling a test while I work on the patch. Forgot to fix it.",
+      "parentUuid": "3d7b4196_79c8288a",
+      "range": {
+        "startLine": 2494,
+        "startChar": 5,
+        "endLine": 2494,
+        "endChar": 23
+      },
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6624e991_1672958a",
         "filename": "scripts/construct_context.py",
         "patchSetId": 3
@@ -132,6 +222,30 @@
       "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a19ac0d_a53bd643",
+        "filename": "scripts/construct_context.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-30T14:32:50Z",
+      "side": 1,
+      "message": "Added, thanks.",
+      "parentUuid": "6624e991_1672958a",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -158,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "8e632bca_237eb8a0",
+        "filename": "scripts/construct_context.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-30T14:32:50Z",
+      "side": 1,
+      "message": "Fixed, thank you.",
+      "parentUuid": "704f98d2_942bd1de",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 12
+      },
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fa8b49b_24c336e7",
         "filename": "scripts/construct_context.py",
         "patchSetId": 3
@@ -178,6 +316,30 @@
       "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d3391a0_84521228",
+        "filename": "scripts/construct_context.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-06-30T14:32:50Z",
+      "side": 1,
+      "message": "Fixed, thanks!",
+      "parentUuid": "8fa8b49b_24c336e7",
+      "range": {
+        "startLine": 59,
+        "startChar": 11,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "fd0a316243a866026e90611615f9a4de8613f8b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
