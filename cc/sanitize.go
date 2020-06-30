@@ -480,6 +480,12 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	if Bool(sanitize.Properties.Sanitize.Fuzzer) {
 		flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize=fuzzer-no-link")
 
+		// Enable the canonical "build changes" macro for fuzzing.
+		flags.Local.CFlags = append(flags.Local.CFlags, "-DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION=1")
+
+		// Enable assert() when fuzzing.
+		flags.Local.CFlags = append(flags.Local.CFlags, "-UNDEBUG")
+
 		// TODO(b/131771163): LTO and Fuzzer support is mutually incompatible.
 		_, flags.Local.LdFlags = removeFromList("-flto", flags.Local.LdFlags)
 		_, flags.Local.CFlags = removeFromList("-flto", flags.Local.CFlags)
