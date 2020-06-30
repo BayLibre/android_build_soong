@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9319478f_52b3e75c",
+        "filename": "cc/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-06-30T19:36:17Z",
+      "side": 1,
+      "message": "The two lists here can also be deduped, but I\u0027ll do that after this lands since this helps oth avoid making some changes.",
+      "revId": "de5aade0e800504095326b42ba6529aeb54f9a6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
