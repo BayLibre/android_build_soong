@@ -94,9 +94,6 @@ type generatorProperties struct {
 	//  $(depfile): a file to which dependencies will be written, if the depfile property is set to true
 	//  $(genDir): the sandbox directory for this tool; contains $(out)
 	//  $$: a literal $
-	//
-	// All files used must be declared as inputs (to ensure proper up-to-date checks).
-	// Use "$(in)" directly in Cmd to ensure that all inputs used are declared.
 	Cmd *string
 
 	// Enable reading a file containing dependencies in gcc format after the command completes
