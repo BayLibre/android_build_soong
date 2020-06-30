@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f35922e_15934274",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-30T17:26:14Z",
+      "side": 1,
+      "message": "As long as you\u0027re here, this doesn\u0027t belong in the go/Android.bp documentation.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 81
+      },
+      "revId": "e39ce0d8fcf95852931fefa53bbc33f6ee775a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
