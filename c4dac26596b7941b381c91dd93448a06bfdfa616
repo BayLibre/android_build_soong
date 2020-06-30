@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "659b3186_8056b212",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-06-30T20:11:08Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not sure if I have enough context to review this change -- are system server jars and EnforceUsesLibraries guaranteed to be mutually exclusive? If not, reordering these if statements would cause a behavior change.",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 81
+      },
+      "revId": "c4dac26596b7941b381c91dd93448a06bfdfa616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
