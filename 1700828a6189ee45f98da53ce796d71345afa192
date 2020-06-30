@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0823aca_911da79d",
+        "filename": "android/override_module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-30T17:06:14Z",
+      "side": 1,
+      "message": "This list is probably small, but sorting every time we add to a list has gotten us in trouble before.  Maybe make getOverrides return a sorted copy?  Or take the lock and sort in place?",
+      "revId": "1700828a6189ee45f98da53ce796d71345afa192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
