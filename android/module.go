@@ -248,6 +248,7 @@ type Module interface {
 	InitRc() Paths
 	VintfFragments() Paths
 	NoticeFiles() Paths
+	Owner() string
 
 	AddProperties(props ...interface{})
 	GetProperties() []interface{}
