@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9c77a438_0ef227d6",
+        "filename": "rust/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-30T17:34:18Z",
+      "side": 1,
+      "message": "How does rust find the generated sources?  They are added to the dependencies of the rule, but not the command line.",
+      "revId": "3efa86a963d2fa3980902c8dbe53af1840b57418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db38ebb2_27e46377",
         "filename": "rust/compiler.go",
         "patchSetId": 7
@@ -160,6 +177,24 @@
       "revId": "3efa86a963d2fa3980902c8dbe53af1840b57418",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c974fac0_35e9559f",
+        "filename": "rust/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-06-30T17:34:18Z",
+      "side": 1,
+      "message": "If the rust rules are eventually going to have to specify all sources for RBE, I think it makes more sense to put generated sources in srcs now rather than adding generated_sources that will be unnecessary later.",
+      "parentUuid": "b646b819_dbbd5cb8",
+      "revId": "3efa86a963d2fa3980902c8dbe53af1840b57418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
