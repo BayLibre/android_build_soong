@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5808ddbb_6cb57d1d",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-06-30T14:57:13Z",
+      "side": 1,
+      "message": "Can be replaced with ctx.Config().HostToolPath(ctx, \"construct_context\")",
+      "range": {
+        "startLine": 386,
+        "startChar": 20,
+        "endLine": 386,
+        "endChar": 90
+      },
+      "revId": "9c5566e09521dbee2aed6fe6fd2c7fc56f9d1b44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6b8cdd8_e286458c",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-06-30T14:57:13Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 577,
+        "startChar": 62,
+        "endLine": 577,
+        "endChar": 65
+      },
+      "revId": "9c5566e09521dbee2aed6fe6fd2c7fc56f9d1b44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
