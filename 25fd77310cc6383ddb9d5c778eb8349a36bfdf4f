@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ebeba29_9c92f8c8",
+        "filename": "finder/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-06-30T06:47:56Z",
+      "side": 1,
+      "message": "We won\u0027t necessarily detect a case where a symlink changes between a file and a directory, but it\u0027s also an edge case we\u0027re rarely going to hit in practice.",
+      "revId": "25fd77310cc6383ddb9d5c778eb8349a36bfdf4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
