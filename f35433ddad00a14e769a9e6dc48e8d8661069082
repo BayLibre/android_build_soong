@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003688616",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "29f7a760_3e25e7b8",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T18:35:35Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "f35433ddad00a14e769a9e6dc48e8d8661069082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003688616",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "77adcf31_407228e7",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T18:35:35Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "f35433ddad00a14e769a9e6dc48e8d8661069082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003688616",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a040904f_2ca24fc5",
+        "filename": "remoteexec/remoteexec_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T18:35:35Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "f35433ddad00a14e769a9e6dc48e8d8661069082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
