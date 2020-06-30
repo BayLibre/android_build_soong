@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3720782_5f49c68d",
+        "filename": "rust/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-30T16:27:47Z",
+      "side": 1,
+      "message": "We should rename these as well for consistency even if it makes them verbose. Perhaps we call these rust_ffi rather than rust_library_foreign?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 0
+      },
+      "revId": "b7909ece49dccc517896991b1d0c2d7fcd3fc936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d755375f_8620e840",
+        "filename": "rust/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-30T16:27:47Z",
+      "side": 1,
+      "message": "nit: BuildOnlyRust or BuildOnlyRustNative",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "b7909ece49dccc517896991b1d0c2d7fcd3fc936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2731ff78_8b29db97",
+        "filename": "rust/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-30T16:27:47Z",
+      "side": 1,
+      "message": "nit: For clarity set these all to false so factories are required to call one of the BuildOnly functions (which they\u0027re all already doing except RustLibraryFactory).",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 0
+      },
+      "revId": "b7909ece49dccc517896991b1d0c2d7fcd3fc936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
