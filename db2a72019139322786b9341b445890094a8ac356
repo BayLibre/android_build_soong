@@ -1,0 +1,151 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003687723",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9f3645f1_0d2fe834",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T17:42:34Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "db2a72019139322786b9341b445890094a8ac356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003687723",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c7a94984_44a660fb",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T17:42:34Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "db2a72019139322786b9341b445890094a8ac356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003687723",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d35981e4_24934fd9",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T17:42:34Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "db2a72019139322786b9341b445890094a8ac356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003687723",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0260f8a1_5d0e9423",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T17:42:34Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "db2a72019139322786b9341b445890094a8ac356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003687723",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9074ad56_79af1268",
+        "filename": "remoteexec/remoteexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T17:42:34Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "db2a72019139322786b9341b445890094a8ac356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003687723",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "84280d79_6b358d5b",
+        "filename": "remoteexec/remoteexec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T17:42:34Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "db2a72019139322786b9341b445890094a8ac356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003687723",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353583?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7ddf545f_c1c55b6e",
+        "filename": "remoteexec/remoteexec_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-30T17:42:34Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "db2a72019139322786b9341b445890094a8ac356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
