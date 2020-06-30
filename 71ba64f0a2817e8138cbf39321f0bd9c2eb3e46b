@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a494b738_304d5926",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-30T18:25:34Z",
+      "side": 1,
+      "message": "Just following the pattern of DepsMutator. I did try creating a separate interface but that had to include Enabled() as well as ComponentDepsMutator() and didn\u0027t seem worth it.",
+      "parentUuid": "01a6aadb_a7385ca8",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 0
+      },
+      "revId": "71ba64f0a2817e8138cbf39321f0bd9c2eb3e46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e08280d_00c02f27",
         "filename": "android/mutator.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "71ba64f0a2817e8138cbf39321f0bd9c2eb3e46b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9dad925_5141174c",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-30T18:25:34Z",
+      "side": 1,
+      "message": "It was described slightly in the ComponentDepsMutator but I have improved that.",
+      "parentUuid": "4e08280d_00c02f27",
+      "range": {
+        "startLine": 118,
+        "startChar": 28,
+        "endLine": 118,
+        "endChar": 38
+      },
+      "revId": "71ba64f0a2817e8138cbf39321f0bd9c2eb3e46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eb8f65b2_0fcf450c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4926,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-30T18:25:34Z",
+      "side": 1,
+      "message": "No. Removed.",
+      "parentUuid": "147832dc_47c08c78",
+      "range": {
+        "startLine": 4926,
+        "startChar": 22,
+        "endLine": 4926,
+        "endChar": 23
+      },
+      "revId": "71ba64f0a2817e8138cbf39321f0bd9c2eb3e46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49ecf17e_08e89779",
         "filename": "java/sdk_library.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "71ba64f0a2817e8138cbf39321f0bd9c2eb3e46b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4546c2b3_46db6520",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-06-30T18:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49ecf17e_08e89779",
+      "range": {
+        "startLine": 977,
+        "startChar": 13,
+        "endLine": 977,
+        "endChar": 17
+      },
+      "revId": "71ba64f0a2817e8138cbf39321f0bd9c2eb3e46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
