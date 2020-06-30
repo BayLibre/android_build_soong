@@ -479,6 +479,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if Bool(sanitize.Properties.Sanitize.Fuzzer) {
 		flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize=fuzzer-no-link")
+		flags.Local.CFlags = append(flags.Local.CFlags, "-DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION=1")
 
 		// TODO(b/131771163): LTO and Fuzzer support is mutually incompatible.
 		_, flags.Local.LdFlags = removeFromList("-flto", flags.Local.LdFlags)
