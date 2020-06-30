@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddaf06c5_2ebf9c63",
+        "filename": "rust/rust.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-06-30T19:28:09Z",
+      "side": 1,
+      "message": "Is this needed? Seems like all rustLibs would manifest as either rlibs or dylibs and make their way to make as AndroidMkRlibs or AndroidMkDylibs",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "a06a424a95857fb7021bc76384e6260683c13925",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
