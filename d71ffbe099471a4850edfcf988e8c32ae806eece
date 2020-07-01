@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fc7f0aa_9f006d2b",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-01T15:05:18Z",
+      "side": 1,
+      "message": "This can just be\n  !Bool(compiler.Properties.No_lint)\n\nBool does the nil check implicitly and returns false if nil.",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 71
+      },
+      "revId": "d71ffbe099471a4850edfcf988e8c32ae806eece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
