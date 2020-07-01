@@ -22,6 +22,30 @@
       "revId": "7484e3dbb23f17a153b905dba392fdcf1f417b8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ef3f01_cf535261",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-01T20:33:37Z",
+      "side": 1,
+      "message": "Thanks for the pointer, done.",
+      "parentUuid": "5e8b5726_55676dc0",
+      "range": {
+        "startLine": 111,
+        "startChar": 34,
+        "endLine": 111,
+        "endChar": 46
+      },
+      "revId": "7484e3dbb23f17a153b905dba392fdcf1f417b8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
