@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003702380",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1351945?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "f318e551_c08a62a9",
+          "description": "Change to \"java/java.go\"",
+          "replacements": [
+            {
+              "path": "java/java.go",
+              "range": {
+                "startLine": 603,
+                "startChar": 90,
+                "endLine": 603,
+                "endChar": 99
+              },
+              "replacement": "targeted"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a6deac2d_e2de2bf0",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-01T11:09:33Z",
+      "side": 1,
+      "message": "Common typo found: \"targetted\" -- should it be \"targeted\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 603,
+        "startChar": 90,
+        "endLine": 603,
+        "endChar": 99
+      },
+      "revId": "f1849de43eb4def7ffcbde354f6e4fabfd998dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
