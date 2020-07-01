@@ -22,6 +22,30 @@
       "revId": "e85934817e52996d2c634868dfdfa16d9a7abb78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0a0b6a6_35aea7d2",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-01T21:35:13Z",
+      "side": 1,
+      "message": "They are source files that kotlinc treats specially, see https://kotlinlang.org/docs/reference/multiplatform.html.  They need to be listed separately because they need to be identified as common sources when passed to kotlinc.",
+      "parentUuid": "3e661f51_e0d5b6ac",
+      "range": {
+        "startLine": 147,
+        "startChar": 19,
+        "endLine": 147,
+        "endChar": 53
+      },
+      "revId": "e85934817e52996d2c634868dfdfa16d9a7abb78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
