@@ -40,15 +40,13 @@ type GlobalConfig struct {
 	DisableGenerateProfile bool   // don't generate profiles
 	ProfileDir             string // directory to find profiles in
 
-	BootJars          []string // modules for jars that form the boot class path
-	UpdatableBootJars []string // jars within apex that form the boot class path
-
-	ArtApexJars []string // modules for jars that are in the ART APEX
-
-	SystemServerJars          []string // jars that form the system server
-	SystemServerApps          []string // apps that are loaded into system server
-	UpdatableSystemServerJars []string // jars within apex that are loaded into system server
-	SpeedApps                 []string // apps that should be speed optimized
+	BootJars                  android.LocJars // modules for jars that form the boot class path
+	UpdatableBootJars         android.LocJars // jars within apex that form the boot class path
+	ArtApexJars               android.LocJars // modules for jars that are in the ART APEX
+	SystemServerJars          []string        // jars that form the system server
+	SystemServerApps          []string        // apps that are loaded into system server
+	UpdatableSystemServerJars android.LocJars // jars within apex that are loaded into system server
+	SpeedApps                 []string        // apps that should be speed optimized
 
 	BrokenSuboptimalOrderOfSystemServerJars bool // if true, sub-optimal order does not cause a build error
 
@@ -189,8 +187,12 @@ func ParseGlobalConfig(ctx android.PathContext, data []byte) (*GlobalConfig, err
 
 		// Copies of entries in GlobalConfig that are not constructable without extra parameters.  They will be
 		// used to construct the real value manually below.
-		DirtyImageObjects string
-		BootImageProfiles []string
+		BootJars                  []string
+		UpdatableBootJars         []string
+		ArtApexJars               []string
+		UpdatableSystemServerJars []string
+		DirtyImageObjects         string
+		BootImageProfiles         []string
 	}
 
 	config := GlobalJSONConfig{}
@@ -200,6 +202,10 @@ func ParseGlobalConfig(ctx android.PathContext, data []byte) (*GlobalConfig, err
 	}
 
 	// Construct paths that require a PathContext.
+	config.GlobalConfig.BootJars = android.CreateLocJars(ctx, config.BootJars)
+	config.GlobalConfig.UpdatableBootJars = android.CreateLocJars(ctx, config.UpdatableBootJars)
+	config.GlobalConfig.ArtApexJars = android.CreateLocJars(ctx, config.ArtApexJars)
+	config.GlobalConfig.UpdatableSystemServerJars = android.CreateLocJars(ctx, config.UpdatableSystemServerJars)
 	config.GlobalConfig.DirtyImageObjects = android.OptionalPathForPath(constructPath(ctx, config.DirtyImageObjects))
 	config.GlobalConfig.BootImageProfiles = constructPaths(ctx, config.BootImageProfiles)
 
@@ -530,12 +536,12 @@ func GlobalConfigForTests(ctx android.PathContext) *GlobalConfig {
 		PatternsOnSystemOther:              nil,
 		DisableGenerateProfile:             false,
 		ProfileDir:                         "",
-		BootJars:                           nil,
-		UpdatableBootJars:                  nil,
-		ArtApexJars:                        nil,
+		BootJars:                           android.EmptyLocJarList(),
+		UpdatableBootJars:                  android.EmptyLocJarList(),
+		ArtApexJars:                        android.EmptyLocJarList(),
 		SystemServerJars:                   nil,
 		SystemServerApps:                   nil,
-		UpdatableSystemServerJars:          nil,
+		UpdatableSystemServerJars:          android.EmptyLocJarList(),
 		SpeedApps:                          nil,
 		PreoptFlags:                        nil,
 		DefaultCompilerFilter:              "",
