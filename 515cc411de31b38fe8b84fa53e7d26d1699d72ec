@@ -133,6 +133,30 @@
       "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbdb0012_2c046a17",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-01T12:17:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5fee7e3e_ae7e8e68",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
