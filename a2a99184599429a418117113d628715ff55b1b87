@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4328e892_eee067f3",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-01T16:49:21Z",
+      "side": 1,
+      "message": "Assert the size of outputFiles?",
+      "range": {
+        "startLine": 520,
+        "startChar": 15,
+        "endLine": 520,
+        "endChar": 29
+      },
+      "revId": "a2a99184599429a418117113d628715ff55b1b87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
