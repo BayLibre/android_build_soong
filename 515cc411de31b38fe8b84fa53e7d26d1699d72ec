@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0b946b9_6401cefa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-01T11:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff25816f_2366622d",
+      "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21f5632a_0a8a0309",
         "filename": "java/config/config.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2562c7_b992dc1d",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-01T11:48:21Z",
+      "side": 1,
+      "message": "I think that both are likely to exist for some period. I\u0027d rather make it explicit at point-of-use which version we\u0027re depending on.",
+      "parentUuid": "21f5632a_0a8a0309",
+      "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +109,30 @@
       "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fee7e3e_ae7e8e68",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-01T11:48:21Z",
+      "side": 1,
+      "message": "Mostly because I got lazy :-). Done.",
+      "parentUuid": "d92ffe3a_b46502e0",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
