@@ -106,12 +106,12 @@ func (s formatter) result(result status.ActionResult) string {
 	var ret string
 	if result.Error != nil {
 		targets := strings.Join(result.Outputs, " ")
-		if s.quiet || result.Command == "" {
+		if result.Command == "" {
 			ret = fmt.Sprintf("FAILED: %s\n%s", targets, result.Output)
 		} else {
 			ret = fmt.Sprintf("FAILED: %s\n%s\n%s", targets, result.Command, result.Output)
 		}
-	} else if result.Output != "" {
+	} else if result.Output != "" && !s.quiet {
 		ret = result.Output
 	}
 
