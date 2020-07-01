@@ -50,6 +50,29 @@
       "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d92ffe3a_b46502e0",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-01T11:08:50Z",
+      "side": 1,
+      "message": "Why don\u0027t we rename the make vars?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 70
+      },
+      "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

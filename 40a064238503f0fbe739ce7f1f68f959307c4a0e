@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2ab0c4d_2d7a2223",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-01T11:08:50Z",
+      "side": 0,
+      "message": "We still depend on these even with this change, don\u0027t we?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 82
+      },
+      "revId": "40a064238503f0fbe739ce7f1f68f959307c4a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
