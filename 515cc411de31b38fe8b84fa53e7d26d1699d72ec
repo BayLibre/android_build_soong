@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff25816f_2366622d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-01T11:02:14Z",
+      "side": 1,
+      "message": "This part does not apply to this change.",
+      "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f5632a_0a8a0309",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-01T11:02:14Z",
+      "side": 1,
+      "message": "If the goal is to change this to stable at some point does it make sense to rename this now only to rename it to stable later?",
+      "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a43902d_d4508d52",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-01T11:02:14Z",
+      "side": 1,
+      "message": "This rename is long past due.",
+      "revId": "515cc411de31b38fe8b84fa53e7d26d1699d72ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
