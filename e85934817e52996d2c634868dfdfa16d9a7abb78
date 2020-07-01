@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e661f51_e0d5b6ac",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-01T19:50:36Z",
+      "side": 1,
+      "message": "What are \"Kotlin common multi-platform source files\" and what makes them special enough not to be in Srcs? When would a user put a .kt file in one place or another? (Or both?)",
+      "range": {
+        "startLine": 147,
+        "startChar": 19,
+        "endLine": 147,
+        "endChar": 53
+      },
+      "revId": "e85934817e52996d2c634868dfdfa16d9a7abb78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
