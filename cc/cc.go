@@ -3135,7 +3135,8 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		// PLATFORM_VNDK_VERSION.
 		if isVendorProprietaryPath(mctx.ModuleDir()) {
 			vendorVariants = append(vendorVariants, boardVndkVersion)
-		} else {
+		} else if m.IsVndk() {
+			// non-VNDK modules is not used anywhere.
 			vendorVariants = append(vendorVariants, platformVndkVersion)
 		}
 
@@ -3152,8 +3153,9 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		// are coming from DeviceKernelHeaders() which is always vendor
 		// dependent. They'll always have both vendor variants.
 		// For other modules, we assume that modules under proprietary
-		// paths are compatible for BOARD_VNDK_VERSION. The other modules
-		// are regarded as AOSP, which is PLATFORM_VNDK_VERSION.
+		// paths are compatible for BOARD_VNDK_VERSION.
+		// We won't create vendor variants under AOSP directories because
+		// they won't be used anywhere.
 		if _, ok := m.linker.(*kernelHeadersDecorator); ok {
 			vendorVariants = append(vendorVariants,
 				platformVndkVersion,
@@ -3161,8 +3163,6 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 			)
 		} else if isVendorProprietaryPath(mctx.ModuleDir()) {
 			vendorVariants = append(vendorVariants, boardVndkVersion)
-		} else {
-			vendorVariants = append(vendorVariants, platformVndkVersion)
 		}
 	} else {
 		// This is either in /system (or similar: /data), or is a
