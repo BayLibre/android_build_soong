@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d94e9a3b_bcf1f27a",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-01T14:23:29Z",
+      "side": 1,
+      "message": "I\u0027ve confirmed that there are no modules affected by this.\n\nI\u0027m happy enough with this change: It seems like it was an omission before that some places honoured frameworkResModule if useModule was set but not if useDefaultLibs was set.",
+      "parentUuid": "fa2e079a_cc9c4325",
+      "revId": "e3d44b245b417964268ec7d722ee0354431e4fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e833a5a_26ed78c5",
         "filename": "java/sdk.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "e3d44b245b417964268ec7d722ee0354431e4fab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08609796_a4cf47c4",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-01T14:23:29Z",
+      "side": 1,
+      "message": "I still feel like these are two different changes. This one is pretty much a refactoring of how the settings are written, the other one is an actual settings change?",
+      "parentUuid": "2e833a5a_26ed78c5",
+      "revId": "e3d44b245b417964268ec7d722ee0354431e4fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
