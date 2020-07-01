@@ -911,34 +911,6 @@ func (c *config) ModulesLoadedByPrivilegedModules() []string {
 	return c.productVariables.ModulesLoadedByPrivilegedModules
 }
 
-// Expected format for apexJarValue = <apex name>:<jar name>
-func SplitApexJarPair(ctx PathContext, str string) (string, string) {
-	pair := strings.SplitN(str, ":", 2)
-	if len(pair) == 2 {
-		return pair[0], pair[1]
-	} else {
-		reportPathErrorf(ctx, "malformed (apex, jar) pair: '%s', expected format: <apex>:<jar>", str)
-		return "error-apex", "error-jar"
-	}
-}
-
-func GetJarsFromApexJarPairs(ctx PathContext, apexJarPairs []string) []string {
-	modules := make([]string, len(apexJarPairs))
-	for i, p := range apexJarPairs {
-		_, jar := SplitApexJarPair(ctx, p)
-		modules[i] = jar
-	}
-	return modules
-}
-
-func (c *config) BootJars() []string {
-	ctx := NullPathContext{Config{
-		config: c,
-	}}
-	return append(GetJarsFromApexJarPairs(ctx, c.productVariables.BootJars),
-		GetJarsFromApexJarPairs(ctx, c.productVariables.UpdatableBootJars)...)
-}
-
 func (c *config) DexpreoptGlobalConfig(ctx PathContext) ([]byte, error) {
 	if c.productVariables.DexpreoptGlobalConfig == nil {
 		return nil, nil
@@ -1272,4 +1244,199 @@ func (c *deviceConfig) DeviceSecondaryArchVariant() string {
 
 func (c *deviceConfig) BoardUsesRecoveryAsBoot() bool {
 	return Bool(c.config.productVariables.BoardUsesRecoveryAsBoot)
+}
+
+// The LocJars interface provides methods for handling a list of (location, jar) pairs.
+// Such lists are used in the build system for things like bootclasspath jars or system server jars.
+// Location should be either an apex name, or a special names "plaform" or "system_ext". Jar is a
+// module name. The pairs come from Make product variables as a list of colon-separated strings.
+//
+// Examples:
+//   - "com.android.art:core-oj"
+//   - "platform:framework"
+//   - "system_ext:foo"
+//
+type LocJars interface {
+	// The length of the list.
+	Len() int
+
+	// Location component of idx-th pair on the list.
+	Loc(idx int) string
+
+	// Jar component of idx-th pair on the list.
+	Jar(idx int) string
+
+	// idx-Th pair on the list.
+	Pair(idx int) string
+
+	// If the list contains a pair with the given jar.
+	ContainsJar(jar string) bool
+
+	// If the list contains the given (location, jar) pair.
+	ContainsPair(jar string) bool
+
+	// Index of the first pair with the given jar on the list, or -1 if none.
+	IndexOfJar(jar string) int
+
+	// Append a (location, jar) pair to the list.
+	Append(loc string, jar string)
+
+	// A copy of the list of strings containing jar components.
+	CopyOfJars() []string
+
+	// A copy of the list of strings with colon-separated (location, jar) pairs.
+	CopyOfPairs() []string
+
+	// A list of build paths based on the given directory prefix.
+	BuildPaths(ctx PathContext, dir OutputPath) WritablePaths
+
+	// A list of on-device paths.
+	DevicePaths(cfg Config, ostype OsType) []string
+}
+
+type locJars struct {
+	locs  []string // A list of location components.
+	jars  []string // A list of jar components.
+	pairs []string // A list of (location, jar) pairs.
+}
+
+func (l *locJars) Len() int {
+	return len(l.jars)
+}
+
+func (l *locJars) Loc(idx int) string {
+	return l.locs[idx]
+}
+
+func (l *locJars) Jar(idx int) string {
+	return l.jars[idx]
+}
+
+func (l *locJars) Pair(idx int) string {
+	return l.pairs[idx]
+}
+
+func (l *locJars) ContainsJar(jar string) bool {
+	return InList(jar, l.jars)
+}
+
+func (l *locJars) ContainsPair(pair string) bool {
+	return InList(pair, l.pairs)
+}
+
+func (l *locJars) IndexOfJar(jar string) int {
+	return IndexList(jar, l.jars)
+}
+
+func (l *locJars) Append(loc string, jar string) {
+	l.jars = append(l.jars, jar)
+	l.locs = append(l.locs, loc)
+	l.pairs = append(l.pairs, loc+":"+jar)
+}
+
+func (l *locJars) CopyOfJars() []string {
+	return CopyOf(l.jars)
+}
+
+func (l *locJars) CopyOfPairs() []string {
+	return CopyOf(l.pairs)
+}
+
+func (l *locJars) BuildPaths(ctx PathContext, dir OutputPath) WritablePaths {
+	paths := make(WritablePaths, l.Len())
+	for i, jar := range l.jars {
+		paths[i] = dir.Join(ctx, ModuleStem(jar)+".jar")
+	}
+	return paths
+}
+
+func ModuleStem(module string) string {
+	// b/139391334: the stem of framework-minus-apex is framework. This is hard coded here until we
+	// find a good way to query the stem of a module before any other mutators are run.
+	if module == "framework-minus-apex" {
+		return "framework"
+	}
+	return module
+}
+
+func (l *locJars) DevicePaths(cfg Config, ostype OsType) []string {
+	paths := make([]string, l.Len())
+	for i, jar := range l.jars {
+		loc := l.locs[i]
+		name := ModuleStem(jar) + ".jar"
+
+		var subdir string
+		if loc == "platform" {
+			subdir = "system/framework"
+		} else if loc == "system_ext" {
+			subdir = "system_ext/framework"
+		} else {
+			subdir = filepath.Join("apex", loc, "javalib")
+		}
+
+		if ostype.Class == Host {
+			paths[i] = filepath.Join(cfg.Getenv("OUT_DIR"), "host", cfg.PrebuiltOS(), subdir, name)
+		} else {
+			paths[i] = filepath.Join("/", subdir, name)
+		}
+	}
+	return paths
+}
+
+func LocJarsListDiff(list LocJars, remove LocJars) LocJars {
+	n := list.Len()
+
+	locs := make([]string, 0, n)
+	jars := make([]string, 0, n)
+	pairs := make([]string, 0, n)
+
+	for i := 0; i < n; i++ {
+		if p := list.Pair(i); !remove.ContainsPair(p) {
+			jars = append(jars, list.Jar(i))
+			locs = append(locs, list.Loc(i))
+			pairs = append(pairs, p)
+		}
+	}
+
+	return &locJars{locs, jars, pairs}
+}
+
+// Expected format for apexJarValue = <apex name>:<jar name>
+func splitLocJarPair(ctx PathContext, str string) (string, string) {
+	pair := strings.SplitN(str, ":", 2)
+	if len(pair) == 2 {
+		return pair[0], pair[1]
+	} else {
+		reportPathErrorf(ctx, "malformed (location, jar) pair: '%s', expected format: <location>:<jar>", str)
+		return "error-location", "error-jar"
+	}
+}
+
+func CreateLocJars(ctx PathContext, locjars []string) LocJars {
+	jars := make([]string, 0, len(locjars))
+	locs := make([]string, 0, len(locjars))
+	pairs := make([]string, 0, len(locjars))
+
+	l := &locJars{locs, jars, pairs}
+
+	for _, locjar := range locjars {
+		loc, jar := splitLocJarPair(ctx, locjar)
+		l.Append(loc, jar)
+	}
+
+	return l
+}
+
+func EmptyLocJarList() LocJars {
+	return &locJars{}
+}
+
+var earlyBootJarsKey = NewOnceKey("earlyBootJars")
+
+func (c *config) BootJars() []string {
+	return c.Once(earlyBootJarsKey, func() interface{} {
+		ctx := NullPathContext{Config{c}}
+		locjars := append(CopyOf(c.productVariables.BootJars), c.productVariables.UpdatableBootJars...)
+		return CreateLocJars(ctx, locjars).CopyOfJars()
+	}).([]string)
 }
