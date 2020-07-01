@@ -16,6 +16,24 @@
       "revId": "25fd77310cc6383ddb9d5c778eb8349a36bfdf4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add1ca2d_66662bdb",
+        "filename": "finder/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1398,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-01T15:42:14Z",
+      "side": 1,
+      "message": "Yeah, that would require re-lstating every symlink on each rerun of finder.",
+      "parentUuid": "1ebeba29_9c92f8c8",
+      "revId": "25fd77310cc6383ddb9d5c778eb8349a36bfdf4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
