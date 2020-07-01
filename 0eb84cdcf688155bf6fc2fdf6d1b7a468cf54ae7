@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e41c6391_31889b08",
+        "filename": "rust/compiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-01T01:53:32Z",
+      "side": 1,
+      "message": "Not sure if this should be part of baseCompiler since this notion doesn\u0027t make sense in all cases,  binaryDecorators for example.\n\nMaybe create a new struct flagExporter (or some such) that contains the linkDirs, depFlags, etc... which libraryDecorator and others embed.\n\n(Checking cc\u0027s libraryDecorator, this seems like what it does as well)",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 59
+      },
+      "revId": "0eb84cdcf688155bf6fc2fdf6d1b7a468cf54ae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
