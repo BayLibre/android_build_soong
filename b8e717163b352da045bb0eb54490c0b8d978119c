@@ -16,6 +16,24 @@
       "revId": "b8e717163b352da045bb0eb54490c0b8d978119c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bad2d5f_4eafab78",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-01T10:36:38Z",
+      "side": 1,
+      "message": "Done. Thanks, I meant to do this but evidently missed it.",
+      "parentUuid": "ffd8a4ec_fe0997c6",
+      "revId": "b8e717163b352da045bb0eb54490c0b8d978119c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
