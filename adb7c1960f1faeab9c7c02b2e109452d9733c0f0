@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc842d5d_e81d8ff9",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-01T10:59:05Z",
+      "side": 1,
+      "message": "Documentation needed. I feel confused as we have java9Classpath here as well.",
+      "revId": "adb7c1960f1faeab9c7c02b2e109452d9733c0f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a23e72e4_f9bcad75",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-01T10:59:05Z",
+      "side": 1,
+      "message": "How are these two different?",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 65
+      },
+      "revId": "adb7c1960f1faeab9c7c02b2e109452d9733c0f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
