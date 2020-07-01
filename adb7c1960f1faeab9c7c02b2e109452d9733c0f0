@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65bf959f_4e8dcd53",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-01T11:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc842d5d_e81d8ff9",
+      "revId": "adb7c1960f1faeab9c7c02b2e109452d9733c0f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a23e72e4_f9bcad75",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "adb7c1960f1faeab9c7c02b2e109452d9733c0f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5293247f_b3b4cc1c",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-01T11:20:43Z",
+      "side": 1,
+      "message": "Hopefully the comment above explains this: classpath is applied regardless of the Java language level, java9Classpath is only applied on 1.9+.\n\nYou can see the normal set-up in the toModule func in sdk.go: for sdkPublic, say, in 1.8 we put the android stubs and the implicit lambda stubs on the bootclasspath; in 1.9, we put the core stubs in the system module and the android stubs on the classpath.\n\nThis classpath option is added to preserve the existing behaviour for the sdkPrivate change, where we put frameworks libs on the classpath in both 1.8 and 1.9. I *think* it might work if changed it and put them on the bootclasspath in 1.8 (like we do for sdkPublic) but that would be a bigger change than I want to make in this CL (and would mean updating a tonne of tests).",
+      "parentUuid": "a23e72e4_f9bcad75",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 65
+      },
+      "revId": "adb7c1960f1faeab9c7c02b2e109452d9733c0f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
