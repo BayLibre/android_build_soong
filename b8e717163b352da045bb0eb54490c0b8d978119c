@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffd8a4ec_fe0997c6",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-01T09:20:49Z",
+      "side": 1,
+      "message": "Can \"useDefaultLibs\" be removed?",
+      "revId": "b8e717163b352da045bb0eb54490c0b8d978119c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
