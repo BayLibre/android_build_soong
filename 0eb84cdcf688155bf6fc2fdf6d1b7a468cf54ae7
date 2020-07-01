@@ -22,6 +22,30 @@
       "revId": "0eb84cdcf688155bf6fc2fdf6d1b7a468cf54ae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd454e9e_61bbe880",
+        "filename": "rust/compiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-01T18:20:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e41c6391_31889b08",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 59
+      },
+      "revId": "0eb84cdcf688155bf6fc2fdf6d1b7a468cf54ae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
