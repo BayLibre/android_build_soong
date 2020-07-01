@@ -1,0 +1,25 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003700548",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1353556?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8a2fcf41_3c60f447",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-01T09:11:18Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary\u0027 or \u0027secondary\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "revId": "d71ffbe099471a4850edfcf988e8c32ae806eece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
