@@ -22,6 +22,30 @@
       "revId": "c4dac26596b7941b381c91dd93448a06bfdfa616",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6308672a_8eae6611",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-01T08:56:47Z",
+      "side": 1,
+      "message": "They are. Currently EnforceUsesLibraries is used for only one app (GoogleDialer, non-AOSP), so the whole branch is almost unused and poorly tested. It is my goal to make EnforeUsesLibraries true by default (and drop the third branch with \u0026-classpath), and in that case system server jars will still need to be handled in a special way, so putting that condition in front is what I will have to do anyway.\n\nBut thanks for a thorough review and spotting the possible behavioral change!",
+      "parentUuid": "659b3186_8056b212",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 81
+      },
+      "revId": "c4dac26596b7941b381c91dd93448a06bfdfa616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
