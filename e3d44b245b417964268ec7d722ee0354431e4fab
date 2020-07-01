@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa2e079a_cc9c4325",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-01T13:33:02Z",
+      "side": 1,
+      "message": "I was just looking at https://r.android.com/1353932 and checking usages of frameworkResModule and noticed that switching from useDefaultLibs to useModule will affect the behavior in AARImport.DepsMutator.\n\nThat affects this change and the one below.\n\nNow, it may be that these changes have no effect on aar modules because aar modules don\u0027t use sdkPrivate or sdkCorePlatform. Have you investigated the impact of these changes on that code?",
+      "revId": "e3d44b245b417964268ec7d722ee0354431e4fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e833a5a_26ed78c5",
+        "filename": "java/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-01T13:33:02Z",
+      "side": 1,
+      "message": "It might be worth merging https://r.android.com/1353932 into this change to avoid this change affecting the AARImport.DepsMutator.",
+      "revId": "e3d44b245b417964268ec7d722ee0354431e4fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
