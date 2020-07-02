@@ -46,6 +46,30 @@
       "revId": "e85934817e52996d2c634868dfdfa16d9a7abb78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a133576b_cd089a12",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-02T01:05:34Z",
+      "side": 1,
+      "message": "These docs should likely elaborate and/or include that link, since those terms aren\u0027t particularly unique in the android context. From a brief glance the overall concept is already something we model as the root \u0027srcs\u0027 list vs the srcs lists in `target: {...}`, so I still don\u0027t understand why something would be in srcs vs common_srcs",
+      "parentUuid": "d0a0b6a6_35aea7d2",
+      "range": {
+        "startLine": 147,
+        "startChar": 19,
+        "endLine": 147,
+        "endChar": 53
+      },
+      "revId": "e85934817e52996d2c634868dfdfa16d9a7abb78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
