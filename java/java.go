@@ -1641,9 +1641,11 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		configurationName := j.ConfigurationName()
 		primary := configurationName == ctx.ModuleName()
 
-		// Hidden API CSV generation and dex encoding
-		dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, configurationName, primary, dexOutputFile, j.implementationJarFile,
-			proptools.Bool(j.deviceProperties.Uncompress_dex))
+		if !ctx.Config().UnbundledBuild() {
+			// Hidden API CSV generation and dex encoding
+			dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, configurationName, primary, dexOutputFile, j.implementationJarFile,
+				proptools.Bool(j.deviceProperties.Uncompress_dex))
+		}
 
 		// merge dex jar with resources if necessary
 		if j.resourceJar != nil {
