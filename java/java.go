@@ -2846,10 +2846,6 @@ func (a *Import) JacocoReportClassesFile() android.Path {
 	return nil
 }
 
-func (j *Import) LintDepSets() LintDepSets {
-	return LintDepSets{}
-}
-
 func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
 
@@ -3168,10 +3164,6 @@ func (j *DexImport) Stem() string {
 
 func (a *DexImport) JacocoReportClassesFile() android.Path {
 	return nil
-}
-
-func (a *DexImport) LintDepSets() LintDepSets {
-	return LintDepSets{}
 }
 
 func (j *DexImport) IsInstallable() bool {
