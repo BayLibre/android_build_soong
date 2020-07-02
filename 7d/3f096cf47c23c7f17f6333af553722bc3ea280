@@ -1,0 +1,9 @@
+Code-Review+2: Inseob Kim <inseob@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Bill Peckham <bpeckham@google.com>
+Submitted-by: Inseob Kim <inseob@google.com>
+Submitted-at: Thu, 02 Jul 2020 07:42:14 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1354063
+Project: platform/build/soong
+Branch: refs/heads/master
