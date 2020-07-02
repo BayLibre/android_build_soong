@@ -119,6 +119,31 @@ type BaseModuleContext interface {
 	OtherModuleReverseDependencyVariantExists(name string) bool
 	OtherModuleType(m blueprint.Module) string
 
+	// OtherModuleProvider returns the value for a provider for the given module.  If the value is
+	// not set it returns the zero value of the type of the provider, so the return value can always
+	// be type asserted to the type of the provider.  The value returned may be a deep copy of the
+	// value originally passed to SetProvider.
+	OtherModuleProvider(m blueprint.Module, provider blueprint.ProviderKey) interface{}
+
+	// OtherModuleHasProvider returns true if the provider for the given module has been set.
+	OtherModuleHasProvider(m blueprint.Module, provider blueprint.ProviderKey) bool
+
+	// Provider returns the value for a provider for the current module.  If the value is
+	// not set it returns the zero value of the type of the provider, so the return value can always
+	// be type asserted to the type of the provider.  It panics if called before the appropriate
+	// mutator or GenerateBuildActions pass for the provider.  The value returned may be a deep
+	// copy of the value originally passed to SetProvider.
+	Provider(provider blueprint.ProviderKey) interface{}
+
+	// HasProvider returns true if the provider for the current module has been set.
+	HasProvider(provider blueprint.ProviderKey) bool
+
+	// SetProvider sets the value for a provider for the current module.  It panics if not called
+	// during the appropriate mutator or GenerateBuildActions pass for the provider, if the value
+	// is not of the appropriate type, or if the value has already been set.  The value should not
+	// be modified after being passed to SetProvider.
+	SetProvider(provider blueprint.ProviderKey, value interface{})
+
 	GetDirectDepsWithTag(tag blueprint.DependencyTag) []Module
 	GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module
 	GetDirectDep(name string) (blueprint.Module, blueprint.DependencyTag)
@@ -1542,6 +1567,21 @@ func (b *baseModuleContext) OtherModuleReverseDependencyVariantExists(name strin
 }
 func (b *baseModuleContext) OtherModuleType(m blueprint.Module) string {
 	return b.bp.OtherModuleType(m)
+}
+func (b *baseModuleContext) OtherModuleProvider(m blueprint.Module, provider blueprint.ProviderKey) interface{} {
+	return b.bp.OtherModuleProvider(m, provider)
+}
+func (b *baseModuleContext) OtherModuleHasProvider(m blueprint.Module, provider blueprint.ProviderKey) bool {
+	return b.bp.OtherModuleHasProvider(m, provider)
+}
+func (b *baseModuleContext) Provider(provider blueprint.ProviderKey) interface{} {
+	return b.bp.Provider(provider)
+}
+func (b *baseModuleContext) HasProvider(provider blueprint.ProviderKey) bool {
+	return b.bp.HasProvider(provider)
+}
+func (b *baseModuleContext) SetProvider(provider blueprint.ProviderKey, value interface{}) {
+	b.bp.SetProvider(provider, value)
 }
 
 func (b *baseModuleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module {

@@ -218,6 +218,14 @@ type BottomUpMutatorContext interface {
 	ReplaceDependenciesIf(string, blueprint.ReplaceDependencyPredicate)
 	AliasVariation(variationName string)
 	CreateAliasVariation(fromVariationName, toVariationName string)
+
+	// SetVariationProvider sets the value for a provider for the given newly created variant of
+	// the current module, i.e. one of the Modules returned by CreateVariations..  It panics if
+	// not called during the appropriate mutator or GenerateBuildActions pass for the provider,
+	// if the value is not of the appropriate type, or if the module is not a newly created
+	// variant of the current module.  The value should not be modified after being passed to
+	// SetVariationProvider.
+	SetVariationProvider(module blueprint.Module, provider blueprint.ProviderKey, value interface{})
 }
 
 type bottomUpMutatorContext struct {
@@ -452,4 +460,8 @@ func (b *bottomUpMutatorContext) AliasVariation(variationName string) {
 
 func (b *bottomUpMutatorContext) CreateAliasVariation(fromVariationName, toVariationName string) {
 	b.bp.CreateAliasVariation(fromVariationName, toVariationName)
+}
+
+func (b *bottomUpMutatorContext) SetVariationProvider(module blueprint.Module, provider blueprint.ProviderKey, value interface{}) {
+	b.bp.SetVariationProvider(module, provider, value)
 }
