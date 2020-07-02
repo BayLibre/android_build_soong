@@ -69,6 +69,30 @@
       "revId": "9c5566e09521dbee2aed6fe6fd2c7fc56f9d1b44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89fecbe4_8c75aa24",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-02T09:06:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6b8cdd8_e286458c",
+      "range": {
+        "startLine": 577,
+        "startChar": 62,
+        "endLine": 577,
+        "endChar": 65
+      },
+      "revId": "9c5566e09521dbee2aed6fe6fd2c7fc56f9d1b44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
