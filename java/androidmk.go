@@ -132,9 +132,11 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 					}
 					entries.SetString("LOCAL_MODULE_STEM", library.Stem())
 
-					entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", library.linter.outputs.transitiveHTMLZip)
-					entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", library.linter.outputs.transitiveTextZip)
-					entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", library.linter.outputs.transitiveXMLZip)
+					if li := ctx.Provider(lintInfoProvider).(*lintInfo); li != nil {
+						entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", li.transitiveHTMLZip)
+						entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", li.transitiveTextZip)
+						entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", li.transitiveXMLZip)
+					}
 				},
 			},
 		}
@@ -388,9 +390,11 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.AddStrings("LOCAL_SOONG_BUILT_INSTALLED", extra.String()+":"+install)
 				}
 
-				entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", app.linter.outputs.transitiveHTMLZip)
-				entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", app.linter.outputs.transitiveTextZip)
-				entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", app.linter.outputs.transitiveXMLZip)
+				if li := ctx.Provider(lintInfoProvider).(*lintInfo); li != nil {
+					entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", li.transitiveHTMLZip)
+					entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", li.transitiveTextZip)
+					entries.AddOptionalPath("LOCAL_SOONG_LINT_REPORTS", li.transitiveXMLZip)
+				}
 			},
 		},
 		ExtraFooters: []android.AndroidMkExtraFootersFunc{
