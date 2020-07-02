@@ -27,6 +27,7 @@ type SingletonContext interface {
 	ModuleDir(module blueprint.Module) string
 	ModuleSubDir(module blueprint.Module) string
 	ModuleType(module blueprint.Module) string
+	ModuleProvider(module blueprint.Module, provider blueprint.ProviderKey) interface{}
 	BlueprintFile(module blueprint.Module) string
 
 	ModuleErrorf(module blueprint.Module, format string, args ...interface{})
