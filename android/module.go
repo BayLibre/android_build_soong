@@ -2099,6 +2099,20 @@ func (m *moduleContext) CheckbuildFile(srcPath Path) {
 	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
 }
 
+// DependencyTag base type for dependencies that don't contribute payload data
+// to their dependents.
+type NoPayloadDependencyTag struct {
+	blueprint.BaseDependencyTag
+}
+
+func (NoPayloadDependencyTag) noPayloadDependencyTagSignature() {}
+
+type NoPayloadDependency interface {
+	noPayloadDependencyTagSignature()
+}
+
+var _ NoPayloadDependency = (*NoPayloadDependencyTag)(nil)
+
 func findStringInSlice(str string, slice []string) int {
 	for i, s := range slice {
 		if s == str {
