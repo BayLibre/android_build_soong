@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1f6ea70_3b888c15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-02T23:45:30Z",
+      "side": 1,
+      "message": "please add a test in apex_test.go",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20003035_dfca9dce",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-02T23:45:30Z",
+      "side": 1,
+      "message": "This concept is specific to APEX. I wish we could move this to the apex package.",
+      "range": {
+        "startLine": 2102,
+        "startChar": 66,
+        "endLine": 2102,
+        "endChar": 78
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "548f17f3_50a21590",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-02T23:45:30Z",
+      "side": 1,
+      "message": "I think this check is for indirect independencies. Then this should better be moved below #1775.\n\nAlso, I would like to know when this condition hits. Do you have a specific example?",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 3
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
