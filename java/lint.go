@@ -19,6 +19,8 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/google/blueprint"
+
 	"android/soong/android"
 )
 
@@ -66,29 +68,23 @@ type linter struct {
 	compileSdkVersion   string
 	javaLanguageLevel   string
 	kotlinLanguageLevel string
-	outputs             lintOutputs
 	properties          LintProperties
 
-	reports android.Paths
+	depSets LintDepSets
 
 	buildModuleReportZip bool
 }
 
-type lintOutputs struct {
+type lintInfo struct {
 	html android.Path
 	text android.Path
 	xml  android.Path
 
 	depSets LintDepSets
+	reports android.Paths
 }
 
-type lintOutputsIntf interface {
-	lintOutputs() *lintOutputs
-}
-
-type lintDepSetsIntf interface {
-	LintDepSets() LintDepSets
-}
+var lintInfoProvider = blueprint.NewProvider((*lintInfo)(nil))
 
 type LintDepSets struct {
 	HTML, Text, XML *android.DepSet
@@ -135,15 +131,7 @@ func (l LintDepSetsBuilder) Build() LintDepSets {
 }
 
 func (l *linter) LintDepSets() LintDepSets {
-	return l.outputs.depSets
-}
-
-var _ lintDepSetsIntf = (*linter)(nil)
-
-var _ lintOutputsIntf = (*linter)(nil)
-
-func (l *linter) lintOutputs() *lintOutputs {
-	return &l.outputs
+	return l.depSets
 }
 
 func (l *linter) enabled() bool {
@@ -300,8 +288,8 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	depSetsBuilder := NewLintDepSetBuilder().Direct(html, text, xml)
 
 	ctx.VisitDirectDepsWithTag(staticLibTag, func(dep android.Module) {
-		if depLint, ok := dep.(lintDepSetsIntf); ok {
-			depSetsBuilder.Transitive(depLint.LintDepSets())
+		if depLintInfo := ctx.OtherModuleProvider(dep, lintInfoProvider).(*lintInfo); depLintInfo != nil {
+			depSetsBuilder.Transitive(depLintInfo.depSets)
 		}
 	})
 
@@ -349,17 +337,25 @@ func (l *linter) lint(ctx android.ModuleContext) {
 
 	rule.Build("lint", "lint")
 
-	l.outputs = lintOutputs{
+	depSets := depSetsBuilder.Build()
+	var reports android.Paths
+	if l.buildModuleReportZip {
+		reports = BuildModuleLintReportZips(ctx, depSets)
+	}
+
+	li := &lintInfo{
 		html: html,
 		text: text,
 		xml:  xml,
 
-		depSets: depSetsBuilder.Build(),
+		depSets: depSets,
+		reports: reports,
 	}
 
-	if l.buildModuleReportZip {
-		l.reports = BuildModuleLintReportZips(ctx, l.LintDepSets())
-	}
+	l.depSets = depSets
+
+	ctx.SetProvider(lintInfoProvider, li)
+
 }
 
 func BuildModuleLintReportZips(ctx android.ModuleContext, depSets LintDepSets) android.Paths {
@@ -444,7 +440,7 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 		return
 	}
 
-	var outputs []*lintOutputs
+	var lintInfos []*lintInfo
 	var dirs []string
 	ctx.VisitAllModules(func(m android.Module) {
 		if ctx.Config().KatiEnabled() && !m.ExportedToMake() {
@@ -460,33 +456,31 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 			}
 		}
 
-		if l, ok := m.(lintOutputsIntf); ok {
-			outputs = append(outputs, l.lintOutputs())
+		if l := ctx.ModuleProvider(m, lintInfoProvider).(*lintInfo); l != nil {
+			lintInfos = append(lintInfos, l)
 		}
 	})
 
 	dirs = android.SortedUniqueStrings(dirs)
 
-	zip := func(outputPath android.WritablePath, get func(*lintOutputs) android.Path) {
+	zip := func(outputPath android.WritablePath, get func(*lintInfo) android.Path) {
 		var paths android.Paths
 
-		for _, output := range outputs {
-			if p := get(output); p != nil {
-				paths = append(paths, p)
-			}
+		for _, lintInfo := range lintInfos {
+			paths = append(paths, get(lintInfo))
 		}
 
 		lintZip(ctx, paths, outputPath)
 	}
 
 	l.htmlZip = android.PathForOutput(ctx, "lint-report-html.zip")
-	zip(l.htmlZip, func(l *lintOutputs) android.Path { return l.html })
+	zip(l.htmlZip, func(l *lintInfo) android.Path { return l.html })
 
 	l.textZip = android.PathForOutput(ctx, "lint-report-text.zip")
-	zip(l.textZip, func(l *lintOutputs) android.Path { return l.text })
+	zip(l.textZip, func(l *lintInfo) android.Path { return l.text })
 
 	l.xmlZip = android.PathForOutput(ctx, "lint-report-xml.zip")
-	zip(l.xmlZip, func(l *lintOutputs) android.Path { return l.xml })
+	zip(l.xmlZip, func(l *lintInfo) android.Path { return l.xml })
 
 	ctx.Phony("lint-check", l.htmlZip, l.textZip, l.xmlZip)
 }
