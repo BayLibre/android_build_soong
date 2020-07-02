@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b21a55d4_426085fe",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-02T18:13:04Z",
+      "side": 1,
+      "message": "This is slightly better to make it not override an explicit compile_multilib:\"blah\" in the bp file, but it\u0027s still not very good since it\u0027ll step on a setting inherited from a default module.\n\nOne would have thought that the way to go is to set it in Default_multilib (last argument to InitCommonOSAndroidMultiTargetsArchModule above) but there\u0027s stuff in decodeMultilib in arch.go that makes something completely different happen then. :\\",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 26
+      },
+      "revId": "c0b5b503ca32390f5bbca1fe2484fe83f782d64a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
