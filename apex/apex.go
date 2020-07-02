@@ -1443,7 +1443,6 @@ type javaModule interface {
 	BaseModuleName() string
 	DexJarBuildPath() android.Path
 	JacocoReportClassesFile() android.Path
-	LintDepSets() java.LintDepSets
 	Stem() string
 }
 
@@ -1458,7 +1457,10 @@ func apexFileForJavaModule(ctx android.BaseModuleContext, module javaModule) ape
 	fileToCopy := module.DexJarBuildPath()
 	af := newApexFile(ctx, fileToCopy, module.BaseModuleName(), dirInApex, javaSharedLib, module)
 	af.jacocoReportClassesFile = module.JacocoReportClassesFile()
-	af.lintDepSets = module.LintDepSets()
+
+	if li := ctx.OtherModuleProvider(module, java.LintInfoProvider).(*java.LintInfo); li != nil {
+		af.lintDepSets = li.DepSets
+	}
 	af.customStem = module.Stem() + ".jar"
 	return af
 }
