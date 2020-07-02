@@ -20,7 +20,6 @@ import (
 	"reflect"
 	"strconv"
 
-	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -327,7 +326,7 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 }
 
 type dependencyTag struct {
-	blueprint.BaseDependencyTag
+	android.NoPayloadDependencyTag
 }
 
 // For dependencies from an in-development version of an SDK member to frozen versions of the same member
