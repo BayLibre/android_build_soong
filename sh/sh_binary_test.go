@@ -56,7 +56,7 @@ func testShBinary(t *testing.T, bp string) (*android.TestContext, android.Config
 }
 
 func TestShTestSubDir(t *testing.T) {
-	ctx, config := testShBinary(t, `
+	ctx, _ := testShBinary(t, `
 		sh_test {
 			name: "foo",
 			src: "test.sh",
@@ -66,7 +66,7 @@ func TestShTestSubDir(t *testing.T) {
 
 	mod := ctx.ModuleForTests("foo", "android_arm64_armv8-a").Module().(*ShTest)
 
-	entries := android.AndroidMkEntriesForTest(t, config, "", mod)[0]
+	entries := android.AndroidMkEntriesForTest(t, ctx, mod)[0]
 
 	expectedPath := "/tmp/target/product/test_device/data/nativetest64/foo_test"
 	actualPath := entries.EntryMap["LOCAL_MODULE_PATH"][0]
@@ -76,7 +76,7 @@ func TestShTestSubDir(t *testing.T) {
 }
 
 func TestShTest(t *testing.T) {
-	ctx, config := testShBinary(t, `
+	ctx, _ := testShBinary(t, `
 		sh_test {
 			name: "foo",
 			src: "test.sh",
@@ -90,7 +90,7 @@ func TestShTest(t *testing.T) {
 
 	mod := ctx.ModuleForTests("foo", "android_arm64_armv8-a").Module().(*ShTest)
 
-	entries := android.AndroidMkEntriesForTest(t, config, "", mod)[0]
+	entries := android.AndroidMkEntriesForTest(t, ctx, mod)[0]
 
 	expectedPath := "/tmp/target/product/test_device/data/nativetest64/foo"
 	actualPath := entries.EntryMap["LOCAL_MODULE_PATH"][0]

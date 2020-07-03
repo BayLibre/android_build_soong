@@ -475,7 +475,7 @@ func TestVndkLibrariesTxtAndroidMk(t *testing.T) {
 	ctx := testCcWithConfig(t, config)
 
 	module := ctx.ModuleForTests("llndk.libraries.txt", "")
-	entries := android.AndroidMkEntriesForTest(t, config, "", module.Module())[0]
+	entries := android.AndroidMkEntriesForTest(t, ctx, module.Module())[0]
 	assertArrayString(t, entries.EntryMap["LOCAL_MODULE_STEM"], []string{"llndk.libraries.VER.txt"})
 }
 
