@@ -67,12 +67,38 @@ type linter struct {
 	kotlinLanguageLevel string
 	outputs             lintOutputs
 	properties          LintProperties
+
+	buildModuleReportZip bool
 }
 
 type lintOutputs struct {
 	html android.ModuleOutPath
 	text android.ModuleOutPath
 	xml  android.ModuleOutPath
+
+	transitiveHTML android.Paths
+	transitiveText android.Paths
+	transitiveXML  android.Paths
+
+	transitiveHTMLZip android.OptionalPath
+	transitiveTextZip android.OptionalPath
+	transitiveXMLZip  android.OptionalPath
+}
+
+type lintOutputIntf interface {
+	lintOutputs() *lintOutputs
+}
+
+func (li *lintOutputs) appendTransitiveLintInfo(other *lintOutputs) {
+	li.transitiveHTML = append(li.transitiveHTML, other.transitiveHTML...)
+	li.transitiveText = append(li.transitiveText, other.transitiveText...)
+	li.transitiveXML = append(li.transitiveXML, other.transitiveXML...)
+}
+
+var _ lintOutputIntf = (*linter)(nil)
+
+func (l *linter) lintOutputs() *lintOutputs {
+	return &l.outputs
 }
 
 func (l *linter) enabled() bool {
@@ -217,6 +243,16 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	l.outputs.text = android.PathForModuleOut(ctx, "lint-report.txt")
 	l.outputs.xml = android.PathForModuleOut(ctx, "lint-report.xml")
 
+	l.outputs.transitiveHTML = android.Paths{l.outputs.html}
+	l.outputs.transitiveText = android.Paths{l.outputs.text}
+	l.outputs.transitiveXML = android.Paths{l.outputs.xml}
+
+	ctx.VisitDirectDepsWithTag(staticLibTag, func(dep android.Module) {
+		if depLint, ok := dep.(lintOutputIntf); ok {
+			l.outputs.appendTransitiveLintInfo(depLint.lintOutputs())
+		}
+	})
+
 	rule.Command().Text("rm -rf").Flag(cacheDir.String()).Flag(homeDir.String())
 	rule.Command().Text("mkdir -p").Flag(cacheDir.String()).Flag(homeDir.String())
 
@@ -256,17 +292,21 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	rule.Command().Text("rm -rf").Flag(cacheDir.String()).Flag(homeDir.String())
 
 	rule.Build(pctx, ctx, "lint", "lint")
-}
 
-func (l *linter) lintOutputs() *lintOutputs {
-	return &l.outputs
-}
+	if l.buildModuleReportZip {
+		htmlZip := android.PathForModuleOut(ctx, "lint-report-html.zip")
+		l.outputs.transitiveHTMLZip = android.OptionalPathForPath(htmlZip)
+		lintZip(ctx, l.outputs.transitiveHTML, htmlZip)
 
-type lintOutputIntf interface {
-	lintOutputs() *lintOutputs
-}
+		textZip := android.PathForModuleOut(ctx, "lint-report-text.zip")
+		l.outputs.transitiveTextZip = android.OptionalPathForPath(textZip)
+		lintZip(ctx, l.outputs.transitiveText, textZip)
 
-var _ lintOutputIntf = (*linter)(nil)
+		xmlZip := android.PathForModuleOut(ctx, "lint-report-xml.zip")
+		l.outputs.transitiveXMLZip = android.OptionalPathForPath(xmlZip)
+		lintZip(ctx, l.outputs.transitiveXML, xmlZip)
+	}
+}
 
 type lintSingleton struct {
 	htmlZip android.WritablePath
@@ -356,18 +396,7 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 			paths = append(paths, get(output))
 		}
 
-		sort.Slice(paths, func(i, j int) bool {
-			return paths[i].String() < paths[j].String()
-		})
-
-		rule := android.NewRuleBuilder()
-
-		rule.Command().BuiltTool(ctx, "soong_zip").
-			FlagWithOutput("-o ", outputPath).
-			FlagWithArg("-C ", android.PathForIntermediates(ctx).String()).
-			FlagWithRspFileInputList("-l ", paths)
-
-		rule.Build(pctx, ctx, outputPath.Base(), outputPath.Base())
+		lintZip(ctx, paths, outputPath)
 	}
 
 	l.htmlZip = android.PathForOutput(ctx, "lint-report-html.zip")
@@ -393,4 +422,21 @@ var _ android.SingletonMakeVarsProvider = (*lintSingleton)(nil)
 func init() {
 	android.RegisterSingletonType("lint",
 		func() android.Singleton { return &lintSingleton{} })
+}
+
+func lintZip(ctx android.BuilderContext, paths android.Paths, outputPath android.WritablePath) {
+	paths = android.SortedUniquePaths(android.CopyOfPaths(paths))
+
+	sort.Slice(paths, func(i, j int) bool {
+		return paths[i].String() < paths[j].String()
+	})
+
+	rule := android.NewRuleBuilder()
+
+	rule.Command().BuiltTool(ctx, "soong_zip").
+		FlagWithOutput("-o ", outputPath).
+		FlagWithArg("-C ", android.PathForIntermediates(ctx).String()).
+		FlagWithRspFileInputList("-l ", paths)
+
+	rule.Build(pctx, ctx, outputPath.Base(), outputPath.Base())
 }
