@@ -139,7 +139,7 @@ func customModuleFactory() Module {
 
 // buildConfigAndCustomModuleFoo creates a config object, processes the supplied
 // bp module and then returns the config and the custom module called "foo".
-func buildConfigAndCustomModuleFoo(t *testing.T, bp string) (Config, *customModule) {
+func buildConfigAndCustomModuleFoo(t *testing.T, bp string) (*TestContext, *customModule) {
 	t.Helper()
 	config := TestConfig(buildDir, nil, bp, nil)
 	config.katiEnabled = true // Enable androidmk Singleton
@@ -155,7 +155,7 @@ func buildConfigAndCustomModuleFoo(t *testing.T, bp string) (Config, *customModu
 	FailIfErrored(t, errs)
 
 	module := ctx.ModuleForTests("foo", "").Module().(*customModule)
-	return config, module
+	return ctx, module
 }
 
 func TestAndroidMkSingleton_PassesUpdatedAndroidMkDataToCustomCallback(t *testing.T) {
@@ -253,8 +253,8 @@ func TestGetDistForGoals(t *testing.T) {
 		"$(call dist-for-goals,my_goal my_other_goal,three/four.out:four.out)\n",
 	}
 
-	config, module := buildConfigAndCustomModuleFoo(t, bp)
-	entries := AndroidMkEntriesForTest(t, config, "", module)
+	ctx, module := buildConfigAndCustomModuleFoo(t, bp)
+	entries := AndroidMkEntriesForTest(t, ctx, module)
 	if len(entries) != 1 {
 		t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
 	}
@@ -343,8 +343,8 @@ func TestGetDistContributions(t *testing.T) {
 		t.Run(name, func(t *testing.T) {
 			t.Helper()
 
-			config, module := buildConfigAndCustomModuleFoo(t, bp)
-			entries := AndroidMkEntriesForTest(t, config, "", module)
+			ctx, module := buildConfigAndCustomModuleFoo(t, bp)
+			entries := AndroidMkEntriesForTest(t, ctx, module)
 			if len(entries) != 1 {
 				t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
 			}
