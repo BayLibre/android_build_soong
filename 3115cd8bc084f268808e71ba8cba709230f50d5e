@@ -68,6 +68,30 @@
       "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e8a7e4_516bdceb",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-03T00:10:34Z",
+      "side": 1,
+      "message": "The dependency chain is currently from the direct source module to the prebuilt module, yes. But I think this logic is more natural - if a prebuilt module were to be referenced directly but is marked to not be used, then the \"don\u0027t use\" flag shouldn\u0027t be ignored, right?\n\n\u003e Also, I would like to know when this condition hits. Do you have a specific example?\n\nWith https://android.git.corp.google.com/platform/prebuilts/runtime/+/refs/heads/master/mainline/runtime/sdk/Android.bp in the tree there are errors due to the dependency from source to prebuilt:\n\n```\nerror: bionic/apex/Android.bp:17:1: module \"com.android.runtime\" variant \"android_common_com.android.runtime_image\": \"prebuilt_libdl_android{os:android,image:,arch:arm64_armv8-a_cortex-a73,sdk:,link:static,version:,apex:com.android.runtime}\" required by \"libdl_android\" is a native library providing stub. It shouldn\u0027t be included in this APEX via static linking. Dependency path: com.android.runtime{os:android,arch:commo\nn,apex:com.android.runtime,apex_flattened:image}\n           via tag apex.dependencyTag{name:\"sharedLib\", payload:true}\n    -\u003e libc{os:android,image:,arch:arm64_armv8-a_cortex-a73,sdk:,link:shared,version:,apex:com.android.runtime}\n           via tag cc.DependencyTag{Name:\"static variant\", Library:false, Shared:false, ReexportFlags:false, ExplicitlyVersioned:false, FromStatic:false}\n    -\u003e libc{os:android,image:,arch:arm64_armv8-a_cortex-a73,sdk:,link:static,version:,apex:com.android.runtime}\n           via tag cc.DependencyTag{Name:\"static\", Library:true, Shared:false, ReexportFlags:false, ExplicitlyVersioned:false, FromStatic:false}\n    -\u003e libdl_android{os:android,image:,arch:arm64_armv8-a_cortex-a73,sdk:,link:static,version:,apex:com.android.runtime}\n           via tag android.prebuiltDependencyTag{}\n    -\u003e prebuilt_libdl_android{os:android,image:,arch:arm64_armv8-a_cortex-a73,sdk:,link:static,version:,apex:com.android.runtime}\n```\n\n(I have to patch around another issue to get this far - https://r.android.com/1354624.)",
+      "parentUuid": "548f17f3_50a21590",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 3
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
