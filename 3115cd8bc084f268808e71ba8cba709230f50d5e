@@ -92,6 +92,30 @@
       "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ade47e9b_ac8a9895",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-03T00:21:11Z",
+      "side": 1,
+      "message": "Thanks for sharing the path. I think then we could just not track android.PrebuiltDepTag. If you want to be more general, you might be able to check if the tag implements android.ExcludeFromApexContentsTag interface.. similar to https://source.corp.google.com/android/build/soong/apex/apex.go;rcl\u003da3543ddcc548214495b06c1da9d4f745fc4bc83c;l\u003d2080\n\nThat is also in line with the TODO item just above the link.",
+      "parentUuid": "45e8a7e4_516bdceb",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 3
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
