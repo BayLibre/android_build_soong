@@ -729,30 +729,31 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 	}
 
 	image := d.defaultBootImage
+	if dexpreopt.GetGlobalConfig(ctx).UseArtImage {
+		image = d.otherImages[0]
+	}
+
 	if image != nil {
 		ctx.Strict("DEXPREOPT_IMAGE_PROFILE_BUILT_INSTALLED", image.profileInstalls.String())
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_FILES", strings.Join(image.dexPathsDeps.Strings(), " "))
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_LOCATIONS", strings.Join(image.getAnyAndroidVariant().dexLocationsDeps, " "))
 
-		var imageNames []string
-		for _, current := range append(d.otherImages, image) {
-			imageNames = append(imageNames, current.name)
-			for _, variant := range current.variants {
-				suffix := ""
-				if variant.target.Os.Class == android.Host {
-					suffix = "_host"
-				}
-				sfx := variant.name + suffix + "_" + variant.target.Arch.ArchType.String()
-				ctx.Strict("DEXPREOPT_IMAGE_VDEX_BUILT_INSTALLED_"+sfx, variant.vdexInstalls.String())
-				ctx.Strict("DEXPREOPT_IMAGE_"+sfx, variant.images.String())
-				ctx.Strict("DEXPREOPT_IMAGE_DEPS_"+sfx, strings.Join(variant.imagesDeps.Strings(), " "))
-				ctx.Strict("DEXPREOPT_IMAGE_BUILT_INSTALLED_"+sfx, variant.installs.String())
-				ctx.Strict("DEXPREOPT_IMAGE_UNSTRIPPED_BUILT_INSTALLED_"+sfx, variant.unstrippedInstalls.String())
+		for _, variant := range image.variants {
+			suffix := ""
+			if variant.target.Os.Class == android.Host {
+				suffix = "_host"
 			}
-			imageLocations := current.getAnyAndroidVariant().imageLocations()
-			ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_"+current.name, strings.Join(imageLocations, ":"))
-			ctx.Strict("DEXPREOPT_IMAGE_ZIP_"+current.name, current.zip.String())
+			sfx := variant.name + suffix + "_" + variant.target.Arch.ArchType.String()
+			ctx.Strict("DEXPREOPT_IMAGE_VDEX_BUILT_INSTALLED_"+sfx, variant.vdexInstalls.String())
+			ctx.Strict("DEXPREOPT_IMAGE_"+sfx, variant.images.String())
+			ctx.Strict("DEXPREOPT_IMAGE_DEPS_"+sfx, strings.Join(variant.imagesDeps.Strings(), " "))
+			ctx.Strict("DEXPREOPT_IMAGE_BUILT_INSTALLED_"+sfx, variant.installs.String())
+			ctx.Strict("DEXPREOPT_IMAGE_UNSTRIPPED_BUILT_INSTALLED_"+sfx, variant.unstrippedInstalls.String())
 		}
-		ctx.Strict("DEXPREOPT_IMAGE_NAMES", strings.Join(imageNames, " "))
+		imageLocations := image.getAnyAndroidVariant().imageLocations()
+		ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_"+image.name, strings.Join(imageLocations, ":"))
+		ctx.Strict("DEXPREOPT_IMAGE_ZIP_"+image.name, image.zip.String())
+
+		ctx.Strict("DEXPREOPT_IMAGE_NAMES", image.name)
 	}
 }
