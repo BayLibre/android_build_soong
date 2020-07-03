@@ -342,7 +342,7 @@ func ensureListEmpty(t *testing.T, result []string) {
 
 // Minimal test
 func TestBasicApex(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex_defaults {
 			name: "myapex-defaults",
 			manifest: ":myapex.manifest",
@@ -499,7 +499,7 @@ func TestBasicApex(t *testing.T) {
 
 	// Make sure that Android.mk is created
 	ab := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, config, "", ab)
+	data := android.AndroidMkDataForTest(t, ctx, ab)
 	var builder strings.Builder
 	data.Custom(&builder, ab.BaseModuleName(), "TARGET_", "", data)
 
@@ -2162,7 +2162,7 @@ func TestUseVendorFailsIfNotVendorAvailable(t *testing.T) {
 }
 
 func TestVendorApex(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -2193,7 +2193,7 @@ func TestVendorApex(t *testing.T) {
 	})
 
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, config, "", apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
 	var builder strings.Builder
@@ -2203,7 +2203,7 @@ func TestVendorApex(t *testing.T) {
 }
 
 func TestAndroidMk_UseVendorRequired(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -2227,7 +2227,7 @@ func TestAndroidMk_UseVendorRequired(t *testing.T) {
 	})
 
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, config, "", apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
 	var builder strings.Builder
@@ -2237,7 +2237,7 @@ func TestAndroidMk_UseVendorRequired(t *testing.T) {
 }
 
 func TestAndroidMk_VendorApexRequired(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -2258,7 +2258,7 @@ func TestAndroidMk_VendorApexRequired(t *testing.T) {
 	`)
 
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, config, "", apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
 	var builder strings.Builder
@@ -2268,7 +2268,7 @@ func TestAndroidMk_VendorApexRequired(t *testing.T) {
 }
 
 func TestAndroidMkWritesCommonProperties(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -2286,7 +2286,7 @@ func TestAndroidMkWritesCommonProperties(t *testing.T) {
 	`)
 
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, config, "", apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
 	var builder strings.Builder
@@ -3307,7 +3307,7 @@ func TestDependenciesInApexManifest(t *testing.T) {
 }
 
 func TestApexName(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -3340,7 +3340,7 @@ func TestApexName(t *testing.T) {
 	ensureContains(t, apexRule.Args["opt_flags"], "--do_not_check_keyname")
 
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, config, "", apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
 	var builder strings.Builder
@@ -3789,7 +3789,7 @@ func TestPrebuiltFilenameOverride(t *testing.T) {
 }
 
 func TestPrebuiltOverrides(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		prebuilt_apex {
 			name: "myapex.prebuilt",
 			src: "myapex-arm.apex",
@@ -3802,14 +3802,14 @@ func TestPrebuiltOverrides(t *testing.T) {
 	p := ctx.ModuleForTests("myapex.prebuilt", "android_common").Module().(*Prebuilt)
 
 	expected := []string{"myapex"}
-	actual := android.AndroidMkEntriesForTest(t, config, "", p)[0].EntryMap["LOCAL_OVERRIDES_MODULES"]
+	actual := android.AndroidMkEntriesForTest(t, ctx, p)[0].EntryMap["LOCAL_OVERRIDES_MODULES"]
 	if !reflect.DeepEqual(actual, expected) {
 		t.Errorf("Incorrect LOCAL_OVERRIDES_MODULES value '%s', expected '%s'", actual, expected)
 	}
 }
 
 func TestApexWithTests(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex_test {
 			name: "myapex",
 			key: "myapex.key",
@@ -3897,7 +3897,7 @@ func TestApexWithTests(t *testing.T) {
 
 	// Ensure the module is correctly translated.
 	bundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, config, "", bundle)
+	data := android.AndroidMkDataForTest(t, ctx, bundle)
 	name := bundle.BaseModuleName()
 	prefix := "TARGET_"
 	var builder strings.Builder
@@ -3912,7 +3912,7 @@ func TestApexWithTests(t *testing.T) {
 	ensureContains(t, androidMk, "LOCAL_MODULE := myapex\n")
 
 	flatBundle := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
-	data = android.AndroidMkDataForTest(t, config, "", flatBundle)
+	data = android.AndroidMkDataForTest(t, ctx, flatBundle)
 	data.Custom(&builder, name, prefix, "", data)
 	flatAndroidMk := builder.String()
 	ensureContainsOnce(t, flatAndroidMk, "LOCAL_TEST_DATA := :baz :bar/baz\n")
@@ -3920,7 +3920,7 @@ func TestApexWithTests(t *testing.T) {
 }
 
 func TestInstallExtraFlattenedApexes(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -3935,7 +3935,7 @@ func TestInstallExtraFlattenedApexes(t *testing.T) {
 	})
 	ab := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
 	ensureListContains(t, ab.requiredDeps, "myapex.flattened")
-	mk := android.AndroidMkDataForTest(t, config, "", ab)
+	mk := android.AndroidMkDataForTest(t, ctx, ab)
 	var builder strings.Builder
 	mk.Custom(&builder, ab.Name(), "TARGET_", "", mk)
 	androidMk := builder.String()
@@ -4580,7 +4580,7 @@ func TestApexAvailable_CreatedForApex(t *testing.T) {
 }
 
 func TestOverrideApex(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -4648,7 +4648,7 @@ func TestOverrideApex(t *testing.T) {
 	optFlags := apexRule.Args["opt_flags"]
 	ensureContains(t, optFlags, "--override_apk_package_name test.overridden.package")
 
-	data := android.AndroidMkDataForTest(t, config, "", apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	var builder strings.Builder
 	data.Custom(&builder, name, "TARGET_", "", data)
 	androidMk := builder.String()
@@ -5012,7 +5012,7 @@ func TestRejectNonInstallableJavaLibrary(t *testing.T) {
 }
 
 func TestCarryRequiredModuleNames(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -5038,7 +5038,7 @@ func TestCarryRequiredModuleNames(t *testing.T) {
 	`)
 
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, config, "", apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
 	var builder strings.Builder
@@ -5623,7 +5623,7 @@ func intPtr(i int) *int {
 }
 
 func TestApexSet(t *testing.T) {
-	ctx, config := testApex(t, `
+	ctx, _ := testApex(t, `
 		apex_set {
 			name: "myapex",
 			set: "myapex.apks",
@@ -5653,7 +5653,7 @@ func TestApexSet(t *testing.T) {
 
 	a := m.Module().(*ApexSet)
 	expectedOverrides := []string{"foo"}
-	actualOverrides := android.AndroidMkEntriesForTest(t, config, "", a)[0].EntryMap["LOCAL_OVERRIDES_MODULES"]
+	actualOverrides := android.AndroidMkEntriesForTest(t, ctx, a)[0].EntryMap["LOCAL_OVERRIDES_MODULES"]
 	if !reflect.DeepEqual(actualOverrides, expectedOverrides) {
 		t.Errorf("Incorrect LOCAL_OVERRIDES_MODULES - expected %q vs actual %q", expectedOverrides, actualOverrides)
 	}

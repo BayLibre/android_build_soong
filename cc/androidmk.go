@@ -79,7 +79,7 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 		Include:  "$(BUILD_SYSTEM)/soong_cc_prebuilt.mk",
 
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
-			func(entries *android.AndroidMkEntries) {
+			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				if len(c.Properties.Logtags) > 0 {
 					entries.AddStrings("LOCAL_LOGTAGS_FILES", c.Properties.Logtags...)
 				}
@@ -166,7 +166,7 @@ func AndroidMkDataPaths(data android.Paths) []string {
 func androidMkWriteTestData(data android.Paths, ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	testFiles := AndroidMkDataPaths(data)
 	if len(testFiles) > 0 {
-		entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+		entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.AddStrings("LOCAL_TEST_DATA", testFiles...)
 		})
 	}
@@ -233,7 +233,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		entries.Class = "STATIC_LIBRARIES"
 	} else if library.shared() {
 		entries.Class = "SHARED_LIBRARIES"
-		entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+		entries.ExtraEntries = append(entries.ExtraEntries, func(_ android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.SetString("LOCAL_SOONG_TOC", library.toc().String())
 			if !library.buildStubs() {
 				entries.SetString("LOCAL_SOONG_UNSTRIPPED_BINARY", library.unstrippedOutputFile.String())
@@ -253,7 +253,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		entries.DistFiles = android.MakeDefaultDistFiles(library.distFile)
 	}
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		library.androidMkWriteExportedFlags(entries)
 		library.androidMkEntriesWriteAdditionalDependenciesForSourceAbiDiff(entries)
 
@@ -281,7 +281,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		if library.buildStubs() {
 			entries.SubName = "." + library.stubsVersion()
 		}
-		entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+		entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			// Note library.skipInstall() has a special case to get here for static
 			// libraries that otherwise would have skipped installation and hence not
 			// have executed AndroidMkEntries at all. The reason is to ensure they get
@@ -322,7 +322,7 @@ func (binary *binaryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *a
 
 	entries.Class = "EXECUTABLES"
 	entries.DistFiles = binary.distFiles
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(_ android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		entries.SetString("LOCAL_SOONG_UNSTRIPPED_BINARY", binary.unstrippedOutputFile.String())
 		if len(binary.symlinks) > 0 {
 			entries.AddStrings("LOCAL_MODULE_SYMLINKS", binary.symlinks...)
@@ -344,7 +344,7 @@ func (binary *binaryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *a
 func (benchmark *benchmarkDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	ctx.subAndroidMk(entries, benchmark.binaryDecorator)
 	entries.Class = "NATIVE_TESTS"
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		if len(benchmark.Properties.Test_suites) > 0 {
 			entries.SetString("LOCAL_COMPATIBILITY_SUITE",
 				strings.Join(benchmark.Properties.Test_suites, " "))
@@ -367,7 +367,7 @@ func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 	if Bool(test.Properties.Test_per_src) {
 		entries.SubName = "_" + String(test.binaryDecorator.Properties.Stem)
 	}
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		if len(test.Properties.Test_suites) > 0 {
 			entries.SetString("LOCAL_COMPATIBILITY_SUITE",
 				strings.Join(test.Properties.Test_suites, " "))
@@ -407,7 +407,7 @@ func (fuzz *fuzzBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 			filepath.Dir(fuzz.config.String())+":config.json")
 	}
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		entries.SetBool("LOCAL_IS_FUZZ_TARGET", true)
 		if len(fuzzFiles) > 0 {
 			entries.AddStrings("LOCAL_TEST_DATA", fuzzFiles...)
@@ -424,7 +424,7 @@ func (test *testLibrary) AndroidMkEntries(ctx AndroidMkContext, entries *android
 
 func (library *toolchainLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	entries.Class = "STATIC_LIBRARIES"
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		_, suffix, _ := android.SplitFileExt(entries.OutputFile.Path().Base())
 		entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
 	})
@@ -440,7 +440,7 @@ func (installer *baseInstaller) AndroidMkEntries(ctx AndroidMkContext, entries *
 		entries.OutputFile = android.OptionalPathForPath(installer.path)
 	}
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		path, file := filepath.Split(installer.path.ToMakePath().String())
 		stem, suffix, _ := android.SplitFileExt(file)
 		entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
@@ -453,7 +453,7 @@ func (c *stubDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 	entries.SubName = ndkLibrarySuffix + "." + c.properties.ApiLevel
 	entries.Class = "SHARED_LIBRARIES"
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		path, file := filepath.Split(c.installPath.String())
 		stem, suffix, _ := android.SplitFileExt(file)
 		entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
@@ -469,7 +469,7 @@ func (c *stubDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 func (c *llndkStubDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	entries.Class = "SHARED_LIBRARIES"
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		c.libraryDecorator.androidMkWriteExportedFlags(entries)
 		_, _, ext := android.SplitFileExt(entries.OutputFile.Path().Base())
 
@@ -485,7 +485,7 @@ func (c *vndkPrebuiltLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, en
 
 	entries.SubName = c.androidMkSuffix
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		c.libraryDecorator.androidMkWriteExportedFlags(entries)
 
 		path, file := filepath.Split(c.path.ToMakePath().String())
@@ -517,7 +517,7 @@ func (c *vendorSnapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, 
 		entries.SubName = ""
 	}
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		c.libraryDecorator.androidMkWriteExportedFlags(entries)
 
 		if c.shared() || c.static() {
@@ -549,7 +549,7 @@ func (c *vendorSnapshotBinaryDecorator) AndroidMkEntries(ctx AndroidMkContext, e
 		entries.SubName = ""
 	}
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		entries.AddStrings("LOCAL_MODULE_SYMLINKS", c.Properties.Symlinks...)
 	})
 }
@@ -581,7 +581,7 @@ func (c *vendorPublicLibraryStubDecorator) AndroidMkEntries(ctx AndroidMkContext
 	entries.Class = "SHARED_LIBRARIES"
 	entries.SubName = vendorPublicLibrarySuffix
 
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		c.libraryDecorator.androidMkWriteExportedFlags(entries)
 		_, _, ext := android.SplitFileExt(entries.OutputFile.Path().Base())
 
@@ -592,7 +592,7 @@ func (c *vendorPublicLibraryStubDecorator) AndroidMkEntries(ctx AndroidMkContext
 }
 
 func (p *prebuiltLinker) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
-	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		if p.properties.Check_elf_files != nil {
 			entries.SetBool("LOCAL_CHECK_ELF_FILES", *p.properties.Check_elf_files)
 		} else {
@@ -622,7 +622,7 @@ func (p *prebuiltBinaryLinker) AndroidMkEntries(ctx AndroidMkContext, entries *a
 func androidMkWriteAllowUndefinedSymbols(linker *baseLinker, entries *android.AndroidMkEntries) {
 	allow := linker.Properties.Allow_undefined_symbols
 	if allow != nil {
-		entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+		entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.SetBool("LOCAL_ALLOW_UNDEFINED_SYMBOLS", *allow)
 		})
 	}
