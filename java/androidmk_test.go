@@ -23,7 +23,7 @@ import (
 )
 
 func TestRequired(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_library {
 			name: "foo",
 			srcs: ["a.java"],
@@ -32,7 +32,7 @@ func TestRequired(t *testing.T) {
 	`)
 
 	mod := ctx.ModuleForTests("foo", "android_common").Module()
-	entries := android.AndroidMkEntriesForTest(t, config, "", mod)[0]
+	entries := android.AndroidMkEntriesForTest(t, ctx, mod)[0]
 
 	expected := []string{"libfoo"}
 	actual := entries.EntryMap["LOCAL_REQUIRED_MODULES"]
@@ -42,7 +42,7 @@ func TestRequired(t *testing.T) {
 }
 
 func TestHostdex(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_library {
 			name: "foo",
 			srcs: ["a.java"],
@@ -51,7 +51,7 @@ func TestHostdex(t *testing.T) {
 	`)
 
 	mod := ctx.ModuleForTests("foo", "android_common").Module()
-	entriesList := android.AndroidMkEntriesForTest(t, config, "", mod)
+	entriesList := android.AndroidMkEntriesForTest(t, ctx, mod)
 	if len(entriesList) != 2 {
 		t.Errorf("two entries are expected, but got %d", len(entriesList))
 	}
@@ -72,7 +72,7 @@ func TestHostdex(t *testing.T) {
 }
 
 func TestHostdexRequired(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_library {
 			name: "foo",
 			srcs: ["a.java"],
@@ -82,7 +82,7 @@ func TestHostdexRequired(t *testing.T) {
 	`)
 
 	mod := ctx.ModuleForTests("foo", "android_common").Module()
-	entriesList := android.AndroidMkEntriesForTest(t, config, "", mod)
+	entriesList := android.AndroidMkEntriesForTest(t, ctx, mod)
 	if len(entriesList) != 2 {
 		t.Errorf("two entries are expected, but got %d", len(entriesList))
 	}
@@ -103,7 +103,7 @@ func TestHostdexRequired(t *testing.T) {
 }
 
 func TestHostdexSpecificRequired(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_library {
 			name: "foo",
 			srcs: ["a.java"],
@@ -117,7 +117,7 @@ func TestHostdexSpecificRequired(t *testing.T) {
 	`)
 
 	mod := ctx.ModuleForTests("foo", "android_common").Module()
-	entriesList := android.AndroidMkEntriesForTest(t, config, "", mod)
+	entriesList := android.AndroidMkEntriesForTest(t, ctx, mod)
 	if len(entriesList) != 2 {
 		t.Errorf("two entries are expected, but got %d", len(entriesList))
 	}
@@ -136,7 +136,7 @@ func TestHostdexSpecificRequired(t *testing.T) {
 }
 
 func TestDistWithTag(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_library {
 			name: "foo_without_tag",
 			srcs: ["a.java"],
@@ -156,8 +156,8 @@ func TestDistWithTag(t *testing.T) {
 		}
 	`)
 
-	withoutTagEntries := android.AndroidMkEntriesForTest(t, config, "", ctx.ModuleForTests("foo_without_tag", "android_common").Module())
-	withTagEntries := android.AndroidMkEntriesForTest(t, config, "", ctx.ModuleForTests("foo_with_tag", "android_common").Module())
+	withoutTagEntries := android.AndroidMkEntriesForTest(t, ctx, ctx.ModuleForTests("foo_without_tag", "android_common").Module())
+	withTagEntries := android.AndroidMkEntriesForTest(t, ctx, ctx.ModuleForTests("foo_with_tag", "android_common").Module())
 
 	if len(withoutTagEntries) != 2 || len(withTagEntries) != 2 {
 		t.Errorf("two mk entries per module expected, got %d and %d", len(withoutTagEntries), len(withTagEntries))
@@ -172,7 +172,7 @@ func TestDistWithTag(t *testing.T) {
 }
 
 func TestDistWithDest(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_library {
 			name: "foo",
 			srcs: ["a.java"],
@@ -185,7 +185,7 @@ func TestDistWithDest(t *testing.T) {
 	`)
 
 	module := ctx.ModuleForTests("foo", "android_common").Module()
-	entries := android.AndroidMkEntriesForTest(t, config, "", module)
+	entries := android.AndroidMkEntriesForTest(t, ctx, module)
 	if len(entries) != 2 {
 		t.Errorf("Expected 2 AndroidMk entries, got %d", len(entries))
 	}
@@ -208,7 +208,7 @@ func TestDistWithDest(t *testing.T) {
 }
 
 func TestDistsWithAllProperties(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_library {
 			name: "foo",
 			srcs: ["a.java"],
@@ -229,7 +229,7 @@ func TestDistsWithAllProperties(t *testing.T) {
 	`)
 
 	module := ctx.ModuleForTests("foo", "android_common").Module()
-	entries := android.AndroidMkEntriesForTest(t, config, "", module)
+	entries := android.AndroidMkEntriesForTest(t, ctx, module)
 	if len(entries) != 2 {
 		t.Errorf("Expected 2 AndroidMk entries, got %d", len(entries))
 	}
@@ -265,7 +265,7 @@ func TestDistsWithAllProperties(t *testing.T) {
 }
 
 func TestDistsWithTag(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_library {
 			name: "foo_without_tag",
 			srcs: ["a.java"],
@@ -292,8 +292,8 @@ func TestDistsWithTag(t *testing.T) {
 	moduleWithoutTag := ctx.ModuleForTests("foo_without_tag", "android_common").Module()
 	moduleWithTag := ctx.ModuleForTests("foo_with_tag", "android_common").Module()
 
-	withoutTagEntries := android.AndroidMkEntriesForTest(t, config, "", moduleWithoutTag)
-	withTagEntries := android.AndroidMkEntriesForTest(t, config, "", moduleWithTag)
+	withoutTagEntries := android.AndroidMkEntriesForTest(t, ctx, moduleWithoutTag)
+	withTagEntries := android.AndroidMkEntriesForTest(t, ctx, moduleWithTag)
 
 	if len(withoutTagEntries) != 2 || len(withTagEntries) != 2 {
 		t.Errorf("two mk entries per module expected, got %d and %d", len(withoutTagEntries), len(withTagEntries))
@@ -312,7 +312,7 @@ func TestDistsWithTag(t *testing.T) {
 }
 
 func TestJavaSdkLibrary_RequireXmlPermissionFile(t *testing.T) {
-	ctx, config := testJava(t, `
+	ctx, _ := testJava(t, `
 		java_sdk_library {
 			name: "foo-shared_library",
 			srcs: ["a.java"],
@@ -336,7 +336,7 @@ func TestJavaSdkLibrary_RequireXmlPermissionFile(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		mod := ctx.ModuleForTests(tc.moduleName, "android_common").Module()
-		entries := android.AndroidMkEntriesForTest(t, config, "", mod)[0]
+		entries := android.AndroidMkEntriesForTest(t, ctx, mod)[0]
 		actual := entries.EntryMap["LOCAL_REQUIRED_MODULES"]
 		if !reflect.DeepEqual(tc.expected, actual) {
 			t.Errorf("Unexpected required modules - expected: %q, actual: %q", tc.expected, actual)

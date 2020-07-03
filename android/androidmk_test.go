@@ -229,7 +229,7 @@ func TestGetDistForGoals(t *testing.T) {
 		FailIfErrored(t, errs)
 
 		module := ctx.ModuleForTests("foo", "").Module().(*customModule)
-		entries := AndroidMkEntriesForTest(t, config, "", module)
+		entries := AndroidMkEntriesForTest(t, ctx, module)
 		if len(entries) != 1 {
 			t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
 		}
