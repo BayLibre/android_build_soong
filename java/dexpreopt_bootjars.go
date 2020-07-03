@@ -725,9 +725,7 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_FILES", strings.Join(image.dexPathsDeps.Strings(), " "))
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_LOCATIONS", strings.Join(image.getAnyAndroidVariant().dexLocationsDeps, " "))
 
-		var imageNames []string
 		for _, current := range append(d.otherImages, image) {
-			imageNames = append(imageNames, current.name)
 			for _, variant := range current.variants {
 				suffix := ""
 				if variant.target.Os.Class == android.Host {
@@ -744,6 +742,6 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 			ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_"+current.name, strings.Join(imageLocations, ":"))
 			ctx.Strict("DEXPREOPT_IMAGE_ZIP_"+current.name, current.zip.String())
 		}
-		ctx.Strict("DEXPREOPT_IMAGE_NAMES", strings.Join(imageNames, " "))
+		ctx.Strict("DEXPREOPT_IMAGE_NAMES", image.name)
 	}
 }
