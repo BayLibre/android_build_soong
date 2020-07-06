@@ -370,9 +370,10 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.SetString("LOCAL_CERTIFICATE", app.certificate.AndroidMkString())
 				entries.AddStrings("LOCAL_OVERRIDES_PACKAGES", app.getOverriddenPackages()...)
 
-				for _, jniLib := range app.installJniLibs {
+				for _, jniLib := range app.jniLibs {
 					entries.AddStrings("LOCAL_SOONG_JNI_LIBS_"+jniLib.target.Arch.ArchType.String(), jniLib.name)
 				}
+				entries.SetBool("LOCAL_SOONG_JNI_LIBS_ARE_EMBEDDED", app.embeddedJniLibs)
 				if len(app.jniCoverageOutputs) > 0 {
 					entries.AddStrings("LOCAL_PREBUILT_COVERAGE_ARCHIVE", app.jniCoverageOutputs.Strings()...)
 				}

@@ -283,7 +283,8 @@ type AndroidApp struct {
 
 	overridableAppProperties overridableAppProperties
 
-	installJniLibs     []jniLib
+	jniLibs            []jniLib
+	embeddedJniLibs    bool
 	jniCoverageOutputs android.Paths
 
 	bundleFile android.Path
@@ -592,6 +593,7 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 func (a *AndroidApp) jniBuildActions(jniLibs []jniLib, ctx android.ModuleContext) android.WritablePath {
 	var jniJarFile android.WritablePath
 	if len(jniLibs) > 0 {
+		a.jniLibs = jniLibs
 		if a.shouldEmbedJnis(ctx) {
 			jniJarFile = android.PathForModuleOut(ctx, "jnilibs.zip")
 			TransformJniLibsToJar(ctx, jniJarFile, jniLibs, a.useEmbeddedNativeLibs(ctx))
@@ -611,8 +613,7 @@ func (a *AndroidApp) jniBuildActions(jniLibs []jniLib, ctx android.ModuleContext
 					}
 				}
 			}
-		} else {
-			a.installJniLibs = jniLibs
+			a.embeddedJniLibs = true
 		}
 	}
 	return jniJarFile
