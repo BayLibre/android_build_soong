@@ -539,7 +539,7 @@ func (c *Module) Toc() android.OptionalPath {
 func (c *Module) ApiLevel() string {
 	if c.linker != nil {
 		if stub, ok := c.linker.(*stubDecorator); ok {
-			return stub.properties.ApiLevel
+			return stub.apiLevel.String()
 		}
 	}
 	panic(fmt.Errorf("ApiLevel() called on non-stub library module: %q", c.BaseModuleName()))
@@ -1657,11 +1657,13 @@ func (c *Module) begin(ctx BaseModuleContext) {
 		feature.begin(ctx)
 	}
 	if ctx.useSdk() && c.IsSdkVariant() {
-		version, err := normalizeNdkApiLevel(ctx, ctx.sdkVersion(), ctx.Arch())
+		version, err := nativeApiLevelFromUser(ctx, ctx.sdkVersion())
 		if err != nil {
 			ctx.PropertyErrorf("sdk_version", err.Error())
+			c.Properties.Sdk_version = nil
+		} else {
+			c.Properties.Sdk_version = StringPtr(version.String())
 		}
-		c.Properties.Sdk_version = StringPtr(version)
 	}
 }
 
@@ -3297,13 +3299,6 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 
 func (c *Module) IsSdkVariant() bool {
 	return c.Properties.IsSdkVariant || c.AlwaysSdk()
-}
-
-func getCurrentNdkPrebuiltVersion(ctx DepsContext) string {
-	if ctx.Config().PlatformSdkVersionInt() > config.NdkMaxPrebuiltVersionInt {
-		return strconv.Itoa(config.NdkMaxPrebuiltVersionInt)
-	}
-	return ctx.Config().PlatformSdkVersion()
 }
 
 func kytheExtractAllFactory() android.Singleton {
