@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"io"
+	"path/filepath"
 
 	"android/soong/android"
 )
@@ -370,9 +371,23 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.SetString("LOCAL_CERTIFICATE", app.certificate.AndroidMkString())
 				entries.AddStrings("LOCAL_OVERRIDES_PACKAGES", app.getOverriddenPackages()...)
 
-				for _, jniLib := range app.installJniLibs {
-					entries.AddStrings("LOCAL_SOONG_JNI_LIBS_"+jniLib.target.Arch.ArchType.String(), jniLib.name)
+				if !app.embeddedJniLibs {
+					for _, jniLib := range app.jniLibs {
+						entries.AddStrings("LOCAL_SOONG_JNI_LIBS_"+jniLib.target.Arch.ArchType.String(), jniLib.name)
+					}
 				}
+
+				var jniSymbols android.RuleBuilderInstalls
+				for _, jniLib := range app.jniLibs {
+					if jniLib.unstrippedFile != nil {
+						jniSymbols = append(jniSymbols, android.RuleBuilderInstall{
+							From: jniLib.unstrippedFile,
+							To:   filepath.Join(app.jniSymbolsDir, targetToJniDir(jniLib.target), jniLib.unstrippedFile.Base()),
+						})
+					}
+				}
+				entries.SetString("LOCAL_SOONG_JNI_LIBS_SYMBOLS", jniSymbols.String())
+
 				if len(app.jniCoverageOutputs) > 0 {
 					entries.AddStrings("LOCAL_PREBUILT_COVERAGE_ARCHIVE", app.jniCoverageOutputs.Strings()...)
 				}
