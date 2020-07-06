@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "48ef64e4_d8f54cc1",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2104,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-06T12:33:47Z",
+      "side": 1,
+      "message": "Any particular reason why you do not just use ExcludeFromApexContentsTag and update walkPayloadDeps to honor that?\n\nRequiring a concrete type here makes it impossible to mix this behavior in with other types. If you cannot use ExcludeFromApexContentsTag then I would recommend you follow a similar approach to that and just define an interface.",
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "548f17f3_50a21590",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -155,6 +172,30 @@
       "side": 1,
       "message": "It might be. But what I am saying here is that this logic should be as close as https://source.corp.google.com/android/build/soong/apex/apex.go;rcl\u003da3543ddcc548214495b06c1da9d4f745fc4bc83c;l\u003d2078\n\nExcludeFromApexContentsTag used to filter-out prebuilts there.",
       "parentUuid": "fa5ce9a6_ab1fecdd",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 3
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2939e185_f6c31208",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-06T12:33:47Z",
+      "side": 1,
+      "message": "I think that this change should be separated out into its own change with its own test. It will make it easier to review and understand the impact.",
+      "parentUuid": "7d3571d0_ad08f46d",
       "range": {
         "startLine": 1753,
         "startChar": 0,
