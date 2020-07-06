@@ -144,69 +144,92 @@ func normalizeNdkApiLevel(ctx android.BaseModuleContext, apiLevel string,
 	return strconv.Itoa(intMax(version, firstArchVersion)), nil
 }
 
-func getFirstGeneratedVersion(firstSupportedVersion string, platformVersion int) (int, error) {
-	if firstSupportedVersion == "current" {
-		return platformVersion + 1, nil
+func shouldUseVersionScript(ctx android.BaseModuleContext, stub *stubDecorator) bool {
+	// TODO: Add mutated UnversionedUntil that is an ApiLevel
+	// unversioned_until is normally empty, in which case we should use the
+	// version script.
+	unversionedStr := String(stub.properties.Unversioned_until)
+	if unversionedStr == "" {
+		return true
 	}
 
-	return strconv.Atoi(firstSupportedVersion)
+	unversionedUntil := createNativeApiLevel(ctx, unversionedStr)
+	apiLevel := createNativeApiLevel(ctx, stub.properties.ApiLevel)
+	return apiLevel.CompareTo(unversionedUntil) >= 0
 }
 
-func shouldUseVersionScript(ctx android.BaseModuleContext, stub *stubDecorator) (bool, error) {
-	// unversioned_until is normally empty, in which case we should use the version script.
-	if String(stub.properties.Unversioned_until) == "" {
-		return true, nil
+type nativeApiCanonicalizer struct {
+	ctx android.BaseModuleContext
+}
+
+func (this nativeApiCanonicalizer) minApiForArch() int {
+	arch := this.ctx.Arch().ArchType
+	minVersion := this.ctx.Config().MinSupportedSdkVersion()
+	firstArchVersions := map[android.ArchType]int{
+		android.Arm:    minVersion,
+		android.Arm64:  21,
+		android.X86:    minVersion,
+		android.X86_64: 21,
 	}
 
-	if String(stub.properties.Unversioned_until) == "current" {
-		if stub.properties.ApiLevel == "current" {
-			return true, nil
-		} else {
-			return false, nil
+	firstArchVersion, ok := firstArchVersions[arch]
+	if !ok {
+		panic(fmt.Errorf("Arch %q not found in firstArchVersions", arch))
+	}
+	return firstArchVersion
+}
+
+func (this nativeApiCanonicalizer) ReplaceAliases(raw string) string {
+	if raw == "minimum" {
+		return strconv.Itoa(this.minApiForArch())
+	}
+
+	return android.ReplaceFinalizedCodenames(this.ctx, raw)
+}
+
+func (this nativeApiCanonicalizer) AdjustFinalApiLevel(level int) int {
+	return intMax(this.minApiForArch(), level)
+}
+
+var _ android.ApiLevelCanonicalizer = nativeApiCanonicalizer{}
+
+func createNativeApiLevel(ctx android.BaseModuleContext,
+	raw string) android.ApiLevel {
+	return android.CreateApiLevel(ctx, raw, nativeApiCanonicalizer{ctx})
+}
+
+func nextApiLevel(ctx android.BaseModuleContext,
+	apiLevel android.FinalApiLevel) android.ApiLevel {
+	return createNativeApiLevel(ctx, strconv.Itoa(apiLevel.AsInt()+1))
+}
+
+func generateStubApiVariants(ctx android.BottomUpMutatorContext,
+	c *stubDecorator) {
+
+	firstSupportedVersion := createNativeApiLevel(ctx,
+		String(c.properties.First_version))
+
+	var versions []android.ApiLevel
+	if !firstSupportedVersion.IsPreview() {
+		it := firstSupportedVersion
+		for !it.IsPreview() {
+			versions = append(versions, it)
+			it = nextApiLevel(ctx, it.(android.FinalApiLevel))
 		}
 	}
+	for _, codename := range ctx.Config().PlatformVersionActiveCodenames() {
+		versions = append(versions, createNativeApiLevel(ctx, codename))
+	}
+	versions = append(versions, android.CurrentApiLevel)
 
-	if stub.properties.ApiLevel == "current" {
-		return true, nil
+	// TODO: Behavior change: versionStrs used to be 9000+ for previews, are now
+	// just the code names.
+	versionStrs := []string{}
+	for _, version := range versions {
+		versionStrs = append(versionStrs, version.Canonical())
 	}
 
-	unversionedUntil, err := android.ApiStrToNum(ctx, String(stub.properties.Unversioned_until))
-	if err != nil {
-		return true, err
-	}
-
-	version, err := android.ApiStrToNum(ctx, stub.properties.ApiLevel)
-	if err != nil {
-		return true, err
-	}
-
-	return version >= unversionedUntil, nil
-}
-
-func generateStubApiVariants(mctx android.BottomUpMutatorContext, c *stubDecorator) {
-	platformVersion := mctx.Config().PlatformSdkVersionInt()
-
-	firstSupportedVersion, err := normalizeNdkApiLevel(mctx, String(c.properties.First_version),
-		mctx.Arch())
-	if err != nil {
-		mctx.PropertyErrorf("first_version", err.Error())
-	}
-
-	firstGenVersion, err := getFirstGeneratedVersion(firstSupportedVersion, platformVersion)
-	if err != nil {
-		// In theory this is impossible because we've already run this through
-		// normalizeNdkApiLevel above.
-		mctx.PropertyErrorf("first_version", err.Error())
-	}
-
-	var versionStrs []string
-	for version := firstGenVersion; version <= platformVersion; version++ {
-		versionStrs = append(versionStrs, strconv.Itoa(version))
-	}
-	versionStrs = append(versionStrs, mctx.Config().PlatformVersionActiveCodenames()...)
-	versionStrs = append(versionStrs, "current")
-
-	modules := mctx.CreateVariations(versionStrs...)
+	modules := ctx.CreateVariations(versionStrs...)
 	for i, module := range modules {
 		module.(*Module).compiler.(*stubDecorator).properties.ApiLevel = versionStrs[i]
 	}
@@ -319,7 +342,8 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 	objs, versionScript := compileStubLibrary(ctx, flags, symbolFile,
 		c.properties.ApiLevel, "")
 	c.versionScriptPath = versionScript
-	if c.properties.ApiLevel == "current" && ctx.PrimaryArch() {
+	apiLevel := createNativeApiLevel(ctx, c.properties.ApiLevel)
+	if apiLevel.IsEqualTo(android.CurrentApiLevel) && ctx.PrimaryArch() {
 		c.parsedCoverageXmlPath = parseSymbolFileForCoverage(ctx, symbolFile)
 	}
 	return objs
@@ -341,12 +365,7 @@ func (stub *stubDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 func (stub *stubDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps,
 	objs Objects) android.Path {
 
-	useVersionScript, err := shouldUseVersionScript(ctx, stub)
-	if err != nil {
-		ctx.ModuleErrorf(err.Error())
-	}
-
-	if useVersionScript {
+	if shouldUseVersionScript(ctx, stub) {
 		linkerScriptFlag := "-Wl,--version-script," + stub.versionScriptPath.String()
 		flags.Local.LdFlags = append(flags.Local.LdFlags, linkerScriptFlag)
 		flags.LdFlagsDeps = append(flags.LdFlagsDeps, stub.versionScriptPath)

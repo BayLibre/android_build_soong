@@ -24,6 +24,162 @@ func init() {
 	RegisterSingletonType("api_levels", ApiLevelsSingleton)
 }
 
+// TODO: How do we deal with flavors like system_27 or APEX versions?
+type ApiLevel interface {
+	OriginalSpelling() string
+	Canonical() string
+	IsPreview() bool
+	CompareTo(ApiLevel) int
+	IsEqualTo(ApiLevel) bool
+}
+
+type FinalApiLevel interface {
+	ApiLevel
+
+	AsInt() int
+}
+
+type PreviewApiLevel interface {
+	ApiLevel
+}
+
+type finalApiLevel struct {
+	originalSpelling string
+	canonicalForm    string
+	value            int
+}
+
+func (this finalApiLevel) OriginalSpelling() string {
+	return this.originalSpelling
+}
+
+func (this finalApiLevel) Canonical() string {
+	return this.canonicalForm
+}
+
+func (this finalApiLevel) IsPreview() bool {
+	return false
+}
+
+func (this finalApiLevel) AsInt() int {
+	return this.value
+}
+
+func (this finalApiLevel) CompareTo(other ApiLevel) int {
+	if other.IsPreview() {
+		return -1
+	}
+
+	otherValue := other.(finalApiLevel).AsInt()
+	if this.AsInt() < otherValue {
+		return -1
+	} else if this.AsInt() == otherValue {
+		return 0
+	} else {
+		return 1
+	}
+}
+
+func (this finalApiLevel) IsEqualTo(other ApiLevel) bool {
+	return this.CompareTo(other) == 0
+}
+
+type previewApiLevel struct {
+	originalSpelling string
+	canonicalForm    string
+}
+
+func (this previewApiLevel) OriginalSpelling() string {
+	return this.originalSpelling
+}
+
+func (this previewApiLevel) Canonical() string {
+	return this.canonicalForm
+}
+
+func (this previewApiLevel) IsPreview() bool {
+	return true
+}
+
+func (this previewApiLevel) CompareTo(other ApiLevel) int {
+	if !other.IsPreview() {
+		return 1
+	}
+
+	if this.Canonical() == other.Canonical() {
+		return 0
+	} else if other.Canonical() == "current" {
+		return -1
+	} else if this.Canonical() == "current" {
+		return 1
+	} else {
+		// TODO: Should we impose ordering on actual previews?
+		return 0
+	}
+}
+
+func (this previewApiLevel) IsEqualTo(other ApiLevel) bool {
+	return this.CompareTo(other) == 0
+}
+
+var _ FinalApiLevel = finalApiLevel{}
+var _ PreviewApiLevel = previewApiLevel{}
+
+// TODO: Merge with FutureApiLevel
+var CurrentApiLevel = previewApiLevel{
+	originalSpelling: "current",
+	canonicalForm:    "current",
+}
+
+type ApiLevelCanonicalizer interface {
+	ReplaceAliases(string) string
+	AdjustFinalApiLevel(level int) int
+}
+
+func ReplaceFinalizedCodenames(ctx BaseModuleContext, raw string) string {
+	num, ok := getApiLevelsMap(ctx.Config())[raw]
+	if !ok {
+		return raw
+	}
+
+	// TODO: Get a different map that returns the string and doesn't deal
+	// with preview codenames.
+	if num < 9000 {
+		return strconv.Itoa(num)
+	}
+
+	return raw
+}
+
+func CreateApiLevel(ctx BaseModuleContext, raw string,
+	canonicalizer ApiLevelCanonicalizer) ApiLevel {
+
+	canonical := canonicalizer.ReplaceAliases(raw)
+	asInt, err := strconv.Atoi(raw)
+	if err != nil {
+		return previewApiLevel{
+			originalSpelling: raw,
+			canonicalForm:    canonical,
+		}
+	}
+
+	adjusted := canonicalizer.AdjustFinalApiLevel(asInt)
+	// Might still be a preview that's being referred to as its assumed
+	// eventual number.
+	if adjusted > ctx.Config().PlatformSdkVersionInt() {
+		return previewApiLevel{
+			originalSpelling: raw,
+			canonicalForm:    canonical,
+		}
+	}
+
+	return finalApiLevel{
+		originalSpelling: raw,
+		canonicalForm:    strconv.Itoa(adjusted),
+		value:            adjusted,
+	}
+}
+
 func ApiLevelsSingleton() Singleton {
 	return &apiLevelsSingleton{}
 }
