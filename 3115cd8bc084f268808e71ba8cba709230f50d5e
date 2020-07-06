@@ -140,6 +140,30 @@
       "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3571d0_ad08f46d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-06T11:12:44Z",
+      "side": 1,
+      "message": "It might be. But what I am saying here is that this logic should be as close as https://source.corp.google.com/android/build/soong/apex/apex.go;rcl\u003da3543ddcc548214495b06c1da9d4f745fc4bc83c;l\u003d2078\n\nExcludeFromApexContentsTag used to filter-out prebuilts there.",
+      "parentUuid": "fa5ce9a6_ab1fecdd",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 3
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
