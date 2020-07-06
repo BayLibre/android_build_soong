@@ -17,7 +17,6 @@ package android
 import (
 	"bytes"
 	"fmt"
-	"strconv"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -30,7 +29,7 @@ func init() {
 }
 
 func androidMakeVarsProvider(ctx MakeVarsContext) {
-	ctx.Strict("MIN_SUPPORTED_SDK_VERSION", strconv.Itoa(ctx.Config().MinSupportedSdkVersion()))
+	ctx.Strict("MIN_SUPPORTED_SDK_VERSION", ctx.Config().MinSupportedSdkVersion().String())
 }
 
 ///////////////////////////////////////////////////////////////////////////////
