@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fdba92b_f03ccadc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483218
+      },
+      "writtenOn": "2020-07-06T22:09:38Z",
+      "side": 1,
+      "message": "Hi Colin, \n\nThanks for providing the change. Would you please also cherry pick these changes to mainlin-prod?",
+      "revId": "5d3c488b58a88329cd0de407ffb7dc64a168f99b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
