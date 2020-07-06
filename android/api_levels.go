@@ -24,6 +24,158 @@ func init() {
 	RegisterSingletonType("api_levels", ApiLevelsSingleton)
 }
 
+// An API level, which may be a finalized (numbered) API, a preview (codenamed)
+// API, or the future API level (10000). Can be parsed from a string with
+// ApiLevelFromUser or ApiLevelOrPanic.
+//
+// The different *types* of API levels are handled separately. Currently only
+// Java has these, and they're managed with the sdkKind enum of the sdkSpec. A
+// future cleanup should be to migrate sdkSpec to using ApiLevel instead of its
+// sdkVersion int, and to move sdkSpec into this package.
+type ApiLevel struct {
+	// The string representation of the API level.
+	value string
+
+	// A number associated with the API level. The exact value depends on
+	// whether this API level is a preview or final API.
+	//
+	// For final API levels, this is the assigned version number.
+	//
+	// For preview API levels, this value has no meaning except to index known
+	// previews to determine ordering.
+	number int
+
+	// Identifies this API level as either a preview or final API level.
+	isPreview bool
+}
+
+// Returns the canonical name for this API level. For a finalized API level
+// this will be the API number as a string. For a preview API level this
+// will be the codename, or "current".
+func (this ApiLevel) String() string {
+	return this.value
+}
+
+// Returns true if this is a non-final API level.
+func (this ApiLevel) IsPreview() bool {
+	return this.isPreview
+}
+
+// Returns true if this is the unfinalized "current" API level. This means
+// different things across Java and native. Java APIs do not use explicit
+// codenames, so all non-final codenames are grouped into "current". For native
+// explicit codenames are typically used, and current is the union of all
+// non-final APIs, including those that may not yet be in any codename.
+//
+// Note that in a build where the platform is final, "current" will not be a
+// preview API level but will instead be canonicalized to the final API level.
+func (this ApiLevel) IsCurrent() bool {
+	return this.value == "current"
+}
+
+// Returns -1 if the current API level is less than the argument, 0 if they
+// are equal, and 1 if it is greater than the argument.
+func (this ApiLevel) CompareTo(other ApiLevel) int {
+	if this.IsPreview() && !other.IsPreview() {
+		return 1
+	} else if !this.IsPreview() && other.IsPreview() {
+		return -1
+	}
+
+	if this.number < other.number {
+		return -1
+	} else if this.number == other.number {
+		return 0
+	} else {
+		return 1
+	}
+}
+
+func (this ApiLevel) EqualTo(other ApiLevel) bool {
+	return this.CompareTo(other) == 0
+}
+
+func (this ApiLevel) GreaterThan(other ApiLevel) bool {
+	return this.CompareTo(other) > 0
+}
+
+func (this ApiLevel) GreaterThanOrEqualTo(other ApiLevel) bool {
+	return this.CompareTo(other) >= 0
+}
+
+func (this ApiLevel) LessThan(other ApiLevel) bool {
+	return this.CompareTo(other) < 0
+}
+
+func (this ApiLevel) LessThanOrEqualTo(other ApiLevel) bool {
+	return this.CompareTo(other) <= 0
+}
+
+func uncheckedFinalApiLevel(num int) ApiLevel {
+	return ApiLevel{
+		value:     strconv.Itoa(num),
+		number:    num,
+		isPreview: false,
+	}
+}
+
+// TODO: Merge with FutureApiLevel
+var CurrentApiLevel = ApiLevel{
+	value:     "current",
+	number:    10000,
+	isPreview: true,
+}
+
+// The first version that introduced 64-bit ABIs.
+var FirstLp64Version = uncheckedFinalApiLevel(21)
+
+// The first API level that does not require NDK code to link
+// libandroid_support.
+var FirstNonLibAndroidSupportVersion = uncheckedFinalApiLevel(21)
+
+func ReplaceFinalizedCodenames(ctx EarlyModuleContext, raw string) string {
+	num, ok := getFinalCodenamesMap(ctx.Config())[raw]
+	if !ok {
+		return raw
+	}
+
+	return strconv.Itoa(num)
+}
+
+func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (*ApiLevel, error) {
+	if raw == "" {
+		panic("API level string must be non-empty")
+	}
+
+	if raw == "current" {
+		return &CurrentApiLevel, nil
+	}
+
+	for _, preview := range ctx.Config().PreviewApiLevels() {
+		if raw == preview.String() {
+			return &preview, nil
+		}
+	}
+
+	canonical := ReplaceFinalizedCodenames(ctx, raw)
+	asInt, err := strconv.Atoi(canonical)
+	if err != nil {
+		return nil, fmt.Errorf("%q could not be parsed as an integer and is "+
+			"not a recognized codename", canonical)
+	}
+
+	apiLevel := uncheckedFinalApiLevel(asInt)
+	return &apiLevel, nil
+}
+
+func ApiLevelOrPanic(ctx EarlyModuleContext, raw string) ApiLevel {
+	value, err := ApiLevelFromUser(ctx, raw)
+	if err != nil {
+		panic(err.Error())
+	}
+	return *value
+}
+
 func ApiLevelsSingleton() Singleton {
 	return &apiLevelsSingleton{}
 }
@@ -50,6 +202,36 @@ func createApiLevelsJson(ctx SingletonContext, file WritablePath,
 
 func GetApiLevelsJson(ctx PathContext) WritablePath {
 	return PathForOutput(ctx, "api_levels.json")
+}
+
+var finalCodenamesMapKey = NewOnceKey("FinalCodenamesMap")
+
+func getFinalCodenamesMap(config Config) map[string]int {
+	return config.Once(finalCodenamesMapKey, func() interface{} {
+		apiLevelsMap := map[string]int{
+			"G":     9,
+			"I":     14,
+			"J":     16,
+			"J-MR1": 17,
+			"J-MR2": 18,
+			"K":     19,
+			"L":     21,
+			"L-MR1": 22,
+			"M":     23,
+			"N":     24,
+			"N-MR1": 25,
+			"O":     26,
+			"O-MR1": 27,
+			"P":     28,
+			"Q":     29,
+		}
+
+		if Bool(config.productVariables.Platform_sdk_final) {
+			apiLevelsMap["current"] = config.PlatformSdkVersionInt()
+		}
+
+		return apiLevelsMap
+	}).(map[string]int)
 }
 
 var apiLevelsMapKey = NewOnceKey("ApiLevelsMap")
