@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89df9348_feab28a1",
+        "filename": "java/jdeps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-06T21:18:55Z",
+      "side": 1,
+      "message": "Can you add a comment here explaining that this is necessary to satisfy the dangling rules check because the file is written by Soong instead of a rule?",
+      "revId": "ba51a3e11b33f114c9e883d46e853969d7a9bd11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d0e8285_c4ca1113",
+        "filename": "java/jdeps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-06T21:18:55Z",
+      "side": 1,
+      "message": "There is nearly identical code in cc/ccdeps.go, can you make the same change there too while you\u0027re at it?",
+      "revId": "ba51a3e11b33f114c9e883d46e853969d7a9bd11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
