@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cc8d82a_9e55d89d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-07-07T18:54:52Z",
+      "side": 1,
+      "message": "Can we also not capture this flag to not have duplication of logic? It should be set externally, unless there is a reasonable default that soong would like to set.",
+      "range": {
+        "startLine": 807,
+        "startChar": 21,
+        "endLine": 807,
+        "endChar": 38
+      },
+      "revId": "d9c96c660425bc66d6bd200ddc2be15d98995b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
