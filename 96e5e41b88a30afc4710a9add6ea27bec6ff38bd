@@ -16,6 +16,24 @@
       "revId": "96e5e41b88a30afc4710a9add6ea27bec6ff38bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89ee22a6_9f2aceac",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-07T02:07:59Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s why I made it conditional on dist instead of letting distFile do the check.",
+      "parentUuid": "6c53067a_7bcafbc4",
+      "revId": "96e5e41b88a30afc4710a9add6ea27bec6ff38bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
