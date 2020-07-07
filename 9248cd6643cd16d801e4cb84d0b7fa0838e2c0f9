@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c28c36b0_c93d1abe",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-07T19:16:55Z",
+      "side": 1,
+      "message": "\u003e For the cast in tests, we often just omit the `, _`, which would reduce the bloat somewhat.\n\nAh, for some reason I thought that `, _` was required here. Didn\u0027t know you could omit the error assignment. I\u0027m still getting used to golang, and have some misconceptions / bad habits it seems :)",
+      "parentUuid": "06012594_d20123db",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 70
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa22c251_62c3c329",
         "filename": "cc/test.go",
         "patchSetId": 4
@@ -188,6 +212,30 @@
       "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e0786d9_b77ea214",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-07T19:16:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d30d984_d098a9a8",
+      "range": {
+        "startLine": 349,
+        "startChar": 32,
+        "endLine": 349,
+        "endChar": 50
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
