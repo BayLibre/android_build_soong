@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b51da6d8_f5278d04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T20:25:19Z",
+      "side": 1,
+      "message": "@abdelaal: You\u0027re welcome.\n\n@dwillemsen@: Got +1 from the RBE team on the generating the RBE metrics.",
+      "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
