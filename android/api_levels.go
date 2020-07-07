@@ -151,7 +151,7 @@ func ReplaceFinalizedCodenames(ctx BaseModuleContext, raw string) string {
 	return raw
 }
 
-func CreateApiLevel(ctx BaseModuleContext, raw string,
+func ApiLevelFromUser(ctx BaseModuleContext, raw string,
 	canonicalizer ApiLevelCanonicalizer) ApiLevel {
 
 	canonical := canonicalizer.ReplaceAliases(raw)
@@ -177,6 +177,32 @@ func CreateApiLevel(ctx BaseModuleContext, raw string,
 		originalSpelling: raw,
 		canonicalForm:    strconv.Itoa(adjusted),
 		value:            adjusted,
+	}
+}
+
+// Only to be called on a an API level that has been serialized via
+// ApiLevel.Canonical(). No bounds checking, alias replacement, or
+// canonicalization is done.
+//
+// Ideally this would not be needed, but we cannot store the ApiLevel interface
+// in the properties struct and we do need to create variants based on API
+// level, so we serialize the canonicalized version and deserialize it with no
+// adjustment. Currently this is only done with generated API levels. If any
+// user-provided values are canonicalized and then deserialized with this the
+// OriginalSpelling() will not be accurate.
+func DeserializeApiLevelUnsafe(raw string) ApiLevel {
+	asInt, err := strconv.Atoi(raw)
+	if err != nil {
+		return previewApiLevel{
+			originalSpelling: raw,
+			canonicalForm:    raw,
+		}
+	}
+
+	return finalApiLevel{
+		originalSpelling: raw,
+		canonicalForm:    raw,
+		value:            asInt,
 	}
 }
 

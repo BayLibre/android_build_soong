@@ -17,7 +17,6 @@ package cc
 import (
 	"android/soong/android"
 	"fmt"
-	"strconv"
 )
 
 func getNdkStlFamily(m LinkableInterface) string {
@@ -136,23 +135,11 @@ func (stl *stl) begin(ctx BaseModuleContext) {
 }
 
 func needsLibAndroidSupport(ctx BaseModuleContext) bool {
-	versionStr, err := normalizeNdkApiLevel(ctx, ctx.sdkVersion(), ctx.Arch())
-	if err != nil {
-		ctx.PropertyErrorf("sdk_version", err.Error())
-	}
+	version := createNativeApiLevel(ctx, ctx.sdkVersion())
 
-	if versionStr == "current" {
-		return false
-	}
-
-	version, err := strconv.Atoi(versionStr)
-	if err != nil {
-		panic(fmt.Sprintf(
-			"invalid API level returned from normalizeNdkApiLevel: %q",
-			versionStr))
-	}
-
-	return version < 21
+	// TODO: Introduce package constant
+	firstNonAndroidSupportVersion := createNativeApiLevel(ctx, "21")
+	return version.CompareTo(firstNonAndroidSupportVersion) < 0
 }
 
 func staticUnwinder(ctx android.BaseModuleContext) string {

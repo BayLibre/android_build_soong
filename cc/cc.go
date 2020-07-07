@@ -531,7 +531,7 @@ func (c *Module) Toc() android.OptionalPath {
 func (c *Module) ApiLevel() string {
 	if c.linker != nil {
 		if stub, ok := c.linker.(*stubDecorator); ok {
-			return stub.properties.ApiLevel
+			return stub.ApiLevel().Canonical()
 		}
 	}
 	panic(fmt.Errorf("ApiLevel() called on non-stub library module: %q", c.BaseModuleName()))
@@ -1638,11 +1638,8 @@ func (c *Module) begin(ctx BaseModuleContext) {
 		feature.begin(ctx)
 	}
 	if ctx.useSdk() {
-		version, err := normalizeNdkApiLevel(ctx, ctx.sdkVersion(), ctx.Arch())
-		if err != nil {
-			ctx.PropertyErrorf("sdk_version", err.Error())
-		}
-		c.Properties.Sdk_version = StringPtr(version)
+		version := createNativeApiLevel(ctx, ctx.sdkVersion())
+		c.Properties.Sdk_version = StringPtr(version.Canonical())
 	}
 }
 
