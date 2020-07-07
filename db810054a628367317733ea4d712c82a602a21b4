@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b693969_81903db2",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-07T02:47:01Z",
+      "side": 1,
+      "message": "As I mentioned on https://r.android.com/1354644 this unconditional filtering of prebuilts regardless whether they are preferred or not seems wrong to me; we might very well have prebuilts in module_exports that should be included in other APEXes.\n\nHowever, since it\u0027s consistent with the similar walk in GenerateAndroidBuildActions and it solves the problem at hand, we can leave it out of scope here.",
+      "range": {
+        "startLine": 1755,
+        "startChar": 5,
+        "endLine": 1755,
+        "endChar": 57
+      },
+      "revId": "db810054a628367317733ea4d712c82a602a21b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
