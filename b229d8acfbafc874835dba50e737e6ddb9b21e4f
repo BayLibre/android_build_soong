@@ -51,6 +51,24 @@
       "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33940384_db32706e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-07T17:31:40Z",
+      "side": 1,
+      "message": "Not really no. I presume (Jiyong can confirm) that the purpose of setting it in the LoadHook was to prevent it from being overridden in order to ensure that both 32/64 bit versions were provided in the snapshot. If we are allowing it to be overridden, with the potential of creating for snapshots that won\u0027t work properly for some configurations because it is missing either 32 or 64 bit instances then I think the reasoning needs some explanation.\n\nIf I am wrong and that was not the reason then for doing it then this change is probably fine.",
+      "parentUuid": "1108ac7e_93353e89",
+      "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
