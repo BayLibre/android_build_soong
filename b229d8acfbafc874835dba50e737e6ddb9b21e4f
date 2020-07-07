@@ -33,6 +33,24 @@
       "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1108ac7e_93353e89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-07T16:18:54Z",
+      "side": 1,
+      "message": "Isn\u0027t it obvious that we should be able to override a default using an explicit setting in the bp file? I don\u0027t know what to add really - I ran across this issue while trying to figure out compile_multilib issues and had to fix it to test further. It might not be that I strictly need this in the end.",
+      "parentUuid": "b60f926c_3f9d1267",
+      "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
