@@ -24,6 +24,16 @@ func init() {
 	RegisterSingletonType("api_levels", ApiLevelsSingleton)
 }
 
+// Should only be used with DeserializeApiLevel. Must be public (and have public
+// members) because all transitive members of a properties struct must be
+// public.
+type SerializedApiLevel struct {
+	OriginalSpelling string
+	CanonicalForm    string
+	IsPreview        bool
+	Value            int
+}
+
 // TODO: How do we deal with flavors like system_27 or APEX versions?
 type ApiLevel interface {
 	OriginalSpelling() string
@@ -31,6 +41,7 @@ type ApiLevel interface {
 	IsPreview() bool
 	CompareTo(ApiLevel) int
 	IsEqualTo(ApiLevel) bool
+	Serialize() SerializedApiLevel
 }
 
 type FinalApiLevel interface {
@@ -84,6 +95,15 @@ func (this finalApiLevel) IsEqualTo(other ApiLevel) bool {
 	return this.CompareTo(other) == 0
 }
 
+func (this finalApiLevel) Serialize() SerializedApiLevel {
+	return SerializedApiLevel{
+		OriginalSpelling: this.OriginalSpelling(),
+		CanonicalForm:    this.Canonical(),
+		IsPreview:        false,
+		Value:            this.AsInt(),
+	}
+}
+
 type previewApiLevel struct {
 	originalSpelling string
 	canonicalForm    string
@@ -120,6 +140,15 @@ func (this previewApiLevel) CompareTo(other ApiLevel) int {
 
 func (this previewApiLevel) IsEqualTo(other ApiLevel) bool {
 	return this.CompareTo(other) == 0
+}
+
+func (this previewApiLevel) Serialize() SerializedApiLevel {
+	return SerializedApiLevel{
+		OriginalSpelling: this.OriginalSpelling(),
+		CanonicalForm:    this.Canonical(),
+		IsPreview:        true,
+		Value:            0,
+	}
 }
 
 var _ FinalApiLevel = finalApiLevel{}
@@ -178,29 +207,20 @@ func ApiLevelFromUser(ctx BaseModuleContext, raw string,
 	}
 }
 
-// Only to be called on a an API level that has been serialized via
-// ApiLevel.Canonical(). No bounds checking, alias replacement, or
+// Deserializes a SerializedApiLevel which is assumed to have  already been
+// through ApiLevelFromUser. No bounds checking, alias replacement, or
 // canonicalization is done.
-//
-// Ideally this would not be needed, but we cannot store the ApiLevel interface
-// in the properties struct and we do need to create variants based on API
-// level, so we serialize the canonicalized version and deserialize it with no
-// adjustment. Currently this is only done with generated API levels. If any
-// user-provided values are canonicalized and then deserialized with this the
-// OriginalSpelling() will not be accurate.
-func DeserializeApiLevelUnsafe(raw string) ApiLevel {
-	asInt, err := strconv.Atoi(raw)
-	if err != nil {
+func DeserializeApiLevel(value SerializedApiLevel) ApiLevel {
+	if value.IsPreview {
 		return previewApiLevel{
-			originalSpelling: raw,
-			canonicalForm:    raw,
+			originalSpelling: value.OriginalSpelling,
+			canonicalForm:    value.CanonicalForm,
 		}
 	}
-
 	return finalApiLevel{
-		originalSpelling: raw,
-		canonicalForm:    raw,
-		value:            asInt,
+		originalSpelling: value.OriginalSpelling,
+		canonicalForm:    value.CanonicalForm,
+		value:            value.Value,
 	}
 }
 

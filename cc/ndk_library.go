@@ -78,9 +78,9 @@ type libraryProperties struct {
 	// https://github.com/android-ndk/ndk/issues/265.
 	Unversioned_until *string
 
-	// android.ApiLevel serialized by Canonical() in NdkApiMutator. Use via
-	// ApiLevel() on the stubDecorator.
-	ApiLevel string `blueprint:"mutated"`
+	// android.ApiLevel serialized in NdkApiMutator. Use via ApiLevel() on the
+	// stubDecorator.
+	ApiLevel android.SerializedApiLevel `blueprint:"mutated"`
 
 	// True if this API is not yet ready to be shipped in the NDK. It will be
 	// available in the platform for testing, but will be excluded from the
@@ -99,7 +99,7 @@ type stubDecorator struct {
 }
 
 func (this stubDecorator) ApiLevel() android.ApiLevel {
-	return android.DeserializeApiLevelUnsafe(this.properties.ApiLevel)
+	return android.DeserializeApiLevel(this.properties.ApiLevel)
 }
 
 func (this stubDecorator) FirstVersion(
@@ -199,7 +199,7 @@ func generateStubApiVariants(ctx android.BottomUpMutatorContext,
 	modules := ctx.CreateVariations(versionStrs...)
 	for i, module := range modules {
 		module.(*Module).compiler.(*stubDecorator).properties.ApiLevel =
-			versions[i].Canonical()
+			versions[i].Serialize()
 	}
 }
 
