@@ -169,7 +169,7 @@ func main() {
 	}
 
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
-	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
+	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics_test.pb")
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
 	defer build.UploadMetrics(buildCtx, config, c.forceDumbOutput, buildStartedMilli, buildErrorFile, rbeMetricsFile, soongMetricsFile)
 
@@ -187,6 +187,7 @@ func main() {
 		config.Parallel(), config.RemoteParallel(), config.HighmemParallel())
 
 	defer met.Dump(soongMetricsFile)
+	defer build.DumpRBEMetrics(buildCtx, config, c.forceDumbOutput, rbeMetricsFile)
 
 	if start, ok := os.LookupEnv("TRACE_BEGIN_SOONG"); ok {
 		if !strings.HasSuffix(start, "N") {

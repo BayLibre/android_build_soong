@@ -804,6 +804,13 @@ func (c *configImpl) StartRBE() bool {
 	return true
 }
 
+func (c *configImpl) RBEProxyLog() string {
+	if v, ok := c.environ.Get("RBE_log_path"); ok {
+		return v
+	}
+	return ""
+}
+
 func (c *configImpl) UseRemoteBuild() bool {
 	return c.UseGoma() || c.UseRBE()
 }
