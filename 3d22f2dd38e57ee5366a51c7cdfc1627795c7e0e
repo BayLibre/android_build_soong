@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8619dc60_5e4ea4ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T14:44:10Z",
+      "side": 1,
+      "message": "@Ramy: The first patchset is to generate the rbe_metrics_test.pb file and then compare with the Android build infra. Once it\u0027s good, the second patchset will have the correct metrics filename.",
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3843470_ed53ec83",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T14:44:10Z",
+      "side": 1,
+      "message": "Temporary to check between the one generated in presubmit and rbe_metrics_test.pb",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 77
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
