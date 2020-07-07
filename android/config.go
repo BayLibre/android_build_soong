@@ -732,7 +732,7 @@ func (c *config) UnbundledBuildApps() bool {
 }
 
 func (c *config) UnbundledBuildUsePrebuiltSdks() bool {
-	return Bool(c.productVariables.Unbundled_build) && !Bool(c.productVariables.Unbundled_build_sdks_from_source)
+	return Bool(c.productVariables.Unbundled_build_uses_prebuilt_sdks)
 }
 
 func (c *config) Fuchsia() bool {
