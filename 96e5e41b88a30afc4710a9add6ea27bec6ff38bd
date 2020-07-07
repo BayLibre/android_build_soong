@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c53067a_7bcafbc4",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-07T01:28:28Z",
+      "side": 1,
+      "message": "We were pretty specifically waiting for this later in order to run it in the background, but it should be fine for now.",
+      "revId": "96e5e41b88a30afc4710a9add6ea27bec6ff38bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
