@@ -385,6 +385,7 @@ func TestClasspath(t *testing.T) {
 				config := testConfig(nil, bpJava8, nil)
 				if testcase.unbundled {
 					config.TestProductVariables.Unbundled_build = proptools.BoolPtr(true)
+					config.TestProductVariables.Always_use_prebuilt_sdks = proptools.BoolPtr(true)
 				}
 				if testcase.pdk {
 					config.TestProductVariables.Pdk = proptools.BoolPtr(true)
@@ -408,6 +409,7 @@ func TestClasspath(t *testing.T) {
 				config := testConfig(nil, bp, nil)
 				if testcase.unbundled {
 					config.TestProductVariables.Unbundled_build = proptools.BoolPtr(true)
+					config.TestProductVariables.Always_use_prebuilt_sdks = proptools.BoolPtr(true)
 				}
 				if testcase.pdk {
 					config.TestProductVariables.Pdk = proptools.BoolPtr(true)
@@ -434,6 +436,7 @@ func TestClasspath(t *testing.T) {
 
 				if testcase.unbundled {
 					config.TestProductVariables.Unbundled_build = proptools.BoolPtr(true)
+					config.TestProductVariables.Always_use_prebuilt_sdks = proptools.BoolPtr(true)
 				}
 				if testcase.pdk {
 					config.TestProductVariables.Pdk = proptools.BoolPtr(true)
@@ -452,6 +455,7 @@ func TestClasspath(t *testing.T) {
 
 				if testcase.unbundled {
 					config.TestProductVariables.Unbundled_build = proptools.BoolPtr(true)
+					config.TestProductVariables.Always_use_prebuilt_sdks = proptools.BoolPtr(true)
 				}
 				if testcase.pdk {
 					config.TestProductVariables.Pdk = proptools.BoolPtr(true)
