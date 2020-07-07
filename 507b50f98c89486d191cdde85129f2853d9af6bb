@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02e9b90b_899788de",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T18:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f1daae6_c52552ea",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "507b50f98c89486d191cdde85129f2853d9af6bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51d70bdd_7b0dc097",
         "filename": "ui/build/rbe.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "27b3df29_36dcdcab",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T18:43:25Z",
+      "side": 1,
+      "message": "Tested it and just running the -shutdown command (as we discussed on chat) generates the rbe_metrics.pb file.",
+      "parentUuid": "51d70bdd_7b0dc097",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "507b50f98c89486d191cdde85129f2853d9af6bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b17ee24a_7a8b46d3",
         "filename": "ui/build/rbe.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "507b50f98c89486d191cdde85129f2853d9af6bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c43d3e1_92829d02",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T18:43:25Z",
+      "side": 1,
+      "message": "Removed code related dumpstats and simply copy from the output_dir",
+      "parentUuid": "b17ee24a_7a8b46d3",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 65
+      },
+      "revId": "507b50f98c89486d191cdde85129f2853d9af6bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

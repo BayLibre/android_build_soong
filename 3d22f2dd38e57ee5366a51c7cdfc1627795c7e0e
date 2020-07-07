@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "a4ab230d_ef8a2199",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T18:43:25Z",
+      "side": 1,
+      "message": "I would prefer to return blank as the code calling it would catch it and report the error. This code got deleted when switched to bootstrap --shutdown.",
+      "parentUuid": "60ec549f_8d98a301",
+      "range": {
+        "startLine": 811,
+        "startChar": 1,
+        "endLine": 811,
+        "endChar": 10
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b29bd74d_7e9eefb5",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484119a2_796bf3cd",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T18:43:25Z",
+      "side": 1,
+      "message": "I am now using output_dir from our offline discussion.",
+      "parentUuid": "b29bd74d_7e9eefb5",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 813,
+        "endChar": 0
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "ced4b786_86b4b59d",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T18:43:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2069a167_f434207b",
+      "range": {
+        "startLine": 80,
+        "startChar": 35,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f544d615_d2a8f7f0",
         "filename": "ui/build/rbe.go",
         "patchSetId": 1
@@ -131,6 +203,30 @@
       "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10e538a2_411806a8",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-07T18:43:25Z",
+      "side": 1,
+      "message": "Removed the arg as it is no longer needed.\n\nThe reason that arg existed in the first place is because when the user runs the lunch command, soong_ui is executed to extract makefile variables. We don\u0027t want additional text being printed out when running the lunch command.",
+      "parentUuid": "f544d615_d2a8f7f0",
+      "range": {
+        "startLine": 83,
+        "startChar": 48,
+        "endLine": 83,
+        "endChar": 63
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
