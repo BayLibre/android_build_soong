@@ -295,6 +295,30 @@
       "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b8cebd8_f1018c2a",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-07T05:45:26Z",
+      "side": 1,
+      "message": "The change doesn\u0027t filter-out preferred prebuilts; It\u0027s the dependency from source to prebuilt that\u0027s filtered. If a prebuilt is preferred over the corresponding source, then there would be another dependency directly to the prebuilt from a client (which would have been created by replacing the dependency to the source module. See https://source.corp.google.com/android/build/soong/android/prebuilt.go;rcl\u003d009a9dc4ac2b43412ccc425e66c406a8b3395024;l\u003d263)",
+      "parentUuid": "d8851468_9fbdcd0d",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 3
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
