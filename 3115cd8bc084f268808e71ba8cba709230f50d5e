@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c10ce97_23ee2a91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-07T02:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1f6ea70_3b888c15",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20003035_dfca9dce",
         "filename": "android/module.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "718a3695_6244adc0",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2102,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-07T02:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20003035_dfca9dce",
+      "range": {
+        "startLine": 2102,
+        "startChar": 66,
+        "endLine": 2102,
+        "endChar": 78
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48ef64e4_d8f54cc1",
         "filename": "android/module.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b0fa25_3c34dff2",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2104,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-07T02:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48ef64e4_d8f54cc1",
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -205,6 +271,30 @@
       "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8851468_9fbdcd0d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-07T02:47:16Z",
+      "side": 1,
+      "message": "I\u0027ve split this off: https://r.android.com/1356502\n\nJiyong: Ok, but that only means my argument applies there too. To me it looks wrong that prebuilts are filtered out from APEXes even when they are preferred, and I suspect it\u0027s a bug someone will run into when more prebuilts come into use. But since it seems intentional, and doing it that way is good enough for the bug I\u0027m addressing here, I\u0027ll just go with that then.",
+      "parentUuid": "2939e185_f6c31208",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 3
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
