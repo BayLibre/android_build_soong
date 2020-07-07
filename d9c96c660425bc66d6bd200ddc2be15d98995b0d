@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bf1c07a0_38ae9dc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-07-07T19:05:39Z",
+      "side": 1,
+      "message": "Thanks Patrice! Compared rbe_metrics.pb and rbe_metrics_test.pb and they are equivalent.",
+      "revId": "d9c96c660425bc66d6bd200ddc2be15d98995b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cc8d82a_9e55d89d",
         "filename": "ui/build/config.go",
         "patchSetId": 3
