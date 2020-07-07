@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d9b24aa_d9952665",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-07T17:02:03Z",
+      "side": 1,
+      "message": "nit: The indent on these gtest lines is off",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 19
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976161c1_277dcc62",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-07T17:02:03Z",
+      "side": 1,
+      "message": "We probably shouldn\u0027t discard the errors here.",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 70
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa22c251_62c3c329",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-07T17:02:03Z",
+      "side": 1,
+      "message": "This is an optional path, should we check that it is valid first?",
+      "range": {
+        "startLine": 349,
+        "startChar": 32,
+        "endLine": 349,
+        "endChar": 50
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
