@@ -1858,7 +1858,7 @@ type usesLibrary struct {
 }
 
 func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, hasFrameworkLibs bool) {
-	if !ctx.Config().UnbundledBuild() {
+	if !ctx.Config().UnbundledBuildUsePrebuiltSdk() {
 		ctx.AddVariationDependencies(nil, usesLibTag, u.usesLibraryProperties.Uses_libs...)
 		ctx.AddVariationDependencies(nil, usesLibTag, u.presentOptionalUsesLibs(ctx)...)
 		// Only add these extra dependencies if the module depends on framework libs. This avoids
@@ -1888,7 +1888,7 @@ func (u *usesLibrary) presentOptionalUsesLibs(ctx android.BaseModuleContext) []s
 func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.LibraryPaths {
 	usesLibPaths := make(dexpreopt.LibraryPaths)
 
-	if !ctx.Config().UnbundledBuild() {
+	if !ctx.Config().UnbundledBuildUsePrebuiltSdk() {
 		ctx.VisitDirectDepsWithTag(usesLibTag, func(m android.Module) {
 			dep := ctx.OtherModuleName(m)
 			if lib, ok := m.(Dependency); ok {

@@ -53,7 +53,7 @@ type sdkContext interface {
 
 func UseApiFingerprint(ctx android.BaseModuleContext) bool {
 	if ctx.Config().UnbundledBuild() &&
-		!ctx.Config().UnbundledBuildUsePrebuiltSdks() &&
+		!ctx.Config().UnbundledBuildUsePrebuiltSdk() &&
 		ctx.Config().IsEnvTrue("UNBUNDLED_BUILD_TARGET_SDK_WITH_API_FINGERPRINT") {
 		return true
 	}
@@ -212,7 +212,7 @@ func (s sdkSpec) forPdkBuild(ctx android.EarlyModuleContext) sdkSpec {
 func (s sdkSpec) usePrebuilt(ctx android.EarlyModuleContext) bool {
 	if s.version.isCurrent() {
 		// "current" can be built from source and be from prebuilt SDK
-		return ctx.Config().UnbundledBuildUsePrebuiltSdks()
+		return ctx.Config().UnbundledBuildUsePrebuiltSdk()
 	} else if s.version.isNumbered() {
 		// sanity check
 		if s.kind != sdkPublic && s.kind != sdkSystem && s.kind != sdkTest {
@@ -506,7 +506,7 @@ func sdkSingletonFactory() android.Singleton {
 type sdkSingleton struct{}
 
 func (sdkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
-	if ctx.Config().UnbundledBuildUsePrebuiltSdks() || ctx.Config().IsPdkBuild() {
+	if ctx.Config().UnbundledBuildUsePrebuiltSdk() || ctx.Config().IsPdkBuild() {
 		return
 	}
 
@@ -629,7 +629,7 @@ func createAPIFingerprint(ctx android.SingletonContext) {
 	} else if ctx.Config().IsPdkBuild() {
 		// TODO: get this from the PDK artifacts?
 		cmd.Text("echo PDK >").Output(out)
-	} else if !ctx.Config().UnbundledBuildUsePrebuiltSdks() {
+	} else if !ctx.Config().UnbundledBuildUsePrebuiltSdk() {
 		in, err := ctx.GlobWithDeps("frameworks/base/api/*current.txt", nil)
 		if err != nil {
 			ctx.Errorf("error globbing API files: %s", err)
@@ -658,7 +658,7 @@ func ApiFingerprintPath(ctx android.PathContext) android.OutputPath {
 }
 
 func sdkMakeVars(ctx android.MakeVarsContext) {
-	if ctx.Config().UnbundledBuildUsePrebuiltSdks() || ctx.Config().IsPdkBuild() {
+	if ctx.Config().UnbundledBuildUsePrebuiltSdk() || ctx.Config().IsPdkBuild() {
 		return
 	}
 
