@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "06012594_d20123db",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-07T18:10:51Z",
+      "side": 1,
+      "message": "For the cast in tests, we often just omit the `, _`, which would reduce the bloat somewhat.\n\nOtherwise, it seems fairly common to check for errors in soong tests. Often it can just be t.Fatal(err).\n\nOther things that may help reduce the verbosity: it\u0027s fairly common to collect errors rather than exit the test early. Or using t.Fatal instead of t.Error to exit the test if the rest of the test cannot continue. In this test, the size checks would be fatal and then you could omit the returns below to collect both errors if necessary.",
+      "parentUuid": "fe9a934f_d115f3c7",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 70
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa22c251_62c3c329",
         "filename": "cc/test.go",
         "patchSetId": 4
@@ -140,6 +164,30 @@
       "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d30d984_d098a9a8",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-07T18:10:51Z",
+      "side": 1,
+      "message": "I think this would now silently omit the file -- we\u0027d either want a more specific error or if we go back to the previous code we\u0027d get a fairly generic panic -- sorry for not realizing that sooner...",
+      "parentUuid": "df36758c_281690db",
+      "range": {
+        "startLine": 349,
+        "startChar": 32,
+        "endLine": 349,
+        "endChar": 50
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
