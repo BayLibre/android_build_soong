@@ -46,6 +46,30 @@
       "revId": "d9c96c660425bc66d6bd200ddc2be15d98995b0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "625cb771_abf3ad20",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-07-07T19:01:12Z",
+      "side": 1,
+      "message": "Discussed offline, misunderstood the purpose of this. Ignore this comment!",
+      "parentUuid": "4cc8d82a_9e55d89d",
+      "range": {
+        "startLine": 807,
+        "startChar": 21,
+        "endLine": 807,
+        "endChar": 38
+      },
+      "revId": "d9c96c660425bc66d6bd200ddc2be15d98995b0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
