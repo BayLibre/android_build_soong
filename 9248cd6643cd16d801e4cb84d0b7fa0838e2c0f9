@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dee68b1a_69163496",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-07T17:23:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d9b24aa_d9952665",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 19
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "976161c1_277dcc62",
         "filename": "cc/cc_test.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fe9a934f_d115f3c7",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-07T17:23:25Z",
+      "side": 1,
+      "message": "For Bazel (Java) tests, I\u0027m used to skipping error checking in tests when we have confidence that the error will be empty. Checking for every error scenario seems like it would make the test far more verbose and difficult to see the meat of the test at a glance. Are things typically different for soong (Go) tests? I\u0027ve updated the test at your request, but the new clauses bloat the test IMO.",
+      "parentUuid": "976161c1_277dcc62",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 70
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa22c251_62c3c329",
         "filename": "cc/test.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df36758c_281690db",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-07T17:23:25Z",
+      "side": 1,
+      "message": "Great catch! Done.",
+      "parentUuid": "aa22c251_62c3c329",
+      "range": {
+        "startLine": 349,
+        "startChar": 32,
+        "endLine": 349,
+        "endChar": 50
+      },
+      "revId": "9248cd6643cd16d801e4cb84d0b7fa0838e2c0f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
