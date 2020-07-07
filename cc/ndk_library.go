@@ -176,8 +176,13 @@ func generateStubApiVariants(ctx android.BottomUpMutatorContext,
 	var versions []android.ApiLevel
 	if !c.FirstVersion(ctx).IsPreview() {
 		it := c.FirstVersion(ctx)
-		for !it.IsPreview() {
+		lastFinalizedVersion := createNativeApiLevel(ctx,
+			ctx.Config().PlatformSdkVersion())
+		for {
 			versions = append(versions, it)
+			if it.CompareTo(lastFinalizedVersion) == 0 {
+				break
+			}
 			it = nextApiLevel(ctx, it.(android.FinalApiLevel))
 		}
 	}

@@ -164,13 +164,11 @@ func ApiLevelFromUser(ctx BaseModuleContext, raw string,
 	}
 
 	adjusted := canonicalizer.AdjustFinalApiLevel(asInt)
-	// Might still be a preview that's being referred to as its assumed
-	// eventual number.
 	if adjusted > ctx.Config().PlatformSdkVersionInt() {
-		return previewApiLevel{
-			originalSpelling: raw,
-			canonicalForm:    canonical,
-		}
+		panic(fmt.Sprintf("Non-final API levels must be specified by their "+
+			"code name, not integers. %q (adjusted to %d) is higher than "+
+			"the maximum final API level %d", raw, adjusted,
+			ctx.Config().PlatformSdkVersionInt()))
 	}
 
 	return finalApiLevel{
