@@ -16,6 +16,23 @@
       "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b60f926c_3f9d1267",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-07T15:38:27Z",
+      "side": 1,
+      "message": "Could you update the commit message with a bit more background about this change and why it is needed?",
+      "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
