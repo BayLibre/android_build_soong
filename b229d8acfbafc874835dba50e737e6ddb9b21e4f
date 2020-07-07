@@ -69,6 +69,24 @@
       "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f9188b_eee680c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-07T22:27:52Z",
+      "side": 1,
+      "message": "I suppose that could be a possibility, but I don\u0027t see any sign of it in the CL description or ticket where Jiyong did this change: https://r.android.com/1158629 Jiyong, WDYT?",
+      "parentUuid": "33940384_db32706e",
+      "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
