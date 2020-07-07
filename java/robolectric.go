@@ -357,7 +357,7 @@ func (r *robolectricRuntimes) TestSuites() []string {
 var _ android.TestSuiteModule = (*robolectricRuntimes)(nil)
 
 func (r *robolectricRuntimes) DepsMutator(ctx android.BottomUpMutatorContext) {
-	if !ctx.Config().UnbundledBuildUsePrebuiltSdks() && r.props.Lib != nil {
+	if !ctx.Config().UnbundledBuild() && r.props.Lib != nil {
 		ctx.AddVariationDependencies(nil, libTag, String(r.props.Lib))
 	}
 }
@@ -371,7 +371,7 @@ func (r *robolectricRuntimes) GenerateAndroidBuildActions(ctx android.ModuleCont
 		r.runtimes = append(r.runtimes, installedRuntime)
 	}
 
-	if !ctx.Config().UnbundledBuildUsePrebuiltSdks() && r.props.Lib != nil {
+	if !ctx.Config().UnbundledBuild() && r.props.Lib != nil {
 		runtimeFromSourceModule := ctx.GetDirectDepWithTag(String(r.props.Lib), libTag)
 		runtimeFromSourceJar := android.OutputFileForModule(ctx, runtimeFromSourceModule, "")
 
