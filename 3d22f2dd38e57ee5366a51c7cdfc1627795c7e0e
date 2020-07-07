@@ -39,6 +39,98 @@
       "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ec549f_8d98a301",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-07-07T17:00:06Z",
+      "side": 1,
+      "message": "should we set a reasonable default?",
+      "range": {
+        "startLine": 811,
+        "startChar": 1,
+        "endLine": 811,
+        "endChar": 10
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b29bd74d_7e9eefb5",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-07-07T17:00:06Z",
+      "side": 1,
+      "message": "Can you use proxy log dir instead? log_path is deprecated.",
+      "range": {
+        "startLine": 806,
+        "startChar": 0,
+        "endLine": 813,
+        "endChar": 0
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2069a167_f434207b",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-07-07T17:00:06Z",
+      "side": 1,
+      "message": "s/the RBE/RBE",
+      "range": {
+        "startLine": 80,
+        "startChar": 35,
+        "endLine": 80,
+        "endChar": 42
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f544d615_d2a8f7f0",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-07-07T17:00:06Z",
+      "side": 1,
+      "message": "can you explain what this arg does?",
+      "range": {
+        "startLine": 83,
+        "startChar": 48,
+        "endLine": 83,
+        "endChar": 63
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
