@@ -51,6 +51,24 @@
       "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db759594_c9d2cfcf",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-07-08T14:23:00Z",
+      "side": 1,
+      "message": "I think singleton is difficult to be more efficient unless VisitAllModules and VisitDirectDeps run parallelly.",
+      "parentUuid": "e48eeae0_50ce1647",
+      "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
