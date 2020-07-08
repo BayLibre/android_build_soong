@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d21cf13b_fa711ed4",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2020-07-08T18:15:07Z",
+      "side": 1,
+      "message": "Could this also be applied to other header libs? Here:\n\nhttps://cs.android.com/android/_/android/platform/build/soong/+/80342d72d0d1a1367f96a09b1d151b59fe78dd1c:cc/library_headers.go;l\u003d44;drc\u003dcd07bce43756d5246e07d079a4a24040981f54ff;bpv\u003d1;bpt\u003d0\n\nhttps://cs.android.com/android/_/android/platform/build/soong/+/80342d72d0d1a1367f96a09b1d151b59fe78dd1c:cc/library_headers.go;l\u003d52;drc\u003dcd07bce43756d5246e07d079a4a24040981f54ff;bpv\u003d1;bpt\u003d0",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 22
+      },
+      "revId": "c7c6910f68bd8a1080dc6c9bfa6971fd0c243155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
