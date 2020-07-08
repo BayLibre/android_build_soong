@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5af9889_f1789334",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-08T11:53:06Z",
+      "side": 1,
+      "message": "The intention with this and https://r.android.com/1324517 was to move the logic for deciding on dexpreopting to make. With https://r.android.com/1358106 do you really this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "3373a2043abdfebe38c173b974254fc63019b43a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
