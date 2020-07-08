@@ -140,6 +140,30 @@
       "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c786663c_502d027f",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-08T22:07:30Z",
+      "side": 1,
+      "message": "Don\u0027t check android.SourceDepTag (that\u0027s only one of the dep tags that could be used to provide sources), just do outside VisitDirectDeps:\n\ndepPaths.SrcDeps \u003d android.PathsForModuleSrc(ctx, mod.properties.Srcs)\n\nThat probably belongs in srcPathFromModuleSrcs, which can return the main src file and the list of dependencies.",
+      "parentUuid": "d5ee6d1c_d0c72cfc",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 0
+      },
+      "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

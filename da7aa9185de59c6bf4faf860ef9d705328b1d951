@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a348e1c_61fd884c",
+        "filename": "rust/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-08T22:07:30Z",
+      "side": 1,
+      "message": "This would allow:\n\n srcs: [\":generated\", \"main.rs\"],\n\nand pick \"main.rs\" as the main source file, which seems odd.  Would it be better to require that the first source file be non-generated, or to take the first source file of the first entry (generated or not) as the main source file?",
+      "revId": "da7aa9185de59c6bf4faf860ef9d705328b1d951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
