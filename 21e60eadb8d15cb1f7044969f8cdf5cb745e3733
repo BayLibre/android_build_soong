@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b73d258a_ca7cfebe",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-08T15:32:51Z",
+      "side": 1,
+      "message": "How is this different from UnbundledBuildUsePrebuiltSdk? They they both be true together?",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 1
+      },
+      "revId": "21e60eadb8d15cb1f7044969f8cdf5cb745e3733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
