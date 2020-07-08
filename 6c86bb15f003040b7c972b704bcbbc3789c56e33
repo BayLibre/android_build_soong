@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d8bf2027_d7114bae",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-08T13:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "040a35ef_212df0d0",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94e48bed_206565c9",
         "filename": "ui/build/rbe.go",
         "patchSetId": 4
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "c004ddaf_b0cf02aa",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-08T13:43:42Z",
+      "side": 1,
+      "message": "It will fail the build. Let\u0027s treat it as an error now (to be consistent with other code we have here) and if it becomes problematic for users, we can switch to a warning and setup plx alerting.",
+      "parentUuid": "94e48bed_206565c9",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 78
+      },
+      "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c402936_b0e7ce13",
         "filename": "ui/build/rbe.go",
         "patchSetId": 4
@@ -85,6 +133,30 @@
       "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ccc7495_3cb0c229",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-08T13:43:42Z",
+      "side": 1,
+      "message": "Done. I added it. For now, it goes to the tracer file. I will eventually add it to the metrics protobuf as I might need to do some cleanup code in soong_ui.",
+      "parentUuid": "7c402936_b0e7ce13",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
