@@ -16,6 +16,23 @@
       "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baadcf04_9b353dbb",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-08T07:40:34Z",
+      "side": 1,
+      "message": "I think this is cheap since the original module is reused for the first variation. Colin, is that right?\n\nBut I wonder why we ever need a new variation for this. Can we just have a singleton that traverses the tree to see if modules having different release_versions are depended on with each other?",
+      "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
