@@ -33,6 +33,7 @@ const (
 	InstallInSystem       installLocation = 0
 	InstallInData                         = iota
 	InstallInSanitizerDir                 = iota
+	InstallInTestcaseDir                  = iota
 )
 
 func NewBaseInstaller(dir, dir64 string, location installLocation) *baseInstaller {
@@ -97,6 +98,10 @@ func (installer *baseInstaller) inData() bool {
 
 func (installer *baseInstaller) inSanitizerDir() bool {
 	return installer.location == InstallInSanitizerDir
+}
+
+func (installer *baseInstaller) inTestcaseDir() bool {
+	return installer.location == InstallInTestcaseDir
 }
 
 func (installer *baseInstaller) hostToolPath() android.OptionalPath {

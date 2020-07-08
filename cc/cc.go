@@ -416,6 +416,7 @@ type installer interface {
 	everInstallable() bool
 	inData() bool
 	inSanitizerDir() bool
+	inTestcaseDir() bool
 	hostToolPath() android.OptionalPath
 	relativeInstallPath() string
 	skipInstall(mod *Module)
@@ -2680,6 +2681,13 @@ func (c *Module) InstallInSanitizerDir() bool {
 		return true
 	}
 	return c.installer.inSanitizerDir()
+}
+
+func (c *Module) InstallInTestcases() bool {
+	if c.installer == nil {
+		return false
+	}
+	return c.installer.inTestcaseDir()
 }
 
 func (c *Module) InstallInRamdisk() bool {
