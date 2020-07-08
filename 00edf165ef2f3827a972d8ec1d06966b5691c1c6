@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16d405ca_ca3482d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-08T06:55:04Z",
+      "side": 1,
+      "message": "I also am preparing for a new module \"source_tree\" to define the version of the modules in a directory and the subdirectories. Please find the details in go/versioning-soong-modules.",
+      "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
