@@ -455,6 +455,15 @@ type commonProperties struct {
 	// Whether this module is installed to ramdisk
 	Ramdisk *bool
 
+	// The release version of the module's source tree.
+	// "current" or empty means the current source tree.
+	//
+	// We may combine multiple source trees from multiple Android releases.
+	// By explicitly indicating the version of the source tree, the build
+	// system prevents the dependencies between the modules from the source
+	// trees of different versions.
+	Release_version *string
+
 	// Whether this module is built for non-native architecures (also known as native bridge binary)
 	Native_bridge_supported *bool `android:"arch_variant"`
 
