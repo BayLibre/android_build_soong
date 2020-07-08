@@ -105,6 +105,24 @@
       "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299d9b6c_9bae4afa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-08T09:57:35Z",
+      "side": 1,
+      "message": "Thanks. We need compile_multilib:\"64\" in host prebuilts. While I was debugging problems with those I wanted to try a global setting and then I stumbled on this.",
+      "parentUuid": "bb5d082f_cb4274e3",
+      "revId": "b229d8acfbafc874835dba50e737e6ddb9b21e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
