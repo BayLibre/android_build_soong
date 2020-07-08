@@ -22,7 +22,7 @@ var (
 )
 
 type snapshotLibraryInterface interface {
-	exportedFlagsProducer
+	ExportedFlagsProducer
 	libraryInterface
 	collectHeadersForSnapshot(ctx android.ModuleContext)
 	snapshotHeaders() android.Paths

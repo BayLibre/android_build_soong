@@ -430,7 +430,6 @@ var (
 	lateStaticDepTag      = DependencyTag{Name: "late static", Library: true}
 	staticUnwinderDepTag  = DependencyTag{Name: "static unwinder", Library: true}
 	wholeStaticDepTag     = DependencyTag{Name: "whole static", Library: true, ReexportFlags: true}
-	headerDepTag          = DependencyTag{Name: "header", Library: true}
 	headerExportDepTag    = DependencyTag{Name: "header", Library: true, ReexportFlags: true}
 	genSourceDepTag       = DependencyTag{Name: "gen source"}
 	genHeaderDepTag       = DependencyTag{Name: "gen header"}
@@ -597,11 +596,11 @@ func (c *Module) AlwaysSdk() bool {
 
 func (c *Module) IncludeDirs() android.Paths {
 	if c.linker != nil {
-		if library, ok := c.linker.(exportedFlagsProducer); ok {
-			return library.exportedDirs()
+		if library, ok := c.linker.(ExportedFlagsProducer); ok {
+			return library.ExportedDirs()
 		}
 	}
-	panic(fmt.Errorf("IncludeDirs called on non-exportedFlagsProducer module: %q", c.BaseModuleName()))
+	panic(fmt.Errorf("IncludeDirs called on non-ExportedFlagsProducer module: %q", c.BaseModuleName()))
 }
 
 func (c *Module) HasStaticVariant() bool {
@@ -1018,35 +1017,35 @@ func (c *Module) isSnapshotPrebuilt() bool {
 }
 
 func (c *Module) ExportedIncludeDirs() android.Paths {
-	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
-		return flagsProducer.exportedDirs()
+	if flagsProducer, ok := c.linker.(ExportedFlagsProducer); ok {
+		return flagsProducer.ExportedDirs()
 	}
 	return nil
 }
 
 func (c *Module) ExportedSystemIncludeDirs() android.Paths {
-	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
-		return flagsProducer.exportedSystemDirs()
+	if flagsProducer, ok := c.linker.(ExportedFlagsProducer); ok {
+		return flagsProducer.ExportedSystemDirs()
 	}
 	return nil
 }
 
 func (c *Module) ExportedFlags() []string {
-	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
-		return flagsProducer.exportedFlags()
+	if flagsProducer, ok := c.linker.(ExportedFlagsProducer); ok {
+		return flagsProducer.ExportedFlags()
 	}
 	return nil
 }
 
 func (c *Module) ExportedDeps() android.Paths {
-	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
+	if flagsProducer, ok := c.linker.(ExportedFlagsProducer); ok {
 		return flagsProducer.exportedDeps()
 	}
 	return nil
 }
 
 func (c *Module) ExportedGeneratedHeaders() android.Paths {
-	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
+	if flagsProducer, ok := c.linker.(ExportedFlagsProducer); ok {
 		return flagsProducer.exportedGeneratedHeaders()
 	}
 	return nil
@@ -1855,7 +1854,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	vendorSnapshotHeaderLibs := vendorSnapshotHeaderLibs(actx.Config())
 	for _, lib := range deps.HeaderLibs {
-		depTag := headerDepTag
+		depTag := HeaderDepTag
 		if inList(lib, deps.ReexportHeaderLibHeaders) {
 			depTag = headerExportDepTag
 		}
@@ -2199,10 +2198,10 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	vendorPublicLibraries := vendorPublicLibraries(ctx.Config())
 
-	reexportExporter := func(exporter exportedFlagsProducer) {
-		depPaths.ReexportedDirs = append(depPaths.ReexportedDirs, exporter.exportedDirs()...)
-		depPaths.ReexportedSystemDirs = append(depPaths.ReexportedSystemDirs, exporter.exportedSystemDirs()...)
-		depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, exporter.exportedFlags()...)
+	reexportExporter := func(exporter ExportedFlagsProducer) {
+		depPaths.ReexportedDirs = append(depPaths.ReexportedDirs, exporter.ExportedDirs()...)
+		depPaths.ReexportedSystemDirs = append(depPaths.ReexportedSystemDirs, exporter.ExportedSystemDirs()...)
+		depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, exporter.ExportedFlags()...)
 		depPaths.ReexportedDeps = append(depPaths.ReexportedDeps, exporter.exportedDeps()...)
 		depPaths.ReexportedGeneratedHeaders = append(depPaths.ReexportedGeneratedHeaders, exporter.exportedGeneratedHeaders()...)
 	}
@@ -2412,10 +2411,10 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 			// Exporting flags only makes sense for cc.Modules
 			if _, ok := ccDep.(*Module); ok {
-				if i, ok := ccDep.(*Module).linker.(exportedFlagsProducer); ok {
-					depPaths.SystemIncludeDirs = append(depPaths.SystemIncludeDirs, i.exportedSystemDirs()...)
+				if i, ok := ccDep.(*Module).linker.(ExportedFlagsProducer); ok {
+					depPaths.SystemIncludeDirs = append(depPaths.SystemIncludeDirs, i.ExportedSystemDirs()...)
 					depPaths.GeneratedDeps = append(depPaths.GeneratedDeps, i.exportedDeps()...)
-					depPaths.Flags = append(depPaths.Flags, i.exportedFlags()...)
+					depPaths.Flags = append(depPaths.Flags, i.ExportedFlags()...)
 
 					if t.ReexportFlags {
 						reexportExporter(i)
@@ -2425,7 +2424,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 						// -isystem headers are not included since for bionic libraries, abi-filtering is taken care of by version
 						// scripts.
 						c.sabi.Properties.ReexportedIncludes = append(
-							c.sabi.Properties.ReexportedIncludes, i.exportedDirs().Strings()...)
+							c.sabi.Properties.ReexportedIncludes, i.ExportedDirs().Strings()...)
 					}
 				}
 			}
@@ -2487,7 +2486,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					"non-cc.Modules cannot be included as whole static libraries.", depName)
 				return
 			}
-		case headerDepTag:
+		case HeaderDepTag:
 			// Nothing
 		case objDepTag:
 			depPaths.Objs.objFiles = append(depPaths.Objs.objFiles, linkFile.Path())
@@ -2630,7 +2629,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		case wholeStaticDepTag:
 			c.Properties.AndroidMkWholeStaticLibs = append(
 				c.Properties.AndroidMkWholeStaticLibs, makeLibName(depName))
-		case headerDepTag:
+		case HeaderDepTag:
 			c.Properties.AndroidMkHeaderLibs = append(
 				c.Properties.AndroidMkHeaderLibs, makeLibName(depName))
 		}

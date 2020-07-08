@@ -631,9 +631,9 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 				ExportedFlags       []string `json:",omitempty"`
 				RelativeInstallPath string   `json:",omitempty"`
 			}{}
-			prop.ExportedFlags = l.exportedFlags()
-			prop.ExportedDirs = l.exportedDirs().Strings()
-			prop.ExportedSystemDirs = l.exportedSystemDirs().Strings()
+			prop.ExportedFlags = l.ExportedFlags()
+			prop.ExportedDirs = l.ExportedDirs().Strings()
+			prop.ExportedSystemDirs = l.ExportedSystemDirs().Strings()
 			prop.RelativeInstallPath = m.RelativeInstallPath()
 
 			propOut := snapshotLibOut + ".json"

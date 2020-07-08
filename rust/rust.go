@@ -42,6 +42,7 @@ func init() {
 		ctx.BottomUp("rust_begin", BeginMutator).Parallel()
 	})
 	pctx.Import("android/soong/rust/config")
+	pctx.ImportAs("ccConfig", "android/soong/cc/config")
 }
 
 type Flags struct {
@@ -79,6 +80,7 @@ type Module struct {
 	coverage         *coverage
 	clippy           *clippy
 	cachedToolchain  config.Toolchain
+	sourceProvider   SourceProvider
 	subAndroidMkOnce map[subAndroidMkProvider]bool
 	outputFile       android.OptionalPath
 }
@@ -345,6 +347,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&LibraryCompilerProperties{},
 		&ProcMacroCompilerProperties{},
 		&PrebuiltProperties{},
+		&SourceProviderProperties{},
 		&TestProperties{},
 		&cc.CoverageProperties{},
 		&ClippyProperties{},
@@ -504,6 +507,9 @@ func (mod *Module) Init() android.Module {
 	if mod.clippy != nil {
 		mod.AddProperties(mod.clippy.props()...)
 	}
+	if mod.sourceProvider != nil {
+		mod.AddProperties(mod.sourceProvider.sourceProviderProps()...)
+	}
 
 	android.InitAndroidArchModule(mod, mod.hod, mod.multilib)
 
@@ -642,6 +648,9 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		if !mod.Properties.PreventInstall {
 			mod.compiler.install(ctx, mod.outputFile.Path())
 		}
+	} else if mod.sourceProvider != nil {
+		outputFile := mod.sourceProvider.generateSource(ctx)
+		mod.outputFile = android.OptionalPathForPath(outputFile)
 	}
 }
 

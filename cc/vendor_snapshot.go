@@ -707,11 +707,11 @@ func (c *vendorSnapshotSingleton) GenerateBuildActions(ctx android.SingletonCont
 
 		if l, ok := m.linker.(snapshotLibraryInterface); ok {
 			// library flags
-			prop.ExportedFlags = l.exportedFlags()
-			for _, dir := range l.exportedDirs() {
+			prop.ExportedFlags = l.ExportedFlags()
+			for _, dir := range l.ExportedDirs() {
 				prop.ExportedDirs = append(prop.ExportedDirs, filepath.Join("include", dir.String()))
 			}
-			for _, dir := range l.exportedSystemDirs() {
+			for _, dir := range l.ExportedSystemDirs() {
 				prop.ExportedSystemDirs = append(prop.ExportedSystemDirs, filepath.Join("include", dir.String()))
 			}
 			// shared libs dependencies aren't meaningful on static or header libs
