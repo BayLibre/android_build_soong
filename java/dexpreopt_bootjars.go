@@ -179,7 +179,15 @@ func RegisterDexpreoptBootJarsComponents(ctx android.RegistrationContext) {
 }
 
 func skipDexpreoptBootJars(ctx android.PathContext) bool {
-	return dexpreopt.GetGlobalConfig(ctx).DisablePreopt
+	if dexpreopt.GetGlobalConfig(ctx).DisablePreopt {
+		return true
+	}
+
+	if ctx.Config().UnbundledBuildUsePrebuiltSdk() {
+		return true
+	}
+
+	return false
 }
 
 type dexpreoptBootJars struct {
