@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "040a35ef_212df0d0",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-07-08T12:56:54Z",
+      "side": 1,
+      "message": "nit: rbeMetricsPB / rbeMetricsPBFile / rbeMetricsPBFilename ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e48bed_206565c9",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-07-08T12:56:54Z",
+      "side": 1,
+      "message": "Does this fail the build? If so, should we treat failure to generate RBE metrics as a build failure or would it be better to log a warning and have monitoring around it?",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 78
+      },
+      "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c402936_b0e7ce13",
         "filename": "ui/build/rbe.go",
         "patchSetId": 4
