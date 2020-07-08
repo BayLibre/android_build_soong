@@ -22,6 +22,30 @@
       "revId": "3373a2043abdfebe38c173b974254fc63019b43a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf7821d5_ac514f76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-07-08T12:14:05Z",
+      "side": 1,
+      "message": "Oh, thanks for letting me know. https://r.android.com/1358106 is enough, and the CL needs to be abandoned.",
+      "parentUuid": "d5af9889_f1789334",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "3373a2043abdfebe38c173b974254fc63019b43a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
