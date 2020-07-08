@@ -319,6 +319,30 @@
       "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def310ea_0ae16785",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1755,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-08T09:58:29Z",
+      "side": 1,
+      "message": "Aha, thanks.",
+      "parentUuid": "0b8cebd8_f1018c2a",
+      "range": {
+        "startLine": 1753,
+        "startChar": 0,
+        "endLine": 1755,
+        "endChar": 3
+      },
+      "revId": "3115cd8bc084f268808e71ba8cba709230f50d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
