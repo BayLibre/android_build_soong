@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f44b2f4d_979e473d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-08T12:55:31Z",
+      "side": 1,
+      "message": "Spello: \"UnbundledBuild\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "bb24a9ff970057036ecf2712d7e02be782380980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e64a8d3_204069ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-08T12:55:31Z",
+      "side": 1,
+      "message": "This is now turned off automatically, isn\u0027t it?",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "bb24a9ff970057036ecf2712d7e02be782380980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "184dd8ac_2e7816d7",
+        "filename": "java/config/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-08T12:55:31Z",
+      "side": 1,
+      "message": "I like moving away from UnbundledBuild here in principle, but I\u0027m unsure if it works in the master-art case (i.e. when UnbundledBuild() is true but UnbundledBuildUsePrebuiltSdk() isn\u0027t): there too we need to use prebuilts if the tool sources aren\u0027t in the reduced master-art manifest. Ideally the Soong prebuilt selection per module should handle it without any special path changes, but since this code exists it doesn\u0027t look like that works here.\n\nI see the topic passes on the master-art Treehugger builds which is encouraging, but please test it with the ART-specific build scripts on master-art (http://b/160390776#comment7).",
+      "range": {
+        "startLine": 213,
+        "startChar": 18,
+        "endLine": 213,
+        "endChar": 46
+      },
+      "revId": "bb24a9ff970057036ecf2712d7e02be782380980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
