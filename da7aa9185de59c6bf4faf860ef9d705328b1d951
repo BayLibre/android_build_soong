@@ -16,6 +16,24 @@
       "revId": "da7aa9185de59c6bf4faf860ef9d705328b1d951",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad17f8d5_e9d363fc",
+        "filename": "rust/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-08T23:42:11Z",
+      "side": 1,
+      "message": "Yes, i would like to allow that.\nThe following two alternative rules could work for me too.\n(2) Give a warning if the main source is not the first one.\n(3) Reject it as an error if the main source is not the first one.\nWe can easily check if srcIndex \u003d\u003d 0.\nWhat\u0027s the vote for the choices?",
+      "parentUuid": "8a348e1c_61fd884c",
+      "revId": "da7aa9185de59c6bf4faf860ef9d705328b1d951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

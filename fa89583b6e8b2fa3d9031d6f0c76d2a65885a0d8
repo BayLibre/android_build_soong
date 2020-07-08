@@ -164,6 +164,30 @@
       "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca3dcad_80c4cc91",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-08T23:42:11Z",
+      "side": 1,
+      "message": "I see; i tried and got two problems:\n(1) mod is only a Module pointer, it cannot get to mod.properties.Srcs, or the baseCompiler types that contain Srcs.\n(2) if i compute SrcDeps in the \u0027compile\u0027 or \u0027compilerDeps\u0027 function of those baseCompiler types, i need to pass the dependent list back to this depsToPaths function or its caller GenerateAndroidBuildActions; wouldn\u0027t i need to use some depTag here again? This also makes SrcDeps very different from the paths of other Deps lists computed here.",
+      "parentUuid": "c786663c_502d027f",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 0
+      },
+      "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
