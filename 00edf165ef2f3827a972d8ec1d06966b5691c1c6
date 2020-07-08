@@ -69,6 +69,24 @@
       "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd841e3_1becc6c4",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-08T15:04:31Z",
+      "side": 1,
+      "message": "I honestly don\u0027t have idea about which would be more efficient. I\u0027d like like to defer that to Colin.",
+      "parentUuid": "db759594_c9d2cfcf",
+      "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
