@@ -86,4 +86,5 @@ var (
 	CrtBeginDepTag = DependencyTag{Name: "crtbegin"}
 	CrtEndDepTag   = DependencyTag{Name: "crtend"}
 	CoverageDepTag = DependencyTag{Name: "coverage"}
+	HeaderDepTag   = DependencyTag{Name: "header", Library: true}
 )

@@ -185,11 +185,11 @@ func makeOverrideModuleNames(ctx AndroidMkContext, overrides []string) []string 
 }
 
 func (library *libraryDecorator) androidMkWriteExportedFlags(entries *android.AndroidMkEntries) {
-	exportedFlags := library.exportedFlags()
-	for _, dir := range library.exportedDirs() {
+	exportedFlags := library.ExportedFlags()
+	for _, dir := range library.ExportedDirs() {
 		exportedFlags = append(exportedFlags, "-I"+dir.String())
 	}
-	for _, dir := range library.exportedSystemDirs() {
+	for _, dir := range library.ExportedSystemDirs() {
 		exportedFlags = append(exportedFlags, "-isystem "+dir.String())
 	}
 	if len(exportedFlags) > 0 {

@@ -292,15 +292,15 @@ func (f *flagExporter) addExportedGeneratedHeaders(headers ...android.Path) {
 	f.headers = append(f.headers, headers...)
 }
 
-func (f *flagExporter) exportedDirs() android.Paths {
+func (f *flagExporter) ExportedDirs() android.Paths {
 	return f.dirs
 }
 
-func (f *flagExporter) exportedSystemDirs() android.Paths {
+func (f *flagExporter) ExportedSystemDirs() android.Paths {
 	return f.systemDirs
 }
 
-func (f *flagExporter) exportedFlags() []string {
+func (f *flagExporter) ExportedFlags() []string {
 	return f.flags
 }
 
@@ -312,15 +312,15 @@ func (f *flagExporter) exportedGeneratedHeaders() android.Paths {
 	return f.headers
 }
 
-type exportedFlagsProducer interface {
-	exportedDirs() android.Paths
-	exportedSystemDirs() android.Paths
-	exportedFlags() []string
+type ExportedFlagsProducer interface {
+	ExportedDirs() android.Paths
+	ExportedSystemDirs() android.Paths
+	ExportedFlags() []string
 	exportedDeps() android.Paths
 	exportedGeneratedHeaders() android.Paths
 }
 
-var _ exportedFlagsProducer = (*flagExporter)(nil)
+var _ ExportedFlagsProducer = (*flagExporter)(nil)
 
 // libraryDecorator wraps baseCompiler, baseLinker and baseInstaller to provide library-specific
 // functionality: static vs. shared linkage, reusing object files for shared libraries
@@ -401,7 +401,7 @@ func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) 
 	// can't be globbed, and they should be manually collected.
 	// So, we first filter out intermediate directories (which contains generated headers)
 	// from exported directories, and then glob headers under remaining directories.
-	for _, path := range append(l.exportedDirs(), l.exportedSystemDirs()...) {
+	for _, path := range append(l.ExportedDirs(), l.ExportedSystemDirs()...) {
 		dir := path.String()
 		// Skip if dir is for generated headers
 		if strings.HasPrefix(dir, android.PathForOutput(ctx).String()) {
@@ -687,7 +687,7 @@ type libraryInterface interface {
 	static() bool
 	shared() bool
 	objs() Objects
-	reuseObjs() (Objects, exportedFlagsProducer)
+	reuseObjs() (Objects, ExportedFlagsProducer)
 	toc() android.OptionalPath
 
 	// Returns true if the build options for the module have selected a static or shared build
@@ -1199,7 +1199,7 @@ func (library *libraryDecorator) objs() Objects {
 	return library.objects
 }
 
-func (library *libraryDecorator) reuseObjs() (Objects, exportedFlagsProducer) {
+func (library *libraryDecorator) reuseObjs() (Objects, ExportedFlagsProducer) {
 	return library.reuseObjects, &library.flagExporter
 }
 
