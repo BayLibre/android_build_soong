@@ -467,6 +467,15 @@ type commonProperties struct {
 	// Whether this module is installed to ramdisk
 	Ramdisk *bool
 
+	// The release version of the module. It uses the API level of the source tree that the module
+	// is built from. For example, VNDK snapshot modules must set the "release_version" to the
+	// snapshot's VNDK version which is the same as the API level that they are built from.
+	// Using the vendor snapshot, we may build modules from the difference versions of source trees
+	// in a combined source tree. By explicitly indicating the modules release version of the
+	// source tree, the build system prevents the dependencies between the modules from the
+	// difference source trees.
+	Release_version *string
+
 	// Whether this module is built for non-native architecures (also known as native bridge binary)
 	Native_bridge_supported *bool `android:"arch_variant"`
 
@@ -1340,10 +1349,12 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	}
 
 	if m.Enabled() {
-		// ensure all direct android.Module deps are enabled
+		// ensure all direct android.Module deps are enabled and have the same source release version
 		ctx.VisitDirectDepsBlueprint(func(bm blueprint.Module) {
 			if _, ok := bm.(Module); ok {
-				ctx.validateAndroidModule(bm, ctx.baseModuleContext.strictVisitDeps)
+				if dep := ctx.validateAndroidModule(bm, ctx.baseModuleContext.strictVisitDeps); dep != nil {
+					ctx.validateReleaseVersionDependency(dep.base())
+				}
 			}
 		})
 
@@ -1398,6 +1409,10 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	m.buildParams = ctx.buildParams
 	m.ruleParams = ctx.ruleParams
 	m.variables = ctx.variables
+}
+
+func (m *ModuleBase) ReleaseVersion() string {
+	return proptools.StringDefault(m.commonProperties.Release_version, "current")
 }
 
 type earlyModuleContext struct {
@@ -2116,6 +2131,21 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 
 func (m *moduleContext) CheckbuildFile(srcPath Path) {
 	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
+}
+
+// checks if a depending module has the same source release version with this module.
+func (m *moduleContext) validateReleaseVersionDependency(dep *ModuleBase) {
+	base := m.Module().base()
+	if base.Os() != Android || dep.Os() != Android {
+		return
+	}
+
+	releaseVersion := base.ReleaseVersion()
+	depReleaseVersion := dep.ReleaseVersion()
+	if releaseVersion != depReleaseVersion {
+		m.ModuleErrorf("has a release version %q. It must not depend on %q which has a different release version %q",
+			releaseVersion, dep.Name(), depReleaseVersion)
+	}
 }
 
 // SrcIsModule decodes module references in the format ":name" into the module name, or empty string if the input

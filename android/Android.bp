@@ -76,6 +76,7 @@ bootstrap_go_package {
         "prebuilt_test.go",
         "rule_builder_test.go",
         "soong_config_modules_test.go",
+        "source_tree_test.go",
         "util_test.go",
         "variable_test.go",
         "visibility_test.go",
