@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6be9797_774290d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-07-08T16:51:33Z",
+      "side": 1,
+      "message": "As per our discussions in the bug, let\u0027s not enable assert() globally right now. We\u0027re still blocked on adding the macro def on some prereqs that are in flight.",
+      "revId": "f06e5bf2dfeed3ec9726f4f98178acdf2dd29268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
