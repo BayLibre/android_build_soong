@@ -16,6 +16,29 @@
       "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c402936_b0e7ce13",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-07-08T12:51:08Z",
+      "side": 1,
+      "message": "It would be good to get metrics around how long this function itself takes. Would it be possible to add that?",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "6c86bb15f003040b7c972b704bcbbc3789c56e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
