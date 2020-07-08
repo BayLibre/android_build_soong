@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb04cc24_8a2d7ea1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2020-07-08T14:26:12Z",
+      "side": 1,
+      "message": "cargo2android.py still adds \"deny_warnings: false\" to Android.bp files it generates. Is there a change in progress to fix that to match this change?",
+      "revId": "8e46efac71a025bc71840c4ea1a4293233fc0958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
