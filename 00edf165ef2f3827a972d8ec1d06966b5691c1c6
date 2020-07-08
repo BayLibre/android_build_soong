@@ -33,6 +33,24 @@
       "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48eeae0_50ce1647",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-08T09:00:37Z",
+      "side": 1,
+      "message": "Do you mean to use `VisitAllModules` in a singleton as below instead of using soong deps check for different variations?\n\n```\nVisitAllModules(func(module Module){\n    version :\u003d module.getVersion()\n    ctx.VisitDirectDeps(module, func(dep Module) {\n        if version !\u003d dep.getVersion() {\n            fmt.Errorf(\"Dependency between the versions is not allowed.\")\n        }\n    })\n})\n```\nIf it is more efficient than creating a variation, let me update with it. Or do you have a different idea?",
+      "parentUuid": "baadcf04_9b353dbb",
+      "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
