@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36487263_465b765d",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-08T19:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4bfa62a_f42cd3fe",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 2
+      },
+      "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd02a1f_d299c6dd",
         "filename": "rust/compiler.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "498d0591_ec8e67c8",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-08T19:17:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd02a1f_d299c6dd",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 31
+      },
+      "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0087cb57_bde8a64d",
         "filename": "rust/rust.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-07-08T17:45:33Z",
       "side": 1,
       "message": "Don\u0027t do this manually, use the paths returned by PathsForModuleSrc",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 0
+      },
+      "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ee6d1c_d0c72cfc",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-08T19:17:34Z",
+      "side": 1,
+      "message": "Could you elaborate the needed change?\nI don\u0027t know if you meant not testing android.SourceDepTag, or if there is some simpler way to get the path to depName.",
+      "parentUuid": "0087cb57_bde8a64d",
       "range": {
         "startLine": 719,
         "startChar": 0,
