@@ -77,6 +77,10 @@ func (d *dexpreopter) dexpreoptDisabled(ctx android.BaseModuleContext) bool {
 		return true
 	}
 
+	if ctx.Config().UnbundledBuildUsePrebuiltSdks() {
+		return true
+	}
+
 	if d.isTest {
 		return true
 	}
