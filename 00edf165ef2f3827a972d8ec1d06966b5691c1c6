@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "4a7c67e6_24999ff1",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-08T22:18:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to interpret this, what is a modules source tree, and how are source trees combined?  This needs very clear documentation, possibly with lots of examples, if it\u0027s going to use a relatively generic term like \"release version\".",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 32
+      },
+      "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "baadcf04_9b353dbb",
         "filename": "android/source_tree.go",
         "patchSetId": 2
@@ -84,6 +107,24 @@
       "side": 1,
       "message": "I honestly don\u0027t have idea about which would be more efficient. I\u0027d like like to defer that to Colin.",
       "parentUuid": "db759594_c9d2cfcf",
+      "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc7345d_aa5d928b",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-08T22:18:45Z",
+      "side": 1,
+      "message": "I\u0027d prefer to avoid the variations, as they end up in the path to the module intermediates.  This probably makes the most sense as a check on direct deps in GenerateBuildActions on android.ModuleBase.",
+      "parentUuid": "ddd841e3_1becc6c4",
       "revId": "00edf165ef2f3827a972d8ec1d06966b5691c1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
