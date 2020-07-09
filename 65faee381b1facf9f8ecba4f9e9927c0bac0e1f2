@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd62df0a_e967d5f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-09T21:20:40Z",
+      "side": 1,
+      "message": "Looks good to me overall. \n\nI was trying to think of a better name than overlay but it is hard. Maybe bazel_tree? bazel_export? I don\u0027t know, bazel_overlay might be the best name.\n\nAlso, is it possible to check in a test? (I know you did a lot of manual testing, but checking in a simple test would be good too)",
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37e59b26_9014ca86",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-09T21:20:40Z",
+      "side": 1,
+      "message": "Nit: Declare bazelOverlayDirectory before bazelOverlayWorkspaceFile and then extend it for the WORKSPACE path?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 61
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61c87e16_e42bc728",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-09T21:20:40Z",
+      "side": 1,
+      "message": "Nit: Should this be called module_variant then for consistency? Or do we have to use the \u0027variant\u0027 name for some reason?\n\nAlternatively: can we drop the module_ prefix from everything? These are in a SoongModuleInfo provider, after all...",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f5461e3_51019c8b",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-09T21:20:40Z",
+      "side": 1,
+      "message": "Maybe we should print or log each of these ignores somewhere?",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 11
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e96e8fc_85821102",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-09T21:20:40Z",
+      "side": 1,
+      "message": "Is this a question for the Soong team? (just highlighting it for the review, I don\u0027t know the answer)",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf586c3b_70de29f6",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-09T21:20:40Z",
+      "side": 1,
+      "message": "Nit: What is k? Maybe label or depLabel instead?\n\nOr can we just use strings.Join() here instead?",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f44f734d_47a2a9d9",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-09T21:20:40Z",
+      "side": 1,
+      "message": "Nit: Can we write the permissions in a human readable form? Like O_READ | O_WRITE instead of 0666?\n\nPS. Why do we need O_WRITE?",
+      "range": {
+        "startLine": 109,
+        "startChar": 50,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
