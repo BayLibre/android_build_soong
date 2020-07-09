@@ -188,6 +188,30 @@
       "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ea22ba_22227047",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-09T00:17:34Z",
+      "side": 1,
+      "message": "You don\u0027t need to put it through depsToPaths or PathDeps at all, the functions that call srcPathFromModuleSrcs are the ones that call into translateSrcToCrate, which is the only function that uses the value.\n\nSrcDeps is inherently different from the rest of these deps, PathsForModuleSrc is already calling ctx.VisitDirectDeps and looking for SourceDepTag.",
+      "parentUuid": "5ca3dcad_80c4cc91",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 723,
+        "endChar": 0
+      },
+      "revId": "fa89583b6e8b2fa3d9031d6f0c76d2a65885a0d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
