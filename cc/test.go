@@ -165,7 +165,7 @@ func (test *testBinary) srcs() []string {
 	return test.baseCompiler.Properties.Srcs
 }
 
-func (test *testBinary) dataPaths() android.Paths {
+func (test *testBinary) dataPaths() []DataPath {
 	return test.data
 }
 
@@ -305,12 +305,17 @@ func NewTestInstaller() *baseInstaller {
 	return NewBaseInstaller("nativetest", "nativetest64", InstallInData)
 }
 
+type DataPath struct {
+	SrcPath             android.Path
+	RelativeInstallPath string
+}
+
 type testBinary struct {
 	testDecorator
 	*binaryDecorator
 	*baseCompiler
 	Properties TestBinaryProperties
-	data       android.Paths
+	data       []DataPath
 	testConfig android.Path
 }
 
@@ -339,17 +344,29 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 }
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
-	test.data = android.PathsForModuleSrc(ctx, test.Properties.Data)
+	dataSrcPaths := android.PathsForModuleSrc(ctx, test.Properties.Data)
+	for _, dataSrcPath := range dataSrcPaths {
+		test.data = append(test.data, DataPath{SrcPath: dataSrcPath, RelativeInstallPath: ""})
+	}
 
 	ctx.VisitDirectDepsWithTag(dataLibDepTag, func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		ccDep, ok := dep.(LinkableInterface)
-
 		if !ok {
 			ctx.ModuleErrorf("data_lib %q is not a linkable cc module", depName)
 		}
+
+		ccModule, ok := dep.(*Module)
+		if !ok {
+			ctx.ModuleErrorf("data_lib %q is not a cc module", depName)
+		}
+
 		if ccDep.OutputFile().Valid() {
-			test.data = append(test.data, ccDep.OutputFile().Path())
+			if ccDep.OutputFile().Valid() {
+				test.data = append(test.data,
+					DataPath{SrcPath: ccDep.OutputFile().Path(),
+						RelativeInstallPath: ccModule.installer.relativeInstallPath()})
+			}
 		} else {
 			ctx.ModuleErrorf("data_lib %q has no output file", depName)
 		}

@@ -3916,8 +3916,8 @@ func TestApexWithTests(t *testing.T) {
 	data = android.AndroidMkDataForTest(t, config, "", flatBundle)
 	data.Custom(&builder, name, prefix, "", data)
 	flatAndroidMk := builder.String()
-	ensureContainsOnce(t, flatAndroidMk, "LOCAL_TEST_DATA := :baz :bar/baz\n")
-	ensureContainsOnce(t, flatAndroidMk, "LOCAL_TEST_DATA := :testdata/baz\n")
+	ensureContainsOnce(t, flatAndroidMk, "LOCAL_TEST_DATA := :baz: :bar/baz:\n")
+	ensureContainsOnce(t, flatAndroidMk, "LOCAL_TEST_DATA := :testdata/baz:\n")
 }
 
 func TestInstallExtraFlattenedApexes(t *testing.T) {

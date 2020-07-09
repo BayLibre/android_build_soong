@@ -149,21 +149,22 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 	return []android.AndroidMkEntries{entries}
 }
 
-func AndroidMkDataPaths(data android.Paths) []string {
+func AndroidMkDataPaths(data []DataPath) []string {
 	var testFiles []string
 	for _, d := range data {
-		rel := d.Rel()
-		path := d.String()
+		dataSrcPath := d.SrcPath
+		rel := dataSrcPath.Rel()
+		path := dataSrcPath.String()
 		if !strings.HasSuffix(path, rel) {
 			panic(fmt.Errorf("path %q does not end with %q", path, rel))
 		}
 		path = strings.TrimSuffix(path, rel)
-		testFiles = append(testFiles, path+":"+rel)
+		testFiles = append(testFiles, path+":"+rel+":"+d.RelativeInstallPath)
 	}
 	return testFiles
 }
 
-func androidMkWriteTestData(data android.Paths, ctx AndroidMkContext, entries *android.AndroidMkEntries) {
+func androidMkWriteTestData(data []DataPath, ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	testFiles := AndroidMkDataPaths(data)
 	if len(testFiles) > 0 {
 		entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
@@ -358,7 +359,11 @@ func (benchmark *benchmarkDecorator) AndroidMkEntries(ctx AndroidMkContext, entr
 		}
 	})
 
-	androidMkWriteTestData(benchmark.data, ctx, entries)
+	var dataPaths []DataPath
+	for _, dataSrcPath := range benchmark.data {
+		dataPaths = append(dataPaths, DataPath{SrcPath: dataSrcPath, RelativeInstallPath: ""})
+	}
+	androidMkWriteTestData(dataPaths, ctx, entries)
 }
 
 func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
