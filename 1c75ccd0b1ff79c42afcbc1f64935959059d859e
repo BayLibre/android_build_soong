@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e5aae1c_16b0ec3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-09T19:08:52Z",
+      "side": 1,
+      "message": "Hi folks, here\u0027s a CL that creates a Bazel tree from AOSP (calling it an \"overlay\"), consisting of Soong modules in the form of BUILD targets. This enables users to use bazel query directly on the Soong module graph, without having to write new query front end engines or write tools to (de)serialize the module graph. I think this is much simpler approach than the earlier design, and prevents reinvention of the wheel.\n\nAs far as I have experimented, this works with all of the common query expressions and functions. See the commit description for details.\n\nPTAL at the general concept and how this is integrated into the soong_build primary buildier, and I\u0027d be happy to hear your thoughts.",
+      "revId": "1c75ccd0b1ff79c42afcbc1f64935959059d859e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
