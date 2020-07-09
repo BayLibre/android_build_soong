@@ -22,6 +22,30 @@
       "revId": "21e60eadb8d15cb1f7044969f8cdf5cb745e3733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf194bc8_f1684d1f",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-07-09T04:53:40Z",
+      "side": 1,
+      "message": "UnbundledBuild() was introduced to indicate the mode which the whole system/platform isn\u0027t supposed to be built according to https://android-review.googlesource.com/c/platform/build/+/1324512, while UnbundledBuildUsePrebuiltSdk means the module is built against prebuilt sdk.\n\nYes, both can be true.\nIf UnbundledBuildApps \u003d\u003d true, and it doesn\u0027t build sdk from source, both are true.",
+      "parentUuid": "b73d258a_ca7cfebe",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 1
+      },
+      "revId": "21e60eadb8d15cb1f7044969f8cdf5cb745e3733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
