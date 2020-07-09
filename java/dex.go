@@ -18,7 +18,6 @@ import (
 	"strings"
 
 	"github.com/google/blueprint"
-	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 	"android/soong/remoteexec"
@@ -86,8 +85,19 @@ var r8, r8RE = remoteexec.MultiCommandStaticRules(pctx, "r8",
 		},
 	}, []string{"outDir", "outDict", "r8Flags", "zipFlags"}, []string{"implicits"})
 
-func (j *Module) dexCommonFlags(ctx android.ModuleContext) []string {
-	flags := j.deviceProperties.Dxflags
+type dexableModule interface {
+	dxflags() []string
+	effectiveOptimizeEnabled() bool
+	minSdkVersion() sdkSpec
+	uncompressDex() bool
+
+	setProguardDictionary(proguardDictionary android.Path)
+
+	r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) ([]string, android.Paths)
+}
+
+func dexCommonFlags(ctx android.ModuleContext, j dexableModule) []string {
+	flags := j.dxflags()
 	// Translate all the DX flags to D8 ones until all the build files have been migrated
 	// to D8 flags. See: b/69377755
 	flags = android.RemoveListFromList(flags,
@@ -112,13 +122,10 @@ func (j *Module) dexCommonFlags(ctx android.ModuleContext) []string {
 	return flags
 }
 
-func (j *Module) d8Flags(ctx android.ModuleContext, flags javaBuilderFlags) ([]string, android.Paths) {
-	d8Flags := j.dexCommonFlags(ctx)
-
+func d8Flags(flags javaBuilderFlags) (d8Flags []string, d8Deps android.Paths) {
 	d8Flags = append(d8Flags, flags.bootClasspath.FormRepeatedClassPath("--lib ")...)
 	d8Flags = append(d8Flags, flags.classpath.FormRepeatedClassPath("--lib ")...)
 
-	var d8Deps android.Paths
 	d8Deps = append(d8Deps, flags.bootClasspath...)
 	d8Deps = append(d8Deps, flags.classpath...)
 
@@ -140,8 +147,6 @@ func (j *Module) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8F
 		proguardRaiseDeps = append(proguardRaiseDeps, dep.(Dependency).HeaderJars()...)
 	})
 
-	r8Flags = append(r8Flags, j.dexCommonFlags(ctx)...)
-
 	r8Flags = append(r8Flags, proguardRaiseDeps.FormJavaClassPath("-libraryjars"))
 	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
 	r8Flags = append(r8Flags, flags.classpath.FormJavaClassPath("-libraryjars"))
@@ -162,7 +167,7 @@ func (j *Module) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8F
 	flagFiles = append(flagFiles, j.extraProguardFlagFiles...)
 	// TODO(ccross): static android library proguard files
 
-	flagFiles = append(flagFiles, android.PathsForModuleSrc(ctx, j.deviceProperties.Optimize.Proguard_flags_files)...)
+	flagFiles = append(flagFiles, android.PathsForModuleSrc(ctx, opt.Proguard_flags_files)...)
 
 	r8Flags = append(r8Flags, android.JoinWithPrefix(flagFiles.Strings(), "-include "))
 	r8Deps = append(r8Deps, flagFiles...)
@@ -171,7 +176,7 @@ func (j *Module) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8F
 	r8Deps = append(r8Deps, android.PathForSource(ctx,
 		"build/make/core/proguard_basic_keeps.flags"))
 
-	r8Flags = append(r8Flags, j.deviceProperties.Optimize.Proguard_flags...)
+	r8Flags = append(r8Flags, opt.Proguard_flags...)
 
 	// TODO(ccross): Don't shrink app instrumentation tests by default.
 	if !Bool(opt.Shrink) {
@@ -197,29 +202,31 @@ func (j *Module) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8F
 	return r8Flags, r8Deps
 }
 
-func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
+func compileDex(ctx android.ModuleContext, j dexableModule, flags javaBuilderFlags,
 	classesJar android.Path, jarName string) android.ModuleOutPath {
 
-	useR8 := j.deviceProperties.EffectiveOptimizeEnabled()
+	useR8 := j.effectiveOptimizeEnabled()
 
 	// Compile classes.jar into classes.dex and then javalib.jar
 	javalibJar := android.PathForModuleOut(ctx, "dex", jarName)
 	outDir := android.PathForModuleOut(ctx, "dex")
 
 	zipFlags := "--ignore_missing_files"
-	if proptools.Bool(j.deviceProperties.Uncompress_dex) {
+	if j.uncompressDex() {
 		zipFlags += " -L 0"
 	}
 
+	commonFlags := dexCommonFlags(ctx, j)
+
 	if useR8 {
 		proguardDictionary := android.PathForModuleOut(ctx, "proguard_dictionary")
-		j.proguardDictionary = proguardDictionary
+		j.setProguardDictionary(proguardDictionary)
 		r8Flags, r8Deps := j.r8Flags(ctx, flags)
 		rule := r8
 		args := map[string]string{
-			"r8Flags":  strings.Join(r8Flags, " "),
+			"r8Flags":  strings.Join(append(commonFlags, r8Flags...), " "),
 			"zipFlags": zipFlags,
-			"outDict":  j.proguardDictionary.String(),
+			"outDict":  proguardDictionary.String(),
 			"outDir":   outDir.String(),
 		}
 		if ctx.Config().IsEnvTrue("RBE_R8") {
@@ -236,7 +243,7 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 			Args:           args,
 		})
 	} else {
-		d8Flags, d8Deps := j.d8Flags(ctx, flags)
+		d8Flags, d8Deps := d8Flags(flags)
 		rule := d8
 		if ctx.Config().IsEnvTrue("RBE_D8") {
 			rule = d8RE
@@ -248,13 +255,13 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 			Input:       classesJar,
 			Implicits:   d8Deps,
 			Args: map[string]string{
-				"d8Flags":  strings.Join(d8Flags, " "),
+				"d8Flags":  strings.Join(append(commonFlags, d8Flags...), " "),
 				"zipFlags": zipFlags,
 				"outDir":   outDir.String(),
 			},
 		})
 	}
-	if proptools.Bool(j.deviceProperties.Uncompress_dex) {
+	if j.uncompressDex() {
 		alignedJavalibJar := android.PathForModuleOut(ctx, "aligned", jarName)
 		TransformZipAlign(ctx, alignedJavalibJar, javalibJar)
 		javalibJar = alignedJavalibJar
