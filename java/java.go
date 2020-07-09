@@ -365,8 +365,16 @@ type CompilerDeviceProperties struct {
 	IsSDKLibrary bool `blueprint:"mutated"`
 }
 
-func (me *CompilerDeviceProperties) EffectiveOptimizeEnabled() bool {
-	return BoolDefault(me.Optimize.Enabled, me.Optimize.EnabledByDefault)
+func (j *Module) effectiveOptimizeEnabled() bool {
+	return BoolDefault(j.deviceProperties.Optimize.Enabled, j.deviceProperties.Optimize.EnabledByDefault)
+}
+
+func (j *Module) uncompressDex() bool {
+	return proptools.Bool(j.deviceProperties.Uncompress_dex)
+}
+
+func (j *Module) setProguardDictionary(proguardDictionary android.Path) {
+	j.proguardDictionary = proguardDictionary
 }
 
 // Functionality common to Module and Import
@@ -694,6 +702,10 @@ func (j *Module) MinSdkVersion() string {
 	return j.minSdkVersion().version.String()
 }
 
+func (j *Module) dxflags() []string {
+	return j.deviceProperties.Dxflags
+}
+
 func (j *Module) AvailableFor(what string) bool {
 	if what == android.AvailableToPlatform && Bool(j.deviceProperties.Hostdex) {
 		// Exception: for hostdex: true libraries, the platform variant is created
@@ -713,10 +725,10 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 			ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
 			ctx.AddVariationDependencies(nil, java9LibTag, sdkDep.java9Classpath...)
 			ctx.AddVariationDependencies(nil, libTag, sdkDep.classpath...)
-			if j.deviceProperties.EffectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
+			if j.effectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
 				ctx.AddVariationDependencies(nil, proguardRaiseTag, config.LegacyCorePlatformBootclasspathLibraries...)
 			}
-			if j.deviceProperties.EffectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
+			if j.effectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
 				ctx.AddVariationDependencies(nil, proguardRaiseTag, config.FrameworkLibraries...)
 			}
 		}
@@ -1644,7 +1656,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		(Bool(j.properties.Installable) || Bool(j.deviceProperties.Compile_dex)) {
 		// Dex compilation
 		var dexOutputFile android.ModuleOutPath
-		dexOutputFile = j.compileDex(ctx, flags, outputFile, jarName)
+		dexOutputFile = compileDex(ctx, j, flags, outputFile, jarName)
 		if ctx.Failed() {
 			return
 		}
@@ -2650,6 +2662,7 @@ func (j *Import) ImplementationAndResourcesJars() android.Paths {
 }
 
 func (j *Import) DexJarBuildPath() android.Path {
+	// TODO(eakammer): hiddenapi needs this
 	return nil
 }
 
