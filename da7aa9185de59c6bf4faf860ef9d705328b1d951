@@ -34,6 +34,24 @@
       "revId": "da7aa9185de59c6bf4faf860ef9d705328b1d951",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8820e238_6e17c0b4",
+        "filename": "rust/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-09T00:23:21Z",
+      "side": 1,
+      "message": "We don\u0027t allow warnings in Soong, they clutter the build and nobody looks at them.\n\nIf you want to requrie the first source file be non-generated I\u0027d suggest:\n\n    if len(srcs) \u003c 1 {\n        ctx.PropertyErrorf(\"srcs\", \"srcs must contain at least one path for a rust file\")\n    }\n\n    if android.SrcIsModule(srcs[0]) !\u003d \"\" {\n        ctx.PropertyErrorf(\"srcs\", \"first element in srcs must be a rust file in the source tree\")\n    }\n\n    allSrcs :\u003d android.PathsForModuleSrc(ctx, srcs)\n    return allSrcs[0], allSrcs\n\nNote that forbidding a module reference as the first element also precludes using a filegroup as the main file, filegroups and genrules are handled the same way.\n\nIf you want to take the first source file of the first entry:\n\n    allSrcs :\u003d android.PathsForModuleSrc(ctx, srcs)\n    if len(allSrcs) \u003c 1 {\n        ctx.PropertyErrorf(\"srcs\", \"srcs must contain at least one path for a rust file\")\n    }\n\n    return allSrcs[0], allSrcs",
+      "parentUuid": "ad17f8d5_e9d363fc",
+      "revId": "da7aa9185de59c6bf4faf860ef9d705328b1d951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
