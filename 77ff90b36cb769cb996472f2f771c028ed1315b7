@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fffe3c44_0e9d8f4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-07-09T21:59:14Z",
+      "side": 1,
+      "message": "LGTM. It looks like you resolved comments from Jiyong, did you forget to mark them as resolved?",
+      "revId": "77ff90b36cb769cb996472f2f771c028ed1315b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
