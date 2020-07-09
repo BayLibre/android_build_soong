@@ -52,6 +52,24 @@
       "revId": "da7aa9185de59c6bf4faf860ef9d705328b1d951",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0221f57_2d8278d1",
+        "filename": "rust/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-09T01:49:42Z",
+      "side": 1,
+      "message": "Done. I use a simple test at the end to give an error. It can be enabled or disabled if necessary later.",
+      "parentUuid": "8820e238_6e17c0b4",
+      "revId": "da7aa9185de59c6bf4faf860ef9d705328b1d951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
