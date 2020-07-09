@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "5777a831_6526aadf",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-09T22:57:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3843470_ed53ec83",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 77
+      },
+      "revId": "3d22f2dd38e57ee5366a51c7cdfc1627795c7e0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60ec549f_8d98a301",
         "filename": "ui/build/config.go",
         "patchSetId": 1
