@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2795f9d9_39b8655c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-09T20:53:34Z",
+      "side": 1,
+      "message": "Could we pause submitting this to discuss a bit further offline on how this fits in with our overall generated sources strategy?",
+      "revId": "bbd25aeb428edaa7fb332cc0a6771aeede38e286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
