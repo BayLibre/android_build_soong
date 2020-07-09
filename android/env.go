@@ -71,6 +71,7 @@ func ReexecWithDelveMaybe() {
 	}
 	dlvArgv := []string{
 		soongDelvePath,
+		"--check-go-version=false",
 		"--listen=:" + soongDelveListen,
 		"--headless=true",
 		"--api-version=2",

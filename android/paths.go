@@ -1287,6 +1287,63 @@ func PathForModuleInstall(ctx ModuleInstallPathContext, pathComponents ...string
 	return ret
 }
 
+// PathForModuleInstall returns a Path representing the install path for the
+// module appended with joined basePathComponents and joined
+// relativePathComponents.
+func PathForModuleInstallRelative(ctx ModuleInstallPathContext, pathComponents []string,
+	relativePathComponents []string) InstallPath {
+	os := ctx.Os()
+	if forceOS := ctx.InstallForceOS(); forceOS != nil {
+		os = *forceOS
+	}
+	partition := modulePartition(ctx, os)
+
+	ret := pathForInstallRelative(ctx, os, partition, ctx.Debug(), pathComponents, relativePathComponents)
+
+	if ctx.InstallBypassMake() && ctx.Config().EmbeddedInMake() {
+		ret = ret.ToMakePath()
+	}
+
+	return ret
+}
+
+func pathForInstallRelative(ctx PathContext, os OsType, partition string, debug bool,
+	basePathComponents []string, relativePathComponents []string) InstallPath {
+
+	var outPaths []string
+
+	if os.Class == Device {
+		outPaths = []string{"target", "product", ctx.Config().DeviceName(), partition}
+	} else {
+		switch os {
+		case Linux:
+			outPaths = []string{"host", "linux-x86", partition}
+		case LinuxBionic:
+			// TODO: should this be a separate top level, or shared with linux-x86?
+			outPaths = []string{"host", "linux_bionic-x86", partition}
+		default:
+			outPaths = []string{"host", os.String() + "-x86", partition}
+		}
+	}
+	if debug {
+		outPaths = append([]string{"debug"}, outPaths...)
+	}
+	outPaths = append(outPaths, basePathComponents...)
+
+	path, err := validatePath(outPaths...)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+	relPath, err := validatePath(relativePathComponents...)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+
+	ret := InstallPath{basePath{path, ctx.Config(), ""}, ""}
+
+	return ret.withRel(relPath)
+}
+
 func pathForInstall(ctx PathContext, os OsType, partition string, debug bool,
 	pathComponents ...string) InstallPath {
 

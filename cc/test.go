@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -340,18 +341,27 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	test.data = android.PathsForModuleSrc(ctx, test.Properties.Data)
-
+	//android.PathForModuleInstall()
 	ctx.VisitDirectDepsWithTag(dataLibDepTag, func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		ccDep, ok := dep.(LinkableInterface)
 
+		baseModule := dep.(*Module)
+		installDir := baseModule.installer.installDirNoRelativePath(ctx)
+
 		if !ok {
 			ctx.ModuleErrorf("data_lib %q is not a linkable cc module", depName)
 		}
+		testJoin := installDir.ToMakePath().Join(ctx,
+			baseModule.installer.relativeInstallPath(), ccDep.OutputFile().Path().Base())
+		outputPath := ccDep.OutputFile().Path().String()
+
 		if ccDep.OutputFile().Valid() {
-			test.data = append(test.data, ccDep.OutputFile().Path())
+			test.data = append(test.data, testJoin)
+			//test.data = append(test.data, data)
 		} else {
 			ctx.ModuleErrorf("data_lib %q has no output file", depName)
+			fmt.Printf("%s %s", testJoin, outputPath)
 		}
 	})
 

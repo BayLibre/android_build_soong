@@ -78,8 +78,43 @@ func (installer *baseInstaller) installDir(ctx ModuleContext) android.InstallPat
 			dir = filepath.Join(dir, "vendor")
 		}
 	}
+	if len(installer.relativeInstallPath()) > 0 {
+		blah1 := android.PathForModuleInstall(ctx, dir, installer.subDir,
+			installer.relativeInstallPath(), installer.relative)
+		blah2 := android.PathForModuleInstallRelative(ctx,
+			[]string{dir, installer.subDir},
+			[]string{installer.relativeInstallPath(), installer.relative})
+		blah1.String()
+		blah2.String()
+	}
+
 	return android.PathForModuleInstall(ctx, dir, installer.subDir,
 		installer.relativeInstallPath(), installer.relative)
+
+	//return android.PathForModuleInstallRelative(ctx,
+	//	[]string{dir, installer.subDir},
+	//	[]string{installer.relativeInstallPath(), installer.relative})
+}
+
+func (installer *baseInstaller) installDirNoRelativePath(ctx ModuleContext) android.InstallPath {
+	dir := installer.dir
+	if ctx.toolchain().Is64Bit() && installer.dir64 != "" {
+		dir = installer.dir64
+	}
+	if ctx.Target().NativeBridge == android.NativeBridgeEnabled {
+		dir = filepath.Join(dir, ctx.Target().NativeBridgeRelativePath)
+	} else if !ctx.Host() && ctx.Config().HasMultilibConflict(ctx.Arch().ArchType) {
+		dir = filepath.Join(dir, ctx.Arch().ArchType.String())
+	}
+	if installer.location == InstallInData && ctx.useVndk() {
+		if ctx.inProduct() {
+			dir = filepath.Join(dir, "product")
+		} else {
+			dir = filepath.Join(dir, "vendor")
+		}
+	}
+
+	return android.PathForModuleInstall(ctx, dir, installer.subDir)
 }
 
 func (installer *baseInstaller) install(ctx ModuleContext, file android.Path) {
