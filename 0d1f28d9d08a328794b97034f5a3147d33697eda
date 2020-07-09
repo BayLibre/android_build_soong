@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d1a2f41_285efc43",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-09T23:45:26Z",
+      "side": 1,
+      "message": "I noticed that this test didn\u0027t produce an internally consistent snapshot, because of:\n\n\t// Compile_multilib defaults to both and must always be set to both on the\n\t// device and so only needs to be set when targeted at the host and is neither\n\t// unspecified or both.\n\nThis made the produced sdk_snapshot keep compile_multilib:\"both\" but depend on 64-only mysdk_sdkmember@current. To avoid it I made the test host only, but I think this warrants a follow up: What is the reason for \"must always be set to both on the device\"? Do we really need to enforce it, beyond making \"both\" default?\n\n- If yes then it should check for and error out if the source module doesn\u0027t comply with this restriction.\n- If no we should change the condition to let the property propagate normally for device too.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
