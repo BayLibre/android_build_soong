@@ -412,6 +412,7 @@ type specifiedDeps struct {
 
 type installer interface {
 	installerProps() []interface{}
+	installDirNoRelativePath(ctx ModuleContext) android.InstallPath
 	install(ctx ModuleContext, path android.Path)
 	everInstallable() bool
 	inData() bool
@@ -1987,6 +1988,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddVariationDependencies([]blueprint.Variation{
 		{Mutator: "link", Variation: "shared"},
 	}, dataLibDepTag, deps.DataLibs...)
+	//for _, lib := range deps.DataLibs {
+	//	addSharedLibDependencies(dataLibDepTag, lib, "")
+	//}
 
 	actx.AddVariationDependencies([]blueprint.Variation{
 		{Mutator: "link", Variation: "shared"},

@@ -539,7 +539,7 @@ func TestDataLibs(t *testing.T) {
 			data_libs: ["test_lib"],
 			gtest: false,
 		}
-  `
+ `
 
 	config := TestConfig(buildDir, android.Android, nil, bp, nil)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
@@ -574,6 +574,61 @@ func TestDataLibs(t *testing.T) {
 		t.Errorf("expected test data file to be 'test_lib.so', but was '%s'", testBinaryPath)
 		return
 	}
+}
+
+func TestDataLibsRelativeInstallPath(t *testing.T) {
+	bp := `
+		cc_test_library {
+			name: "test_lib",
+			srcs: ["test_lib.cpp"],
+			relative_install_path: "foo/bar/baz",
+			gtest: false,
+		}
+
+		cc_test {
+			name: "main_test",
+			data_libs: ["test_lib"],
+			gtest: false,
+		}
+ `
+
+	config := TestConfig(buildDir, android.Android, nil, bp, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	config.TestProductVariables.VndkUseCoreVariant = BoolPtr(true)
+
+	ctx := testCcWithConfig(t, config)
+	module := ctx.ModuleForTests("main_test", "android_arm_armv7-a-neon").Module()
+	testBinary := module.(*Module).linker.(*testBinary)
+	outputFiles, err := module.(android.OutputFileProducer).OutputFiles("")
+	if err != nil {
+		t.Errorf("Expected cc_test to produce output files, error: %s", err)
+		return
+	}
+	if len(outputFiles) != 1 {
+		t.Errorf("expected exactly one output file. output files: [%s]", outputFiles)
+		return
+	}
+	if len(testBinary.dataPaths()) != 1 {
+		t.Errorf("expected exactly one test data file. test data files: [%s]", testBinary.dataPaths())
+		return
+	}
+
+	outputPath := outputFiles[0].String()
+	testBinaryPath := testBinary.dataPaths()[0]
+
+	if !strings.HasSuffix(outputPath, "/main_test") {
+		t.Errorf("expected test output file to be 'main_test', but was '%s'", outputPath)
+		return
+	}
+	if testBinaryPath.Rel() != "foo/bar/baz/test_lib.so" {
+		t.Errorf("expected test data file relative path to be "+
+			"'foo/bar/baz/test_lib.so', but was '%s'", testBinaryPath)
+		return
+	}
+	entries := android.AndroidMkEntriesForTest(t, config, "", module)[0]
+	assertArrayString(t, entries.EntryMap["LOCAL_TEST_DATA"],
+		[]string{"/tmp/target/product/test_device/data/nativetest/:foo/bar/baz/test_lib.so"})
 }
 
 func TestVndkWhenVndkVersionIsNotSet(t *testing.T) {
