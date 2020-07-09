@@ -46,6 +46,30 @@
       "revId": "21e60eadb8d15cb1f7044969f8cdf5cb745e3733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5e5013_c35f3086",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-09T13:13:32Z",
+      "side": 1,
+      "message": "As the comment says, it\u0027s true if the source tree doesn\u0027t (or at least shouldn\u0027t be assumed to) have the full platform sources. Nothing else is implied, in particular nothing about how SDKs are used.\n\nDo feel free to extend the comments on these functions if it isn\u0027t clear enough; they\u0027re probably the best way we have to avoid confusion around the intentions.",
+      "parentUuid": "cf194bc8_f1684d1f",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 1
+      },
+      "revId": "21e60eadb8d15cb1f7044969f8cdf5cb745e3733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
