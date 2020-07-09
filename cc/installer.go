@@ -62,6 +62,14 @@ func (installer *baseInstaller) installerProps() []interface{} {
 }
 
 func (installer *baseInstaller) installDir(ctx ModuleContext) android.InstallPath {
+	return installer.installDirWithComponents(ctx, installer.subDir, installer.relativeInstallPath(), installer.relative)
+}
+
+func (installer *baseInstaller) installDirNoRelativePath(ctx ModuleContext) android.InstallPath {
+	return installer.installDirWithComponents(ctx, installer.subDir)
+}
+
+func (installer *baseInstaller) installDirWithComponents(ctx ModuleContext, pathComponents ...string) android.InstallPath {
 	dir := installer.dir
 	if ctx.toolchain().Is64Bit() && installer.dir64 != "" {
 		dir = installer.dir64
@@ -78,8 +86,8 @@ func (installer *baseInstaller) installDir(ctx ModuleContext) android.InstallPat
 			dir = filepath.Join(dir, "vendor")
 		}
 	}
-	return android.PathForModuleInstall(ctx, dir, installer.subDir,
-		installer.relativeInstallPath(), installer.relative)
+	pathComponents = append([]string{dir}, pathComponents...)
+	return android.PathForModuleInstall(ctx, pathComponents...)
 }
 
 func (installer *baseInstaller) install(ctx ModuleContext, file android.Path) {

@@ -340,16 +340,26 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	test.data = android.PathsForModuleSrc(ctx, test.Properties.Data)
-
 	ctx.VisitDirectDepsWithTag(dataLibDepTag, func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		ccDep, ok := dep.(LinkableInterface)
-
 		if !ok {
 			ctx.ModuleErrorf("data_lib %q is not a linkable cc module", depName)
 		}
+
+		ccModule, ok := dep.(*Module)
+		if !ok {
+			ctx.ModuleErrorf("data_lib %q is not a cc module", depName)
+		}
+		installDir := ccModule.installer.installDirNoRelativePath(ctx)
+
 		if ccDep.OutputFile().Valid() {
-			test.data = append(test.data, ccDep.OutputFile().Path())
+			// The "rel" portion of the data path must contain the relativeInstallPath
+			// so that `{relative_install_path}/{base_file_name}` is the full
+			// path relative to the test binary.
+			installPath := installDir.ToMakePath().Join(ctx,
+				ccModule.installer.relativeInstallPath(), ccDep.OutputFile().Path().Base())
+			test.data = append(test.data, installPath)
 		} else {
 			ctx.ModuleErrorf("data_lib %q has no output file", depName)
 		}
