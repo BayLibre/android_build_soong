@@ -2498,6 +2498,9 @@ type ImportProperties struct {
 
 	Installable *bool
 
+	// If set to true, compile dex regardless of installable.  Defaults to false.
+	Compile_dex *bool
+
 	// List of shared java libs that this module has dependencies to
 	Libs []string
 
@@ -2620,6 +2623,17 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
+
+	// flags := j.collectBuilderFlags(ctx, deps)
+	if Bool(j.properties.Compile_dex) {
+		// var dexOutputFile android.ModuleOutPath
+		// dex flags use bootClasspath & classpath
+		// dexOutputFile = j.compileDex(ctx, /*flags*/ nil, outputFile, jarName)
+		// if ctx.Failed() {
+		// return
+		// }
+	}
+
 }
 
 var _ Dependency = (*Import)(nil)
@@ -2650,6 +2664,7 @@ func (j *Import) ImplementationAndResourcesJars() android.Paths {
 }
 
 func (j *Import) DexJarBuildPath() android.Path {
+	// TODO(eakammer): hiddenapi needs this
 	return nil
 }
 
