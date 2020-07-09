@@ -16,6 +16,24 @@
       "revId": "42ec53be78814db6442906adf9e7819a301543d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9edd6c5f_6e4a100f",
+        "filename": "ui/build/rbe_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-09T01:49:38Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "8ffcfc05_957ec8a4",
+      "revId": "42ec53be78814db6442906adf9e7819a301543d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
