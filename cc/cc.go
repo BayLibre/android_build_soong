@@ -412,6 +412,7 @@ type specifiedDeps struct {
 
 type installer interface {
 	installerProps() []interface{}
+	installDirNoRelativePath(ctx ModuleContext) android.InstallPath
 	install(ctx ModuleContext, path android.Path)
 	everInstallable() bool
 	inData() bool
