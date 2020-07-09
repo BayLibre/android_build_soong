@@ -1008,6 +1008,10 @@ func (osInfo *osTypeSpecificInfo) addToPropertySet(ctx *memberContext, bpModule 
 		archOsPrefix = osType.Name + "_"
 	}
 
+	if osInfo.Properties.Base().Compile_multilib != "" {
+		osPropertySet.AddProperty("compile_multilib", osInfo.Properties.Base().Compile_multilib)
+	}
+
 	// Add the os specific but arch independent properties to the module.
 	osInfo.Properties.AddToPropertySet(ctx, osPropertySet)
 

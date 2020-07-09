@@ -73,12 +73,16 @@ func TestSdkCompileMultilibOverride(t *testing.T) {
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
+			device_supported: false,
+			host_supported: true,
 			native_shared_libs: ["sdkmember"],
 			compile_multilib: "64",
 		}
 
 		cc_library_shared {
 			name: "sdkmember",
+			device_supported: false,
+			host_supported: true,
 			srcs: ["Test.cpp"],
 			stl: "none",
 			compile_multilib: "64",
@@ -86,8 +90,52 @@ func TestSdkCompileMultilibOverride(t *testing.T) {
 	`)
 
 	result.CheckSnapshot("mysdk", "",
+		checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library_shared {
+    name: "mysdk_sdkmember@current",
+    sdk_member_name: "sdkmember",
+    device_supported: false,
+    host_supported: true,
+    installable: false,
+    stl: "none",
+    compile_multilib: "64",
+    arch: {
+        x86_64: {
+            srcs: ["x86_64/lib/sdkmember.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "sdkmember",
+    prefer: false,
+    device_supported: false,
+    host_supported: true,
+    stl: "none",
+    compile_multilib: "64",
+    arch: {
+        x86_64: {
+            srcs: ["x86_64/lib/sdkmember.so"],
+        },
+    },
+}
+
+sdk_snapshot {
+    name: "mysdk@current",
+    device_supported: false,
+    host_supported: true,
+    native_shared_libs: ["mysdk_sdkmember@current"],
+    target: {
+        linux_glibc: {
+            compile_multilib: "64",
+        },
+    },
+}
+`),
 		checkAllCopyRules(`
-.intermediates/sdkmember/android_arm64_armv8-a_shared/sdkmember.so -> arm64/lib/sdkmember.so
+.intermediates/sdkmember/linux_glibc_x86_64_shared/sdkmember.so -> x86_64/lib/sdkmember.so
 `))
 }
 
@@ -271,6 +319,7 @@ cc_prebuilt_object {
     name: "mysdk_crtobj@current",
     sdk_member_name: "crtobj",
     stl: "none",
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/crtobj.o"],
@@ -285,6 +334,7 @@ cc_prebuilt_object {
     name: "crtobj",
     prefer: false,
     stl: "none",
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/crtobj.o"],
@@ -379,6 +429,7 @@ cc_prebuilt_library_shared {
     installable: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -395,6 +446,7 @@ cc_prebuilt_library_shared {
     prefer: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -709,6 +761,7 @@ cc_prebuilt_library_shared {
     installable: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -730,6 +783,7 @@ cc_prebuilt_library_shared {
     ],
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -834,6 +888,7 @@ cc_prebuilt_library_shared {
         "mysdk_myothernativelib@current",
         "libc",
     ],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -852,6 +907,7 @@ cc_prebuilt_library_shared {
         "myothernativelib",
         "libc",
     ],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
@@ -868,6 +924,7 @@ cc_prebuilt_library_shared {
     installable: false,
     stl: "none",
     system_shared_libs: ["libm"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/myothernativelib.so"],
@@ -883,6 +940,7 @@ cc_prebuilt_library_shared {
     prefer: false,
     stl: "none",
     system_shared_libs: ["libm"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/myothernativelib.so"],
@@ -898,6 +956,7 @@ cc_prebuilt_library_shared {
     sdk_member_name: "mysystemnativelib",
     installable: false,
     stl: "none",
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mysystemnativelib.so"],
@@ -912,6 +971,7 @@ cc_prebuilt_library_shared {
     name: "mysystemnativelib",
     prefer: false,
     stl: "none",
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mysystemnativelib.so"],
@@ -984,6 +1044,7 @@ cc_prebuilt_library_shared {
     sdk_version: "minimum",
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.so"],
@@ -1004,6 +1065,7 @@ cc_prebuilt_library_shared {
     sdk_version: "minimum",
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.so"],
@@ -1082,11 +1144,17 @@ cc_prebuilt_library_shared {
     installable: false,
     stl: "none",
     target: {
+        linux_glibc: {
+            compile_multilib: "both",
+        },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/mynativelib.so"],
         },
         linux_glibc_x86: {
             srcs: ["linux_glibc/x86/lib/mynativelib.so"],
+        },
+        windows: {
+            compile_multilib: "64",
         },
         windows_x86_64: {
             srcs: ["windows/x86_64/lib/mynativelib.dll"],
@@ -1101,11 +1169,17 @@ cc_prebuilt_library_shared {
     host_supported: true,
     stl: "none",
     target: {
+        linux_glibc: {
+            compile_multilib: "both",
+        },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/mynativelib.so"],
         },
         linux_glibc_x86: {
             srcs: ["linux_glibc/x86/lib/mynativelib.so"],
+        },
+        windows: {
+            compile_multilib: "64",
         },
         windows_x86_64: {
             srcs: ["windows/x86_64/lib/mynativelib.dll"],
@@ -1164,6 +1238,7 @@ cc_prebuilt_library_static {
     installable: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.a"],
@@ -1181,6 +1256,7 @@ cc_prebuilt_library_static {
     prefer: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.a"],
@@ -1252,6 +1328,7 @@ cc_prebuilt_library_static {
     installable: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.a"],
@@ -1271,6 +1348,7 @@ cc_prebuilt_library_static {
     host_supported: true,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.a"],
@@ -1331,6 +1409,7 @@ cc_prebuilt_library {
     installable: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             static: {
@@ -1356,6 +1435,7 @@ cc_prebuilt_library {
     prefer: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             static: {
@@ -1435,6 +1515,7 @@ cc_prebuilt_library_static {
     installable: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "64",
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.a"],
@@ -1450,6 +1531,7 @@ cc_prebuilt_library_static {
     host_supported: true,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "64",
     arch: {
         x86_64: {
             srcs: ["x86_64/lib/mynativelib.a"],
@@ -1502,6 +1584,7 @@ cc_prebuilt_library_headers {
     sdk_member_name: "mynativeheaders",
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
 }
 
 cc_prebuilt_library_headers {
@@ -1509,6 +1592,7 @@ cc_prebuilt_library_headers {
     prefer: false,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
 }
 
 sdk_snapshot {
@@ -1554,6 +1638,7 @@ cc_prebuilt_library_headers {
     host_supported: true,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
 }
 
 cc_prebuilt_library_headers {
@@ -1563,6 +1648,7 @@ cc_prebuilt_library_headers {
     host_supported: true,
     stl: "none",
     export_include_dirs: ["include/include"],
+    compile_multilib: "both",
 }
 
 sdk_snapshot {
@@ -1617,9 +1703,11 @@ cc_prebuilt_library_headers {
     export_system_include_dirs: ["include/include"],
     target: {
         android: {
+            compile_multilib: "both",
             export_include_dirs: ["include/include-android"],
         },
         linux_glibc: {
+            compile_multilib: "both",
             export_include_dirs: ["include/include-host"],
         },
     },
@@ -1633,9 +1721,11 @@ cc_prebuilt_library_headers {
     export_system_include_dirs: ["include/include"],
     target: {
         android: {
+            compile_multilib: "both",
             export_include_dirs: ["include/include-android"],
         },
         linux_glibc: {
+            compile_multilib: "both",
             export_include_dirs: ["include/include-host"],
         },
     },
@@ -1689,6 +1779,7 @@ cc_prebuilt_library_shared {
     name: "mysdk_sslnil@current",
     sdk_member_name: "sslnil",
     installable: false,
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslnil.so"],
@@ -1702,6 +1793,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "sslnil",
     prefer: false,
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslnil.so"],
@@ -1717,6 +1809,7 @@ cc_prebuilt_library_shared {
     sdk_member_name: "sslempty",
     installable: false,
     system_shared_libs: [],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslempty.so"],
@@ -1731,6 +1824,7 @@ cc_prebuilt_library_shared {
     name: "sslempty",
     prefer: false,
     system_shared_libs: [],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslempty.so"],
@@ -1746,6 +1840,7 @@ cc_prebuilt_library_shared {
     sdk_member_name: "sslnonempty",
     installable: false,
     system_shared_libs: ["mysdk_sslnil@current"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslnonempty.so"],
@@ -1760,6 +1855,7 @@ cc_prebuilt_library_shared {
     name: "sslnonempty",
     prefer: false,
     system_shared_libs: ["sslnil"],
+    compile_multilib: "both",
     arch: {
         arm64: {
             srcs: ["arm64/lib/sslnonempty.so"],
@@ -1809,6 +1905,7 @@ cc_prebuilt_library_shared {
     installable: false,
     target: {
         android: {
+            compile_multilib: "both",
             system_shared_libs: [],
         },
         android_arm64: {
@@ -1816,6 +1913,9 @@ cc_prebuilt_library_shared {
         },
         android_arm: {
             srcs: ["android/arm/lib/sslvariants.so"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/sslvariants.so"],
@@ -1832,6 +1932,7 @@ cc_prebuilt_library_shared {
     host_supported: true,
     target: {
         android: {
+            compile_multilib: "both",
             system_shared_libs: [],
         },
         android_arm64: {
@@ -1839,6 +1940,9 @@ cc_prebuilt_library_shared {
         },
         android_arm: {
             srcs: ["android/arm/lib/sslvariants.so"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/sslvariants.so"],
@@ -1886,6 +1990,7 @@ cc_prebuilt_library_shared {
     name: "mysdk_stubslib@current",
     sdk_member_name: "stubslib",
     installable: false,
+    compile_multilib: "both",
     stubs: {
         versions: ["3"],
     },
@@ -1902,6 +2007,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "stubslib",
     prefer: false,
+    compile_multilib: "both",
     stubs: {
         versions: ["3"],
     },
@@ -1962,11 +2068,17 @@ cc_prebuilt_library_shared {
         versions: ["3"],
     },
     target: {
+        android: {
+            compile_multilib: "both",
+        },
         android_arm64: {
             srcs: ["android/arm64/lib/stubslib.so"],
         },
         android_arm: {
             srcs: ["android/arm/lib/stubslib.so"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/stubslib.so"],
@@ -1985,11 +2097,17 @@ cc_prebuilt_library_shared {
         versions: ["3"],
     },
     target: {
+        android: {
+            compile_multilib: "both",
+        },
         android_arm64: {
             srcs: ["android/arm64/lib/stubslib.so"],
         },
         android_arm: {
             srcs: ["android/arm/lib/stubslib.so"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/stubslib.so"],
@@ -2037,11 +2155,17 @@ cc_prebuilt_library_shared {
     installable: false,
     unique_host_soname: true,
     target: {
+        android: {
+            compile_multilib: "both",
+        },
         android_arm64: {
             srcs: ["android/arm64/lib/mylib.so"],
         },
         android_arm: {
             srcs: ["android/arm/lib/mylib.so"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/mylib-host.so"],
@@ -2058,11 +2182,17 @@ cc_prebuilt_library_shared {
     host_supported: true,
     unique_host_soname: true,
     target: {
+        android: {
+            compile_multilib: "both",
+        },
         android_arm64: {
             srcs: ["android/arm64/lib/mylib.so"],
         },
         android_arm: {
             srcs: ["android/arm/lib/mylib.so"],
+        },
+        linux_glibc: {
+            compile_multilib: "both",
         },
         linux_glibc_x86_64: {
             srcs: ["linux_glibc/x86_64/lib/mylib-host.so"],
