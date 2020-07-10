@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41f9cd34_3820c07b",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T19:24:18Z",
+      "side": 1,
+      "message": "I\u0027m repurposing this a bit, so the name is perhaps a little off.\n\nI spent some time trying to use the variantProperties struct itself, but some copying in the reflection stuff made it not work with assigning empty values to the fields. Apparently a separate wrapper struct is necessary.",
+      "range": {
+        "startLine": 336,
+        "startChar": 69,
+        "endLine": 336,
+        "endChar": 101
+      },
+      "revId": "6510f700ddcc8a7df0e3dc6cc8da0a6605aaff06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
