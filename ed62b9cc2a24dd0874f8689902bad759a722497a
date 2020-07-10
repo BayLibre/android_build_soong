@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fe64aec7_454b1dd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-10T14:29:44Z",
+      "side": 1,
+      "message": "There was. I had a build failure because of this when working on the platform build against art prebuilts. I can\u0027t remember the exact cause though.",
+      "parentUuid": "16dca321_c82baa88",
+      "revId": "ed62b9cc2a24dd0874f8689902bad759a722497a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45a7218c_113159fd",
         "filename": "cc/library_sdk_member.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-07-10T14:09:28Z",
       "side": 1,
       "message": "One thing I\u0027ve noticed with this is that we get many copies of the same headers in prebuilts. E.g:\n\n```\n$ find prebuilts/runtime/mainline/runtime/sdk -name fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/arm/include/bionic/libc/include/fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/include/bionic/libc/include/fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/x86/include/bionic/libc/include/fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/x86_64/include/bionic/libc/include/fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/arm64/include/bionic/libc/include/fnmatch.h\n```\n\nFor the Bionic SDK it\u0027s quite a lot of headers that get duplicated due to this, and splitting by OS too will probably lead to more duplication. Isn\u0027t it better to base this path off the header path in the source? If the same headers can be used by different OS\u0027s and architectures there we should be able to do that in the snapshots too.",
+      "range": {
+        "startLine": 237,
+        "startChar": 49,
+        "endLine": 237,
+        "endChar": 65
+      },
+      "revId": "ed62b9cc2a24dd0874f8689902bad759a722497a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d25c16e2_11dddf81",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-10T14:29:44Z",
+      "side": 1,
+      "message": "I think the header handling definitely needs cleaning up, e.g. we include the transitive dependencies of all headers in an sdk even when those headers are nominally part of a separate sdk. We also mix headers which are generated and so could be os specific with those which are not generated and cannot be.",
+      "parentUuid": "45a7218c_113159fd",
       "range": {
         "startLine": 237,
         "startChar": 49,
