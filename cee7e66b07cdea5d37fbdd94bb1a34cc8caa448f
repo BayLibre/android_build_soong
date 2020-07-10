@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1f11ea8_847a1265",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T13:51:51Z",
+      "side": 1,
+      "message": "Spello: \"change\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1809b8b_7a7379e6",
+        "filename": "java/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T13:51:51Z",
+      "side": 1,
+      "message": "A comment on this function would be helpful to quicker understand what the arguments do.",
+      "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2add187a_1612253b",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T13:51:51Z",
+      "side": 1,
+      "message": "What about indirect dependencies that are prebuilt? The problem can\u0027t occur for those?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
