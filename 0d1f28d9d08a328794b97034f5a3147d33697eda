@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "10b2cc89_f21d6eab",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T16:28:57Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll clean that up in a follow-up.",
+      "parentUuid": "44dc0c54_19ae017f",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fa28bd5_81dec151",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
@@ -83,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "65700dca_4d6e9516",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T16:28:57Z",
+      "side": 1,
+      "message": "Changed it to optimise compile_multilib, but in this particular case it stays because it has a different setting for windows.",
+      "parentUuid": "0fa28bd5_81dec151",
+      "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5363179e_c727ec74",
         "filename": "sdk/update.go",
         "patchSetId": 1
@@ -94,6 +136,24 @@
       "writtenOn": "2020-07-10T09:35:54Z",
       "side": 1,
       "message": "Rather than do this here I think the value of the osInfo.Properties.Base().Compile_multilib should be populated from the variant, optimized as usual and then added to the appropriate property set.",
+      "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7fd97fc_ec092cc3",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T16:28:57Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5363179e_c727ec74",
       "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
