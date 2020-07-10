@@ -86,6 +86,30 @@
       "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0c7e23c_52eaa0d5",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T15:16:25Z",
+      "side": 1,
+      "message": "I meant any case where a transitive closure would end up on prebuilts that might cause breakage, since only a direct dependency is tested here.\n\n\u003e If you mean an indirect member, e.g. if the sdk references a java_system_modules module\n\nIs that the only case where indirect members occur?",
+      "parentUuid": "abba3b0a_bb2a4728",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
