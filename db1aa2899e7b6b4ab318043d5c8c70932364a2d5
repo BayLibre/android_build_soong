@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "165c2667_d3ae8887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-10T03:30:37Z",
+      "side": 1,
+      "message": "I don\u0027t mean to troll here, but the namings here are really confusing. I think we shouldn\u0027t make it worse.",
+      "revId": "db1aa2899e7b6b4ab318043d5c8c70932364a2d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be7658b2_26d758e6",
+        "filename": "android/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-10T03:30:37Z",
+      "side": 1,
+      "message": "Add some comment like the others",
+      "revId": "db1aa2899e7b6b4ab318043d5c8c70932364a2d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06961f49_e01fb915",
+        "filename": "android/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-10T03:30:37Z",
+      "side": 1,
+      "message": "Why is this prefixed with \u0027UnbundledBuild\u0027? Shouldn\u0027t it be \u0027AlwaysUsePrebuiltSdks\u0027 or similar?",
+      "range": {
+        "startLine": 734,
+        "startChar": 17,
+        "endLine": 734,
+        "endChar": 31
+      },
+      "revId": "db1aa2899e7b6b4ab318043d5c8c70932364a2d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
