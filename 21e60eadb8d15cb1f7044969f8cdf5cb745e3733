@@ -70,6 +70,30 @@
       "revId": "21e60eadb8d15cb1f7044969f8cdf5cb745e3733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc78ffb1_abc4d41a",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-07-10T07:20:49Z",
+      "side": 1,
+      "message": "Updated the comment as it reflects more.",
+      "parentUuid": "0c5e5013_c35f3086",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 1
+      },
+      "revId": "21e60eadb8d15cb1f7044969f8cdf5cb745e3733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
