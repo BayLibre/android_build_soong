@@ -62,9 +62,10 @@ type BaseProperties struct {
 	AndroidMkProcMacroLibs []string
 	AndroidMkSharedLibs    []string
 	AndroidMkStaticLibs    []string
-	SubName                string `blueprint:"mutated"`
-	PreventInstall         bool
-	HideFromMake           bool
+
+	SubName        string `blueprint:"mutated"`
+	PreventInstall bool
+	HideFromMake   bool
 }
 
 type Module struct {
@@ -83,6 +84,13 @@ type Module struct {
 	sourceProvider   SourceProvider
 	subAndroidMkOnce map[subAndroidMkProvider]bool
 	outputFile       android.OptionalPath
+}
+
+func (mod *Module) Srcs() android.Paths {
+	if mod.sourceProvider != nil {
+		return mod.sourceProvider.Srcs()
+	}
+	panic("Module " + mod.Name() + "is not a SourceProvider.")
 }
 
 var _ android.ImageInterface = (*Module)(nil)
@@ -217,12 +225,13 @@ func (mod *Module) StubDecorator() bool {
 }
 
 type Deps struct {
-	Dylibs     []string
-	Rlibs      []string
-	Rustlibs   []string
-	ProcMacros []string
-	SharedLibs []string
-	StaticLibs []string
+	Dylibs          []string
+	Rlibs           []string
+	Rustlibs        []string
+	ProcMacros      []string
+	SharedLibs      []string
+	StaticLibs      []string
+	SourceProviders []string
 
 	CrtBegin, CrtEnd string
 }
@@ -857,7 +866,6 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	// Dedup exported flags from dependencies
 	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
 	depPaths.depFlags = android.FirstUniqueStrings(depPaths.depFlags)
-	depPaths.SrcDeps = android.FirstUniquePaths(depPaths.SrcDeps)
 
 	return depPaths
 }
@@ -923,6 +931,10 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		blueprint.Variation{Mutator: "link", Variation: "static"}),
 		cc.StaticDepTag, deps.StaticLibs...)
 
+	if deps.SourceProviders != nil {
+		actx.AddDependency(ctx.Module(), android.SourceDepTag, deps.SourceProviders...)
+	}
+
 	if deps.CrtBegin != "" {
 		actx.AddVariationDependencies(commonDepVariations, cc.CrtBeginDepTag, deps.CrtBegin)
 	}
@@ -974,3 +986,5 @@ var Bool = proptools.Bool
 var BoolDefault = proptools.BoolDefault
 var String = proptools.String
 var StringPtr = proptools.StringPtr
+
+var _ android.SourceFileProducer = (*Module)(nil)

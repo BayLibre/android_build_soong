@@ -17,6 +17,7 @@ package rust
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/google/blueprint/proptools"
 
@@ -46,6 +47,8 @@ type installLocation int
 const (
 	InstallInSystem installLocation = 0
 	InstallInData                   = iota
+
+	incorrectSourcesError = "srcs can only contain one path for a rust file and source providers prefixed by \":\""
 )
 
 type BaseCompilerProperties struct {
@@ -81,6 +84,9 @@ type BaseCompilerProperties struct {
 
 	// crate name, required for libraries. This must be the expected extern crate name used in source
 	Crate_name string `android:"arch_variant"`
+
+	// list of source provider modules (rust_bindgen) which provide bindings to C libraries
+	Source_providers []string `android:"arch_variant"`
 
 	// list of features to enable for this crate
 	Features []string `android:"arch_variant"`
@@ -183,6 +189,7 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.ProcMacros = append(deps.ProcMacros, compiler.Properties.Proc_macros...)
 	deps.StaticLibs = append(deps.StaticLibs, compiler.Properties.Static_libs...)
 	deps.SharedLibs = append(deps.SharedLibs, compiler.Properties.Shared_libs...)
+	deps.SourceProviders = append(deps.SourceProviders, depsFromModuleSrcs(ctx, compiler.Properties.Srcs)...)
 
 	if !Bool(compiler.Properties.No_stdlibs) {
 		for _, stdlib := range config.Stdlibs {
@@ -253,6 +260,20 @@ func (compiler *baseCompiler) relativeInstallPath() string {
 	return String(compiler.Properties.Relative_install_path)
 }
 
+func depsFromModuleSrcs(ctx DepsContext, srcs []string) []string {
+	var deps []string
+	if len(srcs) > 1 {
+		for i := range deps {
+			if !strings.HasPrefix(srcs[i], ":") {
+				ctx.PropertyErrorf("srcs", incorrectSourcesError)
+			}
+			deps[i] = strings.Trim(srcs[i], ":")
+		}
+	}
+	return deps
+}
+
+// Returns the Path for the main source file along with Paths for generated source files from modules listed in srcs.
 func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) (android.Path, android.Paths) {
 	// The srcs can contain strings with prefix ":".
 	// They are dependent modules of this module, with android.SourceDepTag.
@@ -266,11 +287,11 @@ func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) (android.Path, andr
 		}
 	}
 	if numSrcs != 1 {
-		ctx.PropertyErrorf("srcs", "srcs can only contain one path for a rust file")
+		ctx.PropertyErrorf("srcs", incorrectSourcesError)
 	}
 	if srcIndex != 0 {
 		ctx.PropertyErrorf("srcs", "main source file must be the first in srcs")
 	}
 	paths := android.PathsForModuleSrc(ctx, srcs)
-	return paths[srcIndex], paths
+	return paths[srcIndex], paths[1:]
 }
