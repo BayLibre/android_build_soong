@@ -28,7 +28,7 @@ var (
 	_     = pctx.SourcePathVariable("rustcCmd", "${config.RustBin}/rustc")
 	rustc = pctx.AndroidStaticRule("rustc",
 		blueprint.RuleParams{
-			Command: "$rustcCmd " +
+			Command: "OUT_DIR=$$PWD/$genDir $rustcCmd " +
 				"-C linker=${config.RustLinker} " +
 				"-C link-args=\"${crtBegin} ${config.RustLinkerArgs} ${linkFlags} ${crtEnd}\" " +
 				"--emit link -o $out --emit dep-info=$out.d $in ${libFlags} $rustcFlags",
@@ -37,7 +37,7 @@ var (
 			Deps:    blueprint.DepsGCC,
 			Depfile: "$out.d",
 		},
-		"rustcFlags", "linkFlags", "libFlags", "crtBegin", "crtEnd")
+		"rustcFlags", "linkFlags", "libFlags", "crtBegin", "crtEnd", "genDir")
 
 	_            = pctx.SourcePathVariable("clippyCmd", "${config.RustBin}/clippy-driver")
 	clippyDriver = pctx.AndroidStaticRule("clippy",
@@ -58,6 +58,14 @@ var (
 			Rspfile:        "$out.rsp",
 			RspfileContent: "$in",
 		})
+
+	cp = pctx.AndroidStaticRule("cp",
+		blueprint.RuleParams{
+			Command:        "cp `cat $outDir.rsp` $outDir",
+			Rspfile:        "${outDir}.rsp",
+			RspfileContent: "$in",
+		},
+		"outDir")
 )
 
 type buildOutput struct {
@@ -166,7 +174,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	implicits = append(implicits, rustLibsToPaths(deps.ProcMacros)...)
 	implicits = append(implicits, deps.StaticLibs...)
 	implicits = append(implicits, deps.SharedLibs...)
-	implicits = append(implicits, deps.SrcDeps...)
+
 	if deps.CrtBegin.Valid() {
 		implicits = append(implicits, deps.CrtBegin.Path(), deps.CrtEnd.Path())
 	}
@@ -209,6 +217,29 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		implicits = append(implicits, clippyFile)
 	}
 
+	if len(deps.SrcDeps) > 0 {
+		moduleGenDir := android.PathForModuleGen(ctx)
+		var implicitOutputs android.WritablePaths
+
+		for _, genSrc := range deps.SrcDeps {
+			if android.InList(genSrc.Base(), implicitOutputs.Strings()) {
+				ctx.PropertyErrorf("srcs", "multiple source providers generate the same filename output")
+			}
+			implicitOutputs = append(implicitOutputs, android.PathForModuleGen(ctx, genSrc.Base()))
+		}
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        cp,
+			Description: "cp " + moduleGenDir.Rel(),
+			Outputs:     implicitOutputs,
+			Inputs:      deps.SrcDeps,
+			Args: map[string]string{
+				"outDir": moduleGenDir.String(),
+			},
+		})
+		implicits = append(implicits, implicitOutputs.Paths()...)
+	}
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:            rustc,
 		Description:     "rustc " + main.Rel(),
@@ -222,6 +253,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 			"libFlags":   strings.Join(libFlags, " "),
 			"crtBegin":   deps.CrtBegin.String(),
 			"crtEnd":     deps.CrtEnd.String(),
+			"genDir":     android.PathForModuleGen(ctx).String(),
 		},
 	})
 
