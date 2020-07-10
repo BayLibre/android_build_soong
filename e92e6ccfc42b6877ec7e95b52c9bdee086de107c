@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cbd039a_f1005d35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-10T07:25:51Z",
+      "side": 1,
+      "message": "LGTM, but owners should look into this.",
+      "revId": "e92e6ccfc42b6877ec7e95b52c9bdee086de107c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
