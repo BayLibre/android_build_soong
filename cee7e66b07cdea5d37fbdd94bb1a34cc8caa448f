@@ -62,6 +62,30 @@
       "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abba3b0a_bb2a4728",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-10T14:26:24Z",
+      "side": 1,
+      "message": "What do you mean by indirect? If an sdk member builds against a prebuilt of say some stubs then it won\u0027r matter.\n\nIf you mean an indirect member, e.g. if the sdk references a java_system_modules module then the libraries that it references are indirect members of the sdk. In that case they won\u0027t be replaced with prebuilts either because they use the same tag as the sdk uses to reference its members.",
+      "parentUuid": "2add187a_1612253b",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
