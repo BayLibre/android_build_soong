@@ -16,6 +16,29 @@
       "revId": "8e46efac71a025bc71840c4ea1a4293233fc0958",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2bde7ad_f0eb8b56",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-10T22:43:37Z",
+      "side": 1,
+      "message": "Could you update the comment? The --cap-lints allow flag actually suppress/hide the warnings.\nMaybe that\u0027s okay, but we won\u0027t expect to see any warning.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "8e46efac71a025bc71840c4ea1a4293233fc0958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
