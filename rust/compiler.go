@@ -82,6 +82,9 @@ type BaseCompilerProperties struct {
 	// crate name, required for libraries. This must be the expected extern crate name used in source
 	Crate_name string `android:"arch_variant"`
 
+	// list of source provider modules (rust_bindgen) which provide bindings to C libraries
+	Source_providers []string `android:"arch_variant"`
+
 	// list of features to enable for this crate
 	Features []string `android:"arch_variant"`
 
@@ -183,6 +186,7 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.ProcMacros = append(deps.ProcMacros, compiler.Properties.Proc_macros...)
 	deps.StaticLibs = append(deps.StaticLibs, compiler.Properties.Static_libs...)
 	deps.SharedLibs = append(deps.SharedLibs, compiler.Properties.Shared_libs...)
+	deps.SourceProviders = append(deps.SourceProviders, compiler.Properties.Source_providers...)
 
 	if !Bool(compiler.Properties.No_stdlibs) {
 		for _, stdlib := range config.Stdlibs {

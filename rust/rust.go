@@ -217,24 +217,26 @@ func (mod *Module) StubDecorator() bool {
 }
 
 type Deps struct {
-	Dylibs     []string
-	Rlibs      []string
-	Rustlibs   []string
-	ProcMacros []string
-	SharedLibs []string
-	StaticLibs []string
+	Dylibs          []string
+	Rlibs           []string
+	Rustlibs        []string
+	ProcMacros      []string
+	SharedLibs      []string
+	StaticLibs      []string
+	SourceProviders []string
 
 	CrtBegin, CrtEnd string
 }
 
 type PathDeps struct {
-	DyLibs     RustLibraries
-	RLibs      RustLibraries
-	SharedLibs android.Paths
-	StaticLibs android.Paths
-	ProcMacros RustLibraries
-	linkDirs   []string
-	depFlags   []string
+	DyLibs           RustLibraries
+	RLibs            RustLibraries
+	SharedLibs       android.Paths
+	StaticLibs       android.Paths
+	GeneratedSources android.Paths
+	ProcMacros       RustLibraries
+	linkDirs         []string
+	depFlags         []string
 	//ReexportedDeps android.Paths
 
 	coverageFiles android.Paths
@@ -684,10 +686,11 @@ type dependencyTag struct {
 }
 
 var (
-	rlibDepTag       = dependencyTag{name: "rlibTag", library: true}
-	dylibDepTag      = dependencyTag{name: "dylib", library: true}
-	procMacroDepTag  = dependencyTag{name: "procMacro", proc_macro: true}
-	testPerSrcDepTag = dependencyTag{name: "rust_unit_tests"}
+	rlibDepTag           = dependencyTag{name: "rlibTag", library: true}
+	dylibDepTag          = dependencyTag{name: "dylib", library: true}
+	procMacroDepTag      = dependencyTag{name: "procMacro", proc_macro: true}
+	testPerSrcDepTag     = dependencyTag{name: "rust_unit_tests"}
+	sourceProviderDepTag = dependencyTag{name: "sourceProvider"}
 )
 
 type autoDep struct {
@@ -715,6 +718,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	directRlibDeps := []*Module{}
 	directDylibDeps := []*Module{}
+	directSourceProviderDeps := []*Module{}
 	directProcMacroDeps := []*Module{}
 	directSharedLibDeps := [](cc.LinkableInterface){}
 	directStaticLibDeps := [](cc.LinkableInterface){}
@@ -751,6 +755,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			case procMacroDepTag:
 				directProcMacroDeps = append(directProcMacroDeps, rustDep)
 				mod.Properties.AndroidMkProcMacroLibs = append(mod.Properties.AndroidMkProcMacroLibs, depName)
+			case sourceProviderDepTag:
+				directSourceProviderDeps = append(directSourceProviderDeps, rustDep)
 			}
 
 			//Append the dependencies exportedDirs
@@ -843,11 +849,17 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		sharedLibDepFiles = append(sharedLibDepFiles, dep.OutputFile().Path())
 	}
 
+	var generatedSourcesDepFiles android.Paths
+	for _, dep := range directSourceProviderDeps {
+		generatedSourcesDepFiles = append(generatedSourcesDepFiles, dep.OutputFile().Path())
+	}
+
 	depPaths.RLibs = append(depPaths.RLibs, rlibDepFiles...)
 	depPaths.DyLibs = append(depPaths.DyLibs, dylibDepFiles...)
 	depPaths.SharedLibs = append(depPaths.SharedLibs, sharedLibDepFiles...)
 	depPaths.StaticLibs = append(depPaths.StaticLibs, staticLibDepFiles...)
 	depPaths.ProcMacros = append(depPaths.ProcMacros, procMacroDepFiles...)
+	depPaths.GeneratedSources = append(depPaths.GeneratedSources, generatedSourcesDepFiles...)
 
 	// Dedup exported flags from dependencies
 	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
@@ -916,6 +928,9 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddVariationDependencies(append(commonDepVariations,
 		blueprint.Variation{Mutator: "link", Variation: "static"}),
 		cc.StaticDepTag, deps.StaticLibs...)
+	if deps.SourceProviders != nil {
+		actx.AddDependency(ctx.Module(), sourceProviderDepTag, deps.SourceProviders...)
+	}
 
 	if deps.CrtBegin != "" {
 		actx.AddVariationDependencies(commonDepVariations, cc.CrtBeginDepTag, deps.CrtBegin)
