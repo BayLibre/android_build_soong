@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45a7218c_113159fd",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-10T14:09:28Z",
+      "side": 1,
+      "message": "One thing I\u0027ve noticed with this is that we get many copies of the same headers in prebuilts. E.g:\n\n```\n$ find prebuilts/runtime/mainline/runtime/sdk -name fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/arm/include/bionic/libc/include/fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/include/bionic/libc/include/fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/x86/include/bionic/libc/include/fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/x86_64/include/bionic/libc/include/fnmatch.h\nprebuilts/runtime/mainline/runtime/sdk/arm64/include/bionic/libc/include/fnmatch.h\n```\n\nFor the Bionic SDK it\u0027s quite a lot of headers that get duplicated due to this, and splitting by OS too will probably lead to more duplication. Isn\u0027t it better to base this path off the header path in the source? If the same headers can be used by different OS\u0027s and architectures there we should be able to do that in the snapshots too.",
+      "range": {
+        "startLine": 237,
+        "startChar": 49,
+        "endLine": 237,
+        "endChar": 65
+      },
+      "revId": "ed62b9cc2a24dd0874f8689902bad759a722497a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
