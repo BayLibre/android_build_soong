@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d01c68ce_466a6184",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-10T13:44:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37e59b26_9014ca86",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 61
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61c87e16_e42bc728",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
@@ -80,6 +104,30 @@
       "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4985da69_a865f06d",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-10T13:44:55Z",
+      "side": 1,
+      "message": "How about both? I\u0027ll use the module_ prefix as the attribute keys to distinguish Bazel target names from Soong module names, and drop the prefix in the SoongModuleInfo provider for brevity.",
+      "parentUuid": "61c87e16_e42bc728",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "63519b88_c7cee055",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-10T13:44:55Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to, unless there\u0027s a need to log it.",
+      "parentUuid": "5f5461e3_51019c8b",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 11
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e96e8fc_85821102",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
@@ -117,6 +189,30 @@
       "writtenOn": "2020-07-09T21:20:40Z",
       "side": 1,
       "message": "Is this a question for the Soong team? (just highlighting it for the review, I don\u0027t know the answer)",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4848bbe9_5b29f6ba",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-10T13:44:55Z",
+      "side": 1,
+      "message": "Yep, thanks for highlighting it. Not de-duplicating here would cause Bazel to error out with duplicate \"//package:module--variant\" labels in the deps list.",
+      "parentUuid": "3e96e8fc_85821102",
       "range": {
         "startLine": 88,
         "startChar": 2,
@@ -152,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "27a2b658_927211cb",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-10T13:44:55Z",
+      "side": 1,
+      "message": "This is iterating over the map, so `k` is the key, and the `bool` value is dropped. Renamed for clarity.",
+      "parentUuid": "bf586c3b_70de29f6",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f44f734d_47a2a9d9",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
@@ -172,6 +292,30 @@
       "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08565c80_994b0b35",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-10T13:44:55Z",
+      "side": 1,
+      "message": "os.FileMode doesn\u0027t have readable constants/ Reduced permissions to readonly.",
+      "parentUuid": "f44f734d_47a2a9d9",
+      "range": {
+        "startLine": 109,
+        "startChar": 50,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
