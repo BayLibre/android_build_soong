@@ -46,6 +46,30 @@
       "revId": "8695f7ddf6b68c419578e96eba50bdd68fd90a6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce344ab_d1d88a0e",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-10T06:23:43Z",
+      "side": 1,
+      "message": "Yes. You might want to use proptools.StringDefault(prop, default)",
+      "parentUuid": "588ebaf3_8883f415",
+      "range": {
+        "startLine": 1415,
+        "startChar": 2,
+        "endLine": 1415,
+        "endChar": 14
+      },
+      "revId": "8695f7ddf6b68c419578e96eba50bdd68fd90a6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
