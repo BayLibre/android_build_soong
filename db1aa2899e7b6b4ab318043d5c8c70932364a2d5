@@ -56,6 +56,48 @@
       "revId": "db1aa2899e7b6b4ab318043d5c8c70932364a2d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5502737_69949589",
+        "filename": "android/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-07-10T07:13:51Z",
+      "side": 1,
+      "message": "AlwaysUsePrebuiltSdks sounds good to me. Done.",
+      "parentUuid": "06961f49_e01fb915",
+      "range": {
+        "startLine": 734,
+        "startChar": 17,
+        "endLine": 734,
+        "endChar": 31
+      },
+      "revId": "db1aa2899e7b6b4ab318043d5c8c70932364a2d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5768174c_1eec6792",
+        "filename": "android/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-07-10T07:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be7658b2_26d758e6",
+      "revId": "db1aa2899e7b6b4ab318043d5c8c70932364a2d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
