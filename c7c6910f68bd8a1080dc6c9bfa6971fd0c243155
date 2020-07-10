@@ -46,6 +46,30 @@
       "revId": "c7c6910f68bd8a1080dc6c9bfa6971fd0c243155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdeb2652_baac084d",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2020-07-10T23:31:20Z",
+      "side": 1,
+      "message": "I tested the ideas in my comment, and it resulted in soong test failures, so it seems like at least stl is needed.",
+      "parentUuid": "a385fb51_8bb0a143",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 22
+      },
+      "revId": "c7c6910f68bd8a1080dc6c9bfa6971fd0c243155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
