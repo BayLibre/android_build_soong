@@ -16,6 +16,29 @@
       "revId": "e92e6ccfc42b6877ec7e95b52c9bdee086de107c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec8b39b4_0046bec1",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-10T23:54:38Z",
+      "side": 1,
+      "message": "This seems more related to UnbundledBuild than to AlwaysUsePrebuiltSdks.  Why would we not verify the \u003cuses-library\u003e tags when building against prebuilt SDKs?",
+      "range": {
+        "startLine": 1861,
+        "startChar": 18,
+        "endLine": 1861,
+        "endChar": 39
+      },
+      "revId": "e92e6ccfc42b6877ec7e95b52c9bdee086de107c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
