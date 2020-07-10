@@ -62,9 +62,10 @@ type BaseProperties struct {
 	AndroidMkProcMacroLibs []string
 	AndroidMkSharedLibs    []string
 	AndroidMkStaticLibs    []string
-	SubName                string `blueprint:"mutated"`
-	PreventInstall         bool
-	HideFromMake           bool
+
+	SubName        string `blueprint:"mutated"`
+	PreventInstall bool
+	HideFromMake   bool
 }
 
 type Module struct {
@@ -83,6 +84,13 @@ type Module struct {
 	sourceProvider   SourceProvider
 	subAndroidMkOnce map[subAndroidMkProvider]bool
 	outputFile       android.OptionalPath
+}
+
+func (mod *Module) Srcs() android.Paths {
+	if mod.sourceProvider != nil {
+		return mod.sourceProvider.Srcs()
+	}
+	panic("Module " + mod.Name() + "is not a SourceProvider.")
 }
 
 var _ android.ImageInterface = (*Module)(nil)
@@ -857,7 +865,6 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	// Dedup exported flags from dependencies
 	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
 	depPaths.depFlags = android.FirstUniqueStrings(depPaths.depFlags)
-	depPaths.SrcDeps = android.FirstUniquePaths(depPaths.SrcDeps)
 
 	return depPaths
 }
@@ -974,3 +981,5 @@ var Bool = proptools.Bool
 var BoolDefault = proptools.BoolDefault
 var String = proptools.String
 var StringPtr = proptools.StringPtr
+
+var _ android.SourceFileProducer = (*Module)(nil)
