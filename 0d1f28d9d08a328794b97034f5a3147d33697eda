@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ec8868a_6a7994ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-10T09:35:54Z",
+      "side": 1,
+      "message": "This is a good change.\n\nI have added some comments on suggested improvements. However, as this was my mess I am happy to do that myself in a follow up change.",
+      "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d1a2f41_285efc43",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
@@ -22,6 +39,64 @@
       "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44dc0c54_19ae017f",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-10T09:35:54Z",
+      "side": 1,
+      "message": "The reason for must always be set to \"both\" on the device was that was the behavior that was present before I refactored the code so I preserved that because I thought that was important. It turns out that it was not particularly important. I special cased the snapshot generation code to not output \"both\" and instead rely on the device default in order to avoid changing the behavior of the tests in the refactoring.",
+      "parentUuid": "0d1a2f41_285efc43",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fa28bd5_81dec151",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-10T09:35:54Z",
+      "side": 1,
+      "message": "I think that this should be optimized to move the compile_multilib: \"both\" up to the top level outside the target section. Ditto for the other tests where it has multiple os types.",
+      "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5363179e_c727ec74",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-10T09:35:54Z",
+      "side": 1,
+      "message": "Rather than do this here I think the value of the osInfo.Properties.Base().Compile_multilib should be populated from the variant, optimized as usual and then added to the appropriate property set.",
+      "revId": "0d1f28d9d08a328794b97034f5a3147d33697eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
