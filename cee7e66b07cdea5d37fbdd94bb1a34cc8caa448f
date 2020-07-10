@@ -110,6 +110,30 @@
       "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1029122_56404839",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-10T16:42:24Z",
+      "side": 1,
+      "message": "AFAIK it is the only way that a member can be added to the sdk without being directly referenced from the sdk itself.",
+      "parentUuid": "b0c7e23c_52eaa0d5",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "cee7e66b07cdea5d37fbdd94bb1a34cc8caa448f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
