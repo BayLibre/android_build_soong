@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b50863f_96a22c97",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-10T06:07:28Z",
+      "side": 1,
+      "message": "This will make the error message in #2143 difficult to understand.",
+      "range": {
+        "startLine": 1415,
+        "startChar": 2,
+        "endLine": 1415,
+        "endChar": 14
+      },
+      "revId": "8695f7ddf6b68c419578e96eba50bdd68fd90a6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
