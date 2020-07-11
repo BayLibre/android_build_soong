@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e3f18e0_dc3a0d22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-11T03:58:41Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "db0fa5a0489622f3dc01ba2a60ab5ad0f3b6b3d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09bd6027_0d0b6560",
+        "filename": "cc/installer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-11T03:58:41Z",
+      "side": 1,
+      "message": "What is the difference between installer.relativeInstallPath and installer.relative ?\n\nMaybe add a comment here?",
+      "range": {
+        "startLine": 65,
+        "startChar": 66,
+        "endLine": 65,
+        "endChar": 118
+      },
+      "revId": "db0fa5a0489622f3dc01ba2a60ab5ad0f3b6b3d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93042679_b1d18241",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-07-11T03:58:41Z",
+      "side": 1,
+      "message": "Does the LinkableInterface check already guarantee that we have a module?\n\ne.g. what is wrong with writing ccDep.Module().installer.installDirNoRelativePath(ctx) ?",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 64
+      },
+      "revId": "db0fa5a0489622f3dc01ba2a60ab5ad0f3b6b3d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
