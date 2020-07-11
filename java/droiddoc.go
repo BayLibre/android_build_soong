@@ -2083,6 +2083,10 @@ type droidStubsSdkMemberType struct {
 	android.SdkMemberTypeBase
 }
 
+func (mt *droidStubsSdkMemberType) HostOsDependent() bool {
+	return false
+}
+
 func (mt *droidStubsSdkMemberType) AddDependencies(mctx android.BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string) {
 	mctx.AddVariationDependencies(nil, dependencyTag, names...)
 }
