@@ -689,21 +689,8 @@ func (target Target) Variations() []blueprint.Variation {
 	}
 }
 
-func osMutator(mctx BottomUpMutatorContext) {
-	var module Module
-	var ok bool
-	if module, ok = mctx.Module().(Module); !ok {
-		return
-	}
-
-	base := module.base()
-
-	if !base.ArchSpecific() {
-		return
-	}
-
-	osClasses := base.OsClassSupported()
-
+// Returns the list of OS types that apply to the given config and OS classes.
+func OsTypesForClass(config Config, osClasses []OsClass) []OsType {
 	var moduleOSList []OsType
 
 	for _, os := range OsTypeList {
@@ -717,12 +704,30 @@ func osMutator(mctx BottomUpMutatorContext) {
 			continue
 		}
 
-		if len(mctx.Config().Targets[os]) == 0 {
+		if len(config.Targets[os]) == 0 {
 			continue
 		}
 
 		moduleOSList = append(moduleOSList, os)
 	}
+
+	return moduleOSList
+}
+
+func osMutator(mctx BottomUpMutatorContext) {
+	var module Module
+	var ok bool
+	if module, ok = mctx.Module().(Module); !ok {
+		return
+	}
+
+	base := module.base()
+
+	if !base.ArchSpecific() {
+		return
+	}
+
+	moduleOSList := OsTypesForClass(mctx.Config(), base.OsClassSupported())
 
 	if len(moduleOSList) == 0 {
 		base.Disable()
