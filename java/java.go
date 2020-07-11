@@ -2041,6 +2041,10 @@ type librarySdkMemberType struct {
 	jarToExportGetter func(j *Library) android.Path
 }
 
+func (mt *librarySdkMemberType) HostOsDependent() bool {
+	return false
+}
+
 func (mt *librarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string) {
 	mctx.AddVariationDependencies(nil, dependencyTag, names...)
 }
@@ -2249,6 +2253,10 @@ func (j *JavaTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 
 type testSdkMemberType struct {
 	android.SdkMemberTypeBase
+}
+
+func (mt *testSdkMemberType) HostOsDependent() bool {
+	return false
 }
 
 func (mt *testSdkMemberType) AddDependencies(mctx android.BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string) {

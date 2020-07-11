@@ -71,6 +71,10 @@ type librarySdkMemberType struct {
 	linkTypes []string
 }
 
+func (mt *librarySdkMemberType) HostOsDependent() bool {
+	return true
+}
+
 func (mt *librarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string) {
 	targets := mctx.MultiTargets()
 	for _, lib := range names {

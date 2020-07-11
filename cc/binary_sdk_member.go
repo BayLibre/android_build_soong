@@ -37,6 +37,10 @@ type binarySdkMemberType struct {
 	android.SdkMemberTypeBase
 }
 
+func (mt *binarySdkMemberType) HostOsDependent() bool {
+	return true
+}
+
 func (mt *binarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string) {
 	targets := mctx.MultiTargets()
 	for _, lib := range names {

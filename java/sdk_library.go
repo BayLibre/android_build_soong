@@ -2169,6 +2169,10 @@ type sdkLibrarySdkMemberType struct {
 	android.SdkMemberTypeBase
 }
 
+func (mt *sdkLibrarySdkMemberType) HostOsDependent() bool {
+	return false
+}
+
 func (s *sdkLibrarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string) {
 	mctx.AddVariationDependencies(nil, dependencyTag, names...)
 }
