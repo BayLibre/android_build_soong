@@ -345,18 +345,27 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) andro
 		snapshotModule.AddProperty("compile_multilib", commonVariantProperties.Compile_multilib)
 	}
 
+	modVariants := []android.Module{}
+	for _, sdkVariant := range sdkVariants {
+		modVariants = append(modVariants, sdkVariant)
+	}
+
 	// Iterate over the os types in a fixed order.
 	targetPropertySet := snapshotModule.AddPropertySet("target")
-	for _, osType := range s.getPossibleOsTypes() {
+	for _, osType := range getPossibleOsTypes(ctx.Config(), modVariants) {
+		osPropertySet := targetPropertySet.AddPropertySet(osType.Name)
 		if sdkVariant, ok := osTypeToMemberProperties[osType]; ok {
-			osPropertySet := targetPropertySet.AddPropertySet(sdkVariant.Target().Os.Name)
-
 			variantProps := variantToProperties[sdkVariant]
 			if variantProps.Compile_multilib != "" && variantProps.Compile_multilib != "both" {
 				osPropertySet.AddProperty("compile_multilib", variantProps.Compile_multilib)
 			}
 
 			s.addMemberPropertiesToPropertySet(builder, osPropertySet, sdkVariant.dynamicMemberTypeListProperties)
+		} else {
+			// This osType isn't enabled. Check if we need to disable it explicitly.
+			if osTypeEnabledByDefault(osType, snapshotModule) {
+				osPropertySet.AddProperty("enabled", false)
+			}
 		}
 	}
 
@@ -1202,7 +1211,7 @@ func (m *memberContext) Name() string {
 	return m.name
 }
 
-func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpModule android.BpModule) {
+func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpMod android.BpModule) {
 
 	memberType := member.memberType
 
@@ -1250,40 +1259,61 @@ func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpModu
 	extractCommonProperties(ctx.sdkMemberContext, commonValueExtractor, commonProperties, osSpecificPropertiesContainers)
 
 	// Add the common properties to the module.
-	addSdkMemberPropertiesToSet(ctx, commonProperties, bpModule)
+	addSdkMemberPropertiesToSet(ctx, commonProperties, bpMod)
 
 	// Create a target property set into which target specific properties can be
 	// added.
-	targetPropertySet := bpModule.AddPropertySet("target")
+	targetPropertySet := bpMod.AddPropertySet("target")
+
+	modVariants := []android.Module{}
+	for _, variant := range variants {
+		modVariants = append(modVariants, variant)
+	}
 
 	// Iterate over the os types in a fixed order.
-	for _, osType := range s.getPossibleOsTypes() {
-		osInfo := osTypeToInfo[osType]
-		if osInfo == nil {
-			continue
+	for _, osType := range getPossibleOsTypes(ctx.sdkMemberContext.Config(), modVariants) {
+		if osInfo, ok := osTypeToInfo[osType]; ok {
+			osInfo.addToPropertySet(ctx, bpMod, targetPropertySet)
+		} else {
+			// This osType isn't enabled. Check if we need to disable it explicitly.
+			if osTypeEnabledByDefault(osType, bpMod.(*bpModule)) {
+				osPropertySet := targetPropertySet.AddPropertySet(osType.Name)
+				osPropertySet.AddProperty("enabled", false)
+			}
 		}
-
-		osInfo.addToPropertySet(ctx, bpModule, targetPropertySet)
 	}
 }
 
-// Compute the list of possible os types that this sdk could support.
-func (s *sdk) getPossibleOsTypes() []android.OsType {
-	var osTypes []android.OsType
-	for _, osType := range android.OsTypeList {
-		if s.DeviceSupported() {
-			if osType.Class == android.Device && osType != android.Fuchsia {
-				osTypes = append(osTypes, osType)
-			}
+// Compute the list of possible os types that the given modules could support.
+func getPossibleOsTypes(config android.Config, modules []android.Module) []android.OsType {
+	osTypeSet := map[android.OsType]bool{}
+	for _, module := range modules {
+		for _, osType := range android.OsTypesForClass(config, module.OsClassSupported()) {
+			osTypeSet[osType] = true
 		}
-		if s.HostSupported() {
-			if osType.Class == android.Host || osType.Class == android.HostCross {
-				osTypes = append(osTypes, osType)
-			}
-		}
+	}
+	osTypes := []android.OsType{}
+	for osType := range osTypeSet {
+		osTypes = append(osTypes, osType)
 	}
 	sort.SliceStable(osTypes, func(i, j int) bool { return osTypes[i].Name < osTypes[j].Name })
 	return osTypes
+}
+
+// Returns true if the given OsType would be enabled in the given module.
+func osTypeEnabledByDefault(osType android.OsType, bpMod *bpModule) bool {
+	if osType.DefaultDisabled {
+		return false
+	}
+	switch osType.Class {
+	case android.Device:
+		deviceSupported := !(bpMod.getValue("device_supported") == false) // Missing means true.
+		return deviceSupported
+	case android.Host, android.HostCross:
+		hostSupported := bpMod.getValue("host_supported") == true // Missing means false.
+		return hostSupported
+	}
+	return true // Unlikely to get here.
 }
 
 // Given a set of properties (struct value), return the value of the field within that

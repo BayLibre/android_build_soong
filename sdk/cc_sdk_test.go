@@ -639,6 +639,158 @@ module_exports_snapshot {
 	)
 }
 
+func TestSnapshotWithSingleHostOsType(t *testing.T) {
+	// b/145598135 - Generating host snapshots for anything other than linux is not supported.
+	SkipIfNotLinux(t)
+
+	ctx, config := testSdkContext(`
+		cc_defaults {
+			name: "mydefaults",
+			device_supported: false,
+			host_supported: true,
+			compile_multilib: "64",
+			target: {
+				host: {
+					enabled: false,
+				},
+				linux_bionic: {
+					enabled: true,
+				},
+			},
+		}
+
+		module_exports {
+			name: "myexports",
+			defaults: ["mydefaults"],
+			native_shared_libs: ["mynativelib"],
+			native_binaries: ["mynativebinary"],
+			compile_multilib: "64",  // The built-in default in sdk.go overrides mydefaults.
+		}
+
+		cc_library {
+			name: "mynativelib",
+			defaults: ["mydefaults"],
+			srcs: [
+				"Test.cpp",
+			],
+			stl: "none",
+		}
+
+		cc_binary {
+			name: "mynativebinary",
+			defaults: ["mydefaults"],
+			srcs: [
+				"Test.cpp",
+			],
+			stl: "none",
+		}
+	`, ccTestFs, []android.OsType{android.LinuxBionic})
+
+	result := runTests(t, ctx, config)
+
+	result.CheckSnapshot("myexports", "",
+		checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_binary {
+    name: "myexports_mynativebinary@current",
+    sdk_member_name: "mynativebinary",
+    device_supported: false,
+    host_supported: true,
+    installable: false,
+    stl: "none",
+    compile_multilib: "64",
+    target: {
+        linux_glibc: {
+            enabled: false,
+        },
+    },
+    arch: {
+        x86_64: {
+            srcs: ["x86_64/bin/mynativebinary"],
+        },
+    },
+}
+
+cc_prebuilt_binary {
+    name: "mynativebinary",
+    prefer: false,
+    device_supported: false,
+    host_supported: true,
+    stl: "none",
+    compile_multilib: "64",
+    target: {
+        linux_glibc: {
+            enabled: false,
+        },
+    },
+    arch: {
+        x86_64: {
+            srcs: ["x86_64/bin/mynativebinary"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "myexports_mynativelib@current",
+    sdk_member_name: "mynativelib",
+    device_supported: false,
+    host_supported: true,
+    installable: false,
+    stl: "none",
+    compile_multilib: "64",
+    target: {
+        linux_glibc: {
+            enabled: false,
+        },
+    },
+    arch: {
+        x86_64: {
+            srcs: ["x86_64/lib/mynativelib.so"],
+        },
+    },
+}
+
+cc_prebuilt_library_shared {
+    name: "mynativelib",
+    prefer: false,
+    device_supported: false,
+    host_supported: true,
+    stl: "none",
+    compile_multilib: "64",
+    target: {
+        linux_glibc: {
+            enabled: false,
+        },
+    },
+    arch: {
+        x86_64: {
+            srcs: ["x86_64/lib/mynativelib.so"],
+        },
+    },
+}
+
+module_exports_snapshot {
+    name: "myexports@current",
+    device_supported: false,
+    host_supported: true,
+    native_binaries: ["myexports_mynativebinary@current"],
+    native_shared_libs: ["myexports_mynativelib@current"],
+    compile_multilib: "64",
+    target: {
+        linux_glibc: {
+            enabled: false,
+        },
+    },
+}
+`),
+		checkAllCopyRules(`
+.intermediates/mynativebinary/linux_bionic_x86_64/mynativebinary -> x86_64/bin/mynativebinary
+.intermediates/mynativelib/linux_bionic_x86_64_shared/mynativelib.so -> x86_64/lib/mynativelib.so
+`),
+	)
+}
+
 // Test that we support the necessary flags for the linker binary, which is
 // special in several ways.
 func TestSnapshotWithCcStaticNocrtBinary(t *testing.T) {
@@ -1749,7 +1901,6 @@ func TestSystemSharedLibPropagation(t *testing.T) {
 
 		cc_library {
 			name: "sslnil",
-			host_supported: true,
 		}
 
 		cc_library {
