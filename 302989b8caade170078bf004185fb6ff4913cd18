@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06743519_d440d0dc",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-13T12:59:58Z",
+      "side": 1,
+      "message": "There might be some confusion about the difference between Args and Flags. Are we keeping Args for support? Are we deprecating Args?",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 92
+      },
+      "revId": "302989b8caade170078bf004185fb6ff4913cd18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
