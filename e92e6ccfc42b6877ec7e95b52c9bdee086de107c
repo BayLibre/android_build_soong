@@ -39,6 +39,30 @@
       "revId": "e92e6ccfc42b6877ec7e95b52c9bdee086de107c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bd62347_5435c656",
+        "filename": "java/app.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-07-13T13:08:51Z",
+      "side": 1,
+      "message": "I added this condition because of dependency error due to prebuilt stub.\n(i.e. `missing dependencies: prebuilt_org.apache.http.legacy, prebuilt_android.test.base, prebuilt_android.test.mock`)\nBut it can be back to UnbundledBuild if TARGET_BUILD_UNBUNDLED_PARTITION which contains \u0027unbundled\u0027 meaning is introduced in aosp/1354284.",
+      "parentUuid": "ec8b39b4_0046bec1",
+      "range": {
+        "startLine": 1861,
+        "startChar": 18,
+        "endLine": 1861,
+        "endChar": 39
+      },
+      "revId": "e92e6ccfc42b6877ec7e95b52c9bdee086de107c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
