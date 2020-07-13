@@ -195,9 +195,11 @@ type productVariables struct {
 	HostArch          *string `json:",omitempty"`
 	HostSecondaryArch *string `json:",omitempty"`
 
-	CrossHost              *string `json:",omitempty"`
-	CrossHostArch          *string `json:",omitempty"`
-	CrossHostSecondaryArch *string `json:",omitempty"`
+	CrossHost                     *string `json:",omitempty"`
+	CrossHostArch                 *string `json:",omitempty"`
+	CrossHostArchVariant          *string `json:",omitempty"`
+	CrossHostSecondaryArch        *string `json:",omitempty"`
+	CrossHostSecondaryArchVariant *string `json:",omitempty"`
 
 	DeviceResourceOverlays  []string `json:",omitempty"`
 	ProductResourceOverlays []string `json:",omitempty"`
