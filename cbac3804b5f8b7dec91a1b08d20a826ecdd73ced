@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2425fe87_2bf86b61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-13T12:45:13Z",
+      "side": 1,
+      "message": "This is for use in getPossibleOsTypes in https://r.android.com/1360541.",
+      "revId": "cbac3804b5f8b7dec91a1b08d20a826ecdd73ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
