@@ -305,23 +305,38 @@ func TestArchMutator(t *testing.T) {
 			host_supported: true,
 			compile_multilib: "32",
 		}
+
+		module {
+			name: "quux",
+			host_supported: true,
+			target: {
+				linux: {
+					enabled: false,
+				},
+				linux_cross: {
+					enabled: true,
+				},
+			},
+		}
 	`
 
 	testCases := []struct {
-		name        string
-		config      func(Config)
-		fooVariants []string
-		barVariants []string
-		bazVariants []string
-		quxVariants []string
+		name         string
+		config       func(Config)
+		fooVariants  []string
+		barVariants  []string
+		bazVariants  []string
+		quxVariants  []string
+		quuxVariants []string
 	}{
 		{
-			name:        "normal",
-			config:      nil,
-			fooVariants: []string{"android_arm64_armv8-a", "android_arm_armv7-a-neon"},
-			barVariants: append(buildOSVariants, "android_arm64_armv8-a", "android_arm_armv7-a-neon"),
-			bazVariants: nil,
-			quxVariants: append(buildOS32Variants, "android_arm_armv7-a-neon"),
+			name:         "normal",
+			config:       nil,
+			fooVariants:  []string{"android_arm64_armv8-a", "android_arm_armv7-a-neon"},
+			barVariants:  append(buildOSVariants, "android_arm64_armv8-a", "android_arm_armv7-a-neon"),
+			bazVariants:  nil,
+			quxVariants:  append(buildOS32Variants, "android_arm_armv7-a-neon"),
+			quuxVariants: nil,
 		},
 		{
 			name: "host-only",
@@ -330,10 +345,37 @@ func TestArchMutator(t *testing.T) {
 				config.BuildOSCommonTarget = Target{}
 				config.Targets[Android] = nil
 			},
-			fooVariants: nil,
-			barVariants: buildOSVariants,
-			bazVariants: nil,
-			quxVariants: buildOS32Variants,
+			fooVariants:  nil,
+			barVariants:  buildOSVariants,
+			bazVariants:  nil,
+			quxVariants:  buildOS32Variants,
+			quuxVariants: nil,
+		},
+		{
+			name: "linux_cross_arm",
+			config: func(config Config) {
+				config.Targets[LinuxCross] = []Target{
+					{
+						Os: LinuxCross,
+						Arch: Arch{
+							ArchType:     Arm64,
+							ArchVariant:  "armv8-a",
+							CpuVariant:   "",
+							Abi:          []string{"arm64-v8a"},
+							ArchFeatures: nil,
+						},
+						NativeBridge:             NativeBridgeDisabled,
+						NativeBridgeHostArchName: "",
+						NativeBridgeRelativePath: "",
+					},
+				}
+			},
+			fooVariants: []string{"android_arm64_armv8-a", "android_arm_armv7-a-neon"},
+			barVariants: append(buildOSVariants,
+				"android_arm64_armv8-a", "android_arm_armv7-a-neon", "linux_cross_arm64_armv8-a"),
+			bazVariants:  nil,
+			quxVariants:  append(buildOS32Variants, "android_arm_armv7-a-neon"),
+			quuxVariants: []string{"linux_cross_arm64_armv8-a"},
 		},
 	}
 
@@ -379,6 +421,10 @@ func TestArchMutator(t *testing.T) {
 
 			if g, w := enabledVariants(ctx, "qux"), tt.quxVariants; !reflect.DeepEqual(w, g) {
 				t.Errorf("want qux variants:\n%q\ngot:\n%q\n", w, g)
+			}
+
+			if g, w := enabledVariants(ctx, "quux"), tt.quuxVariants; !reflect.DeepEqual(w, g) {
+				t.Errorf("want quux variants:\n%q\ngot:\n%q\n", w, g)
 			}
 		})
 	}

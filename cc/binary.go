@@ -260,6 +260,7 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 							flags.DynamicLinker += "64"
 						}
 					case android.LinuxBionic:
+					case android.LinuxCross:
 						flags.DynamicLinker = ""
 					default:
 						ctx.ModuleErrorf("unknown dynamic linker")
