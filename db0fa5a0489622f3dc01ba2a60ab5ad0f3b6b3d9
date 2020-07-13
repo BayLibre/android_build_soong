@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "568a60b1_2bdf1366",
+        "filename": "cc/installer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-13T15:00:23Z",
+      "side": 1,
+      "message": "I\u0027m moving this from installDirWithComponents.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/test.go;l\u003d407;drc\u003d79d66a5db75e05b13347e0c27785f025349e70c4\n\ninstaller.relative looks to sometimes contain the module name, so essentially installDir can be\n${base_dir}/${relative_install_path}/${module_name}\n\nSoong isn\u0027t great about documentation, but I don\u0027t think this isn\u0027t the appropriate place to document the fields of `baseInstaller`",
+      "parentUuid": "09bd6027_0d0b6560",
+      "range": {
+        "startLine": 65,
+        "startChar": 66,
+        "endLine": 65,
+        "endChar": 118
+      },
+      "revId": "db0fa5a0489622f3dc01ba2a60ab5ad0f3b6b3d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93042679_b1d18241",
         "filename": "cc/test.go",
         "patchSetId": 3
@@ -53,6 +77,30 @@
       "writtenOn": "2020-07-11T03:58:41Z",
       "side": 1,
       "message": "Does the LinkableInterface check already guarantee that we have a module?\n\ne.g. what is wrong with writing ccDep.Module().installer.installDirNoRelativePath(ctx) ?",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 64
+      },
+      "revId": "db0fa5a0489622f3dc01ba2a60ab5ad0f3b6b3d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a20e35_87a6e12a",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-13T15:00:23Z",
+      "side": 1,
+      "message": "It does not -- ccDep.Module() is of type android.Module, what we need is a cast to cc.Module\n\nConfusing, I know :(",
+      "parentUuid": "93042679_b1d18241",
       "range": {
         "startLine": 350,
         "startChar": 0,
