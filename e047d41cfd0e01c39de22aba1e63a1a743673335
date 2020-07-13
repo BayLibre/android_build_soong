@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49533399_f4539324",
+        "filename": "ui/metrics/time_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-13T19:37:44Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure what `org` means in this context.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 7
+      },
+      "revId": "e047d41cfd0e01c39de22aba1e63a1a743673335",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fcaae3a_61997b69",
+        "filename": "ui/metrics/time_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-13T19:37:44Z",
+      "side": 1,
+      "message": "Optional: It may be easier to read to reuse `dur` here.",
+      "range": {
+        "startLine": 39,
+        "startChar": 33,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "e047d41cfd0e01c39de22aba1e63a1a743673335",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
