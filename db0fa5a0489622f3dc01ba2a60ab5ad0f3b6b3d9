@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "9b95aa7f_667fd9fc",
+        "filename": "cc/installer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-13T15:01:04Z",
+      "side": 1,
+      "message": "resolving",
+      "parentUuid": "568a60b1_2bdf1366",
+      "range": {
+        "startLine": 65,
+        "startChar": 66,
+        "endLine": 65,
+        "endChar": 118
+      },
+      "revId": "db0fa5a0489622f3dc01ba2a60ab5ad0f3b6b3d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93042679_b1d18241",
         "filename": "cc/test.go",
         "patchSetId": 3
@@ -110,6 +134,30 @@
       "revId": "db0fa5a0489622f3dc01ba2a60ab5ad0f3b6b3d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aa50265_6b0db307",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-13T15:01:04Z",
+      "side": 1,
+      "message": "resolving",
+      "parentUuid": "b8a20e35_87a6e12a",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 64
+      },
+      "revId": "db0fa5a0489622f3dc01ba2a60ab5ad0f3b6b3d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
