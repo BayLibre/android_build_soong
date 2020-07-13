@@ -571,6 +571,9 @@ var (
 	Windows     = NewOsType("windows", HostCross, true)
 	Android     = NewOsType("android", Device, false)
 	Fuchsia     = NewOsType("fuchsia", Device, false)
+	// Unlike Windows, LinuxCross is enabled by default because it's Linux so most of the modules
+	// are aready capable of supporting the OS
+	LinuxCross = NewOsType("linux_cross", HostCross, false)
 
 	// A pseudo OSType for a common os variant, which is OSType agnostic and which
 	// has dependencies on all the OS variants.
@@ -581,6 +584,7 @@ var (
 		LinuxBionic: []ArchType{X86_64},
 		Darwin:      []ArchType{X86_64},
 		Windows:     []ArchType{X86, X86_64},
+		LinuxCross:  []ArchType{Arm64}, // Arm is explicitly dropped out for host cross.
 		Android:     []ArchType{Arm, Arm64, X86, X86_64},
 		Fuchsia:     []ArchType{Arm64, X86_64},
 	}
@@ -626,7 +630,7 @@ func (os OsType) Bionic() bool {
 }
 
 func (os OsType) Linux() bool {
-	return os == Android || os == Linux || os == LinuxBionic
+	return os == Android || os == Linux || os == LinuxBionic || os == LinuxCross
 }
 
 func NewOsType(name string, class OsClass, defDisabled bool) OsType {
@@ -1509,10 +1513,12 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 			return nil, fmt.Errorf("No cross-host primary architecture set")
 		}
 
-		addTarget(crossHostOs, *variables.CrossHostArch, nil, nil, nil, NativeBridgeDisabled, nil, nil)
+		addTarget(crossHostOs, *variables.CrossHostArch,
+			variables.CrossHostArchVariant, nil, nil, NativeBridgeDisabled, nil, nil)
 
 		if variables.CrossHostSecondaryArch != nil && *variables.CrossHostSecondaryArch != "" {
-			addTarget(crossHostOs, *variables.CrossHostSecondaryArch, nil, nil, nil, NativeBridgeDisabled, nil, nil)
+			addTarget(crossHostOs, *variables.CrossHostSecondaryArch,
+				variables.CrossHostSecondaryArchVariant, nil, nil, NativeBridgeDisabled, nil, nil)
 		}
 	}
 
