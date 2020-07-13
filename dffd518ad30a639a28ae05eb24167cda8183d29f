@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea17875d_4b1f6ddf",
+        "filename": "ui/metrics/time.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-13T20:51:03Z",
+      "side": 1,
+      "message": "Sorry I missed this earlier -- I think we still want UnixNano() here Nanosecond() appears to only be the nanosecond offset (https://golang.org/pkg/time/#Time.Nanosecond).",
+      "range": {
+        "startLine": 66,
+        "startChar": 49,
+        "endLine": 66,
+        "endChar": 59
+      },
+      "revId": "dffd518ad30a639a28ae05eb24167cda8183d29f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
