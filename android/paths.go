@@ -1306,6 +1306,8 @@ func pathForInstall(ctx PathContext, os OsType, partition string, debug bool,
 		case LinuxBionic:
 			// TODO: should this be a separate top level, or shared with linux-x86?
 			outPaths = []string{"host", "linux_bionic-x86", partition}
+		case LinuxCross:
+			outPaths = []string{"host", os.String() + "-" + String(ctx.Config().productVariables.CrossHostArch), partition}
 		default:
 			outPaths = []string{"host", os.String() + "-x86", partition}
 		}
