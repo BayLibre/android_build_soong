@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaa685b3_2eab6fb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-13T23:41:11Z",
+      "side": 1,
+      "message": "Colin, could you please give ORV for this CL, or do you have any more concerns?",
+      "revId": "b4feedf87e03335dd8ad659e80b2dbcdd07afbce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
