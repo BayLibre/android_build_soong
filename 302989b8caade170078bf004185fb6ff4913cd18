@@ -22,6 +22,30 @@
       "revId": "302989b8caade170078bf004185fb6ff4913cd18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1644e5dd_d5e3cc0f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-13T16:07:58Z",
+      "side": 1,
+      "message": "Updated the comment to reflect that Flags is replacing Args and Args is deprecated.",
+      "parentUuid": "06743519_d440d0dc",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 92
+      },
+      "revId": "302989b8caade170078bf004185fb6ff4913cd18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
