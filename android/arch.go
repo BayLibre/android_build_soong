@@ -578,7 +578,7 @@ var (
 
 	osArchTypeMap = map[OsType][]ArchType{
 		Linux:       []ArchType{X86, X86_64},
-		LinuxBionic: []ArchType{X86_64},
+		LinuxBionic: []ArchType{Arm64, X86_64},
 		Darwin:      []ArchType{X86_64},
 		Windows:     []ArchType{X86, X86_64},
 		Android:     []ArchType{Arm, Arm64, X86, X86_64},
@@ -1512,10 +1512,12 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 			return nil, fmt.Errorf("No cross-host primary architecture set")
 		}
 
-		addTarget(crossHostOs, *variables.CrossHostArch, nil, nil, nil, NativeBridgeDisabled, nil, nil)
+		addTarget(crossHostOs, *variables.CrossHostArch,
+			variables.CrossHostArchVariant, nil, nil, NativeBridgeDisabled, nil, nil)
 
 		if variables.CrossHostSecondaryArch != nil && *variables.CrossHostSecondaryArch != "" {
-			addTarget(crossHostOs, *variables.CrossHostSecondaryArch, nil, nil, nil, NativeBridgeDisabled, nil, nil)
+			addTarget(crossHostOs, *variables.CrossHostSecondaryArch,
+				variables.CrossHostSecondaryArchVariant, nil, nil, NativeBridgeDisabled, nil, nil)
 		}
 	}
 
