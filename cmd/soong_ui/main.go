@@ -138,6 +138,7 @@ func main() {
 	defer trace.Close()
 
 	met := metrics.New()
+	met.SetBuildDateTime(buildStartedMilli / 100) // in seconds
 
 	stat := &status.Status{}
 	defer stat.Finish()
