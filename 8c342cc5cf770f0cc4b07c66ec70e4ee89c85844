@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a871517_483c1168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T22:40:34Z",
+      "side": 1,
+      "message": "The transitive lint reports were causing memory issues in the multiproduct_kati builds, so I ported Bazel\u0027s depsets to Soong.",
+      "revId": "8c342cc5cf770f0cc4b07c66ec70e4ee89c85844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
