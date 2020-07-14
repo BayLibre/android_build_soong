@@ -23,6 +23,9 @@ import (
 func TestSourceTreeModule(t *testing.T) {
 	ctx, errs := setupSourceTreeTest(map[string]string{
 		"dir1": `
+			source_tree {
+				release_version: "29",
+			}
 			dummy_module {
 				name: "a",
 				release_version: "current",
@@ -35,19 +38,58 @@ func TestSourceTreeModule(t *testing.T) {
 				name: "c",
 			}
 		`,
+		"dir2": `
+			source_tree {
+				release_version: "30",
+			}
+			dummy_module {
+				name: "d",
+			}
+		`,
+		"dir2/sub1": `
+			dummy_module {
+				name: "e",
+			}
+		`,
+		"dir2/sub1/sub2": `
+			source_tree {
+				release_version: "current",
+			}
+			dummy_module {
+				name: "f",
+			}
+		`,
+		"dir2/sub1/sub2/sub3": `
+			dummy_module {
+				name: "g",
+			}
+		`,
+		"dir2/sub1/sub2_1/sub3_1": `
+			dummy_module {
+				name: "h",
+			}
+		`,
 	})
 	FailIfErrored(t, errs)
 	validateReleaseVersion(t, ctx, "a", "current")
 	validateReleaseVersion(t, ctx, "b", "30")
-	validateReleaseVersion(t, ctx, "c", "current")
+	validateReleaseVersion(t, ctx, "c", "29")
+	validateReleaseVersion(t, ctx, "d", "30")
+	validateReleaseVersion(t, ctx, "e", "30")
+	validateReleaseVersion(t, ctx, "f", "current")
+	validateReleaseVersion(t, ctx, "g", "current")
+	validateReleaseVersion(t, ctx, "h", "30")
 }
 
 func TestSourceTreeDependency(t *testing.T) {
 	_, errs := setupSourceTreeTest(map[string]string{
-		"dir1": `
+		"dir3": `
+		source_tree {
+			release_version: "30",
+		}
 		dummy_module {
 			name: "a_dep_test",
-			release_version: "30",
+			release_version: "current",
 		}
 		dummy_module {
 			name: "b_dep_test",
@@ -56,14 +98,17 @@ func TestSourceTreeDependency(t *testing.T) {
 		`,
 	})
 	FailIfNoMatchingErrors(t,
-		"module \"b_dep_test\" variant \".*\": has a release version \"current\". "+
-			"It must not depend on \"a_dep_test\" which has a different release version \"30\"",
+		"module \"b_dep_test\" variant \".*\": has a release version \"30\". "+
+			"It must not depend on \"a_dep_test\" which has a different release version \"current\"",
 		errs)
 }
 
 func TestDefaltableReleaseVersionProperty(t *testing.T) {
 	ctx, errs := setupSourceTreeTest(map[string]string{
-		"dir1": `
+		"dir4": `
+		source_tree {
+			release_version: "29",
+		}
 		defaults {
 			name: "defaults",
 			release_version: "30",
@@ -78,6 +123,34 @@ func TestDefaltableReleaseVersionProperty(t *testing.T) {
 	validateReleaseVersion(t, ctx, "a_with_default", "30")
 }
 
+func TestDuplicatedSourceTreeModule(t *testing.T) {
+	_, errs := setupSourceTreeTest(map[string]string{
+		"dir5": `
+		source_tree {
+			release_version: "29",
+		}
+		source_tree {
+			release_version: "29",
+		}
+		`,
+	})
+	FailIfNoMatchingErrors(t,
+		"module \".*\": in dir5 duplicates with the other \"source_tree\" module in the same directory",
+		errs)
+}
+
+func TestSourceTreeModuleWithoutVersion(t *testing.T) {
+	_, errs := setupSourceTreeTest(map[string]string{
+		"dir6": `
+		source_tree {
+		}
+		`,
+	})
+	FailIfNoMatchingErrors(t,
+		"module \".*\": in dir6 must have \"release_version\" property",
+		errs)
+}
+
 func setupSourceTreeTest(bps map[string]string) (ctx *TestContext, errs []error) {
 	files := make(map[string][]byte, len(bps))
 	for dir, text := range bps {
@@ -88,8 +161,10 @@ func setupSourceTreeTest(bps map[string]string) (ctx *TestContext, errs []error)
 
 	ctx = NewTestArchContext()
 	ctx.RegisterModuleType("dummy_module", dummyModuleFactory)
+	ctx.RegisterModuleType("source_tree", SourceTreeFactory)
 	ctx.RegisterModuleType("defaults", defaultReleaseVersionFactory)
 	ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
+	ctx.PreArchMutators(RegisterSourceTreeMutators)
 	ctx.Register(config)
 
 	_, errs = ctx.ParseBlueprintsFiles(".")
