@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa342a81_9a84c20a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-14T19:33:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be called out/ dir?\n\"gen/\" dir is already used as the out directory of a gen_rule module.\n\"out/\" dir is currently used in some rust packages to store manually pre-generated source files, to replace cargo output and OUT_DIR.",
+      "range": {
+        "startLine": 13,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9e94c7_901bf6ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-14T19:33:02Z",
+      "side": 1,
+      "message": "Could this be set only for modules with such need defined in Android.bp? Most rustc invocations do not need it.\nFor implementation, it would be nice to generalize this and allow any env variable-value pair to be specified in Android.bp and defined for rustc. Also when necessarily use a name different from OUT_DIR.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225425b1_ff9d2746",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-14T19:33:02Z",
+      "side": 1,
+      "message": "Why not? We could have many prebuilt libraries and some could benefit from some simple code generator. For example, some Rust cargo build generates \"version\" files to be included. Such code generator could be written in simple script and output used in compilation of other prebuilt libraries.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d5c7da_73410152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-14T19:33:02Z",
+      "side": 1,
+      "message": "Haven\u0027t looked into the code yet. Just a few questions on the user interfaces.\n",
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
