@@ -22,6 +22,30 @@
       "revId": "ce4f3af02abc55df27ba5c3c02d03c8dc099ce88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc27ddaa_d452ff19",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-14T17:20:50Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. Since I changed the function signature, I switched to using Time.",
+      "parentUuid": "a101754c_fe98a878",
+      "range": {
+        "startLine": 133,
+        "startChar": 35,
+        "endLine": 133,
+        "endChar": 49
+      },
+      "revId": "ce4f3af02abc55df27ba5c3c02d03c8dc099ce88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
