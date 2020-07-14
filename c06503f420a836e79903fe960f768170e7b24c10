@@ -33,6 +33,24 @@
       "revId": "c06503f420a836e79903fe960f768170e7b24c10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8b9e03_a696bcc1",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-14T15:09:16Z",
+      "side": 1,
+      "message": "The members are handled by the SdkMemberPropertiesBase change, this is the (sdk|module_export)_snapshot modules themselves.",
+      "parentUuid": "678bb579_ad5d147d",
+      "revId": "c06503f420a836e79903fe960f768170e7b24c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
