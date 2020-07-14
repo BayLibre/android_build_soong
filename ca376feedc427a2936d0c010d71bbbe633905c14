@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003863781",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1358803?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "a6b32dd2_2223a90c",
+          "description": "Change to \"rust/bindgen.go\"",
+          "replacements": [
+            {
+              "path": "rust/bindgen.go",
+              "range": {
+                "startLine": 29,
+                "startChar": 27,
+                "endLine": 29,
+                "endChar": 35
+              },
+              "replacement": "its own"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "4f682fb3_3277be94",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-14T17:44:10Z",
+      "side": 1,
+      "message": "Common typo found: \"it\u0027s own\" -- should it be \"its own\"?\nor alternatively, it\u0027s a(n) ...\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 35
+      },
+      "revId": "ca376feedc427a2936d0c010d71bbbe633905c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
