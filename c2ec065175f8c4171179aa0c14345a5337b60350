@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f39110e_27398722",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-14T14:24:24Z",
+      "side": 1,
+      "message": "AIUI this fix will only disable those os types about which the build knows when it creates the snapshot. e.g. it won\u0027t disable mac build. I think it is better (big impact to tests though), i.e. safer and easier to simply disable the module by default and then only enable the os types for which the build provides the prebuilts.",
+      "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
