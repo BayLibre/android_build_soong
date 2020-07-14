@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8221b31_73e1e59b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-14T11:35:24Z",
+      "side": 1,
+      "message": "Uploading the following CL for the \"source_tree\" module that is used for assigning the \"release_version\" for directories.",
+      "revId": "295779d687feb1463efe14aaf7c850a24713221a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
