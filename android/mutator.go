@@ -150,6 +150,10 @@ func registerArchMutator(ctx RegisterMutatorsContext) {
 
 var preDeps = []RegisterMutatorFunc{
 	registerArchMutator,
+
+	// This devides the source trees according to their release_version to prevent the
+	// dependency between the different release versions.
+	RegisterSourceTreeMutators,
 }
 
 var postDeps = []RegisterMutatorFunc{
