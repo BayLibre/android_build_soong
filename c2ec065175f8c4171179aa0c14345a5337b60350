@@ -16,6 +16,24 @@
       "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f58ba288_253b8b2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-14T14:58:43Z",
+      "side": 1,
+      "message": "I figured such changes between the build configs would hose the prebuilts anyway, but darwin host is a good point.\n\nWould you say that applies to target too? And java modules? The central logic doesn\u0027t have a way to tell native and managed modules apart, so if we are to treat java differently I\u0027d extend the SdkMember interface to query this.",
+      "parentUuid": "5f39110e_27398722",
+      "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
