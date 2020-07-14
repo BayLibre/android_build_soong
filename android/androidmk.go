@@ -632,5 +632,6 @@ func shouldSkipAndroidMkProcessing(module *ModuleBase) bool {
 	return !module.Enabled() ||
 		module.commonProperties.SkipInstall ||
 		// Make does not understand LinuxBionic
-		module.Os() == LinuxBionic
+		module.Os() == LinuxBionic ||
+		module.Os() == LinuxCross
 }
