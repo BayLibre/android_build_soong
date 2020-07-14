@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cae71339_f4becda4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-14T20:03:57Z",
+      "side": 1,
+      "message": "PathForModuleGen() provides that as a path within a modules\u0027 intermediates directory, so it seemed like a reasonable path to copy our generated sources to. I don\u0027t mind changing it to something else.\n\nManually pre-generated source that resides in a local source tree likely just needs to be checked into source, so the choice of path wouldn\u0027t impact that use case I think.\n\nccross@, is there some additional meaning to the path provided by PathForModuleGen() such that we should deconflict and use another path to copy generated source from dependencies to?",
+      "parentUuid": "aa342a81_9a84c20a",
+      "range": {
+        "startLine": 13,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc9e94c7_901bf6ef",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6bde9aaf_3ab73e7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-14T20:03:57Z",
+      "side": 1,
+      "message": "OUT_DIR is where most Rust crates expect generated code to reside. Do we have any external/ crates currently that use a different environment variable for their generated source code?",
+      "parentUuid": "fc9e94c7_901bf6ef",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "225425b1_ff9d2746",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2020-07-14T19:33:02Z",
       "side": 1,
       "message": "Why not? We could have many prebuilt libraries and some could benefit from some simple code generator. For example, some Rust cargo build generates \"version\" files to be included. Such code generator could be written in simple script and output used in compilation of other prebuilt libraries.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f2975b2_458e246d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-14T20:03:57Z",
+      "side": 1,
+      "message": "Prebuilts aren\u0027t compiled during the build process, they\u0027re included in the source tree as prebuilt binaries, so I don\u0027t quite understand the use case described.",
+      "parentUuid": "225425b1_ff9d2746",
       "range": {
         "startLine": 21,
         "startChar": 0,
