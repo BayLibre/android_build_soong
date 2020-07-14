@@ -16,6 +16,23 @@
       "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18b191e5_760753d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-14T20:59:24Z",
+      "side": 1,
+      "message": "+ivanlozano, in case you want to weigh in on this.",
+      "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
