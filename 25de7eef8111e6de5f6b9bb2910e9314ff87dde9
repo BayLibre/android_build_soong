@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6f6e904_4de376ae",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-14T11:39:34Z",
+      "side": 1,
+      "message": "I wanted to use the directory name here, but I don\u0027t find the way to get the directory name without `Context`.",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 51
+      },
+      "revId": "25de7eef8111e6de5f6b9bb2910e9314ff87dde9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
