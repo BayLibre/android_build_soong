@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d653366e_9e2b1ac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549634
+      },
+      "writtenOn": "2020-07-14T22:23:02Z",
+      "side": 1,
+      "message": "Hi! Friendly ping on this, I don\u0027t think it will work out of box on this iteration, but it would be really good to have a basis merged so we can iterate faster on our end.  Also, to my knowledge it doesn\u0027t break anything as is.",
+      "revId": "846dc01a61e07ba4e10814514e32292661fee5b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
