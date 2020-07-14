@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b377bc3a_8a7c8257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-14T14:41:50Z",
+      "side": 1,
+      "message": "I reviewed this before https://r.android.com/1359962. I don\u0027t understand why this is needed at all.",
+      "revId": "c06503f420a836e79903fe960f768170e7b24c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "678bb579_ad5d147d",
         "filename": "sdk/update.go",
         "patchSetId": 2
