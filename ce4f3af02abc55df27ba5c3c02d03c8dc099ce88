@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a101754c_fe98a878",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-14T16:42:24Z",
+      "side": 1,
+      "message": "The call site specifically mentions seconds, but this method doesn\u0027t, it\u0027d be nice if it did or used something like Time.",
+      "range": {
+        "startLine": 133,
+        "startChar": 35,
+        "endLine": 133,
+        "endChar": 49
+      },
+      "revId": "ce4f3af02abc55df27ba5c3c02d03c8dc099ce88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
