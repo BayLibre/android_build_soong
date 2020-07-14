@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c439db2_3875be64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-14T07:43:58Z",
+      "side": 1,
+      "message": "This needs testing on an actual mac to see if it solves the issue before going in.",
+      "revId": "1e4214ba450dc8e8f13e3916f4edea6c2be2337b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
