@@ -16,6 +16,29 @@
       "revId": "8c342cc5cf770f0cc4b07c66ec70e4ee89c85844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5442a320_0b30fc49",
+        "filename": "android/depset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-14T23:00:24Z",
+      "side": 1,
+      "message": "Was the intent for this to be directCopy (and transitiveCopy below)?",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "8c342cc5cf770f0cc4b07c66ec70e4ee89c85844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
