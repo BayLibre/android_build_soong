@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62790183_9fdbf94c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-14T16:11:42Z",
+      "side": 1,
+      "message": "As you seem to be using this as an example of how to convert to using providers it would be useful for some more comments to explain what is going on and why.",
+      "revId": "7556d1dd24c52c4651211cd072fc1d01ecb70b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea4708c7_f2bebc4c",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-14T16:11:42Z",
+      "side": 1,
+      "message": "A comment explaining why this must use the provider rather than just storing the information in the library.linter as was done before would be helpful.",
+      "revId": "7556d1dd24c52c4651211cd072fc1d01ecb70b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a639b61_e0e618e8",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-14T16:11:42Z",
+      "side": 1,
+      "message": "A comment explaining how this will be used would be useful.",
+      "revId": "7556d1dd24c52c4651211cd072fc1d01ecb70b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1991a17c_14021143",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-14T16:11:42Z",
+      "side": 1,
+      "message": "A comment explaining when this can be used, e.g. after which mutator has run, would be useful.",
+      "revId": "7556d1dd24c52c4651211cd072fc1d01ecb70b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75fb091a_187bd0ca",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-14T16:11:42Z",
+      "side": 1,
+      "message": "A comment explaining what this does will be useful.",
+      "revId": "7556d1dd24c52c4651211cd072fc1d01ecb70b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
