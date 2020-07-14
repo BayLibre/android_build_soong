@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "722ba98c_e50b0577",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-07-14T20:58:09Z",
+      "side": 1,
+      "message": "The main binder crate change is now blocked on this. The flag is now needed for https://android-review.googlesource.com/c/platform/frameworks/native/+/1340500/13/libs/binder/rust/tests/Android.bp. We need to have both a rust test binary and a regular binary located in the testcases/ output directory for tradefed to pick up and push onto device. Building the binary without the test harness as a regular binary puts it in the wrong output folder.\n\nMy thinking with this change is that is directly analogous to gtest: false in cc, and the simplest way of making test binaries without the rust test harness.",
+      "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
