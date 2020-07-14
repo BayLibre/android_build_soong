@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "678bb579_ad5d147d",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-14T14:38:04Z",
+      "side": 1,
+      "message": "Could you not just remove the `sdk:\"keep\"` tag from SdkMemberPropertiesBase.Compile_multilib instead? They are already optimized along with the normal properties from the module. All that you would need to do then is ensure that those fields are populated properly for each os type.",
+      "revId": "c06503f420a836e79903fe960f768170e7b24c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
