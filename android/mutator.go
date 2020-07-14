@@ -140,6 +140,10 @@ var preArch = []RegisterMutatorFunc{
 	// This must come after the defaults mutators to ensure that any visibility supplied
 	// in a defaults module has been successfully applied before the rules are gathered.
 	RegisterVisibilityRuleGatherer,
+
+	// This divides the source trees according to their release_version to prevent the
+	// dependency between the different release versions.
+	RegisterSourceTreeMutators,
 }
 
 func registerArchMutator(ctx RegisterMutatorsContext) {
