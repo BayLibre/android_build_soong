@@ -157,6 +157,178 @@
       "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca1bbe87_ba896ec3",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T21:35:07Z",
+      "side": 1,
+      "message": "Is it possible for multiple generated sources to collide here?  Can you use the whole genSrc path?",
+      "range": {
+        "startLine": 225,
+        "startChar": 75,
+        "endLine": 225,
+        "endChar": 88
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b89019_d32e3147",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T21:35:07Z",
+      "side": 1,
+      "message": "The distinction between outputs and implicit outputs is meaningless here because you aren\u0027t using $out in the rule.  These can all go in the Outputs parameter.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 40
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa218e0b_35af1142",
+        "filename": "rust/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T21:35:07Z",
+      "side": 1,
+      "message": "This is a very generic sounding name, does it have a specific meaning to Rust developers?  Should this be something more specific like \"bindgen_providers\"?  Or could it just be module references in srcs?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d6300e_3328f748",
+        "filename": "rust/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T21:35:07Z",
+      "side": 1,
+      "message": "srcs?",
+      "range": {
+        "startLine": 266,
+        "startChar": 17,
+        "endLine": 266,
+        "endChar": 21
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d28e6599_9a25e714",
+        "filename": "rust/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T21:35:07Z",
+      "side": 1,
+      "message": "android.SrcIsModule",
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25acc81a_6e57e631",
+        "filename": "rust/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T21:35:07Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be allowed for srcs[0]?",
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eabf8528_5cc6534e",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T21:35:07Z",
+      "side": 1,
+      "message": "Should this be an error instead of ignored?",
+      "range": {
+        "startLine": 98,
+        "startChar": 10,
+        "endLine": 98,
+        "endChar": 11
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb6c751_dd53dc53",
+        "filename": "rust/rust.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-14T21:35:07Z",
+      "side": 1,
+      "message": "Any modules listed with \":\" in Srcs should have already had an android.SourceDepTag dependency on them added by path_properties.go.",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 2
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
