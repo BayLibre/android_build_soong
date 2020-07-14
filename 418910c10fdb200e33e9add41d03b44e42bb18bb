@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a09c021a_c4b8bdcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-14T22:32:21Z",
+      "side": 1,
+      "message": "Yes OUT_DIR\u003dout is Rust convention, but not every Rust crate needs/uses it. So I\u0027m thinking not to define OUT_DIR for every rustc issued by .bp files.\nIf we follow Rust convention, \u0027out\u0027 seems to be a better name than \u0027gen\u0027. Just in case for Android projects not using Cargo.toml and for any reason not OUT_DIR convention, they might like a different name or multiple \"include\" directories for sources from different code generators.",
+      "parentUuid": "6bde9aaf_3ab73e7f",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "225425b1_ff9d2746",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -140,6 +164,30 @@
       "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ad2a7a_664e1a18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-14T22:32:21Z",
+      "side": 1,
+      "message": "Oh, i thought old prebuilts/rust/*/Android.bp files compile libraries from source. Now all look like just pre-compiled binaries. Their \"srcs\" list are not real \"source\" files.",
+      "parentUuid": "0f2975b2_458e246d",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
