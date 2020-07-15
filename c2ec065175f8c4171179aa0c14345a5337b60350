@@ -52,6 +52,24 @@
       "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2164bd_4b581cbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-15T09:53:46Z",
+      "side": 1,
+      "message": "Which bit? I think it\u0027s reasonably safe to assume that we will only have a single OS type for android. So, only disabling the host generally and then enabling those OS types for which we provide prebuilts but not doing the same for device seems fine to me.",
+      "parentUuid": "31ea4f25_2ff2e654",
+      "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
