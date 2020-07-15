@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a92d8dc4_3356e9af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-15T10:07:50Z",
+      "side": 1,
+      "message": "This is the usual mistake that we don\u0027t disable tests on mac that depend on the host OS. I\u0027ve got a trivial fix-forward in https://r.android.com/1363556.",
+      "revId": "29936ae5a7c98a2df3bec299f3993e122a76d04c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
