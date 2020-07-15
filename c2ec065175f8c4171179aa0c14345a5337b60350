@@ -70,6 +70,24 @@
       "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8487d6_654d3f8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-15T10:03:19Z",
+      "side": 1,
+      "message": "I meant doing the same for java prebuilts that have host_supported. Guess it boils down to whether or not we consider java to be inherently OS-agnostic on host.",
+      "parentUuid": "ff2164bd_4b581cbf",
+      "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
