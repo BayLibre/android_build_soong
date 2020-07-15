@@ -78,6 +78,7 @@ func GatherRequiredDepsForTest() string {
 func CreateTestContext() *android.TestContext {
 	ctx := android.NewTestArchContext()
 	android.RegisterPrebuiltMutators(ctx)
+	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
 	ctx.RegisterModuleType("genrule", genrule.GenRuleFactory)
 	ctx.RegisterModuleType("rust_binary", RustBinaryFactory)
