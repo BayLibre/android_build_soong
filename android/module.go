@@ -562,6 +562,17 @@ type commonProperties struct {
 // A map of OutputFile tag keys to Paths, for disting purposes.
 type TaggedDistFiles map[string]Paths
 
+func (distFiles *TaggedDistFiles) Merge(otherDistFiles TaggedDistFiles) TaggedDistFiles {
+	mergedDistFiles := TaggedDistFiles{}
+	for k, v := range *distFiles {
+		mergedDistFiles[k] = v
+	}
+	for k, v := range otherDistFiles {
+		mergedDistFiles[k] = append(mergedDistFiles[k], v...)
+	}
+	return mergedDistFiles
+}
+
 func MakeDefaultDistFiles(paths ...Path) TaggedDistFiles {
 	// The default OutputFile tag is the empty "" string.
 	return TaggedDistFiles{"": paths}
@@ -868,10 +879,7 @@ func (m *ModuleBase) GenerateTaggedDistFiles(ctx BaseModuleContext) TaggedDistFi
 		} else {
 			tag = *dist.Tag
 		}
-		distFilesForTag, err := m.base().module.(OutputFileProducer).OutputFiles(tag)
-		if err != nil {
-			ctx.PropertyErrorf("dist.tag", "%s", err.Error())
-		}
+		distFilesForTag, _ = m.module.(OutputFileProducer).OutputFiles(tag)
 		for _, distFile := range distFilesForTag {
 			if distFile != nil && !distFiles[tag].containsPath(distFile) {
 				distFiles[tag] = append(distFiles[tag], distFile)

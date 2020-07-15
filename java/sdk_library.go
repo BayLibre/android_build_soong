@@ -1045,6 +1045,9 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 			// Extract information from the dependency. The exact information extracted
 			// is determined by the nature of the dependency which is determined by the tag.
 			scopeTag.extractDepInfo(ctx, to, scopePaths)
+
+			// Generate dist files for this scope
+			module.Library.distFiles = module.Library.distFiles.Merge(module.GenerateTaggedDistFiles(ctx))
 		}
 	})
 }
