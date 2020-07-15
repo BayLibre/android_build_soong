@@ -39,6 +39,47 @@
       "revId": "8c342cc5cf770f0cc4b07c66ec70e4ee89c85844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be185dc_d4ace4e5",
+        "filename": "android/depset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-15T01:09:41Z",
+      "side": 1,
+      "message": "Oops, fixed.",
+      "parentUuid": "5442a320_0b30fc49",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "8c342cc5cf770f0cc4b07c66ec70e4ee89c85844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83c7b8d6_d29a9a22",
+        "filename": "android/depset.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-15T01:09:41Z",
+      "side": 1,
+      "message": "The Bazel API is to make the depset have an order and then call ToList() on it.  I originally thought that was because the conversion to a list was a cast that couldn\u0027t take an order.  After looking at the implementation I see some optimizations that are possible due to the order being known ahead of time.  Even if I don\u0027t do those optimizations now, making a DepSet have any possible ordering might preclude them if they are needed later, and I don\u0027t see a use case for the same DepSet with different ordering, so I think I should switch to putting the order in the DepSet.",
+      "revId": "8c342cc5cf770f0cc4b07c66ec70e4ee89c85844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
