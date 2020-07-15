@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003871626",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1362697?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ed77e725_faf5b32c",
+        "filename": "android/depset.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-15T01:11:21Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary\u0027 or \u0027secondary\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "range": {
+        "startLine": 20,
+        "startChar": 37,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "dbc5afaeb992c98cb03e3c408e023d4b86bfe052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003871626",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1362697?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f8c3fd54_9e51efc1",
+        "filename": "android/depset_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-15T01:11:21Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary\u0027 or \u0027secondary\u0027; see https://developers.google.com/style/inclusive-documentation for more details.",
+      "range": {
+        "startLine": 65,
+        "startChar": 44,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "dbc5afaeb992c98cb03e3c408e023d4b86bfe052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
