@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a675d05b_3f9e182e",
+        "filename": "android/depset.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-15T20:49:14Z",
+      "side": 1,
+      "message": "Why do these exist? Aren\u0027t they just ToList() after creating the DepSet with the right order? They\u0027re not changing the d.order, so ToPostorderedList and ToPreorderedList are identical, and ToTopologicalList will return incorrect results if the order wasn\u0027t already topological.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 1
+      },
+      "revId": "dbc5afaeb992c98cb03e3c408e023d4b86bfe052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
