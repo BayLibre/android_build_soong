@@ -27,6 +27,11 @@ import (
 	"android/soong/remoteexec"
 )
 
+const releasedApiMsg = `\n******************************\n` +
+	`You have tried to change the API from what has been previously released in\n` +
+	`an SDK.  Please fix the errors listed above.\n` +
+	`******************************\n`
+
 func init() {
 	RegisterDocsBuildComponents(android.InitRegistrationContext)
 	RegisterStubsBuildComponents(android.InitRegistrationContext)
@@ -307,16 +312,8 @@ type DroidstubsProperties struct {
 // Common flags passed down to build rule
 //
 type droiddocBuilderFlags struct {
-	bootClasspathArgs  string
-	classpathArgs      string
-	sourcepathArgs     string
-	dokkaClasspathArgs string
-	aidlFlags          string
-	aidlDeps           android.Paths
-
-	doclavaStubsFlags string
-	doclavaDocsFlags  string
-	postDoclavaCmds   string
+	aidlFlags string
+	aidlDeps  android.Paths
 }
 
 func InitDroiddocModule(module android.DefaultableModule, hod android.HostOrDeviceSupported) {
@@ -522,6 +519,8 @@ func (j *Javadoc) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 }
 
 func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
+	j.collectArgs(ctx)
+
 	var deps deps
 
 	sdkDep := decodeSdkDep(ctx, sdkContext(j))
@@ -584,28 +583,6 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 	srcFiles := android.PathsForModuleSrcExcludes(ctx, j.properties.Srcs, j.properties.Exclude_srcs)
 	j.implicits = append(j.implicits, srcFiles...)
 
-	filterByPackage := func(srcs []android.Path, filterPackages []string) []android.Path {
-		if filterPackages == nil {
-			return srcs
-		}
-		filtered := []android.Path{}
-		for _, src := range srcs {
-			if src.Ext() != ".java" {
-				// Don't filter-out non-Java (=generated sources) by package names. This is not ideal,
-				// but otherwise metalava emits stub sources having references to the generated AIDL classes
-				// in filtered-out pacages (e.g. com.android.internal.*).
-				// TODO(b/141149570) We need to fix this by introducing default private constructors or
-				// fixing metalava to not emit constructors having references to unknown classes.
-				filtered = append(filtered, src)
-				continue
-			}
-			packageName := strings.ReplaceAll(filepath.Dir(src.Rel()), "/", ".")
-			if android.HasAnyPrefix(packageName, filterPackages) {
-				filtered = append(filtered, src)
-			}
-		}
-		return filtered
-	}
 	srcFiles = filterByPackage(srcFiles, j.properties.Filter_packages)
 
 	// While metalava needs package html files, it does not need them to be explicit on the command
@@ -614,16 +591,6 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 	// below excludes html files from the rsp file for both metalava and jdiff. Note that the html
 	// files are still included as implicit inputs for successful remote execution and correct
 	// incremental builds.
-	filterHtml := func(srcs []android.Path) []android.Path {
-		filtered := []android.Path{}
-		for _, src := range srcs {
-			if src.Ext() == ".html" {
-				continue
-			}
-			filtered = append(filtered, src)
-		}
-		return filtered
-	}
 	srcFiles = filterHtml(srcFiles)
 
 	aidlFlags := j.collectAidlFlags(ctx, deps)
@@ -641,6 +608,10 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 	}
 	j.sourcepaths = android.PathsForModuleSrc(ctx, j.properties.Local_sourcepaths)
 
+	return deps
+}
+
+func (j *Javadoc) collectArgs(ctx android.ModuleContext) {
 	j.argFiles = android.PathsForModuleSrc(ctx, j.properties.Arg_files)
 	argFilesMap := map[string]string{}
 	argFileLabels := []string{}
@@ -689,8 +660,6 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 		}
 		j.args = append(j.args, args)
 	}
-
-	return deps
 }
 
 func (j *Javadoc) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1164,15 +1133,10 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			Input(removedApiFile).
 			Input(d.removedApiFile)
 
-		msg := `\n******************************\n` +
-			`You have tried to change the API from what has been previously released in\n` +
-			`an SDK.  Please fix the errors listed above.\n` +
-			`******************************\n`
-
 		rule.Command().
 			Text("touch").Output(d.checkLastReleasedApiTimestamp).
 			Text(") || (").
-			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
+			Text("echo").Flag("-e").Flag(`"` + releasedApiMsg + `"`).
 			Text("; exit 38").
 			Text(")")
 
@@ -1598,15 +1562,9 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		updatedBaselineOutput := android.PathForModuleOut(ctx, "api_lint_baseline.txt")
 		d.apiLintTimestamp = android.PathForModuleOut(ctx, "api_lint.timestamp")
 
-		// Note this string includes a special shell quote $' ... ', which decodes the "\n"s.
-		// However, because $' ... ' doesn't expand environmental variables, we can't just embed
-		// $PWD, so we have to terminate $'...', use "$PWD", then start $' ... ' again,
-		// which is why we have '"$PWD"$' in it.
-		//
 		// TODO: metalava also has a slightly different message hardcoded. Should we unify this
 		// message and metalava's one?
-		msg := `$'` + // Enclose with $' ... '
-			`************************************************************\n` +
+		msg := `************************************************************\n` +
 			`Your API changes are triggering API Lint warnings or errors.\n` +
 			`To make these errors go away, fix the code according to the\n` +
 			`error and/or warning messages above.\n` +
@@ -1623,19 +1581,21 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				`2. You can update the baseline by executing the following\n`+
 				`   command:\n`+
 				`       cp \\\n`+
-				`       "'"$PWD"$'/%s" \\\n`+
-				`       "'"$PWD"$'/%s"\n`+
+				`       "%s/%s" \\\n`+
+				`       "%s/%s"\n`+
 				`   To submit the revised baseline.txt to the main Android\n`+
-				`   repository, you will need approval.\n`, updatedBaselineOutput, baselineFile.Path())
+				`   repository, you will need approval.\n`,
+				// this message is quoted to enable \n to print properly, but
+				// environmental variables will not be expanded we unquote usages of $PWD
+				unquoteMessage(`"$PWD"`), updatedBaselineOutput, unquoteMessage(`"$PWD"`), baselineFile.Path())
 		} else {
 			msg += fmt.Sprintf(``+
 				`2. You can add a baseline file of existing lint failures\n`+
 				`   to the build rule of %s.\n`, d.Name())
 		}
-		// Note the message ends with a ' (single quote), to close the $' ... ' .
-		msg += `************************************************************\n'`
+		msg += `************************************************************\n`
 
-		cmd.FlagWithArg("--error-message:api-lint ", msg)
+		cmd.FlagWithArg("--error-message:api-lint ", quoteMessage(msg))
 	}
 
 	// Add "check released" options. (Detect incompatible API changes from the last public release)
@@ -1663,13 +1623,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			cmd.FlagWithOutput("--update-baseline:compatibility:released ", updatedBaselineOutput)
 		}
 
-		// Note this string includes quote ($' ... '), which decodes the "\n"s.
-		msg := `$'\n******************************\n` +
-			`You have tried to change the API from what has been previously released in\n` +
-			`an SDK.  Please fix the errors listed above.\n` +
-			`******************************\n'`
-
-		cmd.FlagWithArg("--error-message:compatibility:released ", msg)
+		cmd.FlagWithArg("--error-message:compatibility:released ", quoteMessage(releasedApiMsg))
 	}
 
 	impRule := android.NewRuleBuilder()
@@ -2123,4 +2077,48 @@ func (p *droidStubsInfoProperties) AddToPropertySet(ctx android.SdkMemberContext
 
 		propertySet.AddProperty("srcs", []string{snapshotRelativeDir})
 	}
+}
+
+// Add quote ($' ... '), to decodes the "\n"s.
+func quoteMessage(msg string) string {
+	return `$'` + msg + `'`
+}
+
+// Unquote to give access to environment variables
+func unquoteMessage(msg string) string {
+	return `'` + msg + `$'`
+}
+
+func filterByPackage(srcs []android.Path, filterPackages []string) []android.Path {
+	if filterPackages == nil {
+		return srcs
+	}
+	filtered := []android.Path{}
+	for _, src := range srcs {
+		if src.Ext() != ".java" {
+			// Don't filter-out non-Java (=generated sources) by package names. This is not ideal,
+			// but otherwise metalava emits stub sources having references to the generated AIDL classes
+			// in filtered-out pacages (e.g. com.android.internal.*).
+			// TODO(b/141149570) We need to fix this by introducing default private constructors or
+			// fixing metalava to not emit constructors having references to unknown classes.
+			filtered = append(filtered, src)
+			continue
+		}
+		packageName := strings.ReplaceAll(filepath.Dir(src.Rel()), "/", ".")
+		if android.HasAnyPrefix(packageName, filterPackages) {
+			filtered = append(filtered, src)
+		}
+	}
+	return filtered
+}
+
+func filterHtml(srcs []android.Path) []android.Path {
+	filtered := []android.Path{}
+	for _, src := range srcs {
+		if src.Ext() == ".html" {
+			continue
+		}
+		filtered = append(filtered, src)
+	}
+	return filtered
 }
