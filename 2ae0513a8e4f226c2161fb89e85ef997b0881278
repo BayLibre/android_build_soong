@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7fd6307_38e3ff8d",
+        "filename": "rust/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2020-07-15T01:27:08Z",
+      "side": 1,
+      "message": "This is literally the documentation that appears at the official documentation site go/android.bp. Could we get a few more words on how this module is supposed to be used?",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 43
+      },
+      "revId": "2ae0513a8e4f226c2161fb89e85ef997b0881278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
