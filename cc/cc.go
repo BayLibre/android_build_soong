@@ -227,6 +227,10 @@ type BaseProperties struct {
 	// If true, always create an sdk variant and don't create a platform variant.
 	Sdk_variant_only *bool
 
+	// If non-empty, creates a variant of the module per-API level between
+	// this SDK version and current.
+	Per_api_splits_from *string
+
 	AndroidMkSharedLibs       []string `blueprint:"mutated"`
 	AndroidMkStaticLibs       []string `blueprint:"mutated"`
 	AndroidMkRuntimeLibs      []string `blueprint:"mutated"`
@@ -595,6 +599,14 @@ func (c *Module) MinSdkVersion() string {
 	return String(c.Properties.Min_sdk_version)
 }
 
+func (c *Module) PerApiSplitsFrom() string {
+	return String(c.Properties.Per_api_splits_from)
+}
+
+func (c *Module) SplitPerApiLevel() bool {
+	return c.PerApiSplitsFrom() != ""
+}
+
 func (c *Module) AlwaysSdk() bool {
 	return c.Properties.AlwaysSdk || Bool(c.Properties.Sdk_variant_only)
 }
@@ -866,7 +878,7 @@ func (c *Module) canUseSdk() bool {
 
 func (c *Module) UseSdk() bool {
 	if c.canUseSdk() {
-		return String(c.Properties.Sdk_version) != ""
+		return String(c.Properties.Sdk_version) != "" || c.SplitPerApiLevel()
 	}
 	return false
 }
@@ -1467,8 +1479,11 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		c.Properties.SubName += ramdiskSuffix
 	} else if c.InRecovery() && !c.OnlyInRecovery() {
 		c.Properties.SubName += recoverySuffix
-	} else if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake {
+	} else if c.IsSdkVariant() && (c.Properties.SdkAndPlatformVariantVisibleToMake || c.SplitPerApiLevel()) {
 		c.Properties.SubName += sdkSuffix
+		if c.SplitPerApiLevel() {
+			c.Properties.SubName += "." + c.SdkVersion()
+		}
 	}
 
 	ctx := &moduleContext{
@@ -1641,7 +1656,7 @@ func (c *Module) begin(ctx BaseModuleContext) {
 	for _, feature := range c.features {
 		feature.begin(ctx)
 	}
-	if ctx.useSdk() {
+	if ctx.useSdk() && c.IsSdkVariant() {
 		version, err := normalizeNdkApiLevel(ctx, ctx.sdkVersion(), ctx.Arch())
 		if err != nil {
 			ctx.PropertyErrorf("sdk_version", err.Error())
@@ -1742,6 +1757,22 @@ func StubsLibNameAndVersion(name string) (string, string) {
 		return libname, version
 	}
 	return name, ""
+}
+
+func GetCrtVariations(ctx android.BottomUpMutatorContext,
+	m LinkableInterface) []blueprint.Variation {
+	if ctx.Os() != android.Android {
+		return nil
+	}
+	if m.UseSdk() {
+		return []blueprint.Variation{
+			{Mutator: "sdk", Variation: "sdk"},
+			{Mutator: "ndk_api", Variation: m.SdkVersion()},
+		}
+	}
+	return []blueprint.Variation{
+		{Mutator: "sdk", Variation: ""},
+	}
 }
 
 func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
@@ -2006,11 +2037,14 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	vendorSnapshotObjects := vendorSnapshotObjects(actx.Config())
 
+	crtVariations := GetCrtVariations(ctx, c)
 	if deps.CrtBegin != "" {
-		actx.AddVariationDependencies(nil, CrtBeginDepTag, rewriteSnapshotLibs(deps.CrtBegin, vendorSnapshotObjects))
+		actx.AddVariationDependencies(crtVariations, CrtBeginDepTag,
+			rewriteSnapshotLibs(deps.CrtBegin, vendorSnapshotObjects))
 	}
 	if deps.CrtEnd != "" {
-		actx.AddVariationDependencies(nil, CrtEndDepTag, rewriteSnapshotLibs(deps.CrtEnd, vendorSnapshotObjects))
+		actx.AddVariationDependencies(crtVariations, CrtEndDepTag,
+			rewriteSnapshotLibs(deps.CrtEnd, vendorSnapshotObjects))
 	}
 	if deps.LinkerFlagsFile != "" {
 		actx.AddDependency(c, linkerFlagsDepTag, deps.LinkerFlagsFile)
@@ -3262,7 +3296,7 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 }
 
 func (c *Module) IsSdkVariant() bool {
-	return c.Properties.IsSdkVariant
+	return c.Properties.IsSdkVariant || c.AlwaysSdk()
 }
 
 func getCurrentNdkPrebuiltVersion(ctx DepsContext) string {
