@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38f7ff77_2e380416",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-15T14:50:00Z",
+      "side": 1,
+      "message": "Did you actually manage to test this on a mac?",
+      "revId": "b0c9713b3916892af82861c5539ebd2452aae6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b90e867_4969010b",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-15T14:50:00Z",
+      "side": 1,
+      "message": "Exiting seems like overkill. Why not just return from this function?",
+      "revId": "b0c9713b3916892af82861c5539ebd2452aae6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
