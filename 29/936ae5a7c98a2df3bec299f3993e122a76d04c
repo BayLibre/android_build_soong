@@ -1,0 +1,10 @@
+Build-Cop-Override+1: Charles Chen <charlesccchen@google.com>
+Build-Cop-Override+1: Jakub Pawlowski <jpawlowski@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Jakub Pawlowski <jpawlowski@google.com>
+Submitted-at: Wed, 15 Jul 2020 10:33:39 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1362483
+Project: platform/build/soong
+Branch: refs/heads/master
