@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50bc5019_09cca1a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-07-15T15:25:51Z",
+      "side": 1,
+      "message": "This is a cherry-pick from goog/master. Skipping code review / etc.",
+      "revId": "d92d5150485a5b2609cc6d9388041355b7f3ac20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
