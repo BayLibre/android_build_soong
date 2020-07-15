@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb5739bf_a2cfa89d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-15T14:56:52Z",
+      "side": 1,
+      "message": "Not yet (I set the Verified tag when I\u0027ve run the tests I\u0027ve listed). I intend to, but the macpro we got isn\u0027t exactly snappy.",
+      "parentUuid": "38f7ff77_2e380416",
+      "revId": "b0c9713b3916892af82861c5539ebd2452aae6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b90e867_4969010b",
         "filename": "sdk/sdk_test.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "b0c9713b3916892af82861c5539ebd2452aae6b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4296add_04c8c241",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-15T14:56:52Z",
+      "side": 1,
+      "message": "Since the documented pattern for TestMain is to run the tests with os.Exit(m.Run()) I thought I should only change the m.Run() bit. I suppose returning works in practice, but strictly speaking Go docs don\u0027t guarantee that for this function.",
+      "parentUuid": "7b90e867_4969010b",
+      "revId": "b0c9713b3916892af82861c5539ebd2452aae6b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
