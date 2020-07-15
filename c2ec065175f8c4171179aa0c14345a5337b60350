@@ -34,6 +34,24 @@
       "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ea4f25_2ff2e654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-15T01:37:50Z",
+      "side": 1,
+      "message": "Yep, it\u0027s a useful approach - turned out to uncover a gap where prebuilt libc_headers are used for linux_glibc in a couple of places (cpp-define-generator in art and bcm_object in boringssl). That needs addressing first.\n\nI won\u0027t change target (ie. device) to this principle because it\u0027s essentially hardcoded to the single OS \"android\" (there\u0027s no separate \"device\" target).\n\nBut before I go into changing all the java tests that have host_supported set, I\u0027d like to know what you think about that bit.",
+      "parentUuid": "f58ba288_253b8b2c",
+      "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
