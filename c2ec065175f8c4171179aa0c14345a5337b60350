@@ -88,6 +88,24 @@
       "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad188fed_f397da56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-15T11:23:32Z",
+      "side": 1,
+      "message": "I think we should treat java as OS-agnostic on the host.",
+      "parentUuid": "3e8487d6_654d3f8b",
+      "revId": "c2ec065175f8c4171179aa0c14345a5337b60350",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
