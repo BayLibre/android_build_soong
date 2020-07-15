@@ -231,6 +231,30 @@
     },
     {
       "key": {
+        "uuid": "b903a0cc_0eaeb557",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T17:34:25Z",
+      "side": 1,
+      "message": "It\u0027s possible if multiple source providers produce output with the same name/stem value. In practice though we shouldn\u0027t run into this as the generated source must match the dependent source\u0027s expected output name, e.g.\n\n include!(concat!(env!(\"OUT_DIR\"), \"/bindings.rs\"));\n\nThis leads to why using the whole genSrc path wouldn\u0027t work -- we\u0027re constrained by what the dependent source expects the path to be. We can add support for a relative path within this directory if we find it\u0027s necessary, but we think most usage in the Rust community assumes the generated source is in the OUT_DIR root.\n\nNevertheless I added a check here to error out if there\u0027s a collision to avoid hard-to-debug issues.",
+      "parentUuid": "ca1bbe87_ba896ec3",
+      "range": {
+        "startLine": 225,
+        "startChar": 75,
+        "endLine": 225,
+        "endChar": 88
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7b89019_d32e3147",
         "filename": "rust/builder.go",
         "patchSetId": 4
@@ -251,6 +275,30 @@
       "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a75675f_3dd36d85",
+        "filename": "rust/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T17:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b89019_d32e3147",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 40
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -277,6 +325,30 @@
     },
     {
       "key": {
+        "uuid": "9380a21d_9e6cbf69",
+        "filename": "rust/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T17:34:25Z",
+      "side": 1,
+      "message": "Whoops, this is from an earlier iteration. This can be removed as it no longer serves a purpose since we\u0027re providing them as module references in srcs.\n\nAs for the source provider naming scheme, it\u0027s not specific to Rust but the idea is that we\u0027ll have other module types that are based on this class, for example rust_protobuf for protobuf generation.",
+      "parentUuid": "aa218e0b_35af1142",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93d6300e_3328f748",
         "filename": "rust/compiler.go",
         "patchSetId": 4
@@ -300,6 +372,30 @@
     },
     {
       "key": {
+        "uuid": "400b6a9f_edbaf2a4",
+        "filename": "rust/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T17:34:25Z",
+      "side": 1,
+      "message": "Done (we no longer need this function)",
+      "parentUuid": "93d6300e_3328f748",
+      "range": {
+        "startLine": 266,
+        "startChar": 17,
+        "endLine": 266,
+        "endChar": 21
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d28e6599_9a25e714",
         "filename": "rust/compiler.go",
         "patchSetId": 4
@@ -317,6 +413,24 @@
     },
     {
       "key": {
+        "uuid": "fd715324_1d0f0365",
+        "filename": "rust/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T17:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d28e6599_9a25e714",
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25acc81a_6e57e631",
         "filename": "rust/compiler.go",
         "patchSetId": 4
@@ -331,6 +445,24 @@
       "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04a2bcfd_c7e85556",
+        "filename": "rust/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T17:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25acc81a_6e57e631",
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -357,6 +489,30 @@
     },
     {
       "key": {
+        "uuid": "d69f99f6_278b057f",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T17:34:25Z",
+      "side": 1,
+      "message": "Yea that\u0027s a good point, I\u0027ve added an error.",
+      "parentUuid": "eabf8528_5cc6534e",
+      "range": {
+        "startLine": 98,
+        "startChar": 10,
+        "endLine": 98,
+        "endChar": 11
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fb6c751_dd53dc53",
         "filename": "rust/rust.go",
         "patchSetId": 4
@@ -377,6 +533,30 @@
       "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c62cfc_d828c337",
+        "filename": "rust/rust.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T17:34:25Z",
+      "side": 1,
+      "message": "Ahh I see, that simplifies this a bit as we don\u0027t need to track deps.SourceProviders anymore.",
+      "parentUuid": "1fb6c751_dd53dc53",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 2
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
