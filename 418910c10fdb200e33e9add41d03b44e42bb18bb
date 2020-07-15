@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b6c21ccb_fca18756",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T18:24:52Z",
+      "side": 1,
+      "message": "I only append OUT_DIR now when there is generated source. As OUT_DIR is the Rust convention and this is primarily meant to support external/ (discussed a bit further in our design doc). I don\u0027t think it\u0027s worth the added complexity at this time to support alternatives to OUT_DIR until we have a use case for it.\n\nI\u0027ve switched where the generated source is copied to from \u0027\u003cmodule_intermediates\u003e/gen\u0027 to \u0027\u003cmodule_intermediates\u003e/out\u0027.",
+      "parentUuid": "a09c021a_c4b8bdcf",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "225425b1_ff9d2746",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
