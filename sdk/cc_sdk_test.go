@@ -70,6 +70,9 @@ func TestSdkIsCompileMultilibBoth(t *testing.T) {
 }
 
 func TestSdkCompileMultilibOverride(t *testing.T) {
+	// b/145598135 - Generating host snapshots for anything other than linux is not supported.
+	SkipIfNotLinux(t)
+
 	result := testSdkWithCc(t, `
 		sdk {
 			name: "mysdk",
