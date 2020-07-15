@@ -28,13 +28,17 @@ import (
 //
 // Note that the exception to this behavior is that any diagnostics in the
 // NoOverride lists below must still be fixed.
-const CurrentClangDiagnosticVersion = 0
+const CurrentClangDiagnosticVersion = 1
 
 // Each Clang diagnostic version has an entry in this list that defines
 // additional arguments to be passed to Clang for any modules targeting an older
 // diagnostic version than CurrentClangDiagnosticVersion.
 var ClangDisableWarningsLists = map[int][]string{
 	0: {},
+	1: {
+		"-Wno-non-c-typedef-for-linkage",       // http://b/161304145
+		"-Wno-error=void-pointer-to-enum-cast", // http://b/161386391
+	},
 }
 
 // Each Clang diagnostic version has an entry in this list that defines
@@ -42,6 +46,10 @@ var ClangDisableWarningsLists = map[int][]string{
 // diagnostic version than CurrentClangDiagnosticVersion.
 var ClangTidyDisablesChecksLists = map[int][]string{
 	0: {},
+	1: {
+		"misc-no-recursion",
+		"modernize-replace-disallow-copy-and-assign-macro",
+	},
 }
 
 // Cflags that should be filtered out when compiling with clang
@@ -120,6 +128,10 @@ func init() {
 		// Emit address-significance table which allows linker to perform safe ICF. Clang does
 		// not emit the table by default on Android since NDK still uses GNU binutils.
 		"-faddrsig",
+
+		// Turn on -fcommon explicitly, since Clang now defaults to -fno-common. The cleanup bug
+		// tracking this is http://b/151457797.
+		"-fcommon",
 
 		// Help catch common 32/64-bit errors.
 		"-Werror=int-conversion",
