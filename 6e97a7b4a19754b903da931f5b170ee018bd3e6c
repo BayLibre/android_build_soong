@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcfd4a0a_af602162",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2020-07-15T20:04:02Z",
+      "side": 1,
+      "message": "Mostly just Matthew\u0027s change, but looking up the host Mac toolpath from ccConfig instead of hardcoding it.",
+      "revId": "6e97a7b4a19754b903da931f5b170ee018bd3e6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
