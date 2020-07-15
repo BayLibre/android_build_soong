@@ -33,6 +33,46 @@
       "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95963ec_c87f0303",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T12:57:22Z",
+      "side": 1,
+      "message": "Seems reasonable to me; could you please rename the function so it matches the naming convention? Thanks!",
+      "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f9d26cc_534f0782",
+        "filename": "rust/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-15T12:57:22Z",
+      "side": 1,
+      "message": "nit: testHarness",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
