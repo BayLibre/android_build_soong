@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fac89b66_05ae8c6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-15T20:47:16Z",
+      "side": 1,
+      "message": "I\u0027m fine with this from a rust-building PoV. I\u0027ll let others review for Soong coherence.",
+      "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
