@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c2599e2_69a18a4a",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-16T20:49:39Z",
+      "side": 1,
+      "message": "Since this isn\u0027t supported in make, we don\u0027t need to worry about it in the mk -\u003e bp translation tool (just remove this line)",
+      "revId": "4fc342ee4592802e3769f981c35b56bb5f9ba5e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
