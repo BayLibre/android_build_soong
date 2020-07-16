@@ -16,6 +16,24 @@
       "revId": "a4ab5418b9a133bf5e0f417179cd7767d481c866",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42b70b21_ee6af97b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-16T03:54:33Z",
+      "side": 1,
+      "message": "If it is only for the snapshots we don\u0027t need to define a new \"relese_version\" property.\nBut this is for the source tree that came from a mixed manifest.\nFor example,\n  /system came from the latest AOSP\n  /device came from the source tree of the last year\n  /vendor came from an SoC who did not update their source tree for the laster AOSP\nIn this case, we need to assign the version to each source tree and check if there\u0027s any unexpected dependencies between the different versions.",
+      "parentUuid": "38fcbda4_23f9a2e4",
+      "revId": "a4ab5418b9a133bf5e0f417179cd7767d481c866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
