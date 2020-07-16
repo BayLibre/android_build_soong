@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "d6e2b36c_bf9db5d7",
+        "filename": "cc/.gitignore",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-16T19:31:48Z",
+      "side": 1,
+      "message": "Do we really need this file? These are very broad, and the vast majority of these should never exist as we\u0027re going through soong to do these builds",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 7
+      },
+      "revId": "26f6cbfbe746325a21880108f3a4f349e3dc3192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b607a32_e5c9721c",
         "filename": "cc/ndk_api_coverage_parser/OWNERS",
         "patchSetId": 1
