@@ -33,6 +33,24 @@
       "revId": "26f6cbfbe746325a21880108f3a4f349e3dc3192",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f099095a_08434b67",
+        "filename": "cc/ndk_api_coverage_parser/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-07-16T19:28:29Z",
+      "side": 1,
+      "message": "Not something I consider myself owning.",
+      "parentUuid": "5b607a32_e5c9721c",
+      "revId": "26f6cbfbe746325a21880108f3a4f349e3dc3192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
