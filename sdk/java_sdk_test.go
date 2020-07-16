@@ -17,33 +17,34 @@ package sdk
 import (
 	"testing"
 
+	"android/soong/android"
 	"android/soong/java"
 )
 
+var javaTestFs = map[string][]byte{
+	"Test.java":              nil,
+	"resource.test":          nil,
+	"aidl/foo/bar/Test.aidl": nil,
+
+	// For java_import
+	"prebuilt.jar": nil,
+
+	// For java_sdk_library
+	"api/current.txt":                                   nil,
+	"api/removed.txt":                                   nil,
+	"api/system-current.txt":                            nil,
+	"api/system-removed.txt":                            nil,
+	"api/test-current.txt":                              nil,
+	"api/test-removed.txt":                              nil,
+	"api/module-lib-current.txt":                        nil,
+	"api/module-lib-removed.txt":                        nil,
+	"api/system-server-current.txt":                     nil,
+	"api/system-server-removed.txt":                     nil,
+	"build/soong/scripts/gen-java-current-api-files.sh": nil,
+}
+
 func testSdkWithJava(t *testing.T, bp string) *testSdkResult {
 	t.Helper()
-
-	fs := map[string][]byte{
-		"Test.java":              nil,
-		"resource.test":          nil,
-		"aidl/foo/bar/Test.aidl": nil,
-
-		// For java_import
-		"prebuilt.jar": nil,
-
-		// For java_sdk_library
-		"api/current.txt":                                   nil,
-		"api/removed.txt":                                   nil,
-		"api/system-current.txt":                            nil,
-		"api/system-removed.txt":                            nil,
-		"api/test-current.txt":                              nil,
-		"api/test-removed.txt":                              nil,
-		"api/module-lib-current.txt":                        nil,
-		"api/module-lib-removed.txt":                        nil,
-		"api/system-server-current.txt":                     nil,
-		"api/system-server-removed.txt":                     nil,
-		"build/soong/scripts/gen-java-current-api-files.sh": nil,
-	}
 
 	// for java_sdk_library tests
 	bp = `
@@ -85,7 +86,7 @@ java_import {
 }
 ` + bp
 
-	return testSdkWithFs(t, bp, fs)
+	return testSdkWithFs(t, bp, javaTestFs)
 }
 
 // Contains tests for SDK members provided by the java package.
@@ -379,6 +380,71 @@ sdk_snapshot {
 `),
 		checkAllCopyRules(`
 .intermediates/myjavalib/android_common/turbine-combined/myjavalib.jar -> java/android/myjavalib.jar
+.intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/linux_glibc/myjavalib.jar
+`),
+	)
+}
+
+func TestMultipleHostOsSnapshot(t *testing.T) {
+	ctx, config := testSdkContext(`
+		sdk {
+			name: "mysdk",
+			device_supported: false,
+			host_supported: true,
+			java_header_libs: ["myjavalib"],
+		}
+
+		java_library_host {
+			name: "myjavalib",
+			srcs: ["Test.java"],
+		}
+	`, javaTestFs, []android.OsType{android.LinuxBionic})
+
+	result := runTests(t, ctx, config)
+
+	result.CheckSnapshot("mysdk", "",
+		checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+java_import {
+    name: "mysdk_myjavalib@current",
+    sdk_member_name: "myjavalib",
+    device_supported: false,
+    host_supported: true,
+    target: {
+        linux_bionic: {
+            jars: ["java/linux_bionic/myjavalib.jar"],
+        },
+        linux_glibc: {
+            jars: ["java/linux_glibc/myjavalib.jar"],
+        },
+    },
+}
+
+java_import {
+    name: "myjavalib",
+    prefer: false,
+    device_supported: false,
+    host_supported: true,
+    target: {
+        linux_bionic: {
+            jars: ["java/linux_bionic/myjavalib.jar"],
+        },
+        linux_glibc: {
+            jars: ["java/linux_glibc/myjavalib.jar"],
+        },
+    },
+}
+
+sdk_snapshot {
+    name: "mysdk@current",
+    device_supported: false,
+    host_supported: true,
+    java_header_libs: ["mysdk_myjavalib@current"],
+}
+`),
+		checkAllCopyRules(`
+.intermediates/myjavalib/linux_bionic_common/javac/myjavalib.jar -> java/linux_bionic/myjavalib.jar
 .intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar -> java/linux_glibc/myjavalib.jar
 `),
 	)
