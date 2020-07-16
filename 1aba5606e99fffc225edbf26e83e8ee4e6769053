@@ -16,6 +16,23 @@
       "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31ddd6c_052f149b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-16T04:52:50Z",
+      "side": 1,
+      "message": "Sorry, please don\u0027t add more to this list. \n\nPlease add `apex_available` property to the Android.bp for the library.",
+      "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
