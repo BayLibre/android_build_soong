@@ -141,6 +141,9 @@ func init() {
 }
 
 func useLegacyCorePlatformApi(ctx android.EarlyModuleContext) bool {
+	if ctx.Config().Getenv("EXPERIMENTAL_FORCE_STABLE_CORE_PLATFORM") == ctx.ModuleName() {
+		return false
+	}
 	_, found := legacyCorePlatformApiLookup[ctx.ModuleName()]
 	return found
 }
