@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "839f6992_d66be387",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-16T20:59:33Z",
+      "side": 1,
+      "message": "this (and it\u0027s implementation) don\u0027t appear to be being used anymore.",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 64
+      },
+      "revId": "697fe330ce5be6ee565b37638bdb7b52a7004b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fef0ada_2a5732f5",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-16T20:59:33Z",
+      "side": 1,
+      "message": "relative_install_paths are also used in rust and prebuilt_* modules -- it may make sense to put this in android/paths.go instead.",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 1
+      },
+      "revId": "697fe330ce5be6ee565b37638bdb7b52a7004b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e5f0c8_bb967533",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-16T20:59:33Z",
+      "side": 1,
+      "message": "Optional: a data path with empty RelativeInstallPath seems to be relatively common, a convenience function may be nice.",
+      "range": {
+        "startLine": 349,
+        "startChar": 32,
+        "endLine": 349,
+        "endChar": 87
+      },
+      "revId": "697fe330ce5be6ee565b37638bdb7b52a7004b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f92cdc88_6a81d92d",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-16T20:59:33Z",
+      "side": 1,
+      "message": "Optional: since we have relative install paths other places, a function/interface may be nice but the utility depends on if similar functionality will be needed to support other data_* types for non-cc modules types.",
+      "range": {
+        "startLine": 368,
+        "startChar": 27,
+        "endLine": 368,
+        "endChar": 67
+      },
+      "revId": "697fe330ce5be6ee565b37638bdb7b52a7004b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
