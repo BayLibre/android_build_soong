@@ -16,6 +16,24 @@
       "revId": "fb23bae736b9e689a3cf776cd296e7df3288566c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237dd3c3_55673c8e",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-16T03:48:01Z",
+      "side": 1,
+      "message": "\"vndk_version\" is too specific for this use because VNDK only covers \"cc\" modules. The \"release_version\" property in this CL covers all kinds of modules including Java, python and even etc modules.\n\nThe property \"release_version\" is to provide the Android API level that the module is built. It prevents the dependency between the modules from the deferent Android release.\n\nCurrently, we have hardcoded directory names (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/vendor_snapshot.go;l\u003d485-504) in vendor_snapshot.go. This directories are considered to have the old source trees and creates the variation with the BOARD_VNDK_VERSION while the other directories creates the variation with the PLATFORM_VNDK_VERSION for cc modules.\n\nIt caused problems:\n1. It only covers cc modules. The other modules in the directories still have risk to depend on the modules outside of the directories.\n2. The directories are not manageable because they are hardcoded in soong.\n\nSo I defined a new property \"release_version\" for more general use and am preparing for \"source_tree\" module (aosp/1362478) for ease of defining the version.",
+      "parentUuid": "00e0a919_6d360b2d",
+      "revId": "fb23bae736b9e689a3cf776cd296e7df3288566c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
