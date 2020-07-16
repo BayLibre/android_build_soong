@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4955b3cd_87e65c48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536847
+      },
+      "writtenOn": "2020-07-16T04:48:43Z",
+      "side": 1,
+      "message": "bluetooth.a2dp@1.1: https://android-review.googlesource.com/c/platform/hardware/interfaces/+/1364396",
+      "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
