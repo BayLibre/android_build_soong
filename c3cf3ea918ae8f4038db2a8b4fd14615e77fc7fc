@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1779def8_42befe72",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-07-16T00:27:05Z",
+      "side": 1,
+      "message": "I\u0027m not crazy about this name. I wanted to use \"min_sdk_version\" but that\u0027s already taken for APEX. Open to suggestions.",
+      "revId": "c3cf3ea918ae8f4038db2a8b4fd14615e77fc7fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
