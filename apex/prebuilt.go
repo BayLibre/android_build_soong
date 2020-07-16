@@ -21,6 +21,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/java"
+
 	"github.com/google/blueprint"
 
 	"github.com/google/blueprint/proptools"
@@ -39,9 +40,51 @@ var (
 		"abis", "allow-prereleased", "sdk-version")
 )
 
+type prebuilt interface {
+	isForceDisabled() bool
+	InstallFilename() string
+}
+
+type prebuiltCommon struct {
+	prebuilt   android.Prebuilt
+	properties prebuiltCommonProperties
+}
+
+type prebuiltCommonProperties struct {
+	ForceDisable bool `blueprint:"mutated"`
+}
+
+func (p *prebuiltCommon) isForceDisabled() bool {
+	return p.properties.ForceDisable
+}
+
+func (p *prebuiltCommon) checkForceDisable(ctx android.ModuleContext) bool {
+	// If the device is configured to use flattened APEX, force disable the prebuilt because
+	// the prebuilt is a non-flattened one.
+	forceDisable := ctx.Config().FlattenApex()
+
+	// Force disable the prebuilts when we are doing unbundled build. We do unbundled build
+	// to build the prebuilts themselves.
+	forceDisable = forceDisable || ctx.Config().UnbundledBuild()
+
+	// Force disable the prebuilts when coverage is enabled.
+	forceDisable = forceDisable || ctx.DeviceConfig().NativeCoverageEnabled()
+	forceDisable = forceDisable || ctx.Config().IsEnvTrue("EMMA_INSTRUMENT")
+
+	// b/137216042 don't use prebuilts when address sanitizer is on
+	forceDisable = forceDisable || android.InList("address", ctx.Config().SanitizeDevice()) ||
+		android.InList("hwaddress", ctx.Config().SanitizeDevice())
+
+	if forceDisable && p.prebuilt.SourceExists() {
+		p.properties.ForceDisable = true
+		return true
+	}
+	return false
+}
+
 type Prebuilt struct {
 	android.ModuleBase
-	prebuilt android.Prebuilt
+	prebuiltCommon
 
 	properties PrebuiltProperties
 
@@ -57,8 +100,7 @@ type Prebuilt struct {
 
 type PrebuiltProperties struct {
 	// the path to the prebuilt .apex file to import.
-	Source       string `blueprint:"mutated"`
-	ForceDisable bool   `blueprint:"mutated"`
+	Source string `blueprint:"mutated"`
 
 	Src  *string
 	Arch struct {
@@ -93,10 +135,6 @@ func (p *Prebuilt) installable() bool {
 	return p.properties.Installable == nil || proptools.Bool(p.properties.Installable)
 }
 
-func (p *Prebuilt) isForceDisabled() bool {
-	return p.properties.ForceDisable
-}
-
 func (p *Prebuilt) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
 	case "":
@@ -111,11 +149,11 @@ func (p *Prebuilt) InstallFilename() string {
 }
 
 func (p *Prebuilt) Prebuilt() *android.Prebuilt {
-	return &p.prebuilt
+	return &p.prebuiltCommon.prebuilt
 }
 
 func (p *Prebuilt) Name() string {
-	return p.prebuilt.Name(p.ModuleBase.Name())
+	return p.prebuiltCommon.prebuilt.Name(p.ModuleBase.Name())
 }
 
 // prebuilt_apex imports an `.apex` file into the build graph as if it was built with apex.
@@ -128,27 +166,6 @@ func PrebuiltFactory() android.Module {
 }
 
 func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
-	// If the device is configured to use flattened APEX, force disable the prebuilt because
-	// the prebuilt is a non-flattened one.
-	forceDisable := ctx.Config().FlattenApex()
-
-	// Force disable the prebuilts when we are doing unbundled build. We do unbundled build
-	// to build the prebuilts themselves.
-	forceDisable = forceDisable || ctx.Config().UnbundledBuild()
-
-	// Force disable the prebuilts when coverage is enabled.
-	forceDisable = forceDisable || ctx.DeviceConfig().NativeCoverageEnabled()
-	forceDisable = forceDisable || ctx.Config().IsEnvTrue("EMMA_INSTRUMENT")
-
-	// b/137216042 don't use prebuilts when address sanitizer is on
-	forceDisable = forceDisable || android.InList("address", ctx.Config().SanitizeDevice()) ||
-		android.InList("hwaddress", ctx.Config().SanitizeDevice())
-
-	if forceDisable && p.prebuilt.SourceExists() {
-		p.properties.ForceDisable = true
-		return
-	}
-
 	// This is called before prebuilt_select and prebuilt_postdeps mutators
 	// The mutators requires that src to be set correctly for each arch so that
 	// arch variants are disabled when src is not provided for the arch.
@@ -177,7 +194,8 @@ func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	if p.properties.ForceDisable {
+	if p.prebuiltCommon.checkForceDisable(ctx) {
+		p.SkipInstall()
 		return
 	}
 
@@ -227,7 +245,7 @@ func (p *Prebuilt) AndroidMkEntries() []android.AndroidMkEntries {
 
 type ApexSet struct {
 	android.ModuleBase
-	prebuilt android.Prebuilt
+	prebuiltCommon
 
 	properties ApexSetProperties
 
@@ -271,11 +289,11 @@ func (a *ApexSet) InstallFilename() string {
 }
 
 func (a *ApexSet) Prebuilt() *android.Prebuilt {
-	return &a.prebuilt
+	return &a.prebuiltCommon.prebuilt
 }
 
 func (a *ApexSet) Name() string {
-	return a.prebuilt.Name(a.ModuleBase.Name())
+	return a.prebuiltCommon.prebuilt.Name(a.ModuleBase.Name())
 }
 
 func (a *ApexSet) Overrides() []string {
@@ -292,12 +310,16 @@ func apexSetFactory() android.Module {
 }
 
 func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if a.prebuiltCommon.checkForceDisable(ctx) {
+		a.SkipInstall()
+		return
+	}
 	a.installFilename = a.InstallFilename()
 	if !strings.HasSuffix(a.installFilename, imageApexSuffix) {
 		ctx.ModuleErrorf("filename should end in %s for apex_set", imageApexSuffix)
 	}
 
-	apexSet := a.prebuilt.SingleSourcePath(ctx)
+	apexSet := a.prebuiltCommon.prebuilt.SingleSourcePath(ctx)
 	a.outputApex = android.PathForModuleOut(ctx, a.installFilename)
 	ctx.Build(pctx,
 		android.BuildParams{
