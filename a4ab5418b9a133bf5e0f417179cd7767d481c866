@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38fcbda4_23f9a2e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-16T00:36:35Z",
+      "side": 1,
+      "message": "If this is for VNDK snapshot\u0027s generated Android.bp files, can\u0027t we just generate the right value for them?  Or give them all defaults modules that you can use to set release_version?",
+      "revId": "a4ab5418b9a133bf5e0f417179cd7767d481c866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
