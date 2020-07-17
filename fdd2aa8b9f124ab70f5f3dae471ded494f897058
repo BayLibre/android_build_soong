@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "7aebdc19_d4a53d7b",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-17T19:21:39Z",
+      "side": 1,
+      "message": "Ah yea my test collision was (incorrectly) erroring out further down when multiple rules generated the same output file. I\u0027ve updated this to SuffixInList and verified the correct error message, thanks!",
+      "parentUuid": "f20aa103_194b2524",
+      "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f8a9656_34a4333b",
         "filename": "rust/builder.go",
         "patchSetId": 6
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "4d0517e1_f6a3d2ae",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-17T19:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8a9656_34a4333b",
+      "range": {
+        "startLine": 235,
+        "startChar": 16,
+        "endLine": 235,
+        "endChar": 31
+      },
+      "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ef6c377_be63782d",
         "filename": "rust/rust.go",
         "patchSetId": 6
@@ -73,6 +115,24 @@
       "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ce70d1_c71f3fbc",
+        "filename": "rust/rust.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-17T19:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ef6c377_be63782d",
+      "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
