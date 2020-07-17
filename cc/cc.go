@@ -116,6 +116,8 @@ type Deps struct {
 	// Used for host bionic
 	LinkerFlagsFile string
 	DynamicLinker   string
+
+	Tools []string
 }
 
 type PathDeps struct {
@@ -158,6 +160,8 @@ type PathDeps struct {
 
 	// Path to the dynamic linker binary
 	DynamicLinker android.OptionalPath
+
+	Tools map[string]android.Path
 }
 
 // LocalOrGlobalFlags contains flags that need to have values set globally by the build system or locally by the module
@@ -513,6 +517,12 @@ func (d libraryDependencyTag) static() bool {
 // variable and modifying it will not modify the original).  Users can compare the tag
 // returned by ctx.OtherModuleDependencyTag against the global original
 type dependencyTag struct {
+	blueprint.BaseDependencyTag
+	name string
+}
+
+// toolDependencyTag is used for tagging build tool dependencies (m4, bison, etc)
+type toolDependencyTag struct {
 	blueprint.BaseDependencyTag
 	name string
 }
@@ -1712,6 +1722,7 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	deps.LateSharedLibs = android.LastUniqueStrings(deps.LateSharedLibs)
 	deps.HeaderLibs = android.LastUniqueStrings(deps.HeaderLibs)
 	deps.RuntimeLibs = android.LastUniqueStrings(deps.RuntimeLibs)
+	deps.Tools = android.LastUniqueStrings(deps.Tools)
 
 	for _, lib := range deps.ReexportSharedLibHeaders {
 		if !inList(lib, deps.SharedLibs) {
@@ -2059,6 +2070,11 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			}, vndkExtDepTag, vndkdep.getVndkExtendsModuleName())
 		}
 	}
+
+	for _, tool := range deps.Tools {
+		actx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(),
+			toolDependencyTag{name: tool}, tool)
+	}
 }
 
 func BeginMutator(ctx android.BottomUpMutatorContext) {
@@ -2263,6 +2279,21 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
+
+		if toolDep, ok := depTag.(toolDependencyTag); ok {
+			if toolMod, ok := dep.(android.HostToolProvider); ok {
+				if depPaths.Tools == nil {
+					depPaths.Tools = make(map[string]android.Path)
+				}
+				toolPath := toolMod.HostToolPath()
+				if !toolPath.Valid() {
+					ctx.ModuleErrorf("Failed to find path for host tool %q", toolDep.name)
+				}
+				depPaths.Tools[toolDep.name] = toolPath.Path()
+			} else {
+				ctx.ModuleErrorf("Found module, but not host tool for %q", toolDep.name)
+			}
+		}
 
 		ccDep, ok := dep.(LinkableInterface)
 		if !ok {
