@@ -16,6 +16,24 @@
       "revId": "11eeb5c2dcfd6769a01928bd5d7d7761083fe75c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3181d71_cdf09ff5",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-17T20:20:49Z",
+      "side": 1,
+      "message": "My initial go at this was to have it as a standalone module type, but I realized I\u0027d be duplicating a lot of what\u0027s already provided by Module. This may end up being beneficial another way though. \n\nWe\u0027d like to provide compiled libraries of generated source so that other rust modules can list to them as rlib or dylib dependencies. One approach I\u0027m experimenting with is placing a libraryDecorator in Module.compiler for rust_bindgen and allowing both Module.sourceProvider and Module.compiler to be defined.",
+      "parentUuid": "e5b3866e_551f5792",
+      "revId": "11eeb5c2dcfd6769a01928bd5d7d7761083fe75c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
