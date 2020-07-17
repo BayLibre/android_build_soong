@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7113084e_04377977",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-07-17T23:17:02Z",
+      "side": 1,
+      "message": "I was adding some tests for the AIDL compiler and hit this error and a few similar ones:\n```\nout/soong/.bootstrap/bin/gotestrunner -p ./system/tools/aidl/build -f out/soong/.bootstrap/aidl-soong-rules/test/test.passed -- out/soong/.bootstrap/aidl-soong-rules/test/test -test.short\n--- FAIL: TestNativeOutputIsAlwaysVersioned (0.19s)\n    aidl_test.go:544: libfoo-V1-rust(android_arm_armv7-a-neon_dylib): should be OutputFileProducer.\npanic: runtime error: invalid memory address or nil pointer dereference [recovered]\n        panic: runtime error: invalid memory address or nil pointer dereference\n[signal SIGSEGV: segmentation violation code\u003d0x1 addr\u003d0x18 pc\u003d0x9fe1f3]\n```\n\nThis patch fixes the error.",
+      "revId": "7a6aeeba69111aed7a8f3751f51b60a12b27a187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
