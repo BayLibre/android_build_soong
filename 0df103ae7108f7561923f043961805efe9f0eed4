@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54f1b7aa_d2131273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-07-17T22:39:13Z",
+      "side": 1,
+      "message": "@Aurimas, I\u0027m going to hide UnresolvedImport too.",
+      "revId": "0df103ae7108f7561923f043961805efe9f0eed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
