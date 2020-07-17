@@ -16,6 +16,29 @@
       "revId": "590ea42c604256d05b57a66470f138c58f02522a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "348f4e5c_51fc5e61",
+        "filename": "cc/test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-17T22:01:05Z",
+      "side": 1,
+      "message": "this only appears to be being used here https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d1404-1411;drc\u003d79d66a5db75e05b13347e0c27785f025349e70c4 and in tests -- I think changing the return here/that function to an array of android.DataPath would be the correct behavior to prevent future bugs.",
+      "range": {
+        "startLine": 168,
+        "startChar": 24,
+        "endLine": 168,
+        "endChar": 33
+      },
+      "revId": "590ea42c604256d05b57a66470f138c58f02522a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
