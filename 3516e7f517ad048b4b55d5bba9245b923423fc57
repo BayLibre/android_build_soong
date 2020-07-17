@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "783805a8_407eee64",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-17T21:09:03Z",
+      "side": 1,
+      "message": "Loc doesn\u0027t seem obvious as location -- can we use location throughout?",
+      "range": {
+        "startLine": 1259,
+        "startChar": 5,
+        "endLine": 1259,
+        "endChar": 8
+      },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25dd9d66_13432c7b",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-17T21:09:03Z",
+      "side": 1,
+      "message": "This seems to be duplicating a lot of storage and potentially future bugs if these three slices don\u0027t stay in sync -- perhaps something like:\n\n```\ntype locJar struct {\n   loc string\n   jar string\n}\n\ntype LocJars struct {\n   locJars []locJar\n}\n```\n\nwould simplify things and reduce storage. Then the functions could be defined with LocJars as receivers and we can eliminate the interface.",
+      "range": {
+        "startLine": 1297,
+        "startChar": 0,
+        "endLine": 1301,
+        "endChar": 1
+      },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
