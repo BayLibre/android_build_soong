@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99114ce3_f75afc1a",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-17T13:57:52Z",
+      "side": 1,
+      "message": "The flipside of this is that host OS independent (i.e. java) members ought to have a single generic \"host\" target instead of the specific host OS type. I looked into that a bit, but noticed that e.g. java_library_host can produce several prebuilts for host: https://android.git.corp.google.com/platform/prebuilts/runtime/+/refs/heads/master/mainline/conscrypt/host-exports/Android.bp#31\n\nThe jars are identical there, but I think a proper solution should verify that (or better introduce \"CommonHostOs\" as an OsType with its own variant in osMutator and use that instead of the specific host OS), and that meant a bit more work than I was prepared to spend on this.\n\nI did put together a test for it anyway: https://r.android.com/1365637",
+      "revId": "2ea3e5b7c0431b2798e15a351041202d0cad1b4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
