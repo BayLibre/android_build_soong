@@ -16,6 +16,24 @@
       "revId": "559ef84f2d9caa44494a19903e26ddfda6d41d96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60bc9f4b_045b0d28",
+        "filename": "rust/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-17T19:35:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e55195e_468a2321",
+      "revId": "559ef84f2d9caa44494a19903e26ddfda6d41d96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
