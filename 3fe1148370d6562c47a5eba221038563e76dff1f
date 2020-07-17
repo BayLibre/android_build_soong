@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3b34faf2_8d94f14c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-17T03:50:31Z",
+      "side": 1,
+      "message": "We will eventually stop using `prefer: true`. But I found that it\u0027s not the end of story because it still requires us to drop the name of the prebuilts from PRODUCT_PACKAGES and therefore define a new product target. What this change enables is to disable the prebuilts while keeping the same product target.\n\nFor example, \n\n$ choosecombo 1 blueline userdebug\n$ m  // this will install prebuilt APEXes\n$ OVERRIDE_TARGET_FLATTEN_APEX\u003dtrue m // this will disable prebuilt APEXes\n$ SANITIZE_TARGET\u003dhwaddress m // this will also disable prebuilt APEXes\n...",
+      "parentUuid": "2aaf21d0_d4c7be54",
+      "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b904331_fa6f0a0e",
         "filename": "apex/prebuilt.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb0b0ef_770475da",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-17T03:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b904331_fa6f0a0e",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "e541b3a5_97b6cabf",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-17T03:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1d4aeb_05ee9468",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5df780e_b6bd746b",
         "filename": "apex/prebuilt.go",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3e3ce8_aa038e9c",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-17T03:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5df780e_b6bd746b",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 64
+      },
+      "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
