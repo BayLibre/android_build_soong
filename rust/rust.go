@@ -467,6 +467,18 @@ func (mod *Module) OutputFile() android.OptionalPath {
 	return mod.outputFile
 }
 
+func (mod *Module) OutputFiles(tag string) (android.Paths, error) {
+	switch tag {
+	case "":
+		if mod.outputFile.Valid() {
+			return android.Paths{mod.outputFile.Path()}, nil
+		}
+		return android.Paths{}, nil
+	default:
+		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+	}
+}
+
 func (mod *Module) InRecovery() bool {
 	// For now, Rust has no notion of the recovery image
 	return false
