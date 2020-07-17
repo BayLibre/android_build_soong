@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2aaf21d0_d4c7be54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-17T00:58:14Z",
+      "side": 1,
+      "message": "How is this related to \"prefer:true\" cases? I guess this is a step toward deprecating \"prefer:true\" of prebuilts, right?\n\n",
+      "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b904331_fa6f0a0e",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-17T00:58:14Z",
+      "side": 1,
+      "message": "Recently I found that ForceDisable doesn\u0027t work for prebuilt_apex, which seems to be introduced by mast@\u0027s change (aosp/1363557). This change fixes it as well.",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1d4aeb_05ee9468",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-17T00:58:14Z",
+      "side": 1,
+      "message": "Can we move this method to prebuiltCommon? (together with ApexSet\u0027s)",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5df780e_b6bd746b",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-17T00:58:14Z",
+      "side": 1,
+      "message": "Even if we force disable it, can we keep emitting the build rules? at least for p.outputApex?\n\nI found that some test modules depend on prebuilt_apex\u0027s as \"data\", which might break build when a referenced prebuilt_apex is force disabled.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 64
+      },
+      "revId": "3fe1148370d6562c47a5eba221038563e76dff1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
