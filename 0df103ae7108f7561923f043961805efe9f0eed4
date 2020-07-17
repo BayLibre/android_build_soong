@@ -16,6 +16,24 @@
       "revId": "0df103ae7108f7561923f043961805efe9f0eed4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "372601aa_753e0a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-17T22:58:48Z",
+      "side": 1,
+      "message": "SGTM, although it seems better long term to make it an error and fix the existing cases.",
+      "parentUuid": "54f1b7aa_d2131273",
+      "revId": "0df103ae7108f7561923f043961805efe9f0eed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
