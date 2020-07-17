@@ -16,6 +16,63 @@
       "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f20aa103_194b2524",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-17T17:59:38Z",
+      "side": 1,
+      "message": "This will never be true, implicitOutputs is the full path to the file, genSrc.Base() is just the filename.",
+      "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f8a9656_34a4333b",
+        "filename": "rust/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-17T17:59:38Z",
+      "side": 1,
+      "message": "maybe rename this if it\u0027s no going into ImplicitOutputs.",
+      "range": {
+        "startLine": 235,
+        "startChar": 16,
+        "endLine": 235,
+        "endChar": 31
+      },
+      "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ef6c377_be63782d",
+        "filename": "rust/rust.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-17T17:59:38Z",
+      "side": 1,
+      "message": "I think it makes more sense to implement android.OutputFileProducer, and make the default (empty string tag parameter) file be the Srcs() for bindgen modules but mod.outputFile for other modules.  You\u0027ll eventually need OutputFileProducer to use the output of a rust module as an input to a genrule or packaging rule.  If Module implements both OutputFileProducer and SourceProvider then OutputFileProducer takes precedence (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/paths.go;l\u003d400-412;drc\u003d70f0b530001737b3fd119d5d6da1f1ce78780780), so adding OutputFiles later will cause this function to never be called.",
+      "revId": "fdd2aa8b9f124ab70f5f3dae471ded494f897058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
