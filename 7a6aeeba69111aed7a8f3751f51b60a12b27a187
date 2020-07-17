@@ -16,6 +16,23 @@
       "revId": "7a6aeeba69111aed7a8f3751f51b60a12b27a187",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0855f085_fd4e6c98",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-07-17T23:18:09Z",
+      "side": 1,
+      "message": "This code is copied verbatim from cc/cc.go.",
+      "revId": "7a6aeeba69111aed7a8f3751f51b60a12b27a187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
