@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3bb36304_f93a6f3c",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-17T19:57:13Z",
+      "side": 1,
+      "message": "Resolved.",
+      "parentUuid": "65e3b0ab_e219bb8e",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 64
+      },
+      "revId": "697fe330ce5be6ee565b37638bdb7b52a7004b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fef0ada_2a5732f5",
         "filename": "cc/test.go",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "e07bcac5_eab34b39",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-17T19:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fef0ada_2a5732f5",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 1
+      },
+      "revId": "697fe330ce5be6ee565b37638bdb7b52a7004b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e5f0c8_bb967533",
         "filename": "cc/test.go",
         "patchSetId": 4
@@ -83,6 +131,30 @@
       "writtenOn": "2020-07-16T20:59:33Z",
       "side": 1,
       "message": "Optional: a data path with empty RelativeInstallPath seems to be relatively common, a convenience function may be nice.",
+      "range": {
+        "startLine": 349,
+        "startChar": 32,
+        "endLine": 349,
+        "endChar": 87
+      },
+      "revId": "697fe330ce5be6ee565b37638bdb7b52a7004b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4760ee30_cb1ab59e",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-17T19:57:13Z",
+      "side": 1,
+      "message": "Can now be constructed without RelativeInstallPath, as it\u0027s public.",
+      "parentUuid": "c0e5f0c8_bb967533",
       "range": {
         "startLine": 349,
         "startChar": 32,

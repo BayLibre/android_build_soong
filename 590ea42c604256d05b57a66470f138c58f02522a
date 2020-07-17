@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7047124b_80693a23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-17T19:57:13Z",
+      "side": 1,
+      "message": "Please take another look. This operates in conjunction with aosp/1365263, and requires that that CL is submitted first.",
+      "revId": "590ea42c604256d05b57a66470f138c58f02522a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
