@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5b3866e_551f5792",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-17T18:15:59Z",
+      "side": 1,
+      "message": "What does bindgen gain by reusing Module?  Should it be its own standalone module type?",
+      "revId": "11eeb5c2dcfd6769a01928bd5d7d7761083fe75c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
