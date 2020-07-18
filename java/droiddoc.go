@@ -1198,8 +1198,6 @@ type Droidstubs struct {
 
 	checkCurrentApiTimestamp      android.WritablePath
 	updateCurrentApiTimestamp     android.WritablePath
-	checkLastReleasedApiTimestamp android.WritablePath
-	apiLintTimestamp              android.WritablePath
 	apiLintReport                 android.WritablePath
 
 	checkNullabilityWarningsTimestamp android.WritablePath
@@ -1574,17 +1572,9 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		cmd.ImplicitOutput(android.PathForModuleGen(ctx, o))
 	}
 
-	// Add options for the other optional tasks: API-lint and check-released.
-	// We generate separate timestamp files for them.
-
-	doApiLint := false
-	doCheckReleased := false
-
 	// Add API lint options.
 
 	if BoolDefault(d.properties.Check_api.Api_lint.Enabled, false) && !ctx.Config().IsPdkBuild() {
-		doApiLint = true
-
 		newSince := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Api_lint.New_since)
 		if newSince.Valid() {
 			cmd.FlagWithInput("--api-lint ", newSince.Path())
@@ -1596,7 +1586,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Api_lint.Baseline_file)
 		updatedBaselineOutput := android.PathForModuleOut(ctx, "api_lint_baseline.txt")
-		d.apiLintTimestamp = android.PathForModuleOut(ctx, "api_lint.timestamp")
 
 		// Note this string includes a special shell quote $' ... ', which decodes the "\n"s.
 		// However, because $' ... ' doesn't expand environmental variables, we can't just embed
@@ -1642,8 +1631,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	if apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") &&
 		!ctx.Config().IsPdkBuild() {
-		doCheckReleased = true
-
 		if len(d.Javadoc.properties.Out) > 0 {
 			ctx.PropertyErrorf("out", "out property may not be combined with check_api")
 		}
@@ -1652,8 +1639,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Removed_api_file))
 		baselineFile := android.OptionalPathForModuleSrc(ctx, d.properties.Check_api.Last_released.Baseline_file)
 		updatedBaselineOutput := android.PathForModuleOut(ctx, "last_released_baseline.txt")
-
-		d.checkLastReleasedApiTimestamp = android.PathForModuleOut(ctx, "check_last_released_api.timestamp")
 
 		cmd.FlagWithInput("--check-compatibility:api:released ", apiFile)
 		cmd.FlagWithInput("--check-compatibility:removed:released ", removedApiFile)
@@ -1701,15 +1686,6 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			FlagWithOutput("-o ", d.metadataZip).
 			FlagWithArg("-C ", d.metadataDir.String()).
 			FlagWithArg("-D ", d.metadataDir.String())
-	}
-
-	// TODO: We don't really need two separate API files, but this is a reminiscence of how
-	// we used to run metalava separately for API lint and the "last_released" check. Unify them.
-	if doApiLint {
-		rule.Command().Text("touch").Output(d.apiLintTimestamp)
-	}
-	if doCheckReleased {
-		rule.Command().Text("touch").Output(d.checkLastReleasedApiTimestamp)
 	}
 
 	rule.Restat()
