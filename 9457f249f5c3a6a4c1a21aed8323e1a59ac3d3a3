@@ -16,6 +16,23 @@
       "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb499f73_7c623800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-07-18T13:39:37Z",
+      "side": 1,
+      "message": "Related to this commit, do we really need all these timestamps files?\nIMO the build system should be able to generate the new stubs based alone on the source files",
+      "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
