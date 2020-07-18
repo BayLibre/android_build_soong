@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79a9e595_bf22db3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-07-18T13:29:15Z",
+      "side": 1,
+      "message": "This resolves a TODO leftover from the metalava merge\n\nI was looking at\nWARNING: An illegal reflective access operation has occurred\nWARNING: Illegal reflective access by com.intellij.util.ReflectionUtil (file:out/soong/host/linux-x86/framework/metalava.jar) to method java.util.ResourceBundle.setParent(java.util.ResourceBundle)\nWARNING: Please consider reporting this to the maintainers of com.intellij.util.ReflectionUtil\nWARNING: Use --illegal-access\u003dwarn to enable warnings of further illegal reflective access operations\nWARNING: All illegal access operations will be denied in a future release\n\nBut in upstream ReflectionUtil doesn\u0027t use ResourceBundle so I guess it\u0027s just the last bit of the callstack that triggers the warning, any idea how to get a more \"verbose\" log?\nI don\u0027t think it\u0027s in metalava either, rather in the intellij lib",
+      "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
