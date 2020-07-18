@@ -33,6 +33,24 @@
       "revId": "6e17ad5937308ef6b3acdc3d184a18f964e16653",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f551c4a_9cbdb807",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-07-18T16:52:21Z",
+      "side": 1,
+      "message": "I know you have to update prebuilts and ninja, but I see improvements even in Q ( I backported it ) and given in R soong takes a lot more time it would really benefit to have both tests and generation running in parallel",
+      "parentUuid": "f166eb9c_62b51398",
+      "revId": "6e17ad5937308ef6b3acdc3d184a18f964e16653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
