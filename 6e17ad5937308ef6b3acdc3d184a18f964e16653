@@ -16,6 +16,23 @@
       "revId": "6e17ad5937308ef6b3acdc3d184a18f964e16653",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f166eb9c_62b51398",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-18T16:42:08Z",
+      "side": 1,
+      "message": "Not easily, it depends on updating ninja.",
+      "revId": "6e17ad5937308ef6b3acdc3d184a18f964e16653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
