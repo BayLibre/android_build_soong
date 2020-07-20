@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03c661e1_ae9d222d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-20T15:48:09Z",
+      "side": 1,
+      "message": "aosp/1365263  is submitted, so this should be good to go.",
+      "revId": "cad083fea907190f58f1a55379b8c3ee6f84e34a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
