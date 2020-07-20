@@ -16,6 +16,24 @@
       "revId": "d3cd2f5793ae81a09fd7d30f622080aa1695081a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8467cc1_054deee9",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-07-20T15:45:17Z",
+      "side": 0,
+      "message": "Uh indeed this is needed, I mistakenly removed it because it was inside the timestamp check",
+      "parentUuid": "13c8713a_f05a4a95",
+      "revId": "d3cd2f5793ae81a09fd7d30f622080aa1695081a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9cf4c487_3f6ac176",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-07-20T15:45:17Z",
+      "side": 1,
+      "message": "It\u0027s merely a clean-up",
+      "parentUuid": "7a57904b_9ea1f1a5",
+      "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79a9e595_bf22db3b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "side": 1,
       "message": "Ideally, yes, but:\n\n- For the stub file generation, the build system doesn\u0027t know what files metalava would emit -- in fact, it may not any stub files if all classes are hidden, so we can\u0027t rely on them.\n\n- I don\u0027t believe there\u0027s any other output files metalava always emit *but removes when it fails*, and even if we had, we often change options to pass to metalava, so I think using a timestamp file is the most straightforward and robust way.",
       "parentUuid": "bb499f73_7c623800",
+      "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2b9e839_36da91be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-07-20T15:45:17Z",
+      "side": 1,
+      "message": "I played a bit these days and indeed I see the issue with metalava not always creating an output, thus requiring a timestamp to rely on",
+      "parentUuid": "d7f7ca36_7a48af79",
       "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
