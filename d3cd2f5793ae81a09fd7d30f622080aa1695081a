@@ -34,6 +34,52 @@
       "revId": "d3cd2f5793ae81a09fd7d30f622080aa1695081a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "accd23dc_5a65b4eb",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-20T22:24:52Z",
+      "side": 0,
+      "message": "I believe we\u0027ll still need phony targets to include last released or api-lint checks when running checkapi",
+      "range": {
+        "startLine": 631,
+        "startChar": 0,
+        "endLine": 637,
+        "endChar": 43
+      },
+      "revId": "d3cd2f5793ae81a09fd7d30f622080aa1695081a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ff64cc_e03655d9",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-20T22:24:52Z",
+      "side": 0,
+      "message": "I _think_this TODO was indicating that we only need a single timestamp file, not that we don\u0027t need any (https://android-review.googlesource.com/c/platform/build/soong/+/1296692/2/java/droiddoc.go#1551)",
+      "range": {
+        "startLine": 1706,
+        "startChar": 1,
+        "endLine": 1707,
+        "endChar": 94
+      },
+      "revId": "d3cd2f5793ae81a09fd7d30f622080aa1695081a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
