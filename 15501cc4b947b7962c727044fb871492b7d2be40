@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "184e1b6e_5a0a8a30",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3148,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-07-20T12:33:04Z",
+      "side": 1,
+      "message": "To install current version of vndk (com.android.vndk.current)?",
+      "parentUuid": "eeb281f6_4b5891a1",
+      "range": {
+        "startLine": 3145,
+        "startChar": 4,
+        "endLine": 3148,
+        "endChar": 3
+      },
+      "revId": "15501cc4b947b7962c727044fb871492b7d2be40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7e62809_dae16a21",
         "filename": "cc/cc.go",
         "patchSetId": 1
