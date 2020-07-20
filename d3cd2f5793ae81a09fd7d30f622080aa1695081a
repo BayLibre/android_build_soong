@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13c8713a_f05a4a95",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-07-20T15:40:25Z",
+      "side": 0,
+      "message": "Do we really not need it?",
+      "revId": "d3cd2f5793ae81a09fd7d30f622080aa1695081a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a57904b_9ea1f1a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-07-20T15:40:25Z",
+      "side": 1,
+      "message": "- Could you also explain motivation for future reference -- is having duplicate timestamp files making something inefficient or something? Or is it just purely a clean up.",
+      "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79a9e595_bf22db3b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -30,6 +47,24 @@
       "writtenOn": "2020-07-18T13:39:37Z",
       "side": 1,
       "message": "Related to this commit, do we really need all these timestamps files?\nIMO the build system should be able to generate the new stubs based alone on the source files",
+      "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7f7ca36_7a48af79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-07-20T15:40:25Z",
+      "side": 1,
+      "message": "Ideally, yes, but:\n\n- For the stub file generation, the build system doesn\u0027t know what files metalava would emit -- in fact, it may not any stub files if all classes are hidden, so we can\u0027t rely on them.\n\n- I don\u0027t believe there\u0027s any other output files metalava always emit *but removes when it fails*, and even if we had, we often change options to pass to metalava, so I think using a timestamp file is the most straightforward and robust way.",
+      "parentUuid": "bb499f73_7c623800",
       "revId": "9457f249f5c3a6a4c1a21aed8323e1a59ac3d3a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
