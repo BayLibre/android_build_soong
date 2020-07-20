@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "eaa6dcc1_839ca51c",
+        "filename": "apex/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-20T18:20:33Z",
+      "side": 1,
+      "message": "I was concerned that since the data paths are being passed directly to the apex, it may be assumed it\u0027s already handled. can be cleaned up later.",
+      "parentUuid": "d3bd2367_dc205355",
+      "range": {
+        "startLine": 412,
+        "startChar": 59,
+        "endLine": 412,
+        "endChar": 61
+      },
+      "revId": "cad083fea907190f58f1a55379b8c3ee6f84e34a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbbae02_6fe91840",
         "filename": "cc/cc_test.go",
         "patchSetId": 7
