@@ -3118,11 +3118,15 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 	platformVndkVersion := mctx.DeviceConfig().PlatformVndkVersion()
 	boardVndkVersion := mctx.DeviceConfig().VndkVersion()
 	productVndkVersion := mctx.DeviceConfig().ProductVndkVersion()
+	releaseVersion := m.ReleaseVersion()
 	if boardVndkVersion == "current" {
 		boardVndkVersion = platformVndkVersion
 	}
 	if productVndkVersion == "current" {
 		productVndkVersion = platformVndkVersion
+	}
+	if releaseVersion == "current" {
+		releaseVersion = platformVndkVersion
 	}
 
 	if boardVndkVersion == "" {
@@ -3165,19 +3169,17 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		// or a /system directory that is available to vendor and product.
 		coreVariantNeeded = true
 
-		// We assume that modules under proprietary paths are compatible for
-		// BOARD_VNDK_VERSION. The other modules are regarded as AOSP, or
-		// PLATFORM_VNDK_VERSION.
-		if isVendorProprietaryPath(mctx.ModuleDir()) {
+		// Create vendor variants for BOARD_VNDK_VERSION only for the modules
+		// released with BOARD_VNDK_VERSION.
+		if releaseVersion == boardVndkVersion {
 			vendorVariants = append(vendorVariants, boardVndkVersion)
-		} else {
+		} else if m.IsVndk() && releaseVersion == platformVndkVersion {
+			// Always build current VNDKs for com.android.vndk.current.
 			vendorVariants = append(vendorVariants, platformVndkVersion)
 		}
 
 		// vendor_available modules are also available to /product.
-		productVariants = append(productVariants, platformVndkVersion)
-		// VNDK is always PLATFORM_VNDK_VERSION
-		if !m.IsVndk() {
+		if releaseVersion == productVndkVersion {
 			productVariants = append(productVariants, productVndkVersion)
 		}
 	} else if vendorSpecific && String(m.Properties.Sdk_version) == "" {
@@ -3194,10 +3196,8 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 				platformVndkVersion,
 				boardVndkVersion,
 			)
-		} else if isVendorProprietaryPath(mctx.ModuleDir()) {
+		} else if releaseVersion == boardVndkVersion {
 			vendorVariants = append(vendorVariants, boardVndkVersion)
-		} else {
-			vendorVariants = append(vendorVariants, platformVndkVersion)
 		}
 	} else {
 		// This is either in /system (or similar: /data), or is a
@@ -3248,6 +3248,10 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 	m.Properties.RamdiskVariantNeeded = ramdiskVariantNeeded
 	m.Properties.RecoveryVariantNeeded = recoveryVariantNeeded
 	m.Properties.CoreVariantNeeded = coreVariantNeeded
+
+	if !ramdiskVariantNeeded && !recoveryVariantNeeded && !coreVariantNeeded && len(m.Properties.ExtraVariants) == 0 {
+		m.Disable()
+	}
 }
 
 func (c *Module) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
