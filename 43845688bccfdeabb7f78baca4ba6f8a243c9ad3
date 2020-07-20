@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3b9e1df_db877e1f",
+        "filename": "rust/builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-20T18:33:16Z",
+      "side": 1,
+      "message": "Can you add a test for this?  It would be easy to break, for example if the moduleGenDir was renamed.  In a followup CL is fine.",
+      "revId": "43845688bccfdeabb7f78baca4ba6f8a243c9ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
