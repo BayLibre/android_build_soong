@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeb281f6_4b5891a1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3148,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-20T12:28:46Z",
+      "side": 1,
+      "message": "I think we may now remove this. Do we have any reason to build the current version of VNDK?",
+      "range": {
+        "startLine": 3145,
+        "startChar": 4,
+        "endLine": 3148,
+        "endChar": 3
+      },
+      "revId": "15501cc4b947b7962c727044fb871492b7d2be40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e62809_dae16a21",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3155,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-20T12:28:46Z",
+      "side": 1,
+      "message": "This also can be simplified as the vendor variants above.\n```\nif releaseVersion \u003d\u003d productVndkVersion {\n    productVariants \u003d append(productVariants, productVndkVersion)\n}\n```",
+      "range": {
+        "startLine": 3151,
+        "startChar": 2,
+        "endLine": 3155,
+        "endChar": 3
+      },
+      "revId": "15501cc4b947b7962c727044fb871492b7d2be40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
