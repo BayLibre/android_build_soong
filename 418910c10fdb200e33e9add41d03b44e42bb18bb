@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "56264f2a_9daf968d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-20T21:18:26Z",
+      "side": 1,
+      "message": "Marking resolved.",
+      "parentUuid": "cae71339_f4becda4",
+      "range": {
+        "startLine": 13,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "418910c10fdb200e33e9add41d03b44e42bb18bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc9e94c7_901bf6ef",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
