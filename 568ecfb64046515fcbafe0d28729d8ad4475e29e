@@ -70,6 +70,30 @@
       "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b57a358_325a0dba",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-07-21T19:41:57Z",
+      "side": 1,
+      "message": "(oops, cross-posted) well, the way I read the doc, this will be the stub if the test specifies sdk_version, so that won\u0027t work?\n\naside -- it is strange that `libs` are used at runtime for these",
+      "parentUuid": "861f2801_53f609c7",
+      "range": {
+        "startLine": 160,
+        "startChar": 48,
+        "endLine": 160,
+        "endChar": 69
+      },
+      "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
