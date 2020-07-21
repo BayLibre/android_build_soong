@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1c225dd6_9ede6c7d",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-21T11:01:25Z",
+      "side": 1,
+      "message": "I tried to define Nameless() to the source_tree module. It was successful for soong, but fails on build.ninja step because of the duplicated names of \"source_tree\" modules.\nMaybe we still need to assign a unique name for each ninja module?",
+      "parentUuid": "74cec204_0e947580",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 51
+      },
+      "revId": "25de7eef8111e6de5f6b9bb2910e9314ff87dde9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e5d6998_44a1ab15",
         "filename": "android/source_tree.go",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a16c62b8_5f6f1b66",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-21T11:01:25Z",
+      "side": 1,
+      "message": "It does not matter. The mutator does not change dependencies.",
+      "parentUuid": "5e5d6998_44a1ab15",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 13
+      },
+      "revId": "25de7eef8111e6de5f6b9bb2910e9314ff87dde9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c4f93e7_c50274f9",
         "filename": "android/source_tree.go",
         "patchSetId": 2
@@ -107,6 +155,30 @@
       "writtenOn": "2020-07-15T02:49:05Z",
       "side": 1,
       "message": "This is a read access; should be protected with lock",
+      "range": {
+        "startLine": 92,
+        "startChar": 13,
+        "endLine": 92,
+        "endChar": 38
+      },
+      "revId": "25de7eef8111e6de5f6b9bb2910e9314ff87dde9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99bfa19_830ee7a4",
+        "filename": "android/source_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-21T11:01:25Z",
+      "side": 1,
+      "message": "The map is written by the sourceTreeMutator and read by the releaseVersionMutator. The map must not be changed while running releaseVersionMutator that is only for reading.",
+      "parentUuid": "1c4f93e7_c50274f9",
       "range": {
         "startLine": 92,
         "startChar": 13,
