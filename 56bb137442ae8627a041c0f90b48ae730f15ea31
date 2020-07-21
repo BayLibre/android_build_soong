@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e6c1c99_f48abe61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-21T20:27:24Z",
+      "side": 1,
+      "message": "Strangely, the commit messages are wrapped at 76 characters.",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 76
+      },
+      "revId": "56bb137442ae8627a041c0f90b48ae730f15ea31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a62bab_f5d1f58c",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-21T20:27:24Z",
+      "side": 1,
+      "message": "Nice catch!",
+      "range": {
+        "startLine": 622,
+        "startChar": 0,
+        "endLine": 622,
+        "endChar": 59
+      },
+      "revId": "56bb137442ae8627a041c0f90b48ae730f15ea31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6574529a_4e2a275a",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2934,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-21T20:27:24Z",
+      "side": 1,
+      "message": "A test for cc_prebuilt_test_library_shared is probably a better fit in https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/prebuilt_test.go.",
+      "range": {
+        "startLine": 2934,
+        "startChar": 0,
+        "endLine": 2934,
+        "endChar": 50
+      },
+      "revId": "56bb137442ae8627a041c0f90b48ae730f15ea31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8411bb92_b445a881",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-21T20:27:24Z",
+      "side": 1,
+      "message": "nit: I think these should be tabs, not spaces",
+      "range": {
+        "startLine": 2936,
+        "startChar": 0,
+        "endLine": 2940,
+        "endChar": 5
+      },
+      "revId": "56bb137442ae8627a041c0f90b48ae730f15ea31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
