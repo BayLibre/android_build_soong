@@ -16,6 +16,23 @@
       "revId": "15f34ef811e537513c8e95ce3d2709a772a9f17b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db92c049_0b95c544",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-21T04:20:58Z",
+      "side": 1,
+      "message": "It became much cleaner than before. Thanks.",
+      "revId": "15f34ef811e537513c8e95ce3d2709a772a9f17b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
