@@ -894,6 +894,8 @@ type SdkLibraryDependency interface {
 	// jars for the stubs. The latter should only be needed when generating JavaDoc as otherwise
 	// they are identical to the corresponding header jars.
 	SdkImplementationJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths
+
+	BaseModuleName() string
 }
 
 type SdkLibrary struct {

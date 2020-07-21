@@ -148,10 +148,19 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	}
 
 	for _, dep := range ctx.GetDirectDepsWithTag(libTag) {
-		m := dep.(Dependency)
-		r.libs = append(r.libs, m.BaseModuleName())
-		if !android.InList(m.BaseModuleName(), config.FrameworkLibraries) {
-			combinedJarJars = append(combinedJarJars, m.ImplementationAndResourcesJars()...)
+		switch m := dep.(type) {
+		case Dependency:
+			r.libs = append(r.libs, m.BaseModuleName())
+			if !android.InList(m.BaseModuleName(), config.FrameworkLibraries) {
+				combinedJarJars = append(combinedJarJars, m.ImplementationAndResourcesJars()...)
+			}
+		case SdkLibraryDependency:
+			r.libs = append(r.libs, m.BaseModuleName())
+			if !android.InList(m.BaseModuleName(), config.FrameworkLibraries) {
+				combinedJarJars = append(combinedJarJars, m.SdkImplementationJars(ctx, r.sdkVersion())...)
+			}
+		default:
+			panic(fmt.Errorf("unknown type %T in libTag", m))
 		}
 	}
 
