@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d27ac326_d9b87b2f",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-07-21T17:51:33Z",
+      "side": 1,
+      "message": "This line should execute only with `!props.isInstrumentation` because Clang will error if -fprofile-use and -fprofile*-generate are used simultaneously.",
+      "revId": "898e7becb8305905596e15c55acff403d54c7170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
