@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d8a5d14_4f201494",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T15:01:06Z",
+      "side": 1,
+      "message": "I think this would be better implemented in SdkMemberTypeBase to return a field in SdkMemberTypeBase (which defaults to false) and then have those member types that want to return true to explicitly set it there. That would reduce the scope of this change.",
+      "revId": "406899a709e17d36d0b22a8a57df642aff48c6fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
