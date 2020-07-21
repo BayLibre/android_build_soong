@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "04cd44b6_c3a5792e",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-21T02:10:01Z",
+      "side": 1,
+      "message": "Good question, I\u0027ll take a look. These can contain data files in addition to libraries, but we may at least be able to confirm that all of the libraries exist in this list (or something like all the library basenames do if we don\u0027t want to deal with rpath resolution)",
+      "parentUuid": "13921cd3_8b6cee49",
+      "revId": "13af8140bcf40c71deb3b0fee11bb8e9ad792621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0149dc6_0360d50b",
         "filename": "android/prebuilt_build_tool.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-07-21T01:50:37Z",
       "side": 1,
       "message": "Why is the symlink necessary?  Can\u0027t we just run it from its source location?",
+      "revId": "13af8140bcf40c71deb3b0fee11bb8e9ad792621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1039190_533568b5",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-21T02:10:01Z",
+      "side": 1,
+      "message": "I\u0027m using it here to ensure the symlink is newer than all of the dependencies, since we don\u0027t expose extra deps through the HostToolPath() interface (or to Make, etc)",
+      "parentUuid": "f0149dc6_0360d50b",
       "revId": "13af8140bcf40c71deb3b0fee11bb8e9ad792621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
