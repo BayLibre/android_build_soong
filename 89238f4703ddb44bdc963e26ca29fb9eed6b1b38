@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61342f2d_8ccd2923",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T14:54:18Z",
+      "side": 0,
+      "message": "I presume you just removed this to ensure that the test covered both device and host.",
+      "revId": "89238f4703ddb44bdc963e26ca29fb9eed6b1b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
