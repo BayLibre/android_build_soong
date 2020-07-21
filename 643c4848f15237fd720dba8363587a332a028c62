@@ -51,6 +51,24 @@
       "revId": "643c4848f15237fd720dba8363587a332a028c62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80dfe1d9_98e9b34f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:44:52Z",
+      "side": 1,
+      "message": "The -x option on git cherry-pick adds the entry but it does not get added if the cherry pick fails with merge conflict.",
+      "parentUuid": "8a015ff2_b0ff534e",
+      "revId": "643c4848f15237fd720dba8363587a332a028c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
