@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47d8705e_55588521",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-07-21T16:38:55Z",
+      "side": 1,
+      "message": "The complex boolean test is hard to read.  Maybe simplify into two blocks as below?\n1. profile kind and profile file are always present.\n2. benchmark is always present if isInstrumentation.",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 71
+      },
+      "revId": "e4e5f30a0e43cffaaff9f8ed543208e2c40c392c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
