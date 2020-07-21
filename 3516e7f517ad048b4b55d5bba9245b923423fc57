@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "75a633b9_4b672476",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:43:55Z",
+      "side": 1,
+      "message": "Apologies for delay in the review.",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b3b1c53_d627cf12",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:43:55Z",
+      "side": 1,
+      "message": "Instead of using Location as the term could you not just use Apex and explain that \"platform\" and \"system_ext\" are special?",
+      "range": {
+        "startLine": 1251,
+        "startChar": 3,
+        "endLine": 1251,
+        "endChar": 11
+      },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dbdd326_1f2188b0",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:43:55Z",
+      "side": 1,
+      "message": "plaform - spelling",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "783805a8_407eee64",
         "filename": "android/config.go",
         "patchSetId": 2
@@ -13,6 +70,30 @@
       "writtenOn": "2020-07-17T21:09:03Z",
       "side": 1,
       "message": "Loc doesn\u0027t seem obvious as location -- can we use location throughout?",
+      "range": {
+        "startLine": 1259,
+        "startChar": 5,
+        "endLine": 1259,
+        "endChar": 8
+      },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c268fb_72bdd90d",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:43:55Z",
+      "side": 1,
+      "message": "The name is not particularly informative. I have been trying to think of a better name. The trick is to balance between being too specific that means adding new information will require renaming and too general. I am not sure that the location is such a key part of this that it needs to be in the name.\n\nConceptually it is a list of information about jars provided by the configuration.\n\nHow about ConfiguredJarList? Is that too general?",
+      "parentUuid": "783805a8_407eee64",
       "range": {
         "startLine": 1259,
         "startChar": 5,
@@ -42,6 +123,81 @@
         "endLine": 1301,
         "endChar": 1
       },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8b07935_c1e81816",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:43:55Z",
+      "side": 1,
+      "message": "Agreed that struct should not duplicate the information in the pairs. I am not sure that it is necessary to have a locJar struct, parallel arrays should work ok and probably fit better with the external uses that are made of this. I don\u0027t think that pair needs to be exposed at all, except for passing configuration to dexpreopt. The main place it is used is in LocJarsListDiff and I think the pairs can be generated in the body of that method. It could even populate a map[string]struct{} to use to perform the contains check.",
+      "parentUuid": "25dd9d66_13432c7b",
+      "range": {
+        "startLine": 1297,
+        "startChar": 0,
+        "endLine": 1301,
+        "endChar": 1
+      },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e7fa490_2b565e4f",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:43:55Z",
+      "side": 1,
+      "message": "I think that this should be a method on the list struct.",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a07bf6_3bc350f3",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:43:55Z",
+      "side": 1,
+      "message": "Why were the blank lines removed?",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608b8e96_c0c7b080",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-21T12:43:55Z",
+      "side": 1,
+      "message": "This is a slight change in behavior. The previous code would only mutate the global.ArtApexJars field if it did not have sufficient capacity to hold and additional entry. This change will always mutate the global.ArtApexJars field. I think it would be better if the .Append() method created a new list.",
       "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
