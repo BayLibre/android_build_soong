@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7775d907_8f6130aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-07-21T12:12:38Z",
+      "side": 1,
+      "message": "Thank you! (I\u0027m not a soong owner, adding Paul for that)",
+      "revId": "715a3f263b2faee6a8b21323dfeb3d24bd30790e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
