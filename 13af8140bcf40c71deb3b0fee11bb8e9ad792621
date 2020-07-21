@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13921cd3_8b6cee49",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-21T01:50:37Z",
+      "side": 1,
+      "message": "How hard would it be to check these with the elf checker?",
+      "revId": "13af8140bcf40c71deb3b0fee11bb8e9ad792621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0149dc6_0360d50b",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-21T01:50:37Z",
+      "side": 1,
+      "message": "Why is the symlink necessary?  Can\u0027t we just run it from its source location?",
+      "revId": "13af8140bcf40c71deb3b0fee11bb8e9ad792621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
