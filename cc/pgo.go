@@ -200,7 +200,7 @@ func (props *PgoProperties) isPGO(ctx BaseModuleContext) bool {
 	}
 
 	// If at least one property exists, validate that all properties exist
-	if !profileKindPresent || !filePresent || !benchmarksPresent {
+	if !profileKindPresent || !filePresent || (isInstrumentation && !benchmarksPresent) {
 		var missing []string
 		if !profileKindPresent {
 			missing = append(missing, "profile kind (either \"instrumentation\" or \"sampling\" property)")
@@ -208,7 +208,7 @@ func (props *PgoProperties) isPGO(ctx BaseModuleContext) bool {
 		if !filePresent {
 			missing = append(missing, "profile_file property")
 		}
-		if !benchmarksPresent {
+		if isInstrumentation && !benchmarksPresent {
 			missing = append(missing, "non-empty benchmarks property")
 		}
 		missingProps := strings.Join(missing, ", ")
