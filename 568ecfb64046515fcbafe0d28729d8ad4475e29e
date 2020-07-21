@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6a0d8f1_7e198087",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-07-21T19:37:29Z",
+      "side": 1,
+      "message": "should this be the stub?",
+      "range": {
+        "startLine": 160,
+        "startChar": 48,
+        "endLine": 160,
+        "endChar": 69
+      },
+      "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
