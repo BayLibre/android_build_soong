@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "02c065d7_4b7308a6",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2934,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-21T21:02:45Z",
+      "side": 1,
+      "message": "It\u0027s definitely testing this in the context of \"as a data_lib\", though. I was wary of adding what seems more a test of cc_test under `prebuilt_test.go` :\\\nI\u0027ve renamed the test name to make it clear we\u0027re testing data_libs. WDYT?",
+      "parentUuid": "6574529a_4e2a275a",
+      "range": {
+        "startLine": 2934,
+        "startChar": 0,
+        "endLine": 2934,
+        "endChar": 50
+      },
+      "revId": "56bb137442ae8627a041c0f90b48ae730f15ea31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8411bb92_b445a881",
         "filename": "cc/cc_test.go",
         "patchSetId": 3
@@ -91,6 +115,30 @@
       "revId": "56bb137442ae8627a041c0f90b48ae730f15ea31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d31da5_65b80655",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-21T21:02:45Z",
+      "side": 1,
+      "message": "Indeed. Sorry that this keeps on tripping me up -- my IDE settings seem.. off",
+      "parentUuid": "8411bb92_b445a881",
+      "range": {
+        "startLine": 2936,
+        "startChar": 0,
+        "endLine": 2940,
+        "endChar": 5
+      },
+      "revId": "56bb137442ae8627a041c0f90b48ae730f15ea31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
