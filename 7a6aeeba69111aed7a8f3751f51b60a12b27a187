@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "07fae2e6_f4fe08d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-07-22T19:58:46Z",
+      "side": 1,
+      "message": "https://android.googlesource.com/platform/build/soong/+/refs/heads/master/rust/rust.go#997 seems to indicate that we are already an OutputFileProducer. That commit is from as recent as 13 days ago though, perhaps you haven\u0027t synced?",
+      "revId": "7a6aeeba69111aed7a8f3751f51b60a12b27a187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0855f085_fd4e6c98",
         "filename": "rust/rust.go",
         "patchSetId": 1
