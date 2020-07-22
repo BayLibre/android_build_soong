@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0c51e7d6_80ffe773",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-07-22T22:02:15Z",
+      "side": 1,
+      "message": "Right, this was just introduced in the SourceProvider patches, which I wasn\u0027t aware of until yesterday. Looks like I can abandon my own patch.",
+      "parentUuid": "07fae2e6_f4fe08d0",
+      "revId": "7a6aeeba69111aed7a8f3751f51b60a12b27a187",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0855f085_fd4e6c98",
         "filename": "rust/rust.go",
         "patchSetId": 1
