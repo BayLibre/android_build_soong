@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43deac50_6e69a8aa",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-22T22:39:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure if DepIsInSameApex is the correct method to use here. Maybe checking the ApexName() of each would be better?",
+      "revId": "f1d59026c0a32053dda6b550e40a3bda3f7aca21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
