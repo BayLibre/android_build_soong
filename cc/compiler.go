@@ -191,6 +191,11 @@ type BaseCompilerProperties struct {
 
 	// Adds __ANDROID_APEX_<APEX_MODULE_NAME>__ macro defined for apex variants in addition to __ANDROID_APEX__
 	Use_apex_name_macro *bool
+
+	// Touches the output of the compile action. This allows compile actions to otherwise
+	// not generate the output files and yet have the actions succeed; this is useful for
+	// compile tests.
+	Touch_output *bool
 }
 
 func NewBaseCompiler() *baseCompiler {
@@ -344,6 +349,8 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 			flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_SDK_VERSION__="+strconv.Itoa(ctx.apexSdkVersion()))
 		}
 	}
+
+	flags.TouchOutput = Bool(compiler.Properties.Touch_output)
 
 	instructionSet := String(compiler.Properties.Instruction_set)
 	if flags.RequiredInstructionSet != "" {

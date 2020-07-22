@@ -49,6 +49,21 @@ var (
 		},
 		"ccCmd", "cFlags")
 
+	// ccWithTouch is like cc, except, in the case that the action would not
+	// have created an output, the output is created as an empty file. This facilitates
+	// compile tests which would have otherwise not created any output files. (Using cc
+	// in this case would result in these actions to appear to fail, as the declared
+	// outputs of the actions were not correctly generated.)
+	ccWithTouch = pctx.AndroidRemoteStaticRule("ccWithTouch",
+		android.RemoteRuleSupports{Goma: true, RBE: true},
+		blueprint.RuleParams{
+			Depfile:     "${out}.d",
+			Deps:        blueprint.DepsGCC,
+			Command:     "$relPwd ${config.CcWrapper}$ccCmd -c $cFlags -MD -MF ${out}.d -o $out $in && touch $out",
+			CommandDeps: []string{"$ccCmd"},
+		},
+		"ccCmd", "cFlags")
+
 	ccNoDeps = pctx.AndroidStaticRule("ccNoDeps",
 		blueprint.RuleParams{
 			Command:     "$relPwd $ccCmd -c $cFlags -o $out $in",
@@ -333,6 +348,7 @@ type builderFlags struct {
 	gcovCoverage  bool
 	sAbiDump      bool
 	emitXrefs     bool
+	touchOutput   bool
 
 	assemblerWithCpp bool
 
@@ -496,6 +512,9 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		coverage := flags.gcovCoverage
 		dump := flags.sAbiDump
 		rule := cc
+		if flags.touchOutput {
+			rule = ccWithTouch
+		}
 		emitXref := flags.emitXrefs
 
 		switch srcFile.Ext() {
