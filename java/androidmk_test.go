@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
@@ -168,6 +169,33 @@ func TestDistWithTag(t *testing.T) {
 	}
 	if len(withoutTagEntries[0].DistFiles[".jar"]) > 0 {
 		t.Errorf("did not expect explicit DistFile for .jar tag, got %v", withoutTagEntries[0].DistFiles[".jar"])
+	}
+}
+
+func TestJavaSdkLibraryDistWithTag(t *testing.T) {
+	ctx, config := testJava(t, `
+		java_sdk_library {
+			name: "foo_sdk_library",
+			srcs: ["a.java"],
+			shared_library: true,
+			dist: {
+				targets: ["my_goal"],
+				tag: ".system.api.txt",
+				dir: "module_stubs/system/",
+				suffix: ".txt",
+			}
+		}
+	`)
+
+	sdkLibraryMkEntries := android.AndroidMkEntriesForTest(t, config, "", ctx.ModuleForTests("foo_sdk_library", "android_common").Module())
+
+	if len(sdkLibraryMkEntries) != 2 {
+		t.Errorf("two mk entries expected, got %d", len(sdkLibraryMkEntries))
+	}
+	fmt.Println(sdkLibraryMkEntries[0].DistFiles)
+	if len(sdkLibraryMkEntries[0].DistFiles[".system.api.txt"]) != 1 ||
+		!strings.Contains(sdkLibraryMkEntries[0].DistFiles[".system.api.txt"][0].String(), "/javac/foo_with_tag.jar") {
+		t.Errorf("expected DistFiles to contain system_api.txt, got %v", sdkLibraryMkEntries[0].DistFiles)
 	}
 }
 
