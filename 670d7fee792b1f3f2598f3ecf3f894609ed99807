@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27a75374_a26f5089",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2988,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-22T16:06:16Z",
+      "side": 1,
+      "message": "Not necessary to change, but is it possible to use testCc (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc_test.go;l\u003d68;drc\u003d216e10a0f6b4bea691d467c353229c7daa1d2cf8) instead here? It would reduce the  test size.",
+      "range": {
+        "startLine": 2984,
+        "startChar": 0,
+        "endLine": 2988,
+        "endChar": 0
+      },
+      "revId": "670d7fee792b1f3f2598f3ecf3f894609ed99807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
