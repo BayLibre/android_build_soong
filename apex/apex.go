@@ -704,8 +704,7 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 
 	mctx.VisitDirectDeps(func(child android.Module) {
 		depName := mctx.OtherModuleName(child)
-		if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() &&
-			(cur.DepIsInSameApex(mctx, child) || inAnySdk(child)) {
+		if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() && cur.DepIsInSameApex(mctx, child) {
 			android.UpdateApexDependency(apexBundles, depName, directDep)
 			am.BuildForApexes(apexBundles)
 		}
