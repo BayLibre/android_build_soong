@@ -49,6 +49,16 @@ var (
 		},
 		"ccCmd", "cFlags")
 
+	ccWithTouch = pctx.AndroidRemoteStaticRule("ccWithTouch",
+		android.RemoteRuleSupports{Goma: true, RBE: true},
+		blueprint.RuleParams{
+			Depfile:     "${out}.d",
+			Deps:        blueprint.DepsGCC,
+			Command:     "$relPwd ${config.CcWrapper}$ccCmd -c $cFlags -MD -MF ${out}.d -o $out $in && touch $out",
+			CommandDeps: []string{"$ccCmd"},
+		},
+		"ccCmd", "cFlags")
+
 	ccNoDeps = pctx.AndroidStaticRule("ccNoDeps",
 		blueprint.RuleParams{
 			Command:     "$relPwd $ccCmd -c $cFlags -o $out $in",
@@ -333,6 +343,7 @@ type builderFlags struct {
 	gcovCoverage  bool
 	sAbiDump      bool
 	emitXrefs     bool
+	touchOutput   bool
 
 	assemblerWithCpp bool
 
@@ -496,6 +507,9 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		coverage := flags.gcovCoverage
 		dump := flags.sAbiDump
 		rule := cc
+		if flags.touchOutput {
+			rule = ccWithTouch
+		}
 		emitXref := flags.emitXrefs
 
 		switch srcFile.Ext() {

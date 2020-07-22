@@ -191,6 +191,7 @@ type Flags struct {
 	SystemIncludeFlags []string
 
 	Toolchain    config.Toolchain
+	TouchOutput  bool // If true, touch the output of the clang command
 	Tidy         bool
 	GcovCoverage bool
 	SAbiDump     bool
