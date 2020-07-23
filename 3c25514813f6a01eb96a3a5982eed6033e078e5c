@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a99bfb1_c5308da3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-23T03:54:42Z",
+      "side": 1,
+      "message": "This is somewhat misleading. The original CL changed the mutator type from bottom-up to top-down. We don\u0027t change that in this CL.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "3c25514813f6a01eb96a3a5982eed6033e078e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2d32ae_5fd575d6",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-23T03:54:42Z",
+      "side": 1,
+      "message": "don\u0027t we need to lock the mutex also for reading?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 28
+      },
+      "revId": "3c25514813f6a01eb96a3a5982eed6033e078e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
