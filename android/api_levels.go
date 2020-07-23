@@ -60,6 +60,11 @@ type ApiLevel interface {
 	GreaterThanOrEqualTo(ApiLevel) bool
 	LessThan(ApiLevel) bool
 	LessThanOrEqualTo(ApiLevel) bool
+
+	// Returns either the final API number or the integer representing the
+	// future API level. Should be removed eventually, but aids in the
+	// transition from ints to ApiLevels.
+	FinalOrFutureInt() int
 }
 
 type FinalApiLevel interface {
@@ -128,6 +133,10 @@ func (this finalApiLevel) LessThanOrEqualTo(other ApiLevel) bool {
 	return this.CompareTo(other) <= 0
 }
 
+func (this finalApiLevel) FinalOrFutureInt() int {
+	return this.AsInt()
+}
+
 type previewApiLevel struct {
 	value         string
 	previewNumber int
@@ -178,6 +187,10 @@ func (this previewApiLevel) LessThan(other ApiLevel) bool {
 
 func (this previewApiLevel) LessThanOrEqualTo(other ApiLevel) bool {
 	return this.CompareTo(other) <= 0
+}
+
+func (this previewApiLevel) FinalOrFutureInt() int {
+	return FutureApiLevel
 }
 
 var _ FinalApiLevel = finalApiLevel{}
@@ -238,6 +251,17 @@ func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (ApiLevel, error) {
 	}
 
 	if asInt > ctx.Config().PlatformSdkVersionInt() {
+		// We don't want to allow this going forward, but there are already a
+		// lot of build files that use 30 for R and 31 for S. We may want to
+		// clean those up, but for now just allow them.
+		//
+		// Rather than just returning a previewApiLevel here, we call the
+		// function again so we can be sure we get the right previewNumber.
+		if asInt == 30 {
+			return ApiLevelFromUser(ctx, "R")
+		} else if asInt == 31 {
+			return ApiLevelFromUser(ctx, "S")
+		}
 		return nil, fmt.Errorf("Non-final API levels must be specified by "+
 			"their code name, not integers. %q (%d) is higher than the "+
 			"maximum final API level %d", raw, asInt,
@@ -308,6 +332,17 @@ func getFinalCodenamesMap(config Config) map[string]int {
 			"Q":     29,
 		}
 
+		// TODO: Differentiate "current" and "future".
+		// The code base calls it FutureApiLevel, but the spelling is "current",
+		// and these are really two different things. When defining APIs it
+		// means the API has not yet been added to a specific release. When
+		// choosing an API level to build for it means that the future API level
+		// should be used, except in the case where the build is finalized in
+		// which case the platform version should be used. This is *weird*,
+		// because in the circumstance where API foo was added in R and bar was
+		// added in S, both of these are usable when building for "current" when
+		// neither R nor S are final, but the S APIs stop being available in a
+		// final R build.
 		if Bool(config.productVariables.Platform_sdk_final) {
 			apiLevelsMap["current"] = config.PlatformSdkVersionInt()
 		}
@@ -344,24 +379,6 @@ func getApiLevelsMap(config Config) map[string]int {
 
 		return apiLevelsMap
 	}).(map[string]int)
-}
-
-// Converts an API level string into its numeric form.
-// * Codenames are decoded.
-// * Numeric API levels are simply converted.
-// * "current" is mapped to FutureApiLevel(10000)
-// * "minimum" is NDK specific and not handled with this. (refer normalizeNdkApiLevel in cc.go)
-func ApiStrToNum(ctx BaseModuleContext, apiLevel string) (int, error) {
-	if apiLevel == "current" {
-		return FutureApiLevel, nil
-	}
-	if num, ok := getApiLevelsMap(ctx.Config())[apiLevel]; ok {
-		return num, nil
-	}
-	if num, err := strconv.Atoi(apiLevel); err == nil {
-		return num, nil
-	}
-	return 0, fmt.Errorf("SDK version should be one of \"current\", <number> or <codename>: %q", apiLevel)
 }
 
 func (a *apiLevelsSingleton) GenerateBuildActions(ctx SingletonContext) {

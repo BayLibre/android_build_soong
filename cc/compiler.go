@@ -341,7 +341,13 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 			flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_APEX_"+makeDefineString(ctx.apexName())+"__")
 		}
 		if ctx.Device() {
-			flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_SDK_VERSION__="+strconv.Itoa(ctx.apexSdkVersion()))
+			// For some reason this code path is hit when this has not been
+			// initialized. That's probably a bug.
+			if ctx.apexSdkVersion() != nil {
+				flags.Global.CommonFlags = append(flags.Global.CommonFlags,
+					fmt.Sprintf("-D__ANDROID_SDK_VERSION__=%d",
+						ctx.apexSdkVersion().FinalOrFutureInt()))
+			}
 		}
 	}
 
