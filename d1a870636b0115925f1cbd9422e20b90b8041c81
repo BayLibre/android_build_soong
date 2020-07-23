@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "7cf00ccc_0e34e22e",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-23T06:44:34Z",
+      "side": 1,
+      "message": "I think Jiyong\u0027s intention is to use the function name useVndk().",
+      "parentUuid": "95f33551_9d9583fc",
+      "range": {
+        "startLine": 1832,
+        "startChar": 4,
+        "endLine": 1832,
+        "endChar": 18
+      },
+      "revId": "d1a870636b0115925f1cbd9422e20b90b8041c81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48674611_dcf80046",
         "filename": "apex/apex.go",
         "patchSetId": 3
