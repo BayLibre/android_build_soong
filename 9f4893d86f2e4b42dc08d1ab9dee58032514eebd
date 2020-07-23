@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9d9d435_534cf958",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-23T11:37:00Z",
+      "side": 1,
+      "message": "One that crept in between my testing and submitting.",
+      "revId": "9f4893d86f2e4b42dc08d1ab9dee58032514eebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
