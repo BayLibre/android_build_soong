@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b76d8576_4db19274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-23T15:29:29Z",
+      "side": 1,
+      "message": "I had a look at using something else (such as withinSameApexAs() method from sdk_library.go) but there were some issues so I will do that as a follow up.",
+      "revId": "b28b1b410e3cee5e576dd018dd5ff631be9a31a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
