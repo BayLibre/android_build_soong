@@ -190,7 +190,7 @@ func (this previewApiLevel) LessThanOrEqualTo(other ApiLevel) bool {
 }
 
 func (this previewApiLevel) FinalOrFutureInt() int {
-	return FutureApiLevel
+	return FutureApiLevelInt
 }
 
 var _ FinalApiLevel = finalApiLevel{}
@@ -201,12 +201,6 @@ func uncheckedFinalApiLevel(num int) finalApiLevel {
 		value: strconv.Itoa(num),
 		asInt: num,
 	}
-}
-
-// TODO: Merge with FutureApiLevel
-var CurrentApiLevel = previewApiLevel{
-	value:         "current",
-	previewNumber: 10000,
 }
 
 // The first version that introduced 64-bit ABIs.
@@ -231,7 +225,7 @@ func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (ApiLevel, error) {
 	}
 
 	if raw == "current" {
-		return CurrentApiLevel, nil
+		return FutureApiLevel, nil
 	}
 
 	for i, codename := range ctx.Config().PlatformVersionActiveCodenames() {
