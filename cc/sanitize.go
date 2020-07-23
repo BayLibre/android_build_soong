@@ -157,6 +157,7 @@ type SanitizeProperties struct {
 		Integer_overflow *bool    `android:"arch_variant"`
 		Scudo            *bool    `android:"arch_variant"`
 		Scs              *bool    `android:"arch_variant"`
+		Writeonly        *bool    `android:"arch_variant"`
 
 		// Sanitizers to run in the diagnostic mode (as opposed to the release mode).
 		// Replaces abort() on error with a human-readable error message.
@@ -277,6 +278,10 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 		if found, globalSanitizers = removeFromList("hwaddress", globalSanitizers); found && s.Hwaddress == nil {
 			s.Hwaddress = boolPtr(true)
+		}
+
+		if found, globalSanitizers = removeFromList("writeonly", globalSanitizers); found && s.Writeonly == nil {
+			s.Writeonly = boolPtr(true)
 		}
 
 		if len(globalSanitizers) > 0 {
@@ -456,6 +461,10 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.Local.CFlags = append(flags.Local.CFlags, asanCflags...)
 		flags.Local.LdFlags = append(flags.Local.LdFlags, asanLdflags...)
 
+		if Bool(sanitize.Properties.Sanitize.Writeonly) {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", "-asan-instrument-reads=false")
+		}
+
 		if ctx.Host() {
 			// -nodefaultlibs (provided with libc++) prevents the driver from linking
 			// libraries needed with -fsanitize=address. http://b/18650275 (WAI)
@@ -475,6 +484,9 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if Bool(sanitize.Properties.Sanitize.Hwaddress) {
 		flags.Local.CFlags = append(flags.Local.CFlags, hwasanCflags...)
+		if Bool(sanitize.Properties.Sanitize.Writeonly) {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", "-hwasan-instrument-reads=false")
+		}
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Fuzzer) {
