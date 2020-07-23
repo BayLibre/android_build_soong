@@ -148,15 +148,16 @@ type SanitizeProperties struct {
 		Hwaddress *bool `android:"arch_variant"`
 
 		// local sanitizers
-		Undefined        *bool    `android:"arch_variant"`
-		All_undefined    *bool    `android:"arch_variant"`
-		Misc_undefined   []string `android:"arch_variant"`
-		Fuzzer           *bool    `android:"arch_variant"`
-		Safestack        *bool    `android:"arch_variant"`
-		Cfi              *bool    `android:"arch_variant"`
-		Integer_overflow *bool    `android:"arch_variant"`
-		Scudo            *bool    `android:"arch_variant"`
-		Scs              *bool    `android:"arch_variant"`
+		Undefined          *bool    `android:"arch_variant"`
+		All_undefined      *bool    `android:"arch_variant"`
+		Undefined_security *bool    `android:"arch_variant"`
+		Misc_undefined     []string `android:"arch_variant"`
+		Fuzzer             *bool    `android:"arch_variant"`
+		Safestack          *bool    `android:"arch_variant"`
+		Cfi                *bool    `android:"arch_variant"`
+		Integer_overflow   *bool    `android:"arch_variant"`
+		Scudo              *bool    `android:"arch_variant"`
+		Scs                *bool    `android:"arch_variant"`
 
 		// Sanitizers to run in the diagnostic mode (as opposed to the release mode).
 		// Replaces abort() on error with a human-readable error message.
@@ -240,6 +241,11 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 		if found, globalSanitizers = removeFromList("default-ub", globalSanitizers); found && s.Undefined == nil {
 			s.Undefined = boolPtr(true)
+		}
+
+		if found, globalSanitizers = removeFromList("undefined-security", globalSanitizers); found &&
+			s.Undefined_security == nil {
+			s.Undefined_security = boolPtr(true)
 		}
 
 		if found, globalSanitizers = removeFromList("address", globalSanitizers); found && s.Address == nil {
@@ -343,6 +349,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Undefined = nil
 		s.All_undefined = nil
 		s.Integer_overflow = nil
+		s.Undefined_security = nil
 	}
 
 	// Also disable CFI for VNDK variants of components
@@ -371,6 +378,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	if Bool(s.All_undefined) {
 		s.Undefined = nil
+		s.Undefined_security = nil
 	}
 
 	if !ctx.toolchain().Is64Bit() {
@@ -382,7 +390,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	if ctx.Os() != android.Windows && (Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
 		Bool(s.Fuzzer) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer_overflow) || len(s.Misc_undefined) > 0 ||
-		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs)) {
+		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs) || Bool(s.Undefined_security)) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -567,7 +575,10 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		} else if ctx.Host() {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fno-sanitize-recover=all")
 		} else {
-			flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
+			// -fsanitize=vptr is incompatible with -fsanitize-trap.
+			if !Bool(sanitize.Properties.Sanitize.Undefined_security) {
+				flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
+			}
 		}
 		// http://b/119329758, Android core does not boot up with this sanitizer yet.
 		if toDisableImplicitIntegerChange(flags.Local.CFlags) {
@@ -829,6 +840,14 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 					// http://reviews.llvm.org/D6974
 					// "object-size",
 				)
+			} else if Bool(c.sanitize.Properties.Sanitize.Undefined_security) {
+				sanitizers = append(sanitizers,
+					// "function",
+					"shift",
+					"signed-integer-overflow",
+					"bounds",
+					"vptr",
+				)
 			}
 			sanitizers = append(sanitizers, c.sanitize.Properties.Sanitize.Misc_undefined...)
 		}
@@ -919,7 +938,8 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		} else if len(diagSanitizers) > 0 || c.sanitize.Properties.UbsanRuntimeDep ||
 			Bool(c.sanitize.Properties.Sanitize.Fuzzer) ||
 			Bool(c.sanitize.Properties.Sanitize.Undefined) ||
-			Bool(c.sanitize.Properties.Sanitize.All_undefined) {
+			Bool(c.sanitize.Properties.Sanitize.All_undefined) ||
+			Bool(c.sanitize.Properties.Sanitize.Undefined_security) {
 			runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)
 		}
 
@@ -1106,6 +1126,8 @@ func enableMinimalRuntime(sanitize *sanitize) bool {
 	if !Bool(sanitize.Properties.Sanitize.Address) &&
 		!Bool(sanitize.Properties.Sanitize.Hwaddress) &&
 		!Bool(sanitize.Properties.Sanitize.Fuzzer) &&
+		// -fsanitize=function is incompatible with the minimal runtime.
+		!Bool(sanitize.Properties.Sanitize.Undefined_security) &&
 
 		(Bool(sanitize.Properties.Sanitize.Integer_overflow) ||
 			len(sanitize.Properties.Sanitize.Misc_undefined) > 0 ||
