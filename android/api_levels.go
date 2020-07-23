@@ -127,13 +127,6 @@ func uncheckedFinalApiLevel(num int) ApiLevel {
 	}
 }
 
-// TODO: Merge with FutureApiLevel
-var CurrentApiLevel = ApiLevel{
-	value:     "current",
-	number:    10000,
-	isPreview: true,
-}
-
 // The first version that introduced 64-bit ABIs.
 var FirstLp64Version = uncheckedFinalApiLevel(21)
 
@@ -156,7 +149,7 @@ func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (*ApiLevel, error) {
 	}
 
 	if raw == "current" {
-		return &CurrentApiLevel, nil
+		return &FutureApiLevel, nil
 	}
 
 	for _, preview := range ctx.Config().PreviewApiLevels() {
