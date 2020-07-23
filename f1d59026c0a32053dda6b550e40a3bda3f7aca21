@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "294bda0a_a79440b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-23T06:32:19Z",
+      "side": 1,
+      "message": "+2\u0027ing as I don\u0027t have a strong opinion about the use of DepIsInSameApex. Feel free to amend it if you think it\u0027s clearer.",
+      "revId": "f1d59026c0a32053dda6b550e40a3bda3f7aca21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43deac50_6e69a8aa",
         "filename": "sdk/sdk.go",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2020-07-22T22:39:11Z",
       "side": 1,
       "message": "I\u0027m not sure if DepIsInSameApex is the correct method to use here. Maybe checking the ApexName() of each would be better?",
+      "revId": "f1d59026c0a32053dda6b550e40a3bda3f7aca21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59753542_35aacd1e",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-23T06:32:19Z",
+      "side": 1,
+      "message": "I think the net effect is the same, right?  ... because the apex mutator should have ran before this.\n\nChecking the ApexName() might be better because it\u0027s utilizing the outcome of the apex mutator, not mimicking what the apex mutator does.",
+      "parentUuid": "43deac50_6e69a8aa",
       "revId": "f1d59026c0a32053dda6b550e40a3bda3f7aca21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
