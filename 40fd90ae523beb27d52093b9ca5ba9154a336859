@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f94e2c2c_7b270e5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1581772
+      },
+      "writtenOn": "2020-07-23T17:24:19Z",
+      "side": 1,
+      "message": "@Jingwen It looks like this CL has broken the build when WITHOUT_CHECK_API is set, at least for aosp_arm64-eng. I get:\n\n  internal error: panic in GenerateBuildActions for singleton androidmk\n  Dist file should not be nil for the default tag in android.net.ipsec.ike.stubs.source in translateAndroidMkModule for module android.net.ipsec.ike.stubs.source variant android_common\n",
+      "revId": "40fd90ae523beb27d52093b9ca5ba9154a336859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
