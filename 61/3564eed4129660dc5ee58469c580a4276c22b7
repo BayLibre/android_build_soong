@@ -1,0 +1,7 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Build-Cop-Override+1: Dan Willemsen <dwillemsen@google.com>
+Submitted-by: Dan Willemsen <dwillemsen@google.com>
+Submitted-at: Thu, 23 Jul 2020 21:43:01 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1371260
+Project: platform/build/soong
+Branch: refs/heads/master
