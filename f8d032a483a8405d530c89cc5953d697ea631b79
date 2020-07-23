@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b027dd51_f35466dd",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-07-23T20:17:52Z",
+      "side": 1,
+      "message": "The CRT objects already have min_sdk_version set to 29. There it\u0027s used to mean that the current CRT begin can be used in modules that run on 29. I think it\u0027s fine to repurpose that, and the APEX can just get the split compiled for the older API level instead. +jiyong just in case I\u0027m wrong there.\n\nI did leave the boolean property on this struct though, since it\u0027s not specific to CRT objects. Given the above behavior it might even be desirable for some modules? lmk if you\u0027d prefer I move it to cc_object.",
+      "parentUuid": "e5ee122b_be45836f",
+      "revId": "f8d032a483a8405d530c89cc5953d697ea631b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "848ae892_874f2ae9",
         "filename": "cc/ndk_library.go",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "f8d032a483a8405d530c89cc5953d697ea631b79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be83bae6_bd946176",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-07-23T20:17:52Z",
+      "side": 1,
+      "message": "I don\u0027t think stubs can have the second property set, but doesn\u0027t hurt to be safe. Done.",
+      "parentUuid": "848ae892_874f2ae9",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 48
+      },
+      "revId": "f8d032a483a8405d530c89cc5953d697ea631b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
