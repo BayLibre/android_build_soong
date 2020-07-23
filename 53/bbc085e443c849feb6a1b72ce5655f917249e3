@@ -1,0 +1,7 @@
+Autosubmit+1: Kholoud Mohamed <kholoudm@google.com>
+Build-Cop-Override+1: Kholoud Mohamed <kholoudm@google.com>
+Submitted-by: satayev <satayev@google.com>
+Submitted-at: Thu, 23 Jul 2020 15:20:15 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1371941
+Project: platform/build/soong
+Branch: refs/heads/master
