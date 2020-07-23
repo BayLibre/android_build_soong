@@ -1908,7 +1908,8 @@ func (j *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 	return j.depIsInSameApex(ctx, dep)
 }
 
-func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
+	sdkVersion android.ApiLevel) error {
 	sdkSpec := j.minSdkVersion()
 	if !sdkSpec.specified() {
 		return fmt.Errorf("min_sdk_version is not specified")
@@ -1920,7 +1921,7 @@ func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersi
 	if err != nil {
 		return err
 	}
-	if int(ver) > sdkVersion {
+	if ver.ApiLevel(ctx).GreaterThan(sdkVersion) {
 		return fmt.Errorf("newer SDK(%v)", ver)
 	}
 	return nil
@@ -2677,7 +2678,8 @@ func (j *Import) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 	return j.depIsInSameApex(ctx, dep)
 }
 
-func (j *Import) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+func (j *Import) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
+	sdkVersion android.ApiLevel) error {
 	// Do not check for prebuilts against the min_sdk_version of enclosing APEX
 	return nil
 }
@@ -2851,7 +2853,8 @@ func (j *DexImport) DexJarBuildPath() android.Path {
 	return j.dexJarFile
 }
 
-func (j *DexImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+func (j *DexImport) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
+	sdkVersion android.ApiLevel) error {
 	// we don't check prebuilt modules for sdk_version
 	return nil
 }

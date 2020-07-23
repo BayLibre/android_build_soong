@@ -21,7 +21,6 @@ import (
 	"path/filepath"
 	"runtime"
 	"sort"
-	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -531,7 +530,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		minSdkVersion := ctx.Config().DefaultAppTargetSdk()
 
 		if a.minSdkVersion(ctx) == android.SdkVersion_Android10 {
-			minSdkVersion = strconv.Itoa(a.minSdkVersion(ctx))
+			minSdkVersion = a.minSdkVersion(ctx).String()
 		}
 
 		if java.UseApiFingerprint(ctx) {
@@ -560,7 +559,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			ctx.PropertyErrorf("test_only_no_hashtree", "not available")
 			return
 		}
-		if a.minSdkVersion(ctx) > android.SdkVersion_Android10 || a.testOnlyShouldSkipHashtreeGeneration() {
+		if a.minSdkVersion(ctx).GreaterThan(android.SdkVersion_Android10) || a.testOnlyShouldSkipHashtreeGeneration() {
 			// Apexes which are supposed to be installed in builtin dirs(/system, etc)
 			// don't need hashtree for activation. Therefore, by removing hashtree from
 			// apex bundle (filesystem image in it, to be specific), we can save storage.

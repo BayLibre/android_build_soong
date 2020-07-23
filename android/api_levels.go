@@ -60,6 +60,11 @@ type ApiLevel interface {
 	GreaterThanOrEqualTo(ApiLevel) bool
 	LessThan(ApiLevel) bool
 	LessThanOrEqualTo(ApiLevel) bool
+
+	// Returns either the final API number or the integer representing the
+	// future API level. Should be removed eventually, but aids in the
+	// transition from ints to ApiLevels.
+	FinalOrFutureInt() int
 }
 
 type FinalApiLevel interface {
@@ -128,6 +133,10 @@ func (this finalApiLevel) LessThanOrEqualTo(other ApiLevel) bool {
 	return this.CompareTo(other) <= 0
 }
 
+func (this finalApiLevel) FinalOrFutureInt() int {
+	return this.AsInt()
+}
+
 type previewApiLevel struct {
 	value         string
 	previewNumber int
@@ -178,6 +187,10 @@ func (this previewApiLevel) LessThan(other ApiLevel) bool {
 
 func (this previewApiLevel) LessThanOrEqualTo(other ApiLevel) bool {
 	return this.CompareTo(other) <= 0
+}
+
+func (this previewApiLevel) FinalOrFutureInt() int {
+	return FutureApiLevel
 }
 
 var _ FinalApiLevel = finalApiLevel{}
