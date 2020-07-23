@@ -36,7 +36,12 @@ import (
 var Bool = proptools.Bool
 var String = proptools.String
 
-const FutureApiLevel = 10000
+const FutureApiLevelInt = 10000
+
+var FutureApiLevel = previewApiLevel{
+	value:         "current",
+	previewNumber: FutureApiLevelInt,
+}
 
 // The configuration file name
 const configFileName = "soong.config"
@@ -677,11 +682,12 @@ func (c *config) AllSupportedApiLevels() []ApiLevel {
 	return levels
 }
 
+// TODO: Merge this and DefaultAppTargetSdk to just return an ApiLevel.
 func (c *config) DefaultAppTargetSdkInt() int {
 	if Bool(c.productVariables.Platform_sdk_final) {
 		return c.PlatformSdkVersionInt()
 	} else {
-		return FutureApiLevel
+		return FutureApiLevelInt
 	}
 }
 
