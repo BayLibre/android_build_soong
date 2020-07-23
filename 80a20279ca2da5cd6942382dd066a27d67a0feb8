@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003989487",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1356263?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "dcab1b15_e5cde094",
+          "description": "Change to \"android/api_levels.go\"",
+          "replacements": [
+            {
+              "path": "android/api_levels.go",
+              "range": {
+                "startLine": 28,
+                "startChar": 69,
+                "endLine": 28,
+                "endChar": 78
+              },
+              "replacement": "with"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "618e62a7_eb64be9c",
+        "filename": "android/api_levels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-23T05:49:54Z",
+      "side": 1,
+      "message": "Common typo found: \"with with\" -- should it be \"with\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 28,
+        "startChar": 69,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "80a20279ca2da5cd6942382dd066a27d67a0feb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
