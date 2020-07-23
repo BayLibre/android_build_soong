@@ -24,27 +24,32 @@ import (
 	"github.com/google/blueprint"
 )
 
-const (
-	SdkVersion_Android10 = 29
+var (
+	SdkVersion_Android10 = uncheckedFinalApiLevel(29)
 )
 
 type ApexInfo struct {
 	// Name of the apex variation that this module is mutated into
 	ApexVariationName string
 
-	MinSdkVersion int
-	Updatable     bool
-	RequiredSdks  SdkRefs
+	// Serialized ApiLevel. Use via MinSdkVersion() method.
+	MinSdkVersionStr string
+	Updatable        bool
+	RequiredSdks     SdkRefs
 
 	InApexes []string
 }
 
-func (i ApexInfo) mergedName() string {
-	name := "apex" + strconv.Itoa(i.MinSdkVersion)
+func (i ApexInfo) mergedName(ctx EarlyModuleContext) string {
+	name := "apex" + strconv.Itoa(i.MinSdkVersion(ctx).FinalOrFutureInt())
 	for _, sdk := range i.RequiredSdks {
 		name += "_" + sdk.Name + "_" + sdk.Version
 	}
 	return name
+}
+
+func (this *ApexInfo) MinSdkVersion(ctx EarlyModuleContext) ApiLevel {
+	return ApiLevelOrPanic(ctx, this.MinSdkVersionStr)
 }
 
 // Extracted from ApexModule to make it easier to define custom subsets of the
@@ -141,7 +146,7 @@ type ApexModule interface {
 
 	// Returns nil if this module supports sdkVersion
 	// Otherwise, returns error with reason
-	ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion int) error
+	ShouldSupportSdkVersion(ctx BaseModuleContext, sdkVersion ApiLevel) error
 
 	// Returns true if this module needs a unique variation per apex, for example if
 	// use_apex_name_macro is set.
@@ -347,18 +352,18 @@ func (a byApexName) Less(i, j int) bool { return a[i].ApexVariationName < a[j].A
 // mergeApexVariations deduplicates APEX variations that would build identically into a common
 // variation.  It returns the reduced list of variations and a list of aliases from the original
 // variation names to the new variation names.
-func mergeApexVariations(apexVariations []ApexInfo) (merged []ApexInfo, aliases [][2]string) {
+func mergeApexVariations(ctx EarlyModuleContext, apexVariations []ApexInfo) (merged []ApexInfo, aliases [][2]string) {
 	sort.Sort(byApexName(apexVariations))
 	seen := make(map[string]int)
 	for _, apexInfo := range apexVariations {
 		apexName := apexInfo.ApexVariationName
-		mergedName := apexInfo.mergedName()
+		mergedName := apexInfo.mergedName(ctx)
 		if index, exists := seen[mergedName]; exists {
 			merged[index].InApexes = append(merged[index].InApexes, apexName)
 			merged[index].Updatable = merged[index].Updatable || apexInfo.Updatable
 		} else {
 			seen[mergedName] = len(merged)
-			apexInfo.ApexVariationName = apexInfo.mergedName()
+			apexInfo.ApexVariationName = apexInfo.mergedName(ctx)
 			apexInfo.InApexes = CopyOf(apexInfo.InApexes)
 			merged = append(merged, apexInfo)
 		}
@@ -374,7 +379,7 @@ func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []Mod
 		var apexVariations []ApexInfo
 		var aliases [][2]string
 		if !mctx.Module().(ApexModule).UniqueApexVariations() && !m.ApexProperties.UniqueApexVariationsForDeps {
-			apexVariations, aliases = mergeApexVariations(m.apexVariations)
+			apexVariations, aliases = mergeApexVariations(mctx, m.apexVariations)
 		} else {
 			apexVariations = m.apexVariations
 		}
@@ -603,75 +608,75 @@ func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion
 }
 
 // TODO(b/158059172): remove minSdkVersion allowlist
-var minSdkVersionAllowlist = map[string]int{
-	"adbd":                  30,
-	"android.net.ipsec.ike": 30,
-	"androidx-constraintlayout_constraintlayout-solver": 30,
-	"androidx.annotation_annotation":                    28,
-	"androidx.arch.core_core-common":                    28,
-	"androidx.collection_collection":                    28,
-	"androidx.lifecycle_lifecycle-common":               28,
-	"apache-commons-compress":                           29,
-	"bouncycastle_ike_digests":                          30,
-	"brotli-java":                                       29,
-	"captiveportal-lib":                                 28,
-	"flatbuffer_headers":                                30,
-	"framework-permission":                              30,
-	"framework-statsd":                                  30,
-	"gemmlowp_headers":                                  30,
-	"ike-internals":                                     30,
-	"kotlinx-coroutines-android":                        28,
-	"kotlinx-coroutines-core":                           28,
-	"libadb_crypto":                                     30,
-	"libadb_pairing_auth":                               30,
-	"libadb_pairing_connection":                         30,
-	"libadb_pairing_server":                             30,
-	"libadb_protos":                                     30,
-	"libadb_tls_connection":                             30,
-	"libadbconnection_client":                           30,
-	"libadbconnection_server":                           30,
-	"libadbd_core":                                      30,
-	"libadbd_services":                                  30,
-	"libadbd":                                           30,
-	"libapp_processes_protos_lite":                      30,
-	"libasyncio":                                        30,
-	"libbrotli":                                         30,
-	"libbuildversion":                                   30,
-	"libcrypto_static":                                  30,
-	"libcrypto_utils":                                   30,
-	"libdiagnose_usb":                                   30,
-	"libeigen":                                          30,
-	"liblz4":                                            30,
-	"libmdnssd":                                         30,
-	"libneuralnetworks_common":                          30,
-	"libneuralnetworks_headers":                         30,
-	"libneuralnetworks":                                 30,
-	"libprocpartition":                                  30,
-	"libprotobuf-java-lite":                             30,
-	"libprotoutil":                                      30,
-	"libqemu_pipe":                                      30,
-	"libstats_jni":                                      30,
-	"libstatslog_statsd":                                30,
-	"libstatsmetadata":                                  30,
-	"libstatspull":                                      30,
-	"libstatssocket":                                    30,
-	"libsync":                                           30,
-	"libtextclassifier_hash_headers":                    30,
-	"libtextclassifier_hash_static":                     30,
-	"libtflite_kernel_utils":                            30,
-	"libwatchdog":                                       29,
-	"libzstd":                                           30,
-	"metrics-constants-protos":                          28,
-	"net-utils-framework-common":                        29,
-	"permissioncontroller-statsd":                       28,
-	"philox_random_headers":                             30,
-	"philox_random":                                     30,
-	"service-permission":                                30,
-	"service-statsd":                                    30,
-	"statsd-aidl-ndk_platform":                          30,
-	"statsd":                                            30,
-	"tensorflow_headers":                                30,
-	"xz-java":                                           29,
+var minSdkVersionAllowlist = map[string]ApiLevel{
+	"adbd":                  uncheckedFinalApiLevel(30),
+	"android.net.ipsec.ike": uncheckedFinalApiLevel(30),
+	"androidx-constraintlayout_constraintlayout-solver": uncheckedFinalApiLevel(30),
+	"androidx.annotation_annotation":                    uncheckedFinalApiLevel(28),
+	"androidx.arch.core_core-common":                    uncheckedFinalApiLevel(28),
+	"androidx.collection_collection":                    uncheckedFinalApiLevel(28),
+	"androidx.lifecycle_lifecycle-common":               uncheckedFinalApiLevel(28),
+	"apache-commons-compress":                           uncheckedFinalApiLevel(29),
+	"bouncycastle_ike_digests":                          uncheckedFinalApiLevel(30),
+	"brotli-java":                                       uncheckedFinalApiLevel(29),
+	"captiveportal-lib":                                 uncheckedFinalApiLevel(28),
+	"flatbuffer_headers":                                uncheckedFinalApiLevel(30),
+	"framework-permission":                              uncheckedFinalApiLevel(30),
+	"framework-statsd":                                  uncheckedFinalApiLevel(30),
+	"gemmlowp_headers":                                  uncheckedFinalApiLevel(30),
+	"ike-internals":                                     uncheckedFinalApiLevel(30),
+	"kotlinx-coroutines-android":                        uncheckedFinalApiLevel(28),
+	"kotlinx-coroutines-core":                           uncheckedFinalApiLevel(28),
+	"libadb_crypto":                                     uncheckedFinalApiLevel(30),
+	"libadb_pairing_auth":                               uncheckedFinalApiLevel(30),
+	"libadb_pairing_connection":                         uncheckedFinalApiLevel(30),
+	"libadb_pairing_server":                             uncheckedFinalApiLevel(30),
+	"libadb_protos":                                     uncheckedFinalApiLevel(30),
+	"libadb_tls_connection":                             uncheckedFinalApiLevel(30),
+	"libadbconnection_client":                           uncheckedFinalApiLevel(30),
+	"libadbconnection_server":                           uncheckedFinalApiLevel(30),
+	"libadbd_core":                                      uncheckedFinalApiLevel(30),
+	"libadbd_services":                                  uncheckedFinalApiLevel(30),
+	"libadbd":                                           uncheckedFinalApiLevel(30),
+	"libapp_processes_protos_lite":                      uncheckedFinalApiLevel(30),
+	"libasyncio":                                        uncheckedFinalApiLevel(30),
+	"libbrotli":                                         uncheckedFinalApiLevel(30),
+	"libbuildversion":                                   uncheckedFinalApiLevel(30),
+	"libcrypto_static":                                  uncheckedFinalApiLevel(30),
+	"libcrypto_utils":                                   uncheckedFinalApiLevel(30),
+	"libdiagnose_usb":                                   uncheckedFinalApiLevel(30),
+	"libeigen":                                          uncheckedFinalApiLevel(30),
+	"liblz4":                                            uncheckedFinalApiLevel(30),
+	"libmdnssd":                                         uncheckedFinalApiLevel(30),
+	"libneuralnetworks_common":                          uncheckedFinalApiLevel(30),
+	"libneuralnetworks_headers":                         uncheckedFinalApiLevel(30),
+	"libneuralnetworks":                                 uncheckedFinalApiLevel(30),
+	"libprocpartition":                                  uncheckedFinalApiLevel(30),
+	"libprotobuf-java-lite":                             uncheckedFinalApiLevel(30),
+	"libprotoutil":                                      uncheckedFinalApiLevel(30),
+	"libqemu_pipe":                                      uncheckedFinalApiLevel(30),
+	"libstats_jni":                                      uncheckedFinalApiLevel(30),
+	"libstatslog_statsd":                                uncheckedFinalApiLevel(30),
+	"libstatsmetadata":                                  uncheckedFinalApiLevel(30),
+	"libstatspull":                                      uncheckedFinalApiLevel(30),
+	"libstatssocket":                                    uncheckedFinalApiLevel(30),
+	"libsync":                                           uncheckedFinalApiLevel(30),
+	"libtextclassifier_hash_headers":                    uncheckedFinalApiLevel(30),
+	"libtextclassifier_hash_static":                     uncheckedFinalApiLevel(30),
+	"libtflite_kernel_utils":                            uncheckedFinalApiLevel(30),
+	"libwatchdog":                                       uncheckedFinalApiLevel(29),
+	"libzstd":                                           uncheckedFinalApiLevel(30),
+	"metrics-constants-protos":                          uncheckedFinalApiLevel(28),
+	"net-utils-framework-common":                        uncheckedFinalApiLevel(29),
+	"permissioncontroller-statsd":                       uncheckedFinalApiLevel(28),
+	"philox_random_headers":                             uncheckedFinalApiLevel(30),
+	"philox_random":                                     uncheckedFinalApiLevel(30),
+	"service-permission":                                uncheckedFinalApiLevel(30),
+	"service-statsd":                                    uncheckedFinalApiLevel(30),
+	"statsd-aidl-ndk_platform":                          uncheckedFinalApiLevel(30),
+	"statsd":                                            uncheckedFinalApiLevel(30),
+	"tensorflow_headers":                                uncheckedFinalApiLevel(30),
+	"xz-java":                                           uncheckedFinalApiLevel(29),
 }
 
 // Function called while walking an APEX's payload dependencies.
@@ -686,7 +691,7 @@ type UpdatableModule interface {
 }
 
 // CheckMinSdkVersion checks if every dependency of an updatable module sets min_sdk_version accordingly
-func CheckMinSdkVersion(m UpdatableModule, ctx ModuleContext, minSdkVersion int) {
+func CheckMinSdkVersion(m UpdatableModule, ctx ModuleContext, minSdkVersion ApiLevel) {
 	// do not enforce min_sdk_version for host
 	if ctx.Host() {
 		return
@@ -699,7 +704,7 @@ func CheckMinSdkVersion(m UpdatableModule, ctx ModuleContext, minSdkVersion int)
 
 	// do not enforce deps.min_sdk_version if APEX/APK doesn't set min_sdk_version or
 	// min_sdk_version is not finalized (e.g. current or codenames)
-	if minSdkVersion == FutureApiLevel {
+	if minSdkVersion.IsCurrent() {
 		return
 	}
 
@@ -714,7 +719,7 @@ func CheckMinSdkVersion(m UpdatableModule, ctx ModuleContext, minSdkVersion int)
 		}
 		if err := to.ShouldSupportSdkVersion(ctx, minSdkVersion); err != nil {
 			toName := ctx.OtherModuleName(to)
-			if ver, ok := minSdkVersionAllowlist[toName]; !ok || ver > minSdkVersion {
+			if ver, ok := minSdkVersionAllowlist[toName]; !ok || ver.GreaterThan(minSdkVersion) {
 				ctx.OtherModuleErrorf(to, "should support min_sdk_version(%v) for %q: %v. Dependency path: %s",
 					minSdkVersion, ctx.ModuleName(), err.Error(), ctx.GetPathString(false))
 				return false
