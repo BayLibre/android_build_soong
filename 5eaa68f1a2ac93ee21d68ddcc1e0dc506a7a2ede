@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d1bbe70_c1b904ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-23T04:26:26Z",
+      "side": 1,
+      "message": "Did you check that build.ninja doesn\u0027t have \"-D__ANDROID_SDK_VERSION__\u003d0\" ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 7
+      },
+      "revId": "5eaa68f1a2ac93ee21d68ddcc1e0dc506a7a2ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
