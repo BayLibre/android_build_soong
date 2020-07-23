@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82088172_dacb6123",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-23T04:57:18Z",
+      "side": 1,
+      "message": "Agreed. removed the line.",
+      "parentUuid": "9a99bfb1_c5308da3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "3c25514813f6a01eb96a3a5982eed6033e078e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a2d32ae_5fd575d6",
         "filename": "android/apex.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "3c25514813f6a01eb96a3a5982eed6033e078e5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a4b284_f38dd59d",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-23T04:57:18Z",
+      "side": 1,
+      "message": "Right. Thanks!",
+      "parentUuid": "0a2d32ae_5fd575d6",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 28
+      },
+      "revId": "3c25514813f6a01eb96a3a5982eed6033e078e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
