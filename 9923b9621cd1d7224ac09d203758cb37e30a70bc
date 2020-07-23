@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "fdd22b21_e38c0746",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-07-23T21:27:27Z",
+      "side": 1,
+      "message": "See my comments in c/1340500. Could we try adding \"data\" property instead of this \"test_harness\" property?\n",
+      "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f9d26cc_534f0782",
         "filename": "rust/test.go",
         "patchSetId": 2
