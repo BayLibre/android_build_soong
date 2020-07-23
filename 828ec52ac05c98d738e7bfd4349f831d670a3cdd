@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed242659_07a7bdec",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1812,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-23T02:29:26Z",
+      "side": 1,
+      "message": "This can be included only if PRODUCT_PRODUCT_VNDK_VERSION is set. Otherwise, they must not use VNDK. As PRODUCT_PRODUCT_VNDK_VERSION is automatically set for R launching devices, no problem if this is only for R launching devices.",
+      "range": {
+        "startLine": 1812,
+        "startChar": 49,
+        "endLine": 1812,
+        "endChar": 68
+      },
+      "revId": "828ec52ac05c98d738e7bfd4349f831d670a3cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
