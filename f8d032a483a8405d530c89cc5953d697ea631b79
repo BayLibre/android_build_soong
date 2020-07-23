@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5ee122b_be45836f",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-23T17:49:17Z",
+      "side": 1,
+      "message": "What\u0027s the issue with reusing min_sdk_version for this, maybe with a separate bool flag (set but a custom module type?) to identify the crtbegin modules?",
+      "revId": "f8d032a483a8405d530c89cc5953d697ea631b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "848ae892_874f2ae9",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-23T17:49:17Z",
+      "side": 1,
+      "message": "Should this be an else if?  You don\u0027t want to call generatePerApiVariants twice on the same module",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 48
+      },
+      "revId": "f8d032a483a8405d530c89cc5953d697ea631b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
