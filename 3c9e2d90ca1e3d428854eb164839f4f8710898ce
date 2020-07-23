@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6f24a8d_eae162f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-23T05:01:55Z",
+      "side": 1,
+      "message": "Soong maintainers (Dan, Colin): any thoughts about how to move this CL (and the linked blueprint PR) forward?",
+      "revId": "3c9e2d90ca1e3d428854eb164839f4f8710898ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
