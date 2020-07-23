@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5b1e2cc1_b5cad191",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-23T21:09:47Z",
+      "side": 1,
+      "message": "Filed b/162014282 since it isn\u0027t exactly the same as the checks we have currently, and it all happens in Make instead of Soong still (and make has no clue about these modules)",
+      "parentUuid": "04cd44b6_c3a5792e",
+      "revId": "13af8140bcf40c71deb3b0fee11bb8e9ad792621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0149dc6_0360d50b",
         "filename": "android/prebuilt_build_tool.go",
         "patchSetId": 2
@@ -69,6 +87,24 @@
       "revId": "13af8140bcf40c71deb3b0fee11bb8e9ad792621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a15a6125_c20c6e3e",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-07-23T21:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1039190_533568b5",
+      "revId": "13af8140bcf40c71deb3b0fee11bb8e9ad792621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
