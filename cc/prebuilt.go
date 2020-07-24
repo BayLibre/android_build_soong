@@ -37,9 +37,20 @@ type prebuiltLinkerInterface interface {
 }
 
 type prebuiltLinkerProperties struct {
-
 	// a prebuilt library or binary. Can reference a genrule module that generates an executable file.
 	Srcs []string `android:"path,arch_variant"`
+
+	Sanitized struct {
+		None struct {
+			Srcs []string `android:"path,arch_variant"`
+		} `android:"arch_variant"`
+		Address struct {
+			Srcs []string `android:"path,arch_variant"`
+		} `android:"arch_variant"`
+		Hwaddress struct {
+			Srcs []string `android:"path,arch_variant"`
+		} `android:"arch_variant"`
+	} `android:"arch_variant"`
 
 	// Check the prebuilt ELF files (e.g. DT_SONAME, DT_NEEDED, resolution of undefined
 	// symbols, etc), default true.
@@ -49,6 +60,18 @@ type prebuiltLinkerProperties struct {
 	// This is needed only if this library is linked by other modules in build time.
 	// Only makes sense for the Windows target.
 	Windows_import_lib *string `android:"path,arch_variant"`
+}
+
+func (this *prebuiltLinkerProperties) SrcsForSanitizer(ctx android.BaseModuleContext) []string {
+	srcs := this.Srcs
+	if Bool(ctx.Module().(*Module).sanitize.Properties.Sanitize.Address) && this.Sanitized.Address.Srcs != nil {
+		srcs = append(srcs, this.Sanitized.Address.Srcs...)
+	} else if Bool(ctx.Module().(*Module).sanitize.Properties.Sanitize.Hwaddress) && this.Sanitized.Hwaddress.Srcs != nil {
+		srcs = append(srcs, this.Sanitized.Hwaddress.Srcs...)
+	} else {
+		srcs = append(srcs, this.Sanitized.None.Srcs...)
+	}
+	return srcs
 }
 
 type prebuiltLinker struct {
@@ -104,7 +127,7 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	p.libraryDecorator.addExportedGeneratedHeaders(deps.ReexportedGeneratedHeaders...)
 
 	// TODO(ccross): verify shared library dependencies
-	srcs := p.prebuiltSrcs()
+	srcs := p.prebuiltSrcs(ctx)
 	if len(srcs) > 0 {
 		builderFlags := flagsToBuilderFlags(flags)
 
@@ -175,13 +198,13 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	return nil
 }
 
-func (p *prebuiltLibraryLinker) prebuiltSrcs() []string {
-	srcs := p.properties.Srcs
+func (p *prebuiltLibraryLinker) prebuiltSrcs(ctx android.BaseModuleContext) []string {
+	srcs := p.properties.SrcsForSanitizer(ctx)
 	if p.static() {
-		srcs = append(srcs, p.libraryDecorator.StaticProperties.Static.Srcs...)
+		srcs = append(srcs, p.libraryDecorator.StaticProperties.Static.SrcsForSanitizer(ctx)...)
 	}
 	if p.shared() {
-		srcs = append(srcs, p.libraryDecorator.SharedProperties.Shared.Srcs...)
+		srcs = append(srcs, p.libraryDecorator.SharedProperties.Shared.SrcsForSanitizer(ctx)...)
 	}
 
 	return srcs
@@ -215,8 +238,8 @@ func NewPrebuiltLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDec
 
 	module.AddProperties(&prebuilt.properties)
 
-	srcsSupplier := func() []string {
-		return prebuilt.prebuiltSrcs()
+	srcsSupplier := func(ctx android.BaseModuleContext) []string {
+		return prebuilt.prebuiltSrcs(ctx)
 	}
 
 	android.InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, "srcs")
