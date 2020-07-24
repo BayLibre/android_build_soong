@@ -140,6 +140,30 @@
       "revId": "638291fccfabcc423b6d55b00f094910283cf54c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8593f941_a87cfa4b",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-24T19:53:48Z",
+      "side": 1,
+      "message": "It\u0027s sometimes used in other cases (e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/android/neverallow.go;l\u003d225-232) where `uncompress_dex` only made sense in very specific cases and could be misused -- I assume it\u0027s meant to be used in conjunction with the cflag `-verify`(?) but likely wouldn\u0027t be harmful outside of that context?\n\nI was hoping Dan would weigh in, but he\u0027s OOO for a while.",
+      "parentUuid": "5044adf8_359b53be",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 19
+      },
+      "revId": "638291fccfabcc423b6d55b00f094910283cf54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
