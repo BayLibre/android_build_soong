@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "9f6953c8_c13060a7",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-24T06:51:17Z",
+      "side": 1,
+      "message": "Sorry, when I said \u0027leave as it is\u0027, I meant \u0027ctx.SocSpecific() || ctx.DeviceSpecific() ...\u0027",
+      "parentUuid": "7cf00ccc_0e34e22e",
+      "range": {
+        "startLine": 1832,
+        "startChar": 4,
+        "endLine": 1832,
+        "endChar": 18
+      },
+      "revId": "d1a870636b0115925f1cbd9422e20b90b8041c81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48674611_dcf80046",
         "filename": "apex/apex.go",
         "patchSetId": 3
