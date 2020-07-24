@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0619e39a_7a57afd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2020-07-24T17:38:13Z",
+      "side": 1,
+      "message": "This was already merged, but we need to revert the part that disables CFI in sanitize.go as soon as we have a way to correctly generate CFI variants for snapshots. Adding this comment here but will say this on the linked bug as well.",
+      "revId": "eec88e1de8861f221fec0644500a3f80c181f57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
