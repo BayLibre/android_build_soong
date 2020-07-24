@@ -1707,7 +1707,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			if v := sdkSpec.version; v.isNumbered() {
 				return v.String()
 			} else {
-				return ctx.Config().DefaultAppTargetSdk()
+				return ctx.Config().DefaultAppTargetSdk(ctx).String()
 			}
 		}
 
