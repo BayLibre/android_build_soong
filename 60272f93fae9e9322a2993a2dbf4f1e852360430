@@ -46,6 +46,30 @@
       "revId": "60272f93fae9e9322a2993a2dbf4f1e852360430",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e916de7c_02da9da9",
+        "filename": "android/source_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-07-24T11:36:34Z",
+      "side": 1,
+      "message": "Can we use AddInt32 or AddInt64 in sync/atomic?",
+      "parentUuid": "8970b2b6_440ffae4",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "60272f93fae9e9322a2993a2dbf4f1e852360430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
