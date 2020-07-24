@@ -16,6 +16,23 @@
       "revId": "b1d1e0e6bd0f4034752a7c7d15f44e967c485d7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd32ce0a_cc39622c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-24T13:59:57Z",
+      "side": 1,
+      "message": "I think this change breaks my build. I have a symbolic link from out to a separate drive where the build output is actually stored and it started failing recently. The failure was that it could not find out/soong/.intermediates/prebuilts/build-tools/flex/linux_glibc_x86_64/flex which is a symbolic link to ../../../../../../../prebuilts/build-tools/linux-x86/bin/flex.\n\nThat relative path attempts to take it out of the out/ directory and back to the top of the android build but as the out directory is a symbolic link it doesn\u0027t work.\n\nI am not sure if what I have set up is a valid configuration but it was the easiest way to keep an out/ directory at the top of my checkout while not filling my disk with build artifacts.\n",
+      "revId": "b1d1e0e6bd0f4034752a7c7d15f44e967c485d7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
