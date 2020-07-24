@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36a167e_9c9f5a47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-07-24T12:10:44Z",
+      "side": 1,
+      "message": "Rebased to solve conflict",
+      "revId": "e812805e756d37108d16cfe7da784169369c7e86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104f9ff9_c8f64b80",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-07-24T12:10:44Z",
+      "side": 1,
+      "message": "I didn\u0027t change this because I think \"moduleName\" within function \"androidMkForFiles\" within file \"androidmk.go\" is already pretty clear about its intention :)",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 23
+      },
+      "revId": "e812805e756d37108d16cfe7da784169369c7e86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
