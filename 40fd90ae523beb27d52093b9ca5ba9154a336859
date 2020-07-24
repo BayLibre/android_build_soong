@@ -16,6 +16,24 @@
       "revId": "40fd90ae523beb27d52093b9ca5ba9154a336859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1adbd146_2d04e1d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-24T09:17:37Z",
+      "side": 1,
+      "message": "Thanks for the report; repro\u0027d and found a fix at r.android.com/1371680. Please take a look.",
+      "parentUuid": "f94e2c2c_7b270e5e",
+      "revId": "40fd90ae523beb27d52093b9ca5ba9154a336859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
