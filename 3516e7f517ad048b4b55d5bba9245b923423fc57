@@ -59,6 +59,48 @@
     },
     {
       "key": {
+        "uuid": "e9fca845_f6b80dcd",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-24T09:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dbdd326_1f2188b0",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c9e6c63_aacca72c",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-24T09:15:39Z",
+      "side": 1,
+      "message": "Sure, fixed.",
+      "parentUuid": "5b3b1c53_d627cf12",
+      "range": {
+        "startLine": 1251,
+        "startChar": 3,
+        "endLine": 1251,
+        "endChar": 11
+      },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "783805a8_407eee64",
         "filename": "android/config.go",
         "patchSetId": 2
@@ -94,6 +136,30 @@
       "side": 1,
       "message": "The name is not particularly informative. I have been trying to think of a better name. The trick is to balance between being too specific that means adding new information will require renaming and too general. I am not sure that the location is such a key part of this that it needs to be in the name.\n\nConceptually it is a list of information about jars provided by the configuration.\n\nHow about ConfiguredJarList? Is that too general?",
       "parentUuid": "783805a8_407eee64",
+      "range": {
+        "startLine": 1259,
+        "startChar": 5,
+        "endLine": 1259,
+        "endChar": 8
+      },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fdfe286_f0ee8131",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-24T09:15:39Z",
+      "side": 1,
+      "message": "ConfiguredJarList looks good to me. The interface will be used for lists of bootclasspath/system server jars, so having \"JarList\" in the name is a good idea. \"Configured\" is a bit long but ok.",
+      "parentUuid": "03c268fb_72bdd90d",
       "range": {
         "startLine": 1259,
         "startChar": 5,
@@ -153,6 +219,30 @@
     },
     {
       "key": {
+        "uuid": "1b3b7592_eb436f60",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-24T09:15:39Z",
+      "side": 1,
+      "message": "Ok. Let\u0027s have parallel arrays.\n\nI would not worry about ~2x space overhead though. These are very short (~10 items) lists of bootclasspath/system server jars. The number of such lists in the build system is ~4 (few but not unique). IMO 2x memory here is nothing compared to the way slices are constructed/appended all over the place in Soong. Getting out of sync is a more serious concern (my idea was that coherence will be ensured by the interface operations).",
+      "parentUuid": "b8b07935_c1e81816",
+      "range": {
+        "startLine": 1297,
+        "startChar": 0,
+        "endLine": 1301,
+        "endChar": 1
+      },
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e7fa490_2b565e4f",
         "filename": "android/config.go",
         "patchSetId": 2
@@ -167,6 +257,24 @@
       "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b05815_90bb1aa9",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-24T09:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e7fa490_2b565e4f",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "8e1666ab_531e9c08",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-24T09:15:39Z",
+      "side": 1,
+      "message": "I think of these lists as similar things, and eventually they will all use the same interface (http://b/155630745). But let\u0027s have the spaces back.",
+      "parentUuid": "b2a07bf6_3bc350f3",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "608b8e96_c0c7b080",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 2
@@ -201,6 +327,24 @@
       "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c4540b9_f71d78f4",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-24T09:15:39Z",
+      "side": 1,
+      "message": "Thanks for catching this! I fixed Append so that it always creates a new list.\n\n(I still can\u0027t get used to Go way of maybe-changing the slice in append. I can understand why it is the way it is, but to me it makes more sense if a function either always changes its argument and returns void, or never changes its argument and returns the new container.)",
+      "parentUuid": "608b8e96_c0c7b080",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
