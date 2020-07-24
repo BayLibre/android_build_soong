@@ -1119,6 +1119,7 @@ func TestAppSdkVersion(t *testing.T) {
 		{
 			name:                  "14",
 			sdkVersion:            "14",
+			platformSdkInt:        30,
 			expectedMinSdkVersion: "14",
 			platformSdkCodename:   "S",
 			activeCodenames:       []string{"S"},

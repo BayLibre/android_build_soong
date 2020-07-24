@@ -61,6 +61,8 @@ type ModuleBuildParams BuildParams
 // EarlyModuleContext provides methods that can be called early, as soon as the properties have
 // been parsed into the module and before any mutators have run.
 type EarlyModuleContext interface {
+	ConfigContext
+
 	Module() Module
 	ModuleName() string
 	ModuleDir() string
@@ -81,7 +83,6 @@ type EarlyModuleContext interface {
 	SystemExtSpecific() bool
 	Platform() bool
 
-	Config() Config
 	DeviceConfig() DeviceConfig
 
 	// Deprecated: use Config()
@@ -1521,6 +1522,8 @@ func (e *earlyModuleContext) SystemExtSpecific() bool {
 func (e *earlyModuleContext) Namespace() *Namespace {
 	return e.EarlyModuleContext.Namespace().(*Namespace)
 }
+
+var _ EarlyModuleContext = &earlyModuleContext{}
 
 type baseModuleContext struct {
 	bp blueprint.BaseModuleContext

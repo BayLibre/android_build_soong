@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -178,7 +179,12 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext, minSdkVersion sdkSpec)
 		ctx.PropertyErrorf("min_sdk_version", "%s", err)
 	}
 
-	flags = append(flags, "--min-api "+effectiveVersion.asNumberString())
+	if effectiveVersion.EqualTo(android.NoneApiLevel) {
+		panic("effectiveVersion should never return none")
+	}
+
+	flags = append(flags, fmt.Sprintf("--min-api %d",
+		effectiveVersion.FinalOrFutureInt()))
 	return flags
 }
 
