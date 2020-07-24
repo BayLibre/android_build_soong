@@ -16,6 +16,24 @@
       "revId": "55b58efb529673a9e6b35731580824c8743473e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5280855_d86ed3ec",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1704169
+      },
+      "writtenOn": "2020-07-24T00:49:22Z",
+      "side": 1,
+      "message": "writeonly is only used inside the Address or HWAddress blocks below, so it won\u0027t ever use it if address or hwaddress aren\u0027t used. I could raise an error instead if that\u0027s cleaner?",
+      "parentUuid": "a8528c6e_d6f79337",
+      "revId": "55b58efb529673a9e6b35731580824c8743473e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
