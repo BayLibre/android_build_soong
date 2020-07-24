@@ -58,6 +58,10 @@ func (f *FileConfigurableOptions) SetDefaultConfig() {
 	*f = FileConfigurableOptions{}
 }
 
+type ConfigContext interface {
+	Config() Config
+}
+
 // A Config object represents the entire build configuration for Android.
 type Config struct {
 	*config
