@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "da40570e_ad3a49ce",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-24T09:39:21Z",
+      "side": 1,
+      "message": "Ack.\n\nI\u0027m thinking that \"isVenorApex()\" with proper comments might be better than inventing yet another vague name. What do you think?\n\nInterestingly, while searching for a better name, I found the exact same implementation with somewhat different name(and purpose, I guess) in android/module.go.\n\n  // RequiresStableAPIs returns true if the module will be installed to a partition that may\n  // be updated separately from the system image.\n  func (m *ModuleBase) RequiresStableAPIs(ctx BaseModuleContext) bool {\n  \treturn m.SocSpecific() || m.DeviceSpecific() ||\n  \t\t(m.ProductSpecific() \u0026\u0026 ctx.Config().EnforceProductPartitionInterface())\n  }",
+      "parentUuid": "22d6b355_332f94a8",
+      "range": {
+        "startLine": 1832,
+        "startChar": 4,
+        "endLine": 1832,
+        "endChar": 18
+      },
+      "revId": "d1a870636b0115925f1cbd9422e20b90b8041c81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48674611_dcf80046",
         "filename": "apex/apex.go",
         "patchSetId": 3
