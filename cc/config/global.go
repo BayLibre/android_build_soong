@@ -24,7 +24,7 @@ import (
 var (
 	// Flags used by lots of devices.  Putting them in package static variables
 	// will save bytes in build.ninja so they aren't repeated for every file
-	commonGlobalCflags = []string{
+	CommonGlobalCflags = []string{
 		"-DANDROID",
 		"-fmessage-length=0",
 		"-W",
@@ -57,7 +57,7 @@ var (
 
 	commonGlobalConlyflags = []string{}
 
-	deviceGlobalCflags = []string{
+	DeviceGlobalCflags = []string{
 		"-fdiagnostics-color",
 
 		"-ffunction-sections",
@@ -147,7 +147,7 @@ var pctx = android.NewPackageContext("android/soong/cc/config")
 
 func init() {
 	if android.BuildOs == android.Linux {
-		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
+		CommonGlobalCflags = append(CommonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
 	}
 
 	pctx.StaticVariable("CommonGlobalConlyflags", strings.Join(commonGlobalConlyflags, " "))
@@ -159,7 +159,7 @@ func init() {
 	pctx.StaticVariable("HostGlobalLldflags", strings.Join(hostGlobalLldflags, " "))
 
 	pctx.VariableFunc("CommonClangGlobalCflags", func(ctx android.PackageVarContext) string {
-		flags := ClangFilterUnknownCflags(commonGlobalCflags)
+		flags := ClangFilterUnknownCflags(CommonGlobalCflags)
 		flags = append(flags, "${ClangExtraCflags}")
 
 		// http://b/131390872
@@ -181,9 +181,9 @@ func init() {
 
 	pctx.VariableFunc("DeviceClangGlobalCflags", func(ctx android.PackageVarContext) string {
 		if ctx.Config().Fuchsia() {
-			return strings.Join(ClangFilterUnknownCflags(deviceGlobalCflags), " ")
+			return strings.Join(ClangFilterUnknownCflags(DeviceGlobalCflags), " ")
 		} else {
-			return strings.Join(append(ClangFilterUnknownCflags(deviceGlobalCflags), "${ClangExtraTargetCflags}"), " ")
+			return strings.Join(append(ClangFilterUnknownCflags(DeviceGlobalCflags), "${ClangExtraTargetCflags}"), " ")
 		}
 	})
 	pctx.StaticVariable("HostClangGlobalCflags",
