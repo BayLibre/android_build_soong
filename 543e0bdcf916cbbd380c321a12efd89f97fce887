@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af03fe41_5be3ac33",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-24T20:30:01Z",
+      "side": 1,
+      "message": "You could avoid this duplication by adding a $suffixCmd to the cc rule, and setting it to \"\u0026\u0026 touch $out\" when necessary.\n\nAlternatively, I can\u0027t think of any issue with just adding \"\u0026\u0026 touch $out\" to the cc rule, especially if you prefixed the rule with \"rm -f $out\" so it never left a stale output file.",
+      "revId": "543e0bdcf916cbbd380c321a12efd89f97fce887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
