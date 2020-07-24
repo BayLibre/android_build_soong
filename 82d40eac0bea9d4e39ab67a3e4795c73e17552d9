@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf643d2f_483a02b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-24T09:42:53Z",
+      "side": 1,
+      "message": "LGTM. (I left +2 to Jiyong)",
+      "revId": "82d40eac0bea9d4e39ab67a3e4795c73e17552d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
