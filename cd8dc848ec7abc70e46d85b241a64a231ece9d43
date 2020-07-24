@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ca183a4_ba289168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-24T09:06:33Z",
+      "side": 1,
+      "message": "Thanks for cleaning this up.",
+      "revId": "cd8dc848ec7abc70e46d85b241a64a231ece9d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "598c9a7b_2b66df35",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-24T09:06:33Z",
+      "side": 1,
+      "message": "How about extracting this into a local variable:\n\nmoduleName :\u003d ccMod.BaseModuleName()+ccMod.Properties.SubName",
+      "range": {
+        "startLine": 1623,
+        "startChar": 37,
+        "endLine": 1623,
+        "endChar": 84
+      },
+      "revId": "cd8dc848ec7abc70e46d85b241a64a231ece9d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c8ec28b_f3819b99",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-24T09:06:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1633,
+        "startChar": 36,
+        "endLine": 1633,
+        "endChar": 77
+      },
+      "revId": "cd8dc848ec7abc70e46d85b241a64a231ece9d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171282ff_3ca90dcf",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-07-24T09:06:33Z",
+      "side": 1,
+      "message": "How about passing one \"child\"?",
+      "range": {
+        "startLine": 2038,
+        "startChar": 39,
+        "endLine": 2038,
+        "endChar": 81
+      },
+      "revId": "cd8dc848ec7abc70e46d85b241a64a231ece9d43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
