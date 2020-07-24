@@ -16,6 +16,23 @@
       "revId": "0ea6c54af090da7d25d6868001b86705ffe47b25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1cba8be_a47f68bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2020-07-24T15:27:39Z",
+      "side": 1,
+      "message": "Paul, please disregard...",
+      "revId": "0ea6c54af090da7d25d6868001b86705ffe47b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
