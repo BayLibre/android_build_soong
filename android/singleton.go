@@ -20,7 +20,7 @@ import (
 
 // SingletonContext
 type SingletonContext interface {
-	Config() Config
+	ConfigContext
 	DeviceConfig() DeviceConfig
 
 	ModuleName(module blueprint.Module) string
@@ -173,6 +173,8 @@ func (s *singletonContextAdaptor) SetNinjaBuildDir(pctx PackageContext, value st
 func (s *singletonContextAdaptor) Eval(pctx PackageContext, ninjaStr string) (string, error) {
 	return s.SingletonContext.Eval(pctx.PackageContext, ninjaStr)
 }
+
+var _ SingletonContext = &singletonContextAdaptor{}
 
 // visitAdaptor wraps a visit function that takes an android.Module parameter into
 // a function that takes an blueprint.Module parameter and only calls the visit function if the

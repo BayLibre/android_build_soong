@@ -179,13 +179,13 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext sdkContext,
 	linkDeps = append(linkDeps, assetFiles...)
 
 	// SDK version flags
-	minSdkVersion, err := sdkContext.minSdkVersion().effectiveVersionString(ctx)
+	minSdkVersion, err := sdkContext.minSdkVersion(ctx).effectiveVersion(ctx)
 	if err != nil {
 		ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 	}
 
-	linkFlags = append(linkFlags, "--min-sdk-version "+minSdkVersion)
-	linkFlags = append(linkFlags, "--target-sdk-version "+minSdkVersion)
+	linkFlags = append(linkFlags, "--min-sdk-version "+minSdkVersion.String())
+	linkFlags = append(linkFlags, "--target-sdk-version "+minSdkVersion.String())
 
 	// Version code
 	if !hasVersionCode {
@@ -571,23 +571,23 @@ type AARImport struct {
 	exportedStaticPackages android.Paths
 }
 
-func (a *AARImport) sdkVersion() sdkSpec {
-	return sdkSpecFrom(String(a.properties.Sdk_version))
+func (a *AARImport) sdkVersion(ctx android.EarlyModuleContext) sdkSpec {
+	return sdkSpecFrom(ctx, String(a.properties.Sdk_version))
 }
 
 func (a *AARImport) systemModules() string {
 	return ""
 }
 
-func (a *AARImport) minSdkVersion() sdkSpec {
+func (a *AARImport) minSdkVersion(ctx android.EarlyModuleContext) sdkSpec {
 	if a.properties.Min_sdk_version != nil {
-		return sdkSpecFrom(*a.properties.Min_sdk_version)
+		return sdkSpecFrom(ctx, *a.properties.Min_sdk_version)
 	}
-	return a.sdkVersion()
+	return a.sdkVersion(ctx)
 }
 
-func (a *AARImport) targetSdkVersion() sdkSpec {
-	return a.sdkVersion()
+func (a *AARImport) targetSdkVersion(ctx android.EarlyModuleContext) sdkSpec {
+	return a.sdkVersion(ctx)
 }
 
 func (a *AARImport) javaVersion() string {
