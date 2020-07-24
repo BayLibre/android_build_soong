@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe7524d_8461fa3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-24T09:10:40Z",
+      "side": 1,
+      "message": "This is going to conflict with my change https://r.android.com/1371417. If you submit yours first I will rebase on top and fix the issues.",
+      "revId": "698dd9f00780032e5f196b32e8932ea7891102b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
