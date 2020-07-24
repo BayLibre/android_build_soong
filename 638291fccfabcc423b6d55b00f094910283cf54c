@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5dc76887_05e0f77f",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-24T15:41:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c18252c9_ef43d9e0",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 58
+      },
+      "revId": "638291fccfabcc423b6d55b00f094910283cf54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef3263cb_239d8bd1",
         "filename": "cc/compiler.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5580b83e_946af688",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-24T15:41:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3263cb_239d8bd1",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 45
+      },
+      "revId": "638291fccfabcc423b6d55b00f094910283cf54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5c62dc8_0a6ede5e",
         "filename": "cc/compiler.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-07-22T21:03:38Z",
       "side": 1,
       "message": "Is this something that makes sense to use widely or would we want to create a NeverAllow (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/neverallow.go) rule for it?",
+      "range": {
+        "startLine": 196,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 19
+      },
+      "revId": "638291fccfabcc423b6d55b00f094910283cf54c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5044adf8_359b53be",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-07-24T15:41:16Z",
+      "side": 1,
+      "message": "Ah, sorry for not providing more context. See b/122738905\n\nBasically, in bionic tests, we have a makefile-defined module which uses an aptly named script \"touch-obj-on-success\"\nhttps://cs.android.com/android/platform/superproject/+/master:bionic/tests/make_fortify_compile_test.mk;l\u003d5;drc\u003d9a2741010a93bfa08cc03e8d92c20c47d7e65abc\n\neffectively, the compile actions for these modules are expected to not produce output (due to COMPILATION_TESTS being defined), but are present to verify that the clang command succeeds.\n\nWe need a construct in Soong to migrate this to. See aosp/1370898 for the proposed usage.\n\nIIUC, NeverAllow is intended for interim use during migrations, whereas this might be a more permanent feature. WDYT?",
+      "parentUuid": "f5c62dc8_0a6ede5e",
       "range": {
         "startLine": 196,
         "startChar": 1,
