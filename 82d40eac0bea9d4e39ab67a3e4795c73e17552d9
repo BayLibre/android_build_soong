@@ -16,6 +16,52 @@
       "revId": "82d40eac0bea9d4e39ab67a3e4795c73e17552d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c14b375b_38b74c2d",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-24T11:04:07Z",
+      "side": 1,
+      "message": "could you rename this to androidMkModuleName (or similar) to make it more explicit that this is used in the context of Make?",
+      "range": {
+        "startLine": 1142,
+        "startChar": 1,
+        "endLine": 1142,
+        "endChar": 11
+      },
+      "revId": "82d40eac0bea9d4e39ab67a3e4795c73e17552d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab05eae9_ee9e6733",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-24T11:04:07Z",
+      "side": 1,
+      "message": "variable name as well.",
+      "range": {
+        "startLine": 1623,
+        "startChar": 1,
+        "endLine": 1623,
+        "endChar": 11
+      },
+      "revId": "82d40eac0bea9d4e39ab67a3e4795c73e17552d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
