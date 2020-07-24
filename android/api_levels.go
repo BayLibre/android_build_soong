@@ -51,7 +51,7 @@ type ApiLevel struct {
 
 func (this ApiLevel) FinalOrFutureInt() int {
 	if this.IsPreview() {
-		return FutureApiLevel
+		return FutureApiLevelInt
 	} else {
 		return this.number
 	}
@@ -165,7 +165,7 @@ func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (*ApiLevel, error) {
 			"not a recognized codename", canonical)
 	}
 
-	platformSdkVersion := ctx.Config().PlatformSdkVersionInt()
+	platformSdkVersion := ctx.Config().PlatformSdkVersion().FinalOrFutureInt()
 	// In general we don't want to allow numeric API levels beyond
 	// PlatformSdkVersion to be explicitly named. Those should instead be either
 	// "current" or a code name. Unfortuanately since we didn't check for that
@@ -252,7 +252,7 @@ func getFinalCodenamesMap(config Config) map[string]int {
 		// neither R nor S are final, but the S APIs stop being available in a
 		// final R build.
 		if Bool(config.productVariables.Platform_sdk_final) {
-			apiLevelsMap["current"] = config.PlatformSdkVersionInt()
+			apiLevelsMap["current"] = config.PlatformSdkVersion().FinalOrFutureInt()
 		}
 
 		return apiLevelsMap
