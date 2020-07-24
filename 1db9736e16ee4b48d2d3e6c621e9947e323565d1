@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fba7ec98_b531bf54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-07-24T22:42:50Z",
+      "side": 1,
+      "message": "I was going to call the new property \"sanitize\", but that\u0027s already taken.\n\nI\u0027m also not sure if ApexSet needs the same Sanitizeable logic as the source apexes. ForceDisable code simply looks at the global sanitizers, and I followed that in my patch.\n",
+      "revId": "1db9736e16ee4b48d2d3e6c621e9947e323565d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
