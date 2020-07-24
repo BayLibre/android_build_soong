@@ -210,7 +210,18 @@ var FirstLp64Version = uncheckedFinalApiLevel(21)
 // libandroid_support.
 var FirstNonLibAndroidSupportVersion = uncheckedFinalApiLevel(21)
 
-func ReplaceFinalizedCodenames(ctx EarlyModuleContext, raw string) string {
+var FirstJava8Version = uncheckedFinalApiLevel(24)
+var FirstJava9Version = uncheckedFinalApiLevel(30)
+
+var FirstEmbeddedNativeLibsVersion = uncheckedFinalApiLevel(23)
+
+// TODO: This probably shouldn't exist and should just be nil.
+var NoneApiLevel = previewApiLevel{
+	value:         "(no version)",
+	previewNumber: 0,
+}
+
+func ReplaceFinalizedCodenames(ctx ConfigContext, raw string) string {
 	num, ok := getFinalCodenamesMap(ctx.Config())[raw]
 	if !ok {
 		return raw
@@ -219,7 +230,7 @@ func ReplaceFinalizedCodenames(ctx EarlyModuleContext, raw string) string {
 	return strconv.Itoa(num)
 }
 
-func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (ApiLevel, error) {
+func ApiLevelFromUser(ctx ConfigContext, raw string) (ApiLevel, error) {
 	if raw == "" {
 		panic("API level string must be non-empty")
 	}
@@ -265,7 +276,7 @@ func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (ApiLevel, error) {
 	return uncheckedFinalApiLevel(asInt), nil
 }
 
-func ApiLevelOrPanic(ctx EarlyModuleContext, raw string) ApiLevel {
+func ApiLevelOrPanic(ctx ConfigContext, raw string) ApiLevel {
 	value, err := ApiLevelFromUser(ctx, raw)
 	if err != nil {
 		panic(err.Error())

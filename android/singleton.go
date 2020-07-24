@@ -21,6 +21,8 @@ import (
 // SingletonContext
 type SingletonContext interface {
 	Config() Config
+	// Don't use, just for interface compatibility with EarlyModuleContext.
+	AConfig() Config
 	DeviceConfig() DeviceConfig
 
 	ModuleName(module blueprint.Module) string
@@ -123,6 +125,10 @@ type singletonContextAdaptor struct {
 
 func (s *singletonContextAdaptor) Config() Config {
 	return s.SingletonContext.Config().(Config)
+}
+
+func (s *singletonContextAdaptor) AConfig() Config {
+	return s.Config()
 }
 
 func (s *singletonContextAdaptor) DeviceConfig() DeviceConfig {
