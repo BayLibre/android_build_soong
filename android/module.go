@@ -565,8 +565,15 @@ type commonProperties struct {
 type TaggedDistFiles map[string]Paths
 
 func MakeDefaultDistFiles(paths ...Path) TaggedDistFiles {
+	defaultPaths := Paths{}
+	for _, path := range paths {
+		if path != nil {
+			defaultPaths = append(defaultPaths, path)
+		}
+	}
+
 	// The default OutputFile tag is the empty "" string.
-	return TaggedDistFiles{"": paths}
+	return TaggedDistFiles{"": defaultPaths}
 }
 
 type hostAndDeviceProperties struct {
