@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e0530fe0_90fb6560",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-07-24T16:46:05Z",
+      "side": 1,
+      "message": "Separate this with an empty line and a comment to show that this is not a sanitizer, but a modifier for some.",
+      "revId": "55b58efb529673a9e6b35731580824c8743473e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8528c6e_d6f79337",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
