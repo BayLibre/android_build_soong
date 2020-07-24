@@ -50,11 +50,11 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 	if isLibrary {
 		args = append(args, "--library")
 	} else {
-		minSdkVersion, err := sdkContext.minSdkVersion().effectiveVersion(ctx)
+		minSdkVersion, err := sdkContext.minSdkVersion(ctx).effectiveVersion(ctx)
 		if err != nil {
 			ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 		}
-		if minSdkVersion >= 23 {
+		if minSdkVersion.GreaterThanOrEqualTo(android.FirstEmbeddedNativeLibsVersion) {
 			args = append(args, fmt.Sprintf("--extract-native-libs=%v", !useEmbeddedNativeLibs))
 		} else if useEmbeddedNativeLibs {
 			ctx.ModuleErrorf("module attempted to store uncompressed native libraries, but minSdkVersion=%d doesn't support it",
@@ -86,19 +86,21 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 		args = append(args, "--logging-parent", loggingParent)
 	}
 	var deps android.Paths
-	targetSdkVersion, err := sdkContext.targetSdkVersion().effectiveVersionString(ctx)
+	target, err := sdkContext.targetSdkVersion(ctx).effectiveVersion(ctx)
 	if err != nil {
 		ctx.ModuleErrorf("invalid targetSdkVersion: %s", err)
 	}
+	targetSdkVersion := target.String()
 	if UseApiFingerprint(ctx) {
 		targetSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", ApiFingerprintPath(ctx).String())
 		deps = append(deps, ApiFingerprintPath(ctx))
 	}
 
-	minSdkVersion, err := sdkContext.minSdkVersion().effectiveVersionString(ctx)
+	min, err := sdkContext.minSdkVersion(ctx).effectiveVersion(ctx)
 	if err != nil {
 		ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 	}
+	minSdkVersion := min.String()
 	if UseApiFingerprint(ctx) {
 		minSdkVersion = ctx.Config().PlatformSdkCodename() + fmt.Sprintf(".$$(cat %s)", ApiFingerprintPath(ctx).String())
 		deps = append(deps, ApiFingerprintPath(ctx))

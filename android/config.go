@@ -59,6 +59,10 @@ func (f *FileConfigurableOptions) SetDefaultConfig() {
 	*f = FileConfigurableOptions{}
 }
 
+type ConfigContext interface {
+	Config() Config
+}
+
 // A Config object represents the entire build configuration for Android.
 type Config struct {
 	*config
@@ -994,8 +998,22 @@ func (c *deviceConfig) VndkVersion() string {
 	return String(c.config.productVariables.DeviceVndkVersion)
 }
 
-func (c *deviceConfig) CurrentApiLevelForVendorModules() string {
-	return StringDefault(c.config.productVariables.DeviceCurrentApiLevelForVendorModules, "current")
+func (c *deviceConfig) CurrentApiLevelForVendorModules(
+	ctx EarlyModuleContext) ApiLevel {
+	// DeviceCurrentApiLevelForVendorModule can be either "current", unset, or
+	// a finalized API level. If not set, use the future API level.
+	value := String(c.config.productVariables.DeviceCurrentApiLevelForVendorModules)
+	if value == "" {
+		return FutureApiLevel
+	}
+
+	apiLevel := ApiLevelOrPanic(ctx, value)
+	if apiLevel.IsPreview() && !apiLevel.IsCurrent() {
+		panic(fmt.Errorf("BOARD_CURRENT_API_LEVEL_FOR_VENDOR_MODULES must be "+
+			"either \"current\" or a number, but was %q", value))
+	}
+
+	return apiLevel
 }
 
 func (c *deviceConfig) PlatformVndkVersion() string {
