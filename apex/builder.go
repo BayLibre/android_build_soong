@@ -541,9 +541,9 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			optFlags = append(optFlags, "--android_manifest "+androidManifestFile.String())
 		}
 
-		targetSdkVersion := ctx.Config().DefaultAppTargetSdk()
+		targetSdkVersion := ctx.Config().DefaultAppTargetSdk(ctx).String()
 		// TODO(b/157078772): propagate min_sdk_version to apexer.
-		minSdkVersion := ctx.Config().DefaultAppTargetSdk()
+		minSdkVersion := ctx.Config().DefaultAppTargetSdk(ctx).String()
 
 		maybeMinSdkVersion := a.minSdkVersion(ctx)
 		if maybeMinSdkVersion == nil {
