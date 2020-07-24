@@ -112,6 +112,13 @@ func (b *bindgenDecorator) generateSource(ctx android.ModuleContext) android.Pat
 	cflags = append(cflags, b.Properties.Cflags...)
 	cflags = append(cflags, "-target "+ccToolchain.ClangTriple())
 	cflags = append(cflags, strings.ReplaceAll(ccToolchain.ToolchainClangCflags(), "${config.", "${ccConfig."))
+
+	// Default clang flags
+	cflags = append(cflags, ccConfig.ClangFilterUnknownCflags(ccConfig.CommonGlobalCflags)...)
+	if ctx.Device() {
+		cflags = append(cflags, ccConfig.ClangFilterUnknownCflags(ccConfig.DeviceGlobalCflags)...)
+	}
+
 	cflags = append(cflags, exportedFlags...)
 	for _, include := range includes {
 		cflags = append(cflags, "-I"+include.String())
