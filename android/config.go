@@ -21,7 +21,6 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
-	"strconv"
 	"strings"
 	"sync"
 
@@ -226,15 +225,17 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 
 	config := &config{
 		productVariables: productVariables{
-			DeviceName:                  stringPtr("test_device"),
-			Platform_sdk_version:        intPtr(30),
-			DeviceSystemSdkVersions:     []string{"14", "15"},
-			Platform_systemsdk_versions: []string{"29", "30"},
-			AAPTConfig:                  []string{"normal", "large", "xlarge", "hdpi", "xhdpi", "xxhdpi"},
-			AAPTPreferredConfig:         stringPtr("xhdpi"),
-			AAPTCharacteristics:         stringPtr("nosdcard"),
-			AAPTPrebuiltDPI:             []string{"xhdpi", "xxhdpi"},
-			UncompressPrivAppDex:        boolPtr(true),
+			DeviceName:                        stringPtr("test_device"),
+			Platform_sdk_version:              intPtr(30),
+			Platform_sdk_codename:             stringPtr("S"),
+			Platform_version_active_codenames: []string{"S"},
+			DeviceSystemSdkVersions:           []string{"14", "15"},
+			Platform_systemsdk_versions:       []string{"29", "30"},
+			AAPTConfig:                        []string{"normal", "large", "xlarge", "hdpi", "xhdpi", "xxhdpi"},
+			AAPTPreferredConfig:               stringPtr("xhdpi"),
+			AAPTCharacteristics:               stringPtr("nosdcard"),
+			AAPTPrebuiltDPI:                   []string{"xhdpi", "xxhdpi"},
+			UncompressPrivAppDex:              boolPtr(true),
 		},
 
 		buildDir:     buildDir,
@@ -618,12 +619,8 @@ func (c *config) PlatformVersionName() string {
 	return String(c.productVariables.Platform_version_name)
 }
 
-func (c *config) PlatformSdkVersionInt() int {
-	return *c.productVariables.Platform_sdk_version
-}
-
-func (c *config) PlatformSdkVersion() string {
-	return strconv.Itoa(c.PlatformSdkVersionInt())
+func (c *config) PlatformSdkVersion() FinalApiLevel {
+	return uncheckedFinalApiLevel(*c.productVariables.Platform_sdk_version)
 }
 
 func (c *config) PlatformSdkCodename() string {
@@ -652,7 +649,7 @@ func (c *config) MinSupportedSdkVersion() ApiLevel {
 
 func (c *config) FinalApiLevels() []FinalApiLevel {
 	levels := []FinalApiLevel{}
-	for i := 1; i <= c.PlatformSdkVersionInt(); i++ {
+	for i := 1; i <= c.PlatformSdkVersion().AsInt(); i++ {
 		levels = append(levels, uncheckedFinalApiLevel(i))
 	}
 	return levels
@@ -682,20 +679,18 @@ func (c *config) AllSupportedApiLevels() []ApiLevel {
 	return levels
 }
 
-// TODO: Merge this and DefaultAppTargetSdk to just return an ApiLevel.
-func (c *config) DefaultAppTargetSdkInt() int {
-	if Bool(c.productVariables.Platform_sdk_final) {
-		return c.PlatformSdkVersionInt()
-	} else {
-		return FutureApiLevelInt
-	}
-}
-
-func (c *config) DefaultAppTargetSdk() string {
+func (c *config) DefaultAppTargetSdk(ctx EarlyModuleContext) ApiLevel {
 	if Bool(c.productVariables.Platform_sdk_final) {
 		return c.PlatformSdkVersion()
 	} else {
-		return c.PlatformSdkCodename()
+		codename := c.PlatformSdkCodename()
+		if codename == "" {
+			panic("Platform_sdk_codename cannot be empty")
+		}
+		if codename == "REL" {
+			panic("Platform_sdk_codename should not be REL when Platform_sdk_final is true")
+		}
+		return ApiLevelOrPanic(ctx, codename)
 	}
 }
 
