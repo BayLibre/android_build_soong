@@ -40,15 +40,15 @@ var apiFingerprintPathKey = android.NewOnceKey("apiFingerprintPathKey")
 
 type sdkContext interface {
 	// sdkVersion returns sdkSpec that corresponds to the sdk_version property of the current module
-	sdkVersion() sdkSpec
+	sdkVersion(android.EarlyModuleContext) sdkSpec
 	// systemModules returns the system_modules property of the current module, or an empty string if it is not set.
 	systemModules() string
 	// minSdkVersion returns sdkSpec that corresponds to the min_sdk_version property of the current module,
 	// or from sdk_version if it is not set.
-	minSdkVersion() sdkSpec
+	minSdkVersion(android.EarlyModuleContext) sdkSpec
 	// targetSdkVersion returns the sdkSpec that corresponds to the target_sdk_version property of the current module,
 	// or from sdk_version if it is not set.
-	targetSdkVersion() sdkSpec
+	targetSdkVersion(android.EarlyModuleContext) sdkSpec
 }
 
 func UseApiFingerprint(ctx android.BaseModuleContext) bool {
@@ -102,53 +102,10 @@ func (k sdkKind) String() string {
 	}
 }
 
-// sdkVersion represents a specific version number of an SDK spec of a particular kind
-type sdkVersion int
-
-const (
-	// special version number for a not-yet-frozen SDK
-	sdkVersionCurrent sdkVersion = sdkVersion(android.FutureApiLevelInt)
-	// special version number to be used for SDK specs where version number doesn't
-	// make sense, e.g. "none", "", etc.
-	sdkVersionNone sdkVersion = sdkVersion(0)
-)
-
-// isCurrent checks if the sdkVersion refers to the not-yet-published version of an sdkKind
-func (v sdkVersion) isCurrent() bool {
-	return v == sdkVersionCurrent
-}
-
-// isNumbered checks if the sdkVersion refers to the published (a.k.a numbered) version of an sdkKind
-func (v sdkVersion) isNumbered() bool {
-	return !v.isCurrent() && v != sdkVersionNone
-}
-
-// String returns the string representation of this sdkVersion.
-func (v sdkVersion) String() string {
-	if v.isCurrent() {
-		return "current"
-	} else if v.isNumbered() {
-		return strconv.Itoa(int(v))
-	}
-	return "(no version)"
-}
-
-func (v sdkVersion) ApiLevel(ctx android.EarlyModuleContext) android.ApiLevel {
-	return android.ApiLevelOrPanic(ctx, v.String())
-}
-
-// asNumberString directly converts the numeric value of this sdk version as a string.
-// When isNumbered() is true, this method is the same as String(). However, for sdkVersionCurrent
-// and sdkVersionNone, this returns 10000 and 0 while String() returns "current" and "(no version"),
-// respectively.
-func (v sdkVersion) asNumberString() string {
-	return strconv.Itoa(int(v))
-}
-
 // sdkSpec represents the kind and the version of an SDK for a module to build against
 type sdkSpec struct {
 	kind    sdkKind
-	version sdkVersion
+	version android.ApiLevel
 	raw     string
 }
 
@@ -198,18 +155,14 @@ func (s sdkSpec) prebuiltSdkAvailableForUnbundledBuild() bool {
 func (s sdkSpec) forVendorPartition(ctx android.EarlyModuleContext) sdkSpec {
 	// If BOARD_CURRENT_API_LEVEL_FOR_VENDOR_MODULES has a numeric value,
 	// use it instead of "current" for the vendor partition.
-	currentSdkVersion := ctx.DeviceConfig().CurrentApiLevelForVendorModules()
-	if currentSdkVersion == "current" {
+	currentSdkVersion := ctx.DeviceConfig().CurrentApiLevelForVendorModules(ctx)
+	if currentSdkVersion.IsCurrent() {
 		return s
 	}
 
 	if s.kind == sdkPublic || s.kind == sdkSystem {
-		if s.version.isCurrent() {
-			if i, err := strconv.Atoi(currentSdkVersion); err == nil {
-				version := sdkVersion(i)
-				return sdkSpec{s.kind, version, s.raw}
-			}
-			panic(fmt.Errorf("BOARD_CURRENT_API_LEVEL_FOR_VENDOR_MODULES must be either \"current\" or a number, but was %q", currentSdkVersion))
+		if s.version.IsCurrent() {
+			return sdkSpec{s.kind, currentSdkVersion, s.raw}
 		}
 	}
 	return s
@@ -217,11 +170,10 @@ func (s sdkSpec) forVendorPartition(ctx android.EarlyModuleContext) sdkSpec {
 
 // usePrebuilt determines whether prebuilt SDK should be used for this sdkSpec with the given context.
 func (s sdkSpec) usePrebuilt(ctx android.EarlyModuleContext) bool {
-	if s.version.isCurrent() {
+	if s.version.IsCurrent() {
 		// "current" can be built from source and be from prebuilt SDK
 		return ctx.Config().AlwaysUsePrebuiltSdks()
-	} else if s.version.isNumbered() {
-		// validation check
+	} else if !s.version.IsPreview() {
 		if s.kind != sdkPublic && s.kind != sdkSystem && s.kind != sdkTest {
 			panic(fmt.Errorf("prebuilt SDK is not not available for sdkKind=%q", s.kind))
 			return false
@@ -233,10 +185,9 @@ func (s sdkSpec) usePrebuilt(ctx android.EarlyModuleContext) bool {
 	return false
 }
 
-// effectiveVersion converts an sdkSpec into the concrete sdkVersion that the module
-// should use. For modules targeting an unreleased SDK (meaning it does not yet have a number)
-// it returns android.FutureApiLevel(10000).
-func (s sdkSpec) effectiveVersion(ctx android.EarlyModuleContext) (sdkVersion, error) {
+// Returns the version that the module should actually target. All preview API
+// levels are coerced to the default targetSdkVersion for the build.
+func (s sdkSpec) effectiveVersion(ctx android.EarlyModuleContext) (android.ApiLevel, error) {
 	if !s.valid() {
 		return s.version, fmt.Errorf("invalid sdk version %q", s.raw)
 	}
@@ -244,21 +195,10 @@ func (s sdkSpec) effectiveVersion(ctx android.EarlyModuleContext) (sdkVersion, e
 	if ctx.DeviceSpecific() || ctx.SocSpecific() {
 		s = s.forVendorPartition(ctx)
 	}
-	if s.version.isNumbered() {
+	if !s.version.IsPreview() {
 		return s.version, nil
 	}
-	return sdkVersion(ctx.Config().DefaultAppTargetSdk(ctx).FinalOrFutureInt()), nil
-}
-
-// effectiveVersionString converts an sdkSpec into the concrete version string that the module
-// should use. For modules targeting an unreleased SDK (meaning it does not yet have a number)
-// it returns the codename (P, Q, R, etc.)
-func (s sdkSpec) effectiveVersionString(ctx android.EarlyModuleContext) (string, error) {
-	ver, err := s.effectiveVersion(ctx)
-	if err == nil && int(ver) == ctx.Config().DefaultAppTargetSdk(ctx).FinalOrFutureInt() {
-		return ctx.Config().DefaultAppTargetSdk(ctx).String(), nil
-	}
-	return ver.String(), err
+	return ctx.Config().DefaultAppTargetSdk(ctx), nil
 }
 
 func (s sdkSpec) defaultJavaLanguageVersion(ctx android.EarlyModuleContext) javaVersion {
@@ -266,31 +206,31 @@ func (s sdkSpec) defaultJavaLanguageVersion(ctx android.EarlyModuleContext) java
 	if err != nil {
 		ctx.PropertyErrorf("sdk_version", "%s", err)
 	}
-	if sdk <= 23 {
-		return JAVA_VERSION_7
-	} else if sdk <= 29 {
+	if sdk.GreaterThanOrEqualTo(android.FirstJava9Version) {
+		return JAVA_VERSION_9
+	} else if sdk.GreaterThanOrEqualTo(android.FirstJava8Version) {
 		return JAVA_VERSION_8
 	} else {
-		return JAVA_VERSION_9
+		return JAVA_VERSION_7
 	}
 }
 
-func sdkSpecFrom(str string) sdkSpec {
+func sdkSpecFrom(ctx android.EarlyModuleContext, str string) sdkSpec {
 	switch str {
 	// special cases first
 	case "":
-		return sdkSpec{sdkPrivate, sdkVersionNone, str}
+		return sdkSpec{sdkPrivate, android.NoneApiLevel, str}
 	case "none":
-		return sdkSpec{sdkNone, sdkVersionNone, str}
+		return sdkSpec{sdkNone, android.NoneApiLevel, str}
 	case "core_platform":
-		return sdkSpec{sdkCorePlatform, sdkVersionNone, str}
+		return sdkSpec{sdkCorePlatform, android.NoneApiLevel, str}
 	default:
 		// the syntax is [kind_]version
 		sep := strings.LastIndex(str, "_")
 
 		var kindString string
 		if sep == 0 {
-			return sdkSpec{sdkInvalid, sdkVersionNone, str}
+			return sdkSpec{sdkInvalid, android.NoneApiLevel, str}
 		} else if sep == -1 {
 			kindString = ""
 		} else {
@@ -313,19 +253,21 @@ func sdkSpecFrom(str string) sdkSpec {
 		case "system_server":
 			kind = sdkSystemServer
 		default:
-			return sdkSpec{sdkInvalid, sdkVersionNone, str}
+			return sdkSpec{sdkInvalid, android.NoneApiLevel, str}
 		}
 
-		var version sdkVersion
-		if versionString == "current" {
-			version = sdkVersionCurrent
-		} else if i, err := strconv.Atoi(versionString); err == nil {
-			version = sdkVersion(i)
-		} else {
-			return sdkSpec{sdkInvalid, sdkVersionNone, str}
+		version, err := android.ApiLevelFromUser(ctx, versionString)
+		if err != nil {
+			return sdkSpec{sdkInvalid, android.NoneApiLevel, str}
 		}
 
-		return sdkSpec{kind, version, str}
+		if version.IsPreview() && !version.IsCurrent() {
+			// Java contexts do not allow specifying codenames. Only final API
+			// numbers and "current" are allowed.
+			return sdkSpec{sdkInvalid, android.NoneApiLevel, str}
+		}
+
+		return sdkSpec{kind, *version, str}
 	}
 }
 
@@ -333,7 +275,7 @@ func (s sdkSpec) validateSystemSdk(ctx android.EarlyModuleContext) bool {
 	// Ensures that the specified system SDK version is one of BOARD_SYSTEMSDK_VERSIONS (for vendor/product Java module)
 	// Assuming that BOARD_SYSTEMSDK_VERSIONS := 28 29,
 	// sdk_version of the modules in vendor/product that use system sdk must be either system_28, system_29 or system_current
-	if s.kind != sdkSystem || !s.version.isNumbered() {
+	if s.kind != sdkSystem || s.version.IsPreview() {
 		return true
 	}
 	allowedVersions := ctx.DeviceConfig().PlatformSystemSdkVersions()
@@ -352,7 +294,7 @@ func (s sdkSpec) validateSystemSdk(ctx android.EarlyModuleContext) bool {
 }
 
 func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext sdkContext) sdkDep {
-	sdkVersion := sdkContext.sdkVersion()
+	sdkVersion := sdkContext.sdkVersion(ctx)
 	if !sdkVersion.valid() {
 		ctx.PropertyErrorf("sdk_version", "invalid version %q", sdkVersion.raw)
 		return sdkDep{}
@@ -500,17 +442,26 @@ func (sdkPreSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	}
 
 	sort.Ints(sdkVersions)
+	versions := []android.ApiLevel{}
+	for _, v := range sdkVersions {
+		apiLevel, err := android.ApiLevelFromUser(ctx, strconv.Itoa(v))
+		if err != nil {
+			ctx.Errorf("Unable to identify API level for prebuilts/sdk/%d: %s",
+				v, err)
+			continue
+		}
+		versions = append(versions, *apiLevel)
+	}
 
-	ctx.Config().Once(sdkVersionsKey, func() interface{} { return sdkVersions })
+	ctx.Config().Once(sdkVersionsKey, func() interface{} { return versions })
 }
 
-func LatestSdkVersionInt(ctx android.EarlyModuleContext) int {
-	sdkVersions := ctx.Config().Get(sdkVersionsKey).([]int)
-	latestSdkVersion := 0
-	if len(sdkVersions) > 0 {
-		latestSdkVersion = sdkVersions[len(sdkVersions)-1]
+func LatestSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel {
+	sdkVersions := ctx.Config().Get(sdkVersionsKey).([]android.ApiLevel)
+	if len(sdkVersions) == 0 {
+		panic("no SDK versions")
 	}
-	return latestSdkVersion
+	return sdkVersions[len(sdkVersions)-1]
 }
 
 func sdkSingletonFactory() android.Singleton {
