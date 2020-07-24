@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b709325_d5644f86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1581772
+      },
+      "writtenOn": "2020-07-24T14:34:28Z",
+      "side": 1,
+      "message": "I can confirm this fixes the build with WITHOUT_CHECK_API (on aosp_arm64-eng), thanks!",
+      "revId": "3b509ca946adac134d6e0087f4852c71f81b6b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
