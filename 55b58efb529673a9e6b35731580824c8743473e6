@@ -69,6 +69,24 @@
       "revId": "55b58efb529673a9e6b35731580824c8743473e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93c533e_0c6f47ee",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1704169
+      },
+      "writtenOn": "2020-07-24T22:20:02Z",
+      "side": 1,
+      "message": "ccross@ - If I check for s.Hwaddress and s.Address and raise a ctx.ModuleErrorf() here in begin(), there are some build targets that explicitly disable \"address\" (external/llvm/lib/Fuzzer/Android.bp) and therefore won\u0027t get built with SANITIZE_HOST\u003d\"address writeonly\" because of the explicitly disabled \"address\". What\u0027s the best way to handle this? Anyplace else I should check?",
+      "parentUuid": "d788b709_43fea23b",
+      "revId": "55b58efb529673a9e6b35731580824c8743473e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
