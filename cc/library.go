@@ -124,7 +124,19 @@ type SharedProperties struct {
 }
 
 type StaticOrSharedProperties struct {
-	Srcs   []string `android:"path,arch_variant"`
+	Srcs      []string `android:"path,arch_variant"`
+	Sanitized struct {
+		None struct {
+			Srcs []string `android:"path,arch_variant"`
+		} `android:"arch_variant"`
+		Address struct {
+			Srcs []string `android:"path,arch_variant"`
+		} `android:"arch_variant"`
+		Hwaddress struct {
+			Srcs []string `android:"path,arch_variant"`
+		} `android:"arch_variant"`
+	} `android:"arch_variant"`
+
 	Cflags []string `android:"arch_variant"`
 
 	Enabled            *bool    `android:"arch_variant"`
@@ -137,6 +149,18 @@ type StaticOrSharedProperties struct {
 	Export_static_lib_headers []string `android:"arch_variant"`
 
 	Apex_available []string `android:"arch_variant"`
+}
+
+func (this *StaticOrSharedProperties) SrcsForSanitizer(ctx android.BaseModuleContext) []string {
+	srcs := this.Srcs
+	if Bool(ctx.Module().(*Module).sanitize.Properties.Sanitize.Address) && this.Sanitized.Address.Srcs != nil {
+		srcs = append(srcs, this.Sanitized.Address.Srcs...)
+	} else if Bool(ctx.Module().(*Module).sanitize.Properties.Sanitize.Hwaddress) && this.Sanitized.Hwaddress.Srcs != nil {
+		srcs = append(srcs, this.Sanitized.Hwaddress.Srcs...)
+	} else {
+		srcs = append(srcs, this.Sanitized.None.Srcs...)
+	}
+	return srcs
 }
 
 type LibraryMutatedProperties struct {

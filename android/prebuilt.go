@@ -93,7 +93,7 @@ func (p *Prebuilt) Prefer() bool {
 // more modules like this.
 func (p *Prebuilt) SingleSourcePath(ctx ModuleContext) Path {
 	if p.srcsSupplier != nil {
-		srcs := p.srcsSupplier()
+		srcs := p.srcsSupplier(ctx)
 
 		if len(srcs) == 0 {
 			ctx.PropertyErrorf(p.srcsPropertyName, "missing prebuilt source file")
@@ -122,7 +122,7 @@ func (p *Prebuilt) UsePrebuilt() bool {
 // Called to provide the srcs value for the prebuilt module.
 //
 // Return the src value or nil if it is not available.
-type PrebuiltSrcsSupplier func() []string
+type PrebuiltSrcsSupplier func(ctx BaseModuleContext) []string
 
 // Initialize the module as a prebuilt module that uses the provided supplier to access the
 // prebuilt sources of the module.
@@ -156,11 +156,43 @@ func InitPrebuiltModule(module PrebuiltInterface, srcs *[]string) {
 		panic(fmt.Errorf("srcs must not be nil"))
 	}
 
-	srcsSupplier := func() []string {
+	srcsSupplier := func(ctx BaseModuleContext) []string {
 		return *srcs
 	}
 
 	InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, "srcs")
+}
+
+func getSanitizedField(ctx BaseModuleContext, srcPropsValue reflect.Value, srcField string) reflect.Value {
+	sanitizers := []string{}
+	if ctx.Host() {
+		sanitizers = ctx.Config().SanitizeHost()
+	} else {
+		sanitizers = ctx.Config().SanitizeDevice()
+	}
+
+	sanitizeFieldName := "none"
+	if InList("address", sanitizers) {
+		sanitizeFieldName = "Address"
+	} else if InList("hwaddress", sanitizers) {
+		sanitizeFieldName = "Hwaddress"
+	}
+
+	value := srcPropsValue.FieldByName("Sanitized")
+	if value.IsValid() && !value.IsZero() {
+		value = value.FieldByName(sanitizeFieldName)
+		if value.IsValid() && !value.IsZero() {
+			value = value.FieldByName(srcField)
+			if value.IsValid() && !value.IsZero() {
+				unsanitizedValue := srcPropsValue.FieldByName(srcField)
+				if unsanitizedValue.IsValid() && !unsanitizedValue.IsZero() {
+					panic(fmt.Errorf("single-source prebuilt module %+v src field %s is present in both regular and sanitized variants", ctx.Module(), srcField))
+				}
+				return value
+			}
+		}
+	}
+	return srcPropsValue.FieldByName(srcField)
 }
 
 func InitSingleSourcePrebuiltModule(module PrebuiltInterface, srcProps interface{}, srcField string) {
@@ -174,18 +206,18 @@ func InitSingleSourcePrebuiltModule(module PrebuiltInterface, srcProps interface
 		panic(fmt.Errorf("invalid single source prebuilt %+v", srcProps))
 	}
 
-	srcFieldIndex := srcStructField.Index
 	srcPropertyName := proptools.PropertyNameForField(srcField)
 
-	srcsSupplier := func() []string {
-		value := srcPropsValue.FieldByIndex(srcFieldIndex)
-		if value.Kind() == reflect.Ptr {
-			value = value.Elem()
+	srcsSupplier := func(ctx BaseModuleContext) []string {
+		srcValue := getSanitizedField(ctx, srcPropsValue, srcField)
+
+		if srcValue.Kind() == reflect.Ptr {
+			srcValue = srcValue.Elem()
 		}
-		if value.Kind() != reflect.String {
-			panic(fmt.Errorf("prebuilt src field %q should be a string or a pointer to one but was %d %q", srcPropertyName, value.Kind(), value))
+		if srcValue.Kind() != reflect.String {
+			panic(fmt.Errorf("prebuilt src field %q should be a string or a pointer to one but was %d %q", srcPropertyName, srcValue.Kind(), srcValue))
 		}
-		src := value.String()
+		src := srcValue.String()
 		if src == "" {
 			return nil
 		}
@@ -287,7 +319,7 @@ func PrebuiltPostDepsMutator(ctx BottomUpMutatorContext) {
 // usePrebuilt returns true if a prebuilt should be used instead of the source module.  The prebuilt
 // will be used if it is marked "prefer" or if the source module is disabled.
 func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module) bool {
-	if p.srcsSupplier != nil && len(p.srcsSupplier()) == 0 {
+	if p.srcsSupplier != nil && len(p.srcsSupplier(ctx)) == 0 {
 		return false
 	}
 
