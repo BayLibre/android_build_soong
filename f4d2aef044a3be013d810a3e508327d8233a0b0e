@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "906a2896_9639d5e8",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-24T02:48:29Z",
+      "side": 1,
+      "message": "I don\u0027t understand this part. Being split per api level doesn\u0027t necessary mean that the module is built with an SDK.",
+      "range": {
+        "startLine": 877,
+        "startChar": 47,
+        "endLine": 877,
+        "endChar": 71
+      },
+      "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90da719e_484422e8",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-24T02:48:29Z",
+      "side": 1,
+      "message": "nit: no need to wrap line here",
+      "range": {
+        "startLine": 1759,
+        "startChar": 0,
+        "endLine": 1759,
+        "endChar": 45
+      },
+      "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe4dbcf_72886c99",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-24T02:48:29Z",
+      "side": 1,
+      "message": "Ah, I now understand why you set min_sdk_version to 16. It\u0027s to create versions from 16 to current.",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 22
+      },
+      "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78c8543_1fc7f3d5",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-24T02:48:29Z",
+      "side": 1,
+      "message": "I am not sure why this is needed. Could you elaborate?",
+      "range": {
+        "startLine": 244,
+        "startChar": 6,
+        "endLine": 244,
+        "endChar": 41
+      },
+      "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
