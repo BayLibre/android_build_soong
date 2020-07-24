@@ -86,8 +86,8 @@ func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
 }
 
-func (j *Module) CheckStableSdkVersion() error {
-	sdkVersion := j.sdkVersion()
+func (j *Module) CheckStableSdkVersion(ctx android.EarlyModuleContext) error {
+	sdkVersion := j.sdkVersion(ctx)
 	if sdkVersion.stable() {
 		return nil
 	}
@@ -97,7 +97,7 @@ func (j *Module) CheckStableSdkVersion() error {
 func (j *Module) checkSdkVersions(ctx android.ModuleContext) {
 	if j.RequiresStableAPIs(ctx) {
 		if sc, ok := ctx.Module().(sdkContext); ok {
-			if !sc.sdkVersion().specified() {
+			if !sc.sdkVersion(ctx).specified() {
 				ctx.PropertyErrorf("sdk_version",
 					"sdk_version must have a value when the module is located at vendor or product(only if PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE is set).")
 			}
@@ -120,7 +120,7 @@ func (j *Module) checkSdkVersions(ctx android.ModuleContext) {
 func (j *Module) checkPlatformAPI(ctx android.ModuleContext) {
 	if sc, ok := ctx.Module().(sdkContext); ok {
 		usePlatformAPI := proptools.Bool(j.deviceProperties.Platform_apis)
-		sdkVersionSpecified := sc.sdkVersion().specified()
+		sdkVersionSpecified := sc.sdkVersion(ctx).specified()
 		if usePlatformAPI && sdkVersionSpecified {
 			ctx.PropertyErrorf("platform_apis", "platform_apis must be false when sdk_version is not empty.")
 		} else if !usePlatformAPI && !sdkVersionSpecified {
@@ -638,30 +638,30 @@ func (j *Module) shouldInstrumentInApex(ctx android.BaseModuleContext) bool {
 	return false
 }
 
-func (j *Module) sdkVersion() sdkSpec {
-	return sdkSpecFrom(String(j.deviceProperties.Sdk_version))
+func (j *Module) sdkVersion(ctx android.EarlyModuleContext) sdkSpec {
+	return sdkSpecFrom(ctx, String(j.deviceProperties.Sdk_version))
 }
 
 func (j *Module) systemModules() string {
 	return proptools.String(j.deviceProperties.System_modules)
 }
 
-func (j *Module) minSdkVersion() sdkSpec {
+func (j *Module) minSdkVersion(ctx android.EarlyModuleContext) sdkSpec {
 	if j.deviceProperties.Min_sdk_version != nil {
-		return sdkSpecFrom(*j.deviceProperties.Min_sdk_version)
+		return sdkSpecFrom(ctx, *j.deviceProperties.Min_sdk_version)
 	}
-	return j.sdkVersion()
+	return j.sdkVersion(ctx)
 }
 
-func (j *Module) targetSdkVersion() sdkSpec {
+func (j *Module) targetSdkVersion(ctx android.EarlyModuleContext) sdkSpec {
 	if j.deviceProperties.Target_sdk_version != nil {
-		return sdkSpecFrom(*j.deviceProperties.Target_sdk_version)
+		return sdkSpecFrom(ctx, *j.deviceProperties.Target_sdk_version)
 	}
-	return j.sdkVersion()
+	return j.sdkVersion(ctx)
 }
 
-func (j *Module) MinSdkVersion() string {
-	return j.minSdkVersion().version.String()
+func (j *Module) MinSdkVersion(ctx android.EarlyModuleContext) string {
+	return j.minSdkVersion(ctx).version.String()
 }
 
 func (j *Module) AvailableFor(what string) bool {
@@ -716,7 +716,7 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 				continue
 			}
 
-			linkType, _ := j.getLinkType(ctx.ModuleName())
+			linkType, _ := j.getLinkType(ctx, ctx.ModuleName())
 			// only platform modules can use internal props
 			if linkType != javaPlatform {
 				ret[idx] = stub
@@ -860,10 +860,11 @@ const (
 
 type linkTypeContext interface {
 	android.Module
-	getLinkType(name string) (ret linkType, stubs bool)
+	getLinkType(ctx android.EarlyModuleContext, name string) (ret linkType, stubs bool)
 }
 
-func (m *Module) getLinkType(name string) (ret linkType, stubs bool) {
+func (m *Module) getLinkType(ctx android.EarlyModuleContext,
+	name string) (ret linkType, stubs bool) {
 	switch name {
 	case "core.current.stubs", "legacy.core.platform.api.stubs", "stable.core.platform.api.stubs",
 		"stub-annotations", "private-stub-annotations-jar",
@@ -885,7 +886,7 @@ func (m *Module) getLinkType(name string) (ret linkType, stubs bool) {
 		return linkType, true
 	}
 
-	ver := m.sdkVersion()
+	ver := m.sdkVersion(ctx)
 	switch ver.kind {
 	case sdkCore:
 		return javaCore, false
@@ -912,11 +913,11 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to linkTypeContext, 
 		return
 	}
 
-	myLinkType, stubs := from.getLinkType(ctx.ModuleName())
+	myLinkType, stubs := from.getLinkType(ctx, ctx.ModuleName())
 	if stubs {
 		return
 	}
-	otherLinkType, _ := to.getLinkType(ctx.OtherModuleName(to))
+	otherLinkType, _ := to.getLinkType(ctx, ctx.OtherModuleName(to))
 	commonMessage := "Adjust sdk_version: property of the source or target module so that target module is built with the same or smaller API set than the source."
 
 	switch myLinkType {
@@ -996,7 +997,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 		case SdkLibraryDependency:
 			switch tag {
 			case libTag:
-				deps.classpath = append(deps.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
+				deps.classpath = append(deps.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion(ctx))...)
 				// names of sdk libs that are directly depended are exported
 				j.exportedSdkLibs = append(j.exportedSdkLibs, dep.OptionalImplicitSdkLibrary()...)
 			case staticLibTag:
@@ -1110,7 +1111,7 @@ func getJavaVersion(ctx android.ModuleContext, javaVersion string, sdkContext sd
 	if javaVersion != "" {
 		return normalizeJavaVersion(ctx, javaVersion)
 	} else if ctx.Device() {
-		return sdkContext.sdkVersion().defaultJavaLanguageVersion(ctx)
+		return sdkContext.sdkVersion(ctx).defaultJavaLanguageVersion(ctx)
 	} else {
 		return JAVA_VERSION_9
 	}
@@ -1618,7 +1619,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 		// Dex compilation
 		var dexOutputFile android.ModuleOutPath
-		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), outputFile, jarName)
+		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(ctx), outputFile, jarName)
 		if ctx.Failed() {
 			return
 		}
@@ -1663,7 +1664,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	if ctx.Device() {
 		lintSDKVersionString := func(sdkSpec sdkSpec) string {
-			if v := sdkSpec.version; v.isNumbered() {
+			if v := sdkSpec.version; !v.IsPreview() {
 				return v.String()
 			} else {
 				return ctx.Config().DefaultAppTargetSdk(ctx).String()
@@ -1675,9 +1676,9 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		j.linter.srcJars = srcJars
 		j.linter.classpath = append(append(android.Paths(nil), flags.bootClasspath...), flags.classpath...)
 		j.linter.classes = j.implementationJarFile
-		j.linter.minSdkVersion = lintSDKVersionString(j.minSdkVersion())
-		j.linter.targetSdkVersion = lintSDKVersionString(j.targetSdkVersion())
-		j.linter.compileSdkVersion = lintSDKVersionString(j.sdkVersion())
+		j.linter.minSdkVersion = lintSDKVersionString(j.minSdkVersion(ctx))
+		j.linter.targetSdkVersion = lintSDKVersionString(j.targetSdkVersion(ctx))
+		j.linter.compileSdkVersion = lintSDKVersionString(j.sdkVersion(ctx))
 		j.linter.javaLanguageLevel = flags.javaVersion.String()
 		j.linter.kotlinLanguageLevel = "1.3"
 		if j.ApexName() != "" && ctx.Config().UnbundledBuildApps() {
@@ -1887,7 +1888,7 @@ func (j *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 
 func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
 	sdkVersion android.ApiLevel) error {
-	sdkSpec := j.minSdkVersion()
+	sdkSpec := j.minSdkVersion(ctx)
 	if !sdkSpec.specified() {
 		return fmt.Errorf("min_sdk_version is not specified")
 	}
@@ -1898,7 +1899,14 @@ func (j *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
 	if err != nil {
 		return err
 	}
-	if ver.ApiLevel(ctx).GreaterThan(sdkVersion) {
+	// Java modules treat all previews as if they were the future API level, but
+	// native modules differentiate between individual previews. If this Java
+	// module selected a codename, it should be considered compatible with
+	// native modules that target the future API level.
+	if ver.IsPreview() {
+		ver = android.FutureApiLevel
+	}
+	if ver.GreaterThan(sdkVersion) {
 		return fmt.Errorf("newer SDK(%v)", ver)
 	}
 	return nil
@@ -2542,16 +2550,16 @@ type Import struct {
 	exportAidlIncludeDirs android.Paths
 }
 
-func (j *Import) sdkVersion() sdkSpec {
-	return sdkSpecFrom(String(j.properties.Sdk_version))
+func (j *Import) sdkVersion(ctx android.EarlyModuleContext) sdkSpec {
+	return sdkSpecFrom(ctx, String(j.properties.Sdk_version))
 }
 
-func (j *Import) minSdkVersion() sdkSpec {
-	return j.sdkVersion()
+func (j *Import) minSdkVersion(ctx android.EarlyModuleContext) sdkSpec {
+	return j.sdkVersion(ctx)
 }
 
-func (j *Import) MinSdkVersion() string {
-	return j.minSdkVersion().version.String()
+func (j *Import) MinSdkVersion(ctx android.EarlyModuleContext) string {
+	return j.minSdkVersion(ctx).version.String()
 }
 
 func (j *Import) Prebuilt() *android.Prebuilt {
