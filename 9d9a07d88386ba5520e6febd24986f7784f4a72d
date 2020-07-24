@@ -16,6 +16,121 @@
       "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ab9978c_84d47afd",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-24T20:23:27Z",
+      "side": 1,
+      "message": "In go, the interface is generally defined by the consumer rather than the provider (http://go/interfaces-in-go-for-java-developers). I think you should be able to remove the interface entirely and rename this to ConfiguredJarList to get the behavior you\u0027re looking for (that apexes/jars are only mutable through the functions where this struct is a receiver).",
+      "range": {
+        "startLine": 1302,
+        "startChar": 5,
+        "endLine": 1302,
+        "endChar": 22
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef3e7cb2_17db5f82",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-24T20:23:27Z",
+      "side": 1,
+      "message": "this only appears to be used in this package, no need to export it.",
+      "range": {
+        "startLine": 1311,
+        "startChar": 28,
+        "endLine": 1311,
+        "endChar": 32
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d74bf412_b5f6e278",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-24T20:23:27Z",
+      "side": 1,
+      "message": "similarly, this only appears to be used in this package, no need to export it.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 28,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "598d3568_011155ba",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-24T20:23:27Z",
+      "side": 1,
+      "message": "Should this be \":\"?",
+      "range": {
+        "startLine": 1377,
+        "startChar": 30,
+        "endLine": 1377,
+        "endChar": 31
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1f6e06_da4db232",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-24T20:23:27Z",
+      "side": 1,
+      "message": "With the changes to append, this is doing a lot more overhead and not making use of your preallocated capacity, as discussed below, could revert to your previous append and instead use a deep copy of `global.ArtApexJars` or here append directly to apexes/jars and create the configuredJarList after that.",
+      "range": {
+        "startLine": 1443,
+        "startChar": 2,
+        "endLine": 1443,
+        "endChar": 21
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
