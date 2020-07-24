@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aab80f8f_3431799c",
+        "filename": "android/source_tree.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-07-24T07:14:07Z",
+      "side": 1,
+      "message": "just a question: don\u0027t we need atomic operation here?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "60272f93fae9e9322a2993a2dbf4f1e852360430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
