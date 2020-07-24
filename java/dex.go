@@ -15,6 +15,7 @@
 package java
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -103,12 +104,19 @@ func (j *Module) dexCommonFlags(ctx android.ModuleContext) []string {
 			"--verbose")
 	}
 
-	minSdkVersion, err := j.minSdkVersion().effectiveVersion(ctx)
+	minSdkVersion, err := j.minSdkVersion(ctx).effectiveVersion(ctx)
 	if err != nil {
 		ctx.PropertyErrorf("min_sdk_version", "%s", err)
 	}
 
-	flags = append(flags, "--min-api "+minSdkVersion.asNumberString())
+	var minApi string
+	if minSdkVersion.EqualTo(android.NoneApiLevel) {
+		minApi = "0"
+	} else {
+		minApi = strconv.Itoa(minSdkVersion.FinalOrFutureInt())
+	}
+
+	flags = append(flags, "--min-api "+minApi)
 	return flags
 }
 
