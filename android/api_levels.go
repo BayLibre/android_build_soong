@@ -141,6 +141,11 @@ var FirstLp64Version = uncheckedFinalApiLevel(21)
 // libandroid_support.
 var FirstNonLibAndroidSupportVersion = uncheckedFinalApiLevel(21)
 
+var FirstJava8Version = uncheckedFinalApiLevel(24)
+var FirstJava9Version = uncheckedFinalApiLevel(30)
+
+var FirstEmbeddedNativeLibsVersion = uncheckedFinalApiLevel(23)
+
 // If the `raw` input is the codename of an API level has been finalized, this
 // function returns the API level number associated with that API level. If the
 // input is *not* a finalized codename, the input is returned unmodified.
@@ -152,7 +157,7 @@ var FirstNonLibAndroidSupportVersion = uncheckedFinalApiLevel(21)
 // * "30" -> "30"
 // * "R" -> "30"
 // * "S" -> "S"
-func ReplaceFinalizedCodenames(ctx EarlyModuleContext, raw string) string {
+func ReplaceFinalizedCodenames(ctx ConfigContext, raw string) string {
 	num, ok := getFinalCodenamesMap(ctx.Config())[raw]
 	if !ok {
 		return raw
@@ -175,7 +180,7 @@ func ReplaceFinalizedCodenames(ctx EarlyModuleContext, raw string) string {
 //
 // Inputs that are not "current", known previews, or convertible to an integer
 // will return an error.
-func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (ApiLevel, error) {
+func ApiLevelFromUser(ctx ConfigContext, raw string) (ApiLevel, error) {
 	if raw == "" {
 		panic("API level string must be non-empty")
 	}
@@ -203,7 +208,7 @@ func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (ApiLevel, error) {
 // Converts an API level string `raw` into an ApiLevel in the same method as
 // `ApiLevelFromUser`, but the input is assumed to have no errors and any errors
 // will panic instead of returning an error.
-func ApiLevelOrPanic(ctx EarlyModuleContext, raw string) ApiLevel {
+func ApiLevelOrPanic(ctx ConfigContext, raw string) ApiLevel {
 	value, err := ApiLevelFromUser(ctx, raw)
 	if err != nil {
 		panic(err.Error())
