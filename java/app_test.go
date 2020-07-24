@@ -1047,6 +1047,7 @@ func TestAppSdkVersion(t *testing.T) {
 		platformSdkFinal      bool
 		expectedMinSdkVersion string
 		platformApis          bool
+		activeCodenames       []string
 	}{
 		{
 			name:                  "current final SDK",
@@ -1063,6 +1064,7 @@ func TestAppSdkVersion(t *testing.T) {
 			platformSdkCodename:   "OMR1",
 			platformSdkFinal:      false,
 			expectedMinSdkVersion: "OMR1",
+			activeCodenames:       []string{"OMR1"},
 		},
 		{
 			name:                  "default final SDK",
@@ -1081,11 +1083,14 @@ func TestAppSdkVersion(t *testing.T) {
 			platformSdkCodename:   "OMR1",
 			platformSdkFinal:      false,
 			expectedMinSdkVersion: "OMR1",
+			activeCodenames:       []string{"OMR1"},
 		},
 		{
 			name:                  "14",
 			sdkVersion:            "14",
 			expectedMinSdkVersion: "14",
+			platformSdkCodename:   "S",
+			activeCodenames:       []string{"S"},
 		},
 	}
 
@@ -1106,6 +1111,7 @@ func TestAppSdkVersion(t *testing.T) {
 				config := testAppConfig(nil, bp, nil)
 				config.TestProductVariables.Platform_sdk_version = &test.platformSdkInt
 				config.TestProductVariables.Platform_sdk_codename = &test.platformSdkCodename
+				config.TestProductVariables.Platform_version_active_codenames = test.activeCodenames
 				config.TestProductVariables.Platform_sdk_final = &test.platformSdkFinal
 
 				ctx := testContext()

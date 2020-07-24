@@ -244,7 +244,7 @@ func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (ApiLevel, error) {
 			"not a recognized codename", canonical)
 	}
 
-	if asInt > ctx.Config().PlatformSdkVersionInt() {
+	if asInt > ctx.Config().PlatformSdkVersion().AsInt() {
 		// We don't want to allow this going forward, but there are already a
 		// lot of build files that use 30 for R and 31 for S. We may want to
 		// clean those up, but for now just allow them.
@@ -258,14 +258,11 @@ func ApiLevelFromUser(ctx EarlyModuleContext, raw string) (ApiLevel, error) {
 		}
 		return nil, fmt.Errorf("Non-final API levels must be specified by "+
 			"their code name, not integers. %q (%d) is higher than the "+
-			"maximum final API level %d", raw, asInt,
-			ctx.Config().PlatformSdkVersionInt())
+			"maximum final API level %s", raw, asInt,
+			ctx.Config().PlatformSdkVersion())
 	}
 
-	return finalApiLevel{
-		value: strconv.Itoa(asInt),
-		asInt: asInt,
-	}, nil
+	return uncheckedFinalApiLevel(asInt), nil
 }
 
 func ApiLevelOrPanic(ctx EarlyModuleContext, raw string) ApiLevel {
@@ -338,7 +335,7 @@ func getFinalCodenamesMap(config Config) map[string]int {
 		// neither R nor S are final, but the S APIs stop being available in a
 		// final R build.
 		if Bool(config.productVariables.Platform_sdk_final) {
-			apiLevelsMap["current"] = config.PlatformSdkVersionInt()
+			apiLevelsMap["current"] = config.PlatformSdkVersion().AsInt()
 		}
 
 		return apiLevelsMap

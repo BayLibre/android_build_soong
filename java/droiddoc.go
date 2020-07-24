@@ -1417,7 +1417,7 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 
 		cmd.FlagWithOutput("--generate-api-levels ", d.apiVersionsXml)
 		cmd.FlagWithInput("--apply-api-levels ", d.apiVersionsXml)
-		cmd.FlagWithArg("--current-version ", ctx.Config().PlatformSdkVersion())
+		cmd.FlagWithArg("--current-version ", ctx.Config().PlatformSdkVersion().String())
 		cmd.FlagWithArg("--current-codename ", ctx.Config().PlatformSdkCodename())
 
 		ctx.VisitDirectDepsWithTag(metalavaAPILevelsAnnotationsDirTag, func(m android.Module) {
