@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f749a47e_81b07886",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-24T00:38:11Z",
+      "side": 1,
+      "message": ", err",
+      "range": {
+        "startLine": 69,
+        "startChar": 115,
+        "endLine": 69,
+        "endChar": 116
+      },
+      "revId": "0de556a108a848658e2a4b3c325bde184603a866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
