@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8528c6e_d6f79337",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-07-24T00:11:53Z",
+      "side": 1,
+      "message": "Can you add a check here to ensure `writeonly` is specified only under hwasan/asan?\n\n  if !(s.Hwaddress || s.Address)\n    cts.ModuleErrorf(...)",
+      "revId": "55b58efb529673a9e6b35731580824c8743473e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
