@@ -16,6 +16,24 @@
       "revId": "5bed04cc785ab1d441b2c47eb9403fe8052018dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2a1031_13430cb1",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-07-27T20:35:46Z",
+      "side": 1,
+      "message": "Do you mean if the documentation should refer to the old property or is it possible to link blueprint properties that way so there\u0027s lesser code redundancy?\n\nThere are 17 uses of the old property, per code search so we should be able to migrate these within this week.",
+      "parentUuid": "3cfcaeeb_6febd802",
+      "revId": "5bed04cc785ab1d441b2c47eb9403fe8052018dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
