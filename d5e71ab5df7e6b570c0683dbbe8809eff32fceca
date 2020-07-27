@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "685f9566_1b0fe76b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-27T19:30:11Z",
+      "side": 1,
+      "message": "I wonder if this would work better as composition, the way dexpreopt and lint work.  Most of the properties that are being accessed through the interface are specific to dexing/r8.  You could move compileDex and all of the properties into a new struct dexer, and then embed dexer into Module and Import.  You might have to add a few extra fields on dexer that get assigned manually before calling compileDex, for example UncompressDex.",
+      "revId": "d5e71ab5df7e6b570c0683dbbe8809eff32fceca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
