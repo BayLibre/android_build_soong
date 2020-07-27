@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e2c927a_fe05b738",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-27T20:43:32Z",
+      "side": 1,
+      "message": "Ramy, will this cause an issue for RBE if this rule sometimes doesn\u0027t produce its output file?  When clang is run with --verify it doesn\u0027t produce the output file and then we touch it locally to make ninja happy.",
+      "revId": "8a3175b972dece883a4e5934214acaf555a54a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
