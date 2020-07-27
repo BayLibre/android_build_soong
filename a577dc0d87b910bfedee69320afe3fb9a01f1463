@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56cc5651_540dfb8e",
+        "filename": "android/makefile_goal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-27T20:25:54Z",
+      "side": 1,
+      "message": "Can you mention that this is only for boot.img so people don\u0027t see it in go/Android.bp and try to use it?",
+      "revId": "a577dc0d87b910bfedee69320afe3fb9a01f1463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
