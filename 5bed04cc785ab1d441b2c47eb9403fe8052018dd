@@ -34,6 +34,24 @@
       "revId": "5bed04cc785ab1d441b2c47eb9403fe8052018dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47dabadc_3295f8df",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-27T20:37:29Z",
+      "side": 1,
+      "message": "I just meant should it be \"// value to pass to -fsanitize-blacklist.  Deprecated, use blocklist instead\", but if you plan to fix it in a week it\u0027s not necessary.",
+      "parentUuid": "8a2a1031_13430cb1",
+      "revId": "5bed04cc785ab1d441b2c47eb9403fe8052018dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
