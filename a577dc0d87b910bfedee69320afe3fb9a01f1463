@@ -16,6 +16,24 @@
       "revId": "a577dc0d87b910bfedee69320afe3fb9a01f1463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "727d6900_f68ec1d7",
+        "filename": "android/makefile_goal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-27T20:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56cc5651_540dfb8e",
+      "revId": "a577dc0d87b910bfedee69320afe3fb9a01f1463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
