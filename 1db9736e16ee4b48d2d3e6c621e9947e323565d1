@@ -16,6 +16,63 @@
       "revId": "1db9736e16ee4b48d2d3e6c621e9947e323565d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cdcebcf_3309cded",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-27T05:15:22Z",
+      "side": 1,
+      "message": "This seems to work, but I am not sure if we want to make android/prebuilt.go to be aware of sanitizer.",
+      "revId": "1db9736e16ee4b48d2d3e6c621e9947e323565d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc906e01_72b320cc",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-27T05:15:22Z",
+      "side": 1,
+      "message": "nit: `var sanitizers []string`",
+      "revId": "1db9736e16ee4b48d2d3e6c621e9947e323565d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914c5a1d_f9332061",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-07-27T05:15:22Z",
+      "side": 1,
+      "message": "I am a little bit uncomfortable with this file being aware of sanitizer. Can this be supplied from the caller of this function InitSingSourcePrebuiltModule?",
+      "range": {
+        "startLine": 212,
+        "startChar": 14,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "1db9736e16ee4b48d2d3e6c621e9947e323565d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
