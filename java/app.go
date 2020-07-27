@@ -1889,21 +1889,19 @@ type usesLibrary struct {
 }
 
 func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, hasFrameworkLibs bool) {
-	if !ctx.Config().UnbundledBuild() {
-		ctx.AddVariationDependencies(nil, usesLibTag, u.usesLibraryProperties.Uses_libs...)
-		ctx.AddVariationDependencies(nil, usesLibTag, u.presentOptionalUsesLibs(ctx)...)
-		// Only add these extra dependencies if the module depends on framework libs. This avoids
-		// creating a cyclic dependency:
-		//     e.g. framework-res -> org.apache.http.legacy -> ... -> framework-res.
-		if hasFrameworkLibs {
-			// Dexpreopt needs paths to the dex jars of these libraries in order to construct
-			// class loader context for dex2oat. Add them as a dependency with a special tag.
-			ctx.AddVariationDependencies(nil, usesLibTag,
-				"org.apache.http.legacy",
-				"android.hidl.base-V1.0-java",
-				"android.hidl.manager-V1.0-java")
-			ctx.AddVariationDependencies(nil, usesLibTag, optionalUsesLibs...)
-		}
+	ctx.AddVariationDependencies(nil, usesLibTag, u.usesLibraryProperties.Uses_libs...)
+	ctx.AddVariationDependencies(nil, usesLibTag, u.presentOptionalUsesLibs(ctx)...)
+	// Only add these extra dependencies if the module depends on framework libs. This avoids
+	// creating a cyclic dependency:
+	//     e.g. framework-res -> org.apache.http.legacy -> ... -> framework-res.
+	if hasFrameworkLibs {
+		// Dexpreopt needs paths to the dex jars of these libraries in order to construct
+		// class loader context for dex2oat. Add them as a dependency with a special tag.
+		ctx.AddVariationDependencies(nil, usesLibTag,
+			"org.apache.http.legacy",
+			"android.hidl.base-V1.0-java",
+			"android.hidl.manager-V1.0-java")
+		ctx.AddVariationDependencies(nil, usesLibTag, optionalUsesLibs...)
 	}
 }
 
@@ -1919,34 +1917,32 @@ func (u *usesLibrary) presentOptionalUsesLibs(ctx android.BaseModuleContext) []s
 func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.LibraryPaths {
 	usesLibPaths := make(dexpreopt.LibraryPaths)
 
-	if !ctx.Config().UnbundledBuild() {
-		ctx.VisitDirectDepsWithTag(usesLibTag, func(m android.Module) {
-			dep := ctx.OtherModuleName(m)
-			if lib, ok := m.(Dependency); ok {
-				buildPath := lib.DexJarBuildPath()
-				if buildPath == nil {
-					ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must"+
-						" produce a dex jar, does it have installable: true?", dep)
-					return
-				}
-
-				var devicePath string
-				installPath := lib.DexJarInstallPath()
-				if installPath == nil {
-					devicePath = filepath.Join("/system/framework", dep+".jar")
-				} else {
-					devicePath = android.InstallPathToOnDevicePath(ctx, installPath.(android.InstallPath))
-				}
-
-				usesLibPaths[dep] = &dexpreopt.LibraryPath{buildPath, devicePath}
-			} else if ctx.Config().AllowMissingDependencies() {
-				ctx.AddMissingDependencies([]string{dep})
-			} else {
-				ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must be "+
-					"a java library", dep)
+	ctx.VisitDirectDepsWithTag(usesLibTag, func(m android.Module) {
+		dep := ctx.OtherModuleName(m)
+		if lib, ok := m.(Dependency); ok {
+			buildPath := lib.DexJarBuildPath()
+			if buildPath == nil {
+				ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must"+
+					" produce a dex jar, does it have installable: true?", dep)
+				return
 			}
-		})
-	}
+
+			var devicePath string
+			installPath := lib.DexJarInstallPath()
+			if installPath == nil {
+				devicePath = filepath.Join("/system/framework", dep+".jar")
+			} else {
+				devicePath = android.InstallPathToOnDevicePath(ctx, installPath.(android.InstallPath))
+			}
+
+			usesLibPaths[dep] = &dexpreopt.LibraryPath{buildPath, devicePath}
+		} else if ctx.Config().AllowMissingDependencies() {
+			ctx.AddMissingDependencies([]string{dep})
+		} else {
+			ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must be "+
+				"a java library", dep)
+		}
+	})
 
 	return usesLibPaths
 }
