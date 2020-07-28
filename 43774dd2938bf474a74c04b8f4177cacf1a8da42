@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "206f801e_9d808920",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-07-28T13:56:01Z",
+      "side": 1,
+      "message": "The commit format is usually:\n```\nTitle\n\nDescription\n\nBug: \u003cbug id\u003e\nTest: \u003ctest name or command(s)\u003e\n```\n\nand a git hook will automatically add the Change-Id line; if cherry-picking, you\u0027ll need to also add a Merged-In: \u003cchange id\u003e line as well.\n\nIn this case, the test is basically to see if it builds, so \u0027m\u0027 is sufficient.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "43774dd2938bf474a74c04b8f4177cacf1a8da42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5cd847_8df3b043",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-07-28T13:56:01Z",
+      "side": 1,
+      "message": "Nice!\nOnce you group both CLs under the same topic, you can set \u0027Presubmit-Ready\u0027 to +1 on one of the CLs and it\u0027ll start a presubmit run with the whole topic.",
+      "revId": "43774dd2938bf474a74c04b8f4177cacf1a8da42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
