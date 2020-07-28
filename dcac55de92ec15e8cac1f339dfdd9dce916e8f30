@@ -22,6 +22,30 @@
       "revId": "dcac55de92ec15e8cac1f339dfdd9dce916e8f30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5a6175_84908e1d",
+        "filename": "ui/terminal/simple_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-28T20:25:23Z",
+      "side": 1,
+      "message": "Opps. Done.",
+      "parentUuid": "07be1bd3_14bfe6ac",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "dcac55de92ec15e8cac1f339dfdd9dce916e8f30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
