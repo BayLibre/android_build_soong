@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74a68447_eaa4db7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-28T16:52:22Z",
+      "side": 1,
+      "message": "Colin, could you +2 again? I need to expose the factory so that some follow-up CL can contain go code that uses it.",
+      "revId": "696ed4d54c47be58c469683c3ecb8d536ef59845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
