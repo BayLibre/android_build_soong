@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b2d1e1c_0c57143e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-28T18:45:42Z",
+      "side": 1,
+      "message": "Ping",
+      "revId": "834bb447945774fed0887544d88373eed0fb2df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a63de19_1105892c",
         "filename": "rust/bindgen.go",
         "patchSetId": 1
@@ -16,6 +33,24 @@
       "revId": "834bb447945774fed0887544d88373eed0fb2df6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f91dac3_0b193a64",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-28T18:45:42Z",
+      "side": 1,
+      "message": "Ack, I\u0027ve fixed it up, thanks for the suggestion! Unfortunately this won\u0027t compile anymore without the changes in the child CL, so I\u0027ve squashed the two and I\u0027ll abandon this one as its the smaller of the two.",
+      "parentUuid": "4a63de19_1105892c",
+      "revId": "834bb447945774fed0887544d88373eed0fb2df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
