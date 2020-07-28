@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08cac4ec_a6d2b2a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470412
+      },
+      "writtenOn": "2020-07-28T10:58:21Z",
+      "side": 1,
+      "message": "Patchset 2 made stricter, so once enabled then no error is allowed in the component for BTI.",
+      "revId": "22eadf6fcafbf7b3e34bb37daac1a83fc2dd575f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
