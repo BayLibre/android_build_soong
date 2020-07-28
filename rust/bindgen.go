@@ -15,8 +15,9 @@
 package rust
 
 import (
-	"github.com/google/blueprint"
 	"strings"
+
+	"github.com/google/blueprint"
 
 	"android/soong/android"
 	"android/soong/cc"
@@ -87,18 +88,18 @@ func (b *bindgenDecorator) libraryExports(ctx android.ModuleContext) (android.Pa
 	var libraryPaths android.Paths
 	var libraryFlags []string
 
-	for _, static_lib := range b.Properties.Static_libs {
-		if dep, ok := ctx.GetDirectDepWithTag(static_lib, cc.StaticDepTag).(*cc.Module); ok {
-			libraryPaths = append(libraryPaths, dep.ExportedIncludeDirs()...)
-			libraryFlags = append(libraryFlags, dep.ExportedFlags()...)
+	ctx.VisitDirectDeps(func(dep android.Module) {
+		depTag := ctx.OtherModuleDependencyTag(dep)
+		ccDep, _ := dep.(*cc.Module)
+		switch {
+		case cc.IsStaticDepTag(depTag):
+			libraryPaths = append(libraryPaths, ccDep.ExportedIncludeDirs()...)
+			libraryFlags = append(libraryFlags, ccDep.ExportedFlags()...)
+		case cc.IsSharedDepTag(depTag):
+			libraryPaths = append(libraryPaths, ccDep.ExportedIncludeDirs()...)
+			libraryFlags = append(libraryFlags, ccDep.ExportedFlags()...)
 		}
-	}
-	for _, shared_lib := range b.Properties.Shared_libs {
-		if dep, ok := ctx.GetDirectDepWithTag(shared_lib, cc.SharedDepTag).(*cc.Module); ok {
-			libraryPaths = append(libraryPaths, dep.ExportedIncludeDirs()...)
-			libraryFlags = append(libraryFlags, dep.ExportedFlags()...)
-		}
-	}
+	})
 
 	return libraryPaths, libraryFlags
 }
