@@ -33,6 +33,42 @@
       "revId": "d5e71ab5df7e6b570c0683dbbe8809eff32fceca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2069ec6_fd655afb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-28T18:08:20Z",
+      "side": 1,
+      "message": "Responded to other comment.",
+      "parentUuid": "f2e291a7_c2b277d9",
+      "revId": "d5e71ab5df7e6b570c0683dbbe8809eff32fceca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06261e1_dd09245a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-28T18:08:20Z",
+      "side": 1,
+      "message": "Good idea, I think that\u0027ll make the addition to import easier. I kept a small interface where it seemed appropriate, but open to other suggestions.",
+      "parentUuid": "685f9566_1b0fe76b",
+      "revId": "d5e71ab5df7e6b570c0683dbbe8809eff32fceca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
