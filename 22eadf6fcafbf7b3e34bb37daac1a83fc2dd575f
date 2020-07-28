@@ -16,6 +16,23 @@
       "revId": "22eadf6fcafbf7b3e34bb37daac1a83fc2dd575f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d035c52_360b76a8",
+        "filename": "cc/hardening.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1470412
+      },
+      "writtenOn": "2020-07-28T11:00:10Z",
+      "side": 1,
+      "message": "in llvm upstream this flag is rename to -z,force-bti. \nto be updated with the toolchain update. https://reviews.llvm.org/D71327",
+      "revId": "22eadf6fcafbf7b3e34bb37daac1a83fc2dd575f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
