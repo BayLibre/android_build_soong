@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f865b74a_df40fa29",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-28T17:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7caa204_244e523b",
+      "range": {
+        "startLine": 118,
+        "startChar": 27,
+        "endLine": 118,
+        "endChar": 29
+      },
+      "revId": "d7f563ff21f1dea1dbf713bbcfeabedc09cad7e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bc80770_01303bcc",
         "filename": "rust/bindgen_test.go",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "d7f563ff21f1dea1dbf713bbcfeabedc09cad7e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b2ce6b5_aa18da3c",
+        "filename": "rust/bindgen_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-07-28T17:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc80770_01303bcc",
+      "range": {
+        "startLine": 54,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "d7f563ff21f1dea1dbf713bbcfeabedc09cad7e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
