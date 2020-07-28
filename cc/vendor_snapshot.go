@@ -484,10 +484,11 @@ type vendorSnapshotSingleton struct {
 
 var (
 	// Modules under following directories are ignored. They are OEM's and vendor's
-	// proprietary modules(device/, vendor/, and hardware/).
+	// proprietary modules(device/, kernel/, vendor/, and hardware/).
 	// TODO(b/65377115): Clean up these with more maintainable way
 	vendorProprietaryDirs = []string{
 		"device",
+		"kernel",
 		"vendor",
 		"hardware",
 	}
