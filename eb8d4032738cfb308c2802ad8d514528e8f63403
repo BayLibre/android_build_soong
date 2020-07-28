@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e715ca5_a16cbe50",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-07-28T01:35:26Z",
+      "side": 1,
+      "message": "The use of `external/compiler-rt` started from the beginning with  https://android-review.googlesource.com/c/platform/build/soong/+/338370. This really should be adapted to use the files from the prebuilts instead. Of course, upstream hasn\u0027t changed the naming here yet, so perhaps it is fine to just still point at the outdated version.",
+      "range": {
+        "startLine": 54,
+        "startChar": 24,
+        "endLine": 54,
+        "endChar": 70
+      },
+      "revId": "eb8d4032738cfb308c2802ad8d514528e8f63403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
