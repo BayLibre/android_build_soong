@@ -395,7 +395,9 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 		ctx.AddFarVariationDependencies(variation, tag, a.appProperties.Jni_libs...)
 	}
 
-	a.usesLibrary.deps(ctx, sdkDep.hasFrameworkLibs())
+	if enforceUsesLibraries(ctx, a.dexpreopter, a.usesLibrary) {
+		a.usesLibrary.deps(ctx, sdkDep.hasFrameworkLibs())
+	}
 }
 
 func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
@@ -593,7 +595,7 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 		a.deviceProperties.Uncompress_dex = proptools.BoolPtr(a.shouldUncompressDex(ctx))
 	}
 	a.dexpreopter.uncompressedDex = *a.deviceProperties.Uncompress_dex
-	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
+	a.dexpreopter.enforceUsesLibs = enforceUsesLibraries(ctx, a.dexpreopter, a.usesLibrary)
 	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
 	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
 	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
@@ -766,7 +768,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	// Process all building blocks, from AAPT to certificates.
 	a.aaptBuildActions(ctx)
 
-	if a.usesLibrary.enforceUsesLibraries() {
+	if enforceUsesLibraries(ctx, a.dexpreopter, a.usesLibrary) {
 		manifestCheckFile := a.usesLibrary.verifyUsesLibrariesManifest(ctx, a.mergedManifestFile)
 		apkDeps = append(apkDeps, manifestCheckFile)
 	}
@@ -1379,7 +1381,9 @@ func (a *AndroidAppImport) DepsMutator(ctx android.BottomUpMutatorContext) {
 		ctx.AddDependency(ctx.Module(), certificateTag, cert)
 	}
 
-	a.usesLibrary.deps(ctx, true)
+	if enforceUsesLibraries(ctx, a.dexpreopter, a.usesLibrary) {
+		a.usesLibrary.deps(ctx, true)
+	}
 }
 
 func (a *AndroidAppImport) uncompressEmbeddedJniLibs(
@@ -1461,8 +1465,9 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	// TODO: LOCAL_PACKAGE_SPLITS
 
 	srcApk := a.prebuilt.SingleSourcePath(ctx)
+	enforceUsesLibs := enforceUsesLibraries(ctx, a.dexpreopter, a.usesLibrary)
 
-	if a.usesLibrary.enforceUsesLibraries() {
+	if enforceUsesLibs {
 		srcApk = a.usesLibrary.verifyUsesLibrariesAPK(ctx, srcApk)
 	}
 
@@ -1485,7 +1490,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	a.dexpreopter.isPresignedPrebuilt = Bool(a.properties.Presigned)
 	a.dexpreopter.uncompressedDex = a.shouldUncompressDex(ctx)
 
-	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
+	a.dexpreopter.enforceUsesLibs = enforceUsesLibs
 	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
 	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
 	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
@@ -1946,12 +1951,13 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.Libr
 	return usesLibPaths
 }
 
-// enforceUsesLibraries returns true of <uses-library> tags should be checked against uses_libs and optional_uses_libs
-// properties.  Defaults to true if either of uses_libs or optional_uses_libs is specified.  Will default to true
-// unconditionally in the future.
-func (u *usesLibrary) enforceUsesLibraries() bool {
-	defaultEnforceUsesLibs := len(u.usesLibraryProperties.Uses_libs) > 0 ||
-		len(u.usesLibraryProperties.Optional_uses_libs) > 0
+// enforceUsesLibraries returns true if <uses-library> tags should be checked against uses_libs and
+// optional_uses_libs properties and passed to dexpreopt.  Defaults to true if either of uses_libs
+// or optional_uses_libs is specified, and if dexpreopt is enabled.
+// Will default to true unconditionally in the future.
+func enforceUsesLibraries(ctx android.BaseModuleContext, d dexpreopter, u usesLibrary) bool {
+	defaultEnforceUsesLibs := !d.dexpreoptDisabled(ctx) &&
+		(len(u.usesLibraryProperties.Uses_libs) > 0 || len(u.usesLibraryProperties.Optional_uses_libs) > 0)
 	return BoolDefault(u.usesLibraryProperties.Enforce_uses_libs, defaultEnforceUsesLibs)
 }
 
