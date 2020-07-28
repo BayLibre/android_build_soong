@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bad48887_fc7bfb4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-07-28T23:43:07Z",
+      "side": 1,
+      "message": "LGTM w/ nit",
+      "revId": "4a330e90482b01020cdc2d4c9ad276aa0aafd558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f6864d5_7f390baa",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-07-28T23:43:07Z",
+      "side": 1,
+      "message": "nit: space after `//` (and throughout)",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "4a330e90482b01020cdc2d4c9ad276aa0aafd558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
