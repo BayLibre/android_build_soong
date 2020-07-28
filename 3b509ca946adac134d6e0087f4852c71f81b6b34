@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "1e7d20d5_88859d5f",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-28T11:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d229bb4_533486a4",
+      "range": {
+        "startLine": 174,
+        "startChar": 9,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "3b509ca946adac134d6e0087f4852c71f81b6b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee94df1e_60e7fc32",
         "filename": "android/module.go",
         "patchSetId": 4
@@ -56,6 +80,24 @@
       "revId": "3b509ca946adac134d6e0087f4852c71f81b6b34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f335468_05d2459f",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-28T11:55:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee94df1e_60e7fc32",
+      "revId": "3b509ca946adac134d6e0087f4852c71f81b6b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +118,24 @@
     },
     {
       "key": {
+        "uuid": "aa78e641_d5a9bc66",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-28T11:55:38Z",
+      "side": 1,
+      "message": "Good point, added a panic-on-nil here instead.",
+      "parentUuid": "a430204a_ee8f0aef",
+      "revId": "3b509ca946adac134d6e0087f4852c71f81b6b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dd1e4d3_c09caeb0",
         "filename": "java/androidmk.go",
         "patchSetId": 4
@@ -90,6 +150,24 @@
       "revId": "3b509ca946adac134d6e0087f4852c71f81b6b34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594d4dd2_39b885c1",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-07-28T11:55:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dd1e4d3_c09caeb0",
+      "revId": "3b509ca946adac134d6e0087f4852c71f81b6b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
