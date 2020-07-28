@@ -33,6 +33,23 @@
       "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89804422_85abaa99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-07-28T18:31:50Z",
+      "side": 1,
+      "message": "Ping^3.\n\nFYI, I\u0027ve had this patch installed locally for just under a month and it\u0027s been a real improvement to Soong\u0027s output. I don\u0027t think I could go back to the way things currently are.\n\nI also recently learned that Bazel has a feature to filter out warning output: https://docs.bazel.build/versions/master/command-line-reference.html#flag--auto_output_filter\n\nand some installations turn it on by default, e.g.:\nhttps://github.com/deepmind/reverb/blob/f194940368bcecd0033fa992e5b0e933e8717763/.bazelrc#L17",
+      "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
