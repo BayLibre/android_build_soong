@@ -39,6 +39,23 @@
       "revId": "4a330e90482b01020cdc2d4c9ad276aa0aafd558",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4346493_2783eda3",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-07-28T23:47:41Z",
+      "side": 1,
+      "message": "\u003d0 here and below for consistency with cflags at the top of this file",
+      "revId": "4a330e90482b01020cdc2d4c9ad276aa0aafd558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
