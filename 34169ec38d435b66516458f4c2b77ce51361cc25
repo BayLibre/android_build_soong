@@ -22,6 +22,30 @@
       "revId": "34169ec38d435b66516458f4c2b77ce51361cc25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a952623_406fc264",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-29T04:58:28Z",
+      "side": 1,
+      "message": "The problem is exactly because apex_name is set. Let\u0027s discuss in the bug.",
+      "parentUuid": "7b9a0b4f_c850c161",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 81
+      },
+      "revId": "34169ec38d435b66516458f4c2b77ce51361cc25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
