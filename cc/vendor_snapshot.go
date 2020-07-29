@@ -557,12 +557,16 @@ func isVendorSnapshotModule(m *Module, moduleDir string) bool {
 	if l, ok := m.linker.(snapshotLibraryInterface); ok {
 		// TODO(b/65377115): add full support for sanitizer
 		if m.sanitize != nil {
-			// cfi, scs and hwasan export both sanitized and unsanitized variants for static and header
+			// scs and hwasan export both sanitized and unsanitized variants for static and header
 			// Always use unsanitized variants of them.
-			for _, t := range []sanitizerType{cfi, scs, hwasan} {
+			for _, t := range []sanitizerType{scs, hwasan} {
 				if !l.shared() && m.sanitize.isSanitizerEnabled(t) {
 					return false
 				}
+			}
+			// cfi also exports both variants. But for static, we capture both.
+			if !l.static() && !l.shared() && m.sanitize.isSanitizerEnabled(cfi) {
+				return false
 			}
 		}
 		if l.static() {
@@ -657,6 +661,7 @@ func (c *vendorSnapshotSingleton) GenerateBuildActions(ctx android.SingletonCont
 			ExportedDirs       []string `json:",omitempty"`
 			ExportedSystemDirs []string `json:",omitempty"`
 			ExportedFlags      []string `json:",omitempty"`
+			Sanitize           string   `json:",omitempty"`
 			SanitizeMinimalDep bool     `json:",omitempty"`
 			SanitizeUbsanDep   bool     `json:",omitempty"`
 
@@ -706,6 +711,7 @@ func (c *vendorSnapshotSingleton) GenerateBuildActions(ctx android.SingletonCont
 		var propOut string
 
 		if l, ok := m.linker.(snapshotLibraryInterface); ok {
+
 			// library flags
 			prop.ExportedFlags = l.exportedFlags()
 			for _, dir := range l.exportedDirs() {
@@ -738,6 +744,15 @@ func (c *vendorSnapshotSingleton) GenerateBuildActions(ctx android.SingletonCont
 			if libType != "header" {
 				libPath := m.outputFile.Path()
 				stem = libPath.Base()
+				if l.static() && m.sanitize != nil && m.sanitize.isSanitizerEnabled(cfi) {
+					// both cfi and non-cfi variant for static libraries can exist.
+					// attach .cfi to distinguish between cfi and non-cfi.
+					// e.g. libbase.a -> libbase.cfi.a
+					ext := filepath.Ext(stem)
+					stem = strings.TrimSuffix(stem, ext) + ".cfi" + ext
+					prop.Sanitize = "cfi"
+					prop.ModuleName += ".cfi"
+				}
 				snapshotLibOut := filepath.Join(snapshotArchDir, targetArch, libType, stem)
 				ret = append(ret, copyFile(ctx, libPath, snapshotLibOut))
 			} else {
