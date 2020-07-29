@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9be49f6_d7cf9d7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-07-29T15:21:20Z",
+      "side": 1,
+      "message": "okay, this needs a new toybox prebuilt, but otherwise patch is now good to go...",
+      "revId": "bdbbfd53ecee2fd51a69cdd42b8c57b8b8732dab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
