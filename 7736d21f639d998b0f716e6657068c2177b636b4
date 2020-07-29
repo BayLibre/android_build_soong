@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "928f75ba_b32df47c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-07-29T12:30:32Z",
+      "side": 1,
+      "message": "Ugh, sorry, I forgot to mention that we agreed on \u0027UNSUPPORTED\u0027 instead of \u0027DISCOURAGED\u0027 in yesterday\u0027s meeting.",
+      "revId": "7736d21f639d998b0f716e6657068c2177b636b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
