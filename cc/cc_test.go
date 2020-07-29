@@ -646,6 +646,26 @@ func TestVndkWhenVndkVersionIsNotSet(t *testing.T) {
 	})
 }
 
+func TestLlndkReleaseVersionDep(t *testing.T) {
+	testCc(t, `
+		cc_library {
+			name: "libllndk",
+		}
+
+		llndk_library {
+			name: "libllndk",
+			symbol_file: "",
+		}
+
+		cc_library {
+			name: "libvendor_version_test",
+			vendor: true,
+			release_version: "30",
+			shared_libs: ["libllndk"],
+		}
+	`)
+}
+
 func TestVndkDepError(t *testing.T) {
 	// Check whether an error is emitted when a VNDK lib depends on a system lib.
 	testCcError(t, "dependency \".*\" of \".*\" missing variant", `

@@ -103,6 +103,30 @@ func TestSourceTreeDependency(t *testing.T) {
 		errs)
 }
 
+func TestSourceTreeDependencyAny(t *testing.T) {
+	_, errs := setupSourceTreeTest(map[string]string{
+		"dir3-1": `
+		source_tree {
+			release_version: "30",
+		}
+		test_module {
+			name: "a_dep_any_test",
+			deps: ["b_dep_any_test"],
+		}
+		test_module {
+			name: "b_dep_any_test",
+			deps: ["c_dep_any_test"],
+			release_version: "any",
+		}
+		test_module {
+			name: "c_dep_any_test",
+			release_version: "current",
+		}
+		`,
+	})
+	FailIfErrored(t, errs)
+}
+
 func TestDefaltableReleaseVersionProperty(t *testing.T) {
 	ctx, errs := setupSourceTreeTest(map[string]string{
 		"dir4": `

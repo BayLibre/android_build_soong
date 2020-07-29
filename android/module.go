@@ -2143,6 +2143,14 @@ func (m *moduleContext) validateReleaseVersionDependency(dep *ModuleBase) {
 	releaseVersion := base.ReleaseVersion()
 	depReleaseVersion := dep.ReleaseVersion()
 	if releaseVersion != depReleaseVersion {
+		if depReleaseVersion == "any" {
+			// Any modules can depend on the modules with release_version = "any".
+			return
+		}
+		if releaseVersion == "any" && depReleaseVersion == "current" {
+			// The modules with release_version = "any" may depend on "current" modules.
+			return
+		}
 		m.ModuleErrorf("has a release version %q. It must not depend on %q which has a different release version %q",
 			releaseVersion, dep.Name(), depReleaseVersion)
 	}

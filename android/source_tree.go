@@ -39,6 +39,10 @@ type SourceTreeModule struct {
 	properties SourceTreeProperties
 }
 
+type ReleaseVersionInterface interface {
+	DefaultReleaseVersion() *string
+}
+
 func (s *SourceTreeModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 }
 
@@ -113,6 +117,13 @@ func sourceTreeMutator(ctx BottomUpMutatorContext) {
 func releaseVersionMutator(ctx BottomUpMutatorContext) {
 	if ctx.Module().base().commonProperties.Release_version != nil {
 		return
+	}
+
+	if m, ok := ctx.Module().(ReleaseVersionInterface); ok {
+		if defaultVersion := m.DefaultReleaseVersion(); defaultVersion != nil {
+			ctx.Module().base().commonProperties.Release_version = defaultVersion
+			return
+		}
 	}
 
 	dir := ctx.ModuleDir()
