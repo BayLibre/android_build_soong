@@ -2,10 +2,11 @@ package config
 
 var (
 	RustAllowedPaths = []string{
+		"external/adhd",
+		"external/crosvm",
 		"external/minijail",
 		"external/rust",
-		"external/crosvm",
-		"external/adhd",
+		"external/sqlite/rust",
 		"prebuilts/rust",
 	}
 
