@@ -16,6 +16,24 @@
       "revId": "7736d21f639d998b0f716e6657068c2177b636b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28470d0d_e2297564",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1736781
+      },
+      "writtenOn": "2020-07-29T15:49:41Z",
+      "side": 1,
+      "message": "Updated to contain \"UNSUPPORTED\".",
+      "parentUuid": "928f75ba_b32df47c",
+      "revId": "7736d21f639d998b0f716e6657068c2177b636b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
