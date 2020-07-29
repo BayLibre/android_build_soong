@@ -352,7 +352,7 @@ func TestBasicApex(t *testing.T) {
 			native_shared_libs: ["mylib"],
 			multilib: {
 				both: {
-					binaries: ["foo",],
+					binaries: ["foo","bar",],
 				}
 			},
 			java_libs: [
@@ -413,6 +413,12 @@ func TestBasicApex(t *testing.T) {
 			static_executable: true,
 			stl: "none",
 			apex_available: [ "myapex" ],
+		}
+
+		cc_binary {
+			name: "bar",
+			srcs: ["mylib.cpp"],
+			apex_available: [ "myape*" ],
 		}
 
 		cc_library_shared {

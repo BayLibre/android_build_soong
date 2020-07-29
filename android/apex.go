@@ -137,6 +137,7 @@ type ApexProperties struct {
 	//
 	// "//apex_available:anyapex" is a pseudo APEX name that matches to any APEX.
 	// "//apex_available:platform" refers to non-APEX partitions like "system.img".
+	// "X*" matches any APEX name with the prefix "X".
 	// Default is ["//apex_available:platform"].
 	Apex_available []string
 
@@ -218,14 +219,30 @@ const (
 	AvailableToAnyApex  = "//apex_available:anyapex"
 )
 
+func matchesPatterns(what string, patterns []string) bool {
+	for _, pattern := range patterns {
+		if what == pattern {
+			return true
+		}
+		// Do additional pattern matching.
+		if strings.HasSuffix(pattern, "*") {
+			expectPrefix := strings.TrimSuffix(pattern, "*")
+			if strings.HasPrefix(what, expectPrefix) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func CheckAvailableForApex(what string, apex_available []string) bool {
 	if len(apex_available) == 0 {
 		// apex_available defaults to ["//apex_available:platform"],
 		// which means 'available to the platform but no apexes'.
 		return what == AvailableToPlatform
 	}
-	return InList(what, apex_available) ||
-		(what != AvailableToPlatform && InList(AvailableToAnyApex, apex_available))
+	return matchesPatterns(what, apex_available) ||
+		(what != AvailableToPlatform && matchesPatterns(AvailableToAnyApex, apex_available))
 }
 
 func (m *ApexModuleBase) AvailableFor(what string) bool {
@@ -260,6 +277,9 @@ func (m *ApexModuleBase) ChooseSdkVersion(versionList []string, maxSdkVersion in
 func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 	for _, n := range m.ApexProperties.Apex_available {
 		if n == AvailableToPlatform || n == AvailableToAnyApex {
+			continue
+		}
+		if strings.HasSuffix(n, "*") {
 			continue
 		}
 		if !mctx.OtherModuleExists(n) && !mctx.Config().AllowMissingDependencies() {
