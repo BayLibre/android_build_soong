@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73c9f4fb_c667e058",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-29T05:44:26Z",
+      "side": 1,
+      "message": "Why is this necessary?  This will make code searching for apex_available references impossible.",
+      "revId": "158807571494c7efb93351f0e235c8e8bb1c4138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
