@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67027706_5232fdda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-29T15:44:19Z",
+      "side": 1,
+      "message": "I _think_ this makes sense/is parallel to apex_sets, but I\u0027m open to other naming ideas.",
+      "revId": "cada807a92ec3f527e4e06b63bad64eec904ed7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
