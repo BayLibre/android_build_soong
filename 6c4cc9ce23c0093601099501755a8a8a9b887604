@@ -1,0 +1,139 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004093736",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376856?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e873ec0a_44c4613c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2165,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T16:47:01Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027machine code\u0027 or \u0027C/C++ code\u0027; see https://developers.google.com/style/word-list#native for more details.",
+      "range": {
+        "startLine": 2165,
+        "startChar": 14,
+        "endLine": 2165,
+        "endChar": 20
+      },
+      "revId": "6c4cc9ce23c0093601099501755a8a8a9b887604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004093736",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376856?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "41f5a6f8_88ce5bb2",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2206,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T16:47:01Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027machine code\u0027 or \u0027C/C++ code\u0027; see https://developers.google.com/style/word-list#native for more details.",
+      "range": {
+        "startLine": 2206,
+        "startChar": 8,
+        "endLine": 2206,
+        "endChar": 14
+      },
+      "revId": "6c4cc9ce23c0093601099501755a8a8a9b887604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004093736",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376856?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "49898ecb_d1368ef7",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2207,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T16:47:01Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027machine code\u0027 or \u0027C/C++ code\u0027; see https://developers.google.com/style/word-list#native for more details.",
+      "range": {
+        "startLine": 2207,
+        "startChar": 33,
+        "endLine": 2207,
+        "endChar": 39
+      },
+      "revId": "6c4cc9ce23c0093601099501755a8a8a9b887604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004093736",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376856?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "58f36df3_759875a1",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2259,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T16:47:01Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027machine code\u0027 or \u0027C/C++ code\u0027; see https://developers.google.com/style/word-list#native for more details.",
+      "range": {
+        "startLine": 2259,
+        "startChar": 8,
+        "endLine": 2259,
+        "endChar": 14
+      },
+      "revId": "6c4cc9ce23c0093601099501755a8a8a9b887604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004093736",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376856?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e56f8722_ea692494",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2260,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T16:47:01Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027machine code\u0027 or \u0027C/C++ code\u0027; see https://developers.google.com/style/word-list#native for more details.",
+      "range": {
+        "startLine": 2260,
+        "startChar": 30,
+        "endLine": 2260,
+        "endChar": 36
+      },
+      "revId": "6c4cc9ce23c0093601099501755a8a8a9b887604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
