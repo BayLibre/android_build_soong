@@ -16,6 +16,24 @@
       "revId": "158807571494c7efb93351f0e235c8e8bb1c4138",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beb29406_5e7a1f0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-29T20:07:06Z",
+      "side": 1,
+      "message": "This is needed because I need to match com.android.gki prefixes. For example:\n\nhttps://android-review.googlesource.com/c/platform/system/update_engine/+/1371069/9/stable/Android.bp\n\nI could, of course, change this to be GKI specific. For example:\n\n\n  func matchesPatterns(what string, patterns []string) bool {\n\tfor _, pattern :\u003d range patterns {\n\t\tif what \u003d\u003d pattern {\n\t\t\treturn true\n\t\t}\n\t\t// Do additional pattern matching.\n\t\tif pattern \u003d\u003d \"com.android.gki.*\" {\n\t\t\tif strings.HasPrefix(what, \"com.android.gki.\") {\n\t\t\t\treturn true\n\t\t\t}\n\t\t}\n\t}\n\treturn false\n  }",
+      "parentUuid": "73c9f4fb_c667e058",
+      "revId": "158807571494c7efb93351f0e235c8e8bb1c4138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
