@@ -16,6 +16,24 @@
       "revId": "bdbbfd53ecee2fd51a69cdd42b8c57b8b8732dab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69abd01f_7362d63f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-07-29T15:26:47Z",
+      "side": 1,
+      "message": "huh, syncing in prebuilts/build-tools/ to try the update myself for the first time, i see that it\u0027s just been updated anyway while my local binary was treehugging!",
+      "parentUuid": "f9be49f6_d7cf9d7e",
+      "revId": "bdbbfd53ecee2fd51a69cdd42b8c57b8b8732dab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
