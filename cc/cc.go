@@ -3300,6 +3300,17 @@ func (c *Module) IsSdkVariant() bool {
 	return c.Properties.IsSdkVariant
 }
 
+var _ android.ReleaseVersionInterface = (*Module)(nil)
+
+func (c *Module) DefaultReleaseVersion() *string {
+	_, llndk := c.linker.(*llndkStubDecorator)
+	_, llndkHeader := c.linker.(*llndkHeadersDecorator)
+	if llndk || llndkHeader {
+		return StringPtr("any")
+	}
+	return nil
+}
+
 func getCurrentNdkPrebuiltVersion(ctx DepsContext) string {
 	if ctx.Config().PlatformSdkVersionInt() > config.NdkMaxPrebuiltVersionInt {
 		return strconv.Itoa(config.NdkMaxPrebuiltVersionInt)
