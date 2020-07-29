@@ -1,0 +1,31 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004102857",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1360617?revision\u003d10",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1b8adc96_2f5b4c59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T23:34:31Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 1,
+        "startChar": 52,
+        "endLine": 1,
+        "endChar": 58
+      },
+      "revId": "f2d9fd18527004f363b0a416a88c8740249a4d55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
