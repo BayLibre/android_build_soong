@@ -236,12 +236,19 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 	ctx.PreArchMutators(android.RegisterComponentsMutator)
 	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 
-	cc.RegisterRequiredBuildComponentsForTest(ctx)
+	// Register the apex mutators before the prebuilt ones to match what happens at
+	// runtime.
+	ctx.PreDepsMutators(RegisterPreDepsMutators)
+	ctx.PostDepsMutators(RegisterPostDepsMutators)
 
-	// Register this after the prebuilt mutators have been registered (in
-	// cc.RegisterRequiredBuildComponentsForTest) to match what happens at runtime.
+	android.RegisterPrebuiltMutators(ctx)
+
+	// Register these after the prebuilt mutators have been registered to match what
+	// happens at runtime.
 	ctx.PreArchMutators(android.RegisterVisibilityRuleGatherer)
 	ctx.PostDepsMutators(android.RegisterVisibilityRuleEnforcer)
+
+	cc.RegisterRequiredBuildComponentsForTest(ctx)
 
 	ctx.RegisterModuleType("cc_test", cc.TestFactory)
 	ctx.RegisterModuleType("vndk_prebuilt_shared", cc.VndkPrebuiltSharedFactory)
@@ -255,9 +262,6 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 	java.RegisterAppBuildComponents(ctx)
 	java.RegisterSdkLibraryBuildComponents(ctx)
 	ctx.RegisterSingletonType("apex_keys_text", apexKeysTextFactory)
-
-	ctx.PreDepsMutators(RegisterPreDepsMutators)
-	ctx.PostDepsMutators(RegisterPostDepsMutators)
 
 	ctx.Register(config)
 
@@ -5542,6 +5546,7 @@ func testNoUpdatableJarsInBootImage(t *testing.T, errmsg string, transformDexpre
 	ctx.RegisterModuleType("apex_key", ApexKeyFactory)
 	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	android.RegisterPrebuiltMutators(ctx)
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
 	java.RegisterJavaBuildComponents(ctx)
 	java.RegisterSystemModulesBuildComponents(ctx)
