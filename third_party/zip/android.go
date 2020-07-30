@@ -43,6 +43,14 @@ func (w *Writer) CopyFrom(orig *File, newName string) error {
 		offset:     uint64(w.cw.count),
 	}
 	w.dir = append(w.dir, h)
+	if fh.isZip64() {
+		fh.CompressedSize = uint32max
+		fh.UncompressedSize = uint32max
+		fh.ReaderVersion = zipVersion45 // requires 4.5 - File uses ZIP64 format extensions
+	} else {
+		fh.CompressedSize = uint32(fh.CompressedSize64)
+		fh.UncompressedSize = uint32(fh.UncompressedSize64)
+	}
 
 	if err := writeHeader(w.cw, fh); err != nil {
 		return err

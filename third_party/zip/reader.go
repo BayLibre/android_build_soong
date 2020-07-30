@@ -314,7 +314,6 @@ func readDirectoryHeader(f *File, r io.Reader) error {
 					if len(eb) < 8 {
 						return ErrFormat
 					}
-					f.CompressedSize64 = eb.uint64()
 				}
 				if needHeaderOffset {
 					needHeaderOffset = false
