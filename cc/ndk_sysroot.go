@@ -137,6 +137,7 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 					return
 				}
 				installPaths = append(installPaths, installer.installPath)
+				installPaths = append(installPaths, installer.abidumpPath)
 			}
 
 			if library, ok := m.linker.(*libraryDecorator); ok {
