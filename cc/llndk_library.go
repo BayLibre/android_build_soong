@@ -90,8 +90,11 @@ func (stub *llndkStubDecorator) compile(ctx ModuleContext, flags Flags, deps Pat
 	if stub.stubsVersion() != "" {
 		vndkVer = stub.stubsVersion()
 	}
-	objs, versionScript := compileStubLibrary(ctx, flags, String(stub.Properties.Symbol_file), vndkVer, "--llndk")
-	stub.versionScriptPath = versionScript
+	nativeAbiResult := parseNativeAbiDefinition(ctx,
+		String(stub.Properties.Symbol_file),
+		android.ApiLevelOrPanic(ctx, vndkVer), "--llndk")
+	objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
+	stub.versionScriptPath = nativeAbiResult.versionScript
 	return objs
 }
 

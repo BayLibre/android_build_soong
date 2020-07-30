@@ -1954,6 +1954,15 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 	}
 
+	if c.isNDKStubLibrary() {
+		// NDK stubs depend on their implementation because the ABI dumps are
+		// generated from the implementation library.
+		actx.AddFarVariationDependencies(append(ctx.Target().Variations(),
+			c.ImageVariation(),
+			blueprint.Variation{Mutator: "link", Variation: "shared"},
+		), nil, c.ModuleBase.Name())
+	}
+
 	if buildStubs {
 		// Stubs lib does not have dependency to other static/shared libraries.
 		// Don't proceed.

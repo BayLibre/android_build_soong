@@ -631,8 +631,12 @@ func (library *libraryDecorator) shouldCreateSourceAbiDump(ctx ModuleContext) bo
 
 func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
 	if library.buildStubs() {
-		objs, versionScript := compileStubLibrary(ctx, flags, String(library.Properties.Stubs.Symbol_file), library.MutatedProperties.StubsVersion, "--apex")
-		library.versionScriptPath = versionScript
+		nativeAbiResult := parseNativeAbiDefinition(ctx,
+			String(library.Properties.Stubs.Symbol_file),
+			android.ApiLevelOrPanic(ctx, library.MutatedProperties.StubsVersion),
+			"--apex")
+		objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
+		library.versionScriptPath = nativeAbiResult.versionScript
 		return objs
 	}
 
