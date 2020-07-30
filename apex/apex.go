@@ -16,6 +16,7 @@ package apex
 
 import (
 	"fmt"
+	"io"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -1234,6 +1235,24 @@ func (af *apexFile) AvailableToPlatform() bool {
 	return false
 }
 
+type apexPostInstallSymlink struct {
+	target string
+	name   string
+}
+
+func writePostInstallSymlinks(w io.Writer, symlinks []apexPostInstallSymlink) {
+	if len(symlinks) == 0 {
+		return
+	}
+	var installedLinkNames []string
+	for _, link := range symlinks {
+		fmt.Fprintf(w, "$(call symlink-file,,%s,%s)\n", link.target, link.name)
+		installedLinkNames = append(installedLinkNames, link.name)
+	}
+	fmt.Fprintln(w, "ALL_MODULES.$(my_register_name).INSTALLED +=", strings.Join(installedLinkNames, " "))
+	fmt.Fprintln(w, "$(my_all_targets): |", strings.Join(installedLinkNames, " "))
+}
+
 type apexBundle struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -1278,11 +1297,11 @@ type apexBundle struct {
 	manifestJsonOut android.WritablePath
 	manifestPbOut   android.WritablePath
 
-	// list of commands to create symlinks for backward compatibility.
-	// these commands will be attached as LOCAL_POST_INSTALL_CMD to
+	// List of symlinks to create for backward compatibility.
+	// These symlinks will be appended to ALL_MODULES.*.INSTALLED of the
 	// apex package itself(for unflattened build) or apex_manifest(for flattened build)
 	// so that compat symlinks are always installed regardless of TARGET_FLATTEN_APEX setting.
-	compatSymlinks []string
+	compatSymlinks []apexPostInstallSymlink
 
 	// Suffix of module name in Android.mk
 	// ".flattened", ".apex", ".zipapex", or ""

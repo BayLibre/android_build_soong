@@ -225,6 +225,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			}
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_cc_prebuilt.mk")
 		default:
+			var postInstallSymlinks []apexPostInstallSymlink
 			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.Stem())
 			if fi.builtFile == a.manifestPbOut && apexType == flattenedApex {
 				if a.primaryApexType {
@@ -237,16 +238,18 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 					if len(patterns) > 0 {
 						fmt.Fprintln(w, "LOCAL_OVERRIDES_MODULES :=", strings.Join(patterns, " "))
 					}
-					if len(a.compatSymlinks) > 0 {
+					postInstallSymlinks = a.compatSymlinks
+					//if len(a.compatSymlinks) > 0 {
 						// For flattened apexes, compat symlinks are attached to apex_manifest.json which is guaranteed for every apex
-						postInstallCommands = append(postInstallCommands, a.compatSymlinks...)
-					}
+					//	postInstallCommands = append(postInstallCommands, a.compatSymlinks...)
+					//}
 				}
 				if len(postInstallCommands) > 0 {
 					fmt.Fprintln(w, "LOCAL_POST_INSTALL_CMD :=", strings.Join(postInstallCommands, " && "))
 				}
 			}
 			fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
+			writePostInstallSymlinks(w, postInstallSymlinks)
 		}
 
 		// m <module_name> will build <module_name>.<apex_name> as well.
@@ -339,7 +342,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 						filepath.Join(a.installDir.ToMakePath().String(), a.prebuiltFileToDelete))
 				}
 				// For unflattened apexes, compat symlinks are attached to apex package itself as LOCAL_POST_INSTALL_CMD
-				postInstallCommands = append(postInstallCommands, a.compatSymlinks...)
+				// postInstallCommands = append(postInstallCommands, a.compatSymlinks...)
 				if len(postInstallCommands) > 0 {
 					fmt.Fprintln(w, "LOCAL_POST_INSTALL_CMD :=", strings.Join(postInstallCommands, " && "))
 				}
@@ -349,6 +352,8 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				}
 
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
+
+				writePostInstallSymlinks(w, a.compatSymlinks)
 
 				if apexType == imageApex {
 					fmt.Fprintln(w, "ALL_MODULES.$(my_register_name).BUNDLE :=", a.bundleModuleFile.String())

@@ -16,6 +16,7 @@ package apex
 
 import (
 	"fmt"
+	"io"
 	"strconv"
 	"strings"
 
@@ -97,9 +98,9 @@ type Prebuilt struct {
 	installFilename string
 	outputApex      android.WritablePath
 
-	// list of commands to create symlinks for backward compatibility.
-	// these commands will be attached as LOCAL_POST_INSTALL_CMD
-	compatSymlinks []string
+	// List of symlinks to create for backward compatibility.
+	// These symlinks will be appended to ALL_MODULES.*.INSTALLED.
+	compatSymlinks []apexPostInstallSymlink
 }
 
 type PrebuiltProperties struct {
@@ -236,9 +237,11 @@ func (p *Prebuilt) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.SetString("LOCAL_MODULE_STEM", p.installFilename)
 				entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.installable())
 				entries.AddStrings("LOCAL_OVERRIDES_MODULES", p.properties.Overrides...)
-				if len(p.compatSymlinks) > 0 {
-					entries.SetString("LOCAL_POST_INSTALL_CMD", strings.Join(p.compatSymlinks, " && "))
-				}
+			},
+		},
+		ExtraFooters: []android.AndroidMkExtraFootersFunc{
+			func(w io.Writer, name, prefix, moduleDir string, entries *android.AndroidMkEntries) {
+				writePostInstallSymlinks(w, p.compatSymlinks)
 			},
 		},
 	}}
@@ -254,9 +257,9 @@ type ApexSet struct {
 	installFilename string
 	outputApex      android.WritablePath
 
-	// list of commands to create symlinks for backward compatibility.
-	// these commands will be attached as LOCAL_POST_INSTALL_CMD
-	compatSymlinks []string
+	// List of symlinks to create for backward compatibility.
+	// These symlinks will be appended to ALL_MODULES.*.INSTALLED.
+	compatSymlinks []apexPostInstallSymlink
 }
 
 type ApexSetProperties struct {
@@ -356,9 +359,11 @@ func (a *ApexSet) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.SetString("LOCAL_MODULE_STEM", a.installFilename)
 				entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !a.installable())
 				entries.AddStrings("LOCAL_OVERRIDES_MODULES", a.properties.Overrides...)
-				if len(a.compatSymlinks) > 0 {
-					entries.SetString("LOCAL_POST_INSTALL_CMD", strings.Join(a.compatSymlinks, " && "))
-				}
+			},
+		},
+		ExtraFooters: []android.AndroidMkExtraFootersFunc{
+			func(w io.Writer, name, prefix, moduleDir string, entries *android.AndroidMkEntries) {
+				writePostInstallSymlinks(w, a.compatSymlinks)
 			},
 		},
 	}}
