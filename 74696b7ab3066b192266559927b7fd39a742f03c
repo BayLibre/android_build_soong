@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21b81b56_5919ab13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-07-30T01:46:22Z",
+      "side": 1,
+      "message": "Fixed build error.\n\n1) static() function can also return true for binaries; added CcLibraryInterface()\n\n2) We don\u0027t need to spread SanitizeDep; child modules will do themselves.",
+      "revId": "74696b7ab3066b192266559927b7fd39a742f03c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
