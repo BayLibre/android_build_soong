@@ -46,6 +46,30 @@
       "revId": "34169ec38d435b66516458f4c2b77ce51361cc25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6c084b_f764e72b",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-30T00:06:26Z",
+      "side": 1,
+      "message": "Fix the CL as discussed in the bug. PTAL.",
+      "parentUuid": "5a952623_406fc264",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 81
+      },
+      "revId": "34169ec38d435b66516458f4c2b77ce51361cc25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
