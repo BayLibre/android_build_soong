@@ -321,6 +321,7 @@ type productVariables struct {
 	VendorVars map[string]map[string]string `json:",omitempty"`
 
 	Ndk_abis               *bool `json:",omitempty"`
+	Ndk_abigail_abis       *bool `json:",omitempty"`
 	Exclude_draft_ndk_apis *bool `json:",omitempty"`
 
 	Flatten_apex                 *bool `json:",omitempty"`

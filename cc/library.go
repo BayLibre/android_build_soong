@@ -641,9 +641,13 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		if library.stubsVersion() != "" {
 			vndkVer = library.stubsVersion()
 		}
-		objs, versionScript := compileStubLibrary(ctx, flags, String(library.Properties.Llndk.Symbol_file), vndkVer, "--llndk")
+		nativeAbiResult := parseNativeAbiDefinition(ctx,
+			String(library.Properties.Llndk.Symbol_file),
+			android.ApiLevelOrPanic(ctx, vndkVer), "--llndk")
+		objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
 		if !Bool(library.Properties.Llndk.Unversioned) {
-			library.versionScriptPath = android.OptionalPathForPath(versionScript)
+			library.versionScriptPath = android.OptionalPathForPath(
+				nativeAbiResult.versionScript)
 		}
 		return objs
 	}
@@ -653,8 +657,12 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 			ctx.PropertyErrorf("symbol_file", "%q doesn't have .map.txt suffix", symbolFile)
 			return Objects{}
 		}
-		objs, versionScript := compileStubLibrary(ctx, flags, String(library.Properties.Stubs.Symbol_file), library.MutatedProperties.StubsVersion, "--apex")
-		library.versionScriptPath = android.OptionalPathForPath(versionScript)
+		nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile,
+			android.ApiLevelOrPanic(ctx, library.MutatedProperties.StubsVersion),
+			"--apex")
+		objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
+		library.versionScriptPath = android.OptionalPathForPath(
+			nativeAbiResult.versionScript)
 		return objs
 	}
 

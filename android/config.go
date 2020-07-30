@@ -413,6 +413,8 @@ func NewConfig(srcDir, buildDir string, moduleListFile string) (Config, error) {
 	var archConfig []archConfig
 	if config.NdkAbis() {
 		archConfig = getNdkAbisConfig()
+	} else if config.NdkAbigailAbis() {
+		archConfig = getNdkAbigailAbisConfig()
 	} else if config.AmlAbis() {
 		archConfig = getAmlAbisConfig()
 	}
@@ -1297,6 +1299,10 @@ func (c *config) VendorConfig(name string) VendorConfig {
 
 func (c *config) NdkAbis() bool {
 	return Bool(c.productVariables.Ndk_abis)
+}
+
+func (c *config) NdkAbigailAbis() bool {
+	return Bool(c.productVariables.Ndk_abigail_abis)
 }
 
 func (c *config) AmlAbis() bool {
