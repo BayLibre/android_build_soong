@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dc0f1b7_78871992",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-30T18:35:25Z",
+      "side": 1,
+      "message": "Do we need a modifier like `fake` here? But I\u0027m not also sure I understand the comment in this context. But since the goal is to update inclusive language, optional to make any further changes.",
+      "range": {
+        "startLine": 432,
+        "startChar": 11,
+        "endLine": 432,
+        "endChar": 15
+      },
+      "revId": "8da724a64af52c179f7207ca3967388378ed20f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
