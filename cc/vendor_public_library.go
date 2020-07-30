@@ -103,8 +103,10 @@ func (stub *vendorPublicLibraryStubDecorator) compilerFlags(ctx ModuleContext, f
 }
 
 func (stub *vendorPublicLibraryStubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
-	objs, versionScript := compileStubLibrary(ctx, flags, String(stub.Properties.Symbol_file), "current", "")
-	stub.versionScriptPath = versionScript
+	nativeAbiResult := parseNativeAbiDefinition(ctx,
+		String(stub.Properties.Symbol_file), android.FutureApiLevel, "")
+	objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
+	stub.versionScriptPath = nativeAbiResult.versionScript
 	return objs
 }
 

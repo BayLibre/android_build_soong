@@ -27,6 +27,8 @@ import (
 func init() {
 	pctx.HostBinToolVariable("ndkStubGenerator", "ndkstubgen")
 	pctx.HostBinToolVariable("ndk_api_coverage_parser", "ndk_api_coverage_parser")
+	pctx.SourcePathVariable("abidiff", "prebuilts/abigail/abidiff")
+	pctx.SourcePathVariable("abidw", "prebuilts/abigail/abidw")
 }
 
 var (
@@ -42,6 +44,13 @@ var (
 			Command:     "$ndk_api_coverage_parser $in $out --api-map $apiMap",
 			CommandDeps: []string{"$ndk_api_coverage_parser"},
 		}, "apiMap")
+
+	abidw = pctx.AndroidStaticRule("abidw",
+		blueprint.RuleParams{
+			Command: "$abidw --load-all-types --type-id-style hash " +
+				"--kmi-whitelist $allowlist --out-file $out $in",
+			CommandDeps: []string{"$abidw"},
+		}, "allowlist")
 
 	ndkLibrarySuffix = ".ndk"
 
@@ -95,6 +104,7 @@ type stubDecorator struct {
 	versionScriptPath     android.ModuleGenPath
 	parsedCoverageXmlPath android.ModuleOutPath
 	installPath           android.Path
+	abidumpPath           android.ModuleOutPath
 
 	apiLevel         android.ApiLevel
 	firstVersion     android.ApiLevel
@@ -132,6 +142,10 @@ func NdkApiMutator(ctx android.BottomUpMutatorContext) {
 				if ctx.Os() != android.Android {
 					// These modules are always android.DeviceEnabled only, but
 					// those include Fuchsia devices, which we don't support.
+					ctx.Module().Disable()
+					return
+				}
+				if ctx.Target().NativeBridge == android.NativeBridgeEnabled {
 					ctx.Module().Disable()
 					return
 				}
@@ -227,30 +241,45 @@ func (stub *stubDecorator) compilerFlags(ctx ModuleContext, flags Flags, deps Pa
 	return addStubLibraryCompilerFlags(flags)
 }
 
-func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile, apiLevel, genstubFlags string) (Objects, android.ModuleGenPath) {
-	arch := ctx.Arch().ArchType.String()
+type ndkApiOutputs struct {
+	stubSrc       android.ModuleGenPath
+	versionScript android.ModuleGenPath
+	abiAllowlist  android.ModuleGenPath
+}
+
+func parseNativeAbiDefinition(ctx ModuleContext, symbolFile string,
+	apiLevel android.ApiLevel, genstubFlags string) ndkApiOutputs {
 
 	stubSrcPath := android.PathForModuleGen(ctx, "stub.c")
 	versionScriptPath := android.PathForModuleGen(ctx, "stub.map")
 	symbolFilePath := android.PathForModuleSrc(ctx, symbolFile)
+	allowlistPath := android.PathForModuleGen(ctx, "abi_allowlist.txt")
 	apiLevelsJson := android.GetApiLevelsJson(ctx)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        genStubSrc,
 		Description: "generate stubs " + symbolFilePath.Rel(),
-		Outputs:     []android.WritablePath{stubSrcPath, versionScriptPath},
-		Input:       symbolFilePath,
-		Implicits:   []android.Path{apiLevelsJson},
+		Outputs: []android.WritablePath{stubSrcPath, versionScriptPath,
+			allowlistPath},
+		Input:     symbolFilePath,
+		Implicits: []android.Path{apiLevelsJson},
 		Args: map[string]string{
-			"arch":     arch,
-			"apiLevel": apiLevel,
+			"arch":     ctx.Arch().ArchType.String(),
+			"apiLevel": apiLevel.String(),
 			"apiMap":   apiLevelsJson.String(),
 			"flags":    genstubFlags,
 		},
 	})
 
-	subdir := ""
-	srcs := []android.Path{stubSrcPath}
-	return compileObjs(ctx, flagsToBuilderFlags(flags), subdir, srcs, nil, nil), versionScriptPath
+	return ndkApiOutputs{
+		stubSrc:       stubSrcPath,
+		versionScript: versionScriptPath,
+		abiAllowlist:  allowlistPath,
+	}
+}
+
+func compileStubLibrary(ctx ModuleContext, flags Flags, src android.Path) Objects {
+	return compileObjs(ctx, flagsToBuilderFlags(flags), "",
+		android.Paths{src}, nil, nil)
 }
 
 func parseSymbolFileForCoverage(ctx ModuleContext, symbolFile string) android.ModuleOutPath {
@@ -271,6 +300,53 @@ func parseSymbolFileForCoverage(ctx ModuleContext, symbolFile string) android.Mo
 	return parsedApiCoveragePath
 }
 
+func (this *stubDecorator) findImplementationLibrary(ctx ModuleContext) android.Path {
+	var impl *Module
+	ctx.VisitDirectDeps(func(baseDep android.Module) {
+		dep, ok := baseDep.(*Module)
+		if !ok {
+			return
+		}
+		if baseDep.Name()+ndkLibrarySuffix == ctx.ModuleName() {
+			if impl != nil {
+				panic(fmt.Sprintf("found multiple implementations: %s and %s",
+					impl, dep))
+			}
+			impl = dep
+		}
+	})
+
+	output := impl.UnstrippedOutputFile()
+	if output == nil {
+		ctx.ModuleErrorf("implementation module (%s) has no output", impl)
+		return nil
+	}
+
+	return output
+}
+
+func canDumpAbi(ctx ModuleContext) bool {
+	if ctx.ModuleName() == "libandroid.ndk" {
+		// http://b/160625946
+		return false
+	}
+	return true
+}
+
+func (this *stubDecorator) dumpAbi(ctx ModuleContext, allowlist android.Path) {
+	implementationLibrary := this.findImplementationLibrary(ctx)
+	this.abidumpPath = android.PathForModuleOut(ctx, "abi.xml")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        abidw,
+		Description: fmt.Sprintf("abidw %s", implementationLibrary),
+		Output:      this.abidumpPath,
+		Input:       implementationLibrary,
+		Args: map[string]string{
+			"allowlist": allowlist.String(),
+		},
+	})
+}
+
 func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
 	if !strings.HasSuffix(String(c.properties.Symbol_file), ".map.txt") {
 		ctx.PropertyErrorf("symbol_file", "must end with .map.txt")
@@ -282,9 +358,13 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 	}
 
 	symbolFile := String(c.properties.Symbol_file)
-	objs, versionScript := compileStubLibrary(ctx, flags, symbolFile,
-		c.apiLevel.String(), "")
-	c.versionScriptPath = versionScript
+	nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile, c.apiLevel, "")
+	objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
+	c.versionScriptPath = nativeAbiResult.versionScript
+	if canDumpAbi(ctx) {
+		c.dumpAbi(ctx, nativeAbiResult.abiAllowlist)
+		// TODO: Handle ABI checking.
+	}
 	if c.apiLevel.IsCurrent() && ctx.PrimaryArch() {
 		c.parsedCoverageXmlPath = parseSymbolFileForCoverage(ctx, symbolFile)
 	}
