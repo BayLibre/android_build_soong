@@ -1,0 +1,10 @@
+Code-Review+2: Andrei-Valentin Onea <andreionea@google.com>
+Code-Review+2: Paul Duffin <paulduffin@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Andrei-Valentin Onea <andreionea@google.com>
+Submitted-at: Thu, 30 Jul 2020 12:08:57 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1374496
+Project: platform/build/soong
+Branch: refs/heads/master
