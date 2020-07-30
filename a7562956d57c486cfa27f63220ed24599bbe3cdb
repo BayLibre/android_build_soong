@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "079ca345_7c8b32d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-30T15:05:56Z",
+      "side": 1,
+      "message": "It seems reasonably but I don\u0027t know enough about unbundled builds to know whether this is going to cause any issues.",
+      "revId": "a7562956d57c486cfa27f63220ed24599bbe3cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
