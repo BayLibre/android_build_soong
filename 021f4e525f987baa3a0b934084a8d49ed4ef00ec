@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d8e82c7_329bdfdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-07-31T15:28:48Z",
+      "side": 1,
+      "message": "PTAL - I removed the change of order of the APEX mutators from this change as they broke the TestQApexesUseLatestStubsInBundledBuildsAndHWASAN test.\n\nThe test was looking for \"libx\" variant \"android_arm64_armv8-a_shared_hwasan_myapex\" but it could not find that variant. The only variants that were available were:\n\n  libx(android_arm64_armv8-a_shared_hwasan)\n  libx(android_arm64_armv8-a_shared_myapex_hwasan)\n  libx(android_arm64_armv8-a_static)\n  libx(android_arm64_armv8-a_static_hwasan)\n  libx(android_arm64_armv8-a_static_myapex)\n  libx(android_arm64_armv8-a_static_myapex_hwasan)\n  libx(android_arm_armv7-a-neon_shared)\n  libx(android_arm_armv7-a-neon_static)\n\nI\u0027ll fix that issue in a follow up change. I am not 100% sure at the moment which mutator should run first, the hwasan or the apexDepsMutator.",
+      "revId": "021f4e525f987baa3a0b934084a8d49ed4ef00ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
