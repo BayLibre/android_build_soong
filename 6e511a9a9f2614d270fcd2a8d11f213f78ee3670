@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d1ca88a1_5273e3e6",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2666,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-31T20:37:46Z",
+      "side": 1,
+      "message": "It didn\u0027t make a difference to the resulting build.ninja file, and this clause is removed in aosp/1378333",
+      "parentUuid": "fff7f24d_58df8634",
+      "range": {
+        "startLine": 2666,
+        "startChar": 49,
+        "endLine": 2666,
+        "endChar": 89
+      },
+      "revId": "6e511a9a9f2614d270fcd2a8d11f213f78ee3670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "475ebc1b_cbef5a99",
         "filename": "cc/lto.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-31T20:11:39Z",
       "side": 1,
       "message": "optional, but any reason to not remove this and reduce the nesting a bit?",
+      "range": {
+        "startLine": 160,
+        "startChar": 10,
+        "endLine": 160,
+        "endChar": 11
+      },
+      "revId": "6e511a9a9f2614d270fcd2a8d11f213f78ee3670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f89942_e33c1758",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-31T20:37:46Z",
+      "side": 1,
+      "message": "I found it confusing to have else if \u003cconditionals\u003e, which would make !isLibTag implicit from the else.  Putting it in an else block seemed clearer to me that this conditional is handling the !isLibTag case.",
+      "parentUuid": "475ebc1b_cbef5a99",
       "range": {
         "startLine": 160,
         "startChar": 10,
