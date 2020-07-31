@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0488963d_c34806ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-31T19:11:49Z",
+      "side": 1,
+      "message": "Is it infeasible to fix the modules that disable dexpreopt but don\u0027t declare their uses_libs?  I\u0027m worried that making this conditional on dexpreopt will cause broken builds since dexpreopt is often configured differently on different devices.",
+      "revId": "044820cca81036849a2179633d6b91467e29b238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
