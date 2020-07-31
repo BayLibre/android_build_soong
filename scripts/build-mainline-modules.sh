@@ -3,13 +3,6 @@
 # Non exhaustive list of modules where we want prebuilts. More can be added as
 # needed.
 MAINLINE_MODULES=(
-  com.android.art.debug
-  com.android.art.release
-  com.android.art.testing
-  com.android.conscrypt
-  com.android.runtime
-  com.android.tzdata
-  com.android.i18n
 )
 
 # List of SDKs and module exports we know of.
@@ -41,6 +34,13 @@ PRODUCTS=(
   aosp_x86_64
 )
 
+LIB_DIR=(
+  aosp_arm:lib
+  aosp_arm64:lib64
+  aosp_x86:lib
+  aosp_x86_64:lib64
+)
+
 if [ ! -e "build/make/core/Makefile" ]; then
   echo "$0 must be run from the top of the tree"
   exit 1
@@ -49,6 +49,15 @@ fi
 echo_and_run() {
   echo "$*"
   "$@"
+}
+
+lib_dir() {
+  case $1 in
+    'aosp_arm') echo "lib";;
+    'aosp_arm64') echo "lib64";;
+    'aosp_x86') echo "lib";;
+    'aosp_x86_64') echo "lib64";;
+  esac
 }
 
 OUT_DIR=$(source build/envsetup.sh > /dev/null; TARGET_PRODUCT= get_build_var OUT_DIR)
@@ -68,7 +77,8 @@ for product in "${PRODUCTS[@]}"; do
     echo_and_run cp ${PWD}/${PRODUCT_OUT}/system/apex/${module}.apex ${DIST_DIR}/${TARGET_ARCH}/
   done
   for library in "${PLATFORM_LIBRARIES[@]}"; do
-    echo_and_run cp ${PWD}/${PRODUCT_OUT}/system/lib/${library}.so ${DIST_DIR}/${TARGET_ARCH}/
+    libdir=$(lib_dir $product)
+    echo_and_run cp ${PWD}/${PRODUCT_OUT}/system/${libdir}/${library}.so ${DIST_DIR}/${TARGET_ARCH}/
   done
 done
 
@@ -76,7 +86,7 @@ done
 # uses Soong in --skip-make mode which cannot use the same directory as normal
 # mode with make.
 export OUT_DIR=${OUT_DIR}/aml
-echo_and_run build/soong/scripts/build-aml-prebuilts.sh ${MODULES_SDK_AND_EXPORTS[@]}
+#echo_and_run build/soong/scripts/build-aml-prebuilts.sh ${MODULES_SDK_AND_EXPORTS[@]}
 
 rm -rf ${DIST_DIR}/mainline-sdks
 echo_and_run cp -R ${OUT_DIR}/soong/mainline-sdks ${DIST_DIR}
