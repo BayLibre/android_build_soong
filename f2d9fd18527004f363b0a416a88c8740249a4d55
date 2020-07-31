@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b978d716_fc5c6041",
+        "filename": "java/dex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-31T18:13:05Z",
+      "side": 1,
+      "message": "This interface makes things a little convoluted, this code is nicely encapsulated except for breaking back out to the enclosing module via ctx.Module().  I think you can avoid both methods pretty easily.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "f2d9fd18527004f363b0a416a88c8740249a4d55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b4e3a2_314197ad",
+        "filename": "java/dex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-31T18:13:05Z",
+      "side": 1,
+      "message": "You could add minSdkVersion to the compileDex arguments or to the javaBuilderFlags.",
+      "revId": "f2d9fd18527004f363b0a416a88c8740249a4d55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b36064_0ec1e0a7",
+        "filename": "java/dex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-31T18:13:05Z",
+      "side": 1,
+      "message": "dexer already has extraProguardFlagFiles, can you modify java.go to set j.dexer.extraProguardFlagFiles when jacoco is enabled?",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 2
+      },
+      "revId": "f2d9fd18527004f363b0a416a88c8740249a4d55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
