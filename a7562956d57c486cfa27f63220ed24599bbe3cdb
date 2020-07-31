@@ -34,6 +34,23 @@
       "revId": "a7562956d57c486cfa27f63220ed24599bbe3cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3090d38b_04090390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-31T19:08:55Z",
+      "side": 1,
+      "message": "An unbundled app build can\u0027t run dexpreopt (they don\u0027t have art in the manifest).  Adding the extra dependencies even if you don\u0027t run dexpreopt could cause issues if it causes a module to get marked as missing dependencies, but I think it should be OK since they would want those dependencies to compile against anyways.",
+      "revId": "a7562956d57c486cfa27f63220ed24599bbe3cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
