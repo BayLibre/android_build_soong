@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ef82608_c1cafc61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-07-31T23:57:50Z",
+      "side": 1,
+      "message": "Thanks, PTAL.\n\nI\u0027ve also considered doing the reflection thing a-la android:arch_variant, but that feels like too much for this use case.\n",
+      "revId": "4bf0da2f48317060155ee81bae5e63ae3f2b9796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
