@@ -16,6 +16,24 @@
       "revId": "a7562956d57c486cfa27f63220ed24599bbe3cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c73f961d_04e7850a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-07-31T16:35:06Z",
+      "side": 1,
+      "message": "I don\u0027t know if anyone has a strong opinion. There is a vague agreement (mostly between me and Martin) that we want dexpreopt to work in unbundled builds, so we will need uses-library information for it.\n\nI need this change now primarily to avoid failing Soong tests for unbundled builds with my future changes. I think treehugger has some tests on ub-launcher3-master that cover this case (but I\u0027m not sure).",
+      "parentUuid": "079ca345_7c8b32d2",
+      "revId": "a7562956d57c486cfa27f63220ed24599bbe3cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
