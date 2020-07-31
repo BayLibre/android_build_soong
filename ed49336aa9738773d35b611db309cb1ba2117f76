@@ -22,6 +22,30 @@
       "revId": "ed49336aa9738773d35b611db309cb1ba2117f76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c879c3f7_0dbc38ab",
+        "filename": "cmd/diff_target_files/allow_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-07-31T16:51:16Z",
+      "side": 1,
+      "message": "Oh! I forgot to delete the one in line 28 as it is only used here.",
+      "parentUuid": "72d27b58_5ec865fb",
+      "range": {
+        "startLine": 87,
+        "startChar": 22,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "ed49336aa9738773d35b611db309cb1ba2117f76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
