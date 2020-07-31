@@ -16,6 +16,23 @@
       "revId": "631796ad12806a912c41eb9a05a263873660735c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a38f9ff_09a65109",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-07-31T06:22:24Z",
+      "side": 1,
+      "message": "Hi soong owners,\n\nThis CL blocks the dependent CLs. Could you give any comment and reviews for this CL to proceed with this design?\n\nIf you have any concerns or comments, it would be appreciated to leave any comments on go/versioning-soong-modules.\nThanks!",
+      "revId": "631796ad12806a912c41eb9a05a263873660735c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
