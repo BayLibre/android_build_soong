@@ -34,6 +34,24 @@
       "revId": "fb23bae736b9e689a3cf776cd296e7df3288566c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79e64035_e8cdfed0",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-07-31T17:48:28Z",
+      "side": 1,
+      "message": "I still have concerns with this.  \"release_version\" is very generic, while this is a very specific use case.  You could easily add \"vndk_version\" to other module types if you wanted to identify them as part of a vndk snapshot.",
+      "parentUuid": "237dd3c3_55673c8e",
+      "revId": "fb23bae736b9e689a3cf776cd296e7df3288566c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
