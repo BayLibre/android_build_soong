@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f862ab8_7ec36043",
+        "filename": "java/robolectric.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-07-31T18:55:52Z",
+      "side": 1,
+      "message": "Does the stuff below belong on this CL? If so, please mention it in the description.",
+      "revId": "57d0cb65684ddd8ee72a7c17d2da36da98e9cb2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
