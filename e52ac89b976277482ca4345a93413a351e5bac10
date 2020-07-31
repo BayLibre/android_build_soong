@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a4ed397_ed930bcc",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-07-31T15:08:08Z",
+      "side": 1,
+      "message": "Suggestion: You can group cases together:\n\n  case \"$1\" in\n    (aosp_arm|aosp_x86) echo lib;;\n    (aosp_arm64|aosp_x86_64) echo lib64;;\n  esac",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "e52ac89b976277482ca4345a93413a351e5bac10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
