@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72d27b58_5ec865fb",
+        "filename": "cmd/diff_target_files/allow_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-07-31T16:37:39Z",
+      "side": 1,
+      "message": "Should this be jsonAllowList from line 28? Or if that\u0027s not used elsewhere, can delete it preferring this one.",
+      "range": {
+        "startLine": 87,
+        "startChar": 22,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "ed49336aa9738773d35b611db309cb1ba2117f76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
