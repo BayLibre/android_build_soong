@@ -16,6 +16,24 @@
       "revId": "97365ee42588f88e462afffbb9ab505629a48ee9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb09ad45_5cef3bbc",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-07-31T00:05:58Z",
+      "side": 1,
+      "message": "Here:\n\nhttps://android-review.googlesource.com/c/platform/system/extras/+/1371345/16/gki/build/gki.go\n\nWithout this, checkbuild will fail because of `unknown target $OUT/boot-5.4.img`, for example, when `kernel-5.4` is not part of BOARD_KERNEL_BINARIES. core/Makefile only generates a rule to build $OUT/boot-5.4.img when kernel-5.4 is in that list.",
+      "parentUuid": "b46ee149_d7aa2505",
+      "revId": "97365ee42588f88e462afffbb9ab505629a48ee9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
