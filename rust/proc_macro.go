@@ -75,7 +75,9 @@ func (procMacro *procMacroDecorator) compile(ctx ModuleContext, flags Flags, dep
 
 func (procMacro *procMacroDecorator) getStem(ctx ModuleContext) string {
 	stem := procMacro.baseCompiler.getStemWithoutSuffix(ctx)
-	validateLibraryStem(ctx, stem, procMacro.crateName())
+	crateName := ctx.RustModule().CrateName()
+
+	validateLibraryStem(ctx, stem, crateName)
 
 	return stem + String(procMacro.baseCompiler.Properties.Suffix)
 }

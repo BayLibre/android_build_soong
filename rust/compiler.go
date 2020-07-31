@@ -81,9 +81,6 @@ type BaseCompilerProperties struct {
 	// list of C static library dependencies
 	Static_libs []string `android:"arch_variant"`
 
-	// crate name, required for libraries. This must be the expected extern crate name used in source
-	Crate_name string `android:"arch_variant"`
-
 	// list of features to enable for this crate
 	Features []string `android:"arch_variant"`
 
@@ -118,6 +115,14 @@ type baseCompiler struct {
 	coverageOutputZipFile android.OptionalPath
 	unstrippedOutputFile  android.Path
 	distFile              android.OptionalPath
+}
+
+func (compiler *baseCompiler) Disabled() bool {
+	return false
+}
+
+func (compiler *baseCompiler) SetDisabled() {
+	panic("baseCompiler does not implement SetDisabled()")
 }
 
 func (compiler *baseCompiler) coverageOutputZipPath() android.OptionalPath {
@@ -209,10 +214,6 @@ func bionicDeps(deps Deps) Deps {
 	deps.StaticLibs = append(deps.StaticLibs, "libgcc")
 
 	return deps
-}
-
-func (compiler *baseCompiler) crateName() string {
-	return compiler.Properties.Crate_name
 }
 
 func (compiler *baseCompiler) installDir(ctx ModuleContext) android.InstallPath {

@@ -69,6 +69,8 @@ type LibraryMutatedProperties struct {
 	VariantIsShared bool `blueprint:"mutated"`
 	// This variant is a static library
 	VariantIsStatic bool `blueprint:"mutated"`
+	// This variant is disabled and should not be compiled (used for SourceProvider variants that produce only source)
+	VariantIsDisabled bool `blueprint:"mutated"`
 }
 
 type libraryDecorator struct {
@@ -78,6 +80,7 @@ type libraryDecorator struct {
 	Properties        LibraryCompilerProperties
 	MutatedProperties LibraryMutatedProperties
 	includeDirs       android.Paths
+	sourceProvider    SourceProvider
 }
 
 type libraryInterface interface {
@@ -367,8 +370,13 @@ func (library *libraryDecorator) compilerFlags(ctx ModuleContext, flags Flags) F
 
 func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
 	var outputFile android.WritablePath
+	var srcPath android.Path
 
-	srcPath, _ := srcPathFromModuleSrcs(ctx, library.baseCompiler.Properties.Srcs)
+	if library.sourceProvider != nil {
+		srcPath = library.sourceProvider.Srcs()[0]
+	} else {
+		srcPath, _ = srcPathFromModuleSrcs(ctx, library.baseCompiler.Properties.Srcs)
+	}
 
 	flags.RustFlags = append(flags.RustFlags, deps.depFlags...)
 
@@ -425,9 +433,18 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 
 func (library *libraryDecorator) getStem(ctx ModuleContext) string {
 	stem := library.baseCompiler.getStemWithoutSuffix(ctx)
-	validateLibraryStem(ctx, stem, library.crateName())
+	crateName := ctx.RustModule().CrateName()
+	validateLibraryStem(ctx, stem, crateName)
 
 	return stem + String(library.baseCompiler.Properties.Suffix)
+}
+
+func (library *libraryDecorator) Disabled() bool {
+	return library.MutatedProperties.VariantIsDisabled
+}
+
+func (library *libraryDecorator) SetDisabled() {
+	library.MutatedProperties.VariantIsDisabled = true
 }
 
 var validCrateName = regexp.MustCompile("[^a-zA-Z0-9_]+")
@@ -455,18 +472,33 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 		switch library := m.compiler.(type) {
 		case libraryInterface:
 			if library.buildRlib() && library.buildDylib() {
-				modules := mctx.CreateLocalVariations("rlib", "dylib")
+				variants := []string{"rlib", "dylib"}
+				if m.sourceProvider != nil {
+					variants = append(variants, "")
+				}
+				modules := mctx.CreateLocalVariations(variants...)
+
 				rlib := modules[0].(*Module)
 				dylib := modules[1].(*Module)
-
 				rlib.compiler.(libraryInterface).setRlib()
 				dylib.compiler.(libraryInterface).setDylib()
+
+				if m.sourceProvider != nil {
+					// This library is SourceProvider generated, so the non-library-producing SourceProvider variant
+					// needs to disable it's compiler and skip installation.
+					sourceProvider := modules[2].(*Module)
+					sourceProvider.compiler.SetDisabled()
+				}
 			} else if library.buildRlib() {
 				modules := mctx.CreateLocalVariations("rlib")
 				modules[0].(*Module).compiler.(libraryInterface).setRlib()
 			} else if library.buildDylib() {
 				modules := mctx.CreateLocalVariations("dylib")
 				modules[0].(*Module).compiler.(libraryInterface).setDylib()
+			}
+
+			if m.sourceProvider != nil {
+				mctx.AliasVariation("")
 			}
 		}
 	}
