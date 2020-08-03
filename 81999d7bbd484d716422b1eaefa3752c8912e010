@@ -34,6 +34,23 @@
       "revId": "81999d7bbd484d716422b1eaefa3752c8912e010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1848b304_508cbcb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2020-08-03T19:02:41Z",
+      "side": 1,
+      "message": "yeah, I just feel this file isn\u0027t the right place to make the fix. It was designed to just blindly copy the local file header. Go\u0027s read or write function seems to be a more appropriate place to fix the root cause. Do we have a tracker issue already?\n",
+      "revId": "81999d7bbd484d716422b1eaefa3752c8912e010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
