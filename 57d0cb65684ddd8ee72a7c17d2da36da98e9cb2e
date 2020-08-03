@@ -34,6 +34,24 @@
       "revId": "57d0cb65684ddd8ee72a7c17d2da36da98e9cb2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfa60f0_f86b14e5",
+        "filename": "java/robolectric.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-03T20:09:32Z",
+      "side": 1,
+      "message": "That looks like an easy bug to fix in robolectric.go - it should be handling a failure from GetDirectDepWithTag in the AllowMissingDependencies case.",
+      "parentUuid": "7246a1d3_7e03f8b0",
+      "revId": "57d0cb65684ddd8ee72a7c17d2da36da98e9cb2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
