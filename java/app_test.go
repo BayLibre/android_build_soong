@@ -2590,7 +2590,7 @@ func TestUsesLibraries(t *testing.T) {
 	// Test that only present libraries are preopted
 	cmd = app.Rule("dexpreopt").RuleParams.Command
 
-	if w := `--target-classpath-for-sdk any /system/framework/foo.jar:/system/framework/bar.jar`; !strings.Contains(cmd, w) {
+	if w := `--target-classpath-for-sdk any /system/framework/foo.jar:/system/framework/qux.jar:/system/framework/quuz.jar:/system/framework/bar.jar`; !strings.Contains(cmd, w) {
 		t.Errorf("wanted %q in %q", w, cmd)
 	}
 

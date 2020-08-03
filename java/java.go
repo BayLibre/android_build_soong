@@ -78,6 +78,10 @@ func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_host_for_device", HostForDeviceFactory)
 	ctx.RegisterModuleType("dex_import", DexImportFactory)
 
+	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("uses_library", usesLibraryMutator).Parallel()
+	})
+
 	ctx.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("dexpreopt_tool_deps", dexpreoptToolDepsMutator).Parallel()
 	})

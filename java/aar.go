@@ -226,16 +226,16 @@ var extractAssetsRule = pctx.AndroidStaticRule("extractAssets",
 		CommandDeps: []string{"${config.Zip2ZipCmd}"},
 	})
 
-func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, extraLinkFlags ...string) {
+func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, usesLibrary *usesLibrary, extraLinkFlags ...string) {
 
-	transitiveStaticLibs, transitiveStaticLibManifests, staticRRODirs, assetPackages, libDeps, libFlags, sdkLibraries :=
+	transitiveStaticLibs, transitiveStaticLibManifests, staticRRODirs, assetPackages, libDeps, libFlags :=
 		aaptLibs(ctx, sdkContext)
 
 	// App manifest file
 	manifestFile := proptools.StringDefault(a.aaptProperties.Manifest, "AndroidManifest.xml")
 	manifestSrcPath := android.PathForModuleSrc(ctx, manifestFile)
 
-	manifestPath := manifestFixer(ctx, manifestSrcPath, sdkContext, sdkLibraries,
+	manifestPath := manifestFixer(ctx, manifestSrcPath, sdkContext, usesLibrary,
 		a.isLibrary, a.useEmbeddedNativeLibs, a.usesNonSdkApis, a.useEmbeddedDex, a.hasNoCode,
 		a.LoggingParent)
 
@@ -357,7 +357,7 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, ex
 
 // aaptLibs collects libraries from dependencies and sdk_version and converts them into paths
 func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStaticLibs, transitiveStaticLibManifests android.Paths,
-	staticRRODirs []rroDir, assets, deps android.Paths, flags []string, sdkLibraries []string) {
+	staticRRODirs []rroDir, assets, deps android.Paths, flags []string) {
 
 	var sharedLibs android.Paths
 
@@ -380,14 +380,6 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStati
 			if exportPackage != nil {
 				sharedLibs = append(sharedLibs, exportPackage)
 			}
-
-			// If the module is (or possibly could be) a component of a java_sdk_library
-			// (including the java_sdk_library) itself then append any implicit sdk library
-			// names to the list of sdk libraries to be added to the manifest.
-			if component, ok := module.(SdkLibraryComponentDependency); ok {
-				sdkLibraries = append(sdkLibraries, component.OptionalImplicitSdkLibrary()...)
-			}
-
 		case frameworkResTag:
 			if exportPackage != nil {
 				sharedLibs = append(sharedLibs, exportPackage)
@@ -397,7 +389,6 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStati
 				transitiveStaticLibs = append(transitiveStaticLibs, aarDep.ExportedStaticPackages()...)
 				transitiveStaticLibs = append(transitiveStaticLibs, exportPackage)
 				transitiveStaticLibManifests = append(transitiveStaticLibManifests, aarDep.ExportedManifests()...)
-				sdkLibraries = append(sdkLibraries, aarDep.ExportedSdkLibs()...)
 				if aarDep.ExportedAssets().Valid() {
 					assets = append(assets, aarDep.ExportedAssets().Path())
 				}
@@ -428,14 +419,15 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStati
 
 	transitiveStaticLibs = android.FirstUniquePaths(transitiveStaticLibs)
 	transitiveStaticLibManifests = android.FirstUniquePaths(transitiveStaticLibManifests)
-	sdkLibraries = android.FirstUniqueStrings(sdkLibraries)
 
-	return transitiveStaticLibs, transitiveStaticLibManifests, staticRRODirs, assets, deps, flags, sdkLibraries
+	return transitiveStaticLibs, transitiveStaticLibManifests, staticRRODirs, assets, deps, flags
 }
 
 type AndroidLibrary struct {
 	Library
 	aapt
+
+	usesLibrary usesLibrary
 
 	androidLibraryProperties androidLibraryProperties
 
@@ -466,7 +458,7 @@ func (a *AndroidLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.aapt.isLibrary = true
 	a.aapt.sdkLibraries = a.exportedSdkLibs
-	a.aapt.buildActions(ctx, sdkContext(a))
+	a.aapt.buildActions(ctx, sdkContext(a), &a.usesLibrary)
 
 	ctx.CheckbuildFile(a.proguardOptionsFile)
 	ctx.CheckbuildFile(a.exportPackage)
@@ -700,12 +692,11 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	linkFlags = append(linkFlags, "--manifest "+a.manifest.String())
 	linkDeps = append(linkDeps, a.manifest)
 
-	transitiveStaticLibs, staticLibManifests, staticRRODirs, transitiveAssets, libDeps, libFlags, sdkLibraries :=
+	transitiveStaticLibs, staticLibManifests, staticRRODirs, transitiveAssets, libDeps, libFlags :=
 		aaptLibs(ctx, sdkContext(a))
 
 	_ = staticLibManifests
 	_ = staticRRODirs
-	_ = sdkLibraries
 
 	linkDeps = append(linkDeps, libDeps...)
 	linkFlags = append(linkFlags, libFlags...)
