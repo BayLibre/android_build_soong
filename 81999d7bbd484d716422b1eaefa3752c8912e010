@@ -16,6 +16,24 @@
       "revId": "81999d7bbd484d716422b1eaefa3752c8912e010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0000c27_ae91ecaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2020-08-03T18:55:59Z",
+      "side": 1,
+      "message": "CopyFrom function doesn\u0027t exist upstream... In fact Android.go doesn\u0027t exist upstream either. If you look at L205, we are already performing this check.",
+      "parentUuid": "03a0b4cc_467912c6",
+      "revId": "81999d7bbd484d716422b1eaefa3752c8912e010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
