@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5a131bc_7cbce25c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-03T12:38:37Z",
+      "side": 1,
+      "message": "LGTM, presubmit failure looks unrelated too. Thanks for the cleanup!",
+      "revId": "e81c924f0c70b07fdfac86ef1475622ee6444c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
