@@ -34,6 +34,24 @@
       "revId": "c7b747bd1064e222b34245a0a5a79d59448326ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6177f5ac_0f6a2396",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-03T19:43:49Z",
+      "side": 1,
+      "message": "In some ways that\u0027s worse - it\u0027s spooky action at a distance, with no way to know where to look for the module that is affecting your module.",
+      "parentUuid": "d9e86b9c_4690fbdd",
+      "revId": "c7b747bd1064e222b34245a0a5a79d59448326ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
