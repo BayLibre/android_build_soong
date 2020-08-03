@@ -16,6 +16,24 @@
       "revId": "044820cca81036849a2179633d6b91467e29b238",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1b3869d_2be3fa03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-03T09:41:14Z",
+      "side": 1,
+      "message": "I see -- I didn\u0027t think of the possible differences in dexpreopt configuration. It may be feasible to fix uses_libs instead (the failing cases are mostly tests that for some reason use the app module type instead of the test module type). I will try to get rid of the dexpreopt-enabled check.",
+      "parentUuid": "0488963d_c34806ba",
+      "revId": "044820cca81036849a2179633d6b91467e29b238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
