@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ed36686_5c40cf4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-08-03T04:49:38Z",
+      "side": 1,
+      "message": "This is still blocked by b/162476652, but I\u0027d like to get review because this needs to be merged ASAP.",
+      "revId": "d7a41d036bdd17cd18f7479b5a5cf983551ef6d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
