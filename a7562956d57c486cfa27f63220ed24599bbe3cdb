@@ -51,6 +51,24 @@
       "revId": "a7562956d57c486cfa27f63220ed24599bbe3cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d479bbe2_4328dfcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-03T13:17:02Z",
+      "side": 1,
+      "message": "Ah, I thought an unbundled app build pulls in all the dependencies needed for dexpreopt. If it\u0027s not meant to do dexpreopt, then this patch makes no sense. And without the dexpreopt-enabled condition it breaks the build for apps that depend on missing compatibility libraries, e.g.:\n\n  module Gallery2 missing dependencies:\n    prebuilt_org.apache.http.legacy, \n    prebuilt_android.test.base,\n    prebuilt_android.test.mock\n\nSo I will probably abandon this patch and disable dexpreopt in Soong tests for unbundled builds (they were the primary reason why I did this change).",
+      "parentUuid": "3090d38b_04090390",
+      "revId": "a7562956d57c486cfa27f63220ed24599bbe3cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
