@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03a0b4cc_467912c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2020-08-03T18:43:41Z",
+      "side": 1,
+      "message": "probably want to address this upstream, so android doesn\u0027t deviate from the upstream version",
+      "revId": "81999d7bbd484d716422b1eaefa3752c8912e010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
