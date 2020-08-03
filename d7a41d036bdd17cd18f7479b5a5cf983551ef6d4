@@ -16,6 +16,23 @@
       "revId": "d7a41d036bdd17cd18f7479b5a5cf983551ef6d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a702779a_96dc7be4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-03T20:16:27Z",
+      "side": 1,
+      "message": "Is the CFI runtime stable enough to mix VNDK CFI libraries with CFI libraries built from source, especially if the clang version has changed between when the VNDK was compiled and the current compile?",
+      "revId": "d7a41d036bdd17cd18f7479b5a5cf983551ef6d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
