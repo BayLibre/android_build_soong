@@ -234,7 +234,6 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	ctx.PreArchMutators(android.RegisterComponentsMutator)
-	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 
 	android.RegisterPrebuiltMutators(ctx)
 
@@ -242,6 +241,8 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 	// happens at runtime.
 	ctx.PreArchMutators(android.RegisterVisibilityRuleGatherer)
 	ctx.PostDepsMutators(android.RegisterVisibilityRuleEnforcer)
+
+	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
 
