@@ -16,6 +16,24 @@
       "revId": "4cfa2c692b9c901afd3265ad34af3dd7b38576c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd8d67f3_3ee6ecf7",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1725,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-03T20:27:45Z",
+      "side": 0,
+      "message": "I think it was to avoid boilerplate garbage with the previous approach (it\u0027s somewhat superfluous since the sdk ignores host), but it\u0027s not necessary now. Good catch, thanks.",
+      "parentUuid": "fc9a5d75_ccf4bc9b",
+      "revId": "4cfa2c692b9c901afd3265ad34af3dd7b38576c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
