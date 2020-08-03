@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1a35692_dc3f4b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-03T16:56:25Z",
+      "side": 1,
+      "message": "Build error should be fixed with https://r.android.com/1384039.",
+      "revId": "4cfa2c692b9c901afd3265ad34af3dd7b38576c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
