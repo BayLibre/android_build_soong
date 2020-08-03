@@ -16,6 +16,24 @@
       "revId": "c7b747bd1064e222b34245a0a5a79d59448326ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9e86b9c_4690fbdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-08-03T14:01:26Z",
+      "side": 1,
+      "message": "I also considered to use \u0027namespace\u0027 module, but we may not define a namespace module in a directory to define a release_version property for the directory. That may cause unexpected namespace declaration.\n\nInstead, I can define a source_tree module type to have a list of directories. It can be installed anywhere and describe the versions of directories in one place.",
+      "parentUuid": "de4d01ac_8f2a1812",
+      "revId": "c7b747bd1064e222b34245a0a5a79d59448326ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
