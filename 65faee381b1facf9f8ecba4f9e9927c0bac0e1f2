@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "c1cd4e2e_2ddb306e",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-03T16:26:47Z",
+      "side": 1,
+      "message": "I\u0027d have to spend some time looking into this but perhaps Colin or Dan can weigh in.",
+      "parentUuid": "4848bbe9_5b29f6ba",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf586c3b_70de29f6",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
