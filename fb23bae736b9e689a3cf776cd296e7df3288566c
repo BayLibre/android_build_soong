@@ -70,6 +70,24 @@
       "revId": "fb23bae736b9e689a3cf776cd296e7df3288566c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4626b26_d9f3b744",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-03T19:49:58Z",
+      "side": 1,
+      "message": "Can we take a step back and discuss what this property will actually do, and what problem it is solving?  Arbitrarily mixing branches is much more difficult than just checking dependencies, you have to make sure you are building against stable interfaces (VNDK, NDK, SDK, etc.) everywhere you cross the source version boundary.  We already have ways to describe those (`sdk_version:`), how does this interact with those?  What happens if you drop an rvc /vendor source tree into a master build, mark it with release_version: \"30\", but it contains modules that build against sdk_version: \"current\" or the platform?",
+      "parentUuid": "c9180930_d45a3885",
+      "revId": "fb23bae736b9e689a3cf776cd296e7df3288566c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
