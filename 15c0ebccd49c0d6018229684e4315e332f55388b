@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8235be86_20b74f40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2020-08-03T15:56:18Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this CL now (it was something I was looking into 2 years ago). Tie, any reason you resurrected this CL? Are you running into an issue?",
+      "revId": "15c0ebccd49c0d6018229684e4315e332f55388b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
