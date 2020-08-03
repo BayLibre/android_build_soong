@@ -51,6 +51,24 @@
       "revId": "81999d7bbd484d716422b1eaefa3752c8912e010",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c50c3791_2a6ce816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2020-08-03T19:22:02Z",
+      "side": 1,
+      "message": "tracker issue: 161922066\nI submitted a fix to go team. https://go-review.googlesource.com/c/go/+/246240",
+      "parentUuid": "1848b304_508cbcb3",
+      "revId": "81999d7bbd484d716422b1eaefa3752c8912e010",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
