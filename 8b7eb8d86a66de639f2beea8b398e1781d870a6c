@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eff06cbd_a1bcd248",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-03T21:56:06Z",
+      "side": 1,
+      "message": "Do we also need external/selinux, or do the bindgen rules not have the allowlist restriction?",
+      "revId": "8b7eb8d86a66de639f2beea8b398e1781d870a6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
