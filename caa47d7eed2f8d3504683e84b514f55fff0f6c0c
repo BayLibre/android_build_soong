@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174593",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1360541?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "944f408c_c4534ccd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:25:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "caa47d7eed2f8d3504683e84b514f55fff0f6c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004174593",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1360541?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a3b0d3c1_4178e15d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-03T20:25:02Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 11
+      },
+      "revId": "caa47d7eed2f8d3504683e84b514f55fff0f6c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
