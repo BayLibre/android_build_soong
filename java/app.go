@@ -394,8 +394,6 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 		ctx.AddFarVariationDependencies(variation, tag, a.appProperties.Jni_libs...)
 	}
-
-	a.usesLibrary.deps(ctx, sdkDep.hasFrameworkLibs())
 }
 
 func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
@@ -552,7 +550,7 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	a.aapt.splitNames = a.appProperties.Package_splits
 	a.aapt.sdkLibraries = a.exportedSdkLibs
 	a.aapt.LoggingParent = String(a.overridableAppProperties.Logging_parent)
-	a.aapt.buildActions(ctx, sdkContext(a), aaptLinkFlags...)
+	a.aapt.buildActions(ctx, sdkContext(a), &a.usesLibrary, aaptLinkFlags...)
 
 	// apps manifests are handled by aapt, don't let Module see them
 	a.properties.Manifest = nil
@@ -1378,8 +1376,6 @@ func (a *AndroidAppImport) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if cert != "" {
 		ctx.AddDependency(ctx.Module(), certificateTag, cert)
 	}
-
-	a.usesLibrary.deps(ctx, true)
 }
 
 func (a *AndroidAppImport) uncompressEmbeddedJniLibs(
@@ -1713,6 +1709,8 @@ type RuntimeResourceOverlay struct {
 	android.OverridableModuleBase
 	aapt
 
+	usesLibrary usesLibrary
+
 	properties            RuntimeResourceOverlayProperties
 	overridableProperties OverridableRuntimeResourceOverlayProperties
 
@@ -1798,7 +1796,7 @@ func (r *RuntimeResourceOverlay) GenerateAndroidBuildActions(ctx android.ModuleC
 		aaptLinkFlags = append(aaptLinkFlags,
 			"--rename-overlay-target-package "+*r.overridableProperties.Target_package_name)
 	}
-	r.aapt.buildActions(ctx, r, aaptLinkFlags...)
+	r.aapt.buildActions(ctx, r, &r.usesLibrary, aaptLinkFlags...)
 
 	// Sign the built package
 	_, certificates := collectAppDeps(ctx, r, false, false)
@@ -1883,14 +1881,79 @@ type usesLibrary struct {
 	usesLibraryProperties UsesLibraryProperties
 }
 
-func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, hasFrameworkLibs bool) {
-	if !ctx.Config().UnbundledBuild() {
-		ctx.AddVariationDependencies(nil, usesLibTag, u.usesLibraryProperties.Uses_libs...)
-		ctx.AddVariationDependencies(nil, usesLibTag, u.presentOptionalUsesLibs(ctx)...)
+func (u *usesLibrary) addLib(lib string, optional bool) {
+	if !android.InList(lib, u.usesLibraryProperties.Uses_libs) && !android.InList(lib, u.usesLibraryProperties.Optional_uses_libs) {
+		if optional {
+			u.usesLibraryProperties.Optional_uses_libs = append(u.usesLibraryProperties.Optional_uses_libs, lib)
+		} else {
+			u.usesLibraryProperties.Uses_libs = append(u.usesLibraryProperties.Uses_libs, lib)
+		}
+	}
+}
+
+// usesLibraryMutator runs after other mutators that add dependencies on SDK libraries.
+// It gathers all such dependencies and adds them to the <uses-library> list for this module.
+// Before doing that, it freezes `enforce_uses_libs` property based on its user-defined value
+// and user-defined lists of `uses_libs` and `optional_uses_libs`, so that the property does
+// not depend on the added SDK libraries.
+func usesLibraryMutator(ctx android.BottomUpMutatorContext) {
+	if !ctx.Module().Enabled() {
+		// Prevents build errors on branch "aosp-build-tools".
+		return
+	}
+
+	var u *usesLibrary
+	needCompatLibs := false
+
+	if a, ok := ctx.Module().(*AndroidApp); ok {
+		u = &a.usesLibrary
 		// Only add these extra dependencies if the module depends on framework libs. This avoids
 		// creating a cyclic dependency:
 		//     e.g. framework-res -> org.apache.http.legacy -> ... -> framework-res.
-		if hasFrameworkLibs {
+		needCompatLibs = decodeSdkDep(ctx, sdkContext(a)).hasFrameworkLibs()
+	} else if a, ok := ctx.Module().(*AndroidAppImport); ok {
+		u = &a.usesLibrary
+		needCompatLibs = true
+	} else if l, ok := ctx.Module().(*AndroidLibrary); ok {
+		u = &l.usesLibrary
+	} else if r, ok := ctx.Module().(*RuntimeResourceOverlay); ok {
+		u = &r.usesLibrary
+	} else {
+		return
+	}
+
+	// Do this before adding implicit SDK libraries.
+	u.freezeEnforceUsesLibraries()
+
+	var sdkDeps []string
+	ctx.VisitDirectDeps(func(module android.Module) {
+		switch ctx.OtherModuleDependencyTag(module) {
+		case libTag:
+			// If the module is (or possibly could be) a component of a java_sdk_library
+			// (including the java_sdk_library) itself then append any implicit sdk library
+			// names to the list of sdk libraries to be added to the manifest.
+			if component, ok := module.(SdkLibraryComponentDependency); ok {
+				sdkDeps = append(sdkDeps, component.OptionalImplicitSdkLibrary()...)
+			}
+		case staticLibTag:
+			if aarDep, _ := module.(AndroidLibraryDependency); aarDep != nil {
+				sdkDeps = append(sdkDeps, aarDep.ExportedSdkLibs()...)
+			}
+		}
+	})
+
+	for _, lib := range sdkDeps {
+		u.addLib(lib, false /* optional */)
+	}
+
+	// Add dependencies on uses-libraries with a special tag (they are later used to find build and
+	// on-device paths to these libraries and construct class loader context for dexproept).
+	// Skip unbundled builds, because dependencies may be missing, and there is no dexpreopt anyway.
+	// Skip native coverage builds, as the compatibilty libraries do not have coverage variants.
+	if !ctx.Config().UnbundledBuild() && !ctx.DeviceConfig().NativeCoverageEnabled() {
+		ctx.AddVariationDependencies(nil, usesLibTag, u.usesLibraryProperties.Uses_libs...)
+		ctx.AddVariationDependencies(nil, usesLibTag, u.presentOptionalUsesLibs(ctx)...)
+		if needCompatLibs {
 			// Dexpreopt needs paths to the dex jars of these libraries in order to construct
 			// class loader context for dex2oat. Add them as a dependency with a special tag.
 			ctx.AddVariationDependencies(nil, usesLibTag,
@@ -1953,6 +2016,12 @@ func (u *usesLibrary) enforceUsesLibraries() bool {
 	defaultEnforceUsesLibs := len(u.usesLibraryProperties.Uses_libs) > 0 ||
 		len(u.usesLibraryProperties.Optional_uses_libs) > 0
 	return BoolDefault(u.usesLibraryProperties.Enforce_uses_libs, defaultEnforceUsesLibs)
+}
+
+// Freeze the value of `enforce_uses_libs` based on the current values of `uses_libs` and `optional_uses_libs`.
+func (u *usesLibrary) freezeEnforceUsesLibraries() {
+	enforce := u.enforceUsesLibraries()
+	u.usesLibraryProperties.Enforce_uses_libs = &enforce
 }
 
 // verifyUsesLibrariesManifest checks the <uses-library> tags in an AndroidManifest.xml against the ones specified
