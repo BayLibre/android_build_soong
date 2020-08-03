@@ -16,6 +16,24 @@
       "revId": "57d0cb65684ddd8ee72a7c17d2da36da98e9cb2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7246a1d3_7e03f8b0",
+        "filename": "java/robolectric.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-08-03T10:09:04Z",
+      "side": 1,
+      "message": "These changes are necessary due to the breakage in master-art branch. Because the branch doesn\u0027t have the project external/robolectric-shadows, the build fails.(https://android-build.googleplex.com/builds/pending/P15852783/art-host-x86/latest/view/logs/build_error.log)\n\nBefore these change, \u0027UnbundledBuild\u0027 implicitly turned on \u0027UnbundledBuildUsePrebuiltSdks\u0027, so build doesn\u0027t fail, but it becomes a problem UnbundledBuildUsePrebuiltSdks isn\u0027t set anymore by UnbundledBuild.\n\nSo, the straightforward way might be adding robolectric-shadows in the manifest of master-art branch. WDYT? If it can, these changes can be back to PS#12(almost same as the base)",
+      "parentUuid": "5f862ab8_7ec36043",
+      "revId": "57d0cb65684ddd8ee72a7c17d2da36da98e9cb2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
