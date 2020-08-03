@@ -52,6 +52,24 @@
       "revId": "fb23bae736b9e689a3cf776cd296e7df3288566c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9180930_d45a3885",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-08-03T13:15:37Z",
+      "side": 1,
+      "message": "The \u0027release_version\u0027 property has broader scope than the \u0027vndk snapshot\u0027 or the \u0027vendor snapshot\u0027. I assumed to have a mixed source tree. For example, /system and /framework directories are from the \u0027master\u0027 branch; while /vendor and /device branches are from the \u0027rvc\u0027 branch. The new \u0027release_version\u0027 property is to notify the build system about the version where the source codes came from.\nI don\u0027t think it is enough to cover the dependencies for some selected module types.\n\nIf the name \"release_version\" is too generic for this use case, I think \"source_version\" would be more specific to describe this better. How do you think about the name \"source_version\"?\n\n\"vndk_version\" can be used as we are using PLATFORM_VNDK_VERSION and BOARD_VNDK_VERSION to represent the versions of partitions. However, I am not sure if we can use the name \"vndk_version\" to android.Module because using the term \"vndk\" for non-cc (java, app, etc and so on) modules looks odd to me.",
+      "parentUuid": "79e64035_e8cdfed0",
+      "revId": "fb23bae736b9e689a3cf776cd296e7df3288566c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
