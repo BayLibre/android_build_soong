@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ea73e14_a9abc813",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-03T19:56:02Z",
+      "side": 1,
+      "message": "These seem likely to collide later, maybe systemImageVariant?  Also doesn\u0027t seem specific to `sanitize.go`, can you put somewhere more generic?  `cc/cc.go` is pretty cluttered, maybe put this and some of the image stuff in `cc/cc.go` into `cc/image.go`?",
+      "range": {
+        "startLine": 1078,
+        "startChar": 1,
+        "endLine": 1078,
+        "endChar": 7
+      },
+      "revId": "2113492c4cd407fc9780e3e8a91bff33c0280509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ce7ce88_c35dee49",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-03T19:56:02Z",
+      "side": 1,
+      "message": "Nope",
+      "range": {
+        "startLine": 1095,
+        "startChar": 7,
+        "endLine": 1095,
+        "endChar": 21
+      },
+      "revId": "2113492c4cd407fc9780e3e8a91bff33c0280509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
