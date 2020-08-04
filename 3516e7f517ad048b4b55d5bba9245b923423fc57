@@ -387,6 +387,24 @@
       "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e23feb_3eaf84fe",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-04T17:01:41Z",
+      "side": 1,
+      "message": "Good idea, let\u0027s use it. I changed Append() and the rest as Liz suggested.",
+      "parentUuid": "97aef082_dcd583ab",
+      "revId": "3516e7f517ad048b4b55d5bba9245b923423fc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "41e4a250_2ce0ffb0",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-04T17:01:41Z",
+      "side": 1,
+      "message": "Done, thanks.",
+      "parentUuid": "5ab9978c_84d47afd",
+      "range": {
+        "startLine": 1302,
+        "startChar": 5,
+        "endLine": 1302,
+        "endChar": 22
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef3e7cb2_17db5f82",
         "filename": "android/config.go",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d9d8df_ec879560",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-04T17:01:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3e7cb2_17db5f82",
+      "range": {
+        "startLine": 1311,
+        "startChar": 28,
+        "endLine": 1311,
+        "endChar": 32
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "4dd5cdb7_0f46c28b",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-04T17:01:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d74bf412_b5f6e278",
+      "range": {
+        "startLine": 1323,
+        "startChar": 28,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "598d3568_011155ba",
         "filename": "android/config.go",
         "patchSetId": 3
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "271603b7_02fc97fd",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-04T17:01:41Z",
+      "side": 1,
+      "message": "Ooh, good catch. I actually think the one place that uses it generates a Make variable that is not used, because the colon-separated pairs are joined using colons as well. But investigating and fixing that is for a follow-up CL. Now I just fixed \"+\" to \":\".",
+      "parentUuid": "598d3568_011155ba",
+      "range": {
+        "startLine": 1377,
+        "startChar": 30,
+        "endLine": 1377,
+        "endChar": 31
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c1f6e06_da4db232",
         "filename": "android/config.go",
         "patchSetId": 3
@@ -131,6 +227,30 @@
       "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b80e3f_2bf7f0a9",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-04T17:01:41Z",
+      "side": 1,
+      "message": "Thanks for catching this, I applied your suggestion to do a deep-copy of ArtApexJars.",
+      "parentUuid": "8c1f6e06_da4db232",
+      "range": {
+        "startLine": 1443,
+        "startChar": 2,
+        "endLine": 1443,
+        "endChar": 21
+      },
+      "revId": "9d9a07d88386ba5520e6febd24986f7784f4a72d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
