@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bc0e1de_2f022bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-04T15:57:15Z",
+      "side": 1,
+      "message": "This is a quick hack to test what happens when override mutators are moved before \u0027deps\u0027. It seems to address a few of the issues with the existing override mechanism:\n1) Works better with prebuilts as they run before the prebuilts.\n2) Path properties work better as they run before pathdeps\n3) No need to have separate methods to handle dependencies that can be overridden.\n\nAssuming that this approach works then I am happy to clean this up.",
+      "revId": "72220bf1058654f98bc6d6e5c4fd992a50dff25a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
