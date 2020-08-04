@@ -16,6 +16,23 @@
       "revId": "a9a81c6503b220be553367cef48cc4aed5444340",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c8a3d89_ae9655cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-04T19:30:33Z",
+      "side": 1,
+      "message": "Thanks for all the refactoring :)",
+      "revId": "a9a81c6503b220be553367cef48cc4aed5444340",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
