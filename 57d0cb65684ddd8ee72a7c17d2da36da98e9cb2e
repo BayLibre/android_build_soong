@@ -52,6 +52,24 @@
       "revId": "57d0cb65684ddd8ee72a7c17d2da36da98e9cb2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef7fca38_4c08f510",
+        "filename": "java/robolectric.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2020-08-04T01:43:00Z",
+      "side": 1,
+      "message": "Thanks! As Colin said, handle an error in the case of AllowMissingDependencies.",
+      "parentUuid": "acfa60f0_f86b14e5",
+      "revId": "57d0cb65684ddd8ee72a7c17d2da36da98e9cb2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
