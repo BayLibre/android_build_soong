@@ -114,6 +114,10 @@ type OverridableModule interface {
 	// Due to complications with incoming dependencies, overrides are processed after DepsMutator.
 	// So, overridable properties need to be handled in a separate, dedicated deps mutator.
 	OverridablePropertiesDepsMutator(ctx BottomUpMutatorContext)
+
+	// Internal funcs to handle interoperability between override modules and prebuilts.
+	// i.e. cases where an overriding module, too, is overridden by a prebuilt module.
+	getOverriddenByPrebuilt() bool
 }
 
 type overridableModuleProperties struct {
@@ -138,6 +142,8 @@ type OverridableModuleBase struct {
 	overridesProperty *[]string
 
 	overridableModuleProperties overridableModuleProperties
+
+	overriddenByPrebuilt bool
 }
 
 func InitOverridableModule(m OverridableModule, overridesProperty *[]string) {
@@ -196,6 +202,11 @@ func (b *OverridableModuleBase) override(ctx BaseModuleContext, o OverrideModule
 		*b.overridesProperty = append(*b.overridesProperty, ctx.ModuleName())
 	}
 	b.overridableModuleProperties.OverriddenBy = o.Name()
+	b.overriddenByPrebuilt = o.getOverriddenByPrebuilt()
+}
+
+func (b *OverridableModuleBase) getOverriddenByPrebuilt() bool {
+	return b.overriddenByPrebuilt
 }
 
 // GetOverriddenBy returns the name of the override module that has overridden this module.
@@ -217,6 +228,12 @@ func RegisterOverridePostDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("perform_override", performOverrideMutator).Parallel()
 	ctx.BottomUp("overridable_deps", overridableModuleDepsMutator).Parallel()
 	ctx.BottomUp("replace_deps_on_override", replaceDepsOnOverridingModuleMutator).Parallel()
+	// "prebuilt_postdeps" should run after "overridable_deps" which is kind of "deps"
+	ctx.BottomUp("prebuilt_postdeps", PrebuiltPostDepsMutator).Parallel()
+}
+
+func RegisterOverridableMutators(ctx RegistrationContext) {
+	ctx.PostDepsMutators(RegisterOverridePostDepsMutators)
 }
 
 type overrideBaseDependencyTag struct {
@@ -304,7 +321,7 @@ func overridableModuleDepsMutator(ctx BottomUpMutatorContext) {
 }
 
 func replaceDepsOnOverridingModuleMutator(ctx BottomUpMutatorContext) {
-	if b, ok := ctx.Module().(OverridableModule); ok {
+	if b, ok := ctx.Module().(OverridableModule); ok && !b.getOverriddenByPrebuilt() {
 		if o := b.GetOverriddenBy(); o != "" {
 			// Redirect dependencies on the overriding module to this overridden module. Overriding
 			// modules are basically pseudo modules, and all build actions are associated to overridden

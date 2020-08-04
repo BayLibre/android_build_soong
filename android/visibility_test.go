@@ -135,7 +135,7 @@ var visibilityTests = []struct {
 					name: "libexample",
 					visibility: ["//visibility:public"],
 				}
-	
+
 				mock_library {
 					name: "libsamepackage",
 					deps: ["libexample"],
@@ -162,7 +162,7 @@ var visibilityTests = []struct {
 					name: "libexample",
 					visibility: ["//visibility:private"],
 				}
-	
+
 				mock_library {
 					name: "libsamepackage",
 					deps: ["libexample"],
@@ -194,7 +194,7 @@ var visibilityTests = []struct {
 					name: "libexample",
 					visibility: [":__pkg__"],
 				}
-	
+
 				mock_library {
 					name: "libsamepackage",
 					deps: ["libexample"],
@@ -227,7 +227,7 @@ var visibilityTests = []struct {
 					name: "libexample",
 					visibility: ["//top/nested"],
 				}
-	
+
 				mock_library {
 					name: "libsamepackage",
 					deps: ["libexample"],
@@ -265,7 +265,7 @@ var visibilityTests = []struct {
 					name: "libexample",
 					visibility: [":__subpackages__"],
 				}
-	
+
 				mock_library {
 					name: "libsamepackage",
 					deps: ["libexample"],
@@ -296,7 +296,7 @@ var visibilityTests = []struct {
 					name: "libexample",
 					visibility: ["//top/nested:__subpackages__", "//other"],
 				}
-	
+
 				mock_library {
 					name: "libsamepackage",
 					deps: ["libexample"],
@@ -327,7 +327,7 @@ var visibilityTests = []struct {
 					name: "libexample",
 					visibility: ["//top/nested", "//peak:__subpackages__"],
 				}
-	
+
 				mock_library {
 					name: "libsamepackage",
 					deps: ["libexample"],
@@ -353,7 +353,7 @@ var visibilityTests = []struct {
 					name: "libexample",
 					visibility: ["//vendor:__subpackages__"],
 				}
-	
+
 				mock_library {
 					name: "libsamepackage",
 					visibility: ["//vendor/apps/AcmeSettings"],
@@ -1047,7 +1047,7 @@ var visibilityTests = []struct {
 			"top/other/Blueprints": []byte(`
 				source {
 					name: "other",
-					deps: [":module"],
+					deps: ["module"],
 				}`),
 		},
 	},
@@ -1070,7 +1070,7 @@ var visibilityTests = []struct {
 			"top/other/Blueprints": []byte(`
 				source {
 					name: "other",
-					deps: [":module"],
+					deps: ["module"],
 				}`),
 		},
 	},

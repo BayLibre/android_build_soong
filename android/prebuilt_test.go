@@ -200,7 +200,7 @@ var prebuiltsTests = []struct {
 		modules: `
 			source {
 				name: "foo",
-				deps: [":bar"],
+				deps: ["bar"],
 				target: {
 					windows: {
 						enabled: true,
@@ -235,7 +235,7 @@ var prebuiltsTests = []struct {
 		modules: `
 			source {
 				name: "foo",
-				deps: [":bar"],
+				deps: ["bar"],
 				target: {
 					windows: {
 						enabled: true,
@@ -274,7 +274,7 @@ func TestPrebuilts(t *testing.T) {
 				bp = bp + `
 					source {
 						name: "foo",
-						deps: [":bar"],
+						deps: ["bar"],
 					}`
 			}
 			config := TestArchConfig(buildDir, nil, bp, fs)
@@ -386,7 +386,7 @@ func registerTestPrebuiltBuildComponents(ctx RegistrationContext) {
 	ctx.RegisterModuleType("override_source", newOverrideSourceModule)
 
 	RegisterPrebuiltMutators(ctx)
-	ctx.PostDepsMutators(RegisterOverridePostDepsMutators)
+	RegisterOverridableMutators(ctx)
 }
 
 type prebuiltModule struct {
@@ -429,8 +429,12 @@ func (p *prebuiltModule) OutputFiles(tag string) (Paths, error) {
 	}
 }
 
+var depsDependency = struct {
+	blueprint.DependencyTag
+}{}
+
 type sourceModuleProperties struct {
-	Deps []string `android:"path,arch_variant"`
+	Deps []string `android:"arch_variant"`
 }
 
 type sourceModule struct {
@@ -452,17 +456,29 @@ func newSourceModule() Module {
 }
 
 func (s *sourceModule) OverridablePropertiesDepsMutator(ctx BottomUpMutatorContext) {
-	// s.properties.Deps are annotated with android:path, so they are
-	// automatically added to the dependency by pathDeps mutator
+	ctx.AddDependency(ctx.Module(), depsDependency, s.properties.Deps...)
 }
 
 func (s *sourceModule) GenerateAndroidBuildActions(ctx ModuleContext) {
-	s.deps = PathsForModuleSrc(ctx, s.properties.Deps)
+	ctx.VisitDirectDepsWithTag(depsDependency, func(m Module) {
+		if producer, ok := m.(OutputFileProducer); ok {
+			paths, err := producer.OutputFiles("")
+			if err != nil {
+				ctx.ModuleErrorf("error: %v", err)
+			}
+			s.deps = append(s.deps, paths...)
+		}
+	})
 	s.src = PathForModuleSrc(ctx, "source_file")
 }
 
-func (s *sourceModule) Srcs() Paths {
-	return Paths{s.src}
+func (s *sourceModule) OutputFiles(tag string) (Paths, error) {
+	switch tag {
+	case "":
+		return Paths{s.src}, nil
+	default:
+		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+	}
 }
 
 type overrideSourceModule struct {

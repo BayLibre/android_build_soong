@@ -92,11 +92,10 @@ func testContext() *android.TestContext {
 	RegisterPrebuiltApisBuildComponents(ctx)
 
 	ctx.PreDepsMutators(python.RegisterPythonPreDepsMutators)
-	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
+	android.RegisterPrebuiltMutators(ctx)
+	android.RegisterOverridableMutators(ctx)
 	ctx.RegisterPreSingletonType("overlay", android.SingletonFactoryAdaptor(OverlaySingletonFactory))
 	ctx.RegisterPreSingletonType("sdk_versions", android.SingletonFactoryAdaptor(sdkPreSingletonFactory))
-
-	android.RegisterPrebuiltMutators(ctx)
 
 	// Register module types and mutators from cc needed for JNI testing
 	cc.RegisterRequiredBuildComponentsForTest(ctx)

@@ -207,7 +207,6 @@ func RegisterPrebuiltsPreArchMutators(ctx RegisterMutatorsContext) {
 func RegisterPrebuiltsPostDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("prebuilt_source", PrebuiltSourceDepsMutator).Parallel()
 	ctx.TopDown("prebuilt_select", PrebuiltSelectModuleMutator).Parallel()
-	ctx.BottomUp("prebuilt_postdeps", PrebuiltPostDepsMutator).Parallel()
 }
 
 // PrebuiltRenameMutator ensures that there always is a module with an
