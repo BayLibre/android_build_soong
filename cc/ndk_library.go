@@ -335,6 +335,11 @@ func canDumpAbi(ctx ModuleContext) bool {
 		// http://b/160625946
 		return false
 	}
+	if ctx.ModuleName() == "libc.ndk" || ctx.ModuleName() == "libneuralnetworks.ndk" {
+		// http://b/162888924
+		return false
+	}
+
 	return true
 }
 
