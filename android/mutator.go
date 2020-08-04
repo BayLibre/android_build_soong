@@ -57,6 +57,9 @@ func registerMutators(ctx *blueprint.Context, preArch, preDeps, postDeps, finalD
 
 	register(preDeps)
 
+	// Must be registered immediately before the deps mutator.
+	RegisterOverridePreDepsMutators(mctx)
+
 	mctx.BottomUp("deps", depsMutator).Parallel()
 
 	register(postDeps)
@@ -281,6 +284,11 @@ func componentDepsMutator(ctx BottomUpMutatorContext) {
 func depsMutator(ctx BottomUpMutatorContext) {
 	if m := ctx.Module(); m.Enabled() {
 		m.DepsMutator(ctx)
+	}
+	// TODO - merge the code in the OverridablePropertiesDepsMutator() methods into
+	// DepsMutator().
+	if b, ok := ctx.Module().(OverridableModule); ok {
+		b.OverridablePropertiesDepsMutator(ctx)
 	}
 }
 

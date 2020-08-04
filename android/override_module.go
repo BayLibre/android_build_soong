@@ -209,13 +209,21 @@ func (b *OverridableModuleBase) GetOverriddenBy() string {
 func (b *OverridableModuleBase) OverridablePropertiesDepsMutator(ctx BottomUpMutatorContext) {
 }
 
-// Mutators for override/overridable modules. All the fun happens in these functions. It is critical
-// to keep them in this order and not put any order mutators between them.
-func RegisterOverridePostDepsMutators(ctx RegisterMutatorsContext) {
+// Mutators for override/overridable modules, they run immediately before deps mutator.
+//
+// All the fun happens in these functions. It is critical to keep them in this order and not put
+// any other mutators between them.
+func RegisterOverridePreDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("override_deps", overrideModuleDepsMutator).Parallel()
 	ctx.TopDown("register_override", registerOverrideMutator).Parallel()
 	ctx.BottomUp("perform_override", performOverrideMutator).Parallel()
-	ctx.BottomUp("overridable_deps", overridableModuleDepsMutator).Parallel()
+	// TODO - This is no longer needed as a separate mutator.
+	//ctx.BottomUp("overridable_deps", overridableModuleDepsMutator).Parallel()
+}
+
+// Mutator for override/overridable modules. All the fun happens in these functions. It is critical
+// to keep them in this order and not put any order mutators between them.
+func RegisterOverridePostDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("replace_deps_on_override", replaceDepsOnOverridingModuleMutator).Parallel()
 }
 
@@ -234,18 +242,18 @@ func overrideModuleDepsMutator(ctx BottomUpMutatorContext) {
 			ctx.PropertyErrorf("base", "%q is not a valid module name", base)
 			return
 		}
-		// See if there's a prebuilt module that overrides this override module with prefer flag,
-		// in which case we call SkipInstall on the corresponding variant later.
-		ctx.VisitDirectDepsWithTag(PrebuiltDepTag, func(dep Module) {
-			prebuilt, ok := dep.(PrebuiltInterface)
-			if !ok {
-				panic("PrebuiltDepTag leads to a non-prebuilt module " + dep.Name())
-			}
-			if prebuilt.Prebuilt().UsePrebuilt() {
-				module.setOverriddenByPrebuilt(true)
-				return
-			}
-		})
+		//// See if there's a prebuilt module that overrides this override module with prefer flag,
+		//// in which case we call SkipInstall on the corresponding variant later.
+		//ctx.VisitDirectDepsWithTag(PrebuiltDepTag, func(dep Module) {
+		//	prebuilt, ok := dep.(PrebuiltInterface)
+		//	if !ok {
+		//		panic("PrebuiltDepTag leads to a non-prebuilt module " + dep.Name())
+		//	}
+		//	if prebuilt.Prebuilt().UsePrebuilt() {
+		//		module.setOverriddenByPrebuilt(true)
+		//		return
+		//	}
+		//})
 		ctx.AddDependency(ctx.Module(), overrideBaseDepTag, *module.getOverrideModuleProperties().Base)
 	}
 }
@@ -282,10 +290,10 @@ func performOverrideMutator(ctx BottomUpMutatorContext) {
 		ctx.AliasVariation(variants[0])
 		for i, o := range overrides {
 			mods[i+1].(OverridableModule).override(ctx, o)
-			if o.getOverriddenByPrebuilt() {
-				// The overriding module itself, too, is overridden by a prebuilt. Skip its installation.
-				mods[i+1].SkipInstall()
-			}
+			//if o.getOverriddenByPrebuilt() {
+			//	// The overriding module itself, too, is overridden by a prebuilt. Skip its installation.
+			//	mods[i+1].SkipInstall()
+			//}
 		}
 	} else if o, ok := ctx.Module().(OverrideModule); ok {
 		// Create a variant of the overriding module with its own name. This matches the above local

@@ -1474,9 +1474,11 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
-	if a.overridableProperties.Allowed_files != nil {
-		android.ExtractSourceDeps(ctx, a.overridableProperties.Allowed_files)
-	}
+	// TODO - this special handling is no longer required as the overrides are applied before the
+	// pathdeps mutator is run.
+	// if a.overridableProperties.Allowed_files != nil {
+	// 	android.ExtractSourceDeps(ctx, a.overridableProperties.Allowed_files)
+	// }
 	ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
 		androidAppTag, a.overridableProperties.Apps...)
 	ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
