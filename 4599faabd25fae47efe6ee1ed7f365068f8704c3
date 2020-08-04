@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22d38893_7086e1e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-08-04T07:07:22Z",
+      "side": 1,
+      "message": "Rebased on aosp/1385288.",
+      "revId": "4599faabd25fae47efe6ee1ed7f365068f8704c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
