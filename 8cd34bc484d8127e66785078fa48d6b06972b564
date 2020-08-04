@@ -1,0 +1,139 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004211359",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1388354?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7201130b_2bb091ec",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-04T22:49:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004211359",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1388354?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d0e8e885_5b7c5e3d",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-04T22:49:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004211359",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1388354?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "924e3269_d90c87f1",
+        "filename": "cc/ndkstubgen/test_ndkstubgen.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-04T22:49:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 151,
+        "startChar": 17,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004211359",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1388354?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "bf0df0e7_8ac56373",
+        "filename": "cc/ndkstubgen/test_ndkstubgen.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-04T22:49:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 238,
+        "startChar": 17,
+        "endLine": 238,
+        "endChar": 26
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004211359",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1388354?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1d20cd13_1d2dac44",
+        "filename": "cc/ndkstubgen/test_ndkstubgen.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-04T22:49:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 292,
+        "startChar": 17,
+        "endLine": 292,
+        "endChar": 26
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
