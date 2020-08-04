@@ -16,6 +16,46 @@
       "revId": "4bf0da2f48317060155ee81bae5e63ae3f2b9796",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e03e4d48_9d25a0e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-04T01:45:11Z",
+      "side": 1,
+      "message": "For the Android.bp syntax, I think Colin should look into that.",
+      "revId": "4bf0da2f48317060155ee81bae5e63ae3f2b9796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3a50186_8a93f4a4",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-04T01:45:11Z",
+      "side": 1,
+      "message": "This is repeated. You might define a named struct.",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "4bf0da2f48317060155ee81bae5e63ae3f2b9796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
