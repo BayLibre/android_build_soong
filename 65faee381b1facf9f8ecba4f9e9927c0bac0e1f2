@@ -249,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "a206c03a_396f7fc3",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-04T08:58:04Z",
+      "side": 1,
+      "message": "Here\u0027s a log of duplicate deps encountered in aosp_flame, with each line representing a direct dep for a module that has already been visited for that module.\n\nhttps://gist.githubusercontent.com/jin/c75f1f0f90020d35a4462a037cfeb513/raw/489a11f65d92c271a75e3560f8ff9202c1255fb9/gistfile1.txt",
+      "parentUuid": "c1cd4e2e_2ddb306e",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf586c3b_70de29f6",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3

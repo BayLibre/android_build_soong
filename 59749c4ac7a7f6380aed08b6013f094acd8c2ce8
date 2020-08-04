@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "64c921a6_db8d36b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-04T08:58:04Z",
+      "side": 1,
+      "message": "Thank you!",
+      "parentUuid": "b0afdf53_3cd82d3c",
+      "revId": "59749c4ac7a7f6380aed08b6013f094acd8c2ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19d55d30_f4914116",
         "filename": "android/bazel_overlay.go",
         "patchSetId": 15
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "fab69e53_c136d2ca",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-04T08:58:04Z",
+      "side": 1,
+      "message": "Ack - also this visitation is stale. Removed.",
+      "parentUuid": "19d55d30_f4914116",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "59749c4ac7a7f6380aed08b6013f094acd8c2ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84450be5_a8056cb7",
         "filename": "android/bazel_overlay.go",
         "patchSetId": 15
@@ -53,6 +95,30 @@
       "writtenOn": "2020-08-03T16:26:47Z",
       "side": 1,
       "message": "FYI: not necessary to change, but you may find the RuleBuilder (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/rule_builder.go) easier to use for rules",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 47
+      },
+      "revId": "59749c4ac7a7f6380aed08b6013f094acd8c2ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f809df10_4aca66ba",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-04T08:58:04Z",
+      "side": 1,
+      "message": "Ack. I mirrored the soong_docs singleton for this CL, will remember this next time.",
+      "parentUuid": "84450be5_a8056cb7",
       "range": {
         "startLine": 42,
         "startChar": 17,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "8397d8b8_a05b7465",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-04T08:58:04Z",
+      "side": 1,
+      "message": "Yes - much better! Thanks.",
+      "parentUuid": "5eb30230_2ff5d060",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 69
+      },
+      "revId": "59749c4ac7a7f6380aed08b6013f094acd8c2ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c78b3603_654921a1",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 15
@@ -108,6 +198,30 @@
       "revId": "59749c4ac7a7f6380aed08b6013f094acd8c2ce8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a29747_1bd783bc",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-04T08:58:04Z",
+      "side": 1,
+      "message": "Yep! Thanks for the catch.",
+      "parentUuid": "c78b3603_654921a1",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 38
+      },
+      "revId": "59749c4ac7a7f6380aed08b6013f094acd8c2ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
