@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f477873d_8d8e27cb",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-04T06:18:34Z",
+      "side": 1,
+      "message": "This should be in sync with the Make change. Perhaps add a reference to the place as a comment?",
+      "range": {
+        "startLine": 1117,
+        "startChar": 5,
+        "endLine": 1117,
+        "endChar": 36
+      },
+      "revId": "97fab13b266411d80dcf86205bd664204c7549ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
