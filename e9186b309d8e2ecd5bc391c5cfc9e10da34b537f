@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86a627c9_a567a556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-04T16:03:21Z",
+      "side": 1,
+      "message": "I don\u0027t think that this is the right way to go. It seems as though there is something fundamentally wrong with the current override implementation which is requiring us to add hack after hack to make it work properly. I will add some comments to bug 152155285.",
+      "revId": "e9186b309d8e2ecd5bc391c5cfc9e10da34b537f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
