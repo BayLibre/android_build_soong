@@ -90,6 +90,30 @@
       "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63642da3_adf38fea",
+        "filename": "rust/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2020-08-04T17:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f9d26cc_534f0782",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "9923b9621cd1d7224ac09d203758cb37e30a70bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
