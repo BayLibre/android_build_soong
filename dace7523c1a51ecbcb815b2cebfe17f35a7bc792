@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a44b806_73ed9d67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-08-04T23:36:03Z",
+      "side": 1,
+      "message": "Folks, I\u0027d like to land this first (along with aosp/1385289 and aosp/1387116), regardless of the cfi vendor snapshot. Could you help?",
+      "revId": "dace7523c1a51ecbcb815b2cebfe17f35a7bc792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
