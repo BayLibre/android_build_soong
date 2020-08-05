@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004221052",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1390796?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "2ffffcdb_e1119d88",
+          "description": "Change to \"rust/project_json_test.go\"",
+          "replacements": [
+            {
+              "path": "rust/project_json_test.go",
+              "range": {
+                "startLine": 53,
+                "startChar": 3,
+                "endLine": 53,
+                "endChar": 11
+              },
+              "replacement": "succeeded"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ffee5a0b_77f93a47",
+        "filename": "rust/project_json_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-05T09:28:33Z",
+      "side": 1,
+      "message": "Common typo found: \"suceeded\" -- should it be \"succeeded\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "f21a794371bec5ef5c6d1ef264e7f890d4deb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
