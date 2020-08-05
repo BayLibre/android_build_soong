@@ -321,6 +321,30 @@
     },
     {
       "key": {
+        "uuid": "6a07a2b8_8b0b6e10",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-05T15:17:43Z",
+      "side": 1,
+      "message": "Agreed that we shouldn\u0027t block this CL on that. My guess is the duplication is not necessary but we could file a bug to look into it and evaluate.",
+      "parentUuid": "be561dd8_76f2bbf4",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf586c3b_70de29f6",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
