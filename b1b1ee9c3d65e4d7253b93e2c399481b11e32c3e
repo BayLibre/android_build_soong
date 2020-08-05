@@ -88,6 +88,24 @@
       "revId": "b1b1ee9c3d65e4d7253b93e2c399481b11e32c3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9184ffb7_cdd5ec34",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-05T20:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b8ad03d_b2894dcd",
+      "revId": "b1b1ee9c3d65e4d7253b93e2c399481b11e32c3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
