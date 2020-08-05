@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b2013d0_87009018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-05T02:56:38Z",
+      "side": 1,
+      "message": "I\u0027ll take a closer look at the failure this morning but it seems related to this CL.",
+      "revId": "12e2cb71c7192edd43c0d283384d119900844cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
