@@ -2195,6 +2195,7 @@ type JavaTestImport struct {
 	prebuiltTestProperties prebuiltTestProperties
 
 	testConfig android.Path
+	dexJarFile android.Path
 }
 
 func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -2515,7 +2516,13 @@ type Import struct {
 	// Functionality common to Module and Import.
 	embeddableInModuleAndImport
 
+	hiddenAPI
+	dexer
+
 	properties ImportProperties
+
+	// output file containing classes.dex and resources
+	dexJarFile android.Path
 
 	combinedClasspathFile android.Path
 	exportedSdkLibs       []string
@@ -2578,6 +2585,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// added to the Android manifest.
 	j.exportedSdkLibs = append(j.exportedSdkLibs, j.OptionalImplicitSdkLibrary()...)
 
+	var flags javaBuilderFlags
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -2586,12 +2595,14 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case Dependency:
 			switch tag {
 			case libTag, staticLibTag:
+				flags.classpath = append(flags.classpath, dep.HeaderJars()...)
 				// sdk lib names from dependencies are re-exported
 				j.exportedSdkLibs = append(j.exportedSdkLibs, dep.ExportedSdkLibs()...)
 			}
 		case SdkLibraryDependency:
 			switch tag {
 			case libTag:
+				flags.classpath = append(flags.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
 				// names of sdk libs that are directly depended are exported
 				j.exportedSdkLibs = append(j.exportedSdkLibs, otherName)
 			}
@@ -2605,6 +2616,29 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
+
+	// TODO(eakammer): should we neverallow compile_dex for imports except for prebuilt apis?
+	if ctx.Device() && Bool(j.dexProperties.Compile_dex) {
+
+		//TODO(eakammer): do we need sdkdep for bootclasspath/classpath for prebuilts?
+
+		// Dex compilation
+		var dexOutputFile android.ModuleOutPath
+		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), outputFile, jarName)
+		if ctx.Failed() {
+			return
+		}
+
+		configurationName := j.BaseModuleName()
+		// TODO(eakammer): handle whether primary or not -- based on prefer? or unbundled or ?
+		primary := configurationName == ctx.ModuleName()
+
+		// Hidden API CSV generation and dex encoding
+		dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, configurationName, primary, dexOutputFile, outputFile,
+			proptools.Bool(j.dexProperties.Uncompress_dex))
+
+		j.dexJarFile = dexOutputFile
+	}
 }
 
 var _ Dependency = (*Import)(nil)
@@ -2635,7 +2669,7 @@ func (j *Import) ImplementationAndResourcesJars() android.Paths {
 }
 
 func (j *Import) DexJarBuildPath() android.Path {
-	return nil
+	return j.dexJarFile
 }
 
 func (j *Import) DexJarInstallPath() android.Path {
@@ -2703,9 +2737,14 @@ var _ android.PrebuiltInterface = (*Import)(nil)
 func ImportFactory() android.Module {
 	module := &Import{}
 
-	module.AddProperties(&module.properties)
+	module.AddProperties(
+		&module.properties,
+		&module.dexer.dexProperties,
+	)
 
 	module.initModuleAndImport(&module.ModuleBase)
+
+	module.dexProperties.Optimize.EnabledByDefault = false
 
 	android.InitPrebuiltModule(module, &module.properties.Jars)
 	android.InitApexModule(module)
