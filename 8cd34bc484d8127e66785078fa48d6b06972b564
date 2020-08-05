@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97a4256a_e8f81049",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2020-08-05T21:02:31Z",
+      "side": 1,
+      "message": "in the kernel we settled on \"ABI symbol list\". Any positive or negative attribution to this made it (also with partners) ambiguous whether symbols on the list are the ones that are stable or the ones that are allowed to change.",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada3afd9_0368ba34",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2020-08-05T21:02:31Z",
+      "side": 1,
+      "message": "note, this is a constant in libabigail and the _whitelist suffix is currently required.",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
