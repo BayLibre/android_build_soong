@@ -137,7 +137,6 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 					return
 				}
 				installPaths = append(installPaths, installer.installPath)
-				installPaths = append(installPaths, installer.abidumpPath)
 			}
 
 			if library, ok := m.linker.(*libraryDecorator); ok {
@@ -161,10 +160,9 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 		Inputs:      licensePaths,
 	})
 
-	baseDepPaths := append(installPaths, combinedLicense)
+	baseDepPaths := append(installPaths, combinedLicense,
+		getNdkAbiDiffTimestampFile(ctx))
 
-	// There's a dummy "ndk" rule defined in ndk/Android.mk that depends on
-	// this. `m ndk` will build the sysroots.
 	ctx.Build(pctx, android.BuildParams{
 		Rule:      android.Touch,
 		Output:    getNdkBaseTimestampFile(ctx),
@@ -173,6 +171,8 @@ func (n *ndkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 
 	fullDepPaths := append(staticLibInstallPaths, getNdkBaseTimestampFile(ctx))
 
+	// There's a phony "ndk" rule defined in core/main.mk that depends on this.
+	// `m ndk` will build the sysroots.
 	ctx.Build(pctx, android.BuildParams{
 		Rule:      android.Touch,
 		Output:    getNdkFullTimestampFile(ctx),

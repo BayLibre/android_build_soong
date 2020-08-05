@@ -53,6 +53,12 @@ var (
 			CommandDeps: []string{"$abidw"},
 		}, "symbolList")
 
+	abidiff = pctx.AndroidStaticRule("abidiff",
+		blueprint.RuleParams{
+			Command:     "$abidiff $args $in > $out || cat $out",
+			CommandDeps: []string{"$abidiff"},
+		}, "args")
+
 	ndkLibrarySuffix = ".ndk"
 
 	// Added as a variation dependency via depsMutator.
@@ -107,7 +113,8 @@ type stubDecorator struct {
 	versionScriptPath     android.ModuleGenPath
 	parsedCoverageXmlPath android.ModuleOutPath
 	installPath           android.Path
-	abidumpPath           android.ModuleOutPath
+	abiDumpPath           android.OutputPath
+	abiDiffPaths          android.Paths
 
 	apiLevel         android.ApiLevel
 	firstVersion     android.ApiLevel
@@ -330,12 +337,23 @@ func (this *stubDecorator) findImplementationLibrary(ctx ModuleContext) android.
 	return output
 }
 
-func canDumpAbi(ctx ModuleContext) bool {
-	if ctx.ModuleName() == "libandroid.ndk" {
+func (this *stubDecorator) libraryName(ctx ModuleContext) string {
+	return strings.TrimSuffix(ctx.ModuleName(), ndkLibrarySuffix)
+}
+
+func (this *stubDecorator) findPrebuiltAbiDump(ctx ModuleContext,
+	apiLevel android.ApiLevel) android.Path {
+	abiPrebuiltsDir := android.PathForSource(ctx, "prebuilts/abi-dumps/ndk")
+	return abiPrebuiltsDir.Join(ctx, apiLevel.String(),
+		ctx.Arch().ArchType.String(), this.libraryName(ctx), "abi.xml")
+}
+
+func canDumpAbi(module android.Module) bool {
+	if module.Name() == "libandroid.ndk" {
 		// http://b/160625946
 		return false
 	}
-	if ctx.ModuleName() == "libc.ndk" || ctx.ModuleName() == "libneuralnetworks.ndk" {
+	if module.Name() == "libc.ndk" || module.Name() == "libneuralnetworks.ndk" {
 		// http://b/162888924
 		return false
 	}
@@ -345,17 +363,71 @@ func canDumpAbi(ctx ModuleContext) bool {
 
 func (this *stubDecorator) dumpAbi(ctx ModuleContext, symbolList android.Path) {
 	implementationLibrary := this.findImplementationLibrary(ctx)
-	this.abidumpPath = android.PathForModuleOut(ctx, "abi.xml")
+	this.abiDumpPath = getNdkAbiDumpInstallBase(ctx).Join(ctx,
+		this.apiLevel.String(), ctx.Arch().ArchType.String(),
+		this.libraryName(ctx), "abi.xml")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        abidw,
 		Description: fmt.Sprintf("abidw %s", implementationLibrary),
-		Output:      this.abidumpPath,
+		Output:      this.abiDumpPath,
 		Input:       implementationLibrary,
 		Implicits:   android.Paths{symbolList},
 		Args: map[string]string{
 			"symbolList": symbolList.String(),
 		},
 	})
+}
+
+func findNextApiLevel(ctx ModuleContext,
+	apiLevel android.ApiLevel) android.ApiLevel {
+	apiLevels := append(ctx.Config().AllSupportedApiLevels(),
+		android.FutureApiLevel)
+	for _, api := range apiLevels {
+		if api.GreaterThan(apiLevel) {
+			return api
+		}
+	}
+	return nil
+}
+
+func (this *stubDecorator) diffAbi(ctx ModuleContext) {
+	// Catch any ABI changes compared to the checked-in definition of this API
+	// level.
+	abiDiffPath := android.PathForModuleOut(ctx, "abidiff.timestamp")
+	prebuiltAbiDump := this.findPrebuiltAbiDump(ctx, this.apiLevel)
+	ctx.Build(pctx, android.BuildParams{
+		Rule: abidiff,
+		Description: fmt.Sprintf("abidiff %s %s", prebuiltAbiDump,
+			this.abiDumpPath),
+		Output: abiDiffPath,
+		Inputs: android.Paths{prebuiltAbiDump, this.abiDumpPath},
+	})
+	this.abiDiffPaths = append(this.abiDiffPaths, abiDiffPath)
+
+	// Also ensure that the ABI of the next API level (if there is one) matches
+	// this API level. *New* ABI is allowed, but any changes to APIs that exist
+	// in this API level are disallowed.
+	if !this.apiLevel.IsCurrent() {
+		nextApiLevel := findNextApiLevel(ctx, this.apiLevel)
+		if nextApiLevel == nil {
+			panic(fmt.Sprintf("could not determine which API level follows "+
+				"non-current API level %s", this.apiLevel))
+		}
+		nextAbiDiffPath := android.PathForModuleOut(ctx,
+			"abidiff_next.timestamp")
+		nextAbiDump := this.findPrebuiltAbiDump(ctx, nextApiLevel)
+		ctx.Build(pctx, android.BuildParams{
+			Rule: abidiff,
+			Description: fmt.Sprintf("abidiff %s %s", this.abiDumpPath,
+				nextAbiDump),
+			Output: nextAbiDiffPath,
+			Inputs: android.Paths{this.abiDumpPath, nextAbiDump},
+			Args: map[string]string{
+				"args": "--no-added-syms",
+			},
+		})
+		this.abiDiffPaths = append(this.abiDiffPaths, nextAbiDiffPath)
+	}
 }
 
 func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
@@ -372,9 +444,9 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 	nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile, c.apiLevel, "")
 	objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
 	c.versionScriptPath = nativeAbiResult.versionScript
-	if canDumpAbi(ctx) {
+	if canDumpAbi(ctx.Module()) {
 		c.dumpAbi(ctx, nativeAbiResult.symbolList)
-		// TODO: Handle ABI checking.
+		c.diffAbi(ctx)
 	}
 	if c.apiLevel.IsCurrent() && ctx.PrimaryArch() {
 		c.parsedCoverageXmlPath = parseSymbolFileForCoverage(ctx, symbolFile)
