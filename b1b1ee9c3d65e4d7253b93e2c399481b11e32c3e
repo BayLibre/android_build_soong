@@ -70,6 +70,24 @@
       "revId": "b1b1ee9c3d65e4d7253b93e2c399481b11e32c3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b8ad03d_b2894dcd",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-05T20:11:00Z",
+      "side": 1,
+      "message": "Alternatively, I could add a helper function e.g. NewSourceProviderModule.",
+      "parentUuid": "66da6a98_d6991a59",
+      "revId": "b1b1ee9c3d65e4d7253b93e2c399481b11e32c3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
