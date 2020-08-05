@@ -2673,6 +2673,13 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			return
 		}
 
+		configurationName := j.BaseModuleName()
+		primary := configurationName == ctx.ModuleName()
+
+		// Hidden API CSV generation and dex encoding
+		dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, configurationName, primary, dexOutputFile, outputFile,
+			proptools.Bool(j.dexProperties.Uncompress_dex))
+
 		j.dexJarFile = dexOutputFile
 	}
 }
