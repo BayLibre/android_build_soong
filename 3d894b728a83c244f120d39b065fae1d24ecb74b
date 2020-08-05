@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6ded508_45a29629",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299481
+      },
+      "writtenOn": "2020-08-05T16:48:35Z",
+      "side": 1,
+      "message": "I tested it locally, it properly generates api levels info now. Thanks Liz!",
+      "revId": "3d894b728a83c244f120d39b065fae1d24ecb74b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
