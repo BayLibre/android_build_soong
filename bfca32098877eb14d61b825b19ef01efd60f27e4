@@ -16,6 +16,24 @@
       "revId": "bfca32098877eb14d61b825b19ef01efd60f27e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbcc175a_9496991e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-05T21:08:41Z",
+      "side": 1,
+      "message": "One change I could still make is to un-export SourceProvider from library decorator, and either 1) add a SetSourceProvider() method, or 2) have the new helper function also set library.sourceProvider itself.",
+      "parentUuid": "502c195c_89fcb26f",
+      "revId": "bfca32098877eb14d61b825b19ef01efd60f27e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
