@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b8324805_c2328c07",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2020-08-05T21:05:00Z",
+      "side": 1,
+      "message": "\"--no-corpus-path\" and \"--no-comp-dir-path\" are useful flags to reduce the noise of the local build in the file.",
+      "range": {
+        "startLine": 50,
+        "startChar": 14,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dad67587_13efdffd",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2020-08-05T21:05:00Z",
+      "side": 1,
+      "message": "-w is equivalent",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97a4256a_e8f81049",
         "filename": "cc/ndkstubgen/__init__.py",
         "patchSetId": 2
