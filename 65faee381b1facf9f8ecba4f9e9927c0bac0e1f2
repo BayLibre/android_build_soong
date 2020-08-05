@@ -297,6 +297,30 @@
     },
     {
       "key": {
+        "uuid": "be561dd8_76f2bbf4",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-05T00:46:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we should block this CL on fixing that, but I\u0027m curious: these duplicate deps are unnecessary, right? Do they serve any purpose for having multiple copies in the directDeps of a module?",
+      "parentUuid": "194930f9_0ec00653",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf586c3b_70de29f6",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
