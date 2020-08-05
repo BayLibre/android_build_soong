@@ -1425,3 +1425,7 @@ func (c *config) BootJars() []string {
 		return list.CopyOfJars()
 	}).([]string)
 }
+
+func (c *deviceConfig) BoardKernelModuleInterfaceVersions() []string {
+	return c.config.productVariables.BoardKernelModuleInterfaceVersions
+}
