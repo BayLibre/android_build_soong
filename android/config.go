@@ -1275,3 +1275,7 @@ func (c *deviceConfig) BoardUsesRecoveryAsBoot() bool {
 func (c *deviceConfig) BoardKernelBinaries() []string {
 	return c.config.productVariables.BoardKernelBinaries
 }
+
+func (c *deviceConfig) BoardKernelModuleInterfaceVersions() []string {
+	return c.config.productVariables.BoardKernelModuleInterfaceVersions
+}
