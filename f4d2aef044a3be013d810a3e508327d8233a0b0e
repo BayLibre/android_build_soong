@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfc1ef91_89718f3e",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-05T23:06:35Z",
+      "side": 1,
+      "message": "I guess I don\u0027t really understand the difference between UseSdk and IsSdkVariant. Based on the mutator in sdk.go, this seems to indicate whether or not SDK splits should be created or not, and IsSdkVariant indicates whether or not it is the SDK side of that split.",
+      "parentUuid": "906a2896_9639d5e8",
+      "range": {
+        "startLine": 877,
+        "startChar": 47,
+        "endLine": 877,
+        "endChar": 71
+      },
+      "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90da719e_484422e8",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5235076_8918dbb9",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-05T23:06:35Z",
+      "side": 1,
+      "message": "It doesn\u0027t fit on my screen.",
+      "parentUuid": "90da719e_484422e8",
+      "range": {
+        "startLine": 1759,
+        "startChar": 0,
+        "endLine": 1759,
+        "endChar": 45
+      },
+      "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "801c1329_7e3a5000",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-05T23:06:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbe4dbcf_72886c99",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 22
+      },
+      "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d78c8543_1fc7f3d5",
         "filename": "cc/ndk_library.go",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2020-07-24T02:48:29Z",
       "side": 1,
       "message": "I am not sure why this is needed. Could you elaborate?",
+      "range": {
+        "startLine": 244,
+        "startChar": 6,
+        "endLine": 244,
+        "endChar": 41
+      },
+      "revId": "f4d2aef044a3be013d810a3e508327d8233a0b0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e858549_e551f732",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-05T23:06:35Z",
+      "side": 1,
+      "message": "Each split needs to know what API level it is for. I could instead store this in a mutated property, if that\u0027s what you mean.",
+      "parentUuid": "d78c8543_1fc7f3d5",
       "range": {
         "startLine": 244,
         "startChar": 6,
