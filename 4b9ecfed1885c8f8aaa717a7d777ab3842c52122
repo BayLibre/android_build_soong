@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31c42f41_3663212c",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-05T21:48:02Z",
+      "side": 1,
+      "message": "This could just be ${outDir}",
+      "range": {
+        "startLine": 47,
+        "startChar": 53,
+        "endLine": 47,
+        "endChar": 55
+      },
+      "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbdfc284_5e15b72b",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-05T21:48:02Z",
+      "side": 1,
+      "message": "Don\u0027t we need more dependencies here, like the deps list here: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/writedocs.go;drc\u003d8f232a2702ca0110f6d4a067ec779280209f12ed;l\u003d48\n\nAnd since we do care about updating this when an Android.bp file changes, we\u0027d also need to ensure that it\u0027s writing out a depfile and that we\u0027re using it here.",
+      "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb9764b8_e3c2ad8e",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-05T21:48:02Z",
+      "side": 1,
+      "message": "Copyright header?",
+      "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

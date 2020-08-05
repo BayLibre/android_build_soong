@@ -345,6 +345,30 @@
     },
     {
       "key": {
+        "uuid": "ef54dc9f_04212d73",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-05T21:48:02Z",
+      "side": 1,
+      "message": "I\u0027d guess that some of these may be bugs, but some may be because you\u0027re missing an important axis of information here -- the DependencyTag for the dependent module. Modules can be used for more than one purpose, so they may have multiple dependency tags, which are represented by multiple dependencies.\n\nFor a sample of the dependency tags defined by cc: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;drc\u003d807cfd2a9939ffd82aa0e26abc60a2c43cc1be59;l\u003d429\njava: https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java.go;drc\u003da7a64f3c5b259f29420eabe2bd4bd843f9ca589a;l\u003d546",
+      "parentUuid": "6a07a2b8_8b0b6e10",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf586c3b_70de29f6",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
@@ -427,6 +451,30 @@
       "side": 1,
       "message": "os.FileMode doesn\u0027t have readable constants/ Reduced permissions to readonly.",
       "parentUuid": "f44f734d_47a2a9d9",
+      "range": {
+        "startLine": 109,
+        "startChar": 50,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f6ef062_ebcccb22",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-05T21:48:02Z",
+      "side": 1,
+      "message": "There are package level constants on the os package: https://golang.org/pkg/os/#pkg-constants",
+      "parentUuid": "08565c80_994b0b35",
       "range": {
         "startLine": 109,
         "startChar": 50,
