@@ -82,7 +82,7 @@ type libraryDecorator struct {
 	Properties        LibraryCompilerProperties
 	MutatedProperties LibraryMutatedProperties
 	includeDirs       android.Paths
-	sourceProvider    SourceProvider
+	SourceProvider    SourceProvider
 }
 
 type libraryInterface interface {
@@ -374,8 +374,8 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	var outputFile android.WritablePath
 	var srcPath android.Path
 
-	if library.sourceProvider != nil {
-		srcPath = library.sourceProvider.Srcs()[0]
+	if library.SourceProvider != nil {
+		srcPath = library.SourceProvider.Srcs()[0]
 	} else {
 		srcPath, _ = srcPathFromModuleSrcs(ctx, library.baseCompiler.Properties.Srcs)
 	}
