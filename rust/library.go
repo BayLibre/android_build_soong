@@ -82,7 +82,7 @@ type libraryDecorator struct {
 	Properties        LibraryCompilerProperties
 	MutatedProperties LibraryMutatedProperties
 	includeDirs       android.Paths
-	sourceProvider    SourceProvider
+	SourceProvider    SourceProvider
 }
 
 type libraryInterface interface {
@@ -374,8 +374,8 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	var outputFile android.WritablePath
 	var srcPath android.Path
 
-	if library.sourceProvider != nil {
-		srcPath = library.sourceProvider.Srcs()[0]
+	if library.SourceProvider != nil {
+		srcPath = library.SourceProvider.Srcs()[0]
 	} else {
 		srcPath, _ = srcPathFromModuleSrcs(ctx, library.baseCompiler.Properties.Srcs)
 	}
@@ -474,7 +474,7 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 		case libraryInterface:
 			if library.buildRlib() && library.buildDylib() {
 				variants := []string{"rlib", "dylib"}
-				if m.sourceProvider != nil {
+				if m.SourceProvider != nil {
 					variants = append(variants, "")
 				}
 				modules := mctx.CreateLocalVariations(variants...)
@@ -484,11 +484,11 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 				rlib.compiler.(libraryInterface).setRlib()
 				dylib.compiler.(libraryInterface).setDylib()
 
-				if m.sourceProvider != nil {
+				if m.SourceProvider != nil {
 					// This library is SourceProvider generated, so the non-library-producing
 					// variant needs to disable it's compiler and skip installation.
-					sourceProvider := modules[2].(*Module)
-					sourceProvider.compiler.SetDisabled()
+					SourceProvider := modules[2].(*Module)
+					SourceProvider.compiler.SetDisabled()
 				}
 			} else if library.buildRlib() {
 				modules := mctx.CreateLocalVariations("rlib")
@@ -498,7 +498,7 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 				modules[0].(*Module).compiler.(libraryInterface).setDylib()
 			}
 
-			if m.sourceProvider != nil {
+			if m.SourceProvider != nil {
 				// Alias the non-library variant to the empty-string variant.
 				mctx.AliasVariation("")
 			}
