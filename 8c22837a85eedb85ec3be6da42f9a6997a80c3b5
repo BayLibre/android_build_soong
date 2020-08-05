@@ -16,6 +16,23 @@
       "revId": "8c22837a85eedb85ec3be6da42f9a6997a80c3b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53d94c50_81235c53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-08-05T23:50:51Z",
+      "side": 1,
+      "message": "Folks, are there any remaining concerns? If not, can I proceed?",
+      "revId": "8c22837a85eedb85ec3be6da42f9a6997a80c3b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
