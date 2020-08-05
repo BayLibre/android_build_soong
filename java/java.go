@@ -2534,6 +2534,9 @@ type Import struct {
 	// Functionality common to Module and Import.
 	embeddableInModuleAndImport
 
+	hiddenAPI
+	dexer
+
 	properties ImportProperties
 
 	combinedClasspathFile android.Path
@@ -2624,6 +2627,28 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
+
+	// should we neverallow compile_dex for imports except for prebuilt apis?
+	if ctx.Device() && Bool(j.dexProperties.Compile_dex) {
+		//TODO(eakammer): can we get bootclasspath or classpath for prebuilts?
+		var flags javaBuilderFlags
+
+		// Dex compilation
+		var dexOutputFile android.ModuleOutPath
+		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), outputFile, jarName)
+		if ctx.Failed() {
+			return
+		}
+
+		fmt.Println(dexOutputFile)
+		configurationName := j.BaseModuleName()
+		// TODO(eakammer): handle whether primary or not -- based on prefer? or unbundled or ?
+		primary := configurationName == ctx.ModuleName()
+
+		// Hidden API CSV generation and dex encoding
+		dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, configurationName, primary, dexOutputFile, outputFile,
+			proptools.Bool(j.dexProperties.Uncompress_dex))
+	}
 }
 
 var _ Dependency = (*Import)(nil)
@@ -2722,9 +2747,14 @@ var _ android.PrebuiltInterface = (*Import)(nil)
 func ImportFactory() android.Module {
 	module := &Import{}
 
-	module.AddProperties(&module.properties)
+	module.AddProperties(
+		&module.properties,
+		&module.dexer.dexProperties,
+	)
 
 	module.initModuleAndImport(&module.ModuleBase)
+
+	module.dexProperties.Optimize.EnabledByDefault = false
 
 	android.InitPrebuiltModule(module, &module.properties.Jars)
 	android.InitApexModule(module)
