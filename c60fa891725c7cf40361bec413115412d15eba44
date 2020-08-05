@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c227e3c7_7db7436a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-05T12:59:57Z",
+      "side": 1,
+      "message": "Minor readability nit, otherwise LGTM",
+      "revId": "c60fa891725c7cf40361bec413115412d15eba44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17918d90_6d694ecf",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-05T12:59:57Z",
+      "side": 1,
+      "message": "Nit: Maybe change this to childCrateName or just crateName? It\u0027s not clear at first glance how this differs from ModuleName(child) below, so a different var name might improve readability.",
+      "range": {
+        "startLine": 79,
+        "startChar": 11,
+        "endLine": 79,
+        "endChar": 20
+      },
+      "revId": "c60fa891725c7cf40361bec413115412d15eba44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
