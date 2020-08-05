@@ -273,6 +273,30 @@
     },
     {
       "key": {
+        "uuid": "194930f9_0ec00653",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-05T00:34:57Z",
+      "side": 1,
+      "message": "Ah, looking at those, yeah, I think those make sense as they\u0027re automatically added from places like https://cs.android.com/android/platform/superproject/+/master:build/soong/java/hiddenapi_singleton.go and https://cs.android.com/android/platform/superproject/+/master:build/soong/java/config/config.go;l\u003d31-37 -- we could evaluate whether we want to dig more into this separately.",
+      "parentUuid": "a206c03a_396f7fc3",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf586c3b_70de29f6",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
