@@ -2209,6 +2209,7 @@ type JavaTestImport struct {
 	prebuiltTestProperties prebuiltTestProperties
 
 	testConfig android.Path
+	dexJarFile android.Path
 }
 
 func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -2497,6 +2498,10 @@ type ImportProperties struct {
 
 	Sdk_version *string
 
+	// When targeting 1.9 and above, override the modules to use with --system,
+	// otherwise provides defaults libraries to add to the bootclasspath.
+	System_modules *string
+
 	Installable *bool
 
 	// List of shared java libs that this module has dependencies to
@@ -2531,7 +2536,13 @@ type Import struct {
 	// Functionality common to Module and Import.
 	embeddableInModuleAndImport
 
+	hiddenAPI
+	dexer
+
 	properties ImportProperties
+
+	// output file containing classes.dex and resources
+	dexJarFile android.Path
 
 	combinedClasspathFile android.Path
 	exportedSdkLibs       dexpreopt.LibraryPaths
@@ -2546,7 +2557,15 @@ func (j *Import) makeSdkVersion() string {
 	return j.sdkVersion().raw
 }
 
+func (j *Import) systemModules() string {
+	return proptools.String(j.properties.System_modules)
+}
+
 func (j *Import) minSdkVersion() sdkSpec {
+	return j.sdkVersion()
+}
+
+func (j *Import) targetSdkVersion() sdkSpec {
 	return j.sdkVersion()
 }
 
@@ -2576,6 +2595,20 @@ func (a *Import) JacocoReportClassesFile() android.Path {
 
 func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
+
+	if ctx.Device() && Bool(j.dexProperties.Compile_dex) {
+		sdkDep := decodeSdkDep(ctx, sdkContext(j))
+		if sdkDep.useModule {
+			ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
+			ctx.AddVariationDependencies(nil, libTag, sdkDep.classpath...)
+			if j.effectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
+				ctx.AddVariationDependencies(nil, proguardRaiseTag, config.LegacyCorePlatformBootclasspathLibraries...)
+			}
+			if j.effectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
+				ctx.AddVariationDependencies(nil, proguardRaiseTag, config.FrameworkLibraries...)
+			}
+		}
+	}
 }
 
 func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -2593,6 +2626,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.combinedClasspathFile = outputFile
 	j.exportedSdkLibs = make(dexpreopt.LibraryPaths)
 
+	var flags javaBuilderFlags
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -2601,12 +2636,16 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case Dependency:
 			switch tag {
 			case libTag, staticLibTag:
+				flags.classpath = append(flags.classpath, dep.HeaderJars()...)
 				// sdk lib names from dependencies are re-exported
 				j.exportedSdkLibs.AddLibraryPaths(dep.ExportedSdkLibs())
+			case bootClasspathTag:
+				flags.bootClasspath = append(flags.bootClasspath, dep.HeaderJars()...)
 			}
 		case SdkLibraryDependency:
 			switch tag {
 			case libTag:
+				flags.classpath = append(flags.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
 				// names of sdk libs that are directly depended are exported
 				j.exportedSdkLibs.AddLibraryPath(ctx, otherName, dep.DexJarBuildPath(), dep.DexJarInstallPath())
 			}
@@ -2626,6 +2665,26 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.exportedSdkLibs.MaybeAddLibraryPath(ctx, j.OptionalImplicitSdkLibrary(), outputFile, installFile)
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
+
+	if ctx.Device() && Bool(j.dexProperties.Compile_dex) {
+		sdkDep := decodeSdkDep(ctx, sdkContext(j))
+		if sdkDep.invalidVersion {
+			ctx.AddMissingDependencies(sdkDep.bootclasspath)
+			ctx.AddMissingDependencies(sdkDep.java9Classpath)
+		} else if sdkDep.useFiles {
+			// sdkDep.jar is actually equivalent to turbine header.jar.
+			flags.classpath = append(flags.classpath, sdkDep.jars...)
+		}
+
+		// Dex compilation
+		var dexOutputFile android.ModuleOutPath
+		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), outputFile, jarName)
+		if ctx.Failed() {
+			return
+		}
+
+		j.dexJarFile = dexOutputFile
+	}
 }
 
 var _ Dependency = (*Import)(nil)
@@ -2656,7 +2715,7 @@ func (j *Import) ImplementationAndResourcesJars() android.Paths {
 }
 
 func (j *Import) DexJarBuildPath() android.Path {
-	return nil
+	return j.dexJarFile
 }
 
 func (j *Import) DexJarInstallPath() android.Path {
@@ -2724,9 +2783,14 @@ var _ android.PrebuiltInterface = (*Import)(nil)
 func ImportFactory() android.Module {
 	module := &Import{}
 
-	module.AddProperties(&module.properties)
+	module.AddProperties(
+		&module.properties,
+		&module.dexer.dexProperties,
+	)
 
 	module.initModuleAndImport(&module.ModuleBase)
+
+	module.dexProperties.Optimize.EnabledByDefault = false
 
 	android.InitPrebuiltModule(module, &module.properties.Jars)
 	android.InitApexModule(module)
