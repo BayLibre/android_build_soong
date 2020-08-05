@@ -16,6 +16,23 @@
       "revId": "32267c88c44d5c7a31a78f6e8de00a3528a1d443",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1a1f28e_6b3290dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-08-05T07:38:53Z",
+      "side": 1,
+      "message": "I believe that has been superseded by aosp/1388347?",
+      "revId": "32267c88c44d5c7a31a78f6e8de00a3528a1d443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
