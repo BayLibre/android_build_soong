@@ -18,6 +18,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"path/filepath"
+	"runtime"
 	"testing"
 
 	"android/soong/android"
