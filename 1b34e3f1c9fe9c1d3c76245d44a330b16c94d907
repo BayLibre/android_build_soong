@@ -22,6 +22,30 @@
       "revId": "1b34e3f1c9fe9c1d3c76245d44a330b16c94d907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb76b7f_7babd132",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-05T09:11:17Z",
+      "side": 1,
+      "message": "No, hidl.manager dependency on hidl.base is special case, different from what is described here (it is also \"added automatically\" by Soong, but more like a workaround). What is described here is a generic mechanism: if a Java module depends on a Java library (e.g. it has it in `libs` or `static_libs`), and the dependency is an `sdk_library`, then it ought to be in the manifest, but if it\u0027s not, Soong will automatically add it. This mechanism allows to derive many uses-libraries automatically, not having to specify them all in \u003cuses-library\u003e tags in the manifest (which is sometimes hard or impossible due to transitive deps).",
+      "parentUuid": "0fe7490a_52de8932",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "1b34e3f1c9fe9c1d3c76245d44a330b16c94d907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
