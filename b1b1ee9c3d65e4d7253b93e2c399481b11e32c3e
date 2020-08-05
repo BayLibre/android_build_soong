@@ -34,6 +34,24 @@
       "revId": "b1b1ee9c3d65e4d7253b93e2c399481b11e32c3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40c6f127_539c5aab",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-05T19:56:51Z",
+      "side": 1,
+      "message": "In that case, I might need to export module.compiler too, not sure I can change it from aidl_interface.go.",
+      "parentUuid": "6b3940c0_c551b568",
+      "revId": "b1b1ee9c3d65e4d7253b93e2c399481b11e32c3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
