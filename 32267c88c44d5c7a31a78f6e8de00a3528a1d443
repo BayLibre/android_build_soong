@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "177fe239_16415702",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-08-05T06:54:18Z",
+      "side": 1,
+      "message": "LGTM. Are the rustc lints passing?  \n",
+      "revId": "32267c88c44d5c7a31a78f6e8de00a3528a1d443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
