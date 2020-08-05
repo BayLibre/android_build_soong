@@ -82,8 +82,8 @@ type Module struct {
 	coverage         *coverage
 	clippy           *clippy
 	cachedToolchain  config.Toolchain
-	sourceProvider   SourceProvider
-	subAndroidMkOnce map[subAndroidMkProvider]bool
+	SourceProvider   SourceProvider
+	subAndroidMkOnce map[SubAndroidMkProvider]bool
 
 	outputFile    android.OptionalPath
 	generatedFile android.OptionalPath
@@ -92,8 +92,8 @@ type Module struct {
 func (mod *Module) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
 	case "":
-		if mod.sourceProvider != nil {
-			return mod.sourceProvider.Srcs(), nil
+		if mod.SourceProvider != nil {
+			return mod.SourceProvider.Srcs(), nil
 		} else {
 			if mod.outputFile.Valid() {
 				return android.Paths{mod.outputFile.Path()}, nil
@@ -536,8 +536,8 @@ func (mod *Module) Init() android.Module {
 	if mod.clippy != nil {
 		mod.AddProperties(mod.clippy.props()...)
 	}
-	if mod.sourceProvider != nil {
-		mod.AddProperties(mod.sourceProvider.sourceProviderProps()...)
+	if mod.SourceProvider != nil {
+		mod.AddProperties(mod.SourceProvider.SourceProviderProps()...)
 	}
 
 	android.InitAndroidArchModule(mod, mod.hod, mod.multilib)
@@ -671,12 +671,12 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		flags, deps = mod.clippy.flags(ctx, flags, deps)
 	}
 
-	// SourceProvider needs to call generateSource() before compiler calls compile() so it can provide the source.
+	// SourceProvider needs to call GenerateSource() before compiler calls compile() so it can provide the source.
 	// TODO(b/162588681) This shouldn't have to run for every variant.
-	if mod.sourceProvider != nil {
-		generatedFile := mod.sourceProvider.generateSource(ctx, deps)
+	if mod.SourceProvider != nil {
+		generatedFile := mod.SourceProvider.GenerateSource(ctx, deps)
 		mod.generatedFile = android.OptionalPathForPath(generatedFile)
-		mod.sourceProvider.setSubName(ctx.ModuleSubDir())
+		mod.SourceProvider.setSubName(ctx.ModuleSubDir())
 	}
 
 	if mod.compiler != nil && !mod.compiler.Disabled() {
@@ -695,8 +695,8 @@ func (mod *Module) deps(ctx DepsContext) Deps {
 	if mod.compiler != nil {
 		deps = mod.compiler.compilerDeps(ctx, deps)
 	}
-	if mod.sourceProvider != nil {
-		deps = mod.sourceProvider.sourceProviderDeps(ctx, deps)
+	if mod.SourceProvider != nil {
+		deps = mod.SourceProvider.SourceProviderDeps(ctx, deps)
 	}
 
 	if mod.coverage != nil {
