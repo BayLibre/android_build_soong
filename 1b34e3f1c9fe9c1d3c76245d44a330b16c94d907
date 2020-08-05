@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fe7490a_52de8932",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-05T08:58:32Z",
+      "side": 1,
+      "message": "Is this for example hidl.manager requires hidl.base? I think it\u0027s ok for the manifest to specify hidl.manager only, as the PackageManager knows it will have to load hidl.base as a known dependency of hidl.manager. Putting hidl.base in the manifest means all classes in hidl.base will now be available to the app. However, maybe that\u0027s what we want, as we actually don\u0027t know what the app needs?",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 14,
+        "endChar": 67
+      },
+      "revId": "1b34e3f1c9fe9c1d3c76245d44a330b16c94d907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
