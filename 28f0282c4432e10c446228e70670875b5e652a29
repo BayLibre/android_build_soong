@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0a3b1dc_9bf4b5ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-08-05T16:22:16Z",
+      "side": 1,
+      "message": "This was indeed accepted as a Rust project, so +2. :)",
+      "revId": "28f0282c4432e10c446228e70670875b5e652a29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
