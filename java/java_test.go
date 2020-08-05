@@ -525,6 +525,8 @@ func TestPrebuilts(t *testing.T) {
 		java_import {
 			name: "baz",
 			jars: ["b.jar"],
+			sdk_version: "current",
+			compile_dex: true,
 		}
 
 		dex_import {
