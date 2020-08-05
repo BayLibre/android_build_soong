@@ -139,7 +139,8 @@ func stubFlagsRule(ctx android.SingletonContext) {
 		&corePlatformStubModules: corePlatformStubPaths,
 	}
 
-	var bootDexJars android.Paths
+	moduleBootDexJars := make(map[string]android.Path)
+	usePrebuiltModules := make(map[string]bool)
 
 	ctx.VisitAllModules(func(module android.Module) {
 		// Collect dex jar paths for the modules listed above.
@@ -154,6 +155,12 @@ func stubFlagsRule(ctx android.SingletonContext) {
 
 		// Collect dex jar paths for modules that had hiddenapi encode called on them.
 		if h, ok := module.(hiddenAPIIntf); ok {
+			// If the prebuilt is being used rather than the from source, skip this
+			// module to prevent duplicated classes
+			if _, ok := usePrebuiltModules[module.Name()]; ok {
+				return
+			}
+
 			if jar := h.bootDexJar(); jar != nil {
 				// For a java lib included in an APEX, only take the one built for
 				// the platform variant, and skip the variants for APEXes.
@@ -163,10 +170,33 @@ func stubFlagsRule(ctx android.SingletonContext) {
 						return
 					}
 				}
-				bootDexJars = append(bootDexJars, jar)
+
+				name := module.Name()
+				if j, ok := module.(*Import); ok {
+					p := j.Prebuilt()
+					// If the prebuilt should not be used, we skip this module to prevent
+					// duplicated sources.
+					if !p.UsePrebuilt() {
+						return
+					}
+					// If the prebuilt should be used and sources exist, store that the
+					// prebuilt module should be used over the source.
+					if p.SourceExists() {
+						name = j.BaseModuleName()
+						usePrebuiltModules[name] = true
+					}
+				}
+
+				moduleBootDexJars[name] = jar
 			}
 		}
 	})
+
+	bootDexJars := make(android.Paths, 0, len(moduleBootDexJars))
+	for _, jar := range moduleBootDexJars {
+		bootDexJars = append(bootDexJars, jar)
+	}
+	bootDexJars = android.SortedUniquePaths(bootDexJars)
 
 	var missingDeps []string
 	// Ensure all modules were converted to paths
