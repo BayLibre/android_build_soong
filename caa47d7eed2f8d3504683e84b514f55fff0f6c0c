@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91eb8fad_c91c440b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-05T13:00:44Z",
+      "side": 1,
+      "message": "Ping. The changes in the last patchset should be straightforward.",
+      "revId": "caa47d7eed2f8d3504683e84b514f55fff0f6c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
