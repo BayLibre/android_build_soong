@@ -16,6 +16,23 @@
       "revId": "9ffe5cc2335cf1774e3f960d1827df5e07f220ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "817395f1_08d4857f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-08-06T01:45:41Z",
+      "side": 1,
+      "message": "Note: used here:\n\nhttps://android-review.googlesource.com/c/platform/system/extras/+/1371345/22/gki/build/gki.go#232",
+      "revId": "9ffe5cc2335cf1774e3f960d1827df5e07f220ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
