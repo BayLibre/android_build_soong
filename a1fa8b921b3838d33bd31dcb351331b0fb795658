@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b54ab48_35e12d25",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-06T17:45:20Z",
+      "side": 1,
+      "message": "This could be handled better by making usesLibrary embedded in each of these types (i.e. replacing `usesLibrary usesLibrary` with just `usesLibrary`, and then adding an interface method:\n\n    func (u *usesLibrary) usesLibrary() *usesLibrary {\n        return u\n    }\n\n    type interface {\n        usesLibrary() *usesLibrary\n    }\n\nThen you can call usesLibrary() on any module with:\n\n    if l, ok :\u003d ctx.Module().(usesLibraryInterface); ok {\n        u \u003d l.usesLibrary()\n    }",
+      "range": {
+        "startLine": 1908,
+        "startChar": 1,
+        "endLine": 1923,
+        "endChar": 2
+      },
+      "revId": "a1fa8b921b3838d33bd31dcb351331b0fb795658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c9b288_fa61446f",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-06T17:45:20Z",
+      "side": 1,
+      "message": "If I understand correctly, this is extracting transitive dependencies to add direct usesLibTag dependencies on them.  That doesn\u0027t seem necessary, you don\u0027t actually need the usesLibTag dependency, you need the information to create the \"\u003cuses-library\u003e\" tag and the path to give to dexpreopt.  I would do that by bubbling up the information during GenerateAndroidBuildActions.  Instead of using aarDep.ExportedSDKLibs() here, you would use something like aarDep.ExportedSDKLibPaths() in GenerateAndroidBuildActions, which would retrieve path information that was recorded during GenerateAndroidBuildActions on the aarDep.  Same for SdkLibraryComponentDependency - the component would record the name and paths of the implicit sdk libraries during its GenerateAndroidBuildActions.",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1943,
+        "endChar": 3
+      },
+      "revId": "a1fa8b921b3838d33bd31dcb351331b0fb795658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
