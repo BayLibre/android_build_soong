@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "595407e7_c1e769d0",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-06T23:54:53Z",
+      "side": 1,
+      "message": "Thanks, I filed b/163084323 to keep track of this and follow up when needed. I think the current depfile approach is sufficient, but I\u0027m pretty sure we\u0027ll see subtle bugs going forward with more testing.",
+      "parentUuid": "056d8b9f_68a0672a",
+      "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb9764b8_e3c2ad8e",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 18
