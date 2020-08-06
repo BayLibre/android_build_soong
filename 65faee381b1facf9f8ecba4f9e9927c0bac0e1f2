@@ -532,6 +532,30 @@
       "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae4d7671_85eac63e",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-06T19:28:31Z",
+      "side": 1,
+      "message": "Yep, sorry the noise :)",
+      "parentUuid": "054b49f4_f41ad22c",
+      "range": {
+        "startLine": 109,
+        "startChar": 50,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

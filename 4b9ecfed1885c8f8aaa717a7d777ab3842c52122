@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "056d8b9f_68a0672a",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-06T19:28:31Z",
+      "side": 1,
+      "message": "That\u0027s better, but incomplete compared to out/soong/build.ninja.d, as we allow including other build files with `build \u003d [...]` (commonly used to separate generated / hand-written files in the same directory).\n\nAnother major segment of the depfile is glob (used to trigger re-execution when any glob has changed). I\u0027m having trouble coming up with a case where a glob could impact the module graph however, so that\u0027s probably fine.\n\nThe environment snapshot (out/soong/.soong.environment) is also in that list, but considering we\u0027re getting a different environment inside ninja anyways, the missing dependency probably isn\u0027t an issue (though it does mean that the exported module graph won\u0027t be consistent with any graph modifications triggered by environment variables)\n\nAnd the last semi-important file is the soong config file (out/soong/soong.config) which is almost always going to be empty except in some odd cases, so probably isn\u0027t an issue in practice.\n\n(There are also a few directories in the list which I\u0027d classify as bugs...)",
+      "parentUuid": "bad45b26_886a1b7b",
+      "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb9764b8_e3c2ad8e",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 18
