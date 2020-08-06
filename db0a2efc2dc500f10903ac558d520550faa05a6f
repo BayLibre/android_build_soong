@@ -52,6 +52,24 @@
       "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5048a0_20a473e0",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-06T21:05:34Z",
+      "side": 1,
+      "message": "the other CL in this topic :)",
+      "parentUuid": "ae90bee4_659eb8b1",
+      "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
