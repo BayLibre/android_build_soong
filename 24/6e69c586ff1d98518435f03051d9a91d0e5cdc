@@ -1,0 +1,9 @@
+Bypass-Presubmit+1: Thiébaud Weksteen <tweek@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Ivan Lozano <ivanlozano@google.com>
+Submitted-by: Thiébaud Weksteen <tweek@google.com>
+Submitted-at: Thu, 06 Aug 2020 12:30:29 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1393036
+Project: platform/build/soong
+Branch: refs/heads/master
