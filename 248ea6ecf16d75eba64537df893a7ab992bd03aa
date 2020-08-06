@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e301078a_83a48aa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-06T12:24:30Z",
+      "side": 1,
+      "message": "The NewSourceProviderModule helper is a good idea, thanks! A couple comments on a few other things that should go into it, but otherwise this looks good.",
+      "revId": "248ea6ecf16d75eba64537df893a7ab992bd03aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa092fc9_88f8b1ef",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-06T12:24:30Z",
+      "side": 1,
+      "message": "Could you move this into NewSourceProviderModule as well? This will be common to all other SourceProviders, and we wouldn\u0027t even have to pass the library as an arg anymore.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "248ea6ecf16d75eba64537df893a7ab992bd03aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf85f314_cfb9cfcd",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-06T12:24:30Z",
+      "side": 1,
+      "message": "This can go into new NewSourceProviderModule as well.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 24
+      },
+      "revId": "248ea6ecf16d75eba64537df893a7ab992bd03aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
