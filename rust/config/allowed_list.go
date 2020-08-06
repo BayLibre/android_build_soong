@@ -7,6 +7,7 @@ var (
 		"external/crosvm",
 		"external/adhd",
 		"prebuilts/rust",
+		"system/extra",
 		"system/security",
 	}
 
