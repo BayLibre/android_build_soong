@@ -51,6 +51,24 @@
       "revId": "d7a41d036bdd17cd18f7479b5a5cf983551ef6d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeed4b07_298f90bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-08-06T00:50:52Z",
+      "side": 1,
+      "message": "eugenis@ confirmed that CFI is stable.",
+      "parentUuid": "8ba1814e_553f5989",
+      "revId": "d7a41d036bdd17cd18f7479b5a5cf983551ef6d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
