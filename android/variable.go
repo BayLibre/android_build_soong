@@ -172,6 +172,7 @@ type productVariables struct {
 	DeviceCpuVariant        *string  `json:",omitempty"`
 	DeviceAbi               []string `json:",omitempty"`
 	DeviceVndkVersion       *string  `json:",omitempty"`
+	DeviceCurrentSdkVersion *string  `json:",omitempty"`
 	DeviceSystemSdkVersions []string `json:",omitempty"`
 
 	DeviceSecondaryArch        *string  `json:",omitempty"`
