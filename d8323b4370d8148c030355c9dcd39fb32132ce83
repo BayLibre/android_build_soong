@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3c62e18_59762acb",
+        "filename": "rust/source_provider.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-06T22:42:31Z",
+      "side": 1,
+      "message": "I\u0027m enabling (most) lints in the AIDL compiler, so aidl_interface.go passes in true here.",
+      "revId": "d8323b4370d8148c030355c9dcd39fb32132ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
