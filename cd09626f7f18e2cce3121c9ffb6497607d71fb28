@@ -16,6 +16,29 @@
       "revId": "cd09626f7f18e2cce3121c9ffb6497607d71fb28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aad5be33_07d6f14a",
+        "filename": "java/robolectric.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-06T21:39:39Z",
+      "side": 1,
+      "message": "This should report an error.  Maybe:\n\n    if runtimeFromSourceModule \u003d\u003d nil {\n        if ctx.Config().AllowMissingDependencies() {\n            ctx.AddMissingDependencies(String(r.props.Lib))\n        } else {\n            ctx.PropertyErrorf(\"lib\", \"missing dependency %q\", String(r.props.Lib))\n        }\n    }",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 3
+      },
+      "revId": "cd09626f7f18e2cce3121c9ffb6497607d71fb28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
