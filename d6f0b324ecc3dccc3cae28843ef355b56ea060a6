@@ -16,6 +16,24 @@
       "revId": "d6f0b324ecc3dccc3cae28843ef355b56ea060a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4332158_f362b692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-06T16:48:10Z",
+      "side": 1,
+      "message": "Thanks for reviewing!\n\nI was uncertain if you will approve the post-deps mutator approach at all, so I wanted to put together a CL and discuss the general approach. I should have been more explicit about that, sorry.",
+      "parentUuid": "84ab628c_79e79353",
+      "revId": "d6f0b324ecc3dccc3cae28843ef355b56ea060a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
