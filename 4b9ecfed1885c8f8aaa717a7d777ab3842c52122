@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cff9780_0eefeece",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-06T10:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31c42f41_3663212c",
+      "range": {
+        "startLine": 47,
+        "startChar": 53,
+        "endLine": 47,
+        "endChar": 55
+      },
+      "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbdfc284_5e15b72b",
         "filename": "android/bazel_overlay.go",
         "patchSetId": 18
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "bad45b26_886a1b7b",
+        "filename": "android/bazel_overlay.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-06T10:25:35Z",
+      "side": 1,
+      "message": "Ahh, good catch. I added a simple depfile creation to the command using Android.bp.list. Tested it, and incremental regeneration works when I changed an Android.bp file (and no-op when I didn\u0027t).",
+      "parentUuid": "cbdfc284_5e15b72b",
+      "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb9764b8_e3c2ad8e",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 18
@@ -56,6 +98,24 @@
       "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b37fa25_c77b13f0",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-06T10:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb9764b8_e3c2ad8e",
+      "revId": "4b9ecfed1885c8f8aaa717a7d777ab3842c52122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

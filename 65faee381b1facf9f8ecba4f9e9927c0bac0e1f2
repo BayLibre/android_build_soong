@@ -369,6 +369,30 @@
     },
     {
       "key": {
+        "uuid": "55c05b78_eea06944",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-06T10:25:35Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I completely overlooked DependencyTag. \n\nDoes this mean that module A can depend on modules B and B\u0027, and that B and B\u0027 can each have different module dependencies themselves, thus resulting in an incorrect transitive closure for A if B and B\u0027 are de-duplicated?\n\nI\u0027d like to follow up on this in another CL to not block this CL. I\u0027ve filed a bug to keep track of this, and added it as a comment: b/163018919",
+      "parentUuid": "ef54dc9f_04212d73",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf586c3b_70de29f6",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 3
@@ -475,6 +499,30 @@
       "side": 1,
       "message": "There are package level constants on the os package: https://golang.org/pkg/os/#pkg-constants",
       "parentUuid": "08565c80_994b0b35",
+      "range": {
+        "startLine": 109,
+        "startChar": 50,
+        "endLine": 109,
+        "endChar": 54
+      },
+      "revId": "65faee381b1facf9f8ecba4f9e9927c0bac0e1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "054b49f4_f41ad22c",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-06T10:25:35Z",
+      "side": 1,
+      "message": "Unless I\u0027m misunderstanding something, the third argument type is https://golang.org/pkg/os/#FileMode, which needs a unix file perm or one of the special case constants. The one you\u0027ve linked is for the second argument.",
+      "parentUuid": "8f6ef062_ebcccb22",
       "range": {
         "startLine": 109,
         "startChar": 50,
