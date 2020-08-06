@@ -208,6 +208,23 @@ func (s sdkSpec) forPdkBuild(ctx android.EarlyModuleContext) sdkSpec {
 	return s
 }
 
+func (s sdkSpec) forUnbundledPartition(ctx android.EarlyModuleContext) sdkSpec {
+	// For an unbundled partition, use the latest SDK version in BOARD_SYSTEMSDK_VERSIONS,
+	// when BOARD_SYSTEMSDK_VERSIONS doesn't contains DefaultAppTargetSdk() which means "current"
+	systemSdkVersions := ctx.DeviceConfig().SystemSdkVersions()
+	if s.kind == sdkPublic || s.kind == sdkSystem {
+		if s.version.isCurrent() && !android.InList(ctx.Config().DefaultAppTargetSdk(), systemSdkVersions) {
+			versionString := systemSdkVersions[len(systemSdkVersions)-1]
+
+			if i, err := strconv.Atoi(versionString); err == nil {
+				version := sdkVersion(i)
+				return sdkSpec{s.kind, version, s.raw}
+			}
+		}
+	}
+	return s
+}
+
 // usePrebuilt determines whether prebuilt SDK should be used for this sdkSpec with the given context.
 func (s sdkSpec) usePrebuilt(ctx android.EarlyModuleContext) bool {
 	if s.version.isCurrent() {
@@ -235,6 +252,9 @@ func (s sdkSpec) effectiveVersion(ctx android.EarlyModuleContext) (sdkVersion, e
 	}
 	if ctx.Config().IsPdkBuild() {
 		s = s.forPdkBuild(ctx)
+	}
+	if ctx.DeviceSpecific() || ctx.SocSpecific() || (ctx.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface()) {
+		s = s.forUnbundledPartition(ctx)
 	}
 	if s.version.isNumbered() {
 		return s.version, nil
@@ -352,6 +372,9 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext sdkContext) sdkDep 
 
 	if ctx.Config().IsPdkBuild() {
 		sdkVersion = sdkVersion.forPdkBuild(ctx)
+	}
+	if ctx.DeviceSpecific() || ctx.SocSpecific() || (ctx.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface()) {
+		sdkVersion = sdkVersion.forUnbundledPartition(ctx)
 	}
 	if !sdkVersion.validateSystemSdk(ctx) {
 		return sdkDep{}
