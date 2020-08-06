@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "839ab413_a6267980",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-06T20:51:14Z",
+      "side": 1,
+      "message": "This needs to be reliably ordered so that we get consistent merge ordering (on many filesystems we\u0027d get that from an empty directory and a consistent extraction order from unzip, but that\u0027s not guaranteed)",
+      "range": {
+        "startLine": 645,
+        "startChar": 70,
+        "endLine": 645,
+        "endChar": 91
+      },
+      "revId": "f21dc3ddff059f01e4b4c7c889ee049557a13a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
