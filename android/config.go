@@ -221,15 +221,16 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 
 	config := &config{
 		productVariables: productVariables{
-			DeviceName:                  stringPtr("test_device"),
-			Platform_sdk_version:        intPtr(30),
-			DeviceSystemSdkVersions:     []string{"14", "15"},
-			Platform_systemsdk_versions: []string{"29", "30"},
-			AAPTConfig:                  []string{"normal", "large", "xlarge", "hdpi", "xhdpi", "xxhdpi"},
-			AAPTPreferredConfig:         stringPtr("xhdpi"),
-			AAPTCharacteristics:         stringPtr("nosdcard"),
-			AAPTPrebuiltDPI:             []string{"xhdpi", "xxhdpi"},
-			UncompressPrivAppDex:        boolPtr(true),
+			DeviceName:                            stringPtr("test_device"),
+			Platform_sdk_version:                  intPtr(30),
+			DeviceSystemSdkVersions:               []string{"14", "15"},
+			Platform_systemsdk_versions:           []string{"29", "30"},
+			AAPTConfig:                            []string{"normal", "large", "xlarge", "hdpi", "xhdpi", "xxhdpi"},
+			AAPTPreferredConfig:                   stringPtr("xhdpi"),
+			AAPTCharacteristics:                   stringPtr("nosdcard"),
+			AAPTPrebuiltDPI:                       []string{"xhdpi", "xxhdpi"},
+			UncompressPrivAppDex:                  boolPtr(true),
+			DeviceCurrentApiLevelForVendorModules: stringPtr("current"),
 		},
 
 		buildDir:     buildDir,
@@ -956,6 +957,14 @@ func (c *deviceConfig) VendorPath() string {
 
 func (c *deviceConfig) VndkVersion() string {
 	return String(c.config.productVariables.DeviceVndkVersion)
+}
+
+func (c *deviceConfig) CurrentApiLevelForVendorModules() string {
+	apiLevel := String(c.config.productVariables.DeviceCurrentApiLevelForVendorModules)
+	if len(apiLevel) == 0 {
+		return "current"
+	}
+	return apiLevel
 }
 
 func (c *deviceConfig) PlatformVndkVersion() string {
