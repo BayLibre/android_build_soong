@@ -100,15 +100,17 @@ func TestProjectJsonBindGen(t *testing.T) {
 	rust_library {
 		name: "liba",
 		srcs: ["src/lib.rs"],
-		rlibs: ["libbindings"],
+		rlibs: ["libbindgen"],
 		crate_name: "a"
 	}
 	rust_bindgen {
-		name: "libbindings",
-		crate_name: "bindings",
-		source_stem: "bindings",
-		host_supported: true,
+		name: "libbindgen",
 		wrapper_src: "src/any.h",
+		crate_name: "bindgen",
+		stem: "libbindgen",
+		source_stem: "bindings",
+		bindgen_flags: ["--bindgen-flag"],
+		cflags: ["--clang-flag"],
 	}
 	` + GatherRequiredDepsForTest()
 	fs := map[string][]byte{
