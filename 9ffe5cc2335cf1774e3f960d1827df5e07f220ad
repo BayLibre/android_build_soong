@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4343b7ec_d13ee826",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-06T00:25:23Z",
+      "side": 1,
+      "message": "Is it possible and inexpensive to leave all of the gki_apex modules enabled, and only install the appropriate ones for with the right interface version?  That will get better coverage in checkbuilds.",
+      "revId": "9ffe5cc2335cf1774e3f960d1827df5e07f220ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
