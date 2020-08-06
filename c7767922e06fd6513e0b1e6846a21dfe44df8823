@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41576b99_ed5137d4",
+        "filename": "rust/source_provider.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1638873
+      },
+      "writtenOn": "2020-08-06T22:52:58Z",
+      "side": 1,
+      "message": "Gerrit hid my previous comment here. aidl_interface.go sets this to true.",
+      "revId": "c7767922e06fd6513e0b1e6846a21dfe44df8823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
