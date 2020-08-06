@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20d13d9a_5fe5ccd1",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-06T21:14:01Z",
+      "side": 1,
+      "message": "This needs to be attached to the ls, not the sort:\n\n  $ ls lib/*.jar | sort 2\u003e/dev/null\n  ls: cannot access \u0027lib/*.jar\u0027: No such file or directory\n\n  $ ls lib/*.jar 2\u003e/dev/null | sort\n  \u003cempty\u003e",
+      "range": {
+        "startLine": 645,
+        "startChar": 99,
+        "endLine": 645,
+        "endChar": 111
+      },
+      "revId": "9743827edaddd987ebc9b52425628fc0e0d80944",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
