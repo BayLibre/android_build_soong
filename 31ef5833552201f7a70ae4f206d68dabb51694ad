@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c5f42b9_d5079df6",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-06T15:49:49Z",
+      "side": 1,
+      "message": "I think a better name for this type would be \"usesLibraries\". Should this also be added to java_library?",
+      "revId": "31ef5833552201f7a70ae4f206d68dabb51694ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50914de_e1d9b716",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-06T15:49:49Z",
+      "side": 1,
+      "message": "Using an interface and delegating the work to any module that uses that interface would be a more extensible solution.",
+      "revId": "31ef5833552201f7a70ae4f206d68dabb51694ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5792e2_6a3f8215",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1912,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-06T15:49:49Z",
+      "side": 1,
+      "message": "As I understand it \"framework-res\" is the only module that can cause this issue.",
+      "revId": "31ef5833552201f7a70ae4f206d68dabb51694ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be97f5c_eb9569aa",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-06T15:49:49Z",
+      "side": 1,
+      "message": "I don\u0027t think that this should be restricted to AndroidLibraryDependency I think it should just use Dependency. I know that the previous code did restrict it to AndroidLibraryDependency so switching to Dependency would be a functional change (and separated out into its own change) but I think that at the moment we will not track dependencies correctly. e.g. say we have something like this:\n\njava_sdk_library {\n   name: \"runtime-library\",\n}\n\njava_library {\n   name: \"static-runtime-helper\",\n   libs: [\"runtime-library\"],\n}\n\nandroid_app {\n   name: \"app\",\n   static_libs: [\n      \"static-runtime-helper\",\n   ],\n}\n\nThen \"app\" should have \"runtime-library\" added to its \u003cuses-library\u003e but I don\u0027t think it will.\n\nI tested it and it doesn\u0027t seem to work as it should so I raised http://b/163037089 to fix it and assigned it to you.",
+      "revId": "31ef5833552201f7a70ae4f206d68dabb51694ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3db22a_9103aa17",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1950,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-06T15:49:49Z",
+      "side": 1,
+      "message": "dexproept- spelling",
+      "revId": "31ef5833552201f7a70ae4f206d68dabb51694ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

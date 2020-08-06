@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84ab628c_79e79353",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-06T15:49:49Z",
+      "side": 1,
+      "message": "I found this change quite difficult to review because it seems to mix a couple of changes (one which should be a pure refactoring with no change in behavior) and the other which changes the behavior:\n1. Extracting the processing of uses library to a mutator.\n2. Passing the uses library through to dexpreopt.\n",
+      "revId": "d6f0b324ecc3dccc3cae28843ef355b56ea060a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
