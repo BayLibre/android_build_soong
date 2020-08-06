@@ -51,6 +51,24 @@
       "revId": "9ffe5cc2335cf1774e3f960d1827df5e07f220ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425ba5d7_c83d4348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-08-06T01:50:32Z",
+      "side": 1,
+      "message": "I mean, I can techincally enable all modules except the last _check_kmi_version module in that file, but I think all those modules should be disabled together. We can discuss in that CL.",
+      "parentUuid": "ff1b52d9_8afc6178",
+      "revId": "9ffe5cc2335cf1774e3f960d1827df5e07f220ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
