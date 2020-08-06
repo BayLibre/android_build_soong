@@ -33,6 +33,24 @@
       "revId": "9ffe5cc2335cf1774e3f960d1827df5e07f220ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff1b52d9_8afc6178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-08-06T01:48:48Z",
+      "side": 1,
+      "message": "No, it is intentional to disable the modules with the wrong interface version. For example, for a certain device may have KMI version X in boot.img, then building the APEX named KMI version Y with the given boot.img is just wrong.\n\nSee https://android-review.googlesource.com/c/platform/system/extras/+/1371345/22/gki/build/gki.go#232. Technically, the enabled flag can be set in the last \"_check_kmi_version\" module (L155 in that file), but I think they should be disabled altogether. In any case, I\u0027ll need this CL.",
+      "parentUuid": "4343b7ec_d13ee826",
+      "revId": "9ffe5cc2335cf1774e3f960d1827df5e07f220ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
