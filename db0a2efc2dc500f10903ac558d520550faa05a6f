@@ -34,6 +34,24 @@
       "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae90bee4_659eb8b1",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-08-06T21:05:08Z",
+      "side": 1,
+      "message": "Sorry, where is the other topic?",
+      "parentUuid": "a7472589_62251a28",
+      "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
