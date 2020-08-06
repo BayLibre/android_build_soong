@@ -16,6 +16,24 @@
       "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7472589_62251a28",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-08-06T21:00:17Z",
+      "side": 1,
+      "message": "Yeah - it is set in the other topic. Actually, I was thinking about removing all of these options, etc.. and leaving the decision in bionic, following this CL. Changing them isn\u0027t very supported.",
+      "parentUuid": "42ee6a00_65ac56b8",
+      "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
