@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "57760d11_48f5dcfd",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-08-06T21:17:00Z",
+      "side": 1,
+      "message": "(looks like this is done)",
+      "parentUuid": "1f6864d5_7f390baa",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "4a330e90482b01020cdc2d4c9ad276aa0aafd558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4346493_2783eda3",
         "filename": "cc/sanitize.go",
         "patchSetId": 2
