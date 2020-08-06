@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42ee6a00_65ac56b8",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-06T20:56:59Z",
+      "side": 1,
+      "message": "This is basically never used.  A soong-only build generally provides its own soong.variables file, some of which generate one with soong_config.mk, others that provide a manual minimal one.  The minimal ones probably don\u0027t set this at all.",
+      "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
