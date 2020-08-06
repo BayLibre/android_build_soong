@@ -22,6 +22,30 @@
       "revId": "f21dc3ddff059f01e4b4c7c889ee049557a13a5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95654800_c0d375c8",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-06T21:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "839ab413_a6267980",
+      "range": {
+        "startLine": 645,
+        "startChar": 70,
+        "endLine": 645,
+        "endChar": 91
+      },
+      "revId": "f21dc3ddff059f01e4b4c7c889ee049557a13a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
