@@ -22,6 +22,30 @@
       "revId": "871e58e8448fbf6987cce356ed677eed880a752e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdec6aae_51f215ff",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1710792
+      },
+      "writtenOn": "2020-08-06T19:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e3b970a_f174f397",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "871e58e8448fbf6987cce356ed677eed880a752e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
