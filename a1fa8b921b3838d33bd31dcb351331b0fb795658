@@ -69,6 +69,30 @@
       "revId": "a1fa8b921b3838d33bd31dcb351331b0fb795658",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ac2f842_fb8729cb",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-07T13:33:19Z",
+      "side": 1,
+      "message": "Explanation why paths are unavailable until after GenerateAndroidBuildActions:\n- paths are retrieved using DexJarBuildPath()/DexJarInstallPath() methods of java.Dependency interface\n- these methods use java.Module.dexJarFile and java.Module.installFile\n- these fields are populated in java.Module.compile(), which runs in GenerateAndroidBuildActions\n\nSo, if a implicit SDK uses-library happens to be processed later than the dexpreopted module by GenerateAndroidBuildActions, paths for dexpreopt won\u0027t be generated yet by the time they are needed.\n\nHowever, it\u0027s not necessary to add all uses-libraries as direct dependencies of the dexpreopted module and make the graph dense, it is sufficient to have them as transitive dependencies. Perhaps this is what you meant in the first place, and I failed to understand. I will rework the patch to this approach.",
+      "parentUuid": "edecb0da_957c5871",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1943,
+        "endChar": 3
+      },
+      "revId": "a1fa8b921b3838d33bd31dcb351331b0fb795658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
