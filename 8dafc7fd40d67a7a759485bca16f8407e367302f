@@ -16,6 +16,24 @@
       "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96901bde_de5d1cfd",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-08-07T20:52:40Z",
+      "side": 1,
+      "message": "Good to know. \n\nYeah, I think making these consistent with cc_test.data_libs and java_test.data_native_bins is better from a user perspective.",
+      "parentUuid": "063b2f70_999bce31",
+      "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
