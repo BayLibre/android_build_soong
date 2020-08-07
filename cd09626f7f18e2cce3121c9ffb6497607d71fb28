@@ -63,6 +63,30 @@
       "revId": "cd09626f7f18e2cce3121c9ffb6497607d71fb28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11ad094c_e75944d3",
+        "filename": "java/robolectric.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-07T03:09:36Z",
+      "side": 1,
+      "message": "Sorry, you\u0027ll also need a return in there.",
+      "parentUuid": "bd12f1ed_f6944e1d",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 3
+      },
+      "revId": "cd09626f7f18e2cce3121c9ffb6497607d71fb28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
