@@ -20,9 +20,11 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 const (
@@ -54,11 +56,11 @@ SoongModuleInfo = provider(
 
 def _soong_module_impl(ctx):
     return [
-        SoongModuleInfo(
-            name = ctx.attr.module_name,
-            type = ctx.attr.module_type,
-            variant = ctx.attr.module_variant,
-        ),
+        # SoongModuleInfo(
+        #     name = ctx.attr.module_name,
+        #     type = ctx.attr.module_type,
+        #     variant = ctx.attr.module_variant,
+        # ),
     ]
 
 soong_module = rule(
@@ -67,8 +69,19 @@ soong_module = rule(
         "module_name": attr.string(mandatory = True),
         "module_type": attr.string(mandatory = True),
         "module_variant": attr.string(),
-        "deps": attr.label_list(providers = [SoongModuleInfo]),
+        # "deps": attr.label_list(providers = [SoongModuleInfo]),
+        "deps": attr.label_list(),
     },
+)
+`
+
+	// TODO(jingwen): what is the equivalent of the 'path' module property?
+	// no 'deps' in soong filegroups
+	filegroupTarget = `filegroup(
+    name = "%s",
+    srcs = [
+%s
+    ],
 )
 `
 )
@@ -95,6 +108,96 @@ func packagePath(c *blueprint.Context, logicModule blueprint.Module) string {
 	return filepath.Dir(c.BlueprintFile(logicModule))
 }
 
+func printGeneralModuleInfo(aModule android.Module) {
+	fmt.Println(aModule.Name())
+	// fmt.Println(aModule.Enabled())
+	// fmt.Println(aModule.Target().Arch.ArchType.String())
+}
+
+// A generic way to print module properties
+func extractModuleProperties(aModule android.Module) map[string]string {
+	ret := map[string]string{}
+
+	for _, properties := range aModule.GetProperties() {
+		propertiesValue := reflect.ValueOf(properties)
+		if !isStructPtr(propertiesValue.Type()) {
+			panic(fmt.Errorf("properties must be a pointer to a struct, got %T",
+				propertiesValue.Interface()))
+		}
+
+		propertiesValue = propertiesValue.Elem()
+		t := propertiesValue.Type()
+		fmt.Println(t.Name()) // print the struct type of the properties struct
+
+		for i := 0; i < propertiesValue.NumField(); i++ {
+			f := propertiesValue.Field(i)
+			propertyName := proptools.PropertyNameForField(
+				propertiesValue.Type().Field(i).Name)
+
+			// Ignore zero-valued properties
+			if !isZero(f) {
+				var propertyValue reflect.Value
+				if f.Kind() == reflect.Ptr {
+					propertyValue = reflect.Indirect(f)
+				} else if f.Kind() == reflect.Interface {
+					continue
+					// if f.Elem().Kind() == reflect.Ptr {
+					// 	propertyValue = reflect.Indirect(f.Elem())
+					// 	_f := reflect.Indirect(f.Elem())
+					// 	for j := 0; j < _f.NumField(); j++ {
+					// 		if !isZero(_f.Field(j)) {
+					// 			fmt.Println(_f.Field(j))
+					// 		}
+					// 	}
+					// }
+				} else {
+					propertyValue = f
+				}
+
+				var value string
+				if propertyValue.Kind() == reflect.Slice {
+					for i := 0; i < propertyValue.Len(); i++ {
+						value += "        "
+						v := fmt.Sprintf("\"%s\",", propertyValue.Index(i))
+						// TODO: skip strings with slashes in them because
+						// some src files can cross package boundaries (!!)
+						if strings.Contains(v, "/") {
+							value += "# "
+						}
+						value += v
+						value += "\n"
+					}
+				} else {
+					value = fmt.Sprintf("%v", propertyValue.Interface())
+				}
+
+				ret[propertyName] = value
+
+				fmt.Printf("%d: %s %s = %+v\n", i,
+					f.Type(),
+					propertyName,
+					propertyValue)
+			}
+		}
+
+		// switch properties.(type) {
+		// case *cc.BaseLinkerProperties:
+		// 	_ = properties.(*cc.BaseLinkerProperties)
+		// }
+
+		// switch properties.(type) {
+		// case *java.CompilerProperties:
+		// 	compilerProperties := properties.(*java.CompilerProperties)
+		// 	fmt.Printf("srcs = %q\n", compilerProperties.Srcs)
+		// default:
+		// 	// do nothing
+		// }
+		// fmt.Println(t, propertiesValue)
+	}
+
+	return ret
+}
+
 func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 	blueprintCtx := ctx.Context
 	blueprintCtx.VisitAllModules(func(module blueprint.Module) {
@@ -115,15 +218,53 @@ func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 		for depLabel, _ := range depLabels {
 			depLabelList += "\"" + depLabel + "\",\n        "
 		}
-		buildFile.Write([]byte(
-			fmt.Sprintf(
-				soongModuleTarget,
-				targetNameWithVariant(blueprintCtx, module),
-				blueprintCtx.ModuleName(module),
-				blueprintCtx.ModuleType(module),
-				// misleading name, this actually returns the variant.
-				blueprintCtx.ModuleSubDir(module),
-				depLabelList)))
+
+		var target string
+		target = genericSoongModule(blueprintCtx, module, depLabelList)
+
+		if aModule, ok := module.(android.Module); ok {
+			switch aModule.(type) {
+			// case *genrule.Module:
+			// 	printGeneralModuleInfo(aModule)
+			// 	printModuleProperties(aModule)
+			case *android.FileGroup:
+				printGeneralModuleInfo(aModule)
+				props := extractModuleProperties(aModule)
+				target = fmt.Sprintf(
+					filegroupTarget,
+					aModule.Name(),
+					props["srcs"])
+				// props["name"] = blueprintCtx.ModuleName(module)
+				// var tpl bytes.Buffer
+				// err := template.Must(
+				// 	template.New("").Parse(
+				// 		filegroupTargetTemplate)).Execute(&tpl, props)
+				// if err != nil {
+				// 	panic(err)
+				// }
+				// target = tpl.String()
+			// case *cc.Module:
+			// 	if aModule.Name() == "libm" {
+			// 		printModuleProperties(aModule)
+			// 	}
+			// case *java.Library:
+			// 	javaLibraryModule := aModule.(*java.Library)
+			// 	fmt.Printf("name = %s\n", javaLibraryModule.Name())
+			// 	for _, properties := range javaLibraryModule.GetProperties() {
+			// 		switch properties.(type) {
+			// 		case *java.CompilerProperties:
+			// 			compilerProperties := properties.(*java.CompilerProperties)
+			// 			fmt.Printf("srcs = %q\n", compilerProperties.Srcs)
+			// 		default:
+			// 			// do nothing
+			// 		}
+			// 	}
+			default:
+				// generic android module
+				// do nothing
+			}
+		}
+		buildFile.Write([]byte(target))
 		buildFile.Close()
 	})
 
@@ -136,6 +277,17 @@ func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 	}
 
 	return writeReadOnlyFile(bazelOverlayDir, "soong_module.bzl", soongModuleBzl)
+}
+
+func genericSoongModule(blueprintCtx *blueprint.Context, module blueprint.Module, depLabelList string) string {
+	return fmt.Sprintf(
+		soongModuleTarget,
+		targetNameWithVariant(blueprintCtx, module),
+		blueprintCtx.ModuleName(module),
+		blueprintCtx.ModuleType(module),
+		// misleading name, this actually returns the variant.
+		blueprintCtx.ModuleSubDir(module),
+		depLabelList)
 }
 
 func buildFileForModule(ctx *blueprint.Context, module blueprint.Module) (*os.File, error) {
@@ -170,4 +322,44 @@ func writeReadOnlyFile(dir string, baseName string, content string) error {
 	workspaceFile := filepath.Join(bazelOverlayDir, baseName)
 	// 0444 is read-only
 	return ioutil.WriteFile(workspaceFile, []byte(content), 0444)
+}
+
+func writeDepFile() {
+
+}
+
+func isStructPtr(t reflect.Type) bool {
+	return t.Kind() == reflect.Ptr && t.Elem().Kind() == reflect.Struct
+}
+
+func isZero(v reflect.Value) bool {
+	switch v.Kind() {
+	case reflect.Func, reflect.Map, reflect.Slice:
+		return v.IsNil()
+	case reflect.Array:
+		z := true
+		for i := 0; i < v.Len(); i++ {
+			z = z && isZero(v.Index(i))
+		}
+		return z
+	case reflect.Struct:
+		z := true
+		for i := 0; i < v.NumField(); i++ {
+			if v.Field(i).CanSet() {
+				z = z && isZero(v.Field(i))
+			}
+		}
+		return z
+	case reflect.Ptr:
+		if !v.IsNil() {
+			return isZero(reflect.Indirect(v))
+		} else {
+			return true
+		}
+	}
+	// Compare other types directly:
+	z := reflect.Zero(v.Type())
+	result := v.Interface() == z.Interface()
+
+	return result
 }

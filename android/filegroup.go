@@ -39,25 +39,25 @@ type fileGroupProperties struct {
 	Export_to_make_var *string
 }
 
-type fileGroup struct {
+type FileGroup struct {
 	ModuleBase
 	properties fileGroupProperties
 	srcs       Paths
 }
 
-var _ SourceFileProducer = (*fileGroup)(nil)
+var _ SourceFileProducer = (*FileGroup)(nil)
 
 // filegroup contains a list of files that are referenced by other modules
 // properties (such as "srcs") using the syntax ":<name>". filegroup are
 // also be used to export files across package boundaries.
 func FileGroupFactory() Module {
-	module := &fileGroup{}
+	module := &FileGroup{}
 	module.AddProperties(&module.properties)
 	InitAndroidModule(module)
 	return module
 }
 
-func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
+func (fg *FileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
 
 	if fg.properties.Path != nil {
@@ -65,11 +65,11 @@ func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	}
 }
 
-func (fg *fileGroup) Srcs() Paths {
+func (fg *FileGroup) Srcs() Paths {
 	return append(Paths{}, fg.srcs...)
 }
 
-func (fg *fileGroup) MakeVars(ctx MakeVarsModuleContext) {
+func (fg *FileGroup) MakeVars(ctx MakeVarsModuleContext) {
 	if makeVar := String(fg.properties.Export_to_make_var); makeVar != "" {
 		ctx.StrictRaw(makeVar, strings.Join(fg.srcs.Strings(), " "))
 	}
