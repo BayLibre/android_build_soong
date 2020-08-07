@@ -22,6 +22,30 @@
       "revId": "add7ea9cc83edade6957fb2c307b015adcdf92f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25444e15_1daab3d4",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-08-07T18:55:05Z",
+      "side": 1,
+      "message": "That\u0027s my next action item is to go through the list and get information from Soong and replace the list you highlighted or fill in the blanks if it is soong only build. I am trying to get the RBE team unblocked for the OS metric base.\n\nThere\u0027s definitely additional metrics we need to add as we discussed before which is what I am working on next.",
+      "parentUuid": "2cbf4259_71847a44",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "add7ea9cc83edade6957fb2c307b015adcdf92f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
