@@ -20,14 +20,17 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 const (
 	soongModuleLoad = `package(default_visibility = ["//visibility:public"])
 load("//:soong_module.bzl", "soong_module")
+
 `
 
 	// A BUILD file target snippet representing a Soong module
@@ -36,10 +39,9 @@ load("//:soong_module.bzl", "soong_module")
     module_name = "%s",
     module_type = "%s",
     module_variant = "%s",
-    deps = [
-        %s
-    ],
-)
+    deps = %s,
+%s)
+
 `
 
 	// The soong_module rule implementation in a .bzl file
@@ -52,7 +54,7 @@ SoongModuleInfo = provider(
     },
 )
 
-def _soong_module_impl(ctx):
+def _generic_soong_module_impl(ctx):
     return [
         SoongModuleInfo(
             name = ctx.attr.module_name,
@@ -61,8 +63,8 @@ def _soong_module_impl(ctx):
         ),
     ]
 
-soong_module = rule(
-    implementation = _soong_module_impl,
+generic_soong_module = rule(
+    implementation = _generic_soong_module_impl,
     attrs = {
         "module_name": attr.string(mandatory = True),
         "module_type": attr.string(mandatory = True),
@@ -70,12 +72,72 @@ soong_module = rule(
         "deps": attr.label_list(providers = [SoongModuleInfo]),
     },
 )
+
+# TODO(jingwen): auto generate Soong module shims
+def _soong_filegroup_impl(ctx):
+    return [SoongModuleInfo(),]
+
+soong_filegroup = rule(
+    implementation = _soong_filegroup_impl,
+    attrs = {
+        "module_name": attr.string(mandatory = True),
+        "module_type": attr.string(mandatory = True),
+        "module_variant": attr.string(),
+        "deps": attr.label_list(providers = [SoongModuleInfo]),
+        "srcs": attr.string_list(doc = "srcs lists files that will be included in this filegroup"),
+        "compile_multilib": attr.string(doc = "control whether this module compiles for 32-bit, 64-bit, or both. Possible values are \"32\" (compile for 32-bit only), \"64\" (compile for 64-bit only), \"both\" (compile for both architectures), or \"first\" (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit platform"),
+        "device_specific": attr.bool(doc = "whether this module is specific to a device, not only for SoC, but also for off-chip peripherals. When set to true, it is installed into /odm (or /vendor/odm if odm partition does not exist, or /system/vendor/odm if both odm and vendor partitions do not exist). This implies soc_specific:true."),
+        "enabled": attr.bool(doc = "emit build rules for this module Disabling a module should only be done for those modules that cannot be built in the current environment. Modules that can build in the current environment but are not usually required (e.g. superceded by a prebuilt) should not be disabled as that will prevent them from being built by the checkbuild target and so prevent early detection of changes that have broken those modules."),
+        "exclude_srcs": attr.string_list(),
+        "export_to_make_var": attr.string(doc = "Create a make variable with the specified name that contains the list of files in the filegroup, relative to the root of the source tree."),
+        "host_required": attr.string_list(doc = "names of other modules to install on host if this module is installed"),
+        "init_rc": attr.string_list(doc = "init.rc files to be installed if this module is installed"),
+        "native_bridge_supported": attr.bool(doc = "Whether this module is built for non-native architecures (also known as native bridge binary)"),
+        "notice": attr.string(doc = "relative path to a file to include in the list of notices for the device"),
+        "owner": attr.string(doc = "vendor who owns this module"),
+        "path": attr.string(doc = "The base path to the files. May be used by other modules to determine which portion of the path to use. For example, when a filegroup is used as data in a cc_test rule, the base path is stripped off the path and the remaining path is used as the installation directory."),
+        "product_specific": attr.bool(doc = "whether this module is specific to a software configuration of a product (e.g. country, network operator, etc). When set to true, it is installed into /product (or /system/product if product partition does not exist)."),
+        "proprietary": attr.bool(doc = "whether this is a proprietary vendor module, and should be installed into /vendor"),
+        "ramdisk": attr.bool(doc = "Whether this module is installed to ramdisk"),
+        "recovery": attr.bool(doc = "Whether this module is installed to recovery partition"),
+        "required": attr.string_list(doc = "names of other modules to install if this module is installed"),
+        "soc_specific": attr.bool(doc = "whether this module is specific to an SoC (System-On-a-Chip). When set to true, it is installed into /vendor (or /system/vendor if vendor partition does not exist)."),
+        "system_ext_specific": attr.bool(doc = "whether this module extends system. When set to true, it is installed into /system_ext (or /system/system_ext if system_ext partition does not exist)."),
+        "target_required": attr.string_list(doc = "names of other modules to install on target if this module is installed"),
+        "vendor": attr.bool(doc = "whether this module is specific to an SoC (System-On-a-Chip). When set to true, it is installed into /vendor (or /system/vendor if vendor partition does not exist). Use 'soc_specific' instead for better meaning."),
+        "vintf_fragments": attr.string_list(doc = "VINTF manifest fragments to be installed if this module is installed"),
+    }
+)
+
+soong_module_rule_map = {
+    "filegroup": soong_filegroup,
+}
+
+# soong_module is a macro that supports arbitrary kwargs, and uses module_type to
+# expand to the right underlying shim.
+def soong_module(name, module_name, module_type, module_variant, **kwargs):
+    soong_module_rule = soong_module_rule_map.get(module_type)
+
+    if soong_module_rule == None:
+        generic_soong_module(
+            name = name,
+            module_name = module_name,
+            module_type = module_type,
+            module_variant = module_variant,
+            deps = kwargs.pop("deps", []),
+        )
+    else:
+        soong_module_rule(
+            name = name,
+            **kwargs,
+        )
 `
 )
 
 func targetNameWithVariant(c *blueprint.Context, logicModule blueprint.Module) string {
 	name := ""
 	if c.ModuleSubDir(logicModule) != "" {
+		// TODO(b/162720883): Figure out a way to drop the "--" variant suffixes.
 		name = c.ModuleName(logicModule) + "--" + c.ModuleSubDir(logicModule)
 	} else {
 		name = c.ModuleName(logicModule)
@@ -95,6 +157,136 @@ func packagePath(c *blueprint.Context, logicModule blueprint.Module) string {
 	return filepath.Dir(c.BlueprintFile(logicModule))
 }
 
+func escapeString(s string) string {
+	s = strings.Replace(s, "\\", "\\\\", -1)
+	return strings.Replace(s, "\"", "\\\"", -1)
+}
+
+// prettyPrint a property value into the equivalent Starlark representation
+// recursively.
+func prettyPrint(propertyValue reflect.Value) (string, error) {
+	if isZero(propertyValue) {
+		return "", nil
+	}
+
+	var ret string
+	switch propertyValue.Kind() {
+	case reflect.String:
+		ret = fmt.Sprintf("\"%v\"", escapeString(propertyValue.String()))
+	case reflect.Bool:
+		ret = strings.Title(fmt.Sprintf("%v", propertyValue.Interface()))
+	case reflect.Int, reflect.Uint, reflect.Int64:
+		ret = fmt.Sprintf("%v", propertyValue.Interface())
+	case reflect.Ptr:
+		return prettyPrint(propertyValue.Elem())
+	case reflect.Slice:
+		ret = "[\n"
+		for i := 0; i < propertyValue.Len(); i++ {
+			indexedValue, err := prettyPrint(propertyValue.Index(i))
+			if err != nil {
+				return "", err
+			}
+
+			if indexedValue != "" {
+				ret += "        "
+				ret += indexedValue
+				ret += ",\n"
+			}
+		}
+		ret += "    ]"
+	case reflect.Struct:
+		ret = "{\n"
+		for k, v := range extractStructProperties(propertyValue) {
+			ret += "        "
+			ret += "\"" + k + "\": "
+			ret += v
+			ret += ",\n"
+		}
+		ret += "    }"
+	case reflect.Interface:
+		// TODO(jin): implement pretty print for interfaces.
+		// Interfaces are used for for arch, multilib and target properties.
+		return "", nil
+	default:
+		return "", fmt.Errorf(
+			"unexpected kind for property struct field: %s", propertyValue.Kind())
+	}
+	return ret, nil
+}
+
+func extractStructProperties(structValue reflect.Value) map[string]string {
+	if structValue.Kind() != reflect.Struct {
+		panic(fmt.Errorf("Expected a reflect.Struct type, but got %s", structValue.Kind()))
+	}
+
+	ret := map[string]string{}
+	structType := structValue.Type()
+	for i := 0; i < structValue.NumField(); i++ {
+		field := structType.Field(i)
+		if field.PkgPath != "" {
+			// Skip unexported fields. Some properties are
+			// internal to Soong only, and these fields do not have PkgPath.
+			continue
+		}
+		if proptools.HasTag(field, "blueprint", "mutated") {
+			continue
+		}
+
+		fieldValue := structValue.Field(i)
+		if isZero(fieldValue) {
+			// Ignore zero-valued fields
+			continue
+		}
+
+		propertyName := proptools.PropertyNameForField(field.Name)
+		prettyPrintedValue, err := prettyPrint(fieldValue)
+		if err != nil {
+			panic(
+				fmt.Errorf(
+					"Error while parsing property: %q. %s",
+					propertyName,
+					err))
+		}
+		if prettyPrintedValue != "" {
+			ret[propertyName] = prettyPrintedValue
+		}
+	}
+
+	return ret
+}
+
+func isStructPtr(t reflect.Type) bool {
+	return t.Kind() == reflect.Ptr && t.Elem().Kind() == reflect.Struct
+}
+
+// Generically extract module properties and types into a map, keyed by the module property name.
+func extractModuleProperties(aModule android.Module) map[string]string {
+	ret := map[string]string{}
+
+	// Iterate over this android.Module's property structs.
+	for _, properties := range aModule.GetProperties() {
+		propertiesValue := reflect.ValueOf(properties)
+		// Check that propertiesValue is a pointer to the Properties struct, like
+		// *cc.BaseLinkerProperties or *java.CompilerProperties.
+		//
+		// propertiesValue can also be type-asserted to the structs to
+		// manipulate internal props, if needed.
+		if isStructPtr(propertiesValue.Type()) {
+			structValue := propertiesValue.Elem()
+			for k, v := range extractStructProperties(structValue) {
+				ret[k] = v
+			}
+		} else {
+			panic(fmt.Errorf(
+				"properties must be a pointer to a struct, got %T",
+				propertiesValue.Interface()))
+		}
+
+	}
+
+	return ret
+}
+
 func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 	blueprintCtx := ctx.Context
 	blueprintCtx.VisitAllModules(func(module blueprint.Module) {
@@ -111,19 +303,12 @@ func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 			depLabels[qualifiedTargetLabel(blueprintCtx, depModule)] = true
 		})
 
-		var depLabelList string
-		for depLabel, _ := range depLabels {
-			depLabelList += "\"" + depLabel + "\",\n        "
+		var props map[string]string
+		if aModule, ok := module.(android.Module); ok {
+			props = extractModuleProperties(aModule)
 		}
 		buildFile.Write([]byte(
-			fmt.Sprintf(
-				soongModuleTarget,
-				targetNameWithVariant(blueprintCtx, module),
-				blueprintCtx.ModuleName(module),
-				blueprintCtx.ModuleType(module),
-				// misleading name, this actually returns the variant.
-				blueprintCtx.ModuleSubDir(module),
-				depLabelList)))
+			generateSoongModuleTarget(blueprintCtx, module, depLabels, props)))
 		buildFile.Close()
 	})
 
@@ -136,6 +321,56 @@ func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 	}
 
 	return writeReadOnlyFile(bazelOverlayDir, "soong_module.bzl", soongModuleBzl)
+}
+
+var ignoredProps map[string]bool = map[string]bool{
+	"name":       true, // redundant, since this is explicitly generated for every target
+	"from":       true, // reserved keyword
+	"in":         true, // reserved keyword
+	"arch":       true, // interface prop type is not supported yet.
+	"multilib":   true, // interface prop type is not supported yet.
+	"target":     true, // interface prop type is not supported yet.
+	"dist":       true, // interface prop type is not supported yet.
+	"dists":      true, // interface prop type is not supported yet.
+	"visibility": true, // Bazel has native visibility semantics. Handle later.
+}
+
+func shouldGenerateAttribute(prop string) bool {
+	return !ignoredProps[prop]
+}
+
+// Convert a module and its deps and props into a Bazel macro/rule
+// representation in the BUILD file.
+func generateSoongModuleTarget(
+	blueprintCtx *blueprint.Context,
+	module blueprint.Module,
+	depLabels map[string]bool,
+	props map[string]string) string {
+
+	var attributes string
+	for k, v := range props {
+		if shouldGenerateAttribute(k) {
+			attributes += fmt.Sprintf("    %s = %s,\n", k, v)
+		}
+	}
+
+	depLabelList := "[\n"
+	for depLabel, _ := range depLabels {
+		depLabelList += "        \""
+		depLabelList += depLabel
+		depLabelList += "\",\n"
+	}
+	depLabelList += "    ]"
+
+	return fmt.Sprintf(
+		soongModuleTarget,
+		targetNameWithVariant(blueprintCtx, module),
+		blueprintCtx.ModuleName(module),
+		blueprintCtx.ModuleType(module),
+		// misleading name, this actually returns the variant.
+		blueprintCtx.ModuleSubDir(module),
+		depLabelList,
+		attributes)
 }
 
 func buildFileForModule(ctx *blueprint.Context, module blueprint.Module) (*os.File, error) {
@@ -170,4 +405,35 @@ func writeReadOnlyFile(dir string, baseName string, content string) error {
 	workspaceFile := filepath.Join(bazelOverlayDir, baseName)
 	// 0444 is read-only
 	return ioutil.WriteFile(workspaceFile, []byte(content), 0444)
+}
+
+func isZero(value reflect.Value) bool {
+	switch value.Kind() {
+	case reflect.Func, reflect.Map, reflect.Slice:
+		return value.IsNil()
+	case reflect.Array:
+		valueIsZero := true
+		for i := 0; i < value.Len(); i++ {
+			valueIsZero = valueIsZero && isZero(value.Index(i))
+		}
+		return valueIsZero
+	case reflect.Struct:
+		valueIsZero := true
+		for i := 0; i < value.NumField(); i++ {
+			if value.Field(i).CanSet() {
+				valueIsZero = valueIsZero && isZero(value.Field(i))
+			}
+		}
+		return valueIsZero
+	case reflect.Ptr:
+		if !value.IsNil() {
+			return isZero(reflect.Indirect(value))
+		} else {
+			return true
+		}
+	}
+	valueIsZero := reflect.Zero(value.Type())
+	result := value.Interface() == valueIsZero.Interface()
+
+	return result
 }
