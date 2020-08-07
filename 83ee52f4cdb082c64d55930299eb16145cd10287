@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fbbf9b8_c0e66a3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-08-07T06:43:33Z",
+      "side": 1,
+      "message": "Manually verified that the renderscript_mac target passed via a Forrest run.",
+      "revId": "83ee52f4cdb082c64d55930299eb16145cd10287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
