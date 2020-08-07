@@ -45,6 +45,30 @@
       "revId": "a1fa8b921b3838d33bd31dcb351331b0fb795658",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edecb0da_957c5871",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-07T11:55:52Z",
+      "side": 1,
+      "message": "\u003e If I understand correctly, this is extracting transitive dependencies to add direct usesLibTag dependencies on them.\n\nYes.\n\n\u003e That doesn\u0027t seem necessary, you don\u0027t actually need the usesLibTag dependency, you need the information to create the \"\u003cuses-library\u003e\" tag and the path to give to dexpreopt.\n\nAdding \u003cuses-lbrary\u003e tags to manifest requires only the library names (which are tracked by Soong in aarDep.ExportedSdkLibs()), but dexpreopt needs the actual build paths and on-device paths. \n\nMy general understanding is that paths are unknown until the GenerateAndroidBuildActions phase, and then they only become known after each dependency module has been processed. Then in order to add ExportedSdkLibsPaths() as you suggest, all modules listed in ExportedSdkLibs() must be dependencies of the dexpreopted module -- maybe indirect, maybe not with usesLibTag, but somehow they must be processed by GeneratedAndroidBuildActions before it runs for the dexpreopted moodule. Is this so? I can see collectDeps() gathering these ExportedSdkLibs() dependencies, called from compile(), but that is too late, and it does not add build graph dependencies.\n\nIf the correct order of GenerateAndroidBuildActions (when all uses-libraries processed before the dexpreopted module) is not guaranteed, the only way I\u0027m aware of to get build paths is to have some predefined paths that can be derived from uses-library names. This hack is used for bootclasspath and system server jars, but I think it shouldn\u0027t be (or can\u0027t be) used globally.\n\nMaybe I don\u0027t understand and ExportedSdkLibs() are already dependencies of the dexpreopted module (possibly indirect and not with usesLibTag). Then GenerateAndroidBuildActions can record paths somewhere and make them available to the dexpreopted module. Maybe Paul can confirm this.",
+      "parentUuid": "b3c9b288_fa61446f",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1943,
+        "endChar": 3
+      },
+      "revId": "a1fa8b921b3838d33bd31dcb351331b0fb795658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
