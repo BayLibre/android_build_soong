@@ -93,6 +93,30 @@
       "revId": "a1fa8b921b3838d33bd31dcb351331b0fb795658",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc85f7fd_ff830e36",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-07T20:47:17Z",
+      "side": 1,
+      "message": "My assumption was that since you are getting these values from direct dependencies they are already present somewhere in the transitive dependency graph, although looking at OptionalImplicitSdkLibrary that may be incorrect.  If you can make the module that exports OptionalImplicitSdkLibrary instead depend on the module, then yes, the transitive dependencies should be enough, and each module can export the names and paths after its GenerateAndroidBuildActions to the GenerateAndroidBuildActions of the next module.",
+      "parentUuid": "0ac2f842_fb8729cb",
+      "range": {
+        "startLine": 1928,
+        "startChar": 0,
+        "endLine": 1943,
+        "endChar": 3
+      },
+      "revId": "a1fa8b921b3838d33bd31dcb351331b0fb795658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
