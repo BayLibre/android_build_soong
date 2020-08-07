@@ -16,6 +16,24 @@
       "revId": "c7767922e06fd6513e0b1e6846a21dfe44df8823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfc9b77e_90f0b120",
+        "filename": "rust/source_provider.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-07T16:28:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41576b99_ed5137d4",
+      "revId": "c7767922e06fd6513e0b1e6846a21dfe44df8823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
