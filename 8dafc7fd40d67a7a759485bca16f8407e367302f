@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "063b2f70_999bce31",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-07T20:31:09Z",
+      "side": 1,
+      "message": "aosp/1392891 should make the distinction between data_bins and data_libs no longer necessary from a technical perspective, although we may want the keep the distinction anyways from a user perspective.",
+      "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
