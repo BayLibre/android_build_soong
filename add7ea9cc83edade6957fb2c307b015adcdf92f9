@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cbf4259_71847a44",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-07T18:46:25Z",
+      "side": 1,
+      "message": "If we\u0027re worried about missing soong-only builds, more of these should probably come from Soong instead of from dumpvars (and the format will end up being somewhat different too, since we support an arbitrary number of device/host configurations in those builds)",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 0
+      },
+      "revId": "add7ea9cc83edade6957fb2c307b015adcdf92f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
