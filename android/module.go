@@ -538,6 +538,12 @@ type commonProperties struct {
 	// more details.
 	Visibility []string
 
+	// Describes the licenses applicable to this module. Must reference license modules.
+	Licenses []string
+
+	// Full set of inherited licenses.
+	Effective_licenses []string `blueprint:"mutated"`
+
 	// control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
 	// are "32" (compile for 32-bit only), "64" (compile for 64-bit only), "both" (compile for both
 	// architectures), or "first" (compile for 64-bit on a 64-bit platform, and 32-bit on a 32-bit
@@ -804,6 +810,10 @@ func InitAndroidModule(m Module) {
 	// The default_visibility property needs to be checked and parsed by the visibility module during
 	// its checking and parsing phases so make it the primary visibility property.
 	setPrimaryVisibilityProperty(m, "visibility", &base.commonProperties.Visibility)
+
+	// The default_applicable_licenses property needs to be checked and parsed by the licenses module during
+	// its checking and parsing phases so make it the primary licenses property.
+	setPrimaryLicensesProperty(m, "licenses", &base.commonProperties.Licenses)
 }
 
 func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
@@ -898,6 +908,9 @@ type ModuleBase struct {
 
 	// The primary visibility property, may be nil, that controls access to the module.
 	primaryVisibilityProperty visibilityProperty
+
+	// The primary applicable licenses property, may be nil, that controls access to the module.
+	primaryLicensesProperty applicableLicensesProperty
 
 	noAddressSanitizer bool
 	installFiles       InstallPaths
