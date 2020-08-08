@@ -113,6 +113,13 @@ type DefaultsVisibilityProperties struct {
 	Defaults_visibility []string
 }
 
+// The Defaults_licenses property.
+type DefaultsLicensesProperties struct {
+
+	// Describes the licenses of the defaults module itself.
+	Defaults_licenses []string
+}
+
 type DefaultsModuleBase struct {
 	DefaultableModuleBase
 
@@ -120,6 +127,7 @@ type DefaultsModuleBase struct {
 	commonProperties commonProperties
 
 	defaultsVisibilityProperties DefaultsVisibilityProperties
+	defaultsLicensesProperties DefaultsLicensesProperties
 }
 
 // The common pattern for defaults modules is to register separate instances of
@@ -159,6 +167,9 @@ type Defaults interface {
 
 	// Return the defaults visibility properties.
 	defaultsVisibility() *DefaultsVisibilityProperties
+
+	// Return the defaults licenses properties.
+	defaultsLicenses() *DefaultsLicensesProperties
 }
 
 func (d *DefaultsModuleBase) isDefaults() bool {
@@ -184,6 +195,10 @@ func (d *DefaultsModuleBase) common() *commonProperties {
 
 func (d *DefaultsModuleBase) defaultsVisibility() *DefaultsVisibilityProperties {
 	return &d.defaultsVisibilityProperties
+}
+
+func (d *DefaultsModuleBase) defaultsLicenses() *DefaultsLicensesProperties {
+	return &d.defaultsLicensesProperties
 }
 
 func (d *DefaultsModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {
@@ -219,6 +234,22 @@ func InitDefaultsModule(module DefaultsModule) {
 	// The visibility property needs to be checked (but not parsed) by the visibility module during
 	// its checking phase and parsing phase so add it to the list as a normal property.
 	AddVisibilityProperty(module, "visibility", &commonProperties.Visibility)
+
+	defaultsLicenses := module.defaultsLicenses()
+	module.AddProperties(&base.nameProperties, defaultsLicenses)
+
+	// Unlike non-defaults modules the licenses property is not stored in m.base().commonProperties.
+	// Instead it is stored in a separate instance of commonProperties created above so clear the
+	// existing list of properties.
+	clearApplicableLicensesProperties(module)
+
+	// The defaults_licenses property describes the licenses of a defaults module so it must be
+	// set as the primary property, which also adds it to the list.
+	setPrimaryLicensesProperty(module, "defaults_licenses", &defaultsLicenses.Defaults_licenses)
+
+	// The licenses property needs to be checked (but not parsed) by the licenses module during
+	// its checking phase and parsing phase so add it to the list as a normal property.
+	AddVisibilityProperty(module, "licenses", &commonProperties.Licenses)
 
 	base.module = module
 }

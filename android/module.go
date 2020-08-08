@@ -278,6 +278,9 @@ type Module interface {
 	// Get information about the properties that can contain visibility rules.
 	visibilityProperties() []visibilityProperty
 
+	// Get information about the properties that can contain applicable licenses rules.
+	applicableLicensesProperties() []applicableLicensesProperty
+
 	RequiredModuleNames() []string
 	HostRequiredModuleNames() []string
 	TargetRequiredModuleNames() []string
@@ -409,6 +412,17 @@ type commonProperties struct {
 	// See https://android.googlesource.com/platform/build/soong/+/master/README.md#visibility for
 	// more details.
 	Visibility []string
+
+	// Describes the licenses applicable to this module. Allowable values are one or more of
+	// these formats:
+	//
+	//  ["//project:licensename"]: this references a License rule named `licensename` in package
+	//      `project`.
+	//  [":licensename"]: this is a shorthand for ["//project:licensename"] where //project is the
+	//      module's package. e.g. using [":licensename"] in
+	//      packages/apps/Settings/Android.bp is equivalent to
+	//      //packages/apps/Settings:licensename.
+	Licenses []string
 
 	// control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
 	// are "32" (compile for 32-bit only), "64" (compile for 64-bit only), "both" (compile for both
@@ -664,6 +678,10 @@ func InitAndroidModule(m Module) {
 	// The default_visibility property needs to be checked and parsed by the visibility module during
 	// its checking and parsing phases so make it the primary visibility property.
 	setPrimaryVisibilityProperty(m, "visibility", &base.commonProperties.Visibility)
+
+	// The default_applicable_licenses property needs to be checked and parsed by the licenses module during
+	// its checking and parsing phases so make it the primary licenses property.
+	setPrimaryLicensesProperty(m, "licenses", &base.commonProperties.Licenses)
 }
 
 func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
@@ -758,6 +776,12 @@ type ModuleBase struct {
 	// The primary visibility property, may be nil, that controls access to the module.
 	primaryVisibilityProperty visibilityProperty
 
+	// Information about all the properties on the module that contains applicable license rules.
+	applicableLicensesPropertyInfo []applicableLicensesProperty
+
+	// The primary applicable licenses property, may be nil.
+	primaryLicensesProperty applicableLicensesProperty
+
 	noAddressSanitizer bool
 	installFiles       InstallPaths
 	checkbuildFiles    Paths
@@ -851,6 +875,10 @@ func (m *ModuleBase) qualifiedModuleId(ctx BaseModuleContext) qualifiedModuleNam
 
 func (m *ModuleBase) visibilityProperties() []visibilityProperty {
 	return m.visibilityPropertyInfo
+}
+
+func (m *ModuleBase) applicableLicensesProperties() []applicableLicensesProperty {
+	return m.applicableLicensesPropertyInfo
 }
 
 func (m *ModuleBase) Dists() []Dist {
