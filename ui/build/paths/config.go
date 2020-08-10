@@ -95,6 +95,14 @@ var Configuration = map[string]PathConfig{
 	"unzip":   Allowed,
 	"zip":     Allowed,
 
+	// ART test binaries executed during `test-art-host*` Make targets.
+	// TODO(b/163171562,b/163320336): Remove when support for
+	// `test-art*` targets has been removed from ART Makefiles.
+	"cpp":           Allowed, // Used in `art/test/702-LargeBranchOffset/build`.
+	"locale":        Allowed,
+	"signal_dumper": Allowed,
+	"zipalign":      Allowed,
+
 	// Host toolchain is removed. In-tree toolchain should be used instead.
 	// GCC also can't find cc1 with this implementation.
 	"ar":         Forbidden,
