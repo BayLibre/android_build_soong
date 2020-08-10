@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c493fa25_283b8600",
+        "filename": "cc/compdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-08-10T20:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abccbedf_a6b76ad7",
+      "revId": "3411accd336d771b26c1a3be8054e10197edde1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfb334a4_1a912ec2",
         "filename": "cc/compdb.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-08-10T18:40:40Z",
       "side": 1,
       "message": "This isn\u0027t how single quote escaping works.  A \\ inside the single quotes is a literal \\.  The escaping replaces a \u0027 with the sequence \u0027\\\u0027\u0027.  The first single quote ends the single quoting, the \\\u0027 concatenates a literal single quote, and the last single quote restarts the single quoting.\n\nSee https://cs.android.com/android/platform/superproject/+/master:build/blueprint/proptools/escape.go;l\u003d88;drc\u003dcc1ec0fedc0e74183891973c327d21201734c585 for the exact escaping, you should be able to reverse it.",
+      "revId": "3411accd336d771b26c1a3be8054e10197edde1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a3ec13e_31aadf32",
+        "filename": "cc/compdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-08-10T20:29:17Z",
+      "side": 1,
+      "message": "Looks like we are also splitting the strings slightly incorrectly. I\u0027ll fix that too.",
+      "parentUuid": "bfb334a4_1a912ec2",
       "revId": "3411accd336d771b26c1a3be8054e10197edde1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
