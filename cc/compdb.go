@@ -126,6 +126,21 @@ func expandAllVars(ctx android.SingletonContext, args []string) []string {
 	return out
 }
 
+func unquote(args []string) []string {
+	// compdb doesn't like shell-quotes.
+	var res []string
+	for _, val := range args {
+		if strings.HasPrefix(val, "'") && strings.HasSuffix(val, "'") {
+			var unquoted = val[1 : len(val)-1]
+			var noInterior = strings.Replace(unquoted, `'\''`, `'`, -1)
+			res = append(res, noInterior)
+		} else {
+			res = append(res, val)
+		}
+	}
+	return res
+}
+
 func getArguments(src android.Path, ctx android.SingletonContext, ccModule *Module, ccPath string, cxxPath string) []string {
 	var args []string
 	isCpp := false
@@ -185,17 +200,44 @@ func generateCompdbProject(compiledModule CompiledInterface, ctx android.Singlet
 		if _, ok := builds[src.String()]; !ok {
 			builds[src.String()] = compDbEntry{
 				Directory: android.AbsSrcDirForExistingUseCases(),
-				Arguments: getArguments(src, ctx, ccModule, ccPath, cxxPath),
+				Arguments: unquote(getArguments(src, ctx, ccModule, ccPath, cxxPath)),
 				File:      src.String(),
 			}
 		}
 	}
 }
 
+func shellSplit(str string) []string {
+	var res []string
+	var initial []string = strings.Split(str, " ")
+	var combining = false
+	var curComb string
+	for _, tok := range initial {
+		if combining {
+			curComb += " " + tok
+			if strings.HasSuffix(tok, "'") {
+				combining = false
+				res = append(res, strings.Trim(curComb, " "))
+				curComb = ""
+			}
+		} else {
+			if strings.HasPrefix(tok, "'") {
+				combining = true
+				curComb = tok
+			} else if tok == "" {
+				continue
+			} else {
+				res = append(res, tok)
+			}
+		}
+	}
+	return res
+}
+
 func evalAndSplitVariable(ctx android.SingletonContext, str string) ([]string, error) {
 	evaluated, err := ctx.Eval(pctx, str)
 	if err == nil {
-		return strings.Fields(evaluated), nil
+		return shellSplit(evaluated), nil
 	}
 	return []string{""}, err
 }

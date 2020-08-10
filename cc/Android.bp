@@ -75,6 +75,7 @@ bootstrap_go_package {
     ],
     testSrcs: [
         "cc_test.go",
+        "compdb_test.go",
         "compiler_test.go",
         "gen_test.go",
         "genrule_test.go",
