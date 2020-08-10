@@ -241,6 +241,7 @@ func NdkApiMutator(ctx android.BottomUpMutatorContext) {
 				generatePerApiVariants(ctx, m, "min_sdk_version",
 					m.MinSdkVersion(), func(m *Module, version string) {
 						m.Properties.Sdk_version = &version
+						m.Properties.Min_sdk_version = &version
 					})
 			}
 		}
