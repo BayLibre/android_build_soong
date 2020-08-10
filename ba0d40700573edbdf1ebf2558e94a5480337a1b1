@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8354fe36_e15b7931",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-10T21:46:32Z",
+      "side": 1,
+      "message": "This will over-trim in the case of \u0027\u0027\\\u0027\u0027\u0027, leaving \\\u0027 instead of \u0027.  Use TrimPrefix/TrimSuffix or val[1:len(val)-1]\n\nA test that verifies that this correctly undoes proptools.ShellEscape would be useful.",
+      "revId": "ba0d40700573edbdf1ebf2558e94a5480337a1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3abf5925_9ab0c259",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-10T21:46:32Z",
+      "side": 1,
+      "message": "This seems convoluted, splitting and then conditionally rejoining.  How about (untested, and should have some tests):\n\n     const shellSingleQuoteEscapeSequence \u003d `\u0027\\\u0027\u0027`\n     \n     for str \u003d strings.TrimLeftFunc(str, unicode.IsSpace); str !\u003d \"\" {\n          if str[0] \u003d\u003d \u0027\\\u0027\u0027 {\n              end :\u003d findEndQuoteIndex(str)\n              if end \u003d\u003d -1 {\n                  panic(fmt.Errorf(\"missing end single quote in %q\", str))\n              }\n              res \u003d append(res, str[1:end-1])\n              str \u003d str[end+1:]\n          } else {\n              end :\u003d strings.IndexFunc(str, unicode.IsSpace)\n              if end \u003d\u003d -1 {\n                  end \u003d len(str)\n              }\n              res \u003d append(res, str[:end])\n              str \u003d str[end:]\n          }\n     }\n     \n     func findEndQuoteIndex(str string) int {\n         i :\u003d 1\n     \n         isEscapeSequence :\u003d func(s string) bool {\n             return strings.HasPrefix(s, shellSingleQuoteEscapeSequence)\n         }\n     \n         indexRuneFrom :\u003d func(s string, offset int, r rune) {\n             index :\u003d strings.IndexRune(str[offset:], r)\n             if index \u003d\u003d -1 {\n                 return -1\n             }\n             return index + offset\n         }\n     \n         for quote \u003d indexRuneFrom(str, i, \u0027\\\u0027\u0027); quote !\u003d -1 \u0026\u0026 !isEscapeSequence(s[quote:]) {\n             i \u003d quote + len(shellSingleQuoteEscapeSequence)\n         }\n     \n         return quote\n     }",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "ba0d40700573edbdf1ebf2558e94a5480337a1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
