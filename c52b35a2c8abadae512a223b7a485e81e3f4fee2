@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c180f15_40785eec",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1409782
+      },
+      "writtenOn": "2020-08-10T23:46:01Z",
+      "side": 1,
+      "message": "I had to put this here to avoid merge conflicts.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 44
+      },
+      "revId": "c52b35a2c8abadae512a223b7a485e81e3f4fee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
