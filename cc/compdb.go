@@ -126,6 +126,15 @@ func expandAllVars(ctx android.SingletonContext, args []string) []string {
 	return out
 }
 
+func unquote(args []string) []string {
+	// compdb doesn't like shell-quotes.
+	var res []string
+	for _, val := range args {
+		res = append(res, strings.Trim(val, "'"))
+	}
+	return res
+}
+
 func getArguments(src android.Path, ctx android.SingletonContext, ccModule *Module, ccPath string, cxxPath string) []string {
 	var args []string
 	isCpp := false
@@ -185,7 +194,7 @@ func generateCompdbProject(compiledModule CompiledInterface, ctx android.Singlet
 		if _, ok := builds[src.String()]; !ok {
 			builds[src.String()] = compDbEntry{
 				Directory: android.AbsSrcDirForExistingUseCases(),
-				Arguments: getArguments(src, ctx, ccModule, ccPath, cxxPath),
+				Arguments: unquote(getArguments(src, ctx, ccModule, ccPath, cxxPath)),
 				File:      src.String(),
 			}
 		}
