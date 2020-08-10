@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "47a1add2_7d429667",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-08-10T23:22:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8354fe36_e15b7931",
+      "revId": "ba0d40700573edbdf1ebf2558e94a5480337a1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3abf5925_9ab0c259",
         "filename": "cc/compdb.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "ba0d40700573edbdf1ebf2558e94a5480337a1b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c21177_8a893452",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-08-10T23:22:38Z",
+      "side": 1,
+      "message": "I really can\u0027t follow what this is doing TBH. I\u0027ll add some tests to mine instead WDYT?",
+      "parentUuid": "3abf5925_9ab0c259",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 2
+      },
+      "revId": "ba0d40700573edbdf1ebf2558e94a5480337a1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
