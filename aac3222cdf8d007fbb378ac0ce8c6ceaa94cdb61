@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "308d4e55_3872fb2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-10T18:53:04Z",
+      "side": 1,
+      "message": "Jiyong, this causes a few changes in what is included in some existing apexes, is there any extra verification I should do?",
+      "revId": "aac3222cdf8d007fbb378ac0ce8c6ceaa94cdb61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
