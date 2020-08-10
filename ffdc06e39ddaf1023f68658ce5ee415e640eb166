@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09852960_8b7b1c4d",
+        "filename": "ui/build/paths/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-10T18:25:32Z",
+      "side": 1,
+      "message": "We explicitly forbid using the host toolchain -- even if you\u0027re running outside the build you should be using a hermetic clang implementation of this.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "ffdc06e39ddaf1023f68658ce5ee415e640eb166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33466efa_f7de7d81",
+        "filename": "ui/build/paths/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-10T18:25:32Z",
+      "side": 1,
+      "message": "These two are android-specific, and need to be handled by explicitly adding dependencies and either using them via their path, or adding out/host/linux-x86/bin/ to $PATH in your actions. Otherwise they won\u0027t exist in $PATH at the start of a fresh build, and this wouldn\u0027t do anything.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "ffdc06e39ddaf1023f68658ce5ee415e640eb166",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
