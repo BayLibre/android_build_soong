@@ -371,12 +371,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 	target := "-target " + tc.ClangTriple()
 	if ctx.Os().Class == android.Device {
-		version := ctx.sdkVersion()
-		if version == "" || version == "current" {
-			target += strconv.Itoa(android.FutureApiLevel)
-		} else {
-			target += version
-		}
+		target += ctx.minSdkVersion()
 	}
 
 	gccPrefix := "-B" + config.ToolPath(tc)
