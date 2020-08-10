@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f1b14dd_b2d9a4cb",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-10T17:52:45Z",
+      "side": 1,
+      "message": "Ninja and Soong\u0027s shell quoting is slightly more complicated than this, it also replaces any internal single quotes with \"single quote + backslash + single quote\", so you would need to reverse that too.",
+      "revId": "6fbf11a07db3d5c11b29e3bcfbf1cf6af794f15f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
