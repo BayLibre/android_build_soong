@@ -69,6 +69,24 @@
       "revId": "3411accd336d771b26c1a3be8054e10197edde1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759599da_684c2440",
+        "filename": "cc/compdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-08-10T21:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a3ec13e_31aadf32",
+      "revId": "3411accd336d771b26c1a3be8054e10197edde1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
