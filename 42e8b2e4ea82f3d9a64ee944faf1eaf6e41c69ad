@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "313c2f3b_8925d0e0",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-11T21:31:02Z",
+      "side": 1,
+      "message": "Can we also preemptively include UseRBE? (I\u0027d say USE_CCACHE too, but we don\u0027t have that piped out from Make currently, so that can wait)",
+      "revId": "42e8b2e4ea82f3d9a64ee944faf1eaf6e41c69ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
