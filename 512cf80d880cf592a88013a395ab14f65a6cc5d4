@@ -203,6 +203,30 @@
       "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e615ecf5_c4b15ea8",
+        "filename": "ui/terminal/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-11T23:25:41Z",
+      "side": 1,
+      "message": "This would be closer to the \"all\" filter in Bazel, where my understanding is that package/subpackages is more commonly used (but we don\u0027t really have the same concept in most builds).\n\nThe direction we\u0027d like to be heading long term is to actually fix up the code so that there just aren\u0027t warnings printed by the compilers and other tools. We\u0027ve gotten fairly close in the past with a few targets, but never quite gotten the point where we can make it a requirement. http://go/android-silent-build was one of the docs, but it really comes down to -Werror/-Wno-..., filtering output, removing debug prints by default, etc.",
+      "parentUuid": "c1f87e21_5e16b969",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
