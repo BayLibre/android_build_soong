@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "105b1478_110274bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-11T00:41:10Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem accurate, you\u0027re not modifying the sdk mutator.",
+      "revId": "5d343d711b09d80a514882c7fade98c0a33c2383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32606c5e_40a39bc4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -16,6 +33,46 @@
       "revId": "5d343d711b09d80a514882c7fade98c0a33c2383",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f211af43_9b233ed9",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-11T00:41:10Z",
+      "side": 1,
+      "message": "I\u0027d prefer this not be added to BaseProperties, that will cause it to show up in go/Android.bp and if someone sets it on a random cc_library module everything is going to explode.  It could go in cc_object, but adding it to the wrong cc_object would still cause problems.  Two options I prefer:\n1.  Make a new crt_cc_object type that sets a bool in the factory function to enable this behavior.\n2.  Make the flag a `crt: true` bool on cc_object.  Higher-level flags tend to work better than low level flags like this anyways.",
+      "revId": "5d343d711b09d80a514882c7fade98c0a33c2383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd3a9cf_95b124d2",
+        "filename": "java/app_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-11T00:41:10Z",
+      "side": 1,
+      "message": "Get these from ctx.ModuleForTests(\"crtbegin_so\", \"android_arm64_armv8-a_sdk_29\").Rule(\"ld\").Output",
+      "range": {
+        "startLine": 546,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 69
+      },
+      "revId": "5d343d711b09d80a514882c7fade98c0a33c2383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
