@@ -689,7 +689,9 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 	apexInfo := android.ApexInfo{
 		ApexVariationName: mctx.ModuleName(),
 		MinSdkVersion:     a.minSdkVersion(mctx),
+		RequiredSdks:      a.RequiredSdks(),
 		Updatable:         a.Updatable(),
+		InApexes:          []string{mctx.ModuleName()},
 	}
 
 	useVndk := a.SocSpecific() || a.DeviceSpecific() || (a.ProductSpecific() && mctx.Config().EnforceProductPartitionInterface())
@@ -1798,7 +1800,7 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.ModuleContext, do android.Paylo
 		}
 
 		// Check for the indirect dependencies if it is considered as part of the APEX
-		if am.ApexVariationName() != "" {
+		if android.InList(ctx.ModuleName(), am.InApexes()) {
 			return do(ctx, parent, am, false /* externalDep */)
 		}
 
