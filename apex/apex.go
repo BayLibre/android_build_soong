@@ -689,7 +689,9 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 	apexInfo := android.ApexInfo{
 		ApexVariationName: mctx.ModuleName(),
 		MinSdkVersion:     a.minSdkVersion(mctx),
+		RequiredSdks:      a.RequiredSdks(),
 		Updatable:         a.Updatable(),
+		InApexes:          []string{mctx.ModuleName()},
 	}
 
 	useVndk := a.SocSpecific() || a.DeviceSpecific() || (a.ProductSpecific() && mctx.Config().EnforceProductPartitionInterface())
