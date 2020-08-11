@@ -81,6 +81,24 @@
       "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5efe688_3136724f",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-11T23:33:45Z",
+      "side": 1,
+      "message": "An explicit interface is definitely the less lazy way to fix it, although it ends up equally undebuggable if you don\u0027t put a type assertion that *objectLinker implements the interface.\n\nThe main issue is when someone adds another module type that needs splitting, and copies the pattern here, and now cc.go knows about the implementation of every module type instead of delegating out to the different .go files.\n\nThe other issue is that now you can\u0027t wrap *objectLinker in a decorator.\n\nBoth cases are easily fixed in the future if that complexity is needed though.",
+      "parentUuid": "4b8557c7_4f430dc8",
+      "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
