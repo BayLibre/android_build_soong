@@ -155,6 +155,30 @@
       "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f85da8c_61f0fd2b",
+        "filename": "ui/terminal/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-08-11T23:00:26Z",
+      "side": 1,
+      "message": "I mentioned Blaze\u0027s behavior in an earlier comment:\n\n\u003e I also recently learned that Bazel has a feature to filter out warning output: https://docs.bazel.build/versions/master/command-line-reference.html#flag--auto_output_filter\n\u003e \n\u003e and some installations turn it on by default, e.g.:\n\u003e https://github.com/deepmind/reverb/blob/f194940368bcecd0033fa992e5b0e933e8717763/.bazelrc#L17",
+      "parentUuid": "4ceb0f2f_60faaf35",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
