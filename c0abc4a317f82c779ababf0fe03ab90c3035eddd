@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56735911_eef68ca7",
+        "filename": "rust/binary_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-11T19:12:34Z",
+      "side": 1,
+      "message": "The error message should contain the right tool path too.  A common pattern in Go tests is:\n\n    if g, w :\u003d path.String(), \"/host/linux-x86/bin/fizz-buzz\"; !strings.Contains(g, w) {\n        t.Errorf(\"wrong host tool path, expected %q got %q\", w, g)\n    }",
+      "revId": "c0abc4a317f82c779ababf0fe03ab90c3035eddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
