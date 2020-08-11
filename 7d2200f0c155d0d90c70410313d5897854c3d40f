@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2d7ab5a_4a8c1a8f",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T22:08:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70122ecb_79c2bd37",
+      "range": {
+        "startLine": 684,
+        "startChar": 17,
+        "endLine": 684,
+        "endChar": 22
+      },
+      "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65eea494_e0315d3a",
         "filename": "cc/cc.go",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2020-08-11T21:49:34Z",
       "side": 1,
       "message": "To decouple this from objectLinker, how about:\n\n    if s, ok :\u003d c.linker.(interface{\n        splitPerApliLevel() bool\n    }); ok {\n        return s.splitPerApiLevel()\n    }\n\nAnd then objectLinker can have:\n\n    func (o *objectLinker) splitPerApiLevel() bool {\n        return Bool(o.Properties.Crt)\n    }",
+      "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b8557c7_4f430dc8",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T22:08:29Z",
+      "side": 1,
+      "message": "I\u0027d really rather not. I encountered that pattern the other day and found it *extremely* difficult to debug. If the signature of that function changes, instead of a build failure you get a behavior change.\n\nI can add `splitPerApiLevel` to an explicit interface instead, if the goal is to avoid the explicit type check against objectLinker. LinkableInterface and ImageInterface seem to be the only interfaces that cc.Module provide (they\u0027re the only assertions I found), but I could also add a new interface. That still leaves a type check though. Is there a reason an interface based type check is better than the struct based one?\n\nOr, if the goal is to keep this function from accessing another type\u0027s properties struct, how about what I have here, but I add `func (this *objectLinker) crt() bool`?\n\nHave done the latter in the new ps. lmk if you prefer the former, or if there\u0027s a reason to prefer the implicit interface that I\u0027m missing.",
+      "parentUuid": "65eea494_e0315d3a",
       "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
