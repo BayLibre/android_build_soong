@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4e7aeab_3d0260f8",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T00:24:15Z",
+      "side": 1,
+      "message": "... but none of the APIs between min_sdk_version and sdk_version will actually be usable for NDK modules.\n\nMight also worth mentioning that this is the equivalent of Java\u0027s compileSdkVersion in build.gradle. Not sure how familiar platform devs are with that terminology.",
+      "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45db663d_c6f0c422",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T00:24:15Z",
+      "side": 1,
+      "message": "OS API level",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 23
+      },
+      "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c785f00_e7d57445",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T00:24:15Z",
+      "side": 1,
+      "message": "I wonder if this should be the other way around. min_sdk_version is required, sdk_version defaults to the value of min_sdk_version. \"sdk_version\" isn\u0027t intention revealing in the Android.bp file, whereas \"min_sdk_version\" is something you can understand without needing to look at the docs.",
+      "range": {
+        "startLine": 227,
+        "startChar": 35,
+        "endLine": 227,
+        "endChar": 100
+      },
+      "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
