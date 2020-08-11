@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6e9b4498_515898d7",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T21:13:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b027dd51_f35466dd",
+      "revId": "f8d032a483a8405d530c89cc5953d697ea631b79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "848ae892_874f2ae9",
         "filename": "cc/ndk_library.go",
         "patchSetId": 4
