@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ebe1781e_9a491575",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-11T02:59:20Z",
+      "side": 1,
+      "message": "I don\u0027t think they are familiar with Gradle, but \u0027compileSdkVersion\u0027 is self descriptive. I\u0027ve updated the doc.",
+      "parentUuid": "a4e7aeab_3d0260f8",
+      "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45db663d_c6f0c422",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "516e5cff_cac7e547",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-11T02:59:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45db663d_c6f0c422",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 23
+      },
+      "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c785f00_e7d57445",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18a5cfb8_9679f196",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-11T02:59:20Z",
+      "side": 1,
+      "message": "Yes, you are right. That\u0027s the goal. But there are several obstacles to get there, which I will fix incrementally.\n\nNot setting the sdk_version property has its own meaning. It means you are given access to all private symbols (i.e. not using SDK/NDK). If sdk_version defaults to min_sdk_version where an empty value has a different meaning (the current in-development version), then a module with an empty sdk_version suddenly lose access to the symbols.\n\nIn addition, the 30+ modules that are setting sdk_version to a value be fixed to use min_sdk_version instead. I will land this first, fix those 30+ modules and then finally make sdk_version to default to min_sdk_version.",
+      "parentUuid": "3c785f00_e7d57445",
+      "range": {
+        "startLine": 227,
+        "startChar": 35,
+        "endLine": 227,
+        "endChar": 100
+      },
+      "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
