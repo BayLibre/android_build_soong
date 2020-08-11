@@ -179,6 +179,30 @@
       "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f87e21_5e16b969",
+        "filename": "ui/terminal/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-08-11T23:09:48Z",
+      "side": 1,
+      "message": "It\u0027s also worth noting that this is for \"quiet\" builds only. I\u0027m not proposing to change the default behavior. People who prefer the default behavior can just leave quiet mode disabled.",
+      "parentUuid": "4f85da8c_61f0fd2b",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
