@@ -128,6 +128,30 @@
       "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d969afe0_725c0ed8",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T20:23:31Z",
+      "side": 1,
+      "message": "Gotcha, makes sense.",
+      "parentUuid": "18a5cfb8_9679f196",
+      "range": {
+        "startLine": 227,
+        "startChar": 35,
+        "endLine": 227,
+        "endChar": 100
+      },
+      "revId": "b8ae8d5b034e4945d4217063b6a8046b22e526e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

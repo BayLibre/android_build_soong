@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eaf0b22_fc001db3",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-11T20:23:31Z",
+      "side": 1,
+      "message": "Equivalent of how that property behaves *for Java*. It does nothing for the NDK. How about:\n\n```\nThe API level that this module is built against. The APIs of this API level will be visible at build time, but use of any APIs newer than min_sdk_version will render the module unloadable on older devices. In the future it will be possible to weakly-link new APIs, making the behavior match Java: such modules will load on older devices, but calling new APIs on devices that do not support them will result in a crash.\n\nThis property has the same behavior as sdk_version does for Java modules. For those familiar with Android Gradle, the property behaves similarly to how compileSdkVersion does for Java code.\n```",
+      "range": {
+        "startLine": 221,
+        "startChar": 69,
+        "endLine": 222,
+        "endChar": 14
+      },
+      "revId": "f06495cca04d7567cc696f0340098e0c3593aa05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
