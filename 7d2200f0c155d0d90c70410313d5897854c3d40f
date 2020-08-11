@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70122ecb_79c2bd37",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-11T21:49:34Z",
+      "side": 1,
+      "message": "This should probably stay as SplitPerApiLevel.",
+      "range": {
+        "startLine": 684,
+        "startChar": 17,
+        "endLine": 684,
+        "endChar": 22
+      },
+      "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65eea494_e0315d3a",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-11T21:49:34Z",
+      "side": 1,
+      "message": "To decouple this from objectLinker, how about:\n\n    if s, ok :\u003d c.linker.(interface{\n        splitPerApliLevel() bool\n    }); ok {\n        return s.splitPerApiLevel()\n    }\n\nAnd then objectLinker can have:\n\n    func (o *objectLinker) splitPerApiLevel() bool {\n        return Bool(o.Properties.Crt)\n    }",
+      "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
