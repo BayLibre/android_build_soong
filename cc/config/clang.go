@@ -141,6 +141,10 @@ func init() {
 		// Warnings from clang-10
 		// Nested and array designated initialization is nice to have.
 		"-Wno-c99-designator",
+
+		// Calls to the APIs that are newer than the min sdk version of the caller shoulld be
+		// guarded with __builtin_available.
+		"-Wunguarded-availability",
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraCppflags", strings.Join([]string{
