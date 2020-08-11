@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8b8f2b8_8b4047e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-08-11T09:46:09Z",
+      "side": 1,
+      "message": "Yes, this is an older compiler (not the update that I really want to submit later this week), but if we switch to this, we can remove clang-r383902b, which seems like a reasonable step forward.",
+      "revId": "bbef991c2703940c992a85b25c3b55b37fb1a300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
