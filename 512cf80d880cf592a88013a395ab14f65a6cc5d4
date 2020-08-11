@@ -251,6 +251,30 @@
       "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3eb47f_752334ee",
+        "filename": "ui/terminal/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-08-11T23:54:03Z",
+      "side": 1,
+      "message": "AFAIK there are only two users of the \u0027quiet\u0027 flag: you and me. I\u0027d rather leave it as is and provide \u0027superquiet\" flag to suppress all warnings.",
+      "parentUuid": "93c2fd4e_da3502bb",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
