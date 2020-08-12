@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "483c7a6b_5b1336ad",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-08-12T13:44:55Z",
+      "side": 1,
+      "message": "Can this default be set in reproxy instead?",
+      "range": {
+        "startLine": 827,
+        "startChar": 45,
+        "endLine": 827,
+        "endChar": 58
+      },
+      "revId": "a4957dd3f2e7cd55584e2d5ae3214368c4367ebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c580c0_e85dcb11",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-08-12T13:44:55Z",
+      "side": 1,
+      "message": "Do we have to support `FLAG_*` variables going forward? If we want to deprecate them at some point, lets maybe ensure we don\u0027t add support for it in new code?",
+      "range": {
+        "startLine": 836,
+        "startChar": 46,
+        "endLine": 836,
+        "endChar": 60
+      },
+      "revId": "a4957dd3f2e7cd55584e2d5ae3214368c4367ebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6081b1dc_e3fb5d1f",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-08-12T13:44:55Z",
+      "side": 1,
+      "message": "Same for this - can we set it in reproxy instead? i.e., if RBE_DIR is set and `FLAG_re_proxy` is not set, then set it based on the value of RBE_DIR variable.",
+      "range": {
+        "startLine": 856,
+        "startChar": 45,
+        "endLine": 856,
+        "endChar": 58
+      },
+      "revId": "a4957dd3f2e7cd55584e2d5ae3214368c4367ebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a13d79_a2167131",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-08-12T13:44:55Z",
+      "side": 1,
+      "message": "General comment about all the RBE* functions - can they be private? they are used in the same package as far as I see.",
+      "range": {
+        "startLine": 864,
+        "startChar": 21,
+        "endLine": 864,
+        "endChar": 28
+      },
+      "revId": "a4957dd3f2e7cd55584e2d5ae3214368c4367ebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
