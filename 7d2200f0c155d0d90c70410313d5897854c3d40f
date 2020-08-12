@@ -99,6 +99,24 @@
       "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3934434d_a1a64c95",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-12T21:58:40Z",
+      "side": 1,
+      "message": "Thanks for the explanation! Yes, the interface assertion is the part that actually makes it less painful, but I sort of take those for granted with any explicit interface 😊\n\nI\u0027ll send a follow up patch to add the explicit interface/type assertion. The number of unsubmitted changes I have in soong became unwieldy a while ago so want to avoid making that worse right now.",
+      "parentUuid": "c5efe688_3136724f",
+      "revId": "7d2200f0c155d0d90c70410313d5897854c3d40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
