@@ -237,6 +237,17 @@ var neverallowTests = []struct {
 		},
 	},
 	{
+		name: "sdk_version: \"none\" prebuilt_apis outside core libraries",
+		fs: map[string][]byte{
+			"Android.bp": []byte(`
+				java_library {
+					name: "outside_core_libraries",
+					sdk_version: "none",
+					prebuilt_apis: true,
+				}`),
+		},
+	},
+	{
 		name: "sdk_version: \"none\" outside core libraries",
 		fs: map[string][]byte{
 			"Android.bp": []byte(`
@@ -437,6 +448,7 @@ type mockJavaLibraryProperties struct {
 	Libs           []string
 	Sdk_version    *string
 	Uncompress_dex *bool
+	Prebuilt_apis  *bool
 }
 
 type mockJavaLibraryModule struct {

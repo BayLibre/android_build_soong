@@ -76,15 +76,17 @@ func prebuiltApiModuleName(mctx android.LoadHookContext, module string, scope st
 
 func createImport(mctx android.LoadHookContext, module string, scope string, apiver string, path string) {
 	props := struct {
-		Name        *string
-		Jars        []string
-		Sdk_version *string
-		Installable *bool
+		Name          *string
+		Jars          []string
+		Sdk_version   *string
+		Installable   *bool
+		Prebuilt_apis *bool
 	}{}
 	props.Name = proptools.StringPtr(prebuiltApiModuleName(mctx, module, scope, apiver))
 	props.Jars = append(props.Jars, path)
-	props.Sdk_version = proptools.StringPtr(scope)
+	props.Sdk_version = proptools.StringPtr("none")
 	props.Installable = proptools.BoolPtr(false)
+	props.Prebuilt_apis = proptools.BoolPtr(true)
 
 	mctx.CreateModule(ImportFactory, &props)
 }
