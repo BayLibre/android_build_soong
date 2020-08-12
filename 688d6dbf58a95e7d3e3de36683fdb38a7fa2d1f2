@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004360561",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1398467?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2db27654_e7b81aaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-12T15:49:32Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "688d6dbf58a95e7d3e3de36683fdb38a7fa2d1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004360561",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1398467?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9ce3608a_f15bc946",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-12T15:49:32Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details.",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "688d6dbf58a95e7d3e3de36683fdb38a7fa2d1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
