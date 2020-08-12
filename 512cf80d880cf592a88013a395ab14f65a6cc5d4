@@ -275,6 +275,30 @@
       "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf3f7ba_17b73a39",
+        "filename": "ui/terminal/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-08-12T19:33:36Z",
+      "side": 1,
+      "message": "Okay, I can try to create an ANDROID_QUIET_BUILD\u003dnowarn I suppose.\n\nWhat about the change to print the command line on failure? Are you happy to have that under ANDROID_QUIET_BUILD\u003dtrue?",
+      "parentUuid": "cb3eb47f_752334ee",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "512cf80d880cf592a88013a395ab14f65a6cc5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
