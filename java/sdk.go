@@ -272,7 +272,7 @@ func sdkSpecFrom(str string) sdkSpec {
 
 		var kind sdkKind
 		switch kindString {
-		case "":
+		case "", "public":
 			kind = sdkPublic
 		case "core":
 			kind = sdkCore
