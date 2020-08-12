@@ -159,6 +159,7 @@ func createLibcoreRules() []Rule {
 			NotIn(coreLibraryProjects...).
 			NotIn(artTests...).
 			With("sdk_version", "none").
+			Without("prebuilt_apis", "true").
 			WithoutMatcher("name", Regexp("^android_.*stubs_current$")),
 	}
 
