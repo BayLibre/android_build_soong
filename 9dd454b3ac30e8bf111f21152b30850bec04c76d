@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51f1d5bd_b99efed2",
+        "filename": "scripts/setup-android-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-08-12T19:31:28Z",
+      "side": 1,
+      "message": "This seems like an unusual way to set the output directory (admittedly, it was my first idea before I discovered the OUT_DIR environment variable). Why not just set OUT_DIR?\n\nBy the way, I have my own set of scripts that do something similar. I wrote some documentation here:\n\nhttps://user.git.corp.google.com/pcc/android-dev-tools/+/929d58aa637601392cf3fa8b65880189b127ee6c/README\n\n(The section starting on line 63 has the \"run command inside a lunched shell\" shortcut.)",
+      "revId": "9dd454b3ac30e8bf111f21152b30850bec04c76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
