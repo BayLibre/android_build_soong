@@ -22,6 +22,30 @@
       "revId": "f06495cca04d7567cc696f0340098e0c3593aa05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c1cad8_f7c669da",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-12T00:12:37Z",
+      "side": 1,
+      "message": "LGTM. Will copy that to the internal change ag/12344107",
+      "parentUuid": "2eaf0b22_fc001db3",
+      "range": {
+        "startLine": 221,
+        "startChar": 69,
+        "endLine": 222,
+        "endChar": 14
+      },
+      "revId": "f06495cca04d7567cc696f0340098e0c3593aa05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
