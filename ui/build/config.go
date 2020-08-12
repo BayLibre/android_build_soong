@@ -15,6 +15,7 @@
 package build
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -258,7 +259,7 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret.environ.Set("BUILD_DATETIME_FILE", buildDateTimeFile)
 
 	if ret.UseRBE() {
-		for k, v := range getRBEVars(ctx, tmpDir) {
+		for k, v := range getRBEVars(ctx, Config{ret}) {
 			ret.environ.Set(k, v)
 		}
 	}
@@ -812,7 +813,76 @@ func (c *configImpl) RBEStatsOutputDir() string {
 			return v
 		}
 	}
-	return ""
+	return c.logDir()
+}
+
+func (c *configImpl) logDir() string {
+	if c.Dist() {
+		return filepath.Join(c.DistDir(), "logs")
+	}
+	return c.OutDir()
+}
+
+func (c *configImpl) RBELogPath() string {
+	for _, f := range []string{"RBE_log_path", "FLAG_log_path"} {
+		if v, ok := c.environ.Get(f); ok {
+			return v
+		}
+	}
+	return fmt.Sprintf("text://%v/reproxy_log.txt", c.logDir())
+}
+
+func (c *configImpl) RBEExecRoot() string {
+	for _, f := range []string{"RBE_exec_root", "FLAG_exec_root"} {
+		if v, ok := c.environ.Get(f); ok {
+			return v
+		}
+	}
+	wd, err := os.Getwd()
+	if err != nil {
+		return ""
+	}
+	return wd
+}
+
+func (c *configImpl) RBEDir() string {
+	if v, ok := c.environ.Get("RBE_DIR"); ok {
+		return v
+	}
+	return "prebuilts/remoteexecution-client/live/"
+}
+
+func (c *configImpl) RBEReproxy() string {
+	for _, f := range []string{"RBE_re_proxy", "FLAG_re_proxy"} {
+		if v, ok := c.environ.Get(f); ok {
+			return v
+		}
+	}
+	return filepath.Join(c.RBEDir(), "reproxy")
+}
+
+func (c *configImpl) RBEAuth() (string, string) {
+	for _, f := range []string{"RBE_use_application_default_credentials", "FLAG_use_application_default_credentials"} {
+		if v, ok := c.environ.Get(f); ok {
+			v = strings.TrimSpace(v)
+			if v != "" && v != "false" && v != "0" {
+				return "RBE_use_application_default_credentials", "true"
+			}
+		}
+	}
+	for _, f := range []string{"RBE_use_gce_credentials", "FLAG_use_gce_credentials"} {
+		if v, ok := c.environ.Get(f); ok {
+			if v != "" && v != "false" && v != "0" {
+				return "RBE_use_gce_credentials", "true"
+			}
+		}
+	}
+	for _, f := range []string{"RBE_credential_file", "FLAG_credential_file"} {
+		if v, ok := c.environ.Get(f); ok {
+			return "RBE_credential_file", v
+		}
+	}
+	return "RBE_use_application_default_credentials", "true"
 }
 
 func (c *configImpl) UseRemoteBuild() bool {
