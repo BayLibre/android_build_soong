@@ -15,6 +15,7 @@
 package cc
 
 import (
+    "fmt"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -339,6 +340,13 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 }
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
+    require_root := false
+    test_root := "/data/local/tmp"
+    if ctx.inVendor() || ctx.useVndk() {
+        test_root = "/data/nativetest/vendor"
+        require_root = true
+    }
+    
 	dataSrcPaths := android.PathsForModuleSrc(ctx, test.Properties.Data)
 
 	for _, dataSrcPath := range dataSrcPaths {
@@ -369,7 +377,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	for _, module := range test.Properties.Test_mainline_modules {
 		configs = append(configs, tradefed.Option{Name: "config-descriptor:metadata", Key: "mainline-param", Value: module})
 	}
-	if Bool(test.Properties.Require_root) {
+	if Bool(test.Properties.Require_root) || require_root{
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
 	} else {
 		var options []tradefed.Option
@@ -406,7 +414,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	}
 
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,
-		test.Properties.Test_config_template, test.Properties.Test_suites, configs, test.Properties.Auto_gen_config)
+		test.Properties.Test_config_template, test.Properties.Test_suites, configs, test.Properties.Auto_gen_config, test_root)
 
 	test.binaryDecorator.baseInstaller.dir = "nativetest"
 	test.binaryDecorator.baseInstaller.dir64 = "nativetest64"
