@@ -51,6 +51,40 @@
       "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49168fa6_976cb02f",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-13T21:45:13Z",
+      "side": 1,
+      "message": "This is also going to error for builds with empty Target[android.Android], for example host-only builds.",
+      "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef05d3d9_edfcb7a2",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-13T21:45:13Z",
+      "side": 1,
+      "message": "Maybe check for collisions here?",
+      "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
