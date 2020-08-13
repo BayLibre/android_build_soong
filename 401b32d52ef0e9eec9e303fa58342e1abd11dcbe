@@ -16,6 +16,29 @@
       "revId": "401b32d52ef0e9eec9e303fa58342e1abd11dcbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99028ac_6d467624",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-13T20:47:34Z",
+      "side": 1,
+      "message": "I wonder if this would be better encapsulated in a single method to increase the chances that each use of AllowMissingDependencies() has a matching AddMissingDependenciesWithReason.",
+      "range": {
+        "startLine": 1540,
+        "startChar": 10,
+        "endLine": 1545,
+        "endChar": 4
+      },
+      "revId": "401b32d52ef0e9eec9e303fa58342e1abd11dcbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
