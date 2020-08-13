@@ -23,6 +23,30 @@
       "revId": "688d6dbf58a95e7d3e3de36683fdb38a7fa2d1f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "317e3773_a5400569",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-08-13T16:42:30Z",
+      "side": 1,
+      "message": "Done. It looks to me like this is the variable name used in the generated Makefile? Not sure, but renaming it didn\u0027t seem to break anything.",
+      "parentUuid": "37819f97_f967fdf8",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "688d6dbf58a95e7d3e3de36683fdb38a7fa2d1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
