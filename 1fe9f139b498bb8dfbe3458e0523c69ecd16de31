@@ -1,0 +1,31 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004394000",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1393254?revision\u003d9",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6af22a3a_0b2b4bc4",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-13T12:40:55Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 94,
+        "startChar": 69,
+        "endLine": 94,
+        "endChar": 75
+      },
+      "revId": "1fe9f139b498bb8dfbe3458e0523c69ecd16de31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
