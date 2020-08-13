@@ -62,5 +62,7 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 			}
 			ctx.AliasVariation("")
 		}
+	case *BazelModule:
+		ctx.CreateVariations("")
 	}
 }
