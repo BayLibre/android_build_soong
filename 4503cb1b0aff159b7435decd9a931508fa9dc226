@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe51f561_65488320",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-13T22:57:24Z",
+      "side": 1,
+      "message": "Can we consider a \"grep -v\" instead at least? This feels like it is going to result in some super spooky breakage down the road when something gets reordered or extra deps added.",
+      "revId": "4503cb1b0aff159b7435decd9a931508fa9dc226",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
