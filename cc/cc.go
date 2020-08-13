@@ -21,6 +21,7 @@ package cc
 import (
 	"fmt"
 	"io"
+	"os"
 	"strconv"
 	"strings"
 
@@ -30,6 +31,8 @@ import (
 	"android/soong/android"
 	"android/soong/cc/config"
 	"android/soong/genrule"
+
+	"os/exec"
 )
 
 func init() {
@@ -464,6 +467,81 @@ func IsRuntimeDepTag(depTag blueprint.DependencyTag) bool {
 func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
 	ccDepTag, ok := depTag.(DependencyTag)
 	return ok && ccDepTag == testPerSrcDepTag
+}
+
+type bazelModuleProperties struct {
+	Label *string `android:"arch_variant"`
+}
+
+type BazelModule struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	android.ApexModuleBase
+	android.ImageInterface
+
+	properties    bazelModuleProperties
+	staticVariant LinkableInterface
+
+	OutPath         android.Path
+	CompilationOuts []android.Path
+}
+
+var _ android.ImageInterface = (*BazelModule)(nil)
+
+func (g *BazelModule) ImageMutatorBegin(ctx android.BaseModuleContext) {}
+
+func (g *BazelModule) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
+	return false
+}
+
+func (g *BazelModule) RamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
+	return false
+}
+
+func (g *BazelModule) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {
+	return false
+}
+
+func (g *BazelModule) ExtraImageVariations(ctx android.BaseModuleContext) []string {
+	return []string{"", "ramdisk", "recovery"}
+}
+
+func (g *BazelModule) SetImageVariation(ctx android.BaseModuleContext, variation string, module android.Module) {
+}
+
+func (b *BazelModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	const BAZEL_LOCATION = "/tmp/testBazel"
+	const BAZEL_OUTPUT_DIR = "/tmp/bazel/output"
+	const WORKSPACE_DIR = "/usr/local/google/home/cparsons/roboleaf/aosp-master/"
+	const FAKE_HOME_DIR = "/tmp/bazel/fakehome"
+
+	bazelCmd := exec.Command(BAZEL_LOCATION, "--output_base="+BAZEL_OUTPUT_DIR,
+		"cquery",
+		// TODO: Get from bazel_module.label
+		"bionic/libc:upstream_freebsd_large_stack",
+		// TODO: Get platform from variant information
+		"--platforms=//build/soong/bazel/devices:generic_x86", "--output=starlark",
+
+		"--expr=[f.path for f in target.files.to_list()][0] + ', '"+
+			" + [f.path for f in target.output_groups.compilation_outputs.to_list()][0]")
+	bazelCmd.Dir = WORKSPACE_DIR
+
+	bazelCmd.Env = append(os.Environ(), "HOME="+FAKE_HOME_DIR, PwdPrefix())
+
+	if output, err := bazelCmd.Output(); err != nil {
+		// TODO: Better error handling.
+		fmt.Println("BAZEL ERROR: ", err, " ", output)
+		return
+	} else {
+		// TODO: There's no guarantee the cquery output has been actually generated
+		// on the filesystem. Solve with a joint execution strategy.
+		bazelOutput := strings.TrimSpace(string(output))
+		filenames := strings.Split(bazelOutput, ", ")
+		archive := filenames[0]
+		object := filenames[1]
+		b.OutPath = android.PathForSource(ctx, archive)
+		b.CompilationOuts = []android.Path{android.PathForSource(ctx, object)}
+	}
 }
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -2274,6 +2352,18 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					}
 				} else {
 					ctx.ModuleErrorf("module %q is not a genrule", depName)
+				}
+				fallthrough
+			case wholeStaticDepTag:
+				if bazelModule, ok := dep.(*BazelModule); ok {
+					compilationObjects := Objects{
+						objFiles: bazelModule.CompilationOuts,
+					}
+					depPaths.WholeStaticLibs = append(depPaths.WholeStaticLibs, bazelModule.OutPath)
+					depPaths.WholeStaticLibObjs = depPaths.WholeStaticLibObjs.Append(compilationObjects)
+					depPaths.WholeStaticLibsFromPrebuilts = append(depPaths.WholeStaticLibsFromPrebuilts, bazelModule.OutPath)
+				} else {
+					ctx.ModuleErrorf("module %q should be of type bazel_module", depName)
 				}
 			}
 			return

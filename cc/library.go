@@ -183,6 +183,7 @@ func init() {
 
 func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library_static", LibraryStaticFactory)
+	ctx.RegisterModuleType("bazel_module", BazelModuleFactory)
 	ctx.RegisterModuleType("cc_library_shared", LibrarySharedFactory)
 	ctx.RegisterModuleType("cc_library", LibraryFactory)
 	ctx.RegisterModuleType("cc_library_host_static", LibraryHostStaticFactory)
@@ -202,6 +203,11 @@ func LibraryFactory() android.Module {
 		staticAndSharedLibrarySdkMemberType,
 	}
 	return module.Init()
+}
+
+func BazelModuleFactory() android.Module {
+	module := NewBazelModule(android.HostAndDeviceSupported)
+	return module
 }
 
 // cc_library_static creates a static library for a device and/or host binary.
@@ -1396,6 +1402,27 @@ func versioningMacroName(moduleName string) string {
 	return "__" + macroName + "_API__"
 }
 
+func NewBazelModule(hod android.HostOrDeviceSupported) *BazelModule {
+	properties := &bazelModuleProperties{}
+
+	module := &BazelModule{}
+
+	module.AddProperties(properties)
+	module.AddProperties(&module.properties)
+	module.EnableNativeBridgeSupportByDefault()
+
+	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibBoth)
+	android.InitApexModule(module)
+	android.InitDefaultableModule(module)
+	return module
+}
+
+func (g *BazelModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	// Because generated outputs are checked by client modules(e.g. cc_library, ...)
+	// we can safely ignore the check here.
+	return nil
+}
+
 func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
 	module := newModule(hod, android.MultilibBoth)
 
@@ -1514,6 +1541,8 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 		} else if len(variations) > 0 {
 			mctx.CreateLocalVariations(variations...)
 		}
+	} else if _, ok := mctx.Module().(*BazelModule); ok {
+		mctx.CreateLocalVariations("static")
 	}
 }
 
@@ -1620,6 +1649,12 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 				mctx.CreateVariations("")
 				return
 			}
+		}
+	}
+	if bazelModule, ok := mctx.Module().(*BazelModule); ok {
+		if VersionVariantAvailable(bazelModule) {
+			mctx.CreateVariations("")
+			return
 		}
 	}
 }
