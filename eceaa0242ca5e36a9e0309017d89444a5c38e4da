@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e5ba0e90_68dbee48",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-13T21:03:53Z",
+      "side": 1,
+      "message": "Translating a preview API level to 10000 is often useful, which would make FinalApiLevel and PreviewApiLevel interfaces identical, and maybe you could then just have an ApiLevel struct instead?",
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41064da5_3b821fc9",
         "filename": "android/api_levels.go",
         "patchSetId": 6
@@ -134,6 +151,30 @@
       "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d424a92_7f0cde61",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-13T21:03:53Z",
+      "side": 1,
+      "message": "This has come up before, and I\u0027ve always pushed back because this doesn\u0027t match the behavior of the \"R\" constant in an AndroidManifest.xml, where \"R\" specifically means targeting a preview SDK, and must be replaced with \"30\" to target the final SDK.",
+      "parentUuid": "941d8943_a459d867",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
