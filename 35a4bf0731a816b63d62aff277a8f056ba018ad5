@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89968a57_4f423693",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T02:35:22Z",
+      "side": 1,
+      "message": "This means \u0027min_sdk_version: \"R\"\u0027 and \u0027min_sdk_version: \"S\"\u0027 will be treated the same? (assuming both S and R are not finalized)",
+      "range": {
+        "startLine": 1819,
+        "startChar": 0,
+        "endLine": 1822,
+        "endChar": 2
+      },
+      "revId": "35a4bf0731a816b63d62aff277a8f056ba018ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

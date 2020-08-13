@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f092b060_b37ab34d",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1421,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T02:35:22Z",
+      "side": 0,
+      "message": "Glad to see this 9000 is gone!",
+      "range": {
+        "startLine": 1421,
+        "startChar": 53,
+        "endLine": 1421,
+        "endChar": 57
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
