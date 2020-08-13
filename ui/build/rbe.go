@@ -55,6 +55,7 @@ func getRBEVars(ctx Context, config Config) map[string]string {
 	vars := map[string]string{
 		"RBE_server_address": fmt.Sprintf("unix://%v/reproxy_%v.sock", absPath(ctx, config.TempDir()), rand.Intn(1000)),
 		"RBE_log_path":       config.rbeLogPath(),
+		"RBE_log_dir":        config.logDir(),
 		"RBE_re_proxy":       config.rbeReproxy(),
 		"RBE_exec_root":      config.rbeExecRoot(),
 		"RBE_output_dir":     config.rbeStatsOutputDir(),
