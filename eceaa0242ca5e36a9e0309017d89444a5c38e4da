@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2efad036_226c8048",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-13T23:33:03Z",
+      "side": 1,
+      "message": "An exported struct can still be unconstructable outside the package (at least not in a useful way) if it contains unexported fields.",
+      "parentUuid": "cba85511_296d4d2b",
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41064da5_3b821fc9",
         "filename": "android/api_levels.go",
         "patchSetId": 6
@@ -232,6 +250,30 @@
       "side": 1,
       "message": "How does that work? When 30 drops into the platform, do all the cases of \"R\" become build failures, or do they just continue targeting the preview? I can change this behavior easy enough if I need to.",
       "parentUuid": "3d424a92_7f0cde61",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ce8778_e17d5e1f",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-13T23:33:03Z",
+      "side": 1,
+      "message": "We never use \"R\" in an Android.bp or Android.mk file, we always use \"current\", which magically changes from \"R\" to \"30\" when R is finalized, and then to \"S\" in master.",
+      "parentUuid": "08704f4b_34d72118",
       "range": {
         "startLine": 224,
         "startChar": 0,
