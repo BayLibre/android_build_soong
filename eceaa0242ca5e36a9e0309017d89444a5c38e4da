@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "95ce49a5_fa8382c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T08:14:14Z",
+      "side": 1,
+      "message": "LGTM from my perspective. I also see there are several follow-up changes.\n\nColin or Dan might have something to say though.",
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41064da5_3b821fc9",
         "filename": "android/api_levels.go",
         "patchSetId": 6
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "Are there cases where it\u0027s useful to know that it actually was unspecified, or are you thinking this function should just accept an additional argument for a default?",
       "parentUuid": "41064da5_3b821fc9",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d193f0b_77956391",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T08:14:14Z",
+      "side": 1,
+      "message": "\u0027raw\u0027 here could be from \u0027sdk_version\u0027 or \u0027min_sdk_version\u0027 which could be left empty. If that case is not handled in this function, you will have to manually check that case like here: https://android-review.googlesource.com/c/platform/build/soong/+/1371896/5/apex/apex.go#1814",
+      "parentUuid": "e5638a25_ee8635af",
       "range": {
         "startLine": 216,
         "startChar": 0,
@@ -140,6 +181,30 @@
       "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67cd89cc_73d4ff2b",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T08:14:14Z",
+      "side": 1,
+      "message": "\u003e only be used when errors are not expected\n\nOk, this makes sense to me.",
+      "parentUuid": "0b6e1321_320b53ea",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 20
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
