@@ -98,7 +98,8 @@ func GetProtoFlags(ctx ModuleContext, p *ProtoProperties) ProtoFlags {
 
 type ProtoProperties struct {
 	Proto struct {
-		// Proto generator type.  C++: full or lite.  Java: micro, nano, stream, or lite.
+		// Proto generator type.  C++: full or lite.  Java: micro, nano,
+		// stream, lite, or full (full allowed for host Java only).
 		Type *string `android:"arch_variant"`
 
 		// Proto plugin to use as the generator.  Must be a cc_binary_host module.
