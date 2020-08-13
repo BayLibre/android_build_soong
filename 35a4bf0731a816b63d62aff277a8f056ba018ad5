@@ -22,6 +22,30 @@
       "revId": "35a4bf0731a816b63d62aff277a8f056ba018ad5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19edbdc6_94d86256",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-13T07:25:11Z",
+      "side": 1,
+      "message": "Yeah, which is a little odd, but it how it was before, (enough changed here that gerrit makes it look like this is new, but this is the same check that starts on L1817 previously).",
+      "parentUuid": "89968a57_4f423693",
+      "range": {
+        "startLine": 1819,
+        "startChar": 0,
+        "endLine": 1822,
+        "endChar": 2
+      },
+      "revId": "35a4bf0731a816b63d62aff277a8f056ba018ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
