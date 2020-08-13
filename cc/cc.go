@@ -244,7 +244,17 @@ type BaseProperties struct {
 	//
 	// In addition, setting this property causes two variants to be built, one for the platform
 	// and one for apps.
+	//
+	// This will be cleared by the cc ndk (called "sdk") mutator for the platform
+	// variant. In that case the HasNonPlatformSdkVariant property will be set to true.
 	Sdk_version *string
+
+	// The value of the sdk_version property that was specified in the .bp file.
+	//
+	// This will be populated from the Sdk_version field by the cc ndk (called
+	// sdk) mutator in order to preserve the value for use when generating the sdk
+	// snapshot .
+	HasNonPlatformSdkVariant *bool `blueprint:"mutated"`
 
 	// Minimum OS API level supported by this C or C++ module. This property becomes the value
 	// of the __ANDROID_API__ macro. When the C or C++ module is included in an APEX or an APK,
@@ -3423,6 +3433,17 @@ func DefaultsFactory(props ...interface{}) android.Module {
 
 func (c *Module) IsSdkVariant() bool {
 	return c.Properties.IsSdkVariant
+}
+
+// HasNonPlatformSdkVariant returns true if this is a platform SDK variant of a module that also
+// has an SDK variant.
+//
+// If the module specified an sdk_version property then the sdkMutator will create two variants,
+// a platform variant, i.e. "sdk:", and a non-platform variant, i.e. "sdk:sdk". This method will
+// return true for the first but false for the second. It will also return false if the module
+// never specified the sdk_version in the first place.
+func (c *Module) HasNonPlatformSdkVariant() bool {
+	return Bool(c.Properties.HasNonPlatformSdkVariant)
 }
 
 func kytheExtractAllFactory() android.Singleton {

@@ -161,9 +161,15 @@ func (s *sdk) collectMembers(ctx android.ModuleContext) {
 				return false
 			}
 
-			// Make sure that the resolved module is allowed in the member list property.
+			// Make sure that the resolved module is valid in the member list property.
 			if !memberType.IsInstance(child) {
 				ctx.ModuleErrorf("module %q is not valid in property %s", ctx.OtherModuleName(child), memberType.SdkPropertyName())
+			}
+
+			// Check whether this module is required.
+			if !memberType.IsRequired(child) {
+				// It is not required so ignore it and its dependencies.
+				return false
 			}
 
 			// Keep track of which multilib variants are used by the sdk.
