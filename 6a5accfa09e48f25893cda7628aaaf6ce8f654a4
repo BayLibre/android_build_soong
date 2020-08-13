@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d7a4395_b4abfd81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-13T13:37:39Z",
+      "side": 1,
+      "message": "Not sure if this is ready for review, but had a couple quick comments :) ",
+      "revId": "6a5accfa09e48f25893cda7628aaaf6ce8f654a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e34ce1c5_22b54a6e",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-13T13:37:39Z",
+      "side": 1,
+      "message": "Relaxed compared to android or default? It\u0027s not clear where this falls on the spectrum of lint levels.",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "6a5accfa09e48f25893cda7628aaaf6ce8f654a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aaa1037_46cf7e0c",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-13T13:37:39Z",
+      "side": 1,
+      "message": "We should enumerate what the valid values are to aid developers.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 93
+      },
+      "revId": "6a5accfa09e48f25893cda7628aaaf6ce8f654a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "104b1497_1187c022",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-13T13:37:39Z",
+      "side": 1,
+      "message": "Similar to above, we should enumerate what the valid values are to aid developers.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 72
+      },
+      "revId": "6a5accfa09e48f25893cda7628aaaf6ce8f654a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
