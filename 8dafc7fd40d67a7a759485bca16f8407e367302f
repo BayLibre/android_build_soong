@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "281795e0_084b1547",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-08-13T22:37:14Z",
+      "side": 1,
+      "message": "Ah, good catch. Done.",
+      "parentUuid": "49168fa6_976cb02f",
+      "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef05d3d9_edfcb7a2",
         "filename": "sh/sh_binary.go",
         "patchSetId": 5
@@ -85,6 +103,24 @@
       "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72191130_03c850bb",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-08-13T22:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef05d3d9_edfcb7a2",
+      "revId": "8dafc7fd40d67a7a759485bca16f8407e367302f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
