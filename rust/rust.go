@@ -213,6 +213,10 @@ func (mod *Module) SdkVersion() string {
 	return ""
 }
 
+func (c *Module) SpecifiedSdkVersion() string {
+	return ""
+}
+
 func (mod *Module) AlwaysSdk() bool {
 	return false
 }

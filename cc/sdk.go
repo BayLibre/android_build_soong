@@ -25,11 +25,19 @@ import (
 // that may be installed on older platforms.  Apexes use their own
 // variants that enforce backwards compatibility.
 func sdkMutator(ctx android.BottomUpMutatorContext) {
+	// Always copy the value of the sdk_version property specified in the .bp file
+	// into the Specified_sdk_version field.
+	module := ctx.Module()
+	if cc, ok := module.(*Module); ok {
+		// Preserve the value of the sdk_version property for use by sdk snapshot creation.
+		cc.Properties.Specified_sdk_version = cc.Properties.Sdk_version
+	}
+
 	if ctx.Os() != android.Android {
 		return
 	}
 
-	switch m := ctx.Module().(type) {
+	switch m := module.(type) {
 	case LinkableInterface:
 		if m.AlwaysSdk() {
 			if !m.UseSdk() {

@@ -220,7 +220,18 @@ type BaseProperties struct {
 
 	// Minimum sdk version supported when compiling against the ndk. Setting this property causes
 	// two variants to be built, one for the platform and one for apps.
+	//
+	// This will be cleared by the cc ndk (called "sdk") mutator for the platform
+	// variant. In order to allow the value to be used when generating an sdk
+	// snapshot the mutator will copy this to the Specified_sdk_version property.
 	Sdk_version *string
+
+	// The value of the sdk_version property that was specified in the .bp file.
+	//
+	// This will be populated from the Sdk_version field by the cc ndk (called
+	// sdk) mutator in order to preserve the value for use when generating the sdk
+	// snapshot .
+	Specified_sdk_version *string `blueprint:"mutated"`
 
 	// Minimum sdk version that the artifact should support when it runs as part of mainline modules(APEX).
 	Min_sdk_version *string
@@ -676,6 +687,10 @@ func (c *Module) StubDecorator() bool {
 
 func (c *Module) SdkVersion() string {
 	return String(c.Properties.Sdk_version)
+}
+
+func (c *Module) SpecifiedSdkVersion() string {
+	return String(c.Properties.Specified_sdk_version)
 }
 
 func (c *Module) MinSdkVersion() string {
