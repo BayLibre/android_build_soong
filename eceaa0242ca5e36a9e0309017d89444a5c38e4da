@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41064da5_3b821fc9",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T02:26:47Z",
+      "side": 1,
+      "message": "I thought it would be useful to model \u0027unspecified API level\u0027.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74e304d1_baf55c20",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T02:26:47Z",
+      "side": 1,
+      "message": "Nice. So \"R\" is right now previewApiLevel, but when R is finalized, it becomes finalApiLevel automatically, without requiring people to rewrite R into 30, right?",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb5b9bc7_56acafa3",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-13T02:26:47Z",
+      "side": 1,
+      "message": "I think this should be a user error (ctx.ModuleErrorf or ctx.PropertyErrorf) instead of a build-system error.",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 20
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
