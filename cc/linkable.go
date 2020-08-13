@@ -54,7 +54,13 @@ type LinkableInterface interface {
 	IsVndk() bool
 	HasVendorVariant() bool
 
+	// The effective sdk version, may be mutated from the value specified in the .bp
+	// file.
 	SdkVersion() string
+
+	// The sdk_version specified in the .bp file.
+	SpecifiedSdkVersion() string
+
 	AlwaysSdk() bool
 	IsSdkVariant() bool
 
