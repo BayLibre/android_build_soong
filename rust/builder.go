@@ -31,9 +31,14 @@ var (
 			Command: "$envVars $rustcCmd " +
 				"-C linker=${config.RustLinker} " +
 				"-C link-args=\"${crtBegin} ${config.RustLinkerArgs} ${linkFlags} ${crtEnd}\" " +
-				"--emit link -o $out --emit dep-info=$out.d $in ${libFlags} $rustcFlags",
+				"--emit link -o $out --emit dep-info=$out.d.raw $in ${libFlags} $rustcFlags" +
+				" && head -1 $out.d.raw > $out.d",
 			CommandDeps: []string{"$rustcCmd"},
 			// Rustc deps-info writes out make compatible dep files: https://github.com/rust-lang/rust/issues/7633
+			// Rustc emits unneeded dependency lines for the .d and main .rs file.
+			// Those extra lines cause ninja warning:
+			//     "warning: depfile has multiple output paths"
+			// Hence, we put rustc output to d.raw file and get its first line to the .d file for ninja.
 			Deps:    blueprint.DepsGCC,
 			Depfile: "$out.d",
 		},
