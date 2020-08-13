@@ -43,6 +43,7 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 			// Clear the sdk_version property for the platform (non-SDK) variant so later code
 			// doesn't get confused by it.
 			modules[0].(*Module).Properties.Sdk_version = nil
+			modules[0].(*Module).Properties.HasNonPlatformSdkVariant = boolPtr(true)
 
 			// Mark the SDK variant.
 			modules[1].(*Module).Properties.IsSdkVariant = true

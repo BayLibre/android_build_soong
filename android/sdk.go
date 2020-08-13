@@ -471,12 +471,19 @@ type SdkMemberType interface {
 	// The BottomUpMutatorContext provided is for the SDK module.
 	AddDependencies(mctx BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string)
 
-	// Return true if the supplied module is an instance of this member type.
+	// IsInstance returns true if the supplied module is an instance of this member type.
 	//
-	// This is used to check the type of each variant before added to the
-	// SdkMember. Returning false will cause an error to be logged expaining that
-	// the module is not allowed in whichever sdk property it was added.
+	// This is used to check the type of each variant before being added to the SdkMember. Returning
+	// false will cause an error to be logged explaining that the module is not allowed in whichever
+	// sdk property it was added.
 	IsInstance(module Module) bool
+
+	// IsRequired returns true if the supplied module is a required instance of this member type.
+	//
+	// Most members types will use the default behavior implemented by SdkMemberTypeBase which always
+	// return true. However a member type will return false if it added multiple dependencies onto
+	// different variants of the same module and wants to exclude one.
+	IsRequired(module Module) bool
 
 	// UsesSourceModuleTypeInSnapshot returns true when the AddPrebuiltModule() method returns a
 	// source module type.
@@ -554,6 +561,10 @@ func (b *SdkMemberTypeBase) UsableWithSdkAndSdkSnapshot() bool {
 
 func (b *SdkMemberTypeBase) IsHostOsDependent() bool {
 	return b.HostOsDependent
+}
+
+func (b *SdkMemberTypeBase) IsRequired(_ Module) bool {
+	return true
 }
 
 func (b *SdkMemberTypeBase) UsesSourceModuleTypeInSnapshot() bool {

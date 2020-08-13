@@ -1128,31 +1128,35 @@ cc_prebuilt_library_shared {
         "apex1",
         "apex2",
     ],
+    sdk_version: "current",
     stl: "none",
     compile_multilib: "both",
     export_include_dirs: ["include/myinclude"],
+    sanitize: {
+        never: true,
+    },
     arch: {
         arm64: {
             srcs: ["arm64/lib/mynativelib.so"],
-            export_include_dirs: ["arm64/include_gen/mynativelib/android_arm64_armv8-a_shared/gen/aidl"],
+            export_include_dirs: ["arm64/include_gen/mynativelib/android_arm64_armv8-a_sdk_shared/gen/aidl"],
         },
         arm: {
             srcs: ["arm/lib/mynativelib.so"],
-            export_include_dirs: ["arm/include_gen/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl"],
+            export_include_dirs: ["arm/include_gen/mynativelib/android_arm_armv7-a-neon_sdk_shared/gen/aidl"],
         },
     },
 }
 `),
 		checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
-.intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
-.intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/Test.h -> arm64/include_gen/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/Test.h
-.intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm64/include_gen/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm64/include_gen/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BpTest.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/Test.h -> arm/include_gen/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/Test.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm/include_gen/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BnTest.h
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm/include_gen/mynativelib/android_arm_armv7-a-neon_shared/gen/aidl/aidl/foo/bar/BpTest.h
+.intermediates/mynativelib/android_arm64_armv8-a_sdk_shared/mynativelib.so -> arm64/lib/mynativelib.so
+.intermediates/mynativelib/android_arm64_armv8-a_sdk_shared/gen/aidl/aidl/foo/bar/Test.h -> arm64/include_gen/mynativelib/android_arm64_armv8-a_sdk_shared/gen/aidl/aidl/foo/bar/Test.h
+.intermediates/mynativelib/android_arm64_armv8-a_sdk_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm64/include_gen/mynativelib/android_arm64_armv8-a_sdk_shared/gen/aidl/aidl/foo/bar/BnTest.h
+.intermediates/mynativelib/android_arm64_armv8-a_sdk_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm64/include_gen/mynativelib/android_arm64_armv8-a_sdk_shared/gen/aidl/aidl/foo/bar/BpTest.h
+.intermediates/mynativelib/android_arm_armv7-a-neon_sdk_shared/mynativelib.so -> arm/lib/mynativelib.so
+.intermediates/mynativelib/android_arm_armv7-a-neon_sdk_shared/gen/aidl/aidl/foo/bar/Test.h -> arm/include_gen/mynativelib/android_arm_armv7-a-neon_sdk_shared/gen/aidl/aidl/foo/bar/Test.h
+.intermediates/mynativelib/android_arm_armv7-a-neon_sdk_shared/gen/aidl/aidl/foo/bar/BnTest.h -> arm/include_gen/mynativelib/android_arm_armv7-a-neon_sdk_shared/gen/aidl/aidl/foo/bar/BnTest.h
+.intermediates/mynativelib/android_arm_armv7-a-neon_sdk_shared/gen/aidl/aidl/foo/bar/BpTest.h -> arm/include_gen/mynativelib/android_arm_armv7-a-neon_sdk_shared/gen/aidl/aidl/foo/bar/BpTest.h
 `),
 	)
 }

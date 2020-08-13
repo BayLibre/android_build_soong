@@ -88,7 +88,7 @@ func (mt *librarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorCont
 					blueprint.Variation{Mutator: "image", Variation: android.CoreVariation})
 			}
 			if mt.linkTypes == nil {
-				mctx.AddFarVariationDependencies(variations, dependencyTag, name)
+				addDependencyOntoSdkMember(mctx, variations, dependencyTag, name)
 			} else {
 				for _, linkType := range mt.linkTypes {
 					libVariations := append(variations,
@@ -97,10 +97,40 @@ func (mt *librarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorCont
 						libVariations = append(libVariations,
 							blueprint.Variation{Mutator: "version", Variation: version})
 					}
-					mctx.AddFarVariationDependencies(libVariations, dependencyTag, name)
+					addDependencyOntoSdkMember(mctx, libVariations, dependencyTag, name)
 				}
 			}
 		}
+	}
+}
+
+// addDependencyOntoSdkMember adds dependencies onto the default variant and, where available the
+// sdk:sdk variant of a module.
+//
+// It will first add a dependency onto the default variant that is produced by the sdkMutator and
+// which matches the supplied variation. That could be either an "sdk:sdk" variant if the module
+// only produces it or it will be onto the platform, i.e. "sdk:" variant. If the dependency is onto
+// the platform variant then it could be because there is only a platform variant or there could
+// also by an "sdk:sdk" variant which would be better.
+//
+// So, it checks with the first dependency to see if there is an "sdk:sdk" variant and if there is
+// then it adds a dependency onto that as well. The librarySdkMemberType.IsRequired method will
+// cause the sdk snapshot generation code to ignore the now superfluous, platform variant.
+func addDependencyOntoSdkMember(mctx android.BottomUpMutatorContext, variations []blueprint.Variation, dependencyTag blueprint.DependencyTag, name string) {
+	deps := mctx.AddFarVariationDependencies(variations, dependencyTag, name)
+	if len(deps) != 1 || deps[0] == nil {
+		// This should only happen if the dependency could not be found in which
+		// case an error would have been logged if necessary. So, just ignore it.
+		return
+	}
+
+	dep := deps[0].(*Module)
+	if dep.HasNonPlatformSdkVariant() {
+		// An sdk_version was specified but was cleared so this must have an "sdk:sdk"
+		// variant so add a dependency on that as well. The previous variant was the "sdk:" which will
+		// be discarded by librarySdkMemberType.IsRequired().
+		variations = append(variations, blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
+		mctx.AddFarVariationDependencies(variations, dependencyTag, name)
 	}
 }
 
@@ -115,6 +145,13 @@ func (mt *librarySdkMemberType) IsInstance(module android.Module) bool {
 	}
 
 	return false
+}
+
+func (mt *librarySdkMemberType) IsRequired(module android.Module) bool {
+	ccModule := module.(*Module)
+	// Discard this module, which is a platform variant because an SDK variant is available and that
+	// is much safer to use in an SDK snapshot.
+	return !ccModule.HasNonPlatformSdkVariant()
 }
 
 func (mt *librarySdkMemberType) AddPrebuiltModule(ctx android.SdkMemberContext, member android.SdkMember) android.BpModule {
