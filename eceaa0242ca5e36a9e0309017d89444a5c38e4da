@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "cba85511_296d4d2b",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-13T22:06:07Z",
+      "side": 1,
+      "message": "Keeping the types distinct is useful since it lets us write type-safe functions that accept only one type of API level. There aren\u0027t any cases of this in soong currently I don\u0027t think, but I am about to add some.\n\nThe trouble with having `AsInt` exist for `PreviewApiLevel` is that it doesn\u0027t have a good definition. In a later patch set (I can merge all these if you\u0027d prefer reviewing one big patch instead of several small ones) I add a transitional `FinalOrFutureInt` method to `ApiLevel` that does the thing that is often (but not always) the desired behavior, and the name makes it obvious. I could scrap `AsInt` and have all callers use `FinalOrFutureInt`. I\u0027d end up wanting to add _some_ other function to differentiate the types though, even if it\u0027s just a no-op for that purpose.\n\nI\u0027d also be hesitant to make the public API a struct rather than an interface. I\u0027m specifically trying to avoid making these constructable outside `ApiLevelFromUser` and `ApiLevelOrPanic`. A whole bunch of the code I was able to clean up is because requiring that all constructions go through those functions means I can actually trust that any value I\u0027m given has already been canonicalized and error checked.",
+      "parentUuid": "e5ba0e90_68dbee48",
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41064da5_3b821fc9",
         "filename": "android/api_levels.go",
         "patchSetId": 6
@@ -107,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "090d8269_be8a1136",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-13T22:06:07Z",
+      "side": 1,
+      "message": "I think I understand. You\u0027d prefer the `if ver \u003d\u003d \"\"` case in the linked code be handled here? So the API here becomes `ApiLevelFromUser(ctx EarlyModuleContext, raw string, defaultValue string) (ApiLevel, Error)`, and if `raw` is empty it instead uses `defaultValue`?\n\nIf that\u0027s right, sure, works for me. lmk if I\u0027ve misunderstood.",
+      "parentUuid": "5d193f0b_77956391",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74e304d1_baf55c20",
         "filename": "android/api_levels.go",
         "patchSetId": 6
@@ -166,6 +208,30 @@
       "side": 1,
       "message": "This has come up before, and I\u0027ve always pushed back because this doesn\u0027t match the behavior of the \"R\" constant in an AndroidManifest.xml, where \"R\" specifically means targeting a preview SDK, and must be replaced with \"30\" to target the final SDK.",
       "parentUuid": "941d8943_a459d867",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08704f4b_34d72118",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-13T22:06:07Z",
+      "side": 1,
+      "message": "How does that work? When 30 drops into the platform, do all the cases of \"R\" become build failures, or do they just continue targeting the preview? I can change this behavior easy enough if I need to.",
+      "parentUuid": "3d424a92_7f0cde61",
       "range": {
         "startLine": 224,
         "startChar": 0,
