@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49e88887_e56a2693",
+        "filename": "android/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-13T20:31:22Z",
+      "side": 1,
+      "message": "full works for device too, although we generally discourage it.",
+      "range": {
+        "startLine": 102,
+        "startChar": 33,
+        "endLine": 102,
+        "endChar": 40
+      },
+      "revId": "50cebe0ffa82ff475d19cedd2485bbaef0f97f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
