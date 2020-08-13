@@ -16,6 +16,24 @@
       "revId": "4503cb1b0aff159b7435decd9a931508fa9dc226",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ebf80c7_5636afa1",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-13T23:18:10Z",
+      "side": 1,
+      "message": "You could also run this through soong\u0027s `dep_fixer` which would union all of the dependencies together (which triggers it to be doubled, but we could change dep_fixer to de-dup too)",
+      "parentUuid": "fe51f561_65488320",
+      "revId": "4503cb1b0aff159b7435decd9a931508fa9dc226",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
