@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e1577fa_4ef5f105",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-14T17:55:21Z",
+      "side": 1,
+      "message": "Can you give this a .apk suffix?  Maybe .export.apk?\n\nHow is the export package different from the final framework-res.apk?",
+      "revId": "a49401dc26bfa80231e49b586f86fc63006c6f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
