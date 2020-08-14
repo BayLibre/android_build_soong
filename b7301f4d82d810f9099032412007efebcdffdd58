@@ -16,6 +16,24 @@
       "revId": "b7301f4d82d810f9099032412007efebcdffdd58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0f5d3a_53406b87",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2650,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-14T23:37:48Z",
+      "side": 1,
+      "message": "No, but the last usage of use_apex_name_macro might be removed, in which case I can rip it all out.",
+      "parentUuid": "d24ed571_094049cc",
+      "revId": "b7301f4d82d810f9099032412007efebcdffdd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
