@@ -22,6 +22,30 @@
       "revId": "50cebe0ffa82ff475d19cedd2485bbaef0f97f2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7beddf_c006cf0f",
+        "filename": "android/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2020-08-14T08:48:05Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t try it. I wrote that after reading around line 82 of build/soong/java/proto.go\nIs that for something else?\n\n-------\nThe lines I read:\n\n\t\tcase \"full\":\n\t\t\tif ctx.Host() {\n\t\t\t\tctx.AddVariationDependencies(nil, staticLibTag, \"libprotobuf-java-full\")\n\t\t\t} else {\n\t\t\t\tctx.PropertyErrorf(\"proto.type\", \"full java protos only supported on the host\")\n\t\t\t}",
+      "parentUuid": "49e88887_e56a2693",
+      "range": {
+        "startLine": 102,
+        "startChar": 33,
+        "endLine": 102,
+        "endChar": 40
+      },
+      "revId": "50cebe0ffa82ff475d19cedd2485bbaef0f97f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
