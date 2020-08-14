@@ -1,0 +1,11 @@
+Verified+1: Jaewoong Jung <jungjw@google.com>
+Presubmit-Ready+1: Jaewoong Jung <jungjw@google.com>
+Code-Review+2: Patrice Arruda <patricearruda@google.com>
+Autosubmit+1: Jaewoong Jung <jungjw@google.com>
+Bypass-Presubmit+1: Philip P. Moltmann <moltmann@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Jaewoong Jung <jungjw@google.com>
+Submitted-at: Fri, 14 Aug 2020 19:07:33 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1400887
+Project: platform/build/soong
+Branch: refs/heads/master
