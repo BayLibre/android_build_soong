@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa4b2e80_ebf4e95a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-08-14T20:46:21Z",
+      "side": 1,
+      "message": "This appears to have broken some mac builds. https://android-build.googleplex.com/builds/branches/aosp-clang-tools/grid?head\u003d6764792\u0026tail\u003d6764424.",
+      "revId": "91dbd520dec7abcca8983792df4369401e7aa963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
