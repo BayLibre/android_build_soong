@@ -52,6 +52,24 @@
       "revId": "4503cb1b0aff159b7435decd9a931508fa9dc226",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5f5f69_ad0a4de3",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-14T04:03:28Z",
+      "side": 1,
+      "message": "ninja doesn\u0027t really care what the output is named, so dep_fixer just chose the last one, though I agree that\u0027s confusing in this case. It would be simple enough to take the first one, or the last non-empty one, or just a static value.\n\nIt seems rust emulated gcc/clang\u0027s -MP option, which isn\u0027t necessary with ninja (or dep_fixer)",
+      "parentUuid": "c48b7728_47c831e0",
+      "revId": "4503cb1b0aff159b7435decd9a931508fa9dc226",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
