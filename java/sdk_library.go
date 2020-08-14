@@ -849,11 +849,8 @@ func (e *EmbeddableSdkLibraryComponent) initSdkLibraryComponent(moduleBase *andr
 }
 
 // to satisfy SdkLibraryComponentDependency
-func (e *EmbeddableSdkLibraryComponent) OptionalImplicitSdkLibrary() []string {
-	if e.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack != nil {
-		return []string{*e.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack}
-	}
-	return nil
+func (e *EmbeddableSdkLibraryComponent) OptionalImplicitSdkLibrary() *string {
+	return e.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack
 }
 
 // Implemented by modules that are (or possibly could be) a component of a java_sdk_library
@@ -862,9 +859,8 @@ type SdkLibraryComponentDependency interface {
 	// The optional name of the sdk library that should be implicitly added to the
 	// AndroidManifest of an app that contains code which references the sdk library.
 	//
-	// Returns an array containing 0 or 1 items rather than a *string to make it easier
-	// to append this to the list of exported sdk libraries.
-	OptionalImplicitSdkLibrary() []string
+	// Returns the name of the optional implicit SDK library or nil, if there isn't one.
+	OptionalImplicitSdkLibrary() *string
 }
 
 // Make sure that all the module types that are components of java_sdk_library/_import
@@ -891,6 +887,9 @@ type SdkLibraryDependency interface {
 	// jars for the stubs. The latter should only be needed when generating JavaDoc as otherwise
 	// they are identical to the corresponding header jars.
 	SdkImplementationJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths
+
+	DexJarBuildPath() android.Path
+	DexJarInstallPath() android.Path
 }
 
 type SdkLibrary struct {
@@ -1972,12 +1971,21 @@ func (module *SdkLibraryImport) SdkImplementationJars(ctx android.BaseModuleCont
 	return module.sdkJars(ctx, sdkVersion, false)
 }
 
-// to satisfy apex.javaDependency interface
+// to satisfy SdkLibraryDependency interface
 func (module *SdkLibraryImport) DexJarBuildPath() android.Path {
 	if module.implLibraryModule == nil {
 		return nil
 	} else {
 		return module.implLibraryModule.DexJarBuildPath()
+	}
+}
+
+// to satisfy SdkLibraryDependency interface
+func (module *SdkLibraryImport) DexJarInstallPath() android.Path {
+	if module.implLibraryModule == nil {
+		return nil
+	} else {
+		return module.implLibraryModule.DexJarInstallPath()
 	}
 }
 

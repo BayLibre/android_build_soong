@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -99,7 +100,7 @@ type aapt struct {
 	useEmbeddedNativeLibs   bool
 	useEmbeddedDex          bool
 	usesNonSdkApis          bool
-	sdkLibraries            []string
+	sdkLibraries            dexpreopt.LibraryPaths
 	hasNoCode               bool
 	LoggingParent           string
 	resourceFiles           android.Paths
@@ -357,7 +358,7 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, ex
 
 // aaptLibs collects libraries from dependencies and sdk_version and converts them into paths
 func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStaticLibs, transitiveStaticLibManifests android.Paths,
-	staticRRODirs []rroDir, assets, deps android.Paths, flags []string, sdkLibraries []string) {
+	staticRRODirs []rroDir, assets, deps android.Paths, flags []string, sdkLibraries dexpreopt.LibraryPaths) {
 
 	var sharedLibs android.Paths
 
@@ -385,7 +386,9 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStati
 			// (including the java_sdk_library) itself then append any implicit sdk library
 			// names to the list of sdk libraries to be added to the manifest.
 			if component, ok := module.(SdkLibraryComponentDependency); ok {
-				sdkLibraries = append(sdkLibraries, component.OptionalImplicitSdkLibrary()...)
+				dep := module.(Dependency)
+				sdkLibraries = dexpreopt.AddLibraryPath(ctx, sdkLibraries,
+					component.OptionalImplicitSdkLibrary(), dep.DexJarBuildPath(), dep.DexJarInstallPath())
 			}
 
 		case frameworkResTag:
@@ -397,7 +400,7 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStati
 				transitiveStaticLibs = append(transitiveStaticLibs, aarDep.ExportedStaticPackages()...)
 				transitiveStaticLibs = append(transitiveStaticLibs, exportPackage)
 				transitiveStaticLibManifests = append(transitiveStaticLibManifests, aarDep.ExportedManifests()...)
-				sdkLibraries = append(sdkLibraries, aarDep.ExportedSdkLibs()...)
+				sdkLibraries = dexpreopt.AddLibraryPaths(sdkLibraries, aarDep.ExportedSdkLibs())
 				if aarDep.ExportedAssets().Valid() {
 					assets = append(assets, aarDep.ExportedAssets().Path())
 				}
@@ -428,7 +431,6 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStati
 
 	transitiveStaticLibs = android.FirstUniquePaths(transitiveStaticLibs)
 	transitiveStaticLibManifests = android.FirstUniquePaths(transitiveStaticLibManifests)
-	sdkLibraries = android.FirstUniqueStrings(sdkLibraries)
 
 	return transitiveStaticLibs, transitiveStaticLibManifests, staticRRODirs, assets, deps, flags, sdkLibraries
 }
@@ -749,7 +751,7 @@ func (a *AARImport) AidlIncludeDirs() android.Paths {
 	return nil
 }
 
-func (a *AARImport) ExportedSdkLibs() []string {
+func (a *AARImport) ExportedSdkLibs() dexpreopt.LibraryPaths {
 	return nil
 }
 
