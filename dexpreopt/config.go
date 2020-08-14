@@ -17,6 +17,7 @@ package dexpreopt
 import (
 	"encoding/json"
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -108,6 +109,51 @@ type LibraryPath struct {
 
 // LibraryPaths is a map from library name to on-host and on-device paths to its DEX jar.
 type LibraryPaths map[string]*LibraryPath
+
+// Add a new path to the map of library paths, unless a path for this library already exists.
+// Create a new map if it hasn't been created yet, otherwise modify the existing one.
+func AddLibraryPath(ctx android.PathContext, x LibraryPaths, lib *string, hostPath, installPath android.Path) LibraryPaths {
+	if lib == nil {
+		return x
+	}
+	if x == nil {
+		x = make(LibraryPaths)
+	}
+	if _, present := x[*lib]; !present {
+		var devicePath string
+		if installPath != nil {
+			devicePath = android.InstallPathToOnDevicePath(ctx, installPath.(android.InstallPath))
+		} else {
+			devicePath = "error"
+		}
+		x[*lib] = &LibraryPath{hostPath, devicePath}
+	}
+	return x
+}
+
+// Add library paths from the second map to the first map (do not override existing entries).
+// Create a new map if the first map hasn't been created yet, otherwise modify the existing one.
+func AddLibraryPaths(x LibraryPaths, y LibraryPaths) LibraryPaths {
+	if x == nil {
+		x = make(LibraryPaths)
+	}
+	for lib, path := range y {
+		if _, present := x[lib]; !present {
+			x[lib] = path
+		}
+	}
+	return x
+}
+
+// Return sorted names of the libraries in the map.
+func (x LibraryPaths) Names() []string {
+	keys := make([]string, 0, len(x))
+	for k := range x {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
+}
 
 type ModuleConfig struct {
 	Name            string
