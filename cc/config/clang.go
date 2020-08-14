@@ -15,9 +15,58 @@
 package config
 
 import (
+	"android/soong/android"
+	"fmt"
 	"sort"
 	"strings"
+
+	"github.com/google/blueprint/proptools"
 )
+
+// A version number increased whenever a Clang update uncovers new diagnostic
+// issues. This is used to determine which diagnostics enabled by modules should
+// be disabled for new toolchains. Toolchain updates are often slowed down by
+// needing to clean up warnings in modules. Disabling those warnings in a
+// central location allows the update to happen more quickly and for module
+// owners to be able to fix their code at their own pace.
+//
+// Note that the exception to this behavior is that any diagnostics in the
+// NoOverride lists below must still be fixed.
+const CurrentClangDiagnosticsVersion = 0
+
+// The diagnostics version used by modules that do not specify a version.
+const DefaultClangDiagnosticsVersion = 0
+
+// The minimum allowed diagnostics version that may be specified by a module.
+// Setting clang_diagnostics_version lower than this value result in an error.
+const MinClangDiagnosticsVersion = 0
+
+// Performs error checking on the clang_diagnostics_version property and returns
+// it or an error.
+func GetClangDiagnosticsVersion(prop *int64) (int, error) {
+	version := proptools.IntDefault(prop, DefaultClangDiagnosticsVersion)
+	if version < MinClangDiagnosticsVersion {
+		return 0, fmt.Errorf("minimum value is %d", MinClangDiagnosticsVersion)
+	}
+	if version > CurrentClangDiagnosticsVersion {
+		return 0, fmt.Errorf("maximum value is %d", CurrentClangDiagnosticsVersion)
+	}
+	return version, nil
+}
+
+// Each Clang diagnostic version has an entry in this list that defines
+// additional arguments to be passed to Clang for any modules targeting an older
+// diagnostic version than CurrentClangDiagnosticVersion.
+var ClangDisableWarningsLists = map[int][]string{
+	0: {},
+}
+
+// Each Clang diagnostic version has an entry in this list that defines
+// clang-tidy checks to be disabled arguments for any modules targeting an older
+// diagnostic version than CurrentClangDiagnosticVersion.
+var ClangTidyDisablesChecksLists = map[int][]string{
+	0: {},
+}
 
 // Cflags that should be filtered out when compiling with clang
 var ClangUnknownCflags = sorted([]string{
@@ -201,26 +250,52 @@ func init() {
 	}, " "))
 }
 
+func ClangRewriteCflags(cflags []string, diagnosticsVersion int) []string {
+	return clangDisableDiagnostics(ClangFilterUnknownCflags(cflags), diagnosticsVersion)
+}
+
 func ClangFilterUnknownCflags(cflags []string) []string {
-	ret := make([]string, 0, len(cflags))
-	for _, f := range cflags {
-		if !inListSorted(f, ClangUnknownCflags) {
-			ret = append(ret, f)
+	result, _ := android.FilterList(cflags, ClangUnknownCflags)
+	return result
+}
+
+// Disables any diagnostics that would break the build with a newer version of
+// the compiler than this module was last made warning-free for. Module owners
+// should increase the clang_diagnostics_version of their module to match
+// CurrentClangDiagnosticVersion and clean up new diagnostics.
+func clangDisableDiagnostics(cflags []string, diagnosticsVersion int) []string {
+	for version := diagnosticsVersion + 1; version <= CurrentClangDiagnosticsVersion; version++ {
+		cflags = append(cflags, ClangDisableWarningsLists[version]...)
+	}
+	return cflags
+}
+
+func clangTidyNegateChecks(checks []string) []string {
+	ret := make([]string, 0, len(checks))
+	for _, c := range checks {
+		if strings.HasPrefix(c, "-") {
+			ret = append(ret, c)
+		} else {
+			ret = append(ret, "-"+c)
 		}
 	}
-
 	return ret
 }
 
-func ClangFilterUnknownLldflags(lldflags []string) []string {
-	ret := make([]string, 0, len(lldflags))
-	for _, f := range lldflags {
-		if !inListSorted(f, ClangUnknownLldflags) {
-			ret = append(ret, f)
-		}
+func ClangRewriteTidyChecks(checks []string, diagnosticsVersion int) []string {
+	disableChecks := []string{}
+	for version := diagnosticsVersion + 1; version <= CurrentClangDiagnosticsVersion; version++ {
+		disableChecks = append(disableChecks, ClangTidyDisablesChecksLists[version]...)
 	}
 
-	return ret
+	checks = append(checks, clangTidyNegateChecks(disableChecks)...)
+	result, _ := android.FilterList(checks, disableChecks)
+	return result
+}
+
+func ClangFilterUnknownLldflags(lldflags []string) []string {
+	result, _ := android.FilterList(lldflags, ClangUnknownLldflags)
+	return result
 }
 
 func inListSorted(s string, list []string) bool {
