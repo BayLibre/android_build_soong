@@ -63,6 +63,12 @@ type BaseCompilerProperties struct {
 	// compiling with clang
 	Clang_asflags []string `android:"arch_variant"`
 
+	// The most recent diagnostics version that this module was confirmed to be
+	// warning-free with. When the compiler is updated, some diagnostics enabled
+	// by this module may be disabled if they have become more strict, or if
+	// they are a new addition to a group like `-Wall`.
+	Clang_diagnostics_version *string
+
 	// the instruction set architecture to use to compile the C/C++
 	// module.
 	Instruction_set *string `android:"arch_variant"`
@@ -264,6 +270,24 @@ func addToModuleList(ctx ModuleContext, key android.OnceKey, module string) {
 	getNamedMapForConfig(ctx.Config(), key).Store(module, true)
 }
 
+func (compiler *baseCompiler) diagnosticsVersion(ctx ModuleContext) (int, error) {
+	versionStr := String(compiler.Properties.Clang_diagnostics_version)
+	if versionStr == "" {
+		return 0, nil
+	}
+	version, err := strconv.Atoi(versionStr)
+	if err != nil {
+		return 0, err
+	}
+
+	if version > config.CurrentClangDiagnosticVersion {
+		return 0, fmt.Errorf("maximum value is %d",
+			config.CurrentClangDiagnosticVersion)
+	}
+
+	return version, nil
+}
+
 // Create a Flags struct that collects the compile flags from global values,
 // per-target values, module type values, and per-module Blueprints properties
 func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
@@ -362,12 +386,21 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	CheckBadCompilerFlags(ctx, "clang_cflags", compiler.Properties.Clang_cflags)
 	CheckBadCompilerFlags(ctx, "clang_asflags", compiler.Properties.Clang_asflags)
 
-	flags.Local.CFlags = config.ClangFilterUnknownCflags(flags.Local.CFlags)
-	flags.Local.CFlags = append(flags.Local.CFlags, esc(compiler.Properties.Clang_cflags)...)
+	cFlags := append([]string{}, flags.Local.CFlags...)
+	cFlags = append(flags.Local.CFlags, esc(compiler.Properties.Clang_cflags)...)
 	flags.Local.AsFlags = append(flags.Local.AsFlags, esc(compiler.Properties.Clang_asflags)...)
-	flags.Local.CppFlags = config.ClangFilterUnknownCflags(flags.Local.CppFlags)
-	flags.Local.ConlyFlags = config.ClangFilterUnknownCflags(flags.Local.ConlyFlags)
+	cppFlags := append([]string{}, flags.Local.CppFlags...)
+	conlyFlags := append([]string{}, flags.Local.ConlyFlags...)
 	flags.Local.LdFlags = config.ClangFilterUnknownCflags(flags.Local.LdFlags)
+
+	diagnosticsVersion, err := compiler.diagnosticsVersion(ctx)
+	if err != nil {
+		ctx.PropertyErrorf("clang_diagnostics_version", err.Error())
+		return flags
+	}
+	flags.Local.CFlags = config.ClangRewriteCflags(cFlags, diagnosticsVersion)
+	flags.Local.CppFlags = config.ClangRewriteCflags(cppFlags, diagnosticsVersion)
+	flags.Local.ConlyFlags = config.ClangRewriteCflags(conlyFlags, diagnosticsVersion)
 
 	target := "-target " + tc.ClangTriple()
 	if ctx.Os().Class == android.Device {

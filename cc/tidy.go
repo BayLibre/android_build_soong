@@ -15,6 +15,8 @@
 package cc
 
 import (
+	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
@@ -34,6 +36,12 @@ type TidyProperties struct {
 
 	// Checks that should be treated as errors.
 	Tidy_checks_as_errors []string
+
+	// The most recent diagnostics version that this module was confirmed to be
+	// tidy-clean with. When the compiler is updated, some checks enabled by
+	// this module may be disabled if they have become more strict, or if they
+	// are a new match for a wildcard group like `modernize-*`
+	Clang_diagnostics_version *string
 }
 
 type tidyFeature struct {
@@ -49,6 +57,24 @@ func (tidy *tidyFeature) begin(ctx BaseModuleContext) {
 
 func (tidy *tidyFeature) deps(ctx DepsContext, deps Deps) Deps {
 	return deps
+}
+
+func (tidy *tidyFeature) diagnosticsVersion(ctx ModuleContext) (int, error) {
+	versionStr := String(tidy.Properties.Clang_diagnostics_version)
+	if versionStr == "" {
+		return 0, nil
+	}
+	version, err := strconv.Atoi(versionStr)
+	if err != nil {
+		return 0, err
+	}
+
+	if version > config.CurrentClangDiagnosticVersion {
+		return 0, fmt.Errorf("maximum value is %d",
+			config.CurrentClangDiagnosticVersion)
+	}
+
+	return version, nil
 }
 
 func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
@@ -109,7 +135,14 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 		tidyChecks += config.TidyChecksForDir(ctx.ModuleDir())
 	}
 	if len(tidy.Properties.Tidy_checks) > 0 {
-		tidyChecks = tidyChecks + "," + strings.Join(esc(tidy.Properties.Tidy_checks), ",")
+		diagnosticsVersion, err := tidy.diagnosticsVersion(ctx)
+		if err != nil {
+			ctx.PropertyErrorf("clang_diagnostics_version", err.Error())
+			return flags
+		}
+		tidyChecks = tidyChecks + "," + strings.Join(esc(
+			config.ClangRewriteTidyChecks(tidy.Properties.Tidy_checks,
+				diagnosticsVersion)), ",")
 	}
 	if ctx.Windows() {
 		// https://b.corp.google.com/issues/120614316
