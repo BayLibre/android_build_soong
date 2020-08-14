@@ -34,6 +34,24 @@
       "revId": "4503cb1b0aff159b7435decd9a931508fa9dc226",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c48b7728_47c831e0",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-08-14T02:48:16Z",
+      "side": 1,
+      "message": "An example raw mytest.rlib.d output from rustc is like this, N+4 line for N source files:\n\nout/.../mytest.rlib: file1.rs file2.rs\n\nout/.../mytest.rlib.d: file1.rs file2.rs\n\nfile1.rs:\nfile2.rs:\n\nI don\u0027t see a pattern to grep or grep -v.\n\nWhen I applied dep_fixer to it, it became:\nfile2.rs: file1.rs file2.rs file1.rs file2.rs\n\nThat\u0027s no longer a dependency line for mytest.rlib,\nor should i use some special dep_fixer flag?\n\nExcept the first line in the .d file, all others don\u0027t seem to have any use in Android build.",
+      "parentUuid": "8ebf80c7_5636afa1",
+      "revId": "4503cb1b0aff159b7435decd9a931508fa9dc226",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
