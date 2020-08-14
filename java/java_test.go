@@ -1083,15 +1083,25 @@ func TestDroiddoc(t *testing.T) {
 		    srcs: ["bar-doc/IBar.aidl"],
 		    path: "bar-doc",
 		}
-		droiddoc {
-		    name: "bar-doc",
+		droidstubs {
+		    name: "bar-stubs",
 		    srcs: [
 		        "bar-doc/a.java",
-		        "bar-doc/IFoo.aidl",
-		        ":bar-doc-aidl-srcs",
 		    ],
 		    exclude_srcs: [
 		        "bar-doc/b.java"
+		    ],
+		    api_levels_annotations_dirs: [
+		      "droiddoc-templates-sdk",
+		    ],
+		    api_levels_annotations_enabled: true,
+		}
+		droiddoc {
+		    name: "bar-doc",
+		    srcs: [
+		        ":bar-stubs",
+		        "bar-doc/IFoo.aidl",
+		        ":bar-doc-aidl-srcs",
 		    ],
 		    custom_template: "droiddoc-templates-sdk",
 		    hdf: [
@@ -1109,23 +1119,29 @@ func TestDroiddoc(t *testing.T) {
 			"bar-doc/a.java": nil,
 			"bar-doc/b.java": nil,
 		})
-	barDocModule := ctx.ModuleForTests("bar-doc", "android_common")
-	barDoc := barDocModule.Rule("javadoc")
-	notExpected := " -stubs "
-	if strings.Contains(barDoc.RuleParams.Command, notExpected) {
-		t.Errorf("bar-doc command contains flag %q to create stubs, but should not", notExpected)
+	barStubs := ctx.ModuleForTests("bar-stubs", "android_common")
+	barStubsOutputs, err := barStubs.Module().(*Droidstubs).OutputFiles("")
+	if err != nil {
+		t.Errorf("Unexpected error %q retrieving \"bar-stubs\" output file", err)
+	}
+	if len(barStubsOutputs) != 1 {
+		t.Errorf("Expected one output from \"bar-stubs\" got %s", barStubsOutputs)
 	}
 
-	var javaSrcs []string
-	for _, i := range barDoc.Inputs {
-		javaSrcs = append(javaSrcs, i.Base())
-	}
-	if len(javaSrcs) != 1 || javaSrcs[0] != "a.java" {
-		t.Errorf("inputs of bar-doc must be []string{\"a.java\"}, but was %#v.", javaSrcs)
+	barStubsOutput := barStubsOutputs[0]
+	barDoc := ctx.ModuleForTests("bar-doc", "android_common")
+	javaDoc := barDoc.Rule("javadoc")
+	if g, w := javaDoc.Implicits.Strings(), barStubsOutput.String(); !inList(w, g) {
+		t.Errorf("implicits of bar-doc must contain %q, but was %q.", w, g)
 	}
 
-	aidl := barDocModule.Rule("aidl")
-	if g, w := barDoc.Implicits.Strings(), aidl.Output.String(); !inList(w, g) {
+	expected := "-sourcepath " + buildDir + "/.intermediates/bar-doc/android_common/srcjars "
+	if !strings.Contains(javaDoc.RuleParams.Command, expected) {
+		t.Errorf("bar-doc command does not contain flag %q, but should\n%q", expected, javaDoc.RuleParams.Command)
+	}
+
+	aidl := barDoc.Rule("aidl")
+	if g, w := javaDoc.Implicits.Strings(), aidl.Output.String(); !inList(w, g) {
 		t.Errorf("implicits of bar-doc must contain %q, but was %q.", w, g)
 	}
 
@@ -1136,6 +1152,52 @@ func TestDroiddoc(t *testing.T) {
 
 func TestDroiddocArgsAndFlagsCausesError(t *testing.T) {
 	testJavaError(t, "flags is set. Cannot set args", `
+		droiddoc_exported_dir {
+		    name: "droiddoc-templates-sdk",
+		    path: ".",
+		}
+		filegroup {
+		    name: "bar-doc-aidl-srcs",
+		    srcs: ["bar-doc/IBar.aidl"],
+		    path: "bar-doc",
+		}
+		droidstubs {
+		    name: "bar-stubs",
+		    srcs: [
+		        "bar-doc/a.java",
+		    ],
+		    exclude_srcs: [
+		        "bar-doc/b.java"
+		    ],
+		    api_levels_annotations_dirs: [
+		      "droiddoc-templates-sdk",
+		    ],
+		    api_levels_annotations_enabled: true,
+		}
+		droiddoc {
+		    name: "bar-doc",
+		    srcs: [
+		        ":bar-stubs",
+		        "bar-doc/IFoo.aidl",
+		        ":bar-doc-aidl-srcs",
+		    ],
+		    custom_template: "droiddoc-templates-sdk",
+		    hdf: [
+		        "android.whichdoc offline",
+		    ],
+		    knowntags: [
+		        "bar-doc/known_oj_tags.txt",
+		    ],
+		    proofread_file: "libcore-proofread.txt",
+		    todo_file: "libcore-docs-todo.html",
+		    flags: ["-offlinemode -title \"libcore\""],
+		    args: "-offlinemode -title \"libcore\"",
+		}
+		`)
+}
+func TestDroiddocSrcFileCausesError(t *testing.T) {
+	testJavaError(t,
+		"srcs: Cannot reference source files directly, instead depend on a droidstubs module.", `
 		droiddoc_exported_dir {
 		    name: "droiddoc-templates-sdk",
 		    path: ".",
@@ -1165,7 +1227,6 @@ func TestDroiddocArgsAndFlagsCausesError(t *testing.T) {
 		    proofread_file: "libcore-proofread.txt",
 		    todo_file: "libcore-docs-todo.html",
 		    flags: ["-offlinemode -title \"libcore\""],
-		    args: "-offlinemode -title \"libcore\"",
 		}
 		`)
 }
