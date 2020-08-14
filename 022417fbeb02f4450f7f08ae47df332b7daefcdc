@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ce935ea_fb868f8b",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-14T01:07:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e393c28_cefd6ccf",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 63
+      },
+      "revId": "022417fbeb02f4450f7f08ae47df332b7daefcdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f42b681_48b39f7f",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "aa8c4d5a_ca42ce85",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-14T01:07:28Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "8f42b681_48b39f7f",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 33
+      },
+      "revId": "022417fbeb02f4450f7f08ae47df332b7daefcdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5af94e7c_bf508754",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 13
@@ -68,6 +116,30 @@
       "revId": "022417fbeb02f4450f7f08ae47df332b7daefcdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5684181f_19bf7f5c",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-14T01:07:28Z",
+      "side": 1,
+      "message": "Done, switched to a bug number instead.",
+      "parentUuid": "5af94e7c_bf508754",
+      "range": {
+        "startLine": 199,
+        "startChar": 10,
+        "endLine": 199,
+        "endChar": 13
+      },
+      "revId": "022417fbeb02f4450f7f08ae47df332b7daefcdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
