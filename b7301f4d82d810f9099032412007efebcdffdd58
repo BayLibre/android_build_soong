@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d24ed571_094049cc",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2650,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-14T22:27:36Z",
+      "side": 1,
+      "message": "Does this properly change back to myapex if we add a static library dependency to something using use_apex_name_macro? (`static_libs: [\"mylib2\"]`)",
+      "revId": "b7301f4d82d810f9099032412007efebcdffdd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
