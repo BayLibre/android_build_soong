@@ -16,6 +16,120 @@
       "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ebaa4b7_8cddcb30",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-15T01:04:52Z",
+      "side": 1,
+      "message": "Some information on how an end user would know what to put here would be useful.",
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c2b0aa_24d2ffb5",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-15T01:04:52Z",
+      "side": 1,
+      "message": "We support int64 if you want this to be an integer in the Android.bp file.",
+      "range": {
+        "startLine": 70,
+        "startChar": 28,
+        "endLine": 70,
+        "endChar": 34
+      },
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a69821ed_36020384",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-15T01:04:52Z",
+      "side": 1,
+      "message": "Since this property is never going to be set everywhere, doesn\u0027t this lock the majority of the platform into the set of warnings that currently exist, plus whichever new ones get cleaned up in the tree so they can be enabled globally?  How is this better than the current system, where we just globally disable any problematic warnings?  This would seem more useful if it returned config.CurrentClangDiagnosticVersion if it was unset, and then you can pin problematic modules to an older version.",
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbef4330_fc866212",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-15T01:04:52Z",
+      "side": 1,
+      "message": "needing",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf400a6_9ae4aaa4",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-15T01:04:52Z",
+      "side": 1,
+      "message": "Should we introduce an Android clang version to use here?  Something user facing so that it is obvious to end users what to put in clang_diagnostics_version.",
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea5f91b_fd86dc2c",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-15T01:04:52Z",
+      "side": 1,
+      "message": "This looks like android.FilterList",
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
