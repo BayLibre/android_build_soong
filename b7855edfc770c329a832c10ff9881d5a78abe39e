@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c009c8_9fc76d77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-15T00:53:53Z",
+      "side": 1,
+      "message": "Probable follow up work:\n\n* Make a tool to automatically update the clang_diagnostics_version of cc modules and upload the changes. Treehugger will submit for any unaffected projects so those projects can continue to be covered without manual intervention. Project owners can be added to any failing changes as a notification that they need to fix their code. The large-scale-changes project would be nice here, but I think we can make do with something based on bpfmt.\n* Add a MinimumClangDiagnosticsVersion that projects may not be below. This would be the default value, and setting lower would cause a build failure. This would be incremented as soon as no projects in the tree require the old version.",
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
