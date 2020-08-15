@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: Jaewoong Jung <jungjw@google.com>
+Presubmit-Ready+1: Jaewoong Jung <jungjw@google.com>
+Bypass-Presubmit+1: Philip P. Moltmann <moltmann@google.com>
+Build-Cop-Override+1: Philip P. Moltmann <moltmann@google.com>
+Submitted-by: Jaewoong Jung <jungjw@google.com>
+Submitted-at: Sat, 15 Aug 2020 00:19:10 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1401171
+Project: platform/build/soong
+Branch: refs/heads/master
