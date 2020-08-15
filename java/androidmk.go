@@ -162,6 +162,7 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 		if j.testConfig != nil {
 			entries.SetPath("LOCAL_FULL_TEST_CONFIG", j.testConfig)
 		}
+		androidMkWriteExtraTestConfigs(j.extraTestConfigs, entries)
 		androidMkWriteTestData(j.data, entries)
 		if !BoolDefault(j.testProperties.Auto_gen_config, true) {
 			entries.SetString("LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG", "true")
@@ -169,6 +170,16 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 	})
 
 	return entriesList
+}
+
+func androidMkWriteExtraTestConfigs(extraTestConfigs android.Paths, entries *android.AndroidMkEntries) {
+	var testConfigFiles []string
+	for _, c := range extraTestConfigs {
+		testConfigFiles = append(testConfigFiles, c.String())
+	}
+	if len(testConfigFiles) > 0 {
+		entries.AddStrings("LOCAL_EXTRA_FULL_TEST_CONFIGS", testConfigFiles...)
+	}
 }
 
 func (j *TestHelperLibrary) AndroidMkEntries() []android.AndroidMkEntries {
@@ -433,6 +444,7 @@ func (a *AndroidTest) AndroidMkEntries() []android.AndroidMkEntries {
 		if a.testConfig != nil {
 			entries.SetPath("LOCAL_FULL_TEST_CONFIG", a.testConfig)
 		}
+		androidMkWriteExtraTestConfigs(a.extraTestConfigs, entries)
 		androidMkWriteTestData(a.data, entries)
 	})
 
