@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3af1f4c8_3ef46b35",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1483218
+      },
+      "writtenOn": "2020-08-17T19:19:36Z",
+      "side": 1,
+      "message": "by making this change, is \u0027printusage\u0027 option turned by default? Is there anything else user need to enable this option?",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "c8fb9cd97fbadcd25470f53d3a7928fdc45ee603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d13780f_39208a6b",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1483218
+      },
+      "writtenOn": "2020-08-17T19:19:36Z",
+      "side": 1,
+      "message": "is the output file name \"\u003cbuild_module_name\u003e/unused.txt\". for example if I build DocumentsUI, the filename will be DocumentsUI/unused.txt?",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 41
+      },
+      "revId": "c8fb9cd97fbadcd25470f53d3a7928fdc45ee603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
