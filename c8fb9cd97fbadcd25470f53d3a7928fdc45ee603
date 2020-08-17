@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "91b592f3_a13a1fa8",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-17T19:33:04Z",
+      "side": 1,
+      "message": "It\u0027s always on, but zipped to keep disk usage down.",
+      "parentUuid": "3af1f4c8_3ef46b35",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "c8fb9cd97fbadcd25470f53d3a7928fdc45ee603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d13780f_39208a6b",
         "filename": "java/dex.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c8fb9cd97fbadcd25470f53d3a7928fdc45ee603",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae77b44_86a7c079",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-17T19:33:04Z",
+      "side": 1,
+      "message": "The filename will be DocumentsUI/unused.txt inside a zip file called *-proguard-usage-*.zip in the build server artifacts.",
+      "parentUuid": "7d13780f_39208a6b",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 41
+      },
+      "revId": "c8fb9cd97fbadcd25470f53d3a7928fdc45ee603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
