@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bc7d1c0_2c78c9ca",
+        "filename": "cmd/soong_build/bazel_overlay_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-17T21:43:52Z",
+      "side": 1,
+      "message": "Can you include the copyright/apache2 header?",
+      "revId": "77f2a4030c9d8523bdd49ca742b41fcdc14f1b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

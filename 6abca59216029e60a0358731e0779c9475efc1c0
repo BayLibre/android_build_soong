@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "94b55dcd_6e047fda",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-17T21:43:52Z",
+      "side": 1,
+      "message": "\u003e 1) Globs. We can mechanically translate these expressions to `glob()` calls.\n\nLast I checked, Bazel\u0027s glob() is semantically different from Soong\u0027s -- the most obvious difference being that it won\u0027t traverse into defined subpackages. The behavior of \u0027*\u0027 is also somewhat different.\n\nYou\u0027d also need to know which properties are related -- srcs pairs with exclude_srcs, etc.\n\nIf this is intended to be a view into Soong\u0027s graph, then it should probably be evaluated in Soong in order to get correct results.",
+      "parentUuid": "5acf3a56_9766fd94",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 3
+      },
+      "revId": "6abca59216029e60a0358731e0779c9475efc1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fdab90f_22b482f5",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 14
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "For posterity, this is where system_shared_libs obtains the default list value: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/linker.go;l\u003d281-287;drc\u003df70926eef0b9b57faf04c17a1062ce50d209e480\n\nI\u0027d classify this as an implementation detail of the rule shim we\u0027d generate automatically, since we can generate `attrs \u003d { \u0027system_shared_libs\u0027: attr.string_list(default \u003d [\"libc\", \"libm\", \"libdl\"]) }` to replicate the set/unset behavior.",
       "parentUuid": "007f963d_2c7d7477",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 41
+      },
+      "revId": "6abca59216029e60a0358731e0779c9475efc1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8eb2009_81f020e7",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-17T21:43:52Z",
+      "side": 1,
+      "message": "Ah, I had missed that reflect.Slice was using IsNil() (I saw reflect.Array\u0027s implementation 🤦).\n\nUsing an attribute default may work in this case, but wouldn\u0027t match Soong\u0027s logic. That\u0027s only the default for bionic-based variants, but other variants can largely ignore system_shared_libs, so it may not matter.\n\nMany of the other use cases matter more for property merging (defaults/arch/etc), which has already happened by this stage.",
+      "parentUuid": "d28bb237_9ea957ed",
       "range": {
         "startLine": 422,
         "startChar": 0,
