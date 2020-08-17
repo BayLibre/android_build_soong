@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9446aaa5_edac962a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-17T08:58:02Z",
+      "side": 1,
+      "message": "I have added bazel_overlay_test.go for some test coverage during Soong\u0027s bootstrap phase. PTAL.",
+      "revId": "97d7e462dbf492dad18a537e92a6b259e3b991f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
