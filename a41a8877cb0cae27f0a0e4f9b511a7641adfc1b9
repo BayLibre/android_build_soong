@@ -16,6 +16,24 @@
       "revId": "a41a8877cb0cae27f0a0e4f9b511a7641adfc1b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb2bb3b6_f364f51b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-08-17T21:46:19Z",
+      "side": 1,
+      "message": "That\u0027s a good tip. Thanks! Will do that next time.",
+      "parentUuid": "5d4e4f65_24a2ad94",
+      "revId": "a41a8877cb0cae27f0a0e4f9b511a7641adfc1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
