@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d4e4f65_24a2ad94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-17T20:49:55Z",
+      "side": 1,
+      "message": "It\u0027s helpful when relanding a reverted change if you revert the revert to make a clean revert as PS1, then upload your reland on top as PS2 so reviewers can see what has changed since the original.",
+      "revId": "a41a8877cb0cae27f0a0e4f9b511a7641adfc1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
