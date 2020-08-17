@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ef3f811_d36c1dea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-17T07:39:05Z",
+      "side": 1,
+      "message": "Why do we want this? I\u0027d expect those prebuilts to always be built with the full tree available.",
+      "revId": "2829f6c09c3d28eabe4372582c802ff755edc6a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
