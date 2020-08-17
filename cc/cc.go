@@ -2927,6 +2927,10 @@ func (c *Module) installable() bool {
 	return false
 }
 
+func (c *Module) ShouldInstallDependencyWithTag(ctx android.ModuleContext, tag blueprint.DependencyTag) bool {
+	return IsSharedDepTag(tag) || IsRuntimeDepTag(tag)
+}
+
 func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer) {
 	if c.linker != nil {
 		if library, ok := c.linker.(*libraryDecorator); ok {

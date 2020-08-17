@@ -282,6 +282,8 @@ type Module interface {
 	HostRequiredModuleNames() []string
 	TargetRequiredModuleNames() []string
 
+	ShouldInstallDependencyWithTag(ctx ModuleContext, tag blueprint.DependencyTag) bool
+
 	filesToInstall() InstallPaths
 }
 
@@ -1066,14 +1068,20 @@ func (m *ModuleBase) ExportedToMake() bool {
 	return m.commonProperties.NamespaceExportedToMake
 }
 
-func (m *ModuleBase) computeInstallDeps(ctx blueprint.ModuleContext) InstallPaths {
+func (m *ModuleBase) ShouldInstallDependencyWithTag(ctx ModuleContext, tag blueprint.DependencyTag) bool {
+	return false
+}
+
+func (m *ModuleBase) computeInstallDeps(ctx ModuleContext) InstallPaths {
 
 	var result InstallPaths
-	// TODO(ccross): we need to use WalkDeps and have some way to know which dependencies require installation
-	ctx.VisitDepsDepthFirst(func(m blueprint.Module) {
-		if a, ok := m.(Module); ok {
-			result = append(result, a.filesToInstall()...)
+	ctx.WalkDeps(func(child, parent Module) bool {
+		tag := ctx.OtherModuleDependencyTag(child)
+		if parent.ShouldInstallDependencyWithTag(ctx, tag) {
+			result = append(result, child.filesToInstall()...)
+			return true
 		}
+		return false
 	})
 
 	return result
@@ -1301,10 +1309,11 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		module:            m.module,
 		bp:                blueprintCtx,
 		baseModuleContext: m.baseModuleContextFactory(blueprintCtx),
-		installDeps:       m.computeInstallDeps(blueprintCtx),
 		installFiles:      m.installFiles,
 		variables:         make(map[string]string),
 	}
+
+	ctx.installDeps = m.computeInstallDeps(ctx)
 
 	// Temporarily continue to call blueprintCtx.GetMissingDependencies() to maintain the previous behavior of never
 	// reporting missing dependency errors in Blueprint when AllowMissingDependencies == true.

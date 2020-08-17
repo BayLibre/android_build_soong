@@ -979,6 +979,13 @@ func (a *AndroidApp) PreventInstall() {
 	a.appProperties.PreventInstall = true
 }
 
+func (a *AndroidApp) ShouldInstallDependencyWithTag(ctx android.ModuleContext, tag blueprint.DependencyTag) bool {
+	if a.shouldEmbedJnis(ctx) {
+		return false
+	}
+	return IsJniDepTag(tag)
+}
+
 func (a *AndroidApp) HideFromMake() {
 	a.appProperties.HideFromMake = true
 }
