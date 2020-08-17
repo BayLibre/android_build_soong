@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "36c9be61_bc89f385",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-08-17T07:01:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55ce4914_5f8bdb4b",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "6a5accfa09e48f25893cda7628aaaf6ce8f654a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8aaa1037_46cf7e0c",
         "filename": "rust/config/lints.go",
         "patchSetId": 1
