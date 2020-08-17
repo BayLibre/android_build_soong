@@ -16,6 +16,24 @@
       "revId": "29aa9fde5dccf0babff4c29d6614e0b60c9d35c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9376941d_fd145b70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-17T21:03:09Z",
+      "side": 1,
+      "message": "Dan is the deps expert.",
+      "parentUuid": "0bb9e39c_f8472036",
+      "revId": "29aa9fde5dccf0babff4c29d6614e0b60c9d35c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
