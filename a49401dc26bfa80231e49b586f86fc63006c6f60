@@ -16,6 +16,24 @@
       "revId": "a49401dc26bfa80231e49b586f86fc63006c6f60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3699b0e4_0d8e33f7",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-17T10:00:17Z",
+      "side": 1,
+      "message": "- renamed to \".export-package.apk\u0027\n- framework-res is signed. The only diff is the export package of framework-res doesn\u0027t have the META-INF dir. I guess someone might in theory want to access the export package of an app with code in it as well, which would only contain the resources? Not entirely sure.",
+      "parentUuid": "0e1577fa_4ef5f105",
+      "revId": "a49401dc26bfa80231e49b586f86fc63006c6f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
