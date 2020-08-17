@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bb9e39c_f8472036",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-08-17T20:51:34Z",
+      "side": 1,
+      "message": "Colin, Ivan, what do you think about this change?\n",
+      "revId": "29aa9fde5dccf0babff4c29d6614e0b60c9d35c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
