@@ -157,6 +157,7 @@ func testSuiteComponent(entries *android.AndroidMkEntries, test_suites []string)
 func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 	entriesList := j.Library.AndroidMkEntries()
 	entries := &entriesList[0]
+	//entries.SetString("aaa", "test1")
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		testSuiteComponent(entries, j.testProperties.Test_suites)
 		if j.testConfig != nil {
@@ -166,6 +167,7 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 		if !BoolDefault(j.testProperties.Auto_gen_config, true) {
 			entries.SetString("LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG", "true")
 		}
+		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", j.testProperties.Test_mainline_modules...)
 	})
 
 	return entriesList
@@ -434,6 +436,7 @@ func (a *AndroidTest) AndroidMkEntries() []android.AndroidMkEntries {
 			entries.SetPath("LOCAL_FULL_TEST_CONFIG", a.testConfig)
 		}
 		androidMkWriteTestData(a.data, entries)
+		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", a.testProperties.Test_mainline_modules...)
 	})
 
 	return entriesList
