@@ -331,7 +331,12 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 			// derived from the `shared_libs` property of "py2-launcher". However, we
 			// cannot read the property at this stage and it will be too late to add
 			// dependencies later.
-			ctx.AddFarVariationDependencies(ctx.Target().Variations(), launcherSharedLibTag, "libsqlite")
+			ctx.AddFarVariationDependencies(ctx.Target().Variations(), launcherSharedLibTag, "libc++")
+
+			if ctx.Device() {
+				ctx.AddFarVariationDependencies(ctx.Target().Variations(), launcherSharedLibTag,
+					"libsqlite")
+			}
 
 			if ctx.Target().Os.Bionic() {
 				ctx.AddFarVariationDependencies(ctx.Target().Variations(), launcherSharedLibTag,
@@ -357,11 +362,11 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 			// derived from the `shared_libs` property of "py3-launcher". However, we
 			// cannot read the property at this stage and it will be too late to add
 			// dependencies later.
-			ctx.AddFarVariationDependencies(ctx.Target().Variations(), launcherSharedLibTag, "libsqlite")
+			ctx.AddFarVariationDependencies(ctx.Target().Variations(), launcherSharedLibTag, "libc++")
 
 			if ctx.Device() {
 				ctx.AddFarVariationDependencies(ctx.Target().Variations(), launcherSharedLibTag,
-					"liblog")
+					"libsqlite", "liblog")
 			}
 
 			if ctx.Target().Os.Bionic() {
@@ -688,6 +693,10 @@ func fillInMap(ctx android.ModuleContext, m map[string]string,
 
 func (p *Module) InstallInData() bool {
 	return true
+}
+
+func (p *Module) ShouldInstallDependencyWithTag(ctx android.ModuleContext, tag blueprint.DependencyTag) bool {
+	return tag == launcherSharedLibTag
 }
 
 var Bool = proptools.Bool

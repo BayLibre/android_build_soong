@@ -964,6 +964,10 @@ func libNameFromFilePath(filepath android.Path) string {
 	return libName
 }
 
+func (mod *Module) ShouldInstallDependencyWithTag(ctx android.ModuleContext, tag blueprint.DependencyTag) bool {
+	return cc.IsSharedDepTag(tag) || tag == rlibDepTag || tag == dylibDepTag
+}
+
 func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	ctx := &depsContext{
 		BottomUpMutatorContext: actx,
