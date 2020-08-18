@@ -22,6 +22,30 @@
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2afbd49d_84486ba9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1549634
+      },
+      "writtenOn": "2020-08-18T18:57:46Z",
+      "side": 1,
+      "message": "Hi Dan!  The current state of the class `android.os.Build` only enumerates up to Android R as \"things that exist\", and the Robolectric framework uses this class to reference the latest SDK version.  I think with some future pushes that are coming somewhat soon (but later than we would rather to be done with this migration), the changes to `android.os.Build` and thereby the Robolectric framework will land to allow S to be the tip of development.",
+      "parentUuid": "06c330d6_83c7928d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
