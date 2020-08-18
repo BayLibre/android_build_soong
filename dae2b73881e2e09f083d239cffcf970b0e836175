@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "570954a3_5e142336",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-18T08:06:07Z",
+      "side": 1,
+      "message": "lgtm with some comments. Adding Colin as well given Paul is OOO.",
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b74bb3d_a5b198b9",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-18T08:06:07Z",
+      "side": 1,
+      "message": "Add a high-level comment on what this function does (same for methods below).",
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2065d97_45668813",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-18T08:06:07Z",
+      "side": 1,
+      "message": "was that a bug before?",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd1d50b_9feadfed",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-18T08:06:07Z",
+      "side": 1,
+      "message": "Including dexpreopt stuff in all these files may be problematic. Could we move the definition of dexpreopt.LibraryPaths into a generic place?",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
