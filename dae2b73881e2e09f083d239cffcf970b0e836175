@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "1ac2661f_50ceeeee",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-18T10:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b74bb3d_a5b198b9",
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2065d97_45668813",
         "filename": "java/android_manifest.go",
         "patchSetId": 3
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "64ddd46e_539ff614",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-18T10:59:49Z",
+      "side": 1,
+      "message": "No, it was a string slice before, so the first component was an index, and the second component was a string. Now it is a map keyed on strings that previously were in a slice.",
+      "parentUuid": "a2065d97_45668813",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dd1d50b_9feadfed",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -70,6 +112,30 @@
       "writtenOn": "2020-08-18T08:06:07Z",
       "side": 1,
       "message": "Including dexpreopt stuff in all these files may be problematic. Could we move the definition of dexpreopt.LibraryPaths into a generic place?",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63f1a4f_c45ac821",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-18T10:59:49Z",
+      "side": 1,
+      "message": "Why can it be problematic?\n\nLibraryPaths are Java-specific, so they belong in soong/java. I can move them to soong/android, but this feels wrong. Maybe Liz or Colin can advise on that.",
+      "parentUuid": "6dd1d50b_9feadfed",
       "range": {
         "startLine": 32,
         "startChar": 16,
