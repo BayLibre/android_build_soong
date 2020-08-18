@@ -284,6 +284,19 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		options := []tradefed.Option{{Name: "force-root", Value: "false"}}
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", options})
 	}
+	// Config PushFilePreparer to push files specified with data property to the device.
+	if len(s.testProperties.Data) > 0 {
+		folder := "/data/nativetest/" + s.Name() + "/"
+		options := []tradefed.Option{{Name: "cleanup", Value: "false"}}
+		for _, data := range s.testProperties.Data {
+			paths := ctx.GlobFiles(data, nil) // TOFIX: this returns 0 items.
+			for _, path := range paths {
+				filePath := path.String()
+				options = append(options, tradefed.Option{Name: "push-file", Key: filePath, Value: folder + filePath})
+			}
+		}
+		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.PushFilePreparer", options})
+	}
 	s.testConfig = tradefed.AutoGenShellTestConfig(ctx, s.testProperties.Test_config,
 		s.testProperties.Test_config_template, s.testProperties.Test_suites, configs, s.testProperties.Auto_gen_config, s.outputFilePath.Base())
 
