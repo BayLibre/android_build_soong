@@ -105,6 +105,11 @@ type TestProperties struct {
 	// list of device library modules that should be installed alongside the test.
 	// Only available for host sh_test modules.
 	Data_device_libs []string `android:"path,arch_variant"`
+
+	// list of files and sub-directoriess in the module directory (a subset of Data) to push to 
+	// device if test config auto-gen is enabled.
+	// Only available for host sh_test modules.
+	Auto_gen_push []string `android:"path,arch_variant"`
 }
 
 type ShBinary struct {
@@ -277,15 +282,27 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	s.data = android.PathsForModuleSrc(ctx, s.testProperties.Data)
 
-	var configs []tradefed.Config
-	if Bool(s.testProperties.Require_root) {
-		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
-	} else {
-		options := []tradefed.Option{{Name: "force-root", Value: "false"}}
-		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", options})
-	}
-	s.testConfig = tradefed.AutoGenShellTestConfig(ctx, s.testProperties.Test_config,
-		s.testProperties.Test_config_template, s.testProperties.Test_suites, configs, s.testProperties.Auto_gen_config, s.outputFilePath.Base())
+        var configs []tradefed.Config
+        if Bool(s.testProperties.Require_root) {
+                configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
+        } else {
+                options := []tradefed.Option{{Name: "force-root", Value: "false"}}
+                configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", options})
+        }
+        if len(s.testProperties.Data_device_bins) > 0 || len(s.testProperties.Auto_gen_push) > 0 {
+                moduleName := s.Name()
+                remoteDir := "/data/local/tests/unrestricted/" + moduleName + "/"
+                options := []tradefed.Option{{Name: "cleanup", Value: "true"}}
+                for _, bin := range s.testProperties.Data_device_bins {
+                        options = append(options, tradefed.Option{Name: "push-file", Key: bin, Value: remoteDir + bin})
+                }
+                for _, file := range s.testProperties.Auto_gen_push {
+                        options = append(options, tradefed.Option{Name: "push-file", Key: file, Value: remoteDir + file})
+                }
+                configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.PushFilePreparer", options})
+        }
+        s.testConfig = tradefed.AutoGenShellTestConfig(ctx, s.testProperties.Test_config,
+                s.testProperties.Test_config_template, s.testProperties.Test_suites, configs, s.testProperties.Auto_gen_config, s.outputFilePath.Base())
 
 	s.dataModules = make(map[string]android.Path)
 	ctx.VisitDirectDeps(func(dep android.Module) {
