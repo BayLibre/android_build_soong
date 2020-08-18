@@ -17,6 +17,7 @@ package sh
 import (
 	"fmt"
 	"path/filepath"
+	"reflect"
 	"sort"
 	"strings"
 
@@ -278,6 +279,35 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	s.data = android.PathsForModuleSrc(ctx, s.testProperties.Data)
 
 	var configs []tradefed.Config
+	if len(s.testProperties.Data) > 0 || len(s.testProperties.Data_device_bins) > 0 {
+		moduleName := s.Name()
+		remoteDir := "/data/nativetest/" + moduleName + "/"
+		options := []tradefed.Option{{Name: "cleanup", Value: "true"}}
+		for _, bin := range s.testProperties.Data_device_bins {
+			options = append(options, tradefed.Option{Name: "push-file", Key: bin, Value: remoteDir + bin})
+		}
+		paths := android.PathsForModuleSrc(ctx, s.testProperties.Data)
+		moduleDir := ctx.ModuleDir() + "/"
+		distinctPaths := map[string]bool{} // Use as a set to collect distinct entries.
+		for _, path := range paths {
+			filePath := path.String()
+			if strings.Index(filePath, moduleDir) == 0 {
+				key := strings.Replace(filePath, moduleDir, "", 1)
+				// PushFilePreparer pushes either a file or folder (use the containing folder for path/to/file).
+				key = strings.SplitN(key, "/", 2)[0]
+				distinctPaths[key] = true
+			} else {
+				// Ignore any path that's not relative to the module path - don't know where to push it too.
+				// This can be adb-push-ed from the shell script.
+			}
+		}
+		for _, relativePath := range reflect.ValueOf(distinctPaths).MapKeys() {
+			key := relativePath.String()
+			value := remoteDir + key
+			options = append(options, tradefed.Option{Name: "push-file", Key: key, Value: value})
+		}
+		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.PushFilePreparer", options})
+	}
 	if Bool(s.testProperties.Require_root) {
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
 	} else {
