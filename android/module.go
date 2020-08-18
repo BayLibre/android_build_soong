@@ -162,6 +162,7 @@ type BaseModuleContext interface {
 	Arch() Arch
 	Os() OsType
 	Host() bool
+	HostNoCross() bool
 	Device() bool
 	Darwin() bool
 	Fuchsia() bool
@@ -913,6 +914,10 @@ func (m *ModuleBase) Os() OsType {
 
 func (m *ModuleBase) Host() bool {
 	return m.Os().Class == Host || m.Os().Class == HostCross
+}
+
+func (m *ModuleBase) HostNoCross() bool {
+	return m.Os().Class == Host
 }
 
 func (m *ModuleBase) Device() bool {
@@ -1933,6 +1938,10 @@ func (b *baseModuleContext) Os() OsType {
 
 func (b *baseModuleContext) Host() bool {
 	return b.os.Class == Host || b.os.Class == HostCross
+}
+
+func (b *baseModuleContext) HostNoCross() bool {
+	return b.os.Class == Host
 }
 
 func (b *baseModuleContext) Device() bool {
