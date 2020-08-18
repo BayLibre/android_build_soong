@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0085c5e_a8427eb8",
+        "filename": "sh/sh_binary_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-08-18T16:29:23Z",
+      "side": 1,
+      "message": "PS1 shows the reverted change. This line has been updated to fix the error.",
+      "revId": "6e0eee522dc4d2c8b647283f6328c43bf7f4defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
