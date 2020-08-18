@@ -51,6 +51,23 @@
       "revId": "29aa9fde5dccf0babff4c29d6614e0b60c9d35c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9887943c_ded51476",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-08-18T23:00:33Z",
+      "side": 1,
+      "message": "Dan, could you please take a look of the new change again? Thanks.\n",
+      "revId": "29aa9fde5dccf0babff4c29d6614e0b60c9d35c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
