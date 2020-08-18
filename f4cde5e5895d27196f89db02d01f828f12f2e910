@@ -56,6 +56,30 @@
       "revId": "f4cde5e5895d27196f89db02d01f828f12f2e910",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2d7651_23282c2c",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-18T20:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ad6ba0_0189bc8e",
+      "range": {
+        "startLine": 231,
+        "startChar": 48,
+        "endLine": 231,
+        "endChar": 58
+      },
+      "revId": "f4cde5e5895d27196f89db02d01f828f12f2e910",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
