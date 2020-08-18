@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e21ec2b3_b1c4d16e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-08-18T07:41:40Z",
+      "side": 1,
+      "message": "I can confirm that this lets me drop my \"-misc-no-recursion\" individual patches (which is fantastic because at least one user is only available in goog/master, which is much harder to juggle). Thank you, Dan! This is a real helper!",
+      "revId": "f4cde5e5895d27196f89db02d01f828f12f2e910",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ad6ba0_0189bc8e",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-08-18T07:41:40Z",
+      "side": 1,
+      "message": "explicitly",
+      "range": {
+        "startLine": 231,
+        "startChar": 48,
+        "endLine": 231,
+        "endChar": 58
+      },
+      "revId": "f4cde5e5895d27196f89db02d01f828f12f2e910",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
