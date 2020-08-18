@@ -2666,6 +2666,7 @@ func TestMacro(t *testing.T) {
 	mylibCFlags = ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_static_myapex").Rule("cc").Args["cFlags"]
 	ensureContains(t, mylibCFlags, "-D__ANDROID_APEX__")
 	ensureContains(t, mylibCFlags, "-D__ANDROID_APEX_MYAPEX__")
+	ensureContains(t, mylibCFlags, "-D__ANDROID_APEX_NAME__='\"myapex\"'")
 	ensureNotContains(t, mylibCFlags, "-D__ANDROID_APEX_OTHERAPEX__")
 
 	// APEX variant has __ANDROID_APEX__ defined
@@ -2673,6 +2674,7 @@ func TestMacro(t *testing.T) {
 	ensureContains(t, mylibCFlags, "-D__ANDROID_APEX__")
 	ensureNotContains(t, mylibCFlags, "-D__ANDROID_APEX_MYAPEX__")
 	ensureContains(t, mylibCFlags, "-D__ANDROID_APEX_OTHERAPEX__")
+	ensureContains(t, mylibCFlags, "-D__ANDROID_APEX_NAME__='\"otherapex\"'")
 
 	// recovery variant does not set __ANDROID_SDK_VERSION__
 	mylibCFlags = ctx.ModuleForTests("mylib", "android_recovery_arm64_armv8-a_static").Rule("cc").Args["cFlags"]
