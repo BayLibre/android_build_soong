@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06c330d6_83c7928d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-18T00:30:00Z",
+      "side": 1,
+      "message": "Can you elaborate? frameworks/base should be encoding the values from the build system.\n\nI suspect this may be from a problem on AOSP where both R and S are technically in a development state (as R has not yet been released to AOSP). So the build\u0027s PlatformSdkCodename is \u0027S\u0027, but PlatformVersionActiveCodenames will be [\u0027R\u0027, \u0027S\u0027]; and android.os.Build should have similar APIs.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
