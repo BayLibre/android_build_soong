@@ -24,8 +24,11 @@ func init() {
 }
 
 type BinaryCompilerProperties struct {
-	// passes -C prefer-dynamic to rustc, which tells it to dynamically link the stdlib
-	// (assuming it has no dylib dependencies already)
+	// Whether to prefer rlibs or dylibs for rustlib dependencies (true for dylib preference). This
+	// should only be set if non-standard linkage is needed, and in most cases it's better to just
+	// use the rlibs and dylibs dependencies.
+	//
+	// This is default true for device targets, and default false for host targets.
 	Prefer_dynamic *bool
 }
 
@@ -60,8 +63,12 @@ func NewRustBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator
 	return module, binary
 }
 
-func (binary *binaryDecorator) preferDynamic() bool {
-	return Bool(binary.Properties.Prefer_dynamic)
+func (binary *binaryDecorator) preferDynamic(ctx BaseModuleContext) bool {
+	if ctx.Host() {
+		return BoolDefault(binary.Properties.Prefer_dynamic, false)
+	} else {
+		return BoolDefault(binary.Properties.Prefer_dynamic, true)
+	}
 }
 
 func (binary *binaryDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {
@@ -76,7 +83,7 @@ func (binary *binaryDecorator) compilerFlags(ctx ModuleContext, flags Flags) Fla
 			"-Wl,--no-undefined-version")
 	}
 
-	if binary.preferDynamic() {
+	if binary.preferDynamic(ctx) {
 		flags.RustFlags = append(flags.RustFlags, "-C prefer-dynamic")
 	}
 	return flags
@@ -132,8 +139,8 @@ func (binary *binaryDecorator) coverageOutputZipPath() android.OptionalPath {
 	return binary.coverageOutputZipFile
 }
 
-func (binary *binaryDecorator) autoDep() autoDep {
-	if binary.preferDynamic() {
+func (binary *binaryDecorator) autoDep(ctx BaseModuleContext) autoDep {
+	if binary.preferDynamic(ctx) {
 		return dylibAutoDep
 	} else {
 		return rlibAutoDep

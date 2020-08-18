@@ -215,8 +215,12 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 			if ctx.Host() && ctx.TargetPrimary() {
 				stdlib = stdlib + "_" + ctx.toolchain().RustTriple()
 			}
-
-			deps.Rustlibs = append(deps.Rustlibs, stdlib)
+			if ctx.Host() {
+				deps.Rustlibs = append(deps.Rustlibs, stdlib)
+			} else {
+				// For devices, we always link stdlibs in as dylibs.
+				deps.Dylibs = append(deps.Dylibs, stdlib)
+			}
 		}
 	}
 	return deps

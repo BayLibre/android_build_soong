@@ -15,6 +15,8 @@
 package rust
 
 import (
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 	"android/soong/tradefed"
 )
@@ -107,6 +109,9 @@ func (test *testDecorator) install(ctx ModuleContext, file android.Path) {
 }
 
 func (test *testDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {
+	if test.binaryDecorator.Properties.Prefer_dynamic == nil {
+		test.binaryDecorator.Properties.Prefer_dynamic = proptools.BoolPtr(false)
+	}
 	flags = test.binaryDecorator.compilerFlags(ctx, flags)
 	if test.testHarness() {
 		flags.RustFlags = append(flags.RustFlags, "--test")
@@ -114,7 +119,7 @@ func (test *testDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
-func (test *testDecorator) autoDep() autoDep {
+func (test *testDecorator) autoDep(ctx BaseModuleContext) autoDep {
 	return rlibAutoDep
 }
 
