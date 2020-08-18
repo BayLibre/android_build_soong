@@ -217,7 +217,7 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	if !Bool(compiler.Properties.No_stdlibs) {
 		for _, stdlib := range config.Stdlibs {
 			// If we're building for the primary host target, use the compiler's stdlibs
-			if ctx.Host() && ctx.TargetPrimary() {
+			if ctx.HostNoCross() && ctx.TargetPrimary() {
 				stdlib = stdlib + "_" + ctx.toolchain().RustTriple()
 			}
 
