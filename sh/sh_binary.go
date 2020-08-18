@@ -66,6 +66,12 @@ type shBinaryProperties struct {
 	Symlinks []string `android:"arch_variant"`
 }
 
+type TestOptions struct {
+	// List of files or directories in the module directory to push to device (path/to/file not supported).
+	// Must be a subset of data.
+	Auto_gen_push []string `android:"path,arch_variant"`
+}
+
 type TestProperties struct {
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
@@ -105,6 +111,9 @@ type TestProperties struct {
 	// list of device library modules that should be installed alongside the test.
 	// Only available for host sh_test modules.
 	Data_device_libs []string `android:"path,arch_variant"`
+
+	// Test options.
+	Test_options TestOptions
 }
 
 type ShBinary struct {
@@ -277,15 +286,60 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	s.data = android.PathsForModuleSrc(ctx, s.testProperties.Data)
 
-	var configs []tradefed.Config
-	if Bool(s.testProperties.Require_root) {
-		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
-	} else {
-		options := []tradefed.Option{{Name: "force-root", Value: "false"}}
-		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", options})
+        var configs []tradefed.Config
+        if Bool(s.testProperties.Require_root) {
+                configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
+        } else {
+                options := []tradefed.Option{{Name: "force-root", Value: "false"}}
+                configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", options})
+        }
+	// Use Auto_gen_push to specify items to push to device is a workaround for not being able to push Data.
+	// PushFilePreparer is used for pushing. It pushs files, directories but cannot push path/to/file.
+	// Updating PushFilePreparer to support that is not an trivial effort as some complicated edge cases need to be supported as part of the effort.
+	// There might be alternative solutions but this workaround is adequte for supporting auto-gen for shell test.
+	if len(s.testProperties.Data_device_bins) > 0 || len(s.testProperties.Test_options.Auto_gen_push) > 0 {
+		moduleName := s.Name()
+		remoteDir := "/data/local/tests/unrestricted/" + moduleName + "/"
+		options := []tradefed.Option{{Name: "cleanup", Value: "true"}}
+		for _, bin := range s.testProperties.Data_device_bins {
+			options = append(options, tradefed.Option{Name: "push-file", Key: bin, Value: remoteDir + bin})
+		}
+		if len(s.testProperties.Test_options.Auto_gen_push) > 0 {
+			for _, path := range s.testProperties.Test_options.Auto_gen_push {
+				if strings.Contains(path, "/") {
+					ctx.PropertyErrorf("auto_gen_push", "\"%s\" can't be pushed (must be files or directories in the module directory)", path)
+				}
+			}
+			dataPaths := android.PathsForModuleSrc(ctx, s.testProperties.Data)
+			moduleDir := ctx.ModuleDir() + "/"
+			dataPathDict := map[android.Path]bool{} // Map of data paths for lookup.
+			for _, data_path := range dataPaths {
+				if strings.Index(data_path.String(), moduleDir) == 0 {
+					dataPathDict[data_path] = true
+				}
+			}
+			paths := android.PathsForModuleSrc(ctx, s.testProperties.Test_options.Auto_gen_push)
+			for _, path := range paths {
+				if !dataPathDict[path] {
+					// Verify directory contents are in data.
+					key := path.Rel()
+					filePaths := android.PathsForModuleSrc(ctx, []string{key + "/**/*"})
+					for _, filePath := range filePaths {
+						if !dataPathDict[filePath] {
+							ctx.PropertyErrorf("auto_gen_push", "\"%s\" is not in data", key)
+						}
+					}
+				}
+			}
+			for _, path := range paths {
+				key := path.Rel()
+				options = append(options, tradefed.Option{Name: "push-file", Key: key, Value: remoteDir + key})
+			}
+			configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.PushFilePreparer", options})
+		}
 	}
-	s.testConfig = tradefed.AutoGenShellTestConfig(ctx, s.testProperties.Test_config,
-		s.testProperties.Test_config_template, s.testProperties.Test_suites, configs, s.testProperties.Auto_gen_config, s.outputFilePath.Base())
+        s.testConfig = tradefed.AutoGenShellTestConfig(ctx, s.testProperties.Test_config,
+                s.testProperties.Test_config_template, s.testProperties.Test_suites, configs, s.testProperties.Auto_gen_config, s.outputFilePath.Base())
 
 	s.dataModules = make(map[string]android.Path)
 	ctx.VisitDirectDeps(func(dep android.Module) {
