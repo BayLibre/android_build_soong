@@ -145,6 +145,30 @@
       "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7e0bb89_a23f3887",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-18T12:44:50Z",
+      "side": 1,
+      "message": "re \"Why can it be problematic\": I\u0027m thinking along the lines of include what you use. dexpreopt contains a lot of ART relate things that those files don\u0027t need to be aware of.",
+      "parentUuid": "b63f1a4f_c45ac821",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
