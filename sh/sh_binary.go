@@ -278,6 +278,15 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	s.data = android.PathsForModuleSrc(ctx, s.testProperties.Data)
 
 	var configs []tradefed.Config
+	if len(s.testProperties.Data_device_bins) > 0 {
+		moduleName := s.Name()
+		remoteDir := "/data/nativetest/" + moduleName + "/"
+		options := []tradefed.Option{{Name: "cleanup", Value: "true"}}
+		for _, bin := range s.testProperties.Data_device_bins {
+			options = append(options, tradefed.Option{Name: "push-file", Key: bin, Value: remoteDir + bin})
+		}
+		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.PushFilePreparer", options})
+	}
 	if Bool(s.testProperties.Require_root) {
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
 	} else {
