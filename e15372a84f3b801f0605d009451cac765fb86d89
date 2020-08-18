@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004473989",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1393254?revision\u003d21",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "53c89a41_8fb4d927",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-18T02:47:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 93,
+        "startChar": 69,
+        "endLine": 93,
+        "endChar": 75
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004473989",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1393254?revision\u003d21",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1304a992_5ade231f",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-18T02:47:15Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 171,
+        "startChar": 60,
+        "endLine": 171,
+        "endChar": 66
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
