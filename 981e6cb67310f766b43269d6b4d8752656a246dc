@@ -16,6 +16,29 @@
       "revId": "981e6cb67310f766b43269d6b4d8752656a246dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cb791a7_6ee4eca9",
+        "filename": "cc/config/global.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2020-08-18T06:52:06Z",
+      "side": 1,
+      "message": "We usually put warning suppression rules in cc/config/clang.go, do these diagnostics need special handling and have to be placed here?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 40
+      },
+      "revId": "981e6cb67310f766b43269d6b4d8752656a246dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
