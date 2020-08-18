@@ -34,6 +34,23 @@
       "revId": "29aa9fde5dccf0babff4c29d6614e0b60c9d35c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d61bac3_3e36b5d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-18T14:07:57Z",
+      "side": 1,
+      "message": "Yea I\u0027ll defer to Dan here if he\u0027s the deps expert; I don\u0027t know much about how we\u0027re using deps. The CL itself looks alright to me.",
+      "revId": "29aa9fde5dccf0babff4c29d6614e0b60c9d35c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
