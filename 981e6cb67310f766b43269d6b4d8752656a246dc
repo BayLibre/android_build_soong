@@ -39,6 +39,30 @@
       "revId": "981e6cb67310f766b43269d6b4d8752656a246dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15fd4541_5e08c8af",
+        "filename": "cc/config/global.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-08-18T06:53:54Z",
+      "side": 1,
+      "message": "We need them after the other noOverride flags, or they just get turned back on again as strict errors. Even enum ends back up in the `int` category for these. There\u0027s also another one coming, but I am still working through the remaining goog/master errors before re-uploading.",
+      "parentUuid": "3cb791a7_6ee4eca9",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 40
+      },
+      "revId": "981e6cb67310f766b43269d6b4d8752656a246dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
