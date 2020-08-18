@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "664599e7_93cc6c90",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-18T02:52:42Z",
+      "side": 1,
+      "message": "Yep. I filed b/165114590 to keep track.\n\nThis is the same for filegroups from some earlier experimentation. `srcs` in filegroups can also traverse into subdirectories with Android.bp in them. \n\nBeyond this CL, I think it\u0027s probably unclear how this feature will evolve as 1) a correct query backend for Soong\u0027s module graph and 2) the foundation for automatic conversion between Blueprint and Bazel. I\u0027ll be focusing on writing up a doc about bazel_overlay\u0027s evolution in these couple of weeks. b/165051078",
+      "parentUuid": "94b55dcd_6e047fda",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 3
+      },
+      "revId": "6abca59216029e60a0358731e0779c9475efc1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fdab90f_22b482f5",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 14
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "Ah, I had missed that reflect.Slice was using IsNil() (I saw reflect.Array\u0027s implementation 🤦).\n\nUsing an attribute default may work in this case, but wouldn\u0027t match Soong\u0027s logic. That\u0027s only the default for bionic-based variants, but other variants can largely ignore system_shared_libs, so it may not matter.\n\nMany of the other use cases matter more for property merging (defaults/arch/etc), which has already happened by this stage.",
       "parentUuid": "d28bb237_9ea957ed",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 41
+      },
+      "revId": "6abca59216029e60a0358731e0779c9475efc1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "080e6eb3_603b2ce0",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-18T02:52:42Z",
+      "side": 1,
+      "message": "Ack. The nice thing about bazel_overlay having deep access to soong_build internals is that we can generate the right default based on variant information, down the road :-)",
+      "parentUuid": "b8eb2009_81f020e7",
       "range": {
         "startLine": 422,
         "startChar": 0,

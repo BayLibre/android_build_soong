@@ -16,6 +16,24 @@
       "revId": "77f2a4030c9d8523bdd49ca742b41fcdc14f1b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69bc8517_2d866d92",
+        "filename": "cmd/soong_build/bazel_overlay_test.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-18T02:52:42Z",
+      "side": 1,
+      "message": "Definitely, and done.\n\n(could Lint have caught this?)",
+      "parentUuid": "2bc7d1c0_2c78c9ca",
+      "revId": "77f2a4030c9d8523bdd49ca742b41fcdc14f1b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
