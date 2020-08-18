@@ -169,6 +169,30 @@
       "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27b5b84f_4f93429f",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-18T19:33:41Z",
+      "side": 1,
+      "message": "I think keeping it in dexpreopt for now makes seems fine. If there are similar uses outside of dexpreopt for LibraryPath/LibraryPaths later we can move it to paths.go",
+      "parentUuid": "b7e0bb89_a23f3887",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "dae2b73881e2e09f083d239cffcf970b0e836175",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

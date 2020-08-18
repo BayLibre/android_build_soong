@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31245a36_a11eedad",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-18T19:33:41Z",
+      "side": 1,
+      "message": "Throughout, the name `x` is quite opaque, the full word isn\u0027t obvious (go/go-style/decisions#v). can we use something like libPaths?",
+      "range": {
+        "startLine": 115,
+        "startChar": 45,
+        "endLine": 115,
+        "endChar": 46
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f997e8_12305cf8",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-18T19:33:41Z",
+      "side": 1,
+      "message": "Can we initialize the LibraryPaths ahead of time an have AddLibraryPath(s) as receiver functions instead?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 20
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca6cee6_fddbca51",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-18T19:33:41Z",
+      "side": 1,
+      "message": "Why are we setting devicePath to \"error\" rather than throwing an error directly?",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bbac816_19756a34",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-18T19:33:41Z",
+      "side": 1,
+      "message": "is it an error that we need to worry about if the module does not implement UsesLibraryDependency?",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 5
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707de745_ea679724",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-18T19:33:41Z",
+      "side": 1,
+      "message": "This sort is now handled in Names()",
+      "range": {
+        "startLine": 1500,
+        "startChar": 2,
+        "endLine": 1500,
+        "endChar": 23
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
