@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb3ffa7_f30a3660",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-18T01:54:04Z",
+      "side": 1,
+      "message": "If this is the only case where the behavior would change, I think this is fine because the first library must not have used the private symbols from the second library.",
+      "range": {
+        "startLine": 23,
+        "startChar": 60,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "d6b2525b003b5620b3745a79dce56093173504f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
