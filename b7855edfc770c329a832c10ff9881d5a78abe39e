@@ -59,6 +59,48 @@
     },
     {
       "key": {
+        "uuid": "8ba15c18_76bfc495",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-18T00:29:10Z",
+      "side": 1,
+      "message": "Ah, much better. I\u0027d tried just \"int\" and blueprint yelled at me :)",
+      "parentUuid": "16c2b0aa_24d2ffb5",
+      "range": {
+        "startLine": 70,
+        "startChar": 28,
+        "endLine": 70,
+        "endChar": 34
+      },
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2ea4b36_1855ac08",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-18T00:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ebaa4b7_8cddcb30",
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a69821ed_36020384",
         "filename": "cc/compiler.go",
         "patchSetId": 1
@@ -70,6 +112,24 @@
       "writtenOn": "2020-08-15T01:04:52Z",
       "side": 1,
       "message": "Since this property is never going to be set everywhere, doesn\u0027t this lock the majority of the platform into the set of warnings that currently exist, plus whichever new ones get cleaned up in the tree so they can be enabled globally?  How is this better than the current system, where we just globally disable any problematic warnings?  This would seem more useful if it returned config.CurrentClangDiagnosticVersion if it was unset, and then you can pin problematic modules to an older version.",
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6a0e11_d96da88d",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-18T00:29:10Z",
+      "side": 1,
+      "message": "Plan when I\u0027d uploaded this was to have a tool that would update it everywhere and treehugger would submit everything that worked, and that the presubmit failure would be the indication to the project owner that they had things to fix.\n\nTalked this over with srhines during the meeting today though and it sounds like, at least for now (worth revisiting when we get LSC support), this doesn\u0027t buy them much, aside from the clang-tidy filtering. I\u0027ll split that out into a smaller change and move this over to WIP until we decide that the user-facing attribute is more useful.",
+      "parentUuid": "a69821ed_36020384",
       "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -96,6 +156,30 @@
       "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bcb942_a466dc28",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-18T00:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbef4330_fc866212",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 11
+      },
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +214,24 @@
       "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b053e5_5990aa3e",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-18T00:29:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea5f91b_fd86dc2c",
+      "revId": "b7855edfc770c329a832c10ff9881d5a78abe39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
