@@ -39,6 +39,29 @@
       "revId": "9fac1c50d47393217e66dad5c3606c8bd00aaff4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "def00f74_83fe4d40",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2508,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-19T09:53:27Z",
+      "side": 1,
+      "message": "If this is the only purpose of the prop, it seems like we could also just whitelist by path instead. This will pollute the public interface and allow any import to set this to workaround the neverallow at will",
+      "range": {
+        "startLine": 2506,
+        "startChar": 0,
+        "endLine": 2508,
+        "endChar": 42
+      },
+      "revId": "9fac1c50d47393217e66dad5c3606c8bd00aaff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
