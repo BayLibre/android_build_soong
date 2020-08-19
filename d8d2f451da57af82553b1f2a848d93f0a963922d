@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aed70ed0_2fd7ec73",
+        "filename": "java/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-19T20:34:13Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be \u003e 0?",
+      "range": {
+        "startLine": 176,
+        "startChar": 26,
+        "endLine": 176,
+        "endChar": 30
+      },
+      "revId": "d8d2f451da57af82553b1f2a848d93f0a963922d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
