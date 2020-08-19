@@ -81,7 +81,7 @@ do_strip_keep_mini_debug_info() {
         # Current prebult llvm-objcopy does not support --only-keep-debug flag,
         # and cannot process object files that are produced with the flag. Use
         # GNU objcopy instead for now. (b/141010852)
-        "${CROSS_COMPILE}objcopy" --only-keep-debug "${infile}" "${outfile}.debug"
+        "${CLANG_BIN}/llvm-objcopy" --only-keep-debug "${infile}" "${outfile}.debug"
         "${CLANG_BIN}/llvm-nm" -D "${infile}" --format=posix --defined-only 2> /dev/null | awk '{ print $1 }' | sort >"${outfile}.dynsyms"
         "${CLANG_BIN}/llvm-nm" "${infile}" --format=posix --defined-only | awk '{ if ($2 == "T" || $2 == "t" || $2 == "D") print $1 }' | sort > "${outfile}.funcsyms"
         comm -13 "${outfile}.dynsyms" "${outfile}.funcsyms" > "${outfile}.keep_symbols"
