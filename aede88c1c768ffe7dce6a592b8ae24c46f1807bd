@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e98b3734_68fd7d07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-19T19:27:39Z",
+      "side": 1,
+      "message": "The test that failed last time (b/165188843) passes now: https://android-build.googleplex.com/builds/forrest/run/L43300000670699133",
+      "revId": "aede88c1c768ffe7dce6a592b8ae24c46f1807bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
