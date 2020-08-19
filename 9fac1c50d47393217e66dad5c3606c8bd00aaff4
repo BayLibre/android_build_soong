@@ -86,6 +86,30 @@
       "revId": "9fac1c50d47393217e66dad5c3606c8bd00aaff4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4848effd_4ee20e80",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2508,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-19T20:16:05Z",
+      "side": 1,
+      "message": "ah, okay, no harm then\n\nI think only the sdk prebuilts in prebuilts/sdk are suited for sdk_version: \"none\", though",
+      "parentUuid": "f9e4c11b_a1fa7e4b",
+      "range": {
+        "startLine": 2506,
+        "startChar": 0,
+        "endLine": 2508,
+        "endChar": 42
+      },
+      "revId": "9fac1c50d47393217e66dad5c3606c8bd00aaff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
