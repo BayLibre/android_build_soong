@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e121e22_d96f0cf2",
+        "filename": "java/app_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2580,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-19T19:32:52Z",
+      "side": 1,
+      "message": "should this be the concatenated with \"--uses-library \"?",
+      "range": {
+        "startLine": 2580,
+        "startChar": 42,
+        "endLine": 2580,
+        "endChar": 43
+      },
+      "revId": "22d7ac5c82df007842763f0779a21e7232426203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
