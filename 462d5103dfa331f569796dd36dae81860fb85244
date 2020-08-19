@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bca879a9_121542c1",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-19T18:36:57Z",
+      "side": 1,
+      "message": "This can be extraTestConfigs.Strings()",
+      "range": {
+        "startLine": 177,
+        "startChar": 55,
+        "endLine": 177,
+        "endChar": 70
+      },
+      "revId": "462d5103dfa331f569796dd36dae81860fb85244",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
