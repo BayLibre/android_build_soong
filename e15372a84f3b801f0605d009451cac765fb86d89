@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24a65a80_2d6e31e2",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-19T20:47:17Z",
+      "side": 1,
+      "message": "Do we need any test cases for filegroup?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 1
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e85cef5a_6daa8cef",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-19T20:47:17Z",
+      "side": 1,
+      "message": "Would strings.ReplaceAll (http://go/godoc/strings/#ReplaceAll) work instead?",
+      "range": {
+        "startLine": 154,
+        "startChar": 36,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2b029d_a1f432d5",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-19T20:47:17Z",
+      "side": 1,
+      "message": "Optional: there\u0027s a util function for this SortedStringKeys https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d82;drc\u003da0cd8f9acb8c5c04c1082cc980cc8cca28aff5a9",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c50a1e9f_41e8c4ed",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-19T20:47:17Z",
+      "side": 1,
+      "message": "Not necessary to change, but I wonder if a strings.Replacer (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d82;drc\u003da0cd8f9acb8c5c04c1082cc980cc8cca28aff5a9) may be easier to read/maintain. It\u0027s the closest equivalent of python\u0027s str.format I\u0027m aware of in go.",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 13
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
