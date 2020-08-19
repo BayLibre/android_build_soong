@@ -62,6 +62,30 @@
       "revId": "9fac1c50d47393217e66dad5c3606c8bd00aaff4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e4c11b_a1fa7e4b",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2508,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-19T16:34:20Z",
+      "side": 1,
+      "message": "Mutated fields can\u0027t be set in a blueprint file. I\u0027d avoided adding the paths for the neverallow rule because the other uses of prebuilt_apis all seem to be in vendor directories.",
+      "parentUuid": "def00f74_83fe4d40",
+      "range": {
+        "startLine": 2506,
+        "startChar": 0,
+        "endLine": 2508,
+        "endChar": 42
+      },
+      "revId": "9fac1c50d47393217e66dad5c3606c8bd00aaff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
