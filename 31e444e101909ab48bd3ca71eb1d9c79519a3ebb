@@ -16,6 +16,29 @@
       "revId": "31e444e101909ab48bd3ca71eb1d9c79519a3ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6012cb0_73177a4d",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-19T19:31:48Z",
+      "side": 1,
+      "message": "Not blocking, but fyi, we have a util function to get the sorted keys from a map: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d82;drc\u003da0cd8f9acb8c5c04c1082cc980cc8cca28aff5a9",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "31e444e101909ab48bd3ca71eb1d9c79519a3ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
