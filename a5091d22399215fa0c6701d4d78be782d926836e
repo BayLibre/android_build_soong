@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "cb660d82_abc896ff",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-19T12:55:59Z",
+      "side": 1,
+      "message": "Done. Initialization now happens at GenerateAndroidBuildActions time, not at module creation time. (I actually wanted to do it this way initially, but then remembered a few times when people advised lazy initialization instead.)",
+      "parentUuid": "e5f997e8_12305cf8",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 20
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59706211_ce46c73f",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-19T12:55:59Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "31245a36_a11eedad",
+      "range": {
+        "startLine": 115,
+        "startChar": 45,
+        "endLine": 115,
+        "endChar": 46
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ca6cee6_fddbca51",
         "filename": "dexpreopt/config.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33b91d8_d8161ab1",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-19T12:55:59Z",
+      "side": 1,
+      "message": "I added a comment and a named constant:\n\n // For some stub libraries the only known thing is the name of their implementation                                                                                                                                                \n // library, but the library itself is unavailable (missing or part of a prebuilt). In                                                                                                                                              \n // such cases we still need to add the library to \u003cuses-library\u003e tags in the manifest,                                                                                                                                             \n // but we cannot use if for dexpreopt.",
+      "parentUuid": "0ca6cee6_fddbca51",
+      "range": {
+        "startLine": 127,
+        "startChar": 3,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "82249229_2f23d1fe",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-19T12:55:59Z",
+      "side": 1,
+      "message": "Good question. I think it should never happen, so I added UsesLibraryDependency interface as a subinterface of SdkLibraryComponentDependency. If it breaks and runtime in some configuration, I will add an `else` branch.",
+      "parentUuid": "9bbac816_19756a34",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 5
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "707de745_ea679724",
         "filename": "java/java_test.go",
         "patchSetId": 4
@@ -114,6 +210,30 @@
       "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd4ad6b_36552419",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-19T12:55:59Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "707de745_ea679724",
+      "range": {
+        "startLine": 1500,
+        "startChar": 2,
+        "endLine": 1500,
+        "endChar": 23
+      },
+      "revId": "a5091d22399215fa0c6701d4d78be782d926836e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
