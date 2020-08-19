@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbe891bf_3d733173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483218
+      },
+      "writtenOn": "2020-08-19T18:39:31Z",
+      "side": 1,
+      "message": "Hi Colin,\n\nWould you please cherry pick these changes to mainline-prod branch as well? Thanks.",
+      "revId": "cb6143a142a3a7985d18ad346a6c21314b90cf87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
