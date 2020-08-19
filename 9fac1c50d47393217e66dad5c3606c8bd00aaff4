@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c27bb801_db2d35c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-19T09:51:05Z",
+      "side": 1,
+      "message": "LGTM. +paulduffin and jiyong FYI",
+      "revId": "9fac1c50d47393217e66dad5c3606c8bd00aaff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c0ed5e9_6f719237",
+        "filename": "android/neverallow_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-19T09:51:05Z",
+      "side": 1,
+      "message": "it matches the existing error messages, but we\u0027ve widened the allowlist for sdk_version: \"none\" now. Not important to change unless you\u0027re making other edits..",
+      "range": {
+        "startLine": 240,
+        "startChar": 45,
+        "endLine": 240,
+        "endChar": 67
+      },
+      "revId": "9fac1c50d47393217e66dad5c3606c8bd00aaff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
