@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f892019_06240758",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-20T21:39:50Z",
+      "side": 1,
+      "message": "The paths are already expanded in s.data.\n\nNote that you cannot assume the paths are relative to the Android.bp file, they could be from a filegroup (which would get them from another source directory) or a genrule (which would get them from the out directory).  I think we usually use path.Rel() to get the relative path it should be installed to on the device.",
+      "revId": "814a1df465a2c55d045487676d621b72844f09a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
