@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "256062e5_55a08eb2",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-20T21:48:35Z",
+      "side": 1,
+      "message": "Do you need to check if the prebuilt is preferred?  By default everywhere else we take the source module if the source and prebuilt are both present.",
+      "revId": "c004862309a2856021a364aa93d4c0ef18a9f755",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
