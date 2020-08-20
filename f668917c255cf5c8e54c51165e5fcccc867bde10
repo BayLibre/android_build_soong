@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ea3c5ff4_f8c0ca24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-08-20T21:38:02Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "f668917c255cf5c8e54c51165e5fcccc867bde10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bcad4f9_a6805e9f",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 1
