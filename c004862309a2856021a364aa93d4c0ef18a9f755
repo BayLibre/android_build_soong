@@ -16,6 +16,24 @@
       "revId": "c004862309a2856021a364aa93d4c0ef18a9f755",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfdb3e1a_cb55ccea",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-20T21:58:13Z",
+      "side": 1,
+      "message": "In this case there\u0027s no source; the prebuilt has been renamed to the source name. Iiuc Prebuilt.UsePrebuilt() isn\u0027t applicable then.",
+      "parentUuid": "256062e5_55a08eb2",
+      "revId": "c004862309a2856021a364aa93d4c0ef18a9f755",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
