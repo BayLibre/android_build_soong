@@ -22,6 +22,30 @@
       "revId": "22d7ac5c82df007842763f0779a21e7232426203",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af12467_88ed6613",
+        "filename": "java/app_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2580,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-20T10:49:02Z",
+      "side": 1,
+      "message": "Exactly, thanks for catching this. Fixed.",
+      "parentUuid": "3e121e22_d96f0cf2",
+      "range": {
+        "startLine": 2580,
+        "startChar": 42,
+        "endLine": 2580,
+        "endChar": 43
+      },
+      "revId": "22d7ac5c82df007842763f0779a21e7232426203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
