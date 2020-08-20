@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60bcd4c8_6f3a1d74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-20T15:51:20Z",
+      "side": 1,
+      "message": "This may not be compatible with all uses of cc_prebuilt_binary, so I\u0027d have to add a flag to enable it. However no issues have popped up in the tests. I\u0027ve also searched a bit, although not thoroughly.",
+      "revId": "cd7b96bfdb5e064efa3f78830865c46dea640a2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
