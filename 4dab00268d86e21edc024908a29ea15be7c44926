@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d5d6a23_e168b830",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-20T11:50:20Z",
+      "side": 1,
+      "message": "This is a kludge, but it got complicated trying to reorder mutators to avoid it (see comment).",
+      "revId": "4dab00268d86e21edc024908a29ea15be7c44926",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
