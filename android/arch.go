@@ -626,11 +626,19 @@ func (os OsType) String() string {
 }
 
 func (os OsType) Bionic() bool {
-	return os == Android || os == LinuxBionic
+	return os == Android || os == LinuxBionic || os == LinuxCross
 }
 
 func (os OsType) Linux() bool {
 	return os == Android || os == Linux || os == LinuxBionic || os == LinuxCross
+}
+
+func (os OsType) Host() bool {
+	return os.Class == Host || os.Class == HostCross
+}
+
+func (os OsType) HostNoCross() bool {
+	return os.Class == Host
 }
 
 func NewOsType(name string, class OsClass, defDisabled bool) OsType {
@@ -1206,7 +1214,7 @@ func (m *ModuleBase) setOSProperties(ctx BottomUpMutatorContext) {
 			//         key: value,
 			//     },
 			// },
-			if os.Class == Host || os.Class == HostCross {
+			if os.Host() {
 				field := "Host"
 				prefix := "target.host"
 				m.appendProperties(ctx, genProps, targetProp, field, prefix)
@@ -1227,6 +1235,12 @@ func (m *ModuleBase) setOSProperties(ctx BottomUpMutatorContext) {
 			if os.Bionic() {
 				field := "Bionic"
 				prefix := "target.bionic"
+				m.appendProperties(ctx, genProps, targetProp, field, prefix)
+			}
+
+			if os.Host() && os.Linux() && os.Bionic() {
+				field := "Linux_bionic"
+				prefix := "target.linux_bionic"
 				m.appendProperties(ctx, genProps, targetProp, field, prefix)
 			}
 
