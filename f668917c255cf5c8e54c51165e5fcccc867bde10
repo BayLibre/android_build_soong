@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bcad4f9_a6805e9f",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-20T21:28:58Z",
+      "side": 1,
+      "message": "I\u0027m checking to see how this interacts with calling `get_build_var ...`, since this call would happen for every invocation of soong_ui",
+      "revId": "f668917c255cf5c8e54c51165e5fcccc867bde10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
