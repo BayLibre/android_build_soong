@@ -39,6 +39,30 @@
       "revId": "31e444e101909ab48bd3ca71eb1d9c79519a3ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a32997d2_df886972",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-20T10:36:49Z",
+      "side": 1,
+      "message": "Thanks for the information. I uploaded a separate CL, because this is not the only place where I added similar get-sorted-keys functions: https://r.android.com/1404519",
+      "parentUuid": "f6012cb0_73177a4d",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "31e444e101909ab48bd3ca71eb1d9c79519a3ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
