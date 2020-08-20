@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"path/filepath"
 	"testing"
 
 	"android/soong/android"
@@ -270,4 +271,40 @@ func TestPrebuiltLibrarySharedStem(t *testing.T) {
 
 	shared := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared").Module().(*Module)
 	assertString(t, shared.OutputFile().Path().Base(), "libbar.so")
+}
+
+func TestPrebuiltHostBinary(t *testing.T) {
+	ctx := testPrebuilt(t, `
+	cc_prebuilt_library_shared {
+		name: "libfoo",
+		device_supported: false,
+		host_supported: true,
+		srcs: ["libfoo.so"],
+	}
+
+	cc_prebuilt_binary {
+		name: "foo",
+		device_supported: false,
+		host_supported: true,
+		srcs: ["foo"],
+		shared_libs: ["libfoo"],
+	}
+	`, map[string][]byte{
+		"libfoo.so": nil,
+		"foo":       nil,
+	})
+
+	fooRule := ctx.ModuleForTests("foo", "linux_glibc_x86_64").Rule("Symlink")
+	assertString(t, fooRule.Output.String(),
+		filepath.Join(buildDir, ".intermediates/foo/linux_glibc_x86_64/foo"))
+
+	var libfooDep android.Path
+	for _, dep := range fooRule.Implicits {
+		if dep.Base() == "libfoo.so" {
+			libfooDep = dep
+			break
+		}
+	}
+	assertString(t, libfooDep.String(),
+		filepath.Join(buildDir, ".intermediates/libfoo/linux_glibc_x86_64_shared/libfoo.so"))
 }
