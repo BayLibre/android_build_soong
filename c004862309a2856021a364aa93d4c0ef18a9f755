@@ -34,6 +34,24 @@
       "revId": "c004862309a2856021a364aa93d4c0ef18a9f755",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9041b27_abed6694",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-20T23:11:45Z",
+      "side": 1,
+      "message": "Yep, you\u0027re right.",
+      "parentUuid": "bfdb3e1a_cb55ccea",
+      "revId": "c004862309a2856021a364aa93d4c0ef18a9f755",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
