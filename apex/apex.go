@@ -1325,8 +1325,6 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
 	binVariations := target.Variations()
 	libVariations := append(target.Variations(),
 		blueprint.Variation{Mutator: "link", Variation: "shared"})
-	testVariations := append(target.Variations(),
-		blueprint.Variation{Mutator: "test_per_src", Variation: ""}) // "" is the all-tests variant
 
 	if ctx.Device() {
 		binVariations = append(binVariations,
@@ -1334,8 +1332,6 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
 		libVariations = append(libVariations,
 			blueprint.Variation{Mutator: "image", Variation: imageVariation},
 			blueprint.Variation{Mutator: "version", Variation: ""}) // "" is the non-stub variant
-		testVariations = append(testVariations,
-			blueprint.Variation{Mutator: "image", Variation: imageVariation})
 	}
 
 	ctx.AddFarVariationDependencies(libVariations, sharedLibTag, nativeModules.Native_shared_libs...)
@@ -1344,7 +1340,7 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
 
 	ctx.AddFarVariationDependencies(binVariations, executableTag, nativeModules.Binaries...)
 
-	ctx.AddFarVariationDependencies(testVariations, testTag, nativeModules.Tests...)
+	ctx.AddFarVariationDependencies(binVariations, testTag, nativeModules.Tests...)
 }
 
 func (a *apexBundle) combineProperties(ctx android.BottomUpMutatorContext) {
