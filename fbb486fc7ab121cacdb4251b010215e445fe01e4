@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb383cdb_b55265a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-08-21T18:07:10Z",
+      "side": 1,
+      "message": "This addresses the error encountered in hwasan builds with https://r.android.com/1354642, e.g. https://android-build.googleplex.com/builds/pending/P16226846/aosp_blueline_hwasan-userdebug/latest.",
+      "revId": "fbb486fc7ab121cacdb4251b010215e445fe01e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
