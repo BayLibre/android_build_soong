@@ -16,6 +16,24 @@
       "revId": "814a1df465a2c55d045487676d621b72844f09a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87cbd180_0101d2a4",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-08-21T18:17:53Z",
+      "side": 1,
+      "message": "Much appreciated for your review. Very helpful. Added logic to take care of it (will not auto-push those as we don\u0027t know where to push, needs to be adb-pushed in the script or specify in a test config).",
+      "parentUuid": "6f892019_06240758",
+      "revId": "814a1df465a2c55d045487676d621b72844f09a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
