@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1510208_4edb118d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-21T10:01:41Z",
+      "side": 1,
+      "message": "Oops, thank you. How come I did not notice this on `m nothing`? Are these some special tests?",
+      "revId": "9b7ecd76f538b04aa84cba4df55b5f1b1b841556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
