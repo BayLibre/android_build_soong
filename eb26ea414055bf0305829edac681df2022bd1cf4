@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4b67a6f_7188cdc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-08-21T23:38:45Z",
+      "side": 1,
+      "message": "I updated per your comments. It definitely makes the change cleaner. Thanks.",
+      "revId": "eb26ea414055bf0305829edac681df2022bd1cf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
