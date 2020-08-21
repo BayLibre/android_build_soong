@@ -1337,10 +1337,9 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
 		blueprint.Variation{Mutator: "image", Variation: imageVariation}),
 		executableTag, nativeModules.Binaries...)
 
-	ctx.AddFarVariationDependencies(append(target.Variations(), []blueprint.Variation{
-		{Mutator: "image", Variation: imageVariation},
-		{Mutator: "test_per_src", Variation: ""}, // "" is the all-tests variant
-	}...), testTag, nativeModules.Tests...)
+	ctx.AddFarVariationDependencies(append(target.Variations(),
+		blueprint.Variation{Mutator: "image", Variation: imageVariation}),
+		testTag, nativeModules.Tests...)
 }
 
 func (a *apexBundle) combineProperties(ctx android.BottomUpMutatorContext) {
