@@ -16,6 +16,24 @@
       "revId": "42f135b7b083083e79bef0a45f3e7327b83cc11e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d45c4a3f_e5d9392a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-08-21T22:09:45Z",
+      "side": 1,
+      "message": "It would be nice, without this change cross referencing for Go files fails with:\njava/java.go:994:80: ambiguous selector dep.DexJarBuildPath\njava/java.go:994:103: ambiguous selector dep.DexJarInstallPath\njava/java.go:2595:58: ambiguous selector dep.DexJarBuildPath\njava/java.go:2595:81: ambiguous selector dep.DexJarInstallPath\njava/sdk_library.go:879:2: duplicate method DexJarBuildPath\njava/sdk_library.go:879:2: duplicate method DexJarInstallPath",
+      "parentUuid": "a17d8405_59a343e5",
+      "revId": "42f135b7b083083e79bef0a45f3e7327b83cc11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
