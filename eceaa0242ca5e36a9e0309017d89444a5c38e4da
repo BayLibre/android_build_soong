@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "112b79c3_a8a2fbdb",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-21T00:22:06Z",
+      "side": 1,
+      "message": "Ended up not needing that behavior (the policy that the code using that behavior ended up being not something we want), so have switched to a single struct.",
+      "parentUuid": "2efad036_226c8048",
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41064da5_3b821fc9",
         "filename": "android/api_levels.go",
         "patchSetId": 6
@@ -283,6 +301,30 @@
       "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9be59435_a49e3260",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-21T00:22:06Z",
+      "side": 1,
+      "message": "Did some digging. `sdkSpecFrom` in java/sdk.go already disallows anything other than \"current\" or an integer, and we want the codenames for other context like native and APEX where we do want to distinguish between (for example) R and S. This change should be behavior preserving in this respect, with the exception of now disallowing the use of raw numbers for non-final API levels (although 30 is an exception to this exception since it\u0027s already used in enough places, and that one is safe-ish since it\u0027s final publicly, just not in AOSP). We could clean up 30 if we wanted, but probably not worth doing.",
+      "parentUuid": "23ce8778_e17d5e1f",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
