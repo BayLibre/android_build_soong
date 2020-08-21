@@ -16,6 +16,24 @@
       "revId": "9b7ecd76f538b04aa84cba4df55b5f1b1b841556",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "066b5f18_b8db9f05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-21T17:26:41Z",
+      "side": 1,
+      "message": "This appears to be a difference in how the Go compiler is invoked by `go test` vs. Blueprint.  It doesn\u0027t show up with `m nothing`, but I can reproduce with `../../prebuilts/go/linux-x86/bin/go build ./java`.",
+      "parentUuid": "b1510208_4edb118d",
+      "revId": "9b7ecd76f538b04aa84cba4df55b5f1b1b841556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
