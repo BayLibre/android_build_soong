@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c1fc4d3_8f39e537",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-21T21:18:58Z",
+      "side": 1,
+      "message": "Does path.Rel() not work for this?  That would handle the case of files outside the module directory too.",
+      "revId": "8ae568c89fbde7fbdc128e03960d15d6b292a0cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4792593_44f3c071",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-21T21:18:58Z",
+      "side": 1,
+      "message": "This seems likely to push more than intended if there are extra unlisted files in a directory, why not push each file individually?",
+      "revId": "8ae568c89fbde7fbdc128e03960d15d6b292a0cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123eb2fd_bea38fc0",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-21T21:18:58Z",
+      "side": 1,
+      "message": "Map iteration is non-deterministic, which will cause the ninja file to change on every rerun of soong-build.  Use android.SortedMapKeys(distinctPaths)",
+      "revId": "8ae568c89fbde7fbdc128e03960d15d6b292a0cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
