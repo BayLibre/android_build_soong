@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a17d8405_59a343e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-08-21T18:14:49Z",
+      "side": 1,
+      "message": "Do we need to update this every time we upgrade go?",
+      "revId": "42f135b7b083083e79bef0a45f3e7327b83cc11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
