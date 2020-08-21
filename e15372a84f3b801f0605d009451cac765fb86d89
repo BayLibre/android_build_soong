@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b024113d_19ac21ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-21T11:46:39Z",
+      "side": 1,
+      "message": "Thanks Liz for the review!\n\nDan, do you have any more thoughts? Is this good to go in its current form?",
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24a65a80_2d6e31e2",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 21
@@ -25,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "aecc48ce_708bc1fb",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-21T11:46:39Z",
+      "side": 1,
+      "message": "I\u0027m intending to generate and test this rule map, soong_filegroup, and other rule shims automatically in the follow up, so this is going away in this current form very soon.",
+      "parentUuid": "24a65a80_2d6e31e2",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 1
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e85cef5a_6daa8cef",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 21
@@ -36,6 +77,30 @@
       "writtenOn": "2020-08-19T20:47:17Z",
       "side": 1,
       "message": "Would strings.ReplaceAll (http://go/godoc/strings/#ReplaceAll) work instead?",
+      "range": {
+        "startLine": 154,
+        "startChar": 36,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "886ab000_a8774197",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-21T11:46:39Z",
+      "side": 1,
+      "message": "Yep! Much better. Done.",
+      "parentUuid": "e85cef5a_6daa8cef",
       "range": {
         "startLine": 154,
         "startChar": 36,
@@ -71,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "be09b857_c5496427",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-21T11:46:39Z",
+      "side": 1,
+      "message": "Wonderful!",
+      "parentUuid": "5b2b029d_a1f432d5",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 26
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c50a1e9f_41e8c4ed",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 21
@@ -82,6 +171,30 @@
       "writtenOn": "2020-08-19T20:47:17Z",
       "side": 1,
       "message": "Not necessary to change, but I wonder if a strings.Replacer (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d82;drc\u003da0cd8f9acb8c5c04c1082cc980cc8cca28aff5a9) may be easier to read/maintain. It\u0027s the closest equivalent of python\u0027s str.format I\u0027m aware of in go.",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 13
+      },
+      "revId": "e15372a84f3b801f0605d009451cac765fb86d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ee508c_336ab5dd",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-08-21T11:46:39Z",
+      "side": 1,
+      "message": "I don\u0027t expect this function to grow much more, but will definitely look into this if it does. Thanks for the tip!",
+      "parentUuid": "c50a1e9f_41e8c4ed",
       "range": {
         "startLine": 387,
         "startChar": 0,
