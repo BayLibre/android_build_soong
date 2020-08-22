@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "f37b0000_76a815cc",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-22T00:09:16Z",
+      "side": 1,
+      "message": "That seems worth fixing in PushFilePreparer before putting this in, otherwise you\u0027ll end up with tests that accidentally rely on pushing unlisted files and you\u0027ll never be able to fix the broken behavior.",
+      "parentUuid": "b22bea2d_d3c583f5",
+      "revId": "8ae568c89fbde7fbdc128e03960d15d6b292a0cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "123eb2fd_bea38fc0",
         "filename": "sh/sh_binary.go",
         "patchSetId": 4

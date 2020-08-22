@@ -16,6 +16,23 @@
       "revId": "eb26ea414055bf0305829edac681df2022bd1cf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c1ed8_a4bdab4a",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-22T00:09:16Z",
+      "side": 1,
+      "message": "I think pushing into the same directory using path.Rel() makes sense for files from outside the module directory.",
+      "revId": "eb26ea414055bf0305829edac681df2022bd1cf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
