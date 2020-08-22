@@ -34,6 +34,24 @@
       "revId": "42f135b7b083083e79bef0a45f3e7327b83cc11e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf8fb5b8_34e64d7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-22T00:14:36Z",
+      "side": 1,
+      "message": "I think this should be added to your doc on updating Go.  I don\u0027t think we need to update build/blueprint/go.mod, because the tests that run on github test against some older Go versions to ensure we don\u0027t accidentally rely on new Go behaviors there.  build/blueprint/go.mod should match the oldest version listed in build/blueprint/.github/workflows/build.yml.",
+      "parentUuid": "d45c4a3f_e5d9392a",
+      "revId": "42f135b7b083083e79bef0a45f3e7327b83cc11e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
