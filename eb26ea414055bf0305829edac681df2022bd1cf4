@@ -33,6 +33,24 @@
       "revId": "eb26ea414055bf0305829edac681df2022bd1cf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628498bf_9d7f0e67",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-08-24T16:15:27Z",
+      "side": 1,
+      "message": "I\u0027ll test it out with a few sample tests and see how much changes are needed for the scripts and try to leverage this in the design for auto-push for \"data\" (a separate effort). Thanks.",
+      "parentUuid": "929c1ed8_a4bdab4a",
+      "revId": "eb26ea414055bf0305829edac681df2022bd1cf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cbff206_89c38afd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-08-24T16:15:27Z",
+      "side": 1,
+      "message": "Removed support of auto-pus for \"data\" (make it a separate effort).",
+      "revId": "51c456d9f17cfc69c230671e43bf9e927e82d3fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

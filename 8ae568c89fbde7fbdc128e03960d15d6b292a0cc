@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "0451001f_12832b8f",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-08-24T16:15:27Z",
+      "side": 1,
+      "message": "Good point. Just realized what I am trying to do is not even achievable with a regular test config today. It doesn\u0027t make sense to support this with auto-gen. This requires some serious design. I decided to defer auto-push of \"data\" elements to later.",
+      "parentUuid": "f37b0000_76a815cc",
+      "revId": "8ae568c89fbde7fbdc128e03960d15d6b292a0cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "123eb2fd_bea38fc0",
         "filename": "sh/sh_binary.go",
         "patchSetId": 4
