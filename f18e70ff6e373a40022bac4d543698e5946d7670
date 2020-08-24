@@ -46,6 +46,30 @@
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2faf99e5_eec41688",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-24T20:55:36Z",
+      "side": 1,
+      "message": "Should we be taking the first value from PlatformVersionActiveCodenames instead?",
+      "parentUuid": "2afbd49d_84486ba9",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
