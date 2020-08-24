@@ -352,6 +352,30 @@
     },
     {
       "key": {
+        "uuid": "283f6bd3_04f656ba",
+        "filename": "android/api_levels.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-08-24T20:23:00Z",
+      "side": 1,
+      "message": "\u003e AFAIK, there has been a request from the framework team that we shouldn\u0027t use a numbered API level before the number is determined/finalized, because 30 \u003d\u003d R, 31 \u003d\u003d S, etc. are not guaranteed until they get public.\n\nYep, this fixes that. Before these changes there are a handful of contexts that allow non-final integers. Some of those cases were a missing check, some of them were necessary because they didn\u0027t handle codenames. After these changes, API integers are checked to ensure that they are within range, and codenames are allowed in more contexts.\n\n\u003e\u003e where \"R\" specifically means targeting a preview SDK\n\u003e\n\u003e Can we change that part? Perhaps \"R_preview\" or similar than just \"R\" might be better and less confusing.\n\nGetting this submitted will make that easier if we choose to, but I\u0027d leave that one to the people that own the Java side.\n\nRight now \"R\" isn\u0027t valid in a Java module. The case where \"R\" means \"R preview\" is the case where sdk_version is \"current\". In that case, java/android_manifest.go converts \"current\" to the codename of the current release.",
+      "parentUuid": "a4ee568e_883c6619",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 2
+      },
+      "revId": "eceaa0242ca5e36a9e0309017d89444a5c38e4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb5b9bc7_56acafa3",
         "filename": "android/api_levels.go",
         "patchSetId": 6
