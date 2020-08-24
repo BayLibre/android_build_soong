@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fafd806b_bce1571a",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-24T18:40:39Z",
+      "side": 1,
+      "message": "this is so much nicer :)",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 73
+      },
+      "revId": "053fca10c935b50cf803abdcff991ea574f2a2fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
