@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65d288fe_1f444efd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-25T14:26:10Z",
+      "side": 1,
+      "message": "It was happening in one of the previous CLs: aosp/1402668. :)",
+      "parentUuid": "028582ba_c517c5ea",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "8d462ff85c05fb0e2ba1f11c4aec803b95bca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3e78280_58675ad6",
         "filename": "dexpreopt/config.go",
         "patchSetId": 3
@@ -68,6 +92,30 @@
       "revId": "8d462ff85c05fb0e2ba1f11c4aec803b95bca47b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d406a53_988c3842",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-25T14:26:10Z",
+      "side": 1,
+      "message": "Yes. I added a lengthy comment, thank for reminding.",
+      "parentUuid": "ca8bd76d_f8aaa1f0",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "8d462ff85c05fb0e2ba1f11c4aec803b95bca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
