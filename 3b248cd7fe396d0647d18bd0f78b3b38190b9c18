@@ -91,6 +91,29 @@
       "revId": "3b248cd7fe396d0647d18bd0f78b3b38190b9c18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93c42480_54c8fedb",
+        "filename": "java/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-08-25T05:34:34Z",
+      "side": 1,
+      "message": "nit; versionString has to be an integer because \"math_lt\" validates whether the parameter is an integer or not. So this must not fail. Can we remove the error checking?\n\nOr we may want to print a warning/error if err !\u003d nil.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 4
+      },
+      "revId": "3b248cd7fe396d0647d18bd0f78b3b38190b9c18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
