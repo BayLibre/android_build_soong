@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86f91a9a_308ecbc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-25T21:21:04Z",
+      "side": 1,
+      "message": "This depends on https://github.com/google/blueprint/pull/317 to fix the alias ordering issues with AddFarVariationDependencies, but the rest of the stack is independent.",
+      "revId": "f740b2485c7df2dbb626c7fe3fb4aac6d41e4cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
