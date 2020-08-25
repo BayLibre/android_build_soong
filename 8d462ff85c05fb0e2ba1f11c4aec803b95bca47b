@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "028582ba_c517c5ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-25T13:03:34Z",
+      "side": 1,
+      "message": "Not being familiar with soong code, I\u0027m curious where is the transitive part happening in the CL ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "8d462ff85c05fb0e2ba1f11c4aec803b95bca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3e78280_58675ad6",
         "filename": "dexpreopt/config.go",
         "patchSetId": 3
@@ -22,6 +45,29 @@
       "revId": "8d462ff85c05fb0e2ba1f11c4aec803b95bca47b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca8bd76d_f8aaa1f0",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-25T13:03:34Z",
+      "side": 1,
+      "message": "I assume this is where if we fail to create a class loader context (right now because of the libraries listed below is absent?), then we don\u0027t dexpreopt?\n\nCan you add that as a comment?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "8d462ff85c05fb0e2ba1f11c4aec803b95bca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
