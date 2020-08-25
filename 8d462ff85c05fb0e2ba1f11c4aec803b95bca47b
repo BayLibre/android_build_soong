@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3e78280_58675ad6",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-25T11:50:03Z",
+      "side": 1,
+      "message": "I case someone is worried about panic, I have aosp/1409809 to turn it into error when possible.",
+      "range": {
+        "startLine": 138,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 7
+      },
+      "revId": "8d462ff85c05fb0e2ba1f11c4aec803b95bca47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
