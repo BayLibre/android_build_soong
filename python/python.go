@@ -199,6 +199,17 @@ func (p *Module) Init() android.Module {
 	android.InitAndroidArchModule(p, p.hod, p.multilib)
 	android.InitDefaultableModule(p)
 
+	android.AddLoadHook(p, func(ctx android.LoadHookContext) {
+		disableTargets := struct {
+			Target struct {
+				Windows struct {
+					Enabled *bool
+				}
+			}
+		}{}
+		disableTargets.Target.Windows.Enabled = proptools.BoolPtr(false)
+		ctx.AppendProperties(&disableTargets)
+	})
 	return p
 }
 
@@ -307,6 +318,11 @@ func (p *Module) hasSrcExt(ctx android.BottomUpMutatorContext, ext string) bool 
 }
 
 func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
+	if ctx.Target().Os == android.Windows {
+		ctx.ModuleErrorf("Windows is not supported.")
+		return
+	}
+
 	android.ProtoDeps(ctx, &p.protoProperties)
 
 	if p.hasSrcExt(ctx, protoExt) && p.Name() != "libprotobuf-python" {
