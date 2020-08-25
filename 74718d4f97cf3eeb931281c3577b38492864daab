@@ -16,6 +16,29 @@
       "revId": "74718d4f97cf3eeb931281c3577b38492864daab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a4392da_92aa5ecc",
+        "filename": "cc/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-08-25T18:11:21Z",
+      "side": 1,
+      "message": "similar to the mk file change, how do we handle 64bit?",
+      "range": {
+        "startLine": 350,
+        "startChar": 21,
+        "endLine": 350,
+        "endChar": 31
+      },
+      "revId": "74718d4f97cf3eeb931281c3577b38492864daab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
