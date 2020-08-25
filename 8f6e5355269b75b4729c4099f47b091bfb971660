@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0354744a_c0c73f5d",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-25T15:02:35Z",
+      "side": 1,
+      "message": "I feel like the changes in hiddenapi_singleton is kind of a different logical change to the \"enable the compile_dex prop for java_library\" one",
+      "range": {
+        "startLine": 157,
+        "startChar": 42,
+        "endLine": 159,
+        "endChar": 42
+      },
+      "revId": "8f6e5355269b75b4729c4099f47b091bfb971660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d1ef67_efd313d5",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2610,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-25T15:02:35Z",
+      "side": 1,
+      "message": "Can we share this logic with `func (j *Module) deps`?",
+      "range": {
+        "startLine": 2599,
+        "startChar": 55,
+        "endLine": 2610,
+        "endChar": 3
+      },
+      "revId": "8f6e5355269b75b4729c4099f47b091bfb971660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d813e78_2415f7f6",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2680,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-25T15:02:35Z",
+      "side": 1,
+      "message": "looks like duplication with collectDeps, but not obvious it should be deduped",
+      "range": {
+        "startLine": 2668,
+        "startChar": 0,
+        "endLine": 2680,
+        "endChar": 0
+      },
+      "revId": "8f6e5355269b75b4729c4099f47b091bfb971660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
