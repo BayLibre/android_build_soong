@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c64e155_99ef7772",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-08-25T05:18:02Z",
+      "side": 1,
+      "message": "I recommend putting this function just before the function that is using it the first.",
+      "range": {
+        "startLine": 1117,
+        "startChar": 5,
+        "endLine": 1117,
+        "endChar": 20
+      },
+      "revId": "3b248cd7fe396d0647d18bd0f78b3b38190b9c18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a56c5d73_bcef0b02",
+        "filename": "java/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-08-25T05:18:02Z",
+      "side": 1,
+      "message": "It needs to be updated with the new name.",
+      "range": {
+        "startLine": 195,
+        "startChar": 7,
+        "endLine": 195,
+        "endChar": 32
+      },
+      "revId": "3b248cd7fe396d0647d18bd0f78b3b38190b9c18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "199b8aeb_2aa8836b",
+        "filename": "java/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-08-25T05:18:02Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 195,
+        "startChar": 86,
+        "endLine": 195,
+        "endChar": 88
+      },
+      "revId": "3b248cd7fe396d0647d18bd0f78b3b38190b9c18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c603a46_21cf1668",
+        "filename": "java/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-08-25T05:18:02Z",
+      "side": 1,
+      "message": "Why do you define a new variable \"versionString\"?",
+      "range": {
+        "startLine": 203,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 16
+      },
+      "revId": "3b248cd7fe396d0647d18bd0f78b3b38190b9c18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
