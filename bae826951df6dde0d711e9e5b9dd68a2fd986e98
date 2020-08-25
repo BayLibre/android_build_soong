@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e070b327_ee03137e",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-25T14:40:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8018c3bc_e438530d",
+      "range": {
+        "startLine": 242,
+        "startChar": 72,
+        "endLine": 242,
+        "endChar": 83
+      },
+      "revId": "bae826951df6dde0d711e9e5b9dd68a2fd986e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c478b784_dfd72375",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "31e3ea48_3ca174f5",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-25T14:40:21Z",
+      "side": 1,
+      "message": "Currently we don\u0027t have the necessary support in the build system, but there\u0027s no reason why fundamentally we can\u0027t. I\u0027ll make the comment more generic to avoid bitrotting.",
+      "parentUuid": "c478b784_dfd72375",
+      "range": {
+        "startLine": 251,
+        "startChar": 15,
+        "endLine": 251,
+        "endChar": 65
+      },
+      "revId": "bae826951df6dde0d711e9e5b9dd68a2fd986e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "337ce309_93c6d47c",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "bae826951df6dde0d711e9e5b9dd68a2fd986e98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dcb35e0_4c6e3364",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-08-25T14:40:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337ce309_93c6d47c",
+      "range": {
+        "startLine": 257,
+        "startChar": 69,
+        "endLine": 257,
+        "endChar": 70
+      },
+      "revId": "bae826951df6dde0d711e9e5b9dd68a2fd986e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
