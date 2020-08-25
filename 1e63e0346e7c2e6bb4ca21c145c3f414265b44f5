@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd0430b_805e96f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-25T20:03:13Z",
+      "side": 1,
+      "message": "Should we be moving towards full mode everywhere?  I\u0027ve seen https://r8.googlesource.com/r8/+/refs/heads/master/compatibility-faq.md#r8-full-mode, is there anything else to be aware of when switching to full mode?",
+      "revId": "1e63e0346e7c2e6bb4ca21c145c3f414265b44f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
