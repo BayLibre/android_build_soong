@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e3fd51fb_bdd2943e",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-25T19:29:16Z",
+      "side": 1,
+      "message": "split this into a separate change.",
+      "parentUuid": "0354744a_c0c73f5d",
+      "range": {
+        "startLine": 157,
+        "startChar": 42,
+        "endLine": 159,
+        "endChar": 42
+      },
+      "revId": "8f6e5355269b75b4729c4099f47b091bfb971660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68d1ef67_efd313d5",
         "filename": "java/java.go",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dca829dd_5926b189",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2610,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-25T19:29:16Z",
+      "side": 1,
+      "message": "They\u0027re _slightly_ different as we don\u0027t need the java9classpath or system modules bits, we could share some of the logic, but it may be a bit awkward to do so.",
+      "parentUuid": "68d1ef67_efd313d5",
+      "range": {
+        "startLine": 2599,
+        "startChar": 55,
+        "endLine": 2610,
+        "endChar": 3
+      },
+      "revId": "8f6e5355269b75b4729c4099f47b091bfb971660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d813e78_2415f7f6",
         "filename": "java/java.go",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "8f6e5355269b75b4729c4099f47b091bfb971660",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "046373bb_3aadb190",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2680,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-25T19:29:16Z",
+      "side": 1,
+      "message": "Yeah, similarly here, it\u0027s a subset of the logic of Module collectDeps",
+      "parentUuid": "1d813e78_2415f7f6",
+      "range": {
+        "startLine": 2668,
+        "startChar": 0,
+        "endLine": 2680,
+        "endChar": 0
+      },
+      "revId": "8f6e5355269b75b4729c4099f47b091bfb971660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
