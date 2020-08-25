@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8018c3bc_e438530d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-25T14:29:53Z",
+      "side": 1,
+      "message": "I\u0027d drop this as a class loader context is a more advanced concept than classpath.",
+      "range": {
+        "startLine": 242,
+        "startChar": 72,
+        "endLine": 242,
+        "endChar": 83
+      },
+      "revId": "bae826951df6dde0d711e9e5b9dd68a2fd986e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c478b784_dfd72375",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-25T14:29:53Z",
+      "side": 1,
+      "message": "Why can\u0027t we preopt in the presence of a prebuilt (which IIRC has the implementation) ?",
+      "range": {
+        "startLine": 251,
+        "startChar": 15,
+        "endLine": 251,
+        "endChar": 65
+      },
+      "revId": "bae826951df6dde0d711e9e5b9dd68a2fd986e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337ce309_93c6d47c",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-08-25T14:29:53Z",
+      "side": 1,
+      "message": "context",
+      "range": {
+        "startLine": 257,
+        "startChar": 69,
+        "endLine": 257,
+        "endChar": 70
+      },
+      "revId": "bae826951df6dde0d711e9e5b9dd68a2fd986e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
