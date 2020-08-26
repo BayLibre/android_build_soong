@@ -16,6 +16,24 @@
       "revId": "1e63e0346e7c2e6bb4ca21c145c3f414265b44f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7acb434c_74221b2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2020-08-26T07:39:46Z",
+      "side": 1,
+      "message": "It would be great to move to full mode as the default. However, it might that apps update their keep rules. The only way I can think about figuring out how much will fail will be to make full mode default and submit a CL to see what fails. That was how we replaced Proguard with R8 in the first place (and took 7 rollbacks before the last bugs where found). Unless there has been \"TAP blobal presumbit\" features added to the Android Platform or Forrest can do more these days.\n\nFor a bit more info on what full mode does see the answer to this: https://stackoverflow.com/questions/58726616/what-really-r8-full-mode-do-aggressive-optimizations\n\nAlso see b/165804246 for reference on what the effect of full mode can be.",
+      "parentUuid": "cbd0430b_805e96f7",
+      "revId": "1e63e0346e7c2e6bb4ca21c145c3f414265b44f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
