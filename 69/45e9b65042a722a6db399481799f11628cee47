@@ -1,0 +1,9 @@
+Code-Review+2: Matthew Maurer <mmaurer@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Joel Galenson <jgalenson@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 26 Aug 2020 01:02:13 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1411147
+Project: platform/build/soong
+Branch: refs/heads/master
