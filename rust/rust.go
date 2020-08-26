@@ -23,6 +23,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	cc_config "android/soong/cc/config"
 	"android/soong/rust/config"
 )
 
@@ -282,7 +283,7 @@ type compiler interface {
 	crateName() string
 
 	inData() bool
-	install(ctx ModuleContext, path android.Path)
+	install(ctx ModuleContext)
 	relativeInstallPath() string
 
 	nativeCoverage() bool
@@ -592,6 +593,7 @@ type DepsContext interface {
 type ModuleContextIntf interface {
 	RustModule() *Module
 	toolchain() config.Toolchain
+	ccToolchain() cc_config.Toolchain
 }
 
 type depsContext struct {
@@ -614,6 +616,10 @@ func (ctx *moduleContext) toolchain() config.Toolchain {
 	return ctx.RustModule().toolchain(ctx)
 }
 
+func (ctx *moduleContext) ccToolchain() cc_config.Toolchain {
+	return ctx.RustModule().ccToolchain(ctx)
+}
+
 func (ctx *depsContext) RustModule() *Module {
 	return ctx.Module().(*Module)
 }
@@ -622,12 +628,20 @@ func (ctx *depsContext) toolchain() config.Toolchain {
 	return ctx.RustModule().toolchain(ctx)
 }
 
+func (ctx *depsContext) ccToolchain() cc_config.Toolchain {
+	return ctx.RustModule().ccToolchain(ctx)
+}
+
 func (ctx *baseModuleContext) RustModule() *Module {
 	return ctx.Module().(*Module)
 }
 
 func (ctx *baseModuleContext) toolchain() config.Toolchain {
 	return ctx.RustModule().toolchain(ctx)
+}
+
+func (ctx *baseModuleContext) ccToolchain() cc_config.Toolchain {
+	return ctx.RustModule().ccToolchain(ctx)
 }
 
 func (mod *Module) nativeCoverage() bool {
@@ -639,6 +653,10 @@ func (mod *Module) toolchain(ctx android.BaseModuleContext) config.Toolchain {
 		mod.cachedToolchain = config.FindToolchain(ctx.Os(), ctx.Arch())
 	}
 	return mod.cachedToolchain
+}
+
+func (mod *Module) ccToolchain(ctx android.BaseModuleContext) cc_config.Toolchain {
+	return cc_config.FindToolchain(ctx.Os(), ctx.Arch())
 }
 
 func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -684,7 +702,7 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 		mod.outputFile = android.OptionalPathForPath(outputFile)
 		if mod.outputFile.Valid() && !mod.Properties.PreventInstall {
-			mod.compiler.install(ctx, mod.outputFile.Path())
+			mod.compiler.install(ctx)
 		}
 	}
 }

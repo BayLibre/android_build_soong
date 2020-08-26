@@ -16,6 +16,7 @@ package rust
 
 import (
 	"android/soong/android"
+	"android/soong/cc"
 )
 
 func init() {
@@ -31,6 +32,7 @@ type BinaryCompilerProperties struct {
 
 type binaryDecorator struct {
 	*baseCompiler
+	stripper cc.Stripper
 
 	Properties BinaryCompilerProperties
 }
@@ -96,7 +98,8 @@ func (binary *binaryDecorator) compilerDeps(ctx DepsContext, deps Deps) Deps {
 
 func (binary *binaryDecorator) compilerProps() []interface{} {
 	return append(binary.baseCompiler.compilerProps(),
-		&binary.Properties)
+		&binary.Properties,
+		&binary.stripper.StripProperties)
 }
 
 func (binary *binaryDecorator) nativeCoverage() bool {
@@ -105,13 +108,17 @@ func (binary *binaryDecorator) nativeCoverage() bool {
 
 func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
 	fileName := binary.getStem(ctx) + ctx.toolchain().ExecutableSuffix()
-
 	srcPath, _ := srcPathFromModuleSrcs(ctx, binary.baseCompiler.Properties.Srcs)
-
 	outputFile := android.PathForModuleOut(ctx, fileName)
-	binary.unstrippedOutputFile = outputFile
 
 	flags.RustFlags = append(flags.RustFlags, deps.depFlags...)
+
+	if binary.stripper.NeedsStrip(ctx) {
+		ccFlags := cc.StripFlags{Toolchain: ctx.ccToolchain()}
+		strippedOutputFile := android.PathForModuleOut(ctx, "stripped", fileName)
+		binary.stripper.StripExecutableOrSharedLib(ctx, outputFile, strippedOutputFile, ccFlags)
+		binary.strippedOutputFile = android.OptionalPathForPath(strippedOutputFile)
+	}
 
 	outputs := TransformSrcToBinary(ctx, srcPath, deps, flags, outputFile, deps.linkDirs)
 	binary.coverageFile = outputs.coverageFile
