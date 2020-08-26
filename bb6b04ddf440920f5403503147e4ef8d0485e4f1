@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "301af5fe_5a26ee52",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-26T20:21:01Z",
+      "side": 1,
+      "message": "Are we trying to support generic link flags, or just object lists? If we\u0027re trying to support generic link flags, we can\u0027t dedup at this stage. An example of flags that will break this are `--start-group` and `--end-group`.\n\nIf we don\u0027t intend to support linker flags in here, and instead just objects, we can keep FirstUniqueStrings and consider changing it from `linkFlags` to `linkObjects`?",
+      "range": {
+        "startLine": 331,
+        "startChar": 26,
+        "endLine": 331,
+        "endChar": 52
+      },
+      "revId": "bb6b04ddf440920f5403503147e4ef8d0485e4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
