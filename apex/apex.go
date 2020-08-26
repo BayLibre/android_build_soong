@@ -104,6 +104,7 @@ func makeApexAvailableBaseline() map[string][]string {
 		"android.hardware.audio.common@5.0",
 		"android.hardware.bluetooth.a2dp@1.0",
 		"android.hardware.bluetooth.audio@2.0",
+		"android.hardware.bluetooth.audio@2.1",
 		"android.hardware.bluetooth@1.0",
 		"android.hardware.bluetooth@1.1",
 		"android.hardware.graphics.bufferqueue@1.0",
