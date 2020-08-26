@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "923c1201_728008d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-26T20:51:08Z",
+      "side": 1,
+      "message": "There\u0027s an example on using this at\nhttps://android-review.googlesource.com/c/platform/external/crosvm/+/1412815",
+      "revId": "abca63535d51ffdf9b7bb87667a6e28d6e635c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
