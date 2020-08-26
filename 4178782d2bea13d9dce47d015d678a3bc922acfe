@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c0b196d_65c2c8c9",
+        "filename": "java/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-26T20:01:33Z",
+      "side": 1,
+      "message": "but was %q",
+      "range": {
+        "startLine": 208,
+        "startChar": 93,
+        "endLine": 208,
+        "endChar": 96
+      },
+      "revId": "4178782d2bea13d9dce47d015d678a3bc922acfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67e682f_d486a5c0",
+        "filename": "java/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-26T20:01:33Z",
+      "side": 1,
+      "message": "I like to use panic(fmt.Errorf(...)), which makes the panic an error type that can be interpreted more easily by the recovery functions in Blueprint.",
+      "revId": "4178782d2bea13d9dce47d015d678a3bc922acfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
