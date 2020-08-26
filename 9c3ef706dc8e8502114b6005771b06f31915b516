@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "49b88eef_d39d4ff2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-26T18:52:30Z",
+      "side": 1,
+      "message": "Yes, https://github.com/google/blueprint/pull/317 will fix AddFarVariationDependencies",
+      "parentUuid": "f06e0d0e_2ce0c8ec",
+      "revId": "9c3ef706dc8e8502114b6005771b06f31915b516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db7037a4_6fcc655a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "67ffe6be_78acebd0",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-26T18:52:30Z",
+      "side": 1,
+      "message": "library_sdk_member.go had it, I accidentally brought it here when I copied the new implmenetation.  It is more correct however, and will ensure that it doesn\u0027t accidentally pick up a vendor variant.",
+      "parentUuid": "0a15f493_b028535e",
+      "revId": "9c3ef706dc8e8502114b6005771b06f31915b516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5494ac9e_861c65b1",
         "filename": "cc/library_sdk_member.go",
         "patchSetId": 2
@@ -67,6 +103,24 @@
       "revId": "9c3ef706dc8e8502114b6005771b06f31915b516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "345043dd_e5a656ec",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-26T18:52:30Z",
+      "side": 1,
+      "message": "Good catch, fixed.",
+      "parentUuid": "5494ac9e_861c65b1",
+      "revId": "9c3ef706dc8e8502114b6005771b06f31915b516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
