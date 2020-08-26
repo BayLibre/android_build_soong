@@ -2387,7 +2387,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				return
 			}
 
-			if ccDep.CcLibrary() && !libDepTag.static() {
+			if !c.object() && ccDep.CcLibrary() && !libDepTag.static() {
 				depIsStubs := ccDep.BuildStubs()
 				depHasStubs := VersionVariantAvailable(c) && ccDep.HasStubsVariants()
 				depInSameApexes := android.DirectlyInAllApexes(c.InApexes(), depName)
