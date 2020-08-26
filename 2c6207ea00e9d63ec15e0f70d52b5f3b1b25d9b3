@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "149704e7_09e4eca1",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-26T12:11:32Z",
+      "side": 1,
+      "message": "Could merge this into the above if and reduce indentation here I think?",
+      "range": {
+        "startLine": 2600,
+        "startChar": 2,
+        "endLine": 2601,
+        "endChar": 23
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6bf0656_806f75fe",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2670,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-26T12:11:32Z",
+      "side": 1,
+      "message": "duped with line above",
+      "range": {
+        "startLine": 2670,
+        "startChar": 0,
+        "endLine": 2670,
+        "endChar": 19
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f56746_a5a83629",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2682,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-26T12:11:32Z",
+      "side": 1,
+      "message": "If you move this declaration outside of the conditional,you can move out j.dexJarFile \u003d dexOutputFile, and remove the else {} branch",
+      "range": {
+        "startLine": 2682,
+        "startChar": 2,
+        "endLine": 2682,
+        "endChar": 41
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c7647cf_d2a8eb14",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2686,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-08-26T12:11:32Z",
+      "side": 1,
+      "message": "Seems like a slightly odd construct. Isn\u0027t the \"go way\"\n    dexOutputFile, err \u003d ..\n    if err !\u003d nil\n\n?",
+      "range": {
+        "startLine": 2684,
+        "startChar": 0,
+        "endLine": 2686,
+        "endChar": 3
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
