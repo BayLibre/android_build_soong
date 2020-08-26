@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d0d766d_6dc2ba3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-26T15:31:58Z",
+      "side": 1,
+      "message": "(I know this is still WIP, but added a comment for consideration)",
+      "revId": "5307dfa10c2feee6e8ec60f1e417c9dde3f4f08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101bcda1_cd9c2eba",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-26T15:31:58Z",
+      "side": 1,
+      "message": "cc/binary.go uses unstrippedOutputFile for the raw unstripped output with outputFile as either the stripped or unstripped result (depending on needsStrip()).\n\nShould we try to stick to the convention used in cc, or does this code benefit from using a different convention? I don\u0027t feel super strongly either way; my concerns are mostly around making sure developers can easily understand what\u0027s going on across code bases.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "5307dfa10c2feee6e8ec60f1e417c9dde3f4f08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
