@@ -34,6 +34,23 @@
       "revId": "1e63e0346e7c2e6bb4ca21c145c3f414265b44f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ab97223_124e9e2c",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-26T20:04:57Z",
+      "side": 1,
+      "message": "With the expectation that full mode becomes the default, should this be `Proguard_compatibility`, default to true for now, and eventually default to false?  Or would you prefer to keep it as fullmode and make the default true at some point in the future?\n\nAlso, prefer Full_mode over Fullmode.",
+      "revId": "1e63e0346e7c2e6bb4ca21c145c3f414265b44f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
