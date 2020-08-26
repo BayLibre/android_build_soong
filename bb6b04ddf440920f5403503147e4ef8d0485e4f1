@@ -22,6 +22,30 @@
       "revId": "bb6b04ddf440920f5403503147e4ef8d0485e4f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6a32ac_7bb31577",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-26T21:08:34Z",
+      "side": 1,
+      "message": "That\u0027s a good point. While we might want flags in the future, let\u0027s not expand the scope right now as we\u0027re just using this for objects now so I\u0027ll rename it to linkObjects to better reflect that, thanks!",
+      "parentUuid": "301af5fe_5a26ee52",
+      "range": {
+        "startLine": 331,
+        "startChar": 26,
+        "endLine": 331,
+        "endChar": 52
+      },
+      "revId": "bb6b04ddf440920f5403503147e4ef8d0485e4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
