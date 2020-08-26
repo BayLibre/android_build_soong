@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "db9fe537_b14a891e",
+        "filename": "android/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-08-26T00:23:20Z",
+      "side": 1,
+      "message": "apiLevel is not a list but a string. `apiLevel \u003d\u003d \"\"` looks better here.",
+      "range": {
+        "startLine": 964,
+        "startChar": 4,
+        "endLine": 964,
+        "endChar": 22
+      },
+      "revId": "1e70cdb113ad8438e7932873215f20673a3bb6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c580cb1_dab34294",
         "filename": "android/config.go",
         "patchSetId": 7
