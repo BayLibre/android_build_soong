@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f06e0d0e_2ce0c8ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-26T13:36:18Z",
+      "side": 1,
+      "message": "I presume that means it is broken in Blueprint and that once these issues have been fixed that you will fix the Blueprint implementation.",
+      "revId": "9c3ef706dc8e8502114b6005771b06f31915b516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7037a4_6fcc655a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-26T13:36:18Z",
+      "side": 1,
+      "message": "Set it to -1 as I think that there is a bug in one of the changes. I am away for the next two days so once you are happy that I am wrong or the bug is otherwise fixed feel free to remove the -1.",
+      "revId": "9c3ef706dc8e8502114b6005771b06f31915b516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a15f493_b028535e",
+        "filename": "cc/binary_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-26T13:36:18Z",
+      "side": 1,
+      "message": "\"image\" variation was not present in the previous code was that missing there?",
+      "revId": "9c3ef706dc8e8502114b6005771b06f31915b516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5494ac9e_861c65b1",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-08-26T13:36:18Z",
+      "side": 1,
+      "message": "If mt.linkTypes contains more than one entry then this will end up adding the 1st dependency with the 1st link type, the 2nd dependency with the 1st and 2nd link type and so on.",
+      "revId": "9c3ef706dc8e8502114b6005771b06f31915b516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
