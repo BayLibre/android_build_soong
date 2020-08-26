@@ -331,7 +331,9 @@ type dependencyTag struct {
 }
 
 // Mark this tag so dependencies that use it are excluded from APEX contents.
-func (t dependencyTag) ExcludeFromApexContents() {}
+func (t dependencyTag) ExcludeFromApexContents() bool {
+	return true
+}
 
 var _ android.ExcludeFromApexContentsTag = dependencyTag{}
 

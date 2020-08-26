@@ -1797,7 +1797,7 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.ModuleContext, do android.Paylo
 
 		dt := ctx.OtherModuleDependencyTag(child)
 
-		if _, ok := dt.(android.ExcludeFromApexContentsTag); ok {
+		if ct, ok := dt.(android.ExcludeFromApexContentsTag); ok && ct.ExcludeFromApexContents() {
 			return false
 		}
 
@@ -2035,7 +2035,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// TODO(jiyong) do this using WalkPayloadDeps
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
 		depTag := ctx.OtherModuleDependencyTag(child)
-		if _, ok := depTag.(android.ExcludeFromApexContentsTag); ok {
+		if ct, ok := depTag.(android.ExcludeFromApexContentsTag); ok && ct.ExcludeFromApexContents() {
 			return false
 		}
 		depName := ctx.OtherModuleName(child)

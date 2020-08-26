@@ -50,7 +50,9 @@ var PrebuiltDepTag prebuiltDependencyTag
 func (t prebuiltDependencyTag) ExcludeFromVisibilityEnforcement() {}
 
 // Mark this tag so dependencies that use it are excluded from APEX contents.
-func (t prebuiltDependencyTag) ExcludeFromApexContents() {}
+func (t prebuiltDependencyTag) ExcludeFromApexContents() bool {
+	return true
+}
 
 var _ ExcludeFromVisibilityEnforcementTag = PrebuiltDepTag
 var _ ExcludeFromApexContentsTag = PrebuiltDepTag

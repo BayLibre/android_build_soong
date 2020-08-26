@@ -507,6 +507,12 @@ func (d libraryDependencyTag) static() bool {
 	return d.Kind == staticLibraryDependency
 }
 
+func (d libraryDependencyTag) ExcludeFromApexContents() bool {
+	return d.header()
+}
+
+var _ android.ExcludeFromApexContentsTag = libraryDependencyTag{}
+
 // dependencyTag is used for tagging miscellanous dependency types that don't fit into
 // libraryDependencyTag.  Each tag object is created globally and reused for multiple
 // dependencies (although since the object contains no references, assigning a tag to a

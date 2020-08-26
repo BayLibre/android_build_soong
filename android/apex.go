@@ -176,8 +176,7 @@ type ApexProperties struct {
 type ExcludeFromApexContentsTag interface {
 	blueprint.DependencyTag
 
-	// Method that differentiates this interface from others.
-	ExcludeFromApexContents()
+	ExcludeFromApexContents() bool
 }
 
 // Provides default implementation for the ApexModule interface. APEX-aware
