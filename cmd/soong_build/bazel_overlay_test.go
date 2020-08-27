@@ -151,16 +151,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
 		{
 			bp: `custom {
 	name: "foo",
-	dist: {
-		targets: ["goal_foo"],
-		tag: ".foo",
-	},
-	dists: [
-		{
-			targets: ["goal_bar"],
-			tag: ".bar",
-		},
-	],
 }
 		`,
 			expectedBazelTarget: `soong_module(
@@ -169,20 +159,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     module_type = "custom",
     module_variant = "",
     module_deps = [
-    ],
-    dist = {
-        "tag": ".foo",
-        "targets": [
-            "goal_foo",
-        ],
-    },
-    dists = [
-        {
-            "tag": ".bar",
-            "targets": [
-                "goal_bar",
-            ],
-        },
     ],
 )`,
 		},
@@ -193,12 +169,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
 	target_required: ["qux", "bazqux"],
 	ramdisk: true,
 	owner: "custom_owner",
-	dists: [
-		{
-			tag: ".tag",
-			targets: ["my_goal"],
-		},
-	],
 }
 		`,
 			expectedBazelTarget: `soong_module(
@@ -207,14 +177,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     module_type = "custom",
     module_variant = "",
     module_deps = [
-    ],
-    dists = [
-        {
-            "tag": ".tag",
-            "targets": [
-                "my_goal",
-            ],
-        },
     ],
     owner = "custom_owner",
     ramdisk = True,
