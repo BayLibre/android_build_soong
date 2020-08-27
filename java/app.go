@@ -594,8 +594,7 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext, sdkLibs dexpreop
 	}
 	a.dexpreopter.uncompressedDex = *a.dexProperties.Uncompress_dex
 	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
-	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
-	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
+	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraries(ctx)
 	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
 	a.dexpreopter.libraryPaths.AddLibraryPaths(sdkLibs)
 	a.dexpreopter.manifestFile = a.mergedManifestFile
@@ -1501,8 +1500,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	a.dexpreopter.uncompressedDex = a.shouldUncompressDex(ctx)
 
 	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
-	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
-	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
+	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraries(ctx)
 	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
 
 	dexOutput := a.dexpreopter.dexpreopt(ctx, jnisUncompressed)
@@ -1932,6 +1930,17 @@ func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, hasFrameworkLibs 
 func (u *usesLibrary) presentOptionalUsesLibs(ctx android.BaseModuleContext) []string {
 	optionalUsesLibs, _ := android.FilterList(u.usesLibraryProperties.Optional_uses_libs, ctx.Config().MissingUsesLibraries())
 	return optionalUsesLibs
+}
+
+func (u *usesLibrary) usesLibraries(ctx android.BaseModuleContext) dexpreopt.UsesLibs {
+	usesLibs := make(dexpreopt.UsesLibs, 0, len(u.usesLibraryProperties.Uses_libs)+len(u.usesLibraryProperties.Optional_uses_libs))
+	for _, lib := range u.usesLibraryProperties.Uses_libs {
+		usesLibs = append(usesLibs, &dexpreopt.UsesLib{lib, false})
+	}
+	for _, lib := range u.presentOptionalUsesLibs(ctx) {
+		usesLibs = append(usesLibs, &dexpreopt.UsesLib{lib, true})
+	}
+	return usesLibs
 }
 
 // usesLibraryPaths returns a map of module names of shared library dependencies to the paths
