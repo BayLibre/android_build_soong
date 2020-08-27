@@ -24,16 +24,19 @@ import (
 	"strings"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/bootstrap/bpdoc"
 	"github.com/google/blueprint/proptools"
 )
 
 const (
+	// The default `load` preamble for every generated BUILD file.
 	soongModuleLoad = `package(default_visibility = ["//visibility:public"])
 load("//:soong_module.bzl", "soong_module")
 
 `
 
-	// A BUILD file target snippet representing a Soong module
+	// A macro call in the BUILD file representing a Soong module, with space
+	// for expanding more attributes.
 	soongModuleTarget = `soong_module(
     name = "%s",
     module_name = "%s",
@@ -42,24 +45,24 @@ load("//:soong_module.bzl", "soong_module")
     module_deps = %s,
 %s)`
 
-	// The soong_module rule implementation in a .bzl file
-	soongModuleBzl = `SoongModuleInfo = provider(
+	// A simple provider to mark and differentiate Soong module rule shims from
+	// regular Bazel rules. Every Soong module rule shim returns a
+	// SoongModuleInfo provider, and can only depend on rules returning
+	// SoongModuleInfo in the `module_deps` attribute.
+	providersBzl = `SoongModuleInfo = provider(
     fields = {
         "name": "Name of module",
         "type": "Type of module",
         "variant": "Variant of module",
     },
 )
+`
 
-def _merge_dicts(*dicts):
-    """Adds a list of dictionaries into a single dictionary."""
+	// The soong_module rule implementation in a .bzl file.
+	soongModuleBzl = `
+%s
 
-    # If keys are repeated in multiple dictionaries, the latter one "wins".
-    result = {}
-    for d in dicts:
-        result.update(d)
-
-    return result
+load(":providers.bzl", "SoongModuleInfo")
 
 def _generic_soong_module_impl(ctx):
     return [
@@ -70,37 +73,20 @@ def _generic_soong_module_impl(ctx):
         ),
     ]
 
-_COMMON_ATTRS = {
+generic_soong_module = rule(
+    implementation = _generic_soong_module_impl,
+    attrs = {
     "module_name": attr.string(mandatory = True),
     "module_type": attr.string(mandatory = True),
     "module_variant": attr.string(),
     "module_deps": attr.label_list(providers = [SoongModuleInfo]),
-}
-
-
-generic_soong_module = rule(
-    implementation = _generic_soong_module_impl,
-    attrs = _COMMON_ATTRS,
-)
-
-# TODO(jingwen): auto generate Soong module shims
-def _soong_filegroup_impl(ctx):
-    return [SoongModuleInfo(),]
-
-soong_filegroup = rule(
-    implementation = _soong_filegroup_impl,
-    # Matches https://cs.android.com/android/platform/superproject/+/master:build/soong/android/filegroup.go;l=25-40;drc=6a6478d49e78703ba22a432c41d819c8df79ef6c
-    attrs = _merge_dicts(_COMMON_ATTRS, {
-        "srcs": attr.string_list(doc = "srcs lists files that will be included in this filegroup"),
-        "exclude_srcs": attr.string_list(),
-        "path": attr.string(doc = "The base path to the files. May be used by other modules to determine which portion of the path to use. For example, when a filegroup is used as data in a cc_test rule, the base path is stripped off the path and the remaining path is used as the installation directory."),
-        "export_to_make_var": attr.string(doc = "Create a make variable with the specified name that contains the list of files in the filegroup, relative to the root of the source tree."),
-    })
+    },
 )
 
 soong_module_rule_map = {
-    "filegroup": soong_filegroup,
-}
+%s}
+
+_SUPPORTED_TYPES = ["bool", "int", "string"]
 
 # soong_module is a macro that supports arbitrary kwargs, and uses module_type to
 # expand to the right underlying shim.
@@ -118,12 +104,85 @@ def soong_module(name, module_type, **kwargs):
             module_deps = kwargs.pop("module_deps", []),
         )
     else:
+        supported_kwargs = dict()
+        for key, value in kwargs.items():
+            if type(value) in _SUPPORTED_TYPES:
+                supported_kwargs[key] = value
+            elif type(value) == "list":
+                supported = True
+                for v in value:
+                    supported = supported and type(v) in _SUPPORTED_TYPES
+                if supported:
+                    supported_kwargs[key] = value
+            else:
+                continue
         soong_module_rule(
             name = name,
-            module_type = module_type,
-            **kwargs,
+            **supported_kwargs,
         )
 `
+
+	// A rule shim for representing a Soong module type and its properties.
+	moduleRuleShim = `
+def _%[1]s_impl(ctx):
+    return [SoongModuleInfo()]
+
+%[1]s = rule(
+    implementation = _%[1]s_impl,
+    attrs = %[2]s
+)
+`
+)
+
+var (
+	// An allowlist of prop types that are surfaced from module props to rule
+	// attributes. (nested) dictionaries are notably absent here, because while
+	// Soong supports multi value typed and nested dictionaries, Bazel's rule
+	// attr() API supports only single-level string_dicts.
+	allowedPropTypes = map[string]bool{
+		"int":         true, // e.g. 2, 42, 100
+		"bool":        true, // e.g. True, False
+		"string_list": true, // e.g. ["a", "b"]
+		"string":      true, // e.g. "a"
+	}
+
+	// TODO(b/166563303): Specific properties of some module types aren't
+	// recognized by the documentation generator. As a workaround, hardcode a
+	// mapping of the module type to prop name to prop type here, and ultimately
+	// fix the documentation generator to also parse these properties correctly.
+	additionalPropTypes = map[string]map[string]string{
+		"sdk": {
+			"java_header_libs":    "string_list",
+			"java_sdk_libs":       "string_list",
+			"java_system_modules": "string_list",
+			"native_header_libs":  "string_list",
+			"native_libs":         "string_list",
+			"native_objects":      "string_list",
+			"native_shared_libs":  "string_list",
+			"native_static_libs":  "string_list",
+		},
+		"module_exports": {
+			"java_libs":          "string_list",
+			"java_tests":         "string_list",
+			"native_binaries":    "string_list",
+			"native_shared_libs": "string_list",
+		},
+		"hidl_package_root": {
+			"use_current": "bool",
+		},
+	}
+
+	// Certain module property names are blocklisted/ignored here, for the reasons commented.
+	ignoredPropNames = map[string]bool{
+		"name":       true, // redundant, since this is explicitly generated for every target
+		"from":       true, // reserved keyword
+		"in":         true, // reserved keyword
+		"arch":       true, // interface prop type is not supported yet.
+		"multilib":   true, // interface prop type is not supported yet.
+		"target":     true, // interface prop type is not supported yet.
+		"visibility": true, // Bazel has native visibility semantics. Handle later.
+		"features":   true, // There is already a built-in attribute 'features' which cannot be overridden.
+	}
 )
 
 func targetNameWithVariant(c *blueprint.Context, logicModule blueprint.Module) string {
@@ -223,6 +282,10 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 	return ret, nil
 }
 
+// Converts a reflected property struct value into a map of property names and property values,
+// which each property value correctly pretty-printed and indented at the right nest level,
+// since property structs can be nested. In Starlark, nested structs are represented as nested
+// dicts: https://docs.bazel.build/skylark/lib/dict.html
 func extractStructProperties(structValue reflect.Value, indent int) map[string]string {
 	if structValue.Kind() != reflect.Struct {
 		panic(fmt.Errorf("Expected a reflect.Struct type, but got %s", structValue.Kind()))
@@ -296,6 +359,102 @@ func extractModuleProperties(aModule android.Module) map[string]string {
 	return ret
 }
 
+// In Bazel, rules ending with "_test" needs to be marked as testonly = True,
+// forcing other rules that depend on _test rules to also be marked as testonly = True.
+// This semantic constraint is not present in Soong. To work around, rename "*_test" rules
+// to "*_test_".
+func canonicalizeModuleType(moduleName string) string {
+	if strings.HasSuffix(moduleName, "_test") {
+		return moduleName + "_"
+	}
+
+	return moduleName
+}
+
+type RuleShim struct {
+	// The rule class shims contained in a bzl file. e.g. ["cc_object", "cc_library", ..]
+	rules []string
+
+	// The generated string content of the bzl file.
+	content string
+}
+
+// Create <module>.bzl containing Bazel rule shims for every module type available in Soong and
+// user-specified Go plugins.
+//
+// This function reuses documentation generation APIs to ensure parity between modules-as-docs
+// and modules-as-code, including the names and types of module properties.
+func createRuleShims(packages []*bpdoc.Package) (map[string]RuleShim, error) {
+	var propToAttr func(prop bpdoc.Property, propName string) string
+	propToAttr = func(prop bpdoc.Property, propName string) string {
+		// dots are not allowed in Starlark attribute names. Substitute them with double underscores.
+		propName = strings.ReplaceAll(propName, ".", "__")
+		if !shouldGenerateAttribute(propName) {
+			return ""
+		}
+
+		// Canonicalize and normalize module property types to Bazel attribute types
+		starlarkAttrType := prop.Type
+		if starlarkAttrType == "list of strings" {
+			starlarkAttrType = "string_list"
+		} else if starlarkAttrType == "int64" {
+			starlarkAttrType = "int"
+		} else if starlarkAttrType == "" {
+			var attr string
+			for _, nestedProp := range prop.Properties {
+				nestedAttr := propToAttr(nestedProp, propName+"__"+nestedProp.Name)
+				if nestedAttr != "" {
+					// FIXME(jingwen): Fix nested props resulting in too many attributes.
+					// Still generate these for now, but comment them out.
+					attr += "# " + nestedAttr
+				}
+			}
+			return attr
+		}
+
+		if !allowedPropTypes[starlarkAttrType] {
+			return ""
+		}
+
+		return "        \"" + propName + "\": attr." + starlarkAttrType + "(),\n"
+	}
+
+	ruleShims := map[string]RuleShim{}
+	for _, pkg := range packages {
+		content := "load(\":providers.bzl\", \"SoongModuleInfo\")\n"
+
+		bzlFileName := strings.ReplaceAll(pkg.Path, "android/soong/", "")
+		bzlFileName = strings.ReplaceAll(bzlFileName, ".", "_")
+		bzlFileName = strings.ReplaceAll(bzlFileName, "/", "_")
+
+		rules := []string{}
+
+		for _, moduleTypeTemplate := range moduleTypeDocsToTemplates(pkg.ModuleTypes) {
+			attrs := `{
+        "module_name": attr.string(mandatory = True),
+        "module_variant": attr.string(),
+        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+`
+			for _, prop := range moduleTypeTemplate.Properties {
+				attrs += propToAttr(prop, prop.Name)
+			}
+
+			for propName, propType := range additionalPropTypes[moduleTypeTemplate.Name] {
+				attrs += "        \"" + propName + "\": attr." + propType + "(),\n"
+			}
+
+			attrs += "    },\n"
+
+			rule := canonicalizeModuleType(moduleTypeTemplate.Name)
+			content += fmt.Sprintf(moduleRuleShim, rule, attrs)
+			rules = append(rules, rule)
+		}
+
+		ruleShims[bzlFileName] = RuleShim{content: content, rules: rules}
+	}
+	return ruleShims, nil
+}
+
 func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 	blueprintCtx := ctx.Context
 	blueprintCtx.VisitAllModules(func(module blueprint.Module) {
@@ -316,21 +475,50 @@ func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 		return err
 	}
 
-	return writeReadOnlyFile(bazelOverlayDir, "soong_module.bzl", soongModuleBzl)
+	if err := writeReadOnlyFile(bazelOverlayDir, "providers.bzl", providersBzl); err != nil {
+		return err
+	}
+
+	packages, err := getPackages(ctx)
+	if err != nil {
+		return err
+	}
+	ruleShims, err := createRuleShims(packages)
+	if err != nil {
+		return err
+	}
+
+	for bzlFileName, ruleShim := range ruleShims {
+		if err := writeReadOnlyFile(bazelOverlayDir, bzlFileName+".bzl", ruleShim.content); err != nil {
+			return err
+		}
+	}
+
+	return writeReadOnlyFile(bazelOverlayDir, "soong_module.bzl", generateSoongModuleBzl(ruleShims))
 }
 
-var ignoredProps map[string]bool = map[string]bool{
-	"name":       true, // redundant, since this is explicitly generated for every target
-	"from":       true, // reserved keyword
-	"in":         true, // reserved keyword
-	"arch":       true, // interface prop type is not supported yet.
-	"multilib":   true, // interface prop type is not supported yet.
-	"target":     true, // interface prop type is not supported yet.
-	"visibility": true, // Bazel has native visibility semantics. Handle later.
+// Generate the content of soong_module.bzl with the rule shim load statements
+// and mapping of module_type to rule shim map for every module type in Soong.
+func generateSoongModuleBzl(bzlLoads map[string]RuleShim) string {
+	var loadStmts string
+	var moduleRuleMap string
+	for bzlFileName, ruleShim := range bzlLoads {
+		loadStmt := "load(\"//:"
+		loadStmt += bzlFileName
+		loadStmt += ".bzl\""
+		for _, rule := range ruleShim.rules {
+			loadStmt += ", \"" + rule + "\""
+			moduleRuleMap += "    \"" + rule + "\": " + rule + ",\n"
+		}
+		loadStmt += ")\n"
+		loadStmts += loadStmt
+	}
+
+	return fmt.Sprintf(soongModuleBzl, loadStmts, moduleRuleMap)
 }
 
 func shouldGenerateAttribute(prop string) bool {
-	return !ignoredProps[prop]
+	return !ignoredPropNames[prop]
 }
 
 // props is an unsorted map. This function ensures that
@@ -377,7 +565,7 @@ func generateSoongModuleTarget(
 		soongModuleTarget,
 		targetNameWithVariant(blueprintCtx, module),
 		blueprintCtx.ModuleName(module),
-		blueprintCtx.ModuleType(module),
+		canonicalizeModuleType(blueprintCtx.ModuleType(module)),
 		blueprintCtx.ModuleSubDir(module),
 		depLabelList,
 		attributes)
@@ -410,11 +598,12 @@ func buildFileForModule(ctx *blueprint.Context, module blueprint.Module) (*os.Fi
 	return f, nil
 }
 
-// The overlay directory should be read-only, sufficient for bazel query.
+// The overlay directory should be read-only, sufficient for bazel query. The files
+// are not intended to be edited by end users.
 func writeReadOnlyFile(dir string, baseName string, content string) error {
-	workspaceFile := filepath.Join(bazelOverlayDir, baseName)
+	pathToFile := filepath.Join(bazelOverlayDir, baseName)
 	// 0444 is read-only
-	return ioutil.WriteFile(workspaceFile, []byte(content), 0444)
+	return ioutil.WriteFile(pathToFile, []byte(content), 0444)
 }
 
 func isZero(value reflect.Value) bool {
