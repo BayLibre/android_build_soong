@@ -283,7 +283,7 @@ type compiler interface {
 	crateName() string
 
 	inData() bool
-	install(ctx ModuleContext, path android.Path)
+	install(ctx ModuleContext)
 	relativeInstallPath() string
 
 	nativeCoverage() bool
@@ -691,7 +691,7 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 		mod.outputFile = android.OptionalPathForPath(outputFile)
 		if mod.outputFile.Valid() && !mod.Properties.PreventInstall {
-			mod.compiler.install(ctx, mod.outputFile.Path())
+			mod.compiler.install(ctx)
 		}
 	}
 }
