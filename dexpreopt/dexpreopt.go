@@ -267,9 +267,9 @@ func genClassLoaderContext(ctx android.PathContext, global *GlobalConfig, module
 		// should include all preceding jars on the system server classpath.
 		classLoaderContexts.addSystemServerLibs(anySdkVersion, ctx, module, systemServerJars[:jarIndex]...)
 
-	} else if module.EnforceUsesLibraries {
+	} else if module.EnforceUsesLibs {
 		// Unconditional class loader context.
-		usesLibs := append(copyOf(module.UsesLibraries), module.OptionalUsesLibraries...)
+		usesLibs := android.SortedStringKeys(module.UsesLibs)
 		if !classLoaderContexts.addLibs(anySdkVersion, module, usesLibs...) {
 			return nil
 		}
@@ -360,7 +360,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 			Text("class_loader_context_arg=--class-loader-context=PCL[" + strings.Join(clc.Host.Strings(), ":") + "]").
 			Implicits(clc.Host).
 			Text("stored_class_loader_context_arg=--stored-class-loader-context=PCL[" + strings.Join(clc.Target, ":") + "]")
-	} else if module.EnforceUsesLibraries {
+	} else if module.EnforceUsesLibs {
 		// Generate command that saves target SDK version in a shell variable.
 		if module.ManifestPath != nil {
 			rule.Command().Text(`target_sdk_version="$(`).
