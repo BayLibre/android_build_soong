@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3b0b1f02_edbe5430",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-08-27T14:18:24Z",
+      "side": 1,
+      "message": "That\u0027s exactly why I uploaded it :) Thanks for the early feedback. Keep it coming!",
+      "parentUuid": "7d0d766d_6dc2ba3c",
+      "revId": "5307dfa10c2feee6e8ec60f1e417c9dde3f4f08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "101bcda1_cd9c2eba",
         "filename": "rust/compiler.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "5307dfa10c2feee6e8ec60f1e417c9dde3f4f08a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66990ee6_a153168a",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-08-27T14:18:24Z",
+      "side": 1,
+      "message": "That\u0027s right. I initially followed cc\u0027s convention but there is a key difference between how cc and us are approaching the stripping: we try to strip late in the build, just before the installation. The OutputFile of our compiler modules will be the unstripped version, so we can build dependent libraries without any issue (while cc uses the stripped version). We do the final swap just before installation.\n\nI also believe it makes the stripping block easier to understand (comparing https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/binary.go;l\u003d321;drc\u003d89f7bf1635c50569a4748ff67431a29b600a2e0e with https://android-review.googlesource.com/c/platform/build/soong/+/1411849/2/rust/binary.go#105)\n\nI\u0027ve updated the commit message to capture the intent.",
+      "parentUuid": "101bcda1_cd9c2eba",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "5307dfa10c2feee6e8ec60f1e417c9dde3f4f08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
