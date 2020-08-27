@@ -18,7 +18,10 @@ import (
 	"android/soong/android"
 	"io/ioutil"
 	"os"
+	"strings"
 	"testing"
+
+	"github.com/google/blueprint/bootstrap/bpdoc"
 )
 
 var buildDir string
@@ -151,16 +154,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
 		{
 			bp: `custom {
 	name: "foo",
-	dist: {
-		targets: ["goal_foo"],
-		tag: ".foo",
-	},
-	dists: [
-		{
-			targets: ["goal_bar"],
-			tag: ".bar",
-		},
-	],
 }
 		`,
 			expectedBazelTarget: `soong_module(
@@ -169,20 +162,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     module_type = "custom",
     module_variant = "",
     module_deps = [
-    ],
-    dist = {
-        "tag": ".foo",
-        "targets": [
-            "goal_foo",
-        ],
-    },
-    dists = [
-        {
-            "tag": ".bar",
-            "targets": [
-                "goal_bar",
-            ],
-        },
     ],
 )`,
 		},
@@ -193,12 +172,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
 	target_required: ["qux", "bazqux"],
 	ramdisk: true,
 	owner: "custom_owner",
-	dists: [
-		{
-			tag: ".tag",
-			targets: ["my_goal"],
-		},
-	],
 }
 		`,
 			expectedBazelTarget: `soong_module(
@@ -207,14 +180,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     module_type = "custom",
     module_variant = "",
     module_deps = [
-    ],
-    dists = [
-        {
-            "tag": ".tag",
-            "targets": [
-                "my_goal",
-            ],
-        },
     ],
     owner = "custom_owner",
     ramdisk = True,
@@ -251,5 +216,202 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
 				actualBazelTarget,
 			)
 		}
+	}
+}
+
+func createMockPackages() []*bpdoc.Package {
+	properties := []bpdoc.Property{
+		bpdoc.Property{
+			Name: "int64_prop",
+			Type: "int64",
+		},
+		bpdoc.Property{
+			Name: "int_prop",
+			Type: "int",
+		},
+		bpdoc.Property{
+			Name: "bool_prop",
+			Type: "bool",
+		},
+		bpdoc.Property{
+			Name: "string_prop",
+			Type: "string",
+		},
+		bpdoc.Property{
+			Name: "string_list_prop",
+			Type: "list of strings",
+		},
+		bpdoc.Property{
+			Name: "nested_prop",
+			Type: "struct",
+			Properties: []bpdoc.Property{
+				bpdoc.Property{
+					Name: "int_prop",
+					Type: "int",
+				},
+				bpdoc.Property{
+					Name: "bool_prop",
+					Type: "bool",
+				},
+				bpdoc.Property{
+					Name: "string_prop",
+					Type: "string",
+				},
+			},
+		},
+		bpdoc.Property{
+			Name: "unknown_type",
+			Type: "unknown",
+		},
+	}
+
+	fooPropertyStruct := &bpdoc.PropertyStruct{
+		Name:       "FooProperties",
+		Properties: properties,
+	}
+
+	moduleTypes := []*bpdoc.ModuleType{
+		&bpdoc.ModuleType{
+			Name: "foo_library",
+			PropertyStructs: []*bpdoc.PropertyStruct{
+				fooPropertyStruct,
+			},
+		},
+
+		&bpdoc.ModuleType{
+			Name: "foo_binary",
+			PropertyStructs: []*bpdoc.PropertyStruct{
+				fooPropertyStruct,
+			},
+		},
+		&bpdoc.ModuleType{
+			Name: "foo_test",
+			PropertyStructs: []*bpdoc.PropertyStruct{
+				fooPropertyStruct,
+			},
+		},
+	}
+
+	return [](*bpdoc.Package){
+		&bpdoc.Package{
+			Name:        "foo_language",
+			Path:        "android/soong/foo",
+			ModuleTypes: moduleTypes,
+		},
+	}
+}
+
+func TestGenerateModuleRuleShims(t *testing.T) {
+	ruleShims, err := createRuleShims(createMockPackages())
+	if err != nil {
+		panic(err)
+	}
+
+	if len(ruleShims) != 1 {
+		t.Errorf("Expected to generate 1 rule shim, but got %d", len(ruleShims))
+	}
+
+	fooRuleShim := ruleShims["foo"]
+	expectedRules := []string{"foo_binary", "foo_library", "foo_test_"}
+
+	if len(fooRuleShim.rules) != 3 {
+		t.Errorf("Expected 3 rules, but got %d", len(fooRuleShim.rules))
+	}
+
+	for i, rule := range fooRuleShim.rules {
+		if rule != expectedRules[i] {
+			t.Errorf("Expected rule shim to contain %s, but got %s", expectedRules[i], rule)
+		}
+	}
+
+	expectedBzl := `load(":providers.bzl", "SoongModuleInfo")
+
+def _foo_binary_impl(ctx):
+    return [SoongModuleInfo()]
+
+foo_binary = rule(
+    implementation = _foo_binary_impl,
+    attrs = {
+        "module_name": attr.string(mandatory = True),
+        "module_variant": attr.string(),
+        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+        "bool_prop": attr.bool(),
+        "int64_prop": attr.int(),
+        "int_prop": attr.int(),
+        "string_list_prop": attr.string_list(),
+        "string_prop": attr.string(),
+    },
+)
+
+def _foo_library_impl(ctx):
+    return [SoongModuleInfo()]
+
+foo_library = rule(
+    implementation = _foo_library_impl,
+    attrs = {
+        "module_name": attr.string(mandatory = True),
+        "module_variant": attr.string(),
+        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+        "bool_prop": attr.bool(),
+        "int64_prop": attr.int(),
+        "int_prop": attr.int(),
+        "string_list_prop": attr.string_list(),
+        "string_prop": attr.string(),
+    },
+)
+
+def _foo_test__impl(ctx):
+    return [SoongModuleInfo()]
+
+foo_test_ = rule(
+    implementation = _foo_test__impl,
+    attrs = {
+        "module_name": attr.string(mandatory = True),
+        "module_variant": attr.string(),
+        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+        "bool_prop": attr.bool(),
+        "int64_prop": attr.int(),
+        "int_prop": attr.int(),
+        "string_list_prop": attr.string_list(),
+        "string_prop": attr.string(),
+    },
+)
+`
+
+	if fooRuleShim.content != expectedBzl {
+		t.Errorf(
+			"Expected the generated rule shim bzl to be:\n%s\nbut got:\n%s",
+			expectedBzl,
+			fooRuleShim.content)
+	}
+}
+
+func TestGenerateSoongModuleBzl(t *testing.T) {
+	ruleShims, err := createRuleShims(createMockPackages())
+	if err != nil {
+		panic(err)
+	}
+	actualSoongModuleBzl := generateSoongModuleBzl(ruleShims)
+
+	expectedLoad := "load(\"//:foo.bzl\", \"foo_binary\", \"foo_library\", \"foo_test_\")"
+	expectedRuleMap := `soong_module_rule_map = {
+    "foo_binary": foo_binary,
+    "foo_library": foo_library,
+    "foo_test_": foo_test_,
+}`
+	if !strings.Contains(actualSoongModuleBzl, expectedLoad) {
+		t.Errorf(
+			"Generated soong_module.bzl:\n\n%s\n\n"+
+				"Could not find the load statement in the generated soong_module.bzl:\n%s",
+			actualSoongModuleBzl,
+			expectedLoad)
+	}
+
+	if !strings.Contains(actualSoongModuleBzl, expectedRuleMap) {
+		t.Errorf(
+			"Generated soong_module.bzl:\n\n%s\n\n"+
+				"Could not find the module -> rule map in the generated soong_module.bzl:\n%s",
+			actualSoongModuleBzl,
+			expectedRuleMap)
 	}
 }
