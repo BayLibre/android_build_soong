@@ -50,6 +50,7 @@ func (proto *protobufDecorator) GenerateSource(ctx android.ModuleContext, deps P
 	protoFlags.OutTypeFlag = "--rust_out"
 
 	protoFlags.Flags = append(protoFlags.Flags, " --plugin="+pluginPath.String())
+	protoFlags.Flags = append(protoFlags.Flags, " --rust_opt=root_module=true")
 	protoFlags.Flags = append(protoFlags.Flags, defaultProtobufFlags...)
 	protoFlags.Flags = append(protoFlags.Flags, proto.Properties.Proto_flags...)
 
