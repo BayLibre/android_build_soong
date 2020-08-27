@@ -197,6 +197,9 @@ func createCcSdkVariantRules() []Rule {
 		"packages/modules/SdkExtensions/derive_sdk",
 		// These are for apps and shouldn't be used by non-SDK variant modules.
 		"prebuilts/ndk",
+		"external/icu/icu4c/source",
+		"external/icu/ndk_demo",
+		"external/icu/bundling_icu4c_app_demo",
 		"tools/test/graphicsbenchmark/apps/sample_app",
 		"tools/test/graphicsbenchmark/functional_tests/java",
 		"vendor/xts/gts-tests/hostsidetests/gamedevicecert/apps/javatests",
