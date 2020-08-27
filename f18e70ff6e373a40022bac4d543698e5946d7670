@@ -94,6 +94,30 @@
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c87552_675a7efe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-27T00:51:22Z",
+      "side": 1,
+      "message": "It seems preferable to hard-coding \"R\", it at least has a chance to continue working the next time AOSP is updated.",
+      "parentUuid": "944d9f28_9d13384d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
