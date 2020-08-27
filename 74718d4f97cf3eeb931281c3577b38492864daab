@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "2d9fab60_aa3e24e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2020-08-27T02:02:05Z",
+      "side": 1,
+      "message": "Forgot to reply this one.",
+      "revId": "74718d4f97cf3eeb931281c3577b38492864daab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a4392da_92aa5ecc",
         "filename": "cc/test.go",
         "patchSetId": 5
@@ -30,6 +47,30 @@
       "writtenOn": "2020-08-25T18:11:21Z",
       "side": 1,
       "message": "similar to the mk file change, how do we handle 64bit?",
+      "range": {
+        "startLine": 350,
+        "startChar": 21,
+        "endLine": 350,
+        "endChar": 31
+      },
+      "revId": "74718d4f97cf3eeb931281c3577b38492864daab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07f22515_b3a8e965",
+        "filename": "cc/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2020-08-27T02:02:05Z",
+      "side": 1,
+      "message": "Discuss with jiyong@ actually for 32/64 we don\u0027t really need to take care if they be put under nativetest or nativetest64. The dynamic linker will handle that by runtime. So, it will not really be a problem, so putting those test under nativetest with below structure.\n\n/data/nativetest/vendor/\n├── arm\n│   └── hello_world_test\n├── arm64\n│   └── hello_world_test\n└── hello_world_test.config\n\nRelated discuss here.\nb/138450837#comment44",
+      "parentUuid": "1a4392da_92aa5ecc",
       "range": {
         "startLine": 350,
         "startChar": 21,
