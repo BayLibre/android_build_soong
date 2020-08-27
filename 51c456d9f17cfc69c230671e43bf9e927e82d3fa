@@ -16,6 +16,23 @@
       "revId": "51c456d9f17cfc69c230671e43bf9e927e82d3fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f50e6ea6_3dfac2de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-27T00:50:00Z",
+      "side": 1,
+      "message": "What about data_device_libs, or data_bins and data_libs from a device module?",
+      "revId": "51c456d9f17cfc69c230671e43bf9e927e82d3fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
