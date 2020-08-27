@@ -16,6 +16,7 @@ package rust
 
 import (
 	"android/soong/android"
+	"strings"
 )
 
 var (
@@ -59,6 +60,8 @@ func (proto *protobufDecorator) GenerateSource(ctx android.ModuleContext, deps P
 	if !protoFile.Valid() {
 		ctx.PropertyErrorf("proto", "invalid path to proto file")
 	}
+	protoFlags.Flags = append(protoFlags.Flags, " --rust_opt='root_module=true wrap_in_module="+
+		strings.ReplaceAll(protoFile.Path().Base(), ".proto", "")+"'")
 
 	outDir := android.PathForModuleOut(ctx)
 	depFile := android.PathForModuleOut(ctx, proto.BaseSourceProvider.getStem(ctx)+".d")
