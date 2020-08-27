@@ -100,6 +100,21 @@ type GlobalSoongConfig struct {
 	ConstructContext android.Path
 }
 
+type UsesLib struct {
+	Name     string
+	Optional bool
+}
+
+type UsesLibs []*UsesLib
+
+func (ulibs UsesLibs) Names() []string {
+	names := make([]string, 0, len(ulibs))
+	for _, lib := range ulibs {
+		names = append(names, lib.Name)
+	}
+	return names
+}
+
 const UnknownInstallLibraryPath = "error"
 
 // LibraryPath contains paths to the library DEX jar on host and on device.
@@ -173,10 +188,9 @@ type ModuleConfig struct {
 	ProfileIsTextListing bool
 	ProfileBootListing   android.OptionalPath
 
-	EnforceUsesLibraries  bool
-	OptionalUsesLibraries []string
-	UsesLibraries         []string
-	LibraryPaths          LibraryPaths
+	EnforceUsesLibs bool
+	UsesLibs        UsesLibs
+	LibraryPaths    LibraryPaths
 
 	Archs                   []android.ArchType
 	DexPreoptImages         []android.Path
