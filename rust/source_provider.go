@@ -25,6 +25,9 @@ type SourceProviderProperties struct {
 
 	// crate name, used for the library variant of this source provider. See additional details in rust_library.
 	Crate_name string `android:"arch_variant"`
+
+	// If set to true, do not compile the generated code into libraries.
+	Codegen_only *bool
 }
 
 type BaseSourceProvider struct {
@@ -42,7 +45,12 @@ type SourceProvider interface {
 	Srcs() android.Paths
 	SourceProviderProps() []interface{}
 	SourceProviderDeps(ctx DepsContext, deps Deps) Deps
+	CodegenOnly() bool
 	setSubName(subName string)
+}
+
+func (sp *BaseSourceProvider) CodegenOnly() bool {
+	return Bool(sp.Properties.Codegen_only)
 }
 
 func (sp *BaseSourceProvider) Srcs() android.Paths {
