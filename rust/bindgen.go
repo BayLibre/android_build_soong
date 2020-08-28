@@ -98,13 +98,12 @@ func (b *bindgenDecorator) GenerateSource(ctx android.ModuleContext, deps PathDe
 	var cflags []string
 	var implicits android.Paths
 
-	implicits = append(implicits, deps.depIncludePaths...)
-	implicits = append(implicits, deps.depSystemIncludePaths...)
+	implicits = append(implicits, deps.depGeneratedHeaders...)
 
 	// Default clang flags
 	cflags = append(cflags, "${ccConfig.CommonClangGlobalCflags}")
 	if ctx.Device() {
-		cflags = append(cflags, "${ccConfig.DeviceClangGlobalCflags}")
+		cflags = append(cflags, "${ccConfig	.DeviceClangGlobalCflags}")
 	}
 
 	// Toolchain clang flags
