@@ -16,6 +16,24 @@
       "revId": "5010a973880e0b8abef598cf4c0ca8de8add16fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec764bc8_a9c44157",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-08-28T00:35:46Z",
+      "side": 1,
+      "message": "This broke when we changed something about the sampling flags (https://r.android.com/1368617).",
+      "parentUuid": "c23abdd4_8c0ec04b",
+      "revId": "5010a973880e0b8abef598cf4c0ca8de8add16fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
