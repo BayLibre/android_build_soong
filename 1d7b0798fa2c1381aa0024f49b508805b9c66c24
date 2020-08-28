@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54242e77_89e9d6f6",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-08-28T18:31:32Z",
+      "side": 1,
+      "message": "Maybe rename this to implicitInputs to match with implicitOutputs?",
+      "range": {
+        "startLine": 77,
+        "startChar": 96,
+        "endLine": 77,
+        "endChar": 105
+      },
+      "revId": "1d7b0798fa2c1381aa0024f49b508805b9c66c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
