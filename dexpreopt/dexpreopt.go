@@ -228,6 +228,9 @@ func (m classLoaderContextMap) addLibs(sdkVer int, module *ModuleConfig, libs ..
 			return false
 		}
 	}
+	if clc.Host == nil {
+		delete(m, sdkVer)
+	}
 	return true
 }
 

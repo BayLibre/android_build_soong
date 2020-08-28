@@ -782,9 +782,6 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	// Process all building blocks, from AAPT to certificates.
 	a.aaptBuildActions(ctx)
 
-	// The decision to enforce <uses-library> checks is made before adding implicit SDK libraries.
-	a.usesLibrary.freezeEnforceUsesLibraries()
-
 	// Add implicit SDK libraries to <uses-library> list.
 	for _, usesLib := range android.SortedStringKeys(a.aapt.sdkLibraries) {
 		a.usesLibrary.addLib(usesLib, inList(usesLib, dexpreopt.OptionalCompatUsesLibs))
@@ -1052,6 +1049,8 @@ func AndroidAppFactory() android.Module {
 	android.InitDefaultableModule(module)
 	android.InitOverridableModule(module, &module.appProperties.Overrides)
 	android.InitApexModule(module)
+
+	module.usesLibrary.enforce = true
 
 	return module
 }
@@ -1502,10 +1501,6 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 
 	srcApk := a.prebuilt.SingleSourcePath(ctx)
 
-	if a.usesLibrary.enforceUsesLibraries() {
-		srcApk = a.usesLibrary.verifyUsesLibrariesAPK(ctx, srcApk)
-	}
-
 	// TODO: Install or embed JNI libraries
 
 	// Uncompress JNI libraries in the apk
@@ -1529,6 +1524,10 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
 	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
 	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
+
+	if a.usesLibrary.enforceUsesLibraries() {
+		srcApk = a.usesLibrary.verifyUsesLibrariesAPK(ctx, srcApk)
+	}
 
 	dexOutput := a.dexpreopter.dexpreopt(ctx, jnisUncompressed)
 	if a.dexpreopter.uncompressedDex {
@@ -1693,6 +1692,8 @@ func AndroidAppImportFactory() android.Module {
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Apk")
+
+	module.usesLibrary.enforce = true
 
 	return module
 }
@@ -1926,6 +1927,7 @@ type UsesLibraryProperties struct {
 // with knowledge of their shared libraries.
 type usesLibrary struct {
 	usesLibraryProperties UsesLibraryProperties
+	enforce               bool
 }
 
 func (u *usesLibrary) addLib(lib string, optional bool) {
@@ -1982,19 +1984,8 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.Libr
 	return usesLibPaths
 }
 
-// enforceUsesLibraries returns true of <uses-library> tags should be checked against uses_libs and optional_uses_libs
-// properties.  Defaults to true if either of uses_libs or optional_uses_libs is specified.  Will default to true
-// unconditionally in the future.
 func (u *usesLibrary) enforceUsesLibraries() bool {
-	defaultEnforceUsesLibs := len(u.usesLibraryProperties.Uses_libs) > 0 ||
-		len(u.usesLibraryProperties.Optional_uses_libs) > 0
-	return BoolDefault(u.usesLibraryProperties.Enforce_uses_libs, defaultEnforceUsesLibs)
-}
-
-// Freeze the value of `enforce_uses_libs` based on the current values of `uses_libs` and `optional_uses_libs`.
-func (u *usesLibrary) freezeEnforceUsesLibraries() {
-	enforce := u.enforceUsesLibraries()
-	u.usesLibraryProperties.Enforce_uses_libs = &enforce
+	return BoolDefault(u.usesLibraryProperties.Enforce_uses_libs, u.enforce)
 }
 
 // verifyUsesLibrariesManifest checks the <uses-library> tags in an AndroidManifest.xml against the ones specified
