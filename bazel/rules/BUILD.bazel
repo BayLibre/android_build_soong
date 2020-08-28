@@ -1,0 +1,9 @@
+exports_files([
+    "api_levels.json",
+    "static_libc.bzl",
+])
+
+alias(
+    name = "cc_toolchain_type",
+    actual = "@bazel_tools//tools/cpp:toolchain_type",
+)

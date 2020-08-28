@@ -241,6 +241,10 @@ type BaseProperties struct {
 	VndkVersion          string `blueprint:"mutated"`
 	SubName              string `blueprint:"mutated"`
 
+	// TODO: Use a struct instead of simply a label string (will facilitate
+	// easier extension of bazel-related metadata).
+	Bazel_module *string
+
 	// *.logtags files, to combine together in order to generate the /system/etc/event-log-tags
 	// file
 	Logtags []string
@@ -560,6 +564,74 @@ func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
 	return ok && ccDepTag == testPerSrcDepTag
 }
 
+type bazelModuleProperties struct {
+	Label *string `android:"arch_variant"`
+}
+
+type BazelModule struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	android.ApexModuleBase
+	android.ImageInterface
+
+	properties    bazelModuleProperties
+	staticVariant LinkableInterface
+
+	OutPath         android.Path
+	CompilationOuts []android.Path
+}
+
+var _ android.ImageInterface = (*BazelModule)(nil)
+
+func (g *BazelModule) ImageMutatorBegin(ctx android.BaseModuleContext) {}
+
+func (g *BazelModule) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
+	return false
+}
+
+func (g *BazelModule) RamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
+	return false
+}
+
+func (g *BazelModule) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {
+	return false
+}
+
+func (g *BazelModule) ExtraImageVariations(ctx android.BaseModuleContext) []string {
+	return []string{"", "ramdisk", "recovery"}
+}
+
+func (g *BazelModule) SetImageVariation(ctx android.BaseModuleContext, variation string, module android.Module) {
+}
+
+// Returns true if information was available from Bazel, false if bazel invocation still needs to occur.
+func (c *Module) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	bazelCtx := ctx.Config().BazelContext
+
+	starlarkExpr := "[f.path for f in target.files.to_list()][0] + ', '" +
+			" + ', '.join([f.path for f in target.output_groups.compilation_outputs.to_list()])"
+  result, ok := bazelCtx.Cquery(label, starlarkExpr, ctx.Arch().ArchType)
+
+  if ok {
+		bazelOutput := strings.TrimSpace(result)
+		filenames := strings.Split(bazelOutput, ", ")
+		archive := filenames[0]
+
+		c.outputFile = android.OptionalPathForPath(android.PathForSource(ctx, archive))
+
+		compilationOuts := []android.Path{}
+		for i := 1; i < len(filenames); i++ {
+			compilationOuts = append(compilationOuts, android.PathForSource(ctx, filenames[i]))
+		}
+		c.linker.(*libraryDecorator).objects = Objects{
+			objFiles: compilationOuts,
+		}
+		return true
+	} else {
+		return false
+	}
+}
+
 // Module contains the properties and members used by all C/C++ module types, and implements
 // the blueprint.Module interface.  It delegates to compiler, linker, and installer interfaces
 // to construct the output file.  Behavior can be customized with a Customizer interface
@@ -591,6 +663,7 @@ type Module struct {
 	vndkdep   *vndkdep
 	lto       *lto
 	pgo       *pgo
+	bazelModule string
 
 	outputFile android.OptionalPath
 
@@ -1599,7 +1672,12 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		c.kytheFiles = objs.kytheFiles
 	}
 
-	if c.linker != nil {
+	bazelModuleLabel := String(c.Properties.Bazel_module)
+	bazelActionsUsed := false
+	if (ctx.Config().BazelEnabled() && len(bazelModuleLabel) > 0) {
+		bazelActionsUsed = c.generateBazelBuildActions(actx, bazelModuleLabel)
+	}
+	if !bazelActionsUsed && c.linker != nil {
 		outputFile := c.linker.link(ctx, flags, deps, objs)
 		if ctx.Failed() {
 			return
@@ -1613,9 +1691,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		// (unless it is explicitly referenced via .bootstrap suffix or the
 		// module is marked with 'bootstrap: true').
 		if c.HasStubsVariants() &&
-			android.DirectlyInAnyApex(ctx, ctx.baseModuleName()) && !c.InRamdisk() &&
-			!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
-			c.IsStubs() {
+				android.DirectlyInAnyApex(ctx, ctx.baseModuleName()) && !c.InRamdisk() &&
+				!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
+				c.IsStubs() {
 			c.Properties.HideFromMake = false // unhide
 			// Note: this is still non-installable
 		}
@@ -2262,8 +2340,8 @@ func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
 			stringPath = append(stringPath, m.Name())
 		}
 		ctx.ModuleErrorf("links a library %q which is not LL-NDK, "+
-			"VNDK-SP, or explicitly marked as 'double_loadable:true'. "+
-			"(dependency: %s)", ctx.OtherModuleName(to), strings.Join(stringPath, " -> "))
+				"VNDK-SP, or explicitly marked as 'double_loadable:true'. "+
+				"(dependency: %s)", ctx.OtherModuleName(to), strings.Join(stringPath, " -> "))
 		return false
 	}
 	if module, ok := ctx.Module().(*Module); ok {
@@ -2922,15 +3000,15 @@ func (c *Module) UniqueApexVariations() bool {
 // Return true if the module is ever installable.
 func (c *Module) EverInstallable() bool {
 	return c.installer != nil &&
-		// Check to see whether the module is actually ever installable.
-		c.installer.everInstallable()
+			// Check to see whether the module is actually ever installable.
+			c.installer.everInstallable()
 }
 
 func (c *Module) installable() bool {
 	ret := c.EverInstallable() &&
-		// Check to see whether the module has been configured to not be installed.
-		proptools.BoolDefault(c.Properties.Installable, true) &&
-		!c.Properties.PreventInstall && c.outputFile.Valid()
+			// Check to see whether the module has been configured to not be installed.
+			proptools.BoolDefault(c.Properties.Installable, true) &&
+			!c.Properties.PreventInstall && c.outputFile.Valid()
 
 	// The platform variant doesn't need further condition. Apex variants however might not
 	// be installable because it will likely to be included in the APEX and won't appear

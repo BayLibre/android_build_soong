@@ -113,6 +113,8 @@ type generatorProperties struct {
 
 	// input files to exclude
 	Exclude_srcs []string `android:"path,arch_variant"`
+
+	Bazel_module string
 }
 
 type Module struct {
@@ -183,6 +185,28 @@ func toolDepsMutator(ctx android.BottomUpMutatorContext) {
 			}
 			ctx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), tag, tool)
 		}
+	}
+}
+
+// Returns true if information was available from Bazel, false if bazel invocation still needs to occur.
+func (c *Module) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	bazelCtx := ctx.Config().BazelContext
+
+	starlarkExpr := "', '.join([f.path for f in target.files.to_list()])"
+	result, ok := bazelCtx.Cquery(label, starlarkExpr, ctx.Arch().ArchType)
+
+	if ok {
+		bazelOutput := strings.TrimSpace(result)
+		var inputs android.Paths
+		for _, bazelOutputFile := range strings.Split(bazelOutput, ", ") {
+			inputs = append(inputs,  android.PathForSource(ctx, bazelOutputFile))
+		}
+
+		c.outputFiles = inputs
+		c.outputDeps = inputs
+		return true
+	} else {
+		return false
 	}
 }
 
@@ -456,22 +480,29 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	g.outputFiles = outputFiles.Paths()
 
-	// For <= 6 outputs, just embed those directly in the users. Right now, that covers >90% of
-	// the genrules on AOSP. That will make things simpler to look at the graph in the common
-	// case. For larger sets of outputs, inject a phony target in between to limit ninja file
-	// growth.
-	if len(g.outputFiles) <= 6 {
-		g.outputDeps = g.outputFiles
-	} else {
-		phonyFile := android.PathForModuleGen(ctx, "genrule-phony")
+	bazelModuleLabel := g.properties.Bazel_module
+	bazelActionsUsed := false
+	if (ctx.Config().BazelEnabled() && len(bazelModuleLabel) > 0) {
+		bazelActionsUsed = g.generateBazelBuildActions(ctx, bazelModuleLabel)
+	}
+	if (!bazelActionsUsed) {
+		// For <= 6 outputs, just embed those directly in the users. Right now, that covers >90% of
+		// the genrules on AOSP. That will make things simpler to look at the graph in the common
+		// case. For larger sets of outputs, inject a phony target in between to limit ninja file
+		// growth.
+		if len(g.outputFiles) <= 6 {
+			g.outputDeps = g.outputFiles
+		} else {
+			phonyFile := android.PathForModuleGen(ctx, "genrule-phony")
 
-		ctx.Build(pctx, android.BuildParams{
-			Rule:   blueprint.Phony,
-			Output: phonyFile,
-			Inputs: g.outputFiles,
-		})
+			ctx.Build(pctx, android.BuildParams{
+				Rule:   blueprint.Phony,
+				Output: phonyFile,
+				Inputs: g.outputFiles,
+			})
 
-		g.outputDeps = android.Paths{phonyFile}
+			g.outputDeps = android.Paths{phonyFile}
+		}
 	}
 
 }

@@ -74,6 +74,7 @@ func ReexecWithDelveMaybe() {
 		"--listen=:" + soongDelveListen,
 		"--headless=true",
 		"--api-version=2",
+		"--check-go-version=false",
 		"exec",
 		os.Args[0],
 		"--",

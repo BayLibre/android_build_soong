@@ -208,7 +208,8 @@ func LibraryStaticFactory() android.Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.BuildOnlyStatic()
 	module.sdkMemberTypes = []android.SdkMemberType{staticLibrarySdkMemberType}
-	return module.Init()
+	result := module.Init()
+	return result
 }
 
 // cc_library_shared creates a shared library for a device and/or host.
@@ -1384,6 +1385,12 @@ func versioningMacroName(moduleName string) string {
 	macroName := charsNotForMacro.ReplaceAllString(moduleName, "_")
 	macroName = strings.ToUpper(macroName)
 	return "__" + macroName + "_API__"
+}
+
+func (g *BazelModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion int) error {
+	// Because generated outputs are checked by client modules(e.g. cc_library, ...)
+	// we can safely ignore the check here.
+	return nil
 }
 
 func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
