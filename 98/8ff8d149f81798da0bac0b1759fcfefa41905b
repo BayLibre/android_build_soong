@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Ready+1: Bowgo Tsai <bowgotsai@google.com>
+Bypass-Presubmit+1: Bowgo Tsai <bowgotsai@google.com>
+Build-Cop-Override+1: Bowgo Tsai <bowgotsai@google.com>
+Submitted-by: Bowgo Tsai <bowgotsai@google.com>
+Submitted-at: Fri, 28 Aug 2020 08:15:46 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1413430
+Project: platform/build/soong
+Branch: refs/heads/master
