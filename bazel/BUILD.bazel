@@ -1,0 +1,48 @@
+load(":system_image.bzl", "partition", "partition_type_flag", "system_binaries")
+load(":system_image_test.bzl", "partition_test_suite")
+
+### Example system image generation
+
+partition(
+    name = "system",
+    type = "system",
+    deps = [
+        ":binaries",
+    ],
+)
+
+partition(
+    name = "vendor",
+    type = "vendor",
+    deps = [":binaries"],
+)
+
+system_binaries(
+    name = "binaries",
+    binaries = [
+        ":all_partitions",
+        ":only_vendor",
+    ],
+)
+
+cc_binary(
+    name = "only_vendor",
+    srcs = ["only_vendor.cc"],
+    tags = ["partition:vendor"],
+)
+
+cc_binary(
+    name = "all_partitions",
+    srcs = ["all_partitions.cc"],
+    tags = ["symlink:/sbin/all_partitions"],
+)
+
+### Implementation of system image generation below
+
+partition_test_suite()
+
+partition_type_flag(
+    name = "partition_type",
+    build_setting_default = "system",  # see system_image.bzl for more options
+    visibility = ["//visibility:public"],
+)
