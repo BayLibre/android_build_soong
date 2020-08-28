@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c430c33_6a662329",
+        "filename": "rust/source_provider.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-28T12:50:32Z",
+      "side": 1,
+      "message": "Is there a case where we\u0027d want to explicitly not provide a library variant of a module? The library variant is only built if something pulls it in as a library dependency.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
