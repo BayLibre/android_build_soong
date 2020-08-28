@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8ffa160_3d6deab0",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-08-28T21:32:20Z",
+      "side": 1,
+      "message": "I have been back-and-forth on this choice.\nI think the trouble of additional layer can be reduced into one extra \"use declaration\" in user code to introduce a short alias. As you said, applying wrap_in_module\u003d\u003csource_stem\u003e gives consistent module name to the generated code, no matter it is included, imported, or linked.\n\nAnother design choice is to make \"source_stem\" optional and not to wrap-in-module without source_stem. Or we can make that choice later when there are more use cases.",
+      "parentUuid": "ce976df9_fbf9c058",
+      "range": {
+        "startLine": 54,
+        "startChar": 33,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f83e5a1d_656482ec",
         "filename": "rust/protobuf.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-28T13:28:35Z",
       "side": 1,
       "message": "Let\u0027s make this configurable with a property in ProtobufProperties, which defaults to this value.",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d4ac7c2_fe8c9d37",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-08-28T21:32:20Z",
+      "side": 1,
+      "message": "At line 68, i saw that we use getStem(ctx) used for the output .rs file base name.\nShouldn\u0027t we just reuse source_stem property as the user configurable module name?\nIt\u0027s Rust convention to import/include modules from files with the same name.",
+      "parentUuid": "f83e5a1d_656482ec",
       "range": {
         "startLine": 55,
         "startChar": 3,
@@ -92,6 +140,30 @@
       "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d8521c_b317d940",
+        "filename": "rust/source_provider.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-08-28T21:32:20Z",
+      "side": 1,
+      "message": "In aosp/1414179 I set codegen_only:false to avoid unused cdisk_spec_proto libraries. Without it the unused *proto libraries are still generated. Now the generated cdisk_spec.rs is included into libprotos as crosvm used to do. When crosvm enables more features and include more generated .rs files and it does not need more separate *proto libraries.",
+      "parentUuid": "71d35376_fac7e0d9",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
