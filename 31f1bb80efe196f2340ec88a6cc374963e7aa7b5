@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11ac99df_bf285fd8",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-28T13:48:58Z",
+      "side": 1,
+      "message": "nit: Maybe we should keep this naming consistent and rename it to cc_config as well? (there\u0027s another ccConfig in config/global.go).\n\nThis can be done in a follow-up CL though, I don\u0027t necessarily want to delay this on that.",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "31f1bb80efe196f2340ec88a6cc374963e7aa7b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
