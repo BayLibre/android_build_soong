@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce976df9_fbf9c058",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-28T13:28:35Z",
+      "side": 1,
+      "message": "Whether to wrap it in a module should be configurable.\n\nFor library variants this adds an additional level of hierarchy that seems unnecessary, e.g.\n\n   my_proto_crate_name::my_proto_mod_wrapper::\n\nMy thoughts are we shouldn\u0027t pass this flag when generating the code for library variants, but then it also means that our library variants are generating different source which doesn\u0027t seem great either.",
+      "range": {
+        "startLine": 54,
+        "startChar": 33,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83e5a1d_656482ec",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-28T13:28:35Z",
+      "side": 1,
+      "message": "Let\u0027s make this configurable with a property in ProtobufProperties, which defaults to this value.",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c430c33_6a662329",
         "filename": "rust/source_provider.go",
         "patchSetId": 4
@@ -13,6 +59,30 @@
       "writtenOn": "2020-08-28T12:50:32Z",
       "side": 1,
       "message": "Is there a case where we\u0027d want to explicitly not provide a library variant of a module? The library variant is only built if something pulls it in as a library dependency.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d35376_fac7e0d9",
+        "filename": "rust/source_provider.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-08-28T13:28:35Z",
+      "side": 1,
+      "message": "I think I\u0027d like to avoid adding this property unless there\u0027s a use case. Under normal circumstances we want to encourage using generated code as libraries. There might be cases where there is a need to \u0027include\u0027 them, but this is already possible without this flag.",
+      "parentUuid": "9c430c33_6a662329",
       "range": {
         "startLine": 29,
         "startChar": 0,
