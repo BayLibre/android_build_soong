@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "45a096c3_b3ad3a16",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-28T22:01:11Z",
+      "side": 1,
+      "message": "I think that when root_module is true, it should perhaps even be an error to add a module wrapping name. If we are putting it in a crate already, it already has a name, and doesn\u0027t need another name underneath.",
+      "parentUuid": "e8ffa160_3d6deab0",
+      "range": {
+        "startLine": 54,
+        "startChar": 33,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f83e5a1d_656482ec",
         "filename": "rust/protobuf.go",
         "patchSetId": 4
@@ -164,6 +188,30 @@
       "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9f60c7a_d05776c1",
+        "filename": "rust/source_provider.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-28T22:01:11Z",
+      "side": 1,
+      "message": "These libraries should only be built in checkbuilds or if used. If they\u0027re being built when the source code is included but the library is not used, that\u0027s a separate bug, and not one we should be solving by disabling the feature.",
+      "parentUuid": "e1d8521c_b317d940",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
