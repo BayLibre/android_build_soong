@@ -97,7 +97,6 @@ func flagsToBuilderFlags(in Flags) builderFlags {
 		protoOptionsFile: in.protoOptionsFile,
 
 		yacc: in.Yacc,
-		lex:  in.Lex,
 	}
 }
 
