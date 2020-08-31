@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24f9b74e_a14061e5",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-08-31T20:50:05Z",
+      "side": 1,
+      "message": "Does something end up cleaning this file up at the end of the build? (config.TempDir gets cleared at the beginning of the build, but /tmp is handled by the OS, which may be at system restart, or never)",
+      "revId": "81b3a83401b7aa73134c75b19e0281520c8589ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
