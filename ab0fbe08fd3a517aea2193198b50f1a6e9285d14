@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c843739_e345fb77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-08-31T18:01:26Z",
+      "side": 1,
+      "message": "LGTM, but you\u0027ll need to fix the build type error.",
+      "revId": "ab0fbe08fd3a517aea2193198b50f1a6e9285d14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
