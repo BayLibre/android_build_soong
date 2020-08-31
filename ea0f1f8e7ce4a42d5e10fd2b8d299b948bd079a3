@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9c5c677_03562e59",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-31T19:36:45Z",
+      "side": 1,
+      "message": "I think this is the only location where LinuxBionic and LinuxCross differ.  Can you reuse LinxuBionic instead of adding a new LinuxCross, and make the LinuxBionic case above respect the arch?",
+      "revId": "ea0f1f8e7ce4a42d5e10fd2b8d299b948bd079a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c474cb9_499a53b6",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-31T19:36:45Z",
+      "side": 1,
+      "message": "Change this function to take an Arch or ArchType as well and use ArchType.String()",
+      "range": {
+        "startLine": 1310,
+        "startChar": 51,
+        "endLine": 1310,
+        "endChar": 102
+      },
+      "revId": "ea0f1f8e7ce4a42d5e10fd2b8d299b948bd079a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
