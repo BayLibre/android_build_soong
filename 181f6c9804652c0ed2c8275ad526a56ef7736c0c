@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be7b8c76_c4a9736e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-31T07:44:16Z",
+      "side": 1,
+      "message": "i know this is is a WIP change, but just in case ...",
+      "revId": "181f6c9804652c0ed2c8275ad526a56ef7736c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49339986_451067d3",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1490,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-31T07:44:16Z",
+      "side": 1,
+      "message": "shouldn\u0027t this follow HostArch?",
+      "range": {
+        "startLine": 1490,
+        "startChar": 25,
+        "endLine": 1490,
+        "endChar": 39
+      },
+      "revId": "181f6c9804652c0ed2c8275ad526a56ef7736c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057e8dd6_cd80cbed",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-31T07:44:16Z",
+      "side": 1,
+      "message": "perhaps we might want to accept ArchType as a new argument",
+      "range": {
+        "startLine": 1289,
+        "startChar": 37,
+        "endLine": 1289,
+        "endChar": 46
+      },
+      "revId": "181f6c9804652c0ed2c8275ad526a56ef7736c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "facf8c22_f1c9c35b",
+        "filename": "android/paths_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-08-31T07:44:16Z",
+      "side": 1,
+      "message": "this has repeated several times. you might want to make this as function somewhere else.",
+      "range": {
+        "startLine": 276,
+        "startChar": 23,
+        "endLine": 276,
+        "endChar": 155
+      },
+      "revId": "181f6c9804652c0ed2c8275ad526a56ef7736c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
