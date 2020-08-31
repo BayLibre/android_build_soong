@@ -22,6 +22,30 @@
       "revId": "31f1bb80efe196f2340ec88a6cc374963e7aa7b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58805143_7fb4d9a6",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-08-31T07:54:22Z",
+      "side": 1,
+      "message": "Ack, thanks. Creating a follow up CL for it.",
+      "parentUuid": "11ac99df_bf285fd8",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "31f1bb80efe196f2340ec88a6cc374963e7aa7b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
