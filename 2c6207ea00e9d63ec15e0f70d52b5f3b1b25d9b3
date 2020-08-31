@@ -187,6 +187,30 @@
       "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cdf3edc_0e1018e9",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2686,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-31T16:55:23Z",
+      "side": 1,
+      "message": "This is done to avoid having to do `if err !\u003d nil` error checks after every function call while allowing the function to continue to report more errors if possible (for example multiple missing dependencies in a loop).  It also ensures that errors are never missed, since they were already recorded in the context.  The `if ctx.Failed()` check is used whenever continuing after an error would cause a panic or report errors that were not relevant to the user.  The downside of this style is that it is easy to miss a ctx.Failed() check and turn an error into a panic.  I think the panic shadows the error too, it would probably be good to make the panic handler print the pending errors messages.\n\nThe check isn\u0027t actually necessary here, since nothing in this function is trying to dereference dexOutputFile, but keeping it here is also fine in case additional code is added after this call - that code is unlikely to be useful if compileDex failed.\n\nhttps://blog.golang.org/errors-are-values has some discussion on various ways to simplify error handling and avoid repetitive `if err !\u003d nil` checks.",
+      "parentUuid": "c1e62958_a7d1d927",
+      "range": {
+        "startLine": 2684,
+        "startChar": 0,
+        "endLine": 2686,
+        "endChar": 3
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
