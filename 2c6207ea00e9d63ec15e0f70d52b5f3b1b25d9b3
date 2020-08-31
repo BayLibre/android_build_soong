@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d5500f8_74376c0a",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-31T16:44:21Z",
+      "side": 1,
+      "message": "Unfortunately that would require changes to java sdk libraries, which seems tangential to this change, because we get errors decoding the sdk dep for those where the `system_modules` value is not set currently.",
+      "parentUuid": "149704e7_09e4eca1",
+      "range": {
+        "startLine": 2600,
+        "startChar": 2,
+        "endLine": 2601,
+        "endChar": 23
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6bf0656_806f75fe",
         "filename": "java/java.go",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdaa47a3_0f2cdd4a",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2670,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-31T16:44:21Z",
+      "side": 1,
+      "message": "Done. Thanks.",
+      "parentUuid": "f6bf0656_806f75fe",
+      "range": {
+        "startLine": 2670,
+        "startChar": 0,
+        "endLine": 2670,
+        "endChar": 19
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9d474bb4_3c34b99f",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2682,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-31T16:44:21Z",
+      "side": 1,
+      "message": "This made me realize that j.dexJarFile should be defaulting to nil regardless and removed the else entirely.",
+      "parentUuid": "f4f56746_a5a83629",
+      "range": {
+        "startLine": 2682,
+        "startChar": 2,
+        "endLine": 2682,
+        "endChar": 41
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c7647cf_d2a8eb14",
         "filename": "java/java.go",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e62958_a7d1d927",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2686,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-08-31T16:44:21Z",
+      "side": 1,
+      "message": "Agreed that it\u0027s not very \"go\", but it\u0027s how we currently handle this for dexing (https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java.go;l\u003d1598-1603;drc\u003dfc24ad3d4e23ec992d47621601a98bebec6695bb)",
+      "parentUuid": "0c7647cf_d2a8eb14",
+      "range": {
+        "startLine": 2684,
+        "startChar": 0,
+        "endLine": 2686,
+        "endChar": 3
+      },
+      "revId": "2c6207ea00e9d63ec15e0f70d52b5f3b1b25d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
