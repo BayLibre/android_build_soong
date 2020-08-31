@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0956a584_08255ad9",
+        "filename": "cc/test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-08-31T16:26:58Z",
+      "side": 1,
+      "message": "The final directory name here is still under discussion",
+      "range": {
+        "startLine": 349,
+        "startChar": 21,
+        "endLine": 349,
+        "endChar": 49
+      },
+      "revId": "8fb40873b2f267b923c78da5c70275abf02713e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
