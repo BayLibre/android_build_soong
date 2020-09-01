@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc501858_06df7d0e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-01T18:02:20Z",
+      "side": 1,
+      "message": "Why is this needed? Instead of:\n  java_library {\n    name: \"foo\",\n    is_uses_lib: true,\n  }\n\nCould you not just put:\n  java_library {\n    name: \"foo\",\n    uses_libs: [\"foo\"],\n  }",
+      "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
