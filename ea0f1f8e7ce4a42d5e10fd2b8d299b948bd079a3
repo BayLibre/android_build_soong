@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "767fb806_a17d015f",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-01T02:03:45Z",
+      "side": 1,
+      "message": "Are you suggesting to not add LinuxCross at all (even in arch.go)? That\u0027s not possible because LinuxCross and LinuxBionic have different OsClass (Host v.s. HostCross).",
+      "parentUuid": "f9c5c677_03562e59",
+      "revId": "ea0f1f8e7ce4a42d5e10fd2b8d299b948bd079a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c474cb9_499a53b6",
         "filename": "android/paths.go",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2020-08-31T19:36:45Z",
       "side": 1,
       "message": "Change this function to take an Arch or ArchType as well and use ArchType.String()",
+      "range": {
+        "startLine": 1310,
+        "startChar": 51,
+        "endLine": 1310,
+        "endChar": 102
+      },
+      "revId": "ea0f1f8e7ce4a42d5e10fd2b8d299b948bd079a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "790d2950_cf4fa81b",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-01T02:03:45Z",
+      "side": 1,
+      "message": "I will make that as a separate CL \u0027below\u0027 this one.",
+      "parentUuid": "4c474cb9_499a53b6",
       "range": {
         "startLine": 1310,
         "startChar": 51,
