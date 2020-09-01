@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b94519e9_389ff6d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-01T18:13:20Z",
+      "side": 1,
+      "message": "Definitely the root cause, feel free to bypass presubmit and submit.",
+      "revId": "3666c7023f129fa4c38a11918e6e9e9a3a554b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
