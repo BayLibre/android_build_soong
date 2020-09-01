@@ -16,6 +16,46 @@
       "revId": "9cd2a07447661ef68b2f6dc11d85aef977064d7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26ef4144_3ad41175",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2503,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-01T17:16:18Z",
+      "side": 1,
+      "message": "I don\u0027t expect this to be necessary, system modules are only used with javac, and a java_import doesn\u0027t run javac.  Just return \"\" in systemModules().",
+      "revId": "9cd2a07447661ef68b2f6dc11d85aef977064d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a97a3a3a_23d27893",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2611,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-01T17:16:18Z",
+      "side": 1,
+      "message": "Could be in a followup, but is it possible to share this block with java modules?",
+      "range": {
+        "startLine": 2600,
+        "startChar": 0,
+        "endLine": 2611,
+        "endChar": 0
+      },
+      "revId": "9cd2a07447661ef68b2f6dc11d85aef977064d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
