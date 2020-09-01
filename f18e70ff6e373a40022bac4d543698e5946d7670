@@ -118,6 +118,30 @@
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c705060c_f3eebea5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1549634
+      },
+      "writtenOn": "2020-09-01T07:11:16Z",
+      "side": 1,
+      "message": "Aight, I\u0027ll try changing it to that and seeing if everything works as expected.",
+      "parentUuid": "31c87552_675a7efe",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
