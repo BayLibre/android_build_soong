@@ -58,7 +58,7 @@ func TestHostToolPath(t *testing.T) {
 		}`)
 
 	path := ctx.ModuleForTests("fizz-buzz", "linux_glibc_x86_64").Module().(*Module).HostToolPath()
-	if g, w := path.String(), "/host/linux-x86/bin/fizz-buzz"; !strings.Contains(g, w) {
+	if g, w := path.String(), "/host/linux-x86_64/bin/fizz-buzz"; !strings.Contains(g, w) {
 		t.Errorf("wrong host tool path, expected %q got %q", w, g)
 	}
 }
