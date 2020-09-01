@@ -16,6 +16,46 @@
       "revId": "08cbf97575d88438b657c0ab2fbf0dcef6144bf2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "988a9193_a122d459",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-01T18:34:56Z",
+      "side": 1,
+      "message": "Can you mention why host is different here, and also that the dependencies on the shared libs ensure that the timestamp of the symlink to the binary is updated in order to rerun rules that depend on the binary?",
+      "revId": "08cbf97575d88438b657c0ab2fbf0dcef6144bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8881e321_7ff5efdc",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-01T18:34:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is true.  For example, if I run `m out/host/linux-x86/bin/prebuilt-with-symlink`, these dependencies will ensure that the intermediates exist, but not that the symlinks that the binary will attempt to load from will exist.\n\nI think to do this correctly it has to be handled in ctx.InstallFile or ctx.InstallSymlink, which has the installed locations of the dependency modules, or at least has to manually track the installed files for the shared library dependencies.",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 40
+      },
+      "revId": "08cbf97575d88438b657c0ab2fbf0dcef6144bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
