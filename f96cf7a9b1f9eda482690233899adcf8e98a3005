@@ -33,6 +33,29 @@
       "revId": "f96cf7a9b1f9eda482690233899adcf8e98a3005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc68ee4f_422ab7ed",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-09-01T00:45:57Z",
+      "side": 1,
+      "message": "You may use `Bool` which already returns `false` if the value is nil.",
+      "range": {
+        "startLine": 1119,
+        "startChar": 8,
+        "endLine": 1119,
+        "endChar": 29
+      },
+      "revId": "f96cf7a9b1f9eda482690233899adcf8e98a3005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
