@@ -16,6 +16,24 @@
       "revId": "81b3a83401b7aa73134c75b19e0281520c8589ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf0db85c_d888fbf9",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-09-01T01:44:44Z",
+      "side": 1,
+      "message": "The socket file gets deleted once reproxy shuts down.",
+      "parentUuid": "24f9b74e_a14061e5",
+      "revId": "81b3a83401b7aa73134c75b19e0281520c8589ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
