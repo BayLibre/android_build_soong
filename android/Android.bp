@@ -16,6 +16,7 @@ bootstrap_go_package {
         "api_levels.go",
         "arch.go",
         "bazel_overlay.go",
+        "bootstrap_deps.go",
         "config.go",
         "csuite_config.go",
         "defaults.go",
