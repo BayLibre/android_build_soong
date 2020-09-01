@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "08a6cba5_a8ee1d20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-09-01T20:35:12Z",
+      "side": 1,
+      "message": "ping :-)",
+      "revId": "81b3a83401b7aa73134c75b19e0281520c8589ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24f9b74e_a14061e5",
         "filename": "ui/build/rbe.go",
         "patchSetId": 1
