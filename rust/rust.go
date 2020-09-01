@@ -697,6 +697,9 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		generatedFile := mod.sourceProvider.GenerateSource(ctx, deps)
 		mod.generatedFile = android.OptionalPathForPath(generatedFile)
 		mod.sourceProvider.setSubName(ctx.ModuleSubDir())
+		if mod.compiler != nil && mod.sourceProvider.CodegenOnly() {
+			mod.compiler.SetDisabled()
+		}
 	}
 
 	if mod.compiler != nil && !mod.compiler.Disabled() {
