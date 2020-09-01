@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Presubmit-Ready+1: Steve Kim <kwstephenkim@google.com>
+Autosubmit+1: Steve Kim <kwstephenkim@google.com>
+Bypass-Presubmit+1: Steve Kim <kwstephenkim@google.com>
+Submitted-by: Steve Kim <kwstephenkim@google.com>
+Submitted-at: Tue, 01 Sep 2020 19:11:44 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1417209
+Project: platform/build/soong
+Branch: refs/heads/master
