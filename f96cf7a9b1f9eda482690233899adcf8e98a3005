@@ -16,6 +16,23 @@
       "revId": "f96cf7a9b1f9eda482690233899adcf8e98a3005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c5bd938_8557442e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-09-01T00:39:12Z",
+      "side": 1,
+      "message": "Can we amend the soong test TestVendorSnapshot?",
+      "revId": "f96cf7a9b1f9eda482690233899adcf8e98a3005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
