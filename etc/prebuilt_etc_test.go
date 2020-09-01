@@ -269,7 +269,7 @@ func TestPrebuiltUserShareInstallDirPath(t *testing.T) {
 }
 
 func TestPrebuiltUserShareHostInstallDirPath(t *testing.T) {
-	ctx, config := testPrebuiltEtc(t, `
+	ctx, _ := testPrebuiltEtc(t, `
 		prebuilt_usr_share_host {
 			name: "foo.conf",
 			src: "foo.conf",
@@ -279,7 +279,11 @@ func TestPrebuiltUserShareHostInstallDirPath(t *testing.T) {
 
 	buildOS := android.BuildOs.String()
 	p := ctx.ModuleForTests("foo.conf", buildOS+"_common").Module().(*PrebuiltEtc)
-	expected := filepath.Join(buildDir, "host", config.PrebuiltOS(), "usr", "share", "bar")
+	if android.BuildOs == android.Linux {
+		// linux instead of linux_glibc
+		buildOS = "linux"
+	}
+	expected := filepath.Join(buildDir, "host", buildOS+"-common", "usr", "share", "bar")
 	if p.installDirPath.String() != expected {
 		t.Errorf("expected %q, got %q", expected, p.installDirPath.String())
 	}
