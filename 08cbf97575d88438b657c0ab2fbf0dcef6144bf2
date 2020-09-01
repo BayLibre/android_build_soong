@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94d72d8e_61edf6bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-01T11:45:12Z",
+      "side": 1,
+      "message": "With https://r.android.com/1406918 submitted this should now be ready.",
+      "revId": "08cbf97575d88438b657c0ab2fbf0dcef6144bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
