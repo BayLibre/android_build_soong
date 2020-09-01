@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1caed1a7_c0721507",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-09-01T00:53:15Z",
+      "side": 1,
+      "message": "A valid use case to enable both wrap_in_module and root_module is to \"include\" the generated file into one rust module, and also build a library with the generated file in a library. This would happen in aosp/1414179 when codegen_only:true is not set but lib.rs \"include\" generated .rs file.\n\nIt is more consistent that each .proto file is compiled into one Rust module, with the same wrap_in_module name, and that module can be include into another rust module like the cdisk_spec_proto module or the protos module in crosvm. In this case the module name is cdisk_spec.\n\nWhen the generated code is imported implicitly from the file cdisk_spec.rs, with the default protobuf-codegen flags and no wrap_in_module, the imported module is also called cdisk_spec.",
+      "parentUuid": "45a096c3_b3ad3a16",
+      "range": {
+        "startLine": 54,
+        "startChar": 33,
+        "endLine": 54,
+        "endChar": 47
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f83e5a1d_656482ec",
         "filename": "rust/protobuf.go",
         "patchSetId": 4
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "These libraries should only be built in checkbuilds or if used. If they\u0027re being built when the source code is included but the library is not used, that\u0027s a separate bug, and not one we should be solving by disabling the feature.",
       "parentUuid": "e1d8521c_b317d940",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "2e58dfae5f8e6156e0a225023d2abe860f555e25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c63de92_e1f94d3a",
+        "filename": "rust/source_provider.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-09-01T00:53:15Z",
+      "side": 1,
+      "message": "Why not allow users to suppress the unused libraries even in checkbuilds?\nThe feature is not disabled. The codegen_only is an optional property.",
+      "parentUuid": "a9f60c7a_d05776c1",
       "range": {
         "startLine": 29,
         "startChar": 0,
