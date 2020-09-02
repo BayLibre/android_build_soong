@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "29f0e34a_46e62e8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-02T15:49:12Z",
+      "side": 1,
+      "message": "It is probably too late to do things differently now but eBPF support doesn\u0027t seem as though it should require a new module type.\n\ncc_object will compile .c to .o.\n\ncc_defaults allows you to group common properties together so that they can be reused.\n\nI think that rather than adding special support for bpf to apex (and possibly other places too) it would be better to either:\n1. Use cc_object/cc_defaults if possible - may require enhancement to allow target\u003dbpf to be supplied and install location to be specified.\n2. Have the bpf module type extend cc_object to provide the additional capabilities that are needed.",
+      "parentUuid": "34ca04a3_b9534faa",
+      "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01862b2_81c8de0f",
         "filename": "apex/apex.go",
         "patchSetId": 2
