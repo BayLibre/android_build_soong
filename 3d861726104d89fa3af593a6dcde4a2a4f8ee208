@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "34ca04a3_b9534faa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-09-02T14:58:54Z",
+      "side": 1,
+      "message": "See b/72981744 for bpf module type history that it run \"clang --target\u003dbpf\" and compile .c to .o\n\n+ Lorenzo to provide more context if needed.\n\nI don\u0027t know why not just use cc_*. Probably there are too many cflags and specific \"clang --target\u003dbpf\" and we do not what to specify them each time ?",
+      "parentUuid": "f9274fb8_64e33c81",
+      "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01862b2_81c8de0f",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "51be8ba0_9f129167",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-09-02T14:58:54Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "d01862b2_81c8de0f",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48abf7f7_dc4e7d79",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -79,6 +121,30 @@
       "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb56307_2ce5176b",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2133,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-09-02T14:58:54Z",
+      "side": 1,
+      "message": "Thanks for catch this. Yes, it should be different per bpfFile",
+      "parentUuid": "48abf7f7_dc4e7d79",
+      "range": {
+        "startLine": 2133,
+        "startChar": 84,
+        "endLine": 2133,
+        "endChar": 91
+      },
+      "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
