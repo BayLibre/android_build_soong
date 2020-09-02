@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "e2b0698a_342b3800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-09-02T15:55:04Z",
+      "side": 1,
+      "message": "Colin, do you remember why you implemented BPF as its own build rule instead of using cc_object? I remember you asked the questions at https://buganizer.corp.google.com/issues/72981744#comment3 , but I don\u0027t know the rationale behind them.",
+      "parentUuid": "315e6d4c_1cdd671a",
+      "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d01862b2_81c8de0f",
         "filename": "apex/apex.go",
         "patchSetId": 2
