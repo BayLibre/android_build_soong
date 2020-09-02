@@ -16,6 +16,24 @@
       "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cebc3ca7_adfd240d",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-02T09:33:38Z",
+      "side": 1,
+      "message": "I can (and I tried this before adding new property), but it is really more confusing:\n\n- since all uses_libs are added as dependencies, I have to check every name on the list to exclude the module itself when adding dependencies, this bloats the code and requires a comment with an explanation\n\n- adding itself to uses_libs requires a comment at each occurrence in the .bp file, since it is a special case and it is not clear why a library should use itself\n\n- having one distinct property scoped under usesLibraryProperties allows to have a self-explanatory name and only one comment at the property declaration site\n\n- note that libraries will also have genuine uses_libs property with their uses-library list (currently this is not supported)",
+      "parentUuid": "dc501858_06df7d0e",
+      "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
