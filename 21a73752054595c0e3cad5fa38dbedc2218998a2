@@ -52,6 +52,24 @@
       "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e1a343_ce2462d8",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-02T17:04:44Z",
+      "side": 1,
+      "message": "Can this be keyed off of installable: true instead?  That selects libraries that will be dexed and installed on the device, which is a prerequisite of being loaded as a shared library at runtime.",
+      "parentUuid": "cf5f905f_0c0b6b24",
+      "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
