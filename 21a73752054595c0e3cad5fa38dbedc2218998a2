@@ -34,6 +34,24 @@
       "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf5f905f_0c0b6b24",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-02T13:34:35Z",
+      "side": 1,
+      "message": "Ack. AIUI this is really a temporary work around because some uses_libs have not yet been switched to using java_sdk_library. Longer term we will switch to using java_sdk_library and so this property will not be needed. If correct then I think that we should restrict use of this property (using neverallow rules) to only those instances that currently need it to avoid any more usages being added.",
+      "parentUuid": "cebc3ca7_adfd240d",
+      "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
