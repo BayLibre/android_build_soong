@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "dd8c86ff_7ffe823a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-02T12:51:01Z",
+      "side": 1,
+      "message": "Hmm it looks like we need a more scalable way to put \"prebuilt\"-like things in APEXes. ",
+      "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d01862b2_81c8de0f",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -18,6 +35,29 @@
         "startChar": 1,
         "endLine": 29,
         "endChar": 5
+      },
+      "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48abf7f7_dc4e7d79",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2133,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-02T12:51:01Z",
+      "side": 1,
+      "message": "Should this be different per bpfFile?",
+      "range": {
+        "startLine": 2133,
+        "startChar": 84,
+        "endLine": 2133,
+        "endChar": 91
       },
       "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
