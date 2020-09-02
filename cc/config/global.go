@@ -26,6 +26,7 @@ var (
 	// will save bytes in build.ninja so they aren't repeated for every file
 	commonGlobalCflags = []string{
 		"-DANDROID",
+		"-D__ANDROID_PLATFORM__",
 		"-fmessage-length=0",
 		"-W",
 		"-Wall",
