@@ -21,6 +21,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"sort"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -40,8 +41,6 @@ load("//:soong_module.bzl", "soong_module")
     name = "%s",
     module_name = "%s",
     module_type = "%s",
-    module_variant = "%s",
-    module_deps = %s,
 %s)`
 
 	providersBzl = `SoongModuleInfo = provider(
@@ -130,12 +129,12 @@ def _%s_impl(ctx):
 
 func targetNameWithVariant(c *blueprint.Context, logicModule blueprint.Module) string {
 	name := ""
-	if c.ModuleSubDir(logicModule) != "" {
-		// TODO(b/162720883): Figure out a way to drop the "--" variant suffixes.
-		name = c.ModuleName(logicModule) + "--" + c.ModuleSubDir(logicModule)
-	} else {
-		name = c.ModuleName(logicModule)
-	}
+	// if c.ModuleSubDir(logicModule) != "" {
+	// 	// TODO(b/162720883): Figure out a way to drop the "--" variant suffixes.
+	// 	name = c.ModuleName(logicModule) + "--" + c.ModuleSubDir(logicModule)
+	// } else {
+	name = c.ModuleName(logicModule)
+	// }
 
 	return strings.Replace(name, "//", "", 1)
 }
@@ -358,6 +357,7 @@ func createModuleBzlShims(ctx *android.Context, bazelOverlayDir string) (map[str
 		return nil, err
 	}
 
+	// A function to recursively convert a property to the rule attribute typed definition.
 	var propToAttr func(prop bpdoc.Property, propName string) string
 	propToAttr = func(prop bpdoc.Property, propName string) string {
 		propName = strings.ReplaceAll(propName, ".", "__")
@@ -423,17 +423,46 @@ func createModuleBzlShims(ctx *android.Context, bazelOverlayDir string) (map[str
 	return bzlLoads, nil
 }
 
+func groupModulesByName(ctx *blueprint.Context) map[string][]blueprint.Module {
+	groupedModules := map[string][]blueprint.Module{}
+	ctx.VisitAllModules(func(module blueprint.Module) {
+		moduleName := ctx.ModuleName(module)
+		groupedModules[moduleName] = append(groupedModules[moduleName], module)
+	})
+
+	for moduleName, modules := range groupedModules {
+		sort.Slice(modules, func(i, j int) bool {
+			return ctx.ModuleSubDir(modules[i]) < ctx.ModuleSubDir(modules[j])
+		})
+		groupedModules[moduleName] = modules
+	}
+
+	return groupedModules
+}
+
 func createBazelOverlay(ctx *android.Context, bazelOverlayDir string) error {
 	blueprintCtx := ctx.Context
-	blueprintCtx.VisitAllModules(func(module blueprint.Module) {
-		buildFile, err := buildFileForModule(blueprintCtx, module)
+
+	for _, variants := range groupModulesByName(blueprintCtx) {
+		primaryModule := blueprintCtx.PrimaryModule(variants[0])
+		buildFile, err := buildFileForModule(blueprintCtx, primaryModule)
 		if err != nil {
 			panic(err)
 		}
 
-		buildFile.Write([]byte(generateSoongModuleTarget(blueprintCtx, module) + "\n\n"))
+		buildFile.Write([]byte(generateSoongModuleVariants(blueprintCtx, primaryModule, variants) + "\n\n"))
 		buildFile.Close()
-	})
+	}
+
+	// blueprintCtx.VisitAllModules(func(module blueprint.Module) {
+	// 	buildFile, err := buildFileForModule(blueprintCtx, module)
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+
+	// 	buildFile.Write([]byte(generateSoongModuleTarget(blueprintCtx, module) + "\n\n"))
+	// 	buildFile.Close()
+	// })
 
 	if err := writeReadOnlyFile(bazelOverlayDir, "WORKSPACE", ""); err != nil {
 		return err
@@ -500,6 +529,125 @@ func propsToAttributes(props map[string]string) string {
 	return attributes
 }
 
+func sameStrings(xs []string) bool {
+	for i := 1; i < len(xs); i++ {
+		if xs[i] != xs[0] {
+			return false
+		}
+	}
+
+	return true
+}
+
+// props is an unsorted map. This function ensures that
+// the generated attributes are sorted to ensure determinism.
+func configurablePropsToAttributes(props map[string]map[string]string) string {
+	var attributes string
+
+	for _, propName := range android.SortedStringKeys(props) {
+		if shouldGenerateAttribute(propName) {
+			propValues := []string{}
+			for _, propValue := range props[propName] {
+				propValues = append(propValues, propValue)
+			}
+
+			if len(props[propName]) == 1 || sameStrings(propValues) {
+				for _, propValue := range props[propName] {
+					attributes += fmt.Sprintf("    %s = %s,\n", propName, propValue)
+					break
+				}
+			} else {
+				attributes += "    " + propName + " = " + "select({\n"
+				for variant, propValue := range props[propName] {
+					attributes += "        "
+					attributes += fmt.Sprintf("\":%s\": %s,\n", variant, propValue)
+				}
+				attributes += "    }),\n"
+			}
+
+		}
+	}
+	return attributes
+}
+
+// Convert a module and its deps and props into a Bazel macro/rule
+// representation in the BUILD file.
+func generateSoongModuleVariants(
+	blueprintCtx *blueprint.Context,
+	primaryModule blueprint.Module,
+	modules []blueprint.Module) string {
+
+	configurableProps := map[string]map[string]string{}
+
+	if len(modules) == 0 {
+		return generateSoongModuleTarget(blueprintCtx, primaryModule)
+	} else {
+		fmt.Println(blueprintCtx.ModuleSubDir(primaryModule))
+	}
+
+	for _, module := range modules {
+		var props map[string]string
+		if aModule, ok := module.(android.Module); ok {
+			variant := blueprintCtx.ModuleSubDir(aModule)
+			if variant == "" {
+				variant = "//conditions:default"
+			}
+
+			props = extractModuleProperties(aModule)
+
+			for k, v := range props {
+				if configurableProps[k] == nil {
+					configurableProps[k] = map[string]string{variant: v}
+				} else {
+					configurableProps[k][variant] = v
+				}
+			}
+		}
+	}
+
+	depLabelsWithVariants := map[string]map[string]bool{}
+	for _, module := range modules {
+		// TODO(b/163018919): DirectDeps can have duplicate (module, variant)
+		// items, if the modules are added using different DependencyTag. Figure
+		// out the implications of that.
+		blueprintCtx.VisitDirectDeps(module, func(depModule blueprint.Module) {
+			variant := blueprintCtx.ModuleSubDir(module)
+			if variant == "" {
+				variant = "//conditions:default"
+			}
+			depLabel := qualifiedTargetLabel(blueprintCtx, depModule)
+			if depLabelsWithVariants[variant] == nil {
+				depLabelsWithVariants[variant] = map[string]bool{depLabel: true}
+			} else {
+				depLabelsWithVariants[variant][depLabel] = true
+			}
+		})
+
+		configurableProps["module_deps"] = map[string]string{}
+
+		for variant, depLabels := range depLabelsWithVariants {
+			depLabelList := "[\n"
+			for depLabel, _ := range depLabels {
+				depLabelList += "        \""
+				depLabelList += depLabel
+				depLabelList += "\",\n"
+			}
+			depLabelList += "    ]"
+			configurableProps["module_deps"][variant] = depLabelList
+		}
+	}
+
+	attributes := configurablePropsToAttributes(configurableProps)
+	moduleType := canonicalizeModuleType(blueprintCtx.ModuleType(primaryModule))
+
+	return fmt.Sprintf(
+		soongModuleTarget,
+		targetNameWithVariant(blueprintCtx, primaryModule),
+		blueprintCtx.ModuleName(primaryModule),
+		moduleType,
+		attributes)
+}
+
 // Convert a module and its deps and props into a Bazel macro/rule
 // representation in the BUILD file.
 func generateSoongModuleTarget(
@@ -520,13 +668,15 @@ func generateSoongModuleTarget(
 		depLabels[qualifiedTargetLabel(blueprintCtx, depModule)] = true
 	})
 
-	depLabelList := "[\n"
+	depLabelList := "    module_deps = [\n"
 	for depLabel, _ := range depLabels {
 		depLabelList += "        \""
 		depLabelList += depLabel
 		depLabelList += "\",\n"
 	}
-	depLabelList += "    ]"
+	depLabelList += "    ],\n"
+
+	attributes = depLabelList + attributes
 
 	moduleType := canonicalizeModuleType(blueprintCtx.ModuleType(module))
 
@@ -535,8 +685,6 @@ func generateSoongModuleTarget(
 		targetNameWithVariant(blueprintCtx, module),
 		blueprintCtx.ModuleName(module),
 		moduleType,
-		blueprintCtx.ModuleSubDir(module),
-		depLabelList,
 		attributes)
 }
 

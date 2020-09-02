@@ -74,7 +74,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     name = "foo",
     module_name = "foo",
     module_type = "custom",
-    module_variant = "",
     module_deps = [
     ],
 )`,
@@ -89,7 +88,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     name = "foo",
     module_name = "foo",
     module_type = "custom",
-    module_variant = "",
     module_deps = [
     ],
     ramdisk = True,
@@ -105,7 +103,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     name = "foo",
     module_name = "foo",
     module_type = "custom",
-    module_variant = "",
     module_deps = [
     ],
     owner = "a_string_with\"quotes\"_and_\\backslashes\\\\",
@@ -121,7 +118,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     name = "foo",
     module_name = "foo",
     module_type = "custom",
-    module_variant = "",
     module_deps = [
     ],
     required = [
@@ -139,7 +135,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     name = "foo",
     module_name = "foo",
     module_type = "custom",
-    module_variant = "",
     module_deps = [
     ],
     target_required = [
@@ -157,7 +152,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     name = "foo",
     module_name = "foo",
     module_type = "custom",
-    module_variant = "",
     module_deps = [
     ],
 )`,
@@ -175,7 +169,6 @@ func TestGenerateBazelOverlayFromBlueprint(t *testing.T) {
     name = "foo",
     module_name = "foo",
     module_type = "custom",
-    module_variant = "",
     module_deps = [
     ],
     owner = "custom_owner",
