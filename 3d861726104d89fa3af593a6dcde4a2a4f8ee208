@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "c212dfe5_080a2fd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-02T16:54:53Z",
+      "side": 1,
+      "message": "bpf is a single architecture for all devices, so it shouldn\u0027t be mutated into arm64/arm like a cc_object module.",
+      "parentUuid": "e2b0698a_342b3800",
+      "revId": "3d861726104d89fa3af593a6dcde4a2a4f8ee208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d01862b2_81c8de0f",
         "filename": "apex/apex.go",
         "patchSetId": 2
