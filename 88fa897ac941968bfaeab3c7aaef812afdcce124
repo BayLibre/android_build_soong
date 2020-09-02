@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1627ef1_c5cb5c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-02T12:54:25Z",
+      "side": 1,
+      "message": "I am not sure if this is the right thing to do but it seems as though there is no need to treat commonProperties and defaultsVisibilityProperties differently than any other set of properties used for defaults.",
+      "revId": "88fa897ac941968bfaeab3c7aaef812afdcce124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
