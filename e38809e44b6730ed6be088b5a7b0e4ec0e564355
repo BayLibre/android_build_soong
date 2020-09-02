@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9b84dba_23a5013b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-02T12:53:19Z",
+      "side": 1,
+      "message": "As no progress appeared to have been made on this for a while I though that I would take a look at it as I am still getting back up to speed with what I was doing before my holidays. The build changes are quite simple but it is unclear whether there is anything which relied on the dist properties being inherited. The chances are that if anything does rely on the inheritance then it won\u0027t become apparent until someone or something attempts to access the dist files.",
+      "revId": "e38809e44b6730ed6be088b5a7b0e4ec0e564355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
