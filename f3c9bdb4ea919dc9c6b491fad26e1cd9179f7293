@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1db77358_865e9836",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-03T19:45:46Z",
+      "side": 1,
+      "message": "should we indicate which of hostPath \u0026 installPath are missing? or how to correct it?",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 75
+      },
+      "revId": "f3c9bdb4ea919dc9c6b491fad26e1cd9179f7293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33cac7a_8eb75e3e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-03T19:45:46Z",
+      "side": 1,
+      "message": "The previous error seemed much more informative -- why are we removing it?",
+      "range": {
+        "startLine": 1949,
+        "startChar": 5,
+        "endLine": 1949,
+        "endChar": 39
+      },
+      "revId": "f3c9bdb4ea919dc9c6b491fad26e1cd9179f7293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
