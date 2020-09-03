@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "02b4f30d_5b955cf1",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-03T16:27:55Z",
+      "side": 1,
+      "message": "Added some commentary, but are you sure the symlink timestamps matter to ninja? What I could tell from e.g. https://github.com/ninja-build/ninja/issues/1186 it uses stat rather than lstat, and that\u0027s unlikely to change.",
+      "parentUuid": "988a9193_a122d459",
+      "revId": "08cbf97575d88438b657c0ab2fbf0dcef6144bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8881e321_7ff5efdc",
         "filename": "cc/prebuilt.go",
         "patchSetId": 3
@@ -47,6 +65,30 @@
       "writtenOn": "2020-09-01T18:34:56Z",
       "side": 1,
       "message": "I\u0027m not sure this is true.  For example, if I run `m out/host/linux-x86/bin/prebuilt-with-symlink`, these dependencies will ensure that the intermediates exist, but not that the symlinks that the binary will attempt to load from will exist.\n\nI think to do this correctly it has to be handled in ctx.InstallFile or ctx.InstallSymlink, which has the installed locations of the dependency modules, or at least has to manually track the installed files for the shared library dependencies.",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 40
+      },
+      "revId": "08cbf97575d88438b657c0ab2fbf0dcef6144bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db916c1a_00cd537a",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-03T16:27:55Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t follow. The only symlink the build system needs to create to run the binary in that example is out/host/linux-x86/bin/prebuilt-with-symlink. Then the binary will load the shared libs directly from their source locations.\n\nIf a shared lib is updated but not the binary then these dependencies on the .intermediates copies along with their dependencies back to the prebuilt libs will make any dependency on the binary module behave correctly. I\u0027m rigging something up to try this.",
+      "parentUuid": "8881e321_7ff5efdc",
       "range": {
         "startLine": 349,
         "startChar": 6,
