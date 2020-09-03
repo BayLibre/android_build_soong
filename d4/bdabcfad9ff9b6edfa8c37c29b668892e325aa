@@ -1,0 +1,8 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Bypass-Presubmit+1: Colin Cross <ccross@android.com>
+Submitted-by: Colin Cross <ccross@android.com>
+Submitted-at: Thu, 03 Sep 2020 03:46:23 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1419428
+Project: platform/build/soong
+Branch: refs/heads/master
