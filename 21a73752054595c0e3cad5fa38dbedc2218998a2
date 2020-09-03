@@ -88,6 +88,24 @@
       "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0f3367e_0a290c8a",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-03T10:11:35Z",
+      "side": 1,
+      "message": "What determines whether something can be used in \u003cuses-library\u003e is whether there is a permissions.xml file that has a \u003clibrary\u003e entry for it. A lot of them are now created by java_sdk_library, but there are still many which are manually created - http://source/search?q\u003d%22%3Cpermissions%22%20%22%3Clibrary%22\u0026sq\u003dpackage:%5Eandroid$\n\nIdeally, we should migrate them to use java_sdk_library so that we can make sure that the API, which APPS may come to rely on, is properly managed. However, that is a large piece of work.",
+      "parentUuid": "ffef4447_26aba10e",
+      "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
