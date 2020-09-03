@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "1ea2c7f8_ef1ebf35",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-03T18:06:49Z",
+      "side": 1,
+      "message": "Interesting, thanks.\n\nI\u0027ve added a sentence about that the symlink(s) get updated.",
+      "parentUuid": "441b514d_83be6847",
+      "revId": "08cbf97575d88438b657c0ab2fbf0dcef6144bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8881e321_7ff5efdc",
         "filename": "cc/prebuilt.go",
         "patchSetId": 3
@@ -131,6 +149,30 @@
       "side": 1,
       "message": "Martin pointed out that we don\u0027t care about installing any dependencies, as any shared library dependencies will be loaded by the linker relative to the source of the symlink.  We only care about updating the timestamp of the symlink whenever one of its transitive dependencies is updated, so the transitive dependencies through the intermediates directory are fine.",
       "parentUuid": "db916c1a_00cd537a",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 40
+      },
+      "revId": "08cbf97575d88438b657c0ab2fbf0dcef6144bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3edf0536_bc71e1b1",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-03T18:06:49Z",
+      "side": 1,
+      "message": "I can confirm that touching a shared lib dependency will dirty the binary in the ninja resolution, and the installed symlink(s) get new timestamps.",
+      "parentUuid": "cf9bb63d_eb46c24d",
       "range": {
         "startLine": 349,
         "startChar": 6,
