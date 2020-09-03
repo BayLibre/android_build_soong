@@ -70,6 +70,24 @@
       "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffef4447_26aba10e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-03T09:03:03Z",
+      "side": 1,
+      "message": "I tried to use `installable` property before adding `is_uses_lib`, but it turns out that there are cases when `java_library` is `installable` but shouldn\u0027t be added as \u003cuses-library\u003e. I got multiple build errors caused by extra libraries being added to the \u003cuses-library\u003e list and abandoned the idea.",
+      "parentUuid": "c4e1a343_ce2462d8",
+      "revId": "21a73752054595c0e3cad5fa38dbedc2218998a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
