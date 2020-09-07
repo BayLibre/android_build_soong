@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b75c62ca_1813c050",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-07T11:44:00Z",
+      "side": 1,
+      "message": "I don\u0027t think we can suggest a good way to correct it: the reasons why a build/install path is missing can be versatile, and there is no definite (or just highly probable) fix.\n\nAs for indicating which of the build/install paths is nil, you are right, let\u0027s do so. I split the error message and expanded one of the comments a bit.",
+      "parentUuid": "1db77358_865e9836",
+      "range": {
+        "startLine": 137,
+        "startChar": 2,
+        "endLine": 138,
+        "endChar": 75
+      },
+      "revId": "f3c9bdb4ea919dc9c6b491fad26e1cd9179f7293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f33cac7a_8eb75e3e",
         "filename": "java/app.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-03T19:45:46Z",
       "side": 1,
       "message": "The previous error seemed much more informative -- why are we removing it?",
+      "range": {
+        "startLine": 1949,
+        "startChar": 5,
+        "endLine": 1949,
+        "endChar": 39
+      },
+      "revId": "f3c9bdb4ea919dc9c6b491fad26e1cd9179f7293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebca89c8_948086ec",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-07T11:44:00Z",
+      "side": 1,
+      "message": "I removed the error message here because it is now handled by AddLibraryPath. The previous, more detailed error message was added a while ago, and the suggestion to add `installable: true` probably goes back to the time when this was a common cause of failure. It is no longer the case, at least not in my experiments, therefore I reckoned that the verbose error message is not particularly useful.",
+      "parentUuid": "f33cac7a_8eb75e3e",
       "range": {
         "startLine": 1949,
         "startChar": 5,
