@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004804502",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1418529?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "79cee699_4c6dd793",
+          "description": "Change to \"dexpreopt/config.go\"",
+          "replacements": [
+            {
+              "path": "dexpreopt/config.go",
+              "range": {
+                "startLine": 137,
+                "startChar": 52,
+                "endLine": 137,
+                "endChar": 60
+              },
+              "replacement": "shouldn\u0027t"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "610d73f7_bb4c9e80",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-07T11:44:06Z",
+      "side": 1,
+      "message": "Common typo found: \"should\u0027t\" -- should it be \"shouldn\u0027t\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 137,
+        "startChar": 52,
+        "endLine": 137,
+        "endChar": 60
+      },
+      "revId": "bd93d8ce51a2604a05be7bc638eea7a1a6247557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
