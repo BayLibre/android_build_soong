@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "582d98fc_0567fb7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-09-08T20:24:12Z",
+      "side": 1,
+      "message": "Is this based on it being selectable via CrossHost* in the soong.variables file? That was more out of convenience than anything else, and is not the only way to enable it (it can be enabled in the soong.config file as well).\n\nIn many cases, I\u0027ve thought of Host vs HostCross as whether it\u0027s executable on the build machine, so this feels a bit weird, but this use case would necessitate dropping that assumption either way, since you\u0027d need to know the combination of OS+Arch to figure that out. (darwin/arm64 also messes this up)\n\nAt some point it was the hope that linux_bionic could replace linux_glibc (at least on some builds) as being the primary host architecture.\n\nIt looks like there are some assumptions that HostCross \u003d\u003d Windows?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;drc\u003d945441c09ac8b638a0c54f1f7dbd4e934172d6f6;l\u003d931\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config.go;drc\u003d5d942d05b1f7a99c7d8ad936b5faaa778a7352b7;l\u003d987\n\nDoes this work with https://cs.android.com/android/platform/superproject/+/master:art/build/art.go;drc\u003db309240781b17ee994d088648d5fc76814dde436;l\u003d313 ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "48258c35eaca5823a6909db1b4587e6bc0eb73a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
