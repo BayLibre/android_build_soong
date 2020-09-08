@@ -567,7 +567,7 @@ var (
 	NoOsType    OsType
 	Linux       = NewOsType("linux_glibc", Host, false)
 	Darwin      = NewOsType("darwin", Host, false)
-	LinuxBionic = NewOsType("linux_bionic", Host, false)
+	LinuxBionic = NewOsType("linux_bionic", HostCross, false)
 	Windows     = NewOsType("windows", HostCross, true)
 	Android     = NewOsType("android", Device, false)
 	Fuchsia     = NewOsType("fuchsia", Device, false)
@@ -1503,6 +1503,9 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 		crossHostOs := osByName(*variables.CrossHost)
 		if crossHostOs == NoOsType {
 			return nil, fmt.Errorf("Unknown cross host OS %q", *variables.CrossHost)
+		}
+		if crossHostOs.Class != HostCross {
+			return nil, fmt.Errorf("OS %q is not for CrossHost")
 		}
 
 		if String(variables.CrossHostArch) == "" {
