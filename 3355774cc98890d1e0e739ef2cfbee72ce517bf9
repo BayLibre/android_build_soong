@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6835b210_4f0edaae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-08T21:35:36Z",
+      "side": 1,
+      "message": "This will need to be rebased to not depend on an abandoned change.",
+      "revId": "3355774cc98890d1e0e739ef2cfbee72ce517bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
