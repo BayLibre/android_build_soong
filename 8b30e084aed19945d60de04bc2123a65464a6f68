@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35138643_1213781b",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-08T21:51:24Z",
+      "side": 1,
+      "message": "Optional: would it make sense to have a macro for this instead?",
+      "range": {
+        "startLine": 109,
+        "startChar": 15,
+        "endLine": 109,
+        "endChar": 46
+      },
+      "revId": "8b30e084aed19945d60de04bc2123a65464a6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74f3080e_a0642b80",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-08T21:51:24Z",
+      "side": 1,
+      "message": "Should we file a bug to track how we want to handle this longterm?",
+      "range": {
+        "startLine": 364,
+        "startChar": 3,
+        "endLine": 364,
+        "endChar": 52
+      },
+      "revId": "8b30e084aed19945d60de04bc2123a65464a6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf36d97_061eb774",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-08T21:51:24Z",
+      "side": 1,
+      "message": "Optional: Throughout: fmt.Sprintf (https://golang.org/pkg/fmt/#Sprintf) with %q to quote strings may be easier than manually quoting",
+      "range": {
+        "startLine": 510,
+        "startChar": 15,
+        "endLine": 510,
+        "endChar": 35
+      },
+      "revId": "8b30e084aed19945d60de04bc2123a65464a6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
