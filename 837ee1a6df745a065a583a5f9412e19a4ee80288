@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7656d705_635a2318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-08T20:17:02Z",
+      "side": 1,
+      "message": "Can\u0027t reproduce the boot problem on all the CF targets.",
+      "revId": "837ee1a6df745a065a583a5f9412e19a4ee80288",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
