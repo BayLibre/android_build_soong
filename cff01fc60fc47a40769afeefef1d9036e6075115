@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "359a8dd2_5b4430e8",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-08T22:43:57Z",
+      "side": 1,
+      "message": "Maybe mention how the ordering works here if the source is found before the prebuilt (moduleBootDexJars is overwritten by the preubilt) vs prebuilt found before the source (this check skips the source module).",
+      "revId": "cff01fc60fc47a40769afeefef1d9036e6075115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a799439f_d6aef9f8",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-08T22:43:57Z",
+      "side": 1,
+      "message": "Naming is a little confused in Soong.  Name() was supposed to be used only once, when Blueprint was reading the Android.bp files to provide an original name for the module, overridden by some modules like prebuilts in order to provdie a \"prebuilt_\" prefix.  Then later uses are expected to use ModuleContext.ModuleName(), ModuleContext.OtherModuleName(module), or Singleton.ModuleName(module), which will return the name taking into account things like TopDownMutatorContext.Rename.  Unfortunately Module.Name() is temptingly named and hard to avoid usages.  BaseModuleName() is basically Name() without the prefix.  The usage below is fine, but maybe we should replace it with something on the prebuilt interface that returns the name without the prefix.",
+      "range": {
+        "startLine": 160,
+        "startChar": 34,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "cff01fc60fc47a40769afeefef1d9036e6075115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0044bd8e_97387de0",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-08T22:43:57Z",
+      "side": 1,
+      "message": "I wonder if this would be simpler if we stored something in ModuleBase that could mark a source module that was replaced by a prebuilt.  We disable source modules replaced by a prebuilt, so maybe just checking module.Disabled() at the beginning of the visit function would be enough?  Then if you use ctx.ModuleName(module) for the name it should work for both sources and prebuilts.",
+      "revId": "cff01fc60fc47a40769afeefef1d9036e6075115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
