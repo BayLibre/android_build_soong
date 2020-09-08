@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "023fcce9_3408368e",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-09-08T20:48:21Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be the case?",
+      "range": {
+        "startLine": 24,
+        "startChar": 54,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf36d3eb_273197ce",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-09-08T20:48:21Z",
+      "side": 1,
+      "message": "This feels suspicious, but a lot of these are now from the global device options",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcee77f7_67af596d",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-09-08T20:48:21Z",
+      "side": 1,
+      "message": "(+ -funswitch-loops below)\n\nit looks like these were removed from everything except for linux-bionic in https://android-review.googlesource.com/c/platform/build/soong/+/530097 so we probably don\u0027t need to propagate these further",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
