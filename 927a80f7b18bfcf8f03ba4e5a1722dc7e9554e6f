@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "305014d6_81be3f3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-09-08T20:22:12Z",
+      "side": 1,
+      "message": "We\u0027ll also need to make this error out for windows, as these modules should not be supported there (embedded_launcher should have some sort of error, but it may be obtuse; !embedded_launcher may seem to work, but shouldn\u0027t be supported)",
+      "revId": "927a80f7b18bfcf8f03ba4e5a1722dc7e9554e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
