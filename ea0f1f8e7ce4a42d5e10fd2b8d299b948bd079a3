@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6c80ae1a_0debc7e0",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-08T05:38:07Z",
+      "side": 1,
+      "message": "Updated as such. PTAL.",
+      "parentUuid": "8df23af6_d360d3ce",
+      "revId": "ea0f1f8e7ce4a42d5e10fd2b8d299b948bd079a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c474cb9_499a53b6",
         "filename": "android/paths.go",
         "patchSetId": 2
