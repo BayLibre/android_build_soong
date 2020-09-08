@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8df23af6_d360d3ce",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-08T02:22:46Z",
+      "side": 1,
+      "message": "I just learned that LinuxBionic is currently used as a cross host target by the art test although the target\u0027s OsType is Host (not HostCross). The art test is using the target effectively as a cross host target. Then I feel like we need to reuse LinuxBionic. Specifically, \n\n1) make the OsType of LinuxBionic to be HostCross\n2) ensure that the OS selected via variables.CrossHost is HostCross \n3) add aarch64 to the supported arch of LinuxBionic",
+      "parentUuid": "767fb806_a17d015f",
+      "revId": "ea0f1f8e7ce4a42d5e10fd2b8d299b948bd079a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c474cb9_499a53b6",
         "filename": "android/paths.go",
         "patchSetId": 2
