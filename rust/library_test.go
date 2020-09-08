@@ -37,7 +37,7 @@ func TestLibraryVariants(t *testing.T) {
                 }`)
 
 	// Test all variants are being built.
-	libfooRlib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_rlib").Output("libfoo.rlib")
+	libfooRlib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_rlib_rlib-std").Output("libfoo.rlib")
 	libfooDylib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_dylib").Output("libfoo.dylib.so")
 	libfooStatic := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_static").Output("libfoo.ffi.a")
 	libfooShared := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_shared").Output("libfoo.ffi.so")
@@ -182,14 +182,14 @@ func TestAutoDeps(t *testing.T) {
                         rustlibs: ["libbar"],
                 }`)
 
-	libfooRlib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_rlib")
+	libfooRlib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_rlib_rlib-std")
 	libfooDylib := ctx.ModuleForTests("libfoo", "linux_glibc_x86_64_dylib")
 	libfooStatic := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_static")
 	libfooShared := ctx.ModuleForTests("libfoo.ffi", "linux_glibc_x86_64_shared")
 
 	for _, static := range []android.TestingModule{libfooRlib, libfooStatic} {
-		if !android.InList("libbar", static.Module().(*Module).Properties.AndroidMkRlibs) {
-			t.Errorf("libbar not present as static dependency in static lib")
+		if !android.InList("libbar.rlib-std", static.Module().(*Module).Properties.AndroidMkRlibs) {
+			t.Errorf("libbar not present as rlib dependency in static lib")
 		}
 		if android.InList("libbar", static.Module().(*Module).Properties.AndroidMkDylibs) {
 			t.Errorf("libbar present as dynamic dependency in static lib")
@@ -200,8 +200,8 @@ func TestAutoDeps(t *testing.T) {
 		if !android.InList("libbar", dyn.Module().(*Module).Properties.AndroidMkDylibs) {
 			t.Errorf("libbar not present as dynamic dependency in dynamic lib")
 		}
-		if android.InList("libbar", dyn.Module().(*Module).Properties.AndroidMkRlibs) {
-			t.Errorf("libbar present as static dependency in dynamic lib")
+		if android.InList("libbar.dylib-std", dyn.Module().(*Module).Properties.AndroidMkRlibs) {
+			t.Errorf("libbar present as rlib dependency in dynamic lib")
 		}
 
 	}
