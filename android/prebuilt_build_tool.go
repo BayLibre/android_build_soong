@@ -72,7 +72,7 @@ func (t *prebuiltBuildTool) GenerateAndroidBuildActions(ctx ModuleContext) {
 }
 
 func (t *prebuiltBuildTool) MakeVars(ctx MakeVarsModuleContext) {
-	if makeVar := String(t.properties.Export_to_make_var); makeVar != "" {
+	if makeVar := String(t.properties.Export_to_make_var); makeVar != "" && t.Enabled() {
 		ctx.StrictRaw(makeVar, t.toolPath.String())
 	}
 }
