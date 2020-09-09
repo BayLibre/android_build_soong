@@ -237,9 +237,11 @@ type BpPropertySet interface {
 	// * string
 	// * array of the above
 	// * bool
-	// * BpPropertySet
+	// * BpPropertySet or a property struct, in which case their fields are
+	//   added recursively into a nested property set within this one.
 	//
-	// It is an error if multiple properties with the same name are added.
+	// Except in the last case above, it is an error if multiple properties with
+	// the same name are added.
 	AddProperty(name string, value interface{})
 
 	// Add a property with an associated tag

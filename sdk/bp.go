@@ -16,6 +16,8 @@ package sdk
 
 import (
 	"fmt"
+	"reflect"
+	"strings"
 
 	"android/soong/android"
 )
@@ -33,7 +35,68 @@ func (s *bpPropertySet) init() {
 	s.tags = make(map[string]android.BpPropertyTag)
 }
 
+// Given a value that is either a *bpPropertySet or a property struct, merges
+// its fields into s.
+func (s *bpPropertySet) mergePropertySet(value reflect.Value) {
+	if setValue, ok := value.Interface().(*bpPropertySet); ok {
+		// Merge the given bpPropertySet recursively.
+		for _, name := range setValue.order {
+			if tag, ok := setValue.tags[name]; ok {
+				s.AddPropertyWithTag(name, setValue.properties[name], tag)
+			} else {
+				s.AddProperty(name, setValue.properties[name])
+			}
+		}
+
+	} else {
+		// Merge the given property struct recursively using reflection.
+		value = reflect.Indirect(value)
+		structType := value.Type()
+		for i := 0; i < structType.NumField(); i++ {
+			field := structType.Field(i)
+			fieldVal := value.Field(i)
+
+			switch fieldVal.Type().Kind() {
+			case reflect.Ptr:
+				if fieldVal.IsNil() {
+					continue // nil pointer means the property isn't set.
+				}
+				fieldVal = fieldVal.Elem()
+			case reflect.Slice:
+				if fieldVal.IsNil() {
+					continue // Ignore a nil slice (but not one with length zero).
+				}
+			}
+
+			if fieldVal.Type().Kind() == reflect.Struct {
+				fieldVal = fieldVal.Addr() // Avoid struct copy below.
+			}
+			s.AddProperty(strings.ToLower(field.Name), fieldVal.Interface())
+		}
+	}
+}
+
 func (s *bpPropertySet) AddProperty(name string, value interface{}) {
+	val := reflect.ValueOf(value)
+	switch val.Kind() {
+	case reflect.Struct:
+		panic(fmt.Sprintf("Value of %q is a struct, not a pointer to one: %v", name, value))
+
+	case reflect.Ptr, reflect.Interface:
+		if curValue, ok := s.properties[name]; ok {
+			if curSet, ok := curValue.(*bpPropertySet); ok {
+				curSet.mergePropertySet(val)
+				return
+			}
+			// If the current value isn't a property set we got conflicting types.
+			// Continue down to the check below to complain about it.
+		} else {
+			setValue := newPropertySet()
+			setValue.mergePropertySet(val)
+			value = setValue
+		}
+	}
+
 	if s.properties[name] != nil {
 		panic(fmt.Sprintf("Property %q already exists in property set", name))
 	}
@@ -48,9 +111,8 @@ func (s *bpPropertySet) AddPropertyWithTag(name string, value interface{}, tag a
 }
 
 func (s *bpPropertySet) AddPropertySet(name string) android.BpPropertySet {
-	set := newPropertySet()
-	s.AddProperty(name, set)
-	return set
+	s.AddProperty(name, newPropertySet())
+	return s.properties[name].(android.BpPropertySet)
 }
 
 func (s *bpPropertySet) getValue(name string) interface{} {
