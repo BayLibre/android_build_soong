@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0929af71_b8212dd9",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-09T18:14:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54ca8df4_1823eab7",
+      "revId": "7b37f49aece86f99204dbdea65be74f966958e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20129db4_e32497e2",
         "filename": "rust/config/global.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "7b37f49aece86f99204dbdea65be74f966958e6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc3517db_b1a1bae0",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-09T18:14:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20129db4_e32497e2",
+      "revId": "7b37f49aece86f99204dbdea65be74f966958e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
