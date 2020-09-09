@@ -89,6 +89,9 @@ type headerModule struct {
 
 	installPaths android.Paths
 	licensePath  android.Path
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	modulePaths []string
 }
 
 func getHeaderInstallDir(ctx android.ModuleContext, header android.Path, from string,
@@ -124,6 +127,9 @@ func getHeaderInstallDir(ctx android.ModuleContext, header android.Path, from st
 }
 
 func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Collect the module directory for IDE info in android/njdeps.go.
+	m.modulePaths = append(m.modulePaths, ctx.ModuleDir())
+
 	if String(m.properties.License) == "" {
 		ctx.PropertyErrorf("license", "field is required")
 	}
@@ -367,4 +373,9 @@ func preprocessedNdkHeadersFactory() android.Module {
 	android.InitAndroidModule(module)
 
 	return module
+}
+
+// Collect module info for IDE info in android/njdeps.go.
+func (m *headerModule) IDEInfoNonJava(dpInfo *android.IdeInfoNonJava) {
+	dpInfo.Paths = append(dpInfo.Paths, m.modulePaths...)
 }
