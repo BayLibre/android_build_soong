@@ -366,6 +366,9 @@ type Javadoc struct {
 
 	docZip      android.WritablePath
 	stubsSrcJar android.WritablePath
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 func (j *Javadoc) OutputFiles(tag string) (android.Paths, error) {
@@ -670,6 +673,9 @@ func (j *Javadoc) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Collect the module directory for IDE info in java/jdeps.go.
+	j.modulePaths = append(j.modulePaths, ctx.ModuleDir())
+
 	deps := j.collectDeps(ctx)
 
 	j.docZip = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"docs.zip")
@@ -709,6 +715,12 @@ func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	zipSyncCleanupCmd(rule, srcJarDir)
 
 	rule.Build(pctx, ctx, "javadoc", "javadoc")
+}
+
+// Collect modules' info for IDE info in java/jdeps.go.
+func (j *Javadoc) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Paths = append(dpInfo.Paths, j.modulePaths...)
+	dpInfo.Deps = append(dpInfo.Deps, j.properties.Libs...)
 }
 
 //

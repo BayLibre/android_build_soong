@@ -889,7 +889,6 @@ func (m *Module) getLinkType(name string) (ret linkType, stubs bool) {
 	case "android_test_stubs_current":
 		return javaSystem, true
 	}
-
 	if stub, linkType := moduleStubLinkType(name); stub {
 		return linkType, true
 	}
@@ -1848,14 +1847,42 @@ func (j *Module) logtags() android.Paths {
 	return j.logtagsSrcs
 }
 
+func getListTrimElementPrefix(list []string, prefix string) []string {
+	newList := []string{}
+	for _, ele := range list {
+		if strings.HasPrefix(ele, prefix) {
+			ele = strings.Trim(ele, prefix)
+		}
+		newList = append(newList, ele)
+	}
+	return newList
+}
+
+func getListOnlyTrimElementPrefix(list []string, prefix string) []string {
+	newList := []string{}
+	for _, ele := range list {
+		if strings.HasPrefix(ele, prefix) {
+			ele = strings.Trim(ele, prefix)
+			newList = append(newList, ele)
+		}
+	}
+	return newList
+}
+
 // Collect information for opening IDE project files in java/jdeps.go.
 func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
+	dpInfo.Deps = append(dpInfo.Deps, j.properties.Plugins...)
+	dpInfo.Deps = append(dpInfo.Deps, getListTrimElementPrefix(j.properties.Java_resources, ":")...)
+	dpInfo.Deps = append(dpInfo.Deps, getListOnlyTrimElementPrefix(j.properties.Srcs, ":")...)
 	dpInfo.Srcs = append(dpInfo.Srcs, j.expandIDEInfoCompiledSrcs...)
 	dpInfo.SrcJars = append(dpInfo.SrcJars, j.compiledSrcJars.Strings()...)
 	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
 	if j.expandJarjarRules != nil {
 		dpInfo.Jarjar_rules = append(dpInfo.Jarjar_rules, j.expandJarjarRules.String())
+	}
+	if String(j.deviceProperties.Sdk_version) == "current" {
+		dpInfo.Deps = append(dpInfo.Deps, "prebuilts/jdk/jdk8")
 	}
 	dpInfo.Paths = append(dpInfo.Paths, j.modulePaths...)
 }
@@ -2208,6 +2235,9 @@ type Test struct {
 	testConfig       android.Path
 	extraTestConfigs android.Paths
 	data             android.Paths
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 type TestHost struct {
@@ -2241,6 +2271,14 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
 }
 
+// Collect information for opening IDE project files in java/jdeps.go.
+func (j *TestHost) IDEInfo(dpInfo *android.IdeInfo) {
+	if len(j.testHostProperties.Data_native_bins) > 0 {
+		dpInfo.Deps = append(dpInfo.Deps, j.testHostProperties.Data_native_bins...)
+	}
+	j.Test.IDEInfo(dpInfo)
+}
+
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
 		j.testProperties.Test_suites, j.testProperties.Auto_gen_config)
@@ -2253,7 +2291,23 @@ func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.data = append(j.data, android.OutputFileForModule(ctx, dep, ""))
 	})
 
+	// Collect the module directory for IDE info in java/jdeps.go.
+	j.modulePaths = append(j.modulePaths, ctx.ModuleDir())
+
 	j.Library.GenerateAndroidBuildActions(ctx)
+}
+
+// Collect information for opening IDE project files in java/jdeps.go.
+func (j *Test) IDEInfo(dpInfo *android.IdeInfo) {
+	for _, data := range j.testProperties.Data {
+		if strings.HasPrefix(data, ":") {
+			data = strings.Trim(data, ":")
+		}
+		dpInfo.Deps = append(dpInfo.Deps, data)
+	}
+	dpInfo.Deps = append(dpInfo.Deps, j.Library.Module.properties.Libs...)
+	dpInfo.Deps = append(dpInfo.Deps, j.Library.Module.properties.Static_libs...)
+	dpInfo.Paths = append(dpInfo.Paths, j.modulePaths...)
 }
 
 func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {

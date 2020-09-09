@@ -531,6 +531,12 @@ func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
 			dpInfo.Deps = append(dpInfo.Deps, src)
 		}
 	}
+	for _, tool := range g.properties.Tools {
+		if strings.HasPrefix(tool, ":") {
+			tool = strings.Trim(tool, ":")
+		}
+		dpInfo.Deps = append(dpInfo.Deps, tool)
+	}
 	dpInfo.Paths = append(dpInfo.Paths, g.modulePaths...)
 }
 
