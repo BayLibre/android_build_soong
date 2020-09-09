@@ -88,6 +88,11 @@ type Module struct {
 
 	outputFile    android.OptionalPath
 	generatedFile android.OptionalPath
+
+	subName string
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	modulePaths []string
 }
 
 func (mod *Module) OutputFiles(tag string) (android.Paths, error) {
@@ -666,6 +671,9 @@ func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
+	// Collect the module directory for IDE info in android/njdeps.go.
+	mod.modulePaths = append(mod.modulePaths, actx.ModuleDir())
+
 	ctx := &moduleContext{
 		ModuleContext: actx,
 	}
@@ -1082,3 +1090,13 @@ var String = proptools.String
 var StringPtr = proptools.StringPtr
 
 var _ android.OutputFileProducer = (*Module)(nil)
+
+// Collect modules' info for IDE info in android/njdeps.go.
+func (mod *Module) IDEInfoNonJava(dpInfo *android.IdeInfoNonJava) {
+	dpInfo.Deps = append(dpInfo.Deps, mod.Properties.AndroidMkRlibs...)
+	dpInfo.Deps = append(dpInfo.Deps, mod.Properties.AndroidMkDylibs...)
+	dpInfo.Deps = append(dpInfo.Deps, mod.Properties.AndroidMkProcMacroLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, mod.Properties.AndroidMkSharedLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, mod.Properties.AndroidMkStaticLibs...)
+	dpInfo.Paths = append(dpInfo.Paths, mod.modulePaths...)
+}
