@@ -16,6 +16,8 @@ package sdk
 
 import (
 	"fmt"
+	"reflect"
+	"strings"
 
 	"android/soong/android"
 )
@@ -33,13 +35,92 @@ func (s *bpPropertySet) init() {
 	s.tags = make(map[string]android.BpPropertyTag)
 }
 
-func (s *bpPropertySet) AddProperty(name string, value interface{}) {
+func (s *bpPropertySet) AddProperty(name string, value interface{}) bool {
+	val := reflect.ValueOf(value)
+	switch val.Kind() {
+	case reflect.Struct:
+		panic(fmt.Sprintf("Value of %q is a struct, not a pointer to one: %v", name, value))
+
+	case reflect.Ptr, reflect.Interface:
+		curValue := s.properties[name]
+		var curSet *bpPropertySet
+		if curValue == nil {
+			if _, ok := value.(*bpPropertySet); ok {
+				// No need to merge the sets in this case, so leave curSet as nil to
+				// skip down where the value is added to s.
+			} else {
+				// Create a new set to use for merging with the value, but don't add it
+				// to s yet because we don't know if it will get any fields.
+				curSet = newPropertySet()
+			}
+		} else {
+			// Use the current value if it is a set, otherwise we'll skip down to the
+			// panic call to complain about it.
+			curSet, _ = curValue.(*bpPropertySet)
+		}
+
+		if curSet != nil {
+			propertiesAdded := false
+
+			if addSet, ok := value.(*bpPropertySet); ok {
+				// Merge the given bpPropertySet recursively.
+				for _, name := range addSet.order {
+					if tag, ok := addSet.tags[name]; ok {
+						curSet.AddPropertyWithTag(name, addSet.properties[name], tag)
+						propertiesAdded = true
+					} else if curSet.AddProperty(name, addSet.properties[name]) {
+						propertiesAdded = true
+					}
+				}
+
+			} else {
+				// Merge the given property struct recursively using reflection.
+				val = reflect.Indirect(val)
+				structType := val.Type()
+				for i := 0; i < structType.NumField(); i++ {
+					field := structType.Field(i)
+					fieldVal := val.Field(i)
+
+					switch fieldVal.Type().Kind() {
+					case reflect.Ptr:
+						if fieldVal.IsNil() {
+							continue // nil pointer means the property isn't set.
+						}
+						fieldVal = fieldVal.Elem()
+					case reflect.Slice:
+						if fieldVal.IsNil() {
+							continue // Ignore a nil slice (but not one with length zero).
+						}
+					}
+
+					if fieldVal.Type().Kind() == reflect.Struct {
+						fieldVal = fieldVal.Addr() // Avoid struct copy below.
+					}
+					if curSet.AddProperty(strings.ToLower(field.Name), fieldVal.Interface()) {
+						propertiesAdded = true
+					}
+				}
+			}
+
+			if curValue != nil {
+				// The set is already added, so nothing more to do.
+				return propertiesAdded
+			}
+			if !propertiesAdded {
+				// Don't add an empty set if no properties were added.
+				return false
+			}
+			value = curSet
+		}
+	}
+
 	if s.properties[name] != nil {
 		panic(fmt.Sprintf("Property %q already exists in property set", name))
 	}
 
 	s.properties[name] = value
 	s.order = append(s.order, name)
+	return true
 }
 
 func (s *bpPropertySet) AddPropertyWithTag(name string, value interface{}, tag android.BpPropertyTag) {
@@ -48,9 +129,8 @@ func (s *bpPropertySet) AddPropertyWithTag(name string, value interface{}, tag a
 }
 
 func (s *bpPropertySet) AddPropertySet(name string) android.BpPropertySet {
-	set := newPropertySet()
-	s.AddProperty(name, set)
-	return set
+	s.AddProperty(name, newPropertySet())
+	return s.properties[name].(android.BpPropertySet)
 }
 
 func (s *bpPropertySet) getValue(name string) interface{} {
