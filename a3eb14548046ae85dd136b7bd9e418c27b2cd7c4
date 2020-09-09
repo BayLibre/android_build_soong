@@ -16,6 +16,29 @@
       "revId": "a3eb14548046ae85dd136b7bd9e418c27b2cd7c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df67ad91_59f3f9cc",
+        "filename": "rust/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-09T18:18:25Z",
+      "side": 1,
+      "message": "cc puts the arm-specific flags after the global flags that are now in DeviceGlobalLinkFlags.",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "a3eb14548046ae85dd136b7bd9e418c27b2cd7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
