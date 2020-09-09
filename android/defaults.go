@@ -115,6 +115,9 @@ type DefaultsVisibilityProperties struct {
 
 type DefaultsModuleBase struct {
 	DefaultableModuleBase
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	modulePaths []string
 }
 
 // The common pattern for defaults modules is to register separate instances of
@@ -168,6 +171,13 @@ func (d *DefaultsModuleBase) productVariableProperties() interface{} {
 }
 
 func (d *DefaultsModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {
+	// Collect the module directory for IDE info in android/njdeps.go.
+	d.modulePaths = append(d.modulePaths, ctx.ModuleDir())
+}
+
+// Collect modules' info for IDE info in android/njdeps.go.
+func (d *DefaultsModuleBase) IDEInfoNonJava(dpInfo *IdeInfoNonJava) {
+	dpInfo.Paths = append(dpInfo.Paths, d.modulePaths...)
 }
 
 func InitDefaultsModule(module DefaultsModule) {
@@ -267,6 +277,11 @@ func (defaultable *DefaultableModuleBase) applyDefaultProperties(ctx TopDownMuta
 			}
 		}
 	}
+}
+
+// Collect modules' info for IDE info in android/njdeps.go.
+func (defaultable *DefaultableModuleBase) IDEInfoNonJava(dpInfo *IdeInfoNonJava) {
+	dpInfo.Deps = append(dpInfo.Deps, defaultable.defaultsProperties.Defaults...)
 }
 
 func RegisterDefaultsPreArchMutators(ctx RegisterMutatorsContext) {
