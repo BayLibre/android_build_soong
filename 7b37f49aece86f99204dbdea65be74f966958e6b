@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54ca8df4_1823eab7",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-09T17:53:21Z",
+      "side": 1,
+      "message": "You could put ${cc_config.DeviceGlobalLldFlags} here to reduce some duplication",
+      "revId": "7b37f49aece86f99204dbdea65be74f966958e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20129db4_e32497e2",
+        "filename": "rust/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-09T17:53:21Z",
+      "side": 1,
+      "message": "Probably worth commenting here that this is overriding cc_config\u0027s -Wl,--no-undefined-version",
+      "revId": "7b37f49aece86f99204dbdea65be74f966958e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
