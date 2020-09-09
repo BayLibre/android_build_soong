@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "584aedc8_edf64746",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-09T13:00:33Z",
+      "side": 1,
+      "message": "I\u0027ve changed LinuxBionic/arm64 to be Host, not HostCross for the time being.\n\nThis change won\u0027t be needed until we fix b/168086242.",
+      "revId": "3e862b2c52bac082c34b5153d7847c9376c2f81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
