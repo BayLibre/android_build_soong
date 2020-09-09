@@ -39,6 +39,30 @@
       "revId": "a3eb14548046ae85dd136b7bd9e418c27b2cd7c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0708bd_90bfb473",
+        "filename": "rust/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-09T18:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df67ad91_59f3f9cc",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "a3eb14548046ae85dd136b7bd9e418c27b2cd7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
