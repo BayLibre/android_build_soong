@@ -622,6 +622,9 @@ type Module struct {
 
 	// For apex variants, this is set as apex.min_sdk_version
 	apexSdkVersion android.ApiLevel
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	modulePaths []string
 }
 
 func (c *Module) Toc() android.OptionalPath {
@@ -1499,6 +1502,9 @@ func (c *Module) getNameSuffixWithVndkVersion(ctx android.ModuleContext) string 
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
+	// Collect the module directory for IDE info in android/njdeps.go.
+	c.modulePaths = append(c.modulePaths, actx.ModuleDir())
+
 	// Handle the case of a test module split by `test_per_src` mutator.
 	//
 	// The `test_per_src` mutator adds an extra variation named "", depending on all the other
@@ -3174,3 +3180,31 @@ var BoolDefault = proptools.BoolDefault
 var BoolPtr = proptools.BoolPtr
 var String = proptools.String
 var StringPtr = proptools.StringPtr
+
+// Collect modules' info for IDE info in android/njdeps.go.
+func (c *Module) IDEInfoNonJava(dpInfo *android.IdeInfoNonJava) {
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkSharedLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkStaticLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkRuntimeLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkWholeStaticLibs...)
+	dpInfo.Deps = append(dpInfo.Deps, c.Properties.AndroidMkHeaderLibs...)
+	for _, apex_available := range c.ApexModuleBase.ApexAvailable() {
+		if apex_available != android.AvailableToPlatform && apex_available != android.AvailableToAnyApex {
+			dpInfo.Deps = append(dpInfo.Deps, apex_available)
+		}
+	}
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			dpInfo.Deps = append(dpInfo.Deps, library.baseCompiler.Properties.Include_dirs...)
+		}
+	}
+	notice := c.ModuleBase.Notice()
+	if notice != "" {
+		if strings.HasPrefix(notice, ":") {
+			notice = strings.Trim(notice, ":")
+		}
+		dpInfo.Deps = append(dpInfo.Deps, notice)
+	}
+	dpInfo.Paths = append(dpInfo.Paths, c.modulePaths...)
+	c.DefaultableModuleBase.IDEInfoNonJava(dpInfo)
+}

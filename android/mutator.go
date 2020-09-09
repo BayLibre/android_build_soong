@@ -141,6 +141,20 @@ var preArch = []RegisterMutatorFunc{
 	// This must come after the defaults mutators to ensure that any visibility supplied
 	// in a defaults module has been successfully applied before the rules are gathered.
 	RegisterVisibilityRuleGatherer,
+
+	// Gather namespace imports info for njdeps.go.
+	//
+	// This is collecting soong_namespace dependency for ASync. For example, in device/google/wahoo/Android.bp
+	// soong_namespace {
+	//     imports: [
+	//         "hardware/google/pixel",
+	//         "hardware/qcom/bootctrl",
+	//         "hardware/qcom/msm8998",
+	//     ],
+	// }
+	// The paths: hardware/google/pixel, hardware/qcom/bootctrl, hardware/qcom/msm8998 will
+	// become the dependencies of device/google/wahoo.
+	RegisterNamespaceMutatorForNonJava,
 }
 
 func registerArchMutator(ctx RegisterMutatorsContext) {
