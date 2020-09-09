@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "f8d524a4_83130126",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-09-09T01:32:59Z",
+      "side": 1,
+      "message": "Whoa, is this necessary? This is a filter-out and -ffunction-sections is useful in keeping binary sizes reasonable. While it matters less than on the device, we still shouldn\u0027t be keeping all functions around after linking (which is mostly what this does). I see that this happens for Linux bionic host, but I do think that\u0027s probably a mistake too. If it is needed, we should really understand why.",
+      "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcee77f7_67af596d",
         "filename": "cc/config/arm64_linux_host.go",
         "patchSetId": 8
