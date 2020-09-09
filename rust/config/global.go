@@ -44,20 +44,11 @@ var (
 	deviceGlobalLinkFlags = []string{
 		"-Bdynamic",
 		"-nostdlib",
-		"-Wl,-z,noexecstack",
-		"-Wl,-z,relro",
-		"-Wl,-z,now",
-		"-Wl,--build-id=md5",
-		"-Wl,--warn-shared-textrel",
-		"-Wl,--fatal-warnings",
-
+		"-Wl,--undefined-version",
 		"-Wl,--pack-dyn-relocs=android+relr",
 		"-Wl,--use-android-relr-tags",
 		"-Wl,--no-undefined",
-		"-Wl,--hash-style=gnu",
-
 		"-B${cc_config.ClangBin}",
-		"-fuse-ld=lld",
 	}
 )
 

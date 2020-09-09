@@ -23,12 +23,7 @@ import (
 var (
 	Arm64RustFlags            = []string{}
 	Arm64ArchFeatureRustFlags = map[string][]string{}
-	Arm64LinkFlags            = []string{
-		"-Wl,--icf=safe",
-		"-Wl,-z,max-page-size=4096",
-
-		"-Wl,-z,separate-code",
-	}
+	Arm64LinkFlags            = []string{}
 
 	Arm64ArchVariantRustFlags = map[string][]string{
 		"armv8-a":  []string{},
@@ -59,7 +54,9 @@ func (t *toolchainArm64) RustTriple() string {
 }
 
 func (t *toolchainArm64) ToolchainLinkFlags() string {
-	return "${config.DeviceGlobalLinkFlags} ${config.Arm64ToolchainLinkFlags}"
+	// Prepend the lld flags from cc_config so we stay in sync with cc
+	return "${cc_config.DeviceGlobalLldflags} ${cc_config.Arm64Lldflags} " +
+		"${config.DeviceGlobalLinkFlags} ${config.Arm64ToolchainLinkFlags}"
 }
 
 func (t *toolchainArm64) ToolchainRustFlags() string {
