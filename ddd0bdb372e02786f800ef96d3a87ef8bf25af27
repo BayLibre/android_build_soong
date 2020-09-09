@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f662c1f_0ff49cd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-09T17:53:29Z",
+      "side": 1,
+      "message": "Pulling this out of the topic so we can go ahead and land the bug fix.",
+      "revId": "ddd0bdb372e02786f800ef96d3a87ef8bf25af27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
