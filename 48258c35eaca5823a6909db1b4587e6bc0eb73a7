@@ -46,6 +46,30 @@
       "revId": "48258c35eaca5823a6909db1b4587e6bc0eb73a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09fd261c_360656ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-09T13:01:38Z",
+      "side": 1,
+      "message": "Assuming that (+ b/168086242) are what you expect, I am abandoning this change.",
+      "parentUuid": "22101d05_5985268c",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "48258c35eaca5823a6909db1b4587e6bc0eb73a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
