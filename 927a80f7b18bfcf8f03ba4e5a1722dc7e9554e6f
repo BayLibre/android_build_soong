@@ -16,6 +16,24 @@
       "revId": "927a80f7b18bfcf8f03ba4e5a1722dc7e9554e6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78304a00_35852d5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-09T00:53:18Z",
+      "side": 1,
+      "message": "Ok. The new PS disables the Windows target, and complains when it finds the target enabled.",
+      "parentUuid": "305014d6_81be3f3f",
+      "revId": "927a80f7b18bfcf8f03ba4e5a1722dc7e9554e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
