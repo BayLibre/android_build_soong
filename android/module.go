@@ -1427,6 +1427,10 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	m.variables = ctx.variables
 }
 
+func (m *ModuleBase) Notice() string {
+	return proptools.StringDefault(m.commonProperties.Notice, "")
+}
+
 type earlyModuleContext struct {
 	blueprint.EarlyModuleContext
 
@@ -2460,4 +2464,16 @@ type IdeInfo struct {
 func CheckBlueprintSyntax(ctx BaseModuleContext, filename string, contents string) []error {
 	bpctx := ctx.blueprintBaseModuleContext()
 	return blueprint.CheckBlueprintSyntax(bpctx.ModuleFactories(), filename, contents)
+}
+
+// Collect information for nonJava IDE info in android/non_java_deps.go.
+type IDEInfoNonJava interface {
+	IDEInfoNonJava(ideInfo *IdeInfoNonJava)
+	BaseModuleName() string
+}
+
+type IdeInfoNonJava struct {
+	Deps  []string `json:"dependencies,omitempty"`
+	Srcs  []string `json:"srcs,omitempty"`
+	Paths []string `json:"path,omitempty"`
 }
