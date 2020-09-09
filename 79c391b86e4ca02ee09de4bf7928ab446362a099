@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f3d7d1d7_56996a1e",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-09T13:03:51Z",
+      "side": 1,
+      "message": "I\u0027ve copied the flags from deviceGlobalCflags.",
+      "parentUuid": "023fcce9_3408368e",
+      "range": {
+        "startLine": 24,
+        "startChar": 54,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf36d3eb_273197ce",
         "filename": "cc/config/arm64_linux_host.go",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6780478a_1be7dbe8",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-09T13:03:51Z",
+      "side": 1,
+      "message": "Ok. I\u0027ve copied the flags from deviceGlobalCflags.",
+      "parentUuid": "bf36d3eb_273197ce",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 23
+      },
+      "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8d524a4_83130126",
         "filename": "cc/config/arm64_linux_host.go",
         "patchSetId": 8
@@ -62,6 +110,24 @@
       "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7276f4b7_e22afb60",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-09T13:03:51Z",
+      "side": 1,
+      "message": "Without this flag, I am hitting a build error like the below:\n\nFAILED: out/soong/.intermediates/bionic/linker/linker/linux_bionic_arm64/unprefixed/linker64\nprebuilts/clang/host/linux-x86/clang-r383902b/bin/clang++  @out/soong/.intermediates/bionic/linker/linker/linux_bionic_arm64/unprefixed/linker64.rsp -Wl,--whole-archive  out/soong/.intermediates/bionic/libc/libc_unwind_static/linux_bionic_arm64_static/libc_unwind_static.a -Wl,--no-whole-archive  out/soong/.intermediates/build/soong/libgcc_stripped/linux_bionic_arm64_static/libgcc_stripped.a out/soong/.intermediates/bionic/linker/liblinker_debuggerd_stub/linux_bionic_arm64_static/liblinker_debuggerd_stub.a out/soong/.intermediates/bionic/linker/liblinker_main/linux_bionic_arm64_static/liblinker_main.a out/soong/.intermediates/bionic/linker/liblinker_malloc/linux_bionic_arm64_static/liblinker_malloc.a out/soong/.intermediates/system/libziparchive/libziparchive/linux_bionic_arm64_static/libziparchive.a out/soong/.intermediates/system/libbase/libbase/linux_bionic_arm64_static/libbase.a out/soong/.intermediates/external/zlib/libz/linux_bionic_arm64_static/libz.a out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/linux_bionic_arm64_static/libasync_safe.a out/soong/.intermediates/system/core/liblog/liblog/linux_bionic_arm64_static/liblog.a out/soong/.intermediates/external/libcxx/libc++_static/linux_bionic_arm64_static/libc++_static.a out/soong/.intermediates/bionic/libc/libc_dynamic_dispatch/linux_bionic_arm64_static/libc_dynamic_dispatch.a out/soong/.intermediates/bionic/libm/libm/linux_bionic_arm64_static/libm.a -Wl,--start-group out/soong/.intermediates/bionic/libc/libc_nomalloc/linux_bionic_arm64_static/libc_nomalloc.a prebuilts/clang/host/linux-x86/clang-r383902b/lib64/clang/11.0.2/lib/linux/libclang_rt.builtins-aarch64-android.a prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/aarch64-linux-android/lib64/libatomic.a -Wl,--end-group  -o out/soong/.intermediates/bionic/linker/linker/linux_bionic_arm64/unprefixed/linker64 -target aarch64-linux -Bprebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/aarch64-linux-android/bin -fuse-ld\u003dlld -Wl,--no-undefined -Wl,--hash-style\u003dgnu -Wl,-z,separate-code -Wl,--icf\u003dsafe -Wl,-z,max-page-size\u003d4096 -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id\u003dmd5 -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--hash-style\u003dgnu -Wl,--no-undefined-version -Wl,--fix-cortex-a53-843419 -Wl,--exclude-libs\u003dlibclang_rt.builtins-aarch64-android.a  -nostdlib -Bstatic -Wl,--gc-sections -shared -Wl,-Bsymbolic -Wl,--exclude-libs,ALL -Wl,-soname,ld-android.so -Wl,--version-script,bionic/linker/linker.generic.map prebuilts/clang/host/linux-x86/clang-r383902b/lib64/clang/11.0.2/lib/linux/libclang_rt.ubsan_minimal-aarch64-android.a -Wl,--exclude-libs,libclang_rt.ubsan_minimal-aarch64-android.a \nld.lld: error: undefined symbol: SetDefaultHeapTaggingLevel()\n\u003e\u003e\u003e referenced by libc_init_common.cpp:123 (bionic/libc/bionic/libc_init_common.cpp:123)\n\u003e\u003e\u003e               libc_init_common.o:(__libc_init_common()) in archive out/soong/.intermediates/bionic/libc/libc_nomalloc/linux_bionic_arm64_static/libc_nomalloc.a\nclang-11: error: linker command failed with exit code 1 (use -v to see invocation)\n\nIt looks like SetDefaultHeapTaggingLevel is stripped out probably due to \"-Wl,--gc-sections\" that is applied to all Bionic-based targets including Android, Linux_bionic/x86, and Linux_bionic/arm64.",
+      "parentUuid": "f8d524a4_83130126",
+      "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dab74fa_cb2e8ed5",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-09T13:03:51Z",
+      "side": 1,
+      "message": "Good to know that. Thanks! Removed the three.",
+      "parentUuid": "dcee77f7_67af596d",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "79c391b86e4ca02ee09de4bf7928ab446362a099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
