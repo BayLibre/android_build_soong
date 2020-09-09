@@ -22,6 +22,30 @@
       "revId": "48258c35eaca5823a6909db1b4587e6bc0eb73a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22101d05_5985268c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-09T02:15:20Z",
+      "side": 1,
+      "message": "\u003e Is this based on it being selectable via CrossHost* in the soong.variables file?\n\nRight\n\n\u003e That was more out of convenience than anything else, and is not the only way to enable it (it can be enabled in the soong.config file as well).\n\nI didn\u0027t know about soong.config. Good to know. But android.config doesn\u0027t seem to have an entry for host-cross target.\n\n\u003e I\u0027ve thought of Host vs HostCross as whether it\u0027s executable on the build machine\n\nI see, but then Host/HostCross should be the attribute of a Target, not an OsType and should be determined dynamically. Do you want to go that path?\n\nIf so, how about accepting the fact that HostCross \u003d\u003d Windows, for now? That means linux_bionic_arm64 would be Host for the time being although that sounds wrong.\n\nThen we work on to remove the implicit assumption and make Host/HostCross be an attribute of a target. I might be able to pursue that as a separate topic after the support for linux_bionic_arm64 is finished. What do you think?\n\nIf you agree on the plan, I can abandon this change.",
+      "parentUuid": "582d98fc_0567fb7d",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "48258c35eaca5823a6909db1b4587e6bc0eb73a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
