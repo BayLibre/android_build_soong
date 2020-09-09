@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a34f3ae1_5a4662d3",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-09-09T09:18:57Z",
+      "side": 1,
+      "message": "Yes, done.",
+      "parentUuid": "35138643_1213781b",
+      "range": {
+        "startLine": 109,
+        "startChar": 15,
+        "endLine": 109,
+        "endChar": 46
+      },
+      "revId": "8b30e084aed19945d60de04bc2123a65464a6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74f3080e_a0642b80",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 17
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6ee914bb_c3eef2d5",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-09-09T09:18:57Z",
+      "side": 1,
+      "message": "Yes: b/168089390",
+      "parentUuid": "74f3080e_a0642b80",
+      "range": {
+        "startLine": 364,
+        "startChar": 3,
+        "endLine": 364,
+        "endChar": 52
+      },
+      "revId": "8b30e084aed19945d60de04bc2123a65464a6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baf36d97_061eb774",
         "filename": "cmd/soong_build/bazel_overlay.go",
         "patchSetId": 17
@@ -59,6 +107,30 @@
       "writtenOn": "2020-09-08T21:51:24Z",
       "side": 1,
       "message": "Optional: Throughout: fmt.Sprintf (https://golang.org/pkg/fmt/#Sprintf) with %q to quote strings may be easier than manually quoting",
+      "range": {
+        "startLine": 510,
+        "startChar": 15,
+        "endLine": 510,
+        "endChar": 35
+      },
+      "revId": "8b30e084aed19945d60de04bc2123a65464a6f68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81c05d58_dd1d6b29",
+        "filename": "cmd/soong_build/bazel_overlay.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-09-09T09:18:57Z",
+      "side": 1,
+      "message": "Thanks for the tip. Converted all but one -- \"%q\" does not properly escape \"\\x1b\", the ANSI escape string, and it\u0027s used in some genrule cmd property values, and Starlark parser trips on \"\\x\".",
+      "parentUuid": "baf36d97_061eb774",
       "range": {
         "startLine": 510,
         "startChar": 15,
