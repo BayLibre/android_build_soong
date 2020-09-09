@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "855a8db0_d27ac600",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-09T17:25:01Z",
+      "side": 1,
+      "message": "Why is the slice necessary?  *string with proptools.String(Provides_uses_lib) !\u003d \"\" should work.",
+      "range": {
+        "startLine": 1886,
+        "startChar": 90,
+        "endLine": 1887,
+        "endChar": 33
+      },
+      "revId": "7e37f2e1091cb36c1d4d9e76bba0aaebcac00ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
