@@ -1979,9 +1979,9 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// added to the Android manifest.
 	j.exportedSdkLibs.MaybeAddLibraryPath(ctx, j.OptionalImplicitSdkLibrary(), j.DexJarBuildPath(), j.DexJarInstallPath())
 
-	// If this is a non-SDK uses-library, export itself.
-	if proptools.Bool(j.usesLibraryProperties.Is_uses_lib) {
-		j.exportedSdkLibs.AddLibraryPath(ctx, ctx.ModuleName(), j.DexJarBuildPath(), j.DexJarInstallPath())
+	// A non-SDK library may export a <uses-library> (the name may be different from the module name).
+	for _, usesLibName := range j.usesLibraryProperties.Provides_uses_lib {
+		j.exportedSdkLibs.AddLibraryPath(ctx, usesLibName, j.DexJarBuildPath(), j.DexJarInstallPath())
 	}
 
 	j.distFiles = j.GenerateTaggedDistFiles(ctx)
