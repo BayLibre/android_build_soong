@@ -68,6 +68,9 @@ type sdk struct {
 
 	// The builder, preserved for testing.
 	builderForTests *snapshotBuilder
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	modulePaths []string
 }
 
 type sdkProperties struct {
@@ -260,6 +263,9 @@ func (s *sdk) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		// That doesn't make sense. We need a snapshot to create sdk_snapshot.
 		return
 	}
+
+	// Collect the module directory for IDE info in java/jdeps.go.
+	s.modulePaths = append(s.modulePaths, ctx.ModuleDir())
 
 	// This method is guaranteed to be called on OsType specific variants before it is called
 	// on their corresponding CommonOS variant.
@@ -486,5 +492,17 @@ func sdkRequirementsMutator(mctx android.TopDownMutatorContext) {
 				}
 			}
 		})
+	}
+}
+
+// Collect modules' info for IDE info in java/jdeps.go.
+func (s *sdk) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Paths = append(dpInfo.Paths, s.modulePaths...)
+	for _, memberListProperty := range s.memberListProperties() {
+		names := memberListProperty.getter(s.dynamicMemberTypeListProperties)
+		dpInfo.Deps = append(dpInfo.Deps, names...)
+	}
+	for export, _ := range s.getExportedMembers() {
+		dpInfo.Deps = append(dpInfo.Deps, export)
 	}
 }
