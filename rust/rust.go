@@ -88,6 +88,9 @@ type Module struct {
 	subAndroidMkOnce map[SubAndroidMkProvider]bool
 
 	outputFile android.OptionalPath
+
+	// Collect the module directory for IDE info in android/njdeps.go.
+	modulePaths []string
 }
 
 func (mod *Module) OutputFiles(tag string) (android.Paths, error) {
@@ -660,6 +663,9 @@ func (d *Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
+	// Collect the module directory for IDE info in android/njdeps.go.
+	mod.modulePaths = append(mod.modulePaths, actx.ModuleDir())
+
 	ctx := &moduleContext{
 		ModuleContext: actx,
 	}
@@ -1114,3 +1120,21 @@ var String = proptools.String
 var StringPtr = proptools.StringPtr
 
 var _ android.OutputFileProducer = (*Module)(nil)
+
+// Collect modules' info for IDE info in android/njdeps.go.
+func (mod *Module) IDEInfoNonJava(dpInfo *android.IdeInfoNonJava) {
+	deps := []string{}
+	deps = append(deps, mod.Properties.AndroidMkRlibs...)
+	deps = append(deps, mod.Properties.AndroidMkDylibs...)
+	deps = append(deps, mod.Properties.AndroidMkProcMacroLibs...)
+	deps = append(deps, mod.Properties.AndroidMkSharedLibs...)
+	deps = append(deps, mod.Properties.AndroidMkStaticLibs...)
+	for _, dep := range deps {
+		if strings.HasSuffix(dep, ".rlib-std") {
+			dpInfo.Deps = append(dpInfo.Deps, strings.TrimSuffix(dep, ".rlib-std"))
+		} else {
+			dpInfo.Deps = append(dpInfo.Deps, dep)
+		}
+	}
+	dpInfo.Paths = append(dpInfo.Paths, mod.modulePaths...)
+}
