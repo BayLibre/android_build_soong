@@ -233,13 +233,17 @@ type BpPropertyTag interface{}
 
 // A set of properties for use in a .bp file.
 type BpPropertySet interface {
-	// Add a property, the value can be one of the following types:
+	// Add a property, the value can be of one the following types:
 	// * string
 	// * array of the above
 	// * bool
-	// * BpPropertySet
+	// For these types it is an error if multiple properties with the same name
+	// are added.
 	//
-	// It is an error if multiple properties with the same name are added.
+	// The value can also be a BpPropertySet or a property struct. In either case
+	// its fields are added recursively into a nested property set. A property set
+	// with the same name may already exist, and the fields are then added into it
+	// like above.
 	AddProperty(name string, value interface{})
 
 	// Add a property with an associated tag
