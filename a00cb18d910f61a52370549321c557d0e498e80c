@@ -105,6 +105,24 @@
       "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dede05f2_28e6fdaf",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-10T16:44:58Z",
+      "side": 1,
+      "message": "There is conditional handling depending on target SDK version: https://source.corp.google.com/aosp-master/build/soong/dexpreopt/dexpreopt.go;l\u003d277-283\n\nBut the conditional logic is applied only in case org.apache.http.legacy is not either 1) present in `uses_libs`/`optional_uses_libs` in .bp file, or 2) added to `uses_libs` by Soong that computes transitional closure of SDK library dependencies.\n\nDexpreopt doesn\u0027t care about optional/required status, as long as the library is present at build time. The distinction is only when the library is missing: in that case missing optional library won\u0027t fail the build (and won\u0027t be added to dexpreopt).\n\nDo you mean that:\n\n1. We should not fail the build when org.apache.http.legacy is absent.\n\n2. We should always base the decision to add or not to add it to dexproept on target SDK version, no matter if it is in `uses_libs`/`optional_uses_libs` (whether from .bp file or added by Soong)?\n\nIn any case, can we decouple this change (which is a functional change) from the current CL, which fixes a different problem?",
+      "parentUuid": "b6913431_1a6dad84",
+      "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
