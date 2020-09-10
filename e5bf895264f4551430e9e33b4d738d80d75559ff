@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac5156fd_c7333612",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T17:37:53Z",
+      "side": 1,
+      "message": "I did not check the logic in detail as I have some questions about the approach first.",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c25c500_fb42c1d7",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T17:37:53Z",
+      "side": 1,
+      "message": "BpPropertySet is an interface so the * is unnecessary and \"fields\" has no meaning for BpPropertySet. Maybe should be:\n// * BpPropertySet adds a property with its own nested property set.\n// * A pointer to a property struct in which case it behaves as if its fields are used to populate a BpPropertySet which is then added using this method.",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8b7e00_b095f581",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T17:37:53Z",
+      "side": 1,
+      "message": "I think that one undesirable side effect of this change (which is a reasonably change) is that the individual fields in the SanitizeUserProps field are not documented properly as the docs code does not traverse into the named structure.\n\nI did have a look at fixing this but the code is complicated and I had more important things to do.",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf885b61_981f4d8a",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T17:37:53Z",
+      "side": 1,
+      "message": "There is a lot of logic here to handle collisions/merging. Why is that? Why not just barf if the value already exists as the code did before.",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
