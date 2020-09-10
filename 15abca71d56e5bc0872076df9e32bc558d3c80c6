@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b4d9dc9_08334c18",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-10T17:03:17Z",
+      "side": 1,
+      "message": "Use BoolDefault(opt.Proguard_compatability, true)",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 73
+      },
+      "revId": "15abca71d56e5bc0872076df9e32bc558d3c80c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
