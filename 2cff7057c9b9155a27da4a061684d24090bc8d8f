@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05654401_3191f145",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-09-10T21:08:12Z",
+      "side": 1,
+      "message": "The CL that has originally added this list says that it should only be trimmed down. However, I\u0027m not sure what needs to be done to the module in order to be removed from this list. Anton, could you please provide some insights?",
+      "revId": "2cff7057c9b9155a27da4a061684d24090bc8d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
