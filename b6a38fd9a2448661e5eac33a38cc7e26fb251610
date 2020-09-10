@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41e97c6f_b70bc86f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-10T11:14:51Z",
+      "side": 1,
+      "message": "I don\u0027t know how to test the vendor snapshots, so I haven\u0027t verified that they won\u0027t regress because of this.",
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75d5a0d7_06a58df9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-10T11:14:51Z",
+      "side": 1,
+      "message": "I think the TH failure is a flake.",
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
