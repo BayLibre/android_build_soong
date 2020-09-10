@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a059bf4_e7dcf91d",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-10T15:15:44Z",
+      "side": 1,
+      "message": "They are, in java/android_manifest.go:74 OptionalCompatUsesLibs is used to distinguish between --optional-uses-library and --used-library.",
+      "parentUuid": "ed806ab4_e22c050a",
+      "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1ea1522_e39cd5c0",
         "filename": "dexpreopt/config.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-09-10T14:54:08Z",
       "side": 1,
       "message": "I think org.apache.http.legacy is also an optional library. Prior to its creation its classes were part of the bootclasspath, and then it was separated out into its own library. Just like android.test.base it is added to the classpath conditionally based on an App\u0027s target SDK version.\n\nandroid.test.mock is different. It was never part of the bootclasspath. However, it was part of the android.test.runner library and was separated out from there. It is automatically added to the classpath if \u0027android.test.runner\u0027 is being used.",
+      "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286db766_914299a7",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-10T15:15:44Z",
+      "side": 1,
+      "message": "Re org.apache.http.legacy, it sometimes appears with `required\u003dfalse` and sometimes with `required\u003dtrue` in the manifest (for both cases there are numerous occurrences). I can make it optional by default, but either way I have to add `optional_uses_libs` or `uses_libs` for the other half of the apps. Having a special case for optional and main case for required seemed more in-line with our previous discussion, but I can flip it.\n\nExample of required: https://source.corp.google.com/aosp-master/packages/apps/Settings/AndroidManifest.xml;l\u003d119\nExample of optional: https://source.corp.google.com/aosp-master/packages/apps/Gallery2/AndroidManifest.xml;l\u003d50",
+      "parentUuid": "d1ea1522_e39cd5c0",
       "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
