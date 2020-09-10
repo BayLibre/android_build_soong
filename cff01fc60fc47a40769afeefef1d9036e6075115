@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "85282080_ca9cb563",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-10T14:24:57Z",
+      "side": 1,
+      "message": "Reworked this file so this is no longer applicable.",
+      "parentUuid": "359a8dd2_5b4430e8",
+      "revId": "cff01fc60fc47a40769afeefef1d9036e6075115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a799439f_d6aef9f8",
         "filename": "java/hiddenapi_singleton.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3ba2386b_5a531756",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-10T14:24:57Z",
+      "side": 1,
+      "message": "Thanks for all the context! With the reworking, we don\u0027t need the name.",
+      "parentUuid": "a799439f_d6aef9f8",
+      "range": {
+        "startLine": 160,
+        "startChar": 34,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "cff01fc60fc47a40769afeefef1d9036e6075115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0044bd8e_97387de0",
         "filename": "java/hiddenapi_singleton.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "cff01fc60fc47a40769afeefef1d9036e6075115",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55a4c092_edf94e05",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-10T14:24:57Z",
+      "side": 1,
+      "message": "Did something like this, which enabled simplifying this file significantly.",
+      "parentUuid": "0044bd8e_97387de0",
+      "revId": "cff01fc60fc47a40769afeefef1d9036e6075115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
