@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed806ab4_e22c050a",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T14:54:08Z",
+      "side": 1,
+      "message": "The optional and required lists do not seem to be treated any differently.",
+      "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ea1522_e39cd5c0",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T14:54:08Z",
+      "side": 1,
+      "message": "I think org.apache.http.legacy is also an optional library. Prior to its creation its classes were part of the bootclasspath, and then it was separated out into its own library. Just like android.test.base it is added to the classpath conditionally based on an App\u0027s target SDK version.\n\nandroid.test.mock is different. It was never part of the bootclasspath. However, it was part of the android.test.runner library and was separated out from there. It is automatically added to the classpath if \u0027android.test.runner\u0027 is being used.",
+      "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
