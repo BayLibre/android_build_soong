@@ -22,6 +22,30 @@
       "revId": "15abca71d56e5bc0872076df9e32bc558d3c80c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c0599f_33e94caa",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2020-09-10T19:26:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b4d9dc9_08334c18",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 73
+      },
+      "revId": "15abca71d56e5bc0872076df9e32bc558d3c80c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
