@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "14d262e2_df370d4e",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T15:33:19Z",
+      "side": 1,
+      "message": "I missed that. I probably didn\u0027t have the change expanded for that file when I searched for usages of these.",
+      "parentUuid": "6a059bf4_e7dcf91d",
+      "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1ea1522_e39cd5c0",
         "filename": "dexpreopt/config.go",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Re org.apache.http.legacy, it sometimes appears with `required\u003dfalse` and sometimes with `required\u003dtrue` in the manifest (for both cases there are numerous occurrences). I can make it optional by default, but either way I have to add `optional_uses_libs` or `uses_libs` for the other half of the apps. Having a special case for optional and main case for required seemed more in-line with our previous discussion, but I can flip it.\n\nExample of required: https://source.corp.google.com/aosp-master/packages/apps/Settings/AndroidManifest.xml;l\u003d119\nExample of optional: https://source.corp.google.com/aosp-master/packages/apps/Gallery2/AndroidManifest.xml;l\u003d50",
       "parentUuid": "d1ea1522_e39cd5c0",
+      "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6913431_1a6dad84",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T15:33:19Z",
+      "side": 1,
+      "message": "Those that mark it as required almost certainly has a target sdk version at or above the version in which the library was created. Conversely, those that mark it as optional will have a target sdk version below that.\n\nSo, its optional/required flag is dependent on target sdk version and that should probably be reflected in the handling of it here.",
+      "parentUuid": "286db766_914299a7",
       "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
