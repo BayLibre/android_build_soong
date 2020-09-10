@@ -814,7 +814,7 @@ func (c *vendorSnapshotSingleton) GenerateBuildActions(ctx android.SingletonCont
 
 	ctx.VisitAllModules(func(module android.Module) {
 		m, ok := module.(*Module)
-		if !ok {
+		if !ok || m.IsSkipInstall() {
 			return
 		}
 
