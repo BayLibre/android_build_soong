@@ -33,6 +33,23 @@
       "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d147b27_8beac2f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-10T14:14:45Z",
+      "side": 1,
+      "message": "What is the purpose of the vendor snapshot mechanism? I am concerned it overlaps with our sdk/sdk_snasphot mechanism.",
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
