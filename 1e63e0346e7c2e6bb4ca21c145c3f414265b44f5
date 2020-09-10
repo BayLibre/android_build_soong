@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c39c4b6c_a16dffa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2020-09-10T09:40:28Z",
+      "side": 1,
+      "message": "Absolutely, sorry for the long turnaround and thanks for the friendly ping.",
+      "parentUuid": "12cb1b0f_3bd07bec",
+      "revId": "1e63e0346e7c2e6bb4ca21c145c3f414265b44f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ab97223_124e9e2c",
         "filename": "java/dex.go",
         "patchSetId": 1
@@ -68,6 +86,24 @@
       "revId": "1e63e0346e7c2e6bb4ca21c145c3f414265b44f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b563e8_6b22809a",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2020-09-10T09:40:28Z",
+      "side": 1,
+      "message": "Let\u0027s use Proguard_compatibility. I don\u0027t think it makes a big difference if we change the default of Proguard_compatibility to false or the default of Full_mode to true in the future, but it may be more clear to users that Proguard_compatibility\u003dtrue can have a negative impact on the build, whereas it is not very clear what Full_mode\u003dtrue does (without knowing R8 well).\n\n(It was not clear to me if there is a better way to set the default to true than to check for the nil value, please let me know if this is not the right way.)",
+      "parentUuid": "8ab97223_124e9e2c",
+      "revId": "1e63e0346e7c2e6bb4ca21c145c3f414265b44f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
