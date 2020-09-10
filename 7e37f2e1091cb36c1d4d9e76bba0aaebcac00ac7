@@ -22,6 +22,30 @@
       "revId": "7e37f2e1091cb36c1d4d9e76bba0aaebcac00ac7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38624fac_220d5c57",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-10T10:06:11Z",
+      "side": 1,
+      "message": "No good reason, I changed to *string as you suggested.",
+      "parentUuid": "855a8db0_d27ac600",
+      "range": {
+        "startLine": 1886,
+        "startChar": 90,
+        "endLine": 1887,
+        "endChar": 33
+      },
+      "revId": "7e37f2e1091cb36c1d4d9e76bba0aaebcac00ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
