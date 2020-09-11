@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be84fdd2_232b7e6d",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-09-11T08:09:03Z",
+      "side": 1,
+      "message": "Can we skip calling this function at all on !Enabled modules instead? https://cs.android.com/android/platform/superproject/+/master:build/soong/android/makevars.go;drc\u003d6a6478d49e78703ba22a432c41d819c8df79ef6c;l\u003d237",
+      "range": {
+        "startLine": 74,
+        "startChar": 28,
+        "endLine": 74,
+        "endChar": 36
+      },
+      "revId": "8f0c4697fa329e383b3938959e187896fd265b39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
