@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4d95c18_c482ca46",
+        "filename": "rust/compiler.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-09-11T11:32:40Z",
+      "side": 1,
+      "message": "Are you intentionally disabling this for darwin too?",
+      "range": {
+        "startLine": 220,
+        "startChar": 33,
+        "endLine": 220,
+        "endChar": 38
+      },
+      "revId": "04e6da37d1e7bc5e0f4d36892a69eb9525bca956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
