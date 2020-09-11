@@ -22,6 +22,30 @@
       "revId": "75480154e2242cc50b230180e801c3930530d0b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0404457_9470ad1e",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-11T15:16:56Z",
+      "side": 1,
+      "message": "do you mean hardcoding /app and /priv-app here, and changing SYSTEM_OTHER_ODEX_FILTER to be a partition list? That\u0027s doable (but a little tangential to this change IMO).\n\nI\u0027m not sure the app/priv-app filter even matters..? what else can it match? jar files?",
+      "parentUuid": "db46d836_6e57073c",
+      "range": {
+        "startLine": 571,
+        "startChar": 20,
+        "endLine": 571,
+        "endChar": 44
+      },
+      "revId": "75480154e2242cc50b230180e801c3930530d0b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
