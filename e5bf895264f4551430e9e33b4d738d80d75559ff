@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "42c3203e_558209e0",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-11T01:06:40Z",
+      "side": 1,
+      "message": "I\u0027ll get rid of the *, but as I argue below I want to keep the merging behaviour for both cases.",
+      "parentUuid": "5c25c500_fb42c1d7",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c8b7e00_b095f581",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "0b0b18f0_693ac160",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-11T01:06:40Z",
+      "side": 1,
+      "message": "I see, that\u0027s unfortunate. I\u0027m not inclined to fix the doc extractor either, and unless you know a way to keep the struct nested I think I just cop-out and add a sentence to the comment pointing to the struct in the source.",
+      "parentUuid": "5c8b7e00_b095f581",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf885b61_981f4d8a",
         "filename": "sdk/bp.go",
         "patchSetId": 1
@@ -70,6 +112,24 @@
       "writtenOn": "2020-09-10T17:37:53Z",
       "side": 1,
       "message": "There is a lot of logic here to handle collisions/merging. Why is that? Why not just barf if the value already exists as the code did before.",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bc84d45_d948291d",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-11T01:06:40Z",
+      "side": 1,
+      "message": "It\u0027s because functions like addPossiblyArchSpecificProperties can get called more than once with the same property set, e.g. once in createMemberSnapshot and then again in osTypeSpecificInfo.addToPropertySet if there\u0027s only one OS variant.\n\nI\u0027ve also battled a bit before with the requirement to add nested property sets only once although I managed to work around it then, but I find it a bit of an annoying restriction. The sets themselves don\u0027t carry any info after all, so the check isn\u0027t valuable for them.\n\nBut I\u0027m not entirely happy either with the different execution paths here. Maybe it\u0027s worth breaking out the curSet !\u003d nil block below to a separate function to make it more clear.",
+      "parentUuid": "cf885b61_981f4d8a",
       "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
