@@ -15,6 +15,7 @@ bootstrap_go_package {
         "clippy.go",
         "compiler.go",
         "coverage.go",
+        "image.go",
         "library.go",
         "prebuilt.go",
         "proc_macro.go",

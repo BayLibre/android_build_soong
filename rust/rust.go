@@ -64,7 +64,13 @@ type BaseProperties struct {
 	AndroidMkSharedLibs    []string
 	AndroidMkStaticLibs    []string
 
-	SubName string `blueprint:"mutated"`
+	ImageVariationPrefix string `blueprint:"mutated"`
+	VndkVersion          string `blueprint:"mutated"`
+	SubName              string `blueprint:"mutated"`
+
+	// Set by imageMutator
+	CoreVariantNeeded bool     `blueprint:"mutated"`
+	ExtraVariants     []string `blueprint:"mutated"`
 
 	PreventInstall bool
 	HideFromMake   bool
@@ -104,29 +110,6 @@ func (mod *Module) OutputFiles(tag string) (android.Paths, error) {
 	default:
 		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
 	}
-}
-
-var _ android.ImageInterface = (*Module)(nil)
-
-func (mod *Module) ImageMutatorBegin(ctx android.BaseModuleContext) {}
-
-func (mod *Module) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
-	return true
-}
-
-func (mod *Module) RamdiskVariantNeeded(android.BaseModuleContext) bool {
-	return mod.InRamdisk()
-}
-
-func (mod *Module) RecoveryVariantNeeded(android.BaseModuleContext) bool {
-	return mod.InRecovery()
-}
-
-func (mod *Module) ExtraImageVariations(android.BaseModuleContext) []string {
-	return nil
-}
-
-func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string, module android.Module) {
 }
 
 func (mod *Module) BuildStubs() bool {
@@ -181,20 +164,18 @@ func (mod *Module) Toc() android.OptionalPath {
 	panic(fmt.Errorf("Toc() called on non-library module: %q", mod.BaseModuleName()))
 }
 
-func (mod *Module) OnlyInRamdisk() bool {
-	return false
-}
-
-func (mod *Module) OnlyInRecovery() bool {
-	return false
-}
-
 func (mod *Module) UseSdk() bool {
 	return false
 }
 
+// Returns true if the module is using VNDK libraries instead of the libraries in /system/lib or /system/lib64.
+// "product" and "vendor" variant modules return true for this function.
+// When BOARD_VNDK_VERSION is set, vendor variants of "vendor_available: true", "vendor: true",
+// "soc_specific: true" and more vendor installed modules are included here.
+// When PRODUCT_PRODUCT_VNDK_VERSION is set, product variants of "vendor_available: true" or
+// "product_specific: true" modules are included here.
 func (mod *Module) UseVndk() bool {
-	return false
+	return mod.Properties.VndkVersion != ""
 }
 
 func (mod *Module) MustUseVendorVariant() bool {
@@ -202,10 +183,6 @@ func (mod *Module) MustUseVendorVariant() bool {
 }
 
 func (mod *Module) IsVndk() bool {
-	return false
-}
-
-func (mod *Module) HasVendorVariant() bool {
 	return false
 }
 
@@ -511,11 +488,6 @@ func (mod *Module) StubsVersions() []string {
 
 func (mod *Module) OutputFile() android.OptionalPath {
 	return mod.outputFile
-}
-
-func (mod *Module) InRecovery() bool {
-	// For now, Rust has no notion of the recovery image
-	return false
 }
 func (mod *Module) HasStaticVariant() bool {
 	if mod.GetStaticVariant() != nil {

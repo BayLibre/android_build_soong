@@ -262,6 +262,14 @@ func (compiler *baseCompiler) installDir(ctx ModuleContext) android.InstallPath 
 	if !ctx.Host() && ctx.Config().HasMultilibConflict(ctx.Arch().ArchType) {
 		dir = filepath.Join(dir, ctx.Arch().ArchType.String())
 	}
+	if compiler.location == InstallInData && ctx.RustModule().UseVndk() {
+		if ctx.RustModule().inProduct() {
+			dir = filepath.Join(dir, "product")
+		} else {
+			// TODO(b/165791368)
+			ctx.ModuleErrorf("Vendor installation is not yet supported for Rust")
+		}
+	}
 	return android.PathForModuleInstall(ctx, dir, compiler.subDir,
 		compiler.relativeInstallPath(), compiler.relative)
 }

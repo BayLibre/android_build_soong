@@ -87,6 +87,11 @@ func TestInstallDir(t *testing.T) {
 		rust_binary {
 			name: "fizzbuzz",
 			srcs: ["foo.rs"],
+		}
+		rust_binary {
+			name: "fizzbuzz_product",
+			srcs: ["foo.rs"],
+			product_specific: true,
 		}`)
 
 	install_path_lib64 := ctx.ModuleForTests("libfoo",
@@ -94,6 +99,8 @@ func TestInstallDir(t *testing.T) {
 	install_path_lib32 := ctx.ModuleForTests("libfoo",
 		"android_arm_armv7-a-neon_dylib").Module().(*Module).compiler.(*libraryDecorator).path.String()
 	install_path_bin := ctx.ModuleForTests("fizzbuzz",
+		"android_arm64_armv8-a").Module().(*Module).compiler.(*binaryDecorator).path.String()
+	install_path_product := ctx.ModuleForTests("fizzbuzz_product",
 		"android_arm64_armv8-a").Module().(*Module).compiler.(*binaryDecorator).path.String()
 
 	if !strings.HasSuffix(install_path_lib64, "system/lib64/libfoo.dylib.so") {
@@ -104,6 +111,9 @@ func TestInstallDir(t *testing.T) {
 	}
 	if !strings.HasSuffix(install_path_bin, "system/bin/fizzbuzz") {
 		t.Fatalf("unexpected install path for binary: %#v", install_path_bin)
+	}
+	if !strings.HasSuffix(install_path_product, "product/bin/fizzbuzz_product") {
+		t.Fatalf("unexpected install path for product binary: %#v", install_path_product)
 	}
 }
 
