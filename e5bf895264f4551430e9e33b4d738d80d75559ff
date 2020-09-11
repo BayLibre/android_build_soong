@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "8f921509_bf01bf6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-11T08:53:57Z",
+      "side": 1,
+      "message": "This change is mixing two pieces of functionality - adding structs and merging nested sets. I think that they should be split out into two separate changes:\n1. Transform struct into a BpPropertySet.\n2. Merging BpPropertySets together.\n\nThe current solution mixes those together which makes both parts more complicated than necessary. The logic for merging has to handle both structs and BpPropertySet. By having them as separate changes you can simplify each piece.\n\nI think that they will each need some unit tests, i.e. ones that don\u0027t require parsing a whole .bp file such as the existing ones in bp_test.go.",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c25c500_fb42c1d7",
         "filename": "android/sdk.go",
         "patchSetId": 1
@@ -66,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "2ec5926c_6be864c4",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-11T08:53:57Z",
+      "side": 1,
+      "message": "You can document merging in terms of merging BpPropertySets and document the adding of a struct as a two step process of first converting the struct to a BpPropertySet and then adding the set.",
+      "parentUuid": "42c3203e_558209e0",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c8b7e00_b095f581",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -101,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "b78b9a54_ae6aae14",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-11T08:53:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0b0b18f0_693ac160",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf885b61_981f4d8a",
         "filename": "sdk/bp.go",
         "patchSetId": 1
@@ -130,6 +189,24 @@
       "side": 1,
       "message": "It\u0027s because functions like addPossiblyArchSpecificProperties can get called more than once with the same property set, e.g. once in createMemberSnapshot and then again in osTypeSpecificInfo.addToPropertySet if there\u0027s only one OS variant.\n\nI\u0027ve also battled a bit before with the requirement to add nested property sets only once although I managed to work around it then, but I find it a bit of an annoying restriction. The sets themselves don\u0027t carry any info after all, so the check isn\u0027t valuable for them.\n\nBut I\u0027m not entirely happy either with the different execution paths here. Maybe it\u0027s worth breaking out the curSet !\u003d nil block below to a separate function to make it more clear.",
       "parentUuid": "cf885b61_981f4d8a",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e435ada1_508e2879",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-11T08:53:57Z",
+      "side": 1,
+      "message": "Splitting the functionality apart as I described in my main comment will allow you to simplify this a lot I think.",
+      "parentUuid": "3bc84d45_d948291d",
       "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
