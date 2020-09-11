@@ -142,6 +142,30 @@
       "revId": "75480154e2242cc50b230180e801c3930530d0b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba084155_3e2ea115",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-11T16:10:58Z",
+      "side": 1,
+      "message": "Replied about libraries on b/168304192.\n\nFrom a glance at https://source.corp.google.com/aosp-master/build/soong/java/java.go;l\u003d1944 it looks that the change may cause some uncompressed dexjars to become compressed after the move. I don\u0027t know if this is a problem (and I didn\u0027t test if it is true).",
+      "parentUuid": "f4f35562_1290dd3a",
+      "range": {
+        "startLine": 571,
+        "startChar": 20,
+        "endLine": 571,
+        "endChar": 44
+      },
+      "revId": "75480154e2242cc50b230180e801c3930530d0b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
