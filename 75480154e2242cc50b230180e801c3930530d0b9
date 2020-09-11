@@ -70,6 +70,30 @@
       "revId": "75480154e2242cc50b230180e801c3930530d0b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd0310f_5422c2f8",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-11T15:24:36Z",
+      "side": 1,
+      "message": "\u003e but I do feel like SYSTEM_OTHER_ODEX_FILTER as it is reads odd.\n\nAgreed. It was weird to begin with, and this makes it weirder. I will file a bug about this (and assign it to Ulya maybe .. ?)\n\n\u003e jar odex file in system_other\n\nI\u0027ll file a separate bug about this as well. It\u0027s not really related to the system_ext/product fix",
+      "parentUuid": "203b2e8e_87653c2a",
+      "range": {
+        "startLine": 571,
+        "startChar": 20,
+        "endLine": 571,
+        "endChar": 44
+      },
+      "revId": "75480154e2242cc50b230180e801c3930530d0b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
