@@ -22,6 +22,30 @@
       "revId": "8f0c4697fa329e383b3938959e187896fd265b39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f00fb4fc_b5a0131f",
+        "filename": "android/prebuilt_build_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-11T08:24:08Z",
+      "side": 1,
+      "message": "Done. I did this in this way because there might be some valid make vars that have been emitted from disabled modules. But, yeah, I should have been more brave :)",
+      "parentUuid": "be84fdd2_232b7e6d",
+      "range": {
+        "startLine": 74,
+        "startChar": 28,
+        "endLine": 74,
+        "endChar": 36
+      },
+      "revId": "8f0c4697fa329e383b3938959e187896fd265b39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
