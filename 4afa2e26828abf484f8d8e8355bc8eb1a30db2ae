@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b57f41c_cae4a99b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-11T03:23:23Z",
+      "side": 1,
+      "message": "Dan, could you take a look again? (and other changes in the same hashtag too)",
+      "revId": "4afa2e26828abf484f8d8e8355bc8eb1a30db2ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
