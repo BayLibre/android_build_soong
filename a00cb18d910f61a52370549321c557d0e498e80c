@@ -141,6 +141,24 @@
       "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccdf1c25_a6f0ba69",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-11T11:34:00Z",
+      "side": 1,
+      "message": "Ok. I added a follow-up CL aosp/1424793 in this topic that aligns \"org.apache.http.legacy\" with \"android.test.base\".",
+      "parentUuid": "1fea9eac_79012545",
+      "revId": "a00cb18d910f61a52370549321c557d0e498e80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
