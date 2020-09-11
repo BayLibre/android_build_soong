@@ -142,6 +142,30 @@
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d334c3_f6134c31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1549634
+      },
+      "writtenOn": "2020-09-11T21:38:42Z",
+      "side": 1,
+      "message": "Hi again! I\u0027m doing some debugging on this, and I am running into the issue where PlatformVersionActiveCodenames only has one value (being \"S\").  Is there something I\u0027m missing about that variable?",
+      "parentUuid": "c705060c_f3eebea5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
