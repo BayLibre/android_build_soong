@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "501d65f1_51064461",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-11T15:49:46Z",
+      "side": 1,
+      "message": "maybe remove the prop all together, or do you want to do that separately?",
+      "range": {
+        "startLine": 580,
+        "startChar": 4,
+        "endLine": 580,
+        "endChar": 33
+      },
+      "revId": "ee9ad5d526f8e9f8064ca778883dd31ab27f5e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
