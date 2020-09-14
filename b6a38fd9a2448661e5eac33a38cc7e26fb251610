@@ -132,6 +132,30 @@
       "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43eedb4e_f1df0565",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-14T01:25:00Z",
+      "side": 1,
+      "message": "I think we just need to exclude the SDK prebuilts from the vendor snapshot. Is there any switch that Martin can use to make isVendorSnapshotModule to return false?",
+      "parentUuid": "79027581_584e4cb5",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 31
+      },
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
