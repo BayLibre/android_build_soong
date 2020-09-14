@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "61d0fd43_c39059f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-14T19:29:38Z",
+      "side": 1,
+      "message": "This change was abandoned",
+      "revId": "07def375911cd5fc4bb0c330de2cef17588bf7f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eedec736_2d7bd063",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 11
