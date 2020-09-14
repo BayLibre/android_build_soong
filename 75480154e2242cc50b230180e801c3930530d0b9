@@ -214,6 +214,30 @@
       "revId": "75480154e2242cc50b230180e801c3930530d0b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e897b0_dd1f04db",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-14T09:57:52Z",
+      "side": 1,
+      "message": "Thanks for the diff!\n\nLooks like some of the vdex files have got much larger:\n\n Browser2.vdex (1148 bytes)        |     Browser2.vdex (30520 bytes)\n DeskClock.vdex (25387 bytes)      |     DeskClock.vdex (2337368 bytes)\n Gallery2.vdex (17495 bytes)       |     Gallery2.vdex (1728820 bytes)\n LatinIME.vdex (12854 bytes)       |     LatinIME.vdex (885620 bytes)\n Music.vdex (565 bytes)            |     Music.vdex (15344 bytes)\n PhotoTable.vdex (2076 bytes)      |     PhotoTable.vdex (75264 bytes)\n QuickSearchBox.vdex (4437 byte    |     QuickSearchBox.vdex (354624 by\n webview.vdex (29328 bytes)        |     webview.vdex (2180884 bytes)\n\nThe corresponding odex files changed insignificantly:\n\n Browser2.odex (17328 bytes)         |   Browser2.odex (17384 bytes)\n DeskClock.odex (50096 bytes)        |   DeskClock.odex (50152 bytes)\n Gallery2.odex (54712 bytes)         |   Gallery2.odex (54736 bytes)\n LatinIME.odex (42584 bytes)         |   LatinIME.odex (42608 bytes)\n Music.odex (17328 bytes)            |   Music.odex (17384 bytes)\n PhotoTable.odex (17328 bytes)       |   PhotoTable.odex (17376 bytes)\n QuickSearchBox.odex (25520 bytes)   |   QuickSearchBox.odex (25576 bytes)\n webview.odex (133960 bytes)         |   webview.odex (133984 bytes)\n\nI take it that this is an expected side effect from storing the dex files in compressed form (now that they are compressed, vdex files contain dex bytecode).",
+      "parentUuid": "7c276278_1278fb7e",
+      "range": {
+        "startLine": 571,
+        "startChar": 20,
+        "endLine": 571,
+        "endChar": 44
+      },
+      "revId": "75480154e2242cc50b230180e801c3930530d0b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
