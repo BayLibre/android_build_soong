@@ -68,6 +68,47 @@
       "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "add30817_e2b24143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-09-14T00:40:22Z",
+      "side": 1,
+      "message": "vendor snapshot is for the native (cc) modules. It can be included in the new system source tree to build the all vendor image with the vendor snapshots. (https://source.android.com/devices/architecture/vndk/snapshot-vendor)",
+      "parentUuid": "dd920d5c_851d06e8",
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62f9f2b6_3d196093",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-09-14T00:40:22Z",
+      "side": 1,
+      "message": "It checks if the module is included in the snapshot or not. It is not for installing the module to the devices.\nCould you share the error details?",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 31
+      },
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
