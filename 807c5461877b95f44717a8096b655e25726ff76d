@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ebc1b9c_2980ffca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-09-14T16:08:20Z",
+      "side": 1,
+      "message": "The context is that I added CtsIcu4cTestCases here. \nhttps://r.android.com/1398728\n\nBut I broke ndk build.  The error can be found here.\nhttps://android-build.googleplex.com/builds/submitted/6832926/ndk/latest/view/logs/build_error.log\n\nAs the error shows, CtsIcu4cTestCases has 2 abis, i.e. arm_armv7-a. and x86",
+      "revId": "807c5461877b95f44717a8096b655e25726ff76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
