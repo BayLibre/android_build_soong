@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09245405_04882678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-14T14:49:43Z",
+      "side": 1,
+      "message": "Rerunning presubmit to make sure it\u0027s not stale.",
+      "revId": "2365506f9cb03e1df9df07f1d5c2963933f9b827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
