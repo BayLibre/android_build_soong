@@ -662,7 +662,7 @@ func (a *AndroidApp) noticeBuildActions(ctx android.ModuleContext) {
 		seenModules[child] = true
 
 		// Skip host modules.
-		if child.Target().Os.Class == android.Host || child.Target().Os.Class == android.HostCross {
+		if child.Target().Os.Class == android.Host {
 			return false
 		}
 

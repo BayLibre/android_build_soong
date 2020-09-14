@@ -199,6 +199,17 @@ func (p *Module) Init() android.Module {
 	android.InitAndroidArchModule(p, p.hod, p.multilib)
 	android.InitDefaultableModule(p)
 
+	android.AddLoadHook(p, func(ctx android.LoadHookContext) {
+		disabledTargets := struct {
+			Target struct {
+				Windows struct {
+					Enabled *bool
+				}
+			}
+		}{}
+		disabledTargets.Target.Windows.Enabled = proptools.BoolPtr(false)
+		ctx.AppendProperties(&disabledTargets)
+	})
 	return p
 }
 
