@@ -180,6 +180,54 @@
       "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c683f591_9071b27b",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-14T12:23:29Z",
+      "side": 1,
+      "message": "I get duplicate install rules in the snapshot, which I believe come from the installSnapshot calls below.\n\n```\nFAILED: ninja: out/soong/build.ninja:10059010: multiple rules generate out/soong/vendor-snapshot/x86/arch-x86/static/libasync_safe.a [-w dupbuild\u003d\nerr]\n```\n\nFrom build.ninja:\n\n```\nbuild out/soong/vendor-snapshot/x86/arch-x86/static/libasync_safe.a: $\n        g.android.Cp $\n        out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_vendor.S_x86_static/libasync_safe.a\n    description \u003d Cp vendor-snapshot/x86/arch-x86/static/libasync_safe.a\n    cpFlags \u003d -f -L\n/.../\nbuild out/soong/vendor-snapshot/x86/arch-x86/static/libasync_safe.a: $\n        g.android.Cp $\n        prebuilts/runtime/mainline/runtime/sdk/android/x86/lib/libasync_safe.a\n    description \u003d Cp vendor-snapshot/x86/arch-x86/static/libasync_safe.a\n    cpFlags \u003d -f -L\n```\n\nOne is from the libasync_safe source cc_library in bionic, the other is from the prebuilt snapshot of that library.",
+      "parentUuid": "62f9f2b6_3d196093",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 31
+      },
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "525dcccb_9946de20",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-14T12:23:29Z",
+      "side": 1,
+      "message": "Thanks for testing, Inseob.\n\nThe use of SkipInstall is part of the generic prebuilt selection logic in android/prebuilt.go, so I think this situation can happen anywhere where there\u0027s a static cc_library and a cc_prebuilt_library with the same name. Hence I don\u0027t think it\u0027s restricted to SDKs, more than that SDK snapshots will make it more likely to occur.\n\n\u003e Can we move this to isVendorSnapshotModule function?\n\nDone.",
+      "parentUuid": "3a80944b_94db0e64",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 31
+      },
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
