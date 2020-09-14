@@ -87,6 +87,7 @@ type config struct {
 	BuildOSTarget       Target // the Target for tools run on the build machine
 	BuildOSCommonTarget Target // the Target for common (java) tools run on the build machine
 	AndroidCommonTarget Target // the Target for common modules for the Android device
+	HostArches          []ArchType
 
 	// multilibConflicts for an ArchType is true if there is earlier configured device architecture with the same
 	// multilib value.
@@ -285,6 +286,14 @@ func TestArchConfigFuchsia(buildDir string, env map[string]string, bp string, fs
 	return testConfig
 }
 
+func getArchesFrom(targets []Target) []ArchType {
+	var ret []ArchType
+	for _, t := range targets {
+		ret = append(ret, t.Arch.ArchType)
+	}
+	return ret
+}
+
 // TestConfig returns a Config object suitable for using for tests that need to run the arch mutator
 func TestArchConfig(buildDir string, env map[string]string, bp string, fs map[string][]byte) Config {
 	testConfig := TestConfig(buildDir, env, bp, fs)
@@ -308,6 +317,7 @@ func TestArchConfig(buildDir string, env map[string]string, bp string, fs map[st
 	config.BuildOSTarget = config.Targets[BuildOs][0]
 	config.BuildOSCommonTarget = getCommonTargets(config.Targets[BuildOs])[0]
 	config.AndroidCommonTarget = getCommonTargets(config.Targets[Android])[0]
+	config.HostArches = getArchesFrom(config.Targets[BuildOs])
 	config.TestProductVariables.DeviceArch = proptools.StringPtr("arm64")
 	config.TestProductVariables.DeviceArchVariant = proptools.StringPtr("armv8-a")
 	config.TestProductVariables.DeviceSecondaryArch = proptools.StringPtr("arm")
@@ -404,6 +414,7 @@ func NewConfig(srcDir, buildDir string, moduleListFile string) (Config, error) {
 	if len(config.Targets[Android]) > 0 {
 		config.AndroidCommonTarget = getCommonTargets(config.Targets[Android])[0]
 	}
+	config.HostArches = getArchesFrom(config.Targets[BuildOs])
 
 	if err := config.fromEnv(); err != nil {
 		return Config{}, err

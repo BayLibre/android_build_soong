@@ -37,7 +37,7 @@ func (a *apexBundle) AndroidMk(config android.Config) android.AndroidMkData {
 }
 
 func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, moduleDir string,
-	apexAndroidMkData android.AndroidMkData) []string {
+	apexAndroidMkData android.AndroidMkData, config android.Config) []string {
 
 	// apexBundleName comes from the 'name' property; apexName comes from 'apex_name' property.
 	// An apex is installed to /system/apex/<apexBundleName> and is activated at /apex/<apexName>
@@ -157,13 +157,14 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			host := false
 			switch fi.module.Target().Os.Class {
 			case android.Host:
-				if fi.module.Target().Arch.ArchType != android.Common {
-					fmt.Fprintln(w, "LOCAL_MODULE_HOST_ARCH :=", archStr)
-				}
-				host = true
-			case android.HostCross:
-				if fi.module.Target().Arch.ArchType != android.Common {
-					fmt.Fprintln(w, "LOCAL_MODULE_HOST_CROSS_ARCH :=", archStr)
+				if fi.module.Target().HostCross(config) {
+					if fi.module.Target().Arch.ArchType != android.Common {
+						fmt.Fprintln(w, "LOCAL_MODULE_HOST_CROSS_ARCH :=", archStr)
+					}
+				} else {
+					if fi.module.Target().Arch.ArchType != android.Common {
+						fmt.Fprintln(w, "LOCAL_MODULE_HOST_ARCH :=", archStr)
+					}
 				}
 				host = true
 			case android.Device:
@@ -307,7 +308,7 @@ func (a *apexBundle) androidMkForType(config android.Config) android.AndroidMkDa
 			apexType := a.properties.ApexType
 			if a.installable() {
 				apexName := proptools.StringDefault(a.properties.Apex_name, name)
-				moduleNames = a.androidMkForFiles(w, name, apexName, moduleDir, data)
+				moduleNames = a.androidMkForFiles(w, name, apexName, moduleDir, data, config)
 			}
 
 			if apexType == flattenedApex {
