@@ -238,6 +238,30 @@
       "revId": "75480154e2242cc50b230180e801c3930530d0b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c74400d0_2f51f2e7",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-14T11:01:42Z",
+      "side": 1,
+      "message": "thanks!",
+      "parentUuid": "20e897b0_dd1f04db",
+      "range": {
+        "startLine": 571,
+        "startChar": 20,
+        "endLine": 571,
+        "endChar": 44
+      },
+      "revId": "75480154e2242cc50b230180e801c3930530d0b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
