@@ -109,6 +109,29 @@
       "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79027581_584e4cb5",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-09-14T01:09:46Z",
+      "side": 1,
+      "message": "Some modules have to be included to vendor snapshots even if IsSkipInstall is true, e.g. CFI static libraries. Can you elaborate?",
+      "range": {
+        "startLine": 817,
+        "startChar": 2,
+        "endLine": 817,
+        "endChar": 31
+      },
+      "revId": "b6a38fd9a2448661e5eac33a38cc7e26fb251610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
