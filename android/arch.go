@@ -29,16 +29,25 @@ import (
 
 const COMMON_VARIANT = "common"
 
+type ArchFamily int
+
+const (
+	CommonFamily ArchFamily = iota
+	ArmFamily
+	X86Family
+)
+
 var (
 	archTypeList []ArchType
 
-	Arm    = newArch("arm", "lib32")
-	Arm64  = newArch("arm64", "lib64")
-	X86    = newArch("x86", "lib32")
-	X86_64 = newArch("x86_64", "lib64")
+	Arm    = newArch("arm", "lib32", ArmFamily)
+	Arm64  = newArch("arm64", "lib64", ArmFamily)
+	X86    = newArch("x86", "lib32", X86Family)
+	X86_64 = newArch("x86_64", "lib64", X86Family)
 
 	Common = ArchType{
-		Name: COMMON_VARIANT,
+		Family: CommonFamily,
+		Name:   COMMON_VARIANT,
 	}
 )
 
@@ -501,13 +510,15 @@ func (a Arch) String() string {
 }
 
 type ArchType struct {
+	Family   ArchFamily
 	Name     string
 	Field    string
 	Multilib string
 }
 
-func newArch(name, multilib string) ArchType {
+func newArch(name, multilib string, family ArchFamily) ArchType {
 	archType := ArchType{
+		Family:   family,
 		Name:     name,
 		Field:    proptools.FieldNameForProperty(name),
 		Multilib: multilib,
@@ -569,7 +580,7 @@ var (
 	Linux       = NewOsType("linux_glibc", Host, false)
 	Darwin      = NewOsType("darwin", Host, false)
 	LinuxBionic = NewOsType("linux_bionic", Host, false)
-	Windows     = NewOsType("windows", HostCross, true)
+	Windows     = NewOsType("windows", Host, true)
 	Android     = NewOsType("android", Device, false)
 	Fuchsia     = NewOsType("fuchsia", Device, false)
 
@@ -600,7 +611,6 @@ const (
 	Generic OsClass = iota
 	Device
 	Host
-	HostCross
 )
 
 func (class OsClass) String() string {
@@ -611,8 +621,6 @@ func (class OsClass) String() string {
 		return "device"
 	case Host:
 		return "host"
-	case HostCross:
-		return "host cross"
 	default:
 		panic(fmt.Errorf("unknown class %d", class))
 	}
@@ -699,6 +707,11 @@ func (target Target) Variations() []blueprint.Variation {
 	}
 }
 
+func (target Target) HostCross() bool {
+	return target.Os.Class == Host &&
+		(target.Os != BuildOs || target.Arch.ArchType.Family != BuildArch.Family)
+}
+
 func osMutator(bpctx blueprint.BottomUpMutatorContext) {
 	var module Module
 	var ok bool
@@ -730,26 +743,15 @@ func osMutator(bpctx blueprint.BottomUpMutatorContext) {
 		return
 	}
 
-	osClasses := base.OsClassSupported()
-
 	var moduleOSList []OsType
 
 	for _, os := range OsTypeList {
-		supportedClass := false
-		for _, osClass := range osClasses {
-			if os.Class == osClass {
-				supportedClass = true
+		for _, t := range mctx.Config().Targets[os] {
+			if base.supportsTarget(t) {
+				moduleOSList = append(moduleOSList, os)
+				break
 			}
 		}
-		if !supportedClass {
-			continue
-		}
-
-		if len(mctx.Config().Targets[os]) == 0 {
-			continue
-		}
-
-		moduleOSList = append(moduleOSList, os)
 	}
 
 	if len(moduleOSList) == 0 {
@@ -904,7 +906,7 @@ func archMutator(bpctx blueprint.BottomUpMutatorContext) {
 
 	prefer32 := false
 	if base.prefer32 != nil {
-		prefer32 = base.prefer32(mctx, base, os.Class)
+		prefer32 = base.prefer32(mctx, base, os)
 	}
 
 	multilib, extraMultilib := decodeMultilib(base, os.Class)
@@ -955,7 +957,7 @@ func decodeMultilib(base *ModuleBase, class OsClass) (multilib, extraMultilib st
 	switch class {
 	case Device:
 		multilib = String(base.commonProperties.Target.Android.Compile_multilib)
-	case Host, HostCross:
+	case Host:
 		multilib = String(base.commonProperties.Target.Host.Compile_multilib)
 	}
 	if multilib == "" {
@@ -1231,7 +1233,7 @@ func (m *ModuleBase) setOSProperties(ctx BottomUpMutatorContext) {
 			//         key: value,
 			//     },
 			// },
-			if os.Class == Host || os.Class == HostCross {
+			if os.Class == Host {
 				field := "Host"
 				prefix := "target.host"
 				m.appendProperties(ctx, genProps, targetProp, field, prefix)
@@ -1271,7 +1273,7 @@ func (m *ModuleBase) setOSProperties(ctx BottomUpMutatorContext) {
 			prefix := "target." + os.Name
 			m.appendProperties(ctx, genProps, targetProp, field, prefix)
 
-			if (os.Class == Host || os.Class == HostCross) && os != Windows {
+			if os.Class == Host && os != Windows {
 				field := "Not_windows"
 				prefix := "target.not_windows"
 				m.appendProperties(ctx, genProps, targetProp, field, prefix)
