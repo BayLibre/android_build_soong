@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "825b0a0c_fca663a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-15T08:32:26Z",
+      "side": 1,
+      "message": "presubmit failure looks related",
+      "revId": "4a31e4ea7ff0771f39dfe8284f03dcd3101e6e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
