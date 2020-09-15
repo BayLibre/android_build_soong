@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09f30ff6_1a7a0b8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T02:08:01Z",
+      "side": 1,
+      "message": "I suggest bypassing presubmits on this since it\u0027s very unlikely to catch any regression, and it won\u0027t test on mac.",
+      "revId": "6a9a14663d34ae8ec6f7e4258dcddbafa4d417da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
