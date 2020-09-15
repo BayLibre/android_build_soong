@@ -33,6 +33,23 @@
       "revId": "3d2de0641ad440c8157aa894739039ce070bf196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c8dc560_32976703",
+        "filename": "cc/config/global.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-15T17:26:07Z",
+      "side": 1,
+      "message": "Do you really want -Wno-error and not -Wno?",
+      "revId": "3d2de0641ad440c8157aa894739039ce070bf196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
