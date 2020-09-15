@@ -16,6 +16,23 @@
       "revId": "807c5461877b95f44717a8096b655e25726ff76d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f0a3c3_ee711f53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-09-15T14:08:03Z",
+      "side": 1,
+      "message": "Paul told me that he prefers not to review it. Colin, Dan, could you take a look? It\u0027s blocking me to submit a new CTS test.",
+      "revId": "807c5461877b95f44717a8096b655e25726ff76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
