@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e848e108_e9a522e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T13:45:58Z",
+      "side": 1,
+      "message": "I need a +2 from a Soong owner for this. Thanks.",
+      "revId": "809d51866a403f814aaefb16101b0edd46b7f122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
