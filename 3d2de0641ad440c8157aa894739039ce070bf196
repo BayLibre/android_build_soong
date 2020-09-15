@@ -68,6 +68,24 @@
       "revId": "3d2de0641ad440c8157aa894739039ce070bf196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc249efb_c4467db0",
+        "filename": "cc/config/global.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-15T20:40:34Z",
+      "side": 1,
+      "message": "If there\u0027s no plan to work on it immediately why not make it -Wno and then switch it to -Wno-error to collect data on fixing it later?",
+      "parentUuid": "dc8cc2f8_d02a03c4",
+      "revId": "3d2de0641ad440c8157aa894739039ce070bf196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
