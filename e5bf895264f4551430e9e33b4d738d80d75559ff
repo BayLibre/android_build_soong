@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f3e1ad99_7f5a184b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T01:43:49Z",
+      "side": 1,
+      "message": "No, I tried that first. Handling it in two stages adds code to construct a full bpPropertySet rather than just merging the struct fields, duplicates a bit of type testing logic, and doesn\u0027t help with the messy logic handling new/existing values in AddProperty.\n\nSplitting out the merging code helps, which I\u0027ve done now. I\u0027ve also cleaned up some unnecessary complications trying to avoid adding empty sets.\n\nI\u0027ve split off the sanitizer and updater changes from the bp.go stuff and added unit tests, but there\u0027s not much value in separating out the property struct handling anymore since it\u0027s just an else clause in mergePropertySet now.",
+      "parentUuid": "8f921509_bf01bf6e",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c25c500_fb42c1d7",
         "filename": "android/sdk.go",
         "patchSetId": 1
@@ -104,6 +122,30 @@
       "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d4310b6_6485e5e1",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T01:43:49Z",
+      "side": 1,
+      "message": "Yes, but I don\u0027t see how that would make the exposition any simpler than this description.",
+      "parentUuid": "2ec5926c_6be864c4",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +252,24 @@
       "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a89ca4a1_026a9c26",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T01:43:49Z",
+      "side": 1,
+      "message": "Discussed on the other thread.",
+      "parentUuid": "e435ada1_508e2879",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
