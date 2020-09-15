@@ -31,7 +31,6 @@ func init() {
 }
 
 var robolectricDefaultLibs = []string{
-	"robolectric_android-all-stub",
 	"Robolectric_all-target",
 	"mockito-robolectric-prebuilt",
 	"truth-prebuilt",
@@ -99,7 +98,8 @@ func (r *robolectricTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	ctx.AddVariationDependencies(nil, roboCoverageLibsTag, r.robolectricProperties.Coverage_libs...)
 
-	ctx.AddVariationDependencies(nil, roboRuntimesTag, "robolectric-android-all-prebuilts")
+	ctx.AddFarVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(),
+		roboRuntimesTag, "robolectric-android-all-prebuilts")
 }
 
 func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -335,7 +335,7 @@ func (r *robolectricTest) InstallForceOS() (*android.OsType, *android.ArchType) 
 func robolectricRuntimesFactory() android.Module {
 	module := &robolectricRuntimes{}
 	module.AddProperties(&module.props)
-	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitAndroidArchModule(module, android.HostSupportedNoCross, android.MultilibCommon)
 	return module
 }
 
