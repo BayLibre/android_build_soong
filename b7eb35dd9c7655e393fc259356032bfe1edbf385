@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61a12097_2e389aef",
+        "filename": "sdk/bp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T16:15:08Z",
+      "side": 1,
+      "message": "\u003e You mentioned a mergePropertySet() method but I can\u0027t see it did you forget to upload a change?\n\nHere it is. It\u0027s PS2, uploaded at the embarrassing time 02:40 last night according to my Gerrit UI.",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

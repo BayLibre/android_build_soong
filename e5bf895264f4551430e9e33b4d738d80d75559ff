@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "bc3ff3bc_2b6dbe03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T16:15:08Z",
+      "side": 1,
+      "message": "\u003e Also, I am not 100% convinced that merging property sets is required so I would like to see a concrete use case for it before we add it.\n\nI discussed this in an earlier response, but can add that concretely the line https://r.android.com/c/platform/build/soong/+/1427729/2/cc/library_sdk_member.go#224 would fail in some calls, and there\u0027s no way to query if a property already exists through the BpPropertySet interface (which in itself I think is fine).\n\nOne can very well add set.property_a in one call and set.property_b in another. Having to deal with checking for and adding the struct only once would mean the caller effectively has to traverse the sets/structs themselves, which defeats the point with this. And, as mentioned earler, the sets themselves don\u0027t carry any info, which is what makes a check against clobbering valuable.\n\n\u003e The second issue is separation of concerns.\n\nI sincerely appreciate that, and I took your suggested approach myself initially. But after a while I realised it gets overall simpler if type checking and handling of the nested property set already present (i.e. the potential merge target) is done first, and the type dispatch on the value is done afterwards.\n\nSince you apparently haven\u0027t seen mergePropertySet I\u0027ll leave it as-is for now. The separation between property sets and structs is straightforward there, so I don\u0027t think a separate CL is worth the effort at this point. But if you still prefer that then I\u0027ll do it. I would however do it by keeping the merge functionality in the first CL and add back the else clause at line 51 (in PS2) for property structs in the second, because as argued above that is the simplest and cleanest spot to do the type dispatch. Doing the conversion from property struct to bpPropertySet separately first essentially means moving up the type dispatch to a higher level, which just duplicates code, and also adds code to construct the separate bpPropertySet recursively.\n\n\u003e struct -\u003e BpPropertySet needs to handle fields and nested structs and slices but BpPropertySet merging needs to handle BpPropertySets\n\nWhen the property set to merge into is known, these differences reduce to two different ways of visiting the fields, nothing more. The recursion is the same, etc.\n\nAlso, I haven\u0027t changed anything when it comes to slices. I didn\u0027t test the existing functionality in the new unit tests - I\u0027ll add that.",
+      "parentUuid": "1aa130f7_4671e0ce",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c25c500_fb42c1d7",
         "filename": "android/sdk.go",
         "patchSetId": 1
@@ -191,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "77e00399_771a4370",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T16:15:08Z",
+      "side": 1,
+      "message": "\u003e FYI - the * is still there.\n\nI suspect you\u0027ve missed PS2. There\u0027s one \"*\" left, but that\u0027s the bullet. I think I\u0027ll address this in the next review round, once I have your feedback on PS2.",
+      "parentUuid": "4c8b6bfa_8cd1df4c",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c8b7e00_b095f581",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -258,6 +300,24 @@
       "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b3fd7b7_23666905",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T16:15:08Z",
+      "side": 1,
+      "message": "Modification isn\u0027t the issue since it\u0027s passed by value then. This makes it a bit easier to recurse and avoid pass-by-value there - see the Addr() call on line 72 (in PS2). (Note that Addr() only works on structs and fields in structs when the structs are addressable, which they aren\u0027t when passed by value on the stack.)\n\nIt\u0027s of course possible to convert the value to a pointer here, but I think this is better since it\u0027s very likely a mistake.",
+      "parentUuid": "22a521c0_bf9cbc62",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
