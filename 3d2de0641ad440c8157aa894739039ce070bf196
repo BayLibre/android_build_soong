@@ -86,6 +86,24 @@
       "revId": "3d2de0641ad440c8157aa894739039ce070bf196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cab4f80_eed01559",
+        "filename": "cc/config/global.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-09-15T20:52:13Z",
+      "side": 1,
+      "message": "I generally think that when we\u0027ve seen these, we act faster on them, but that\u0027s just my feeling. I moved them to `-Wno-` instead now, and I\u0027m probably going to mark that bug for android_icebox.",
+      "parentUuid": "fc249efb_c4467db0",
+      "revId": "3d2de0641ad440c8157aa894739039ce070bf196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
