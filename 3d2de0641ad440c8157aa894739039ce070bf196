@@ -50,6 +50,24 @@
       "revId": "3d2de0641ad440c8157aa894739039ce070bf196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc8cc2f8_d02a03c4",
+        "filename": "cc/config/global.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-09-15T17:31:28Z",
+      "side": 1,
+      "message": "We want to fix these when we can, or disable it only in projects/places where it happens. There is a follow-up bug that we can hopefully work on at some point in 2020-2021.",
+      "parentUuid": "3c8dc560_32976703",
+      "revId": "3d2de0641ad440c8157aa894739039ce070bf196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
