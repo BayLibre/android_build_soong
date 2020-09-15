@@ -35,11 +35,10 @@ func (s *bpPropertySet) init() {
 	s.tags = make(map[string]android.BpPropertyTag)
 }
 
-// Converts the given value, which is assumed to be an interface or a pointer to
-// a struct, to a bpPropertySet.
+// Converts the given value, which is assumed to be a struct, to a
+// bpPropertySet.
 func convertToPropertySet(value reflect.Value) *bpPropertySet {
 	res := newPropertySet()
-	value = reflect.Indirect(value)
 	structType := value.Type()
 
 	for i := 0; i < structType.NumField(); i++ {
@@ -67,6 +66,26 @@ func convertToPropertySet(value reflect.Value) *bpPropertySet {
 	return res
 }
 
+// Converts the given value to something that can be set in a property.
+func coercePropertyValue(value interface{}) interface{} {
+	val := reflect.ValueOf(value)
+	switch val.Kind() {
+	case reflect.Struct:
+		// convertToPropertySet requires an addressable struct, and this is probably
+		// a mistake.
+		panic(fmt.Sprintf("Value is a struct, not a pointer to one: %v", value))
+	case reflect.Ptr:
+		if _, ok := value.(*bpPropertySet); !ok {
+			derefValue := reflect.Indirect(val)
+			if derefValue.Kind() != reflect.Struct {
+				panic(fmt.Sprintf("A pointer must be to a struct, got: %v", value))
+			}
+			return convertToPropertySet(derefValue)
+		}
+	}
+	return value
+}
+
 // Merges the fields of the given property set into s.
 func (s *bpPropertySet) mergePropertySet(propSet *bpPropertySet) {
 	for _, name := range propSet.order {
@@ -79,17 +98,7 @@ func (s *bpPropertySet) mergePropertySet(propSet *bpPropertySet) {
 }
 
 func (s *bpPropertySet) AddProperty(name string, value interface{}) {
-	val := reflect.ValueOf(value)
-	switch val.Kind() {
-	case reflect.Struct:
-		// convertToPropertySet requires an addressable struct, and this is probably
-		// a mistake.
-		panic(fmt.Sprintf("Value of %q is a struct, not a pointer to one: %v", name, value))
-	case reflect.Ptr, reflect.Interface:
-		if _, ok := value.(*bpPropertySet); !ok {
-			value = convertToPropertySet(val)
-		}
-	}
+	value = coercePropertyValue(value)
 
 	if propSetValue, ok := value.(*bpPropertySet); ok {
 		if curValue, ok := s.properties[name]; ok {
