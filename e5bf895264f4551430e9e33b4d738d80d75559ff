@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1aa130f7_4671e0ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-15T14:38:21Z",
+      "side": 1,
+      "message": "There are two orthogonal issues here.\n\nOne is best practice for git changes. Having a single functional change per git change makes it much easier to review and manage. Even if the follow up change modifies the same area of code as the first one. Also, I am not 100% convinced that merging property sets is required so I would like to see a concrete use case for it before we add it. Having it as a separate change means that the first part which you have a need for won\u0027t be delayed by the second part which you were a little unclear about.\n\nThe second issue is separation of concerns. While I agree that there is a similarity in pattern between merging in a BpPropertySet and converting a struct I don\u0027t think that justifies them being done in the same method.\n\nThe common pattern:\n* Recursing through the set/struct.\n* Checking types.\n\nHowever, the types that are handled are different. struct -\u003e BpPropertySet needs to handle fields and nested structs and slices but BpPropertySet merging needs to handle BpPropertySets. e.g. there are huge chunks of AddProperty() which are specific to struct -\u003e property set conversion.\n\nYou mentioned a mergePropertySet() method but I can\u0027t see it did you forget to upload a change?",
+      "parentUuid": "f3e1ad99_7f5a184b",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c25c500_fb42c1d7",
         "filename": "android/sdk.go",
         "patchSetId": 1
@@ -149,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "4c8b6bfa_8cd1df4c",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-15T14:38:21Z",
+      "side": 1,
+      "message": "FYI - the * is still there.\n\nBecause this description uses fields which is only relevant to the struct and is confusing to me. You can describe the merging in terms of properties and the struct conversion in terms of fields -\u003e properties, nested structs to nested property sets. In future you may also want to treat fields differently depending on a tag and having a separate description of the conversion process will make that easier to document.\n\nI think you also need more information on how property sets are merged (append to lists, etc) and when collisions can occur. Separating them out will make that easier.",
+      "parentUuid": "9d4310b6_6485e5e1",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c8b7e00_b095f581",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -199,6 +241,23 @@
       "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22a521c0_bf9cbc62",
+        "filename": "sdk/bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-15T14:38:21Z",
+      "side": 1,
+      "message": "Not sure this matters as you are not modifying the supplied struct.",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
