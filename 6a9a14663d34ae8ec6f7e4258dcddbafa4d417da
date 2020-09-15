@@ -16,6 +16,23 @@
       "revId": "6a9a14663d34ae8ec6f7e4258dcddbafa4d417da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dedfe1f8_a639cb48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-15T02:51:55Z",
+      "side": 1,
+      "message": "I think the TH build errors on git_master are because the topic being corrected hasn\u0027t propagated there yet, so it effectively tests https://r.android.com/1404637 without https://r.android.com/1421588. There may also be test errors in CF targets for the same reason.\n\nSo even though it looks very red I still suggest bypassing presubmits, but I won\u0027t be around to see it through myself.",
+      "revId": "6a9a14663d34ae8ec6f7e4258dcddbafa4d417da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
