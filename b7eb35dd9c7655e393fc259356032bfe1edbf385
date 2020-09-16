@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3f2b244e_8db5ff52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-16T17:07:55Z",
+      "side": 1,
+      "message": "Sent too soon. That is much cleaner but I think it still unnecessarily mixes two separate tasks (merging and conversion).\n",
+      "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61a12097_2e389aef",
         "filename": "sdk/bp.go",
         "patchSetId": 2
@@ -97,6 +114,24 @@
       "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "425e57b4_38ae60d7",
+        "filename": "sdk/bp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-16T17:07:55Z",
+      "side": 1,
+      "message": "Ignore this. The above comment supercedes this.",
+      "parentUuid": "ebb4c729_347b7459",
+      "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
