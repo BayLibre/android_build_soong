@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "109e4311_4bb63a34",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-09-16T21:24:35Z",
+      "side": 0,
+      "message": "Removed because this case is invalid. This codename has had its int assigned, but the config claims the config is not final.\n\nIf this ever does need to be supported it\u0027s just a matter of making sure the Q -\u003e 29 mapping (or whatever) in the finalized codenames map in android/api_levels.go.",
+      "revId": "29809972d2a38cbb57b960f5046a52a542648ebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
