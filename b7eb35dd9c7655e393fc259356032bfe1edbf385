@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3eb2b475_46e64eb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-16T17:06:10Z",
+      "side": 1,
+      "message": "Apologies, I am not sure why I missed your patch I thought I checked but obviously not very well.",
+      "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61a12097_2e389aef",
         "filename": "sdk/bp.go",
         "patchSetId": 2
@@ -22,6 +39,64 @@
       "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "388399c0_943480b2",
+        "filename": "sdk/bp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-16T17:06:10Z",
+      "side": 1,
+      "message": "Ok. This looks much cleaner but I still think it unnecessarily mixes two separate jobs.",
+      "parentUuid": "61a12097_2e389aef",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "263bf519_210309a0",
+        "filename": "sdk/bp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-16T17:06:10Z",
+      "side": 1,
+      "message": "This switch mixes two things:\n1) Detection of when the value being supplied and the current value are both BpPropertySets and so require merging.\n2) Conversion of a struct into a BpPropertySet and merging.\n\nI think it will be cleaner to split this into two parts:\n\n1) If the new value is a pointer to a struct then convert it into a BpPropertySet.\n\n2. If the property already exists and the current value is a BpPropertySet and the new value is also a BpPropertySet then merge them together otherwise fail.\n\nThe conversion would simply use the part of mergePropertySet that handles structs.\n\nSomething like this (no guarantees it will work):\n\n// The following switch should probably be in a separate method, e.g. normalizeValues()\nval :\u003d reflect.ValueOf(value)\nswitch val.Kind() {\ncase reflect.Struct:\n\tpanic(fmt.Sprintf(\"Value of %q is a struct, not a pointer to one: %v\", name, value))\n\ncase reflect.Ptr:\n\tps :\u003d newPropertySet()\n\n\t// Merge the given property struct recursively using reflection.\n\tvalue \u003d reflect.Indirect(value)\n\tstructType :\u003d value.Type()\n\tfor i :\u003d 0; i \u003c structType.NumField(); i++ {\n\t\tfield :\u003d structType.Field(i)\n\t\tfieldVal :\u003d value.Field(i)\n\t\tswitch fieldVal.Type().Kind() {\n\t\tcase reflect.Ptr:\n\t\t\tif fieldVal.IsNil() {\n\t\t\t\tcontinue // nil pointer means the property isn\u0027t set.\n\t\t\t}\n\t\t\tfieldVal \u003d fieldVal.Elem()\n\t\tcase reflect.Slice:\n\t\t\tif fieldVal.IsNil() {\n\t\t\t\tcontinue // Ignore a nil slice (but not one with length zero).\n\t\t\t}\n\t\t}\n\n\t\tif fieldVal.Type().Kind() \u003d\u003d reflect.Struct {\n\t\t\tfieldVal \u003d fieldVal.Addr() // Avoid struct copy below.\n\t\t}\n\t\ts.AddProperty(strings.ToLower(field.Name), fieldVal.Interface())\n\t}\n\tvalue \u003d ps\n}\n\nif currentValue, ok :\u003d s.properties[name]; ok {\n\tif currentSet, ok :\u003d currentValue.(*bpPropertySet); ok {\n\t\tif newSet, ok :\u003d value.(*bpPropertySet); ok {\n\t\t\tcurrentSet.mergePropertySet(newSet)\n\t\t\t// Skip over the panic.\n        \t}\n        }\n\tpanic(fmt.Sprintf(\"Property %q already exists in property set\", name))\n}\n\nThe mergePropertySet() method would only include the first branch.",
+      "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb4c729_347b7459",
+        "filename": "sdk/bp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-16T17:06:10Z",
+      "side": 1,
+      "message": "If at this point the type is an interface then you assume that it is a BpPropertySet (which seems reasonable). In that case you can simply drop through as there is no point in merging a BpPropertySet into an empty BpPropertySet. This branch would then only be used for structs.",
+      "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
