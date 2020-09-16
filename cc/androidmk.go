@@ -44,6 +44,8 @@ type AndroidMkContext interface {
 	static() bool
 	InRamdisk() bool
 	InRecovery() bool
+	DirectlyInAnyApex() bool
+	AnyVariantDirectlyInAnyApex() bool
 }
 
 type subAndroidMkProvider interface {
@@ -63,7 +65,7 @@ func (c *Module) subAndroidMk(entries *android.AndroidMkEntries, obj interface{}
 }
 
 func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
-	if c.Properties.HideFromMake || !c.IsForPlatform() {
+	if c.hideApexVariantFromMake || c.Properties.HideFromMake {
 		return []android.AndroidMkEntries{{
 			Disabled: true,
 		}}
@@ -288,9 +290,8 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 			}
 		})
 	}
-	if len(library.Properties.Stubs.Versions) > 0 &&
-		android.DirectlyInAnyApex(ctx, ctx.Name()) && !ctx.InRamdisk() && !ctx.InRecovery() && !ctx.UseVndk() &&
-		!ctx.static() {
+	if len(library.Properties.Stubs.Versions) > 0 && !ctx.Host() && ctx.AnyVariantDirectlyInAnyApex() &&
+		!ctx.InRamdisk() && !ctx.InRecovery() && !ctx.UseVndk() && !ctx.static() {
 		if library.buildStubs() && library.isLatestStubVersion() {
 			// reference the latest version via its name without suffix when it is provided by apex
 			entries.SubName = ""

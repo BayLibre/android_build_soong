@@ -162,6 +162,10 @@ type BaseModuleContext interface {
 	// and returns a top-down dependency path from a start module to current child module.
 	GetWalkPath() []Module
 
+	PrimaryModule() Module
+	FinalModule() Module
+	VisitAllModuleVariants(visit func(Module))
+
 	// GetTagPath is supposed to be called in visit function passed in WalkDeps()
 	// and returns a top-down dependency tags path from a start module to current child module.
 	// It has one less entry than GetWalkPath() as it contains the dependency tags that
@@ -240,10 +244,6 @@ type ModuleContext interface {
 	// phony rules or real files.  Phony can be called on the same name multiple times to add
 	// additional dependencies.
 	Phony(phony string, deps ...Path)
-
-	PrimaryModule() Module
-	FinalModule() Module
-	VisitAllModuleVariants(visit func(Module))
 
 	GetMissingDependencies() []string
 }
@@ -1361,8 +1361,8 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	if !ctx.PrimaryArch() {
 		suffix = append(suffix, ctx.Arch().ArchType.String())
 	}
-	if apex, ok := m.module.(ApexModule); ok && !apex.IsForPlatform() {
-		suffix = append(suffix, apex.ApexVariationName())
+	if apexInfo := ctx.Provider(ApexInfoProvider).(ApexInfo); !apexInfo.IsForPlatform() {
+		suffix = append(suffix, apexInfo.ApexVariationName)
 	}
 
 	ctx.Variable(pctx, "moduleDesc", desc)
@@ -1903,6 +1903,20 @@ func (b *baseModuleContext) GetTagPath() []blueprint.DependencyTag {
 	return b.tagPath
 }
 
+func (b *baseModuleContext) VisitAllModuleVariants(visit func(Module)) {
+	b.bp.VisitAllModuleVariants(func(module blueprint.Module) {
+		visit(module.(Module))
+	})
+}
+
+func (b *baseModuleContext) PrimaryModule() Module {
+	return b.bp.PrimaryModule().(Module)
+}
+
+func (b *baseModuleContext) FinalModule() Module {
+	return b.bp.FinalModule().(Module)
+}
+
 // A regexp for removing boilerplate from BaseDependencyTag from the string representation of
 // a dependency tag.
 var tagCleaner = regexp.MustCompile(`\QBaseDependencyTag:{}\E(, )?`)
@@ -1936,20 +1950,6 @@ func (b *baseModuleContext) GetPathString(skipFirst bool) string {
 		sb.WriteString(fmt.Sprintf("    -> %s", m.String()))
 	}
 	return sb.String()
-}
-
-func (m *moduleContext) VisitAllModuleVariants(visit func(Module)) {
-	m.bp.VisitAllModuleVariants(func(module blueprint.Module) {
-		visit(module.(Module))
-	})
-}
-
-func (m *moduleContext) PrimaryModule() Module {
-	return m.bp.PrimaryModule().(Module)
-}
-
-func (m *moduleContext) FinalModule() Module {
-	return m.bp.FinalModule().(Module)
 }
 
 func (m *moduleContext) ModuleSubDir() string {
