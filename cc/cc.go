@@ -360,6 +360,7 @@ type ModuleContextIntf interface {
 	bootstrap() bool
 	mustUseVendorVariant() bool
 	nativeCoverage() bool
+	directlyInAnyApex() bool
 }
 
 type ModuleContext interface {
@@ -539,7 +540,16 @@ var (
 	dataLibDepTag         = dependencyTag{name: "data lib"}
 	runtimeDepTag         = dependencyTag{name: "runtime lib"}
 	testPerSrcDepTag      = dependencyTag{name: "test_per_src"}
+	testForDepTag         = dependencyTag{name: "test for apex"}
+
+	stubImplDepTag = copyDirectlyInAnyApexDependencyTag{name: "stub_impl"}
 )
+
+type copyDirectlyInAnyApexDependencyTag dependencyTag
+
+func (copyDirectlyInAnyApexDependencyTag) CopyDirectlyInAnyApex() {}
+
+var _ android.CopyDirectlyInAnyApexTag = copyDirectlyInAnyApexDependencyTag{}
 
 func IsSharedDepTag(depTag blueprint.DependencyTag) bool {
 	ccLibDepTag, ok := depTag.(libraryDependencyTag)
@@ -616,6 +626,8 @@ type Module struct {
 
 	// For apex variants, this is set as apex.min_sdk_version
 	apexSdkVersion int
+
+	hideApexVariantFromMake bool
 }
 
 func (c *Module) Toc() android.OptionalPath {
@@ -1354,11 +1366,11 @@ func (ctx *moduleContextImpl) getVndkExtendsModuleName() string {
 }
 
 func (ctx *moduleContextImpl) isForPlatform() bool {
-	return ctx.mod.IsForPlatform()
+	return ctx.ctx.Provider(android.ApexInfoProvider).(android.ApexInfo).IsForPlatform()
 }
 
 func (ctx *moduleContextImpl) apexVariationName() string {
-	return ctx.mod.ApexVariationName()
+	return ctx.ctx.Provider(android.ApexInfoProvider).(android.ApexInfo).ApexVariationName
 }
 
 func (ctx *moduleContextImpl) apexSdkVersion() int {
@@ -1379,6 +1391,10 @@ func (ctx *moduleContextImpl) bootstrap() bool {
 
 func (ctx *moduleContextImpl) nativeCoverage() bool {
 	return ctx.mod.nativeCoverage()
+}
+
+func (ctx *moduleContextImpl) directlyInAnyApex() bool {
+	return ctx.mod.DirectlyInAnyApex()
 }
 
 func newBaseModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {
@@ -1536,6 +1552,11 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		return
 	}
 
+	apexInfo := actx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	if !apexInfo.IsForPlatform() {
+		c.hideApexVariantFromMake = true
+	}
+
 	c.makeLinkType = c.getMakeLinkType(actx)
 
 	c.Properties.SubName = ""
@@ -1667,8 +1688,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		// force anything in the make world to link against the stubs library.
 		// (unless it is explicitly referenced via .bootstrap suffix or the
 		// module is marked with 'bootstrap: true').
-		if c.HasStubsVariants() &&
-			android.DirectlyInAnyApex(ctx, ctx.baseModuleName()) && !c.InRamdisk() &&
+		if c.HasStubsVariants() && c.AnyVariantDirectlyInAnyApex() && !c.InRamdisk() &&
 			!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
 			c.IsStubs() {
 			c.Properties.HideFromMake = false // unhide
@@ -1677,13 +1697,13 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 		// glob exported headers for snapshot, if BOARD_VNDK_VERSION is current.
 		if i, ok := c.linker.(snapshotLibraryInterface); ok && ctx.DeviceConfig().VndkVersion() == "current" {
-			if isSnapshotAware(ctx, c) {
+			if isSnapshotAware(ctx, c, apexInfo) {
 				i.collectHeadersForSnapshot(ctx)
 			}
 		}
 	}
 
-	if c.installable() {
+	if c.installable(apexInfo) {
 		c.installer.install(ctx, c.outputFile.Path())
 		if ctx.Failed() {
 			return
@@ -2354,8 +2374,9 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	// For the dependency from platform to apex, use the latest stubs
 	c.apexSdkVersion = android.FutureApiLevel
-	if !c.IsForPlatform() {
-		c.apexSdkVersion = c.ApexProperties.Info.MinSdkVersion
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	if !apexInfo.IsForPlatform() {
+		c.apexSdkVersion = apexInfo.MinSdkVersion
 	}
 
 	if android.InList("hwaddress", ctx.Config().SanitizeDevice()) {
@@ -2466,8 +2487,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			if ccDep.CcLibrary() && !libDepTag.static() {
 				depIsStubs := ccDep.BuildStubs()
 				depHasStubs := VersionVariantAvailable(c) && ccDep.HasStubsVariants()
-				depInSameApexes := android.DirectlyInAllApexes(c.InApexes(), depName)
-				depInPlatform := !android.DirectlyInAnyApex(ctx, depName)
+				depInSameApexes := android.DirectlyInAllApexes(apexInfo, depName)
+				depInPlatform := !dep.(android.ApexModule).AnyVariantDirectlyInAnyApex()
 
 				var useThisDep bool
 				if depIsStubs && libDepTag.explicitlyVersioned {
@@ -2477,7 +2498,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					// Use non-stub variant if that is the only choice
 					// (i.e. depending on a lib without stubs.version property)
 					useThisDep = true
-				} else if c.IsForPlatform() {
+				} else if apexInfo.IsForPlatform() {
 					// If not building for APEX, use stubs only when it is from
 					// an APEX (and not from platform)
 					useThisDep = (depInPlatform != depIsStubs)
@@ -2486,11 +2507,12 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 						// always link to non-stub variant
 						useThisDep = !depIsStubs
 					}
-					for _, testFor := range c.TestFor() {
-						// Another exception: if this module is bundled with an APEX, then
-						// it is linked with the non-stub variant of a module in the APEX
-						// as if this is part of the APEX.
-						if android.DirectlyInApex(testFor, depName) {
+					// Another exception: if this module is bundled with an APEX, then
+					// it is linked with the non-stub variant of a module in the APEX
+					// as if this is part of the APEX.
+					testFor := ctx.Provider(android.ApexTestForInfoProvider).(android.ApexTestForInfo)
+					for _, apexContents := range testFor.ApexContents {
+						if apexContents.DirectlyInApex(depName) {
 							useThisDep = !depIsStubs
 							break
 						}
@@ -2522,7 +2544,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					// by default, use current version of LLNDK
 					versionToUse := ""
 					versions := m.AllStubsVersions()
-					if c.ApexVariationName() != "" && len(versions) > 0 {
+					if apexInfo.ApexVariationName != "" && len(versions) > 0 {
 						// if this is for use_vendor apex && dep has stubsVersions
 						// apply the same rule of apex sdk enforcement to choose right version
 						var err error
@@ -2681,10 +2703,11 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					c.Properties.AndroidMkHeaderLibs, makeLibName)
 			case libDepTag.shared():
 				if ccDep.CcLibrary() {
-					if ccDep.BuildStubs() && android.InAnyApex(depName) {
+					if ccDep.BuildStubs() && dep.(android.ApexModule).InAnyApex() {
 						// Add the dependency to the APEX(es) providing the library so that
 						// m <module> can trigger building the APEXes as well.
-						for _, an := range android.GetApexesForModule(depName) {
+						depApexInfo := ctx.OtherModuleProvider(dep, android.ApexInfoProvider).(android.ApexInfo)
+						for _, an := range depApexInfo.InApexes {
 							c.Properties.ApexesProvidingSharedLibs = append(
 								c.Properties.ApexesProvidingSharedLibs, an)
 						}
@@ -2988,7 +3011,7 @@ func (c *Module) EverInstallable() bool {
 		c.installer.everInstallable()
 }
 
-func (c *Module) installable() bool {
+func (c *Module) installable(apexInfo android.ApexInfo) bool {
 	ret := c.EverInstallable() &&
 		// Check to see whether the module has been configured to not be installed.
 		proptools.BoolDefault(c.Properties.Installable, true) &&
@@ -2997,7 +3020,7 @@ func (c *Module) installable() bool {
 	// The platform variant doesn't need further condition. Apex variants however might not
 	// be installable because it will likely to be included in the APEX and won't appear
 	// in the system partition.
-	if c.IsForPlatform() {
+	if apexInfo.IsForPlatform() {
 		return ret
 	}
 
