@@ -33,6 +33,41 @@
       "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba64a08f_a7033386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T00:59:51Z",
+      "side": 1,
+      "message": "Presubmit is failing because a library that builds against the NDK and doesn\u0027t get the default platform include paths is manually adding system/core/include and will need to be updated.",
+      "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5661532d_8d79dc05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T00:59:51Z",
+      "side": 1,
+      "message": "SGTM, it will make the remaining ones to clean up more obvious.",
+      "parentUuid": "9c8237fe_cd3fafc2",
+      "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
