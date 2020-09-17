@@ -16,6 +16,29 @@
       "revId": "fb2cb1df3f9f9702d99e8aa7da785102a8c7999b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b49d270e_2df4b293",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-17T11:31:22Z",
+      "side": 1,
+      "message": "In my experiment these methods returned android.Module rather than blueprint.Module (I added a helper function validateAndroidModules based on existing validateAndroidModule). It is possible to cast at the use site, but it may add some boilerplate if android.Module is always what is needed.",
+      "range": {
+        "startLine": 220,
+        "startChar": 85,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "fb2cb1df3f9f9702d99e8aa7da785102a8c7999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
