@@ -56,6 +56,24 @@
       "revId": "70b96b0d645d2c76ed58b6d5bdcc15dc21b13b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6266bcb7_0b21d57c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2020-09-17T14:24:26Z",
+      "side": 1,
+      "message": "The idea of introducing new arch option in this particular way is just to comply with the existing approach of treating TARGET_ARCH_VARIANT and TARGET_CPU_VARIANT.\n\n1. Yep, after the switch to mainline/GSIs all the device use the default armv8-a (v8.0) version of the architecture and \u0027generic\u0027 CPU variant; providing TARGET_CPU_VARIANT_RUNTIME is the only way to inform the system about the arch version - and it is only used at runtime. Supporting new arch version for  TARGET_ARCH_VARIANT and TARGET_CPU_VARIANT gives a way of full native build of AOSP for a specific device rather than a generic one; main goal is testing.\n\n2. The main problem with retiring TARGET_ARCH_VARIANT is that TARGET_ARCH_VARIANT and TARGET_CPU_VARIANT are semantically aliasing with native compilers\u0027 command options \"-march\" and \"-mcpu\" and used as 1-to-1 mappings in AOSP build system. But those compiler options apparently have different meanings on arm and x86: x86 only uses TARGET_ARCH_VARIANT to specify the exact CPU features; on Arm there is definitely redundancy of arch and cpu variant.\n\nMore info on the issue:\nhttps://community.arm.com/developer/tools-software/tools/b/tools-software-ides-blog/posts/compiler-flags-across-architectures-march-mtune-and-mcpu\n\n\nI think if we want to consider changing the build system arch variants processing it could be a separate CL due the concerns above.",
+      "parentUuid": "9c8b7522_aa4ea48e",
+      "revId": "70b96b0d645d2c76ed58b6d5bdcc15dc21b13b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
