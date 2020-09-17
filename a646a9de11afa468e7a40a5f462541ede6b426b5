@@ -86,6 +86,24 @@
       "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e847563_68b56021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-09-17T18:10:19Z",
+      "side": 1,
+      "message": "+danalbert@ - do you have thoughts on how to handle this?  Would we want to create an NDK header with the ALOG* macros?  Otherwise, these users will need to provide their own implementation of the macros or move to libbase logging.",
+      "parentUuid": "eea58181_ce8d68e0",
+      "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
