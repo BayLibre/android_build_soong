@@ -87,6 +87,24 @@
       "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d45b3fa_4e55ba22",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T18:26:40Z",
+      "side": 1,
+      "message": "Dan Shi might have pointers to how the test infrastructure works.",
+      "parentUuid": "db387e08_c23728d4",
+      "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
