@@ -178,6 +178,19 @@ func ApiLevelFromUser(ctx ConfigContext, raw string) (*ApiLevel, error) {
 			"not a recognized codename", canonical)
 	}
 
+	// Soong-only builds don't necessarily have this configured, so we can't
+	// check it. The main branches do, and their error checking should protect
+	// the other branches. We can rely on this always being configured after
+	// http://b/168822831 is fixed.
+	if ctx.Config().PlatformSdkVersionIsConfigured() {
+		platformSdkVersion := ctx.Config().PlatformSdkVersion().FinalOrFutureInt()
+		if asInt > platformSdkVersion {
+			return nil, fmt.Errorf("Non-final API levels must be specified by "+
+				"their code name, not integers. %q (%d) is higher than the "+
+				"maximum final API level %d", raw, asInt, platformSdkVersion)
+		}
+	}
+
 	apiLevel := uncheckedFinalApiLevel(asInt)
 	return &apiLevel, nil
 }
