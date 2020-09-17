@@ -481,13 +481,18 @@ func (sdkPreSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	sort.Ints(sdkVersions)
 	var versions []android.ApiLevel
 	for _, v := range sdkVersions {
-		apiLevel, err := javaApiLevelFromUser(ctx, strconv.Itoa(v))
-		if err != nil {
-			ctx.Errorf("Unable to identify API level for prebuilts/sdk/%d: %s",
-				v, err)
-			continue
+		// Ignoring API levels in prebuilts/sdk that are beyond the platform API
+		// level allow us to add new SDKs without needing to update every test
+		// case that would otherwise need to increase the Platform_sdk_version
+		// in its config.
+		if v <= ctx.Config().PlatformSdkVersion().FinalOrFutureInt() {
+			apiLevel, err := javaApiLevelFromUser(ctx, strconv.Itoa(v))
+			if err != nil {
+				ctx.Errorf("Unable to identify API level for prebuilts/sdk/%d: %s", v, err)
+				continue
+			}
+			versions = append(versions, apiLevel)
 		}
-		versions = append(versions, apiLevel)
 	}
 
 	ctx.Config().Once(sdkVersionsKey, func() interface{} { return versions })
