@@ -625,7 +625,14 @@ func (c *config) PlatformVersionName() string {
 	return String(c.productVariables.Platform_version_name)
 }
 
+func (c *config) PlatformSdkVersionIsConfigured() bool {
+	return c.productVariables.Platform_sdk_version != nil
+}
+
 func (c *config) PlatformSdkVersion() ApiLevel {
+	if !c.PlatformSdkVersionIsConfigured() {
+		panic("Platform_sdk_version is not configured")
+	}
 	return uncheckedFinalApiLevel(*c.productVariables.Platform_sdk_version)
 }
 
