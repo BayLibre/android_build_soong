@@ -122,6 +122,24 @@
       "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbef5351_043f790c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-09-17T19:21:00Z",
+      "side": 1,
+      "message": "Ack.  I\u0027ll look into doing that.  Most of log_main.h, which contains the ALOG* macros, looks safe to move to the NDK.",
+      "parentUuid": "45651099_a15fa2b6",
+      "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
