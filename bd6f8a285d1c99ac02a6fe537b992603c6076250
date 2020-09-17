@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c767a717_6a93889b",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-09-17T22:20:13Z",
+      "side": 1,
+      "message": "IIUC, VersionVariantAvailable(c) is implied because we only set AllStubsVersions if VersionVariantAvailable(c).\n(Previously, we needed the condition to skip irrelevant variants because the global state checks only module names, not variants.)\n\nAnyway, I\u0027m fine with this.",
+      "parentUuid": "6cb57909_5941eff4",
+      "range": {
+        "startLine": 2024,
+        "startChar": 2,
+        "endLine": 2024,
+        "endChar": 34
+      },
+      "revId": "bd6f8a285d1c99ac02a6fe537b992603c6076250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79c3a357_5fbe661a",
         "filename": "cc/library.go",
         "patchSetId": 2
