@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af848a3f_d5721ada",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T02:32:18Z",
+      "side": 1,
+      "message": "Depends on https://github.com/google/blueprint/pull/316",
+      "revId": "fb2cb1df3f9f9702d99e8aa7da785102a8c7999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
