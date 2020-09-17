@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de1d19ec_75d20d1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-09-17T00:00:07Z",
+      "side": 1,
+      "message": "Added details: there\u0027s a proposal to move liblog out of system/core and having a symlink across git projects seems error prone.  Extending this list is unfortunate, but the least bad option.",
+      "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
