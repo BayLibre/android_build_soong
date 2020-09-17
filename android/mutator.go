@@ -205,14 +205,14 @@ type BottomUpMutatorContext interface {
 
 	Rename(name string)
 
-	AddDependency(module blueprint.Module, tag blueprint.DependencyTag, name ...string)
+	AddDependency(module blueprint.Module, tag blueprint.DependencyTag, name ...string) []blueprint.Module
 	AddReverseDependency(module blueprint.Module, tag blueprint.DependencyTag, name string)
 	CreateVariations(...string) []Module
 	CreateLocalVariations(...string) []Module
 	SetDependencyVariation(string)
 	SetDefaultDependencyVariation(*string)
-	AddVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string)
-	AddFarVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string)
+	AddVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string) []blueprint.Module
+	AddFarVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string) []blueprint.Module
 	AddInterVariantDependency(tag blueprint.DependencyTag, from, to blueprint.Module)
 	ReplaceDependencies(string)
 	ReplaceDependenciesIf(string, blueprint.ReplaceDependencyPredicate)
@@ -370,8 +370,8 @@ func (b *bottomUpMutatorContext) Rename(name string) {
 	b.Module().base().commonProperties.DebugName = name
 }
 
-func (b *bottomUpMutatorContext) AddDependency(module blueprint.Module, tag blueprint.DependencyTag, name ...string) {
-	b.bp.AddDependency(module, tag, name...)
+func (b *bottomUpMutatorContext) AddDependency(module blueprint.Module, tag blueprint.DependencyTag, name ...string) []blueprint.Module {
+	return b.bp.AddDependency(module, tag, name...)
 }
 
 func (b *bottomUpMutatorContext) AddReverseDependency(module blueprint.Module, tag blueprint.DependencyTag, name string) {
@@ -423,15 +423,15 @@ func (b *bottomUpMutatorContext) SetDefaultDependencyVariation(variation *string
 }
 
 func (b *bottomUpMutatorContext) AddVariationDependencies(variations []blueprint.Variation, tag blueprint.DependencyTag,
-	names ...string) {
+	names ...string) []blueprint.Module {
 
-	b.bp.AddVariationDependencies(variations, tag, names...)
+	return b.bp.AddVariationDependencies(variations, tag, names...)
 }
 
 func (b *bottomUpMutatorContext) AddFarVariationDependencies(variations []blueprint.Variation,
-	tag blueprint.DependencyTag, names ...string) {
+	tag blueprint.DependencyTag, names ...string) []blueprint.Module {
 
-	b.bp.AddFarVariationDependencies(variations, tag, names...)
+	return b.bp.AddFarVariationDependencies(variations, tag, names...)
 }
 
 func (b *bottomUpMutatorContext) AddInterVariantDependency(tag blueprint.DependencyTag, from, to blueprint.Module) {
