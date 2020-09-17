@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d15172_3aad3cd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2020-09-17T18:58:42Z",
+      "side": 1,
+      "message": "Ah, super! That explains it! Thanks Colin for chasing it down.",
+      "revId": "e00c0e795d4164da9d9d70d0e57c0f2a9ad074c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
