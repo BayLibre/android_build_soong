@@ -39,6 +39,23 @@
       "revId": "70b96b0d645d2c76ed58b6d5bdcc15dc21b13b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c8b7522_aa4ea48e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T01:12:47Z",
+      "side": 1,
+      "message": "None of our real devices even set TARGET_ARCH_VARIANT :\u003d armv8-2a, so I don\u0027t have high hopes that the whole ecosystem will know to set TARGET_ARCH_VARIANT :\u003d armv8-2a+dotprod.  Is there any way to enable these instructions that we could add to the appropriate cpu variants cflags instead?  I wonder if we should get rid of arch variant and make everything a cpu variant, and then the cpu variants would set the appropriate -march.",
+      "revId": "70b96b0d645d2c76ed58b6d5bdcc15dc21b13b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
