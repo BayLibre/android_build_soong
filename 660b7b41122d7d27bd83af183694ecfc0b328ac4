@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "765dec3c_60a799cb",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-09-17T18:36:56Z",
+      "side": 1,
+      "message": "since this is test config related, can you follow the example in:\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1402168/4/java/java.go\n\nto create a new TestOptions type? We plan to migrate all test related settings to that type.",
+      "parentUuid": "d22621d0_0f690462",
+      "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "758135c8_1d2acaa0",
         "filename": "sh/sh_binary.go",
         "patchSetId": 8
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Dan Shi might have pointers to how the test infrastructure works.",
       "parentUuid": "db387e08_c23728d4",
+      "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29da2144_d4d5dcbd",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-09-17T18:36:56Z",
+      "side": 1,
+      "message": "One thing to check is that, Data_device_bins should be output to the testcases/[test_module] dir next to the test binary. If that\u0027s true, injecting push-file setting should be able to push the files in test zip to the device.\n\nIf Data_device_bins doesn\u0027t support the same package rule as `data` attribute, that needs to be fixed first for push-file option to work in tradefed.",
+      "parentUuid": "3d45b3fa_4e55ba22",
       "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
