@@ -1528,6 +1528,7 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 
 	if Bool(config.Host_bionic) {
 		addTarget(LinuxBionic, "x86_64", nil, nil, nil, NativeBridgeDisabled, nil, nil)
+		addTarget(LinuxBionic, "arm64", nil, nil, nil, NativeBridgeDisabled, nil, nil)
 	}
 
 	if String(variables.CrossHost) != "" {
@@ -1788,13 +1789,21 @@ func getCommonTargets(targets []Target) []Target {
 }
 
 func firstTarget(targets []Target, filters ...string) []Target {
+	// find the first target from each arch family
+	var ret []Target
+	set := make(map[ArchFamily]bool)
+
 	for _, filter := range filters {
 		buildTargets := filterMultilibTargets(targets, filter)
-		if len(buildTargets) > 0 {
-			return buildTargets[:1]
+		for _, t := range buildTargets {
+			archFamily := t.Arch.ArchType.Family
+			if _, found := set[archFamily]; !found {
+				set[archFamily] = true
+				ret = append(ret, t)
+			}
 		}
 	}
-	return nil
+	return ret
 }
 
 // Use the module multilib setting to select one or more targets from a target list
