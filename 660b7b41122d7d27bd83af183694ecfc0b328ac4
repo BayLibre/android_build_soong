@@ -69,6 +69,24 @@
       "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db387e08_c23728d4",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-17T16:36:23Z",
+      "side": 1,
+      "message": "Hi Colin, I was not aware of the handling of suites zip (my bad). Thanks for pointing out. Could you please suggest some docs or sources that I can read to understand the concept. I searched on moma but did not find much.",
+      "parentUuid": "758135c8_1d2acaa0",
+      "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
