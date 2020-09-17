@@ -140,6 +140,24 @@
       "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef5b919_134730c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-09-17T21:36:10Z",
+      "side": 1,
+      "message": "I talked more with danalbert@ offline and we came to this conclusion: we should allow these libraries to build against liblog_headers and switch them to using liblog_headers instead of specifying the path.\n\nCL to allow liblog_headers to be used by libraries linking against the NDK: aosp/1431348\nCL fixing the CTS projects: aosp/1430774.\n\nThere was another failure too in presubmit that I\u0027m about to look at too.",
+      "parentUuid": "cbef5351_043f790c",
+      "revId": "a646a9de11afa468e7a40a5f462541ede6b426b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
