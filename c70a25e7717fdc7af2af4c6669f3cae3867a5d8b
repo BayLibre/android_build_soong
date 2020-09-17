@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63bb1d8f_de2b34e8",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T09:00:48Z",
+      "side": 0,
+      "message": "This condition is dropped, but I think it\u0027s fine because !IsForPlatform() implies it, right?",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 40
+      },
+      "revId": "c70a25e7717fdc7af2af4c6669f3cae3867a5d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

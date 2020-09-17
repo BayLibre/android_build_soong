@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "e6b5846b_20355f53",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T09:00:48Z",
+      "side": 1,
+      "message": "This seems to be a new API which I can\u0027t find in cs. If there\u0027s a CL for this, could you let me know?",
+      "range": {
+        "startLine": 49,
+        "startChar": 33,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd2f7187_5603aa79",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -53,6 +76,23 @@
         "endLine": 387,
         "endChar": 3
       },
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf6e2f6_165cee99",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T09:00:48Z",
+      "side": 1,
+      "message": "can we stop traversing direct deps once we hit CopyDirectlyInAnyApexTag?",
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
