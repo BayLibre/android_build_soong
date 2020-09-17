@@ -39,6 +39,30 @@
       "revId": "a9d932cf622dbefaf486bb176c04ff587b53ed59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585b20a2_f5e8456a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1069991
+      },
+      "writtenOn": "2020-09-17T01:43:26Z",
+      "side": 1,
+      "message": "Works for me.",
+      "parentUuid": "a1db0ddb_cac46578",
+      "range": {
+        "startLine": 349,
+        "startChar": 65,
+        "endLine": 349,
+        "endChar": 82
+      },
+      "revId": "a9d932cf622dbefaf486bb176c04ff587b53ed59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
