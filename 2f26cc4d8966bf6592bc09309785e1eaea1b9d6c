@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "510c607b_f22a3e42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T03:57:38Z",
+      "side": 1,
+      "message": "Thanks Colin for taking this major refactoring. The change is quite big, so it will take some time for me to read/understand all the changes. But I believe in you, so if you feel confident, don\u0027t wait for my review. :)\n\nThe inlined comments below are only for the changes that I actually looked into.",
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd2f7187_5603aa79",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T03:57:38Z",
+      "side": 1,
+      "message": "Could you explain why this is reset? (and/or leave it as an inline comment?)",
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cb1130e_433d74cd",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T03:57:38Z",
+      "side": 1,
+      "message": "This sounds like a boolean type. Rename to ApexMembership or something similar?",
+      "range": {
+        "startLine": 489,
+        "startChar": 5,
+        "endLine": 489,
+        "endChar": 11
+      },
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
