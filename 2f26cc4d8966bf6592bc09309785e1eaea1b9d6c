@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d8c68165_0a226b68",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T17:57:09Z",
+      "side": 1,
+      "message": "https://github.com/google/blueprint/pull/309 adds it to blueprint, aosp/1360942 adds the Soong wrappers.",
+      "parentUuid": "e6b5846b_20355f53",
+      "range": {
+        "startLine": 49,
+        "startChar": 33,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd2f7187_5603aa79",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "66bbaa40_baf2df2c",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T17:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2f7187_5603aa79",
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dedbd32_37e72af7",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -70,6 +112,30 @@
       "writtenOn": "2020-09-17T05:56:17Z",
       "side": 1,
       "message": "We could short-circuit when inApex is directInApex.",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 3
+      },
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c4ea6d9_5f9fb158",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T17:57:09Z",
+      "side": 1,
+      "message": "That adds complexity and won\u0027t have any appreciable effect on performance.",
+      "parentUuid": "5dedbd32_37e72af7",
       "range": {
         "startLine": 382,
         "startChar": 0,
@@ -99,6 +165,24 @@
     },
     {
       "key": {
+        "uuid": "d0c2da77_bf2d0bd9",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T17:57:09Z",
+      "side": 1,
+      "message": "This is only visiting direct deps, not transitive deps.  There is no way to tell VisitDirectDeps to stop visiting deps.",
+      "parentUuid": "7bf6e2f6_165cee99",
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cb1130e_433d74cd",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -122,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "f17cfe00_cb504e71",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T17:57:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cb1130e_433d74cd",
+      "range": {
+        "startLine": 489,
+        "startChar": 5,
+        "endLine": 489,
+        "endChar": 11
+      },
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22670471_db09f55e",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -133,6 +241,30 @@
       "writtenOn": "2020-09-17T05:56:17Z",
       "side": 1,
       "message": "nit: for-range works with `nil`",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 34
+      },
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b442258_23a22e22",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-17T17:57:09Z",
+      "side": 1,
+      "message": "Fixed, an earlier implementation had ApexContents as a pointer to a struct that contained the list.",
+      "parentUuid": "22670471_db09f55e",
       "range": {
         "startLine": 540,
         "startChar": 0,
