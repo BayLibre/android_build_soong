@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2235c8f_d1dfe1ac",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T03:24:36Z",
+      "side": 1,
+      "message": "Cool.",
+      "range": {
+        "startLine": 2019,
+        "startChar": 2,
+        "endLine": 2019,
+        "endChar": 10
+      },
+      "revId": "bd6f8a285d1c99ac02a6fe537b992603c6076250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31759ad9_3c4b29b7",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T03:24:36Z",
+      "side": 1,
+      "message": "This condition is wider than the previous. Is there any reason?",
+      "range": {
+        "startLine": 2024,
+        "startChar": 2,
+        "endLine": 2024,
+        "endChar": 34
+      },
+      "revId": "bd6f8a285d1c99ac02a6fe537b992603c6076250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c3a357_5fbe661a",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-17T03:24:36Z",
+      "side": 1,
+      "message": "I think we can return here after calling SetAllStubsVersions",
+      "revId": "bd6f8a285d1c99ac02a6fe537b992603c6076250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
