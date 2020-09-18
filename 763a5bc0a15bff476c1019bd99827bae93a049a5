@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01e09c05_934de41b",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T17:47:05Z",
+      "side": 1,
+      "message": "data, this is visible to end users at go/Android.bp using property naming",
+      "range": {
+        "startLine": 109,
+        "startChar": 76,
+        "endLine": 109,
+        "endChar": 80
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f0fe34_08ae9621",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T17:47:05Z",
+      "side": 1,
+      "message": "Enforce that it is a subset to avoid typos",
+      "range": {
+        "startLine": 109,
+        "startChar": 66,
+        "endLine": 109,
+        "endChar": 72
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49737664_1dc28735",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T17:47:05Z",
+      "side": 1,
+      "message": "directories",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2241f0_02c2a3e2",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T17:47:05Z",
+      "side": 1,
+      "message": "What is the case where there is something listed in data that is a device module but shouldn\u0027t be pushed to the device?  In other words, can we treat everything in Data as pushable if Device() returns true on the dependency?",
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c01011_25938326",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T17:47:05Z",
+      "side": 1,
+      "message": "It should be made available everywhere for consistency.",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 44
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "413c4c9b_0d1924c4",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T17:47:05Z",
+      "side": 1,
+      "message": "Run gofmt",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 8
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b883fee_71f16986",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T17:47:05Z",
+      "side": 1,
+      "message": "You cannot read this property directly, you have to use the paths that were expanded by android.PathsForModuleSrc.",
+      "range": {
+        "startLine": 296,
+        "startChar": 53,
+        "endLine": 296,
+        "endChar": 69
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
