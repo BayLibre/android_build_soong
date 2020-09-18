@@ -75,6 +75,7 @@ func validateJsonCrates(t *testing.T, rawContent []byte) []interface{} {
 }
 
 func TestProjectJsonDep(t *testing.T) {
+	t.Parallel()
 	bp := `
 	rust_library {
 		name: "liba",
@@ -97,6 +98,7 @@ func TestProjectJsonDep(t *testing.T) {
 }
 
 func TestProjectJsonBindGen(t *testing.T) {
+	t.Parallel()
 	bp := `
 	rust_library {
 		name: "liba",
@@ -149,6 +151,7 @@ func TestProjectJsonBindGen(t *testing.T) {
 }
 
 func TestProjectJsonMultiVersion(t *testing.T) {
+	t.Parallel()
 	bp := `
 	rust_library {
 		name: "liba1",
