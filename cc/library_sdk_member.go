@@ -389,10 +389,12 @@ func (p *nativeLibInfoProperties) PopulateFromVariant(ctx android.SdkMemberConte
 		p.outputFile = getRequiredMemberOutputFile(ctx, ccModule)
 	}
 
+	exportedInfo := ctx.SdkModuleContext().OtherModuleProvider(variant, FlagExporterInfoProvider).(FlagExporterInfo)
+
 	// Separate out the generated include dirs (which are arch specific) from the
 	// include dirs (which may not be).
 	exportedIncludeDirs, exportedGeneratedIncludeDirs := android.FilterPathListPredicate(
-		ccModule.ExportedIncludeDirs(), isGeneratedHeaderDirectory)
+		exportedInfo.IncludeDirs, isGeneratedHeaderDirectory)
 
 	p.name = variant.Name()
 	p.archType = ccModule.Target().Arch.ArchType.String()
@@ -403,10 +405,10 @@ func (p *nativeLibInfoProperties) PopulateFromVariant(ctx android.SdkMemberConte
 
 	// Take a copy before filtering out duplicates to avoid changing the slice owned by the
 	// ccModule.
-	dirs := append(android.Paths(nil), ccModule.ExportedSystemIncludeDirs()...)
+	dirs := append(android.Paths(nil), exportedInfo.SystemIncludeDirs...)
 	p.ExportedSystemIncludeDirs = android.FirstUniquePaths(dirs)
 
-	p.ExportedFlags = ccModule.ExportedFlags()
+	p.ExportedFlags = exportedInfo.Flags
 	if ccModule.linker != nil {
 		specifiedDeps := specifiedDeps{}
 		specifiedDeps = ccModule.linker.linkerSpecifiedDeps(specifiedDeps)
@@ -417,7 +419,7 @@ func (p *nativeLibInfoProperties) PopulateFromVariant(ctx android.SdkMemberConte
 		}
 		p.SystemSharedLibs = specifiedDeps.systemSharedLibs
 	}
-	p.exportedGeneratedHeaders = ccModule.ExportedGeneratedHeaders()
+	p.exportedGeneratedHeaders = exportedInfo.GeneratedHeaders
 
 	if ccModule.HasStubsVariants() {
 		p.StubsVersion = ccModule.StubsVersion()
