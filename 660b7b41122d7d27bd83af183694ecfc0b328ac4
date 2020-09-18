@@ -141,6 +141,24 @@
       "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa4e70d_4aee5b86",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-18T04:49:44Z",
+      "side": 1,
+      "message": "The files/folders specified with \"auto_gen_push\" is a subset of \"data\" that needs to be on the device side. Updated \"data\" comment to make this explicit. Based on my offline conversation with Dan. The packaging of these files has already been taken care of.",
+      "parentUuid": "29da2144_d4d5dcbd",
+      "revId": "660b7b41122d7d27bd83af183694ecfc0b328ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
