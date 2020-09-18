@@ -39,6 +39,30 @@
       "revId": "a2adc37fc92587af0f09aa6f4aceacf8fc49aa66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46beba79_e0a57c8b",
+        "filename": "java/hiddenapi_singleton_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-18T15:15:52Z",
+      "side": 1,
+      "message": "Oh yeah... It is in this branch, but not in all of them... Can remove this here but will have to add it back to cherry-pick in other places.",
+      "parentUuid": "24414b15_d7f6c86f",
+      "range": {
+        "startLine": 206,
+        "startChar": 31,
+        "endLine": 206,
+        "endChar": 34
+      },
+      "revId": "a2adc37fc92587af0f09aa6f4aceacf8fc49aa66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
