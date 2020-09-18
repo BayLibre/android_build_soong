@@ -1330,6 +1330,7 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 		cc_library {
 			name: "mylib",
 			srcs: ["mylib.cpp"],
+			system_shared_libs: ["libc", "libm"],
 			shared_libs: ["libdl#27"],
 			stl: "none",
 			apex_available: [ "myapex" ],
