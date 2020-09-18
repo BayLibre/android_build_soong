@@ -1,0 +1,284 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69d6963e_2c17612d",
+        "filename": "android/api_levels.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "Can you add godoc here, especially mentioning the confusion around converting codenames to API levels?",
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc399fd8_278cb6f5",
+        "filename": "android/api_levels.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "Why a pointer here?  Why not just ApiLevel{}, or CurrentApiLevel?  The caller should be ignoring the value if error is set anyways.",
+      "range": {
+        "startLine": 145,
+        "startChar": 59,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cef3113_105f9e47",
+        "filename": "android/api_levels.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "Add godoc",
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c378fba4_28fc2ae5",
+        "filename": "android/api_levels.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "suggest leaving the string on a single line to support grepping for it",
+      "range": {
+        "startLine": 163,
+        "startChar": 70,
+        "endLine": 164,
+        "endChar": 4
+      },
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4df2c0c7_4c4f1f0a",
+        "filename": "android/api_levels.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "Add godoc",
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e5b3fe_a04a953b",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "prefer var levels []ApiLevel, a nil slice is better than an empty slice.",
+      "range": {
+        "startLine": 650,
+        "startChar": 1,
+        "endLine": 650,
+        "endChar": 23
+      },
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ba6e46_558d226e",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "prefer var levels []ApiLevel, a nil slice is better than an empty slice.",
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cdb9271_f50ff556",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "Why not:\n\n    var levels []ApiLevel\n    levels \u003d append(levels, finalApiLevels...)\n    levels \u003d append(levels, previewApiLevels...)\n\nIf you _really_ want to avoid the extra resize, replace the first line with:\n\n    levels :\u003d make([]ApiLevel, 0, len(finalApiLevels)+len(previewApiLevels))\n\nOr a one-liner, although a little hard to read:\n\n    levels :\u003d append(append([]ApiLevel(nil), c.FinalApiLevels()...), c.PreviewApiLevels()...)\n\nIn this case you know that c.FinalApiLevels()  returns a newly created slice that will not be passed to anyone else, so even this would be safe (assuming nobody changes the implementation of FinalApiLevels():\n\n    levels :\u003d append(c.FinalApiLevels(), c.PreviewApiLevels()...)",
+      "range": {
+        "startLine": 672,
+        "startChar": 1,
+        "endLine": 679,
+        "endChar": 14
+      },
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "499cf040_ef8e7e46",
+        "filename": "cc/api_level.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "Maybe take an ArchType argument?",
+      "range": {
+        "startLine": 23,
+        "startChar": 19,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1183916a_32aed47c",
+        "filename": "cc/api_level.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "A switch statement seems faster and more readable:\n\n    switch (ctx.Arch().ArchType) {\n        case android.Arm, android.X86:\n            return ctx.Config().MinSupportedSdkVersion()\n        case android.Arm64, android.X86_64:\n            return android.FirstLp64Version\n        default:\n            panic(fmt.Errorf(\"Arch %q not found in firstArchVersions\", arch))\n    }",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342f0a64_c8013ae0",
+        "filename": "cc/api_level.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "return min?",
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c293ce2d_b33dfea3",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "This is visible on go/Android.bp, where it doesn\u0027t make sense.  You could try putting it as a line comment on the next line, I\u0027m not sure if that ends up in the docs.",
+      "range": {
+        "startLine": 77,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 25
+      },
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6ef471_52e3d21c",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "put this on the previous line",
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "913b3b91_5e912585",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-18T18:08:17Z",
+      "side": 1,
+      "message": "Some blank lines in here would make it more readable",
+      "revId": "18d312001e605132ea7d65ae2548ee1bb59dab36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
