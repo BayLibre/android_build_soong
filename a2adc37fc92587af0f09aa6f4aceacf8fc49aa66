@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6e9e7a04_db066fd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-18T15:13:00Z",
+      "side": 1,
+      "message": "+appcompat team",
+      "revId": "a2adc37fc92587af0f09aa6f4aceacf8fc49aa66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24414b15_d7f6c86f",
         "filename": "java/hiddenapi_singleton_test.go",
         "patchSetId": 1
