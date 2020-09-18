@@ -63,6 +63,30 @@
       "revId": "fb2cb1df3f9f9702d99e8aa7da785102a8c7999b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f35e1f26_1e481933",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-18T09:19:26Z",
+      "side": 1,
+      "message": "Ok, makes sense.",
+      "parentUuid": "ee917c19_df901b6c",
+      "range": {
+        "startLine": 220,
+        "startChar": 85,
+        "endLine": 220,
+        "endChar": 103
+      },
+      "revId": "fb2cb1df3f9f9702d99e8aa7da785102a8c7999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
