@@ -255,9 +255,9 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		library.androidMkWriteExportedFlags(entries)
 		library.androidMkEntriesWriteAdditionalDependenciesForSourceAbiDiff(entries)
 
-		_, _, ext := android.SplitFileExt(entries.OutputFile.Path().Base())
+		// _, _, ext := android.SplitFileExt(entries.OutputFile.Path().Base())
 
-		entries.SetString("LOCAL_BUILT_MODULE_STEM", "$(LOCAL_MODULE)"+ext)
+		// entries.SetString("LOCAL_BUILT_MODULE_STEM", "$(LOCAL_MODULE)"+ext)
 
 		if library.coverageOutputFile.Valid() {
 			entries.SetString("LOCAL_PREBUILT_COVERAGE_ARCHIVE", library.coverageOutputFile.String())
