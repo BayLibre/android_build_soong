@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41e4d826_e2108c2d",
+        "filename": "python/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-21T19:28:32Z",
+      "side": 1,
+      "message": "Can you move this to the android package?",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 38
+      },
+      "revId": "abb33d8a2dcac21537f514498a3ac92e4b4f47fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
