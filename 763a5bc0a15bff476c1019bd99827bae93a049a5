@@ -71,6 +71,78 @@
     },
     {
       "key": {
+        "uuid": "4245ada7_70c7a264",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-21T22:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e09c05_934de41b",
+      "range": {
+        "startLine": 109,
+        "startChar": 76,
+        "endLine": 109,
+        "endChar": 80
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53cccdd3_b23a9ff2",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-21T22:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21f0fe34_08ae9621",
+      "range": {
+        "startLine": 109,
+        "startChar": 66,
+        "endLine": 109,
+        "endChar": 72
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cdc885e_b5d9100e",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-21T22:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49737664_1dc28735",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc2241f0_02c2a3e2",
         "filename": "sh/sh_binary.go",
         "patchSetId": 9
@@ -85,6 +157,24 @@
       "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "532ff0d5_22b51c76",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-21T22:53:18Z",
+      "side": 1,
+      "message": "For existing shell tests. Typically the script runs on host, which invokes the test binaries pushed to the device. In theory, the script itself may consume some data items on the host side which would not need to be pushed to the device.\nOn the other hand, PushFilePreparer is not able to push \"path/to/file\" type of paths to the device. So, it is possible to craft a data property that can\u0027t be pushed to the device. Once there is a way do deal with this, we could push data instead.",
+      "parentUuid": "fc2241f0_02c2a3e2",
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "90110a23_ff2ad27f",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-21T22:53:18Z",
+      "side": 1,
+      "message": "This is a new request from Elliott. It only applies to shell test for now. It appears this might also benefit other scenarios. I\u0027ll make it an OKR candidate and investigate further.",
+      "parentUuid": "50c01011_25938326",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 44
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "413c4c9b_0d1924c4",
         "filename": "sh/sh_binary.go",
         "patchSetId": 9
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "46a5d7cc_75bea18b",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-21T22:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "413c4c9b_0d1924c4",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 8
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b883fee_71f16986",
         "filename": "sh/sh_binary.go",
         "patchSetId": 9
@@ -154,6 +292,30 @@
       "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d77966fb_98cc9637",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-21T22:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b883fee_71f16986",
+      "range": {
+        "startLine": 296,
+        "startChar": 53,
+        "endLine": 296,
+        "endChar": 69
+      },
+      "revId": "763a5bc0a15bff476c1019bd99827bae93a049a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
