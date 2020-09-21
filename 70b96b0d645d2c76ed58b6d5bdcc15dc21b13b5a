@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "cac99b93_2fa45a52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1728522
+      },
+      "writtenOn": "2020-09-21T15:16:50Z",
+      "side": 1,
+      "message": "I see, thanks",
+      "parentUuid": "1cc33704_54543cc7",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "70b96b0d645d2c76ed58b6d5bdcc15dc21b13b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8962fb0_ca4d6ce3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
