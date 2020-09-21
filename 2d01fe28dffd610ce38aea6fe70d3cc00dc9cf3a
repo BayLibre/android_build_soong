@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1f2cbf1_14ed3385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-09-21T17:07:28Z",
+      "side": 1,
+      "message": "Do you also want to throw an error with suggestion to use the property if this was directly added cflags?",
+      "revId": "2d01fe28dffd610ce38aea6fe70d3cc00dc9cf3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
