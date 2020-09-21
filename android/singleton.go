@@ -136,7 +136,7 @@ func (s *singletonContextAdaptor) Variable(pctx PackageContext, name, value stri
 func (s *singletonContextAdaptor) Rule(pctx PackageContext, name string, params blueprint.RuleParams, argNames ...string) blueprint.Rule {
 	if s.Config().UseRemoteBuild() {
 		if params.Pool == nil {
-			// When USE_GOMA=true or USE_RBE=true are set and the rule is not supported by goma/RBE, restrict
+			// When FORCE_USE_GOMA=true or USE_RBE=true are set and the rule is not supported by goma/RBE, restrict
 			// jobs to the local parallelism value
 			params.Pool = localPool
 		} else if params.Pool == remotePool {

@@ -1781,7 +1781,7 @@ func (m *moduleContext) Rule(pctx PackageContext, name string, params blueprint.
 
 	if m.config.UseRemoteBuild() {
 		if params.Pool == nil {
-			// When USE_GOMA=true or USE_RBE=true are set and the rule is not supported by goma/RBE, restrict
+			// When FORCE_USE_GOMA=true or USE_RBE=true are set and the rule is not supported by goma/RBE, restrict
 			// jobs to the local parallelism value
 			params.Pool = localPool
 		} else if params.Pool == remotePool {

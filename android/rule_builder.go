@@ -444,7 +444,7 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 
 	var pool blueprint.Pool
 	if ctx.Config().UseGoma() && r.remoteable.Goma {
-		// When USE_GOMA=true is set and the rule is supported by goma, allow jobs to run outside the local pool.
+		// When FORCE_USE_GOMA=true is set and the rule is supported by goma, allow jobs to run outside the local pool.
 	} else if ctx.Config().UseRBE() && r.remoteable.RBE {
 		// When USE_RBE=true is set and the rule is supported by RBE, use the remotePool.
 		pool = remotePool

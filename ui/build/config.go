@@ -24,6 +24,7 @@ import (
 	"time"
 
 	"android/soong/shared"
+
 	"github.com/golang/protobuf/proto"
 
 	smpb "android/soong/ui/metrics/metrics_proto"
@@ -779,7 +780,7 @@ func (c *configImpl) TotalRAM() uint64 {
 }
 
 func (c *configImpl) UseGoma() bool {
-	if v, ok := c.environ.Get("USE_GOMA"); ok {
+	if v, ok := c.environ.Get("FORCE_USE_GOMA"); ok {
 		v = strings.TrimSpace(v)
 		if v != "" && v != "false" {
 			return true

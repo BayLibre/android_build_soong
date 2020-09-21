@@ -97,7 +97,7 @@ var (
 		},
 		"content")
 
-	// Used only when USE_GOMA=true is set, to restrict non-goma jobs to the local parallelism value
+	// Used only when FORCE_USE_GOMA=true is set, to restrict non-goma jobs to the local parallelism value
 	localPool = blueprint.NewBuiltinPool("local_pool")
 
 	// Used only by RuleBuilder to identify remoteable rules. Does not actually get created in ninja.

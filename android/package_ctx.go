@@ -110,7 +110,7 @@ func (p PackageContext) RuleFunc(name string,
 			return params, ctx.errors[0]
 		}
 		if ctx.Config().UseRemoteBuild() && params.Pool == nil {
-			// When USE_GOMA=true or USE_RBE=true are set and the rule is not supported by
+			// When FORCE_USE_GOMA=true or USE_RBE=true are set and the rule is not supported by
 			// goma/RBE, restrict jobs to the local parallelism value
 			params.Pool = localPool
 		}
@@ -246,7 +246,7 @@ func (p PackageContext) AndroidRemoteStaticRule(name string, supports RemoteRule
 	return p.PackageContext.RuleFunc(name, func(config interface{}) (blueprint.RuleParams, error) {
 		ctx := &configErrorWrapper{p, config.(Config), nil}
 		if ctx.Config().UseGoma() && !supports.Goma {
-			// When USE_GOMA=true is set and the rule is not supported by goma, restrict jobs to the
+			// When FORCE_USE_GOMA=true is set and the rule is not supported by goma, restrict jobs to the
 			// local parallelism value
 			params.Pool = localPool
 		}

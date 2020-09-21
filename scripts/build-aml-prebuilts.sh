@@ -47,7 +47,7 @@ PLATFORM_VERSION_ALL_CODENAMES="${PLATFORM_VERSION_ALL_CODENAMES/,/'","'}"
 PLATFORM_VERSION_ALL_CODENAMES="[\"${PLATFORM_VERSION_ALL_CODENAMES}\"]"
 
 # Logic from build/make/core/goma.mk
-if [ "${USE_GOMA}" = true ]; then
+if [ "${FORCE_USE_GOMA}" = true ]; then
   if [ -n "${GOMA_DIR}" ]; then
     goma_dir="${GOMA_DIR}"
   else
@@ -58,7 +58,7 @@ if [ "${USE_GOMA}" = true ]; then
   export CXX_WRAPPER="${CXX_WRAPPER}${CXX_WRAPPER:+ }${GOMA_CC}"
   export JAVAC_WRAPPER="${JAVAC_WRAPPER}${JAVAC_WRAPPER:+ }${GOMA_CC}"
 else
-  USE_GOMA=false
+  FORCE_USE_GOMA=false
 fi
 
 readonly SOONG_OUT=${OUT_DIR}/soong
@@ -86,7 +86,7 @@ cat > ${SOONG_VARS}.new << EOF
 
     "Allow_missing_dependencies": ${SOONG_ALLOW_MISSING_DEPENDENCIES:-false},
     "Unbundled_build": ${TARGET_BUILD_UNBUNDLED:-false},
-    "UseGoma": ${USE_GOMA}
+    "UseGoma": ${FORCE_USE_GOMA}
 }
 EOF
 
