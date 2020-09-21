@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbc98b22_4da38f79",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1160213
+      },
+      "writtenOn": "2020-09-21T19:06:46Z",
+      "side": 1,
+      "message": "\"no longer\"?",
+      "range": {
+        "startLine": 191,
+        "startChar": 30,
+        "endLine": 191,
+        "endChar": 33
+      },
+      "revId": "bc12f2076e979dfacffae097862e56676198204f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf02bb8_d2b77b6d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1160213
+      },
+      "writtenOn": "2020-09-21T19:06:46Z",
+      "side": 1,
+      "message": "This seems a bit confusing (probably due to my lack of understanding of soong\u0027s code base), wouldn\u0027t this require USE_GOMA to still work?",
+      "range": {
+        "startLine": 195,
+        "startChar": 17,
+        "endLine": 195,
+        "endChar": 37
+      },
+      "revId": "bc12f2076e979dfacffae097862e56676198204f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de61b7a8_4d4ac507",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1160213
+      },
+      "writtenOn": "2020-09-21T19:06:46Z",
+      "side": 1,
+      "message": "Function comment?",
+      "revId": "bc12f2076e979dfacffae097862e56676198204f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
