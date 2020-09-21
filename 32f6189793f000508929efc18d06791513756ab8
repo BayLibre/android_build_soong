@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b12ed1c0_fb8addbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-21T18:58:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right, most host bionic builds won\u0027t want arm64 targets.  Can you add a separate config flag for it?",
+      "revId": "32f6189793f000508929efc18d06791513756ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
