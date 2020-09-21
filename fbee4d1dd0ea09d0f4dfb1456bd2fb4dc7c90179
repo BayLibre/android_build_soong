@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6f5377a_7e424a89",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-21T21:28:39Z",
+      "side": 1,
+      "message": "You need to add Arm64 to this list",
+      "revId": "fbee4d1dd0ea09d0f4dfb1456bd2fb4dc7c90179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
