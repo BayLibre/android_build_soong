@@ -16,6 +16,24 @@
       "revId": "a5155b430c370a10368fb67aa99a03fd23938a38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46116694_b9aa4982",
+        "filename": "python/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-09-21T21:37:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6c95377_eda9afd3",
+      "revId": "a5155b430c370a10368fb67aa99a03fd23938a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
