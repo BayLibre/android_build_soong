@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1cc33704_54543cc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-21T14:08:56Z",
+      "side": 1,
+      "message": "\u003e This change does not affect the behaviour of the ART compiler, it has repercussion on the native binaries because it will influence the value provided to -march/-mcpu options. (When running on target, the behaviour of arm can be influenced by using the `--isa-features\u003druntime` option though)\n\nI see; so the test here is ART itself (the native code); STGM.\n\n\u003e As for the Soong test, I am not aware of any specific test for this type of change.\n\nI was wondering if there was any existing Soong test (under https://cs.android.com/android/platform/superproject/+/master:build/soong/) covering the arch logic. I found one (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch_test.go), but it is testing general arch logic and I don\u0027t think you need to extend it.",
+      "parentUuid": "5742d863_c45d9cbe",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 21
+      },
+      "revId": "70b96b0d645d2c76ed58b6d5bdcc15dc21b13b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8962fb0_ca4d6ce3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
