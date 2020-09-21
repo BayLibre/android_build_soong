@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49f679b3_a06d3ce7",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-21T23:48:49Z",
+      "side": 1,
+      "message": "There\u0027s a similar situation in android/prebuilt_build_tool.go. Does it need to be fixed there too?",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 4
+      },
+      "revId": "d793bd93c32f228bf4e797d833f710e383eb2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
