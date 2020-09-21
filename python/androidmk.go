@@ -20,6 +20,8 @@ import (
 	"io"
 	"path/filepath"
 	"strings"
+
+	"android/soong/cc"
 )
 
 type subAndroidMkProvider interface {
@@ -73,6 +75,11 @@ func (p *testDecorator) AndroidMk(base *Module, ret *android.AndroidMkData) {
 
 		if !BoolDefault(p.binaryProperties.Auto_gen_config, true) {
 			fmt.Fprintln(w, "LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG := true")
+		}
+
+		if len(p.data) > 0 {
+			fmt.Fprintln(w, "LOCAL_TEST_DATA :=",
+				strings.Join(cc.AndroidMkDataPaths(p.data), " "))
 		}
 	})
 	base.subAndroidMk(ret, p.binaryDecorator.pythonInstaller)
