@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "b1341679_09fabbd6",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2020-09-21T08:18:51Z",
+      "side": 1,
+      "message": "nit: I feel like it would be a bit clearer to put this check inside the AlwaysUsePrebuiltSdks statement above",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 55
+      },
+      "revId": "a2adc37fc92587af0f09aa6f4aceacf8fc49aa66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24414b15_d7f6c86f",
         "filename": "java/hiddenapi_singleton_test.go",
         "patchSetId": 1
