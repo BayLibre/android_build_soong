@@ -100,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "10fdb4a9_5892d698",
+        "filename": "sdk/bp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-21T10:32:59Z",
+      "side": 1,
+      "message": "The two things are mixed in AddProperty anyway. PS2 first did enough type checking to know that it\u0027s a struct that needs merging, then the remaining dispatch on the type of struct when its fields are accessed. That minimises duplication of logic (and runtime processing, although that is perhaps of less concern here). I still don\u0027t see how this is an improvement.\n\nBut changed like you suggest, it\u0027s just an implementation detail not worth getting hung up on.",
+      "parentUuid": "263bf519_210309a0",
+      "revId": "b7eb35dd9c7655e393fc259356032bfe1edbf385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebb4c729_347b7459",
         "filename": "sdk/bp.go",
         "patchSetId": 2

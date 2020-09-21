@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "c400a222_1c3e0930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-21T10:32:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc3ff3bc_2b6dbe03",
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c25c500_fb42c1d7",
         "filename": "android/sdk.go",
         "patchSetId": 1
@@ -230,6 +248,30 @@
       "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "774f3ce9_ff4391d4",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-21T10:32:59Z",
+      "side": 1,
+      "message": "Changed to describe the recursion and merging separately, but I think it\u0027s better to expand it for new use cases when those use cases arise.",
+      "parentUuid": "77e00399_771a4370",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 7
+      },
+      "revId": "e5bf895264f4551430e9e33b4d738d80d75559ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
