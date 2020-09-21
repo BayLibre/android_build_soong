@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "72d50122_64baad39",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-09-21T19:41:06Z",
+      "side": 1,
+      "message": "Oops, done.",
+      "parentUuid": "cbc98b22_4da38f79",
+      "range": {
+        "startLine": 191,
+        "startChar": 30,
+        "endLine": 191,
+        "endChar": 33
+      },
+      "revId": "bc12f2076e979dfacffae097862e56676198204f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcf02bb8_d2b77b6d",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "236e101b_8ba1f315",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-09-21T19:41:06Z",
+      "side": 1,
+      "message": "\u003e wouldn\u0027t this require USE_GOMA to still work?\n\nInternally, yes. When a user sets `USE_GOMA\u003dtrue`, it will be caught in the block above this and the build would fail right away. If the user were to set `FORCE_USE_GOMA`, then we would set `USE_GOMA\u003dtrue` here and the build would continue as if the user actually set `USE_GOMA`.\n\nIf we were to actually do a string replace of USE_GOMA with FORCE_USE_GOMA, we would also have to make changes to kati since some makefile to ninja file translation also have USE_GOMA hardcoded there (https://github.com/google/kati/blob/631e467325a191a92d2e9454dc9b0fe6e3f21f80/src/ninja.cc#L189). The build actually fails without the kati change.\n\nI figured this would be a simpler change that achieves the same purpose.",
+      "parentUuid": "dcf02bb8_d2b77b6d",
+      "range": {
+        "startLine": 195,
+        "startChar": 17,
+        "endLine": 195,
+        "endChar": 37
+      },
+      "revId": "bc12f2076e979dfacffae097862e56676198204f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de61b7a8_4d4ac507",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "bc12f2076e979dfacffae097862e56676198204f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab55fef8_fa03f15c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-09-21T19:41:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de61b7a8_4d4ac507",
+      "revId": "bc12f2076e979dfacffae097862e56676198204f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
