@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b32dac7f_788fbc58",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-09-21T14:16:08Z",
+      "side": 1,
+      "message": "We\u0027d need to repeat the check + comment if `android.test.base` is in bootjars twice, which seems a bit more cumbersome than repeating AlwaysUsePrebuiltSdks.",
+      "parentUuid": "b1341679_09fabbd6",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 55
+      },
+      "revId": "a2adc37fc92587af0f09aa6f4aceacf8fc49aa66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24414b15_d7f6c86f",
         "filename": "java/hiddenapi_singleton_test.go",
         "patchSetId": 1
