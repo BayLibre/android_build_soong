@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6c95377_eda9afd3",
+        "filename": "python/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-21T21:31:39Z",
+      "side": 1,
+      "message": "This isn\u0027t needed any more",
+      "revId": "a5155b430c370a10368fb67aa99a03fd23938a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
