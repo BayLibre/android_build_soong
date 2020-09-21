@@ -108,6 +108,9 @@ type apiScope struct {
 	// The tag to use to depend on the stubs source module (if separate from the API module).
 	stubsSourceTag scopeDependencyTag
 
+	// The tag to use to depend on the docs source module.
+	docsSourceTag scopeDependencyTag
+
 	// The tag to use to depend on the API file generating module (if separate from the stubs source module).
 	apiFileTag scopeDependencyTag
 
@@ -165,6 +168,11 @@ func initApiScope(scope *apiScope) *apiScope {
 		apiScope:         scope,
 		depInfoExtractor: (*scopePaths).extractStubsSourceInfoFromDep,
 	}
+	scope.docsSourceTag = scopeDependencyTag{
+		name:             name + "-docs-source",
+		apiScope:         scope,
+		depInfoExtractor: (*scopePaths).extractDocsSourceInfoFromDep,
+	}
 	scope.apiFileTag = scopeDependencyTag{
 		name:             name + "-api",
 		apiScope:         scope,
@@ -206,6 +214,10 @@ func (scope *apiScope) stubsLibraryModuleName(baseName string) string {
 
 func (scope *apiScope) stubsSourceModuleName(baseName string) string {
 	return baseName + ".stubs.source" + scope.moduleSuffix
+}
+
+func (scope *apiScope) docsSourceModuleName(baseName string) string {
+	return baseName + ".docs.source" + scope.moduleSuffix
 }
 
 func (scope *apiScope) apiModuleName(baseName string) string {
@@ -373,6 +385,9 @@ type ApiScopeProperties struct {
 	// or the API file. They both have to use the same sdk_version as is used for
 	// compiling the implementation library.
 	Sdk_version *string
+
+	// Create stub sources suitable for use for generating java docs.
+	Create_doc_srcs *bool
 }
 
 type sdkLibraryProperties struct {
@@ -514,6 +529,9 @@ type scopePaths struct {
 
 	// The stubs source jar.
 	stubsSrcJar android.OptionalPath
+
+	// The docs source jar.
+	docsSrcJar android.OptionalPath
 }
 
 func (paths *scopePaths) extractStubsLibraryInfoFromDependency(dep android.Module) error {
@@ -559,9 +577,19 @@ func (paths *scopePaths) extractStubsSourceInfoFromApiStubsProviders(provider Ap
 	paths.stubsSrcJar = android.OptionalPathForPath(provider.StubsSrcJar())
 }
 
+func (paths *scopePaths) extractDocsSourceInfoFromApiStubsProviders(provider ApiStubsSrcProvider) {
+	paths.docsSrcJar = android.OptionalPathForPath(provider.StubsSrcJar())
+}
+
 func (paths *scopePaths) extractStubsSourceInfoFromDep(dep android.Module) error {
 	return paths.treatDepAsApiStubsSrcProvider(dep, func(provider ApiStubsSrcProvider) {
 		paths.extractStubsSourceInfoFromApiStubsProviders(provider)
+	})
+}
+
+func (paths *scopePaths) extractDocsSourceInfoFromDep(dep android.Module) error {
+	return paths.treatDepAsApiStubsSrcProvider(dep, func(provider ApiStubsSrcProvider) {
+		paths.extractDocsSourceInfoFromApiStubsProviders(provider)
 	})
 }
 
@@ -654,6 +682,11 @@ func (c *commonToSdkLibraryAndImport) stubsSourceModuleName(apiScope *apiScope) 
 	return c.namingScheme.stubsSourceModuleName(apiScope, c.moduleBase.BaseModuleName())
 }
 
+// Name of the droidstubs module that generates the docs source.
+func (c *commonToSdkLibraryAndImport) docsSourceModuleName(apiScope *apiScope) string {
+	return c.namingScheme.docsSourceModuleName(apiScope, c.moduleBase.BaseModuleName())
+}
+
 // Name of the droidstubs module that generates/checks the API. Only used if it
 // requires different arts to the stubs source generating module.
 func (c *commonToSdkLibraryAndImport) apiModuleName(apiScope *apiScope) string {
@@ -665,6 +698,8 @@ func (c *commonToSdkLibraryAndImport) apiModuleName(apiScope *apiScope) string {
 // They are similar to the names used for the child modules it creates
 const (
 	stubsSourceComponentName = "stubs.source"
+
+	docsSourceComponentName = "docs.source"
 
 	apiTxtComponentName = "api.txt"
 
@@ -687,7 +722,7 @@ var tagSplitter = func() *regexp.Regexp {
 	scopesRegexp := choice(allScopeNames...)
 
 	// Regular expression to match one of the components.
-	componentsRegexp := choice(stubsSourceComponentName, apiTxtComponentName, removedApiTxtComponentName)
+	componentsRegexp := choice(stubsSourceComponentName, docsSourceComponentName, apiTxtComponentName, removedApiTxtComponentName)
 
 	// Regular expression to match any combination of one scope and one component.
 	return regexp.MustCompile(fmt.Sprintf(`^\.(%s)\.(%s)$`, scopesRegexp, componentsRegexp))
@@ -713,6 +748,11 @@ func (c *commonToSdkLibraryAndImport) commonOutputFiles(tag string) (android.Pat
 			case stubsSourceComponentName:
 				if paths.stubsSrcJar.Valid() {
 					return android.Paths{paths.stubsSrcJar.Path()}, nil
+				}
+
+			case docsSourceComponentName:
+				if paths.docsSrcJar.Valid() {
+					return android.Paths{paths.docsSrcJar.Path()}, nil
 				}
 
 			case apiTxtComponentName:
@@ -981,6 +1021,12 @@ func (module *SdkLibrary) ComponentDepsMutator(ctx android.BottomUpMutatorContex
 		// Add dependencies to the stubs library
 		ctx.AddVariationDependencies(nil, apiScope.stubsTag, module.stubsLibraryModuleName(apiScope))
 
+		scopeProperties := module.scopeToProperties[apiScope]
+		if proptools.Bool(scopeProperties.Create_doc_srcs) {
+			// Add dependencies to the docs source
+			ctx.AddVariationDependencies(nil, apiScope.docsSourceTag, module.docsSourceModuleName(apiScope))
+		}
+
 		// Add a dependency on the stubs source in order to access both stubs source and api information.
 		ctx.AddVariationDependencies(nil, apiScope.stubsSourceAndApiTag, module.stubsSourceModuleName(apiScope))
 	}
@@ -1194,7 +1240,7 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 
 // Creates a droidstubs module that creates stubs source files from the given full source
 // files and also updates and checks the API specification files.
-func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookContext, apiScope *apiScope, name string, scopeSpecificDroidstubsArgs []string) {
+func (module *SdkLibrary) createStubSources(mctx android.DefaultableHookContext, apiScope *apiScope, name string, scopeSpecificDroidstubsArgs []string, docsSource bool) {
 	props := struct {
 		Name                             *string
 		Visibility                       []string
@@ -1209,7 +1255,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		Annotations_enabled              *bool
 		Merge_annotations_dirs           []string
 		Merge_inclusion_annotations_dirs []string
-		Generate_stubs                   *bool
+		Create_doc_stubs                 *bool
 		Check_api                        struct {
 			Current                   ApiToCheck
 			Last_released             ApiToCheck
@@ -1283,52 +1329,57 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	props.Arg_files = module.sdkLibraryProperties.Droiddoc_option_files
 	props.Args = proptools.StringPtr(strings.Join(droidstubsArgs, " "))
 
-	// List of APIs identified from the provided source files are created. They are later
-	// compared against to the not-yet-released (a.k.a current) list of APIs and to the
-	// last-released (a.k.a numbered) list of API.
-	currentApiFileName := apiScope.apiFilePrefix + "current.txt"
-	removedApiFileName := apiScope.apiFilePrefix + "removed.txt"
-	apiDir := module.getApiDir()
-	currentApiFileName = path.Join(apiDir, currentApiFileName)
-	removedApiFileName = path.Join(apiDir, removedApiFileName)
+	if docsSource {
+		// Create stubs suitable for use in generating java doc.
+		props.Create_doc_stubs = proptools.BoolPtr(true)
+	} else {
+		// List of APIs identified from the provided source files are created. They are later
+		// compared against to the not-yet-released (a.k.a current) list of APIs and to the
+		// last-released (a.k.a numbered) list of API.
+		currentApiFileName := apiScope.apiFilePrefix + "current.txt"
+		removedApiFileName := apiScope.apiFilePrefix + "removed.txt"
+		apiDir := module.getApiDir()
+		currentApiFileName = path.Join(apiDir, currentApiFileName)
+		removedApiFileName = path.Join(apiDir, removedApiFileName)
 
-	// check against the not-yet-release API
-	props.Check_api.Current.Api_file = proptools.StringPtr(currentApiFileName)
-	props.Check_api.Current.Removed_api_file = proptools.StringPtr(removedApiFileName)
+		// check against the not-yet-release API
+		props.Check_api.Current.Api_file = proptools.StringPtr(currentApiFileName)
+		props.Check_api.Current.Removed_api_file = proptools.StringPtr(removedApiFileName)
 
-	if !apiScope.unstable {
-		// check against the latest released API
-		latestApiFilegroupName := proptools.StringPtr(module.latestApiFilegroupName(apiScope))
-		props.Check_api.Last_released.Api_file = latestApiFilegroupName
-		props.Check_api.Last_released.Removed_api_file = proptools.StringPtr(
-			module.latestRemovedApiFilegroupName(apiScope))
-		props.Check_api.Ignore_missing_latest_api = proptools.BoolPtr(true)
+		if !apiScope.unstable {
+			// check against the latest released API
+			latestApiFilegroupName := proptools.StringPtr(module.latestApiFilegroupName(apiScope))
+			props.Check_api.Last_released.Api_file = latestApiFilegroupName
+			props.Check_api.Last_released.Removed_api_file = proptools.StringPtr(
+				module.latestRemovedApiFilegroupName(apiScope))
+			props.Check_api.Ignore_missing_latest_api = proptools.BoolPtr(true)
 
-		if proptools.Bool(module.sdkLibraryProperties.Api_lint.Enabled) {
-			// Enable api lint.
-			props.Check_api.Api_lint.Enabled = proptools.BoolPtr(true)
-			props.Check_api.Api_lint.New_since = latestApiFilegroupName
+			if proptools.Bool(module.sdkLibraryProperties.Api_lint.Enabled) {
+				// Enable api lint.
+				props.Check_api.Api_lint.Enabled = proptools.BoolPtr(true)
+				props.Check_api.Api_lint.New_since = latestApiFilegroupName
 
-			// If it exists then pass a lint-baseline.txt through to droidstubs.
-			baselinePath := path.Join(apiDir, apiScope.apiFilePrefix+"lint-baseline.txt")
-			baselinePathRelativeToRoot := path.Join(mctx.ModuleDir(), baselinePath)
-			paths, err := mctx.GlobWithDeps(baselinePathRelativeToRoot, nil)
-			if err != nil {
-				mctx.ModuleErrorf("error checking for presence of %s: %s", baselinePathRelativeToRoot, err)
-			}
-			if len(paths) == 1 {
-				props.Check_api.Api_lint.Baseline_file = proptools.StringPtr(baselinePath)
-			} else if len(paths) != 0 {
-				mctx.ModuleErrorf("error checking for presence of %s: expected one path, found: %v", baselinePathRelativeToRoot, paths)
+				// If it exists then pass a lint-baseline.txt through to droidstubs.
+				baselinePath := path.Join(apiDir, apiScope.apiFilePrefix+"lint-baseline.txt")
+				baselinePathRelativeToRoot := path.Join(mctx.ModuleDir(), baselinePath)
+				paths, err := mctx.GlobWithDeps(baselinePathRelativeToRoot, nil)
+				if err != nil {
+					mctx.ModuleErrorf("error checking for presence of %s: %s", baselinePathRelativeToRoot, err)
+				}
+				if len(paths) == 1 {
+					props.Check_api.Api_lint.Baseline_file = proptools.StringPtr(baselinePath)
+				} else if len(paths) != 0 {
+					mctx.ModuleErrorf("error checking for presence of %s: expected one path, found: %v", baselinePathRelativeToRoot, paths)
+				}
 			}
 		}
-	}
 
-	// Dist the api txt artifact for sdk builds.
-	if !Bool(module.sdkLibraryProperties.No_dist) {
-		props.Dist.Targets = []string{"sdk", "win_sdk"}
-		props.Dist.Dest = proptools.StringPtr(fmt.Sprintf("%v.txt", module.BaseModuleName()))
-		props.Dist.Dir = proptools.StringPtr(path.Join(module.apiDistPath(apiScope), "api"))
+		// Dist the api txt artifact for sdk builds.
+		if !Bool(module.sdkLibraryProperties.No_dist) {
+			props.Dist.Targets = []string{"sdk", "win_sdk"}
+			props.Dist.Dest = proptools.StringPtr(fmt.Sprintf("%v.txt", module.BaseModuleName()))
+			props.Dist.Dir = proptools.StringPtr(path.Join(module.apiDistPath(apiScope), "api"))
+		}
 	}
 
 	mctx.CreateModule(DroidstubsFactory, &props)
@@ -1511,8 +1562,14 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.DefaultableHookCont
 	}
 
 	for _, scope := range generatedScopes {
-		// Use the stubs source name for legacy reasons.
-		module.createStubsSourcesAndApi(mctx, scope, module.stubsSourceModuleName(scope), scope.droidstubsArgs)
+		// Create a droidstubs that will create stubs source and check the API.
+		module.createStubSources(mctx, scope, module.stubsSourceModuleName(scope), scope.droidstubsArgs, false /*docsSource*/)
+
+		scopeProperties := module.scopeToProperties[scope]
+		if proptools.Bool(scopeProperties.Create_doc_srcs) {
+			// Create a droidstubs that will create docs source only.
+			module.createStubSources(mctx, scope, module.docsSourceModuleName(scope), scope.droidstubsArgs, true /*docsSource*/)
+		}
 
 		module.createStubsLibrary(mctx, scope)
 	}
@@ -1564,6 +1621,8 @@ type sdkLibraryComponentNamingScheme interface {
 
 	stubsSourceModuleName(scope *apiScope, baseName string) string
 
+	docsSourceModuleName(scope *apiScope, baseName string) string
+
 	apiModuleName(scope *apiScope, baseName string) string
 }
 
@@ -1576,6 +1635,10 @@ func (s *defaultNamingScheme) stubsLibraryModuleName(scope *apiScope, baseName s
 
 func (s *defaultNamingScheme) stubsSourceModuleName(scope *apiScope, baseName string) string {
 	return scope.stubsSourceModuleName(baseName)
+}
+
+func (s *defaultNamingScheme) docsSourceModuleName(scope *apiScope, baseName string) string {
+	return scope.docsSourceModuleName(baseName)
 }
 
 func (s *defaultNamingScheme) apiModuleName(scope *apiScope, baseName string) string {
@@ -1664,6 +1727,9 @@ type sdkLibraryScopeProperties struct {
 
 	// The stubs source.
 	Stub_srcs []string `android:"path"`
+
+	// The docs source.
+	Doc_srcs []string `android:"path"`
 
 	// The current.txt
 	Current_api *string `android:"path"`
@@ -1788,7 +1854,11 @@ func (module *SdkLibraryImport) createInternalModules(mctx android.DefaultableHo
 		module.createJavaImportForStubs(mctx, apiScope, scopeProperties)
 
 		if len(scopeProperties.Stub_srcs) > 0 {
-			module.createPrebuiltStubsSources(mctx, apiScope, scopeProperties)
+			module.createPrebuiltSources(mctx, module.stubsSourceModuleName(apiScope), scopeProperties.Stub_srcs)
+		}
+
+		if len(scopeProperties.Doc_srcs) > 0 {
+			module.createPrebuiltSources(mctx, module.docsSourceModuleName(apiScope), scopeProperties.Doc_srcs)
 		}
 	}
 
@@ -1820,14 +1890,14 @@ func (module *SdkLibraryImport) createJavaImportForStubs(mctx android.Defaultabl
 	mctx.CreateModule(ImportFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
 
-func (module *SdkLibraryImport) createPrebuiltStubsSources(mctx android.DefaultableHookContext, apiScope *apiScope, scopeProperties *sdkLibraryScopeProperties) {
+func (module *SdkLibraryImport) createPrebuiltSources(mctx android.DefaultableHookContext, name string, srcs []string) {
 	props := struct {
 		Name   *string
 		Srcs   []string
 		Prefer *bool
 	}{}
-	props.Name = proptools.StringPtr(module.stubsSourceModuleName(apiScope))
-	props.Srcs = scopeProperties.Stub_srcs
+	props.Name = proptools.StringPtr(name)
+	props.Srcs = srcs
 	mctx.CreateModule(PrebuiltStubsSourcesFactory, &props)
 
 	// The stubs source is preferred if the java_sdk_library_import is preferred.
@@ -1848,6 +1918,11 @@ func (module *SdkLibraryImport) ComponentDepsMutator(ctx android.BottomUpMutator
 		if len(scopeProperties.Stub_srcs) > 0 {
 			// Add dependencies to the prebuilt stubs source library
 			ctx.AddVariationDependencies(nil, apiScope.stubsSourceTag, "prebuilt_"+module.stubsSourceModuleName(apiScope))
+		}
+
+		if len(scopeProperties.Doc_srcs) > 0 {
+			// Add dependencies to the prebuilt docs source library
+			ctx.AddVariationDependencies(nil, apiScope.docsSourceTag, "prebuilt_"+module.docsSourceModuleName(apiScope))
 		}
 	}
 }
@@ -2184,6 +2259,7 @@ type sdkLibrarySdkMemberProperties struct {
 type scopeProperties struct {
 	Jars           android.Paths
 	StubsSrcJar    android.Path
+	DocsSrcJar     android.Path
 	CurrentApiFile android.Path
 	RemovedApiFile android.Path
 	SdkVersion     string
@@ -2205,6 +2281,9 @@ func (s *sdkLibrarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMembe
 			properties.Jars = jars
 			properties.SdkVersion = sdk.sdkVersionForStubsLibrary(ctx.SdkModuleContext(), apiScope)
 			properties.StubsSrcJar = paths.stubsSrcJar.Path()
+			if paths.docsSrcJar.Valid() {
+				properties.DocsSrcJar = paths.docsSrcJar.Path()
+			}
 			if paths.currentApiFilePath.Valid() {
 				properties.CurrentApiFile = paths.currentApiFilePath.Path()
 			}
@@ -2247,6 +2326,12 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 			snapshotRelativeDir := filepath.Join(scopeDir, ctx.Name()+"_stub_sources")
 			ctx.SnapshotBuilder().UnzipToSnapshot(properties.StubsSrcJar, snapshotRelativeDir)
 			scopeSet.AddProperty("stub_srcs", []string{snapshotRelativeDir})
+
+			if properties.DocsSrcJar != nil {
+				snapshotRelativeDir := filepath.Join(scopeDir, ctx.Name()+"_doc_sources")
+				ctx.SnapshotBuilder().UnzipToSnapshot(properties.DocsSrcJar, snapshotRelativeDir)
+				scopeSet.AddProperty("doc_srcs", []string{snapshotRelativeDir})
+			}
 
 			if properties.CurrentApiFile != nil {
 				currentApiSnapshotPath := filepath.Join(scopeDir, ctx.Name()+".txt")
