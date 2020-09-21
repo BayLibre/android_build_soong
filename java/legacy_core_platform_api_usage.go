@@ -95,6 +95,7 @@ var legacyCorePlatformApiModules = []string{
 	"platform_library-docs",
 	"PrintSpooler",
 	"RollbackTest",
+	"service-connectivity",
 	"services",
 	"services.accessibility",
 	"services.backup",
