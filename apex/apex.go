@@ -108,32 +108,9 @@ func makeApexAvailableBaseline() map[string][]string {
 	// Module separator
 	//
 	m["com.android.bluetooth.updatable"] = []string{
-		"android.hardware.audio.common@5.0",
-		"android.hardware.bluetooth.a2dp@1.0",
-		"android.hardware.bluetooth.audio@2.0",
-		"android.hardware.bluetooth@1.0",
-		"android.hardware.bluetooth@1.1",
-		"android.hardware.graphics.bufferqueue@1.0",
-		"android.hardware.graphics.bufferqueue@2.0",
-		"android.hardware.graphics.common@1.0",
-		"android.hardware.graphics.common@1.1",
-		"android.hardware.graphics.common@1.2",
-		"android.hardware.media@1.0",
-		"android.hidl.safe_union@1.0",
-		"android.hidl.token@1.0",
-		"android.hidl.token@1.0-utils",
-		"avrcp-target-service",
-		"avrcp_headers",
-		"bluetooth-protos-lite",
 		"bluetooth.mapsapi",
 		"com.android.vcard",
-		"dnsresolver_aidl_interface-V2-java",
-		"ipmemorystore-aidl-interfaces-V5-java",
-		"ipmemorystore-aidl-interfaces-java",
 		"internal_include_headers",
-		"lib-bt-packets",
-		"lib-bt-packets-avrcp",
-		"lib-bt-packets-base",
 		"libFraunhoferAAC",
 		"libaudio-a2dp-hw-utils",
 		"libaudio-hearing-aid-hw-utils",
@@ -149,7 +126,6 @@ func makeApexAvailableBaseline() map[string][]string {
 		"libbt-common",
 		"libbt-hci",
 		"libbt-platform-protos-lite",
-		"libbt-protos-lite",
 		"libbt-sbc-decoder",
 		"libbt-sbc-encoder",
 		"libbt-stack",
@@ -175,17 +151,11 @@ func makeApexAvailableBaseline() map[string][]string {
 		"libz",
 		"media_plugin_headers",
 		"net-utils-services-common",
-		"netd_aidl_interface-unstable-java",
-		"netd_event_listener_interface-java",
 		"netlink-client",
 		"networkstack-client",
 		"sap-api-java-static",
 		"services.net",
 	}
-	//
-	// Module separator
-	//
-	m["com.android.cellbroadcast"] = []string{"CellBroadcastApp", "CellBroadcastServiceModule"}
 	//
 	// Module separator
 	//
@@ -203,14 +173,6 @@ func makeApexAvailableBaseline() map[string][]string {
 	// Module separator
 	//
 	m["com.android.neuralnetworks"] = []string{
-		"android.hardware.neuralnetworks@1.0",
-		"android.hardware.neuralnetworks@1.1",
-		"android.hardware.neuralnetworks@1.2",
-		"android.hardware.neuralnetworks@1.3",
-		"android.hidl.allocator@1.0",
-		"android.hidl.memory.token@1.0",
-		"android.hidl.memory@1.0",
-		"android.hidl.safe_union@1.0",
 		"libarect",
 		"libbuildversion",
 		"libmath",
@@ -222,28 +184,6 @@ func makeApexAvailableBaseline() map[string][]string {
 	//
 	m["com.android.media"] = []string{
 		"android.frameworks.bufferhub@1.0",
-		"android.hardware.cas.native@1.0",
-		"android.hardware.cas@1.0",
-		"android.hardware.configstore-utils",
-		"android.hardware.configstore@1.0",
-		"android.hardware.configstore@1.1",
-		"android.hardware.graphics.allocator@2.0",
-		"android.hardware.graphics.allocator@3.0",
-		"android.hardware.graphics.bufferqueue@1.0",
-		"android.hardware.graphics.bufferqueue@2.0",
-		"android.hardware.graphics.common@1.0",
-		"android.hardware.graphics.common@1.1",
-		"android.hardware.graphics.common@1.2",
-		"android.hardware.graphics.mapper@2.0",
-		"android.hardware.graphics.mapper@2.1",
-		"android.hardware.graphics.mapper@3.0",
-		"android.hardware.media.omx@1.0",
-		"android.hardware.media@1.0",
-		"android.hidl.allocator@1.0",
-		"android.hidl.memory.token@1.0",
-		"android.hidl.memory@1.0",
-		"android.hidl.token@1.0",
-		"android.hidl.token@1.0-utils",
 		"bionic_libc_platform_headers",
 		"exoplayer2-extractor",
 		"exoplayer2-extractor-annotation-stubs",
@@ -346,35 +286,6 @@ func makeApexAvailableBaseline() map[string][]string {
 	// Module separator
 	//
 	m["com.android.media.swcodec"] = []string{
-		"android.frameworks.bufferhub@1.0",
-		"android.hardware.common-ndk_platform",
-		"android.hardware.configstore-utils",
-		"android.hardware.configstore@1.0",
-		"android.hardware.configstore@1.1",
-		"android.hardware.graphics.allocator@2.0",
-		"android.hardware.graphics.allocator@3.0",
-		"android.hardware.graphics.allocator@4.0",
-		"android.hardware.graphics.bufferqueue@1.0",
-		"android.hardware.graphics.bufferqueue@2.0",
-		"android.hardware.graphics.common-ndk_platform",
-		"android.hardware.graphics.common@1.0",
-		"android.hardware.graphics.common@1.1",
-		"android.hardware.graphics.common@1.2",
-		"android.hardware.graphics.mapper@2.0",
-		"android.hardware.graphics.mapper@2.1",
-		"android.hardware.graphics.mapper@3.0",
-		"android.hardware.graphics.mapper@4.0",
-		"android.hardware.media.bufferpool@2.0",
-		"android.hardware.media.c2@1.0",
-		"android.hardware.media.c2@1.1",
-		"android.hardware.media.omx@1.0",
-		"android.hardware.media@1.0",
-		"android.hardware.media@1.0",
-		"android.hidl.memory.token@1.0",
-		"android.hidl.memory@1.0",
-		"android.hidl.safe_union@1.0",
-		"android.hidl.token@1.0",
-		"android.hidl.token@1.0-utils",
 		"libEGL",
 		"libFLAC",
 		"libFLAC-config",
@@ -586,18 +497,12 @@ func makeApexAvailableBaseline() map[string][]string {
 	// Module separator
 	//
 	m["com.android.tethering"] = []string{
-		"android.hardware.tetheroffload.config-V1.0-java",
-		"android.hardware.tetheroffload.control-V1.0-java",
-		"android.hidl.base-V1.0-java",
 		"libcgrouprc",
 		"libcgrouprc_format",
 		"libtetherutilsjni",
 		"libvndksupport",
 		"net-utils-framework-common",
-		"netd_aidl_interface-V3-java",
 		"netlink-client",
-		"networkstack-aidl-interfaces-java",
-		"tethering-aidl-interfaces-java",
 		"TetheringApiCurrentLib",
 	}
 	//
@@ -605,37 +510,14 @@ func makeApexAvailableBaseline() map[string][]string {
 	//
 	m["com.android.wifi"] = []string{
 		"PlatformProperties",
-		"android.hardware.wifi-V1.0-java",
-		"android.hardware.wifi-V1.0-java-constants",
-		"android.hardware.wifi-V1.1-java",
-		"android.hardware.wifi-V1.2-java",
-		"android.hardware.wifi-V1.3-java",
-		"android.hardware.wifi-V1.4-java",
-		"android.hardware.wifi.hostapd-V1.0-java",
-		"android.hardware.wifi.hostapd-V1.1-java",
-		"android.hardware.wifi.hostapd-V1.2-java",
-		"android.hardware.wifi.supplicant-V1.0-java",
-		"android.hardware.wifi.supplicant-V1.1-java",
-		"android.hardware.wifi.supplicant-V1.2-java",
-		"android.hardware.wifi.supplicant-V1.3-java",
-		"android.hidl.base-V1.0-java",
-		"android.hidl.manager-V1.0-java",
-		"android.hidl.manager-V1.1-java",
-		"android.hidl.manager-V1.2-java",
 		"bouncycastle-unbundled",
-		"dnsresolver_aidl_interface-V2-java",
 		"error_prone_annotations",
 		"framework-wifi-pre-jarjar",
 		"framework-wifi-util-lib",
-		"ipmemorystore-aidl-interfaces-V3-java",
-		"ipmemorystore-aidl-interfaces-java",
 		"ksoap2",
 		"libnanohttpd",
 		"libwifi-jni",
 		"net-utils-services-common",
-		"netd_aidl_interface-V2-java",
-		"netd_aidl_interface-unstable-java",
-		"netd_event_listener_interface-java",
 		"netlink-client",
 		"networkstack-client",
 		"services.net",
@@ -651,12 +533,6 @@ func makeApexAvailableBaseline() map[string][]string {
 		"fmtlib_ndk",
 		"libbase_ndk",
 		"libprotobuf-cpp-lite-ndk",
-	}
-	//
-	// Module separator
-	//
-	m["com.android.os.statsd"] = []string{
-		"libstatssocket",
 	}
 	//
 	// Module separator
