@@ -22,6 +22,75 @@
       "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e96303c4_95f3d218",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-22T06:38:58Z",
+      "side": 1,
+      "message": "Can we make this true by default? It\u0027s not going to get build if nothing depends on it right?",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 22
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27cff790_7d0afdc3",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-22T06:38:58Z",
+      "side": 1,
+      "message": "Is the output of this suitable for inclusion in the droiddoc module? It seems like in frameworks/base we\u0027re feeding it into yet another droidstubs module before feeding it to droiddoc",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 40
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e679b2c3_5d25ed18",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-22T06:38:58Z",
+      "side": 1,
+      "message": "So doc sources are going to use the same visibility as stub library sources. I guess that makes sense",
+      "range": {
+        "startLine": 1288,
+        "startChar": 1,
+        "endLine": 1288,
+        "endChar": 94
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
