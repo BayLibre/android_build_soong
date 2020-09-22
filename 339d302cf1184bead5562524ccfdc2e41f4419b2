@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ce39d432_71269c50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-22T15:38:18Z",
+      "side": 1,
+      "message": "We do need the whole comment as the reason for adding this is for the purposes of generating the public Javadoc. Adding in comments to all the stubs source would make each of those metalava invocations slightly more expensive.\n\nThe docs stubs not only include the comments but also changes the way that the annotations are transformed into the output so there are functional differences between docs and non-docs stubs.\n\nThe main reason for making this configurable per scope and not enabled by default is to minimize the number of additional metalava invocations.\n\nWe should eventually be able to remove the droidstubs invocations in frameworks/base altogether (or only apply them to the frameworks platform source) once all the modules contribute sources in the correct format.",
+      "parentUuid": "67d14bd8_16f09a1b",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e96303c4_95f3d218",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -95,6 +119,54 @@
     },
     {
       "key": {
+        "uuid": "18d9f81a_6c49bdf9",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-22T15:38:18Z",
+      "side": 1,
+      "message": "It will get built on those continuous builds that build everything. Otherwise, it should not get built unless needed.",
+      "parentUuid": "e96303c4_95f3d218",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 22
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356f0feb_8676d654",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-22T15:38:18Z",
+      "side": 1,
+      "message": "The main reason for making this configurable per scope and not enabled by default is to minimize the number of additional metalava invocations. AFAIK we do not generate Javadoc for anything other than the public API so enabling it for all scopes makes no sense.",
+      "parentUuid": "48dd6799_2c3f33cd",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 22
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27cff790_7d0afdc3",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "9804bf21_0dc64c3e",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-22T15:38:18Z",
+      "side": 1,
+      "message": "I think so but I am not 100% sure that the output from here is identical to the output from the droidstubs in frameworks/base, there may be some options that affect the output. If it was 100% identical then if all the contributors to the public Javadoc generated the stubs here then we could remove that additional droidstubs step.",
+      "parentUuid": "27cff790_7d0afdc3",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 40
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e679b2c3_5d25ed18",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -129,6 +225,30 @@
       "writtenOn": "2020-09-22T06:38:58Z",
       "side": 1,
       "message": "So doc sources are going to use the same visibility as stub library sources. I guess that makes sense",
+      "range": {
+        "startLine": 1288,
+        "startChar": 1,
+        "endLine": 1288,
+        "endChar": 94
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3327accd_a4d22155",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-22T15:38:18Z",
+      "side": 1,
+      "message": "I missed that. It might make sense to separate them because while we will most likely always need to provide source for Javadoc (as you cannot easily generate the Javadoc for the modules separately and then stitch them together) we will not need to export stubs source to frameworks/base once the monolithic .txt file is removed, as we can just export compiled library which frameworks/base can combine together into the android.jar.",
+      "parentUuid": "e679b2c3_5d25ed18",
       "range": {
         "startLine": 1288,
         "startChar": 1,
