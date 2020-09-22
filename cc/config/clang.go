@@ -86,7 +86,12 @@ var ClangUnknownLldflags = sorted([]string{
 	"-Wl,--no-fix-cortex-a8",
 })
 
-var ClangLibToolingUnknownCflags = sorted([]string{})
+var ClangLibToolingUnknownCflags = sorted([]string{
+	"-Wno-psabi",
+	"-Wno-void-pointer-to-enum-cast",
+	"-Wno-void-pointer-to-int-cast",
+	"-Wno-non-c-typedef-for-linkage",
+})
 
 // List of tidy checks that should be disabled globally. When the compiler is
 // updated, some checks enabled by this module may be disabled if they have
