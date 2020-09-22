@@ -22,6 +22,30 @@
       "revId": "d793bd93c32f228bf4e797d833f710e383eb2a3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "899904e2_752ff32d",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-22T00:13:14Z",
+      "side": 1,
+      "message": "Might as well, both places were expecting the input to be a source file where it wouldn\u0027t matter, but if you give it a genrule it causes issues.",
+      "parentUuid": "49f679b3_a06d3ce7",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 4
+      },
+      "revId": "d793bd93c32f228bf4e797d833f710e383eb2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
