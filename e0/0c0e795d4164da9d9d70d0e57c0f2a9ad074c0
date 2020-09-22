@@ -1,0 +1,12 @@
+Autosubmit+1: Colin Cross <ccross@android.com>
+Code-Review+1: Neil Fuller <nfuller@google.com>
+Code-Review+1: Kousik Kumar <kousikk@google.com>
+Code-Review+2: Patrice Arruda <patricearruda@google.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 22 Sep 2020 17:59:37 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1430134
+Project: platform/build/soong
+Branch: refs/heads/master
