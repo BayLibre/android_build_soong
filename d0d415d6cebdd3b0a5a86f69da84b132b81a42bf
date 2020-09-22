@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2c0702f_dc656688",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-22T04:59:18Z",
+      "side": 1,
+      "message": "This prevents us from having two or more host targets enabled at the same time (e.g. linux_glibc_x86_64 and linux_bionic_arm64)",
+      "revId": "d0d415d6cebdd3b0a5a86f69da84b132b81a42bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6397c79_aa1a33b2",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-22T04:59:18Z",
+      "side": 1,
+      "message": "I am not sure if these are all you need. For example, Bionic() should be overridden to return false for linux_glibc_arm64 target.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "d0d415d6cebdd3b0a5a86f69da84b132b81a42bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
