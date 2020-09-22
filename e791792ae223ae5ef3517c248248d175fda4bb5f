@@ -16,6 +16,23 @@
       "revId": "e791792ae223ae5ef3517c248248d175fda4bb5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60acd73a_233e3da9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-22T20:01:19Z",
+      "side": 1,
+      "message": "The fix has been submitted, -2\u0027ing to make sure this doesn\u0027t land as this revert would now break the build.",
+      "revId": "e791792ae223ae5ef3517c248248d175fda4bb5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
