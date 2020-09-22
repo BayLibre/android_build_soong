@@ -230,6 +230,8 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.StaticLibs = removeListFromList(deps.StaticLibs, linker.Properties.Exclude_static_libs)
 	deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, linker.Properties.Exclude_static_libs)
 
+	deps.SystemSharedLibs = linker.Properties.System_shared_libs
+
 	if Bool(linker.Properties.Use_version_lib) {
 		deps.WholeStaticLibs = append(deps.WholeStaticLibs, "libbuildversion")
 	}

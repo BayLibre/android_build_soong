@@ -83,6 +83,12 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 				if len(c.Properties.Logtags) > 0 {
 					entries.AddStrings("LOCAL_LOGTAGS_FILES", c.Properties.Logtags...)
 				}
+				// Note: Unspecified (nil) and empty ([]) have different semantic meanings here.
+				if len(c.Properties.AndroidMkSystemSharedLibs) > 0 {
+					entries.AddStrings("LOCAL_SYSTEM_SHARED_LIBRARIES", c.Properties.AndroidMkSystemSharedLibs...)
+				} else if c.Properties.AndroidMkSystemSharedLibs != nil {
+					entries.SetString("LOCAL_SYSTEM_SHARED_LIBRARIES", "")
+				}
 				if len(c.Properties.AndroidMkSharedLibs) > 0 {
 					entries.AddStrings("LOCAL_SHARED_LIBRARIES", c.Properties.AndroidMkSharedLibs...)
 				}
