@@ -89,6 +89,12 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 		return flags
 	}
 
+	// Don't perform LTO for host binaries.
+	// Longer compilation time outweighs slightly faster execution.
+	if ctx.Host() {
+		return flags
+	}
+
 	if lto.LTO() {
 		var ltoFlag string
 		if Bool(lto.Properties.Lto.Thin) {
