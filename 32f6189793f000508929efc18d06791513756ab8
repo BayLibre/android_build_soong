@@ -16,6 +16,24 @@
       "revId": "32f6189793f000508929efc18d06791513756ab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de656bfe_fa6a752a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-22T03:41:00Z",
+      "side": 1,
+      "message": "Done. I am placing this behind a new config flag \"Host_bionic_arm64\". Does the name look good to you?",
+      "parentUuid": "b12ed1c0_fb8addbc",
+      "revId": "32f6189793f000508929efc18d06791513756ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
