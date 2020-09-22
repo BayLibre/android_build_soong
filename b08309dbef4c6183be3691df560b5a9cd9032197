@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf7af5b7_88230caa",
+        "filename": "android/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-09-22T22:05:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0c9588_bb0d6f5c",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d987e14_a0e462a1",
         "filename": "android/apex.go",
         "patchSetId": 10
@@ -39,6 +63,24 @@
       "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b2eea7_96c0c322",
+        "filename": "android/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-09-22T22:05:13Z",
+      "side": 1,
+      "message": "I\u0027d rather not leave raw API integers hanging around anywhere, but did something similar in case we want to change the behavior at some point.",
+      "parentUuid": "3d987e14_a0e462a1",
+      "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c5aee4_3d5ae99f",
+        "filename": "android/api_levels.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-09-22T22:05:13Z",
+      "side": 1,
+      "message": "Any case in which this breaks is unlikely, but the NDK generation code in soong was written during the attempt at redwood (doing everything in the main branch and selecting the release with lunch), so it\u0027s tolerant of multiple in-development API levels. It\u0027s possible for rvc-dev to have R, S, and \"future\" NDK APIs all at the same time. When a module builds for \"current\" it will get all three of those API levels *except* when Platform_sdk_final, at which point it gets only the R APIs.",
+      "parentUuid": "4174c616_7b2970f3",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 282,
+        "endChar": 19
+      },
+      "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
