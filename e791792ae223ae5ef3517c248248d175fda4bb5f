@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02791aaf_f3fedc91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-22T12:59:16Z",
+      "side": 1,
+      "message": "A fix for the issue in b/169112496 is at https://android-review.googlesource.com/c/platform/prebuilts/rust/+/1434071",
+      "revId": "e791792ae223ae5ef3517c248248d175fda4bb5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
