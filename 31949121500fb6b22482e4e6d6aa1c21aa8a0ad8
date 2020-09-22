@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "539eb141_c9065e44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-09-22T16:51:56Z",
+      "side": 1,
+      "message": "The presubmit failure is caused by b/169153975\nI will fix that first. The fix require a lab update. If it can\u0027t make to this week\u0027s push, this change will have to land next week.",
+      "revId": "31949121500fb6b22482e4e6d6aa1c21aa8a0ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
