@@ -16,6 +16,40 @@
       "revId": "2365506f9cb03e1df9df07f1d5c2963933f9b827",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "515ab903_9708b377",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-22T20:51:14Z",
+      "side": 1,
+      "message": "We discussed this in chat, but since this was on my review queue, I\u0027m redocumenting it here:\n\nProduct images are supposed to be compatible with updated System images. Due to Rust\u0027s lack of a stable ABI, this means we can\u0027t actually enable Product until we have the ability to build and install a separate set of libraries here - no system libraries can be exported to Product for Rust.",
+      "revId": "2365506f9cb03e1df9df07f1d5c2963933f9b827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00e44b2e_3a1b6062",
+        "filename": "rust/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-22T20:51:14Z",
+      "side": 1,
+      "message": "If we\u0027re going to do this, put it at the top where we initialize coreVariantNeeded, otherwise it\u0027s easy to think it\u0027s defaulted to false.",
+      "revId": "2365506f9cb03e1df9df07f1d5c2963933f9b827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
