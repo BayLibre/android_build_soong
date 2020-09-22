@@ -128,6 +128,30 @@
       "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f61bff61_42b0af7e",
+        "filename": "android/api_levels.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-22T23:33:19Z",
+      "side": 1,
+      "message": "One of the failures of redwood was that it didn\u0027t invest in the same tooling for java APIs.\n\nPlatform_sdk_final is only set on rvc-dev, it should never be true on AOSP or internal master.",
+      "parentUuid": "43c5aee4_3d5ae99f",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 282,
+        "endChar": 19
+      },
+      "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
