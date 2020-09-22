@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e0c9588_bb0d6f5c",
+        "filename": "android/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-22T20:32:20Z",
+      "side": 1,
+      "message": "I guess you can\u0027t store the ApiLevel here because this has to get cloned in property structs?  If so can you leave a comment?  In aosp/1428815 I\u0027m turning this into a provider info struct, which will have relaxed requirements as the value is immutable and shared between variants.  It will probably end up needing to be serializable, which can be handled by implementing the encoding.BinaryMarshaler and encoding.BinaryUnmarshaler interfaces on ApiLevel.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d987e14_a0e462a1",
+        "filename": "android/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-22T20:32:20Z",
+      "side": 1,
+      "message": "A possibility (not sure it\u0027s any better):\n\n\nvar minSdkVersionAllowList \u003d func() map[string]ApiLevel {\n   minSdkVersionAllowListInt :\u003d map[string]int{\n       ...\n   }\n   minSdkVersionAllowList :\u003d make(map[string]ApiLevel, len(minSdkVersionAllowListInt))\n   for module, sdkVersion :\u003d range minSdkVersionAllowListInt {\n       minSdkVersionAllowList[module] \u003d uncheckedFinalApiLevel(sdkVersion)\n   }\n   return minSdkVersionAllowList\n}()",
+      "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4174c616_7b2970f3",
+        "filename": "android/api_levels.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-22T20:32:20Z",
+      "side": 1,
+      "message": "This can\u0027t happen for java APIs, because we only have one set of non-final APIs that become the final APIs.  You can\u0027t add an S java API until after R is finalized (modulo weirdness across branches).  The build system was modeled on the java behavior, which is why \"current\" is not confusing for java.  I guess the behavior is different for NDK because you annotate each API with the version it was introduced in?  It\u0027s probably especially a problem for NDK APIs in AOSP, since the R APIs are not finalized in AOSP until the R release, long after S development has started.\n\nIn the example you gave, what branch are you imagining?  On rvc-dev I wouldn\u0027t expect there to be any S APIs (maybe incorrect for NDK APIs?), and so \"current\" goes from non-final \"R\" to final \"30\" at finalization.  On master, it goes from non-final \"R+S\" to non-final \"S\" at finalization.  In AOSP, it goes from non-final \"partial R + partial S\" to non-final \"partial S\" at R release to AOSP.",
+      "range": {
+        "startLine": 279,
+        "startChar": 20,
+        "endLine": 282,
+        "endChar": 19
+      },
+      "revId": "b08309dbef4c6183be3691df560b5a9cd9032197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
