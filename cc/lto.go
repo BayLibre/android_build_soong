@@ -70,7 +70,7 @@ func (lto *lto) begin(ctx BaseModuleContext) {
 	if ctx.Config().IsEnvTrue("DISABLE_LTO") {
 		lto.Properties.Lto.Never = boolPtr(true)
 	}
-	if ctx.Config().IsEnvTrue("GLOBAL_THINLTO") {
+	if !ctx.Config().IsEnvTrue("NO_GLOBAL_THINLTO") {
 		lto.Properties.Lto.GlobalThin = boolPtr(true)
 	}
 }
