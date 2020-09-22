@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005098070",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1388353?revision\u003d11",
+      "fixSuggestions": [
+        {
+          "fixId": "0deeb0aa_3ec6b4e9",
+          "description": "Change to \"java/sdk.go\"",
+          "replacements": [
+            {
+              "path": "java/sdk.go",
+              "range": {
+                "startLine": 105,
+                "startChar": 67,
+                "endLine": 105,
+                "endChar": 78
+              },
+              "replacement": "Specifically"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "14fbdd57_0d6f0f3b",
+        "filename": "java/sdk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-22T23:03:39Z",
+      "side": 1,
+      "message": "Common typo found: \"Specicially\" -- should it be \"Specifically\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 105,
+        "startChar": 67,
+        "endLine": 105,
+        "endChar": 78
+      },
+      "revId": "031f2c52de88f58e8e5d598f1ab113d62fe4d034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
