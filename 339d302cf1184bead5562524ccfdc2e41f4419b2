@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ddcffca_3695c5e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-22T05:44:38Z",
+      "side": 1,
+      "message": "Before reading the code, I\u0027d like to know if generating the stub src with comments could be an easier alternative. We might not need the whole comment as we are interested in whether or not \"@hide\" is there.\n\nAs you know, metalava run is expensive, it would be better if we can keep the number of invocations minimal.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
