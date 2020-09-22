@@ -178,10 +178,6 @@ func (proto *protobufDecorator) AndroidMk(ctx AndroidMkContext, ret *android.And
 }
 
 func (compiler *baseCompiler) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
-	if compiler.path == (android.InstallPath{}) {
-		return
-	}
-
 	var unstrippedOutputFile android.OptionalPath
 	// Soong installation is only supported for host modules. Have Make
 	// installation trigger Soong installation.
