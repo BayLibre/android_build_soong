@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eb0a7c99_12e8e1f8",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1289143
+      },
+      "writtenOn": "2020-09-22T13:27:57Z",
+      "side": 1,
+      "message": "you\u0027re right. I overlooked this while rebasing. I think a problem is going to be dealing with the common arch. I think it might have to be dynamically set to the host_arch. Use x86 if PrebuiltOS is linux-x86 and linux-arm otherwise? Would that cover all cases (including cross-compile)?",
+      "parentUuid": "f2c0702f_dc656688",
+      "revId": "d0d415d6cebdd3b0a5a86f69da84b132b81a42bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6397c79_aa1a33b2",
         "filename": "cc/config/arm64_linux_host.go",
         "patchSetId": 9
@@ -30,6 +48,30 @@
       "writtenOn": "2020-09-22T04:59:18Z",
       "side": 1,
       "message": "I am not sure if these are all you need. For example, Bionic() should be overridden to return false for linux_glibc_arm64 target.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "d0d415d6cebdd3b0a5a86f69da84b132b81a42bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "495c0f79_6b63b04a",
+        "filename": "cc/config/arm64_linux_host.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1289143
+      },
+      "writtenOn": "2020-09-22T13:27:57Z",
+      "side": 1,
+      "message": "good point about Bionic, thanks. I did it in rust but forgot it here. concerning other flags or variables I\u0027m also unsure if this is all I\u0027ll need or if they\u0027re proper right now. might need someone else to look at this",
+      "parentUuid": "f6397c79_aa1a33b2",
       "range": {
         "startLine": 61,
         "startChar": 0,
