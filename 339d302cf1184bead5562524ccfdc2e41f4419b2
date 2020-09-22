@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "48dd6799_2c3f33cd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-22T06:41:09Z",
+      "side": 1,
+      "message": "Doesn\u0027t this belong in the sdk_library props rather than the api scope? Would you ever want doc sources for some enabled scoped but not all? I\u0027m sceptical",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 22
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27cff790_7d0afdc3",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
