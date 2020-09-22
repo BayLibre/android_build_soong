@@ -46,6 +46,30 @@
       "revId": "d793bd93c32f228bf4e797d833f710e383eb2a3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce27af0d_27bddc0a",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-22T00:32:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "899904e2_752ff32d",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 4
+      },
+      "revId": "d793bd93c32f228bf4e797d833f710e383eb2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
