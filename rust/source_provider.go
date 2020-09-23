@@ -25,6 +25,8 @@ type SourceProviderProperties struct {
 
 	// crate name, used for the library variant of this source provider. See additional details in rust_library.
 	Crate_name string `android:"arch_variant"`
+
+	IsSourceProviderVariant bool `blueprint:"mutated"`
 }
 
 type BaseSourceProvider struct {
@@ -43,6 +45,8 @@ type SourceProvider interface {
 	SourceProviderProps() []interface{}
 	SourceProviderDeps(ctx DepsContext, deps Deps) Deps
 	setSubName(subName string)
+	SetIsSourceProviderVariant()
+	IsSourceProviderVariant() bool
 }
 
 func (sp *BaseSourceProvider) Srcs() android.Paths {
@@ -94,4 +98,12 @@ func (sp *BaseSourceProvider) SourceProviderDeps(ctx DepsContext, deps Deps) Dep
 
 func (sp *BaseSourceProvider) setSubName(subName string) {
 	sp.subName = subName
+}
+
+func (sp *BaseSourceProvider) SetIsSourceProviderVariant() {
+	sp.Properties.IsSourceProviderVariant = true
+}
+
+func (sp *BaseSourceProvider) IsSourceProviderVariant() bool {
+	return sp.Properties.IsSourceProviderVariant
 }

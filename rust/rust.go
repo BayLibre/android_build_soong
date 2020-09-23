@@ -87,14 +87,13 @@ type Module struct {
 	sourceProvider   SourceProvider
 	subAndroidMkOnce map[SubAndroidMkProvider]bool
 
-	outputFile    android.OptionalPath
-	generatedFile android.OptionalPath
+	outputFile android.OptionalPath
 }
 
 func (mod *Module) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
 	case "":
-		if mod.sourceProvider != nil && (mod.compiler == nil || mod.compiler.Disabled()) {
+		if mod.sourceProvider != nil && mod.sourceProvider.IsSourceProviderVariant() {
 			return mod.sourceProvider.Srcs(), nil
 		} else {
 			if mod.outputFile.Valid() {
@@ -291,9 +290,6 @@ type compiler interface {
 	relativeInstallPath() string
 
 	nativeCoverage() bool
-
-	Disabled() bool
-	SetDisabled()
 
 	staticStd(ctx *depsContext) bool
 }
@@ -687,15 +683,10 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		flags, deps = mod.clippy.flags(ctx, flags, deps)
 	}
 
-	// SourceProvider needs to call GenerateSource() before compiler calls compile() so it can provide the source.
-	// TODO(b/162588681) This shouldn't have to run for every variant.
-	if mod.sourceProvider != nil {
-		generatedFile := mod.sourceProvider.GenerateSource(ctx, deps)
-		mod.generatedFile = android.OptionalPathForPath(generatedFile)
+	if mod.sourceProvider != nil && mod.sourceProvider.IsSourceProviderVariant() {
+		mod.sourceProvider.GenerateSource(ctx, deps)
 		mod.sourceProvider.setSubName(ctx.ModuleSubDir())
-	}
-
-	if mod.compiler != nil && !mod.compiler.Disabled() {
+	} else if mod.compiler != nil {
 		outputFile := mod.compiler.compile(ctx, flags, deps)
 
 		mod.outputFile = android.OptionalPathForPath(outputFile)
@@ -738,11 +729,12 @@ type dependencyTag struct {
 }
 
 var (
-	customBindgenDepTag = dependencyTag{name: "customBindgenTag"}
-	rlibDepTag          = dependencyTag{name: "rlibTag", library: true}
-	dylibDepTag         = dependencyTag{name: "dylib", library: true}
-	procMacroDepTag     = dependencyTag{name: "procMacro", proc_macro: true}
-	testPerSrcDepTag    = dependencyTag{name: "rust_unit_tests"}
+	customBindgenDepTag  = dependencyTag{name: "customBindgenTag"}
+	rlibDepTag           = dependencyTag{name: "rlibTag", library: true}
+	dylibDepTag          = dependencyTag{name: "dylib", library: true}
+	procMacroDepTag      = dependencyTag{name: "procMacro", proc_macro: true}
+	testPerSrcDepTag     = dependencyTag{name: "rust_unit_tests"}
+	sourceProviderDepTag = dependencyTag{name: "sourceProvider"}
 )
 
 type autoDep struct {
@@ -1007,7 +999,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			{Mutator: "rust_libraries", Variation: "dylib"}}...),
 		dylibDepTag, deps.Dylibs...)
 
-	if deps.Rustlibs != nil && !mod.compiler.Disabled() {
+	if deps.Rustlibs != nil && !(mod.sourceProvider != nil && mod.sourceProvider.IsSourceProviderVariant()) {
 		autoDep := mod.compiler.(autoDeppable).autoDep(ctx)
 		if autoDep.depTag == rlibDepTag {
 			actx.AddVariationDependencies(
@@ -1045,7 +1037,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		actx.AddVariationDependencies(crtVariations, cc.CrtEndDepTag, deps.CrtEnd)
 	}
 
-	if mod.sourceProvider != nil {
+	if mod.sourceProvider != nil && mod.sourceProvider.IsSourceProviderVariant() {
 		if bindgen, ok := mod.sourceProvider.(*bindgenDecorator); ok &&
 			bindgen.Properties.Custom_bindgen != "" {
 			actx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), customBindgenDepTag,

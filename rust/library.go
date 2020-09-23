@@ -15,6 +15,7 @@
 package rust
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 
@@ -77,10 +78,6 @@ type LibraryMutatedProperties struct {
 	VariantIsShared bool `blueprint:"mutated"`
 	// This variant is a static library
 	VariantIsStatic bool `blueprint:"mutated"`
-
-	// This variant is disabled and should not be compiled
-	// (used for SourceProvider variants that produce only source)
-	VariantIsDisabled bool `blueprint:"mutated"`
 
 	// Whether this library variant should be link libstd via rlibs
 	VariantIsStaticStd bool `blueprint:"mutated"`
@@ -411,7 +408,11 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	var srcPath android.Path
 
 	if library.sourceProvider != nil {
-		srcPath = library.sourceProvider.Srcs()[0]
+		sourceProviders := ctx.GetDirectDepsWithTag(sourceProviderDepTag)
+		if len(sourceProviders) != 1 {
+			panic(fmt.Errorf("expected exactly one sourceProvider, got %q", sourceProviders))
+		}
+		srcPath = sourceProviders[0].(*Module).sourceProvider.Srcs()[0]
 	} else {
 		srcPath, _ = srcPathFromModuleSrcs(ctx, library.baseCompiler.Properties.Srcs)
 	}
@@ -490,14 +491,6 @@ func (library *libraryDecorator) install(ctx ModuleContext) {
 	}
 }
 
-func (library *libraryDecorator) Disabled() bool {
-	return library.MutatedProperties.VariantIsDisabled
-}
-
-func (library *libraryDecorator) SetDisabled() {
-	library.MutatedProperties.VariantIsDisabled = true
-}
-
 var validCrateName = regexp.MustCompile("[^a-zA-Z0-9_]+")
 
 func validateLibraryStem(ctx BaseModuleContext, filename string, crate_name string) {
@@ -524,20 +517,24 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 		case libraryInterface:
 			if library.buildRlib() && library.buildDylib() {
 				variants := []string{"rlib", "dylib"}
+				libsIndex := 0
 				if m.sourceProvider != nil {
-					variants = append(variants, "")
+					variants = append([]string{""}, variants...)
+					libsIndex++
 				}
 				modules := mctx.CreateLocalVariations(variants...)
 
-				rlib := modules[0].(*Module)
-				dylib := modules[1].(*Module)
+				rlib := modules[libsIndex].(*Module)
+				dylib := modules[libsIndex+1].(*Module)
 				rlib.compiler.(libraryInterface).setRlib()
 				dylib.compiler.(libraryInterface).setDylib()
 				if m.sourceProvider != nil {
-					// This library is SourceProvider generated, so the non-library-producing
-					// variant needs to disable it's compiler and skip installation.
-					sourceProvider := modules[2].(*Module)
-					sourceProvider.compiler.SetDisabled()
+					// This library is SourceProvider generated, add dependencies from the
+					// dylib and rlib modules to the source generating module.
+					mctx.AddInterVariantDependency(sourceProviderDepTag, modules[1], modules[0])
+					mctx.AddInterVariantDependency(sourceProviderDepTag, modules[2], modules[0])
+					sourceProvider := modules[0].(*Module)
+					sourceProvider.sourceProvider.SetIsSourceProviderVariant()
 				}
 			} else if library.buildRlib() {
 				modules := mctx.CreateLocalVariations("rlib")
@@ -556,7 +553,9 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 }
 
 func LibstdMutator(mctx android.BottomUpMutatorContext) {
-	if m, ok := mctx.Module().(*Module); ok && m.compiler != nil && !m.compiler.Disabled() {
+	if m, ok := mctx.Module().(*Module); ok && m.compiler != nil &&
+		!(m.sourceProvider != nil && m.sourceProvider.IsSourceProviderVariant()) {
+
 		switch library := m.compiler.(type) {
 		case libraryInterface:
 			// Only create a variant if a library is actually being built.

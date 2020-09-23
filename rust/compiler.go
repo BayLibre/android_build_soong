@@ -134,14 +134,6 @@ type baseCompiler struct {
 	strippedOutputFile android.OptionalPath
 }
 
-func (compiler *baseCompiler) Disabled() bool {
-	return false
-}
-
-func (compiler *baseCompiler) SetDisabled() {
-	panic("baseCompiler does not implement SetDisabled()")
-}
-
 func (compiler *baseCompiler) coverageOutputZipPath() android.OptionalPath {
 	panic("baseCompiler does not implement coverageOutputZipPath()")
 }

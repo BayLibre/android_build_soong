@@ -30,7 +30,7 @@ func TestRustProtobuf(t *testing.T) {
 		}
 	`)
 	// Check that there's a rule to generate the expected output
-	_ = ctx.ModuleForTests("librust_proto", "android_arm64_armv8-a_dylib").Output("buf.rs")
+	_ = ctx.ModuleForTests("librust_proto", "android_arm64_armv8-a").Output("buf.rs")
 
 	// Check that libprotobuf is added as a dependency.
 	librust_proto := ctx.ModuleForTests("librust_proto", "android_arm64_armv8-a_dylib").Module().(*Module)

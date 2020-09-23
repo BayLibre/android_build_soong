@@ -76,11 +76,10 @@ func (mod *Module) AndroidMk() android.AndroidMkData {
 		},
 	}
 
-	if mod.compiler != nil && !mod.compiler.Disabled() {
-		mod.SubAndroidMk(&ret, mod.compiler)
-	} else if mod.sourceProvider != nil {
-		// If the compiler is disabled, this is a SourceProvider.
+	if mod.sourceProvider != nil && mod.sourceProvider.IsSourceProviderVariant() {
 		mod.SubAndroidMk(&ret, mod.sourceProvider)
+	} else if mod.compiler != nil {
+		mod.SubAndroidMk(&ret, mod.compiler)
 	}
 	ret.SubName += mod.Properties.SubName
 
