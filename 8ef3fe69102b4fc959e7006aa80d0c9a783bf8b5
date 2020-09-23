@@ -34,6 +34,24 @@
       "revId": "8ef3fe69102b4fc959e7006aa80d0c9a783bf8b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35208419_e60c15f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-09-23T05:28:05Z",
+      "side": 1,
+      "message": "I see, in that case, I also agree with the motivation.  Shall we disable ThinLTO  for host modules when global ThinLTO is enabled *and* the module hasn\u0027t explicitly opted into LTO?\n\nSome host prebuilts do get built with Soong and we should let them use LTO if they want.  Similarly, some SDK tools are also built with Soong.",
+      "parentUuid": "dd3c577c_06621d8c",
+      "revId": "8ef3fe69102b4fc959e7006aa80d0c9a783bf8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
