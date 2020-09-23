@@ -21,6 +21,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	cc_config "android/soong/cc/config"
 )
 
 var (
@@ -56,7 +57,10 @@ func init() {
 var _ SourceProvider = (*bindgenDecorator)(nil)
 
 type BindgenProperties struct {
-	// The wrapper header file
+	// The wrapper header file. This is expected to have either a ".h" or ".hpp" extension. By default this is used to
+	// determine which '-std' flag to pass to clang.
+	//
+	//If you must name your C++ header ".h", then this behavior can be overridden by setting the cpp_std property.
 	Wrapper_src *string `android:"path,arch_variant"`
 
 	// list of bindgen-specific flags and options
@@ -81,6 +85,22 @@ type BindgenProperties struct {
 	// "my_bindgen [flags] wrapper_header.h -o [output_path] -- [clang flags]"
 	Custom_bindgen string `android:"path"`
 
+	// C standard version to use. Can be a specific version (such as "gnu11"),
+	// "experimental" (which will use draft versions like C1x when available),
+	// or the empty string (which will use the default).
+	//
+	// If this is set, the file extension will be ignored and this will be used as the std version value. Setting this
+	// to "default" will use the build system default version. This cannot be set at the same time as cpp_std.
+	C_std *string
+
+	// C++ standard version to use. Can be a specific version (such as
+	// "gnu++11"), "experimental" (which will use draft versions like C++1z when
+	// available), or the empty string (which will use the default).
+	//
+	// If this is set, the file extension will be ignored and this will be used as the std version value. Setting this
+	// to "default" will use the build system default version. This cannot be set at the same time as c_std.
+	Cpp_std *string
+
 	//TODO(b/161141999) Add support for headers from cc_library_header modules.
 }
 
@@ -88,6 +108,45 @@ type bindgenDecorator struct {
 	*BaseSourceProvider
 
 	Properties BindgenProperties
+}
+
+func (b *bindgenDecorator) getStdVersion(ctx ModuleContext, src android.Path) string {
+	var isCpp bool
+
+	switch src.Ext() {
+	case ".h":
+		isCpp = false
+	case ".hpp":
+		isCpp = true
+	default:
+		ctx.PropertyErrorf("wrapper_src", "Unknown file extension "+src.Ext()+" on file "+src.String()+"; expected '.h' or '.hpp'")
+	}
+
+	if String(b.Properties.Cpp_std) != "" && String(b.Properties.C_std) != "" {
+		ctx.PropertyErrorf("c_std", "c_std and cpp_std cannot both be defined at the same time.")
+	}
+
+	if String(b.Properties.Cpp_std) != "" {
+		if String(b.Properties.Cpp_std) == "experimental" {
+			return cc_config.ExperimentalCppStdVersion
+		} else if String(b.Properties.Cpp_std) == "default" {
+			return cc_config.CppStdVersion
+		} else {
+			return String(b.Properties.Cpp_std)
+		}
+	} else if b.Properties.C_std != nil {
+		if String(b.Properties.C_std) == "experimental" {
+			return cc_config.ExperimentalCStdVersion
+		} else if String(b.Properties.C_std) == "default" {
+			return cc_config.CStdVersion
+		} else {
+			return String(b.Properties.C_std)
+		}
+	} else if isCpp {
+		return cc_config.CppStdVersion
+	} else {
+		return cc_config.CStdVersion
+	}
 }
 
 func (b *bindgenDecorator) GenerateSource(ctx ModuleContext, deps PathDeps) android.Path {
@@ -133,6 +192,9 @@ func (b *bindgenDecorator) GenerateSource(ctx ModuleContext, deps PathDeps) andr
 	if !wrapperFile.Valid() {
 		ctx.PropertyErrorf("wrapper_src", "invalid path to wrapper source")
 	}
+
+	// Add C std version flag
+	cflags = append(cflags, "-std="+b.getStdVersion(ctx, wrapperFile.Path()))
 
 	outputFile := android.PathForModuleOut(ctx, b.BaseSourceProvider.getStem(ctx)+".rs")
 
