@@ -50,6 +50,24 @@
       "revId": "31949121500fb6b22482e4e6d6aa1c21aa8a0ad8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2688c9a_d8db39d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-09-23T21:53:27Z",
+      "side": 1,
+      "message": "This change reveals some infra bug. The fix was landed, we just need to wait for lab TF to be updated.",
+      "parentUuid": "388f8c02_dcd6435c",
+      "revId": "31949121500fb6b22482e4e6d6aa1c21aa8a0ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
