@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "809f49d2_dd309a3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-23T08:15:34Z",
+      "side": 1,
+      "message": "Got it. I overlooked the fact that the extra sources are for API docs.",
+      "parentUuid": "ce39d432_71269c50",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e96303c4_95f3d218",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
