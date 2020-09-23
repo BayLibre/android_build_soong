@@ -16,6 +16,24 @@
       "revId": "8ef3fe69102b4fc959e7006aa80d0c9a783bf8b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd3c577c_06621d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2020-09-23T05:21:25Z",
+      "side": 1,
+      "message": "\u003e Can you share the motivation for this change?  Maybe it can be achieved with a slightly different change.\n\nI wanted to reduce build time for global ThinLTO, and LTO for host binaries just don\u0027t seem worthwhile, unless it\u0027s shipped as a prebuilt.",
+      "parentUuid": "4242602a_1a18359d",
+      "revId": "8ef3fe69102b4fc959e7006aa80d0c9a783bf8b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
