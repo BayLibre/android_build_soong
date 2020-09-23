@@ -35,6 +35,7 @@ func pathContext() PathContext {
 		"a":       nil,
 		"b":       nil,
 		"ls":      nil,
+		"ln":      nil,
 		"turbine": nil,
 		"java":    nil,
 		"javac":   nil,
@@ -65,6 +66,34 @@ func ExampleRuleBuilder() {
 	// tools: ["ld"]
 	// inputs: ["a.o" "b.o"]
 	// outputs: ["out/linked"]
+}
+
+func ExampleRuleBuilder_SymlinkOutputs() {
+	rule := NewRuleBuilder()
+
+	ctx := pathContext()
+
+	rule.Command().
+		Tool(PathForSource(ctx, "ln")).
+		FlagWithInput("-s ", PathForTesting("a.o")).
+		Output(PathForOutput(ctx, "a")).
+		SymlinkOutputs(PathsForOutput(ctx, []string{"a"}))
+	rule.Command().Text("cp out/a out/b").
+		ImplicitOutput(PathForOutput(ctx, "b")).
+		SymlinkOutputs(PathsForOutput(ctx, []string{"b"}))
+
+	fmt.Printf("commands: %q\n", strings.Join(rule.Commands(), " && "))
+	fmt.Printf("tools: %q\n", rule.Tools())
+	fmt.Printf("inputs: %q\n", rule.Inputs())
+	fmt.Printf("outputs: %q\n", rule.Outputs())
+	fmt.Printf("symlink_outputs: %q\n", rule.SymlinkOutputs())
+
+	// Output:
+	// commands: "ln -s a.o out/a && cp out/a out/b"
+	// tools: ["ln"]
+	// inputs: ["a.o"]
+	// outputs: ["out/a" "out/b"]
+	// symlink_outputs: ["out/a" "out/b"]
 }
 
 func ExampleRuleBuilder_Temporary() {
@@ -293,6 +322,7 @@ func TestRuleBuilder(t *testing.T) {
 			Input(PathForSource(ctx, "Input")).
 			Output(PathForOutput(ctx, "Output")).
 			OrderOnly(PathForSource(ctx, "OrderOnly")).
+			SymlinkOutputs(PathsForOutput(ctx, []string{"Output", "ImplicitOutput"})).
 			Text("Text").
 			Tool(PathForSource(ctx, "Tool"))
 
@@ -322,6 +352,7 @@ func TestRuleBuilder(t *testing.T) {
 	wantDepFiles := PathsForOutput(ctx, []string{"DepFile", "depfile", "ImplicitDepFile", "depfile2"})
 	wantTools := PathsForSource(ctx, []string{"Tool", "tool2"})
 	wantOrderOnlys := PathsForSource(ctx, []string{"OrderOnly", "OrderOnlys"})
+	wantSymlinkOutputs := PathsForOutput(ctx, []string{"ImplicitOutput", "Output"})
 
 	t.Run("normal", func(t *testing.T) {
 		rule := NewRuleBuilder()
@@ -344,6 +375,9 @@ func TestRuleBuilder(t *testing.T) {
 		}
 		if g, w := rule.Outputs(), wantOutputs; !reflect.DeepEqual(w, g) {
 			t.Errorf("\nwant rule.Outputs() = %#v\n                  got %#v", w, g)
+		}
+		if g, w := rule.SymlinkOutputs(), wantSymlinkOutputs; !reflect.DeepEqual(w, g) {
+			t.Errorf("\nwant rule.SymlinkOutputs() = %#v\n                  got %#v", w, g)
 		}
 		if g, w := rule.DepFiles(), wantDepFiles; !reflect.DeepEqual(w, g) {
 			t.Errorf("\nwant rule.DepFiles() = %#v\n                  got %#v", w, g)
