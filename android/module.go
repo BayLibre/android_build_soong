@@ -43,6 +43,7 @@ type BuildParams struct {
 	Description     string
 	Output          WritablePath
 	Outputs         WritablePaths
+	SymlinkOutputs  WritablePaths
 	ImplicitOutput  WritablePath
 	ImplicitOutputs WritablePaths
 	Input           Path
@@ -1730,6 +1731,7 @@ func convertBuildParams(params BuildParams) blueprint.BuildParams {
 		Deps:            params.Deps,
 		Outputs:         params.Outputs.Strings(),
 		ImplicitOutputs: params.ImplicitOutputs.Strings(),
+		SymlinkOutputs:  params.SymlinkOutputs.Strings(),
 		Inputs:          params.Inputs.Strings(),
 		Implicits:       params.Implicits.Strings(),
 		OrderOnly:       params.OrderOnly.Strings(),
@@ -1759,6 +1761,7 @@ func convertBuildParams(params BuildParams) blueprint.BuildParams {
 
 	bparams.Outputs = proptools.NinjaEscapeList(bparams.Outputs)
 	bparams.ImplicitOutputs = proptools.NinjaEscapeList(bparams.ImplicitOutputs)
+	bparams.SymlinkOutputs = proptools.NinjaEscapeList(bparams.SymlinkOutputs)
 	bparams.Inputs = proptools.NinjaEscapeList(bparams.Inputs)
 	bparams.Implicits = proptools.NinjaEscapeList(bparams.Implicits)
 	bparams.OrderOnly = proptools.NinjaEscapeList(bparams.OrderOnly)
@@ -2246,11 +2249,12 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 			panic(fmt.Sprintf("Unable to generate symlink between %q and %q: %s", fullInstallPath.Base(), srcPath.Base(), err))
 		}
 		m.Build(pctx, BuildParams{
-			Rule:        Symlink,
-			Description: "install symlink " + fullInstallPath.Base(),
-			Output:      fullInstallPath,
-			Input:       srcPath,
-			Default:     !m.Config().EmbeddedInMake(),
+			Rule:           Symlink,
+			Description:    "install symlink " + fullInstallPath.Base(),
+			Output:         fullInstallPath,
+			SymlinkOutputs: []WritablePath{fullInstallPath},
+			Input:          srcPath,
+			Default:        !m.Config().EmbeddedInMake(),
 			Args: map[string]string{
 				"fromPath": relPath,
 			},
@@ -2270,10 +2274,11 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 
 	if !m.skipInstall(fullInstallPath) {
 		m.Build(pctx, BuildParams{
-			Rule:        Symlink,
-			Description: "install symlink " + fullInstallPath.Base() + " -> " + absPath,
-			Output:      fullInstallPath,
-			Default:     !m.Config().EmbeddedInMake(),
+			Rule:           Symlink,
+			Description:    "install symlink " + fullInstallPath.Base() + " -> " + absPath,
+			Output:         fullInstallPath,
+			SymlinkOutputs: []WritablePath{fullInstallPath},
+			Default:        !m.Config().EmbeddedInMake(),
 			Args: map[string]string{
 				"fromPath": absPath,
 			},
