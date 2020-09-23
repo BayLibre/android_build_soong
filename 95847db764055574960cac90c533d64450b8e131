@@ -16,6 +16,24 @@
       "revId": "95847db764055574960cac90c533d64450b8e131",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "060f665f_392d7618",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-23T12:15:58Z",
+      "side": 1,
+      "message": "Thanks for the comment. Yes, you are right. I\u0027ve modified HostCross() to return false when the arch is not what the host supports. To do so, I had to extend Config to store []ArchType and extend AndroidMk() to accept the Config object.",
+      "parentUuid": "6a058cfe_28628acc",
+      "revId": "95847db764055574960cac90c533d64450b8e131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
