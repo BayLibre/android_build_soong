@@ -59,10 +59,11 @@ func (t *prebuiltBuildTool) GenerateAndroidBuildActions(ctx ModuleContext) {
 	deps := PathsForModuleSrc(ctx, t.properties.Deps)
 
 	ctx.Build(pctx, BuildParams{
-		Rule:      Symlink,
-		Output:    installedPath,
-		Input:     sourcePath,
-		Implicits: deps,
+		Rule:           Symlink,
+		Output:         installedPath,
+		SymlinkOutputs: []WritablePath{installedPath},
+		Input:          sourcePath,
+		Implicits:      deps,
 		Args: map[string]string{
 			"fromPath": "$$PWD/" + sourcePath.String(),
 		},

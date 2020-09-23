@@ -361,10 +361,11 @@ func (p *prebuiltBinaryLinker) link(ctx ModuleContext,
 			sharedLibPaths = append(sharedLibPaths, deps.LateSharedLibs...)
 
 			ctx.Build(pctx, android.BuildParams{
-				Rule:      android.Symlink,
-				Output:    outputFile,
-				Input:     in,
-				Implicits: sharedLibPaths,
+				Rule:           android.Symlink,
+				Output:         outputFile,
+				SymlinkOutputs: []android.WritablePath{outputFile},
+				Input:          in,
+				Implicits:      sharedLibPaths,
 				Args: map[string]string{
 					"fromPath": "$$PWD/" + in.String(),
 				},
