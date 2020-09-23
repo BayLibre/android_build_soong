@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "074e91e0_5a9901db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-09-23T12:18:37Z",
+      "side": 1,
+      "message": "Thanks Paul.\n\nThe presubmit error is an infra failure/flake (b/169225432).\n",
+      "revId": "24bb2e63a0e9a165cb6deb5375e3f7c0d12f1b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
