@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "e62204c4_bcf84412",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-23T08:29:50Z",
+      "side": 1,
+      "message": "Can we make it true by default for the public API scope?\n\nI want sdk_library to do the right thing out of the box, to make it easier to use correctly. Right now there\u0027s so many things you need to set explicitly in each use of sdk_library.",
+      "parentUuid": "356f0feb_8676d654",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 22
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27cff790_7d0afdc3",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -238,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "e05b0510_d0edb9a9",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-23T08:29:50Z",
+      "side": 1,
+      "message": "k, let\u0027s file a bug to follow up on that?",
+      "parentUuid": "9804bf21_0dc64c3e",
+      "range": {
+        "startLine": 701,
+        "startChar": 0,
+        "endLine": 702,
+        "endChar": 40
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e679b2c3_5d25ed18",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "I missed that. It might make sense to separate them because while we will most likely always need to provide source for Javadoc (as you cannot easily generate the Javadoc for the modules separately and then stitch them together) we will not need to export stubs source to frameworks/base once the monolithic .txt file is removed, as we can just export compiled library which frameworks/base can combine together into the android.jar.",
       "parentUuid": "e679b2c3_5d25ed18",
+      "range": {
+        "startLine": 1288,
+        "startChar": 1,
+        "endLine": 1288,
+        "endChar": 94
+      },
+      "revId": "339d302cf1184bead5562524ccfdc2e41f4419b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d5d95e_7886f2e8",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-09-23T08:29:50Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "3327accd_a4d22155",
       "range": {
         "startLine": 1288,
         "startChar": 1,
