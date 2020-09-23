@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b02342e6_700b30cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-23T18:01:27Z",
+      "side": 1,
+      "message": "If you precompute HostCross in the next change this isn\u0027t necessary.  If we do need something like this, I\u0027d prefer to pass a context and use ctx.Config() to get the config.",
+      "revId": "1e04be2cd053312a59b6140fd98abd0d2f82cc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
