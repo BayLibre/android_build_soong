@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60af8fc7_b3736ead",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-23T15:28:29Z",
+      "side": 1,
+      "message": "Thanks for doing that. It is much easier to review now. I still have a few issues with it unfortunately.",
+      "revId": "284de71cf0f5533b2a5404af4824a7b813e016a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34708fcf_a3e18ab6",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-23T15:28:29Z",
+      "side": 1,
+      "message": "Should either be left as it was or changed to \"...be of one of the ...\"",
+      "revId": "284de71cf0f5533b2a5404af4824a7b813e016a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "854182f6_e7527748",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-23T15:28:29Z",
+      "side": 1,
+      "message": "As mentioned before I find the use of \"fields\" here confusing. BpPropertySet is an interface it does not have fields, conceptually it has properties.\n\nSuggestion:\n\n// Add a property, the value can be of one of the following types:\n// * string\n// * array of the above\n// * bool\n// For these types it is an error if multiple properties with the same name\n// are added.\n//\n// * pointer to a struct\n// * BpPropertySet\n//\n// A pointer to a struct is first converted into a BpPropertySet by traversing the fields and\n// adding the fields values as properties in a BpPropertySet. A field with a struct value is\n// itself converted into a BpPropertySet before adding.\n//\n// Adding a BpPropertySet is done as follows:\n// * If no property with the name exists then the BpPropertySet is added directly to this property. Care must be taken to ensure that it does not introduce a cycle.\n// * If a property exists with the name and the current value is a BpPropertySet then every property of the new BpPropertySet is added to the existing BpPropertySet.\n// * Otherwise, if a property exists with the name then it is an error.",
+      "range": {
+        "startLine": 244,
+        "startChar": 8,
+        "endLine": 244,
+        "endChar": 14
+      },
+      "revId": "284de71cf0f5533b2a5404af4824a7b813e016a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40601ed2_8c2e8036",
+        "filename": "sdk/bp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-23T15:28:29Z",
+      "side": 1,
+      "message": "I think everything from here down to line 92 should be in the separate method. Separating out the reflection based code simplifies this method up and makes it easier to reason about.",
+      "revId": "284de71cf0f5533b2a5404af4824a7b813e016a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57af79d3_4d9b91b6",
+        "filename": "sdk/bp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-23T15:28:29Z",
+      "side": 1,
+      "message": "The Interface option here is unnecessary.\n\nHowever, I think that there should be an extra check here to make sure that the Ptr is actually to a Struct and if it is not to report a meaningful error. Otherwise, the code above will panic when attempting to access fields in a non-struct type and the errors from the reflect code are really obscure making it hard to understand.",
+      "range": {
+        "startLine": 88,
+        "startChar": 19,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "284de71cf0f5533b2a5404af4824a7b813e016a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
