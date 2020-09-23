@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87c5b153_1225dae6",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-23T18:00:39Z",
+      "side": 1,
+      "message": "Can you precompute HostCross and add it as a field here?",
+      "revId": "c2a8d71268dc64abc9f894cfa67325824207e035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da2b880_5488dd6f",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-23T18:00:39Z",
+      "side": 1,
+      "message": "How about BuildOSArches?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "c2a8d71268dc64abc9f894cfa67325824207e035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8984708c_b3a7c346",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-23T18:00:39Z",
+      "side": 1,
+      "message": "Is this necessary?  I thought windows support was disabled by default.",
+      "revId": "c2a8d71268dc64abc9f894cfa67325824207e035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
