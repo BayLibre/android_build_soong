@@ -246,6 +246,31 @@ func (r *RuleBuilder) Outputs() WritablePaths {
 	return outputList
 }
 
+func (r *RuleBuilder) symlinkOutputSet() map[string]WritablePath {
+	symlinkOutputs := make(map[string]WritablePath)
+	for _, c := range r.commands {
+		for _, symlinkOutput := range c.symlinkOutputs {
+			symlinkOutputs[symlinkOutput.String()] = symlinkOutput
+		}
+	}
+	return symlinkOutputs
+}
+
+func (r *RuleBuilder) SymlinkOutputs() WritablePaths {
+	symlinkOutputs := r.symlinkOutputSet()
+
+	var symlinkOutputList WritablePaths
+	for _, symlinkOutput := range symlinkOutputs {
+		symlinkOutputList = append(symlinkOutputList, symlinkOutput)
+	}
+
+	sort.Slice(symlinkOutputList, func(i, j int) bool {
+		return symlinkOutputList[i].String() < symlinkOutputList[j].String()
+	})
+
+	return symlinkOutputList
+}
+
 func (r *RuleBuilder) depFileSet() map[string]WritablePath {
 	depFiles := make(map[string]WritablePath)
 	for _, c := range r.commands {
@@ -467,6 +492,7 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 		Implicits:       r.Inputs(),
 		Output:          output,
 		ImplicitOutputs: implicitOutputs,
+		SymlinkOutputs:  r.SymlinkOutputs(),
 		Depfile:         depFile,
 		Deps:            depFormat,
 		Description:     desc,
@@ -478,14 +504,15 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 // RuleBuilderCommand, so they can be used chained or unchained.  All methods that add text implicitly add a single
 // space as a separator from the previous method.
 type RuleBuilderCommand struct {
-	buf           strings.Builder
-	inputs        Paths
-	implicits     Paths
-	orderOnlys    Paths
-	outputs       WritablePaths
-	depFiles      WritablePaths
-	tools         Paths
-	rspFileInputs Paths
+	buf            strings.Builder
+	inputs         Paths
+	implicits      Paths
+	orderOnlys     Paths
+	outputs        WritablePaths
+	symlinkOutputs WritablePaths
+	depFiles       WritablePaths
+	tools          Paths
+	rspFileInputs  Paths
 
 	// spans [start,end) of the command that should not be ninja escaped
 	unescapedSpans [][2]int
@@ -712,6 +739,22 @@ func (c *RuleBuilderCommand) ImplicitOutput(path WritablePath) *RuleBuilderComma
 // the command line.
 func (c *RuleBuilderCommand) ImplicitOutputs(paths WritablePaths) *RuleBuilderCommand {
 	c.outputs = append(c.outputs, paths...)
+	return c
+}
+
+// SymlinkOutput declares the specified output path as a symlink, instead of a
+// regular file. Does not modify the command line.
+func (c *RuleBuilderCommand) SymlinkOutput(path WritablePath) *RuleBuilderCommand {
+	c.symlinkOutputs = append(c.symlinkOutputs, path)
+	return c
+}
+
+// SymlinkOutputs declares the specified output paths as a symlinks, instead of
+// a regular files. Does not modify the command line.
+func (c *RuleBuilderCommand) SymlinkOutputs(paths WritablePaths) *RuleBuilderCommand {
+	for _, path := range paths {
+		c.SymlinkOutput(path)
+	}
 	return c
 }
 
