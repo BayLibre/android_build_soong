@@ -628,6 +628,8 @@ func (c *commonToSdkLibraryAndImport) initCommonAfterDefaultsApplied(ctx android
 	if c.sharedLibrary() {
 		// Use the name specified in the module definition as the owner.
 		c.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack = proptools.StringPtr(c.moduleBase.BaseModuleName())
+		// Currently implementation library name is the same as the SDK library name.
+		c.sdkLibraryComponentProperties.SdkLibraryImplementation = c.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack
 	}
 
 	return true
@@ -810,6 +812,7 @@ func (c *commonToSdkLibraryAndImport) selectHeaderJarsForSdkVersion(ctx android.
 func (c *commonToSdkLibraryAndImport) sdkComponentPropertiesForChildLibrary() interface{} {
 	componentProps := &struct {
 		SdkLibraryToImplicitlyTrack *string
+		SdkLibraryImplementation    *string
 	}{}
 
 	if c.sharedLibrary() {
@@ -818,6 +821,8 @@ func (c *commonToSdkLibraryAndImport) sdkComponentPropertiesForChildLibrary() in
 		// library will have the appropriate <uses-library> invocation inserted into its
 		// manifest if necessary.
 		componentProps.SdkLibraryToImplicitlyTrack = proptools.StringPtr(c.moduleBase.BaseModuleName())
+		// Currently implementation library name is the same as the SDK library name.
+		componentProps.SdkLibraryImplementation = componentProps.SdkLibraryToImplicitlyTrack
 	}
 
 	return componentProps
@@ -835,6 +840,9 @@ type SdkLibraryComponentProperties struct {
 	// in the AndroidManifest.xml of any Android app that includes code that references
 	// this module. If not set then no java_sdk_library/_import is tracked.
 	SdkLibraryToImplicitlyTrack *string `blueprint:"mutated"`
+
+	// The name of the implementation library for the optional SDK library (if any).
+	SdkLibraryImplementation *string `blueprint:"mutated"`
 }
 
 // Structure to be embedded in a module struct that needs to support the
@@ -852,6 +860,11 @@ func (e *EmbeddableSdkLibraryComponent) OptionalImplicitSdkLibrary() *string {
 	return e.sdkLibraryComponentProperties.SdkLibraryToImplicitlyTrack
 }
 
+// to satisfy SdkLibraryComponentDependency
+func (e *EmbeddableSdkLibraryComponent) OptionalSdkLibraryImplementation() *string {
+	return e.sdkLibraryComponentProperties.SdkLibraryImplementation
+}
+
 // Implemented by modules that are (or possibly could be) a component of a java_sdk_library
 // (including the java_sdk_library) itself.
 type SdkLibraryComponentDependency interface {
@@ -862,6 +875,9 @@ type SdkLibraryComponentDependency interface {
 	//
 	// Returns the name of the optional implicit SDK library or nil, if there isn't one.
 	OptionalImplicitSdkLibrary() *string
+
+	// The name of the implementation library for the optional SDK library or nil, if there isn't one.
+	OptionalSdkLibraryImplementation() *string
 }
 
 // Make sure that all the module types that are components of java_sdk_library/_import
