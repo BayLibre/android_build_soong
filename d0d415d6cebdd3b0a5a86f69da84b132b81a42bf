@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1c0e52d1_68a21e41",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-23T11:08:28Z",
+      "side": 1,
+      "message": "Ideally, I think this should be just host/\u003cos\u003e-\u003carch\u003e. To make it happen, we need to fix all the places where linux-x86 is hard-coded.\n\nFor linux_glibc_arm64 and linux_glibc_common, I think we can/should use the ideal path.\n\nFor now, I think adding `BuildArch \u003d\u003d X86_64` to the conditions at #1319 is enough.",
+      "parentUuid": "eb0a7c99_12e8e1f8",
+      "revId": "d0d415d6cebdd3b0a5a86f69da84b132b81a42bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6397c79_aa1a33b2",
         "filename": "cc/config/arm64_linux_host.go",
         "patchSetId": 9
