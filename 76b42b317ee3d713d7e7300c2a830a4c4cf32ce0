@@ -22,6 +22,30 @@
       "revId": "76b42b317ee3d713d7e7300c2a830a4c4cf32ce0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9025eac_2b2d5072",
+        "filename": "android/njdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-09-23T06:12:52Z",
+      "side": 1,
+      "message": "Done. Change it to newNonjDepsGeneratorSingleton.",
+      "parentUuid": "432c0dfa_d7c3cea9",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "76b42b317ee3d713d7e7300c2a830a4c4cf32ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
