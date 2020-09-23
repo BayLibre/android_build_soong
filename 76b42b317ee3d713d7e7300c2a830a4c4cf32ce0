@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "432c0dfa_d7c3cea9",
+        "filename": "android/njdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1315724
+      },
+      "writtenOn": "2020-09-23T00:51:31Z",
+      "side": 1,
+      "message": "nit: for readiness, it\u0027s just a little difference between nonjdepsGeneratorSingleton and nonjDepsGeneratorSingleton. (d \u0026 D)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 45
+      },
+      "revId": "76b42b317ee3d713d7e7300c2a830a4c4cf32ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
