@@ -293,6 +293,7 @@ func TestRuleBuilder(t *testing.T) {
 			Input(PathForSource(ctx, "Input")).
 			Output(PathForOutput(ctx, "Output")).
 			OrderOnly(PathForSource(ctx, "OrderOnly")).
+			SymlinkOutputs(PathsForOutput(ctx, []string{"Output", "ImplicitOutput"})).
 			Text("Text").
 			Tool(PathForSource(ctx, "Tool"))
 
@@ -322,6 +323,7 @@ func TestRuleBuilder(t *testing.T) {
 	wantDepFiles := PathsForOutput(ctx, []string{"DepFile", "depfile", "ImplicitDepFile", "depfile2"})
 	wantTools := PathsForSource(ctx, []string{"Tool", "tool2"})
 	wantOrderOnlys := PathsForSource(ctx, []string{"OrderOnly", "OrderOnlys"})
+	wantSymlinkOutputs := PathsForOutput(ctx, []string{"ImplicitOutput", "Output"})
 
 	t.Run("normal", func(t *testing.T) {
 		rule := NewRuleBuilder()
@@ -344,6 +346,9 @@ func TestRuleBuilder(t *testing.T) {
 		}
 		if g, w := rule.Outputs(), wantOutputs; !reflect.DeepEqual(w, g) {
 			t.Errorf("\nwant rule.Outputs() = %#v\n                  got %#v", w, g)
+		}
+		if g, w := rule.SymlinkOutputs(), wantSymlinkOutputs; !reflect.DeepEqual(w, g) {
+			t.Errorf("\nwant rule.SymlinkOutputs() = %#v\n                  got %#v", w, g)
 		}
 		if g, w := rule.DepFiles(), wantDepFiles; !reflect.DeepEqual(w, g) {
 			t.Errorf("\nwant rule.DepFiles() = %#v\n                  got %#v", w, g)
