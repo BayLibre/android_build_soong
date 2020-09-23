@@ -1,0 +1,10 @@
+Code-Review+2: Paul Duffin <paulduffin@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Bypass-Presubmit+1: Roland Levillain <rpl@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Submitted-by: Roland Levillain <rpl@google.com>
+Submitted-at: Wed, 23 Sep 2020 12:19:03 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1434051
+Project: platform/build/soong
+Branch: refs/heads/master
