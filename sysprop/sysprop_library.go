@@ -288,7 +288,7 @@ func (m *syspropLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	rule.Build(pctx, ctx, baseModuleName+"_check_api", baseModuleName+" check api")
 }
 
-func (m *syspropLibrary) AndroidMk() android.AndroidMkData {
+func (m *syspropLibrary) AndroidMk(config android.Config) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			// sysprop_library module itself is defined as a FAKE module to perform API check.

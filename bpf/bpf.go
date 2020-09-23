@@ -108,7 +108,7 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 }
 
-func (bpf *bpf) AndroidMk() android.AndroidMkData {
+func (bpf *bpf) AndroidMk(config android.Config) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			var names []string

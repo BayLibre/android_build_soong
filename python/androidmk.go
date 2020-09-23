@@ -38,7 +38,7 @@ func (p *Module) subAndroidMk(data *android.AndroidMkData, obj interface{}) {
 	}
 }
 
-func (p *Module) AndroidMk() android.AndroidMkData {
+func (p *Module) AndroidMk(config android.Config) android.AndroidMkData {
 	ret := android.AndroidMkData{OutputFile: p.installSource}
 
 	p.subAndroidMk(&ret, p.installer)

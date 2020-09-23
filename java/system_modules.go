@@ -173,7 +173,7 @@ func (system *SystemModules) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, systemModulesLibsTag, system.properties.Libs...)
 }
 
-func (system *SystemModules) AndroidMk() android.AndroidMkData {
+func (system *SystemModules) AndroidMk(config android.Config) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			fmt.Fprintln(w)

@@ -39,7 +39,7 @@ func RegisterAndroidMkBuildComponents(ctx RegistrationContext) {
 // Deprecated: consider using AndroidMkEntriesProvider instead, especially if you're not going to
 // use the Custom function.
 type AndroidMkDataProvider interface {
-	AndroidMk() AndroidMkData
+	AndroidMk(config Config) AndroidMkData
 	BaseModuleName() string
 }
 
@@ -552,7 +552,7 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 		return nil
 	}
 
-	data := provider.AndroidMk()
+	data := provider.AndroidMk(ctx.Config())
 	if data.Include == "" {
 		data.Include = "$(BUILD_PREBUILT)"
 	}

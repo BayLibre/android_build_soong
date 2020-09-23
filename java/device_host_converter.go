@@ -179,7 +179,7 @@ func (d *DeviceHostConverter) JacocoReportClassesFile() android.Path {
 	return nil
 }
 
-func (d *DeviceHostConverter) AndroidMk() android.AndroidMkData {
+func (d *DeviceHostConverter) AndroidMk(config android.Config) android.AndroidMkData {
 	return android.AndroidMkData{
 		Class:      "JAVA_LIBRARIES",
 		OutputFile: android.OptionalPathForPath(d.combinedImplementationJar),

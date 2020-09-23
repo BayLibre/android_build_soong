@@ -82,7 +82,7 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 		if !ok {
 			return
 		}
-		data := mkProvider.AndroidMk()
+		data := mkProvider.AndroidMk(ctx.Config())
 		if data.Class != "" {
 			dpInfo.Classes = append(dpInfo.Classes, data.Class)
 		}

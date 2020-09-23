@@ -46,7 +46,7 @@ func (p *phony) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.targetRequiredModuleNames = ctx.TargetRequiredModuleNames()
 }
 
-func (p *phony) AndroidMk() android.AndroidMkData {
+func (p *phony) AndroidMk(config android.Config) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")

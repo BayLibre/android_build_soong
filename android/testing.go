@@ -450,7 +450,7 @@ func AndroidMkDataForTest(t *testing.T, config Config, bpPath string, mod bluepr
 	if p, ok = mod.(AndroidMkDataProvider); !ok {
 		t.Errorf("module does not implement AndroidMkDataProvider: " + mod.Name())
 	}
-	data := p.AndroidMk()
+	data := p.AndroidMk(config)
 	data.fillInData(config, bpPath, mod)
 	return data
 }

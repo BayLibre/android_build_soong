@@ -38,7 +38,7 @@ func (me *CSuiteConfig) GenerateAndroidBuildActions(ctx ModuleContext) {
 	me.OutputFilePath = PathForModuleOut(ctx, me.BaseModuleName()).OutputPath
 }
 
-func (me *CSuiteConfig) AndroidMk() AndroidMkData {
+func (me *CSuiteConfig) AndroidMk(config Config) AndroidMkData {
 	androidMkData := AndroidMkData{
 		Class:      "FAKE",
 		Include:    "$(BUILD_SYSTEM)/suite_host_config.mk",

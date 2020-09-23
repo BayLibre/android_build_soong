@@ -45,7 +45,7 @@ func (mod *Module) SubAndroidMk(data *android.AndroidMkData, obj interface{}) {
 	}
 }
 
-func (mod *Module) AndroidMk() android.AndroidMkData {
+func (mod *Module) AndroidMk(config android.Config) android.AndroidMkData {
 	if mod.Properties.HideFromMake {
 		return android.AndroidMkData{
 			Disabled: true,

@@ -27,13 +27,13 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
-func (a *apexBundle) AndroidMk() android.AndroidMkData {
+func (a *apexBundle) AndroidMk(config android.Config) android.AndroidMkData {
 	if a.properties.HideFromMake {
 		return android.AndroidMkData{
 			Disabled: true,
 		}
 	}
-	return a.androidMkForType()
+	return a.androidMkForType(config)
 }
 
 func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, moduleDir string,
@@ -300,7 +300,7 @@ func (a *apexBundle) writeRequiredModules(w io.Writer) {
 	}
 }
 
-func (a *apexBundle) androidMkForType() android.AndroidMkData {
+func (a *apexBundle) androidMkForType(config android.Config) android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			moduleNames := []string{}

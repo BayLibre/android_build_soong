@@ -534,7 +534,7 @@ func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Paths = append(dpInfo.Paths, g.modulePaths...)
 }
 
-func (g *Module) AndroidMk() android.AndroidMkData {
+func (g *Module) AndroidMk(config android.Config) android.AndroidMkData {
 	return android.AndroidMkData{
 		Include:    "$(BUILD_PHONY_PACKAGE)",
 		Class:      "FAKE",

@@ -31,7 +31,7 @@ func (m *customModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	m.distFiles = m.GenerateTaggedDistFiles(ctx)
 }
 
-func (m *customModule) AndroidMk() AndroidMkData {
+func (m *customModule) AndroidMk(config Config) AndroidMkData {
 	return AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data AndroidMkData) {
 			m.data = data

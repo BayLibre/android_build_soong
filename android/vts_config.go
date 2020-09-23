@@ -41,7 +41,7 @@ func (me *VtsConfig) GenerateAndroidBuildActions(ctx ModuleContext) {
 	me.OutputFilePath = PathForModuleOut(ctx, me.BaseModuleName()).OutputPath
 }
 
-func (me *VtsConfig) AndroidMk() AndroidMkData {
+func (me *VtsConfig) AndroidMk(config Config) AndroidMkData {
 	androidMkData := AndroidMkData{
 		Class:      "FAKE",
 		Include:    "$(BUILD_SYSTEM)/suite_host_config.mk",
