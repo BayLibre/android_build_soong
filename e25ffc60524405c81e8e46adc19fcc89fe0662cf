@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28c08e07_d7d61450",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-23T17:53:05Z",
+      "side": 1,
+      "message": "If you use the final computed value of systemSharedLibs you can simplify this to just pass whatever value Soong computed.",
+      "revId": "e25ffc60524405c81e8e46adc19fcc89fe0662cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab73866e_f4a785d2",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-23T17:53:05Z",
+      "side": 1,
+      "message": "Move deps.SystemSharedLibs here so that it has the final computed value",
+      "revId": "e25ffc60524405c81e8e46adc19fcc89fe0662cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
