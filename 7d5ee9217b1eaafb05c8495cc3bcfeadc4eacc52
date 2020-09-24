@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3abafcac_a7d2ab13",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-09-24T17:47:07Z",
+      "side": 1,
+      "message": "I feel like `DISABLE_LTO` should override any other LTO, hence this shouldn\u0027t just be an `if`.",
+      "revId": "7d5ee9217b1eaafb05c8495cc3bcfeadc4eacc52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9fb6980_f7f8b67a",
         "filename": "cc/lto.go",
         "patchSetId": 1
