@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6e59599_1110e95d",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-09-24T18:31:04Z",
+      "side": 1,
+      "message": "Do we want to allow:\n\nlto: {\n  globalthin: true\n}\n\nin Android.bp files?  If not, my understanding is that we should add this as a `blueprint:\"mutated\"` field, probably in the same scope as FullDep, ThinDep.",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "52adbb8d3b231a23861b06d8fe2ae0cf8fb4a13e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
