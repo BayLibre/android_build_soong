@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6113bbc1_dc57198a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-24T12:40:37Z",
+      "side": 1,
+      "message": "Can you explain why you removed some stuff from tests? Presumably that was workarounds for this issue but it\u0027s not clear.",
+      "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51981449_9336bad4",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-24T12:40:37Z",
+      "side": 1,
+      "message": "FYI - this assumes that the implementation library has the same name as the sdk library itself. While that is true at the moment it may not be true in future. It might be worth adding a method to SdkLibraryComponentDependency to get the implementation name of the library and call that instead. It can return the library name for now but will make it easier to switch over in future.",
+      "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
