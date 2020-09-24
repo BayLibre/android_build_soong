@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "449a5a64_153befd6",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-24T17:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6a496cd_cede7f53",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a3b5dd1_1eea429a",
         "filename": "rust/bindgen.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aa73c85_cd05c32d",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-24T17:50:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a3b5dd1_1eea429a",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "45d7a218_cad8c26c",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-24T17:50:06Z",
+      "side": 1,
+      "message": "We spoke offline and decided to leave this as with c_std and cpp_std to better match the properties in cc modules. We now assume C headers by default.",
+      "parentUuid": "d0623258_d14bd9ec",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b1e09a3_51c8ab5c",
         "filename": "rust/bindgen.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0c8cac_005c9d1e",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-24T17:50:06Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "0b1e09a3_51c8ab5c",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
