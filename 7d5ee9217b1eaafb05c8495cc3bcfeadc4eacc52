@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9fb6980_f7f8b67a",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-09-24T17:39:04Z",
+      "side": 1,
+      "message": "nit: I suppose this check can come before \"USE_THINLTO_CACHE\".",
+      "range": {
+        "startLine": 111,
+        "startChar": 52,
+        "endLine": 111,
+        "endChar": 65
+      },
+      "revId": "7d5ee9217b1eaafb05c8495cc3bcfeadc4eacc52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
