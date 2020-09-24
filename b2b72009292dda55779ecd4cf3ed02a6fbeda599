@@ -67,6 +67,23 @@
       "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf45f6c_81bb0ac6",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-24T15:40:17Z",
+      "side": 1,
+      "message": "Did you check whether this is sufficient to imply `-x c++` for .h files with a cpp_std parameter set? It might be, but I\u0027m not immediately sure.",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
