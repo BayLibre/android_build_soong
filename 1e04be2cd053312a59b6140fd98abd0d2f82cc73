@@ -16,6 +16,24 @@
       "revId": "1e04be2cd053312a59b6140fd98abd0d2f82cc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "462c48c0_bfe897dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-24T05:17:26Z",
+      "side": 1,
+      "message": "What you suggested in the other CL is much better than this. Abandoning.",
+      "parentUuid": "b02342e6_700b30cb",
+      "revId": "1e04be2cd053312a59b6140fd98abd0d2f82cc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
