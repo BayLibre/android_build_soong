@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8780178_0fa7960c",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-24T18:03:09Z",
+      "side": 1,
+      "message": "One way to reduce the size of Android-${TARGET_PRODUCT}.mk would be to only include this line for device modules.",
+      "revId": "219968c9b3cdb73d653800cc44efb4b2d7addd42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

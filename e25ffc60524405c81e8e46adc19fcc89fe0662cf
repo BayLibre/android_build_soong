@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5ec97ad8_9df43388",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-24T18:03:09Z",
+      "side": 1,
+      "message": "It\u0027s necessary information, and shouldn\u0027t have a significant performance impact.  You can measure the size of Android-${TARGET_PRODUCT}.mk before and after this change if you are concerned.",
+      "parentUuid": "886feb38_f0ac41ba",
+      "revId": "e25ffc60524405c81e8e46adc19fcc89fe0662cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab73866e_f4a785d2",
         "filename": "cc/linker.go",
         "patchSetId": 2
