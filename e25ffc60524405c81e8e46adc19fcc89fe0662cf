@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f8b2c8e_3bb34b2b",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-09-24T05:21:33Z",
+      "side": 1,
+      "message": "That would bloat the output Android-\u003cproduct\u003e.mk with a lot of lines of \"LOCAL_SYSTEM_SHARED_LIBRARIES :\u003d libc libm libdl\". Would that be a performance concern?",
+      "parentUuid": "28c08e07_d7d61450",
+      "revId": "e25ffc60524405c81e8e46adc19fcc89fe0662cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab73866e_f4a785d2",
         "filename": "cc/linker.go",
         "patchSetId": 2
