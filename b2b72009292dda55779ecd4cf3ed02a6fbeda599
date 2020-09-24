@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6a496cd_cede7f53",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-24T15:38:10Z",
+      "side": 1,
+      "message": "Can we add \".hh\" as another C++ case here?\".cc\"/\".hh\" are common C++ extensions as well.",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a3b5dd1_1eea429a",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-24T15:38:10Z",
+      "side": 1,
+      "message": "I think we should allow if language is explicitly set for any extension rather than rejecting. STL headers, for example (though unlikely to be bindgennable) have *no* extension.",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0623258_d14bd9ec",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-24T15:38:10Z",
+      "side": 1,
+      "message": "In that case, maybe we should have a trinary exposed to the user of bindgen_lang \u003d nil (autodetect) or \"c\" \"C\" (normalized to same enum) or \"C++\" \"c++\" (normalized to same enum)?",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1e09a3_51c8ab5c",
+        "filename": "rust/bindgen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-09-24T15:38:10Z",
+      "side": 1,
+      "message": "If we do the change I suggested above, these two blocks can be merged into a single std_version defaulted field.",
+      "revId": "b2b72009292dda55779ecd4cf3ed02a6fbeda599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
