@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bed61b7e_34bf3c9a",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-24T22:56:10Z",
+      "side": 1,
+      "message": "That\u0027s a brilliant idea. Thanks! Done.",
+      "parentUuid": "87c5b153_1225dae6",
+      "revId": "c2a8d71268dc64abc9f894cfa67325824207e035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6da2b880_5488dd6f",
         "filename": "android/config.go",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5dd1045c_ca1ba5be",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-24T22:56:10Z",
+      "side": 1,
+      "message": "Done. This actually was removed in the new PS because we construct Target objects before this array is created.",
+      "parentUuid": "6da2b880_5488dd6f",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 11
+      },
+      "revId": "c2a8d71268dc64abc9f894cfa67325824207e035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8984708c_b3a7c346",
         "filename": "python/python.go",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "c2a8d71268dc64abc9f894cfa67325824207e035",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2de3e69_1c7dd984",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-24T22:56:10Z",
+      "side": 1,
+      "message": "Right. Not needed. Removed.",
+      "parentUuid": "8984708c_b3a7c346",
+      "revId": "c2a8d71268dc64abc9f894cfa67325824207e035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
