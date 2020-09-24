@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b74d66a1_b511a7e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-24T15:00:48Z",
+      "side": 1,
+      "message": "Thanks for reviewing Nicolas. I did a few more experiments with local patches for on-going changes and amended the CL, PTAL.",
+      "revId": "9f87465287fe1834bc7978be13062b6cfa7fea5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
