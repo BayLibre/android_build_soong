@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bda8a44f_d24ee9ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-24T13:45:27Z",
+      "side": 1,
+      "message": "The test was split in two copies with the only difference that the second test used stubs library as a dependency, and the first test used the implementation. The second tests didn\u0027t work before the change, because Soong couldn\u0027t find the implementation (it had only the name, but no access to the module). Now that there is an extra dependency X-\u003eY for every dependency X-\u003eY.stubs, the problem goes away and the first copy of the test can be removed (the second copy covers all cases in the first copy plus the stubs case).\n\nI added the explanation to commit message.",
+      "parentUuid": "6113bbc1_dc57198a",
+      "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51981449_9336bad4",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2020-09-24T12:40:37Z",
       "side": 1,
       "message": "FYI - this assumes that the implementation library has the same name as the sdk library itself. While that is true at the moment it may not be true in future. It might be worth adding a method to SdkLibraryComponentDependency to get the implementation name of the library and call that instead. It can return the library name for now but will make it easier to switch over in future.",
+      "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "643e2b26_583d5c08",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-24T13:45:27Z",
+      "side": 1,
+      "message": "This is not difficult to add, but I thought that implementation library is what gets installed on device and used at runtime, and in that case `OptionalImplicitSdkLibrary()` should always return the name of the implementation library, because it is added to the manifest, and the manifest is used at runtime. It makes no sense to me to add one library to the manifest (the `OptionalimplicitSdkLibrary()` one), but use another library for dexpreopt (the one returned by the new method). This will cause class loader context mismatch at runtime.",
+      "parentUuid": "51981449_9336bad4",
       "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
