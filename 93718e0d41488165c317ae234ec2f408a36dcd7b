@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1134716_bdb7703b",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-09-24T19:21:03Z",
+      "side": 1,
+      "message": "Aside: Can we remove use_clang_lld property?  cs/ for `use_clang_lld: false\" gives only one result, which is just a comment.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "93718e0d41488165c317ae234ec2f408a36dcd7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
