@@ -22,6 +22,30 @@
       "revId": "93718e0d41488165c317ae234ec2f408a36dcd7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e082bf3_647b40ec",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2020-09-25T04:37:00Z",
+      "side": 1,
+      "message": "Will do it in a separate patch.",
+      "parentUuid": "a1134716_bdb7703b",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "93718e0d41488165c317ae234ec2f408a36dcd7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
