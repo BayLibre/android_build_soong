@@ -95,11 +95,8 @@ func (prebuilt *prebuiltLibraryDecorator) compilerProps() []interface{} {
 func (prebuilt *prebuiltLibraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
 	prebuilt.exportLinkDirs(android.PathsForModuleSrc(ctx, prebuilt.Properties.Link_dirs).Strings()...)
 
-	srcPath, paths := srcPathFromModuleSrcs(ctx, prebuilt.prebuiltSrcs())
-	if len(paths) > 0 {
-		ctx.PropertyErrorf("srcs", "prebuilt libraries can only have one entry in srcs (the prebuilt path)")
-	}
-	return srcPath
+	// Prebuilts are already built.
+	return prebuilt.Src(ctx)
 }
 
 func (prebuilt *prebuiltLibraryDecorator) compilerDeps(ctx DepsContext, deps Deps) Deps {
@@ -111,7 +108,7 @@ func (prebuilt *prebuiltLibraryDecorator) nativeCoverage() bool {
 	return false
 }
 
-func (prebuilt *prebuiltLibraryDecorator) prebuiltSrcs() []string {
+func (prebuilt *prebuiltLibraryDecorator) Src(ctx ModuleContext) android.Path {
 	srcs := prebuilt.Properties.Srcs
 	if prebuilt.rlib() {
 		srcs = append(srcs, prebuilt.libraryDecorator.Properties.Rlib.Srcs...)
@@ -119,6 +116,9 @@ func (prebuilt *prebuiltLibraryDecorator) prebuiltSrcs() []string {
 	if prebuilt.dylib() {
 		srcs = append(srcs, prebuilt.libraryDecorator.Properties.Dylib.Srcs...)
 	}
-
-	return srcs
+	srcPath, paths := srcPathFromModuleSrcs(ctx, srcs)
+	if len(paths) > 0 {
+		ctx.PropertyErrorf("srcs", "prebuilt libraries can only have one entry in srcs (the prebuilt path)")
+	}
+	return srcPath
 }

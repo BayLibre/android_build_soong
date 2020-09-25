@@ -97,7 +97,7 @@ func (binary *binaryDecorator) nativeCoverage() bool {
 
 func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
 	fileName := binary.getStem(ctx) + ctx.toolchain().ExecutableSuffix()
-	srcPath, _ := srcPathFromModuleSrcs(ctx, binary.baseCompiler.Properties.Srcs)
+	srcPath := binary.Src(ctx)
 	outputFile := android.PathForModuleOut(ctx, fileName)
 
 	flags.RustFlags = append(flags.RustFlags, deps.depFlags...)

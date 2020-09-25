@@ -24,8 +24,34 @@ import (
 	"android/soong/rust/config"
 )
 
+type compiler interface {
+	compilerFlags(ctx ModuleContext, flags Flags) Flags
+	compilerProps() []interface{}
+	compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path
+	compilerDeps(ctx DepsContext, deps Deps) Deps
+	crateName() string
+	Src(ctx ModuleContext) android.Path
+
+	inData() bool
+	install(ctx ModuleContext)
+	relativeInstallPath() string
+
+	nativeCoverage() bool
+
+	Disabled() bool
+	SetDisabled()
+
+	staticStd(ctx *depsContext) bool
+}
+
 func (compiler *baseCompiler) edition() string {
 	return proptools.StringDefault(compiler.Properties.Edition, config.DefaultEdition)
+}
+
+// Src returns the location of the source.
+func (compiler *baseCompiler) Src(ctx ModuleContext) android.Path {
+	srcPath, _ := srcPathFromModuleSrcs(ctx, compiler.Properties.Srcs)
+	return srcPath
 }
 
 func (compiler *baseCompiler) setNoStdlibs() {

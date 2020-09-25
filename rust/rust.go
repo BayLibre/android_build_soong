@@ -278,25 +278,6 @@ type RustLibrary struct {
 	CrateName string
 }
 
-type compiler interface {
-	compilerFlags(ctx ModuleContext, flags Flags) Flags
-	compilerProps() []interface{}
-	compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path
-	compilerDeps(ctx DepsContext, deps Deps) Deps
-	crateName() string
-
-	inData() bool
-	install(ctx ModuleContext)
-	relativeInstallPath() string
-
-	nativeCoverage() bool
-
-	Disabled() bool
-	SetDisabled()
-
-	staticStd(ctx *depsContext) bool
-}
-
 type exportedFlagsProducer interface {
 	exportedLinkDirs() []string
 	exportedDepFlags() []string
