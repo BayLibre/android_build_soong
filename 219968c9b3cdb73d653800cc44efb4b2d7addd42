@@ -16,6 +16,24 @@
       "revId": "219968c9b3cdb73d653800cc44efb4b2d7addd42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0e0e62_fadd3eb6",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-09-25T07:35:12Z",
+      "side": 1,
+      "message": "The size difference of Android-sunfish.mk before (287MB) and after (289MB) is ~2MB, and ~200KB is from HOST modules. I\u0027ll keep this change as-is for simplicity, since there doesn\u0027t seem like much performance impact.",
+      "parentUuid": "b8780178_0fa7960c",
+      "revId": "219968c9b3cdb73d653800cc44efb4b2d7addd42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
