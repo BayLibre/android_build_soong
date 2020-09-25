@@ -1,0 +1,12 @@
+Autosubmit+1: Dan Albert <danalbert@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Elliott Hughes <enh@google.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 25 Sep 2020 23:59:05 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1347983
+Project: platform/build/soong
+Branch: refs/heads/master
