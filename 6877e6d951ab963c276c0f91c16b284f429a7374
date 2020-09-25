@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f2b0e40_4f666745",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-25T19:31:26Z",
+      "side": 1,
+      "message": "This addresses a couple of the issues that were raised in my previous attempt to fix this issue.\n* java_sdk_library does the right thing out of the box.\n* it avoids the need for a separate metalava invocation to generate docs compatible stubs sources.\n* it only affects the public API stubs so minimizes the impact on build time.\n\nWhile this does reverse some of the changes made in https://r.android.com/1255866 it should not affect the performance test describe in that change (touching frameworks/base/core/java/android/view/View.java and building framework) as the framework code is not compiled by java_sdk_library.\n\nOnce this change has been approved in AOSP I need to cherry pick to rvc-dev to fix the issue with the public Javadoc and SDK. See the bug for more details.",
+      "revId": "6877e6d951ab963c276c0f91c16b284f429a7374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
