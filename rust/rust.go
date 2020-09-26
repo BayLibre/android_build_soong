@@ -1052,7 +1052,7 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		blueprint.Variation{Mutator: "link", Variation: "static"}),
 		cc.StaticDepTag(), deps.StaticLibs...)
 
-	crtVariations := append(cc.GetCrtVariations(ctx, mod), commonDepVariations...)
+	crtVariations := cc.GetCrtVariations(ctx, mod)
 	if deps.CrtBegin != "" {
 		actx.AddVariationDependencies(crtVariations, cc.CrtBeginDepTag, deps.CrtBegin)
 	}

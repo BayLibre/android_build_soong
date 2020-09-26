@@ -1548,9 +1548,10 @@ func VersionVariantAvailable(module interface {
 	CcLibraryInterface() bool
 	Shared() bool
 	Static() bool
+	UseSdk() bool
 }) bool {
 	return module.CcLibraryInterface() && (module.Shared() || module.Static()) &&
-		!module.Host() && !module.InRamdisk() && !module.InRecovery()
+		!module.Host() && !module.InRamdisk() && !module.InRecovery() && !module.UseSdk()
 }
 
 // versionSelector normalizes the versions in the Stubs.Versions property into MutatedProperties.AllStubsVersions,
