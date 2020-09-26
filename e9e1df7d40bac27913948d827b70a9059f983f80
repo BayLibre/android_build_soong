@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e9e661d_06914998",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-26T00:51:42Z",
+      "side": 1,
+      "message": "I don\u0027t think this should mix files and directories, that makes it hard for the build system to use.  For example, if we wanted to make auto_gen_push automatically be considered part of data without having to duplicate it, we wouldn\u0027t be able to do that if it was a mix of files and directories.",
+      "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b598ca42_1651520c",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-26T00:51:42Z",
+      "side": 1,
+      "message": "Can you expand on what these problems are?  I\u0027m really hesitant to put this into Soong instead of fixing it properly, because this will become a bunch of technical debt that is hard to clean up if it starts getting used in multiple places.",
+      "range": {
+        "startLine": 298,
+        "startChar": 79,
+        "endLine": 298,
+        "endChar": 145
+      },
+      "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dee7c3bb_381ccbe2",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-26T00:51:42Z",
+      "side": 1,
+      "message": "What is this restriction for?  The path.Rel() below should handle files outside the moduleDir just fine.  If it is necessary, use strings.HasPrefix.",
+      "range": {
+        "startLine": 317,
+        "startChar": 4,
+        "endLine": 317,
+        "endChar": 58
+      },
+      "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9387be4_66d5dfb0",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-26T00:51:42Z",
+      "side": 1,
+      "message": "I don\u0027t understand how push-file can\u0027t support path/to/file if you are setting an arbitrary path here.",
+      "range": {
+        "startLine": 336,
+        "startChar": 82,
+        "endLine": 336,
+        "endChar": 97
+      },
+      "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
