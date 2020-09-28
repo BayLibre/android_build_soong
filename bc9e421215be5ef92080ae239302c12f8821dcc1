@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef245259_9cfebeca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-09-28T12:27:10Z",
+      "side": 1,
+      "message": "One thing to note, this does result in the documentation that\u0027s generated for cc_defaults reflecting the descriptions in RustBindgenClangProperties. I\u0027m not sure how to avoid that (the order in the AddProperties args doesn\u0027t seem to make a difference afaict).",
+      "revId": "bc9e421215be5ef92080ae239302c12f8821dcc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
