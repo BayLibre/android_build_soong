@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f0142fea_b5aa75f8",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-28T18:18:56Z",
+      "side": 1,
+      "message": "Thanks. Got the point. Dropped all \"auto_gen_push\" related changes. Will figure out a better approach (as a separate effort).",
+      "parentUuid": "6e9e661d_06914998",
+      "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b598ca42_1651520c",
         "filename": "sh/sh_binary.go",
         "patchSetId": 11
@@ -39,6 +57,30 @@
       "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a368d730_dbe92991",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-28T18:18:56Z",
+      "side": 1,
+      "message": "I see your concerns. Dropped all \"auto_gen_push\" related changes for now.",
+      "parentUuid": "b598ca42_1651520c",
+      "range": {
+        "startLine": 298,
+        "startChar": 79,
+        "endLine": 298,
+        "endChar": 145
+      },
+      "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "252419fc_689d00c1",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-28T18:18:56Z",
+      "side": 1,
+      "message": "We restricted the auto-gen-push to items in module directory. So even this is included in the map, it wont\u0027 match anything.",
+      "parentUuid": "dee7c3bb_381ccbe2",
+      "range": {
+        "startLine": 317,
+        "startChar": 4,
+        "endLine": 317,
+        "endChar": 58
+      },
+      "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9387be4_66d5dfb0",
         "filename": "sh/sh_binary.go",
         "patchSetId": 11
@@ -85,6 +151,30 @@
       "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6c67705_6d94bbec",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-28T18:18:56Z",
+      "side": 1,
+      "message": "The \"path/to/file\" limitation (documented in the api) only affects file/folder to be pushed, it doesn\u0027t affect the destination.",
+      "parentUuid": "d9387be4_66d5dfb0",
+      "range": {
+        "startLine": 336,
+        "startChar": 82,
+        "endLine": 336,
+        "endChar": 97
+      },
+      "revId": "e9e1df7d40bac27913948d827b70a9059f983f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
