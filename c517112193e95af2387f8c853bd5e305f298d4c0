@@ -22,6 +22,30 @@
       "revId": "c517112193e95af2387f8c853bd5e305f298d4c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8db8e61_72638471",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1591737
+      },
+      "writtenOn": "2020-09-28T20:26:19Z",
+      "side": 1,
+      "message": "Something is wrong with the change, keep running into formatting issues. Recreated the change as: aosp/1441257 (will abandon this).",
+      "parentUuid": "eb246441_868d9bb1",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 9
+      },
+      "revId": "c517112193e95af2387f8c853bd5e305f298d4c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
