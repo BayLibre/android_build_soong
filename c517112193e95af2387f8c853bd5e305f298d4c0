@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb246441_868d9bb1",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-28T19:38:16Z",
+      "side": 1,
+      "message": "Run gofmt",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 9
+      },
+      "revId": "c517112193e95af2387f8c853bd5e305f298d4c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
