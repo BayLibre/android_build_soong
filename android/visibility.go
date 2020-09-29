@@ -496,22 +496,29 @@ func EffectiveVisibilityRules(ctx BaseModuleContext, module Module) []string {
 
 	rule := effectiveVisibilityRules(ctx.Config(), qualified)
 
-	// Modules are implicitly visible to other modules in the same package,
-	// without checking the visibility rules. Here we need to add that visibility
-	// explicitly.
-	if rule != nil && !rule.matches(qualified) {
-		if len(rule) == 1 {
-			if _, ok := rule[0].(privateRule); ok {
-				// If the rule is //visibility:private we can't append another
-				// visibility to it. Semantically we need to convert it to a package
-				// visibility rule for the location where the result is used, but since
-				// modules are implicitly visible within the package we get the same
-				// result without any rule at all, so just make it an empty list to be
-				// appended below.
-				rule = compositeRule{}
+	if rule == nil {
+		// The default visibility is //visibility:public so add that if nothing
+		// is specified. That ensures that snapshots will not be affected if/when
+		// the default visibility changes.
+		rule = append(rule, publicRule{})
+	} else {
+		// Modules are implicitly visible to other modules in the same package,
+		// without checking the visibility rules. Here we need to add that visibility
+		// explicitly.
+		if !rule.matches(qualified) {
+			if len(rule) == 1 {
+				if _, ok := rule[0].(privateRule); ok {
+					// If the rule is //visibility:private we can't append another
+					// visibility to it. Semantically we need to convert it to a package
+					// visibility rule for the location where the result is used, but since
+					// modules are implicitly visible within the package we get the same
+					// result without any rule at all, so just make it an empty list to be
+					// appended below.
+					rule = nil
+				}
 			}
+			rule = append(rule, packageRule{dir})
 		}
-		rule = append(rule, packageRule{dir})
 	}
 
 	return rule.Strings()
