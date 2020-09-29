@@ -51,30 +51,33 @@ func newNameResolver(config android.Config) *android.NameResolver {
 	return android.NewNameResolver(exportFilter)
 }
 
-func main() {
-	android.ReexecWithDelveMaybe()
-	flag.Parse()
-
-	// The top-level Blueprints file is passed as the first argument.
-	srcDir := filepath.Dir(flag.Arg(0))
-
+func newContext(srcDir string, configuration android.Config) *android.Context {
 	ctx := android.NewContext()
 	ctx.Register()
-
+	if !shouldPrepareBuildActions() {
+		configuration.SetStopBefore(bootstrap.StopBeforePrepareBuildActions)
+	}
+	ctx.SetNameInterface(newNameResolver(configuration))
+	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
+	return ctx
+}
+func newConfig(srcDir string) android.Config {
 	configuration, err := android.NewConfig(srcDir, bootstrap.BuildDir, bootstrap.ModuleListFile)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
 	}
+	return configuration
+}
 
-	if !shouldPrepareBuildActions() {
-		configuration.SetStopBefore(bootstrap.StopBeforePrepareBuildActions)
-	}
-
-	ctx.SetNameInterface(newNameResolver(configuration))
-
-	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
-
+func main() {
+	android.ReexecWithDelveMaybe()
+	flag.Parse()
+	// The top-level Blueprints file is passed as the first argument.
+	srcDir := filepath.Dir(flag.Arg(0))
+	var ctx *android.Context
+	var configuration android.Config
+	configuration = newConfig(srcDir)
 	extraNinjaDeps := []string{configuration.ConfigFileName, configuration.ProductVariablesFileName}
 
 	// Read the SOONG_DELVE again through configuration so that there is a dependency on the environment variable
@@ -84,9 +87,33 @@ func main() {
 		// enabled even if it completed successfully.
 		extraNinjaDeps = append(extraNinjaDeps, filepath.Join(configuration.BuildDir(), "always_rerun_for_delve"))
 	}
-
-	bootstrap.Main(ctx.Context, configuration, extraNinjaDeps...)
-
+	if configuration.BazelContext.BazelEnabled() {
+		// Bazel-enabled mode. Soong runs in two passes.
+		// First pass: Analyze the build tree, but only store all bazel commands
+		// needed to correctly evaluate the tree in the second pass.
+		// TODO(cparsons): Don't output any ninja file, as the second pass will overwrite
+		// the incorrect results from the first pass, and file I/O is expensive.
+		firstCtx := newContext(srcDir, configuration)
+		bootstrap.Main(firstCtx.Context, configuration, extraNinjaDeps...)
+		// Invoke bazel commands and save results for second pass.
+		if err := configuration.BazelContext.InvokeBazel(); err != nil {
+			fmt.Fprintf(os.Stderr, "%s", err)
+			os.Exit(1)
+		}
+		// Second pass: Full analysis, using the bazel command results. Output ninja file.
+		// TODO(cparsons): Clean up makeVarsProviders to be part of the context.
+		android.ClearMakeVarsProviders()
+		secondPassConfig, err := android.ConfigForAdditionalRun(configuration)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%s", err)
+			os.Exit(1)
+		}
+		ctx = newContext(srcDir, secondPassConfig)
+		bootstrap.Main(ctx.Context, secondPassConfig, extraNinjaDeps...)
+	} else {
+		ctx = newContext(srcDir, configuration)
+		bootstrap.Main(ctx.Context, configuration, extraNinjaDeps...)
+	}
 	if bazelOverlayDir != "" {
 		if err := createBazelOverlay(ctx, bazelOverlayDir); err != nil {
 			fmt.Fprintf(os.Stderr, "%s", err)
@@ -105,7 +132,7 @@ func main() {
 	//  to affect the command line of the primary builder.
 	if shouldPrepareBuildActions() {
 		metricsFile := filepath.Join(bootstrap.BuildDir, "soong_build_metrics.pb")
-		err = android.WriteMetrics(configuration, metricsFile)
+		err := android.WriteMetrics(configuration, metricsFile)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "error writing soong_build metrics %s: %s", metricsFile, err)
 			os.Exit(1)
