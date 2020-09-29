@@ -69,6 +69,24 @@
       "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea450767_1bdbde7c",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-29T12:38:03Z",
+      "side": 1,
+      "message": "Ok, there are several distinct parts to this:\n1. The logical name of the library - this is used in \u003cuses-library\u003e and is currently the same as the name of the java_sdk_library - there are no plans to change this.\n2. The path to the library on the device - something like /system/framework/\u003cname\u003e.jar, where \u003cname\u003e is usually the same as the logical name. There are no plans to change these.\n3. The name of the module that provides the implementation library. Currently the java_sdk_library does that but there are plans to change that to a separate module, probably called `\u003cname\u003e.impl` or something like that.\n\nIt is part 3 that you need to use here.\n\nOn a separate but related issue - which probably affects my work more than yours, if dexpreopt requires the implementation library then we will have a problem optimizing against prebuilts as prebuilts do not currently (and ideally never should) provide the implementation jar.\n\nPresumably, we already have a similar issue with prebuilt apps. Am I right in thinking that in their unbundled build they are unoptimized and they are only optimized while building the system image that contains them?",
+      "parentUuid": "643e2b26_583d5c08",
+      "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
