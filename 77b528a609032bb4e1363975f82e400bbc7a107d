@@ -87,6 +87,24 @@
       "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b65ab092_069a658f",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-29T14:25:56Z",
+      "side": 1,
+      "message": "\u003e It is part 3 that you need to use here.\n\nI see. In that case it makes sense to add a method that returns implementation module name. Although fixing dexpreopt for that case will require more work (similar to the case when a \u003cuses-library\u003e name is different from its module name).\n\nI added OptionalSdkLibraryImplementation() method in PS5.\n\nRegarding prebuilt apps: you are right, they are dexpreopted when built as part of the platform, but in unbundled builds (with nonempty TARGET_BUILD_APPS) dexpreopt is disabled. If for some reason implementation library is unavailable at build time, dexpreopt should be disabled.",
+      "parentUuid": "ea450767_1bdbde7c",
+      "revId": "77b528a609032bb4e1363975f82e400bbc7a107d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
