@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0376b7bd_5be1e069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-09-29T17:09:58Z",
+      "side": 1,
+      "message": "LGTM other wise.",
+      "revId": "08f7d8aee215c21c16ef030c2d92fbfa0e89c885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8232d4a0_e1098e6c",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-09-29T17:09:58Z",
+      "side": 1,
+      "message": "I think ctx.static() is also set for static binaries.  I\u0027ve seen `ctx.static() \u0026\u0026 !ctx.staticBinary()` used to restrict operations to just staic libraries.",
+      "range": {
+        "startLine": 72,
+        "startChar": 10,
+        "endLine": 72,
+        "endChar": 16
+      },
+      "revId": "08f7d8aee215c21c16ef030c2d92fbfa0e89c885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
