@@ -16,6 +16,7 @@ package android
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -84,6 +85,8 @@ type config struct {
 
 	// Only available on configs created by TestConfig
 	TestProductVariables *productVariables
+
+	BazelContext *BazelContext
 
 	PrimaryBuilder           string
 	ConfigFileName           string
@@ -326,7 +329,7 @@ func TestArchConfig(buildDir string, env map[string]string, bp string, fs map[st
 
 // New creates a new Config object.  The srcDir argument specifies the path to
 // the root source directory. It also loads the config file, if found.
-func NewConfig(srcDir, buildDir string, moduleListFile string) (Config, error) {
+func NewConfig(srcDir, buildDir string, moduleListFile string, bazelCtx *BazelContext) (Config, error) {
 	// Make a config with default options
 	config := &config{
 		ConfigFileName:           filepath.Join(buildDir, configFileName),
@@ -340,6 +343,8 @@ func NewConfig(srcDir, buildDir string, moduleListFile string) (Config, error) {
 
 		moduleListFile: moduleListFile,
 		fs:             pathtools.NewOsFs(absSrcDir),
+
+		BazelContext: bazelCtx,
 	}
 
 	config.deviceConfig = &deviceConfig{
@@ -565,6 +570,50 @@ func (c *config) Getenv(key string) string {
 		c.envDeps[key] = val
 	}
 	return val
+}
+
+func (c *config) BazelEnabled() bool {
+	return c.Getenv("USE_BAZEL") == "1"
+}
+
+// A struct containing environment variables required for Bazel integration.
+type BazelEnvVars struct {
+	homeDir      string
+	bazelPath    string
+	outputBase   string
+	workspaceDir string
+}
+
+// Returns a tuple containing the environment variables required for Bazel
+// integration, or an error if any of these environment variables are unset.
+func (c *config) BazelEnvVars() (BazelEnvVars, error) {
+	bazelEnvVars := BazelEnvVars{}
+	missingEnvVars := []string{}
+	if len(c.Getenv("BAZEL_HOME")) > 1 {
+		bazelEnvVars.homeDir = c.Getenv("BAZEL_HOME")
+	} else {
+		missingEnvVars = append(missingEnvVars, "BAZEL_HOME")
+	}
+	if len(c.Getenv("BAZEL_PATH")) > 1 {
+		bazelEnvVars.bazelPath = c.Getenv("BAZEL_PATH")
+	} else {
+		missingEnvVars = append(missingEnvVars, "BAZEL_PATH")
+	}
+	if len(c.Getenv("BAZEL_OUTPUT_BASE")) > 1 {
+		bazelEnvVars.outputBase = c.Getenv("BAZEL_OUTPUT_BASE")
+	} else {
+		missingEnvVars = append(missingEnvVars, "BAZEL_OUTPUT_BASE")
+	}
+	if len(c.Getenv("BAZEL_WORKSPACE")) > 1 {
+		bazelEnvVars.workspaceDir = c.Getenv("BAZEL_WORKSPACE")
+	} else {
+		missingEnvVars = append(missingEnvVars, "BAZEL_WORKSPACE")
+	}
+	if len(missingEnvVars) > 0 {
+		return bazelEnvVars, errors.New(fmt.Sprintf("missing required env vars to use bazel: %s", missingEnvVars))
+	} else {
+		return bazelEnvVars, nil
+	}
 }
 
 func (c *config) GetenvWithDefault(key string, defaultValue string) string {
