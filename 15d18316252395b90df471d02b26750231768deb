@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e377378_284f7c82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-09-29T07:46:37Z",
+      "side": 1,
+      "message": "FYI, other than also patching aosp/1441774, you\u0027ll need to symlink $TOP/WORKSPACE.bazel to build/soong/bazel/master.WORKSPACE.bazel \n\nThen source build/envsetup.sh, source build/soong/bazel/bazelenv.sh, then `m libc`.",
+      "revId": "15d18316252395b90df471d02b26750231768deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
