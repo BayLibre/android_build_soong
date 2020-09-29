@@ -128,7 +128,19 @@ var _ PathContext = MakeVarsContext(nil)
 type MakeVarsProvider func(ctx MakeVarsContext)
 
 func RegisterMakeVarsProvider(pctx PackageContext, provider MakeVarsProvider) {
-	makeVarsProviders = append(makeVarsProviders, makeVarsProvider{pctx, provider})
+	makeVarsProviders = append(makeVarsProviders, makeVarsProvider{true, pctx, provider})
+}
+
+// Clear all providers from the in-memory list that were not added as part of an
+// init() function.
+func ClearMakeVarsProviders() {
+	newMakeVarsProviders := []makeVarsProvider{}
+	for _, provider := range makeVarsProviders {
+		if provider.singleton {
+			newMakeVarsProviders = append(newMakeVarsProviders, provider)
+		}
+	}
+	makeVarsProviders = newMakeVarsProviders
 }
 
 // SingletonMakeVarsProvider is a Singleton with an extra method to provide extra values to be exported to Make.
@@ -142,7 +154,7 @@ type SingletonMakeVarsProvider interface {
 // registerSingletonMakeVarsProvider adds a singleton that implements SingletonMakeVarsProvider to the list of
 // MakeVarsProviders to run.
 func registerSingletonMakeVarsProvider(singleton SingletonMakeVarsProvider) {
-	makeVarsProviders = append(makeVarsProviders, makeVarsProvider{pctx, SingletonmakeVarsProviderAdapter(singleton)})
+	makeVarsProviders = append(makeVarsProviders, makeVarsProvider{false, pctx, SingletonmakeVarsProviderAdapter(singleton)})
 }
 
 // SingletonmakeVarsProviderAdapter converts a SingletonMakeVarsProvider to a MakeVarsProvider.
@@ -167,8 +179,9 @@ func makeVarsSingletonFunc() Singleton {
 type makeVarsSingleton struct{}
 
 type makeVarsProvider struct {
-	pctx PackageContext
-	call MakeVarsProvider
+	singleton bool // True if this provider is a singleton registered in an init() function.
+	pctx      PackageContext
+	call      MakeVarsProvider
 }
 
 var makeVarsProviders []makeVarsProvider
