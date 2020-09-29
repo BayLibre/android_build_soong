@@ -128,7 +128,13 @@ var _ PathContext = MakeVarsContext(nil)
 type MakeVarsProvider func(ctx MakeVarsContext)
 
 func RegisterMakeVarsProvider(pctx PackageContext, provider MakeVarsProvider) {
-	makeVarsProviders = append(makeVarsProviders, makeVarsProvider{pctx, provider})
+	makeVarsInitProviders = append(makeVarsInitProviders, makeVarsProvider{pctx, provider})
+}
+
+// Clear all providers from the in-memory list that were not added as part of an
+// init() function.
+func ClearMakeVarsProviders() {
+	singletonMakeVarsProviders = []makeVarsProvider{}
 }
 
 // SingletonMakeVarsProvider is a Singleton with an extra method to provide extra values to be exported to Make.
@@ -142,7 +148,8 @@ type SingletonMakeVarsProvider interface {
 // registerSingletonMakeVarsProvider adds a singleton that implements SingletonMakeVarsProvider to the list of
 // MakeVarsProviders to run.
 func registerSingletonMakeVarsProvider(singleton SingletonMakeVarsProvider) {
-	makeVarsProviders = append(makeVarsProviders, makeVarsProvider{pctx, SingletonmakeVarsProviderAdapter(singleton)})
+	singletonMakeVarsProviders = append(singletonMakeVarsProviders,
+		makeVarsProvider{pctx, SingletonmakeVarsProviderAdapter(singleton)})
 }
 
 // SingletonmakeVarsProviderAdapter converts a SingletonMakeVarsProvider to a MakeVarsProvider.
@@ -171,7 +178,11 @@ type makeVarsProvider struct {
 	call MakeVarsProvider
 }
 
-var makeVarsProviders []makeVarsProvider
+// Collection of makevars providers that are registered in init() methods.
+var makeVarsInitProviders []makeVarsProvider
+
+// Collection of singleton makevars providers that are not registered as part of init() methods.
+var singletonMakeVarsProviders []makeVarsProvider
 
 type makeVarsContext struct {
 	SingletonContext
@@ -219,7 +230,20 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	var vars []makeVarsVariable
 	var dists []dist
 	var phonies []phony
-	for _, provider := range makeVarsProviders {
+	for _, provider := range append(makeVarsInitProviders) {
+		mctx := &makeVarsContext{
+			SingletonContext: ctx,
+			pctx:             provider.pctx,
+		}
+
+		provider.call(mctx)
+
+		vars = append(vars, mctx.vars...)
+		phonies = append(phonies, mctx.phonies...)
+		dists = append(dists, mctx.dists...)
+	}
+
+	for _, provider := range append(singletonMakeVarsProviders) {
 		mctx := &makeVarsContext{
 			SingletonContext: ctx,
 			pctx:             provider.pctx,
