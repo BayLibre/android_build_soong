@@ -37,11 +37,6 @@ def parse_args(args):
     help='specify classpath on target for a given SDK version or "any" version')
   return parser.parse_args(args)
 
-# The hidl.manager shared library has a dependency on hidl.base. We manually
-# add that information to the class loader context if we see those libraries.
-HIDL_MANAGER = 'android.hidl.manager-V1.0-java'
-HIDL_BASE    = 'android.hidl.base-V1.0-java'
-
 # Special keyword that means that the classpath should be added to class loader
 # context regardless of the target SDK version.
 any_sdk = 'any'
@@ -54,11 +49,7 @@ def construct_context(versioned_classpaths, target_sdk):
   context = []
   for [sdk, classpath] in versioned_classpaths:
     if sdk == any_sdk or compare_version_gt(sdk, target_sdk):
-      for jar in classpath.split(':'):
-        pcl = 'PCL[%s]' % jar
-        if HIDL_MANAGER in jar:
-          pcl += '{PCL[%s]}' % jar.replace(HIDL_MANAGER, HIDL_BASE, 1)
-        context.append(pcl)
+      context.append(classpath)
   return context
 
 def construct_contexts(args):
