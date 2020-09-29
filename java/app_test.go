@@ -2830,12 +2830,12 @@ func TestUsesLibraries(t *testing.T) {
 
 	// Test that all present libraries are preopted, including implicit SDK dependencies
 	cmd = app.Rule("dexpreopt").RuleParams.Command
-	w := `--target-classpath-for-sdk any` +
-		` /system/framework/foo.jar` +
-		`:/system/framework/quuz.jar` +
-		`:/system/framework/qux.jar` +
-		`:/system/framework/runtime-library.jar` +
-		`:/system/framework/bar.jar`
+	w := `--target-classpath-for-sdk any ` +
+		`PCL[/system/framework/foo.jar]#` +
+		`PCL[/system/framework/bar.jar]#` +
+		`PCL[/system/framework/qux.jar]#` +
+		`PCL[/system/framework/quuz.jar]#` +
+		`PCL[/system/framework/runtime-library.jar]`
 	if !strings.Contains(cmd, w) {
 		t.Errorf("wanted %q in %q", w, cmd)
 	}
@@ -2846,7 +2846,7 @@ func TestUsesLibraries(t *testing.T) {
 	}
 
 	cmd = prebuilt.Rule("dexpreopt").RuleParams.Command
-	if w := `--target-classpath-for-sdk any /system/framework/foo.jar:/system/framework/bar.jar`; !strings.Contains(cmd, w) {
+	if w := `--target-classpath-for-sdk any PCL[/system/framework/foo.jar]#PCL[/system/framework/bar.jar]`; !strings.Contains(cmd, w) {
 		t.Errorf("wanted %q in %q", w, cmd)
 	}
 }

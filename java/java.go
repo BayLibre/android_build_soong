@@ -416,8 +416,8 @@ type Module struct {
 	// manifest file to use instead of properties.Manifest
 	overrideManifest android.OptionalPath
 
-	// map of SDK libs exported by this java module to their build and install paths
-	exportedSdkLibs dexpreopt.LibraryPaths
+	// map of SDK version to class loader context
+	exportedSdkLibs dexpreopt.ClassLoaderContextMap
 
 	// list of plugins that this java module is exporting
 	exportedPluginJars android.Paths
@@ -507,7 +507,7 @@ type Dependency interface {
 	ImplementationJars() android.Paths
 	ResourceJars() android.Paths
 	AidlIncludeDirs() android.Paths
-	ExportedSdkLibs() dexpreopt.LibraryPaths
+	ExportedSdkLibs() dexpreopt.ClassLoaderContextMap
 	ExportedPlugins() (android.Paths, []string)
 	SrcJarArgs() ([]string, android.Paths)
 	BaseModuleName() string
@@ -570,6 +570,9 @@ var (
 	certificateTag        = dependencyTag{name: "certificate"}
 	instrumentationForTag = dependencyTag{name: "instrumentation_for"}
 	usesLibTag            = dependencyTag{name: "uses-library"}
+	usesLibCompat28Tag    = dependencyTag{name: "uses-library-compat-28"}
+	usesLibCompat29Tag    = dependencyTag{name: "uses-library-compat-29"}
+	usesLibCompat30Tag    = dependencyTag{name: "uses-library-compat-30"}
 	extraLintCheckTag     = dependencyTag{name: "extra-lint-check"}
 )
 
@@ -1001,7 +1004,8 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			case libTag:
 				deps.classpath = append(deps.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
 				// names of sdk libs that are directly depended are exported
-				j.exportedSdkLibs.MaybeAddLibraryPath(ctx, dep.OptionalImplicitSdkLibrary(), dep.DexJarBuildPath(), dep.DexJarInstallPath())
+				j.exportedSdkLibs.MaybeAddContext(ctx, dep.OptionalImplicitSdkLibrary(), true, /* shared */
+					dep.DexJarBuildPath(), dep.DexJarInstallPath())
 			case staticLibTag:
 				ctx.ModuleErrorf("dependency on java_sdk_library %q can only be in libs", otherName)
 			}
@@ -1012,7 +1016,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			case libTag, instrumentationForTag:
 				deps.classpath = append(deps.classpath, dep.HeaderJars()...)
 				// sdk lib names from dependencies are re-exported
-				j.exportedSdkLibs.AddLibraryPaths(dep.ExportedSdkLibs())
+				j.exportedSdkLibs.AddContextMap(dep.ExportedSdkLibs(), otherName)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs()...)
 				pluginJars, pluginClasses := dep.ExportedPlugins()
 				addPlugins(&deps, pluginJars, pluginClasses...)
@@ -1024,7 +1028,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				deps.staticHeaderJars = append(deps.staticHeaderJars, dep.HeaderJars()...)
 				deps.staticResourceJars = append(deps.staticResourceJars, dep.ResourceJars()...)
 				// sdk lib names from dependencies are re-exported
-				j.exportedSdkLibs.AddLibraryPaths(dep.ExportedSdkLibs())
+				j.exportedSdkLibs.AddContextMap(dep.ExportedSdkLibs(), otherName)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs()...)
 				pluginJars, pluginClasses := dep.ExportedPlugins()
 				addPlugins(&deps, pluginJars, pluginClasses...)
@@ -1830,7 +1834,7 @@ func (j *Module) AidlIncludeDirs() android.Paths {
 	return j.exportAidlIncludeDirs
 }
 
-func (j *Module) ExportedSdkLibs() dexpreopt.LibraryPaths {
+func (j *Module) ExportedSdkLibs() dexpreopt.ClassLoaderContextMap {
 	return j.exportedSdkLibs
 }
 
@@ -1964,7 +1968,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.dexProperties.Uncompress_dex = proptools.BoolPtr(shouldUncompressDex(ctx, &j.dexpreopter))
 	}
 	j.dexpreopter.uncompressedDex = *j.dexProperties.Uncompress_dex
-	j.exportedSdkLibs = make(dexpreopt.LibraryPaths)
+	j.exportedSdkLibs = make(dexpreopt.ClassLoaderContextMap)
 	j.compile(ctx, nil)
 
 	// Collect the module directory for IDE info in java/jdeps.go.
@@ -1984,11 +1988,13 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// add the name of that java_sdk_library to the exported sdk libs to make sure
 	// that, if necessary, a <uses-library> element for that java_sdk_library is
 	// added to the Android manifest.
-	j.exportedSdkLibs.MaybeAddLibraryPath(ctx, j.OptionalImplicitSdkLibrary(), j.DexJarBuildPath(), j.DexJarInstallPath())
+	j.exportedSdkLibs.MaybeAddContext(ctx, j.OptionalImplicitSdkLibrary(), true, /* shared */
+		j.DexJarBuildPath(), j.DexJarInstallPath())
 
 	// A non-SDK library may provide a <uses-library> (the name may be different from the module name).
 	if lib := proptools.String(j.usesLibraryProperties.Provides_uses_lib); lib != "" {
-		j.exportedSdkLibs.AddLibraryPath(ctx, lib, j.DexJarBuildPath(), j.DexJarInstallPath())
+		j.exportedSdkLibs.AddContext(ctx, lib, true, /* shared */
+			j.DexJarBuildPath(), j.DexJarInstallPath())
 	}
 
 	j.distFiles = j.GenerateTaggedDistFiles(ctx)
@@ -2560,7 +2566,7 @@ type Import struct {
 	dexJarFile android.Path
 
 	combinedClasspathFile android.Path
-	exportedSdkLibs       dexpreopt.LibraryPaths
+	exportedSdkLibs       dexpreopt.ClassLoaderContextMap
 	exportAidlIncludeDirs android.Paths
 }
 
@@ -2629,7 +2635,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		TransformJetifier(ctx, outputFile, inputFile)
 	}
 	j.combinedClasspathFile = outputFile
-	j.exportedSdkLibs = make(dexpreopt.LibraryPaths)
+	j.exportedSdkLibs = make(dexpreopt.ClassLoaderContextMap)
 
 	var flags javaBuilderFlags
 
@@ -2643,7 +2649,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case libTag, staticLibTag:
 				flags.classpath = append(flags.classpath, dep.HeaderJars()...)
 				// sdk lib names from dependencies are re-exported
-				j.exportedSdkLibs.AddLibraryPaths(dep.ExportedSdkLibs())
+				j.exportedSdkLibs.AddContextMap(dep.ExportedSdkLibs(), otherName)
 			case bootClasspathTag:
 				flags.bootClasspath = append(flags.bootClasspath, dep.HeaderJars()...)
 			}
@@ -2652,7 +2658,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case libTag:
 				flags.classpath = append(flags.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
 				// names of sdk libs that are directly depended are exported
-				j.exportedSdkLibs.AddLibraryPath(ctx, otherName, dep.DexJarBuildPath(), dep.DexJarInstallPath())
+				j.exportedSdkLibs.AddContext(ctx, otherName, isSharedLibrary(module),
+					dep.DexJarBuildPath(), dep.DexJarInstallPath())
 			}
 		}
 	})
@@ -2667,7 +2674,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// add the name of that java_sdk_library to the exported sdk libs to make sure
 	// that, if necessary, a <uses-library> element for that java_sdk_library is
 	// added to the Android manifest.
-	j.exportedSdkLibs.MaybeAddLibraryPath(ctx, j.OptionalImplicitSdkLibrary(), outputFile, installFile)
+	j.exportedSdkLibs.MaybeAddContext(ctx, j.OptionalImplicitSdkLibrary(), true, /* shared */
+		outputFile, installFile)
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
 
@@ -2738,7 +2746,7 @@ func (j *Import) AidlIncludeDirs() android.Paths {
 	return j.exportAidlIncludeDirs
 }
 
-func (j *Import) ExportedSdkLibs() dexpreopt.LibraryPaths {
+func (j *Import) ExportedSdkLibs() dexpreopt.ClassLoaderContextMap {
 	return j.exportedSdkLibs
 }
 

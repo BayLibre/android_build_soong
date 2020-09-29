@@ -600,7 +600,7 @@ func (a *AndroidApp) installPath(ctx android.ModuleContext) android.InstallPath 
 	return android.PathForModuleInstall(ctx, installDir, a.installApkName+".apk")
 }
 
-func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext, sdkLibs dexpreopt.LibraryPaths) android.Path {
+func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	a.dexpreopter.installPath = a.installPath(ctx)
 	if a.dexProperties.Uncompress_dex == nil {
 		// If the value was not force-set by the user, use reasonable default based on the module.
@@ -610,10 +610,9 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext, sdkLibs dexpreop
 	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
 	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
 	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
-	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
-	a.dexpreopter.libraryPaths.AddLibraryPaths(sdkLibs)
+	a.dexpreopter.classLoaderContexts = a.exportedSdkLibs
 	a.dexpreopter.manifestFile = a.mergedManifestFile
-	a.exportedSdkLibs = make(dexpreopt.LibraryPaths)
+	a.exportedSdkLibs = make(dexpreopt.ClassLoaderContextMap)
 
 	if ctx.ModuleName() != "framework-res" {
 		a.Module.compile(ctx, a.aaptSrcJar)
@@ -779,11 +778,13 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		a.aapt.noticeFile = a.noticeOutputs.HtmlGzOutput
 	}
 
+	a.exportedSdkLibs = a.usesLibrary.usesLibraryPaths(ctx)
+
 	// Process all building blocks, from AAPT to certificates.
 	a.aaptBuildActions(ctx)
 
 	// Add implicit SDK libraries to <uses-library> list.
-	for _, usesLib := range android.SortedStringKeys(a.aapt.sdkLibraries) {
+	for _, usesLib := range a.aapt.sdkLibraries.UsesLibs() {
 		a.usesLibrary.addLib(usesLib, inList(usesLib, dexpreopt.OptionalCompatUsesLibs))
 	}
 
@@ -800,7 +801,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	a.linter.resources = a.aapt.resourceFiles
 	a.linter.buildModuleReportZip = ctx.Config().UnbundledBuildApps()
 
-	dexJarFile := a.dexBuildActions(ctx, a.aapt.sdkLibraries)
+	dexJarFile := a.dexBuildActions(ctx)
 
 	jniLibs, certificateDeps := collectAppDeps(ctx, a, a.shouldEmbedJnis(ctx), !Bool(a.appProperties.Jni_uses_platform_apis))
 	jniJarFile := a.jniBuildActions(jniLibs, ctx)
@@ -1523,7 +1524,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
 	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
 	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
-	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
+	a.dexpreopter.classLoaderContexts = a.usesLibrary.usesLibraryPaths(ctx)
 
 	if a.usesLibrary.enforceUsesLibraries() {
 		srcApk = a.usesLibrary.verifyUsesLibrariesAPK(ctx, srcApk)
@@ -1950,10 +1951,19 @@ func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, hasFrameworkLibs 
 		if hasFrameworkLibs {
 			// Dexpreopt needs paths to the dex jars of these libraries in order to construct
 			// class loader context for dex2oat. Add them as a dependency with a special tag.
-			ctx.AddVariationDependencies(nil, usesLibTag, dexpreopt.CompatUsesLibs...)
-			ctx.AddVariationDependencies(nil, usesLibTag, dexpreopt.OptionalCompatUsesLibs...)
+			ctx.AddVariationDependencies(nil, usesLibCompat29Tag, dexpreopt.CompatUsesLibs29...)
+			ctx.AddVariationDependencies(nil, usesLibCompat28Tag, dexpreopt.OptionalCompatUsesLibs28...)
+			ctx.AddVariationDependencies(nil, usesLibCompat30Tag, dexpreopt.OptionalCompatUsesLibs30...)
+		}
+		if ctx.ModuleName() == dexpreopt.AndroidHidlManager {
+			ctx.AddVariationDependencies(nil, usesLibTag, dexpreopt.AndroidHidlBase)
 		}
 	}
+}
+
+func isSharedLibrary(m android.Module) bool {
+	lib, ok := m.(*SdkLibrary)
+	return ok && lib.sharedLibrary()
 }
 
 // presentOptionalUsesLibs returns optional_uses_libs after filtering out MissingUsesLibraries, which don't exist in the
@@ -1965,18 +1975,31 @@ func (u *usesLibrary) presentOptionalUsesLibs(ctx android.BaseModuleContext) []s
 
 // usesLibraryPaths returns a map of module names of shared library dependencies to the paths
 // to their dex jars on host and on device.
-func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.LibraryPaths {
-	usesLibPaths := make(dexpreopt.LibraryPaths)
+func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.ClassLoaderContextMap {
+	usesLibPaths := make(dexpreopt.ClassLoaderContextMap)
 
 	if !ctx.Config().UnbundledBuild() {
-		ctx.VisitDirectDepsWithTag(usesLibTag, func(m android.Module) {
+		f := func(m android.Module, sdkVer int) {
 			dep := ctx.OtherModuleName(m)
 			if lib, ok := m.(Dependency); ok {
-				usesLibPaths.AddLibraryPath(ctx, dep, lib.DexJarBuildPath(), lib.DexJarInstallPath())
+				usesLibPaths.AddConditionalContext(ctx, sdkVer, dep, isSharedLibrary(m),
+					lib.DexJarBuildPath(), lib.DexJarInstallPath(), lib.ExportedSdkLibs())
 			} else if ctx.Config().AllowMissingDependencies() {
 				ctx.AddMissingDependencies([]string{dep})
 			} else {
 				ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must be a java library", dep)
+			}
+		}
+		ctx.VisitDirectDeps(func(m android.Module) {
+			switch ctx.OtherModuleDependencyTag(m) {
+			case usesLibTag:
+				f(m, dexpreopt.AnySdkVersion)
+			case usesLibCompat28Tag:
+				f(m, 28)
+			case usesLibCompat29Tag:
+				f(m, 29)
+			case usesLibCompat30Tag:
+				f(m, 30)
 			}
 		})
 	}

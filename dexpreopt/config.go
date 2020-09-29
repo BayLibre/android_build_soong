@@ -100,36 +100,52 @@ type GlobalSoongConfig struct {
 	ConstructContext android.Path
 }
 
-// These libs are added as optional dependencies (<uses-library> with android:required set to false).
-// This is because they haven't existed prior to certain SDK version, but classes in them were in
-// bootclasspath jars, etc. So making them hard dependencies (android:required=true) would prevent
-// apps from being installed to such legacy devices.
-var OptionalCompatUsesLibs = []string{
-	"org.apache.http.legacy",
-	"android.test.base",
-	"android.test.mock",
-}
+// These libs are added as <uses-library> dependencies for apps if the targetSdkVersion in the
+// app manifest is less than the specified version. This is needed because these libraries haven't
+// existed prior to certain SDK version, but classes in them were in bootclasspath jars, etc.
+// Some of the compatibility libraries are optional (their <uses-library> tag has "required=false"),
+// so that if this library is missing this in not a build or run-time error.
+var OrgApacheHttpLegacy = "org.apache.http.legacy"
+var AndroidTestBase = "android.test.base"
+var AndroidTestMock = "android.test.mock"
+var AndroidHidlBase = "android.hidl.base-V1.0-java"
+var AndroidHidlManager = "android.hidl.manager-V1.0-java"
 
-var CompatUsesLibs = []string{
-	"android.hidl.base-V1.0-java",
-	"android.hidl.manager-V1.0-java",
+var OptionalCompatUsesLibs28 = []string{
+	OrgApacheHttpLegacy,
 }
+var OptionalCompatUsesLibs30 = []string{
+	AndroidTestBase,
+	AndroidTestMock,
+}
+var CompatUsesLibs29 = []string{
+	AndroidHidlBase,
+	AndroidHidlManager,
+}
+var OptionalCompatUsesLibs = append(android.CopyOf(OptionalCompatUsesLibs28), OptionalCompatUsesLibs30...)
+var CompatUsesLibs = android.CopyOf(CompatUsesLibs29)
 
 const UnknownInstallLibraryPath = "error"
 
-// LibraryPath contains paths to the library DEX jar on host and on device.
-type LibraryPath struct {
-	Host   android.Path
-	Device string
+// ClassLoaderContext is a tree that contains libraries and subcontexts for their dependencies.
+// For each library there is a build path (on host), install path (on device) and a shared flag.
+type ClassLoaderContext struct {
+	Name        string
+	Host        android.Path
+	Device      string
+	Subcontexts []*ClassLoaderContext
+	Shared      bool
 }
 
-// LibraryPaths is a map from library name to on-host and on-device paths to its DEX jar.
-type LibraryPaths map[string]*LibraryPath
+// ClassLoaderContextMap is a map from SDK version to a class loader context.
+// There is a special entry with key AnySdkVersion that stores unconditional class loader context.
+// Other entries store conditional contexts that should be added for some apps that have
+// targetSdkVersion in the manifest lower than the key SDK version.
+type ClassLoaderContextMap map[int][]*ClassLoaderContext
 
-// Add a new library path to the map, unless a path for this library already exists.
-// If necessary, check that the build and install paths exist.
-func (libPaths LibraryPaths) addLibraryPath(ctx android.ModuleContext, lib string,
-	hostPath, installPath android.Path, strict bool) {
+// Add class loader context for the given library to the map entry for the given SDK version.
+func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleContext, sdkVer int, lib string,
+	shared bool, hostPath, installPath android.Path, strict bool, subcontexts []*ClassLoaderContext) {
 
 	// If missing dependencies are allowed, the build shouldn't fail when a <uses-library> is
 	// not found. However, this is likely to result is disabling dexpreopt, as it won't be
@@ -149,43 +165,182 @@ func (libPaths LibraryPaths) addLibraryPath(ctx android.ModuleContext, lib strin
 		}
 	}
 
-	// Add a library only if the build and install path to it is known.
-	if _, present := libPaths[lib]; !present {
-		var devicePath string
-		if installPath != nil {
-			devicePath = android.InstallPathToOnDevicePath(ctx, installPath.(android.InstallPath))
-		} else {
-			// For some stub libraries the only known thing is the name of their implementation
-			// library, but the library itself is unavailable (missing or part of a prebuilt). In
-			// such cases we still need to add the library to <uses-library> tags in the manifest,
-			// but we cannot use if for dexpreopt.
-			devicePath = UnknownInstallLibraryPath
+	// If the library with this name is already present as one of the unconditional top-level
+	// components, do not re-add it.
+	for _, clc := range clcMap[sdkVer] {
+		if clc.Name == lib {
+			return
 		}
-		libPaths[lib] = &LibraryPath{hostPath, devicePath}
 	}
+
+	var devicePath string
+	if installPath != nil {
+		devicePath = android.InstallPathToOnDevicePath(ctx, installPath.(android.InstallPath))
+	} else {
+		// For some stub libraries the only known thing is the name of their implementation
+		// library, but the library itself is unavailable (missing or part of a prebuilt). In
+		// such cases we still need to add the library to <uses-library> tags in the manifest,
+		// but we cannot use if for dexpreopt.
+		devicePath = UnknownInstallLibraryPath
+	}
+
+	clcMap[sdkVer] = append(clcMap[sdkVer], &ClassLoaderContext{
+		Name:        lib,
+		Host:        hostPath,
+		Device:      devicePath,
+		Subcontexts: subcontexts,
+		Shared:      shared,
+	})
 }
 
-// Add a new library path to the map. Enforce checks that the library paths exist.
-func (libPaths LibraryPaths) AddLibraryPath(ctx android.ModuleContext, lib string, hostPath, installPath android.Path) {
-	libPaths.addLibraryPath(ctx, lib, hostPath, installPath, true)
+// Add class loader context.
+func (clcMap ClassLoaderContextMap) AddContext(ctx android.ModuleContext, lib string,
+	shared bool, hostPath, installPath android.Path) {
+
+	clcMap.addContext(ctx, AnySdkVersion, lib, shared, hostPath, installPath, true, nil)
 }
 
-// Add a new library path to the map, if the library exists (name is not nil).
-// Don't enforce checks that the library paths exist. Some libraries may be missing from the build,
-// but their names still need to be added to <uses-library> tags in the manifest.
-func (libPaths LibraryPaths) MaybeAddLibraryPath(ctx android.ModuleContext, lib *string, hostPath, installPath android.Path) {
+// Add class loader context, if the library exists.
+func (clcMap ClassLoaderContextMap) MaybeAddContext(ctx android.ModuleContext, lib *string,
+	shared bool, hostPath, installPath android.Path) {
+
 	if lib != nil {
-		libPaths.addLibraryPath(ctx, *lib, hostPath, installPath, false)
+		clcMap.addContext(ctx, AnySdkVersion, *lib, shared, hostPath, installPath, false, nil)
 	}
 }
 
-// Add library paths from the second map to the first map (do not override existing entries).
-func (libPaths LibraryPaths) AddLibraryPaths(otherPaths LibraryPaths) {
-	for lib, path := range otherPaths {
-		if _, present := libPaths[lib]; !present {
-			libPaths[lib] = path
+// Add conditional class loader context for the given SDK version.
+func (clcMap ClassLoaderContextMap) AddConditionalContext(ctx android.ModuleContext, sdkVer int,
+	lib string, shared bool, hostPath, installPath android.Path, nestedClcMap ClassLoaderContextMap) {
+
+	clcMap.addContext(ctx, sdkVer, lib, shared, hostPath, installPath, true, nestedClcMap[sdkVer])
+}
+
+// Merge the other class loader context map into this one, do not override existing entries.
+func (clcMap ClassLoaderContextMap) AddContextMap(otherClcMap ClassLoaderContextMap, implicitRootLib string) {
+	if otherClcMap == nil {
+		return
+	}
+
+	// If the implicit root of the merged map is already present as one of top-level subtrees, do
+	// not merge it second time.
+	for _, clc := range clcMap[AnySdkVersion] {
+		if clc.Name == implicitRootLib {
+			return
 		}
 	}
+
+	for sdkVer, otherClcs := range otherClcMap {
+		for _, otherClc := range otherClcs {
+			alreadyHave := false
+			for _, clc := range clcMap[sdkVer] {
+				if clc.Name == otherClc.Name {
+					alreadyHave = true
+					break
+				}
+			}
+			if !alreadyHave {
+				clcMap[sdkVer] = append(clcMap[sdkVer], otherClc)
+			}
+		}
+	}
+}
+
+// List of libraries in the unconditional class loader context, exlucding dependencies of shared libraries.
+func (clcMap ClassLoaderContextMap) UsesLibs() (ulibs []string) {
+	if clcMap != nil {
+		ulibs = usesLibsRec(clcMap[AnySdkVersion])
+		ulibs = android.FirstUniqueStrings(ulibs)
+	}
+	return ulibs
+}
+
+func usesLibsRec(clcs []*ClassLoaderContext) (ulibs []string) {
+	for _, clc := range clcs {
+		ulibs = append(ulibs, clc.Name)
+		if !clc.Shared {
+			ulibs = append(ulibs, usesLibsRec(clc.Subcontexts)...)
+		}
+	}
+	return ulibs
+}
+
+// Apply a number of special-case fixes for compatibility libraries (mirroring what PackageManager
+// does when it constructs class loader context on device). Return true if all build/install paths
+// are valid, otherwise return false.
+func (clcMap ClassLoaderContextMap) validateAndFixup(module *ModuleConfig) bool {
+	ulibs := clcMap.UsesLibs()
+	clcs30 := clcMap[30]
+
+	// android.test.base should be added only if the targetSdkVersion of the app is < 30
+	// AND it is not already in the unconditional class loader context.
+	for i, clc := range clcs30 {
+		if clc.Name == AndroidTestBase && android.InList(AndroidTestBase, ulibs) {
+			clcMap[30] = append(clcs30[:i], clcs30[i+1:]...)
+		}
+	}
+
+	// android.test.mock should be added only if the targetSdkVersion of the app is < 30
+	// AND either it is not in the unconditional class loader context or android.test.runner is in
+	// the unconditional class loader context.
+	for i, clc := range clcs30 {
+		if clc.Name == AndroidTestMock &&
+			(android.InList(AndroidTestMock, ulibs) || !android.InList("android.test.runner", ulibs)) {
+			clcMap[30] = append(clcs30[:i], clcs30[i+1:]...)
+		}
+	}
+
+	for _, clcs := range clcMap {
+		for _, clc := range clcs {
+			if clc.Host == nil || clc.Device == UnknownInstallLibraryPath {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+// Print class loader context as a string (in the form accepted by dex2oat).
+// Perform a depth-first preorder traversal of the class loader context tree for each SDK version.
+// Return the resulting string and a slice of on-host build paths to all library dependencies.
+func (clcMap ClassLoaderContextMap) ConvertToCommand() (clcStr string, paths android.Paths) {
+	for _, sdkVer := range android.SortedIntKeys(clcMap) { // determinisitc traversal order
+		sdkVerStr := fmt.Sprintf("%d", sdkVer)
+		if sdkVer == AnySdkVersion {
+			sdkVerStr = "any" // a special keyword that means any SDK version
+		}
+		hostClc, targetClc, ps := printClassLoaderContext(clcMap[sdkVer])
+		if ps != nil {
+			clcStr += fmt.Sprintf(" --host-classpath-for-sdk %s %s", sdkVerStr, hostClc)
+			clcStr += fmt.Sprintf(" --target-classpath-for-sdk %s %s", sdkVerStr, targetClc)
+		}
+		paths = append(paths, ps...)
+	}
+	return clcStr, android.FirstUniquePaths(paths)
+}
+
+func printClassLoaderContext(clcs []*ClassLoaderContext) (string, string, android.Paths) {
+	var paths android.Paths
+	var clcsHost, clcsTarget []string
+
+	for _, clc := range clcs {
+		subClcHost, subClcTarget, subPaths := printClassLoaderContext(clc.Subcontexts)
+		if subPaths != nil {
+			subClcHost = "{" + subClcHost + "}"
+			subClcTarget = "{" + subClcTarget + "}"
+		}
+
+		clcsHost = append(clcsHost, "PCL["+clc.Host.String()+"]"+subClcHost)
+		clcsTarget = append(clcsTarget, "PCL["+clc.Device+"]"+subClcTarget)
+
+		paths = append(paths, clc.Host)
+		paths = append(paths, subPaths...)
+	}
+
+	clcHost := strings.Join(clcsHost, "#")
+	clcTarget := strings.Join(clcsTarget, "#")
+
+	return clcHost, clcTarget, paths
 }
 
 type ModuleConfig struct {
@@ -202,10 +357,8 @@ type ModuleConfig struct {
 	ProfileIsTextListing bool
 	ProfileBootListing   android.OptionalPath
 
-	EnforceUsesLibraries  bool
-	OptionalUsesLibraries []string
-	UsesLibraries         []string
-	LibraryPaths          LibraryPaths
+	EnforceUsesLibraries bool
+	ClassLoaderContexts  ClassLoaderContextMap
 
 	Archs                   []android.ArchType
 	DexPreoptImages         []android.Path
@@ -352,12 +505,11 @@ func SetTestGlobalConfig(config android.Config, globalConfig *GlobalConfig) {
 // from Make to read the module dexpreopt.config written in the Make config
 // stage.
 func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, error) {
-	type jsonLibraryPath struct {
+	type jsonClc struct {
 		Host   string
 		Device string
 	}
-
-	type jsonLibraryPaths map[string]jsonLibraryPath
+	type jsonClcMap map[string]jsonClc
 
 	type ModuleJSONConfig struct {
 		*ModuleConfig
@@ -368,20 +520,22 @@ func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, err
 		DexPath                     string
 		ManifestPath                string
 		ProfileClassListing         string
-		LibraryPaths                jsonLibraryPaths
+		ClassLoaderContexts         jsonClcMap
 		DexPreoptImages             []string
 		DexPreoptImageLocations     []string
 		PreoptBootClassPathDexFiles []string
 	}
 
-	// convert JSON map of library paths to LibraryPaths
-	constructLibraryPaths := func(ctx android.PathContext, paths jsonLibraryPaths) LibraryPaths {
-		m := LibraryPaths{}
-		for lib, path := range paths {
-			m[lib] = &LibraryPath{
-				constructPath(ctx, path.Host),
-				path.Device,
-			}
+	// convert JSON class loader context map to ClassLoaderContextMap
+	constructClcMap := func(ctx android.PathContext, jm jsonClcMap) ClassLoaderContextMap {
+		m := make(ClassLoaderContextMap)
+		for lib, path := range jm {
+			m[AnySdkVersion] = append(m[AnySdkVersion], &ClassLoaderContext{
+				Name:        lib,
+				Host:        constructPath(ctx, path.Host),
+				Device:      path.Device,
+				Subcontexts: nil,
+			})
 		}
 		return m
 	}
@@ -398,7 +552,7 @@ func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, err
 	config.ModuleConfig.DexPath = constructPath(ctx, config.DexPath)
 	config.ModuleConfig.ManifestPath = constructPath(ctx, config.ManifestPath)
 	config.ModuleConfig.ProfileClassListing = android.OptionalPathForPath(constructPath(ctx, config.ProfileClassListing))
-	config.ModuleConfig.LibraryPaths = constructLibraryPaths(ctx, config.LibraryPaths)
+	config.ModuleConfig.ClassLoaderContexts = constructClcMap(ctx, config.ClassLoaderContexts)
 	config.ModuleConfig.DexPreoptImages = constructPaths(ctx, config.DexPreoptImages)
 	config.ModuleConfig.DexPreoptImageLocations = config.DexPreoptImageLocations
 	config.ModuleConfig.PreoptBootClassPathDexFiles = constructPaths(ctx, config.PreoptBootClassPathDexFiles)
