@@ -17,6 +17,7 @@ package android
 import (
 	"fmt"
 	"regexp"
+	"sort"
 	"strings"
 	"sync"
 
@@ -483,13 +484,58 @@ func packageDefaultVisibility(config Config, moduleId qualifiedModuleName) compo
 	}
 }
 
+type VisibilityRuleSet interface {
+	Extend(extra []string)
+
+	Strings() []string
+}
+
+type visibilityRuleSet struct {
+	rules []string
+}
+
+var _ VisibilityRuleSet = (*visibilityRuleSet)(nil)
+
+func (v *visibilityRuleSet) Extend(extra []string) {
+	if len(v.rules) == 1 {
+		switch v.rules[0] {
+		case "//visibility:public":
+			// No point in adding rules to something which is already public.
+			return
+		case "//visibility:private":
+			// Adding any rules to private means it is no longer private so the
+			// private can be discarded.
+			v.rules = nil
+		}
+	}
+
+	if len(extra) == 1 {
+		switch extra[0] {
+		case "//visibility:public":
+			// Public overrides everything so just discard any existing rules.
+			v.rules = extra
+			return
+		case "//visibility:private":
+			// Extending rule with private changes nothing.
+			return
+		}
+	}
+
+	v.rules = FirstUniqueStrings(append(v.rules, extra...))
+	sort.Strings(v.rules)
+}
+
+func (v *visibilityRuleSet) Strings() []string {
+	return v.rules
+}
+
 // Get the effective visibility rules, i.e. the actual rules that affect the visibility of the
 // property irrespective of where they are defined.
 //
 // Includes visibility rules specified by package default_visibility and/or on defaults.
 // Short hand forms, e.g. //:__subpackages__ are replaced with their full form, e.g.
 // //package/containing/rule:__subpackages__.
-func EffectiveVisibilityRules(ctx BaseModuleContext, module Module) []string {
+func EffectiveVisibilityRules(ctx BaseModuleContext, module Module) VisibilityRuleSet {
 	moduleName := ctx.OtherModuleName(module)
 	dir := ctx.OtherModuleDir(module)
 	qualified := qualifiedModuleName{dir, moduleName}
@@ -521,7 +567,7 @@ func EffectiveVisibilityRules(ctx BaseModuleContext, module Module) []string {
 		}
 	}
 
-	return rule.Strings()
+	return &visibilityRuleSet{rule.Strings()}
 }
 
 // Clear the default visibility properties so they can be replaced.

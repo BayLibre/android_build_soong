@@ -75,6 +75,10 @@ type sdkProperties struct {
 
 	// True if this is a module_exports (or module_exports_snapshot) module type.
 	Module_exports bool `blueprint:"mutated"`
+
+	// The additional visibility to add to the prebuilt modules to allow them to
+	// reference each other.
+	Prebuilt_visibility []string
 }
 
 // Contains information about the sdk properties that list sdk members, e.g.
@@ -211,6 +215,9 @@ func newSdkModule(moduleExports bool) *sdk {
 	// properties for the member type specific list properties.
 	s.dynamicMemberTypeListProperties = s.dynamicSdkMemberTypes.createMemberListProperties()
 	s.AddProperties(&s.properties, s.dynamicMemberTypeListProperties)
+
+	// Make sure that the prebuilt visibility property is verified for errors.
+	android.AddVisibilityProperty(s, "prebuilt_visibility", &s.properties.Prebuilt_visibility)
 	android.InitCommonOSAndroidMultiTargetsArchModule(s, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(s)
 	android.AddLoadHook(s, func(ctx android.LoadHookContext) {
