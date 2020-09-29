@@ -1,0 +1,9 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Paul Duffin <paulduffin@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Martin Stjernholm <mast@google.com>
+Submitted-at: Tue, 29 Sep 2020 13:59:03 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1441333
+Project: platform/build/soong
+Branch: refs/heads/master
