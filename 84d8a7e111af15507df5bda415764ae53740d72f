@@ -16,6 +16,24 @@
       "revId": "84d8a7e111af15507df5bda415764ae53740d72f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8065275c_e3d01ee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-09-29T00:09:40Z",
+      "side": 1,
+      "message": "We have an Android.bp file (libnativehelper) which is using \u0027S\u0027 as the version number (and I expect more given that the framework team is against of using 31 before S officially gets a number). Without this change, the Soong-only build fails.",
+      "parentUuid": "8396d6d8_4f612fa5",
+      "revId": "84d8a7e111af15507df5bda415764ae53740d72f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
