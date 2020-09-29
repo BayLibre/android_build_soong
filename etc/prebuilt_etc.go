@@ -214,6 +214,11 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		Output: p.outputFilePath,
 		Input:  p.sourceFilePath,
 	})
+
+	ctx.InstallFile(p.installDirPath, p.outputFilePath.Base(), p.outputFilePath)
+	for _, sl := range p.properties.Symlinks {
+		ctx.InstallSymlink(p.installDirPath, sl, p.installDirPath.Join(ctx, p.outputFilePath.Base()))
+	}
 }
 
 func (p *PrebuiltEtc) AndroidMkEntries() []android.AndroidMkEntries {
