@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a93ffa23_90279e8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1315724
+      },
+      "writtenOn": "2020-09-29T06:20:42Z",
+      "side": 1,
+      "message": "Verify failed:\n\ninternal error: panic in VisitAllModules(android/soong/android.(*bootstrapdepsGeneratorSingleton).GenerateBuildActions.func1) for module module \"aidl-soong-rules\" variant \"linux_glibc_x86_64\" in GenerateBuildActions for singleton bootstrap_deps_generator\npanic in VisitAllModules(github.com/google/blueprint.(*singletonContext).VisitAllModules.func2) for module \"aidl-soong-rules\" variant \"linux_glibc_x86_64\"\nruntime error: invalid memory address or nil pointer dereference",
+      "revId": "4951c312a6f196af6705b7830c67320168582120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
