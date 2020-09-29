@@ -16,6 +16,24 @@
       "revId": "4951c312a6f196af6705b7830c67320168582120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c3dfae1_6182084e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-09-29T12:48:00Z",
+      "side": 1,
+      "message": "Fix it. It\u0027s because Build team change the content of func DynamicDependencies. I change the original design and try not to use the existent func.",
+      "parentUuid": "a93ffa23_90279e8a",
+      "revId": "4951c312a6f196af6705b7830c67320168582120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
