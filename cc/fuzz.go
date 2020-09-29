@@ -38,6 +38,8 @@ type FuzzConfig struct {
 	// Specify whether this fuzz target was submitted by a researcher. Defaults
 	// to false.
 	Researcher_submitted *bool `json:"researcher_submitted,omitempty"`
+	// Specify who should be recognized for CVEs in the Android Securiy Bulletin.
+	Attibution []string `json:"attribution,omitempty"`
 }
 
 func (f *FuzzConfig) String() string {
