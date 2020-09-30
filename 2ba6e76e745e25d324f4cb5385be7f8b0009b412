@@ -16,6 +16,24 @@
       "revId": "2ba6e76e745e25d324f4cb5385be7f8b0009b412",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73bb60f7_40f2f947",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-09-30T00:37:19Z",
+      "side": 1,
+      "message": "It turns out we already have this implemented at https://cs.android.com/android/platform/superproject/+/master:build/soong/zip/zip.go;l\u003d253-292;drc\u003d053fca10c935b50cf803abdcff991ea574f2a2fc,  Sharing this code is a little tricky though, because the zip package can\u0027t import the android package or anything that depends on the android package.  I can move it to blueprint/pathtools where both zip and cc could use it.",
+      "parentUuid": "e1f799ba_fe19fc51",
+      "revId": "2ba6e76e745e25d324f4cb5385be7f8b0009b412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
