@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b24dab42_2768bba8",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-30T22:14:11Z",
+      "side": 1,
+      "message": "This is where defaults-to-public is implemented, if I\u0027m not mistaken. Please add a comment here to point out that EffectiveVisibilityRules needs updating too if that changes.",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 16
+      },
+      "revId": "d13738447a26b486cc8076d699342767ad7935ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
