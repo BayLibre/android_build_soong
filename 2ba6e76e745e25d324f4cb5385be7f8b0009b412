@@ -34,6 +34,24 @@
       "revId": "2ba6e76e745e25d324f4cb5385be7f8b0009b412",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0ec171_8a43c0d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2020-09-30T00:39:23Z",
+      "side": 1,
+      "message": "SGTM. I\u0027ll take a look at that tomorrow.",
+      "parentUuid": "73bb60f7_40f2f947",
+      "revId": "2ba6e76e745e25d324f4cb5385be7f8b0009b412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
