@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e653513b_c9fc46ef",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-09-30T18:25:28Z",
+      "side": 1,
+      "message": "Unfortunately that would stop a little too early. We only make the determination that we\u0027ll need Bazel in the GenerateAndroidBuildActions method, and this doesn\u0027t get called if we use StopBeforePrepareBuildActions.\n\nMaybe there\u0027s some extra wiring we can do here to stop before ninja write, but that would require some tricky wiring in blueprint(3rd party repo)",
+      "parentUuid": "80b26e54_22d3a5b2",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 74
+      },
+      "revId": "83eff7e0d7695f5d6c2b99c2cebfa04abb2b7d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50cc3c79_09a0b74c",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-30T13:29:35Z",
       "side": 1,
       "message": "IIUC, this is where we\u0027d generate the BUILD files for the transitive closure of modules marked with the bazel_module prop (e.g. the genrules)",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 41
+      },
+      "revId": "83eff7e0d7695f5d6c2b99c2cebfa04abb2b7d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ca25f46_4585cdf7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-09-30T18:25:28Z",
+      "side": 1,
+      "message": "No, this would be a few lines above, right before InvokeBazel (or as part of InvokeBazel), as that call requires the BUILD files.",
+      "parentUuid": "50cc3c79_09a0b74c",
       "range": {
         "startLine": 110,
         "startChar": 2,
