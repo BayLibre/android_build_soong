@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea02e67e_f178aa5f",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-30T22:39:58Z",
+      "side": 1,
+      "message": "This might be surprising behaviour - a user might expect it to override other more liberal visibilities. Can\u0027t it be an error instead?",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 9
+      },
+      "revId": "340cffedd250d0576016748eda650bb484aa82da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8152b72_baf96ec6",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-30T22:39:58Z",
+      "side": 1,
+      "message": "It\u0027s worth pointing out how //visibility:private behaves: If it\u0027s in the source module it\u0027s reasonable that it\u0027s ignored. If it\u0027s here I think it\u0027s best to make it an error, but otherwise that should be explained too.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "340cffedd250d0576016748eda650bb484aa82da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906b6898_7a64ba78",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-09-30T22:39:58Z",
+      "side": 1,
+      "message": "Please add a test that\n\n  prebuilt_visibility: [\n    \"//foo\",\n    \"//visibility:private\",\n  ],\n\nfails.",
+      "revId": "340cffedd250d0576016748eda650bb484aa82da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
