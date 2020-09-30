@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80b26e54_22d3a5b2",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-09-30T13:29:35Z",
+      "side": 1,
+      "message": "I think you can do something here with configuration.SetStopBefore and bootstrap.StopBeforePrepareBuildActions.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 74
+      },
+      "revId": "83eff7e0d7695f5d6c2b99c2cebfa04abb2b7d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50cc3c79_09a0b74c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-09-30T13:29:35Z",
+      "side": 1,
+      "message": "IIUC, this is where we\u0027d generate the BUILD files for the transitive closure of modules marked with the bazel_module prop (e.g. the genrules)",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 41
+      },
+      "revId": "83eff7e0d7695f5d6c2b99c2cebfa04abb2b7d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
