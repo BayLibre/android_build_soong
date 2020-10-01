@@ -22,6 +22,30 @@
       "revId": "d13738447a26b486cc8076d699342767ad7935ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45a54227_0e5b7d7b",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-01T18:13:02Z",
+      "side": 1,
+      "message": "I think I can do better than that. If I get effectiveVisibilityRules() to return public instead of nil then I can remove the duplicate logic that treats nil as public both here and in EffectiveVisibilityRules().",
+      "parentUuid": "b24dab42_2768bba8",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 16
+      },
+      "revId": "d13738447a26b486cc8076d699342767ad7935ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
