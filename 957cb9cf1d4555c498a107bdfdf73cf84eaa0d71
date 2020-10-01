@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e617611_f48dded9",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-01T18:18:48Z",
+      "side": 1,
+      "message": "There was a recent discussion in b/169266636 that we should be moving to \"-fdebug-compilation-dir .\" instead.  Would that fix the issue you\u0027re seeing, or would we need both?",
+      "revId": "957cb9cf1d4555c498a107bdfdf73cf84eaa0d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
