@@ -16,6 +16,24 @@
       "revId": "bc9e421215be5ef92080ae239302c12f8821dcc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8c9177f_34acf221",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-01T16:41:44Z",
+      "side": 1,
+      "message": "It\u0027s probably in alphabetical order with last one wins.  Can you try prefixing yours new struct with AAA?",
+      "parentUuid": "ef245259_9cfebeca",
+      "revId": "bc9e421215be5ef92080ae239302c12f8821dcc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
