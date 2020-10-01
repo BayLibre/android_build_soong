@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b655ab5d_20eef8c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-01T01:06:44Z",
+      "side": 1,
+      "message": "PTAL! I\u0027ve done a lot of refactoring to introduce genrule_test.go, which uses a mock bazel handler.",
+      "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
