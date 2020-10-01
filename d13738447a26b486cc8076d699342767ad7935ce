@@ -46,6 +46,30 @@
       "revId": "d13738447a26b486cc8076d699342767ad7935ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d46eaac4_1424eb59",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-01T20:40:05Z",
+      "side": 1,
+      "message": "Yep, that is better. Thx.",
+      "parentUuid": "45a54227_0e5b7d7b",
+      "range": {
+        "startLine": 444,
+        "startChar": 5,
+        "endLine": 444,
+        "endChar": 16
+      },
+      "revId": "d13738447a26b486cc8076d699342767ad7935ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
