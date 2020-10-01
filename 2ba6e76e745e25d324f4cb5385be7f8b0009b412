@@ -70,6 +70,24 @@
       "revId": "2ba6e76e745e25d324f4cb5385be7f8b0009b412",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aa80235_ee9d2bc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-01T00:14:18Z",
+      "side": 1,
+      "message": "I get  [\"test\" \"test \\\\test test\"], which is actually mostly correct.  Single quotes don\u0027t support escapes, so the \\ is literal, the \u0027 ends the quoted section, and the next 4 characters are concatenated.  The last \u0027 starts a new quoted section, still concatenated with the previous one, and the space and last test are all concatenated.  The only thing it\u0027s doing wrong-ish is not erroring on an unterminated single quote.",
+      "parentUuid": "67c0a8c5_405ab863",
+      "revId": "2ba6e76e745e25d324f4cb5385be7f8b0009b412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
