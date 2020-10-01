@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c3ef467_40e7c72e",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-01T18:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea02e67e_f178aa5f",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 9
+      },
+      "revId": "340cffedd250d0576016748eda650bb484aa82da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8152b72_baf96ec6",
         "filename": "sdk/sdk.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "342c36e2_062ff45b",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-01T18:12:44Z",
+      "side": 1,
+      "message": "Agreed. Will update documentation and make adding //visibility:private an error.",
+      "parentUuid": "a8152b72_baf96ec6",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "340cffedd250d0576016748eda650bb484aa82da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "906b6898_7a64ba78",
         "filename": "sdk/sdk.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "340cffedd250d0576016748eda650bb484aa82da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430dccba_d69df95b",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-01T18:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "906b6898_7a64ba78",
+      "revId": "340cffedd250d0576016748eda650bb484aa82da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
