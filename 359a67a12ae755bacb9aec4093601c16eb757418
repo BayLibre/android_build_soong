@@ -16,6 +16,63 @@
       "revId": "359a67a12ae755bacb9aec4093601c16eb757418",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c264b98_aa11be0a",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-01T20:50:53Z",
+      "side": 1,
+      "message": "This comment looks stale.",
+      "range": {
+        "startLine": 524,
+        "startChar": 6,
+        "endLine": 524,
+        "endChar": 50
+      },
+      "revId": "359a67a12ae755bacb9aec4093601c16eb757418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e2846b3_93b6738c",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-01T20:50:53Z",
+      "side": 1,
+      "message": "Nit: Maybe return after this as the comparisons below would just be noise.",
+      "revId": "359a67a12ae755bacb9aec4093601c16eb757418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33748749_1c64c21c",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-01T20:50:53Z",
+      "side": 1,
+      "message": "I think it\u0027s also worth spelling out that any member with //visibility:private won\u0027t stay private.",
+      "revId": "359a67a12ae755bacb9aec4093601c16eb757418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
