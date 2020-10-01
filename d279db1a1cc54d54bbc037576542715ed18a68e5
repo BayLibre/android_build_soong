@@ -16,6 +16,24 @@
       "revId": "d279db1a1cc54d54bbc037576542715ed18a68e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d8266e2_7b00bb30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-01T08:40:18Z",
+      "side": 1,
+      "message": "and https://github.com/google/kati/pull/209, https://android-review.googlesource.com/c/platform/external/ninja/+/1432871\n\n(marking as unresolved, until those prebuilts and source files are updated)",
+      "parentUuid": "0a4c283b_c8d89d8f",
+      "revId": "d279db1a1cc54d54bbc037576542715ed18a68e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
