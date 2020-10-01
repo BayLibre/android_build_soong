@@ -16,6 +16,24 @@
       "revId": "957cb9cf1d4555c498a107bdfdf73cf84eaa0d71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d016d26_accf743b",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-10-01T18:42:42Z",
+      "side": 1,
+      "message": "Upon experimentation, I found that __FILE__ expands to whatever path, relative or absolute, was passed to the compiler.  LLVM (or it could be CMake in general) uses absolute paths during build and we need `-fmacro-prefix-map` or `-ffile-prefix-map`.  `-fdebug-compilation-dir .` doesn\u0027t help in this aspect.\n\nPlatform build only uses relative paths (including for `-I`) so I think `-fmacro-prefix-map` is unnecessary.  `-fdebug-compilation-dir` does the right job for the RBE use case, so +1 to doing that if necessary.",
+      "parentUuid": "5e617611_f48dded9",
+      "revId": "957cb9cf1d4555c498a107bdfdf73cf84eaa0d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
