@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec484d31_7c9f4f08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-10-02T16:20:23Z",
+      "side": 1,
+      "message": "Nit: binary",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "bf047a50d57ef71404d50554a2f20c12ae148648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fee72deb_0061ca99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-10-02T16:20:23Z",
+      "side": 1,
+      "message": "Nit: static_executable",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "bf047a50d57ef71404d50554a2f20c12ae148648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ed42d6f_2ec4119c",
+        "filename": "rust/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-10-02T16:20:23Z",
+      "side": 1,
+      "message": "This is where we\u0027d swap to a static-pie crt if it\u0027s there. This isn\u0027t a change needed for this CL, just marking it in case it\u0027s possible later.",
+      "revId": "bf047a50d57ef71404d50554a2f20c12ae148648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a467de6c_2a70ea83",
+        "filename": "rust/binary_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-10-02T16:20:23Z",
+      "side": 1,
+      "message": "Can we add a check that AndroidMkSharedLibs is empty here? That seems the more important check.",
+      "revId": "bf047a50d57ef71404d50554a2f20c12ae148648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
