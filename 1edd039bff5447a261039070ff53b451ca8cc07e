@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa600d21_f03902bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-02T20:30:55Z",
+      "side": 1,
+      "message": "I assume you tested it by building the relevant tests. \u003d)",
+      "revId": "1edd039bff5447a261039070ff53b451ca8cc07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
