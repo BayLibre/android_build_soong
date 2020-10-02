@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "0c05270a_6c674613",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-02T10:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c264b98_aa11be0a",
+      "range": {
+        "startLine": 524,
+        "startChar": 6,
+        "endLine": 524,
+        "endChar": 50
+      },
+      "revId": "359a67a12ae755bacb9aec4093601c16eb757418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e2846b3_93b6738c",
         "filename": "android/visibility_test.go",
         "patchSetId": 2
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "3808bd6b_f9846f04",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-02T10:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e2846b3_93b6738c",
+      "revId": "359a67a12ae755bacb9aec4093601c16eb757418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33748749_1c64c21c",
         "filename": "sdk/sdk.go",
         "patchSetId": 2
@@ -73,6 +115,24 @@
       "revId": "359a67a12ae755bacb9aec4093601c16eb757418",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c686eda_fcc9c9e2",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-02T10:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33748749_1c64c21c",
+      "revId": "359a67a12ae755bacb9aec4093601c16eb757418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
