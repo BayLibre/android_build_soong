@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "c8be3f61_10861402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-02T20:51:49Z",
+      "side": 1,
+      "message": "Have resolved this. Sorry about that. PTAL",
+      "parentUuid": "8bd0f929_c888ed32",
+      "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7995454_c06d4be0",
         "filename": "genrule/genrule.go",
         "patchSetId": 5
@@ -68,6 +86,24 @@
       "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee57ef98_313b189d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-02T20:51:49Z",
+      "side": 1,
+      "message": "These were because of blank line removals, then gofmt insisted. Sorry about that. PTAL",
+      "parentUuid": "87a34427_88265937",
+      "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +151,30 @@
       "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77544dcf_fc2702ae",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-02T20:51:49Z",
+      "side": 1,
+      "message": "Ah, this was only post-gofmt because of the newline being removed.",
+      "parentUuid": "357ce039_77a4249d",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

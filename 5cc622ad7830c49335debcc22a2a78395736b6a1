@@ -16,6 +16,24 @@
       "revId": "5cc622ad7830c49335debcc22a2a78395736b6a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fca01a2_fc8a1a4f",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-02T20:51:49Z",
+      "side": 0,
+      "message": "I really don\u0027t know, I thought it might have been gofmt, but I can\u0027t reproduce the issue anymore. Maybe something with my IDE?\n\nAnyways, PTAL",
+      "parentUuid": "41d06603_9785f6ec",
+      "revId": "5cc622ad7830c49335debcc22a2a78395736b6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
