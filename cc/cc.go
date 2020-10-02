@@ -740,9 +740,6 @@ func (c *Module) StubsVersions() []string {
 		if library, ok := c.linker.(*libraryDecorator); ok {
 			return library.Properties.Stubs.Versions
 		}
-		if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
-			return library.Properties.Stubs.Versions
-		}
 	}
 	panic(fmt.Errorf("StubsVersions called on non-library module: %q", c.BaseModuleName()))
 }
@@ -750,9 +747,6 @@ func (c *Module) StubsVersions() []string {
 func (c *Module) CcLibrary() bool {
 	if c.linker != nil {
 		if _, ok := c.linker.(*libraryDecorator); ok {
-			return true
-		}
-		if _, ok := c.linker.(*prebuiltLibraryLinker); ok {
 			return true
 		}
 	}
@@ -780,14 +774,6 @@ func (c *Module) SetBuildStubs() {
 			c.Properties.PreventInstall = true
 			return
 		}
-		if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
-			library.MutatedProperties.BuildStubs = true
-			c.Properties.HideFromMake = true
-			c.sanitize = nil
-			c.stl = nil
-			c.Properties.PreventInstall = true
-			return
-		}
 		if _, ok := c.linker.(*llndkStubDecorator); ok {
 			c.Properties.HideFromMake = true
 			return
@@ -801,19 +787,12 @@ func (c *Module) BuildStubs() bool {
 		if library, ok := c.linker.(*libraryDecorator); ok {
 			return library.buildStubs()
 		}
-		if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
-			return library.buildStubs()
-		}
 	}
 	panic(fmt.Errorf("BuildStubs called on non-library module: %q", c.BaseModuleName()))
 }
 
 func (c *Module) SetAllStubsVersions(versions []string) {
 	if library, ok := c.linker.(*libraryDecorator); ok {
-		library.MutatedProperties.AllStubsVersions = versions
-		return
-	}
-	if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
 		library.MutatedProperties.AllStubsVersions = versions
 		return
 	}
@@ -825,9 +804,6 @@ func (c *Module) SetAllStubsVersions(versions []string) {
 
 func (c *Module) AllStubsVersions() []string {
 	if library, ok := c.linker.(*libraryDecorator); ok {
-		return library.MutatedProperties.AllStubsVersions
-	}
-	if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
 		return library.MutatedProperties.AllStubsVersions
 	}
 	if llndk, ok := c.linker.(*llndkStubDecorator); ok {
@@ -842,10 +818,6 @@ func (c *Module) SetStubsVersion(version string) {
 			library.MutatedProperties.StubsVersion = version
 			return
 		}
-		if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
-			library.MutatedProperties.StubsVersion = version
-			return
-		}
 		if llndk, ok := c.linker.(*llndkStubDecorator); ok {
 			llndk.libraryDecorator.MutatedProperties.StubsVersion = version
 			return
@@ -857,9 +829,6 @@ func (c *Module) SetStubsVersion(version string) {
 func (c *Module) StubsVersion() string {
 	if c.linker != nil {
 		if library, ok := c.linker.(*libraryDecorator); ok {
-			return library.MutatedProperties.StubsVersion
-		}
-		if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
 			return library.MutatedProperties.StubsVersion
 		}
 		if llndk, ok := c.linker.(*llndkStubDecorator); ok {
@@ -1103,8 +1072,6 @@ func (c *Module) getVndkExtendsModuleName() string {
 
 func (c *Module) IsStubs() bool {
 	if library, ok := c.linker.(*libraryDecorator); ok {
-		return library.buildStubs()
-	} else if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
 		return library.buildStubs()
 	} else if _, ok := c.linker.(*llndkStubDecorator); ok {
 		return true
@@ -1959,11 +1926,6 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	buildStubs := false
 	if c.linker != nil {
 		if library, ok := c.linker.(*libraryDecorator); ok {
-			if library.buildStubs() {
-				buildStubs = true
-			}
-		}
-		if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
 			if library.buildStubs() {
 				buildStubs = true
 			}
