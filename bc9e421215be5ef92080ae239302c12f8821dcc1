@@ -34,6 +34,23 @@
       "revId": "bc9e421215be5ef92080ae239302c12f8821dcc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e64d28_7ca410d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-10-02T17:31:08Z",
+      "side": 1,
+      "message": "So clearing my out directory and regenerating the docs, this CL is actually pulling the definitions correctly from cc.\n\nNot sure why I wasn\u0027t seeing that before; might just have been that the docs weren\u0027t being rebuilt while I was experimenting with getting the doc definition correct.",
+      "revId": "bc9e421215be5ef92080ae239302c12f8821dcc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
