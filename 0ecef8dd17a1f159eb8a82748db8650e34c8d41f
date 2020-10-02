@@ -16,6 +16,63 @@
       "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd0f929_c888ed32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-02T20:17:08Z",
+      "side": 1,
+      "message": "Something seems to have deleted every blank line in some of the files you modified, which makes this change pretty unreviewable.",
+      "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7995454_c06d4be0",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-02T20:17:08Z",
+      "side": 1,
+      "message": "Keep these split up, stdlib first, then blueprint, then android.  I assume the reordering was caused by removing the blank lines between the sections.",
+      "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77cf1f9c_48dc3c9d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-02T20:17:08Z",
+      "side": 1,
+      "message": "Run gofmt",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "0ecef8dd17a1f159eb8a82748db8650e34c8d41f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

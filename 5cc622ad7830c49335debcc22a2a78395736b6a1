@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41d06603_9785f6ec",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-02T20:17:08Z",
+      "side": 0,
+      "message": "Why all these blank line removals?",
+      "revId": "5cc622ad7830c49335debcc22a2a78395736b6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
