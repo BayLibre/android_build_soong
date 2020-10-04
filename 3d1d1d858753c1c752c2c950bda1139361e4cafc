@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cd49d80_4eac8bef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-04T22:52:13Z",
+      "side": 1,
+      "message": "According to https://android-review.googlesource.com/c/platform/build/+/363693, it looks like we don\u0027t support this on purpose.",
+      "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
