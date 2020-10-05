@@ -1,0 +1,8 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Bypass-Presubmit+1: Siarhei Vishniakou <svv@google.com>
+Build-Cop-Override+1: Siarhei Vishniakou <svv@google.com>
+Submitted-by: Tom Cherry <tomcherry@google.com>
+Submitted-at: Mon, 05 Oct 2020 19:26:15 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1449380
+Project: platform/build/soong
+Branch: refs/heads/master
