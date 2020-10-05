@@ -1948,8 +1948,13 @@ func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, hasFrameworkLibs 
 		if hasFrameworkLibs {
 			// Dexpreopt needs paths to the dex jars of these libraries in order to construct
 			// class loader context for dex2oat. Add them as a dependency with a special tag.
-			ctx.AddVariationDependencies(nil, usesLibTag, dexpreopt.CompatUsesLibs...)
-			ctx.AddVariationDependencies(nil, usesLibTag, dexpreopt.OptionalCompatUsesLibs...)
+			ctx.AddVariationDependencies(nil, usesLibCompat29Tag, dexpreopt.CompatUsesLibs29...)
+			ctx.AddVariationDependencies(nil, usesLibCompat28Tag, dexpreopt.OptionalCompatUsesLibs28...)
+			ctx.AddVariationDependencies(nil, usesLibCompat30Tag, dexpreopt.OptionalCompatUsesLibs30...)
+		}
+		// The hidl.manager shared library has a dependency on hidl.base.
+		if ctx.ModuleName() == dexpreopt.AndroidHidlManager {
+			ctx.AddVariationDependencies(nil, usesLibTag, dexpreopt.AndroidHidlBase)
 		}
 	}
 }
@@ -1967,7 +1972,7 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.Libr
 	usesLibPaths := make(dexpreopt.LibraryPaths)
 
 	if !ctx.Config().UnbundledBuild() {
-		ctx.VisitDirectDepsWithTag(usesLibTag, func(m android.Module) {
+		f := func(m android.Module, sdkVer int) {
 			dep := ctx.OtherModuleName(m)
 			if lib, ok := m.(Dependency); ok {
 				usesLibPaths.AddLibraryPath(ctx, dep, lib.DexJarBuildPath(), lib.DexJarInstallPath())
@@ -1975,6 +1980,18 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.Libr
 				ctx.AddMissingDependencies([]string{dep})
 			} else {
 				ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must be a java library", dep)
+			}
+		}
+		ctx.VisitDirectDeps(func(m android.Module) {
+			switch ctx.OtherModuleDependencyTag(m) {
+			case usesLibTag:
+				f(m, dexpreopt.AnySdkVersion)
+			case usesLibCompat28Tag:
+				f(m, 28)
+			case usesLibCompat29Tag:
+				f(m, 29)
+			case usesLibCompat30Tag:
+				f(m, 30)
 			}
 		})
 	}
