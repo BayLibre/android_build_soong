@@ -16,6 +16,23 @@
       "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b10558c_76d7c018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-05T19:53:19Z",
+      "side": 1,
+      "message": "Do you have a use case that would need this?  We\u0027ve avoided it due to the high chance of causing confusing problems if a module exports unreasonable cflags.",
+      "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
