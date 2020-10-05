@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "0a99168e_6f32f7cf",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Yep. I\u0027m quite surprised there aren\u0027t presubmit checks for this...",
+      "parentUuid": "125529e1_3f37fdf1",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60a0ac40_9834235a",
         "filename": "android/bazel_handler.go",
         "patchSetId": 7
@@ -62,6 +86,30 @@
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c5dcb0_01b847a7",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "That doesn\u0027t work (seems to think that returning m.AllFiles[label] directly is a single value)\n\nIs there a go feature to do this in inline that I\u0027m not aware of?",
+      "parentUuid": "60a0ac40_9834235a",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "f888ffc2_bc23402e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Except this function has two modes, \"queue cquery\" and \"pull cquery result\" -- the ambiguity is purposeful. Changing the name to \"queue cquery\" would be misleading if the result is already available.",
+      "parentUuid": "053a3a02_2027f40f",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 34
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4da05fa6_017be307",
         "filename": "android/bazel_handler.go",
         "patchSetId": 7
@@ -108,6 +180,30 @@
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927a03cd_29ec1752",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Unnecessary at this time, but good to be aware of. I\u0027ve added this as a TODO.",
+      "parentUuid": "4da05fa6_017be307",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 66
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +253,54 @@
     },
     {
       "key": {
+        "uuid": "23d311f6_bbb4e90b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Honest question: is this truly more-accepted style? It means we need to field-declare cqueryOutput as well, because :\u003d can\u0027t be after an already-declared var.\n\nImplicitly-declared typed variables seem like a nice feature to have, and I wanted to use it for brevity...",
+      "parentUuid": "71d29b3d_7cd9ae72",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 12
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53f6a0ca_e6dad073",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b100fe9_c6136095",
+      "range": {
+        "startLine": 210,
+        "startChar": 16,
+        "endLine": 210,
+        "endChar": 58
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "681b16e6_e0389d7e",
         "filename": "android/makevars.go",
         "patchSetId": 7
@@ -168,6 +312,30 @@
       "writtenOn": "2020-10-05T09:16:40Z",
       "side": 1,
       "message": "\"clear\" makes me think this function is removing all providers from the list, but it looks like it\u0027s just filtering for singleton providers. Rename to something more descriptive?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73095181_620015eb",
+        "filename": "android/makevars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "It really *should* be clearing providers, but the issue is that some providers are added as part of init(), and therefore are added only once as part of program initialization.\nclear() is closer to the truth, IMO\nColin, WDYT?",
+      "parentUuid": "681b16e6_e0389d7e",
       "range": {
         "startLine": 136,
         "startChar": 5,
@@ -203,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "da197d4e_7375a830",
+        "filename": "bazel/bazelenv.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305873fb_85658209",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c920bdb5_9e48b91d",
         "filename": "bazel/bazelenv.sh",
         "patchSetId": 7
@@ -223,6 +415,30 @@
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0891805_176f85d1",
+        "filename": "bazel/bazelenv.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c920bdb5_9e48b91d",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +465,30 @@
     },
     {
       "key": {
+        "uuid": "26c87b5a_b4535ee5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e06493a_2c32fc43",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90d084b7_9f3a2912",
         "filename": "genrule/genrule.go",
         "patchSetId": 7
@@ -260,6 +500,30 @@
       "writtenOn": "2020-10-05T09:16:40Z",
       "side": 1,
       "message": "Should this be abstracted out into a common bazelProps struct, and nested into modules that support bazel_module?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4ab92a_bd08fad8",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Perhaps, but maybe we do that alongside an additional use in a future CL?",
+      "parentUuid": "90d084b7_9f3a2912",
       "range": {
         "startLine": 117,
         "startChar": 1,
@@ -295,6 +559,30 @@
     },
     {
       "key": {
+        "uuid": "577c8b55_aed01302",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5238fb8c_ba291c72",
+      "range": {
+        "startLine": 196,
+        "startChar": 6,
+        "endLine": 196,
+        "endChar": 12
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b7fcd01_ce786f45",
         "filename": "genrule/genrule.go",
         "patchSetId": 7
@@ -315,6 +603,30 @@
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c33fed20_d155cc20",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b7fcd01_ce786f45",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 1
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -341,6 +653,30 @@
     },
     {
       "key": {
+        "uuid": "e171f638_29eedf5f",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85d95df8_aefdf27a",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 732,
+        "endChar": 0
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c93601d7_86fc1204",
         "filename": "genrule/genrule_test.go",
         "patchSetId": 7
@@ -361,6 +697,30 @@
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a0782b_bdfd1018",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-05T18:03:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c93601d7_86fc1204",
+      "range": {
+        "startLine": 735,
+        "startChar": 32,
+        "endLine": 735,
+        "endChar": 33
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
