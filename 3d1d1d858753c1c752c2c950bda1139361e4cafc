@@ -33,6 +33,24 @@
       "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa5f156_6c62d6e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-10-05T20:01:59Z",
+      "side": 1,
+      "message": "Our main usecase was https://review.lineageos.org/c/LineageOS/android_bootable_recovery/+/286583\nWe want to be sure every user of this header gets the same define ( the change is needed on some LG devices having non standard /misc )",
+      "parentUuid": "6b10558c_76d7c018",
+      "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
