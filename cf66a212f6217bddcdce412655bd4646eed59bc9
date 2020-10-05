@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ada7d0e2_5c1bdebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "Awesome work! This looks non-intrusive, which is nice. My comments are mostly around improving clarity.",
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "125529e1_3f37fdf1",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "Missing license header.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a0ac40_9834235a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "nit: since you\u0027re not doing anything with `ok`, directly `return m.AllFiles[label]`?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053a3a02_2027f40f",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "This name made me think that the `cquery` command was being invoked within this function. Perhaps rename to \"addCqueryExprToQueue\" or just \"queueCqueryRequest\"?",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 34
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4da05fa6_017be307",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "May wanna use --query_file for this: https://docs.bazel.build/versions/master/command-line-reference.html#flag--query_file",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 66
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d29b3d_7cd9ae72",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "nit: Declare a single \"err\" at the start and use it for buildErr and cqueryErr?",
+      "range": {
+        "startLine": 210,
+        "startChar": 4,
+        "endLine": 210,
+        "endChar": 12
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b100fe9_c6136095",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "This could quickly reach arg length limits. Could you add a comment here about looking into --target_pattern_file for future readers? \n\nhttps://github.com/bazelbuild/bazel/commit/bdae1c28ebc4473e7c83ff4c779c8eab34a8b51e\n\nhttps://github.com/bazelbuild/bazel/issues/8609",
+      "range": {
+        "startLine": 210,
+        "startChar": 16,
+        "endLine": 210,
+        "endChar": 58
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "681b16e6_e0389d7e",
+        "filename": "android/makevars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "\"clear\" makes me think this function is removing all providers from the list, but it looks like it\u0027s just filtering for singleton providers. Rename to something more descriptive?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "305873fb_85658209",
+        "filename": "bazel/bazelenv.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "Missing license header.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c920bdb5_9e48b91d",
+        "filename": "bazel/bazelenv.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "Echo these values after sourcing? This would help folks with odd `bazel` aliases or PATH setups, like mine :)",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e06493a_2c32fc43",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "Replace with \n\nconfiguration :\u003d newConfig(srcDir)",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90d084b7_9f3a2912",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "Should this be abstracted out into a common bazelProps struct, and nested into modules that support bazel_module?",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5238fb8c_ba291c72",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "nit: bazelOutputFiles?",
+      "range": {
+        "startLine": 196,
+        "startChar": 6,
+        "endLine": 196,
+        "endChar": 12
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7fcd01_ce786f45",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "if ok {\n ...\n}\n\nreturn ok",
+      "range": {
+        "startLine": 202,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 1
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85d95df8_aefdf27a",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "I believe you can reduce the indentation here and it\u0027ll still work as expected",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 732,
+        "endChar": 0
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c93601d7_86fc1204",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-05T09:16:40Z",
+      "side": 1,
+      "message": "nit: add a line break",
+      "range": {
+        "startLine": 735,
+        "startChar": 32,
+        "endLine": 735,
+        "endChar": 33
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
