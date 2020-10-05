@@ -195,6 +195,9 @@ func bootProfileCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig,
 }
 
 type classLoaderContext struct {
+	// Library names
+	Names []string
+
 	// The class loader context using paths in the build.
 	Host android.Paths
 
@@ -209,7 +212,7 @@ type classLoaderContext struct {
 // targetSdkVersion in the manifest or APK is less than that API version.
 type classLoaderContextMap map[int]*classLoaderContext
 
-const anySdkVersion int = 9999 // should go last in class loader context
+const AnySdkVersion int = 9999 // should go last in class loader context
 
 func (m classLoaderContextMap) getValue(sdkVer int) *classLoaderContext {
 	if _, ok := m[sdkVer]; !ok {
@@ -218,24 +221,32 @@ func (m classLoaderContextMap) getValue(sdkVer int) *classLoaderContext {
 	return m[sdkVer]
 }
 
-func (m classLoaderContextMap) addLibs(sdkVer int, module *ModuleConfig, libs ...string) bool {
+func (clc *classLoaderContext) addLib(lib string, hostPath android.Path, targetPath string) {
+	clc.Names = append(clc.Names, lib)
+	clc.Host = append(clc.Host, hostPath)
+	clc.Target = append(clc.Target, targetPath)
+}
+
+func (m classLoaderContextMap) addLibs(sdkVer int, module *ModuleConfig, libs ...string) {
 	clc := m.getValue(sdkVer)
 	for _, lib := range libs {
-		if p := pathForLibrary(module, lib); p != nil {
-			clc.Host = append(clc.Host, p.Host)
-			clc.Target = append(clc.Target, p.Device)
-		} else {
-			return false
+		if p, ok := module.LibraryPaths[lib]; ok {
+			clc.addLib(lib, p.Host, p.Device)
 		}
 	}
-	return true
+}
+
+func (m classLoaderContextMap) usesLibs() []string {
+	if clc, ok := m[AnySdkVersion]; ok {
+		return clc.Names
+	}
+	return nil
 }
 
 func (m classLoaderContextMap) addSystemServerLibs(sdkVer int, ctx android.PathContext, module *ModuleConfig, libs ...string) {
 	clc := m.getValue(sdkVer)
 	for _, lib := range libs {
-		clc.Host = append(clc.Host, SystemServerDexJarHostPath(ctx, lib))
-		clc.Target = append(clc.Target, filepath.Join("/system/framework", lib+".jar"))
+		clc.addLib(lib, SystemServerDexJarHostPath(ctx, lib), filepath.Join("/system/framework", lib+".jar"))
 	}
 }
 
@@ -253,7 +264,7 @@ func (m classLoaderContextMap) addSystemServerLibs(sdkVer int, ctx android.PathC
 //    as the runtime classpath won't match and the dexpreopted code will be discarded. Therefore in
 //    such cases the function returns nil, which disables dexpreopt.
 //
-// 2. All other library jars or APKs for which the exact <uses-library> list is unknown. They use
+// 3. All other library jars or APKs for which the exact <uses-library> list is unknown. They use
 //    the unsafe &-classpath workaround that means empty class loader context and absence of runtime
 //    check that the class loader context provided by the PackageManager agrees with the stored
 //    class loader context recorded in the .odex file.
@@ -265,39 +276,17 @@ func genClassLoaderContext(ctx android.PathContext, global *GlobalConfig, module
 	if jarIndex := android.IndexList(module.Name, systemServerJars); jarIndex >= 0 {
 		// System server jars should be dexpreopted together: class loader context of each jar
 		// should include all preceding jars on the system server classpath.
-		classLoaderContexts.addSystemServerLibs(anySdkVersion, ctx, module, systemServerJars[:jarIndex]...)
+		classLoaderContexts.addSystemServerLibs(AnySdkVersion, ctx, module, systemServerJars[:jarIndex]...)
 
 	} else if module.EnforceUsesLibraries {
 		// Unconditional class loader context.
-		usesLibs := append(copyOf(module.UsesLibraries), module.OptionalUsesLibraries...)
-		if !classLoaderContexts.addLibs(anySdkVersion, module, usesLibs...) {
-			return nil
-		}
+		classLoaderContexts.addLibs(AnySdkVersion, module, module.UsesLibraries...)
+		classLoaderContexts.addLibs(AnySdkVersion, module, module.OptionalUsesLibraries...)
 
-		// Conditional class loader context for API version < 28.
-		const httpLegacy = "org.apache.http.legacy"
-		if !contains(usesLibs, httpLegacy) {
-			if !classLoaderContexts.addLibs(28, module, httpLegacy) {
-				return nil
-			}
-		}
-
-		// Conditional class loader context for API version < 29.
-		usesLibs29 := []string{
-			"android.hidl.base-V1.0-java",
-			"android.hidl.manager-V1.0-java",
-		}
-		if !classLoaderContexts.addLibs(29, module, usesLibs29...) {
-			return nil
-		}
-
-		// Conditional class loader context for API version < 30.
-		const testBase = "android.test.base"
-		if !contains(usesLibs, testBase) {
-			if !classLoaderContexts.addLibs(30, module, testBase) {
-				return nil
-			}
-		}
+		// Conditional class loader context for different SDK versions.
+		classLoaderContexts.addLibs(28, module, OptionalCompatUsesLibs28...)
+		classLoaderContexts.addLibs(29, module, CompatUsesLibs29...)
+		classLoaderContexts.addLibs(30, module, OptionalCompatUsesLibs30...)
 
 	} else {
 		// Pass special class loader context to skip the classpath and collision check.
@@ -306,7 +295,49 @@ func genClassLoaderContext(ctx android.PathContext, global *GlobalConfig, module
 		// to the &.
 	}
 
+	if !fixConditionalClassLoaderContext(classLoaderContexts, module) {
+		return nil
+	}
+
 	return &classLoaderContexts
+}
+
+// Now that the full unconditional context is known, reconstruct conditional context.
+// Apply filters for individual libraries, mirroring what the PackageManager does when it
+// constructs class loader context on device.
+func fixConditionalClassLoaderContext(clcMap classLoaderContextMap, module *ModuleConfig) bool {
+	usesLibs := clcMap.usesLibs()
+
+	for sdkVer, clc := range clcMap {
+		if sdkVer == AnySdkVersion {
+			continue
+		}
+		clcMap[sdkVer] = &classLoaderContext{}
+		for i, lib := range clc.Names {
+			if android.InList(lib, usesLibs) {
+				// skip compatibility libraries that are already included in unconditional context
+			} else if lib == AndroidTestMock && !android.InList("android.test.runner", usesLibs) {
+				// android.test.mock is only needed if android.test.runner is used
+			} else {
+				clcMap[sdkVer].addLib(lib, clc.Host[i], clc.Target[i])
+			}
+		}
+	}
+
+	// Return if all build/install library paths are valid, otherwise return false.
+	for _, clc := range clcMap {
+		for _, p := range clc.Host {
+			if p == nil {
+				return false
+			}
+		}
+		for _, p := range clc.Target {
+			if p == UnknownInstallLibraryPath {
+				return false
+			}
+		}
+	}
+	return true
 }
 
 func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, global *GlobalConfig,
@@ -355,7 +386,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 		checkSystemServerOrder(ctx, jarIndex)
 
-		clc := classLoaderContexts[anySdkVersion]
+		clc := classLoaderContexts[AnySdkVersion]
 		rule.Command().
 			Text("class_loader_context_arg=--class-loader-context=PCL[" + strings.Join(clc.Host.Strings(), ":") + "]").
 			Implicits(clc.Host).
@@ -383,14 +414,15 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 			Text(`eval "$(`).Tool(globalSoong.ConstructContext).
 			Text(` --target-sdk-version ${target_sdk_version}`)
 		for _, ver := range android.SortedIntKeys(classLoaderContexts) {
-			clc := classLoaderContexts.getValue(ver)
-			verString := fmt.Sprintf("%d", ver)
-			if ver == anySdkVersion {
-				verString = "any" // a special keyword that means any SDK version
+			if clc := classLoaderContexts.getValue(ver); len(clc.Host) > 0 {
+				verString := fmt.Sprintf("%d", ver)
+				if ver == AnySdkVersion {
+					verString = "any" // a special keyword that means any SDK version
+				}
+				cmd.Textf(`--host-classpath-for-sdk %s %s`, verString, strings.Join(clc.Host.Strings(), ":")).
+					Implicits(clc.Host).
+					Textf(`--target-classpath-for-sdk %s %s`, verString, strings.Join(clc.Target, ":"))
 			}
-			cmd.Textf(`--host-classpath-for-sdk %s %s`, verString, strings.Join(clc.Host.Strings(), ":")).
-				Implicits(clc.Host).
-				Textf(`--target-classpath-for-sdk %s %s`, verString, strings.Join(clc.Target, ":"))
 		}
 		cmd.Text(`)"`)
 	} else {
@@ -587,14 +619,6 @@ func PathToLocation(path android.Path, arch android.ArchType) string {
 		panic(fmt.Errorf("last directory in %q must be %q", path, arch.String()))
 	}
 	return filepath.Join(filepath.Dir(filepath.Dir(path.String())), filepath.Base(path.String()))
-}
-
-func pathForLibrary(module *ModuleConfig, lib string) *LibraryPath {
-	if path, ok := module.LibraryPaths[lib]; ok && path.Host != nil && path.Device != "error" {
-		return path
-	} else {
-		return nil
-	}
 }
 
 func makefileMatch(pattern, s string) bool {

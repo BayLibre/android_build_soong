@@ -570,6 +570,9 @@ var (
 	certificateTag        = dependencyTag{name: "certificate"}
 	instrumentationForTag = dependencyTag{name: "instrumentation_for"}
 	usesLibTag            = dependencyTag{name: "uses-library"}
+	usesLibCompat28Tag    = dependencyTag{name: "uses-library-compat-28"}
+	usesLibCompat29Tag    = dependencyTag{name: "uses-library-compat-29"}
+	usesLibCompat30Tag    = dependencyTag{name: "uses-library-compat-30"}
 	extraLintCheckTag     = dependencyTag{name: "extra-lint-check"}
 )
 
