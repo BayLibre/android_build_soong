@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85e42956_432fb10a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-05T21:01:49Z",
+      "side": 1,
+      "message": "Might as well initialize this in NewBazelContext.",
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d2b389_7f68a3a1",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-05T21:01:49Z",
+      "side": 1,
+      "message": "This seems like it is going to run everything in Soong, doubling Soong time.  Couldn\u0027t you at least do something like shouldPrepareBuildActions() to skip the PrepareBuildActions phase, which should take care of your TODO too.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef02262b_890e7c1d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-05T21:01:49Z",
+      "side": 1,
+      "message": "If you moved the first pass request to a LoadHook you could stop the first pass very early, LoadHooks run as part of Android.bp parsing.  You could skip all mutators, singletons, and GenerateAndroidBuildActions.  It would require splitting the request and the response though, setting c.outputFiles and c.outputDeps has to stay inside GenerateAndroidBuildActions.",
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
