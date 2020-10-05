@@ -549,6 +549,10 @@ type AARImportProperties struct {
 
 	// if set to true, run Jetifier against .aar file. Defaults to false.
 	Jetifier *bool
+	// if set to true, run Jetifier against .aar file in reverse mode. Defaults to false.
+	Reverse_jetifier *bool
+	// Custom Jetifier config file. Leave empty to use the default config
+	Jetifier_config *string `android:"path"`
 }
 
 type AARImport struct {
@@ -665,10 +669,15 @@ func (a *AARImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	aarName := ctx.ModuleName() + ".aar"
 	var aar android.Path
 	aar = android.PathForModuleSrc(ctx, a.properties.Aars[0])
+
 	if Bool(a.properties.Jetifier) {
 		inputFile := aar
 		aar = android.PathForModuleOut(ctx, "jetifier", aarName)
-		TransformJetifier(ctx, aar.(android.WritablePath), inputFile)
+		var jetifierConfig android.OptionalPath
+		if String(a.properties.Jetifier_config) != "" {
+			jetifierConfig = android.OptionalPathForModuleSrc(ctx, a.properties.Jetifier_config)
+		}
+		TransformJetifier(ctx, aar.(android.WritablePath), inputFile, Bool(a.properties.Reverse_jetifier), jetifierConfig)
 	}
 
 	extractedAARDir := android.PathForModuleOut(ctx, "aar")

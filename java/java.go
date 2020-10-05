@@ -2530,6 +2530,10 @@ type ImportProperties struct {
 
 	// if set to true, run Jetifier against .jar file. Defaults to false.
 	Jetifier *bool
+	// if set to true, run Jetifier against .jar file in reverse mode. Defaults to false.
+	Reverse_jetifier *bool
+	// Custom Jetifier config file. Leave empty to use the default config
+	Jetifier_config *string `android:"path"`
 
 	// set the name of the output
 	Stem *string
@@ -2623,11 +2627,17 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	outputFile := android.PathForModuleOut(ctx, "combined", jarName)
 	TransformJarsToJar(ctx, outputFile, "for prebuilts", jars, android.OptionalPath{},
 		false, j.properties.Exclude_files, j.properties.Exclude_dirs)
+
 	if Bool(j.properties.Jetifier) {
 		inputFile := outputFile
 		outputFile = android.PathForModuleOut(ctx, "jetifier", jarName)
-		TransformJetifier(ctx, outputFile, inputFile)
+		var jetifierConfig android.OptionalPath
+		if String(j.properties.Jetifier_config) != "" {
+			jetifierConfig = android.OptionalPathForModuleSrc(ctx, j.properties.Jetifier_config)
+		}
+		TransformJetifier(ctx, outputFile, inputFile, Bool(j.properties.Reverse_jetifier), jetifierConfig)
 	}
+
 	j.combinedClasspathFile = outputFile
 	j.exportedSdkLibs = make(dexpreopt.LibraryPaths)
 

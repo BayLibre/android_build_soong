@@ -214,10 +214,10 @@ var (
 
 	jetifier = pctx.AndroidStaticRule("jetifier",
 		blueprint.RuleParams{
-			Command:     "${config.JavaCmd}  ${config.JavaVmFlags} -jar ${config.JetifierJar} -l error -o $out -i $in",
+			Command:     "${config.JavaCmd}  ${config.JavaVmFlags} -jar ${config.JetifierJar} -l error -o $out -i $in $additionalFlags",
 			CommandDeps: []string{"${config.JavaCmd}", "${config.JetifierJar}"},
 		},
-	)
+		"additionalFlags")
 
 	zipalign = pctx.AndroidStaticRule("zipalign",
 		blueprint.RuleParams{
@@ -562,12 +562,28 @@ func CheckJarPackages(ctx android.ModuleContext, outputFile android.WritablePath
 }
 
 func TransformJetifier(ctx android.ModuleContext, outputFile android.WritablePath,
-	inputFile android.Path) {
+	inputFile android.Path, reverse bool, customConfig android.OptionalPath) {
+
+	var additionalFlags []string
+	if reverse {
+		additionalFlags = append(additionalFlags, "-r")
+	}
+
+	var deps []android.Path
+	if customConfig.Valid() {
+		additionalFlags = append(additionalFlags, "-c "+customConfig.String())
+		deps = append(deps, customConfig.Path())
+	}
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        jetifier,
 		Description: "jetifier",
 		Output:      outputFile,
 		Input:       inputFile,
+		Implicits:   deps,
+		Args: map[string]string{
+			"additionalFlags": strings.Join(additionalFlags, " "),
+		},
 	})
 }
 
