@@ -1955,6 +1955,11 @@ func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, hasFrameworkLibs 
 	}
 }
 
+func isSharedLibrary(m android.Module) bool {
+	lib, ok := m.(*SdkLibrary)
+	return ok && lib.sharedLibrary()
+}
+
 // presentOptionalUsesLibs returns optional_uses_libs after filtering out MissingUsesLibraries, which don't exist in the
 // build.
 func (u *usesLibrary) presentOptionalUsesLibs(ctx android.BaseModuleContext) []string {
@@ -1971,7 +1976,7 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.Clas
 		f := func(m android.Module, sdkVer int) {
 			dep := ctx.OtherModuleName(m)
 			if lib, ok := m.(Dependency); ok {
-				usesLibPaths.AddConditionalContext(ctx, sdkVer, dep,
+				usesLibPaths.AddConditionalContext(ctx, sdkVer, dep, isSharedLibrary(m),
 					lib.DexJarBuildPath(), lib.DexJarInstallPath(), lib.ExportedSdkLibs())
 			} else if ctx.Config().AllowMissingDependencies() {
 				ctx.AddMissingDependencies([]string{dep})
