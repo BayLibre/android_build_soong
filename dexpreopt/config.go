@@ -129,12 +129,13 @@ var CompatUsesLibs = android.CopyOf(CompatUsesLibs29)
 const UnknownInstallLibraryPath = "error"
 
 // ClassLoaderContext is a tree that contains libraries and subcontexts for their dependencies.
-// For each library there is a build path (on host) and install path (on device).
+// For each library there is a build path (on host), install path (on device) and a shared flag.
 type ClassLoaderContext struct {
 	Name        string
 	Host        android.Path
 	Device      string
 	Subcontexts []*ClassLoaderContext
+	Shared      bool
 }
 
 // ClassLoaderContextMap is a map from SDK version to a class loader context.
@@ -147,7 +148,7 @@ const AnySdkVersion int = 9999 // should go last in class loader context
 
 // Add class loader context for the given library to the map entry for the given SDK version.
 func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleContext, sdkVer int, lib string,
-	hostPath, installPath android.Path, strict bool, subcontexts []*ClassLoaderContext) {
+	shared bool, hostPath, installPath android.Path, strict bool, subcontexts []*ClassLoaderContext) {
 
 	// If missing dependencies are allowed, the build shouldn't fail when a <uses-library> is
 	// not found. However, this is likely to result is disabling dexpreopt, as it won't be
@@ -191,30 +192,31 @@ func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleContext, sdkVer
 		Host:        hostPath,
 		Device:      devicePath,
 		Subcontexts: subcontexts,
+		Shared:      shared,
 	})
 }
 
 // Add class loader context.
 func (clcMap ClassLoaderContextMap) AddContext(ctx android.ModuleContext, lib string,
-	hostPath, installPath android.Path) {
+	shared bool, hostPath, installPath android.Path) {
 
-	clcMap.addContext(ctx, AnySdkVersion, lib, hostPath, installPath, true, nil)
+	clcMap.addContext(ctx, AnySdkVersion, lib, shared, hostPath, installPath, true, nil)
 }
 
 // Add class loader context, if the library exists.
 func (clcMap ClassLoaderContextMap) MaybeAddContext(ctx android.ModuleContext, lib *string,
-	hostPath, installPath android.Path) {
+	shared bool, hostPath, installPath android.Path) {
 
 	if lib != nil {
-		clcMap.addContext(ctx, AnySdkVersion, *lib, hostPath, installPath, false, nil)
+		clcMap.addContext(ctx, AnySdkVersion, *lib, shared, hostPath, installPath, false, nil)
 	}
 }
 
 // Add conditional class loader context for the given SDK version.
 func (clcMap ClassLoaderContextMap) AddConditionalContext(ctx android.ModuleContext, sdkVer int,
-	lib string, hostPath, installPath android.Path, nestedClcMap ClassLoaderContextMap) {
+	lib string, shared bool, hostPath, installPath android.Path, nestedClcMap ClassLoaderContextMap) {
 
-	clcMap.addContext(ctx, sdkVer, lib, hostPath, installPath, true, nestedClcMap[sdkVer])
+	clcMap.addContext(ctx, sdkVer, lib, shared, hostPath, installPath, true, nestedClcMap[sdkVer])
 }
 
 // Merge the other class loader context map into this one, do not override existing entries.
@@ -259,7 +261,9 @@ func (clcMap ClassLoaderContextMap) UsesLibs() (ulibs []string) {
 func usesLibsRec(clcs []*ClassLoaderContext) (ulibs []string) {
 	for _, clc := range clcs {
 		ulibs = append(ulibs, clc.Name)
-		ulibs = append(ulibs, usesLibsRec(clc.Subcontexts)...)
+		if !clc.Shared {
+			ulibs = append(ulibs, usesLibsRec(clc.Subcontexts)...)
+		}
 	}
 	return ulibs
 }
