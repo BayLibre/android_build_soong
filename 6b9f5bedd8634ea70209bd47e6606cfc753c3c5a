@@ -16,6 +16,24 @@
       "revId": "6b9f5bedd8634ea70209bd47e6606cfc753c3c5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0a01be3_78f085f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-06T12:14:12Z",
+      "side": 1,
+      "message": "Also had to add a special case to filter out versioned SDK libs.\n\nThere ought to be a better approach than this to figure out which of the libs the fuzzer modules actually were built with, e.g. by looking at the dependency tag. However, that\u0027d mean a bigger change that I\u0027m not venturing to make here.",
+      "parentUuid": "991a15c1_5e52590b",
+      "revId": "6b9f5bedd8634ea70209bd47e6606cfc753c3c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
