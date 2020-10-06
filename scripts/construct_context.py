@@ -49,8 +49,7 @@ def construct_context(versioned_classpaths, target_sdk):
   context = []
   for [sdk, classpath] in versioned_classpaths:
     if sdk == any_sdk or compare_version_gt(sdk, target_sdk):
-      for jar in classpath.split(':'):
-        context.append('PCL[%s]' % jar)
+      context.append(classpath)
   return context
 
 def construct_contexts(args):

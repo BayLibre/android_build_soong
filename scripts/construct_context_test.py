@@ -28,12 +28,12 @@ def construct_contexts(arglist):
   return cc.construct_contexts(args)
 
 classpaths = [
-  '--host-classpath-for-sdk', '28', 'out/zdir/z.jar',
-  '--target-classpath-for-sdk', '28', '/system/z.jar',
-  '--host-classpath-for-sdk', '29', 'out/xdir/x.jar:out/ydir/y.jar',
-  '--target-classpath-for-sdk', '29', '/system/x.jar:/product/y.jar',
-  '--host-classpath-for-sdk', 'any', 'out/adir/a.jar:out/bdir/b.jar',
-  '--target-classpath-for-sdk', 'any', '/system/a.jar:/product/b.jar',
+  '--host-classpath-for-sdk', '28', 'PCL[out/zdir/z.jar]',
+  '--target-classpath-for-sdk', '28', 'PCL[/system/z.jar]',
+  '--host-classpath-for-sdk', '29', 'PCL[out/xdir/x.jar]#PCL[out/ydir/y.jar]',
+  '--target-classpath-for-sdk', '29', 'PCL[/system/x.jar]#PCL[/product/y.jar]',
+  '--host-classpath-for-sdk', 'any', 'PCL[out/adir/a.jar]#PCL[out/bdir/b.jar]',
+  '--target-classpath-for-sdk', 'any', 'PCL[/system/a.jar]#PCL[/product/b.jar]',
 ]
 
 class ConstructContextTest(unittest.TestCase):
