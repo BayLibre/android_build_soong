@@ -28,47 +28,50 @@ import (
 func TestCLC(t *testing.T) {
 	ctx := testContext()
 
+	shared := true     // dependencies are not added to uses libs
+	nonshared := false // dependencies are added to uses libs
+
 	// A few class loader contexts to be used as nested subcontexts, nothing special about them.
 	m1 := make(ClassLoaderContextMap)
-	m1.AddContext(ctx, "m1_a", buildPath(ctx, "m1_a"), installPath(ctx, "m1_a"))
-	m1.AddContext(ctx, "m1_b", buildPath(ctx, "m1_b"), installPath(ctx, "m1_b"))
+	m1.AddContext(ctx, "m1_a", nonshared, buildPath(ctx, "m1_a"), installPath(ctx, "m1_a"))
+	m1.AddContext(ctx, "m1_b", shared, buildPath(ctx, "m1_b"), installPath(ctx, "m1_b"))
 	m2 := make(ClassLoaderContextMap)
-	m2.AddContext(ctx, "m2_a", buildPath(ctx, "m2_a"), installPath(ctx, "m2_a"))
-	m2.AddContext(ctx, "m2_b", buildPath(ctx, "m2_b"), installPath(ctx, "m2_b"))
-	m2.AddContextForSdk(ctx, AnySdkVersion, "m2_c", buildPath(ctx, "m2_c"), installPath(ctx, "m2_c"), m1)
+	m2.AddContext(ctx, "m2_a", nonshared, buildPath(ctx, "m2_a"), installPath(ctx, "m2_a"))
+	m2.AddContext(ctx, "m2_b", shared, buildPath(ctx, "m2_b"), installPath(ctx, "m2_b"))
+	m2.AddContextForSdk(ctx, AnySdkVersion, "m2_c", shared, buildPath(ctx, "m2_c"), installPath(ctx, "m2_c"), m1)
 	m4 := make(ClassLoaderContextMap)
-	m4.AddContext(ctx, "m4_a", buildPath(ctx, "m4_a"), installPath(ctx, "m4_a"))
-	m4.AddContext(ctx, "m4_b", buildPath(ctx, "m4_b"), installPath(ctx, "m4_b"))
+	m4.AddContext(ctx, "m4_a", nonshared, buildPath(ctx, "m4_a"), installPath(ctx, "m4_a"))
+	m4.AddContext(ctx, "m4_b", shared, buildPath(ctx, "m4_b"), installPath(ctx, "m4_b"))
 
 	m := make(ClassLoaderContextMap)
 
 	// Simple cases.
-	m.AddContext(ctx, "m_a", buildPath(ctx, "m_a"), installPath(ctx, "m_a"))
-	m.AddContext(ctx, "m_b", buildPath(ctx, "m_b"), installPath(ctx, "m_b"))
+	m.AddContext(ctx, "m_a", nonshared, buildPath(ctx, "m_a"), installPath(ctx, "m_a"))
+	m.AddContext(ctx, "m_b", shared, buildPath(ctx, "m_b"), installPath(ctx, "m_b"))
 
 	// Test that an unexpected unknown build path causes immediate error.
 	t.Run("build", func(t *testing.T) {
 		defer testFail(t, "unknown build path to <uses-library> \"m_a\"")
-		m.AddContext(ctx, "m_a", nil, nil)
+		m.AddContext(ctx, "m_a", nonshared, nil, nil)
 	})
 
 	// Test that an unexpected unknown install path causes immediate error.
 	t.Run("install", func(t *testing.T) {
 		defer testFail(t, "unknown install path to <uses-library> \"m_a\"")
-		m.AddContext(ctx, "m_a", buildPath(ctx, "m_a"), nil)
+		m.AddContext(ctx, "m_a", nonshared, buildPath(ctx, "m_a"), nil)
 	})
 
 	// "Maybe" variant in the good case: add as usual.
 	m_c := "m_c"
-	m.MaybeAddContext(ctx, &m_c, buildPath(ctx, "m_c"), installPath(ctx, "m_c"))
+	m.MaybeAddContext(ctx, &m_c, nonshared, buildPath(ctx, "m_c"), installPath(ctx, "m_c"))
 
 	// "Maybe" variant in the bad case: don't add library with unknown name, keep going.
-	m.MaybeAddContext(ctx, nil, nil, nil)
+	m.MaybeAddContext(ctx, nil, nonshared, nil, nil)
 
 	// "Maybe" variant in the middle case (use a separate map to keep the main one valid).
 	m3 := make(ClassLoaderContextMap)
 	m_x := "m_x"
-	m3.MaybeAddContext(ctx, &m_x, nil, nil)
+	m3.MaybeAddContext(ctx, &m_x, nonshared, nil, nil)
 	// The library should be added to <uses-library> tags by the manifest_fixer.
 	t.Run("uses libs (maybe case)", func(t *testing.T) {
 		haveUsesLibs := m3.UsesLibs()
@@ -84,28 +87,29 @@ func TestCLC(t *testing.T) {
 	})
 
 	// Compatibility libraries with unknown install paths get default paths.
-	m.AddContextForSdk(ctx, 29, AndroidHidlManager, buildPath(ctx, AndroidHidlManager), nil, nil)
-	m.AddContextForSdk(ctx, 29, AndroidHidlBase, buildPath(ctx, AndroidHidlBase), nil, nil)
+	// Test that "android.hidl.manager" gets an extra dependency on "android.hidl.base".
+	m.AddContextForSdk(ctx, 29, AndroidHidlManager, nonshared, buildPath(ctx, AndroidHidlManager), nil, nil)
+	m.AddContextForSdk(ctx, 29, AndroidHidlBase, nonshared, buildPath(ctx, AndroidHidlBase), nil, nil)
 
 	// Add "android.test.mock" without "android.test.runner", observe that is gets removed.
-	m.AddContextForSdk(ctx, 30, AndroidTestMock, buildPath(ctx, AndroidTestMock), nil, nil)
+	m.AddContextForSdk(ctx, 30, AndroidTestMock, nonshared, buildPath(ctx, AndroidTestMock), nil, nil)
 
 	// Add some libraries with nested subcontexts.
-	m.AddContextForSdk(ctx, AnySdkVersion, "m_d", buildPath(ctx, "m_d"), installPath(ctx, "m_d"), m2)
-	m.AddContextForSdk(ctx, 28, "m_e", buildPath(ctx, "m_e"), installPath(ctx, "m_e"), m1)
+	m.AddContextForSdk(ctx, AnySdkVersion, "m_d", nonshared, buildPath(ctx, "m_d"), installPath(ctx, "m_d"), m2)
+	m.AddContextForSdk(ctx, 28, "m_e", nonshared, buildPath(ctx, "m_e"), installPath(ctx, "m_e"), m1)
 
 	// An attempt to add conditional nested subcontext should fail.
 	t.Run("nested conditional", func(t *testing.T) {
 		defer testFail(t, "nested class loader context shouldn't have conditional part")
 		m3 := make(ClassLoaderContextMap)
-		m3.AddContextForSdk(ctx, 42, "m_a", buildPath(ctx, "m_a"), installPath(ctx, "m_a"), nil)
-		m.AddContextForSdk(ctx, AnySdkVersion, "m_b", buildPath(ctx, "m_b"), installPath(ctx, "m_b"), m3)
+		m3.AddContextForSdk(ctx, 42, "m_a", nonshared, buildPath(ctx, "m_a"), installPath(ctx, "m_a"), nil)
+		m.AddContextForSdk(ctx, AnySdkVersion, "m_b", nonshared, buildPath(ctx, "m_b"), installPath(ctx, "m_b"), m3)
 	})
 
 	// When the same library is both in conditional and unconditional context, it should be removed
 	// from conditional context.
-	m.AddContextForSdk(ctx, 42, "m_f", buildPath(ctx, "m_f"), installPath(ctx, "m_f"), nil)
-	m.AddContextForSdk(ctx, AnySdkVersion, "m_f", buildPath(ctx, "m_f"), installPath(ctx, "m_f"), nil)
+	m.AddContextForSdk(ctx, 42, "m_f", nonshared, buildPath(ctx, "m_f"), installPath(ctx, "m_f"), nil)
+	m.AddContextForSdk(ctx, AnySdkVersion, "m_f", nonshared, buildPath(ctx, "m_f"), installPath(ctx, "m_f"), nil)
 
 	// Merge map with implicit root library that is among toplevel contexts => does nothing.
 	m.AddContextMap(m1, "m_c")
@@ -191,7 +195,7 @@ func TestCLC(t *testing.T) {
 	// Test for libraries that are added by the manifest_fixer.
 	t.Run("uses libs", func(t *testing.T) {
 		haveUsesLibs := m.UsesLibs()
-		wantUsesLibs := []string{"m_a", "m_b", "m_c", "m_d", "m2_a", "m2_b", "m2_c", "m1_a", "m1_b", "m_f", "m4_a", "m4_b"}
+		wantUsesLibs := []string{"m_a", "m_b", "m_c", "m_d", "m2_a", "m2_b", "m2_c", "m_f", "m4_a", "m4_b"}
 		if !reflect.DeepEqual(wantUsesLibs, haveUsesLibs) {
 			t.Errorf("\nwant uses libs: %s\nhave uses libs: %s", wantUsesLibs, haveUsesLibs)
 		}
