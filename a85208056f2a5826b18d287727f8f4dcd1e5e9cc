@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93551d9b_05ccf026",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-06T13:50:48Z",
+      "side": 1,
+      "message": "This does avoid depending on the output of the droidstubs that generates the monolithic file but it does still rely on the availability of the whole platform to work. So, this is only an intermediate step on the path to supporting unbundled builds.",
+      "revId": "a85208056f2a5826b18d287727f8f4dcd1e5e9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
