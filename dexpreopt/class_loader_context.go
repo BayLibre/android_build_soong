@@ -55,13 +55,26 @@ const UnknownInstallLibraryPath = "error"
 // last). We use the converntional "current" SDK level (10000), but any big number would do as well.
 const AnySdkVersion int = android.FutureApiLevelInt
 
-// ClassLoaderContext is a tree that contains libraries and subcontexts for their dependencies.
-// For each library there is a build path (on host) and install path (on device).
+// ClassLoaderContext is a tree of libraries used by the dexpreopted module with their dependencies.
+// The context is used by dex2oat to compile the module and recorded in the AOT-compiled files, so
+// that it can be checked agains the run-time class loader context on device. If there is a mismatch
+// at runtime, AOT-compiled code is rejected.
 type ClassLoaderContext struct {
-	Name        string
-	Host        android.Path
-	Device      string
+	// The name of the library (same as the name of the module that contains it).
+	Name string
+
+	// On-host build path to the library dex file (used in dex2oat argument --class-loader-context).
+	Host android.Path
+
+	// On-device install path (used in dex2oat argument --stored-class-loader-context).
+	Device string
+
+	// Nested class loader subcontexts for dependencies.
 	Subcontexts []*ClassLoaderContext
+
+	// If the library is a shared library. This affects which elements of class loader context are
+	// added as <uses-library> tags by the manifest_fixer (dependencies of shared libraries aren't).
+	IsSharedLibrary bool
 }
 
 // ClassLoaderContextMap is a map from SDK version to a class loader context.
@@ -72,7 +85,7 @@ type ClassLoaderContextMap map[int][]*ClassLoaderContext
 
 // Add class loader context for the given library to the map entry for the given SDK version.
 func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleInstallPathContext, sdkVer int, lib string,
-	hostPath, installPath android.Path, strict bool, nestedClcMap ClassLoaderContextMap) error {
+	shared bool, hostPath, installPath android.Path, strict bool, nestedClcMap ClassLoaderContextMap) error {
 
 	// If missing dependencies are allowed, the build shouldn't fail when a <uses-library> is
 	// not found. However, this is likely to result is disabling dexpreopt, as it won't be
@@ -119,46 +132,46 @@ func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleInstallPathCont
 	}
 
 	clcMap[sdkVer] = append(clcMap[sdkVer], &ClassLoaderContext{
-		Name:        lib,
-		Host:        hostPath,
-		Device:      devicePath,
-		Subcontexts: subcontexts,
+		Name:            lib,
+		Host:            hostPath,
+		Device:          devicePath,
+		Subcontexts:     subcontexts,
+		IsSharedLibrary: shared,
 	})
 	return nil
 }
 
 // Wrapper around addContext that reports errors.
 func (clcMap ClassLoaderContextMap) addContextOrReportError(ctx android.ModuleInstallPathContext, sdkVer int, lib string,
-	hostPath, installPath android.Path, strict bool, nestedClcMap ClassLoaderContextMap) {
+	shared bool, hostPath, installPath android.Path, strict bool, nestedClcMap ClassLoaderContextMap) {
 
-	err := clcMap.addContext(ctx, sdkVer, lib, hostPath, installPath, strict, nestedClcMap)
+	err := clcMap.addContext(ctx, sdkVer, lib, shared, hostPath, installPath, strict, nestedClcMap)
 	if err != nil {
 		ctx.ModuleErrorf(err.Error())
-		android.ReportPathErrorf(ctx, err.Error())
 	}
 }
 
 // Add class loader context. Fail on unknown build/install paths.
 func (clcMap ClassLoaderContextMap) AddContext(ctx android.ModuleInstallPathContext, lib string,
-	hostPath, installPath android.Path) {
+	shared bool, hostPath, installPath android.Path) {
 
-	clcMap.addContextOrReportError(ctx, AnySdkVersion, lib, hostPath, installPath, true, nil)
+	clcMap.addContextOrReportError(ctx, AnySdkVersion, lib, shared, hostPath, installPath, true, nil)
 }
 
 // Add class loader context if the library exists. Don't fail on unknown build/install paths.
 func (clcMap ClassLoaderContextMap) MaybeAddContext(ctx android.ModuleInstallPathContext, lib *string,
-	hostPath, installPath android.Path) {
+	shared bool, hostPath, installPath android.Path) {
 
 	if lib != nil {
-		clcMap.addContextOrReportError(ctx, AnySdkVersion, *lib, hostPath, installPath, false, nil)
+		clcMap.addContextOrReportError(ctx, AnySdkVersion, *lib, shared, hostPath, installPath, false, nil)
 	}
 }
 
 // Add class loader context for the given SDK version. Fail on unknown build/install paths.
 func (clcMap ClassLoaderContextMap) AddContextForSdk(ctx android.ModuleInstallPathContext, sdkVer int,
-	lib string, hostPath, installPath android.Path, nestedClcMap ClassLoaderContextMap) {
+	lib string, shared bool, hostPath, installPath android.Path, nestedClcMap ClassLoaderContextMap) {
 
-	clcMap.addContextOrReportError(ctx, sdkVer, lib, hostPath, installPath, true, nestedClcMap)
+	clcMap.addContextOrReportError(ctx, sdkVer, lib, shared, hostPath, installPath, true, nestedClcMap)
 }
 
 // Merge the other class loader context map into this one, do not override existing entries.
@@ -191,7 +204,9 @@ func (clcMap ClassLoaderContextMap) AddContextMap(otherClcMap ClassLoaderContext
 	}
 }
 
-// List of libraries in the unconditional class loader context, excluding dependencies of shared libraries.
+// List of libraries in the unconditional class loader context, excluding dependencies of shared
+// libraries. These libraries should be in the <uses-library> tags in the manifest. Some of them may
+// be present in the original manifest, others are added by the manifest_fixer.
 func (clcMap ClassLoaderContextMap) UsesLibs() (ulibs []string) {
 	if clcMap != nil {
 		// compatibility libraries (those in conditional context) are not added to <uses-library> tags
@@ -204,7 +219,12 @@ func (clcMap ClassLoaderContextMap) UsesLibs() (ulibs []string) {
 func usesLibsRec(clcs []*ClassLoaderContext) (ulibs []string) {
 	for _, clc := range clcs {
 		ulibs = append(ulibs, clc.Name)
-		ulibs = append(ulibs, usesLibsRec(clc.Subcontexts)...)
+		// <uses-library> tags in the manifest should not include dependencies of shared libraries,
+		// because PackageManager already tracks all such dependencies and automatically adds their
+		// class loader contexts as subcontext of the shared library.
+		if !clc.IsSharedLibrary {
+			ulibs = append(ulibs, usesLibsRec(clc.Subcontexts)...)
+		}
 	}
 	return ulibs
 }
