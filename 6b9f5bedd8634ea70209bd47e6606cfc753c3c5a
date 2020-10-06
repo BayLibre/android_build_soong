@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "991a15c1_5e52590b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-06T01:52:46Z",
+      "side": 1,
+      "message": "This fixes a problem where the fuzzer scooped up both source and prebuilts for shared libs. I\u0027m not that well versed in the fuzzer, but I guess the right thing to do is to always prefer the source if it exists, regardless of the prebuilt prefer flag.\n\nNB I don\u0027t know how to test this, so I\u0027ve only tried building.",
+      "revId": "6b9f5bedd8634ea70209bd47e6606cfc753c3c5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
