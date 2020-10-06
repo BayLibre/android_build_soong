@@ -169,21 +169,20 @@ func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 			handleAssignment(file, x, assignmentCond)
 		case *mkparser.Directive:
 			switch x.Name {
-			case "include", "-include":
-				module, ok := mapIncludePath(x.Args.Value(file.scope))
-				if !ok {
-					file.errorf(x, "unsupported include")
-					continue
-				}
-				switch module {
-				case clear_vars:
+			case "include":
+				val := x.Args.Value(file.scope)
+				switch {
+				case soongModuleTypes[val]:
+					handleModuleConditionals(file, x, conds)
+					makeModule(file, val)
+				case val == clear_vars:
 					resetModule(file)
-				case include_ignored:
+				case val == include_ignored:
 					// subdirs are already automatically included in Soong
 					continue
 				default:
-					handleModuleConditionals(file, x, conds)
-					makeModule(file, module)
+					file.errorf(x, "unsupported include")
+					continue
 				}
 			case "ifeq", "ifneq", "ifdef", "ifndef":
 				args := x.Args.Dump()
