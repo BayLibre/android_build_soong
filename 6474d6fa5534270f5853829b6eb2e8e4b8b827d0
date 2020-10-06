@@ -105,6 +105,24 @@
       "parentUuid": "bbc4f6d7_11f942ed",
       "revId": "6474d6fa5534270f5853829b6eb2e8e4b8b827d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8d6a0d0_227a7da5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-06T14:13:00Z",
+      "side": 1,
+      "message": "Oh, right. :) \nDone.",
+      "parentUuid": "11a36cd9_4275a677",
+      "revId": "6474d6fa5534270f5853829b6eb2e8e4b8b827d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
