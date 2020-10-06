@@ -167,7 +167,8 @@ func collectAllSharedDependencies(ctx android.SingletonContext, module android.M
 // that should be installed in the fuzz target output directories. This function
 // returns true, unless:
 //  - The module is not a shared library, or
-//  - The module is a header, stub, or vendor-linked library.
+//  - The module is a header, stub, or vendor-linked library, or
+//  - The module is a prebuilt and its source is available.
 func isValidSharedDependency(dependency android.Module) bool {
 	// TODO(b/144090547): We should be parsing these modules using
 	// ModuleDependencyTag instead of the current brute-force checking.
@@ -188,6 +189,13 @@ func isValidSharedDependency(dependency android.Module) bool {
 		if _, isLLndkStubLibrary := ccLibrary.linker.(*stubDecorator); isLLndkStubLibrary {
 			return false
 		}
+	}
+
+	// If the same library is present both as source and a prebuilt we must pick
+	// one to avoid a conflict. Always prefer the source since the prebuilt
+	// probably won't be built with sanitizers enabled.
+	if prebuilt, ok := dependency.(android.PrebuiltInterface); ok && prebuilt.Prebuilt().SourceExists() {
+		return false
 	}
 
 	return true
