@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "85e42956_432fb10a",
         "filename": "android/bazel_handler.go",
@@ -14,10 +15,28 @@
       "side": 1,
       "message": "Might as well initialize this in NewBazelContext.",
       "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ebe8559_4e477df5",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-06T22:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85e42956_432fb10a",
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "16d2b389_7f68a3a1",
         "filename": "cmd/soong_build/main.go",
@@ -37,10 +56,34 @@
         "endChar": 74
       },
       "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6846cb66_a113922d",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-06T22:16:47Z",
+      "side": 1,
+      "message": "Doing this skips the GenerateAndroidBuildActions method entirely -- our hook to retrieve bazel information was in this method.\n\nI alternatively tried adding a hook in the taskGenerator for genrule, but IIUC this isn\u0027t run either if we skip build action preparation?\n\nThat said, see my other comment: I anticipate we\u0027ll need to determine bazel requests fairly late, unless I\u0027m missing something. Perhaps we can, as a TODO, introduce more granular hooks or skip-step functionality?",
+      "parentUuid": "16d2b389_7f68a3a1",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "ef02262b_890e7c1d",
         "filename": "genrule/genrule.go",
@@ -54,8 +97,25 @@
       "side": 1,
       "message": "If you moved the first pass request to a LoadHook you could stop the first pass very early, LoadHooks run as part of Android.bp parsing.  You could skip all mutators, singletons, and GenerateAndroidBuildActions.  It would require splitting the request and the response though, setting c.outputFiles and c.outputDeps has to stay inside GenerateAndroidBuildActions.",
       "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67351b1a_7521229b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-06T22:16:47Z",
+      "side": 1,
+      "message": "We anticipate needing mutators to run, however, as we may need variant-related information in order to craft the bazel request. Based on my preliminary work adopting this mechanism for cc_library, not in this CL, this was required",
+      "parentUuid": "ef02262b_890e7c1d",
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
