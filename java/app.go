@@ -1968,7 +1968,7 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.Clas
 		f := func(m android.Module, sdkVer int) {
 			dep := ctx.OtherModuleName(m)
 			if lib, ok := m.(Dependency); ok {
-				usesLibPaths.AddContextForSdk(ctx, sdkVer, dep,
+				usesLibPaths.AddContextForSdk(ctx, sdkVer, dep, isSharedSdkLibrary(m),
 					lib.DexJarBuildPath(), lib.DexJarInstallPath(), lib.ExportedSdkLibs())
 			} else if ctx.Config().AllowMissingDependencies() {
 				ctx.AddMissingDependencies([]string{dep})
@@ -1991,6 +1991,11 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.Clas
 	}
 
 	return usesLibPaths
+}
+
+func isSharedSdkLibrary(m android.Module) bool {
+	lib, ok := m.(SdkLibraryDependency)
+	return ok && lib.IsSharedLibrary()
 }
 
 // enforceUsesLibraries returns true of <uses-library> tags should be checked against uses_libs and optional_uses_libs
