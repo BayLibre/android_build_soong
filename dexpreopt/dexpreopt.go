@@ -80,16 +80,16 @@ func GenerateDexpreoptRule(ctx android.PathContext, globalSoong *GlobalSoongConf
 		bootProfileCommand(ctx, globalSoong, global, module, rule)
 	}
 
-	if !dexpreoptDisabled(ctx, global, module) {
-		if clc := genClassLoaderContext(ctx, global, module); clc != nil {
-			appImage := (generateProfile || module.ForceCreateAppImage || global.DefaultAppImages) &&
-				!module.NoCreateAppImage
+	if !dexpreoptDisabled(ctx, global, module) &&
+		validateClassLoaderContext(ctx, module.ClassLoaderContexts) {
 
-			generateDM := shouldGenerateDM(module, global)
+		appImage := (generateProfile || module.ForceCreateAppImage || global.DefaultAppImages) &&
+			!module.NoCreateAppImage
 
-			for archIdx, _ := range module.Archs {
-				dexpreoptCommand(ctx, globalSoong, global, module, rule, archIdx, *clc, profile, appImage, generateDM)
-			}
+		generateDM := shouldGenerateDM(module, global)
+
+		for archIdx, _ := range module.Archs {
+			dexpreoptCommand(ctx, globalSoong, global, module, rule, archIdx, profile, appImage, generateDM)
 		}
 	}
 
@@ -195,8 +195,8 @@ func bootProfileCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig,
 }
 
 func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, global *GlobalConfig,
-	module *ModuleConfig, rule *android.RuleBuilder, archIdx int, classLoaderContexts classLoaderContextMap,
-	profile android.WritablePath, appImage bool, generateDM bool) {
+	module *ModuleConfig, rule *android.RuleBuilder, archIdx int, profile android.WritablePath,
+	appImage bool, generateDM bool) {
 
 	arch := module.Archs[archIdx]
 
@@ -233,6 +233,16 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 	rule.Command().FlagWithOutput("rm -f ", odexPath)
 
 	if jarIndex := android.IndexList(module.Name, systemServerJars); jarIndex >= 0 {
+		// System server jars should be dexpreopted together: class loader context of each jar
+		// should include all preceding jars on the system server classpath.
+
+		var clcHost android.Paths
+		var clcTarget []string
+		for _, lib := range systemServerJars[:jarIndex] {
+			clcHost = append(clcHost, SystemServerDexJarHostPath(ctx, lib))
+			clcTarget = append(clcTarget, filepath.Join("/system/framework", lib+".jar"))
+		}
+
 		// Copy the system server jar to a predefined location where dex2oat will find it.
 		dexPathHost := SystemServerDexJarHostPath(ctx, module.Name)
 		rule.Command().Text("mkdir -p").Flag(filepath.Dir(dexPathHost.String()))
@@ -240,11 +250,11 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 		checkSystemServerOrder(ctx, jarIndex)
 
-		clc := classLoaderContexts[AnySdkVersion]
 		rule.Command().
-			Text("class_loader_context_arg=--class-loader-context=PCL[" + strings.Join(clc.Host.Strings(), ":") + "]").
-			Implicits(clc.Host).
-			Text("stored_class_loader_context_arg=--stored-class-loader-context=PCL[" + strings.Join(clc.Target, ":") + "]")
+			Text("class_loader_context_arg=--class-loader-context=PCL[" + strings.Join(clcHost.Strings(), ":") + "]").
+			Implicits(clcHost).
+			Text("stored_class_loader_context_arg=--stored-class-loader-context=PCL[" + strings.Join(clcTarget, ":") + "]")
+
 	} else if module.EnforceUsesLibraries {
 		// Generate command that saves target SDK version in a shell variable.
 		if module.ManifestPath != nil {
@@ -264,13 +274,16 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 		}
 
 		// Generate command that saves host and target class loader context in shell variables.
-		clc, paths := computeClassLoaderContext(ctx, classLoaderContexts)
+		fixClassLoaderContext(ctx, module.ClassLoaderContexts)
+		clc, paths := ComputeClassLoaderContext(module.ClassLoaderContexts)
 		cmd := rule.Command().
 			Text(`eval "$(`).Tool(globalSoong.ConstructContext).
 			Text(` --target-sdk-version ${target_sdk_version}`).
 			Text(clc).Implicits(paths)
 		cmd.Text(`)"`)
+
 	} else {
+		// Other libraries or APKs for which the exact <uses-library> list is unknown.
 		// Pass special class loader context to skip the classpath and collision check.
 		// This will get removed once LOCAL_USES_LIBRARIES is enforced.
 		// Right now LOCAL_USES_LIBRARIES is opt in, for the case where it's not specified we still default
