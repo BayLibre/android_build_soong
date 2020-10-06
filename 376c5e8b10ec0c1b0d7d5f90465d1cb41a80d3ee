@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5815bb_03bab1fe",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-06T09:29:43Z",
+      "side": 1,
+      "message": "will we have \u0027installable\u0027 linker_config modules? If not, why don\u0027t we remove this property and set LOCAL_UNINSTALLABLE_MODULE true?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "376c5e8b10ec0c1b0d7d5f90465d1cb41a80d3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27365161_3e0d3d71",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-06T09:29:43Z",
+      "side": 1,
+      "message": "Use RuleBuilder instead.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "376c5e8b10ec0c1b0d7d5f90465d1cb41a80d3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
