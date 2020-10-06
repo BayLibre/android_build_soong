@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd3a2e95_3cf7cb49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-06T22:51:30Z",
+      "side": 1,
+      "message": "Assuming this isn\u0027t tested on AOSP. Let me know if you prefer to minimize the delta, or we can catch AOSP up (PS1 -\u003e PS2 removes one conflicting entry)",
+      "revId": "3453948ad081121bfbd93e3e74baf289f8a61379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
