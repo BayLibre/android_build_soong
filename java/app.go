@@ -1968,7 +1968,7 @@ func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.Clas
 		f := func(m android.Module, sdkVer int) {
 			dep := ctx.OtherModuleName(m)
 			if lib, ok := m.(Dependency); ok {
-				usesLibPaths.AddConditionalContext(ctx, sdkVer, dep,
+				usesLibPaths.AddConditionalContext(ctx, sdkVer, dep, lib.IsSharedLibrary(),
 					lib.DexJarBuildPath(), lib.DexJarInstallPath(), lib.ExportedSdkLibs())
 			} else if ctx.Config().AllowMissingDependencies() {
 				ctx.AddMissingDependencies([]string{dep})

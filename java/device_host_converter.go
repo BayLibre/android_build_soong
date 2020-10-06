@@ -159,6 +159,10 @@ func (d *DeviceHostConverter) DexJarInstallPath() android.Path {
 	return nil
 }
 
+func (d *DeviceHostConverter) IsSharedLibrary() bool {
+	return false
+}
+
 func (d *DeviceHostConverter) AidlIncludeDirs() android.Paths {
 	return nil
 }
