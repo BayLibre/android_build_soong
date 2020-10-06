@@ -673,6 +673,10 @@ func (c *commonToSdkLibraryAndImport) apiModuleName(apiScope *apiScope) string {
 	return c.namingScheme.apiModuleName(apiScope, c.moduleBase.BaseModuleName())
 }
 
+func (c *commonToSdkLibraryAndImport) IsSharedLibrary() bool {
+	return c.sharedLibrary()
+}
+
 // The component names for different outputs of the java_sdk_library.
 //
 // They are similar to the names used for the child modules it creates
@@ -918,6 +922,8 @@ type SdkLibraryDependency interface {
 	// jars for the stubs. The latter should only be needed when generating JavaDoc as otherwise
 	// they are identical to the corresponding header jars.
 	SdkImplementationJars(ctx android.BaseModuleContext, sdkVersion sdkSpec) android.Paths
+
+	IsSharedLibrary() bool
 }
 
 type SdkLibrary struct {
