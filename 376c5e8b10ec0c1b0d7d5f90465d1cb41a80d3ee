@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0e68d82_bdace153",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-06T09:40:44Z",
+      "side": 1,
+      "message": "nit: (*linkerConfig)(nil)",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "376c5e8b10ec0c1b0d7d5f90465d1cb41a80d3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27365161_3e0d3d71",
         "filename": "linkerconfig/linkerconfig.go",
         "patchSetId": 1
@@ -42,6 +65,52 @@
         "startChar": 0,
         "endLine": 84,
         "endChar": 3
+      },
+      "revId": "376c5e8b10ec0c1b0d7d5f90465d1cb41a80d3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fdb0db5_ede287d8",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-06T09:40:44Z",
+      "side": 1,
+      "message": "Please add comments explaining the module type. go/androidbp",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 43
+      },
+      "revId": "376c5e8b10ec0c1b0d7d5f90465d1cb41a80d3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e5525a_a13bdd1a",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-06T09:40:44Z",
+      "side": 1,
+      "message": "SetBoolIfTrue will omit the line if the condition is false.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 85
       },
       "revId": "376c5e8b10ec0c1b0d7d5f90465d1cb41a80d3ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
