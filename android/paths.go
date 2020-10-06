@@ -1572,6 +1572,11 @@ func (m testModuleInstallPathContext) InstallForceOS() (*OsType, *ArchType) {
 	return m.forceOS, m.forceArch
 }
 
+func (m testModuleInstallPathContext) ModuleErrorf(msg string, args ...interface{}) {
+	// Panic to allow tests catch it and convert to a test error.
+	panic(fmt.Sprintf(msg+"\n", args...))
+}
+
 func ModuleInstallPathContextForTesting(config Config) ModuleInstallPathContext {
 	target := Target{Os: Android, Arch: Arch{ArchType: Arm64}}
 	ctx := &testModuleInstallPathContext{

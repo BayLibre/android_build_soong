@@ -600,7 +600,7 @@ func (a *AndroidApp) installPath(ctx android.ModuleContext) android.InstallPath 
 	return android.PathForModuleInstall(ctx, installDir, a.installApkName+".apk")
 }
 
-func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext, sdkLibs dexpreopt.LibraryPaths) android.Path {
+func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	a.dexpreopter.installPath = a.installPath(ctx)
 	if a.dexProperties.Uncompress_dex == nil {
 		// If the value was not force-set by the user, use reasonable default based on the module.
@@ -608,12 +608,8 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext, sdkLibs dexpreop
 	}
 	a.dexpreopter.uncompressedDex = *a.dexProperties.Uncompress_dex
 	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
-	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
-	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
-	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
-	a.dexpreopter.libraryPaths.AddLibraryPaths(sdkLibs)
+	a.dexpreopter.classLoaderContexts = a.exportedSdkLibs
 	a.dexpreopter.manifestFile = a.mergedManifestFile
-	a.exportedSdkLibs = make(dexpreopt.LibraryPaths)
 
 	if ctx.ModuleName() != "framework-res" {
 		a.Module.compile(ctx, a.aaptSrcJar)
@@ -779,6 +775,8 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		a.aapt.noticeFile = a.noticeOutputs.HtmlGzOutput
 	}
 
+	a.exportedSdkLibs = a.usesLibrary.usesLibraryPaths(ctx)
+
 	// Process all building blocks, from AAPT to certificates.
 	a.aaptBuildActions(ctx)
 
@@ -786,7 +784,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	a.usesLibrary.freezeEnforceUsesLibraries()
 
 	// Add implicit SDK libraries to <uses-library> list.
-	for _, usesLib := range android.SortedStringKeys(a.aapt.sdkLibraries) {
+	for _, usesLib := range a.aapt.sdkLibraries.UsesLibs() {
 		a.usesLibrary.addLib(usesLib, inList(usesLib, dexpreopt.OptionalCompatUsesLibs))
 	}
 
@@ -803,7 +801,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	a.linter.resources = a.aapt.resourceFiles
 	a.linter.buildModuleReportZip = ctx.Config().UnbundledBuildApps()
 
-	dexJarFile := a.dexBuildActions(ctx, a.aapt.sdkLibraries)
+	dexJarFile := a.dexBuildActions(ctx)
 
 	jniLibs, certificateDeps := collectAppDeps(ctx, a, a.shouldEmbedJnis(ctx), !Bool(a.appProperties.Jni_uses_platform_apis))
 	jniJarFile := a.jniBuildActions(jniLibs, ctx)
@@ -1526,9 +1524,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	a.dexpreopter.uncompressedDex = a.shouldUncompressDex(ctx)
 
 	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
-	a.dexpreopter.usesLibs = a.usesLibrary.usesLibraryProperties.Uses_libs
-	a.dexpreopter.optionalUsesLibs = a.usesLibrary.presentOptionalUsesLibs(ctx)
-	a.dexpreopter.libraryPaths = a.usesLibrary.usesLibraryPaths(ctx)
+	a.dexpreopter.classLoaderContexts = a.usesLibrary.usesLibraryPaths(ctx)
 
 	dexOutput := a.dexpreopter.dexpreopt(ctx, jnisUncompressed)
 	if a.dexpreopter.uncompressedDex {
@@ -1838,6 +1834,7 @@ func (r *RuntimeResourceOverlay) GenerateAndroidBuildActions(ctx android.ModuleC
 		aaptLinkFlags = append(aaptLinkFlags,
 			"--rename-overlay-target-package "+*r.overridableProperties.Target_package_name)
 	}
+	r.aapt.sdkLibraries = make(dexpreopt.ClassLoaderContextMap)
 	r.aapt.buildActions(ctx, r, aaptLinkFlags...)
 
 	// Sign the built package
@@ -1964,14 +1961,15 @@ func (u *usesLibrary) presentOptionalUsesLibs(ctx android.BaseModuleContext) []s
 
 // usesLibraryPaths returns a map of module names of shared library dependencies to the paths
 // to their dex jars on host and on device.
-func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.LibraryPaths {
-	usesLibPaths := make(dexpreopt.LibraryPaths)
+func (u *usesLibrary) usesLibraryPaths(ctx android.ModuleContext) dexpreopt.ClassLoaderContextMap {
+	usesLibPaths := make(dexpreopt.ClassLoaderContextMap)
 
 	if !ctx.Config().UnbundledBuild() {
 		f := func(m android.Module, sdkVer int) {
 			dep := ctx.OtherModuleName(m)
 			if lib, ok := m.(Dependency); ok {
-				usesLibPaths.AddLibraryPath(ctx, dep, lib.DexJarBuildPath(), lib.DexJarInstallPath())
+				usesLibPaths.AddContextForSdk(ctx, sdkVer, dep,
+					lib.DexJarBuildPath(), lib.DexJarInstallPath(), lib.ExportedSdkLibs())
 			} else if ctx.Config().AllowMissingDependencies() {
 				ctx.AddMissingDependencies([]string{dep})
 			} else {
