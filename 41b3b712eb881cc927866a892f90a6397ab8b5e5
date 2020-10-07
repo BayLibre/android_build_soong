@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1d445c_6c6c2faf",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-10-07T16:32:00Z",
+      "side": 1,
+      "message": "Previous to your change, but this name is being less and less correct?",
+      "range": {
+        "startLine": 611,
+        "startChar": 39,
+        "endLine": 611,
+        "endChar": 54
+      },
+      "revId": "41b3b712eb881cc927866a892f90a6397ab8b5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
