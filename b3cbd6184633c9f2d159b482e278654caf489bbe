@@ -16,6 +16,24 @@
       "message": "It might be useful to differentiate between the two different cases, i.e. multiple modules and wrong number of generated files. In the latter case it would be worth logging the files or at the very least the count of the number of different files.",
       "revId": "b3cbd6184633c9f2d159b482e278654caf489bbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "921baa9c_e592820c",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-07T14:17:25Z",
+      "side": 1,
+      "message": "I\u0027d be surprised if either of these conditions will ever trigger. Whoever causes that to happen is going to have to dig in anyway.",
+      "parentUuid": "bf0745c4_12383892",
+      "revId": "b3cbd6184633c9f2d159b482e278654caf489bbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
