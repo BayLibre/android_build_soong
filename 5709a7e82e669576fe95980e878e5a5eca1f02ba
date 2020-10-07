@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d96eefd0_7eabecd3",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-07T00:20:40Z",
+      "side": 1,
+      "message": "This is still initialized here instead of in NewBazelContext.",
+      "parentUuid": "2ebe8559_4e477df5",
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "16d2b389_7f68a3a1",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 8
@@ -83,6 +101,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e6dcc48_3ed032f5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-07T00:20:40Z",
+      "side": 1,
+      "message": "Ack, but I don\u0027t see this as a long term viable solution for Bazel integration, since it will always close to double Soong time which is already a major pain point for developers.",
+      "parentUuid": "6846cb66_a113922d",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef02262b_890e7c1d",
@@ -114,6 +156,24 @@
       "side": 1,
       "message": "We anticipate needing mutators to run, however, as we may need variant-related information in order to craft the bazel request. Based on my preliminary work adopting this mechanism for cc_library, not in this CL, this was required",
       "parentUuid": "ef02262b_890e7c1d",
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "533c62b6_b644c867",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-07T00:20:40Z",
+      "side": 1,
+      "message": "Ack, for other module types doing it late will be necessary.",
+      "parentUuid": "67351b1a_7521229b",
       "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
