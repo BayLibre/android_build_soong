@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18568632_ce0ff62b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-07T04:14:45Z",
+      "side": 1,
+      "message": "Indeed, sorry about that. There was a snafu with some recent changes that had broken things -- my fix here got reverted in the confusion.",
+      "parentUuid": "d96eefd0_7eabecd3",
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16d2b389_7f68a3a1",
@@ -115,6 +133,30 @@
       "side": 1,
       "message": "Ack, but I don\u0027t see this as a long term viable solution for Bazel integration, since it will always close to double Soong time which is already a major pain point for developers.",
       "parentUuid": "6846cb66_a113922d",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 74
+      },
+      "revId": "5709a7e82e669576fe95980e878e5a5eca1f02ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e433462_f0697564",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-07T04:14:45Z",
+      "side": 1,
+      "message": "Indeed, acknowledged. We\u0027ll certainly make this a high priority followup.\n\nAre there metrics on which portions of soong_build are most expensive? If later phases (for example, writing the ninja file) are a significant cost, then it\u0027s certainly low hanging fruit to offer more granularity for StopBefore.",
+      "parentUuid": "0e6dcc48_3ed032f5",
       "range": {
         "startLine": 93,
         "startChar": 2,

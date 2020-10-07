@@ -22,6 +22,30 @@
       },
       "revId": "39c69aca21eabcfae45b8d2e5ea45f3b1f7d5af5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432b94e4_0c474658",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-07T04:14:45Z",
+      "side": 1,
+      "message": "I considered it but deemed this slightly cleaner, particularly as the API is cleaner for regular maps, as they are typed, and sync.Map is not. (It\u0027s also a bit more of a pain to iterate over the range of a sync.Map.\n\nWould you prefer I switch? Otherwise, this was a conscious decision to do things this way :)",
+      "parentUuid": "6f42bfec_8c423d8b",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 37
+      },
+      "revId": "39c69aca21eabcfae45b8d2e5ea45f3b1f7d5af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
