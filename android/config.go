@@ -916,6 +916,16 @@ func (c *config) EnforceRROForModule(name string) bool {
 	return false
 }
 
+func (c *config) EnforceRROExemptedForModule(name string) bool {
+	exemptedList := c.productVariables.EnforceRROExemptedTargets
+	if len(exemptedList) > 0 {
+		if InList(name, exemptedList) {
+			return true
+		}
+	}
+	return false
+}
+
 func (c *config) EnforceRROExcludedOverlay(path string) bool {
 	excluded := c.productVariables.EnforceRROExcludedOverlays
 	if len(excluded) > 0 {
