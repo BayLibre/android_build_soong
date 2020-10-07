@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "ada7d0e2_5c1bdebc",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Awesome work! This looks non-intrusive, which is nice. My comments are mostly around improving clarity.",
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "125529e1_3f37fdf1",
         "filename": "android/bazel_handler.go",
@@ -37,10 +38,10 @@
         "endChar": 7
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "0a99168e_6f32f7cf",
         "filename": "android/bazel_handler.go",
@@ -61,10 +62,10 @@
         "endChar": 7
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "60a0ac40_9834235a",
         "filename": "android/bazel_handler.go",
@@ -84,10 +85,10 @@
         "endChar": 18
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "a9c5dcb0_01b847a7",
         "filename": "android/bazel_handler.go",
@@ -108,10 +109,10 @@
         "endChar": 18
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "053a3a02_2027f40f",
         "filename": "android/bazel_handler.go",
@@ -131,10 +132,10 @@
         "endChar": 34
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f888ffc2_bc23402e",
         "filename": "android/bazel_handler.go",
@@ -155,10 +156,10 @@
         "endChar": 34
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4da05fa6_017be307",
         "filename": "android/bazel_handler.go",
@@ -178,10 +179,10 @@
         "endChar": 66
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "927a03cd_29ec1752",
         "filename": "android/bazel_handler.go",
@@ -202,10 +203,10 @@
         "endChar": 66
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "71d29b3d_7cd9ae72",
         "filename": "android/bazel_handler.go",
@@ -225,10 +226,10 @@
         "endChar": 12
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9b100fe9_c6136095",
         "filename": "android/bazel_handler.go",
@@ -248,10 +249,10 @@
         "endChar": 58
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "23d311f6_bbb4e90b",
         "filename": "android/bazel_handler.go",
@@ -272,10 +273,10 @@
         "endChar": 12
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "53f6a0ca_e6dad073",
         "filename": "android/bazel_handler.go",
@@ -296,10 +297,10 @@
         "endChar": 58
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "681b16e6_e0389d7e",
         "filename": "android/makevars.go",
@@ -319,10 +320,10 @@
         "endChar": 27
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "73095181_620015eb",
         "filename": "android/makevars.go",
@@ -343,10 +344,10 @@
         "endChar": 27
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "305873fb_85658209",
         "filename": "bazel/bazelenv.sh",
@@ -366,10 +367,10 @@
         "endChar": 2
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "da197d4e_7375a830",
         "filename": "bazel/bazelenv.sh",
@@ -390,10 +391,10 @@
         "endChar": 2
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c920bdb5_9e48b91d",
         "filename": "bazel/bazelenv.sh",
@@ -413,10 +414,10 @@
         "endChar": 34
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "d0891805_176f85d1",
         "filename": "bazel/bazelenv.sh",
@@ -437,10 +438,10 @@
         "endChar": 34
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9e06493a_2c32fc43",
         "filename": "cmd/soong_build/main.go",
@@ -460,10 +461,10 @@
         "endChar": 34
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "26c87b5a_b4535ee5",
         "filename": "cmd/soong_build/main.go",
@@ -484,10 +485,10 @@
         "endChar": 34
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "90d084b7_9f3a2912",
         "filename": "genrule/genrule.go",
@@ -507,10 +508,10 @@
         "endChar": 20
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "bf4ab92a_bd08fad8",
         "filename": "genrule/genrule.go",
@@ -531,10 +532,34 @@
         "endChar": 20
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b4c33e_4fc686a1",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-07T22:46:10Z",
+      "side": 1,
+      "message": "Resolving",
+      "parentUuid": "bf4ab92a_bd08fad8",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "5238fb8c_ba291c72",
         "filename": "genrule/genrule.go",
@@ -554,10 +579,10 @@
         "endChar": 12
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "577c8b55_aed01302",
         "filename": "genrule/genrule.go",
@@ -578,10 +603,10 @@
         "endChar": 12
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6b7fcd01_ce786f45",
         "filename": "genrule/genrule.go",
@@ -601,10 +626,10 @@
         "endChar": 1
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c33fed20_d155cc20",
         "filename": "genrule/genrule.go",
@@ -625,10 +650,10 @@
         "endChar": 1
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "85d95df8_aefdf27a",
         "filename": "genrule/genrule_test.go",
@@ -648,10 +673,10 @@
         "endChar": 0
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e171f638_29eedf5f",
         "filename": "genrule/genrule_test.go",
@@ -672,10 +697,10 @@
         "endChar": 0
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c93601d7_86fc1204",
         "filename": "genrule/genrule_test.go",
@@ -695,10 +720,10 @@
         "endChar": 33
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c6a0782b_bdfd1018",
         "filename": "genrule/genrule_test.go",
@@ -719,8 +744,7 @@
         "endChar": 33
       },
       "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
