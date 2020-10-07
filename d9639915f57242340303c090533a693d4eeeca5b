@@ -22,6 +22,30 @@
       },
       "revId": "d9639915f57242340303c090533a693d4eeeca5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3a5b97_d7fe3160",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-07T08:53:15Z",
+      "side": 1,
+      "message": "Nevermind.",
+      "parentUuid": "9e242e92_1129597f",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1664,
+        "endChar": 1
+      },
+      "revId": "d9639915f57242340303c090533a693d4eeeca5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
