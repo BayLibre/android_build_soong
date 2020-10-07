@@ -22,6 +22,30 @@
       },
       "revId": "9cef6eec8f41c133379adb30489d35a89dd2e621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcf0745_e1924039",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-07T21:18:16Z",
+      "side": 1,
+      "message": "The next patch makes the only callers of this only use the result as a string.",
+      "parentUuid": "f5d27c77_4dab9253",
+      "range": {
+        "startLine": 107,
+        "startChar": 83,
+        "endLine": 107,
+        "endChar": 91
+      },
+      "revId": "9cef6eec8f41c133379adb30489d35a89dd2e621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
