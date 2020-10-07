@@ -48,6 +48,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d2605bb_210222e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-07T10:21:23Z",
+      "side": 1,
+      "message": "Matthew could you have a look at the diffs and see if you are happy with the changes.\n\nAnton, do you know where these diffs come from?",
+      "revId": "a85208056f2a5826b18d287727f8f4dcd1e5e9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "93551d9b_05ccf026",
@@ -119,6 +136,30 @@
       "writtenOn": "2020-10-07T09:51:04Z",
       "side": 1,
       "message": "Module names need to be unique, so I don\u0027t think it can happen, but I\u0027ll add it to be sure.",
+      "parentUuid": "2462a7cd_4a51abc4",
+      "range": {
+        "startLine": 240,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 23
+      },
+      "revId": "a85208056f2a5826b18d287727f8f4dcd1e5e9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e424d8_c613bfe9",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-07T10:21:23Z",
+      "side": 1,
+      "message": "There should only ever be one variant of a genrule with a specific name so this is reasonably safe. Checking wouldn\u0027t hurt though.",
       "parentUuid": "2462a7cd_4a51abc4",
       "range": {
         "startLine": 240,
