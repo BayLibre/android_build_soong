@@ -169,6 +169,30 @@
       },
       "revId": "a85208056f2a5826b18d287727f8f4dcd1e5e9cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05434c4f_07e25d4b",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-07T10:23:34Z",
+      "side": 1,
+      "message": "Snap. Anton, FYI while module names are unique each module can potentially have multiple variants and while the method is called VisitAllModules it actually visits each module variant. In this case genrule only has one variant.",
+      "parentUuid": "f8e424d8_c613bfe9",
+      "range": {
+        "startLine": 240,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 23
+      },
+      "revId": "a85208056f2a5826b18d287727f8f4dcd1e5e9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
