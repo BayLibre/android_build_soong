@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21f7105c_d0676278",
+        "filename": "bazel/bazelenv.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-07T06:34:58Z",
+      "side": 1,
+      "message": "This doesn\u0027t work universally.\n\nI have `set show-all-if-ambiguous on` in my ~/.bashrc, resulting in the following argv:\n\nwhich bazel\u003d/usr/local/google/home/jingwen/bin/bazel\n$#\u003d2\n$0\u003d-bash\n$1\u003dshow-all-if-ambiguous\n$2\u003don\n$3\u003d\nUSE_BAZEL\u003d1\nBAZEL_PATH\u003dshow-all-if-ambiguous\nBAZEL_HOME\u003d/tmp/tmp.CGEtpJDq4M/bazelhome\nBAZEL_OUTPUT_BASE\u003d/tmp/tmp.CGEtpJDq4M/output\nBAZEL_WORKSPACE\u003d/usr/local/google/home/jingwen/aosp",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "5f140e77c1242d3c162e3786431899bb21aab581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8da4d7_a747a7c3",
+        "filename": "bazel/bazelenv.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-07T06:34:58Z",
+      "side": 1,
+      "message": "Also echo BAZEL_PATH please?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "5f140e77c1242d3c162e3786431899bb21aab581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d139317a_c242f022",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 10
