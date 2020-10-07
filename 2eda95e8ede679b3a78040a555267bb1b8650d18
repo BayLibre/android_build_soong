@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00a8a0d3_85955190",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-10-07T19:36:40Z",
+      "side": 1,
+      "message": "stub",
+      "range": {
+        "startLine": 1650,
+        "startChar": 61,
+        "endLine": 1650,
+        "endChar": 66
+      },
+      "revId": "2eda95e8ede679b3a78040a555267bb1b8650d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84fd17a5_654e7d66",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1668,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-10-07T19:36:40Z",
+      "side": 1,
+      "message": "Is this still true when it\u0027s not NDK-specific?",
+      "range": {
+        "startLine": 1668,
+        "startChar": 39,
+        "endLine": 1668,
+        "endChar": 62
+      },
+      "revId": "2eda95e8ede679b3a78040a555267bb1b8650d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
