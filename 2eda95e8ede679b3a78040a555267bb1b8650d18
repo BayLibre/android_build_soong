@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b42ff1fa_f8fdfbc8",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-07T21:24:23Z",
+      "side": 1,
+      "message": "This is still only true for llndk libraries.  NDK libraries get the versions from their first_version property, APEX stubs get the versions from their stubs.versions property.  Only llndk_libarary modules don\u0027t specify the versions, and instead get the stubs.versions property of the cc_library module with the same name.",
+      "parentUuid": "00a8a0d3_85955190",
+      "range": {
+        "startLine": 1650,
+        "startChar": 61,
+        "endLine": 1650,
+        "endChar": 66
+      },
+      "revId": "2eda95e8ede679b3a78040a555267bb1b8650d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84fd17a5_654e7d66",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-07T19:36:40Z",
       "side": 1,
       "message": "Is this still true when it\u0027s not NDK-specific?",
+      "range": {
+        "startLine": 1668,
+        "startChar": 39,
+        "endLine": 1668,
+        "endChar": 62
+      },
+      "revId": "2eda95e8ede679b3a78040a555267bb1b8650d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bce34ae8_ea8b2d1c",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1668,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-07T21:24:23Z",
+      "side": 1,
+      "message": "This section is still NDK specific, it only applies to *stubDecorator.",
+      "parentUuid": "84fd17a5_654e7d66",
       "range": {
         "startLine": 1668,
         "startChar": 39,
