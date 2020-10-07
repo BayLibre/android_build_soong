@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e242e92_1129597f",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-07T08:44:33Z",
+      "side": 1,
+      "message": "This seems to be behavioral change. Could you explain a little bit on this?",
+      "range": {
+        "startLine": 1636,
+        "startChar": 0,
+        "endLine": 1664,
+        "endChar": 1
+      },
+      "revId": "d9639915f57242340303c090533a693d4eeeca5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
