@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "8ef82608_c1cafc61",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Thanks, PTAL.\n\nI\u0027ve also considered doing the reflection thing a-la android:arch_variant, but that feels like too much for this use case.\n",
       "revId": "4bf0da2f48317060155ee81bae5e63ae3f2b9796",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e03e4d48_9d25a0e2",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "For the Android.bp syntax, I think Colin should look into that.",
       "revId": "4bf0da2f48317060155ee81bae5e63ae3f2b9796",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e3a50186_8a93f4a4",
         "filename": "cc/prebuilt.go",
@@ -54,8 +55,31 @@
         "endChar": 27
       },
       "revId": "4bf0da2f48317060155ee81bae5e63ae3f2b9796",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0d84ca_658b1ee0",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-10-07T23:41:19Z",
+      "side": 1,
+      "message": "Done! (two months later:) )",
+      "parentUuid": "e3a50186_8a93f4a4",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "4bf0da2f48317060155ee81bae5e63ae3f2b9796",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
