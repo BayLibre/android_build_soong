@@ -22,6 +22,30 @@
       },
       "revId": "db194ed85ff530c34ee884813c7d225f4885fd77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "959692d2_9b5b4cc3",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-10-07T14:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b0b6e8_74129d8f",
+      "range": {
+        "startLine": 75,
+        "startChar": 35,
+        "endLine": 75,
+        "endChar": 60
+      },
+      "revId": "db194ed85ff530c34ee884813c7d225f4885fd77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
