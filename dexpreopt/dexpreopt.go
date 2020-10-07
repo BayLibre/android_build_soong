@@ -333,9 +333,37 @@ func genClassLoaderContext(ctx android.PathContext, global *GlobalConfig, module
 	return &classLoaderContexts
 }
 
+func findHidlBasePaths(ctx android.PathContext, clcMap classLoaderContextMap) (android.Path, string) {
+	var hostPath android.Path
+	targetPath := UnknownInstallLibraryPath
+
+	if clc, ok := clcMap[29]; ok {
+		for i, lib := range clc.Names {
+			if lib == AndroidHidlBase {
+				hostPath = clc.Host[i]
+				targetPath = clc.Target[i]
+				break
+			}
+		}
+	}
+
+	if hostPath == nil {
+		android.ReportPathErrorf(ctx, "dexpreopt cannot find build path to '%s'", AndroidHidlBase)
+	} else if targetPath == UnknownInstallLibraryPath {
+		android.ReportPathErrorf(ctx, "dexpreopt cannot find install path to '%s'", AndroidHidlBase)
+	}
+
+	return hostPath, targetPath
+}
+
 // Now that the full unconditional context is known, reconstruct conditional context.
 // Apply filters for individual libraries, mirroring what the PackageManager does when it
 // constructs class loader context on device.
+//
+// TODO(b/132357300):
+//   - move handling of android.hidl.manager -> ndroid.hidl.base dependency here
+//   - remove android.hidl.manager and android.hidl.base unless the app is a system app.
+//
 func fixConditionalClassLoaderContext(clcMap classLoaderContextMap) {
 	usesLibs := clcMap.usesLibs()
 
@@ -354,6 +382,53 @@ func fixConditionalClassLoaderContext(clcMap classLoaderContextMap) {
 			}
 		}
 	}
+}
+
+// Print class loader context as a string (in the form accepted by dex2oat).
+// Return the resulting string and a slice of on-host build paths to all library dependencies.
+func printClassLoaderContext(ctx android.PathContext, clcMap classLoaderContextMap) (clcStr string, paths android.Paths) {
+	hidlBaseHostPath, hidlBaseTargetPath := findHidlBasePaths(ctx, clcMap)
+
+	for _, ver := range android.SortedIntKeys(clcMap) {
+		clc := clcMap.getValue(ver)
+
+		clcLen := len(clc.Names)
+		if clcLen != len(clc.Host) || clcLen != len(clc.Target) {
+			android.ReportPathErrorf(ctx, "ill-formed class loader context")
+		}
+
+		var hostClc, targetClc []string
+		var ps android.Paths
+
+		for i := 0; i < clcLen; i++ {
+			hostStr := "PCL[" + clc.Host[i].String() + "]"
+			targetStr := "PCL[" + clc.Target[i] + "]"
+
+			// Add depndency of android.hidl.manager on android.hidl.base (it is not tracked as
+			// a regular dependency by the build system, so it needs special handling).
+			if clc.Names[i] == AndroidHidlManager {
+				hostStr += "{PCL[" + hidlBaseHostPath.String() + "]}"
+				targetStr += "{PCL[" + hidlBaseTargetPath + "]}"
+				ps = append(ps, hidlBaseHostPath)
+			}
+
+			hostClc = append(hostClc, hostStr)
+			targetClc = append(targetClc, targetStr)
+			ps = append(ps, clc.Host[i])
+		}
+
+		if ps != nil {
+			sdkVerStr := fmt.Sprintf("%d", ver)
+			if ver == AnySdkVersion {
+				sdkVerStr = "any" // a special keyword that means any SDK version
+			}
+			clcStr += fmt.Sprintf(" --host-context-for-sdk %s %s", sdkVerStr, strings.Join(hostClc, "#"))
+			clcStr += fmt.Sprintf(" --target-context-for-sdk %s %s", sdkVerStr, strings.Join(targetClc, "#"))
+			paths = append(paths, ps...)
+		}
+	}
+
+	return clcStr, paths
 }
 
 func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, global *GlobalConfig,
@@ -426,20 +501,11 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 		}
 
 		// Generate command that saves host and target class loader context in shell variables.
+		clc, paths := printClassLoaderContext(ctx, classLoaderContexts)
 		cmd := rule.Command().
 			Text(`eval "$(`).Tool(globalSoong.ConstructContext).
-			Text(` --target-sdk-version ${target_sdk_version}`)
-		for _, ver := range android.SortedIntKeys(classLoaderContexts) {
-			if clc := classLoaderContexts.getValue(ver); len(clc.Host) > 0 {
-				verString := fmt.Sprintf("%d", ver)
-				if ver == AnySdkVersion {
-					verString = "any" // a special keyword that means any SDK version
-				}
-				cmd.Textf(`--host-classpath-for-sdk %s %s`, verString, strings.Join(clc.Host.Strings(), ":")).
-					Implicits(clc.Host).
-					Textf(`--target-classpath-for-sdk %s %s`, verString, strings.Join(clc.Target, ":"))
-			}
-		}
+			Text(` --target-sdk-version ${target_sdk_version}`).
+			Text(clc).Implicits(paths)
 		cmd.Text(`)"`)
 	} else {
 		// Pass special class loader context to skip the classpath and collision check.
