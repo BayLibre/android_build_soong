@@ -352,6 +352,8 @@ func fixConditionalClassLoaderContext(clcMap classLoaderContextMap) {
 			} else {
 				clcMap[sdkVer].addLib(lib, clc.Host[i], clc.Target[i])
 			}
+			// TODO(b/132357300): remove android.hidl.manager and android.hidl.base unless the app
+			// is a system app (like the PackageManager does).
 		}
 	}
 }
