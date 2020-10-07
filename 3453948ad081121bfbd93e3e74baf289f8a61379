@@ -16,6 +16,46 @@
       "message": "Assuming this isn\u0027t tested on AOSP. Let me know if you prefer to minimize the delta, or we can catch AOSP up (PS1 -\u003e PS2 removes one conflicting entry)",
       "revId": "3453948ad081121bfbd93e3e74baf289f8a61379",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c0ae6fd_d1aaee7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-07T08:28:39Z",
+      "side": 1,
+      "message": "Arthur, could you answer to my question?",
+      "revId": "3453948ad081121bfbd93e3e74baf289f8a61379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "995d04b7_0fc8611e",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-07T08:28:39Z",
+      "side": 1,
+      "message": "I don\u0027t understand why the second line doesn\u0027t imply the first line.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 44
+      },
+      "revId": "3453948ad081121bfbd93e3e74baf289f8a61379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
