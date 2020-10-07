@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b078852c_d029635a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-07T16:44:30Z",
+      "side": 1,
+      "message": "Sure, I split this CL in three. (That actually made me change a few things.)",
+      "parentUuid": "36407c81_a8328a11",
+      "revId": "0fadf6e66761df53959cd9a21e8f077d7f262061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41e4c795_80de4c75",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-07T13:34:58Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "0fadf6e66761df53959cd9a21e8f077d7f262061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f2f110d_0bdd6ed5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-07T16:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41e4c795_80de4c75",
       "range": {
         "startLine": 14,
         "startChar": 41,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a490ee_ccef1c28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-07T16:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1de80c_c30ee4a7",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "0fadf6e66761df53959cd9a21e8f077d7f262061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "266b72e0_a1c3486d",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-10-07T13:34:58Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 31,
+        "startChar": 37,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "0fadf6e66761df53959cd9a21e8f077d7f262061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "067021be_04cbfe68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-07T16:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "266b72e0_a1c3486d",
       "range": {
         "startLine": 31,
         "startChar": 37,
