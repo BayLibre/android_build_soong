@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e59fc58_ae0fc99b",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-07T08:57:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15797b3f_a7dbe8c7",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "376c5e8b10ec0c1b0d7d5f90465d1cb41a80d3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0e68d82_bdace153",
