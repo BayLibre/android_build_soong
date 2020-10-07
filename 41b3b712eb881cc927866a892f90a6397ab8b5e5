@@ -22,6 +22,30 @@
       },
       "revId": "41b3b712eb881cc927866a892f90a6397ab8b5e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d59590c_4c27ec70",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-07T16:45:34Z",
+      "side": 1,
+      "message": "Yes, I kept it to minimize the diff. I plan to rename it in a follow-up CL, as well as to move ClassLoaderContext in a separate file in soong/dexpreopt as it has grown too large.",
+      "parentUuid": "ed1d445c_6c6c2faf",
+      "range": {
+        "startLine": 611,
+        "startChar": 39,
+        "endLine": 611,
+        "endChar": 54
+      },
+      "revId": "41b3b712eb881cc927866a892f90a6397ab8b5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
