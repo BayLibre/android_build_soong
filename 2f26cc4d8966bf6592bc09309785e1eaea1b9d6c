@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "510c607b_f22a3e42",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Thanks Colin for taking this major refactoring. The change is quite big, so it will take some time for me to read/understand all the changes. But I believe in you, so if you feel confident, don\u0027t wait for my review. :)\n\nThe inlined comments below are only for the changes that I actually looked into.",
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e6b5846b_20355f53",
         "filename": "android/apex.go",
@@ -37,10 +38,10 @@
         "endChar": 51
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d8c68165_0a226b68",
         "filename": "android/apex.go",
@@ -61,10 +62,34 @@
         "endChar": 51
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba0c8d3_f2c2c0c1",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-07T17:57:50Z",
+      "side": 1,
+      "message": "Resolving.",
+      "parentUuid": "d8c68165_0a226b68",
+      "range": {
+        "startLine": 49,
+        "startChar": 33,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "dd2f7187_5603aa79",
         "filename": "android/apex.go",
@@ -78,10 +103,10 @@
       "side": 1,
       "message": "Could you explain why this is reset? (and/or leave it as an inline comment?)",
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "66bbaa40_baf2df2c",
         "filename": "android/apex.go",
@@ -96,10 +121,10 @@
       "message": "Done",
       "parentUuid": "dd2f7187_5603aa79",
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5dedbd32_37e72af7",
         "filename": "android/apex.go",
@@ -119,10 +144,10 @@
         "endChar": 3
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5c4ea6d9_5f9fb158",
         "filename": "android/apex.go",
@@ -143,10 +168,10 @@
         "endChar": 3
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "9fca3373_1da2d96d",
         "filename": "android/apex.go",
@@ -167,10 +192,10 @@
         "endChar": 3
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7bf6e2f6_165cee99",
         "filename": "android/apex.go",
@@ -184,10 +209,10 @@
       "side": 1,
       "message": "can we stop traversing direct deps once we hit CopyDirectlyInAnyApexTag?",
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "d0c2da77_bf2d0bd9",
         "filename": "android/apex.go",
@@ -202,10 +227,10 @@
       "message": "This is only visiting direct deps, not transitive deps.  There is no way to tell VisitDirectDeps to stop visiting deps.",
       "parentUuid": "7bf6e2f6_165cee99",
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f149c592_2344125b",
         "filename": "android/apex.go",
@@ -220,10 +245,10 @@
       "message": "Oops, you are right.",
       "parentUuid": "d0c2da77_bf2d0bd9",
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2cb1130e_433d74cd",
         "filename": "android/apex.go",
@@ -243,10 +268,10 @@
         "endChar": 11
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f17cfe00_cb504e71",
         "filename": "android/apex.go",
@@ -267,10 +292,10 @@
         "endChar": 11
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "22670471_db09f55e",
         "filename": "android/apex.go",
@@ -290,10 +315,10 @@
         "endChar": 34
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "2b442258_23a22e22",
         "filename": "android/apex.go",
@@ -314,8 +339,7 @@
         "endChar": 34
       },
       "revId": "2f26cc4d8966bf6592bc09309785e1eaea1b9d6c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
