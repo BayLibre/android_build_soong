@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5d27c77_4dab9253",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-10-07T19:41:04Z",
+      "side": 1,
+      "message": "Should probably be `[]android.ApiLevel`",
+      "range": {
+        "startLine": 107,
+        "startChar": 83,
+        "endLine": 107,
+        "endChar": 91
+      },
+      "revId": "9cef6eec8f41c133379adb30489d35a89dd2e621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
