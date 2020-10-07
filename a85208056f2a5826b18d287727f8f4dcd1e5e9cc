@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "539e503c_828d185f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-07T09:51:04Z",
+      "side": 1,
+      "message": "From what I can tell they are inherited methods. I\u0027m guessing metalava, when fed sources, gets a better idea of all the methods that are inherited compared to when it is given API txt files. I\u0027m not sure why that is, but it seems that way -- toStrings(), finalize(), and the _ID + _COUNT fields are all inherited from a super class/interface.",
+      "parentUuid": "9042a7fa_321c5d91",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 45
+      },
+      "revId": "a85208056f2a5826b18d287727f8f4dcd1e5e9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "93551d9b_05ccf026",
@@ -72,6 +96,30 @@
       "writtenOn": "2020-10-07T08:16:58Z",
       "side": 1,
       "message": "should we check if we\u0027ve already found one? In case we ever end up with \u003e1, maybe a crash is better than subtly doing the wrong thing?",
+      "range": {
+        "startLine": 240,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 23
+      },
+      "revId": "a85208056f2a5826b18d287727f8f4dcd1e5e9cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f96a80_bf601740",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-07T09:51:04Z",
+      "side": 1,
+      "message": "Module names need to be unique, so I don\u0027t think it can happen, but I\u0027ll add it to be sure.",
+      "parentUuid": "2462a7cd_4a51abc4",
       "range": {
         "startLine": 240,
         "startChar": 4,
