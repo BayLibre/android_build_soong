@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc72c54_5ab5b6f8",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-07T08:52:15Z",
+      "side": 1,
+      "message": "Ah, I missed this.",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 0
+      },
+      "revId": "918ec76c55785eb5c9a23b634c606c23ae916935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
