@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cf81cb_e5ae4b53",
+        "filename": "bazel/bazelenv.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-07T15:16:38Z",
+      "side": 1,
+      "message": "From what I can tell, there is no perfect way to pass arguments to a sourced script in bash (TIL)\n\nI guess the best we can do is to change this from arg-processing to evaluating the environment.",
+      "parentUuid": "21f7105c_d0676278",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 15
+      },
+      "revId": "5f140e77c1242d3c162e3786431899bb21aab581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec8da4d7_a747a7c3",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f4acabe_0f43c44c",
+        "filename": "bazel/bazelenv.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-07T15:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8da4d7_a747a7c3",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "5f140e77c1242d3c162e3786431899bb21aab581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d139317a_c242f022",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-10-07T06:06:34Z",
       "side": 1,
       "message": "I\u0027m getting a nil pointer deref error here when I didn\u0027t source the bazel setup script:\n\npanic: runtime error: invalid memory address or nil pointer dereference\n[signal SIGSEGV: segmentation violation code\u003d0x1 addr\u003d0x18 pc\u003d0xb44960]\n\ngoroutine 1 [running]:\nmain.main()\n\t/usr/local/google/home/jingwen/aosp/build/soong/cmd/soong_build/main.go:91 +0x1a0",
+      "revId": "5f140e77c1242d3c162e3786431899bb21aab581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f1945a8_c43f60b5",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-07T15:16:38Z",
+      "side": 1,
+      "message": "Ah. this is if USE_BAZEL\u003d1 but the script wasn\u0027t used. This worked before but the code has changed :) Good catch. Fixed.",
+      "parentUuid": "d139317a_c242f022",
       "revId": "5f140e77c1242d3c162e3786431899bb21aab581",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
