@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfbae423_6ac7f6b0",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2249,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-08T17:12:37Z",
+      "side": 1,
+      "message": "I\u0027ll add some comments that the list has to be ordered.",
+      "parentUuid": "ef84541a_40b77699",
+      "range": {
+        "startLine": 2249,
+        "startChar": 16,
+        "endLine": 2249,
+        "endChar": 25
+      },
+      "revId": "52b127afb1dc697d188414d903d90ec51d291553",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da78c20f_90eb467d",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-07T15:21:58Z",
       "side": 1,
       "message": "Should we also update this to reference stub implementations?",
+      "range": {
+        "startLine": 2971,
+        "startChar": 5,
+        "endLine": 2971,
+        "endChar": 32
+      },
+      "revId": "52b127afb1dc697d188414d903d90ec51d291553",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5969ec03_c5476876",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2971,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-08T17:12:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da78c20f_90eb467d",
       "range": {
         "startLine": 2971,
         "startChar": 5,
