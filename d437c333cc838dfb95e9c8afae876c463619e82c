@@ -46,6 +46,30 @@
       },
       "revId": "d437c333cc838dfb95e9c8afae876c463619e82c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57065448_4f7dba15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-08T11:47:29Z",
+      "side": 1,
+      "message": "I currently don\u0027t have any \"field tests\" for this case, I\u0027ll see if I can add a Soong test.",
+      "parentUuid": "6ca96533_1a3d0629",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "d437c333cc838dfb95e9c8afae876c463619e82c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
