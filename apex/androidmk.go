@@ -63,6 +63,15 @@ func (class apexFileClass) nameInMake() string {
 	}
 }
 
+func (a *apexBundle) fullModuleName(apexBundleName string, fi *apexFile) string {
+	linkToSystemLib := a.linkToSystemLib && fi.transitiveDep && fi.availableToPlatform()
+
+	if linkToSystemLib {
+		return fi.androidMkModuleName
+	}
+	return fi.androidMkModuleName + "." + apexBundleName + a.suffix
+}
+
 func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, moduleDir string,
 	apexAndroidMkData android.AndroidMkData) []string {
 
@@ -114,12 +123,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 
 		linkToSystemLib := a.linkToSystemLib && fi.transitiveDep && fi.availableToPlatform()
 
-		var moduleName string
-		if linkToSystemLib {
-			moduleName = fi.androidMkModuleName
-		} else {
-			moduleName = fi.androidMkModuleName + "." + apexBundleName + a.suffix
-		}
+		moduleName := a.fullModuleName(apexBundleName, &fi)
 
 		if !android.InList(moduleName, moduleNames) {
 			moduleNames = append(moduleNames, moduleName)
@@ -311,14 +315,16 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 	return moduleNames
 }
 
-func (a *apexBundle) writeRequiredModules(w io.Writer) {
+func (a *apexBundle) writeRequiredModules(w io.Writer, apexBundleName string) {
 	var required []string
 	var targetRequired []string
 	var hostRequired []string
+	installMapSet := make(map[string]bool) // set of dependency module:location mappings
 	for _, fi := range a.filesInfo {
 		required = append(required, fi.requiredModuleNames...)
 		targetRequired = append(targetRequired, fi.targetRequiredModuleNames...)
 		hostRequired = append(hostRequired, fi.hostRequiredModuleNames...)
+		installMapSet[a.fullModuleName(apexBundleName, &fi)+":"+fi.installDir+"/"+fi.builtFile.Base()] = true
 	}
 
 	if len(required) > 0 {
@@ -329,6 +335,13 @@ func (a *apexBundle) writeRequiredModules(w io.Writer) {
 	}
 	if len(hostRequired) > 0 {
 		fmt.Fprintln(w, "LOCAL_HOST_REQUIRED_MODULES +=", strings.Join(hostRequired, " "))
+	}
+	if len(installMapSet) > 0 {
+		var installs []string
+		for m := range installMapSet {
+			installs = append(installs, m)
+		}
+		fmt.Fprintln(w, "LOCAL_LICENSE_INSTALL_MAP +=", strings.Join(installs, " "))
 	}
 }
 
@@ -347,16 +360,18 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 				fmt.Fprintln(w, "LOCAL_MODULE :=", name+a.suffix)
+				data.Entries.WriteLicenseVariables(w)
 				if len(moduleNames) > 0 {
 					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", strings.Join(moduleNames, " "))
 				}
-				a.writeRequiredModules(w)
+				a.writeRequiredModules(w, name)
 				fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
 
 			} else {
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 				fmt.Fprintln(w, "LOCAL_MODULE :=", name+a.suffix)
+				data.Entries.WriteLicenseVariables(w)
 				fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC") // do we need a new class?
 				fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", a.outputFile.String())
 				fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", a.installDir.ToMakePath().String())
@@ -389,7 +404,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				if len(a.requiredDeps) > 0 {
 					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES +=", strings.Join(a.requiredDeps, " "))
 				}
-				a.writeRequiredModules(w)
+				a.writeRequiredModules(w, name)
 				var postInstallCommands []string
 				if a.prebuiltFileToDelete != "" {
 					postInstallCommands = append(postInstallCommands, "rm -rf "+
