@@ -371,6 +371,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "710fe46e_d5f16299",
+        "filename": "android/makevars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-08T16:14:53Z",
+      "side": 1,
+      "message": "Good call, this is cleaner. Done.",
+      "parentUuid": "3451c24c_c51f85b7",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "305873fb_85658209",
