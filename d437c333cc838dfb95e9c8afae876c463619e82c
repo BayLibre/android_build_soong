@@ -22,6 +22,30 @@
       },
       "revId": "d437c333cc838dfb95e9c8afae876c463619e82c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca96533_1a3d0629",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-08T11:41:20Z",
+      "side": 1,
+      "message": "I thought there is no dependency because I got confused by this code that adds two uses-libraries as siblings:\n\n  https://source.corp.google.com/aosp-master/frameworks/base/services/core/java/com/android/server/pm/parsing/library/AndroidHidlUpdater.java;l\u003d45-46\n\nBut it merely changes the uses-library list, not the class loader context. Now that I look at ZygoteInit and I see the dependency:\n\n  https://source.corp.google.com/aosp-master/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java;l\u003d388\n\nAlso I can see it in the platform.xml, which if the primary source of information:\n\n  http://cs/aosp-master/frameworks/base/data/etc/platform.xml?l\u003d240\n\nSo you are right, I need to add the nested dependency back into this patch. I initially wanted to add it as a Soong-level dependency, which is easy, but that won\u0027t work for Make apps, so I will add it in the ugly way.",
+      "parentUuid": "bec9b561_70ac86e9",
+      "range": {
+        "startLine": 11,
+        "startChar": 30,
+        "endLine": 11,
+        "endChar": 53
+      },
+      "revId": "d437c333cc838dfb95e9c8afae876c463619e82c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
