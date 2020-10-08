@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "563270e2_69cde383",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1680,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-08T18:14:35Z",
+      "side": 0,
+      "message": "uhm, I will check with jsharkey@ before submitting",
+      "range": {
+        "startLine": 1677,
+        "startChar": 0,
+        "endLine": 1680,
+        "endChar": 35
+      },
+      "revId": "70bc5454079dd5a99fa5342990683524b327e954",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
