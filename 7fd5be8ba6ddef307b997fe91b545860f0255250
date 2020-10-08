@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98c0182a_f07d97c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-10-08T12:44:34Z",
+      "side": 1,
+      "message": "Let\u0027s chat offline so I can understand the goal here a bit better and how it relates to the new gen_mod_rs option in 2.18.0.",
+      "revId": "7fd5be8ba6ddef307b997fe91b545860f0255250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
