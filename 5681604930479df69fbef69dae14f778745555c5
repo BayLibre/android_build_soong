@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "debfa984_6ee5eb00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-10-08T13:18:00Z",
+      "side": 1,
+      "message": "Thanks, this cleans things up considerably!",
+      "revId": "5681604930479df69fbef69dae14f778745555c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8efd5cbf_bd6c27ed",
+        "filename": "rust/rust_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-10-08T13:18:00Z",
+      "side": 1,
+      "message": "While we\u0027re here, maybe we should update this too since we support other toolchains. Maybe something along the lines of:\n\n \"Rust Soong tests can only be run on Linux hosts currently\".\n\nThe bug is still relevant since that\u0027s where we\u0027re tracking this.\n\nOtherwise this LGTM; thanks for the refactor, it\u0027s much cleaner now!",
+      "range": {
+        "startLine": 101,
+        "startChar": 10,
+        "endLine": 101,
+        "endChar": 56
+      },
+      "revId": "5681604930479df69fbef69dae14f778745555c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
