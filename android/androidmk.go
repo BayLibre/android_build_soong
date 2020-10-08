@@ -444,8 +444,6 @@ func (a *AndroidMkEntries) WriteLicenseVariables(w io.Writer) {
 	}
 }
 
-// fillInEntries goes through the common variable processing and calls the extra data funcs to
-// generate and fill in AndroidMkEntries's in-struct data, ready to be flushed to a file.
 func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod blueprint.Module) {
 	a.EntryMap = make(map[string][]string)
 	amod := mod.(Module).base()
