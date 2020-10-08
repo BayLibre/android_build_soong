@@ -16,6 +16,24 @@
       "message": "Let\u0027s chat offline so I can understand the goal here a bit better and how it relates to the new gen_mod_rs option in 2.18.0.",
       "revId": "7fd5be8ba6ddef307b997fe91b545860f0255250",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c791120_74201fd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-10-08T22:23:30Z",
+      "side": 1,
+      "message": "The goal is simply to upgrade to new upstream rust-protobuf 2.18.0 and keep everything working with future upstream releases without local deviation, see aosp/1451283. See https://github.com/stepancheg/rust-protobuf/pull/525 for the new upstream change and how it eliminates the need of current Android local patch.\n\nThis is one of two possible changes I found. The commit message explains why this one is chosen instead of the other one that uses the gen_mod_rs option.\n\nPlease feel free to suggest any other change. I hope we can keep all android rust packages up to the latest version. Thanks.",
+      "parentUuid": "98c0182a_f07d97c3",
+      "revId": "7fd5be8ba6ddef307b997fe91b545860f0255250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
