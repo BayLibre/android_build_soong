@@ -49,9 +49,11 @@ func (p *phony) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 func (p *phony) AndroidMk() android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
+			// TODO(b/151177513): add license variables or confirm no variables are needed.
 			fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 			fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 			fmt.Fprintln(w, "LOCAL_MODULE :=", name)
+			data.Entries.WriteLicenseVariables(w)
 			if p.Host() {
 				fmt.Fprintln(w, "LOCAL_IS_HOST_MODULE := true")
 			}
