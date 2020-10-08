@@ -315,10 +315,20 @@ func (a *apexBundle) writeRequiredModules(w io.Writer) {
 	var required []string
 	var targetRequired []string
 	var hostRequired []string
+	installMap := make(map[string]bool)
 	for _, fi := range a.filesInfo {
 		required = append(required, fi.requiredModuleNames...)
+		for _, name := range fi.requiredModuleNames {
+			installMap[fi.builtFile.String()+":"+fi.installDir+"/"+name] = true
+		}
 		targetRequired = append(targetRequired, fi.targetRequiredModuleNames...)
+		for _, name := range fi.targetRequiredModuleNames {
+			installMap[fi.builtFile.String()+":"+fi.installDir+"/"+name] = true
+		}
 		hostRequired = append(hostRequired, fi.hostRequiredModuleNames...)
+		for _, name := range fi.hostRequiredModuleNames {
+			installMap[fi.builtFile.String()+":"+fi.installDir+"/"+name] = true
+		}
 	}
 
 	if len(required) > 0 {
@@ -329,6 +339,13 @@ func (a *apexBundle) writeRequiredModules(w io.Writer) {
 	}
 	if len(hostRequired) > 0 {
 		fmt.Fprintln(w, "LOCAL_HOST_REQUIRED_MODULES +=", strings.Join(hostRequired, " "))
+	}
+	if len(installMap) > 0 {
+		var installs []string
+		for m := range installMap {
+			installs = append(installs, m)
+		}
+		fmt.Fprintln(w, "LOCAL_LICENSE_INSTALL_MAP +=", strings.Join(installs, " "))
 	}
 }
 
@@ -347,6 +364,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 				fmt.Fprintln(w, "LOCAL_MODULE :=", name+a.suffix)
+				data.Entries.WriteLicenseVariables(w)
 				if len(moduleNames) > 0 {
 					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", strings.Join(moduleNames, " "))
 				}
@@ -357,6 +375,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 				fmt.Fprintln(w, "LOCAL_MODULE :=", name+a.suffix)
+				data.Entries.WriteLicenseVariables(w)
 				fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC") // do we need a new class?
 				fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", a.outputFile.String())
 				fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", a.installDir.ToMakePath().String())
