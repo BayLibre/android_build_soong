@@ -318,16 +318,12 @@ func (a *apexBundle) writeRequiredModules(w io.Writer) {
 	installMap := make(map[string]bool)
 	for _, fi := range a.filesInfo {
 		required = append(required, fi.requiredModuleNames...)
-		for _, name := range fi.requiredModuleNames {
-			installMap[fi.builtFile.String()+":"+fi.installDir+"/"+name] = true
-		}
 		targetRequired = append(targetRequired, fi.targetRequiredModuleNames...)
-		for _, name := range fi.targetRequiredModuleNames {
-			installMap[fi.builtFile.String()+":"+fi.installDir+"/"+name] = true
-		}
 		hostRequired = append(hostRequired, fi.hostRequiredModuleNames...)
-		for _, name := range fi.hostRequiredModuleNames {
-			installMap[fi.builtFile.String()+":"+fi.installDir+"/"+name] = true
+		if fi.installDir == "." {
+			installMap[fi.builtFile.String()+":"+fi.builtFile.Base()] = true
+		} else {
+			installMap[fi.builtFile.String()+":"+fi.installDir+"/"+fi.builtFile.Base()] = true
 		}
 	}
 
