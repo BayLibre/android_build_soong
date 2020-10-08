@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005423821",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1454916?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5ce80510_bf389fc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-08T17:57:11Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 1,
+        "startChar": 46,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "2100135d87b4ccf76dc496a99bab519932301cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005423826",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1454916?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4e597ed1_486775cd",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-08T17:57:11Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 546,
+        "startChar": 108,
+        "endLine": 546,
+        "endChar": 109
+      },
+      "revId": "2100135d87b4ccf76dc496a99bab519932301cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
