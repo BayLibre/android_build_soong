@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7003a83_a129334c",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-08T16:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9abe9ff2_f31c2136",
+      "range": {
+        "startLine": 132,
+        "startChar": 84,
+        "endLine": 132,
+        "endChar": 95
+      },
+      "revId": "4b6ad0dcd6dc5be5115a4566cfd75118c7a81d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d7d71c_d3c60794",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-08T11:15:11Z",
       "side": 1,
       "message": "nit: add a comment.",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 18
+      },
+      "revId": "4b6ad0dcd6dc5be5115a4566cfd75118c7a81d24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fdea1dc_e48b44a3",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-08T16:16:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d7d71c_d3c60794",
       "range": {
         "startLine": 264,
         "startChar": 0,
