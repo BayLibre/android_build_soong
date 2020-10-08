@@ -46,6 +46,30 @@
       },
       "revId": "39c69aca21eabcfae45b8d2e5ea45f3b1f7d5af5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "662c3234_b66d5053",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-08T00:41:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "432b94e4_0c474658",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 37
+      },
+      "revId": "39c69aca21eabcfae45b8d2e5ea45f3b1f7d5af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

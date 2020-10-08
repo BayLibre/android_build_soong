@@ -349,6 +349,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3451c24c_c51f85b7",
+        "filename": "android/makevars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-08T00:41:29Z",
+      "side": 1,
+      "message": "How about making RegisterMakeVarsProvider and registerSingletonMakeVarsProvider append to separate lists, and then have makeVarsSingleton.GenerateBuildActions clear the singletons list when it is done?",
+      "parentUuid": "73095181_620015eb",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 27
+      },
+      "revId": "cf66a212f6217bddcdce412655bd4646eed59bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "305873fb_85658209",
         "filename": "bazel/bazelenv.sh",
         "patchSetId": 7
