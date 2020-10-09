@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "722f2e76_24f091f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-10-09T16:22:42Z",
+      "side": 1,
+      "message": "CL rebased, please take another look.",
+      "revId": "ee0b81a4fe6dc2f9c80427b0f0511185c33f2e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
