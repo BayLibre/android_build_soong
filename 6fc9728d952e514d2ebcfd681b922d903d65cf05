@@ -16,6 +16,24 @@
       "message": "This is not a good test for whether it is a shared library or not. It will break for java_sdk_library_import and also for java_library instances which provide the permissions.xml file containing the \u003clibrary\u003e definition separately.",
       "revId": "6fc9728d952e514d2ebcfd681b922d903d65cf05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577dfa8d_a80bd24d",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1956,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-09T15:33:24Z",
+      "side": 1,
+      "message": "I added a method IsSharedLibrary() to java.Dependency interface. Current implementation will only return true for certain java_sdk_library*. I\u0027m not sure about java_library --- is the \"shared\" status something that can only be determined by the XML files (inaccessible to Soong), or is there a way to check it from Soong? If it\u0027s too difficult, I\u0027m tempted to ignore those cases for now. I can rename the method to IsSharedUsesLib() and add a comment to make it look more scary.",
+      "parentUuid": "147e2cbe_bf9bc78d",
+      "revId": "6fc9728d952e514d2ebcfd681b922d903d65cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
