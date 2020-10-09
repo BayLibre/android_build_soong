@@ -22,6 +22,30 @@
       },
       "revId": "f4515bc82b99998e1b1ca25845c5d6e259ed817e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22727f5_0baa7fa4",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-09T10:36:51Z",
+      "side": 1,
+      "message": "Done.\n\nI also added some comments to the whole structure.",
+      "parentUuid": "cec9909c_f1b26ff4",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 59
+      },
+      "revId": "f4515bc82b99998e1b1ca25845c5d6e259ed817e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
