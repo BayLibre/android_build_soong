@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Christopher Parsons <cparsons@google.com>
+Submitted-at: Fri, 09 Oct 2020 14:27:01 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1441107
+Project: platform/build/soong
+Branch: refs/heads/master
