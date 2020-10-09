@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb64815_6c54a5bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-09T12:38:12Z",
+      "side": 1,
+      "message": "Generally looks ok but I\u0027ll have to rely on ngeoffray@ judgement on whether the intent is correct.",
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ec4b56_69afee4b",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-09T12:38:12Z",
+      "side": 1,
+      "message": "A comment on this function to explain what/why it does as well as some comments inline to explain the reasoning would be helpful.",
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
