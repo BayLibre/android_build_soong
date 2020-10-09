@@ -57,16 +57,23 @@ if (($#==1)); then
   # Configuration is provided, emit run script.
   declare -r config="$1"
   declare -r target="$PWD"
+  [[ "$config" =~ ^(.*)-(.*)$ ]] || \
+     die "configuration should have <target>-<variant> format, have %q\n" "$config"
+  declare -r product="${BASH_REMATCH[1]}"
+  declare -r variant="${BASH_REMATCH[2]}"
+
   cat >./run <<EOF
 #! /bin/bash
 # source=$source
 # config=$config
-declare -r cmd=\$(printf ' %q' "\$@")
-"$source/prebuilts/build-tools/linux-x86/bin/nsjail"\
+declare -r source=$source
+declare -r product="$product"
+declare -r variant="$variant"
+declare -r nsjail="\$source/prebuilts/build-tools/linux-x86/bin/nsjail\
  -Mo -q -e -t 0\
  -EANDROID_QUIET_BUILD=true \
- -B / -B "$target:$source/out"\
- --cwd "$source"\
+ -B / -B $target:\$source/out\
+ --cwd \$source \
  --skip_setsid \
  --keep_caps\
  --disable_clone_newcgroup\
@@ -77,9 +84,19 @@ declare -r cmd=\$(printf ' %q' "\$@")
  --rlimit_fsize soft\
  --rlimit_nofile soft\
  --proc_rw\
- --hostname $(hostname) \
- --\
- /bin/bash -i -c ". build/envsetup.sh && lunch "$config" &&\$cmd"
+ --hostname $(hostname)"
+declare -Ar build_options=([m]=--all-modules [mm]=--modules-in-a-dir-no-deps [mmm]=--modules-in-dirs-no-deps [mmma]=--modules-in-dirs )
+build_what=
+[[ ! -v build_options["\$1"] ]] || build_what=\${build_options["\$1"]}
+if [[ -n "\$build_what" ]] ; then
+  shift
+  \$nsjail -- build/soong/soong_ui.bash --build-mode \$build_what --dir=\$source TARGET_PRODUCT="\$product" TARGET_BUILD_VARIANT="\$variant" \$@
+elif [[ -z "\$1" ]]; then
+  \$nsjail -- /bin/bash -i -c ". build/envsetup.sh && lunch "\$product-\$variant" && /bin/bash"
+else
+  cmd=\$(printf " %q" "\$@")
+  \$nsjail -- /bin/bash -i -c ". build/envsetup.sh && lunch "\$product-\$variant" && \$cmd"
+fi
 EOF
   chmod +x ./run
 else
