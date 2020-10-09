@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95af4e2d_90557a8b",
+        "filename": "android/makevars.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-09T02:46:58Z",
+      "side": 1,
+      "message": "Honest question as I\u0027m new to golang: is there a difference?",
+      "parentUuid": "9773129e_4e04a4f6",
+      "range": {
+        "startLine": 137,
+        "startChar": 30,
+        "endLine": 137,
+        "endChar": 50
+      },
+      "revId": "20a48903f16b059baa7cfb4e210568c8b960c83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a73a452a_98a6c9f1",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-09T01:48:11Z",
       "side": 1,
       "message": "Why not clear singletonMakeVarsProviders here?",
+      "revId": "20a48903f16b059baa7cfb4e210568c8b960c83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "571f6f64_7b3a1750",
+        "filename": "android/makevars.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-09T02:46:58Z",
+      "side": 1,
+      "message": "Are you suggesting we make GenerateBuildActions() clear singletonMakeVarsProviders after use?\n\nSure, done.",
+      "parentUuid": "a73a452a_98a6c9f1",
       "revId": "20a48903f16b059baa7cfb4e210568c8b960c83b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
