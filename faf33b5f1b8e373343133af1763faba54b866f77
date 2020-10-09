@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f3e73a_9096d4c1",
+        "filename": "java/aar.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-09T15:59:39Z",
+      "side": 0,
+      "message": "Presumably this is being initialized prior to this code being run.",
+      "revId": "faf33b5f1b8e373343133af1763faba54b866f77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
