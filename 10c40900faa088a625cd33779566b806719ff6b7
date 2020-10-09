@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8626ccee_d2bef3f1",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-09T14:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58ec4b56_69afee4b",
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcb6d2a9_ff58548c",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-10-09T13:07:53Z",
       "side": 1,
       "message": "android",
+      "range": {
+        "startLine": 364,
+        "startChar": 48,
+        "endLine": 364,
+        "endChar": 54
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f912968_282c913c",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-09T14:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcb6d2a9_ff58548c",
       "range": {
         "startLine": 364,
         "startChar": 48,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9253a27_93586c3d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-09T14:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "719ff2c3_e0deae78",
+      "range": {
+        "startLine": 388,
+        "startChar": 14,
+        "endLine": 388,
+        "endChar": 30
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef2400c5_90b3dfed",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-10-09T13:07:53Z",
       "side": 1,
       "message": "computeClassLoaderContext ?",
+      "range": {
+        "startLine": 389,
+        "startChar": 5,
+        "endLine": 389,
+        "endChar": 28
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ebc611_3a18d933",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-09T14:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef2400c5_90b3dfed",
       "range": {
         "startLine": 389,
         "startChar": 5,
@@ -127,6 +217,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f482fde2_12106bb4",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-09T14:23:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7768c01c_5b520b4d",
+      "range": {
+        "startLine": 401,
+        "startChar": 6,
+        "endLine": 401,
+        "endChar": 8
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "485757ab_0405fe66",
@@ -140,6 +254,30 @@
       "writtenOn": "2020-10-09T13:07:53Z",
       "side": 1,
       "message": "dependency",
+      "range": {
+        "startLine": 407,
+        "startChar": 10,
+        "endLine": 407,
+        "endChar": 19
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f115793_6430de67",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-09T14:23:32Z",
+      "side": 1,
+      "message": "Done. I\u0027m hopeless. ;D",
+      "parentUuid": "485757ab_0405fe66",
       "range": {
         "startLine": 407,
         "startChar": 10,
