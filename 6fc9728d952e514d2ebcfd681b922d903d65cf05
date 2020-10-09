@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "147e2cbe_bf9bc78d",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1956,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-09T14:18:16Z",
+      "side": 1,
+      "message": "This is not a good test for whether it is a shared library or not. It will break for java_sdk_library_import and also for java_library instances which provide the permissions.xml file containing the \u003clibrary\u003e definition separately.",
+      "revId": "6fc9728d952e514d2ebcfd681b922d903d65cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
