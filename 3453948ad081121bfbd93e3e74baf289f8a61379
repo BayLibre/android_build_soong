@@ -56,6 +56,30 @@
       },
       "revId": "3453948ad081121bfbd93e3e74baf289f8a61379",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf39551_b0231776",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-09T21:10:28Z",
+      "side": 1,
+      "message": "-\u003e b/170503059",
+      "parentUuid": "995d04b7_0fc8611e",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 44
+      },
+      "revId": "3453948ad081121bfbd93e3e74baf289f8a61379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
