@@ -33,6 +33,121 @@
       "message": "A comment on this function to explain what/why it does as well as some comments inline to explain the reasoning would be helpful.",
       "revId": "10c40900faa088a625cd33779566b806719ff6b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb6d2a9_ff58548c",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-10-09T13:07:53Z",
+      "side": 1,
+      "message": "android",
+      "range": {
+        "startLine": 364,
+        "startChar": 48,
+        "endLine": 364,
+        "endChar": 54
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719ff2c3_e0deae78",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-10-09T13:07:53Z",
+      "side": 1,
+      "message": "the class loader context as a string (in the form of...)\n\nAnd then you can drop the sentence above.",
+      "range": {
+        "startLine": 388,
+        "startChar": 14,
+        "endLine": 388,
+        "endChar": 30
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2400c5_90b3dfed",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-10-09T13:07:53Z",
+      "side": 1,
+      "message": "computeClassLoaderContext ?",
+      "range": {
+        "startLine": 389,
+        "startChar": 5,
+        "endLine": 389,
+        "endChar": 28
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7768c01c_5b520b4d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-10-09T13:07:53Z",
+      "side": 1,
+      "message": "What does \u0027ps\u0027 stand for? Consider renaming to host_paths ?",
+      "range": {
+        "startLine": 401,
+        "startChar": 6,
+        "endLine": 401,
+        "endChar": 8
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485757ab_0405fe66",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-10-09T13:07:53Z",
+      "side": 1,
+      "message": "dependency",
+      "range": {
+        "startLine": 407,
+        "startChar": 10,
+        "endLine": 407,
+        "endChar": 19
+      },
+      "revId": "10c40900faa088a625cd33779566b806719ff6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
