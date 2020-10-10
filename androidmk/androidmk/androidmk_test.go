@@ -1462,7 +1462,6 @@ runtime_resource_overlay {
 }
 
 func TestEndToEnd(t *testing.T) {
-	t.Parallel()
 	for i, test := range testCases {
 		expected, err := bpfix.Reformat(test.expected)
 		if err != nil {
