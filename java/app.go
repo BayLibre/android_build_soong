@@ -379,7 +379,6 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 			"can only be set for modules that set sdk_version")
 	}
 
-	tag := &jniDependencyTag{}
 	for _, jniTarget := range ctx.MultiTargets() {
 		variation := append(jniTarget.Variations(),
 			blueprint.Variation{Mutator: "link", Variation: "shared"})
@@ -393,7 +392,7 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 			Bool(a.appProperties.Jni_uses_sdk_apis) {
 			variation = append(variation, blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
 		}
-		ctx.AddFarVariationDependencies(variation, tag, a.appProperties.Jni_libs...)
+		ctx.AddFarVariationDependencies(variation, jniLibTag, a.appProperties.Jni_libs...)
 	}
 
 	a.usesLibrary.deps(ctx, sdkDep.hasFrameworkLibs())
@@ -455,7 +454,7 @@ func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
 func (a *AndroidApp) checkJniLibsSdkVersion(ctx android.ModuleContext, minSdkVersion sdkVersion) {
 	// It's enough to check direct JNI deps' sdk_version because all transitive deps from JNI deps are checked in cc.checkLinkType()
 	ctx.VisitDirectDeps(func(m android.Module) {
-		if !IsJniDepTag(ctx.OtherModuleDependencyTag(m)) {
+		if ctx.OtherModuleDependencyTag(m) != jniLibTag {
 			return
 		}
 		dep, _ := m.(*cc.Module)
@@ -892,7 +891,7 @@ func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
 
-		if IsJniDepTag(tag) || cc.IsSharedDepTag(tag) {
+		if tag == jniLibTag || cc.IsSharedDepTag(tag) {
 			if dep, ok := module.(*cc.Module); ok {
 				if dep.IsNdk() || dep.IsStubs() {
 					return false
@@ -999,7 +998,7 @@ func (a *AndroidApp) getCertString(ctx android.BaseModuleContext) string {
 }
 
 func (a *AndroidApp) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
-	if IsJniDepTag(ctx.OtherModuleDependencyTag(dep)) {
+	if ctx.OtherModuleDependencyTag(dep) == jniLibTag {
 		return true
 	}
 	return a.Library.DepIsInSameApex(ctx, dep)

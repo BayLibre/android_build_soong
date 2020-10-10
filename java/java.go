@@ -547,15 +547,6 @@ type dependencyTag struct {
 	name string
 }
 
-type jniDependencyTag struct {
-	blueprint.BaseDependencyTag
-}
-
-func IsJniDepTag(depTag blueprint.DependencyTag) bool {
-	_, ok := depTag.(*jniDependencyTag)
-	return ok
-}
-
 var (
 	dataNativeBinsTag     = dependencyTag{name: "dataNativeBins"}
 	staticLibTag          = dependencyTag{name: "staticlib"}
@@ -573,6 +564,7 @@ var (
 	instrumentationForTag = dependencyTag{name: "instrumentation_for"}
 	usesLibTag            = dependencyTag{name: "uses-library"}
 	extraLintCheckTag     = dependencyTag{name: "extra-lint-check"}
+	jniLibTag             = dependencyTag{name: "jnilib"}
 )
 
 func IsLibDepTag(depTag blueprint.DependencyTag) bool {
@@ -1001,7 +993,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
 
-		if _, ok := tag.(*jniDependencyTag); ok {
+		if tag == jniLibTag {
 			// Handled by AndroidApp.collectAppDeps
 			return
 		}
