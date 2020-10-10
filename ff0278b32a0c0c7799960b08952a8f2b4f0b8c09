@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "442f6cf4_dfb3c270",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-10T03:05:12Z",
+      "side": 1,
+      "message": "Go has an odd behavior where it runs some lint checks when you run go test, which our test runner doesn\u0027t do.  That means failing lint checks can break tests run from the command line.",
+      "revId": "ff0278b32a0c0c7799960b08952a8f2b4f0b8c09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
