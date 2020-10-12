@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a9d0fd8_e1529cc3",
+        "filename": "ui/metrics/metrics_proto/metrics.pb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-10-12T22:54:16Z",
+      "side": 1,
+      "message": "😬 Is this generated? Can we add a comment of how it\u0027s created at some point?",
+      "range": {
+        "startLine": 783,
+        "startChar": 4,
+        "endLine": 783,
+        "endChar": 35
+      },
+      "revId": "4fb8adcc4c3c2d008e07bf0efdd8a1af5fd8522f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
