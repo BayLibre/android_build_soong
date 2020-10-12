@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30baaaa9_637b2840",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1780134
+      },
+      "writtenOn": "2020-10-12T13:26:29Z",
+      "side": 1,
+      "message": "my device samsung note 5 is not updating any can tell me how i solve this to being update my device",
+      "revId": "a0a44a84bebc5bf8b1f0a1f9dce7e1e0906369ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
