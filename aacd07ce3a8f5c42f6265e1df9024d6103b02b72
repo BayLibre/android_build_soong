@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f8722a_3a30c86f",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-12T22:26:11Z",
+      "side": 1,
+      "message": "Can you also add SymlinkOutput?  The singular versions of these fields have been pretty convenient in avoiding boilerplate slice declarations.",
+      "revId": "aacd07ce3a8f5c42f6265e1df9024d6103b02b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edca726f_32ce9d66",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-12T22:26:11Z",
+      "side": 1,
+      "message": "Can you also plumb it through to here too with RuleBuilder.SymlinkOutput/RuleBuilder.SymlinkOutputs methods?",
+      "revId": "aacd07ce3a8f5c42f6265e1df9024d6103b02b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
