@@ -261,7 +261,7 @@ func (s *ShTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddFarVariationDependencies(append(ctx.Target().Variations(), sharedLibVariations...),
 		shTestDataLibsTag, s.testProperties.Data_libs...)
 	if ctx.Target().Os.Class == android.Host && len(ctx.Config().Targets[android.Android]) > 0 {
-		deviceVariations := ctx.Config().AndroidFirstDeviceTarget.Variations()
+		deviceVariations := ctx.Config().Targets[android.Android][0].Variations()
 		ctx.AddFarVariationDependencies(deviceVariations, shTestDataDeviceBinsTag, s.testProperties.Data_device_bins...)
 		ctx.AddFarVariationDependencies(append(deviceVariations, sharedLibVariations...),
 			shTestDataDeviceLibsTag, s.testProperties.Data_device_libs...)
