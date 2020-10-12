@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "42ee6a00_65ac56b8",
         "filename": "android/variable.go",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "This is basically never used.  A soong-only build generally provides its own soong.variables file, some of which generate one with soong_config.mk, others that provide a manual minimal one.  The minimal ones probably don\u0027t set this at all.",
       "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a7472589_62251a28",
         "filename": "android/variable.go",
@@ -32,10 +33,10 @@
       "message": "Yeah - it is set in the other topic. Actually, I was thinking about removing all of these options, etc.. and leaving the decision in bionic, following this CL. Changing them isn\u0027t very supported.",
       "parentUuid": "42ee6a00_65ac56b8",
       "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ae90bee4_659eb8b1",
         "filename": "android/variable.go",
@@ -50,10 +51,10 @@
       "message": "Sorry, where is the other topic?",
       "parentUuid": "a7472589_62251a28",
       "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "5e5048a0_20a473e0",
         "filename": "android/variable.go",
@@ -68,8 +69,25 @@
       "message": "the other CL in this topic :)",
       "parentUuid": "ae90bee4_659eb8b1",
       "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f04cdc_fe7bf0cd",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-12T18:21:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5048a0_20a473e0",
+      "revId": "db0a2efc2dc500f10903ac558d520550faa05a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
