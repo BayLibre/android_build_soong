@@ -495,8 +495,91 @@ func shouldBuildBootImages(config android.Config, global *dexpreopt.GlobalConfig
 	// and invalidate first-stage artifacts which are crucial to SANITIZE_LITE builds.
 	// Note: this is technically incorrect. Compiled code contains stack checks which may depend
 	//       on ASAN settings.
+<<<<<<< HEAD   (c2cdd8 Merge "Update cqueries for bazel rules dir rename")
 	if len(config.SanitizeDevice()) == 1 && config.SanitizeDevice()[0] == "address" && global.SanitizeLite {
 		return false
+=======
+	if len(ctx.Config().SanitizeDevice()) == 1 &&
+		ctx.Config().SanitizeDevice()[0] == "address" &&
+		global.SanitizeLite {
+		return
+	}
+
+	// Always create the default boot image first, to get a unique profile rule for all images.
+	d.defaultBootImage = buildBootImage(ctx, defaultBootImageConfig(ctx))
+	// Create boot image for the ART apex (build artifacts are accessed via the global boot image config).
+	d.otherImages = append(d.otherImages, buildBootImage(ctx, artBootImageConfig(ctx)))
+
+	dumpOatRules(ctx, d.defaultBootImage)
+}
+
+func isHostdex(module android.Module) bool {
+	if lib, ok := module.(*Library); ok {
+		return Bool(lib.deviceProperties.Hostdex)
+	}
+	return false
+}
+
+// Inspect this module to see if it contains a bootclasspath dex jar.
+// Note that the same jar may occur in multiple modules.
+// This logic is tested in the apex package to avoid import cycle apex <-> java.
+func getBootImageJar(ctx android.SingletonContext, image *bootImageConfig, module android.Module) (int, android.Path) {
+	// All apex Java libraries have non-installable platform variants, skip them.
+	if module.IsSkipInstall() {
+		return -1, nil
+	}
+
+	jar, hasJar := module.(interface{ DexJarBuildPath() android.Path })
+	if !hasJar {
+		return -1, nil
+	}
+
+	name := ctx.ModuleName(module)
+	index := image.modules.IndexOfJar(name)
+	if index == -1 {
+		return -1, nil
+	}
+
+	// Check that this module satisfies constraints for a particular boot image.
+	_, isApexModule := module.(android.ApexModule)
+	apexInfo := ctx.ModuleProvider(module, android.ApexInfoProvider).(android.ApexInfo)
+	fromUpdatableApex := isApexModule && apexInfo.Updatable
+	if image.name == artBootImageName {
+		if isApexModule && len(apexInfo.InApexes) > 0 && allHavePrefix(apexInfo.InApexes, "com.android.art") {
+			// ok: found the jar in the ART apex
+		} else if isApexModule && apexInfo.IsForPlatform() && isHostdex(module) {
+			// exception (skip and continue): special "hostdex" platform variant
+			return -1, nil
+		} else if name == "jacocoagent" && ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
+			// exception (skip and continue): Jacoco platform variant for a coverage build
+			return -1, nil
+		} else if fromUpdatableApex {
+			// error: this jar is part of an updatable apex other than ART
+			ctx.Errorf("module %q from updatable apexes %q is not allowed in the ART boot image", name, apexInfo.InApexes)
+		} else {
+			// error: this jar is part of the platform or a non-updatable apex
+			ctx.Errorf("module %q is not allowed in the ART boot image", name)
+		}
+	} else if image.name == frameworkBootImageName {
+		if !fromUpdatableApex {
+			// ok: this jar is part of the platform or a non-updatable apex
+		} else {
+			// error: this jar is part of an updatable apex
+			ctx.Errorf("module %q from updatable apexes %q is not allowed in the framework boot image", name, apexInfo.InApexes)
+		}
+	} else {
+		panic("unknown boot image: " + image.name)
+	}
+
+	return index, jar.DexJarBuildPath()
+}
+
+func allHavePrefix(list []string, prefix string) bool {
+	for _, s := range list {
+		if s != prefix && !strings.HasPrefix(s, prefix+".") {
+			return false
+		}
+>>>>>>> CHANGE (7f5110 Rename ART release APEX to com.android.art.)
 	}
 	return true
 }

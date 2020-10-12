@@ -140,5 +140,19 @@ func makeCompatSymlinks(name string, ctx android.ModuleContext, primaryApex bool
 		addSymlink("/apex/com.android.i18n/etc/icu", dir, "icu")
 	}
 
+<<<<<<< HEAD   (c2cdd8 Merge "Update cqueries for bazel rules dir rename")
 	return symlinks
+=======
+	// TODO(b/124106384): Clean up compat symlinks for ART binaries.
+	if name == "com.android.art" || strings.HasPrefix(name, "com.android.art.") {
+		addSymlink("/apex/com.android.art/bin/dalvikvm", "$(TARGET_OUT)/bin", "dalvikvm")
+		dex2oat := "dex2oat32"
+		if ctx.Config().Android64() {
+			dex2oat = "dex2oat64"
+		}
+		addSymlink("/apex/com.android.art/bin/"+dex2oat, "$(TARGET_OUT)/bin", "dex2oat")
+		return
+	}
+	return
+>>>>>>> CHANGE (7f5110 Rename ART release APEX to com.android.art.)
 }
