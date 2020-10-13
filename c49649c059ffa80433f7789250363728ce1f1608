@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6a4f3c7_e57bb99e",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-10-13T16:21:02Z",
+      "side": 1,
+      "message": "This seems fragile; if we can do the same thing with the gen_mod_rs option I think we should, especially as it sounds like this will become the default behavior in v3.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 96
+      },
+      "revId": "c49649c059ffa80433f7789250363728ce1f1608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
