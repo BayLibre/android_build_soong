@@ -92,6 +92,7 @@ func runSimpleTest(t *testing.T, existentPaths []string, expectedMatches []strin
 			nil,
 			nil,
 			[]string{"findme.txt", "skipme.txt"},
+			[]string{".findme_ext"},
 		},
 	)
 	defer finder.Shutdown()
@@ -130,15 +131,15 @@ func TestSingleFile(t *testing.T) {
 
 func TestIncludeFiles(t *testing.T) {
 	runSimpleTest(t,
-		[]string{"findme.txt", "skipme.txt"},
-		[]string{"findme.txt"},
+		[]string{"findme.txt", "skipme.txt", "alsome.findme_ext"},
+		[]string{"findme.txt", "alsome.findme_ext"},
 	)
 }
 
 func TestNestedDirectories(t *testing.T) {
 	runSimpleTest(t,
-		[]string{"findme.txt", "skipme.txt", "subdir/findme.txt", "subdir/skipme.txt"},
-		[]string{"findme.txt", "subdir/findme.txt"},
+		[]string{"findme.txt", "skipme.txt", "subdir/findme.txt", "subdir/skipme.txt", "subdir/alsome.findme_ext"},
+		[]string{"findme.txt", "subdir/findme.txt", "subdir/alsome.findme_ext"},
 	)
 }
 

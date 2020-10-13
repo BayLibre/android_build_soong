@@ -103,6 +103,9 @@ type CacheParams struct {
 
 	// IncludeFiles are file names to include as matches
 	IncludeFiles []string
+
+	// IncludeSuffixes are filename suffixes to include as matches.
+	IncludeSuffixes []string
 }
 
 // a cacheConfig stores the inputs that determine what should be included in the cache
@@ -1329,6 +1332,13 @@ func (f *Finder) pruneCacheCandidates(items *DirEntries) {
 		// include only these files
 		for _, includedName := range f.cacheMetadata.Config.IncludeFiles {
 			if fileName == includedName {
+				items.FileNames[writeIndex] = fileName
+				writeIndex++
+				break
+			}
+		}
+		for _, includeSuffix := range f.cacheMetadata.Config.IncludeSuffixes {
+			if strings.HasSuffix(fileName, includeSuffix) {
 				items.FileNames[writeIndex] = fileName
 				writeIndex++
 				break

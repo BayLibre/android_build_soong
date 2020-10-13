@@ -18,6 +18,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"runtime"
@@ -236,4 +237,28 @@ func (context *bazelContext) InvokeBazel() error {
 	// Clear requests.
 	context.requests = map[cqueryKey]bool{}
 	return nil
+}
+
+// Singleton used for registering BUILD file ninja dependencies (needed
+// for correctness of builds which use Bazel.
+func BazelSingleton() Singleton {
+	return &bazelSingleton{}
+}
+
+type bazelSingleton struct{}
+
+func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
+	if ctx.Config().BazelContext.BazelEnabled() {
+		bazelBuildList := ctx.Config().BazelBuildList()
+
+		data, err := ioutil.ReadFile(bazelBuildList)
+		if err != nil {
+			ctx.Errorf(err.Error())
+		}
+		files := strings.Split(strings.TrimSpace(string(data)), "\n")
+		for _, file := range files {
+			ctx.AddNinjaFileDeps(file)
+		}
+		ctx.AddNinjaFileDeps(bazelBuildList)
+	}
 }
