@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "045e5137_c2d68728",
+        "filename": "android/bootstrap_deps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-13T00:19:06Z",
+      "side": 1,
+      "message": "This isn\u0027t guaranteed to be the directory that contains the module, it may be a parent directory.  That\u0027s probably good enough for your use case?",
+      "revId": "cdcdb73d4b5b66fffb210009814067511595fb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "693c766f_6224b4a9",
+        "filename": "android/bootstrap_deps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-13T00:19:06Z",
+      "side": 1,
+      "message": "bootstrap",
+      "range": {
+        "startLine": 73,
+        "startChar": 37,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "cdcdb73d4b5b66fffb210009814067511595fb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c449b2d9_b42941ce",
+        "filename": "android/bootstrap_deps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-13T00:19:06Z",
+      "side": 1,
+      "message": "bootstrap",
+      "range": {
+        "startLine": 77,
+        "startChar": 34,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "cdcdb73d4b5b66fffb210009814067511595fb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
