@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a4a735_4be85c08",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-13T14:40:07Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "83f8722a_3a30c86f",
+      "revId": "aacd07ce3a8f5c42f6265e1df9024d6103b02b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edca726f_32ce9d66",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-12T22:26:11Z",
       "side": 1,
       "message": "Can you also plumb it through to here too with RuleBuilder.SymlinkOutput/RuleBuilder.SymlinkOutputs methods?",
+      "revId": "aacd07ce3a8f5c42f6265e1df9024d6103b02b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b039690_0c1c23fb",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-13T14:40:07Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "edca726f_32ce9d66",
       "revId": "aacd07ce3a8f5c42f6265e1df9024d6103b02b72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
