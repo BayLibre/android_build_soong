@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938c59a8_52b9b163",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-13T19:03:48Z",
+      "side": 1,
+      "message": "Doesn\u0027t partial analysis in Bazel mean that it may not have read many of these files?  Would it be possible to have Bazel report the files that it actually read, the same way that clang reports headers in a .d file?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f56b4d_b8968fba",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-13T19:03:48Z",
+      "side": 1,
+      "message": "The pattern in DexpreoptGlobalConfig that adds the dependency and returns the file contents guarantees that the file doesn\u0027t get read without the dependency, consider using that here too.",
+      "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b40001_a6b9b3ef",
+        "filename": "finder/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-13T19:03:48Z",
+      "side": 1,
+      "message": "This could result in duplicate entries or an index out of bounds exception if a file matched both an IncludeFiles and an IncludeSuffixes.",
+      "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca1e219_47f9383d",
+        "filename": "finder/finder_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-13T19:03:48Z",
+      "side": 1,
+      "message": "nil",
+      "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
