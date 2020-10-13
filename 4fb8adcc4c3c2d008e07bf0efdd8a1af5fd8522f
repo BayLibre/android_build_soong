@@ -46,6 +46,30 @@
       },
       "revId": "4fb8adcc4c3c2d008e07bf0efdd8a1af5fd8522f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35867f4c_1265b27f",
+        "filename": "ui/metrics/metrics_proto/metrics.pb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-10-13T09:28:54Z",
+      "side": 1,
+      "message": "+1 to adding comment about how to get aprotoc 😊 when I tried to add the metric, the version of aprotoc I used from android out-dir created a bigger diff than what I see here.",
+      "parentUuid": "a60e2cbb_ede81fde",
+      "range": {
+        "startLine": 783,
+        "startChar": 4,
+        "endLine": 783,
+        "endChar": 35
+      },
+      "revId": "4fb8adcc4c3c2d008e07bf0efdd8a1af5fd8522f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
