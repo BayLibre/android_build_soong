@@ -33,6 +33,23 @@
       "message": "Sketchy, but if WITHOUT_CHECK_API needs to continue working...",
       "revId": "bc0fe96be39954bb8cdbd7c22fc01e134667c9a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a483768_fd3b3e5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1609068
+      },
+      "writtenOn": "2020-10-13T16:53:13Z",
+      "side": 1,
+      "message": "Verified that it builds for us with this patch and with WITHOUT_CHECK_API\u003dtrue.",
+      "revId": "bc0fe96be39954bb8cdbd7c22fc01e134667c9a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
