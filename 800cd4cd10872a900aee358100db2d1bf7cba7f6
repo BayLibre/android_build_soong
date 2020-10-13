@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "326b9b3a_d3275a4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-13T20:19:23Z",
+      "side": 1,
+      "message": "Yes, it does indeed mean that.\n\nBazel currently does not have an API with the capability to report the files that it actually read -- neither from globs, nor BUILD/bzl/workspace files.\nThis is certainly not ideal for partial analysis in mixed-builds. That said, as it currently stands, soong needs to re-evaluate the entire tree anyway, so each build will almost certainly use each BUILD/bzl/WORKSPACE in the entire source tree, anyway. (Unless they\u0027re effectively dead code!)\n\nThanks for asking, it\u0027s reminded me that we should track this. I\u0027ve filed b/170756504.",
+      "parentUuid": "938c59a8_52b9b163",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f56b4d_b8968fba",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-13T19:03:48Z",
       "side": 1,
       "message": "The pattern in DexpreoptGlobalConfig that adds the dependency and returns the file contents guarantees that the file doesn\u0027t get read without the dependency, consider using that here too.",
+      "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0328c0ed_c04a1d15",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-13T20:19:23Z",
+      "side": 1,
+      "message": "Hmm, on second thought this is only used in bazel_handler.go, so we can probably just remove this method entirely and thus ensure the only usage of this file takes place alongside a call to AddNinjaFileDeps.",
+      "parentUuid": "77f56b4d_b8968fba",
       "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0aba8c_dfc16cff",
+        "filename": "finder/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-13T20:19:23Z",
+      "side": 1,
+      "message": "Great catch. Fixed.",
+      "parentUuid": "95b40001_a6b9b3ef",
+      "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aca1e219_47f9383d",
@@ -71,6 +131,24 @@
       "writtenOn": "2020-10-13T19:03:48Z",
       "side": 1,
       "message": "nil",
+      "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd696aa9_354ee729",
+        "filename": "finder/finder_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-13T20:19:23Z",
+      "side": 1,
+      "message": "still have to get used to this :)",
+      "parentUuid": "aca1e219_47f9383d",
       "revId": "800cd4cd10872a900aee358100db2d1bf7cba7f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
