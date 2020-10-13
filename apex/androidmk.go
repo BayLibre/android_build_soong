@@ -305,6 +305,17 @@ func (a *apexBundle) writeRequiredModules(w io.Writer) {
 	}
 }
 
+func (a *apexBundle) AndroidMkEntries(entries *android.AndroidMkEntries) {
+	entries.SubName = "apex." + a.Name()
+	entries.Class = "SHARED_LIBRARIES"
+
+	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+		if a.coverageOutputPath.String() != "" {
+			entries.SetString("SOONG_NDK_API_APEX_TXT", "$(SOONG_NDK_API_APEX_TXT) "+a.coverageOutputPath.String())
+		}
+	})
+}
+
 func (a *apexBundle) androidMkForType() android.AndroidMkData {
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
