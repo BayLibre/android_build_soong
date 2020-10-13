@@ -87,6 +87,30 @@
       },
       "revId": "af2015d7d6abb576bd088889c8453f672a750ac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c49d667_a896bcf4",
+        "filename": "rust/config/allowed_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2020-10-13T12:42:32Z",
+      "side": 1,
+      "message": "No, there is no better way I can think of for now. Please go ahead and reference your other change. Thanks.",
+      "parentUuid": "89624446_03b604ed",
+      "range": {
+        "startLine": 5,
+        "startChar": 57,
+        "endLine": 5,
+        "endChar": 69
+      },
+      "revId": "af2015d7d6abb576bd088889c8453f672a750ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
