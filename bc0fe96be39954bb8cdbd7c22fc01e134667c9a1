@@ -16,6 +16,23 @@
       "message": "Fix for issue raised in https://r.android.com/1432681",
       "revId": "bc0fe96be39954bb8cdbd7c22fc01e134667c9a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0cf989a_c12306c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-13T14:52:34Z",
+      "side": 1,
+      "message": "Sketchy, but if WITHOUT_CHECK_API needs to continue working...",
+      "revId": "bc0fe96be39954bb8cdbd7c22fc01e134667c9a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
