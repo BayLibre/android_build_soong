@@ -34,6 +34,24 @@
       "parentUuid": "147e2cbe_bf9bc78d",
       "revId": "6fc9728d952e514d2ebcfd681b922d903d65cf05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8050878f_99002ae4",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1956,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-13T18:13:49Z",
+      "side": 1,
+      "message": "I don\u0027t think that there is anything that Soong can use to determine if a java_library is \"shared\" or not. It is all determined by the xml file.\n\nWhile adding it to java.Dependency is convenient I am not sure it is the right thing to do here. I think it would be better to just add it to SdkLibraryDependency and use that here instead of SdkLibrary.",
+      "parentUuid": "577dfa8d_a80bd24d",
+      "revId": "6fc9728d952e514d2ebcfd681b922d903d65cf05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
