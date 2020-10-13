@@ -16,6 +16,24 @@
       "message": "I believe you use the return value of ctx.InstallFile instead of joining them again here?",
       "revId": "06bb003d64ff237a907ae6f966583836d8086add",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a02d7bd_49ce3b14",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-13T05:19:01Z",
+      "side": 1,
+      "message": "You are right. Thanks for catching this. Fixed.",
+      "parentUuid": "6c353dde_8e9f29de",
+      "revId": "06bb003d64ff237a907ae6f966583836d8086add",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
