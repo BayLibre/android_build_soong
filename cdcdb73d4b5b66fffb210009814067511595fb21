@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03e5f274_6c2b7205",
+        "filename": "android/bootstrap_deps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-10-13T07:58:14Z",
+      "side": 1,
+      "message": "It\u0027s OK for ASync even if we collect the module\u0027s parent directory.",
+      "parentUuid": "045e5137_c2d68728",
+      "revId": "cdcdb73d4b5b66fffb210009814067511595fb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "693c766f_6224b4a9",
         "filename": "android/bootstrap_deps.go",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-13T00:19:06Z",
       "side": 1,
       "message": "bootstrap",
+      "range": {
+        "startLine": 73,
+        "startChar": 37,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "cdcdb73d4b5b66fffb210009814067511595fb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bdb3cf_30d6eb9a",
+        "filename": "android/bootstrap_deps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-10-13T07:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "693c766f_6224b4a9",
       "range": {
         "startLine": 73,
         "startChar": 37,
@@ -54,6 +96,30 @@
       "writtenOn": "2020-10-13T00:19:06Z",
       "side": 1,
       "message": "bootstrap",
+      "range": {
+        "startLine": 77,
+        "startChar": 34,
+        "endLine": 77,
+        "endChar": 38
+      },
+      "revId": "cdcdb73d4b5b66fffb210009814067511595fb21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67084c34_6a2ac6f2",
+        "filename": "android/bootstrap_deps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-10-13T07:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c449b2d9_b42941ce",
       "range": {
         "startLine": 77,
         "startChar": 34,
