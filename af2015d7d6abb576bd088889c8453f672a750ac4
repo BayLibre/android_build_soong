@@ -63,6 +63,30 @@
       },
       "revId": "af2015d7d6abb576bd088889c8453f672a750ac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89624446_03b604ed",
+        "filename": "rust/config/allowed_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1139038
+      },
+      "writtenOn": "2020-10-13T12:36:26Z",
+      "side": 1,
+      "message": "I could change it to reference our new directory (other CL in this topic) as an example but that will also become stale once b/165727172 adds the --check argument back in.\n\nThiébaud, is there better documentation to reference from here that will be updated as needed?",
+      "parentUuid": "e1046f27_a7429828",
+      "range": {
+        "startLine": 5,
+        "startChar": 57,
+        "endLine": 5,
+        "endChar": 69
+      },
+      "revId": "af2015d7d6abb576bd088889c8453f672a750ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
