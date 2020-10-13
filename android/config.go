@@ -617,6 +617,11 @@ func (c *config) EnvDeps() map[string]string {
 	return c.envDeps
 }
 
+func (c *config) BazelBuildList() string {
+	return absolutePath(filepath.Join(
+		filepath.Dir(bootstrap.ModuleListFile), "bazel.list"))
+}
+
 func (c *config) EmbeddedInMake() bool {
 	return c.inMake
 }
