@@ -152,6 +152,7 @@ var pctx = android.NewPackageContext("android/soong/cc/config")
 func init() {
 	if android.BuildOs == android.Linux {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
+		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-compilation-dir=.")
 	}
 
 	pctx.StaticVariable("CommonGlobalConlyflags", strings.Join(commonGlobalConlyflags, " "))
