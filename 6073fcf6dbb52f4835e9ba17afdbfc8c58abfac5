@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82c29adb_b6674ba1",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-14T16:35:24Z",
+      "side": 1,
+      "message": "Can you also mention if and why the -fdebug-prefix-map is still needed with -fdebug-compilation-dir?",
+      "revId": "6073fcf6dbb52f4835e9ba17afdbfc8c58abfac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7d126d_ee4436a3",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-14T16:35:24Z",
+      "side": 1,
+      "message": "This can be outside the \"if linux\" check, which means it can be hardcoded in commonGlobalCflags",
+      "revId": "6073fcf6dbb52f4835e9ba17afdbfc8c58abfac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
