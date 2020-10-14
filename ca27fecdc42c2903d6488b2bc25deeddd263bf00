@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f466c5_cc2f7151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-14T13:52:38Z",
+      "side": 1,
+      "message": "Submitting this to unblock my other topics.",
+      "revId": "ca27fecdc42c2903d6488b2bc25deeddd263bf00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
