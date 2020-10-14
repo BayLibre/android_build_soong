@@ -33,6 +33,24 @@
       "message": "Could you add \"com.android.bluetooth.updatable\" to the apex_available property of the two modules? We\u0027d like to eliminate this hard-coded list and don\u0027t want to add more to it.",
       "revId": "018ece8e39e77a90ac24d43ed1b3e98c4a9a1ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b11eea_bbf237fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-14T09:27:27Z",
+      "side": 1,
+      "message": "+1, no additions to this list",
+      "parentUuid": "d066f581_5765ee60",
+      "revId": "018ece8e39e77a90ac24d43ed1b3e98c4a9a1ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
