@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebbcd71_b1c67199",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-10-14T16:39:52Z",
+      "side": 1,
+      "message": "I tested the case where we use generated source via the include!() macro and compilation failed. We don\u0027t have instances of this at the moment but it\u0027s one of our supported use cases.\n\nI think using gen_mod_rs and adding multiple file support to SourceProvider would solve this. If we don\u0027t want to block the 2.18.0 upgrade on this, we can continue to carry the local patch in protobuf-codegen while we address this and remove the local patch once this is in.",
+      "revId": "c49649c059ffa80433f7789250363728ce1f1608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6a4f3c7_e57bb99e",
