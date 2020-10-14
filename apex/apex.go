@@ -137,6 +137,7 @@ func makeApexAvailableBaseline() map[string][]string {
 		"libFraunhoferAAC",
 		"libaudio-a2dp-hw-utils",
 		"libaudio-hearing-aid-hw-utils",
+		"libbinder",
 		"libbinder_headers",
 		"libbluetooth",
 		"libbluetooth-types",
@@ -181,6 +182,7 @@ func makeApexAvailableBaseline() map[string][]string {
 		"networkstack-client",
 		"sap-api-java-static",
 		"services.net",
+		"suspend_control_aidl_interface-cpp",
 	}
 	//
 	// Module separator
