@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7c0bfad_8f5667e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-10-14T19:39:44Z",
+      "side": 1,
+      "message": "Ivan, please file a bug with the failed include!() command so we can track the issue or fix it in follow up CLs.\nI am sure that the other approach you used will work too. I have also tested include!() command to work with this CL. I believe that you were using a different kind of include!() syntax.",
+      "parentUuid": "1ebbcd71_b1c67199",
+      "revId": "c49649c059ffa80433f7789250363728ce1f1608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6a4f3c7_e57bb99e",
