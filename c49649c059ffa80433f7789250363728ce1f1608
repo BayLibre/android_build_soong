@@ -22,6 +22,30 @@
       },
       "revId": "c49649c059ffa80433f7789250363728ce1f1608",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "936668e0_bb828ec6",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-10-14T00:17:12Z",
+      "side": 1,
+      "message": "We are using the default behavior now. The future default behavior could mean that mod.rs is generated automatically, but we will still need to rename mod.rs to mod_stem.rs or generate mod_stem.rs like this.\n\nIf we consider future change risk of this option, the safer choice is not to use it at command line, but use the standard Rust import code pattern \"pub mod stem;\" in our generated mod_stem.rs file. That is how gen_mod_rs is using now, and also all existing rust protobuf-codegen clients have been using. The generated stem.rs file will always compile when imported like this.",
+      "parentUuid": "d6a4f3c7_e57bb99e",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 96
+      },
+      "revId": "c49649c059ffa80433f7789250363728ce1f1608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

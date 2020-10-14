@@ -52,6 +52,24 @@
       "parentUuid": "2c791120_74201fd8",
       "revId": "7fd5be8ba6ddef307b997fe91b545860f0255250",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0553ef76_98bba847",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-10-14T00:17:12Z",
+      "side": 1,
+      "message": "Yes, we need this or similar change to upgrade to 2.18 or any version of protobuf-codegen without current local patch. Default of protobuf-codegen is not changed, so if we use default, we will need to continue depending on local patch or better with this new change similar to the mod.rs output of the new gen_mod_rs option.\n\nProtobuf-codegen as a plugin for protoc can accept multiple .proto files and generate multiple .rs files. But that\u0027s not how we use it now. We give it one .profo file at a time. With gen_mod_rs option, there will be exactly two .rs files, one stem.rs and one mod.rs. When we need to compile multiple .proto files and use the output for the same rust compilation, the same OUT directory cannot have the different mod.rs files. So we need to rename mod.rs to mod_stem.rs.\n\nThis change does not make rust_protobuf to accept multiple .proto. I agree that it can be done later. This change only allows a source provider to have multiple output files, which is needed now for the mod_stem.rs + stem.rs case. The multiple output files change looks straight forward to me, and it passed all current use cases of rust protobuf and bindgen.",
+      "parentUuid": "be59d152_87c1e5ce",
+      "revId": "7fd5be8ba6ddef307b997fe91b545860f0255250",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
