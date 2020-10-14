@@ -53,6 +53,14 @@ var (
 		"-Werror=pragma-pack",
 		"-Werror=pragma-pack-suspicious-include",
 		"-Werror=unreachable-code-loop-increment",
+
+		// -fdebug-compilation-dir=. is used to make both the action command line and the output
+		// independent of the working directory of the action.
+		// See: https://reviews.llvm.org/D63387
+		"-Xclang",
+		"-fdebug-compilation-dir",
+		"-Xclang",
+		".",
 	}
 
 	commonGlobalConlyflags = []string{}
@@ -150,10 +158,6 @@ var (
 var pctx = android.NewPackageContext("android/soong/cc/config")
 
 func init() {
-	if android.BuildOs == android.Linux {
-		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
-	}
-
 	pctx.StaticVariable("CommonGlobalConlyflags", strings.Join(commonGlobalConlyflags, " "))
 	pctx.StaticVariable("DeviceGlobalCppflags", strings.Join(deviceGlobalCppflags, " "))
 	pctx.StaticVariable("DeviceGlobalLdflags", strings.Join(deviceGlobalLdflags, " "))
