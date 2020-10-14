@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464c8ddf_00d95b6e",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-14T04:08:43Z",
+      "side": 1,
+      "message": "What about regular `BUILD`?",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "a798d9607641c27d9b3a383b484a768ce8222be7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
