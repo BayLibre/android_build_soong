@@ -50,6 +50,69 @@
       "message": "I think Nicolas can review that and has an OWNER\u0027s vote.",
       "revId": "7cec6c13cddeb85e1960015aa723106bfca4d2f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0b2a84_856393f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-14T14:37:39Z",
+      "side": 1,
+      "message": "My memory is coming back bit by bit. Now I recall why I didn\u0027t merge this CL: there was some problem with JIT-Zygote configuration, which uses DEXPREOPT_USE_ART_IMAGE (UseArtImage in Soong). In this configuration the ART image is the default one.\n\nThis configuration can only be tested on Forrest (with _jizygote builds).\n\nSetting -1 to investigate this.",
+      "revId": "7cec6c13cddeb85e1960015aa723106bfca4d2f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dba62dd_212990f4",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-14T14:37:39Z",
+      "side": 1,
+      "message": "This may modify d.otherImages (I know it\u0027s been here before, but I noticed this only now).",
+      "range": {
+        "startLine": 745,
+        "startChar": 26,
+        "endLine": 745,
+        "endChar": 54
+      },
+      "revId": "7cec6c13cddeb85e1960015aa723106bfca4d2f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13fb6cc0_a003bbb9",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-14T14:37:39Z",
+      "side": 1,
+      "message": "This deserves a comment why we generate the name only for default image (framework extension), but other varaibles for all images. Actually, I don\u0027t know if we need the other variables for the ART image.",
+      "range": {
+        "startLine": 762,
+        "startChar": 2,
+        "endLine": 762,
+        "endChar": 49
+      },
+      "revId": "7cec6c13cddeb85e1960015aa723106bfca4d2f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
