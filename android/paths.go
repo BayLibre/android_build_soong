@@ -1519,6 +1519,71 @@ func PathContextForTesting(config Config) PathContext {
 	}
 }
 
+type testModuleInstallPathContext struct {
+	baseModuleContext
+
+	config Config
+
+	inData         bool
+	inTestcases    bool
+	inSanitizerDir bool
+	inRamdisk      bool
+	inRecovery     bool
+	inRoot         bool
+	forceOS        *OsType
+	forceArch      *ArchType
+}
+
+func (m testModuleInstallPathContext) Config() Config {
+	return m.baseModuleContext.config
+}
+
+func (testModuleInstallPathContext) AddNinjaFileDeps(deps ...string) {}
+
+func (m testModuleInstallPathContext) InstallInData() bool {
+	return m.inData
+}
+
+func (m testModuleInstallPathContext) InstallInTestcases() bool {
+	return m.inTestcases
+}
+
+func (m testModuleInstallPathContext) InstallInSanitizerDir() bool {
+	return m.inSanitizerDir
+}
+
+func (m testModuleInstallPathContext) InstallInRamdisk() bool {
+	return m.inRamdisk
+}
+
+func (m testModuleInstallPathContext) InstallInRecovery() bool {
+	return m.inRecovery
+}
+
+func (m testModuleInstallPathContext) InstallInRoot() bool {
+	return m.inRoot
+}
+
+func (m testModuleInstallPathContext) InstallBypassMake() bool {
+	return false
+}
+
+func (m testModuleInstallPathContext) InstallForceOS() (*OsType, *ArchType) {
+	return m.forceOS, m.forceArch
+}
+
+func ModuleInstallPathContextForTesting(config Config) ModuleInstallPathContext {
+	target := Target{Os: Android, Arch: Arch{ArchType: Arm64}}
+	ctx := &testModuleInstallPathContext{
+		baseModuleContext: baseModuleContext{
+			os:     target.Os,
+			target: target,
+		},
+	}
+	ctx.baseModuleContext.config = config
+	return ctx
+}
+
 // Rel performs the same function as filepath.Rel, but reports errors to a PathContext, and reports an error if
 // targetPath is not inside basePath.
 func Rel(ctx PathContext, basePath string, targetPath string) string {
