@@ -1,0 +1,227 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "187e1edf_e3d41620",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "Can you put this init func and the above var declaration at the top of the file?",
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a76e5bb_1e853b7f",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "Call ctx.InstallFile when the given module is installable?",
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4aaea8_c54736ba",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "proptools.BoolDefault(l.properties.Installable, true)?",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 89
+      },
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ead233d_eb0a365c",
+        "filename": "linkerconfig/proto/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "Why do you need this? Will this run on the device too?",
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc4de26_74aa1b4b",
+        "filename": "linkerconfig/proto/conv_linker_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "Add a brief comment about this script. And, consider moving this to build/soong/script. Most of our build scripts live there.",
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37e85c49_78ba54a0",
+        "filename": "linkerconfig/proto/conv_linker_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "What about \"Convert the input JSON configuration file into proto.\"?",
+      "range": {
+        "startLine": 46,
+        "startChar": 21,
+        "endLine": 46,
+        "endChar": 49
+      },
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c16aea6_d25c4e62",
+        "filename": "linkerconfig/proto/conv_linker_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "linker",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72db152b_0e511749",
+        "filename": "linkerconfig/proto/conv_linker_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "Is this really a directory? It seems like a regular file path.",
+      "range": {
+        "startLine": 58,
+        "startChar": 19,
+        "endLine": 58,
+        "endChar": 29
+      },
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a4e6a4_b39e9e47",
+        "filename": "linkerconfig/proto/conv_linker_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "What about \"in human-readable text format\"?",
+      "range": {
+        "startLine": 62,
+        "startChar": 41,
+        "endLine": 62,
+        "endChar": 56
+      },
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "932db784_2ff23c54",
+        "filename": "linkerconfig/proto/conv_linker_config.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "configuration file.",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 40
+      },
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe6622b_8155fcf9",
+        "filename": "linkerconfig/proto/linker_config.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T00:35:38Z",
+      "side": 1,
+      "message": "Please add a comment on what this message is for.",
+      "revId": "04ed4346a428ae3060531f4642e8c41543d55272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
