@@ -53,6 +53,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c85e5a_fc9ad506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2020-10-15T05:43:26Z",
+      "side": 1,
+      "message": "The only failed test robolectric_nexuslauncher_test is unrelated and due to b/169792793.\n",
+      "revId": "c49649c059ffa80433f7789250363728ce1f1608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6a4f3c7_e57bb99e",
