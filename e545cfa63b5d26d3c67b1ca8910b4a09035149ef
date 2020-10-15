@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1d5b6bc_29f7985a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-10-15T08:08:50Z",
+      "side": 1,
+      "message": "Thanks Jaewoong for your review. I addressed most of your comments and updated OWNERS file for future updates. Can you please check if it looks OK for you?",
+      "revId": "e545cfa63b5d26d3c67b1ca8910b4a09035149ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
