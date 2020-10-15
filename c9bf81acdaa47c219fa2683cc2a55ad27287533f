@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c49a67_00410d87",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-15T07:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0771158a_fd42b606",
+      "revId": "c9bf81acdaa47c219fa2683cc2a55ad27287533f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c017f08_cc1ed9ec",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-13T22:08:19Z",
       "side": 1,
       "message": "Can you comment on the semantics W.R.T. Outputs?  E.g. does the value have to also be specified as an Output?\n\nMaybe SymlinkOutput should be a superset of Output (put it on the command line, mark it as an output, and mark it as a symlink outout), and ImplicitSymlinkOutput should be superset of ImplicitOutput (don\u0027t put it on the command line).\n\nWhatever the behavior, can you add tests and examples to rule_builder_test.go?",
+      "revId": "c9bf81acdaa47c219fa2683cc2a55ad27287533f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f8d193b_730659d5",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-15T07:13:35Z",
+      "side": 1,
+      "message": "Add test and example in rule_builder_test.go.\n\nRe: Semantics, no. It can be an implicit output. This is the list of paths that the executor (Ninja) would verify, after build edge completion, that:\n\n1) Created output symlinks must match this the list of paths exactly (no more, no fewer)\n2) Created output files are *not* declared in this list.\n\nDoes that answer your question?",
+      "parentUuid": "1c017f08_cc1ed9ec",
       "revId": "c9bf81acdaa47c219fa2683cc2a55ad27287533f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
