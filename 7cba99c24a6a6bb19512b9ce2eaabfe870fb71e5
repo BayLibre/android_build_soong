@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f945f7c0_f56fa061",
+        "filename": "android/rule_builder_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-15T18:42:24Z",
+      "side": 1,
+      "message": "SymlinkOutput?\n\nAlso, the Output().SymlinkOutput() seems repetitive.  I suggest that SymlinkOutput() imply Output(), and ImplicitSymlinkOutput() imply ImplicitOutput().",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 16
+      },
+      "revId": "7cba99c24a6a6bb19512b9ce2eaabfe870fb71e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

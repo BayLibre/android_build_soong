@@ -69,6 +69,24 @@
       "parentUuid": "1c017f08_cc1ed9ec",
       "revId": "c9bf81acdaa47c219fa2683cc2a55ad27287533f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90e2363_c6458651",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-15T18:42:24Z",
+      "side": 1,
+      "message": "Isn\u0027t ninja also going to verify that everything in symlink_outputs is also listed in either the outputs or implicit outputs of the rule?  If so, you could get a much more actionable error message if you detected it early in Blueprint, Soong, or RuleBuilder than if you wait for ninja to catch it.",
+      "parentUuid": "3f8d193b_730659d5",
+      "revId": "c9bf81acdaa47c219fa2683cc2a55ad27287533f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
