@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f864f45_c6d0068a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-10-15T05:43:02Z",
+      "side": 1,
+      "message": "I don\u0027t think `-fdebug-prefix-map` is needed anymore - I\u0027ve removed it.\n\nMy understanding is `PWD` prefix also isn\u0027t needed anymore, so I\u0027ve removed that as well from the compile command.",
+      "parentUuid": "82c29adb_b6674ba1",
+      "revId": "6073fcf6dbb52f4835e9ba17afdbfc8c58abfac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d7d126d_ee4436a3",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-14T16:35:24Z",
       "side": 1,
       "message": "This can be outside the \"if linux\" check, which means it can be hardcoded in commonGlobalCflags",
+      "revId": "6073fcf6dbb52f4835e9ba17afdbfc8c58abfac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ebcba6c_a9e40201",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-10-15T05:43:02Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7d7d126d_ee4436a3",
       "revId": "6073fcf6dbb52f4835e9ba17afdbfc8c58abfac5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
