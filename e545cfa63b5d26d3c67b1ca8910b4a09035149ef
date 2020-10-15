@@ -16,6 +16,52 @@
       "message": "Thanks Jaewoong for your review. I addressed most of your comments and updated OWNERS file for future updates. Can you please check if it looks OK for you?",
       "revId": "e545cfa63b5d26d3c67b1ca8910b4a09035149ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "295e35fd_3013848e",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T13:27:31Z",
+      "side": 1,
+      "message": "nit: l.outputFilePath.Base() instead?",
+      "range": {
+        "startLine": 81,
+        "startChar": 36,
+        "endLine": 81,
+        "endChar": 54
+      },
+      "revId": "e545cfa63b5d26d3c67b1ca8910b4a09035149ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "764f52ca_a258b3c1",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-10-15T13:27:31Z",
+      "side": 1,
+      "message": "nit: in",
+      "range": {
+        "startLine": 63,
+        "startChar": 41,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "e545cfa63b5d26d3c67b1ca8910b4a09035149ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
