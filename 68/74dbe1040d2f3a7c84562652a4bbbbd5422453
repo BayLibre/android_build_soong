@@ -1,0 +1,10 @@
+Code-Review+2: Lukács T. Berki <lberki@google.com>
+Code-Review+2: Paul Duffin <paulduffin@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Submitted-by: Jingwen Chen <jingwen@google.com>
+Submitted-at: Thu, 15 Oct 2020 01:02:43 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1460102
+Project: platform/build/soong
+Branch: refs/heads/master
