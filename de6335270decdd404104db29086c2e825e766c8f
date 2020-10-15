@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388cc015_9e753ff7",
+        "filename": "cc/config/global.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-15T17:38:31Z",
+      "side": 1,
+      "message": "Does \"-Xclang,-fdebug-compilation-dir,.\" work here?  That\u0027s the style that is used for \"-Wl\" options.",
+      "range": {
+        "startLine": 62,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "de6335270decdd404104db29086c2e825e766c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
