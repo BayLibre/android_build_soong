@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf71cb0_d3b764ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-10-15T06:21:53Z",
+      "side": 1,
+      "message": "Also mention in the commit message that this change removes -fdebug-prefix-map and setting PWD\u003d which are unnecessary after adding this flag.",
+      "revId": "e6dd1d823fa32aa73d55d632c1e24213d8000848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
