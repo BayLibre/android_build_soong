@@ -22,6 +22,30 @@
       },
       "revId": "b9ac435a3474b6dbc666fe86e8de7a9d75457e5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62054d20_59707a09",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-10-15T06:17:34Z",
+      "side": 1,
+      "message": "Oops, I added a comment about it but forgot to push it (done now). I need to set the cc1 flag instead of the driver flag because RBE\u0027s input processor does not support the driver level flag yet. We need to update the version of LLVM used in reproxy, then switch to using the drive flag.",
+      "parentUuid": "310c4092_3dbb892a",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "b9ac435a3474b6dbc666fe86e8de7a9d75457e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
