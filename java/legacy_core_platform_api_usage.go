@@ -66,6 +66,8 @@ var legacyCorePlatformApiModules = []string{
 	"ExtServices-core",
 	"framework-all",
 	"framework-minus-apex",
+	"framework-minus-apex-intdefs",
+	"FrameworkOverlayG6QU3",
 	"FrameworksCoreTests",
 	"FrameworksIkeTests",
 	"FrameworksNetCommonTests",
