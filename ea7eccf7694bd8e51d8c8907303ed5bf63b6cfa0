@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8673f124_1adfcfce",
+        "filename": "android/module.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-16T09:45:01Z",
+      "side": 1,
+      "message": "Leaving this unresolved until https://github.com/google/blueprint/pull/322 is available in AOSP",
+      "range": {
+        "startLine": 1795,
+        "startChar": 2,
+        "endLine": 1795,
+        "endChar": 16
+      },
+      "revId": "ea7eccf7694bd8e51d8c8907303ed5bf63b6cfa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b1cbd02_abd551f0",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-16T09:45:01Z",
+      "side": 1,
+      "message": "Leaving this unresolved to prevent this CL from being submitted, until ckati prebuilt with https://github.com/google/kati/pull/209 is checked into AOSP build-tools",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "ea7eccf7694bd8e51d8c8907303ed5bf63b6cfa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

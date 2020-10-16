@@ -87,6 +87,24 @@
       "parentUuid": "3f8d193b_730659d5",
       "revId": "c9bf81acdaa47c219fa2683cc2a55ad27287533f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "348308ee_58925b08",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-16T09:45:01Z",
+      "side": 1,
+      "message": "SGTM, added a validation step in Build(), along with tests in module_test.go.",
+      "parentUuid": "b90e2363_c6458651",
+      "revId": "c9bf81acdaa47c219fa2683cc2a55ad27287533f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
