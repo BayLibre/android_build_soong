@@ -34,6 +34,24 @@
       "parentUuid": "191d6cdb_1eb3fc5b",
       "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0470c5e_a372c968",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T17:47:09Z",
+      "side": 1,
+      "message": "No. I keep things very simple. I just maintain a stack of changes on a single branch. Upload them all together and rely on Gerrit preserving the stack order to ensure that they don\u0027t get submitted out of order.\n\nSometimes I have stacks in separate repositories with some commits depending on each other. In that case I use a topic to link that \"slice\" of commits together. e.g.\n\nR1  R2\n\nA   X\nB   Y - topic1\nC\nD   Z - topic2\n\nAssuming that A is the first commit (how git rebase -i displays them from the top down rather than Gerrit from the bottom up). Then A must be submitted before B and hence before Y (as B and Y are in a topic) but can be submitted before or after X.",
+      "parentUuid": "736f14e5_7f26fce1",
+      "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
