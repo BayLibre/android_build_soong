@@ -344,5 +344,10 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 		m.Properties.ImageVariationPrefix = ProductVariationPrefix
 		m.Properties.VndkVersion = strings.TrimPrefix(variant, ProductVariationPrefix)
 		squashVendorSrcs(m)
+
+		// VNDK Product variant shares the files with the vendor variant.
+		if m.IsVndk() {
+			m.SkipInstall()
+		}
 	}
 }
