@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0799251_208900d2",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T14:44:38Z",
+      "side": 1,
+      "message": "Correct. (Removed in new PS anyway.)",
+      "parentUuid": "db750e3d_0f007507",
+      "range": {
+        "startLine": 1971,
+        "startChar": 30,
+        "endLine": 1971,
+        "endChar": 36
+      },
+      "revId": "80a4b47e951f71a5eb294c01e11fca5c4fce3573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd54d43d_599e9d78",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-13T18:24:17Z",
       "side": 1,
       "message": "I recommend creating a special type for this that contains a field with the sdkVer? That would avoid the version specific cases in Visitor above.",
+      "range": {
+        "startLine": 573,
+        "startChar": 1,
+        "endLine": 573,
+        "endChar": 19
+      },
+      "revId": "80a4b47e951f71a5eb294c01e11fca5c4fce3573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3783ebd2_59a9ae71",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T14:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd54d43d_599e9d78",
       "range": {
         "startLine": 573,
         "startChar": 1,
