@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a8bf45_78dbec37",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-10-16T11:16:09Z",
+      "side": 1,
+      "message": "1) Does this work if BOARD_VNDK_VERSION is not current and PRODUCT_VNDK_VERSION is current?\n\n2) Do any of the VNDKs need to be installed to system/lib/vndk.{VER}, given that we\u0027re currently using VNDK APEX? jooyung@ would know more about this.",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "58898f42dd42638ef5e139d95a0e58a09485a678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
