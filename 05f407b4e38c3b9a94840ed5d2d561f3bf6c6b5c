@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf6d28e_5f81e107",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:05:14Z",
+      "side": 0,
+      "message": "Martin has a habit of adding comments to the change (in Gerrit not the code) that explain the delta where it is unclear what is happening with it. That can be really helpful for reviewers.\n\ne.g. I assume that all the bits removed from here have moved into the new class_loader_context.go file. A comment that explains that would make this easier to review.",
+      "revId": "05f407b4e38c3b9a94840ed5d2d561f3bf6c6b5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

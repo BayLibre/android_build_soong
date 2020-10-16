@@ -16,6 +16,24 @@
       "message": "Thanks Paul. It could be done in smaller steps, yes (but I already split it from a much larger change). In the new PS I moved CLC to its own file and added unit tests (I planned to do the move in a follow-up commit, but it makes no difference since it\u0027s hard to diff the old and the new implementation anyway).\n\nI also had to add https://r.android.com/1463963 to the topic to deal with unit tests.\n\nPlease take a look.",
       "revId": "a59bd37b39ca0c607e572a2555206367b7105f34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06317e1_8fab0e70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:05:14Z",
+      "side": 1,
+      "message": "The change you link to has been abandoned. I presume you mean https://r.android.com/1463964.\n\nI appreciate that you have already split the larger change down. The parts are much easier to review but this is still an XL (Extra Large) change to Gerrit. It is also a really hard change to review as it contains moves, refactorings and behavior changes all mixed in together. At least I think it does it is really hard to understand.\n\nWhat I suggest you do is:\n1) Fix the issues with the tests that I raised. Update the commit locally, tag it so you don\u0027t lose it.\n\n2) Start with a clean slate, i.e. the commit before this one.\n\n3) Create the class_loader_context.go file and move the existing code in. Use this change as a guide but do it from scratch. Maintain the order you used in this change. That way when you checkout this change on top of that you should have a clean set of deltas. Do not make any functional changes. That is the first commit. Reviewing that is trivial.\n\n4) Add unit tests for that code. Do not make any functional changes. That is the second commit. You can do that by checking out the tests from the commit in #1 and then removing the ones that don\u0027t compile and fixing the ones that are broken. That\u0027s why I suggested you fix them first.\n\n5) Refactor the code to use CLC. Add tests for the new functionality you need to add into CLC to support that. Again you can do that by checking out the remaining changes from this and removing the behavioral changes.\n\n6) Checking out this change again will lead to you adding behavioral changes.\n\nWhat I tend to do when splitting one large change down into smaller changes is to avoid making changes to the overlapping parts when first splitting them out. That way you minimize the merge conflicts that arise during this process. Once they have been separated into mostly non-overlapping changes then I go back and clean up each change. That way I avoid having too many conflicts.\n\nWhat you should end up with are changes that contain:\n1) Moving some code, no behavioural changes.\n2) Tests for existing code, no behavioral changes.\n3) Refactorings with additions to and tests for CLC but no behavioral changes outside CLC.\n4) Finally some behavior changes in the rest of Soong.\n\nEach of those changes will be much easier to review than this one.",
+      "parentUuid": "da4bb1f0_b111d630",
+      "revId": "a59bd37b39ca0c607e572a2555206367b7105f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

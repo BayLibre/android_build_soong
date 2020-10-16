@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2836191_c0674882",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:05:14Z",
+      "side": 1,
+      "message": "I\u0027ve not seen this pattern elsewhere in Soong so I suspect that this is probably the wrong way to do this. Errors created by ModuleErrorf() and similar are collated by Soong and usually available as a list somewhere and tests generally check that list.\n\nAlso, this changes the behavior of the code in the tests.\n\nLet\u0027s say that you have a test that expects a specific error and receives it so passes. As the test fails it throws a panic which causes the code to exit immediately. However, the normal behavior is to carry on and that could cause other problems which your test would never fine, e.g. other panics due to nil pointer exception, etc.",
+      "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e2dc9b_d38a4733",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:05:14Z",
+      "side": 1,
+      "message": "It would make it easier to understand with some ascii art to show the resulting class loader structure.",
+      "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b69dd1_71b9da11",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:05:14Z",
+      "side": 1,
+      "message": "It looks as though this object is modified by all the tests. That makes it really hard to tell what is going on with an individual test. It\u0027s much better if the test creation of the mutable state is self contained within that test.",
+      "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f655e5_c072d5a5",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:05:14Z",
+      "side": 1,
+      "message": "Is this part of all the tests that follow? If so maybe move it (and the creation) of the map into a helper method to use in each test.\n\nLots of similar issues below.",
+      "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
