@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa72ff56_8fa94624",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:22:42Z",
+      "side": 1,
+      "message": "Ok. Presumably, in a future change you will use the sdkVersion from the usesLibraryDependencyTag field. Thinking about it some more I would have not added the new type here (as you aren\u0027t using the field) and added the new type in the change when you needed the field but this is fine.",
+      "parentUuid": "b0799251_208900d2",
+      "range": {
+        "startLine": 1971,
+        "startChar": 30,
+        "endLine": 1971,
+        "endChar": 36
+      },
+      "revId": "80a4b47e951f71a5eb294c01e11fca5c4fce3573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd54d43d_599e9d78",
