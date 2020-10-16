@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdde36a9_ac0e742e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-16T11:59:34Z",
+      "side": 1,
+      "message": "As we have an error not for having VNDK product variant for the make-world, let me find another way to solve this problem. (https://android-build.googleplex.com/builds/pending/P17302340/com_android_runtime_host-linux_bionic/latest/view/logs/build.log)",
+      "revId": "58898f42dd42638ef5e139d95a0e58a09485a678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69a8bf45_78dbec37",
@@ -14,6 +31,30 @@
       "writtenOn": "2020-10-16T11:16:09Z",
       "side": 1,
       "message": "1) Does this work if BOARD_VNDK_VERSION is not current and PRODUCT_VNDK_VERSION is current?\n\n2) Do any of the VNDKs need to be installed to system/lib/vndk.{VER}, given that we\u0027re currently using VNDK APEX? jooyung@ would know more about this.",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "58898f42dd42638ef5e139d95a0e58a09485a678",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89904005_8f0f7d64",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-16T11:59:34Z",
+      "side": 1,
+      "message": "1) I expect the VNDK APEX for PRODUCT_VNDK_VERSION is installed on runtime, but did not test that case. We need to check the case.\n\n2) We don\u0027t use system/lib/vndk-{ver} directory. But it is created for --skip-make rule.",
+      "parentUuid": "69a8bf45_78dbec37",
       "range": {
         "startLine": 348,
         "startChar": 0,
