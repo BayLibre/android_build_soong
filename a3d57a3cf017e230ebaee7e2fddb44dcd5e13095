@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96ded06_8e697384",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:11:17Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "a3d57a3cf017e230ebaee7e2fddb44dcd5e13095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53222953_df3aa24c",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-16T15:11:17Z",
+      "side": 1,
+      "message": "Why is this function needed? Could you add a comment to explain what it does too?",
+      "revId": "a3d57a3cf017e230ebaee7e2fddb44dcd5e13095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
