@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f3b8e6_8e0f13a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-10-16T07:25:34Z",
+      "side": 1,
+      "message": "This fixes internal build error due to missing export directories of vndk_prebuilt_shared.",
+      "revId": "70cb3b63b4ad63a9d692c1053ddabfb1cf3dba78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
