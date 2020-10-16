@@ -576,14 +576,16 @@ func LibraryMutator(mctx android.BottomUpMutatorContext) {
 	// The source variant is used for SourceProvider modules. The other variants (i.e. rlib and dylib)
 	// depend on this variant. It must be the first variant to be declared.
 	sourceVariant := false
+	codegenOnly := false
 	if m.sourceProvider != nil {
 		variants = append(variants, "source")
 		sourceVariant = true
+		codegenOnly = m.sourceProvider.CodegenOnly()
 	}
-	if library.buildRlib() {
+	if !codegenOnly && library.buildRlib() {
 		variants = append(variants, rlibVariation)
 	}
-	if library.buildDylib() {
+	if !codegenOnly && library.buildDylib() {
 		variants = append(variants, dylibVariation)
 	}
 
