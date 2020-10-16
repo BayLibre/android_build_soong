@@ -16,6 +16,24 @@
       "message": "Generally, I don\u0027t add multiple changes from the same repository into a single topic. Instead I rely on the stacking of those changes to ensure that they are added in the correct order and can build standalone without requiring later changes.",
       "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736f14e5_7f26fce1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T16:02:49Z",
+      "side": 1,
+      "message": "Do you mean that you do this for each stacked change:\n\n  repo start topic-name-\u003cN\u003e .\n  git reset --hard topic-name-\u003cN-1\u003e\n\nAnd then when you upload on Gerrit, the commits are not duplicated, but treehugger can test each change with all preceding changes, but not subsequent ones?\n\nMy current workflow is to create a copy branch, rollback to the commit I need to fix, then cherry-pick remaining commits on top from the copy branch:\n\n  $ repo start uses-libs-26-copy .\n  $ git reset --hard uses-libs-26\n  $ git checkout uses-libs-26\n  $ git reset --hard HEAD~3 # or some more, depends where I need to do the fix\n  $ git commit --amend -a\n  $ git checkout uses-libs-26-copy\n  $ git log --oneline       # to get SHAs of the remaining commits\n  $ git cherry-pick \u003cSHA\u003e   # fix conflicts, amend as needed\n  ...\n\nMaybe there is a better workflow (record SHAs elsewhere or see them in git reflog`). With a branch-per-commit approach is there an elegant way to rebase all on-top branches after changing one in the middle? Or is it the same git-reset plus git-cherry-pick approach needed? Of course, I can create a script, just wondering.\n\nIt may be obvious, but to clarify, it\u0027s hard for me to go in small steps because it\u0027s the final result that I need to test (and in internal as much as AOSP, so I cherry-pick the whole topic there and add more internal-specific changes). Small steps are useless if the main changes in the topic don\u0027t pass review.",
+      "parentUuid": "191d6cdb_1eb3fc5b",
+      "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
