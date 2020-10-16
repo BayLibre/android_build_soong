@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b439ec_a0f9d0ce",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7826bb09_467ff305",
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b305b03c_e2342eae",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-10-09T15:59:39Z",
       "side": 1,
       "message": "Normally I would suggest that you use -1 but presumably you chose 9999 because it is higher than any other version. Does the choice of 9999 have anything to do with the current being set to 10000? Why not use math.MaxInt32 or 10000?",
+      "range": {
+        "startLine": 146,
+        "startChar": 26,
+        "endLine": 146,
+        "endChar": 30
+      },
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c728ba2_65661495",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "I can use android.FutureApiLevelInt (can\u0027t use the wrapper from java package because of the include order). I also added a comment explaining in what way the numeric value matters.",
+      "parentUuid": "b305b03c_e2342eae",
       "range": {
         "startLine": 146,
         "startChar": 26,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeff3819_fb0130a6",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0006ec7e_320a8f45",
+      "range": {
+        "startLine": 185,
+        "startChar": 23,
+        "endLine": 185,
+        "endChar": 25
+      },
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3aa434a8_105e15ea",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-10-09T15:59:39Z",
       "side": 1,
       "message": "I think this would be better if it was a general method that took an sdk and name parameter and instead of logging the error returned an error. You could then make it a ClassLoaderContextMap method and add unit tests for it.",
+      "range": {
+        "startLine": 269,
+        "startChar": 5,
+        "endLine": 269,
+        "endChar": 20
+      },
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fdb4148_1c18ef29",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "Done.\n\nIt is problematic for me to return errors from everywhere instead of doing android.ReportPathErrorf or some such, as the errors are supposed to be rare, and checking them at all call sites would be inconvenient. So I used a workaround with overriding ModuleErrorf method in the mock implementation of android.ModuleInstallPathContext for tests: I made it panic() and various tests for errors use recover().",
+      "parentUuid": "3aa434a8_105e15ea",
       "range": {
         "startLine": 269,
         "startChar": 5,
@@ -127,6 +217,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86bdf2a3_46cf8714",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "I created http://b/170710203.",
+      "parentUuid": "4c6dbfc3_ef79d2d5",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 313,
+        "endChar": 42
+      },
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d4997b_88225642",
@@ -140,6 +254,24 @@
       "writtenOn": "2020-10-09T15:59:39Z",
       "side": 1,
       "message": "A comment explaining what constitutes a valid CLC would be helpful.",
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a258e0a_48ee80c6",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "There is one a few lines above, before the top-level function validateClassLoaderContext (validateClassLoaderContextPaths is a helper that does the recursion). I expanded it and renamed the helpr to validateClassLoaderContextRec.",
+      "parentUuid": "77d4997b_88225642",
       "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -161,6 +293,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9c1eed_78e14468",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ad79b94_6f7a3488",
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd55ab50_05cdf2c8",
@@ -174,6 +324,24 @@
       "writtenOn": "2020-10-09T15:59:39Z",
       "side": 1,
       "message": "Comment explaining what this does would be helpful.",
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8bd0653_55b54bc2",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "It\u0027s one more case of a recursive helper that is supposed to be covered by the large comment to the top-level ComputeClassLoaderContext that calls the helper. I renamed it to computeClassLoaderContextRec.",
+      "parentUuid": "bd55ab50_05cdf2c8",
       "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -195,6 +363,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5a303e_17ee0989",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "I had a follow-up patch that cleans this up, but it probably not worth splitting into a separate patch since the implementation has changed considerably anyway. Now that I moved class loader context to a separate file, I moved related JSON stuff there as well.",
+      "parentUuid": "ec3f94ba_f795446a",
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c02eb56_c12b6c54",
@@ -208,6 +394,24 @@
       "writtenOn": "2020-10-09T15:59:39Z",
       "side": 1,
       "message": "AIUI this has moved later in the method to maintain some ordering. A comment explaining it would be helpful.",
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a13db3c_47ade6dc",
+        "filename": "java/aar.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "Yes, you are right. I added a comment.",
+      "parentUuid": "3c02eb56_c12b6c54",
       "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -235,6 +439,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e91f9f_86c78163",
+        "filename": "java/aar.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "I added a named local var unusedClcMap and a comment explaining that it\u0027s not really needed, but the function expect an argument. Maybe it will be needed in future, I\u0027m not sure, but not it\u0027s just an unused side-effect.",
+      "parentUuid": "a45f87e7_4ef0f911",
+      "range": {
+        "startLine": 716,
+        "startChar": 31,
+        "endLine": 716,
+        "endChar": 68
+      },
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "392dc148_14e14079",
@@ -248,6 +476,24 @@
       "writtenOn": "2020-10-09T15:59:39Z",
       "side": 1,
       "message": "Presumably the order change is important.",
+      "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08958d8_120bd4e3",
+        "filename": "java/app_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2821,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "The order change is expected, as it was previously an ordered set of strings, and now a pre-order traversal of class loader context tree. The new order is more correct than the old one (it may still need some fixing due to the order in which dependencies are handled, but I did not hit that problem on real-world examples yet).\n\nCommit message mentions this change.",
+      "parentUuid": "392dc148_14e14079",
       "revId": "d0d1126a30dd8f75524fc0bd780ea456ffe9a33d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

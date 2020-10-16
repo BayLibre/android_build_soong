@@ -16,6 +16,24 @@
       "message": "Presumably this is being initialized prior to this code being run.",
       "revId": "faf33b5f1b8e373343133af1763faba54b866f77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "058b1ce0_f2f593f5",
+        "filename": "java/aar.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 0,
+      "message": "Before my changes the flow was bottom-up: aapt returned its set of exported packages, and that was merged to the app\u0027s set. Now the flow is getting a top-down component: aapt gets a partially constructed class loader context and  amends it (the way it amends depends on what it gets).\n\nI have a follow-up patch that updates obsolete field/method names and removes the field from aapt, since the argument needs to be passed around anyway.",
+      "parentUuid": "10f3e73a_9096d4c1",
+      "revId": "faf33b5f1b8e373343133af1763faba54b866f77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

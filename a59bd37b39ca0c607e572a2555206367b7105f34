@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4bb1f0_b111d630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-16T11:37:02Z",
+      "side": 1,
+      "message": "Thanks Paul. It could be done in smaller steps, yes (but I already split it from a much larger change). In the new PS I moved CLC to its own file and added unit tests (I planned to do the move in a follow-up commit, but it makes no difference since it\u0027s hard to diff the old and the new implementation anyway).\n\nI also had to add https://r.android.com/1463963 to the topic to deal with unit tests.\n\nPlease take a look.",
+      "revId": "a59bd37b39ca0c607e572a2555206367b7105f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
