@@ -33,6 +33,24 @@
       "message": "Since this functionality doesn\u0027t seem to be exercised by any presubmit builds I\u0027d suggest expanding the Soong test coverage.",
       "revId": "70cb3b63b4ad63a9d692c1053ddabfb1cf3dba78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "584a44e6_d38ee75c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-10-18T12:18:42Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "ab5fd2da_3d9dbaa2",
+      "revId": "70cb3b63b4ad63a9d692c1053ddabfb1cf3dba78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
