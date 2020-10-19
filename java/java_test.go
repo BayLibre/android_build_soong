@@ -754,6 +754,242 @@ func TestJavaSdkLibraryImport_Preferred(t *testing.T) {
 	})
 }
 
+func TestJavaSdkLibraryEnforce(t *testing.T) {
+	partitionToBpOption := func(partition string) string {
+		if partition == "system" {
+			return ""
+		}
+
+		if partition == "vendor" {
+			return "soc_specific: true,"
+		}
+
+		if partition == "product" {
+			return "product_specific: true,"
+		}
+
+		return ""
+	}
+
+	type testConfigInfo struct {
+		libraryType                string
+		fromPartition              string
+		toPartition                string
+		enforceVendorInterface     bool
+		enforceProductInterface    bool
+		enforceJavaSdkLibraryCheck bool
+		allowList                  []string
+	}
+
+	createTestConfig := func(info testConfigInfo) android.Config {
+		var bpFile string
+
+		bpFile += `java_library {`
+		bpFile += `name: "foo",`
+		bpFile += `srcs: ["foo.java"],`
+		bpFile += `libs: ["bar"],`
+		bpFile += partitionToBpOption(info.fromPartition)
+		bpFile += `sdk_version: "current",`
+		bpFile += `}`
+		bpFile += info.libraryType + " {"
+		bpFile += `name: "bar",`
+		bpFile += `srcs: ["bar.java"],`
+		bpFile += partitionToBpOption(info.toPartition)
+		bpFile += `sdk_version: "current",`
+		bpFile += `}`
+
+		config := testConfig(nil, bpFile, nil)
+		configVariables := config.TestProductVariables
+
+		configVariables.EnforceProductPartitionInterface = proptools.BoolPtr(info.enforceProductInterface)
+		if info.enforceVendorInterface {
+			configVariables.DeviceVndkVersion = proptools.StringPtr("current")
+		}
+		configVariables.EnforceJavaSdkLibraryInterPartition = proptools.BoolPtr(info.enforceJavaSdkLibraryCheck)
+		configVariables.InterPartitionJavaLibraryAllowList = info.allowList
+
+		return config
+	}
+
+	errorMessage := "using of java_sdk_library is enforced at inter-partition"
+
+	for _, libraryType := range []string{"java_library", "java_sdk_library"} {
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "system",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "vendor",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "product",
+			toPartition:                "product",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: false,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "system",
+			enforceVendorInterface:     false,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "product",
+			enforceVendorInterface:     false,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "product",
+			toPartition:                "vendor",
+			enforceVendorInterface:     false,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "product",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    false,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "product",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    false,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "product",
+			toPartition:                "vendor",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    false,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaErrorWithConfig(t, errorMessage, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaErrorWithConfig(t, errorMessage, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    false,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaErrorWithConfig(t, errorMessage, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "product",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaErrorWithConfig(t, errorMessage, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "product",
+			toPartition:                "system",
+			enforceVendorInterface:     false,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaErrorWithConfig(t, errorMessage, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "product",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaErrorWithConfig(t, errorMessage, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "product",
+			toPartition:                "vendor",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+			allowList:                  []string{"bar"},
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+			allowList:                  []string{"foo:*"},
+		}))
+
+		testJavaWithConfig(t, createTestConfig(testConfigInfo{
+			libraryType:                libraryType,
+			fromPartition:              "vendor",
+			toPartition:                "system",
+			enforceVendorInterface:     true,
+			enforceProductInterface:    true,
+			enforceJavaSdkLibraryCheck: true,
+			allowList:                  []string{"*:bar"},
+		}))
+	}
+}
+
 func TestDefaults(t *testing.T) {
 	ctx, _ := testJava(t, `
 		java_defaults {

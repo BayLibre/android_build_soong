@@ -702,6 +702,128 @@ func sdkDeps(ctx android.BottomUpMutatorContext, sdkContext sdkContext, d dexer)
 	}
 }
 
+type javaSdkLibraryEnforceContext struct {
+	android.ModuleBase
+	ctx android.BottomUpMutatorContext
+}
+
+func newJavaSdkLibraryEnforceContext(ctx android.BottomUpMutatorContext, module android.ModuleBase) *javaSdkLibraryEnforceContext {
+	return &javaSdkLibraryEnforceContext{
+		ModuleBase: module,
+		ctx:        ctx,
+	}
+}
+
+func (c *javaSdkLibraryEnforceContext) SystemSpecificModule() bool {
+	return c.Platform() || c.SystemExtSpecific()
+}
+
+func (c *javaSdkLibraryEnforceContext) VendorSpecificModule() bool {
+	return c.SocSpecific() || c.DeviceSpecific()
+}
+
+func (c *javaSdkLibraryEnforceContext) ProductSpecificModule() bool {
+	return c.ProductSpecific()
+}
+
+func (c *javaSdkLibraryEnforceContext) PartitionType() string {
+	if c.SystemSpecificModule() {
+		return "system"
+	}
+
+	if c.VendorSpecificModule() {
+		return "vendor"
+	}
+
+	if c.ProductSpecificModule() {
+		return "product"
+	}
+
+	c.ctx.ModuleErrorf("Cannot determine partition type")
+
+	return ""
+}
+
+var (
+	javaSdkLibraryAllowlistKey = android.NewOnceKey("javaSdkLibraryAllowlist")
+)
+
+func (c *javaSdkLibraryEnforceContext) isAllowListedItem(item string) bool {
+	allowList := c.ctx.Config().Once(javaSdkLibraryAllowlistKey, func() interface{} {
+		result := make(map[string]bool)
+
+		for _, v := range c.ctx.Config().InterPartitionJavaLibraryAllowList() {
+			result[v] = true
+		}
+
+		return result
+	}).(map[string]bool)
+
+	_, allowListed := allowList[item]
+
+	return allowListed
+}
+
+func (c *javaSdkLibraryEnforceContext) AllowListedSource() bool {
+	if c.isAllowListedItem(c.Name()) || c.isAllowListedItem(c.Name()+":*") {
+		return true
+	}
+
+	return false
+}
+
+func (c *javaSdkLibraryEnforceContext) AllowListedDependency() bool {
+	if c.isAllowListedItem(c.Name()) || c.isAllowListedItem("*:"+c.Name()) {
+		return true
+	}
+
+	return false
+}
+
+func (j *Module) checkJavaSdkLibraryEnforce(ctx android.BottomUpMutatorContext, library *Library) {
+	if !ctx.Config().EnforceJavaSdkLibraryInterPartition() {
+		return
+	}
+
+	vendorInterfaceEnforced := ctx.DeviceConfig().VndkVersion() != ""
+	productInterfaceEnforced := ctx.Config().EnforceProductPartitionInterface()
+
+	currentModuleContext := newJavaSdkLibraryEnforceContext(ctx, j.ModuleBase)
+	dependencyModuleContext := newJavaSdkLibraryEnforceContext(ctx, library.ModuleBase)
+
+	if currentModuleContext.AllowListedSource() {
+		return
+	}
+
+	if dependencyModuleContext.AllowListedDependency() {
+		return
+	}
+
+	// If vendor interface is not enforced, skip check vendor partition at
+	// inter-partition library dependency
+	if !vendorInterfaceEnforced {
+		if currentModuleContext.VendorSpecificModule() || dependencyModuleContext.VendorSpecificModule() {
+			return
+		}
+	}
+
+	// If product interface is not enforced, skip check product partition at
+	// inter-partition library dependency
+	if !productInterfaceEnforced {
+		if currentModuleContext.ProductSpecificModule() || dependencyModuleContext.ProductSpecificModule() {
+			return
+		}
+	}
+
+	// If module and dependency library is inter-partition
+	if currentModuleContext.PartitionType() != dependencyModuleContext.PartitionType() {
+		ctx.ModuleErrorf(
+			"dependency %q, using of java_sdk_library is enforced at inter-partition(%s -> %s) dependencies",
+			dependencyModuleContext.Name(),
+			currentModuleContext.PartitionType(), dependencyModuleContext.PartitionType())
+	}
+}
+
 func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	if ctx.Device() {
 		j.linter.deps(ctx)
@@ -736,6 +858,27 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 
 	libDeps := ctx.AddVariationDependencies(nil, libTag, rewriteSyspropLibs(j.properties.Libs, "libs")...)
 	ctx.AddVariationDependencies(nil, staticLibTag, rewriteSyspropLibs(j.properties.Static_libs, "static_libs")...)
+
+	// Check libs dependencies if it needs to use java_sdk_library instead of java_library.
+	// If using of java_sdk_library is needed, raise build error
+	for i := range j.properties.Libs {
+		if libDeps[i] == nil {
+			continue
+		}
+
+		if _, ok := syspropPublicStubs[j.properties.Libs[i]]; ok {
+			continue
+		}
+
+		// If dependency is java_library
+		if javaLibrary, ok := libDeps[i].(*Library); ok {
+			j.checkJavaSdkLibraryEnforce(ctx, javaLibrary)
+		}
+
+		if javaSdkLibrary, ok := libDeps[i].(*SdkLibrary); ok {
+			j.checkJavaSdkLibraryEnforce(ctx, &javaSdkLibrary.Library)
+		}
+	}
 
 	// For library dependencies that are component libraries (like stubs), add the implementation
 	// as a dependency (dexpreopt needs to be against the implementation library, not stubs).
