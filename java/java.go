@@ -737,6 +737,23 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	libDeps := ctx.AddVariationDependencies(nil, libTag, rewriteSyspropLibs(j.properties.Libs, "libs")...)
 	ctx.AddVariationDependencies(nil, staticLibTag, rewriteSyspropLibs(j.properties.Static_libs, "static_libs")...)
 
+	// Check libs dependencies if it needs to use java_sdk_library instead of java_library.
+	// If using of java_sdk_library is needed, raise build error
+	for idx, lib := range j.properties.Libs {
+		if libDeps[idx] == nil {
+			continue
+		}
+
+		if _, ok := syspropPublicStubs[lib]; ok {
+			continue
+		}
+
+		switch libDeps[idx].(type) {
+		case *Library, *SdkLibrary:
+			j.checkJavaSdkLibraryEnforce(ctx, libDeps[idx].(javaSdkExternalDependency))
+		}
+	}
+
 	// For library dependencies that are component libraries (like stubs), add the implementation
 	// as a dependency (dexpreopt needs to be against the implementation library, not stubs).
 	for _, dep := range libDeps {
