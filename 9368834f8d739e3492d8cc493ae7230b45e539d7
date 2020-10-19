@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c830060_4892aa4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-19T20:56:56Z",
+      "side": 1,
+      "message": "This aligns with the architecture used for prebuilt APEXes: http://cs/android/build/soong/scripts/build-mainline-modules.sh?l\u003d39\u0026rcl\u003dbbbf4086f55989819b8a48f3b1c9d33d3ba0951b -\u003e http://cs/android/build/make/target/board/generic/BoardConfig.mk?l\u003d27\u0026rcl\u003dbbbf4086f55989819b8a48f3b1c9d33d3ba0951b",
+      "revId": "9368834f8d739e3492d8cc493ae7230b45e539d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
