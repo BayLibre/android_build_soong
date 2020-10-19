@@ -1271,14 +1271,6 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 				}
 				library.baseInstaller.subDir = "vndk"
 			}
-
-			// Append a version to vndk or vndk-sp directories on the system partition.
-			if ctx.isVndk() && !ctx.isVndkExt() {
-				vndkVersion := ctx.DeviceConfig().PlatformVndkVersion()
-				if vndkVersion != "current" && vndkVersion != "" {
-					library.baseInstaller.subDir += "-" + vndkVersion
-				}
-			}
 		} else if len(library.Properties.Stubs.Versions) > 0 && !ctx.Host() && ctx.directlyInAnyApex() {
 			// Bionic libraries (e.g. libc.so) is installed to the bootstrap subdirectory.
 			// The original path becomes a symlink to the corresponding file in the

@@ -345,4 +345,8 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 		m.Properties.VndkVersion = strings.TrimPrefix(variant, ProductVariationPrefix)
 		squashVendorSrcs(m)
 	}
+
+	if m.UseVndk() && m.IsVndk() && !m.isVndkExt() {
+		m.Properties.PreventInstall = true
+	}
 }
