@@ -15,6 +15,7 @@
 package java
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -752,6 +753,141 @@ func TestJavaSdkLibraryImport_Preferred(t *testing.T) {
 		`sdklib.impl`,
 		`sdklib.xml`,
 	})
+}
+
+func TestJavaSdkLibraryEnforce(t *testing.T) {
+	partitionToBpOption := func(partition string) string {
+		switch partition {
+		case "system":
+			return ""
+		case "vendor":
+			return "soc_specific: true,"
+		case "product":
+			return "product_specific: true,"
+		default:
+			return ""
+		}
+	}
+
+	type testConfigInfo struct {
+		libraryType                string
+		fromPartition              string
+		toPartition                string
+		enforceVendorInterface     bool
+		enforceProductInterface    bool
+		enforceJavaSdkLibraryCheck bool
+		allowList                  []string
+	}
+
+	createTestConfig := func(info testConfigInfo) android.Config {
+		bpFileTemplate := `
+			java_library {
+				name: "foo",
+				srcs: ["foo.java"],
+				libs: ["bar"],
+				sdk_version: "current",
+				%s
+			}
+
+			%s {
+				name: "bar",
+				srcs: ["bar.java"],
+				sdk_version: "current",
+				%s
+			}
+		`
+
+		bpFile := fmt.Sprintf(bpFileTemplate,
+			partitionToBpOption(info.fromPartition),
+			info.libraryType,
+			partitionToBpOption(info.toPartition))
+
+		config := testConfig(nil, bpFile, nil)
+		configVariables := config.TestProductVariables
+
+		configVariables.EnforceProductPartitionInterface = proptools.BoolPtr(info.enforceProductInterface)
+		if info.enforceVendorInterface {
+			configVariables.DeviceVndkVersion = proptools.StringPtr("current")
+		}
+		configVariables.EnforceInterPartitionJavaSdkLibrary = proptools.BoolPtr(info.enforceJavaSdkLibraryCheck)
+		configVariables.InterPartitionJavaLibraryAllowList = info.allowList
+
+		return config
+	}
+
+	isValidDependency := func(configInfo testConfigInfo) bool {
+		if configInfo.enforceVendorInterface == false {
+			return true
+		}
+
+		if configInfo.enforceJavaSdkLibraryCheck == false {
+			return true
+		}
+
+		if inList("bar", configInfo.allowList) {
+			return true
+		}
+
+		if configInfo.libraryType == "java_library" {
+			if configInfo.fromPartition != configInfo.toPartition {
+				if !configInfo.enforceProductInterface &&
+					((configInfo.fromPartition == "system" && configInfo.toPartition == "product") ||
+						(configInfo.fromPartition == "product" && configInfo.toPartition == "system")) {
+					return true
+				}
+				return false
+			}
+		}
+
+		return true
+	}
+
+	errorMessage := "is not allowed across the partitions"
+
+	partitions := []string{"system", "vendor", "product"}
+
+	for _, libraryType := range []string{"java_library", "java_sdk_library"} {
+		for _, fromPartition := range partitions {
+			for _, toPartition := range partitions {
+				for enforceFlags := 0; enforceFlags < 8; enforceFlags++ {
+					testInfo := testConfigInfo{
+						libraryType:                libraryType,
+						fromPartition:              fromPartition,
+						toPartition:                toPartition,
+						enforceVendorInterface:     (enforceFlags & (1 << 0)) != 0,
+						enforceProductInterface:    (enforceFlags & (1 << 1)) != 0,
+						enforceJavaSdkLibraryCheck: (enforceFlags & (1 << 2)) != 0,
+					}
+
+					if isValidDependency(testInfo) {
+						testJavaWithConfig(t, createTestConfig(testInfo))
+					} else {
+						testJavaErrorWithConfig(t, errorMessage, createTestConfig(testInfo))
+					}
+				}
+			}
+		}
+	}
+
+	testJavaWithConfig(t, createTestConfig(testConfigInfo{
+		libraryType:                "java_library",
+		fromPartition:              "vendor",
+		toPartition:                "system",
+		enforceVendorInterface:     true,
+		enforceProductInterface:    true,
+		enforceJavaSdkLibraryCheck: true,
+		allowList:                  []string{"bar"},
+	}))
+
+	testJavaErrorWithConfig(t, errorMessage, createTestConfig(testConfigInfo{
+		libraryType:                "java_library",
+		fromPartition:              "vendor",
+		toPartition:                "system",
+		enforceVendorInterface:     true,
+		enforceProductInterface:    true,
+		enforceJavaSdkLibraryCheck: true,
+		allowList:                  []string{"foo"},
+	}))
 }
 
 func TestDefaults(t *testing.T) {
