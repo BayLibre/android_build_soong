@@ -46,6 +46,30 @@
       },
       "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd162b30_90772ef1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-19T23:58:27Z",
+      "side": 1,
+      "message": "double-loadable check works with core-variants and vndk-sp check works with vendor variants.\n\nIf we want to do vndk-sp check before double-loadable check, I have no idea how to do it in GenerateAndroidBuildActions(). Well, we might merge both logic into a single check function, which seems non-trivial change.\n\nGiven that this is a nice-to-have, we can abandon this change and live with the current.\n+Steven, what do you think?",
+      "parentUuid": "8ebb1f0b_69b4cb5e",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 73
+      },
+      "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
