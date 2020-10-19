@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c396ed_aa04168e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-19T23:35:07Z",
+      "side": 1,
+      "message": "Hi Colin, could you please give ORV for this?",
+      "revId": "543f60bc3199ef512caed1f540f17e0481ff11c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
