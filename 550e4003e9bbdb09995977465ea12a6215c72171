@@ -22,6 +22,23 @@
       },
       "revId": "550e4003e9bbdb09995977465ea12a6215c72171",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b1bc76b_90fc9a0e",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-19T20:13:21Z",
+      "side": 1,
+      "message": "Just FYI, the value collected by Ninja here is wrong if the MaxRSS value of the Ninja process is higher than the MaxRSS value of the subprocess, as the subprocess will inherit the Ninja value.  That might be OK for Soong though, as it runs in a much smaller Ninja process.",
+      "revId": "550e4003e9bbdb09995977465ea12a6215c72171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
