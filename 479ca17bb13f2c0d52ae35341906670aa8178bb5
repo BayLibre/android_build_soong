@@ -22,6 +22,30 @@
       },
       "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ebb1f0b_69b4cb5e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-19T23:46:10Z",
+      "side": 1,
+      "message": "Yes, these would both be better in cc.*Module.GenerateAndroidBuildActions so they don\u0027t have to visit every module.",
+      "parentUuid": "745979d4_6cc24c3e",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 73
+      },
+      "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
