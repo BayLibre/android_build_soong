@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dbedace_1982493d",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-10-19T22:16:26Z",
+      "side": 1,
+      "message": "ah thanks. I struggled on this part. Will update to micros.",
+      "parentUuid": "22d566a1_909b4303",
+      "range": {
+        "startLine": 150,
+        "startChar": 28,
+        "endLine": 150,
+        "endChar": 30
+      },
+      "revId": "550e4003e9bbdb09995977465ea12a6215c72171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3b1bc76b_90fc9a0e",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-10-19T20:13:21Z",
       "side": 1,
       "message": "Just FYI, the value collected by Ninja here is wrong if the MaxRSS value of the Ninja process is higher than the MaxRSS value of the subprocess, as the subprocess will inherit the Ninja value.  That might be OK for Soong though, as it runs in a much smaller Ninja process.",
+      "revId": "550e4003e9bbdb09995977465ea12a6215c72171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e498c9_96e1b60a",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-10-19T22:16:26Z",
+      "side": 1,
+      "message": "Colin and I had a lengthy discussion about collecting max_rss and unfortunately the method I am doing (calling rusage and getting the value) is not correct because the child process inherits the parent\u0027s max_rss value. As he explained previously, it is ok for Soong now though but in the future, there could be a case that the true max_rss is not reported (i.e. soong_ui max_rss might get increased if we added functionality or ninja bootstrap process has a sudden memory increase when added additional processing). The best system we came up is to read the rss from /proc/\u003cpid\u003e/status file as this is the most accurable value for each executed process.",
+      "parentUuid": "3b1bc76b_90fc9a0e",
       "revId": "550e4003e9bbdb09995977465ea12a6215c72171",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
