@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22d566a1_909b4303",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-10-19T20:10:35Z",
+      "side": 1,
+      "message": "nit: micros would be clearer than us and better match proto naming recommendations.",
+      "range": {
+        "startLine": 150,
+        "startChar": 28,
+        "endLine": 150,
+        "endChar": 30
+      },
+      "revId": "550e4003e9bbdb09995977465ea12a6215c72171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
