@@ -540,7 +540,11 @@ func isVndkSnapshotLibrary(config android.DeviceConfig, m *Module,
 	if m.Target().NativeBridge == android.NativeBridgeEnabled {
 		return nil, "", false
 	}
-	if !m.inVendor() || !m.installable(apexInfo) || m.isSnapshotPrebuilt() {
+	// !inVendor: There's product/vendor variants for VNDK libs. We only care about vendor variants.
+	// !IsForPlatform: use_vendor/vendor APEX can have VNDK libs as well. We snapshot "platform" variants.
+	// isSnapshotPrebuilt: Snapshotting a snapshot doesn't make sense.
+	// IsStubs: libz is a vendor lib and also has a stubs exceptionally. We don't want it.
+	if !m.inVendor() || !apexInfo.IsForPlatform() || m.isSnapshotPrebuilt() || m.IsStubs() {
 		return nil, "", false
 	}
 	l, ok := m.linker.(snapshotLibraryInterface)
