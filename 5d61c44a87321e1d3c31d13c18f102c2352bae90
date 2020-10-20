@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "000c6140_fb2ca4a2",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-20T16:34:29Z",
+      "side": 1,
+      "message": "LOCAL_UNINSTALLABLE_MODULE is set here for those VNDK libs whether it is cc_library or vndk_prebuilt_shared.",
+      "range": {
+        "startLine": 112,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
