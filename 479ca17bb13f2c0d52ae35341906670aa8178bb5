@@ -94,6 +94,30 @@
       },
       "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1344af9_f0c6ce45",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-20T00:01:29Z",
+      "side": 1,
+      "message": "I see, you want all vndk-sp checks to happen before any double-loadable checks.  I\u0027m not sure that\u0027s a pattern that will be supportable in the future.",
+      "parentUuid": "bd162b30_90772ef1",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 73
+      },
+      "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
