@@ -1236,7 +1236,12 @@ func PathForModuleRes(ctx ModuleContext, pathComponents ...string) ModuleResPath
 type InstallPath struct {
 	basePath
 
-	baseDir string // "../" for Make paths to convert "out/soong" to "out", "" for Soong paths
+	// baseDir is the part of the InstallPath that is automatically determined according to the context.
+	// For example, it is host/<os>-<arch> for host modules, and target/product/<device>/<partition> for device modules.
+	baseDir string
+
+	// makePath indicates whether this path is for Soong (false) or Make (true).
+	makePath bool
 }
 
 func (p InstallPath) buildDir() string {
@@ -1249,7 +1254,23 @@ var _ WritablePath = InstallPath{}
 func (p InstallPath) writablePath() {}
 
 func (p InstallPath) String() string {
-	return filepath.Join(p.config.buildDir, p.baseDir, p.path)
+	if p.makePath {
+		// Make path starts with out/ instead of out/soong.
+		return filepath.Join(p.config.buildDir, "../", p.path)
+	} else {
+		return filepath.Join(p.config.buildDir, p.path)
+	}
+}
+
+// BaseDir returns the path to the base directory of the install path. It is
+// out/soong/host/<os>-<arch> for host modules, out/soong/target/product/<device>/<partition> for device modules.
+// The ./soong is dropped if the install path is for Make.
+func (p InstallPath) BaseDir() string {
+	if p.makePath {
+		return filepath.Join(p.config.buildDir, "../", p.baseDir)
+	} else {
+		return filepath.Join(p.config.buildDir, p.baseDir)
+	}
 }
 
 // Join creates a new InstallPath with paths... joined with the current path. The
@@ -1270,7 +1291,7 @@ func (p InstallPath) withRel(rel string) InstallPath {
 // ToMakePath returns a new InstallPath that points to Make's install directory instead of Soong's,
 // i.e. out/ instead of out/soong/.
 func (p InstallPath) ToMakePath() InstallPath {
-	p.baseDir = "../"
+	p.makePath = true
 	return p
 }
 
@@ -1300,10 +1321,10 @@ func PathForModuleInstall(ctx ModuleInstallPathContext, pathComponents ...string
 func pathForInstall(ctx PathContext, os OsType, arch ArchType, partition string, debug bool,
 	pathComponents ...string) InstallPath {
 
-	var outPaths []string
+	var installBasePaths []string
 
 	if os.Class == Device {
-		outPaths = []string{"target", "product", ctx.Config().DeviceName(), partition}
+		installBasePaths = []string{"target", "product", ctx.Config().DeviceName(), partition}
 	} else {
 		osName := os.String()
 		if os == Linux {
@@ -1319,30 +1340,33 @@ func pathForInstall(ctx PathContext, os OsType, arch ArchType, partition string,
 		if os.Class == Host && (arch == X86_64 || arch == Common) {
 			archName = "x86"
 		}
-		outPaths = []string{"host", osName + "-" + archName, partition}
+		installBasePaths = []string{"host", osName + "-" + archName, partition}
 	}
 	if debug {
-		outPaths = append([]string{"debug"}, outPaths...)
+		installBasePaths = append([]string{"debug"}, installBasePaths...)
 	}
-	outPaths = append(outPaths, pathComponents...)
 
-	path, err := validatePath(outPaths...)
+	installBasePath, err := validatePath(installBasePaths...)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
 
-	ret := InstallPath{basePath{path, ctx.Config(), ""}, ""}
+	base := InstallPath{
+		basePath: basePath{installBasePath, ctx.Config(), ""},
+		baseDir:  installBasePath,
+		makePath: false,
+	}
 
-	return ret
+	return base.Join(ctx, pathComponents...)
 }
 
 func pathForNdkOrSdkInstall(ctx PathContext, prefix string, paths []string) InstallPath {
-	paths = append([]string{prefix}, paths...)
-	path, err := validatePath(paths...)
-	if err != nil {
-		reportPathError(ctx, err)
+	base := InstallPath{
+		basePath: basePath{prefix, ctx.Config(), ""},
+		baseDir:  prefix,
+		makePath: false,
 	}
-	return InstallPath{basePath{path, ctx.Config(), ""}, ""}
+	return base.Join(ctx, paths...)
 }
 
 func PathForNdkInstall(ctx PathContext, paths ...string) InstallPath {
