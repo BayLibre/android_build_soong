@@ -70,6 +70,30 @@
       },
       "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de5332a9_de370152",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-20T00:00:38Z",
+      "side": 1,
+      "message": "\u003e \"libui\" links a library \"android.hardware.graphics.common-unstable-ndk_platform\" which is not LL-NDK, VNDK-SP, or explicitly marked as \u0027double_loadable:true\u0027.\n\n, which also mentions \"VNDK-SP\". I don\u0027t think this is bad and misleading to mark the problematic lib as \"double_loadable\".",
+      "parentUuid": "bd162b30_90772ef1",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 73
+      },
+      "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
