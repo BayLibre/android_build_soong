@@ -80,7 +80,7 @@ type classLoaderContextMap map[int]*classLoaderContext
 
 // Add a new library path to the map, unless a path for this library already exists.
 // If necessary, check that the build and install paths exist.
-func (libPaths LibraryPaths) addLibraryPath(ctx android.ModuleContext, lib string,
+func (libPaths LibraryPaths) addLibraryPath(ctx android.ModuleInstallPathContext, lib string,
 	hostPath, installPath android.Path, strict bool) {
 
 	// If missing dependencies are allowed, the build shouldn't fail when a <uses-library> is
@@ -118,14 +118,14 @@ func (libPaths LibraryPaths) addLibraryPath(ctx android.ModuleContext, lib strin
 }
 
 // Add a new library path to the map. Enforce checks that the library paths exist.
-func (libPaths LibraryPaths) AddLibraryPath(ctx android.ModuleContext, lib string, hostPath, installPath android.Path) {
+func (libPaths LibraryPaths) AddLibraryPath(ctx android.ModuleInstallPathContext, lib string, hostPath, installPath android.Path) {
 	libPaths.addLibraryPath(ctx, lib, hostPath, installPath, true)
 }
 
 // Add a new library path to the map, if the library exists (name is not nil).
 // Don't enforce checks that the library paths exist. Some libraries may be missing from the build,
 // but their names still need to be added to <uses-library> tags in the manifest.
-func (libPaths LibraryPaths) MaybeAddLibraryPath(ctx android.ModuleContext, lib *string, hostPath, installPath android.Path) {
+func (libPaths LibraryPaths) MaybeAddLibraryPath(ctx android.ModuleInstallPathContext, lib *string, hostPath, installPath android.Path) {
 	if lib != nil {
 		libPaths.addLibraryPath(ctx, *lib, hostPath, installPath, false)
 	}

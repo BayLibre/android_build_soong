@@ -1571,6 +1571,27 @@ func (m testModuleInstallPathContext) InstallForceOS() (*OsType, *ArchType) {
 	return m.forceOS, m.forceArch
 }
 
+func (m testModuleInstallPathContext) ModuleErrorf(msg string, args ...interface{}) {
+	if m.bp != nil {
+		// Default implementation of ModuleErrorf degegates to blueprint.baseModuleContext.
+		m.bp.ModuleErrorf(msg, args...)
+	} else {
+		// Instead of panic when calling a method on nil, we panic with the appropriate error
+		// message instead, allowing the tests to recover and check it.
+		panic(fmt.Sprintf(msg+"\n", args...))
+	}
+}
+
+// Construct a minimal ModuleInstallPathContext for testing. Note that baseModuleContext is default-
+// initialized, which leaves blueprint.baseModuleContext set to nil, so methods that are delegated
+// to it will panic (unless testModuleInstallPathContext redefines them).
+func ModuleInstallPathContextForTesting(config Config) ModuleInstallPathContext {
+	ctx := &testModuleInstallPathContext{}
+	ctx.config = config
+	ctx.os = Android
+	return ctx
+}
+
 // Rel performs the same function as filepath.Rel, but reports errors to a PathContext, and reports an error if
 // targetPath is not inside basePath.
 func Rel(ctx PathContext, basePath string, targetPath string) string {
