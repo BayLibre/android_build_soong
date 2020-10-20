@@ -53,6 +53,15 @@ var (
 		"-Werror=pragma-pack",
 		"-Werror=pragma-pack-suspicious-include",
 		"-Werror=unreachable-code-loop-increment",
+
+
+		// -fdebug-compilation-dir=. is used to make both the action command line and the output
+		// independent of the working directory of the action.
+		// Using cc1 flags since RBE's input processor does not yet have the updated version
+		// of LLVM that promotes the cc1 flag to driver level flag.
+		// See: https://reviews.llvm.org/D63387
+		"-Xclang",
+		"-fdebug-compilation-dir=.",
 	}
 
 	commonGlobalConlyflags = []string{}
@@ -151,6 +160,9 @@ var pctx = android.NewPackageContext("android/soong/cc/config")
 
 func init() {
 	if android.BuildOs == android.Linux {
+		// This flag can be removed after RBE's input processor is updated
+		// with the recent version of clang to support -fdebug-compilation-dir as a
+		// driver level flag instead of cc1 flag (i.e., passed without "-Xclang").
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
 	}
 
