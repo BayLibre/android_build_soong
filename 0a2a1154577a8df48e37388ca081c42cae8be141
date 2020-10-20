@@ -16,6 +16,23 @@
       "message": "You\u0027ll need to fix existing crates, otherwise looks good.",
       "revId": "0a2a1154577a8df48e37388ca081c42cae8be141",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c1c90af_a4c564b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2020-10-20T19:25:52Z",
+      "side": 1,
+      "message": "thanks for fixing this!",
+      "revId": "0a2a1154577a8df48e37388ca081c42cae8be141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
