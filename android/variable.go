@@ -90,6 +90,9 @@ type variableProperties struct {
 			Required        []string
 			Host_required   []string
 			Target_required []string
+			Strip           struct {
+				All *bool
+			}
 		}
 
 		// eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
