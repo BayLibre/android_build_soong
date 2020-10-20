@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8565b77b_37b166ac",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-10-20T16:58:02Z",
+      "side": 1,
+      "message": "I just ran build/soong/scripts/update-apex-allowed-deps.sh :( Maybe my local tree is outdated, let me sync and retry",
+      "parentUuid": "d67d8ad8_4c6b1257",
+      "revId": "955fc06f73fccb9259d6deb51832f77d91ab335d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "650370e0_4ffec123",
         "filename": "apex/allowed_deps.txt",
         "patchSetId": 1
