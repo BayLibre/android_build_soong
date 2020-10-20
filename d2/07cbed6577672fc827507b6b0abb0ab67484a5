@@ -1,0 +1,10 @@
+Code-Review+2: Pirama Arumuga Nainar <pirama@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Autosubmit+1: Kousik Kumar <kousikk@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 20 Oct 2020 19:58:44 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1465912
+Project: platform/build/soong
+Branch: refs/heads/master
