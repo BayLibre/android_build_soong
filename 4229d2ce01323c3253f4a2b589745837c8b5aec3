@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46b67d5_dc63b300",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T16:08:16Z",
+      "side": 1,
+      "message": "I\u0027ve read your rational for doing it this way in the original commit from which this was extracted but I still think this is the wrong way to do it.\n\nI think that if you are providing the context to CLC simply for it to report errors then you should just change it to return an error and have the calling code deal with it. Yes, the calling code may just ignore it but that is the nature of go\u0027s error handling. Also, the IDE will flag any method that returns an error which is ignored (although that is only a yellow warning so can be easily missed amongst all the other warnings in most Soong go files which i think should be cleaned up but that is a separate issue). So, you have to explicitly assign the error to _ in order to ignore it.\n\nIf CLC needs the context for other purposes, e.g. resolving paths, then you should look to see whether those usages can be removed and if so take the previous approach.\n\nIf you cannot then I think that you need to create a property context with an underlying bp file so that errors can be reported properly and then use the same method as is used in those tests to check for errors.\n\nMy main concern with this approach is as I mentioned before that you end up testing code in a different way to how it is used at runtime. e.g. say you had the following code, obviously it is not real but it is easy to have code that effectively does this.\n\n...\nctx.ModuleErrorf(....)\na :\u003d nil\na.doSomething()\n...\n\nIf ctx.ModuleErrorf() panics then the code that follows is never run so the test that verifies the error is reported will pass. However, at runtime the same error will drop through and cause a panic.",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f579379c_85a5aa99",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T16:08:16Z",
+      "side": 1,
+      "message": "As mentioned in another change this is incorrect behavior.",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bbedef4_6310d8a7",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T16:08:16Z",
+      "side": 1,
+      "message": "I understand that each of the t.Run() calls is checking some aspect of the constructed CLC which is quite a nice way of doing it but the way they are interleaved with calls to code that could mutate the CLC makes the code hard to follow.",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0e5803_4e74c9b9",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T16:08:16Z",
+      "side": 1,
+      "message": "Why is this here? Can it be moved before any of the calls to t.Run()? If not could you add a comment explaining why it has to be here specifically.",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017a49e3_4b6ea1e9",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T16:08:16Z",
+      "side": 1,
+      "message": "This should probably be moved before all the other t.Run() calls to be near the initialization of the valid flag.",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ee4ff9_d86a6c11",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T16:08:16Z",
+      "side": 1,
+      "message": "Why is this here? Can it be moved before any of the calls to t.Run()? If not could you add a comment explaining why it has to be here specifically.",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
