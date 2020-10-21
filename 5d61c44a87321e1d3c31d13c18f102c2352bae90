@@ -22,6 +22,98 @@
       },
       "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2d23bb1_83db17ae",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-21T05:06:17Z",
+      "side": 1,
+      "message": "If we update the vndk paths in library.go, I think we don\u0027t need to skip this test.",
+      "range": {
+        "startLine": 234,
+        "startChar": 11,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987f4328_8c5952a7",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-21T05:06:17Z",
+      "side": 1,
+      "message": "So this line is required only for vndk-ext.\nCan we add `\u0026\u0026 ctx.isVndkExt()` explicitly for readability?",
+      "range": {
+        "startLine": 1249,
+        "startChar": 3,
+        "endLine": 1249,
+        "endChar": 22
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ff289f_90fc4f2c",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-21T05:06:17Z",
+      "side": 1,
+      "message": "This can be enclosed with `if (ctx.isVndkExt()) {}` or added to the above `if (ctx.isVndkExt())` statement.",
+      "range": {
+        "startLine": 1272,
+        "startChar": 4,
+        "endLine": 1272,
+        "endChar": 41
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2d3a212_be5a817c",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-21T05:06:17Z",
+      "side": 1,
+      "message": "Can we make this `nil` and remove the install function? Does it affect the Apex installer?",
+      "range": {
+        "startLine": 229,
+        "startChar": 20,
+        "endLine": 229,
+        "endChar": 28
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
