@@ -234,6 +234,30 @@
       },
       "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a23534_b39f6535",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-21T06:59:02Z",
+      "side": 1,
+      "message": "installer properties are still used by apex.",
+      "parentUuid": "c2d3a212_be5a817c",
+      "range": {
+        "startLine": 229,
+        "startChar": 20,
+        "endLine": 229,
+        "endChar": 28
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
