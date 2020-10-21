@@ -2052,9 +2052,9 @@ func TestPatchModule(t *testing.T) {
 		ctx, _ := testJava(t, bp)
 
 		checkPatchModuleFlag(t, ctx, "foo", "")
-		expected := "java.base=.:" + buildDir
+		expected := "java.base=" + buildDir + ":."
 		checkPatchModuleFlag(t, ctx, "bar", expected)
-		expected = "java.base=" + strings.Join([]string{".", buildDir, moduleToPath("ext"), moduleToPath("framework")}, ":")
+		expected = "java.base=" + strings.Join([]string{buildDir, ".", moduleToPath("ext"), moduleToPath("framework")}, ":")
 		checkPatchModuleFlag(t, ctx, "baz", expected)
 	})
 }
