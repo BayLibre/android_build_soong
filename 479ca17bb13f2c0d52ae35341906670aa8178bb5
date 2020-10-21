@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49c4a3d7_6ba5845e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-21T12:07:01Z",
+      "side": 1,
+      "message": "Colin/Jiyong,\ndo you have any concerns about this change?\n",
+      "revId": "479ca17bb13f2c0d52ae35341906670aa8178bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "745979d4_6cc24c3e",
