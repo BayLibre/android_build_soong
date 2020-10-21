@@ -33,6 +33,24 @@
       "message": "AIUI the previous behavior causes a problem when the snapshot is used in a build where linux_bionic_arm64 is configured. However, I am a little unclear on what exactly that problem is and how this change helps. After all without a linux_bionic_arm64 variant in the snapshot you won\u0027t be able to build for linux_bionic_arm64.\n\nSo, what build error do we get with the previous behavior? What behavior do we get with this change?",
       "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ada95e_1d30d590",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-21T23:05:41Z",
+      "side": 1,
+      "message": "This is blocking the submission of aosp/1465866 and its children. https://android-build.googleplex.com/builds/forrest/run/L79300000720290739 shows the error that I get.\n\nerror: prebuilts/runtime/mainline/runtime/sdk/Android.bp:974:1: module \"runtime-module-sdk_libm@current\" variant \"linux_bionic_arm64_static\": module \"runtime-module-sdk_libc@current\" is not a shared library\n\nIn the build, the linux_bionic_arm64 host target is enabled and therefore `linux_bionic.enabled: true` in the bp file makes the cc prebuilt module enabled for the arm64 target. But the snapshot wasn\u0027t created for the target - i.e. the *.so file doesn\u0027t exist.\n\nWith this change, followed by the update of the prebuilts which I haven\u0027t uploaded yet, the build error disappears.",
+      "parentUuid": "4097a5cb_a9b09132",
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
