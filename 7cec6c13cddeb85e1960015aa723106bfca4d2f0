@@ -69,6 +69,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "442e8200_05e64321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-21T11:46:01Z",
+      "side": 1,
+      "message": "I\u0027ve solved my problem with https://r.android.com/1461622 instead, so I no longer depend on this.",
+      "parentUuid": "7d0b2a84_856393f0",
+      "revId": "7cec6c13cddeb85e1960015aa723106bfca4d2f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dba62dd_212990f4",
