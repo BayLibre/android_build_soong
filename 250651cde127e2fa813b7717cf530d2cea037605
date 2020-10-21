@@ -16,6 +16,24 @@
       "message": "This was much easier to review - I just checked it out and ran \"git diff --color-moved\u003dblocks HEAD~1\" and the moved code was highlighted differently.\n\nI did notice that in addition to moving things from one file to another you also moved jsonLibraryPath from inside a function to outside. Generally, I would make that change separately because while it is nominally a move it does require changing from an anonymous function to a named function and reformatting. All of which make it harder for git to detect code moves. However, it is fine where it is.",
       "revId": "250651cde127e2fa813b7717cf530d2cea037605",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b3702f_0d56f4b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T16:00:56Z",
+      "side": 1,
+      "message": "Thanks!\n\nI didn\u0027t know about `git diff --color-moved\u003dblocks`. Now I also learned there is `git diff --color-words` that does sub-line coloring.",
+      "parentUuid": "1d34c353_ac38f6cf",
+      "revId": "250651cde127e2fa813b7717cf530d2cea037605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
