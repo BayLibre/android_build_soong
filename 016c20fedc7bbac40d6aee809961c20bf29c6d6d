@@ -74,6 +74,30 @@
       },
       "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d62f7c4f_9c0b56d6",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-21T23:26:17Z",
+      "side": 1,
+      "message": "Hmm, that doesn\u0027t look nice to me. SdkMemberTypeBase is created per module type, not per module instance. Adding Enabled to the type sounds like creating it per module instance.\n\nWhat is being done here is simple; we just collects the list of the host targets that the members require. Then the snapshot module is enabled just for the host targets.",
+      "parentUuid": "425dca5b_ad011914",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
