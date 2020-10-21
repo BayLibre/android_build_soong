@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49f4a74_4e999ead",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T15:02:37Z",
+      "side": 1,
+      "message": "This seems out of date now. This change just moves/renames a type without adding anything.",
+      "revId": "3ba382a86fe155e4abe03b5b7a283c4b852a9a7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
