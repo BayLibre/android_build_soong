@@ -98,6 +98,30 @@
       },
       "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90753748_31dbfbea",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-21T23:35:23Z",
+      "side": 1,
+      "message": "Sorry, that was a typo, I meant SdkMemberPropertiesBase.",
+      "parentUuid": "d62f7c4f_9c0b56d6",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
