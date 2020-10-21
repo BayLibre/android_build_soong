@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3802ab_5c77e67e",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-10-21T11:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8565b77b_37b166ac",
+      "revId": "955fc06f73fccb9259d6deb51832f77d91ab335d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650370e0_4ffec123",
@@ -49,6 +67,24 @@
       "writtenOn": "2020-10-20T16:30:17Z",
       "side": 1,
       "message": "?",
+      "revId": "955fc06f73fccb9259d6deb51832f77d91ab335d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5de5a2a7_ae7b5779",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-10-21T11:29:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650370e0_4ffec123",
       "revId": "955fc06f73fccb9259d6deb51832f77d91ab335d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
