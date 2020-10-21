@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f55b8d_89bc9d8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T11:00:58Z",
+      "side": 1,
+      "message": "Split the patch into three (https://r.android.com/c/1467823/1, https://r.android.com/c/1467824/1, this one). Please take a look. ",
+      "revId": "86fee327f136ed4bf2277d532f5a74413b6489a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

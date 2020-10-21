@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dad40f54_2a45dcb9",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T11:00:58Z",
+      "side": 1,
+      "message": "I agree that it would be cleaner to provide a proper mock implementation of ModuleInstallPathContext. However, it goes all the way down to blueprint.baseModuleContext, which is problematic to initialize because it\u0027s in a different package, and I didn\u0027t find any suitable exported methods (it would be possible to add this to blueprint, but it would have to go through external GitHub repo and a few weeks of discussion). Without it, ModuleErrorf is called on nil and panics. What the overloaded method does is panicking with a sensible error message instead.\n\nI changed the method definition to check if blueprint.baseModuleContext is non-nil and delegate to the default implementation, so if there are ever any tests that rely on the default behaviour, they will work (currently there aren\u0027t since it\u0027s always nil).\n\nThe other possible fix --- to change ClassLoadeContextMap methods to return errors instead of reporting them, and change all call sites to check return values --- I rather dislike, because it would make the real code less readable more error prone (I mean forgetting to check return value), only to help testing.\n\nYet another possible fix is to not test for errors at all, which is worse than the poor man\u0027s testing I currently have.",
+      "parentUuid": "a2836191_c0674882",
+      "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05e2dc9b_d38a4733",
         "filename": "dexpreopt/class_loader_context_test.go",
         "patchSetId": 9
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-16T15:05:14Z",
       "side": 1,
       "message": "It would make it easier to understand with some ascii art to show the resulting class loader structure.",
+      "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "050ff5dd_383b64ab",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T11:00:58Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "05e2dc9b_d38a4733",
       "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a6b86d_8de7c931",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T11:00:58Z",
+      "side": 1,
+      "message": "I separated one large test into separate tests, each of them constructs the whole CLC before running tests on it.",
+      "parentUuid": "a5b69dd1_71b9da11",
+      "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f655e5_c072d5a5",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-10-16T15:05:14Z",
       "side": 1,
       "message": "Is this part of all the tests that follow? If so maybe move it (and the creation) of the map into a helper method to use in each test.\n\nLots of similar issues below.",
+      "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66ba032c_5b6f260f",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T11:00:58Z",
+      "side": 1,
+      "message": "I didn\u0027t use a helper method because each of the separated test needs a different CLC. (But I separated creation form tests.)",
+      "parentUuid": "31f655e5_c072d5a5",
       "revId": "c2c46f8ac24a9b77859eab54a2db7189ed20ad07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
