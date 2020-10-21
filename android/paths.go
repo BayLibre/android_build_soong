@@ -58,6 +58,7 @@ type ModuleInstallPathContext interface {
 	InstallInTestcases() bool
 	InstallInSanitizerDir() bool
 	InstallInRamdisk() bool
+	InstallInVendorRamdisk() bool
 	InstallInRecovery() bool
 	InstallInRoot() bool
 	InstallBypassMake() bool
@@ -1376,6 +1377,8 @@ func modulePartition(ctx ModuleInstallPathContext, os OsType) string {
 			if !ctx.InstallInRoot() {
 				partition += "/system"
 			}
+		} else if ctx.InstallInVendorRamdisk() {
+			partition = "vendor-ramdisk"
 		} else if ctx.InstallInRecovery() {
 			if ctx.InstallInRoot() {
 				partition = "recovery/root"
