@@ -51,6 +51,29 @@
       "parentUuid": "4097a5cb_a9b09132",
       "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425dca5b_ad011914",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-21T23:13:46Z",
+      "side": 1,
+      "message": "This is a bit ad-hoc. Wouldn\u0027t it be possible to add the enabled flag to the ordinary property structs and let the usual common value optimisation deal with it? I.e. add Enabled to android.SdkMemberTypeBase, set it to true for host targets in newArchSpecificInfo, and then propagate hasHostOsDependentMember via memberContext to set target.host.enabled false here.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
