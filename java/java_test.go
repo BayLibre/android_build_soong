@@ -2019,12 +2019,21 @@ func TestPatchModule(t *testing.T) {
 				patch_module: "java.base",
 				java_version: "1.8",
 			}
+
+			java_library {
+				name: "qux",
+				srcs: ["d.java"],
+				patch_module: "java.base",
+				patch_module_lookup_directories: ["tools", "other_tools"],
+				java_version: "1.8",
+			}
 		`
 		ctx, _ := testJava(t, bp)
 
 		checkPatchModuleFlag(t, ctx, "foo", "")
 		checkPatchModuleFlag(t, ctx, "bar", "")
 		checkPatchModuleFlag(t, ctx, "baz", "")
+		checkPatchModuleFlag(t, ctx, "qux", "")
 	})
 
 	t.Run("Java language level 9", func(t *testing.T) {
@@ -2048,14 +2057,23 @@ func TestPatchModule(t *testing.T) {
 				srcs: ["c.java"],
 				patch_module: "java.base",
 			}
+
+			java_library {
+				name: "qux",
+				srcs: ["d.java"],
+				patch_module: "java.base",
+				patch_module_lookup_directories: ["tools", "other_tools"],
+			}
 		`
 		ctx, _ := testJava(t, bp)
 
 		checkPatchModuleFlag(t, ctx, "foo", "")
-		expected := "java.base=.:" + buildDir
+		expected := "java.base=" + ".:" + buildDir + ":."
 		checkPatchModuleFlag(t, ctx, "bar", expected)
-		expected = "java.base=" + strings.Join([]string{".", buildDir, moduleToPath("ext"), moduleToPath("framework")}, ":")
+		expected = "java.base=" + strings.Join([]string{".", buildDir, ".", moduleToPath("ext"), moduleToPath("framework")}, ":")
 		checkPatchModuleFlag(t, ctx, "baz", expected)
+		expected = "java.base=" + strings.Join([]string{".", buildDir, ".", moduleToPath("ext"), moduleToPath("framework")}, ":")
+		checkPatchModuleFlag(t, ctx, "qux", expected)
 	})
 }
 
