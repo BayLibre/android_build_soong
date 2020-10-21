@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f955789f_587ad36c",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T17:01:51Z",
+      "side": 1,
+      "message": "I think wrapper functions sounds like a reasonable approach.",
+      "parentUuid": "7f0e1e69_075b0405",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f579379c_85a5aa99",
         "filename": "dexpreopt/class_loader_context_test.go",
         "patchSetId": 2
