@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3047a73_d2a69b9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T11:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b96ded06_8e697384",
+      "revId": "a3d57a3cf017e230ebaee7e2fddb44dcd5e13095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53222953_df3aa24c",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-16T15:11:17Z",
       "side": 1,
       "message": "Why is this function needed? Could you add a comment to explain what it does too?",
+      "revId": "a3d57a3cf017e230ebaee7e2fddb44dcd5e13095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd42f96_b30b1967",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T11:04:06Z",
+      "side": 1,
+      "message": "I moved it to the commit that uses it and added a comment there: https://r.android.com/c/1467824/1",
+      "parentUuid": "53222953_df3aa24c",
       "revId": "a3d57a3cf017e230ebaee7e2fddb44dcd5e13095",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
