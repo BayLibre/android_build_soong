@@ -105,6 +105,24 @@
       "parentUuid": "3b1bc76b_90fc9a0e",
       "revId": "550e4003e9bbdb09995977465ea12a6215c72171",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1ee98f_ad016a25",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-10-21T16:05:15Z",
+      "side": 1,
+      "message": "I removed the MaxRSS capture in aosp/1466664 as I will implement my own one to capture it more accurately.",
+      "parentUuid": "34e498c9_96e1b60a",
+      "revId": "550e4003e9bbdb09995977465ea12a6215c72171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
