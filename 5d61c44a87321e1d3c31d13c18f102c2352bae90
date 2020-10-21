@@ -96,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6dc845cc_31505f5c",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-21T05:52:33Z",
+      "side": 1,
+      "message": "Ah, that\u0027s right.\nisVndk() includes isVndkSp(), so simply adding `\u0026\u0026 ctx.isVndkExt()` will set the VndkSp libs to have \u0027mayUseCoreVariant \u003d true\u0027. My intension was to set `library.baseInstaller.subDir \u003d \"vndk-sp\"` only for vndk-ext modules not for normal VNDK modules.",
+      "parentUuid": "635c3e74_5aa761ef",
+      "range": {
+        "startLine": 1249,
+        "startChar": 3,
+        "endLine": 1249,
+        "endChar": 22
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15ff289f_90fc4f2c",
         "filename": "cc/library.go",
         "patchSetId": 3
