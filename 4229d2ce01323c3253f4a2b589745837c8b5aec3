@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f0e1e69_075b0405",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T16:27:21Z",
+      "side": 1,
+      "message": "Ok, I see the problem with the mock implementation.\n\nI don\u0027t think it\u0027s worth spending more time on a proper implementation, it seems a rabbit hole. \n\nI\u0027m also strongly against adding the error reporting at each call site of these methods: there are many call site in the middle of already complex nested code where adding a few extra lines per call adds a lot of noise. It will soon deteriorate into not checking return value at all.\n\nWhat I can do is introduce an intermediate method that returns error, and a wrapper that does error reporting. Real code will use the wrapper, and Soong tests will use the underlying intermediate method. How does this sound?",
+      "parentUuid": "f46b67d5_dc63b300",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f579379c_85a5aa99",
         "filename": "dexpreopt/class_loader_context_test.go",
         "patchSetId": 2
