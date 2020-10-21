@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "640dfca8_e8226e2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T13:56:45Z",
+      "side": 1,
+      "message": "Self +2 after rebase.",
+      "revId": "0e4100af0a71e52c32c5da4e15e9a123d0db5ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
