@@ -16,6 +16,24 @@
       "message": "This functionality seems to be new (at least I cannot find where in the previous version this functionality was being done) but a lot of the rest of the change seems to just be a basic refactoring. If this is new then it should be separate from the refactoring and needs some tests.",
       "revId": "3e19d7f9dc4493795e43cd71fadff823f8fff9f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22e162cf_bfd0e37a",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-21T13:48:59Z",
+      "side": 1,
+      "message": "There is one bit of new functionality (which I moved to https://r.android.com/1467832), and the rest of the changes is caused by moving the logic from checking before adding compat libs to filtering them out post-factum. I expanded commit message to explain this.\n\nAlso, I added tests.",
+      "parentUuid": "5ded5fbd_30faa455",
+      "revId": "3e19d7f9dc4493795e43cd71fadff823f8fff9f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
