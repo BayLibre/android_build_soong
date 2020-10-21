@@ -312,8 +312,7 @@ func genClassLoaderContext(ctx android.PathContext, global *GlobalConfig, module
 		}
 
 		// Conditional class loader context for API version < 30.
-		const testBase = "android.test.base"
-		if !classLoaderContexts.addLibs(ctx, 30, module, testBase) {
+		if !classLoaderContexts.addLibs(ctx, 30, module, OptionalCompatUsesLibs30...) {
 			return nil
 		}
 
@@ -343,6 +342,8 @@ func fixConditionalClassLoaderContext(clcMap classLoaderContextMap) {
 		for i, lib := range clc.Names {
 			if android.InList(lib, usesLibs) {
 				// skip compatibility libraries that are already included in unconditional context
+			} else if lib == AndroidTestMock && !android.InList("android.test.runner", usesLibs) {
+				// android.test.mock is only needed if android.test.runner is used
 			} else {
 				clcMap[sdkVer].addLib(lib, clc.Host[i], clc.Target[i])
 			}
