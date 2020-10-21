@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70cfc83d_85795c2b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-21T17:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1c51b02_68763c9c",
+      "revId": "e984a360101648276a873b628168cc36403260d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e710e7d_b04bc6c2",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-10-21T08:21:02Z",
       "side": 1,
       "message": "will we allow this case?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 33
+      },
+      "revId": "e984a360101648276a873b628168cc36403260d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7aa0dfa_d07964ec",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-21T17:57:44Z",
+      "side": 1,
+      "message": "I left it here temporarily so that I could submit this CL separately from the changes across the tree if it is hard to get all the owners reviews.  I\u0027ll remove it in the next patch.",
+      "parentUuid": "5e710e7d_b04bc6c2",
       "range": {
         "startLine": 109,
         "startChar": 0,
