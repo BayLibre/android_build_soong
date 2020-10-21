@@ -1236,9 +1236,38 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 
 	if j.properties.Patch_module != nil && flags.javaVersion.usesJavaModules() {
 		// Manually specify build directory in case it is not under the repo root.
-		// (javac doesn't seem to expand into symbolc links when searching for patch-module targets, so
+		// (javac doesn't seem to expand into symbolic links when searching for patch-module targets, so
 		// just adding a symlink under the root doesn't help.)
 		patchPaths := ".:" + ctx.Config().BuildDir()
+
+		// b/150878007
+		//
+		// Workaround to support *Bazel-executed* JDK9 javac in Bazel's
+		// execution root for --patch-module. If this javac command line is
+		// invoked within Bazel's execution root working directory, the top
+		// level directories (e.g. libcore/, tools/, frameworks/) are all
+		// symlinks. JDK9 javac does not traverse into symlinks, which causes
+		// --patch-module to fail source file lookups when invoked in the
+		// execution root.
+		//
+		// Short of patching javac or enumerating *all* directories as possible
+		// input dirs, manually add the current module dir, and the top level
+		// dir of the source files to be compiled.
+		patchPaths += ":" + ctx.ModuleDir()
+
+		topLevelDirs := map[string]bool{}
+		srcFilesPaths := android.PathsForModuleSrcExcludes(
+			ctx, j.properties.Srcs, j.properties.Exclude_srcs)
+		for _, srcFilePath := range srcFilesPaths {
+			srcFileParts := strings.Split(srcFilePath.String(), "/")
+			if len(srcFileParts) > 1 {
+				topLevelDirs[srcFileParts[0]] = true
+			}
+		}
+		for _, topLevelDir := range android.SortedStringKeys(topLevelDirs) {
+			patchPaths += ":" + topLevelDir
+		}
+
 		classPath := flags.classpath.FormJavaClassPath("")
 		if classPath != "" {
 			patchPaths += ":" + classPath
