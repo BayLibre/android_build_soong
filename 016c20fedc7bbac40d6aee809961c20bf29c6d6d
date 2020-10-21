@@ -122,6 +122,30 @@
       },
       "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "746e3140_f862d6f3",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-21T23:57:31Z",
+      "side": 1,
+      "message": "Ack. But I still don\u0027t get it. Setting target.host.enabled to false here could be done as you described. But what we actually need here is the list of host targets (linux_bionic_arm64, linux_glibc_x86_64, etc.) that need to be enabled in 384-388.",
+      "parentUuid": "90753748_31dbfbea",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
