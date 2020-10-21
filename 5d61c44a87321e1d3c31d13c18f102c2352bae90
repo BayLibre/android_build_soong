@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d480fa43_973dc315",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-21T06:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2d23bb1_83db17ae",
+      "range": {
+        "startLine": 234,
+        "startChar": 11,
+        "endLine": 234,
+        "endChar": 27
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "987f4328_8c5952a7",
@@ -118,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bface3b_b16ed893",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-21T06:21:58Z",
+      "side": 1,
+      "message": "Done.\nmuch cleaner. Thanks.",
+      "parentUuid": "6dc845cc_31505f5c",
+      "range": {
+        "startLine": 1249,
+        "startChar": 3,
+        "endLine": 1249,
+        "endChar": 22
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15ff289f_90fc4f2c",
@@ -131,6 +179,30 @@
       "writtenOn": "2020-10-21T05:06:17Z",
       "side": 1,
       "message": "This can be enclosed with `if (ctx.isVndkExt()) {}` or added to the above `if (ctx.isVndkExt())` statement.",
+      "range": {
+        "startLine": 1272,
+        "startChar": 4,
+        "endLine": 1272,
+        "endChar": 41
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a69917e_b7556343",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-21T06:21:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15ff289f_90fc4f2c",
       "range": {
         "startLine": 1272,
         "startChar": 4,
