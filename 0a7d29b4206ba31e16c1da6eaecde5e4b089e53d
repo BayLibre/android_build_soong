@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c9741d_9ded1bba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-21T18:07:31Z",
+      "side": 1,
+      "message": "Concept and code LGTM, needs a different name though to avoid confusion with Base().",
+      "revId": "0a7d29b4206ba31e16c1da6eaecde5e4b089e53d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd857ef4_14514383",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-21T18:07:31Z",
+      "side": 1,
+      "message": "We already have the poorly named Base() to return the filename part of the path, which would make BaseDir() confusing.  PartitionDir() would make sense for device modules, and might be fine for host modules?",
+      "revId": "0a7d29b4206ba31e16c1da6eaecde5e4b089e53d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
