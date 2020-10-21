@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "635c3e74_5aa761ef",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-21T05:42:32Z",
+      "side": 1,
+      "message": "I think that `if isVndk { subDir \u003d \"vndk-sp\" }` reads well ;-)\n\nbtw, adding `\u0026\u0026 isVndkExt` would make this change not-trivial. It will affect the \"else if vndk\" condition as well. However we can\u0027t simply adding \"\u0026\u0026 isVndkExt\" there because we still want to support \"use core variant\" check as well. (at least for now).\n\nHmm. let me try though.",
+      "parentUuid": "987f4328_8c5952a7",
+      "range": {
+        "startLine": 1249,
+        "startChar": 3,
+        "endLine": 1249,
+        "endChar": 22
+      },
+      "revId": "5d61c44a87321e1d3c31d13c18f102c2352bae90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15ff289f_90fc4f2c",
         "filename": "cc/library.go",
         "patchSetId": 3
