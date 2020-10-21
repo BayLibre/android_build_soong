@@ -1238,7 +1238,7 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 		// Manually specify build directory in case it is not under the repo root.
 		// (javac doesn't seem to expand into symbolc links when searching for patch-module targets, so
 		// just adding a symlink under the root doesn't help.)
-		patchPaths := ".:" + ctx.Config().BuildDir()
+		patchPaths := ".:" + ctx.Config().BuildDir() + ":" + ctx.ModuleDir() + ":tools"
 		classPath := flags.classpath.FormJavaClassPath("")
 		if classPath != "" {
 			patchPaths += ":" + classPath
