@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84775408_9ed40b4b",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-21T14:57:36Z",
+      "side": 1,
+      "message": "This is not true at all. android.test.mock is usable standalone without android.test.runner. The android.test.mock classes used to be part of android.test.runner but were extracted out so they could be used on their own. So, if an app depends on android.test.runner then android.test.mock must also be added (because android.test.runner depends on android.test.mock) but it is valid for tests to just depend on android.test.mock on its own.",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 70
+      },
+      "revId": "78811055dc74b775c55602fc4b59c9b5b8b55bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
