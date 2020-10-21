@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e24e3944_cc44e51a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-21T08:21:02Z",
+      "side": 1,
+      "message": "LGTM, except for the minor questions.",
+      "revId": "e984a360101648276a873b628168cc36403260d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c51b02_68763c9c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-21T08:21:02Z",
+      "side": 1,
+      "message": "like aosp/1466883, shouldn\u0027t this be \u0027libbar.llndk\u0027?",
+      "revId": "e984a360101648276a873b628168cc36403260d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e710e7d_b04bc6c2",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-21T08:21:02Z",
+      "side": 1,
+      "message": "will we allow this case?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 33
+      },
+      "revId": "e984a360101648276a873b628168cc36403260d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
