@@ -146,6 +146,53 @@
       },
       "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d43d94_1a7fa1e6",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-22T01:02:36Z",
+      "side": 1,
+      "message": "Hmm, yes that\u0027s true, some code to copy the values from the SdkMemberProperties structs to the PropertySets would still be necessary, although I wouldn\u0027t put it in an ad-hoc loop like 384-388.\n\nIt\u0027s just that we have a lot of machinery here to treat the properties coming from the SdkMemberTypes in a generic way, yet this function is collecting more and more special cases that do the same things with extra bespoke loops etc. Yours isn\u0027t the first, but it\u0027s more complicated than the existing ones, taking us further down that road.\n\nIt should be easier to set property values here too and use the generic machinery to get common value optimisation and avoid things like the building of targetString above - as it is now it\u0027d get spread out. But that\u0027s arguably more of a refactoring than is fair to ask for here, so I guess I\u0027m fine with this then.",
+      "parentUuid": "746e3140_f862d6f3",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51df2f58_4a13d3ae",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-22T01:02:36Z",
+      "side": 1,
+      "message": "Can\u0027t this and the code that sets supportedHostTargets move together?",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 2
+      },
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
