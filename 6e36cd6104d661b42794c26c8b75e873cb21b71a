@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98515075_afb4e602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-10-22T16:00:41Z",
+      "side": 1,
+      "message": "\u003e SyncTimeoutError: Sync operation timed out after 3600 second\n",
+      "revId": "6e36cd6104d661b42794c26c8b75e873cb21b71a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
