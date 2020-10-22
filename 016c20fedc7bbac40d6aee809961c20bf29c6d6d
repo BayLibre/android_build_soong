@@ -172,6 +172,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8774c52_0300141d",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-22T02:31:31Z",
+      "side": 1,
+      "message": "\u003e Yours isn\u0027t the first,\n\nAh, yes. This is the part that I misunderstood from you. I saw your original change as a special casing, so I thought that tweaking it a little bit more shouldn\u0027t be considered as harmful.\n\nI do agree with you that having special cases here is undesirable in general. I hope we can revisit that and refactor it in the future.",
+      "parentUuid": "b7d43d94_1a7fa1e6",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51df2f58_4a13d3ae",
