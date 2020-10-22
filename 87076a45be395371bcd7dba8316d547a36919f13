@@ -34,6 +34,24 @@
       "parentUuid": "55d8a5ba_9d795cc7",
       "revId": "87076a45be395371bcd7dba8316d547a36919f13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d36103d5_5015269f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-10-22T17:15:11Z",
+      "side": 1,
+      "message": "Thanks Jiyong,\n\nlibdmabufheap is backwards compatible and it will fallback to ION if it does not detect DMA-BUF heap support during runtime. \n\nThanks,\nHridya",
+      "parentUuid": "7e96141f_1c551975",
+      "revId": "87076a45be395371bcd7dba8316d547a36919f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
