@@ -217,6 +217,30 @@
       },
       "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc489b28_ef12d67e",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-22T07:30:18Z",
+      "side": 1,
+      "message": "I missed this comment. Done.",
+      "parentUuid": "51df2f58_4a13d3ae",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 2
+      },
+      "revId": "016c20fedc7bbac40d6aee809961c20bf29c6d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
