@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55d8a5ba_9d795cc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-10-22T06:07:41Z",
+      "side": 1,
+      "message": "Hi Jiyong,\n\nPlease find below the answers to the questions from go/apex-allowed-deps-error\n\nQ. How big is the binary size increase for affected APEXes?\nApproximately 88k.\nBefore: \n21307015\nAfter:\n21397090\n\nQ. Is the new dependency committed to support previous platform releases?\nThis new dependency is a library that is intended to support a new feature added in linux kernel version 5.7. It will not break any existing features on upgrading devices.\n\nQ. Is the new dependency being developed AOSP-first or internal?\nAOSP first.\n\nWhat’s the testing strategy for the new dependency? Does it have its own tests, and are you adding integration tests?\nQ. libdmabufheap has its own unit tests. We also plan to add VTS tests that tests its integration in codec2. Brief summary of planned tests: https://docs.google.com/document/d/1Sgk-G0DVjILPF11yqQyiiS2SvOgTlm0TzP9tidmRs2s/edit#heading\u003dh.tzxzj2an7p9h\n\nPlease do let me know if you have any additional questions.\n\nThanks,\nHridya\n",
+      "revId": "87076a45be395371bcd7dba8316d547a36919f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
