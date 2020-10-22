@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce621601_fbb3f0af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-10-22T04:45:33Z",
+      "side": 1,
+      "message": "Hi Lajos,\n\nI could solve the build error locally by following the instructions in go/apex-allowed-deps-error.\nCould you please take a look when you get a chance? Thank you!\n\nRegards,\nHridya",
+      "revId": "d250a5ee4042b8f38cff568d885269e600ed9e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
