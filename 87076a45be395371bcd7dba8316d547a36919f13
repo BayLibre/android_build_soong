@@ -52,6 +52,23 @@
       "parentUuid": "7e96141f_1c551975",
       "revId": "87076a45be395371bcd7dba8316d547a36919f13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e241f1b9_6a0f4f2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-22T20:50:46Z",
+      "side": 1,
+      "message": "Marco, there is a new allocator lib that c2 uses and Android S. Does this look safe to you? It suggests to me that libdmabuf is bundled into our mainline APEX, and is not part of the stable platform API.",
+      "revId": "87076a45be395371bcd7dba8316d547a36919f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
