@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61628c5_5a6a5b2c",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-22T22:24:03Z",
+      "side": 1,
+      "message": "This and supportedHostTargets can move into the if block above, can\u0027t it?",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 2
+      },
+      "revId": "01a4fb8a9722d4432db50b8ec9d667fa4d044276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
