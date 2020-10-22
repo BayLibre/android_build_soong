@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe26639_13700939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-22T21:13:27Z",
+      "side": 1,
+      "message": "I\u0027ll compare the produced artifacts after presubmit finishes to see how much this is changing the contents of the device.",
+      "revId": "9a631319ab44d5c5e9fc12a389d54b0b4e010873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
