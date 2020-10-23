@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f0f660c_54ac019b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-23T02:16:52Z",
+      "side": 1,
+      "message": "Hmm, this is against what I see from the Internet...\n\nhttps://stackoverflow.com/questions/244777/can-comments-be-used-in-json",
+      "revId": "9194eb7232631d51c7cde3262ffa08359dcc86bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
