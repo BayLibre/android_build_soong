@@ -22,6 +22,30 @@
       },
       "revId": "01a4fb8a9722d4432db50b8ec9d667fa4d044276",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b5caf7_2ae2fb2e",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-23T04:05:56Z",
+      "side": 1,
+      "message": "Good catch. Done.",
+      "parentUuid": "a61628c5_5a6a5b2c",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 2
+      },
+      "revId": "01a4fb8a9722d4432db50b8ec9d667fa4d044276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
