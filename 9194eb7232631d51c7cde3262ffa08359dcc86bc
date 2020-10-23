@@ -51,6 +51,23 @@
       "message": "Well, I expected having a separate step before calling conv_linker_config.. but, it seems to meet the immediate needs.",
       "revId": "9194eb7232631d51c7cde3262ffa08359dcc86bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4ed709_17355022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-23T10:02:37Z",
+      "side": 1,
+      "message": "Much appreciated, thanks!",
+      "revId": "9194eb7232631d51c7cde3262ffa08359dcc86bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
