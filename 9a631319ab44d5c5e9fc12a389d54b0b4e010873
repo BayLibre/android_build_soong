@@ -70,6 +70,24 @@
       "parentUuid": "1dfaade9_8da02171",
       "revId": "9a631319ab44d5c5e9fc12a389d54b0b4e010873",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "565f27d9_2b310a26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1600736
+      },
+      "writtenOn": "2020-10-23T18:30:07Z",
+      "side": 1,
+      "message": "Can there be a case where a class that\u0027s now is not removed, could cause a duplicate class definition in the class loader?",
+      "parentUuid": "cbe28a07_faf2cc61",
+      "revId": "9a631319ab44d5c5e9fc12a389d54b0b4e010873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
