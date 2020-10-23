@@ -104,6 +104,24 @@
       "message": "I see there\u0027s an unresolved comment towards Macro, but LGTM from my perspective.",
       "revId": "87076a45be395371bcd7dba8316d547a36919f13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52062ea_e5b0c591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-23T16:56:49Z",
+      "side": 1,
+      "message": "libdmabufheap is not currently included in the apex (but libion is)\nAs far as being safe, if this causes libdmabufheap to be included in the apex, it would only be safe if libdmabufheap itself only uses stable APIs. Is that the case?",
+      "parentUuid": "e241f1b9_6a0f4f2d",
+      "revId": "87076a45be395371bcd7dba8316d547a36919f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
