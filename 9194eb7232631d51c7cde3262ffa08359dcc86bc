@@ -16,6 +16,24 @@
       "message": "Hmm, this is against what I see from the Internet...\n\nhttps://stackoverflow.com/questions/244777/can-comments-be-used-in-json",
       "revId": "9194eb7232631d51c7cde3262ffa08359dcc86bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc02d41_5fe056c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-10-23T03:34:26Z",
+      "side": 1,
+      "message": "I understand that JSON format itself does not support comments. What I suggest here is to loosen JSON format a little bit for linker.config.json, like Android already has similar syntax in TEST_MAPPING.\n\nhttps://source.android.com/compatibility/tests/development/test-mapping?hl\u003den#following_an_example",
+      "parentUuid": "1f0f660c_54ac019b",
+      "revId": "9194eb7232631d51c7cde3262ffa08359dcc86bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
