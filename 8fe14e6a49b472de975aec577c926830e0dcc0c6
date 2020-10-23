@@ -51,6 +51,24 @@
       "message": "All comments are resolved. Paul, do you have any concern? If not, I\u0027d like to make a progress here because I have 5 changes (aosp/1465866, etc.) that are blocked on this (and the upcoming prebuilt update).",
       "revId": "8fe14e6a49b472de975aec577c926830e0dcc0c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0223b5_1c1a17f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-23T14:13:01Z",
+      "side": 1,
+      "message": "Paul is a bit distracted now (http://g/art-module-team/iJHvPusO7dA/CBkMfjEpAgAJ), so I\u0027ll +2 and add Colin for ORV.",
+      "parentUuid": "a0142b32_f8c1b474",
+      "revId": "8fe14e6a49b472de975aec577c926830e0dcc0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
