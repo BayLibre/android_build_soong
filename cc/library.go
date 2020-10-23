@@ -1655,10 +1655,9 @@ func CanBeVersionVariant(module interface {
 	InRecovery() bool
 	CcLibraryInterface() bool
 	Shared() bool
-	Static() bool
 }) bool {
 	return CanBeOrLinkAgainstVersionVariants(module) &&
-		module.CcLibraryInterface() && (module.Shared() || module.Static())
+		module.CcLibraryInterface() && module.Shared()
 }
 
 // versionSelector normalizes the versions in the Stubs.Versions property into MutatedProperties.AllStubsVersions,
