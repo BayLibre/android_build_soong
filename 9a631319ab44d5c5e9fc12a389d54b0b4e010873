@@ -34,6 +34,24 @@
       "parentUuid": "5fe26639_13700939",
       "revId": "9a631319ab44d5c5e9fc12a389d54b0b4e010873",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dfaade9_8da02171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2020-10-23T18:24:35Z",
+      "side": 1,
+      "message": "So I\u0027m good to submit after presubmit passes?",
+      "parentUuid": "3b1f6c5f_d641aeda",
+      "revId": "9a631319ab44d5c5e9fc12a389d54b0b4e010873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
