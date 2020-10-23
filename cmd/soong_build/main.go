@@ -97,7 +97,7 @@ func main() {
 		firstCtx := newContext(srcDir, configuration)
 		bootstrap.Main(firstCtx.Context, configuration, extraNinjaDeps...)
 		// Invoke bazel commands and save results for second pass.
-		if err := configuration.BazelContext.InvokeBazel(); err != nil {
+		if err := configuration.BazelContext.InvokeBazel(configuration.BuildDir()); err != nil {
 			fmt.Fprintf(os.Stderr, "%s", err)
 			os.Exit(1)
 		}
