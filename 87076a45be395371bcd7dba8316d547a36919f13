@@ -122,6 +122,24 @@
       "parentUuid": "e241f1b9_6a0f4f2d",
       "revId": "87076a45be395371bcd7dba8316d547a36919f13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68e81c6_c504e706",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-23T16:58:39Z",
+      "side": 1,
+      "message": "and how would this work when an apex is expected to be installable across different platform releases? Would the apex include both libion and libdmabufheap, and there would be logic somewhere (where?) to use one or the other as appropriate?",
+      "parentUuid": "f52062ea_e5b0c591",
+      "revId": "87076a45be395371bcd7dba8316d547a36919f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
