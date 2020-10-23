@@ -1312,7 +1312,7 @@ func (c *deviceConfig) BoardKernelModuleInterfaceVersions() []string {
 	return c.config.productVariables.BoardKernelModuleInterfaceVersions
 }
 
-// The ConfiguredJarList struct provides methods for handling a list of (apex, jar) pairs.
+// The ConfiguredJarList interface provides methods for handling a list of (apex, jar) pairs.
 // Such lists are used in the build system for things like bootclasspath jars or system server jars.
 // The apex part is either an apex name, or a special names "platform" or "system_ext". Jar is a
 // module name. The pairs come from Make product variables as a list of colon-separated strings.
@@ -1322,28 +1322,62 @@ func (c *deviceConfig) BoardKernelModuleInterfaceVersions() []string {
 //   - "platform:framework"
 //   - "system_ext:foo"
 //
-type ConfiguredJarList struct {
+type ConfiguredJarList interface {
+	// The length of the list.
+	Len() int
+
+	// Jar component of idx-th pair on the list.
+	Jar(idx int) string
+
+	// If the list contains a pair with the given jar.
+	ContainsJar(jar string) bool
+
+	// Index of the first pair with the given jar on the list, or -1 if none.
+	IndexOfJar(jar string) int
+
+	// Append an (apex, jar) pair to the list.
+	Append(apex string, jar string)
+
+	// Filter out sublist.
+	RemoveList(list ConfiguredJarList)
+
+	// A copy of itself.
+	CopyOf() ConfiguredJarList
+
+	// A copy of the list of strings containing jar components.
+	CopyOfJars() []string
+
+	// A copy of the list of strings with colon-separated (apex, jar) pairs.
+	CopyOfApexJarPairs() []string
+
+	// A list of build paths based on the given directory prefix.
+	BuildPaths(ctx PathContext, dir OutputPath) WritablePaths
+
+	// A list of on-device paths.
+	DevicePaths(cfg Config, ostype OsType) []string
+}
+
+type configuredJarList struct {
 	apexes []string // A list of apex components.
 	jars   []string // A list of jar components.
 }
 
-// The length of the list.
-func (l *ConfiguredJarList) Len() int {
+var _ ConfiguredJarList = (*configuredJarList)(nil)
+
+func (l *configuredJarList) Len() int {
 	return len(l.jars)
 }
 
-// Jar component of idx-th pair on the list.
-func (l *ConfiguredJarList) Jar(idx int) string {
+func (l *configuredJarList) Jar(idx int) string {
 	return l.jars[idx]
 }
 
-// If the list contains a pair with the given jar.
-func (l *ConfiguredJarList) ContainsJar(jar string) bool {
+func (l *configuredJarList) ContainsJar(jar string) bool {
 	return InList(jar, l.jars)
 }
 
 // If the list contains the given (apex, jar) pair.
-func (l *ConfiguredJarList) containsApexJarPair(apex, jar string) bool {
+func (l *configuredJarList) containsApexJarPair(apex, jar string) bool {
 	for i := 0; i < l.Len(); i++ {
 		if apex == l.apexes[i] && jar == l.jars[i] {
 			return true
@@ -1352,25 +1386,23 @@ func (l *ConfiguredJarList) containsApexJarPair(apex, jar string) bool {
 	return false
 }
 
-// Index of the first pair with the given jar on the list, or -1 if none.
-func (l *ConfiguredJarList) IndexOfJar(jar string) int {
+func (l *configuredJarList) IndexOfJar(jar string) int {
 	return IndexList(jar, l.jars)
 }
 
-// Append an (apex, jar) pair to the list.
-func (l *ConfiguredJarList) Append(apex string, jar string) {
+func (l *configuredJarList) Append(apex string, jar string) {
 	l.apexes = append(l.apexes, apex)
 	l.jars = append(l.jars, jar)
 }
 
-// Filter out sublist.
-func (l *ConfiguredJarList) RemoveList(list ConfiguredJarList) {
+func (l *configuredJarList) RemoveList(list ConfiguredJarList) {
 	apexes := make([]string, 0, l.Len())
 	jars := make([]string, 0, l.Len())
 
+	other := list.(*configuredJarList)
 	for i, jar := range l.jars {
 		apex := l.apexes[i]
-		if !list.containsApexJarPair(apex, jar) {
+		if !other.containsApexJarPair(apex, jar) {
 			apexes = append(apexes, apex)
 			jars = append(jars, jar)
 		}
@@ -1380,18 +1412,15 @@ func (l *ConfiguredJarList) RemoveList(list ConfiguredJarList) {
 	l.jars = jars
 }
 
-// A copy of itself.
-func (l *ConfiguredJarList) CopyOf() ConfiguredJarList {
-	return ConfiguredJarList{CopyOf(l.apexes), CopyOf(l.jars)}
+func (l *configuredJarList) CopyOf() ConfiguredJarList {
+	return &configuredJarList{CopyOf(l.apexes), CopyOf(l.jars)}
 }
 
-// A copy of the list of strings containing jar components.
-func (l *ConfiguredJarList) CopyOfJars() []string {
+func (l *configuredJarList) CopyOfJars() []string {
 	return CopyOf(l.jars)
 }
 
-// A copy of the list of strings with colon-separated (apex, jar) pairs.
-func (l *ConfiguredJarList) CopyOfApexJarPairs() []string {
+func (l *configuredJarList) CopyOfApexJarPairs() []string {
 	pairs := make([]string, 0, l.Len())
 
 	for i, jar := range l.jars {
@@ -1402,8 +1431,7 @@ func (l *ConfiguredJarList) CopyOfApexJarPairs() []string {
 	return pairs
 }
 
-// A list of build paths based on the given directory prefix.
-func (l *ConfiguredJarList) BuildPaths(ctx PathContext, dir OutputPath) WritablePaths {
+func (l *configuredJarList) BuildPaths(ctx PathContext, dir OutputPath) WritablePaths {
 	paths := make(WritablePaths, l.Len())
 	for i, jar := range l.jars {
 		paths[i] = dir.Join(ctx, ModuleStem(jar)+".jar")
@@ -1420,8 +1448,7 @@ func ModuleStem(module string) string {
 	return module
 }
 
-// A list of on-device paths.
-func (l *ConfiguredJarList) DevicePaths(cfg Config, ostype OsType) []string {
+func (l *configuredJarList) DevicePaths(cfg Config, ostype OsType) []string {
 	paths := make([]string, l.Len())
 	for i, jar := range l.jars {
 		apex := l.apexes[i]
@@ -1460,7 +1487,7 @@ func CreateConfiguredJarList(ctx PathContext, list []string) ConfiguredJarList {
 	apexes := make([]string, 0, len(list))
 	jars := make([]string, 0, len(list))
 
-	l := ConfiguredJarList{apexes, jars}
+	l := &configuredJarList{apexes, jars}
 
 	for _, apexjar := range list {
 		apex, jar := splitConfiguredJarPair(ctx, apexjar)
@@ -1471,7 +1498,7 @@ func CreateConfiguredJarList(ctx PathContext, list []string) ConfiguredJarList {
 }
 
 func EmptyConfiguredJarList() ConfiguredJarList {
-	return ConfiguredJarList{}
+	return &configuredJarList{}
 }
 
 var earlyBootJarsKey = NewOnceKey("earlyBootJars")
