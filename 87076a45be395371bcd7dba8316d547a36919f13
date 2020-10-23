@@ -140,6 +140,24 @@
       "parentUuid": "f52062ea_e5b0c591",
       "revId": "87076a45be395371bcd7dba8316d547a36919f13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b783d4e1_f25525b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-10-23T17:17:24Z",
+      "side": 1,
+      "message": "Thanks Marco, regarding stability, yes libdmabufheap will be be ABI stable across releases. It supports the DMA-BUF heap framework that is part of the upstream linux kernel and hence considered ABI stable. \n\nRegarding usage across different platform releases, libdmabufheap is created to be backwards compatible and examines the device during runtime to check whether it should use the ION interface or the DMA-BUF heaps interface as per the device\u0027s capabilities. Codec2 component store also has checks in place to use the ION allocator if ION support is detected during runtime. On devices without ION support(GKI 2.0 launching), it will use the DMA-BUF heap based allocator.\n\nRegards,\nHridya",
+      "parentUuid": "a68e81c6_c504e706",
+      "revId": "87076a45be395371bcd7dba8316d547a36919f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
