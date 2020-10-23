@@ -88,6 +88,24 @@
       "parentUuid": "cbe28a07_faf2cc61",
       "revId": "9a631319ab44d5c5e9fc12a389d54b0b4e010873",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1964a169_2dd0b7dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2020-10-23T18:40:30Z",
+      "side": 1,
+      "message": "I kindof doubt that apps would make it so proguard was required for their app to function. And it should be a compile time error anyways in that case.",
+      "parentUuid": "565f27d9_2b310a26",
+      "revId": "9a631319ab44d5c5e9fc12a389d54b0b4e010873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
