@@ -69,6 +69,41 @@
       "message": "Marco, there is a new allocator lib that c2 uses and Android S. Does this look safe to you? It suggests to me that libdmabuf is bundled into our mainline APEX, and is not part of the stable platform API.",
       "revId": "87076a45be395371bcd7dba8316d547a36919f13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7f27a4_124f8990",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-23T02:20:34Z",
+      "side": 1,
+      "message": "Awesome. Thanks for the confirmation. LGTM then.",
+      "parentUuid": "d36103d5_5015269f",
+      "revId": "87076a45be395371bcd7dba8316d547a36919f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4dcded_5f4072a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-23T02:20:34Z",
+      "side": 1,
+      "message": "I see there\u0027s an unresolved comment towards Macro, but LGTM from my perspective.",
+      "revId": "87076a45be395371bcd7dba8316d547a36919f13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
