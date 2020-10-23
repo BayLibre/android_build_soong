@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7916628d_b6a7f321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-23T19:07:44Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work. The configuration is loaded from a JSON file and it is impossible to unmarshal a JSON file into an interface because the unmarshalling code does not know how to create a concrete implementation of the ConfiguredJarList interface.",
+      "revId": "d1e5f4f99cb67ef416a94b3bf96f6c3c31f52f29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
