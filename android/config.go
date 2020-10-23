@@ -1335,14 +1335,11 @@ type ConfiguredJarList interface {
 	// Index of the first pair with the given jar on the list, or -1 if none.
 	IndexOfJar(jar string) int
 
-	// Append an (apex, jar) pair to the list.
-	Append(apex string, jar string)
+	// Append an (apex, jar) pair to the list returning a new list.
+	Append(apex string, jar string) ConfiguredJarList
 
-	// Filter out sublist.
-	RemoveList(list ConfiguredJarList)
-
-	// A copy of itself.
-	CopyOf() ConfiguredJarList
+	// Filter out sublist returning a new list.
+	RemoveList(list ConfiguredJarList) ConfiguredJarList
 
 	// A copy of the list of strings containing jar components.
 	CopyOfJars() []string
@@ -1390,12 +1387,13 @@ func (l *configuredJarList) IndexOfJar(jar string) int {
 	return IndexList(jar, l.jars)
 }
 
-func (l *configuredJarList) Append(apex string, jar string) {
-	l.apexes = append(l.apexes, apex)
-	l.jars = append(l.jars, jar)
+func (l *configuredJarList) Append(apex string, jar string) ConfiguredJarList {
+	apexes := append(l.apexes, apex)
+	jars := append(l.jars, jar)
+	return &configuredJarList{apexes, jars}
 }
 
-func (l *configuredJarList) RemoveList(list ConfiguredJarList) {
+func (l *configuredJarList) RemoveList(list ConfiguredJarList) ConfiguredJarList {
 	apexes := make([]string, 0, l.Len())
 	jars := make([]string, 0, l.Len())
 
@@ -1408,12 +1406,7 @@ func (l *configuredJarList) RemoveList(list ConfiguredJarList) {
 		}
 	}
 
-	l.apexes = apexes
-	l.jars = jars
-}
-
-func (l *configuredJarList) CopyOf() ConfiguredJarList {
-	return &configuredJarList{CopyOf(l.apexes), CopyOf(l.jars)}
+	return &configuredJarList{apexes, jars}
 }
 
 func (l *configuredJarList) CopyOfJars() []string {
@@ -1484,17 +1477,16 @@ func splitConfiguredJarPair(ctx PathContext, str string) (string, string) {
 }
 
 func CreateConfiguredJarList(ctx PathContext, list []string) ConfiguredJarList {
-	apexes := make([]string, 0, len(list))
-	jars := make([]string, 0, len(list))
+	apexes := make([]string, len(list))
+	jars := make([]string, len(list))
 
-	l := &configuredJarList{apexes, jars}
-
-	for _, apexjar := range list {
+	for i, apexjar := range list {
 		apex, jar := splitConfiguredJarPair(ctx, apexjar)
-		l.Append(apex, jar)
+		apexes[i] = apex
+		jars[i] = jar
 	}
 
-	return l
+	return &configuredJarList{apexes, jars}
 }
 
 func EmptyConfiguredJarList() ConfiguredJarList {
