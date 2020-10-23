@@ -1452,25 +1452,38 @@ func (l *ConfiguredJarList) DevicePaths(cfg Config, ostype OsType) []string {
 	return paths
 }
 
-// Expected format for apexJarValue = <apex name>:<jar name>
-func splitConfiguredJarPair(ctx PathContext, str string) (string, string) {
-	pair := strings.SplitN(str, ":", 2)
-	if len(pair) == 2 {
-		return pair[0], pair[1]
-	} else {
-		ReportPathErrorf(ctx, "malformed (apex, jar) pair: '%s', expected format: <apex>:<jar>", str)
-		return "error-apex", "error-jar"
-	}
-}
-
-func CreateConfiguredJarList(ctx PathContext, list []string) ConfiguredJarList {
+func splitListOfPairsIntoPairOfLists(list []string) ([]string, []string, error) {
+	// Now we need to populate this list by splitting each item in the slice of
+	// pairs and appending them to the appropriate list of apexes or jars.
 	apexes := make([]string, len(list))
 	jars := make([]string, len(list))
 
 	for i, apexjar := range list {
-		apex, jar := splitConfiguredJarPair(ctx, apexjar)
+		apex, jar, err := splitConfiguredJarPair(apexjar)
+		if err != nil {
+			return apexes, jars, err
+		}
 		apexes[i] = apex
 		jars[i] = jar
+	}
+
+	return apexes, jars, nil
+}
+
+// Expected format for apexJarValue = <apex name>:<jar name>
+func splitConfiguredJarPair(str string) (string, string, error) {
+	pair := strings.SplitN(str, ":", 2)
+	if len(pair) == 2 {
+		return pair[0], pair[1], nil
+	} else {
+		return "error-apex", "error-jar", fmt.Errorf("malformed (apex, jar) pair: '%s', expected format: <apex>:<jar>", str)
+	}
+}
+
+func CreateConfiguredJarList(ctx PathContext, list []string) ConfiguredJarList {
+	apexes, jars, err := splitListOfPairsIntoPairOfLists(list)
+	if err != nil {
+		ReportPathErrorf(ctx, "%s", err)
 	}
 
 	return ConfiguredJarList{apexes, jars}
