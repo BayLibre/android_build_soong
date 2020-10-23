@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc53f5f5_7b4a29ee",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-23T21:13:55Z",
+      "side": 1,
+      "message": "Would this make more sense as a field on bazelContext instead of a parameter here?",
+      "range": {
+        "startLine": 57,
+        "startChar": 13,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "c67847b821754ece9dce47bf979179f6fa018418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4b5aee_2da2a14a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-23T21:13:55Z",
+      "side": 1,
+      "message": "main or primary?",
+      "range": {
+        "startLine": 211,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 35
+      },
+      "revId": "c67847b821754ece9dce47bf979179f6fa018418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4510010_a3d77bb6",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-23T21:13:55Z",
+      "side": 1,
+      "message": "check for errors writing the file",
+      "revId": "c67847b821754ece9dce47bf979179f6fa018418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38ca64c_fdb646c8",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-23T21:13:55Z",
+      "side": 1,
+      "message": "cqueryResults :\u003d map[string]string{}",
+      "revId": "c67847b821754ece9dce47bf979179f6fa018418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f85592_6ade2623",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-23T21:13:55Z",
+      "side": 1,
+      "message": "Does this value vary with $OUT_DIR?",
+      "range": {
+        "startLine": 316,
+        "startChar": 57,
+        "endLine": 316,
+        "endChar": 60
+      },
+      "revId": "c67847b821754ece9dce47bf979179f6fa018418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
