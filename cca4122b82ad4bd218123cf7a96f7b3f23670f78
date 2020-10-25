@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7018d91_f03abf45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-25T12:36:51Z",
+      "side": 1,
+      "message": "Note that USE_BAZEL\u003d1 m is currently broken in the branch (and therefore also broken in this CL), I think due to this recent change:\n\nbuild/soong/android/bazel_handler.go\n\nf3c96efea4 (Chris Parsons 2020-09-29 02:23:17 -0400 148) \tif len(missingEnvVars) \u003e 0 {\nf3c96efea4 (Chris Parsons 2020-09-29 02:23:17 -0400 149) \t\treturn nil, errors.New(fmt.Sprintf(\"missing required env vars to use bazel: %s\", missingEnvVars)\n\nIn particular, USE_BAZEL\u003d1 m builds currently fail in the branch with an error like:\n\n[ 96% 226/233] out/soong/.bootstrap/bin/soong_build out/soong/build.ninja\nFAILED: out/soong/build.ninja\nout/soong/.bootstrap/bin/soong_build -t -l out/.module_paths/Android.bp.list -b out/soong -n out -d out/soong/build.ninja.d -globFile out/soong/.bootstrap/build-globs.ninja -o out/soong/build.ninja Android.bp\nmissing required env vars to use bazel: [BAZEL_HOME BAZEL_PATH BAZEL_OUTPUT_BASE BAZEL_WORKSPACE]\n12:25:00 soong bootstrap failed with: exit status 1\n\n#### failed to build some targets (38 seconds) ####",
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
