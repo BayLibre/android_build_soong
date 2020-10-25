@@ -1238,7 +1238,15 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 		// Manually specify build directory in case it is not under the repo root.
 		// (javac doesn't seem to expand into symbolc links when searching for patch-module targets, so
 		// just adding a symlink under the root doesn't help.)
-		patchPaths := ".:" + ctx.Config().BuildDir()
+
+		// For Bazel interop:
+		// Add ctx.ModuleDir() enables Bazel to explicitly traverse into the ModuleDir to search for sources.
+		// This will keep Ninja working as well, but may fail for Bazel builds if a filegroup
+		// outside of the ModuleDir is added, like "tools". See b/150878007 for more background.
+		//
+		// TODO(b/151338376): figure out a way to dynamically use the right search paths for Bazel and remove
+		// "tools".
+		patchPaths := ctx.ModuleDir() + ":tools:.:" + ctx.Config().BuildDir()
 		classPath := flags.classpath.FormJavaClassPath("")
 		if classPath != "" {
 			patchPaths += ":" + classPath
