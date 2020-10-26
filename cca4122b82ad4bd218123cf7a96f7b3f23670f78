@@ -16,6 +16,98 @@
       "message": "Note that USE_BAZEL\u003d1 m is currently broken in the branch (and therefore also broken in this CL), I think due to this recent change:\n\nbuild/soong/android/bazel_handler.go\n\nf3c96efea4 (Chris Parsons 2020-09-29 02:23:17 -0400 148) \tif len(missingEnvVars) \u003e 0 {\nf3c96efea4 (Chris Parsons 2020-09-29 02:23:17 -0400 149) \t\treturn nil, errors.New(fmt.Sprintf(\"missing required env vars to use bazel: %s\", missingEnvVars)\n\nIn particular, USE_BAZEL\u003d1 m builds currently fail in the branch with an error like:\n\n[ 96% 226/233] out/soong/.bootstrap/bin/soong_build out/soong/build.ninja\nFAILED: out/soong/build.ninja\nout/soong/.bootstrap/bin/soong_build -t -l out/.module_paths/Android.bp.list -b out/soong -n out -d out/soong/build.ninja.d -globFile out/soong/.bootstrap/build-globs.ninja -o out/soong/build.ninja Android.bp\nmissing required env vars to use bazel: [BAZEL_HOME BAZEL_PATH BAZEL_OUTPUT_BASE BAZEL_WORKSPACE]\n12:25:00 soong bootstrap failed with: exit status 1\n\n#### failed to build some targets (38 seconds) ####",
       "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e066e3_ea39501c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-26T04:31:06Z",
+      "side": 1,
+      "message": "Revert: this is the JDK9 javac symlink bug that probably shouldn\u0027t be hardcoding the tools top level directory like that. \n\nb/150878007",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 71
+      },
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ac5312_ad6f87bc",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2057,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-26T04:31:06Z",
+      "side": 1,
+      "message": "Also revert, will fix in b/150878007",
+      "range": {
+        "startLine": 2055,
+        "startChar": 2,
+        "endLine": 2057,
+        "endChar": 132
+      },
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d9cd7f_b5232065",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-26T04:31:06Z",
+      "side": 1,
+      "message": "I don\u0027t think are using this now.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1efbef9_55b34145",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-26T04:31:06Z",
+      "side": 1,
+      "message": "This assumes we have a top level BUILD file, which we don\u0027t. I don\u0027t have a good alternative to this however, since the ninja_graph target needs to access Ninja files in the out/ directory, which are file targets in the top level package.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
