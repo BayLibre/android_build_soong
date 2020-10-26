@@ -196,23 +196,9 @@ func d8Flags(flags javaBuilderFlags) (d8Flags []string, d8Deps android.Paths) {
 func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Flags []string, r8Deps android.Paths) {
 	opt := d.dexProperties.Optimize
 
-	// When an app contains references to APIs that are not in the SDK specified by
-	// its LOCAL_SDK_VERSION for example added by support library or by runtime
-	// classes added by desugaring, we artifically raise the "SDK version" "linked" by
-	// ProGuard, to
-	// - suppress ProGuard warnings of referencing symbols unknown to the lower SDK version.
-	// - prevent ProGuard stripping subclass in the support library that extends class added in the higher SDK version.
-	// See b/20667396
-	var proguardRaiseDeps classpath
-	ctx.VisitDirectDepsWithTag(proguardRaiseTag, func(dep android.Module) {
-		proguardRaiseDeps = append(proguardRaiseDeps, dep.(Dependency).HeaderJars()...)
-	})
-
-	r8Flags = append(r8Flags, proguardRaiseDeps.FormJavaClassPath("-libraryjars"))
 	r8Flags = append(r8Flags, flags.bootClasspath.FormJavaClassPath("-libraryjars"))
 	r8Flags = append(r8Flags, flags.classpath.FormJavaClassPath("-libraryjars"))
 
-	r8Deps = append(r8Deps, proguardRaiseDeps...)
 	r8Deps = append(r8Deps, flags.bootClasspath...)
 	r8Deps = append(r8Deps, flags.classpath...)
 
