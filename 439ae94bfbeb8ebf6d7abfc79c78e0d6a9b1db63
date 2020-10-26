@@ -118,6 +118,30 @@
       },
       "revId": "439ae94bfbeb8ebf6d7abfc79c78e0d6a9b1db63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4baddc79_5f64b1e5",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T06:28:46Z",
+      "side": 1,
+      "message": "Here\u0027s the symlink CL: https://android-review.googlesource.com/c/platform/manifest/+/1473676",
+      "parentUuid": "1fcc421a_1c6a82b7",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 69
+      },
+      "revId": "439ae94bfbeb8ebf6d7abfc79c78e0d6a9b1db63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
