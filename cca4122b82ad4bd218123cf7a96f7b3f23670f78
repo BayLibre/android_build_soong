@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30fbf7df_1363e076",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T11:57:54Z",
+      "side": 1,
+      "message": "Jin suggested sourcing build/soong/bazel/bazelenv.sh, I didn\u0027t know about that file. Trying a build now... \n\nWe should make sure that USE_BAZEL\u003d1 m works without sourcing that file though (or source it automatically in build/bazel/bazel.sh (aka tools/bazel) if necessary?)",
+      "parentUuid": "a87f1dbd_302e3791",
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19e066e3_ea39501c",
