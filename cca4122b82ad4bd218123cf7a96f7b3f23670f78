@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87f1dbd_302e3791",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T06:30:43Z",
+      "side": 1,
+      "message": "I am planning to submit this CL once the presubmit finishes (assuming it passes!), but bumping this for visibility (cc cparsons@), because my impression is that the bazel_handler.go change has temporarily broken USE_BAZEL\u003d1 ...",
+      "parentUuid": "b7018d91_f03abf45",
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19e066e3_ea39501c",
