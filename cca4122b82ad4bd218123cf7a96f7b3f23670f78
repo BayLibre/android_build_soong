@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df94bc6_733b2a38",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T04:48:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "19e066e3_ea39501c",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 71
+      },
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49ac5312_ad6f87bc",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d79a87_9ecca746",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2057,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T04:48:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "49ac5312_ad6f87bc",
+      "range": {
+        "startLine": 2055,
+        "startChar": 2,
+        "endLine": 2057,
+        "endChar": 132
+      },
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54d9cd7f_b5232065",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-10-26T04:31:06Z",
       "side": 1,
       "message": "I don\u0027t think are using this now.",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7073dcd_90ccc955",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T04:48:35Z",
+      "side": 1,
+      "message": "Reverted.",
+      "parentUuid": "54d9cd7f_b5232065",
       "range": {
         "startLine": 43,
         "startChar": 2,
