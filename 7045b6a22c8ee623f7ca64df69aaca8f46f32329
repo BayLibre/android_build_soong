@@ -22,6 +22,30 @@
       },
       "revId": "7045b6a22c8ee623f7ca64df69aaca8f46f32329",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab214685_cf3f463e",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-26T16:01:42Z",
+      "side": 1,
+      "message": "They can\u0027t modify l.apexes/l.jars as they are slice headers which are passed by value. I have had to reread https://blog.golang.org/slices a few times to make sure that I understand how slices work.\n\nHowever, it can modify the backing array of those slices which could cause problems.\n\nl1 :\u003d CreateConfiguredJarList(nil, []string{\"apexA:jarX\", \"apexB:jarB\"})\nl2 :\u003d l1.Append(\"apexC\", \"jarC\")\n\nThe above code works fine even if the slice\u0027s capacities are say 10. After the call to Append() l1 still only contains two items and l2 contains three. While they share the same backing arrays of length 10, l1 only sees the first 2 items and l2 sees the first 3 items.\n\nHowever, the following code will corrupt l2.\n\nl3 :\u003d l1.Append(\"apexD\", \"jarD\")\n\nThat is because l3 shares the same backing arrays as l1 and l2 and modifies the 3rd item which can be seen by l2. So, l2 now thinks that its third item is \"apexD:jarD\" instead of \"apexC:jarC\".",
+      "parentUuid": "c080cf08_d9aec06a",
+      "range": {
+        "startLine": 1362,
+        "startChar": 0,
+        "endLine": 1363,
+        "endChar": 28
+      },
+      "revId": "7045b6a22c8ee623f7ca64df69aaca8f46f32329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
