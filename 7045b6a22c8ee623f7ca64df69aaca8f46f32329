@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c080cf08_d9aec06a",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-26T11:27:15Z",
+      "side": 1,
+      "message": "I think append() can modify l.apexes and l.jars inplace (if there is enough space), so this method can modify the original list, no?",
+      "range": {
+        "startLine": 1362,
+        "startChar": 0,
+        "endLine": 1363,
+        "endChar": 28
+      },
+      "revId": "7045b6a22c8ee623f7ca64df69aaca8f46f32329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
