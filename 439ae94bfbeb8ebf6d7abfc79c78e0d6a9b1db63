@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae61ab0d_a97bc636",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T07:52:07Z",
+      "side": 1,
+      "message": "The presubmit failure looks unrelated, I will retry it...",
+      "revId": "439ae94bfbeb8ebf6d7abfc79c78e0d6a9b1db63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "361f2388_ad3290f9",
