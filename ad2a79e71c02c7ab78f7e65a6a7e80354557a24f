@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc75bba_fee5ac20",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-26T22:14:02Z",
+      "side": 1,
+      "message": "Missing err \u003d",
+      "revId": "ad2a79e71c02c7ab78f7e65a6a7e80354557a24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b36d09_237175bf",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-10-26T22:14:02Z",
+      "side": 1,
+      "message": "Missing err \u003d",
+      "revId": "ad2a79e71c02c7ab78f7e65a6a7e80354557a24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
