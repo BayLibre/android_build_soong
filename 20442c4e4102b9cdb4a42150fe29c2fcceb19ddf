@@ -16,6 +16,29 @@
       "message": "Ping",
       "revId": "20442c4e4102b9cdb4a42150fe29c2fcceb19ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cc5b1d_ba4d355a",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-26T17:40:19Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to return nil slices in case of an error, to prevent lazy users from using half-populated slices.",
+      "range": {
+        "startLine": 1464,
+        "startChar": 10,
+        "endLine": 1464,
+        "endChar": 23
+      },
+      "revId": "20442c4e4102b9cdb4a42150fe29c2fcceb19ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
