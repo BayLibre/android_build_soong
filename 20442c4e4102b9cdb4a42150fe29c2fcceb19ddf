@@ -39,6 +39,30 @@
       },
       "revId": "20442c4e4102b9cdb4a42150fe29c2fcceb19ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904dadd7_a87ff4f5",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-26T18:28:45Z",
+      "side": 1,
+      "message": "It shouldn\u0027t matter as the only intended usages of this (in this change and a future one) do check errors. However, just because it is only intended to be used in those places doesn\u0027t prevent it being used in others too.\n\nDone.",
+      "parentUuid": "b2cc5b1d_ba4d355a",
+      "range": {
+        "startLine": 1464,
+        "startChar": 10,
+        "endLine": 1464,
+        "endChar": 23
+      },
+      "revId": "20442c4e4102b9cdb4a42150fe29c2fcceb19ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
