@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4592529e_fbb470c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T12:45:05Z",
+      "side": 1,
+      "message": "FYI the new build looks good (for lunch aosp_flame; USE_BAZEL\u003d1 m, using the new Bazel prebuilts from https://android-review.googlesource.com/c/platform/prebuilts/bazel/linux-x86_64/+/1474056 and https://android-review.googlesource.com/c/platform/prebuilts/bazel/darwin-x86_64/+/1473838)\n\nTODO: avoid users having to manually source build/soong/bazel/bazelenv.sh though.",
+      "parentUuid": "30fbf7df_1363e076",
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19e066e3_ea39501c",
