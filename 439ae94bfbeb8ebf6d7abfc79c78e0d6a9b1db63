@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "361f2388_ad3290f9",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T04:49:54Z",
+      "side": 1,
+      "message": "Jin says:\n\n\"This assumes we have a top level BUILD file, which we don\u0027t. I don\u0027t have a good alternative to this however, since the ninja_graph target needs to access Ninja files in the out/ directory, which are file targets in the top level package.\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 69
+      },
+      "revId": "439ae94bfbeb8ebf6d7abfc79c78e0d6a9b1db63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
