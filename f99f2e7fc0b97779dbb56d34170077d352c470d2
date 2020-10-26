@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a713dfbf_9dd85849",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-10-26T01:14:04Z",
+      "side": 1,
+      "message": "build/make/core/base_rules.mk:518: error: overriding commands for target `out/multiproduct/mini_armv7a_neon/target/product/armv7-a-neon/system/lib/android.frameworks.cameraservice.common@2.0.so\u0027, previously defined at build/make/core/base_rules.mk:518\n\nI\u0027ll investigate this error",
+      "revId": "f99f2e7fc0b97779dbb56d34170077d352c470d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
