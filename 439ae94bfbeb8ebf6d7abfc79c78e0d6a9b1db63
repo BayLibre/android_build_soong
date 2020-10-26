@@ -22,6 +22,30 @@
       },
       "revId": "439ae94bfbeb8ebf6d7abfc79c78e0d6a9b1db63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d9494e_4060c4dd",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T04:50:33Z",
+      "side": 1,
+      "message": "Rupert says:\n\nSo should we symlink in a top level BUILD file again?",
+      "parentUuid": "361f2388_ad3290f9",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 69
+      },
+      "revId": "439ae94bfbeb8ebf6d7abfc79c78e0d6a9b1db63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
