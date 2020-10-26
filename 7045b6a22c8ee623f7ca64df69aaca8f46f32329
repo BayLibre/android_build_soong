@@ -46,6 +46,30 @@
       },
       "revId": "7045b6a22c8ee623f7ca64df69aaca8f46f32329",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e920171_0896167a",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-26T17:19:26Z",
+      "side": 1,
+      "message": "Ah, I see, it makes much more sense than the way I thought append() works.",
+      "parentUuid": "ab214685_cf3f463e",
+      "range": {
+        "startLine": 1362,
+        "startChar": 0,
+        "endLine": 1363,
+        "endChar": 28
+      },
+      "revId": "7045b6a22c8ee623f7ca64df69aaca8f46f32329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
