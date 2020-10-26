@@ -180,6 +180,30 @@
       },
       "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9aef367_bf7eee7f",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T04:49:30Z",
+      "side": 1,
+      "message": "Because Gerrit lost this comment, I will resolve this thread and resurrect it in the new patch.",
+      "parentUuid": "b1efbef9_55b34145",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "cca4122b82ad4bd218123cf7a96f7b3f23670f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
