@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5dcfe1d_89449e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2020-10-26T15:32:25Z",
+      "side": 1,
+      "message": "Nice!\n\nCould we also add a check to ensure the number of source files for non-highmem metalava calls is smaller than N, to prevent an existing small stub to grow unexpectedly without setting highmem\u003dtrue?",
+      "revId": "52ac73d21ec9c75f76efb921c7454c233b94ee00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
