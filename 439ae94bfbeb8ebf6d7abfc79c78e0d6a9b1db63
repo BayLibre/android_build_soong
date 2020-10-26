@@ -70,6 +70,30 @@
       },
       "revId": "439ae94bfbeb8ebf6d7abfc79c78e0d6a9b1db63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5503757_d5264444",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-26T05:01:42Z",
+      "side": 1,
+      "message": "If we decide to remove the symlink later (sounds doubtful?), then we could probably add some functionality to repo sync to remove it. I\u0027ll send another CL...",
+      "parentUuid": "c6a03cd9_fa74bb95",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 69
+      },
+      "revId": "439ae94bfbeb8ebf6d7abfc79c78e0d6a9b1db63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
