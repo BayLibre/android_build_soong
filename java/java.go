@@ -563,7 +563,6 @@ var (
 	frameworkResTag       = dependencyTag{name: "framework-res"}
 	kotlinStdlibTag       = dependencyTag{name: "kotlin-stdlib"}
 	kotlinAnnotationsTag  = dependencyTag{name: "kotlin-annotations"}
-	proguardRaiseTag      = dependencyTag{name: "proguard-raise"}
 	certificateTag        = dependencyTag{name: "certificate"}
 	instrumentationForTag = dependencyTag{name: "instrumentation_for"}
 	usesLibTag            = dependencyTag{name: "uses-library"}
@@ -690,12 +689,6 @@ func sdkDeps(ctx android.BottomUpMutatorContext, sdkContext sdkContext, d dexer)
 		ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
 		ctx.AddVariationDependencies(nil, java9LibTag, sdkDep.java9Classpath...)
 		ctx.AddVariationDependencies(nil, libTag, sdkDep.classpath...)
-		if d.effectiveOptimizeEnabled() && sdkDep.hasStandardLibs() {
-			ctx.AddVariationDependencies(nil, proguardRaiseTag, config.LegacyCorePlatformBootclasspathLibraries...)
-		}
-		if d.effectiveOptimizeEnabled() && sdkDep.hasFrameworkLibs() {
-			ctx.AddVariationDependencies(nil, proguardRaiseTag, config.FrameworkLibraries...)
-		}
 	}
 	if sdkDep.systemModules != "" {
 		ctx.AddVariationDependencies(nil, systemModulesTag, sdkDep.systemModules)
