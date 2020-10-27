@@ -45,6 +45,30 @@
       },
       "revId": "45bc39c0ccf9c7166f7de5f0bc2252a02a41c19b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d63776_f64e7f57",
+        "filename": "build_test.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-27T04:13:44Z",
+      "side": 1,
+      "message": "Add a EXIT trap for `bazel shutdown`?",
+      "parentUuid": "6f735217_6a7a2ee3",
+      "range": {
+        "startLine": 51,
+        "startChar": 67,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "45bc39c0ccf9c7166f7de5f0bc2252a02a41c19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
