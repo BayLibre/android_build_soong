@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "332d402a_2241fa7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-10-27T05:12:22Z",
+      "side": 1,
+      "message": "After discussion with Justin and Jooyung, I updated the code to disable VNDK prebuilt modules when BOARD_VNDK_VERSION is empty.",
+      "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
