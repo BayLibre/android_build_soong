@@ -22,6 +22,30 @@
       },
       "revId": "baa96b17ab464e31f7a4febbe421b41c57290dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53479520_99add3db",
+        "filename": "build_test.bash",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-27T04:53:54Z",
+      "side": 1,
+      "message": "Yep, but if we don\u0027t call bazel_cleanup early, then the Bazel server will hang around unnecessarily while the longer Soong test runs. I can remove the explicit cleanup call, but it seemed better to kill it asap, even if that meant it might start up again later and immediately shut down.",
+      "parentUuid": "196241fd_51b2fa09",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "baa96b17ab464e31f7a4febbe421b41c57290dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
