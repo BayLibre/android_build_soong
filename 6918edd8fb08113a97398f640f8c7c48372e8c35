@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b2a0b8_80b75424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-27T17:37:42Z",
+      "side": 1,
+      "message": "PTAL (rebase, just need to propagte owner\u0027s vote)",
+      "revId": "6918edd8fb08113a97398f640f8c7c48372e8c35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
