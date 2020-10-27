@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e7f05d_87bc24b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-27T17:32:51Z",
+      "side": 1,
+      "message": "Can you add 171756871? (the broken coverage build)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "94062df4c1b4b2322a3a0c6a22ffe7048581739d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb39d86a_f3460370",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-27T17:32:51Z",
+      "side": 1,
+      "message": "Can you try `EMMA_INSTRUMENT\u003dtrue EMMA_INSTRUMENT_FRAMEWORK\u003dtrue m nothing` and add it here? Your fix is quite obvious but it sometimes helps to document related tests in the commit message.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "94062df4c1b4b2322a3a0c6a22ffe7048581739d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6b887c8c_f815fee3",
