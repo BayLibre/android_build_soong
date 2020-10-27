@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e39020_ff2af1d3",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-10-27T21:45:13Z",
+      "side": 1,
+      "message": "Should this also be 16 to match? I\u0027m not sure how these interact. If no problem then lgtm.",
+      "revId": "07a8e148247f3952034e3b2bd5fad1db7e5cf618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
