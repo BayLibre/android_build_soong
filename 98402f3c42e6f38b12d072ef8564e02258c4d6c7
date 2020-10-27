@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c45e3cf_40bdbc22",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-27T03:59:07Z",
+      "side": 1,
+      "message": "Why not put this into `tools/bazel`? \n\nAlso: `out/bazel/output_user_root`?",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 57
+      },
+      "revId": "98402f3c42e6f38b12d072ef8564e02258c4d6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
