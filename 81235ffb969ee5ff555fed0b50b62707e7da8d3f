@@ -16,6 +16,29 @@
       "message": "After discussion with Justin and Jooyung, I updated the code to disable VNDK prebuilt modules when BOARD_VNDK_VERSION is empty.",
       "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49affd38_1fbd3d58",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-27T05:13:30Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 53
+      },
+      "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
