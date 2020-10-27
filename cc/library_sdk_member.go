@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"log"
 	"path/filepath"
 
 	"android/soong/android"
@@ -92,11 +93,13 @@ func (mt *librarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorCont
 				}
 			}
 			if mt.linkTypes == nil {
+				log.Printf("cc library AddDependencies %s: %s %v", mctx.Module(), name, variations)
 				mctx.AddFarVariationDependencies(variations, dependencyTag, name)
 			} else {
 				for _, linkType := range mt.linkTypes {
 					libVariations := append(variations,
 						blueprint.Variation{Mutator: "link", Variation: linkType})
+					log.Printf("cc library AddDependencies %s: %s linkType %v", mctx.Module(), name, libVariations)
 					mctx.AddFarVariationDependencies(libVariations, dependencyTag, name)
 				}
 			}

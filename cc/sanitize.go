@@ -16,6 +16,7 @@ package cc
 
 import (
 	"fmt"
+	"log"
 	"sort"
 	"strings"
 	"sync"
@@ -774,6 +775,7 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 		if c, ok := mctx.Module().(*Module); ok {
 			enabled := c.sanitize.isSanitizerEnabled(t)
 			if t == cfi && needsCfiForVendorSnapshot(mctx) {
+				log.Printf("sanitizerDepsMutator %s %s: true 1", t.variationName(), c)
 				// We shouldn't change the result of isSanitizerEnabled(cfi) to correctly
 				// determine defaultVariation in sanitizerMutator below.
 				// Instead, just mark SanitizeDep to forcefully create cfi variant.
@@ -782,6 +784,7 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 			}
 			if enabled {
 				mctx.WalkDeps(func(child, parent android.Module) bool {
+					//log.Printf("sanitizerDepsMutator %s %s: %s -> %s: visit", t.variationName(), c, parent, child)
 					if !isSanitizableDependencyTag(mctx.OtherModuleDependencyTag(child)) {
 						return false
 					}
@@ -790,16 +793,21 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 						!d.sanitize.isSanitizerExplicitlyDisabled(t) {
 						if t == cfi || t == hwasan || t == scs {
 							if d.static() {
+								log.Printf("sanitizerDepsMutator %s %s: %s -> %s: true static", t.variationName(), c, parent, d)
 								d.sanitize.Properties.SanitizeDep = true
 							}
 						} else {
+							log.Printf("sanitizerDepsMutator %s %s: %s -> %s: true 2", t.variationName(), c, parent, d)
 							d.sanitize.Properties.SanitizeDep = true
 						}
 					}
 					return true
 				})
+			} else {
+				log.Printf("sanitizerDepsMutator %s %s: not enabled", t.variationName(), c)
 			}
 		} else if sanitizeable, ok := mctx.Module().(Sanitizeable); ok {
+			log.Printf("sanitizerDepsMutator %s %s: sanitizeable", t.variationName(), sanitizeable)
 			// If an APEX module includes a lib which is enabled for a sanitizer T, then
 			// the APEX module is also enabled for the same sanitizer type.
 			mctx.VisitDirectDeps(func(child android.Module) {
@@ -807,6 +815,8 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 					sanitizeable.EnableSanitizer(t.name())
 				}
 			})
+		} else {
+			log.Printf("sanitizerDepsMutator %s %s: skipped", t.variationName(), mctx.Module())
 		}
 	}
 }
@@ -1061,11 +1071,13 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 	return func(mctx android.BottomUpMutatorContext) {
 		if c, ok := mctx.Module().(*Module); ok && c.sanitize != nil {
 			if c.isDependencyRoot() && c.sanitize.isSanitizerEnabled(t) {
+				log.Printf("sanitizerMutator %s %s: isSanitizerEnabled 1", t.variationName(), c)
 				modules := mctx.CreateVariations(t.variationName())
 				modules[0].(*Module).sanitize.SetSanitizer(t, true)
 			} else if c.sanitize.isSanitizerEnabled(t) || c.sanitize.Properties.SanitizeDep {
 				isSanitizerEnabled := c.sanitize.isSanitizerEnabled(t)
 				if c.static() || c.header() || t == asan || t == fuzzer {
+					log.Printf("sanitizerMutator %s %s: split %v %v", t.variationName(), c, c.sanitize.isSanitizerEnabled(t), c.sanitize.Properties.SanitizeDep)
 					// Static and header libs are split into non-sanitized and sanitized variants.
 					// Shared libs are not split. However, for asan and fuzzer, we split even for shared
 					// libs because a library sanitized for asan/fuzzer can't be linked from a library
@@ -1080,7 +1092,10 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 					// is redirected to the sanitized variant of the dependent module.
 					defaultVariation := t.variationName()
 					mctx.SetDefaultDependencyVariation(&defaultVariation)
-					modules := mctx.CreateVariations("", t.variationName())
+					modules := mctx.CreateVariations(t.variationName(), "")
+					foo := modules[0]
+					modules[0] = modules[1]
+					modules[1] = foo
 					modules[0].(*Module).sanitize.SetSanitizer(t, false)
 					modules[1].(*Module).sanitize.SetSanitizer(t, true)
 					modules[0].(*Module).sanitize.Properties.SanitizeDep = false
@@ -1116,6 +1131,7 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 				} else {
 					// Shared libs are not split. Only the sanitized variant is created.
 					modules := mctx.CreateVariations(t.variationName())
+					log.Printf("sanitizerMutator %s %s: shared lib", t.variationName(), c)
 					modules[0].(*Module).sanitize.SetSanitizer(t, true)
 					modules[0].(*Module).sanitize.Properties.SanitizeDep = false
 
@@ -1130,21 +1146,25 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 						modules[0].(*Module).sanitize.SetSanitizer(cfi, false)
 					}
 				}
+			} else {
+				log.Printf("sanitizerMutator %s %s: no sanitize %v %v", t.variationName(), c, c.sanitize.isSanitizerEnabled(t), c.sanitize.Properties.SanitizeDep)
 			}
 			c.sanitize.Properties.SanitizeDep = false
 		} else if sanitizeable, ok := mctx.Module().(Sanitizeable); ok && sanitizeable.IsSanitizerEnabled(mctx, t.name()) {
+			log.Printf("sanitizerMutator %s %s: sanitizeable", t.variationName(), sanitizeable)
 			// APEX modules fall here
 			sanitizeable.AddSanitizerDependencies(mctx, t.name())
 			mctx.CreateVariations(t.variationName())
 		} else if c, ok := mctx.Module().(*Module); ok {
 			// Check if it's a snapshot module supporting sanitizer
 			if s, ok := c.linker.(snapshotSanitizer); ok && s.isSanitizerEnabled(t) {
+				log.Printf("sanitizerMutator %s %s: isSanitizerEnabled 2", t.variationName(), c)
 				// Set default variation as above.
 				defaultVariation := t.variationName()
 				mctx.SetDefaultDependencyVariation(&defaultVariation)
-				modules := mctx.CreateVariations("", t.variationName())
-				modules[0].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, false)
-				modules[1].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, true)
+				modules := mctx.CreateVariations(t.variationName(), "")
+				modules[1].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, false)
+				modules[0].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, true)
 
 				// Export the static lib name to make
 				if c.static() && c.ExportedToMake() {
@@ -1153,7 +1173,11 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 						cfiStaticLibs(mctx.Config()).add(c, c.BaseModuleName())
 					}
 				}
+			} else {
+				log.Printf("sanitizerMutator %s %s: not isSanitizerEnabled", t.variationName(), c)
 			}
+		} else {
+			log.Printf("sanitizerMutator %s %s: skipped", t.variationName(), mctx.Module())
 		}
 	}
 }

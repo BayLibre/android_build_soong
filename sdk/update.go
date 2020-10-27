@@ -16,6 +16,7 @@ package sdk
 
 import (
 	"fmt"
+	"log"
 	"reflect"
 	"sort"
 	"strings"
@@ -1075,6 +1076,7 @@ func (osInfo *osTypeSpecificInfo) addToPropertySet(ctx *memberContext, bpModule 
 	}
 
 	// Add the os specific but arch independent properties to the module.
+	log.Printf("%s: os %s", ctx.name, osInfo.osType)
 	addSdkMemberPropertiesToSet(ctx, osInfo.Properties, osPropertySet)
 
 	// Add arch (and possibly os) specific sections for each set of arch (and possibly
@@ -1182,10 +1184,12 @@ func (archInfo *archTypeSpecificInfo) addToPropertySet(ctx *memberContext, archP
 	if ctx.memberType.IsHostOsDependent() && archInfo.osType.Class == android.Host {
 		archTypePropertySet.AddProperty("enabled", true)
 	}
+	log.Printf("%s: arch %s", ctx.name, archInfo.archType)
 	addSdkMemberPropertiesToSet(ctx, archInfo.Properties, archTypePropertySet)
 
 	for _, linkInfo := range archInfo.linkInfos {
 		linkPropertySet := archTypePropertySet.AddPropertySet(linkInfo.linkType)
+		log.Printf("%s: arch %s link %s", ctx.name, archInfo.archType, linkInfo.linkType)
 		addSdkMemberPropertiesToSet(ctx, linkInfo.Properties, linkPropertySet)
 	}
 }
@@ -1292,6 +1296,7 @@ func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpModu
 	extractCommonProperties(ctx.sdkMemberContext, commonValueExtractor, commonProperties, osSpecificPropertiesContainers)
 
 	// Add the common properties to the module.
+	log.Printf("%s: createMemberSnapshot", ctx.name)
 	addSdkMemberPropertiesToSet(ctx, commonProperties, bpModule)
 
 	// Create a target property set into which target specific properties can be
@@ -1317,6 +1322,7 @@ func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpModu
 			continue
 		}
 
+		log.Printf("%s: %s", ctx.name, osType)
 		osInfo.addToPropertySet(ctx, bpModule, targetPropertySet)
 	}
 }
