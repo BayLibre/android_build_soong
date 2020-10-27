@@ -1080,7 +1080,10 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 					// is redirected to the sanitized variant of the dependent module.
 					defaultVariation := t.variationName()
 					mctx.SetDefaultDependencyVariation(&defaultVariation)
-					modules := mctx.CreateVariations("", t.variationName())
+					modules := mctx.CreateVariations(t.variationName(), "")
+					foo := modules[0]
+					modules[0] = modules[1]
+					modules[1] = foo
 					modules[0].(*Module).sanitize.SetSanitizer(t, false)
 					modules[1].(*Module).sanitize.SetSanitizer(t, true)
 					modules[0].(*Module).sanitize.Properties.SanitizeDep = false
@@ -1142,9 +1145,9 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 				// Set default variation as above.
 				defaultVariation := t.variationName()
 				mctx.SetDefaultDependencyVariation(&defaultVariation)
-				modules := mctx.CreateVariations("", t.variationName())
-				modules[0].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, false)
-				modules[1].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, true)
+				modules := mctx.CreateVariations(t.variationName(), "")
+				modules[1].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, false)
+				modules[0].(*Module).linker.(snapshotSanitizer).setSanitizerVariation(t, true)
 
 				// Export the static lib name to make
 				if c.static() && c.ExportedToMake() {
