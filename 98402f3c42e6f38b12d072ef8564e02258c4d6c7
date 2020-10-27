@@ -22,6 +22,30 @@
       },
       "revId": "98402f3c42e6f38b12d072ef8564e02258c4d6c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da158565_6345d774",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-27T04:07:04Z",
+      "side": 1,
+      "message": "Ahh good idea. I sent https://android-review.googlesource.com/c/platform/build/bazel/+/1475778",
+      "parentUuid": "2c45e3cf_40bdbc22",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 57
+      },
+      "revId": "98402f3c42e6f38b12d072ef8564e02258c4d6c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
