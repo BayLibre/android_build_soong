@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5fb89e_3a6322f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-27T00:42:25Z",
+      "side": 1,
+      "message": "The presubmit errors look unrelated, but I will retry once more to see if they go away",
+      "revId": "680387bf1d3ce7cbc77f535be7c42cec411b1687",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
