@@ -39,6 +39,30 @@
       },
       "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07aac77b_9b7da4e5",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-10-27T05:16:55Z",
+      "side": 1,
+      "message": "We maybe don\u0027t need, but I\u0027d like to leave this unless there is a strong reason to remove this.",
+      "parentUuid": "49affd38_1fbd3d58",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 53
+      },
+      "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
