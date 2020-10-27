@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1d0ad03_610d1bfd",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-27T17:33:07Z",
+      "side": 1,
+      "message": "Ugh! The most I could do was to check that apexes and jars are not swapped. Thankfully you\u0027ve added some tests now.",
+      "parentUuid": "5edad2de_bd406ab4",
+      "revId": "052f4727fea8fa279d36e6b25e74b325b7de7e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "507c57c8_1327dd60",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "As per chat that is not the cause as the previous code took a copy so did not modify it.\n\nMy other comment explains the problem. I will add some unit tests to ensure that this works out of the box.",
       "parentUuid": "d18b3dfd_7a816948",
+      "revId": "052f4727fea8fa279d36e6b25e74b325b7de7e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f75194b_9fba96cb",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-27T17:33:07Z",
+      "side": 1,
+      "message": "Sure, thanks.",
+      "parentUuid": "ac3bfae0_2baebd7c",
       "revId": "052f4727fea8fa279d36e6b25e74b325b7de7e19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
