@@ -87,6 +87,30 @@
       },
       "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be636b3a_d5c1e01a",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-10-27T05:41:46Z",
+      "side": 1,
+      "message": "Well, It may look like distraction, but IMO explicitly marking it as uninstallable makes more sense, given that installing vndk snapshot modules won\u0027t happen anywhere.",
+      "parentUuid": "a79054d9_e0429fd6",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 53
+      },
+      "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
