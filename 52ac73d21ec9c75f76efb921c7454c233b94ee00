@@ -16,6 +16,24 @@
       "message": "Nice!\n\nCould we also add a check to ensure the number of source files for non-highmem metalava calls is smaller than N, to prevent an existing small stub to grow unexpectedly without setting highmem\u003dtrue?",
       "revId": "52ac73d21ec9c75f76efb921c7454c233b94ee00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d98946_3a3c75ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-27T08:06:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure what a good cut-off would be. There are limitations to the \"high rss\" measurement now (see the bug) so I can\u0027t map each existing metalava call to memory use and try to get an idea that way, I can only detect the beasts.\n\nOTOH, I think we\u0027re headed in the way of huge metalava runs being less of an issue if you combine 1) the fact we\u0027re making more modules 2) potential lavajet 3) merging the separate metalava runs we have for separate API surfaces right now",
+      "parentUuid": "a5dcfe1d_89449e18",
+      "revId": "52ac73d21ec9c75f76efb921c7454c233b94ee00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
