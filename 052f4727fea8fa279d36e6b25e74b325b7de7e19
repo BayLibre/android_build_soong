@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "052f4727fea8fa279d36e6b25e74b325b7de7e19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "507c57c8_1327dd60",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-27T10:52:32Z",
+      "side": 1,
+      "message": "This changes the behaviour: previously it modified global.ArtApexJars, and now it doesn\u0027t. So I think that the coverage build fails (http://b/171756871) because one part assumes that \"jacocoagent\" is there, and the other part doesn\u0027t. The fix would be to modify global.ArtApexJars instead of the local variable artModules. And then test with something like `EMMA_INSTRUMENT\u003dtrue EMMA_INSTRUMENT_FRAMEWORK\u003dtrue m nothing`.\n\nMy bad not spotting it on review.",
+      "revId": "052f4727fea8fa279d36e6b25e74b325b7de7e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
