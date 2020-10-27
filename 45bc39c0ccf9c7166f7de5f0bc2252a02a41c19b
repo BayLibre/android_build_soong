@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468e0f2b_0a6d5d8a",
+        "filename": "build_test.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-10-27T04:08:22Z",
+      "side": 1,
+      "message": "Use $(getoutdir) instead of hardcoding out/",
+      "range": {
+        "startLine": 50,
+        "startChar": 40,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "45bc39c0ccf9c7166f7de5f0bc2252a02a41c19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f735217_6a7a2ee3",
+        "filename": "build_test.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-10-27T04:08:22Z",
+      "side": 1,
+      "message": "Is there a case where `bazel info` will return something other than 0, but still persist a java daemon? Since we\u0027re using -e here, shutdown won\u0027t be called in that case -- elsewhere we\u0027re using nsjail to (help) ensure background processes get killed at the end of a build.",
+      "range": {
+        "startLine": 51,
+        "startChar": 67,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "45bc39c0ccf9c7166f7de5f0bc2252a02a41c19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
