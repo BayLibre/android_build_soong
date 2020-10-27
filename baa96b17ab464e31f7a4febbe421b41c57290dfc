@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "196241fd_51b2fa09",
+        "filename": "build_test.bash",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-27T04:39:16Z",
+      "side": 1,
+      "message": "Not needed -- bazel_cleanup runs automatically on EXIT anyway. In fact, calling bazel_cleanup the second time would cause Bazel server to start again just to shut itself down.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "baa96b17ab464e31f7a4febbe421b41c57290dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
