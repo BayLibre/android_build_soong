@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9ad50a_dd62ab7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-27T17:35:29Z",
+      "side": 1,
+      "message": "PTAL (just need to propagate previous owner\u0027s vote)",
+      "revId": "8130c482abf16bb1fdb34250ece258ccd7423780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
