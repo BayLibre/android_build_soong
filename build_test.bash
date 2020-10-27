@@ -45,3 +45,7 @@ esac
 
 soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
 exec "$(getoutdir)/multiproduct_kati" "$@"
+
+# Bazel smoke test
+"${TOP}/tools/bazel" --output_user_root=out/bazel_output_user_root info
+"${TOP}/tools/bazel" --output_user_root=out/bazel_output_user_root shutdown
