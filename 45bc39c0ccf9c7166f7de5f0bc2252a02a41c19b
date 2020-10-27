@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88d4d79b_81f1dd71",
+        "filename": "build_test.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-27T04:19:18Z",
+      "side": 1,
+      "message": "Done (except used gettop() in https://android-review.googlesource.com/c/platform/build/bazel/+/1475778)",
+      "parentUuid": "468e0f2b_0a6d5d8a",
+      "range": {
+        "startLine": 50,
+        "startChar": 40,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "45bc39c0ccf9c7166f7de5f0bc2252a02a41c19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f735217_6a7a2ee3",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Add a EXIT trap for `bazel shutdown`?",
       "parentUuid": "6f735217_6a7a2ee3",
+      "range": {
+        "startLine": 51,
+        "startChar": 67,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "45bc39c0ccf9c7166f7de5f0bc2252a02a41c19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8f4b8d8_5bba44a0",
+        "filename": "build_test.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-27T04:19:18Z",
+      "side": 1,
+      "message": "There used to be a --batch mode for Bazel which would have been handy to use here... oh well\n\nI will try an EXIT trap?",
+      "parentUuid": "55d63776_f64e7f57",
       "range": {
         "startLine": 51,
         "startChar": 67,
