@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d7a841_0af5a9ff",
+        "filename": "java/dex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-27T17:29:36Z",
+      "side": 0,
+      "message": "What will be the impact of removing all this proguard stuff? Will this break apps that use proguard and the support library?",
+      "revId": "7b111ece08dd823e471718ede5ba21f890600464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
