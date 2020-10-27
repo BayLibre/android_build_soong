@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "040f1868_5770c2ac",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-27T12:39:50Z",
+      "side": 1,
+      "message": "The correct way to filter by plugins is to check the dependency tag. There is no point in using ctx.VisitDirectDepsIf(...) you might as well just use ctx.VisitDirectDeps().\n\nctx.VisitDirectDeps(func(module android.Module) {\n  tag :\u003d ctx.OtherModuleDependencyTag(module)\n  if tag \u003d\u003d pluginTag {\n     patchPaths +\u003d \":\" + strings.Split(ctx.OtherModuleDir(module), \"/\")[0]\n  }\n})\n\nHowever, I\u0027m not sure that you need to do this as the sources are not coming from the annotation processors. I will update the bug with some more info.",
+      "revId": "2092869b9b7a2394ec2d6aee8446ea758543c3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad923ec5_92c101d0",
         "filename": "java/java.go",
         "patchSetId": 8
@@ -37,6 +54,30 @@
       "writtenOn": "2020-10-27T09:49:57Z",
       "side": 1,
       "message": "Do you want do add Exported_plugins here and the Exported_plugins of direct deps? (the documentation of Exported_plugins seems to imply that this should be the case, but I didn\u0027t find the place in the code where the Exported_plugins of direct dependencies is consulted)",
+      "range": {
+        "startLine": 1259,
+        "startChar": 39,
+        "endLine": 1259,
+        "endChar": 46
+      },
+      "revId": "2092869b9b7a2394ec2d6aee8446ea758543c3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "321d8cff_b827c445",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-27T12:39:50Z",
+      "side": 1,
+      "message": "The Exported_plugins gets added as dependencies using the exportedPluginTag, they are collected and stored in the java module and accessed using ExportedPlugins(). Any library that depends on a java module calls ExportedPlugins() to get the information it needs to use and adds the plugins to the deps structure\u0027s processorPath/processorClasses fields.\n\nI don\u0027t actually think that this will be necessary as per my comment above but I thought it might prove useful to you in understanding Soong as that pattern is used in lots of places for automatically propagating information through the build.",
+      "parentUuid": "ad923ec5_92c101d0",
       "range": {
         "startLine": 1259,
         "startChar": 39,
