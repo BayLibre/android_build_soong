@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0042a7fc_ba578d47",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-27T17:38:50Z",
+      "side": 1,
+      "message": "Ok, I added the wrapper and got rid of the panic.\n\nPTAL",
+      "parentUuid": "f955789f_587ad36c",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f579379c_85a5aa99",
         "filename": "dexpreopt/class_loader_context_test.go",
         "patchSetId": 2
