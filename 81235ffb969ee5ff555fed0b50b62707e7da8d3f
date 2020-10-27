@@ -63,6 +63,30 @@
       },
       "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79054d9_e0429fd6",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-10-27T05:25:22Z",
+      "side": 1,
+      "message": "distraction? ;-)\n\nI\u0027d rather remove it, but not strong on this.",
+      "parentUuid": "07aac77b_9b7da4e5",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 53
+      },
+      "revId": "81235ffb969ee5ff555fed0b50b62707e7da8d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
