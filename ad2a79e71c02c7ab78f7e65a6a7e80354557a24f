@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4d1d67_6045c0b4",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-27T20:18:57Z",
+      "side": 1,
+      "message": "Sigh. Not sure what happened. sorry about that.",
+      "parentUuid": "0dc75bba_fee5ac20",
+      "revId": "ad2a79e71c02c7ab78f7e65a6a7e80354557a24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66b36d09_237175bf",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-26T22:14:02Z",
       "side": 1,
       "message": "Missing err \u003d",
+      "revId": "ad2a79e71c02c7ab78f7e65a6a7e80354557a24f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2463d82f_c2c6aec5",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-27T20:18:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66b36d09_237175bf",
       "revId": "ad2a79e71c02c7ab78f7e65a6a7e80354557a24f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
