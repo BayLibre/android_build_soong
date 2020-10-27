@@ -16,6 +16,24 @@
       "message": "What will be the impact of removing all this proguard stuff? Will this break apps that use proguard and the support library?",
       "revId": "7b111ece08dd823e471718ede5ba21f890600464",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77bf417a_b7f95335",
+        "filename": "java/dex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-10-27T23:41:26Z",
+      "side": 0,
+      "message": "Trying to evaluate that with this CL -- it was something ported from make and we\u0027re unsure if it\u0027s still necessary.",
+      "parentUuid": "62d7a841_0af5a9ff",
+      "revId": "7b111ece08dd823e471718ede5ba21f890600464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
