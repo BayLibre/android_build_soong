@@ -117,6 +117,30 @@
       },
       "revId": "45bc39c0ccf9c7166f7de5f0bc2252a02a41c19b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45f891b3_dcc34679",
+        "filename": "build_test.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-27T04:38:19Z",
+      "side": 1,
+      "message": "How about this version?\n\n(I also moved the Bazel test to run first, since it is much quicker and will fail faster)",
+      "parentUuid": "b8f4b8d8_5bba44a0",
+      "range": {
+        "startLine": 51,
+        "startChar": 67,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "45bc39c0ccf9c7166f7de5f0bc2252a02a41c19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
