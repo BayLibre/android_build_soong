@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b887c8c_f815fee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-27T17:15:21Z",
+      "side": 1,
+      "message": "I uploaded my original change without any modifications, apart from resolving the merge conflicts due to the reordering. I then uploaded the fix to make it easier for you to see the difference. The unit tests replicated the failure that caused it to be reverted and the changes fix the unit tests. I will start a forrest run with this too and make sure it works before submitting.",
+      "revId": "94062df4c1b4b2322a3a0c6a22ffe7048581739d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
