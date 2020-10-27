@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5edad2de_bd406ab4",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-27T17:13:18Z",
+      "side": 1,
+      "message": "These two blocks are just nonsense.\n\nFirstly, the destination list length is 0 (thanks to make call above) which means copy() copies nothing.\n\nSecondly, at line 1374 it should be \"jars \u003d append(jars, jar)\"",
+      "revId": "052f4727fea8fa279d36e6b25e74b325b7de7e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "507c57c8_1327dd60",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 3
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "It is also possible to test the coverage build on forrest, something I usually do when changing boot image related things.",
       "parentUuid": "507c57c8_1327dd60",
+      "revId": "052f4727fea8fa279d36e6b25e74b325b7de7e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac3bfae0_2baebd7c",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-27T17:13:18Z",
+      "side": 1,
+      "message": "As per chat that is not the cause as the previous code took a copy so did not modify it.\n\nMy other comment explains the problem. I will add some unit tests to ensure that this works out of the box.",
+      "parentUuid": "d18b3dfd_7a816948",
       "revId": "052f4727fea8fa279d36e6b25e74b325b7de7e19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
