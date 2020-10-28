@@ -52,6 +52,24 @@
       "parentUuid": "736f14e5_7f26fce1",
       "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2a45e8_d56f9823",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-28T15:11:26Z",
+      "side": 1,
+      "message": "I was so used to `repo upload -t` that it never occurred to me to use `repo upload` without `-t`. I thought in that case all the commits will fall apart (which doesn\u0027t make sense if they are on the same branch, but I didn\u0027t give it much thought).",
+      "parentUuid": "f0470c5e_a372c968",
+      "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
