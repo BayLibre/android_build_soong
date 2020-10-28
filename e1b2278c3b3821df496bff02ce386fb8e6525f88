@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a58e3bc_997f05e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-28T21:12:48Z",
+      "side": 1,
+      "message": "\\o/",
+      "revId": "e1b2278c3b3821df496bff02ce386fb8e6525f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07285591_ee5ff2ec",
+        "filename": "rust/config/allowed_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2020-10-28T21:12:48Z",
+      "side": 1,
+      "message": "Feel free to add \"system/bt\" if you think we\u0027ll want that eventually.",
+      "revId": "e1b2278c3b3821df496bff02ce386fb8e6525f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
