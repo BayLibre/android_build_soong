@@ -63,6 +63,30 @@
       },
       "revId": "6da33c2af6c970d9271bf64f1ddf52c9ff4f0498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f31d40c1_4e9a2846",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-10-28T17:46:07Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/system/core/+/1477502/2/debuggerd/Android.bp\n\nhttps://android-review.googlesource.com/c/platform/system/unwinding/+/1477648/5/libunwindstack/Android.bp\n\nThese are the only two places that needs target.vendor_ramdisk",
+      "parentUuid": "ce1f56e8_6248f95e",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "6da33c2af6c970d9271bf64f1ddf52c9ff4f0498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
