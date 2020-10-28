@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4cbd3c_3d6881e6",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-28T12:46:54Z",
+      "side": 1,
+      "message": "why is this here? can it be removed?",
+      "range": {
+        "startLine": 420,
+        "startChar": 44,
+        "endLine": 421,
+        "endChar": 45
+      },
+      "revId": "769f4a5c03c6a43aa0c09d71ef5133dc12c57106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc5df98_19367ef2",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-10-28T12:46:54Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "769f4a5c03c6a43aa0c09d71ef5133dc12c57106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
