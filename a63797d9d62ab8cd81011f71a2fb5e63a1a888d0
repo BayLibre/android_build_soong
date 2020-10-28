@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "913bd1cd_13ce4267",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-28T15:05:44Z",
+      "side": 1,
+      "message": "Nicolas: you mentioned this renaming change in one of the previous reviews.\n",
+      "revId": "a63797d9d62ab8cd81011f71a2fb5e63a1a888d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
