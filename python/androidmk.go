@@ -49,6 +49,7 @@ func (p *Module) AndroidMk() android.AndroidMkData {
 
 func (p *binaryDecorator) AndroidMk(base *Module, ret *android.AndroidMkData) {
 	ret.Class = "EXECUTABLES"
+	ret.Language = "python"
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 		if len(p.binaryProperties.Test_suites) > 0 {
@@ -61,6 +62,7 @@ func (p *binaryDecorator) AndroidMk(base *Module, ret *android.AndroidMkData) {
 
 func (p *testDecorator) AndroidMk(base *Module, ret *android.AndroidMkData) {
 	ret.Class = "NATIVE_TESTS"
+	ret.Language = "python"
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 		if len(p.binaryDecorator.binaryProperties.Test_suites) > 0 {

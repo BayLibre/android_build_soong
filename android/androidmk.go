@@ -45,6 +45,7 @@ type AndroidMkDataProvider interface {
 
 type AndroidMkData struct {
 	Class           string
+	Language	string
 	SubName         string
 	DistFiles       TaggedDistFiles
 	OutputFile      OptionalPath
@@ -71,6 +72,7 @@ type AndroidMkEntriesProvider interface {
 
 type AndroidMkEntries struct {
 	Class           string
+	Language	string
 	SubName         string
 	OverrideName    string
 	DistFiles       TaggedDistFiles
@@ -358,6 +360,9 @@ func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod bluep
 		}
 		a.SetString("LOCAL_MODULE_HOST_OS", makeOs)
 		a.SetString("LOCAL_IS_HOST_MODULE", "true")
+		if a.Language != "" {
+			a.SetString("LOCAL_MODULE_LANGUAGE", a.Language)
+		}
 	}
 
 	prefix := ""
@@ -534,6 +539,7 @@ func (data *AndroidMkData) fillInData(config Config, bpPath string, mod blueprin
 	// Get the preamble content through AndroidMkEntries logic.
 	data.Entries = AndroidMkEntries{
 		Class:           data.Class,
+		Language:        data.Language,
 		SubName:         data.SubName,
 		DistFiles:       data.DistFiles,
 		OutputFile:      data.OutputFile,

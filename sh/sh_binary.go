@@ -236,6 +236,7 @@ func (s *ShBinary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 func (s *ShBinary) AndroidMkEntries() []android.AndroidMkEntries {
 	return []android.AndroidMkEntries{android.AndroidMkEntries{
 		Class:      "EXECUTABLES",
+		Language:   "sh",
 		OutputFile: android.OptionalPathForPath(s.outputFilePath),
 		Include:    "$(BUILD_SYSTEM)/soong_cc_prebuilt.mk",
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
@@ -392,6 +393,7 @@ func (s *ShTest) InstallInData() bool {
 func (s *ShTest) AndroidMkEntries() []android.AndroidMkEntries {
 	return []android.AndroidMkEntries{android.AndroidMkEntries{
 		Class:      "NATIVE_TESTS",
+		Language:   "sh",
 		OutputFile: android.OptionalPathForPath(s.outputFilePath),
 		Include:    "$(BUILD_SYSTEM)/soong_cc_prebuilt.mk",
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
