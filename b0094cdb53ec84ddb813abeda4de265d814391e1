@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d181227_b739f87b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-10-28T11:32:17Z",
+      "side": 1,
+      "message": "Aside: we have started setting up simple tests for Bazel in AOSP, see http://cl/339003262 and https://android-review.googlesource.com/c/platform/build/soong/+/1475777",
+      "parentUuid": "0d95bb7b_61d9858c",
+      "revId": "b0094cdb53ec84ddb813abeda4de265d814391e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09282dbb_7055aed8",
