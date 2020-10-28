@@ -57,6 +57,30 @@
       },
       "revId": "b0094cdb53ec84ddb813abeda4de265d814391e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5bb96c_79bf155b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-10-28T21:56:04Z",
+      "side": 1,
+      "message": "No, because then we can\u0027t edit this file in-place if we rerun soong_build.\n\nI don\u0027t think it\u0027s much of a concern that users might edit these files -- we have warnings suggesting they don\u0027t :)",
+      "parentUuid": "09282dbb_7055aed8",
+      "range": {
+        "startLine": 279,
+        "startChar": 33,
+        "endLine": 279,
+        "endChar": 37
+      },
+      "revId": "b0094cdb53ec84ddb813abeda4de265d814391e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
