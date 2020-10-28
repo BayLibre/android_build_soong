@@ -122,27 +122,45 @@ type ProtoProperties struct {
 	} `android:"arch_variant"`
 }
 
+func MultiProtoRule(ctx ModuleContext, rule *RuleBuilder, protoFiles Paths, flags ProtoFlags, deps Paths,
+	outDir WritablePath, depFile WritablePath, outputs WritablePaths) {
+	GenProtoRule(ctx, rule, protoFiles, flags, deps, outDir, depFile, outputs)
+}
+
 func ProtoRule(ctx ModuleContext, rule *RuleBuilder, protoFile Path, flags ProtoFlags, deps Paths,
 	outDir WritablePath, depFile WritablePath, outputs WritablePaths) {
+	GenProtoRule(ctx, rule, Paths{protoFile}, flags, deps, outDir, depFile, outputs)
+}
 
-	var protoBase string
+func GenProtoRule(ctx ModuleContext, rule *RuleBuilder, protoFiles Paths, flags ProtoFlags, deps Paths,
+	outDir WritablePath, depFile WritablePath, outputs WritablePaths) {
+
+	var protoBases []string
 	if flags.CanonicalPathFromRoot {
-		protoBase = "."
+		protoBases = append(protoBases, ".")
 	} else {
-		rel := protoFile.Rel()
-		protoBase = strings.TrimSuffix(protoFile.String(), rel)
+		for _, proto := range protoFiles {
+			rel := proto.Rel()
+			protoBases = append(protoBases, strings.TrimSuffix(proto.String(), rel))
+		}
+		protoBases = FirstUniqueStrings(protoBases)
 	}
 
-	rule.Command().
-		BuiltTool(ctx, "aprotoc").
+	cmd := rule.Command()
+
+	cmd.BuiltTool(ctx, "aprotoc").
 		FlagWithArg(flags.OutTypeFlag+"=", strings.Join(flags.OutParams, ",")+":"+outDir.String()).
-		FlagWithDepFile("--dependency_out=", depFile).
-		FlagWithArg("-I ", protoBase).
+		FlagForEachArg("-I ", protoBases).
 		Flags(flags.Flags).
-		Input(protoFile).
+		Inputs(protoFiles).
 		Implicits(deps).
 		ImplicitOutputs(outputs)
 
-	rule.Command().
-		BuiltTool(ctx, "dep_fixer").Flag(depFile.String())
+	if len(protoFiles) == 1 {
+		// dependency_out only supports a single input, so only pass this flag when we have a single input.
+		// Error message: Can only process one input file when using --dependency_out=FILE.
+		cmd.FlagWithDepFile("--dependency_out=", depFile)
+		rule.Command().
+			BuiltTool(ctx, "dep_fixer").Flag(depFile.String())
+	}
 }
