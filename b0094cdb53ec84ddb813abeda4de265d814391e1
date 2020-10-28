@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09282dbb_7055aed8",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-28T06:20:34Z",
+      "side": 1,
+      "message": "does it make sense to use 0444 to prevent edits in general?",
+      "range": {
+        "startLine": 279,
+        "startChar": 33,
+        "endLine": 279,
+        "endChar": 37
+      },
+      "revId": "b0094cdb53ec84ddb813abeda4de265d814391e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
