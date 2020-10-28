@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "351994fc_54e6d77c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-28T07:45:21Z",
+      "side": 1,
+      "message": "Let\u0027s define it in a new .go file. (ex. sdk_library_external.go)\nBut why do we need to have a new struct for this? Can\u0027t we defined the functions in (j *Module)?",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 0
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60475cd_dcb294ce",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-28T07:45:21Z",
+      "side": 1,
+      "message": "Do we need to define these functions? I think PartitionType() can cover the function.",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 1
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d913d9c9_b0c19de7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-28T07:45:21Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this check because we are checking the dependencies.\nWhat does \":\" mean? Do we have a list with pairs?",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 0
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e33501e_fcadafd5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-28T07:45:21Z",
+      "side": 1,
+      "message": "As talked it would be better to use `idx, lib`.",
+      "range": {
+        "startLine": 864,
+        "startChar": 5,
+        "endLine": 864,
+        "endChar": 6
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c59ef1a9_a0aa453a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-28T07:45:21Z",
+      "side": 1,
+      "message": "and replace it with `lib`.",
+      "range": {
+        "startLine": 869,
+        "startChar": 33,
+        "endLine": 869,
+        "endChar": 53
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f676d6_7ff4b004",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-28T07:45:21Z",
+      "side": 1,
+      "message": "Isn\u0027t it also true for SdkLibrary?",
+      "range": {
+        "startLine": 874,
+        "startChar": 18,
+        "endLine": 874,
+        "endChar": 49
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210a6f46_b9bf67a5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-28T07:45:21Z",
+      "side": 1,
+      "message": "What\u0027s the case for this to cover?",
+      "range": {
+        "startLine": 879,
+        "startChar": 37,
+        "endLine": 879,
+        "endChar": 60
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73456a2_c0c866c1",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-28T07:45:21Z",
+      "side": 1,
+      "message": "Why do you describe a bp file like this? It is hard to read.",
+      "range": {
+        "startLine": 787,
+        "startChar": 2,
+        "endLine": 799,
+        "endChar": 15
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
