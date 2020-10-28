@@ -70,6 +70,24 @@
       "parentUuid": "f0470c5e_a372c968",
       "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51649cd0_50d1c12b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-28T15:38:17Z",
+      "side": 1,
+      "message": "What does \"repo upload -t\" do? Does it set the topic automatically then?",
+      "parentUuid": "cb2a45e8_d56f9823",
+      "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
