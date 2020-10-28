@@ -88,6 +88,24 @@
       "parentUuid": "cb2a45e8_d56f9823",
       "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c8358c_4fcf3619",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-28T15:42:15Z",
+      "side": 1,
+      "message": "Yes (the topic is the name of the local branch).\n\nI used `repo upload -t` always as my changes are usually split across multiple projects. So I develop them in same-named local branches.",
+      "parentUuid": "51649cd0_50d1c12b",
+      "revId": "49ed2b0c7003b2969c8e152eb0d8469f90b7c267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
