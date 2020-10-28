@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7079c92_e669dbe0",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-28T11:50:51Z",
+      "side": 1,
+      "message": "As discussed in another issue, the behaviour is correct but the comment is confusing, so I fixed the comment.",
+      "parentUuid": "f579379c_85a5aa99",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bbedef4_6310d8a7",
@@ -102,6 +120,24 @@
       "writtenOn": "2020-10-21T16:08:16Z",
       "side": 1,
       "message": "I understand that each of the t.Run() calls is checking some aspect of the constructed CLC which is quite a nice way of doing it but the way they are interleaved with calls to code that could mutate the CLC makes the code hard to follow.",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c8ed4f_d104768e",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-28T11:50:51Z",
+      "side": 1,
+      "message": "findHidlBasePaths has been dropped by the previous CL in the topic (https://r.android.com/1478218), and this test was removed.",
+      "parentUuid": "9bbedef4_6310d8a7",
       "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -123,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32dbf53b_f38e4534",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-28T11:50:51Z",
+      "side": 1,
+      "message": "It is now before all calls to t.Run().",
+      "parentUuid": "9b0e5803_4e74c9b9",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "017a49e3_4b6ea1e9",
@@ -140,6 +194,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3103a3_0dd695ae",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-28T11:50:51Z",
+      "side": 1,
+      "message": "I didn\u0027t move it, but it is now the first t.Run() subtest in this test, and it takes place after CLC is fully constructed.",
+      "parentUuid": "017a49e3_4b6ea1e9",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59ee4ff9_d86a6c11",
@@ -153,6 +225,24 @@
       "writtenOn": "2020-10-21T16:08:16Z",
       "side": 1,
       "message": "Why is this here? Can it be moved before any of the calls to t.Run()? If not could you add a comment explaining why it has to be here specifically.",
+      "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e93fbc28_aad093c1",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-28T11:50:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ee4ff9_d86a6c11",
       "revId": "4229d2ce01323c3253f4a2b589745837c8b5aec3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
