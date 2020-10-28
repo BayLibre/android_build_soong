@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b412e14d_a10b50a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-28T05:30:29Z",
+      "side": 1,
+      "message": "The change looks sane, but I don\u0027t feel like infra around target.* in cc modules is extensible...",
+      "revId": "6da33c2af6c970d9271bf64f1ddf52c9ff4f0498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aee1236a_3dea7ac4",
+        "filename": "cc/compiler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-28T05:30:29Z",
+      "side": 1,
+      "message": "wouldn\u0027t you need srcs as well?",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "6da33c2af6c970d9271bf64f1ddf52c9ff4f0498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
