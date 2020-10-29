@@ -124,6 +124,34 @@ type BaseLinkerProperties struct {
 			// version script for this vendor variant
 			Version_script *string `android:"arch_variant"`
 		}
+		Product struct {
+			// list of shared libs that only should be used to build the product
+			// variant of the C/C++ module.
+			Shared_libs []string
+
+			// list of static libs that only should be used to build the product
+			// variant of the C/C++ module.
+			Static_libs []string
+
+			// list of shared libs that should not be used to build the product variant
+			// of the C/C++ module.
+			Exclude_shared_libs []string
+
+			// list of static libs that should not be used to build the product variant
+			// of the C/C++ module.
+			Exclude_static_libs []string
+
+			// list of header libs that should not be used to build the product variant
+			// of the C/C++ module.
+			Exclude_header_libs []string
+
+			// list of runtime libs that should not be installed along with the product
+			// variant of the C/C++ module.
+			Exclude_runtime_libs []string
+
+			// version script for this product variant
+			Version_script *string `android:"arch_variant"`
+		}
 		Recovery struct {
 			// list of shared libs that only should be used to build the recovery
 			// variant of the C/C++ module.

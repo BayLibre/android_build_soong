@@ -326,6 +326,7 @@ func TestVndk(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -335,6 +336,7 @@ func TestVndk(t *testing.T) {
 		cc_library {
 			name: "libvndk_private",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -345,6 +347,7 @@ func TestVndk(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -356,6 +359,7 @@ func TestVndk(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp_private",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -454,6 +458,7 @@ func TestVndkWithHostSupported(t *testing.T) {
 		cc_library {
 			name: "libvndk_host_supported",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -463,6 +468,7 @@ func TestVndkWithHostSupported(t *testing.T) {
 		cc_library {
 			name: "libvndk_host_supported_but_disabled_on_device",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -503,6 +509,7 @@ func TestVndkUsingCoreVariant(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -512,6 +519,7 @@ func TestVndkUsingCoreVariant(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -522,6 +530,7 @@ func TestVndkUsingCoreVariant(t *testing.T) {
 		cc_library {
 			name: "libvndk2",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -647,6 +656,7 @@ func TestVndkWhenVndkVersionIsNotSet(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -671,6 +681,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -689,6 +700,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -708,6 +720,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -727,6 +740,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -747,6 +761,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -758,6 +773,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -770,6 +786,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -789,6 +806,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndkprivate",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -808,6 +826,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndksp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -828,6 +847,7 @@ func TestVndkDepError(t *testing.T) {
 		cc_library {
 			name: "libvndkspprivate",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -861,6 +881,7 @@ func TestDoubleLoadbleDep(t *testing.T) {
 		cc_library {
 			name: "libdoubleloadable",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -883,6 +904,7 @@ func TestDoubleLoadbleDep(t *testing.T) {
 		cc_library {
 			name: "libvndksp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -909,6 +931,7 @@ func TestDoubleLoadbleDep(t *testing.T) {
 		cc_library {
 			name: "libdoubleloadable",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -919,6 +942,7 @@ func TestDoubleLoadbleDep(t *testing.T) {
 		cc_library {
 			name: "libnondoubleloadable",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -957,6 +981,7 @@ func TestVendorSnapshotCapture(t *testing.T) {
 	cc_library {
 		name: "libvndk",
 		vendor_available: true,
+		product_available: true,
 		vndk: {
 			enabled: true,
 		},
@@ -1090,6 +1115,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 	cc_library {
 		name: "libvndk",
 		vendor_available: true,
+		product_available: true,
 		vndk: {
 			enabled: true,
 		},
@@ -1124,6 +1150,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 		version: "BOARD",
 		target_arch: "arm64",
 		vendor_available: true,
+		product_available: true,
 		vndk: {
 			enabled: true,
 		},
@@ -1566,6 +1593,7 @@ func TestDoubleLoadableDepError(t *testing.T) {
 		cc_library {
 			name: "libnondoubleloadable",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1619,6 +1647,7 @@ func TestDoubleLoadableDepError(t *testing.T) {
 		cc_library {
 			name: "libnondoubleloadable",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1630,6 +1659,7 @@ func TestDoubleLoadableDepError(t *testing.T) {
 		cc_library {
 			name: "libdoubleloadable",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1640,6 +1670,7 @@ func TestDoubleLoadableDepError(t *testing.T) {
 		cc_library {
 			name: "libnondoubleloadable",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -1678,6 +1709,7 @@ func TestCheckVndkMembershipBeforeDoubleLoadable(t *testing.T) {
 			name: "libvndksp",
 			shared_libs: ["libanothervndksp"],
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -1707,6 +1739,7 @@ func TestVndkExt(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1715,6 +1748,7 @@ func TestVndkExt(t *testing.T) {
 		cc_library {
 			name: "libvndk2",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1789,6 +1823,7 @@ func TestVndkExtWithoutBoardVndkVersion(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1819,6 +1854,7 @@ func TestVndkExtWithoutProductVndkVersion(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1849,6 +1885,7 @@ func TestVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1869,6 +1906,7 @@ func TestVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1889,6 +1927,7 @@ func TestVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1909,6 +1948,7 @@ func TestVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1919,6 +1959,7 @@ func TestVndkExtError(t *testing.T) {
 			name: "libvndk_ext_product",
 			product_specific: true,
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				extends: "libvndk",
@@ -1934,6 +1975,7 @@ func TestVndkExtInconsistentSupportSystemProcessError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -1956,6 +1998,7 @@ func TestVndkExtInconsistentSupportSystemProcessError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -1982,6 +2025,7 @@ func TestVndkExtVendorAvailableFalseError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -2003,6 +2047,7 @@ func TestVndkExtVendorAvailableFalseError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -2027,6 +2072,7 @@ func TestVendorModuleUseVndkExt(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2046,6 +2092,7 @@ func TestVendorModuleUseVndkExt(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2079,6 +2126,7 @@ func TestVndkExtUseVendorLib(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2108,6 +2156,7 @@ func TestVndkExtUseVendorLib(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2140,6 +2189,7 @@ func TestProductVndkExtDependency(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2160,6 +2210,7 @@ func TestProductVndkExtDependency(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2207,6 +2258,7 @@ func TestVndkSpExtUseVndkError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2216,6 +2268,7 @@ func TestVndkSpExtUseVndkError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2242,6 +2295,7 @@ func TestVndkSpExtUseVndkError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2261,6 +2315,7 @@ func TestVndkSpExtUseVndkError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2289,6 +2344,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2308,6 +2364,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk2",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2320,6 +2377,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2339,6 +2397,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk2",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2355,6 +2414,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2376,6 +2436,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp_2",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2389,6 +2450,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2408,6 +2470,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp2",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2434,6 +2497,7 @@ func TestEnforceProductVndkVersion(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2442,6 +2506,7 @@ func TestEnforceProductVndkVersion(t *testing.T) {
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2538,6 +2603,7 @@ func TestEnforceProductVndkVersionErrors(t *testing.T) {
 		cc_library {
 			name: "libvndk_private",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -2581,6 +2647,7 @@ func TestMakeLinkType(t *testing.T) {
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},
@@ -2588,6 +2655,7 @@ func TestMakeLinkType(t *testing.T) {
 		cc_library {
 			name: "libvndksp",
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -2596,6 +2664,7 @@ func TestMakeLinkType(t *testing.T) {
 		cc_library {
 			name: "libvndkprivate",
 			vendor_available: false,
+			product_available: false,
 			vndk: {
 				enabled: true,
 			},
@@ -2618,6 +2687,7 @@ func TestMakeLinkType(t *testing.T) {
 			target_arch: "arm",
 			binder32bit: true,
 			vendor_available: true,
+			product_available: true,
 			vndk: {
 				enabled: true,
 			},

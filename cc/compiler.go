@@ -160,6 +160,23 @@ type BaseCompilerProperties struct {
 			// build the vendor variant of the C/C++ module.
 			Exclude_generated_sources []string
 		}
+		Product struct {
+			// list of source files that should only be used in the
+			// product variant of the C/C++ module.
+			Srcs []string `android:"path"`
+
+			// list of source files that should not be used to
+			// build the product variant of the C/C++ module.
+			Exclude_srcs []string `android:"path"`
+
+			// List of additional cflags that should be used to build the product
+			// variant of the C/C++ module.
+			Cflags []string
+
+			// list of generated sources that should not be used to
+			// build the product variant of the C/C++ module.
+			Exclude_generated_sources []string
+		}
 		Recovery struct {
 			// list of source files that should only be used in the
 			// recovery variant of the C/C++ module.

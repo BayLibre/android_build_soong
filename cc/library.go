@@ -76,6 +76,10 @@ type LibraryProperties struct {
 			// set suffix of the name of the output
 			Suffix *string `android:"arch_variant"`
 		}
+		Product struct {
+			// set suffix of the name of the output
+			Suffix *string `android:"arch_variant"`
+		}
 	}
 
 	// Names of modules to be overridden. Listed modules can only be other shared libraries
@@ -176,6 +180,13 @@ type FlagExporterProperties struct {
 			// list of exported include directories, like
 			// export_include_dirs, that will be applied to the
 			// vendor variant of this library. This will overwrite
+			// any other declarations.
+			Override_export_include_dirs []string
+		}
+		Product struct {
+			// list of exported include directories, like
+			// export_include_dirs, that will be applied to the
+			// product variant of this library. This will overwrite
 			// any other declarations.
 			Override_export_include_dirs []string
 		}
