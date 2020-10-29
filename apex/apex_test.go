@@ -3056,6 +3056,7 @@ func TestVndkApexCurrent(t *testing.T) {
 		"etc/vndkcore.libraries.VER.txt",
 		"etc/vndksp.libraries.VER.txt",
 		"etc/vndkprivate.libraries.VER.txt",
+		"etc/vndkproduct.libraries.VER.txt",
 	})
 }
 
@@ -3122,7 +3123,7 @@ func TestVndkApexWithPrebuilt(t *testing.T) {
 func vndkLibrariesTxtFiles(vers ...string) (result string) {
 	for _, v := range vers {
 		if v == "current" {
-			for _, txt := range []string{"llndk", "vndkcore", "vndksp", "vndkprivate"} {
+			for _, txt := range []string{"llndk", "vndkcore", "vndksp", "vndkprivate", "vndkproduct"} {
 				result += `
 					vndk_libraries_txt {
 						name: "` + txt + `.libraries.txt",
@@ -3130,7 +3131,7 @@ func vndkLibrariesTxtFiles(vers ...string) (result string) {
 				`
 			}
 		} else {
-			for _, txt := range []string{"llndk", "vndkcore", "vndksp", "vndkprivate"} {
+			for _, txt := range []string{"llndk", "vndkcore", "vndksp", "vndkprivate", "vndkproduct"} {
 				result += `
 					prebuilt_etc {
 						name: "` + txt + `.libraries.` + v + `.txt",
