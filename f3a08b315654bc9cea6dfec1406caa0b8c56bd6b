@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3718ac_9b30600a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-29T02:34:52Z",
+      "side": 1,
+      "message": "a few nits, but LGTM overall.",
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777eace2_4f8773e0",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-29T02:34:52Z",
+      "side": 1,
+      "message": "move this to under /build/soong?",
+      "range": {
+        "startLine": 79,
+        "startChar": 66,
+        "endLine": 79,
+        "endChar": 122
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "410db5a0_91c6f3fd",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-29T02:34:52Z",
+      "side": 1,
+      "message": "...and this as well?",
+      "range": {
+        "startLine": 80,
+        "startChar": 36,
+        "endLine": 80,
+        "endChar": 98
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
