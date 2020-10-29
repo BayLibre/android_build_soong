@@ -264,11 +264,13 @@ type flagExporter struct {
 }
 
 func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
-	if ctx.useVndk() && f.Properties.Target.Vendor.Override_export_include_dirs != nil {
+	if ctx.inVendor() && f.Properties.Target.Vendor.Override_export_include_dirs != nil {
 		return android.PathsForModuleSrc(ctx, f.Properties.Target.Vendor.Override_export_include_dirs)
-	} else {
-		return android.PathsForModuleSrc(ctx, f.Properties.Export_include_dirs)
 	}
+	if ctx.inProduct() && f.Properties.Target.Product.Override_export_include_dirs != nil {
+		return android.PathsForModuleSrc(ctx, f.Properties.Target.Product.Override_export_include_dirs)
+	}
+	return android.PathsForModuleSrc(ctx, f.Properties.Export_include_dirs)
 }
 
 func (f *flagExporter) exportIncludes(ctx ModuleContext) {
@@ -716,7 +718,7 @@ type versionedInterface interface {
 var _ libraryInterface = (*libraryDecorator)(nil)
 var _ versionedInterface = (*libraryDecorator)(nil)
 
-func (library *libraryDecorator) getLibNameHelper(baseModuleName string, useVndk bool) string {
+func (library *libraryDecorator) getLibNameHelper(baseModuleName string, inVendor bool, inProduct bool) string {
 	name := library.libName
 	if name == "" {
 		name = String(library.Properties.Stem)
@@ -726,8 +728,10 @@ func (library *libraryDecorator) getLibNameHelper(baseModuleName string, useVndk
 	}
 
 	suffix := ""
-	if useVndk {
+	if inVendor {
 		suffix = String(library.Properties.Target.Vendor.Suffix)
+	} else if inProduct {
+		suffix = String(library.Properties.Target.Product.Suffix)
 	}
 	if suffix == "" {
 		suffix = String(library.Properties.Suffix)
@@ -737,7 +741,7 @@ func (library *libraryDecorator) getLibNameHelper(baseModuleName string, useVndk
 }
 
 func (library *libraryDecorator) getLibName(ctx BaseModuleContext) string {
-	name := library.getLibNameHelper(ctx.baseModuleName(), ctx.useVndk())
+	name := library.getLibNameHelper(ctx.baseModuleName(), ctx.inVendor(), ctx.inProduct())
 
 	if ctx.isVndkExt() {
 		// vndk-ext lib should have the same name with original lib
@@ -823,12 +827,19 @@ func (library *libraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.ReexportSharedLibHeaders = append(deps.ReexportSharedLibHeaders, library.SharedProperties.Shared.Export_shared_lib_headers...)
 		deps.ReexportStaticLibHeaders = append(deps.ReexportStaticLibHeaders, library.SharedProperties.Shared.Export_static_lib_headers...)
 	}
-	if ctx.useVndk() {
+	if ctx.inVendor() {
 		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, library.baseLinker.Properties.Target.Vendor.Exclude_static_libs)
 		deps.SharedLibs = removeListFromList(deps.SharedLibs, library.baseLinker.Properties.Target.Vendor.Exclude_shared_libs)
 		deps.StaticLibs = removeListFromList(deps.StaticLibs, library.baseLinker.Properties.Target.Vendor.Exclude_static_libs)
 		deps.ReexportSharedLibHeaders = removeListFromList(deps.ReexportSharedLibHeaders, library.baseLinker.Properties.Target.Vendor.Exclude_shared_libs)
 		deps.ReexportStaticLibHeaders = removeListFromList(deps.ReexportStaticLibHeaders, library.baseLinker.Properties.Target.Vendor.Exclude_static_libs)
+	}
+	if ctx.inProduct() {
+		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, library.baseLinker.Properties.Target.Product.Exclude_static_libs)
+		deps.SharedLibs = removeListFromList(deps.SharedLibs, library.baseLinker.Properties.Target.Product.Exclude_shared_libs)
+		deps.StaticLibs = removeListFromList(deps.StaticLibs, library.baseLinker.Properties.Target.Product.Exclude_static_libs)
+		deps.ReexportSharedLibHeaders = removeListFromList(deps.ReexportSharedLibHeaders, library.baseLinker.Properties.Target.Product.Exclude_shared_libs)
+		deps.ReexportStaticLibHeaders = removeListFromList(deps.ReexportStaticLibHeaders, library.baseLinker.Properties.Target.Product.Exclude_static_libs)
 	}
 	if ctx.inRecovery() {
 		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, library.baseLinker.Properties.Target.Recovery.Exclude_static_libs)

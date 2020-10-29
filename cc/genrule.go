@@ -63,7 +63,7 @@ func (g *GenruleExtraProperties) CoreVariantNeeded(ctx android.BaseModuleContext
 		return false
 	}
 
-	return Bool(g.Vendor_available) || !(ctx.SocSpecific() || ctx.DeviceSpecific())
+	return Bool(g.Vendor_available) || Bool(g.Product_available) || !(ctx.SocSpecific() || ctx.DeviceSpecific())
 }
 
 func (g *GenruleExtraProperties) RamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
@@ -101,7 +101,7 @@ func (g *GenruleExtraProperties) ExtraImageVariations(ctx android.BaseModuleCont
 		return variants
 	}
 
-	if Bool(g.Vendor_available) || ctx.ProductSpecific() {
+	if Bool(g.Product_available) || ctx.ProductSpecific() {
 		variants = append(variants, ProductVariationPrefix+ctx.DeviceConfig().PlatformVndkVersion())
 		if vndkVersion := ctx.DeviceConfig().ProductVndkVersion(); vndkVersion != "current" {
 			variants = append(variants, ProductVariationPrefix+vndkVersion)
