@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Matthew Maurer <mmaurer@google.com>
+Code-Review+2: Joel Galenson <jgalenson@google.com>
+Presubmit-Ready+1: Matthew Maurer <mmaurer@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Bypass-Presubmit+1: Zach Johnson <zachoverflow@google.com>
+Submitted-by: Zach Johnson <zachoverflow@google.com>
+Submitted-at: Thu, 29 Oct 2020 23:20:27 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1478362
+Project: platform/build/soong
+Branch: refs/heads/master
