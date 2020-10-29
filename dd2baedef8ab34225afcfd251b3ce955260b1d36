@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6667c82_d7580cae",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T16:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d5de98_f56b208b",
+      "range": {
+        "startLine": 36,
+        "startChar": 97,
+        "endLine": 36,
+        "endChar": 106
+      },
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7262c7f5_dd61b304",
@@ -71,6 +95,24 @@
       "writtenOn": "2020-10-29T11:53:21Z",
       "side": 1,
       "message": "Nit: I prefer the form `apex, ok :\u003d moduleToApex[name]; !ok` because it does not rely on the absence of default-initialized values.",
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f510b1_57d2c81e",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T16:33:34Z",
+      "side": 1,
+      "message": "Nit with your nit you have inverted the logic, should be `apex, ok :\u003d moduleToApex[name]; ok`\n\n:)\n\nDone",
+      "parentUuid": "7262c7f5_dd61b304",
       "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -111,6 +153,30 @@
       "writtenOn": "2020-10-29T11:53:21Z",
       "side": 1,
       "message": "I think this can find multiple variants (at least for the ART APEX com.android.art which has \".debug\"/\".release\"/\".testing\" variants, Martin is currently working on renaming \".release\" to just \"com.android.art\"). As the code is written, the last variant takes precedence. I would add a comment that this behavior is ok, or always choose the first variant, or impose additional checks that multiple variants are only allowed for ART.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45b96947_a8105dff",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T16:33:34Z",
+      "side": 1,
+      "message": "I don\u0027t think it can because this code is only run for a module if it is the correct apex variant of this module. So, if the boot jars include \"com.android.art:core-libart\" then this will only match for the \"com.android.art\" variant of \"core-libart\". It cannot match \"com.android.art.test\" because that is a different variant.\n\nOne slight complication is that there appears to be some optimization of apex variants to merge variants for different apexes that are actually identical. e.g. That might mean (not sure if it does) that there is only one APEX variant for \"core-libart\" that covers \"com.android.art\", \"com.android.art.debug\" and \"com.android.art.test\". The code InApex(string) method handles that.\n\nI will add a check to detect duplicates.",
+      "parentUuid": "d0869d42_5c51e02f",
       "range": {
         "startLine": 71,
         "startChar": 4,
