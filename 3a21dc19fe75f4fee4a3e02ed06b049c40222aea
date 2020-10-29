@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749b2c68_c31e3237",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T14:40:52Z",
+      "side": 1,
+      "message": "Why quote [^\u0027] not semicolon [^;]?",
+      "range": {
+        "startLine": 43,
+        "startChar": 39,
+        "endLine": 43,
+        "endChar": 40
+      },
+      "revId": "3a21dc19fe75f4fee4a3e02ed06b049c40222aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d003f7_8c679a9f",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T14:40:52Z",
+      "side": 1,
+      "message": "How stable is dexdump output?\n\nMaybe instead of grepping \"Class descriptor\" use a stricter regexp \"\u0027^  Class descriptor  : \u0027L([^;]+);\u0027$\".\n\nTo be on the safe side run \"dexdump -f\" (that will output header info) and grep all lines matching \"^class_defs_size[ ]+:[ ]+([0-9]+)\" and sum up all grepped numbers; the total should equal the number of lines matched for descriptors. This will prevent the check from erroneously succeeding in case the dexdump output changes and it greps nothing.\n\nThis is based on my understanding of dexdump output (I experimented with framework.jar).",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 62
+      },
+      "revId": "3a21dc19fe75f4fee4a3e02ed06b049c40222aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c6cf36_dd6990cb",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T14:40:52Z",
+      "side": 1,
+      "message": "Quote shell arguments?",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "3a21dc19fe75f4fee4a3e02ed06b049c40222aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c780c5_5b9fdc5d",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T14:40:52Z",
+      "side": 1,
+      "message": "In which cases is the package name nil?",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "3a21dc19fe75f4fee4a3e02ed06b049c40222aea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
