@@ -25,6 +25,7 @@ func init() {
 
 type GenruleExtraProperties struct {
 	Vendor_available         *bool
+	Product_available        *bool
 	Ramdisk_available        *bool
 	Vendor_ramdisk_available *bool
 	Recovery_available       *bool

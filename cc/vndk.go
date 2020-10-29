@@ -62,8 +62,8 @@ type VndkProperties struct {
 		// declared as a VNDK or VNDK-SP module. The vendor variant
 		// will be installed in /system instead of /vendor partition.
 		//
-		// `vendor_available` must be explicitly set to either true or
-		// false together with `vndk: {enabled: true}`.
+		// `vendor_available` and `product_available` must be explicitly
+		// set to either true or false together with `vndk: {enabled: true}`.
 		Enabled *bool
 
 		// declared as a VNDK-SP module, which is a subset of VNDK.
@@ -129,13 +129,16 @@ func (vndk *vndkdep) typeName() string {
 	return "native:vendor:vndkspext"
 }
 
+// VNDK link type check from a module with UseVndk() == true.
 func (vndk *vndkdep) vndkCheckLinkType(ctx android.BaseModuleContext, to *Module, tag blueprint.DependencyTag) {
 	if to.linker == nil {
 		return
 	}
 	if !vndk.isVndk() {
-		// Non-VNDK modules (those installed to /vendor, /product, or /system/product) can't depend
-		// on modules marked with vendor_available: false.
+		// Non-VNDK modules those installed to /vendor or /system/vendor
+		// can't depend on modules marked with vendor_available: false;
+		// or those installed to /product or /system/product can't depend
+		// on modules marked with product_available: false.
 		violation := false
 		if lib, ok := to.linker.(*llndkStubDecorator); ok && !Bool(lib.Properties.Vendor_available) {
 			violation = true
@@ -338,6 +341,8 @@ func processVndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
 	} else {
 		vndkCoreLibraries(mctx.Config())[name] = filename
 	}
+	// As `vendor_available` and `product_available` has the same value for VNDK modules,
+	// we don't need to check both values.
 	if !Bool(m.VendorProperties.Vendor_available) {
 		vndkPrivateLibraries(mctx.Config())[name] = filename
 	}

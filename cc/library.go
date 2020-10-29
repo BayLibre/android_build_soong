@@ -72,7 +72,7 @@ type LibraryProperties struct {
 	Suffix *string `android:"arch_variant"`
 
 	Target struct {
-		Vendor struct {
+		Vendor, Product struct {
 			// set suffix of the name of the output
 			Suffix *string `android:"arch_variant"`
 		}
@@ -172,11 +172,11 @@ type FlagExporterProperties struct {
 	Export_system_include_dirs []string `android:"arch_variant"`
 
 	Target struct {
-		Vendor struct {
+		Vendor, Product struct {
 			// list of exported include directories, like
-			// export_include_dirs, that will be applied to the
-			// vendor variant of this library. This will overwrite
-			// any other declarations.
+			// export_include_dirs, that will be applied to
+			// vendor or product variant of this library.
+			// This will overwrite any other declarations.
 			Override_export_include_dirs []string
 		}
 	}
