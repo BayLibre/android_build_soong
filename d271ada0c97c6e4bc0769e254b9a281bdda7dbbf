@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cea8c63d_f415db70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-10-29T22:25:50Z",
+      "side": 1,
+      "message": "Almost certain test failure was flake, retriggering.",
+      "revId": "d271ada0c97c6e4bc0769e254b9a281bdda7dbbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
