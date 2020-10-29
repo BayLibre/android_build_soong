@@ -9,6 +9,7 @@ import (
 )
 
 func TestVndkApexForVndkLite(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_vndk {
 			name: "myapex",
@@ -64,6 +65,7 @@ func TestVndkApexForVndkLite(t *testing.T) {
 }
 
 func TestVndkApexUsesVendorVariant(t *testing.T) {
+	t.Parallel()
 	bp := `
 		apex_vndk {
 			name: "myapex",

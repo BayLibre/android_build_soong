@@ -345,6 +345,7 @@ func ensureListEmpty(t *testing.T, result []string) {
 
 // Minimal test
 func TestBasicApex(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex_defaults {
 			name: "myapex-defaults",
@@ -597,6 +598,7 @@ func TestBasicApex(t *testing.T) {
 }
 
 func TestDefaults(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_defaults {
 			name: "myapex-defaults",
@@ -671,6 +673,7 @@ func TestDefaults(t *testing.T) {
 }
 
 func TestApexManifest(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -692,6 +695,7 @@ func TestApexManifest(t *testing.T) {
 }
 
 func TestBasicZipApex(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -742,6 +746,7 @@ func TestBasicZipApex(t *testing.T) {
 }
 
 func TestApexWithStubs(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -934,6 +939,7 @@ func TestApexWithStubsWithMinSdkVersion(t *testing.T) {
 }
 
 func TestApexWithExplicitStubsDependency(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex2",
@@ -1021,6 +1027,7 @@ func TestApexWithExplicitStubsDependency(t *testing.T) {
 }
 
 func TestApexWithRuntimeLibsDependency(t *testing.T) {
+	t.Parallel()
 	/*
 		myapex
 		  |
@@ -1090,6 +1097,7 @@ func TestApexWithRuntimeLibsDependency(t *testing.T) {
 }
 
 func TestRuntimeApexShouldInstallHwasanIfLibcDependsOnIt(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, "", func(fs map[string][]byte, config android.Config) {
 		bp := `
 		apex {
@@ -1153,6 +1161,7 @@ func TestRuntimeApexShouldInstallHwasanIfLibcDependsOnIt(t *testing.T) {
 }
 
 func TestRuntimeApexShouldInstallHwasanIfHwaddressSanitized(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, "", func(fs map[string][]byte, config android.Config) {
 		bp := `
 		apex {
@@ -1214,6 +1223,7 @@ func TestRuntimeApexShouldInstallHwasanIfHwaddressSanitized(t *testing.T) {
 }
 
 func TestApexDependsOnLLNDKTransitively(t *testing.T) {
+	t.Parallel()
 	testcases := []struct {
 		name          string
 		minSdkVersion string
@@ -1304,6 +1314,7 @@ func TestApexDependsOnLLNDKTransitively(t *testing.T) {
 }
 
 func TestApexWithSystemLibsStubs(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -1395,6 +1406,7 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 }
 
 func TestApexMinSdkVersion_NativeModulesShouldBeBuiltAgainstStubs(t *testing.T) {
+	t.Parallel()
 	// there are three links between liba --> libz
 	// 1) myapex -> libx -> liba -> libz    : this should be #29 link, but fallback to #28
 	// 2) otherapex -> liby -> liba -> libz : this should be #30 link
@@ -1481,6 +1493,7 @@ func TestApexMinSdkVersion_NativeModulesShouldBeBuiltAgainstStubs(t *testing.T) 
 }
 
 func TestApexMinSdkVersion_SupportsCodeNames(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -1530,6 +1543,7 @@ func TestApexMinSdkVersion_SupportsCodeNames(t *testing.T) {
 }
 
 func TestApexMinSdkVersion_DefaultsToLatest(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -1575,6 +1589,7 @@ func TestApexMinSdkVersion_DefaultsToLatest(t *testing.T) {
 }
 
 func TestPlatformUsesLatestStubsFromApexes(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -1622,6 +1637,7 @@ func TestPlatformUsesLatestStubsFromApexes(t *testing.T) {
 }
 
 func TestQApexesUseLatestStubsInBundledBuildsAndHWASAN(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -1661,6 +1677,7 @@ func TestQApexesUseLatestStubsInBundledBuildsAndHWASAN(t *testing.T) {
 }
 
 func TestQTargetApexUsesStaticUnwinder(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -1691,6 +1708,7 @@ func TestQTargetApexUsesStaticUnwinder(t *testing.T) {
 }
 
 func TestApexMinSdkVersion_ErrorIfIncompatibleStubs(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `"libz" .*: not found a version\(<=29\)`, `
 		apex {
 			name: "myapex",
@@ -1726,6 +1744,7 @@ func TestApexMinSdkVersion_ErrorIfIncompatibleStubs(t *testing.T) {
 }
 
 func TestApexMinSdkVersion_ErrorIfIncompatibleVersion(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `module "mylib".*: should support min_sdk_version\(29\)`, `
 		apex {
 			name: "myapex",
@@ -1754,6 +1773,7 @@ func TestApexMinSdkVersion_ErrorIfIncompatibleVersion(t *testing.T) {
 }
 
 func TestApexMinSdkVersion_Okay(t *testing.T) {
+	t.Parallel()
 	testApex(t, `
 		apex {
 			name: "myapex",
@@ -1804,6 +1824,7 @@ func TestApexMinSdkVersion_Okay(t *testing.T) {
 }
 
 func TestJavaStableSdkVersion(t *testing.T) {
+	t.Parallel()
 	testCases := []struct {
 		name          string
 		expectedError string
@@ -1921,6 +1942,7 @@ func TestJavaStableSdkVersion(t *testing.T) {
 }
 
 func TestApexMinSdkVersion_ErrorIfDepIsNewer(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `module "mylib2".*: should support min_sdk_version\(29\) for "myapex"`, `
 		apex {
 			name: "myapex",
@@ -1962,6 +1984,7 @@ func TestApexMinSdkVersion_ErrorIfDepIsNewer(t *testing.T) {
 }
 
 func TestApexMinSdkVersion_ErrorIfDepIsNewer_Java(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `module "bar".*: should support min_sdk_version\(29\) for "myapex"`, `
 		apex {
 			name: "myapex",
@@ -1997,6 +2020,7 @@ func TestApexMinSdkVersion_ErrorIfDepIsNewer_Java(t *testing.T) {
 }
 
 func TestApexMinSdkVersion_OkayEvenWhenDepIsNewer_IfItSatisfiesApexMinSdkVersion(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2050,6 +2074,7 @@ func TestApexMinSdkVersion_OkayEvenWhenDepIsNewer_IfItSatisfiesApexMinSdkVersion
 }
 
 func TestFilesInSubDir(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2112,6 +2137,7 @@ func TestFilesInSubDir(t *testing.T) {
 }
 
 func TestFilesInSubDirWhenNativeBridgeEnabled(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2170,6 +2196,7 @@ func TestFilesInSubDirWhenNativeBridgeEnabled(t *testing.T) {
 }
 
 func TestUseVendor(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2224,6 +2251,7 @@ func TestUseVendor(t *testing.T) {
 }
 
 func TestUseVendorNotAllowedForSystemApexes(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `module "myapex" .*: use_vendor: not allowed`, `
 		apex {
 			name: "myapex",
@@ -2256,6 +2284,7 @@ func TestUseVendorNotAllowedForSystemApexes(t *testing.T) {
 }
 
 func TestUseVendorFailsIfNotVendorAvailable(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `dependency "mylib" of "myapex" missing variant:\n.*image:vendor`, `
 		apex {
 			name: "myapex",
@@ -2280,6 +2309,7 @@ func TestUseVendorFailsIfNotVendorAvailable(t *testing.T) {
 }
 
 func TestVendorApex(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2325,6 +2355,7 @@ func TestVendorApex(t *testing.T) {
 }
 
 func TestVendorApex_use_vndk_as_stable(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2379,6 +2410,7 @@ func TestVendorApex_use_vndk_as_stable(t *testing.T) {
 }
 
 func TestApex_withPrebuiltFirmware(t *testing.T) {
+	t.Parallel()
 	testCases := []struct {
 		name           string
 		additionalProp string
@@ -2415,6 +2447,7 @@ func TestApex_withPrebuiltFirmware(t *testing.T) {
 }
 
 func TestAndroidMk_UseVendorRequired(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2449,6 +2482,7 @@ func TestAndroidMk_UseVendorRequired(t *testing.T) {
 }
 
 func TestAndroidMk_VendorApexRequired(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2480,6 +2514,7 @@ func TestAndroidMk_VendorApexRequired(t *testing.T) {
 }
 
 func TestAndroidMkWritesCommonProperties(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2509,6 +2544,7 @@ func TestAndroidMkWritesCommonProperties(t *testing.T) {
 }
 
 func TestStaticLinking(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2553,6 +2589,7 @@ func TestStaticLinking(t *testing.T) {
 }
 
 func TestKeys(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex_keytest",
@@ -2609,6 +2646,7 @@ func TestKeys(t *testing.T) {
 }
 
 func TestCertificate(t *testing.T) {
+	t.Parallel()
 	t.Run("if unspecified, it defaults to DefaultAppCertificate", func(t *testing.T) {
 		ctx, _ := testApex(t, `
 			apex {
@@ -2737,6 +2775,7 @@ func TestCertificate(t *testing.T) {
 }
 
 func TestMacro(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -2864,6 +2903,7 @@ func TestMacro(t *testing.T) {
 }
 
 func TestHeaderLibsDependency(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -3007,6 +3047,7 @@ func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName, var
 }
 
 func TestVndkApexCurrent(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_vndk {
 			name: "myapex",
@@ -3062,6 +3103,7 @@ func TestVndkApexCurrent(t *testing.T) {
 }
 
 func TestVndkApexWithPrebuilt(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_vndk {
 			name: "myapex",
@@ -3146,6 +3188,7 @@ func vndkLibrariesTxtFiles(vers ...string) (result string) {
 }
 
 func TestVndkApexVersion(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_vndk {
 			name: "myapex_v27",
@@ -3214,6 +3257,7 @@ func TestVndkApexVersion(t *testing.T) {
 }
 
 func TestVndkApexErrorWithDuplicateVersion(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `module "myapex_v27.*" .*: vndk_version: 27 is already defined in "myapex_v27.*"`, `
 		apex_vndk {
 			name: "myapex_v27",
@@ -3262,6 +3306,7 @@ func TestVndkApexErrorWithDuplicateVersion(t *testing.T) {
 }
 
 func TestVndkApexNameRule(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_vndk {
 			name: "myapex",
@@ -3293,6 +3338,7 @@ func TestVndkApexNameRule(t *testing.T) {
 }
 
 func TestVndkApexSkipsNativeBridgeSupportedModules(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_vndk {
 			name: "myapex",
@@ -3332,6 +3378,7 @@ func TestVndkApexSkipsNativeBridgeSupportedModules(t *testing.T) {
 }
 
 func TestVndkApexDoesntSupportNativeBridgeSupported(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `module "myapex" .*: native_bridge_supported: .* doesn't support native bridge binary`, `
 		apex_vndk {
 			name: "myapex",
@@ -3363,6 +3410,7 @@ func TestVndkApexDoesntSupportNativeBridgeSupported(t *testing.T) {
 }
 
 func TestVndkApexWithBinder32(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_vndk {
 			name: "myapex_v27",
@@ -3431,6 +3479,7 @@ func TestVndkApexWithBinder32(t *testing.T) {
 }
 
 func TestVndkApexShouldNotProvideNativeLibs(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_vndk {
 			name: "myapex",
@@ -3466,6 +3515,7 @@ func TestVndkApexShouldNotProvideNativeLibs(t *testing.T) {
 }
 
 func TestDependenciesInApexManifest(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex_nodep",
@@ -3570,6 +3620,7 @@ func TestDependenciesInApexManifest(t *testing.T) {
 }
 
 func TestApexName(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -3614,6 +3665,7 @@ func TestApexName(t *testing.T) {
 }
 
 func TestNonTestApex(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -3666,6 +3718,7 @@ func TestNonTestApex(t *testing.T) {
 }
 
 func TestTestApex(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_test {
 			name: "myapex",
@@ -3714,6 +3767,7 @@ func TestTestApex(t *testing.T) {
 }
 
 func TestApexWithTarget(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -3804,6 +3858,7 @@ func TestApexWithTarget(t *testing.T) {
 }
 
 func TestApexWithShBinary(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -3832,6 +3887,7 @@ func TestApexWithShBinary(t *testing.T) {
 }
 
 func TestApexInVariousPartition(t *testing.T) {
+	t.Parallel()
 	testcases := []struct {
 		propName, parition, flattenedPartition string
 	}{
@@ -3876,6 +3932,7 @@ func TestApexInVariousPartition(t *testing.T) {
 }
 
 func TestFileContexts_FindInDefaultLocationIfNotSet(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -3894,6 +3951,7 @@ func TestFileContexts_FindInDefaultLocationIfNotSet(t *testing.T) {
 }
 
 func TestFileContexts_ShouldBeUnderSystemSepolicyForSystemApexes(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `"myapex" .*: file_contexts: should be under system/sepolicy`, `
 		apex {
 			name: "myapex",
@@ -3912,6 +3970,7 @@ func TestFileContexts_ShouldBeUnderSystemSepolicyForSystemApexes(t *testing.T) {
 }
 
 func TestFileContexts_ProductSpecificApexes(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `"myapex" .*: file_contexts: cannot find`, `
 		apex {
 			name: "myapex",
@@ -3949,6 +4008,7 @@ func TestFileContexts_ProductSpecificApexes(t *testing.T) {
 }
 
 func TestFileContexts_SetViaFileGroup(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -3976,6 +4036,7 @@ func TestFileContexts_SetViaFileGroup(t *testing.T) {
 }
 
 func TestApexKeyFromOtherModule(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex_key {
 			name: "myapex.key",
@@ -4009,6 +4070,7 @@ func TestApexKeyFromOtherModule(t *testing.T) {
 }
 
 func TestPrebuilt(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		prebuilt_apex {
 			name: "myapex",
@@ -4032,6 +4094,7 @@ func TestPrebuilt(t *testing.T) {
 }
 
 func TestPrebuiltFilenameOverride(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		prebuilt_apex {
 			name: "myapex",
@@ -4049,6 +4112,7 @@ func TestPrebuiltFilenameOverride(t *testing.T) {
 }
 
 func TestPrebuiltOverrides(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		prebuilt_apex {
 			name: "myapex.prebuilt",
@@ -4069,6 +4133,7 @@ func TestPrebuiltOverrides(t *testing.T) {
 }
 
 func TestApexWithTests(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex_test {
 			name: "myapex",
@@ -4180,6 +4245,7 @@ func TestApexWithTests(t *testing.T) {
 }
 
 func TestInstallExtraFlattenedApexes(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -4203,6 +4269,7 @@ func TestInstallExtraFlattenedApexes(t *testing.T) {
 }
 
 func TestApexUsesOtherApex(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -4263,6 +4330,7 @@ func TestApexUsesOtherApex(t *testing.T) {
 }
 
 func TestApexUsesFailsIfNotProvided(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `uses: "commonapex" does not provide native_shared_libs`, `
 		apex {
 			name: "myapex",
@@ -4303,6 +4371,7 @@ func TestApexUsesFailsIfNotProvided(t *testing.T) {
 }
 
 func TestApexUsesFailsIfUseVenderMismatch(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `use_vendor: "commonapex" has different value of use_vendor`, `
 		apex {
 			name: "myapex",
@@ -4328,6 +4397,7 @@ func TestApexUsesFailsIfUseVenderMismatch(t *testing.T) {
 }
 
 func TestErrorsIfDepsAreNotEnabled(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `module "myapex" .* depends on disabled module "libfoo"`, `
 		apex {
 			name: "myapex",
@@ -4374,6 +4444,7 @@ func TestErrorsIfDepsAreNotEnabled(t *testing.T) {
 }
 
 func TestApexWithApps(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -4452,6 +4523,7 @@ func TestApexWithApps(t *testing.T) {
 }
 
 func TestApexWithAppImports(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -4500,6 +4572,7 @@ func TestApexWithAppImports(t *testing.T) {
 }
 
 func TestApexWithAppImportsPrefer(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -4541,6 +4614,7 @@ func TestApexWithAppImportsPrefer(t *testing.T) {
 }
 
 func TestApexWithTestHelperApp(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -4572,6 +4646,7 @@ func TestApexWithTestHelperApp(t *testing.T) {
 }
 
 func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
+	t.Parallel()
 	// libfoo's apex_available comes from cc_defaults
 	testApexError(t, `requires "libfoo" that doesn't list the APEX under 'apex_available'.`, `
 	apex {
@@ -4606,6 +4681,7 @@ func TestApexPropertiesShouldBeDefaultable(t *testing.T) {
 }
 
 func TestApexAvailable_DirectDep(t *testing.T) {
+	t.Parallel()
 	// libfoo is not available to myapex, but only to otherapex
 	testApexError(t, "requires \"libfoo\" that doesn't list the APEX under 'apex_available'.", `
 	apex {
@@ -4641,6 +4717,7 @@ func TestApexAvailable_DirectDep(t *testing.T) {
 }
 
 func TestApexAvailable_IndirectDep(t *testing.T) {
+	t.Parallel()
 	// libbbaz is an indirect dep
 	testApexError(t, `requires "libbaz" that doesn't list the APEX under 'apex_available'. Dependency path:
 .*via tag apex\.dependencyTag.*name:sharedLib.*
@@ -4685,6 +4762,7 @@ func TestApexAvailable_IndirectDep(t *testing.T) {
 }
 
 func TestApexAvailable_InvalidApexName(t *testing.T) {
+	t.Parallel()
 	testApexError(t, "\"otherapex\" is not a valid module name", `
 	apex {
 		name: "myapex",
@@ -4744,6 +4822,7 @@ func TestApexAvailable_InvalidApexName(t *testing.T) {
 }
 
 func TestApexAvailable_CheckForPlatform(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 	apex {
 		name: "myapex",
@@ -4806,6 +4885,7 @@ func TestApexAvailable_CheckForPlatform(t *testing.T) {
 }
 
 func TestApexAvailable_CreatedForApex(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 	apex {
 		name: "myapex",
@@ -4840,6 +4920,7 @@ func TestApexAvailable_CreatedForApex(t *testing.T) {
 }
 
 func TestOverrideApex(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -4923,6 +5004,7 @@ func TestOverrideApex(t *testing.T) {
 }
 
 func TestLegacyAndroid10Support(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -4978,6 +5060,7 @@ var filesForSdkLibrary = map[string][]byte{
 }
 
 func TestJavaSDKLibrary(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5010,6 +5093,7 @@ func TestJavaSDKLibrary(t *testing.T) {
 }
 
 func TestJavaSDKLibrary_WithinApex(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5057,6 +5141,7 @@ func TestJavaSDKLibrary_WithinApex(t *testing.T) {
 }
 
 func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5102,6 +5187,7 @@ func TestJavaSDKLibrary_CrossBoundary(t *testing.T) {
 }
 
 func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, ``,
 		withFiles(map[string][]byte{
 			"apex/a.java":             nil,
@@ -5187,6 +5273,7 @@ func TestJavaSDKLibrary_ImportPreferred(t *testing.T) {
 }
 
 func TestJavaSDKLibrary_ImportOnly(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `java_libs: "foo" is not configured to be compiled into dex`, `
 		apex {
 			name: "myapex",
@@ -5213,6 +5300,7 @@ func TestJavaSDKLibrary_ImportOnly(t *testing.T) {
 }
 
 func TestCompatConfig(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5247,6 +5335,7 @@ func TestCompatConfig(t *testing.T) {
 }
 
 func TestRejectNonInstallableJavaLibrary(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `"myjar" is not configured to be compiled into dex`, `
 		apex {
 			name: "myapex",
@@ -5272,6 +5361,7 @@ func TestRejectNonInstallableJavaLibrary(t *testing.T) {
 }
 
 func TestCarryRequiredModuleNames(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5310,6 +5400,7 @@ func TestCarryRequiredModuleNames(t *testing.T) {
 }
 
 func TestSymlinksFromApexToSystem(t *testing.T) {
+	t.Parallel()
 	bp := `
 		apex {
 			name: "myapex",
@@ -5439,6 +5530,7 @@ func TestSymlinksFromApexToSystem(t *testing.T) {
 }
 
 func TestSymlinksFromApexToSystemRequiredModuleNames(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5490,6 +5582,7 @@ func TestSymlinksFromApexToSystemRequiredModuleNames(t *testing.T) {
 }
 
 func TestApexWithJniLibs(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5531,6 +5624,7 @@ func TestApexWithJniLibs(t *testing.T) {
 }
 
 func TestApexMutatorsDontRunIfDisabled(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5552,6 +5646,7 @@ func TestApexMutatorsDontRunIfDisabled(t *testing.T) {
 }
 
 func TestAppBundle(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5582,6 +5677,7 @@ func TestAppBundle(t *testing.T) {
 }
 
 func TestAppSetBundle(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -5787,6 +5883,7 @@ func testNoUpdatableJarsInBootImage(t *testing.T, errmsg string, transformDexpre
 }
 
 func TestUpdatable_should_set_min_sdk_version(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `"myapex" .*: updatable: updatable APEXes should set min_sdk_version`, `
 		apex {
 			name: "myapex",
@@ -5803,6 +5900,7 @@ func TestUpdatable_should_set_min_sdk_version(t *testing.T) {
 }
 
 func TestNoUpdatableJarsInBootImage(t *testing.T) {
+	t.Parallel()
 	var err string
 	var transform func(*dexpreopt.GlobalConfig)
 
@@ -5936,6 +6034,7 @@ func testApexPermittedPackagesRules(t *testing.T, errmsg, bp string, apexBootJar
 }
 
 func TestApexPermittedPackagesRules(t *testing.T) {
+	t.Parallel()
 	testcases := []struct {
 		name            string
 		expectedError   string
@@ -6019,6 +6118,7 @@ func TestApexPermittedPackagesRules(t *testing.T) {
 }
 
 func TestTestFor(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -6076,6 +6176,7 @@ func intPtr(i int) *int {
 }
 
 func TestApexSet(t *testing.T) {
+	t.Parallel()
 	ctx, config := testApex(t, `
 		apex_set {
 			name: "myapex",
@@ -6115,6 +6216,7 @@ func TestApexSet(t *testing.T) {
 }
 
 func TestNoStaticLinkingToStubsLib(t *testing.T) {
+	t.Parallel()
 	testApexError(t, `.*required by "mylib" is a native library providing stub.*`, `
 		apex {
 			name: "myapex",
@@ -6151,6 +6253,7 @@ func TestNoStaticLinkingToStubsLib(t *testing.T) {
 }
 
 func TestApexKeysTxt(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -6191,6 +6294,7 @@ func TestApexKeysTxt(t *testing.T) {
 }
 
 func TestAllowedFiles(t *testing.T) {
+	t.Parallel()
 	ctx, _ := testApex(t, `
 		apex {
 			name: "myapex",
@@ -6246,6 +6350,7 @@ func TestAllowedFiles(t *testing.T) {
 }
 
 func TestNonPreferredPrebuiltDependency(t *testing.T) {
+	t.Parallel()
 	_, _ = testApex(t, `
 		apex {
 			name: "myapex",
