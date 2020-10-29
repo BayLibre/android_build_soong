@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c7f924_dec7f850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T11:15:53Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure whether anything else was relying on the files, specifically the data file, being in build/make but a code search of everything could not find any references to it outside the build/make/core/tasks/boot_jars_package_check.mk file which is being removed in this topic.",
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

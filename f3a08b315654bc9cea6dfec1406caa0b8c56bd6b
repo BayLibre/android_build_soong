@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c31bce_d5b6396b",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T11:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "777eace2_4f8773e0",
+      "range": {
+        "startLine": 79,
+        "startChar": 66,
+        "endLine": 79,
+        "endChar": 122
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "410db5a0_91c6f3fd",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-29T02:34:52Z",
       "side": 1,
       "message": "...and this as well?",
+      "range": {
+        "startLine": 80,
+        "startChar": 36,
+        "endLine": 80,
+        "endChar": 98
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e29c3c7_eb4c50a2",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T11:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "410db5a0_91c6f3fd",
       "range": {
         "startLine": 80,
         "startChar": 36,
