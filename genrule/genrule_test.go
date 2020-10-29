@@ -330,6 +330,26 @@ func TestGenruleCmd(t *testing.T) {
 			`,
 			expect: "echo foo > __SBOX_OUT_DIR__/foo && cp __SBOX_OUT_DIR__/foo __SBOX_OUT_FILES__",
 		},
+		{
+			name: "genrule with args",
+			prop: `
+				srcs: ["foo.c"],
+				out: ["foo.o"],
+				args: ["-Wall", "-DANDROID"],
+				cmd: "clang $(in) -c $(args) -o $(out)",
+			`,
+			expect: "clang ${in} -c -Wall -DANDROID -o __SBOX_OUT_FILES__",
+		},
+		{
+			name: "genrule with args and flags",
+			prop: `
+				out: ["foo.o"],
+				args: ["a1", "opt='a2 a3'"],
+				flags: ["\"-DA=a b c\""],
+				cmd: "my_cmd $(args) -o $(out) -- $(flags)",
+			`,
+			expect: "my_cmd a1 opt='\\''a2 a3'\\'' -o __SBOX_OUT_FILES__ -- \"-DA=a b c\"",
+		},
 
 		{
 			name: "error empty location",

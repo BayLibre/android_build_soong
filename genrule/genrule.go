@@ -95,7 +95,9 @@ type generatorProperties struct {
 	//  $(location): the path to the first entry in tools or tool_files
 	//  $(location <label>): the path to the tool, tool_file, input or output with name <label>
 	//  $(in): one or more input files
-	//  $(out): a single output file
+	//  $(out): one or more output files
+	//  $(args): a list of string arguments for the command
+	//  $(flags): a list of string flags for the command
 	//  $(depfile): a file to which dependencies will be written, if the depfile property is set to true
 	//  $(genDir): the sandbox directory for this tool; contains $(out)
 	//  $$: a literal $
@@ -116,6 +118,12 @@ type generatorProperties struct {
 
 	// list of input files
 	Srcs []string `android:"path,arch_variant"`
+
+	// list of string arguments to be used in cmd
+	Args []string
+
+	// list of string flags to be used in cmd
+	Flags []string
 
 	// input files to exclude
 	Exclude_srcs []string `android:"path,arch_variant"`
@@ -180,6 +188,14 @@ func (g *Module) GeneratedHeaderDirs() android.Paths {
 
 func (g *Module) GeneratedDeps() android.Paths {
 	return g.outputDeps
+}
+
+func (g *Module) GetArgs() string {
+	return strings.Join(g.properties.Args, " ")
+}
+
+func (g *Module) GetFlags() string {
+	return strings.Join(g.properties.Flags, " ")
 }
 
 func toolDepsMutator(ctx android.BottomUpMutatorContext) {
@@ -363,6 +379,10 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				return "${in}", true, nil
 			case "out":
 				return "__SBOX_OUT_FILES__", false, nil
+			case "args":
+				return g.GetArgs(), false, nil
+			case "flags":
+				return g.GetFlags(), false, nil
 			case "depfile":
 				referencedDepfile = true
 				if !Bool(g.properties.Depfile) {
