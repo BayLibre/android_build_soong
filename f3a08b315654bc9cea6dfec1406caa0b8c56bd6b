@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4792dc68_d478f786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T17:27:27Z",
+      "side": 1,
+      "message": "Here I think: http://cs/aosp-master/build/make/core/product_config.mk?l\u003d195\n\nIt would be good to know why it started to fail after migration.",
+      "parentUuid": "a425aab8_35047f48",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6b3718ac_9b30600a",
