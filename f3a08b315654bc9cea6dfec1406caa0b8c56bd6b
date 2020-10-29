@@ -168,6 +168,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "692d5a1c_35b41ff0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T17:41:26Z",
+      "side": 1,
+      "message": "Possibly an ordering issue. Maybe the logic to add jacocoagent is only run to populate the json config file that Soong loads and is either not run at all for the make part or is run after loading the boot_jars_package_check.mk file. I don\u0027t think it\u0027s a good use of time to dig too far into that rats\u0027 nest.",
+      "parentUuid": "4792dc68_d478f786",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6b3718ac_9b30600a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
