@@ -17,6 +17,8 @@ package cc
 // functions to determine where a module is installed, etc.
 
 import (
+	"fmt"
+	"reflect"
 	"strings"
 
 	"android/soong/android"
@@ -97,17 +99,23 @@ func (ctx *moduleContextImpl) inRecovery() bool {
 
 // Returns true when this module is configured to have core and vendor variants.
 func (c *Module) HasVendorVariant() bool {
+	// In case of a VNDK, 'vendor_available: false' still creates a vendor variant.
 	return c.IsVndk() || Bool(c.VendorProperties.Vendor_available)
 }
 
 // Returns true when this module is configured to have core and product variants.
 func (c *Module) HasProductVariant() bool {
+	if c.VendorProperties.Product_available == nil {
+		// Without 'product_available', product variant will not be created even for VNDKs.
+		return false
+	}
+	// However, 'product_available: false' in a VNDK still creates a product variant.
 	return c.IsVndk() || Bool(c.VendorProperties.Product_available)
 }
 
 // Returns true when this module is configured to have core and either product or vendor variants.
 func (c *Module) HasNonSystemVariants() bool {
-	return c.IsVndk() || Bool(c.VendorProperties.Vendor_available) || Bool(c.VendorProperties.Product_available)
+	return c.HasVendorVariant() || c.HasProductVariant()
 }
 
 // Returns true if the module is "product" variant. Usually these modules are installed in /product
@@ -144,6 +152,25 @@ func (c *Module) OnlyInRecovery() bool {
 	return c.ModuleBase.InstallInRecovery()
 }
 
+// In the case of VNDK, vendor and product variants must have the same properties.
+// This is used for the VNDK modules to check the properties.
+func (c *Module) compareVendorAndProductProps() bool {
+	if !c.IsVndk() {
+		panic(fmt.Errorf("This is only for VNDK libs. %q is not a VNDK library", c.Name()))
+	}
+	if lib, ok := c.linker.(*libraryDecorator); ok {
+		if reflect.DeepEqual(lib.Properties.Target.Vendor, lib.Properties.Target.Product) &&
+			reflect.DeepEqual(lib.baseLinker.Properties.Target.Vendor, lib.baseLinker.Properties.Target.Product) &&
+			reflect.DeepEqual(lib.flagExporter.Properties.Target.Vendor, lib.flagExporter.Properties.Target.Product) &&
+			reflect.DeepEqual(lib.baseCompiler.Properties.Target.Vendor, lib.baseCompiler.Properties.Target.Product) {
+			return true
+		}
+		return false
+	}
+	// Ignore the modules other than cc_library
+	return true
+}
+
 func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 	// Validation check
 	vendorSpecific := mctx.SocSpecific() || mctx.DeviceSpecific()
@@ -153,14 +180,6 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		if vendorSpecific {
 			mctx.PropertyErrorf("vendor_available",
 				"doesn't make sense at the same time as `vendor: true`, `proprietary: true`, or `device_specific:true`")
-		}
-		// If defined, make sure vendor_available and product_available has the
-		// same value since `false` for these properties means the module is
-		// for system only but provides the variant.
-		if m.VendorProperties.Product_available != nil {
-			if Bool(m.VendorProperties.Vendor_available) != Bool(m.VendorProperties.Product_available) {
-				mctx.PropertyErrorf("product_available", "may not have different value than `vendor_available`")
-			}
 		}
 	}
 
@@ -197,6 +216,18 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 				if m.VendorProperties.Vendor_available == nil {
 					mctx.PropertyErrorf("vndk",
 						"vendor_available must be set to either true or false when `vndk: {enabled: true}`")
+				}
+				if m.VendorProperties.Product_available != nil {
+					// If product_available is defined for a VNDK, make sure vendor_available and
+					// product_available has the same value since `false` for these properties
+					// means the module is VNDK-private.
+					if Bool(m.VendorProperties.Vendor_available) != Bool(m.VendorProperties.Product_available) {
+						mctx.PropertyErrorf("product_available", "may not have different value than `vendor_available` for a VNDK")
+					}
+					// Also, both variants must have the same properties since they share a single VNDK library on runtime.
+					if !m.compareVendorAndProductProps() {
+						mctx.ModuleErrorf("product properties must have the same values with the vendor properties for VNDK modules")
+					}
 				}
 			}
 		} else {
@@ -281,13 +312,13 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 			}
 		}
 
-		// vendor_available modules are also available to /product.
-		// TODO(b/150902910): product variant will be created only if
-		// m.HasProductVariant() is true.
-		productVariants = append(productVariants, platformVndkVersion)
-		// VNDK is always PLATFORM_VNDK_VERSION
-		if !m.IsVndk() {
-			productVariants = append(productVariants, productVndkVersion)
+		// product_available modules are available to /product.
+		if m.HasProductVariant() {
+			productVariants = append(productVariants, platformVndkVersion)
+			// VNDK is always PLATFORM_VNDK_VERSION
+			if !m.IsVndk() {
+				productVariants = append(productVariants, productVndkVersion)
+			}
 		}
 	} else if vendorSpecific && String(m.Properties.Sdk_version) == "" {
 		// This will be available in /vendor (or /odm) only
@@ -459,7 +490,6 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 	} else if strings.HasPrefix(variant, ProductVariationPrefix) {
 		m.Properties.ImageVariationPrefix = ProductVariationPrefix
 		m.Properties.VndkVersion = strings.TrimPrefix(variant, ProductVariationPrefix)
-		// TODO (b/150902910): This will be replaced with squashProductSrcs(m).
-		squashVendorSrcs(m)
+		squashProductSrcs(m)
 	}
 }
