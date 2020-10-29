@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6fd785_6cd84d9a",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T10:37:47Z",
+      "side": 1,
+      "message": "I think it would be better if the paths were collated in a []string and then transformed into a colon separated string at the last minute.\n\ne.g. something like:\npatchPathList :\u003d []string{\".\", ctx.Config().BuildDir())}",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6e3e647_34981e3c",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T10:37:47Z",
+      "side": 1,
+      "message": "patchPathList \u003d append(patchPathList, ctx.ModuleDir())",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ceb3e69_efb43abd",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T10:37:47Z",
+      "side": 1,
+      "message": "This may not be the full set of sources. This method is called from compile() and after this method is called some additional srcs are added to the Srcs property. It might make sense to restructure that code a little so compute the srcFiles before calling this and pass them in rather than recalculate here.",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d83eb7e7_c9f13d68",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T10:37:47Z",
+      "side": 1,
+      "message": "patchPathList \u003d append(patchPathList, android.SortedStringKeys(topLevelDirs)...)",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980944e7_7112049d",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T10:37:47Z",
+      "side": 1,
+      "message": "patchPaths :\u003d strings.Join(patchPathList, \":\")",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
