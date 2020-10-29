@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9417350a_81f1c6e4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-29T07:10:38Z",
+      "side": 1,
+      "message": "Moved enforcing related codes to sdk_library_external.go(file name can be changed). Removed new structure and moved its methods to java.Module.",
+      "parentUuid": "351994fc_54e6d77c",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 0
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f60475cd_dcb294ce",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-28T07:45:21Z",
       "side": 1,
       "message": "Do we need to define these functions? I think PartitionType() can cover the function.",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 1
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee4db11_1cddaa15",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-29T07:10:38Z",
+      "side": 1,
+      "message": "I agree, it is simple expression only used at PartitionType(). So, I removed function and moved expressions to PartitionType().",
+      "parentUuid": "f60475cd_dcb294ce",
       "range": {
         "startLine": 717,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f2efdbc_724facd5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-29T07:10:38Z",
+      "side": 1,
+      "message": "My intent was allowlist can have items like ${ModuleName} or, *:${ModuleName} allowlisted as dependency module and ${ModuleName}:* as source module. But I\u0027m not certain that last two type of allow list item is needed.",
+      "parentUuid": "d913d9c9_b0c19de7",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 0
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e33501e_fcadafd5",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-28T07:45:21Z",
       "side": 1,
       "message": "As talked it would be better to use `idx, lib`.",
+      "range": {
+        "startLine": 864,
+        "startChar": 5,
+        "endLine": 864,
+        "endChar": 6
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c44baa3_a5e5ae25",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-29T07:10:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e33501e_fcadafd5",
       "range": {
         "startLine": 864,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1799b8b4_4dbcc3d8",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-29T07:10:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c59ef1a9_a0aa453a",
+      "range": {
+        "startLine": 869,
+        "startChar": 33,
+        "endLine": 869,
+        "endChar": 53
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12f676d6_7ff4b004",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-10-28T07:45:21Z",
       "side": 1,
       "message": "Isn\u0027t it also true for SdkLibrary?",
+      "range": {
+        "startLine": 874,
+        "startChar": 18,
+        "endLine": 874,
+        "endChar": 49
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e69ea4f_1f12e8d1",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-29T07:10:38Z",
+      "side": 1,
+      "message": "Because SdkLibrary and Library is struct, type assertion must be exact type, in this case it can\u0027t cover SdkLibrary. I changed code to use new interface javaSdkExternalDependency to cover both case in one code.",
+      "parentUuid": "12f676d6_7ff4b004",
       "range": {
         "startLine": 874,
         "startChar": 18,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6faa3cc4_9e34d719",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-29T07:10:38Z",
+      "side": 1,
+      "message": "To make have same enforcement at java_sdk_library as java_library at inter-partition dependencies.",
+      "parentUuid": "210a6f46_b9bf67a5",
+      "range": {
+        "startLine": 879,
+        "startChar": 37,
+        "endLine": 879,
+        "endChar": 60
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a73456a2_c0c866c1",
@@ -175,6 +343,30 @@
       "writtenOn": "2020-10-28T07:45:21Z",
       "side": 1,
       "message": "Why do you describe a bp file like this? It is hard to read.",
+      "range": {
+        "startLine": 787,
+        "startChar": 2,
+        "endLine": 799,
+        "endChar": 15
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7be14f_ac4ae5e0",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-29T07:10:38Z",
+      "side": 1,
+      "message": "Changed method of making bp file contents to make easy to understand bp file structure",
+      "parentUuid": "a73456a2_c0c866c1",
       "range": {
         "startLine": 787,
         "startChar": 2,
