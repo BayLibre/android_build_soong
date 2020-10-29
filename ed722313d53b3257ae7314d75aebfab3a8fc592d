@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a90f92_bbe8418e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-29T23:09:11Z",
+      "side": 1,
+      "message": "What kind of problems could that be? (Unfortunately I don\u0027t know enough about the differences between dex and class jars to reason about this.)",
+      "range": {
+        "startLine": 11,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "ed722313d53b3257ae7314d75aebfab3a8fc592d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99f00c0_9ddd2cac",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-29T23:09:11Z",
+      "side": 1,
+      "message": "Style: CLASS_DESCRIPTOR_RE since it\u0027s a constant.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "ed722313d53b3257ae7314d75aebfab3a8fc592d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234e7b69_3a2e940e",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-29T23:09:11Z",
+      "side": 1,
+      "message": "Isn\u0027t it both less fragile and easier to consume the XML output, i.e. \"dexdump -l xml foo.jar\", and then use an XML parser? E.g. with xml.etree.ElementTree is a simple one (http://go/pylib/xml.etree.elementtree.html#module-xml.etree.ElementTree) you should get the package names you want pretty easily with something like this (untested):\n\n  root \u003d xml.etree.ElementTree.fromstring(stdout)\n  for package_elt in root.iterfind(\u0027package\u0027):\n    package_name \u003d package_elt.get(\u0027name\u0027)",
+      "range": {
+        "startLine": 51,
+        "startChar": 28,
+        "endLine": 51,
+        "endChar": 62
+      },
+      "revId": "ed722313d53b3257ae7314d75aebfab3a8fc592d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6827926_0dc35f72",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-29T23:09:11Z",
+      "side": 1,
+      "message": "`continue` or `return False` after reporting the error?",
+      "revId": "ed722313d53b3257ae7314d75aebfab3a8fc592d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48eceb99_1b3d750c",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-10-29T23:09:11Z",
+      "side": 1,
+      "message": "Quotes around this one since it may be empty.",
+      "range": {
+        "startLine": 74,
+        "startChar": 82,
+        "endLine": 74,
+        "endChar": 84
+      },
+      "revId": "ed722313d53b3257ae7314d75aebfab3a8fc592d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
