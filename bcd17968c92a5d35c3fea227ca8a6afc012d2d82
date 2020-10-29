@@ -1,0 +1,446 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5c54a76d_8c171929",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f7ab703d_784b7875",
+        "filename": "android/license_kind_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses\n",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "fd115f4b_abe5181d",
+        "filename": "android/license_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses\n",
+      "range": {
+        "startLine": 13,
+        "startChar": 34,
+        "endLine": 19,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "09510fee_46973006",
+        "filename": "android/license_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 44,
+        "startChar": 6,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e07dad13_cfd5d9f3",
+        "filename": "android/license_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d3e88ed7_a848bc1b",
+        "filename": "android/license_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses\n",
+      "range": {
+        "startLine": 148,
+        "startChar": 6,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ce786735_57012894",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses...licenses\n",
+      "range": {
+        "startLine": 21,
+        "startChar": 38,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d5a3392d_6da240be",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses...licenses\n",
+      "range": {
+        "startLine": 59,
+        "startChar": 6,
+        "endLine": 69,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "33481d73_16af2d0c",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 101,
+        "startChar": 17,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3c6f2659_ad11d946",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses\n",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "70e0c493_ac13cc06",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses\n",
+      "range": {
+        "startLine": 183,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3466db8d_53a9e82a",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 257,
+        "startChar": 6,
+        "endLine": 257,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c8cd24e3_36bf0038",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 277,
+        "startChar": 6,
+        "endLine": 277,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ddb8ea67_23c68804",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses\n",
+      "range": {
+        "startLine": 309,
+        "startChar": 38,
+        "endLine": 310,
+        "endChar": 76
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1f753ad3_05b3535c",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses\n",
+      "range": {
+        "startLine": 394,
+        "startChar": 6,
+        "endLine": 403,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ac7d0001_91c34e71",
+        "filename": "android/licenses_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses...licenses...licenses\n",
+      "range": {
+        "startLine": 420,
+        "startChar": 60,
+        "endLine": 438,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005812629",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394168?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6248ecb6_08df5ea5",
+        "filename": "android/package_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-29T14:27:15Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 14
+      },
+      "revId": "bcd17968c92a5d35c3fea227ca8a6afc012d2d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
