@@ -16,6 +16,126 @@
       "message": "I wasn\u0027t sure whether anything else was relying on the files, specifically the data file, being in build/make but a code search of everything could not find any references to it outside the build/make/core/tasks/boot_jars_package_check.mk file which is being removed in this topic.",
       "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f004a676_2ff1c64e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T11:53:21Z",
+      "side": 1,
+      "message": "A few small issues/questions.\n\nIt\u0027s great to see this moving to Soong!\n",
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d5de98_f56b208b",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T11:53:21Z",
+      "side": 1,
+      "message": "Nit: not necessarily different, as it can be the same apex-jar that occurs twice.",
+      "range": {
+        "startLine": 36,
+        "startChar": 97,
+        "endLine": 36,
+        "endChar": 106
+      },
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7262c7f5_dd61b304",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T11:53:21Z",
+      "side": 1,
+      "message": "Nit: I prefer the form `apex, ok :\u003d moduleToApex[name]; !ok` because it does not rely on the absence of default-initialized values.",
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b28b9d_d7b88bf6",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T11:53:21Z",
+      "side": 1,
+      "message": "Maybe it\u0027s worth adding a string constant at some point (not for this CL).",
+      "range": {
+        "startLine": 70,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 26
+      },
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0869d42_5c51e02f",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T11:53:21Z",
+      "side": 1,
+      "message": "I think this can find multiple variants (at least for the ART APEX com.android.art which has \".debug\"/\".release\"/\".testing\" variants, Martin is currently working on renaming \".release\" to just \"com.android.art\"). As the code is written, the last variant takes precedence. I would add a comment that this behavior is ok, or always choose the first variant, or impose additional checks that multiple variants are only allowed for ART.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce86a4f_ef9029e0",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-10-29T11:53:21Z",
+      "side": 1,
+      "message": "I don\u0027t see jacoco here, but presumably the list didn\u0027t change so it worked somehow.",
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
