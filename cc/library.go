@@ -179,6 +179,13 @@ type FlagExporterProperties struct {
 			// any other declarations.
 			Override_export_include_dirs []string
 		}
+		Product struct {
+			// list of exported include directories, like
+			// export_include_dirs, that will be applied to the
+			// product variant of this library. This will overwrite
+			// any other declarations.
+			Override_export_include_dirs []string
+		}
 	}
 }
 
