@@ -97,17 +97,23 @@ func (ctx *moduleContextImpl) inRecovery() bool {
 
 // Returns true when this module is configured to have core and vendor variants.
 func (c *Module) HasVendorVariant() bool {
+	// In case of a VNDK, 'vendor_available: false' still creates a vendor variant.
 	return c.IsVndk() || Bool(c.VendorProperties.Vendor_available)
 }
 
 // Returns true when this module is configured to have core and product variants.
 func (c *Module) HasProductVariant() bool {
+	if c.VendorProperties.Product_available == nil {
+		// Without 'product_available', product variant will not be created even for VNDKs.
+		return false
+	}
+	// However, 'product_available: false' in a VNDK still creates a product variant.
 	return c.IsVndk() || Bool(c.VendorProperties.Product_available)
 }
 
 // Returns true when this module is configured to have core and either product or vendor variants.
 func (c *Module) HasNonSystemVariants() bool {
-	return c.IsVndk() || Bool(c.VendorProperties.Vendor_available) || Bool(c.VendorProperties.Product_available)
+	return c.HasVendorVariant() || c.HasProductVariant()
 }
 
 // Returns true if the module is "product" variant. Usually these modules are installed in /product
@@ -281,13 +287,13 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 			}
 		}
 
-		// vendor_available modules are also available to /product.
-		// TODO(b/150902910): product variant will be created only if
-		// m.HasProductVariant() is true.
-		productVariants = append(productVariants, platformVndkVersion)
-		// VNDK is always PLATFORM_VNDK_VERSION
-		if !m.IsVndk() {
-			productVariants = append(productVariants, productVndkVersion)
+		// product_available modules are available to /product.
+		if m.HasProductVariant() {
+			productVariants = append(productVariants, platformVndkVersion)
+			// VNDK is always PLATFORM_VNDK_VERSION
+			if !m.IsVndk() {
+				productVariants = append(productVariants, productVndkVersion)
+			}
 		}
 	} else if vendorSpecific && String(m.Properties.Sdk_version) == "" {
 		// This will be available in /vendor (or /odm) only
@@ -459,7 +465,6 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 	} else if strings.HasPrefix(variant, ProductVariationPrefix) {
 		m.Properties.ImageVariationPrefix = ProductVariationPrefix
 		m.Properties.VndkVersion = strings.TrimPrefix(variant, ProductVariationPrefix)
-		// TODO (b/150902910): This will be replaced with squashProductSrcs(m).
-		squashVendorSrcs(m)
+		squashProductSrcs(m)
 	}
 }
