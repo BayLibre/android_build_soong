@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "649557e4_877b6994",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-29T11:46:44Z",
+      "side": 1,
+      "message": "That\u0027s cleaner! Done.",
+      "parentUuid": "5c6fd785_6cd84d9a",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6e3e647_34981e3c",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-29T10:37:47Z",
       "side": 1,
       "message": "patchPathList \u003d append(patchPathList, ctx.ModuleDir())",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34071941_ee3c0593",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-29T11:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6e3e647_34981e3c",
       "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "307ee016_cfb9f24f",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-29T11:46:44Z",
+      "side": 1,
+      "message": "Good catch; refactored a little such that javac flags are computed after srcFiles are fully computed. It doesn\u0027t appear that the javac flags are used before the new location.",
+      "parentUuid": "5ceb3e69_efb43abd",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d83eb7e7_c9f13d68",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bde818e_91fd8863",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-29T11:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d83eb7e7_c9f13d68",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "980944e7_7112049d",
@@ -82,6 +154,24 @@
       "writtenOn": "2020-10-29T10:37:47Z",
       "side": 1,
       "message": "patchPaths :\u003d strings.Join(patchPathList, \":\")",
+      "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b59365_4ffd2038",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-29T11:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "980944e7_7112049d",
       "revId": "2c5cb2608b4fd77ba7e0c93d7553fe8c95b924de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
