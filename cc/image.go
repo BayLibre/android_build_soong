@@ -194,9 +194,9 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 						"must set `vendor: true` or `product_specific: true` to set `extends: %q`",
 						m.getVndkExtendsModuleName())
 				}
-				if m.VendorProperties.Vendor_available == nil {
+				if m.VendorProperties.Vendor_available == nil || m.VendorProperties.Product_available == nil {
 					mctx.PropertyErrorf("vndk",
-						"vendor_available must be set to either true or false when `vndk: {enabled: true}`")
+						"both vendor_available and product_available must be set to either true or false when `vndk: {enabled: true}`")
 				}
 			}
 		} else {
@@ -281,13 +281,13 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 			}
 		}
 
-		// vendor_available modules are also available to /product.
-		// TODO(b/150902910): product variant will be created only if
-		// m.HasProductVariant() is true.
-		productVariants = append(productVariants, platformVndkVersion)
-		// VNDK is always PLATFORM_VNDK_VERSION
-		if !m.IsVndk() {
-			productVariants = append(productVariants, productVndkVersion)
+		// product_available modules are available to /product.
+		if m.HasProductVariant() {
+			productVariants = append(productVariants, platformVndkVersion)
+			// VNDK is always PLATFORM_VNDK_VERSION
+			if !m.IsVndk() {
+				productVariants = append(productVariants, productVndkVersion)
+			}
 		}
 	} else if vendorSpecific && String(m.Properties.Sdk_version) == "" {
 		// This will be available in /vendor (or /odm) only
@@ -459,7 +459,6 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 	} else if strings.HasPrefix(variant, ProductVariationPrefix) {
 		m.Properties.ImageVariationPrefix = ProductVariationPrefix
 		m.Properties.VndkVersion = strings.TrimPrefix(variant, ProductVariationPrefix)
-		// TODO (b/150902910): This will be replaced with squashProductSrcs(m).
-		squashVendorSrcs(m)
+		squashProductSrcs(m)
 	}
 }
