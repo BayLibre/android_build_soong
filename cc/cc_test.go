@@ -683,6 +683,28 @@ func TestVndkWhenVndkVersionIsNotSet(t *testing.T) {
 
 func TestVndkModuleError(t *testing.T) {
 	// Check the error message for vendor_available and product_available properties.
+	testCcError(t, "vndk: both vendor_available and product_available must be set to either true or false when `vndk: {enabled: true}`", `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+	`)
+
+	testCcError(t, "vndk: both vendor_available and product_available must be set to either true or false when `vndk: {enabled: true}`", `
+		cc_library {
+			name: "libvndk",
+			product_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+	`)
+
 	testCcError(t, "product_available: may not have different value than `vendor_available`", `
 		cc_library {
 			name: "libvndk",
@@ -2067,7 +2089,7 @@ func TestVndkExtVendorAvailableFalseError(t *testing.T) {
 		}
 	`)
 
-	testCcErrorProductVndk(t, "`extends` refers module \".*\" which does not have `vendor_available: true`", `
+	testCcErrorProductVndk(t, "`extends` refers module \".*\" which does not have `product_available: true`", `
 		cc_library {
 			name: "libvndk",
 			vendor_available: false,
@@ -2620,7 +2642,22 @@ func TestEnforceProductVndkVersionErrors(t *testing.T) {
 			nocrt: true,
 		}
 	`)
-	testCcErrorProductVndk(t, "Vendor module that is not VNDK should not link to \".*\" which is marked as `vendor_available: false`", `
+	testCcErrorProductVndk(t, "dependency \".*\" of \".*\" missing variant:\n.*image:product.VER", `
+		cc_library {
+			name: "libprod",
+			product_specific: true,
+			shared_libs: [
+				"libva",
+			],
+			nocrt: true,
+		}
+		cc_library {
+			name: "libva",
+			vendor_available: true,
+			nocrt: true,
+		}
+	`)
+	testCcErrorProductVndk(t, "product module that is not VNDK should not link to \".*\" which is marked as `product_available: false`", `
 		cc_library {
 			name: "libprod",
 			product_specific: true,
