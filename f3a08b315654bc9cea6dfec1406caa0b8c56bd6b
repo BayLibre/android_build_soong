@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce5517f_5fafde74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T17:21:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45dfe1b8_01531e16",
+      "range": {
+        "startLine": 16,
+        "startChar": 46,
+        "endLine": 16,
+        "endChar": 61
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2195b69e_68636080",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "198dd979_15d39de1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T17:21:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2195b69e_68636080",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54d6316a_c866742d",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-29T11:53:21Z",
       "side": 1,
       "message": "Can you test with `EMMA_INSTRUMENT\u003dtrue EMMA_INSTRUMENT_FRAMEWORK\u003dtrue m check-boot-jars`? I\u0027m getting paranoid about jacocoagent.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "f3a08b315654bc9cea6dfec1406caa0b8c56bd6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a425aab8_35047f48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T17:21:34Z",
+      "side": 1,
+      "message": "Good call. It failed with:\nError: out/soong/.intermediates/external/jacoco/jacocoagent/android_common/combined/jacocoagent.jar contains class file com/vladium/emma/rt/RT.class, whose package name com.vladium.emma.rt is empty or not in the allow list build/soong/scripts/check_boot_jars/package_allowed_list.txt of packages allowed on the bootclasspath.\n\nI exclude jacocoagent from the jars to check and it works.\n\nDo you know how the jacocoagent gets into the boot jars list?",
+      "parentUuid": "54d6316a_c866742d",
       "range": {
         "startLine": 22,
         "startChar": 0,

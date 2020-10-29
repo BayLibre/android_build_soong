@@ -202,6 +202,24 @@
       "message": "I don\u0027t see jacoco here, but presumably the list didn\u0027t change so it worked somehow.",
       "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36250d23_80bc8309",
+        "filename": "scripts/check_boot_jars/package_allowed_list.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-29T17:21:34Z",
+      "side": 1,
+      "message": "The list hasn\u0027t changed and I don\u0027t know why this starts failing now.",
+      "parentUuid": "dce86a4f_ef9029e0",
+      "revId": "dd2baedef8ab34225afcfd251b3ce955260b1d36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
