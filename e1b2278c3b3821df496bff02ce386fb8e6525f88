@@ -33,6 +33,24 @@
       "message": "Feel free to add \"system/bt\" if you think we\u0027ll want that eventually.",
       "revId": "e1b2278c3b3821df496bff02ce386fb8e6525f88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48e59ea0_edc226db",
+        "filename": "rust/config/allowed_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106424
+      },
+      "writtenOn": "2020-10-29T18:19:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07285591_ee5ff2ec",
+      "revId": "e1b2278c3b3821df496bff02ce386fb8e6525f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
