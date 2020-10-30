@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ace1a20_7222366f",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-10-30T04:29:26Z",
+      "side": 1,
+      "message": "As discussed, changed allowlist implementation to have just one type of item (allow module as dependency). As Justin said at discussion, it makes more sense because other type of allowlist item gives too much right to allowlisted modules.",
+      "parentUuid": "6f2efdbc_724facd5",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 0
+      },
+      "revId": "bb9b634e0e170c8a4310c2922acb7f36c461670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e33501e_fcadafd5",
