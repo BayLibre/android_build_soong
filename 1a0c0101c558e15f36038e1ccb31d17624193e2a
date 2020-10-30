@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a65a70_f393c1f0",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-30T06:04:22Z",
+      "side": 1,
+      "message": "Yeah, this is not needed. Done.",
+      "parentUuid": "51f7e46a_b303ae00",
+      "revId": "1a0c0101c558e15f36038e1ccb31d17624193e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "967afdd0_52c24e6f",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-30T05:22:26Z",
       "side": 1,
       "message": "srcFiles may include generated sources, whose paths will start with the out directory.  The out directory can be absolute, which would result in an empty string in srcFilesParts[0].",
+      "revId": "1a0c0101c558e15f36038e1ccb31d17624193e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4684865e_29251b0a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-30T06:04:22Z",
+      "side": 1,
+      "message": "Good catch - the `out/` directory in Bazel\u0027s exec root is not a symlink anyway, so it\u0027s fine to not apply --patch-module for generated sources in out. Added a check to skip empty strings.",
+      "parentUuid": "967afdd0_52c24e6f",
       "revId": "1a0c0101c558e15f36038e1ccb31d17624193e2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
