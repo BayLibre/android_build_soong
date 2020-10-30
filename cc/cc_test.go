@@ -53,8 +53,8 @@ func TestMain(m *testing.M) {
 
 func testCcWithConfig(t *testing.T, config android.Config) *android.TestContext {
 	t.Helper()
-	ctx := CreateTestContext()
-	ctx.Register(config)
+	ctx := CreateTestContext(config)
+	ctx.Register()
 
 	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 	android.FailIfErrored(t, errs)
@@ -84,8 +84,8 @@ func testCcNoVndk(t *testing.T, bp string) *android.TestContext {
 func testCcErrorWithConfig(t *testing.T, pattern string, config android.Config) {
 	t.Helper()
 
-	ctx := CreateTestContext()
-	ctx.Register(config)
+	ctx := CreateTestContext(config)
+	ctx.Register()
 
 	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 	if len(errs) > 0 {
@@ -1245,8 +1245,8 @@ func TestVendorSnapshotUse(t *testing.T) {
 	config := TestConfig(buildDir, android.Android, nil, "", mockFS)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("BOARD")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
-	ctx := CreateTestContext()
-	ctx.Register(config)
+	ctx := CreateTestContext(config)
+	ctx.Register()
 
 	_, errs := ctx.ParseFileList(".", []string{"deps/Android.bp", "framework/Android.bp", "vendor/Android.bp", "vndk/Android.bp"})
 	android.FailIfErrored(t, errs)
@@ -1403,8 +1403,8 @@ func TestVendorSnapshotExclude(t *testing.T) {
 	config := TestConfig(buildDir, android.Android, nil, "", mockFS)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
-	ctx := CreateTestContext()
-	ctx.Register(config)
+	ctx := CreateTestContext(config)
+	ctx.Register()
 
 	_, errs := ctx.ParseFileList(".", []string{"deps/Android.bp", "framework/Android.bp", "device/Android.bp"})
 	android.FailIfErrored(t, errs)
@@ -1493,8 +1493,8 @@ func TestVendorSnapshotExcludeInVendorProprietaryPathErrors(t *testing.T) {
 	config := TestConfig(buildDir, android.Android, nil, "", mockFS)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
-	ctx := CreateTestContext()
-	ctx.Register(config)
+	ctx := CreateTestContext(config)
+	ctx.Register()
 
 	_, errs := ctx.ParseFileList(".", []string{"deps/Android.bp", "device/Android.bp"})
 	android.FailIfErrored(t, errs)
@@ -1534,8 +1534,8 @@ func TestVendorSnapshotExcludeWithVendorAvailable(t *testing.T) {
 	config := TestConfig(buildDir, android.Android, nil, "", mockFS)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
-	ctx := CreateTestContext()
-	ctx.Register(config)
+	ctx := CreateTestContext(config)
+	ctx.Register()
 
 	_, errs := ctx.ParseFileList(".", []string{"deps/Android.bp", "framework/Android.bp"})
 	android.FailIfErrored(t, errs)
@@ -3783,11 +3783,11 @@ func TestProductVariableDefaults(t *testing.T) {
 	config := TestConfig(buildDir, android.Android, nil, bp, nil)
 	config.TestProductVariables.Debuggable = BoolPtr(true)
 
-	ctx := CreateTestContext()
+	ctx := CreateTestContext(config)
 	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("variable", android.VariableMutator).Parallel()
 	})
-	ctx.Register(config)
+	ctx.Register()
 
 	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 	android.FailIfErrored(t, errs)
@@ -3818,9 +3818,9 @@ func TestEmptyWholeStaticLibsAllowMissingDependencies(t *testing.T) {
 	config := TestConfig(buildDir, android.Android, nil, bp, nil)
 	config.TestProductVariables.Allow_missing_dependencies = BoolPtr(true)
 
-	ctx := CreateTestContext()
+	ctx := CreateTestContext(config)
 	ctx.SetAllowMissingDependencies(true)
-	ctx.Register(config)
+	ctx.Register()
 
 	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 	android.FailIfErrored(t, errs)
