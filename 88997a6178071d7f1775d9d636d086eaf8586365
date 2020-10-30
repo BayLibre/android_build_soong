@@ -16,6 +16,23 @@
       "message": "This CL defines a new `product_available` property. It does nothing for now until I submit aosp/1479577. After I update all Android.bp with `vendor_available` modules to have `product_available`, let me submit aosp/1479577 to enable `product_available` property.",
       "revId": "88997a6178071d7f1775d9d636d086eaf8586365",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cd47e7_4abf28f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-30T04:42:04Z",
+      "side": 1,
+      "message": "LGTM as this doesn\u0027t do anything destructive without aosp/1479577",
+      "revId": "88997a6178071d7f1775d9d636d086eaf8586365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
