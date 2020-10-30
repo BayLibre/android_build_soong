@@ -183,6 +183,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "add5ae9b_a169f7cb",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-10-30T16:37:00Z",
+      "side": 1,
+      "message": "The XML output IS smaller than the plain text output because it contains less information but it is far higher than what is left after filtering through grep.\n\nThe check takes about 18s for XML, 7s for this current implementation. I think that is a big enough change to warrant doing as a separate change and maybe look into modifying dexdump to cut down what it produces, e.g. have an option on dexdump to just list the classes it contains.\n\nAdding a wrapper element would work around the issue with the dexdump output but given the change to dexdump is so small it didn\u0027t seem worth it.",
+      "parentUuid": "acb60d05_2b96e710",
+      "range": {
+        "startLine": 51,
+        "startChar": 28,
+        "endLine": 51,
+        "endChar": 62
+      },
+      "revId": "ed722313d53b3257ae7314d75aebfab3a8fc592d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6827926_0dc35f72",
