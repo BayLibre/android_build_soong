@@ -98,6 +98,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bec61e0_e8dd0509",
+        "filename": "cc/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-30T05:58:36Z",
+      "side": 1,
+      "message": "The actual use of product_available will be updated with aosp/1479577. This CL is only to define a new field so that I can update the existing Android.bp files without any surprise.",
+      "parentUuid": "6fb283e0_e1dc8d69",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "88997a6178071d7f1775d9d636d086eaf8586365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47c630bd_acdf444f",
@@ -121,6 +145,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5393a1c_067819bb",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-30T05:58:36Z",
+      "side": 1,
+      "message": "Yes, that is intentional for now. You can find the final code in aosp/1479577.",
+      "parentUuid": "47c630bd_acdf444f",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "88997a6178071d7f1775d9d636d086eaf8586365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae9dc03b_c18dc112",
@@ -134,6 +182,30 @@
       "writtenOn": "2020-10-30T04:59:00Z",
       "side": 1,
       "message": "I can\u0027t find the usage. Is it missing?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "88997a6178071d7f1775d9d636d086eaf8586365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "429f09ba_1deb2d02",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-30T05:58:36Z",
+      "side": 1,
+      "message": "Yes, that is intentional for now. You can find the final code in aosp/1479577.",
+      "parentUuid": "ae9dc03b_c18dc112",
       "range": {
         "startLine": 186,
         "startChar": 0,
@@ -169,6 +241,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb87300a_a9d29200",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-30T05:58:36Z",
+      "side": 1,
+      "message": "`llndk_library` module implies both vendor_available and product_available. We don\u0027t need to add the properties for `llndk_library`.\nThis property is required only to define LLNDK-private, which is a special case that will hardly be used in the future.",
+      "parentUuid": "b0f1eff8_dda094c9",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 23
+      },
+      "revId": "88997a6178071d7f1775d9d636d086eaf8586365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "911487cd_ac354680",
         "filename": "cc/vndk.go",
         "patchSetId": 2
@@ -180,6 +276,30 @@
       "writtenOn": "2020-10-30T04:59:00Z",
       "side": 1,
       "message": "Is this check missing?",
+      "range": {
+        "startLine": 140,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 53
+      },
+      "revId": "88997a6178071d7f1775d9d636d086eaf8586365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f2d036_6ac57124",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-30T05:58:36Z",
+      "side": 1,
+      "message": "That will be updated soon with aosp/1479577.",
+      "parentUuid": "911487cd_ac354680",
       "range": {
         "startLine": 140,
         "startChar": 8,
@@ -203,6 +323,30 @@
       "writtenOn": "2020-10-30T04:59:00Z",
       "side": 1,
       "message": "Please add a check for this.",
+      "range": {
+        "startLine": 344,
+        "startChar": 3,
+        "endLine": 344,
+        "endChar": 86
+      },
+      "revId": "88997a6178071d7f1775d9d636d086eaf8586365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "278abd8f_12fc9cb1",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-10-30T05:58:36Z",
+      "side": 1,
+      "message": "That will be updated soon with aosp/1479577.",
+      "parentUuid": "4fa76ddd_db25dad7",
       "range": {
         "startLine": 344,
         "startChar": 3,
