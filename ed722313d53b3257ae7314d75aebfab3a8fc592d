@@ -24,6 +24,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20bbf1cd_3401d2fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-10-30T00:58:42Z",
+      "side": 1,
+      "message": "LGTM for the soong part. I am not a good python reviewer, so let me skip that part.",
+      "revId": "ed722313d53b3257ae7314d75aebfab3a8fc592d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f99f00c0_9ddd2cac",
