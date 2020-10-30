@@ -34,6 +34,24 @@
       "parentUuid": "cbfc7fd6_eaf1729e",
       "revId": "41daa94bbdc4d1c86b99dc82bfa03b444c4c6ae1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2faa1fc1_790274f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-30T05:06:09Z",
+      "side": 1,
+      "message": "aosp/1480607 and aosp/1480608\n\nI will abandon this change.",
+      "parentUuid": "6cf464d6_d1a13e3f",
+      "revId": "41daa94bbdc4d1c86b99dc82bfa03b444c4c6ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
