@@ -139,10 +139,16 @@ type SingletonMakeVarsProvider interface {
 	MakeVars(ctx MakeVarsContext)
 }
 
+var singletonMakeVarsProvidersKey = NewOnceKey("singletonMakeVarsProvidersKey")
+
 // registerSingletonMakeVarsProvider adds a singleton that implements SingletonMakeVarsProvider to the list of
 // MakeVarsProviders to run.
-func registerSingletonMakeVarsProvider(singleton SingletonMakeVarsProvider) {
-	singletonMakeVarsProviders = append(singletonMakeVarsProviders,
+func registerSingletonMakeVarsProvider(config Config, singleton SingletonMakeVarsProvider) {
+	singletonMakeVarsProviders := config.Once(singletonMakeVarsProvidersKey, func() interface{} {
+		return &[]makeVarsProvider{}
+	}).(*[]makeVarsProvider)
+
+	*singletonMakeVarsProviders = append(*singletonMakeVarsProviders,
 		makeVarsProvider{pctx, SingletonmakeVarsProviderAdapter(singleton)})
 }
 
@@ -174,9 +180,6 @@ type makeVarsProvider struct {
 
 // Collection of makevars providers that are registered in init() methods.
 var makeVarsInitProviders []makeVarsProvider
-
-// Collection of singleton makevars providers that are not registered as part of init() methods.
-var singletonMakeVarsProviders []makeVarsProvider
 
 type makeVarsContext struct {
 	SingletonContext
@@ -224,7 +227,11 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 	var vars []makeVarsVariable
 	var dists []dist
 	var phonies []phony
-	for _, provider := range append(makeVarsInitProviders) {
+
+	providers := append([]makeVarsProvider(nil), makeVarsInitProviders...)
+	providers = append(providers, *ctx.Config().Get(singletonMakeVarsProvidersKey).(*[]makeVarsProvider)...)
+
+	for _, provider := range providers {
 		mctx := &makeVarsContext{
 			SingletonContext: ctx,
 			pctx:             provider.pctx,
@@ -236,25 +243,6 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 		phonies = append(phonies, mctx.phonies...)
 		dists = append(dists, mctx.dists...)
 	}
-
-	for _, provider := range append(singletonMakeVarsProviders) {
-		mctx := &makeVarsContext{
-			SingletonContext: ctx,
-			pctx:             provider.pctx,
-		}
-
-		provider.call(mctx)
-
-		vars = append(vars, mctx.vars...)
-		phonies = append(phonies, mctx.phonies...)
-		dists = append(dists, mctx.dists...)
-	}
-
-	// Clear singleton makevars providers after use. Since these are in-memory
-	// singletons, this ensures state is reset if the build tree is processed
-	// multiple times.
-	// TODO(cparsons): Clean up makeVarsProviders to be part of the context.
-	singletonMakeVarsProviders = nil
 
 	ctx.VisitAllModules(func(m Module) {
 		if provider, ok := m.(ModuleMakeVarsProvider); ok && m.Enabled() {
