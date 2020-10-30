@@ -16,6 +16,24 @@
       "message": "I\u0027m sorry to be a pain but the combination of the refactoring with your functional changes makes it really difficult to review. Would you mind separating the refactoring out into its own change and then apply your functional changes on top?",
       "revId": "41daa94bbdc4d1c86b99dc82bfa03b444c4c6ae1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cf464d6_d1a13e3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-10-30T04:27:10Z",
+      "side": 1,
+      "message": "Sure, if it helps, I can make separate changes.\n\nThe main refactoring here can be seen between patchset 11 and 12: https://android-review.googlesource.com/c/platform/build/soong/+/1468116/11..12\n\nI restructured and extracted the flags.javacFlags computation out from collectBuilderFlags and into a new collectJavacFlags function, which is called after computing the full set of srcFiles, since we need that information for the --patch-module value.\n\nIn collectJavacFlags, I took this chance to group the logic that depends on JDK9 usesJavaModules() together as well (Openjdk9.javacFlags and --patch-module).",
+      "parentUuid": "cbfc7fd6_eaf1729e",
+      "revId": "41daa94bbdc4d1c86b99dc82bfa03b444c4c6ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
