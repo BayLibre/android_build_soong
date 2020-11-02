@@ -36,6 +36,15 @@ type PathContext interface {
 	AddNinjaFileDeps(deps ...string)
 }
 
+// ModulePathContext extends PathContext with some additional methods that are useful for creating
+// module specific paths.
+type ModulePathContext interface {
+	PathContext
+
+	ModuleDir() string
+	ModuleName() string
+}
+
 type PathGlobContext interface {
 	GlobWithDeps(globPattern string, excludes []string) ([]string, error)
 }
@@ -1150,8 +1159,16 @@ func (p ModuleOutPath) objPathWithExt(ctx ModuleContext, subdir, ext string) Mod
 	return PathForModuleObj(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
 }
 
-func pathForModule(ctx ModuleContext) OutputPath {
-	return PathForOutput(ctx, ".intermediates", ctx.ModuleDir(), ctx.ModuleName(), ctx.ModuleSubDir())
+// pathForModuleWithVariant returns an OutputPath that is specific to the supplied context's
+// module's variant.
+func pathForModuleWithVariant(ctx ModuleContext) OutputPath {
+	return pathForModuleWithoutVariant(ctx).withRel(ctx.ModuleSubDir())
+}
+
+// pathForModuleWithoutVariant returns an OutputPath that is specific to the supplied context's
+// module.
+func pathForModuleWithoutVariant(ctx ModulePathContext) OutputPath {
+	return PathForOutput(ctx, ".intermediates", ctx.ModuleDir(), ctx.ModuleName())
 }
 
 // PathForVndkRefAbiDump returns an OptionalPath representing the path of the
@@ -1192,15 +1209,27 @@ func PathForVndkRefAbiDump(ctx ModuleContext, version, fileName string,
 		fileName+ext)
 }
 
-// PathForModuleOut returns a Path representing the paths... under the module's
-// output directory.
+// PathForModuleOut returns a Path representing the paths... under the module variant's output
+// directory.
 func PathForModuleOut(ctx ModuleContext, paths ...string) ModuleOutPath {
 	p, err := validatePath(paths...)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
 	return ModuleOutPath{
-		OutputPath: pathForModule(ctx).withRel(p),
+		OutputPath: pathForModuleWithVariant(ctx).withRel(p),
+	}
+}
+
+// PathForModuleWithoutVariantOut returns a Path representing the paths... under the module's
+// output directory.
+func PathForModuleWithoutVariantOut(ctx ModulePathContext, paths ...string) ModuleOutPath {
+	p, err := validatePath(paths...)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+	return ModuleOutPath{
+		OutputPath: pathForModuleWithoutVariant(ctx).withRel(p),
 	}
 }
 
@@ -1223,7 +1252,7 @@ func PathForModuleGen(ctx ModuleContext, paths ...string) ModuleGenPath {
 	}
 	return ModuleGenPath{
 		ModuleOutPath: ModuleOutPath{
-			OutputPath: pathForModule(ctx).withRel("gen").withRel(p),
+			OutputPath: pathForModuleWithVariant(ctx).withRel("gen").withRel(p),
 		},
 	}
 }
