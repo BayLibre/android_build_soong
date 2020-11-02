@@ -2844,31 +2844,50 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
 
-	if ctx.Device() && Bool(j.dexProperties.Compile_dex) {
-		sdkDep := decodeSdkDep(ctx, sdkContext(j))
-		if sdkDep.invalidVersion {
-			ctx.AddMissingDependencies(sdkDep.bootclasspath)
-			ctx.AddMissingDependencies(sdkDep.java9Classpath)
-		} else if sdkDep.useFiles {
-			// sdkDep.jar is actually equivalent to turbine header.jar.
-			flags.classpath = append(flags.classpath, sdkDep.jars...)
+	if ctx.Device() {
+		debug := strings.HasSuffix(j.BaseModuleName(), "bouncycastle")
+		// If this is a variant created for a prebuilt_apex then use the dex implementation
+		// jar from that variant.
+		ai := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+		if debug {
+			fmt.Printf("PAUL: %#v\n", ai)
 		}
+		if ai.ForPrebuiltApex {
+			if debug {
+				fmt.Printf("PAUL: %q\n", ai.PrebuiltExportPath(j.BaseModuleName(), ".dexjar"))
+			}
+			j.dexJarFile = ai.PrebuiltExportPath(j.BaseModuleName(), ".dexjar")
+			if j.dexJarFile == nil {
+				// This should never happen as a variant for a prebuilt_apex is only created
+				// if the prebuilt_apex has been configured to export the java library dex file.
+				ctx.ModuleErrorf("internal error: no dex implementation jar available from prebuilt_apex %q", ai.ApexVariationName)
+			}
+		} else if Bool(j.dexProperties.Compile_dex) {
+			sdkDep := decodeSdkDep(ctx, sdkContext(j))
+			if sdkDep.invalidVersion {
+				ctx.AddMissingDependencies(sdkDep.bootclasspath)
+				ctx.AddMissingDependencies(sdkDep.java9Classpath)
+			} else if sdkDep.useFiles {
+				// sdkDep.jar is actually equivalent to turbine header.jar.
+				flags.classpath = append(flags.classpath, sdkDep.jars...)
+			}
 
-		// Dex compilation
-		var dexOutputFile android.ModuleOutPath
-		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), outputFile, jarName)
-		if ctx.Failed() {
-			return
+			// Dex compilation
+			var dexOutputFile android.ModuleOutPath
+			dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), outputFile, jarName)
+			if ctx.Failed() {
+				return
+			}
+
+			configurationName := j.BaseModuleName()
+			primary := j.Prebuilt().UsePrebuilt()
+
+			// Hidden API CSV generation and dex encoding
+			dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, configurationName, primary, dexOutputFile, outputFile,
+				proptools.Bool(j.dexProperties.Uncompress_dex))
+
+			j.dexJarFile = dexOutputFile
 		}
-
-		configurationName := j.BaseModuleName()
-		primary := j.Prebuilt().UsePrebuilt()
-
-		// Hidden API CSV generation and dex encoding
-		dexOutputFile = j.hiddenAPI.hiddenAPI(ctx, configurationName, primary, dexOutputFile, outputFile,
-			proptools.Bool(j.dexProperties.Uncompress_dex))
-
-		j.dexJarFile = dexOutputFile
 	}
 }
 
