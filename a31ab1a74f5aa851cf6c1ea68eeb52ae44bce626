@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "671c47e9_ac6857ec",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-02T07:12:23Z",
+      "side": 1,
+      "message": "Is it included here because we are planning to allow SdkLibraryExternal only? I think SdkLibrary is stable, and we don\u0027t need to block them here.",
+      "range": {
+        "startLine": 752,
+        "startChar": 18,
+        "endLine": 752,
+        "endChar": 28
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2cf577f_85667582",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-02T07:12:23Z",
+      "side": 1,
+      "message": "You don\u0027t need to deliver interface with it.\nAdding the check for implementation of interface will be sufficient for this.\nFor example, add `var _ javaSdkExternalDependency \u003d (*Module)(nil)` in sdk_library_external.go.",
+      "range": {
+        "startLine": 753,
+        "startChar": 49,
+        "endLine": 753,
+        "endChar": 77
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1210085_aad1e02a",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-02T07:12:23Z",
+      "side": 1,
+      "message": "Why can\u0027t we add this to `Dependency` interface and check the dependency there? Can\u0027t we use the existing dependency check process?",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8bccf8e_bca987c4",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-02T07:12:23Z",
+      "side": 1,
+      "message": "We don\u0027t need this if you use get *Module as a input parameter of checkJavaSdkLibraryEnforce instead of using javaSdkExternalDependency.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
