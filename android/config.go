@@ -974,11 +974,18 @@ func (c *config) ModulesLoadedByPrivilegedModules() []string {
 	return c.productVariables.ModulesLoadedByPrivilegedModules
 }
 
-func (c *config) DexpreoptGlobalConfig(ctx PathContext) ([]byte, error) {
+func (c *config) DexpreoptGlobalConfigPath(ctx PathContext) string {
 	if c.productVariables.DexpreoptGlobalConfig == nil {
+		return ""
+	}
+	return absolutePath(*c.productVariables.DexpreoptGlobalConfig)
+}
+
+func (c *config) DexpreoptGlobalConfig(ctx PathContext) ([]byte, error) {
+	path := c.DexpreoptGlobalConfigPath(ctx)
+	if path == "" {
 		return nil, nil
 	}
-	path := absolutePath(*c.productVariables.DexpreoptGlobalConfig)
 	ctx.AddNinjaFileDeps(path)
 	return ioutil.ReadFile(path)
 }
