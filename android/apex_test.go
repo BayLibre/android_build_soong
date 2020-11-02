@@ -29,10 +29,10 @@ func Test_mergeApexVariations(t *testing.T) {
 		{
 			name: "single",
 			in: []ApexInfo{
-				{"foo", "current", false, nil, []string{"foo"}, nil},
+				{"foo", "current", false, nil, []string{"foo"}, nil, false},
 			},
 			wantMerged: []ApexInfo{
-				{"apex10000", "current", false, nil, []string{"foo"}, nil},
+				{"apex10000", "current", false, nil, []string{"foo"}, nil, false},
 			},
 			wantAliases: [][2]string{
 				{"foo", "apex10000"},
@@ -41,11 +41,11 @@ func Test_mergeApexVariations(t *testing.T) {
 		{
 			name: "merge",
 			in: []ApexInfo{
-				{"foo", "current", false, SdkRefs{{"baz", "1"}}, []string{"foo"}, nil},
-				{"bar", "current", false, SdkRefs{{"baz", "1"}}, []string{"bar"}, nil},
+				{"foo", "current", false, SdkRefs{{"baz", "1"}}, []string{"foo"}, nil, false},
+				{"bar", "current", false, SdkRefs{{"baz", "1"}}, []string{"bar"}, nil, false},
 			},
 			wantMerged: []ApexInfo{
-				{"apex10000_baz_1", "current", false, SdkRefs{{"baz", "1"}}, []string{"bar", "foo"}, nil}},
+				{"apex10000_baz_1", "current", false, SdkRefs{{"baz", "1"}}, []string{"bar", "foo"}, nil, false}},
 			wantAliases: [][2]string{
 				{"bar", "apex10000_baz_1"},
 				{"foo", "apex10000_baz_1"},
@@ -54,12 +54,12 @@ func Test_mergeApexVariations(t *testing.T) {
 		{
 			name: "don't merge version",
 			in: []ApexInfo{
-				{"foo", "current", false, nil, []string{"foo"}, nil},
-				{"bar", "30", false, nil, []string{"bar"}, nil},
+				{"foo", "current", false, nil, []string{"foo"}, nil, false},
+				{"bar", "30", false, nil, []string{"bar"}, nil, false},
 			},
 			wantMerged: []ApexInfo{
-				{"apex30", "30", false, nil, []string{"bar"}, nil},
-				{"apex10000", "current", false, nil, []string{"foo"}, nil},
+				{"apex30", "30", false, nil, []string{"bar"}, nil, false},
+				{"apex10000", "current", false, nil, []string{"foo"}, nil, false},
 			},
 			wantAliases: [][2]string{
 				{"bar", "apex30"},
@@ -69,11 +69,11 @@ func Test_mergeApexVariations(t *testing.T) {
 		{
 			name: "merge updatable",
 			in: []ApexInfo{
-				{"foo", "current", false, nil, []string{"foo"}, nil},
-				{"bar", "current", true, nil, []string{"bar"}, nil},
+				{"foo", "current", false, nil, []string{"foo"}, nil, false},
+				{"bar", "current", true, nil, []string{"bar"}, nil, false},
 			},
 			wantMerged: []ApexInfo{
-				{"apex10000", "current", true, nil, []string{"bar", "foo"}, nil},
+				{"apex10000", "current", true, nil, []string{"bar", "foo"}, nil, false},
 			},
 			wantAliases: [][2]string{
 				{"bar", "apex10000"},
@@ -83,16 +83,34 @@ func Test_mergeApexVariations(t *testing.T) {
 		{
 			name: "don't merge sdks",
 			in: []ApexInfo{
-				{"foo", "current", false, SdkRefs{{"baz", "1"}}, []string{"foo"}, nil},
-				{"bar", "current", false, SdkRefs{{"baz", "2"}}, []string{"bar"}, nil},
+				{"foo", "current", false, SdkRefs{{"baz", "1"}}, []string{"foo"}, nil, false},
+				{"bar", "current", false, SdkRefs{{"baz", "2"}}, []string{"bar"}, nil, false},
 			},
 			wantMerged: []ApexInfo{
-				{"apex10000_baz_2", "current", false, SdkRefs{{"baz", "2"}}, []string{"bar"}, nil},
-				{"apex10000_baz_1", "current", false, SdkRefs{{"baz", "1"}}, []string{"foo"}, nil},
+				{"apex10000_baz_2", "current", false, SdkRefs{{"baz", "2"}}, []string{"bar"}, nil, false},
+				{"apex10000_baz_1", "current", false, SdkRefs{{"baz", "1"}}, []string{"foo"}, nil, false},
 			},
 			wantAliases: [][2]string{
 				{"bar", "apex10000_baz_2"},
 				{"foo", "apex10000_baz_1"},
+			},
+		},
+		{
+			name: "don't merge when for prebuilt_apex",
+			in: []ApexInfo{
+				{"foo", "current", false, nil, []string{"foo"}, nil, false},
+				{"bar", "current", true, nil, []string{"bar"}, nil, false},
+				// This one should not be merged in with the others because it is for
+				// a prebuilt_apex.
+				{"baz", "current", true, nil, []string{"baz"}, nil, true},
+			},
+			wantMerged: []ApexInfo{
+				{"apex10000", "current", true, nil, []string{"bar", "foo"}, nil, false},
+				{"baz", "current", true, nil, []string{"baz"}, nil, true},
+			},
+			wantAliases: [][2]string{
+				{"bar", "apex10000"},
+				{"foo", "apex10000"},
 			},
 		},
 	}
