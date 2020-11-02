@@ -33,6 +33,24 @@
       "message": "Can you separate these changes (and the ones in the following files) out from the functional changes in ClassLoaderContextMap? It would make both parts easier to review.",
       "revId": "a9457f92f9ab4c223138c20d2d629d0ccf96761b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "181f6694_93121308",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-02T16:28:32Z",
+      "side": 1,
+      "message": "I cannot separate introducing the new representation from multiple updates of the corresponding fields in structs in the following files (at least I don\u0027t see how), but I can split this CL into part 1 (that adds the new representation but keeps the old behaviour) and part 2 (that changes the behaviour and updates test results).",
+      "parentUuid": "1444347e_ba692400",
+      "revId": "a9457f92f9ab4c223138c20d2d629d0ccf96761b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
