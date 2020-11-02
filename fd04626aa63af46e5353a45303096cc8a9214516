@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "fd04626aa63af46e5353a45303096cc8a9214516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a166229_a45aaf05",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-02T16:05:04Z",
+      "side": 1,
+      "message": "Could you move these changes into the previous CL where this structure is renamed and the fields changed.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "fd04626aa63af46e5353a45303096cc8a9214516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e7c780_395afc20",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-02T16:05:04Z",
+      "side": 1,
+      "message": "Could you document this method please?",
+      "revId": "fd04626aa63af46e5353a45303096cc8a9214516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
