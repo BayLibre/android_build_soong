@@ -16,6 +16,29 @@
       "message": "Potentially bypassing 4 failing presubmit tests due to infra failures, as reported in the MOTD banner:\n\nb/172063886\nb/172056243\n\nhttps://android-build.googleplex.com/builds/treetop/android-review/1480608?ref\u003dCOMMENT\u0026revision\u003d4\u0026revisionAttempt\u003d1\n\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI82800006415748261\u0026redirect\u003dhttp%3A%2F%2Fsponge2%2F0dc152d4-4a00-46bd-9e68-2c1f8923b10f\u0026testResultId\u003dTR54514631489017278\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI72400006415748059\u0026redirect\u003dhttp%3A%2F%2Fsponge2%2F4b4ea86c-c5e6-4637-af76-15fd322f7172\u0026testResultId\u003dTR40914631488933829\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI99600006415653321\u0026redirect\u003dhttp%3A%2F%2Fsponge2%2F1f82a656-7fa0-4f9a-a31d-bee72239cc74\u0026testResultId\u003dTR03814631185305650\nhttps://android-build.googleplex.com/builds/tests/view?invocationId\u003dI51400006415657260\u0026redirect\u003dhttp%3A%2F%2Fsponge2%2Fdf87b13d-55d7-439f-82bb-06d4279a338f\u0026testResultId\u003dTR64714631198008697",
       "revId": "9c6e323dc21b1c80106d6c3082e23ae73d504d41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd90ffe6_4b756b2b",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-02T19:57:08Z",
+      "side": 1,
+      "message": "This isn\u0027t actually true for builds with relative out directories, you\u0027ll still list the first directory in the relative out path in topLevelDirs.  Since you\u0027ve already covered the out directory with ctx.Config().BuildDir() on line 1268, maybe ignore source files that have it as a prefix?",
+      "range": {
+        "startLine": 1287,
+        "startChar": 7,
+        "endLine": 1287,
+        "endChar": 55
+      },
+      "revId": "9c6e323dc21b1c80106d6c3082e23ae73d504d41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
