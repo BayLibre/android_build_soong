@@ -22,9 +22,18 @@ var (
 	defaultProtobufFlags = []string{""}
 )
 
+type PluginType int
+
+const (
+	Protobuf PluginType = iota
+	Grpc
+)
+
 func init() {
 	android.RegisterModuleType("rust_protobuf", RustProtobufFactory)
 	android.RegisterModuleType("rust_protobuf_host", RustProtobufHostFactory)
+	android.RegisterModuleType("rust_grpcio", RustGrpcioFactory)
+	android.RegisterModuleType("rust_grpcio_host", RustGrpcioHostFactory)
 }
 
 var _ SourceProvider = (*protobufDecorator)(nil)
@@ -41,15 +50,26 @@ type protobufDecorator struct {
 	*BaseSourceProvider
 
 	Properties ProtobufProperties
+	plugin     PluginType
 }
 
 func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps) android.Path {
 	var protoFlags android.ProtoFlags
-	pluginPath := ctx.Config().HostToolPath(ctx, "protoc-gen-rust")
+	var pluginPath android.Path
 
 	protoFlags.OutTypeFlag = "--rust_out"
+	outDir := android.PathForModuleOut(ctx)
 
-	protoFlags.Flags = append(protoFlags.Flags, " --plugin="+pluginPath.String())
+	if proto.plugin == Protobuf {
+		pluginPath = ctx.Config().HostToolPath(ctx, "protoc-gen-rust")
+		protoFlags.Flags = append(protoFlags.Flags, " --plugin="+pluginPath.String())
+	} else if proto.plugin == Grpc {
+		//TODO(ivanlozano) make this match the tool module name
+		pluginPath = ctx.Config().HostToolPath(ctx, "grpc_rust_plugin")
+		protoFlags.Flags = append(protoFlags.Flags, "--grpc_out="+outDir.String())
+		protoFlags.Flags = append(protoFlags.Flags, " --plugin=protoc-gen-grpc="+pluginPath.String())
+	}
+
 	protoFlags.Flags = append(protoFlags.Flags, defaultProtobufFlags...)
 	protoFlags.Flags = append(protoFlags.Flags, proto.Properties.Proto_flags...)
 
@@ -60,7 +80,6 @@ func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps)
 		ctx.PropertyErrorf("proto", "invalid path to proto file")
 	}
 
-	outDir := android.PathForModuleOut(ctx)
 	stem := proto.BaseSourceProvider.getStem(ctx)
 	// rust protobuf-codegen output <stem>.rs
 	stemFile := android.PathForModuleOut(ctx, stem+".rs")
@@ -104,7 +123,30 @@ func RustProtobufHostFactory() android.Module {
 	return module.Init()
 }
 
+func RustGrpcioFactory() android.Module {
+	module, _ := NewRustGrpcio(android.HostAndDeviceSupported)
+	return module.Init()
+}
+
+// A host-only variant of rust_protobuf. Refer to rust_protobuf for more details.
+func RustGrpcioHostFactory() android.Module {
+	module, _ := NewRustGrpcio(android.HostSupported)
+	return module.Init()
+}
+
 func NewRustProtobuf(hod android.HostOrDeviceSupported) (*Module, *protobufDecorator) {
+	protobuf := &protobufDecorator{
+		BaseSourceProvider: NewSourceProvider(),
+		Properties:         ProtobufProperties{},
+		plugin:             Protobuf,
+	}
+
+	module := NewSourceProviderModule(hod, protobuf, false)
+
+	return module, protobuf
+}
+
+func NewRustGrpcio(hod android.HostOrDeviceSupported) (*Module, *protobufDecorator) {
 	protobuf := &protobufDecorator{
 		BaseSourceProvider: NewSourceProvider(),
 		Properties:         ProtobufProperties{},

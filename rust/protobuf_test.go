@@ -37,3 +37,22 @@ func TestRustProtobuf(t *testing.T) {
 		t.Errorf("libprotobuf dependency missing for rust_protobuf (dependency missing from AndroidMkDylibs)")
 	}
 }
+
+func TestRustGrpcio(t *testing.T) {
+	ctx := testRust(t, `
+		rust_grpcio {
+			name: "librust_grpcio",
+			proto: "buf.proto",
+			crate_name: "rust_grpcio",
+			source_stem: "buf",
+		}
+	`)
+	// Check that there's a rule to generate the expected output
+	_ = ctx.ModuleForTests("librust_grpcio", "android_arm64_armv8-a_source").Output("buf.rs")
+
+	// Check that libprotobuf is added as a dependency.
+	librust_proto := ctx.ModuleForTests("librust_grpcio", "android_arm64_armv8-a_dylib").Module().(*Module)
+	if !android.InList("libprotobuf", librust_proto.Properties.AndroidMkDylibs) {
+		t.Errorf("libprotobuf dependency missing for rust_protobuf (dependency missing from AndroidMkDylibs)")
+	}
+}
