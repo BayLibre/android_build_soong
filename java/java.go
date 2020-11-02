@@ -1336,6 +1336,9 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		if ctx.Device() {
 			kotlincFlags = append(kotlincFlags, "-no-jdk")
 		}
+
+		kotlincFlags = append(kotlincFlags, "-Xuse-ir")
+
 		if len(kotlincFlags) > 0 {
 			// optimization.
 			ctx.Variable(pctx, "kotlincFlags", strings.Join(kotlincFlags, " "))
