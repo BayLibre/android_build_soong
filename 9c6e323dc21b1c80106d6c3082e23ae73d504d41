@@ -39,6 +39,30 @@
       },
       "revId": "9c6e323dc21b1c80106d6c3082e23ae73d504d41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c432b0cf_e20e01ee",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1287,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-02T22:50:37Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "fd90ffe6_4b756b2b",
+      "range": {
+        "startLine": 1287,
+        "startChar": 7,
+        "endLine": 1287,
+        "endChar": 55
+      },
+      "revId": "9c6e323dc21b1c80106d6c3082e23ae73d504d41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
