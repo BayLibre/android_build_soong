@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "641696f0_d0062e2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-02T16:09:54Z",
+      "side": 1,
+      "message": "Could you split the rename and this part into separate changes? It will make them both easier to review.",
+      "revId": "5298046c1acf5e6dfe9bd1d8a476d37b9db7ffca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "66c53e71_bf7896c9",
