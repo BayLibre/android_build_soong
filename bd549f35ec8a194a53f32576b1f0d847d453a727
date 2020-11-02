@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb9a5c2a_871406fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-02T08:01:59Z",
+      "side": 1,
+      "message": "PTAL.\n\nWith this, mixed builds stop writing to a temporary directory (with mktemp), but a directory in $OUT_DIR. This makes it compliant to be ran on buildbots... but:\n\n    $ USE_BAZEL\u003d1 USE_BAZEL_ANALYSIS\u003d1 m\n    ...\n    [100% 128/128] out/soong/.bootstrap/bin/soong_build out/soong/build.ninja\n    FAILED: out/soong/build.ninja\n    out/soong/.bootstrap/bin/soong_build -t -l out/.module_paths/Android.bp.list -b out/soong -n out -d out/soong/build.ninja.d -globFile out/soong/.bootstrap/build-globs.ninja -o out/soong/build.ninja Android.bp\n    bazel command failed. command: [./tools/bazel --output_base\u003dout/bazel/output build //out/soong:buildroot], error [Loading:\n    Loading: 0 packages loaded\n    Analyzing: target //out/soong:buildroot (0 packages loaded, 0 targets configured)\n    INFO: Analyzed target //out/soong:buildroot (0 packages loaded, 0 targets configured).\n    INFO: Found 1 target...\n    ERROR: Directories specified with toplevel_output_directories should be ignored and can not be used as sources.\n    INFO: Elapsed time: 0.158s\n    INFO: 0 processes.\n    FAILED: Build did NOT complete successfully\n    03:00:10 soong bootstrap failed with: exit status 1\n\nThe question remains: how do we write and reference BUILD/bzl targets in `out`, which is a toplevel_output_directory for Bazel Ninja execution?",
+      "revId": "bd549f35ec8a194a53f32576b1f0d847d453a727",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
