@@ -690,6 +690,10 @@ func (c *configImpl) NinjaArgs() []string {
 	return c.ninjaArgs
 }
 
+func (c *configImpl) BazelOutDir() string {
+	return filepath.Join(c.OutDir(), "bazel")
+}
+
 func (c *configImpl) SoongOutDir() string {
 	return filepath.Join(c.OutDir(), "soong")
 }
