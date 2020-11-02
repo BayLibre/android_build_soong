@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "767f10f5_bfed3c28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-02T19:59:12Z",
+      "side": 1,
+      "message": "This may improve the build_test* build times by not running the Soong tests 100 times in each one.",
+      "revId": "00a8a3f746685557a5c64cbd628e91de14c031e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
