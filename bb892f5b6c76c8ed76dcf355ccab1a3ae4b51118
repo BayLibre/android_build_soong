@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0852fe8d_0d9e84fe",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-11-03T01:13:22Z",
+      "side": 1,
+      "message": "I moved this up to put it next to the visibility property.",
+      "revId": "bb892f5b6c76c8ed76dcf355ccab1a3ae4b51118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
