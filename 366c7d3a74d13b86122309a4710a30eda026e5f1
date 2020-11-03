@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7425def9_710ee827",
+        "filename": "java/app.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-03T17:32:17Z",
+      "side": 0,
+      "message": "These 3 lines become one because the two lists and one map are now all represented with a CLC tree.",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 614,
+        "endChar": 65
+      },
+      "revId": "366c7d3a74d13b86122309a4710a30eda026e5f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca368a9a_85c33689",
+        "filename": "java/app.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-03T17:32:17Z",
+      "side": 0,
+      "message": "These 3 lines become one because the two lists and one map are now all represented with a CLC tree.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 0,
+        "endLine": 1546,
+        "endChar": 0
+      },
+      "revId": "366c7d3a74d13b86122309a4710a30eda026e5f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
