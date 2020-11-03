@@ -22,6 +22,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/rust/config"
 )
 
 var (
@@ -137,6 +138,8 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	output.outputFile = outputFile
 	crate_name := ctx.RustModule().CrateName()
 	targetTriple := ctx.toolchain().RustTriple()
+
+	envVars = append(envVars, "STD_ENV_ARCH="+config.StdEnvArch[ctx.RustModule().Arch().ArchType])
 
 	inputs = append(inputs, main)
 
