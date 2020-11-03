@@ -752,16 +752,24 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 	// Where available copy apex_available properties from the member.
 	if apexAware, ok := variant.(interface{ ApexAvailable() []string }); ok {
 		apexAvailable := apexAware.ApexAvailable()
+		if len(apexAvailable) == 0 {
+			// //apex_available:platform is the default.
+			apexAvailable = []string{android.AvailableToPlatform}
+		}
 
 		// Add in any baseline apex available settings.
 		apexAvailable = append(apexAvailable, apex.BaselineApexAvailable(member.Name())...)
 
-		if len(apexAvailable) > 0 {
-			// Remove duplicates and sort.
-			apexAvailable = android.FirstUniqueStrings(apexAvailable)
-			sort.Strings(apexAvailable)
+		// Remove duplicates and sort.
+		apexAvailable = android.FirstUniqueStrings(apexAvailable)
 
-			m.AddProperty("apex_available", apexAvailable)
+		if len(apexAvailable) > 0 {
+			if len(apexAvailable) == 1 && apexAvailable[0] == android.AvailableToPlatform {
+				// Don't add the property if it's just the default ["//apex_available:platform"].
+			} else {
+				sort.Strings(apexAvailable)
+				m.AddProperty("apex_available", apexAvailable)
+			}
 		}
 	}
 
