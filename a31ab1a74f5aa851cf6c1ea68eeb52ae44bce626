@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c170190e_8a282da9",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-03T07:02:58Z",
+      "side": 1,
+      "message": "Removed SdkLibrary from checking, and modified related tests.",
+      "parentUuid": "671c47e9_ac6857ec",
+      "range": {
+        "startLine": 752,
+        "startChar": 18,
+        "endLine": 752,
+        "endChar": 28
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2cf577f_85667582",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-02T07:12:23Z",
       "side": 1,
       "message": "You don\u0027t need to deliver interface with it.\nAdding the check for implementation of interface will be sufficient for this.\nFor example, add `var _ javaSdkExternalDependency \u003d (*Module)(nil)` in sdk_library_external.go.",
+      "range": {
+        "startLine": 753,
+        "startChar": 49,
+        "endLine": 753,
+        "endChar": 77
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6558c53_0a4caa2c",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-03T07:02:58Z",
+      "side": 1,
+      "message": "Modified to deliver *Library type to parameter so it can be interpreted as javaSdkLibraryEnforceContext(previous javaSdkExternalDependency), and added interface check code at sdk_library_external.go",
+      "parentUuid": "c2cf577f_85667582",
       "range": {
         "startLine": 753,
         "startChar": 49,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f43fd8e0_e85d1835",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-03T07:02:58Z",
+      "side": 1,
+      "message": "I think it\u0027s naming is confusing. It looks more feasible to use name Context than Dependency here.\n\nI didn\u0027t understand what existing dependency check is.",
+      "parentUuid": "b1210085_aad1e02a",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8bccf8e_bca987c4",
         "filename": "java/sdk_library_external.go",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-02T07:12:23Z",
       "side": 1,
       "message": "We don\u0027t need this if you use get *Module as a input parameter of checkJavaSdkLibraryEnforce instead of using javaSdkExternalDependency.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "320e2a61_fd27f222",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-03T07:02:58Z",
+      "side": 1,
+      "message": "I think checkJavaSdkLibraryEnforce needs to use javaSdkLibraryEnforceContext interface as parameter type because passed parameter from java.go is *java.Library and cannot be casted to *java.Module because both are struct.",
+      "parentUuid": "f8bccf8e_bca987c4",
       "range": {
         "startLine": 57,
         "startChar": 1,
