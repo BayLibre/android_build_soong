@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "274a6ec2_ebeb3fdd",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-03T17:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a166229_a45aaf05",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "fd04626aa63af46e5353a45303096cc8a9214516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34e7c780_395afc20",
@@ -54,6 +78,24 @@
       "writtenOn": "2020-11-02T16:05:04Z",
       "side": 1,
       "message": "Could you document this method please?",
+      "revId": "fd04626aa63af46e5353a45303096cc8a9214516",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "874153ed_f94263d5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-03T17:38:47Z",
+      "side": 1,
+      "message": "Done. I added a short comment as for SDK libraries this method is precise, so no need for any additional explanation. Let me know if you had something else in mind.",
+      "parentUuid": "34e7c780_395afc20",
       "revId": "fd04626aa63af46e5353a45303096cc8a9214516",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
