@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae1d0ca_c0494eae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-11-03T19:05:43Z",
+      "side": 1,
+      "message": "Liz, could you stamp this one please? Colin\u0027s out but it was approved internally already, found out after I could submit in AOSP directly.",
+      "revId": "72f1849c71da9e10e4adf00351d7498f66aaba83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
