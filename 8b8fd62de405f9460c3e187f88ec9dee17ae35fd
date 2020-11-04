@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb155687_80716465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-04T17:09:46Z",
+      "side": 1,
+      "message": "This environment variable only needs to be set for the build of libstd and nothing else. This is different from the other env variables because they aren\u0027t standard expectations of cargo packages, they\u0027re something special in the rustc build system.\n\nI think that a change that sets it for the build of every Rust package is probably overly broad, but I also don\u0027t think it\u0027s possible to set env variables in blueprint files. ccing Colin in case he has an idea here.\n\nOverall, I think the only actual negatives of landing this way are:\n* Risk of other rust packages using STD_ENV_ARCH after discovering it\n  * Could be mitigated by an explicit list of packages to do this for? This seems anti-modular though.\n* Likely bitrot (if libstd changes its build mechanisms, it\u0027s unlikely folks will realize to go remove this environment variable)",
+      "revId": "8b8fd62de405f9460c3e187f88ec9dee17ae35fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
