@@ -22,6 +22,30 @@
       },
       "revId": "e7e56e6a360f93fa77d6ffd43319e0324285a979",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370abd47_03d8c9aa",
+        "filename": "ui/metrics/event.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-11-04T21:35:39Z",
+      "side": 1,
+      "message": "Done. The existing metrics system is not very clear. I need to change the implementation detail once we do not become a sequential step system in Soong UI.",
+      "parentUuid": "a648ce57_6b6fa4a3",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "e7e56e6a360f93fa77d6ffd43319e0324285a979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
