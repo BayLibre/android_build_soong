@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a648ce57_6b6fa4a3",
+        "filename": "ui/metrics/event.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-04T20:51:16Z",
+      "side": 1,
+      "message": "can you add a comment about why we\u0027re looking at the last element?",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "e7e56e6a360f93fa77d6ffd43319e0324285a979",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
