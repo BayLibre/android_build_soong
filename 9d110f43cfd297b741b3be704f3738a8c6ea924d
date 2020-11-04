@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c680e169_2547fa49",
+        "filename": "scripts/setup-android-build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-11-04T20:45:34Z",
+      "side": 1,
+      "message": "mm and mmm has been deprecated. When mm/mmm gets invoked, it gets redirected to mma/mmma. You should update the option to m, mma and mmma.",
+      "range": {
+        "startLine": 88,
+        "startChar": 46,
+        "endLine": 88,
+        "endChar": 48
+      },
+      "revId": "9d110f43cfd297b741b3be704f3738a8c6ea924d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
