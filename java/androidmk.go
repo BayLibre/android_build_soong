@@ -165,6 +165,21 @@ func (j *Test) AndroidMkEntries() []android.AndroidMkEntries {
 	return entriesList
 }
 
+func (j *JavaTestImport) AndroidMkEntries() []android.AndroidMkEntries {
+	entriesList := j.Import.AndroidMkEntries()
+	entries := &entriesList[0]
+	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
+		testSuiteComponent(entries, j.testProperties.Test_suites)
+		if j.testConfig != nil {
+			entries.SetPath("LOCAL_FULL_TEST_CONFIG", j.testConfig)
+		}
+		androidMkWriteTestData(j.data, entries)
+		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", j.testProperties.Test_mainline_modules...)
+	})
+
+	return entriesList
+}
+
 func androidMkWriteExtraTestConfigs(extraTestConfigs android.Paths, entries *android.AndroidMkEntries) {
 	if len(extraTestConfigs) > 0 {
 		entries.AddStrings("LOCAL_EXTRA_FULL_TEST_CONFIGS", extraTestConfigs.Strings()...)
