@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a271d5_259ac8e7",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-04T18:52:04Z",
+      "side": 1,
+      "message": "Nit: This if/elseif feels like it would be good to put in a helper function.",
+      "revId": "4cc5467a8d9745a94687d64639c8c71a1b943703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7a0718_7bc39fa9",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-04T18:52:04Z",
+      "side": 1,
+      "message": "Add an else {\npanic()\n}\nof some kind here in order to:\n\n* Ensure that proto.plugin was actually set\n* Make sure that if we add another enum member to proto.plugin, we know to add another clause here.",
+      "revId": "4cc5467a8d9745a94687d64639c8c71a1b943703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "184d9a3f_763d24ef",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-04T18:52:04Z",
+      "side": 1,
+      "message": "This seems to be missing plugin: Grpc ?",
+      "revId": "4cc5467a8d9745a94687d64639c8c71a1b943703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ed95f7f_3d8b74cb",
+        "filename": "rust/protobuf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-04T18:52:04Z",
+      "side": 1,
+      "message": "This test appears to be copypasta\u0027d, and wasn\u0027t effective in catching that the protoc command was incomplete.",
+      "revId": "4cc5467a8d9745a94687d64639c8c71a1b943703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30cbf23d_0fbc54ca",
+        "filename": "rust/protobuf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-04T18:52:04Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 56,
+        "startChar": 47,
+        "endLine": 56,
+        "endChar": 60
+      },
+      "revId": "4cc5467a8d9745a94687d64639c8c71a1b943703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
