@@ -2267,16 +2267,6 @@ type testHelperLibraryProperties struct {
 	Test_suites []string `android:"arch_variant"`
 }
 
-type prebuiltTestProperties struct {
-	// list of compatibility suites (for example "cts", "vts") that the module should be
-	// installed into.
-	Test_suites []string `android:"arch_variant"`
-
-	// the name of the test configuration (for example "AndroidTest.xml") that should be
-	// installed with the module.
-	Test_config *string `android:"path,arch_variant"`
-}
-
 type Test struct {
 	Library
 
@@ -2302,10 +2292,11 @@ type TestHelperLibrary struct {
 type JavaTestImport struct {
 	Import
 
-	prebuiltTestProperties prebuiltTestProperties
+	testProperties         testProperties
 
 	testConfig android.Path
 	dexJarFile android.Path
+	data       android.Paths
 }
 
 func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -2338,8 +2329,10 @@ func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContex
 }
 
 func (j *JavaTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.prebuiltTestProperties.Test_config, nil,
-		j.prebuiltTestProperties.Test_suites, nil)
+	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
+		j.testProperties.Test_suites, j.testProperties.Auto_gen_config)
+
+	j.data = android.PathsForModuleSrc(ctx, j.testProperties.Data)
 
 	j.Import.GenerateAndroidBuildActions(ctx)
 }
@@ -2453,7 +2446,7 @@ func JavaTestImportFactory() android.Module {
 
 	module.AddProperties(
 		&module.Import.properties,
-		&module.prebuiltTestProperties)
+		&module.testProperties)
 
 	module.Import.properties.Installable = proptools.BoolPtr(true)
 
