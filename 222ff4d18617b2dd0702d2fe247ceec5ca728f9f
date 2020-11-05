@@ -34,6 +34,24 @@
       "parentUuid": "6e67e007_51c2b578",
       "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad6f5d7f_01a809e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-05T17:11:09Z",
+      "side": 1,
+      "message": "Sorry, wasn\u0027t intentional -- I\u0027ll approve this but I\u0027d be happy to update bpdoc instead.",
+      "parentUuid": "45d5ed0d_f3c63a12",
+      "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
