@@ -52,6 +52,24 @@
       "parentUuid": "45d5ed0d_f3c63a12",
       "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e8f3f6_42451c7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-05T17:17:02Z",
+      "side": 1,
+      "message": "Then, how about reverting http://aosp/1487936 instead? This will need to be reverted later once you fix it on the bpdoc side.",
+      "parentUuid": "ad6f5d7f_01a809e6",
+      "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
