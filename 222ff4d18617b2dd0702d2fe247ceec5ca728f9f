@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e67e007_51c2b578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-05T14:32:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we fix this on the bpdoc side instead?",
+      "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
