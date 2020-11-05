@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a567496_6956143b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-11-05T19:50:09Z",
+      "side": 1,
+      "message": "As reported on the mailing list https://groups.google.com/d/msgid/android-building/b15087b7-fb63-4e96-a3c8-c72092c1c3e2n%40googlegroups.com",
+      "revId": "5934cb0e8c7c5473d712b3377266dd08dedd908d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
