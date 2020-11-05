@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e193015_39f40566",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-05T16:42:13Z",
+      "side": 1,
+      "message": "I think this is fine for now. I\u0027d prefer if it were in the Android.bp for the sysroot, as the sysroot shouldn\u0027t depend on the version of Soong for build semantics, but this mitigates most of the ways I could see it going realistically wrong.",
+      "revId": "71512f32655645d0279b1fd7b3d9f4fe5767ca10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
