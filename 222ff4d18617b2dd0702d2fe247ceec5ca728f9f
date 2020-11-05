@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t we fix this on the bpdoc side instead?",
       "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d5ed0d_f3c63a12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-05T14:42:51Z",
+      "side": 1,
+      "message": "https://github.com/google/blueprint/pull/326/files#diff-2a36d2d9185ac503b93d4f08fe8d5757ac687c6a30c7c8ad5f5c4ac672fd6c85R108-R113 suggests \"list of \u003ctype\u003e\" without the plural is intentional. Since Liz authored the change, I\u0027ll let her decide which is preferred :)",
+      "parentUuid": "6e67e007_51c2b578",
+      "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
