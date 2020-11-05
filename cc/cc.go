@@ -52,6 +52,8 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		ctx.BottomUp("sysprop_cc", SyspropMutator).Parallel()
 		ctx.BottomUp("vendor_snapshot", VendorSnapshotMutator).Parallel()
 		ctx.BottomUp("vendor_snapshot_source", VendorSnapshotSourceMutator).Parallel()
+		ctx.BottomUp("recovery_snapshot", RecoverySnapshotMutator).Parallel()
+		ctx.BottomUp("recovery_snapshot_source", RecoverySnapshotSourceMutator).Parallel()
 	})
 
 	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -2608,7 +2610,7 @@ func baseLibName(depName string) string {
 }
 
 func (c *Module) makeLibName(ctx android.ModuleContext, ccDep LinkableInterface, depName string) string {
-	vendorSuffixModules := vendorSuffixModules(ctx.Config())
+	vendorSuffixModules := suffixModules(ctx.Config())
 	vendorPublicLibraries := vendorPublicLibraries(ctx.Config())
 
 	libName := baseLibName(depName)
@@ -2625,11 +2627,7 @@ func (c *Module) makeLibName(ctx android.ModuleContext, ccDep LinkableInterface,
 				return baseName + ".vendor"
 			}
 
-			if vendorSuffixModules[baseName] {
-				return baseName + ".vendor"
-			} else {
-				return baseName
-			}
+			return baseName + vendorSuffixModules[baseName]
 		}
 	}
 
