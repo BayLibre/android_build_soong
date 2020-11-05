@@ -505,7 +505,7 @@ func (c *vndkPrebuiltLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, en
 	})
 }
 
-func (c *vendorSnapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
+func (c *snapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	// Each vendor snapshot is exported to androidMk only when BOARD_VNDK_VERSION != current
 	// and the version of the prebuilt is same as BOARD_VNDK_VERSION.
 	if c.shared() {
@@ -522,9 +522,7 @@ func (c *vendorSnapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, 
 		entries.SubName += ".cfi"
 	}
 
-	if c.androidMkVendorSuffix {
-		entries.SubName += vendorSuffix
-	}
+	entries.SubName += c.androidMkSuffix
 
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		c.libraryDecorator.androidMkWriteExportedFlags(entries)
@@ -549,28 +547,18 @@ func (c *vendorSnapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, 
 	})
 }
 
-func (c *vendorSnapshotBinaryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
+func (c *snapshotBinaryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	entries.Class = "EXECUTABLES"
-
-	if c.androidMkVendorSuffix {
-		entries.SubName = vendorSuffix
-	} else {
-		entries.SubName = ""
-	}
+	entries.SubName = c.androidMkSuffix
 
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		entries.AddStrings("LOCAL_MODULE_SYMLINKS", c.Properties.Symlinks...)
 	})
 }
 
-func (c *vendorSnapshotObjectLinker) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
+func (c *snapshotObjectLinker) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	entries.Class = "STATIC_LIBRARIES"
-
-	if c.androidMkVendorSuffix {
-		entries.SubName = vendorSuffix
-	} else {
-		entries.SubName = ""
-	}
+	entries.SubName = c.androidMkSuffix
 
 	entries.ExtraFooters = append(entries.ExtraFooters,
 		func(w io.Writer, name, prefix, moduleDir string, entries *android.AndroidMkEntries) {
