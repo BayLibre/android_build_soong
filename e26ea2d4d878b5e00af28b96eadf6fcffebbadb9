@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c307cb_a227172f",
+        "filename": "android/queryview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2020-11-05T14:30:24Z",
+      "side": 1,
+      "message": "Gerrit doesn\u0027t support moving files?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "e26ea2d4d878b5e00af28b96eadf6fcffebbadb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
