@@ -70,6 +70,23 @@
       "parentUuid": "ad6f5d7f_01a809e6",
       "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72cca63c_46d84ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-05T17:17:28Z",
+      "side": 1,
+      "message": "Also, is this something we can set up a presubmit test for?",
+      "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
