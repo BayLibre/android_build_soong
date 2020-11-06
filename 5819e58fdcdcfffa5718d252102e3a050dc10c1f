@@ -22,6 +22,30 @@
       },
       "revId": "5819e58fdcdcfffa5718d252102e3a050dc10c1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "778cb1bd_d31e9309",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-06T19:04:08Z",
+      "side": 1,
+      "message": "I think this is appropriate b/c other proto-generators should not be assumed to depend on protoc-gen-rust.",
+      "parentUuid": "30f4a419_f23c7918",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 67
+      },
+      "revId": "5819e58fdcdcfffa5718d252102e3a050dc10c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
