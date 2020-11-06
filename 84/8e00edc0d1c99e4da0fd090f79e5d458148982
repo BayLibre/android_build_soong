@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Jingwen Chen <jingwen@google.com>
+Verified+1: Lukács T. Berki <lberki@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Lukács T. Berki <lberki@google.com>
+Submitted-at: Fri, 06 Nov 2020 13:58:06 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1490596
+Project: platform/build/soong
+Branch: refs/heads/master
