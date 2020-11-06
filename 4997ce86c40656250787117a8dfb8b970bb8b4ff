@@ -16,6 +16,63 @@
       "message": "Adding Colin as Soong owner; I\u0027ll review this ASAP.\n",
       "revId": "4997ce86c40656250787117a8dfb8b970bb8b4ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7a1843_1144c36a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-06T01:15:36Z",
+      "side": 1,
+      "message": "Is this still necessary?",
+      "revId": "4997ce86c40656250787117a8dfb8b970bb8b4ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc7eadd_7544a1f0",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-06T01:15:36Z",
+      "side": 1,
+      "message": "This is the line that adds dependencies on data_native_bins for host tests.  It should probably be moved somewhere shared with the Test module, since those can be host modules if they specify host_supported: true.",
+      "revId": "4997ce86c40656250787117a8dfb8b970bb8b4ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20241019_0f7dacbd",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2350,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-06T01:15:36Z",
+      "side": 1,
+      "message": "Nothing adds dependencies with dataNativeBinsTag for this module type, so this won\u0027t do anything.",
+      "range": {
+        "startLine": 2347,
+        "startChar": 0,
+        "endLine": 2350,
+        "endChar": 0
+      },
+      "revId": "4997ce86c40656250787117a8dfb8b970bb8b4ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
