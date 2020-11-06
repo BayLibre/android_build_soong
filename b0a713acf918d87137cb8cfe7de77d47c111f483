@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a76eead9_67c8dee1",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-06T01:36:20Z",
+      "side": 0,
+      "message": "These are moved to image.go where the functions are used.",
+      "range": {
+        "startLine": 3011,
+        "startChar": 0,
+        "endLine": 3042,
+        "endChar": 0
+      },
+      "revId": "b0a713acf918d87137cb8cfe7de77d47c111f483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
