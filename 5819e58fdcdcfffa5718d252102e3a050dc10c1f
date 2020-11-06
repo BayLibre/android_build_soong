@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f4a419_f23c7918",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-06T13:16:38Z",
+      "side": 1,
+      "message": "nit: Should we just define this outside of the if/else to deduplicate with above? (This can be done in a follow-on CL if you\u0027d like.)",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 67
+      },
+      "revId": "5819e58fdcdcfffa5718d252102e3a050dc10c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
