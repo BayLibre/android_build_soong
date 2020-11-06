@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c302de10_f2fd92a6",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-06T21:38:44Z",
+      "side": 1,
+      "message": "Why make this configurable? When would we *not* want well-known-types available to a grpc module?",
+      "revId": "4a9cd64dc0b8efcd17665d397c277eab9699dc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61fbce2a_b2670d0e",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-06T21:38:44Z",
+      "side": 1,
+      "message": "Why is there a static/shared distinction here?",
+      "revId": "4a9cd64dc0b8efcd17665d397c277eab9699dc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829b23c3_3ea2a57e",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-06T21:38:44Z",
+      "side": 1,
+      "message": "Are these going to end up accidentally linked in? I wasn\u0027t under the impression that we needed to link them, just get their include directories.",
+      "revId": "4a9cd64dc0b8efcd17665d397c277eab9699dc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
