@@ -16,6 +16,23 @@
       "message": "I am not sure if adding these as config variables is acceptable, but I can\u0027t think of a better alternative, so inviting Colin.\n\nThese are to include product specific modules into cvd_host_package which has been product agnostic.\n\n",
       "revId": "a89ce759ee5b4f5394c672cc5d49149495f3a03a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1afaa87f_285a6d14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-06T01:04:51Z",
+      "side": 1,
+      "message": "Can this be handled with https://android.googlesource.com/platform/build/soong/#soong-config-variables?  You can skip the soong_config_module_type stuff and access the variables directly from your Go code using ctx.Config().VendorConfig(\"cvd\").String(\"custom_action_config\").",
+      "revId": "a89ce759ee5b4f5394c672cc5d49149495f3a03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
