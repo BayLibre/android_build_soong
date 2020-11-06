@@ -57,7 +57,6 @@ func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps)
 	var protoFlags android.ProtoFlags
 	var pluginPath android.Path
 
-	protoFlags.OutTypeFlag = "--rust_out"
 	outDir := android.PathForModuleOut(ctx)
 
 	pluginPath, protoFlags = proto.setupPlugin(ctx, protoFlags, outDir)
@@ -95,10 +94,11 @@ func (proto *protobufDecorator) setupPlugin(ctx ModuleContext, protoFlags androi
 
 	if proto.plugin == Protobuf {
 		pluginPath = ctx.Config().HostToolPath(ctx, "protoc-gen-rust")
+		protoFlags.OutTypeFlag = "--rust_out"
 		protoFlags.Flags = append(protoFlags.Flags, "--plugin="+pluginPath.String())
 	} else if proto.plugin == Grpc {
 		pluginPath = ctx.Config().HostToolPath(ctx, "grpc_rust_plugin")
-		protoFlags.Flags = append(protoFlags.Flags, "--grpc_out="+outDir.String())
+		protoFlags.OutTypeFlag = "--grpc_out"
 		protoFlags.Flags = append(protoFlags.Flags, "--plugin=protoc-gen-grpc="+pluginPath.String())
 	} else {
 		ctx.ModuleErrorf("Unknown protobuf plugin type requested")
