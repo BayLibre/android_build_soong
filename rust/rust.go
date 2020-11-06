@@ -713,6 +713,9 @@ func (mod *Module) begin(ctx BaseModuleContext) {
 	if mod.coverage != nil {
 		mod.coverage.begin(ctx)
 	}
+	if mod.sourceProvider != nil {
+		mod.sourceProvider.begin(ctx)
+	}
 }
 
 func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {

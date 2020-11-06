@@ -38,6 +38,7 @@ type BaseSourceProvider struct {
 var _ SourceProvider = (*BaseSourceProvider)(nil)
 
 type SourceProvider interface {
+	begin(ctx BaseModuleContext)
 	GenerateSource(ctx ModuleContext, deps PathDeps) android.Path
 	Srcs() android.Paths
 	SourceProviderProps() []interface{}
@@ -45,6 +46,8 @@ type SourceProvider interface {
 	setSubName(subName string)
 	setOutputFiles(outputFiles android.Paths)
 }
+
+func (sp *BaseSourceProvider) begin(ctx BaseModuleContext) {}
 
 func (sp *BaseSourceProvider) Srcs() android.Paths {
 	return sp.OutputFiles

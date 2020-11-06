@@ -79,6 +79,12 @@ func GatherRequiredDepsForTest() string {
 			nocrt: true,
 			system_shared_libs: [],
 		}
+		cc_library {
+			name: "libprotoc",
+			no_libcrt: true,
+			nocrt: true,
+			system_shared_libs: [],
+		}
 		rust_library {
 			name: "libstd",
 			crate_name: "std",
@@ -100,6 +106,18 @@ func GatherRequiredDepsForTest() string {
 		rust_library {
 			name: "libprotobuf",
 			crate_name: "protobuf",
+			srcs: ["foo.rs"],
+			host_supported: true,
+		}
+		rust_library {
+			name: "libgrpcio",
+			crate_name: "grpcio",
+			srcs: ["foo.rs"],
+			host_supported: true,
+		}
+		rust_library {
+			name: "libfutures",
+			crate_name: "futures",
 			srcs: ["foo.rs"],
 			host_supported: true,
 		}
