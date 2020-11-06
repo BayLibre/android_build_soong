@@ -58,3 +58,22 @@ bootstrap_go_package {
         "parser/parser_test.go",
     ],
 }
+
+blueprint_go_binary {
+    name: "mk2star",
+    srcs: ["cmd/mk2star_main.go"],
+    deps: [
+        "mk2star-lib",
+        "androidmk-parser",
+    ],
+}
+
+bootstrap_go_package {
+    name: "mk2star-lib",
+    pkgPath: "android/soong/androidmk/mk2star",
+    srcs: [
+        "mk2star/mk2star.go",
+        "mk2star/config_variables.go",
+    ],
+    deps: ["androidmk-parser"],
+}
