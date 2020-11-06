@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca5f9530_3e87abd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-06T01:32:08Z",
+      "side": 1,
+      "message": "I updated to make \u0027product_available\u0027 create the product variants.\nDuring the transition phase, \u0027vendor_available\u0027 will create product variant, too.\nI will update the \u0027vendor_available\u0027 after updating the Android.bp files that need product variants.",
+      "revId": "346701e1b41a33ed4607cb157bdbc54b40d9ee1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
