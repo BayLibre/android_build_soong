@@ -16,6 +16,8 @@ package rust
 
 import (
 	"android/soong/android"
+	"fmt"
+	"strings"
 )
 
 var (
@@ -44,6 +46,9 @@ type ProtobufProperties struct {
 
 	// List of additional flags to pass to aprotoc
 	Proto_flags []string `android:"arch_variant"`
+
+	// Whether to import well known types
+	Well_known_types bool `android:"arch_variant"`
 }
 
 type protobufDecorator struct {
@@ -83,11 +88,33 @@ func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps)
 
 	rule := android.NewRuleBuilder()
 	android.ProtoRule(ctx, rule, protoFile.Path(), protoFlags, protoFlags.Deps, outDir, depFile, outputs)
-	rule.Command().Text("printf '// @generated\\npub mod %s;\\n' '" + stem + "' >").Output(modFile)
+	rule.Command().Text("printf '" + proto.getModFileContents(ctx) + "' >").Output(modFile)
 	rule.Build(pctx, ctx, "protoc_"+protoFile.Path().Rel(), "protoc "+protoFile.Path().Rel())
 
 	proto.BaseSourceProvider.OutputFiles = android.Paths{modFile, stemFile}
 	return modFile
+}
+
+func (proto *protobufDecorator) getModFileContents(ctx ModuleContext) string {
+	stem := proto.BaseSourceProvider.getStem(ctx)
+	lines := []string{
+		"// @generated",
+		fmt.Sprintf("pub mod %s;", stem),
+	}
+
+	if proto.plugin == Grpc {
+		lines = append(lines, fmt.Sprintf("pub mod %s_grpc;", stem))
+	}
+
+	if proto.Properties.Well_known_types {
+		lines = append(
+			lines,
+			"pub mod empty {",
+			"    pub use protobuf::well_known_types::Empty;",
+			"}")
+	}
+
+	return strings.Join(lines, "\\n")
 }
 
 func (proto *protobufDecorator) setupPlugin(ctx ModuleContext, protoFlags android.ProtoFlags, outDir android.ModuleOutPath) (android.Paths, android.ProtoFlags) {
@@ -108,6 +135,10 @@ func (proto *protobufDecorator) setupPlugin(ctx ModuleContext, protoFlags androi
 		ctx.ModuleErrorf("Unknown protobuf plugin type requested")
 	}
 
+	if proto.Properties.Well_known_types {
+		protoFlags.Flags = append(protoFlags.Flags, "-Iexternal/protobuf/src/")
+	}
+
 	return pluginPaths, protoFlags
 }
 
@@ -118,6 +149,9 @@ func (proto *protobufDecorator) SourceProviderProps() []interface{} {
 func (proto *protobufDecorator) SourceProviderDeps(ctx DepsContext, deps Deps) Deps {
 	deps = proto.BaseSourceProvider.SourceProviderDeps(ctx, deps)
 	deps.Rustlibs = append(deps.Rustlibs, "libprotobuf")
+	if proto.plugin == Grpc {
+		deps.Rustlibs = append(deps.Rustlibs, "libgrpcio", "libfutures")
+	}
 	return deps
 }
 

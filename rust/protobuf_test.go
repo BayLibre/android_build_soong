@@ -60,6 +60,14 @@ func TestRustGrpcio(t *testing.T) {
 	if !android.InList("libprotobuf", librust_grpcio_module.Properties.AndroidMkDylibs) {
 		t.Errorf("libprotobuf dependency missing for rust_grpcio (dependency missing from AndroidMkDylibs)")
 	}
+	// Check that libgrpcio is added as a dependency.
+	if !android.InList("libgrpcio", librust_grpcio_module.Properties.AndroidMkDylibs) {
+		t.Errorf("libgrpcio dependency missing for rust_grpcio (dependency missing from AndroidMkDylibs)")
+	}
+	// Check that libgrpcio is added as a dependency.
+	if !android.InList("libfutures", librust_grpcio_module.Properties.AndroidMkDylibs) {
+		t.Errorf("libfutures dependency missing for rust_grpcio (dependency missing from AndroidMkDylibs)")
+	}
 
 	// Make sure the correct plugin is being used.
 	librust_grpcio_out := ctx.ModuleForTests("librust_grpcio", "android_arm64_armv8-a_source").Output("buf.rs")

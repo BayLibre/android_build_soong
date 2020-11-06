@@ -103,6 +103,18 @@ func GatherRequiredDepsForTest() string {
 			srcs: ["foo.rs"],
 			host_supported: true,
 		}
+		rust_library {
+			name: "libgrpcio",
+			crate_name: "grpcio",
+			srcs: ["foo.rs"],
+			host_supported: true,
+		}
+		rust_library {
+			name: "libfutures",
+			crate_name: "futures",
+			srcs: ["foo.rs"],
+			host_supported: true,
+		}
 
 ` + cc.GatherRequiredDepsForTest(android.NoOsType)
 	return bp
