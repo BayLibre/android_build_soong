@@ -87,6 +87,42 @@
       "message": "Also, is this something we can set up a presubmit test for?",
       "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc3c6ba_9e45a691",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-06T00:02:55Z",
+      "side": 1,
+      "message": "Yes! Part of the productionizing plan. We don\u0027t have a ci.android.com CI config that runs Bazel yet. Will do as we set that up.",
+      "parentUuid": "72cca63c_46d84ebc",
+      "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7dcfd9_7580efc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-06T00:02:55Z",
+      "side": 1,
+      "message": "I\u0027ll merge this in to keep things running, and revert when https://github.com/google/blueprint/pull/329 makes it into AOSP.",
+      "parentUuid": "71e8f3f6_42451c7e",
+      "revId": "222ff4d18617b2dd0702d2fe247ceec5ca728f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
