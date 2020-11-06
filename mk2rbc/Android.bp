@@ -1,0 +1,20 @@
+blueprint_go_binary {
+    name: "mk2rbc",
+    srcs: ["cmd/mk2rbc.go"],
+    deps: [
+        "mk2rbc-lib",
+        "androidmk-parser",
+    ],
+}
+
+bootstrap_go_package {
+    name: "mk2rbc-lib",
+    pkgPath: "android/soong/mk2rbc",
+    srcs: [
+        "mk2rbc.go",
+        "android_products.go",
+        "config_variables.go",
+        "soong_variables.go",
+    ],
+    deps: ["androidmk-parser"],
+}
