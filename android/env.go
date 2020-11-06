@@ -41,7 +41,10 @@ func init() {
 	// access originalEnv with dependencies.  Store the value where soong_build can find it, it will manually
 	// ensure the dependencies are created.
 	soongDelveListen = os.Getenv("SOONG_DELVE")
-	soongDelvePath, _ = exec.LookPath("dlv")
+	soongDelvePath = os.Getenv("SOONG_DELVE_PATH")
+	if soongDelvePath == "" {
+		soongDelvePath, _ = exec.LookPath("dlv")
+	}
 
 	originalEnv = make(map[string]string)
 	soongDelveEnv = []string{}
