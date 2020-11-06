@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4c40c3b_cf5db322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-06T00:57:55Z",
+      "side": 1,
+      "message": "I am not sure if adding these as config variables is acceptable, but I can\u0027t think of a better alternative, so inviting Colin.\n\nThese are to include product specific modules into cvd_host_package which has been product agnostic.\n\n",
+      "revId": "a89ce759ee5b4f5394c672cc5d49149495f3a03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
