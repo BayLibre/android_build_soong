@@ -51,6 +51,24 @@
       "parentUuid": "1afaa87f_285a6d14",
       "revId": "a89ce759ee5b4f5394c672cc5d49149495f3a03a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b217fc1f_0bd87e1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2020-11-06T20:52:14Z",
+      "side": 1,
+      "message": "Awesome, thank you Colin \u0026 Jiyong for the sugestion! Added that to patchset 22 of https://r.android.com/1472365. I\u0027ll abandon this change.",
+      "parentUuid": "78b74527_018cc3ae",
+      "revId": "a89ce759ee5b4f5394c672cc5d49149495f3a03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
