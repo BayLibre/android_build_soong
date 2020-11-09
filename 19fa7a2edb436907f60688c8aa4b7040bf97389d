@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb9401f2_fb8d65a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-11-09T18:59:06Z",
+      "side": 1,
+      "message": "probably no reason to keep around \"just in case\".. api_only java_sdk_library subsumes this.",
+      "revId": "19fa7a2edb436907f60688c8aa4b7040bf97389d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
