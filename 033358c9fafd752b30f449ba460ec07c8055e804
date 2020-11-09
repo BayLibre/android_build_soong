@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c038806_522d4ba3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-11-09T09:17:19Z",
+      "side": 1,
+      "message": "If you submit this as-is, there\u0027s going to be merge conflicts, as the original change had a Merged-In tag.",
+      "revId": "033358c9fafd752b30f449ba460ec07c8055e804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
