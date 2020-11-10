@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b190f76_40e577fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-10T02:22:03Z",
+      "side": 1,
+      "message": "Whoops, this doesn\u0027t work because apparently we still need to pull my blueprint change into AOSP?\nhttps://github.com/google/blueprint/commit/bcdfcceeb2330fa2801ef9f701df57b60d2edd13\nWhat\u0027s the process for this, again?",
+      "revId": "97b9783a4cfbad1a75e04a13932b8220ef2f3549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
