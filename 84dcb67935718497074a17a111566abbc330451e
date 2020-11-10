@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe200eeb_16deedeb",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-10T21:39:55Z",
+      "side": 1,
+      "message": "Is this the only well known type? Do we want a template file for this?",
+      "revId": "84dcb67935718497074a17a111566abbc330451e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
