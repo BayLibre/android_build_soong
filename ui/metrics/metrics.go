@@ -15,8 +15,10 @@
 package metrics
 
 import (
+	"encoding/xml"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"runtime"
 	"strings"
 	"time"
@@ -73,6 +75,47 @@ func (m *Metrics) BuildConfig(b *soong_metrics_proto.BuildConfig) {
 
 func (m *Metrics) SystemResourceInfo(b *soong_metrics_proto.SystemResourceInfo) {
 	m.metrics.SystemResourceInfo = b
+}
+
+// Repo collects information about the project repository such as the repo
+// name, the branch (revision) and the repo URL.
+func (m *Metrics) Repo(topDir string) error {
+	xmlFilename := filepath.Join(topDir, ".repo", "manifests", "default.xml")
+	xmlData, err := ioutil.ReadFile(xmlFilename)
+	if err != nil {
+		return err
+	}
+
+	mft := &struct {
+		Remotes []struct {
+			Name   string `xml:"name,attr"`
+			Review string `xml:"review,attr"`
+		} `xml:"remote"`
+		Default struct {
+			Revision string `xml:"revision,attr"`
+			Remote   string `xml:"remote,attr"`
+		} `xml:"default"`
+	}{}
+	repoUrl := func() string {
+		for _, r := range mft.Remotes {
+			if r.Name == mft.Default.Remote {
+				return r.Review
+			}
+		}
+		return ""
+	}
+
+	if err := xml.Unmarshal(xmlData, mft); err != nil {
+		return err
+	}
+
+	m.metrics.Repo = &soong_metrics_proto.Repo{
+		DefaultBranchName: proto.String(mft.Default.Revision),
+		DefaultRepoName:   proto.String(mft.Default.Remote),
+		DefaultRepoUrl:    proto.String(repoUrl()),
+	}
+
+	return nil
 }
 
 func (m *Metrics) SetMetadataMetrics(metadata map[string]string) {

@@ -304,6 +304,12 @@ func storeConfigMetrics(ctx Context, config Config) {
 		AvailableCpus:       proto.Int32(int32(runtime.NumCPU())),
 	}
 	ctx.Metrics.SystemResourceInfo(s)
+
+	if topDir, err := os.Getwd(); err == nil {
+		if err := ctx.Metrics.Repo(topDir); err != nil {
+			ctx.Verbosef("Error on storing repository information to the metrics system: %v", err)
+		}
+	}
 }
 
 // getConfigArgs processes the command arguments based on the build action and creates a set of new
