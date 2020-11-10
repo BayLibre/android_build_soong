@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f367d0ec_a9993bd7",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-10T15:46:36Z",
+      "side": 1,
+      "message": "Why was this moved from its previous location?",
+      "revId": "1e04109c6e1786fa2d447b1e471638e77f6d18d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
