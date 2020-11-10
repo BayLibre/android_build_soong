@@ -151,6 +151,8 @@ func runKatiBuild(ctx Context, config Config) {
 		"TARGET_DEVICE_DIR="+config.TargetDeviceDir(),
 		"KATI_PACKAGE_MK_DIR="+config.KatiPackageMkDir())
 
+	config.environ.Set(
+		"KATI_BUILD_SUFFIX", config.KatiSuffix()+katiBuildSuffix)
 	runKati(ctx, config, katiBuildSuffix, args, func(env *Environment) {})
 
 	distGzipFile(ctx, config, config.KatiBuildNinjaFile())
@@ -225,6 +227,8 @@ func runKatiPackage(ctx Context, config Config) {
 		"KATI_PACKAGE_MK_DIR=" + config.KatiPackageMkDir(),
 	}
 
+	config.environ.Set(
+		"KATI_PACKAGE_SUFFIX", config.KatiSuffix()+katiPackageSuffix)
 	runKati(ctx, config, katiPackageSuffix, args, func(env *Environment) {
 		env.Allow([]string{
 			// Some generic basics
