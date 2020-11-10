@@ -41,6 +41,12 @@ func androidResourceGlob(ctx android.ModuleContext, dir android.Path) android.Pa
 	return ctx.GlobFiles(filepath.Join(dir.String(), "**/*"), androidResourceIgnoreFilenames)
 }
 
+func androidResourceGlobList(ctx android.ModuleContext, dir android.Path,
+	fileListFile android.WritablePath) {
+
+	android.GlobToListFile(ctx, filepath.Join(dir.String(), "**/*"), androidResourceIgnoreFilenames, fileListFile)
+}
+
 type overlayType int
 
 const (

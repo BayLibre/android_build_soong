@@ -24,6 +24,7 @@ import (
 	"text/scanner"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -330,6 +331,8 @@ type BaseContext interface {
 
 type ModuleContext interface {
 	BaseModuleContext
+
+	blueprintModuleContext() blueprint.ModuleContext
 
 	// Deprecated: use ModuleContext.Build instead.
 	ModuleBuild(pctx PackageContext, params ModuleBuildParams)
@@ -2381,6 +2384,10 @@ func (m *moduleContext) CheckbuildFile(srcPath Path) {
 	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
 }
 
+func (m *moduleContext) blueprintModuleContext() blueprint.ModuleContext {
+	return m.bp
+}
+
 // SrcIsModule decodes module references in the format ":name" into the module name, or empty string if the input
 // was not a module reference.
 func SrcIsModule(s string) (module string) {
@@ -2698,4 +2705,9 @@ type IdeInfo struct {
 func CheckBlueprintSyntax(ctx BaseModuleContext, filename string, contents string) []error {
 	bpctx := ctx.blueprintBaseModuleContext()
 	return blueprint.CheckBlueprintSyntax(bpctx.ModuleFactories(), filename, contents)
+}
+
+// GlobToListFile creates a rule that writes a list of files matching a pattern to a file.
+func GlobToListFile(ctx ModuleContext, pattern string, excludes []string, file WritablePath) {
+	bootstrap.GlobFile(ctx.blueprintModuleContext(), pattern, excludes, file.String())
 }
