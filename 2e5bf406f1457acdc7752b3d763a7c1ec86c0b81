@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb6fcc4c_a24a9c17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-10T02:39:41Z",
+      "side": 1,
+      "message": "Just an alternative - but the trap is still useful if someone CTRL-C the script, perhaps.",
+      "revId": "2e5bf406f1457acdc7752b3d763a7c1ec86c0b81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
