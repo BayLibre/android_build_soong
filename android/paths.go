@@ -51,6 +51,47 @@ type NullPathContext struct {
 func (NullPathContext) AddNinjaFileDeps(...string) {}
 func (ctx NullPathContext) Config() Config         { return ctx.config }
 
+// earlyModulePathContext is a subset of EarlyModuleContext methods required by the
+// Path methods. These path methods can be called before any mutators have run.
+type earlyModulePathContext interface {
+	PathContext
+	PathGlobContext
+
+	ModuleDir() string
+	ModuleErrorf(fmt string, args ...interface{})
+}
+
+var _ earlyModulePathContext = ModuleContext(nil)
+
+// Glob files and directories matching globPattern relative to ModuleDir(),
+// paths in the excludes parameter will be omitted.
+func Glob(ctx earlyModulePathContext, globPattern string, excludes []string) Paths {
+	ret, err := ctx.GlobWithDeps(globPattern, excludes)
+	if err != nil {
+		ctx.ModuleErrorf("glob: %s", err.Error())
+	}
+	return pathsForModuleSrcFromFullPath(ctx, ret, true)
+}
+
+// Glob files matching globPattern relative to ModuleDir(). Directories and
+// paths in the excludes parameter will be omitted.
+func GlobFiles(ctx earlyModulePathContext, globPattern string, excludes []string) Paths {
+	ret, err := ctx.GlobWithDeps(globPattern, excludes)
+	if err != nil {
+		ctx.ModuleErrorf("glob: %s", err.Error())
+	}
+	return pathsForModuleSrcFromFullPath(ctx, ret, false)
+}
+
+// modulePathWithDepsContext is a subset of *ModuleContext methods required by
+// the Path methods that rely on module dependencies having been resolved.
+type modulePathWithDepsContext interface {
+	earlyModulePathContext
+	GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module
+}
+
+var _ modulePathWithDepsContext = ModuleContext(nil)
+
 type ModuleInstallPathContext interface {
 	BaseModuleContext
 
@@ -311,6 +352,29 @@ func (p OutputPaths) Strings() []string {
 	return ret
 }
 
+// Expands Paths to a SourceFileProducer or OutputFileProducer module dependency referenced via ":name" or ":name{.tag}" syntax.
+// If the dependency is not found, a missingErrorDependency is returned.
+// If the module dependency is not a SourceFileProducer or OutputFileProducer, appropriate errors will be returned.
+func getPathsFromModuleDep(ctx modulePathWithDepsContext, path, moduleName, tag string) (Paths, error) {
+	module := ctx.GetDirectDepWithTag(moduleName, sourceOrOutputDepTag(tag))
+	if module == nil {
+		return nil, missingDependencyError{[]string{moduleName}}
+	}
+	if outProducer, ok := module.(OutputFileProducer); ok {
+		outputFiles, err := outProducer.OutputFiles(tag)
+		if err != nil {
+			return nil, fmt.Errorf("path dependency %q: %s", path, err)
+		}
+		return outputFiles, nil
+	} else if tag != "" {
+		return nil, fmt.Errorf("path dependency %q is not an output file producing module", path)
+	} else if srcProducer, ok := module.(SourceFileProducer); ok {
+		return srcProducer.Srcs(), nil
+	} else {
+		return nil, fmt.Errorf("path dependency %q is not a source file producing module", path)
+	}
+}
+
 // PathsAndMissingDepsForModuleSrcExcludes returns Paths rooted from the module's local source directory, excluding
 // paths listed in the excludes arguments, and a list of missing dependencies.  It expands globs, references to
 // SourceFileProducer modules using the ":name" syntax, and references to OutputFileProducer modules using the
@@ -319,7 +383,7 @@ func (p OutputPaths) Strings() []string {
 // path_properties mutator.  If ctx.Config().AllowMissingDependencies() is true then any missing SourceFileProducer or
 // OutputFileProducer dependencies will be returned, and they will NOT cause the module to be marked as having missing
 // dependencies.
-func PathsAndMissingDepsForModuleSrcExcludes(ctx ModuleContext, paths, excludes []string) (Paths, []string) {
+func PathsAndMissingDepsForModuleSrcExcludes(ctx modulePathWithDepsContext, paths, excludes []string) (Paths, []string) {
 	prefix := pathForModuleSrc(ctx).String()
 
 	var expandedExcludes []string
@@ -331,23 +395,13 @@ func PathsAndMissingDepsForModuleSrcExcludes(ctx ModuleContext, paths, excludes 
 
 	for _, e := range excludes {
 		if m, t := SrcIsModuleWithTag(e); m != "" {
-			module := ctx.GetDirectDepWithTag(m, sourceOrOutputDepTag(t))
-			if module == nil {
-				missingExcludeDeps = append(missingExcludeDeps, m)
-				continue
-			}
-			if outProducer, ok := module.(OutputFileProducer); ok {
-				outputFiles, err := outProducer.OutputFiles(t)
-				if err != nil {
-					ctx.ModuleErrorf("path dependency %q: %s", e, err)
-				}
-				expandedExcludes = append(expandedExcludes, outputFiles.Strings()...)
-			} else if t != "" {
-				ctx.ModuleErrorf("path dependency %q is not an output file producing module", e)
-			} else if srcProducer, ok := module.(SourceFileProducer); ok {
-				expandedExcludes = append(expandedExcludes, srcProducer.Srcs().Strings()...)
+			modulePaths, err := getPathsFromModuleDep(ctx, e, m, t)
+			if m, ok := err.(missingDependencyError); ok {
+				missingExcludeDeps = append(missingExcludeDeps, m.missingDeps...)
+			} else if err != nil {
+				reportPathError(ctx, err)
 			} else {
-				ctx.ModuleErrorf("path dependency %q is not a source file producing module", e)
+				expandedExcludes = append(expandedExcludes, modulePaths.Strings()...)
 			}
 		} else {
 			expandedExcludes = append(expandedExcludes, filepath.Join(prefix, e))
@@ -382,7 +436,10 @@ func (e missingDependencyError) Error() string {
 	return "missing dependencies: " + strings.Join(e.missingDeps, ", ")
 }
 
-func expandOneSrcPath(ctx ModuleContext, s string, expandedExcludes []string) (Paths, error) {
+// Expands one path string to Paths rooted from the module's local source
+// directory, excluding those listed in the expandedExcludes.
+// Expands globs, references to SourceFileProducer or OutputFileProducer modules using the ":name" and ":name{.tag}" syntax.
+func expandOneSrcPath(ctx modulePathWithDepsContext, sPath string, expandedExcludes []string) (Paths, error) {
 	excludePaths := func(paths Paths) Paths {
 		if len(expandedExcludes) == 0 {
 			return paths
@@ -395,29 +452,18 @@ func expandOneSrcPath(ctx ModuleContext, s string, expandedExcludes []string) (P
 		}
 		return remainder
 	}
-	if m, t := SrcIsModuleWithTag(s); m != "" {
-		module := ctx.GetDirectDepWithTag(m, sourceOrOutputDepTag(t))
-		if module == nil {
-			return nil, missingDependencyError{[]string{m}}
-		}
-		if outProducer, ok := module.(OutputFileProducer); ok {
-			outputFiles, err := outProducer.OutputFiles(t)
-			if err != nil {
-				return nil, fmt.Errorf("path dependency %q: %s", s, err)
-			}
-			return excludePaths(outputFiles), nil
-		} else if t != "" {
-			return nil, fmt.Errorf("path dependency %q is not an output file producing module", s)
-		} else if srcProducer, ok := module.(SourceFileProducer); ok {
-			return excludePaths(srcProducer.Srcs()), nil
+	if m, t := SrcIsModuleWithTag(sPath); m != "" {
+		modulePaths, err := getPathsFromModuleDep(ctx, sPath, m, t)
+		if err != nil {
+			return nil, err
 		} else {
-			return nil, fmt.Errorf("path dependency %q is not a source file producing module", s)
+			return excludePaths(modulePaths), nil
 		}
-	} else if pathtools.IsGlob(s) {
-		paths := ctx.GlobFiles(pathForModuleSrc(ctx, s).String(), expandedExcludes)
+	} else if pathtools.IsGlob(sPath) {
+		paths := GlobFiles(ctx, pathForModuleSrc(ctx, sPath).String(), expandedExcludes)
 		return PathsWithModuleSrcSubDir(ctx, paths, ""), nil
 	} else {
-		p := pathForModuleSrc(ctx, s)
+		p := pathForModuleSrc(ctx, sPath)
 		if exists, _, err := ctx.Config().fs.Exists(p.String()); err != nil {
 			ReportPathErrorf(ctx, "%s: %s", p, err.Error())
 		} else if !exists && !ctx.Config().testAllowNonExistentPaths {
@@ -436,7 +482,7 @@ func expandOneSrcPath(ctx ModuleContext, s string, expandedExcludes []string) (P
 // each string. If incDirs is false, strip paths with a trailing '/' from the list.
 // It intended for use in globs that only list files that exist, so it allows '$' in
 // filenames.
-func pathsForModuleSrcFromFullPath(ctx EarlyModuleContext, paths []string, incDirs bool) Paths {
+func pathsForModuleSrcFromFullPath(ctx earlyModulePathContext, paths []string, incDirs bool) Paths {
 	prefix := filepath.Join(ctx.Config().srcDir, ctx.ModuleDir()) + "/"
 	if prefix == "./" {
 		prefix = ""
@@ -474,7 +520,7 @@ func PathsWithOptionalDefaultForModuleSrc(ctx ModuleContext, input []string, def
 	// Use Glob so that if the default doesn't exist, a dependency is added so that when it
 	// is created, we're run again.
 	path := filepath.Join(ctx.Config().srcDir, ctx.ModuleDir(), def)
-	return ctx.Glob(path, nil)
+	return Glob(ctx, path, nil)
 }
 
 // Strings returns the Paths in string form
@@ -1080,7 +1126,7 @@ func PathForModuleSrc(ctx ModuleContext, pathComponents ...string) Path {
 	return paths[0]
 }
 
-func pathForModuleSrc(ctx ModuleContext, paths ...string) SourcePath {
+func pathForModuleSrc(ctx earlyModulePathContext, paths ...string) SourcePath {
 	p, err := validatePath(paths...)
 	if err != nil {
 		reportPathError(ctx, err)
@@ -1099,7 +1145,7 @@ func pathForModuleSrc(ctx ModuleContext, paths ...string) SourcePath {
 // PathsWithModuleSrcSubDir takes a list of Paths and returns a new list of Paths where Rel() on each path
 // will return the path relative to subDir in the module's source directory.  If any input paths are not located
 // inside subDir then a path error will be reported.
-func PathsWithModuleSrcSubDir(ctx ModuleContext, paths Paths, subDir string) Paths {
+func PathsWithModuleSrcSubDir(ctx earlyModulePathContext, paths Paths, subDir string) Paths {
 	paths = append(Paths(nil), paths...)
 	subDirFullPath := pathForModuleSrc(ctx, subDir)
 	for i, path := range paths {
