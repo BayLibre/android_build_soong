@@ -40,6 +40,11 @@ func runBazel(ctx Context, config Config) {
 		"//:" + config.TargetProduct() + "-" + config.TargetBuildVariant(),
 	}
 
+	config.environ.Set("COMBINED_NINJA", config.CombinedNinjaFile())
+	config.environ.Set("KATI_NINJA", config.KatiBuildNinjaFile())
+	config.environ.Set("PACKAGE_NINJA", config.KatiPackageNinjaFile())
+	config.environ.Set("SOONG_NINJA", config.SoongNinjaFile())
+
 	cmd := Command(ctx, config, "bazel", bazelExecutable, args...)
 
 	cmd.Environment.Set("DIST_DIR", config.DistDir())
