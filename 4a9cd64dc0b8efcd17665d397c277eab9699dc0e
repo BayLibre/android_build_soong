@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "404a1c7a_dedf7624",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-10T21:27:41Z",
+      "side": 1,
+      "message": "I\u0027ve gone ahead and removed this so this is the default behavior for grpc modules.",
+      "parentUuid": "c302de10_f2fd92a6",
+      "revId": "4a9cd64dc0b8efcd17665d397c277eab9699dc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61fbce2a_b2670d0e",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3793cc_ce409a8b",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-10T21:27:41Z",
+      "side": 1,
+      "message": "Replaced this with \"header_libs\" property to better reflect what\u0027s going on.\n\nThe naming reflects the similar property in cc modules for dependencies which export include paths that are needed. I plan to add this to rust_bindgen as well (and therefore make it part of SourceProvider more generally) so I figure lets use the property name consistent with cc.",
+      "parentUuid": "61fbce2a_b2670d0e",
+      "revId": "4a9cd64dc0b8efcd17665d397c277eab9699dc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "829b23c3_3ea2a57e",
@@ -48,6 +84,24 @@
       "writtenOn": "2020-11-06T21:38:44Z",
       "side": 1,
       "message": "Are these going to end up accidentally linked in? I wasn\u0027t under the impression that we needed to link them, just get their include directories.",
+      "revId": "4a9cd64dc0b8efcd17665d397c277eab9699dc0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40df377b_a21fe835",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-10T21:27:41Z",
+      "side": 1,
+      "message": "They were being passed to the linker, but they weren\u0027t being linked in since they weren\u0027t actually used. I\u0027ve gone ahead and removed it in favor of header_libs which won\u0027t be passed to the linker at all.",
+      "parentUuid": "829b23c3_3ea2a57e",
       "revId": "4a9cd64dc0b8efcd17665d397c277eab9699dc0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
