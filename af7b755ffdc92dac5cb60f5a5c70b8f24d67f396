@@ -34,6 +34,24 @@
       "parentUuid": "e9c77d17_6b8d5737",
       "revId": "af7b755ffdc92dac5cb60f5a5c70b8f24d67f396",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89b9503_0bd7f2c2",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-11-10T19:02:42Z",
+      "side": 1,
+      "message": "Created a feature request: https://bugs.chromium.org/p/gerrit/issues/detail?id\u003d13660",
+      "parentUuid": "17ceec86_83b3d169",
+      "revId": "af7b755ffdc92dac5cb60f5a5c70b8f24d67f396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
