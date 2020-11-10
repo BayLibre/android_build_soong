@@ -16,6 +16,24 @@
       "message": "Why was this moved from its previous location?",
       "revId": "1e04109c6e1786fa2d447b1e471638e77f6d18d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8658c8_6d149e5f",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-11-10T17:22:48Z",
+      "side": 1,
+      "message": "As mentioned in another comment I moved it up to put it next to the visibility property.",
+      "parentUuid": "f367d0ec_a9993bd7",
+      "revId": "1e04109c6e1786fa2d447b1e471638e77f6d18d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
