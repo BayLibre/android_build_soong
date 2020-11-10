@@ -16,6 +16,24 @@
       "message": "Is this the only well known type? Do we want a template file for this?",
       "revId": "84dcb67935718497074a17a111566abbc330451e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8b37e3_1c40d94f",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1051483
+      },
+      "writtenOn": "2020-11-10T21:41:50Z",
+      "side": 1,
+      "message": "there might be more, yeah, I just haven\u0027t run into them yet in our code",
+      "parentUuid": "fe200eeb_16deedeb",
+      "revId": "84dcb67935718497074a17a111566abbc330451e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
