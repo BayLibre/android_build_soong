@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11ba1f75_b88c0afe",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-11-10T21:15:17Z",
+      "side": 1,
+      "message": "Set this explicitly for bazel in ui/build/bazel.go, not for soong too. You can get full paths with `config.CombinedNinjaFile()`, `config.KatiBuildNinjaFile()`, and `config.KatiPackageNinjaFile()`. But the latter two may not exist or be used under some circumstances (an out directory that has always used `--skip-make` won\u0027t: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/build.go;drc\u003d680387bf1d3ce7cbc77f535be7c42cec411b1687;l\u003d62).",
+      "revId": "7b0d0de7fc597dc9b569f009792ccdd0c653b631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
