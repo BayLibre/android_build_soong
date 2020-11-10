@@ -16,6 +16,24 @@
       "message": "Add a comment why we need this.",
       "revId": "9fec1e937a57dd233924ec612a06b9ecf1a35780",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d909ab80_a515bc01",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-11-10T13:37:17Z",
+      "side": 1,
+      "message": "Added a brief note; full details is in the commit message.",
+      "parentUuid": "cfe1b9ee_2c3c9aaf",
+      "revId": "9fec1e937a57dd233924ec612a06b9ecf1a35780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
