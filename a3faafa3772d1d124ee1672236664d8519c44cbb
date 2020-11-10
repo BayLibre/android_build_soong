@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7f2922a_a3554264",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-11-10T00:31:37Z",
+      "side": 1,
+      "message": "Ivan, why do we need this in 2 places? I also changed the toolchain version in https://android.googlesource.com/platform/external/rust/crates/bindgen/+/refs/heads/master/android/bindgen.sh previously, thinking that was the only location with version info.",
+      "revId": "a3faafa3772d1d124ee1672236664d8519c44cbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
