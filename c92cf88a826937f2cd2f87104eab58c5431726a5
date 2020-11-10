@@ -16,6 +16,23 @@
       "message": "It seems https://android-review.googlesource.com/c/platform/build/soong/+/1489477 miss to update TetheringGoogle to mainsdk 30. It is fine for aosp/master because aosp don\u0027t build TetheringGoogle(mainline module). But its downstream is broken after automerging.\n\nThis change may get conflict in goog/master because it already have this change, but I can\u0027t put merged-In because both aosp/master and goog/master have Change-Id: I5f3d834687121ba967d1e3aeb301c87679b2078d. My strategy is just ignore merge conflict(and it following downstream) if any.\nReference:\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1489477\nhttps://googleplex-android-review.git.corp.google.com/c/platform/build/soong/+/12962916",
       "revId": "c92cf88a826937f2cd2f87104eab58c5431726a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5709639d_e6e1bec4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-11-10T01:20:02Z",
+      "side": 1,
+      "message": "I fixed this in the internal branch. Not sure if we want a reference to GoogleTethering in aosp code...",
+      "revId": "c92cf88a826937f2cd2f87104eab58c5431726a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
