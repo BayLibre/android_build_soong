@@ -16,6 +16,24 @@
       "message": "Ivan, why do we need this in 2 places? I also changed the toolchain version in https://android.googlesource.com/platform/external/rust/crates/bindgen/+/refs/heads/master/android/bindgen.sh previously, thinking that was the only location with version info.",
       "revId": "a3faafa3772d1d124ee1672236664d8519c44cbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f3a44a0_9cc1a5b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-10T13:23:42Z",
+      "side": 1,
+      "message": "bindgenh.sh allowed us to call bindgen in genrules before rust_bindgen was available. rust_bindgen doesn\u0027t use the shell script, it just calls the bindgen binary directly. I don\u0027t think there\u0027s any genrules using the script anymore, we\u0027ve moved them all over to rust_bindgen.",
+      "parentUuid": "a7f2922a_a3554264",
+      "revId": "a3faafa3772d1d124ee1672236664d8519c44cbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
