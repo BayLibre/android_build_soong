@@ -22,6 +22,30 @@
       },
       "revId": "5d206faa652d13398724011ace6b03c4bf52876d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1658ef0_face7c24",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-11T16:27:01Z",
+      "side": 1,
+      "message": "Ah that\u0027s much nicer indeed, thanks!",
+      "parentUuid": "1e76a498_ab164594",
+      "range": {
+        "startLine": 243,
+        "startChar": 21,
+        "endLine": 243,
+        "endChar": 51
+      },
+      "revId": "5d206faa652d13398724011ace6b03c4bf52876d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
