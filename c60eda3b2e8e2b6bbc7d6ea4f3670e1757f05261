@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e9a136_b9ebc3b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-11-11T23:25:47Z",
+      "side": 1,
+      "message": "Are there more changes coming?  If it\u0027d be useful, create a bug for this work, esp. if we have opt-outs and such.",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2399f418_4443699d",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-11-11T23:15:26Z",
       "side": 1,
       "message": "(did you mean presubmit-ready +1? :) )\n\nif things build, lgtm. i assume treehugger will take care of building+testing internal-main for us?",
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60125d3b_bd060102",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-11-11T23:25:47Z",
+      "side": 1,
+      "message": "If this passes presubmit without any opt-outs, we should move the new warnings to noOverrideGlobalCflags further down in this file.\n\nThe warnings in this part of the code are turned on globally but have opt-outs (e.g.: https://source.corp.google.com/search?q\u003dpragma-pack%20file:Android.bp\u0026sq\u003dpackage:%5Eandroid$).",
       "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
