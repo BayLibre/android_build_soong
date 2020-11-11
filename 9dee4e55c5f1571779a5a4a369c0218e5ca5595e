@@ -33,6 +33,24 @@
       "message": "This can be const",
       "revId": "9dee4e55c5f1571779a5a4a369c0218e5ca5595e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44365988_40ea171c",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1051483
+      },
+      "writtenOn": "2020-11-11T20:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4abee04c_02322de4",
+      "revId": "9dee4e55c5f1571779a5a4a369c0218e5ca5595e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
