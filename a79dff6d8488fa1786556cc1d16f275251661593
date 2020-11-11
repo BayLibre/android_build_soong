@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7261bede_f720b79f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-11T13:26:04Z",
+      "side": 1,
+      "message": "Now that oth@ has fixed the dexdump XML output I have uploaded the local changes I had to switch to processing the dexdump XML output. The check will be a few seconds slower but the xml output is more stable than the text output. If the extra time becomes an issue then we can either switch to using streaming code or modify dexdump to output a list of classes - http://b/172063475.",
+      "revId": "a79dff6d8488fa1786556cc1d16f275251661593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
