@@ -550,6 +550,10 @@ func (d libraryDependencyTag) static() bool {
 	return d.Kind == staticLibraryDependency
 }
 
+func (d libraryDependencyTag) InstallDepNeeded() bool {
+	return d.shared()
+}
+
 // dependencyTag is used for tagging miscellanous dependency types that don't fit into
 // libraryDependencyTag.  Each tag object is created globally and reused for multiple
 // dependencies (although since the object contains no references, assigning a tag to a
@@ -557,6 +561,12 @@ func (d libraryDependencyTag) static() bool {
 // returned by ctx.OtherModuleDependencyTag against the global original
 type dependencyTag struct {
 	blueprint.BaseDependencyTag
+	name string
+}
+
+type installDependencyTag struct {
+	blueprint.BaseDependencyTag
+	android.InstallAlwaysNeededDependencyTag
 	name string
 }
 
@@ -571,7 +581,7 @@ var (
 	staticVariantTag      = dependencyTag{name: "static variant"}
 	vndkExtDepTag         = dependencyTag{name: "vndk extends"}
 	dataLibDepTag         = dependencyTag{name: "data lib"}
-	runtimeDepTag         = dependencyTag{name: "runtime lib"}
+	runtimeDepTag         = installDependencyTag{name: "runtime lib"}
 	testPerSrcDepTag      = dependencyTag{name: "test_per_src"}
 	stubImplDepTag        = dependencyTag{name: "stub_impl"}
 )
@@ -593,8 +603,7 @@ func IsStaticDepTag(depTag blueprint.DependencyTag) bool {
 }
 
 func IsRuntimeDepTag(depTag blueprint.DependencyTag) bool {
-	ccDepTag, ok := depTag.(dependencyTag)
-	return ok && ccDepTag == runtimeDepTag
+	return depTag == runtimeDepTag
 }
 
 func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {

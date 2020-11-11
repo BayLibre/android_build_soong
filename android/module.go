@@ -1245,11 +1245,14 @@ func (m *ModuleBase) ExportedToMake() bool {
 func (m *ModuleBase) computeInstallDeps(ctx blueprint.ModuleContext) InstallPaths {
 
 	var result InstallPaths
-	// TODO(ccross): we need to use WalkDeps and have some way to know which dependencies require installation
-	ctx.VisitDepsDepthFirst(func(m blueprint.Module) {
-		if a, ok := m.(Module); ok {
-			result = append(result, a.FilesToInstall()...)
+	ctx.WalkDeps(func(child, parent blueprint.Module) bool {
+		if a, ok := child.(Module); ok {
+			if IsInstallDepNeeded(ctx.OtherModuleDependencyTag(child)) {
+				result = append(result, a.FilesToInstall()...)
+				return true
+			}
 		}
+		return false
 	})
 
 	return result
