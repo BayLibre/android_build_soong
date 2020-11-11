@@ -50,10 +50,16 @@ var (
 
 		"-fno-strict-aliasing",
 
+		"-Werror=bool-operation",
 		"-Werror=date-time",
+		"-Werror=implicit-int-float-conversion",
+		"-Werror=int-in-bool-context",
 		"-Werror=pragma-pack",
 		"-Werror=pragma-pack-suspicious-include",
+		"-Werror=string-compare",
+		"-Werror=string-plus-int",
 		"-Werror=unreachable-code-loop-increment",
+		"-Werror=xor-used-as-pow",
 	}
 
 	commonGlobalConlyflags = []string{}
