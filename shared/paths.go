@@ -24,3 +24,17 @@ import (
 func TempDirForOutDir(outDir string) (tempPath string) {
 	return filepath.Join(outDir, ".temp")
 }
+
+// BazelProfiileDir returns the path where a set of bazel profile
+// files are stored for later processed by the metrics pipeline.
+func BazelProfileDir(outDir string) string {
+	return filepath.Join(outDir, "bazel_metrics")
+}
+
+// BazelProfileFilename returns the bazel profile filename based
+// on the action name. This is to help to store a set of bazel
+// profiles since bazel may execute multiple times during a single
+// build.
+func BazelProfileFilename(actionName string) string {
+	return actionName + "_bazel_profile.gz"
+}
