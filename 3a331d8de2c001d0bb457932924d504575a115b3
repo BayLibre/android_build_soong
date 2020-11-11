@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5976047_20107ee6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-11T22:44:20Z",
+      "side": 1,
+      "message": "Looking at subsequent CLs, it looks like this better enables parallelism in tests. Can we add or comment or update the description to reflect that?",
+      "revId": "3a331d8de2c001d0bb457932924d504575a115b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
