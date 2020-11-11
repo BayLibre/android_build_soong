@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e76a498_ab164594",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-11T16:16:02Z",
+      "side": 1,
+      "message": "Use moduleGenDir.String() here.",
+      "range": {
+        "startLine": 243,
+        "startChar": 21,
+        "endLine": 243,
+        "endChar": 51
+      },
+      "revId": "5d206faa652d13398724011ace6b03c4bf52876d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
