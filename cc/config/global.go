@@ -54,6 +54,12 @@ var (
 		"-Werror=pragma-pack",
 		"-Werror=pragma-pack-suspicious-include",
 		"-Werror=unreachable-code-loop-increment",
+		"-Werror=int-in-bool-context",
+		"-Werror=implicit-int-float-conversion",
+		"-Werror=bool-operation",
+		"-Werror=string-compare",
+		"-Werror=string-plus-int",
+		"-Werror=xor-used-as-pow",
 	}
 
 	commonGlobalConlyflags = []string{}
