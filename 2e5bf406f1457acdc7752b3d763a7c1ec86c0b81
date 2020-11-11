@@ -34,6 +34,24 @@
       "parentUuid": "eb6fcc4c_a24a9c17",
       "revId": "2e5bf406f1457acdc7752b3d763a7c1ec86c0b81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cfd191_85c31a3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-11T20:55:47Z",
+      "side": 1,
+      "message": "Alright, will try submitting this for now but we might want to add the trap back later if anything goes wrong.",
+      "parentUuid": "44cda32e_e6623ce9",
+      "revId": "2e5bf406f1457acdc7752b3d763a7c1ec86c0b81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
