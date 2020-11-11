@@ -598,6 +598,10 @@ var (
 	// has dependencies on all the OS variants.
 	CommonOS = NewOsType("common_os", Generic, false)
 
+	// CommonArch is the Arch for all modules that are os-specific but not arch specific,
+	// for example most Java modules.
+	CommonArch = Arch{ArchType: Common}
+
 	osArchTypeMap = map[OsType][]ArchType{
 		Linux:       []ArchType{X86, X86_64},
 		LinuxBionic: []ArchType{Arm64, X86_64},
@@ -661,7 +665,7 @@ func NewOsType(name string, class OsClass, defDisabled bool) OsType {
 	if _, found := commonTargetMap[name]; found {
 		panic(fmt.Errorf("Found Os type duplicate during OsType registration: %q", name))
 	} else {
-		commonTargetMap[name] = Target{Os: os, Arch: Arch{ArchType: Common}}
+		commonTargetMap[name] = Target{Os: os, Arch: CommonArch}
 	}
 
 	return os
@@ -838,6 +842,10 @@ func GetOsSpecificVariantsOfCommonOSVariant(mctx BaseModuleContext) []Module {
 		}
 	})
 	return variants
+}
+
+func GetCommonArchVariantFromFirstArchVariant(mctx BaseModuleContext) Module {
+	return mctx.GetDirectDepWithTag(mctx.ModuleName(), firstArchToCommonArchDepTag).(Module)
 }
 
 // archMutator splits a module into a variant for each Target requested by the module.  Target selection

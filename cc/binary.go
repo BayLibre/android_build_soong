@@ -460,7 +460,11 @@ func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
 	}
 
 	if ctx.Os().Class == android.Host {
-		binary.toolPath = android.OptionalPathForPath(binary.baseInstaller.path)
+		if Bool(binary.Properties.Symlink_preferred_arch) {
+			binary.toolPath = android.OptionalPathForPath(binary.baseInstaller.installDir(ctx).Join(ctx, binary.getStemWithoutSuffix(ctx)))
+		} else {
+			binary.toolPath = android.OptionalPathForPath(binary.baseInstaller.path)
+		}
 	}
 }
 
