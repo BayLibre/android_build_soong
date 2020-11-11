@@ -34,6 +34,24 @@
       "parentUuid": "f367d0ec_a9993bd7",
       "revId": "1e04109c6e1786fa2d447b1e471638e77f6d18d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a39e92c_568e22b4",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-11T14:14:16Z",
+      "side": 1,
+      "message": "Ack. I missed that because it was on an earlier patch set.",
+      "parentUuid": "dd8658c8_6d149e5f",
+      "revId": "1e04109c6e1786fa2d447b1e471638e77f6d18d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
