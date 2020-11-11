@@ -34,6 +34,24 @@
       "parentUuid": "a7f2922a_a3554264",
       "revId": "a3faafa3772d1d124ee1672236664d8519c44cbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc871c21_8079a08e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2020-11-11T19:58:25Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/external/rust/crates/bindgen/+/1496845 removes the shell script that is now unused.",
+      "parentUuid": "1f3a44a0_9cc1a5b1",
+      "revId": "a3faafa3772d1d124ee1672236664d8519c44cbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
