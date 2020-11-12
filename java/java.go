@@ -2303,9 +2303,11 @@ type JavaTestImport struct {
 	Import
 
 	prebuiltTestProperties prebuiltTestProperties
+	testProperties         testProperties
 
 	testConfig android.Path
 	dexJarFile android.Path
+	data       android.Paths
 }
 
 func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -2338,8 +2340,10 @@ func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContex
 }
 
 func (j *JavaTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.prebuiltTestProperties.Test_config, nil,
-		j.prebuiltTestProperties.Test_suites, nil)
+	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
+		j.testProperties.Test_suites, j.testProperties.Auto_gen_config)
+
+	j.data = android.PathsForModuleSrc(ctx, j.testProperties.Data)
 
 	j.Import.GenerateAndroidBuildActions(ctx)
 }
@@ -2453,7 +2457,8 @@ func JavaTestImportFactory() android.Module {
 
 	module.AddProperties(
 		&module.Import.properties,
-		&module.prebuiltTestProperties)
+		&module.prebuiltTestProperties,
+		&module.testProperties)
 
 	module.Import.properties.Installable = proptools.BoolPtr(true)
 
