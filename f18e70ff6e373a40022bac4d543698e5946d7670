@@ -214,6 +214,30 @@
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caa2bc5_8ed2f07d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-12T20:36:08Z",
+      "side": 1,
+      "message": "aosp/1497581 fixes that particular problem, but I\u0027m fine with submitting this too (as long as there is a path towards resolving it) if there are delays or more problems behind it.",
+      "parentUuid": "0231b449_8d33cea7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
