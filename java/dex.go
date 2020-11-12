@@ -263,7 +263,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 }
 
 func (d *dexer) compileDex(ctx android.ModuleContext, flags javaBuilderFlags, minSdkVersion sdkSpec,
-	classesJar android.Path, jarName string) android.ModuleOutPath {
+	classesJar android.Paths, jarName string) android.ModuleOutPath {
 
 	// Compile classes.jar into classes.dex and then javalib.jar
 	javalibJar := android.PathForModuleOut(ctx, "dex", jarName)
@@ -305,7 +305,7 @@ func (d *dexer) compileDex(ctx android.ModuleContext, flags javaBuilderFlags, mi
 			Description:     "r8",
 			Output:          javalibJar,
 			ImplicitOutputs: android.WritablePaths{proguardDictionary, proguardUsageZip},
-			Input:           classesJar,
+			Inputs:          classesJar,
 			Implicits:       r8Deps,
 			Args:            args,
 		})
@@ -319,7 +319,7 @@ func (d *dexer) compileDex(ctx android.ModuleContext, flags javaBuilderFlags, mi
 			Rule:        rule,
 			Description: "d8",
 			Output:      javalibJar,
-			Input:       classesJar,
+			Inputs:      classesJar,
 			Implicits:   d8Deps,
 			Args: map[string]string{
 				"d8Flags":  strings.Join(append(commonFlags, d8Flags...), " "),
