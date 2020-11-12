@@ -1479,6 +1479,9 @@ type apexBundle struct {
 	payloadFsType fsType
 
 	distFiles android.TaggedDistFiles
+
+	// Path of API coverage generate file
+	coverageOutputPath android.ModuleOutPath
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
