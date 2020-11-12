@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef22873_fd28fdf6",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2305,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-11-12T04:55:45Z",
+      "side": 1,
+      "message": "It is a bit scary to delete it (I am not sure whether it breaks conscrypt tests) but done.",
+      "parentUuid": "8b7a1843_1144c36a",
+      "revId": "4997ce86c40656250787117a8dfb8b970bb8b4ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc7eadd_7544a1f0",
@@ -65,6 +83,30 @@
       "writtenOn": "2020-11-06T01:15:36Z",
       "side": 1,
       "message": "Nothing adds dependencies with dataNativeBinsTag for this module type, so this won\u0027t do anything.",
+      "range": {
+        "startLine": 2347,
+        "startChar": 0,
+        "endLine": 2350,
+        "endChar": 0
+      },
+      "revId": "4997ce86c40656250787117a8dfb8b970bb8b4ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7634a09c_26c362ad",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2350,
+      "author": {
+        "id": 1752579
+      },
+      "writtenOn": "2020-11-12T04:55:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20241019_0f7dacbd",
       "range": {
         "startLine": 2347,
         "startChar": 0,
