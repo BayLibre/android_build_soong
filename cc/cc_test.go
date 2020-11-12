@@ -20,7 +20,6 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
-	"sort"
 	"strings"
 	"testing"
 
@@ -1124,6 +1123,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 		arch: {
 			arm64: {
 				srcs: ["libvndk.so"],
+				export_include_dirs: ["include/libvndk"],
 			},
 		},
 	}
@@ -1150,6 +1150,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 		shared_libs: ["libvndk"],
 		static_libs: ["libvendor", "libvendor_without_snapshot"],
 		compile_multilib: "64",
+		srcs: ["client.cpp"],
 	}
 
 	cc_binary {
@@ -1161,6 +1162,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 		system_shared_libs: [],
 		static_libs: ["libvndk"],
 		compile_multilib: "64",
+		srcs: ["bin.cpp"],
 	}
 
 	vendor_snapshot_static {
@@ -1171,6 +1173,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 		arch: {
 			arm64: {
 				src: "libvndk.a",
+				export_include_dirs: ["include/libvndk"],
 			},
 		},
 	}
@@ -1183,6 +1186,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 		arch: {
 			arm64: {
 				src: "libvendor.so",
+				export_include_dirs: ["include/libvendor"],
 			},
 		},
 	}
@@ -1195,6 +1199,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 		arch: {
 			arm64: {
 				src: "libvendor.a",
+				export_include_dirs: ["include/libvendor"],
 			},
 		},
 	}
@@ -1214,15 +1219,20 @@ func TestVendorSnapshotUse(t *testing.T) {
 	depsBp := GatherRequiredDepsForTest(android.Android)
 
 	mockFS := map[string][]byte{
-		"deps/Android.bp":      []byte(depsBp),
-		"framework/Android.bp": []byte(frameworkBp),
-		"vendor/Android.bp":    []byte(vendorProprietaryBp),
-		"vendor/libvndk.a":     nil,
-		"vendor/libvendor.a":   nil,
-		"vendor/libvendor.so":  nil,
-		"vendor/bin":           nil,
-		"vndk/Android.bp":      []byte(vndkBp),
-		"vndk/libvndk.so":      nil,
+		"deps/Android.bp":              []byte(depsBp),
+		"framework/Android.bp":         []byte(frameworkBp),
+		"vendor/Android.bp":            []byte(vendorProprietaryBp),
+		"vendor/bin":                   nil,
+		"vendor/bin.cpp":               nil,
+		"vendor/client.cpp":            nil,
+		"vendor/include/libvndk/a.h":   nil,
+		"vendor/include/libvendor/b.h": nil,
+		"vendor/libvndk.a":             nil,
+		"vendor/libvendor.a":           nil,
+		"vendor/libvendor.so":          nil,
+		"vndk/Android.bp":              []byte(vndkBp),
+		"vndk/include/libvndk/a.h":     nil,
+		"vndk/libvndk.so":              nil,
 	}
 
 	config := TestConfig(buildDir, android.Android, nil, "", mockFS)
@@ -1241,27 +1251,41 @@ func TestVendorSnapshotUse(t *testing.T) {
 	binaryVariant := "android_vendor.BOARD_arm64_armv8-a"
 
 	// libclient uses libvndk.vndk.BOARD.arm64, libvendor.vendor_static.BOARD.arm64, libvendor_without_snapshot
-	libclientLdRule := ctx.ModuleForTests("libclient", sharedVariant).Rule("ld")
-	libclientFlags := libclientLdRule.Args["libFlags"]
+	libclientCcFlags := ctx.ModuleForTests("libclient", sharedVariant).Rule("cc").Args["cFlags"]
+	for _, includeFlags := range []string{
+		"-Ivndk/include/libvndk",     // libvndk
+		"-Ivendor/include/libvendor", // libvendor
+	} {
+		if !strings.Contains(libclientCcFlags, includeFlags) {
+			t.Errorf("flags for libclient must contain %#v, but was %#v.",
+				includeFlags, libclientCcFlags)
+		}
+	}
 
+	libclientLdFlags := ctx.ModuleForTests("libclient", sharedVariant).Rule("ld").Args["libFlags"]
 	for _, input := range [][]string{
 		[]string{sharedVariant, "libvndk.vndk.BOARD.arm64"},
 		[]string{staticVariant, "libvendor.vendor_static.BOARD.arm64"},
 		[]string{staticVariant, "libvendor_without_snapshot"},
 	} {
 		outputPaths := getOutputPaths(ctx, input[0] /* variant */, []string{input[1]} /* module name */)
-		if !strings.Contains(libclientFlags, outputPaths[0].String()) {
-			t.Errorf("libflags for libclient must contain %#v, but was %#v", outputPaths[0], libclientFlags)
+		if !strings.Contains(libclientLdFlags, outputPaths[0].String()) {
+			t.Errorf("libflags for libclient must contain %#v, but was %#v", outputPaths[0], libclientLdFlags)
 		}
 	}
 
 	// bin_without_snapshot uses libvndk.vendor_static.BOARD.arm64
-	binWithoutSnapshotLdRule := ctx.ModuleForTests("bin_without_snapshot", binaryVariant).Rule("ld")
-	binWithoutSnapshotFlags := binWithoutSnapshotLdRule.Args["libFlags"]
+	binWithoutSnapshotCcFlags := ctx.ModuleForTests("bin_without_snapshot", binaryVariant).Rule("cc").Args["cFlags"]
+	if !strings.Contains(binWithoutSnapshotCcFlags, "-Ivendor/include/libvndk") {
+		t.Errorf("flags for bin_without_snapshot must contain %#v, but was %#v.",
+			"-Ivendor/include/libvndk", binWithoutSnapshotCcFlags)
+	}
+
+	binWithoutSnapshotLdFlags := ctx.ModuleForTests("bin_without_snapshot", binaryVariant).Rule("ld").Args["libFlags"]
 	libVndkStaticOutputPaths := getOutputPaths(ctx, staticVariant, []string{"libvndk.vendor_static.BOARD.arm64"})
-	if !strings.Contains(binWithoutSnapshotFlags, libVndkStaticOutputPaths[0].String()) {
+	if !strings.Contains(binWithoutSnapshotLdFlags, libVndkStaticOutputPaths[0].String()) {
 		t.Errorf("libflags for bin_without_snapshot must contain %#v, but was %#v",
-			libVndkStaticOutputPaths[0], binWithoutSnapshotFlags)
+			libVndkStaticOutputPaths[0], binWithoutSnapshotLdFlags)
 	}
 
 	// libvendor.so is installed by libvendor.vendor_shared.BOARD.arm64
@@ -2890,59 +2914,6 @@ func parseModuleDeps(text string) (modulesInOrder []android.Path, allDeps map[an
 	return modulesInOrder, allDeps
 }
 
-func TestLinkReordering(t *testing.T) {
-	for _, testCase := range staticLinkDepOrderTestCases {
-		errs := []string{}
-
-		// parse testcase
-		_, givenTransitiveDeps := parseModuleDeps(testCase.inStatic)
-		expectedModuleNames, expectedTransitiveDeps := parseModuleDeps(testCase.outOrdered)
-		if testCase.allOrdered == "" {
-			// allow the test case to skip specifying allOrdered
-			testCase.allOrdered = testCase.outOrdered
-		}
-		_, expectedAllDeps := parseModuleDeps(testCase.allOrdered)
-		_, givenAllSharedDeps := parseModuleDeps(testCase.inShared)
-
-		// For each module whose post-reordered dependencies were specified, validate that
-		// reordering the inputs produces the expected outputs.
-		for _, moduleName := range expectedModuleNames {
-			moduleDeps := givenTransitiveDeps[moduleName]
-			givenSharedDeps := givenAllSharedDeps[moduleName]
-			orderedAllDeps, orderedDeclaredDeps := orderDeps(moduleDeps, givenSharedDeps, givenTransitiveDeps)
-
-			correctAllOrdered := expectedAllDeps[moduleName]
-			if !reflect.DeepEqual(orderedAllDeps, correctAllOrdered) {
-				errs = append(errs, fmt.Sprintf("orderDeps returned incorrect orderedAllDeps."+
-					"\nin static:%q"+
-					"\nin shared:%q"+
-					"\nmodule:   %v"+
-					"\nexpected: %s"+
-					"\nactual:   %s",
-					testCase.inStatic, testCase.inShared, moduleName, correctAllOrdered, orderedAllDeps))
-			}
-
-			correctOutputDeps := expectedTransitiveDeps[moduleName]
-			if !reflect.DeepEqual(correctOutputDeps, orderedDeclaredDeps) {
-				errs = append(errs, fmt.Sprintf("orderDeps returned incorrect orderedDeclaredDeps."+
-					"\nin static:%q"+
-					"\nin shared:%q"+
-					"\nmodule:   %v"+
-					"\nexpected: %s"+
-					"\nactual:   %s",
-					testCase.inStatic, testCase.inShared, moduleName, correctOutputDeps, orderedDeclaredDeps))
-			}
-		}
-
-		if len(errs) > 0 {
-			sort.Strings(errs)
-			for _, err := range errs {
-				t.Error(err)
-			}
-		}
-	}
-}
-
 func getOutputPaths(ctx *android.TestContext, variant string, moduleNames []string) (paths android.Paths) {
 	for _, moduleName := range moduleNames {
 		module := ctx.ModuleForTests(moduleName, variant).Module().(*Module)
@@ -2977,8 +2948,8 @@ func TestStaticLibDepReordering(t *testing.T) {
 
 	variant := "android_arm64_armv8-a_static"
 	moduleA := ctx.ModuleForTests("a", variant).Module().(*Module)
-	actual := moduleA.depsInLinkOrder
-	expected := getOutputPaths(ctx, variant, []string{"c", "b", "d"})
+	actual := ctx.ModuleProvider(moduleA, StaticLibraryInfoProvider).(StaticLibraryInfo).TransitiveStaticLibrariesForOrdering.ToList()
+	expected := getOutputPaths(ctx, variant, []string{"a", "c", "b", "d"})
 
 	if !reflect.DeepEqual(actual, expected) {
 		t.Errorf("staticDeps orderings were not propagated correctly"+
@@ -3011,8 +2982,8 @@ func TestStaticLibDepReorderingWithShared(t *testing.T) {
 
 	variant := "android_arm64_armv8-a_static"
 	moduleA := ctx.ModuleForTests("a", variant).Module().(*Module)
-	actual := moduleA.depsInLinkOrder
-	expected := getOutputPaths(ctx, variant, []string{"c", "b"})
+	actual := ctx.ModuleProvider(moduleA, StaticLibraryInfoProvider).(StaticLibraryInfo).TransitiveStaticLibrariesForOrdering.ToList()
+	expected := getOutputPaths(ctx, variant, []string{"a", "c", "b"})
 
 	if !reflect.DeepEqual(actual, expected) {
 		t.Errorf("staticDeps orderings did not account for shared libs"+
@@ -3048,12 +3019,12 @@ func TestLlndkLibrary(t *testing.T) {
 	`)
 	actual := ctx.ModuleVariantsForTests("libllndk.llndk")
 	expected := []string{
-		"android_vendor.VER_arm64_armv8-a_shared",
 		"android_vendor.VER_arm64_armv8-a_shared_1",
 		"android_vendor.VER_arm64_armv8-a_shared_2",
-		"android_vendor.VER_arm_armv7-a-neon_shared",
+		"android_vendor.VER_arm64_armv8-a_shared",
 		"android_vendor.VER_arm_armv7-a-neon_shared_1",
 		"android_vendor.VER_arm_armv7-a-neon_shared_2",
+		"android_vendor.VER_arm_armv7-a-neon_shared",
 	}
 	checkEquals(t, "variants for llndk stubs", expected, actual)
 
@@ -3582,7 +3553,7 @@ func TestStaticDepsOrderWithStubs(t *testing.T) {
 		cc_binary {
 			name: "mybin",
 			srcs: ["foo.c"],
-			static_libs: ["libfooB"],
+			static_libs: ["libfooC", "libfooB"],
 			static_executable: true,
 			stl: "none",
 		}
@@ -3603,8 +3574,8 @@ func TestStaticDepsOrderWithStubs(t *testing.T) {
 			},
 		}`)
 
-	mybin := ctx.ModuleForTests("mybin", "android_arm64_armv8-a").Module().(*Module)
-	actual := mybin.depsInLinkOrder
+	mybin := ctx.ModuleForTests("mybin", "android_arm64_armv8-a").Rule("ld")
+	actual := mybin.Implicits[:2]
 	expected := getOutputPaths(ctx, "android_arm64_armv8-a_static", []string{"libfooB", "libfooC"})
 
 	if !reflect.DeepEqual(actual, expected) {
