@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05fbfa88_3e70803d",
+        "filename": "android/ninja_deps_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-12T02:22:46Z",
+      "side": 1,
+      "message": "It\u0027d be helpful if this comment mentions ExistentPathForSource triggers this behavior.",
+      "revId": "f736a2a1b4d7ea27fdb14168bf15e2b2f0ff8b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
