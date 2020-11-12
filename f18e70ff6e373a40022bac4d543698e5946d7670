@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "06c330d6_83c7928d",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,10 @@
         "endChar": 39
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2afbd49d_84486ba9",
         "filename": "/COMMIT_MSG",
@@ -44,10 +45,10 @@
         "endChar": 39
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2faf99e5_eec41688",
         "filename": "/COMMIT_MSG",
@@ -68,10 +69,10 @@
         "endChar": 39
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "944d9f28_9d13384d",
         "filename": "/COMMIT_MSG",
@@ -92,10 +93,10 @@
         "endChar": 39
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "31c87552_675a7efe",
         "filename": "/COMMIT_MSG",
@@ -116,10 +117,10 @@
         "endChar": 39
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c705060c_f3eebea5",
         "filename": "/COMMIT_MSG",
@@ -140,10 +141,10 @@
         "endChar": 39
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "c8d334c3_f6134c31",
         "filename": "/COMMIT_MSG",
@@ -164,10 +165,10 @@
         "endChar": 39
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a23dd96d_3ec1578d",
         "filename": "/COMMIT_MSG",
@@ -188,8 +189,31 @@
         "endChar": 39
       },
       "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0231b449_8d33cea7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1549634
+      },
+      "writtenOn": "2020-11-12T20:15:30Z",
+      "side": 1,
+      "message": "Hey Colin,\nI just looked into this again since we are close to merging the last couple things that should make this work in continuous infra.  According to https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/os/Build.java;drc\u003da73539128d3d52697b6d238a84b134eadd56ee25;l\u003d1025 AOSP still doesn\u0027t have the necessary changes to recognize S.  Can we go ahead with this for the moment, and it should get us far enough that we\u0027ll have other issues before we have to fix this particular thing.",
+      "parentUuid": "a23dd96d_3ec1578d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "f18e70ff6e373a40022bac4d543698e5946d7670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
