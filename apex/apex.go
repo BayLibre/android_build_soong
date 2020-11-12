@@ -1488,6 +1488,9 @@ type apexBundle struct {
 	lintReports android.Paths
 
 	payloadFsType fsType
+
+	// Path of API coverage generate file
+	coverageOutputPath android.ModuleOutPath
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
