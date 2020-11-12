@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea45c95f_8584c77f",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-11-12T22:33:21Z",
+      "side": 1,
+      "message": "nit: Add a comment to explain what the readelf output looks like and what the regex does.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eca872a3_e55d0227",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-11-12T22:33:21Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f26928_1ec02738",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2020-11-12T22:33:21Z",
+      "side": 1,
+      "message": "It would be good to have some sort of usage information that describes how the script should be used. You could describe the options in a comment, or implement a usage / help function to print this info when someone runs the command.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
