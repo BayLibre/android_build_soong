@@ -15,7 +15,6 @@
 package genrule
 
 import (
-	"crypto/sha256"
 	"fmt"
 	"io"
 	"path/filepath"
@@ -415,18 +414,23 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 		g.rawCommands = append(g.rawCommands, rawCommand)
 
-		// Pick a unique rule name and the user-visible description.
+		// Pick a unique path outside the task.genDir for the sbox manifest textproto,
+		// a unique rule name, and the user-visible description.
+		manifestName := g.subDir + "genrule.sbox.textproto"
 		desc := "generate"
 		name := "generator"
 		if task.shards > 0 {
+			manifestName = g.subDir + "genrule_" + strconv.Itoa(task.shard) + ".sbox.textproto"
 			desc += " " + strconv.Itoa(task.shard)
 			name += strconv.Itoa(task.shard)
 		} else if len(task.out) == 1 {
 			desc += " " + task.out[0].Base()
 		}
 
+		manifestPath := android.PathForModuleOut(ctx, manifestName)
+
 		// Use a RuleBuilder to create a rule that runs the command inside an sbox sandbox.
-		rule := android.NewRuleBuilder().Sbox(task.genDir)
+		rule := android.NewRuleBuilder().Sbox(task.genDir, manifestPath)
 		cmd := rule.Command()
 		cmd.Text(rawCommand)
 		cmd.ImplicitOutputs(task.out)
@@ -494,13 +498,6 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			g.outputDeps = android.Paths{phonyFile}
 		}
 	}
-}
-func hashSrcFiles(srcFiles android.Paths) string {
-	h := sha256.New()
-	for _, src := range srcFiles {
-		h.Write([]byte(src.String()))
-	}
-	return fmt.Sprintf(" --input-hash %x", h.Sum(nil))
 }
 
 // Collect information for opening IDE project files in java/jdeps.go.
