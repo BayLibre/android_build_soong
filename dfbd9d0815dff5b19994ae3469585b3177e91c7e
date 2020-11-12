@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe25467_542052e1",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-12T03:52:03Z",
+      "side": 1,
+      "message": "Is this used anywhere?",
+      "revId": "dfbd9d0815dff5b19994ae3469585b3177e91c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40f78b02_b0084cdd",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-12T03:52:03Z",
+      "side": 1,
+      "message": "Can you add a comment about this? Looks like it\u0027s related to genrule, but it\u0027s not abundantly clear why this is needed.",
+      "revId": "dfbd9d0815dff5b19994ae3469585b3177e91c7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
