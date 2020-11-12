@@ -16,6 +16,23 @@
       "message": "Presubmit failures are unrelated to this CL, bypassing.",
       "revId": "1776a2ac6f32445b8563f8597b62918b6b1bd3d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e7ae972_d7cdd1ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-12T15:22:40Z",
+      "side": 1,
+      "message": "Presubmit failures are unrelated to this CL, bypassing.",
+      "revId": "1776a2ac6f32445b8563f8597b62918b6b1bd3d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
