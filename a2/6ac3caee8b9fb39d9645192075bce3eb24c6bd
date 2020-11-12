@@ -1,0 +1,10 @@
+Presubmit-Ready+1: Jingwen Chen <jingwen@google.com>
+Bypass-Presubmit+1: Jingwen Chen <jingwen@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Rupert Shuttleworth <ruperts@google.com>
+Submitted-by: Jingwen Chen <jingwen@google.com>
+Submitted-at: Thu, 12 Nov 2020 08:32:48 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1493287
+Project: platform/build/soong
+Branch: refs/heads/master
