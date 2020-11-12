@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "684e7ea4_61900656",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1783795
+      },
+      "writtenOn": "2020-11-12T00:49:27Z",
+      "side": 1,
+      "message": "There are two more warnings to add: -Wextra-semi, which currently breaks a few things and -Wfree-nonheap-object which I think needs a newer version of LLVM.\n\nBoth to come in separate patches.",
+      "parentUuid": "f1e9a136_b9ebc3b4",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2399f418_4443699d",
