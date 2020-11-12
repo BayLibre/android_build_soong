@@ -178,6 +178,9 @@ type CompilerProperties struct {
 	// list of java libraries that will be compiled into the resulting jar
 	Static_libs []string `android:"arch_variant"`
 
+	// list of dex or zipped dex files that will be included into the resulting jar at dex stage
+	Static_dex []string `android:"path"`
+
 	// manifest file to be included in resulting jar
 	Manifest *string `android:"path"`
 
@@ -1679,7 +1682,12 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 		// Dex compilation
 		var dexOutputFile android.ModuleOutPath
-		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), outputFile, jarName)
+
+		inputs := []android.Path{outputFile}
+		if len(j.properties.Static_dex) > 0 {
+			inputs = append(inputs, android.PathsForModuleSrc(ctx, j.properties.Static_dex)...)
+		}
+		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), inputs, jarName)
 		if ctx.Failed() {
 			return
 		}
@@ -2766,7 +2774,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		// Dex compilation
 		var dexOutputFile android.ModuleOutPath
-		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), outputFile, jarName)
+		dexOutputFile = j.dexer.compileDex(ctx, flags, j.minSdkVersion(), []android.Path{outputFile}, jarName)
 		if ctx.Failed() {
 			return
 		}
