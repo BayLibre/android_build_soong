@@ -392,8 +392,13 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 					fmt.Fprintf(w, "$(call dist-for-goals,%s,%s:%s)\n",
 						goal, a.installedFilesFile.String(), distFile)
 				}
+
 				for _, dist := range data.Entries.GetDistForGoals(a) {
 					fmt.Fprintf(w, dist)
+				}
+
+				if a.coverageOutputPath.String() != "" {
+					fmt.Fprintln(w, "SOONG_NDK_API_APEX_TXT :=", "$(SOONG_NDK_API_APEX_TXT) "+a.coverageOutputPath.String())
 				}
 			}
 		}}

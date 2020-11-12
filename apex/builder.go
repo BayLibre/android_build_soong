@@ -37,6 +37,7 @@ var (
 
 func init() {
 	pctx.Import("android/soong/android")
+	pctx.Import("android/soong/cc/config")
 	pctx.Import("android/soong/java")
 	pctx.HostBinToolVariable("apexer", "apexer")
 	// ART minimal builds (using the master-art manifest) do not have the "frameworks/base"
@@ -175,6 +176,12 @@ var (
 			`exit 1); touch ${out}`,
 		Description: "Diff ${image_content_file} and ${allowed_files_file}",
 	}, "image_content_file", "allowed_files_file", "apex_module_name")
+
+	_                          = pctx.SourcePathVariable("genNdkUsedbyApexPath", "build/soong/scripts/gen_ndk_usedby_apex.sh")
+	generateAPIsUsedbyApexRule = pctx.StaticRule("generateAPIsUsedbyApexRule", blueprint.RuleParams{
+		Command:     "$genNdkUsedbyApexPath ${module_name} ${image_dir} ${readelf} ${out}",
+		Description: "Generate symbol list used by Apex",
+	}, "module_name", "image_dir", "readelf")
 )
 
 func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs, requireNativeLibs []string) {
@@ -642,12 +649,36 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			Description: "apex proto convert",
 		})
 
+		implicitInputs = append(implicitInputs, unsignedOutputFile)
+
+		// Run coverage analysis
+		var bundleImplicits []android.Path
+		apexModuleNamePrefix := "com.android."
+		if strings.HasPrefix(a.Name(), apexModuleNamePrefix) {
+			moduleNameShort := strings.ReplaceAll(a.Name()[len(apexModuleNamePrefix):], ".", "_")
+			apisUsedbyOutputFile := android.PathForModuleOut(ctx, moduleNameShort+".txt")
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        generateAPIsUsedbyApexRule,
+				Implicits:   implicitInputs,
+				Description: "coverage",
+				Output:      apisUsedbyOutputFile,
+				Args: map[string]string{
+					"module_name": a.Name(),
+					"image_dir":   imageDir.String(),
+					"readelf":     "${config.ClangBin}/llvm-readelf",
+				},
+			})
+			a.coverageOutputPath = apisUsedbyOutputFile
+			bundleImplicits = append(bundleImplicits, apisUsedbyOutputFile)
+		}
+
 		bundleConfig := a.buildBundleConfig(ctx)
+		bundleImplicits = append(bundleImplicits, bundleConfig)
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        apexBundleRule,
 			Input:       apexProtoFile,
-			Implicit:    bundleConfig,
+			Implicits:   bundleImplicits,
 			Output:      a.bundleModuleFile,
 			Description: "apex bundle module",
 			Args: map[string]string{
