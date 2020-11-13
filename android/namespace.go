@@ -104,6 +104,12 @@ func (r *NameResolver) newNamespace(path string) *Namespace {
 
 	namespace.exportToKati = r.namespaceExportFilter(namespace)
 
+	// Make PRODUCT_SOONG_NAMESPACES (which are default-visible to Android.mk modules)
+	// also default-visible to Android.bp modules.
+	if namespace.exportToKati && namespace.Path != "." {
+		r.rootNamespace.visibleNamespaces = append(r.rootNamespace.visibleNamespaces, namespace)
+	}
+
 	return namespace
 }
 
