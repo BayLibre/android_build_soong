@@ -1,0 +1,10 @@
+Bypass-Presubmit+1: Christopher Parsons <cparsons@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Liz Kammer <eakammer@google.com>
+Code-Review+2: Jingwen Chen <jingwen@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Christopher Parsons <cparsons@google.com>
+Submitted-at: Fri, 13 Nov 2020 18:18:05 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1493282
+Project: platform/build/soong
+Branch: refs/heads/master
