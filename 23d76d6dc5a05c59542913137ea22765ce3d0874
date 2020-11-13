@@ -39,6 +39,24 @@
       "message": "Please very clearly define what you mean by unit test and what the semantics of setting this property are.  This is likely to be the first documentation of this feature that many people see.",
       "revId": "23d76d6dc5a05c59542913137ea22765ce3d0874",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2c5a04_149c1e97",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-11-13T22:59:31Z",
+      "side": 1,
+      "message": "How about:\nIf the test is a hostside unittest that shall be run during presubmit check.",
+      "parentUuid": "909720f9_1bcf83ed",
+      "revId": "23d76d6dc5a05c59542913137ea22765ce3d0874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
