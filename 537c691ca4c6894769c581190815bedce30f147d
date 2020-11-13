@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abee400f_a8b3eab3",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-13T19:36:25Z",
+      "side": 1,
+      "message": "It is unclear to me what the previous code does, what this code does and why it needs to be changed.",
+      "revId": "537c691ca4c6894769c581190815bedce30f147d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bed86d_5eb22426",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-13T19:36:25Z",
+      "side": 1,
+      "message": "Presumably this is unused just like the unusedClcMap above. I think it might be better to just pass in nil (here and above in unusedClcMap) and have aaptLibs create an empty temporary clc map if passed nil.",
+      "revId": "537c691ca4c6894769c581190815bedce30f147d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
