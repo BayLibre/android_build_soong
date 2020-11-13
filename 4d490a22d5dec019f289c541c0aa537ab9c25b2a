@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8712fec_188b9304",
+        "filename": "android/namespace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1442824
+      },
+      "writtenOn": "2020-11-13T19:36:59Z",
+      "side": 1,
+      "message": "This would be a bigger change, but I also can see how it might be better to have NameResolver search the list of product namespaces for all namespaces, rather than only adding product namespaces to the root namespace search path (as if they were imported by the root namespace).\n\nThat way, if a generic module wants to start namespacing itself, it doesn\u0027t lose the ability to correctly resolve dependencies in product namespaces.",
+      "revId": "4d490a22d5dec019f289c541c0aa537ab9c25b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
