@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa75adf1_cfd6bd08",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-13T22:55:54Z",
+      "side": 1,
+      "message": "Not blocking, but ~this appears a few places, should we add a helper function for it sometime?",
+      "range": {
+        "startLine": 844,
+        "startChar": 0,
+        "endLine": 850,
+        "endChar": 13
+      },
+      "revId": "0c1c456643d897628c2d9c2afaf9be162ade506c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
