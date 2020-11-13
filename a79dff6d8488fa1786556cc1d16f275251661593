@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ac02250_01abb9f1",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-13T18:42:14Z",
+      "side": 1,
+      "message": "It is slower - whether it is unnacceptably slow I don\u0027t know. I didn\u0027t want to do this as part of my original change because if it was too slow then it would revert functionality that I needed. Having this as a follow up change means that we can easily revert it if it is too slow without affecting other work because this is a performance enhancement and not a functional change.",
+      "parentUuid": "ae9fa908_9c9271fe",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 51
+      },
+      "revId": "a79dff6d8488fa1786556cc1d16f275251661593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fe8e5fb_d9a90611",
         "filename": "scripts/check_boot_jars/check_boot_jars.py",
         "patchSetId": 1
@@ -173,6 +197,30 @@
       "side": 1,
       "message": "It looks like the old code superfluously went through all classes, and hence could check the same package name over and over again. Now that we accurately iterate through the packages by themselves, is there any use picking out a some more or less random class in it? Iow, can\u0027t we dispense with the class altogether and just print the disallowed package in the error below?",
       "parentUuid": "8a1926b6_1ef0ebb3",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "a79dff6d8488fa1786556cc1d16f275251661593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a305633_ef80b26e",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-13T18:42:14Z",
+      "side": 1,
+      "message": "I considered that but I think it is useful to list a class. It is a lot easier to navigate to the source of say java.io.Bits (just look for java/io/Bits.java) than it is to navigate to the source of java.io package. Searching for java/io/Bits finds 4 entries, searching for java/io finds thousands of entries. I picked java.io because that is the package I usually remove from the allowed list of packages to make sure that it detects invalid packages.",
+      "parentUuid": "8878723f_fd9df278",
       "range": {
         "startLine": 63,
         "startChar": 19,
