@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06c95c87_08adcd4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-11-13T20:19:15Z",
+      "side": 1,
+      "message": "I left a reply in https://issuetracker.google.com/173137468#comment2 with some problems and a possible design.\n\nBut tl;dr is that this likely breaks builds which don\u0027t enable a namespace containing `libfoo`.",
+      "revId": "4d490a22d5dec019f289c541c0aa537ab9c25b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8712fec_188b9304",
