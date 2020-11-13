@@ -3,6 +3,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce35e9bb_1e6ca1f5",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-13T05:24:37Z",
+      "side": 1,
+      "message": "This looks odd to me. SOONG_NDK_API_APEX_TXT will be re-defined for each APEX. I think we can create the dist rules for a.coverageOutputPath directly here, just like it was done for a.installedFilesFile just above. You just need a different goal name and the path.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 5
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7dd441_8fe214ec",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-13T05:24:37Z",
+      "side": 1,
+      "message": "wrong indentation",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf453ffc_954d1df5",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-13T05:24:37Z",
+      "side": 1,
+      "message": "just for curiosity. Why do you mangle the name like this?",
+      "range": {
+        "startLine": 658,
+        "startChar": 3,
+        "endLine": 658,
+        "endChar": 88
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d807d3f1_d309d4f3",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-13T05:24:37Z",
+      "side": 1,
+      "message": "why? apisUsedByOutputFile is already added as a dist.",
+      "range": {
+        "startLine": 681,
+        "startChar": 16,
+        "endLine": 681,
+        "endChar": 32
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c683e73_24ceb84a",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-13T05:24:37Z",
+      "side": 1,
+      "message": "2020?",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea45c95f_8584c77f",
         "filename": "scripts/gen_ndk_usedby_apex.sh",
         "patchSetId": 6
