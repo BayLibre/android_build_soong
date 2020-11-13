@@ -2224,6 +2224,9 @@ func LibraryHostFactory() android.Module {
 type TestOptions struct {
 	// a list of extra test configuration files that should be installed with the module.
 	Extra_test_configs []string `android:"path,arch_variant"`
+
+	// If the test is a unittest.
+	Unit_test *bool
 }
 
 type testProperties struct {
