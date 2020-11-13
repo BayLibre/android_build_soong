@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97d7bb4_1a066d30",
+        "filename": "shared/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-13T23:12:15Z",
+      "side": 1,
+      "message": "optional: it looks like the times you call this function, you\u0027re calling it with *.OutDir()\n\nWould it make sense to define an interface that only has the method OutDir() here instead and pass ret/config?",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "24a086b3dcf5bb300914529508ad8233974c8ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
