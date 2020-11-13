@@ -22,6 +22,23 @@
       },
       "revId": "23d76d6dc5a05c59542913137ea22765ce3d0874",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "909720f9_1bcf83ed",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-13T22:53:10Z",
+      "side": 1,
+      "message": "Please very clearly define what you mean by unit test and what the semantics of setting this property are.  This is likely to be the first documentation of this feature that many people see.",
+      "revId": "23d76d6dc5a05c59542913137ea22765ce3d0874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
