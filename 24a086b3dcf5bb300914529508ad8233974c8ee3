@@ -22,6 +22,30 @@
       },
       "revId": "24a086b3dcf5bb300914529508ad8233974c8ee3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "275d7bcb_dbff2bc9",
+        "filename": "shared/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-11-14T01:07:26Z",
+      "side": 1,
+      "message": "Ah I see your point. Let me get back to this comment once I am working in soong_cmd and see if the interface is feasible here. I like the suggestion.",
+      "parentUuid": "b97d7bb4_1a066d30",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "24a086b3dcf5bb300914529508ad8233974c8ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
