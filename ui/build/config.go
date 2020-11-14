@@ -804,10 +804,8 @@ func (c *configImpl) TotalRAM() uint64 {
 	return c.totalRAM
 }
 
-// ForceUseGoma determines whether we should override Goma deprecation
-// and use Goma for the current build or not.
-func (c *configImpl) ForceUseGoma() bool {
-	if v, ok := c.environ.Get("FORCE_USE_GOMA"); ok {
+func (c *configImpl) boolEnvVal(name string) bool {
+	if v, ok := c.environ.Get(name); ok {
 		v = strings.TrimSpace(v)
 		if v != "" && v != "false" {
 			return true
@@ -816,62 +814,36 @@ func (c *configImpl) ForceUseGoma() bool {
 	return false
 }
 
+// ForceUseGoma determines whether we should override Goma deprecation
+// and use Goma for the current build or not.
+func (c *configImpl) ForceUseGoma() bool {
+	return c.boolEnvVal("FORCE_USE_GOMA")
+}
+
 func (c *configImpl) UseGoma() bool {
-	if v, ok := c.environ.Get("USE_GOMA"); ok {
-		v = strings.TrimSpace(v)
-		if v != "" && v != "false" {
-			return true
-		}
-	}
-	return false
+	return c.boolEnvVal("USE_GOMA")
 }
 
 func (c *configImpl) StartGoma() bool {
 	if !c.UseGoma() {
 		return false
 	}
-
-	if v, ok := c.environ.Get("NOSTART_GOMA"); ok {
-		v = strings.TrimSpace(v)
-		if v != "" && v != "false" {
-			return false
-		}
-	}
-	return true
+	return c.boolEnvVal("NOSTART_GOMA")
 }
 
 func (c *configImpl) UseRBE() bool {
-	if v, ok := c.environ.Get("USE_RBE"); ok {
-		v = strings.TrimSpace(v)
-		if v != "" && v != "false" {
-			return true
-		}
-	}
-	return false
+	return c.boolEnvVal("USE_RBE")
 }
 
 func (c *configImpl) UseBazel() bool {
-	if v, ok := c.environ.Get("USE_BAZEL"); ok {
-		v = strings.TrimSpace(v)
-		if v != "" && v != "false" {
-			return true
-		}
-	}
-	return false
+	return c.boolEnvVal("USE_BAZEL")
 }
 
 func (c *configImpl) StartRBE() bool {
 	if !c.UseRBE() {
 		return false
 	}
-
-	if v, ok := c.environ.Get("NOSTART_RBE"); ok {
-		v = strings.TrimSpace(v)
-		if v != "" && v != "false" {
-			return false
-		}
-	}
-	return true
+	return c.boolEnvVal("NOSTART_RBE")
 }
 
 func (c *configImpl) logDir() string {
