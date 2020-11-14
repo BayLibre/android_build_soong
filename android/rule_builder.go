@@ -15,7 +15,9 @@
 package android
 
 import (
+	"crypto/sha256"
 	"fmt"
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -24,6 +26,8 @@ import (
 
 	"android/soong/shared"
 )
+
+const SboxOutDir = "__SBOX_OUT_DIR__"
 
 // RuleBuilder provides an alternative to ModuleContext.Rule and ModuleContext.Build to add a command line to the build
 // graph.
@@ -163,7 +167,7 @@ func (r *RuleBuilder) DeleteTemporaryFiles() {
 }
 
 // Inputs returns the list of paths that were passed to the RuleBuilderCommand methods that take
-// input paths, such as RuleBuilderCommand.Input, RuleBuilderComand.Implicit, or
+// input paths, such as RuleBuilderCommand.Input, RuleBuilderCommand.Implicit, or
 // RuleBuilderCommand.FlagWithInput.  Inputs to a command that are also outputs of another command
 // in the same RuleBuilder are filtered out.  The list is sorted and duplicates removed.
 func (r *RuleBuilder) Inputs() Paths {
@@ -362,7 +366,7 @@ func (r *RuleBuilder) Commands() []string {
 	return commands
 }
 
-// NinjaEscapedCommands returns a slice containin the built command line after ninja escaping for each call to
+// NinjaEscapedCommands returns a slice containing the built command line after ninja escaping for each call to
 // RuleBuilder.Command.
 func (r *RuleBuilder) NinjaEscapedCommands() []string {
 	var commands []string
@@ -427,6 +431,7 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 	tools := r.Tools()
 	commands := r.NinjaEscapedCommands()
 	outputs := r.Outputs()
+	inputs := r.Inputs()
 
 	if len(commands) == 0 {
 		return
@@ -440,7 +445,7 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 	if r.sbox {
 		sboxOutputs := make([]string, len(outputs))
 		for i, output := range outputs {
-			sboxOutputs[i] = "__SBOX_OUT_DIR__/" + Rel(ctx, r.sboxOutDir.String(), output.String())
+			sboxOutputs[i] = filepath.Join(SboxOutDir, Rel(ctx, r.sboxOutDir.String(), output.String()))
 		}
 
 		commandString = proptools.ShellEscape(commandString)
@@ -458,10 +463,19 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 			sboxCmd.Flag("--depfile-out").Text(depFile.String())
 		}
 
+		// Add a hash of the list of input files to the xbox command line so that ninja reruns
+		// it when the list of input files changes.
+		sboxCmd.FlagWithArg("--input-hash ", hashSrcFiles(inputs))
+
 		sboxCmd.Flags(sboxOutputs)
 
 		commandString = sboxCmd.buf.String()
 		tools = append(tools, sboxCmd.tools...)
+	} else {
+		// If not using sbox the rule will run the command directly, put the hash of the
+		// list of input files in a comment at the end of the command line to ensure ninja
+		// reruns the rule when the list of input files changes.
+		commandString += " # hash of input list: " + hashSrcFiles(inputs)
 	}
 
 	// Ninja doesn't like multiple outputs when depfiles are enabled, move all but the first output to
@@ -499,7 +513,7 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 			Pool:           pool,
 		}),
 		Inputs:          rspFileInputs,
-		Implicits:       r.Inputs(),
+		Implicits:       inputs,
 		Output:          output,
 		ImplicitOutputs: implicitOutputs,
 		SymlinkOutputs:  r.SymlinkOutputs(),
@@ -534,7 +548,7 @@ type RuleBuilderCommand struct {
 func (c *RuleBuilderCommand) addInput(path Path) string {
 	if c.sbox {
 		if rel, isRel, _ := maybeRelErr(c.sboxOutDir.String(), path.String()); isRel {
-			return "__SBOX_OUT_DIR__/" + rel
+			return filepath.Join(SboxOutDir, rel)
 		}
 	}
 	c.inputs = append(c.inputs, path)
@@ -544,7 +558,7 @@ func (c *RuleBuilderCommand) addInput(path Path) string {
 func (c *RuleBuilderCommand) addImplicit(path Path) string {
 	if c.sbox {
 		if rel, isRel, _ := maybeRelErr(c.sboxOutDir.String(), path.String()); isRel {
-			return "__SBOX_OUT_DIR__/" + rel
+			return filepath.Join(SboxOutDir, rel)
 		}
 	}
 	c.implicits = append(c.implicits, path)
@@ -559,7 +573,7 @@ func (c *RuleBuilderCommand) outputStr(path Path) string {
 	if c.sbox {
 		// Errors will be handled in RuleBuilder.Build where we have a context to report them
 		rel, _, _ := maybeRelErr(c.sboxOutDir.String(), path.String())
-		return "__SBOX_OUT_DIR__/" + rel
+		return filepath.Join(SboxOutDir, rel)
 	}
 	return path.String()
 }
@@ -727,7 +741,7 @@ func (c *RuleBuilderCommand) OutputDir() *RuleBuilderCommand {
 	if !c.sbox {
 		panic("OutputDir only valid with Sbox")
 	}
-	return c.Text("__SBOX_OUT_DIR__")
+	return c.Text(filepath.Join(SboxOutDir))
 }
 
 // DepFile adds the specified depfile path to the paths returned by RuleBuilder.DepFiles and adds it to the command
@@ -905,4 +919,13 @@ func ninjaNameEscape(s string) string {
 		s = string(b)
 	}
 	return s
+}
+
+// hashSrcFiles returns a hash of the list of source files.  It is used to ensure the command line
+// or the sbox textproto manifest change even if the input files are not listed on the command line.
+func hashSrcFiles(srcFiles Paths) string {
+	h := sha256.New()
+	srcFileList := strings.Join(srcFiles.Strings(), "\n")
+	h.Write([]byte(srcFileList))
+	return fmt.Sprintf("%x", h.Sum(nil))
 }
