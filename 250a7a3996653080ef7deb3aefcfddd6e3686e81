@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4515a360_eb424199",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-11-14T02:31:58Z",
+      "side": 1,
+      "message": "There\u0027s already a few helpers in the environment object: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/environment.go;drc\u003d8b8bec3b3a3f2738dfbf3597964e9c790d60e3bf;l\u003d115\n\nIIRC, Goma was special here because it required a slightly different set of values. And then the rest probably just copy/pasted.",
+      "revId": "250a7a3996653080ef7deb3aefcfddd6e3686e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
