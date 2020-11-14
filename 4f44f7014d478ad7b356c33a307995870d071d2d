@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e4e31c9_a06afd9c",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-14T01:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce35e9bb_1e6ca1f5",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 5
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e7dd441_8fe214ec",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-13T05:24:37Z",
       "side": 1,
       "message": "wrong indentation",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2f56b33_3578d404",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-14T01:07:55Z",
+      "side": 1,
+      "message": "This is fixed format provided by gofmt.",
+      "parentUuid": "0e7dd441_8fe214ec",
       "range": {
         "startLine": 180,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b85378e7_a9bc22bd",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-14T01:07:55Z",
+      "side": 1,
+      "message": "In order to only keep the unique name part of modules like \"adbd\" which used to display in the dashboard later. go/android-api-coverage-ndk-mainline",
+      "parentUuid": "bf453ffc_954d1df5",
+      "range": {
+        "startLine": 658,
+        "startChar": 3,
+        "endLine": 658,
+        "endChar": 88
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d807d3f1_d309d4f3",
         "filename": "apex/builder.go",
         "patchSetId": 6
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-13T05:24:37Z",
       "side": 1,
       "message": "why? apisUsedByOutputFile is already added as a dist.",
+      "range": {
+        "startLine": 681,
+        "startChar": 16,
+        "endLine": 681,
+        "endChar": 32
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8810923_3852771c",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-14T01:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d807d3f1_d309d4f3",
       "range": {
         "startLine": 681,
         "startChar": 16,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f537e5_1146f0e6",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-14T01:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c683e73_24ceb84a",
+      "range": {
+        "startLine": 3,
+        "startChar": 12,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea45c95f_8584c77f",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-11-12T22:33:21Z",
       "side": 1,
       "message": "nit: Add a comment to explain what the readelf output looks like and what the regex does.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc3f434_4e687ecc",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-14T01:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea45c95f_8584c77f",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff1cf599_5af97828",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-14T01:07:55Z",
+      "side": 1,
+      "message": "When run manually .MF is recognized as executable file sometimes. As it\u0027s not related to want we need simply remove it in order to avoid possible failures.",
+      "parentUuid": "eca872a3_e55d0227",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54f26928_1ec02738",
         "filename": "scripts/gen_ndk_usedby_apex.sh",
         "patchSetId": 6
@@ -175,6 +343,30 @@
       "writtenOn": "2020-11-12T22:33:21Z",
       "side": 1,
       "message": "It would be good to have some sort of usage information that describes how the script should be used. You could describe the options in a comment, or implement a usage / help function to print this info when someone runs the command.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20df3373_ee9f5e57",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-14T01:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54f26928_1ec02738",
       "range": {
         "startLine": 45,
         "startChar": 0,
