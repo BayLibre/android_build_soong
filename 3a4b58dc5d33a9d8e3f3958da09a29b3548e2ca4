@@ -22,6 +22,30 @@
       },
       "revId": "3a4b58dc5d33a9d8e3f3958da09a29b3548e2ca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b67443_6f5a279e",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-11-16T19:44:20Z",
+      "side": 1,
+      "message": "This is a significantly modified $PATH by this point, only including references to paths within the source and output directories, so due to the checks in https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config.go;drc\u003daf880da0c43c66a65334ac9e1f78090075b9d31e;l\u003d207 there won\u0027t be spaces. I can\u0027t say for sure about other characters.",
+      "parentUuid": "a0a7992d_19d57e37",
+      "range": {
+        "startLine": 74,
+        "startChar": 30,
+        "endLine": 74,
+        "endChar": 64
+      },
+      "revId": "3a4b58dc5d33a9d8e3f3958da09a29b3548e2ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
