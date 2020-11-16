@@ -17,17 +17,21 @@ package linkerconfig
 import (
 	"android/soong/android"
 	"android/soong/etc"
+	"strings"
 
 	"github.com/google/blueprint/proptools"
 )
 
 var (
 	pctx = android.NewPackageContext("android/soong/linkerconfig")
+	name string
+	path string
 )
 
 func init() {
 	pctx.HostBinToolVariable("conv_linker_config", "conv_linker_config")
 	android.RegisterModuleType("linker_config", linkerConfigFactory)
+	android.RegisterMakeVarsProvider(pctx, linkerconfigMakeVars)
 }
 
 type linkerConfigProperties struct {
@@ -80,6 +84,9 @@ func (l *linkerConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if proptools.BoolDefault(l.properties.Installable, true) {
 		ctx.InstallFile(l.installDirPath, l.outputFilePath.Base(), l.outputFilePath)
 	}
+
+	name = l.Name()
+	path = l.outputFilePath.String()
 }
 
 // linker_config generates protobuf file from json file. This protobuf file will be used from
@@ -105,4 +112,8 @@ func (l *linkerConfig) AndroidMkEntries() []android.AndroidMkEntries {
 			},
 		},
 	}}
+}
+
+func linkerconfigMakeVars(ctx android.MakeVarsContext) {
+	ctx.Strict("LINKER_CONFIG_PATH_"+strings.ToUpper(name), path)
 }

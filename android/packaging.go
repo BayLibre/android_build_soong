@@ -203,3 +203,12 @@ func (p *PackagingBase) CopyDepsToZip(ctx ModuleContext, zipOut OutputPath) (ent
 	builder.Build(pctx, ctx, "zip_deps", fmt.Sprintf("Zipping deps for %s", ctx.ModuleName()))
 	return entries
 }
+
+// Get file name of installed package
+func (p *PackagingSpec) GetFileName() (string, bool) {
+	if p.relPathInPackage != "" {
+		return filepath.Base(p.relPathInPackage), true
+	}
+
+	return "", false
+}
