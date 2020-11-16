@@ -30,7 +30,7 @@ type BinaryProperties struct {
 	// the name of the source file that is the main entry point of the program.
 	// this file must also be listed in srcs.
 	// If left unspecified, module name is used instead.
-	// If name doesn’t match any filename in srcs, main must be specified.
+	// If module name doesn’t match any filename in srcs, main must be specified.
 	Main *string `android:"arch_variant"`
 
 	// set the name of the output binary.
@@ -81,9 +81,12 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 func PythonBinaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
 
-	return module.Init()
+	return module.init()
 }
 
+// whether to use `main` when starting the executable. The default is true, when set to
+// false it will act much like the normal `python` executable, but with the sources and
+// libraries automatically included in the PYTHONPATH.
 func (binary *binaryDecorator) autorun() bool {
 	return BoolDefault(binary.binaryProperties.Autorun, true)
 }
