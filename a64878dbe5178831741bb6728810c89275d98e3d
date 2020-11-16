@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10bde62_b2bc9bf1",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-16T01:25:21Z",
+      "side": 0,
+      "message": "Did you mean to delete this in this CL?",
+      "revId": "a64878dbe5178831741bb6728810c89275d98e3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de299d77_082a9451",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-16T01:25:21Z",
+      "side": 0,
+      "message": "ditto",
+      "revId": "a64878dbe5178831741bb6728810c89275d98e3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
