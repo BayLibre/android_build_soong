@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03507b3e_83dc5cd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-16T13:44:53Z",
+      "side": 1,
+      "message": "Could you explain the test changes between patch set 20 and 24?",
+      "revId": "aab5669a15f348cb9e350e94a01f1229bb70c815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
