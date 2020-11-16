@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47d910ce_fd116816",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-11-16T20:53:05Z",
+      "side": 1,
+      "message": "It looks like RBE copied Goma: https://cs.android.com/android/platform/superproject/+/master:build/make/core/rbe.mk;drc\u003d92f32615ed02ee442ded7016a7ecfa4740fe10fd;l\u003d18\n\nBut there are likely less users that have started using odd values, so standardizing the USE_RBE values at the construction of the config could make everything consistent without breaking users. (The problem is when this function returns a different value from the other tests -- we get halfway-enabled features)",
+      "revId": "d155fdeecadf5036c2d8c4776559ccc48d36e0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
