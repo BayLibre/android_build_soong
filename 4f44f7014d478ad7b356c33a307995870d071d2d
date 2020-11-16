@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee5b65b9_1b937cf7",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T00:25:40Z",
+      "side": 1,
+      "message": "Ack. But I see this is non conventional. The dependencies to the command tool is often described using CommandDeps field in RuleParams struct.",
+      "parentUuid": "f2f56b33_3578d404",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf453ffc_954d1df5",
         "filename": "apex/builder.go",
         "patchSetId": 6
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "In order to only keep the unique name part of modules like \"adbd\" which used to display in the dashboard later. go/android-api-coverage-ndk-mainline",
       "parentUuid": "bf453ffc_954d1df5",
+      "range": {
+        "startLine": 658,
+        "startChar": 3,
+        "endLine": 658,
+        "endChar": 88
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e882eb69_54b49b36",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-16T00:25:40Z",
+      "side": 1,
+      "message": "Can you process that in the dashboard?",
+      "parentUuid": "b85378e7_a9bc22bd",
       "range": {
         "startLine": 658,
         "startChar": 3,
