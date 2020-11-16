@@ -12,6 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This file offers AndroidMkEntriesProvider, which individual modules implement to output
+// Android.mk entries that contain information about the modules built through Soong. Kati reads
+// and combines them with the legacy Make-based module definitions to produce the complete view of
+// the source tree, which makes this a critical point of Make-Soong interoperability.
+//
+// Naturally, Soong-only builds do not rely on this mechanism.
+
 package android
 
 import (
@@ -36,8 +43,8 @@ func RegisterAndroidMkBuildComponents(ctx RegistrationContext) {
 	ctx.RegisterSingletonType("androidmk", AndroidMkSingleton)
 }
 
-// Deprecated: consider using AndroidMkEntriesProvider instead, especially if you're not going to
-// use the Custom function.
+// Deprecated: Use AndroidMkEntriesProvider instead, especially if you're not going to use the
+// Custom function. It's easier to use and test.
 type AndroidMkDataProvider interface {
 	AndroidMk() AndroidMkData
 	BaseModuleName() string
@@ -63,36 +70,70 @@ type AndroidMkData struct {
 
 type AndroidMkExtraFunc func(w io.Writer, outputFile Path)
 
-// Allows modules to customize their Android*.mk output.
+// Interface for modules to declare their Android.mk outputs. Note that every module needs to
+// implement this in order to be included the final Android-<product_name>.mk output, even if they
+// only need to output the common set of entries without any customizations.
 type AndroidMkEntriesProvider interface {
+	// Returns AndroidMkEntries objects that contain all basic info plus extra customization data
+	// if needed. This is the core func to implement.
+	// Note that one can return multiple objects. For example, java_library may return an additional
+	// AndroidMkEntries object for its hostdex sub-module.
 	AndroidMkEntries() []AndroidMkEntries
+	// Modules don't need to implement this as it's already implemented by ModuleBase.
+	// AndroidMkEntries uses BaseModuleName() instead of ModuleName() because certain modules
+	// e.g. Prebuilts, override the Name() func and return modified names.
+	// If a different name is preferred, use SubName or OverrideName in AndroidMkEntries.
 	BaseModuleName() string
 }
 
+// The core data struct that modules use to provide their Android.mk data.
 type AndroidMkEntries struct {
-	Class           string
-	SubName         string
-	OverrideName    string
-	DistFiles       TaggedDistFiles
-	OutputFile      OptionalPath
-	Disabled        bool
-	Include         string
-	Required        []string
-	Host_required   []string
+	// Android.mk class string, e.g EXECUTABLES, JAVA_LIBRARIES, ETC
+	Class string
+	// Optional suffix to append to the module name
+	SubName string
+	// If set, this value overrides the base module name. SubName is still appended.
+	OverrideName string
+	// Dist files to output
+	DistFiles TaggedDistFiles
+	// The output file for Kati to process and/or install. If absent, the module is skipped.
+	OutputFile OptionalPath
+	// If true, the module is skipped.
+	Disabled bool
+	// The postprocessing mk file to include, e.g. $(BUILD_SYSTEM)/soong_cc_prebuilt.mk
+	// If not set, $(BUILD_SYSTEM)/prebuilt.mk is used.
+	Include string
+	// Required module that need to be built and included in the final build output when building
+	// this module.
+	Required []string
+	// Required host module that need to be built and included in the final build output when
+	// building this module.
+	Host_required []string
+	// Required device module that need to be built and included in the final build output when
+	// building this module.
 	Target_required []string
 
 	header bytes.Buffer
 	footer bytes.Buffer
 
+	// Funcs to append additional Android.mk entries or modify the common ones. Multiple funcs are
+	// accepted so that common logic can be factored out as a shared func.
 	ExtraEntries []AndroidMkExtraEntriesFunc
+	// Funcs to add extra lines to the module's Android.mk output. Unlike AndroidMkExtraEntriesFunc,
+	// which simply sets Make variable values, this can be used for anything since it can write any
+	// Make statements directly to the final Android-*.mk file.
+	// Primarily used to call macros or declare/update Make targets.
 	ExtraFooters []AndroidMkExtraFootersFunc
 
+	// A map that holds the up-to-date Make variable values. Can be accessed from tests.
 	EntryMap   map[string][]string
 	entryOrder []string
 }
 
 type AndroidMkExtraEntriesFunc func(entries *AndroidMkEntries)
 type AndroidMkExtraFootersFunc func(w io.Writer, name, prefix, moduleDir string, entries *AndroidMkEntries)
+
+// Utility funcs to manipulate Android.mk variable entries.
 
 func (a *AndroidMkEntries) SetString(name, value string) {
 	if _, ok := a.EntryMap[name]; !ok {
@@ -270,6 +311,8 @@ func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module) []string {
 	return ret
 }
 
+// Goes through the common variable processing and calls the extra data funcs to generate and fill
+// in AndroidMkEntries's in-struct data, ready to be flushed to a file.
 func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod blueprint.Module) {
 	a.EntryMap = make(map[string][]string)
 	amod := mod.(Module).base()
@@ -390,6 +433,8 @@ func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod bluep
 	}
 }
 
+// Flushes the AndroidMkEntries's in-struct data populated by AndroidMkEntries into the given Writer
+// object.
 func (a *AndroidMkEntries) write(w io.Writer) {
 	if a.Disabled {
 		return
@@ -410,6 +455,8 @@ func (a *AndroidMkEntries) FooterLinesForTests() []string {
 	return strings.Split(string(a.footer.Bytes()), "\n")
 }
 
+// A singleton to collect Android.mk data from all modules and dump them into the final
+// Android-<product_name>.mk file output.
 func AndroidMkSingleton() Singleton {
 	return &androidMkSingleton{}
 }
@@ -417,6 +464,7 @@ func AndroidMkSingleton() Singleton {
 type androidMkSingleton struct{}
 
 func (c *androidMkSingleton) GenerateBuildActions(ctx SingletonContext) {
+	// Skip if Soong wasn't invoked from Make.
 	if !ctx.Config().EmbeddedInMake() {
 		return
 	}
@@ -427,6 +475,8 @@ func (c *androidMkSingleton) GenerateBuildActions(ctx SingletonContext) {
 		androidMkModulesList = append(androidMkModulesList, module)
 	})
 
+	// Sort the module list by the module names to eliminate random churns, which may erroneously
+	// invoke additional build processes.
 	sort.SliceStable(androidMkModulesList, func(i, j int) bool {
 		return ctx.ModuleName(androidMkModulesList[i]) < ctx.ModuleName(androidMkModulesList[j])
 	})
@@ -519,6 +569,8 @@ func translateAndroidMkModule(ctx SingletonContext, w io.Writer, mod blueprint.M
 	}
 }
 
+// A simple, special Android.mk entry output func to make it possible to build blueprint tools using
+// m by making them phony targets.
 func translateGoBinaryModule(ctx SingletonContext, w io.Writer, mod blueprint.Module,
 	goBinary bootstrap.GoBinaryTool) error {
 
@@ -551,6 +603,7 @@ func (data *AndroidMkData) fillInData(config Config, bpPath string, mod blueprin
 	data.Target_required = data.Entries.Target_required
 }
 
+// Deprecated
 func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Module,
 	provider AndroidMkDataProvider) error {
 
@@ -597,6 +650,7 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 	return nil
 }
 
+// Deprecated
 func WriteAndroidMkData(w io.Writer, data AndroidMkData) {
 	if data.Disabled {
 		return
@@ -644,11 +698,14 @@ func shouldSkipAndroidMkProcessing(module *ModuleBase) bool {
 		module.Os() == LinuxBionic
 }
 
+// A utility func to format LOCAL_TEST_DATA outputs. See the comments on DataPath to understand how
+// to use this func.
 func AndroidMkDataPaths(data []DataPath) []string {
 	var testFiles []string
 	for _, d := range data {
 		rel := d.SrcPath.Rel()
 		path := d.SrcPath.String()
+		// LOCAL_TEST_DATA requires the rel portion of the path to be removed from the path.
 		if !strings.HasSuffix(path, rel) {
 			panic(fmt.Errorf("path %q does not end with %q", path, rel))
 		}
