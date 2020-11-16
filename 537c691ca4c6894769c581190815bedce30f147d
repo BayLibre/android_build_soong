@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c947f113_a6435c90",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-16T13:39:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5814421c_afb6010c",
+      "revId": "537c691ca4c6894769c581190815bedce30f147d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4bed86d_5eb22426",
