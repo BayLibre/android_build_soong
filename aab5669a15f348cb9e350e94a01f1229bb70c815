@@ -16,6 +16,24 @@
       "message": "Could you explain the test changes between patch set 20 and 24?",
       "revId": "aab5669a15f348cb9e350e94a01f1229bb70c815",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a227372_d89c7e84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-16T14:07:51Z",
+      "side": 1,
+      "message": "PS21: All changes are in the test:\n\n1) removed conditional CLC for sdk level 28 (it was not covering any extra code paths not covered by other tests cases)\n\n2) moved validateClassLoaderContext() before fixClassLoaderContext (both orders are fine, but the current order reflects the way it is used in the code)\n\n3) moved m.AddContextMap(m1, \"c\"), just to group it with similar code.\n\nPS22: added a few comments to new functions.\n\nPS23-PS24: rebase",
+      "parentUuid": "03507b3e_83dc5cd7",
+      "revId": "aab5669a15f348cb9e350e94a01f1229bb70c815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
