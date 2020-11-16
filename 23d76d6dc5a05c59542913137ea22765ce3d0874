@@ -93,6 +93,24 @@
       "parentUuid": "8ea30788_709f39cb",
       "revId": "23d76d6dc5a05c59542913137ea22765ce3d0874",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10793328_2c9e8632",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-11-16T19:16:38Z",
+      "side": 1,
+      "message": "Done.\n\nhostside is defined as running on host without device (vs host-driven).",
+      "parentUuid": "1669bd49_d0286334",
+      "revId": "23d76d6dc5a05c59542913137ea22765ce3d0874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

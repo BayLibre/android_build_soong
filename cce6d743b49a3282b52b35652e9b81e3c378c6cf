@@ -16,6 +16,24 @@
       "message": "Can you also add LOCAL_IS_UNIT_TEST here so it can be translated to Android.bp?",
       "revId": "cce6d743b49a3282b52b35652e9b81e3c378c6cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23419cc3_783ff165",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-11-16T19:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ebbcafd_fec8c978",
+      "revId": "cce6d743b49a3282b52b35652e9b81e3c378c6cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
