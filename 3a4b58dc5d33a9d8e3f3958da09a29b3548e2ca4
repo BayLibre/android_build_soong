@@ -46,6 +46,30 @@
       },
       "revId": "3a4b58dc5d33a9d8e3f3958da09a29b3548e2ca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3745ba27_c59ba033",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-16T23:51:04Z",
+      "side": 1,
+      "message": "Thanks Dan. For posterity, here is the flag value on a Linux host:\n\n--action_env\u003dPATH\u003d/usr/local/google/home/jingwen/aosp/prebuilts/build-tools/path/linux-x86:/usr/local/google/home/jingwen/aosp/out/.path",
+      "parentUuid": "38b67443_6f5a279e",
+      "range": {
+        "startLine": 74,
+        "startChar": 30,
+        "endLine": 74,
+        "endChar": 64
+      },
+      "revId": "3a4b58dc5d33a9d8e3f3958da09a29b3548e2ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
