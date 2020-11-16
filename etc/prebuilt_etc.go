@@ -14,9 +14,12 @@
 
 package etc
 
-import (
-	"strconv"
+// This file implements module types that install prebuilt artifacts. Unlike
+// module types that are based on `android.Prebuilt`, such as `java_import`,
+// these modules exist only as prebuilts, and do not exist a same-named source
+// module counterpart.
 
+import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -42,7 +45,7 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 }
 
 type prebuiltEtcProperties struct {
-	// Source file of this prebuilt.
+	// Source file of this prebuilt. Can reference a genrule type module with the ":module" syntax.
 	Src *string `android:"path,arch_variant"`
 
 	// optional subdirectory under which this file is installed into, cannot be specified with relative_install_path, prefer relative_install_path
@@ -209,6 +212,11 @@ func (p *PrebuiltEtc) Installable() bool {
 
 func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.sourceFilePath = android.PathForModuleSrc(ctx, android.String(p.properties.Src))
+
+	// Determine the output file basename.
+	// If Filename is set, use the name specified by the property.
+	// If Filename_from_src is set, use the source file name.
+	// Otherwise use the module name.
 	filename := android.String(p.properties.Filename)
 	filename_from_src := android.Bool(p.properties.Filename_from_src)
 	if filename == "" {
@@ -274,7 +282,9 @@ func (p *PrebuiltEtc) AndroidMkEntries() []android.AndroidMkEntries {
 				if len(p.properties.Symlinks) > 0 {
 					entries.AddStrings("LOCAL_MODULE_SYMLINKS", p.properties.Symlinks...)
 				}
-				entries.SetString("LOCAL_UNINSTALLABLE_MODULE", strconv.FormatBool(!p.Installable()))
+				if !p.Installable() {
+					entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
+				}
 				if p.additionalDependencies != nil {
 					for _, path := range *p.additionalDependencies {
 						entries.AddStrings("LOCAL_ADDITIONAL_DEPENDENCIES", path.String())
