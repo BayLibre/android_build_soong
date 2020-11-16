@@ -59,15 +59,11 @@ func (test *testDecorator) install(ctx android.ModuleContext, file android.Path)
 		test.testProperties.Test_config_template, test.binaryDecorator.binaryProperties.Test_suites,
 		test.binaryDecorator.binaryProperties.Auto_gen_config)
 
-	test.binaryDecorator.pythonInstaller.dir = "nativetest"
-	test.binaryDecorator.pythonInstaller.dir64 = "nativetest64"
-
 	test.binaryDecorator.pythonInstaller.relative = ctx.ModuleName()
-
 	test.binaryDecorator.pythonInstaller.install(ctx, file)
 
+	// Get Paths for elements of data property, expanding :module references and resolving source tree paths.
 	dataSrcPaths := android.PathsForModuleSrc(ctx, test.testProperties.Data)
-
 	for _, dataSrcPath := range dataSrcPaths {
 		test.data = append(test.data, android.DataPath{SrcPath: dataSrcPath})
 	}
@@ -89,12 +85,12 @@ func NewTest(hod android.HostOrDeviceSupported) *Module {
 func PythonTestHostFactory() android.Module {
 	module := NewTest(android.HostSupportedNoCross)
 
-	return module.Init()
+	return module.init()
 }
 
 func PythonTestFactory() android.Module {
 	module := NewTest(android.HostAndDeviceSupported)
 	module.multilib = android.MultilibBoth
 
-	return module.Init()
+	return module.init()
 }

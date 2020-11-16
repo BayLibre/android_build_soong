@@ -20,6 +20,8 @@ import (
 	"fmt"
 
 	"android/soong/android"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func init() {
@@ -27,16 +29,16 @@ func init() {
 }
 
 type BinaryProperties struct {
-	// the name of the source file that is the main entry point of the program.
+	// The name of the source file that is the main entry point of the program.
 	// this file must also be listed in srcs.
 	// If left unspecified, module name is used instead.
-	// If name doesn’t match any filename in srcs, main must be specified.
+	// If module name doesn’t match any filename in srcs, main must be specified.
 	Main *string `android:"arch_variant"`
 
-	// set the name of the output binary.
+	// The name of the output binary. If not set, defaults to the module's name
 	Stem *string `android:"arch_variant"`
 
-	// append to the name of the output binary.
+	// Suffix to append to the name of the output binary.
 	Suffix *string `android:"arch_variant"`
 
 	// list of compatibility suites (for example "cts", "vts") that the module should be
@@ -81,9 +83,12 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 func PythonBinaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
 
-	return module.Init()
+	return module.init()
 }
 
+// whether to use `main` when starting the executable. The default is true, when set to
+// false it will act much like the normal `python` executable, but with the sources and
+// libraries automatically included in the PYTHONPATH.
 func (binary *binaryDecorator) autorun() bool {
 	return BoolDefault(binary.binaryProperties.Autorun, true)
 }
@@ -141,12 +146,7 @@ func (binary *binaryDecorator) getHostInterpreterName(ctx android.ModuleContext,
 // find main program path within runfiles tree.
 func (binary *binaryDecorator) getPyMainFile(ctx android.ModuleContext,
 	srcsPathMappings []pathMapping) string {
-	var main string
-	if String(binary.binaryProperties.Main) == "" {
-		main = ctx.ModuleName() + pyExt
-	} else {
-		main = String(binary.binaryProperties.Main)
-	}
+	main := proptools.StringDefault(binary.binaryProperties.Main, ctx.ModuleName()+pyExt)
 
 	for _, path := range srcsPathMappings {
 		if main == path.src.Rel() {
@@ -159,10 +159,7 @@ func (binary *binaryDecorator) getPyMainFile(ctx android.ModuleContext,
 }
 
 func (binary *binaryDecorator) getStem(ctx android.ModuleContext) string {
-	stem := ctx.ModuleName()
-	if String(binary.binaryProperties.Stem) != "" {
-		stem = String(binary.binaryProperties.Stem)
-	}
+	stem := proptools.StringDefault(binary.binaryProperties.Stem, ctx.ModuleName())
 
 	return stem + String(binary.binaryProperties.Suffix)
 }
