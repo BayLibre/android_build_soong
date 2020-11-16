@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a7992d_19d57e37",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-16T13:30:05Z",
+      "side": 1,
+      "message": "Do we need to put the value of PATH in quotes? Like --action_env\u003dPATH\u003d\u0027x y z\u0027\n\nI\u0027m just wondering what kind of weird values people could have for their PATH variable. Are spaces disallowed?",
+      "range": {
+        "startLine": 74,
+        "startChar": 30,
+        "endLine": 74,
+        "endChar": 64
+      },
+      "revId": "3a4b58dc5d33a9d8e3f3958da09a29b3548e2ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
