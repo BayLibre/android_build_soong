@@ -558,6 +558,44 @@ func (linker *baseLinker) injectVersionSymbol(ctx ModuleContext, in android.Path
 	})
 }
 
+var injectTimestamp = pctx.AndroidStaticRule("injectTimestamp",
+	blueprint.RuleParams{
+		Command: "$symbolInjectCmd -i $in -o $out -s soong_build_date " +
+			"-from 'SOONG BUILD TIMESTAMP' -vt",
+		CommandDeps: []string{"$symbolInjectCmd"},
+	},
+	"buildNumberFile")
+
+func (linker *baseLinker) injectTimestamp(ctx ModuleContext, in android.Path, out android.WritablePath) {
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        injectTimestamp,
+		Description: "inject timestamp",
+		Input:       in,
+		Output:      out,
+	})
+}
+
+var injectGitSha = pctx.AndroidStaticRule("injectGitSha",
+	blueprint.RuleParams{
+		Command: "$symbolInjectCmd -i $in -o $out -s soong_git_sha " +
+			"-from 'SOONG GIT SHA PADDED TO 40 CHARACTERS XX' -vr $repo",
+		CommandDeps: []string{"$symbolInjectCmd"},
+	},
+	"repo")
+
+func (linker *baseLinker) injectGitSha(ctx ModuleContext, in android.Path, out android.WritablePath) {
+	repoPath := ctx.ModuleDir()
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        injectGitSha,
+		Description: "inject git sha",
+		Input:       in,
+		Output:      out,
+		Args: map[string]string{
+			"repo": repoPath,
+		},
+	})
+}
+
 // Rule to generate .bss symbol ordering file.
 
 var (

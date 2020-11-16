@@ -111,6 +111,12 @@ type LibraryProperties struct {
 	// Inject boringssl hash into the shared library.  This is only intended for use by external/boringssl.
 	Inject_bssl_hash *bool `android:"arch_variant"`
 
+	// Inject build timestamp into the shared library.
+	Inject_timestamp *bool
+
+	// Inject git SHA of the ModuleDir into the shared library.
+	Inject_git_sha *bool
+
 	// If this is an LLNDK library, the name of the equivalent llndk_library module.
 	Llndk_stubs *string
 }
@@ -988,6 +994,18 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	library.unstrippedOutputFile = outputFile
 
 	outputFile = maybeInjectBoringSSLHash(ctx, outputFile, library.Properties.Inject_bssl_hash, fileName)
+
+	if Bool(library.Properties.Inject_timestamp) {
+		timestampedFile := outputFile
+		outputFile = android.PathForModuleOut(ctx, "notimestamp", fileName)
+		library.injectTimestamp(ctx, outputFile, timestampedFile)
+	}
+
+	if Bool(library.Properties.Inject_git_sha) {
+		shaOutputFile := outputFile
+		outputFile = android.PathForModuleOut(ctx, "nosha", fileName)
+		library.injectGitSha(ctx, outputFile, shaOutputFile)
+	}
 
 	if Bool(library.baseLinker.Properties.Use_version_lib) {
 		if ctx.Host() {

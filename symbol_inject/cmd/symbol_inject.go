@@ -18,6 +18,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"os/exec"
+	"time"
 
 	"android/soong/symbol_inject"
 )
@@ -28,6 +30,9 @@ var (
 	symbol = flag.String("s", "", "symbol to inject into")
 	from   = flag.String("from", "", "optional existing value of the symbol for verification")
 	value  = flag.String("v", "", "value to inject into symbol")
+
+	useTimestamp = flag.Bool("vt", false, "inject RFC3339 timestamp into symbol")
+	repo         = flag.String("vr", "", "repo path for source git SHA to inject into symbol")
 
 	dump = flag.Bool("dump", false, "dump the symbol table for copying into a test")
 )
@@ -54,8 +59,39 @@ func main() {
 			usageError("-s is required")
 		}
 
-		if *value == "" {
-			usageError("-v is required")
+		if *value == "" && *repo == "" && !*useTimestamp {
+			usageError("one of -v, -vt, or -vr is required")
+		}
+
+		if *value != "" && *useTimestamp {
+			usageError("-v and -vt are mutually exclusive")
+		}
+
+		if *value != "" && *repo != "" {
+			usageError("-v and -vr are mutually exclusive")
+		}
+
+		if *repo != "" && *useTimestamp {
+			usageError("-vr and -vt are mutually exclusive")
+		}
+
+		if *useTimestamp {
+			*value = time.Now().UTC().Format(time.RFC3339)
+		}
+
+		if *repo != "" {
+			cmd := exec.Command("git", "-C", *repo, "rev-parse", "HEAD")
+			sha, err := cmd.Output()
+			if err != nil {
+				fmt.Fprintln(os.Stderr, err.Error())
+				os.Exit(7)
+			}
+
+			// If the placeholder is shorter than the SHA, just replace what's there
+			if *from != "" && len(*from) < len(sha) {
+				sha = sha[0:len(*from)]
+			}
+			*value = string(sha)
 		}
 	}
 
