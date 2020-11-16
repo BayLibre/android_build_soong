@@ -45,8 +45,6 @@ func NewPythonInstaller(dir, dir64 string) *pythonInstaller {
 	}
 }
 
-var _ installer = (*pythonInstaller)(nil)
-
 func (installer *pythonInstaller) installDir(ctx android.ModuleContext) android.InstallPath {
 	dir := installer.dir
 	if ctx.Arch().ArchType.Multilib == "lib64" && installer.dir64 != "" {
