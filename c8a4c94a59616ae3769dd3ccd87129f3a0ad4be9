@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14cf564c_a195db1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-16T15:46:03Z",
+      "side": 1,
+      "message": "Thanks for the first comment fixit CL!",
+      "revId": "c8a4c94a59616ae3769dd3ccd87129f3a0ad4be9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df90ef8_2a018b85",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-16T15:46:03Z",
+      "side": 1,
+      "message": "nit: Soong uses a soft column limit of 100 chars. You can put more in a single line.",
+      "revId": "c8a4c94a59616ae3769dd3ccd87129f3a0ad4be9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c21ffe84_7b89c860",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-16T15:46:03Z",
+      "side": 1,
+      "message": "I think this comment points out the most important and potentially confusing part of this module type. What about emphasizing this difference makes things a lot simpler for the prebuilt_etc modules?",
+      "revId": "c8a4c94a59616ae3769dd3ccd87129f3a0ad4be9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bf94d0_e90dc3c9",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-16T15:46:03Z",
+      "side": 1,
+      "message": "This if clause can be one line like this:\nentries.SetBoolIfTrue(\"LOCAL_UNINSTALLABLE_MODULE\", !p.Installable())",
+      "revId": "c8a4c94a59616ae3769dd3ccd87129f3a0ad4be9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
