@@ -558,6 +558,28 @@ func (linker *baseLinker) injectVersionSymbol(ctx ModuleContext, in android.Path
 	})
 }
 
+var injectTimestamp = pctx.AndroidStaticRule("injectTimestamp",
+	blueprint.RuleParams{
+		Command: "$symbolInjectCmd -i $in -o $out -s soong_build_timestamp " +
+			"-from 'SOONG BUILD TIMESTAMP' -v " +
+			`"$$(date -d @$$(cat $buildDateTimeFile) -u '+%Y-%m-%dT%H:%M:%SZ')"`,
+		CommandDeps: []string{"$symbolInjectCmd"},
+	},
+	"buildDateTimeFile")
+
+func (linker *baseLinker) injectTimestamp(ctx ModuleContext, in android.Path, out android.WritablePath) {
+	buildDateTimeFile := ctx.Config().Getenv("BUILD_DATETIME_FILE")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        injectTimestamp,
+		Description: "inject timestamp",
+		Input:       in,
+		Output:      out,
+		Args: map[string]string{
+			"buildDateTimeFile": buildDateTimeFile,
+		},
+	})
+}
+
 // Rule to generate .bss symbol ordering file.
 
 var (
