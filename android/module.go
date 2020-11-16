@@ -852,7 +852,7 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 		m.AddProperties(&base.hostAndDeviceProperties)
 	}
 
-	InitArchModule(m)
+	initArchModule(m)
 }
 
 func InitAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
@@ -1098,7 +1098,7 @@ func (m *ModuleBase) IsCommonOSVariant() bool {
 	return m.commonProperties.CommonOSVariant
 }
 
-func (m *ModuleBase) supportsTarget(target Target, config Config) bool {
+func (m *ModuleBase) supportsTarget(target Target) bool {
 	switch m.commonProperties.HostOrDeviceSupported {
 	case HostSupported:
 		return target.Os.Class == Host
