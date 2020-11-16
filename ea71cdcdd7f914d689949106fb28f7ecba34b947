@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7046700a_297ec083",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-11-16T19:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87cc93b5_a9d7ff62",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "ea71cdcdd7f914d689949106fb28f7ecba34b947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df9bf4d3_015926d7",
@@ -77,6 +101,54 @@
       "writtenOn": "2020-11-16T18:26:50Z",
       "side": 1,
       "message": "nit: Cfi_assembly_support\n\nAlso, add a comment above this property which explains what this property does and the flags it enables; the comment will then be included in the auto-generated docs.",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 20
+      },
+      "revId": "ea71cdcdd7f914d689949106fb28f7ecba34b947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6514106f_10f4b58e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-11-16T19:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9bf4d3_015926d7",
+      "range": {
+        "startLine": 178,
+        "startChar": 22,
+        "endLine": 178,
+        "endChar": 26
+      },
+      "revId": "ea71cdcdd7f914d689949106fb28f7ecba34b947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ac54e0_6e7029fb",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-11-16T19:28:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22ee84aa_6e622965",
       "range": {
         "startLine": 178,
         "startChar": 2,
