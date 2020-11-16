@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e69a4011_de07e57c",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-16T06:35:31Z",
+      "side": 1,
+      "message": "I wanted to change the name because it is not checking for the \u0027SDK\u0027 library dependencies but checking the partitions for the Java library dependencies. checkPartitionsForJavaDependency() must be clearer in that sense. But I don\u0027t think we need to use \u0027Sdk\u0027 in the function name.",
+      "parentUuid": "0b2e2535_3b26e951",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fda2bef_7f783c85",
         "filename": "java/sdk_library_external.go",
         "patchSetId": 8

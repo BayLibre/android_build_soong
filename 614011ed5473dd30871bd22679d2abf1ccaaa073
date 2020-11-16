@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2bc761_98132435",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-16T06:35:31Z",
+      "side": 1,
+      "message": "This must be the precondition for this check because this is under Treble environment.\nLet\u0027s move this condition to java.go, too.\nWe may not have the condition for \"!vendorInterfaceEnforced \u0026\u0026 productInterfaceEnforced\". In this case, product interface also will not be enforced as well as java_sdk_library.",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "614011ed5473dd30871bd22679d2abf1ccaaa073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d18cf7_5e737fb9",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-16T06:35:31Z",
+      "side": 1,
+      "message": "Even with this is false, \u0027vendor\u0027 to any must not be allowed.\n\nIn summary,\n1) vendorInterfaceEnforced is a precondition.\n2) When java_sdk_library is enforced, the inter-partition dependency between \u0027vendor\u0027 and any partitions must be java_sdk_library.\n3) if productInterfaceEnforced, the dependency between \u0027product\u0027 and \u0027system\u0027 must be enforced.",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "614011ed5473dd30871bd22679d2abf1ccaaa073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
