@@ -16,6 +16,23 @@
       "message": "LGTM but this really needs a review from Chris I think",
       "revId": "022c870acf1c8cc7d7bab7fa79342af674008c91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed94c8f_a4ce9b5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-16T15:56:06Z",
+      "side": 1,
+      "message": "This LGTM, but the \"Test: tbd\" concerns me. Did you verify this in part manually, or are you leaving that as an exercise for me? :)",
+      "revId": "022c870acf1c8cc7d7bab7fa79342af674008c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
