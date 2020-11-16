@@ -15,6 +15,8 @@
 package linkerconfig
 
 import (
+	"strings"
+
 	"android/soong/android"
 	"android/soong/etc"
 
@@ -28,6 +30,7 @@ var (
 func init() {
 	pctx.HostBinToolVariable("conv_linker_config", "conv_linker_config")
 	android.RegisterModuleType("linker_config", linkerConfigFactory)
+	android.RegisterMakeVarsProvider(pctx, linkerconfigMakeVars)
 }
 
 type linkerConfigProperties struct {
@@ -105,4 +108,15 @@ func (l *linkerConfig) AndroidMkEntries() []android.AndroidMkEntries {
 			},
 		},
 	}}
+}
+
+func linkerconfigMakeVars(ctx android.MakeVarsContext) {
+	ctx.VisitAllModulesIf(func(module android.Module) bool {
+		_, ok := module.(*linkerConfig)
+		return ok
+	}, func(module android.Module) {
+		if lc, ok := module.(*linkerConfig); ok {
+			ctx.Strict("LINKER_CONFIG_PATH_"+strings.ToUpper(lc.Name()), lc.OutputFile().String())
+		}
+	})
 }
