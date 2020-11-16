@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5814421c_afb6010c",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-16T12:58:25Z",
+      "side": 1,
+      "message": "Previously exportedSdkLibs were computed bottom-up in aapt.buildActions (a new set was initialized there and returned from function to be merged with the outer set). Now it is computed top-down (a partially constructed tree is passed into aapt.buildActions and extended with new subtrees there).\n\nConsequently, it is necessary to move a.usesLibrary.classLoaderContextForUsesLibDeps(ctx) earlier, before aapt.buildActions at line 785 (because the libraries it adds to the tree should take priority over the aapt.buildActions, as they come from `uses_libs`/`optional_uses_libs` and take priority over OptionalImplicitSdkLibrary() ones).\n\nSo a.usesLibrary.classLoaderContextForUsesLibDeps(ctx)  has moved to line 782, where it is stored in a.exportedSdkLibs. Later at line 808 this function is called, which now uses already computed  a.exportedSdkLibs. Also, there\u0027s no need to pass a.aapt.sdkLibraries here, as they are added by aapt.buildActions now.",
+      "parentUuid": "abee400f_a8b3eab3",
+      "revId": "537c691ca4c6894769c581190815bedce30f147d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4bed86d_5eb22426",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-13T19:36:25Z",
       "side": 1,
       "message": "Presumably this is unused just like the unusedClcMap above. I think it might be better to just pass in nil (here and above in unusedClcMap) and have aaptLibs create an empty temporary clc map if passed nil.",
+      "revId": "537c691ca4c6894769c581190815bedce30f147d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd04d4a_a7a596c4",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1850,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-16T12:58:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bed86d_5eb22426",
       "revId": "537c691ca4c6894769c581190815bedce30f147d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
