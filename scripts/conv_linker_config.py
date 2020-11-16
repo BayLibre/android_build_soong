@@ -20,6 +20,7 @@ import collections
 import json
 
 import linker_config_pb2
+from google.protobuf.descriptor import FieldDescriptor
 from google.protobuf.json_format import ParseDict
 from google.protobuf.text_format import MessageToString
 
@@ -41,6 +42,18 @@ def Print(args):
     pb = linker_config_pb2.LinkerConfig()
     pb.ParseFromString(f.read())
   print(MessageToString(pb))
+
+
+def Append(args):
+  pb = linker_config_pb2.LinkerConfig()
+  with open(args.source, 'rb') as f:
+    pb.ParseFromString(f.read())
+  if getattr(type(pb), args.name).DESCRIPTOR.label == FieldDescriptor.LABEL_REPEATED:
+    for item in args.value.split(' '):
+      if item not in getattr(pb, args.name):
+        getattr(pb, args.name).append(item)
+  with open(args.source, 'wb') as f:
+    f.write(pb.SerializeToString())
 
 
 def GetArgParser():
@@ -72,6 +85,26 @@ def GetArgParser():
       type=str,
       help='Source linker configuration file in protobuf.')
   print_proto.set_defaults(func=Print)
+
+  append_proto = subparsers.add_parser(
+      'append', help='Append items into list type configuration.')
+  append_proto.add_argument(
+      '-s',
+      '--source',
+      required=True,
+      type=str,
+      help='Source linker configuration file in protobuf.')
+  append_proto.add_argument(
+      '--name',
+      required=True,
+      type=str,
+      help='Name of the items to append.')
+  append_proto.add_argument(
+      '--value',
+      required=True,
+      type=str,
+      help='Values of the items to append. If there are more than one it should be separated by empty space')
+  append_proto.set_defaults(func=Append)
 
   return parser
 
