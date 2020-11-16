@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "608f01aa_f80d5271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "nit comments are about naming. Other comments are concerns about the logic.",
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd89633a_5a67be96",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1673,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "Can we also check that VNDK shared libraries are also included to the snapshot? Contrast to vendor snapshot, we may also need to capture VNDK.",
+      "range": {
+        "startLine": 1665,
+        "startChar": 0,
+        "endLine": 1673,
+        "endChar": 61
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a88ecca_85606775",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "nit; rename vendor specific names (e.g. vendorSnapshotLibraryDecorator and vendorSnapshotBinaryDecorator) to generic names for better documentation?",
+      "range": {
+        "startLine": 411,
+        "startChar": 21,
+        "endLine": 411,
+        "endChar": 42
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b380b2_ba085f05",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "nit; recovery?",
+      "range": {
+        "startLine": 748,
+        "startChar": 41,
+        "endLine": 748,
+        "endChar": 64
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22a8f0eb_38391a8b",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "nit; inProprietaryPath?",
+      "range": {
+        "startLine": 752,
+        "startChar": 33,
+        "endLine": 752,
+        "endChar": 56
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6189e7d_5ef22912",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be vendor only?",
+      "range": {
+        "startLine": 761,
+        "startChar": 0,
+        "endLine": 764,
+        "endChar": 2
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cee6ba5_736676ea",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "nit; We should either change exclude_from_vendor_snapshot to exclude_from_snapshot or introduce exclude_from_recovery_snapshot, for better documentation",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 2
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961f86f9_bed656f8",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t recovery snapshots check recovery_available?",
+      "range": {
+        "startLine": 808,
+        "startChar": 0,
+        "endLine": 809,
+        "endChar": 98
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f09c73_7f3100f0",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be only for vendor?",
+      "range": {
+        "startLine": 815,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 23
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df479b9_58587e29",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-16T02:18:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t recovery snapshots check recovery_available?",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 825,
+        "endChar": 97
+      },
+      "revId": "09698fc7a87aba0a3c9619898ef1f96c50d7b2a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
