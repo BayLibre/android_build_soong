@@ -22,6 +22,30 @@
       },
       "revId": "1b879b2794674d84b540144e976c0f6d9b3d7493",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4039131_bc11497b",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-16T05:51:07Z",
+      "side": 1,
+      "message": "Changed error message to contain more informations.",
+      "parentUuid": "80d48e5d_ff6f6dfb",
+      "range": {
+        "startLine": 101,
+        "startChar": 24,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "1b879b2794674d84b540144e976c0f6d9b3d7493",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

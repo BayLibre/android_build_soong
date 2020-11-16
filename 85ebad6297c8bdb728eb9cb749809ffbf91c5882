@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad84c4c_0f1d4720",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-16T05:51:07Z",
+      "side": 1,
+      "message": "We only check java_library dependency at this code. So, modified to use if statement instead of switch~case here.",
+      "parentUuid": "1d89d5bd_c71c65a2",
+      "range": {
+        "startLine": 766,
+        "startChar": 2,
+        "endLine": 767,
+        "endChar": 16
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39d43183_3827f360",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-16T02:46:00Z",
       "side": 1,
       "message": "This function is to check if the dependency is allowed or not. How about renaming it to \u0027checkJavaDependencyAllowed\u0027?",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b2e2535_3b26e951",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-16T05:51:07Z",
+      "side": 1,
+      "message": "Changed function name to checkJavaDependencyAllowed, and I think another name for this function, how about checkJavaSdkExternalRule? or checkJavaSdkUseRequired?",
+      "parentUuid": "39d43183_3827f360",
       "range": {
         "startLine": 74,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a161ad36_ea6e07b6",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-16T05:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fda2bef_7f783c85",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e94b0a8_135b3407",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e1c441_7fd8ad04",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-16T05:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e94b0a8_135b3407",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bd2fc31_58b7143b",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-11-16T02:46:00Z",
       "side": 1,
       "message": "is not allowed across the partitions (%s -\u003e %s)",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 98
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f10853_e170899d",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-16T05:51:07Z",
+      "side": 1,
+      "message": "Changed error message and also applied to test cases.",
+      "parentUuid": "0bd2fc31_58b7143b",
       "range": {
         "startLine": 105,
         "startChar": 17,
