@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d89d5bd_c71c65a2",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-16T02:46:00Z",
+      "side": 1,
+      "message": "Can we use \u0027if\u0027 here?",
+      "range": {
+        "startLine": 766,
+        "startChar": 2,
+        "endLine": 767,
+        "endChar": 16
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d43183_3827f360",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-16T02:46:00Z",
+      "side": 1,
+      "message": "This function is to check if the dependency is allowed or not. How about renaming it to \u0027checkJavaDependencyAllowed\u0027?",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fda2bef_7f783c85",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-16T02:46:00Z",
+      "side": 1,
+      "message": "I think it is better to move this to java.go for better efficiency.\nWe don\u0027t need to visit all deps to check enforcement flag every time.",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e94b0a8_135b3407",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-16T02:46:00Z",
+      "side": 1,
+      "message": "`PropertyErrorf(\"lib\",` could be fine because we are checking the property \u0027lib\u0027.",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd2fc31_58b7143b",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-16T02:46:00Z",
+      "side": 1,
+      "message": "is not allowed across the partitions (%s -\u003e %s)",
+      "range": {
+        "startLine": 105,
+        "startChar": 17,
+        "endLine": 105,
+        "endChar": 98
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
