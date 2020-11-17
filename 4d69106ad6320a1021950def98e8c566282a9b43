@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60481e11_be078ee9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-17T05:21:25Z",
+      "side": 1,
+      "message": "Revisiting old pending reviews. Is this still relevant? Otherwise, abandon?",
+      "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "448ffeae_e0feee3b",
         "filename": "apex/apex.go",
@@ -20,10 +38,10 @@
         "endChar": 96
       },
       "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0bbd941f_096e6d9e",
         "filename": "apex/apex.go",
@@ -44,10 +62,10 @@
         "endChar": 96
       },
       "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "03db81cd_32eb3a25",
         "filename": "apex/apex.go",
@@ -68,10 +86,10 @@
         "endChar": 96
       },
       "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f60c3aad_618abfc5",
         "filename": "apex/apex.go",
@@ -92,10 +110,10 @@
         "endChar": 96
       },
       "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "15e9872c_6cb4d321",
         "filename": "apex/apex.go",
@@ -116,8 +134,7 @@
         "endChar": 96
       },
       "revId": "4d69106ad6320a1021950def98e8c566282a9b43",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
