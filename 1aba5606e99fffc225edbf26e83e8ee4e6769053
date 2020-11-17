@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "4955b3cd_87e65c48",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "bluetooth.a2dp@1.1: https://android-review.googlesource.com/c/platform/hardware/interfaces/+/1364396",
       "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "c31ddd6c_052f149b",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "Sorry, please don\u0027t add more to this list. \n\nPlease add `apex_available` property to the Android.bp for the library.",
       "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "5372023e_fb451173",
         "filename": "/PATCHSET_LEVEL",
@@ -49,8 +50,24 @@
       "message": "got it. thanks.",
       "parentUuid": "c31ddd6c_052f149b",
       "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c354e3_c3f8288d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-17T05:31:22Z",
+      "side": 1,
+      "message": "Revisiting old pending reviews. Is this still relevant? Otherwise, abandon?",
+      "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
