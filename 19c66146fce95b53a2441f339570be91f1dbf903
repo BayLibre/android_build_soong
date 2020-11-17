@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4795ac_acd393eb",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-17T15:12:43Z",
+      "side": 1,
+      "message": "Peter, does this flag need to be passed in when we call Clang during the linking step as well?",
+      "range": {
+        "startLine": 554,
+        "startChar": 3,
+        "endLine": 554,
+        "endChar": 21
+      },
+      "revId": "19c66146fce95b53a2441f339570be91f1dbf903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
