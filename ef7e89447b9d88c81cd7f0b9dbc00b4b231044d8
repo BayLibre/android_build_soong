@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfcc413b_01d1f750",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-17T13:40:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21dc50e6_67e10d48",
+      "range": {
+        "startLine": 31,
+        "startChar": 69,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "ef7e89447b9d88c81cd7f0b9dbc00b4b231044d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9297d20_d19ea84f",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-17T12:11:45Z",
       "side": 1,
       "message": "N ?",
+      "range": {
+        "startLine": 222,
+        "startChar": 28,
+        "endLine": 222,
+        "endChar": 46
+      },
+      "revId": "ef7e89447b9d88c81cd7f0b9dbc00b4b231044d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26eb76e_93a97d29",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-17T13:40:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9297d20_d19ea84f",
       "range": {
         "startLine": 222,
         "startChar": 28,
