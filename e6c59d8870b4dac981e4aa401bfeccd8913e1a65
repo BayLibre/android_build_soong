@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdbdf46_41826419",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-17T23:42:40Z",
+      "side": 1,
+      "message": "(the test failure is unrelated. retrying)",
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
