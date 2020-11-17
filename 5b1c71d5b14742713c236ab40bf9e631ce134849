@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b7f01e_fbccee4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:48:00Z",
+      "side": 1,
+      "message": "Thanks! This is really helpful.",
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8a32cdc_cdd49ef6",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:48:00Z",
+      "side": 1,
+      "message": "TextUnmarshaller?",
+      "range": {
+        "startLine": 180,
+        "startChar": 12,
+        "endLine": 180,
+        "endChar": 25
+      },
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d758048_85f68a47",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:48:00Z",
+      "side": 1,
+      "message": "Field is used in arch.go only, right? If so, can we make this unexported for better readability? Not everyone is interested in the internal mechanism of arch.go",
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c72624_f7e1825b",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:48:00Z",
+      "side": 1,
+      "message": "Can you add an entry for common_first?",
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "408dd77c_e7066723",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:48:00Z",
+      "side": 1,
+      "message": "The information around InitAndroidMultiTargetsArchModule and UseTargetVariants is scattered around arch.go and module.go, so it\u0027s hard to understand the full picture without tracking them all down. Can we aggregate them in one place with an example?",
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d884756_9944bbff",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:48:00Z",
+      "side": 1,
+      "message": "Can you add some comments to ImageVariation while you\u0027re touching this file and module.go? (module.go is not in the target list, so...) A pointer to the consts in image.go would suffice.",
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4b0833_78a952a4",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:48:00Z",
+      "side": 1,
+      "message": "Should this be non-core instead?",
+      "range": {
+        "startLine": 589,
+        "startChar": 45,
+        "endLine": 589,
+        "endChar": 51
+      },
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8a7afa_dad588b1",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:48:00Z",
+      "side": 1,
+      "message": "This (and some other funcs) makes me believe arch.go should be split up into a few smaller components. I\u0027ll give it a shot myself after the fixit.",
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
