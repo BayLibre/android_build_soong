@@ -99,10 +99,10 @@ func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps)
 	}
 	depFile := android.PathForModuleOut(ctx, "mod_"+stem+".d")
 
-	rule := android.NewRuleBuilder()
-	android.ProtoRule(ctx, rule, protoFile.Path(), protoFlags, protoFlags.Deps, outDir, depFile, outputs)
+	rule := android.NewRuleBuilder(pctx, ctx)
+	android.ProtoRule(rule, protoFile.Path(), protoFlags, protoFlags.Deps, outDir, depFile, outputs)
 	rule.Command().Text("printf '" + proto.getModFileContents(ctx) + "' >").Output(modFile)
-	rule.Build(pctx, ctx, "protoc_"+protoFile.Path().Rel(), "protoc "+protoFile.Path().Rel())
+	rule.Build("protoc_"+protoFile.Path().Rel(), "protoc "+protoFile.Path().Rel())
 
 	proto.BaseSourceProvider.OutputFiles = android.Paths{modFile, stemFile}
 	return modFile
