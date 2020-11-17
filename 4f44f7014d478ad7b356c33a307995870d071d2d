@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a925906_c0bc975a",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-17T06:33:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5b65b9_1b937cf7",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 28
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf453ffc_954d1df5",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "Can you process that in the dashboard?",
       "parentUuid": "b85378e7_a9bc22bd",
+      "range": {
+        "startLine": 658,
+        "startChar": 3,
+        "endLine": 658,
+        "endChar": 88
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef4f267_12a36766",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-11-17T06:33:04Z",
+      "side": 1,
+      "message": "Yes. Removed here.",
+      "parentUuid": "e882eb69_54b49b36",
       "range": {
         "startLine": 658,
         "startChar": 3,
