@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6289fed0_6575badf",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-17T19:30:41Z",
+      "side": 1,
+      "message": "At least in this patch, this is the out directory for anything running in sbox.  In the next patch the structure gets more complicated and I\u0027ll rename this to sboxBaseDir.",
+      "parentUuid": "2c77a409_cedc47ee",
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7be8fc00_5875d1ef",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-17T19:00:47Z",
       "side": 1,
       "message": "Why is this needed?",
+      "range": {
+        "startLine": 753,
+        "startChar": 15,
+        "endLine": 753,
+        "endChar": 28
+      },
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdbd31e_eb9f5a85",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-17T19:30:41Z",
+      "side": 1,
+      "message": "Whoops, not needed here, it was from a previous version.",
+      "parentUuid": "7be8fc00_5875d1ef",
       "range": {
         "startLine": 753,
         "startChar": 15,
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "768267ae_89672b5f",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-17T19:30:41Z",
+      "side": 1,
+      "message": "I\u0027d prefer sboxOutDir to stay private, because SboxPathForOutput may end up needing to do more logic in the future.  Ideally SboxPathForOutput would be cmd.PathForOutput, and it could already know the first outDir argument, so this would be cmd.PathForOutput(outDir).  I ran into some trouble attempting that approach (https://android-review.googlesource.com/q/topic:%22rule_builder_ctx%22+(status:open%20OR%20status:merged) is part of trying to get it to work), how about I leave this for now with a comment and revisit making cmd.PathForOutput work?",
+      "parentUuid": "4cb69b0a_18ea3826",
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d1844e5_9db1ab72",
         "filename": "genrule/genrule.go",
         "patchSetId": 3
@@ -71,6 +131,24 @@
       "writtenOn": "2020-11-17T19:00:47Z",
       "side": 1,
       "message": "This can be removed now?",
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee59d4a_6cfb596c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-17T19:30:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1844e5_9db1ab72",
       "revId": "755920987af209f49d2f1f9b52930086e252a189",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
