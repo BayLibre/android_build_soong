@@ -32,6 +32,7 @@ import (
 	"android/soong/dexpreopt"
 	prebuilt_etc "android/soong/etc"
 	"android/soong/java"
+	"android/soong/rust"
 	"android/soong/sh"
 )
 
@@ -136,6 +137,8 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 
 	bp = bp + cc.GatherRequiredDepsForTest(android.Android)
 
+	bp = bp + rust.GatherRequiredDepsForTest()
+
 	bp = bp + java.GatherRequiredDepsForTest()
 
 	fs := map[string][]byte{
@@ -185,6 +188,7 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 		"bar/baz":                                    nil,
 		"testdata/baz":                               nil,
 		"AppSet.apks":                                nil,
+		"foo.rs":                                     nil,
 	}
 
 	cc.GatherRequiredFilesForTest(fs)
@@ -241,6 +245,20 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 	ctx.PostDepsMutators(android.RegisterVisibilityRuleEnforcer)
 
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
+
+	ctx.RegisterModuleType("rust_binary", rust.RustBinaryFactory)
+	ctx.RegisterModuleType("rust_library", rust.RustLibraryFactory)
+	ctx.RegisterModuleType("rust_library_dylib", rust.RustLibraryDylibFactory)
+	ctx.RegisterModuleType("rust_library_rlib", rust.RustLibraryRlibFactory)
+	ctx.RegisterModuleType("rust_prebuilt_library", rust.PrebuiltLibraryFactory)
+	ctx.RegisterModuleType("rust_prebuilt_dylib", rust.PrebuiltDylibFactory)
+	ctx.RegisterModuleType("rust_prebuilt_rlib", rust.PrebuiltRlibFactory)
+	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		// rust mutators
+		ctx.BottomUp("rust_libraries", rust.LibraryMutator).Parallel()
+		ctx.BottomUp("rust_stdlinkage", rust.LibstdMutator).Parallel()
+		ctx.BottomUp("rust_begin", rust.BeginMutator).Parallel()
+	})
 
 	ctx.RegisterModuleType("cc_test", cc.TestFactory)
 	ctx.RegisterModuleType("vndk_prebuilt_shared", cc.VndkPrebuiltSharedFactory)
@@ -349,10 +367,12 @@ func TestBasicApex(t *testing.T) {
 			manifest: ":myapex.manifest",
 			androidManifest: ":myapex.androidmanifest",
 			key: "myapex.key",
+			binaries: ["foo.rust"],
 			native_shared_libs: ["mylib"],
+			rust_dyn_libs: ["libfoo.dylib.rust"],
 			multilib: {
 				both: {
-					binaries: ["foo",],
+					binaries: ["foo"],
 				}
 			},
 			java_libs: [
@@ -413,6 +433,28 @@ func TestBasicApex(t *testing.T) {
 			static_executable: true,
 			stl: "none",
 			apex_available: [ "myapex", "com.android.gki.*" ],
+		}
+
+		rust_binary {
+		        name: "foo.rust",
+			srcs: ["foo.rs"],
+			rlibs: ["libfoo.rlib.rust"],
+			dylibs: ["libfoo.dylib.rust"],
+			apex_available: ["myapex"],
+		}
+
+		rust_library_rlib {
+		        name: "libfoo.rlib.rust",
+			srcs: ["foo.rs"],
+			crate_name: "foo",
+			apex_available: ["myapex"],
+		}
+
+		rust_library_dylib {
+		        name: "libfoo.dylib.rust",
+			srcs: ["foo.rs"],
+			crate_name: "foo",
+			apex_available: ["myapex"],
 		}
 
 		apex {
@@ -529,16 +571,20 @@ func TestBasicApex(t *testing.T) {
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib"), "android_arm64_armv8-a_shared_apex10000")
 	ensureListContains(t, ctx.ModuleVariantsForTests("myjar"), "android_common_apex10000")
 	ensureListContains(t, ctx.ModuleVariantsForTests("myjar_dex"), "android_common_apex10000")
+	ensureListContains(t, ctx.ModuleVariantsForTests("foo.rust"), "android_arm64_armv8-a_apex10000")
 
 	// Ensure that apex variant is created for the indirect dep
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib2"), "android_arm64_armv8-a_shared_apex10000")
 	ensureListContains(t, ctx.ModuleVariantsForTests("myotherjar"), "android_common_apex10000")
+	ensureListContains(t, ctx.ModuleVariantsForTests("libfoo.rlib.rust"), "android_arm64_armv8-a_rlib_dylib-std_apex10000")
+	ensureListContains(t, ctx.ModuleVariantsForTests("libfoo.dylib.rust"), "android_arm64_armv8-a_dylib_apex10000")
 
 	// Ensure that both direct and indirect deps are copied into apex
 	ensureContains(t, copyCmds, "image.apex/lib64/mylib.so")
 	ensureContains(t, copyCmds, "image.apex/lib64/mylib2.so")
 	ensureContains(t, copyCmds, "image.apex/javalib/myjar_stem.jar")
 	ensureContains(t, copyCmds, "image.apex/javalib/myjar_dex.jar")
+	ensureContains(t, copyCmds, "image.apex/lib64/libfoo.dylib.rust.dylib.so")
 	// .. but not for java libs
 	ensureNotContains(t, copyCmds, "image.apex/javalib/myotherjar.jar")
 	ensureNotContains(t, copyCmds, "image.apex/javalib/msharedjar.jar")

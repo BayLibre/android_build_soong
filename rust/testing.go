@@ -78,6 +78,7 @@ func GatherRequiredDepsForTest() string {
 			no_libcrt: true,
 			nocrt: true,
 			system_shared_libs: [],
+			apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
 		}
 		cc_library {
 			name: "libprotobuf-cpp-full",
@@ -94,6 +95,7 @@ func GatherRequiredDepsForTest() string {
 			host_supported: true,
                         native_coverage: false,
 			sysroot: true,
+			apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
 		}
 		rust_library {
 			name: "libtest",
@@ -103,6 +105,7 @@ func GatherRequiredDepsForTest() string {
 			host_supported: true,
                         native_coverage: false,
 			sysroot: true,
+			apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
 		}
 		rust_library {
 			name: "libprotobuf",
@@ -123,7 +126,7 @@ func GatherRequiredDepsForTest() string {
 			host_supported: true,
 		}
 
-` + cc.GatherRequiredDepsForTest(android.NoOsType)
+`
 	return bp
 }
 
