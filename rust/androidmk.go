@@ -46,7 +46,7 @@ func (mod *Module) SubAndroidMk(data *android.AndroidMkData, obj interface{}) {
 }
 
 func (mod *Module) AndroidMk() android.AndroidMkData {
-	if mod.Properties.HideFromMake {
+	if mod.hideApexVariantFromMake || mod.Properties.HideFromMake {
 		return android.AndroidMkData{
 			Disabled: true,
 		}

@@ -78,6 +78,7 @@ func GatherRequiredDepsForTest() string {
 			no_libcrt: true,
 			nocrt: true,
 			system_shared_libs: [],
+			apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
 		}
 		cc_library {
 			name: "libprotobuf-cpp-full",
@@ -94,6 +95,7 @@ func GatherRequiredDepsForTest() string {
 			host_supported: true,
                         native_coverage: false,
 			sysroot: true,
+			apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
 		}
 		rust_library {
 			name: "libtest",
@@ -103,6 +105,7 @@ func GatherRequiredDepsForTest() string {
 			host_supported: true,
                         native_coverage: false,
 			sysroot: true,
+			apex_available: ["//apex_available:platform", "//apex_available:anyapex"],
 		}
 		rust_library {
 			name: "libprotobuf",
@@ -123,16 +126,11 @@ func GatherRequiredDepsForTest() string {
 			host_supported: true,
 		}
 
-` + cc.GatherRequiredDepsForTest(android.NoOsType)
+`
 	return bp
 }
 
-func CreateTestContext(config android.Config) *android.TestContext {
-	ctx := android.NewTestArchContext(config)
-	android.RegisterPrebuiltMutators(ctx)
-	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
-	cc.RegisterRequiredBuildComponentsForTest(ctx)
-	ctx.RegisterModuleType("genrule", genrule.GenRuleFactory)
+func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("rust_binary", RustBinaryFactory)
 	ctx.RegisterModuleType("rust_binary_host", RustBinaryHostFactory)
 	ctx.RegisterModuleType("rust_bindgen", RustBindgenFactory)
@@ -166,6 +164,15 @@ func CreateTestContext(config android.Config) *android.TestContext {
 		ctx.BottomUp("rust_begin", BeginMutator).Parallel()
 	})
 	ctx.RegisterSingletonType("rust_project_generator", rustProjectGeneratorSingleton)
+}
+
+func CreateTestContext(config android.Config) *android.TestContext {
+	ctx := android.NewTestArchContext(config)
+	android.RegisterPrebuiltMutators(ctx)
+	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	cc.RegisterRequiredBuildComponentsForTest(ctx)
+	RegisterRequiredBuildComponentsForTest(ctx)
+	ctx.RegisterModuleType("genrule", genrule.GenRuleFactory)
 
 	return ctx
 }
