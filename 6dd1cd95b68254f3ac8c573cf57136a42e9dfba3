@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63df8b49_37116697",
+        "filename": "android/makevars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-17T17:56:49Z",
+      "side": 1,
+      "message": "should we add a comment about why we\u0027re adding singleton make vars to the config here also?",
+      "revId": "6dd1cd95b68254f3ac8c573cf57136a42e9dfba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
