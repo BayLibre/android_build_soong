@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b920589_2f926a2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-17T05:30:14Z",
+      "side": 1,
+      "message": "Revisiting old pending reviews. Is this still relevant? Otherwise, abandon?",
+      "revId": "61d32129a4ae66493c6f31901f39059ac3f8ebf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "d6148d47_7b5ccee1",
         "filename": "apex/apex_test.go",
@@ -20,10 +38,10 @@
         "endChar": 24
       },
       "revId": "61d32129a4ae66493c6f31901f39059ac3f8ebf5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "9a05cfc2_249ef243",
         "filename": "apex/apex_test.go",
@@ -44,8 +62,7 @@
         "endChar": 24
       },
       "revId": "61d32129a4ae66493c6f31901f39059ac3f8ebf5",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
