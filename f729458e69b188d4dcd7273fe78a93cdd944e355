@@ -16,6 +16,207 @@
       "message": "Thanks for all thorough review!",
       "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64257ac_4b316ccc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "Snapshot capturing codes LGTM. Let\u0027s land this first to continue experimentation with generated recovery snapshots. And then we\u0027ll revisit my comments. We\u0027ll need another set of variables and mutators to handle recovery snapshot. (recovery snapshot maps, recovery snapshot mutators, etc.)\n\nBTW, as a future work, given that we\u0027re likely to introduce other snapshots like ramdisk, it\u0027d be much much better if we can make them generic so we can apply snapshots for any image variants. Honestly I really don\u0027t want to duplicate existing deps redirection codes and mutators, but avoiding it will be infeasible unless b/145966707 is resolved..",
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb9256d_f941fe7e",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "We need to use the recovery suffix for recovery snapshots.",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 2
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffdb7c54_876f2b97",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 0
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aa6b27f_5fbc67ef",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 2
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b6d8f42_18adfbad",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 27
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ec2156_14e425db",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 80
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a05e425_31645ec1",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 80
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "483b1a59_ea629d8f",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 27
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5cdd17_57ed239b",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-17T03:44:47Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 80
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
