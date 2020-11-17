@@ -104,6 +104,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbebc11_eb357705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T20:51:43Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll do that.",
+      "parentUuid": "4ae3c5b0_a1a10418",
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c257e0d6_e957310e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T20:51:43Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bb9256d_f941fe7e",
@@ -258,6 +293,24 @@
       "writtenOn": "2020-11-17T20:07:29Z",
       "side": 1,
       "message": "The comment for the property shows up as the documentation at go/Android.bp, so this needs to be written in a way that makes sense there, and needs to be directly on the property not on the group of properties.",
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c88c6c5f_e3cc1b7e",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T20:51:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6d16f75_84889764",
       "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
