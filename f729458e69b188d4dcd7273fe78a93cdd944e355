@@ -87,6 +87,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae3c5b0_a1a10418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-17T20:07:29Z",
+      "side": 1,
+      "message": "One minor comment that can be addressed in the followup CL.",
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bb9256d_f941fe7e",
@@ -224,6 +241,23 @@
         "endLine": 573,
         "endChar": 2
       },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d16f75_84889764",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-17T20:07:29Z",
+      "side": 1,
+      "message": "The comment for the property shows up as the documentation at go/Android.bp, so this needs to be written in a way that makes sense there, and needs to be directly on the property not on the group of properties.",
       "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
