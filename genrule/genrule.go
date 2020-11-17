@@ -433,7 +433,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		manifestPath := android.PathForModuleOut(ctx, manifestName)
 
 		// Use a RuleBuilder to create a rule that runs the command inside an sbox sandbox.
-		rule := android.NewRuleBuilder().Sbox(task.genDir, manifestPath)
+		rule := android.NewRuleBuilder(pctx, ctx).Sbox(task.genDir, manifestPath)
 		cmd := rule.Command()
 		cmd.Text(rawCommand)
 		cmd.ImplicitOutputs(task.out)
@@ -444,7 +444,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 
 		// Create the rule to run the genrule command inside sbox.
-		rule.Build(pctx, ctx, name, desc)
+		rule.Build(name, desc)
 
 		if len(task.copyTo) > 0 {
 			// If copyTo is set, multiple shards need to be copied into a single directory.

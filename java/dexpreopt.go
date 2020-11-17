@@ -220,7 +220,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		return dexJarFile
 	}
 
-	dexpreoptRule.Build(pctx, ctx, "dexpreopt", "dexpreopt")
+	dexpreoptRule.Build("dexpreopt", "dexpreopt")
 
 	d.builtInstalled = dexpreoptRule.Installs().String()
 
