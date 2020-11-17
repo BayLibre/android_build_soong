@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cca03467_db929f3f",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-17T02:35:32Z",
+      "side": 1,
+      "message": "Function name checkPartitionsForJavaDependency looks good. Changed function name.",
+      "parentUuid": "e69a4011_de07e57c",
+      "range": {
+        "startLine": 74,
+        "startChar": 17,
+        "endLine": 74,
+        "endChar": 43
+      },
+      "revId": "85ebad6297c8bdb728eb9cb749809ffbf91c5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fda2bef_7f783c85",

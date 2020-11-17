@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7bf9206_b27ca64f",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-17T02:35:32Z",
+      "side": 1,
+      "message": "Moved vendor interface enable check code to java.go and made it as precondition of inter-partition check.",
+      "parentUuid": "2d2bc761_98132435",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "614011ed5473dd30871bd22679d2abf1ccaaa073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0d18cf7_5e737fb9",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-16T06:35:31Z",
       "side": 1,
       "message": "Even with this is false, \u0027vendor\u0027 to any must not be allowed.\n\nIn summary,\n1) vendorInterfaceEnforced is a precondition.\n2) When java_sdk_library is enforced, the inter-partition dependency between \u0027vendor\u0027 and any partitions must be java_sdk_library.\n3) if productInterfaceEnforced, the dependency between \u0027product\u0027 and \u0027system\u0027 must be enforced.",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "614011ed5473dd30871bd22679d2abf1ccaaa073",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f821fb_38402cd9",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-17T02:35:32Z",
+      "side": 1,
+      "message": "Changed logic to skip only between system and product partition when product interface is not enforced. So, at dependency, using java_sdk_library between vendor and other partition is always enforced when vendor interface is enforced.\nIt is also applied to test cases.",
+      "parentUuid": "e0d18cf7_5e737fb9",
       "range": {
         "startLine": 92,
         "startChar": 5,
