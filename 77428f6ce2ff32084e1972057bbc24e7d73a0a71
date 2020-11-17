@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d661372c_9f0edaf8",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-17T02:53:39Z",
+      "side": 1,
+      "message": "nit: Update the comment accordingly with more details.\nIt must indicated that we are blocking java_library for the inter-partition dependency because it is unstable. Instead we are allowing java_sdk_libraries to replace the java_libraries.",
+      "range": {
+        "startLine": 756,
+        "startChar": 5,
+        "endLine": 757,
+        "endChar": 62
+      },
+      "revId": "77428f6ce2ff32084e1972057bbc24e7d73a0a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
