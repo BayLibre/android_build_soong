@@ -895,7 +895,7 @@ func (c *vendorSnapshotSingleton) GenerateBuildActions(ctx android.SingletonCont
 	})
 
 	zipPath := android.PathForOutput(ctx, snapshotDir, "vendor-"+ctx.Config().DeviceName()+".zip")
-	zipRule := android.NewRuleBuilder()
+	zipRule := android.NewRuleBuilder(pctx, ctx)
 
 	// filenames in rspfile from FlagWithRspFileInputList might be single-quoted. Remove it with tr
 	snapshotOutputList := android.PathForOutput(ctx, snapshotDir, "vendor-"+ctx.Config().DeviceName()+"_list")
@@ -908,12 +908,12 @@ func (c *vendorSnapshotSingleton) GenerateBuildActions(ctx android.SingletonCont
 	zipRule.Temporary(snapshotOutputList)
 
 	zipRule.Command().
-		BuiltTool(ctx, "soong_zip").
+		BuiltTool("soong_zip").
 		FlagWithOutput("-o ", zipPath).
 		FlagWithArg("-C ", android.PathForOutput(ctx, snapshotDir).String()).
 		FlagWithInput("-l ", snapshotOutputList)
 
-	zipRule.Build(pctx, ctx, zipPath.String(), "vendor snapshot "+zipPath.String())
+	zipRule.Build(zipPath.String(), "vendor snapshot "+zipPath.String())
 	zipRule.DeleteTemporaryFiles()
 	c.vendorSnapshotZipFile = android.OptionalPathForPath(zipPath)
 }
