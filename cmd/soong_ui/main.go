@@ -493,16 +493,6 @@ func getCommand(args []string) (*command, []string, error) {
 		if c.flag == args[1] {
 			return &c, args[2:], nil
 		}
-
-		// special case for --make-mode: if soong_ui was called from
-		// build/make/core/main.mk, the makeparallel with --ninja
-		// option specified puts the -j<num> before --make-mode.
-		// TODO: Remove this hack once it has been fixed.
-		if c.flag == makeModeFlagName {
-			if inList(makeModeFlagName, args) {
-				return &c, args[1:], nil
-			}
-		}
 	}
 
 	// command not found
