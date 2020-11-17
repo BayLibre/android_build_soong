@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1bfb71d_20206604",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-11-17T01:09:12Z",
+      "side": 1,
+      "message": "Nit: for consistency, either have a blank line after each field or not.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 1
+      },
+      "revId": "20a9c4d26f39bdd9e64a5e42bfac8beae00d1603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
