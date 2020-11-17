@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65665894_f88214ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T19:29:31Z",
+      "side": 1,
+      "message": "Please add more comments from the code maintainer\u0027s perspective. If I had to change the zip package code today, I\u0027d still have to do a lot of research to understand the ins and outs, even with these comments.",
+      "revId": "8eedba61843246362af1182f213b12dd2c06c785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
