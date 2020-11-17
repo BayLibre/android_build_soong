@@ -51,9 +51,9 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	f.CopyDepsToZip(ctx, zipFile)
 
 	rootDir := android.PathForModuleOut(ctx, "root").OutputPath
-	builder := android.NewRuleBuilder()
+	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().
-		BuiltTool(ctx, "zipsync").
+		BuiltTool("zipsync").
 		FlagWithArg("-d ", rootDir.String()). // zipsync wipes this. No need to clear.
 		Input(zipFile)
 
@@ -69,12 +69,12 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		Implicit(mkuserimg)
 
 	image := android.PathForModuleOut(ctx, "filesystem.img").OutputPath
-	builder.Command().BuiltTool(ctx, "build_image").
+	builder.Command().BuiltTool("build_image").
 		Text(rootDir.String()). // input directory
 		Input(propFile).
 		Output(image).
 		Text(rootDir.String()) // directory where to find fs_config_files|dirs
 
 	// rootDir is not deleted. Might be useful for quick inspection.
-	builder.Build(pctx, ctx, "build_filesystem_image", fmt.Sprintf("Creating filesystem %s", f.BaseModuleName()))
+	builder.Build("build_filesystem_image", fmt.Sprintf("Creating filesystem %s", f.BaseModuleName()))
 }
