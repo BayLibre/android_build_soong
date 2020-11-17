@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f762f7ed_1979fc27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-17T18:54:59Z",
+      "side": 1,
+      "message": "This needs another +2 after a rebase on the WriteFile change.",
+      "revId": "121292911ada0a830f2ad6d83e2f393997939149",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
