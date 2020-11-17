@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c77a409_cedc47ee",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T19:00:47Z",
+      "side": 1,
+      "message": "What about sboxOutDirBase or sboxOutBase?",
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be8fc00_5875d1ef",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T19:00:47Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 753,
+        "startChar": 15,
+        "endLine": 753,
+        "endChar": 28
+      },
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb69b0a_18ea3826",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T19:00:47Z",
+      "side": 1,
+      "message": "This is... cryptic. Why not just making sboxOutDir public? (Or add an accessor)",
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1844e5_9db1ab72",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T19:00:47Z",
+      "side": 1,
+      "message": "This can be removed now?",
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
