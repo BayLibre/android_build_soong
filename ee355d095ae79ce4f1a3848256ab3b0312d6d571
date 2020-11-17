@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006203822",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1502070?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "fa461bce_79e948fd",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-17T16:37:26Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 399,
+        "startChar": 64,
+        "endLine": 399,
+        "endChar": 68
+      },
+      "revId": "ee355d095ae79ce4f1a3848256ab3b0312d6d571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006203822",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1502070?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d05e056d_d2c061db",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-17T16:37:26Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 454,
+        "startChar": 12,
+        "endLine": 454,
+        "endChar": 18
+      },
+      "revId": "ee355d095ae79ce4f1a3848256ab3b0312d6d571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
