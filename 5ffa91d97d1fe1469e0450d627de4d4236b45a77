@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e609e8_f43cf7e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2020-11-17T09:29:56Z",
+      "side": 1,
+      "message": "...but please fix the typo!",
+      "revId": "5ffa91d97d1fe1469e0450d627de4d4236b45a77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca503468_35590f05",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2020-11-17T09:29:56Z",
+      "side": 1,
+      "message": "this is very useful, thanks!",
+      "range": {
+        "startLine": 16,
+        "startChar": 86,
+        "endLine": 18,
+        "endChar": 85
+      },
+      "revId": "5ffa91d97d1fe1469e0450d627de4d4236b45a77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6673fa9_f7ffac42",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2020-11-17T09:29:56Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 701,
+        "startChar": 5,
+        "endLine": 701,
+        "endChar": 12
+      },
+      "revId": "5ffa91d97d1fe1469e0450d627de4d4236b45a77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
