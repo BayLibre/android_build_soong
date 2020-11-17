@@ -22,6 +22,30 @@
       },
       "revId": "77428f6ce2ff32084e1972057bbc24e7d73a0a71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1903b59a_90c8f72b",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-17T05:51:58Z",
+      "side": 1,
+      "message": "Modified comment to contain more details about logic.",
+      "parentUuid": "d661372c_9f0edaf8",
+      "range": {
+        "startLine": 756,
+        "startChar": 5,
+        "endLine": 757,
+        "endChar": 62
+      },
+      "revId": "77428f6ce2ff32084e1972057bbc24e7d73a0a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
