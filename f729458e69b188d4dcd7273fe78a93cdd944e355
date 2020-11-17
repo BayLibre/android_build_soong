@@ -35,6 +35,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda809fe_0a4185f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T16:19:32Z",
+      "side": 1,
+      "message": "\u003e Thanks for all thorough review!\n\nThanks Inseob, yeah I agree with you, the task was growing too much and I prefer to land the capturing part first, and then tackle the test. Thanks!\n\nAlso, the idea is to make the snapshot code as generic as possible to adding other images is easy.",
+      "parentUuid": "a64257ac_4b316ccc",
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4fa911c_22105dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T16:19:32Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bb9256d_f941fe7e",
