@@ -16,6 +16,29 @@
       "message": "oof - and there are tests encoding this",
       "revId": "0029898a847d28abee46049ca6dd4d1188886e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9a3eb5_a9e159db",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-17T23:47:07Z",
+      "side": 1,
+      "message": ": is not part of the property name. Can you quote the property names?",
+      "range": {
+        "startLine": 965,
+        "startChar": 61,
+        "endLine": 965,
+        "endChar": 73
+      },
+      "revId": "0029898a847d28abee46049ca6dd4d1188886e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
