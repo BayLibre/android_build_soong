@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9510b7a2_b92defe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T19:34:10Z",
+      "side": 1,
+      "message": "FYI, Soong uses a soft column limit of 100 characters.",
+      "revId": "7a5391a979fb41e7d71b1b4de5b21d96729114d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
