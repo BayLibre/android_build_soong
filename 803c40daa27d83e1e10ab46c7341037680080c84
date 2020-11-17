@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e5571eb_e1a2bf58",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-17T15:57:09Z",
+      "side": 1,
+      "message": "This is awesome, thanks!",
+      "revId": "803c40daa27d83e1e10ab46c7341037680080c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
