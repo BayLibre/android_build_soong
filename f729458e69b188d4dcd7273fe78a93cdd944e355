@@ -70,6 +70,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de10ede_66a7399f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ll work on your comments on the next CL in this task.",
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bb9256d_f941fe7e",
@@ -83,6 +100,30 @@
       "writtenOn": "2020-11-17T03:44:47Z",
       "side": 1,
       "message": "We need to use the recovery suffix for recovery snapshots.",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 2
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd5107e_d1604eca",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8bb9256d_f941fe7e",
       "range": {
         "startLine": 525,
         "startChar": 0,
@@ -116,6 +157,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d53b307_7ec40476",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffdb7c54_876f2b97",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 0
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aa6b27f_5fbc67ef",
@@ -129,6 +194,30 @@
       "writtenOn": "2020-11-17T03:44:47Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 2
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354be7d6_6eaef010",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2aa6b27f_5fbc67ef",
       "range": {
         "startLine": 568,
         "startChar": 0,
@@ -162,6 +251,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "071c8b80_c81db9d6",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b6d8f42_18adfbad",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 27
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77ec2156_14e425db",
@@ -175,6 +288,30 @@
       "writtenOn": "2020-11-17T03:44:47Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 80
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1a461b_b3b4259e",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "77ec2156_14e425db",
       "range": {
         "startLine": 313,
         "startChar": 0,
@@ -208,6 +345,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8e185a1_25f7518a",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a05e425_31645ec1",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 80
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "483b1a59_ea629d8f",
@@ -231,6 +392,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "907502c0_4b1dcd19",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "483b1a59_ea629d8f",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 27
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d5cdd17_57ed239b",
@@ -244,6 +429,30 @@
       "writtenOn": "2020-11-17T03:44:47Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 80
+      },
+      "revId": "f729458e69b188d4dcd7273fe78a93cdd944e355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00102966_070030c5",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-11-17T19:40:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d5cdd17_57ed239b",
       "range": {
         "startLine": 585,
         "startChar": 0,
