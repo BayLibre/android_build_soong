@@ -257,7 +257,7 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) {
 	}
 
 	output := android.PathForModuleOut(ctx, "file_contexts")
-	rule := android.NewRuleBuilder()
+	rule := android.NewRuleBuilder(pctx, ctx)
 
 	if a.properties.ApexType == imageApex {
 		// remove old file
@@ -286,7 +286,7 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) {
 		rule.Command().Text("echo").Flag(apexPath + "/ u:object_r:system_file:s0").Text(">>").Output(output)
 	}
 
-	rule.Build(pctx, ctx, "file_contexts."+a.Name(), "Generate file_contexts")
+	rule.Build("file_contexts."+a.Name(), "Generate file_contexts")
 
 	a.fileContexts = output.OutputPath
 }
@@ -319,14 +319,14 @@ func (a *apexBundle) buildNoticeFiles(ctx android.ModuleContext, apexFileName st
 
 func (a *apexBundle) buildInstalledFilesFile(ctx android.ModuleContext, builtApex android.Path, imageDir android.Path) android.OutputPath {
 	output := android.PathForModuleOut(ctx, "installed-files.txt")
-	rule := android.NewRuleBuilder()
+	rule := android.NewRuleBuilder(pctx, ctx)
 	rule.Command().
 		Implicit(builtApex).
 		Text("(cd " + imageDir.String() + " ; ").
 		Text("find . \\( -type f -o -type l \\) -printf \"%s %p\\n\") ").
 		Text(" | sort -nr > ").
 		Output(output)
-	rule.Build(pctx, ctx, "installed-files."+a.Name(), "Installed files")
+	rule.Build("installed-files."+a.Name(), "Installed files")
 	return output.OutputPath
 }
 

@@ -240,16 +240,16 @@ func (m *syspropLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	m.latestApiFile = android.PathForSource(ctx, ctx.ModuleDir(), "api", baseModuleName+"-latest.txt")
 
 	// dump API rule
-	rule := android.NewRuleBuilder()
+	rule := android.NewRuleBuilder(pctx, ctx)
 	m.dumpedApiFile = android.PathForModuleOut(ctx, "api-dump.txt")
 	rule.Command().
-		BuiltTool(ctx, "sysprop_api_dump").
+		BuiltTool("sysprop_api_dump").
 		Output(m.dumpedApiFile).
 		Inputs(android.PathsForModuleSrc(ctx, m.properties.Srcs))
-	rule.Build(pctx, ctx, baseModuleName+"_api_dump", baseModuleName+" api dump")
+	rule.Build(baseModuleName+"_api_dump", baseModuleName+" api dump")
 
 	// check API rule
-	rule = android.NewRuleBuilder()
+	rule = android.NewRuleBuilder(pctx, ctx)
 
 	// 1. current.txt <-> api_dump.txt
 	msg := fmt.Sprintf(`\n******************************\n`+
@@ -275,7 +275,7 @@ func (m *syspropLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 
 	rule.Command().
 		Text("( ").
-		BuiltTool(ctx, "sysprop_api_checker").
+		BuiltTool("sysprop_api_checker").
 		Input(m.latestApiFile).
 		Input(m.currentApiFile).
 		Text(" || ( echo").Flag("-e").
@@ -288,7 +288,7 @@ func (m *syspropLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 		Text("touch").
 		Output(m.checkApiFileTimeStamp)
 
-	rule.Build(pctx, ctx, baseModuleName+"_check_api", baseModuleName+" check api")
+	rule.Build(baseModuleName+"_check_api", baseModuleName+" check api")
 }
 
 func (m *syspropLibrary) AndroidMk() android.AndroidMkData {
