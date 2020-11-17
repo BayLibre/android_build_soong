@@ -814,7 +814,7 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 		return true
 	})
 
-	apexContents := android.NewApexContents(mctx.ModuleName(), contents)
+	apexContents := android.NewApexContents(contents)
 	mctx.SetProvider(ApexBundleInfoProvider, ApexBundleInfo{
 		Contents: apexContents,
 	})
