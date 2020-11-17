@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c572211_334c2aeb",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-17T18:09:18Z",
+      "side": 1,
+      "message": "Later it is noted that this only happens in build/blueprint, should this comment instead note that it is only Blueprint build definitions?",
+      "range": {
+        "startLine": 75,
+        "startChar": 15,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "9b142b5a18d0c00ee437161493e354ef3bef5c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
