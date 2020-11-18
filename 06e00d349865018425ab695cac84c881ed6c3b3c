@@ -16,6 +16,24 @@
       "message": "I don\u0027t think that this is an improvement. I believe that the android package includes its own Bool/String/StringDefault (which are references to the proptools functions) for its own use. They are only available outside the android package because the android package versions are titleized and that is largely for consistency with proptools and because the lower case versions of two of them are built in types and would cause confusion.",
       "revId": "06e00d349865018425ab695cac84c881ed6c3b3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bbc2f4_db7a91b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-18T09:58:57Z",
+      "side": 1,
+      "message": "So what I should actually do is `s/android.(Bool|String)/proptools.(Bool|String)/`?",
+      "parentUuid": "ff55c00e_fa1e72cb",
+      "revId": "06e00d349865018425ab695cac84c881ed6c3b3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
