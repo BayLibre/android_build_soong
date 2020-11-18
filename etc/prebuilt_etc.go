@@ -28,8 +28,6 @@ package etc
 // various `prebuilt_*` mutators.
 
 import (
-	"github.com/google/blueprint/proptools"
-
 	"android/soong/android"
 )
 
@@ -95,8 +93,14 @@ type prebuiltEtcProperties struct {
 
 type PrebuiltEtcModule interface {
 	android.Module
+
+	// Returns the base install directory, such as "etc", "usr/share".
 	BaseDir() string
+
+	// Returns the sub install directory relative to BaseDir().
 	SubDir() string
+
+	// Returns an android.OutputPath to the "built" intermediate file.
 	OutputFile() android.OutputPath
 }
 
@@ -161,15 +165,15 @@ func (p *PrebuiltEtc) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
 }
 
 func (p *PrebuiltEtc) RamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
-	return proptools.Bool(p.properties.Ramdisk_available) || p.ModuleBase.InstallInRamdisk()
+	return android.Bool(p.properties.Ramdisk_available) || p.ModuleBase.InstallInRamdisk()
 }
 
 func (p *PrebuiltEtc) VendorRamdiskVariantNeeded(ctx android.BaseModuleContext) bool {
-	return proptools.Bool(p.properties.Vendor_ramdisk_available) || p.ModuleBase.InstallInVendorRamdisk()
+	return android.Bool(p.properties.Vendor_ramdisk_available) || p.ModuleBase.InstallInVendorRamdisk()
 }
 
 func (p *PrebuiltEtc) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {
-	return proptools.Bool(p.properties.Recovery_available) || p.ModuleBase.InstallInRecovery()
+	return android.Bool(p.properties.Recovery_available) || p.ModuleBase.InstallInRecovery()
 }
 
 func (p *PrebuiltEtc) ExtraImageVariations(ctx android.BaseModuleContext) []string {
@@ -177,12 +181,6 @@ func (p *PrebuiltEtc) ExtraImageVariations(ctx android.BaseModuleContext) []stri
 }
 
 func (p *PrebuiltEtc) SetImageVariation(ctx android.BaseModuleContext, variation string, module android.Module) {
-}
-
-func (p *PrebuiltEtc) DepsMutator(ctx android.BottomUpMutatorContext) {
-	if p.properties.Src == nil {
-		ctx.PropertyErrorf("src", "missing prebuilt source file")
-	}
 }
 
 func (p *PrebuiltEtc) SourceFilePath(ctx android.ModuleContext) android.Path {
@@ -204,10 +202,10 @@ func (p *PrebuiltEtc) OutputFile() android.OutputPath {
 }
 
 func (p *PrebuiltEtc) SubDir() string {
-	if subDir := proptools.String(p.properties.Sub_dir); subDir != "" {
+	if subDir := android.String(p.properties.Sub_dir); subDir != "" {
 		return subDir
 	}
-	return proptools.String(p.properties.Relative_install_path)
+	return android.String(p.properties.Relative_install_path)
 }
 
 func (p *PrebuiltEtc) BaseDir() string {
@@ -219,6 +217,10 @@ func (p *PrebuiltEtc) Installable() bool {
 }
 
 func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if p.properties.Src == nil {
+		ctx.PropertyErrorf("src", "missing prebuilt source file")
+		return
+	}
 	p.sourceFilePath = android.PathForModuleSrc(ctx, android.String(p.properties.Src))
 
 	// Determine the output file basename.
@@ -227,18 +229,20 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Otherwise use the module name.
 	filename := android.String(p.properties.Filename)
 	filename_from_src := android.Bool(p.properties.Filename_from_src)
+	if filename != "" && filename_from_src {
+		ctx.PropertyErrorf("filename_from_src", "filename is set. filename_from_src can't be true")
+		return
+	}
 	if filename == "" {
 		if filename_from_src {
 			filename = p.sourceFilePath.Base()
 		} else {
 			filename = ctx.ModuleName()
 		}
-	} else if filename_from_src {
-		ctx.PropertyErrorf("filename_from_src", "filename is set. filename_from_src can't be true")
-		return
 	}
 	p.outputFilePath = android.PathForModuleOut(ctx, filename).OutputPath
 
+	// Check that `sub_dir` and `relative_install_path` are not set at the same time.
 	if p.properties.Sub_dir != nil && p.properties.Relative_install_path != nil {
 		ctx.PropertyErrorf("sub_dir", "relative_install_path is set. Cannot set sub_dir")
 	}
