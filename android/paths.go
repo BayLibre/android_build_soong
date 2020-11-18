@@ -1039,6 +1039,10 @@ func PathForModuleSrc(ctx ModuleContext, pathComponents ...string) Path {
 	return paths[0]
 }
 
+func PathForPossiblyNonExistentModuleSrc(ctx ModuleContext, paths ...string) SourcePath {
+	return pathForModuleSrc(ctx, paths...)
+}
+
 func pathForModuleSrc(ctx ModuleContext, paths ...string) SourcePath {
 	p, err := validatePath(paths...)
 	if err != nil {
