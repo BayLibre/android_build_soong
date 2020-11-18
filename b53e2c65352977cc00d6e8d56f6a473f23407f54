@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a9a23c5_c54f0a77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-11-18T21:29:41Z",
+      "side": 1,
+      "message": "this would need to be a topic that also removes \u0027vndk: { enable: true }\u0027 and other entries in build/make in order to work",
+      "revId": "b53e2c65352977cc00d6e8d56f6a473f23407f54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
