@@ -16,6 +16,24 @@
       "message": "Wouldn\u0027t it be simpler and error-proof if this is a bool flag?",
       "revId": "c0eecfd559128b91194d5a739e6678eb8f368bfe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec6db2c_0663cf2b",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-18T05:39:46Z",
+      "side": 1,
+      "message": "Yes, it would but I intentionally did that because we sometimes have dangling symlink in the host (usually for absolute symlinks on the device).",
+      "parentUuid": "0ded16b8_f236bb35",
+      "revId": "c0eecfd559128b91194d5a739e6678eb8f368bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
