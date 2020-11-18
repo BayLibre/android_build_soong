@@ -69,6 +69,24 @@
       "parentUuid": "9d66d75d_7212e695",
       "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3235ae32_28798dc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470412
+      },
+      "writtenOn": "2020-11-18T23:14:01Z",
+      "side": 1,
+      "message": "\"BTI must be enabled in everything that is linked into the same DSO\"\nThis true, mutator enables all decencies because runtime loading a less protected library is less secure :) original idea was for enforced to run the \"SecurityCriticalApp\" process as protected as possible, loading a non BTI protected shared lib just mark the location of the gadgets.",
+      "parentUuid": "6f185ea6_3b46cbd5",
+      "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
