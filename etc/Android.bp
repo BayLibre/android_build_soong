@@ -2,7 +2,6 @@ bootstrap_go_package {
     name: "soong-etc",
     pkgPath: "android/soong/etc",
     deps: [
-        "blueprint",
         "soong",
         "soong-android",
     ],
