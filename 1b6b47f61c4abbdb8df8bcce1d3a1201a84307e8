@@ -16,6 +16,74 @@
       "message": "Ping for review.\n\nPlease review the whole topic.",
       "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f8d1eb9_760467a8",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T02:16:44Z",
+      "side": 1,
+      "message": "Is there some reason this can\u0027t be handled by ALLOW_MISSING_DEPENDENCIES\u003dtrue on the command line?\n\nWhen do you expect this function to be called?  If it is from the factory method, you can use a bool in PackagingBase instead of a `blueprint:\"mutated\"` property, because each time a new variant is created the factory method is called again to create a new empty module.",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9c46d7_9b30f327",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T02:16:44Z",
+      "side": 1,
+      "message": "This is going to result in a rule with an arbitrary number of output files, which will then all be used as inputs to another rule.  That seems like an unnecessary load on the build.ninja file an ninja.  I can think of a few ways to avoid that:\n\n - Always produce a zip file, and then the next rule can use zipsync to unzip them into a directory.\n - Return a partially filled out RuleBuilder that has the copy commands and let the caller add the packaging commands.\n - Support the various output formats directly in PackageModule.\n - Use single output file as the dependency, since they will always be created together.  This can cause problems if an untracked output file was manually deleted though.",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c57eeef_2a28e122",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T02:16:44Z",
+      "side": 1,
+      "message": "I\u0027m working on resubmitting aosp/1501613, which adds better tracking of which dependencies are needed at install time.  That may help here instead of having to use arch as a proxy.",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328ddb80_80275b2f",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T02:16:44Z",
+      "side": 1,
+      "message": "Start with rm -rf dir.String(), otherwise you may have stale files from an old run.",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
