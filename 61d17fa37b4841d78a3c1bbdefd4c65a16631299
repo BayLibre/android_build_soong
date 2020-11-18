@@ -22,6 +22,30 @@
       },
       "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903be440_c0cf94dc",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-11-18T20:41:13Z",
+      "side": 1,
+      "message": "Oh. How about `__ANDROID_WHOLE_APEX_MIN_SDK_VERSION__`? `__ANDROID_SDK_VERSION__` definitely didn\u0027t make me think that.",
+      "parentUuid": "206beb0d_5d39ccb8",
+      "range": {
+        "startLine": 370,
+        "startChar": 5,
+        "endLine": 370,
+        "endChar": 46
+      },
+      "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
