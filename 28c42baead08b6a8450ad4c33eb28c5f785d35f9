@@ -16,6 +16,24 @@
       "message": "aiui the plan is to split this into separate options for pac and bti?",
       "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d66d75d_7212e695",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1188329
+      },
+      "writtenOn": "2020-11-18T22:25:40Z",
+      "side": 1,
+      "message": "We have that option but would be added in the architecture dependent part (1288733, I will post a newer version).\n\nIt will look like this:\ncc_binary{..\n    arch: {\n        arm64: {\n            hardening: \"BTI\",\n\nHard to come up names that works with all architectures, but I\u0027m all ears.\n\nIdea was just to add hardening to those components where the additional security is desired and set the only in one place the backing technology that is supported by the platform. Later as new features become available maybe easier to deploy.",
+      "parentUuid": "14a957cc_c38d9052",
+      "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
