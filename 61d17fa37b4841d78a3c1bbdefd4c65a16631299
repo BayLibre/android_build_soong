@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206beb0d_5d39ccb8",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-18T07:48:00Z",
+      "side": 1,
+      "message": "The source of this macro is NOT the sdk_version property of the module being compiled, but the min_sdk_version property of the APEX which this module is part of. https://source.corp.google.com/android/build/soong/apex/apex.go;rcl\u003d098ac59fe78e2f37b001b4e152b161e29d6677c7;l\u003d823\n\nThe version number in the clang triple comes from the sdk_version property of the module being compiled. So this will case a macro redefinition when https://reviews.llvm.org/D91664 lands.",
+      "range": {
+        "startLine": 370,
+        "startChar": 5,
+        "endLine": 370,
+        "endChar": 46
+      },
+      "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
