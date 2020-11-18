@@ -34,6 +34,24 @@
       "parentUuid": "ff55c00e_fa1e72cb",
       "revId": "06e00d349865018425ab695cac84c881ed6c3b3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea50d97_79e55882",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-18T10:15:22Z",
+      "side": 1,
+      "message": "Yes, I think that would be better.",
+      "parentUuid": "90bbc2f4_db7a91b6",
+      "revId": "06e00d349865018425ab695cac84c881ed6c3b3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
