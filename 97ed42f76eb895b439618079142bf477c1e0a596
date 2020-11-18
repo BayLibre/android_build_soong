@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006938e3_9b815f8f",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-18T20:02:23Z",
+      "side": 1,
+      "message": "It feels suboptimal that the caller provides manifestPath when it never has to interact with it. Is it because you wanted to make sure there\u0027s no path conflict?",
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a261ace1_045b5fc1",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-18T20:02:23Z",
+      "side": 1,
+      "message": "nit: This fits in 100 cols.",
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80642e4d_b35f9c4e",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-18T20:02:23Z",
+      "side": 1,
+      "message": "This is not needed.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a4f7fd4_a31b638a",
+        "filename": "cmd/sbox/sbox_proto/sbox.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-18T20:02:23Z",
+      "side": 1,
+      "message": "nit: I\u0027d name this depfile_output or output_depfile explicitly.",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
