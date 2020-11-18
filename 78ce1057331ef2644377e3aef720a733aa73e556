@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95383029_99d75efb",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-11-18T17:23:33Z",
+      "side": 1,
+      "message": "The next line is self-evident, is it worth commenting?",
+      "revId": "78ce1057331ef2644377e3aef720a733aa73e556",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
