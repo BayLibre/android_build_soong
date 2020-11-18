@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ded16b8_f236bb35",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-18T04:46:45Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be simpler and error-proof if this is a bool flag?",
+      "revId": "c0eecfd559128b91194d5a739e6678eb8f368bfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
