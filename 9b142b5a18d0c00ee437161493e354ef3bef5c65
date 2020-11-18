@@ -22,6 +22,30 @@
       },
       "revId": "9b142b5a18d0c00ee437161493e354ef3bef5c65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fce6cd6_9bf1cbcb",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-18T00:51:21Z",
+      "side": 1,
+      "message": "Good point, expanded these comments to clarify.",
+      "parentUuid": "1c572211_334c2aeb",
+      "range": {
+        "startLine": 75,
+        "startChar": 15,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "9b142b5a18d0c00ee437161493e354ef3bef5c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
