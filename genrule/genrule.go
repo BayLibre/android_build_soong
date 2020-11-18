@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// A genrule module takes a list of source files ("srcs" property), an optional
+// list of tools ("tools" property), and a command line ("cmd" property), to
+// generate output files ("out" property).
+
 package genrule
 
 import (
@@ -48,6 +52,8 @@ func registerGenruleBuildComponents(ctx android.RegistrationContext) {
 var (
 	pctx = android.NewPackageContext("android/soong/genrule")
 
+	// Used by gensrcs when there is more than 1 shard to merge the outputs
+	// of each shard into a zip file.
 	gensrcsMerge = pctx.AndroidStaticRule("gensrcsMerge", blueprint.RuleParams{
 		Command:        "${soongZip} -o ${tmpZip} @${tmpZip}.rsp && ${zipSync} -d ${genDir} ${tmpZip}",
 		CommandDeps:    []string{"${soongZip}", "${zipSync}"},
@@ -123,6 +129,7 @@ type generatorProperties struct {
 	// in bazel-enabled mode, the bazel label to evaluate instead of this module
 	Bazel_module bazelModuleProperties
 }
+
 type Module struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -135,6 +142,9 @@ type Module struct {
 
 	properties generatorProperties
 
+	// For the different tasks that genrule and gensrc generate. genrule will
+	// generate 1 task, and gensrc will generate 1 or more tasks based on the
+	// number of shards the input files are sharded into.
 	taskGenerator taskFunc
 
 	deps        android.Paths
@@ -156,14 +166,16 @@ type Module struct {
 type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask
 
 type generateTask struct {
-	in          android.Paths
-	out         android.WritablePaths
+	in  android.Paths
+	out android.WritablePaths
+	// for gensrcs
 	copyTo      android.WritablePaths
 	genDir      android.WritablePath
 	sandboxOuts []string
 	cmd         string
-	shard       int
-	shards      int
+	// sharding for gensrcs
+	shard  int
+	shards int
 }
 
 func (g *Module) GeneratedSourceFiles() android.Paths {
@@ -208,6 +220,7 @@ func (c *Module) generateBazelBuildActions(ctx android.ModuleContext, label stri
 	}
 	return ok
 }
+
 func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	g.subName = ctx.ModuleSubDir()
 
@@ -329,6 +342,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var outputFiles android.WritablePaths
 	var zipArgs strings.Builder
 
+	// Generate tasks, either from genrule or gensrcs.
 	for _, task := range g.taskGenerator(ctx, String(g.properties.Cmd), srcFiles) {
 		for _, out := range task.out {
 			addLocationLabel(out.Rel(), []string{filepath.Join("__SBOX_OUT_DIR__", out.Rel())})
@@ -454,6 +468,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		g.generateSourceFile(ctx, task, rule)
 
 		if len(task.copyTo) > 0 {
+			// For gensrcs, if shards > 1.
 			outputFiles = append(outputFiles, task.copyTo...)
 			copyFrom = append(copyFrom, task.out.Paths()...)
 			zipArgs.WriteString(" -C " + task.genDir.String())
