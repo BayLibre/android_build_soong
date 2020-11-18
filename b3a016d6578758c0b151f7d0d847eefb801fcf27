@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa0c3238_c8a28162",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-18T09:05:04Z",
+      "side": 1,
+      "message": "How about \".. to the intermediate file, which is a copy of the prebuilt source file\" to be more explicit?",
+      "range": {
+        "startLine": 103,
+        "startChar": 41,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "b3a016d6578758c0b151f7d0d847eefb801fcf27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
