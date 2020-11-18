@@ -34,6 +34,23 @@
       "parentUuid": "14a957cc_c38d9052",
       "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd9528f_51ba9a63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2020-11-18T22:33:10Z",
+      "side": 1,
+      "message": "isn\u0027t PAC/BTI in the same bucket as some of the production ubsan flags we use? an optional hardening feature that we turn on in various places (for now).\n\nwe use `sanitize: { integer_overflow: true }` to turn on intoverflow in prod, for example.\n\n`sanitize: {}` doesn\u0027t have the whole \"enforced\" mode, but we have `sanitize: { diag: {} }`, so we could do `sanitize: { enforced: ...`",
+      "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
