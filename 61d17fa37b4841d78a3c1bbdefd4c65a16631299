@@ -46,6 +46,30 @@
       },
       "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71bac7d_76bab120",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-11-18T21:41:59Z",
+      "side": 1,
+      "message": "yeah, i\u0027m not sure we need \"WHOLE\", but that does seem like \"APEX\" should be in there. (it hadn\u0027t even occurred to me that they might not be the same.)",
+      "parentUuid": "903be440_c0cf94dc",
+      "range": {
+        "startLine": 370,
+        "startChar": 5,
+        "endLine": 370,
+        "endChar": 46
+      },
+      "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
