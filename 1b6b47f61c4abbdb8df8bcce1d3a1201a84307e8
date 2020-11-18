@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2065c592_a7f2ff07",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-18T07:28:17Z",
+      "side": 1,
+      "message": "ALLOW_MISSING_DEPENDENCIES is global. This actually is needed for cvd-host-package where there might be a reference to a module in a Google-only or Auto-only projects.\n\n\u003e When do you expect this function to be called?\n\nIn cvd-host-package. See aosp/1492456\n\n\nChanged to a bool field.",
+      "parentUuid": "3f8d1eb9_760467a8",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb9c46d7_9b30f327",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-11-18T02:16:44Z",
       "side": 1,
       "message": "This is going to result in a rule with an arbitrary number of output files, which will then all be used as inputs to another rule.  That seems like an unnecessary load on the build.ninja file an ninja.  I can think of a few ways to avoid that:\n\n - Always produce a zip file, and then the next rule can use zipsync to unzip them into a directory.\n - Return a partially filled out RuleBuilder that has the copy commands and let the caller add the packaging commands.\n - Support the various output formats directly in PackageModule.\n - Use single output file as the dependency, since they will always be created together.  This can cause problems if an untracked output file was manually deleted though.",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a48b4b84_0ed99814",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-18T07:28:17Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. I choose the zip file path.",
+      "parentUuid": "fb9c46d7_9b30f327",
       "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c3ff4bc_8e7d4526",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-18T07:28:17Z",
+      "side": 1,
+      "message": "We right now don\u0027t have a use case for nested packaging. But I think it might be useful. I wonder what modifications would be needed though. I wish I can handle that is a follow-up CL if needed.",
+      "parentUuid": "7cdee713_eac611fd",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c57eeef_2a28e122",
         "filename": "android/packaging.go",
         "patchSetId": 6
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39db8bbe_e61b31c0",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-18T07:28:17Z",
+      "side": 1,
+      "message": "Ack. Thanks for letting me know that. Until that CL lands, I will keep this.",
+      "parentUuid": "1c57eeef_2a28e122",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "328ddb80_80275b2f",
         "filename": "android/packaging.go",
         "patchSetId": 6
@@ -99,6 +171,24 @@
       "writtenOn": "2020-11-18T02:16:44Z",
       "side": 1,
       "message": "Start with rm -rf dir.String(), otherwise you may have stale files from an old run.",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de0bee7_29a5028b",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-18T07:28:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328ddb80_80275b2f",
       "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
