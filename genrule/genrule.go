@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// A genrule module takes a list of source files ("srcs" property), an optional
+// list of tools ("tools" property), and a command line ("cmd" property), to
+// generate output files ("out" property).
+
 package genrule
 
 import (
@@ -135,6 +139,9 @@ type Module struct {
 
 	properties generatorProperties
 
+	// For the different tasks that genrule and gensrc generate. genrule will
+	// generate 1 task, and gensrc will generate 1 or more tasks based on the
+	// number of shards the input files are sharded into.
 	taskGenerator taskFunc
 
 	deps        android.Paths
@@ -208,6 +215,7 @@ func (c *Module) generateBazelBuildActions(ctx android.ModuleContext, label stri
 	}
 	return ok
 }
+
 func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	g.subName = ctx.ModuleSubDir()
 
