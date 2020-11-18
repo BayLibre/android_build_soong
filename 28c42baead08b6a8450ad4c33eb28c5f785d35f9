@@ -51,6 +51,24 @@
       "message": "isn\u0027t PAC/BTI in the same bucket as some of the production ubsan flags we use? an optional hardening feature that we turn on in various places (for now).\n\nwe use `sanitize: { integer_overflow: true }` to turn on intoverflow in prod, for example.\n\n`sanitize: {}` doesn\u0027t have the whole \"enforced\" mode, but we have `sanitize: { diag: {} }`, so we could do `sanitize: { enforced: ...`",
       "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f185ea6_3b46cbd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-11-18T23:01:30Z",
+      "side": 1,
+      "message": "I think its fine for this to be arch-specific. Each type of hardening likely has its own problematic areas, and we should not assume that if a library is \"hardened\" on one arch, then it\u0027s ok for it to opt-in on all targets.\n\nIt could be useful to follow integer-overflow and cfi examples in having a global list of enabled targets, instead of changing each target\u0027s build rule.\n\nAFAIU, BTI must be enabled in everything that is linked into the same DSO, so \"enforced\" mutator should apply to static library dependencies, but not to shared libraries. Am I misunderstanding something?",
+      "parentUuid": "9d66d75d_7212e695",
+      "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
