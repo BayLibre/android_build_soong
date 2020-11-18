@@ -87,6 +87,24 @@
       "parentUuid": "6f185ea6_3b46cbd5",
       "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e919f691_f10ccee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-11-18T23:21:13Z",
+      "side": 1,
+      "message": "Hmm, we could take this to the next level and add runtime loader enforcement based on ELF notes or something so that a process that is supposed to be hardened was not allowed to dlopen a non-hardened library.",
+      "parentUuid": "3235ae32_28798dc7",
+      "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
