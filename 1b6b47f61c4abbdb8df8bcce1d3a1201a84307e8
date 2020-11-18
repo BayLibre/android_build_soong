@@ -123,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac45fd1e_9525c92b",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-18T20:09:24Z",
+      "side": 1,
+      "message": "Precisely speaking, it\u0027s more of embedding. I was thinking of something similar to the partial mts work, where subset packages can be built and distributed independently. Let\u0027s revisit it when we have a real use case. The current property set should work fine for embedding as well.",
+      "parentUuid": "7c3ff4bc_8e7d4526",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c57eeef_2a28e122",
