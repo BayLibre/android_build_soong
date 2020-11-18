@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b933000a_ba7b3b9f",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T21:02:40Z",
+      "side": 1,
+      "message": "Yes, each rule needs somewhere to write the manifest and a directory to write the outputs.  Trying to generate a path is problematic because RuleBuilder uses a BuilderContext because it might be called by a Singleton or a Module, and Singletons don\u0027t have a PathForModuleOut.",
+      "parentUuid": "006938e3_9b815f8f",
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a261ace1_045b5fc1",
         "filename": "android/rule_builder.go",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-18T20:02:23Z",
       "side": 1,
       "message": "nit: This fits in 100 cols.",
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9069aa7a_46bb78f9",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T21:02:40Z",
+      "side": 1,
+      "message": "Definitely shouldn\u0027t be wrapped in the middle of the filename.  I\u0027m never sure what to do here though, because the Go style is 8-space tabs, which would make this not fit.  I use 4-space tabs locally, so I usually try to derate the line length by 4 spaces for each tab.",
+      "parentUuid": "a261ace1_045b5fc1",
       "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef0114d_affa74a5",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T21:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80642e4d_b35f9c4e",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a4f7fd4_a31b638a",
@@ -71,6 +131,30 @@
       "writtenOn": "2020-11-18T20:02:23Z",
       "side": 1,
       "message": "nit: I\u0027d name this depfile_output or output_depfile explicitly.",
+      "range": {
+        "startLine": 27,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c329e565_5f59a9a8",
+        "filename": "cmd/sbox/sbox_proto/sbox.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T21:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a4f7fd4_a31b638a",
       "range": {
         "startLine": 27,
         "startChar": 18,
