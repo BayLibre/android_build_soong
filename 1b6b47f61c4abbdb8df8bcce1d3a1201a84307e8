@@ -54,6 +54,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cdee713_eac611fd",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-18T04:59:52Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be handy if this can be used for nested packaging? It appears a little bit of modification would make it possible.",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c57eeef_2a28e122",
         "filename": "android/packaging.go",
         "patchSetId": 6
