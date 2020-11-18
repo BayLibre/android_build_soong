@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc6f25f_3af95b2f",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-11-18T17:15:02Z",
+      "side": 1,
+      "message": "Why is this rearrangement preferable, given that now filename is checked twice?\nIMHO it\u0027s better to follow that logic in the comment above:\nif filename !\u003d \"\" {\n   // Complain if filename_from_src is set, too\n} else if filename_from_src {\n   filename \u003d p.sourceFilePath.Base()\n} else {\n   filename \u003d ctx.ModuleName()\n}\n\nAlso, I think Go\u0027s convention is to use snakeCaseIdentifiers, not foo_bar ones.",
+      "revId": "56a2620bb98c92960bc3ad5ae54e983df46e9609",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55c49f5_afd6d765",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-11-18T17:15:02Z",
+      "side": 1,
+      "message": "Please wrap comment lines at 100 chars.",
+      "revId": "56a2620bb98c92960bc3ad5ae54e983df46e9609",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
