@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff01349e_f4966587",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-18T18:38:30Z",
+      "side": 1,
+      "message": "Can you revert this only in internal so that it works in both places?",
+      "revId": "83bf5dfa6170e1994dd962028e8bb7f4433c205c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
