@@ -118,6 +118,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81bd25b1_6325e207",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-18T15:49:13Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "768267ae_89672b5f",
+      "revId": "755920987af209f49d2f1f9b52930086e252a189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d1844e5_9db1ab72",
