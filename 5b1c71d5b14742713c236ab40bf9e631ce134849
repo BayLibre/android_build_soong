@@ -170,6 +170,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af5bad3_dbf28c1f",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T18:45:33Z",
+      "side": 1,
+      "message": "Got it, thanks!",
+      "parentUuid": "8503583e_22bcd127",
+      "revId": "5b1c71d5b14742713c236ab40bf9e631ce134849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d884756_9944bbff",
