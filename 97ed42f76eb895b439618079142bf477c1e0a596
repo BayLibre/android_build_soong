@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23dd9e63_e557279f",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T00:29:15Z",
+      "side": 1,
+      "message": "Got it. Well, that\u0027s unfortunate.",
+      "parentUuid": "b933000a_ba7b3b9f",
+      "revId": "97ed42f76eb895b439618079142bf477c1e0a596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a261ace1_045b5fc1",
