@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ba4b38a_8022dfb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:00:17Z",
+      "side": 1,
+      "message": "You are welcome. This was a good opportunity!",
+      "parentUuid": "17574da7_6baf2700",
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63927260_7c93050a",
@@ -81,6 +99,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd235f44_7bca0e87",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:00:17Z",
+      "side": 1,
+      "message": "I think that\u0027s better. Thanks. Done.\n\nBut I am hesitant doing s/module/an apex variant of a module/ throughout the file, because in many cases that can be easily inferred, or the difference is insignificant. I modified a few more places, but not all.",
+      "parentUuid": "63927260_7c93050a",
+      "range": {
+        "startLine": 32,
+        "startChar": 61,
+        "endLine": 32,
+        "endChar": 69
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5be3ce_a767af0a",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:00:17Z",
+      "side": 1,
+      "message": "No, this should be singular. When a module is included in multiple apexBundles, the module will be mutated into multiple variations, and each variation is associated with \"a\" apexBundle.",
+      "parentUuid": "2f1adaee_ea039994",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d26ea1c_b55832f3",
@@ -94,6 +160,24 @@
       "writtenOn": "2020-11-19T00:41:18Z",
       "side": 1,
       "message": "nit: Soong\u0027s column limit is 100, fyi.",
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213f461b_17856e61",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d26ea1c_b55832f3",
       "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -121,6 +205,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a6916f5_b4c1125d",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be75e78_0a855a92",
+      "range": {
+        "startLine": 39,
+        "startChar": 31,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a40c2f13_9afb7bae",
@@ -138,6 +246,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f92514_83713f6e",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:00:17Z",
+      "side": 1,
+      "message": "It\u0027s the former. The deduping is just for optimization. It doesn\u0027t change the fact that the module is included in three APEXes. I\u0027ve clarified this in the comment.",
+      "parentUuid": "a40c2f13_9afb7bae",
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "315e6162_39f024c4",
@@ -151,6 +277,30 @@
       "writtenOn": "2020-11-19T00:41:18Z",
       "side": 1,
       "message": "nit: double spaces.",
+      "range": {
+        "startLine": 573,
+        "startChar": 13,
+        "endLine": 573,
+        "endChar": 14
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01d22b51_75ce6ddd",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:00:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "315e6162_39f024c4",
       "range": {
         "startLine": 573,
         "startChar": 13,
