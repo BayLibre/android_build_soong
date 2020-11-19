@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50647065_ad346c09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T19:28:22Z",
+      "side": 1,
+      "message": "You seem to be resubmitting the original CL. What was the root cause, then?",
+      "revId": "39f2a7f0a5e5172938f6c1fd5b978be9bf199da2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
