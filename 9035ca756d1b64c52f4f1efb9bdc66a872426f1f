@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed0838c0_c1c065b5",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-19T13:25:42Z",
+      "side": 1,
+      "message": "@jiyong would you know the criteria of this being parallel()-able or not?",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 42
+      },
+      "revId": "9035ca756d1b64c52f4f1efb9bdc66a872426f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef3b08a9_fe5c9420",
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "Yeah, but I am not sure how much it will be simplified. This already is simple IMO. Up to you :)",
       "parentUuid": "ef3b08a9_fe5c9420",
+      "range": {
+        "startLine": 87,
+        "startChar": 7,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "9035ca756d1b64c52f4f1efb9bdc66a872426f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c74d99_5afd051b",
+        "filename": "cc/sabi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-19T13:25:42Z",
+      "side": 1,
+      "message": "I\u0027m thinking this CreateSAbiDumps and shouldCreateSourceAbiDump() can probably be further simplified and consolidated.\nI\u0027ll leave large semantic changes to a follow up change.",
+      "parentUuid": "155ce548_e5355acb",
       "range": {
         "startLine": 87,
         "startChar": 7,
