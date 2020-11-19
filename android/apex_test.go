@@ -95,6 +95,23 @@ func Test_mergeApexVariations(t *testing.T) {
 				{"foo", "apex10000_baz_1"},
 			},
 		},
+		{
+			name: "merge_foo_and_bar",
+			in: []ApexInfo{
+				{"foo", "current", false, SdkRefs{{"qux", "1"}}, []string{"foo"}, nil},
+				{"bar", "current", false, SdkRefs{{"qux", "1"}}, []string{"bar"}, nil},
+				{"baz", "current", false, SdkRefs{{"qux", "2"}}, []string{"baz"}, nil},
+			},
+			wantMerged: []ApexInfo{
+				{"apex10000_qux_1", "current", false, SdkRefs{{"qux", "1"}}, []string{"bar", "foo"}, nil},
+				{"apex10000_qux_2", "current", false, SdkRefs{{"qux", "2"}}, []string{"baz"}, nil},
+			},
+			wantAliases: [][2]string{
+				{"bar", "apex10000_qux_1"},
+				{"baz", "apex10000_qux_2"},
+				{"foo", "apex10000_qux_1"},
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
