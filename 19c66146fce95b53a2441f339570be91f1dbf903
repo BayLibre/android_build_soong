@@ -105,6 +105,30 @@
       },
       "revId": "19c66146fce95b53a2441f339570be91f1dbf903",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d800251c_42a137a6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-19T13:13:27Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "ff4c9b70_e14920ef",
+      "range": {
+        "startLine": 554,
+        "startChar": 3,
+        "endLine": 554,
+        "endChar": 21
+      },
+      "revId": "19c66146fce95b53a2441f339570be91f1dbf903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
