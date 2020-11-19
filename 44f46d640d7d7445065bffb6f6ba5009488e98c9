@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006278250",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1505673?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "5b8f97f3_14c20397",
+          "description": "Change to \"apex/apex.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex.go",
+              "range": {
+                "startLine": 299,
+                "startChar": 55,
+                "endLine": 299,
+                "endChar": 71
+              },
+              "replacement": "filled in the"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c1423349_90601f13",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-19T23:45:50Z",
+      "side": 1,
+      "message": "Common typo found: \"filled in in the\" -- should it be \"filled in the\"?\nIf duplication is intentional, you can hyphenate, e.g., \u0027filled in in-the\u0027 or \u0027filled-in in the\u0027\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 299,
+        "startChar": 55,
+        "endLine": 299,
+        "endChar": 71
+      },
+      "revId": "44f46d640d7d7445065bffb6f6ba5009488e98c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006278250",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1505673?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "7817e89a_4f1a86c9",
+          "description": "Change to \"apex/apex.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex.go",
+              "range": {
+                "startLine": 1197,
+                "startChar": 23,
+                "endLine": 1197,
+                "endChar": 33
+              },
+              "replacement": "interfacing"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9c266387_b3ebface",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-19T23:45:50Z",
+      "side": 1,
+      "message": "Common typo found: \"intefacing\" -- should it be \"interfacing\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1197,
+        "startChar": 23,
+        "endLine": 1197,
+        "endChar": 33
+      },
+      "revId": "44f46d640d7d7445065bffb6f6ba5009488e98c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
