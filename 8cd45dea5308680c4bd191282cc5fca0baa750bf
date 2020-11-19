@@ -16,6 +16,23 @@
       "message": "Adding owners for owner review.",
       "revId": "8cd45dea5308680c4bd191282cc5fca0baa750bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c01affd9_bb23d812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-19T19:14:12Z",
+      "side": 1,
+      "message": "Is there some reason this can\u0027t just be `cflags: [\"-fno-sanitize-cfi-canonical-jump-tables\"]` on the affected modules?",
+      "revId": "8cd45dea5308680c4bd191282cc5fca0baa750bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
