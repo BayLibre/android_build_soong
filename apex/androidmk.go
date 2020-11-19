@@ -68,10 +68,10 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 
 	var postInstallCommands []string
 	for _, fi := range a.filesInfo {
-		if a.linkToSystemLib && fi.transitiveDep && fi.AvailableToPlatform() {
+		if a.linkToSystemLib && fi.transitiveDep && fi.availableToPlatform() {
 			// TODO(jiyong): pathOnDevice should come from fi.module, not being calculated here
-			linkTarget := filepath.Join("/system", fi.Path())
-			linkPath := filepath.Join(a.installDir.ToMakePath().String(), apexBundleName, fi.Path())
+			linkTarget := filepath.Join("/system", fi.path())
+			linkPath := filepath.Join(a.installDir.ToMakePath().String(), apexBundleName, fi.path())
 			mkdirCmd := "mkdir -p " + filepath.Dir(linkPath)
 			linkCmd := "ln -sfn " + linkTarget + " " + linkPath
 			postInstallCommands = append(postInstallCommands, mkdirCmd, linkCmd)
@@ -85,7 +85,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			continue
 		}
 
-		linkToSystemLib := a.linkToSystemLib && fi.transitiveDep && fi.AvailableToPlatform()
+		linkToSystemLib := a.linkToSystemLib && fi.transitiveDep && fi.availableToPlatform()
 
 		var moduleName string
 		if linkToSystemLib {
@@ -189,7 +189,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			// soong_java_prebuilt.mk sets LOCAL_MODULE_SUFFIX := .jar  Therefore
 			// we need to remove the suffix from LOCAL_MODULE_STEM, otherwise
 			// we will have foo.jar.jar
-			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", strings.TrimSuffix(fi.Stem(), ".jar"))
+			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", strings.TrimSuffix(fi.stem(), ".jar"))
 			if javaModule, ok := fi.module.(java.ApexDependency); ok {
 				fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", javaModule.ImplementationAndResourcesJars()[0].String())
 				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", javaModule.HeaderJars()[0].String())
@@ -205,7 +205,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			// soong_app_prebuilt.mk sets LOCAL_MODULE_SUFFIX := .apk  Therefore
 			// we need to remove the suffix from LOCAL_MODULE_STEM, otherwise
 			// we will have foo.apk.apk
-			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", strings.TrimSuffix(fi.Stem(), ".apk"))
+			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", strings.TrimSuffix(fi.stem(), ".apk"))
 			if app, ok := fi.module.(*java.AndroidApp); ok {
 				if jniCoverageOutputs := app.JniCoverageOutputs(); len(jniCoverageOutputs) > 0 {
 					fmt.Fprintln(w, "LOCAL_PREBUILT_COVERAGE_ARCHIVE :=", strings.Join(jniCoverageOutputs.Strings(), " "))
@@ -224,7 +224,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			fmt.Fprintln(w, "LOCAL_APKCERTS_FILE :=", as.APKCertsFile().String())
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_android_app_set.mk")
 		case nativeSharedLib, nativeExecutable, nativeTest:
-			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.Stem())
+			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.stem())
 			if ccMod, ok := fi.module.(*cc.Module); ok {
 				if ccMod.UnstrippedOutputFile() != nil {
 					fmt.Fprintln(w, "LOCAL_SOONG_UNSTRIPPED_BINARY :=", ccMod.UnstrippedOutputFile().String())
@@ -236,7 +236,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			}
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_cc_prebuilt.mk")
 		default:
-			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.Stem())
+			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.stem())
 			if fi.builtFile == a.manifestPbOut && apexType == flattenedApex {
 				if a.primaryApexType {
 					// To install companion files (init_rc, vintf_fragments)
