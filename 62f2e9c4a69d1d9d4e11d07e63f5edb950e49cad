@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e3c080_b516964a",
+        "filename": "java/java_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:56:03Z",
+      "side": 1,
+      "message": "switch/case?",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 11
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7241a54_f20aaeff",
+        "filename": "java/java_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:56:03Z",
+      "side": 1,
+      "message": "This seems to be too repetitive. Can you make combinations of fromPartition and toPartition and loop over it and set enforce* depending on whether the partitions are the same or not?",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 5
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a308a0c_31c25547",
+        "filename": "java/java_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:56:03Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 916,
+        "startChar": 0,
+        "endLine": 933,
+        "endChar": 0
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e4642a_098114c7",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:56:03Z",
+      "side": 1,
+      "message": "add licence header",
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "903a98d6_957a937f",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:56:03Z",
+      "side": 1,
+      "message": "I guess this is not a user error, but a build system error, so panic?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 52
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be50e22c_88a35d07",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:56:03Z",
+      "side": 1,
+      "message": "The list is not large. Why don\u0027t you just do `InList(j.Name(), ctx.Config().InterPartitionJava..)`?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28df349_a7a3191b",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:56:03Z",
+      "side": 1,
+      "message": "This is hard to read. Please put parenthesis.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 102
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2cd1c6_c62dab0d",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T04:56:03Z",
+      "side": 1,
+      "message": "libs\n\nYou better get this as an argument",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 7
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
