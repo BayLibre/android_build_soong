@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a750570e_83965c35",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-19T08:26:49Z",
+      "side": 1,
+      "message": "\u003e Why is this rearrangement preferable, given that now filename is checked twice?\n\nI originally thought isolating the check/assert out of the if-else-if clause is more readable, less \"mind cost\" because the reader don\u0027t need to keep track of which part of the code is check and which part is the actual logic. But I see your point of double-checking filename.\n\n\u003e follow that logic in the comment above\n\n\u003e snakeCaseIdentifiers\n\nAck \u0026 Ack",
+      "parentUuid": "9cc6f25f_3af95b2f",
+      "revId": "56a2620bb98c92960bc3ad5ae54e983df46e9609",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e55c49f5_afd6d765",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-18T17:15:02Z",
       "side": 1,
       "message": "Please wrap comment lines at 100 chars.",
+      "revId": "56a2620bb98c92960bc3ad5ae54e983df46e9609",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e618bb_d274eb48",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-19T08:26:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55c49f5_afd6d765",
       "revId": "56a2620bb98c92960bc3ad5ae54e983df46e9609",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
