@@ -16,6 +16,24 @@
       "message": "You seem to be resubmitting the original CL. What was the root cause, then?",
       "revId": "39f2a7f0a5e5172938f6c1fd5b978be9bf199da2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65a647e_5e3925b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-19T19:43:00Z",
+      "side": 1,
+      "message": "This is a revert of the revert in order to upload a fixed version on top, but then I found my fix doesn\u0027t work either.  I\u0027ll abandon for now.",
+      "parentUuid": "50647065_ad346c09",
+      "revId": "39f2a7f0a5e5172938f6c1fd5b978be9bf199da2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
