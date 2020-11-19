@@ -33,6 +33,24 @@
       "message": "Is there some reason this can\u0027t just be `cflags: [\"-fno-sanitize-cfi-canonical-jump-tables\"]` on the affected modules?",
       "revId": "8cd45dea5308680c4bd191282cc5fca0baa750bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c692043_14dc3bcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-11-19T20:59:22Z",
+      "side": 1,
+      "message": "It can, but adding it to the build file can centralize where we maintain the flag and it might also help having all the build information related to sanitizers be grouped together for readability and provide context.",
+      "parentUuid": "c01affd9_bb23d812",
+      "revId": "8cd45dea5308680c4bd191282cc5fca0baa750bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
