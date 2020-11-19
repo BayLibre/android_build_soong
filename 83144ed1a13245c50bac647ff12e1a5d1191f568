@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "939f6181_7aa2c305",
+        "filename": "cc/strip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-19T17:04:32Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 83,
+        "startChar": 57,
+        "endLine": 83,
+        "endChar": 67
+      },
+      "revId": "83144ed1a13245c50bac647ff12e1a5d1191f568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
