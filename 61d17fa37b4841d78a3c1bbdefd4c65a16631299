@@ -94,6 +94,30 @@
       },
       "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950e0c72_d075e0cb",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2020-11-19T21:04:17Z",
+      "side": 1,
+      "message": "Is that going to happen any time soon? Should I drop this, or rename and submit in the interim?",
+      "parentUuid": "7e6c7241_b37970c2",
+      "range": {
+        "startLine": 370,
+        "startChar": 5,
+        "endLine": 370,
+        "endChar": 46
+      },
+      "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
