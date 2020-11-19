@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Ready+1: Janis Danisevskis <jdanis@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Bypass-Presubmit+1: Janis Danisevskis <jdanis@google.com>
+Submitted-by: Janis Danisevskis <jdanis@google.com>
+Submitted-at: Thu, 19 Nov 2020 00:21:27 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1504113
+Project: platform/build/soong
+Branch: refs/heads/master
