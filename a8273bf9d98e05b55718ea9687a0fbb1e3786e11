@@ -1,0 +1,219 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006258928",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1504833?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "5117d4ec_b11e898c",
+          "description": "Change to \"apex/apex.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex.go",
+              "range": {
+                "startLine": 152,
+                "startChar": 51,
+                "endLine": 152,
+                "endChar": 62
+              },
+              "replacement": "compatible"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d0b07c97_247969f8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-19T07:42:49Z",
+      "side": 1,
+      "message": "Common typo found: \"compatibile\" -- should it be \"compatible\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 152,
+        "startChar": 51,
+        "endLine": 152,
+        "endChar": 62
+      },
+      "revId": "a8273bf9d98e05b55718ea9687a0fbb1e3786e11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006258928",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1504833?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "be719213_59b88db9",
+          "description": "Change to \"apex/apex.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex.go",
+              "range": {
+                "startLine": 544,
+                "startChar": 24,
+                "endLine": 544,
+                "endChar": 34
+              },
+              "replacement": "targeting"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "eeab88cd_1a633654",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-19T07:42:49Z",
+      "side": 1,
+      "message": "Common typo found: \"targetting\" -- should it be \"targeting\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 544,
+        "startChar": 24,
+        "endLine": 544,
+        "endChar": 34
+      },
+      "revId": "a8273bf9d98e05b55718ea9687a0fbb1e3786e11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006258928",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1504833?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "aaeedd56_a0417837",
+          "description": "Change to \"apex/apex.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex.go",
+              "range": {
+                "startLine": 563,
+                "startChar": 25,
+                "endLine": 563,
+                "endChar": 35
+              },
+              "replacement": "targeting"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "e8598bef_4651a835",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-19T07:42:49Z",
+      "side": 1,
+      "message": "Common typo found: \"targetting\" -- should it be \"targeting\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 563,
+        "startChar": 25,
+        "endLine": 563,
+        "endChar": 35
+      },
+      "revId": "a8273bf9d98e05b55718ea9687a0fbb1e3786e11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006258928",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1504833?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "0961be03_aaf93830",
+          "description": "Change to \"apex/apex.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex.go",
+              "range": {
+                "startLine": 572,
+                "startChar": 25,
+                "endLine": 572,
+                "endChar": 35
+              },
+              "replacement": "targeting"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "55972578_b3ce5049",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-19T07:42:49Z",
+      "side": 1,
+      "message": "Common typo found: \"targetting\" -- should it be \"targeting\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 572,
+        "startChar": 25,
+        "endLine": 572,
+        "endChar": 35
+      },
+      "revId": "a8273bf9d98e05b55718ea9687a0fbb1e3786e11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006258928",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1504833?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "a2c6b285_2b4549a3",
+          "description": "Change to \"apex/apex.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex.go",
+              "range": {
+                "startLine": 583,
+                "startChar": 25,
+                "endLine": 583,
+                "endChar": 35
+              },
+              "replacement": "targeting"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "15aab969_e9df8374",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-19T07:42:49Z",
+      "side": 1,
+      "message": "Common typo found: \"targetting\" -- should it be \"targeting\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 583,
+        "startChar": 25,
+        "endLine": 583,
+        "endChar": 35
+      },
+      "revId": "a8273bf9d98e05b55718ea9687a0fbb1e3786e11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
