@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a9a1690_02f4c0cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-11-19T12:17:38Z",
+      "side": 1,
+      "message": "worth updating now",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "2f432a2427a6d9bfeb739b9491f49f624d727bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bb9f5e32_b6ae7a70",
@@ -14,6 +37,23 @@
       "writtenOn": "2020-11-19T12:09:56Z",
       "side": 1,
       "message": "PTAL - added some unit tests too.",
+      "revId": "2f432a2427a6d9bfeb739b9491f49f624d727bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda1e98e_13bd44b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-11-19T12:17:38Z",
+      "side": 1,
+      "message": "Thanks both!",
       "revId": "2f432a2427a6d9bfeb739b9491f49f624d727bf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
