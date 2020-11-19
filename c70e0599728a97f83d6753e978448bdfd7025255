@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc84cc4b_a8e65a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-19T10:59:57Z",
+      "side": 1,
+      "message": "Note that this doesn\u0027t converts the filegroup module type to use the label in a mixed build, but just to allow the bazel_module prop to be used on a filegroup module without Soong crashing to an unknown property.",
+      "revId": "c70e0599728a97f83d6753e978448bdfd7025255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
