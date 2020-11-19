@@ -68,6 +68,24 @@
       "message": "Revisiting old pending reviews. Is this still relevant? Otherwise, abandon?",
       "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e855b019_bac63f0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536847
+      },
+      "writtenOn": "2020-11-19T10:19:17Z",
+      "side": 1,
+      "message": "It is based on deprecated HIDL version. So abandon.",
+      "parentUuid": "d5c354e3_c3f8288d",
+      "revId": "1aba5606e99fffc225edbf26e83e8ee4e6769053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
