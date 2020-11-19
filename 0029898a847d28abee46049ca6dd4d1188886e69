@@ -63,6 +63,30 @@
       },
       "revId": "0029898a847d28abee46049ca6dd4d1188886e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1148dde9_bb5f8225",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T07:56:30Z",
+      "side": 1,
+      "message": "Sure. I don\u0027t feel strong about this. Fine to do that later or even leave it as it is. I +2\u0027ed this.\n\nI am not a owner in this directory though.",
+      "parentUuid": "ee32d1e6_e04ad254",
+      "range": {
+        "startLine": 965,
+        "startChar": 61,
+        "endLine": 965,
+        "endChar": 73
+      },
+      "revId": "0029898a847d28abee46049ca6dd4d1188886e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
