@@ -57,6 +57,7 @@ func (mod *Module) AndroidMk() android.AndroidMkData {
 		Include:    "$(BUILD_SYSTEM)/soong_rust_prebuilt.mk",
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
+				fmt.Fprintln(w, "LOCAL_SOONG_LINK_TYPE := "+mod.makeLinkType)
 				if len(mod.Properties.AndroidMkRlibs) > 0 {
 					fmt.Fprintln(w, "LOCAL_RLIB_LIBRARIES := "+strings.Join(mod.Properties.AndroidMkRlibs, " "))
 				}

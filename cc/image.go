@@ -115,6 +115,14 @@ func (c *Module) inProduct() bool {
 	return c.Properties.ImageVariationPrefix == ProductVariationPrefix
 }
 
+func (c *Module) InProduct() bool {
+	return c.inProduct()
+}
+
+func (c *Module) VendorAvailable() bool {
+	return Bool(c.VendorProperties.Vendor_available)
+}
+
 // Returns true if the module is "vendor" variant. Usually these modules are installed in /vendor
 func (c *Module) inVendor() bool {
 	return c.Properties.ImageVariationPrefix == VendorVariationPrefix
