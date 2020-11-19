@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00c6a905_6778a92a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-11-19T00:00:37Z",
+      "side": 1,
+      "message": "I would pass this inline since you only need to reference it once.",
+      "revId": "19c66146fce95b53a2441f339570be91f1dbf903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f4795ac_acd393eb",
         "filename": "cc/sanitize.go",
         "patchSetId": 3
@@ -14,6 +31,30 @@
       "writtenOn": "2020-11-17T15:12:43Z",
       "side": 1,
       "message": "Peter, does this flag need to be passed in when we call Clang during the linking step as well?",
+      "range": {
+        "startLine": 554,
+        "startChar": 3,
+        "endLine": 554,
+        "endChar": 21
+      },
+      "revId": "19c66146fce95b53a2441f339570be91f1dbf903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4c9b70_e14920ef",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-11-19T00:00:37Z",
+      "side": 1,
+      "message": "No, you shouldn\u0027t need to pass it at link time.",
+      "parentUuid": "5f4795ac_acd393eb",
       "range": {
         "startLine": 554,
         "startChar": 3,
