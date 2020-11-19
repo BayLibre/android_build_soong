@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47173d6_6df76c06",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-11-19T01:34:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c6a905_6778a92a",
+      "revId": "19c66146fce95b53a2441f339570be91f1dbf903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f4795ac_acd393eb",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "No, you shouldn\u0027t need to pass it at link time.",
       "parentUuid": "5f4795ac_acd393eb",
+      "range": {
+        "startLine": 554,
+        "startChar": 3,
+        "endLine": 554,
+        "endChar": 21
+      },
+      "revId": "19c66146fce95b53a2441f339570be91f1dbf903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b233b1ff_eef3e7b1",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-11-19T01:34:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff4c9b70_e14920ef",
       "range": {
         "startLine": 554,
         "startChar": 3,
