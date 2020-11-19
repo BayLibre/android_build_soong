@@ -16,6 +16,149 @@
       "message": "(the test failure is unrelated. retrying)",
       "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17574da7_6baf2700",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T00:41:18Z",
+      "side": 1,
+      "message": "I never dared to understand apex-related code, but these comments really made it a breeze. Thank you very much. :)\n\nA handful of clarification comments, especially word choices between \"module\" and \"variant\".",
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63927260_7c93050a",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T00:41:18Z",
+      "side": 1,
+      "message": "I think \"an apex variant of a module\" is more accurate and helpful. The same applies other comments in this file. It\u0027s not very clear if \"the module\" really refers to the module or just the apex variant that this ApexInfo belongs to.",
+      "range": {
+        "startLine": 32,
+        "startChar": 61,
+        "endLine": 32,
+        "endChar": 69
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1adaee_ea039994",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T00:41:18Z",
+      "side": 1,
+      "message": "If I\u0027m reading the code correctly, this should be plural, apexBundles?",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d26ea1c_b55832f3",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T00:41:18Z",
+      "side": 1,
+      "message": "nit: Soong\u0027s column limit is 100, fyi.",
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be75e78_0a855a92",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T00:41:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I\u0027m understanding this correctly. Does it mean that a single APEX variant may be referenced by multiple APEXes?\n\n\u003d\u003d\u003d\n\nI think I now get it. It\u0027s because of mergeApexVariations, right? If yes, I think it\u0027s worth mentioning in the ApexInfo struct comment.",
+      "range": {
+        "startLine": 39,
+        "startChar": 31,
+        "endLine": 39,
+        "endChar": 70
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40c2f13_9afb7bae",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T00:41:18Z",
+      "side": 1,
+      "message": "Let\u0027s suppose there were originally \"foo\", \"bar\", and \"baz\", three apex variations, but \"foo\" and \"bar\" have been merged into \"apex29_qux_3\". What will be the value of ApexInfo.InApexes of the \"apex29_qux_3\" variant? Is it {\"foo\", \"bar\", \"baz\"} or {\"foo\", \"bar\"}? Asking it because the comment alludes it\u0027s the former, but mergeApexVariations and InApex make me believe it\u0027s the latter.",
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "315e6162_39f024c4",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-19T00:41:18Z",
+      "side": 1,
+      "message": "nit: double spaces.",
+      "range": {
+        "startLine": 573,
+        "startChar": 13,
+        "endLine": 573,
+        "endChar": 14
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
