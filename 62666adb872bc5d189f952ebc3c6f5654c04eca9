@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8be7581_cd960db7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-19T02:22:47Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure if this would be the right approach to create variable from soong, and do not make any install target. Can you please review this and give me any advice how to implement this in soong?",
+      "revId": "62666adb872bc5d189f952ebc3c6f5654c04eca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
