@@ -16,6 +16,98 @@
       "message": "I\u0027m not quite sure if this would be the right approach to create variable from soong, and do not make any install target. Can you please review this and give me any advice how to implement this in soong?",
       "revId": "62666adb872bc5d189f952ebc3c6f5654c04eca9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc41ca9c_e4b870cc",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:53:53Z",
+      "side": 1,
+      "message": "Why do you define the same struct again?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "62666adb872bc5d189f952ebc3c6f5654c04eca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9dd82d3_48d632e5",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:53:53Z",
+      "side": 1,
+      "message": "We already have IsStubs() method.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 67
+      },
+      "revId": "62666adb872bc5d189f952ebc3c6f5654c04eca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82aab998_f831a9f6",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:53:53Z",
+      "side": 1,
+      "message": "Consider using https://source.corp.google.com/android/build/soong/android/module.go;rcl\u003da2ff40034b2d21570b0b74e22d84db4b1b4d2ce6;l\u003d444",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 1
+      },
+      "revId": "62666adb872bc5d189f952ebc3c6f5654c04eca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37ef34a_05f0b6d0",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T03:53:53Z",
+      "side": 1,
+      "message": "This is bad. The output should be a different file.",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "62666adb872bc5d189f952ebc3c6f5654c04eca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
