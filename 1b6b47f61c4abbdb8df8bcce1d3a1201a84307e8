@@ -88,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2a50ec_d0d68c33",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T07:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a48b4b84_0ed99814",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cdee713_eac611fd",
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "Ack. Thanks for letting me know that. Until that CL lands, I will keep this.",
       "parentUuid": "1c57eeef_2a28e122",
+      "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e56a56_4712de49",
+        "filename": "android/packaging.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-19T07:48:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39db8bbe_e61b31c0",
       "revId": "1b6b47f61c4abbdb8df8bcce1d3a1201a84307e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
