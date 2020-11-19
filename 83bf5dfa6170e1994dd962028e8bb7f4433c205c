@@ -16,6 +16,24 @@
       "message": "Can you revert this only in internal so that it works in both places?",
       "revId": "83bf5dfa6170e1994dd962028e8bb7f4433c205c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb366f8_395b4218",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549634
+      },
+      "writtenOn": "2020-11-19T00:53:52Z",
+      "side": 1,
+      "message": "Oh yeah that would work too.  Let me pull this one and try that.",
+      "parentUuid": "ff01349e_f4966587",
+      "revId": "83bf5dfa6170e1994dd962028e8bb7f4433c205c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
