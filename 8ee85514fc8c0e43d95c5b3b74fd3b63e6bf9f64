@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9653066b_fdf28f21",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-11-19T20:43:35Z",
+      "side": 1,
+      "message": "IMHO Go encourages early returns, so the lines 228-232 might become\nvar oldModTimeChecked \u003d c.prevModTime\nif err \u003d\u003d nil {\n  c.prevModTime \u003d info.ModTime\n}\nif oldModTimeChecked \u003d\u003d c.prevModeTime {\n  return\n}\nfollowed by lines 233-248, and lines 249-250 deleted.",
+      "revId": "8ee85514fc8c0e43d95c5b3b74fd3b63e6bf9f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbe82f2_97791c5f",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-11-19T20:43:35Z",
+      "side": 1,
+      "message": "These three lines can become one without being too cryptic:\n    commandText :\u003d fmt.Sprintf(\"pstree -pal %v || ps -ef\", os.Getpid())",
+      "revId": "8ee85514fc8c0e43d95c5b3b74fd3b63e6bf9f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
