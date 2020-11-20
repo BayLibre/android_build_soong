@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d84225_7d4641b5",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-20T17:56:04Z",
+      "side": 0,
+      "message": "These lines have been moved to 140-142 and reduced (part of them moved to 122-125).",
+      "revId": "defa9403a3c858d8e6e542ec169fb7d541ed63fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a9709d_f2d0d9cc",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-20T17:56:04Z",
+      "side": 0,
+      "message": "This block has moved to 103-120.",
+      "revId": "defa9403a3c858d8e6e542ec169fb7d541ed63fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
