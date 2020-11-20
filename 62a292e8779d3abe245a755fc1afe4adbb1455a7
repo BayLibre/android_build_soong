@@ -16,6 +16,23 @@
       "message": "I assume that the problem with generate_apis and turbine is that the annotation processors generate classes that are not seen by turbine and so turbine\u0027s generated stubs differ from what will be seen if turbine is disabled.",
       "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "deaa8aa2_1e2c3a94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T15:16:12Z",
+      "side": 1,
+      "message": "Trying again after adding https://r.android.com/1507386 to the topic.",
+      "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
