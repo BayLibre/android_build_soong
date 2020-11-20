@@ -25,6 +25,168 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+// This comment desribes:
+//   1. boot images in general (their types, structure, file layout, etc.)
+//   2. how they are built by Soong
+//
+// 1. The general description of boot images
+// -----------------------------------------
+//
+// A boot image in the Android Run-Time (ART) is a set of files that contain AOT-compiled native
+// code and a heap snapshot of AOT-initialized classes for the bootclasspath Java libraries.
+// A boot image is compiled from a set of DEX jars by the dex2oat compiler. It is used for two
+// purposes: 1) it is installed on device and loaded at runtime, and 2) other Java libraries and
+// apps are compiled (dexpreopted) against it.
+//
+// A boot image is not one file, but a collection of interrelated files. Each boot image has a
+// number of components that correspond to the Java libraries that constitute it. For each component
+// there are multiple files:
+//   - *.oat or *.odex file with native code (architecture-specific, one per instruction set)
+//   - *.art file with pre-initialized Java classes (architecture-specific, one per instruction set)
+//   - *.vdex file with verification metadata for the DEX bytecode (architecture independent)
+//
+// Unlike app images, *.vdex files for the boot images do not contain the DEX bytecode itself,
+// because the bootclasspath DEX files are stored on disk in uncompressed and aligned form.
+// Consequently a boot image is not self-contained and cannot be used without its DEX files. To
+// simplify the management of boot image files, ART uses a certain naming scheme and associates the
+// following metadata with each boot image:
+//   - A stem, which is a symbolic name that is prepended to boot image file names.
+//   - A location, which is an on-target path to the boot image files.
+//   - A list of boot image locations, which are on-target paths to dependency boot images.
+//   - A set of DEX locations, which are on-target paths to the DEX files (one location for one DEX
+//     file used to compile the boot image).
+//
+// There are two types of boot images:
+//   - primary boot images
+//   - boot image extensions
+//
+// 1.1. Primary boot images
+// ------------------------
+//
+// A primary boot image is compiled for a core subset of bootclasspath Java libraries. It does not
+// depend on any other images, and other images depend on it.
+//
+// For example, assuming that the stem is boot, the location is /apex/com.android.art/javalib/, the
+// set of core bootclasspath libraries is A B C, and the boot image is compiled for ARM targets (32
+// and 64 bits), it will have three components with the following files:
+//   - /apex/com.android.art/javalib/{arm,arm64}/boot.{art,oat,vdex}
+//   - /apex/com.android.art/javalib/{arm,arm64}/boot-B.{art,oat,vdex}
+//   - /apex/com.android.art/javalib/{arm,arm64}/boot-C.{art,oat,vdex}
+//
+// The files of the first component are special: they do not have the component name appended after
+// the stem. This naming convention dates back to the times when the boot image was not split into
+// components, and there were just boot.oat and boot.art. The decision to split was motivated by
+// licensing reasons for one of the bootclasspath libraries.
+//
+// Currently the only primary boot image in Android is the image in the ART APEX com.android.art.
+// The primary ART boot image contains the Core libraries that are part of the ART module. When the
+// ART module gets updated, the primary boot image will be updated with it, and all dependent images
+// will get invalidated (the checksum of the primary image stored in dependent images will not
+// match), unless they are updated in sync with the ART module.
+//
+// 1.2. Boot image extensions
+// --------------------------
+//
+// A boot image extension is compiled for a subset of bootclasspath Java libraries (in particular,
+// this subset does not include the Core bootclasspath libraries that go into the primary boot
+// image). A boot image extension depends on the primary boot image and optionally some other boot
+// image extensions. Other images may depend on it. In other words, boot image extensions can form
+// acyclic dependency chains.
+//
+// The motivation for boot image extensions comes from the Mainline project. Consider a situation
+// when the list of bootclasspath libraries is A B C, and both A and B are parts of the Android
+// platform, but C is part of an updatable APEX com.android.C. When the APEX is updated, the Java
+// code for C might have changed compared to the code that was used to compile the boot image.
+// Consequently, the whole boot image is obsolete and invalidated (even though the code for A and B
+// that does not depend on C is up to date). To avoid this, the original monolithic boot image is
+// split in two parts: the primary boot image that contains A B, and the boot image extension that
+// contains C and depends on the primary boot image (extends it).
+//
+// For example, assuming that the stem is boot, the location is /system/framework, the set of
+// bootclasspath libraries is D E (where D is part of the platform and is located in
+// /system/framework, and E is part of a non-updatable APEX com.android.E and is located in
+// /apex/com.android.E/javalib), and the boot image is compiled for ARM targets (32 and 64 bits),
+// it will have two components with the following files:
+//   - /system/framework/{arm,arm64}/boot-D.{art,oat,vdex}
+//   - /system/framework/{arm,arm64}/boot-E.{art,oat,vdex}
+//
+// At the moment of writing the only boot image extension in Android is the Framework boot image
+// extension. It extends the primary ART boot image and contains Framework libraries and other
+// bootclasspath libraries from the platform and non-updatable APEXes that are not included in the
+// ART image. The Framework boot image extension is updated together with the platform. In the
+// future other boot image extensions may be added for some updatable modules.
+//
+//
+// 2. How boot images are built
+// ----------------------------
+//
+// The primary ART boot image needs to be compiled with one dex2oat invocation that depends on DEX
+// jars for the core libraries. Framework boot image extension needs to be compiled with one dex2oat
+// invocation that depends on the primary ART boo image and all bootclasspath DEX jars except the
+// Core libraries.
+//
+// 2.1. Libraries that go in the boot images
+// -----------------------------------------
+//
+// The contents of each boot image are determined by the variables in makefiles. The primary ART
+// APEX boot image contains libraries listed in the ART_APEX_JARS variable in the AOSP makefiles.
+// The Framework boot image extension contains libraries specified in the PRODUCT_BOOT_JARS and
+// PRODUCT_BOOT_JARS_EXTRA variables. The AOSP makefiles specify some common Framework libraries,
+// but more product-specific libraries can be added in the product makefiles.
+//
+// Each component of the PRODUCT_BOOT_JARS and PRODUCT_BOOT_JARS_EXTRA variables is either a simple
+// name (if the library is a part of the Platform), or a colon-separated pair <apex, name> (if the
+// library is a part of a non-updatable APEX).
+//
+// A related variable PRODUCT_UPDATABLE_BOOT_JARS contains bootclasspath libraries that are in
+// updatable APEXes. They are not included in the boot image.
+//
+// One exception to the above rules are "coverage" builds. For them the Java code in the boot image
+// libraries needs to be instrumented, which means that the instrumentation library (jacocoagent)
+// is added to the list of boot DEX jars.
+//
+// In general, there is a requirement that a boot image library must be present at build time (e.g.
+// it cannot be a stub that has a different implementation library at runtime).
+//
+// 2.2. Static configs
+// -------------------
+//
+// Because boot images are used to dexpreopt other Java modules, the paths to boot image files must
+// be known by the time dexpreopt build rules for the dependent modules are generated. Boot image
+// configs are constructed very early during the build, before build rule generation. They are
+// derived from PRODUCT varaibles and use hard-coded paths to boot image files.
+//
+// 2.3. Singleton
+// --------------
+//
+// Build rules for the boot images are generated with a Soong singleton. Because a singleton has no
+// dependencies on other modules, it has to find the modules for the DEX jars using VisitAllModules.
+// Soong loops through all modules and compares each module agains a list of bootclasspath library
+// names. Then it generates build rules that copy DEX jars from their intermediate module-specific
+// locations to the hard-coded locations predefined in the boot image configs.
+//
+// It would be possible to use a module with proper dependencies instead, but that would require
+// changes in the way Soong generates variables for Make: a singleton can use one MakeVars() method
+// that writes varaibles to out/soong/make_vars-*.mk, which is included early by the main makefile,
+// but module(s) would have to use out/soong/Android-*.mk which has a group of LOCAL_* varaibles
+// for each module, and is included later.
+//
+// 2.4. Install rules
+// ------------------
+//
+// The primary boot image and the Framework extension are installed in different ways. The primary
+// boot image is part of the ART APEX: it is copied into the APEX intermediate files, packaged
+// together with other APEX contents, extracted and mounted on device. The Framework boot image
+// extension is install by the rules that are defined in makefiles (make/core/dex_preopt_libart.mk).
+// Soong writes out a few DEXPREOPT_IMAGE_* variables for Make; these variables contain boot image
+// names, paths and so on.
+//
+// 2.5. JIT-Zygote configuration
+// -----------------------------
+//
+// One special configuration that is JIT-Zygote, when the primary ART image is used instead of the
+// Framework boot image extension (see DEXPREOPT_USE_ART_IMAGE and UseArtImage).
+
 func init() {
 	RegisterDexpreoptBootJarsComponents(android.InitRegistrationContext)
 }
