@@ -171,6 +171,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3f4555a_88bfdb91",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-20T01:08:03Z",
+      "side": 1,
+      "message": "Ok, I see what you meant. After merging, this has information about the merged APEXes. Fixed.",
+      "parentUuid": "dd16cf27_5f2a3768",
+      "range": {
+        "startLine": 32,
+        "startChar": 45,
+        "endLine": 32,
+        "endChar": 56
+      },
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d26ea1c_b55832f3",
@@ -302,6 +326,24 @@
       "side": 1,
       "message": "My code search results show that only mergeApexVariations and apexDepsMutator modify this field. apexDepsMutator creates initial ApexInfo seeds, so InApexes there is always a single entry. mergeApexVariations does produce InApexes with multiple entries, but only does for merged variants.\n\nI wrote a simple CL to demonstrate the behavior: aosp/1506718\nAs you can see, apex10000_qux_1 and apex10000_qux_2 have mutually exclusive InApexes lists, {\"foo\", \"bar\"} and {\"baz\"}. Are there other places that touch this property?",
       "parentUuid": "b7f92514_83713f6e",
+      "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e237b4d_f2c62fca",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-20T01:08:03Z",
+      "side": 1,
+      "message": "I was wrong. Thanks for correcting me. Fixed.",
+      "parentUuid": "7f76ea47_4cae7176",
       "revId": "e6c59d8870b4dac981e4aa401bfeccd8913e1a65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
