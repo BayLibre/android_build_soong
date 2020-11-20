@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006294227",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1507578?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "8cacb072_7e16ad98",
+          "description": "Change to \"java/dexpreopt_bootjars.go\"",
+          "replacements": [
+            {
+              "path": "java/dexpreopt_bootjars.go",
+              "range": {
+                "startLine": 28,
+                "startChar": 16,
+                "endLine": 28,
+                "endChar": 24
+              },
+              "replacement": "describes"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "8cba4a34_3e912129",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-20T17:46:28Z",
+      "side": 1,
+      "message": "Common typo found: \"desribes\" -- should it be \"describes\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "2be955404f7c4d14d655a082666100a71eae78ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
