@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf80656_ba16871f",
+        "filename": "java/java_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-20T05:21:54Z",
+      "side": 1,
+      "message": "Changed if statements to switch/case.",
+      "parentUuid": "e8e3c080_b516964a",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 11
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7241a54_f20aaeff",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-19T04:56:03Z",
       "side": 1,
       "message": "This seems to be too repetitive. Can you make combinations of fromPartition and toPartition and loop over it and set enforce* depending on whether the partitions are the same or not?",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 5
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7c46154_0c97edec",
+        "filename": "java/java_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-20T05:21:54Z",
+      "side": 1,
+      "message": "Modified to create test cases by loop, and implemented function that returns expected output (whether or not raise error) from test case configuration.",
+      "parentUuid": "a7241a54_f20aaeff",
       "range": {
         "startLine": 824,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "845793d3_9c34739b",
+        "filename": "java/java_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-20T05:21:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a308a0c_31c25547",
+      "range": {
+        "startLine": 916,
+        "startChar": 0,
+        "endLine": 933,
+        "endChar": 0
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5e4642a_098114c7",
@@ -87,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1add11d2_3c1149aa",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-20T05:21:54Z",
+      "side": 1,
+      "message": "Added Apache License, Version 2.0",
+      "parentUuid": "e5e4642a_098114c7",
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "903a98d6_957a937f",
@@ -100,6 +190,30 @@
       "writtenOn": "2020-11-19T04:56:03Z",
       "side": 1,
       "message": "I guess this is not a user error, but a build system error, so panic?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 52
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f817cf_7eba2688",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-20T05:21:54Z",
+      "side": 1,
+      "message": "Changed module error to panic",
+      "parentUuid": "903a98d6_957a937f",
       "range": {
         "startLine": 42,
         "startChar": 1,
@@ -133,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d730c7cb_1b8c49a4",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-20T05:21:54Z",
+      "side": 1,
+      "message": "Changed allowlist check to using function inList(...)",
+      "parentUuid": "be50e22c_88a35d07",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c28df349_a7a3191b",
@@ -156,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5accd05_7f13cf8b",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-20T05:21:54Z",
+      "side": 1,
+      "message": "Changed code to have more readability.",
+      "parentUuid": "c28df349_a7a3191b",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 102
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f2cd1c6_c62dab0d",
@@ -169,6 +331,30 @@
       "writtenOn": "2020-11-19T04:56:03Z",
       "side": 1,
       "message": "libs\n\nYou better get this as an argument",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 7
+      },
+      "revId": "62f2e9c4a69d1d9d4e11d07e63f5edb950e49cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07edb61a_c355b9e2",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-20T05:21:54Z",
+      "side": 1,
+      "message": "Made property name of error information as function argument, it is passed from java.go",
+      "parentUuid": "7f2cd1c6_c62dab0d",
       "range": {
         "startLine": 90,
         "startChar": 4,
