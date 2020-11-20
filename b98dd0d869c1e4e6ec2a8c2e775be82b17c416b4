@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd2771b1_9d9da825",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T18:55:47Z",
+      "side": 1,
+      "message": "I can\u0027t see it anywhere in this very useful overview of the behavior (it is hinted at in a comment below) but I think you should mention that the manifest fixer only cares about the top level uses-libraries.",
+      "range": {
+        "startLine": 73,
+        "startChar": 45,
+        "endLine": 73,
+        "endChar": 59
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "473e1167_edb9efb0",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T18:55:47Z",
+      "side": 1,
+      "message": "optional_uses_libs - I think",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec7b554_06139d76",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T18:55:47Z",
+      "side": 1,
+      "message": "in",
+      "range": {
+        "startLine": 94,
+        "startChar": 87,
+        "endLine": 94,
+        "endChar": 89
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae44e1a_2293370c",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T18:55:47Z",
+      "side": 1,
+      "message": "I think this sentence should be at the beginning. Then you can explain that the keys are sdk versions that represent conditional CLC (except for AnySdkVersion) and then carry on with the rest of this comment.",
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "798fdfe2_d7e5c642",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T18:55:47Z",
+      "side": 1,
+      "message": "Probably worth commenting these variables too.",
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
