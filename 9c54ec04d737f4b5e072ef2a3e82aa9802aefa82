@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b14778a_3dcdcb4b",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T10:56:35Z",
+      "side": 1,
+      "message": "included in the",
+      "range": {
+        "startLine": 74,
+        "startChar": 33,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660cad78_0ed94917",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T10:56:35Z",
+      "side": 1,
+      "message": "An example would be great. Presumably setting SubName has a different effect to just appending the suffix directly to OverrideName. What is the difference?",
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd4c8fe_01f64f32",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T10:56:35Z",
+      "side": 1,
+      "message": "If the module is to be skipped why bother create an AndroidMkEntries struct in the first place? What exactly does it mean to skip the module?",
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732a1eaa_1f1b4c9f",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T10:56:35Z",
+      "side": 1,
+      "message": "modules",
+      "range": {
+        "startLine": 106,
+        "startChar": 13,
+        "endLine": 106,
+        "endChar": 19
+      },
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844f51a0_1d0c9d08",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T10:56:35Z",
+      "side": 1,
+      "message": "modules",
+      "range": {
+        "startLine": 109,
+        "startChar": 18,
+        "endLine": 109,
+        "endChar": 24
+      },
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac6667a_b189ab76",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T10:56:35Z",
+      "side": 1,
+      "message": "modules",
+      "range": {
+        "startLine": 112,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0226b4f3_22232ccc",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-20T10:56:35Z",
+      "side": 1,
+      "message": "What is this field for?",
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
