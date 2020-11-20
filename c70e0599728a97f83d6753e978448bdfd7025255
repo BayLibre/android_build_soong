@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8696dacc_2bca4cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-20T15:44:02Z",
+      "side": 1,
+      "message": "... never mind,  aosp/1441774 is mine. \nI guess what I meant is that I hope this is tested with  aosp/1441774 and with the change I\u0027ve mentioned :)",
+      "parentUuid": "913018ac_126e631f",
+      "revId": "c70e0599728a97f83d6753e978448bdfd7025255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abd11bbe_d5137e17",
