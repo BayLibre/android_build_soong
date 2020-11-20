@@ -6,6 +6,7 @@ import (
 	"github.com/google/blueprint"
 )
 
+// LinkableInterface is an interface for a type of module that is linkable in a C++ library.
 type LinkableInterface interface {
 	Module() android.Module
 	CcLibrary() bool
@@ -51,23 +52,30 @@ type LinkableInterface interface {
 }
 
 var (
+	// Dependency tag for crtbegin, an object file responsible for initialization.
 	CrtBeginDepTag = dependencyTag{name: "crtbegin"}
-	CrtEndDepTag   = dependencyTag{name: "crtend"}
+	// Dependency tag for crtend, an object file responsible for program termination.
+	CrtEndDepTag = dependencyTag{name: "crtend"}
+	// Dependency tag for coverage library.
 	CoverageDepTag = dependencyTag{name: "coverage"}
 )
 
+// SharedDepTag returns the dependency tag for any C++ shared libraries.
 func SharedDepTag() blueprint.DependencyTag {
 	return libraryDependencyTag{Kind: sharedLibraryDependency}
 }
 
+// StaticDepTag returns the dependency tag for any C++ static libraries.
 func StaticDepTag() blueprint.DependencyTag {
 	return libraryDependencyTag{Kind: staticLibraryDependency}
 }
 
+// StaticDepTag returns the dependency tag for any C++ "header-only" libraries.
 func HeaderDepTag() blueprint.DependencyTag {
 	return libraryDependencyTag{Kind: headerLibraryDependency}
 }
 
+// SharedLibraryInfo is a provider to propagate information about a shared C++ library.
 type SharedLibraryInfo struct {
 	SharedLibrary           android.Path
 	UnstrippedSharedLibrary android.Path
@@ -80,6 +88,8 @@ type SharedLibraryInfo struct {
 
 var SharedLibraryInfoProvider = blueprint.NewProvider(SharedLibraryInfo{})
 
+// SharedLibraryImplementationStubsInfo is a provider to propagate information about all
+// stub shared library dependencies of a library.
 type SharedLibraryImplementationStubsInfo struct {
 	SharedLibraryStubsInfos []SharedLibraryStubsInfo
 
@@ -88,7 +98,12 @@ type SharedLibraryImplementationStubsInfo struct {
 
 var SharedLibraryImplementationStubsInfoProvider = blueprint.NewProvider(SharedLibraryImplementationStubsInfo{})
 
+// SharedLibraryStubsInfo is a provider wrapping SharedLibraryInfo, propagated by shared C++ libraries
+// which are stubs.
+// Stub libraries are used for cross-APEX dependencies; when a library is to depend
+// on a shared library in another APEX, it must depend on the stub version of that library.
 type SharedLibraryStubsInfo struct {
+	// The version of the stub (corresponding to the stable version of the shared library being stubbed).
 	Version           string
 	SharedLibraryInfo SharedLibraryInfo
 	FlagExporterInfo  FlagExporterInfo
@@ -96,6 +111,7 @@ type SharedLibraryStubsInfo struct {
 
 var SharedLibraryStubsInfoProvider = blueprint.NewProvider(SharedLibraryStubsInfo{})
 
+// SharedLibraryInfo is a provider to propagate information about a static C++ library.
 type StaticLibraryInfo struct {
 	StaticLibrary android.Path
 	Objects       Objects
@@ -109,10 +125,12 @@ type StaticLibraryInfo struct {
 
 var StaticLibraryInfoProvider = blueprint.NewProvider(StaticLibraryInfo{})
 
+// FlagExporterInfo is a provider to propagate transitive library information
+// pertaining to exported include paths and flags.
 type FlagExporterInfo struct {
-	IncludeDirs       android.Paths
-	SystemIncludeDirs android.Paths
-	Flags             []string
+	IncludeDirs       android.Paths // Include directories to be included with -I
+	SystemIncludeDirs android.Paths // System include directories to be included with -isystem
+	Flags             []string      // Exported raw flags.
 	Deps              android.Paths
 	GeneratedHeaders  android.Paths
 }
