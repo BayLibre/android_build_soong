@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46519e4_638fdb6c",
+        "filename": "java/java_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-20T08:12:18Z",
+      "side": 1,
+      "message": "how about panicking here?",
+      "range": {
+        "startLine": 768,
+        "startChar": 3,
+        "endLine": 768,
+        "endChar": 12
+      },
+      "revId": "b0708d8a04d268e2044eb03e1c4e415ed1625563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88aca52e_de52cdc7",
+        "filename": "java/java_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-20T08:12:18Z",
+      "side": 1,
+      "message": "this is clever, but hard to grasp. can you unroll this into more loops, or at least put some comment?",
+      "range": {
+        "startLine": 857,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 0
+      },
+      "revId": "b0708d8a04d268e2044eb03e1c4e415ed1625563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dfec1d1_dd05194b",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-20T08:12:18Z",
+      "side": 1,
+      "message": "let\u0027s use short name for local variables. pToS, sToP look fine to me.\n\ngo/go-style/decisions#variable-names",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "b0708d8a04d268e2044eb03e1c4e415ed1625563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
