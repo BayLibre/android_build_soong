@@ -22,11 +22,124 @@ import (
 	"android/soong/android"
 )
 
-// These libs are added as <uses-library> dependencies for apps if the targetSdkVersion in the
-// app manifest is less than the specified version. This is needed because these libraries haven't
-// existed prior to certain SDK version, but classes in them were in bootclasspath jars, etc.
-// Some of the compatibility libraries are optional (their <uses-library> tag has "required=false"),
-// so that if this library is missing this in not a build or run-time error.
+// Class loader context (CLC) is a tree of libraries that represent transitive closure of all
+// <uses-library> dependencies of the dexpreopted module (library or app). The toplevel elements of
+// a CLC tree are the libraries that are used directly by the dexpreopted module (they are specified
+// as <uses-library> tags in its manifest). Each node of a CLC tree is a <uses-library> which may
+// have its own <uses-library> sub-nodes.
+//
+// Because <uses-library> dependencies are, in general, a graph and not necessarily a tree, CLC may
+// contain subtrees for the same library multiple times. In other words, CLC is the dependency graph
+// "unfolded" to a tree.
+//
+// Example: A has <uses-library> tags B, C and D; C has <uses-library tags> B and D;
+//          D has <uses-library> E; B and E have no <uses-library> dependencies. The CLC is:
+//    A
+//    ├── B
+//    ├── C
+//    │   ├── B
+//    │   └── D
+//    │       └── E
+//    └── D
+//        └── E
+//
+// Sometimes <uses-library> tags are missing from the source manifest of the library or app. This
+// may happen if one of the transitive dependencies of the library/app starts using another
+// <uses-library>, and the library/app's manifest isn't updated to include it. In such cases Soong
+// adds the missing <uses-library> tags automatically. It computes the transitive closure of SDK
+// library dependencies, stopping at shared library boundaries.
+//
+// CLC defines the lookup order of libraries when resolving Java classes used by the library/app.
+// The lookup order is important because libraries may contain duplicate classes, and the class is
+// resolved to the first match.
+//
+// For dexpreopt, CLC is important because the build-time CLC must be identical to the run-time CLC.
+// If the run-time CLC is different, compiled code should be rejected. In order to check the
+// equality of build-time and run-time CLC, the dex2oat compiler records build-time CLC in the
+// *.odex files (in the "classpath" field of the OAT file header). To find the stored CLC, use the
+// following command: `oatdump --oat-file=<FILE> | grep '^classpath = '`.
+//
+// <uses-library> can be either "required" or "optional" (this is specified as a tag attribute in
+// the manifest). Required libraries are always used by the dexpreopted library/app at runtime.
+// Optional libraries are used only if they are present at runtime (if not, the library/app can run
+// without them). From the dexpreopt standpoint, if an optional <uses-library> is present at build
+// time, it will be added to CLC and passed to dex2oat, otherwise it will be skipped and there will
+// be no build-time error (CLC will be constructed without the missing library). If there is a
+// mismatch between built-time and run-time (library is present in one case, but not the other),
+// then the CLCs won't match and the compiled code will be rejected at runtime (this is impossible
+// to guess at build-time). A required <uses-library> must be present at build time, its absence is
+// a build error.
+//
+// In order to construct CLC for dex2oat and manifest_fixer, build system needs to know all
+// <uses-library> dependencies of the dexpreopted library/app (including transitive ones). For each
+// dependency it needs to know the following information:
+//
+//   - the real name of the <uses-library> (may be different from the module name)
+//   - build-time (on host) and run-time (on device) paths to the DEX jar file of the library
+//   - whether this library is optional or required
+//   - whether this library is a shared library
+//   - all <uses-library> dependencies
+//
+// Since the build system doesn't have access to the manifest contents (it cannot read manifests at
+// the time of build rule generation), it is necessary to copy this information to the Android.bp
+// and Android.mk files. For blueprints, the relevant properties are `uses_libs` and
+// `options_uses_libs`. For makefiles, relevant variables are `LOCAL_USES_LIBRARIES` and
+// `LOCAL_OPTIONAL_USES_LIBRARIES`. It is preferable to avoid specifying these properties explicilty
+// when they can be computed automatically by Soong (as the transitive closure of SDK library
+// dependencies).
+//
+// Some of the Java libraries that are used as <uses-library> are not SDK libraries. In order for
+// the build system to handle them automatically like SDK libraries, it is possible to set a
+// property `provides_uses_lib` or variable `LOCAL_PROVIDES_USES_LIBRARY` on the blueprint/makefile
+// module of such library. This property can also be used to specify real library name is cases
+// when it differs from the module name.
+//
+// Because the information from the manifests has to be duplicated in the build files, there is a
+// danger that it may get out of sync. To guard against that, build system generates a rule that
+// checks the metadata in the build files agains the contents of a manifest (verify_uses_libraries).
+// The manifest can be available as a source file, or as part of a prebuilt APK. Note that reading
+// the manifests at the Ninja stage of the build is fine, unlike the build rule generation phase.
+//
+// ClassLoaderContext is a structure that represents CLC.
+//
+type ClassLoaderContext struct {
+	// The name of the library.
+	Name string
+
+	// On-host build path to the library dex file (used in dex2oat argument --class-loader-context).
+	Host android.Path
+
+	// On-device install path (used in dex2oat argument --stored-class-loader-context).
+	Device string
+
+	// Nested sub-CLC for dependencies.
+	Subcontexts []*ClassLoaderContext
+
+	// If this is a shared library (affects if its dependencies are passed to the manifest_fixer).
+	IsSharedLibrary bool
+}
+
+// Conditional CLC is for compatibility libraries which didn't exist prior to a certain SDK version
+// (say, N), but classes in them were in the bootclasspath jars, etc., and in version N they have
+// been separated into a standalone <uses-library>. Compatibility libraries should only be in the
+// CLC if the library/app that uses them has `targetSdkVersion` less than N in the manifest.
+//
+// Currently only apps (but not libraries) use conditional CLC.
+//
+// Target SDK version information is unavailable to the build system at rule generation time, so
+// the build system doesn't know whether conditional CLC is needed for a given app or not. So it
+// generates a build rule that includes conditional CLC for all versions, extracts the target SDK
+// version from the manifest, and filters the CLCs based on that version. Exact final CLC that is
+// passed to dex2oat is unknown to the build system, and gets known only at Ninja stage.
+//
+// ClassLoaderContextMap is a map from SDK version to CLC. There is a special entry with key
+// AnySdkVersion that stores unconditional CLC that is added regardless of the target SDK version.
+//
+type ClassLoaderContextMap map[int][]*ClassLoaderContext
+
+// Compatibility libraries. Some are optional, and some are required: this is the default that
+// affects how they are handled by the Soong logic that automatically adds implicit SDK libraries
+// to the manifest_fixer, but an explicit `uses_libs`/`optional_uses_libs` can override this.
 var OrgApacheHttpLegacy = "org.apache.http.legacy"
 var AndroidTestBase = "android.test.base"
 var AndroidTestMock = "android.test.mock"
@@ -54,34 +167,6 @@ const UnknownInstallLibraryPath = "error"
 // arguments passed to construct_context.py (high value means that the unconditional context goes
 // last). We use the converntional "current" SDK level (10000), but any big number would do as well.
 const AnySdkVersion int = android.FutureApiLevelInt
-
-// ClassLoaderContext is a tree of libraries used by the dexpreopted module with their dependencies.
-// The context is used by dex2oat to compile the module and recorded in the AOT-compiled files, so
-// that it can be checked agains the run-time class loader context on device. If there is a mismatch
-// at runtime, AOT-compiled code is rejected.
-type ClassLoaderContext struct {
-	// The name of the library (same as the name of the module that contains it).
-	Name string
-
-	// On-host build path to the library dex file (used in dex2oat argument --class-loader-context).
-	Host android.Path
-
-	// On-device install path (used in dex2oat argument --stored-class-loader-context).
-	Device string
-
-	// Nested class loader subcontexts for dependencies.
-	Subcontexts []*ClassLoaderContext
-
-	// If the library is a shared library. This affects which elements of class loader context are
-	// added as <uses-library> tags by the manifest_fixer (dependencies of shared libraries aren't).
-	IsSharedLibrary bool
-}
-
-// ClassLoaderContextMap is a map from SDK version to a class loader context.
-// There is a special entry with key AnySdkVersion that stores unconditional class loader context.
-// Other entries store conditional contexts that should be added for some apps that have
-// targetSdkVersion in the manifest lower than the key SDK version.
-type ClassLoaderContextMap map[int][]*ClassLoaderContext
 
 // Add class loader context for the given library to the map entry for the given SDK version.
 func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleInstallPathContext, sdkVer int, lib string,
@@ -220,6 +305,7 @@ func (clcMap ClassLoaderContextMap) UsesLibs() (ulibs []string) {
 	return ulibs
 }
 
+// Helper function for UsesLibs() that handles recursion.
 func usesLibsRec(clcs []*ClassLoaderContext) (ulibs []string) {
 	for _, clc := range clcs {
 		ulibs = append(ulibs, clc.Name)
@@ -273,6 +359,7 @@ func validateClassLoaderContext(clcMap ClassLoaderContextMap) (bool, error) {
 	return true, nil
 }
 
+// Helper function for validateClassLoaderContext() that handles recursion.
 func validateClassLoaderContextRec(sdkVer int, clcs []*ClassLoaderContext) (bool, error) {
 	for _, clc := range clcs {
 		if clc.Host == nil || clc.Device == UnknownInstallLibraryPath {
@@ -312,6 +399,7 @@ func ComputeClassLoaderContext(clcMap ClassLoaderContextMap) (clcStr string, pat
 	return clcStr, android.FirstUniquePaths(paths)
 }
 
+// Helper function for ComputeClassLoaderContext() that handles recursion.
 func computeClassLoaderContextRec(clcs []*ClassLoaderContext) (string, string, android.Paths) {
 	var paths android.Paths
 	var clcsHost, clcsTarget []string
@@ -336,7 +424,7 @@ func computeClassLoaderContextRec(clcs []*ClassLoaderContext) (string, string, a
 	return clcHost, clcTarget, paths
 }
 
-// Paths to a <uses-library> on host and on device.
+// JSON representation of <uses-library> paths on host and on device.
 type jsonLibraryPath struct {
 	Host   string
 	Device string
