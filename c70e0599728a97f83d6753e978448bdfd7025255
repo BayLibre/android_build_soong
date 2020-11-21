@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df660ce9_e948f5e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T11:03:51Z",
+      "side": 1,
+      "message": "This is tested with aosp/1441774 and adding bazel_module to the filegroup, and I\u0027ll send a follow-up CL to add that.",
+      "parentUuid": "8696dacc_2bca4cc3",
+      "revId": "c70e0599728a97f83d6753e978448bdfd7025255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abd11bbe_d5137e17",
@@ -70,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f25491db_1b84f4c2",
+        "filename": "android/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T11:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abd11bbe_d5137e17",
+      "revId": "c70e0599728a97f83d6753e978448bdfd7025255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70b7d47c_52ff58a0",
@@ -83,6 +119,24 @@
       "writtenOn": "2020-11-20T15:42:54Z",
       "side": 1,
       "message": "Ordering?",
+      "revId": "c70e0599728a97f83d6753e978448bdfd7025255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c614b15f_a23c794c",
+        "filename": "genrule/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T11:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b7d47c_52ff58a0",
       "revId": "c70e0599728a97f83d6753e978448bdfd7025255",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
