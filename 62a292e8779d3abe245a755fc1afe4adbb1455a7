@@ -33,6 +33,24 @@
       "message": "Trying again after adding https://r.android.com/1507386 to the topic.",
       "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "094a0b9c_4b234845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T11:30:21Z",
+      "side": 1,
+      "message": "If this is correct, could this explanation be added to the code and commit description? It wasn\u0027t immediately clear why Turbine would be a problem, if it did run over generated APIs to create stubs.",
+      "parentUuid": "58aa4095_3dd619b3",
+      "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
