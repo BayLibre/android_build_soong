@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "065e9d4f_ddc9aa26",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T12:38:13Z",
+      "side": 1,
+      "message": "I think this makes it slightly less readable than the current approach of comparing newModTime vs prevModTime, so I will leave it as it is.",
+      "parentUuid": "9653066b_fdf28f21",
+      "revId": "8ee85514fc8c0e43d95c5b3b74fd3b63e6bf9f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cbe82f2_97791c5f",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-19T20:43:35Z",
       "side": 1,
       "message": "These three lines can become one without being too cryptic:\n    commandText :\u003d fmt.Sprintf(\"pstree -pal %v || ps -ef\", os.Getpid())",
+      "revId": "8ee85514fc8c0e43d95c5b3b74fd3b63e6bf9f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "746c54f8_0de50d7e",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T12:38:13Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "4cbe82f2_97791c5f",
       "revId": "8ee85514fc8c0e43d95c5b3b74fd3b63e6bf9f64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
