@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7089d134_f4fb5105",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T12:46:25Z",
+      "side": 1,
+      "message": "I\u0027m having trouble finding the data that went into this number, do you have a reference?",
+      "range": {
+        "startLine": 69,
+        "startChar": 91,
+        "endLine": 70,
+        "endChar": 92
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a453b224_c6f2f312",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T12:46:25Z",
+      "side": 1,
+      "message": "bug number?",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0318ff_3dc9ab02",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T12:46:25Z",
+      "side": 1,
+      "message": "Did you mean a flagfile containing the list of files?",
+      "range": {
+        "startLine": 194,
+        "startChar": 50,
+        "endLine": 194,
+        "endChar": 71
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb1147a_d575c751",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T12:46:25Z",
+      "side": 1,
+      "message": "Bug number so anyone reading this can take this on?",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 18
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
