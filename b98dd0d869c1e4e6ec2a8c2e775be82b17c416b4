@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25636352_669d5818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-21T13:32:31Z",
+      "side": 1,
+      "message": "Well-written and very useful, thank you! +1 because I\u0027m not an expert on this code. CC\u0027ing a few other people who may find this useful.",
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd2771b1_9d9da825",
