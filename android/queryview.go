@@ -74,5 +74,5 @@ func (c *bazelQueryViewSingleton) GenerateBuildActions(ctx SingletonContext) {
 	})
 
 	// Add a phony target for building the Bazel QueryView
-	ctx.Phony("queryview", bazelQueryViewWorkspaceFile)
+	// ctx.Phony("queryview", bazelQueryViewWorkspaceFile)
 }
