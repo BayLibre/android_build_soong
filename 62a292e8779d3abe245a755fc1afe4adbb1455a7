@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c557fae1_bff80089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T19:44:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "094a0b9c_4b234845",
+      "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71c64619_5badeee1",
@@ -66,6 +84,24 @@
       "writtenOn": "2020-11-23T19:37:46Z",
       "side": 1,
       "message": "The potential impact on turbine optimization is worth mentioning here.",
+      "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09295ce3_1ae5902c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T19:44:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71c64619_5badeee1",
       "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
