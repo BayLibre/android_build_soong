@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3be16954_1ceaf4e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-23T17:27:41Z",
+      "side": 1,
+      "message": "Thanks for writing all this Ulya!",
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd2771b1_9d9da825",
@@ -53,6 +70,52 @@
         "startChar": 45,
         "endLine": 73,
         "endChar": 59
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381a8f05_a71cfcc1",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-23T17:27:41Z",
+      "side": 1,
+      "message": "Should this be \"each build dependency\" ? Otherwise it reads as \"for each \u003cuses-library\u003e dependency\".",
+      "range": {
+        "startLine": 74,
+        "startChar": 95,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e924685_71a23900",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-23T17:27:41Z",
+      "side": 1,
+      "message": "what\u0027s the other option? static and inlined in the app? Maybe mention it.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 47
       },
       "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -99,6 +162,29 @@
         "startChar": 4,
         "endLine": 86,
         "endChar": 21
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c025abd3_19060d53",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-23T17:27:41Z",
+      "side": 1,
+      "message": "Can you give examples? I thought all \u003cuses-library\u003e are expressed as SDK libraries in the build system.",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 83
       },
       "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
