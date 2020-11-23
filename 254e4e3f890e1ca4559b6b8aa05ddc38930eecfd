@@ -124,6 +124,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7e15225_a7b53387",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:36:24Z",
+      "side": 1,
+      "message": "we usually refer to these as \"property structs\"",
+      "range": {
+        "startLine": 486,
+        "startChar": 46,
+        "endLine": 486,
+        "endChar": 64
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "101fdd98_34b13679",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:36:24Z",
+      "side": 1,
+      "message": "This could be a little confusing, you could have a `cc_library` with shared: { enabled: false }, which is a library that is build static-only, but it would still have shared library properties.  The conditionals in this function distinguish between cc_library vs. cc_library_static vs. cc_library_shared.",
+      "range": {
+        "startLine": 487,
+        "startChar": 42,
+        "endLine": 488,
+        "endChar": 40
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dcc4914_31d8413c",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:36:24Z",
+      "side": 1,
+      "message": "takes a Flags object and modifies it to contain ... ?",
+      "range": {
+        "startLine": 508,
+        "startChar": 15,
+        "endLine": 508,
+        "endChar": 37
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "997ea425_ec293b1e",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:36:24Z",
+      "side": 1,
+      "message": "This makes it sound like the caller will combine the flags.",
+      "range": {
+        "startLine": 510,
+        "startChar": 49,
+        "endLine": 511,
+        "endChar": 15
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1110cd21_17c4dd49",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:36:24Z",
+      "side": 1,
+      "message": "modifies?",
+      "range": {
+        "startLine": 562,
+        "startChar": 17,
+        "endLine": 562,
+        "endChar": 24
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "46b7487a_f646363a",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -141,6 +256,23 @@
         "endLine": 1408,
         "endChar": 10
       },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503ad04b_36351771",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1520,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:36:24Z",
+      "side": 1,
+      "message": "Maybe mention that this is only used to ensure there aren\u0027t conflicts between two different module names after passing them through versioningMacroName?  Modules get the __LIBFOO_API__ macro from the exported flags from their dependency, not through this map.",
       "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
