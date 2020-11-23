@@ -1202,6 +1202,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 		}
 	}
 
+	// If the library is sysprop_library, expose either public or internal header selectively.
 	if library.baseCompiler.hasSrcExt(".sysprop") {
 		dir := android.PathForModuleGen(ctx, "sysprop", "include")
 		if library.Properties.Sysprop.Platform != nil {
