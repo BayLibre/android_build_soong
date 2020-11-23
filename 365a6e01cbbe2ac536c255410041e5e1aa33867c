@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73987fc7_be5f0c2e",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-23T08:19:42Z",
+      "side": 1,
+      "message": "please also explain why",
+      "range": {
+        "startLine": 1844,
+        "startChar": 51,
+        "endLine": 1844,
+        "endChar": 101
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0697af8d_24a9e56a",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-23T08:19:42Z",
+      "side": 1,
+      "message": "nit: be consistent about textwidth (100)",
+      "range": {
+        "startLine": 1844,
+        "startChar": 0,
+        "endLine": 1846,
+        "endChar": 52
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71dece3_e3edc1d8",
+        "filename": "java/sysprop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-23T08:19:42Z",
+      "side": 1,
+      "message": "nit: textwidth is 100",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757bcf4d_96c6ff2b",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-23T08:19:42Z",
+      "side": 1,
+      "message": "Instead of this file-level comment, consider placing a package-level comment.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 46
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
