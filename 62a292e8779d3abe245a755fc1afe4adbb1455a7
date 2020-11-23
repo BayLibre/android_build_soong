@@ -51,6 +51,23 @@
       "parentUuid": "58aa4095_3dd619b3",
       "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71c64619_5badeee1",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-23T19:37:46Z",
+      "side": 1,
+      "message": "The potential impact on turbine optimization is worth mentioning here.",
+      "revId": "62a292e8779d3abe245a755fc1afe4adbb1455a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
