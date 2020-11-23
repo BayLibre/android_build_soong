@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a144ef_65ef6d09",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-23T06:13:12Z",
+      "side": 1,
+      "message": "Comment for keeping history.\nRenamed to javaSdkLibraryEnforceContext and this interface is used to check java.Module has required methods.",
+      "parentUuid": "f43fd8e0_e85d1835",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 30
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8bccf8e_bca987c4",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "I think checkJavaSdkLibraryEnforce needs to use javaSdkLibraryEnforceContext interface as parameter type because passed parameter from java.go is *java.Library and cannot be casted to *java.Module because both are struct.",
       "parentUuid": "f8bccf8e_bca987c4",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "a31ab1a74f5aa851cf6c1ea68eeb52ae44bce626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9bead01_103be63e",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-23T06:13:12Z",
+      "side": 1,
+      "message": "Comment for keeping history.\nDiscussed with Justin, decided to use javaSdkLibraryEnforceContext to just check java.Module has methods for check enforcement, and use java.Module as input parameter.",
+      "parentUuid": "320e2a61_fd27f222",
       "range": {
         "startLine": 57,
         "startChar": 1,
