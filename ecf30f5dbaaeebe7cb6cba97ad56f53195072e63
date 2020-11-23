@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3a08669_2f71e85f",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-23T21:35:16Z",
+      "side": 1,
+      "message": "nit: missing space",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a453b224_c6f2f312",
         "filename": "java/aapt2.go",
         "patchSetId": 2
