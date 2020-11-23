@@ -329,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "053b3eeb_ff3458f9",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:03:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ff70c21_0086d7dd",
+      "range": {
+        "startLine": 508,
+        "startChar": 15,
+        "endLine": 508,
+        "endChar": 37
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "997ea425_ec293b1e",
@@ -583,6 +607,24 @@
       "side": 1,
       "message": "I don\u0027t quite follow. This provider is to relay information about a single stub, whereas SharedLibraryImplementationStubsInfo contains information about a set of stubs. (or really, \"all\" stubs)\n\nThe naming for these providers is awkward, but ultimately that\u0027s what these providers boil down to.\n\nAny ideas on how to make this clearer?",
       "parentUuid": "1d2f67d8_300037d5",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b2bdde2_f9d8cbd6",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:03:57Z",
+      "side": 1,
+      "message": "Feel free to rename these, especially if there is some analogue in Bazel to follow.",
+      "parentUuid": "465b3116_fb699de9",
       "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
