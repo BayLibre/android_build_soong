@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006339216",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1502093?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "f5cbe690_a051baeb",
+          "description": "Change to \"python/python.go\"",
+          "replacements": [
+            {
+              "path": "python/python.go",
+              "range": {
+                "startLine": 105,
+                "startChar": 30,
+                "endLine": 105,
+                "endChar": 37
+              },
+              "replacement": "version"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "bfa344fa_04473044",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-23T21:21:46Z",
+      "side": 1,
+      "message": "Common typo found: \"verison\" -- should it be \"version\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 105,
+        "startChar": 30,
+        "endLine": 105,
+        "endChar": 37
+      },
+      "revId": "296723d47e026c1dd876c762442b8f8e7a26e9e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006339216",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1502093?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "e7685548_3402963a",
+          "description": "Change to \"python/python.go\"",
+          "replacements": [
+            {
+              "path": "python/python.go",
+              "range": {
+                "startLine": 109,
+                "startChar": 30,
+                "endLine": 109,
+                "endChar": 37
+              },
+              "replacement": "version"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "07b31031_d46dc835",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-23T21:21:46Z",
+      "side": 1,
+      "message": "Common typo found: \"verison\" -- should it be \"version\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 109,
+        "startChar": 30,
+        "endLine": 109,
+        "endChar": 37
+      },
+      "revId": "296723d47e026c1dd876c762442b8f8e7a26e9e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
