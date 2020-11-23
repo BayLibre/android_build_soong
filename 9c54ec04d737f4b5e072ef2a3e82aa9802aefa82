@@ -142,6 +142,40 @@
       "message": "What is this field for?",
       "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41bd86ff_fdccbddf",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:21:48Z",
+      "side": 1,
+      "message": "Can you add godoc to all the exported functions?  In intellij you can see the docs for any function by hitting ctrl-Q on a reference.",
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c570c99b_40df37ec",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:21:48Z",
+      "side": 1,
+      "message": "Godoc style is \"AndroidMkSingleton is a singleton to ...\"\n\nMaybe make this unexported?",
+      "revId": "9c54ec04d737f4b5e072ef2a3e82aa9802aefa82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
