@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef6ede6_9af8dfef",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-23T22:06:57Z",
+      "side": 1,
+      "message": "can you expand on this? it looks like it\u0027s based on a number of factors, including whether it\u0027s in ramdisk, recovery, vendor -- an explanation of why would be super helpful",
+      "range": {
+        "startLine": 1205,
+        "startChar": 79,
+        "endLine": 1205,
+        "endChar": 90
+      },
+      "revId": "a5d15f9c69625176eefd49252a50d30fb8f9a068",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
