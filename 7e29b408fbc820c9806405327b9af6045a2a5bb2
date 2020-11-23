@@ -22,6 +22,30 @@
       },
       "revId": "7e29b408fbc820c9806405327b9af6045a2a5bb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01383d3b_e65c48f8",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-23T08:44:26Z",
+      "side": 1,
+      "message": "See comments in path.go and the path_interposer tool on how $PATH is transformed by soong_ui and restricted to an allowlist of tools, validated by path_interposer using the directory of symlinked tools: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/path.go;l\u003d118;drc\u003d6a9bfa122a78ad3c3085b7caf55e9c219dcc2316\n\nGood point that $PATH is not under the control of the user, made some changes. PTAL.",
+      "parentUuid": "534e5542_557e0708",
+      "range": {
+        "startLine": 549,
+        "startChar": 3,
+        "endLine": 549,
+        "endChar": 58
+      },
+      "revId": "7e29b408fbc820c9806405327b9af6045a2a5bb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
