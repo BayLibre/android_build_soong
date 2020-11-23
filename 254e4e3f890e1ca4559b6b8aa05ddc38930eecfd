@@ -76,6 +76,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f193ea0e_dfd8c954",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "The former. I\u0027m not familiar with canonical go-isms (such as \"embedded struct form\"), so I\u0027m happy to take feedback on the appropriate terms to use :)",
+      "parentUuid": "f86cc7bd_2c0026ef",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5f6e157_79137bb8",
@@ -89,6 +107,30 @@
       "writtenOn": "2020-11-23T21:51:02Z",
       "side": 1,
       "message": "exportIncludesAsSystem",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 18
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6a3e1f8_433b9630",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5f6e157_79137bb8",
       "range": {
         "startLine": 286,
         "startChar": 3,
@@ -122,6 +164,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14dfb20_e96264ee",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ec04463_b6808fa9",
+      "range": {
+        "startLine": 295,
+        "startChar": 16,
+        "endLine": 295,
+        "endChar": 25
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7e15225_a7b53387",
@@ -135,6 +201,30 @@
       "writtenOn": "2020-11-23T22:36:24Z",
       "side": 1,
       "message": "we usually refer to these as \"property structs\"",
+      "range": {
+        "startLine": 486,
+        "startChar": 46,
+        "endLine": 486,
+        "endChar": 64
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bcb9f3_5645612a",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e15225_a7b53387",
       "range": {
         "startLine": 486,
         "startChar": 46,
@@ -168,6 +258,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "644db06c_f9cbda63",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Fair distinction. Thanks. PTAL.",
+      "parentUuid": "101fdd98_34b13679",
+      "range": {
+        "startLine": 487,
+        "startChar": 42,
+        "endLine": 488,
+        "endChar": 40
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dcc4914_31d8413c",
@@ -181,6 +295,30 @@
       "writtenOn": "2020-11-23T22:36:24Z",
       "side": 1,
       "message": "takes a Flags object and modifies it to contain ... ?",
+      "range": {
+        "startLine": 508,
+        "startChar": 15,
+        "endLine": 508,
+        "endChar": 37
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff70c21_0086d7dd",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "How about \"augments it\"? :)",
+      "parentUuid": "7dcc4914_31d8413c",
       "range": {
         "startLine": 508,
         "startChar": 15,
@@ -214,6 +352,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "204d6a85_6729965f",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Fair point. PTAL",
+      "parentUuid": "997ea425_ec293b1e",
+      "range": {
+        "startLine": 510,
+        "startChar": 49,
+        "endLine": 511,
+        "endChar": 15
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1110cd21_17c4dd49",
@@ -227,6 +389,30 @@
       "writtenOn": "2020-11-23T22:36:24Z",
       "side": 1,
       "message": "modifies?",
+      "range": {
+        "startLine": 562,
+        "startChar": 17,
+        "endLine": 562,
+        "endChar": 24
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27eaed66_81157adb",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1110cd21_17c4dd49",
       "range": {
         "startLine": 562,
         "startChar": 17,
@@ -260,6 +446,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a719bb7d_106e2802",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b7487a_f646363a",
+      "range": {
+        "startLine": 1408,
+        "startChar": 3,
+        "endLine": 1408,
+        "endChar": 10
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "503ad04b_36351771",
@@ -273,6 +483,24 @@
       "writtenOn": "2020-11-23T22:36:24Z",
       "side": 1,
       "message": "Maybe mention that this is only used to ensure there aren\u0027t conflicts between two different module names after passing them through versioningMacroName?  Modules get the __LIBFOO_API__ macro from the exported flags from their dependency, not through this map.",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b46deb2a_af281770",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1520,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "503ad04b_36351771",
       "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -300,6 +528,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b567fa7_d6a972f8",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a600b2ed_6393d0e7",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d2f67d8_300037d5",
@@ -317,6 +569,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465b3116_fb699de9",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "I don\u0027t quite follow. This provider is to relay information about a single stub, whereas SharedLibraryImplementationStubsInfo contains information about a set of stubs. (or really, \"all\" stubs)\n\nThe naming for these providers is awkward, but ultimately that\u0027s what these providers boil down to.\n\nAny ideas on how to make this clearer?",
+      "parentUuid": "1d2f67d8_300037d5",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc003a44_2f2e37f3",
@@ -330,6 +600,30 @@
       "writtenOn": "2020-11-23T21:51:02Z",
       "side": 1,
       "message": "StaticLibraryInfo",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "647352d0_ab99ae8b",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-23T22:53:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc003a44_2f2e37f3",
       "range": {
         "startLine": 114,
         "startChar": 3,
