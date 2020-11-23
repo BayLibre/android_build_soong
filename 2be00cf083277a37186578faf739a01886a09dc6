@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da778490_28e9fd07",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-23T23:05:07Z",
+      "side": 1,
+      "message": "can we unexport this?",
+      "range": {
+        "startLine": 851,
+        "startChar": 5,
+        "endLine": 851,
+        "endChar": 17
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3961d19e_e8a619db",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-23T23:05:07Z",
+      "side": 1,
+      "message": "Similarly can we unexport this -- it actually looks like a number of these could be unexported.",
+      "range": {
+        "startLine": 863,
+        "startChar": 5,
+        "endLine": 863,
+        "endChar": 18
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d3d235_a8b9529a",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-23T23:05:07Z",
+      "side": 1,
+      "message": "nit: action",
+      "range": {
+        "startLine": 1023,
+        "startChar": 13,
+        "endLine": 1023,
+        "endChar": 18
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
