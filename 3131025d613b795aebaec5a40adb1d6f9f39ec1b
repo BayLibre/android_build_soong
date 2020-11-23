@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d6606d5_755351a2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-11-23T11:26:02Z",
+      "side": 1,
+      "message": "reusing the existing dist{} property for modules that want \"custom\" dist rule/path would kind of makes sense",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 18
+      },
+      "revId": "3131025d613b795aebaec5a40adb1d6f9f39ec1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
