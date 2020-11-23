@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93a16b4_4965a6dc",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1844,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-23T11:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73987fc7_be5f0c2e",
+      "range": {
+        "startLine": 1844,
+        "startChar": 51,
+        "endLine": 1844,
+        "endChar": 101
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0697af8d_24a9e56a",
@@ -37,6 +61,54 @@
       "writtenOn": "2020-11-23T08:19:42Z",
       "side": 1,
       "message": "nit: be consistent about textwidth (100)",
+      "range": {
+        "startLine": 1844,
+        "startChar": 0,
+        "endLine": 1846,
+        "endChar": 52
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a2dca5_316cd4d9",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-23T11:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0697af8d_24a9e56a",
+      "range": {
+        "startLine": 1844,
+        "startChar": 0,
+        "endLine": 1846,
+        "endChar": 52
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b457d47_47532806",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-23T11:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0697af8d_24a9e56a",
       "range": {
         "startLine": 1844,
         "startChar": 0,
@@ -70,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1239801c_6807c540",
+        "filename": "java/sysprop.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-23T11:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e71dece3_e3edc1d8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 60
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "757bcf4d_96c6ff2b",
@@ -83,6 +179,30 @@
       "writtenOn": "2020-11-23T08:19:42Z",
       "side": 1,
       "message": "Instead of this file-level comment, consider placing a package-level comment.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 46
+      },
+      "revId": "365a6e01cbbe2ac536c255410041e5e1aa33867c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa34938e_3b2bc586",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-11-23T11:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757bcf4d_96c6ff2b",
       "range": {
         "startLine": 15,
         "startChar": 0,
