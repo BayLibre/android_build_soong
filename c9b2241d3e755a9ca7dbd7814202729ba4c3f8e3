@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d3777e_885c9257",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-23T15:40:52Z",
+      "side": 1,
+      "message": "Should this be more general that this module does not support tags? e.g. in paths.go we state that it is not an output file producing module",
+      "range": {
+        "startLine": 2583,
+        "startChar": 54,
+        "endLine": 2583,
+        "endChar": 57
+      },
+      "revId": "c9b2241d3e755a9ca7dbd7814202729ba4c3f8e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
