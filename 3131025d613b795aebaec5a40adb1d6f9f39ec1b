@@ -70,6 +70,30 @@
       },
       "revId": "3131025d613b795aebaec5a40adb1d6f9f39ec1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277a8209_b9717388",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-11-23T14:37:17Z",
+      "side": 1,
+      "message": "The auto-disting in sdk_library.go is kind of a legacy behavior as it wasn\u0027t possible to specify dist in soong at the time.\n\nWhat I was thinking was that we could manually specify conscrypt like..\n\n  dists {\n    dist: {\n      tag: \"public.stub\"\n      path: \"apistubs/../conscrypt.jar\"\n      name: \"conscrypt.jar\"\n    }\n    dist: {\n      tag: \"public.api\"\n      path:  \"apistubs/../conscrypt.txt\"\n    }\n   ...\n  }\n\n\nquite a lot of boilerplate though.\n\nThe correct thing to do longer term is probably to define sdk{} for all of these and dist all of those, and make the update-prebuilts script unzip the disted sdks.",
+      "parentUuid": "1367995c_ecbf3944",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 18
+      },
+      "revId": "3131025d613b795aebaec5a40adb1d6f9f39ec1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
