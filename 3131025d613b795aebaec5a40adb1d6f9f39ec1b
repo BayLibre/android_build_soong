@@ -94,6 +94,30 @@
       },
       "revId": "3131025d613b795aebaec5a40adb1d6f9f39ec1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3806e803_7637332c",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-23T16:28:46Z",
+      "side": 1,
+      "message": "Ok. I did actually try that but it did not work because dist properties are not processed by java_sdk_library when api_only: true which is the case for conscrypt. The processing is done in the embedded java.Library GenerateAndroidBuildActions method but that is not invoked when api_only: true.\n\nFTR the correct syntax is something like this:\n\n  dists [\n    {\n      tag: \"public.stub\"\n      path: \"apistubs/../conscrypt.jar\"\n      name: \"conscrypt.jar\"\n    },\n    {\n      tag: \"public.api\"\n      path:  \"apistubs/../conscrypt.txt\"\n    },\n   ...\n  ]\n\n\n\u003e The correct thing to do longer term is probably to define sdk{} for all of these and dist all of those, and make the update-prebuilts script unzip the disted sdks.\n\nAgreed.",
+      "parentUuid": "277a8209_b9717388",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 18
+      },
+      "revId": "3131025d613b795aebaec5a40adb1d6f9f39ec1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
