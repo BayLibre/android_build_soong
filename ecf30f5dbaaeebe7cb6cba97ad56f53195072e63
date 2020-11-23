@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "24571a54_d006eb12",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:01:49Z",
+      "side": 1,
+      "message": "The godoc style is \"pathsToAapt2Paths calls ...\".  That\u0027s less important for unexported functions, but in the absence of any other guidance I usually follow it.",
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7089d134_f4fb5105",
@@ -14,6 +31,30 @@
       "writtenOn": "2020-11-21T12:46:25Z",
       "side": 1,
       "message": "I\u0027m having trouble finding the data that went into this number, do you have a reference?",
+      "range": {
+        "startLine": 69,
+        "startChar": 91,
+        "endLine": 70,
+        "endChar": 92
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8fdf9d5_caef11d2",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:01:49Z",
+      "side": 1,
+      "message": "I don\u0027t think I ever collected data on this.  If I remember correctly, the aapt2 compile actions are trivially short, but each action in ninja takes on the order of ~10 ms to run.  frameworks/base/core/res/res has \u003e10k resource files, so compiling each one with an individual action could take 100 CPU seconds.  Sharding them reduces the overhead of starting actions by a factor of 100, at the expense of recompiling more files when one changes.  Since the individual compiles are trivial it\u0027s a good tradeoff.",
+      "parentUuid": "7089d134_f4fb5105",
       "range": {
         "startLine": 69,
         "startChar": 91,
@@ -88,6 +129,52 @@
         "startChar": 50,
         "endLine": 194,
         "endChar": 71
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524ebc0e_93302146",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:01:49Z",
+      "side": 1,
+      "message": "Maybe also mention they have to add it to deps too?",
+      "range": {
+        "startLine": 236,
+        "startChar": 78,
+        "endLine": 236,
+        "endChar": 98
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c8acc30_7b3d9ad6",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T22:01:49Z",
+      "side": 1,
+      "message": "split",
+      "range": {
+        "startLine": 237,
+        "startChar": 53,
+        "endLine": 237,
+        "endChar": 61
       },
       "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
