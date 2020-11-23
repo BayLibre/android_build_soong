@@ -1841,6 +1841,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		return
 	}
 
+	// When a module links against a sysprop_library, the implementation library will be linked instead.
+	// syspropImplLibraries is a map from sysprop_library to implementation library; it will be used in
+	// whole_static_libs, static_libs, and shared_libs.
 	syspropImplLibraries := syspropImplLibraries(actx.Config())
 	vendorSnapshotStaticLibs := vendorSnapshotStaticLibs(actx.Config())
 
