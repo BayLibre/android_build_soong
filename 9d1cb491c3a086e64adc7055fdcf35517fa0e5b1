@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d1b4a11_8c491a02",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2020-11-23T07:21:58Z",
+      "side": 1,
+      "message": "Does Ninja emit some sort of heartbeat?",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "9d1cb491c3a086e64adc7055fdcf35517fa0e5b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
