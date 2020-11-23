@@ -57,6 +57,155 @@
       },
       "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86cc7bd_2c0026ef",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-23T21:51:02Z",
+      "side": 1,
+      "message": "Is this only used as an embedded struct form? Or, can it be used by itself just like StaticProperties and SharedProperties? The code looks like the former, but it\u0027s not abundantly clear in this comment.",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f6e157_79137bb8",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-23T21:51:02Z",
+      "side": 1,
+      "message": "exportIncludesAsSystem",
+      "range": {
+        "startLine": 286,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 18
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ec04463_b6808fa9",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-23T21:51:02Z",
+      "side": 1,
+      "message": "registers",
+      "range": {
+        "startLine": 295,
+        "startChar": 16,
+        "endLine": 295,
+        "endChar": 25
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b7487a_f646363a",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-23T21:51:02Z",
+      "side": 1,
+      "message": "header",
+      "range": {
+        "startLine": 1408,
+        "startChar": 3,
+        "endLine": 1408,
+        "endChar": 10
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a600b2ed_6393d0e7",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-23T21:51:02Z",
+      "side": 1,
+      "message": "HeaderDepTag",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 16
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2f67d8_300037d5",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-23T21:51:02Z",
+      "side": 1,
+      "message": "Would be nice if there was more information about the relationship between this and SharedLibraryImplementationStubsInfo and the intra-variant dependencies within a shared library module.",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc003a44_2f2e37f3",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-23T21:51:02Z",
+      "side": 1,
+      "message": "StaticLibraryInfo",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
