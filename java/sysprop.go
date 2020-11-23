@@ -14,6 +14,11 @@
 
 package java
 
+// This file contains a map to redirect dependencies towards sysprop_library.
+// If the sysprop_library is owned by Platform, and the client module links
+// against system API, the public stub should be used.
+// The map will contain public stub name of sysprop_library.
+
 import (
 	"sync"
 
