@@ -46,6 +46,30 @@
       },
       "revId": "3131025d613b795aebaec5a40adb1d6f9f39ec1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1367995c_ecbf3944",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-23T14:19:09Z",
+      "side": 1,
+      "message": "Apologies, I missed your comment. Not sure why but I didn\u0027t get a warning that there was an unresolved comment when I submitted it. It might have been because I had not refreshed my browser view of this change so it did not know about your comment.\n\nI don\u0027t see how that would work. None of the existing dist properties seem applicable. Also, there is a risk that if I used a dist property for this that it could change the behavior of an existing java_sdk_library that was already using dist: - if there are any.\n\nCould you give an example of what you are suggesting?",
+      "parentUuid": "e4581333_42422d8d",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 18
+      },
+      "revId": "3131025d613b795aebaec5a40adb1d6f9f39ec1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
