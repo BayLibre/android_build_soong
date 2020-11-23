@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de96f1be_1b54c3cb",
+        "filename": "android/arch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:45:47Z",
+      "side": 1,
+      "message": "Go uses a soft 100 character limit, so the extra wrapping isn\u0027t necessary.",
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce45260_e3f5a4da",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:45:47Z",
+      "side": 1,
+      "message": "I don\u0027t think \"fake\" is the right term here, at least according to the definition at go/fakes.  This isn\u0027t a lightweight implementation, it is creating the concrete Config type with useful defaults and a few extra pieces of testing functionality enabled.",
+      "range": {
+        "startLine": 252,
+        "startChar": 24,
+        "endLine": 252,
+        "endChar": 28
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6bb6c7f_93fd04c6",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:45:47Z",
+      "side": 1,
+      "message": "This seems like an odd combination of functionality.  I\u0027d suggest leaving the Config{config} in NewConfig.",
+      "range": {
+        "startLine": 523,
+        "startChar": 79,
+        "endLine": 524,
+        "endChar": 50
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c60ba4d_c29a2715",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:45:47Z",
+      "side": 1,
+      "message": "Suggest submitting aosp/1507554 first which obsoletes this part of the change.",
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6885d5_a9123033",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:45:47Z",
+      "side": 1,
+      "message": "to a tool in the prebuilts directory",
+      "range": {
+        "startLine": 604,
+        "startChar": 38,
+        "endLine": 604,
+        "endChar": 64
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc9dea4_f6723b06",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:45:47Z",
+      "side": 1,
+      "message": "blocks future reads from the environment?",
+      "range": {
+        "startLine": 660,
+        "startChar": 25,
+        "endLine": 660,
+        "endChar": 48
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e7786e1_a409c480",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:45:47Z",
+      "side": 1,
+      "message": "Suggest adding:\n\nRules that want to reference the build number should read from this file without depending on it.  They will run whenever their other dependencies require them to run and get the current build number.  This ensures they don\u0027t rebuild on every incremental build when the build number changes.",
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459be366_7458d018",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-23T23:45:47Z",
+      "side": 1,
+      "message": "s",
+      "range": {
+        "startLine": 1541,
+        "startChar": 50,
+        "endLine": 1541,
+        "endChar": 51
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
