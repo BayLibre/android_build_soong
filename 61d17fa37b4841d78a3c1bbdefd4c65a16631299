@@ -118,6 +118,30 @@
       },
       "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607c82c2_623438b5",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-23T04:27:11Z",
+      "side": 1,
+      "message": "No, I don\u0027t think I can do it anytime soon. I suggest renaming the macro so that there will be no conflict when your LLVM change lands.",
+      "parentUuid": "950e0c72_d075e0cb",
+      "range": {
+        "startLine": 370,
+        "startChar": 5,
+        "endLine": 370,
+        "endChar": 46
+      },
+      "revId": "61d17fa37b4841d78a3c1bbdefd4c65a16631299",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
