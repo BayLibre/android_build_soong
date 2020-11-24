@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c13359c6_e9c3b09e",
+        "filename": "java/java.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-24T08:57:43Z",
+      "side": 1,
+      "message": "The original intent was allowing only java_sdk_library between inter-partition library dependency, and implemented it by just not allowing java_library as inter-partition dependency at libs dependency.\nBut it can be a problem when dependency module is not java.Library but java.Binary like module. So, changed to use interface that specifies functions need for dependency check, and skip inter-partition check when dependency module is java_sdk_library.",
+      "parentUuid": "0c5d75f4_bbb7dc2d",
+      "range": {
+        "startLine": 774,
+        "startChar": 34,
+        "endLine": 774,
+        "endChar": 45
+      },
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf15b28a_4a1c2895",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-11-24T00:13:56Z",
       "side": 1,
       "message": "Can you add lots of comments here to define what these groups are/mean?",
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b56dbd_5271eee5",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-24T08:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf15b28a_4a1c2895",
       "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a6ea74_15085aa1",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-24T08:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd45c9e3_52937ff3",
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ab7de19_60a2a350",
@@ -75,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20935941_b0f01482",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-24T08:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ab7de19_60a2a350",
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adf282ef_8f7fe539",
@@ -88,6 +166,30 @@
       "writtenOn": "2020-11-24T00:13:56Z",
       "side": 1,
       "message": "I think the short names only work if it is obvious from looking at the rest of the line what they mean. These are pretty intricate.  Maybe something in between, like productToSystem and systemToProduct?",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "785922c1_65c8d931",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2020-11-24T08:57:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adf282ef_8f7fe539",
       "range": {
         "startLine": 77,
         "startChar": 2,
