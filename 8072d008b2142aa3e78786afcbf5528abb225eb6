@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ccf23f8_1d3f3032",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T02:03:44Z",
+      "side": 1,
+      "message": "just FileName",
+      "range": {
+        "startLine": 208,
+        "startChar": 24,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7797f2d_4df3502f",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T02:03:44Z",
+      "side": 1,
+      "message": "Why do we need this?",
+      "range": {
+        "startLine": 208,
+        "startChar": 47,
+        "endLine": 208,
+        "endChar": 51
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59e29403_2025052f",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T02:03:44Z",
+      "side": 1,
+      "message": "Move this to just after PackagingSpec definition",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 1
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a4909f_1e53f8cd",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T02:03:44Z",
+      "side": 1,
+      "message": "standard packages should come before soong packages, as a separated group.",
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ce70c1_3fa176f1",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T02:03:44Z",
+      "side": 1,
+      "message": "Move this to the linkerConfig struct and access them in the make vars provider using VisitAllModulesIf",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
