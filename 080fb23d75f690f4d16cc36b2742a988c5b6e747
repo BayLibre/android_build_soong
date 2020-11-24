@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76d53f02_ab3bcc66",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T00:07:36Z",
+      "side": 1,
+      "message": "What does the hashtag symbol mean?",
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef557bda_7702b54d",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T00:07:36Z",
+      "side": 1,
+      "message": "I think the current comment more accurately describes this property. This new one sounds like it is identical to the package name in the manifest file, when what it really does is overriding it.",
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7740a176_0fc84f15",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T00:07:36Z",
+      "side": 1,
+      "message": "I don\u0027t remember exactly where, but this \"installed along with\" wording caused confusion where people thought the required modules are installed right next to the target module. This is not included in the reference doc, but still worth updating?",
+      "range": {
+        "startLine": 303,
+        "startChar": 50,
+        "endLine": 303,
+        "endChar": 60
+      },
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da91cedd_cb91e1d3",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T00:07:36Z",
+      "side": 1,
+      "message": "What about moving this to apex/androidmk.go and making it unexported?",
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15456a8_37d11879",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T00:07:36Z",
+      "side": 1,
+      "message": "nit: \"not\" is redundant now.",
+      "range": {
+        "startLine": 883,
+        "startChar": 58,
+        "endLine": 883,
+        "endChar": 65
+      },
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6216aa83_82b1d00c",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T00:07:36Z",
+      "side": 1,
+      "message": "Double whitespaces.",
+      "range": {
+        "startLine": 1707,
+        "startChar": 78,
+        "endLine": 1707,
+        "endChar": 79
+      },
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
