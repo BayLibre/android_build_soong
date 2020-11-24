@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c155db_31c2ad22",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T18:55:25Z",
+      "side": 1,
+      "message": "If you just want to know what the wall time for the mutator is the easiest way is to add a printf in runMutator in build/blueprint/context.go.  If you would like more detail you can enable CPU profiling, but it\u0027s a little tricky.  Run `m nothing` to make sure soong_build is built, and then run:\n\n ANDROID_JAVA_HOME\u003dprebuilts/jdk/jdk11/linux-x86 ANDROID_JAVA8_HOME\u003dprebuilts/jdk/jdk8/linux-x86 out/soong/.bootstrap/bin/soong_build -t -l out/.module_paths/Android.bp.list -b out/soong -n out -d out/soong/build.ninja.d -globFile out/soong/.bootstrap/build-globs.ninja -o out/soong/build.ninja -cpuprofile\u003d/tmp/soong_build.pprof Android.bp\n\nThe samples from individual mutators are labeled using Go\u0027s \"profiler labels\", and you can filter them in the `go tool pprof` tool.",
+      "parentUuid": "60fcbbf0_6b9c99a5",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 42
+      },
+      "revId": "9035ca756d1b64c52f4f1efb9bdc66a872426f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef3b08a9_fe5c9420",
