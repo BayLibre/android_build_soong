@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b03c7c2a_993f67ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T00:39:13Z",
+      "side": 1,
+      "message": "I don\u0027t have enough expertise there, but I expected an overview about the relationship between cc.Module and decorators, installers, etc. Perhaps, that deserves another CL.",
+      "parentUuid": "4b1218d7_3dcb9821",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "957adae5_2f1aee24",
         "filename": "cc/library.go",
         "patchSetId": 1
