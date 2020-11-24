@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bd79333_a3959ae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T04:31:51Z",
+      "side": 1,
+      "message": "Can I get a re-+2 after the rebase?  This is ready to submit after ag/13068670",
+      "revId": "e9fe2949b887deba2b46b2a8c043f228a95e99e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
