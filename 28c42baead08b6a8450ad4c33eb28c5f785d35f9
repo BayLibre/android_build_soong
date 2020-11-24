@@ -105,6 +105,23 @@
       "parentUuid": "3235ae32_28798dc7",
       "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb9d3edf_7d4c7a82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1697666
+      },
+      "writtenOn": "2020-11-24T08:41:51Z",
+      "side": 1,
+      "message": "Hi Daniel,\n\nWe discussed about this some more internally and concluded that we want:\n1) Independent options for PAC/BTI.\n2) Nested under the \"sanitize\" label.\n\nIn summary, our suggestion is to have something that looks like:\n\nsanitize: {\n    sign_pointers: true, // alternatively, pointer_signatures\n    check_indirect_branches: true, // alternatively, hardware_cfi\n}\n\nHope that\u0027s not too much rework at your end.",
+      "revId": "28c42baead08b6a8450ad4c33eb28c5f785d35f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
