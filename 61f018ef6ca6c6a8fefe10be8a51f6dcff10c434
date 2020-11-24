@@ -22,6 +22,30 @@
       },
       "revId": "61f018ef6ca6c6a8fefe10be8a51f6dcff10c434",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2580d8aa_c9d915e4",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:44:12Z",
+      "side": 1,
+      "message": "A stacktrace may be information overload here. Replacing with Errorf.",
+      "parentUuid": "3d35b29a_68791776",
+      "range": {
+        "startLine": 548,
+        "startChar": 11,
+        "endLine": 548,
+        "endChar": 18
+      },
+      "revId": "61f018ef6ca6c6a8fefe10be8a51f6dcff10c434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
