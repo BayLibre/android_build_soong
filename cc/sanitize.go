@@ -69,6 +69,11 @@ var (
 		"-fno-sanitize-recover=integer,undefined"}
 	hwasanGlobalOptions = []string{"heap_history_size=1023", "stack_history_size=512",
 		"export_memory_stats=0", "max_malloc_fill_size=0"}
+
+	armv8_only_return_pacCFlags = []string{"-mbranch-protection=pac-ret"}
+	armv8_only_btiCFlags = []string{"-mbranch-protection=bti"}
+	armv8_only_btiLdFlags = []string{"-Werror","-Wl,-zforce-bti"}
+	armv8_only_return_pac_and_btiCflags = []string{"-mbranch-protection=standard"}
 )
 
 type sanitizerType int
@@ -89,6 +94,8 @@ const (
 	cfi
 	scs
 	fuzzer
+	armv8_only_return_pac
+	armv8_only_bti
 )
 
 // Name of the sanitizer variation for this sanitizer type
@@ -108,6 +115,10 @@ func (t sanitizerType) variationName() string {
 		return "scs"
 	case fuzzer:
 		return "fuzzer"
+	case armv8_only_return_pac:
+		return "armv8_only_return_pac"
+	case armv8_only_bti:
+		return "armv8_only_bti"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -130,6 +141,10 @@ func (t sanitizerType) name() string {
 		return "shadow-call-stack"
 	case fuzzer:
 		return "fuzzer"
+	case armv8_only_return_pac:
+		return "armv8_only_return_pac"
+	case armv8_only_bti:
+		return "armv8_only_bti"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -157,6 +172,8 @@ type SanitizeUserProps struct {
 	Integer_overflow *bool    `android:"arch_variant"`
 	Scudo            *bool    `android:"arch_variant"`
 	Scs              *bool    `android:"arch_variant"`
+	Armv8_only_return_pac   *bool    `android:"arch_variant"`
+	Armv8_only_bti  *bool    `android:"arch_variant"`
 
 	// A modifier for ASAN and HWASAN for write only instrumentation
 	Writeonly *bool `android:"arch_variant"`
@@ -296,6 +313,14 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Writeonly = boolPtr(true)
 		}
 
+		if found, globalSanitizers = removeFromList("armv8_only_return_pac", globalSanitizers); found && s.Armv8_only_return_pac == nil {
+			s.Armv8_only_return_pac = boolPtr(true)
+		}
+
+		if found, globalSanitizers = removeFromList("armv8_only_bti", globalSanitizers); found && s.Armv8_only_bti == nil {
+			s.Armv8_only_bti = boolPtr(true)
+		}
+
 		if len(globalSanitizers) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
@@ -344,6 +369,16 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	// SCS is only implemented on AArch64.
 	if ctx.Arch().ArchType != android.Arm64 {
 		s.Scs = nil
+	}
+
+	// Disable armv8_only_return_pac sanitizer on architectures other than AArch64.
+	if ctx.Arch().ArchType != android.Arm64 {
+		s.Armv8_only_return_pac = nil
+	}
+
+	// Disable armv8_only_bti sanitizer on architectures other than AArch64.
+	if ctx.Arch().ArchType != android.Arm64 {
+		s.Armv8_only_bti = nil
 	}
 
 	// Also disable CFI if ASAN is enabled.
@@ -400,7 +435,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	if ctx.Os() != android.Windows && (Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
 		Bool(s.Fuzzer) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer_overflow) || len(s.Misc_undefined) > 0 ||
-		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs)) {
+		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs) || Bool(s.Armv8_only_return_pac) || Bool(s.Armv8_only_bti)) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -560,8 +595,28 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.Local.CFlags = append(flags.Local.CFlags, intOverflowCflags...)
 	}
 
-	if len(sanitize.Properties.Sanitizers) > 0 {
-		sanitizeArg := "-fsanitize=" + strings.Join(sanitize.Properties.Sanitizers, ",")
+	if Bool(sanitize.Properties.Sanitize.Armv8_only_return_pac) || Bool(sanitize.Properties.Sanitize.Armv8_only_bti) {
+		if Bool(sanitize.Properties.Sanitize.Armv8_only_return_pac) && Bool(sanitize.Properties.Sanitize.Armv8_only_bti) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(armv8_only_return_pac_and_btiCflags, " "))
+			flags.Local.AsFlags = append(flags.Local.AsFlags, strings.Join(armv8_only_return_pac_and_btiCflags, " "))
+		} else if Bool(sanitize.Properties.Sanitize.Armv8_only_return_pac) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(armv8_only_return_pacCFlags, " "))
+			flags.Local.AsFlags = append(flags.Local.AsFlags, strings.Join(armv8_only_return_pacCFlags, " "))
+		} else if Bool(sanitize.Properties.Sanitize.Armv8_only_bti) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(armv8_only_btiCFlags, " "))
+			flags.Local.AsFlags = append(flags.Local.AsFlags, strings.Join(armv8_only_btiCFlags, " "))
+		}
+		if Bool(sanitize.Properties.Sanitize.Armv8_only_bti) {
+			flags.Local.LdFlags = append(flags.Local.LdFlags, strings.Join(armv8_only_btiLdFlags, " "))
+		}
+	}
+
+	// Not all sanitizers has -fsanitize flag.
+	fsanitize := sanitize.Properties.Sanitizers
+	_, fsanitize = removeFromList("armv8_only_return_pac", fsanitize)
+	_, fsanitize = removeFromList("armv8_only_bti", fsanitize)
+	if len(fsanitize) > 0 {
+		sanitizeArg := "-fsanitize=" + strings.Join(fsanitize, ",")
 
 		flags.Local.CFlags = append(flags.Local.CFlags, sanitizeArg)
 		flags.Local.AsFlags = append(flags.Local.AsFlags, sanitizeArg)
@@ -660,6 +715,10 @@ func (sanitize *sanitize) getSanitizerBoolPtr(t sanitizerType) *bool {
 		return sanitize.Properties.Sanitize.Scs
 	case fuzzer:
 		return sanitize.Properties.Sanitize.Fuzzer
+	case armv8_only_return_pac:
+		return sanitize.Properties.Sanitize.Armv8_only_return_pac
+	case armv8_only_bti:
+		return sanitize.Properties.Sanitize.Armv8_only_bti
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -671,7 +730,9 @@ func (sanitize *sanitize) isUnsanitizedVariant() bool {
 		!sanitize.isSanitizerEnabled(tsan) &&
 		!sanitize.isSanitizerEnabled(cfi) &&
 		!sanitize.isSanitizerEnabled(scs) &&
-		!sanitize.isSanitizerEnabled(fuzzer)
+		!sanitize.isSanitizerEnabled(fuzzer) &&
+		!sanitize.isSanitizerEnabled(armv8_only_return_pac) &&
+		!sanitize.isSanitizerEnabled(armv8_only_bti)
 }
 
 func (sanitize *sanitize) isVariantOnProductionDevice() bool {
@@ -697,6 +758,10 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 		sanitize.Properties.Sanitize.Scs = boolPtr(b)
 	case fuzzer:
 		sanitize.Properties.Sanitize.Fuzzer = boolPtr(b)
+	case armv8_only_return_pac:
+		sanitize.Properties.Sanitize.Armv8_only_return_pac = boolPtr(b)
+	case armv8_only_bti:
+		sanitize.Properties.Sanitize.Armv8_only_bti = boolPtr(b)
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -788,7 +853,8 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 					if d, ok := child.(*Module); ok && d.sanitize != nil &&
 						!Bool(d.sanitize.Properties.Sanitize.Never) &&
 						!d.sanitize.isSanitizerExplicitlyDisabled(t) {
-						if t == cfi || t == hwasan || t == scs {
+						if t == cfi || t == hwasan || t == scs || t == armv8_only_bti ||
+						   t == armv8_only_return_pac {
 							if d.static() {
 								d.sanitize.Properties.SanitizeDep = true
 							}
@@ -951,6 +1017,14 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 
 		if Bool(c.sanitize.Properties.Sanitize.Fuzzer) {
 			sanitizers = append(sanitizers, "fuzzer-no-link")
+		}
+
+		if Bool(c.sanitize.Properties.Sanitize.Armv8_only_return_pac) {
+			sanitizers = append(sanitizers, "armv8_only_return_pac")
+		}
+
+		if Bool(c.sanitize.Properties.Sanitize.Armv8_only_bti) {
+			sanitizers = append(sanitizers, "armv8_only_bti")
 		}
 
 		// Save the list of sanitizers. These will be used again when generating

@@ -135,6 +135,11 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 
 	ctx.Strict("INTEGER_OVERFLOW_EXTRA_CFLAGS", strings.Join(intOverflowCflags, " "))
 
+	ctx.Strict("ARMV8_ONLY_RETURN_PAC_SANITIZER_EXTRA_CFLAGS", strings.Join(armv8_only_return_pacCFlags, " "))
+	ctx.Strict("ARMV8_ONLY_RETURN_PAC_AND_BTI_SANITIZER_EXTRA_CFLAGS", strings.Join(armv8_only_return_pac_and_btiCflags, " "))
+	ctx.Strict("ARMV8_ONLY_BTI_SANITIZER_EXTRA_CFLAGS", strings.Join(armv8_only_btiCFlags, " "))
+	ctx.Strict("ARMV8_ONLY_BTI_SANITIZER_EXTRA_LDFLAGS", strings.Join(armv8_only_btiLdFlags, " "))
+
 	ctx.Strict("DEFAULT_C_STD_VERSION", config.CStdVersion)
 	ctx.Strict("DEFAULT_CPP_STD_VERSION", config.CppStdVersion)
 	ctx.Strict("EXPERIMENTAL_C_STD_VERSION", config.ExperimentalCStdVersion)
