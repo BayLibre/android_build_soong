@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7716d1c4_017fc73e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:34:12Z",
+      "side": 1,
+      "message": "Indeed, but I am wondering: What forum? What file?  I was hoping you had ideas 😊 \n\nI\u0027ll think on this, and follow up in another CL. Perhaps it belongs in cc.go as a header comment.",
+      "parentUuid": "b03c7c2a_993f67ce",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "957adae5_2f1aee24",
@@ -126,6 +144,24 @@
       "side": 1,
       "message": "I\u0027m not either. :) But, something like \"This struct allows StaticProperties and SharedProperties to share the same set of properties and is not meant to be used by itself.\" would suffice?",
       "parentUuid": "f193ea0e_dfd8c954",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4475aa12_7bbee25c",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:34:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda228b6_a8d189a8",
       "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -679,6 +715,24 @@
       "side": 1,
       "message": "I\u0027d at least switch this and SharedLibraryImplementationStubsInfo, so that they are presented in semantic order. Also, IIUIC, stub shared library dependencies are inter-variant ones, established from the implementation variant one to all other stub ones. Mentioning this would help readers understand these structs better.",
       "parentUuid": "7b2bdde2_f9d8cbd6",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3bffa48_052fdcbf",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:34:12Z",
+      "side": 1,
+      "message": "PTAL.\n\n\u003e Feel free to rename these, especially if there is some analogue in Bazel to follow.\n\nI have indeed done so -- SharedLibraryStubsInfo was most notably not a true provider, as it\u0027s not ever retrieved as root information. (Really, it\u0027s a data struct which is part of another provider). I\u0027ve thus removed it\u0027s Info/Provider naming.",
+      "parentUuid": "2a9b4628_7d5e56d7",
       "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
