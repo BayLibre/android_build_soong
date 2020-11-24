@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "395a07a2_e29a5b91",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ac3abc_b415c9a3",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 0
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fac039d_f43b2483",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-24T06:30:15Z",
       "side": 1,
       "message": "Action is a Bazel term, use \"build statement\" since rules and build statements are different. Here and all new comments below.",
+      "range": {
+        "startLine": 506,
+        "startChar": 26,
+        "endLine": 506,
+        "endChar": 32
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8fe5052_5ef663da",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fac039d_f43b2483",
       "range": {
         "startLine": 506,
         "startChar": 26,
@@ -72,6 +120,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f8ae5553_2f0612c1",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2849618_99364a55",
+      "range": {
+        "startLine": 601,
+        "startChar": 27,
+        "endLine": 601,
+        "endChar": 34
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da778490_28e9fd07",
         "filename": "cc/builder.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-23T23:05:07Z",
       "side": 1,
       "message": "can we unexport this?",
+      "range": {
+        "startLine": 851,
+        "startChar": 5,
+        "endLine": 851,
+        "endChar": 17
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2cad76d_8cc34dd5",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da778490_28e9fd07",
       "range": {
         "startLine": 851,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd3eecc_368cc49e",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3961d19e_e8a619db",
+      "range": {
+        "startLine": 863,
+        "startChar": 5,
+        "endLine": 863,
+        "endChar": 18
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0d3d235_a8b9529a",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5797ef59_02063b49",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0d3d235_a8b9529a",
+      "range": {
+        "startLine": 1023,
+        "startChar": 13,
+        "endLine": 1023,
+        "endChar": 18
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9a5e558_4dd95e0c",
@@ -152,6 +296,30 @@
       "writtenOn": "2020-11-24T06:30:15Z",
       "side": 1,
       "message": "build statement",
+      "range": {
+        "startLine": 1055,
+        "startChar": 3,
+        "endLine": 1055,
+        "endChar": 7
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "811a370b_b2e5fd28",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-11-24T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9a5e558_4dd95e0c",
       "range": {
         "startLine": 1055,
         "startChar": 3,
