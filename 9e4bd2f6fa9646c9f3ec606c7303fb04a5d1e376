@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ec62c7b_45f4e2aa",
+        "filename": "android/arch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:28:02Z",
+      "side": 1,
+      "message": "Ack, reverted.",
+      "parentUuid": "de96f1be_1b54c3cb",
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce45260_e3f5a4da",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-23T23:45:47Z",
       "side": 1,
       "message": "I don\u0027t think \"fake\" is the right term here, at least according to the definition at go/fakes.  This isn\u0027t a lightweight implementation, it is creating the concrete Config type with useful defaults and a few extra pieces of testing functionality enabled.",
+      "range": {
+        "startLine": 252,
+        "startChar": 24,
+        "endLine": 252,
+        "endChar": 28
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ed7b3e_38e3e66b",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:28:02Z",
+      "side": 1,
+      "message": "Ack, reverting \"fake\".",
+      "parentUuid": "bce45260_e3f5a4da",
       "range": {
         "startLine": 252,
         "startChar": 24,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11eddee9_ac1af6e2",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:28:02Z",
+      "side": 1,
+      "message": "Submitted aosp/1507554, resolving.",
+      "parentUuid": "e6bb6c7f_93fd04c6",
+      "range": {
+        "startLine": 523,
+        "startChar": 79,
+        "endLine": 524,
+        "endChar": 50
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c60ba4d_c29a2715",
@@ -81,6 +147,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74050f93_b57b16f3",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c60ba4d_c29a2715",
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e6885d5_a9123033",
@@ -94,6 +178,30 @@
       "writtenOn": "2020-11-23T23:45:47Z",
       "side": 1,
       "message": "to a tool in the prebuilts directory",
+      "range": {
+        "startLine": 604,
+        "startChar": 38,
+        "endLine": 604,
+        "endChar": 64
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee7b02b_f6e59185",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e6885d5_a9123033",
       "range": {
         "startLine": 604,
         "startChar": 38,
@@ -127,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25599e5_a3c61a13",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bc9dea4_f6723b06",
+      "range": {
+        "startLine": 660,
+        "startChar": 25,
+        "endLine": 660,
+        "endChar": 48
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e7786e1_a409c480",
@@ -144,6 +276,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9ef236d_25f3f8bf",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:28:02Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "1e7786e1_a409c480",
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "459be366_7458d018",
@@ -157,6 +307,30 @@
       "writtenOn": "2020-11-23T23:45:47Z",
       "side": 1,
       "message": "s",
+      "range": {
+        "startLine": 1541,
+        "startChar": 50,
+        "endLine": 1541,
+        "endChar": 51
+      },
+      "revId": "9e4bd2f6fa9646c9f3ec606c7303fb04a5d1e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed6b932_9b1379e8",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:28:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "459be366_7458d018",
       "range": {
         "startLine": 1541,
         "startChar": 50,
