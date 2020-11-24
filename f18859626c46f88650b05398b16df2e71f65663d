@@ -39,6 +39,30 @@
       },
       "revId": "f18859626c46f88650b05398b16df2e71f65663d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "419bd1b0_4d117f19",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T19:27:24Z",
+      "side": 1,
+      "message": "Looking at this more carefully, the depfile is per-shard, but it really shouldn\u0027t be - in a gensrcs command every source file should have its own depfile, and then they all need to be merged together into a per-shard output depfile.  I\u0027ll fix that and improve the comments in a followup change.",
+      "parentUuid": "4cbfbff9_aa8c9400",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 5
+      },
+      "revId": "f18859626c46f88650b05398b16df2e71f65663d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
