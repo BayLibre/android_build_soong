@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab78362_1016a7e6",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-11-24T21:06:46Z",
+      "side": 1,
+      "message": "Pretty much what Matthew says. We could continue to emulate the gen_mod_rs flag by maintaining our own codegen that produces the meta module; that would allow us to process the proto files independently. But we\u0027d like to move away from doing our own codegen here if possible.",
+      "parentUuid": "6b0602f8_1af539df",
+      "revId": "78c2eaebc142243a1f47b8a2131a0bbe78bdf0b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "787af6be_490d791a",
