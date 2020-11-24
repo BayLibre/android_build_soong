@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dad596d1_30150148",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T08:16:49Z",
+      "side": 1,
+      "message": "My question was about the \u0027bool\u0027 return value.",
+      "parentUuid": "76ca2c5b_152dd145",
+      "range": {
+        "startLine": 208,
+        "startChar": 47,
+        "endLine": 208,
+        "endChar": 51
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59e29403_2025052f",
         "filename": "android/packaging.go",
         "patchSetId": 3
