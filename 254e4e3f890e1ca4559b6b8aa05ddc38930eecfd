@@ -114,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eda228b6_a8d189a8",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T18:43:39Z",
+      "side": 1,
+      "message": "I\u0027m not either. :) But, something like \"This struct allows StaticProperties and SharedProperties to share the same set of properties and is not meant to be used by itself.\" would suffice?",
+      "parentUuid": "f193ea0e_dfd8c954",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d5f6e157_79137bb8",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -643,6 +661,24 @@
       "side": 1,
       "message": "Feel free to rename these, especially if there is some analogue in Bazel to follow.",
       "parentUuid": "465b3116_fb699de9",
+      "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9b4628_7d5e56d7",
+        "filename": "cc/linkable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T18:43:39Z",
+      "side": 1,
+      "message": "I\u0027d at least switch this and SharedLibraryImplementationStubsInfo, so that they are presented in semantic order. Also, IIUIC, stub shared library dependencies are inter-variant ones, established from the implementation variant one to all other stub ones. Mentioning this would help readers understand these structs better.",
+      "parentUuid": "7b2bdde2_f9d8cbd6",
       "revId": "254e4e3f890e1ca4559b6b8aa05ddc38930eecfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
