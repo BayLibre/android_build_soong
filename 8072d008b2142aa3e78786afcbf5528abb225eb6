@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8e5c6e_0eb9ca19",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-24T05:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ccf23f8_1d3f3032",
+      "range": {
+        "startLine": 208,
+        "startChar": 24,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ca2c5b_152dd145",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-24T05:32:04Z",
+      "side": 1,
+      "message": "Because (IIUC) there is no other way to get file name from PackagingSpec.",
+      "parentUuid": "a7797f2d_4df3502f",
+      "range": {
+        "startLine": 208,
+        "startChar": 47,
+        "endLine": 208,
+        "endChar": 51
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59e29403_2025052f",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-24T02:03:44Z",
       "side": 1,
       "message": "Move this to just after PackagingSpec definition",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 1
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20212d67_3301bb76",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-24T05:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59e29403_2025052f",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ef9c699_1a48ac29",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-24T05:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c7c9b9_4b66064a",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "669dc64d_0fee4eb7",
@@ -106,6 +202,30 @@
       "writtenOn": "2020-11-24T02:20:07Z",
       "side": 1,
       "message": "I think this can be a free function rather than a method of *cc.Module.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19b1f2e_9feee82b",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-24T05:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "669dc64d_0fee4eb7",
       "range": {
         "startLine": 36,
         "startChar": 0,
@@ -133,6 +253,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91eea08_589de0fc",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-24T05:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35a4909f_1e53f8cd",
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2ce70c1_3fa176f1",
@@ -146,6 +284,30 @@
       "writtenOn": "2020-11-24T02:03:44Z",
       "side": 1,
       "message": "Move this to the linkerConfig struct and access them in the make vars provider using VisitAllModulesIf",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "792dd4b0_6bd56108",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-24T05:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2ce70c1_3fa176f1",
       "range": {
         "startLine": 27,
         "startChar": 0,

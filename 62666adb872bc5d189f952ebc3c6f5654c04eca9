@@ -180,6 +180,30 @@
       },
       "revId": "62666adb872bc5d189f952ebc3c6f5654c04eca9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f103de_aa3afecc",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-11-24T05:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c37ef34a_05f0b6d0",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "62666adb872bc5d189f952ebc3c6f5654c04eca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
