@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df27caca_8b31615d",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-11-24T06:01:10Z",
+      "side": 1,
+      "message": "We can just return `\"\"` instead of `(\"\", false)` (I guess Jiyong meant this.)",
+      "range": {
+        "startLine": 44,
+        "startChar": 44,
+        "endLine": 44,
+        "endChar": 48
+      },
+      "revId": "750dbf330154b2f7c17f063826a71deff8ae68a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4896bb52_4b2bf97a",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-11-24T06:01:10Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "750dbf330154b2f7c17f063826a71deff8ae68a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa552f6d_06f6551d",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-11-24T06:01:10Z",
+      "side": 1,
+      "message": "nit: members can be initialized on creation in a factory.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "750dbf330154b2f7c17f063826a71deff8ae68a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
