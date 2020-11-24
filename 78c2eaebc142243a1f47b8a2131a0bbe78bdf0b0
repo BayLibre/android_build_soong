@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0602f8_1af539df",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-11-24T19:06:05Z",
+      "side": 1,
+      "message": "In this case we were trying to make of the upstream `gen_mod_rs` flag which generates a meta-module containing all the generated protos in order to allow grpc + protobuf code to find each other. That flag needs to see all the protos. See b/172952239 for additional context. We could possibly fake this with additional in-Soong code generation, but that feels rather hackish.",
+      "parentUuid": "64181940_94cdf945",
+      "revId": "78c2eaebc142243a1f47b8a2131a0bbe78bdf0b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "787af6be_490d791a",
