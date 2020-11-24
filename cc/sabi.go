@@ -27,8 +27,10 @@ var (
 )
 
 type SAbiProperties struct {
-	// True if need to generate ABI dump.
-	CreateSAbiDumps bool `blueprint:"mutated"`
+	// Whether ABI dump should be created for this module.
+	// Set by `sabiDepsMutator` if this modules is a direct or indirect dependency of libraries that
+	// need ABI check.
+	ShouldCreateSourceAbiDump bool `blueprint:"mutated"`
 
 	// Include directories that may contain ABI information exported by a library.
 	// These directories are passed to the header-abi-dumper.
@@ -60,37 +62,87 @@ func (sabimod *sabi) flags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
-func shouldSkipSabiDepsMutator(mctx android.TopDownMutatorContext, m *Module) bool {
-	if m.sabi != nil && m.sabi.Properties.CreateSAbiDumps {
+// Check whether ABI dumps should be created for this module.
+// ctx should be wrapping a native library type module.
+func shouldCreateSourceAbiDump(ctx BaseModuleContext) bool {
+	if ctx.Config().IsEnvTrue("SKIP_ABI_CHECKS") {
 		return false
 	}
-	if library, ok := m.linker.(*libraryDecorator); ok {
-		ctx := &baseModuleContext{
-			BaseModuleContext: mctx,
-			moduleContextImpl: moduleContextImpl{
-				mod: m,
-			},
-		}
-		ctx.ctx = ctx
-		return !library.shouldCreateSourceAbiDump(ctx)
+
+	if ctx.Fuchsia() {
+		return false
 	}
-	return true
+
+	// Only generate ABI dump for device modules.
+	if !ctx.Device() {
+		return false
+	}
+
+	m := ctx.Module().(*Module)
+	library := m.library
+
+	// Don't create ABI dump for prebuilts.
+	if m.Prebuilt() != nil || m.isSnapshotPrebuilt() {
+		return false
+	}
+
+	// Only create ABI dump for native library module types.
+	if library == nil {
+		return false
+	}
+
+	// Coverage builds have extra symbols.
+	if m.isCoverageVariant() {
+		return false
+	}
+
+	if m.sanitize != nil && !m.sanitize.isVariantOnProductionDevice() {
+		return false
+	}
+
+	// Don't create ABI dump for stubs.
+	if m.isNDKStubLibrary() || library.buildStubs() {
+		return false
+	}
+
+	// Special case for APEX variants.
+	if !ctx.isForPlatform() {
+		if !library.hasStubsVariants() {
+			// Skip ABI checks if this library is for APEX but isn't exported.
+			return false
+		}
+		if !library.headerAbiCheckerEnabled() {
+			// Skip ABI checks if this library is for APEX and did not explicitly enable
+			// ABI checks.
+			// TODO(b/145608479): ABI checks should be enabled by default. Remove this
+			// after evaluating the extra build time.
+			return false
+		}
+	}
+	return classifySourceAbiDump(ctx) != ""
 }
 
 // Mark the direct and transitive dependencies of libraries that need ABI check, so that ABI dumps
 // of their dependencies would be generated.
 func sabiDepsMutator(mctx android.TopDownMutatorContext) {
-	if c, ok := mctx.Module().(*Module); ok {
-		if shouldSkipSabiDepsMutator(mctx, c) {
-			return
+	if c, ok := mctx.Module().(*Module); ok && c.sabi != nil {
+		ctx := &baseModuleContext{
+			BaseModuleContext: mctx,
+			moduleContextImpl: moduleContextImpl{
+				mod: c,
+			},
 		}
-		mctx.VisitDirectDeps(func(m android.Module) {
-			if tag, ok := mctx.OtherModuleDependencyTag(m).(libraryDependencyTag); ok && tag.static() {
-				if cc, ok := m.(*Module); ok {
-					cc.sabi.Properties.CreateSAbiDumps = true
+		ctx.ctx = ctx
+		if c.sabi.Properties.ShouldCreateSourceAbiDump || shouldCreateSourceAbiDump(ctx) {
+			c.sabi.Properties.ShouldCreateSourceAbiDump = true
+			mctx.VisitDirectDeps(func(m android.Module) {
+				if tag, ok := mctx.OtherModuleDependencyTag(m).(libraryDependencyTag); ok && tag.static() {
+					if cc, ok := m.(*Module); ok {
+						cc.sabi.Properties.ShouldCreateSourceAbiDump = true
+					}
 				}
-			}
-		})
+			})
+		}
 	}
 }
 
