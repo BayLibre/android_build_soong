@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4083d499_0444dd3d",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T22:48:42Z",
+      "side": 1,
+      "message": "I think the only way to support that is if there is some way to write dependency information out for all the proto files, either combined or to individual depsfiles that we can merge using dep_fixer.  That is probably an upstream protoc feature request.",
+      "parentUuid": "7ab78362_1016a7e6",
+      "revId": "78c2eaebc142243a1f47b8a2131a0bbe78bdf0b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "787af6be_490d791a",
