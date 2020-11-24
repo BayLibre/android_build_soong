@@ -16,6 +16,29 @@
       "message": "This is ready for review",
       "revId": "f18859626c46f88650b05398b16df2e71f65663d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbfbff9_aa8c9400",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-24T19:11:41Z",
+      "side": 1,
+      "message": "Should we comment that the depfile is per-shard, so that this doesn\u0027t accidentally get re-ordered?",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 5
+      },
+      "revId": "f18859626c46f88650b05398b16df2e71f65663d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
