@@ -72,6 +72,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50c7c9b9_4b66064a",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-11-24T02:20:07Z",
+      "side": 1,
+      "message": "make this as a member of stubLibrariesSingleton?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "669dc64d_0fee4eb7",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-11-24T02:20:07Z",
+      "side": 1,
+      "message": "I think this can be a free function rather than a method of *cc.Module.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 38
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35a4909f_1e53f8cd",
         "filename": "linkerconfig/linkerconfig.go",
         "patchSetId": 3
