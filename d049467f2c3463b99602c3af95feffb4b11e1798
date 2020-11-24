@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9917308_177dedf5",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T04:35:55Z",
+      "side": 1,
+      "message": "Can you put this in a rust.RegisterRequiredBuildComponentsForTest?",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "d049467f2c3463b99602c3af95feffb4b11e1798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a6ed42_1880dec6",
+        "filename": "cc/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T04:35:55Z",
+      "side": 1,
+      "message": "Seems unexpected that rust would add a dependency on libgcc if cc rules don\u0027t use it.  Ivan, does rust need to be converted to compiler-rt?",
+      "revId": "d049467f2c3463b99602c3af95feffb4b11e1798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
