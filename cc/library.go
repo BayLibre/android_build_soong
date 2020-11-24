@@ -559,11 +559,19 @@ func (library *libraryDecorator) compilerFlags(ctx ModuleContext, flags Flags, d
 	return flags
 }
 
+func (library *libraryDecorator) headerAbiCheckerEnabled() bool {
+	return Bool(library.Properties.Header_abi_checker.Enabled)
+}
+
+func (library *libraryDecorator) headerAbiCheckerExplicitlyDisabled() bool {
+	return !BoolDefault(library.Properties.Header_abi_checker.Enabled, true)
+}
+
 // Returns a string that represents the class of the ABI dump.
 // Returns an empty string if ABI check is disabled for this library.
-func (library *libraryDecorator) classifySourceAbiDump(ctx BaseModuleContext) string {
-	enabled := library.Properties.Header_abi_checker.Enabled
-	if enabled != nil && !Bool(enabled) {
+func classifySourceAbiDump(ctx BaseModuleContext) string {
+	library := ctx.Module().(*Module).library
+	if library.headerAbiCheckerExplicitlyDisabled() {
 		return ""
 	}
 	// Return NDK if the library is both NDK and LLNDK.
@@ -588,22 +596,63 @@ func (library *libraryDecorator) classifySourceAbiDump(ctx BaseModuleContext) st
 			}
 		}
 	}
-	if Bool(enabled) || library.hasStubsVariants() {
+	if library.headerAbiCheckerEnabled() || library.hasStubsVariants() {
 		return "PLATFORM"
 	}
 	return ""
 }
 
-func (library *libraryDecorator) shouldCreateSourceAbiDump(ctx BaseModuleContext) bool {
-	if !ctx.shouldCreateSourceAbiDump() {
+// Check whether ABI dumps should be created for this module.
+// ctx should be wrapping a native library type module.
+func shouldCreateSourceAbiDump(ctx BaseModuleContext) bool {
+	m := ctx.Module().(*Module)
+	library := m.library
+
+	// Only create ABI dump for native library module types.
+	if library == nil {
 		return false
 	}
+
+	// If this library is depended on by another library that needs ABI check, then generate ABI dump
+	// for this library, too.
+	if m.sabi.Properties.CreateSourceAbiDump {
+		return true
+	}
+
+	if ctx.Config().IsEnvTrue("SKIP_ABI_CHECKS") {
+		return false
+	}
+
+	if ctx.Fuchsia() {
+		return false
+	}
+
+	// Only generate ABI dump for device modules.
+	if !ctx.Device() {
+		return false
+	}
+
+	// Coverage builds have extra symbols.
+	if m.isCoverageVariant() {
+		return false
+	}
+
+	if m.sanitize != nil && !m.sanitize.isVariantOnProductionDevice() {
+		return false
+	}
+
+	// Don't generate ABI dump for stubs.
+	if m.isNDKStubLibrary() || library.buildStubs() {
+		return false
+	}
+
+	// Special case for APEX variants.
 	if !ctx.isForPlatform() {
 		if !library.hasStubsVariants() {
 			// Skip ABI checks if this library is for APEX but isn't exported.
 			return false
 		}
-		if !Bool(library.Properties.Header_abi_checker.Enabled) {
+		if !library.headerAbiCheckerEnabled() {
 			// Skip ABI checks if this library is for APEX and did not explicitly enable
 			// ABI checks.
 			// TODO(b/145608479): ABI checks should be enabled by default. Remove this
@@ -611,7 +660,7 @@ func (library *libraryDecorator) shouldCreateSourceAbiDump(ctx BaseModuleContext
 			return false
 		}
 	}
-	return library.classifySourceAbiDump(ctx) != ""
+	return classifySourceAbiDump(ctx) != ""
 }
 
 func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
@@ -633,7 +682,7 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		}
 		return Objects{}
 	}
-	if library.shouldCreateSourceAbiDump(ctx) || library.sabi.Properties.CreateSAbiDumps {
+	if shouldCreateSourceAbiDump(ctx) {
 		exportIncludeDirs := library.flagExporter.exportedIncludes(ctx)
 		var SourceAbiFlags []string
 		for _, dir := range exportIncludeDirs.Strings() {
@@ -682,6 +731,10 @@ type libraryInterface interface {
 	// Sets whether a specific variant is static or shared
 	setStatic()
 	setShared()
+
+	// Check whether header_abi_checker is enabled or explicitly disabled.
+	headerAbiCheckerEnabled() bool
+	headerAbiCheckerExplicitlyDisabled() bool
 
 	// Write LOCAL_ADDITIONAL_DEPENDENCIES for ABI diff
 	androidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer)
@@ -1121,7 +1174,7 @@ func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.
 }
 
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string, soFile android.Path) {
-	if library.shouldCreateSourceAbiDump(ctx) {
+	if shouldCreateSourceAbiDump(ctx) {
 		var vndkVersion string
 
 		if ctx.useVndk() {
@@ -1146,7 +1199,7 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 			library.Properties.Header_abi_checker.Exclude_symbol_versions,
 			library.Properties.Header_abi_checker.Exclude_symbol_tags)
 
-		addLsdumpPath(library.classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
+		addLsdumpPath(classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
 
 		refAbiDumpFile := getRefAbiDumpFile(ctx, vndkVersion, fileName)
 		if refAbiDumpFile != nil {
