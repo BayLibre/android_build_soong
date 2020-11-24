@@ -24,6 +24,52 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fac039d_f43b2483",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T06:30:15Z",
+      "side": 1,
+      "message": "Action is a Bazel term, use \"build statement\" since rules and build statements are different. Here and all new comments below.",
+      "range": {
+        "startLine": 506,
+        "startChar": 26,
+        "endLine": 506,
+        "endChar": 32
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2849618_99364a55",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T06:30:15Z",
+      "side": 1,
+      "message": "build statement",
+      "range": {
+        "startLine": 601,
+        "startChar": 27,
+        "endLine": 601,
+        "endChar": 34
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "da778490_28e9fd07",
@@ -88,6 +134,29 @@
         "startChar": 13,
         "endLine": 1023,
         "endChar": 18
+      },
+      "revId": "2be00cf083277a37186578faf739a01886a09dc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9a5e558_4dd95e0c",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T06:30:15Z",
+      "side": 1,
+      "message": "build statement",
+      "range": {
+        "startLine": 1055,
+        "startChar": 3,
+        "endLine": 1055,
+        "endChar": 7
       },
       "revId": "2be00cf083277a37186578faf739a01886a09dc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
