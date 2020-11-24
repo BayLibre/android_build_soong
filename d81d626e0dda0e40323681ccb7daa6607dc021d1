@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5d75f4_bbb7dc2d",
+        "filename": "java/java.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T00:13:56Z",
+      "side": 1,
+      "message": "This assertion to a concrete type will give incorrect results for anything that wraps a *Library.  For example, this won\u0027t catch a dependency on a *Binary.  Can this be an interface instead?",
+      "range": {
+        "startLine": 774,
+        "startChar": 34,
+        "endLine": 774,
+        "endChar": 45
+      },
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf15b28a_4a1c2895",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T00:13:56Z",
+      "side": 1,
+      "message": "Can you add lots of comments here to define what these groups are/mean?",
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd45c9e3_52937ff3",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T00:13:56Z",
+      "side": 1,
+      "message": "document these functions for callers",
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab7de19_60a2a350",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T00:13:56Z",
+      "side": 1,
+      "message": "Can you add an explanation why !enforce still enforces the checks besides between system and product?",
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf282ef_8f7fe539",
+        "filename": "java/sdk_library_external.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-24T00:13:56Z",
+      "side": 1,
+      "message": "I think the short names only work if it is obvious from looking at the rest of the line what they mean. These are pretty intricate.  Maybe something in between, like productToSystem and systemToProduct?",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "d81d626e0dda0e40323681ccb7daa6607dc021d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
