@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf1d2bc8_c4fedb4d",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T00:29:23Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t know. Deleted.",
+      "parentUuid": "76d53f02_ab3bcc66",
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef557bda_7702b54d",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-24T00:07:36Z",
       "side": 1,
       "message": "I think the current comment more accurately describes this property. This new one sounds like it is identical to the package name in the manifest file, when what it really does is overriding it.",
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83421020_1c31810c",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T00:29:23Z",
+      "side": 1,
+      "message": "Restored the original comment.",
+      "parentUuid": "ef557bda_7702b54d",
       "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -60,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de4479dc_578b5ce6",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T00:29:23Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t understand how this caused such a confusion. I\u0027ve slightly modified the sentence. How does it look to you?",
+      "parentUuid": "7740a176_0fc84f15",
+      "range": {
+        "startLine": 303,
+        "startChar": 50,
+        "endLine": 303,
+        "endChar": 60
+      },
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da91cedd_cb91e1d3",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -71,6 +131,24 @@
       "writtenOn": "2020-11-24T00:07:36Z",
       "side": 1,
       "message": "What about moving this to apex/androidmk.go and making it unexported?",
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cc4dc9_4d3a0010",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T00:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da91cedd_cb91e1d3",
       "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -98,6 +176,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb404fd_30f54b08",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T00:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e15456a8_37d11879",
+      "range": {
+        "startLine": 883,
+        "startChar": 58,
+        "endLine": 883,
+        "endChar": 65
+      },
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6216aa83_82b1d00c",
@@ -111,6 +213,30 @@
       "writtenOn": "2020-11-24T00:07:36Z",
       "side": 1,
       "message": "Double whitespaces.",
+      "range": {
+        "startLine": 1707,
+        "startChar": 78,
+        "endLine": 1707,
+        "endChar": 79
+      },
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92dd165_fc3713ae",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-24T00:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6216aa83_82b1d00c",
       "range": {
         "startLine": 1707,
         "startChar": 78,
