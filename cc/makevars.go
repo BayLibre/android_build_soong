@@ -135,6 +135,11 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 
 	ctx.Strict("INTEGER_OVERFLOW_EXTRA_CFLAGS", strings.Join(intOverflowCflags, " "))
 
+	ctx.Strict("RETURN_ADDRESS_SANITIZER_EXTRA_CFLAGS", strings.Join(return_addressCFlags, " "))
+	ctx.Strict("RETURN_AND_INDIRECT_SANITIZER_EXTRA_CFLAGS", strings.Join(returnAndIndirectCflags, " "))
+	ctx.Strict("INDIRECT_BRANCH_SANITIZER_EXTRA_CFLAGS", strings.Join(indirect_branchCFlags, " "))
+	ctx.Strict("INDIRECT_BRANCH_SANITIZER_EXTRA_LDFLAGS", strings.Join(indirect_branchLdFlags, " "))
+
 	ctx.Strict("DEFAULT_C_STD_VERSION", config.CStdVersion)
 	ctx.Strict("DEFAULT_CPP_STD_VERSION", config.CppStdVersion)
 	ctx.Strict("EXPERIMENTAL_C_STD_VERSION", config.ExperimentalCStdVersion)

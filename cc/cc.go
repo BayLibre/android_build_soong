@@ -72,6 +72,12 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		ctx.TopDown("scs_deps", sanitizerDepsMutator(scs))
 		ctx.BottomUp("scs", sanitizerMutator(scs)).Parallel()
 
+		ctx.TopDown("return_address_deps", sanitizerDepsMutator(return_address))
+		ctx.BottomUp("return_address", sanitizerMutator(return_address)).Parallel()
+
+		ctx.TopDown("indirect_branch_deps", sanitizerDepsMutator(indirect_branch))
+		ctx.BottomUp("indirect_branch", sanitizerMutator(indirect_branch)).Parallel()
+
 		ctx.TopDown("tsan_deps", sanitizerDepsMutator(tsan))
 		ctx.BottomUp("tsan", sanitizerMutator(tsan)).Parallel()
 

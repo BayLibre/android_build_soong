@@ -69,6 +69,11 @@ var (
 		"-fno-sanitize-recover=integer,undefined"}
 	hwasanGlobalOptions = []string{"heap_history_size=1023", "stack_history_size=512",
 		"export_memory_stats=0", "max_malloc_fill_size=0"}
+
+	return_addressCFlags = []string{"-mbranch-protection=pac-ret"}
+	indirect_branchCFlags = []string{"-mbranch-protection=bti"}
+	indirect_branchLdFlags = []string{"-Werror","-Wl,-zforce-bti"}
+	returnAndIndirectCflags = []string{"-mbranch-protection=standard"}
 )
 
 type sanitizerType int
@@ -89,6 +94,8 @@ const (
 	cfi
 	scs
 	fuzzer
+	return_address
+	indirect_branch
 )
 
 // Name of the sanitizer variation for this sanitizer type
@@ -108,6 +115,10 @@ func (t sanitizerType) variationName() string {
 		return "scs"
 	case fuzzer:
 		return "fuzzer"
+	case return_address:
+		return "return_address"
+	case indirect_branch:
+		return "indirect_branch"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -130,6 +141,10 @@ func (t sanitizerType) name() string {
 		return "shadow-call-stack"
 	case fuzzer:
 		return "fuzzer"
+	case return_address:
+		return "return_address"
+	case indirect_branch:
+		return "indirect_branch"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -157,6 +172,8 @@ type SanitizeUserProps struct {
 	Integer_overflow *bool    `android:"arch_variant"`
 	Scudo            *bool    `android:"arch_variant"`
 	Scs              *bool    `android:"arch_variant"`
+	Return_address   *bool    `android:"arch_variant"`
+	Indirect_branch  *bool    `android:"arch_variant"`
 
 	// A modifier for ASAN and HWASAN for write only instrumentation
 	Writeonly *bool `android:"arch_variant"`
@@ -296,6 +313,14 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Writeonly = boolPtr(true)
 		}
 
+		if found, globalSanitizers = removeFromList("return_address", globalSanitizers); found && s.Return_address == nil {
+			s.Return_address = boolPtr(true)
+		}
+
+		if found, globalSanitizers = removeFromList("indirect_branch", globalSanitizers); found && s.Indirect_branch == nil {
+			s.Indirect_branch = boolPtr(true)
+		}
+
 		if len(globalSanitizers) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
@@ -344,6 +369,16 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	// SCS is only implemented on AArch64.
 	if ctx.Arch().ArchType != android.Arm64 {
 		s.Scs = nil
+	}
+
+	// Disable return_address sanitizer on architectures other than AArch64.
+	if ctx.Arch().ArchType != android.Arm64 {
+		s.Return_address = nil
+	}
+
+	// Disable indirect_branch sanitizer on architectures other than AArch64.
+	if ctx.Arch().ArchType != android.Arm64 {
+		s.Indirect_branch = nil
 	}
 
 	// Also disable CFI if ASAN is enabled.
@@ -400,7 +435,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	if ctx.Os() != android.Windows && (Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
 		Bool(s.Fuzzer) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer_overflow) || len(s.Misc_undefined) > 0 ||
-		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs)) {
+		Bool(s.Scudo) || Bool(s.Hwaddress) || Bool(s.Scs) || Bool(s.Return_address) || Bool(s.Indirect_branch)) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -560,8 +595,28 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.Local.CFlags = append(flags.Local.CFlags, intOverflowCflags...)
 	}
 
-	if len(sanitize.Properties.Sanitizers) > 0 {
-		sanitizeArg := "-fsanitize=" + strings.Join(sanitize.Properties.Sanitizers, ",")
+	if Bool(sanitize.Properties.Sanitize.Return_address) || Bool(sanitize.Properties.Sanitize.Indirect_branch) {
+		if Bool(sanitize.Properties.Sanitize.Return_address) && Bool(sanitize.Properties.Sanitize.Indirect_branch) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(returnAndIndirectCflags, " "))
+			flags.Local.AsFlags = append(flags.Local.AsFlags, strings.Join(returnAndIndirectCflags, " "))
+		} else if Bool(sanitize.Properties.Sanitize.Return_address) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(return_addressCFlags, " "))
+			flags.Local.AsFlags = append(flags.Local.AsFlags, strings.Join(return_addressCFlags, " "))
+		} else if Bool(sanitize.Properties.Sanitize.Indirect_branch) {
+			flags.Local.CFlags = append(flags.Local.CFlags, strings.Join(indirect_branchCFlags, " "))
+			flags.Local.AsFlags = append(flags.Local.AsFlags, strings.Join(indirect_branchCFlags, " "))
+		}
+		if Bool(sanitize.Properties.Sanitize.Indirect_branch) {
+			flags.Local.LdFlags = append(flags.Local.LdFlags, strings.Join(indirect_branchLdFlags, " "))
+		}
+	}
+
+	// Not all sanitizers has -fsanitize flag.
+	fsanitize := sanitize.Properties.Sanitizers
+	_, fsanitize = removeFromList("return_address", fsanitize)
+	_, fsanitize = removeFromList("indirect_branch", fsanitize)
+	if len(fsanitize) > 0 {
+		sanitizeArg := "-fsanitize=" + strings.Join(fsanitize, ",")
 
 		flags.Local.CFlags = append(flags.Local.CFlags, sanitizeArg)
 		flags.Local.AsFlags = append(flags.Local.AsFlags, sanitizeArg)
@@ -660,6 +715,10 @@ func (sanitize *sanitize) getSanitizerBoolPtr(t sanitizerType) *bool {
 		return sanitize.Properties.Sanitize.Scs
 	case fuzzer:
 		return sanitize.Properties.Sanitize.Fuzzer
+	case return_address:
+		return sanitize.Properties.Sanitize.Return_address
+	case indirect_branch:
+		return sanitize.Properties.Sanitize.Indirect_branch
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -671,7 +730,9 @@ func (sanitize *sanitize) isUnsanitizedVariant() bool {
 		!sanitize.isSanitizerEnabled(tsan) &&
 		!sanitize.isSanitizerEnabled(cfi) &&
 		!sanitize.isSanitizerEnabled(scs) &&
-		!sanitize.isSanitizerEnabled(fuzzer)
+		!sanitize.isSanitizerEnabled(fuzzer) &&
+		!sanitize.isSanitizerEnabled(return_address) &&
+		!sanitize.isSanitizerEnabled(indirect_branch)
 }
 
 func (sanitize *sanitize) isVariantOnProductionDevice() bool {
@@ -697,6 +758,10 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 		sanitize.Properties.Sanitize.Scs = boolPtr(b)
 	case fuzzer:
 		sanitize.Properties.Sanitize.Fuzzer = boolPtr(b)
+	case return_address:
+		sanitize.Properties.Sanitize.Return_address = boolPtr(b)
+	case indirect_branch:
+		sanitize.Properties.Sanitize.Indirect_branch = boolPtr(b)
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -788,7 +853,8 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 					if d, ok := child.(*Module); ok && d.sanitize != nil &&
 						!Bool(d.sanitize.Properties.Sanitize.Never) &&
 						!d.sanitize.isSanitizerExplicitlyDisabled(t) {
-						if t == cfi || t == hwasan || t == scs {
+						if t == cfi || t == hwasan || t == scs || t == indirect_branch ||
+						   t == return_address {
 							if d.static() {
 								d.sanitize.Properties.SanitizeDep = true
 							}
@@ -951,6 +1017,14 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 
 		if Bool(c.sanitize.Properties.Sanitize.Fuzzer) {
 			sanitizers = append(sanitizers, "fuzzer-no-link")
+		}
+
+		if Bool(c.sanitize.Properties.Sanitize.Return_address) {
+			sanitizers = append(sanitizers, "return_address")
+		}
+
+		if Bool(c.sanitize.Properties.Sanitize.Indirect_branch) {
+			sanitizers = append(sanitizers, "indirect_branch")
 		}
 
 		// Save the list of sanitizers. These will be used again when generating
