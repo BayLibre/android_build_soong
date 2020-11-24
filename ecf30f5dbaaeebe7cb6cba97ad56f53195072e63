@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a87ce50_ad4ddddb",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-24T01:52:25Z",
+      "side": 1,
+      "message": "Thanks! It\u0027ll be great if this could be added to the comment.",
+      "parentUuid": "e8fdf9d5_caef11d2",
+      "range": {
+        "startLine": 69,
+        "startChar": 91,
+        "endLine": 70,
+        "endChar": 92
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3a08669_2f71e85f",
         "filename": "java/aapt2.go",
         "patchSetId": 2
