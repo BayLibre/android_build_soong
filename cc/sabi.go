@@ -27,8 +27,10 @@ var (
 )
 
 type SAbiProperties struct {
-	// True if need to generate ABI dump.
-	CreateSAbiDumps bool `blueprint:"mutated"`
+	// Whether ABI dump should be created for this module.
+	// Set by `sabiDepsMutator` if this modules is a direct or indirect dependency of libraries that
+	// need ABI check.
+	CreateSourceAbiDump bool `blueprint:"mutated"`
 
 	// Include directories that may contain ABI information exported by a library.
 	// These directories are passed to the header-abi-dumper.
@@ -37,19 +39,22 @@ type SAbiProperties struct {
 
 type sabi struct {
 	Properties SAbiProperties
+
+	// Protect `Properties.CreateSourceAbiDump` during parallel `sabiDepsMutator`.
+	CreateSourceAbiDumpLock sync.Mutex
 }
 
-func (sabimod *sabi) props() []interface{} {
-	return []interface{}{&sabimod.Properties}
+func (sabi *sabi) props() []interface{} {
+	return []interface{}{&sabi.Properties}
 }
 
-func (sabimod *sabi) begin(ctx BaseModuleContext) {}
+func (sabi *sabi) begin(ctx BaseModuleContext) {}
 
-func (sabimod *sabi) deps(ctx BaseModuleContext, deps Deps) Deps {
+func (sabi *sabi) deps(ctx BaseModuleContext, deps Deps) Deps {
 	return deps
 }
 
-func (sabimod *sabi) flags(ctx ModuleContext, flags Flags) Flags {
+func (sabi *sabi) flags(ctx ModuleContext, flags Flags) Flags {
 	// Filter out flags which libTooling don't understand.
 	// This is here for legacy reasons and future-proof, in case the version of libTooling and clang
 	// diverge.
@@ -60,37 +65,32 @@ func (sabimod *sabi) flags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
-func shouldSkipSabiDepsMutator(mctx android.TopDownMutatorContext, m *Module) bool {
-	if m.sabi != nil && m.sabi.Properties.CreateSAbiDumps {
-		return false
-	}
-	if library, ok := m.linker.(*libraryDecorator); ok {
-		ctx := &baseModuleContext{
-			BaseModuleContext: mctx,
-			moduleContextImpl: moduleContextImpl{
-				mod: m,
-			},
-		}
-		ctx.ctx = ctx
-		return !library.shouldCreateSourceAbiDump(ctx)
-	}
-	return true
+func (sabi *sabi) markCreateSourceAbiDump() {
+	sabi.CreateSourceAbiDumpLock.Lock()
+	defer sabi.CreateSourceAbiDumpLock.Unlock()
+	sabi.Properties.CreateSourceAbiDump = true
 }
 
 // Mark the direct and transitive dependencies of libraries that need ABI check, so that ABI dumps
 // of their dependencies would be generated.
 func sabiDepsMutator(mctx android.TopDownMutatorContext) {
 	if c, ok := mctx.Module().(*Module); ok {
-		if shouldSkipSabiDepsMutator(mctx, c) {
-			return
+		ctx := &baseModuleContext{
+			BaseModuleContext: mctx,
+			moduleContextImpl: moduleContextImpl{
+				mod: c,
+			},
 		}
-		mctx.VisitDirectDeps(func(m android.Module) {
-			if tag, ok := mctx.OtherModuleDependencyTag(m).(libraryDependencyTag); ok && tag.static() {
-				if cc, ok := m.(*Module); ok {
-					cc.sabi.Properties.CreateSAbiDumps = true
+		ctx.ctx = ctx
+		if shouldCreateSourceAbiDump(ctx) {
+			mctx.VisitDirectDeps(func(m android.Module) {
+				if tag, ok := mctx.OtherModuleDependencyTag(m).(libraryDependencyTag); ok && tag.static() {
+					if cc, ok := m.(*Module); ok {
+						cc.sabi.markCreateSourceAbiDump()
+					}
 				}
-			}
-		})
+			})
+		}
 	}
 }
 

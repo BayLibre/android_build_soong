@@ -89,7 +89,7 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 
 	ctx.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		// sabi mutator needs to be run after apex mutator finishes.
-		ctx.TopDown("sabi_deps", sabiDepsMutator)
+		ctx.TopDown("sabi_deps", sabiDepsMutator).Parallel()
 	})
 
 	ctx.RegisterSingletonType("kythe_extract_all", kytheExtractAllFactory)
@@ -1191,38 +1191,7 @@ func (ctx *moduleContextImpl) mustUseVendorVariant() bool {
 
 // Check whether ABI dumps should be created for this module.
 func (ctx *moduleContextImpl) shouldCreateSourceAbiDump() bool {
-	if ctx.ctx.Config().IsEnvTrue("SKIP_ABI_CHECKS") {
-		return false
-	}
-
-	// Coverage builds have extra symbols.
-	if ctx.mod.isCoverageVariant() {
-		return false
-	}
-
-	if ctx.ctx.Fuchsia() {
-		return false
-	}
-
-	if sanitize := ctx.mod.sanitize; sanitize != nil {
-		if !sanitize.isVariantOnProductionDevice() {
-			return false
-		}
-	}
-	if !ctx.ctx.Device() {
-		// Host modules do not need ABI dumps.
-		return false
-	}
-	if ctx.isNDKStubLibrary() {
-		// Stubs do not need ABI dumps.
-		return false
-	}
-	if lib := ctx.mod.library; lib != nil && lib.buildStubs() {
-		// Stubs do not need ABI dumps.
-		return false
-	}
-
-	return true
+	return shouldCreateSourceAbiDump(ctx.ctx)
 }
 
 func (ctx *moduleContextImpl) selectedStl() string {
