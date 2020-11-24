@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6797ae4_1085f724",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-24T01:56:32Z",
+      "side": 1,
+      "message": "LGTM, thanks!",
+      "parentUuid": "de4479dc_578b5ce6",
+      "range": {
+        "startLine": 303,
+        "startChar": 50,
+        "endLine": 303,
+        "endChar": 60
+      },
+      "revId": "080fb23d75f690f4d16cc36b2742a988c5b6e747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da91cedd_cb91e1d3",
