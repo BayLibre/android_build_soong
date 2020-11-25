@@ -22,6 +22,75 @@
       },
       "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d24f05a9_f505d823",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-25T08:06:21Z",
+      "side": 1,
+      "message": ".. at the root of the tree, since Kati does not recurse into subdirectories once it encounters these files. Android.mk and CleanSpec.mk files are ok elsewhere.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7851415_24ea3d90",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-25T08:06:21Z",
+      "side": 1,
+      "message": "nit: checkCaseSensitivity issues a warning..",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530aee2a_27cd2d2d",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-25T08:06:21Z",
+      "side": 1,
+      "message": "rwx",
+      "range": {
+        "startLine": 258,
+        "startChar": 88,
+        "endLine": 258,
+        "endChar": 91
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
