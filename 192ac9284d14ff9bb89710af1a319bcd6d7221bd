@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caac815a_8694f372",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-25T03:14:02Z",
+      "side": 1,
+      "message": "maybe implicitPaths instead of paths?",
+      "range": {
+        "startLine": 583,
+        "startChar": 2,
+        "endLine": 583,
+        "endChar": 7
+      },
+      "revId": "192ac9284d14ff9bb89710af1a319bcd6d7221bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
