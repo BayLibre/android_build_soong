@@ -21,7 +21,9 @@ import (
 	"regexp"
 	"runtime"
 	"sort"
+	"strconv"
 	"strings"
+	"unicode/utf8"
 )
 
 // CopyOf returns a new slice that has the same contents as s.
@@ -446,4 +448,77 @@ func CheckDuplicate(values []string) (duplicate string, found bool) {
 		seen[v] = v
 	}
 	return "", false
+}
+
+func numericStringLess(a, b string) bool {
+	byteIndex := 0
+	// Start with a byte comparison to find where the strings differ
+	for ; byteIndex < len(a) && byteIndex < len(b); byteIndex++ {
+		if a[byteIndex] != b[byteIndex] {
+			break
+		}
+	}
+
+	if byteIndex == len(a) && byteIndex != len(b) {
+		// Reached the end of a.  a is a prefix of b.
+		return true
+	} else if byteIndex == len(b) {
+		// Reached the end of b.  b is a prefix of a or b is equal to a.
+		return false
+	}
+
+	// Save the first differing bytes in case we have to fall back to a byte comparison
+	aDifferingByte := a[byteIndex]
+	bDifferingByte := b[byteIndex]
+
+	// Step backwards to find the beginning of the rune that contains the first differing byte
+	runeIndex := byteIndex
+	for ; runeIndex >= 0; runeIndex-- {
+		if utf8.RuneStart(a[runeIndex]) {
+			break
+		}
+	}
+
+	// Save the differing suffixes of the strings
+	aDifference := a[runeIndex:]
+	bDifference := b[runeIndex:]
+
+	// Decode the first differing runes.  If either is not valid UTF8 fall back to a byte
+	// comparison.
+	aRune, _ := utf8.DecodeRuneInString(aDifference)
+	bRune, _ := utf8.DecodeRuneInString(bDifference)
+	if aRune == utf8.RuneError || bRune == utf8.RuneError {
+		return aDifferingByte < bDifferingByte
+	}
+
+	isNumeric := func(r rune) bool { return r >= '0' && r <= '9' }
+
+	// If the first runes are both numbers do a numeric comparison.
+	if isNumeric(aRune) && isNumeric(bRune) {
+		// Find the first non-number in each, using the full length if there isn't one.
+		endANumbers := strings.IndexFunc(aDifference, isNumeric)
+		endBNumbers := strings.IndexFunc(bDifference, isNumeric)
+		if endANumbers == -1 {
+			endANumbers = len(aDifference)
+		}
+		if endBNumbers == -1 {
+			endBNumbers = len(bDifference)
+		}
+		// Convert each to an int.
+		aNumber, err := strconv.Atoi(aDifference[:endANumbers])
+		if err != nil {
+			panic(fmt.Errorf("failed to convert %q from %q to number: %w",
+				aDifference[:endANumbers], a, err))
+		}
+		bNumber, err := strconv.Atoi(bDifference[:endBNumbers])
+		if err != nil {
+			panic(fmt.Errorf("failed to convert %q from %q to number: %w",
+				bDifference[:endBNumbers], b, err))
+		}
+		// Do a numeric comparison.
+		return aNumber < bNumber
+	}
+
+	// At least one is not a number, do a byte comparison.
+	return aDifferingByte < bDifferingByte
 }
