@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a674d015_59234736",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "As discussed on GVC, the current implementation is different: we are adding to the manifest not only the toplevel libraries, but the whole top of tree up to (and including) each shared library node. So, if the top-level node is not a shared library, we descend into the children.\n\nThe current *behavior* though is the same as if we used top-level libraries, because I\u0027m not aware of any cases that would exhibit the difference (except for the tests, but they are artificial and can be fixed).\n\nI realized that the current logic doesn\u0027t make sense, because if we flatten some part of the tree and write it as a sequence of tags in the manifest, then PackageManager won\u0027t be able to unflatten it back (information will be lost). So, it will reconstruct a different run-time CLC that the build-time CLC that is used for dexpreopt and stored in the *.odex file. So if there is a practical case that exhibits the difference, we certainly don\u0027t want the current behavior, because it will cause runtime CLC mismatch and then dexpreopt is useless.\n\nI added https://r.android.com/1511271 to fix this.",
+      "parentUuid": "fd2771b1_9d9da825",
+      "range": {
+        "startLine": 73,
+        "startChar": 45,
+        "endLine": 73,
+        "endChar": 59
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "381a8f05_a71cfcc1",
@@ -88,6 +112,30 @@
       "writtenOn": "2020-11-23T17:27:41Z",
       "side": 1,
       "message": "Should this be \"each build dependency\" ? Otherwise it reads as \"for each \u003cuses-library\u003e dependency\".",
+      "range": {
+        "startLine": 74,
+        "startChar": 95,
+        "endLine": 75,
+        "endChar": 13
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39586085_79c677e7",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "381a8f05_a71cfcc1",
       "range": {
         "startLine": 74,
         "startChar": 95,
@@ -121,6 +169,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06bc027_97939122",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "Removed, as all CLC elements (aka uses-libraries) should be shared libraries.",
+      "parentUuid": "2e924685_71a23900",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c91eecbf_506ca70f",
@@ -134,6 +206,30 @@
       "writtenOn": "2020-11-23T07:28:53Z",
       "side": 1,
       "message": "Well duplicating information between Android.bp files and source code is eerily similar to what we do with Bazel a number of times :)",
+      "range": {
+        "startLine": 84,
+        "startChar": 39,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c90f15_6155a193",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "I found that whenever the necessary information is hidden from the builds system in the source files, there are three possible ways:\n\n0. Allow reading source files by the build system (this requires support of dynamic dependency generation, present in some of the build systems, e.g. Haskell\u0027s Shake, but this makes the build system fundamentally more complex).\n\n1. Add the necessary information to the build system (possibly duplicating it, like we do with the manifests). Very tedious work, and requires additional verification build rules to make sure the duplicated information is coherent.\n\n2. Use an \"indirect\" build rule, which means that the build system will generate a build rule that will get the necessary information from source files (in this case read the manifests) and generate the real build rule, and then immediately run it.\n\nApproach 2 has a limitation that it cannot be used to generate dependencies (there is no way to enforce build order from that late stage of the build), therefore whenever exact dependencies are not known to the build system, it has to use a superset of dependencies and an \"indirect\" build rule to trim it down after reading the information from the source files. For dexpreopt the superset would be all Java libraries, which is too bad, so we cannot use approach 2 instead of `uses_libs`/`optional_uses_libs`, but we do use it to trim down compatibility libraries.\n\nApproach 2 can also be used to generate command-line arguments to various tools and otherwise fix the the build rule without changing its dependencies.",
+      "parentUuid": "c91eecbf_506ca70f",
       "range": {
         "startLine": 84,
         "startChar": 39,
@@ -167,6 +263,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aac12d4_b2c041de",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "Fixed, thanks!",
+      "parentUuid": "473e1167_edb9efb0",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c025abd3_19060d53",
@@ -180,6 +300,30 @@
       "writtenOn": "2020-11-23T17:27:41Z",
       "side": 1,
       "message": "Can you give examples? I thought all \u003cuses-library\u003e are expressed as SDK libraries in the build system.",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 83
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "559f07fe_fcd8ca9f",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "For example, https://source.corp.google.com/android/vendor/google_arc/libs/org.chromium.arc/Android.bp;l\u003d6, used e.g. here https://source.corp.google.com/android/vendor/google_arc/packages/system/ArcSystemUI/AndroidManifest.xml;l\u003d31.\n\nqcrilhook is another example.\n\nI don\u0027t want to hardcode this in the comment (they should be converted to java_sdk_library), but I will mention that they are defined as java_library instead of java_sdk_library.",
+      "parentUuid": "c025abd3_19060d53",
       "range": {
         "startLine": 91,
         "startChar": 3,
@@ -213,6 +357,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4baa282_cf295561",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec7b554_06139d76",
+      "range": {
+        "startLine": 94,
+        "startChar": 87,
+        "endLine": 94,
+        "endChar": 89
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be529c78_77afef55",
@@ -226,6 +394,30 @@
       "writtenOn": "2020-11-23T07:28:53Z",
       "side": 1,
       "message": "Clarification required! I assume \"build files\" means Android.bp/BUILD/Android.mk?",
+      "range": {
+        "startLine": 97,
+        "startChar": 74,
+        "endLine": 97,
+        "endChar": 86
+      },
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d0e352d_a330b420",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "Yes (fixed). I wrote Android.bp/Android.mk because we don\u0027t use Bazel yet and I assume that all the comments will need to be fixed for Bazel, but let me know if you think I should mention BUILD files as well.",
+      "parentUuid": "be529c78_77afef55",
       "range": {
         "startLine": 97,
         "startChar": 74,
@@ -253,6 +445,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb27a69_010a67d3",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ae44e1a_2293370c",
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "798fdfe2_d7e5c642",
@@ -266,6 +476,24 @@
       "writtenOn": "2020-11-20T18:55:47Z",
       "side": 1,
       "message": "Probably worth commenting these variables too.",
+      "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "031ef85a_8e300f0b",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "798fdfe2_d7e5c642",
       "revId": "b98dd0d869c1e4e6ec2a8c2e775be82b17c416b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

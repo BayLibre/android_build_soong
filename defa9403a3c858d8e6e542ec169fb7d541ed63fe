@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbea9506_6b3acd26",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "13d84225_7d4641b5",
+      "revId": "defa9403a3c858d8e6e542ec169fb7d541ed63fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35a9709d_f2d0d9cc",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-11-20T17:56:04Z",
       "side": 0,
       "message": "This block has moved to 103-120.",
+      "revId": "defa9403a3c858d8e6e542ec169fb7d541ed63fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf2813e_af5774bc",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "35a9709d_f2d0d9cc",
       "revId": "defa9403a3c858d8e6e542ec169fb7d541ed63fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

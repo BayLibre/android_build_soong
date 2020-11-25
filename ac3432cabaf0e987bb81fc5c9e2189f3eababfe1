@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eb2865a_e46effe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:08:26Z",
+      "side": 1,
+      "message": "Thanks everyone for reviewing!\n\nI split the comment into sections, added \"contents\" and a new section about PackageManager and shared libraries.\n\nThanks to Paul\u0027s comment I realized that there is a rework needed to make the comment true: https://r.android.com/1511271.\n\nPTAL\n",
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
