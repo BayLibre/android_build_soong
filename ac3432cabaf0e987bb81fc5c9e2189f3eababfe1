@@ -16,6 +16,184 @@
       "message": "Thanks everyone for reviewing!\n\nI split the comment into sections, added \"contents\" and a new section about PackageManager and shared libraries.\n\nThanks to Paul\u0027s comment I realized that there is a rework needed to make the comment true: https://r.android.com/1511271.\n\nPTAL\n",
       "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "869f8fe4_6c4ace17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-25T20:12:34Z",
+      "side": 1,
+      "message": "Great Docs Ulya.",
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5200eb2b_aad8a478",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-25T20:12:34Z",
+      "side": 1,
+      "message": "are *in* the classpath",
+      "range": {
+        "startLine": 42,
+        "startChar": 47,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21602f4e_c2cf5b4a",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-25T20:12:34Z",
+      "side": 1,
+      "message": "Technically the CLC specify the class loader structure/hierarchy that the app is expected to have at runtime. This includes the libraries, but may also include additional apk (like split apks, or anything that gets added by the app dynamically). The tree of libraries is only a part of the CLC. I think it\u0027s ok to focus on the library part here, but worth updating with a note that other things may be in.",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9decf4e1_9df3f036",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-25T20:12:34Z",
+      "side": 1,
+      "message": "I think that right now the class loader for E will be same, meaning that on a logical level you see a duplicate, but at runtime we construct a single class loader instance. \n\nNicolas, can you confirm this is what we do?\n\nThis is maybe a runtime implementation note, but it\u0027s worth adding it.",
+      "range": {
+        "startLine": 62,
+        "startChar": 13,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7376e2b_f90de2dc",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-25T20:12:34Z",
+      "side": 1,
+      "message": "I think that you are slightly abusing the term \u0027runtime\u0027. Here you refer to the compilation that happens on device. This is actually not the usual understanding for `at runtime` (which in most cases we parse as \u0027while the app executes\u0027).",
+      "range": {
+        "startLine": 93,
+        "startChar": 20,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105a22d7_8fc8ff28",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-25T20:12:34Z",
+      "side": 1,
+      "message": "will",
+      "range": {
+        "startLine": 103,
+        "startChar": 24,
+        "endLine": 103,
+        "endChar": 30
+      },
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183630e2_103e3acc",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-25T20:12:34Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a44eacd_fa72651d",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-25T20:12:34Z",
+      "side": 1,
+      "message": "I\u0027d replace with: the app to run without any optimizations (e.g. the app\u0027s code may need to be extracted in memory from the apk, a very expensive operation).\n\nWe no longer recompile the app at runtime when we have mismatch (though see my comments above about using the \u0027runtime\u0027 term, here runtime \u003d \u0027apps execution\u0027)",
+      "range": {
+        "startLine": 110,
+        "startChar": 29,
+        "endLine": 110,
+        "endChar": 82
+      },
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
