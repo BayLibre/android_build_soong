@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4f2a15_d22979f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1769860
+      },
+      "writtenOn": "2020-11-25T22:33:09Z",
+      "side": 1,
+      "message": "This might be more controversial than my other patches. Let me know if there\u0027s a better direction here.",
+      "revId": "1798895901121a66a1ca2ecbe3c9257a31f6fa28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
