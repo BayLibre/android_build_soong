@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74238976_650c5753",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-25T07:22:58Z",
+      "side": 1,
+      "message": "Can we set a+rw instead? I\u0027m not sure why we are setting +x on so many files",
+      "range": {
+        "startLine": 47,
+        "startChar": 81,
+        "endLine": 47,
+        "endChar": 89
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
