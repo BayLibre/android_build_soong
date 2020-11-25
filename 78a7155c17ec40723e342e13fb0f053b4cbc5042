@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "728045f3_40af36a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-25T15:10:19Z",
+      "side": 1,
+      "message": "If in future we find some cases that don\u0027t fit into this model, we\u0027ll have to change it, but to me it makes more sense than the previous behavior.",
+      "revId": "78a7155c17ec40723e342e13fb0f053b4cbc5042",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
