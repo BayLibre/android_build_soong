@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "067b5ef2_c19de529",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-11-25T22:46:44Z",
+      "side": 1,
+      "message": "This also means that changes to $OUT_DIR will trigger differences in the output, but that\u0027s already a problem with a lot of other tools today.\n\nEventually I was hoping that nsjail would allow us to mount the source and output directories at consistent locations (at least on Linux -- Mac is already fairly broken in other ways), but user namespaces aren\u0027t fully available to all of our users. Remote execution could help us fix this up, but we\u0027ve attempted to keep local\u003d\u003dremote so far (especially for racing local vs remote actions).",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 59
+      },
+      "revId": "1798895901121a66a1ca2ecbe3c9257a31f6fa28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6f4f2a15_d22979f9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
