@@ -57,6 +57,8 @@ func (m *customModule) AndroidMkEntries() []AndroidMkEntries {
 		{
 			Class:     "CUSTOM_MODULE",
 			DistFiles: m.distFiles,
+			// The default dist file to use if no tag is specified.
+			OutputFile: OptionalPathForPath(PathForTesting("default-dist.out")),
 		},
 	}
 }
@@ -120,6 +122,22 @@ func TestGetDistForGoals(t *testing.T) {
 			`,
 			expectedAndroidMkLines: []string{
 				".PHONY: my_goal\n",
+				"$(call dist-for-goals,my_goal,default-dist.out:default-dist.out)\n",
+			},
+		},
+		{
+			name: "dist-with-empty-tag",
+			bp: `
+			custom {
+				name: "foo",
+				dist: {
+					targets: ["my_goal"],
+					tag: "",
+				}
+			}
+			`,
+			expectedAndroidMkLines: []string{
+				".PHONY: my_goal\n",
 				"$(call dist-for-goals,my_goal,one.out:one.out)\n",
 			},
 		},
@@ -174,9 +192,9 @@ func TestGetDistForGoals(t *testing.T) {
 			`,
 			expectedAndroidMkLines: []string{
 				".PHONY: my_goal\n",
-				"$(call dist-for-goals,my_goal,one.out:one.out)\n",
+				"$(call dist-for-goals,my_goal,default-dist.out:default-dist.out)\n",
 				".PHONY: my_second_goal my_third_goal\n",
-				"$(call dist-for-goals,my_second_goal my_third_goal,one.out:one.out)\n",
+				"$(call dist-for-goals,my_second_goal my_third_goal,default-dist.out:default-dist.out)\n",
 			},
 		},
 		{
@@ -196,9 +214,9 @@ func TestGetDistForGoals(t *testing.T) {
 			`,
 			expectedAndroidMkLines: []string{
 				".PHONY: my_second_goal my_third_goal\n",
-				"$(call dist-for-goals,my_second_goal my_third_goal,one.out:one.out)\n",
+				"$(call dist-for-goals,my_second_goal my_third_goal,default-dist.out:default-dist.out)\n",
 				".PHONY: my_goal\n",
-				"$(call dist-for-goals,my_goal,one.out:one.out)\n",
+				"$(call dist-for-goals,my_goal,default-dist.out:default-dist.out)\n",
 			},
 		},
 		{
@@ -220,6 +238,7 @@ func TestGetDistForGoals(t *testing.T) {
 						dir: "test/dir",
 					},
 					{
+						tag: "",
 						targets: ["my_fourth_goal"],
 						suffix: ".suffix",
 					},
@@ -241,13 +260,13 @@ func TestGetDistForGoals(t *testing.T) {
 				"$(call dist-for-goals,my_second_goal,two.out:two.out)\n",
 				"$(call dist-for-goals,my_second_goal,three/four.out:four.out)\n",
 				".PHONY: my_third_goal\n",
-				"$(call dist-for-goals,my_third_goal,one.out:test/dir/one.out)\n",
+				"$(call dist-for-goals,my_third_goal,default-dist.out:test/dir/default-dist.out)\n",
 				".PHONY: my_fourth_goal\n",
 				"$(call dist-for-goals,my_fourth_goal,one.out:one.suffix.out)\n",
 				".PHONY: my_fifth_goal\n",
-				"$(call dist-for-goals,my_fifth_goal,one.out:new-name)\n",
+				"$(call dist-for-goals,my_fifth_goal,default-dist.out:new-name)\n",
 				".PHONY: my_sixth_goal\n",
-				"$(call dist-for-goals,my_sixth_goal,one.out:some/dir/new-name.suffix)\n",
+				"$(call dist-for-goals,my_sixth_goal,default-dist.out:some/dir/new-name.suffix)\n",
 				".PHONY: my_goal my_other_goal\n",
 				"$(call dist-for-goals,my_goal my_other_goal,two.out:two.out)\n",
 				"$(call dist-for-goals,my_goal my_other_goal,three/four.out:four.out)\n",

@@ -183,19 +183,29 @@ func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module) []string {
 	amod := mod.(Module).base()
 	name := amod.BaseModuleName()
 
-	var ret []string
+	// Collate the set of associated tag/paths available for copying to the dist.
+	// Start with an empty (nil) set.
 	var availableTaggedDists TaggedDistFiles
 
+	// Then merge in any that are provided explicitly by the module.
 	if a.DistFiles != nil {
-		availableTaggedDists = a.DistFiles
-	} else if a.OutputFile.Valid() {
-		availableTaggedDists = MakeDefaultDistFiles(a.OutputFile.Path())
-	} else {
+		// Merge the DistFiles into the set.
+		availableTaggedDists = availableTaggedDists.merge(a.DistFiles)
+	}
+
+	// If no paths have been provided for the DefaultDistTag and the output file is
+	// valid then add that as the default dist path.
+	if _, ok := availableTaggedDists[DefaultDistTag]; !ok && a.OutputFile.Valid() {
+		availableTaggedDists = availableTaggedDists.addPathsForTag(DefaultDistTag, a.OutputFile.Path())
+	}
+
+	if len(availableTaggedDists) == 0 {
 		// Nothing dist-able for this module.
 		return nil
 	}
 
 	// Iterate over this module's dist structs, merged from the dist and dists properties.
+	var ret []string
 	for _, dist := range amod.Dists() {
 		// Get the list of goals this dist should be enabled for. e.g. sdk, droidcore
 		goals := strings.Join(dist.Targets, " ")
@@ -204,7 +214,7 @@ func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module) []string {
 		var tag string
 		if dist.Tag == nil {
 			// If the dist struct does not specify a tag, use the default output files tag.
-			tag = ""
+			tag = DefaultDistTag
 		} else {
 			tag = *dist.Tag
 		}
@@ -218,10 +228,10 @@ func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module) []string {
 		}
 
 		if len(tagPaths) > 1 && (dist.Dest != nil || dist.Suffix != nil) {
-			errorMessage := "Cannot apply dest/suffix for more than one dist " +
-				"file for %s goals in module %s. The list of dist files, " +
+			errorMessage := "%s: Cannot apply dest/suffix for more than one dist " +
+				"file for %q goals tag %q in module %s. The list of dist files, " +
 				"which should have a single element, is:\n%s"
-			panic(fmt.Errorf(errorMessage, goals, name, tagPaths))
+			panic(fmt.Errorf(errorMessage, mod, goals, tag, name, tagPaths))
 		}
 
 		ret = append(ret, fmt.Sprintf(".PHONY: %s\n", goals))
