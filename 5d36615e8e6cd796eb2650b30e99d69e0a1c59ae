@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "705cb14f_3feadbb8",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-25T11:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d24f05a9_f505d823",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7851415_24ea3d90",
@@ -70,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11de6ad8_d30a8ce5",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-25T11:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7851415_24ea3d90",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "530aee2a_27cd2d2d",
@@ -83,6 +131,30 @@
       "writtenOn": "2020-11-25T08:06:21Z",
       "side": 1,
       "message": "rwx",
+      "range": {
+        "startLine": 258,
+        "startChar": 88,
+        "endLine": 258,
+        "endChar": 91
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb8216df_95ae39e1",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-25T11:22:06Z",
+      "side": 1,
+      "message": "Thanks, fixed, but I\u0027m wondering if these should really be a+rw (see other comment)",
+      "parentUuid": "530aee2a_27cd2d2d",
       "range": {
         "startLine": 258,
         "startChar": 88,
