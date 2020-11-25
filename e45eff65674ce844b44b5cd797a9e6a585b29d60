@@ -22,6 +22,30 @@
       },
       "revId": "e45eff65674ce844b44b5cd797a9e6a585b29d60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0765bbc9_e6bf0001",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-25T08:22:22Z",
+      "side": 1,
+      "message": "... Or I can just remove this method altogether? It seems like no other people are using this interface after this change. But I\u0027m not sure why this is in the module interface in the first place, any concerns removing this?",
+      "parentUuid": "6e93799f_57473cdf",
+      "range": {
+        "startLine": 1194,
+        "startChar": 1,
+        "endLine": 1194,
+        "endChar": 42
+      },
+      "revId": "e45eff65674ce844b44b5cd797a9e6a585b29d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

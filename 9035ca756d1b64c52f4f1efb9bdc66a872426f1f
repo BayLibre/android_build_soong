@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d385551_4f25fa70",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-25T08:22:22Z",
+      "side": 0,
+      "message": "because the libraryDecorator receiver makes the `library.buildStubs()` on L645 (right-hand side) to actually be `ctx.Module().(*Module).library.(*libraryDecoratorExtendedType).libraryDecorator.buildStubs()`, when `ctx.Module().(*Module).library` is a type extending libraryDecorator, for example llndkStubDecorator.\nHowever what we want here is actually `ctx.Module().(*Module).library.buildStubs()`. We want the methods that are provided by the libraryInterface. for example llndkStubDecorator overrides libraryInterface.buildStubs().\n\nThe receiver can be kept, but then we would have \"library\" (type *libraryDecorator, from receiver) and \"m.library\" (type *libraryInterface, from ctx) in the function body at the same time, which I think is very confusing. Since the library receiver is actually just \"m.library.(*libraryDecorator)\" or \"m.library.(*libraryDecoratorExtendedType).libraryDecorator\", I just removed the receiver.",
+      "parentUuid": "710138c2_8d94686d",
+      "range": {
+        "startLine": 564,
+        "startChar": 5,
+        "endLine": 564,
+        "endChar": 32
+      },
+      "revId": "9035ca756d1b64c52f4f1efb9bdc66a872426f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aae41f7a_33ec64a6",
         "filename": "cc/library.go",
         "patchSetId": 2
