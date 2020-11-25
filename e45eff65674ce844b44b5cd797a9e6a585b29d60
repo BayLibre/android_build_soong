@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e93799f_57473cdf",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-25T08:02:37Z",
+      "side": 1,
+      "message": "I see a different pattern here. Why don\u0027t you let cc.Module to have a method and let it to defer the decision to the libraryDecorator?\n\nSee header(), etc.",
+      "range": {
+        "startLine": 1194,
+        "startChar": 1,
+        "endLine": 1194,
+        "endChar": 42
+      },
+      "revId": "e45eff65674ce844b44b5cd797a9e6a585b29d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
