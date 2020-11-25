@@ -22,6 +22,30 @@
       },
       "revId": "192ac9284d14ff9bb89710af1a319bcd6d7221bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "120d334b_99a0b790",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-11-25T18:20:36Z",
+      "side": 1,
+      "message": "In this case, it doesn\u0027t matter whether we use specify paths as Implicits or Inputs, so I\u0027d rather not store it in the variable name, but added a comment to explain that we could specify it as either.",
+      "parentUuid": "caac815a_8694f372",
+      "range": {
+        "startLine": 583,
+        "startChar": 2,
+        "endLine": 583,
+        "endChar": 7
+      },
+      "revId": "192ac9284d14ff9bb89710af1a319bcd6d7221bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
