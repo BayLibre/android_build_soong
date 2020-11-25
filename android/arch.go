@@ -1337,17 +1337,6 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 		addTarget(BuildOs, *variables.HostSecondaryArch, nil, nil, nil, NativeBridgeDisabled, nil, nil)
 	}
 
-	// An optional host target that uses the Bionic glibc runtime.
-	if Bool(config.Host_bionic) {
-		addTarget(LinuxBionic, "x86_64", nil, nil, nil, NativeBridgeDisabled, nil, nil)
-	}
-
-	// An optional cross-compiled host target that uses the Bionic glibc runtime on an arm64
-	// architecture.
-	if Bool(config.Host_bionic_arm64) {
-		addTarget(LinuxBionic, "arm64", nil, nil, nil, NativeBridgeDisabled, nil, nil)
-	}
-
 	// Optional cross-compiled host targets, generally Windows.
 	if String(variables.CrossHost) != "" {
 		crossHostOs := osByName(*variables.CrossHost)

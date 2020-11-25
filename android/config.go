@@ -44,21 +44,8 @@ var FutureApiLevel = ApiLevel{
 	isPreview: true,
 }
 
-// The configuration file name
-const configFileName = "soong.config"
+// The product variables file name, containing product config from Kati.
 const productVariablesFileName = "soong.variables"
-
-// A FileConfigurableOptions contains options which can be configured by the
-// config file. These will be included in the config struct.
-type FileConfigurableOptions struct {
-	Mega_device       *bool `json:",omitempty"`
-	Host_bionic       *bool `json:",omitempty"`
-	Host_bionic_arm64 *bool `json:",omitempty"`
-}
-
-func (f *FileConfigurableOptions) SetDefaultConfig() {
-	*f = FileConfigurableOptions{}
-}
 
 // A Config object represents the entire build configuration for Android.
 type Config struct {
@@ -79,7 +66,6 @@ type DeviceConfig struct {
 type VendorConfig soongconfig.SoongConfig
 
 type config struct {
-	FileConfigurableOptions
 	productVariables productVariables
 
 	// Only available on configs created by TestConfig
@@ -88,7 +74,6 @@ type config struct {
 	BazelContext BazelContext
 
 	PrimaryBuilder           string
-	ConfigFileName           string
 	ProductVariablesFileName string
 
 	Targets                  map[OsType][]Target
@@ -143,11 +128,6 @@ type jsonConfigurable interface {
 }
 
 func loadConfig(config *config) error {
-	err := loadFromConfigFile(&config.FileConfigurableOptions, absolutePath(config.ConfigFileName))
-	if err != nil {
-		return err
-	}
-
 	return loadFromConfigFile(&config.productVariables, absolutePath(config.ProductVariablesFileName))
 }
 
@@ -350,7 +330,6 @@ func ConfigForAdditionalRun(c Config) (Config, error) {
 func NewConfig(srcDir, buildDir string, moduleListFile string) (Config, error) {
 	// Make a config with default options
 	config := &config{
-		ConfigFileName:           filepath.Join(buildDir, configFileName),
 		ProductVariablesFileName: filepath.Join(buildDir, productVariablesFileName),
 
 		env: originalEnv,
@@ -403,9 +382,7 @@ func NewConfig(srcDir, buildDir string, moduleListFile string) (Config, error) {
 	targets[CommonOS] = []Target{commonTargetMap[CommonOS.Name]}
 
 	var archConfig []archConfig
-	if Bool(config.Mega_device) {
-		archConfig = getMegaDeviceConfig()
-	} else if config.NdkAbis() {
+	if config.NdkAbis() {
 		archConfig = getNdkAbisConfig()
 	} else if config.AmlAbis() {
 		archConfig = getAmlAbisConfig()
@@ -808,11 +785,6 @@ func (c *config) Eng() bool {
 
 func (c *config) DevicePrimaryArchType() ArchType {
 	return c.Targets[Android][0].Arch.ArchType
-}
-
-func (c *config) SkipMegaDeviceInstall(path string) bool {
-	return Bool(c.Mega_device) &&
-		strings.HasPrefix(path, filepath.Join(c.buildDir, "target", "product"))
 }
 
 func (c *config) SanitizeHost() []string {
