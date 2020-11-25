@@ -349,8 +349,6 @@ type apexBundle struct {
 	lintReports android.Paths
 
 	prebuiltFileToDelete string
-
-	distFiles android.TaggedDistFiles
 }
 
 // apexFileClass represents a type of file that can be included in APEX.
@@ -1801,7 +1799,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	a.buildApexDependencyInfo(ctx)
 	a.buildLintReports(ctx)
-	a.distFiles = a.GenerateTaggedDistFiles(ctx)
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
