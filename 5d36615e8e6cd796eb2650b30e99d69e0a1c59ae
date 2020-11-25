@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93cc72ab_ae9de7ef",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-11-25T11:41:23Z",
+      "side": 1,
+      "message": "Oh, I thought Jin\u0027s comment was about the comment in Build(). I will change the comment on the function as well.\n\nDone.",
+      "parentUuid": "97f2cb27_2e8d451b",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "530aee2a_27cd2d2d",
