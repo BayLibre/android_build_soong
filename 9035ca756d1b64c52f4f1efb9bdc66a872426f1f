@@ -115,6 +115,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "08f784b0_0f8e157e",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-25T06:36:18Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s very useful.\n\n- `go tool pprof -tags -tagfocus sabi_deps out/soong/.bootstrap/bin/soong_build /tmp/soong_build.pprof`\nThe pprof collected results aren\u0027t very helpful in my case here. The collected profile is inconsistent across runs, and the parallel and non-parallel runs yield similar profile results. This is probably due to sabiDepsMutator being a short-lived mutator, and the probe-based profiler doesn\u0027t have enough time to collect sufficient samples.\n\n- Print mutator run time (wall time) in `runMutators()` in blueprint/context.go.\nUsing this method I found that *non-parallel* sabiDepsMutator run consistently better than parallel.\nParallel sabiDepsMutator spends ~290ms, and non-parallel spends ~190ms (AOSP). I can get a similar result in internal.\nA surprising result, but also kind of expected. Since sabiDepsMutator is short-lived, it kind of makes sense that the parallel speed up is smaller than the overhead to manage a parallel runtime.\n\nI\u0027ll leave this as-is and not make sabi_deps parallel.",
+      "parentUuid": "14c155db_31c2ad22",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 42
+      },
+      "revId": "9035ca756d1b64c52f4f1efb9bdc66a872426f1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ef3b08a9_fe5c9420",
         "filename": "cc/sabi.go",
         "patchSetId": 4
