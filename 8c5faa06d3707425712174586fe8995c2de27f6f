@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32e0df5_2563f644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-25T23:39:03Z",
+      "side": 1,
+      "message": "Anton, this fixes b/158544979 for all java_sdk_library modules. Which only leaves the droidstubs modules. Fixing them should be as simple as adding something like this:\n\ndists: [\n  {\n    tag: \".api.txt\",\n    dir: \"apistubs/\u003cscope\u003e\",\n    dest: \"\u003cmodule\u003e.txt\",\n  },\n  {\n    tag: \".removed-api.txt\",\n    dir: \"apistubs/\u003cscope\u003e\",\n    dest: \"\u003cmodule\u003e-removed.txt\",\n  },\n],\n\nBoth this change and the changes needed for droidstubs modules do require the preceding changes that generalize support for dist/tag processing to all module types.",
+      "revId": "8c5faa06d3707425712174586fe8995c2de27f6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
