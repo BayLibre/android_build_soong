@@ -341,6 +341,47 @@ func ensureListEmpty(t *testing.T, result []string) {
 	}
 }
 
+func ensureListNotEmpty(t *testing.T, result []string) {
+	t.Helper()
+	if len(result) == 0 {
+		t.Errorf("%q is expected to be not empty", result)
+	}
+}
+
+func TestCompressedApex(t *testing.T) {
+	ctx, config := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			compressible: true,
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`, func(fs map[string][]byte, config android.Config) {
+		config.TestProductVariables.CompressedApex = proptools.BoolPtr(true)
+	})
+
+	compressRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("compressRule")
+	ensureListNotEmpty(t, names(compressRule.Args["tool_path"]))
+
+	signApkRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Description("sign compressedApex")
+	ensureEquals(t, signApkRule.Input.String(), compressRule.Output.String())
+
+	// Make sure output of bundle is .capex
+	ab := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	ensureContains(t, ab.outputFile.String(), "myapex.apex.capex")
+
+	// Verify android.mk rules
+	data := android.AndroidMkDataForTest(t, config, "", ab)
+	var builder strings.Builder
+	data.Custom(&builder, ab.BaseModuleName(), "TARGET_", "", data)
+	androidMk := builder.String()
+	ensureContains(t, androidMk, "LOCAL_MODULE_STEM := myapex.apex.capex\n")
+}
+
 // Minimal test
 func TestBasicApex(t *testing.T) {
 	ctx, config := testApex(t, `

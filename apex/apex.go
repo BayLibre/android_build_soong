@@ -119,6 +119,10 @@ type apexBundleProperties struct {
 	// Default: true.
 	Installable *bool
 
+	// Whether this APEX can be compressed or not
+	// Default: true.
+	Compressible *bool
+
 	// For native libraries and binaries, use the vendor variant instead of the core (platform)
 	// variant. Default is false. DO NOT use this for APEXes that are installed to the system or
 	// system_ext partition.
@@ -351,6 +355,8 @@ type apexBundle struct {
 	prebuiltFileToDelete string
 
 	distFiles android.TaggedDistFiles
+
+	isCompressible bool
 }
 
 // apexFileClass represents a type of file that can be included in APEX.

@@ -65,6 +65,7 @@ func init() {
 	pctx.HostBinToolVariable("extract_apks", "extract_apks")
 	pctx.HostBinToolVariable("make_f2fs", "make_f2fs")
 	pctx.HostBinToolVariable("sload_f2fs", "sload_f2fs")
+	pctx.HostBinToolVariable("apex_compression_tool", "apex_compression_tool")
 }
 
 var (
@@ -175,6 +176,16 @@ var (
 			`exit 1); touch ${out}`,
 		Description: "Diff ${image_content_file} and ${allowed_files_file}",
 	}, "image_content_file", "allowed_files_file", "apex_module_name")
+
+	compressRule = pctx.StaticRule("compressRule", blueprint.RuleParams{
+		Command: `rm -rf ${out} && ` +
+			`APEX_COMPRESSION_TOOL_PATH=${tool_path} ` +
+			`${apex_compression_tool} compress ` +
+			`--input ${in} ` +
+			`--output ${out} `,
+		CommandDeps: []string{"${apex_compression_tool}"},
+		Description: "Compress APEX ${in} => ${out}",
+	}, "tool_path")
 )
 
 func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs, requireNativeLibs []string) {
@@ -663,7 +674,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		})
 	}
 
-	a.outputFile = android.PathForModuleOut(ctx, a.Name()+suffix)
+	signedOutputFile := android.PathForModuleOut(ctx, a.Name()+suffix)
 	rule := java.Signapk
 	args := map[string]string{
 		"certificates": a.container_certificate_file.String() + " " + a.container_private_key_file.String(),
@@ -676,16 +687,42 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_SIGNAPK") {
 		rule = java.SignapkRE
 		args["implicits"] = strings.Join(implicits.Strings(), ",")
-		args["outCommaList"] = a.outputFile.String()
+		args["outCommaList"] = signedOutputFile.String()
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rule,
 		Description: "signapk",
-		Output:      a.outputFile,
+		Output:      signedOutputFile,
 		Input:       unsignedOutputFile,
 		Implicits:   implicits,
 		Args:        args,
 	})
+	a.outputFile = signedOutputFile
+
+	// Process APEX compression if enabled
+	a.isCompressible = ctx.Config().CompressedApex() && proptools.BoolDefault(a.properties.Compressible, true) && !a.artApex
+	if a.isCompressible {
+		unsignedCompressedOutputFile := android.PathForModuleOut(ctx, a.Name()+".capex.unsigned")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        compressRule,
+			Description: "compressApex",
+			Output:      unsignedCompressedOutputFile,
+			Input:       signedOutputFile,
+			Args: map[string]string{
+				"tool_path": outHostBinDir + ":" + prebuiltSdkToolsBinDir,
+			},
+		})
+		signedCompressedOutputFile := android.PathForModuleOut(ctx, a.Name()+suffix+".capex")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        rule,
+			Description: "sign compressedApex",
+			Output:      signedCompressedOutputFile,
+			Input:       unsignedCompressedOutputFile,
+			Implicits:   implicits,
+			Args:        args,
+		})
+		a.outputFile = signedCompressedOutputFile
+	}
 
 	// Install to $OUT/soong/{target,host}/.../apex
 	if a.installable() {
