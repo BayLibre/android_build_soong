@@ -46,6 +46,30 @@
       },
       "revId": "e45eff65674ce844b44b5cd797a9e6a585b29d60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea247f27_27a3ec34",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-26T09:10:03Z",
+      "side": 1,
+      "message": "Removed this interface method",
+      "parentUuid": "0765bbc9_e6bf0001",
+      "range": {
+        "startLine": 1194,
+        "startChar": 1,
+        "endLine": 1194,
+        "endChar": 42
+      },
+      "revId": "e45eff65674ce844b44b5cd797a9e6a585b29d60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

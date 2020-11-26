@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f3e2074_c3470cbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-26T09:10:03Z",
+      "side": 1,
+      "message": "Updated the patch according to offline discussions with Hsin-Yi",
+      "revId": "00745a8428321db3c5a96067cf582c99ccfb0e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
