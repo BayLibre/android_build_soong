@@ -20,6 +20,7 @@ bootstrap_go_binary {
         "golang-protobuf-proto",
         "soong",
         "soong-android",
+        "soong-bazel-converter",
         "soong-env",
         "soong-ui-metrics_proto",
     ],

@@ -1,0 +1,14 @@
+bootstrap_go_package {
+    name: "soong-bazel-converter",
+    pkgPath: "android/soong/bazelconverter",
+    srcs: [
+        "conversion.go",
+        "queryview_gen.go",
+    ],
+    deps: [
+        "soong-android",
+    ],
+    pluginFor: [
+        "soong_build",
+    ],
+}
