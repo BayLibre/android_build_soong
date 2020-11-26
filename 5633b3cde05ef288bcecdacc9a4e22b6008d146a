@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6c55bb_b084c8e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1769860
+      },
+      "writtenOn": "2020-11-26T16:59:21Z",
+      "side": 1,
+      "message": "Apparently the file was completely changed since my last sync, so I had to modify the approach taken here. I\u0027m using the path of the manifest file now, rather than the output path (which seems to be hidden somewhere in the manifest file). I\u0027m still running some builds, which takes a while.",
+      "revId": "5633b3cde05ef288bcecdacc9a4e22b6008d146a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
