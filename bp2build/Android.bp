@@ -1,0 +1,17 @@
+bootstrap_go_package {
+    name: "soong-bp2build",
+    pkgPath: "android/soong/bp2build",
+    srcs: [
+        "androidbp_to_build_templates.go",
+        "bp2build.go",
+        "buildConversion.go",
+        "bzlConversion.go",
+        "conversion.go",
+    ],
+    deps: [
+        "soong-android",
+    ],
+    pluginFor: [
+        "soong_build",
+    ],
+}

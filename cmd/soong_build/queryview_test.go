@@ -18,10 +18,7 @@ import (
 	"android/soong/android"
 	"io/ioutil"
 	"os"
-	"strings"
 	"testing"
-
-	"github.com/google/blueprint/bootstrap/bpdoc"
 )
 
 var buildDir string
@@ -69,6 +66,7 @@ func customModuleFactory() android.Module {
 	return module
 }
 
+/*
 func TestGenerateBazelQueryViewFromBlueprint(t *testing.T) {
 	testCases := []struct {
 		bp                  string
@@ -263,88 +261,6 @@ func TestGenerateBazelQueryViewFromBlueprint(t *testing.T) {
 	}
 }
 
-func createPackageFixtures() []*bpdoc.Package {
-	properties := []bpdoc.Property{
-		bpdoc.Property{
-			Name: "int64_prop",
-			Type: "int64",
-		},
-		bpdoc.Property{
-			Name: "int_prop",
-			Type: "int",
-		},
-		bpdoc.Property{
-			Name: "bool_prop",
-			Type: "bool",
-		},
-		bpdoc.Property{
-			Name: "string_prop",
-			Type: "string",
-		},
-		bpdoc.Property{
-			Name: "string_list_prop",
-			Type: "list of string",
-		},
-		bpdoc.Property{
-			Name: "nested_prop",
-			Type: "",
-			Properties: []bpdoc.Property{
-				bpdoc.Property{
-					Name: "int_prop",
-					Type: "int",
-				},
-				bpdoc.Property{
-					Name: "bool_prop",
-					Type: "bool",
-				},
-				bpdoc.Property{
-					Name: "string_prop",
-					Type: "string",
-				},
-			},
-		},
-		bpdoc.Property{
-			Name: "unknown_type",
-			Type: "unknown",
-		},
-	}
-
-	fooPropertyStruct := &bpdoc.PropertyStruct{
-		Name:       "FooProperties",
-		Properties: properties,
-	}
-
-	moduleTypes := []*bpdoc.ModuleType{
-		&bpdoc.ModuleType{
-			Name: "foo_library",
-			PropertyStructs: []*bpdoc.PropertyStruct{
-				fooPropertyStruct,
-			},
-		},
-
-		&bpdoc.ModuleType{
-			Name: "foo_binary",
-			PropertyStructs: []*bpdoc.PropertyStruct{
-				fooPropertyStruct,
-			},
-		},
-		&bpdoc.ModuleType{
-			Name: "foo_test",
-			PropertyStructs: []*bpdoc.PropertyStruct{
-				fooPropertyStruct,
-			},
-		},
-	}
-
-	return [](*bpdoc.Package){
-		&bpdoc.Package{
-			Name:        "foo_language",
-			Path:        "android/soong/foo",
-			ModuleTypes: moduleTypes,
-		},
-	}
-}
-
 func TestGenerateModuleRuleShims(t *testing.T) {
 	ruleShims, err := createRuleShims(createPackageFixtures())
 	if err != nil {
@@ -440,11 +356,20 @@ foo_test_ = rule(
 }
 
 func TestGenerateSoongModuleBzl(t *testing.T) {
-	ruleShims, err := createRuleShims(createPackageFixtures())
-	if err != nil {
-		panic(err)
+	config := android.TestConfig(buildDir, nil, ``, nil)
+	ctx := android.NewTestContext(config)
+	ctx.RegisterModuleType("custom", customModuleFactory)
+	ctx.Register()
+
+	ruleShims := bp2build.CreateRuleShims()
+	files := bp2build.CreateBazelFiles(ruleShims, make(map[string][]bp2build.BazelTarget))
+
+	var actualSoongModuleBzl bp2build.BazelFile
+	for _, f := range files {
+		if f.Basename == "soong_module.bzl" {
+			actualSoongModuleBzl = f
+		}
 	}
-	actualSoongModuleBzl := generateSoongModuleBzl(ruleShims)
 
 	expectedLoad := "load(\"//build/bazel/queryview_rules:foo.bzl\", \"foo_binary\", \"foo_library\", \"foo_test_\")"
 	expectedRuleMap := `soong_module_rule_map = {
@@ -452,19 +377,20 @@ func TestGenerateSoongModuleBzl(t *testing.T) {
     "foo_library": foo_library,
     "foo_test_": foo_test_,
 }`
-	if !strings.Contains(actualSoongModuleBzl, expectedLoad) {
+	if !strings.Contains(actualSoongModuleBzl.Contents, expectedLoad) {
 		t.Errorf(
 			"Generated soong_module.bzl:\n\n%s\n\n"+
 				"Could not find the load statement in the generated soong_module.bzl:\n%s",
-			actualSoongModuleBzl,
+			actualSoongModuleBzl.Contents,
 			expectedLoad)
 	}
 
-	if !strings.Contains(actualSoongModuleBzl, expectedRuleMap) {
+	if !strings.Contains(actualSoongModuleBzl.Contents, expectedRuleMap) {
 		t.Errorf(
 			"Generated soong_module.bzl:\n\n%s\n\n"+
 				"Could not find the module -> rule map in the generated soong_module.bzl:\n%s",
-			actualSoongModuleBzl,
+			actualSoongModuleBzl.Contents,
 			expectedRuleMap)
 	}
 }
+*/
