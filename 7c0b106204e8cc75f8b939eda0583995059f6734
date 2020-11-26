@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765ab418_ac16a7ba",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2020-11-26T19:22:55Z",
+      "side": 1,
+      "message": "Why do we need this check?",
+      "range": {
+        "startLine": 703,
+        "startChar": 108,
+        "endLine": 703,
+        "endChar": 121
+      },
+      "revId": "7c0b106204e8cc75f8b939eda0583995059f6734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
