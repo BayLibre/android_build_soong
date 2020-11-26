@@ -15,13 +15,9 @@
 package main
 
 import (
-	"android/soong/android"
 	"io/ioutil"
 	"os"
-	"strings"
 	"testing"
-
-	"github.com/google/blueprint/bootstrap/bpdoc"
 )
 
 var buildDir string
@@ -49,6 +45,7 @@ func TestMain(m *testing.M) {
 	os.Exit(run())
 }
 
+/*
 type customModule struct {
 	android.ModuleBase
 }
@@ -468,3 +465,4 @@ func TestGenerateSoongModuleBzl(t *testing.T) {
 			expectedRuleMap)
 	}
 }
+*/
