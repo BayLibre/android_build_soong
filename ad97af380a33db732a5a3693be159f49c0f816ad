@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3411d0a7_f0145810",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-11-26T09:41:43Z",
+      "side": 1,
+      "message": "wouldn\u0027t show up in the sdk dist I think. I added this for b/172951145, +dariofreni is there a disted apex Paul can test with?",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 58
+      },
+      "revId": "ad97af380a33db732a5a3693be159f49c0f816ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
