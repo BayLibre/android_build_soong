@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45068b38_aeac5a36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-26T17:29:09Z",
+      "side": 1,
+      "message": "This is mostly a port of the relevant bits from go/art-images.",
+      "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

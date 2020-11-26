@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dd3eb3f_75d7da70",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-26T17:29:09Z",
+      "side": 0,
+      "message": "Function unused.",
+      "revId": "48891a95c5de7b178885419bb05b4069c1051444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
