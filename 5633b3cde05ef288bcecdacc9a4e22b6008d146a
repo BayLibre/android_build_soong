@@ -16,6 +16,70 @@
       "message": "Apparently the file was completely changed since my last sync, so I had to modify the approach taken here. I\u0027m using the path of the manifest file now, rather than the output path (which seems to be hidden somewhere in the manifest file). I\u0027m still running some builds, which takes a while.",
       "revId": "5633b3cde05ef288bcecdacc9a4e22b6008d146a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16419850_ef25872e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-26T17:47:21Z",
+      "side": 1,
+      "message": "Sorry for the conflicts, I\u0027m working on improving the sandboxing to include tools, and maybe eventually input files.\n\nOverall the approach looks fine to me.\n\nIf we eventually copied all the inputs and tools into the sandbox I would chdir to the tempDir and use relative paths within it, which should remove the paths from the files.",
+      "parentUuid": "3a6c55bb_b084c8e0",
+      "revId": "5633b3cde05ef288bcecdacc9a4e22b6008d146a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44db430b_dd366526",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-26T17:47:21Z",
+      "side": 1,
+      "message": "Can you add an \"sbox\" directory to sandboxesRoot?  That can either be done here, or in android/ruile_builder.go when constructing the --sandbox-path argument.",
+      "range": {
+        "startLine": 136,
+        "startChar": 22,
+        "endLine": 136,
+        "endChar": 35
+      },
+      "revId": "5633b3cde05ef288bcecdacc9a4e22b6008d146a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da61edaa_20b0b07a",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-26T17:47:21Z",
+      "side": 1,
+      "message": "path is for URLs, use filepath.Join",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "5633b3cde05ef288bcecdacc9a4e22b6008d146a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
