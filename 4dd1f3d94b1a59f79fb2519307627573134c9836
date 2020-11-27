@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0e0e69cf_9f359988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-27T13:55:54Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "216a9c1a_e6b94c20",
         "filename": "android/androidmk.go",
         "patchSetId": 2
@@ -64,6 +81,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55855456_955b3c45",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-27T13:55:54Z",
+      "side": 1,
+      "message": "Those instructions all get turned into ninja rules and ninja will complain if a file can be output from more than one rule. While we could check in Soong to fail faster and provide better errors it would not add any additional protection against collisions then ninja already does so not a high priority.",
+      "parentUuid": "c98929aa_62760bb4",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 33
+      },
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dad92954_9b8a44f5",
@@ -87,6 +128,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d612e7ad_97a565e5",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-27T13:55:54Z",
+      "side": 1,
+      "message": "Yes. Done.",
+      "parentUuid": "dad92954_9b8a44f5",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 14
+      },
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8674a53_28c7938f",
@@ -100,6 +165,30 @@
       "writtenOn": "2020-11-27T13:00:42Z",
       "side": 1,
       "message": "May be worth preallocating copiesForGoals.copies capacity to len(tagPaths).",
+      "range": {
+        "startLine": 263,
+        "startChar": 56,
+        "endLine": 263,
+        "endChar": 61
+      },
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4da6bfb4_4a4ba9e5",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-27T13:55:54Z",
+      "side": 1,
+      "message": "That would require either passing in tagPaths here or modifying fields of copiesForGoals here which would unnecessarily expose the fields to this code which otherwise only interacts with it via methods.",
+      "parentUuid": "b8674a53_28c7938f",
       "range": {
         "startLine": 263,
         "startChar": 56,
