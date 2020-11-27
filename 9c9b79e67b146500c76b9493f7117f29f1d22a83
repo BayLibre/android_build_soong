@@ -16,6 +16,167 @@
       "message": "This is mostly a port of the relevant bits from go/art-images.",
       "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db7a4d89_443aab33",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-27T11:02:17Z",
+      "side": 1,
+      "message": "That\u0027s not correct - apps that have dex uncompressed in their APK won\u0027t have the dex code in the vdex.",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe35875_2a4cfc3f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-27T11:02:17Z",
+      "side": 1,
+      "message": "Maybe put the date (Nov 2020), as those decisions can easily change.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 12
+      },
+      "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74e5acb_640b5d75",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-27T11:02:17Z",
+      "side": 1,
+      "message": "ditto about putting the date",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 57
+      },
+      "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c55728_28c30a31",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-27T11:02:17Z",
+      "side": 1,
+      "message": "is used for compiling apps",
+      "range": {
+        "startLine": 190,
+        "startChar": 77,
+        "endLine": 190,
+        "endChar": 84
+      },
+      "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed91499e_bbdd332a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-27T11:02:17Z",
+      "side": 1,
+      "message": "target",
+      "range": {
+        "startLine": 259,
+        "startChar": 7,
+        "endLine": 259,
+        "endChar": 13
+      },
+      "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe28e329_a29771b6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-27T11:02:17Z",
+      "side": 1,
+      "message": "need",
+      "range": {
+        "startLine": 517,
+        "startChar": 41,
+        "endLine": 517,
+        "endChar": 46
+      },
+      "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6face278_56dbf912",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2020-11-27T11:02:17Z",
+      "side": 1,
+      "message": "a ?",
+      "range": {
+        "startLine": 555,
+        "startChar": 38,
+        "endLine": 555,
+        "endChar": 39
+      },
+      "revId": "9c9b79e67b146500c76b9493f7117f29f1d22a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
