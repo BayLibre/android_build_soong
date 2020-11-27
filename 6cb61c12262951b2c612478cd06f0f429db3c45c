@@ -16,6 +16,23 @@
       "message": "could you +2 again? I had to rebase.",
       "revId": "6cb61c12262951b2c612478cd06f0f429db3c45c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c20642_f70123bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-27T00:42:45Z",
+      "side": 1,
+      "message": "Colin doesn\u0027t seem to be available at the moment. Jaewoong, could you +2?",
+      "revId": "6cb61c12262951b2c612478cd06f0f429db3c45c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
