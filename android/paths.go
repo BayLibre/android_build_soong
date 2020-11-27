@@ -138,6 +138,8 @@ type WritablePath interface {
 	// the writablePath method doesn't directly do anything,
 	// but it allows a struct to distinguish between whether or not it implements the WritablePath interface
 	writablePath()
+
+	ReplaceExtension(ctx PathContext, ext string) OutputPath
 }
 
 type genPathProvider interface {
@@ -950,6 +952,16 @@ func PathForOutput(ctx PathContext, pathComponents ...string) OutputPath {
 	return OutputPath{basePath{path, ctx.Config(), ""}, fullPath}
 }
 
+func PathForOutputChunk(ctx PathContext, chunk int, pathComponents ...string) OutputPath {
+	path, err := validatePath(pathComponents...)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+	fullPath := filepath.Join(ctx.Config().srcDir, fmt.Sprintf("%s.%d", path, chunk))
+	path = fullPath[len(fullPath)-len(path):]
+	return OutputPath{basePath{path, ctx.Config(), ""}, fullPath}
+}
+
 // PathsForOutput returns Paths rooted from buildDir
 func PathsForOutput(ctx PathContext, paths []string) WritablePaths {
 	ret := make(WritablePaths, len(paths))
@@ -1249,6 +1261,10 @@ func (p InstallPath) buildDir() string {
 	return p.config.buildDir
 }
 
+func (p InstallPath) ReplaceExtension(ctx PathContext, ext string) OutputPath {
+	panic("Not implemented")
+}
+
 var _ Path = InstallPath{}
 var _ WritablePath = InstallPath{}
 
@@ -1509,6 +1525,10 @@ func (p PhonyPath) writablePath() {}
 
 func (p PhonyPath) buildDir() string {
 	return p.config.buildDir
+}
+
+func (p PhonyPath) ReplaceExtension(ctx PathContext, ext string) OutputPath {
+	panic("Not implemented")
 }
 
 var _ Path = PhonyPath{}

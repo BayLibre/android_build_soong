@@ -407,6 +407,21 @@ func ShardPaths(paths Paths, shardSize int) []Paths {
 	return ret
 }
 
+func ShardString(s string, shardSize int) []string {
+	if len(s) == 0 {
+		return nil
+	}
+	ret := make([]string, 0, (len(s)+shardSize-1)/shardSize)
+	for len(s) > shardSize {
+		ret = append(ret, s[0:shardSize])
+		s = s[shardSize:]
+	}
+	if len(s) > 0 {
+		ret = append(ret, s)
+	}
+	return ret
+}
+
 // ShardStrings takes a slice of strings, and returns a slice of slices of strings where each one has at most shardSize
 // elements.
 func ShardStrings(s []string, shardSize int) [][]string {
