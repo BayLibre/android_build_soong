@@ -16,6 +16,23 @@
       "message": "(TH failures are unrelated)",
       "revId": "92342c3071b4978ebf7ea498d5d0b8446ad60c99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c766ea0b_8b12bd39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-27T00:32:53Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "92342c3071b4978ebf7ea498d5d0b8446ad60c99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
