@@ -15,6 +15,7 @@
 package android
 
 import (
+	"fmt"
 	"strings"
 	"testing"
 
@@ -97,10 +98,10 @@ var (
 	// content to file.
 	writeFile = pctx.AndroidStaticRule("writeFile",
 		blueprint.RuleParams{
-			Command:     `/bin/bash -c 'echo -e "$$0" > $out' $content`,
+			Command:     `/bin/bash -c 'echo -e $options "$$0" > $out' $content`,
 			Description: "writing file $out",
 		},
-		"content")
+		"content", "options")
 
 	// Used only when USE_GOMA=true is set, to restrict non-goma jobs to the local parallelism value
 	localPool = blueprint.NewBuiltinPool("local_pool")
@@ -136,6 +137,36 @@ var (
 // WriteFileRule creates a ninja rule to write contents to a file.  The contents will be escaped
 // so that the file contains exactly the contents passed to the function, plus a trailing newline.
 func WriteFileRule(ctx BuilderContext, outputFile WritablePath, content string) {
+	if len(content) > 100000 {
+		chunks := WritablePaths{}
+		for i := 0; i < len(content); i += 100000 {
+			fullpath := fmt.Sprintf("%s.%d", outputFile.String(), i)
+			tempPath := OutputPath{basePath{path: fullpath, rel: fullpath}, fullpath}
+			size := 100000
+			if i+100000 > len(content) {
+				size = len(content) - i
+			}
+			esc := echoEscaper.Replace(content[i : i+size])
+			esc = proptools.ShellEscape(esc)
+			ctx.Build(pctx, BuildParams{
+				Rule:        writeFile,
+				Output:      tempPath,
+				Description: fmt.Sprintf("write chunk %s.%d", outputFile.Base(), i),
+				Args: map[string]string{
+					"content": esc,
+					"options": "-n",
+				},
+			})
+			chunks = append(chunks, tempPath)
+		}
+		ctx.Build(pctx, BuildParams{
+			Rule:        Cat,
+			Inputs:      chunks.Paths(),
+			Output:      outputFile,
+			Description: "Merging to" + outputFile.Base(),
+		})
+		return
+	}
 	content = echoEscaper.Replace(content)
 	content = proptools.ShellEscape(content)
 	if content == "" {
@@ -147,6 +178,7 @@ func WriteFileRule(ctx BuilderContext, outputFile WritablePath, content string) 
 		Description: "write " + outputFile.Base(),
 		Args: map[string]string{
 			"content": content,
+			"options": "",
 		},
 	})
 }
