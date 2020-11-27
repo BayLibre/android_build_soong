@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9db6552_79517a15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T13:00:42Z",
+      "side": 1,
+      "message": "Generally looks ok, but I have a few questions on the data structures and possible conflicting instructions.",
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "216a9c1a_e6b94c20",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T13:00:42Z",
+      "side": 1,
+      "message": "\"extraDist\" may sound more familiar for those who come from the GNU world, but \"distContributions\" is also good.",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 22
+      },
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c98929aa_62760bb4",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T13:00:42Z",
+      "side": 1,
+      "message": "Thinking of possible collisions in copy instructions for different goals, can it happen that:\n\n1. distContributions contain pairs like (\"a b c\", ...) and (\"a c d e\", ...) where different sets of goals intersect\n\n2. copy instructions for one goal within the same copiesForGoals are conflicting (have different sources for the same destination, e.g. \"from1 -\u003e dest\" and \"from2 -\u003e dest\")\n\n3. copy instructions for one goal within different copiesForGoals are conflicting (this can happen if the intersection of different goal sets is nonempty)\n\nIf these situation are possible and should be handled, then these data structures are insufficient for merging. Else (if they are not possible or we do not want to handle them), should we have a sanity check? Otherwise maybe worth adding a comment to clarify that we do not handle conflicts?",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 33
+      },
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad92954_9b8a44f5",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T13:00:42Z",
+      "side": 1,
+      "message": "What are goals, just space-separated makefile targets? May be worth clarifying, as it is not clear why a set is represented with a string.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 14
+      },
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8674a53_28c7938f",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T13:00:42Z",
+      "side": 1,
+      "message": "May be worth preallocating copiesForGoals.copies capacity to len(tagPaths).",
+      "range": {
+        "startLine": 263,
+        "startChar": 56,
+        "endLine": 263,
+        "endChar": 61
+      },
+      "revId": "4dd1f3d94b1a59f79fb2519307627573134c9836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
