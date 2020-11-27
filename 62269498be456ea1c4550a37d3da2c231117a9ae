@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec67fec_3017a9a2",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T16:32:25Z",
+      "side": 1,
+      "message": "I\u0027d rather have a helper function parameterized over dist that ranges over {\"tagged\", \"default\", \"none\"} and output that ranges over {true, false} that would generate a .bp file, because comparing the string with bare eyes to make sure the only difference is in these parameters is tedious. The same goes for expected output, there are only three different outputs and they can be assigned to variables and just referenced. Then it would be easier to check that the test exhausts all combinations in a uniform way (the difference is only in parameters).\n\nBut that doesn\u0027t play well with inline comments, which would need rewording \"this\", so I guess you prefer to keep them as is?",
+      "revId": "62269498be456ea1c4550a37d3da2c231117a9ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
