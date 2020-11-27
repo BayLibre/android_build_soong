@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bf08bad_26716eba",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T18:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f95d2c6b_95c61eb6",
+      "range": {
+        "startLine": 57,
+        "startChar": 53,
+        "endLine": 57,
+        "endChar": 81
+      },
+      "revId": "48891a95c5de7b178885419bb05b4069c1051444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c055168c_c233fb46",
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1621aeb4_e0a95ef2",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T18:11:25Z",
+      "side": 1,
+      "message": "I don\u0027t mean \"shared\", because Soong doesn\u0027t know what it is (it doesn\u0027t have the information in /system/etc/permissions/platform.xml).\n\nWhat I mean is, all dependencies that have OptionalImplicitSdkLibrary (possibly transitive). That\u0027s how it is computed in Soong.\n\nAs far as I understand, all such libraries have to be \"shared\". We are not checking this in Soong, and we didn\u0027t check before my work on class loader contexts, while manifest_fixer existed before that. Should we generate checks similar to verify_uses_libraries.sh that will parse /system/etc/permissions/platform.xml and fail if we try to add something in the manifest (or CLC) that is not in that file? Will that work for vendor libraries?\n\nFor now I documented that we do not check \"shared\".",
+      "parentUuid": "c055168c_c233fb46",
+      "range": {
+        "startLine": 134,
+        "startChar": 79,
+        "endLine": 134,
+        "endChar": 90
+      },
+      "revId": "48891a95c5de7b178885419bb05b4069c1051444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c33a7088_a80038e5",
         "filename": "dexpreopt/class_loader_context.go",
         "patchSetId": 5
@@ -94,6 +142,30 @@
       "writtenOn": "2020-11-27T15:15:17Z",
       "side": 1,
       "message": "This makes it sound like an error that a \u003cuses-library\u003e is missing from the source manifest but in fact that is often by design. Allowing Soong to calculate the entries is less prone to errors and simplifies maintenance.",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 80
+      },
+      "revId": "48891a95c5de7b178885419bb05b4069c1051444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a30e8aaf_49131e57",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T18:11:25Z",
+      "side": 1,
+      "message": "I rewrote this section, PTAL.",
+      "parentUuid": "c33a7088_a80038e5",
       "range": {
         "startLine": 131,
         "startChar": 3,
@@ -129,6 +201,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "960805d4_e4040c30",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T18:11:25Z",
+      "side": 1,
+      "message": "Yes, there build-time CLC is hardcoded in the *.odex files (the tree + checksums for each library). If that is not the same as whatever PM constructs, dexpreopted code is discarded. (Mentioned in section 3).\n\nI don\u0027t know how APEXes provide \"shared\" libraries (this looks like another global list in the build system, similar to boot jars, that has to be gathered across APEXes in some way, similar to BOOTCLASSPATH environment variables).",
+      "parentUuid": "04da9599_321d7f0b",
+      "range": {
+        "startLine": 138,
+        "startChar": 31,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "48891a95c5de7b178885419bb05b4069c1051444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b36ecce_ae531a3a",
         "filename": "dexpreopt/class_loader_context.go",
         "patchSetId": 5
@@ -140,6 +236,30 @@
       "writtenOn": "2020-11-27T15:15:17Z",
       "side": 1,
       "message": "Can it be made available? e.g. by extracting it from the APK and adding it to .bp file for prebuilt Apps and added to the .bp file manually for source Apps. May be worth raising a bug to cover this.",
+      "range": {
+        "startLine": 205,
+        "startChar": 37,
+        "endLine": 205,
+        "endChar": 92
+      },
+      "revId": "48891a95c5de7b178885419bb05b4069c1051444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4958e6fa_051b6dc8",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T18:11:25Z",
+      "side": 1,
+      "message": "With enough effort, I\u0027m sure it can. :D \n\nFiled https://b.corp.google.com/issues/174355777.",
+      "parentUuid": "7b36ecce_ae531a3a",
       "range": {
         "startLine": 205,
         "startChar": 37,
