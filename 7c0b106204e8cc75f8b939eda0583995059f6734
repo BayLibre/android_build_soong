@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "200e3e2d_1d0803ee",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-11-27T16:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a26b4060_ec159a1a",
+      "range": {
+        "startLine": 122,
+        "startChar": 22,
+        "endLine": 122,
+        "endChar": 25
+      },
+      "revId": "7c0b106204e8cc75f8b939eda0583995059f6734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "334203d8_3b5bdd2d",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-27T00:26:58Z",
       "side": 1,
       "message": "compressed?",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 15
+      },
+      "revId": "7c0b106204e8cc75f8b939eda0583995059f6734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6d6a64_e50ad50b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-11-27T16:15:41Z",
+      "side": 1,
+      "message": "Updated it to isCompressed. Just because something is compressible, does not mean it will be compressed. I needed a field that marks whether or not the apex has been compressed.",
+      "parentUuid": "334203d8_3b5bdd2d",
       "range": {
         "startLine": 359,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb6dcf9e_aad312ba",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-11-27T16:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc11384_79700ff9",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 39
+      },
+      "revId": "7c0b106204e8cc75f8b939eda0583995059f6734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd8f9fd9_ad30195c",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-27T00:26:58Z",
       "side": 1,
       "message": "Please use android.NewRuleBuilder() instead.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 16
+      },
+      "revId": "7c0b106204e8cc75f8b939eda0583995059f6734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef0ef93_52177e41",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-11-27T16:15:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd8f9fd9_ad30195c",
       "range": {
         "startLine": 180,
         "startChar": 0,
@@ -140,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "812cc5c8_ae11eaa0",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-11-27T16:15:41Z",
+      "side": 1,
+      "message": "Removed.\n\nWithout this condition, art_apex_test.py was failing. But confirmed that putting \"compressible: false\" in art_apex here[1] is enough to avoid compressing art APEX and failing that test.\n\nAll bootstrap APEX will have compressible set to false. I will upload them on follow up CLs.\n\n[1] https://source.corp.google.com/android/art/build/apex/Android.bp;l\u003d260?q\u003d%22name:%20%5C%22com.android.art%5C%22%22%20package:android$\u0026sq\u003dpackage:android",
+      "parentUuid": "aab9846a_b1414ce7",
+      "range": {
+        "startLine": 703,
+        "startChar": 108,
+        "endLine": 703,
+        "endChar": 121
+      },
+      "revId": "7c0b106204e8cc75f8b939eda0583995059f6734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de5997ad_159d11a9",
@@ -153,6 +273,30 @@
       "writtenOn": "2020-11-27T00:26:58Z",
       "side": 1,
       "message": "Why as a separate step? Can\u0027t you just add --compress to opt_flags above when isCompresssible is true?",
+      "range": {
+        "startLine": 706,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 4
+      },
+      "revId": "7c0b106204e8cc75f8b939eda0583995059f6734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c69a666_d47ac143",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-11-27T16:15:41Z",
+      "side": 1,
+      "message": "apexer creates an unsigned apex. We then use java.Signapk rule on it to create a signed APEX.\n\nWe want to compress a signed apex, so that when we decompress it (we are planning to have apexd decompress directly into /data/apex/active folder), the system will be able to trust it.\n\nUsing --compress flag with apexer will create a compressed APEX with unsigned apex inside it. If we place that in /data/apex/active, system will reject it since it is not signed. (at least that\u0027s my understanding)",
+      "parentUuid": "de5997ad_159d11a9",
       "range": {
         "startLine": 706,
         "startChar": 0,
