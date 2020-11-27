@@ -46,6 +46,30 @@
       },
       "revId": "ad97af380a33db732a5a3693be159f49c0f816ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce67befa_21ed9ab0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-11-27T01:40:35Z",
+      "side": 1,
+      "message": "I tested the effect on the apex by following instructions in http://b/172951145. The change Dario mentioned has been submitted so I also ran:\n    \"m dist sharedlibs_test\"\n\nIt did actually find a couple of issues that were not found by the tests so I did some extensive improvements of the test coverage of the dist processing just to be on the safe side.",
+      "parentUuid": "891af564_825c8152",
+      "range": {
+        "startLine": 13,
+        "startChar": 15,
+        "endLine": 15,
+        "endChar": 58
+      },
+      "revId": "ad97af380a33db732a5a3693be159f49c0f816ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
