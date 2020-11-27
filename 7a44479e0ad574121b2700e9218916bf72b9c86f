@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f98471_8cb7c55e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-11-27T11:39:16Z",
+      "side": 1,
+      "message": "I am not sure why it worked in the previous builds.\nBut I found the problem from the local test.",
+      "revId": "7a44479e0ad574121b2700e9218916bf72b9c86f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
