@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c9cd3f_1cf40cd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T14:40:38Z",
+      "side": 1,
+      "message": "Minor indentation comments, otherwise looks good.",
+      "revId": "2c406d695a21987e3ebbbeb8d6a7421a326c5b5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1d2d55_bfc7e8d4",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-11-27T14:40:38Z",
+      "side": 1,
+      "message": "Incorrect indentation?\n\nAlso different test cases use different indentation (e,g, 2 tabs on lines 399-404, but 3 tabs on lines 418-424, it\u0027s a minor thing but may be worth unifying).",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 6
+      },
+      "revId": "2c406d695a21987e3ebbbeb8d6a7421a326c5b5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
