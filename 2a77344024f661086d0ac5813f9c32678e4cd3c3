@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006432675",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1844e896_48134197",
+        "filename": "androidmk/mk2star/mk2star_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-29T21:32:52Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 72,
+        "startChar": 34,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "2a77344024f661086d0ac5813f9c32678e4cd3c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006432675",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "79719829_76dbf506",
+        "filename": "androidmk/mk2star/mk2star_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-29T21:32:52Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 226,
+        "startChar": 17,
+        "endLine": 226,
+        "endChar": 22
+      },
+      "revId": "2a77344024f661086d0ac5813f9c32678e4cd3c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006432675",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "127274a2_97366139",
+        "filename": "androidmk/mk2star/mk2star_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-29T21:32:52Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 234,
+        "startChar": 29,
+        "endLine": 234,
+        "endChar": 34
+      },
+      "revId": "2a77344024f661086d0ac5813f9c32678e4cd3c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006432675",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5da69b7e_1fc255fd",
+        "filename": "androidmk/mk2star/mk2star_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-29T21:32:52Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 296,
+        "startChar": 15,
+        "endLine": 296,
+        "endChar": 20
+      },
+      "revId": "2a77344024f661086d0ac5813f9c32678e4cd3c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006432675",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b2b70ff3_3d00c6f6",
+        "filename": "androidmk/mk2star/mk2star_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-29T21:32:52Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 305,
+        "startChar": 29,
+        "endLine": 305,
+        "endChar": 34
+      },
+      "revId": "2a77344024f661086d0ac5813f9c32678e4cd3c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006432675",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b3332d13_b6301465",
+        "filename": "androidmk/mk2star/mk2star_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-29T21:32:52Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 322,
+        "startChar": 18,
+        "endLine": 322,
+        "endChar": 23
+      },
+      "revId": "2a77344024f661086d0ac5813f9c32678e4cd3c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006432675",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f0b75853_0eb60cc5",
+        "filename": "androidmk/mk2star/mk2star_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-29T21:32:52Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 330,
+        "startChar": 29,
+        "endLine": 330,
+        "endChar": 34
+      },
+      "revId": "2a77344024f661086d0ac5813f9c32678e4cd3c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
