@@ -166,9 +166,7 @@ func (ms *MakeString) splitNFunc(n int, splitFunc func(s string, n int) []string
 		}
 	}
 
-	if !curMs.Empty() {
-		ret = append(ret, curMs)
-	}
+	ret = append(ret, curMs)
 	return ret
 }
 
