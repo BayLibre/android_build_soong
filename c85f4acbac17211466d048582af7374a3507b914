@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3121ae_bc227925",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-29T23:34:13Z",
+      "side": 1,
+      "message": "nit: go doesn\u0027t have a line length limit: https://g3doc.corp.google.com/go/g3doc/style/guide.md?cl\u003dhead#formatting",
+      "range": {
+        "startLine": 743,
+        "startChar": 52,
+        "endLine": 743,
+        "endChar": 55
+      },
+      "revId": "c85f4acbac17211466d048582af7374a3507b914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
