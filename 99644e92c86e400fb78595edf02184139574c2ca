@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "334fad38_52f0ebfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-30T15:41:17Z",
+      "side": 1,
+      "message": "Let me +2 this as this is taking too much time after the trivial rebase.",
+      "revId": "99644e92c86e400fb78595edf02184139574c2ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
