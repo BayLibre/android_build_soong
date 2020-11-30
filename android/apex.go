@@ -467,12 +467,6 @@ func CreateApexVariations(mctx BottomUpMutatorContext, module ApexModule) []Modu
 	modules := mctx.CreateVariations(variations...)
 	for i, mod := range modules {
 		platformVariation := i == 0
-		if platformVariation && !mctx.Host() && !mod.(ApexModule).AvailableFor(AvailableToPlatform) {
-			// Do not install the module for platform, but still allow it to output
-			// uninstallable AndroidMk entries in certain cases when they have side
-			// effects.  TODO(jiyong): move this routine to somewhere else
-			mod.MakeUninstallable()
-		}
 		if !platformVariation {
 			mctx.SetVariationProvider(mod, ApexInfoProvider, apexInfos[i-1])
 		}

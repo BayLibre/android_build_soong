@@ -898,6 +898,21 @@ func markPlatformAvailability(mctx android.BottomUpMutatorContext) {
 
 	if !availableToPlatform {
 		am.SetNotAvailableForPlatform()
+
+		// If this variant is the platform variant, then mark it uninstallable so that they
+		// don't appear in Android.mk. Note that tests are not considered as platform.
+		// This is required because tests are allowed to statically link libraries that are
+		// available only to an APEX, for testing purpose.
+		isPlatVar := mctx.Provider(android.ApexInfoProvider).(android.ApexInfo).IsForPlatform()
+		isTest := am.InstallInTestcases() || am.InstallInData()
+		if !isTest && isPlatVar {
+			// Use MakeUninstallable instead of SkipInstall to give a chance for the
+			// module to make itself available in Android.mk while keeping it
+			// uninstallable by having LOCAL_UNINSTALLABLE_MODULE := true. This is for
+			// certain cases when other modules are relying on the side effects of this
+			// module.
+			am.MakeUninstallable()
+		}
 	}
 }
 
