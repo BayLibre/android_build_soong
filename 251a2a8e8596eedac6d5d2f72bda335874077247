@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3962787c_fc7409b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-30T21:40:13Z",
+      "side": 1,
+      "message": "One minor comment that is fine in a followup change if necessary.",
+      "revId": "251a2a8e8596eedac6d5d2f72bda335874077247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1f5511e_e5d204c3",
+        "filename": "rust/rust.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-11-30T21:40:13Z",
+      "side": 1,
+      "message": "Can you do this with a bool in the dependency tag struct?  Looks like reusing library || proc_macro would work.",
+      "revId": "251a2a8e8596eedac6d5d2f72bda335874077247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
