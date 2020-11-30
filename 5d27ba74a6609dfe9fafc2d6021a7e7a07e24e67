@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873c6655_c160a7cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2020-11-30T11:44:40Z",
+      "side": 1,
+      "message": "I know this is a bit of a hack, but it\u0027s a temporary situation and I don\u0027t want to invest unnecessary effort into this. WDYT?\n\nFor context:\nhttps://plx.corp.google.com/scripts2/script_5f._b59a85_0000_2cb5_b61a_94eb2c0574a8",
+      "revId": "5d27ba74a6609dfe9fafc2d6021a7e7a07e24e67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
