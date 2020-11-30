@@ -1969,7 +1969,7 @@ func (a *apexBundle) checkStaticLinkingToStubLibraries(ctx android.ModuleContext
 			// The dynamic linker and crash_dump tool in the runtime APEX is the only
 			// exception to this rule. It can't make the static dependencies dynamic
 			// because it can't do the dynamic linking for itself.
-			if apexName == "com.android.runtime" && (fromName == "linker" || fromName == "crash_dump") {
+			if apexName == "com.android.runtime" && (fromName == "linker" || fromName == "crash_dump" || fromName == "linkerconfig") {
 				return false
 			}
 
