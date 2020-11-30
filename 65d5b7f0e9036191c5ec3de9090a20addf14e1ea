@@ -22,6 +22,30 @@
       },
       "revId": "65d5b7f0e9036191c5ec3de9090a20addf14e1ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96cbfe39_3230c12f",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-11-30T08:37:38Z",
+      "side": 0,
+      "message": "(that is, these shouldn\u0027t be moved)",
+      "parentUuid": "998ea147_a76e232e",
+      "range": {
+        "startLine": 219,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 2
+      },
+      "revId": "65d5b7f0e9036191c5ec3de9090a20addf14e1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
