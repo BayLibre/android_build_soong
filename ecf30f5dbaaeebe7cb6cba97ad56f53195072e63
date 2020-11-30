@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b4def441_8dc25bd3",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-30T22:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24571a54_d006eb12",
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7089d134_f4fb5105",
         "filename": "java/aapt2.go",
         "patchSetId": 2
@@ -89,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51ea161_f1696965",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-30T22:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a87ce50_ad4ddddb",
+      "range": {
+        "startLine": 69,
+        "startChar": 91,
+        "endLine": 70,
+        "endChar": 92
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3a08669_2f71e85f",
@@ -102,6 +144,30 @@
       "writtenOn": "2020-11-23T21:35:16Z",
       "side": 1,
       "message": "nit: missing space",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 5
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc90744_0ef47e74",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-30T22:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a08669_2f71e85f",
       "range": {
         "startLine": 76,
         "startChar": 2,
@@ -135,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccd5b30c_32b34f1d",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-30T22:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a453b224_c6f2f312",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be0318ff_3dc9ab02",
@@ -148,6 +238,30 @@
       "writtenOn": "2020-11-21T12:46:25Z",
       "side": 1,
       "message": "Did you mean a flagfile containing the list of files?",
+      "range": {
+        "startLine": 194,
+        "startChar": 50,
+        "endLine": 194,
+        "endChar": 71
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c33d9f65_ec076695",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-30T22:17:03Z",
+      "side": 1,
+      "message": "Not sure if we can call it a flagfile. It only contains files paths, no flag names.",
+      "parentUuid": "be0318ff_3dc9ab02",
       "range": {
         "startLine": 194,
         "startChar": 50,
@@ -183,6 +297,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ada7ddc_78f2a1ff",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-30T22:17:03Z",
+      "side": 1,
+      "message": "Which deps are you referring to? The deps parameter has nothing to do with package splitting, and the output deps is handled above in line 215.",
+      "parentUuid": "524ebc0e_93302146",
+      "range": {
+        "startLine": 236,
+        "startChar": 78,
+        "endLine": 236,
+        "endChar": 98
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c8acc30_7b3d9ad6",
         "filename": "java/aapt2.go",
         "patchSetId": 2
@@ -194,6 +332,30 @@
       "writtenOn": "2020-11-23T22:01:49Z",
       "side": 1,
       "message": "split",
+      "range": {
+        "startLine": 237,
+        "startChar": 53,
+        "endLine": 237,
+        "endChar": 61
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d13e5e1_b2fbf2f5",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-30T22:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c8acc30_7b3d9ad6",
       "range": {
         "startLine": 237,
         "startChar": 53,
@@ -217,6 +379,30 @@
       "writtenOn": "2020-11-21T12:46:25Z",
       "side": 1,
       "message": "Bug number so anyone reading this can take this on?",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 18
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a09b5e11_a740821b",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-11-30T22:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb1147a_d575c751",
       "range": {
         "startLine": 238,
         "startChar": 5,
