@@ -94,6 +94,7 @@ var ClangLibToolingUnknownCflags = sorted([]string{})
 // `modernize-*`.
 var ClangTidyDisableChecks = []string{
 	"misc-no-recursion",
+	"readability-function-cognitive-complexity", // http://b/175055536
 }
 
 func init() {
