@@ -140,6 +140,30 @@
       },
       "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b216df1c_3664416c",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-30T03:39:43Z",
+      "side": 1,
+      "message": "I\u0027d like to keep the sabi struct accessing (L163, L164) as in one place as possible",
+      "parentUuid": "32a3f914_33febae3",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
