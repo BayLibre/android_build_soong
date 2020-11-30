@@ -22,6 +22,30 @@
       },
       "revId": "c85f4acbac17211466d048582af7374a3507b914",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9070b34b_da3b4f56",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-11-30T12:44:57Z",
+      "side": 1,
+      "message": "Ah. Didn\u0027t know that. I was wondering why some lines are incredibly long.\n\nDone.",
+      "parentUuid": "ea3121ae_bc227925",
+      "range": {
+        "startLine": 743,
+        "startChar": 52,
+        "endLine": 743,
+        "endChar": 55
+      },
+      "revId": "c85f4acbac17211466d048582af7374a3507b914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
