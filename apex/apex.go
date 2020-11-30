@@ -899,6 +899,29 @@ func markPlatformAvailability(mctx android.BottomUpMutatorContext) {
 	if !availableToPlatform {
 		am.SetNotAvailableForPlatform()
 	}
+
+	// TODO(jiyong) move this to under !availableToPlatform condition above. Right now, we can't
+	// because there are some modules (e.g. signal_dumper) which is marked as available to
+	// platform but is considered as unavailable to platform because it's using one or more
+	// other modules that are not available to platform. Until the issue is fixed, hiding a
+	// module from Android.mk is done only when the module itself is explicitly marked as not
+	// available to platform.
+	if !am.AvailableFor(android.AvailableToPlatform) {
+		// If this variant is the platform variant, then mark it uninstallable so that they
+		// don't appear in Android.mk. Note that tests are not considered as platform.
+		// This is required because tests are allowed to statically link libraries that are
+		// available only to an APEX, for testing purpose.
+		isPlatVar := mctx.Provider(android.ApexInfoProvider).(android.ApexInfo).IsForPlatform()
+		isTest := am.InstallInTestcases() || am.InstallInData()
+		if !isTest && isPlatVar {
+			// Use MakeUninstallable instead of SkipInstall to give a chance for the
+			// module to make itself available in Android.mk while keeping it
+			// uninstallable by having LOCAL_UNINSTALLABLE_MODULE := true. This is for
+			// certain cases when other modules are relying on the side effects of this
+			// module.
+			am.MakeUninstallable()
+		}
+	}
 }
 
 // apexMutator visits each module and creates apex variations if the module was marked in the

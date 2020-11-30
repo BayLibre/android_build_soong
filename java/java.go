@@ -2027,6 +2027,18 @@ func (j *Module) IsInstallable() bool {
 	return Bool(j.properties.Installable)
 }
 
+func (j *Module) MakeUninstallable() {
+	if !j.IsInstallable() && j.NotAvailableForPlatform() {
+		// We have some java libraries (core-oj, icu4j, etc.) that are not available for
+		// platform and marked as not installable. There however are some dependencies to
+		// them for testing purposes. Since their installation is anyway prohibited via
+		// LOCAL_UNINSTALLABLE_MODULE := true in androidmk.go, it's safe to make the java
+		// libraries visible in Android.mk.
+		return
+	}
+	j.ModuleBase.MakeUninstallable()
+}
+
 //
 // Java libraries (.jar file)
 //
@@ -2938,6 +2950,18 @@ func (j *Import) IDECustomizedModuleName() string {
 }
 
 var _ android.PrebuiltInterface = (*Import)(nil)
+
+func (j *Import) MakeUninstallable() {
+	if !Bool(j.properties.Installable) && j.NotAvailableForPlatform() {
+		// We have some java libraries (core-oj, icu4j, etc.) that are not available for
+		// platform and marked as not installable. There however are some dependencies to
+		// them for testing purposes. Since their installation is anyway prohibited via
+		// LOCAL_UNINSTALLABLE_MODULE := true in androidmk.go, it's safe to make the java
+		// libraries visible in Android.mk.
+		return
+	}
+	j.ModuleBase.MakeUninstallable()
+}
 
 // java_import imports one or more `.jar` files into the build graph as if they were built by a java_library module.
 //

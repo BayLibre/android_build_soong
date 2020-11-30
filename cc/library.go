@@ -1453,6 +1453,14 @@ func (library *libraryDecorator) makeUninstallable(mod *Module) {
 		// files from notice_files.mk, which other libraries might depend on.
 		return
 	}
+	if library.buildStubs() && mod.NotAvailableForPlatform() {
+		// Stubs should be made available in Android.mk even when the module itself is not
+		// available to the platform. Otherwise, Make modules won't be able to link to
+		// the stub, causing the module completely disappear in the Make world. Note that
+		// the stub is still uninstallable because AndroidMkEntries for stubs always have
+		// LOCAL_UNINSTALLABLE_MODULE := true.
+		return
+	}
 	mod.ModuleBase.MakeUninstallable()
 }
 
