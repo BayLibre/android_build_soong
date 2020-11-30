@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3443551_d6d86107",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-30T03:37:17Z",
+      "side": 1,
+      "message": "Yes cc/cc.go:newModule() always initialize cc.Module.sabi (which is the same pointer as cc.Module.library.sabi) to be non-nil, but it doesn\u0027t hurt checking either.",
+      "parentUuid": "86489188_c277f97b",
+      "range": {
+        "startLine": 589,
+        "startChar": 4,
+        "endLine": 589,
+        "endChar": 16
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb5a97b0_150a6081",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f0c56e_6212854c",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-30T03:37:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb5a97b0_150a6081",
+      "range": {
+        "startLine": 1081,
+        "startChar": 4,
+        "endLine": 1081,
+        "endChar": 16
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c5f7088_cb39cad4",
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-30T01:31:45Z",
       "side": 1,
       "message": "can we check this condition inside the function shouldCreateSourceAbiDump?",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a3f914_33febae3",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-30T03:37:17Z",
+      "side": 1,
+      "message": "I\u0027d like to keep this here since L164 would need this (L162) nil-ness check, and I\u0027d like to keep shouldCreateSourceAbiDump() to be a pure function that doesn\u0027t modify the module state.",
+      "parentUuid": "3c5f7088_cb39cad4",
       "range": {
         "startLine": 162,
         "startChar": 44,
