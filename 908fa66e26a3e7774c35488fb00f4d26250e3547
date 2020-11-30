@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6efb5686_52b5c3d8",
+        "filename": "android/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-11-30T16:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "581ce29b_a7434710",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 30
+      },
+      "revId": "908fa66e26a3e7774c35488fb00f4d26250e3547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bcbb02d_819f3b75",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-23T21:47:12Z",
       "side": 1,
       "message": "The TODO here implies to me that this is something you plan to do, but it\u0027s probably not worth doing unless this shows up in profiling as a hotspot.  Maybe just comment on the implementation and suggest the improvement if necessary?",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 29
+      },
+      "revId": "908fa66e26a3e7774c35488fb00f4d26250e3547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0488ad5a_6aa72d76",
+        "filename": "android/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-11-30T16:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bcbb02d_819f3b75",
       "range": {
         "startLine": 175,
         "startChar": 1,
