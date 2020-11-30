@@ -22,6 +22,30 @@
       },
       "revId": "6474d0518ab295d64440f2cb47e1456f873f2764",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4eec10e_86467959",
+        "filename": "cc/sabi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-30T14:52:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9a319920_84334e4c",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 162,
+        "endChar": 58
+      },
+      "revId": "6474d0518ab295d64440f2cb47e1456f873f2764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4d00c76_4a1452b0",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-30T14:52:09Z",
+      "side": 1,
+      "message": "Oh, the one in sabiDepsMutator is actually needed!\nFor the sabiDepsMutator case, it\u0027s not guaranteed that the visited mudule is a cc_library, so the .sabi field could be nil, for example cc_object doesn\u0027t call cc/cc.go:newModule() in its factory method so its .sabi is nil.\nOn the other hand, (*libraryDecorator).compile() and (*libraryDecorator).linkSAbiDumpFiles() being a libraryDecorator* receiver implies that the module we\u0027re considering is a cc_library type, thus .sabi must be non-nil.",
+      "parentUuid": "4386738a_05cc02e0",
+      "range": {
+        "startLine": 589,
+        "startChar": 4,
+        "endLine": 589,
+        "endChar": 16
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb5a97b0_150a6081",
         "filename": "cc/library.go",
         "patchSetId": 6
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "\u003e a pure function that doesn\u0027t modify the module state\n\nI didn\u0027t mean to make the function to modify the state. The condition `c.sabi.Properties.ShouldCreateSourceAbiDump || shouldCreateSourceAbiDump(mctx)` just sounded very odd to me.\n\n\u003e I\u0027d like to keep the sabi struct accessing (L163, L164) as in one place as possible\n\nWell, the property is being accessed in other two places already :(",
       "parentUuid": "b216df1c_3664416c",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7b28f1_64cf9934",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-11-30T14:52:09Z",
+      "side": 1,
+      "message": "\u003e The condition `c.sabi.Properties.ShouldCreateSourceAbiDump || shouldCreateSourceAbiDump(mctx)` just sounded very odd to me.\n\nYeah I agree.. I wasn\u0027t 100% satisfied with this too. The \"Properties.ShouldCreateSourceAbiDump\" flag here actually doubles as a \"visited/marked by parent\" flag.\nI would try to rearrange these lines tomorrow. Maybe add a setter/getter for Properties.ShouldCreateSourceAbiDump, and change VisitDirectDeps() to WalkDeps() (L165) so that the whole subgraph is \"colored\" in one go, instead of the iterative process right now, that should simplify the states..🤔",
+      "parentUuid": "1561eb36_c97882c4",
       "range": {
         "startLine": 162,
         "startChar": 44,
