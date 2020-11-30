@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4386738a_05cc02e0",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-30T13:12:28Z",
+      "side": 1,
+      "message": "Ok then I don\u0027t think there is a need to check that. I was asking simply because there is such a check in sabiDepsMutator",
+      "parentUuid": "d3443551_d6d86107",
+      "range": {
+        "startLine": 589,
+        "startChar": 4,
+        "endLine": 589,
+        "endChar": 16
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb5a97b0_150a6081",
         "filename": "cc/library.go",
         "patchSetId": 6
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "I\u0027d like to keep the sabi struct accessing (L163, L164) as in one place as possible",
       "parentUuid": "32a3f914_33febae3",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1561eb36_c97882c4",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-30T13:12:28Z",
+      "side": 1,
+      "message": "\u003e a pure function that doesn\u0027t modify the module state\n\nI didn\u0027t mean to make the function to modify the state. The condition `c.sabi.Properties.ShouldCreateSourceAbiDump || shouldCreateSourceAbiDump(mctx)` just sounded very odd to me.\n\n\u003e I\u0027d like to keep the sabi struct accessing (L163, L164) as in one place as possible\n\nWell, the property is being accessed in other two places already :(",
+      "parentUuid": "b216df1c_3664416c",
       "range": {
         "startLine": 162,
         "startChar": 44,
