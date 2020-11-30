@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab08118_cf398314",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-30T15:35:52Z",
+      "side": 1,
+      "message": "Ack. Thanks.",
+      "parentUuid": "c4d00c76_4a1452b0",
+      "range": {
+        "startLine": 589,
+        "startChar": 4,
+        "endLine": 589,
+        "endChar": 16
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb5a97b0_150a6081",
@@ -252,6 +276,30 @@
       "side": 1,
       "message": "\u003e The condition `c.sabi.Properties.ShouldCreateSourceAbiDump || shouldCreateSourceAbiDump(mctx)` just sounded very odd to me.\n\nYeah I agree.. I wasn\u0027t 100% satisfied with this too. The \"Properties.ShouldCreateSourceAbiDump\" flag here actually doubles as a \"visited/marked by parent\" flag.\nI would try to rearrange these lines tomorrow. Maybe add a setter/getter for Properties.ShouldCreateSourceAbiDump, and change VisitDirectDeps() to WalkDeps() (L165) so that the whole subgraph is \"colored\" in one go, instead of the iterative process right now, that should simplify the states..🤔",
       "parentUuid": "1561eb36_c97882c4",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9af3e5c_0110ed75",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-30T15:35:52Z",
+      "side": 1,
+      "message": "I think VisitDirectDeps is preferred here because this mutator will anyway visit the transitive dependencies later.\n\nHaving a setter/getter sounds good to me, especially if they are written to hide the `cc.sabi \u003d\u003d nil` case.",
+      "parentUuid": "ad7b28f1_64cf9934",
       "range": {
         "startLine": 162,
         "startChar": 44,
