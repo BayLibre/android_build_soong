@@ -33,6 +33,24 @@
       "message": "Can you do this with a bool in the dependency tag struct?  Looks like reusing library || proc_macro would work.",
       "revId": "251a2a8e8596eedac6d5d2f72bda335874077247",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b9adaf5_e90a3eed",
+        "filename": "rust/rust.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-11-30T23:56:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f5511e_e5d204c3",
+      "revId": "251a2a8e8596eedac6d5d2f72bda335874077247",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
