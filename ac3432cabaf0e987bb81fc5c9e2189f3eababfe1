@@ -364,6 +364,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e67366b_3ba67840",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2020-11-30T20:42:24Z",
+      "side": 1,
+      "message": "Ack. Yep we do recompile when the device is idle or when it boots up.",
+      "parentUuid": "0d03ff73_3a0ed581",
+      "range": {
+        "startLine": 110,
+        "startChar": 29,
+        "endLine": 110,
+        "endChar": 82
+      },
+      "revId": "ac3432cabaf0e987bb81fc5c9e2189f3eababfe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a39e0fdb_f2645a75",
