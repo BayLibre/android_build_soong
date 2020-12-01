@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8777d2e9_88afd7e4",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-12-01T01:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad596d1_30150148",
+      "range": {
+        "startLine": 208,
+        "startChar": 47,
+        "endLine": 208,
+        "endChar": 51
+      },
+      "revId": "8072d008b2142aa3e78786afcbf5528abb225eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59e29403_2025052f",
