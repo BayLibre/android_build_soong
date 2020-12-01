@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5da3bc43_6dc35a46",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1226510
+      },
+      "writtenOn": "2020-12-01T16:27:32Z",
+      "side": 1,
+      "message": "Should add this to config? Mayby extract MAX_ARG_STRLEN from the environment or is hardcoded sufficient?",
+      "parentUuid": "13f91cb9_9ea4be28",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3555397_2e9c2c41",
         "filename": "android/defs.go",
         "patchSetId": 2
@@ -71,6 +95,24 @@
       "writtenOn": "2020-12-01T05:23:57Z",
       "side": 1,
       "message": "Don\u0027t construct the OutputPath directly.  If the input were an OutputPath this could be outputFile.ReplaceExtension(), but that may cause other problems.  Maybe we need a method to replace the extension of a WritablePath?",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a63161a5_7c9df3f5",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1226510
+      },
+      "writtenOn": "2020-12-01T16:27:32Z",
+      "side": 1,
+      "message": "As we were uncertain what you intended here we left the implementation of ReplaceExtension for PhonyPath and InstallPath as panics just to get feedback what i have done. If this is is what you intended we\u0027ll take a stab at implementing them.",
+      "parentUuid": "eee2c8af_2cd4eb50",
       "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
