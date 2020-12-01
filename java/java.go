@@ -2559,6 +2559,10 @@ func (j *Binary) HostToolPath() android.OptionalPath {
 	return android.OptionalPathForPath(j.binaryFile)
 }
 
+func (j *Binary) HostToolPackagingSpecs() []android.PackagingSpec {
+	return j.TransitivePackagingSpecs()
+}
+
 func (j *Binary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if ctx.Arch().ArchType == android.Common {
 		// Compile the jar
