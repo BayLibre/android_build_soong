@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4056e8_a9eae9d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-01T23:55:47Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t understand this change. Could you elaborate a little bit? Having more entries in the list just means there is less chance of deduping, thus we will use more space. But functionality is not affected.",
+      "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
