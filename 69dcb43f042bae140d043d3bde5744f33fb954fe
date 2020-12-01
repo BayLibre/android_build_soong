@@ -65,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "559862f0_2205c591",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1226510
+      },
+      "writtenOn": "2020-12-01T16:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3555397_2e9c2c41",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49975d1f_e983f911",
@@ -78,6 +96,24 @@
       "writtenOn": "2020-12-01T05:23:57Z",
       "side": 1,
       "message": "Can you make this more like ShardPaths/ShardStrings in android/util.go?  A separate function that takes a string and returns a []string where each one is less than the shard size limit.  Substrings are not copied in Go, so the memory usage will be small.  Then you can iterate over the []string here to write each file.",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca2c872_71cdb748",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1226510
+      },
+      "writtenOn": "2020-12-01T16:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49975d1f_e983f911",
       "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -134,6 +170,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7059bd_a3c487c5",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1226510
+      },
+      "writtenOn": "2020-12-01T16:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b33d2dd_719025a9",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cd331a7_ae163a73",
@@ -157,6 +211,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4657f21f_9e1a13d3",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1226510
+      },
+      "writtenOn": "2020-12-01T16:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cd331a7_ae163a73",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b63b6f52_8d16bf4a",
@@ -170,6 +248,24 @@
       "writtenOn": "2020-12-01T05:23:57Z",
       "side": 1,
       "message": "You can leave this out",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af9e7be_3553ff1c",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1226510
+      },
+      "writtenOn": "2020-12-01T16:29:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b63b6f52_8d16bf4a",
       "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
