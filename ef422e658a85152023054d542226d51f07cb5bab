@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dd5a52e1_9987160e",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-12-01T01:33:24Z",
+      "side": 1,
+      "message": "Do you mean that args.value is sorted? Then code doesn\u0027t reveal its intention properly.\n\nThere are two inputs \u0027args.source\u0027 and \u0027args.value\u0027.\n- is `args.value` sorted?\n- is provideLibs of `args.source` empty?\n\nIf both are yes, we don\u0027t have to check `if item not in provideLibs`.\nOtherwise, we have to sort the resulting provideLibs.\n\nAnd in general I don\u0027t think it\u0027s a good idea to rely on such an assumption.\n\nBut in this case, resulting provideLibs doesn\u0027t look like to be sorted (it is basically a set).",
+      "parentUuid": "30af45d3_5a4c3aa5",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "ef422e658a85152023054d542226d51f07cb5bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ca3d09b4_35745509",
         "filename": "scripts/conv_linker_config.py",
         "patchSetId": 5
