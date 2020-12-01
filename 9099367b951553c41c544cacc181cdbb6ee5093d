@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78bc04b5_c8c6aa10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T14:43:11Z",
+      "side": 1,
+      "message": "LGTM, thanks! Will +2 this again once you rebase it.",
+      "revId": "9099367b951553c41c544cacc181cdbb6ee5093d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
