@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab600b90_a1e9fe71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2020-12-01T16:59:41Z",
+      "side": 1,
+      "message": "makes sense to me from a \"ui\" perspective.\n\nccross?",
+      "revId": "404af245882469f7380b31213a916e6124525999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
