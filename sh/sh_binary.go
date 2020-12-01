@@ -135,6 +135,7 @@ type ShBinary struct {
 }
 
 var _ android.HostToolProvider = (*ShBinary)(nil)
+var _ android.PackagedHostToolProvider = (*ShBinary)(nil)
 
 type ShTest struct {
 	ShBinary
@@ -151,6 +152,10 @@ type ShTest struct {
 
 func (s *ShBinary) HostToolPath() android.OptionalPath {
 	return android.OptionalPathForPath(s.installedFile)
+}
+
+func (s *ShBinary) HostToolPackagingSpecs() []android.PackagingSpec {
+	return s.TransitivePackagingSpecs()
 }
 
 func (s *ShBinary) DepsMutator(ctx android.BottomUpMutatorContext) {
