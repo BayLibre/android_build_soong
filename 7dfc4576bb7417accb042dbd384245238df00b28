@@ -332,6 +332,30 @@
       },
       "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1359898_e0238bd3",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-01T08:16:37Z",
+      "side": 1,
+      "message": "Propagating such requirements down to the deps in VisitDirectDeps is the dominant pattern that I see in soong. Colin might chime in here. WalkDeps() should definitely work and I don\u0027t object to it as long as it gives us cleaner code.",
+      "parentUuid": "e492f795_4546c7ea",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
