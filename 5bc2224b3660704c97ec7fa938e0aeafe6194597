@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46033eac_ba6f0fc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T06:43:45Z",
+      "side": 1,
+      "message": "Remove the extra change-id",
+      "revId": "5bc2224b3660704c97ec7fa938e0aeafe6194597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
