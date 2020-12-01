@@ -46,7 +46,7 @@ func init() {
 var _ SourceProvider = (*protobufDecorator)(nil)
 
 type ProtobufProperties struct {
-	// List of realtive paths to proto files that will be used to generate the source
+	// List of relative paths to proto files that will be used to generate the source
 	Protos []string `android:"path,arch_variant"`
 
 	// List of additional flags to pass to aprotoc
@@ -90,10 +90,9 @@ func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps)
 	// The mod_stem.rs file is used to avoid collisions if this is not included as a crate.
 	stemFile := android.PathForModuleOut(ctx, "mod_"+stem+".rs")
 
-	// stemFile must be first here as the first path in BaseSourceProvider.OutputFiles is the library entry-point.
-	outputs := android.WritablePaths{stemFile}
-
+	outputs := android.WritablePaths{}
 	rule := android.NewRuleBuilder()
+
 	for _, protoFile := range protoFiles {
 		protoName := strings.TrimSuffix(protoFile.Base(), ".proto")
 		protoNames = append(protoNames, protoName)
@@ -112,14 +111,11 @@ func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps)
 		outputs = append(outputs, ruleOutputs...)
 	}
 
-	rule.Command().
-		Implicits(outputs.Paths()).
-		Text("printf '" + proto.genModFileContents(ctx, protoNames) + "' >").
-		Output(stemFile)
-
+	android.WriteFileRuleWithImplicits(ctx, stemFile, proto.genModFileContents(ctx, protoNames), outputs.Paths())
 	rule.Build(pctx, ctx, "protoc_"+ctx.ModuleName(), "protoc "+ctx.ModuleName())
 
-	proto.BaseSourceProvider.OutputFiles = outputs.Paths()
+	// stemFile must be first here as the first path in BaseSourceProvider.OutputFiles is the library entry-point.
+	proto.BaseSourceProvider.OutputFiles = append(android.Paths{stemFile}, outputs.Paths()...)
 
 	// mod_stem.rs is the entry-point for our library modules, so this is what we return.
 	return stemFile
@@ -145,7 +141,7 @@ func (proto *protobufDecorator) genModFileContents(ctx ModuleContext, protoNames
 			"}")
 	}
 
-	return strings.Join(lines, "\\n")
+	return strings.Join(lines, "\n")
 }
 
 func (proto *protobufDecorator) setupPlugin(ctx ModuleContext, protoFlags android.ProtoFlags, outDir android.ModuleOutPath) (android.Paths, android.ProtoFlags) {

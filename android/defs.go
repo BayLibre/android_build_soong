@@ -133,9 +133,16 @@ var (
 	shellUnescaper = strings.NewReplacer(`'\''`, `'`)
 )
 
-// WriteFileRule creates a ninja rule to write contents to a file.  The contents will be escaped
-// so that the file contains exactly the contents passed to the function, plus a trailing newline.
+// WriteFileRule calls WriteFileRuleWithImplicits with no implicit file dependencies.
 func WriteFileRule(ctx BuilderContext, outputFile WritablePath, content string) {
+	WriteFileRuleWithImplicits(ctx, outputFile, content, nil)
+}
+
+// WriteFileRuleWithImplicits creates a ninja rule to write contents to a file.  The contents will
+// be escaped so that the file contains exactly the contents passed to the function, plus a trailing
+// newline. Implicits can be provided if the written contents have an implicit dependency on other
+// files.
+func WriteFileRuleWithImplicits(ctx BuilderContext, outputFile WritablePath, content string, implicits Paths) {
 	content = echoEscaper.Replace(content)
 	content = proptools.ShellEscape(content)
 	if content == "" {
@@ -145,6 +152,7 @@ func WriteFileRule(ctx BuilderContext, outputFile WritablePath, content string) 
 		Rule:        writeFile,
 		Output:      outputFile,
 		Description: "write " + outputFile.Base(),
+		Implicits:   implicits,
 		Args: map[string]string{
 			"content": content,
 		},
