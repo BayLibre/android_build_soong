@@ -314,6 +314,14 @@ func (p *Module) HostToolPath() android.OptionalPath {
 	return android.OptionalPathForPath(p.installer.(*binaryDecorator).path)
 }
 
+func (p *Module) HostToolPackagingSpecs() []android.PackagingSpec {
+	if p.installer == nil {
+		// python_library is just meta module, and doesn't have any installer.
+		return nil
+	}
+	return p.TransitivePackagingSpecs()
+}
+
 // OutputFiles returns output files based on given tag, returns an error if tag is unsupported.
 func (p *Module) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
