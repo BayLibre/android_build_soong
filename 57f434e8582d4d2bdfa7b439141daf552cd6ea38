@@ -93,6 +93,30 @@
       },
       "revId": "57f434e8582d4d2bdfa7b439141daf552cd6ea38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a962a384_601f5ecd",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-01T14:31:14Z",
+      "side": 1,
+      "message": "See https://android-review.googlesource.com/c/platform/build/soong/+/1514991",
+      "parentUuid": "a9425151_3a903343",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "57f434e8582d4d2bdfa7b439141daf552cd6ea38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
