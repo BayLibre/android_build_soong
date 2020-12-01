@@ -153,6 +153,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae819121_1d17389b",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T20:30:22Z",
+      "side": 1,
+      "message": "Looks good, I think leave InstallPath and PhonyPath unimplemented for now.\n\nThe structure of these methods is a little weird, it would be ideal if ReplaceExtension on an OutputPath returned an OutputPath, and ReplaceExtension on an InstallPath returned an InstallPath, but that doesn\u0027t work with the WritablePath interface, so this is fine for now.",
+      "parentUuid": "a63161a5_7c9df3f5",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b33d2dd_719025a9",

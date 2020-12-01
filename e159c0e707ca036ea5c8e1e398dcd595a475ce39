@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c3d38e_24aeab6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T20:30:22Z",
+      "side": 1,
+      "message": "A few more minor comments.",
+      "revId": "e159c0e707ca036ea5c8e1e398dcd595a475ce39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9fbab7_f9ab4319",
+        "filename": "android/defs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T20:30:22Z",
+      "side": 1,
+      "message": "Rename to buildWriteFileRule so it is unexported.",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 23
+      },
+      "revId": "e159c0e707ca036ea5c8e1e398dcd595a475ce39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a70ff639_fd88bb58",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T20:30:22Z",
+      "side": 1,
+      "message": "This is unused",
+      "revId": "e159c0e707ca036ea5c8e1e398dcd595a475ce39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c95a42_367c1b34",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T20:30:22Z",
+      "side": 1,
+      "message": "Can you add a godoc comment for this function? Something like:\n\n// ShardString takes a string and returns a slice of strings where the length of each one is \n// at most shardSize.",
+      "revId": "e159c0e707ca036ea5c8e1e398dcd595a475ce39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
