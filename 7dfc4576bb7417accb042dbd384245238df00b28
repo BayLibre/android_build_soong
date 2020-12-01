@@ -308,6 +308,30 @@
       },
       "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e492f795_4546c7ea",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-12-01T07:55:16Z",
+      "side": 1,
+      "message": "I think using WalkDeps() is alright because with proper pruning, the number of times a dependency is visited is the same regardless of VisitDirectDeps() or WalkDeps().\n\nPlus I can rearrange the visiting sequence so that I don\u0027t need to encode both \"whether or not this lib need ABI dump\" and \"whether or not this lib is static and marked by its parent\" information in one flag ShouldCreateSourceAbiDump.\nNow ShouldCreateSourceAbiDump only mean what it means, and the static / shared lib handling differences are handled solely in the mutator.\n\nWe still need to check \"m.sabi !\u003d nil\" at the start of a visiting pass though, as it means \"whether or not sabi mutator needs to be run on this module\".",
+      "parentUuid": "c9af3e5c_0110ed75",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
