@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "618dde9f_54fe7982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-01T03:43:54Z",
+      "side": 1,
+      "message": "Let me self +2 and submit this. I\u0027ve already got +2 from Colin.",
+      "revId": "65b62244712802432940c74a6b43d0a509b94cb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
