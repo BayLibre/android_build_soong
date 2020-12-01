@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "210649b3_950f19c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:53:20Z",
+      "side": 1,
+      "message": "Also, in the future could we consider doing refactors to existing code needed for our stuff in a separate commit? e.g. if you make a method public, or add wrappers, we could do that in a separate change from actually adding the Rust functionality to make it easier to review.",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cd427d0_0d5375e5",
