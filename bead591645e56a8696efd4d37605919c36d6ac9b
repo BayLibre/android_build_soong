@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdfc37e7_62cf87ae",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T14:35:14Z",
+      "side": 1,
+      "message": "Please add a module type comment here.",
+      "revId": "bead591645e56a8696efd4d37605919c36d6ac9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
