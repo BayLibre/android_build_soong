@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006462853",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500984?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "dde48091_3232d6ed",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-01T06:01:01Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 311,
+        "startChar": 22,
+        "endLine": 311,
+        "endChar": 30
+      },
+      "revId": "fe3ec890a738f56a87def9b25dfbbf7092a200a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
