@@ -38,7 +38,8 @@ type prebuiltBuildTool struct {
 
 	properties prebuiltBuildToolProperties
 
-	toolPath OptionalPath
+	toolPath       OptionalPath
+	packagingSpecs []PackagingSpec
 }
 
 func (t *prebuiltBuildTool) Name() string {
@@ -57,7 +58,7 @@ func (t *prebuiltBuildTool) DepsMutator(ctx BottomUpMutatorContext) {
 
 func (t *prebuiltBuildTool) GenerateAndroidBuildActions(ctx ModuleContext) {
 	sourcePath := t.prebuilt.SingleSourcePath(ctx)
-	installedPath := PathForModuleOut(ctx, t.ModuleBase.Name())
+	installedPath := PathForModuleOut(ctx, t.BaseModuleName())
 	deps := PathsForModuleSrc(ctx, t.properties.Deps)
 
 	var fromPath = sourcePath.String()
@@ -75,6 +76,14 @@ func (t *prebuiltBuildTool) GenerateAndroidBuildActions(ctx ModuleContext) {
 		},
 	})
 
+	packagingDir := PathForModuleInstall(ctx, t.BaseModuleName())
+	spec := ctx.PackageFile(packagingDir, sourcePath.String(), sourcePath)
+	t.packagingSpecs = append(t.packagingSpecs, spec)
+	for _, dep := range deps {
+		spec := ctx.PackageFile(packagingDir, dep.String(), dep)
+		t.packagingSpecs = append(t.packagingSpecs, spec)
+	}
+
 	t.toolPath = OptionalPathForPath(installedPath)
 }
 
@@ -88,7 +97,12 @@ func (t *prebuiltBuildTool) HostToolPath() OptionalPath {
 	return t.toolPath
 }
 
+func (t *prebuiltBuildTool) HostToolPackagingSpecs() []PackagingSpec {
+	return t.packagingSpecs
+}
+
 var _ HostToolProvider = &prebuiltBuildTool{}
+var _ PackagedHostToolProvider = &prebuiltBuildTool{}
 
 // prebuilt_build_tool is to declare prebuilts to be used during the build, particularly for use
 // in genrules with the "tools" property.

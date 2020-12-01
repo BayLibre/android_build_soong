@@ -2800,6 +2800,15 @@ func (c *Module) HostToolPath() android.OptionalPath {
 	return c.installer.hostToolPath()
 }
 
+func (c *Module) HostToolPackagingSpecs() []android.PackagingSpec {
+	if c.installer != nil && c.installer.hostToolPath().Valid() {
+		// If there is a valid hostToolPath assume this is a host tool and return the
+		// module's packaging specs.
+		return c.TransitivePackagingSpecs()
+	}
+	return nil
+}
+
 func (c *Module) IntermPathForModuleOut() android.OptionalPath {
 	return c.outputFile
 }
