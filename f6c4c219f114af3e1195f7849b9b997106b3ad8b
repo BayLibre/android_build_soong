@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8a5b4a_9ea82769",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T18:27:03Z",
+      "side": 1,
+      "message": "Retriggering presubmit because Gerrit does not merge topics atomically, so the previous presubmit ran against part of the topic this was written on top of but not the whole thing.",
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b6e12cc_4f94199f",
