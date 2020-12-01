@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26d5cfb_96611bd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-01T23:30:36Z",
+      "side": 1,
+      "message": "Jiyong, I\u0027d be interested in hearing what sorts of things in this file you\u0027d like additional elaboration on. As requested, I said a few words about interaction between cc.Module and decorators.",
+      "revId": "5642c318ff2f5b7a95768243d37dfbf4b0deb7b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
