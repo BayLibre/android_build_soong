@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2782207_f939512e",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-01T21:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b65a727_ea1fe169",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79fb976b_ea0cf39e",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-01T18:23:21Z",
       "side": 1,
       "message": "Can you add examples of installable modules?",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc13a72_a000ec48",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-01T21:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79fb976b_ea0cf39e",
       "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba0c2df_1339638d",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-01T21:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f88b546_29e028c8",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68c44f98_69b39901",
@@ -82,6 +136,24 @@
       "writtenOn": "2020-12-01T18:23:21Z",
       "side": 1,
       "message": "Break this line too please.",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b3fc41_5bf887f6",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-01T21:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68c44f98_69b39901",
       "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -103,6 +175,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88cf4773_2b298ab0",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-01T21:41:29Z",
+      "side": 1,
+      "message": "sgtm.",
+      "parentUuid": "431af551_af4c36b0",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd0fea5a_0b8cc967",
@@ -120,6 +210,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09d0916_f5a05451",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-01T21:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd0fea5a_0b8cc967",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "066388d2_2b0ac76a",
@@ -133,6 +241,30 @@
       "writtenOn": "2020-12-01T18:23:21Z",
       "side": 1,
       "message": "Duplicate \"already\"s.",
+      "range": {
+        "startLine": 685,
+        "startChar": 32,
+        "endLine": 685,
+        "endChar": 39
+      },
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af2f0d05_7328dd19",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-01T21:41:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066388d2_2b0ac76a",
       "range": {
         "startLine": 685,
         "startChar": 32,
