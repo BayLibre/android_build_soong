@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ab4590_6eac5a0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-12-01T05:13:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "620910e0_dda990f2",
+      "revId": "e26f68a600859bdd9a42687e645ca455b40bb01d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b57eae2_445ff7cb",
@@ -48,6 +66,48 @@
       "writtenOn": "2020-12-01T01:43:43Z",
       "side": 1,
       "message": "I\u0027d suggest leaving out the strings.ToUpper here, it makes the variable name a little odd but is much clearer that it comes from the module name.",
+      "range": {
+        "startLine": 119,
+        "startChar": 36,
+        "endLine": 119,
+        "endChar": 51
+      },
+      "revId": "e26f68a600859bdd9a42687e645ca455b40bb01d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a34642c8_c92665c3",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-12-01T05:13:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b57eae2_445ff7cb",
+      "revId": "e26f68a600859bdd9a42687e645ca455b40bb01d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3deabd0_39f603dc",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-12-01T05:13:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58b60e97_1b99ff86",
       "range": {
         "startLine": 119,
         "startChar": 36,
