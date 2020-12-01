@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75613b4d_c16a5d82",
+        "filename": "android/packaging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T06:05:01Z",
+      "side": 0,
+      "message": "I think you still need:\n\n    if !IsInstallDepNeeded(ctx.OtherModuleDependencyTag(child)) {\n        return false\n    }",
+      "revId": "cc1157cd499ac4d63bff8c8719dfdb84bcaa9d53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
