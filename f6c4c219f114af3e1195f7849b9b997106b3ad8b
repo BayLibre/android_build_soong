@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40fec10c_dd211345",
+        "filename": "android/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T18:35:24Z",
+      "side": 1,
+      "message": "Implicits don\u0027t really make sense here, they are not necessary to write the file.  The implicits should be on the compile rule, not on the generate rule.  That way the file doesn\u0027t get unnecessarily rewritten to an identical value.  It will also be important to have the implicits on the compile rule if we run the rule remotely, or if we are using a hash-based builder instead of a timestamp-based builder.",
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b6e12cc_4f94199f",
         "filename": "rust/protobuf.go",
         "patchSetId": 1
@@ -37,6 +54,23 @@
         "endLine": 93,
         "endChar": 35
       },
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "167e8ecd_059b232e",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T18:35:24Z",
+      "side": 1,
+      "message": "var outputs android.WritablePaths is more idiomatic for empty lists.",
       "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
