@@ -1,0 +1,169 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd427d0_0d5375e5",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "Why is this function different from CcLibraryInterface given they have identical implementations? I feel like this at least deserves a comment, and probably one of them should call the other rather than copypasting.",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e16892_dcd1db7d",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "Is there a reason for not doing a refactor CL first that makes isVndkExt public rather than making a public wrapper?",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d10be8f6_bbb19207",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2828,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "Ugh, this should really be a method on LinkableInterface, but it appears Go doesn\u0027t support defaulted method implementations due to their decision to use implicit interface implementation.",
+      "range": {
+        "startLine": 2828,
+        "startChar": 5,
+        "endLine": 2828,
+        "endChar": 20
+      },
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab8dc0b_3abb9aaa",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "Same question as above - why export both public and private?",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890205a5_00559d1b",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "This comment is copypasta and incorrect.",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3231f27c_3fcebf52",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "Private function which isn\u0027t called?",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee085bc_eefd0a79",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "From the comment on SetImageVariation:\n// ... ModuleBase implements\n// SetImageVariation, most module types will not need to override it, and those that do must call the\n// overridden method.\n\nI do not see a call to the overridden method here.",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53945102_2bcd9ab2",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "You can\u0027t check static(), but you print it out in a diagnostic?",
+      "range": {
+        "startLine": 133,
+        "startChar": 80,
+        "endLine": 133,
+        "endChar": 92
+      },
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d429e0a_dcb7be8b",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T21:52:05Z",
+      "side": 1,
+      "message": "Why rust_ffi_static but not rlib?",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
