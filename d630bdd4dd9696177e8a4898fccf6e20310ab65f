@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c0721a9_8208d67d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-01T11:43:58Z",
+      "side": 1,
+      "message": "PS7 has a small fix in cc.go. PTAL.",
+      "revId": "d630bdd4dd9696177e8a4898fccf6e20310ab65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
