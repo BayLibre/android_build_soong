@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64edbcbb_0728849a",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-01T13:11:47Z",
+      "side": 1,
+      "message": "I\u0027ll take care of this in a follow-up CL.",
+      "parentUuid": "482df758_e85b7493",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "57f434e8582d4d2bdfa7b439141daf552cd6ea38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10d1ec99_4432d87c",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-30T22:27:31Z",
       "side": 1,
       "message": "You could also use a separate android.WriteFileRule() to write a string to a file.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "57f434e8582d4d2bdfa7b439141daf552cd6ea38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9425151_3a903343",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-01T13:11:47Z",
+      "side": 1,
+      "message": "Ah that seems a lot nicer. I\u0027ll do this in a follow-up CL along with fixing the typo above.",
+      "parentUuid": "10d1ec99_4432d87c",
       "range": {
         "startLine": 115,
         "startChar": 0,
