@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f91cb9_9ea4be28",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T05:23:57Z",
+      "side": 1,
+      "message": "Use a const for this, and can you make it based on MAX_ARG_STRLEN (131072)?  You may need to subtract some fudge factor overhead for the rest of the command.",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3555397_2e9c2c41",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T05:23:57Z",
+      "side": 1,
+      "message": "var chunks WritablePaths is more idiomatic for empty slices.",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49975d1f_e983f911",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T05:23:57Z",
+      "side": 1,
+      "message": "Can you make this more like ShardPaths/ShardStrings in android/util.go?  A separate function that takes a string and returns a []string where each one is less than the shard size limit.  Substrings are not copied in Go, so the memory usage will be small.  Then you can iterate over the []string here to write each file.",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eee2c8af_2cd4eb50",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T05:23:57Z",
+      "side": 1,
+      "message": "Don\u0027t construct the OutputPath directly.  If the input were an OutputPath this could be outputFile.ReplaceExtension(), but that may cause other problems.  Maybe we need a method to replace the extension of a WritablePath?",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b33d2dd_719025a9",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T05:23:57Z",
+      "side": 1,
+      "message": "Using this on the last shard will result in the trailing newline not being added.",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd331a7_ae163a73",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T05:23:57Z",
+      "side": 1,
+      "message": "Can you avoid repeating this by factoring it out into its own function?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 0
+      },
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63b6f52_8d16bf4a",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-01T05:23:57Z",
+      "side": 1,
+      "message": "You can leave this out",
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
