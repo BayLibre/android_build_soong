@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a424b19a_aabdb291",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T18:23:21Z",
+      "side": 1,
+      "message": "LGTM overall and the code definitely looks neater after refactoring. Thanks!\n\nCan you check the comment format in general? Like 100 col limit, capitalization, and full sentences (i.e. \"FuncFoo checks\" instead of just \"Checks\")?",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b65a727_ea1fe169",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T18:23:21Z",
+      "side": 1,
+      "message": "Can you add examples of bootstrappable modules?",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79fb976b_ea0cf39e",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T18:23:21Z",
+      "side": 1,
+      "message": "Can you add examples of installable modules?",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f88b546_29e028c8",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T18:23:21Z",
+      "side": 1,
+      "message": "This is well over 100 chars.",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c44f98_69b39901",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T18:23:21Z",
+      "side": 1,
+      "message": "Break this line too please.",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "431af551_af4c36b0",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T18:23:21Z",
+      "side": 1,
+      "message": "What about pathComponentRegexp? \"subPath\" sounds like they could contain directory separators.",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0fea5a_0b8cc967",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T18:23:21Z",
+      "side": 1,
+      "message": "Can this be PropertyErrorf on \"libs\"?",
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066388d2_2b0ac76a",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-01T18:23:21Z",
+      "side": 1,
+      "message": "Duplicate \"already\"s.",
+      "range": {
+        "startLine": 685,
+        "startChar": 32,
+        "endLine": 685,
+        "endChar": 39
+      },
+      "revId": "35afab566b07937211d2f3a8de84a77e20ecbd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
