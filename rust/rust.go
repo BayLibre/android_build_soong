@@ -1063,6 +1063,7 @@ func (mod *Module) disableClippy() {
 }
 
 var _ android.HostToolProvider = (*Module)(nil)
+var _ android.PackagedHostToolProvider = (*Module)(nil)
 
 func (mod *Module) HostToolPath() android.OptionalPath {
 	if !mod.Host() {
@@ -1072,6 +1073,16 @@ func (mod *Module) HostToolPath() android.OptionalPath {
 		return android.OptionalPathForPath(binary.baseCompiler.path)
 	}
 	return android.OptionalPath{}
+}
+
+func (mod *Module) HostToolPackagingSpecs() []android.PackagingSpec {
+	if !mod.Host() {
+		return nil
+	}
+	if _, ok := mod.compiler.(*binaryDecorator); ok {
+		return mod.TransitivePackagingSpecs()
+	}
+	return nil
 }
 
 var _ android.ApexModule = (*Module)(nil)
