@@ -290,6 +290,13 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.SharedLibs = append(deps.SharedLibs, linker.Properties.Target.Platform.Shared_libs...)
 	}
 
+	if ctx.isStubs() {
+		deps.HeaderLibs = append(deps.HeaderLibs, deps.StaticLibs...)
+		deps.HeaderLibs = append(deps.HeaderLibs, deps.SharedLibs...)
+		deps.ReexportHeaderLibHeaders = append(deps.ReexportHeaderLibHeaders, deps.ReexportStaticLibHeaders...)
+		deps.ReexportHeaderLibHeaders = append(deps.ReexportHeaderLibHeaders, deps.ReexportSharedLibHeaders...)
+	}
+
 	if ctx.toolchain().Bionic() {
 		// libclang_rt.builtins and libatomic have to be last on the command line
 		if !Bool(linker.Properties.No_libcrt) {

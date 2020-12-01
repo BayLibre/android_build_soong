@@ -421,6 +421,7 @@ type ModuleContextIntf interface {
 	mustUseVendorVariant() bool
 	nativeCoverage() bool
 	directlyInAnyApex() bool
+	isStubs() bool
 }
 
 type ModuleContext interface {
@@ -1347,6 +1348,10 @@ func (ctx *moduleContextImpl) directlyInAnyApex() bool {
 	return ctx.mod.DirectlyInAnyApex()
 }
 
+func (ctx *moduleContextImpl) isStubs() bool {
+	return ctx.mod.IsStubs()
+}
+
 func newBaseModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {
 	return &Module{
 		hod:      hod,
@@ -2234,6 +2239,11 @@ func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
 		}
 
 		if lib, ok := to.linker.(*libraryDecorator); !ok || !lib.shared() {
+			return false
+		}
+
+		depTag := ctx.OtherModuleDependencyTag(child)
+		if IsHeaderDepTag(depTag) {
 			return false
 		}
 
