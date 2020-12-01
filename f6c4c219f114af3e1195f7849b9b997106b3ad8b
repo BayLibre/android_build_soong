@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6e12cc_4f94199f",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T18:22:53Z",
+      "side": 1,
+      "message": "Nit: If this is an empty list now, maybe it makes sense to write this at the use site rather than declaring it as a variable up here and calling `.Paths()` later - it kind of obscures the fact that those are empty lists the way it\u0027s written.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3946baf5_8115c518",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-01T18:22:53Z",
+      "side": 1,
+      "message": "Nit continuation - for example, here you expand an empty list and append it to a singleton list...",
+      "range": {
+        "startLine": 118,
+        "startChar": 72,
+        "endLine": 118,
+        "endChar": 90
+      },
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
