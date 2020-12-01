@@ -91,6 +91,9 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterSingletonType("kythe_extract_all", kytheExtractAllFactory)
 }
 
+// Deps is a struct containing module names of dependencies, separated by the kind of dependency.
+// Mutators should use `AddVariationDependencies` or its sibling methods to add actual dependency
+// edges to these modules.
 type Deps struct {
 	SharedLibs, LateSharedLibs                  []string
 	StaticLibs, LateStaticLibs, WholeStaticLibs []string
@@ -103,6 +106,7 @@ type Deps struct {
 	// Used by DepsMutator to pass system_shared_libs information to check_elf_file.py.
 	SystemSharedLibs []string
 
+	// If true, statically link the unwinder into native libraries/binaries.
 	StaticUnwinderIfLegacy bool
 
 	ReexportSharedLibHeaders, ReexportStaticLibHeaders, ReexportHeaderLibHeaders []string
@@ -122,6 +126,8 @@ type Deps struct {
 	DynamicLinker   string
 }
 
+// PathDeps is a struct containing file paths to dependencies of a module, to be used to construct
+// build statements for a module.
 type PathDeps struct {
 	// Paths to .so files
 	SharedLibs, EarlySharedLibs, LateSharedLibs android.Paths
@@ -182,8 +188,12 @@ type LocalOrGlobalFlags struct {
 	LdFlags         []string // Flags that apply to linker command lines
 }
 
+// Flags contains various types of command line flags (and settings) for use in building build
+// statements related to C++.
 type Flags struct {
-	Local  LocalOrGlobalFlags
+	// Local flags (which individual modules are responsible for). These may override global flags.
+	Local LocalOrGlobalFlags
+	// Global flags (which build system or toolchain is responsible for).
 	Global LocalOrGlobalFlags
 
 	aidlFlags     []string // Flags that apply to aidl source files
@@ -198,19 +208,23 @@ type Flags struct {
 	SystemIncludeFlags []string
 
 	Toolchain    config.Toolchain
-	Tidy         bool
-	GcovCoverage bool
-	SAbiDump     bool
+	Tidy         bool // True if clang-tidy is enabled.
+	GcovCoverage bool // True if coverage files should be generated.
+	SAbiDump     bool // True if header abi dumps should be generated.
 	EmitXrefs    bool // If true, generate Ninja rules to generate emitXrefs input files for Kythe
 
+	// The instruction set required for clang ("arm" or "thumb").
 	RequiredInstructionSet string
-	DynamicLinker          string
+	// The target-device system path to the dynamic linker.
+	DynamicLinker string
 
 	CFlagsDeps  android.Paths // Files depended on by compiler flags
 	LdFlagsDeps android.Paths // Files depended on by linker flags
 
+	// True if .s files should be processed with the c preprocessor.
 	AssemblerWithCpp bool
-	GroupStaticLibs  bool
+	// True if static libraries should be grouped (using `-Wl,--start-group` and `-Wl,--end-group`).
+	GroupStaticLibs bool
 
 	proto            android.ProtoFlags
 	protoC           bool // Whether to use C instead of C++
@@ -358,6 +372,10 @@ type VendorProperties struct {
 	Double_loadable *bool
 }
 
+// ModuleContextIntf is an interface (on a module context helper) consisting of functions related
+// to understanding  details about the type of the current module.
+// For example, one might call these functions to determine whether the current module is a static
+// library and/or is installed in vendor directories.
 type ModuleContextIntf interface {
 	static() bool
 	staticBinary() bool
@@ -412,6 +430,8 @@ type DepsContext interface {
 	ModuleContextIntf
 }
 
+// feature represents additional (optional) steps to building cc-related modules, such as invocation
+// of clang-tidy.
 type feature interface {
 	begin(ctx BaseModuleContext)
 	deps(ctx DepsContext, deps Deps) Deps
@@ -419,6 +439,9 @@ type feature interface {
 	props() []interface{}
 }
 
+// compiler is the interface for a compiler helper object. Different module decorators may implement
+// this helper differently. For example, compiling a `cc_library` may use a different build
+// statement than building a `toolchain_library`.
 type compiler interface {
 	compilerInit(ctx BaseModuleContext)
 	compilerDeps(ctx DepsContext, deps Deps) Deps
@@ -430,6 +453,7 @@ type compiler interface {
 	compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects
 }
 
+// linker is the interface for a linker helper object.
 type linker interface {
 	linkerInit(ctx BaseModuleContext)
 	linkerDeps(ctx DepsContext, deps Deps) Deps
@@ -437,6 +461,9 @@ type linker interface {
 	linkerProps() []interface{}
 	useClangLld(actx ModuleContext) bool
 
+	// link registers actions to link this binary, and sets various fields
+	// on this binary to reflect information that should be exported up the build
+	// tree (for example, exported flags and include paths).
 	link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path
 	appendLdflags([]string)
 	unstrippedOutputFilePath() android.Path
@@ -445,15 +472,19 @@ type linker interface {
 	coverageOutputFilePath() android.OptionalPath
 
 	// Get the deps that have been explicitly specified in the properties.
-	// Only updates the
 	linkerSpecifiedDeps(specifiedDeps specifiedDeps) specifiedDeps
 }
 
+// specifiedDeps is a tuple struct representing dependencies of a linked binary owned by the linker.
 type specifiedDeps struct {
-	sharedLibs       []string
-	systemSharedLibs []string // Note nil and [] are semantically distinct.
+	sharedLibs []string
+	// Note nil and [] are semantically distinct. [] prevents linking against the defaults (usually
+	// libc, libm, etc.)
+	systemSharedLibs []string
 }
 
+// installer is the interface for an installer helper object. This helper is responsible for
+// copying build outputs to the appropriate locations so that they may be installed on device.
 type installer interface {
 	installerProps() []interface{}
 	install(ctx ModuleContext, path android.Path)
@@ -626,7 +657,18 @@ func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
 
 // Module contains the properties and members used by all C/C++ module types, and implements
 // the blueprint.Module interface.  It delegates to compiler, linker, and installer interfaces
-// to construct the output file.  Behavior can be customized with a Customizer interface
+// to construct the output file.  Behavior can be customized with a Customizer, or "decorator",
+// interface.
+//
+// To define a C/C++ related module, construct a new Module object and point its delegates to
+// type-specific structs. These delegates will be invoked to register module-specific build
+// statements which may be unique to the module type. For example, module.compiler.compile() should
+// be defined so as to register build statements which are responsible for compiling the module.
+//
+// Another example: to construct a cc_binary module, one can create a `cc.binaryDecorator` struct
+// which implements the `linker` and `installer` interfaces, and points the `linker` and `installer`
+// members of the cc.Module to this decorator. Thus, a cc_binary module has custom linker and
+// installer logic.
 type Module struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -644,6 +686,8 @@ type Module struct {
 	sdkMemberTypes []android.SdkMemberType
 
 	// delegates, initialize before calling Init
+	// these may contain module-specific implementations, and effectively allow for custom
+	// type-specific logic.
 	features  []feature
 	compiler  compiler
 	linker    linker
