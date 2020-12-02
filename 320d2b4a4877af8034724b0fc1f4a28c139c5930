@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39412519_2c754220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-02T16:28:20Z",
+      "side": 1,
+      "message": "Yan Yan: this should fix the build error on https://r.android.com/1511769 (which might have disappeared after you rework it anyway, but the error was useful as it revealed bad behavior).",
+      "revId": "320d2b4a4877af8034724b0fc1f4a28c139c5930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
