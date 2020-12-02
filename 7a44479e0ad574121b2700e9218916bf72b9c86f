@@ -33,6 +33,23 @@
       "message": "While refactoring, the write rule has been rewritten, so contents are now escaped correctly. Before this refactoring, we have to write \"\\\\n\" instead of \"\\n\".\n\nhttp://cs/android/build/soong/android/defs.go?l\u003d138\u0026rcl\u003d61537084a9b058e7be981788aac138005e2dcb5f",
       "revId": "7a44479e0ad574121b2700e9218916bf72b9c86f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc50a29b_9a872d50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-02T04:58:06Z",
+      "side": 1,
+      "message": "Hi Colin, could you please give an ORV for it?",
+      "revId": "7a44479e0ad574121b2700e9218916bf72b9c86f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
