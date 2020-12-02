@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef6457e6_f581a96d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-02T16:36:21Z",
+      "side": 0,
+      "message": "No change of behavior here, just started to use the newly added helper function.",
+      "revId": "78210f6c9b607d411a5466d90c68db52d546aabf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de17d6eb_4e86ff68",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-02T16:36:21Z",
+      "side": 0,
+      "message": "Dropping this and similar comments as they are outdated and do not add much information compared to the code.",
+      "revId": "78210f6c9b607d411a5466d90c68db52d546aabf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
