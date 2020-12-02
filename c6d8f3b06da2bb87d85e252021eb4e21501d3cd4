@@ -16,6 +16,24 @@
       "message": "True, but so does everything else below this line.",
       "revId": "c6d8f3b06da2bb87d85e252021eb4e21501d3cd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edd3b2f0_857b6631",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-02T00:49:32Z",
+      "side": 1,
+      "message": "These two look like they might belong above though, with the other \n\n  if (argument) { \n    do something \n    return \n  } \n\nblocks. \n\nI\u0027ll add a more general comment. \n\nDone.",
+      "parentUuid": "84464983_c8e1f3fa",
+      "revId": "c6d8f3b06da2bb87d85e252021eb4e21501d3cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
