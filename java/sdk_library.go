@@ -909,6 +909,16 @@ type SdkLibraryComponentDependency interface {
 	OptionalSdkLibraryImplementation() *string
 }
 
+// Helper function that checks if a module is an SDK component library (such as stubs library).
+func componentSdkLibDep(module blueprint.Module) (SdkLibraryComponentDependency, string, bool) {
+	if component, ok := module.(SdkLibraryComponentDependency); ok {
+		if name := component.OptionalImplicitSdkLibrary(); name != nil {
+			return component, *name, true
+		}
+	}
+	return nil, "error", false
+}
+
 // Make sure that all the module types that are components of java_sdk_library/_import
 // and which can be referenced (directly or indirectly) from an android app implement
 // the SdkLibraryComponentDependency interface.

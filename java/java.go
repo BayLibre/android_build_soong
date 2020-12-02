@@ -775,12 +775,8 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	// For library dependencies that are component libraries (like stubs), add the implementation
 	// as a dependency (dexpreopt needs to be against the implementation library, not stubs).
 	for _, dep := range libDeps {
-		if dep != nil {
-			if component, ok := dep.(SdkLibraryComponentDependency); ok {
-				if lib := component.OptionalSdkLibraryImplementation(); lib != nil {
-					ctx.AddVariationDependencies(nil, usesLibTag, *lib)
-				}
-			}
+		if _, componentName, ok := componentSdkLibDep(dep); ok {
+			ctx.AddVariationDependencies(nil, usesLibTag, componentName)
 		}
 	}
 
@@ -1050,7 +1046,6 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			switch tag {
 			case libTag:
 				deps.classpath = append(deps.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
-				// names of sdk libs that are directly depended are exported
 				j.classLoaderContexts.MaybeAddContext(ctx, dep.OptionalImplicitSdkLibrary(),
 					dep.DexJarBuildPath(), dep.DexJarInstallPath())
 			case staticLibTag:
@@ -1062,7 +1057,6 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				deps.bootClasspath = append(deps.bootClasspath, dep.HeaderJars()...)
 			case libTag, instrumentationForTag:
 				deps.classpath = append(deps.classpath, dep.HeaderJars()...)
-				// sdk lib names from dependencies are re-exported
 				j.classLoaderContexts.AddContextMap(dep.ClassLoaderContexts(), otherName)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs()...)
 				pluginJars, pluginClasses, disableTurbine := dep.ExportedPlugins()
@@ -1075,8 +1069,10 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				deps.staticJars = append(deps.staticJars, dep.ImplementationJars()...)
 				deps.staticHeaderJars = append(deps.staticHeaderJars, dep.HeaderJars()...)
 				deps.staticResourceJars = append(deps.staticResourceJars, dep.ResourceJars()...)
-				// sdk lib names from dependencies are re-exported
-				j.classLoaderContexts.AddContextMap(dep.ClassLoaderContexts(), otherName)
+				if _, _, isComponent := componentSdkLibDep(module); !isComponent {
+					// Don't add dependencies of statically SDK linked component libraries (e.g. stubs).
+					j.classLoaderContexts.AddContextMap(dep.ClassLoaderContexts(), otherName)
+				}
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs()...)
 				pluginJars, pluginClasses, disableTurbine := dep.ExportedPlugins()
 				addPlugins(&deps, pluginJars, pluginClasses...)
@@ -2781,8 +2777,10 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			switch tag {
 			case libTag, staticLibTag:
 				flags.classpath = append(flags.classpath, dep.HeaderJars()...)
-				// sdk lib names from dependencies are re-exported
-				j.classLoaderContexts.AddContextMap(dep.ClassLoaderContexts(), otherName)
+				if _, _, isComponent := componentSdkLibDep(module); !(tag == staticLibTag && isComponent) {
+					// Don't add dependencies of statically linked SDK component libraries (e.g. stubs).
+					j.classLoaderContexts.AddContextMap(dep.ClassLoaderContexts(), otherName)
+				}
 			case bootClasspathTag:
 				flags.bootClasspath = append(flags.bootClasspath, dep.HeaderJars()...)
 			}
@@ -2790,7 +2788,6 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			switch tag {
 			case libTag:
 				flags.classpath = append(flags.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
-				// names of sdk libs that are directly depended are exported
 				j.classLoaderContexts.AddContext(ctx, otherName, dep.DexJarBuildPath(), dep.DexJarInstallPath())
 			}
 		}

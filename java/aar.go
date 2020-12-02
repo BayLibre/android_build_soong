@@ -407,6 +407,7 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext, classLoaderConte
 
 	ctx.VisitDirectDeps(func(module android.Module) {
 		depName := ctx.OtherModuleName(module)
+		depTag := ctx.OtherModuleDependencyTag(module)
 
 		var exportPackage android.Path
 		aarDep, _ := module.(AndroidLibraryDependency)
@@ -414,7 +415,9 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext, classLoaderConte
 			exportPackage = aarDep.ExportPackage()
 		}
 
-		switch ctx.OtherModuleDependencyTag(module) {
+		component, componentName, isComponent := componentSdkLibDep(module)
+
+		switch depTag {
 		case instrumentationForTag:
 			// Nothing, instrumentationForTag is treated as libTag for javac but not for aapt2.
 		case libTag:
@@ -425,8 +428,8 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext, classLoaderConte
 			// If the module is (or possibly could be) a component of a java_sdk_library
 			// (including the java_sdk_library) itself then append any implicit sdk library
 			// names to the list of sdk libraries to be added to the manifest.
-			if component, ok := module.(SdkLibraryComponentDependency); ok {
-				classLoaderContexts.MaybeAddContext(ctx, component.OptionalImplicitSdkLibrary(),
+			if isComponent {
+				classLoaderContexts.MaybeAddContext(ctx, &componentName,
 					component.DexJarBuildPath(), component.DexJarInstallPath())
 			}
 
@@ -439,7 +442,10 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext, classLoaderConte
 				transitiveStaticLibs = append(transitiveStaticLibs, aarDep.ExportedStaticPackages()...)
 				transitiveStaticLibs = append(transitiveStaticLibs, exportPackage)
 				transitiveStaticLibManifests = append(transitiveStaticLibManifests, aarDep.ExportedManifests()...)
-				classLoaderContexts.AddContextMap(aarDep.ClassLoaderContexts(), depName)
+				if !isComponent {
+					// Don't add dependencies of statically linked SDK component libraries (e.g. stubs).
+					classLoaderContexts.AddContextMap(aarDep.ClassLoaderContexts(), depName)
+				}
 				if aarDep.ExportedAssets().Valid() {
 					assets = append(assets, aarDep.ExportedAssets().Path())
 				}
@@ -460,7 +466,8 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext, classLoaderConte
 
 		// Add nested dependencies after processing the direct dependency: if it is a <uses-library>,
 		// nested context is added as its subcontext, and should not be re-added at the top-level.
-		if dep, ok := module.(Dependency); ok {
+		if dep, ok := module.(Dependency); ok && !(depTag == staticLibTag && isComponent) {
+			// Don't add dependencies of statically linked SDK component libraries (e.g. stubs).
 			classLoaderContexts.AddContextMap(dep.ClassLoaderContexts(), depName)
 		}
 	})
