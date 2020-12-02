@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e8cd8b_48a13fb5",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T14:46:54Z",
+      "side": 1,
+      "message": "I think this deserves a comment.",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87170df9_6f372ba2",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T14:46:54Z",
+      "side": 1,
+      "message": "add module type comment here",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e2474e_25a11e27",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T14:46:54Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358975d5_4ecc480a",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T14:46:54Z",
+      "side": 1,
+      "message": "please add comment here. This function, although it is name as link, it isn\u0027t doing any linking.",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "994e85cc_4e671fde",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T14:46:54Z",
+      "side": 1,
+      "message": "add a comment what this module is for",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eba5782_2dd4cadc",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T14:46:54Z",
+      "side": 1,
+      "message": "same here. this isn\u0027t doing a link. definitely deserves an explanation",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9da79cd_e9d2eb27",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T14:46:54Z",
+      "side": 1,
+      "message": "Please provide a high level description about what \u0027unnecessary\u0027 means here",
+      "range": {
+        "startLine": 638,
+        "startChar": 56,
+        "endLine": 638,
+        "endChar": 67
+      },
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
