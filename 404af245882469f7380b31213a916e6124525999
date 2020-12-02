@@ -33,6 +33,24 @@
       "message": "There are still some unresolved questions internally so let\u0027s wait until they are resolved.",
       "revId": "404af245882469f7380b31213a916e6124525999",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a18cc8a_ae4eb72b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2020-12-02T22:30:13Z",
+      "side": 1,
+      "message": "So we decided that this is fine with another change to the names. We would like the names prefixed with armv8_only_ and they should mention the specific features being enabled.\n\nWhat I would propose is:\n\narmv8_only_return_pac\narmv8_only_bti",
+      "parentUuid": "2e3e69c5_65a88963",
+      "revId": "404af245882469f7380b31213a916e6124525999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
