@@ -356,6 +356,30 @@
       },
       "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c6b319_bd848f35",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-02T15:16:07Z",
+      "side": 1,
+      "message": "My 2 cents. Propagating certain information to transient dependencies using VisitDirectDeps is one of the main reasons to use TopDownMutator. As Jiyong said, it\u0027s the dominant pattern, and so results in better readability, IMO.",
+      "parentUuid": "b1359898_e0238bd3",
+      "range": {
+        "startLine": 162,
+        "startChar": 44,
+        "endLine": 163,
+        "endChar": 51
+      },
+      "revId": "7dfc4576bb7417accb042dbd384245238df00b28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
