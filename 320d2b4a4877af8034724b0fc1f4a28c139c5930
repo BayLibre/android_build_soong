@@ -16,6 +16,40 @@
       "message": "Yan Yan: this should fix the build error on https://r.android.com/1511769 (which might have disappeared after you rework it anyway, but the error was useful as it revealed bad behavior).",
       "revId": "320d2b4a4877af8034724b0fc1f4a28c139c5930",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d78d5b4_4e6ad31b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2780,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-02T18:44:31Z",
+      "side": 1,
+      "message": "This logic seems to be duplicated (in one form of another) a lot of times in this change which is always a red flag to me.\n\nI think it would be better to have a single method, e.g. \"shouldAddDependencyToContextMap\" that wraps all these calls to AddContextMap. The method will need to take the module dependency and the tag. It might mean that in some places you do slightly more work but I think consistency is more important. It will also give you a single place to explain the behavior.\n\nI picked this instance to comment on because it seems the most general. Other places you have managed to optimize some of the work away, e.g. not bother checking the tag because you know it is already staticLibTag.\n\nOnce you have added that method you might find that you have lots of repetitions of \"if shouldAddDependencyToContextMap() {...AddContextMap(....)}\" which could then also be refactored into a separate method.",
+      "revId": "320d2b4a4877af8034724b0fc1f4a28c139c5930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09acf539_79c4b415",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-02T18:44:31Z",
+      "side": 1,
+      "message": "Some information on what the return values mean would be helpful.",
+      "revId": "320d2b4a4877af8034724b0fc1f4a28c139c5930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
