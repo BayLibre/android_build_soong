@@ -16,6 +16,24 @@
       "message": "Hmm, I don\u0027t understand this change. Could you elaborate a little bit? Having more entries in the list just means there is less chance of deduping, thus we will use more space. But functionality is not affected.",
       "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0753ab7_0ad60533",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-02T17:22:44Z",
+      "side": 1,
+      "message": "That\u0027s correct, but I don\u0027t understand why this entry was added, and the other wasn\u0027t (and this caused build breakage).\n\nI\u0027m suspecting that this entry wasn\u0027t needed, and that there was a TH failure (related to LKGB ???) causing keymint to be able to merge without the \u0027-unstable\u0027 library here. Merging this would confirm that.\n\nThe other theory is that:\n- on some builds the variant w/o \"-unstable\" is in the VNDK\n- on other builds the variant w/ \"-unstable\" is in the VNDK\n\nHaving different VNDK definitions per-lunch target would be a problem (and at least 1-2 other HALs have added both here, I just don\u0027t understand why - I don\u0027t think they need to). SO - if this doesn\u0027t cause any build breakage, then it\u0027s just overly cautious adds to this list (and we can relax). If it does, then it identifies a bug in the VNDK.",
+      "parentUuid": "3e4056e8_a9eae9d2",
+      "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
