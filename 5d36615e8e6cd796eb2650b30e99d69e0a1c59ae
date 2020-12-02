@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "756ae9d7_0f715d42",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-02T00:42:31Z",
+      "side": 1,
+      "message": "Changed to a+rw for the files, kept a+rwx for the directories",
+      "parentUuid": "74238976_650c5753",
+      "range": {
+        "startLine": 47,
+        "startChar": 81,
+        "endLine": 47,
+        "endChar": 89
+      },
+      "revId": "5d36615e8e6cd796eb2650b30e99d69e0a1c59ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d24f05a9_f505d823",
