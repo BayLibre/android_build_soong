@@ -251,6 +251,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db663367_80dde95e",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-02T17:28:22Z",
+      "side": 1,
+      "message": "Hm, according to git log, `android/module.go` never contained a `SetImageVariation`, so I think the comment may not have ever been accurate...",
+      "parentUuid": "dfd5b1dd_db5214b0",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53945102_2bcd9ab2",
@@ -329,6 +347,24 @@
       "side": 1,
       "message": "We don\u0027t support rust vendor binaries or libraries with this CL, so there isn\u0027t anything on vendor that would use rlibs unless I\u0027m mistaken.",
       "parentUuid": "0d429e0a_dcb7be8b",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c1f9ac_6beea6c6",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2020-12-02T17:28:22Z",
+      "side": 1,
+      "message": "The piece I\u0027m unsure about here is that it seems extremely likely that a `rust_ffi_static` module would have at least one `rust_library_rlib` dependency, and that dependency would have to be vendor available. We don\u0027t want to install rust `dylib`s due to the ABI issue, and we want to delay allowing `cdylib`s for the moment, but I don\u0027t see any real issues with making `rlib` or binary files available.\n\nBinary files might be a bit of extra code for installation, but `rlib` should be free since it would only show up by link.\n\n(feel free to re-resolve, just wanted to make sure this was read)",
+      "parentUuid": "7f59d4eb_56c5e6e3",
       "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
