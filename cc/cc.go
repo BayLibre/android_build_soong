@@ -375,7 +375,7 @@ type ModuleContextIntf interface {
 	isVndkPrivate(config android.Config) bool
 	isVndk() bool
 	isVndkSp() bool
-	isVndkExt() bool
+	IsVndkExt() bool
 	inProduct() bool
 	inVendor() bool
 	inRamdisk() bool
@@ -1003,7 +1003,7 @@ func (c *Module) isVndkSp() bool {
 	return false
 }
 
-func (c *Module) isVndkExt() bool {
+func (c *Module) IsVndkExt() bool {
 	if vndkdep := c.vndkdep; vndkdep != nil {
 		return vndkdep.isVndkExt()
 	}
@@ -1193,8 +1193,8 @@ func (ctx *moduleContextImpl) isVndkSp() bool {
 	return ctx.mod.isVndkSp()
 }
 
-func (ctx *moduleContextImpl) isVndkExt() bool {
-	return ctx.mod.isVndkExt()
+func (ctx *moduleContextImpl) IsVndkExt() bool {
+	return ctx.mod.IsVndkExt()
 }
 
 func (ctx *moduleContextImpl) mustUseVendorVariant() bool {
@@ -1347,7 +1347,7 @@ func (c *Module) getNameSuffixWithVndkVersion(ctx android.ModuleContext) string 
 	// "current", it will append the VNDK version to the name suffix.
 	var vndkVersion string
 	var nameSuffix string
-	if c.inProduct() {
+	if c.InProduct() {
 		vndkVersion = ctx.DeviceConfig().ProductVndkVersion()
 		nameSuffix = productSuffix
 	} else {
@@ -1381,7 +1381,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		c.hideApexVariantFromMake = true
 	}
 
-	c.makeLinkType = c.getMakeLinkType(actx)
+	c.makeLinkType = GetMakeLinkType(actx, c)
 
 	c.Properties.SubName = ""
 
@@ -2045,7 +2045,14 @@ func checkLinkType(ctx android.BaseModuleContext, from LinkableInterface, to Lin
 				ccFrom.vndkdep.vndkCheckLinkType(ctx, ccTo, tag)
 			}
 		} else {
-			ctx.ModuleErrorf("Attempting to link VNDK cc.Module with unsupported module type")
+			if linkableMod, ok := to.(LinkableInterface); ok {
+				// Static libraries from other languages can be linked
+				if !linkableMod.Static() {
+					ctx.ModuleErrorf("Attempting to link VNDK cc.Module with unsupported module type")
+				}
+			} else {
+				ctx.ModuleErrorf("Attempting to link VNDK cc.Module with unsupported module type")
+			}
 		}
 		return
 	}
@@ -2807,22 +2814,25 @@ func (c *Module) object() bool {
 	return false
 }
 
-func (c *Module) getMakeLinkType(actx android.ModuleContext) string {
+func GetMakeLinkType(actx android.ModuleContext, c LinkableInterface) string {
 	if c.UseVndk() {
-		if lib, ok := c.linker.(*llndkStubDecorator); ok {
-			if Bool(lib.Properties.Vendor_available) {
-				return "native:vndk"
+		if ccModule, ok := c.Module().(*Module); ok {
+			// Only CC modules provide stubs at the moment.
+			if lib, ok := ccModule.linker.(*llndkStubDecorator); ok {
+				if Bool(lib.Properties.Vendor_available) {
+					return "native:vndk"
+				}
+				return "native:vndk_private"
 			}
-			return "native:vndk_private"
 		}
-		if c.IsVndk() && !c.isVndkExt() {
+		if c.IsVndk() && !c.IsVndkExt() {
 			// Product_available, if defined, must have the same value with Vendor_available.
-			if Bool(c.VendorProperties.Vendor_available) {
+			if c.VendorAvailable() {
 				return "native:vndk"
 			}
 			return "native:vndk_private"
 		}
-		if c.inProduct() {
+		if c.InProduct() {
 			return "native:product"
 		}
 		return "native:vendor"
@@ -2832,7 +2842,7 @@ func (c *Module) getMakeLinkType(actx android.ModuleContext) string {
 		return "native:vendor_ramdisk"
 	} else if c.InRecovery() {
 		return "native:recovery"
-	} else if c.Target().Os == android.Android && String(c.Properties.Sdk_version) != "" {
+	} else if c.Module().Target().Os == android.Android && c.SdkVersion() != "" {
 		return "native:ndk:none:none"
 		// TODO(b/114741097): use the correct ndk stl once build errors have been fixed
 		//family, link := getNdkStlFamilyAndLinkType(c)

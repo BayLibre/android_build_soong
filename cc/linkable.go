@@ -41,7 +41,10 @@ type LinkableInterface interface {
 	UseVndk() bool
 	MustUseVendorVariant() bool
 	IsVndk() bool
+	IsVndkExt() bool
 	HasVendorVariant() bool
+	VendorAvailable() bool
+	InProduct() bool
 
 	SdkVersion() string
 	AlwaysSdk() bool
