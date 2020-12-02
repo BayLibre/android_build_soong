@@ -34,6 +34,24 @@
       "parentUuid": "3e4056e8_a9eae9d2",
       "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ca59f4d_2bf103fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-02T17:23:05Z",
+      "side": 1,
+      "message": "err - more likely a bug in how aidl_interface.go adds things to the VNDK\n\nMaybe you see what is going on here instead?",
+      "parentUuid": "c0753ab7_0ad60533",
+      "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
