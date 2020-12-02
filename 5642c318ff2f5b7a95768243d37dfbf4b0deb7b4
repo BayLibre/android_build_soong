@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df170d0d_fcd2f267",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-02T21:47:41Z",
+      "side": 1,
+      "message": "A fine idea. Thanks for the feedback. PTAL.",
+      "parentUuid": "2edb6c21_4672f502",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 26
+      },
+      "revId": "5642c318ff2f5b7a95768243d37dfbf4b0deb7b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e39e34f_bd50b8c6",
@@ -88,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e4c556_3e890ff9",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-02T21:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e39e34f_bd50b8c6",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "5642c318ff2f5b7a95768243d37dfbf4b0deb7b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c6d5c25_378df2b8",
@@ -101,6 +149,30 @@
       "writtenOn": "2020-12-02T07:52:50Z",
       "side": 1,
       "message": "It looks like this is copied from binary.go. I am not sure the existing comment is correct. For example, exporting flags and include paths are not done here.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 57
+      },
+      "revId": "5642c318ff2f5b7a95768243d37dfbf4b0deb7b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade60066_180d4d59",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-02T21:47:41Z",
+      "side": 1,
+      "message": "True. Might just be worth removing -- not sure it\u0027s going into detail beyond the interface-level comment.",
+      "parentUuid": "8c6d5c25_378df2b8",
       "range": {
         "startLine": 464,
         "startChar": 0,
@@ -147,6 +219,30 @@
       "writtenOn": "2020-12-02T07:52:50Z",
       "side": 1,
       "message": "These three are different from others. The three interfaces are implemented by the same objects. e.g. binaryDecorator implements compiler,linker,installer interfaces. This often confused me a lot. I wish these are reordered to signify the difference.",
+      "range": {
+        "startLine": 692,
+        "startChar": 0,
+        "endLine": 694,
+        "endChar": 20
+      },
+      "revId": "5642c318ff2f5b7a95768243d37dfbf4b0deb7b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4b1e58_ff8736f6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-02T21:47:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "634be066_c8d04045",
       "range": {
         "startLine": 692,
         "startChar": 0,
