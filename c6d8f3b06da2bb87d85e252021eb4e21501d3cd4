@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84464983_c8e1f3fa",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-02T00:42:59Z",
+      "side": 1,
+      "message": "True, but so does everything else below this line.",
+      "revId": "c6d8f3b06da2bb87d85e252021eb4e21501d3cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
