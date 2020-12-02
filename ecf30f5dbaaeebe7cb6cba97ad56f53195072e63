@@ -319,6 +319,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69d546a_9f54ec65",
+        "filename": "java/aapt2.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-02T15:19:48Z",
+      "side": 1,
+      "message": "I\u0027m gonna submit this now and address your concerns later in a separate CL.",
+      "parentUuid": "6ada7ddc_78f2a1ff",
+      "range": {
+        "startLine": 236,
+        "startChar": 78,
+        "endLine": 236,
+        "endChar": 98
+      },
+      "revId": "ecf30f5dbaaeebe7cb6cba97ad56f53195072e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c8acc30_7b3d9ad6",
