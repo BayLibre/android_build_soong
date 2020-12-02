@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "277304c9_8d8512a0",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-02T00:57:08Z",
+      "side": 1,
+      "message": "Yep, there is more info in build/blueprint/bootstrap/doc.go linked from the function comment. I\u0027ll add a bit more info here as well though, thanks.",
+      "parentUuid": "71c4cb64_1b3d4c38",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 53
+      },
+      "revId": "d7ac6fa5d91fbead3fa0d86762a2ed5cd61a77d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3e9eacc_ea00c5d7",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-30T09:17:28Z",
       "side": 1,
       "message": "and this runs Ninja on \u003cbuilddir\u003e/.bootstrap/build.ninja to build and run the soong_build primary builder to generate \u003cbuilddir\u003e/build.ninja file.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 45
+      },
+      "revId": "d7ac6fa5d91fbead3fa0d86762a2ed5cd61a77d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb82fc3_b0a1d09b",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-02T00:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e9eacc_ea00c5d7",
       "range": {
         "startLine": 168,
         "startChar": 1,
