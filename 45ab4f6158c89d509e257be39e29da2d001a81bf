@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b3b64a_06fd5e8d",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-02T14:34:57Z",
+      "side": 1,
+      "message": "Removed this, thanks! I should have cleaned this up.",
+      "parentUuid": "1cd427d0_0d5375e5",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8e16892_dcd1db7d",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-01T21:52:05Z",
       "side": 1,
       "message": "Is there a reason for not doing a refactor CL first that makes isVndkExt public rather than making a public wrapper?",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f588b776_e58f3dfe",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-02T14:34:57Z",
+      "side": 1,
+      "message": "I\u0027ve split the refactor out into another CL.",
+      "parentUuid": "a8e16892_dcd1db7d",
       "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -92,6 +128,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1a7a4f_77ed4043",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-02T14:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab8dc0b_3abb9aaa",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "890205a5_00559d1b",
@@ -105,6 +159,24 @@
       "writtenOn": "2020-12-01T21:52:05Z",
       "side": 1,
       "message": "This comment is copypasta and incorrect.",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a496ecc_f1d392f9",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-02T14:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "890205a5_00559d1b",
       "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -126,6 +198,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3e32b1_c8e18b81",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-02T14:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3231f27c_3fcebf52",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cee085bc_eefd0a79",
@@ -139,6 +229,24 @@
       "writtenOn": "2020-12-01T21:52:05Z",
       "side": 1,
       "message": "From the comment on SetImageVariation:\n// ... ModuleBase implements\n// SetImageVariation, most module types will not need to override it, and those that do must call the\n// overridden method.\n\nI do not see a call to the overridden method here.",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfd5b1dd_db5214b0",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-02T14:34:57Z",
+      "side": 1,
+      "message": "Hrmm that is what the comments say, however none of the other definitions of this method call the overridden method; I don\u0027t actually see a ModuleBase implementation of SetImageVariation (there\u0027s a setImageVariation, but that\u0027s different and is called in `imageMutator` before calling the module-defined SetImageVariation). Maybe I\u0027m misunderstanding, or the comment needs updating. I can investigate a bit further.",
+      "parentUuid": "cee085bc_eefd0a79",
       "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -166,6 +274,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c05eb6_12a06e5d",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-02T14:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53945102_2bcd9ab2",
+      "range": {
+        "startLine": 133,
+        "startChar": 80,
+        "endLine": 133,
+        "endChar": 92
+      },
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d429e0a_dcb7be8b",
@@ -179,6 +311,24 @@
       "writtenOn": "2020-12-01T21:52:05Z",
       "side": 1,
       "message": "Why rust_ffi_static but not rlib?",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f59d4eb_56c5e6e3",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-02T14:34:57Z",
+      "side": 1,
+      "message": "We don\u0027t support rust vendor binaries or libraries with this CL, so there isn\u0027t anything on vendor that would use rlibs unless I\u0027m mistaken.",
+      "parentUuid": "0d429e0a_dcb7be8b",
       "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
