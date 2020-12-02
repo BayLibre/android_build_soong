@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a030a62_8cda6c4f",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T08:26:22Z",
+      "side": 1,
+      "message": "nit: textwidth to 100",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "8f0e2cdeac97fd8788667602d7cf5bfb91b114ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f209902f_69b8164e",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T08:26:22Z",
+      "side": 1,
+      "message": "please unwrap. we don\u0027t have line length limit for code",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 65,
+        "endChar": 2
+      },
+      "revId": "8f0e2cdeac97fd8788667602d7cf5bfb91b114ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aae8dedc_af17b870",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T08:26:22Z",
+      "side": 1,
+      "message": "Is this true? The map is from string to bool, how can it have name and arch?",
+      "range": {
+        "startLine": 169,
+        "startChar": 29,
+        "endLine": 169,
+        "endChar": 70
+      },
+      "revId": "8f0e2cdeac97fd8788667602d7cf5bfb91b114ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d8c13ec_6f4450aa",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T08:26:22Z",
+      "side": 1,
+      "message": "This is not included in the module struct, but in the decorator struct. Rename to baseSnapshotDecorator or similar?",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 27
+      },
+      "revId": "8f0e2cdeac97fd8788667602d7cf5bfb91b114ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15406a39_4a18e212",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-02T08:26:22Z",
+      "side": 1,
+      "message": "file-level comment would be helpful",
+      "revId": "8f0e2cdeac97fd8788667602d7cf5bfb91b114ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
