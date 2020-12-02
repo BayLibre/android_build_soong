@@ -1045,6 +1045,14 @@ func (c *Module) ImplementationModuleName(ctx android.BaseModuleContext) string 
 	return name
 }
 
+func (c *Module) ImplementationModuleNameForMake(ctx android.BaseModuleContext) string {
+	name := c.BaseModuleName()
+	if versioned, ok := c.linker.(versionedInterface); ok {
+		name = versioned.implementationModuleName(name)
+	}
+	return name
+}
+
 func (c *Module) bootstrap() bool {
 	return Bool(c.Properties.Bootstrap)
 }
