@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a431691e_450bfbc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-12-03T21:39:36Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "c8f8fa62_f9c610df",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "919dae1e6799d7d4a41ef4ea15b5036b25fe9e72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "403f17d4_d85f4bf4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "The problem is for modules with `vendor_ramdisk_available`, not `vendor_ramdisk`, having an rc file makes sense. e.g. for snapuserd:\n\nhttps://android-review.googlesource.com/c/platform/system/core/+/1515001/1/fs_mgr/libsnapshot/Android.bp#b442\n\ncc_binary {\n    name: \"snapuserd\",\n    init_rc: [\n        \"snapuserd.rc\",\n    ],\n    vendor_ramdisk_available: true,\n    // ...\n}\n\nThen, we want the core variant to have the rc file, but the ramdisk / vendor_ramdisk variant to not have it.\n\nI don\u0027t know how to distinguish between vendor_ramdisk and vendor_ramdisk_available in this context, though...",
       "parentUuid": "403f17d4_d85f4bf4",
+      "revId": "919dae1e6799d7d4a41ef4ea15b5036b25fe9e72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2446022d_8c23126d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-12-03T21:39:36Z",
+      "side": 1,
+      "message": "You\u0027re right.\n\nI guess we do the same for host_available, since there\u0027s obviously no init_rc fragments on host.",
+      "parentUuid": "8153c88e_d1ceb7a5",
       "revId": "919dae1e6799d7d4a41ef4ea15b5036b25fe9e72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
