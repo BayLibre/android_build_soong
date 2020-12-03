@@ -51,6 +51,24 @@
       "parentUuid": "1b98c40d_8a8f76be",
       "revId": "f47c90db247a76fadf4b6b3db0545c785b5e0ddf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36749d4a_181f30f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T06:33:56Z",
+      "side": 1,
+      "message": "I think it\u0027s still fine to fix here, there is nothing remarkable about framework-javastream-protos.",
+      "parentUuid": "1a395e18_85fa35e8",
+      "revId": "f47c90db247a76fadf4b6b3db0545c785b5e0ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
