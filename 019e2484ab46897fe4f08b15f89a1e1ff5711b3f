@@ -16,6 +16,24 @@
       "message": "This breaks a test:\n\n--- FAIL: TestParse (0.00s)\n    --- FAIL: TestParse/Escapes (0.00s)\n        deps_test.go:191: input files don\u0027t match:\n             str: \"\\\\!\\\\@\\\\#$$\\\\%\\\\^\\\\\u0026\\\\\\\\:\"\n            want: []string(nil)\n             got: []string{\"\"}\n",
       "revId": "019e2484ab46897fe4f08b15f89a1e1ff5711b3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c1177d_0eebf985",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-12-03T22:05:44Z",
+      "side": 1,
+      "message": "Missed that, thanks. It isn\u0027t clear what would be the right result, so I decided to preserve word splitting behavior but return empty items when splitting in a separator (so that splitting \"call x,\" on \",\" returns two items, with second empty).",
+      "parentUuid": "10d3b8a2_fd0b8c68",
+      "revId": "019e2484ab46897fe4f08b15f89a1e1ff5711b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
