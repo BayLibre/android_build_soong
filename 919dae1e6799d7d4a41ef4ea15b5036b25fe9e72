@@ -22,6 +22,23 @@
       },
       "revId": "919dae1e6799d7d4a41ef4ea15b5036b25fe9e72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "403f17d4_d85f4bf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-12-03T18:51:56Z",
+      "side": 1,
+      "message": "Maybe this should be turned into an error, and we can give an option to specify init_rc for only the non-ramdisk variants?  It may be confusing if we just drop the .rc file behind the scenes.",
+      "revId": "919dae1e6799d7d4a41ef4ea15b5036b25fe9e72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
