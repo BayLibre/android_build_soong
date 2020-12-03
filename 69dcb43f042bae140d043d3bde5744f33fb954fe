@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f646972_85803006",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T01:30:28Z",
+      "side": 1,
+      "message": "Hardcoded is fine.",
+      "parentUuid": "5da3bc43_6dc35a46",
+      "range": {
+        "startLine": 140,
+        "startChar": 19,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "69dcb43f042bae140d043d3bde5744f33fb954fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3555397_2e9c2c41",
