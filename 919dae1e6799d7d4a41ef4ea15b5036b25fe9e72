@@ -39,6 +39,24 @@
       "message": "Maybe this should be turned into an error, and we can give an option to specify init_rc for only the non-ramdisk variants?  It may be confusing if we just drop the .rc file behind the scenes.",
       "revId": "919dae1e6799d7d4a41ef4ea15b5036b25fe9e72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8153c88e_d1ceb7a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2020-12-03T19:32:13Z",
+      "side": 1,
+      "message": "The problem is for modules with `vendor_ramdisk_available`, not `vendor_ramdisk`, having an rc file makes sense. e.g. for snapuserd:\n\nhttps://android-review.googlesource.com/c/platform/system/core/+/1515001/1/fs_mgr/libsnapshot/Android.bp#b442\n\ncc_binary {\n    name: \"snapuserd\",\n    init_rc: [\n        \"snapuserd.rc\",\n    ],\n    vendor_ramdisk_available: true,\n    // ...\n}\n\nThen, we want the core variant to have the rc file, but the ramdisk / vendor_ramdisk variant to not have it.\n\nI don\u0027t know how to distinguish between vendor_ramdisk and vendor_ramdisk_available in this context, though...",
+      "parentUuid": "403f17d4_d85f4bf4",
+      "revId": "919dae1e6799d7d4a41ef4ea15b5036b25fe9e72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
