@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe62e2c_5a7ffd04",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-03T13:20:41Z",
+      "side": 1,
+      "message": "I see strip is done. Explain why.",
+      "range": {
+        "startLine": 505,
+        "startChar": 36,
+        "endLine": 505,
+        "endChar": 49
+      },
+      "revId": "d9fe44fde440e64868aa4b9a905734677c437265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5c84a6_8accb8f6",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-03T13:20:41Z",
+      "side": 1,
+      "message": "nit: we don\u0027t have line length limit",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 507,
+        "endChar": 57
+      },
+      "revId": "d9fe44fde440e64868aa4b9a905734677c437265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

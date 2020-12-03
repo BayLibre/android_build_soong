@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b149fd8_296d5c63",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-03T13:20:41Z",
+      "side": 1,
+      "message": "This is not useful. It should explain what vendor_snapshot_shared is for, and perhaps how it is used.",
+      "parentUuid": "54bad78e_acec93b1",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0e2474e_25a11e27",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 2
@@ -248,6 +266,30 @@
       "side": 1,
       "message": "changed to \"don\u0027t match with device\"",
       "parentUuid": "c9da79cd_e9d2eb27",
+      "range": {
+        "startLine": 638,
+        "startChar": 56,
+        "endLine": 638,
+        "endChar": 67
+      },
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbabfc8_160e82d5",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-03T13:20:41Z",
+      "side": 1,
+      "message": "what does \u0027match\u0027 mean?",
+      "parentUuid": "4dfadb6c_580f7a10",
       "range": {
         "startLine": 638,
         "startChar": 56,
