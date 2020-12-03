@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea63ebfe_afab51ef",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-03T06:52:04Z",
+      "side": 1,
+      "message": "Can we split this into three if statements for readability?",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 92
+      },
+      "revId": "55bf00913d7a22b8bcd8f01fb99c3c8ec73b7366",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
