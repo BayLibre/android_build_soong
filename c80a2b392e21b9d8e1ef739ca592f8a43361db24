@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c13fb1f_9a457256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-12-03T17:15:50Z",
+      "side": 1,
+      "message": "Remove the dist output files part in androidmk.go for now to pass the presubmit failure caused by unavailable ExpService API in AOSP.",
+      "revId": "c80a2b392e21b9d8e1ef739ca592f8a43361db24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
