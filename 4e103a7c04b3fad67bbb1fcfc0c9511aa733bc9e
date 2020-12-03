@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006518109",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1455360?revision\u003d9",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7cd3beae_884a5238",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-03T03:05:04Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 1,
+        "startChar": 46,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "4e103a7c04b3fad67bbb1fcfc0c9511aa733bc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006518109",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1455360?revision\u003d9",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7740dae2_af4e361a",
+        "filename": "licenses/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-03T03:05:04Z",
+      "side": 1,
+      "message": "Third-party license (ISC) disallowed in repository platform/build/soong:\nhttps://spdx.org/licenses/ISC\n",
+      "range": {
+        "startLine": 679,
+        "startChar": 8,
+        "endLine": 679,
+        "endChar": 37
+      },
+      "revId": "4e103a7c04b3fad67bbb1fcfc0c9511aa733bc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
