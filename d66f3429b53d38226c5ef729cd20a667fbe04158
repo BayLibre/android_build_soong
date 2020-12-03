@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84caeab_6dddd5cb",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T19:43:07Z",
+      "side": 1,
+      "message": "This assumption isn\u0027t always true, although I think the implementation is still fine.  Maybe \"under the assumption that the prebuilt module overrides its source counterpart if it is exposed to Make\"?",
+      "range": {
+        "startLine": 1051,
+        "startChar": 13,
+        "endLine": 1052,
+        "endChar": 14
+      },
+      "revId": "d66f3429b53d38226c5ef729cd20a667fbe04158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
