@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "305ec288_11ef08ad",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-03T11:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e8cd8b_48a13fb5",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87170df9_6f372ba2",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-02T14:46:54Z",
       "side": 1,
       "message": "add module type comment here",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bad78e_acec93b1",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-03T11:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87170df9_6f372ba2",
       "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "033583ff_c51687d5",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-03T11:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0e2474e_25a11e27",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "358975d5_4ecc480a",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-12-02T14:46:54Z",
       "side": 1,
       "message": "please add comment here. This function, although it is name as link, it isn\u0027t doing any linking.",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc921bd9_d32318c4",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-03T11:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "358975d5_4ecc480a",
       "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb27e83_329aaa19",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-03T11:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "994e85cc_4e671fde",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eba5782_2dd4cadc",
@@ -103,6 +193,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5282a25c_b1d4de93",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-03T11:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eba5782_2dd4cadc",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9da79cd_e9d2eb27",
@@ -116,6 +224,30 @@
       "writtenOn": "2020-12-02T14:46:54Z",
       "side": 1,
       "message": "Please provide a high level description about what \u0027unnecessary\u0027 means here",
+      "range": {
+        "startLine": 638,
+        "startChar": 56,
+        "endLine": 638,
+        "endChar": 67
+      },
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dfadb6c_580f7a10",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-03T11:55:58Z",
+      "side": 1,
+      "message": "changed to \"don\u0027t match with device\"",
+      "parentUuid": "c9da79cd_e9d2eb27",
       "range": {
         "startLine": 638,
         "startChar": 56,
