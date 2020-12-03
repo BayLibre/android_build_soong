@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddf78d5_b58620fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2020-12-03T02:59:50Z",
+      "side": 1,
+      "message": "Specifically, the problem triggers on framework-javastream-protos and framework-cppstream-protos targets. Let me know if you\u0027d prefer the shard size to be changed in those targets only.",
+      "revId": "f47c90db247a76fadf4b6b3db0545c785b5e0ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
