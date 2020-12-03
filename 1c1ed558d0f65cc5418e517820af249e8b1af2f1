@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca1a431_e6ed33e3",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6222,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-03T15:52:35Z",
+      "side": 1,
+      "message": "Can this be removed? Given L6212, it\u0027s not actually used right? (otherwise, for the two known usecases, we need to leave bpf + binder as apex-available)",
+      "range": {
+        "startLine": 6222,
+        "startChar": 0,
+        "endLine": 6222,
+        "endChar": 30
+      },
+      "revId": "1c1ed558d0f65cc5418e517820af249e8b1af2f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
