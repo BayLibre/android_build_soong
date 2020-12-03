@@ -22,6 +22,30 @@
       },
       "revId": "1c1ed558d0f65cc5418e517820af249e8b1af2f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54cf5086_ae402dfe",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6222,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-12-03T19:05:00Z",
+      "side": 1,
+      "message": "It seems this line can just be removed, the CL works fine and the excluded shared lib doesn\u0027t need to be made available to the apex. I\u0027m able to disable libbinder for apexes:\n\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/native/+/12527722/2/libs/binder/Android.bp",
+      "parentUuid": "0ca1a431_e6ed33e3",
+      "range": {
+        "startLine": 6222,
+        "startChar": 0,
+        "endLine": 6222,
+        "endChar": 30
+      },
+      "revId": "1c1ed558d0f65cc5418e517820af249e8b1af2f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
