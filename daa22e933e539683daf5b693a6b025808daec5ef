@@ -70,6 +70,24 @@
       "parentUuid": "4ca59f4d_2bf103fb",
       "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c46c519f_555566a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-03T21:46:14Z",
+      "side": 1,
+      "message": "yeah - this is what I meant with \"keymint-unstable is the VNDK variant\" that the other isn\u0027t, but I tried to make it clear. Also, perfect - that\u0027s the problem. So we can fix the check as well, to make sure it shows up on TH (since this was failing in postsubmit w/o the \u0027unstable\u0027 variant, thanks!)",
+      "parentUuid": "0ad56d78_c39a5808",
+      "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
