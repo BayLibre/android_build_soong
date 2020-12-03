@@ -238,6 +238,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a94ff5_236ab820",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-12-03T23:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cef4f267_12a36766",
+      "range": {
+        "startLine": 658,
+        "startChar": 3,
+        "endLine": 658,
+        "endChar": 88
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d807d3f1_d309d4f3",
@@ -416,6 +440,30 @@
       "side": 1,
       "message": "When run manually .MF is recognized as executable file sometimes. As it\u0027s not related to want we need simply remove it in order to avoid possible failures.",
       "parentUuid": "eca872a3_e55d0227",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "4f44f7014d478ad7b356c33a307995870d071d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0ce6a1_955c75fa",
+        "filename": "scripts/gen_ndk_usedby_apex.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2020-12-03T23:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff1cf599_5af97828",
       "range": {
         "startLine": 35,
         "startChar": 0,
