@@ -52,6 +52,24 @@
       "parentUuid": "c0753ab7_0ad60533",
       "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad56d78_c39a5808",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-03T04:52:34Z",
+      "side": 1,
+      "message": "Ha, this is much more complicated than I thought. Here\u0027s my finding.\n\nhardware/interfaces/keymint is registered as CFI_INCLUDE_PATHS. https://source.corp.google.com/aosp-master/build/make/target/product/cfi-common.mk;rcl\u003d79106cd3ab67ec602d3896d5aa35dfc8ba0b5f47;l\u003d33\n\nThis, combined with https://source.corp.google.com/android/build/soong/cc/library.go;rcl\u003d8765563edc31109359356b80f5663245bbf84617;l\u003d1289, causes the arm64 variant of the library to skip the check. That\u0027s why it passed TH. (You may ask what about the arm32 variant. The check is not skipped for the variant. But it looks like nobody is using the 32-bit variant of the interface lib. So, the check was never done actually. When I manually invoked the check, it failed.)\n\nThe skipping doesn\u0027t happen for x86_64.\n\nSo, this isn\u0027t about \"-unstable\". Currently, in both aosp_arm64 and aosp_x86_64 targets, the same library android.hardware.keymint-unstable-ndk_platform is registered as VNDK.\n\nSo, going back to this CL, I think it\u0027s correct to remove the non-stable interface lib from the list. But I wish the commit message is updated with more precise reason. It is removed because it\u0027s not VNDK and this list is for VNDK libs.",
+      "parentUuid": "4ca59f4d_2bf103fb",
+      "revId": "daa22e933e539683daf5b693a6b025808daec5ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
