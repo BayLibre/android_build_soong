@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3288df98_568c8b9d",
+        "filename": "cc/sabi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-03T15:23:56Z",
+      "side": 1,
+      "message": "Does this mean that sabi.Properties.ShouldCreateSourceAbiDump affects only the static library dependencies? I don\u0027t see a reference for the property (or the method shouldCreateSourceAbiDump) anywhere else. Is that your intention?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "06fab15e394129ed48207aab7e7f1c55f08b4e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
