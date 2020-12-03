@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "852dadcb_a7a46fbd",
+        "filename": "symbol_inject/cmd/symbol_inject.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1605452
+      },
+      "writtenOn": "2020-12-03T10:53:40Z",
+      "side": 1,
+      "message": "Sure, we can do that.",
+      "parentUuid": "67cd1335_f5003425",
+      "revId": "55120fe8e2db31ab66d3047f5cb436b49ccee9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75ab3624_ef8f62e5",
         "filename": "symbol_inject/cmd/symbol_inject.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-03T00:08:34Z",
       "side": 1,
       "message": "We can\u0027t guarantee that the git directory is available.  Some vendors use source control that is not git, and our build infrastructure will delete the .git directories locally if they are running low on disk space.  There is also no guarantee that git is in the path.  I\u0027d prefer if this computed the hash of the directory contents, which would line up with the git tree objects.  That could be very complicated to match git exactly though.",
+      "revId": "55120fe8e2db31ab66d3047f5cb436b49ccee9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77295455_6f928654",
+        "filename": "symbol_inject/cmd/symbol_inject.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1605452
+      },
+      "writtenOn": "2020-12-03T10:53:40Z",
+      "side": 1,
+      "message": "Would using go-git (https://github.com/go-git/go-git) be acceptable? I haven\u0027t looked at how easy it is to extract the SHA using that package, but presumably going to be easier than a custom implementation. It may require some of the git metadata though, so maybe we can\u0027t use it.\n\nTo clarify the use case - we only really want to use this on our internal builds within ARM (which would always be in a git repo). This ensures any cached shaders are recompiled in our test infrastructure when different revisions of the driver are being tested. Customer drivers would not use the git SHA (as we also can\u0027t guarantee that they use git).\n\nI\u0027ll have a look to see if we can easily compute the hash",
+      "parentUuid": "75ab3624_ef8f62e5",
       "revId": "55120fe8e2db31ab66d3047f5cb436b49ccee9e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
