@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1bee5e_3e979013",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-03T05:13:46Z",
+      "side": 1,
+      "message": "Thanks! This helps me understand the cc package much better. :)",
+      "revId": "ef6e0cf5f7989991db0867bd51090031d99f8661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
