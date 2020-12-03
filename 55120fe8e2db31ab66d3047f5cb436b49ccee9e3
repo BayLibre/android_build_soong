@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67cd1335_f5003425",
+        "filename": "symbol_inject/cmd/symbol_inject.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T00:08:34Z",
+      "side": 1,
+      "message": "This is going to make the builds non-reproducible.  Can you instead make it use the BUILD_DATETIME_FILE like https://cs.android.com/android/platform/superproject/+/master:build/soong/java/droiddoc.go;l\u003d766;drc\u003db28bd8cd66245595a948fbf27cf063d2efde8b4f does?  That way if the build infrasturcture sets a specific date it will get consistent results.",
+      "revId": "55120fe8e2db31ab66d3047f5cb436b49ccee9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ab3624_ef8f62e5",
+        "filename": "symbol_inject/cmd/symbol_inject.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T00:08:34Z",
+      "side": 1,
+      "message": "We can\u0027t guarantee that the git directory is available.  Some vendors use source control that is not git, and our build infrastructure will delete the .git directories locally if they are running low on disk space.  There is also no guarantee that git is in the path.  I\u0027d prefer if this computed the hash of the directory contents, which would line up with the git tree objects.  That could be very complicated to match git exactly though.",
+      "revId": "55120fe8e2db31ab66d3047f5cb436b49ccee9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
