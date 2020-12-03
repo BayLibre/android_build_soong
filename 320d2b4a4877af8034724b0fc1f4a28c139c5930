@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "798b83d1_5fdf5559",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2780,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-03T16:53:05Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7d78d5b4_4e6ad31b",
+      "revId": "320d2b4a4877af8034724b0fc1f4a28c139c5930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09acf539_79c4b415",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-02T18:44:31Z",
       "side": 1,
       "message": "Some information on what the return values mean would be helpful.",
+      "revId": "320d2b4a4877af8034724b0fc1f4a28c139c5930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8a28a68_8c7d99b7",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-03T16:53:05Z",
+      "side": 1,
+      "message": "It\u0027s gone now, so no need to write a comment.",
+      "parentUuid": "09acf539_79c4b415",
       "revId": "320d2b4a4877af8034724b0fc1f4a28c139c5930",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
