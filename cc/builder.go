@@ -569,7 +569,7 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			moduleFlags = cppflags
 			moduleToolingFlags = toolingCppflags
 		default:
-			ctx.ModuleErrorf("File %s has unknown extension", srcFile)
+			ctx.ModuleErrorf("File %s has unknown extension. Supported extensions: .s, .S, .c, .cpp, .cc, .cxx, .mm", srcFile)
 			continue
 		}
 
