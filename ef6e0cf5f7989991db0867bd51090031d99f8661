@@ -16,6 +16,23 @@
       "message": "Thanks! This helps me understand the cc package much better. :)",
       "revId": "ef6e0cf5f7989991db0867bd51090031d99f8661",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74fbfe88_5372b0a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-03T05:18:17Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "ef6e0cf5f7989991db0867bd51090031d99f8661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
