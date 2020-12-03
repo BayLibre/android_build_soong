@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "ee13eeee_cd6bb878",
         "filename": "cc/cc.go",
@@ -20,8 +21,31 @@
         "endChar": 13
       },
       "revId": "072889e23020d6e51da2528fd3ee5e3b5dfa4003",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe674582_c098418a",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3253,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-03T03:45:07Z",
+      "side": 1,
+      "message": "We fixed this with aosp/1382317.",
+      "parentUuid": "ee13eeee_cd6bb878",
+      "range": {
+        "startLine": 3253,
+        "startChar": 2,
+        "endLine": 3253,
+        "endChar": 13
+      },
+      "revId": "072889e23020d6e51da2528fd3ee5e3b5dfa4003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
