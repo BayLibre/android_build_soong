@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d3b8a2_fd0b8c68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T17:15:25Z",
+      "side": 1,
+      "message": "This breaks a test:\n\n--- FAIL: TestParse (0.00s)\n    --- FAIL: TestParse/Escapes (0.00s)\n        deps_test.go:191: input files don\u0027t match:\n             str: \"\\\\!\\\\@\\\\#$$\\\\%\\\\^\\\\\u0026\\\\\\\\:\"\n            want: []string(nil)\n             got: []string{\"\"}\n",
+      "revId": "019e2484ab46897fe4f08b15f89a1e1ff5711b3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
