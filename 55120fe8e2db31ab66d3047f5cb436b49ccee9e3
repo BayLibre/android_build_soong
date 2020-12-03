@@ -69,6 +69,24 @@
       "parentUuid": "75ab3624_ef8f62e5",
       "revId": "55120fe8e2db31ab66d3047f5cb436b49ccee9e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03824143_d95d5bbb",
+        "filename": "symbol_inject/cmd/symbol_inject.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1605452
+      },
+      "writtenOn": "2020-12-03T15:40:51Z",
+      "side": 1,
+      "message": "I think I\u0027ll drop this part of the change, so we just inject a timestamp.\n\nTo cover our use case, I\u0027m looking at using the linkers --build-id",
+      "parentUuid": "77295455_6f928654",
+      "revId": "55120fe8e2db31ab66d3047f5cb436b49ccee9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
