@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a3a820_c2c0ba8b",
+        "filename": "androidmk/parser/make_strings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T22:18:13Z",
+      "side": 1,
+      "message": "Can you add a comment explaining this behavior and how it differs from Split()?",
+      "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3ebc8ff_fc4cff3a",
+        "filename": "androidmk/parser/make_strings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T22:18:13Z",
+      "side": 1,
+      "message": "return nil",
+      "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1157f92a_ac3163ee",
+        "filename": "androidmk/parser/make_strings_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T22:18:13Z",
+      "side": 1,
+      "message": "Add a test that covers the new behavior here.",
+      "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a33b40_1245ad5e",
+        "filename": "androidmk/parser/make_strings_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-03T22:18:13Z",
+      "side": 1,
+      "message": "Add a test that covers the difference in behavior between Split() and Words() here.",
+      "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
