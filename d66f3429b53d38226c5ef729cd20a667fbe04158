@@ -22,6 +22,30 @@
       },
       "revId": "d66f3429b53d38226c5ef729cd20a667fbe04158",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd9ccc6_a6bac868",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-04T01:03:06Z",
+      "side": 1,
+      "message": "Yes, didn\u0027t intend to imply it\u0027s always true. Perhaps \"premise\" is a better word. Updated as suggested.",
+      "parentUuid": "c84caeab_6dddd5cb",
+      "range": {
+        "startLine": 1051,
+        "startChar": 13,
+        "endLine": 1052,
+        "endChar": 14
+      },
+      "revId": "d66f3429b53d38226c5ef729cd20a667fbe04158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
