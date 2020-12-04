@@ -46,6 +46,30 @@
       },
       "revId": "db44d9d52de5e98831ac1c21da2c4cffaa95049a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59dce04a_82cc3d61",
+        "filename": "cmd/sbox/sbox_proto/sbox.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-04T17:56:49Z",
+      "side": 1,
+      "message": "Ah, I did not know that the caller doesn\u0027t know the permissions. Don\u0027t bother with the change then. LGTM.",
+      "parentUuid": "06155679_9a96251f",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "db44d9d52de5e98831ac1c21da2c4cffaa95049a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
