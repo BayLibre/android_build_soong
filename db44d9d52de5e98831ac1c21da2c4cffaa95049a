@@ -22,6 +22,30 @@
       },
       "revId": "db44d9d52de5e98831ac1c21da2c4cffaa95049a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06155679_9a96251f",
+        "filename": "cmd/sbox/sbox_proto/sbox.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-04T17:40:58Z",
+      "side": 1,
+      "message": "The caller currently doesn\u0027t know the permissions because the file may not have been written yet.  This is \"add executable bit to the existing permissions\".  I could make that a bitmask that is OR-d in, but I don\u0027t think that is common with permissions, it is usually umask that is masked out.",
+      "parentUuid": "26b89557_39a9245c",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "db44d9d52de5e98831ac1c21da2c4cffaa95049a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
