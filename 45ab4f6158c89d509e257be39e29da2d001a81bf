@@ -367,6 +367,24 @@
       "parentUuid": "7f59d4eb_56c5e6e3",
       "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e62b3ea_7fb5704d",
+        "filename": "rust/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-04T19:04:33Z",
+      "side": 1,
+      "message": "I agree, and thanks for pointing this out, it uncovered a bug since we were already linking against an rlib (libstd). The new CL allows linkage against rlibs that also link against libstd statically.",
+      "parentUuid": "74c1f9ac_6beea6c6",
+      "revId": "45ab4f6158c89d509e257be39e29da2d001a81bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
