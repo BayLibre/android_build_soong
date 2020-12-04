@@ -22,6 +22,30 @@
       },
       "revId": "fda035eb491964bcad96f036d14a0f567f4e02c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d592fad_afeb6e5b",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T11:31:21Z",
+      "side": 1,
+      "message": "Bump because of the new patch",
+      "parentUuid": "6db70366_ccd3e944",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "fda035eb491964bcad96f036d14a0f567f4e02c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
