@@ -82,10 +82,34 @@ func runBazel(ctx Context, config Config) {
 		cmd.Args = append(cmd.Args, strings.Fields(extraBuildArgs)...)
 	}
 
-	// Append the label of the default ninja_build target.
-	cmd.Args = append(cmd.Args,
-		"//:"+config.TargetProduct()+"-"+config.TargetBuildVariant(),
-	)
+	// Allow RBE-related env vars to be used during Bazel action execution
+	// This is in case the RE client needs them
+	rbeEnvVars := []string{
+		// RBE client
+		"RBE_compare",
+		"RBE_exec_root",
+		"RBE_exec_strategy",
+		"RBE_invocation_id",
+		"RBE_log_dir",
+		"RBE_platform",
+		"RBE_remote_accept_cache",
+		"RBE_remote_update_cache",
+		"RBE_server_address",
+		// TODO: remove old FLAG_ variables.
+		"FLAG_compare",
+		"FLAG_exec_root",
+		"FLAG_exec_strategy",
+		"FLAG_invocation_id",
+		"FLAG_log_dir",
+		"FLAG_platform",
+		"FLAG_remote_accept_cache",
+		"FLAG_remote_update_cache",
+		"FLAG_server_address",
+	}
+	for _, envVar := range rbeEnvVars {
+		cmd.Args = append(cmd.Args,
+			"--action_env="+envVar)
+	}
 
 	// Ensure that the PATH environment variable value used in the action
 	// environment is the restricted set computed from soong_ui, and not a
@@ -94,6 +118,11 @@ func runBazel(ctx Context, config Config) {
 		cmd.Environment.Set("PATH", pathEnvValue)
 		cmd.Args = append(cmd.Args, "--action_env=PATH="+pathEnvValue)
 	}
+
+	// Append the label of the default ninja_build target.
+	cmd.Args = append(cmd.Args,
+		"//:"+config.TargetProduct()+"-"+config.TargetBuildVariant(),
+	)
 
 	cmd.Environment.Set("DIST_DIR", config.DistDir())
 	cmd.Environment.Set("SHELL", "/bin/bash")
