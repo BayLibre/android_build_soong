@@ -22,6 +22,30 @@
       },
       "revId": "06fab15e394129ed48207aab7e7f1c55f08b4e0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeaac2b8_439e8696",
+        "filename": "cc/sabi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-12-04T04:57:46Z",
+      "side": 1,
+      "message": "Fixed bad phrasing.\n\nNo that\u0027s not what I mean. What I mean is: for static libraries, just check `sabi.Properties.ShouldCreateSourceAbiDump` to see if they are marked by their parent; for shared libraries, continue through the check and call classifySourceAbiDump() to determine.\n\nBoth shared and static libraries should have their `sabi.Properties.ShouldCreateSourceAbiDump` set by sabiDepsMutator if they were to generate ABI dumps later in GenerateAndroidBuildActions()",
+      "parentUuid": "3288df98_568c8b9d",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "06fab15e394129ed48207aab7e7f1c55f08b4e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
