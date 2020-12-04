@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506d02e7_4a689327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-12-04T14:17:29Z",
+      "side": 1,
+      "message": "Had to upload a new patch to resolve merge conflict. Need CR vote again. TIA.",
+      "revId": "b73ac045c51a4f24803efa15f8e5148cfbfc0828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
