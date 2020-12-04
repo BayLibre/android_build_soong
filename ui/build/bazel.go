@@ -98,12 +98,12 @@ func runBazel(ctx Context, config Config) {
 	cmd.Environment.Set("DIST_DIR", config.DistDir())
 	cmd.Environment.Set("SHELL", "/bin/bash")
 
-	// Print the full command line for debugging purposes.
-	ctx.Println(cmd.Cmd)
-
 	// Execute the command at the root of the directory.
 	cmd.Dir = filepath.Join(config.OutDir(), "..")
 	ctx.Status.Status("Starting Bazel..")
+
+	// Print the full command line (including environment variables) for debugging purposes.
+	ctx.Println("Bazel command line: " + strings.Join(cmd.Environment.Environ(), " ") + " " + cmd.Cmd.String() + "\n")
 
 	// Execute the build command.
 	cmd.RunAndStreamOrFatal()
