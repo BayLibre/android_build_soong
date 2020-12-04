@@ -45,6 +45,30 @@
       },
       "revId": "d348c41af56dbbc54e77ca60c29d281114deae02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe3a8b0_96b0ef42",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-12-04T15:57:22Z",
+      "side": 0,
+      "message": "Similar to https://android-review.googlesource.com/c/platform/build/soong/+/1517239 (copy pasting my response here for completeness).\n\nUnfortunately you can\u0027t remove these variables yet. These are still being set in https://source.corp.google.com/piper///depot/google3/configs/wireless/android/busytown/rbe/config.gcl;l\u003d15?q\u003drbe%2Fconfig.gcl\u0026sq\u003dpackage:piper%20file:%2F%2Fdepot%2Fgoogle3%20-file:google3%2Fexperimental.\n\nThe problem is a little thorny because:\n1. We cannot change the GCL file now since older android branches that are frozen and don\u0027t have uptodate re-client won\u0027t have support for RBE_ variables.\n\n2. Since we cannot change the GCL files, we can\u0027t remove these variables from here.\n\nThe solution is to fork the configuration in GCL files into one for older frozen branches (that has FLAG_ variables), and another one for current branches, use RBE_ variables in current branch config, and then remove it from here. I don\u0027t think we\u0027ll get to it this quarter though :/",
+      "parentUuid": "3d13d4bc_41ebbb7f",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "d348c41af56dbbc54e77ca60c29d281114deae02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
