@@ -1783,7 +1783,7 @@ type RuntimeResourceOverlayProperties struct {
 	// only when the ro.boot.vendor.overlay.theme system property is set to the same value.
 	Theme *string
 
-	// if not blank, set to the version of the sdk to compile against.
+	// if not blank, set to the SDK version compile against, for example "29" for Android 10 (API level 29).
 	// Defaults to compiling against the current platform.
 	Sdk_version *string
 
