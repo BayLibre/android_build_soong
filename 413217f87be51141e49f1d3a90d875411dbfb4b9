@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9bad3a8_b0376b4a",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-04T21:15:47Z",
+      "side": 1,
+      "message": "nit: I\u0027d move this just above newDepSetBuilder.",
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c0d0d1_6bc58958",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-04T21:15:47Z",
+      "side": 1,
+      "message": "Can you do this check in sliceToDepSets?",
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fec43a4f_acede88c",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-04T21:15:47Z",
+      "side": 1,
+      "message": "Double empty spaces here and below.",
+      "range": {
+        "startLine": 205,
+        "startChar": 17,
+        "endLine": 205,
+        "endChar": 19
+      },
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5daf82bf_5c99b768",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-04T21:15:47Z",
+      "side": 1,
+      "message": "Double whitespaces here and below.",
+      "range": {
+        "startLine": 236,
+        "startChar": 86,
+        "endLine": 236,
+        "endChar": 88
+      },
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3bb3332_9089bc00",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-04T21:15:47Z",
+      "side": 1,
+      "message": "If so, what about adding a note to ToList encouraging to provide a type-specific firstUnique function when creating a DepSet struct for a new type? Or, even removing ToList and first* functions completely? It\u0027s a common practice in languages with generic support, e.g. providing a comparator when using sort.",
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39160a63_fd4cca70",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-04T21:15:47Z",
+      "side": 1,
+      "message": "Duplicate whitespaces. In the below functions too.",
+      "range": {
+        "startLine": 304,
+        "startChar": 65,
+        "endLine": 304,
+        "endChar": 67
+      },
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5e475fd_30d61df2",
+        "filename": "android/depset_paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-04T21:15:47Z",
+      "side": 1,
+      "message": "Duplicate, here and in the comment for ToList.",
+      "range": {
+        "startLine": 65,
+        "startChar": 56,
+        "endLine": 65,
+        "endChar": 58
+      },
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
