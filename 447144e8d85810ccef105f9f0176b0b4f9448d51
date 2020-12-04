@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26639cd0_38de00e0",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-04T05:07:29Z",
+      "side": 1,
+      "message": "This does mean that the VNDK APEXes consist of vndk_snapshot_prebuilt modules?",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 60
+      },
+      "revId": "447144e8d85810ccef105f9f0176b0b4f9448d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
