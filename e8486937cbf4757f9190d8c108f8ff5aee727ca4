@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd3b1fa_d47d07b6",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T02:48:59Z",
+      "side": 1,
+      "message": "Why are we using\n\nconfig.environ.Set\n\nBut also\n\ncmd.Environment.Set\n\nIs there a difference? Can we standardize on one of them?",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24287c9a_2d61a14b",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T02:48:59Z",
+      "side": 1,
+      "message": "Personally I think we should stop using ctx.Status. It is really annoying to lose log messages (each status message seems to overwrite the previous one).",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "654d2c32_4dbbb62c",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T02:48:59Z",
+      "side": 1,
+      "message": "FWIW this prints a huge ENV line and most of it is unrelated (e.g. LOGNAME\u003druperts)\n\nIt might be nicer if we could save important parts of the environment somewhere and print those out instead of printing everything\n\nBut I think printing everything is still an improvement over printing nothing",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 115
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
