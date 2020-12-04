@@ -173,6 +173,7 @@ func runBazel(ctx Context, config Config) {
 	// currently hardcoded as ninja_build.output_root.
 	bazelNinjaBuildOutputRoot := filepath.Join(outputBasePath, "..", "out")
 
+	ctx.Status.Status("Creating output symlinks..")
 	symlinkOutdir(ctx, config, bazelNinjaBuildOutputRoot, ".")
 }
 
@@ -185,27 +186,35 @@ func symlinkOutdir(ctx Context, config Config, rootPath string, relativePath str
 	if err != nil {
 		ctx.Fatal(err)
 	}
+
 	for _, f := range files {
+		// The original Bazel file path
 		destPath := filepath.Join(destDir, f.Name())
+
+		// The desired Soong file path
 		srcPath := filepath.Join(config.OutDir(), relativePath, f.Name())
-		if statResult, err := os.Stat(srcPath); err == nil {
-			if statResult.Mode().IsDir() && f.IsDir() {
-				// Directory under OutDir already exists, so recurse on its contents.
-				symlinkOutdir(ctx, config, rootPath, filepath.Join(relativePath, f.Name()))
-			} else if !statResult.Mode().IsDir() && !f.IsDir() {
-				// File exists both in source and destination, and it's not a directory
-				// in either location. Do nothing.
-				// This can arise for files which are generated under OutDir outside of
-				// soong_build, such as .bootstrap files.
-			} else {
-				// File is a directory in one location but not the other. Raise an error.
-				ctx.Fatalf("Could not link %s to %s due to conflict", srcPath, destPath)
-			}
-		} else if os.IsNotExist(err) {
-			// Create symlink srcPath -> fullDestPath.
-			os.Symlink(destPath, srcPath)
+
+		destLstatResult, destLstatErr := os.Lstat(destPath)
+		if destLstatErr != nil {
+			ctx.Fatalf("Unable to Lstat dest %s: %s", destPath, destLstatErr)
+		}
+
+		srcLstatResult, srcLstatErr := os.Lstat(srcPath)
+
+		if srcLstatErr == nil && srcLstatResult.IsDir() && destLstatResult.IsDir() {
+			// src and dest are both existing dirs - recurse on the dest dir contents...
+			symlinkOutdir(ctx, config, rootPath, filepath.Join(relativePath, f.Name()))
+		} else if srcLstatErr == nil {
+			// Ignore other pre-existing src files (could be pre-existing files, directories, symlinks, ...)
+			// FIXME: This might cause a problem later e.g. if a symlink in the build graph changes...
+			continue
+		} else if srcLstatErr != nil && !os.IsNotExist(srcLstatErr) {
+			ctx.Fatalf("Unable to Lstat src %s: %s", srcPath, srcLstatErr)
 		} else {
-			ctx.Fatalf("Unable to stat %s: %s", srcPath, err)
+			// src does not exist, so try to create a src -> dest symlink (i.e. a Soong path -> Bazel path symlink)
+			if symlinkErr := os.Symlink(destPath, srcPath); symlinkErr != nil {
+				ctx.Fatalf("Unable to create symlink %s -> %s due to error %s", srcPath, destPath, symlinkErr)
+			}
 		}
 	}
 }
