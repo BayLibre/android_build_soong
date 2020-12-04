@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f933be_9d476ccd",
+        "filename": "androidmk/parser/make_strings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-04T23:46:12Z",
+      "side": 1,
+      "message": "This would be more readable as:\n\n    for ch \u003d\u003d \u0027 \u0027 || ch \u003d\u003d \u0027\\t\u0027 {\n        nextChar()\n    }",
+      "range": {
+        "startLine": 181,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 3
+      },
+      "revId": "cf8f8d95e220ba3d23e07998f5f18d3548eb44f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0c3168_d0f797f6",
+        "filename": "androidmk/parser/make_strings_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-04T23:46:12Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the input s tring",
+      "revId": "cf8f8d95e220ba3d23e07998f5f18d3548eb44f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
