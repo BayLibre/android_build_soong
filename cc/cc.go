@@ -332,6 +332,10 @@ type BaseProperties struct {
 	// framework module from a snapshot.
 	Exclude_from_vendor_snapshot   *bool
 	Exclude_from_recovery_snapshot *bool
+
+	// List of APEXes that this module tests. The module has access to the private part of the
+	// listed APEXes even when it is not included in the APEXes.
+	Test_for []string
 }
 
 type VendorProperties struct {
@@ -2935,13 +2939,7 @@ func (c *Module) AvailableFor(what string) bool {
 }
 
 func (c *Module) TestFor() []string {
-	if test, ok := c.linker.(interface {
-		testFor() []string
-	}); ok {
-		return test.testFor()
-	} else {
-		return c.ApexModuleBase.TestFor()
-	}
+	return c.Properties.Test_for
 }
 
 func (c *Module) UniqueApexVariations() bool {
