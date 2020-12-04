@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d987ba8c_7bda4764",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-04T14:45:37Z",
+      "side": 0,
+      "message": "For me, it would have been nice to have a case for \".h\" where it tells you to use export_include_dirs to point to the dir containing the header files rather than putting them in srcs.",
+      "revId": "fe9e0c775ccfef96b212904fbbec1c2d7bb8499f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
