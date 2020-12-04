@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b89557_39a9245c",
+        "filename": "cmd/sbox/sbox_proto/sbox.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-04T17:32:19Z",
+      "side": 1,
+      "message": "I would change the type to int32 so the right permission is set to the file on copy operation instead of adding additional fields in the future for different type of permissions.",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 15
+      },
+      "revId": "db44d9d52de5e98831ac1c21da2c4cffaa95049a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
