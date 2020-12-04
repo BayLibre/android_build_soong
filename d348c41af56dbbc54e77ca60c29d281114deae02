@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ee06375_d55eeee2",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T18:43:25Z",
+      "side": 0,
+      "message": "Specifically\n\n\t\t\t// Goma -- gomacc may not need all of these\n\t\t\t\"GOMA_DIR\",\n\t\t\t\"GOMA_DISABLED\",\n\t\t\t\"GOMA_FAIL_FAST\",\n\t\t\t\"GOMA_FALLBACK\",\n\t\t\t\"GOMA_GCE_SERVICE_ACCOUNT\",\n\t\t\t\"GOMA_TMP_DIR\",\n\t\t\t\"GOMA_USE_LOCAL\",",
+      "parentUuid": "065b1d23_0b6ed918",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 20
+      },
+      "revId": "d348c41af56dbbc54e77ca60c29d281114deae02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d13d4bc_41ebbb7f",
         "filename": "ui/build/ninja.go",
         "patchSetId": 1
