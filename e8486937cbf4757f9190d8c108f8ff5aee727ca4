@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39a72623_2f2fb2e7",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T05:56:35Z",
+      "side": 1,
+      "message": "Thanks. So, earlier in the same function we use config.environ.Set() instead...\n\nconfig.environ.Set(\"COMBINED_NINJA\", config.CombinedNinjaFile())\nconfig.environ.Set(\"KATI_NINJA\", config.KatiBuildNinjaFile())\nconfig.environ.Set(\"PACKAGE_NINJA\", config.KatiPackageNinjaFile())\nconfig.environ.Set(\"SOONG_NINJA\", config.SoongNinjaFile())\n\nJust double checking that is intentional? \n\nrunBazel() is the last step of build.go, so I\u0027m assuming the only commands that Soong still has yet to launch are the two commands here in this function\n\nLooking more closely, the two commands here also set the same environment variables\n\ncmd.Environment.Set(\"DIST_DIR\", config.DistDir())\ncmd.Environment.Set(\"SHELL\", \"/bin/bash\")\n\ninfoCmd.Environment.Set(\"DIST_DIR\", config.DistDir())\ninfoCmd.Environment.Set(\"SHELL\", \"/bin/bash\")\n\nMaybe we should just set those once using config.environ.Set() instead?\n\n(Sorry if I\u0027m misunderstanding something...)",
+      "parentUuid": "949e18dc_7db4241d",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24287c9a_2d61a14b",
         "filename": "ui/build/bazel.go",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "If this line isn\u0027t providing value, then we can remove it. But we should eventually discuss how to converge UI and logging, and to move to the bazel-native approaches (bazel UI vs ctx.Status, bazel logs vs verbose.log.gz)",
       "parentUuid": "24287c9a_2d61a14b",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c63b25_4484773b",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T05:56:35Z",
+      "side": 1,
+      "message": "I think the ctx.Status() lines have a cool effect during the build but are a problem if something goes wrong and you need to debug something. I would use ctx.Println() here instead, unless any objections... (or maybe do both?)",
+      "parentUuid": "e4cc4508_c0c573ac",
       "range": {
         "startLine": 103,
         "startChar": 1,
