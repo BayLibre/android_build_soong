@@ -46,6 +46,30 @@
       },
       "revId": "1c1ed558d0f65cc5418e517820af249e8b1af2f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298e9622_d2e1345f",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6222,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-04T00:33:52Z",
+      "side": 1,
+      "message": "Good catch. Yes, this is not needed. Removed.",
+      "parentUuid": "54cf5086_ae402dfe",
+      "range": {
+        "startLine": 6222,
+        "startChar": 0,
+        "endLine": 6222,
+        "endChar": 30
+      },
+      "revId": "1c1ed558d0f65cc5418e517820af249e8b1af2f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
