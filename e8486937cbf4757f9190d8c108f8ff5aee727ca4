@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a1cd2c5_f91598f3",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T07:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91c7c874_8254d87a",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24287c9a_2d61a14b",
@@ -191,6 +215,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd14b570_544e2696",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T07:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7493e98e_f34ff430",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "654d2c32_4dbbb62c",
@@ -204,6 +252,30 @@
       "writtenOn": "2020-12-04T02:48:59Z",
       "side": 1,
       "message": "FWIW this prints a huge ENV line and most of it is unrelated (e.g. LOGNAME\u003druperts)\n\nIt might be nicer if we could save important parts of the environment somewhere and print those out instead of printing everything\n\nBut I think printing everything is still an improvement over printing nothing",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 115
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af40adb9_ab3eb9db",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T07:42:32Z",
+      "side": 1,
+      "message": "Fixed now to only print the Bazel-specific env vars.\n\nLooks like this:\n\n07:42:16 Bazel command line: COMBINED_NINJA\u003dout/combined-aosp_flame.ninja KATI_NINJA\u003dout/build-aosp_flame.ninja PACKAGE_NINJA\u003dout/build-aosp_flame-package.ninja SOONG_NINJA\u003dout/soong/build.ninja DIST_DIR\u003dout/dist SHELL\u003d/bin/bash tools/bazel build --output_groups\u003ddroid --profile\u003dout/bazel_metrics/build_bazel_profile.gz --slim_profile\u003dtrue //:aosp_flame-eng --action_env\u003dPATH\u003d/usr/local/google/home/ruperts/aosp-2/prebuilts/build-tools/path/linux-x86:/usr/local/google/home/ruperts/aosp-2/out/.path",
+      "parentUuid": "654d2c32_4dbbb62c",
       "range": {
         "startLine": 106,
         "startChar": 1,
