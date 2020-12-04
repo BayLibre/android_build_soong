@@ -106,6 +106,24 @@
       "parentUuid": "112e4709_89ec2d2d",
       "revId": "15ae019836096740a3c98c0bf352738925159cea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22965c6d_9ec99ceb",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T09:52:24Z",
+      "side": 1,
+      "message": "The thing I don\u0027t like is that these variables seem to work against hermeticity. Because the actual values of the variables could be different on different machines. Jin says this will also mess up cache hits (if RBE is used).\n\nI\u0027m tempted to move the CCACHE ones back to ninja.go. The first ~15 I\u0027m not sure about... but tempted to move those back to ninja.go as well unless we need them right now.",
+      "parentUuid": "4a4847d2_22dcd475",
+      "revId": "15ae019836096740a3c98c0bf352738925159cea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
