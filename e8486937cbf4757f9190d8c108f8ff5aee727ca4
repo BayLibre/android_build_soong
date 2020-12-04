@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91c7c874_8254d87a",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-04T06:40:42Z",
+      "side": 1,
+      "message": "Huh, I think I did the incorrect thing with setting config.environ() for these 4 variables then (https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/bazel.go?q\u003dconfig.environ.Set%20lang:go), and we should be consistent by using cmd.Environment.Set for cmd-specific env vars. \n\nhttps://cs.android.com/search?q\u003dcmd.Environment.Set%20lang:go\u0026sq\u003d",
+      "parentUuid": "39a72623_2f2fb2e7",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24287c9a_2d61a14b",
         "filename": "ui/build/bazel.go",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "I think the ctx.Status() lines have a cool effect during the build but are a problem if something goes wrong and you need to debug something. I would use ctx.Println() here instead, unless any objections... (or maybe do both?)",
       "parentUuid": "e4cc4508_c0c573ac",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7493e98e_f34ff430",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-04T06:40:42Z",
+      "side": 1,
+      "message": "We can just remove this line IMO.",
+      "parentUuid": "b5c63b25_4484773b",
       "range": {
         "startLine": 103,
         "startChar": 1,
