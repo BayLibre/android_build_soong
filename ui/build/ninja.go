@@ -139,15 +139,6 @@ func runNinja(ctx Context, config Config) {
 			// b/147197813 - used by art-check-debug-apex-gen
 			"EMMA_INSTRUMENT_FRAMEWORK",
 
-			// Goma -- gomacc may not need all of these
-			"GOMA_DIR",
-			"GOMA_DISABLED",
-			"GOMA_FAIL_FAST",
-			"GOMA_FALLBACK",
-			"GOMA_GCE_SERVICE_ACCOUNT",
-			"GOMA_TMP_DIR",
-			"GOMA_USE_LOCAL",
-
 			// RBE client
 			"RBE_compare",
 			"RBE_exec_root",
@@ -158,16 +149,6 @@ func runNinja(ctx Context, config Config) {
 			"RBE_remote_accept_cache",
 			"RBE_remote_update_cache",
 			"RBE_server_address",
-			// TODO: remove old FLAG_ variables.
-			"FLAG_compare",
-			"FLAG_exec_root",
-			"FLAG_exec_strategy",
-			"FLAG_invocation_id",
-			"FLAG_log_dir",
-			"FLAG_platform",
-			"FLAG_remote_accept_cache",
-			"FLAG_remote_update_cache",
-			"FLAG_server_address",
 
 			// ccache settings
 			"CCACHE_COMPILERCHECK",
