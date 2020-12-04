@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4927132f_96cfa118",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-04T10:59:15Z",
+      "side": 1,
+      "message": "Developer Note: Moved from above and turned into an error.",
+      "revId": "0a7555766cccce79d4e630fac8e0c7ca36f298c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

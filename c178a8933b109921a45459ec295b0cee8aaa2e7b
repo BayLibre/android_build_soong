@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b174177_6c73250c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-04T10:59:15Z",
+      "side": 0,
+      "message": "Developer Note: This condition is no longer necessary because a hostdex variant will never be in an apex and so will be ignored by the new apex check above.",
+      "revId": "c178a8933b109921a45459ec295b0cee8aaa2e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
