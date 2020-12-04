@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "718375de_d6664217",
+        "filename": "androidmk/parser/make_strings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-12-04T23:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3ebc8ff_fc4cff3a",
+      "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1157f92a_ac3163ee",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caaaca6d_dd9fe062",
+        "filename": "androidmk/parser/make_strings_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-12-04T23:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1157f92a_ac3163ee",
+      "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36a33b40_1245ad5e",
@@ -65,6 +101,24 @@
       "writtenOn": "2020-12-03T22:18:13Z",
       "side": 1,
       "message": "Add a test that covers the difference in behavior between Split() and Words() here.",
+      "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0825f26_d145b4d9",
+        "filename": "androidmk/parser/make_strings_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-12-04T23:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a33b40_1245ad5e",
       "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
