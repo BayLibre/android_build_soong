@@ -88,6 +88,24 @@
       "parentUuid": "6bb7a151_15bd4542",
       "revId": "15ae019836096740a3c98c0bf352738925159cea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4847d2_22dcd475",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-04T09:46:15Z",
+      "side": 1,
+      "message": "I understand these variables were needed at some point, but we should also use this chance to see which variables are actually needed for the situations we\u0027re testing today. It\u0027s probably unlikely that we will not need or get to ccache and goma variables, and probably shouldn\u0027t bring on the debt to USE_BAZEL\u003d1 mode as well. The USE_BAZEL\u003d1 --action_env is already strict with --incompatible_strict_action_env, so if actions require these variables, we should be able to know where/when to add them.",
+      "parentUuid": "112e4709_89ec2d2d",
+      "revId": "15ae019836096740a3c98c0bf352738925159cea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
