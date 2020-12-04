@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "949e18dc_7db4241d",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-04T04:25:36Z",
+      "side": 1,
+      "message": "Yes there\u0027s a difference. cmd.Environment is local to the cmd, which can differ based on the process soong_ui launches, so it shouldn\u0027t be directly mapped from config.environ.",
+      "parentUuid": "ccd3b1fa_d47d07b6",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 42
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24287c9a_2d61a14b",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-04T02:48:59Z",
       "side": 1,
       "message": "Personally I think we should stop using ctx.Status. It is really annoying to lose log messages (each status message seems to overwrite the previous one).",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "e8486937cbf4757f9190d8c108f8ff5aee727ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4cc4508_c0c573ac",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-04T04:25:36Z",
+      "side": 1,
+      "message": "If this line isn\u0027t providing value, then we can remove it. But we should eventually discuss how to converge UI and logging, and to move to the bazel-native approaches (bazel UI vs ctx.Status, bazel logs vs verbose.log.gz)",
+      "parentUuid": "24287c9a_2d61a14b",
       "range": {
         "startLine": 103,
         "startChar": 1,
