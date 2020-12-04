@@ -22,6 +22,30 @@
       },
       "revId": "447144e8d85810ccef105f9f0176b0b4f9448d51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c020d787_48babf8b",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-04T05:17:21Z",
+      "side": 1,
+      "message": "Yes. BTW I fixed a typo. It\u0027s \"vndk_prebuilt_shared\"",
+      "parentUuid": "26639cd0_38de00e0",
+      "range": {
+        "startLine": 679,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 60
+      },
+      "revId": "447144e8d85810ccef105f9f0176b0b4f9448d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
