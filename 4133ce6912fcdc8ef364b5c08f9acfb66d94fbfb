@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aacf8c6_48ba0afd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-04T23:52:09Z",
+      "side": 1,
+      "message": "In general, we try to use Android.bp rather than bp -- since some of this is specific to android modules, perhaps it would be better if we phrase it in terms of androidbp rather than all bp files?",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "4133ce6912fcdc8ef364b5c08f9acfb66d94fbfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
