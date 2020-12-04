@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dce1f31_26d48e97",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-04T18:55:09Z",
+      "side": 0,
+      "message": "Yeah, with the goma options being fatal: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config.go;drc\u003d5e5c48b2b58662d776f05b9538cdb796c1515e07;l\u003d189 we should be able to strip out much of the goma support in build/... now (basically everything except what\u0027s needed for that error message)",
+      "parentUuid": "4ee06375_d55eeee2",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 20
+      },
+      "revId": "d348c41af56dbbc54e77ca60c29d281114deae02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d13d4bc_41ebbb7f",
         "filename": "ui/build/ninja.go",
         "patchSetId": 1
