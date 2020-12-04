@@ -16,6 +16,24 @@
       "message": "Why not share the list of required environment variables with ninja? There are a number of variables in that list that are required for different actions, but are missing here.",
       "revId": "15ae019836096740a3c98c0bf352738925159cea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87bb0dd1_36626bc5",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T09:11:51Z",
+      "side": 1,
+      "message": "Good idea but FWIW the other env vars haven\u0027t been required so far (builds complete without them)",
+      "parentUuid": "d3783e1d_bd62896a",
+      "revId": "15ae019836096740a3c98c0bf352738925159cea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
