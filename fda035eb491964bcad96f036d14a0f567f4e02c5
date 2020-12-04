@@ -46,6 +46,30 @@
       },
       "revId": "fda035eb491964bcad96f036d14a0f567f4e02c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62282838_b4768d38",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T11:32:19Z",
+      "side": 1,
+      "message": "Kousik, I mean can we remove these ones:\n\n// TODO: remove old FLAG_ variables.\n\t\t\t\"FLAG_compare\",\n\t\t\t\"FLAG_exec_root\",\n\t\t\t\"FLAG_exec_strategy\",\n\t\t\t\"FLAG_invocation_id\",\n\t\t\t\"FLAG_log_dir\",\n\t\t\t\"FLAG_platform\",\n\t\t\t\"FLAG_remote_accept_cache\",\n\t\t\t\"FLAG_remote_update_cache\",\n\t\t\t\"FLAG_server_address\",",
+      "parentUuid": "5d592fad_afeb6e5b",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 5
+      },
+      "revId": "fda035eb491964bcad96f036d14a0f567f4e02c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
