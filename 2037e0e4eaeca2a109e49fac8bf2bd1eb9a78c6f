@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2255281_54575d87",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-04T05:02:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b149fd8_296d5c63",
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0e2474e_25a11e27",
@@ -290,6 +308,30 @@
       "side": 1,
       "message": "what does \u0027match\u0027 mean?",
       "parentUuid": "4dfadb6c_580f7a10",
+      "range": {
+        "startLine": 638,
+        "startChar": 56,
+        "endLine": 638,
+        "endChar": 67
+      },
+      "revId": "2037e0e4eaeca2a109e49fac8bf2bd1eb9a78c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84e71533_75cf00d8",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-04T05:02:05Z",
+      "side": 1,
+      "message": "added more details.",
+      "parentUuid": "acbabfc8_160e82d5",
       "range": {
         "startLine": 638,
         "startChar": 56,
