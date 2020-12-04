@@ -76,16 +76,10 @@ func runBazel(ctx Context, config Config) {
 		"--slim_profile=true",
 	)
 
-	// Append custom build flags to the Bazel command. Changes to these flags
-	// may invalidate Bazel's analysis cache.
-	if extraBuildArgs, ok := cmd.Environment.Get("BAZEL_BUILD_ARGS"); ok {
-		cmd.Args = append(cmd.Args, strings.Fields(extraBuildArgs)...)
+	for _, envVar := range cmd.Environment.BlessedEnvironmentVariableNames() {
+		cmd.Args = append(cmd.Args,
+			"--action_env="+envVar)
 	}
-
-	// Append the label of the default ninja_build target.
-	cmd.Args = append(cmd.Args,
-		"//:"+config.TargetProduct()+"-"+config.TargetBuildVariant(),
-	)
 
 	// Ensure that the PATH environment variable value used in the action
 	// environment is the restricted set computed from soong_ui, and not a
@@ -94,6 +88,18 @@ func runBazel(ctx Context, config Config) {
 		cmd.Environment.Set("PATH", pathEnvValue)
 		cmd.Args = append(cmd.Args, "--action_env=PATH="+pathEnvValue)
 	}
+
+	// Append custom build flags to the Bazel command. Changes to these flags
+	// may invalidate Bazel's analysis cache.
+	// These should be appended as the final args, so that they take precedence.
+	if extraBuildArgs, ok := cmd.Environment.Get("BAZEL_BUILD_ARGS"); ok {
+		cmd.Args = append(cmd.Args, strings.Fields(extraBuildArgs)...)
+	}
+
+	// Append the label of the default ninja_build target.
+	cmd.Args = append(cmd.Args,
+		"//:"+config.TargetProduct()+"-"+config.TargetBuildVariant(),
+	)
 
 	cmd.Environment.Set("DIST_DIR", config.DistDir())
 	cmd.Environment.Set("SHELL", "/bin/bash")

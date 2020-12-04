@@ -196,3 +196,62 @@ func (e *Environment) appendFromKati(reader io.Reader) error {
 	}
 	return nil
 }
+
+func (e *Environment) BlessedEnvironmentVariableNames() []string {
+	return []string{
+		// Set the path to a symbolizer (e.g. llvm-symbolizer) so ASAN-based
+		// tools can symbolize crashes.
+		"ASAN_SYMBOLIZER_PATH",
+		"HOME",
+		"JAVA_HOME",
+		"LANG",
+		"LC_MESSAGES",
+		"OUT_DIR",
+		"PATH",
+		"PWD",
+		// https://docs.python.org/3/using/cmdline.html#envvar-PYTHONDONTWRITEBYTECODE
+		"PYTHONDONTWRITEBYTECODE",
+		"TMPDIR",
+		"USER",
+
+		// TODO: remove these carefully
+		// Options for the address sanitizer.
+		"ASAN_OPTIONS",
+		// The list of Android app modules to be built in an unbundled manner.
+		"TARGET_BUILD_APPS",
+		// The variant of the product being built. e.g. eng, userdebug, debug.
+		"TARGET_BUILD_VARIANT",
+		// The product name of the product being built, e.g. aosp_arm, aosp_flame.
+		"TARGET_PRODUCT",
+		// b/147197813 - used by art-check-debug-apex-gen
+		"EMMA_INSTRUMENT_FRAMEWORK",
+
+		// RBE client
+		"RBE_compare",
+		"RBE_exec_root",
+		"RBE_exec_strategy",
+		"RBE_invocation_id",
+		"RBE_log_dir",
+		"RBE_platform",
+		"RBE_remote_accept_cache",
+		"RBE_remote_update_cache",
+		"RBE_server_address",
+		// TODO: remove old FLAG_ variables.
+		"FLAG_compare",
+		"FLAG_exec_root",
+		"FLAG_exec_strategy",
+		"FLAG_invocation_id",
+		"FLAG_log_dir",
+		"FLAG_platform",
+		"FLAG_remote_accept_cache",
+		"FLAG_remote_update_cache",
+		"FLAG_server_address",
+
+		// ccache settings
+		"CCACHE_COMPILERCHECK",
+		"CCACHE_SLOPPINESS",
+		"CCACHE_BASEDIR",
+		"CCACHE_CPP2",
+		"CCACHE_DIR",
+	}
+}
