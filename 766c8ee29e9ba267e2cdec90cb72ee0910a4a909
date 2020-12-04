@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006565673",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d6a47441_3c7fa40c",
+        "filename": "androidmk/mk2star/mk2star_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-04T23:12:15Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 669,
+        "startChar": 81,
+        "endLine": 669,
+        "endChar": 82
+      },
+      "revId": "766c8ee29e9ba267e2cdec90cb72ee0910a4a909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
