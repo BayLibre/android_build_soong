@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "065b1d23_0b6ed918",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T11:08:51Z",
+      "side": 0,
+      "message": "Dan - can we remove these now?",
+      "range": {
+        "startLine": 142,
+        "startChar": 3,
+        "endLine": 149,
+        "endChar": 20
+      },
+      "revId": "d348c41af56dbbc54e77ca60c29d281114deae02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d13d4bc_41ebbb7f",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T11:08:51Z",
+      "side": 0,
+      "message": "Kousik - can we remove these now?",
+      "range": {
+        "startLine": 161,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "d348c41af56dbbc54e77ca60c29d281114deae02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
