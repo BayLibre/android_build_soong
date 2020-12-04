@@ -52,6 +52,24 @@
       "parentUuid": "87bb0dd1_36626bc5",
       "revId": "15ae019836096740a3c98c0bf352738925159cea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb7a151_15bd4542",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-04T09:35:58Z",
+      "side": 1,
+      "message": "Thanks, how about this?",
+      "parentUuid": "dda82b1c_c47f7d83",
+      "revId": "15ae019836096740a3c98c0bf352738925159cea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
