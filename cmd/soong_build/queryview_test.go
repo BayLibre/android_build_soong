@@ -368,7 +368,7 @@ func TestGenerateModuleRuleShims(t *testing.T) {
 		}
 	}
 
-	expectedBzl := `load("//build/bazel/queryview_rules:providers.bzl", "SoongModuleInfo")
+	expectedBzl := `load("//build/bazel/rules:providers.bzl", "SoongModuleInfo")
 
 def _foo_binary_impl(ctx):
     return [SoongModuleInfo()]
@@ -446,7 +446,7 @@ func TestGenerateSoongModuleBzl(t *testing.T) {
 	}
 	actualSoongModuleBzl := generateSoongModuleBzl(ruleShims)
 
-	expectedLoad := "load(\"//build/bazel/queryview_rules:foo.bzl\", \"foo_binary\", \"foo_library\", \"foo_test_\")"
+	expectedLoad := "load(\"//build/bazel/rules:foo.bzl\", \"foo_binary\", \"foo_library\", \"foo_test_\")"
 	expectedRuleMap := `soong_module_rule_map = {
     "foo_binary": foo_binary,
     "foo_library": foo_library,

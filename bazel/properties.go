@@ -13,15 +13,3 @@
 // limitations under the License.
 
 package bazel
-
-type bazelModuleProperties struct {
-	// The label of the Bazel target replacing this Soong module.
-	Label string
-}
-
-// Properties contains common module properties for migration purposes.
-type Properties struct {
-	// In USE_BAZEL_ANALYSIS=1 mode, this represents the Bazel target replacing
-	// this Soong module.
-	Bazel_module bazelModuleProperties
-}

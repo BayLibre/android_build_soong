@@ -441,6 +441,8 @@ type Module interface {
 
 	FilesToInstall() InstallPaths
 	PackagingSpecs() []PackagingSpec
+
+	ConvertedToBazelTarget() bool
 }
 
 // Qualified id for a module
@@ -736,6 +738,22 @@ type distProperties struct {
 	// distribution directory (default: $OUT/dist, configurable with $DIST_DIR)
 	Dists []Dist `android:"arch_variant"`
 }
+type BazelModuleProperties struct {
+	// The label of the Bazel target replacing this Soong module.
+	Label string
+
+	Rule_class string
+
+	// Whether this module is automatically converted by soong
+	Auto_convert bool
+}
+
+// Properties contains common module properties for migration purposes.
+type BazelProperties struct {
+	// In USE_BAZEL_ANALYSIS=1 mode, this represents the Bazel target replacing
+	// this Soong module.
+	Bazel_module BazelModuleProperties
+}
 
 // The key to use in TaggedDistFiles when a Dist structure does not specify a
 // tag property. This intentionally does not use "" as the default because that
@@ -995,6 +1013,8 @@ type ModuleBase struct {
 	generalProperties       []interface{}
 	archProperties          [][]interface{}
 	customizableProperties  []interface{}
+
+	bazelProperties BazelProperties
 
 	// Information about all the properties on the module that contains visibility rules that need
 	// checking.
@@ -1334,6 +1354,14 @@ func (m *ModuleBase) IsReplacedByPrebuilt() bool {
 
 func (m *ModuleBase) ExportedToMake() bool {
 	return m.commonProperties.NamespaceExportedToMake
+}
+
+func (m *ModuleBase) ConvertToBazel() {
+	m.bazelProperties.Bazel_module.Auto_convert = true
+}
+
+func (m *ModuleBase) ConvertedToBazelTarget() bool {
+	return m.bazelProperties.Bazel_module.Auto_convert
 }
 
 // computeInstallDeps finds the installed paths of all dependencies that have a dependency

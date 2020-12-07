@@ -105,6 +105,8 @@ func (ctx *Context) RegisterForBazelConversion() {
 	registerMutatorsForBazelConversion(ctx.Context)
 }
 
+// Register the pipeline of PreSingletons, Module factories, Mutators, and
+// Singletons.
 func (ctx *Context) Register() {
 	for _, t := range preSingletons {
 		ctx.RegisterPreSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
@@ -134,6 +136,7 @@ func (ctx *Context) Register() {
 	ctx.RegisterSingletonType("ninjadeps", SingletonFactoryAdaptor(ctx, ninjaDepsSingletonFactory))
 }
 
+// ModuleTypeFactories returns a map of all module type names to their respective factories.
 func ModuleTypeFactories() map[string]ModuleFactory {
 	ret := make(map[string]ModuleFactory)
 	for _, t := range moduleTypes {
@@ -142,7 +145,7 @@ func ModuleTypeFactories() map[string]ModuleFactory {
 	return ret
 }
 
-// Interface for registering build components.
+// RegistrationContext is the interface for registering build components.
 //
 // Provided to allow registration of build components to be shared between the runtime
 // and test environments.
@@ -159,9 +162,10 @@ type RegistrationContext interface {
 	PreDepsMutators(f RegisterMutatorFunc)
 	PostDepsMutators(f RegisterMutatorFunc)
 	FinalDepsMutators(f RegisterMutatorFunc)
+	BazelFinalDepsMutators(f RegisterMutatorFunc)
 }
 
-// Used to register build components from an init() method, e.g.
+// InitRegistrationContext registers build components from an init() method, e.g.
 //
 // init() {
 //   RegisterBuildComponents(android.InitRegistrationContext)
@@ -224,4 +228,8 @@ func (ctx *initRegistrationContext) PostDepsMutators(f RegisterMutatorFunc) {
 
 func (ctx *initRegistrationContext) FinalDepsMutators(f RegisterMutatorFunc) {
 	FinalDepsMutators(f)
+}
+
+func (ctx *initRegistrationContext) BazelFinalDepsMutators(f RegisterMutatorFunc) {
+	BazelFinalDepsMutators(f)
 }
