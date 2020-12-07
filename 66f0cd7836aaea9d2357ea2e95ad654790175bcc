@@ -16,6 +16,23 @@
       "message": "Ping.",
       "revId": "66f0cd7836aaea9d2357ea2e95ad654790175bcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1943f53c_c771dfc5",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-07T10:28:07Z",
+      "side": 1,
+      "message": "I\u0027m surprised that that this works. I remember for sure that I saw boot jars with the same name in three variants of ART apex (com.android.art.debug, com.android.art.release, com.android.art.testing). I wonder what has changed since then so now they are no longer found in multiple apexes.",
+      "revId": "66f0cd7836aaea9d2357ea2e95ad654790175bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
