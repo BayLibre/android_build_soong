@@ -17,10 +17,57 @@ package android
 import (
 	"android/soong/bazel"
 	"strings"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func init() {
 	RegisterModuleType("filegroup", FileGroupFactory)
+
+	BazelMutators(func(ctx RegisterMutatorsContext) {
+		ctx.TopDown("filegroup_module_to_target", moduleToTargetMutator).Parallel()
+	})
+}
+
+// https://docs.bazel.build/versions/master/be/general.html#filegroup
+type bazelFilegroupAttributes struct {
+	Name *string
+	Srcs []string
+}
+
+type bazelFilegroup struct {
+	ModuleBase
+	bazelFilegroupAttributes
+	Bp2BuildProperties
+}
+
+func BazelFileGroupFactory() Module {
+	module := &bazelFilegroup{}
+	module.AddProperties(&module.bazelFilegroupAttributes)
+	module.AddProperties(&module.Bp2BuildProperties) // FIXME(jingwen)
+	InitAndroidModule(module)
+	module.ConvertToBazel()
+	return module
+}
+
+func (bfg *bazelFilegroup) Name() string {
+	return bfg.BaseModuleName()
+}
+
+func (bfg *bazelFilegroup) GenerateAndroidBuildActions(ctx ModuleContext) {
+
+}
+
+func moduleToTargetMutator(ctx TopDownMutatorContext) {
+	if m, ok := ctx.Module().(*fileGroup); ok {
+		name := "__remove_me__" + m.base().BaseModuleName()
+		ctx.CreateModule(BazelFileGroupFactory, &bazelFilegroupAttributes{
+			Name: proptools.StringPtr(name),
+			Srcs: m.properties.Srcs,
+		}, &Bp2BuildProperties{
+			Rule_class: "filegroup",
+		})
+	}
 }
 
 type fileGroupProperties struct {

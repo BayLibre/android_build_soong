@@ -50,16 +50,20 @@ var (
 		"target":     true, // interface prop type is not supported yet.
 		"visibility": true, // Bazel has native visibility semantics. Handle later.
 		"features":   true, // There is already a built-in attribute 'features' which cannot be overridden.
+		"rule_class": true, // Used for internal wiring.
 	}
 )
 
+func hacks(input string) string {
+	input = strings.Replace(input, ":bionic-gensyscalls", "//bionic/libc/tools:bionic-gensyscalls", 1)
+	return input
+}
+
 func targetNameWithVariant(c *blueprint.Context, logicModule blueprint.Module) string {
-	name := ""
+	name := strings.Replace(c.ModuleName(logicModule), "__remove_me__", "", 1)
 	if c.ModuleSubDir(logicModule) != "" {
 		// TODO(b/162720883): Figure out a way to drop the "--" variant suffixes.
 		name = c.ModuleName(logicModule) + "--" + c.ModuleSubDir(logicModule)
-	} else {
-		name = c.ModuleName(logicModule)
 	}
 
 	return strings.Replace(name, "//", "", 1)
@@ -287,7 +291,7 @@ func createRuleShims(packages []*bpdoc.Package) (map[string]RuleShim, error) {
 
 	ruleShims := map[string]RuleShim{}
 	for _, pkg := range packages {
-		content := "load(\"//build/bazel/queryview_rules:providers.bzl\", \"SoongModuleInfo\")\n"
+		content := "load(\"//build/bazel/rules:providers.bzl\", \"SoongModuleInfo\")\n"
 
 		bzlFileName := strings.ReplaceAll(pkg.Path, "android/soong/", "")
 		bzlFileName = strings.ReplaceAll(bzlFileName, ".", "_")
@@ -335,6 +339,12 @@ func createRuleShims(packages []*bpdoc.Package) (map[string]RuleShim, error) {
 func createBazelQueryView(ctx *android.Context, bazelQueryViewDir string) error {
 	blueprintCtx := ctx.Context
 	blueprintCtx.VisitAllModules(func(module blueprint.Module) {
+		if aModule, ok := module.(android.Module); ok {
+			if !aModule.IsConvertedToBazel() {
+				return
+			}
+		}
+
 		buildFile, err := buildFileForModule(blueprintCtx, module, bazelQueryViewDir)
 		if err != nil {
 			panic(err)
@@ -346,7 +356,7 @@ func createBazelQueryView(ctx *android.Context, bazelQueryViewDir string) error 
 	var err error
 
 	// Write top level files: WORKSPACE and BUILD. These files are empty.
-	if err = writeReadOnlyFile(bazelQueryViewDir, "WORKSPACE", ""); err != nil {
+	if err = writeReadOnlyFile(bazelQueryViewDir, "WORKSPACE", "workspace(name = \"bp2build\")"); err != nil {
 		return err
 	}
 
@@ -365,7 +375,7 @@ func createBazelQueryView(ctx *android.Context, bazelQueryViewDir string) error 
 	}
 
 	// Write .bzl Starlark files into the bazel_rules top level directory (provider and rule definitions)
-	bazelRulesDir := bazelQueryViewDir + "/build/bazel/queryview_rules"
+	bazelRulesDir := bazelQueryViewDir + "/build/bazel/rules"
 	if err = writeReadOnlyFile(bazelRulesDir, "BUILD", ""); err != nil {
 		return err
 	}
@@ -388,7 +398,7 @@ func generateSoongModuleBzl(bzlLoads map[string]RuleShim) string {
 	var loadStmts string
 	var moduleRuleMap string
 	for bzlFileName, ruleShim := range bzlLoads {
-		loadStmt := "load(\"//build/bazel/queryview_rules:"
+		loadStmt := "load(\"//build/bazel/rules:"
 		loadStmt += bzlFileName
 		loadStmt += ".bzl\""
 		for _, rule := range ruleShim.rules {
@@ -412,7 +422,7 @@ func propsToAttributes(props map[string]string) string {
 	var attributes string
 	for _, propName := range android.SortedStringKeys(props) {
 		if shouldGenerateAttribute(propName) {
-			attributes += fmt.Sprintf("    %s = %s,\n", propName, props[propName])
+			attributes += fmt.Sprintf("    %s = %s,\n", propName, hacks(props[propName]))
 		}
 	}
 	return attributes
@@ -433,25 +443,32 @@ func generateSoongModuleTarget(
 	// TODO(b/163018919): DirectDeps can have duplicate (module, variant)
 	// items, if the modules are added using different DependencyTag. Figure
 	// out the implications of that.
-	depLabels := map[string]bool{}
-	blueprintCtx.VisitDirectDeps(module, func(depModule blueprint.Module) {
-		depLabels[qualifiedTargetLabel(blueprintCtx, depModule)] = true
-	})
+	// depLabels := map[string]bool{}
+	// blueprintCtx.VisitDirectDeps(module, func(depModule blueprint.Module) {
+	// 	depLabels[qualifiedTargetLabel(blueprintCtx, depModule)] = true
+	// })
 
-	depLabelList := "[\n"
-	for depLabel, _ := range depLabels {
-		depLabelList += fmt.Sprintf("        %q,\n", depLabel)
-	}
-	depLabelList += "    ]"
+	// depLabelList := "[\n"
+	// for depLabel, _ := range depLabels {
+	// 	depLabelList += fmt.Sprintf("        %q,\n", depLabel)
+	// }
+	// depLabelList += "    ]"
 
 	return fmt.Sprintf(
-		soongModuleTarget,
+		bazelTarget,
+		strings.Replace(props["rule_class"], "\"", "", 2), // FIXME(jingwen)
 		targetNameWithVariant(blueprintCtx, module),
-		blueprintCtx.ModuleName(module),
-		canonicalizeModuleType(blueprintCtx.ModuleType(module)),
-		blueprintCtx.ModuleSubDir(module),
-		depLabelList,
-		attributes)
+		attributes,
+	)
+
+	// return fmt.Sprintf(
+	// 	soongModuleTarget,
+	// 	targetNameWithVariant(blueprintCtx, module),
+	// 	blueprintCtx.ModuleName(module),
+	// 	canonicalizeModuleType(blueprintCtx.ModuleType(module)),
+	// 	blueprintCtx.ModuleSubDir(module),
+	// 	depLabelList,
+	// 	attributes)
 }
 
 func buildFileForModule(

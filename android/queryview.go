@@ -54,6 +54,7 @@ func generateBuildActionsForBazelConversion(ctx SingletonContext, converterMode 
 	name := "queryview"
 	additionalEnvVars := ""
 	descriptionTemplate := "[EXPERIMENTAL, PRE-PRODUCTION] Creating the Bazel QueryView workspace with %s at $outDir"
+
 	if converterMode {
 		name = "bp2build"
 		additionalEnvVars = "CONVERT_TO_BAZEL=true"

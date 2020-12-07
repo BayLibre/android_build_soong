@@ -17,9 +17,14 @@ package main
 const (
 	// The default `load` preamble for every generated BUILD file.
 	soongModuleLoad = `package(default_visibility = ["//visibility:public"])
-load("//build/bazel/queryview_rules:soong_module.bzl", "soong_module")
-
+load("@bp2build//build/bazel/rules:soong_module.bzl", "soong_module")
 `
+
+	// A macro call in the BUILD file representing a Soong module, with space
+	// for expanding more attributes.
+	bazelTarget = `%s(
+    name = "%s",
+%s)`
 
 	// A macro call in the BUILD file representing a Soong module, with space
 	// for expanding more attributes.
@@ -48,7 +53,7 @@ load("//build/bazel/queryview_rules:soong_module.bzl", "soong_module")
 	soongModuleBzl = `
 %s
 
-load("//build/bazel/queryview_rules:providers.bzl", "SoongModuleInfo")
+load("//build/bazel/rules:providers.bzl", "SoongModuleInfo")
 
 def _generic_soong_module_impl(ctx):
     return [
