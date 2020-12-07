@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "201f53b6_8181f923",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-07T20:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9bad3a8_b0376b4a",
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5c0d0d1_6bc58958",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40de9c06_921a7e50",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-07T20:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5c0d0d1_6bc58958",
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fec43a4f_acede88c",
@@ -48,6 +84,30 @@
       "writtenOn": "2020-12-04T21:15:47Z",
       "side": 1,
       "message": "Double empty spaces here and below.",
+      "range": {
+        "startLine": 205,
+        "startChar": 17,
+        "endLine": 205,
+        "endChar": 19
+      },
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7172f60_3fb705bc",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-07T20:44:48Z",
+      "side": 1,
+      "message": "All the guidance about using a single space after a period is based on variable-width fonts.  In code with a monospace font I don\u0027t see how it applies.",
+      "parentUuid": "fec43a4f_acede88c",
       "range": {
         "startLine": 205,
         "startChar": 17,
@@ -94,6 +154,24 @@
       "writtenOn": "2020-12-04T21:15:47Z",
       "side": 1,
       "message": "If so, what about adding a note to ToList encouraging to provide a type-specific firstUnique function when creating a DepSet struct for a new type? Or, even removing ToList and first* functions completely? It\u0027s a common practice in languages with generic support, e.g. providing a comparator when using sort.",
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34dfbad7_1509b55e",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-07T20:44:48Z",
+      "side": 1,
+      "message": "Done.  I left the existing ToList because I expect it is not performance sensitive in many use cases.",
+      "parentUuid": "f3bb3332_9089bc00",
       "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
