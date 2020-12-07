@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcba1bc_08e9032f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-07T12:40:08Z",
+      "side": 1,
+      "message": "I hope this script will be gone soon, so this is just a quick fix.",
+      "revId": "170f00920e7e3c37000840f2d8c0a531b8cc7234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
