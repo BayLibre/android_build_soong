@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcad827_be880fae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-07T17:38:02Z",
+      "side": 1,
+      "message": "Have updated the commit message to explain why this works.",
+      "revId": "66f0cd7836aaea9d2357ea2e95ad654790175bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1943f53c_c771dfc5",
@@ -31,6 +48,24 @@
       "writtenOn": "2020-12-07T10:28:07Z",
       "side": 1,
       "message": "I\u0027m surprised that that this works. I remember for sure that I saw boot jars with the same name in three variants of ART apex (com.android.art.debug, com.android.art.release, com.android.art.testing). I wonder what has changed since then so now they are no longer found in multiple apexes.",
+      "revId": "66f0cd7836aaea9d2357ea2e95ad654790175bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49429f3a_b46cd854",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-07T17:38:02Z",
+      "side": 1,
+      "message": "I was surprised it worked too. I added this test because I was seeing issues with a valid path being overwritten with nil because of a bug in my change which this detected and helped me fix. Change https://r.android.com/1516939 should guarantee that only one of those will match as it will only use the variant for the apex configured in the boot configuration.\n\nI separated this out and ran it without my change as I was expecting this to fail as you described which would have helped me understand how the previous code worked.\n\nHowever, having thought about it I realize that this works because modules that are in com.android.art/debug/release are all being squashed into a single variant by mergeApexVariations(). I tried testing that by adding min_sdk_version: \"29\" to \"com.android.art.debug\" to prevent it being merged in with the others but that broke lots of other things. I added some debugging to the getBootImageJar and verified that only one module variant is being passed for each of the modules in com.android.art/debug/testing.",
+      "parentUuid": "1943f53c_c771dfc5",
       "revId": "66f0cd7836aaea9d2357ea2e95ad654790175bcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
