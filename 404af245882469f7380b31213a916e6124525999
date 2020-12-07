@@ -51,6 +51,24 @@
       "parentUuid": "2e3e69c5_65a88963",
       "revId": "404af245882469f7380b31213a916e6124525999",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73919e1_80490a7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470412
+      },
+      "writtenOn": "2020-12-07T15:52:36Z",
+      "side": 1,
+      "message": "THanks, patch set 4 contains the proposed names.",
+      "parentUuid": "6a18cc8a_ae4eb72b",
+      "revId": "404af245882469f7380b31213a916e6124525999",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
