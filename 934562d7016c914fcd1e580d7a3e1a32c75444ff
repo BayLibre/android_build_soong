@@ -39,6 +39,30 @@
       },
       "revId": "934562d7016c914fcd1e580d7a3e1a32c75444ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28eef7f5_ab0d62ca",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-07T04:47:57Z",
+      "side": 1,
+      "message": "To get here means srcLstatErr !\u003d null (i.e. some error stating a file path) and the error wasn\u0027t an IsNotExist error (i.e. it wasn\u0027t just that the file path didn\u0027t exist, which we expect and handle by creating a symlink in the next step)\n\nThis can happen because of file permission errors. We can\u0027t really recover from this, I think.\n\nI did experiment with some other logic to remove existing symlinks and recreate them, but it wasn\u0027t clear who created them, and I would sometimes end up with circular links. So removed all of that logic for now, since we didn\u0027t actually need it to handle the incremental build bug...",
+      "parentUuid": "a17beea4_4b986540",
+      "range": {
+        "startLine": 213,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 4
+      },
+      "revId": "934562d7016c914fcd1e580d7a3e1a32c75444ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
