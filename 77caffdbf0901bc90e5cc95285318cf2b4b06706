@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c446ab7_af974586",
+        "filename": "androidmk/parser/make_strings.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2020-12-07T22:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a3a820_c2c0ba8b",
+      "revId": "77caffdbf0901bc90e5cc95285318cf2b4b06706",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3ebc8ff_fc4cff3a",
