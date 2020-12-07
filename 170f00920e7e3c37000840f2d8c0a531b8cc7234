@@ -16,6 +16,29 @@
       "message": "I hope this script will be gone soon, so this is just a quick fix.",
       "revId": "170f00920e7e3c37000840f2d8c0a531b8cc7234",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c18a52_f4dada13",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-07T12:57:32Z",
+      "side": 1,
+      "message": "what is the make-equivalent that would generate this snippet?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 5
+      },
+      "revId": "170f00920e7e3c37000840f2d8c0a531b8cc7234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
