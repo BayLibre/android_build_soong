@@ -22,6 +22,30 @@
       },
       "revId": "4133ce6912fcdc8ef364b5c08f9acfb66d94fbfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d226491c_f736a90a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-07T07:13:14Z",
+      "side": 1,
+      "message": "If I may, I\u0027d like to discuss the naming in our doc or on a follow up thread. I\u0027ll avoid publicizing this approach until we have a consensus (I don\u0027t want to run into another overlay/queryview situation).\n\nLet\u0027s use bp2build for now (it\u0027s short) as an internal development command.",
+      "parentUuid": "2aacf8c6_48ba0afd",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 38
+      },
+      "revId": "4133ce6912fcdc8ef364b5c08f9acfb66d94fbfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
