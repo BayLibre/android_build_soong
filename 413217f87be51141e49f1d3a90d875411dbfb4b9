@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5682be_f3395f57",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-07T22:02:19Z",
+      "side": 1,
+      "message": "Was it intentional? Didn\u0027t even know double spaces between sentences was a thing, but to think of it, it might make them easier to read? I don\u0027t have a strong opinion on this. Up to you.",
+      "parentUuid": "e7172f60_3fb705bc",
+      "range": {
+        "startLine": 205,
+        "startChar": 17,
+        "endLine": 205,
+        "endChar": 19
+      },
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5daf82bf_5c99b768",
