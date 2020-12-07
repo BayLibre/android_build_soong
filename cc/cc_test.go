@@ -421,6 +421,9 @@ func TestVndk(t *testing.T) {
 			name: "vndkprivate.libraries.txt",
 		}
 		vndk_libraries_txt {
+			name: "vndkproduct.libraries.txt",
+		}
+		vndk_libraries_txt {
 			name: "vndkcorevariant.libraries.txt",
 		}
 	`
@@ -476,6 +479,7 @@ func TestVndk(t *testing.T) {
 	checkSnapshot(t, ctx, snapshotSingleton, "vndkcore.libraries.txt", "vndkcore.libraries.txt", snapshotConfigsPath, "")
 	checkSnapshot(t, ctx, snapshotSingleton, "vndksp.libraries.txt", "vndksp.libraries.txt", snapshotConfigsPath, "")
 	checkSnapshot(t, ctx, snapshotSingleton, "vndkprivate.libraries.txt", "vndkprivate.libraries.txt", snapshotConfigsPath, "")
+	checkSnapshot(t, ctx, snapshotSingleton, "vndkproduct.libraries.txt", "vndkproduct.libraries.txt", snapshotConfigsPath, "")
 
 	checkVndkOutput(t, ctx, "vndk/vndk.libraries.txt", []string{
 		"LLNDK: libc.so",
@@ -493,11 +497,15 @@ func TestVndk(t *testing.T) {
 		"VNDK-private: libvndk-private.so",
 		"VNDK-private: libvndk_sp_private-x.so",
 		"VNDK-private: libvndk_sp_product_private-x.so",
+		"VNDK-product: libc++.so",
+		"VNDK-product: libvndk_product.so",
+		"VNDK-product: libvndk_sp_product_private-x.so",
 	})
 	checkVndkLibrariesOutput(t, ctx, "llndk.libraries.txt", []string{"libc.so", "libdl.so", "libft2.so", "libm.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndkcore.libraries.txt", []string{"libvndk-private.so", "libvndk.so", "libvndk_product.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndksp.libraries.txt", []string{"libc++.so", "libvndk_sp-x.so", "libvndk_sp_private-x.so", "libvndk_sp_product_private-x.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndkprivate.libraries.txt", []string{"libft2.so", "libvndk-private.so", "libvndk_sp_private-x.so", "libvndk_sp_product_private-x.so"})
+	checkVndkLibrariesOutput(t, ctx, "vndkproduct.libraries.txt", []string{"libc++.so", "libvndk_product.so", "libvndk_sp_product_private-x.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndkcorevariant.libraries.txt", nil)
 }
 
@@ -721,6 +729,8 @@ func TestVndkWhenVndkVersionIsNotSet(t *testing.T) {
 		"VNDK-SP: libc++.so",
 		"VNDK-core: libvndk.so",
 		"VNDK-private: libft2.so",
+		"VNDK-product: libc++.so",
+		"VNDK-product: libvndk.so",
 	})
 }
 
