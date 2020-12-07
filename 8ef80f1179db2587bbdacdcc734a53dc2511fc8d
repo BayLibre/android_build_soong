@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7a8e550_f2a6c5e8",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-07T17:38:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "171e72e0_09a61936",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 26
+      },
+      "revId": "8ef80f1179db2587bbdacdcc734a53dc2511fc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a483199_a89102f7",
@@ -81,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f0b63b_ef50f11a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-07T17:38:24Z",
+      "side": 1,
+      "message": "The boot configuation is \"com.android.art:core-oj\" and the name of the apexes that contain that are now \"com.android.art\", \"com.android.art.debug\" and \"com.android.art.testing\" so it will exactly match the first one only.\n\nSo, yes the rename makes it work.",
+      "parentUuid": "4a483199_a89102f7",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 16
+      },
+      "revId": "8ef80f1179db2587bbdacdcc734a53dc2511fc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33fa1e94_0d9d0abd",
@@ -94,6 +142,24 @@
       "writtenOn": "2020-12-07T11:19:29Z",
       "side": 1,
       "message": "I think the code on lines 463-476 is too verbose for what it\u0027s doing. Is it possible to just check that all apexIfo.InApexes are the ART apex, or else this is an error?",
+      "revId": "8ef80f1179db2587bbdacdcc734a53dc2511fc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb96b7a5_8ff05fb4",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-07T17:38:24Z",
+      "side": 1,
+      "message": "I left it as it is because I didn\u0027t see any need to change it as part of this work. Maybe clean it up as a follow up?",
+      "parentUuid": "33fa1e94_0d9d0abd",
       "revId": "8ef80f1179db2587bbdacdcc734a53dc2511fc8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
