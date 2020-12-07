@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e2c2eb_c34cee54",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-07T04:37:49Z",
+      "side": 0,
+      "message": "Let\u0027s keep this comment?",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 45
+      },
+      "revId": "c08f602f3120025e1064b3fa2cf26abe27831c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
