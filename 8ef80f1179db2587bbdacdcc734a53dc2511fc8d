@@ -129,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e16fd89_4d170a66",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-07T18:09:51Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what the rename did. Provided all three APEX names always are present together in the InApexes list then this looks fine to me.",
+      "parentUuid": "53f0b63b_ef50f11a",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 16
+      },
+      "revId": "8ef80f1179db2587bbdacdcc734a53dc2511fc8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33fa1e94_0d9d0abd",
