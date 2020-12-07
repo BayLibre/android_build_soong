@@ -16,6 +16,24 @@
       "message": "Could you expand on what \"Test: Manually\" means? e.g. the commands you ran. ",
       "revId": "098978f7ca5ebf17340e391450515e07b08ffef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4956f853_3c2cca39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-07T04:52:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c68943fe_964d69fa",
+      "revId": "098978f7ca5ebf17340e391450515e07b08ffef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
