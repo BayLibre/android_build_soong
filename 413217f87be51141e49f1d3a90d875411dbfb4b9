@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7543dc55_a7504813",
+        "filename": "android/depset_generic.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-07T22:18:27Z",
+      "side": 1,
+      "message": "Two spaces after a period was normal style for typewriters, and became obsolete when word processors used variable width fonts and spacing.  https://en.wikipedia.org/wiki/Sentence_spacing. google-java-format replaces two spaces with one space when it is reflowing comments, so maybe I should switch to one space. I learned to type with two spaces, and it will be hard to unlearn. I wonder if I can get IntelliJ to fix it for me as I type.",
+      "parentUuid": "7d5682be_f3395f57",
+      "range": {
+        "startLine": 205,
+        "startChar": 17,
+        "endLine": 205,
+        "endChar": 19
+      },
+      "revId": "413217f87be51141e49f1d3a90d875411dbfb4b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5daf82bf_5c99b768",
