@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da77ad67_f3d1c044",
+        "filename": "cc/image.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-07T04:47:55Z",
+      "side": 1,
+      "message": "This seems to be counter intuitive. Can you add a detailed comment (which will be exported go go/Android.bp) on the product_available property?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 82
+      },
+      "revId": "2e34df47d37be359d5b86c24c4ec1a074e847fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
