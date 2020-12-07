@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "76adc0b1_054f2893",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-07T10:13:28Z",
+      "side": 1,
+      "message": "It would be better to put precise steps here (although I realize it may be difficult, so not for this CL).",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 50
+      },
+      "revId": "7f48eeff590ca1675bac3286ac83e1e2a516a0a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bd2e02f9_428a459f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
