@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "903840c7_6accc3a9",
+        "filename": "cc/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-12-07T16:43:18Z",
+      "side": 1,
+      "message": "Q: is there a product variant of VNDK APEX? If so, how can we distinguish them from vendor variants VNDK APEX? Or, if not, where is a product variant lib to be installed?",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 100
+      },
+      "revId": "2e34df47d37be359d5b86c24c4ec1a074e847fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da77ad67_f3d1c044",
         "filename": "cc/image.go",
         "patchSetId": 7
