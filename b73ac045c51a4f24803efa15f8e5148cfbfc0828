@@ -16,6 +16,29 @@
       "message": "Had to upload a new patch to resolve merge conflict. Need CR vote again. TIA.",
       "revId": "b73ac045c51a4f24803efa15f8e5148cfbfc0828",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76457c4b_106819af",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6220,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-08T11:55:27Z",
+      "side": 1,
+      "message": "This looks a little surprising. Wouldn\u0027t you want the filename to be `\u003capexname\u003e.capex` rather than `\u003capexname\u003e.apex.capex` ? Or is this not the filename of the final artifact?",
+      "range": {
+        "startLine": 6220,
+        "startChar": 44,
+        "endLine": 6220,
+        "endChar": 61
+      },
+      "revId": "b73ac045c51a4f24803efa15f8e5148cfbfc0828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
