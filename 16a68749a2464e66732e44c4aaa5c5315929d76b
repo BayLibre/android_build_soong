@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "84cc5e3a_8b35f340",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-08T07:50:24Z",
+      "side": 1,
+      "message": "This file is required to create the VNDK snapshot modules to mark with the correct \u0027product_available\u0027 property for each module.",
+      "parentUuid": "e6e28854_45dc75ff",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "16a68749a2464e66732e44c4aaa5c5315929d76b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c7e10e5f_9af874b6",
