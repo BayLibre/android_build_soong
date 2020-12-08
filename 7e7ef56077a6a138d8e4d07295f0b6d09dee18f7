@@ -16,6 +16,23 @@
       "message": "Thanks! Unfortunately, I can\u0027t access any of the links posted by Treehugger Robot - they all require an @google.com login, which I don\u0027t have. I don\u0027t even know what tests it runs, or I could try to repro locally. Please advise!",
       "revId": "7e7ef56077a6a138d8e4d07295f0b6d09dee18f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fcd0cf9_e99d12a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-12-08T23:44:44Z",
+      "side": 1,
+      "message": "The failure in this change seems to be due to merge conflicts. Can you rebase and try?",
+      "revId": "7e7ef56077a6a138d8e4d07295f0b6d09dee18f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
