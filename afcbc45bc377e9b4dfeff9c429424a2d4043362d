@@ -16,6 +16,29 @@
       "message": "ping for review",
       "revId": "afcbc45bc377e9b4dfeff9c429424a2d4043362d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459ecf97_e5a98c79",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-08T15:03:21Z",
+      "side": 1,
+      "message": "To be accurate, this should be \"this module or its dependent modules\" now.",
+      "range": {
+        "startLine": 336,
+        "startChar": 24,
+        "endLine": 336,
+        "endChar": 35
+      },
+      "revId": "afcbc45bc377e9b4dfeff9c429424a2d4043362d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
