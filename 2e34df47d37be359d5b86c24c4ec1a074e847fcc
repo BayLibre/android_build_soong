@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c0efddb_66d355b1",
+        "filename": "cc/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-08T07:46:38Z",
+      "side": 1,
+      "message": "No, in case of VNDK, product and vendor variants shares a single vendor configurations since we share a single set of VNDK for both variants.\nProduct installs its own copy for non-VNDK modules only.",
+      "parentUuid": "903840c7_6accc3a9",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 100
+      },
+      "revId": "2e34df47d37be359d5b86c24c4ec1a074e847fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da77ad67_f3d1c044",
         "filename": "cc/image.go",
         "patchSetId": 7
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Also consider how this will interact with defaults modules.  The merging logic from a defaults module for a *bool allows ovrriding a true to a false or vice-versa, but doesn\u0027t allow making the value nil again.  Making \"nil\" a significant value means you can never set a non-nil value in a defaults module and then get the \"nil\" behavior in the real module.",
       "parentUuid": "da77ad67_f3d1c044",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 82
+      },
+      "revId": "2e34df47d37be359d5b86c24c4ec1a074e847fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7132ed13_b9fbecae",
+        "filename": "cc/image.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-08T07:46:38Z",
+      "side": 1,
+      "message": "\u003e Can you add a detailed comment?\nLet me update it.\n\n\u003e Making \"nil\" a significant value means you can never set a non-nil value in a defaults module and then get the \"nil\" behavior in the real module.\nThat\u0027s correct. But the case is only for VNDK-private libs that we have only for a limited set. For the non-VNDK libs, `(vendor|product)_available: false` has the same meaning with \u0027nil\u0027.",
+      "parentUuid": "d41e1536_8b80ee19",
       "range": {
         "startLine": 110,
         "startChar": 1,
