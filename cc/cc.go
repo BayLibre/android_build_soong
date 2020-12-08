@@ -1369,6 +1369,11 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	return module
 }
 
+func (c *Module) IsPrebuilt() bool {
+	_, ok := c.linker.(prebuiltLinkerInterface)
+	return ok
+}
+
 func (c *Module) Prebuilt() *android.Prebuilt {
 	if p, ok := c.linker.(prebuiltLinkerInterface); ok {
 		return p.prebuilt()
@@ -1445,6 +1450,8 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 	apexInfo := actx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 	if !apexInfo.IsForPlatform() {
+		c.hideApexVariantFromMake = true
+	} else if c.IsPrebuilt() && c.HasStubsVariants() && !c.IsStubs() && c.Device() {
 		c.hideApexVariantFromMake = true
 	}
 
@@ -1581,7 +1588,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		// force anything in the make world to link against the stubs library.
 		// (unless it is explicitly referenced via .bootstrap suffix or the
 		// module is marked with 'bootstrap: true').
-		if c.HasStubsVariants() && c.AnyVariantDirectlyInAnyApex() && !c.InRamdisk() &&
+		if c.HasStubsVariants() && (c.AnyVariantDirectlyInAnyApex() || c.IsPrebuilt()) && !c.InRamdisk() &&
 			!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
 			c.IsStubs() && !c.InVendorRamdisk() {
 			c.Properties.HideFromMake = false // unhide
