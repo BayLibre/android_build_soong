@@ -472,6 +472,11 @@ func NormalizePathForTesting(path Path) string {
 		if err != nil {
 			panic(err)
 		}
+		// If the relative path takes it outside the build directory, e.g. because it is an absolute
+		// path like /dev/null, then just use the absolute path.
+		if strings.HasPrefix(rel, "../") {
+			rel = p
+		}
 		return rel
 	}
 	return p
