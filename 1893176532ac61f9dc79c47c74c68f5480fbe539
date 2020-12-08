@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845dc77d_1bcd117a",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-12-08T03:33:25Z",
+      "side": 1,
+      "message": "Can you use ToolchainInputs instead of Inputs here?",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 9
+      },
+      "revId": "1893176532ac61f9dc79c47c74c68f5480fbe539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
