@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f8d8e2_9d49547b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-08T10:31:07Z",
+      "side": 1,
+      "message": "Disabling autosubmit while I test whether we can use dist_files instead of _dist_dist_files",
+      "revId": "fa3473caf4c43617d7b14c477829a37a3de55a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
