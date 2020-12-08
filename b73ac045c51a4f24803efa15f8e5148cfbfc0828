@@ -39,6 +39,30 @@
       },
       "revId": "b73ac045c51a4f24803efa15f8e5148cfbfc0828",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e0c57d_a974efb3",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6220,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2020-12-08T13:09:06Z",
+      "side": 1,
+      "message": "\u003e  Or is this not the filename of the final artifact?\n\nThis is the name of the final artifact found in /system/apex.\n\n\u003e This looks a little surprising. Wouldn\u0027t you want the filename to be `\u003capexname\u003e.capex` rather than `\u003capexname\u003e.apex.capex` ?\n\nShort answer: Yes. Uploading a new patch.\n\nAn APEX file, depending what kind of payload it has inside it, can have 3 different suffix: myapex.apex, myapex.flattened and myapex.zipapex.\n\nI originally planned to name compressed apex as myapex.capex. But then realized, when decompressing this apex, how would I know what was the original name for it. So came up with this idea. The alternative was to encode the image type as metadata inside compressed APEX.\n\nAnyways, confirmed that we don\u0027t care about compressing zipapex and flattened apex is not updatable. So only need to compress image APEX.",
+      "parentUuid": "76457c4b_106819af",
+      "range": {
+        "startLine": 6220,
+        "startChar": 44,
+        "endLine": 6220,
+        "endChar": 61
+      },
+      "revId": "b73ac045c51a4f24803efa15f8e5148cfbfc0828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
