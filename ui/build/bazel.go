@@ -66,6 +66,11 @@ func runBazel(ctx Context, config Config) {
 		outputGroups = strings.Join(config.ninjaArgs, ",")
 	}
 
+	// Dist files are aggregated under the dist_files phony rule
+	if config.Dist() {
+		outputGroups = outputGroups + ",dist_files"
+	}
+
 	// Environment variables are the primary mechanism to pass information from
 	// soong_ui configuration or context to Bazel.
 	bazelEnv := make(map[string]string)
