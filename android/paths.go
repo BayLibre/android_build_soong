@@ -968,6 +968,13 @@ func (p OutputPath) buildDir() string {
 	return p.config.buildDir
 }
 
+// Return the  path to /dev/null.
+//
+// Use this as the source of a copy to create an empty file.
+func PathForDevNull(ctx PathContext) OutputPath {
+	return OutputPath{basePath{"", ctx.Config(), ""}, "/dev/null"}
+}
+
 var _ Path = OutputPath{}
 var _ WritablePath = OutputPath{}
 
