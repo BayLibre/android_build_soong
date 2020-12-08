@@ -22,6 +22,30 @@
       },
       "revId": "1893176532ac61f9dc79c47c74c68f5480fbe539",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccac81f0_7cf42d39",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2020-12-08T04:31:16Z",
+      "side": 1,
+      "message": "If this is a list of lib paths, then Inputs fits better. We don\u0027t need to add the location of the libs to the PATH variable.",
+      "parentUuid": "845dc77d_1bcd117a",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 9
+      },
+      "revId": "1893176532ac61f9dc79c47c74c68f5480fbe539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
