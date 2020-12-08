@@ -275,7 +275,7 @@ func NewConfig(ctx Context, args ...string) Config {
 		}
 	}
 
-	bpd := shared.BazelMetricsDir(ret.OutDir())
+	bpd := ret.BazelMetricsDir()
 	if err := os.RemoveAll(bpd); err != nil {
 		ctx.Fatalf("Unable to remove bazel profile directory %q: %v", bpd, err)
 	}
@@ -1120,4 +1120,15 @@ func (c *configImpl) MetricsUploaderApp() string {
 		return p
 	}
 	return ""
+}
+
+func (c *configImpl) LogsDir() string {
+	if c.Dist() {
+		return filepath.Join(c.DistDir(), "logs")
+	}
+	return c.OutDir()
+}
+
+func (c *configImpl) BazelMetricsDir() string {
+	return filepath.Join(c.LogsDir(), "bazel_metrics")
 }
