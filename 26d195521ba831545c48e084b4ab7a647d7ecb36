@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e99cf0_955db65b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-12-08T15:59:20Z",
+      "side": 1,
+      "message": "Ideally this should be fixed in re-client (we have a bug for this which we never got to...). I remember Colin mentioning that soong_zip updates only the mtime of the file if it finds that the newly generated output file (in-memory) has the same content as the file on disk and `-write-if-changed` option is passed to soong_zip. But I don\u0027t see that option being passed even for a checkbuild, so this change looks fine to me.",
+      "revId": "26d195521ba831545c48e084b4ab7a647d7ecb36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
