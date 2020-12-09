@@ -16,6 +16,24 @@
       "message": "This remains incorrect, `dist_files` is not a dependency of `dist`, and it\u0027s not always a dependency of `droid`. This workaround (which in any case should be marked as such) is probably better handled at the user level until the underlying bug is found and fixed. (Require users to specify `m droid dist_files dist` instead of `m dist`/`m droid dist`, even that with ninja those are all identical for platform builds)",
       "revId": "e6ce4398adafc4c4c07629a25c5600e7145a202e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1cd6ca7_bdacbf10",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-09T06:05:30Z",
+      "side": 1,
+      "message": "I tried another build with this patch removed (but keeping the https://android-review.googlesource.com/c/platform/build/bazel/+/1518778 patch) and the dist dir looks good. \n\nhttp://go/aosp-dist-diff-retry-without-bazel-patch\n\nSo maybe we can abandon this CL? Checking with Jin...",
+      "parentUuid": "f3c7ae30_e219e556",
+      "revId": "e6ce4398adafc4c4c07629a25c5600e7145a202e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
