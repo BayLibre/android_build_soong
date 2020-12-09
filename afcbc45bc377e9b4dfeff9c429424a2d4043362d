@@ -87,6 +87,30 @@
       },
       "revId": "afcbc45bc377e9b4dfeff9c429424a2d4043362d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7a785a_6c80abd3",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-09T04:00:08Z",
+      "side": 1,
+      "message": "In your example, only \u0027bar\u0027 needs test_for property. foo doesn\u0027t. Whether we can say that \"bar tests baz\" or not seems to be a subjective question and I don\u0027t have a strong answer. \n\n\nAnyway, I\u0027ve amended the description to avoid confusion. PTAL.",
+      "parentUuid": "20c3b1f4_660dd6e9",
+      "range": {
+        "startLine": 336,
+        "startChar": 24,
+        "endLine": 336,
+        "endChar": 35
+      },
+      "revId": "afcbc45bc377e9b4dfeff9c429424a2d4043362d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
