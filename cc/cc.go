@@ -1575,13 +1575,14 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 		c.outputFile = android.OptionalPathForPath(outputFile)
 
-		// If a lib is directly included in any of the APEXes, unhide the stubs
-		// variant having the latest version gets visible to make. In addition,
-		// the non-stubs variant is renamed to <libname>.bootstrap. This is to
-		// force anything in the make world to link against the stubs library.
-		// (unless it is explicitly referenced via .bootstrap suffix or the
-		// module is marked with 'bootstrap: true').
-		if c.HasStubsVariants() && c.AnyVariantDirectlyInAnyApex() && !c.InRamdisk() &&
+		// If a lib is directly included in any of the APEXes or is not available to the
+		// platform (which is often the case when the stub is provided as a prebuilt),
+		// unhide the stubs variant having the latest version gets visible to make. In
+		// addition, the non-stubs variant is renamed to <libname>.bootstrap. This is to
+		// force anything in the make world to link against the stubs library.  (unless it
+		// is explicitly referenced via .bootstrap suffix or the module is marked with
+		// 'bootstrap: true').
+		if c.HasStubsVariants() && c.notInPlatform() && !c.InRamdisk() &&
 			!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
 			c.IsStubs() && !c.InVendorRamdisk() {
 			c.Properties.HideFromMake = false // unhide
@@ -2932,6 +2933,15 @@ func (c *Module) AvailableFor(what string) bool {
 	} else {
 		return c.ApexModuleBase.AvailableFor(what)
 	}
+}
+
+// notInPlatform tells whether or not this module is included in an APEX and therefore shouldn't be
+// exposed to the platform (i.e. outside of the APEX) directly. A module is considered to be
+// included in an APEX either when there actually is an APEX that explicitly has the module as its
+// dependency or the module is not available to the platform, which indicates that the module
+// belongs to at least one or more other APEXes.
+func (c *Module) notInPlatform() bool {
+	return c.AnyVariantDirectlyInAnyApex() || !c.AvailableFor(android.AvailableToPlatform)
 }
 
 func (c *Module) TestFor() []string {
