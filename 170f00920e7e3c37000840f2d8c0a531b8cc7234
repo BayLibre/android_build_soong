@@ -63,6 +63,30 @@
       },
       "revId": "170f00920e7e3c37000840f2d8c0a531b8cc7234",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f97eb3_19d5ddb2",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-09T14:27:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ef61177_a5a8c13e",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 5
+      },
+      "revId": "170f00920e7e3c37000840f2d8c0a531b8cc7234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
