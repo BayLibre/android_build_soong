@@ -33,6 +33,23 @@
       "message": "ping for ORV",
       "revId": "e3867548986027f8430fc9ab17cc12c0b7cdb599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2196406c_63a2d440",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-09T00:18:40Z",
+      "side": 1,
+      "message": "Gentle ping\n\n(failure is unrelated. retrying.)\n\n",
+      "revId": "e3867548986027f8430fc9ab17cc12c0b7cdb599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
