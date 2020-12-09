@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2a28623_0b8ba367",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-09T04:00:32Z",
+      "side": 1,
+      "message": "Thanks for the quick fix. Can confirm this CL solves my problem.",
+      "revId": "729c0bdb54980e9304ef95e9d2dae282a69e4ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
