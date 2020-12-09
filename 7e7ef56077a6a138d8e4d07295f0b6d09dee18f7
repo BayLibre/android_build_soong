@@ -33,6 +33,23 @@
       "message": "The failure in this change seems to be due to merge conflicts. Can you rebase and try?",
       "revId": "7e7ef56077a6a138d8e4d07295f0b6d09dee18f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50fbdabb_706d5da7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1769860
+      },
+      "writtenOn": "2020-12-09T11:46:07Z",
+      "side": 1,
+      "message": "Looks like presubmit has passed?",
+      "revId": "7e7ef56077a6a138d8e4d07295f0b6d09dee18f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
