@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25841d0b_71b080a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "Great work! This is a good foundation to build the converter on. Looking forward to merging this.",
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e41f99dc_e591f302",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "Not true anymore, right? This is responsible for code-generating BUILD files during at the end of the primary builder phase.",
+      "range": {
+        "startLine": 22,
+        "startChar": 48,
+        "endLine": 23,
+        "endChar": 75
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f171c71_3afd3e10",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "bp2build",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e1dfae_75883b25",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "For some reason `CONVERT_TO_BAZEL\u003dtrue m nothing` doesn\u0027t generate out/soong/bp2build. Is the env var filtered out before it reaches this point?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5c18cd3_5ba0316d",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "nit: buildFileToTargets for clarity",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 15
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e36edf_04b3b92c",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "I like this approach!",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 37
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cacf5bb_e4d290e0",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "I was confused as to why the original bp doesn\u0027t have Bool_prop, but this got generated, and then I realized that GenerateBazelAttributes for this module would generate bool_prop no matter what. Could you add a comment to describe this?",
+      "range": {
+        "startLine": 243,
+        "startChar": 4,
+        "endLine": 243,
+        "endChar": 22
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c921a8b5_349ac13f",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "Also a comment to describe that the GenerateBazelAttributes function deliberately flattened the nested nested_prop to a top level attribute.",
+      "range": {
+        "startLine": 244,
+        "startChar": 4,
+        "endLine": 244,
+        "endChar": 23
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89517cc_79a2c493",
+        "filename": "bp2build/bzl_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "Delete this test?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfa3fa5_857f8dce",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "This is meant for testing that mutated props should be skipped, right? Add a comment?",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206841ec_957d5b48",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2020-12-09T08:22:27Z",
+      "side": 1,
+      "message": "Nice :) This will unblock a lot of nested prop mapping to top level attributes.",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
