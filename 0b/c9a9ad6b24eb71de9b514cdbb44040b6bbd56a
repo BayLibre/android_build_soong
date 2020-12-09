@@ -1,0 +1,12 @@
+Autosubmit+1: Rupert Shuttleworth <ruperts@google.com>
+Code-Review+2: Jingwen Chen <jingwen@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Bypass-Presubmit+1: Rupert Shuttleworth <ruperts@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Rupert Shuttleworth <ruperts@google.com>
+Submitted-at: Wed, 09 Dec 2020 01:53:03 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1519821
+Project: platform/build/soong
+Branch: refs/heads/master
