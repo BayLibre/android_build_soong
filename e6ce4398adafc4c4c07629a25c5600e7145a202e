@@ -34,6 +34,24 @@
       "parentUuid": "f3c7ae30_e219e556",
       "revId": "e6ce4398adafc4c4c07629a25c5600e7145a202e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db10cf33_c19b0847",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-09T06:56:20Z",
+      "side": 1,
+      "message": "Going to abandon this CL for now because it seems unnecessary",
+      "parentUuid": "d1cd6ca7_bdacbf10",
+      "revId": "e6ce4398adafc4c4c07629a25c5600e7145a202e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
