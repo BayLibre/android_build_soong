@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ae30596_f641b9fc",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-09T00:41:36Z",
+      "side": 1,
+      "message": "This makes Soong ignore a prebuilt_apex module when the corresponding source apex module is disabled, and it breaks some WIP I have to switch ART to prebuilts.\n\nsrcsSupplier gets called from PrebuiltSelectModuleMutator on line 257, where ctx is for the source module. Is the intention here to check if the prebuilt module is enabled? Afaics everything else below acts on the prebuilt module.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 3
+      },
+      "revId": "84f1b808664b9f764de6e97ba312911d3834e2a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
