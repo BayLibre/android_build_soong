@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "115a7c8d_a7fd74b7",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-09T16:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf0a72a_e0ec436a",
+      "range": {
+        "startLine": 1082,
+        "startChar": 19,
+        "endLine": 1082,
+        "endChar": 20
+      },
+      "revId": "ea57e508bc64ff8ea43c6b677285d4a51780efff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d11f918_ea4329c3",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-08T13:51:54Z",
       "side": 1,
       "message": "This message seems to be wrong. You didn\u0027t check sdk_version. You don\u0027t have https://source.corp.google.com/android/build/soong/cc/cc.go;rcl\u003d722b9bbd3503c0fd732cd7831efb5e9ea1d196c9;l\u003d3044 here",
+      "range": {
+        "startLine": 1092,
+        "startChar": 2,
+        "endLine": 1092,
+        "endChar": 73
+      },
+      "revId": "ea57e508bc64ff8ea43c6b677285d4a51780efff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee28630_63db5c82",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-09T16:31:37Z",
+      "side": 1,
+      "message": "Removed this from the error since there\u0027s no SDK support (and thus sdk_version doesn\u0027t make sense).",
+      "parentUuid": "1d11f918_ea4329c3",
       "range": {
         "startLine": 1092,
         "startChar": 2,
