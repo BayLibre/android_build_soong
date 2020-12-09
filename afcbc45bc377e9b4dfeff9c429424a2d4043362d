@@ -63,6 +63,30 @@
       },
       "revId": "afcbc45bc377e9b4dfeff9c429424a2d4043362d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c3b1f4_660dd6e9",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-09T02:33:17Z",
+      "side": 1,
+      "message": "Maybe I\u0027m interpreting \"tests\" too narrowly. But if a cc_test foo depends on a cc_library bar, and bar  needs to be able to access an apex baz, and so has \"baz\" in its test_for values, I wouldn\u0027t say \"bar tests baz\". It\u0027s still foo, a dependent module of bar, that tests baz, isn\u0027t it?",
+      "parentUuid": "2ef64dee_7a461a21",
+      "range": {
+        "startLine": 336,
+        "startChar": 24,
+        "endLine": 336,
+        "endChar": 35
+      },
+      "revId": "afcbc45bc377e9b4dfeff9c429424a2d4043362d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
