@@ -50,6 +50,24 @@
       "message": "Looks like presubmit has passed?",
       "revId": "7e7ef56077a6a138d8e4d07295f0b6d09dee18f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "889a5e8f_920fd1ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2020-12-09T14:32:52Z",
+      "side": 1,
+      "message": "Yeah, not sure why it was failing before. \" error: Changes failed to apply, merge conflict detected.\" was the error message on one of the previous failures. Possibly could have been due to internal infra errors.",
+      "parentUuid": "50fbdabb_706d5da7",
+      "revId": "7e7ef56077a6a138d8e4d07295f0b6d09dee18f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
