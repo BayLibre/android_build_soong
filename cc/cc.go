@@ -1575,13 +1575,15 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 		c.outputFile = android.OptionalPathForPath(outputFile)
 
-		// If a lib is directly included in any of the APEXes, unhide the stubs
-		// variant having the latest version gets visible to make. In addition,
-		// the non-stubs variant is renamed to <libname>.bootstrap. This is to
-		// force anything in the make world to link against the stubs library.
-		// (unless it is explicitly referenced via .bootstrap suffix or the
-		// module is marked with 'bootstrap: true').
-		if c.HasStubsVariants() && c.AnyVariantDirectlyInAnyApex() && !c.InRamdisk() &&
+		// If a lib is directly included in any of the APEXes or is not available to the
+		// platform (which is often the case when the stub is provided as a prebuilt),
+		// unhide the stubs variant having the latest version gets visible to make. In
+		// addition, the non-stubs variant is renamed to <libname>.bootstrap. This is to
+		// force anything in the make world to link against the stubs library.  (unless it
+		// is explicitly referenced via .bootstrap suffix or the module is marked with
+		// 'bootstrap: true').
+		notInPlatform := c.AnyVariantDirectlyInAnyApex() || !c.AvailableFor(android.AvailableToPlatform)
+		if c.HasStubsVariants() && notInPlatform && !c.InRamdisk() &&
 			!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
 			c.IsStubs() && !c.InVendorRamdisk() {
 			c.Properties.HideFromMake = false // unhide

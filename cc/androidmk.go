@@ -47,6 +47,7 @@ type AndroidMkContext interface {
 	InVendorRamdisk() bool
 	InRecovery() bool
 	AnyVariantDirectlyInAnyApex() bool
+	AvailableFor(what string) bool
 }
 
 type subAndroidMkProvider interface {
@@ -281,7 +282,8 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 			}
 		})
 	}
-	if len(library.Properties.Stubs.Versions) > 0 && !ctx.Host() && ctx.AnyVariantDirectlyInAnyApex() &&
+	notInPlatform := ctx.AnyVariantDirectlyInAnyApex() || !ctx.AvailableFor(android.AvailableToPlatform)
+	if len(library.Properties.Stubs.Versions) > 0 && !ctx.Host() && notInPlatform &&
 		!ctx.InRamdisk() && !ctx.InVendorRamdisk() && !ctx.InRecovery() && !ctx.UseVndk() && !ctx.static() {
 		if library.buildStubs() && library.isLatestStubVersion() {
 			// reference the latest version via its name without suffix when it is provided by apex
