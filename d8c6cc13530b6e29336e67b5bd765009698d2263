@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99469398_5a90331f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-09T11:47:00Z",
+      "side": 1,
+      "message": "I can\u0027t approve this because I don\u0027t own the rust modules. Ivan, is it you?",
+      "revId": "d8c6cc13530b6e29336e67b5bd765009698d2263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
