@@ -1,0 +1,8 @@
+Build-Cop-Override+1: Xin Li <delphij@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Bypass-Presubmit+1: Xin Li <delphij@google.com>
+Submitted-by: Xin Li <delphij@google.com>
+Submitted-at: Thu, 10 Dec 2020 02:18:16 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1520824
+Project: platform/build/soong
+Branch: refs/heads/master
