@@ -16,6 +16,23 @@
       "message": "(test failure is unrelated, please ignore it)",
       "revId": "712d0be7cf37ced6fb981b7d573302322e6ec20f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b82536a_02d5663e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-10T03:20:26Z",
+      "side": 1,
+      "message": "ping?",
+      "revId": "712d0be7cf37ced6fb981b7d573302322e6ec20f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
