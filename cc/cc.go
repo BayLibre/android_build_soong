@@ -572,6 +572,8 @@ type libraryDependencyTag struct {
 	staticUnwinder bool
 
 	makeSuffix string
+
+	skipApexCheck bool
 }
 
 // header returns true if the libraryDependencyTag is tagging a header lib dependency.
