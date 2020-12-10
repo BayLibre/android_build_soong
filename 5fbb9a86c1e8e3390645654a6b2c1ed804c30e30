@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e3ecb0c_ae6a4dc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T03:38:46Z",
+      "side": 1,
+      "message": "For your consideration...\n\nI think this is the last known blocker for setting up CI for USE_BAZEL\u003d1 builds\n\nColin suggested it might be easier to change how the build servers work, but if we want to change Soong instead, then I think this is roughly the best way to do it. Open to other suggestions!",
+      "revId": "5fbb9a86c1e8e3390645654a6b2c1ed804c30e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
