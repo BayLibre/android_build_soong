@@ -16,6 +16,52 @@
       "message": "For your consideration...\n\nI think this is the last known blocker for setting up CI for USE_BAZEL\u003d1 builds\n\nColin suggested it might be easier to change how the build servers work, but if we want to change Soong instead, then I think this is roughly the best way to do it. Open to other suggestions!",
       "revId": "5fbb9a86c1e8e3390645654a6b2c1ed804c30e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a432ed_b735ca97",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T03:41:26Z",
+      "side": 1,
+      "message": "FWIW, this used to happen in bazel.go, but because of the defers reading/writing log files (e.g. RBE logs), I had to move this here\n\n(unresolved for visibility)",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "5fbb9a86c1e8e3390645654a6b2c1ed804c30e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8880bcf0_64217c58",
+        "filename": "ui/build/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T03:41:26Z",
+      "side": 1,
+      "message": "FWIW, I tried using filepath.Match() instead of strings.Contains(), but couldn\u0027t get it to do what I wanted. Maybe a better way...\n\n(unresolved for visibility)",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 238,
+        "endChar": 51
+      },
+      "revId": "5fbb9a86c1e8e3390645654a6b2c1ed804c30e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
