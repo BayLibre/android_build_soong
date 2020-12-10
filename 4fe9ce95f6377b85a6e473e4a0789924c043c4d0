@@ -70,6 +70,30 @@
       },
       "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8b3579c_e9be59bd",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T05:15:45Z",
+      "side": 1,
+      "message": "What needs merging here? I\u0027m a little confused about why we can\u0027t just nuke any existing DIST_DIR files given that from Soong\u0027s perspective everything has been written elsewhere (e.g. written to out/dist) until this final rename.\n\nE.g. what does the buildbot store in DIST_DIR?",
+      "parentUuid": "f0ffce91_251f81e0",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 2
+      },
+      "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
