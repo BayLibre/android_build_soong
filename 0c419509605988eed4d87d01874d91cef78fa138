@@ -157,6 +157,30 @@
       },
       "revId": "0c419509605988eed4d87d01874d91cef78fa138",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd7f483_2e2640a1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-10T22:09:32Z",
+      "side": 1,
+      "message": "Ok, fair enough.",
+      "parentUuid": "67baa48f_7a1e43f4",
+      "range": {
+        "startLine": 1447,
+        "startChar": 4,
+        "endLine": 1447,
+        "endChar": 29
+      },
+      "revId": "0c419509605988eed4d87d01874d91cef78fa138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

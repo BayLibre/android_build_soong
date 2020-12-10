@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba59e5d_4982ea85",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2944,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-10T22:09:32Z",
+      "side": 1,
+      "message": "Part of my point with this was to hide anyVariantDirectlyInAnyApex and expose NotInPlatform instead, which means this moves to android/apex.go. I think that makes sense because the former has limitations due to the apex package implementation, and the latter answers a more reasonable question.\n\nOn a side note the doc comment on AnyVariantDirectlyInAnyApex could use a clarification that it doesn\u0027t work on prebuilts when the source apex module is disabled or missing, but if it\u0027s internal in the apex package it matters less.",
+      "range": {
+        "startLine": 2943,
+        "startChar": 17,
+        "endLine": 2944,
+        "endChar": 39
+      },
+      "revId": "d3bb071ccf5f9ab6b32ba9bc9daf1f174e8d0e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
