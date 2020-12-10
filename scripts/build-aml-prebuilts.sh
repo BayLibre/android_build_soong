@@ -49,6 +49,10 @@ readonly PLATFORM_SDK_VERSION="$(my_get_build_var PLATFORM_SDK_VERSION)"
 readonly PLATFORM_VERSION="$(my_get_build_var PLATFORM_VERSION)"
 PLATFORM_VERSION_ALL_CODENAMES="$(my_get_build_var PLATFORM_VERSION_ALL_CODENAMES)"
 
+# Get the list of missing <uses-library> modules and convert it to a JSON array.
+MISSING_USES_LIBRARIES="$(my_get_build_var INTERNAL_PLATFORM_MISSING_USES_LIBRARIES)"
+MISSING_USES_LIBRARIES="[$(echo \"$MISSING_USES_LIBRARIES\" | sed -E 's/[ ]+/\", \"/g')]"
+
 # PLATFORM_VERSION_ALL_CODENAMES is a comma separated list like O,P. We need to
 # turn this into ["O","P"].
 PLATFORM_VERSION_ALL_CODENAMES="${PLATFORM_VERSION_ALL_CODENAMES/,/'","'}"
@@ -100,7 +104,9 @@ cat > ${SOONG_VARS}.new << EOF
         "art_module": {
             "source_build": "${ENABLE_ART_SOURCE_BUILD:-false}"
         }
-    }
+    },
+
+    "MissingUsesLibraries": ${MISSING_USES_LIBRARIES}
 }
 EOF
 
