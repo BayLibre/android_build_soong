@@ -111,6 +111,30 @@
       },
       "revId": "afcbc45bc377e9b4dfeff9c429424a2d4043362d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c31308b_6cbca75a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-10T00:09:18Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "8e7a785a_6c80abd3",
+      "range": {
+        "startLine": 336,
+        "startChar": 24,
+        "endLine": 336,
+        "endChar": 35
+      },
+      "revId": "afcbc45bc377e9b4dfeff9c429424a2d4043362d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
