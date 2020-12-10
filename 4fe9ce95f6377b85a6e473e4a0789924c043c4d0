@@ -46,6 +46,30 @@
       },
       "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ffce91_251f81e0",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-10T05:05:05Z",
+      "side": 1,
+      "message": "Ah, yeah. `loop { remove \u0026\u0026 rename }` works for files, but directories need merging. In which case filepath.Walk may be the easier API to use as the loop construct. (And the edge cases about deleting a file if we\u0027ve got a directory to overwrite it with, etc)",
+      "parentUuid": "af0fece1_2dd0cb3e",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 2
+      },
+      "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
