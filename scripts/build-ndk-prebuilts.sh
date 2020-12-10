@@ -49,7 +49,12 @@ cat > ${SOONG_OUT}/soong.variables << EOF
     "Safestack": false,
 
     "Ndk_abis": true,
-    "Exclude_draft_ndk_apis": true
+    "Exclude_draft_ndk_apis": true,
+    "MissingUsesLibraries": [
+        "com.google.android.ble",
+        "com.google.android.media.effects",
+        "com.google.android.wearable"
+    ]
 }
 EOF
 m --skip-make ${SOONG_OUT}/ndk.timestamp
