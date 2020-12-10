@@ -18,6 +18,7 @@ package apex
 
 import (
 	"android/soong/android"
+	"android/soong/cc"
 
 	"github.com/google/blueprint"
 )
@@ -69,8 +70,14 @@ var (
 )
 
 func (s *apexDepsInfoSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+	var skipDepCheck bool = false
 	updatableFlatLists := android.Paths{}
 	ctx.VisitAllModules(func(module android.Module) {
+		if cc.CheckCfiDiag(module) {
+			// If cfi diag are enabled, skip dep check.
+			skipDepCheck = true
+			return
+		}
 		if binaryInfo, ok := module.(android.ApexBundleDepsInfoIntf); ok {
 			apexInfo := ctx.ModuleProvider(module, android.ApexInfoProvider).(android.ApexInfo)
 			if path := binaryInfo.FlatListPath(); path != nil {
@@ -80,6 +87,10 @@ func (s *apexDepsInfoSingleton) GenerateBuildActions(ctx android.SingletonContex
 			}
 		}
 	})
+	if skipDepCheck {
+		//Cfi diag was found to be enabled a module, skip dep check.
+		return
+	}
 
 	allowedDeps := android.ExistentPathForSource(ctx, "build/soong/apex/allowed_deps.txt").Path()
 

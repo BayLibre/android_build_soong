@@ -870,6 +870,14 @@ func sanitizerRuntimeDepsMutator(mctx android.TopDownMutatorContext) {
 	}
 }
 
+// Returns true if CFI Diag has been enabled in a Module
+func CheckCfiDiag(module android.Module) bool {
+	if c, ok := module.(*Module); ok && c.sanitize != nil {
+		return Bool(c.sanitize.Properties.Sanitize.Diag.Cfi)
+	}
+	return false
+}
+
 // Add the dependency to the runtime library for each of the sanitizer variants
 func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 	if c, ok := mctx.Module().(*Module); ok && c.sanitize != nil {
