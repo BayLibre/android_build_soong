@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bff4a118_a04ff53d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-10T05:26:10Z",
+      "side": 1,
+      "message": "Thanks. Do you mind if I squash this into the other CL?",
+      "parentUuid": "bf10e547_c82a3966",
+      "revId": "1f0999e0501d6bf7f840bd3f583eedf011baec9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b150f0b7_811a6767",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-10T01:55:09Z",
       "side": 1,
       "message": "The version mutator doesn\u0027t run on prebuilts, so the module isn\u0027t recognised as a stub then, although the AndroidMk still isn\u0027t obviously wrong.\n\nI\u0027m a bit uncomfortable with that because it\u0027s a discrepancy that\u0027s easily missed when only working with source modules. Would it be worth doing something about it?",
+      "range": {
+        "startLine": 6367,
+        "startChar": 9,
+        "endLine": 6367,
+        "endChar": 36
+      },
+      "revId": "1f0999e0501d6bf7f840bd3f583eedf011baec9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebaa039f_058e1226",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6367,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-10T05:26:10Z",
+      "side": 1,
+      "message": "\u003e The version mutator doesn\u0027t run on prebuilts\n\nReally? I saw that the cc_prebuilt_library_shared has two \"version\" variants. It satisfies the condition `library :\u003d moduleLibraryInterface(mctx.Module()); library !\u003d nil \u0026\u0026 CanBeVersionVariant(mctx.Module().(*Module))` that is used in the mutator, if I am reading the code correctly.",
+      "parentUuid": "b150f0b7_811a6767",
       "range": {
         "startLine": 6367,
         "startChar": 9,
