@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f140d1a_4ea2edab",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-10T21:13:00Z",
+      "side": 1,
+      "message": "nit: recursive",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "b537034502d0ced2e7ae6b6a342c710bc2ee3444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
