@@ -213,7 +213,7 @@ func main() {
 
 	build.SetupOutDir(buildCtx, config)
 	if *alternateResultDir {
-		distLogsDir := filepath.Join(config.DistDir(), "logs")
+		distLogsDir := filepath.Join(config.RealDistDir(), "logs")
 		os.MkdirAll(distLogsDir, 0777)
 		log.SetOutput(filepath.Join(distLogsDir, "soong.log"))
 		trace.SetOutput(filepath.Join(distLogsDir, "build.trace"))
@@ -344,7 +344,7 @@ func main() {
 			FileArgs: []zip.FileArg{
 				{GlobDir: logsDir, SourcePrefixToStrip: logsDir},
 			},
-			OutputFilePath:   filepath.Join(config.DistDir(), "logs.zip"),
+			OutputFilePath:   filepath.Join(config.RealDistDir(), "logs.zip"),
 			NumParallelJobs:  runtime.NumCPU(),
 			CompressionLevel: 5,
 		}
