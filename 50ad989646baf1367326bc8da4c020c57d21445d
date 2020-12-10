@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb930e65_abd2dd7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-12-10T15:45:21Z",
+      "side": 1,
+      "message": "PTAL, adds a static utility lib for shared use by tethering and network stack.",
+      "revId": "50ad989646baf1367326bc8da4c020c57d21445d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
