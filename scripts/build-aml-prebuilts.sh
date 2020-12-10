@@ -54,6 +54,10 @@ PLATFORM_VERSION_ALL_CODENAMES="$(my_get_build_var PLATFORM_VERSION_ALL_CODENAME
 PLATFORM_VERSION_ALL_CODENAMES="${PLATFORM_VERSION_ALL_CODENAMES/,/'","'}"
 PLATFORM_VERSION_ALL_CODENAMES="[\"${PLATFORM_VERSION_ALL_CODENAMES}\"]"
 
+# Get the list of missing <uses-library> modules and convert it to a JSON array.
+MISSING_USES_LIBRARIES="$(my_get_build_var INTERNAL_PLATFORM_MISSING_USES_LIBRARIES)"
+MISSING_USES_LIBRARIES="[$(echo \"$MISSING_USES_LIBRARIES\" | sed -E 's/[ ]+/\", \"/g')]"
+
 # Logic from build/make/core/goma.mk
 if [ "${USE_GOMA}" = true ]; then
   if [ -n "${GOMA_DIR}" ]; then
@@ -100,7 +104,9 @@ cat > ${SOONG_VARS}.new << EOF
         "art_module": {
             "source_build": "${ENABLE_ART_SOURCE_BUILD:-false}"
         }
-    }
+    },
+
+    "MissingUsesLibraries": ${MISSING_USES_LIBRARIES}
 }
 EOF
 
