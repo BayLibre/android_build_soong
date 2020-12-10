@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5432d8f9_f0b3b361",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T23:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f934b65b_898f5ec9",
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fc2ccd0_03791f73",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-12-10T22:46:19Z",
       "side": 1,
       "message": "nit: riggedDistDirForBazel? and add docs?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 14
+      },
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d72b0a38_f3d73092",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T23:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fc2ccd0_03791f73",
       "range": {
         "startLine": 70,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac9ddcb_888d6eb7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T23:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de7c3d2f_5ece182c",
+      "range": {
+        "startLine": 227,
+        "startChar": 19,
+        "endLine": 227,
+        "endChar": 26
+      },
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f5adee4_d693f580",
@@ -104,6 +170,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a93c29_d568923e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T23:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f5adee4_d693f580",
+      "range": {
+        "startLine": 286,
+        "startChar": 13,
+        "endLine": 286,
+        "endChar": 28
+      },
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e81c1f72_c405360f",
@@ -117,6 +207,30 @@
       "writtenOn": "2020-12-10T22:27:27Z",
       "side": 1,
       "message": "This should be probably be using c.LogsDir(). (Or we switch DistDir -\u003e RealDistDir, but LogsDir seems like the right abstraction)",
+      "range": {
+        "startLine": 915,
+        "startChar": 4,
+        "endLine": 918,
+        "endChar": 18
+      },
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cfc87df_4356c3e7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T23:30:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e81c1f72_c405360f",
       "range": {
         "startLine": 915,
         "startChar": 4,
