@@ -22,6 +22,30 @@
       },
       "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af0fece1_2dd0cb3e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T04:59:23Z",
+      "side": 1,
+      "message": "Ahh okay. But the renames won\u0027t work if a file/dir already exists in the DIST_DIR (e.g. from a previous build). So we will have to remove each file/dir individually (below) if we don\u0027t remove everything in advance",
+      "parentUuid": "43fddd85_15be25ac",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 2
+      },
+      "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
