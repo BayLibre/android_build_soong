@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf10e547_c82a3966",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-10T01:55:09Z",
+      "side": 1,
+      "message": "I added this to get a bit of test coverage on AndroidMk entries. I\u0027ve verified that it fails without https://r.android.com/1521398 and works with it.",
+      "revId": "1f0999e0501d6bf7f840bd3f583eedf011baec9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b150f0b7_811a6767",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6367,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-10T01:55:09Z",
+      "side": 1,
+      "message": "The version mutator doesn\u0027t run on prebuilts, so the module isn\u0027t recognised as a stub then, although the AndroidMk still isn\u0027t obviously wrong.\n\nI\u0027m a bit uncomfortable with that because it\u0027s a discrepancy that\u0027s easily missed when only working with source modules. Would it be worth doing something about it?",
+      "range": {
+        "startLine": 6367,
+        "startChar": 9,
+        "endLine": 6367,
+        "endChar": 36
+      },
+      "revId": "1f0999e0501d6bf7f840bd3f583eedf011baec9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
