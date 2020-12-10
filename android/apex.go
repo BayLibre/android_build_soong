@@ -243,6 +243,14 @@ type ExcludeFromApexContentsTag interface {
 	ExcludeFromApexContents()
 }
 
+// Marker interface that identifies dependencies to skip Apex dependency check
+type SkipDepInfoCheckTag interface {
+	blueprint.DependencyTag
+
+	// Method that differentiates this interface from others.
+	SkipDepInfoCheck() bool
+}
+
 // Marker interface that identifies dependencies that should inherit the DirectlyInAnyApex state
 // from the parent to the child. For example, stubs libraries are marked as DirectlyInAnyApex if
 // their implementation is in an apex.
