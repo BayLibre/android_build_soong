@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "671061a8_02e3b673",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-10T22:06:41Z",
+      "side": 1,
+      "message": "No, go ahead. (I added another check to it in PS2 which isn\u0027t directly related to this but was easy to do here.)",
+      "parentUuid": "bff4a118_a04ff53d",
+      "revId": "1f0999e0501d6bf7f840bd3f583eedf011baec9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b150f0b7_811a6767",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "\u003e The version mutator doesn\u0027t run on prebuilts\n\nReally? I saw that the cc_prebuilt_library_shared has two \"version\" variants. It satisfies the condition `library :\u003d moduleLibraryInterface(mctx.Module()); library !\u003d nil \u0026\u0026 CanBeVersionVariant(mctx.Module().(*Module))` that is used in the mutator, if I am reading the code correctly.",
       "parentUuid": "b150f0b7_811a6767",
+      "range": {
+        "startLine": 6367,
+        "startChar": 9,
+        "endLine": 6367,
+        "endChar": 36
+      },
+      "revId": "1f0999e0501d6bf7f840bd3f583eedf011baec9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be9fbe09_e915c428",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6367,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-10T22:06:41Z",
+      "side": 1,
+      "message": "Sorry my bad, I had a bug in a test fixture.",
+      "parentUuid": "ebaa039f_058e1226",
       "range": {
         "startLine": 6367,
         "startChar": 9,
