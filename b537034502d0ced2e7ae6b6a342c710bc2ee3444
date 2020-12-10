@@ -22,6 +22,30 @@
       },
       "revId": "b537034502d0ced2e7ae6b6a342c710bc2ee3444",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb5a336_778578c5",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-10T21:49:09Z",
+      "side": 1,
+      "message": "Opps. Done.",
+      "parentUuid": "1f140d1a_4ea2edab",
+      "range": {
+        "startLine": 45,
+        "startChar": 16,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "b537034502d0ced2e7ae6b6a342c710bc2ee3444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
