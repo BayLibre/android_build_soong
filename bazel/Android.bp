@@ -2,9 +2,13 @@ bootstrap_go_package {
     name: "soong-bazel",
     pkgPath: "android/soong/bazel",
     srcs: [
+        "aquery.go",
         "properties.go",
     ],
     pluginFor: [
         "soong_build",
+    ],
+    deps: [
+        "blueprint",
     ],
 }
