@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5133e1e_f682134a",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T13:18:33Z",
+      "side": 1,
+      "message": "Done\n\nThanks for the tip. Rebased and changed LogDir to use RealDistDir instead of a possibly-rigged DistDir. \n\nAlso changed some dist(...) functions to always operate on the RealDistDir too.",
+      "parentUuid": "e414be3f_14b1a450",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "5fbb9a86c1e8e3390645654a6b2c1ed804c30e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8880bcf0_64217c58",

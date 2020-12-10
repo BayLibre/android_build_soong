@@ -118,6 +118,30 @@
       },
       "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "639df259_02a9016b",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T13:18:33Z",
+      "side": 1,
+      "message": "Done\n\nThanks for all the gory details. I implemented a merge in the case of an existing external DIST_DIR or of existing external DIST_DIR subdirs.",
+      "parentUuid": "b8bb2e0a_4988292a",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 2
+      },
+      "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
