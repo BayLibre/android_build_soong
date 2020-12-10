@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa98e016_cdb21f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-10T22:29:51Z",
+      "side": 1,
+      "message": "This CL is ready for preliminary review, but not quite complete.\n\nI still intend on:\n\n1. Resolving validation TODOs in aquery.go\n2. Writing some tests for aquery.go.",
+      "revId": "fc257d7665437456f855389f4a17d78a0a425af8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
