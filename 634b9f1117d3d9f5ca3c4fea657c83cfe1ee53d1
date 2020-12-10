@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8315c585_18d8e7e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-10T22:27:27Z",
+      "side": 1,
+      "message": "Splitting DIST_DIR into different values in different environments will end up breaking some scripts that use `get_build_var DIST_DIR` to reuse soong_ui\u0027s DIST_DIR defaults/parsing, but I don\u0027t see an alternative:\n\nhttps://cs.android.com/search?q\u003d%22get_build_var%20DIST_DIR%22\u0026ss\u003dandroid%2Fplatform%2Fsuperproject",
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f934b65b_898f5ec9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-10T22:27:27Z",
+      "side": 1,
+      "message": "multiproduct_kati also uses the soong_ui packages, and its use of DistDir will also need to be migrated to RealDistDir:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/multiproduct_kati/main.go;drc\u003d00a8a3f746685557a5c64cbd628e91de14c031e8;l\u003d216",
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7c3d2f_5ece182c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-10T22:27:27Z",
+      "side": 1,
+      "message": "This is a bit fragile now, as it really should be checking RealDistDir(), but those are currently the same because we don\u0027t set the bazel flag until later. If we ever move the bazel flag before this, it would silently stop verifying $DIST_DIR.",
+      "range": {
+        "startLine": 227,
+        "startChar": 19,
+        "endLine": 227,
+        "endChar": 26
+      },
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e81c1f72_c405360f",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-10T22:27:27Z",
+      "side": 1,
+      "message": "This should be probably be using c.LogsDir(). (Or we switch DistDir -\u003e RealDistDir, but LogsDir seems like the right abstraction)",
+      "range": {
+        "startLine": 915,
+        "startChar": 4,
+        "endLine": 918,
+        "endChar": 18
+      },
+      "revId": "634b9f1117d3d9f5ca3c4fea657c83cfe1ee53d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
