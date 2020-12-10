@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae60e6b_627bed22",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2048,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T15:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b23a4b2d_cd3bce95",
+      "range": {
+        "startLine": 2047,
+        "startChar": 4,
+        "endLine": 2048,
+        "endChar": 5
+      },
+      "revId": "ff33ada17f24336c023230c7863384bc53a85d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d815f10a_98d1b67a",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-09T23:04:34Z",
       "side": 1,
       "message": "c.isVndkPrivate() would avoid having to define the VendorAvailable() method.",
+      "range": {
+        "startLine": 2830,
+        "startChar": 6,
+        "endLine": 2830,
+        "endChar": 25
+      },
+      "revId": "ff33ada17f24336c023230c7863384bc53a85d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e634f2_ea9f095c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T15:31:10Z",
+      "side": 1,
+      "message": "Done, though I\u0027m not sure if the comment makes sense anymore so I removed it.",
+      "parentUuid": "d815f10a_98d1b67a",
       "range": {
         "startLine": 2830,
         "startChar": 6,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f2febc_70a48f89",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2845,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T15:31:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a63c9716_2edd6c7d",
+      "range": {
+        "startLine": 2845,
+        "startChar": 22,
+        "endLine": 2845,
+        "endChar": 30
+      },
+      "revId": "ff33ada17f24336c023230c7863384bc53a85d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15d02c83_9a03275e",
@@ -100,6 +172,24 @@
       "writtenOn": "2020-12-09T23:04:34Z",
       "side": 1,
       "message": "Add godoc for this.  I also wonder if this is accurate, as there are modules like libc that are available to vendors because they are in the LLNDK, but do not have vendor_available property set.  That is going to be tricky to describe in a comment.\n\nIdeally we can remove this, see the comment in cc.go.",
+      "revId": "ff33ada17f24336c023230c7863384bc53a85d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a255cbc_415d3351",
+        "filename": "cc/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T15:31:10Z",
+      "side": 1,
+      "message": "Removed this in favor of IsVndkPrivate.",
+      "parentUuid": "15d02c83_9a03275e",
       "revId": "ff33ada17f24336c023230c7863384bc53a85d79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
