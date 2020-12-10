@@ -109,6 +109,13 @@ type StaticLibraryInfo struct {
 
 var StaticLibraryInfoProvider = blueprint.NewProvider(StaticLibraryInfo{})
 
+// HeaderLibraryInfo is a marker provider that identifies a module as a header library.
+type HeaderLibraryInfo struct {
+}
+
+// HeaderLibraryInfoProvider is a marker provider that identifies a module as a header library.
+var HeaderLibraryInfoProvider = blueprint.NewProvider(HeaderLibraryInfo{})
+
 type FlagExporterInfo struct {
 	IncludeDirs       android.Paths
 	SystemIncludeDirs android.Paths
