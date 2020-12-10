@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e414be3f_14b1a450",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-10T04:54:38Z",
+      "side": 1,
+      "message": "One of the things I talked with Rupert about yesterday is that we use the dist dir directly instead of doing a post-copy stop so that even if the build dies in the middle, we still get partial artifacts out (most importantly, the log files from soong_ui, but the installed_files.txt and some other ninja-graph generated files have been very useful to debug issues in the past too).\n\nSo I think we need to be pretty careful to keep the log files pointing to the $DIST_DIR directly, and only use the rigged dist dir for the kati/bazel action-graph-generated files. (The log rotating also wouldn\u0027t work properly with the renames)\n\nIf you rebase this, I think this may get somewhat easier, as Patrice just replaced the logic below with config.LogsDir(); so we may be able to get away with having DistDir() be the rigged version when UseBazel() and LogsDir() always be the real one.",
+      "parentUuid": "a1a432ed_b735ca97",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "5fbb9a86c1e8e3390645654a6b2c1ed804c30e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8880bcf0_64217c58",
         "filename": "ui/build/bazel.go",
         "patchSetId": 1
