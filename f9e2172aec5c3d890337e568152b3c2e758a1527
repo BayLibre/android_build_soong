@@ -16,6 +16,24 @@
       "message": "Ping for owners review.",
       "revId": "f9e2172aec5c3d890337e568152b3c2e758a1527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ecde3f8_58d23b73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T15:32:21Z",
+      "side": 1,
+      "message": "(Whoops, this was an old drafted comment, owner review is already under way 😊)",
+      "parentUuid": "ec4b98fa_39f145b6",
+      "revId": "f9e2172aec5c3d890337e568152b3c2e758a1527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
