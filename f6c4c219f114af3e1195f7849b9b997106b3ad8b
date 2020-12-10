@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69986bb7_27c08563",
+        "filename": "android/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T20:41:26Z",
+      "side": 1,
+      "message": "Ahh good point. I refactored this a bit so the library now has a dependency on all the SourceProvider generated sources.",
+      "parentUuid": "40fec10c_dd211345",
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b6e12cc_4f94199f",
@@ -75,6 +93,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b34054_4886a583",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T20:41:26Z",
+      "side": 1,
+      "message": "Not sure I totally follow, it\u0027s not empty as it\u0027s populated in the following for loop which should always execute. I did add a check though to ensure that protoFiles isn\u0027t empty. (Feel free to reopen if this isn\u0027t resolved)",
+      "parentUuid": "8b6e12cc_4f94199f",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 35
+      },
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5309bbf2_85ee8074",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T20:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "167e8ecd_059b232e",
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3946baf5_8115c518",
@@ -88,6 +148,30 @@
       "writtenOn": "2020-12-01T18:22:53Z",
       "side": 1,
       "message": "Nit continuation - for example, here you expand an empty list and append it to a singleton list...",
+      "range": {
+        "startLine": 118,
+        "startChar": 72,
+        "endLine": 118,
+        "endChar": 90
+      },
+      "revId": "f6c4c219f114af3e1195f7849b9b997106b3ad8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7494ca93_29302761",
+        "filename": "rust/protobuf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-10T20:41:26Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "3946baf5_8115c518",
       "range": {
         "startLine": 118,
         "startChar": 72,
