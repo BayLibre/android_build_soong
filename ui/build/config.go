@@ -65,6 +65,9 @@ type configImpl struct {
 	brokenNinjaEnvVars []string
 
 	pathReplaced bool
+
+	useBazel      bool
+	riggedDistDir string
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
@@ -279,10 +282,25 @@ func NewConfig(ctx Context, args ...string) Config {
 	if err := os.RemoveAll(bpd); err != nil {
 		ctx.Fatalf("Unable to remove bazel profile directory %q: %v", bpd, err)
 	}
+
+	if v, ok := ret.environ.Get("USE_BAZEL"); ok {
+		v = strings.TrimSpace(v)
+		if v != "" && v != "false" {
+			ret.useBazel = true
+		}
+	}
+
 	if ret.UseBazel() {
 		if err := os.MkdirAll(bpd, 0777); err != nil {
 			ctx.Fatalf("Failed to create bazel profile directory %q: %v", bpd, err)
 		}
+	}
+
+	if ret.UseBazel() {
+		ret.riggedDistDir = filepath.Join(ret.OutDir(), "dist")
+	} else {
+		// Not rigged
+		ret.riggedDistDir = ret.distDir
 	}
 
 	c := Config{ret}
@@ -697,6 +715,14 @@ func (c *configImpl) OutDir() string {
 }
 
 func (c *configImpl) DistDir() string {
+	if c.UseBazel() {
+		return c.riggedDistDir
+	} else {
+		return c.distDir
+	}
+}
+
+func (c *configImpl) RealDistDir() string {
 	return c.distDir
 }
 
@@ -863,13 +889,7 @@ func (c *configImpl) UseRBE() bool {
 }
 
 func (c *configImpl) UseBazel() bool {
-	if v, ok := c.environ.Get("USE_BAZEL"); ok {
-		v = strings.TrimSpace(v)
-		if v != "" && v != "false" {
-			return true
-		}
-	}
-	return false
+	return c.useBazel
 }
 
 func (c *configImpl) StartRBE() bool {
