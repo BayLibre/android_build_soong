@@ -22,6 +22,30 @@
       },
       "revId": "5f6e3510633aedc3621f87cfcda45b021cbf28fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d75b9ba_2a791779",
+        "filename": "ui/build/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-10T23:46:04Z",
+      "side": 1,
+      "message": "Thanks, gonna leave this as is for now though, because Gerrit fails at remembering LGTMs... \n\nWill change it if we find another bug to fix though",
+      "parentUuid": "a34a393c_bf2e80c9",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 21
+      },
+      "revId": "5f6e3510633aedc3621f87cfcda45b021cbf28fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
