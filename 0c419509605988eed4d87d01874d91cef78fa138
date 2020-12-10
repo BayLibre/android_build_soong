@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1896f09d_5572c994",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-10T06:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9b32194_a9dd85fc",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "0c419509605988eed4d87d01874d91cef78fa138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "80916b0c_42e954f5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bdd3be9_46bedae7",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-10T06:48:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07e8736d_afed5cae",
+      "range": {
+        "startLine": 285,
+        "startChar": 18,
+        "endLine": 285,
+        "endChar": 51
+      },
+      "revId": "0c419509605988eed4d87d01874d91cef78fa138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09f9c016_7941913f",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-10T01:48:33Z",
       "side": 1,
       "message": "Shouldn\u0027t this be fixed too? I see now that it isn\u0027t necessary to avoid duplicate AndroidMk entries, because the non-stub variant gets a \".bootstrap\" suffix if the stub is enabled. Still, having those .bootstrap entries doesn\u0027t make much sense for the prebuilt stubs.\n\nMaybe ApexInfo should have a separate state to record that it hasn\u0027t been apex mutated and therefore has no ApexVariantionName at all?",
+      "range": {
+        "startLine": 1447,
+        "startChar": 4,
+        "endLine": 1447,
+        "endChar": 29
+      },
+      "revId": "0c419509605988eed4d87d01874d91cef78fa138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67baa48f_7a1e43f4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-10T06:48:07Z",
+      "side": 1,
+      "message": "Tried to fix that (I was able to remove the condition prebuilt() \u003d\u003d nil in your test), but found that there are some prebuilt libraries that provide both stubs and impl libs. libclang_rt.asan-aarch64-android is one of them. I am not super comfortable with the extra entry, but until we have a good way of distinguishing the different types of prebuilts, I think we should (and can) live with those.",
+      "parentUuid": "09f9c016_7941913f",
       "range": {
         "startLine": 1447,
         "startChar": 4,
