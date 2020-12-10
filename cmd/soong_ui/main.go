@@ -18,6 +18,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -172,6 +173,10 @@ func main() {
 	config := c.config(buildCtx, args...)
 
 	build.SetupOutDir(buildCtx, config)
+
+	if config.UseBazel() {
+		defer populateExternalDistDir(buildCtx, config)
+	}
 
 	// Set up files to be outputted in the log directory.
 	logsDir := config.OutDir()
@@ -512,4 +517,47 @@ func getCommand(args []string) (*command, []string, error) {
 
 	// command not found
 	return nil, nil, fmt.Errorf("Command not found: %q", args)
+}
+
+// For Bazel support, this moves files and directories from e.g. out/dist/$f to DIST_DIR/$f if necessary.
+func populateExternalDistDir(ctx build.Context, config build.Config) {
+	// Make sure that internalDistDirPath and externalDistDirPath are both absolute paths, so we can compare them
+	var err error
+	var internalDistDirPath string
+	var externalDistDirPath string
+	if internalDistDirPath, err = filepath.Abs(config.DistDir()); err != nil {
+		ctx.Fatalf("Unable to find absolute path of %s: %s", internalDistDirPath, err)
+	}
+	if externalDistDirPath, err = filepath.Abs(config.RealDistDir()); err != nil {
+		ctx.Fatalf("Unable to find absolute path of %s: %s", externalDistDirPath, err)
+	}
+	if externalDistDirPath == internalDistDirPath {
+		return
+	}
+
+	// Make sure the external DIST_DIR actually exists before trying to write to it
+	if err = os.MkdirAll(externalDistDirPath, 0755); err != nil {
+		ctx.Fatalf("Unable to make directory %s: %s", externalDistDirPath, err)
+	}
+
+	ctx.Println("Populating external DIST_DIR...")
+
+	files, err := ioutil.ReadDir(internalDistDirPath)
+	if err != nil {
+		ctx.Fatalf("Can't read internal distdir %s: %s", internalDistDirPath, err)
+	}
+	for _, f := range files {
+		internalFilePath := filepath.Join(internalDistDirPath, f.Name())
+		externalFilePath := filepath.Join(externalDistDirPath, f.Name())
+
+		// Before renaming, remove the existing file/dir (if any) in the external DIST_DIR
+		if err := os.RemoveAll(externalFilePath); err != nil {
+			ctx.Fatalf("Unable to remove existing %s: %s", externalFilePath, err)
+		}
+
+		// Rename instead of copy in order to save disk space.
+		if err := os.Rename(internalFilePath, externalFilePath); err != nil {
+			ctx.Fatalf("Unable to rename %s -> %s due to error %s", internalFilePath, externalFilePath, err)
+		}
+	}
 }
