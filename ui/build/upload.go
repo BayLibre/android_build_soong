@@ -42,7 +42,7 @@ var (
 
 // pruneMetricsFiles iterates the list of paths, checking if a path exist.
 // If a path is a file, it is added to the return list. If the path is a
-// directory, a recurvise call is made to add the children files of the
+// directory, a recursive call is made to add the children files of the
 // path.
 func pruneMetricsFiles(paths []string) []string {
 	var metricsFiles []string
