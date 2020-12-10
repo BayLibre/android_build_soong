@@ -902,6 +902,12 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 			return !externalDep
 		}
 
+		depTag := ctx.OtherModuleDependencyTag(to)
+		if skipDepInfoCheckTag, ok := depTag.(android.SkipDepInfoCheckTag); ok && skipDepInfoCheckTag.SkipDepInfoCheck() {
+			// Check to see if dependency been marked to skip the dependency check
+			return !externalDep
+		}
+
 		if info, exists := depInfos[to.Name()]; exists {
 			if !android.InList(from.Name(), info.From) {
 				info.From = append(info.From, from.Name())

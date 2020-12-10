@@ -204,6 +204,13 @@ type sanitize struct {
 	Properties SanitizeProperties
 }
 
+// Mark this tag with a check to see if apex dependency check should be skipped
+func (t libraryDependencyTag) SkipDepInfoCheck() bool {
+	return t.skipDepInfoCheckInApex
+}
+
+var _ android.SkipDepInfoCheckTag = (*libraryDependencyTag)(nil)
+
 func init() {
 	android.RegisterMakeVarsProvider(pctx, cfiMakeVarsProvider)
 	android.RegisterMakeVarsProvider(pctx, hwasanMakeVarsProvider)
@@ -1026,7 +1033,7 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 				}
 
 				// static executable gets static runtime libs
-				depTag := libraryDependencyTag{Kind: staticLibraryDependency}
+				depTag := libraryDependencyTag{Kind: staticLibraryDependency, skipDepInfoCheckInApex: false}
 				variations := append(mctx.Target().Variations(),
 					blueprint.Variation{Mutator: "link", Variation: "static"})
 				if c.Device() {
@@ -1041,9 +1048,10 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 						runtimeLibrary = lib
 					}
 				}
-
+				// Skip apex check for sharedLibraryDependency when sanitizer diags are enabled
+				diagEnabled := len(diagSanitizers) > 0
 				// dynamic executable and shared libs get shared runtime libs
-				depTag := libraryDependencyTag{Kind: sharedLibraryDependency, Order: earlyLibraryDependency}
+				depTag := libraryDependencyTag{Kind: sharedLibraryDependency, Order: earlyLibraryDependency, skipDepInfoCheckInApex: diagEnabled}
 				variations := append(mctx.Target().Variations(),
 					blueprint.Variation{Mutator: "link", Variation: "shared"})
 				if c.Device() {
