@@ -94,6 +94,30 @@
       },
       "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8bb2e0a_4988292a",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-10T05:46:57Z",
+      "side": 1,
+      "message": "So there\u0027s a single dist_dir for buildbot and all build commands executed as part of a build. In many cases, that\u0027s just buildbot and a single `m dist` equivalent; or for incremental builds, buildbot, `m dist installclean`, and `m dist` (installclean won\u0027t write artifacts, but it will write logs). But it\u0027s equally valid to run several build commands in a row and point them all to the same dist dir. A few examples of when we do several builds inside a build server \u0027build\u0027 (though none of these use make, so their DIST_DIR support is handcoded):\n\n* mainline modules builds run soong_ui.bash once for each architecture combination -- arm; arm+arm64; x86; x86+x86_64.\n* aosp-build-tools builds once normally, then once with ASAN enabled.\n\nfor buildbot, from glancing at an artifact page, this list is at least mostly complete:\n\n  BUILD_INFO (which gets written after the build)\n  COPIED (also written after the build)\n  applied.prop\n  logs/STARTED\n  logs/SUCCEEDED (written after a build succeeds)\n  logs/FAILED (written after a build fails)\n  logs/build-banner.txt\n  logs/build.log  (stdout+stderr from the build command)\n  logs/build_tee_error.log  (stderr from the build command)\n  logs/buildbot_trace.trace\n  logs/last_build.info\n  logs/warnings.csv  (* written by an implicit after-build invocation of build/make/tools/warn.py)\n  logs/warnings.html (^^^)\n  manifest_\u003cbid\u003e.xml\n  ninja_log  (this is copied by buildbot from out/.ninja_log after a build for debugging)\n  repo.prop\n\nAnd logs/build_progress.pb is used as a communication mechanism between soong_ui and buildbot to report build status, so it\u0027s a bit special. Written by soong_ui, read by buildbot during a build.\n\nIt would be cleaner if the buildbot artifacts were more separated from the build command artifacts, but it\u0027s an incredible amount of work to track down and change all the consumers of a specific build artifact to support multiple paths (as whatever we\u0027re doing today is still going to be built on some branch for 3-4+ years), so they tend to be more add-only than malleable. And it generally hasn\u0027t been causing issues except for a few times where someone well-intentioned does a  `rm -rf $DIST_DIR` and wonders why the presubmits fail or act strangely 🙂.",
+      "parentUuid": "e8b3579c_e9be59bd",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 2
+      },
+      "revId": "4fe9ce95f6377b85a6e473e4a0789924c043c4d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
