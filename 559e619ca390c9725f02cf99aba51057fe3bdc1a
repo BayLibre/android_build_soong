@@ -33,6 +33,24 @@
       "message": "Can you add module description comments to these factory functions to be shown in Soong docs?",
       "revId": "559e619ca390c9725f02cf99aba51057fe3bdc1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd348a82_359cb7da",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-10T12:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051edef8_e486be03",
+      "revId": "559e619ca390c9725f02cf99aba51057fe3bdc1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
