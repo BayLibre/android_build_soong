@@ -50,6 +50,23 @@
       "message": "Gentle ping\n\n(failure is unrelated. retrying.)\n\n",
       "revId": "e3867548986027f8430fc9ab17cc12c0b7cdb599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4163c8f9_6e140b06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-10T08:05:40Z",
+      "side": 1,
+      "message": "Hi Colin and Jaewong, \n\nI know that you two are busy, but could you take a minute to look into or approve this? This is blocking multiple people\u0027s work.",
+      "revId": "e3867548986027f8430fc9ab17cc12c0b7cdb599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
