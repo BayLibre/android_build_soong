@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6241106_338ecef3",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-10T19:42:20Z",
+      "side": 1,
+      "message": "Why use versionedInterface here instead of libraryInterface?  Is there some case where we are failing to set c.library?",
+      "range": {
+        "startLine": 1079,
+        "startChar": 0,
+        "endLine": 1080,
+        "endChar": 31
+      },
+      "revId": "f31faf5b4974d0ae6a9e2bc6d00c3e508da8e7f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
