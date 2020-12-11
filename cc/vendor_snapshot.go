@@ -85,7 +85,6 @@ var (
 	// Modules under following directories are ignored. They are OEM's and vendor's
 	// proprietary modules(device/, kernel/, vendor/, and hardware/).
 	recoveryProprietaryDirs = []string{
-		"bootable/recovery",
 		"device",
 		"hardware",
 		"kernel",
@@ -192,7 +191,7 @@ func isSnapshotAware(m *Module, inProprietaryPath bool, apexInfo android.ApexInf
 	}
 	// If the module would be included based on its path, check to see if
 	// the module is marked to be excluded. If so, skip it.
-	if m.ExcludeFromVendorSnapshot() {
+	if image.excludeFromSnapshot(m) {
 		return false
 	}
 	if m.Target().Os.Class != android.Device {
@@ -287,7 +286,7 @@ type snapshotJsonFlags struct {
 }
 
 func (c *snapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
-	// BOARD_VNDK_VERSION must be set to 'current' in order to generate a vendor snapshot.
+	// BOARD_VNDK_VERSION must be set to 'current' in order to generate a snapshot.
 	if ctx.DeviceConfig().VndkVersion() != "current" {
 		return
 	}
@@ -477,7 +476,7 @@ func (c *snapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 		inProprietaryPath := c.image.isProprietaryPath(moduleDir)
 		apexInfo := ctx.ModuleProvider(module, android.ApexInfoProvider).(android.ApexInfo)
 
-		if m.ExcludeFromVendorSnapshot() {
+		if c.image.excludeFromSnapshot(m) {
 			if inProprietaryPath {
 				// Error: exclude_from_vendor_snapshot applies
 				// to framework-path modules only.
