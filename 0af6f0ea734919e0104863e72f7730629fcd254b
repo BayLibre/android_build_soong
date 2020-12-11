@@ -49,6 +49,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "59dd742c_6cc8d17b",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2597,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-11T01:02:18Z",
+      "side": 1,
+      "message": "Obsoleted",
+      "parentUuid": "a6f5505a_5c100b67",
+      "range": {
+        "startLine": 2597,
+        "startChar": 1,
+        "endLine": 2597,
+        "endChar": 36
+      },
+      "revId": "0af6f0ea734919e0104863e72f7730629fcd254b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4ecdd323_a929fc74",
         "filename": "python/python.go",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2020-12-10T20:43:48Z",
       "side": 1,
       "message": "optional: Most of these seem to be recreating behavior in HostToolPath -- any reason to not call HostToolPath() and check for validity of that optional file or refactor out something in common?",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 2
+      },
+      "revId": "0af6f0ea734919e0104863e72f7730629fcd254b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b732ec8c_be77b245",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-11T01:02:18Z",
+      "side": 1,
+      "message": "I started converting these to check HostToolPath().Valid() first, but then they were all identical, so I went back to just making the caller check HostToolPath.Vaild() and then call TransitivePackagingSpecs().",
+      "parentUuid": "4ecdd323_a929fc74",
       "range": {
         "startLine": 318,
         "startChar": 0,
