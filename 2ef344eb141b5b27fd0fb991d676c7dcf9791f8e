@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ae817c_388d5215",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-11T12:48:54Z",
+      "side": 1,
+      "message": "PS. All these invoke soong_ui.bash and are a bit slow, and it\u0027s possible to combine them to a single call using --dumpvars-mode. I\u0027ve got a local change for that but haven\u0027t bothered uploading it since these scripts should go away soon.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 85
+      },
+      "revId": "2ef344eb141b5b27fd0fb991d676c7dcf9791f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044895d2_5eb4ead3",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-11T12:48:54Z",
+      "side": 1,
+      "message": "Maybe move this down a few lines to not break up the PLATFORM_VERSION_ALL_CODENAMES handling.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 89
+      },
+      "revId": "2ef344eb141b5b27fd0fb991d676c7dcf9791f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
