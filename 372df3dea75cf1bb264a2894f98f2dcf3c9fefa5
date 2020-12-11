@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92461e33_de0708e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T12:11:19Z",
+      "side": 1,
+      "message": "Self +2 as only reformatted comments since last change which jiyong@ +2\u0027d.",
+      "revId": "372df3dea75cf1bb264a2894f98f2dcf3c9fefa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
