@@ -16,6 +16,24 @@
       "message": "MISSING_USES_LIBRARIES has to be [] when it\u0027s empty, or else there\u0027ll be a json parse error.",
       "revId": "51214cf3b1128da9a8330ac2d0ec450f4d5a1ed3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4428495a_489ef3f8",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-11T14:21:35Z",
+      "side": 1,
+      "message": "This time I think I got it right (also removed -E option to sed as ERE support is apparently non-POSIX for sed https://pubs.opengroup.org/onlinepubs/009604499/utilities/sed.html#tag_04_126_13_02).",
+      "parentUuid": "95f38e33_e4743198",
+      "revId": "51214cf3b1128da9a8330ac2d0ec450f4d5a1ed3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
