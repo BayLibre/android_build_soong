@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54ada4b_f9a39992",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "150ec89a_ec7f9d3f",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "56d87ad1aa9e8b52f583e0bc0e30050bb9009376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7322b82f_41bea95b",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-11T16:22:34Z",
       "side": 1,
       "message": "in?",
+      "range": {
+        "startLine": 623,
+        "startChar": 45,
+        "endLine": 623,
+        "endChar": 47
+      },
+      "revId": "56d87ad1aa9e8b52f583e0bc0e30050bb9009376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceebba7f_5128da4c",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7322b82f_41bea95b",
       "range": {
         "startLine": 623,
         "startChar": 45,

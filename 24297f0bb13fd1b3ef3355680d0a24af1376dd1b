@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e84969f_3f5b3d98",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "I think types would definitely be better but if you don\u0027t mind I\u0027ll leave this as is for now and come back to it later.",
+      "parentUuid": "4d91f3d2_77a45083",
+      "range": {
+        "startLine": 650,
+        "startChar": 38,
+        "endLine": 650,
+        "endChar": 63
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b0d04a2_f09db447",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-11T16:22:34Z",
       "side": 1,
       "message": "Consider:\n\n  paths :\u003d make(Paths, 0, len(ac.exports))",
+      "range": {
+        "startLine": 705,
+        "startChar": 1,
+        "endLine": 705,
+        "endChar": 16
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "012557d9_d507d117",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0d04a2_f09db447",
       "range": {
         "startLine": 705,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "807543fb_d0c784c6",
+        "filename": "android/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Great idea. Done.",
+      "parentUuid": "8cd45eb4_74ab04ef",
+      "range": {
+        "startLine": 32,
+        "startChar": 57,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7736c62_e5eaebbc",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-11T16:22:34Z",
       "side": 1,
       "message": "Naming is non-uniform: here it is PathForModuleOut / PathForModuleWithoutVariantOut, and above it is pathForModuleVariant / pathForModule (in one case the name emphasizes the presence of variant, and in other case the absence of it).",
+      "range": {
+        "startLine": 1226,
+        "startChar": 5,
+        "endLine": 1226,
+        "endChar": 35
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcfacc61_fd433ddc",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "I can\u0027t do much about PathForModuleOut() as that is used in hundreds of places. I can make the internal names a bit more consistent.",
+      "parentUuid": "d7736c62_e5eaebbc",
       "range": {
         "startLine": 1226,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8de5de06_63ad8426",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d9ee8a_8a772810",
+      "range": {
+        "startLine": 132,
+        "startChar": 18,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55d71497_74a41444",
@@ -146,6 +266,30 @@
       "writtenOn": "2020-12-11T16:22:34Z",
       "side": 1,
       "message": "\"if\" missing",
+      "range": {
+        "startLine": 221,
+        "startChar": 16,
+        "endLine": 221,
+        "endChar": 18
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6e40e2_559bccbe",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d71497_74a41444",
       "range": {
         "startLine": 221,
         "startChar": 16,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c8ca87b_de514051",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e328d22_4fbec04e",
+      "range": {
+        "startLine": 223,
+        "startChar": 45,
+        "endLine": 223,
+        "endChar": 61
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c6a13d0_1458c5e3",
@@ -192,6 +360,30 @@
       "writtenOn": "2020-12-11T16:22:34Z",
       "side": 1,
       "message": "is? \"the set\"",
+      "range": {
+        "startLine": 239,
+        "startChar": 29,
+        "endLine": 239,
+        "endChar": 32
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e55e4a_5b6f8a75",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "The subject is \"set of exported files\" which is plural so \"are\" is correct. If I was to say \"exported files set\" then that would be singular and so \"is\" would be correct.",
+      "parentUuid": "1c6a13d0_1458c5e3",
       "range": {
         "startLine": 239,
         "startChar": 29,
@@ -225,6 +417,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "997465a0_9a3a6e37",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "I\u0027ll extract the common function but I\u0027ll leave the comment.",
+      "parentUuid": "a086a1e4_79f80a66",
+      "range": {
+        "startLine": 304,
+        "startChar": 13,
+        "endLine": 304,
+        "endChar": 53
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ad22702_0660cabc",
@@ -238,6 +454,30 @@
       "writtenOn": "2020-12-11T16:22:34Z",
       "side": 1,
       "message": "Did you forget to remove debug?",
+      "range": {
+        "startLine": 2848,
+        "startChar": 2,
+        "endLine": 2848,
+        "endChar": 64
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce161c8_1ca83f30",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2848,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Oops. Done.",
+      "parentUuid": "3ad22702_0660cabc",
       "range": {
         "startLine": 2848,
         "startChar": 2,
@@ -311,6 +551,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12076cb_3336e200",
+        "filename": "scripts/unpack-prebuilt-apex.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "\"set -e\" at the top will cause the script to fail if any of its commands fail so the return code of this will be checked implicitly by bash.",
+      "parentUuid": "5c9a5ed9_95f6b8fb",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 74
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "732ef0ed_9c1dbbbe",
@@ -334,6 +598,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df38782e_dd639237",
+        "filename": "scripts/unpack-prebuilt-apex.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "732ef0ed_9c1dbbbe",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eab45704_a1fd8f0c",
@@ -347,6 +635,24 @@
       "writtenOn": "2020-12-11T16:22:34Z",
       "side": 1,
       "message": "Lines 52-54 do not redirect to stderr, unlike 46. Is this intentional?",
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf99b0d_668488d2",
+        "filename": "scripts/unpack-prebuilt-apex.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-11T18:34:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab45704_a1fd8f0c",
       "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
