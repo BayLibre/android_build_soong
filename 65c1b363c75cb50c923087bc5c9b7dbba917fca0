@@ -22,6 +22,30 @@
       },
       "revId": "65c1b363c75cb50c923087bc5c9b7dbba917fca0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27b7cfbf_2e3f2280",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-11T00:22:50Z",
+      "side": 1,
+      "message": "This changes the behavior here -- logsDir was always pointing to $OUT_DIR/logs, on both local and build server builds. Then with `dist` it would zip up those log files and put them into the dist directory.\n\nThis tool is different because those log files are really the end artifacts for the tool, not byproducts. And there\u0027s one per-product, so you can end up with hundreds of directories, each with several log files: https://ci.android.com/builds/submitted/7025877/build_test/latest (download logs.zip)\n\nIt also keeps around previous logs when in incremental mode, and storing those directly in the dist directory would cause them to be cleared on every build. (This functionality is probably less useful than I hoped when originally adding it...)\n\n(The normal soong.log / build.trace was always in the config.LogsDir())",
+      "parentUuid": "33400ece_eceefd9a",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 55
+      },
+      "revId": "65c1b363c75cb50c923087bc5c9b7dbba917fca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
