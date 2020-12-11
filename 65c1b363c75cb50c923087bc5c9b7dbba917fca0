@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33400ece_eceefd9a",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-11T00:10:49Z",
+      "side": 1,
+      "message": "Dan - I tried simplifying this some more. What do you think?",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 55
+      },
+      "revId": "65c1b363c75cb50c923087bc5c9b7dbba917fca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
