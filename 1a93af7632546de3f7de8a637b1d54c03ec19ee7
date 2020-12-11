@@ -16,6 +16,24 @@
       "message": "Anton, do you own the library? The library has a reference to a symbol like Build.VERSION_CODES.R, but is marked as min_sdk_version: 29. Can the library run on such a pre-R platform?",
       "revId": "1a93af7632546de3f7de8a637b1d54c03ec19ee7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967fc947_ba539678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-11T10:28:41Z",
+      "side": 1,
+      "message": "That one is a static final int so will get inlined by javac",
+      "parentUuid": "c3c0df58_029ef24f",
+      "revId": "1a93af7632546de3f7de8a637b1d54c03ec19ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
