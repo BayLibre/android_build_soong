@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a592a2b_93b1efa8",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-11T13:12:20Z",
+      "side": 1,
+      "message": "Btw, note that this will expand to [\"\"] if there are no INTERNAL_PLATFORM_MISSING_USES_LIBRARIES, but I don\u0027t know if that may be a problem.",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 53
+      },
+      "revId": "2169c753bae2b2667bf952d12948932316213612",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
