@@ -22,6 +22,30 @@
       },
       "revId": "2169c753bae2b2667bf952d12948932316213612",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f29daa6_308c73b6",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-11T13:58:07Z",
+      "side": 1,
+      "message": "Good point. It wouldn\u0027t be a problem (the effect would be to filter out empty string from the list of module names, so a no-op).\n\nBut I fixed it anyway.",
+      "parentUuid": "7a592a2b_93b1efa8",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 53
+      },
+      "revId": "2169c753bae2b2667bf952d12948932316213612",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
