@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c0df58_029ef24f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-11T02:55:06Z",
+      "side": 1,
+      "message": "Anton, do you own the library? The library has a reference to a symbol like Build.VERSION_CODES.R, but is marked as min_sdk_version: 29. Can the library run on such a pre-R platform?",
+      "revId": "1a93af7632546de3f7de8a637b1d54c03ec19ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
