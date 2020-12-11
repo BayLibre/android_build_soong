@@ -261,7 +261,11 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		if snapshot, ok := m.linker.(interface {
 			version() string
 		}); ok {
-			vendorVariants = append(vendorVariants, snapshot.version())
+			if m.InstallInRecovery() {
+				recoveryVariantNeeded = true
+			} else {
+				vendorVariants = append(vendorVariants, snapshot.version())
+			}
 		} else {
 			mctx.ModuleErrorf("version is unknown for snapshot prebuilt")
 		}

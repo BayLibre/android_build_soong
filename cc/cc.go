@@ -52,6 +52,8 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		ctx.BottomUp("sysprop_cc", SyspropMutator).Parallel()
 		ctx.BottomUp("vendor_snapshot", VendorSnapshotMutator).Parallel()
 		ctx.BottomUp("vendor_snapshot_source", VendorSnapshotSourceMutator).Parallel()
+		ctx.BottomUp("recovery_snapshot", RecoverySnapshotMutator).Parallel()
+		ctx.BottomUp("recovery_snapshot_source", RecoverySnapshotSourceMutator).Parallel()
 	})
 
 	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -1836,6 +1838,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 		vendorPublicLibraries := vendorPublicLibraries(actx.Config())
 		vendorSnapshotSharedLibs := vendorSnapshotSharedLibs(actx.Config())
+		recoverySnapshotSharedLibs := recoverySnapshotSharedLibs(actx.Config())
 
 		rewriteVendorLibs := func(lib string) string {
 			if isLlndkLibrary(lib, ctx.Config()) {
@@ -1860,7 +1863,14 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			for _, entry := range list {
 				// strip #version suffix out
 				name, _ := StubsLibNameAndVersion(entry)
-				if ctx.useSdk() && inList(name, *getNDKKnownLibs(ctx.Config())) {
+				if c.InRecovery() {
+					if snapshot, ok := recoverySnapshotSharedLibs.get(
+						name, actx.Arch().ArchType); ok {
+						nonvariantLibs = append(nonvariantLibs, snapshot)
+					} else {
+						nonvariantLibs = append(nonvariantLibs, name)
+					}
+				} else if ctx.useSdk() && inList(name, *getNDKKnownLibs(ctx.Config())) {
 					variantLibs = append(variantLibs, name+ndkLibrarySuffix)
 				} else if ctx.useVndk() {
 					nonvariantLibs = append(nonvariantLibs, rewriteVendorLibs(entry))
@@ -1892,9 +1902,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 	}
 
-	rewriteSnapshotLibs := func(lib string, snapshotMap *snapshotMap) string {
+	rewriteSnapshotLibs := func(lib string, snapshotMap *snapshotMap, checkVndk bool) string {
 		// only modules with BOARD_VNDK_VERSION uses snapshot.
-		if c.VndkVersion() != actx.DeviceConfig().VndkVersion() {
+		if checkVndk && c.VndkVersion() != actx.DeviceConfig().VndkVersion() {
 			return lib
 		}
 
@@ -1906,13 +1916,18 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	vendorSnapshotHeaderLibs := vendorSnapshotHeaderLibs(actx.Config())
+	recoverySnapshotHeaderLibs := recoverySnapshotHeaderLibs(actx.Config())
 	for _, lib := range deps.HeaderLibs {
 		depTag := libraryDependencyTag{Kind: headerLibraryDependency}
 		if inList(lib, deps.ReexportHeaderLibHeaders) {
 			depTag.reexportFlags = true
 		}
 
-		lib = rewriteSnapshotLibs(lib, vendorSnapshotHeaderLibs)
+		if c.InRecovery() {
+			lib = rewriteSnapshotLibs(lib, recoverySnapshotHeaderLibs, false)
+		} else {
+			lib = rewriteSnapshotLibs(lib, vendorSnapshotHeaderLibs, true)
+		}
 
 		if c.IsStubs() {
 			actx.AddFarVariationDependencies(append(ctx.Target().Variations(), c.ImageVariation()),
@@ -1929,6 +1944,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	// static_libs, and shared_libs.
 	syspropImplLibraries := syspropImplLibraries(actx.Config())
 	vendorSnapshotStaticLibs := vendorSnapshotStaticLibs(actx.Config())
+	recoverySnapshotStaticLibs := recoverySnapshotStaticLibs(actx.Config())
 
 	for _, lib := range deps.WholeStaticLibs {
 		depTag := libraryDependencyTag{Kind: staticLibraryDependency, wholeStatic: true, reexportFlags: true}
@@ -1936,7 +1952,11 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			lib = impl
 		}
 
-		lib = rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs)
+		if c.InRecovery() {
+			lib = rewriteSnapshotLibs(lib, recoverySnapshotStaticLibs, false)
+		} else {
+			lib = rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs, true)
+		}
 
 		actx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
@@ -1956,7 +1976,11 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			lib = impl
 		}
 
-		lib = rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs)
+		if c.InRecovery() {
+			lib = rewriteSnapshotLibs(lib, recoverySnapshotStaticLibs, false)
+		} else {
+			lib = rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs, true)
+		}
 
 		actx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
@@ -1968,16 +1992,30 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	// because Q libc doesn't have unwinder APIs
 	if deps.StaticUnwinderIfLegacy {
 		depTag := libraryDependencyTag{Kind: staticLibraryDependency, staticUnwinder: true}
-		actx.AddVariationDependencies([]blueprint.Variation{
-			{Mutator: "link", Variation: "static"},
-		}, depTag, rewriteSnapshotLibs(staticUnwinder(actx), vendorSnapshotStaticLibs))
+		if c.InRecovery() {
+			actx.AddVariationDependencies([]blueprint.Variation{
+				{Mutator: "link", Variation: "static"},
+			}, depTag, rewriteSnapshotLibs(
+				staticUnwinder(actx), recoverySnapshotStaticLibs, false))
+		} else {
+			actx.AddVariationDependencies([]blueprint.Variation{
+				{Mutator: "link", Variation: "static"},
+			}, depTag, rewriteSnapshotLibs(
+				staticUnwinder(actx), vendorSnapshotStaticLibs, true))
+		}
 	}
 
 	for _, lib := range deps.LateStaticLibs {
 		depTag := libraryDependencyTag{Kind: staticLibraryDependency, Order: lateLibraryDependency}
-		actx.AddVariationDependencies([]blueprint.Variation{
-			{Mutator: "link", Variation: "static"},
-		}, depTag, rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs))
+		if c.InRecovery() {
+			actx.AddVariationDependencies([]blueprint.Variation{
+				{Mutator: "link", Variation: "static"},
+			}, depTag, rewriteSnapshotLibs(lib, recoverySnapshotStaticLibs, false))
+		} else {
+			actx.AddVariationDependencies([]blueprint.Variation{
+				{Mutator: "link", Variation: "static"},
+			}, depTag, rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs, true))
+		}
 	}
 
 	// shared lib names without the #version suffix
@@ -2038,16 +2076,28 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	vendorSnapshotObjects := vendorSnapshotObjects(actx.Config())
+	recoverySnapshotObjects := recoverySnapshotObjects(actx.Config())
 
 	crtVariations := GetCrtVariations(ctx, c)
 	actx.AddVariationDependencies(crtVariations, objDepTag, deps.ObjFiles...)
-	if deps.CrtBegin != "" {
-		actx.AddVariationDependencies(crtVariations, CrtBeginDepTag,
-			rewriteSnapshotLibs(deps.CrtBegin, vendorSnapshotObjects))
-	}
-	if deps.CrtEnd != "" {
-		actx.AddVariationDependencies(crtVariations, CrtEndDepTag,
-			rewriteSnapshotLibs(deps.CrtEnd, vendorSnapshotObjects))
+	if c.InRecovery() {
+		if deps.CrtBegin != "" {
+			actx.AddVariationDependencies(crtVariations, CrtBeginDepTag,
+				rewriteSnapshotLibs(deps.CrtBegin, recoverySnapshotObjects, false))
+		}
+		if deps.CrtEnd != "" {
+			actx.AddVariationDependencies(crtVariations, CrtEndDepTag,
+				rewriteSnapshotLibs(deps.CrtEnd, recoverySnapshotObjects, false))
+		}
+	} else {
+		if deps.CrtBegin != "" {
+			actx.AddVariationDependencies(crtVariations, CrtBeginDepTag,
+				rewriteSnapshotLibs(deps.CrtBegin, vendorSnapshotObjects, true))
+		}
+		if deps.CrtEnd != "" {
+			actx.AddVariationDependencies(crtVariations, CrtEndDepTag,
+				rewriteSnapshotLibs(deps.CrtEnd, vendorSnapshotObjects, true))
+		}
 	}
 	if deps.LinkerFlagsFile != "" {
 		actx.AddDependency(c, linkerFlagsDepTag, deps.LinkerFlagsFile)
@@ -2755,6 +2805,7 @@ func baseLibName(depName string) string {
 
 func (c *Module) makeLibName(ctx android.ModuleContext, ccDep LinkableInterface, depName string) string {
 	vendorSuffixModules := vendorSuffixModules(ctx.Config())
+	recoverySuffixModules := recoverySuffixModules(ctx.Config())
 	vendorPublicLibraries := vendorPublicLibraries(ctx.Config())
 
 	libName := baseLibName(depName)
@@ -2773,6 +2824,8 @@ func (c *Module) makeLibName(ctx android.ModuleContext, ccDep LinkableInterface,
 
 			if vendorSuffixModules[baseName] {
 				return baseName + ".vendor"
+			} else if recoverySuffixModules[baseName] {
+				return baseName + ".recovery"
 			} else {
 				return baseName
 			}
