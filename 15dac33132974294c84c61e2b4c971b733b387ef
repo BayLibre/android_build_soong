@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff54a4d_d0d3982b",
+        "filename": "scripts/build-ndk-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-11T10:01:57Z",
+      "side": 1,
+      "message": "It doesn\u0027t work to query this using get_build_var, like PLATFORM_VERSION_ALL_CODENAMES above?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 37
+      },
+      "revId": "15dac33132974294c84c61e2b4c971b733b387ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
