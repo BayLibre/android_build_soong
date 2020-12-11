@@ -16,6 +16,24 @@
       "message": "This can be removed now?",
       "revId": "8be007d40ffbcc64fa901f1c7737a116f588e418",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e355d46_f92f02a8",
+        "filename": "android/defs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-11T19:54:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f7e69f7_e4191874",
+      "revId": "8be007d40ffbcc64fa901f1c7737a116f588e418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
