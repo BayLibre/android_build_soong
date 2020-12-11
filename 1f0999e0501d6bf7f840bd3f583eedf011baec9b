@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab08fae0_0411a467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-11T05:22:53Z",
+      "side": 1,
+      "message": "Thanks. Squashed PS2 into my change.",
+      "parentUuid": "671061a8_02e3b673",
+      "revId": "1f0999e0501d6bf7f840bd3f583eedf011baec9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b150f0b7_811a6767",
