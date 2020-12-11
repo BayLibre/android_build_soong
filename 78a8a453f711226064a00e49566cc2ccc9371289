@@ -16,6 +16,23 @@
       "message": "Hi Colin, Would you help owner-review this stack of CL?",
       "revId": "78a8a453f711226064a00e49566cc2ccc9371289",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf9526f4_d39c4d89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-12-11T11:17:09Z",
+      "side": 1,
+      "message": "Ping, PTAL.",
+      "revId": "78a8a453f711226064a00e49566cc2ccc9371289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
