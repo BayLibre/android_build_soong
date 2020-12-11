@@ -70,6 +70,30 @@
       },
       "revId": "65c1b363c75cb50c923087bc5c9b7dbba917fca0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c380b59_1075ed3a",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-12-11T01:04:22Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s used later on in the mpCtx (then in buildProduct), it was just set up at the same time, with a confusingly similar name.\n\nAnd as much as the newer code looks better, and conceptually should probably work, I don\u0027t think *alternateResultDir is hooked up to trigger config.Dist(), so I think this still breaks things. I can\u0027t think of a downside to triggering config.Dist(), so maybe we just need a few lines doing that up around line 188 (build.NewConfig, where we\u0027re not currently passing any arguments)",
+      "parentUuid": "adf7d1f9_29091cdd",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 55
+      },
+      "revId": "65c1b363c75cb50c923087bc5c9b7dbba917fca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
