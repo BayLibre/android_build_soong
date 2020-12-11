@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d039c04_adf1b679",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-11T05:45:37Z",
+      "side": 1,
+      "message": "nit: line length is set to 100",
+      "range": {
+        "startLine": 827,
+        "startChar": 74,
+        "endLine": 827,
+        "endChar": 75
+      },
+      "revId": "7293aec53bb1f70f6b02c4569e7b40438444cb98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
