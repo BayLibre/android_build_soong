@@ -530,6 +530,8 @@ func (c *snapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entrie
 
 	if c.androidMkVendorSuffix {
 		entries.SubName += vendorSuffix
+	} else if c.androidMkRecoverySuffix {
+		entries.SubName += recoverySuffix
 	}
 
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
@@ -560,6 +562,8 @@ func (c *snapshotBinaryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries
 
 	if c.androidMkVendorSuffix {
 		entries.SubName = vendorSuffix
+	} else if c.androidMkRecoverySuffix {
+		entries.SubName = recoverySuffix
 	} else {
 		entries.SubName = ""
 	}
@@ -574,6 +578,8 @@ func (c *snapshotObjectLinker) AndroidMkEntries(ctx AndroidMkContext, entries *a
 
 	if c.androidMkVendorSuffix {
 		entries.SubName = vendorSuffix
+	} else if c.androidMkRecoverySuffix {
+		entries.SubName = recoverySuffix
 	} else {
 		entries.SubName = ""
 	}
