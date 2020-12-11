@@ -223,6 +223,9 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 	platformVndkVersion := mctx.DeviceConfig().PlatformVndkVersion()
 	boardVndkVersion := mctx.DeviceConfig().VndkVersion()
 	productVndkVersion := mctx.DeviceConfig().ProductVndkVersion()
+	recoverySnapshotVersion := mctx.DeviceConfig().RecoverySnapshotVersion()
+	usingRecoverySnapshot := recoverySnapshotVersion != "current" &&
+		recoverySnapshotVersion != ""
 	if boardVndkVersion == "current" {
 		boardVndkVersion = platformVndkVersion
 	}
@@ -261,7 +264,11 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		if snapshot, ok := m.linker.(interface {
 			version() string
 		}); ok {
-			vendorVariants = append(vendorVariants, snapshot.version())
+			if m.InstallInRecovery() {
+				recoveryVariantNeeded = true
+			} else {
+				vendorVariants = append(vendorVariants, snapshot.version())
+			}
 		} else {
 			mctx.ModuleErrorf("version is unknown for snapshot prebuilt")
 		}
@@ -308,6 +315,18 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		} else {
 			vendorVariants = append(vendorVariants, platformVndkVersion)
 		}
+	} else if lib := moduleLibraryInterface(m); lib != nil && lib.hasLLNDKStubs() {
+		// This is an LLNDK library.  The implementation of the library will be on /system,
+		// and vendor and product variants will be created with LLNDK stubs.
+		coreVariantNeeded = true
+		vendorVariants = append(vendorVariants,
+			platformVndkVersion,
+			boardVndkVersion,
+		)
+		productVariants = append(productVariants,
+			platformVndkVersion,
+			productVndkVersion,
+		)
 	} else {
 		// This is either in /system (or similar: /data), or is a
 		// modules built with the NDK. Modules built with the NDK
@@ -355,6 +374,15 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		coreVariantNeeded = false
 	}
 
+	// If using a snapshot, the recovery variant under AOSP directories is not needed,
+	// except for kernel headers, which needs all variants.
+	if _, ok := m.linker.(*kernelHeadersDecorator); !ok &&
+		!m.isSnapshotPrebuilt() &&
+		usingRecoverySnapshot &&
+		!isRecoveryProprietaryModule(mctx) {
+		recoveryVariantNeeded = false
+	}
+
 	for _, variant := range android.FirstUniqueStrings(vendorVariants) {
 		m.Properties.ExtraVariants = append(m.Properties.ExtraVariants, VendorVariationPrefix+variant)
 	}
@@ -367,6 +395,14 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 	m.Properties.VendorRamdiskVariantNeeded = vendorRamdiskVariantNeeded
 	m.Properties.RecoveryVariantNeeded = recoveryVariantNeeded
 	m.Properties.CoreVariantNeeded = coreVariantNeeded
+
+	// Disable the module if no variants are needed.
+	if !ramdiskVariantNeeded &&
+		!recoveryVariantNeeded &&
+		!coreVariantNeeded &&
+		len(m.Properties.ExtraVariants) == 0 {
+		m.Disable()
+	}
 }
 
 func (c *Module) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
@@ -454,7 +490,7 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 		vndkVersion := ctx.DeviceConfig().VndkVersion()
 		if vndkVersion != "current" && vndkVersion != "" && vndkVersion != m.Properties.VndkVersion {
 			m.Properties.HideFromMake = true
-			m.SkipInstall()
+			m.HideFromMake()
 		}
 	} else if strings.HasPrefix(variant, ProductVariationPrefix) {
 		m.Properties.ImageVariationPrefix = ProductVariationPrefix

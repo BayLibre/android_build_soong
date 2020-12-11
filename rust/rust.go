@@ -189,7 +189,15 @@ func (mod *Module) IsVndkExt() bool {
 	return false
 }
 
-func (c *Module) IsVndkPrivate(config android.Config) bool {
+func (c *Module) IsVndkPrivate() bool {
+	return false
+}
+
+func (c *Module) IsLlndk() bool {
+	return false
+}
+
+func (c *Module) IsLlndkPublic() bool {
 	return false
 }
 
@@ -1065,6 +1073,9 @@ func (mod *Module) minSdkVersion() string {
 	return String(mod.Properties.Min_sdk_version)
 }
 
+var _ android.ApexModule = (*Module)(nil)
+
+// Implements android.ApexModule
 func (mod *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
 	minSdkVersion := mod.minSdkVersion()
 	if minSdkVersion == "apex_inherit" {
@@ -1087,6 +1098,7 @@ func (mod *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVer
 	return nil
 }
 
+// Implements android.ApexModule
 func (mod *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
 	depTag := ctx.OtherModuleDependencyTag(dep)
 

@@ -1355,9 +1355,9 @@ func TestApexDependsOnLLNDKTransitively(t *testing.T) {
 			ensureListContains(t, names(apexManifestRule.Args["requireNativeLibs"]), "libbar.so")
 
 			mylibLdFlags := ctx.ModuleForTests("mylib", "android_vendor.VER_arm64_armv8-a_shared_"+tc.apexVariant).Rule("ld").Args["libFlags"]
-			ensureContains(t, mylibLdFlags, "libbar.llndk/android_vendor.VER_arm64_armv8-a_shared_"+tc.shouldLink+"/libbar.so")
+			ensureContains(t, mylibLdFlags, "libbar/android_vendor.VER_arm64_armv8-a_shared_"+tc.shouldLink+"/libbar.so")
 			for _, ver := range tc.shouldNotLink {
-				ensureNotContains(t, mylibLdFlags, "libbar.llndk/android_vendor.VER_arm64_armv8-a_shared_"+ver+"/libbar.so")
+				ensureNotContains(t, mylibLdFlags, "libbar/android_vendor.VER_arm64_armv8-a_shared_"+ver+"/libbar.so")
 			}
 
 			mylibCFlags := ctx.ModuleForTests("mylib", "android_vendor.VER_arm64_armv8-a_static_"+tc.apexVariant).Rule("cc").Args["cFlags"]
@@ -3889,6 +3889,64 @@ func TestApexWithTarget(t *testing.T) {
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib"), "android_arm64_armv8-a_shared")
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib_common"), "android_arm64_armv8-a_shared")
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib2"), "android_arm64_armv8-a_shared")
+}
+
+func TestApexWithArch(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			arch: {
+				arm64: {
+					native_shared_libs: ["mylib.arm64"],
+				},
+				x86_64: {
+					native_shared_libs: ["mylib.x64"],
+				},
+			}
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "mylib.arm64",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+			// TODO: remove //apex_available:platform
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
+		}
+
+		cc_library {
+			name: "mylib.x64",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+			// TODO: remove //apex_available:platform
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
+		}
+	`)
+
+	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule")
+	copyCmds := apexRule.Args["copy_commands"]
+
+	// Ensure that apex variant is created for the direct dep
+	ensureListContains(t, ctx.ModuleVariantsForTests("mylib.arm64"), "android_arm64_armv8-a_shared_apex10000")
+	ensureListNotContains(t, ctx.ModuleVariantsForTests("mylib.x64"), "android_arm64_armv8-a_shared_apex10000")
+
+	// Ensure that both direct and indirect deps are copied into apex
+	ensureContains(t, copyCmds, "image.apex/lib64/mylib.arm64.so")
+	ensureNotContains(t, copyCmds, "image.apex/lib64/mylib.x64.so")
 }
 
 func TestApexWithShBinary(t *testing.T) {
@@ -6520,7 +6578,7 @@ func TestPrebuiltStubLibDep(t *testing.T) {
 								continue
 							}
 							mod := ctx.ModuleForTests(modName, variant).Module().(*cc.Module)
-							if !mod.Enabled() || mod.IsSkipInstall() {
+							if !mod.Enabled() || mod.IsHideFromMake() {
 								continue
 							}
 							for _, ent := range android.AndroidMkEntriesForTest(t, config, "", mod) {

@@ -1049,6 +1049,16 @@ func TestVendorSnapshotCapture(t *testing.T) {
 		name: "obj",
 		vendor_available: true,
 	}
+
+	cc_library {
+		name: "libllndk",
+		llndk_stubs: "libllndk.llndk",
+	}
+
+	llndk_library {
+		name: "libllndk.llndk",
+		symbol_file: "",
+	}
 `
 	config := TestConfig(buildDir, android.Android, nil, bp, nil)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
@@ -1079,6 +1089,9 @@ func TestVendorSnapshotCapture(t *testing.T) {
 		jsonFiles = append(jsonFiles,
 			filepath.Join(sharedDir, "libvendor.so.json"),
 			filepath.Join(sharedDir, "libvendor_available.so.json"))
+
+		// LLNDK modules are not captured
+		checkSnapshotExclude(t, ctx, snapshotSingleton, "libllndk", "libllndk.so", sharedDir, sharedVariant)
 
 		// For static libraries, all vendor:true and vendor_available modules (including VNDK) are captured.
 		// Also cfi variants are captured, except for prebuilts like toolchain_library
@@ -1407,6 +1420,13 @@ func assertExcludeFromVendorSnapshotIs(t *testing.T, c *Module, expected bool) {
 	}
 }
 
+func assertExcludeFromRecoverySnapshotIs(t *testing.T, c *Module, expected bool) {
+	t.Helper()
+	if c.ExcludeFromRecoverySnapshot() != expected {
+		t.Errorf("expected %q ExcludeFromRecoverySnapshot to be %t", c.String(), expected)
+	}
+}
+
 func TestVendorSnapshotExclude(t *testing.T) {
 
 	// This test verifies that the exclude_from_vendor_snapshot property
@@ -1654,7 +1674,7 @@ func TestRecoverySnapshotCapture(t *testing.T) {
 	}
 `
 	config := TestConfig(buildDir, android.Android, nil, bp, nil)
-	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.RecoverySnapshotVersion = StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
 	ctx := testCcWithConfig(t, config)
 
@@ -1721,6 +1741,111 @@ func TestRecoverySnapshotCapture(t *testing.T) {
 		// verify all json files exist
 		if snapshotSingleton.MaybeOutput(jsonFile).Rule == nil {
 			t.Errorf("%q expected but not found", jsonFile)
+		}
+	}
+}
+
+func TestRecoverySnapshotExclude(t *testing.T) {
+	// This test verifies that the exclude_from_recovery_snapshot property
+	// makes its way from the Android.bp source file into the module data
+	// structure. It also verifies that modules are correctly included or
+	// excluded in the recovery snapshot based on their path (framework or
+	// vendor) and the exclude_from_recovery_snapshot property.
+
+	frameworkBp := `
+		cc_library_shared {
+			name: "libinclude",
+			srcs: ["src/include.cpp"],
+                        recovery_available: true,
+		}
+		cc_library_shared {
+			name: "libexclude",
+			srcs: ["src/exclude.cpp"],
+			recovery: true,
+			exclude_from_recovery_snapshot: true,
+		}
+	`
+
+	vendorProprietaryBp := `
+		cc_library_shared {
+			name: "libvendor",
+			srcs: ["vendor.cpp"],
+			recovery: true,
+		}
+	`
+
+	depsBp := GatherRequiredDepsForTest(android.Android)
+
+	mockFS := map[string][]byte{
+		"deps/Android.bp":       []byte(depsBp),
+		"framework/Android.bp":  []byte(frameworkBp),
+		"framework/include.cpp": nil,
+		"framework/exclude.cpp": nil,
+		"device/Android.bp":     []byte(vendorProprietaryBp),
+		"device/vendor.cpp":     nil,
+	}
+
+	config := TestConfig(buildDir, android.Android, nil, "", mockFS)
+	config.TestProductVariables.RecoverySnapshotVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	ctx := CreateTestContext(config)
+	ctx.Register()
+
+	_, errs := ctx.ParseFileList(".", []string{"deps/Android.bp", "framework/Android.bp", "device/Android.bp"})
+	android.FailIfErrored(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	android.FailIfErrored(t, errs)
+
+	// Test an include and exclude framework module.
+	assertExcludeFromRecoverySnapshotIs(t, ctx.ModuleForTests("libinclude", coreVariant).Module().(*Module), false)
+	assertExcludeFromRecoverySnapshotIs(t, ctx.ModuleForTests("libinclude", recoveryVariant).Module().(*Module), false)
+	assertExcludeFromRecoverySnapshotIs(t, ctx.ModuleForTests("libexclude", recoveryVariant).Module().(*Module), true)
+
+	// A vendor module is excluded, but by its path, not the
+	// exclude_from_recovery_snapshot property.
+	assertExcludeFromRecoverySnapshotIs(t, ctx.ModuleForTests("libvendor", recoveryVariant).Module().(*Module), false)
+
+	// Verify the content of the recovery snapshot.
+
+	snapshotDir := "recovery-snapshot"
+	snapshotVariantPath := filepath.Join(buildDir, snapshotDir, "arm64")
+	snapshotSingleton := ctx.SingletonForTests("recovery-snapshot")
+
+	var includeJsonFiles []string
+	var excludeJsonFiles []string
+
+	for _, arch := range [][]string{
+		[]string{"arm64", "armv8-a"},
+	} {
+		archType := arch[0]
+		archVariant := arch[1]
+		archDir := fmt.Sprintf("arch-%s-%s", archType, archVariant)
+
+		sharedVariant := fmt.Sprintf("android_recovery_%s_%s_shared", archType, archVariant)
+		sharedDir := filepath.Join(snapshotVariantPath, archDir, "shared")
+
+		// Included modules
+		checkSnapshot(t, ctx, snapshotSingleton, "libinclude", "libinclude.so", sharedDir, sharedVariant)
+		includeJsonFiles = append(includeJsonFiles, filepath.Join(sharedDir, "libinclude.so.json"))
+
+		// Excluded modules
+		checkSnapshotExclude(t, ctx, snapshotSingleton, "libexclude", "libexclude.so", sharedDir, sharedVariant)
+		excludeJsonFiles = append(excludeJsonFiles, filepath.Join(sharedDir, "libexclude.so.json"))
+		checkSnapshotExclude(t, ctx, snapshotSingleton, "libvendor", "libvendor.so", sharedDir, sharedVariant)
+		excludeJsonFiles = append(excludeJsonFiles, filepath.Join(sharedDir, "libvendor.so.json"))
+	}
+
+	// Verify that each json file for an included module has a rule.
+	for _, jsonFile := range includeJsonFiles {
+		if snapshotSingleton.MaybeOutput(jsonFile).Rule == nil {
+			t.Errorf("include json file %q not found", jsonFile)
+		}
+	}
+
+	// Verify that each json file for an excluded module has no rule.
+	for _, jsonFile := range excludeJsonFiles {
+		if snapshotSingleton.MaybeOutput(jsonFile).Rule != nil {
+			t.Errorf("exclude json file %q found", jsonFile)
 		}
 	}
 }
@@ -2899,7 +3024,7 @@ func TestMakeLinkType(t *testing.T) {
 		{vendorVariant, "libvndkprivate", "native:vndk_private"},
 		{vendorVariant, "libvendor", "native:vendor"},
 		{vendorVariant, "libvndkext", "native:vendor"},
-		{vendorVariant, "libllndk.llndk", "native:vndk"},
+		{vendorVariant, "libllndk", "native:vndk"},
 		{vendorVariant27, "prevndk.vndk.27.arm.binder32", "native:vndk"},
 		{coreVariant, "libvndk", "native:platform"},
 		{coreVariant, "libvndkprivate", "native:platform"},
@@ -3178,8 +3303,39 @@ func TestLlndkLibrary(t *testing.T) {
 	llndk_library {
 		name: "libllndk.llndk",
 	}
+
+	cc_prebuilt_library_shared {
+		name: "libllndkprebuilt",
+		stubs: { versions: ["1", "2"] },
+		llndk_stubs: "libllndkprebuilt.llndk",
+	}
+	llndk_library {
+		name: "libllndkprebuilt.llndk",
+	}
+
+	cc_library {
+		name: "libllndk_with_external_headers",
+		stubs: { versions: ["1", "2"] },
+		llndk_stubs: "libllndk_with_external_headers.llndk",
+		header_libs: ["libexternal_headers"],
+		export_header_lib_headers: ["libexternal_headers"],
+	}
+	llndk_library {
+		name: "libllndk_with_external_headers.llndk",
+	}
+	cc_library_headers {
+		name: "libexternal_headers",
+		export_include_dirs: ["include"],
+		vendor_available: true,
+	}
 	`)
-	actual := ctx.ModuleVariantsForTests("libllndk.llndk")
+	actual := ctx.ModuleVariantsForTests("libllndk")
+	for i := 0; i < len(actual); i++ {
+		if !strings.HasPrefix(actual[i], "android_vendor.VER_") {
+			actual = append(actual[:i], actual[i+1:]...)
+			i--
+		}
+	}
 	expected := []string{
 		"android_vendor.VER_arm64_armv8-a_shared_1",
 		"android_vendor.VER_arm64_armv8-a_shared_2",
@@ -3190,10 +3346,10 @@ func TestLlndkLibrary(t *testing.T) {
 	}
 	checkEquals(t, "variants for llndk stubs", expected, actual)
 
-	params := ctx.ModuleForTests("libllndk.llndk", "android_vendor.VER_arm_armv7-a-neon_shared").Description("generate stub")
+	params := ctx.ModuleForTests("libllndk", "android_vendor.VER_arm_armv7-a-neon_shared").Description("generate stub")
 	checkEquals(t, "use VNDK version for default stubs", "current", params.Args["apiLevel"])
 
-	params = ctx.ModuleForTests("libllndk.llndk", "android_vendor.VER_arm_armv7-a-neon_shared_1").Description("generate stub")
+	params = ctx.ModuleForTests("libllndk", "android_vendor.VER_arm_armv7-a-neon_shared_1").Description("generate stub")
 	checkEquals(t, "override apiLevel for versioned stubs", "1", params.Args["apiLevel"])
 }
 
