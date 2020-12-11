@@ -22,6 +22,30 @@
       },
       "revId": "f31faf5b4974d0ae6a9e2bc6d00c3e508da8e7f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25574cff_674fa6de",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-11T04:49:00Z",
+      "side": 1,
+      "message": "No, I just wanted to follow the pattern shown in the other place in this file. Reverted to the original impl.",
+      "parentUuid": "a6241106_338ecef3",
+      "range": {
+        "startLine": 1079,
+        "startChar": 0,
+        "endLine": 1080,
+        "endChar": 31
+      },
+      "revId": "f31faf5b4974d0ae6a9e2bc6d00c3e508da8e7f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
