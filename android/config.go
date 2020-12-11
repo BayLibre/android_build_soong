@@ -1053,6 +1053,11 @@ func (c *deviceConfig) VndkVersion() string {
 	return String(c.config.productVariables.DeviceVndkVersion)
 }
 
+func (c *deviceConfig) RecoverySnapshotVersion() string {
+	return proptools.StringDefault(
+		c.config.productVariables.RecoverySnapshotVersion, "current")
+}
+
 func (c *deviceConfig) CurrentApiLevelForVendorModules() string {
 	return StringDefault(c.config.productVariables.DeviceCurrentApiLevelForVendorModules, "current")
 }
