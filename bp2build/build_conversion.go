@@ -39,8 +39,26 @@ type bpToBuildContext interface {
 	ModuleSubDir(module blueprint.Module) string
 	ModuleType(module blueprint.Module) string
 
-	VisitAllModulesBlueprint(visit func(blueprint.Module))
-	VisitDirectDeps(module android.Module, visit func(android.Module))
+	VisitAllModules(visit func(blueprint.Module))
+	VisitDirectDeps(module blueprint.Module, visit func(blueprint.Module))
+}
+
+type CodegenContext struct {
+	config  android.Config
+	context android.Context
+}
+
+func (ctx CodegenContext) AddNinjaFileDeps(...string) {}
+func (ctx CodegenContext) Config() android.Config     { return ctx.config }
+func (ctx CodegenContext) Context() android.Context   { return ctx.context }
+
+// NewCodegenContext creates a wrapper context that conforms to PathContext for
+// writing BUILD files in the output directory.
+func NewCodegenContext(config android.Config, context android.Context) CodegenContext {
+	return CodegenContext{
+		context: context,
+		config:  config,
+	}
 }
 
 // props is an unsorted map. This function ensures that
@@ -55,14 +73,43 @@ func propsToAttributes(props map[string]string) string {
 	return attributes
 }
 
-func GenerateSoongModuleTargets(ctx bpToBuildContext) map[string][]BazelTarget {
+func GenerateSoongModuleTargets(ctx bpToBuildContext, bp2buildEnabled bool) map[string][]BazelTarget {
 	buildFileToTargets := make(map[string][]BazelTarget)
-	ctx.VisitAllModulesBlueprint(func(m blueprint.Module) {
+	ctx.VisitAllModules(func(m blueprint.Module) {
 		dir := ctx.ModuleDir(m)
-		t := generateSoongModuleTarget(ctx, m)
+		var t BazelTarget
+
+		if bp2buildEnabled {
+			if aModule, ok := m.(android.Module); ok {
+				if !aModule.IsConvertedToBazel() {
+					return
+				}
+			}
+			t = generateBazelTarget(ctx, m)
+		} else {
+			t = generateSoongModuleTarget(ctx, m)
+		}
+
 		buildFileToTargets[ctx.ModuleDir(m)] = append(buildFileToTargets[dir], t)
 	})
 	return buildFileToTargets
+}
+
+func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
+	props := getBuildProperties(ctx, m)
+	ruleClass := strings.Replace(props.Attrs["rule_class"], "\"", "", 2)
+	delete(props.Attrs, "rule_class")
+	attributes := propsToAttributes(props.Attrs)
+	targetName := targetNameForBp2Build(ctx, m)
+	return BazelTarget{
+		name: targetName,
+		content: fmt.Sprintf(
+			bazelTarget,
+			ruleClass,
+			targetName,
+			attributes,
+		),
+	}
 }
 
 // Convert a module and its deps and props into a Bazel macro/rule
@@ -75,7 +122,7 @@ func generateSoongModuleTarget(ctx bpToBuildContext, m blueprint.Module) BazelTa
 	// out the implications of that.
 	depLabels := map[string]bool{}
 	if aModule, ok := m.(android.Module); ok {
-		ctx.VisitDirectDeps(aModule, func(depModule android.Module) {
+		ctx.VisitDirectDeps(aModule, func(depModule blueprint.Module) {
 			depLabels[qualifiedTargetLabel(ctx, depModule)] = true
 		})
 	}
@@ -286,6 +333,10 @@ func makeIndent(indent int) string {
 		panic(fmt.Errorf("indent column cannot be less than 0, but got %d", indent))
 	}
 	return strings.Repeat("    ", indent)
+}
+
+func targetNameForBp2Build(c bpToBuildContext, logicModule blueprint.Module) string {
+	return strings.Replace(c.ModuleName(logicModule), "__bp2build__", "", 1)
 }
 
 func targetNameWithVariant(c bpToBuildContext, logicModule blueprint.Module) string {
