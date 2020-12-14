@@ -200,7 +200,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
 		_, errs = ctx.PrepareBuildActions(config)
 		android.FailIfErrored(t, errs)
 
-		bazelTargets := GenerateSoongModuleTargets(ctx.Context.Context)[dir]
+		bazelTargets := GenerateSoongModuleTargets(ctx.Context.Context, false)[dir]
 		if g, w := len(bazelTargets), 1; g != w {
 			t.Fatalf("Expected %d bazel target, got %d", w, g)
 		}
