@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e682b8_c643d4dd",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T00:46:53Z",
+      "side": 1,
+      "message": "This seems to be wrong because it disables the check when there exists a module that satisfies this condition, even when the module is not included in any APEX.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "eec3bbb3e5313258be5664d474f4af8bcc254b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

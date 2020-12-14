@@ -46,6 +46,30 @@
       },
       "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3682f602_a63682ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T00:46:53Z",
+      "side": 1,
+      "message": "Hold on. What do you mean by \"temporary\" here? Does it mean you will turn it off again in the near future?",
+      "parentUuid": "a52ddda5_6c844a0c",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
