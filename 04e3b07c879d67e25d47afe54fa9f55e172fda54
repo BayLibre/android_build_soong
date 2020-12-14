@@ -38,6 +38,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d79ae25_c18a27c9",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-14T18:23:51Z",
+      "side": 1,
+      "message": "Also check \"var _ objPathProvider \u003d BazelOutPath{}\"?",
+      "revId": "04e3b07c879d67e25d47afe54fa9f55e172fda54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf4a6e14_b75ec3a1",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-14T18:23:51Z",
+      "side": 1,
+      "message": "Is this used anywhere?",
+      "revId": "04e3b07c879d67e25d47afe54fa9f55e172fda54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c82b1a8d_1f1fe539",
         "filename": "bazel/aquery.go",
         "patchSetId": 3
