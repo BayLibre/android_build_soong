@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "803f1e0c_db42887d",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-14T14:07:57Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "9e84969f_3f5b3d98",
+      "range": {
+        "startLine": 650,
+        "startChar": 38,
+        "endLine": 650,
+        "endChar": 63
+      },
+      "revId": "24297f0bb13fd1b3ef3355680d0a24af1376dd1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b0d04a2_f09db447",
