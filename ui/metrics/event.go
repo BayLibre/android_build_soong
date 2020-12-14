@@ -14,6 +14,17 @@
 
 package metrics
 
+// This file contains the functionality to represent a build event in respect
+// to the metric system. A build event corresponds to a block of scoped code
+// that contains a "Begin()" and immediately followed by "defer End()" trace.
+// When defined, the duration of the scoped code is measure along with other
+// performance measurements such as memory.
+//
+// As explained in the metrics package, the metrics system is a stacked based
+// system since the collected metrics is considered to be topline metrics.
+// The steps of the build system in the UI layer is sequential. Hence, the
+// functionality defined below follows the stack data structure operations.
+
 import (
 	"os"
 	"syscall"
@@ -21,27 +32,45 @@ import (
 
 	"android/soong/ui/metrics/metrics_proto"
 	"android/soong/ui/tracer"
+
 	"github.com/golang/protobuf/proto"
 )
 
-// for testing purpose only
-var _now = now
-
-type event struct {
-	desc string
-	name string
-
-	// the time that the event started to occur.
-	start time.Time
-
-	// The list of process resource information that was executed
-	procResInfo []*soong_metrics_proto.ProcessResourceInfo
+// _now wraps the time.Now() function. _now is declared for unit testing purpose.
+var _now = func() time.Time {
+	return time.Now()
 }
 
+// EventTracer is the interface that provides functionality to trace a
+// block of code on time and performance. The End call expects the
+// Begin call is invoked, otherwise panic is raised.
 type EventTracer interface {
+	// Begin starts tracing the event.
 	Begin(name, desc string, thread tracer.Thread)
+
+	// End performs post calculations such as duration of the event, aggregates
+	// the collected performance information into PerfInfo protobuf message.
 	End(thread tracer.Thread) soong_metrics_proto.PerfInfo
+
+	// AddProcResInfo adds information on an executed process such as max resident
+	// set memory and the number of voluntary context switches.
 	AddProcResInfo(string, *os.ProcessState)
+}
+
+// event holds the performance of the metrics data of a single build event.
+type event struct {
+	// The event name (mostly used for grouping a set of events)
+	name string
+
+	// The description of the event (used to uniquely identify an event
+	// for metrics analysis).
+	desc string
+
+	// The time that the event started to occur.
+	start time.Time
+
+	// The list of process resource information that was executed.
+	procResInfo []*soong_metrics_proto.ProcessResourceInfo
 }
 
 type eventTracerImpl struct {
@@ -50,23 +79,12 @@ type eventTracerImpl struct {
 
 var _ EventTracer = &eventTracerImpl{}
 
-func now() time.Time {
-	return time.Now()
-}
-
-// AddProcResInfo adds information on an executed process such as max resident set memory
-// and the number of voluntary context switches.
 func (t *eventTracerImpl) AddProcResInfo(name string, state *os.ProcessState) {
 	if len(t.activeEvents) < 1 {
 		return
 	}
 
 	rusage := state.SysUsage().(*syscall.Rusage)
-	// The implementation of the metrics system is a stacked based system. The steps of the
-	// build system in the UI layer is sequential so the Begin function is invoked when a
-	// function (or scoped code) is invoked. That is translated to a new event which is added
-	// at the end of the activeEvents array. When the invoking function is completed, End is
-	// invoked which is a pop operation from activeEvents.
 	curEvent := &t.activeEvents[len(t.activeEvents)-1]
 	curEvent.procResInfo = append(curEvent.procResInfo, &soong_metrics_proto.ProcessResourceInfo{
 		Name:             proto.String(name),
@@ -83,7 +101,13 @@ func (t *eventTracerImpl) AddProcResInfo(name string, state *os.ProcessState) {
 }
 
 func (t *eventTracerImpl) Begin(name, desc string, _ tracer.Thread) {
-	t.activeEvents = append(t.activeEvents, event{name: name, desc: desc, start: _now()})
+	t.activeEvents = append(t.activeEvents,
+		event{
+			name:  name,
+			desc:  desc,
+			start: _now(),
+		},
+	)
 }
 
 func (t *eventTracerImpl) End(tracer.Thread) soong_metrics_proto.PerfInfo {
