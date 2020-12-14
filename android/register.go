@@ -173,6 +173,8 @@ type RegistrationContext interface {
 	PreDepsMutators(f RegisterMutatorFunc)
 	PostDepsMutators(f RegisterMutatorFunc)
 	FinalDepsMutators(f RegisterMutatorFunc)
+
+	Bp2BuildMutators(f RegisterMutatorFunc)
 }
 
 // Used to register build components from an init() method, e.g.
@@ -238,4 +240,8 @@ func (ctx *initRegistrationContext) PostDepsMutators(f RegisterMutatorFunc) {
 
 func (ctx *initRegistrationContext) FinalDepsMutators(f RegisterMutatorFunc) {
 	FinalDepsMutators(f)
+}
+
+func (ctx *initRegistrationContext) Bp2BuildMutators(f RegisterMutatorFunc) {
+	Bp2BuildMutators(f)
 }
