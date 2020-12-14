@@ -6,9 +6,31 @@ import (
 	"github.com/google/blueprint"
 )
 
+type PlatformSanitizeable interface {
+	LinkableInterface
+
+	SanitizePropDefined() bool
+	IsDependencyRoot() bool
+	IsSanitizerEnabled(t SanitizerType) bool
+	IsSanitizerExplicitlyDisabled(t SanitizerType) bool
+	SanitizeDep() bool
+	SetSanitizer(t SanitizerType, b bool)
+	SetSanitizeDep(b bool)
+	StaticallyLinked() bool
+	SetInSanitizerDir()
+	SanitizeNever() bool
+	SanitizerSupported(t SanitizerType) bool
+
+	// SanitizableDepTagChecker should handle all possible dependency tags in the dependency tree.
+	// For example, Rust modules can depend on both Rust and CC libraries, so the Rust module implementation
+	// should handle tags from both.
+	SanitizableDepTagChecker() SantizableDependencyTagChecker
+}
+
 // LinkableInterface is an interface for a type of module that is linkable in a C++ library.
 type LinkableInterface interface {
 	android.Module
+	android.ImageInterface
 
 	Module() android.Module
 	CcLibrary() bool
@@ -27,6 +49,8 @@ type LinkableInterface interface {
 	SetShared()
 	Static() bool
 	Shared() bool
+	Header() bool
+	IsPrebuilt() bool
 	Toc() android.OptionalPath
 
 	Host() bool
@@ -39,6 +63,8 @@ type LinkableInterface interface {
 
 	InRecovery() bool
 	OnlyInRecovery() bool
+
+	InVendor() bool
 
 	UseSdk() bool
 	UseVndk() bool
@@ -54,6 +80,10 @@ type LinkableInterface interface {
 	IsSdkVariant() bool
 
 	SplitPerApiLevel() bool
+
+	SetPreventInstall()
+	SetHideFromMake()
+	ExportedToMake() bool
 }
 
 var (
@@ -64,6 +94,24 @@ var (
 	// Dependency tag for coverage library.
 	CoverageDepTag = dependencyTag{name: "coverage"}
 )
+
+func GetImageVariantType(c LinkableInterface) ImageVariantType {
+	if c.Host() {
+		return hostImageVariant
+	} else if c.InVendor() {
+		return vendorImageVariant
+	} else if c.InProduct() {
+		return productImageVariant
+	} else if c.InRamdisk() {
+		return ramdiskImageVariant
+	} else if c.InVendorRamdisk() {
+		return vendorRamdiskImageVariant
+	} else if c.InRecovery() {
+		return recoveryImageVariant
+	} else {
+		return coreImageVariant
+	}
+}
 
 // SharedDepTag returns the dependency tag for any C++ shared libraries.
 func SharedDepTag() blueprint.DependencyTag {
