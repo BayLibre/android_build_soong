@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907886f3_98b14bce",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-14T17:07:27Z",
+      "side": 1,
+      "message": "BAZEL_METRICS_DIR?\n\nWould something like storing the name of the environment variable as a variable in the if statement help prevent typos like this?",
+      "range": {
+        "startLine": 162,
+        "startChar": 43,
+        "endLine": 162,
+        "endChar": 58
+      },
+      "revId": "281ca8b5fd9cc991ba50772d4ea6df1c1355d1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41618673_0a966dcc",
+        "filename": "bazel/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-14T17:07:27Z",
+      "side": 1,
+      "message": "+cparsons@ can you review these names?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "281ca8b5fd9cc991ba50772d4ea6df1c1355d1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
