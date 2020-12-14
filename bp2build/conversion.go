@@ -20,9 +20,9 @@ func CreateBazelFiles(
 	buildToTargets map[string][]BazelTarget) []BazelFile {
 	files := make([]BazelFile, 0, len(ruleShims)+len(buildToTargets)+numAdditionalFiles)
 
-	// Write top level files: WORKSPACE and BUILD. These files are empty.
-	files = append(files, newFile("", "WORKSPACE", ""))
-	// Used to denote that the top level directory is a package.
+	// Write top level files: WORKSPACE and BUILD.
+	files = append(files, newFile("", "WORKSPACE", "workspace(name = \"bp2build\")"))
+	// Used to denote that the top level directory is a package. The BUILD file is empty.
 	files = append(files, newFile("", "BUILD", ""))
 
 	files = append(files, newFile(bazelRulesSubDir, "BUILD", ""))
@@ -62,7 +62,7 @@ func newFile(dir, basename, content string) BazelFile {
 }
 
 const (
-	bazelRulesSubDir = "build/bazel/queryview_rules"
+	bazelRulesSubDir = "build/bazel/rules"
 
 	// additional files:
 	//  * workspace file

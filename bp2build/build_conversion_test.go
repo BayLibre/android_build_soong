@@ -204,7 +204,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
 			bpCtx: ctx.Context.Context,
 		}
 
-		bazelTargets := GenerateSoongModuleTargets(&bp2BuildCtx)[dir]
+		bazelTargets := GenerateSoongModuleTargets(&bp2BuildCtx, false)[dir]
 		if g, w := len(bazelTargets), 1; g != w {
 			t.Fatalf("Expected %d bazel target, got %d", w, g)
 		}
