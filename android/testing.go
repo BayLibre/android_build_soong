@@ -57,6 +57,7 @@ func NewTestArchContext(config Config) *TestContext {
 type TestContext struct {
 	*Context
 	preArch, preDeps, postDeps, finalDeps []RegisterMutatorFunc
+	bp2buildMutators                      []RegisterMutatorFunc
 	NameResolver                          *NameResolver
 }
 
@@ -79,6 +80,14 @@ func (ctx *TestContext) PostDepsMutators(f RegisterMutatorFunc) {
 
 func (ctx *TestContext) FinalDepsMutators(f RegisterMutatorFunc) {
 	ctx.finalDeps = append(ctx.finalDeps, f)
+}
+
+func (ctx *TestContext) RegisterBp2BuildMutator(moduleType string, m func(TopDownMutatorContext)) {
+	mutatorName := moduleType + "_bp2build"
+	f := func(ctx RegisterMutatorsContext) {
+		ctx.TopDown(mutatorName, m)
+	}
+	bp2buildMutators = append(bp2buildMutators, f)
 }
 
 func (ctx *TestContext) Register() {
