@@ -43,7 +43,7 @@ func (s *androidBpToBuildSingleton) GenerateBuildActions(ctx android.SingletonCo
 
 	ruleShims := CreateRuleShims(android.ModuleTypeFactories())
 
-	buildToTargets := GenerateSoongModuleTargets(ctx)
+	buildToTargets := GenerateSoongModuleTargets(ctx, true)
 
 	filesToWrite := CreateBazelFiles(ruleShims, buildToTargets)
 	for _, f := range filesToWrite {
