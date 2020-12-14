@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4049a9e_2d9a2689",
+        "filename": "bazel/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-14T17:41:37Z",
+      "side": 1,
+      "message": "This is going away and will be replaced with a call to aquery. See https://android-review.googlesource.com/c/platform/build/soong/+/1524778/3/android/bazel_handler.go\n\nAdditionally, this sounds perhaps too similar to ninja-exec, as both invocations are a \"bazel build\".",
+      "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ff40ce_c2545b33",
+        "filename": "bazel/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-14T17:41:37Z",
+      "side": 1,
+      "message": "Perhaps instead \"Perform cquery of the Bazel build root and its dependencies\" ?",
+      "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c184ef_46df8660",
+        "filename": "bazel/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-14T17:41:37Z",
+      "side": 1,
+      "message": "how about \"cquery-buildroot\"  (buildroot is the name of the root target of the bazel build graph), that way it does not imply it\u0027s running a cquery of more than the bazel portion of the build?",
+      "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db456dd1_1aaef084",
+        "filename": "bazel/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-14T17:41:37Z",
+      "side": 1,
+      "message": "what about bazel-ninja-exec  ?",
+      "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
