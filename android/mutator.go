@@ -45,8 +45,18 @@ func registerMutatorsToContext(ctx *blueprint.Context, mutators []*mutator) {
 }
 
 func registerMutatorsForBazelConversion(ctx *blueprint.Context) {
-	// FIXME(b/171263886): Start bringing in mutators to make the Bionic
-	// module subgraph suitable for automated conversion.
+	mctx := &registerMutatorsContext{}
+
+	register := func(funcs []RegisterMutatorFunc) {
+		for _, f := range funcs {
+			f(mctx)
+		}
+	}
+
+	// Register bp2build mutators
+	register(bp2buildMutators)
+
+	registerMutatorsToContext(ctx, mctx.mutators)
 }
 
 func registerMutators(ctx *blueprint.Context, preArch, preDeps, postDeps, finalDeps []RegisterMutatorFunc) {
@@ -194,6 +204,19 @@ func PostDepsMutators(f RegisterMutatorFunc) {
 
 func FinalDepsMutators(f RegisterMutatorFunc) {
 	finalDeps = append(finalDeps, f)
+}
+
+var bp2buildMutators = []RegisterMutatorFunc{}
+
+// RegisterBp2BuildMutator registers specially crafted mutators for
+// converting Blueprint/Android modules into special modules that can
+// be code-generated into Bazel BUILD targets.
+func RegisterBp2BuildMutator(moduleType string, m func(TopDownMutatorContext)) {
+	mutatorName := moduleType + "_bp2build"
+	f := func(ctx RegisterMutatorsContext) {
+		ctx.TopDown(mutatorName, m)
+	}
+	bp2buildMutators = append(bp2buildMutators, f)
 }
 
 type BaseMutatorContext interface {

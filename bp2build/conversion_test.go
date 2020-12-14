@@ -20,7 +20,7 @@ import (
 )
 
 func TestCreateBazelFiles_AddsTopLevelFiles(t *testing.T) {
-	files := CreateBazelFiles(map[string]RuleShim{}, map[string][]BazelTarget{})
+	files := CreateBazelFiles(map[string]RuleShim{}, map[string][]BazelTarget{}, false)
 	expectedFilePaths := []struct {
 		dir      string
 		basename string
