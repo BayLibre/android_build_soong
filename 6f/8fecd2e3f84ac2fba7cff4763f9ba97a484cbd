@@ -1,0 +1,13 @@
+Verified+1: Martin Stjernholm <mast@google.com>
+Autosubmit+1: Martin Stjernholm <mast@google.com>
+Code-Review+2: Anton Hansson <hansson@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Bypass-Presubmit+1: Martin Stjernholm <mast@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Martin Stjernholm <mast@google.com>
+Submitted-at: Mon, 14 Dec 2020 20:59:00 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1528149
+Project: platform/build/soong
+Branch: refs/heads/master
