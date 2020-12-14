@@ -271,7 +271,7 @@ func TestGenerateModuleRuleShims(t *testing.T) {
 			t.Errorf("Expected rule shim to contain %s, but got %s", expectedRules[i], rule)
 		}
 	}
-	expectedBzl := `load("//build/bazel/queryview_rules:providers.bzl", "SoongModuleInfo")
+	expectedBzl := `load("@bp2build//build/bazel/rules:providers.bzl", "SoongModuleInfo")
 
 def _custom_impl(ctx):
     return [SoongModuleInfo()]
@@ -377,8 +377,8 @@ func TestGenerateSoongModuleBzl(t *testing.T) {
 		}
 	}
 
-	expectedLoad := `load("//build/bazel/queryview_rules:file1.bzl", "a", "b")
-load("//build/bazel/queryview_rules:file2.bzl", "c", "d")
+	expectedLoad := `load("@bp2build//build/bazel/rules:file1.bzl", "a", "b")
+load("@bp2build//build/bazel/rules:file2.bzl", "c", "d")
 `
 	expectedRuleMap := `soong_module_rule_map = {
     "a": a,
