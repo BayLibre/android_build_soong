@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae4887b_b627871b",
+        "filename": "ui/metrics/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-14T21:58:24Z",
+      "side": 0,
+      "message": "I appreciate the overall file comment, but it was helpful to have it near the code. Perhaps instead of the comment having a function lastEvent() that returns the top of the stack would help clarify?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 55
+      },
+      "revId": "57fab96e0123f8de2faea7088a7c624e66d14099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
