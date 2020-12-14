@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e967a186_7362853e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-14T02:43:49Z",
+      "side": 1,
+      "message": "Now we have only one blocker for this CL.\nI am working on it in go/pag/1824106.",
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
