@@ -62,7 +62,7 @@ func CreateRuleShims(moduleTypeFactories map[string]android.ModuleFactory) map[s
 		shim := RuleShim{
 			rules: make([]string, 0, len(rules)),
 		}
-		shim.content = "load(\"//build/bazel/queryview_rules:providers.bzl\", \"SoongModuleInfo\")\n"
+		shim.content = "load(\"@bp2build//build/bazel/rules:providers.bzl\", \"SoongModuleInfo\")\n"
 
 		bzlFileName := strings.ReplaceAll(pkg, "android/soong/", "")
 		bzlFileName = strings.ReplaceAll(bzlFileName, ".", "_")
@@ -84,7 +84,7 @@ func generateSoongModuleBzl(bzlLoads map[string]RuleShim) string {
 	var loadStmts string
 	var moduleRuleMap string
 	for _, bzlFileName := range android.SortedStringKeys(bzlLoads) {
-		loadStmt := "load(\"//build/bazel/queryview_rules:"
+		loadStmt := "load(\"@bp2build//build/bazel/rules:"
 		loadStmt += bzlFileName
 		loadStmt += ".bzl\""
 		ruleShim := bzlLoads[bzlFileName]
