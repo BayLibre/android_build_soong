@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6654d0_609b2dcd",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-14T16:50:07Z",
+      "side": 1,
+      "message": "\u003e This doesn\u0027t look intuitive to me. Returning ApexVariationName means we don\u0027t do the merge. But this function is named as mergedName.\n\nAgreed. I should probably avoid calling this method when ForPrebuiltApex\u003dtrue.\n\n\u003e I think we shouldn\u0027t call mergeApexVariations when ForPrebuiltApex \u003d\u003d true\n\nmergeApexVariations is called with an []ApexInfo so it is possible for a module to have ApexInfo instances with different values for ForPrebuiltApex. So, the check will have to be within mergeApexVariations rather than outside it.",
+      "parentUuid": "0733f5e4_2fa32b1d",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09dec669_6b968330",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8132bbb0_7e55026c",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-14T16:50:07Z",
+      "side": 1,
+      "message": "It\u0027s not. I renamed it to pathForModuleFromVariant() to make it clear that the directory is unique for the variant not just the module.",
+      "parentUuid": "09dec669_6b968330",
+      "range": {
+        "startLine": 1164,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 0
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53f71776_67fde7ae",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-14T10:53:42Z",
       "side": 1,
       "message": "Can we use PathForIntermediates instead?",
+      "range": {
+        "startLine": 1171,
+        "startChar": 8,
+        "endLine": 1171,
+        "endChar": 44
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c865b450_43c26852",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-14T16:50:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f71776_67fde7ae",
       "range": {
         "startLine": 1171,
         "startChar": 8,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bd0e68e_4e5a02b8",
+        "filename": "android/testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-14T16:50:07Z",
+      "side": 1,
+      "message": "I don\u0027t see how. This method is called to get a path (without the build dir which is different each time) for comparison with a known string. So, if the path must never be nil then it will not be compared against \"\u003cnil path\u003e\" so will fail if it is nil.",
+      "parentUuid": "d5c18fdc_1cdbe26e",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24d7958d_87372b3c",
         "filename": "apex/prebuilt.go",
         "patchSetId": 3
@@ -123,6 +219,30 @@
       "writtenOn": "2020-12-14T10:53:42Z",
       "side": 1,
       "message": "I think this should be the opposite: prebuilt_java_library has a dependency to a prebuilt APEX where its dex impl can be found. It\u0027s the java library that needs an output from the APEX. So the APEX should be the dependency of the library.\n\nThen we don\u0027t need to have the extracted paths in ApexInfo struct and the hack like PathForModuleWithoutVariantOut.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9fabf12_e0daadd8",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-14T16:50:07Z",
+      "side": 1,
+      "message": "I did consider that approach and in fact started implementing it that way but hit a few major issues that made me reevaluate my approach.\n\nDexpreopt (and boot jars package check) require that the boot images jars for art (e.g. core-oj, core-libart, etc.) are from the com.android.art APEX and ensures that by checking the ApexInfo associated with the APEX specific variant of the module.\n\nAn ApexInfo can only be associated with a variant by the apexInfoMutator(). Any attempt to use the ApexInfoProvider to set the value in another mutator causes a panic. That means that the ApexInfo for the prebuilt_apex needs to be associated with the java_import in the apexInfoMutator.\n\nAt this point I was stuck and thought about it some more and while I could probably make it work this way I decided to switch the dependencies from java_import-\u003eprebuilt_apex to prebuilt_apex-\u003ejava_import to make it as consistent with how \u0027apex\u0027 works as possible. That would make it easier to integrate into apexInfoMutator. It would also be consistent with how other \u0027aggregating\u0027 module types (i.e. sdk, sdk_snapshot) work.\n\nApexInfo has a lot of information that is provided by \u0027apex\u0027, while we do not appear to need \nany of that at the moment I wanted to make sure that we could provide it in future if it became necessary. If the ApexInfo was created by the java_import module then that information would either have to be duplicated in every java_import or the java_import would have to retrieve that information from the \"prebuilt_apex\" (requiring another Provider and probably yet another mutator).\n\nHaving the java_import depend on the \"prebuilt_apex\" would push all this logic down into that module type. If we needed to support another module type (e.g. java_sdk_library_import is a likely future candidate) then we would need to either duplicate the logic or more likely refactor that logic into some common base type (i.e. ModuleBase) which would be more complicated and make Soong even more entangled.\n\nHaving the logic here (with just a small amount of logic in each module type to access the exported files) makes things a littler simpler, albeit not actually simple.\n\nHaving dependencies in either direction causes some issues and there is no clear case that one is better than another and I thought in that regard consistency was the deciding factor.",
+      "parentUuid": "24d7958d_87372b3c",
       "range": {
         "startLine": 215,
         "startChar": 0,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db73ac53_4c05b2f6",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-14T16:50:07Z",
+      "side": 1,
+      "message": "I am not sure why this is a hack. It would be nice if it could just use PathForModuleOut() but it cannot because TopDownMutatorContext does not provide the ModuleSubDir() method that PathForModuleOut() requires. Adding that method would require changes to blueprint which I wanted to avoid.\n\nThe path cannot be created during GenerateAndroidBuildActions because the path is needed by the GenerateAndroidBuildActions for the java_import modules which are run first due to the dependency ordering.\n\nObviously, if the dependency was reversed then it would not be a problem but I address that in an earlier comment.",
+      "parentUuid": "681349a8_ff9daee9",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 103
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68f7ee9f_80c6609d",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -169,6 +313,30 @@
       "writtenOn": "2020-12-14T10:53:42Z",
       "side": 1,
       "message": "If the dependency direction is reversed, we can ask the prebuilt apex to provide the path for the extracted jar (of course via an interface).",
+      "range": {
+        "startLine": 2850,
+        "startChar": 0,
+        "endLine": 2852,
+        "endChar": 70
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb14ba97_974c5919",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-14T16:50:07Z",
+      "side": 1,
+      "message": "Accessing modules directly via an interface is a pattern that Soong is trying to move away from to the more abstract Provider model. If the dependency direction was changed then that would require an additional Provider and data structure to make that information available from the prebuilt_apex to the java_import so would not change this code all that much. In fact the code for handling that would most likely be more complicated as it would require visiting the dependencies with the appropriate tag in order to find the prebuilt_apex module, and retrieve the data.",
+      "parentUuid": "68f7ee9f_80c6609d",
       "range": {
         "startLine": 2850,
         "startChar": 0,
