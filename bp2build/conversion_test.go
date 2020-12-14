@@ -62,7 +62,7 @@ func TestCreateBazelFiles_AddsTopLevelFiles(t *testing.T) {
 	for i := range files {
 		if g, w := files[i], expectedFilePaths[i]; g.Dir != w.dir || g.Basename != w.basename {
 			t.Errorf("Did not find expected file %s/%s", g.Dir, g.Basename)
-		} else if g.Basename == "BUILD" || g.Basename == "WORKSPACE" {
+		} else if g.Basename == "BUILD" {
 			if g.Contents != "" {
 				t.Errorf("Expected %s to have no content.", g)
 			}
