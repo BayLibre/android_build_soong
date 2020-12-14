@@ -1,0 +1,12 @@
+Presubmit-Verified-Together+1: Treehugger Robot <treehugger-gerrit@google.com>
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Code-Review+2: Paul Duffin <paulduffin@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Verified+1: Paul Duffin <paulduffin@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Paul Duffin <paulduffin@google.com>
+Submitted-at: Mon, 14 Dec 2020 10:54:21 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1523983
+Project: platform/build/soong
+Branch: refs/heads/master
