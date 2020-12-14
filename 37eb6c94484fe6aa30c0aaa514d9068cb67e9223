@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "028e3b04_f13dccf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-14T15:06:44Z",
+      "side": 1,
+      "message": "PS6 fixes presumbit error (need to use wrapper for get_build_var that sets custom build directory).\n\nPTAL",
+      "revId": "37eb6c94484fe6aa30c0aaa514d9068cb67e9223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
