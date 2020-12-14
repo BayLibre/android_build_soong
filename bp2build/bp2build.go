@@ -27,7 +27,7 @@ func Codegen(ctx android.Context) {
 
 	ruleShims := CreateRuleShims(android.ModuleTypeFactories())
 
-	buildToTargets := GenerateSoongModuleTargets(ctx)
+	buildToTargets := GenerateSoongModuleTargets(ctx, true)
 
 	filesToWrite := CreateBazelFiles(ruleShims, buildToTargets)
 	for _, f := range filesToWrite {

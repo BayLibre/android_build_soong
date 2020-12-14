@@ -55,14 +55,43 @@ func propsToAttributes(props map[string]string) string {
 	return attributes
 }
 
-func GenerateSoongModuleTargets(ctx bpToBuildContext) map[string][]BazelTarget {
+func GenerateSoongModuleTargets(ctx bpToBuildContext, bp2buildEnabled bool) map[string][]BazelTarget {
 	buildFileToTargets := make(map[string][]BazelTarget)
 	ctx.VisitAllModules(func(m blueprint.Module) {
 		dir := ctx.ModuleDir(m)
-		t := generateSoongModuleTarget(ctx, m)
+		var t BazelTarget
+
+		if bp2buildEnabled {
+			if aModule, ok := m.(android.Module); ok {
+				if !aModule.IsConvertedToBazel() {
+					return
+				}
+			}
+			t = generateBazelTarget(ctx, m)
+		} else {
+			t = generateSoongModuleTarget(ctx, m)
+		}
+
 		buildFileToTargets[ctx.ModuleDir(m)] = append(buildFileToTargets[dir], t)
 	})
 	return buildFileToTargets
+}
+
+func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
+	props := getBuildProperties(ctx, m)
+	ruleClass := strings.Replace(props.Attrs["rule_class"], "\"", "", 2)
+	delete(props.Attrs, "rule_class")
+	attributes := propsToAttributes(props.Attrs)
+	targetName := targetNameForBp2Build(ctx, m)
+	return BazelTarget{
+		name: targetName,
+		content: fmt.Sprintf(
+			bazelTarget,
+			ruleClass,
+			targetName,
+			attributes,
+		),
+	}
 }
 
 // Convert a module and its deps and props into a Bazel macro/rule
@@ -286,6 +315,10 @@ func makeIndent(indent int) string {
 		panic(fmt.Errorf("indent column cannot be less than 0, but got %d", indent))
 	}
 	return strings.Repeat("    ", indent)
+}
+
+func targetNameForBp2Build(c bpToBuildContext, logicModule blueprint.Module) string {
+	return strings.Replace(c.ModuleName(logicModule), "__bp2build__", "", 1)
 }
 
 func targetNameWithVariant(c bpToBuildContext, logicModule blueprint.Module) string {
