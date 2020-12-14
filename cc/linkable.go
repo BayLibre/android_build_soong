@@ -6,6 +6,49 @@ import (
 	"github.com/google/blueprint"
 )
 
+// PlatformSanitizeable is an interface for sanitizing platform modules.
+type PlatformSanitizeable interface {
+	LinkableInterface
+
+	// Returns whether the Sanitizer properties struct for this module is defined.
+	SanitizePropDefined() bool
+
+	// Returns whether the module is a dependency root (such as binaries).
+	IsDependencyRoot() bool
+
+	// Returns whether a sanitizer is enabled.
+	IsSanitizerEnabled(t SanitizerType) bool
+
+	// Returns whether a sanitizer has been explicitly disabled (set to false) rather than left undefined.
+	IsSanitizerExplicitlyDisabled(t SanitizerType) bool
+
+	// Returns the value of the SanitizeDep flag, which is set if a module is a dependency of a sanitized module.
+	SanitizeDep() bool
+
+	// Enables or disables the specified sanitizer type if it's supported, otherwise this should panic.
+	SetSanitizer(t SanitizerType, b bool)
+
+	// Returns true if the module is statically linked.
+	SetSanitizeDep(b bool)
+
+	// Returns true if the module is statically linked.
+	StaticallyLinked() bool
+
+	// Set module installation to the sanitizer directory.
+	SetInSanitizerDir()
+
+	// Returns true if this module should never be sanitized.
+	SanitizeNever() bool
+
+	// Returns true if a sanitizer type is supported by this modules compiler.
+	SanitizerSupported(t SanitizerType) bool
+
+	// SanitizableDepTagChecker should handle all possible dependency tags in the dependency tree.
+	// For example, Rust modules can depend on both Rust and CC libraries, so the Rust module implementation
+	// should handle tags from both.
+	SanitizableDepTagChecker() SantizableDependencyTagChecker
+}
+
 // LinkableInterface is an interface for a type of module that is linkable in a C++ library.
 type LinkableInterface interface {
 	android.Module
@@ -27,6 +70,8 @@ type LinkableInterface interface {
 	SetShared()
 	Static() bool
 	Shared() bool
+	Header() bool
+	IsPrebuilt() bool
 	Toc() android.OptionalPath
 
 	Host() bool
@@ -39,6 +84,8 @@ type LinkableInterface interface {
 
 	InRecovery() bool
 	OnlyInRecovery() bool
+
+	InVendor() bool
 
 	UseSdk() bool
 	UseVndk() bool
@@ -56,6 +103,11 @@ type LinkableInterface interface {
 	IsSdkVariant() bool
 
 	SplitPerApiLevel() bool
+
+	// Set the PreventInstall property to 'true' for this module.
+	SetPreventInstall()
+	// Set the HideFromMake property to 'true' for this module.
+	SetHideFromMake()
 }
 
 var (
@@ -66,6 +118,25 @@ var (
 	// Dependency tag for coverage library.
 	CoverageDepTag = dependencyTag{name: "coverage"}
 )
+
+// Returns the ImageVariantType string value for the given module (these are defined in cc/image.go).
+func GetImageVariantType(c LinkableInterface) ImageVariantType {
+	if c.Host() {
+		return hostImageVariant
+	} else if c.InVendor() {
+		return vendorImageVariant
+	} else if c.InProduct() {
+		return productImageVariant
+	} else if c.InRamdisk() {
+		return ramdiskImageVariant
+	} else if c.InVendorRamdisk() {
+		return vendorRamdiskImageVariant
+	} else if c.InRecovery() {
+		return recoveryImageVariant
+	} else {
+		return coreImageVariant
+	}
+}
 
 // SharedDepTag returns the dependency tag for any C++ shared libraries.
 func SharedDepTag() blueprint.DependencyTag {
