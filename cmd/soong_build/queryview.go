@@ -44,13 +44,13 @@ func (ctx *queryviewContext) ModuleType(module blueprint.Module) string {
 	return ctx.bpCtx.ModuleType(module)
 }
 
-func (ctx *queryviewContext) VisitAllModulesBlueprint(visit func(blueprint.Module)) {
+func (ctx *queryviewContext) VisitAllModules(visit func(blueprint.Module)) {
 	ctx.bpCtx.VisitAllModules(visit)
 }
 
-func (ctx *queryviewContext) VisitDirectDeps(module android.Module, visit func(android.Module)) {
+func (ctx *queryviewContext) VisitDirectDeps(module blueprint.Module, visit func(blueprint.Module)) {
 	ctx.bpCtx.VisitDirectDeps(module, func(m blueprint.Module) {
-		if aModule, ok := m.(android.Module); ok {
+		if aModule, ok := m.(blueprint.Module); ok {
 			visit(aModule)
 		}
 	})

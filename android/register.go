@@ -37,8 +37,8 @@ type singleton struct {
 var singletons []singleton
 var preSingletons []singleton
 
+// Singletons for bp2build (Blueprint to BUILD conversion)
 var bazelConverterSingletons []singleton
-var bazelConverterPreSingletons []singleton
 
 type mutator struct {
 	name            string
@@ -98,10 +98,6 @@ func RegisterBazelConverterSingletonType(name string, factory SingletonFactory) 
 	bazelConverterSingletons = append(bazelConverterSingletons, singleton{name, factory})
 }
 
-func RegisterBazelConverterPreSingletonType(name string, factory SingletonFactory) {
-	bazelConverterPreSingletons = append(bazelConverterPreSingletons, singleton{name, factory})
-}
-
 type Context struct {
 	*blueprint.Context
 	config Config
@@ -113,25 +109,33 @@ func NewContext(config Config) *Context {
 	return ctx
 }
 
+func (ctx Context) AddNinjaFileDeps(...string) {}
+func (ctx Context) Config() Config             { return ctx.config }
+
 // RegisterForBazelConversion registers an alternate shadow pipeline of
 // singletons, module types and mutators to register for converting Blueprint
 // files to semantically equivalent BUILD files.
 func (ctx *Context) RegisterForBazelConversion() {
-	for _, t := range bazelConverterPreSingletons {
-		ctx.RegisterPreSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
-	}
-
 	for _, t := range moduleTypes {
 		ctx.RegisterModuleType(t.name, ModuleFactoryAdaptor(t.factory))
 	}
 
 	for _, t := range bazelConverterSingletons {
+		// Register Bazel converter Singletons as "post mutator" singletons that run
+		// immediately after mutators finish.
+		ctx.RegisterPostMutatorSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
+	}
+
+	// Required for SingletonModule types, even though we are not using them.
+	for _, t := range singletons {
 		ctx.RegisterSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
 	}
 
 	registerMutatorsForBazelConversion(ctx.Context)
 }
 
+// Register the pipeline of singletons, module types, and mutators for
+// generating build.ninja and other files for Kati, from Android.bp files.
 func (ctx *Context) Register() {
 	for _, t := range preSingletons {
 		ctx.RegisterPreSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
