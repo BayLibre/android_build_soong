@@ -16,6 +16,24 @@
       "message": "Is this still being pursued? It sounded like this was being dropped in favor of --skip-kati.",
       "revId": "12afc3e36ebaf68e02babc36380b7e27d72ea193",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac0905c_a111940c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-14T10:16:31Z",
+      "side": 1,
+      "message": "Yes, I still need this as it unblocks my work and migrating to --skip-kati might take a while.",
+      "parentUuid": "84fbf4c8_51432545",
+      "revId": "12afc3e36ebaf68e02babc36380b7e27d72ea193",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
