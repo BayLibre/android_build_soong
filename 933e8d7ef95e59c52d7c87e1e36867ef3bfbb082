@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0bd013f_1f97f23f",
+        "filename": "bazel/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-14T18:49:48Z",
+      "side": 1,
+      "message": "I checked your CL and I added a new field named AqueryBuildRootRunName so you can merge to your CL.\n\nIt does sound similar but these run names are unique keys to query a particular bazel profile in Plx tables. I did check your CL and I made the updates so it can merge to your CL.",
+      "parentUuid": "f4049a9e_2d9a2689",
+      "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2ff40ce_c2545b33",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-14T17:41:37Z",
       "side": 1,
       "message": "Perhaps instead \"Perform cquery of the Bazel build root and its dependencies\" ?",
+      "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bac96d6_3a2b3eb5",
+        "filename": "bazel/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-14T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ff40ce_c2545b33",
       "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8054bba6_14405d70",
+        "filename": "bazel/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-14T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1c184ef_46df8660",
+      "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db456dd1_1aaef084",
@@ -65,6 +119,24 @@
       "writtenOn": "2020-12-14T17:41:37Z",
       "side": 1,
       "message": "what about bazel-ninja-exec  ?",
+      "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28a320ed_a1e2f3f6",
+        "filename": "bazel/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-14T18:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db456dd1_1aaef084",
       "revId": "933e8d7ef95e59c52d7c87e1e36867ef3bfbb082",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
