@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4666665_f43ffc72",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-14T17:11:42Z",
+      "side": 1,
+      "message": "Opps.\n\nYes, I wanted to do that but decided to push in a separate CL (after this one is submitted).",
+      "parentUuid": "907886f3_98b14bce",
+      "range": {
+        "startLine": 162,
+        "startChar": 43,
+        "endLine": 162,
+        "endChar": 58
+      },
+      "revId": "281ca8b5fd9cc991ba50772d4ea6df1c1355d1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41618673_0a966dcc",
