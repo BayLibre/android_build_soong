@@ -69,6 +69,30 @@
       },
       "revId": "281ca8b5fd9cc991ba50772d4ea6df1c1355d1b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d02ec07_e7b3dc23",
+        "filename": "bazel/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-14T19:51:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41618673_0a966dcc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "281ca8b5fd9cc991ba50772d4ea6df1c1355d1b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
