@@ -60,8 +60,9 @@ func createBazelQueryView(ctx *android.Context, bazelQueryViewDir string) error 
 	qvCtx := queryviewContext{
 		bpCtx: ctx.Context,
 	}
+
 	ruleShims := bp2build.CreateRuleShims(android.ModuleTypeFactories())
-	buildToTargets := bp2build.GenerateSoongModuleTargets(&qvCtx)
+	buildToTargets := bp2build.GenerateSoongModuleTargets(&qvCtx, false)
 
 	filesToWrite := bp2build.CreateBazelFiles(ruleShims, buildToTargets)
 	for _, f := range filesToWrite {
