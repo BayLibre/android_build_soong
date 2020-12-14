@@ -54,7 +54,7 @@ func newNameResolver(config android.Config) *android.NameResolver {
 // bazelConversionRequested checks that the user is intending to convert
 // Blueprint to Bazel BUILD files.
 func bazelConversionRequested(configuration android.Config) bool {
-	return configuration.IsEnvTrue("CONVERT_TO_BAZEL")
+	return configuration.IsEnvTrue("GENERATE_BAZEL_FILES")
 }
 
 func newContext(configuration android.Config) *android.Context {
