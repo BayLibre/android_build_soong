@@ -70,7 +70,7 @@ func (vendorSnapshotImage) init() {
 }
 
 func (vendorSnapshotImage) inImage(m *Module) func() bool {
-	return m.inVendor
+	return m.InVendor
 }
 
 func (vendorSnapshotImage) available(m *Module) *bool {
@@ -299,8 +299,8 @@ type snapshotLibraryProperties struct {
 }
 
 type snapshotSanitizer interface {
-	isSanitizerEnabled(t sanitizerType) bool
-	setSanitizerVariation(t sanitizerType, enabled bool)
+	isSanitizerEnabled(t SanitizerType) bool
+	setSanitizerVariation(t SanitizerType, enabled bool)
 }
 
 type snapshotLibraryDecorator struct {
@@ -400,7 +400,7 @@ func (p *snapshotLibraryDecorator) nativeCoverage() bool {
 	return false
 }
 
-func (p *snapshotLibraryDecorator) isSanitizerEnabled(t sanitizerType) bool {
+func (p *snapshotLibraryDecorator) isSanitizerEnabled(t SanitizerType) bool {
 	switch t {
 	case cfi:
 		return p.sanitizerProperties.Cfi.Src != nil
@@ -409,7 +409,7 @@ func (p *snapshotLibraryDecorator) isSanitizerEnabled(t sanitizerType) bool {
 	}
 }
 
-func (p *snapshotLibraryDecorator) setSanitizerVariation(t sanitizerType, enabled bool) {
+func (p *snapshotLibraryDecorator) setSanitizerVariation(t SanitizerType, enabled bool) {
 	if !enabled {
 		return
 	}
