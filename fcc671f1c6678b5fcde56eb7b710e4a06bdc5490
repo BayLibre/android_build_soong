@@ -70,6 +70,30 @@
       },
       "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3814a195_f562f86a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-14T14:19:15Z",
+      "side": 1,
+      "message": "Yes, diag mode should be turned off later for release. We only want to enable it to help debug. Given that would it be better to just add the dependency and then remove the line when we start to disable diag mode.",
+      "parentUuid": "3682f602_a63682ad",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
