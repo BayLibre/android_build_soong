@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d5b7b1_62703b7e",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-14T18:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d93cb11_c50c4ba9",
+      "revId": "04e3b07c879d67e25d47afe54fa9f55e172fda54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c82b1a8d_1f1fe539",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-14T17:42:47Z",
       "side": 1,
       "message": "nvm :)",
+      "parentUuid": "c82b1a8d_1f1fe539",
+      "revId": "04e3b07c879d67e25d47afe54fa9f55e172fda54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a499c307_eb497af7",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-14T18:16:47Z",
+      "side": 1,
+      "message": "AFAICT, the members of these structs must be exported in order for them to operate for Json parsing  (unexported members aren\u0027t filled in by json.Unmarshal)",
       "parentUuid": "c82b1a8d_1f1fe539",
       "revId": "04e3b07c879d67e25d47afe54fa9f55e172fda54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
