@@ -46,6 +46,8 @@ func RegisterGenruleBuildComponents(ctx android.RegistrationContext) {
 	ctx.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("genrule_tool_deps", toolDepsMutator).Parallel()
 	})
+
+	android.RegisterBp2BuildMutator("genrule", moduleToTargetMutator)
 }
 
 var (
@@ -117,6 +119,9 @@ type generatorProperties struct {
 
 	// input files to exclude
 	Exclude_srcs []string `android:"path,arch_variant"`
+
+	// names of the output files that will be generated
+	Out []string `android:"arch_variant"`
 
 	// Properties for Bazel migration purposes.
 	bazel.Properties
@@ -736,7 +741,7 @@ type genSrcsProperties struct {
 const defaultShardSize = 50
 
 func NewGenRule() *Module {
-	properties := &genRuleProperties{}
+	properties := &generatorProperties{}
 
 	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask {
 		outs := make(android.WritablePaths, len(properties.Out))
@@ -767,10 +772,55 @@ func GenRuleFactory() android.Module {
 	return m
 }
 
-type genRuleProperties struct {
-	// names of the output files that will be generated
-	Out []string `android:"arch_variant"`
+type bazelGenruleAttributes struct {
+	Name  *string
+	Srcs  []string
+	Outs  []string
+	Tools []string
+	Cmd   string
 }
+
+type bazelGenrule struct {
+	android.BazelTargetModuleBase
+	bazelGenruleAttributes
+}
+
+func BazelGenruleFactory() android.Module {
+	module := &bazelGenrule{}
+	module.AddProperties(&module.bazelGenruleAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func moduleToTargetMutator(ctx android.TopDownMutatorContext) {
+	if m, ok := ctx.Module().(*Module); ok {
+		name := "__bp2build__" + m.Name()
+		// Replace in and out variables with $< and $@
+		cmd := ""
+		if m.properties.Cmd != nil {
+			cmd = strings.Replace(*m.properties.Cmd, "$(in)", "$(SRCS)", 1)
+			cmd = strings.Replace(cmd, "$(out)", "$(OUTS)", 1)
+			cmd = strings.Replace(cmd, "$(genDir)", "$(GENDIR)", 1)
+		}
+
+		tools := append(m.properties.Tools, m.properties.Tool_files...)
+		ctx.CreateModule(BazelGenruleFactory, &bazelGenruleAttributes{
+			Name:  proptools.StringPtr(name),
+			Srcs:  m.properties.Srcs,
+			Outs:  m.properties.Out,
+			Cmd:   cmd,
+			Tools: tools,
+		}, &bazel.BazelTargetModuleProperties{
+			Rule_class: "genrule",
+		})
+	}
+}
+
+func (m *bazelGenrule) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelGenrule) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
 
 var Bool = proptools.Bool
 var String = proptools.String
@@ -793,7 +843,6 @@ func DefaultsFactory(props ...interface{}) android.Module {
 	module.AddProperties(props...)
 	module.AddProperties(
 		&generatorProperties{},
-		&genRuleProperties{},
 	)
 
 	android.InitDefaultsModule(module)
