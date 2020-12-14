@@ -117,6 +117,12 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 			return nil
 		}
 
+		if p.buildStubs() {
+			m := versioningMacroName(ctx.Module().(*Module).BaseModuleName())
+			v := p.stubsVersion()
+			p.libraryDecorator.flagExporter.reexportFlags("-D" + m + "=" + v)
+		}
+
 		in := android.PathForModuleSrc(ctx, srcs[0])
 
 		if p.static() {
