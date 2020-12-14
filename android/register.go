@@ -120,6 +120,8 @@ func (ctx *Context) RegisterForBazelConversion() {
 	registerMutatorsForBazelConversion(ctx.Context)
 }
 
+// Register the pipeline of singletons, module types, and mutators for
+// generating build.ninja and other files for Kati, from Android.bp files.
 func (ctx *Context) Register() {
 	for _, t := range preSingletons {
 		ctx.RegisterPreSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
