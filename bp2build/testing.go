@@ -123,11 +123,11 @@ func (ctx *bp2buildBlueprintWrapContext) ModuleType(module blueprint.Module) str
 	return ctx.bpCtx.ModuleType(module)
 }
 
-func (ctx *bp2buildBlueprintWrapContext) VisitAllModulesBlueprint(visit func(blueprint.Module)) {
+func (ctx *bp2buildBlueprintWrapContext) VisitAllModules(visit func(blueprint.Module)) {
 	ctx.bpCtx.VisitAllModules(visit)
 }
 
-func (ctx *bp2buildBlueprintWrapContext) VisitDirectDeps(module android.Module, visit func(android.Module)) {
+func (ctx *bp2buildBlueprintWrapContext) VisitDirectDeps(module blueprint.Module, visit func(blueprint.Module)) {
 	ctx.bpCtx.VisitDirectDeps(module, func(m blueprint.Module) {
 		if aModule, ok := m.(android.Module); ok {
 			visit(aModule)
