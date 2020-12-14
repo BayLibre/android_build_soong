@@ -34,6 +34,7 @@ type singleton struct {
 
 var singletons []singleton
 var preSingletons []singleton
+var postMutatorSingletons []singleton
 
 type mutator struct {
 	name            string
@@ -79,6 +80,10 @@ func RegisterPreSingletonType(name string, factory SingletonFactory) {
 	preSingletons = append(preSingletons, singleton{name, factory})
 }
 
+func RegisterPostMutatorSingletonType(name string, factory SingletonFactory) {
+	postMutatorSingletons = append(postMutatorSingletons, singleton{name, factory})
+}
+
 type Context struct {
 	*blueprint.Context
 	config Config
@@ -98,13 +103,15 @@ func (ctx *Context) RegisterForBazelConversion() {
 		ctx.RegisterModuleType(t.name, ModuleFactoryAdaptor(t.factory))
 	}
 
-	bazelConverterSingleton := singleton{"bp2build", BazelConverterSingleton}
-	ctx.RegisterSingletonType(bazelConverterSingleton.name,
-		SingletonFactoryAdaptor(ctx, bazelConverterSingleton.factory))
+	for _, t := range postMutatorSingletons {
+		ctx.RegisterPostMutatorSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
+	}
 
 	registerMutatorsForBazelConversion(ctx.Context)
 }
 
+// Register the pipeline of singletons, module types, and mutators for
+// generating build.ninja and other files for Kati, from Android.bp files.
 func (ctx *Context) Register() {
 	for _, t := range preSingletons {
 		ctx.RegisterPreSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
