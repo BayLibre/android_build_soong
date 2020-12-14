@@ -22,12 +22,12 @@ import (
 // The Bazel QueryView singleton is responsible for generating the Ninja actions
 // for calling the soong_build primary builder in the main build.ninja file.
 func init() {
-	android.RegisterPreSingletonType("androidbp_to_build", AndroidBpToBuildSingleton)
+	android.RegisterPostMutatorSingletonType("androidbp_to_build", AndroidBpToBuildSingleton)
 }
 
 func AndroidBpToBuildSingleton() android.Singleton {
 	return &androidBpToBuildSingleton{
-		name: "bp2Build",
+		name: "bp2build",
 	}
 }
 
@@ -37,10 +37,6 @@ type androidBpToBuildSingleton struct {
 }
 
 func (s *androidBpToBuildSingleton) GenerateBuildActions(ctx android.SingletonContext) {
-	if !ctx.Config().IsEnvTrue("CONVERT_TO_BAZEL") {
-		return
-	}
-
 	s.outputDir = android.PathForOutput(ctx, s.name)
 	android.RemoveAllOutputDir(s.outputDir)
 
