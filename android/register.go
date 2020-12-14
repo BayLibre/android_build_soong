@@ -34,6 +34,7 @@ type singleton struct {
 
 var singletons []singleton
 var preSingletons []singleton
+var postMutatorSingletons []singleton
 
 var bazelConverterSingletons []singleton
 var bazelConverterPreSingletons []singleton
@@ -82,12 +83,8 @@ func RegisterPreSingletonType(name string, factory SingletonFactory) {
 	preSingletons = append(preSingletons, singleton{name, factory})
 }
 
-func RegisterBazelConverterSingletonType(name string, factory SingletonFactory) {
-	bazelConverterSingletons = append(bazelConverterSingletons, singleton{name, factory})
-}
-
-func RegisterBazelConverterPreSingletonType(name string, factory SingletonFactory) {
-	bazelConverterPreSingletons = append(bazelConverterPreSingletons, singleton{name, factory})
+func RegisterPostMutatorSingletonType(name string, factory SingletonFactory) {
+	postMutatorSingletons = append(postMutatorSingletons, singleton{name, factory})
 }
 
 type Context struct {
@@ -113,13 +110,15 @@ func (ctx *Context) RegisterForBazelConversion() {
 		ctx.RegisterModuleType(t.name, ModuleFactoryAdaptor(t.factory))
 	}
 
-	for _, t := range bazelConverterSingletons {
-		ctx.RegisterSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
+	for _, t := range postMutatorSingletons {
+		ctx.RegisterPostMutatorSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
 	}
 
 	registerMutatorsForBazelConversion(ctx.Context)
 }
 
+// Register the pipeline of singletons, module types, and mutators for
+// generating build.ninja and other files for Kati, from Android.bp files.
 func (ctx *Context) Register() {
 	for _, t := range preSingletons {
 		ctx.RegisterPreSingletonType(t.name, SingletonFactoryAdaptor(ctx, t.factory))
