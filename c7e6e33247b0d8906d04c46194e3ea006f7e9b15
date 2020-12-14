@@ -16,6 +16,167 @@
       "message": "Thanks for the comprehensive review. PTAL.",
       "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0733f5e4_2fa32b1d",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T10:53:42Z",
+      "side": 1,
+      "message": "This doesn\u0027t look intuitive to me. Returning ApexVariationName means we don\u0027t do the merge. But this function is named as mergedName.\n\nI think we shouldn\u0027t call mergeApexVariations when ForPrebuiltApex \u003d\u003d true",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09dec669_6b968330",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T10:53:42Z",
+      "side": 1,
+      "message": "how is this different from pathForModule?",
+      "range": {
+        "startLine": 1164,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 0
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f71776_67fde7ae",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T10:53:42Z",
+      "side": 1,
+      "message": "Can we use PathForIntermediates instead?",
+      "range": {
+        "startLine": 1171,
+        "startChar": 8,
+        "endLine": 1171,
+        "endChar": 44
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c18fdc_1cdbe26e",
+        "filename": "android/testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T10:53:42Z",
+      "side": 1,
+      "message": "wouldn\u0027t this hide future errors in which nil is strictly disallowed?",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d7958d_87372b3c",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T10:53:42Z",
+      "side": 1,
+      "message": "I think this should be the opposite: prebuilt_java_library has a dependency to a prebuilt APEX where its dex impl can be found. It\u0027s the java library that needs an output from the APEX. So the APEX should be the dependency of the library.\n\nThen we don\u0027t need to have the extracted paths in ApexInfo struct and the hack like PathForModuleWithoutVariantOut.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "681349a8_ff9daee9",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T10:53:42Z",
+      "side": 1,
+      "message": "This looks like a hack. Can we have this path only during GenerateAndroidBuildActions?",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 103
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f7ee9f_80c6609d",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-14T10:53:42Z",
+      "side": 1,
+      "message": "If the dependency direction is reversed, we can ask the prebuilt apex to provide the path for the extracted jar (of course via an interface).",
+      "range": {
+        "startLine": 2850,
+        "startChar": 0,
+        "endLine": 2852,
+        "endChar": 70
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
