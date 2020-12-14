@@ -16,6 +16,23 @@
       "message": "PS6 fixes presumbit error (need to use wrapper for get_build_var that sets custom build directory).\n\nPTAL",
       "revId": "37eb6c94484fe6aa30c0aaa514d9068cb67e9223",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c2bd9e7_7e8dca84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-14T17:34:16Z",
+      "side": 1,
+      "message": "Bypassing presubmit because of unrelated build failures (http://b/175516839). The failed builds passed in PS5.",
+      "revId": "37eb6c94484fe6aa30c0aaa514d9068cb67e9223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
