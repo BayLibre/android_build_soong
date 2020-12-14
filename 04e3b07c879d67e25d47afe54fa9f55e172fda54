@@ -33,6 +33,24 @@
       "message": "All members in these new structs are exported. Is this intended?",
       "revId": "04e3b07c879d67e25d47afe54fa9f55e172fda54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9112a447_84efd141",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-14T17:42:47Z",
+      "side": 1,
+      "message": "nvm :)",
+      "parentUuid": "c82b1a8d_1f1fe539",
+      "revId": "04e3b07c879d67e25d47afe54fa9f55e172fda54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
