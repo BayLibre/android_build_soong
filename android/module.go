@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"fmt"
 	"os"
 	"path"
@@ -489,6 +490,16 @@ type Module interface {
 	// TransitivePackagingSpecs returns the PackagingSpecs for this module and any transitive
 	// dependencies with dependency tags for which IsInstallDepNeeded() returns true.
 	TransitivePackagingSpecs() []PackagingSpec
+}
+
+type BazelTargetModule interface {
+	Module
+
+	BazelTargetModuleProps() *bazel.BazelTargetModuleProperties
+}
+
+func (btmb *BazelTargetModuleBase) BazelTargetModuleProps() *bazel.BazelTargetModuleProperties {
+	return &btmb.BazelTargetModuleProperties
 }
 
 // Qualified id for a module
@@ -1069,6 +1080,9 @@ type ModuleBase struct {
 	archProperties          [][]interface{}
 	customizableProperties  []interface{}
 
+	// Properties specific to the Blueprint to BUILD migration.
+	bazelTargetModuleProperties bazel.BazelTargetModuleProperties
+
 	// Information about all the properties on the module that contains visibility rules that need
 	// checking.
 	visibilityPropertyInfo []visibilityProperty
@@ -1425,6 +1439,16 @@ func (m *ModuleBase) IsReplacedByPrebuilt() bool {
 
 func (m *ModuleBase) ExportedToMake() bool {
 	return m.commonProperties.NamespaceExportedToMake
+}
+
+type BazelTargetModuleBase struct {
+	ModuleBase
+	bazel.BazelTargetModuleProperties
+}
+
+func InitBazelTargetModule(module BazelTargetModule) {
+	module.AddProperties(module.BazelTargetModuleProps())
+	InitAndroidModule(module)
 }
 
 // computeInstallDeps finds the installed paths of all dependencies that have a dependency
