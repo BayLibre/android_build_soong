@@ -22,7 +22,7 @@ import (
 // The Bazel bp2build singleton is responsible for writing .bzl files that are equivalent to
 // Android.bp files that are capable of being built with Bazel.
 func init() {
-	android.RegisterBazelConverterPreSingletonType("androidbp_to_build", AndroidBpToBuildSingleton)
+	android.RegisterBazelConverterSingletonType("androidbp_to_build", AndroidBpToBuildSingleton)
 }
 
 func AndroidBpToBuildSingleton() android.Singleton {
@@ -39,10 +39,6 @@ type androidBpToBuildSingleton struct {
 func (s *androidBpToBuildSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	s.outputDir = android.PathForOutput(ctx, s.name)
 	android.RemoveAllOutputDir(s.outputDir)
-
-	if !ctx.Config().IsEnvTrue("CONVERT_TO_BAZEL") {
-		return
-	}
 
 	ruleShims := CreateRuleShims(android.ModuleTypeFactories())
 
