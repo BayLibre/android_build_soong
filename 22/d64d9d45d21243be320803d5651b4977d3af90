@@ -1,0 +1,12 @@
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Code-Review+1: Jiyong Park <jiyong@google.com>
+Autosubmit+1: Bernie Innocenti <codewiz@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Verified+1: Bernie Innocenti <codewiz@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 15 Dec 2020 13:20:42 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1521397
+Project: platform/build/soong
+Branch: refs/heads/master
