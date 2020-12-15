@@ -16,6 +16,46 @@
       "message": "PTAL. (TH error is unrelated. So please ignore that)",
       "revId": "e58d03e50d1259c194d47f5a5e4e466fa04eff10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "745b011d_cb93d181",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-15T18:27:46Z",
+      "side": 1,
+      "message": "My thought was to solve this generically by recording reexportFlags and writing it out in an property in cc_prebuilt_\u003cfoo\u003e, but this is good enough for this particular case.",
+      "revId": "e58d03e50d1259c194d47f5a5e4e466fa04eff10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe2947b0_5c005ef5",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-15T18:27:46Z",
+      "side": 1,
+      "message": "The code duplication with link() in library.go isn\u0027t ideal, and I note there are differences (e.g. why not use ImplementationModuleName here?). Can it be done in a shared function?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "e58d03e50d1259c194d47f5a5e4e466fa04eff10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
