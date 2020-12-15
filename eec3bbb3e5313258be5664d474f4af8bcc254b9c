@@ -22,6 +22,30 @@
       },
       "revId": "eec3bbb3e5313258be5664d474f4af8bcc254b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43f2ab9_4076c7e5",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-15T04:35:58Z",
+      "side": 1,
+      "message": "I agree. Diag mode enabled is only know at a modular level. If another library pulls in uses the module but doesn\u0027t enable diag mode itself, then it\u0027s harder to tell diag mode has been enabled. Moving this check won\u0027t work.\nI was also thinking of changing the check if ubsan is included, but I don\u0027t see how it is any different than just adding the dep to allowed_dep. \nLike I said, I\u0027m not too familiar with the build system, so I would like advice on how to proceed.",
+      "parentUuid": "01e682b8_c643d4dd",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 3
+      },
+      "revId": "eec3bbb3e5313258be5664d474f4af8bcc254b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
