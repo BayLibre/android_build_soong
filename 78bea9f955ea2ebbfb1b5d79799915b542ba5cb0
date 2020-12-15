@@ -16,6 +16,109 @@
       "message": "Now we have only one blocker for this CL.\nI am working on it in go/pag/1824106.",
       "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20692238_86d79809",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-15T17:55:22Z",
+      "side": 1,
+      "message": "Why is this necessary?  Why not have a default?",
+      "range": {
+        "startLine": 359,
+        "startChar": 43,
+        "endLine": 360,
+        "endChar": 32
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e88e74_c68ae703",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-15T17:55:22Z",
+      "side": 1,
+      "message": "This seems really subtle.  Could it be made more explicit with a separate property?",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 20
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38d29a5_ddca1a77",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-15T17:55:22Z",
+      "side": 1,
+      "message": "Can you add details on why the properties have to be the same?",
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33040afd_6c69bfdf",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-15T17:55:22Z",
+      "side": 1,
+      "message": "This seems dangerous, it will be easy to add a new Target.Vendor property struct somewhere without adding it to this list.  You could use c.GetProperties() to get all the property structs and then use reflection to check for a Target.Vendor field, but that will be pretty messy.  There may be helpers in blueprint/proptools you could use.\n\nAlternatively, if the issue is making sure that the product and vendor variants are the same, you could just make them the same using one of a few options:\n1.  Make the product variant an alias to the vendor variant (there would only be one install path though)\n2.  Make the product variant depend on the vendor variant and copy the Providers from it instead of creating its own rules\n3.  Make the product variant use the Target.Vendor properties when creating its rules.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "137691b9_189059dc",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-15T17:55:22Z",
+      "side": 1,
+      "message": "This looks odd, I think if you keep this \"Product_available !\u003d nil\" behavior it needs to be a descriptively named helper function with lots of documentation to make it clear what case this is checking for.",
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
