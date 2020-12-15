@@ -1,0 +1,12 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Code-Review+2: Hsin-Yi Chen <hsinyichen@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Verified+1: Yo Chiang <yochiang@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Yo Chiang <yochiang@google.com>
+Submitted-at: Tue, 15 Dec 2020 06:45:08 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1513138
+Project: platform/build/soong
+Branch: refs/heads/master
