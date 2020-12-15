@@ -118,6 +118,30 @@
       },
       "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0297e5a_773c13ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-15T04:11:19Z",
+      "side": 1,
+      "message": "Since you pointed out \"temporary\" for clarification, I thought maybe it would be better/easier to discard the current change and revert it to what it was previously, which was to add the dependency to the allowed_dep.txt. Then remove it once diag mode was been disabled again. Otherwise, I can continue to amend this CL by addressing the comment.\n\nI just wanted to get your advice before I made any further changes since I\u0027m not very familiar with the build system.",
+      "parentUuid": "058c42f3_fd813e8b",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
