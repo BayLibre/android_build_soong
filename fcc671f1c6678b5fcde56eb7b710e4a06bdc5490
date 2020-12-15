@@ -142,6 +142,30 @@
       },
       "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea573415_21c76559",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-15T06:16:04Z",
+      "side": 1,
+      "message": "I remember that libclang_rt.ubsan_standalone-aarch64-android is already available to anywhere via libclang_rt-prebuilt-default. Then adding the lib here doesn\u0027t make anything worse. I feel fine with PS2. Sorry for the back and forth.\n\nJust to answer your question about how to implement this:\n\n1) You first need to create a mechanism for a module can use to make it be skipped here: https://source.corp.google.com/android/build/soong/apex/builder.go;rcl\u003dd46c0e8f36779113c3e47f9e4f5295039cd82a34;l\u003d899\n\nYou might have to define a marker interface like https://source.corp.google.com/android/build/soong/android/apex.go;rcl\u003d3b4ee13bc7c5debc74ed727c828893eb0d93ea45;l\u003d235.\n\n2) Then inside cc/sanitize.go, you mark the dependencies for the runtime libs that corresponds to the sanitizers enabled for the diagnostic mode.\n\nThe list of such sanitizer can get by calling ctx.Config().SanitizeDeviceDiag().\n\nThe tag [1] is marked with the marker interface when the condition is met.\n\n[1] https://source.corp.google.com/android/build/soong/cc/sanitize.go?q\u003df:sanitize.go%20depTag%5C%20:%3D\u0026sq\u003dpackage:%5Eandroid$\n\nThis way, the dependencies to the runtime libs are ignored when creating allowed_deps.txt.",
+      "parentUuid": "b0297e5a_773c13ae",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
