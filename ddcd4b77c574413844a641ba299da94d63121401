@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31442fb3_881d62c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-15T23:01:53Z",
+      "side": 1,
+      "message": "Can you elaborate what kind of dependencies, or which part of the build depends on them?",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6886ffac_907c6ab4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -126,6 +149,29 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a75edb47_5c68be22",
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8a0db8a_8339f7f0",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-15T23:01:53Z",
+      "side": 1,
+      "message": "Dexpreopt does need path to the actual jar. Do you mean that BCP libs are a special case, as their jars are copied to predefined locations (set up in java/dexpreopt_config.go), and dexpreopt gets the actual jar path from the boot image config, and that\u0027s why here we we can use a fake path?\n\nThe way comment is written one might think that dexpreopt doesn\u0027t need the actual jar path.",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 31
+      },
       "revId": "ddcd4b77c574413844a641ba299da94d63121401",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
