@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62fd2f72_d9c4e7aa",
+        "filename": "ui/metrics/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-15T03:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d9a1198_cf8b3a02",
+      "range": {
+        "startLine": 45,
+        "startChar": 64,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "fffd21cf4b2606fdf5324410465b80db080b8687",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "986c8e1d_81e4045e",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-14T21:58:24Z",
       "side": 1,
       "message": "I think you can omit these",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "fffd21cf4b2606fdf5324410465b80db080b8687",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ad06ca_40e9413f",
+        "filename": "ui/metrics/event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-15T03:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "986c8e1d_81e4045e",
       "range": {
         "startLine": 60,
         "startChar": 31,
