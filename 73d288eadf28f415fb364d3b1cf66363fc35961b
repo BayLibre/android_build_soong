@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4f91cd_3d9a3bc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2020-12-15T21:39:06Z",
+      "side": 1,
+      "message": "Build breakages are relevant, I\u0027ll take a look.",
+      "revId": "73d288eadf28f415fb364d3b1cf66363fc35961b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
