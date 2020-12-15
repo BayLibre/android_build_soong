@@ -166,6 +166,30 @@
       },
       "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead600f6_8d49c1fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-15T19:28:47Z",
+      "side": 1,
+      "message": "Thank you for the explanation and break down! I wanted to be explicit due to time zone differences. I hope the new amendments are more aligned to expectations.",
+      "parentUuid": "ea573415_21c76559",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "fcc671f1c6678b5fcde56eb7b710e4a06bdc5490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
