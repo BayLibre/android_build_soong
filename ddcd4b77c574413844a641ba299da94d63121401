@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4af35426_3f847c24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6886ffac_907c6ab4",
+      "range": {
+        "startLine": 11,
+        "startChar": 62,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd260e43_e1944fbe",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-15T00:37:00Z",
       "side": 1,
       "message": "Isn\u0027t it more straightforward to use filepath.IsAbs(p) before the Rel() call instead? And maybe also consider testing strings.HasPrefix(p, \"/dev/\") to catch unintentional absolute paths.\n\n(This may be moot depending on the other comment about PathForDevNull below.)",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 34
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f86abe_6d2723b5",
+        "filename": "android/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "I made it very explicit that only /dev/ paths are allowed.",
+      "parentUuid": "bd260e43_e1944fbe",
       "range": {
         "startLine": 475,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f763a60_0a148c61",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a75edb47_5c68be22",
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd059f7b_5627ebf0",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-12-15T00:37:00Z",
       "side": 1,
       "message": "That build error won\u0027t be very informative, but perhaps the \"jars/are/invalid\" path provides enough of a hint. Ideally java_import would support this case with a flag and an empty jars array, but I suppose you have good reason to not take that route?",
+      "range": {
+        "startLine": 69,
+        "startChar": 33,
+        "endLine": 69,
+        "endChar": 96
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c775a6_38c3bcce",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "The Soong APIs used for exposing jar files from java_import to its consumers (e.g. java_library) do not allow for error reporting (other than panic) if the requested file is not available. All that they can do is return nil which is usually ignored. So, the only error that it will get is a compilation error because of missing classes which is completely unhelpful.\n\nModifying that API to support providing meaningful errors is a reasonably large amount of work that would have delayed this by at least a week if not more.\n\nReturning an empty and invalid jar with a weird name gives a slightly more helpful message and doesn\u0027t require any modifications to java_import.",
+      "parentUuid": "cd059f7b_5627ebf0",
       "range": {
         "startLine": 69,
         "startChar": 33,
@@ -112,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "668e58ff_97c85018",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "The value returned from this function is ignored if it is nil. So, we need to differentiate between three cases:\n1. Ignore the file.\n2. An empty file to be copied.\n3. A real file to be copied.\n\nAn OptionalPath provides no advantage over returning nil. We would still need to differentiate between 2 and 3.\n\nWe could make the return value a pair of (Path, bool) but using /dev/null just seemed less disruptive. My main concern with using that was whether it would work well with ninja.\n\nAlternatively, I did consider creating an empty file that could be used for copying from but there did not seem a good place to do that.",
+      "parentUuid": "8aa82cbc_d7022c95",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cea3199c_bce35e3b",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -123,6 +237,30 @@
       "writtenOn": "2020-12-15T00:37:00Z",
       "side": 1,
       "message": "Unfinished sentence?",
+      "range": {
+        "startLine": 73,
+        "startChar": 62,
+        "endLine": 73,
+        "endChar": 66
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46f4cc07_c222db0c",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea3199c_bce35e3b",
       "range": {
         "startLine": 73,
         "startChar": 62,
@@ -146,6 +284,24 @@
       "writtenOn": "2020-12-15T00:37:00Z",
       "side": 1,
       "message": "Worth mentioning what the other behaviour is.",
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fd8825_77808276",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2204,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a3db781_89f19baf",
       "revId": "ddcd4b77c574413844a641ba299da94d63121401",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -175,6 +331,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff66d91b_0414d1af",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "I was following a suggestion of Ulya\u0027s for tests which I found useful. I don\u0027t really see the benefit of using a comment. It requires more typing (no completion) and doesn\u0027t provide any additional information.",
+      "parentUuid": "c849f314_5ff77aef",
+      "range": {
+        "startLine": 2209,
+        "startChar": 0,
+        "endLine": 2210,
+        "endChar": 33
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc4a91f2_31efee7e",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -186,6 +366,30 @@
       "writtenOn": "2020-12-15T00:37:00Z",
       "side": 1,
       "message": "Pointless change?",
+      "range": {
+        "startLine": 2223,
+        "startChar": 1,
+        "endLine": 2225,
+        "endChar": 11
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13533597_9ead9d2b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2225,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc4a91f2_31efee7e",
       "range": {
         "startLine": 2223,
         "startChar": 1,
