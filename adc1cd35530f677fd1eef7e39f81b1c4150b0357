@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006761983",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1455360?revision\u003d18",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "46c5333b_896f51ba",
+        "filename": "licenses/Android.bp",
+        "patchSetId": 18
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-15T00:15:41Z",
+      "side": 1,
+      "message": "Third-party license (ISC) disallowed in repository platform/build/soong:\nhttps://spdx.org/licenses/ISC\n",
+      "range": {
+        "startLine": 679,
+        "startChar": 8,
+        "endLine": 679,
+        "endChar": 37
+      },
+      "revId": "adc1cd35530f677fd1eef7e39f81b1c4150b0357",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
