@@ -255,6 +255,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a18166c1_a68db096",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-15T20:01:40Z",
+      "side": 1,
+      "message": "There are another couple of reasons why I chose this approach.\n\nFirstly, the prebuilt_apex needs to know what files are contained within the referenced .apex file before opening up the .apex file. That is so that it can create a ninja rule that makes those files available for other rules to use.\n\nSo, in the current situation we have:\n1. Modules (from which files can be constructed) specified on prebuilt_apex.\n2. That information passed down to java_import modules in the ApexInfo.\n\nSwitching the dependencies around we would have:\n1. Modules would specify the names of the apexes that export them.\n2. That information would be passed down to prebuilt_apex using something similar to ApexInfo.\n\nSecondly, having the information on the prebuilt_apex makes it easier for the apex module to automatically generate the Android.bp file for the prebuilt_apex alongside the .apex file. Similar to how sdk generates the snapshot Android.bp file.\n\nAll that we would need to do in that situation is for apex to compute the set of modules to export automatically from its contents, e.g. any java_library and java_sdk_library will need to have .dex files available for dexpreopting. If that does not give sufficient control then additional properties can be added to control the set of exported files.\n\nIf the information needs to go on the java_import modules that are part of the sdk snapshot then we would either need to propagate the information from the apex to the sdk or add additional information to the sdk that essentially duplicates the contents.\n\nThirdly, a single module can only be exported by one sdk. Attempting to export the same module from multiple sdks would lead to problems. However, a single module can be part of multiple apex modules and so exported from multiple prebuilt_apex files. e.g. com.android.art and com.android.art.debug both include core-oj.\n\nHaving the name of the module specified in the prebuilt_apex makes it possible to add another prebuilt_apex that exports a module without modifying the module itself which keeps the change self contained.\n\nHaving the name of the apex in the java_import module means that the java_import module needs modifying every time another apex exports it.\n\nNote, this point is largely theoretical at the moment because there is currently no difference between the files that are exported by com.android.art and com.android.art.debug. The exported dex files are byte for byte identical.\n\nHowever, in future we may also need to export other files that may differ from non-debug to debug.",
+      "parentUuid": "f9fabf12_e0daadd8",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "681349a8_ff9daee9",
         "filename": "apex/prebuilt.go",
         "patchSetId": 3
