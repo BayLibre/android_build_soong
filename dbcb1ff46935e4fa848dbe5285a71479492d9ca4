@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d826e6_f9677f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-15T22:41:48Z",
+      "side": 1,
+      "message": "PTAL. I had a merge conflict so I need a re-approval.",
+      "revId": "dbcb1ff46935e4fa848dbe5285a71479492d9ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
