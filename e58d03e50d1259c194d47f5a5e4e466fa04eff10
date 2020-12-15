@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fdb16c5_c1d8b574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-15T17:02:56Z",
+      "side": 1,
+      "message": "PTAL. (TH error is unrelated. So please ignore that)",
+      "revId": "e58d03e50d1259c194d47f5a5e4e466fa04eff10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
