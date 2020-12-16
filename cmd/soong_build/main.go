@@ -97,6 +97,9 @@ func main() {
 
 	if bazelConversionRequested(configuration) {
 		runBp2Build(configuration, extraNinjaDeps)
+		if !configuration.BazelContext.BazelEnabled() {
+			return
+		}
 	}
 
 	if configuration.BazelContext.BazelEnabled() {
