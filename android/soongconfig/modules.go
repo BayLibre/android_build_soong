@@ -26,6 +26,8 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+const conditionsDefault = "conditions_default"
+
 var soongConfigProperty = proptools.FieldNameForProperty("soong_config_variables")
 
 // loadSoongConfigModuleTypeDefinition loads module types from an Android.bp file.  It caches the
@@ -145,32 +147,10 @@ func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []
 		return errs
 	}
 
-	mt := &ModuleType{
-		affectableProperties: props.Properties,
-		ConfigNamespace:      props.Config_namespace,
-		BaseModuleType:       props.Module_type,
-		variableNames:        props.Variables,
-	}
-	v.ModuleTypes[props.Name] = mt
-
-	for _, name := range props.Bool_variables {
-		if name == "" {
-			return []error{fmt.Errorf("bool_variable name must not be blank")}
-		}
-
-		mt.Variables = append(mt.Variables, newBoolVariable(name))
-	}
-
-	for _, name := range props.Value_variables {
-		if name == "" {
-			return []error{fmt.Errorf("value_variables entry must not be blank")}
-		}
-
-		mt.Variables = append(mt.Variables, &valueVariable{
-			baseVariable: baseVariable{
-				variable: name,
-			},
-		})
+	if mt, errs := newModuleType(props); len(errs) > 0 {
+		return errs
+	} else {
+		v.ModuleTypes[props.Name] = mt
 	}
 
 	return nil
@@ -277,7 +257,9 @@ func CreateProperties(factory blueprint.ModuleFactory, moduleType *ModuleType) r
 		return reflect.Value{}
 	}
 
-	for _, c := range moduleType.Variables {
+	vars := moduleType.Variables
+	vars = append(vars, moduleType.conditionsDefault)
+	for _, c := range vars {
 		fields = append(fields, reflect.StructField{
 			Name: proptools.FieldNameForProperty(c.variableProperty()),
 			Type: c.variableValuesType(),
@@ -292,7 +274,7 @@ func CreateProperties(factory blueprint.ModuleFactory, moduleType *ModuleType) r
 	props := reflect.New(typ)
 	structConditions := props.Elem().FieldByName(soongConfigProperty)
 
-	for i, c := range moduleType.Variables {
+	for i, c := range vars {
 		c.initializeProperties(structConditions.Field(i), affectablePropertiesType)
 	}
 
@@ -419,12 +401,23 @@ func typeForPropertyFromPropertyStruct(ps interface{}, property string) reflect.
 func PropertiesToApply(moduleType *ModuleType, props reflect.Value, config SoongConfig) ([]interface{}, error) {
 	var ret []interface{}
 	props = props.Elem().FieldByName(soongConfigProperty)
+	anyPropertiesMatched := false
 	for _, c := range moduleType.Variables {
 		fieldName := proptools.FieldNameForProperty(c.variableProperty())
 		if ps, err := c.PropertiesToApply(config, props.FieldByName(fieldName)); err != nil {
 			return nil, err
 		} else if ps != nil {
+			anyPropertiesMatched = true
 			ret = append(ret, ps)
+		}
+	}
+	if !anyPropertiesMatched {
+		if field := props.FieldByName(proptools.FieldNameForProperty(conditionsDefault)); field.IsValid() {
+			if ps, err := moduleType.conditionsDefault.PropertiesToApply(config, field); err != nil {
+				return nil, err
+			} else if ps != nil {
+				ret = append(ret, ps)
+			}
 		}
 	}
 	return ret, nil
@@ -438,6 +431,47 @@ type ModuleType struct {
 
 	affectableProperties []string
 	variableNames        []string
+}
+
+func newModuleType(props *ModuleTypeProperties) (*ModuleType, []error) {
+	mt := &ModuleType{
+		affectableProperties: props.Properties,
+		ConfigNamespace:      props.Config_namespace,
+		BaseModuleType:       props.Module_type,
+		variableNames:        props.Variables,
+		conditionsDefault:    newBoolVariable(conditionsDefault),
+	}
+
+	for _, name := range props.Bool_variables {
+		if err := checkVariableName(name); err != nil {
+			return nil, []error{fmt.Errorf("bool_variables %s", err)}
+		}
+
+		mt.Variables = append(mt.Variables, newBoolVariable(name))
+	}
+
+	for _, name := range props.Value_variables {
+		if err := checkVariableName(name); err != nil {
+			return nil, []error{fmt.Errorf("value_variables %s", err)}
+		}
+
+		mt.Variables = append(mt.Variables, &valueVariable{
+			baseVariable: baseVariable{
+				variable: name,
+			},
+		})
+	}
+
+	return mt, nil
+}
+
+func checkVariableName(name string) error {
+	if name == "" {
+		return fmt.Errorf("name must not be blank")
+	} else if name == conditionsDefault {
+		return fmt.Errorf("%q is reserved", conditionsDefault)
+	}
+	return nil
 }
 
 type soongConfigVariable interface {
