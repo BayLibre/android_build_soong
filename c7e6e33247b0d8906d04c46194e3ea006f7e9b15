@@ -279,6 +279,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15c142b5_0c4904e3",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-16T12:03:41Z",
+      "side": 1,
+      "message": "I guess you are talking about the use of ApexInfo around here: https://source.corp.google.com/android/build/soong/java/dexpreopt_bootjars.go;rcl\u003d65e746d78cd11a3ec69371598c317f329b21e8dd;l\u003d447\n\nYes, those prebuilts are not mutated by the apexMutator and won\u0027t have ApexInfoProvider. But do we really have to get the info only from ApexInfo? Eventually, for a given module, we\u0027d like to know a few amount of info like a) which apex it is for, 2) is it updateable, etc. Users of the info actually shouldn\u0027t care where/how the info came from.\n\nWe might define an interface (or extend the existing ApexModule) that others can use to retrieve that info directly from a module. The interface could be implemented (in ApexModuleBase) by firstly checking if the module has ApexInfoProvider (using the HasProvider function), then accessing the info either via ApexInfo or via a module-specific way depending on the result of the check. The module-specific way could also be abstracted using an interface.\n\n\u003e If we needed to support another module type (e.g. java_sdk_library_import is a likely future candidate) then we would need to either duplicate the logic or more likely refactor that logic into some common base type (i.e. ModuleBase)\n\nI think most of the logic could be commonly implemented in ApexModuleBase, not in ModuleBase.\n\n\u003e Secondly, having the information on the prebuilt_apex makes it easier for the apex module to automatically generate the Android.bp file for the prebuilt_apex alongside the .apex file\n\nI am not sure if I am following you correctly. A non-prebuilt java module already knows that it\u0027s part of a specific APEX. So, when it becomes a prebuilt java module, it could emit the name of the APEX that it belongs to in Android.bp.\n\n\u003e com.android.art and com.android.art.debug.\n\nI think, in the long term, we need to unify the two. ART is the only APEX having such configs and I wonder why it deserves it.\n\n-----------------\nThe reasons I am opposed to this approach are two:\n\n1) this is a completely new pattern; A depends on B, but B magically obtains an output (the dex impl lib) from A.\n\n2) it requires us to have an odd function like PathForModuleWithoutVariantOut.\n\nIgnoring these two, this CL is great. I just am not comfortable with the unusual pattern, especially when there is a way to achieve the same in a more conventional way.\n\nOther\u0027s from the Soong team might have a better opinion. If they agree with this CL, I don\u0027t feel strong about my opposition.",
+      "parentUuid": "a18166c1_a68db096",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "681349a8_ff9daee9",
         "filename": "apex/prebuilt.go",
         "patchSetId": 3
