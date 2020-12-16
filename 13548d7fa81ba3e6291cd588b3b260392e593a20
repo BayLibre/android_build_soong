@@ -34,6 +34,24 @@
       "parentUuid": "88845d08_3e4e60b3",
       "revId": "13548d7fa81ba3e6291cd588b3b260392e593a20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6a8ca8_b796ce5a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2020-12-16T21:02:11Z",
+      "side": 1,
+      "message": "Ugh. Completely read this wrong (and I wrote it!)\n\nCarry on -- I think this just serves to disambiguate between bazel build rules, though doesn\u0027t provide any useful information really. Maybe we can consider at a later time doing something more intelligent with the IDs (assigning them a target label, for example)",
+      "parentUuid": "fb8f9c34_48170a31",
+      "revId": "13548d7fa81ba3e6291cd588b3b260392e593a20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
