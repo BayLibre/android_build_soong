@@ -14,13 +14,21 @@
 
 package cc
 
-import "android/soong/android"
+import (
+	"android/soong/android"
+
+	"github.com/google/blueprint/proptools"
+)
 
 func init() {
 	RegisterLibraryHeadersBuildComponents(android.InitRegistrationContext)
 
 	// Register sdk member types.
 	android.RegisterSdkMemberType(headersLibrarySdkMemberType)
+
+	android.Bp2BuildMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.TopDown("cc_library_headers_bp2build", ccLibraryHeadersModuleToTargetMutator).Parallel()
+	})
 }
 
 var headersLibrarySdkMemberType = &librarySdkMemberType{
@@ -55,3 +63,72 @@ func prebuiltLibraryHeaderFactory() android.Module {
 	library.HeaderOnly()
 	return module.Init()
 }
+
+type bazelCcLibraryHeadersAttributes struct {
+	Name     *string
+	Includes []string
+	Hdrs     android.BazelGlob
+	Deps     []string
+}
+
+type bazelCcLibraryHeaders struct {
+	android.ModuleBase
+	bazelCcLibraryHeadersAttributes
+	android.Bp2BuildProperties
+}
+
+func BazelCcLibraryHeadersFactory() android.Module {
+	module := &bazelCcLibraryHeaders{}
+	module.AddProperties(&module.bazelCcLibraryHeadersAttributes)
+	module.AddProperties(&module.Bp2BuildProperties)
+	android.InitAndroidModule(module)
+	module.ConvertToBazel()
+	return module
+
+}
+
+func ccLibraryHeadersModuleToTargetMutator(ctx android.TopDownMutatorContext) {
+	if m, ok := ctx.Module().(*Module); ok {
+		libIntf, ok := m.linker.(libraryInterface)
+		if !ok {
+			return
+		}
+		if libIntf.buildShared() || libIntf.buildStatic() {
+			// not a cc_header_library library
+			return
+		}
+
+		// FIXME(jingwen): this should use select + arch mutator
+		exportHeaderLibHeaders := m.linker.linkerProps()[0].(*BaseLinkerProperties).Export_header_lib_headers
+		var exportIncludeSystemDirs []string
+		if libDecorator, ok := m.linker.(*libraryDecorator); ok {
+			exportIncludeSystemDirs = libDecorator.flagExporter.Properties.Export_system_include_dirs
+		}
+
+		// exportSystemIncludeDirs := m.linker.linkerProps()[0].(*BaseLinkerProperties).Export_system_include_dirs
+
+		var globHeaders []string
+		for _, dir := range exportIncludeSystemDirs {
+			globHeaders = append(globHeaders, dir+"/**/*.h")
+		}
+
+		name := "__bp2build__" + m.Name()
+		// Replace in and out variables with $< and $@
+		ctx.CreateModule(BazelCcLibraryHeadersFactory, &bazelCcLibraryHeadersAttributes{
+			Name:     proptools.StringPtr(name),
+			Deps:     exportHeaderLibHeaders,
+			Includes: exportIncludeSystemDirs,
+			Hdrs: android.BazelGlob{
+				Include: globHeaders,
+			},
+		}, &android.Bp2BuildProperties{
+			Rule_class: "cc_library",
+		})
+	}
+}
+
+func (m *bazelCcLibraryHeaders) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelCcLibraryHeaders) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
