@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3ec1d1_4e5f4511",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-16T22:13:30Z",
+      "side": 1,
+      "message": "No, because we\u0027re accessing the fields based on the properties parsed from the Android.bp file, not based on the moduleType.",
+      "parentUuid": "78a456da_676d06c7",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 0
+      },
+      "revId": "36a4bde31cb24be180974eb77c3b875bcca5a423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f0fbf7_5ee82fb9",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-16T21:11:42Z",
       "side": 1,
       "message": "This should go in the last patch in the stack",
+      "revId": "36a4bde31cb24be180974eb77c3b875bcca5a423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5b5413_fe2c1023",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-16T22:13:30Z",
+      "side": 1,
+      "message": "Done. Ah sorry, thought I\u0027d gotten all of them.",
+      "parentUuid": "39f0fbf7_5ee82fb9",
       "revId": "36a4bde31cb24be180974eb77c3b875bcca5a423",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
