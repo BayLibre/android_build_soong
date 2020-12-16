@@ -85,19 +85,37 @@ const (
 var (
 	// Certain module property names are blocklisted/ignored here, for the reasons commented.
 	ignoredPropNames = map[string]bool{
-		"name":       true, // redundant, since this is explicitly generated for every target
-		"from":       true, // reserved keyword
-		"in":         true, // reserved keyword
-		"arch":       true, // interface prop type is not supported yet.
-		"multilib":   true, // interface prop type is not supported yet.
-		"target":     true, // interface prop type is not supported yet.
-		"visibility": true, // Bazel has native visibility semantics. Handle later.
-		"features":   true, // There is already a built-in attribute 'features' which cannot be overridden.
+		"name":                    true, // redundant, since this is explicitly generated for every target
+		"from":                    true, // reserved keyword
+		"in":                      true, // reserved keyword
+		"arch":                    true, // interface prop type is not supported yet.
+		"multilib":                true, // interface prop type is not supported yet.
+		"target":                  true, // interface prop type is not supported yet.
+		"visibility":              true, // Bazel has native visibility semantics. Handle later.
+		"features":                true, // There is already a built-in attribute 'features' which cannot be overridden.
+		"native_bridge_supported": true, // hack
+		"required":                true, // hack
+		"compile_multilib":        true, // hack
+	}
+
+	// FIXME: stop hardcoding namespace to package lookup
+	moduleLabelMap map[string]string = map[string]string{
+		"libc_headers":      "//bionic/libc:libc_headers",
+		"gwp_asan_headers":  "//external/gwp_asan:gwp_asan_headers",
+		"libbase_headers":   "//system/libbase:libbase_headers",
+		"libcutils_headers": "//system/core/libcutils:libcutils_headers",
 	}
 )
 
 func shouldGenerateAttribute(prop string) bool {
 	return !ignoredPropNames[prop]
+}
+
+func LabelForModule(name string) string {
+	if moduleLabelMap[name] != "" {
+		name = moduleLabelMap[name]
+	}
+	return name
 }
 
 func shouldSkipStructField(field reflect.StructField) bool {
