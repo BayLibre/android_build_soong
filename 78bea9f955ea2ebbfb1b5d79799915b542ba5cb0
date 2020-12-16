@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23e6869d_c16dc589",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-16T12:04:07Z",
+      "side": 1,
+      "message": "This is for VNDK-private and is not available to vendors. But still they need to create vendor variant because they are available to the other VNDKs.\nWe wanted to use \u0027vendor_available\u0027 for creating vendor variants, but actually it is not available to vendors. That was why we used \u0027vendor_available: false\u0027 for VNDK-private library.\n\nWe may define \u0027vndk: {private: true}\u0027 with \u0027vendor_available: true\u0027 for VNDK-private libs. But it is still confusing because it is not available to vendor.",
+      "parentUuid": "20692238_86d79809",
+      "range": {
+        "startLine": 359,
+        "startChar": 43,
+        "endLine": 360,
+        "endChar": 32
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93e88e74_c68ae703",
         "filename": "cc/cc.go",
         "patchSetId": 9
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-15T17:55:22Z",
       "side": 1,
       "message": "This seems really subtle.  Could it be made more explicit with a separate property?",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 20
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387be925_6cd4ec22",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-16T12:04:07Z",
+      "side": 1,
+      "message": "If we define a new vndk property, \u0027private\u0027, \u0027product_available: false\u0027 also can be replaced with:\n vendor_available: true,\n product_available: true,\n vndk: {\n   enabled: true,\n   private: true,\n },\n\nBut I don\u0027t think we may remove the \u0027*_available\u0027 for the VNDK-private libs because some VNDKs are vendor-only while others are available to both vendor and product.",
+      "parentUuid": "93e88e74_c68ae703",
       "range": {
         "startLine": 385,
         "startChar": 0,
@@ -83,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dc09cb5_986bc9b6",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-16T12:04:07Z",
+      "side": 1,
+      "message": "VNDK installs only one file and shares that file for both vendor and product modules on runtime. We may not define different versions of a VNDK lib for each partition.\nLet me update the details to the comment.",
+      "parentUuid": "e38d29a5_ddca1a77",
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33040afd_6c69bfdf",
         "filename": "cc/image.go",
         "patchSetId": 9
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5e6d6b0_54121f89",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-16T12:04:07Z",
+      "side": 1,
+      "message": "I agree that this is fragile.\n\nAll the alternative solutions works for the VNDK purpose. But I didn\u0027t want to make a special rule for defining product variant for the VNDKs. As the other product_available modules, the product variant of VNDK uses target.product instead of target.vendor.\n\nLet me find a better solution for this as you suggested.",
+      "parentUuid": "33040afd_6c69bfdf",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "137691b9_189059dc",
         "filename": "cc/image.go",
         "patchSetId": 9
@@ -117,6 +207,24 @@
       "writtenOn": "2020-12-15T17:55:22Z",
       "side": 1,
       "message": "This looks odd, I think if you keep this \"Product_available !\u003d nil\" behavior it needs to be a descriptively named helper function with lots of documentation to make it clear what case this is checking for.",
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4d0f6bf_358ce80b",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-16T12:04:07Z",
+      "side": 1,
+      "message": "Filed b/175768895 to discuss it.",
+      "parentUuid": "137691b9_189059dc",
       "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
