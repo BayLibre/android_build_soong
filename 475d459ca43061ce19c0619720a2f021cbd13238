@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62828e29_8c46beab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-16T01:33:59Z",
+      "side": 1,
+      "message": "I tried to add a unit test, but it seems the test setup doesn\u0027t work for host APEXes (I got as far as a \"path \".../host/linux-x86/apex/myapex.apex.txt\" is not under path \".../target/product/test_device\" error from notice.go).",
+      "revId": "475d459ca43061ce19c0619720a2f021cbd13238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
