@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a456da_676d06c7",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-16T21:11:42Z",
+      "side": 1,
+      "message": "This creates the type that is passed into PropertiesToApply, won\u0027t the indexes always line up?",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 0
+      },
+      "revId": "36a4bde31cb24be180974eb77c3b875bcca5a423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f0fbf7_5ee82fb9",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-16T21:11:42Z",
+      "side": 1,
+      "message": "This should go in the last patch in the stack",
+      "revId": "36a4bde31cb24be180974eb77c3b875bcca5a423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
