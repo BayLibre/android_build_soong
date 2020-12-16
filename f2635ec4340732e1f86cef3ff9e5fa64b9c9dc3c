@@ -22,6 +22,30 @@
       },
       "revId": "f2635ec4340732e1f86cef3ff9e5fa64b9c9dc3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b35b0e9_180e7e6f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-16T01:53:31Z",
+      "side": 1,
+      "message": "Since there are two different cases above that both need to be excluded, I thought it better to make an early exit in the host case. I want to avoid this happening again if more logic gets added.",
+      "parentUuid": "245c8cf3_07ba9e6e",
+      "range": {
+        "startLine": 1732,
+        "startChar": 0,
+        "endLine": 1733,
+        "endChar": 50
+      },
+      "revId": "f2635ec4340732e1f86cef3ff9e5fa64b9c9dc3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
