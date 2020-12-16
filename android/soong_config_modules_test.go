@@ -158,6 +158,9 @@ func TestSoongConfigModule(t *testing.T) {
 				FEATURE3: {
 					cflags: ["-DFEATURE3"],
 				},
+				conditions_default: {
+					cflags: ["-DCONDITIONS_DEFAULT"],
+				},
 			},
 		}
     `
