@@ -414,6 +414,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92be771_c28227ff",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-16T21:46:00Z",
+      "side": 1,
+      "message": "Ah, right, it\u0027s not an interface. *android.OptionalPath then.",
+      "parentUuid": "4843e79a_f8a6c689",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea3199c_bce35e3b",
