@@ -271,6 +271,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac748834_4c7af845",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-16T17:08:22Z",
+      "side": 1,
+      "message": "Ok, thank was essentially what I thought.",
+      "parentUuid": "99c775a6_38c3bcce",
+      "range": {
+        "startLine": 69,
+        "startChar": 33,
+        "endLine": 69,
+        "endChar": 96
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aa82cbc_d7022c95",
@@ -331,6 +355,30 @@
       "writtenOn": "2020-12-16T16:59:23Z",
       "side": 1,
       "message": "FTR I got the idea to do it this way from http://cs/aosp-master/prebuilts/sdk/Android.bp?l\u003d43",
+      "parentUuid": "668e58ff_97c85018",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191fb2ca_daa5fc19",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-16T17:08:22Z",
+      "side": 1,
+      "message": "path \u003d\u003d nil and path.Valid() are two different tests, so it\u0027s certainly possible to discern the three cases by switching to OptionalPath.\n\nFor this /dev/null approach it may be good to hear if Colin has any concerns. If not, I don\u0027t mind overly much either.",
       "parentUuid": "668e58ff_97c85018",
       "range": {
         "startLine": 70,
@@ -461,6 +509,30 @@
       "side": 1,
       "message": "I was following a suggestion of Ulya\u0027s for tests which I found useful. I don\u0027t really see the benefit of using a comment. It requires more typing (no completion) and doesn\u0027t provide any additional information.",
       "parentUuid": "c849f314_5ff77aef",
+      "range": {
+        "startLine": 2209,
+        "startChar": 0,
+        "endLine": 2210,
+        "endChar": 33
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0832be_566b485b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-16T17:08:22Z",
+      "side": 1,
+      "message": "The problem with this is that they\u0027re just aliases and readers have to know about their definitions, e.g. on line 2275 it\u0027s used as a boolean. Even if that\u0027s fixed there\u0027s no type checking for boolean contexts. For this approach I\u0027d prefer to see a typed enum rather than an obfuscated bool, but then I think it\u0027s a bit of overkill here.\n\n\u003e (no completion)\n\n(My editor isn\u0027t so fancy and only does plain text completion, which means it happily completes in comments too. :) But sure, it\u0027s a valid point.)\n\n\u003e doesn\u0027t provide any additional information.\n\nA comment clarifies the meaning on the call site, same as this, but it\u0027s more informative in the sense that it doesn\u0027t hide what the value (and its type) actually is.\n\nSo I think this isn\u0027t an ideal pattern, but it is after all mostly a style issue - I won\u0027t block the CL over it.",
+      "parentUuid": "ff66d91b_0414d1af",
       "range": {
         "startLine": 2209,
         "startChar": 0,
