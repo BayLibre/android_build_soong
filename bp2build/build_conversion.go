@@ -222,6 +222,19 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 		ret += makeIndent(indent)
 		ret += "]"
 	case reflect.Struct:
+		if glob, ok := propertyValue.Interface().(android.BazelGlob); ok {
+			// Bazel Glob struct
+			ret = "glob([\n"
+			for _, pattern := range glob.Include {
+				ret += makeIndent(indent + 1)
+				ret += fmt.Sprintf("\"%s\",\n", pattern)
+			}
+			ret += makeIndent(indent)
+			ret += "])"
+			return ret, nil
+		}
+
+		// Unknown struct
 		ret = "{\n"
 		// Sort and print the struct props by the key.
 		structProps := extractStructProperties(propertyValue, indent)
