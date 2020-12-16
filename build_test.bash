@@ -43,6 +43,9 @@ case $(uname) in
     ;;
 esac
 
+# Skip some products, unless the caller was explicit about what to skip
+DEFAULT_SKIPPED_PRODUCTS=$(echo $@ | grep -q -e '--skip-products' || echo '--skip-products mainline_sdk')
+
 echo
 echo "Running Bazel smoke test..."
 "${TOP}/tools/bazel" --batch --max_idle_secs=1 info
@@ -50,4 +53,4 @@ echo "Running Bazel smoke test..."
 echo
 echo "Running Soong test..."
 soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
-exec "$(getoutdir)/multiproduct_kati" "$@"
+exec "$(getoutdir)/multiproduct_kati" $DEFAULT_SKIPPED_PRODUCTS "$@"
