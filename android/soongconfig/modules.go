@@ -158,11 +158,7 @@ func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []
 			return []error{fmt.Errorf("bool_variable name must not be blank")}
 		}
 
-		mt.Variables = append(mt.Variables, &boolVariable{
-			baseVariable: baseVariable{
-				variable: name,
-			},
-		})
+		mt.Variables = append(mt.Variables, newBoolVariable(name))
 	}
 
 	for _, name := range props.Value_variables {
@@ -423,8 +419,9 @@ func typeForPropertyFromPropertyStruct(ps interface{}, property string) reflect.
 func PropertiesToApply(moduleType *ModuleType, props reflect.Value, config SoongConfig) ([]interface{}, error) {
 	var ret []interface{}
 	props = props.Elem().FieldByName(soongConfigProperty)
-	for i, c := range moduleType.Variables {
-		if ps, err := c.PropertiesToApply(config, props.Field(i)); err != nil {
+	for _, c := range moduleType.Variables {
+		fieldName := proptools.FieldNameForProperty(c.variableProperty())
+		if ps, err := c.PropertiesToApply(config, props.FieldByName(fieldName)); err != nil {
 			return nil, err
 		} else if ps != nil {
 			ret = append(ret, ps)
@@ -503,6 +500,14 @@ func (s *stringVariable) PropertiesToApply(config SoongConfig, values reflect.Va
 
 type boolVariable struct {
 	baseVariable
+}
+
+func newBoolVariable(name string) *boolVariable {
+	return &boolVariable{
+		baseVariable{
+			variable: name,
+		},
+	}
 }
 
 func (b boolVariable) variableValuesType() reflect.Type {
