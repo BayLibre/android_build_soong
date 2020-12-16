@@ -99,6 +99,9 @@ func main() {
 		// Run the alternate pipeline of bp2build mutators and singleton to convert Blueprint to BUILD files
 		// before everything else.
 		runBp2Build(configuration, extraNinjaDeps)
+		if !configuration.BazelContext.BazelEnabled() {
+			return
+		}
 	}
 
 	if configuration.BazelContext.BazelEnabled() {

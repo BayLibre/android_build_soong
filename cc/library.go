@@ -24,6 +24,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 	"android/soong/cc/config"
@@ -199,6 +200,10 @@ type FlagExporterProperties struct {
 
 func init() {
 	RegisterLibraryBuildComponents(android.InitRegistrationContext)
+
+	android.Bp2BuildMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.TopDown("cc_library_bp2build", ccLibraryModuleToTargetMutator).Parallel()
+	})
 }
 
 func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
@@ -208,6 +213,89 @@ func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library_host_static", LibraryHostStaticFactory)
 	ctx.RegisterModuleType("cc_library_host_shared", LibraryHostSharedFactory)
 }
+
+type bazelCcLibraryAttributes struct {
+	Name     *string
+	Srcs     []string
+	Copts    []string
+	Linkopts []string
+	Deps     []string
+}
+
+type bazelCcLibrary struct {
+	android.ModuleBase
+	bazelCcLibraryAttributes
+	android.Bp2BuildProperties
+}
+
+func BazelCcLibraryFactory() android.Module {
+	module := &bazelCcLibrary{}
+	module.AddProperties(&module.bazelCcLibraryAttributes)
+	module.AddProperties(&module.Bp2BuildProperties)
+	android.InitAndroidModule(module)
+	module.ConvertToBazel()
+	return module
+
+}
+
+// FIXME: stop hardcoding namespace to package lookup
+var moduleLabelMap map[string]string = map[string]string{
+	"libc_headers":      "//bionic/libc:libc_headers",
+	"gwp_asan_headers":  "//external/gwp_asan:gwp_asan_headers",
+	"libbase_headers":   "//system/libbase:libbase_headers",
+	"libcutils_headers": "//system/core/libcutils:libcutils_headers",
+}
+
+func ccLibraryModuleToTargetMutator(ctx android.TopDownMutatorContext) {
+	if m, ok := ctx.Module().(*Module); ok {
+		libIntf, ok := m.linker.(libraryInterface)
+		if !ok {
+			return
+		}
+		if !(libIntf.buildShared() && libIntf.buildStatic()) {
+			// a cc_header_library library
+			return
+		}
+
+		var linkopts []string
+		var headerLibs []string
+		if baseLinkerProps, ok := m.linker.linkerProps()[0].(*BaseLinkerProperties); ok {
+			linkopts = baseLinkerProps.Ldflags
+			for _, headerLib := range baseLinkerProps.Header_libs {
+				if moduleLabelMap[headerLib] != "" {
+					headerLib = moduleLabelMap[headerLib]
+				}
+				headerLibs = append(headerLibs, headerLib)
+			}
+		}
+
+		var copts []string
+		var srcs []string
+		if m.compiler != nil {
+			if baseCompilerProps, ok := m.compiler.compilerProps()[0].(*BaseCompilerProperties); ok {
+				copts = baseCompilerProps.Cflags
+				srcs = baseCompilerProps.Srcs
+			}
+		}
+
+		name := "__bp2build__" + m.Name()
+		ctx.CreateModule(BazelCcLibraryFactory, &bazelCcLibraryAttributes{
+			Name:     proptools.StringPtr(name),
+			Linkopts: linkopts,
+			Copts:    copts,
+			Srcs:     srcs,
+			Deps:     android.FirstUniqueStrings(headerLibs),
+		}, &android.Bp2BuildProperties{
+			Rule_class: "cc_library",
+		})
+	}
+}
+
+func (m *bazelCcLibrary) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelCcLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
 
 // cc_library creates both static and/or shared libraries for a device and/or
 // host. By default, a cc_library has a single variant that targets the device.
