@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "953cc4ec_101399c9",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-16T13:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90ac1300_90f81fa9",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 21
+      },
+      "revId": "1e9ea65a9ca12cb2825e28f56254ecd81a325e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ad5df20_4a09b418",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c971c7b_a0b6cb7c",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-16T13:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ad5df20_4a09b418",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "1e9ea65a9ca12cb2825e28f56254ecd81a325e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e7dab7c_6bb25a33",
@@ -60,6 +108,24 @@
       "writtenOn": "2020-12-16T03:44:20Z",
       "side": 1,
       "message": "add \n\nvar _ android.SkipDepInfoCheckTag \u003d (*libraryDependencyTag)(nil)\n\nto assert that libraryDependencyTag implements SkipDepInfoCheckTag",
+      "revId": "1e9ea65a9ca12cb2825e28f56254ecd81a325e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c9cea7_7749d4d1",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-16T13:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e7dab7c_6bb25a33",
       "revId": "1e9ea65a9ca12cb2825e28f56254ecd81a325e5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
