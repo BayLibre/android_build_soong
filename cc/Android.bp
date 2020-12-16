@@ -6,6 +6,7 @@ bootstrap_go_package {
         "blueprint-pathtools",
         "soong",
         "soong-android",
+        "soong-bp2build",
         "soong-cc-config",
         "soong-etc",
         "soong-genrule",

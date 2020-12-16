@@ -817,6 +817,13 @@ type commonProperties struct {
 	ImageVariation string `blueprint:"mutated"`
 }
 
+type BazelGlob struct {
+	Include             []string
+	Exclude             []string
+	Exclude_directories bool
+	Allow_empty         bool
+}
+
 type distProperties struct {
 	// configuration to distribute output files from this module to the distribution
 	// directory (default: $OUT/dist, configurable with $DIST_DIR)
