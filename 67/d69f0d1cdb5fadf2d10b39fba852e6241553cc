@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Steven Moreland <smoreland@google.com>
+Code-Review+2: Chaoyang Fan <chaoyangf@google.com>
+Build-Cop-Override+1: Chaoyang Fan <chaoyangf@google.com>
+Submitted-by: Kalesh Singh <kaleshsingh@google.com>
+Submitted-at: Wed, 16 Dec 2020 00:48:03 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1530882
+Project: platform/build/soong
+Branch: refs/heads/master
