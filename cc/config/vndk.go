@@ -24,7 +24,6 @@ var VndkMustUseVendorVariantList = []string{
 	"android.hardware.nfc@1.2",
 	"android.hardware.power-ndk_platform",
 	"android.hardware.rebootescrow-ndk_platform",
-	"android.hardware.security.keymint-unstable-ndk_platform",
 	"android.hardware.vibrator-ndk_platform",
 	"android.system.keystore2-unstable-ndk_platform",
 	"libbinder",
