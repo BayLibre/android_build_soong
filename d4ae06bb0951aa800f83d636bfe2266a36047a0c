@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54c3e45_40b87762",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2020-12-16T09:54:16Z",
+      "side": 1,
+      "message": "I think this will cause issues with NDK prebuilt.\n\nFor instance, if libz has any of these flags set to true\nit is no longer an \"UnSanitizedVariant\" and gets removed from the NDK prebuilt.\n\nhttps://cs.android.com/search?q\u003disUnsanitizedVariant\u0026ss\u003dandroid\n\nI tried to run build/soong/scripts/build-ndk-prebuilts.sh with these flags\nenabled for libc/libm/libz/etc. All of them got removed.",
+      "range": {
+        "startLine": 733,
+        "startChar": 38,
+        "endLine": 735,
+        "endChar": 46
+      },
+      "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
