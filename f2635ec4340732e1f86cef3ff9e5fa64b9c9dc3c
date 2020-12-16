@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245c8cf3_07ba9e6e",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1733,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-16T01:47:20Z",
+      "side": 1,
+      "message": "I think this was the place where host got reached at before the breaking change. Can\u0027t we just add !a.Host() to the condition at line 1728?",
+      "range": {
+        "startLine": 1732,
+        "startChar": 0,
+        "endLine": 1733,
+        "endChar": 50
+      },
+      "revId": "f2635ec4340732e1f86cef3ff9e5fa64b9c9dc3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
