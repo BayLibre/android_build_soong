@@ -1586,7 +1586,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		// as the output path to install will not be specified. Not all uninstallable
 		// modules can skip installation as some are needed for resolving make side
 		// dependencies.
-		c.SkipInstall()
+		c.HideFromMake()
 	}
 }
 
