@@ -335,11 +335,13 @@ func (clcMap ClassLoaderContextMap) MaybeAddContext(ctx android.ModuleInstallPat
 	}
 }
 
-// Add class loader context for the given SDK version. Fail on unknown build/install paths.
+// Add class loader context for the given SDK version. Don't fail on unknown build/install paths, as
+// such cases still need to be procecessed by manifest_fixer (which dosn't need paths), but paths
+// are validated later before CLC is used.
 func (clcMap ClassLoaderContextMap) AddContextForSdk(ctx android.ModuleInstallPathContext, sdkVer int,
 	lib string, hostPath, installPath android.Path, nestedClcMap ClassLoaderContextMap) {
 
-	clcMap.addContextOrReportError(ctx, sdkVer, lib, hostPath, installPath, true, nestedClcMap)
+	clcMap.addContextOrReportError(ctx, sdkVer, lib, hostPath, installPath, false, nestedClcMap)
 }
 
 // Merge the other class loader context map into this one, do not override existing entries.
