@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f305c34_e8a46fbd",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-16T16:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac0ec57b_b422b43c",
+      "range": {
+        "startLine": 463,
+        "startChar": 25,
+        "endLine": 463,
+        "endChar": 35
+      },
+      "revId": "b7431df4671948e2f1f9e26a51e455c8f8732b05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3631251b_061f564a",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-15T23:01:53Z",
       "side": 1,
       "message": "By what? Did you generate this once locally? Such a message is typical of \"go:generate\" tools, but I don\u0027t expect that there is an automated preprocessor for this file. Maybe add a clarifying note before this line.",
+      "range": {
+        "startLine": 488,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 39
+      },
+      "revId": "b7431df4671948e2f1f9e26a51e455c8f8732b05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8edc53a3_a4bb681d",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-16T16:59:23Z",
+      "side": 1,
+      "message": "The snapshot files are auto generated. You will find that line in dozens of places in this file and other files in this package.\n\nYou can also seem it in some of the prebuilts - http://cs/aosp-master/prebuilts/runtime/mainline/i18n/sdk/Android.bp?l\u003d1",
+      "parentUuid": "3631251b_061f564a",
       "range": {
         "startLine": 488,
         "startChar": 0,

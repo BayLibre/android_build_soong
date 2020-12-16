@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5156e0f_be111483",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-16T16:59:23Z",
+      "side": 1,
+      "message": "Will clarify.",
+      "parentUuid": "31442fb3_881d62c6",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6886ffac_907c6ab4",
@@ -176,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8396a80c_48dc0d37",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-16T16:59:23Z",
+      "side": 1,
+      "message": "Dexpreopt needs access to the jar containing .dex files but not the jar containing .class files. I will clarify which is which in the comment.",
+      "parentUuid": "c8a0db8a_8339f7f0",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd059f7b_5627ebf0",
@@ -260,6 +308,30 @@
       "side": 1,
       "message": "The value returned from this function is ignored if it is nil. So, we need to differentiate between three cases:\n1. Ignore the file.\n2. An empty file to be copied.\n3. A real file to be copied.\n\nAn OptionalPath provides no advantage over returning nil. We would still need to differentiate between 2 and 3.\n\nWe could make the return value a pair of (Path, bool) but using /dev/null just seemed less disruptive. My main concern with using that was whether it would work well with ninja.\n\nAlternatively, I did consider creating an empty file that could be used for copying from but there did not seem a good place to do that.",
       "parentUuid": "8aa82cbc_d7022c95",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b462f7d0_b80c8daa",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-16T16:59:23Z",
+      "side": 1,
+      "message": "FTR I got the idea to do it this way from http://cs/aosp-master/prebuilts/sdk/Android.bp?l\u003d43",
+      "parentUuid": "668e58ff_97c85018",
       "range": {
         "startLine": 70,
         "startChar": 10,
@@ -459,6 +531,30 @@
       "writtenOn": "2020-12-15T00:37:00Z",
       "side": 1,
       "message": "Is this useful? Wouldn\u0027t expect it for a BCP lib.",
+      "range": {
+        "startLine": 482,
+        "startChar": 3,
+        "endLine": 482,
+        "endChar": 23
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e3192b3_a9321117",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-16T16:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00f524f2_92ac9cef",
       "range": {
         "startLine": 482,
         "startChar": 3,
