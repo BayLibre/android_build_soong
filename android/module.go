@@ -452,8 +452,8 @@ type Module interface {
 	InstallInRoot() bool
 	InstallBypassMake() bool
 	InstallForceOS() (*OsType, *ArchType)
-	SkipInstall()
-	IsSkipInstall() bool
+	HideFromMake()
+	IsHideFromMake() bool
 	MakeUninstallable()
 	ReplacedByPrebuilt()
 	IsReplacedByPrebuilt() bool
@@ -751,7 +751,9 @@ type commonProperties struct {
 	// Set by osMutator.
 	CommonOSVariant bool `blueprint:"mutated"`
 
-	SkipInstall bool `blueprint:"mutated"`
+	// When HideFromMake is set to true, no entry for this variant will be emitted in the
+	// generated Android.mk file.
+	HideFromMake bool `blueprint:"mutated"`
 
 	// Whether the module has been replaced by a prebuilt
 	ReplacedByPrebuilt bool `blueprint:"mutated"`
@@ -1355,26 +1357,28 @@ func (m *ModuleBase) Disable() {
 	m.commonProperties.ForcedDisabled = true
 }
 
-func (m *ModuleBase) SkipInstall() {
-	m.commonProperties.SkipInstall = true
+// HideFromMake marks this variant so that it is not emitted in the generated Android.mk file.
+func (m *ModuleBase) HideFromMake() {
+	m.commonProperties.HideFromMake = true
 }
 
-func (m *ModuleBase) IsSkipInstall() bool {
-	return m.commonProperties.SkipInstall == true
+// IsHideFromMake returns true if HideFromMake was previously called.
+func (m *ModuleBase) IsHideFromMake() bool {
+	return m.commonProperties.HideFromMake == true
 }
 
-// Similar to SkipInstall, but if the AndroidMk entry would set
+// Similar to HideFromMake, but if the AndroidMk entry would set
 // LOCAL_UNINSTALLABLE_MODULE then this variant may still output that entry
 // rather than leaving it out altogether. That happens in cases where it would
 // have other side effects, in particular when it adds a NOTICE file target,
 // which other install targets might depend on.
 func (m *ModuleBase) MakeUninstallable() {
-	m.SkipInstall()
+	m.HideFromMake()
 }
 
 func (m *ModuleBase) ReplacedByPrebuilt() {
 	m.commonProperties.ReplacedByPrebuilt = true
-	m.SkipInstall()
+	m.HideFromMake()
 }
 
 func (m *ModuleBase) IsReplacedByPrebuilt() bool {
@@ -2440,8 +2444,8 @@ func (m *moduleContext) InstallForceOS() (*OsType, *ArchType) {
 	return m.module.InstallForceOS()
 }
 
-func (m *moduleContext) skipInstall(fullInstallPath InstallPath) bool {
-	if m.module.base().commonProperties.SkipInstall {
+func (m *moduleContext) skipInstall() bool {
+	if m.module.base().commonProperties.HideFromMake {
 		return true
 	}
 
@@ -2492,7 +2496,7 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 	fullInstallPath := installPath.Join(m, name)
 	m.module.base().hooks.runInstallHooks(m, srcPath, fullInstallPath, false)
 
-	if !m.skipInstall(fullInstallPath) {
+	if !m.skipInstall() {
 		deps = append(deps, m.module.base().installFilesDepSet.ToList().Paths()...)
 
 		var implicitDeps, orderOnlyDeps Paths
@@ -2537,7 +2541,7 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 	if err != nil {
 		panic(fmt.Sprintf("Unable to generate symlink between %q and %q: %s", fullInstallPath.Base(), srcPath.Base(), err))
 	}
-	if !m.skipInstall(fullInstallPath) {
+	if !m.skipInstall() {
 
 		m.Build(pctx, BuildParams{
 			Rule:        Symlink,
@@ -2570,7 +2574,7 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 	fullInstallPath := installPath.Join(m, name)
 	m.module.base().hooks.runInstallHooks(m, nil, fullInstallPath, true)
 
-	if !m.skipInstall(fullInstallPath) {
+	if !m.skipInstall() {
 		m.Build(pctx, BuildParams{
 			Rule:        Symlink,
 			Description: "install symlink " + fullInstallPath.Base() + " -> " + absPath,
