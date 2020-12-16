@@ -255,8 +255,9 @@ type properties struct {
 	B bool
 }
 type soongConfigVariables struct {
-	Bool_var       properties
-	Other_bool_var properties
+	Bool_var           properties
+	Other_bool_var     properties
+	Conditions_default properties
 }
 
 type soongConfigProps struct {
@@ -265,18 +266,12 @@ type soongConfigProps struct {
 
 func Test_PropertiesToApply(t *testing.T) {
 
-	mt := &ModuleType{
-		BaseModuleType:  "foo",
-		ConfigNamespace: "bar",
-		Variables: []soongConfigVariable{
-			newBoolVariable("other_bool_var"),
-			newBoolVariable("bool_var"),
-		},
-		affectableProperties: []string{
-			"a",
-			"b",
-		},
-	}
+	mt, _ := newModuleType(&ModuleTypeProperties{
+		Module_type:      "foo",
+		Config_namespace: "bar",
+		Bool_variables:   []string{"other_bool_var", "bool_var"},
+		Properties:       []string{"a", "b"},
+	})
 	props := soongConfigProps{
 		Soong_config_variables: soongConfigVariables{
 			Bool_var: properties{
@@ -287,6 +282,10 @@ func Test_PropertiesToApply(t *testing.T) {
 				A: proptools.StringPtr("other"),
 				B: false,
 			},
+			Conditions_default: properties{
+				A: proptools.StringPtr("default"),
+				B: true,
+			},
 		},
 	}
 
@@ -295,7 +294,12 @@ func Test_PropertiesToApply(t *testing.T) {
 		wantProps []interface{}
 	}{
 		{
-			config: Config(map[string]string{}),
+			config:    Config(map[string]string{}),
+			wantProps: []interface{}{props.Soong_config_variables.Conditions_default},
+		},
+		{
+			config:    Config(map[string]string{"bool_var": "n", "other_bool_var": "n"}),
+			wantProps: []interface{}{props.Soong_config_variables.Conditions_default},
 		},
 		{
 			config:    Config(map[string]string{"bool_var": "y"}),

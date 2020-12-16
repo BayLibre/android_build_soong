@@ -118,6 +118,9 @@ func TestSoongConfigModule(t *testing.T) {
 				FEATURE3: {
 					cflags: ["-DFEATURE3"],
 				},
+				conditions_default: {
+					cflags: ["-DCONDITIONS_DEFAULT"],
+				},
 			},
 		}
 
@@ -158,48 +161,67 @@ func TestSoongConfigModule(t *testing.T) {
 				FEATURE3: {
 					cflags: ["-DFEATURE3"],
 				},
+				conditions_default: {
+					cflags: ["-DCONDITIONS_DEFAULT"],
+				},
 			},
 		}
     `
 
 	run := func(t *testing.T, bp string, fs map[string][]byte) {
-		config := TestConfig(buildDir, nil, bp, fs)
-
-		config.TestProductVariables.VendorVars = map[string]map[string]string{
-			"acme": map[string]string{
-				"board":    "soc_a",
-				"size":     "42",
-				"feature1": "true",
-				"feature2": "false",
-				// FEATURE3 unset
+		testCases := []struct {
+			name                     string
+			config                   Config
+			fooExpectedFlags         []string
+			fooDefaultsExpectedFlags []string
+		}{
+			{
+				name: "withValues",
+				config: testConfigWithVendorVars(buildDir, bp, fs, map[string]map[string]string{
+					"acme": map[string]string{
+						"board":    "soc_a",
+						"size":     "42",
+						"feature1": "true",
+						"feature2": "false",
+						// FEATURE3 unset
+					},
+				}),
+				fooExpectedFlags:         []string{"DEFAULT", "-DGENERIC", "-DSIZE=42", "-DSOC_A", "-DFEATURE1"},
+				fooDefaultsExpectedFlags: []string{"DEFAULT_A", "DEFAULT", "-DGENERIC", "-DSIZE=42", "-DSOC_A", "-DFEATURE1"},
+			},
+			{
+				name:                     "conditions_default",
+				config:                   testConfigWithVendorVars(buildDir, bp, fs, map[string]map[string]string{}),
+				fooExpectedFlags:         []string{"DEFAULT", "-DGENERIC", "-DCONDITIONS_DEFAULT"},
+				fooDefaultsExpectedFlags: []string{"DEFAULT", "-DGENERIC", "-DCONDITIONS_DEFAULT"},
 			},
 		}
 
-		ctx := NewTestContext(config)
-		ctx.RegisterModuleType("soong_config_module_type_import", soongConfigModuleTypeImportFactory)
-		ctx.RegisterModuleType("soong_config_module_type", soongConfigModuleTypeFactory)
-		ctx.RegisterModuleType("soong_config_string_variable", soongConfigStringVariableDummyFactory)
-		ctx.RegisterModuleType("soong_config_bool_variable", soongConfigBoolVariableDummyFactory)
-		ctx.RegisterModuleType("test_defaults", soongConfigTestDefaultsModuleFactory)
-		ctx.RegisterModuleType("test", soongConfigTestModuleFactory)
-		ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
-		ctx.Register()
+		for _, tc := range testCases {
+			ctx := NewTestContext(tc.config)
+			ctx.RegisterModuleType("soong_config_module_type_import", soongConfigModuleTypeImportFactory)
+			ctx.RegisterModuleType("soong_config_module_type", soongConfigModuleTypeFactory)
+			ctx.RegisterModuleType("soong_config_string_variable", soongConfigStringVariableDummyFactory)
+			ctx.RegisterModuleType("soong_config_bool_variable", soongConfigBoolVariableDummyFactory)
+			ctx.RegisterModuleType("test_defaults", soongConfigTestDefaultsModuleFactory)
+			ctx.RegisterModuleType("test", soongConfigTestModuleFactory)
+			ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
+			ctx.Register()
 
-		_, errs := ctx.ParseBlueprintsFiles("Android.bp")
-		FailIfErrored(t, errs)
-		_, errs = ctx.PrepareBuildActions(config)
-		FailIfErrored(t, errs)
+			_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+			FailIfErrored(t, errs)
+			_, errs = ctx.PrepareBuildActions(tc.config)
+			FailIfErrored(t, errs)
 
-		basicCFlags := []string{"DEFAULT", "-DGENERIC", "-DSIZE=42", "-DSOC_A", "-DFEATURE1"}
+			foo := ctx.ModuleForTests("foo", "").Module().(*soongConfigTestModule)
+			if g, w := foo.props.Cflags, tc.fooExpectedFlags; !reflect.DeepEqual(g, w) {
+				t.Errorf("%s: wanted foo cflags %q, got %q", tc.name, w, g)
+			}
 
-		foo := ctx.ModuleForTests("foo", "").Module().(*soongConfigTestModule)
-		if g, w := foo.props.Cflags, basicCFlags; !reflect.DeepEqual(g, w) {
-			t.Errorf("wanted foo cflags %q, got %q", w, g)
-		}
-
-		fooDefaults := ctx.ModuleForTests("foo_with_defaults", "").Module().(*soongConfigTestModule)
-		if g, w := fooDefaults.props.Cflags, append([]string{"DEFAULT_A"}, basicCFlags...); !reflect.DeepEqual(g, w) {
-			t.Errorf("wanted foo_with_defaults cflags %q, got %q", w, g)
+			fooDefaults := ctx.ModuleForTests("foo_with_defaults", "").Module().(*soongConfigTestModule)
+			if g, w := fooDefaults.props.Cflags, tc.fooDefaultsExpectedFlags; !reflect.DeepEqual(g, w) {
+				t.Errorf("%s: wanted foo_with_defaults cflags %q, got %q", tc.name, w, g)
+			}
 		}
 
 	}
@@ -213,4 +235,12 @@ func TestSoongConfigModule(t *testing.T) {
 			"SoongConfig.bp": []byte(configBp),
 		})
 	})
+}
+
+func testConfigWithVendorVars(buildDir, bp string, fs map[string][]byte, vendorVars map[string]map[string]string) Config {
+	config := TestConfig(buildDir, nil, bp, fs)
+
+	config.TestProductVariables.VendorVars = vendorVars
+
+	return config
 }

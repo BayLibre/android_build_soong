@@ -51,6 +51,10 @@ type soongConfigModuleTypeImportProperties struct {
 // variables from another Android.bp file.  The imported module type will exist for all
 // modules after the import in the Android.bp file.
 //
+// All imported module types will contain an additional value `conditions_default` within
+// soong_config_variables. The properties specified in `conditions_default` will only be used if no
+// other variables are matched.
+//
 // For example, an Android.bp file could have:
 //
 //     soong_config_module_type_import {
@@ -75,6 +79,9 @@ type soongConfigModuleTypeImportProperties struct {
 //             },
 //             width: {
 //                 cflags: ["-DWIDTH=%s"],
+//             },
+//             conditions_default: {
+//                 cflags: ["-DCONDITIONS_DEFAULT"],
 //             },
 //         },
 //     }
@@ -114,6 +121,18 @@ type soongConfigModuleTypeImportProperties struct {
 //     SOONG_CONFIG_acme_width := 200
 //
 // Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE -DWIDTH=200".
+//
+// Alternatively, if acme BoardConfig.mk file contained:
+//
+//     SOONG_CONFIG_NAMESPACES += acme
+//     SOONG_CONFIG_acme += \
+//         board \
+//         feature \
+//
+//     SOONG_CONFIG_acme_feature := false
+//
+// Then libacme_foo would build with cflags "-DGENERIC -DCONDITIONS_DEFAULT".
+
 func soongConfigModuleTypeImportFactory() Module {
 	module := &soongConfigModuleTypeImport{}
 
@@ -147,6 +166,10 @@ type soongConfigModuleTypeModule struct {
 // variables.  The new module type will exist for all modules after the definition
 // in an Android.bp file, and can be imported into other Android.bp files using
 // soong_config_module_type_import.
+//
+// All imported module types will contain an additional value `conditions_default` within
+// soong_config_variables. The properties specified in `conditions_default` will only be used if no
+// other variables are matched.
 //
 // For example, an Android.bp file could have:
 //
@@ -182,6 +205,9 @@ type soongConfigModuleTypeModule struct {
 //             },
 //             width: {
 //	               cflags: ["-DWIDTH=%s"],
+//             },
+//             conditions_default: {
+//                 cflags: ["-DCONDITIONS_DEFAULT"],
 //             },
 //         },
 //     }
