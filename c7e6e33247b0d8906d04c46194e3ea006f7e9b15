@@ -303,6 +303,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f4e7297_9bf686ec",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-16T19:52:29Z",
+      "side": 1,
+      "message": "How we might end up accessing the ApexInfo doesn\u0027t help me address this issue which is blocking progress on ART unbundling.\n\nI disagree that this is a new pattern.\n\nThe apex module and its members already have a similar relationship, Each has information that the other needs, the apex provides information link min sdk version and the modules provide paths to build artifacts. In order to achieve that the following occurs:\n1. The members are specified on the apex module.\n2. The apex module adds dependencies to its members.\n3. The apex module pushes information down to the modules via ApexInfo.\n4. The member modules use that information to construct build artifacts.\n4. The apex module retrieves the build artifacts by calling interface methods on the modules.\n\nThe prebuilt_apex module and its members (albeit a subset of those for the apex) are not much different. The prebuilt_apex needs to know which modules it contains as that determines the files that can be exported and the modules need to know the paths to those files. In order to achieve that the following occurs:\n1. The members are specified on the prebuilt_apex module.\n2. The prebuilt_apex module adds dependencies to its members.\n3. The prebuilt_apex module pushes information down to the modules via ApexInfo.\n4. The member modules extract the paths from the ApexInfo and make them available to others.\n\nI think the issue with PathForModuleWithoutVariantOut() is a bit of a distraction. It only arises because ModuleSubDir() is implemented in ModuleContext and not in EarlyModuleContext alongside ModuleDir().",
+      "parentUuid": "15c142b5_0c4904e3",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "681349a8_ff9daee9",
         "filename": "apex/prebuilt.go",
         "patchSetId": 3
