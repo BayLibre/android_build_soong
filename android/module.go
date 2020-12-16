@@ -755,6 +755,11 @@ type commonProperties struct {
 	// generated Android.mk file.
 	HideFromMake bool `blueprint:"mutated"`
 
+	// When SkipInstall is set to true, calls to ctx.InstallFile, ctx.InstallExecutable,
+	// ctx.InstallSymlink and ctx.InstallAbsoluteSymlink act like calls to ctx.PackageFile
+	// and don't create a rule to install the file.
+	SkipInstall bool `blueprint:"mutated"`
+
 	// Whether the module has been replaced by a prebuilt
 	ReplacedByPrebuilt bool `blueprint:"mutated"`
 
@@ -1365,6 +1370,11 @@ func (m *ModuleBase) HideFromMake() {
 // IsHideFromMake returns true if HideFromMake was previously called.
 func (m *ModuleBase) IsHideFromMake() bool {
 	return m.commonProperties.HideFromMake == true
+}
+
+// SkipInstall marks this variant to not create install rules when ctx.Install* are called.
+func (m *ModuleBase) SkipInstall() {
+	m.commonProperties.SkipInstall = true
 }
 
 // Similar to HideFromMake, but if the AndroidMk entry would set
@@ -2445,6 +2455,10 @@ func (m *moduleContext) InstallForceOS() (*OsType, *ArchType) {
 }
 
 func (m *moduleContext) skipInstall() bool {
+	if m.module.base().commonProperties.SkipInstall {
+		return true
+	}
+
 	if m.module.base().commonProperties.HideFromMake {
 		return true
 	}
@@ -2530,6 +2544,7 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 	m.packageFile(fullInstallPath, srcPath, executable)
 
 	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
+
 	return fullInstallPath
 }
 
