@@ -255,8 +255,9 @@ type properties struct {
 	B bool
 }
 type soongConfigVariables struct {
-	Bool_var       properties
-	Other_bool_var properties
+	Bool_var           properties
+	Other_bool_var     properties
+	Conditions_default properties
 }
 
 type soongConfigProps struct {
@@ -264,19 +265,12 @@ type soongConfigProps struct {
 }
 
 func Test_PropertiesToApply(t *testing.T) {
-
-	mt := &ModuleType{
-		BaseModuleType:  "foo",
-		ConfigNamespace: "bar",
-		Variables: []soongConfigVariable{
-			newBoolVariable("bool_var"),
-			newBoolVariable("other_bool_var"),
-		},
-		affectableProperties: []string{
-			"a",
-			"b",
-		},
-	}
+	mt, _ := newModuleType(&ModuleTypeProperties{
+		Module_type:      "foo",
+		Config_namespace: "bar",
+		Bool_variables:   []string{"bool_var", "other_bool_var"},
+		Properties:       []string{"a", "b"},
+	})
 	props := soongConfigProps{
 		Soong_config_variables: soongConfigVariables{
 			Bool_var: properties{
@@ -287,21 +281,35 @@ func Test_PropertiesToApply(t *testing.T) {
 				A: proptools.StringPtr("other"),
 				B: false,
 			},
+			Conditions_default: properties{
+				A: proptools.StringPtr("default"),
+				B: true,
+			},
 		},
 	}
 
 	testCases := []struct {
+		name      string
 		config    SoongConfig
 		wantProps []interface{}
 	}{
 		{
-			config: Config(map[string]string{}),
+			name:      "no_vendor_config",
+			config:    Config(map[string]string{}),
+			wantProps: []interface{}{props.Soong_config_variables.Conditions_default},
 		},
 		{
+			name:      "vendor_configs_all_false",
+			config:    Config(map[string]string{"bool_var": "n", "other_bool_var": "n"}),
+			wantProps: []interface{}{props.Soong_config_variables.Conditions_default},
+		},
+		{
+			name:      "bool_var_true",
 			config:    Config(map[string]string{"bool_var": "y"}),
 			wantProps: []interface{}{props.Soong_config_variables.Bool_var},
 		},
 		{
+			name:      "other_bool_var_true",
 			config:    Config(map[string]string{"other_bool_var": "y"}),
 			wantProps: []interface{}{props.Soong_config_variables.Other_bool_var},
 		},
@@ -310,11 +318,11 @@ func Test_PropertiesToApply(t *testing.T) {
 	for _, tc := range testCases {
 		gotProps, err := PropertiesToApply(mt, reflect.ValueOf(&props), tc.config)
 		if err != nil {
-			t.Errorf("Unexpected error in PropertiesToApply: %s", err)
+			t.Errorf("%s: Unexpected error in PropertiesToApply: %s", tc.name, err)
 		}
 
 		if !reflect.DeepEqual(gotProps, tc.wantProps) {
-			t.Errorf("Expected %s, got %s", tc.wantProps, gotProps)
+			t.Errorf("%s: Expected %s, got %s", tc.name, tc.wantProps, gotProps)
 		}
 	}
 }

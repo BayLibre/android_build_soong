@@ -437,7 +437,9 @@ soong_config_string_variable {
 This example describes a new `acme_cc_defaults` module type that extends the
 `cc_defaults` module type, with three additional conditionals based on
 variables `board`, `feature` and `width`, which can affect properties `cflags`
-and `srcs`.
+and `srcs`. Additionally, an additional conditional `conditions_default`
+property can affect `cflags` and `srcs` only if no variables for `board`,
+`feature`, or `width` are specified.
 
 The values of the variables can be set from a product's `BoardConfig.mk` file:
 ```
@@ -480,6 +482,9 @@ acme_cc_defaults {
         width: {
             cflags: ["-DWIDTH=%s"],
         },
+        conditions_default: {
+            cflags: ["-DCONDITIONS_DEFAULT"],
+        },
     },
 }
 
@@ -490,8 +495,21 @@ cc_library {
 }
 ```
 
-With the `BoardConfig.mk` snippet above, libacme_foo would build with
-cflags "-DGENERIC -DSOC_A -DFEATURE -DWIDTH=200".
+With the `BoardConfig.mk` snippet above, `libacme_foo` would build with
+`cflags: "-DGENERIC -DSOC_A -DFEATURE -DWIDTH=200"`.
+
+Alternatively, with `DefaultBoardConfig.mk`:
+
+```
+SOONG_CONFIG_NAMESPACES += acme
+SOONG_CONFIG_acme += \
+    board \
+    feature \
+
+SOONG_CONFIG_acme_feature := false
+```
+
+then `libacme_foo` would build with `cflags: "-DGENERIC -DCONDITIONS_DEFAULT"`.
 
 `soong_config_module_type` modules will work best when used to wrap defaults
 modules (`cc_defaults`, `java_defaults`, etc.), which can then be referenced
