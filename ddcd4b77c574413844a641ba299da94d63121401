@@ -390,6 +390,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4843e79a_f8a6c689",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-16T18:55:42Z",
+      "side": 1,
+      "message": "OptionalPath cannot be nil, it is a struct not a pointer to a struct. Will add colin to review that part specifically.",
+      "parentUuid": "191fb2ca_daa5fc19",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "ddcd4b77c574413844a641ba299da94d63121401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea3199c_bce35e3b",
