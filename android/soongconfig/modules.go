@@ -26,6 +26,8 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+const conditionsDefault = "conditions_default"
+
 var soongConfigProperty = proptools.FieldNameForProperty("soong_config_variables")
 
 // loadSoongConfigModuleTypeDefinition loads module types from an Android.bp file.  It caches the
@@ -145,32 +147,10 @@ func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []
 		return errs
 	}
 
-	mt := &ModuleType{
-		affectableProperties: props.Properties,
-		ConfigNamespace:      props.Config_namespace,
-		BaseModuleType:       props.Module_type,
-		variableNames:        props.Variables,
-	}
-	v.ModuleTypes[props.Name] = mt
-
-	for _, name := range props.Bool_variables {
-		if name == "" {
-			return []error{fmt.Errorf("bool_variable name must not be blank")}
-		}
-
-		mt.Variables = append(mt.Variables, newBoolVariable(name))
-	}
-
-	for _, name := range props.Value_variables {
-		if name == "" {
-			return []error{fmt.Errorf("value_variables entry must not be blank")}
-		}
-
-		mt.Variables = append(mt.Variables, &valueVariable{
-			baseVariable: baseVariable{
-				variable: name,
-			},
-		})
+	if mt, errs := newModuleType(props); len(errs) > 0 {
+		return errs
+	} else {
+		v.ModuleTypes[props.Name] = mt
 	}
 
 	return nil
@@ -194,6 +174,12 @@ func processStringVariableDef(v *SoongConfigDefinition, def *parser.Module) (err
 
 	if len(stringProps.Values) == 0 {
 		return []error{fmt.Errorf("values property must be set")}
+	}
+
+	for _, name := range stringProps.Values {
+		if err := checkVariableName(name); err != nil {
+			return []error{fmt.Errorf("soong_config_string_variable: values property error %s", err)}
+		}
 	}
 
 	v.variables[base.variable] = &stringVariable{
@@ -417,8 +403,7 @@ func typeForPropertyFromPropertyStruct(ps interface{}, property string) reflect.
 // PropertiesToApply returns the applicable properties from a ModuleType that should be applied
 // based on SoongConfig values.
 // Expects that props contains a struct field with name soong_config_variables. The fields within
-// soong_config_variables are expected to be in the same order as moduleType.Variables. In general,
-// props should be generated via CreateProperties.
+// soong_config_variables are expected to be in the same order as moduleType.Variables.
 func PropertiesToApply(moduleType *ModuleType, props reflect.Value, config SoongConfig) ([]interface{}, error) {
 	var ret []interface{}
 	props = props.Elem().FieldByName(soongConfigProperty)
@@ -439,6 +424,46 @@ type ModuleType struct {
 
 	affectableProperties []string
 	variableNames        []string
+}
+
+func newModuleType(props *ModuleTypeProperties) (*ModuleType, []error) {
+	mt := &ModuleType{
+		affectableProperties: props.Properties,
+		ConfigNamespace:      props.Config_namespace,
+		BaseModuleType:       props.Module_type,
+		variableNames:        props.Variables,
+	}
+
+	for _, name := range props.Bool_variables {
+		if err := checkVariableName(name); err != nil {
+			return nil, []error{fmt.Errorf("bool_variables %s", err)}
+		}
+
+		mt.Variables = append(mt.Variables, newBoolVariable(name))
+	}
+
+	for _, name := range props.Value_variables {
+		if err := checkVariableName(name); err != nil {
+			return nil, []error{fmt.Errorf("value_variables %s", err)}
+		}
+
+		mt.Variables = append(mt.Variables, &valueVariable{
+			baseVariable: baseVariable{
+				variable: name,
+			},
+		})
+	}
+
+	return mt, nil
+}
+
+func checkVariableName(name string) error {
+	if name == "" {
+		return fmt.Errorf("name must not be blank")
+	} else if name == conditionsDefault {
+		return fmt.Errorf("%q is reserved", conditionsDefault)
+	}
+	return nil
 }
 
 type soongConfigVariable interface {
@@ -474,7 +499,10 @@ type stringVariable struct {
 func (s *stringVariable) variableValuesType() reflect.Type {
 	var fields []reflect.StructField
 
-	for _, v := range s.values {
+	values := []string{}
+	values = append(values, s.values...)
+	values = append(values, conditionsDefault)
+	for _, v := range values {
 		fields = append(fields, reflect.StructField{
 			Name: proptools.FieldNameForProperty(v),
 			Type: emptyInterfaceType,
@@ -488,13 +516,20 @@ func (s *stringVariable) initializeProperties(v reflect.Value, typ reflect.Type)
 	for i := range s.values {
 		v.Field(i).Set(reflect.Zero(typ))
 	}
+	v.Field(len(s.values)).Set(reflect.Zero(typ)) // conditions default is the final value
 }
 
 func (s *stringVariable) PropertiesToApply(config SoongConfig, values reflect.Value) (interface{}, error) {
+	valueSet := false
 	for j, v := range s.values {
-		if config.String(s.variable) == v {
-			return values.Field(j).Interface(), nil
+		f := values.Field(j)
+		if config.String(s.variable) == v && !f.Elem().IsNil() {
+			valueSet = true
+			return f.Interface(), nil
 		}
+	}
+	if !valueSet {
+		return values.Field(len(s.values)).Interface(), nil
 	}
 
 	return nil, nil
@@ -517,14 +552,55 @@ func (b boolVariable) variableValuesType() reflect.Type {
 }
 
 func (b boolVariable) initializeProperties(v reflect.Value, typ reflect.Type) {
-	v.Set(reflect.Zero(typ))
+	initializePropertiesWithDefault(v, typ)
+}
+
+func initializePropertiesWithDefault(v reflect.Value, typ reflect.Type) {
+	sTyp := typ.Elem()
+	fields := []reflect.StructField{}
+	for i := 0; i < sTyp.NumField(); i++ {
+		fields = append(fields, sTyp.Field(i))
+	}
+
+	nestedFieldName := proptools.FieldNameForProperty(conditionsDefault)
+	fields = append(fields, reflect.StructField{
+		Name: nestedFieldName,
+		Type: typ,
+	})
+
+	newTyp := reflect.PtrTo(reflect.StructOf(fields))
+	v.Set(reflect.Zero(newTyp))
+}
+
+func conditionsDefaultField(v reflect.Value) reflect.Value {
+	return v.Field(v.NumField() - 1)
+}
+
+func removeDefault(values reflect.Value) reflect.Value {
+	v := values.Elem().Elem()
+	s := conditionsDefaultField(v)
+	if !s.IsValid() {
+		return v
+	}
+
+	res := reflect.New(s.Type().Elem())
+	for i := 0; i < res.Type().Elem().NumField(); i++ {
+		val := v.Field(i)
+		res.Elem().Field(i).Set(val)
+	}
+
+	return res
 }
 
 func (b boolVariable) PropertiesToApply(config SoongConfig, values reflect.Value) (interface{}, error) {
 	if config.Bool(b.variable) {
+		values = removeDefault(values)
 		return values.Interface(), nil
 	}
-
+	v := values.Elem().Elem()
+	if f := conditionsDefaultField(v); f.IsValid() {
+		return f.Interface(), nil
+	}
 	return nil, nil
 }
 
@@ -537,16 +613,20 @@ func (s *valueVariable) variableValuesType() reflect.Type {
 }
 
 func (s *valueVariable) initializeProperties(v reflect.Value, typ reflect.Type) {
-	v.Set(reflect.Zero(typ))
+	initializePropertiesWithDefault(v, typ)
 }
 
 func (s *valueVariable) PropertiesToApply(config SoongConfig, values reflect.Value) (interface{}, error) {
-	if !config.IsSet(s.variable) || !values.IsValid() {
+	if !values.IsValid() {
 		return nil, nil
+	}
+	if !config.IsSet(s.variable) {
+		return conditionsDefaultField(values.Elem().Elem()).Interface(), nil
 	}
 	configValue := config.String(s.variable)
 
-	propStruct := values.Elem().Elem()
+	values = removeDefault(values)
+	propStruct := values.Elem()
 	if !propStruct.IsValid() {
 		return nil, nil
 	}
