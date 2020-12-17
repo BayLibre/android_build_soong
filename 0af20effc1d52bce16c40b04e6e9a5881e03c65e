@@ -16,6 +16,24 @@
       "message": "+smoreland@ as they added the original restriction when they added the neverallow rules, although back then it was not \"sdk_version: \"none\"\" but \"no_standard_libs: true\"",
       "revId": "0af20effc1d52bce16c40b04e6e9a5881e03c65e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaa1346e_f9642f45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-12-17T19:29:14Z",
+      "side": 1,
+      "message": "I think someone mentioned they wanted it in passing or similar. Maybe ccross wanted it?\n\nI did not know Java build very well in 2017. Would argue against having this now - Android has a Java dependency nightmare because everything is in or depends on frameworks.jar. Having library sectioned off from Android build/without dependencies, well, we should strive for that much more often.",
+      "parentUuid": "5cd4bdf7_b4fee327",
+      "revId": "0af20effc1d52bce16c40b04e6e9a5881e03c65e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
