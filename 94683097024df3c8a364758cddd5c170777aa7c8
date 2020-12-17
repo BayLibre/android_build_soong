@@ -16,6 +16,24 @@
       "message": "I was expecting the default value to be inside the variable, so if \"board\" was not set then it could use a default value, but setting \"feature\" would not affect the default value of \"board\".  I don\u0027t know how to handle syntax for the bool properties though, or what the behavior would be if a string variable was set to a valid value for which there was no entry in the properties.",
       "revId": "94683097024df3c8a364758cddd5c170777aa7c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5694b32_49c4b935",
+        "filename": "README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-17T21:02:46Z",
+      "side": 1,
+      "message": "I\u0027ll try playing around with the bool properties in particular and write up a short design for that/ how to handle valid value with no entry in the properties.",
+      "parentUuid": "b6e926f2_82a2bed8",
+      "revId": "94683097024df3c8a364758cddd5c170777aa7c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
