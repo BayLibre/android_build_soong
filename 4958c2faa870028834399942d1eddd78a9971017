@@ -33,6 +33,24 @@
       "message": "There is similar code in vendor/google/build/build_test.sh to skip broken products, might as well copy that.",
       "revId": "4958c2faa870028834399942d1eddd78a9971017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5b8c1f0_6576a85b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-17T19:18:05Z",
+      "side": 1,
+      "message": "it didn\u0027t fit out of the box due to the need to check if the caller passed the arg already, but shoe-horned  it in now",
+      "parentUuid": "7ee2beac_2c926a24",
+      "revId": "4958c2faa870028834399942d1eddd78a9971017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
