@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4efd2a5_d8203d22",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-17T20:53:50Z",
+      "side": 1,
+      "message": "optional: any reason to not call SboxPathForTool here?",
+      "range": {
+        "startLine": 699,
+        "startChar": 9,
+        "endLine": 699,
+        "endChar": 80
+      },
+      "revId": "ba9e403703f3601ed55fa665d35aad973218d36d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72cf6fd8_35242fee",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-17T20:53:50Z",
+      "side": 1,
+      "message": "Also optional: would it make sense to have a single method for ImplicitPackagedTool that takes varargs of PackagingSpec?",
+      "range": {
+        "startLine": 729,
+        "startChar": 57,
+        "endLine": 729,
+        "endChar": 72
+      },
+      "revId": "ba9e403703f3601ed55fa665d35aad973218d36d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
