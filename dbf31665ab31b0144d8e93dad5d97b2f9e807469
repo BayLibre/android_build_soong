@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e41127a_709bcc32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-17T16:57:30Z",
+      "side": 1,
+      "message": "Good idea. Here it is: http://b/175875554. Do you have capacity to work on it, or should I assign to myself? Also please add any blocked bugs, I\u0027ll add my b/132357300.",
+      "parentUuid": "484261b9_39eb0c74",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "dbf31665ab31b0144d8e93dad5d97b2f9e807469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "06093835_6f4dc858",
