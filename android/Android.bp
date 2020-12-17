@@ -95,3 +95,9 @@ bootstrap_go_package {
         "visibility_test.go",
     ],
 }
+
+genrule {
+    name: "unknown",
+    cmd: "touch $(out)",
+    out: ["unknown.blob"],
+}
