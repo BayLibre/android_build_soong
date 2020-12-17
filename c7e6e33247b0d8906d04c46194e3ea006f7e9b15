@@ -351,6 +351,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5a3ba53_ca2e2126",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-17T19:42:08Z",
+      "side": 1,
+      "message": "My 2 cents.\n\nI\u0027m not too concerned about the dependency direction itself. Soong already has some unintuitive dependencies such as a source module to its prebuilt counterpart in order to support unique information flows like this.\n\nHowever, the way this CL expands the use cases of ApexInfo and apexInfoMutator feels like it\u0027s defeating their clear and sharp purposes. I would really like to see a version that doesn\u0027t involve modifying them this way, no matter which direction the dependencies are established.",
+      "parentUuid": "932bdcd3_d59601ba",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "681349a8_ff9daee9",
         "filename": "apex/prebuilt.go",
         "patchSetId": 3
