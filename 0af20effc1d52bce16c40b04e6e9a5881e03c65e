@@ -34,6 +34,24 @@
       "parentUuid": "5cd4bdf7_b4fee327",
       "revId": "0af20effc1d52bce16c40b04e6e9a5881e03c65e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f79ceb1_3276c39f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-17T20:38:22Z",
+      "side": 1,
+      "message": "\"no_standard_libs: true\" aka \"sdk_version: \"none\"\" removes a lot more than the framework.jar APIs, it also removes all the libcore APIs.  Very little should actually need that.  Most places will want \"no_framework_libs: true\", which is now known as \"sdk_version: \"core_current\"\".\n\nIIRC, my worry was that people would use \"sdk_version: \"none\", libs: [\"core-oj\", \"core-libart\", ...]\" when they should be using \"sdk_version: \"core_current\"\".  Then adding a new jar to the core APIs requires finding everywhere someone has done this incorrectly and updating them.\n\nIf that\u0027s not something you\u0027re worried about I\u0027m fine with removing this.",
+      "parentUuid": "eaa1346e_f9642f45",
+      "revId": "0af20effc1d52bce16c40b04e6e9a5881e03c65e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
