@@ -327,6 +327,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "932bdcd3_d59601ba",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-17T08:52:24Z",
+      "side": 1,
+      "message": "ApexInfo (and ApexContents) currently don\u0027t hold paths. They just provide contextual information (like apex name, min sdk version, etc.) which previously was stored in a global variable, which was one of the major blockers to the bazel transition. \n\nHowever, in this CL, the struct is used as a means to pass the output paths to its \"dependencies\", so that they can use the output paths as inputs. In doing so, the output paths are constructed in a mutator (not in GenerateAndroidBuildActions), at a non-standard place (out/soong/.intermediates/.../\u003cmodulename\u003e/\u003carch\u003e/), both of which look quite new to me.\n\nI really want to hear opinion from the Soong team.",
+      "parentUuid": "2f4e7297_9bf686ec",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "681349a8_ff9daee9",
         "filename": "apex/prebuilt.go",
         "patchSetId": 3
