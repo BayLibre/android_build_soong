@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd4bdf7_b4fee327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-17T19:07:07Z",
+      "side": 1,
+      "message": "+smoreland@ as they added the original restriction when they added the neverallow rules, although back then it was not \"sdk_version: \"none\"\" but \"no_standard_libs: true\"",
+      "revId": "0af20effc1d52bce16c40b04e6e9a5881e03c65e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
