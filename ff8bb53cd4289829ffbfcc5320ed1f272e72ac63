@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a061e2_c726214b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-17T15:44:38Z",
+      "side": 1,
+      "message": "After reading this I was half expecting some test changes to accompany this.\n\nCan you confirm that the tests cover this behavior, both early and late test failures? The way I usually do this is to temporarily hack the code to make the tests fail, e.g.\n1. Make it always fails early.\n2. Make it always fail late.\n3. Make it never fail.\n\nIn each case at least one test should fail.",
+      "range": {
+        "startLine": 16,
+        "startChar": 62,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "ff8bb53cd4289829ffbfcc5320ed1f272e72ac63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ff908a_31244086",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2147,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-17T15:44:38Z",
+      "side": 0,
+      "message": "Where does the functionality of this block of code get performed?",
+      "revId": "dbf31665ab31b0144d8e93dad5d97b2f9e807469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58051408_e4bf538f",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-17T15:44:38Z",
+      "side": 0,
+      "message": "Presumably this is done in the new call to addCLCFromDep() that gets inserted above.",
+      "revId": "dbf31665ab31b0144d8e93dad5d97b2f9e807469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
