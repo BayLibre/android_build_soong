@@ -16,6 +16,23 @@
       "message": "any thoughts on this (and the internal version) Colin ? Not ideal, but allows progress (and eventually we should add PRODUCT_SOONG_ONLY_PRODUCT + multiproduct_kati filtering)",
       "revId": "4958c2faa870028834399942d1eddd78a9971017",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee2beac_2c926a24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-17T18:48:21Z",
+      "side": 1,
+      "message": "There is similar code in vendor/google/build/build_test.sh to skip broken products, might as well copy that.",
+      "revId": "4958c2faa870028834399942d1eddd78a9971017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
