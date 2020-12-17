@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0211d4d3_5469cce7",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-17T00:35:56Z",
+      "side": 1,
+      "message": "The properties are parsed from the Android.bp file into the property struct created here, and the ordering information from the Android.bp file is lost.  The loop here is iterating moduleType.Variables to create a type, and the loop in PropertiesToApply is iterating moduleType.Variables to index into an instance of that type.",
+      "parentUuid": "da3ec1d1_4e5f4511",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 0
+      },
+      "revId": "36a4bde31cb24be180974eb77c3b875bcca5a423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f0fbf7_5ee82fb9",
