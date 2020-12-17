@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4fcb47e_4a3dcc3a",
+        "filename": "ui/metrics/proc/status.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-17T21:12:55Z",
+      "side": 1,
+      "message": "Is there any reason to not use more human readable names more similar to our comments?",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "eb7de741b3bf1a4979c7d89048055bfb07bce0c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0468bd06_a43d5020",
+        "filename": "ui/metrics/proc/status.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-17T21:12:55Z",
+      "side": 1,
+      "message": "page size?",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "eb7de741b3bf1a4979c7d89048055bfb07bce0c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b395fa51_64bb9a8f",
+        "filename": "ui/metrics/proc/status.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-17T21:12:55Z",
+      "side": 1,
+      "message": "nit: e or end or something to indicate that it\u0027s the end of the str? Or to use strings.Split(v, \" \") to get the value and the scale as separate strings?",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 6
+      },
+      "revId": "eb7de741b3bf1a4979c7d89048055bfb07bce0c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
