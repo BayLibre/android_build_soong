@@ -16,6 +16,23 @@
       "message": "Looks good to me, the new output says:\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n01:00:37 Entire data directory removed.\n01:00:37 Deleted images and staging directories.\n01:00:37 Skipping Bazel dist dir migration - nothing to do!\n\n#### build completed successfully (4 seconds) ####",
       "revId": "534f15708f8335b3ec0547445ec71c408191986d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "966f9318_cb6a0ab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2020-12-17T01:38:15Z",
+      "side": 1,
+      "message": "The presubmit seems broken (not running?), maybe because I changed the description. Will try re-running somehow...",
+      "revId": "534f15708f8335b3ec0547445ec71c408191986d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
