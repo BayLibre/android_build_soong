@@ -46,6 +46,30 @@
       },
       "revId": "ff8bb53cd4289829ffbfcc5320ed1f272e72ac63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d65297d5_7ea5b0a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-17T18:30:51Z",
+      "side": 1,
+      "message": "When I said temporarily hack the code to make the tests fail I wasn\u0027t talking about the test code but the code being tested, i.e. addCLCFromDep()\n\nMaking it always fail early could be done by something as simple as always making addCLCFromDep() report an error.\n\nMaking it always fail could be done by making validateClassLoaderContext() always return an error.\n\nMaking it never fail could be done by making validateClassLoaderContext() always return an error.\n\nThis will only really provide benefit if you have integration tests that test how the CLC is integrated into the normal build but I think the tests that you were modifying are unit tests which test code that is not affected very much.\n\nHaving said that it seems as though none of the existing unit tests for AddContextForSdk() verified that it did strict testing, otherwise they would need to have been modified as part of this.",
+      "parentUuid": "1dc31f1b_21066536",
+      "range": {
+        "startLine": 16,
+        "startChar": 62,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "ff8bb53cd4289829ffbfcc5320ed1f272e72ac63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
