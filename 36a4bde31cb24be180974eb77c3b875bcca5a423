@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79de6f5d_34bc9614",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2020-12-17T17:09:19Z",
+      "side": 1,
+      "message": "oof. totally blanked on the use of CreateProperties. Updated this to have a comment on the expectations of the the field props and the description to be about comment + adding a test.",
+      "parentUuid": "0211d4d3_5469cce7",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 0
+      },
+      "revId": "36a4bde31cb24be180974eb77c3b875bcca5a423",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39f0fbf7_5ee82fb9",
