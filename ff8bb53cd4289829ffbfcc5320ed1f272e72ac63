@@ -22,6 +22,30 @@
       },
       "revId": "ff8bb53cd4289829ffbfcc5320ed1f272e72ac63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc31f1b_21066536",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-17T16:32:14Z",
+      "side": 1,
+      "message": "There are tests for early failures: TestCLCUnknownBuildPath and TestCLCUnknownInstallPath. They don\u0027t change because they go directly via private ClassLoaderContext.addContext() method and set \"strict\" flag that controls early/late failure mode. I planned to remove the unnecessary CLC APIs and \"strict\" flag in a follow up CL, and change the tests there.\n\nI can confirm the change of behavior by a following modification to the test:\n\n --- a/dexpreopt/class_loader_context_test.go\n +++ b/dexpreopt/class_loader_context_test.go\n @@ -164,8 +164,12 @@ func TestCLC(t *testing.T) {\n  func TestCLCUnknownBuildPath(t *testing.T) {\n         ctx :\u003d testContext()\n         m :\u003d make(ClassLoaderContextMap)\n -       err :\u003d m.addContext(ctx, AnySdkVersion, \"a\", nil, nil, true, nil)\n +       err :\u003d m.addContext(ctx, AnySdkVersion, \"a\", nil, nil, false, nil)\n         checkError(t, err, \"unknown build path to \u003cuses-library\u003e \\\"a\\\"\")\n +       valid, validationError :\u003d validateClassLoaderContext(m)\n +       if !valid {\n +               t.Errorf(\"\\n%v\", validationError)\n +       }\n  }\n\nThen I get the following error on `m nothing` (the early error is changed to the late error):\n\n --- FAIL: TestCLCUnknownBuildPath (0.00s)\n    class_loader_context_test.go:218: \n        want error: \u0027unknown build path to \u003cuses-library\u003e \"a\"\u0027\n        have: none\n    class_loader_context_test.go:171: \n        invalid build path for \u003cuses-library\u003e \"a\"\n\nAs for the third case (never fail) I do not understand what you mean. I can make it never fail by either providing a non-nil path, or by removing validateClassLoaderContext() call. But what\u0027s the point of such experiment?",
+      "parentUuid": "97a061e2_c726214b",
+      "range": {
+        "startLine": 16,
+        "startChar": 62,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "ff8bb53cd4289829ffbfcc5320ed1f272e72ac63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

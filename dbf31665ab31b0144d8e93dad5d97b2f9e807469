@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa6f6f0e_f8898805",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2147,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-17T16:32:14Z",
+      "side": 0,
+      "message": "It is moved to lines handling is moved to lines 3246 (OptionalImplicitSdkLibrary) and 3249-3251 (Provides_uses_libs).\n\nThis is actually the original reason why I started this rework: here library X is added to its own CLC as a sibling element of its own dependencies, which creates incorrect CLC structure. I added this co commit message.\n\nI have a real case for it in internal (it fails verify_uses_libraries check before the change and builds fine after the change, and I can see with some debug that CLC is changed as I describe above).\n\nI can probably add a Soong test as well. Do you think it can be done in a follow-up CL?",
+      "parentUuid": "56ff908a_31244086",
+      "revId": "dbf31665ab31b0144d8e93dad5d97b2f9e807469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58051408_e4bf538f",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-17T15:44:38Z",
       "side": 0,
       "message": "Presumably this is done in the new call to addCLCFromDep() that gets inserted above.",
+      "revId": "dbf31665ab31b0144d8e93dad5d97b2f9e807469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7276b026_01d835e8",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-17T16:32:14Z",
+      "side": 0,
+      "message": "Yes (although to be precise the call is not inserted, it is changed from maybeAddCLCFromDep). The same reasoning as in the previous comment applies here.",
+      "parentUuid": "58051408_e4bf538f",
       "revId": "dbf31665ab31b0144d8e93dad5d97b2f9e807469",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
