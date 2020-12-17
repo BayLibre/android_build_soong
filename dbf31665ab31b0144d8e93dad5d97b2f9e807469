@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06093835_6f4dc858",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-17T15:12:13Z",
+      "side": 1,
+      "message": "Added rationale in the commit message, PTAL.",
+      "revId": "dbf31665ab31b0144d8e93dad5d97b2f9e807469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
