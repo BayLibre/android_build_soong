@@ -510,6 +510,7 @@ type ApexDependency interface {
 type UsesLibraryDependency interface {
 	DexJarBuildPath() android.Path
 	DexJarInstallPath() android.Path
+	ClassLoaderContexts() dexpreopt.ClassLoaderContextMap
 }
 
 type Dependency interface {
@@ -518,7 +519,6 @@ type Dependency interface {
 	ImplementationJars() android.Paths
 	ResourceJars() android.Paths
 	AidlIncludeDirs() android.Paths
-	ClassLoaderContexts() dexpreopt.ClassLoaderContextMap
 	ExportedPlugins() (android.Paths, []string, bool)
 	SrcJarArgs() ([]string, android.Paths)
 	BaseModuleName() string
@@ -3250,7 +3250,7 @@ var inList = android.InList
 
 // Add class loader context of a given dependency to the given class loader context, provided that
 // all the necessary conditions are met.
-func maybeAddCLCFromDep(depModule android.Module, depTag blueprint.DependencyTag,
+func maybeAddCLCFromDep(ctx android.ModuleContext, depModule android.Module, depTag blueprint.DependencyTag,
 	depName string, clcMap dexpreopt.ClassLoaderContextMap) {
 
 	if dep, ok := depModule.(Dependency); ok {
