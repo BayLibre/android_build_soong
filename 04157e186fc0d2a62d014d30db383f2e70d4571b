@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a48e58_82d048ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2020-12-17T22:53:12Z",
+      "side": 1,
+      "message": "Carrying the +2 from Liz.",
+      "revId": "04157e186fc0d2a62d014d30db383f2e70d4571b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
