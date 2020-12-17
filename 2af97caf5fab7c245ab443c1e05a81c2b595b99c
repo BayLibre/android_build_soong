@@ -16,6 +16,24 @@
       "message": "aosp/1533121 makes multiproduct_kati take multiple --skip-products flags so you don\u0027t have to worry about the existing arguments.",
       "revId": "2af97caf5fab7c245ab443c1e05a81c2b595b99c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0078cad2_978c4922",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-17T20:29:11Z",
+      "side": 1,
+      "message": "nice, rebased on that and simplified",
+      "parentUuid": "599b03de_2d691f25",
+      "revId": "2af97caf5fab7c245ab443c1e05a81c2b595b99c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
