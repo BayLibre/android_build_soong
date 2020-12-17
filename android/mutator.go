@@ -21,6 +21,30 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+type unknownDependencyTag struct {
+	blueprint.BaseDependencyTag
+}
+
+var (
+	unknownTag = unknownDependencyTag{}
+)
+
+func RegisterUnknownDependencyAdder(ctx RegisterMutatorsContext) {
+	ctx.BottomUp("unknownDependencyAdder", unknownDependencyAdder).Parallel()
+}
+
+func unknownDependencyAdder(ctx BottomUpMutatorContext) {
+	_, ok := ctx.Module().(Module)
+	if !ok {
+		return
+	}
+
+	if ctx.ModuleName() == "unknown" {
+		return
+	}
+	ctx.AddVariationDependencies(nil, unknownTag, "unknown")
+}
+
 // Phases:
 //   run Pre-arch mutators
 //   run archMutator
@@ -146,6 +170,7 @@ var preArch = []RegisterMutatorFunc{
 	// This must come after the defaults mutators to ensure that any visibility supplied
 	// in a defaults module has been successfully applied before the rules are gathered.
 	RegisterVisibilityRuleGatherer,
+	RegisterUnknownDependencyAdder,
 }
 
 func registerArchMutator(ctx RegisterMutatorsContext) {
