@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7012c186_b871b3d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-17T19:19:16Z",
+      "side": 1,
+      "message": "Can you add godoc for any newly added functions?  Optionally add godoc for newly exported functions too.",
+      "revId": "72735975229b025ce37ee7cd0bdcb3f615af9e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
