@@ -375,6 +375,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "197b982c_96fde3fa",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-17T21:21:56Z",
+      "side": 1,
+      "message": "Soong can handle the backwards information flow from dependencies, but I don\u0027t think Bazel will be able to, so probably worth trying to avoid it if possible.  The existing flow of information from the apex module to the member modules should be able to be modelled as a configuration split in Bazel, I\u0027m not sure if this would fit that model.\n\nSorry if this has already been addressed, there is a lot to try to follow here, but I think the right solution here is to create a new module type factory (without registering it, so it can\u0027t be used in an Android.bp file) that can deapex a prebuilt apex and export individual files.  Then the java_import modules can depend on a deapex module, while the prebuilt_apex module still depends on the java_imports.  The deapex module could handle extracting a single file (which would mean a bunch of deapex modules for each prebuilt apex and some duplicated work) or all the files (which would make the output file tags complicated to identify the correct file).",
+      "parentUuid": "b5a3ba53_ca2e2126",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "681349a8_ff9daee9",
         "filename": "apex/prebuilt.go",
         "patchSetId": 3

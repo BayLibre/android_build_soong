@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0861b2fe_c7822b9b",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-17T21:21:56Z",
+      "side": 1,
+      "message": "The purpose of ctx.ModuleSubDir() is to ensure that there are no collisions between modules.  That can\u0027t be used here because the full set of variations isn\u0027t known yet.\n\nUsing this method makes it easy to accidentally collide, for example by using the architecture for paths and then running a Soong-only build that has multiple targets with the same architecture.  I\u0027m also worried about vendors using this to get the module directory and then hardcoding a variant name to access outputs of other modules.",
+      "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abab102e_51aa6a80",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-17T21:21:56Z",
+      "side": 1,
+      "message": "This could collide if you had a prebuilt apex that supported host and device and were doing a build on a device that supported x86_64.  You could use p.Target().OsVariation() + \"_\" + p.Target().ArchVariation(), but this is always going to be a little delicate as we add new features.",
+      "range": {
+        "startLine": 275,
+        "startChar": 64,
+        "endLine": 275,
+        "endChar": 90
+      },
+      "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
