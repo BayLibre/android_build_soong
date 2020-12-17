@@ -1,0 +1,11 @@
+Autosubmit+1: Rupert Shuttleworth <ruperts@google.com>
+Bypass-Presubmit+1: Rupert Shuttleworth <ruperts@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Ready+1: Rupert Shuttleworth <ruperts@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Code-Review+2: Jingwen Chen <jingwen@google.com>
+Submitted-by: Rupert Shuttleworth <ruperts@google.com>
+Submitted-at: Thu, 17 Dec 2020 03:26:10 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1532818
+Project: platform/build/soong
+Branch: refs/heads/master
