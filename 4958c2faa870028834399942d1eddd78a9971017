@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73a0c3af_e33cf4ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-17T18:04:53Z",
+      "side": 1,
+      "message": "any thoughts on this (and the internal version) Colin ? Not ideal, but allows progress (and eventually we should add PRODUCT_SOONG_ONLY_PRODUCT + multiproduct_kati filtering)",
+      "revId": "4958c2faa870028834399942d1eddd78a9971017",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
