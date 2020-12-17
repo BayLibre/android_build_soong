@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07dd0871_13ba8931",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e47bae97_ff6c92f4",
+      "range": {
+        "startLine": 1911,
+        "startChar": 0,
+        "endLine": 1922,
+        "endChar": 2
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3b1451b_0444038c",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-16T02:30:02Z",
       "side": 1,
       "message": "This should be branched, so that vendor snapshot only refers vendorSuffixModules, and that recovery snapshot only refers recoverySuffixModules.",
+      "range": {
+        "startLine": 2831,
+        "startChar": 0,
+        "endLine": 2834,
+        "endChar": 33
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d3b9a0_08ad8253",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2834,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this if what you mean.",
+      "parentUuid": "f3b1451b_0444038c",
       "range": {
         "startLine": 2831,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d22c91_427fdc6b",
+        "filename": "cc/genrule.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbd9803c_e4c2963f",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "809bb6f6_04b95ae5",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-12-16T02:30:02Z",
       "side": 1,
       "message": "Add comments why recovery variants are disabled in this case, similar to genrule above.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "684c485c_080a7957",
+        "filename": "cc/image.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "809bb6f6_04b95ae5",
       "range": {
         "startLine": 364,
         "startChar": 0,
@@ -141,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f12caca5_4fb8dff2",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Note that there are slightly different (the logic comes from the original code, in which it was also different). getSnaphotMap compares with m.linker.(*snapshotBinaryDecorator) and m.linker.(*snapshotObjectLinker), which I don\u0027t think it will work with source modules (for the source mutator).",
+      "parentUuid": "8ef3a494_c2b8653e",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8aa6b376_08665ab3",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 8
@@ -152,6 +272,30 @@
       "writtenOn": "2020-12-16T02:30:02Z",
       "side": 1,
       "message": "nit; change the function name to a name that seems to return bool? e.g. isSuffixModulesAware, shouldBeAddedToSuffixModules, etc.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4819a8ac_5f8feeef",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aa6b376_08665ab3",
       "range": {
         "startLine": 159,
         "startChar": 0,
@@ -187,6 +331,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7173a36b_b2c22419",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Same as before.",
+      "parentUuid": "95bba819_b56fb2ec",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 1
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd1b4e3b_085b9138",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 8
@@ -198,6 +366,30 @@
       "writtenOn": "2020-12-16T02:30:02Z",
       "side": 1,
       "message": "nit; we can change this to \"androidMkSuffix string\"",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 29
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938bffb6_38067a30",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd1b4e3b_085b9138",
       "range": {
         "startLine": 499,
         "startChar": 0,
@@ -231,6 +423,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8756bb_55eead15",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "469a3372_e2344ace",
+      "range": {
+        "startLine": 937,
+        "startChar": 0,
+        "endLine": 940,
+        "endChar": 69
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b62df1a9_1b4b46b0",
@@ -244,6 +460,30 @@
       "writtenOn": "2020-12-16T02:30:02Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1018,
+        "endChar": 8
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c5f43b_5c0d4eee",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-17T00:15:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b62df1a9_1b4b46b0",
       "range": {
         "startLine": 1005,
         "startChar": 0,
