@@ -33,6 +33,24 @@
       "message": "Colin, is my use of /dev/null as the source of a copy to create an empty directory a good idea? If not can you think of a better one?",
       "revId": "43428b45addb23f0205f77919c48b6814d9e8bbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3df0718_adab9116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-17T21:55:32Z",
+      "side": 1,
+      "message": "use the android.Touch rule instead.",
+      "parentUuid": "f98a38f0_679822c8",
+      "revId": "43428b45addb23f0205f77919c48b6814d9e8bbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
