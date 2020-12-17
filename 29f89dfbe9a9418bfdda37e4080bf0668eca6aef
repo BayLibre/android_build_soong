@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6e8dd36_6baf0d94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-12-17T14:59:53Z",
+      "side": 1,
+      "message": "An explanation as to why this is needed, what benefit it gives would be useful. Otherwise, looks fine to me.",
+      "revId": "29f89dfbe9a9418bfdda37e4080bf0668eca6aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
