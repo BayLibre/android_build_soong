@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e295f60_52041cba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-18T02:44:24Z",
+      "side": 1,
+      "message": "Last time I made changes here I broke vendor snapshot, is there something I should do to test vendor snapshots?",
+      "revId": "df830be8a1a14732b661877619841bc2feb9ffc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
