@@ -16,6 +16,29 @@
       "message": "I broke out the namespace change per your request. PTAL",
       "revId": "e3118c75b890536865e6474d400af99781cbd617",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c013be73_3cbd053c",
+        "filename": "android/namespace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-18T01:01:25Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, the type assertion on nil is valid and will return ok \u003d false.",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 2
+      },
+      "revId": "e3118c75b890536865e6474d400af99781cbd617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
