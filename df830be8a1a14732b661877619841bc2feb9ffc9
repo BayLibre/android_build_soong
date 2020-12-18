@@ -16,6 +16,23 @@
       "message": "Last time I made changes here I broke vendor snapshot, is there something I should do to test vendor snapshots?",
       "revId": "df830be8a1a14732b661877619841bc2feb9ffc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14516fcd_162f2ea7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-18T06:51:20Z",
+      "side": 1,
+      "message": "Great change. Will you going to remove ndk_library as well? Or will they remain?",
+      "revId": "df830be8a1a14732b661877619841bc2feb9ffc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
