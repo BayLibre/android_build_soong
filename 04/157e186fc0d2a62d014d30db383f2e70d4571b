@@ -1,0 +1,12 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Verified+1: Patrice Arruda <patricearruda@google.com>
+Code-Review+2: Patrice Arruda <patricearruda@google.com>
+Autosubmit+1: Patrice Arruda <patricearruda@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Bypass-Presubmit+1: Patrice Arruda <patricearruda@google.com>
+Submitted-by: Patrice Arruda <patricearruda@google.com>
+Submitted-at: Fri, 18 Dec 2020 04:14:07 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1532500
+Project: platform/build/soong
+Branch: refs/heads/master
