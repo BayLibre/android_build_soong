@@ -34,6 +34,10 @@ type TidyProperties struct {
 
 	// Checks that should be treated as errors.
 	Tidy_checks_as_errors []string
+
+	// Extra configuration in the YAML/JSON format. Will be passed to the -config flag of clang-tidy binary.
+	// For more information on the configuration format see clang-tidy documentation.
+	Tidy_config *string
 }
 
 type tidyFeature struct {
@@ -133,6 +137,11 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	if len(tidy.Properties.Tidy_checks_as_errors) > 0 {
 		tidyChecksAsErrors := "-warnings-as-errors=" + strings.Join(esc(tidy.Properties.Tidy_checks_as_errors), ",")
 		flags.TidyFlags = append(flags.TidyFlags, tidyChecksAsErrors)
+	}
+
+	if tidy.Properties.Tidy_config != nil {
+		tidyConfig := "-config=" + *tidy.Properties.Tidy_config
+		flags.TidyFlags = append(flags.TidyFlags, tidyConfig)
 	}
 	return flags
 }
