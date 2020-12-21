@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb53a2d_00357247",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-21T17:28:56Z",
+      "side": 1,
+      "message": "Why is this \"might not\"? The commit message and the code below seem to indicate they don\u0027t get installed no matter what?",
+      "range": {
+        "startLine": 480,
+        "startChar": 79,
+        "endLine": 480,
+        "endChar": 88
+      },
+      "revId": "374f5cf60bea9a767620bc2e79467c39d2374e35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
