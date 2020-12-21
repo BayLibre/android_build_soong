@@ -22,6 +22,23 @@
       },
       "revId": "374f5cf60bea9a767620bc2e79467c39d2374e35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83577fd_688243bf",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-21T23:29:56Z",
+      "side": 1,
+      "message": "nit: This would be more readable and concise?\n\nfunc (mod *Module) installable(apexInfo android.ApexInfo) bool {\n  // Comment about apex variants being uninstallable.\n  if !apexInfo.IsForPlatform() {\n    return false\n  }\n  return mod.outputFile.Valid() \u0026\u0026 !mod.Properties.PreventInstall\n}",
+      "revId": "374f5cf60bea9a767620bc2e79467c39d2374e35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
