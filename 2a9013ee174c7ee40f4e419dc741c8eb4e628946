@@ -16,6 +16,23 @@
       "message": "TH failures are not related; they\u0027re due to http://b/176057803 and an infra flake. Could use an ORV though (or BCO if we\u0027re in a hurry).",
       "revId": "2a9013ee174c7ee40f4e419dc741c8eb4e628946",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c82c78_9ef40ac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-21T15:25:22Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "2a9013ee174c7ee40f4e419dc741c8eb4e628946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
