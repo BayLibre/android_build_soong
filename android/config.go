@@ -35,6 +35,8 @@ import (
 	"android/soong/android/soongconfig"
 )
 
+var Int = proptools.Int
+
 // Bool re-exports proptools.Bool for the android package.
 var Bool = proptools.Bool
 
@@ -1358,6 +1360,10 @@ func (c *deviceConfig) BoardKernelModuleInterfaceVersions() []string {
 
 func (c *deviceConfig) BoardMoveRecoveryResourcesToVendorBoot() bool {
 	return Bool(c.config.productVariables.BoardMoveRecoveryResourcesToVendorBoot)
+}
+
+func (c *deviceConfig) ShippingApiLevel() int {
+	return Int(c.config.productVariables.ShippingApiLevel)
 }
 
 // The ConfiguredJarList struct provides methods for handling a list of (apex, jar) pairs.
