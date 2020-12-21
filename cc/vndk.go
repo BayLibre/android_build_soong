@@ -410,10 +410,10 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 		return
 	}
 
-	lib, is_lib := m.linker.(*libraryDecorator)
-	prebuilt_lib, is_prebuilt_lib := m.linker.(*prebuiltLibraryLinker)
+	lib, isLib := m.linker.(*libraryDecorator)
+	prebuiltLib, isPrebuiltLib := m.linker.(*prebuiltLibraryLinker)
 
-	if (is_lib && lib.buildShared()) || (is_prebuilt_lib && prebuilt_lib.buildShared()) {
+	if (isLib && lib.buildShared()) || (isPrebuiltLib && prebuiltLib.buildShared()) {
 		if m.vndkdep != nil && m.vndkdep.isVndk() && !m.vndkdep.isVndkExt() {
 			processVndkLibrary(mctx, m)
 			return
