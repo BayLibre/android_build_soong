@@ -39,6 +39,30 @@
       },
       "revId": "479f5509582c90eb21e9eca56e789411c4f80b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0188a7_7a43f3aa",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3252,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-21T22:18:26Z",
+      "side": 1,
+      "message": "\u003e this could be a type switch\n\nUnfortunately, no: OptionalImplicitSdkLibrary() can return nil on line 3246 and then ProvidesUsesLib() can return non-nil on line 3250, while with the type switch if it falls into SdkLibraryComponentDependency case, it won\u0027t reach the other case. I added a comment.\n\n\u003e It\u0027s usually better to use a named interface\n\nDone.\n\n\u003e is there any reason the SdkLibraryComponentDependency can\u0027t export ProvidesUsesLib()\n\nCurrently SdkLibraryComponentDependency is for SDK libraries, and ProvidesUsesLib is for both SDK and non-SDK libraries (for SDK ones it is needed if the name of the library differs from the name of the module, and for non-SDK ones it is needed to make Soong handle it as if it was an SDK library).\n\nI think the two interfaces can be merged, but it is another bit of work, so I added TODO(b/132357300) for now.",
+      "parentUuid": "0c58f0d7_ee23027e",
+      "range": {
+        "startLine": 3244,
+        "startChar": 1,
+        "endLine": 3252,
+        "endChar": 2
+      },
+      "revId": "479f5509582c90eb21e9eca56e789411c4f80b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
