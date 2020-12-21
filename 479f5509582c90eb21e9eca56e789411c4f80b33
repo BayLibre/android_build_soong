@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "533837ad_5cbcc9fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-21T15:44:34Z",
+      "side": 1,
+      "message": "Failed boot tests are due to unrelated http://b/176057803",
+      "revId": "479f5509582c90eb21e9eca56e789411c4f80b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
