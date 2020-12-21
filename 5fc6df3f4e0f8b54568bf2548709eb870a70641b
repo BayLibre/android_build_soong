@@ -33,6 +33,24 @@
       "message": "Let\u0027s add a separate flag only for recovery snapshot. And then BOARD_VNDK_VERSION check should be replaced with the flag.",
       "revId": "5fc6df3f4e0f8b54568bf2548709eb870a70641b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f1a1a8_709a5ca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-21T16:34:55Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "01e114bf_7bec8851",
+      "revId": "5fc6df3f4e0f8b54568bf2548709eb870a70641b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

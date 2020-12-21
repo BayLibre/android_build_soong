@@ -307,6 +307,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ea9f5d_004b5526",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-21T16:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796acd12_cccfffbe",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aa6b376_08665ab3",
@@ -415,6 +439,30 @@
       "side": 1,
       "message": "We can just use \"m.binary()\" and \"m.object()\" for the getSnapshotMap function, can\u0027t we?",
       "parentUuid": "7173a36b_b2c22419",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 1
+      },
+      "revId": "4f99b486400ffa6af83e66efdfb6626a97d76dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b61d926_3619d4b3",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-21T16:34:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeffdd6a_b8fe71b3",
       "range": {
         "startLine": 204,
         "startChar": 0,
