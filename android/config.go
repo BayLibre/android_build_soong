@@ -24,6 +24,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -246,6 +247,7 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 			AAPTCharacteristics:               stringPtr("nosdcard"),
 			AAPTPrebuiltDPI:                   []string{"xhdpi", "xxhdpi"},
 			UncompressPrivAppDex:              boolPtr(true),
+			ShippingApiLevel:                  stringPtr("30"),
 		},
 
 		buildDir:     buildDir,
@@ -1358,6 +1360,14 @@ func (c *deviceConfig) BoardKernelModuleInterfaceVersions() []string {
 
 func (c *deviceConfig) BoardMoveRecoveryResourcesToVendorBoot() bool {
 	return Bool(c.config.productVariables.BoardMoveRecoveryResourcesToVendorBoot)
+}
+
+func (c *deviceConfig) ShippingApiLevel() ApiLevel {
+	if c.config.productVariables.ShippingApiLevel == nil {
+		return NoneApiLevel
+	}
+	apiLevel, _ := strconv.Atoi(*c.config.productVariables.ShippingApiLevel)
+	return uncheckedFinalApiLevel(apiLevel)
 }
 
 // The ConfiguredJarList struct provides methods for handling a list of (apex, jar) pairs.
