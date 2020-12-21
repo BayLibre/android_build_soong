@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8cc8244_82833a63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-21T11:14:50Z",
+      "side": 1,
+      "message": "Can you point at a CL that made this change?",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 9,
+        "endChar": 60
+      },
+      "revId": "4b97a5661584e6db7942146e6dd0f343f4c6108e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
