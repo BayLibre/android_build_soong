@@ -70,6 +70,30 @@
       },
       "revId": "ff8bb53cd4289829ffbfcc5320ed1f272e72ac63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e120398_c9481fc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-21T12:56:51Z",
+      "side": 1,
+      "message": "All three cases (fail early / fail late / don\u0027t fail) are covered by unit tests for CLC, which do not use AddContextForSdk, but I plan to migrate them to use this function in a follow-up CL (as well as remove the fail early mode which remains only in the unit tests).\n\nWe do have integration Soong tests for CLC (TestUsesLibraries in java). Currently they test only the case when validateClassLoaderContext doesn\u0027t fail. I can tweak them into failing by adding a \u003cuses-library\u003e dependency on a library with unknown path (and observe the expected error), but converting that into a test requires more work (abstracting part of GenerateDexpreoptRule into a helper that returns errors instead of reporting them).",
+      "parentUuid": "d65297d5_7ea5b0a4",
+      "range": {
+        "startLine": 16,
+        "startChar": 62,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "ff8bb53cd4289829ffbfcc5320ed1f272e72ac63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93937955_44f94f35",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-21T12:56:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cbc4502_b4b2c8ed",
+      "range": {
+        "startLine": 339,
+        "startChar": 31,
+        "endLine": 339,
+        "endChar": 42
+      },
+      "revId": "a4370a1943ca00f680a51e442be0611258d4e1c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f80f1181_65aad114",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-17T18:30:51Z",
       "side": 1,
       "message": "The comment is a little confusing. Presumably, in some cases the CLC will never be used by anything other than manifest_fixer and so the missing paths are not a problem for that scenario?\n\nIf so then that should be made clear in the comment. If not then I am misunderstanding something more fundamental.",
+      "range": {
+        "startLine": 340,
+        "startChar": 23,
+        "endLine": 340,
+        "endChar": 29
+      },
+      "revId": "a4370a1943ca00f680a51e442be0611258d4e1c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3548442c_899d7957",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-21T12:56:51Z",
+      "side": 1,
+      "message": "Your understanding is correct, I clarified the comment.",
+      "parentUuid": "f80f1181_65aad114",
       "range": {
         "startLine": 340,
         "startChar": 23,
