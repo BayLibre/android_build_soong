@@ -52,6 +52,24 @@
       "parentUuid": "eaa1346e_f9642f45",
       "revId": "0af20effc1d52bce16c40b04e6e9a5881e03c65e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75218ffe_c2fc5140",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-21T10:29:50Z",
+      "side": 1,
+      "message": "Thanks for the history! I think we\u0027re in a better place now than before, with visibility of core-oj, core-libart etc restricted, more levels of api available, and generally more oversight than before. I think merging this is ok.",
+      "parentUuid": "8f79ceb1_3276c39f",
+      "revId": "0af20effc1d52bce16c40b04e6e9a5881e03c65e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
