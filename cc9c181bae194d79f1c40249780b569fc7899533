@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a609ae68_0b88f01f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-21T21:20:04Z",
+      "side": 1,
+      "message": "Hi Dash,\n\nThis change includes the license kinds and conditions that the large-scale-change for Android will use. I added license-escalation so someone from OSPO could take a look and comment/approve.\n\nI am hoping to submit this change as soon as Jan 6 or hopefully no later than Jan 8.\n\nThanks!\nBob\n",
+      "revId": "cc9c181bae194d79f1c40249780b569fc7899533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
