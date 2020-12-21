@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7df4654d_f7494e61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-21T18:40:17Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t appear to fix the whole problem, but does add some missing @RecentlyNullable annotations...",
+      "revId": "0de6f14676fc9a8eb827c22c5153f2f01500d584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
