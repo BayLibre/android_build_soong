@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a096fcd_de455800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T21:51:47Z",
+      "side": 1,
+      "message": "Hmm, weird. I thought I deleted this comment as I later realized this change doesn\u0027t affect the existing logic, but I apparently didn\u0027t.",
+      "parentUuid": "284413d4_4580d472",
+      "revId": "1cd29259f0037a6bb6b6cf86b0cb174dadcb6a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2cf9ed9_3fa974bd",
