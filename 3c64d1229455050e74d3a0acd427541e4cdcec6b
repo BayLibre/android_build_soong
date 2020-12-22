@@ -50,6 +50,23 @@
       "message": "You\u0027ll probably want to sort installMap before doing this to avoid churns. Golang doesn\u0027t guarantee map traversal order consistency.",
       "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e387c031_ce5ff4ed",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T14:39:48Z",
+      "side": 1,
+      "message": "At this point, installs is no longer a map, so calling it a map can be misleading and confusing.\n\nSpeaking of which, given that you\u0027re really using the map as a set, please consider renaming installMap installSet. Just a nit though.",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
