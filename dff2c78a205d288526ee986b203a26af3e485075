@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8b4d8a2_3c6c5279",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-22T15:55:01Z",
+      "side": 1,
+      "message": "These are the names of all the sdk libraries used in tests, so we create finalized API artifacts for them all.\n\nThey could arguably be deduped, but I feel like it would be clearer to do that separately (if someone thought that was worth it)",
+      "parentUuid": "a66f95cd_3351be72",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "dff2c78a205d288526ee986b203a26af3e485075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e1c8f5c_f406f4f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-22T15:18:19Z",
       "side": 1,
       "message": "I don\u0027t see this in any of the files you cleaned up. Why is it necessary now?",
+      "range": {
+        "startLine": 87,
+        "startChar": 68,
+        "endLine": 87,
+        "endChar": 83
+      },
+      "revId": "dff2c78a205d288526ee986b203a26af3e485075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97921423_6286b132",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-22T15:55:01Z",
+      "side": 1,
+      "message": "This list are all the flavors of apis that exist. I think there was a test that required it (may be called system_server in the bp, but will resolve to this dir), though either way I think it\u0027s worth having it here so that a test could enable system_server apis should it want to",
+      "parentUuid": "8e1c8f5c_f406f4f8",
       "range": {
         "startLine": 87,
         "startChar": 68,
