@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a66f95cd_3351be72",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-22T15:18:19Z",
+      "side": 1,
+      "message": "Lots of new nonsense names here. Why?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "dff2c78a205d288526ee986b203a26af3e485075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e1c8f5c_f406f4f8",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-22T15:18:19Z",
+      "side": 1,
+      "message": "I don\u0027t see this in any of the files you cleaned up. Why is it necessary now?",
+      "range": {
+        "startLine": 87,
+        "startChar": 68,
+        "endLine": 87,
+        "endChar": 83
+      },
+      "revId": "dff2c78a205d288526ee986b203a26af3e485075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
