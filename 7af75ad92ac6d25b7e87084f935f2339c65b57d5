@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc5cb59a_5ac0d211",
+        "filename": "android/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-22T22:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a0fdd2c_1740abdc",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 24
+      },
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe10cc3b_9aef37fe",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-22T21:44:44Z",
       "side": 1,
       "message": "This is unnecessary",
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f515500_62d94f34",
+        "filename": "android/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-22T22:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe10cc3b_9aef37fe",
       "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0626615_232a0a91",
+        "filename": "android/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-22T22:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc9ce0f_b7fef430",
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09d2a00a_0cafadbd",
@@ -71,6 +131,30 @@
       "writtenOn": "2020-12-22T21:44:44Z",
       "side": 1,
       "message": "suggest SkipApexAllowedDependenciesCheck",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 17
+      },
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54914169_501323a0",
+        "filename": "android/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-22T22:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d2a00a_0cafadbd",
       "range": {
         "startLine": 251,
         "startChar": 1,
@@ -104,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de85af6_2d4db5de",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-22T22:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44c4c572_8449fba8",
+      "range": {
+        "startLine": 1036,
+        "startChar": 64,
+        "endLine": 1036,
+        "endChar": 96
+      },
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f67e2e1a_44e82fca",
@@ -121,6 +229,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b405fee_c5dc1dec",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-22T22:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f67e2e1a_44e82fca",
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2e7f93b_c92189a5",
@@ -134,6 +260,24 @@
       "writtenOn": "2020-12-22T21:44:44Z",
       "side": 1,
       "message": "Wrap the struct contents to one per line.",
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "413bc80c_97cfe7aa",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-22T22:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2e7f93b_c92189a5",
       "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
