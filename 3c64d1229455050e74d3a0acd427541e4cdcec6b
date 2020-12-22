@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb62122_80de0a90",
+        "filename": "android/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T17:26:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a506b15_b9e39f82",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eb57b35_1183906b",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-22T16:05:10Z",
       "side": 1,
       "message": "Note: This is the logic branch that adds .com.android.adbd and not always .com.android.art to dependency module names.",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df2ddcb_7466e517",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T17:26:25Z",
+      "side": 1,
+      "message": "Have put into method to reuse for writeRequiredModules and have removed hackish logic from Make script.",
+      "parentUuid": "6eb57b35_1183906b",
       "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7900bfe_cdac79f2",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T17:26:25Z",
+      "side": 1,
+      "message": "Ack\n\nThe order doesn\u0027t matter.",
+      "parentUuid": "bf8a6e4c_8374a5a3",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e387c031_ce5ff4ed",
@@ -82,6 +136,24 @@
       "writtenOn": "2020-12-22T14:39:48Z",
       "side": 1,
       "message": "At this point, installs is no longer a map, so calling it a map can be misleading and confusing.\n\nSpeaking of which, given that you\u0027re really using the map as a set, please consider renaming installMap installSet. Just a nit though.",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4674e801_9508ba88",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T17:26:25Z",
+      "side": 1,
+      "message": "I called it installMap because it is a set of mappings. I\u0027ve clarified the name.",
+      "parentUuid": "e387c031_ce5ff4ed",
       "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
