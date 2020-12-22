@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a506b15_b9e39f82",
+        "filename": "android/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T02:31:13Z",
+      "side": 1,
+      "message": "Can you add a short comment on where this should be used?",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8a6e4c_8374a5a3",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T02:31:13Z",
+      "side": 1,
+      "message": "You\u0027ll probably want to sort installMap before doing this to avoid churns. Golang doesn\u0027t guarantee map traversal order consistency.",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
