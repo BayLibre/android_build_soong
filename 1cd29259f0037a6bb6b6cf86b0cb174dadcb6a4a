@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "284413d4_4580d472",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T19:42:41Z",
+      "side": 1,
+      "message": "I was hoping to submit these changes on Jan 6, and jiyong@ is OOO until Jan 7.\n\nWhen these changes first get submitted, they will have no affect on the notice file for mainline modules with merged notice files. The new code sets LOCAL_NOTICE_FILE, but the existing code then overwrites that setting it to the merged notice file at the original line 405/new line 421.",
+      "parentUuid": "8c6dfeb7_087d74ca",
+      "revId": "1cd29259f0037a6bb6b6cf86b0cb174dadcb6a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2cf9ed9_3fa974bd",
@@ -48,6 +66,24 @@
       "writtenOn": "2020-12-22T18:09:23Z",
       "side": 1,
       "message": "Please add a comment about what this func is for.",
+      "revId": "1cd29259f0037a6bb6b6cf86b0cb174dadcb6a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd076844_e60e4f7d",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T19:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2cf9ed9_3fa974bd",
       "revId": "1cd29259f0037a6bb6b6cf86b0cb174dadcb6a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
