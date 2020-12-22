@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2d95252_395d6b87",
+        "filename": "android/licenses.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T21:30:31Z",
+      "side": 1,
+      "message": "How does it look now?",
+      "parentUuid": "401d8fb8_9ad88497",
+      "revId": "a6b299f20acff2717baf6df453af9ee917ac468a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c1eab2b_91e818f2",
         "filename": "android/module.go",
         "patchSetId": 19
@@ -48,6 +66,30 @@
       "writtenOn": "2020-12-22T01:24:39Z",
       "side": 1,
       "message": "This needs to be changed?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 58,
+        "endLine": 1071,
+        "endChar": 93
+      },
+      "revId": "a6b299f20acff2717baf6df453af9ee917ac468a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df8b42ff_0cd52c2b",
+        "filename": "android/module.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T21:30:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1eab2b_91e818f2",
       "range": {
         "startLine": 1071,
         "startChar": 58,
