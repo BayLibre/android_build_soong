@@ -16,6 +16,40 @@
       "message": "PTAL",
       "revId": "1cd29259f0037a6bb6b6cf86b0cb174dadcb6a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6dfeb7_087d74ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T18:09:23Z",
+      "side": 1,
+      "message": "Adding jiyong@ for the apex/androidmk.go logic change.",
+      "revId": "1cd29259f0037a6bb6b6cf86b0cb174dadcb6a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cf9ed9_3fa974bd",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T18:09:23Z",
+      "side": 1,
+      "message": "Please add a comment about what this func is for.",
+      "revId": "1cd29259f0037a6bb6b6cf86b0cb174dadcb6a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

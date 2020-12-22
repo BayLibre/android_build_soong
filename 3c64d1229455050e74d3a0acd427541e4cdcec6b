@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0017f132_9617dd27",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T18:09:23Z",
+      "side": 1,
+      "message": "It matters. The final Android.mk output can randomly change because of this, which will trigger reprocessing the entire .mk file set and potentially even rebuilding the related outputs.",
+      "parentUuid": "e7900bfe_cdac79f2",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e387c031_ce5ff4ed",
         "filename": "apex/androidmk.go",
         "patchSetId": 20
