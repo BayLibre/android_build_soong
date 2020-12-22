@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e82c0eb8_52b345fa",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T23:38:00Z",
+      "side": 1,
+      "message": "I don\u0027t know of anything that would enforce this.  What would happen if diag mode was left enabled?  Would it ship the sanitizer runtime in an apex?",
+      "range": {
+        "startLine": 1051,
+        "startChar": 221,
+        "endLine": 1051,
+        "endChar": 273
+      },
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ebb7425_69bb7f09",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T23:38:00Z",
+      "side": 1,
+      "message": "Wrap this at 100 characters.",
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d47144_d7872d6e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T23:38:00Z",
+      "side": 1,
+      "message": "Add a blank line before this line and gofmt will make the spacing more reasonable.",
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
