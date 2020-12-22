@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b965a55e_77c61f44",
+        "filename": "android/licenses.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T22:11:15Z",
+      "side": 1,
+      "message": "LGTM :)",
+      "parentUuid": "c2d95252_395d6b87",
+      "revId": "a6b299f20acff2717baf6df453af9ee917ac468a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c1eab2b_91e818f2",
