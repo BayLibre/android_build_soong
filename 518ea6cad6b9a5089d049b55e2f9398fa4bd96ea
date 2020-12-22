@@ -16,6 +16,24 @@
       "message": "I take it the intention is to do this after fixes in other places.",
       "revId": "518ea6cad6b9a5089d049b55e2f9398fa4bd96ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f1a9ca_8b3b9dff",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-22T16:04:33Z",
+      "side": 1,
+      "message": "Yeah, I decided to decouple it from the topic as I need a set of fixes in 3 different branches",
+      "parentUuid": "35a7f7dd_995de1e0",
+      "revId": "518ea6cad6b9a5089d049b55e2f9398fa4bd96ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
