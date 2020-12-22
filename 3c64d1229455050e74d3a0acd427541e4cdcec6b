@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6eb57b35_1183906b",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-22T16:05:10Z",
+      "side": 1,
+      "message": "Note: This is the logic branch that adds .com.android.adbd and not always .com.android.art to dependency module names.",
+      "revId": "3c64d1229455050e74d3a0acd427541e4cdcec6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf8a6e4c_8374a5a3",
         "filename": "apex/androidmk.go",
         "patchSetId": 20
