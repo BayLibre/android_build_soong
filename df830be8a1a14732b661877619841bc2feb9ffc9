@@ -87,6 +87,24 @@
       "parentUuid": "ab0a349d_5b7ba7e5",
       "revId": "df830be8a1a14732b661877619841bc2feb9ffc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99455818_84f8364a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T01:58:42Z",
+      "side": 1,
+      "message": "Found some extra contents in the vendor-snapshot.zip, fixed now.",
+      "parentUuid": "37c46355_f2430ddb",
+      "revId": "df830be8a1a14732b661877619841bc2feb9ffc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
