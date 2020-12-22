@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0fdd2c_1740abdc",
+        "filename": "android/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T21:44:44Z",
+      "side": 1,
+      "message": "suggest SkipApexAllowedDependenciesCheck (it can have the same name as the method)",
+      "range": {
+        "startLine": 247,
+        "startChar": 5,
+        "endLine": 247,
+        "endChar": 24
+      },
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe10cc3b_9aef37fe",
+        "filename": "android/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T21:44:44Z",
+      "side": 1,
+      "message": "This is unnecessary",
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc9ce0f_b7fef430",
+        "filename": "android/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T21:44:44Z",
+      "side": 1,
+      "message": "This isn\u0027t accurate, this isn\u0027t just a marker method, the return value is used.\n\nCan you add more comments here on what this changes when it returns true?",
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09d2a00a_0cafadbd",
+        "filename": "android/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T21:44:44Z",
+      "side": 1,
+      "message": "suggest SkipApexAllowedDependenciesCheck",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 17
+      },
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c4c572_8449fba8",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T21:44:44Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, the zero value is false.",
+      "range": {
+        "startLine": 1036,
+        "startChar": 64,
+        "endLine": 1036,
+        "endChar": 96
+      },
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f67e2e1a_44e82fca",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T21:44:44Z",
+      "side": 1,
+      "message": "Can you add more comments on which check is disabled, why it is disabled, and why it is specific to having sanitizer diags enabled?",
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e7f93b_c92189a5",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-22T21:44:44Z",
+      "side": 1,
+      "message": "Wrap the struct contents to one per line.",
+      "revId": "7af75ad92ac6d25b7e87084f935f2339c65b57d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
