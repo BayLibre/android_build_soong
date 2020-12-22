@@ -16,6 +16,190 @@
       "message": "Thanks for the review! PTAL.",
       "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a9f541_3b8d007e",
+        "filename": "android/config.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-22T04:16:58Z",
+      "side": 1,
+      "message": "StringDefault(..., \"current\")?",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1058,
+        "endChar": 1
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6da8169_37be52fa",
+        "filename": "cc/cc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-22T04:16:58Z",
+      "side": 1,
+      "message": "nit; I think this logic is better to be somewhere in shouldCollectHeadersForSnapshot ~ isSnapshotAware functions.",
+      "range": {
+        "startLine": 1580,
+        "startChar": 0,
+        "endLine": 1581,
+        "endChar": 60
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d27b2e_718381db",
+        "filename": "cc/cc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-22T04:16:58Z",
+      "side": 1,
+      "message": "Like rewriteVendorLibs, we will have to check RecoverySnapshotVersion",
+      "range": {
+        "startLine": 1844,
+        "startChar": 0,
+        "endLine": 1849,
+        "endChar": 6
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2224978f_43cebe0e",
+        "filename": "cc/cc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1906,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-22T04:16:58Z",
+      "side": 1,
+      "message": "Like above, we will have to check RecoverySnapshotVersion here",
+      "range": {
+        "startLine": 1900,
+        "startChar": 0,
+        "endLine": 1906,
+        "endChar": 3
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "978e1dda_b9d23565",
+        "filename": "cc/genrule.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-22T04:16:58Z",
+      "side": 1,
+      "message": "This is only for vendor. Recovery snapshot mutator has to do something like this:\n\n    if ctx.DeviceConfig().RecoverySnapshotVersion() !\u003d \"current\" \u0026\u0026 ...",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d65a1f_b0adca23",
+        "filename": "cc/image.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-22T04:16:58Z",
+      "side": 1,
+      "message": "this is only for vendor. Recovery needs to check recovery snapshot version",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 73
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e555576b_98006f00",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-22T04:16:58Z",
+      "side": 1,
+      "message": "This is only for vendor. Recovery snapshot mutator has to do something like this:\n\n    if ctx.DeviceConfig().RecoverySnapshotVersion() \u003d\u003d \"current\" {\n        return\n    }",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 2
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb6c1fa_ec9236a8",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-22T04:16:58Z",
+      "side": 1,
+      "message": "This is only for vendor. Recovery snapshot mutator has to do something like this:\n\n    if ctx.DeviceConfig().RecoverySnapshotVersion() \u003d\u003d \"current\" {\n        return\n    }",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 992,
+        "endChar": 0
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
