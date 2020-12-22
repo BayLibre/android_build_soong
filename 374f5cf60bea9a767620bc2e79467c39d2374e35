@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c181ef5b_fda7c412",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-22T06:10:25Z",
+      "side": 1,
+      "message": "I have no idea why I used the term. Fixed.",
+      "parentUuid": "dfb53a2d_00357247",
+      "range": {
+        "startLine": 480,
+        "startChar": 79,
+        "endLine": 480,
+        "endChar": 88
+      },
+      "revId": "374f5cf60bea9a767620bc2e79467c39d2374e35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b83577fd_688243bf",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-21T23:29:56Z",
       "side": 1,
       "message": "nit: This would be more readable and concise?\n\nfunc (mod *Module) installable(apexInfo android.ApexInfo) bool {\n  // Comment about apex variants being uninstallable.\n  if !apexInfo.IsForPlatform() {\n    return false\n  }\n  return mod.outputFile.Valid() \u0026\u0026 !mod.Properties.PreventInstall\n}",
+      "revId": "374f5cf60bea9a767620bc2e79467c39d2374e35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "832a0e8a_37645000",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-22T06:10:25Z",
+      "side": 1,
+      "message": "yep. that\u0027s better. thanks. done.",
+      "parentUuid": "b83577fd_688243bf",
       "revId": "374f5cf60bea9a767620bc2e79467c39d2374e35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
