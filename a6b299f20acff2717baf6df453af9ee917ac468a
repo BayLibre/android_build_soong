@@ -16,6 +16,46 @@
       "message": "PTAL",
       "revId": "a6b299f20acff2717baf6df453af9ee917ac468a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401d8fb8_9ad88497",
+        "filename": "android/licenses.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T01:24:39Z",
+      "side": 1,
+      "message": "Please add a file-level comment to briefly describe what this file offers, partly because it serves two different kinds of functionalities.\n\nOverall, I feel like this file can use a lot more comments. For example, there are multiple getLicenses funcs, and it\u0027s really hard to figure out what each does and whether they override one another. What is applicableLicensesProperty? Where is getName() used? (I don\u0027t think it\u0027s used anywhere?) Probably almost every func needs a comment, even very brief ones, so that readers don\u0027t have to jump between files to understand what they do.\n\nAlso, please consider rearranging functions and structs so that the mutator-related ones and the module property ones are grouped together respectively.",
+      "revId": "a6b299f20acff2717baf6df453af9ee917ac468a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c1eab2b_91e818f2",
+        "filename": "android/module.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2020-12-22T01:24:39Z",
+      "side": 1,
+      "message": "This needs to be changed?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 58,
+        "endLine": 1071,
+        "endChar": 93
+      },
+      "revId": "a6b299f20acff2717baf6df453af9ee917ac468a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
