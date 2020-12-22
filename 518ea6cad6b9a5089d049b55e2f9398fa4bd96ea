@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a7f7dd_995de1e0",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1359,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-12-22T15:55:55Z",
+      "side": 1,
+      "message": "I take it the intention is to do this after fixes in other places.",
+      "revId": "518ea6cad6b9a5089d049b55e2f9398fa4bd96ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
