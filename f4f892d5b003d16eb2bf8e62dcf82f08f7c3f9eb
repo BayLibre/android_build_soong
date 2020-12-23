@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e58bab_7d51e31c",
+        "filename": "android/config.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-23T16:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3b1670c_572efa4a",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1058,
+        "endChar": 1
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6da8169_37be52fa",
@@ -207,6 +231,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a878f808_527e3398",
+        "filename": "cc/cc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-23T16:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7585fc36_72e4b806",
+      "range": {
+        "startLine": 1844,
+        "startChar": 0,
+        "endLine": 1849,
+        "endChar": 6
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2224978f_43cebe0e",
@@ -244,6 +292,30 @@
       "side": 1,
       "message": "Same comment as before.",
       "parentUuid": "2224978f_43cebe0e",
+      "range": {
+        "startLine": 1900,
+        "startChar": 0,
+        "endLine": 1906,
+        "endChar": 3
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac3f20a1_4ad73fdd",
+        "filename": "cc/cc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1906,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-23T16:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bfb7dff_7e932289",
       "range": {
         "startLine": 1900,
         "startChar": 0,
