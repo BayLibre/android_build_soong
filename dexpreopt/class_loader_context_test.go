@@ -78,7 +78,7 @@ func TestCLC(t *testing.T) {
 	m.AddContextForSdk(ctx, AnySdkVersion, "d", buildPath(ctx, "d"), installPath(ctx, "d"), m2)
 	// When the same library is both in conditional and unconditional context, it should be removed
 	// from conditional context.
-	m.AddContextForSdk(ctx, 42, "f", buildPath(ctx, "f"), installPath(ctx, "f"), nil)
+	m.AddContextForSdk(ctx, 29, "f", buildPath(ctx, "f"), installPath(ctx, "f"), nil)
 	m.AddContextForSdk(ctx, AnySdkVersion, "f", buildPath(ctx, "f"), installPath(ctx, "f"), nil)
 
 	// Merge map with implicit root library that is among toplevel contexts => does nothing.
@@ -203,7 +203,7 @@ func TestCLCMaybeAdd(t *testing.T) {
 func TestCLCNestedConditional(t *testing.T) {
 	ctx := testContext()
 	m1 := make(ClassLoaderContextMap)
-	m1.AddContextForSdk(ctx, 42, "a", buildPath(ctx, "a"), installPath(ctx, "a"), nil)
+	m1.AddContextForSdk(ctx, 29, "a", buildPath(ctx, "a"), installPath(ctx, "a"), nil)
 	m := make(ClassLoaderContextMap)
 	err := m.addContext(ctx, AnySdkVersion, "b", buildPath(ctx, "b"), installPath(ctx, "b"), true, m1)
 	checkError(t, err, "nested class loader context shouldn't have conditional part")

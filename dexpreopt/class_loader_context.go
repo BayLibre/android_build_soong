@@ -238,8 +238,8 @@ var OptionalCompatUsesLibs30 = []string{
 	AndroidTestMock,
 }
 var CompatUsesLibs29 = []string{
-	AndroidHidlBase,
 	AndroidHidlManager,
+	AndroidHidlBase,
 }
 var OptionalCompatUsesLibs = append(android.CopyOf(OptionalCompatUsesLibs28), OptionalCompatUsesLibs30...)
 var CompatUsesLibs = android.CopyOf(CompatUsesLibs29)
@@ -251,6 +251,16 @@ const UnknownInstallLibraryPath = "error"
 // arguments passed to construct_context.py (high value means that the unconditional context goes
 // last). We use the converntional "current" SDK level (10000), but any big number would do as well.
 const AnySdkVersion int = android.FutureApiLevelInt
+
+// CLC for different SDK versions should come in specific order that agrees with the order in which
+// PackageManager adds compatibility libraries. It is not ascending or descending, so it is
+// hardcoded here. There are Soong tests to ensure that someone doesn't change this by accident, but
+// there is no way to guard against changes in the PackageManager, except for grepping logcat on the
+// first boot for absence of the following messages:
+//
+//   `logcat | grep -E 'ClassLoaderContext [a-z ]+ mismatch`
+//
+var SdkVersionList = []int{30, 29, 28, AnySdkVersion}
 
 // Add class loader context for the given library to the map entry for the given SDK version.
 func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleInstallPathContext, sdkVer int, lib string,
@@ -458,11 +468,33 @@ func validateClassLoaderContextRec(sdkVer int, clcs []*ClassLoaderContext) (bool
 	return true, nil
 }
 
+// Check that hard-coded SDK version list is a superset of CLC map keys.
+func checkSdkVersionList(clcMap ClassLoaderContextMap) {
+	if len(SdkVersionList) < len(clcMap) {
+		panic("extra SDK versions in class loader context map")
+	}
+	// don't bother with diffing sorted lists, as the lists are very short and O(n^2) is fine
+	for ver, _ := range clcMap {
+		found := false
+		for _, sdkVer := range SdkVersionList {
+			if ver == sdkVer {
+				found = true
+				break
+			}
+		}
+		if !found {
+			panic(fmt.Sprintf("unexpected SDK version in class loader context: %d", ver))
+		}
+	}
+}
+
 // Return the class loader context as a string, and a slice of build paths for all dependencies.
 // Perform a depth-first preorder traversal of the class loader context tree for each SDK version.
 // Return the resulting string and a slice of on-host build paths to all library dependencies.
 func ComputeClassLoaderContext(clcMap ClassLoaderContextMap) (clcStr string, paths android.Paths) {
-	for _, sdkVer := range android.SortedIntKeys(clcMap) { // determinisitc traversal order
+	// Traverse CLC map in deterministic hard-coded order that agrees with PackageManager.
+	checkSdkVersionList(clcMap)
+	for _, sdkVer := range SdkVersionList {
 		sdkVerStr := fmt.Sprintf("%d", sdkVer)
 		if sdkVer == AnySdkVersion {
 			sdkVerStr = "any" // a special keyword that means any SDK version
