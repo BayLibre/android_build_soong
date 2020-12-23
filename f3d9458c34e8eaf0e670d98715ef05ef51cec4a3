@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2117e21_a1975791",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-23T00:20:07Z",
+      "side": 1,
+      "message": "PTAL\n\nAfter running a build, I fixed a couple little breakages.",
+      "revId": "f3d9458c34e8eaf0e670d98715ef05ef51cec4a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
