@@ -41,6 +41,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ffb6df_dc786142",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-23T13:05:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ebb7425_69bb7f09",
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9665432_b2fce1e4",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-23T13:05:45Z",
+      "side": 1,
+      "message": "Done. Removed the additional comment since there isn\u0027t anything that enforcing it and sanitizer dep would end up shipping.",
+      "parentUuid": "e82c0eb8_52b345fa",
+      "range": {
+        "startLine": 1051,
+        "startChar": 221,
+        "endLine": 1051,
+        "endChar": 273
+      },
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55d47144_d7872d6e",
@@ -54,6 +96,24 @@
       "writtenOn": "2020-12-22T23:38:00Z",
       "side": 1,
       "message": "Add a blank line before this line and gofmt will make the spacing more reasonable.",
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9cfe531_26b0f9a6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-23T13:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d47144_d7872d6e",
       "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
