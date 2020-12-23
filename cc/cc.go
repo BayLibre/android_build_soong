@@ -1080,7 +1080,9 @@ func (c *Module) IsVndkPrivate() bool {
 	// Returns true for LLNDK-private, VNDK-SP-private, and VNDK-core-private.
 	library, _ := c.library.(*libraryDecorator)
 	return library != nil && !Bool(library.Properties.Llndk.Vendor_available) &&
-		!Bool(c.VendorProperties.Vendor_available) && !c.IsVndkExt()
+		((c.VendorProperties.Vendor_available != nil && !Bool(c.VendorProperties.Vendor_available)) ||
+			(c.vndkdep != nil && Bool(c.vndkdep.Properties.Vndk.Private))) &&
+		!c.IsVndkExt()
 }
 
 func (c *Module) IsVndk() bool {
