@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3b1670c_572efa4a",
+        "filename": "android/config.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-23T07:34:22Z",
+      "side": 1,
+      "message": "I\u0027d like to formally decide what values can be RECOVERY_SNAPSHOT_VERSION. What I\u0027m thinking is:\n\n1) a value indicating that recovery snapshot isn\u0027t used and can be captured (\"current\" or \"\" (empty))\n2) a numeric value indicating that the specified version of recovery snapshot will be used\n\nIf we allow both \"current\" and empty, what\u0027s the difference between them?",
+      "parentUuid": "d8381587_15cf4c29",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1058,
+        "endChar": 1
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6da8169_37be52fa",
         "filename": "cc/cc.go",
         "patchSetId": 17
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Not sure what you mean for recovery. For rewriteVendorLibs, the code does:\n\nif c.VndkVersion() !\u003d actx.DeviceConfig().VndkVersion()\n\nHowever, there\u0027s no RecoverySnapshotVersion for modules, do we need to add that property, or do you mean something else?",
       "parentUuid": "86d27b2e_718381db",
+      "range": {
+        "startLine": 1844,
+        "startChar": 0,
+        "endLine": 1849,
+        "endChar": 6
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7585fc36_72e4b806",
+        "filename": "cc/cc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1849,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-12-23T07:34:22Z",
+      "side": 1,
+      "message": "We don\u0027t want to use recovery snapshot if RecoverySnapshotVersion is \"current\" or \"\" (empty), right?",
+      "parentUuid": "acfa04c0_6a55a335",
       "range": {
         "startLine": 1844,
         "startChar": 0,
