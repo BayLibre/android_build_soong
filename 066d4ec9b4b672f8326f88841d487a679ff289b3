@@ -16,6 +16,23 @@
       "message": "PTAL\n\nAfter running a build, I fixed a breakage.",
       "revId": "066d4ec9b4b672f8326f88841d487a679ff289b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "049a3cd2_ba8547dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2020-12-23T22:40:08Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "066d4ec9b4b672f8326f88841d487a679ff289b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
