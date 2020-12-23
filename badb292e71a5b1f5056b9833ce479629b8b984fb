@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaee4f37_52276286",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-23T17:35:46Z",
+      "side": 1,
+      "message": "Can you add a godoc comment for this method?",
+      "revId": "badb292e71a5b1f5056b9833ce479629b8b984fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
