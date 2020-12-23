@@ -335,6 +335,24 @@
       "parentUuid": "a4d0f6bf_358ce80b",
       "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df448aaf_a7df867e",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-23T09:33:52Z",
+      "side": 1,
+      "message": "Uploaded a patch aosp/1534827 for b/175768895.",
+      "parentUuid": "eef0f3b7_f35ac4b3",
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
