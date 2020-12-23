@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "339d21bb_f1713d38",
+        "filename": "android/config.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-23T22:39:56Z",
+      "side": 1,
+      "message": "Yeah with the old code presubmit passes.\n\nhttps://android-build.googleplex.com/builds/treetop/android-review/1526263?ref\u003dCOMMENT\u0026revision\u003d24\u0026revisionAttempt\u003d1",
+      "parentUuid": "f52916fa_7a7b6d01",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1058,
+        "endChar": 1
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6da8169_37be52fa",
