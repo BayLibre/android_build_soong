@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa900c82_d2887bc6",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-23T07:18:43Z",
+      "side": 1,
+      "message": "Let me solve this with b/175768895 as this is not a new bug that is caused by this CL.",
+      "parentUuid": "23e6869d_c16dc589",
+      "range": {
+        "startLine": 359,
+        "startChar": 43,
+        "endLine": 360,
+        "endChar": 32
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e88e74_c68ae703",
@@ -112,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04af8fa_05369936",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-23T07:18:43Z",
+      "side": 1,
+      "message": "Let me solve this with b/175768895 as this is not a new bug that is caused by this CL.",
+      "parentUuid": "387be925_6cd4ec22",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 20
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e38d29a5_ddca1a77",
@@ -143,6 +191,24 @@
       "side": 1,
       "message": "VNDK installs only one file and shares that file for both vendor and product modules on runtime. We may not define different versions of a VNDK lib for each partition.\nLet me update the details to the comment.",
       "parentUuid": "e38d29a5_ddca1a77",
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08e1387_b6beb334",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-23T07:18:43Z",
+      "side": 1,
+      "message": "Comment updated with more details.",
+      "parentUuid": "5dc09cb5_986bc9b6",
       "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -194,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7214d4c2_501abdfd",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-23T07:18:43Z",
+      "side": 1,
+      "message": "Done by visiting properties using reflect.",
+      "parentUuid": "c5e6d6b0_54121f89",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "137691b9_189059dc",
@@ -225,6 +315,24 @@
       "side": 1,
       "message": "Filed b/175768895 to discuss it.",
       "parentUuid": "137691b9_189059dc",
+      "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef0f3b7_f35ac4b3",
+        "filename": "cc/image.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-23T07:18:43Z",
+      "side": 1,
+      "message": "Let me solve this with b/175768895 as this is not a new bug that is caused by this CL.",
+      "parentUuid": "a4d0f6bf_358ce80b",
       "revId": "78bea9f955ea2ebbfb1b5d79799915b542ba5cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
