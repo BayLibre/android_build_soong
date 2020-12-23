@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e307ce_204c2bcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-23T19:08:59Z",
+      "side": 1,
+      "message": "Overriding Open-Source-Licensing as Lint is confused in this case.",
+      "revId": "c9f2b9494d03e64aa54c2d3d196b8f45ef5003ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
