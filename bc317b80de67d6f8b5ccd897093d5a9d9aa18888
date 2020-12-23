@@ -16,6 +16,52 @@
       "message": "After updating the exiting `vendor_available: false` in the branch, let me clean up the remaining sources that check the `vendor_available: false` property.",
       "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f52ff4_0717f9b6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-23T14:46:13Z",
+      "side": 1,
+      "message": "This is very difficult to parse. Can you introduce some local variables to make this more readable?",
+      "range": {
+        "startLine": 1082,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 16
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d274bb_99991090",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-23T14:46:13Z",
+      "side": 1,
+      "message": "The comment below doesn\u0027t explain why these two cases are also violations.",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 154,
+        "endChar": 119
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
