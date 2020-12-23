@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f02178e7_6caaa0f6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-23T17:24:22Z",
+      "side": 1,
+      "message": "Maybe this is a question for Jiyong then, but don\u0027t we need something to prevent the runtimes shipping?  If not, why not just add them to the allowlist?",
+      "parentUuid": "b9665432_b2fce1e4",
+      "range": {
+        "startLine": 1051,
+        "startChar": 221,
+        "endLine": 1051,
+        "endChar": 273
+      },
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55d47144_d7872d6e",
         "filename": "cc/sanitize.go",
         "patchSetId": 9
