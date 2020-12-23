@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5eab7fc4_5303d561",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-12-23T16:15:13Z",
+      "side": 1,
+      "message": "vndk.private sounds good, but should we apply the same rule to LLNDK as well? LLNDK-private seems still to rely on \"vendor_available\".\n\nIIUC, we want to use \"vendor_available: true\" to control whether to create a vendor variant or not. Then, `Llndk.Vendor_available` would not indicate that it\u0027s LLNDK-Public.\n\nI guess the current change is focusing VNDK-SP/VNDK-Core not LLNDK. Then please add a TODO at least?",
+      "range": {
+        "startLine": 1082,
+        "startChar": 26,
+        "endLine": 1082,
+        "endChar": 74
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1478d204_1ba6c2d4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-12-23T16:15:13Z",
+      "side": 1,
+      "message": "Why do we check if Vendor_available is nil? Or, why we even care about vendor_available at all?\n\nI believe IsVndkPrivate() can be much simpler with `private` and it should be.",
+      "range": {
+        "startLine": 1083,
+        "startChar": 4,
+        "endLine": 1083,
+        "endChar": 91
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9f52ff4_0717f9b6",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -31,6 +77,30 @@
       "writtenOn": "2020-12-23T14:46:13Z",
       "side": 1,
       "message": "This is very difficult to parse. Can you introduce some local variables to make this more readable?",
+      "range": {
+        "startLine": 1082,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 16
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc267638_21e097e4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-12-23T16:15:13Z",
+      "side": 1,
+      "message": "Agreed!. Here\u0027s what I parsed.\n\n   \n    // kind of assertion\n    if library \u003d\u003d nil {\n        return false\n    }\n\n    // vndk-ext is public to use-vndk libs\n    if c.IsVndkExt() {\n        return false\n    }\n\n    // llndk-public(?) is public to use-vndk libs\n    if Bool(library.Properties.Llndk.Vendor_available) {\n        return false\n    }\n\n    // old legacy from when VNDK-private is vendor_available: false?\n    // can we remove this condition?\n    if c.VendorProperties.Vendor_available !\u003d nil \u0026\u0026 !Bool(c.VendorProperties.Vendor_available) {\n        return true\n    }\n\n    // vndk \u0026\u0026 private\n    if c.vndkdep !\u003d nil \u0026\u0026 Bool(c.vndkdep.Properties.Vndk.Private) {\n        return true\n    }\n\n    return false\n\n\nI think this func should be something like\n\n    // vndk \u0026\u0026 private\n    return c.vndkdep !\u003d nil \u0026\u0026 Bool(c.vndkdep.Properties.Vndk.Private)",
+      "parentUuid": "a9f52ff4_0717f9b6",
       "range": {
         "startLine": 1082,
         "startChar": 0,
