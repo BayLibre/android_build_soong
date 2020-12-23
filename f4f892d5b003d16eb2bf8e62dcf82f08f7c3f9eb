@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52916fa_7a7b6d01",
+        "filename": "android/config.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2020-12-23T18:42:37Z",
+      "side": 1,
+      "message": "I went back to the original implementation. Reasons:\n\n1. I think \"current\" and \"\" server different purposes. The possible values\nor RECOVERY_SNAPSHOT_VERSION are:\n\na. \"\" - No snapshot generation, no snapshot use.\nb. \"current\" - Snapshot generation, no snapshot use.\nc. Anything else - No snapshot generation, snapshot use\n\nThis matches the behavior of  \n\nfunc (recoverySnapshotImage) shouldGenerateSnapshot(ctx android.SingletonContext) bool {\n\t// RECOVERY_SNAPSHOT_VERSION must be set to \u0027current\u0027 in order to generate a\n\t// snapshot.\n\treturn ctx.DeviceConfig().RecoverySnapshotVersion() \u003d\u003d \"current\"\n}\n\n2. The same applies to BOARD_VNDK_VERSION. \"current\" and \"\" serve different purposes.\n\n3. The StringDefault() code caused generating snapshot in more cases than\nneeded, and it caused presubmit failures:\n\nhttps://android-build.googleplex.com/builds/treetop/android-review/1526263?ref\u003dCOMMENT\u0026revision\u003d23\u0026revisionAttempt\u003d1\n\nI\u0027m going to run presubmit on patchset 24 to see if it fixes the failures.",
+      "parentUuid": "e9e58bab_7d51e31c",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1058,
+        "endChar": 1
+      },
+      "revId": "f4f892d5b003d16eb2bf8e62dcf82f08f7c3f9eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6da8169_37be52fa",
