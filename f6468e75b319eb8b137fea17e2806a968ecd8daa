@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e4e6f7d_2d9f1a51",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-24T03:22:45Z",
+      "side": 1,
+      "message": "Yes, disabling diagnostics mode for non-test builds is required, but I think it\u0027s a separate issue and is not only for APEXes.",
+      "parentUuid": "f02178e7_6caaa0f6",
+      "range": {
+        "startLine": 1051,
+        "startChar": 221,
+        "endLine": 1051,
+        "endChar": 273
+      },
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "55d47144_d7872d6e",
         "filename": "cc/sanitize.go",
         "patchSetId": 9
