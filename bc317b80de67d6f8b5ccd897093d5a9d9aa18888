@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2486b498_6bf96485",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-24T00:57:40Z",
+      "side": 1,
+      "message": "Colin already defined the \u0027private\u0027 property to llndk_library (https://android-review.googlesource.com/c/platform/build/soong/+/1532861/3/cc/llndk_library.go#73).\nIf he is not working on it, I am happy to update the llndk with it. But let me update in a separate CL.",
+      "parentUuid": "5eab7fc4_5303d561",
+      "range": {
+        "startLine": 1082,
+        "startChar": 26,
+        "endLine": 1082,
+        "endChar": 74
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1478d204_1ba6c2d4",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-23T16:15:13Z",
       "side": 1,
       "message": "Why do we check if Vendor_available is nil? Or, why we even care about vendor_available at all?\n\nI believe IsVndkPrivate() can be much simpler with `private` and it should be.",
+      "range": {
+        "startLine": 1083,
+        "startChar": 4,
+        "endLine": 1083,
+        "endChar": 91
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d01dad_61163de1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-24T00:57:40Z",
+      "side": 1,
+      "message": "This is an intermediate CL.\nWe can clean up this only after we clean up the use of \"vendor_available: false\".\nAfter I clean up the \"vendor_available: false\" from the Android.bp files, I will remove all these kinds of checks.",
+      "parentUuid": "1478d204_1ba6c2d4",
       "range": {
         "startLine": 1083,
         "startChar": 4,
@@ -113,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e2db04a_1837af80",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-24T00:57:40Z",
+      "side": 1,
+      "message": "This is to check if a module is (VNDK|LLNDK)-private or not.\nWe can make it simpler once we clean up the use of \"vendor_available: false\" in the source branch.\nLet me update this code after we clean up the old use cases.",
+      "parentUuid": "dc267638_21e097e4",
+      "range": {
+        "startLine": 1082,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 16
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56d274bb_99991090",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -124,6 +196,30 @@
       "writtenOn": "2020-12-23T14:46:13Z",
       "side": 1,
       "message": "The comment below doesn\u0027t explain why these two cases are also violations.",
+      "range": {
+        "startLine": 153,
+        "startChar": 6,
+        "endLine": 154,
+        "endChar": 119
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a93d95_b2f6c70a",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2020-12-24T00:57:40Z",
+      "side": 1,
+      "message": "They will be removed once I clean up the old use cases.\nLet me update TODOs for these checks.",
+      "parentUuid": "56d274bb_99991090",
       "range": {
         "startLine": 153,
         "startChar": 6,
