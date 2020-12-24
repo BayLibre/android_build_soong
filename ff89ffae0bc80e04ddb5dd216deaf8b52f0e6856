@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "433f500d_6b8fb23f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2020-12-24T00:32:30Z",
+      "side": 1,
+      "message": "Hi esteemed colleagues, this change allows java_import boot jars to follow the same build steps (uncompressed, aligned) as java_library. PTAL.",
+      "revId": "ff89ffae0bc80e04ddb5dd216deaf8b52f0e6856",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
