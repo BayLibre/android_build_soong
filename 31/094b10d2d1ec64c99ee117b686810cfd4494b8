@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Verified+1: Justin Yun <justinyun@google.com>
+Presubmit-Ready+1: Justin Yun <justinyun@google.com>
+Build-Cop-Override+1: Chalard Jean <jchalard@google.com>
+Autosubmit+1: Justin Yun <justinyun@google.com>
+Bypass-Presubmit+1: Justin Yun <justinyun@google.com>
+Submitted-by: Justin Yun <justinyun@google.com>
+Submitted-at: Thu, 24 Dec 2020 08:08:05 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1534833
+Project: platform/build/soong
+Branch: refs/heads/master
