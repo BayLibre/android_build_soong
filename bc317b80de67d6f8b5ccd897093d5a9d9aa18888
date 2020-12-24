@@ -255,6 +255,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27342602_69068be1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-24T03:53:42Z",
+      "side": 1,
+      "message": "Thanks. This is much more readable than before.",
+      "parentUuid": "cac06d58_c94f6f14",
+      "range": {
+        "startLine": 1082,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 16
+      },
+      "revId": "bc317b80de67d6f8b5ccd897093d5a9d9aa18888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56d274bb_99991090",
