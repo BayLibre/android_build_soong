@@ -131,6 +131,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac318f33_8c0f5f5d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-24T05:06:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e4e6f7d_2d9f1a51",
+      "range": {
+        "startLine": 1051,
+        "startChar": 221,
+        "endLine": 1051,
+        "endChar": 273
+      },
+      "revId": "f6468e75b319eb8b137fea17e2806a968ecd8daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55d47144_d7872d6e",
