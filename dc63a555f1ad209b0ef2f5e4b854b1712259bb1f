@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b6b36b_7104270b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-24T12:50:10Z",
+      "side": 1,
+      "message": "Lint is confused: http://b/176278243",
+      "revId": "dc63a555f1ad209b0ef2f5e4b854b1712259bb1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
