@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb2f75f8_e3b03739",
+        "filename": "java/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-12-24T01:54:23Z",
+      "side": 0,
+      "message": "Yes, it is the case now.\n\nFTR, aosp/1145472 fixed that.",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "1f8c2729846b83e24c09292ef5739b13375f7c0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
