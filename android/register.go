@@ -148,6 +148,7 @@ func ModuleTypeFactories() map[string]ModuleFactory {
 // and test environments.
 type RegistrationContext interface {
 	RegisterModuleType(name string, factory ModuleFactory)
+	RegisterSingletonModuleType(name string, factory SingletonModuleFactory)
 	RegisterSingletonType(name string, factory SingletonFactory)
 	PreArchMutators(f RegisterMutatorFunc)
 
@@ -196,6 +197,12 @@ func (ctx *initRegistrationContext) RegisterModuleType(name string, factory Modu
 	}
 	ctx.moduleTypes[name] = factory
 	RegisterModuleType(name, factory)
+}
+
+func (ctx *initRegistrationContext) RegisterSingletonModuleType(name string, factory SingletonModuleFactory) {
+	s, m := SingletonModuleFactoryAdaptor(name, factory)
+	ctx.RegisterSingletonType(name, s)
+	ctx.RegisterModuleType(name, m)
 }
 
 func (ctx *initRegistrationContext) RegisterSingletonType(name string, factory SingletonFactory) {
