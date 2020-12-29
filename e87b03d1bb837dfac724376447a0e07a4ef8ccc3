@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff19445_ae09edd5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-29T20:07:53Z",
+      "side": 1,
+      "message": "Why is this necessary?  This will make the results of this module silently different if the module referenced in previous_api is missing.  I see it\u0027s done with ignoreMissingModules too.",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1088,
+        "endChar": 3
+      },
+      "revId": "e87b03d1bb837dfac724376447a0e07a4ef8ccc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
