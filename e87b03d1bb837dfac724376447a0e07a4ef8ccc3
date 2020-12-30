@@ -22,6 +22,30 @@
       },
       "revId": "e87b03d1bb837dfac724376447a0e07a4ef8ccc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39febe42_37501825",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-30T10:11:32Z",
+      "side": 1,
+      "message": "tl;dr; it\u0027s unsafe only for libraries that set the unsafe_* flag\n\nIt\u0027s a special path that kicks in when Ignore_missing_latest_api is set (and it is only set in java_sdk_library\u0027s use-case, Ignore_missing_latest_api is \"mutated\"). There are many java_sdk_library\u0027s that don\u0027t have last_released API files checked in. \n\nhttp://r.android.com/1534347 changes the behavior of java_sdk_library to no longer allow this by default. They must now set the attr Unsafe_ignore_missing_latest_api to get this behavior. There are a handful of of java_sdk_libraries that don\u0027t really need this sort of tracking, so I took that route rather than adding some bogus last-released files for them.\n\nLet me know if you have a suggestion for how to better deal with it",
+      "parentUuid": "cff19445_ae09edd5",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1088,
+        "endChar": 3
+      },
+      "revId": "e87b03d1bb837dfac724376447a0e07a4ef8ccc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
