@@ -46,6 +46,30 @@
       },
       "revId": "e87b03d1bb837dfac724376447a0e07a4ef8ccc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3f1e6b_efc2ffdb",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-12-30T18:41:26Z",
+      "side": 1,
+      "message": "Why not leave previous_api empty for that case?",
+      "parentUuid": "39febe42_37501825",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1088,
+        "endChar": 3
+      },
+      "revId": "e87b03d1bb837dfac724376447a0e07a4ef8ccc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
