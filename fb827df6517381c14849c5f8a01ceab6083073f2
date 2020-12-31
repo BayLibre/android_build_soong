@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143a73e5_8627a885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-31T09:34:54Z",
+      "side": 1,
+      "message": "thanks!",
+      "revId": "fb827df6517381c14849c5f8a01ceab6083073f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea998490_f5a5232f",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-31T09:34:54Z",
+      "side": 1,
+      "message": "tab here instead of spaces please",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "fb827df6517381c14849c5f8a01ceab6083073f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
