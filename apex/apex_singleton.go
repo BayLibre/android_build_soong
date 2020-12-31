@@ -102,6 +102,7 @@ func (s *apexDepsInfoSingleton) GenerateBuildActions(ctx android.SingletonContex
 	})
 
 	ctx.Phony("apex-allowed-deps-check", s.allowedApexDepsInfoCheckResult)
+	ctx.Phony("droidcore", s.allowedApexDepsInfoCheckResult)
 }
 
 func (s *apexDepsInfoSingleton) MakeVars(ctx android.MakeVarsContext) {
