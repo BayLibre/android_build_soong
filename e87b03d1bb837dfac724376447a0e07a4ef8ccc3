@@ -70,6 +70,30 @@
       },
       "revId": "e87b03d1bb837dfac724376447a0e07a4ef8ccc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc8adac_ef833d5f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-12-31T08:53:09Z",
+      "side": 1,
+      "message": "Yeah, I think that makes sense. I\u0027ll either change go/oag/1534347 to do that, or make a separate change to clean up the Ignore_missing_latest_api flag all together.",
+      "parentUuid": "1b3f1e6b_efc2ffdb",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1088,
+        "endChar": 3
+      },
+      "revId": "e87b03d1bb837dfac724376447a0e07a4ef8ccc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
