@@ -314,6 +314,10 @@ func (p *Module) HostToolPath() android.OptionalPath {
 	return android.OptionalPathForPath(p.installer.(*binaryDecorator).path)
 }
 
+func (p *Module) OutputFile() android.OptionalPath {
+	return p.installSource
+}
+
 // OutputFiles returns output files based on given tag, returns an error if tag is unsupported.
 func (p *Module) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {

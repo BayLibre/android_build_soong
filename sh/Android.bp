@@ -6,6 +6,7 @@ bootstrap_go_package {
         "soong",
         "soong-android",
         "soong-cc",
+        "soong-python",
         "soong-tradefed",
     ],
     srcs: [

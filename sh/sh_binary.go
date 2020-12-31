@@ -25,6 +25,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/python"
 	"android/soong/tradefed"
 )
 
@@ -347,6 +348,10 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case shTestDataBinsTag, shTestDataDeviceBinsTag:
 			if cc, isCc := dep.(*cc.Module); isCc {
 				s.addToDataModules(ctx, cc.OutputFile().Path().Base(), cc.OutputFile().Path())
+				return
+			}
+			if py, isPy := dep.(*python.Module); isPy {
+				s.addToDataModules(ctx, py.OutputFile().Path().Base(), py.OutputFile().Path())
 				return
 			}
 			property := "data_bins"
