@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3fe74f_b8ec1ae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2021-01-02T19:02:24Z",
+      "side": 1,
+      "message": "Patchset #2 resolved a merge conflict because the text had moved to a different file.",
+      "revId": "cebcfa357ee3701ae39f9db7fbe7825ec4184db4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
