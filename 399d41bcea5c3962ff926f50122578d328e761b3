@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c02e085e_0a9fcae8",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-01-05T11:03:34Z",
+      "side": 1,
+      "message": "Is this not working at the moment? IIRC this should already make it part of droidcore via main.mk, http://cs/aosp-master/build/make/core/main.mk?l\u003d1848.\n\nP.S. using new ctx.Phony is more readable than main.mk file though..",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 81
+      },
+      "revId": "399d41bcea5c3962ff926f50122578d328e761b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
