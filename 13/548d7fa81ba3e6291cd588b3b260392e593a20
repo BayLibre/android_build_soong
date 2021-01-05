@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Verified+1: Liz Kammer <eakammer@google.com>
+Autosubmit+1: Liz Kammer <eakammer@google.com>
+Code-Review+2: Christopher Parsons <cparsons@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 05 Jan 2021 23:57:50 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1532499
+Project: platform/build/soong
+Branch: refs/heads/master
