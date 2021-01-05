@@ -3096,6 +3096,9 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 		// We don't track beyond LLNDK or from an implementation library to its stubs.
 		return false
 	}
+	if depTag == staticVariantTag {
+		return false
+	}
 	return true
 }
 
