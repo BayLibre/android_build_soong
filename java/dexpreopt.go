@@ -38,6 +38,9 @@ type dexpreopter struct {
 	classLoaderContexts dexpreopt.ClassLoaderContextMap
 
 	builtInstalled string
+
+	// A path to a dexpreop.config file for apps, nil for libraries.
+	configPath android.WritablePath
 }
 
 type DexpreoptProperties struct {
@@ -177,6 +180,14 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		}
 	}
 
+	providesUsesLib := ctx.ModuleName()
+	if ulib, ok := ctx.Module().(ProvidesUsesLib); ok {
+		name := ulib.ProvidesUsesLib()
+		if name != nil {
+			providesUsesLib = *name
+		}
+	}
+
 	dexpreoptConfig := &dexpreopt.ModuleConfig{
 		Name:            ctx.ModuleName(),
 		DexLocation:     dexLocation,
@@ -193,6 +204,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 
 		EnforceUsesLibraries: d.enforceUsesLibs,
 		ClassLoaderContexts:  d.classLoaderContexts,
+		ProvidesUsesLib:      providesUsesLib,
 
 		Archs:                   archs,
 		DexPreoptImages:         images,
@@ -215,6 +227,8 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		ctx.ModuleErrorf("error generating dexpreopt rule: %s", err.Error())
 		return
 	}
+
+	dexpreopt.WriteModuleConfig(ctx, dexpreoptConfig, d.configPath)
 
 	dexpreoptRule.Build("dexpreopt", "dexpreopt")
 

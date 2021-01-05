@@ -116,6 +116,7 @@ type ModuleConfig struct {
 
 	EnforceUsesLibraries bool
 	ClassLoaderContexts  ClassLoaderContextMap
+	ProvidesUsesLib      string
 
 	Archs                   []android.ArchType
 	DexPreoptImages         []android.Path
@@ -248,26 +249,26 @@ func SetTestGlobalConfig(config android.Config, globalConfig *GlobalConfig) {
 	config.Once(testGlobalConfigOnceKey, func() interface{} { return globalConfigAndRaw{globalConfig, nil} })
 }
 
-// ParseModuleConfig parses a per-module dexpreopt.config file into a
-// ModuleConfig struct. It is not used in Soong, which receives a ModuleConfig
-// struct directly from java/dexpreopt.go. It is used in dexpreopt_gen called
-// from Make to read the module dexpreopt.config written in the Make config
-// stage.
-func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, error) {
-	type ModuleJSONConfig struct {
-		*ModuleConfig
+// JSON representation of the module dexpreopt.config.
+type ModuleJSONConfig struct {
+	*ModuleConfig
 
-		// Copies of entries in ModuleConfig that are not constructable without extra parameters.  They will be
-		// used to construct the real value manually below.
-		BuildPath                   string
-		DexPath                     string
-		ManifestPath                string
-		ProfileClassListing         string
-		ClassLoaderContexts         jsonClassLoaderContextMap
-		DexPreoptImages             []string
-		DexPreoptImageLocations     []string
-		PreoptBootClassPathDexFiles []string
-	}
+	// Copies of entries in ModuleConfig that are not constructable without extra parameters.
+	// They will be used to construct the real value manually below.
+	BuildPath                   string
+	DexPath                     string
+	ManifestPath                string
+	ProfileClassListing         string
+	ClassLoaderContexts         jsonClassLoaderContextMap
+	DexPreoptImages             []string
+	DexPreoptImageLocations     []string
+	PreoptBootClassPathDexFiles []string
+}
+
+// ParseModuleConfig parses a per-module dexpreopt.config file into a ModuleConfig struct. It is not
+// used in Soong, which receives a ModuleConfig struct directly from java/dexpreopt.go. It is used in
+// dexpreopt_gen called from Make to read the module dexpreopt.config written in the Make config stage.
+func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, error) {
 
 	config := ModuleJSONConfig{}
 
@@ -290,6 +291,54 @@ func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, err
 	config.ModuleConfig.DexPreoptImagesDeps = make([]android.OutputPaths, len(config.ModuleConfig.DexPreoptImages))
 
 	return config.ModuleConfig, nil
+}
+
+// WriteModuleConfig serializes a ModuleConfig struct into a per-module dexpreopt.config JSON file.
+// It is a way to pass dexpreopt information about Soong modules to Make, which is needed when a
+// Make module has a <uses-library> dependency on a Soong module.
+func WriteModuleConfig(ctx android.ModuleContext, config *ModuleConfig, path android.WritablePath) {
+	if path == nil {
+		return
+	}
+
+	jsonConfig := ModuleJSONConfig{ModuleConfig: config}
+
+	// Helper function to convert paths to strings.
+	pathStrings := func(paths android.Paths) []string {
+		strs := make([]string, 0, len(paths))
+		for _, p := range paths {
+			strs = append(strs, p.String())
+		}
+		return strs
+	}
+
+	jsonConfig.BuildPath = config.BuildPath.String()
+	jsonConfig.DexPath = config.DexPath.String()
+
+	if config.ManifestPath != nil {
+		jsonConfig.ManifestPath = config.ManifestPath.String()
+	}
+
+	if config.ProfileClassListing.Valid() {
+		jsonConfig.ProfileClassListing = config.ProfileClassListing.String()
+	}
+
+	jsonConfig.ClassLoaderContexts = toJsonClassLoaderContext(config.ClassLoaderContexts)
+
+	jsonConfig.DexPreoptImages = pathStrings(config.DexPreoptImages)
+	jsonConfig.DexPreoptImageLocations = config.DexPreoptImageLocations
+	jsonConfig.PreoptBootClassPathDexFiles = pathStrings(config.PreoptBootClassPathDexFiles)
+
+	// Dependencies are already handled in Soong, no need to export them to Make.
+	jsonConfig.DexPreoptImagesDeps = nil
+
+	data, err := json.MarshalIndent(&jsonConfig, "", "    ")
+	if err != nil {
+		ctx.ModuleErrorf("failed to JSON marshal module dexpreopt.config: %v", err)
+		return
+	}
+
+	android.WriteFileRule(ctx, path, string(data))
 }
 
 // dex2oatModuleName returns the name of the module to use for the dex2oat host
