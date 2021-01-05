@@ -34,6 +34,16 @@ var vendorSnapshotSingleton = snapshotSingleton{
 	android.OptionalPath{},
 	true,
 	vendorSnapshotImageSingleton,
+	false, /* fake */
+}
+
+var vendorFakeSnapshotSingleton = snapshotSingleton{
+	"vendor",
+	"SOONG_VENDOR_FAKE_SNAPSHOT_ZIP",
+	android.OptionalPath{},
+	true,
+	vendorSnapshotImageSingleton,
+	true, /* fake */
 }
 
 var recoverySnapshotSingleton = snapshotSingleton{
@@ -42,10 +52,15 @@ var recoverySnapshotSingleton = snapshotSingleton{
 	android.OptionalPath{},
 	false,
 	recoverySnapshotImageSingleton,
+	false, /* fake */
 }
 
 func VendorSnapshotSingleton() android.Singleton {
 	return &vendorSnapshotSingleton
+}
+
+func VendorFakeSnapshotSingleton() android.Singleton {
+	return &vendorFakeSnapshotSingleton
 }
 
 func RecoverySnapshotSingleton() android.Singleton {
@@ -70,6 +85,11 @@ type snapshotSingleton struct {
 	// associated with this snapshot (e.g., specific to the vendor image,
 	// recovery image, etc.).
 	image snapshotImage
+
+	// Whether this singleton is for fake snapshot or not.
+	// Fake snapshot is a snapshot whose prebuilt binaries and headers are empty.
+	// It is much faster to generate, and can be used to inspect dependencies.
+	fake bool
 }
 
 var (
@@ -331,6 +351,10 @@ func (c *snapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	*/
 
 	snapshotDir := c.name + "-snapshot"
+
+	if c.fake {
+		snapshotDir = filepath.Join("fake", snapshotDir)
+	}
 	snapshotArchDir := filepath.Join(snapshotDir, ctx.DeviceConfig().DeviceArch())
 
 	includeDir := filepath.Join(snapshotArchDir, "include")
@@ -341,6 +365,13 @@ func (c *snapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	installedConfigs := make(map[string]bool)
 
 	var headers android.Paths
+
+	copyFileRule := copyFileRule
+	if c.fake {
+		copyFileRule = func(ctx android.SingletonContext, path android.Path, out string) android.OutputPath {
+			return writeStringToFileRule(ctx, "", out)
+		}
+	}
 
 	// installSnapshot function copies prebuilt file (.so, .a, or executable) and json flag file.
 	// For executables, init_rc and vintf_fragments files are also copied.

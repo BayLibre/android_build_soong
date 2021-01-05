@@ -67,6 +67,8 @@ func (vendorSnapshotImage) init() {
 	android.RegisterModuleType("vendor_snapshot_header", VendorSnapshotHeaderFactory)
 	android.RegisterModuleType("vendor_snapshot_binary", VendorSnapshotBinaryFactory)
 	android.RegisterModuleType("vendor_snapshot_object", VendorSnapshotObjectFactory)
+
+	android.RegisterSingletonType("vendor-fake-snapshot", VendorFakeSnapshotSingleton)
 }
 
 func (vendorSnapshotImage) inImage(m *Module) func() bool {
