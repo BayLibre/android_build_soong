@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e94bdf_46479d27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-05T12:29:44Z",
+      "side": 1,
+      "message": "PS6 is a rebase of PS5 after java/app.go and java/app_test.go have been split into multiple files.\n\nPTAL",
+      "revId": "22890c466e8d69968b420af1e2b59341913f6042",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
