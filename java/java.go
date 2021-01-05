@@ -2118,6 +2118,9 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.dexProperties.Uncompress_dex = proptools.BoolPtr(shouldUncompressDex(ctx, &j.dexpreopter))
 	}
 	j.dexpreopter.uncompressedDex = *j.dexProperties.Uncompress_dex
+	if !j.dexpreopter.dexpreoptDisabled(ctx) {
+		j.dexpreopter.configPath = android.PathForModuleOut(ctx, "dexpreopt", "dexpreopt.config")
+	}
 	j.classLoaderContexts = make(dexpreopt.ClassLoaderContextMap)
 	j.compile(ctx, nil)
 
@@ -3073,6 +3076,7 @@ func (j *DexImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.dexpreopter.installPath = android.PathForModuleInstall(ctx, "framework", j.Stem()+".jar")
 	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter)
+	j.dexpreopter.configPath = android.PathForModuleOut(ctx, "dexpreopt", "dexpreopt.config")
 
 	inputJar := ctx.ExpandSource(j.properties.Jars[0], "jars")
 	dexOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".jar")
