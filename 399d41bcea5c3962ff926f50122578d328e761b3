@@ -22,6 +22,30 @@
       },
       "revId": "399d41bcea5c3962ff926f50122578d328e761b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9198a33a_d41e0d3b",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-05T11:25:14Z",
+      "side": 1,
+      "message": "It isn\u0027t, but I wasn\u0027t aware of the main.mk line, thanks!\n\nHaven\u0027t seen the syntax ${APEX_ALLOWED_DEPS_CHECK} before, it\u0027s possible that doesn\u0027t work. $(APEX_ALLOWED_DEPS_CHECK) is the norm at least\n\nI will remove it and add to this topic",
+      "parentUuid": "c02e085e_0a9fcae8",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 81
+      },
+      "revId": "399d41bcea5c3962ff926f50122578d328e761b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
