@@ -9,6 +9,7 @@ bootstrap_go_package {
     ],
     srcs: [
         "androidmk.go",
+        "benchmark.go",
         "binary.go",
         "bindgen.go",
         "builder.go",
