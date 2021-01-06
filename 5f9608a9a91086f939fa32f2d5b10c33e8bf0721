@@ -16,6 +16,29 @@
       "message": "I believe that a smarter and neater way exists. I\u0027d appreciate any better ideas.",
       "revId": "5f9608a9a91086f939fa32f2d5b10c33e8bf0721",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15abd6a7_5c33e6e3",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-01-06T17:28:55Z",
+      "side": 1,
+      "message": "Can you rename this to avoid confusion?",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 14
+      },
+      "revId": "5f9608a9a91086f939fa32f2d5b10c33e8bf0721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
