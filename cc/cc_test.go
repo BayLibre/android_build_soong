@@ -4266,7 +4266,7 @@ func checkDoesNotHaveImplicitDep(t *testing.T, m android.TestingModule, name str
 }
 
 func TestSanitizeMemtagHeap(t *testing.T) {
-	ctx := testCc(t, `
+	rootBp := `
 		cc_library_static {
 			name: "libstatic",
 			sanitize: { memtag_heap: true },
@@ -4326,7 +4326,37 @@ func TestSanitizeMemtagHeap(t *testing.T) {
 			sanitize: { memtag_heap: true, diag: { memtag_heap: false }  },
 		}
 
-		`)
+		`
+
+	subdirAsyncBp := `
+		cc_binary {
+			name: "binary_async",
+		}
+		`
+
+	subdirSyncBp := `
+		cc_binary {
+			name: "binary_sync",
+		}
+		`
+
+	mockFS := map[string][]byte{
+		"subdir_async/Android.bp": []byte(subdirAsyncBp),
+		"subdir_sync/Android.bp":  []byte(subdirSyncBp),
+	}
+
+	config := TestConfig(buildDir, android.Android, nil, rootBp, mockFS)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	config.TestProductVariables.MemtagHeapAsyncIncludePaths = []string{"subdir_async"}
+	config.TestProductVariables.MemtagHeapSyncIncludePaths = []string{"subdir_sync"}
+	ctx := CreateTestContext(config)
+	ctx.Register()
+
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp", "subdir_sync/Android.bp", "subdir_async/Android.bp"})
+	android.FailIfErrored(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	android.FailIfErrored(t, errs)
 
 	variant := "android_arm64_armv8-a"
 	note_async := "note_memtag_heap_async"
@@ -4346,4 +4376,6 @@ func TestSanitizeMemtagHeap(t *testing.T) {
 	checkDoesNotHaveImplicitDep(t, ctx.ModuleForTests("test_false", variant), note_any)
 	checkHasImplicitDep(t, ctx.ModuleForTests("test_true_async", variant), note_async)
 
+	checkHasImplicitDep(t, ctx.ModuleForTests("binary_async", variant), note_async)
+	checkHasImplicitDep(t, ctx.ModuleForTests("binary_sync", variant), note_sync)
 }
