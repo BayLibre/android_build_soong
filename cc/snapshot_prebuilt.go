@@ -55,6 +55,8 @@ type snapshotImage interface {
 	// snapshot, e.g., using the exclude_from_vendor_snapshot or
 	// exclude_from_recovery_snapshot properties.
 	excludeFromSnapshot(m *Module) bool
+
+	excludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool
 }
 
 type vendorSnapshotImage struct{}
@@ -90,6 +92,13 @@ func (vendorSnapshotImage) excludeFromSnapshot(m *Module) bool {
 	return m.ExcludeFromVendorSnapshot()
 }
 
+func (vendorSnapshotImage) excludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool {
+	if !cfg.DirectedVendorSnapshot() {
+		return false
+	}
+	return !cfg.VendorSnapshotModules()[name]
+}
+
 func (recoverySnapshotImage) init() {
 	android.RegisterSingletonType("recovery-snapshot", RecoverySnapshotSingleton)
 	android.RegisterModuleType("recovery_snapshot_shared", RecoverySnapshotSharedFactory)
@@ -118,6 +127,10 @@ func (recoverySnapshotImage) includeVndk() bool {
 
 func (recoverySnapshotImage) excludeFromSnapshot(m *Module) bool {
 	return m.ExcludeFromRecoverySnapshot()
+}
+
+func (recoverySnapshotImage) excludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool {
+	return false
 }
 
 var vendorSnapshotImageSingleton vendorSnapshotImage

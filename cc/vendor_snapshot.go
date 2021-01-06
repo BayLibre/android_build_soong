@@ -157,7 +157,7 @@ func isVendorProprietaryModule(ctx android.BaseModuleContext) bool {
 }
 
 // Determines if the module is a candidate for snapshot.
-func isSnapshotAware(m *Module, inProprietaryPath bool, apexInfo android.ApexInfo, image snapshotImage) bool {
+func isSnapshotAware(cfg android.DeviceConfig, m *Module, inProprietaryPath bool, apexInfo android.ApexInfo, image snapshotImage) bool {
 	if !m.Enabled() || m.Properties.HideFromMake {
 		return false
 	}
@@ -198,6 +198,9 @@ func isSnapshotAware(m *Module, inProprietaryPath bool, apexInfo android.ApexInf
 		return false
 	}
 	if _, ok := m.linker.(*llndkHeadersDecorator); ok {
+		return false
+	}
+	if image.excludeFromDirectedSnapshot(cfg, m.Name()) {
 		return false
 	}
 
@@ -481,7 +484,7 @@ func (c *snapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 			}
 		}
 
-		if !isSnapshotAware(m, inProprietaryPath, apexInfo, c.image) {
+		if !isSnapshotAware(ctx.DeviceConfig(), m, inProprietaryPath, apexInfo, c.image) {
 			return
 		}
 
