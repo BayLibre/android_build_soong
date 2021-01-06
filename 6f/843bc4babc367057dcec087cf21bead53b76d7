@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Inseob Kim <inseob@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Submitted-by: Jose "Pepe" Galmes <jgalmes@google.com>
+Submitted-at: Wed, 06 Jan 2021 21:17:49 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1526263
+Project: platform/build/soong
+Branch: refs/heads/master
