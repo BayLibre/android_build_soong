@@ -82,6 +82,8 @@ type snapshotImage interface {
 
 	// Whether to skip the source mutator for a given module.
 	skipSourceMutator(ctx android.BottomUpMutatorContext) bool
+
+	excludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool
 }
 
 type vendorSnapshotImage struct{}
@@ -191,6 +193,13 @@ func (vendorSnapshotImage) skipSourceMutator(ctx android.BottomUpMutatorContext)
 	return false
 }
 
+func (vendorSnapshotImage) excludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool {
+	if !cfg.DirectedVendorSnapshot() {
+		return false
+	}
+	return !cfg.VendorSnapshotModules()[name]
+}
+
 func (recoverySnapshotImage) init() {
 	android.RegisterSingletonType("recovery-snapshot", RecoverySnapshotSingleton)
 	android.RegisterModuleType("recovery_snapshot_shared", RecoverySnapshotSharedFactory)
@@ -271,6 +280,10 @@ func (recoverySnapshotImage) skipModuleMutator(ctx android.BottomUpMutatorContex
 func (recoverySnapshotImage) skipSourceMutator(ctx android.BottomUpMutatorContext) bool {
 	module, ok := ctx.Module().(*Module)
 	return !ok || !module.InRecovery()
+}
+
+func (recoverySnapshotImage) excludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool {
+	return false
 }
 
 var vendorSnapshotImageSingleton vendorSnapshotImage
