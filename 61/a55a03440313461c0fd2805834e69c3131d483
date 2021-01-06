@@ -1,0 +1,9 @@
+Open-Source-Licensing-1: Lint 🤖 <ayeaye-gerrit@google.com>
+Open-Source-Licensing+2: Bob Badour <bbadour@google.com>
+Code-Review+2: Bob Badour <bbadour@google.com>
+Build-Cop-Override+1: Bob Badour <bbadour@google.com>
+Submitted-by: Bob Badour <bbadour@google.com>
+Submitted-at: Wed, 06 Jan 2021 19:17:24 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1541851
+Project: platform/build/soong
+Branch: refs/heads/master
