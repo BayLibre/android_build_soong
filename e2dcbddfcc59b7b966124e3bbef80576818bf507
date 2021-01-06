@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7bb4a16_be0ba6c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-06T14:45:39Z",
+      "side": 1,
+      "message": "Blocked until b/176826746 is resolved.",
+      "revId": "e2dcbddfcc59b7b966124e3bbef80576818bf507",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
