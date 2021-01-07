@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5afd57de_c11b8d23",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-07T10:02:13Z",
+      "side": 1,
+      "message": "Do we need the hard-coded reference to \"libft2\"?",
+      "range": {
+        "startLine": 1087,
+        "startChar": 3,
+        "endLine": 1087,
+        "endChar": 33
+      },
+      "revId": "c0d8c49224cff8d7a5bb160841ea3d8a7e70e376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
