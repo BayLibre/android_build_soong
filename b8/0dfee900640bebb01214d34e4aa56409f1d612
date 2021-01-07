@@ -1,0 +1,11 @@
+Code-Review+2: Bob Badour <bbadour@google.com>
+Code-Review+2: Jaewoong Jung <jungjw@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Open-Source-Licensing+2: Jaewoong Jung <jungjw@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Bob Badour <bbadour@google.com>
+Submitted-at: Thu, 07 Jan 2021 22:42:05 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1540840
+Project: platform/build/soong
+Branch: refs/heads/master
