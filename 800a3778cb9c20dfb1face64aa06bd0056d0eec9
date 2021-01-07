@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed211394_8850dd71",
+        "filename": "cc/linkable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-07T15:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8a6c034_af0e7171",
+      "revId": "800a3778cb9c20dfb1face64aa06bd0056d0eec9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edb9f9ea_4bff4e4e",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a6b2de_a93222f1",
+        "filename": "cc/linkable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-07T15:58:24Z",
+      "side": 1,
+      "message": "PTAL; the text might be a little clunky but I think it conveys the idea.",
+      "parentUuid": "edb9f9ea_4bff4e4e",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "800a3778cb9c20dfb1face64aa06bd0056d0eec9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59eade4d_17533463",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-01-07T00:22:20Z",
       "side": 1,
       "message": "Can you also describe what the method does and what the return value is?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "800a3778cb9c20dfb1face64aa06bd0056d0eec9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24e82fd_4d907bf8",
+        "filename": "cc/linkable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-07T15:58:24Z",
+      "side": 1,
+      "message": "Ack. I moved the behavior description over to the function type declaration and moved that declaration into this file so they\u0027re co-located.",
+      "parentUuid": "59eade4d_17533463",
       "range": {
         "startLine": 46,
         "startChar": 0,
