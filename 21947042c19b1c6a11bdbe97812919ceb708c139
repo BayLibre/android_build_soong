@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5925a2f8_dbdb86ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T01:21:19Z",
+      "side": 1,
+      "message": "For C/C++ we build with -g, then copy that to the symbols directory and strip/compress the debug info to install onto the device.  Is there similar functionality for Rust?  What does this do to the size of files on the device?",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae9e567_d309cfce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T01:21:19Z",
+      "side": 1,
+      "message": "Repo should have warned about a missing Test: line, if you\u0027re not getting that you\u0027re probably also not getting helpful checks like gofmt.",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
