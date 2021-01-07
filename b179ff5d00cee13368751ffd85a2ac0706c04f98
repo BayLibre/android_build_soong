@@ -39,6 +39,30 @@
       },
       "revId": "b179ff5d00cee13368751ffd85a2ac0706c04f98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fca4b3c_2324f95f",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-07T09:48:49Z",
+      "side": 1,
+      "message": "Done. I assume the logic for DataLibsTag and DeviceLibsTag below can not be deduped in the same way given the relocation/cp stuff, but LMK if I can do that too somehow.",
+      "parentUuid": "b9f5fce1_b0a76735",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 4
+      },
+      "revId": "b179ff5d00cee13368751ffd85a2ac0706c04f98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
