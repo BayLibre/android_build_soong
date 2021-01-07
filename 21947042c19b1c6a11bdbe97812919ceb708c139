@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60e8860e_eaee3dc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2021-01-07T01:37:08Z",
+      "side": 1,
+      "message": "We do strip the files. If you run ninja -t commands and look for invocations of strip.sh on Rust binaries you will see e.g.\n\nXZ\u003dprebuilts/build-tools/linux-x86/bin/xz CLANG_BIN\u003dprebuilts/clang/host/linux-x86/clang-r399163b/bin build/soong/scripts/strip.sh  --keep-mini-debug-info -i out.fvp/soong/.intermediates/system/security/keystore2/libkeystore2/android_arm64_armv8-a_dylib/libkeystore2.dylib.so -o out.fvp/soong/.intermediates/system/security/keystore2/libkeystore2/android_arm64_armv8-a_dylib/stripped/libkeystore2.dylib.so -d out.fvp/soong/.intermediates/system/security/keystore2/libkeystore2/android_arm64_armv8-a_dylib/stripped/libkeystore2.dylib.so.d\n\nSince these are all passing --keep-mini-debug-info I imagine that most of the cost is coming from the .gnu_debugdata sections.",
+      "parentUuid": "a6af5eb7_565867f7",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cae9e567_d309cfce",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2021-01-07T01:21:19Z",
       "side": 1,
       "message": "Repo should have warned about a missing Test: line, if you\u0027re not getting that you\u0027re probably also not getting helpful checks like gofmt.",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618cebf4_cfac0609",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2021-01-07T01:37:08Z",
+      "side": 1,
+      "message": "I don\u0027t use repo to work on AOSP. Maybe I will see if I can add gofmt to my workflow.",
+      "parentUuid": "cae9e567_d309cfce",
       "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
