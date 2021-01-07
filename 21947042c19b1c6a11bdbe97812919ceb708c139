@@ -140,6 +140,24 @@
       "message": "Thanks Peter! Before submitting, could you add the Bug: line to the commit message with a reference to bug 173723155?",
       "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa36ed84_3e3c8649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2021-01-07T20:06:26Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a0bc72bf_947c245c",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
