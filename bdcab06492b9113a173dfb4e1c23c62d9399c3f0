@@ -16,6 +16,24 @@
       "message": "Is this used?",
       "revId": "bdcab06492b9113a173dfb4e1c23c62d9399c3f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d84791_f1784059",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2021-01-07T23:44:02Z",
+      "side": 1,
+      "message": "good catch! removed.",
+      "parentUuid": "a85d1e10_eb2f08dd",
+      "revId": "bdcab06492b9113a173dfb4e1c23c62d9399c3f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
