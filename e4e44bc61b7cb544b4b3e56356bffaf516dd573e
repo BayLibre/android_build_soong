@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6010280e_bc1086b7",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-07T05:25:57Z",
+      "side": 1,
+      "message": "nit: I\u0027m curious how the comments of meta-factory function can be processed. (go/androidbp)",
+      "range": {
+        "startLine": 491,
+        "startChar": 5,
+        "endLine": 491,
+        "endChar": 28
+      },
+      "revId": "e4e44bc61b7cb544b4b3e56356bffaf516dd573e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
