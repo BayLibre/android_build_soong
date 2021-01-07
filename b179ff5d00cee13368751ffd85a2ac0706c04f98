@@ -16,6 +16,29 @@
       "message": "ping",
       "revId": "b179ff5d00cee13368751ffd85a2ac0706c04f98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f5fce1_b0a76735",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T00:05:51Z",
+      "side": 1,
+      "message": "These should probably use android.OutputFileForModule and not worry about the exact module type.",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 4
+      },
+      "revId": "b179ff5d00cee13368751ffd85a2ac0706c04f98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
