@@ -87,6 +87,24 @@
       "parentUuid": "cae9e567_d309cfce",
       "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ff91d7_1194e130",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T01:43:22Z",
+      "side": 1,
+      "message": "You should, it has some safety checks that can prevent upload mistakes that can be very hard to clean up.",
+      "parentUuid": "618cebf4_cfac0609",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
