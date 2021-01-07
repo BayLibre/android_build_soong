@@ -52,6 +52,24 @@
       "parentUuid": "3e4f41cd_5fa0cb97",
       "revId": "2f6422cb1e0462012c729959556ac55d62f2dc48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379aa48f_932ff486",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-07T12:48:50Z",
+      "side": 1,
+      "message": "trying with required: [\"gen_sdk\"] now which is looking promising",
+      "parentUuid": "6c0480ba_6c4f9f6e",
+      "revId": "2f6422cb1e0462012c729959556ac55d62f2dc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
