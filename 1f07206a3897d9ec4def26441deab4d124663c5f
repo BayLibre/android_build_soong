@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e61f7376_d0c3ed8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T19:42:35Z",
+      "side": 1,
+      "message": "I think this shouldn\u0027t cause future problems with converting singletons to aspects on system.img in the future, as from our previous discussion aspects can create rules that can be depended on by modules, which is basically what this is doing in Soong.",
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
