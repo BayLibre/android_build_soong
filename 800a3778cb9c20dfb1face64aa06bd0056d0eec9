@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a6c034_af0e7171",
+        "filename": "cc/linkable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T00:22:20Z",
+      "side": 1,
+      "message": "godoc style is \"SanitizePropDefined returns whether ...\"",
+      "revId": "800a3778cb9c20dfb1face64aa06bd0056d0eec9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb9f9ea_4bff4e4e",
+        "filename": "cc/linkable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T00:22:20Z",
+      "side": 1,
+      "message": "can you define \"dependency root\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "800a3778cb9c20dfb1face64aa06bd0056d0eec9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59eade4d_17533463",
+        "filename": "cc/linkable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T00:22:20Z",
+      "side": 1,
+      "message": "Can you also describe what the method does and what the return value is?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "800a3778cb9c20dfb1face64aa06bd0056d0eec9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
