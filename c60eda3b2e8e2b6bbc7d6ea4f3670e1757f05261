@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9a8f0b6a_cd4c0e21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1783795
+      },
+      "writtenOn": "2021-01-07T01:02:34Z",
+      "side": 1,
+      "message": "I don\u0027t think this will be necessary any more. It\u0027s just the one commit now.",
+      "parentUuid": "684e7ea4_61900656",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2399f418_4443699d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -84,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "42bbc837_abc0f071",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1783795
+      },
+      "writtenOn": "2021-01-07T01:02:34Z",
+      "side": 1,
+      "message": "That search turns up empty.",
+      "parentUuid": "60125d3b_bd060102",
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dedf676f_ebc7a08a",
         "filename": "cc/config/global.go",
         "patchSetId": 1
@@ -95,6 +137,30 @@
       "writtenOn": "2020-11-11T23:15:26Z",
       "side": 1,
       "message": "please keep these in sorted order",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6089fbf3_e77ca6ff",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1783795
+      },
+      "writtenOn": "2021-01-07T01:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dedf676f_ebc7a08a",
       "range": {
         "startLine": 53,
         "startChar": 0,
