@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a6af5eb7_565867f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-07T01:26:40Z",
+      "side": 1,
+      "message": "/google/bin/releases/android-build-soong-dev/compare_target_files/compare_target_files --bid P18694411\nfiles modified:\n   system/bin/keystore2 (17904 bytes -\u003e 18016 bytes)\n   system/bin/profcollectctl (12376 bytes -\u003e 12488 bytes)\n   system/bin/profcollectd (12240 bytes -\u003e 12344 bytes)\n   system/lib/hw/audio.a2dp.default.so (940644 bytes -\u003e 978656 bytes)\n   system/lib/hw/audio.hearing_aid.default.so (939832 bytes -\u003e 977580 bytes)\n   system/lib/libbluetooth.so (5609464 bytes -\u003e 5647712 bytes)\n   system/lib64/hw/audio.a2dp.default.so (1342224 bytes -\u003e 1376536 bytes)\n   system/lib64/hw/audio.hearing_aid.default.so (1342112 bytes -\u003e 1376488 bytes)\n   system/lib64/libahash.dylib.so (140968 bytes -\u003e 145656 bytes)\n   system/lib64/libandroid_hardware_security_keymint.dylib.so (306928 bytes -\u003e 307840 bytes)\n   system/lib64/libandroid_log_sys.dylib.so (18328 bytes -\u003e 18544 bytes)\n   system/lib64/libandroid_logger.dylib.so (37520 bytes -\u003e 37576 bytes)\n   system/lib64/libandroid_system_keystore2.dylib.so (218952 bytes -\u003e 218920 bytes)\n   system/lib64/libanyhow.dylib.so (97920 bytes -\u003e 98072 bytes)\n   system/lib64/libbinder_ndk_sys.dylib.so (96840 bytes -\u003e 96928 bytes)\n   system/lib64/libbinder_rs.dylib.so (177688 bytes -\u003e 177760 bytes)\n   system/lib64/libbitflags.dylib.so (31632 bytes -\u003e 31584 bytes)\n   system/lib64/libbluetooth.so (9571096 bytes -\u003e 9609544 bytes)\n   system/lib64/libcfg_if.dylib.so (14056 bytes -\u003e 14040 bytes)\n   system/lib64/libenv_logger.dylib.so (120016 bytes -\u003e 126904 bytes)\n   system/lib64/libfallible_iterator.dylib.so (194584 bytes -\u003e 194712 bytes)\n   system/lib64/libfallible_streaming_iterator.dylib.so (52728 bytes -\u003e 52808 bytes)\n   system/lib64/libgetopts.dylib.so (125768 bytes -\u003e 121784 bytes)\n   system/lib64/libgetrandom.dylib.so (43192 bytes -\u003e 43152 bytes)\n   system/lib64/libhashbrown.dylib.so (294336 bytes -\u003e 293376 bytes)\n   system/lib64/libhashlink.dylib.so (180256 bytes -\u003e 176712 bytes)\n   system/lib64/libkeystore2.dylib.so (718352 bytes -\u003e 721520 bytes)\n   system/lib64/libkeystore2_crypto_bindgen.dylib.so (19920 bytes -\u003e 20016 bytes)\n   system/lib64/libkeystore2_crypto_rust.dylib.so (28976 bytes -\u003e 28680 bytes)\n   system/lib64/libkeystore2_selinux.dylib.so (54848 bytes -\u003e 55200 bytes)\n   system/lib64/liblazy_static.dylib.so (21360 bytes -\u003e 21352 bytes)\n   system/lib64/liblibc.dylib.so (669496 bytes -\u003e 665472 bytes)\n   system/lib64/liblibprofcollectd.dylib.so (17440 bytes -\u003e 17624 bytes)\n   system/lib64/liblibsqlite3_sys.dylib.so (192328 bytes -\u003e 192456 bytes)\n   system/lib64/liblog.dylib.so (98424 bytes -\u003e 101192 bytes)\n   system/lib64/libmemchr.dylib.so (38096 bytes -\u003e 38128 bytes)\n   system/lib64/libnix.dylib.so (1527184 bytes -\u003e 1525696 bytes)\n   system/lib64/libppv_lite86.dylib.so (139544 bytes -\u003e 135768 bytes)\n   system/lib64/libprofcollectd_aidl_interface.dylib.so (51480 bytes -\u003e 52248 bytes)\n   system/lib64/libprofcollectd_bindgen.dylib.so (11704 bytes -\u003e 11672 bytes)\n   system/lib64/librand.dylib.so (514936 bytes -\u003e 515032 bytes)\n   system/lib64/librand_chacha.dylib.so (68568 bytes -\u003e 68432 bytes)\n   system/lib64/librand_core.dylib.so (78840 bytes -\u003e 78600 bytes)\n   system/lib64/librusqlite.dylib.so (402336 bytes -\u003e 402392 bytes)\n   system/lib64/libselinux_bindgen.dylib.so (27768 bytes -\u003e 27800 bytes)\n   system/lib64/libsmallvec.dylib.so (113448 bytes -\u003e 113456 bytes)\n   system/lib64/libstd.dylib.so (2993400 bytes -\u003e 3010680 bytes)\n   system/lib64/libterm.dylib.so (175408 bytes -\u003e 175496 bytes)\n   system/lib64/libtest.dylib.so (466624 bytes -\u003e 472936 bytes)\n   system/lib64/libthiserror.dylib.so (19424 bytes -\u003e 19600 bytes)\ntotal size change: 247672 bytes",
+      "parentUuid": "5925a2f8_dbdb86ed",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cae9e567_d309cfce",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
