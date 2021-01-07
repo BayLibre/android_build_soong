@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d31e9f_28b647d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-01-07T05:28:37Z",
+      "side": 1,
+      "message": "PTAL\n\nThis commit is identical to the original. The breakage was in the shell script under build/make\n",
+      "revId": "b499922acc4e46c2cedd1884d8faa3135d2052b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
