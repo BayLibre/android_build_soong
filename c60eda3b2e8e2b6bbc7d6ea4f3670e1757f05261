@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71bda8a1_786e66ed",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-01-07T01:17:44Z",
+      "side": 1,
+      "message": "For me, the link shows 3 results (see below).  Not sure why this doesn\u0027t work for you.  The search term is \"pragma-pack file:Android.bp package:android\"\n\nThe warnings here are global but can be disabled by an individual project\u0027s build rules.  If we didn\u0027t need such opt-outs to get this to pass, we should move th eflags to `noOverrideGlobalCflags` further down in this file so these warnings are always enforced.\n\n* external/libusb/Android.bp\ncflags: [\n    \"-Wno-error\u003dpragma-pack\",\n    \"-Wno-error\u003dmissing-field-initializers\",\n\n* external/gptfdisk/Android.bp\n\n\"-Wno-unused-parameter\",\n\"-Wno-pragma-pack\",\n\"-Werror\",\n\n* external/mdnsresponder/Android.bp\n\n\"-Wno-overflow\",\n\"-Wno-pragma-pack\",\n\"-include iphlpapi.h\",",
+      "parentUuid": "42bbc837_abc0f071",
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dedf676f_ebc7a08a",
         "filename": "cc/config/global.go",
         "patchSetId": 1
