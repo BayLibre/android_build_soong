@@ -34,6 +34,24 @@
       "parentUuid": "67dbb795_7041434b",
       "revId": "2f6422cb1e0462012c729959556ac55d62f2dc48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c0480ba_6c4f9f6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-07T12:02:16Z",
+      "side": 1,
+      "message": "New error in mainline-prod with the new approach:\n\n    error: packages/modules/SdkExtensions/gen_sdk/Android.bp:34:1: module \"gen_sdk_test\" variant \"linux_glibc_x86_64\": path dependency \":gen_sdk\" is not a source file producing module\n\nI\u0027m considering porting the test to python to make this work (though that\u0027d be a bit of work, if there is a shortcut to making the sh_test_host work I\u0027d prefer that",
+      "parentUuid": "3e4f41cd_5fa0cb97",
+      "revId": "2f6422cb1e0462012c729959556ac55d62f2dc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
