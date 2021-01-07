@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d808aa22_2edc0761",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1783795
+      },
+      "writtenOn": "2021-01-07T22:32:50Z",
+      "side": 1,
+      "message": "\u003e Not sure why this doesn\u0027t work for you. \n\nPossibly a permissions thing?\n\n\u003e If we didn\u0027t need such opt-outs to get this to pass, we should move the flags to `noOverrideGlobalCflags` further down in this file so these warnings are always enforced.\n\nRight, I\u0027ve done that for all but one, which seems to break a lot of external stuff.",
+      "parentUuid": "71bda8a1_786e66ed",
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dedf676f_ebc7a08a",
         "filename": "cc/config/global.go",
         "patchSetId": 1
