@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "214536d8_acabe21a",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e41f99dc_e591f302",
+      "range": {
+        "startLine": 22,
+        "startChar": 48,
+        "endLine": 23,
+        "endChar": 75
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f171c71_3afd3e10",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad56de8_377ba215",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f171c71_3afd3e10",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4e1dfae_75883b25",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-09T08:22:27Z",
       "side": 1,
       "message": "For some reason `CONVERT_TO_BAZEL\u003dtrue m nothing` doesn\u0027t generate out/soong/bp2build. Is the env var filtered out before it reaches this point?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c963532_4eaab377",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "That\u0027s due to the alternate pipeline in https://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/soong_build/main.go;l\u003d62-68;drc\u003d946e0b69d25a18bf7c2d5389e62ad72a85848ada. Updated how that function is structured.",
+      "parentUuid": "d4e1dfae_75883b25",
       "range": {
         "startLine": 40,
         "startChar": 1,
@@ -112,6 +184,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bff58abc_c7ac09ee",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c18cd3_5ba0316d",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 15
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "41e36edf_04b3b92c",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 5
@@ -123,6 +219,30 @@
       "writtenOn": "2020-12-09T08:22:27Z",
       "side": 1,
       "message": "I like this approach!",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 37
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f070776_d9937596",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "I think we could iterate on it some such that each property doesn\u0027t have to be manually converted -- perhaps with the map/reduce type logic we discussed? But removing it for now that this is more of a pure refactoring and then we can add it separately.",
+      "parentUuid": "41e36edf_04b3b92c",
       "range": {
         "startLine": 109,
         "startChar": 1,
@@ -156,6 +276,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe54201_261b9add",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "We\u0027d talked about removing the GenerateBazelAttributes() for this first cl, I\u0027m going to do that and we can address these comments/any changes to that api later?",
+      "parentUuid": "0cacf5bb_e4d290e0",
+      "range": {
+        "startLine": 243,
+        "startChar": 4,
+        "endLine": 243,
+        "endChar": 22
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c921a8b5_349ac13f",
@@ -169,6 +313,30 @@
       "writtenOn": "2020-12-09T08:22:27Z",
       "side": 1,
       "message": "Also a comment to describe that the GenerateBazelAttributes function deliberately flattened the nested nested_prop to a top level attribute.",
+      "range": {
+        "startLine": 244,
+        "startChar": 4,
+        "endLine": 244,
+        "endChar": 23
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da25534d_d88537d9",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c921a8b5_349ac13f",
       "range": {
         "startLine": 244,
         "startChar": 4,
@@ -202,6 +370,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ea1b3e_09855a12",
+        "filename": "bp2build/bzl_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c89517cc_79a2c493",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dfa3fa5_857f8dce",
@@ -215,6 +407,30 @@
       "writtenOn": "2020-12-09T08:22:27Z",
       "side": 1,
       "message": "This is meant for testing that mutated props should be skipped, right? Add a comment?",
+      "range": {
+        "startLine": 19,
+        "startChar": 23,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "2fe266a2e256fea9909b2021cc6bc1cc7a62de04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53ebddd8_819d48cc",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-07T19:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dfa3fa5_857f8dce",
       "range": {
         "startLine": 19,
         "startChar": 23,
