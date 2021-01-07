@@ -16,6 +16,24 @@
       "message": "Uh oh, from mainline-prod:\n\n    error: packages/modules/SdkExtensions/gen_sdk/Android.bp:37:14: unrecognized property \"data_bins\"\n\nAnyone know a way I can set this test up that is compatible with R-soong?",
       "revId": "2f6422cb1e0462012c729959556ac55d62f2dc48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4f41cd_5fa0cb97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-07T10:40:13Z",
+      "side": 1,
+      "message": "Seems like putting my python binary gen_sdk into `data: [\":gen_sdk\"]` works around this issue. Will use that for now, but this CL still seems worth submitting",
+      "parentUuid": "67dbb795_7041434b",
+      "revId": "2f6422cb1e0462012c729959556ac55d62f2dc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
