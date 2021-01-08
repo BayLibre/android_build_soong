@@ -22,6 +22,30 @@
       },
       "revId": "529c72915fbf95e555c45bbd9dc7673cf7ee246f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7714e25_d7135e4e",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1568424
+      },
+      "writtenOn": "2021-01-08T02:12:13Z",
+      "side": 1,
+      "message": "fixed at patchset 2, thanks.",
+      "parentUuid": "3331ff62_632e6865",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "529c72915fbf95e555c45bbd9dc7673cf7ee246f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
