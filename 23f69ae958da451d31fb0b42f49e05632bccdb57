@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2517ad68_beefa09e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T01:28:03Z",
+      "side": 1,
+      "message": "Apparently this was incorrect:\n$ go test ./...\ngo: errors parsing go.mod:\n/usr/local/google/home/ccross/ssd/aosp/build/soong/go.mod:11: invalid go version \u00271.15.6\u0027: must match format 1.23\n",
+      "revId": "23f69ae958da451d31fb0b42f49e05632bccdb57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
