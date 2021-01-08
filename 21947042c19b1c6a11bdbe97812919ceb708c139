@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afbf30d9_dc4a0287",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:37:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "60e8860e_eaee3dc7",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae9e567_d309cfce",
@@ -121,6 +139,24 @@
       "side": 1,
       "message": "Mistakes like uploading to the wrong branch? That\u0027s really a minor point for me because I rarely work on a branch other than master so my workflow scripts assume fetching from master and uploading to master using a base commit originally fetched from master. Maybe I will see if I can adjust my scripts to support working on another branch if I need to do that more frequently.\n\nI don\u0027t think I could go back to repo because of its weak support for multi-repository changes, which my workflow scripts handle quite well IMHO.",
       "parentUuid": "68ff91d7_1194e130",
+      "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "894d9daa_3c6a1221",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:37:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "298073b7_c787782e",
       "revId": "21947042c19b1c6a11bdbe97812919ceb708c139",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
