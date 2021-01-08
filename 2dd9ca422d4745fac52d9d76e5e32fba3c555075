@@ -22,6 +22,30 @@
       },
       "revId": "2dd9ca422d4745fac52d9d76e5e32fba3c555075",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f4765e_3c71ed19",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-08T17:51:59Z",
+      "side": 1,
+      "message": "This matches the environment variable here: https://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/soong_build/main.go;l\u003d56;drc\u003d946e0b69d25a18bf7c2d5389e62ad72a85848ada. It probably makes sense to update them together in a separate CL...\n\nThough, we\u0027re only registering this singleton if we have CONVERT_TO_BAZEL\u003dtrue -- could probably remove this check and update only that one.",
+      "parentUuid": "afeb8d21_8eac00ac",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "2dd9ca422d4745fac52d9d76e5e32fba3c555075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
