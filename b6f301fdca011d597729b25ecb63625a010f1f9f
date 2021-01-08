@@ -22,6 +22,30 @@
       },
       "revId": "b6f301fdca011d597729b25ecb63625a010f1f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1b980e_063e733d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-01-08T15:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05cec3b9_566cb176",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 15
+      },
+      "revId": "b6f301fdca011d597729b25ecb63625a010f1f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
