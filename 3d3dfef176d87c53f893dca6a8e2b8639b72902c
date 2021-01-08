@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8566a6c5_691bda73",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T01:57:10Z",
+      "side": 1,
+      "message": "Use proptools.String(...) since this could be nil. The same applies to the other places. \n\nAlso note that the format of sdk_version/min_sdk_version can be complicated. It doesn\u0027t need to be a number, but can be a string like \"S\". So, consider using functions provided in android/api_level.go.",
+      "range": {
+        "startLine": 544,
+        "startChar": 62,
+        "endLine": 544,
+        "endChar": 94
+      },
+      "revId": "3d3dfef176d87c53f893dca6a8e2b8639b72902c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8295c858_73cd5167",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-08T01:57:10Z",
+      "side": 1,
+      "message": "This can be much more complicated: core_current, system_current, system_\u003cnumber\u003e, module_current, module_\u003cnumber\u003e, etc.",
+      "range": {
+        "startLine": 913,
+        "startChar": 42,
+        "endLine": 913,
+        "endChar": 72
+      },
+      "revId": "3d3dfef176d87c53f893dca6a8e2b8639b72902c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a338011_575a5793",
         "filename": "java/java.go",
         "patchSetId": 1
