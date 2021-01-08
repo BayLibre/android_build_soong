@@ -56,8 +56,15 @@ func (ctx *moduleContext) ProductSpecific() bool {
 
 func (ctx *moduleContext) SocSpecific() bool {
 	// Additionally check if this module is inVendor() that means it is a "vendor" variant of a
-	// module. As well as SoC specific modules, vendor variants must be installed to /vendor.
-	return ctx.ModuleContext.SocSpecific() || ctx.mod.InVendor()
+	// module. As well as SoC specific modules, vendor variants must be installed to /vendor
+	// unless they are explicitly set to be installed to /odm.
+	return ctx.ModuleContext.SocSpecific() || (ctx.mod.InVendor() && !ctx.mod.VendorVariantToOdm())
+}
+
+func (ctx *moduleContext) DeviceSpecific() bool {
+	// Some vendor variants want to be installed to /odm by setting both 'vendor_available: true'
+	// and 'vendor_to_odm: true'.
+	return ctx.ModuleContext.DeviceSpecific() || (ctx.mod.InVendor() && ctx.mod.VendorVariantToOdm())
 }
 
 func (ctx *moduleContextImpl) inProduct() bool {
@@ -83,6 +90,12 @@ func (ctx *moduleContextImpl) inRecovery() bool {
 // Returns true when this module is configured to have core and vendor variants.
 func (c *Module) HasVendorVariant() bool {
 	return Bool(c.VendorProperties.Vendor_available)
+}
+
+// Returns true when this module creates a vendor variant and wants to install the vendor variant
+// to the odm partition.
+func (c *Module) VendorVariantToOdm() bool {
+	return c.HasVendorVariant() && Bool(c.VendorProperties.Vendor_to_odm)
 }
 
 // Returns true when this module is configured to have core and product variants.
@@ -198,6 +211,12 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		}
 	}
 
+	if Bool(m.VendorProperties.Vendor_to_odm) {
+		if !Bool(m.VendorProperties.Vendor_available) {
+			mctx.PropertyErrorf("vendor_to_odm", "requires `vendor_available: true` to create a vendor variant")
+		}
+	}
+
 	if vndkdep := m.vndkdep; vndkdep != nil {
 		if vndkdep.isVndk() {
 			if vendorSpecific || productSpecific {
@@ -228,6 +247,9 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 					if !m.compareVendorAndProductProps() {
 						mctx.ModuleErrorf("product properties must have the same values with the vendor properties for VNDK modules")
 					}
+				}
+				if Bool(m.VendorProperties.Vendor_to_odm) {
+					mctx.PropertyErrorf("vendor_to_odm", "cannot be defined on a VNDK module")
 				}
 			}
 		} else {
