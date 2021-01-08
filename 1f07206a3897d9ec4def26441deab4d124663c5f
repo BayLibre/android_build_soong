@@ -235,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "917c4212_49e4b012",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:58:05Z",
+      "side": 1,
+      "message": "Yes, the path has to be known early during the module GenerateAndroidBuildActions phase, but the contents can\u0027t be known until the Singleton phase.",
+      "parentUuid": "fe017939_5a361273",
+      "range": {
+        "startLine": 36,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b10c9eee_ba3817d5",

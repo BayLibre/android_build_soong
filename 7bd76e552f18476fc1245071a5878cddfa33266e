@@ -16,6 +16,24 @@
       "message": "How does this play with namespaces? Can users define multiple singleton modules with the same type in different namespaces and selectively activate only one of them using PRODUCT_SOONG_NAMESPACES?",
       "revId": "7bd76e552f18476fc1245071a5878cddfa33266e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a078f9e1_8b182cbc",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:58:05Z",
+      "side": 1,
+      "message": "No, and I\u0027m not sure we would want that.  PRODUCT_SOONG_NAMESPACES is there for Make compatibility so that only single module with a given name is exposed to Make.  In Soong we want all namespaces usable, and eventually to use fully qualified names like Bazel to refer to dependencies so you know exactly which one you\u0027re getting.",
+      "parentUuid": "4a56c8e7_f712de37",
+      "revId": "7bd76e552f18476fc1245071a5878cddfa33266e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
