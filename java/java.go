@@ -905,6 +905,18 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 		flags = append(flags, "--transaction_names")
 	}
 
+	if j.deviceProperties.Min_sdk_version != nil {
+		flags = append(flags, "--min_sdk_version "+*j.deviceProperties.Min_sdk_version)
+	}
+
+	if j.deviceProperties.Sdk_version != nil {
+		flags = append(flags, "--sdk_version "+*j.deviceProperties.Sdk_version)
+	}
+
+	if proptools.BoolDefault(j.deviceProperties.Platform_apis, true) {
+		flags = append(flags, "--platform_apis")
+	}
+
 	return strings.Join(flags, " "), deps
 }
 

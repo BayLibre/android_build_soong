@@ -110,6 +110,9 @@ type BaseCompilerProperties struct {
 	// if set to false, use -std=c++* instead of -std=gnu++*
 	Gnu_extensions *bool
 
+	Min_sdk_version *string
+	Sdk_version     *string
+
 	Yacc *YaccProperties
 	Lex  *LexProperties
 
@@ -536,6 +539,13 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 		if Bool(compiler.Properties.Aidl.Generate_traces) {
 			flags.aidlFlags = append(flags.aidlFlags, "-t")
+		}
+		if compiler.Properties.Sdk_version != nil {
+			flags.aidlFlags = append(flags.aidlFlags, "--sdk_version "+*compiler.Properties.Sdk_version)
+		}
+
+		if compiler.Properties.Min_sdk_version != nil {
+			flags.aidlFlags = append(flags.aidlFlags, "--min_sdk_version "+*compiler.Properties.Min_sdk_version)
 		}
 
 		flags.Local.CommonFlags = append(flags.Local.CommonFlags,
