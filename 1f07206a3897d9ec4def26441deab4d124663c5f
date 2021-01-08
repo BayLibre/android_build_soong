@@ -213,6 +213,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe017939_5a361273",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-01-08T00:52:14Z",
+      "side": 1,
+      "message": "Ok, in aosp/1542205, does vndkLibrariesTxt is require to implement GenerateAndroidBuildActions so that it can set an outputFile value, which apexBundle relies on in its GenerateAndroidBuildActions?",
+      "parentUuid": "67901852_18820afc",
+      "range": {
+        "startLine": 36,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b10c9eee_ba3817d5",
         "filename": "android/singleton_module.go",
         "patchSetId": 4

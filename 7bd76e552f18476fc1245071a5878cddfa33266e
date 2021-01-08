@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a56c8e7_f712de37",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-01-08T00:52:14Z",
+      "side": 1,
+      "message": "How does this play with namespaces? Can users define multiple singleton modules with the same type in different namespaces and selectively activate only one of them using PRODUCT_SOONG_NAMESPACES?",
+      "revId": "7bd76e552f18476fc1245071a5878cddfa33266e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
