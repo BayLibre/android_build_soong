@@ -374,6 +374,10 @@ type VendorProperties struct {
 	// Nothing happens if BOARD_VNDK_VERSION isn't set in the BoardConfig.mk
 	Vendor_available *bool
 
+	// installs the vendor variant to /odm or /vendor/odm instead of the /vendor.
+	// The module must have "vendor_available: true" to create a vendor variant.
+	Vendor_to_odm *bool
+
 	// whether this module should be allowed to be directly depended by other
 	// modules with `product_specific: true` or `product_available: true`.
 	// If set to true, an additional product variant will be built separately
