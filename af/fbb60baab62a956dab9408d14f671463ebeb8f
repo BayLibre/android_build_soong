@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Jingwen Chen <jingwen@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Christopher Parsons <cparsons@google.com>
+Submitted-at: Fri, 08 Jan 2021 15:58:34 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1535265
+Project: platform/build/soong
+Branch: refs/heads/master
