@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d310343_78894e7d",
+        "filename": "cc/cc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-08T05:01:54Z",
+      "side": 1,
+      "message": "As LLNDK is VNDK, we added LLNDK-private to vndkprivate.libraries.txt.\nThe name must be come from the old list name that we originally used. I think it\u0027s fine.",
+      "parentUuid": "48944a3f_8c1b9c0f",
+      "range": {
+        "startLine": 431,
+        "startChar": 79,
+        "endLine": 432,
+        "endChar": 43
+      },
+      "revId": "47b729ec7ecd6977c3776ce442f8ea5af18d63e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "857c0b24_bac3a630",
         "filename": "cc/vndk.go",
         "patchSetId": 9
