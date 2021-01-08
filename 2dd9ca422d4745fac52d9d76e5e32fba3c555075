@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afeb8d21_8eac00ac",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-08T07:39:43Z",
+      "side": 1,
+      "message": "GENERATE_BAZEL_FILES according to the design doc?",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "2dd9ca422d4745fac52d9d76e5e32fba3c555075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
