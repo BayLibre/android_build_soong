@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e991335_c8dc3563",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-08T20:55:12Z",
+      "side": 1,
+      "message": "\u003e since this could be nil\n\nDo see L543 😊\n\nAnyway - given this complexity and the comments on your other CL. I\u0027m going to abandon this effort and find another way to solve this (specific annotation for using binders in RPC?)",
+      "parentUuid": "8566a6c5_691bda73",
+      "range": {
+        "startLine": 544,
+        "startChar": 62,
+        "endLine": 544,
+        "endChar": 94
+      },
+      "revId": "3d3dfef176d87c53f893dca6a8e2b8639b72902c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8295c858_73cd5167",
         "filename": "java/java.go",
         "patchSetId": 1
