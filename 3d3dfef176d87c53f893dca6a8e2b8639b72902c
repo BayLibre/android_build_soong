@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a338011_575a5793",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-08T01:54:26Z",
+      "side": 1,
+      "message": "Why does `platform_apis` default to `true` instead of `false`?",
+      "range": {
+        "startLine": 916,
+        "startChar": 3,
+        "endLine": 916,
+        "endChar": 66
+      },
+      "revId": "3d3dfef176d87c53f893dca6a8e2b8639b72902c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
