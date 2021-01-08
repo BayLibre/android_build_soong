@@ -67,6 +67,13 @@ func (h *hiddenAPISingleton) GenerateBuildActions(ctx android.SingletonContext) 
 
 	stubFlagsRule(ctx)
 
+	// If there is a prebuilt hiddenapi dir, generate rules to use the
+	// files within.
+	if len(ctx.Config().PrebuiltHiddenApiDir(ctx)) != 0 {
+		h.flags = prebuiltFlagsRule(ctx)
+		return
+	}
+
 	// These rules depend on files located in frameworks/base, skip them if running in a tree that doesn't have them.
 	if ctx.Config().FrameworksBaseDirExists(ctx) {
 		h.flags = flagsRule(ctx)
@@ -210,6 +217,19 @@ func stubFlagsRule(ctx android.SingletonContext) {
 	commitChangeForRestat(rule, tempPath, outputPath)
 
 	rule.Build("hiddenAPIStubFlagsFile", "hiddenapi stub flags")
+}
+
+func prebuiltFlagsRule(ctx android.SingletonContext) android.Path {
+	outputPath := hiddenAPISingletonPaths(ctx).flags
+	inputPath := android.PathForSource(ctx, ctx.Config().PrebuiltHiddenApiDir(ctx), "hiddenapi-flags.csv")
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   android.Cp,
+		Output: outputPath,
+		Input:  inputPath,
+	})
+
+	return outputPath
 }
 
 // flagsRule creates a rule to build hiddenapi-flags.csv out of flags.csv files generated for boot image modules and
@@ -388,6 +408,20 @@ type hiddenAPIIndexSingleton struct {
 func (h *hiddenAPIIndexSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	// Don't run any hiddenapi rules if UNSAFE_DISABLE_HIDDENAPI_FLAGS=true
 	if ctx.Config().IsEnvTrue("UNSAFE_DISABLE_HIDDENAPI_FLAGS") {
+		return
+	}
+
+	if len(ctx.Config().PrebuiltHiddenApiDir(ctx)) != 0 {
+		outputPath := hiddenAPISingletonPaths(ctx).index
+		inputPath := android.PathForSource(ctx, ctx.Config().PrebuiltHiddenApiDir(ctx), "hiddenapi-index.csv")
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Cp,
+			Output: outputPath,
+			Input:  inputPath,
+		})
+
+		h.index = outputPath
 		return
 	}
 
