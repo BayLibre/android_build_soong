@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd07252_5dfe5e42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-08T09:17:58Z",
+      "side": 1,
+      "message": "I want to define a new property \"vendor_to_odm\" to install a vendor variant module to the odm partition (b/176147321).\nPlease feel free to give any comments or suggestions on the property name or the code.\n\nThanks!",
+      "revId": "89d71b7fee371a9b53f96f7b7e24ccae95c0f720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
