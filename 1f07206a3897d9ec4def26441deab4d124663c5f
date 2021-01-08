@@ -81,6 +81,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a8eaa5_be05abbd",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:04:48Z",
+      "side": 1,
+      "message": "Clarified that this is all modules, normal or singleton.",
+      "parentUuid": "3550d56e_48d74d53",
+      "range": {
+        "startLine": 30,
+        "startChar": 84,
+        "endLine": 30,
+        "endChar": 95
+      },
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71e57f6a_63fa918c",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:04:48Z",
+      "side": 1,
+      "message": "Clarified that GenerateSingletonBuildActions are called in registration order.",
+      "parentUuid": "3b368f36_46b06fc5",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de125899_4884289e",
@@ -98,6 +146,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed612289_8cccf7fe",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:04:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de125899_4884289e",
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6b13855_d54327ad",
@@ -111,6 +177,30 @@
       "writtenOn": "2021-01-07T22:27:35Z",
       "side": 1,
       "message": "I can\u0027t wrap my head around when this is actually needed. Do you imagine singleton modules would generally have both GenerateAndroidBuildActions and GenerateSingletonBuildActions defined? Can you suggest some examples?",
+      "range": {
+        "startLine": 36,
+        "startChar": 20,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67901852_18820afc",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:04:48Z",
+      "side": 1,
+      "message": "The case I added this for is removing global state from the llndk_libraries_txt module type (previously vndk_libraries_txt), which is a module that produces a text file containing a list of LLNDK libraries.  It needs to be a module so it can be embedded in an apex, but it needs to access all modules to find the LLNDK libraries.  Previously it was using global state collected during a mutator pass, aosp/1542205 converts it to a SingletonModule.",
+      "parentUuid": "d6b13855_d54327ad",
       "range": {
         "startLine": 36,
         "startChar": 20,
@@ -158,6 +248,30 @@
       "side": 1,
       "message": "In a similar vein, if singleton modules can\u0027t have any variants (even a single one), shouldn\u0027t this check if ctx.ModuleSubDir() is an empty string instead?",
       "parentUuid": "b10c9eee_ba3817d5",
+      "range": {
+        "startLine": 63,
+        "startChar": 20,
+        "endLine": 63,
+        "endChar": 67
+      },
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1646f0d3_5a10d814",
+        "filename": "android/singleton_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-08T00:04:48Z",
+      "side": 1,
+      "message": "Clarified above and in the error, it can have a single variant.  Calling ctx.CreateVariations(\"foo\") is fine, just not ctx.CreateVariations(\"foo\", \"bar\").",
+      "parentUuid": "1f06bbbc_c44a8d78",
       "range": {
         "startLine": 63,
         "startChar": 20,
