@@ -70,6 +70,24 @@
       "parentUuid": "6c0480ba_6c4f9f6e",
       "revId": "2f6422cb1e0462012c729959556ac55d62f2dc48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df6f4950_cb151e46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-08T15:17:20Z",
+      "side": 1,
+      "message": "(it worked)",
+      "parentUuid": "379aa48f_932ff486",
+      "revId": "2f6422cb1e0462012c729959556ac55d62f2dc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
