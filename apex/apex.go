@@ -355,7 +355,8 @@ type apexBundle struct {
 	prebuiltFileToDelete string
 
 	// Path of API coverage generate file
-	coverageOutputPath android.ModuleOutPath
+	coverageOutputPath         android.ModuleOutPath
+	backedbyCoverageOutputPath android.ModuleOutPath
 }
 
 // apexFileClass represents a type of file that can be included in APEX.

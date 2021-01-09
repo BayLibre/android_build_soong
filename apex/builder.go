@@ -67,6 +67,7 @@ func init() {
 	pctx.HostBinToolVariable("make_f2fs", "make_f2fs")
 	pctx.HostBinToolVariable("sload_f2fs", "sload_f2fs")
 	pctx.SourcePathVariable("genNdkUsedbyApexPath", "build/soong/scripts/gen_ndk_usedby_apex.sh")
+	pctx.SourcePathVariable("genNdkBackedbyApexPath", "build/soong/scripts/gen_ndk_backedby_apex.sh")
 }
 
 var (
@@ -184,6 +185,11 @@ var (
 		Description: "Generate symbol list used by Apex",
 	}, "image_dir", "readelf")
 
+	generateAPIsBackedbyApexRule = pctx.StaticRule("generateAPIsBackedbyApexRule", blueprint.RuleParams{
+		Command:     "$genNdkBackedbyApexPath ${image_dir} ${out} ${ndk_library_list}",
+		CommandDeps: []string{"${genNdkBackedbyApexPath}"},
+		Description: "Generate symbol list backed by Apex",
+	}, "image_dir", "ndk_library_list")
 	// Don't add more rules here. Consider using android.NewRuleBuilder instead.
 )
 
@@ -698,6 +704,20 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			},
 		})
 		a.coverageOutputPath = apisUsedbyOutputFile
+
+		apisBackedbyOutputFile := android.PathForModuleOut(ctx, a.Name()+"_backing.txt")
+		ndkLibraryList := android.PathsForSource(ctx, []string{"system/core/rootdir/etc/public.libraries.android.txt"})[0]
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        generateAPIsBackedbyApexRule,
+			Implicits:   implicitInputs,
+			Description: "NDK library backing by APEX modules coverage",
+			Output:      apisBackedbyOutputFile,
+			Args: map[string]string{
+				"image_dir":        imageDir.String(),
+				"ndk_library_list": ndkLibraryList.String(),
+			},
+		})
+		a.backedbyCoverageOutputPath = apisBackedbyOutputFile
 
 		bundleConfig := a.buildBundleConfig(ctx)
 
