@@ -166,3 +166,65 @@ func TestJavaSdkLibrary_RequireXmlPermissionFile(t *testing.T) {
 		}
 	}
 }
+
+func TestAndroidAppImportExportPackageResources(t *testing.T) {
+	ctx, config := testJava(t, `
+		android_app_import {
+			name: "framework-res",
+			certificate: "platform",
+			apk: "package-res.apk",
+			prefer: true,
+			export_package_resources: true,
+		}
+	`)
+
+	mod := ctx.ModuleForTests("prebuilt_framework-res", "android_common").Module()
+	entries := android.AndroidMkEntriesForTest(t, config, "", mod)[0]
+
+	expectedPath := "."
+	expectedPrebuiltModuleFile := buildDir + "/.intermediates/prebuilt_framework-res/android_common/verify_uses_libraries/package-res.apk"
+	// Verify installation to /system/framework.
+	expectedSoongBuiltInstalledOdex := buildDir + "/.intermediates/prebuilt_framework-res/android_common/dexpreopt/oat/arm64/package.odex:/system/framework/oat/arm64/framework-res.odex"
+	expectedSoongBuiltInstalledVdex := buildDir + "/.intermediates/prebuilt_framework-res/android_common/dexpreopt/oat/arm64/package.vdex:/system/framework/oat/arm64/framework-res.vdex"
+	expectedSoongBuiltInstalled := expectedSoongBuiltInstalledOdex + " " + expectedSoongBuiltInstalledVdex
+	// Verify that the apk is preprocessed: The export package is the same
+	// as the prebuilt.
+	expectedSoongResourceExportPackage := expectedPrebuiltModuleFile
+
+	actualPath := entries.EntryMap["LOCAL_PATH"]
+	actualPrebuiltModuleFile := entries.EntryMap["LOCAL_PREBUILT_MODULE_FILE"]
+	actualSoongBuiltInstalled := entries.EntryMap["LOCAL_SOONG_BUILT_INSTALLED"]
+	actualSoongResourceExportPackage := entries.EntryMap["LOCAL_SOONG_RESOURCE_EXPORT_PACKAGE"]
+
+	if len(actualPath) != 1 {
+		t.Errorf("LOCAL_PATH incorrect len %d", len(actualPath))
+	} else {
+		if actualPath[0] != expectedPath {
+			t.Errorf("LOCAL_PATH mismatch, actual: %s, expected: %s", actualPath[0], expectedPath)
+		}
+	}
+
+	if len(actualPrebuiltModuleFile) != 1 {
+		t.Errorf("LOCAL_PREBUILT_MODULE_FILE incorrect len %d", len(actualPrebuiltModuleFile))
+	} else {
+		if actualPrebuiltModuleFile[0] != expectedPrebuiltModuleFile {
+			t.Errorf("LOCAL_PREBUILT_MODULE_FILE mismatch, actual: %s, expected: %s", actualPrebuiltModuleFile[0], expectedPrebuiltModuleFile)
+		}
+	}
+
+	if len(actualSoongBuiltInstalled) != 1 {
+		t.Errorf("LOCAL_SOONG_BUILT_INSTALLED incorrect len %d", len(actualSoongBuiltInstalled))
+	} else {
+		if actualSoongBuiltInstalled[0] != expectedSoongBuiltInstalled {
+			t.Errorf("LOCAL_SOONG_BUILT_INSTALLED mismatch, actual: %s, expected: %s", actualSoongBuiltInstalled[0], expectedSoongBuiltInstalled)
+		}
+	}
+
+	if len(actualSoongResourceExportPackage) != 1 {
+		t.Errorf("LOCAL_SOONG_RESOURCE_EXPORT_PACKAGE incorrect len %d", len(actualSoongResourceExportPackage))
+	} else {
+		if actualSoongResourceExportPackage[0] != expectedSoongResourceExportPackage {
+			t.Errorf("LOCAL_SOONG_RESOURCE_EXPORT_PACKAGE mismatch, actual: %s, expected: %s", actualSoongResourceExportPackage[0], expectedSoongResourceExportPackage)
+		}
+	}
+}
