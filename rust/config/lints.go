@@ -52,6 +52,7 @@ var (
 	// deny.
 	defaultClippyLints = []string{
 		"-A clippy::type-complexity",
+		"-A clippy::needless-lifetimes",
 	}
 
 	// Rust lints for vendor code.
