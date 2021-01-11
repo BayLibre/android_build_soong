@@ -33,6 +33,24 @@
       "message": "This looks very inconsistent now. Would you like to capitalize the rest of the constants, or revert these two? Also \"Header\" method in cc/cc.go looks similarly out of place.",
       "revId": "3968d8f6780b33ab26c7f9ec06e2fdb6c0f7d26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91370eb3_73b4cc75",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-11T18:14:34Z",
+      "side": 1,
+      "message": "These two in particular are exported, and are needed by the follow-on patch that enables sanitizers in Rust modules.\n\nI didn\u0027t export the others since Rust doesn\u0027t (yet?) support these (and thus don\u0027t need to be exported), but we can export the rest to make this more consistent.\n\nHeader() is now part of LinkableInterface, so it needs to be exported.",
+      "parentUuid": "e02866a1_a86bfa73",
+      "revId": "3968d8f6780b33ab26c7f9ec06e2fdb6c0f7d26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
