@@ -16,6 +16,24 @@
       "message": "Can you add a godoc comment for this method?",
       "revId": "badb292e71a5b1f5056b9833ce479629b8b984fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da6fa53_69aa543a",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-11T19:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaee4f37_52276286",
+      "revId": "badb292e71a5b1f5056b9833ce479629b8b984fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
