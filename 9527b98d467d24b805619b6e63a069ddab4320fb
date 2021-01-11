@@ -33,6 +33,24 @@
       "message": "We have to think very carefully about the semantics here.  PRODUCT_SOONG_NAMESPACES is expected to be a temporary measure during the transition to Make, which can only handle a single module with the same name for a given class.\n\nI\u0027m not sure how prebuilts need to work in a Soong-only build, especially across namespaces.  Maybe instead of checking whether the prebuilt is exposed to make we should only disable the source module if the source module is visible (i.e. in the same namespace or in an imported namespace) to the namespace that contains the prebuilt module?",
       "revId": "9527b98d467d24b805619b6e63a069ddab4320fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d295fb61_60c8745f",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1090594
+      },
+      "writtenOn": "2021-01-11T18:56:28Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure how to do that, if you\u0027re able to suggest the code changes for that approach i can verify that it works on my end.",
+      "parentUuid": "64bbb4fb_62b1a338",
+      "revId": "9527b98d467d24b805619b6e63a069ddab4320fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
