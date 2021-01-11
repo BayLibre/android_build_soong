@@ -51,6 +51,24 @@
       "parentUuid": "e02866a1_a86bfa73",
       "revId": "3968d8f6780b33ab26c7f9ec06e2fdb6c0f7d26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8e1ffc_52139ace",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2021-01-11T18:51:12Z",
+      "side": 1,
+      "message": "Oh right, sorry, I forgot that capitalization is actually meaningful in Go.\nIt\u0027s fine then. Up to you if you want to export the other constants or not.",
+      "parentUuid": "91370eb3_73b4cc75",
+      "revId": "3968d8f6780b33ab26c7f9ec06e2fdb6c0f7d26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
