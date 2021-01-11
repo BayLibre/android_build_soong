@@ -39,6 +39,23 @@
       },
       "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2896dcd_c1142eb1",
+        "filename": "scripts/unpack-prebuilt-apex.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-11T23:12:29Z",
+      "side": 1,
+      "message": "I found that deapexer can extract the files with Jan 1 1970 timestamps, and ninja doesn\u0027t like that. My workaround was to touch them in the for loop below, but maybe deapexer should be fixed to extract with current timestamps by default?",
+      "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
