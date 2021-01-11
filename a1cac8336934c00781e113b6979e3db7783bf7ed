@@ -16,6 +16,24 @@
       "message": "Let\u0027s remove GenerateBazelAttributes hooks from this refactor, as discussed in the doc",
       "revId": "a1cac8336934c00781e113b6979e3db7783bf7ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f74ae4_4b9d2db8",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-11T20:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea3c450_cbe9784f",
+      "revId": "a1cac8336934c00781e113b6979e3db7783bf7ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
