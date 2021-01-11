@@ -51,33 +51,33 @@ const (
 func (ctx *moduleContext) ProductSpecific() bool {
 	// Additionally check if this module is inProduct() that means it is a "product" variant of a
 	// module. As well as product specific modules, product variants must be installed to /product.
-	return ctx.ModuleContext.ProductSpecific() || ctx.mod.InProduct()
+	return ctx.ModuleContext.ProductSpecific() || ctx.mod.IsProductVariant()
 }
 
 func (ctx *moduleContext) SocSpecific() bool {
 	// Additionally check if this module is inVendor() that means it is a "vendor" variant of a
 	// module. As well as SoC specific modules, vendor variants must be installed to /vendor.
-	return ctx.ModuleContext.SocSpecific() || ctx.mod.InVendor()
+	return ctx.ModuleContext.SocSpecific() || ctx.mod.IsVendorVariant()
 }
 
 func (ctx *moduleContextImpl) inProduct() bool {
-	return ctx.mod.InProduct()
+	return ctx.mod.IsProductVariant()
 }
 
 func (ctx *moduleContextImpl) inVendor() bool {
-	return ctx.mod.InVendor()
+	return ctx.mod.IsVendorVariant()
 }
 
 func (ctx *moduleContextImpl) inRamdisk() bool {
-	return ctx.mod.InRamdisk()
+	return ctx.mod.IsRamdiskVariant()
 }
 
 func (ctx *moduleContextImpl) inVendorRamdisk() bool {
-	return ctx.mod.InVendorRamdisk()
+	return ctx.mod.IsVendorRamdiskVariant()
 }
 
 func (ctx *moduleContextImpl) inRecovery() bool {
-	return ctx.mod.InRecovery()
+	return ctx.mod.IsRecoveryVariant()
 }
 
 // Returns true when this module is configured to have core and vendor variants.
@@ -96,37 +96,15 @@ func (c *Module) HasNonSystemVariants() bool {
 }
 
 // Returns true if the module is "product" variant. Usually these modules are installed in /product
-func (c *Module) InProduct() bool {
+// This checks the image variant of the module, so this MUST be called after ImageMutator.
+func (c *Module) IsProductVariant() bool {
 	return c.Properties.ImageVariationPrefix == ProductVariationPrefix
 }
 
 // Returns true if the module is "vendor" variant. Usually these modules are installed in /vendor
-func (c *Module) InVendor() bool {
+// This checks the image variant of the module, so this MUST be called after ImageMutator.
+func (c *Module) IsVendorVariant() bool {
 	return c.Properties.ImageVariationPrefix == VendorVariationPrefix
-}
-
-func (c *Module) InRamdisk() bool {
-	return c.ModuleBase.InRamdisk() || c.ModuleBase.InstallInRamdisk()
-}
-
-func (c *Module) InVendorRamdisk() bool {
-	return c.ModuleBase.InVendorRamdisk() || c.ModuleBase.InstallInVendorRamdisk()
-}
-
-func (c *Module) InRecovery() bool {
-	return c.ModuleBase.InRecovery() || c.ModuleBase.InstallInRecovery()
-}
-
-func (c *Module) OnlyInRamdisk() bool {
-	return c.ModuleBase.InstallInRamdisk()
-}
-
-func (c *Module) OnlyInVendorRamdisk() bool {
-	return c.ModuleBase.InstallInVendorRamdisk()
-}
-
-func (c *Module) OnlyInRecovery() bool {
-	return c.ModuleBase.InstallInRecovery()
 }
 
 func visitPropsAndCompareVendorAndProductProps(v reflect.Value) bool {

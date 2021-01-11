@@ -1850,17 +1850,17 @@ func createPerApiVersionVariations(mctx android.BottomUpMutatorContext, minSdkVe
 
 func CanBeOrLinkAgainstVersionVariants(module interface {
 	Host() bool
-	InRamdisk() bool
-	InVendorRamdisk() bool
+	IsRamdiskVariant() bool
+	IsVendorRamdiskVariant() bool
 }) bool {
-	return !module.Host() && !module.InRamdisk() && !module.InVendorRamdisk()
+	return !module.Host() && !module.IsRamdiskVariant() && !module.IsVendorRamdiskVariant()
 }
 
 func CanBeVersionVariant(module interface {
 	Host() bool
-	InRamdisk() bool
-	InVendorRamdisk() bool
-	InRecovery() bool
+	IsRamdiskVariant() bool
+	IsVendorRamdiskVariant() bool
+	IsRecoveryVariant() bool
 	CcLibraryInterface() bool
 	Shared() bool
 }) bool {

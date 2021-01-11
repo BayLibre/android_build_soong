@@ -104,7 +104,7 @@ func (vendorSnapshotImage) shouldGenerateSnapshot(ctx android.SingletonContext) 
 }
 
 func (vendorSnapshotImage) inImage(m *Module) func() bool {
-	return m.InVendor
+	return m.IsVendorVariant
 }
 
 func (vendorSnapshotImage) available(m *Module) *bool {
@@ -159,9 +159,9 @@ func (vendorSnapshotImage) shouldBeAddedToSuffixModules(module *Module) bool {
 
 	// But we can't just check SocSpecific() since we already passed the image mutator.
 	// Check ramdisk and recovery to see if we are real "vendor: true" module.
-	ramdiskAvailable := module.InRamdisk() && !module.OnlyInRamdisk()
-	vendorRamdiskAvailable := module.InVendorRamdisk() && !module.OnlyInVendorRamdisk()
-	recoveryAvailable := module.InRecovery() && !module.OnlyInRecovery()
+	ramdiskAvailable := module.IsRamdiskVariant() && !module.InstallInRamdisk()
+	vendorRamdiskAvailable := module.IsVendorRamdiskVariant() && !module.InstallInVendorRamdisk()
+	recoveryAvailable := module.IsRecoveryVariant() && !module.InstallInRecovery()
 
 	return !ramdiskAvailable && !recoveryAvailable && !vendorRamdiskAvailable
 }
@@ -209,7 +209,7 @@ func (recoverySnapshotImage) shouldGenerateSnapshot(ctx android.SingletonContext
 }
 
 func (recoverySnapshotImage) inImage(m *Module) func() bool {
-	return m.InRecovery
+	return m.IsRecoveryVariant
 }
 
 func (recoverySnapshotImage) available(m *Module) *bool {
@@ -267,12 +267,12 @@ func (recoverySnapshotImage) isUsingSnapshot(cfg android.DeviceConfig) bool {
 
 func (recoverySnapshotImage) skipModuleMutator(ctx android.BottomUpMutatorContext) bool {
 	module, ok := ctx.Module().(*Module)
-	return !ok || !module.InRecovery()
+	return !ok || !module.IsRecoveryVariant()
 }
 
 func (recoverySnapshotImage) skipSourceMutator(ctx android.BottomUpMutatorContext) bool {
 	module, ok := ctx.Module().(*Module)
-	return !ok || !module.InRecovery()
+	return !ok || !module.IsRecoveryVariant()
 }
 
 var vendorSnapshotImageSingleton vendorSnapshotImage
@@ -546,9 +546,9 @@ func (p *snapshotLibraryDecorator) matchesWithDevice(config android.DeviceConfig
 func (p *snapshotLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path {
 	m := ctx.Module().(*Module)
 
-	if m.InVendor() && vendorSuffixModules(ctx.Config())[m.BaseModuleName()] {
+	if m.IsVendorVariant() && vendorSuffixModules(ctx.Config())[m.BaseModuleName()] {
 		p.androidMkSuffix = vendorSuffix
-	} else if m.InRecovery() && recoverySuffixModules(ctx.Config())[m.BaseModuleName()] {
+	} else if m.IsRecoveryVariant() && recoverySuffixModules(ctx.Config())[m.BaseModuleName()] {
 		p.androidMkSuffix = recoverySuffix
 	}
 
@@ -769,9 +769,9 @@ func (p *snapshotBinaryDecorator) link(ctx ModuleContext, flags Flags, deps Path
 	binName := in.Base()
 
 	m := ctx.Module().(*Module)
-	if m.InVendor() && vendorSuffixModules(ctx.Config())[m.BaseModuleName()] {
+	if m.IsVendorVariant() && vendorSuffixModules(ctx.Config())[m.BaseModuleName()] {
 		p.androidMkSuffix = vendorSuffix
-	} else if m.InRecovery() && recoverySuffixModules(ctx.Config())[m.BaseModuleName()] {
+	} else if m.IsRecoveryVariant() && recoverySuffixModules(ctx.Config())[m.BaseModuleName()] {
 		p.androidMkSuffix = recoverySuffix
 
 	}
@@ -868,9 +868,9 @@ func (p *snapshotObjectLinker) link(ctx ModuleContext, flags Flags, deps PathDep
 
 	m := ctx.Module().(*Module)
 
-	if m.InVendor() && vendorSuffixModules(ctx.Config())[m.BaseModuleName()] {
+	if m.IsVendorVariant() && vendorSuffixModules(ctx.Config())[m.BaseModuleName()] {
 		p.androidMkSuffix = vendorSuffix
-	} else if m.InRecovery() && recoverySuffixModules(ctx.Config())[m.BaseModuleName()] {
+	} else if m.IsRecoveryVariant() && recoverySuffixModules(ctx.Config())[m.BaseModuleName()] {
 		p.androidMkSuffix = recoverySuffix
 	}
 

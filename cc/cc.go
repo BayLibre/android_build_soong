@@ -1044,7 +1044,7 @@ func (c *Module) UseVndk() bool {
 }
 
 func (c *Module) canUseSdk() bool {
-	return c.Os() == android.Android && !c.UseVndk() && !c.InRamdisk() && !c.InRecovery() && !c.InVendorRamdisk()
+	return c.Os() == android.Android && !c.UseVndk() && !c.IsRamdiskVariant() && !c.IsRecoveryVariant() && !c.IsVendorRamdiskVariant()
 }
 
 func (c *Module) UseSdk() bool {
@@ -1461,7 +1461,7 @@ func (c *Module) getNameSuffixWithVndkVersion(ctx android.ModuleContext) string 
 	// "current", it will append the VNDK version to the name suffix.
 	var vndkVersion string
 	var nameSuffix string
-	if c.InProduct() {
+	if c.IsProductVariant() {
 		vndkVersion = ctx.DeviceConfig().ProductVndkVersion()
 		nameSuffix = productSuffix
 	} else {
@@ -1514,11 +1514,11 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		// .vendor suffix is added for backward compatibility with VNDK snapshot whose names with
 		// such suffixes are already hard-coded in prebuilts/vndk/.../Android.bp.
 		c.Properties.SubName += vendorSuffix
-	} else if c.InRamdisk() && !c.OnlyInRamdisk() {
+	} else if c.IsRamdiskVariant() && !c.InstallInRamdisk() {
 		c.Properties.SubName += ramdiskSuffix
-	} else if c.InVendorRamdisk() && !c.OnlyInVendorRamdisk() {
+	} else if c.IsVendorRamdiskVariant() && !c.InstallInVendorRamdisk() {
 		c.Properties.SubName += vendorRamdiskSuffix
-	} else if c.InRecovery() && !c.OnlyInRecovery() {
+	} else if c.IsRecoveryVariant() && !c.InstallInRecovery() {
 		c.Properties.SubName += recoverySuffix
 	} else if c.IsSdkVariant() && (c.Properties.SdkAndPlatformVariantVisibleToMake || c.SplitPerApiLevel()) {
 		c.Properties.SubName += sdkSuffix
@@ -1629,9 +1629,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		// force anything in the make world to link against the stubs library.  (unless it
 		// is explicitly referenced via .bootstrap suffix or the module is marked with
 		// 'bootstrap: true').
-		if c.HasStubsVariants() && c.NotInPlatform() && !c.InRamdisk() &&
-			!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
-			c.IsStubs() && !c.InVendorRamdisk() {
+		if c.HasStubsVariants() && c.NotInPlatform() && !c.IsRamdiskVariant() &&
+			!c.IsRecoveryVariant() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
+			c.IsStubs() && !c.IsVendorRamdiskVariant() {
 			c.Properties.HideFromMake = false // unhide
 			// Note: this is still non-installable
 		}
@@ -1901,7 +1901,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			for _, entry := range list {
 				// strip #version suffix out
 				name, _ := StubsLibNameAndVersion(entry)
-				if c.InRecovery() {
+				if c.IsRecoveryVariant() {
 					recoverySnapshotVersion :=
 						actx.DeviceConfig().RecoverySnapshotVersion()
 					if recoverySnapshotVersion == "current" ||
@@ -1962,7 +1962,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	snapshotStaticLibs := vendorSnapshotStaticLibs(actx.Config())
 	snapshotObjects := vendorSnapshotObjects(actx.Config())
 
-	if c.InRecovery() {
+	if c.IsRecoveryVariant() {
 		rewriteSnapshotLibs = func(lib string, snapshotMap *snapshotMap) string {
 			recoverySnapshotVersion :=
 				actx.DeviceConfig().RecoverySnapshotVersion()
@@ -2201,15 +2201,15 @@ func checkLinkType(ctx android.BaseModuleContext, from LinkableInterface, to Lin
 		// Platform code can link to anything
 		return
 	}
-	if from.InRamdisk() {
+	if from.IsRamdiskVariant() {
 		// Ramdisk code is not NDK
 		return
 	}
-	if from.InVendorRamdisk() {
+	if from.IsVendorRamdiskVariant() {
 		// Vendor ramdisk code is not NDK
 		return
 	}
-	if from.InRecovery() {
+	if from.IsRecoveryVariant() {
 		// Recovery code is not NDK
 		return
 	}
@@ -2849,9 +2849,9 @@ func (c *Module) makeLibName(ctx android.ModuleContext, ccDep LinkableInterface,
 				return baseName + ".vendor"
 			}
 
-			if c.InVendor() && vendorSuffixModules[baseName] {
+			if c.IsVendorVariant() && vendorSuffixModules[baseName] {
 				return baseName + ".vendor"
-			} else if c.InRecovery() && recoverySuffixModules[baseName] {
+			} else if c.IsRecoveryVariant() && recoverySuffixModules[baseName] {
 				return baseName + ".recovery"
 			} else {
 				return baseName
@@ -2860,7 +2860,7 @@ func (c *Module) makeLibName(ctx android.ModuleContext, ccDep LinkableInterface,
 	}
 
 	if ctx.DeviceConfig().VndkUseCoreVariant() && ccDep.IsVndk() && !ccDep.MustUseVendorVariant() &&
-		!c.InRamdisk() && !c.InVendorRamdisk() && !c.InRecovery() {
+		!c.IsRamdiskVariant() && !c.IsVendorRamdiskVariant() && !c.IsRecoveryVariant() {
 		// The vendor module is a no-vendor-variant VNDK library.  Depend on the
 		// core module instead.
 		return libName
@@ -2870,11 +2870,11 @@ func (c *Module) makeLibName(ctx android.ModuleContext, ccDep LinkableInterface,
 		return libName + c.getNameSuffixWithVndkVersion(ctx)
 	} else if (ctx.Platform() || ctx.ProductSpecific()) && isVendorPublicLib {
 		return libName + vendorPublicLibrarySuffix
-	} else if ccDep.InRamdisk() && !ccDep.OnlyInRamdisk() {
+	} else if ccDep.IsRamdiskVariant() && !ccDep.InstallInRamdisk() {
 		return libName + ramdiskSuffix
-	} else if ccDep.InVendorRamdisk() && !ccDep.OnlyInVendorRamdisk() {
+	} else if ccDep.IsVendorRamdiskVariant() && !ccDep.InstallInVendorRamdisk() {
 		return libName + vendorRamdiskSuffix
-	} else if ccDep.InRecovery() && !ccDep.OnlyInRecovery() {
+	} else if ccDep.IsRecoveryVariant() && !ccDep.InstallInRecovery() {
 		return libName + recoverySuffix
 	} else if ccDep.Target().NativeBridge == android.NativeBridgeEnabled {
 		return libName + nativeBridgeSuffix
@@ -2898,18 +2898,6 @@ func (c *Module) InstallInSanitizerDir() bool {
 		return true
 	}
 	return c.installer.inSanitizerDir()
-}
-
-func (c *Module) InstallInRamdisk() bool {
-	return c.InRamdisk()
-}
-
-func (c *Module) InstallInVendorRamdisk() bool {
-	return c.InVendorRamdisk()
-}
-
-func (c *Module) InstallInRecovery() bool {
-	return c.InRecovery()
 }
 
 func (c *Module) MakeUninstallable() {
@@ -3003,15 +2991,15 @@ func GetMakeLinkType(actx android.ModuleContext, c LinkableInterface) string {
 			}
 			return "native:vndk"
 		}
-		if c.InProduct() {
+		if c.IsProductVariant() {
 			return "native:product"
 		}
 		return "native:vendor"
-	} else if c.InRamdisk() {
+	} else if c.IsRamdiskVariant() {
 		return "native:ramdisk"
-	} else if c.InVendorRamdisk() {
+	} else if c.IsVendorRamdiskVariant() {
 		return "native:vendor_ramdisk"
-	} else if c.InRecovery() {
+	} else if c.IsRecoveryVariant() {
 		return "native:recovery"
 	} else if c.Target().Os == android.Android && c.SdkVersion() != "" {
 		return "native:ndk:none:none"

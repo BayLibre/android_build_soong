@@ -126,42 +126,6 @@ type PrebuiltEtc struct {
 	additionalDependencies *android.Paths
 }
 
-func (p *PrebuiltEtc) inRamdisk() bool {
-	return p.ModuleBase.InRamdisk() || p.ModuleBase.InstallInRamdisk()
-}
-
-func (p *PrebuiltEtc) onlyInRamdisk() bool {
-	return p.ModuleBase.InstallInRamdisk()
-}
-
-func (p *PrebuiltEtc) InstallInRamdisk() bool {
-	return p.inRamdisk()
-}
-
-func (p *PrebuiltEtc) inVendorRamdisk() bool {
-	return p.ModuleBase.InVendorRamdisk() || p.ModuleBase.InstallInVendorRamdisk()
-}
-
-func (p *PrebuiltEtc) onlyInVendorRamdisk() bool {
-	return p.ModuleBase.InstallInVendorRamdisk()
-}
-
-func (p *PrebuiltEtc) InstallInVendorRamdisk() bool {
-	return p.inVendorRamdisk()
-}
-
-func (p *PrebuiltEtc) inRecovery() bool {
-	return p.ModuleBase.InRecovery() || p.ModuleBase.InstallInRecovery()
-}
-
-func (p *PrebuiltEtc) onlyInRecovery() bool {
-	return p.ModuleBase.InstallInRecovery()
-}
-
-func (p *PrebuiltEtc) InstallInRecovery() bool {
-	return p.inRecovery()
-}
-
 var _ android.ImageInterface = (*PrebuiltEtc)(nil)
 
 func (p *PrebuiltEtc) ImageMutatorBegin(ctx android.BaseModuleContext) {}
@@ -279,13 +243,13 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 func (p *PrebuiltEtc) AndroidMkEntries() []android.AndroidMkEntries {
 	nameSuffix := ""
-	if p.inRamdisk() && !p.onlyInRamdisk() {
+	if p.IsRamdiskVariant() && !p.InstallInRamdisk() {
 		nameSuffix = ".ramdisk"
 	}
-	if p.inVendorRamdisk() && !p.onlyInVendorRamdisk() {
+	if p.IsVendorRamdiskVariant() && !p.InstallInVendorRamdisk() {
 		nameSuffix = ".vendor_ramdisk"
 	}
-	if p.inRecovery() && !p.onlyInRecovery() {
+	if p.IsRecoveryVariant() && !p.InstallInRecovery() {
 		nameSuffix = ".recovery"
 	}
 	return []android.AndroidMkEntries{android.AndroidMkEntries{

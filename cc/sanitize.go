@@ -817,7 +817,7 @@ func needsCfiForVendorSnapshot(mctx android.TopDownMutatorContext) bool {
 
 	c := mctx.Module().(PlatformSanitizeable)
 
-	if !c.InVendor() {
+	if !c.IsVendorVariant() {
 		return false
 	}
 

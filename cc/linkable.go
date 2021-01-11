@@ -86,16 +86,16 @@ type LinkableInterface interface {
 
 	Host() bool
 
-	InRamdisk() bool
-	OnlyInRamdisk() bool
+	IsRamdiskVariant() bool
+	InstallInRamdisk() bool
 
-	InVendorRamdisk() bool
-	OnlyInVendorRamdisk() bool
+	IsVendorRamdiskVariant() bool
+	InstallInVendorRamdisk() bool
 
-	InRecovery() bool
-	OnlyInRecovery() bool
+	IsRecoveryVariant() bool
+	InstallInRecovery() bool
 
-	InVendor() bool
+	IsVendorVariant() bool
 
 	UseSdk() bool
 	UseVndk() bool
@@ -106,7 +106,7 @@ type LinkableInterface interface {
 	IsVndkExt() bool
 	IsVndkPrivate() bool
 	HasVendorVariant() bool
-	InProduct() bool
+	IsProductVariant() bool
 
 	SdkVersion() string
 	AlwaysSdk() bool
@@ -134,15 +134,15 @@ var (
 func GetImageVariantType(c LinkableInterface) ImageVariantType {
 	if c.Host() {
 		return hostImageVariant
-	} else if c.InVendor() {
+	} else if c.IsVendorVariant() {
 		return vendorImageVariant
-	} else if c.InProduct() {
+	} else if c.IsProductVariant() {
 		return productImageVariant
-	} else if c.InRamdisk() {
+	} else if c.IsRamdiskVariant() {
 		return ramdiskImageVariant
-	} else if c.InVendorRamdisk() {
+	} else if c.IsVendorRamdiskVariant() {
 		return vendorRamdiskImageVariant
-	} else if c.InRecovery() {
+	} else if c.IsRecoveryVariant() {
 		return recoveryImageVariant
 	} else {
 		return coreImageVariant

@@ -57,9 +57,9 @@ type ModuleInstallPathContext interface {
 	InstallInData() bool
 	InstallInTestcases() bool
 	InstallInSanitizerDir() bool
-	InstallInRamdisk() bool
-	InstallInVendorRamdisk() bool
-	InstallInRecovery() bool
+	IsRamdiskVariant() bool
+	IsVendorRamdiskVariant() bool
+	IsRecoveryVariant() bool
 	InstallInRoot() bool
 	InstallBypassMake() bool
 	InstallForceOS() (*OsType, *ArchType)
@@ -1466,7 +1466,7 @@ func modulePartition(ctx ModuleInstallPathContext, os OsType) string {
 	} else if os.Class == Device {
 		if ctx.InstallInData() {
 			partition = "data"
-		} else if ctx.InstallInRamdisk() {
+		} else if ctx.IsRamdiskVariant() {
 			if ctx.DeviceConfig().BoardUsesRecoveryAsBoot() {
 				partition = "recovery/root/first_stage_ramdisk"
 			} else {
@@ -1475,7 +1475,7 @@ func modulePartition(ctx ModuleInstallPathContext, os OsType) string {
 			if !ctx.InstallInRoot() {
 				partition += "/system"
 			}
-		} else if ctx.InstallInVendorRamdisk() {
+		} else if ctx.IsVendorRamdiskVariant() {
 			// The module is only available after switching root into
 			// /first_stage_ramdisk. To expose the module before switching root
 			// on a device without a dedicated recovery partition, install the
@@ -1488,7 +1488,7 @@ func modulePartition(ctx ModuleInstallPathContext, os OsType) string {
 			if !ctx.InstallInRoot() {
 				partition += "/system"
 			}
-		} else if ctx.InstallInRecovery() {
+		} else if ctx.IsRecoveryVariant() {
 			if ctx.InstallInRoot() {
 				partition = "recovery/root"
 			} else {
@@ -1667,15 +1667,15 @@ func (m testModuleInstallPathContext) InstallInSanitizerDir() bool {
 	return m.inSanitizerDir
 }
 
-func (m testModuleInstallPathContext) InstallInRamdisk() bool {
+func (m testModuleInstallPathContext) IsRamdiskVariant() bool {
 	return m.inRamdisk
 }
 
-func (m testModuleInstallPathContext) InstallInVendorRamdisk() bool {
+func (m testModuleInstallPathContext) IsVendorRamdiskVariant() bool {
 	return m.inVendorRamdisk
 }
 
-func (m testModuleInstallPathContext) InstallInRecovery() bool {
+func (m testModuleInstallPathContext) IsRecoveryVariant() bool {
 	return m.inRecovery
 }
 
