@@ -46,6 +46,30 @@
       },
       "revId": "2dd9ca422d4745fac52d9d76e5e32fba3c555075",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7b6ae8_9799d1ec",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-11T08:05:25Z",
+      "side": 1,
+      "message": "Ack. It\u0027s ok, let\u0027s leave it and address in a follow up.",
+      "parentUuid": "f3f4765e_3c71ed19",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "2dd9ca422d4745fac52d9d76e5e32fba3c555075",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
