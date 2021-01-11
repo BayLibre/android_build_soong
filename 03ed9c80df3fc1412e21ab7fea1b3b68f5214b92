@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1775a1e5_c690bf39",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-01-11T23:17:52Z",
+      "side": 1,
+      "message": "This expected value doesn\u0027t work on all branches, it seems.",
+      "range": {
+        "startLine": 185,
+        "startChar": 97,
+        "endLine": 185,
+        "endChar": 118
+      },
+      "revId": "03ed9c80df3fc1412e21ab7fea1b3b68f5214b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
