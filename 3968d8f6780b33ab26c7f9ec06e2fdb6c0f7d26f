@@ -16,6 +16,23 @@
       "message": "Thanks! Need +2 again, had to rebase to fix a merge conflict.",
       "revId": "3968d8f6780b33ab26c7f9ec06e2fdb6c0f7d26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02866a1_a86bfa73",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2021-01-11T17:48:25Z",
+      "side": 1,
+      "message": "This looks very inconsistent now. Would you like to capitalize the rest of the constants, or revert these two? Also \"Header\" method in cc/cc.go looks similarly out of place.",
+      "revId": "3968d8f6780b33ab26c7f9ec06e2fdb6c0f7d26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
