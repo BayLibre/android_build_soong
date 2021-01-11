@@ -43,9 +43,9 @@ type AndroidMkContext interface {
 	UseVndk() bool
 	VndkVersion() string
 	static() bool
-	InRamdisk() bool
-	InVendorRamdisk() bool
-	InRecovery() bool
+	IsRamdiskVariant() bool
+	IsVendorRamdiskVariant() bool
+	IsRecoveryVariant() bool
 	NotInPlatform() bool
 }
 
@@ -288,7 +288,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 	// they can be exceptionally used directly when APEXes are not available (e.g. during the
 	// very early stage in the boot process).
 	if len(library.Properties.Stubs.Versions) > 0 && !ctx.Host() && ctx.NotInPlatform() &&
-		!ctx.InRamdisk() && !ctx.InVendorRamdisk() && !ctx.InRecovery() && !ctx.UseVndk() && !ctx.static() {
+		!ctx.IsRamdiskVariant() && !ctx.IsVendorRamdiskVariant() && !ctx.IsRecoveryVariant() && !ctx.UseVndk() && !ctx.static() {
 		if library.buildStubs() && library.isLatestStubVersion() {
 			entries.SubName = ""
 		}

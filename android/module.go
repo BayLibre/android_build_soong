@@ -397,6 +397,10 @@ type ModuleContext interface {
 	InstallBypassMake() bool
 	InstallForceOS() (*OsType, *ArchType)
 
+	IsRamdiskVariant() bool
+	IsVendorRamdiskVariant() bool
+	IsRecoveryVariant() bool
+
 	RequiredModuleNames() []string
 	HostRequiredModuleNames() []string
 	TargetRequiredModuleNames() []string
@@ -461,6 +465,10 @@ type Module interface {
 	InitRc() Paths
 	VintfFragments() Paths
 	NoticeFiles() Paths
+
+	IsRamdiskVariant() bool
+	IsVendorRamdiskVariant() bool
+	IsRecoveryVariant() bool
 
 	AddProperties(props ...interface{})
 	GetProperties() []interface{}
@@ -1463,14 +1471,20 @@ func (m *ModuleBase) InstallInSanitizerDir() bool {
 	return false
 }
 
+// Returns true if the module has "ramdisk: true". Usually these modules have the ramdisk variant.
+// This directly checks the "ramdisk" property, so this can be called before ImageMutator.
 func (m *ModuleBase) InstallInRamdisk() bool {
 	return Bool(m.commonProperties.Ramdisk)
 }
 
+// Returns true if the module has "vendor_ramdisk: true". Usually these modules have the vendor_ramdisk variant.
+// This directly checks the "vendor_ramdisk" property, so this can be called before ImageMutator.
 func (m *ModuleBase) InstallInVendorRamdisk() bool {
 	return Bool(m.commonProperties.Vendor_ramdisk)
 }
 
+// Returns true if the module has "recovery: true". Usually these modules have the recovery variant.
+// This directly checks the "recovery" property, so this can be called before ImageMutator.
 func (m *ModuleBase) InstallInRecovery() bool {
 	return Bool(m.commonProperties.Recovery)
 }
@@ -1516,15 +1530,21 @@ func (m *ModuleBase) getVariationByMutatorName(mutator string) string {
 	return ""
 }
 
-func (m *ModuleBase) InRamdisk() bool {
+// Returns true if the module is "ramdisk" variant. Usually these modules are installed in /ramdisk
+// This checks the image variant of the module, so this MUST be called after ImageMutator.
+func (m *ModuleBase) IsRamdiskVariant() bool {
 	return m.base().commonProperties.ImageVariation == RamdiskVariation
 }
 
-func (m *ModuleBase) InVendorRamdisk() bool {
+// Returns true if the module is "vendor_ramdisk" variant. Usually these modules are installed in /vendor_ramdisk
+// This checks the image variant of the module, so this MUST be called after ImageMutator.
+func (m *ModuleBase) IsVendorRamdiskVariant() bool {
 	return m.base().commonProperties.ImageVariation == VendorRamdiskVariation
 }
 
-func (m *ModuleBase) InRecovery() bool {
+// Returns true if the module is "recovery" variant. Usually these modules are installed in /recovery
+// This checks the image variant of the module, so this MUST be called after ImageMutator.
+func (m *ModuleBase) IsRecoveryVariant() bool {
 	return m.base().commonProperties.ImageVariation == RecoveryVariation
 }
 
@@ -2645,6 +2665,18 @@ func (m *moduleContext) CheckbuildFile(srcPath Path) {
 
 func (m *moduleContext) blueprintModuleContext() blueprint.ModuleContext {
 	return m.bp
+}
+
+func (m *moduleContext) IsRamdiskVariant() bool {
+	return m.module.IsRamdiskVariant()
+}
+
+func (m *moduleContext) IsVendorRamdiskVariant() bool {
+	return m.module.IsVendorRamdiskVariant()
+}
+
+func (m *moduleContext) IsRecoveryVariant() bool {
+	return m.module.IsRecoveryVariant()
 }
 
 // SrcIsModule decodes module references in the format ":name" into the module name, or empty string if the input

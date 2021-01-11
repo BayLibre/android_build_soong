@@ -518,7 +518,7 @@ func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod bluep
 			}
 		}
 
-		if !amod.InRamdisk() && !amod.InVendorRamdisk() {
+		if !amod.IsRamdiskVariant() && !amod.IsVendorRamdiskVariant() {
 			a.AddStrings("LOCAL_INIT_RC", amod.commonProperties.Init_rc...)
 		}
 		a.AddStrings("LOCAL_VINTF_FRAGMENTS", amod.commonProperties.Vintf_fragments...)
@@ -795,7 +795,7 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 	if data.Custom != nil {
 		// List of module types allowed to use .Custom(...)
 		// Additions to the list require careful review for proper license handling.
-		switch reflect.TypeOf(mod).String() {  // ctx.ModuleType(mod) doesn't work: aidl_interface creates phony without type
+		switch reflect.TypeOf(mod).String() { // ctx.ModuleType(mod) doesn't work: aidl_interface creates phony without type
 		case "*aidl.aidlApi": // writes non-custom before adding .phony
 		case "*aidl.aidlMapping": // writes non-custom before adding .phony
 		case "*android.customModule": // appears in tests only

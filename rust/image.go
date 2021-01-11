@@ -32,11 +32,11 @@ func (mod *Module) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
 }
 
 func (mod *Module) RamdiskVariantNeeded(android.BaseModuleContext) bool {
-	return mod.InRamdisk()
+	return mod.IsRamdiskVariant()
 }
 
 func (mod *Module) RecoveryVariantNeeded(android.BaseModuleContext) bool {
-	return mod.InRecovery()
+	return mod.IsRecoveryVariant()
 }
 
 func (mod *Module) ExtraImageVariations(android.BaseModuleContext) []string {
@@ -47,22 +47,22 @@ func (ctx *moduleContext) ProductSpecific() bool {
 	return false
 }
 
-func (mod *Module) InRecovery() bool {
+func (mod *Module) IsRecoveryVariant() bool {
 	// TODO(b/165791368)
 	return false
 }
 
-func (mod *Module) OnlyInRamdisk() bool {
+func (mod *Module) InstallInRamdisk() bool {
 	// TODO(b/165791368)
 	return false
 }
 
-func (mod *Module) OnlyInRecovery() bool {
+func (mod *Module) InstallInRecovery() bool {
 	// TODO(b/165791368)
 	return false
 }
 
-func (mod *Module) OnlyInVendorRamdisk() bool {
+func (mod *Module) InstallInVendorRamdisk() bool {
 	return false
 }
 
@@ -75,7 +75,7 @@ func (c *Module) VendorAvailable() bool {
 	return Bool(c.VendorProperties.Vendor_available)
 }
 
-func (c *Module) InProduct() bool {
+func (c *Module) IsProductVariant() bool {
 	return false
 }
 

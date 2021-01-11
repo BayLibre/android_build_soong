@@ -136,7 +136,7 @@ func shouldCreateSourceAbiDumpForLibrary(ctx android.BaseModuleContext) bool {
 	}
 
 	// Don't check ramdisk or recovery variants. Only check core, vendor or product variants.
-	if m.InRamdisk() || m.InVendorRamdisk() || m.InRecovery() {
+	if m.IsRamdiskVariant() || m.IsVendorRamdiskVariant() || m.IsRecoveryVariant() {
 		return false
 	}
 

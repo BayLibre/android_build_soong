@@ -612,7 +612,7 @@ func archMutator(bpctx blueprint.BottomUpMutatorContext) {
 	}
 
 	// only the primary arch in the ramdisk / vendor_ramdisk / recovery partition
-	if os == Android && (module.InstallInRecovery() || module.InstallInRamdisk() || module.InstallInVendorRamdisk()) {
+	if os == Android && (module.IsRecoveryVariant() || module.IsRamdiskVariant() || module.IsVendorRamdiskVariant()) {
 		osTargets = []Target{osTargets[0]}
 	}
 

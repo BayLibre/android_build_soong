@@ -116,7 +116,7 @@ func (mod *Module) SetPreventInstall() {
 }
 
 // Returns true if the module is "vendor" variant. Usually these modules are installed in /vendor
-func (mod *Module) InVendor() bool {
+func (mod *Module) IsVendorVariant() bool {
 	return mod.Properties.ImageVariationPrefix == cc.VendorVariationPrefix
 }
 
