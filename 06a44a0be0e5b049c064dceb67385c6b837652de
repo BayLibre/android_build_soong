@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04b72e0c_9d030bb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-11T19:15:40Z",
+      "side": 1,
+      "message": "I have a slight preference to not disabling this lint as I stated in the associated bug. I\u0027d want to see a broader problem than a pretty complex type signature in `libauthfs` before disabling a lint globally rather than disabling it locally, or performing the fix the lint suggests.",
+      "revId": "06a44a0be0e5b049c064dceb67385c6b837652de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
