@@ -70,6 +70,30 @@
       },
       "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69246587_914c1111",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-11T23:43:10Z",
+      "side": 1,
+      "message": "I think we\u0027d discussed this in a meeting and it never got transcribed here. I can\u0027t remember well, but I think my opinion was that these shouldn\u0027t be sanitizer properties at all and should instead be a part of the device architecture in the soong config?\n\nIs the issue the stub libraries, the static libraries, or both?",
+      "parentUuid": "e160c76e_766b10e6",
+      "range": {
+        "startLine": 733,
+        "startChar": 38,
+        "endLine": 735,
+        "endChar": 46
+      },
+      "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
