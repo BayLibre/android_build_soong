@@ -46,6 +46,30 @@
       },
       "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e160c76e_766b10e6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-11T23:25:02Z",
+      "side": 1,
+      "message": "ping for danalbert...",
+      "parentUuid": "9979c497_813ecc4c",
+      "range": {
+        "startLine": 733,
+        "startChar": 38,
+        "endLine": 735,
+        "endChar": 46
+      },
+      "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
