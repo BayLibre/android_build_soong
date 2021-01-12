@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e958c47_a38e7433",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-01-12T20:21:30Z",
+      "side": 1,
+      "message": "This check ensures that if the child is a java.Import, it is compiled to dex before inclusion in the apex.",
+      "range": {
+        "startLine": 1634,
+        "startChar": 0,
+        "endLine": 1638,
+        "endChar": 6
+      },
+      "revId": "a5d1e5ea68fe2c0ed95b737cf362fc926f7ca8b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

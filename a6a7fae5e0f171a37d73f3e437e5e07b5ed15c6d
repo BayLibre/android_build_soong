@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is the right approach. java_import is bytecode which isn\u0027t executable on Android. It has to be converted to dex, which dex_import is for.",
       "revId": "a6a7fae5e0f171a37d73f3e437e5e07b5ed15c6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a66201_f4a9a61e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-01-12T20:21:30Z",
+      "side": 1,
+      "message": "The new compile_dex property of java_import causes it to be converted to dex, and that\u0027s what ends up in the apex.",
+      "parentUuid": "dff8c3a0_fc22170e",
+      "revId": "a6a7fae5e0f171a37d73f3e437e5e07b5ed15c6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
