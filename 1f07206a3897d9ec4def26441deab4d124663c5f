@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57147dbe_5ee01bf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-12T05:46:36Z",
+      "side": 1,
+      "message": "\"aspects can create rules\" -\u003e Assuming by rules you mean Bazel actions, yep, they can register more actions over a bottom-up visitation. Other targets can then depend on the outputs of these registered actions.\n\nhttps://docs.bazel.build/versions/master/skylark/aspects.html#aspect-implementation\n\nLooking at the related VNDK refactoring, I think this is semantically close to what a VNDK/LLNDK aggregating aspect would do, so it shouldn\u0027t make the transition any more difficult.",
+      "parentUuid": "e61f7376_d0c3ed8f",
+      "revId": "1f07206a3897d9ec4def26441deab4d124663c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b368f36_46b06fc5",
