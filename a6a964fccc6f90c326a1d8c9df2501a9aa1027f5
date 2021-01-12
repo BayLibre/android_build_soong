@@ -16,6 +16,29 @@
       "message": "+2 modulo open comments.",
       "revId": "a6a964fccc6f90c326a1d8c9df2501a9aa1027f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d779959_f2247af0",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-12T10:23:36Z",
+      "side": 1,
+      "message": "These became odd.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 1
+      },
+      "revId": "a6a964fccc6f90c326a1d8c9df2501a9aa1027f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
