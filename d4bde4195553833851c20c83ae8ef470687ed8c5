@@ -333,6 +333,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6f78af76_26ab93b0",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-12T09:10:13Z",
+      "side": 1,
+      "message": "It turned out that such modules override InstallIn functions. For example, cc.Module override InstallInRecovery, and cc.Module.InstallInRecovery calls cc.Module.InRecovery.\n\nIt implies that every module using such variants has to override InstallIn functions to work correctly so far.",
+      "parentUuid": "e6e64bf2_a120297e",
+      "range": {
+        "startLine": 1468,
+        "startChar": 0,
+        "endLine": 1491,
+        "endChar": 37
+      },
+      "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8078a993_24328d13",
         "filename": "apex/apex.go",
         "patchSetId": 1
