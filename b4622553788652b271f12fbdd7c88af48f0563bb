@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7049e54e_ddfbce66",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2021-01-12T00:22:50Z",
+      "side": 1,
+      "message": "nit: Should this be renamed to something like apisUsedByModule? And then we could also have apisBackedByModule for the APIs backed by the module.\n\n\u0027coverageOutputPath\u0027 seems like it\u0027s related to code (line) coverage, but it\u0027s really just about API usage.",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 358,
+        "endChar": 19
+      },
+      "revId": "b4622553788652b271f12fbdd7c88af48f0563bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
