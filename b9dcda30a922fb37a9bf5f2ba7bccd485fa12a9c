@@ -45,6 +45,30 @@
       },
       "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a570699c_d32e0126",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-12T06:19:32Z",
+      "side": 1,
+      "message": "I don\u0027t think it makes sense. \u0027device_specific: true\u0027 is for vendor modules. If we make that work, adding \u0027vendor_available: true\u0027 to a \u0027device_specific: true\u0027 module must create a core variant because of the \u0027vendor_available: true\u0027.",
+      "parentUuid": "5de3728a_4585d186",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
