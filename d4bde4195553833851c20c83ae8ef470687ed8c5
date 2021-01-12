@@ -355,6 +355,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d0bdfc_2eeaa1a2",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-12T09:42:57Z",
+      "side": 1,
+      "message": "Thanks. Then does that mean we can stop overriding the functions? It would be nice if we can do that in this CL or in a follow-up CL.",
+      "parentUuid": "6f78af76_26ab93b0",
+      "range": {
+        "startLine": 1468,
+        "startChar": 0,
+        "endLine": 1491,
+        "endChar": 37
+      },
+      "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8078a993_24328d13",
