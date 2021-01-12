@@ -367,6 +367,27 @@ func TestVendorSnapshotUse(t *testing.T) {
 		srcs: ["bin.cpp"],
 	}
 
+	vendor_snapshot {
+		name: "vendor_snapshot",
+		compile_multilib: "first",
+		version: "BOARD",
+		vndk_libs: [
+			"libvndk",
+		],
+		static_libs: [
+			"libvendor",
+			"libvendor_available",
+			"libvndk",
+		],
+		shared_libs: [
+			"libvendor",
+			"libvendor_available",
+		],
+		binaries: [
+			"bin",
+		],
+	}
+
 	vendor_snapshot_static {
 		name: "libvndk",
 		version: "BOARD",
