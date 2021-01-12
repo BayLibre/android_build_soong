@@ -93,6 +93,30 @@
       },
       "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a14385d_6a05108f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-12T07:30:07Z",
+      "side": 1,
+      "message": "ok, but then why don\u0027t we fix hidl_interface module to not use vendor_availble, when it is configured with \u0027device_specific: true\u0027?",
+      "parentUuid": "a570699c_d32e0126",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
