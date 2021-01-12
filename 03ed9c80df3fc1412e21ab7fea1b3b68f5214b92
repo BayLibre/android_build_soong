@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a204c664_2d56896b",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-01-12T20:06:10Z",
+      "side": 1,
+      "message": "Thanks, Ulya. That makes sense. Also, I reworked the test and moved it to I hope a better location in app_import_test.go.",
+      "parentUuid": "b8a2bccb_a3fc19fa",
+      "revId": "03ed9c80df3fc1412e21ab7fea1b3b68f5214b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1775a1e5_c690bf39",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "After you disable dexpreopt and \u003cuses-library\u003e checks, there should be no verify_uses_libraries step, and I expect the path to be the same on all branches.",
       "parentUuid": "1775a1e5_c690bf39",
+      "range": {
+        "startLine": 185,
+        "startChar": 97,
+        "endLine": 185,
+        "endChar": 118
+      },
+      "revId": "03ed9c80df3fc1412e21ab7fea1b3b68f5214b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcbfdc73_bd4012c4",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-01-12T20:06:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a287973_028e6d8c",
       "range": {
         "startLine": 185,
         "startChar": 97,
