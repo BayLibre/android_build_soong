@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff8c3a0_fc22170e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-12T01:46:55Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right approach. java_import is bytecode which isn\u0027t executable on Android. It has to be converted to dex, which dex_import is for.",
+      "revId": "a6a7fae5e0f171a37d73f3e437e5e07b5ed15c6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
