@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2f8e7bed_dfb7be60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-12T08:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d656f6a_bbc1a94c",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2f0561e0_3f821b36",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -73,6 +97,24 @@
       "side": 1,
       "message": "\u0027file_contexts\u0027 module is defined in system/sepolicy/build/soong/selinux_contexts.go.\nI think all go files outside /build/soong must be updated as well.",
       "parentUuid": "41f3ab90_41e42e73",
+      "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ad52f5_5783abb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-12T08:32:20Z",
+      "side": 1,
+      "message": "Done. Thanks!",
+      "parentUuid": "de873a3a_318cbc58",
       "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -147,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5e032d_06dba68d",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-12T08:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "275d84a9_e04be6b1",
+      "range": {
+        "startLine": 1480,
+        "startChar": 100,
+        "endLine": 1480,
+        "endChar": 112
+      },
+      "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba2475d3_3464df74",
@@ -160,6 +226,30 @@
       "writtenOn": "2021-01-12T04:39:00Z",
       "side": 1,
       "message": "too long",
+      "range": {
+        "startLine": 1539,
+        "startChar": 99,
+        "endLine": 1539,
+        "endChar": 113
+      },
+      "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56bf8b2d_52630551",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-12T08:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba2475d3_3464df74",
       "range": {
         "startLine": 1539,
         "startChar": 99,
