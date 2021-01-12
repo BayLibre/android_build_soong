@@ -34,6 +34,24 @@
       "parentUuid": "2f0561e0_3f821b36",
       "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de873a3a_318cbc58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-12T02:33:16Z",
+      "side": 1,
+      "message": "\u0027file_contexts\u0027 module is defined in system/sepolicy/build/soong/selinux_contexts.go.\nI think all go files outside /build/soong must be updated as well.",
+      "parentUuid": "41f3ab90_41e42e73",
+      "revId": "d4bde4195553833851c20c83ae8ef470687ed8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
