@@ -69,6 +69,24 @@
       "parentUuid": "91370eb3_73b4cc75",
       "revId": "3968d8f6780b33ab26c7f9ec06e2fdb6c0f7d26f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05810b93_95e66200",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-12T18:27:25Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ll leave it as is for now.",
+      "parentUuid": "ef8e1ffc_52139ace",
+      "revId": "3968d8f6780b33ab26c7f9ec06e2fdb6c0f7d26f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
