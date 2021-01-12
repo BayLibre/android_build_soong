@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b8a2bccb_a3fc19fa",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-12T11:56:32Z",
+      "side": 1,
+      "message": "I think you need to disable dexpreopt and \u003cuses-library\u003e checks, like it was done for the real framework-res: http://ag/13220225. The following lines should be added:\n\n    // Disable dexpreopt and verify_uses_libraries check as the app\n    // contains no Java code to be dexpreopted.\n    enforce_uses_libs: false,\n    dex_preopt: {\n        enabled: false,\n    },",
+      "revId": "03ed9c80df3fc1412e21ab7fea1b3b68f5214b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1775a1e5_c690bf39",
         "filename": "java/androidmk_test.go",
         "patchSetId": 1
@@ -14,6 +31,30 @@
       "writtenOn": "2021-01-11T23:17:52Z",
       "side": 1,
       "message": "This expected value doesn\u0027t work on all branches, it seems.",
+      "range": {
+        "startLine": 185,
+        "startChar": 97,
+        "endLine": 185,
+        "endChar": 118
+      },
+      "revId": "03ed9c80df3fc1412e21ab7fea1b3b68f5214b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a287973_028e6d8c",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-12T11:56:32Z",
+      "side": 1,
+      "message": "After you disable dexpreopt and \u003cuses-library\u003e checks, there should be no verify_uses_libraries step, and I expect the path to be the same on all branches.",
+      "parentUuid": "1775a1e5_c690bf39",
       "range": {
         "startLine": 185,
         "startChar": 97,
