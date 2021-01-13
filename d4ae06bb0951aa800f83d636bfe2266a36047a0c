@@ -94,6 +94,30 @@
       },
       "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91fe762d_ece3731a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-01-13T17:09:16Z",
+      "side": 1,
+      "message": "I was experimenting with making the static libs in the NDK BTI compatible, so I turned these sanitizers on. Because of those two lines static libraries got removed from the NDK prebuilt package.\n\nNow, at this point I am not sure how to proceed.\nI think it is not desired to enable any of these two new sanitizers for libs in any mainline modules. But if we wanted to make NDK static libs BTI compatible we would need an other way to add these flags while creating the NDK prebuilts.",
+      "parentUuid": "69246587_914c1111",
+      "range": {
+        "startLine": 733,
+        "startChar": 38,
+        "endLine": 735,
+        "endChar": 46
+      },
+      "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
