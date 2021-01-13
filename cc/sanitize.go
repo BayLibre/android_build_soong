@@ -267,6 +267,12 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		return
 	}
 
+	// cc_test targets default to SYNC MemTag unless explicitly set to ASYNC (via diag: {memtag_heap}).
+	if ctx.testBinary() && s.Memtag_heap == nil {
+		s.Memtag_heap = boolPtr(true)
+		s.Diag.Memtag_heap = boolPtr(true)
+	}
+
 	var globalSanitizers []string
 	var globalSanitizersDiag []string
 
@@ -358,16 +364,13 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Diag.Cfi = boolPtr(true)
 		}
 
+		if found, globalSanitizersDiag = removeFromList("memtag_heap", globalSanitizersDiag); found &&
+			s.Diag.Memtag_heap == nil && Bool(s.Memtag_heap) {
+			s.Diag.Memtag_heap = boolPtr(true)
+		}
+
 		if len(globalSanitizersDiag) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer diagnostics option %s", globalSanitizersDiag[0])
-		}
-	}
-
-	// cc_test targets default to SYNC MemTag.
-	if ctx.testBinary() && s.Memtag_heap == nil {
-		if !ctx.Config().MemtagHeapDisabledForPath(ctx.ModuleDir()) {
-			s.Memtag_heap = boolPtr(true)
-			s.Diag.Memtag_heap = boolPtr(true)
 		}
 	}
 
