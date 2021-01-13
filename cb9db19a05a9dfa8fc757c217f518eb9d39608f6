@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d445f068_3cd98741",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-13T18:27:12Z",
+      "side": 1,
+      "message": "PTAL. Refactored as Colin suggested which eliminated most of the issues that were raised.\n\nThe exception is how to handle timestamps on the unpacked file which is discussed in the comment on scripts/unpack-prebuilt-apex.sh.\n\nI don\u0027t expect that it is ready to submit just yet but I would really appreciate if this could be reviewed ASAP as it is blocking progress in a number of areas. ",
+      "revId": "cb9db19a05a9dfa8fc757c217f518eb9d39608f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

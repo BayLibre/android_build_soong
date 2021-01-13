@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75081616_1dbf2843",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-13T18:27:12Z",
+      "side": 1,
+      "message": "Removed as no longer needed.",
+      "parentUuid": "0861b2fe_c7822b9b",
+      "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abab102e_51aa6a80",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f72a3d_400f77fe",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-13T18:27:12Z",
+      "side": 1,
+      "message": "No longer needed.",
+      "parentUuid": "abab102e_51aa6a80",
+      "range": {
+        "startLine": 275,
+        "startChar": 64,
+        "endLine": 275,
+        "endChar": 90
+      },
+      "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2896dcd_c1142eb1",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-01-11T23:12:29Z",
       "side": 1,
       "message": "I found that deapexer can extract the files with Jan 1 1970 timestamps, and ninja doesn\u0027t like that. My workaround was to touch them in the for loop below, but maybe deapexer should be fixed to extract with current timestamps by default?",
+      "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "782ba7c2_dc3c300f",
+        "filename": "scripts/unpack-prebuilt-apex.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-13T18:27:12Z",
+      "side": 1,
+      "message": "Does the build already have a similar problem when unpacking zips/jar files that it creates which have Jan 1 1970 timestamps? If so then we should probably do what it does.\n\nIn the meantime would you mind sending me a patch so I can update the file?",
+      "parentUuid": "c2896dcd_c1142eb1",
       "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
