@@ -38,12 +38,14 @@ mkdir -p $OUTPUT_DIR
 $DEAPEXER_PATH --debugfs_path $DEBUGFS_PATH extract $APEX_FILE $OUTPUT_DIR
 
 # Verify that the files that the build expects to be in the .apex file actually
-# exist.
+# exist, and make sure they have a fresh mtime to not confuse ninja.
 typeset -i FAILED=0
 for r in $REQUIRED_PATHS; do
   if [ ! -f $r ]; then
     echo "Required file $r not present in apex $APEX_FILE" >&2
     FAILED=$FAILED+1
+  else
+    touch $r
   fi
 done
 
