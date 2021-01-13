@@ -118,6 +118,30 @@
       },
       "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15295219_b5ccbb30",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-13T21:11:36Z",
+      "side": 1,
+      "message": "Why not make them properties of the architecture rather than a sanitizer? Given how infectious the off switch is, why would we have one per-module?",
+      "parentUuid": "91fe762d_ece3731a",
+      "range": {
+        "startLine": 733,
+        "startChar": 38,
+        "endLine": 735,
+        "endChar": 46
+      },
+      "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
