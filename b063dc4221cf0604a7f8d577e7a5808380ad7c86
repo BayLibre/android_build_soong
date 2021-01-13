@@ -22,6 +22,30 @@
       },
       "revId": "b063dc4221cf0604a7f8d577e7a5808380ad7c86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41d2d0df_6916966f",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-01-13T21:22:41Z",
+      "side": 1,
+      "message": "Thanks. To get this change tested with more branches soon, I am going to submit this now, then create another CL to fix the comment.",
+      "parentUuid": "ac94122f_c2aef8f7",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "b063dc4221cf0604a7f8d577e7a5808380ad7c86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
