@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3c8936_8a605fce",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-13T16:09:19Z",
+      "side": 1,
+      "message": "A lot of these docs are repeated multiple times -- might be nice to dedupe so we don\u0027t have to keep them all in sync.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 2
+      },
+      "revId": "5ba69e5ef58c5f37d329fb41fa8500d018b1cd9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
