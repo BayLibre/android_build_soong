@@ -116,6 +116,24 @@
       "parentUuid": "c2896dcd_c1142eb1",
       "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8b7d1c6_ab611c9b",
+        "filename": "scripts/unpack-prebuilt-apex.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-13T23:33:42Z",
+      "side": 1,
+      "message": "I can only imagine any other unpacking that takes place in ninja rules would need to ensure the timestamps are fresh - it\u0027s an assumption ninja makes on output files. I\u0027ve added -DD to unzip commands before to accomplish that.\n\nI think it\u0027d be better if deapexer extracted with fresh timestamps, at least by default, to avoid this problem in the future. But I\u0027ve uploaded my trivial workaround in https://r.android.com/1549979.\n\nI also mistakenly uploaded PS9 to this CL at the same time, but I\u0027ve restored it in PS10 now. Sorry for the churn.",
+      "parentUuid": "782ba7c2_dc3c300f",
+      "revId": "8fff3dfe76abd2f7a73be7e7aca24b808cbc46e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
