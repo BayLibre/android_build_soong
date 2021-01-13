@@ -189,6 +189,30 @@
       },
       "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebfb4e6_8d782d9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-13T19:37:14Z",
+      "side": 1,
+      "message": "Yeah - the property itself is also doing something tricky/complicated. I wish we could have \u0027odm_available\u0027 to stay consistent with existing properties, but it sounds extremely hard to implement and formally support everywhere.\n\nWhat happens if we have: libfoo (on /vendor) -\u003e libbar (on /odm) -\u003e libbaz (on /vendor). I think that would resolve in the build system, but will it fail at load time (and if it does, it should be considered a build bug, not to match loading, and if it doesn\u0027t, then it should be considered a bug to have this back and forth dependency chain). Should we explicitly disable this case here?",
+      "parentUuid": "5f8d236f_94c233da",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
