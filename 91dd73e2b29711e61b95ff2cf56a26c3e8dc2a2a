@@ -51,6 +51,24 @@
       "parentUuid": "07b503f7_75007527",
       "revId": "91dd73e2b29711e61b95ff2cf56a26c3e8dc2a2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3886361d_c5969bd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-13T14:30:55Z",
+      "side": 1,
+      "message": "Are you suggesting implementing https://android-review.googlesource.com/c/platform/build/soong/+/1527838/9/bp2build/bp2build.go as a the final registered mutator? I hadn\u0027t considered doing that, because I wanted to access the SingletonContext\u0027s VisitAllModules(Blueprint) function in the bp2build generator.",
+      "parentUuid": "3e8ed046_57ff1fdf",
+      "revId": "91dd73e2b29711e61b95ff2cf56a26c3e8dc2a2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
