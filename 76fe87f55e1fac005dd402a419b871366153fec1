@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496c28f5_51937989",
+        "filename": "rust/benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-13T15:24:16Z",
+      "side": 1,
+      "message": "I think this should be binaryDecorator instead of baseCompiler.",
+      "range": {
+        "startLine": 80,
+        "startChar": 18,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "76fe87f55e1fac005dd402a419b871366153fec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
