@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e913855_c38eb7ea",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2021-01-14T00:19:14Z",
+      "side": 1,
+      "message": "the android version understands [abi_symbol_list] as alternative",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "2de2d10ee344a7882ba688d1aaa7f4c9720cdad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
