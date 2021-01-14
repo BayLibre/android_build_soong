@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "379b872a_a51b2549",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-14T10:49:44Z",
+      "side": 1,
+      "message": "At current code, there are not restrictions of direction. But, referencing system from other partition is expected behavior. Changed direction of reference at test cases.",
+      "parentUuid": "e33ac04f_0aee9d6a",
+      "range": {
+        "startLine": 874,
+        "startChar": 2,
+        "endLine": 875,
+        "endChar": 40
+      },
+      "revId": "32776d584fb188346498fcbd7bd7b4821c8af987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "678a3763_2d1ec336",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-01-14T10:18:18Z",
       "side": 1,
       "message": "I think this test is trivial. Can we remove it? Or do you have any special cases that it can verify?",
+      "range": {
+        "startLine": 883,
+        "startChar": 2,
+        "endLine": 884,
+        "endChar": 39
+      },
+      "revId": "32776d584fb188346498fcbd7bd7b4821c8af987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78fe950c_9cad3094",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-14T10:49:44Z",
+      "side": 1,
+      "message": "Not special cases to verify, but just to test trivial case. It can be removed.",
+      "parentUuid": "678a3763_2d1ec336",
       "range": {
         "startLine": 883,
         "startChar": 2,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee7ccda_b9926bbd",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-14T10:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1c9432e_aa6f02a2",
+      "range": {
+        "startLine": 892,
+        "startChar": 2,
+        "endLine": 893,
+        "endChar": 38
+      },
+      "revId": "32776d584fb188346498fcbd7bd7b4821c8af987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bce6d949_4d8ab2b7",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-01-14T10:18:18Z",
       "side": 1,
       "message": "system to other",
+      "range": {
+        "startLine": 901,
+        "startChar": 0,
+        "endLine": 902,
+        "endChar": 39
+      },
+      "revId": "32776d584fb188346498fcbd7bd7b4821c8af987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b27be4_4cb7eafb",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-14T10:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce6d949_4d8ab2b7",
       "range": {
         "startLine": 901,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9077958_8bb497c4",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-14T10:49:44Z",
+      "side": 1,
+      "message": "Enforce vendor interface is precondition of enforceJavaSdkLibraryCheck. So this case is already checked by first test case. Removed.",
+      "parentUuid": "7bb71e6c_7851cafa",
+      "range": {
+        "startLine": 912,
+        "startChar": 2,
+        "endLine": 914,
+        "endChar": 35
+      },
+      "revId": "32776d584fb188346498fcbd7bd7b4821c8af987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49d2738e_4a2d74e5",
@@ -163,6 +283,30 @@
       "writtenOn": "2021-01-14T10:18:18Z",
       "side": 1,
       "message": "system to other",
+      "range": {
+        "startLine": 919,
+        "startChar": 0,
+        "endLine": 920,
+        "endChar": 40
+      },
+      "revId": "32776d584fb188346498fcbd7bd7b4821c8af987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf05254_eccdbbf5",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-14T10:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d2738e_4a2d74e5",
       "range": {
         "startLine": 919,
         "startChar": 0,
@@ -196,6 +340,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b382be4c_e35ec290",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-14T10:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7140eb7a_386265b7",
+      "range": {
+        "startLine": 947,
+        "startChar": 2,
+        "endLine": 948,
+        "endChar": 39
+      },
+      "revId": "32776d584fb188346498fcbd7bd7b4821c8af987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee1864a4_31011c86",
@@ -209,6 +377,30 @@
       "writtenOn": "2021-01-14T10:18:18Z",
       "side": 1,
       "message": "system to other",
+      "range": {
+        "startLine": 965,
+        "startChar": 2,
+        "endLine": 966,
+        "endChar": 39
+      },
+      "revId": "32776d584fb188346498fcbd7bd7b4821c8af987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5e3a0ba_abe4579a",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-14T10:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1864a4_31011c86",
       "range": {
         "startLine": 965,
         "startChar": 2,
