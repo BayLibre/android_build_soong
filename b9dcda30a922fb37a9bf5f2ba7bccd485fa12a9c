@@ -213,6 +213,30 @@
       },
       "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ffadb4_c288219a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-14T00:40:25Z",
+      "side": 1,
+      "message": "I can try defining odm_available. As all odm_available must be vendor_available, we may update not many places but just the HasVendorVariant() function. (I hope it works.)\n\nlibfoo (on /vendor) -\u003e libbar (on /odm) -\u003e libbaz (on /vendor) is allowed both on runtime and buildtime. That is the same for system -\u003e system_ext -\u003e system. That\u0027s because we don\u0027t have separate namespaces for each partition.\nAs these partitions are tightly coupled, I don\u0027t think it must be blocked.",
+      "parentUuid": "7ebfb4e6_8d782d9e",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
