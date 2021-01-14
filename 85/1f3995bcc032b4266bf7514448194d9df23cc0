@@ -1,0 +1,11 @@
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Code-Review+2: Martin Stjernholm <mast@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Verified+1: Paul Duffin <paulduffin@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Paul Duffin <paulduffin@google.com>
+Submitted-at: Thu, 14 Jan 2021 11:07:15 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1549977
+Project: platform/build/soong
+Branch: refs/heads/master
