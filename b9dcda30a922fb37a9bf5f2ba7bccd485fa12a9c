@@ -237,6 +237,30 @@
       },
       "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68d17b17_cd64696c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T05:42:15Z",
+      "side": 1,
+      "message": "odm_available sounds good to me.",
+      "parentUuid": "b1ffadb4_c288219a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "b9dcda30a922fb37a9bf5f2ba7bccd485fa12a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
