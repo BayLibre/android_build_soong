@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30dc1080_6f630035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-14T11:05:39Z",
+      "side": 1,
+      "message": "Also, please sort the test cases.\nFor example,\n- vendor to system / java\n- vendor to system / sdk\n- vendor to product / ...\n- product to system / ...",
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03270382_4bd08563",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-14T11:05:39Z",
+      "side": 1,
+      "message": "product to vendor is also not expected. Could you replace these with vendor to product if we don\u0027t have them already?",
+      "range": {
+        "startLine": 901,
+        "startChar": 30,
+        "endLine": 902,
+        "endChar": 39
+      },
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33e4c71_eb11a88e",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-14T11:05:39Z",
+      "side": 1,
+      "message": "This, too",
+      "range": {
+        "startLine": 929,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 39
+      },
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91173f79_6b486f03",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-14T11:05:39Z",
+      "side": 1,
+      "message": "another one.",
+      "range": {
+        "startLine": 947,
+        "startChar": 2,
+        "endLine": 948,
+        "endChar": 39
+      },
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0573d465_11f499dc",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-14T11:05:39Z",
+      "side": 1,
+      "message": "We already checks error for this case and have the test case for the allowlist.\nI think error test for allowlist also can be removed. It is the same with not having the allowlist.",
+      "range": {
+        "startLine": 954,
+        "startChar": 1,
+        "endLine": 962,
+        "endChar": 4
+      },
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
