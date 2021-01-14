@@ -38,6 +38,9 @@ type dexpreopter struct {
 	classLoaderContexts dexpreopt.ClassLoaderContextMap
 
 	builtInstalled string
+
+	// A path to a dexpreop.config file for apps, nil for libraries.
+	configPath android.WritablePath
 }
 
 type DexpreoptProperties struct {
@@ -117,7 +120,37 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 	// the dexpreopter struct hasn't been fully initialized before we're called,
 	// e.g. in aar.go. This keeps the behaviour that dexpreopting is effectively
 	// disabled, even if installable is true.
-	if d.dexpreoptDisabled(ctx) || d.installPath.Base() == "." {
+	if d.installPath.Base() == "." {
+		return
+	}
+
+	dexLocation := android.InstallPathToOnDevicePath(ctx, d.installPath)
+
+	buildPath := android.PathForModuleOut(ctx, "dexpreopt", ctx.ModuleName()+".jar").OutputPath
+
+	providesUsesLib := ctx.ModuleName()
+	if ulib, ok := ctx.Module().(ProvidesUsesLib); ok {
+		name := ulib.ProvidesUsesLib()
+		if name != nil {
+			providesUsesLib = *name
+		}
+	}
+
+	// Slim dexpreopt config is serialized to dexpreopt.config files and used by
+	// dex_preopt_config_merger.py to get information about <uses-library> dependencies.
+	// Note that it might be needed even if dexpreopt is disabled for this module.
+	slimDexpreoptConfig := &dexpreopt.ModuleConfig{
+		Name:                 ctx.ModuleName(),
+		DexLocation:          dexLocation,
+		BuildPath:            buildPath,
+		EnforceUsesLibraries: d.enforceUsesLibs,
+		ProvidesUsesLibrary:  providesUsesLib,
+		ClassLoaderContexts:  d.classLoaderContexts,
+		// The rest of the fields are not needed.
+	}
+	dexpreopt.WriteSlimModuleConfigForMake(ctx, slimDexpreoptConfig, d.configPath)
+
+	if d.dexpreoptDisabled(ctx) {
 		return
 	}
 
@@ -157,8 +190,6 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 	// The image locations for all Android variants are identical.
 	imageLocations := bootImage.getAnyAndroidVariant().imageLocations()
 
-	dexLocation := android.InstallPathToOnDevicePath(ctx, d.installPath)
-
 	var profileClassListing android.OptionalPath
 	var profileBootListing android.OptionalPath
 	profileIsTextListing := false
@@ -177,10 +208,11 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		}
 	}
 
+	// Full dexpreopt config, used to create dexpreopt build rules.
 	dexpreoptConfig := &dexpreopt.ModuleConfig{
 		Name:            ctx.ModuleName(),
 		DexLocation:     dexLocation,
-		BuildPath:       android.PathForModuleOut(ctx, "dexpreopt", ctx.ModuleName()+".jar").OutputPath,
+		BuildPath:       buildPath,
 		DexPath:         dexJarFile,
 		ManifestPath:    d.manifestFile,
 		UncompressedDex: d.uncompressedDex,
@@ -192,6 +224,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		ProfileBootListing:   profileBootListing,
 
 		EnforceUsesLibraries: d.enforceUsesLibs,
+		ProvidesUsesLibrary:  providesUsesLib,
 		ClassLoaderContexts:  d.classLoaderContexts,
 
 		Archs:                   archs,

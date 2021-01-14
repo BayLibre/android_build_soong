@@ -463,6 +463,7 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	a.dexpreopter.enforceUsesLibs = a.usesLibrary.enforceUsesLibraries()
 	a.dexpreopter.classLoaderContexts = a.classLoaderContexts
 	a.dexpreopter.manifestFile = a.mergedManifestFile
+	a.dexpreopter.configPath = nil // apps don't need dexpreopt.config (unlike libraries)
 
 	if ctx.ModuleName() != "framework-res" {
 		a.Module.compile(ctx, a.aaptSrcJar)
