@@ -16,6 +16,23 @@
       "message": "Added fix for manifest_fixer_test.py.  ",
       "revId": "18dcd046ad91c4a11267969529add509b44bde9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60442a9_1f1910b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-14T22:23:04Z",
+      "side": 1,
+      "message": "Test failure is unrelated, should hopefully retry itself when ToT is fixed.",
+      "revId": "18dcd046ad91c4a11267969529add509b44bde9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
