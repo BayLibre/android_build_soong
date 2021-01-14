@@ -69,6 +69,24 @@
       "parentUuid": "3e8ed046_57ff1fdf",
       "revId": "91dd73e2b29711e61b95ff2cf56a26c3e8dc2a2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ebd4c7_1ec64a97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-14T00:34:42Z",
+      "side": 1,
+      "message": "Yes, a Mutator is inherently a VisitAllModules, since it is called on each module.  There is no common part to collect data from the modules into though, so if you need that a Mutator won\u0027t work.\n\nAnother option would be to do this using Context.VisitAllModules in runBp2Build after calling bootstrap.Main.",
+      "parentUuid": "3886361d_c5969bd4",
+      "revId": "91dd73e2b29711e61b95ff2cf56a26c3e8dc2a2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
