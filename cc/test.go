@@ -440,6 +440,10 @@ func NewTest(hod android.HostOrDeviceSupported) *Module {
 		binaryDecorator: binary,
 		baseCompiler:    NewBaseCompiler(),
 	}
+	if hod == android.HostSupported && test.Properties.Test_options.Unit_test == nil && test.gtest() {
+		b := true
+		test.Properties.Test_options.Unit_test = &b
+	}
 	module.compiler = test
 	module.linker = test
 	module.installer = test
