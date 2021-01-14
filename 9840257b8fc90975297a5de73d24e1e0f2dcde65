@@ -22,6 +22,30 @@
       },
       "revId": "9840257b8fc90975297a5de73d24e1e0f2dcde65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe94a59e_c22b0833",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2364,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T08:36:15Z",
+      "side": 1,
+      "message": "We search not only from LLNDK libs, but also from double_loadable libs. For the former, checking with core variant makes sense because the vendor variant is just a stub. The core variant of the LLNDK lib and its dependencies are what\u0027s actually loaded in the vendor process.\n\nHowever, for the latter, it\u0027s the vendor variant that is loaded in the vendor process (or in the vendor namespace of a system process).",
+      "parentUuid": "96b4c8ec_250c5211",
+      "range": {
+        "startLine": 2358,
+        "startChar": 0,
+        "endLine": 2364,
+        "endChar": 4
+      },
+      "revId": "9840257b8fc90975297a5de73d24e1e0f2dcde65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
