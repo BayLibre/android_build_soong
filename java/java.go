@@ -2104,6 +2104,30 @@ func shouldUncompressDex(ctx android.ModuleContext, dexpreopter *dexpreopter) bo
 	return false
 }
 
+/*
+func dexpreoptConfigPath(ctx android.ModuleContext) android.WritablePath {
+	p := android.PathForModuleOut(ctx, "dexpreopt", "dexpreopt.config")
+	switch ctx.Module().(type) {
+	// apps don't need dexpreopt.config (unlike libraries)
+	case *Test:
+		return nil
+	case *Library:
+		if Bool(ctx.Module().(*Library).properties.Installable) {
+			return p
+		} else {
+			return nil
+		}
+	case *DexImport:
+		return p
+	case *SdkLibrary:
+		return p
+	case *SdkLibraryImport:
+		return p
+	}
+	return nil
+}
+*/
+
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 	if !apexInfo.IsForPlatform() {
@@ -2118,6 +2142,9 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.dexProperties.Uncompress_dex = proptools.BoolPtr(shouldUncompressDex(ctx, &j.dexpreopter))
 	}
 	j.dexpreopter.uncompressedDex = *j.dexProperties.Uncompress_dex
+	if _, isTest := ctx.Module().(*Test); !isTest && Bool(j.properties.Installable) {
+		j.dexpreopter.configPath = android.PathForModuleOut(ctx, "dexpreopt", "dexpreopt.config")
+	}
 	j.classLoaderContexts = make(dexpreopt.ClassLoaderContextMap)
 	j.compile(ctx, nil)
 
@@ -3073,6 +3100,7 @@ func (j *DexImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.dexpreopter.installPath = android.PathForModuleInstall(ctx, "framework", j.Stem()+".jar")
 	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter)
+	j.dexpreopter.configPath = android.PathForModuleOut(ctx, "dexpreopt", "dexpreopt.config")
 
 	inputJar := ctx.ExpandSource(j.properties.Jars[0], "jars")
 	dexOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".jar")
