@@ -16,6 +16,46 @@
       "message": "Hi Colin and Anton, will you PTAL this review?",
       "revId": "13887d79f31cd9b5ba3dd8783adaeb7115022ab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de199270_db7eaa06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-14T22:29:20Z",
+      "side": 1,
+      "message": "This has all the usual concerns about conditionals that will never be tested in our tree.  The new test helps, but won\u0027t catch cases where a new output file is added and the prebuilt case is forgotten.\n\nThis also seems like a candidate for migration to the new SingletonModule, and then the conditional would become a property on your custom hiddenapi module vs. the one we use in frameworks/base, but that doesn\u0027t materially affect much in terms of maintainability other than the plubming through build/make, and may make backporting to partner branches harder.",
+      "revId": "13887d79f31cd9b5ba3dd8783adaeb7115022ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0cec997_3e04ddca",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-14T22:29:20Z",
+      "side": 1,
+      "message": "nit: !\u003d \"\" would be more idiomatic to check if a string is set.",
+      "range": {
+        "startLine": 72,
+        "startChar": 48,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "13887d79f31cd9b5ba3dd8783adaeb7115022ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
