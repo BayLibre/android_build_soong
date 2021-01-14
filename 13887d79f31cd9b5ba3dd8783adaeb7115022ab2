@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf81f13b_2eb9b805",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-01-14T23:49:06Z",
+      "side": 1,
+      "message": "Colin, understood. This will be tested on a regular basis in keystone, and after VSDK is more baked, I\u0027d love to turn up a Pixel that tests this regularly. That will probably a few months from now.\n\nI\u0027ll take a look at the SingletonModule. I\u0027ve created b/177599767 to track that. Again, probably in a month or two.",
+      "parentUuid": "de199270_db7eaa06",
+      "revId": "13887d79f31cd9b5ba3dd8783adaeb7115022ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0cec997_3e04ddca",
