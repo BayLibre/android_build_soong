@@ -230,6 +230,7 @@ func TestPerSrcMutator(mctx android.BottomUpMutatorContext) {
 type testDecorator struct {
 	Properties TestProperties
 	linker     *baseLinker
+	hod        android.HostOrDeviceSupported
 }
 
 func (test *testDecorator) gtest() bool {
@@ -425,6 +426,10 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		ctx.PropertyErrorf("no_named_install_directory", "Module install directory may only be disabled if relative_install_path is set")
 	}
 
+	if test.testDecorator.hod == android.HostSupported && test.gtest() && test.Properties.Test_options.Unit_test == nil {
+		b := true
+		test.Properties.Test_options.Unit_test = &b
+	}
 	test.binaryDecorator.baseInstaller.install(ctx, file)
 }
 
@@ -436,6 +441,7 @@ func NewTest(hod android.HostOrDeviceSupported) *Module {
 	test := &testBinary{
 		testDecorator: testDecorator{
 			linker: binary.baseLinker,
+			hod:    hod,
 		},
 		binaryDecorator: binary,
 		baseCompiler:    NewBaseCompiler(),
