@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c573d00d_e3b9a4e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021064
+      },
+      "writtenOn": "2021-01-14T19:43:17Z",
+      "side": 1,
+      "message": "Added fix for manifest_fixer_test.py.  ",
+      "revId": "18dcd046ad91c4a11267969529add509b44bde9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
