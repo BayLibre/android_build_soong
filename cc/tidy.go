@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
@@ -132,6 +133,9 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if len(tidy.Properties.Tidy_checks_as_errors) > 0 {
 		tidyChecksAsErrors := "-warnings-as-errors=" + strings.Join(esc(tidy.Properties.Tidy_checks_as_errors), ",")
+		if strings.Contains(tidyChecksAsErrors, "'*'") {
+			fmt.Printf("### WARNING: %q has '*' in %q\n", ctx.ModuleName(), tidyChecksAsErrors)
+		}
 		flags.TidyFlags = append(flags.TidyFlags, tidyChecksAsErrors)
 	}
 	return flags
