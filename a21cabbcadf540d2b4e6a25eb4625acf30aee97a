@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ace64b_f1247c0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2021-01-14T00:57:34Z",
+      "side": 1,
+      "message": "Looks like a build failure:\nbuild/soong/apex/builder.go:704:57: not enough arguments in call to android.NewRuleBuilder\n\thave ()\n\twant (android.PackageContext, android.BuilderContext)\nbuild/soong/apex/builder.go:705:209: undefined: ndkLibraryList\nbuild/soong/apex/builder.go:706:37: too many arguments in call to generateAPIsBackedbyApexRule.Build\n\thave (android.PackageContext, android.ModuleContext, string, string)\n\twant (string, string)\n",
+      "revId": "a21cabbcadf540d2b4e6a25eb4625acf30aee97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
