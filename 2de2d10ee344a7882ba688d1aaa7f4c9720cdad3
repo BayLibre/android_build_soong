@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "923a9c63_00077b46",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-14T00:28:15Z",
+      "side": 1,
+      "message": "If you used a dependency tag this could mostly be ctx.GetDirectDepWithTag",
+      "range": {
+        "startLine": 298,
+        "startChar": 27,
+        "endLine": 298,
+        "endChar": 52
+      },
+      "revId": "2de2d10ee344a7882ba688d1aaa7f4c9720cdad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e913855_c38eb7ea",
         "filename": "cc/ndkstubgen/__init__.py",
         "patchSetId": 4
