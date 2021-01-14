@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b635b13_1514de86",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-01-14T17:03:40Z",
+      "side": 0,
+      "message": "\u003e It also doesn\u0027t do the check for double_loadable libraries that are not depended on by a LLNDK library\n\nI thought we depended on this because without it, you might have:\n\nlib_some_llndk -\u003e lib_is_double_loadable -\u003e libfoo\n\nIn this case, we are now only verifying lib_is_double_loadable is double loadable, but we would drop the check for libfoo? I\u0027m sure I\u0027m missing something.",
+      "range": {
+        "startLine": 2353,
+        "startChar": 25,
+        "endLine": 2353,
+        "endChar": 74
+      },
+      "revId": "66f7fdd1c89ad5d0eab631143902f6ee17de6332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
