@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914a65ca_0ab3f453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T08:02:33Z",
+      "side": 1,
+      "message": "Awesome. To me, this looks much better than the previous one.",
+      "revId": "d3f995fe9045d10f6e19cf2454d74308afc55764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48f03d14_e6a144b1",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T08:02:33Z",
+      "side": 1,
+      "message": "nit: ExtractedApexBundle might be a better name.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "d3f995fe9045d10f6e19cf2454d74308afc55764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff7b68e6_34a26b0e",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T08:02:33Z",
+      "side": 1,
+      "message": "This is a magic string, I wish we have a constant for this. But since these are being used consistently, I don\u0027t worry much.",
+      "range": {
+        "startLine": 231,
+        "startChar": 17,
+        "endLine": 231,
+        "endChar": 28
+      },
+      "revId": "d3f995fe9045d10f6e19cf2454d74308afc55764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
