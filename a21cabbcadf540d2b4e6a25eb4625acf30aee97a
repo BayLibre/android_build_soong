@@ -16,6 +16,75 @@
       "message": "Looks like a build failure:\nbuild/soong/apex/builder.go:704:57: not enough arguments in call to android.NewRuleBuilder\n\thave ()\n\twant (android.PackageContext, android.BuilderContext)\nbuild/soong/apex/builder.go:705:209: undefined: ndkLibraryList\nbuild/soong/apex/builder.go:706:37: too many arguments in call to generateAPIsBackedbyApexRule.Build\n\thave (android.PackageContext, android.ModuleContext, string, string)\n\twant (string, string)\n",
       "revId": "a21cabbcadf540d2b4e6a25eb4625acf30aee97a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da865812_a7e9e6ba",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T02:56:36Z",
+      "side": 1,
+      "message": "just `rule` would be enough",
+      "range": {
+        "startLine": 703,
+        "startChar": 2,
+        "endLine": 703,
+        "endChar": 30
+      },
+      "revId": "a21cabbcadf540d2b4e6a25eb4625acf30aee97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f34553fa_3466b01c",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T02:56:36Z",
+      "side": 1,
+      "message": "these continuations should usually line separated. e.g.\n\nrule.Command().\n    Implicits(...).\n    Tool(...).\n    Text(...).\n    Output(...)",
+      "range": {
+        "startLine": 704,
+        "startChar": 30,
+        "endLine": 704,
+        "endChar": 41
+      },
+      "revId": "a21cabbcadf540d2b4e6a25eb4625acf30aee97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5782add9_00c882ed",
+        "filename": "scripts/gen_ndk_backedby_apex.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T02:56:36Z",
+      "side": 1,
+      "message": "What this regex is for?",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "a21cabbcadf540d2b4e6a25eb4625acf30aee97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
