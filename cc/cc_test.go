@@ -2112,6 +2112,29 @@ func TestDoubleLoadableDepError(t *testing.T) {
 			vendor_available: true,
 		}
 	`)
+
+	// The error is not from 'client' but from 'libllndk'
+	testCcError(t, "module \"libllndk\".* links a library \"libnondoubleloadable\".*double_loadable", `
+		cc_library {
+			name: "client",
+			vendor_available: true,
+			double_loadable: true,
+			shared_libs: ["libllndk"],
+		}
+		cc_library {
+			name: "libllndk",
+			shared_libs: ["libnondoubleloadable"],
+			llndk_stubs: "libllndk.llndk",
+		}
+		llndk_library {
+			name: "libllndk.llndk",
+			symbol_file: "",
+		}
+		cc_library {
+			name: "libnondoubleloadable",
+			vendor_available: true,
+		}
+	`)
 }
 
 func TestCheckVndkMembershipBeforeDoubleLoadable(t *testing.T) {
