@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1839c36_9b7e86c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-14T20:33:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3466b785_74db98df",
+      "revId": "78d0f4880c23a4b2d945357b1cb077b94705cd3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0f1c9b7_b7e98a3e",
@@ -49,6 +67,30 @@
       "writtenOn": "2021-01-14T01:56:25Z",
       "side": 1,
       "message": "curious - why are both of these added? Really, only the second one is needed, but everyone adds both when they upload these. I don\u0027t understand why (I\u0027ve just started ignoring it though, since it doesn\u0027t hurt to have extra entries here, hence +2).",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "78d0f4880c23a4b2d945357b1cb077b94705cd3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a36344_8b4d174f",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-01-14T20:33:17Z",
+      "side": 1,
+      "message": "I really don\u0027t know 😞",
+      "parentUuid": "d0f1c9b7_b7e98a3e",
       "range": {
         "startLine": 23,
         "startChar": 0,
