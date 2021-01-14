@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Chih-hung Hsieh <chh@google.com>
+Presubmit-Ready+1: Chih-hung Hsieh <chh@google.com>
+Bypass-Presubmit+1: Chris Li <lihongyu@google.com>
+Submitted-by: Chris Li <lihongyu@google.com>
+Submitted-at: Thu, 14 Jan 2021 21:56:01 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1549528
+Project: platform/build/soong
+Branch: refs/heads/master
