@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb86116_943d1db2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-01-14T21:39:54Z",
+      "side": 1,
+      "message": "Merge conflict was caused by another change after the reverted one.\nI have reverted both.\n",
+      "revId": "46cad069d1be54b90d2cd24daf3ac257e73b34a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
