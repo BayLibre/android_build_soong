@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96b4c8ec_250c5211",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2364,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-14T08:09:43Z",
+      "side": 1,
+      "message": "afaik, double_loadable is checked against \"core\" variants since we search the dep-graph from the LLNDK impl(which is core variant) as root.\nFor example, if we have a libfoo which is double_loadable/vendor_available but it can have a different set of shared_libs per variants.\n\n  cc_library {\n    libfoo, double_loadable, vendor_available,\n    shared_libs: [libbar],\n    vendor: { exclude_shared_libs: [ libbar ], }\n  }\n\nWe need to check libbar, but this condition prevents the search to the core variant of libbar.",
+      "range": {
+        "startLine": 2358,
+        "startChar": 0,
+        "endLine": 2364,
+        "endChar": 4
+      },
+      "revId": "9840257b8fc90975297a5de73d24e1e0f2dcde65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
