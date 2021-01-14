@@ -1213,6 +1213,18 @@ func (a *apexBundle) Updatable() bool {
 	return proptools.Bool(a.properties.Updatable)
 }
 
+// ApexName is the canonical name of this APEX bundle. Used to determine the path to the activated
+// APEX on device: /apex/<ApexName>. If apex_name property is set, it is used. If not, it follows
+// the name property.
+func (a *apexBundle) ApexName() string {
+	defaultName := a.BaseModuleName()
+	// This module might have been overridden. In that case use the original name.
+	if a.GetOverriddenModuleName() != "" {
+		defaultName = a.GetOverriddenModuleName()
+	}
+	return proptools.StringDefault(a.properties.Apex_name, defaultName)
+}
+
 // getCertString returns the name of the cert that should be used to sign this APEX. This is
 // basically from the "certificate" property, but could be overridden by the device config.
 func (a *apexBundle) getCertString(ctx android.BaseModuleContext) string {

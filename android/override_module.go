@@ -118,6 +118,9 @@ type OverridableModule interface {
 
 type overridableModuleProperties struct {
 	OverriddenBy string `blueprint:"mutated"`
+
+	// Name of this module prior to the override() call. Same as the base property.
+	OriginalName string `blueprint:"mutated"`
 }
 
 // Base module struct for overridable module types
@@ -176,6 +179,8 @@ func (b *OverridableModuleBase) setOverridesProperty(overridesProperty *[]string
 
 // Overrides a base module with the given OverrideModule.
 func (b *OverridableModuleBase) override(ctx BaseModuleContext, o OverrideModule) {
+	// Remember the original name. The "name" field is also overridden below.
+	b.overridableModuleProperties.OriginalName = ctx.ModuleName()
 	for _, p := range b.overridableProperties {
 		for _, op := range o.getOverridingProperties() {
 			if proptools.TypeEqual(p, op) {
@@ -204,6 +209,12 @@ func (b *OverridableModuleBase) override(ctx BaseModuleContext, o OverrideModule
 // the new local variant. It returns "" when called from the original variant of bar.
 func (b *OverridableModuleBase) GetOverriddenBy() string {
 	return b.overridableModuleProperties.OverriddenBy
+}
+
+// GetOverriddenModuleName returns the name of this module before the override. If this module has
+// never been overridden, "" is returned.
+func (b *OverridableModuleBase) GetOverriddenModuleName() string {
+	return b.overridableModuleProperties.OriginalName
 }
 
 func (b *OverridableModuleBase) OverridablePropertiesDepsMutator(ctx BottomUpMutatorContext) {
