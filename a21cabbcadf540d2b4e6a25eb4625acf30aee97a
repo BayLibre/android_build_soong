@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8db91f4_3f821a81",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-01-14T22:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da865812_a7e9e6ba",
+      "range": {
+        "startLine": 703,
+        "startChar": 2,
+        "endLine": 703,
+        "endChar": 30
+      },
+      "revId": "a21cabbcadf540d2b4e6a25eb4625acf30aee97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f34553fa_3466b01c",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75027a6a_8b017eae",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-01-14T22:27:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f34553fa_3466b01c",
+      "range": {
+        "startLine": 704,
+        "startChar": 30,
+        "endLine": 704,
+        "endChar": 41
+      },
+      "revId": "a21cabbcadf540d2b4e6a25eb4625acf30aee97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5782add9_00c882ed",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-01-14T02:56:36Z",
       "side": 1,
       "message": "What this regex is for?",
+      "range": {
+        "startLine": 38,
+        "startChar": 37,
+        "endLine": 38,
+        "endChar": 53
+      },
+      "revId": "a21cabbcadf540d2b4e6a25eb4625acf30aee97a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e81ab4_b07d0c95",
+        "filename": "scripts/gen_ndk_backedby_apex.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-01-14T22:27:26Z",
+      "side": 1,
+      "message": "Used to extract the so file names listed in public.libraries.android.txt and discard any discard anything after library names. For example: It is \"libneuralnetworks.so nopreload\" in the mapping file but we only want \"libneuralnetworks.so\"",
+      "parentUuid": "5782add9_00c882ed",
       "range": {
         "startLine": 38,
         "startChar": 37,
