@@ -22,6 +22,30 @@
       },
       "revId": "66f7fdd1c89ad5d0eab631143902f6ee17de6332",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e78a8607_971ae461",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-14T18:11:36Z",
+      "side": 0,
+      "message": "Before this change, we checked 1) lib_some_llndk -\u003e lib_is_double_loadable and 2) lib_is_double_loadable -\u003e libfoo, separately. This highlighted part triggers (2).\n\nWith this change, the chain is checked at once. We don\u0027t stop at lib_is_double_loadable. See #2349 in the right side.",
+      "parentUuid": "8b635b13_1514de86",
+      "range": {
+        "startLine": 2353,
+        "startChar": 25,
+        "endLine": 2353,
+        "endChar": 74
+      },
+      "revId": "66f7fdd1c89ad5d0eab631143902f6ee17de6332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
