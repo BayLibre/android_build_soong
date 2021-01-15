@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd70f9c3_5f6c055e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-15T16:24:26Z",
+      "side": 1,
+      "message": "PTAL. Used the touch rule to create an empty file instead of using /dev/null.",
+      "revId": "1233d365bd280dbbb4717ce2df07c209628df8f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
