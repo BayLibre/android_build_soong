@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac2caed_3da228d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-15T02:10:49Z",
+      "side": 1,
+      "message": "And finally, please sort the test cases for better readability.\n// java -\u003e java\nproduct -\u003e system\nvendor -\u003e system\nvendor -\u003e product\n\n// java -\u003e java_sdk\nproduct -\u003e system\nvendor -\u003e system\nvendor -\u003e product\n",
+      "revId": "99d093ff40df7e19f0dfde00aee889d86e1a6b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
