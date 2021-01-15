@@ -16,6 +16,24 @@
       "message": "I have integrated this into my change and raised a bug against deapexer so this is no longer needed. Thanks for the patch.",
       "revId": "d5a4b966e40d312657869b27df0204b18741d7a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc2bd385_2ab6c1e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-15T14:12:04Z",
+      "side": 1,
+      "message": "Great, abandoning this then.",
+      "parentUuid": "6553b0c9_3394d00d",
+      "revId": "d5a4b966e40d312657869b27df0204b18741d7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
