@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0de04c_4c1db6ab",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-15T01:46:02Z",
+      "side": 1,
+      "message": "Changed directions reference.",
+      "parentUuid": "03270382_4bd08563",
+      "range": {
+        "startLine": 901,
+        "startChar": 30,
+        "endLine": 902,
+        "endChar": 39
+      },
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b33e4c71_eb11a88e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-14T11:05:39Z",
       "side": 1,
       "message": "This, too",
+      "range": {
+        "startLine": 929,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 39
+      },
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "923c2a98_6e0e61b2",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-15T01:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b33e4c71_eb11a88e",
       "range": {
         "startLine": 929,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "127358c4_8cb922a3",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-15T01:46:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91173f79_6b486f03",
+      "range": {
+        "startLine": 947,
+        "startChar": 2,
+        "endLine": 948,
+        "endChar": 39
+      },
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0573d465_11f499dc",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-14T11:05:39Z",
       "side": 1,
       "message": "We already checks error for this case and have the test case for the allowlist.\nI think error test for allowlist also can be removed. It is the same with not having the allowlist.",
+      "range": {
+        "startLine": 954,
+        "startChar": 1,
+        "endLine": 962,
+        "endChar": 4
+      },
+      "revId": "db120d8d677721aa363a62d88cf4ce71eabd5e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "166ca790_3ef2f41c",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1689978
+      },
+      "writtenOn": "2021-01-15T01:46:02Z",
+      "side": 1,
+      "message": "I agree, cases that item not in allowlist are already tested at above tests. Removed this test.",
+      "parentUuid": "0573d465_11f499dc",
       "range": {
         "startLine": 954,
         "startChar": 1,
