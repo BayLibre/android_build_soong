@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51a18e0a_37df1ed3",
+        "filename": "cc/stl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-15T17:07:41Z",
+      "side": 1,
+      "message": "i was going to ask whether the string constant should just be inlined, but it turns out there are two call sites, so...",
+      "revId": "b35a85ee8b01198f5e42d504b7c92f89cfdcec26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
