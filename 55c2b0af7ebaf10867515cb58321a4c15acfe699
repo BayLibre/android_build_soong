@@ -16,6 +16,24 @@
       "message": "Use `isEnvTrue()` instead. https://source.corp.google.com/android/build/soong/ui/build/environment.go;l\u003d119?q\u003dIsEnvTrue",
       "revId": "55c2b0af7ebaf10867515cb58321a4c15acfe699",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d908d4f3_c6fcd01c",
+        "filename": "cc/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-01-15T22:33:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9342b7_5e4f200b",
+      "revId": "55c2b0af7ebaf10867515cb58321a4c15acfe699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
