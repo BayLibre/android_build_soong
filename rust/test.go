@@ -66,6 +66,7 @@ type testDecorator struct {
 	*binaryDecorator
 	Properties TestProperties
 	testConfig android.Path
+	hod        android.HostOrDeviceSupported
 
 	data []android.DataPath
 }
@@ -96,6 +97,7 @@ func NewRustTest(hod android.HostOrDeviceSupported) (*Module, *testDecorator) {
 		binaryDecorator: &binaryDecorator{
 			baseCompiler: NewBaseCompiler("nativetest", "nativetest64", InstallInData),
 		},
+		hod: hod,
 	}
 
 	module.compiler = test
@@ -127,6 +129,10 @@ func (test *testDecorator) install(ctx ModuleContext) {
 		ctx.PropertyErrorf("no_named_install_directory", "Module install directory may only be disabled if relative_install_path is set")
 	}
 
+	if test.hod == android.HostSupported && test.Properties.Test_options.Unit_test == nil {
+		b := true
+		test.Properties.Test_options.Unit_test = &b
+	}
 	test.binaryDecorator.install(ctx)
 }
 
