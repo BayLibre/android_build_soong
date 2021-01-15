@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98f814bb_090c1327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112679
+      },
+      "writtenOn": "2021-01-15T11:12:20Z",
+      "side": 1,
+      "message": "Moved from ag/13286308.",
+      "revId": "abbd2e61a6f52fa2d32befda54b078b4fabb0fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
