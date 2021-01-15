@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1296f47_a4c5fae3",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-15T01:31:21Z",
+      "side": 1,
+      "message": "I don\u0027t think you need []string{....}",
+      "range": {
+        "startLine": 703,
+        "startChar": 47,
+        "endLine": 703,
+        "endChar": 56
+      },
+      "revId": "97d5298d104dea231818a7ab1a9237250e9eab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
