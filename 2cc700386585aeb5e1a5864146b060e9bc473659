@@ -16,6 +16,29 @@
       "message": "Bill, WDYT about this approach?",
       "revId": "2cc700386585aeb5e1a5864146b060e9bc473659",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5fc19c1_1acb359d",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-15T01:27:32Z",
+      "side": 1,
+      "message": "nit: It will be better to have a simple comment as the other interfaces.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "2cc700386585aeb5e1a5864146b060e9bc473659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
