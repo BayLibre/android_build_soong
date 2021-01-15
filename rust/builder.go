@@ -19,10 +19,8 @@ import (
 	"strings"
 
 	"github.com/google/blueprint"
-	"github.com/google/blueprint/pathtools"
 
 	"android/soong/android"
-	"android/soong/cc"
 	"android/soong/rust/config"
 )
 
@@ -193,27 +191,6 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 
 	if deps.CrtBegin.Valid() {
 		implicits = append(implicits, deps.CrtBegin.Path(), deps.CrtEnd.Path())
-	}
-
-	if flags.Coverage {
-		var gcnoFile android.WritablePath
-		// Provide consistency with cc gcda output, see cc/builder.go init()
-		profileEmitArg := strings.TrimPrefix(cc.PwdPrefix(), "PWD=") + "/"
-
-		if outputFile.Ext() != "" {
-			// rustc seems to split the output filename at the first '.' when determining the gcno filename
-			// so we need to do the same here.
-			gcnoFile = android.PathForModuleOut(ctx, strings.Split(outputFile.Base(), ".")[0]+".gcno")
-			rustcFlags = append(rustcFlags, "-Z profile-emit="+profileEmitArg+android.PathForModuleOut(
-				ctx, pathtools.ReplaceExtension(outputFile.Base(), "gcda")).String())
-		} else {
-			gcnoFile = android.PathForModuleOut(ctx, outputFile.Base()+".gcno")
-			rustcFlags = append(rustcFlags, "-Z profile-emit="+profileEmitArg+android.PathForModuleOut(
-				ctx, outputFile.Base()+".gcda").String())
-		}
-
-		implicitOutputs = append(implicitOutputs, gcnoFile)
-		output.coverageFile = gcnoFile
 	}
 
 	if len(deps.SrcDeps) > 0 {
