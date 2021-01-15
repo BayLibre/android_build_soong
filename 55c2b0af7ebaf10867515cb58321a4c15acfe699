@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df9342b7_5e4f200b",
+        "filename": "cc/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-01-15T19:51:21Z",
+      "side": 1,
+      "message": "Use `isEnvTrue()` instead. https://source.corp.google.com/android/build/soong/ui/build/environment.go;l\u003d119?q\u003dIsEnvTrue",
+      "revId": "55c2b0af7ebaf10867515cb58321a4c15acfe699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
