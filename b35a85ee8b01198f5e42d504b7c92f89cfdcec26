@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f60bdd7b_2e18728e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2021-01-15T22:52:05Z",
+      "side": 1,
+      "message": "Adding hansson and jiyong as reviewers for apex/allowed_deps.txt.\n",
+      "revId": "b35a85ee8b01198f5e42d504b7c92f89cfdcec26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "51a18e0a_37df1ed3",
         "filename": "cc/stl.go",
         "patchSetId": 1
