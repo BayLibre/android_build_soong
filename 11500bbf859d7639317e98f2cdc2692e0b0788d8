@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d0f3665_a3e50dee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-01-15T00:07:32Z",
+      "side": 1,
+      "message": "Note that this is still something of a WIP, although it does seem to work.\n\nThere\u0027s probably more code that can be removed from the build system (the Zip target? some more of the coverage functions/variables?), but I figured we could at least start the discussion with this.",
+      "revId": "11500bbf859d7639317e98f2cdc2692e0b0788d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
