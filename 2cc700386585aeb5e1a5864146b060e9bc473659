@@ -39,6 +39,30 @@
       },
       "revId": "2cc700386585aeb5e1a5864146b060e9bc473659",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aaeaf96_ba524242",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-15T07:15:25Z",
+      "side": 1,
+      "message": "This was a draft commit; I\u0027ll add comments.",
+      "parentUuid": "d5fc19c1_1acb359d",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "2cc700386585aeb5e1a5864146b060e9bc473659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
