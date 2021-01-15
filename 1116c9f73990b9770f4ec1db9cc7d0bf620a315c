@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "139222c4_a3824caf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-15T10:23:37Z",
+      "side": 1,
+      "message": "Done in this CL now.",
+      "parentUuid": "b05d89a8_d8935b3c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "1116c9f73990b9770f4ec1db9cc7d0bf620a315c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec4d038_631a8462",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-22T19:47:45Z",
       "side": 1,
       "message": "Please delete the per-file line in OWNERS too.",
+      "revId": "1116c9f73990b9770f4ec1db9cc7d0bf620a315c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e722ca31_0a1754d5",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-15T10:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec4d038_631a8462",
       "revId": "1116c9f73990b9770f4ec1db9cc7d0bf620a315c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
