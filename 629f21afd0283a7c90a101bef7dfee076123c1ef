@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09bc22f4_35c6dfee",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-15T00:26:05Z",
+      "side": 1,
+      "message": "typo: should",
+      "range": {
+        "startLine": 145,
+        "startChar": 77,
+        "endLine": 145,
+        "endChar": 84
+      },
+      "revId": "629f21afd0283a7c90a101bef7dfee076123c1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
