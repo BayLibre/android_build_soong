@@ -34,6 +34,24 @@
       "parentUuid": "4d0f3665_a3e50dee",
       "revId": "11500bbf859d7639317e98f2cdc2692e0b0788d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4529189f_1932b471",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-01-15T19:12:54Z",
+      "side": 1,
+      "message": "Okay, here\u0027s a version with lots of stuff removed.  My one test case worked, but tell me if you think I\u0027m removing too much (or missed anything).",
+      "parentUuid": "06857bdf_ee23e43a",
+      "revId": "11500bbf859d7639317e98f2cdc2692e0b0788d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
