@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6206d346_425818da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-01-16T07:12:13Z",
+      "side": 1,
+      "message": "This should fix the broken crosshatch-userdebug build.\nThe failed presubmit art-target-arm64 build is not related to this change.\n",
+      "revId": "4d31a041c75525ffb526376792760622b081e9e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
