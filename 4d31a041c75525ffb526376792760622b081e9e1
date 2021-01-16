@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "99bd9c6c_245a2c4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-01-16T08:50:32Z",
+      "side": 1,
+      "message": "That bug was fixed; then some more changes broke the build again.\nNow this one should make the build green again.",
+      "parentUuid": "27f2fdb6_508c6d08",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "4d31a041c75525ffb526376792760622b081e9e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6206d346_425818da",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
