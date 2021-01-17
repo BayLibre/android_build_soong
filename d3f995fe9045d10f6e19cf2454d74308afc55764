@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9cce95b_bc393043",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-17T23:45:14Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "c419f720_a7b3a3e0",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "d3f995fe9045d10f6e19cf2454d74308afc55764",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff7b68e6_34a26b0e",
