@@ -1521,8 +1521,9 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.ModuleContext, do android.Paylo
 			return false
 		}
 
+		apexBaseName := android.RemoveOptionalPrebuiltPrefix(ctx.ModuleName())
 		ai := ctx.OtherModuleProvider(child, android.ApexInfoProvider).(android.ApexInfo)
-		externalDep := !android.InList(ctx.ModuleName(), ai.InApexes)
+		externalDep := !android.InList(apexBaseName, ai.InApexes)
 
 		// Visit actually
 		return do(ctx, parent, am, externalDep)

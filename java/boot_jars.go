@@ -69,7 +69,7 @@ func (b *bootJarsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	// Scan all the modules looking for the module/apex variants corresponding to the
 	// boot jars.
 	ctx.VisitAllModules(func(module android.Module) {
-		name := ctx.ModuleName(module)
+		name := android.RemoveOptionalPrebuiltPrefix(ctx.ModuleName(module))
 		if apex, ok := moduleToApex[name]; ok {
 			apexInfo := ctx.ModuleProvider(module, android.ApexInfoProvider).(android.ApexInfo)
 			if (apex == "platform" && apexInfo.IsForPlatform()) || apexInfo.InApex(apex) {
