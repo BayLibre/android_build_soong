@@ -456,7 +456,7 @@ func getBootImageJar(ctx android.SingletonContext, image *bootImageConfig, modul
 			// A platform variant is required but this is for an apex so ignore it.
 			return -1, nil
 		}
-	} else if !android.InList(requiredApex, apexInfo.InApexes) {
+	} else if !apexInfo.InApexByBaseName(requiredApex) {
 		// An apex variant for a specific apex is required but this is the wrong apex.
 		return -1, nil
 	}
@@ -466,7 +466,7 @@ func getBootImageJar(ctx android.SingletonContext, image *bootImageConfig, modul
 
 	switch image.name {
 	case artBootImageName:
-		if len(apexInfo.InApexes) > 0 && allHavePrefix(apexInfo.InApexes, "com.android.art") {
+		if apexInfo.InApexByBaseName("com.android.art") || apexInfo.InApexByBaseName("com.android.art.debug") || apexInfo.InApexByBaseName("com.android.art,testing") {
 			// ok: found the jar in the ART apex
 		} else if name == "jacocoagent" && ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
 			// exception (skip and continue): Jacoco platform variant for a coverage build
@@ -493,21 +493,20 @@ func getBootImageJar(ctx android.SingletonContext, image *bootImageConfig, modul
 	return index, jar.DexJarBuildPath()
 }
 
-func allHavePrefix(list []string, prefix string) bool {
-	for _, s := range list {
-		if s != prefix && !strings.HasPrefix(s, prefix+".") {
-			return false
-		}
-	}
-	return true
-}
-
 // buildBootImage takes a bootImageConfig, creates rules to build it, and returns the image.
 func buildBootImage(ctx android.SingletonContext, image *bootImageConfig) *bootImageConfig {
 	// Collect dex jar paths for the boot image modules.
 	// This logic is tested in the apex package to avoid import cycle apex <-> java.
 	bootDexJars := make(android.Paths, image.modules.Len())
+
 	ctx.VisitAllModules(func(module android.Module) {
+		if !module.Enabled() || module.IsHideFromMake() {
+			// Ignored disabled modules and those hidden from make. The latter is used
+			// by prebuilt.go to bypass either the source or prebuilt module when both
+			// exist.
+			return
+		}
+
 		if i, j := getBootImageJar(ctx, image, module); i != -1 {
 			if existing := bootDexJars[i]; existing != nil {
 				ctx.Errorf("Multiple dex jars found for %s:%s - %s and %s",
