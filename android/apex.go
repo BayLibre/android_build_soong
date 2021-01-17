@@ -41,6 +41,8 @@ type ApexInfo struct {
 	// variants, each of which is for an APEX. The variants then can later be deduped if they
 	// don't need to be compiled differently. This is an optimization done in
 	// mergeApexVariations.
+	//
+	// The "prebuilt_" prefixes on the module names of prebuilt APEXes are stripped here.
 	ApexVariationName string
 
 	// Serialized ApiLevel that this module has to support at minimum. Should be accessed via
@@ -58,6 +60,8 @@ type ApexInfo struct {
 	// the size of this list is one because one apex variant is associated with one apexBundle.
 	// When multiple apex variants are merged in mergeApexVariations, ApexInfo struct of the
 	// merged variant holds the list of apexBundles that are merged together.
+	//
+	// The "prebuilt_" prefixes on the module names of prebuilt APEXes are stripped here.
 	InApexes []string
 
 	// Pointers to the ApexContents struct each of which is for apexBundle modules that this
