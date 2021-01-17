@@ -4330,6 +4330,222 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 	})
 }
 
+func TestBootJarsCanAccessPrebuiltDexImplementationJars(t *testing.T) {
+	transform := func(config *dexpreopt.GlobalConfig) {
+		config.BootJars = android.CreateTestConfiguredJarList([]string{"myapex:libfoo"})
+	}
+
+	checkDexJarBuildPath := func(ctx *android.TestContext, name, variant string) {
+		// Make sure the import has been given the correct path to the dex jar.
+		p := ctx.ModuleForTests(name, variant).Module().(java.Dependency)
+		dexJarBuildPath := p.DexJarBuildPath()
+		if expected, actual := ".intermediates/myapex.deapexer/android_common/deapexer/javalib/libfoo.jar", android.NormalizePathForTesting(dexJarBuildPath); actual != expected {
+			t.Errorf("Incorrect DexJarBuildPath value '%s', expected '%s'", actual, expected)
+		}
+	}
+
+	ensureNoSourceVariant := func(ctx *android.TestContext) {
+		// Make sure that an apex variant is not created for the source module.
+		if expected, actual := []string{"android_common"}, ctx.ModuleVariantsForTests("libfoo"); !reflect.DeepEqual(expected, actual) {
+			t.Errorf("invalid set of variants for %q: expected %q, found %q", "libfoo", expected, actual)
+		}
+	}
+
+	t.Run("prebuilt only", func(t *testing.T) {
+		bp := `
+		prebuilt_apex {
+			name: "myapex",
+			arch: {
+				arm64: {
+					src: "myapex-arm64.apex",
+				},
+				arm: {
+					src: "myapex-arm.apex",
+				},
+			},
+			exported_java_libs: ["libfoo"],
+		}
+
+		java_import {
+			name: "libfoo",
+			jars: ["libfoo.jar"],
+			apex_available: ["myapex"],
+		}
+	`
+
+		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
+		ctx := testDexpreoptWithApexes(t, bp, "", transform)
+
+		checkDexJarBuildPath(ctx, "libfoo", "android_common_myapex")
+	})
+
+	t.Run("prebuilt with source library preferred", func(t *testing.T) {
+		bp := `
+		prebuilt_apex {
+			name: "myapex",
+			arch: {
+				arm64: {
+					src: "myapex-arm64.apex",
+				},
+				arm: {
+					src: "myapex-arm.apex",
+				},
+			},
+			exported_java_libs: ["libfoo"],
+		}
+
+		java_import {
+			name: "libfoo",
+			jars: ["libfoo.jar"],
+			apex_available: ["myapex"],
+		}
+
+		java_library {
+			name: "libfoo",
+			srcs: ["foo/bar/MyClass.java"],
+			apex_available: ["myapex"],
+		}
+	`
+
+		// In this test the source (java_library) libfoo is active since the
+		// prebuilt (java_import) defaults to prefer:false. However the
+		// prebuilt_apex module always depends on the prebuilt, and so it doesn't
+		// find the dex boot jar in it. We either need to disable the source libfoo
+		// or make the prebuilt libfoo preferred.
+		testDexpreoptWithApexes(t, bp, "failed to find a dex jar path for module 'libfoo'", transform)
+	})
+
+	t.Run("prebuilt library preferred with source", func(t *testing.T) {
+		bp := `
+		prebuilt_apex {
+			name: "myapex",
+			arch: {
+				arm64: {
+					src: "myapex-arm64.apex",
+				},
+				arm: {
+					src: "myapex-arm.apex",
+				},
+			},
+			exported_java_libs: ["libfoo"],
+		}
+
+		java_import {
+			name: "libfoo",
+			prefer: true,
+			jars: ["libfoo.jar"],
+			apex_available: ["myapex"],
+		}
+
+		java_library {
+			name: "libfoo",
+			srcs: ["foo/bar/MyClass.java"],
+			apex_available: ["myapex"],
+		}
+	`
+
+		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
+		ctx := testDexpreoptWithApexes(t, bp, "", transform)
+
+		checkDexJarBuildPath(ctx, "prebuilt_libfoo", "android_common_myapex")
+		ensureNoSourceVariant(ctx)
+	})
+
+	t.Run("prebuilt with source apex preferred", func(t *testing.T) {
+		bp := `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			java_libs: ["libfoo"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		prebuilt_apex {
+			name: "myapex",
+			arch: {
+				arm64: {
+					src: "myapex-arm64.apex",
+				},
+				arm: {
+					src: "myapex-arm.apex",
+				},
+			},
+			exported_java_libs: ["libfoo"],
+		}
+
+		java_import {
+			name: "libfoo",
+			jars: ["libfoo.jar"],
+			apex_available: ["myapex"],
+		}
+
+		java_library {
+			name: "libfoo",
+			srcs: ["foo/bar/MyClass.java"],
+			apex_available: ["myapex"],
+		}
+	`
+
+		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
+		ctx := testDexpreoptWithApexes(t, bp, "", transform)
+
+		checkDexJarBuildPath(ctx, "prebuilt_libfoo", "android_common_prebuilt_myapex")
+	})
+
+	t.Run("prebuilt preferred with source apex disabled", func(t *testing.T) {
+		bp := `
+		apex {
+			name: "myapex",
+			enabled: false,
+			key: "myapex.key",
+			java_libs: ["libfoo"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		prebuilt_apex {
+			name: "myapex",
+			arch: {
+				arm64: {
+					src: "myapex-arm64.apex",
+				},
+				arm: {
+					src: "myapex-arm.apex",
+				},
+			},
+			exported_java_libs: ["libfoo"],
+		}
+
+		java_import {
+			name: "libfoo",
+			prefer: true,
+			jars: ["libfoo.jar"],
+			apex_available: ["myapex"],
+		}
+
+		java_library {
+			name: "libfoo",
+			srcs: ["foo/bar/MyClass.java"],
+			apex_available: ["myapex"],
+		}
+	`
+
+		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
+		ctx := testDexpreoptWithApexes(t, bp, "", transform)
+
+		checkDexJarBuildPath(ctx, "prebuilt_libfoo", "android_common_prebuilt_myapex")
+	})
+}
+
 func TestApexWithTests(t *testing.T) {
 	ctx, config := testApex(t, `
 		apex_test {
@@ -5935,10 +6151,11 @@ func testDexpreoptWithApexes(t *testing.T, bp, errmsg string, transformDexpreopt
 		"build/make/target/product/security": nil,
 		"apex_manifest.json":                 nil,
 		"AndroidManifest.xml":                nil,
+		"system/sepolicy/apex/myapex-file_contexts":                  nil,
 		"system/sepolicy/apex/some-updatable-apex-file_contexts":     nil,
 		"system/sepolicy/apex/some-non-updatable-apex-file_contexts": nil,
 		"system/sepolicy/apex/com.android.art.debug-file_contexts":   nil,
-		"framework/aidl/a.aidl": nil,
+		"framework/aidl/a.aidl":                                      nil,
 	}
 	cc.GatherRequiredFilesForTest(fs)
 
