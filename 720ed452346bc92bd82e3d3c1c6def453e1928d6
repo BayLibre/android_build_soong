@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da7c7617_84741838",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-18T18:18:53Z",
+      "side": 1,
+      "message": "Very well, I\u0027ll try replacing IsHideFromMake with prebuilt-specific checks then, and add the same condition to the VisitAllModules lambda in updatableBcpPackagesRule.",
+      "parentUuid": "ce868f11_d65a0c43",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34e731ea_0069be9f",
         "filename": "java/boot_jars.go",
         "patchSetId": 2
