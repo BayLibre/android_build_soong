@@ -1,6 +1,74 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0301398e_fdc76ae2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-18T17:07:20Z",
+      "side": 1,
+      "message": "Martin, I am happy to clean up the code around selecting modules if you have something else to be doing.",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b059dd3_534dac28",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-18T17:07:20Z",
+      "side": 1,
+      "message": "Nit: The line length in go is 100, please could you reformat this comment to match.",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f59f858a_38eb78cc",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-18T17:07:20Z",
+      "side": 1,
+      "message": "I think this logic should be replaced with a check that only uses the modules that are actually preferred. i.e. If prebuilts are preferred then this should ignore the source and if the source is preferred then this should ignore the prebuilt.\n\nThat is a little tricky to do as only the prebuilt modules know whether they or the source modules are preferred. So, the check cannot be done here but can only be done when duplicates are detected.",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e731ea_0069be9f",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-18T17:07:20Z",
+      "side": 1,
+      "message": "Following on from previous comment this is not necessarily an error. It depends on the \"existing\" and \"module\" instances.\n\nIf they are both prebuilt or both source modules then it is an error. If one is prebuilt and one is source then whichever one is preferred should be used. Checking here would not be able to detect other issues such as when say more than two modules match.\n\nSo, I think it would be better if this logic collated all matching modules into lists and then processed each list to select the correct module. That way it can detect when there are any more than two modules that match.\n\nThis code is also duplicating the logic in buildBootImage()/getBootImageJar() and updatableBcpPackagesRule() that does a similar job and attempts to retrieve the modules that match the configured apex/jar pairs. So, all three of those should probably be combined into one method to retrieve the matching modules to ensure consistency.",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e0aff74_98a03742",
