@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f9f88f_7d75ce30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-01-18T10:52:32Z",
+      "side": 1,
+      "message": "How do you intend to use this?\n\nThe hidden API artifacts change for most code changes, so I don\u0027t think keeping prebuilts in sync is practical, so I don\u0027t therefore see how this can be used correctly.\n\nI think the correct solution is to get the prebuilt artifacts to export their own hidden API artifacts that can then be used/merged into the final artifact.\n\n",
+      "revId": "38f25a319b37a7f517fb5a346c2de7e733900cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
