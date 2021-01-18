@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0acfb88_cec1fe66",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-18T17:55:49Z",
+      "side": 1,
+      "message": "What I aimed for here is to be as close as possible to the same logic for selecting modules in a normal platform build, and I figured this condition would be close to that. E.g. module.Enabled() should be done in general to filter out modules that are disabled, because VisitAllModules doesn\u0027t do it.\n\nDoing something special to recognise prebuilt selection only means spreading out that special-case logic. What\u0027s the benefit of that?\n\nDo you know why IsHideFromMake filters out both modules in the TestPrebuiltExportDexImplementationJars test? If I know that I may understand better where you\u0027re coming from.\n\n\u003e only the prebuilt modules know whether they or the source modules are preferred.\n\nMore specific would be\n\n  module.Prebuilt().UsePrebuilt()\n\nfor prebuilts and\n\n  !module.IsReplacedByPrebuilt()\n\nfor sources, I believe. They should work just the same also when there are no duplicates, so no need to wait until a dupe is detected.",
+      "parentUuid": "f59f858a_38eb78cc",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34e731ea_0069be9f",
         "filename": "java/boot_jars.go",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2021-01-18T17:07:20Z",
       "side": 1,
       "message": "Following on from previous comment this is not necessarily an error. It depends on the \"existing\" and \"module\" instances.\n\nIf they are both prebuilt or both source modules then it is an error. If one is prebuilt and one is source then whichever one is preferred should be used. Checking here would not be able to detect other issues such as when say more than two modules match.\n\nSo, I think it would be better if this logic collated all matching modules into lists and then processed each list to select the correct module. That way it can detect when there are any more than two modules that match.\n\nThis code is also duplicating the logic in buildBootImage()/getBootImageJar() and updatableBcpPackagesRule() that does a similar job and attempts to retrieve the modules that match the configured apex/jar pairs. So, all three of those should probably be combined into one method to retrieve the matching modules to ensure consistency.",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "130720ee_78cb473f",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-18T17:55:49Z",
+      "side": 1,
+      "message": "\u003e should probably be combined into one method to retrieve the matching modules to ensure consistency.\n\nPossibly, but that\u0027s out of scope here. I can however add the same condition to the VisitAllModules lambda in updatableBcpPackagesRule as well, if that\u0027s the way to go.",
+      "parentUuid": "34e731ea_0069be9f",
       "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
