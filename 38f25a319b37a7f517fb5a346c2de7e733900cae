@@ -16,6 +16,24 @@
       "message": "How do you intend to use this?\n\nThe hidden API artifacts change for most code changes, so I don\u0027t think keeping prebuilts in sync is practical, so I don\u0027t therefore see how this can be used correctly.\n\nI think the correct solution is to get the prebuilt artifacts to export their own hidden API artifacts that can then be used/merged into the final artifact.\n\n",
       "revId": "38f25a319b37a7f517fb5a346c2de7e733900cae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b0cb9da_57e455e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-01-18T21:44:03Z",
+      "side": 1,
+      "message": "Hi Mathew, thanks for the question. The use case for this is a split build scenario.\n\nOne build, the framework build, generates a target files package containing the system image, system_ext image. This framework build also generates the prebuilt hiddenapi artifacts (and other artifacts) to be consumed by a vendor build.\n\nThe prebuilt hiddenapi artifacts from the framework build propagate via build chaining to the vendor build, which produces a target files package containing the vendor image, odm image, etc.\n\nFinally a merge step combines the two target files packages (framework and vendor) into something that can be flashed onto a device.\n\nUnder this model, the same source is used for both the framework build and the vendor build, so the hiddenapi artifacts should be consistent.\n\nThe win comes when you have multiple vendor builds that all share the same framework build. The artifacts generated in the framework build are reused for multiple vendor builds.",
+      "parentUuid": "e6f9f88f_7d75ce30",
+      "revId": "38f25a319b37a7f517fb5a346c2de7e733900cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
