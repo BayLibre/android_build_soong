@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "efaca40f_5c55ab8d",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-18T10:23:55Z",
+      "side": 1,
+      "message": "so does sdk_version: \"minimum\" in your build file translate to \"current\" which then sets min_sdk_version to \"current\" which is surfaced here as \"no version\"?",
+      "range": {
+        "startLine": 567,
+        "startChar": 19,
+        "endLine": 567,
+        "endChar": 45
+      },
+      "revId": "b35a85ee8b01198f5e42d504b7c92f89cfdcec26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "51a18e0a_37df1ed3",
