@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0aff74_98a03742",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-18T00:51:29Z",
+      "side": 1,
+      "message": "This condition fails on the combined java_import/java_library test cases in TestPrebuiltExportDexImplementationJars. It appears both of them are hidden from make, and I don\u0027t yet know why.",
+      "range": {
+        "startLine": 503,
+        "startChar": 26,
+        "endLine": 503,
+        "endChar": 50
+      },
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
