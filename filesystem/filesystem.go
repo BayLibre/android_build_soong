@@ -72,17 +72,7 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		FlagWithArg("-d ", rootDir.String()). // zipsync wipes this. No need to clear.
 		Input(zipFile)
 
-	mkuserimg := ctx.Config().HostToolPath(ctx, "mkuserimg_mke2fs")
-	propFile := android.PathForModuleOut(ctx, "prop").OutputPath
-	// TODO(jiyong): support more filesystem types other than ext4
-	propsText := fmt.Sprintf(`mount_point=system\n`+
-		`fs_type=ext4\n`+
-		`use_dynamic_partition_size=true\n`+
-		`ext_mkuserimg=%s\n`, mkuserimg.String())
-	builder.Command().Text("echo").Flag("-e").Flag(`"` + propsText + `"`).
-		Text(">").Output(propFile).
-		Implicit(mkuserimg)
-
+	propFile := f.buildPropFile(ctx)
 	f.output = android.PathForModuleOut(ctx, f.installFileName()).OutputPath
 	builder.Command().BuiltTool("build_image").
 		Text(rootDir.String()). // input directory
@@ -95,6 +85,45 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	f.installDir = android.PathForModuleInstall(ctx, "etc")
 	ctx.InstallFile(f.installDir, f.installFileName(), f.output)
+}
+
+func (f *filesystem) buildPropFile(ctx android.ModuleContext) android.OutputPath {
+	type prop struct {
+		name  string
+		value string
+	}
+
+	var props []prop
+	var deps android.Paths
+	addStr := func(name string, value string) {
+		props = append(props, prop{name, value})
+	}
+	addPath := func(name string, path android.Path) {
+		props = append(props, prop{name, path.String()})
+		deps = append(deps, path)
+	}
+
+	// TODO(jiyong): support more filesystem types other than ext4
+	addStr("fs_type", "ext4")
+	addStr("mount_point", "system")
+	addStr("use_dynamic_partition_size", "true")
+	addPath("ext_mkuserimg", ctx.Config().HostToolPath(ctx, "mkuserimg_mke2fs"))
+	// b/177813163 deps of the host tools have to be added. Remove this.
+	for _, t := range []string{"mke2fs", "e2fsdroid", "tune2fs"} {
+		deps = append(deps, ctx.Config().HostToolPath(ctx, t))
+	}
+
+	output := android.PathForModuleOut(ctx, "prop").OutputPath
+	builder := android.NewRuleBuilder(pctx, ctx)
+	builder.Command().Text("rm").Flag("-rf").Output(output).Implicits(deps)
+	for _, p := range props {
+		builder.Command().
+			Text("echo").Flag("-e").
+			Flag(`"` + p.name + "=" + p.value + `"`).
+			Text(">>").Output(output)
+	}
+	builder.Build("build_filesystem_prop", fmt.Sprintf("Creating filesystem props for %s", f.BaseModuleName()))
+	return output
 }
 
 var _ android.AndroidMkEntriesProvider = (*filesystem)(nil)
