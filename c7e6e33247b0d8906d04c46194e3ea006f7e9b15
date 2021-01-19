@@ -206,6 +206,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f937a954_9e02cd9c",
+        "filename": "android/testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-19T14:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bd0e68e_4e5a02b8",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 2
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24d7958d_87372b3c",
@@ -468,6 +492,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de7bca56_cb577b92",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-19T14:34:20Z",
+      "side": 1,
+      "message": "No longer an issue since the refactoring to create a separate deapexer module.",
+      "parentUuid": "db73ac53_4c05b2f6",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 103
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68f7ee9f_80c6609d",
@@ -505,6 +553,30 @@
       "side": 1,
       "message": "Accessing modules directly via an interface is a pattern that Soong is trying to move away from to the more abstract Provider model. If the dependency direction was changed then that would require an additional Provider and data structure to make that information available from the prebuilt_apex to the java_import so would not change this code all that much. In fact the code for handling that would most likely be more complicated as it would require visiting the dependencies with the appropriate tag in order to find the prebuilt_apex module, and retrieve the data.",
       "parentUuid": "68f7ee9f_80c6609d",
+      "range": {
+        "startLine": 2850,
+        "startChar": 0,
+        "endLine": 2852,
+        "endChar": 70
+      },
+      "revId": "c7e6e33247b0d8906d04c46194e3ea006f7e9b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7549e3ff_52cfe89e",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-19T14:34:20Z",
+      "side": 1,
+      "message": "No longer an issue since the refactoring to create a separate deapexer module.",
+      "parentUuid": "fb14ba97_974c5919",
       "range": {
         "startLine": 2850,
         "startChar": 0,
