@@ -16,6 +16,23 @@
       "message": "Added support of prebuilt modules.",
       "revId": "7cf1465d2ed9853481b1b36564bbd55ca2547900",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b27733_829ef838",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-19T05:21:50Z",
+      "side": 1,
+      "message": "ping for review",
+      "revId": "7cf1465d2ed9853481b1b36564bbd55ca2547900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
