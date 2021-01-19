@@ -33,6 +33,23 @@
       "message": "ping for owner-review-vote",
       "revId": "c9770d6a9cbffe166b0c7a2fe8049eb36b1682db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c00936b_f3b231a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-19T08:44:31Z",
+      "side": 1,
+      "message": "LGTM, sorry for delay",
+      "revId": "c9770d6a9cbffe166b0c7a2fe8049eb36b1682db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
