@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a46168e9_3eb7263e",
+        "filename": "android/register.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-19T14:15:30Z",
+      "side": 1,
+      "message": "Rather than adding this to the context, it may make sense to add this to a wrapper context just for the pieces that need the ability to use android.Paths functionality, e.g. similar to the querviewContext -- that way we reduce potential misuse of the Context in general.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 49
+      },
+      "revId": "f1d13aa540d8431de82b75a6a20347c52ba1257e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a51f1c7_f332df21",
+        "filename": "cmd/soong_build/queryview.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-19T14:15:30Z",
+      "side": 1,
+      "message": "I _think_ we can just use the blueprint.Context directly here because all the methods required by bpToBuildContext are supplied by blueprint.Context -- I think you could try by just deleting all the queryviewContext pieces.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "f1d13aa540d8431de82b75a6a20347c52ba1257e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
