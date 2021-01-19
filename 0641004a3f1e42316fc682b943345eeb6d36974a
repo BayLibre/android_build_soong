@@ -16,6 +16,23 @@
       "message": "Colin, Jaewoong, could you owner-review-vote?",
       "revId": "0641004a3f1e42316fc682b943345eeb6d36974a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7816a6ab_7d0f46a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-19T05:21:58Z",
+      "side": 1,
+      "message": "ping for owner-review-vote",
+      "revId": "0641004a3f1e42316fc682b943345eeb6d36974a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
