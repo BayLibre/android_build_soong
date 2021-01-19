@@ -34,6 +34,24 @@
       "parentUuid": "e6f9f88f_7d75ce30",
       "revId": "38f25a319b37a7f517fb5a346c2de7e733900cae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b00cf4_b4af600f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-01-19T09:12:27Z",
+      "side": 1,
+      "message": "Ok, makes sense. I guess this is not something most people would need to do?\n\nIs there a link (or short explanation) you could put in hiddenapi_singleton.go so that people looking in future can understand how the prebuilts are used?",
+      "parentUuid": "4b0cb9da_57e455e7",
+      "revId": "38f25a319b37a7f517fb5a346c2de7e733900cae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
