@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c660b711_0cbaed97",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-19T19:04:49Z",
+      "side": 1,
+      "message": "This seems odd, you\u0027re writing a text file, it doesn\u0027t actually depend on these tools.  Can you return the collected deps and make the build_image command depend on them?  That will both avoid rewriting the prop file every time the tools are touched, and help with eventual RBE support by directly depending on the necessary tools.",
+      "range": {
+        "startLine": 118,
+        "startChar": 56,
+        "endLine": 118,
+        "endChar": 72
+      },
+      "revId": "b992c492a11a631fa2a5911b84f6b07bf684dc7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
