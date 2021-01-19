@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e03d15_6f1afd60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-01-19T17:27:07Z",
+      "side": 1,
+      "message": "Hi Colin, could you kindly review the gen_ndk_backedby_apex.sh script and grant owner review if everything looks right?",
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
