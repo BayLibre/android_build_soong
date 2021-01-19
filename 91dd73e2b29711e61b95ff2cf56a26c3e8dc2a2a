@@ -87,6 +87,24 @@
       "parentUuid": "3886361d_c5969bd4",
       "revId": "91dd73e2b29711e61b95ff2cf56a26c3e8dc2a2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fab673d9_c02c107b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-19T13:40:31Z",
+      "side": 1,
+      "message": "Thanks for the ideas, I went the second idea by running an explicit Codegen step in runBp2Build, after bootstrap.Main. We no longer need the blueprint change.\n\nI had to make android.Context (which already has VisitAllModules) also conform to PathContext, since PathContext is used to determine the output filepaths of the generated directory. If you have a better idea than doing that, please let me know.",
+      "parentUuid": "a2ebd4c7_1ec64a97",
+      "revId": "91dd73e2b29711e61b95ff2cf56a26c3e8dc2a2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
