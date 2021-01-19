@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82557c17_461c4003",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-19T19:05:03Z",
+      "side": 1,
+      "message": "Can we add more detail about why we\u0027re doing this?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "a7d5f73348fd5737cda03198a7d6c5895f562bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf117304_95bdd227",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-19T19:05:03Z",
+      "side": 1,
+      "message": "can we comment where this is coming from?",
+      "range": {
+        "startLine": 599,
+        "startChar": 17,
+        "endLine": 599,
+        "endChar": 19
+      },
+      "revId": "a7d5f73348fd5737cda03198a7d6c5895f562bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
