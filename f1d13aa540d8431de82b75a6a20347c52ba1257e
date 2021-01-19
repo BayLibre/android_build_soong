@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d3e317_b4c66bdb",
+        "filename": "android/register.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-19T16:02:50Z",
+      "side": 1,
+      "message": "Done -- created a wrapper context.",
+      "parentUuid": "a46168e9_3eb7263e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 49
+      },
+      "revId": "f1d13aa540d8431de82b75a6a20347c52ba1257e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a51f1c7_f332df21",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-19T14:15:30Z",
       "side": 1,
       "message": "I _think_ we can just use the blueprint.Context directly here because all the methods required by bpToBuildContext are supplied by blueprint.Context -- I think you could try by just deleting all the queryviewContext pieces.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "f1d13aa540d8431de82b75a6a20347c52ba1257e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d956bac5_adfc1a72",
+        "filename": "cmd/soong_build/queryview.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-19T16:02:50Z",
+      "side": 1,
+      "message": "Excellent catch, done and removed queryviewContext, and replaced the testing wrapper context with the new one.",
+      "parentUuid": "3a51f1c7_f332df21",
       "range": {
         "startLine": 39,
         "startChar": 0,
