@@ -42,8 +42,8 @@ type snapshotImage interface {
 
 	// Returns the value of the "available" property for a given module for
 	// and snapshot, e.g., "vendor_available", "recovery_available", etc.
-	// or nil if the property is not defined.
-	available(m *Module) *bool
+	// false if the property is not defined.
+	available(m *Module) bool
 
 	// Returns true if a dir under source tree is an SoC-owned proprietary
 	// directory, such as device/, vendor/, etc.
@@ -112,8 +112,8 @@ func (vendorSnapshotImage) inImage(m *Module) func() bool {
 	return m.InVendor
 }
 
-func (vendorSnapshotImage) available(m *Module) *bool {
-	return m.VendorProperties.Vendor_available
+func (vendorSnapshotImage) available(m *Module) bool {
+	return Bool(m.VendorProperties.Vendor_available)
 }
 
 func (vendorSnapshotImage) isProprietaryPath(dir string) bool {
@@ -227,8 +227,8 @@ func (recoverySnapshotImage) inImage(m *Module) func() bool {
 	return m.InRecovery
 }
 
-func (recoverySnapshotImage) available(m *Module) *bool {
-	return m.Properties.Recovery_available
+func (recoverySnapshotImage) available(m *Module) bool {
+	return Bool(m.Properties.Recovery_available)
 }
 
 func (recoverySnapshotImage) isProprietaryPath(dir string) bool {
