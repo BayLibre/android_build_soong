@@ -73,6 +73,30 @@
       },
       "revId": "c9770d6a9cbffe166b0c7a2fe8049eb36b1682db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a609edab_40ecdf7f",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-20T14:40:41Z",
+      "side": 1,
+      "message": "It\u0027s a simple hack.\n\n- Dumped API file will be empty if sysprop_library doesn\u0027t have Public properties.\n- When building, current.txt is compared to dumped API file.\n- If current.txt doesn\u0027t exist, build system uses DevNull instead.",
+      "parentUuid": "99686cfb_2273e262",
+      "range": {
+        "startLine": 277,
+        "startChar": 32,
+        "endLine": 278,
+        "endChar": 29
+      },
+      "revId": "c9770d6a9cbffe166b0c7a2fe8049eb36b1682db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
