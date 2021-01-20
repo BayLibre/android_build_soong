@@ -50,6 +50,29 @@
       "message": "LGTM, sorry for delay",
       "revId": "c9770d6a9cbffe166b0c7a2fe8049eb36b1682db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99686cfb_2273e262",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-20T12:56:38Z",
+      "side": 1,
+      "message": "Sorry, just had another look at this. You say this is only allowed when the library only has internal properties, but I don\u0027t see a check for \"only has internal properties\"?",
+      "range": {
+        "startLine": 277,
+        "startChar": 32,
+        "endLine": 278,
+        "endChar": 29
+      },
+      "revId": "c9770d6a9cbffe166b0c7a2fe8049eb36b1682db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
