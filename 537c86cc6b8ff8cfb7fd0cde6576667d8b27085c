@@ -16,6 +16,24 @@
       "message": "How do you create this text file, especially for a newly created library?",
       "revId": "537c86cc6b8ff8cfb7fd0cde6576667d8b27085c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a0d9bf_e5a82ac9",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-20T18:04:20Z",
+      "side": 1,
+      "message": "Another problem: prebuilts/sdk is only for non-vendor libraries.\n\nMaybe I should rephrase it to say you need to define an appropriate prebuilts_apis {}",
+      "parentUuid": "f4a2981b_546bd8ee",
+      "revId": "537c86cc6b8ff8cfb7fd0cde6576667d8b27085c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
