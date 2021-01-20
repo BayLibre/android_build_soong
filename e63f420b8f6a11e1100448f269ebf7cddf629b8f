@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93256944_8529b577",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-20T11:43:36Z",
+      "side": 1,
+      "message": "Good catch. It returns `true` by checking the vndk.private property regardless of the variants.\nIt must behave differently for VNDK-private modules with the `recovery_available: true`.\nI think we need to define a `private()` interface instead of using `available()` interface here.",
+      "parentUuid": "c7710eba_cc0ed84c",
+      "range": {
+        "startLine": 267,
+        "startChar": 34,
+        "endLine": 267,
+        "endChar": 52
+      },
+      "revId": "e63f420b8f6a11e1100448f269ebf7cddf629b8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b160028_8c297b57",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 1
