@@ -16,6 +16,92 @@
       "message": "Hi Colin, could you kindly review the gen_ndk_backedby_apex.sh script and grant owner review if everything looks right?",
       "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e8ffa4_798ee5f7",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-20T21:42:39Z",
+      "side": 1,
+      "message": "If I understand correctly, these implicit dependencies are for the files in imageDir.  If so, I would move this below as:\n\n   Text(imageDir.String()).Implicits(implicitInputs).\n\nThat way the dependencies are next to the usage.",
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626ee9f1_784c5360",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-20T21:42:39Z",
+      "side": 1,
+      "message": "This is missing a dependency on ndkLibraryList, it should be:\n\n   Input(ndkLibraryList)",
+      "range": {
+        "startLine": 710,
+        "startChar": 3,
+        "endLine": 710,
+        "endChar": 32
+      },
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8f47eb_4fa414d8",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-20T21:42:39Z",
+      "side": 1,
+      "message": "This should be something unique across all rules for the module, suggest \"ndk_backedby_list\".",
+      "range": {
+        "startLine": 711,
+        "startChar": 14,
+        "endLine": 711,
+        "endChar": 18
+      },
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3e25e2_39834bca",
+        "filename": "scripts/gen_ndk_backedby_apex.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-20T21:42:39Z",
+      "side": 1,
+      "message": "This is only 2 arguments",
+      "range": {
+        "startLine": 51,
+        "startChar": 65,
+        "endLine": 51,
+        "endChar": 98
+      },
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
