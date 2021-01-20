@@ -70,6 +70,24 @@
       "parentUuid": "6ad3eb7f_9b3a6c5e",
       "revId": "537c86cc6b8ff8cfb7fd0cde6576667d8b27085c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0295cc1_79b32c71",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-20T19:22:26Z",
+      "side": 1,
+      "message": "Updated the error message to mention prebuilt_apis for now and  clarified prebuilts/sdk is just an example.",
+      "parentUuid": "a6d9bb30_61488d21",
+      "revId": "537c86cc6b8ff8cfb7fd0cde6576667d8b27085c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
