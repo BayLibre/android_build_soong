@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8794dac_3e163e6d",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-20T14:45:50Z",
+      "side": 1,
+      "message": "\"DisablePreopt\", and \"ENABLE_PREOPT\" in make, gives the impression they\u0027d control all preopting. Those names could be better, but in the interest of time we can keep this for now.",
+      "range": {
+        "startLine": 30,
+        "startChar": 68,
+        "endLine": 30,
+        "endChar": 91
+      },
+      "revId": "a4a1c4ee984e9b2c4b970dc373dc025e92f70349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
