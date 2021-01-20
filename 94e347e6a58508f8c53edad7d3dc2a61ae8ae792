@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2cd44cf_81596636",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-20T17:49:17Z",
+      "side": 1,
+      "message": "This seems to cause changes to adbd, linker, update_engine_sideload, libcrypto and liblzma in the boot and vendor_boot partitions.  I think that is correct though, we were probably building those modules against the NDK before this change.",
+      "revId": "94e347e6a58508f8c53edad7d3dc2a61ae8ae792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
