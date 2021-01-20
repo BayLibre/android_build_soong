@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255c76a3_22c9fb05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-20T12:10:30Z",
+      "side": 1,
+      "message": "LGTM except for the exclude_from_vendor_snapshot part.",
+      "revId": "13b47fa1cdd6531fc190dde4192fb9e392bfd83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
