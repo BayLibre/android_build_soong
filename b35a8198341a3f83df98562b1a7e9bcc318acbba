@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46d98bd8_27233c8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-20T23:04:04Z",
+      "side": 1,
+      "message": "Can anyone +2 this? This is blocking the submission of the entire topic.",
+      "revId": "b35a8198341a3f83df98562b1a7e9bcc318acbba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d568cd1_48900e44",
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "I\u0027d love to and I actually tried it, but ApiLevel currently can\u0027t deal with special version strings like \"apex_inherit\" which should be resolved differently depending on the context.\n\nThis definitely is a place that needs a clean-up, but I believe it can be part of b/175678607.",
       "parentUuid": "6d568cd1_48900e44",
+      "revId": "b35a8198341a3f83df98562b1a7e9bcc318acbba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c08c9f89_256ab7c8",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-20T23:04:04Z",
+      "side": 1,
+      "message": "Will make this better later.",
+      "parentUuid": "6116adc8_a99c847a",
       "revId": "b35a8198341a3f83df98562b1a7e9bcc318acbba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
