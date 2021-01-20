@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a2981b_546bd8ee",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-20T17:58:20Z",
+      "side": 1,
+      "message": "How do you create this text file, especially for a newly created library?",
+      "revId": "537c86cc6b8ff8cfb7fd0cde6576667d8b27085c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
