@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f715b70_89003493",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2021-01-20T00:10:49Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with sdk_version-vs-min_sdk_version.\n\nI\u0027m matching the other prebuilts from the LLVM toolchain build. I thought that setting sdk_version to \"minimum\" meant that the prebuilt would be usable for any currently-supported API level (e.g. API 16+). The libunwind.a prebuilt is linked into (AFAIK) APEXs that target Q. Both the libunwind.a and libunwind-exported.a prebuilts are linked into the com.android.runtime (Bionic) APEX, but IIRC that\u0027s not currently an updatable mainline module.\n\nThe build/soong/scripts/update-apex-allowed-deps.sh script added the prebuilt_libunwind line. I don\u0027t know what \"no version\" here means, but some of the other similar prebuilts (e.g. prebuilt_libclang_rt.builtins-*-android, libgcc, libgcc_stripped) have the same \"no version\" marker.\n\nOTOH, two other variants of the LLVM unwinder have different markers:\n * libunwind_llvm(minSdkVersion:apex_inherit)\n * ndk_libunwind(minSdkVersion:16)\n\nndk_libunwind is a prebuilt of the arm32 LLVM unwinder that comes from the NDK. It works with API16 and up, but it\u0027s explicit about that. libunwind_llvm is built from external/libunwind_llvm, and is mostly irrelevant after my changes.",
+      "parentUuid": "efaca40f_5c55ab8d",
+      "range": {
+        "startLine": 567,
+        "startChar": 19,
+        "endLine": 567,
+        "endChar": 45
+      },
+      "revId": "b35a85ee8b01198f5e42d504b7c92f89cfdcec26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "51a18e0a_37df1ed3",
