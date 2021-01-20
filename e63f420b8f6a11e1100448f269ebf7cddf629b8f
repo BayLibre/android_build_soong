@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7710eba_cc0ed84c",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-20T11:26:32Z",
+      "side": 1,
+      "message": "How does this work in recovery snapshot? Can we check this only when vendor snapshot? Or will IsVndkPrivate() be always false in recovery variant?",
+      "range": {
+        "startLine": 267,
+        "startChar": 34,
+        "endLine": 267,
+        "endChar": 52
+      },
+      "revId": "e63f420b8f6a11e1100448f269ebf7cddf629b8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b160028_8c297b57",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 1
@@ -14,6 +37,30 @@
       "writtenOn": "2021-01-20T10:55:39Z",
       "side": 1,
       "message": "Can we remove this? Without it, we may remove \u0027available()\u0027 interface.\nWhy `vendor_available: true` modules must not be excluded?",
+      "range": {
+        "startLine": 529,
+        "startChar": 3,
+        "endLine": 539,
+        "endChar": 4
+      },
+      "revId": "e63f420b8f6a11e1100448f269ebf7cddf629b8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa92c623_e994f7d2",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-20T11:26:32Z",
+      "side": 1,
+      "message": "bpeckham@, any ideas?",
+      "parentUuid": "4b160028_8c297b57",
       "range": {
         "startLine": 529,
         "startChar": 3,
