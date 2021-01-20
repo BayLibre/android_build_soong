@@ -1489,6 +1489,10 @@ func PrebuiltJars(ctx android.BaseModuleContext, baseName string, s sdkSpec) and
 func withinSameApexesAs(ctx android.BaseModuleContext, other android.Module) bool {
 	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 	otherApexInfo := ctx.OtherModuleProvider(other, android.ApexInfoProvider).(android.ApexInfo)
+	debug := strings.Contains(ctx.ModuleName(), "-permissions")
+	if debug {
+		fmt.Printf("PAUL: %s - InApexes %s, %s - InApexes %s \n", ctx.Module(), apexInfo.InApexes, other, otherApexInfo.InApexes)
+	}
 	return len(otherApexInfo.InApexes) > 0 && reflect.DeepEqual(apexInfo.InApexes, otherApexInfo.InApexes)
 }
 

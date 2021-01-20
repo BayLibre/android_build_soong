@@ -227,3 +227,15 @@ cc_genrule {
 dex_bootjars {
     name: "dex_bootjars",
 }
+
+boot_image {
+    name: "art-boot-image",
+    visibility: [
+        "//art/build/apex",
+    ],
+    apex_available: [
+        "com.android.art",
+        "com.android.art.debug",
+    ],
+    image_name: "art",
+}

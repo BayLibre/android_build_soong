@@ -35,6 +35,12 @@ import (
 //
 // Changes:
 // 1) dex_bootjars is now a singleton module and not a plain singleton.
+// 2) Boot images are now represented by the boot_image module type.
+// 3) They are defined in build/soong/Android.bp
+// 4) The art boot image is called "art-boot-image", the framework boot image is called
+//    "framework-boot-image".
+// 5) Each boot_image retrieves the appropriate boot image configuration from the map returned by
+//    genBootImageConfigs() using the image_name specified in the boot_image module.
 // =================================================================================================
 
 // This comment describes:
