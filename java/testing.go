@@ -104,6 +104,7 @@ func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	RegisterAppBuildComponents(ctx)
 	RegisterAppImportBuildComponents(ctx)
 	RegisterAppSetBuildComponents(ctx)
+	RegisterBootImageBuildComponents(ctx)
 	RegisterDexpreoptBootJarsComponents(ctx)
 	RegisterDocsBuildComponents(ctx)
 	RegisterGenRuleBuildComponents(ctx)
@@ -214,6 +215,16 @@ func GatherRequiredDepsForTest() string {
 	bp += `
 		dex_bootjars {
 			name: "dex_bootjars",
+		}
+
+		boot_image {
+			name: "art-boot-image",
+			image_name: "art",
+		}
+
+		boot_image {
+			name: "framework-boot-image",
+			image_name: "boot",
 		}
 `
 

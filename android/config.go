@@ -1594,7 +1594,7 @@ func (l *ConfiguredJarList) DevicePaths(cfg Config, ostype OsType) []string {
 	return paths
 }
 
-func (l *ConfiguredJarList) String() string {
+func (l ConfiguredJarList) String() string {
 	var pairs []string
 	for i := 0; i < l.Len(); i++ {
 		pairs = append(pairs, l.apexes[i]+":"+l.jars[i])
