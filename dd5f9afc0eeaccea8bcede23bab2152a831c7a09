@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c5c3ae_eeb12592",
+        "filename": "android/filegroup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-20T19:37:21Z",
+      "side": 1,
+      "message": "Much of the rest of the CL appears to be framework for converting targets -- would it make sense to split this part for filegroup from the rest of the changes?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "dd5f9afc0eeaccea8bcede23bab2152a831c7a09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f810e9_17317303",
+        "filename": "android/module.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-20T19:37:21Z",
+      "side": 1,
+      "message": "Should any of this overlap with https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go?",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 38
+      },
+      "revId": "dd5f9afc0eeaccea8bcede23bab2152a831c7a09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
