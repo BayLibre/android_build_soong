@@ -38,6 +38,7 @@ type bootImageProperties struct {
 
 type BootImageModule struct {
 	android.ModuleBase
+	android.ApexModuleBase
 
 	properties bootImageProperties
 }
@@ -46,6 +47,7 @@ func bootImageFactory() android.Module {
 	m := &BootImageModule{}
 	m.AddProperties(&m.properties)
 	android.InitAndroidArchModule(m, android.HostAndDeviceDefault, android.MultilibCommon)
+	android.InitApexModule(m)
 	return m
 }
 
@@ -58,6 +60,30 @@ type BootImageInfo struct {
 
 func (i BootImageInfo) Modules() android.ConfiguredJarList {
 	return i.imageConfig.modules
+}
+
+// Get a map from ArchType to the associated boot image's contents for Android.
+//
+// Extension boot images only return their own files, not the files of the boot images they extend.
+func (i BootImageInfo) AndroidBootImageFilesByArchType() map[android.ArchType]android.OutputPaths {
+	files := map[android.ArchType]android.OutputPaths{}
+	for _, variant := range i.imageConfig.variants {
+		// We also generate boot images for host (for testing), but we don't need those in the apex.
+		if variant.target.Os == android.Android {
+			files[variant.target.Arch.ArchType] = variant.imagesDeps
+		}
+	}
+	return files
+}
+
+func (b *BootImageModule) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
+	tag := ctx.OtherModuleDependencyTag(dep)
+	ctx.ModuleErrorf("boot_image module %q should not have a dependency on %q via tag %s", b, dep, android.PrettyPrintTag(tag))
+	return false
+}
+
+func (b *BootImageModule) ShouldSupportSdkVersion(ctx android.BaseModuleContext, sdkVersion android.ApiLevel) error {
+	return nil
 }
 
 func (b *BootImageModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {

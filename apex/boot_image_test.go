@@ -15,6 +15,8 @@
 package apex
 
 import (
+	"reflect"
+	"strings"
 	"testing"
 
 	"android/soong/android"
@@ -83,13 +85,39 @@ func TestBootImages(t *testing.T) {
 	)
 
 	// Make sure that the framework-boot-image is using the correct configuration.
-	checkBootImage(t, ctx, "framework-boot-image", "platform:foo,platform:bar")
+	checkBootImage(t, ctx, "framework-boot-image", "platform:foo,platform:bar", `
+test_device/dex_bootjars/android/system/framework/arm/boot-bar.art
+test_device/dex_bootjars/android/system/framework/arm/boot-bar.oat
+test_device/dex_bootjars/android/system/framework/arm/boot-bar.vdex
+test_device/dex_bootjars/android/system/framework/arm/boot-foo.art
+test_device/dex_bootjars/android/system/framework/arm/boot-foo.oat
+test_device/dex_bootjars/android/system/framework/arm/boot-foo.vdex
+test_device/dex_bootjars/android/system/framework/arm64/boot-bar.art
+test_device/dex_bootjars/android/system/framework/arm64/boot-bar.oat
+test_device/dex_bootjars/android/system/framework/arm64/boot-bar.vdex
+test_device/dex_bootjars/android/system/framework/arm64/boot-foo.art
+test_device/dex_bootjars/android/system/framework/arm64/boot-foo.oat
+test_device/dex_bootjars/android/system/framework/arm64/boot-foo.vdex
+`)
 
 	// Make sure that the art-boot-image is using the correct configuration.
-	checkBootImage(t, ctx, "art-boot-image", "com.android.art:baz,com.android.art:quuz")
+	checkBootImage(t, ctx, "art-boot-image", "com.android.art:baz,com.android.art:quuz", `
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot-quuz.art
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot-quuz.oat
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot-quuz.vdex
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot.art
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot.oat
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm/boot.vdex
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot-quuz.art
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot-quuz.oat
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot-quuz.vdex
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.art
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.oat
+test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.vdex
+`)
 }
 
-func checkBootImage(t *testing.T, ctx *android.TestContext, moduleName string, expectedConfiguredModules string) {
+func checkBootImage(t *testing.T, ctx *android.TestContext, moduleName string, expectedConfiguredModules string, expectedBootImageFiles string) {
 	t.Helper()
 
 	bootImage := ctx.ModuleForTests(moduleName, "android_common").Module().(*java.BootImageModule)
@@ -98,6 +126,18 @@ func checkBootImage(t *testing.T, ctx *android.TestContext, moduleName string, e
 	modules := bootImageInfo.Modules()
 	if actual := modules.String(); actual != expectedConfiguredModules {
 		t.Errorf("invalid modules for %s: expected %q, actual %q", moduleName, expectedConfiguredModules, actual)
+	}
+
+	// Get a sorted list of all the paths in the
+	allPaths := []string{}
+	for _, paths := range bootImageInfo.AndroidBootImageFilesByArchType() {
+		for _, path := range paths {
+			allPaths = append(allPaths, android.NormalizePathForTesting(path))
+		}
+	}
+	allPaths = android.SortedUniqueStrings(allPaths)
+	if expected, actual := strings.TrimSpace(expectedBootImageFiles), strings.TrimSpace(strings.Join(allPaths, "\n")); !reflect.DeepEqual(expected, actual) {
+		t.Errorf("invalid paths for %s: expected \n%s, actual \n%s", moduleName, expected, actual)
 	}
 }
 
@@ -124,5 +164,61 @@ func withArtBootImageJars(bootJars ...string) func(fs map[string][]byte, config 
 func withFrameworkBootImageJars(bootJars ...string) func(fs map[string][]byte, config android.Config) {
 	return modifyDexpreoptConfig(func(dexpreoptConfig *dexpreopt.GlobalConfig) {
 		dexpreoptConfig.BootJars = android.CreateTestConfiguredJarList(bootJars)
+	})
+}
+
+func TestBootImageInApex(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			boot_images: [
+				"mybootimage",
+			],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		java_library {
+			name: "foo",
+			srcs: ["b.java"],
+			installable: true,
+		}
+
+		java_library {
+			name: "bar",
+			srcs: ["b.java"],
+			installable: true,
+		}
+
+		boot_image {
+			name: "mybootimage",
+			image_name: "boot",
+			apex_available: [
+				"myapex",
+			],
+		}
+`,
+		// Configure some libraries in the framework boot image.
+		withFrameworkBootImageJars("platform:foo", "platform:bar"),
+	)
+
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+		"javalib/arm/boot-bar.art",
+		"javalib/arm/boot-bar.oat",
+		"javalib/arm/boot-bar.vdex",
+		"javalib/arm/boot-foo.art",
+		"javalib/arm/boot-foo.oat",
+		"javalib/arm/boot-foo.vdex",
+		"javalib/arm64/boot-bar.art",
+		"javalib/arm64/boot-bar.oat",
+		"javalib/arm64/boot-bar.vdex",
+		"javalib/arm64/boot-foo.art",
+		"javalib/arm64/boot-foo.oat",
+		"javalib/arm64/boot-foo.vdex",
 	})
 }
