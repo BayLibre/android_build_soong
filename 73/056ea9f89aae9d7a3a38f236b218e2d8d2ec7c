@@ -1,0 +1,8 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Bypass-Presubmit+1: Bob Badour <bbadour@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Bob Badour <bbadour@google.com>
+Submitted-at: Thu, 21 Jan 2021 20:05:15 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1556479
+Project: platform/build/soong
+Branch: refs/heads/master
