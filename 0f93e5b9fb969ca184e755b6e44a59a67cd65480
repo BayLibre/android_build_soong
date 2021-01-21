@@ -22,6 +22,30 @@
       },
       "revId": "0f93e5b9fb969ca184e755b6e44a59a67cd65480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b51298d9_c51d3ecc",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-21T00:39:00Z",
+      "side": 1,
+      "message": "The deps aren\u0027t on the globbed files, they are on the directories so that the glob is rerun if any files are added or removed.",
+      "parentUuid": "e6b8c3b1_76707319",
+      "range": {
+        "startLine": 452,
+        "startChar": 2,
+        "endLine": 452,
+        "endChar": 49
+      },
+      "revId": "0f93e5b9fb969ca184e755b6e44a59a67cd65480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
