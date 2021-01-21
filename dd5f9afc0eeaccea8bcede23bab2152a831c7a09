@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6a4760_46bbf661",
+        "filename": "android/filegroup.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-21T10:08:26Z",
+      "side": 1,
+      "message": "Sure, I split this CL up into framework/scaffolding and filegroup changes. aosp/1555555",
+      "parentUuid": "b6c5c3ae_eeb12592",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "dd5f9afc0eeaccea8bcede23bab2152a831c7a09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83f810e9_17317303",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-20T19:37:21Z",
       "side": 1,
       "message": "Should any of this overlap with https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go?",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1085,
+        "endChar": 38
+      },
+      "revId": "dd5f9afc0eeaccea8bcede23bab2152a831c7a09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5e3b97c_af02986e",
+        "filename": "android/module.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-21T10:08:26Z",
+      "side": 1,
+      "message": "Not really, since they\u0027re used for different purposes (and Bp2BuildProperties is not meant to be configurable by users).\n\nI renamed it to BazelTargetModuleProperties and refactored this CL to make it clearer. Also reduced a bit of boilerplate for filegroup.go.",
+      "parentUuid": "83f810e9_17317303",
       "range": {
         "startLine": 1085,
         "startChar": 0,
