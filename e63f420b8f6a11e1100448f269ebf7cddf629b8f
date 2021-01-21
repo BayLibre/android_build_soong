@@ -117,6 +117,30 @@
       },
       "revId": "e63f420b8f6a11e1100448f269ebf7cddf629b8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d6322e_9bc98c74",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-01-21T03:43:02Z",
+      "side": 1,
+      "message": "I think we can safely remove this. In the long run, I\u0027d like to eliminate `exclude_from_vendor_snapshot` altogether and rely solely on directed snapshot to handle the issues that created `exclude_from_vendor_snapshot`.",
+      "parentUuid": "aa92c623_e994f7d2",
+      "range": {
+        "startLine": 529,
+        "startChar": 3,
+        "endLine": 539,
+        "endChar": 4
+      },
+      "revId": "e63f420b8f6a11e1100448f269ebf7cddf629b8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
