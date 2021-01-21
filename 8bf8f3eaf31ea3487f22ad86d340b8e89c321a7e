@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a1a656_8df8bd61",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-01-21T18:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4e8ffa4_798ee5f7",
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "626ee9f1_784c5360",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-01-20T21:42:39Z",
       "side": 1,
       "message": "This is missing a dependency on ndkLibraryList, it should be:\n\n   Input(ndkLibraryList)",
+      "range": {
+        "startLine": 710,
+        "startChar": 3,
+        "endLine": 710,
+        "endChar": 32
+      },
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "527cdf82_63f043af",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-01-21T18:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "626ee9f1_784c5360",
       "range": {
         "startLine": 710,
         "startChar": 3,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74640908_b2f2b39c",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-01-21T18:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b8f47eb_4fa414d8",
+      "range": {
+        "startLine": 711,
+        "startChar": 14,
+        "endLine": 711,
+        "endChar": 18
+      },
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d3e25e2_39834bca",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-01-20T21:42:39Z",
       "side": 1,
       "message": "This is only 2 arguments",
+      "range": {
+        "startLine": 51,
+        "startChar": 65,
+        "endLine": 51,
+        "endChar": 98
+      },
+      "revId": "8bf8f3eaf31ea3487f22ad86d340b8e89c321a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed0be72_d0dcf6fe",
+        "filename": "scripts/gen_ndk_backedby_apex.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-01-21T18:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d3e25e2_39834bca",
       "range": {
         "startLine": 51,
         "startChar": 65,
