@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+package {
+    default_applicable_licenses: ["build_soong_license"],
+}
+
 bootstrap_go_package {
     name: "android-archive-zip",
     pkgPath: "android/soong/third_party/zip",

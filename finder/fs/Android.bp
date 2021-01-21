@@ -16,6 +16,10 @@
 // mock filesystem
 //
 
+package {
+    default_applicable_licenses: ["build_soong_license"],
+}
+
 bootstrap_go_package {
     name: "soong-finder-fs",
     pkgPath: "android/soong/finder/fs",
