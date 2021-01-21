@@ -46,6 +46,23 @@
       },
       "revId": "0f93e5b9fb969ca184e755b6e44a59a67cd65480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908da4ad_bc2298a7",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-21T00:39:35Z",
+      "side": 1,
+      "message": "I just realized this doesn\u0027t truncate glob after filtering it, will upload a fix.",
+      "revId": "0f93e5b9fb969ca184e755b6e44a59a67cd65480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
