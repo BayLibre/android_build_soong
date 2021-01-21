@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf6359d3_4dbf5f05",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-21T10:03:19Z",
+      "side": 1,
+      "message": "As this function directly checks the property of the module, I fixed the variant to \"vendorVariant\" to test for exclude_from_vendor_snapshot.",
+      "range": {
+        "startLine": 1630,
+        "startChar": 6,
+        "endLine": 1630,
+        "endChar": 31
+      },
+      "revId": "6a926eb43f37c5036065dd9b5f027caf1fdcf3ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

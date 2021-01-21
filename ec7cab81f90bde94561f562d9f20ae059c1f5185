@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb51b6d8_5dd930da",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1798,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-21T10:03:19Z",
+      "side": 0,
+      "message": "This must be the reason to prevent vendor_available modules from having \"exclude_from_vendor_snapshot\" property. I guess it means modules in a vendor path must not have `vendor_available: true` because they must not create core variant for system image.\nBut still I don\u0027t think it is a hard requirement.",
+      "range": {
+        "startLine": 1797,
+        "startChar": 4,
+        "endLine": 1798,
+        "endChar": 24
+      },
+      "revId": "ec7cab81f90bde94561f562d9f20ae059c1f5185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
