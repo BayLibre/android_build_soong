@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "42b13479_3203b52b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-21T06:25:33Z",
+      "side": 1,
+      "message": "It is easier to reproduce if more precise instructions are given (target, environment, commands, like `lunch X \u0026\u0026 Y\u003dtrue m Z`). Not necessary to fix in this CL.",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "13d8830eafef04c82510da0760b017fa580cd853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dfe95403_fe07d74d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
