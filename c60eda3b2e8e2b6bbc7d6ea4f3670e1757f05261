@@ -160,6 +160,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c11c852_d92e07f9",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-01-21T17:48:30Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "d808aa22_2edc0761",
+      "revId": "c60eda3b2e8e2b6bbc7d6ea4f3670e1757f05261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dedf676f_ebc7a08a",
