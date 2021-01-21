@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b8c3b1_76707319",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-21T00:36:50Z",
+      "side": 1,
+      "message": "nit\nIs it fine to glob all files? Some of them might not be headers, and they will be added to deps.",
+      "range": {
+        "startLine": 452,
+        "startChar": 2,
+        "endLine": 452,
+        "endChar": 49
+      },
+      "revId": "0f93e5b9fb969ca184e755b6e44a59a67cd65480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
