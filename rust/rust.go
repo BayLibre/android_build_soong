@@ -267,14 +267,16 @@ type Deps struct {
 }
 
 type PathDeps struct {
-	DyLibs      RustLibraries
-	RLibs       RustLibraries
-	SharedLibs  android.Paths
-	StaticLibs  android.Paths
-	ProcMacros  RustLibraries
-	linkDirs    []string
-	depFlags    []string
-	linkObjects []string
+	DyLibs          RustLibraries
+	RLibs           RustLibraries
+	SharedLibs      android.Paths
+	CcSharedLibDeps android.Paths
+	CcSharedLibs    android.Paths
+	StaticLibs      android.Paths
+	ProcMacros      RustLibraries
+	linkDirs        []string
+	depFlags        []string
+	linkObjects     []string
 	//ReexportedDeps android.Paths
 
 	// Used by bindgen modules which call clang
@@ -791,6 +793,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	directDylibDeps := []*Module{}
 	directProcMacroDeps := []*Module{}
 	directSharedLibDeps := [](cc.LinkableInterface){}
+	directCcSharedLibDeps := [](cc.LinkableInterface){}
 	directStaticLibDeps := [](cc.LinkableInterface){}
 	directSrcProvidersDeps := []*Module{}
 	directSrcDeps := [](android.SourceFileProducer){}
@@ -904,7 +907,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.depSystemIncludePaths = append(depPaths.depSystemIncludePaths, exportedInfo.SystemIncludeDirs...)
 				depPaths.depClangFlags = append(depPaths.depClangFlags, exportedInfo.Flags...)
 				depPaths.depGeneratedHeaders = append(depPaths.depGeneratedHeaders, exportedInfo.GeneratedHeaders...)
-				directSharedLibDeps = append(directSharedLibDeps, ccDep)
+				directCcSharedLibDeps = append(directCcSharedLibDeps, ccDep)
 				mod.Properties.AndroidMkSharedLibs = append(mod.Properties.AndroidMkSharedLibs, depName)
 				exportDep = true
 			case cc.IsHeaderDepTag(depTag):
@@ -957,6 +960,17 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		sharedLibDepFiles = append(sharedLibDepFiles, dep.OutputFile().Path())
 	}
 
+	var ccSharedLibFiles android.Paths
+	var ccSharedLibDepFiles android.Paths
+	for _, dep := range directCcSharedLibDeps {
+		ccSharedLibFiles = append(ccSharedLibFiles, dep.OutputFile().Path())
+		if dep.Toc().Valid() {
+			ccSharedLibDepFiles = append(ccSharedLibDepFiles, dep.Toc().Path())
+		} else {
+			ccSharedLibDepFiles = append(ccSharedLibDepFiles, dep.OutputFile().Path())
+		}
+	}
+
 	var srcProviderDepFiles android.Paths
 	for _, dep := range directSrcProvidersDeps {
 		srcs, _ := dep.OutputFiles("")
@@ -973,9 +987,12 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.StaticLibs = append(depPaths.StaticLibs, staticLibDepFiles...)
 	depPaths.ProcMacros = append(depPaths.ProcMacros, procMacroDepFiles...)
 	depPaths.SrcDeps = append(depPaths.SrcDeps, srcProviderDepFiles...)
+	depPaths.CcSharedLibs = append(depPaths.CcSharedLibs, ccSharedLibFiles...)
+	depPaths.CcSharedLibDeps = append(depPaths.CcSharedLibDeps, ccSharedLibDepFiles...)
 
 	// Dedup exported flags from dependencies
 	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
+	depPaths.linkObjects = android.FirstUniqueStrings(depPaths.linkObjects)
 	depPaths.depFlags = android.FirstUniqueStrings(depPaths.depFlags)
 	depPaths.depClangFlags = android.FirstUniqueStrings(depPaths.depClangFlags)
 	depPaths.depIncludePaths = android.FirstUniquePaths(depPaths.depIncludePaths)
