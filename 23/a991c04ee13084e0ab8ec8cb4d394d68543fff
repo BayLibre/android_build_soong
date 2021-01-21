@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Pirama Arumuga Nainar <pirama@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Christopher Di Bella <cjdb@google.com>
+Submitted-at: Thu, 21 Jan 2021 22:24:48 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1497076
+Project: platform/build/soong
+Branch: refs/heads/master
