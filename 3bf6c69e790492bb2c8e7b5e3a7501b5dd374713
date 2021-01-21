@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa8c2e63_241f1786",
+        "filename": "android/mutator.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-21T14:44:57Z",
+      "side": 1,
+      "message": "I think it we pass bp2buildMutators here instead it would be fairly easy to reuse this for the test context also.",
+      "range": {
+        "startLine": 47,
+        "startChar": 62,
+        "endLine": 47,
+        "endChar": 63
+      },
+      "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9224fc1_a2da426a",
+        "filename": "android/mutator.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-21T14:44:57Z",
+      "side": 1,
+      "message": "Something that may help with this is making this part of the RegistrationContext (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/register.go;l\u003d168;drc\u003ddaa54bcbba9dbea37ddf28feb948a112e3f4c95d).",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 50
+      },
+      "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03cf6c78_fcd44898",
+        "filename": "android/testing.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-21T14:44:57Z",
+      "side": 1,
+      "message": "should the bp2buildMutators in the test context also be hooked up here? or add a RegisterForBazelConversion to the test context?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 1
+      },
+      "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0541e06_e41ad814",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-21T14:44:57Z",
+      "side": 1,
+      "message": "Oh nice. This seems like a place where we could check a bool that says auto-convert (or not) eventually.",
+      "range": {
+        "startLine": 83,
+        "startChar": 49,
+        "endLine": 83,
+        "endChar": 50
+      },
+      "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03126908_686dc300",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-21T14:44:57Z",
+      "side": 1,
+      "message": "Going forward, I wonder if we could store the base name directly in the target so we don\u0027t have to do add/remove prefix -- or if we could treat it like prebuilts and use the base name or rename based on a convert bool the way prebuilts do on \"prefer\".",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 44
+      },
+      "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8381bc54_7b8a8e8c",
+        "filename": "bp2build/conversion_test.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-21T14:44:57Z",
+      "side": 1,
+      "message": "Assert functions aren\u0027t idiomatic go (go/go-style/best-practices#test-functions) -- to share infrastructure, a table-driven test is more commonly used in go.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 79
+      },
+      "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
