@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f3027a3_1af897d9",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-21T19:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9281880a_6ef1e76e",
+      "revId": "2428270052b113bc8c236a3abcf1ff1263a3ac06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02bd3809_cb174ad5",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-21T17:34:29Z",
       "side": 1,
       "message": "I know this file was not well commented, but can you add some godoc comments to the new functions?",
+      "revId": "2428270052b113bc8c236a3abcf1ff1263a3ac06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "804e77d9_2bde943b",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-21T19:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02bd3809_cb174ad5",
       "revId": "2428270052b113bc8c236a3abcf1ff1263a3ac06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
