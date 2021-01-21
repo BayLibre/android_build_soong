@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9e3bea_57ff7b6f",
+        "filename": "android/filegroup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-01-21T23:27:51Z",
+      "side": 1,
+      "message": "Have you considered how we might write some tests (go tests or otherwise) for type-by-type conversions?",
+      "revId": "0728cc473b192189c3f04c5f5cfb7e0a63724648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2922039e_854aecb4",
+        "filename": "android/filegroup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-01-21T23:27:51Z",
+      "side": 1,
+      "message": "wrap to newline?",
+      "revId": "0728cc473b192189c3f04c5f5cfb7e0a63724648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
