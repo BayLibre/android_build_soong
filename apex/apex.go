@@ -726,10 +726,6 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		if ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
 			ctx.AddFarVariationDependencies(commonVariation, javaLibTag, "jacocoagent")
 		}
-		// The ART boot image depends on dex2oat to compile it.
-		if !java.SkipDexpreoptBootJars(ctx) {
-			dexpreopt.RegisterToolDeps(ctx)
-		}
 	}
 
 	// Dependencies for signing
@@ -1863,11 +1859,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				af := newApexFile(ctx, f, localModule, dirInApex, etc, nil)
 				filesInfo = append(filesInfo, af)
 			}
-		}
-		// Call GetGlobalSoongConfig to initialize it, which may be necessary if dexpreopt is
-		// disabled for libraries/apps, but boot images are still needed.
-		if !java.SkipDexpreoptBootJars(ctx) {
-			dexpreopt.GetGlobalSoongConfig(ctx)
 		}
 	}
 

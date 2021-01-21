@@ -401,11 +401,27 @@ func DexpreoptedArtApexJars(ctx android.BuilderContext) map[android.ArchType]and
 	return files
 }
 
+func (d *dexpreoptBootJars) DepsMutator(ctx android.BottomUpMutatorContext) {
+	if SkipDexpreoptBootJars(ctx) {
+		return
+	}
+
+	// Add a dependency onto the dex2oat tool which is needed for creating the boot image. The
+	// path is retrieved from the dependency by GetGlobalSoongConfig(ctx).
+	dexpreopt.RegisterToolDeps(ctx)
+}
+
 // Provide paths to boot images for use by modules that depend upon them.
 //
 // The build rules are created in GenerateSingletonBuildActions().
 func (d *dexpreoptBootJars) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	// Placeholder for now.
+	if SkipDexpreoptBootJars(ctx) {
+		return
+	}
+
+	// Force the GlobalSoongConfig to be created and cached for use by the
+	// GenerateSingletonBuildActions method as it cannot yet create it for itself.
+	dexpreopt.GetGlobalSoongConfig(ctx)
 }
 
 // Generate build rules for boot images.
