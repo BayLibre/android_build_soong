@@ -141,6 +141,30 @@
       },
       "revId": "e63f420b8f6a11e1100448f269ebf7cddf629b8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0a2b559_d312ab9f",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-21T08:24:55Z",
+      "side": 1,
+      "message": "Thanks, Bill.\nLet me remove it.",
+      "parentUuid": "69d6322e_9bc98c74",
+      "range": {
+        "startLine": 529,
+        "startChar": 3,
+        "endLine": 539,
+        "endChar": 4
+      },
+      "revId": "e63f420b8f6a11e1100448f269ebf7cddf629b8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
