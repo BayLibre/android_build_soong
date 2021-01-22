@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48528116_3becd3c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-22T13:46:56Z",
+      "side": 1,
+      "message": "Looks reasonable. Liz is more familiar with the code so please do listen to her more than to me!",
+      "revId": "7385067640a3a50c9315e040947067c9996df418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd90f97c_db32add7",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-22T13:46:56Z",
+      "side": 1,
+      "message": "nit: why not a queryview/bp2build enum so that one doesn\u0027t have to wonder what happends when bp2build is disabled?",
+      "range": {
+        "startLine": 76,
+        "startChar": 54,
+        "endLine": 76,
+        "endChar": 74
+      },
+      "revId": "7385067640a3a50c9315e040947067c9996df418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
