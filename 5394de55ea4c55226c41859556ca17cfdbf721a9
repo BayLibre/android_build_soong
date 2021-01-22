@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c9e4bc_f6a934dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-22T22:12:41Z",
+      "side": 1,
+      "message": "This will require changes to development/vendor_snapshot/update.py to create the new vendor_snapshot module that depends on all the other modules.",
+      "revId": "5394de55ea4c55226c41859556ca17cfdbf721a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
