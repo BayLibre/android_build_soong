@@ -45,6 +45,30 @@
       },
       "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef435fd_bf8e93e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-22T17:55:13Z",
+      "side": 1,
+      "message": "This fails with the error you predicted in the ub-launcher3-master presubmit tests. Presumably for the reason you suggested at line 424 in dexpreopt_bootjars.go.\n\nI don\u0027t quite understand why as the code should only fail if the dex2oat module cannot be found as a dependency given that a dependency is added in the DepsMutator() of the singleton. I\u0027ll take a look at that next week.",
+      "parentUuid": "94b1e9ac_ee8b99e1",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
