@@ -34,6 +34,24 @@
       "parentUuid": "2714508b_fd78ae14",
       "revId": "71348e7fdbcfd2f057122e61e617acdeed7757c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd5353d_9ffceaa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-22T17:55:02Z",
+      "side": 1,
+      "message": "No, the issue is non-incremental release builds, for example for security updates.  We want the system image for a security update to be identical to the system image before the security patches, except for modules that are affected by the security patches.  With a timestamp in the library, every single OTA will have to update the library.",
+      "parentUuid": "d049c780_83cb6b3f",
+      "revId": "71348e7fdbcfd2f057122e61e617acdeed7757c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
