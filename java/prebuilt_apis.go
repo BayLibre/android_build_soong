@@ -22,6 +22,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/genrule"
 )
 
 func init() {
@@ -99,15 +100,26 @@ func createImport(mctx android.LoadHookContext, module, scope, apiver, path, sdk
 	mctx.CreateModule(ImportFactory, &props)
 }
 
-func createFilegroup(mctx android.LoadHookContext, module string, scope string, apiver string, path string) {
-	fgName := module + ".api." + scope + "." + apiver
+func createFilegroup(mctx android.LoadHookContext, name string, path string) {
 	filegroupProps := struct {
 		Name *string
 		Srcs []string
 	}{}
-	filegroupProps.Name = proptools.StringPtr(fgName)
+	filegroupProps.Name = proptools.StringPtr(name)
 	filegroupProps.Srcs = []string{path}
 	mctx.CreateModule(android.FileGroupFactory, &filegroupProps)
+}
+
+func createEmptyFile(mctx android.LoadHookContext, name string) {
+	props := struct {
+		Name *string
+		Cmd  *string
+		Out  []string
+	}{}
+	props.Name = proptools.StringPtr(name)
+	props.Out = []string{name}
+	props.Cmd = proptools.StringPtr("cp /dev/null $(genDir)/" + name)
+	mctx.CreateModule(genrule.GenRuleFactory, &props)
 }
 
 func getPrebuiltFiles(mctx android.LoadHookContext, p *prebuiltApis, name string) []string {
@@ -182,11 +194,15 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 
 	// Create filegroups for all (<module>, <scope, <version>) triplets,
 	// and a "latest" filegroup variant for each (<module>, <scope>) pair
+	moduleName := func(module, scope, version string) string {
+		return module + ".api." + scope + "." + version
+	}
 	m := make(map[string]latestApiInfo)
+	max_version := -1
 	for _, f := range files {
 		localPath := strings.TrimPrefix(f, mydir)
 		module, apiver, scope := parseApiFilePath(mctx, localPath)
-		createFilegroup(mctx, module, scope, apiver, localPath)
+		createFilegroup(mctx, moduleName(module, scope, apiver), localPath)
 
 		version, err := strconv.Atoi(apiver)
 		if err != nil {
@@ -203,7 +219,24 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 			info.path = localPath
 			m[key] = info
 		}
+
+		if version > max_version {
+			max_version = version
+		}
 	}
+
+	// We treat the "latest incompatibilities" specially. These files track incompatibilities
+	// between the last frozen version and the work-in-progress version. So figure out if there is
+	// a "work in progress" version, with the heuristic that if there is one, it must be the highest
+	// version, and must only contain incompatibilities files.
+	wip_version := max_version
+	for _, v := range m {
+		if v.version == wip_version && !strings.HasSuffix(v.module, "incompatibilities") {
+			wip_version = -1
+			break
+		}
+	}
+
 	keys := make([]string, 0, len(m))
 	for k := range m {
 		keys = append(keys, k)
@@ -212,7 +245,13 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	sort.Strings(keys)
 	for _, k := range keys {
 		info := m[k]
-		createFilegroup(mctx, info.module, info.scope, "latest", info.path)
+		name := moduleName(info.module, info.scope, "latest")
+		// If the latest incompatibilities isn't the WIP version, use empty file.
+		if strings.HasSuffix(info.module, "incompatibilities") && info.version != wip_version {
+			createEmptyFile(mctx, name)
+		} else {
+			createFilegroup(mctx, name, info.path)
+		}
 	}
 }
 
