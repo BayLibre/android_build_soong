@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c5d4b2_ad9f12de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-22T22:15:14Z",
+      "side": 1,
+      "message": "Looks fine from a Soong perspective, I have no opinion on whether this is right for the NDK.",
+      "revId": "57cc5f9f2de6296cf2499a7c0038567aef1bc345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
