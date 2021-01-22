@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ae2885d_30b74656",
+        "filename": "android/filegroup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-22T13:32:40Z",
+      "side": 1,
+      "message": "this looks like \"Bit Friendly Giant\" :). Also reminds me of Doom ][ :)",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "fd8f3b10b5da3fecfc0afc9a4e838a1978106a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e93db2_09a301e5",
+        "filename": "android/filegroup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-22T13:32:40Z",
+      "side": 1,
+      "message": "Do I understand correctly that you want the modules representing Bazel rules to be a graph from that of the \"regular\" modules?",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "fd8f3b10b5da3fecfc0afc9a4e838a1978106a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
