@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "228ebf93_283b8c92",
+        "filename": "android/filegroup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-22T07:29:35Z",
+      "side": 1,
+      "message": "Yep, uploaded a test. PTAL.\n\nAlso tracking in b/178068862.",
+      "parentUuid": "3e9e3bea_57ff7b6f",
+      "revId": "0728cc473b192189c3f04c5f5cfb7e0a63724648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2922039e_854aecb4",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Surprised that go fmt didn\u0027t fix this... don\u0027t we run it automatically?",
       "parentUuid": "2922039e_854aecb4",
+      "revId": "0728cc473b192189c3f04c5f5cfb7e0a63724648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6afb1ed2_79b86489",
+        "filename": "android/filegroup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-22T07:29:35Z",
+      "side": 1,
+      "message": "This is actually valid gofmt. I\u0027ll add a newline to make it less awkward to read.",
+      "parentUuid": "cea00a2b_e9752583",
       "revId": "0728cc473b192189c3f04c5f5cfb7e0a63724648",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
