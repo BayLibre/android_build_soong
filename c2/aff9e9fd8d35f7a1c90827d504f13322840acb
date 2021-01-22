@@ -1,0 +1,9 @@
+Build-Cop-Override+1: Colin Cross <ccross@android.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Daniel Cardenas <danielcar@google.com>
+Submitted-at: Fri, 22 Jan 2021 05:12:49 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1556737
+Project: platform/build/soong
+Branch: refs/heads/master
