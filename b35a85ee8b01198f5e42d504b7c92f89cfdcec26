@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c57a42ec_d4de7b3f",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-01-22T16:34:31Z",
+      "side": 1,
+      "message": "This is a bug in Soong, prebuilt build modules do not support min_sdk_version.",
+      "parentUuid": "9f715b70_89003493",
+      "range": {
+        "startLine": 567,
+        "startChar": 19,
+        "endLine": 567,
+        "endChar": 45
+      },
+      "revId": "b35a85ee8b01198f5e42d504b7c92f89cfdcec26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "51a18e0a_37df1ed3",
         "filename": "cc/stl.go",
         "patchSetId": 1
