@@ -33,6 +33,24 @@
       "message": "wrap to newline?",
       "revId": "0728cc473b192189c3f04c5f5cfb7e0a63724648",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea00a2b_e9752583",
+        "filename": "android/filegroup.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-01-22T01:07:49Z",
+      "side": 1,
+      "message": "Surprised that go fmt didn\u0027t fix this... don\u0027t we run it automatically?",
+      "parentUuid": "2922039e_854aecb4",
+      "revId": "0728cc473b192189c3f04c5f5cfb7e0a63724648",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
