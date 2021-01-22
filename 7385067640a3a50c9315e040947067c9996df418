@@ -18,6 +18,40 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b3f86e5_ce1e7648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-01-22T23:43:54Z",
+      "side": 1,
+      "message": "LGTM, with some minor comments.\n\nNice job.",
+      "revId": "7385067640a3a50c9315e040947067c9996df418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1ab7f9c_e9e129d2",
+        "filename": "android/module.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-01-22T23:43:54Z",
+      "side": 1,
+      "message": "comment to explain this type?",
+      "revId": "7385067640a3a50c9315e040947067c9996df418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd90f97c_db32add7",
@@ -85,6 +119,40 @@
         "endLine": 76,
         "endChar": 74
       },
+      "revId": "7385067640a3a50c9315e040947067c9996df418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "117e78fc_91b42c0e",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-01-22T23:43:54Z",
+      "side": 1,
+      "message": "Why the use of the w var?",
+      "revId": "7385067640a3a50c9315e040947067c9996df418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18bc0fdc_2f7203b1",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-01-22T23:43:54Z",
+      "side": 1,
+      "message": "Does this mean that for queryview, we\u0027re running bp2build as well as generating queryview targets?",
       "revId": "7385067640a3a50c9315e040947067c9996df418",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
