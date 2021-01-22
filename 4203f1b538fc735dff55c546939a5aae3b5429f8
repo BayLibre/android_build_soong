@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f917df1_2aa03efe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-22T22:13:17Z",
+      "side": 1,
+      "message": "This will require changes to development/vendor_snapshot/update.py to propagate the androidmk_suffix property from the JSON file.",
+      "revId": "4203f1b538fc735dff55c546939a5aae3b5429f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
