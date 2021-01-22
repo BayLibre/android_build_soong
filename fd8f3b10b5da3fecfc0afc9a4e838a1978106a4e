@@ -69,6 +69,29 @@
       },
       "revId": "fd8f3b10b5da3fecfc0afc9a4e838a1978106a4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a83717_57c88cab",
+        "filename": "android/filegroup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-22T20:38:09Z",
+      "side": 1,
+      "message": "did we intentionally omit `Exclude_srcs`?",
+      "range": {
+        "startLine": 59,
+        "startChar": 22,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "fd8f3b10b5da3fecfc0afc9a4e838a1978106a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
