@@ -16,6 +16,23 @@
       "message": "thanks!",
       "revId": "6ff02b2d005c11f91211b12a35bc55b0103ae438",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e53435f_8752e935",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-01-22T14:11:50Z",
+      "side": 1,
+      "message": "Unrelated AppStandbyControllerTests test failure, while this change builds and is only a build-time check allowlist change.",
+      "revId": "6ff02b2d005c11f91211b12a35bc55b0103ae438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
