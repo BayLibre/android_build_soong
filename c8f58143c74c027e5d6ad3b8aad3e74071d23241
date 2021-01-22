@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "915f37f7_170f2039",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-22T16:40:02Z",
+      "side": 1,
+      "message": "Up until very recent aosp/1555134 there was no dependency from the ART APEX to dex2oat, there we only the dependencies from dexpreopted java modules to dex2oat. aosp/1555134 added the dependency from the ART APEX for one special use case: when nothing is dexpreopted, but boot images still need to be generated (which is the case when building the ART mainline module).",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b1e9ac_ee8b99e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-22T16:40:02Z",
+      "side": 1,
+      "message": "This can be only really tested when TARGET_BUILD_APPS is nonempty, as it is the only case when boot images are built but nothing is dexpreopted (if someting is dexpreopted, it will provide the dependency). There are a few ways to test this:\n\n1. Build the ART module (it is possible to shorten the build time by commenting out all other modules in build_mainline_modules.sh):\n\n $ DIST_DIR\u003d$PWD/dist \\\n    TARGET_BUILD_VARIANT\u003duserdebug \\\n    vendor/google/build/build_mainline_modules.sh\n\n2. Forrest build for git_master, mainline_modules-userdebug.\n\nI expect that if something is wrong and the dex2oat dependency is not found, the the build will crash in dex2oatPathFromDep. The code is obvious, but can you do either of the two tests just in case?",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
