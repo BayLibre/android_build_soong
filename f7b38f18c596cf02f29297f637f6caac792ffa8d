@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e39536ec_492db374",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-01-22T21:32:17Z",
+      "side": 1,
+      "message": "Isn\u0027t that the opposite, according to the comments in the other files?",
+      "range": {
+        "startLine": 42,
+        "startChar": 37,
+        "endLine": 42,
+        "endChar": 65
+      },
+      "revId": "f7b38f18c596cf02f29297f637f6caac792ffa8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
