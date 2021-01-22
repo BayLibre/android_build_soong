@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5275e971_059cb185",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-01-22T01:02:19Z",
+      "side": 1,
+      "message": "Should we be consistent with names? (Props vs Properties)",
+      "range": {
+        "startLine": 498,
+        "startChar": 1,
+        "endLine": 498,
+        "endChar": 60
+      },
+      "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa8c2e63_241f1786",
         "filename": "android/mutator.go",
         "patchSetId": 23
@@ -19,6 +42,29 @@
         "startChar": 62,
         "endLine": 47,
         "endChar": 63
+      },
+      "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f551177_caf80f91",
+        "filename": "android/mutator.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-01-22T01:02:19Z",
+      "side": 1,
+      "message": "Is register() only used once? Why do we need a function?\n\nAlso does the registration order matter?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 27
       },
       "revId": "3bf6c69e790492bb2c8e7b5e3a7501b5dd374713",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
