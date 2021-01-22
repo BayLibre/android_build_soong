@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "851db4fa_b3a64b91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-22T17:29:35Z",
+      "side": 1,
+      "message": "Actually, when I test this locally (CP\u0027ed on top of a recently synced tree), it fails some soong tests. Withdrawing +2 until I know why.",
+      "revId": "1ab6186e91f2e8d9620ebf1557ab503c7719cd3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6658a7b3_7f027881",
         "filename": "Android.bp",
         "patchSetId": 2
