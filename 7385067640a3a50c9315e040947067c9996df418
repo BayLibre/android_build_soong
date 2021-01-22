@@ -63,6 +63,30 @@
       },
       "revId": "7385067640a3a50c9315e040947067c9996df418",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "387f4015_59569ce9",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-22T15:40:36Z",
+      "side": 1,
+      "message": "The idea is that instead of trying to figure out whether \"false\" means queryview/bp2build/something else, one would be able to see immediately because instead of \"false\", it would be \"QUERYVIEW\".\n\nNo big deal, though, and I\u0027m not qualified to pass judgement on Go readability anyway.",
+      "parentUuid": "bdd0868f_21f176cd",
+      "range": {
+        "startLine": 76,
+        "startChar": 54,
+        "endLine": 76,
+        "endChar": 74
+      },
+      "revId": "7385067640a3a50c9315e040947067c9996df418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
