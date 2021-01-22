@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5911266_41272b5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-22T16:03:59Z",
+      "side": 1,
+      "message": "I paused to investigate if the change of behavior (that there is no more failure in the tests when trying to create the config and find path to dex2oat from dependencies) is related to my recent change aosp/1555134 that added an extra dependency from the ART apex on dex2oat. But it\u0027s not, the dex2oat dependency in the tests comes from java libraries like \"android.test.runner\", which is the usual dexpreopt-related dependency.",
+      "revId": "9f04524673e84f9be7f06e2e13266d8fda2f151f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
