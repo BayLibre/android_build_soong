@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e116b5f2_5b7b4542",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-22T15:06:12Z",
+      "side": 1,
+      "message": "Not for now, since the bp2build codegen doesn\u0027t differentiate them yet.",
+      "parentUuid": "afad1629_465d2984",
+      "range": {
+        "startLine": 781,
+        "startChar": 0,
+        "endLine": 781,
+        "endChar": 15
+      },
+      "revId": "bf476e517f49374638441706e2ee1197439dad27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ac47b0eb_22160cad",
         "filename": "genrule/genrule.go",
         "patchSetId": 34
@@ -60,6 +84,30 @@
       "writtenOn": "2021-01-22T13:56:26Z",
       "side": 1,
       "message": "If we want to resolve these in a followup CL, feel free to resolve.\n\nsince this is a mutator, if we also run the tooldepsmutator, we could use ctx.VisitDirectDeps + ctx.OtherModuleDir to actually get a full path.\n\nSimilarly, we could look at either resolving the paths for Tool_files (like https://cs.android.com/android/platform/superproject/+/master:build/soong/genrule/genrule.go;l\u003d323?q\u003df:genrule%20f:soong) or just use proptools.IsGlob to convert globs to Bazel syntax.\n\nIt\u0027s not quite as scalable as handling paths the same way for all conversions, but starting with the manual process then looking for commonalities, similar to how we\u0027re handling other conversion pieces may be a good starting place.",
+      "range": {
+        "startLine": 818,
+        "startChar": 0,
+        "endLine": 820,
+        "endChar": 65
+      },
+      "revId": "bf476e517f49374638441706e2ee1197439dad27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "694c881e_133ca900",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-22T15:06:12Z",
+      "side": 1,
+      "message": "(discussed offline, let\u0027s do this in a follow up)",
+      "parentUuid": "4ca29a64_05dd8a9f",
       "range": {
         "startLine": 818,
         "startChar": 0,
