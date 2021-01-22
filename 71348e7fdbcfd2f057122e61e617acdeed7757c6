@@ -16,6 +16,24 @@
       "message": "This looks technically fine, but looking back through our discussion threads I couldn\u0027t quite understand what your use case is.  If this is something you plan to do in your own builds its fine, but this isn\u0027t something we would ever want enabled in our builds.  We require builds of identical source to produce bit-identical results for a number of different reasons, and turning this on for a library would break that.",
       "revId": "71348e7fdbcfd2f057122e61e617acdeed7757c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d049c780_83cb6b3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605452
+      },
+      "writtenOn": "2021-01-22T10:41:31Z",
+      "side": 1,
+      "message": "This would be used on all builds of our userspace GPU driver.\n\nThe use case is ensuring items in the runtime shader/blob caches are re-populated when the driver is modified. This is where the driver compiles a kernel at runtime (usually at the request of an app) to run on the GPU. The identity of the driver and the shader inputs are hashed to determine whether the driver can reuse a previously compiled kernel.\n\nPrimarily the driver version string is used as the \u0027driver identity\u0027 - this changes when the driver\u0027s configuration changes and on major releases. This doesn\u0027t change per commit.\n\nIf local commits modify the driver, then the desired behavior is to discard cached kernels and rebuild them. This ensures that the kernels being used have been produced by the same driver build. Internally we\u0027ve previously used the driver git SHA to salt the hash. Externally we don\u0027t rely on git and the build timestamp is used to salt the hash.\n\nThe original expectation was that the date injection from this commit would only occur when the library changes. I believe this is still true after switching to use BUILD_DATETIME_FILE (as there\u0027s no dependency on the file).\n\nIs your concern the missing explicit dependency on BUILD_DATETIME_FILE? Or is it about the use of BUILD_DATETIME_FILE itself? If the former, adding the dependency is ok with me, though would mean a small extra load on all builds.\n\nOtherwise I need to start looking at changes that affect the behavior of external driver builds.",
+      "parentUuid": "2714508b_fd78ae14",
+      "revId": "71348e7fdbcfd2f057122e61e617acdeed7757c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
