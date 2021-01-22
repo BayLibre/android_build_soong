@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09805dcb_f93711a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351609
+      },
+      "writtenOn": "2021-01-22T15:13:07Z",
+      "side": 1,
+      "message": "Unrelated AppStandbyControllerTests test failure, while this change builds and is only a build-time check allowlist change.",
+      "revId": "496baeec099a6b2bc0a0fbf5fe53535d93c363fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
