@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2714508b_fd78ae14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-22T04:21:11Z",
+      "side": 1,
+      "message": "This looks technically fine, but looking back through our discussion threads I couldn\u0027t quite understand what your use case is.  If this is something you plan to do in your own builds its fine, but this isn\u0027t something we would ever want enabled in our builds.  We require builds of identical source to produce bit-identical results for a number of different reasons, and turning this on for a library would break that.",
+      "revId": "71348e7fdbcfd2f057122e61e617acdeed7757c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
