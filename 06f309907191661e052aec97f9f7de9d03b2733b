@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a923f3_a4c6e1e5",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-22T18:41:42Z",
+      "side": 1,
+      "message": "FYI you can replace all of this with:\n\n    for _, k :\u003d range android.SortedStringKeys(m) {",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "06f309907191661e052aec97f9f7de9d03b2733b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
