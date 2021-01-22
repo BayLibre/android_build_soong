@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac47b0eb_22160cad",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-22T13:36:44Z",
+      "side": 1,
+      "message": "This will probably fail if people use funky quoting, but will do for the time being\n\n(it\u0027s kind of hilarious that you have to do this replacement, since Bazel\u0027s $\u003c / $@ variables are trace their lineage to Make\u0027s eponymous variables, but apparently Soong didn\u0027t follow that convention)",
+      "range": {
+        "startLine": 803,
+        "startChar": 17,
+        "endLine": 803,
+        "endChar": 24
+      },
+      "revId": "bf476e517f49374638441706e2ee1197439dad27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
