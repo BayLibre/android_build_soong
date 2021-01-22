@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6658a7b3_7f027881",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-22T16:13:59Z",
+      "side": 1,
+      "message": "At some point we should rename this to \"art_boot_image\" or something like that, but this can wait.",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 12
+      },
+      "revId": "1ab6186e91f2e8d9620ebf1557ab503c7719cd3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
