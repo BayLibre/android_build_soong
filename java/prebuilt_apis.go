@@ -16,6 +16,7 @@ package java
 
 import (
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
@@ -173,37 +174,41 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	// construct a map to find out the latest api file path
 	// for each (<module>, <scope>) pair.
 	type latestApiInfo struct {
-		module string
-		scope  string
-		apiver string
-		path   string
+		module  string
+		scope   string
+		version int
+		path    string
 	}
-	m := make(map[string]latestApiInfo)
 
+	// Create filegroups for all (<module>, <scope, <version>) triplets,
+	// and a "latest" filegroup variant for each (<module>, <scope>) pair
+	m := make(map[string]latestApiInfo)
 	for _, f := range files {
-		// create a filegroup for each api txt file
 		localPath := strings.TrimPrefix(f, mydir)
 		module, apiver, scope := parseApiFilePath(mctx, localPath)
 		createFilegroup(mctx, module, scope, apiver, localPath)
 
-		// find the latest apiver
+		version, err := strconv.Atoi(apiver)
+		if err != nil {
+			mctx.ModuleErrorf("Found finalized API files in non-numeric dir %v", apiver)
+			return
+		}
+
 		key := module + "." + scope
 		info, ok := m[key]
 		if !ok {
-			m[key] = latestApiInfo{module, scope, apiver, localPath}
-		} else if len(apiver) > len(info.apiver) || (len(apiver) == len(info.apiver) &&
-			strings.Compare(apiver, info.apiver) > 0) {
-			info.apiver = apiver
+			m[key] = latestApiInfo{module, scope, version, localPath}
+		} else if version > info.version {
+			info.version = version
 			info.path = localPath
 			m[key] = info
 		}
 	}
-	// create filegroups for the latest version of (<module>, <scope>) pairs
-	// sort the keys in order to make build.ninja stable
 	keys := make([]string, 0, len(m))
 	for k := range m {
 		keys = append(keys, k)
 	}
+	// Sort the keys in order to make build.ninja stable
 	sort.Strings(keys)
 	for _, k := range keys {
 		info := m[k]
