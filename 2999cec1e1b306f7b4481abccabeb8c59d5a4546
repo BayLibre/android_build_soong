@@ -33,6 +33,24 @@
       "message": "libvendor_available in comment?",
       "revId": "2999cec1e1b306f7b4481abccabeb8c59d5a4546",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81942915_9ede1396",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-23T01:04:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a313abf6_749d2819",
+      "revId": "2999cec1e1b306f7b4481abccabeb8c59d5a4546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
