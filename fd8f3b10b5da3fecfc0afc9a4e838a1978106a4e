@@ -92,6 +92,30 @@
       },
       "revId": "fd8f3b10b5da3fecfc0afc9a4e838a1978106a4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "996a0893_a1572bb5",
+        "filename": "android/filegroup.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-23T06:41:29Z",
+      "side": 1,
+      "message": "Yes. I haven\u0027t figured out a proper way to do the exclusion yet, will do so later.",
+      "parentUuid": "f3a83717_57c88cab",
+      "range": {
+        "startLine": 59,
+        "startChar": 22,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "fd8f3b10b5da3fecfc0afc9a4e838a1978106a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
