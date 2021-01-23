@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0636f101_e4464bb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-01-23T00:21:56Z",
+      "side": 1,
+      "message": "Only one minor comment",
+      "revId": "2999cec1e1b306f7b4481abccabeb8c59d5a4546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a313abf6_749d2819",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-01-23T00:21:56Z",
+      "side": 1,
+      "message": "libvendor_available in comment?",
+      "revId": "2999cec1e1b306f7b4481abccabeb8c59d5a4546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
