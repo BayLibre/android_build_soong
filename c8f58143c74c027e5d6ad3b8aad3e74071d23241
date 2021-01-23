@@ -93,6 +93,30 @@
       },
       "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3beb67_3a47442d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-23T14:22:39Z",
+      "side": 1,
+      "message": "I think that the build that is failing must have a restricted repo that does not include dex2oat and must set ALLOW_MISSING_DEPENDENCIES\u003dtrue so the call to add the dependency on dex2oat fails silently. However, the code that depends on it does not.\n\nThe build that fails also most likely sets TARGET_BUILD_APPS\u003d\u003csomething\u003e. If that is set then DISABLE_PREOPT is set to true - http://cs/aosp-master/build/make/core/config.mk?l\u003d451.\n\nPreviously, that would disable preopting of both apps/libraries and boot image but a recent change of yours means that it only disables apps/libraries now. I had a quick look at patching the above section to cause TARGET_BUILD_APPS\u003d\u003csomething\u003e to disable boot image preopting too but it was not simple.\n\nWould you be able to take a look at that?",
+      "parentUuid": "86adc199_4debea76",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
