@@ -16,6 +16,23 @@
       "message": "Looks fine from a Soong perspective, I have no opinion on whether this is right for the NDK.",
       "revId": "57cc5f9f2de6296cf2499a7c0038567aef1bc345",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060a16aa_593c508a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-23T01:49:32Z",
+      "side": 1,
+      "message": "Presubmit failure is:\n\nIn file included from bionic/libc/bionic/libc_init_static.cpp:46:\nIn file included from bionic/libc/private/bionic_asm.h:43:\nbionic/libc/private/bionic_asm_arm64.h:48:51: error: \u0027#\u0027 is not followed by a macro parameter\n#define __bionic_asm_custom_entry(f)        hint #34  // BTI C\n                                                  ^\n",
+      "revId": "57cc5f9f2de6296cf2499a7c0038567aef1bc345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
