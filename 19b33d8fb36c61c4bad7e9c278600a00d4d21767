@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007558024",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1557805?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c7ec1950_6e89d8e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-24T19:14:07Z",
+      "side": 1,
+      "message": "Disapproved license (NOT_A_CONTRIBUTION) :\nDetecting GFDL also enables excluding the embedded references to CC-BY-SA that are otherwise false positives. The \"Not a contribution\"\n",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "19b33d8fb36c61c4bad7e9c278600a00d4d21767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
