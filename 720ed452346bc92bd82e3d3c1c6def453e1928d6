@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da46fac6_bd92b278",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-24T23:40:10Z",
+      "side": 1,
+      "message": "There\u0027s no fixed line length in the Go style guide: http://go/go-style/guide#line-length\n\nPersonally I dislike that long lines when they need to be broken anyway, but I can adhere to the surrounding style here.",
+      "parentUuid": "0b059dd3_534dac28",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f59f858a_38eb78cc",
@@ -106,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34c4d16_68cf9fa7",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-24T23:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da7c7617_84741838",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34e731ea_0069be9f",
@@ -141,6 +177,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33261faf_4d3d6d1d",
+        "filename": "java/boot_jars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-24T23:40:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "130720ee_78cb473f",
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e0aff74_98a03742",
@@ -154,6 +208,30 @@
       "writtenOn": "2021-01-18T00:51:29Z",
       "side": 1,
       "message": "This condition fails on the combined java_import/java_library test cases in TestPrebuiltExportDexImplementationJars. It appears both of them are hidden from make, and I don\u0027t yet know why.",
+      "range": {
+        "startLine": 503,
+        "startChar": 26,
+        "endLine": 503,
+        "endChar": 50
+      },
+      "revId": "720ed452346bc92bd82e3d3c1c6def453e1928d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9effe6e1_86e68ca3",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-24T23:40:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8e0aff74_98a03742",
       "range": {
         "startLine": 503,
         "startChar": 26,

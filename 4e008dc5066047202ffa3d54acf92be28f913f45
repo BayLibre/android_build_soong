@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d54eb6_35a3391b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-24T23:40:10Z",
+      "side": 1,
+      "message": "Still have a problem with TestPrebuiltExportDexImplementationJars here. What I see in the tests having both java_import and java_library are these modules:\n\n1. There\u0027s one (source) \"libfoo\" with apex variant \"\" which passes isActiveModule because IsReplacedByPrebuilt() returns false.\n2. There\u0027s one \"prebuilt_libfoo\" with apex variant \"\" which doesn\u0027t set UsePrebuilt.\n3. There\u0027s one \"prebuilt_libfoo\" with apex variant \"myapex\" which doesn\u0027t set UsePrebuilt.\n\nSo only #1 passes this check but it doesn\u0027t have apex variant \"myapex\" so gets dismissed by getBootImageJar. There either a) has to be a \"libfoo\" for \"myapex\" which is selected by \nthe prebuilt mutators, or b) some special logic to select the prebuilt for \"myapex\" (#3 above) on the grounds that there\u0027s no counterpart for that variant.\n\n(a) doesn\u0027t happen because prebuilt_apex explicitly only depends on prebuilt modules - see prebuiltApexExportedModuleName in apex/prebuilt.go.\n\n(b) seems hard to do in the prebuilt mutators since the apex variants don\u0027t exist yet there. Maybe it can be done through a special case in the vicinity of prebuiltApexExportedModuleName, but that would lead to a situation where both source and prebuilt for a module would be \"active\" (albeit for different variants), which may be surprising.\n\nOr this condition is wrong, but to me it seems weird that the prebuilt module providing the boot jar doesn\u0027t return true for Prebuilt().UsePrebuilt().",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 3
+      },
+      "revId": "4e008dc5066047202ffa3d54acf92be28f913f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
