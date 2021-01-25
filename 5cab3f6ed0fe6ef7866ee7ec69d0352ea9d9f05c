@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d0a9d59_ba3e2eb7",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-25T19:23:15Z",
+      "side": 1,
+      "message": "This should be a *string to allow it to work with defaults modules.",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "5cab3f6ed0fe6ef7866ee7ec69d0352ea9d9f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
