@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e48d7b_c757ec62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-25T06:02:13Z",
+      "side": 1,
+      "message": "This is really nice. I like the approach which lists all available vendor snapshot modules. Thank you for cleaning up the codes.",
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09e5eb6_88cd409b",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-25T06:02:13Z",
+      "side": 1,
+      "message": "Contrast to vendor snapshot, AFAIK the list of vndk is owned by Android and won\u0027t change once published. I think we can grab all vndk_prebuilt_shared, rather than listing all modules, like vndk apex. Can\u0027t we?",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 46
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
