@@ -1,0 +1,11 @@
+Code-Review+2: Anton Hansson <hansson@google.com>
+Autosubmit+1: Anton Hansson <hansson@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Bypass-Presubmit+1: Anton Hansson <hansson@google.com>
+Submitted-by: Anton Hansson <hansson@google.com>
+Submitted-at: Mon, 25 Jan 2021 15:25:00 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1558553
+Project: platform/build/soong
+Branch: refs/heads/master
