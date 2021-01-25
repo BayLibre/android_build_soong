@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de179b30_dd1506bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-01-25T20:36:02Z",
+      "side": 1,
+      "message": "Hi Colin, PTAL\n\nI cannot run the LSC until this goes in now that I\u0027ve updated the script to refer to the new licenses.",
+      "revId": "7e3dbd9f70dd52e0e82494ca3c510426d7a29772",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
