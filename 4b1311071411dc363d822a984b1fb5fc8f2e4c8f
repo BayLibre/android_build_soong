@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68276d93_930c0ba6",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-25T06:02:52Z",
+      "side": 1,
+      "message": "Can we make sure that this (either \u0027.vendor\u0027 or \u0027.recovery\u0027) will be stable? For example, if vendorSuffix [1] is changed, build system might not recognize the suffix from snapshot modules correctly.\n\n[1]: http://cs/android/build/soong/cc/androidmk.go?l\u003d29\u0026rcl\u003d8c74a7dcb747f79f5e9dc3079f2695dae739e81a",
+      "range": {
+        "startLine": 407,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 45
+      },
+      "revId": "4b1311071411dc363d822a984b1fb5fc8f2e4c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
