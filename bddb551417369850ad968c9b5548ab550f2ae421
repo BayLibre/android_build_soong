@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a74db253_7aa26a08",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-25T14:29:28Z",
+      "side": 1,
+      "message": "I haven\u0027t thought about that before! Good idea, will take a look at the buildozer source to see how feasible the integration points are with bp2build.",
+      "parentUuid": "59b7197f_7fd5a6e1",
+      "range": {
+        "startLine": 205,
+        "startChar": 5,
+        "endLine": 205,
+        "endChar": 20
+      },
+      "revId": "bddb551417369850ad968c9b5548ab550f2ae421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "883c515b_a8e0fe6d",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 4
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "It\u0027s still fine for experimentation! I can imagine any number of solutions to this problem, but if we don\u0027t need to solve it right now, well, let\u0027s not solve it right now.",
       "parentUuid": "6ca3cbb6_a7688966",
+      "range": {
+        "startLine": 315,
+        "startChar": 9,
+        "endLine": 315,
+        "endChar": 27
+      },
+      "revId": "bddb551417369850ad968c9b5548ab550f2ae421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef03fc1e_64cbf0e3",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-25T14:29:28Z",
+      "side": 1,
+      "message": "Acknowledged (abandoning this CL for now)",
+      "parentUuid": "9137442d_b9408e55",
       "range": {
         "startLine": 315,
         "startChar": 9,
