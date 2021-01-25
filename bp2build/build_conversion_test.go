@@ -302,6 +302,43 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
 )`,
 		},
+		{
+			moduleTypeUnderTest:        "filegroup",
+			moduleTypeUnderTestFactory: android.FileGroupFactory,
+			bp: `filegroup {
+	name: "foo",
+	srcs: ["core/src/**/*.java"],
+}`,
+			expectedBazelTarget: `filegroup(
+    name = "foo",
+    srcs = glob([
+        "core/src/**/*.java",
+    ]),
+)`,
+		},
+		{
+			moduleTypeUnderTest:        "filegroup",
+			moduleTypeUnderTestFactory: android.FileGroupFactory,
+			bp: `filegroup {
+	name: "foo",
+	srcs: ["core/src/**/*.java"],
+	exclude_srcs: [
+		"core/src/com/google/A.java",
+		"core/src/com/google/test/B.java",
+		"core/src/com/google/test/C.java",
+	],
+}`,
+			expectedBazelTarget: `filegroup(
+    name = "foo",
+    srcs = glob([
+        "core/src/**/*.java",
+    ], exclude = [
+        "core/src/com/google/A.java",
+        "core/src/com/google/test/B.java",
+        "core/src/com/google/test/C.java",
+    ]),
+)`,
+		},
 	}
 
 	dir := "."
