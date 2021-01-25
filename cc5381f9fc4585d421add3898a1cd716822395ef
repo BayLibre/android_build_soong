@@ -39,6 +39,53 @@
       },
       "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6303dbe_d75d295b",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-25T06:13:21Z",
+      "side": 1,
+      "message": "sorry, ignore this",
+      "parentUuid": "f09e5eb6_88cd409b",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 46
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e633474_0f2d1bb6",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-25T06:13:21Z",
+      "side": 1,
+      "message": "Can we make these lists automatically? e.g. adding dependencies from vendor_snapshot to all vndk_prebuilt_shared and vendor_snapshot_*, and then visiting all dependencies..",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 4
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
