@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb41a8c7_9bde8668",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-01-25T16:28:56Z",
+      "side": 1,
+      "message": "Still not generally crazy about assigning expectedCount to a constant which isn\u0027t used anywhere else, but that\u0027s more of a nit :)",
+      "revId": "4e4756d720044677c42b6a97eabddbed4b3ae059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
