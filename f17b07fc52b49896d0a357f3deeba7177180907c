@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7a7f564_45858f6a",
+        "filename": "cc/genrule.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-25T08:18:32Z",
+      "side": 0,
+      "message": "This does not required to check whether a module need to create a core variant.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "f17b07fc52b49896d0a357f3deeba7177180907c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4aee4fc_e15e09c6",
+        "filename": "rust/image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-25T08:18:32Z",
+      "side": 0,
+      "message": "Old code for VNDK-private.",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "f17b07fc52b49896d0a357f3deeba7177180907c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa3bb31_7ce337e1",
+        "filename": "rust/image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-25T08:18:32Z",
+      "side": 0,
+      "message": "This function is not used.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "f17b07fc52b49896d0a357f3deeba7177180907c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
