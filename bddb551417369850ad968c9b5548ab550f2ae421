@@ -140,6 +140,30 @@
       },
       "revId": "bddb551417369850ad968c9b5548ab550f2ae421",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ca3cbb6_a7688966",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-25T14:19:49Z",
+      "side": 1,
+      "message": "Yeah, I think we\u0027d want bazel globs eventually, and expanding globs for the short term makes sense, at least for the subset of packages we\u0027re interested in converting.\n\nThis CL attempts to get to bazel glob at the syntax level, but would fail very promptly at the bazel side once it stumbles upon package boundary problems.",
+      "parentUuid": "87cbbeec_e73d7a19",
+      "range": {
+        "startLine": 315,
+        "startChar": 9,
+        "endLine": 315,
+        "endChar": 27
+      },
+      "revId": "bddb551417369850ad968c9b5548ab550f2ae421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
