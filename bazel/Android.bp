@@ -5,6 +5,7 @@ bootstrap_go_package {
         "aquery.go",
         "constants.go",
         "properties.go",
+        "syntax.go",
     ],
     testSrcs: [
         "aquery_test.go",

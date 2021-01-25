@@ -29,7 +29,7 @@ func init() {
 // https://docs.bazel.build/versions/master/be/general.html#filegroup
 type bazelFilegroupAttributes struct {
 	Name *string
-	Srcs []string
+	Srcs bazel.Glob
 }
 
 type bazelFilegroup struct {
@@ -54,9 +54,13 @@ func (bfg *bazelFilegroup) GenerateAndroidBuildActions(ctx ModuleContext) {}
 func bp2buildMutator(ctx TopDownMutatorContext) {
 	if m, ok := ctx.Module().(*fileGroup); ok {
 		name := "__bp2build__" + m.base().BaseModuleName()
+		srcs := bazel.NewGlob(
+			bazel.NewLabelList(m.properties.Srcs),
+			bazel.NewLabelList(m.properties.Exclude_srcs),
+		)
 		ctx.CreateModule(BazelFileGroupFactory, &bazelFilegroupAttributes{
 			Name: proptools.StringPtr(name),
-			Srcs: m.properties.Srcs,
+			Srcs: srcs,
 		}, &bazel.BazelTargetModuleProperties{
 			Rule_class: "filegroup",
 		})
