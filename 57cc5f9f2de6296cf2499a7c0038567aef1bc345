@@ -33,6 +33,24 @@
       "message": "Presubmit failure is:\n\nIn file included from bionic/libc/bionic/libc_init_static.cpp:46:\nIn file included from bionic/libc/private/bionic_asm.h:43:\nbionic/libc/private/bionic_asm_arm64.h:48:51: error: \u0027#\u0027 is not followed by a macro parameter\n#define __bionic_asm_custom_entry(f)        hint #34  // BTI C\n                                                  ^\n",
       "revId": "57cc5f9f2de6296cf2499a7c0038567aef1bc345",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6466a9_916e1a3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-01-25T11:22:19Z",
+      "side": 1,
+      "message": "This has never been a valid syntax...\n\nFixed here: https://android-review.googlesource.com/c/platform/bionic/+/1556128\n\nHypothesis is this started to be a visible issue once *asm* file got included in a recent change into libc_init_static.cpp.",
+      "parentUuid": "060a16aa_593c508a",
+      "revId": "57cc5f9f2de6296cf2499a7c0038567aef1bc345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
