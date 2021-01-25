@@ -16,6 +16,7 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 	"fmt"
 	"reflect"
 	"strings"
@@ -198,6 +199,51 @@ func isStructPtr(t reflect.Type) bool {
 	return t.Kind() == reflect.Ptr && t.Elem().Kind() == reflect.Struct
 }
 
+// Pretty printer for a bazel.Glob struct. Contains syntax
+// optimizations, e.g. to avoid generating glob() calls when
+// there are no asterisks or exclusions.
+func prettyPrintGlob(glob bazel.Glob, indent int) string {
+	needsGlobCall := func(glob bazel.Glob) bool {
+		// Exclusions always require glob calls.
+		if len(glob.Exclude.Labels) > 0 {
+			return true
+		}
+
+		// Wildcards always require globcalls.
+		for _, pattern := range glob.Include.Labels {
+			if strings.Contains(pattern.String(), "*") {
+				return true
+			}
+		}
+
+		// Does not require a glob call, so print the literal list of labels.
+		return false
+	}
+
+	var ret, retClose string
+	if needsGlobCall(glob) {
+		ret, retClose = "glob([\n", "])"
+	} else {
+		ret, retClose = "[\n", "]"
+	}
+
+	for _, pattern := range glob.Include.Labels {
+		ret += makeIndent(indent + 1)
+		ret += fmt.Sprintf("\"%s\",\n", pattern)
+	}
+	if len(glob.Exclude.Labels) > 0 {
+		ret += makeIndent(indent)
+		ret += "], exclude = [\n"
+		for _, pattern := range glob.Exclude.Labels {
+			ret += makeIndent(indent + 1)
+			ret += fmt.Sprintf("\"%s\",\n", pattern)
+		}
+	}
+	ret += makeIndent(indent)
+	ret += retClose
+	return ret
+}
+
 // prettyPrint a property value into the equivalent Starlark representation
 // recursively.
 func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
@@ -238,6 +284,11 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 		ret += makeIndent(indent)
 		ret += "]"
 	case reflect.Struct:
+		if glob, ok := propertyValue.Interface().(bazel.Glob); ok {
+			return prettyPrintGlob(glob, indent), nil
+		}
+
+		// Unknown struct
 		ret = "{\n"
 		// Sort and print the struct props by the key.
 		structProps := extractStructProperties(propertyValue, indent)
