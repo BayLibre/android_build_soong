@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c637264_ed1affdb",
+        "filename": "android/filegroup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-25T14:12:51Z",
+      "side": 1,
+      "message": "Yep, I can definitely hold off on this CL - this is a very surface level change that I think would benefit more from what you\u0027ve done! This CL was more exploratory for me.",
+      "parentUuid": "df749ea4_de6e5672",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "bddb551417369850ad968c9b5548ab550f2ae421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59b7197f_7fd5a6e1",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 4
