@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6bea785_cdfb0db3",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-25T12:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35ebca8f_cf7707d4",
+      "range": {
+        "startLine": 121,
+        "startChar": 34,
+        "endLine": 121,
+        "endChar": 47
+      },
+      "revId": "6c47085201a6ef5ad2eaea7ec43ce1c9e0f0d0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2451bd2_18deaa2b",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-01-25T10:18:57Z",
       "side": 1,
       "message": "is there a way we could make this more explicit? This sounds potentially confusing (though I don\u0027t understand the context well)",
+      "range": {
+        "startLine": 230,
+        "startChar": 43,
+        "endLine": 230,
+        "endChar": 52
+      },
+      "revId": "6c47085201a6ef5ad2eaea7ec43ce1c9e0f0d0c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3498a54b_31bb49ba",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-25T12:42:31Z",
+      "side": 1,
+      "message": "reworked this to have a \"next_api_dir\" arg in prebuilts_api\n\nwe now create empty incompatibilities files for all modules that don\u0027t explicitly create one in next_api_dir",
+      "parentUuid": "f2451bd2_18deaa2b",
       "range": {
         "startLine": 230,
         "startChar": 43,
