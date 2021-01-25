@@ -34,7 +34,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     module_name = "foo",
     module_type = "custom",
     module_variant = "",
-    module_deps = [
+    soong_module_deps = [
     ],
 )`,
 		},
@@ -49,7 +49,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     module_name = "foo",
     module_type = "custom",
     module_variant = "",
-    module_deps = [
+    soong_module_deps = [
     ],
     ramdisk = True,
 )`,
@@ -65,7 +65,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     module_name = "foo",
     module_type = "custom",
     module_variant = "",
-    module_deps = [
+    soong_module_deps = [
     ],
     owner = "a_string_with\"quotes\"_and_\\backslashes\\\\",
 )`,
@@ -81,7 +81,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     module_name = "foo",
     module_type = "custom",
     module_variant = "",
-    module_deps = [
+    soong_module_deps = [
     ],
     required = [
         "bar",
@@ -99,7 +99,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     module_name = "foo",
     module_type = "custom",
     module_variant = "",
-    module_deps = [
+    soong_module_deps = [
     ],
     target_required = [
         "qux",
@@ -127,7 +127,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     module_name = "foo",
     module_type = "custom",
     module_variant = "",
-    module_deps = [
+    soong_module_deps = [
     ],
     dist = {
         "tag": ".foo",
@@ -165,7 +165,7 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     module_name = "foo",
     module_type = "custom",
     module_variant = "",
-    module_deps = [
+    soong_module_deps = [
     ],
     dists = [
         {

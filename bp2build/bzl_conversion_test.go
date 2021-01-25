@@ -85,7 +85,7 @@ custom = rule(
     attrs = {
         "module_name": attr.string(mandatory = True),
         "module_variant": attr.string(),
-        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+        "soong_module_deps": attr.label_list(providers = [SoongModuleInfo]),
         "bool_prop": attr.bool(),
         "bool_ptr_prop": attr.bool(),
         "int64_ptr_prop": attr.int(),
@@ -109,7 +109,7 @@ custom_defaults = rule(
     attrs = {
         "module_name": attr.string(mandatory = True),
         "module_variant": attr.string(),
-        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+        "soong_module_deps": attr.label_list(providers = [SoongModuleInfo]),
         "bool_prop": attr.bool(),
         "bool_ptr_prop": attr.bool(),
         "int64_ptr_prop": attr.int(),
@@ -133,7 +133,7 @@ custom_test_ = rule(
     attrs = {
         "module_name": attr.string(mandatory = True),
         "module_variant": attr.string(),
-        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+        "soong_module_deps": attr.label_list(providers = [SoongModuleInfo]),
         "bool_prop": attr.bool(),
         "bool_ptr_prop": attr.bool(),
         "int64_ptr_prop": attr.int(),

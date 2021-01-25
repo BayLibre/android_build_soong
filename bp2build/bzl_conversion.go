@@ -111,7 +111,7 @@ func generateRules(moduleTypeFactories map[string]android.ModuleFactory) map[str
 		attrs := `{
         "module_name": attr.string(mandatory = True),
         "module_variant": attr.string(),
-        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+        "soong_module_deps": attr.label_list(providers = [SoongModuleInfo]),
 `
 		attrs += getAttributes(factory)
 		attrs += "    },"

@@ -28,7 +28,7 @@ load("//build/bazel/queryview_rules:soong_module.bzl", "soong_module")
     module_name = "%s",
     module_type = "%s",
     module_variant = "%s",
-    module_deps = %s,
+    soong_module_deps = %s,
 %s)`
 
 	bazelTarget = `%s(
@@ -38,7 +38,7 @@ load("//build/bazel/queryview_rules:soong_module.bzl", "soong_module")
 	// A simple provider to mark and differentiate Soong module rule shims from
 	// regular Bazel rules. Every Soong module rule shim returns a
 	// SoongModuleInfo provider, and can only depend on rules returning
-	// SoongModuleInfo in the `module_deps` attribute.
+	// SoongModuleInfo in the `soong_module_deps` attribute.
 	providersBzl = `SoongModuleInfo = provider(
     fields = {
         "name": "Name of module",
@@ -69,7 +69,7 @@ generic_soong_module = rule(
         "module_name": attr.string(mandatory = True),
         "module_type": attr.string(mandatory = True),
         "module_variant": attr.string(),
-        "module_deps": attr.label_list(providers = [SoongModuleInfo]),
+        "soong_module_deps": attr.label_list(providers = [SoongModuleInfo]),
     },
 )
 
@@ -102,7 +102,7 @@ def soong_module(name, module_type, **kwargs):
             module_type = module_type,
             module_name = kwargs.pop("module_name", ""),
             module_variant = kwargs.pop("module_variant", ""),
-            module_deps = kwargs.pop("module_deps", []),
+            soong_module_deps = kwargs.pop("soong_module_deps", []),
         )
     else:
         supported_kwargs = dict()
