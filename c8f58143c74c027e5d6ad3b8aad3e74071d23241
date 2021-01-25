@@ -141,6 +141,30 @@
       },
       "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "749f3f63_42635c71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-25T11:44:41Z",
+      "side": 1,
+      "message": "I cannot make TARGET_BUILD_APPS\u003d... disable boot images, as this was the whole point of the recent change aosp/1555134: we build mainline modules with TARGET_BUILD_APPS\u003d\u003clist of modules\u003e, and we need boot images to be enabled for that build.\n\nFrom a local discussion with Martin I understand that you intend to solve this problem by moving the blueprint definition of boot image to ART repo, right?",
+      "parentUuid": "0e3beb67_3a47442d",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
