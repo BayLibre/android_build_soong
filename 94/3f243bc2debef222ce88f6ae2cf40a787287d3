@@ -1,0 +1,11 @@
+Code-Review+2: Liz Kammer <eakammer@google.com>
+Code-Review+2: Jingwen Chen <jingwen@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Bypass-Presubmit+1: Christopher Parsons <cparsons@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Christopher Parsons <cparsons@google.com>
+Submitted-at: Mon, 25 Jan 2021 16:13:48 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1553875
+Project: platform/build/soong
+Branch: refs/heads/master
