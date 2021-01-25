@@ -117,6 +117,30 @@
       },
       "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b6a614_6d000029",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-25T11:23:34Z",
+      "side": 1,
+      "message": "Actually, it seems as though the whole purpose of you making the change around DISABLE_PREOPT was to allow TARGET_BUILD_APPS to build and preopt the boot image. So, this would make that work pointless.\n\nI will find another way to handle this issue.",
+      "parentUuid": "0e3beb67_3a47442d",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "c8f58143c74c027e5d6ad3b8aad3e74071d23241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
