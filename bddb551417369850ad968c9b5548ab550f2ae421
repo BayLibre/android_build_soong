@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9625f0ba_cfeac1fc",
+        "filename": "android/filegroup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-25T12:43:49Z",
+      "side": 1,
+      "message": "It\u0027s kinda odd to represent regular label lists as globs, isn\u0027t it? \n\nMy line of thinking is that this will eventually morph into the description of a regular label list attribute and I don\u0027t think a single Glob instance is the right way to represent that.\n\nI think you can go two ways:\n\n1. Make bazelFilegroupAttributes already represent the Bazel data structure, which is something like\n\nLabelListAttr ::\u003d Element*\nElement ::\u003d LabelList | Glob\nLabelList :\u003d Label*\nGlob \u003d \u003cincludes, excludes, etc.\u003e",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "bddb551417369850ad968c9b5548ab550f2ae421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b7197f_7fd5a6e1",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-25T12:43:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we just delegate pretty printing to Buildozer?\n\n(I guess it\u0027s not that problematic here, but I don\u0027t want us to spend a lot of energy crafting a perfect pretty-printer if we already have one. Even better, it\u0027s implemented in Go so we should just link it in!)",
+      "range": {
+        "startLine": 205,
+        "startChar": 5,
+        "endLine": 205,
+        "endChar": 20
+      },
+      "revId": "bddb551417369850ad968c9b5548ab550f2ae421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883c515b_a8e0fe6d",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-25T12:43:49Z",
+      "side": 1,
+      "message": "Are these semantic differences between the two?\n\n(I would be surprised, if there weren\u0027t, but maybe they are small enough that it does not matter)\n\nI guess Soong doesn\u0027t stop at \"package boundaries\", does it?",
+      "range": {
+        "startLine": 315,
+        "startChar": 9,
+        "endLine": 315,
+        "endChar": 27
+      },
+      "revId": "bddb551417369850ad968c9b5548ab550f2ae421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
