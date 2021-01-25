@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee589051_4500b713",
+        "filename": "rust/config/toolchain.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-25T19:14:43Z",
+      "side": 1,
+      "message": "Nit: Why is it LibFuzzer and LibRust but Libclang? why not LibClang?",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "6cd99e6ab45dce7b1a3b865bacf76ce54651bd07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b81dd90_41715f57",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-01-25T19:14:43Z",
+      "side": 1,
+      "message": "We can leave it in if you think it\u0027s doing something, but didn\u0027t Rich say this shouldn\u0027t be necessary anymore?",
+      "revId": "6cd99e6ab45dce7b1a3b865bacf76ce54651bd07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
