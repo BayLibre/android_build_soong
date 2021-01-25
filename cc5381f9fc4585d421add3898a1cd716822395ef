@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3594579b_5f330ed5",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-25T06:59:23Z",
+      "side": 0,
+      "message": "This reads the properties from the current cc modules, not from the snapshot modules.\nWe don\u0027t know this information when generating the snapshots from the old source tree. As update.py uses the information only from the old source tree, it is not possible to update this with the update.py script.\n\nFor example, a module was `vendor_available: true` in R, but `vendor: true` in S, we must not add the suffix for this modules in S because it is `vendor: true` in S.\n\nCan we keep the mutator to read this information, but define a new property (ex. Need_suffix *bool) that is updated by the mutator?",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 76
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
