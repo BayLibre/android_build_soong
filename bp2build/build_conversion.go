@@ -70,6 +70,7 @@ const (
 func (ctx CodegenContext) AddNinjaFileDeps(...string) {}
 func (ctx CodegenContext) Config() android.Config     { return ctx.config }
 func (ctx CodegenContext) Context() android.Context   { return ctx.context }
+func (ctx CodegenContext) Mode() CodegenMode          { return ctx.mode }
 
 // NewCodegenContext creates a wrapper context that conforms to PathContext for
 // writing BUILD files in the output directory.

@@ -20,25 +20,36 @@ import (
 	"os"
 )
 
+func codegenDirName(mode CodegenMode) string {
+	switch mode {
+	case Bp2Build:
+		return "bp2build"
+	case QueryView:
+		return "queryview"
+	default:
+		panic(fmt.Errorf("Unknown code-generation mode: %s", mode))
+	}
+}
+
 // The Bazel bp2build code generator is responsible for writing .bzl files that are equivalent to
 // Android.bp files that are capable of being built with Bazel.
 func Codegen(ctx CodegenContext) {
-	outputDir := android.PathForOutput(ctx, "bp2build")
+	outputDir := android.PathForOutput(ctx, codegenDirName(ctx.Mode()))
 	android.RemoveAllOutputDir(outputDir)
 
 	ruleShims := CreateRuleShims(android.ModuleTypeFactories())
 
-	buildToTargets := GenerateSoongModuleTargets(ctx.Context(), ctx.mode)
+	buildToTargets := GenerateSoongModuleTargets(ctx.Context(), ctx.Mode())
 
-	filesToWrite := CreateBazelFiles(ruleShims, buildToTargets, ctx.mode)
+	filesToWrite := CreateBazelFiles(ruleShims, buildToTargets, ctx.Mode())
 	for _, f := range filesToWrite {
-		if err := writeFile(outputDir, ctx, f); err != nil {
+		if err := WriteFile(outputDir, ctx, f); err != nil {
 			fmt.Errorf("Failed to write %q (dir %q) due to %q", f.Basename, f.Dir, err)
 		}
 	}
 }
 
-func writeFile(outputDir android.OutputPath, ctx android.PathContext, f BazelFile) error {
+func WriteFile(outputDir android.OutputPath, ctx android.PathContext, f BazelFile) error {
 	return writeReadOnlyFile(ctx, getOutputPath(outputDir, ctx, f.Dir), f.Basename, f.Contents)
 }
 
