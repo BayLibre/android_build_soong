@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa33104_3c5d7e94",
+        "filename": "rust/config/toolchain.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-25T19:30:10Z",
+      "side": 1,
+      "message": "This is what the function is called on the CC side, so I just kept the same name.",
+      "parentUuid": "ee589051_4500b713",
+      "range": {
+        "startLine": 119,
+        "startChar": 8,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "6cd99e6ab45dce7b1a3b865bacf76ce54651bd07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b81dd90_41715f57",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-01-25T19:14:43Z",
       "side": 1,
       "message": "We can leave it in if you think it\u0027s doing something, but didn\u0027t Rich say this shouldn\u0027t be necessary anymore?",
+      "revId": "6cd99e6ab45dce7b1a3b865bacf76ce54651bd07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0275b275_3812ecd8",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-01-25T19:30:10Z",
+      "side": 1,
+      "message": "It might no longer be necessary; it was when I started this CL. I\u0027ll investigate and can clean this up in a follow-on CL.",
+      "parentUuid": "7b81dd90_41715f57",
       "revId": "6cd99e6ab45dce7b1a3b865bacf76ce54651bd07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
