@@ -200,9 +200,9 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
 		_, errs = ctx.PrepareBuildActions(config)
 		android.FailIfErrored(t, errs)
 
-		bazelTargets := GenerateSoongModuleTargets(ctx.Context.Context, false)[dir]
+		bazelTargets := GenerateSoongModuleTargets(ctx.Context.Context, QueryView)[dir]
 		if actualCount, expectedCount := len(bazelTargets), 1; actualCount != expectedCount {
-			t.Fatalf("Expected %d bazel target, got %d", expectedCount, actualCount)
+			t.Fatalf("Expected %d bazel target, got %d", w, g)
 		}
 
 		actualBazelTarget := bazelTargets[0]
@@ -251,9 +251,9 @@ func TestGenerateBazelTargetModules(t *testing.T) {
 		_, errs = ctx.ResolveDependencies(config)
 		android.FailIfErrored(t, errs)
 
-		bazelTargets := GenerateSoongModuleTargets(ctx.Context.Context, true)[dir]
+		bazelTargets := GenerateSoongModuleTargets(ctx.Context.Context, Bp2Build)[dir]
 		if actualCount, expectedCount := len(bazelTargets), 1; actualCount != expectedCount {
-			t.Fatalf("Expected %d bazel target, got %d", expectedCount, actualCount)
+			t.Fatalf("Expected %d bazel target, got %d", w, g)
 		}
 
 		actualBazelTarget := bazelTargets[0]
@@ -316,9 +316,9 @@ func TestModuleTypeBp2Build(t *testing.T) {
 		_, errs = ctx.ResolveDependencies(config)
 		android.FailIfErrored(t, errs)
 
-		bazelTargets := GenerateSoongModuleTargets(ctx.Context.Context, true)[dir]
+		bazelTargets := GenerateSoongModuleTargets(ctx.Context.Context, Bp2Build)[dir]
 		if actualCount, expectedCount := len(bazelTargets), 1; actualCount != expectedCount {
-			t.Fatalf("Expected %d bazel target, got %d", expectedCount, actualCount)
+			t.Fatalf("Expected %d bazel target, got %d", w, g)
 		}
 
 		actualBazelTarget := bazelTargets[0]
