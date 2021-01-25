@@ -475,6 +475,7 @@ func splitArgs(args []string) (newArgs []string, dirs []string) {
 		"snod":         true,
 		"dist":         true,
 		"checkbuild":   true,
+		"queryview":    true,
 	}
 
 	newArgs = []string{}
@@ -592,6 +593,8 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.environ.Set(k, v)
 		} else if arg == "dist" {
 			c.dist = true
+		} else if arg == "queryview" {
+			ctx.Fatalln("`m queryview` has been replaced with `GENERATE_QUERYVIEW=true m nothing` for faster performance.")
 		} else {
 			if arg == "checkbuild" {
 				c.checkbuild = true

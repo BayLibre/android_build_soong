@@ -27,13 +27,12 @@ import (
 )
 
 var (
-	docFile           string
-	bazelQueryViewDir string
+	docFile          string
+	codegenQueryview bool
 )
 
 func init() {
 	flag.StringVar(&docFile, "soong_docs", "", "build documentation file to output")
-	flag.StringVar(&bazelQueryViewDir, "bazel_queryview_dir", "", "path to the bazel queryview directory")
 }
 
 func newNameResolver(config android.Config) *android.NameResolver {
@@ -56,6 +55,10 @@ func newNameResolver(config android.Config) *android.NameResolver {
 // Blueprint to Bazel BUILD files.
 func bazelConversionRequested(configuration android.Config) bool {
 	return configuration.IsEnvTrue("GENERATE_BAZEL_FILES")
+}
+
+func queryviewRequested(configuration android.Config) bool {
+	return configuration.IsEnvTrue("GENERATE_QUERYVIEW")
 }
 
 func newContext(configuration android.Config) *android.Context {
@@ -104,6 +107,13 @@ func main() {
 		return
 	}
 
+	// Must access environment variables before the env singleton runs with EnvDeps() and freezes reads from
+	// the environment.
+	generateQueryview := queryviewRequested(configuration)
+	if generateQueryview {
+		configuration.SetStopBefore(bootstrap.StopBeforeWriteNinja)
+	}
+
 	if configuration.BazelContext.BazelEnabled() {
 		// Bazel-enabled mode. Soong runs in two passes.
 		// First pass: Analyze the build tree, but only store all bazel commands
@@ -129,13 +139,10 @@ func main() {
 	} else {
 		ctx = newContext(configuration)
 		bootstrap.Main(ctx.Context, configuration, extraNinjaDeps...)
-	}
 
-	// Convert the Soong module graph into Bazel BUILD files.
-	if bazelQueryViewDir != "" {
-		if err := createBazelQueryView(ctx, bazelQueryViewDir); err != nil {
-			fmt.Fprintf(os.Stderr, "%s", err)
-			os.Exit(1)
+		if generateQueryview {
+			codegenContext := bp2build.NewCodegenContext(configuration, *ctx, bp2build.QueryView)
+			bp2build.Codegen(codegenContext)
 		}
 	}
 
@@ -179,11 +186,6 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 func shouldPrepareBuildActions(configuration android.Config) bool {
 	// Generating Soong docs
 	if docFile != "" {
-		return false
-	}
-
-	// Generating a directory for Soong query (queryview)
-	if bazelQueryViewDir != "" {
 		return false
 	}
 
