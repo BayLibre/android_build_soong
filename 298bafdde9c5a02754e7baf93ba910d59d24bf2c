@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b19da73e_67ace7a9",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 4308,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-25T23:29:46Z",
+      "side": 0,
+      "message": "I\u0027m not sure what this prefer flag on the prebuilt_apex module is supposed to test, given that there\u0027s no corresponding source module, so I possibly repurposed the test to exercise \"prefer\" on the library instead.",
+      "range": {
+        "startLine": 4308,
+        "startChar": 3,
+        "endLine": 4308,
+        "endChar": 16
+      },
+      "revId": "298bafdde9c5a02754e7baf93ba910d59d24bf2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
