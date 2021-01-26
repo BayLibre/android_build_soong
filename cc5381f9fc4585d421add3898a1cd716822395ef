@@ -46,6 +46,53 @@
       },
       "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97467cbc_d87a2ed6",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-26T01:12:31Z",
+      "side": 0,
+      "message": "The assumption here is that the vendor source tree is came from the old branch (say R) and build against the vendor snapshot. The system source tree is current (say S).\nWe expect some Android.bp files in the vendor source tree need to be updated for the toolchains in S source tree if needed. So, soong does not need to be backward compatible for the old vendor source tree.\n\nThe concern here is the Android.mk dependency from the vendor source tree to the snapshots. Vendor snapshot replaces the vendor variant modules from the system source tree. We have different mechanisms on naming the modules for Android.mk. For the \u0027vendor_available\u0027 modules soong adds a suffix for the vendor variants to distinguish them from the core variant. OTOH, soong keeps the original name for the vendor modules.\n\nWhen the vendor snapshot replaces the vendor variant modules from the system source tree, the `vendorSuffixModules` shows whether the vendor snapshot replaces the module with or without the suffix from the system source tree.",
+      "parentUuid": "266b0bde_3c4f43d1",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 76
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d924465a_f54d7d77",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-26T01:12:31Z",
+      "side": 0,
+      "message": "If we can get the `Module` with the `BaseModuleName`, we may check the `shouldBeAddedToSuffixModules` here without using the mutator and the global map. Can we?",
+      "range": {
+        "startLine": 551,
+        "startChar": 20,
+        "endLine": 551,
+        "endChar": 73
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
