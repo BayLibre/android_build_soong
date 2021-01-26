@@ -328,7 +328,7 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		}
 
 		deps.SystemSharedLibs = linker.Properties.System_shared_libs
-		if deps.SystemSharedLibs == nil {
+		if deps.SystemSharedLibs == nil && !ctx.BazelConversionMode() {
 			// Provide a default system_shared_libs if it is unspecified. Note: If an
 			// empty list [] is specified, it implies that the module declines the
 			// default system_shared_libs.
