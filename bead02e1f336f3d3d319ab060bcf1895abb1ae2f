@@ -22,6 +22,30 @@
       },
       "revId": "bead02e1f336f3d3d319ab060bcf1895abb1ae2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8d564cf_00844a2a",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-26T18:08:39Z",
+      "side": 1,
+      "message": "okay, that sounds fine though as setting next_api_dir to a nonexistent dir should fail the build. But then I guess you could not unset it in a child of a defaults module, which is a bit crappy...",
+      "parentUuid": "7189d657_657f108b",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 99
+      },
+      "revId": "bead02e1f336f3d3d319ab060bcf1895abb1ae2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
