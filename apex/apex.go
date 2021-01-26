@@ -54,6 +54,8 @@ func init() {
 func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.TopDown("apex_vndk", apexVndkMutator).Parallel()
 	ctx.BottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel()
+	ctx.BottomUp("prebuilt_apex_select_source", prebuiltSelectSourceMutator).Parallel()
+	ctx.BottomUp("deapexer_select_source", deapexerSelectSourceMutator).Parallel()
 }
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
@@ -737,11 +739,9 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 
 	// Dependencies for signing
-	if String(a.properties.Key) == "" {
-		ctx.PropertyErrorf("key", "missing")
-		return
+	if String(a.properties.Key) != "" {
+		ctx.AddDependency(ctx.Module(), keyTag, String(a.properties.Key))
 	}
-	ctx.AddDependency(ctx.Module(), keyTag, String(a.properties.Key))
 
 	cert := android.SrcIsModule(a.getCertString(ctx))
 	if cert != "" {
@@ -1858,7 +1858,11 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return false
 	})
 	if a.privateKeyFile == nil {
-		ctx.PropertyErrorf("key", "private_key for %q could not be found", String(a.properties.Key))
+		if String(a.properties.Key) == "" {
+			ctx.PropertyErrorf("key", "missing. Property is required.")
+		} else {
+			ctx.PropertyErrorf("key", "private_key for %q could not be found", String(a.properties.Key))
+		}
 		return
 	}
 

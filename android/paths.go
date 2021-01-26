@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -329,6 +330,89 @@ func PathsForModuleSrcExcludes(ctx ModuleMissingDepsPathContext, paths, excludes
 		}
 	}
 	return ret
+}
+
+type BazelConversionPathContext interface {
+	EarlyModulePathContext
+
+	GetDirectDep(name string) (blueprint.Module, blueprint.DependencyTag)
+	OtherModuleName(m blueprint.Module) string
+	OtherModuleDir(m blueprint.Module) string
+}
+
+func BazelLabelForModuleDeps(ctx BazelConversionPathContext, modules []string) bazel.LabelList {
+	var labels bazel.LabelList
+	for _, module := range modules {
+		bpText := module
+		if m := SrcIsModule(module); m == "" {
+			module = ":" + module
+		}
+		if m, t := SrcIsModuleWithTag(module); m != "" {
+			l := getOtherModuleLabel(ctx, m, t)
+			l.Bp_text = bpText
+			labels.Includes = append(labels.Includes, l)
+		} else {
+			// TODO: error?
+		}
+	}
+	return labels
+}
+
+func BazelLabelForModuleSrc(ctx BazelConversionPathContext, paths []string) bazel.LabelList {
+	return BazelLabelForModuleSrcExcludes(ctx, paths, []string(nil))
+}
+
+func BazelLabelForModuleSrcExcludes(ctx BazelConversionPathContext, paths, excludes []string) bazel.LabelList {
+	excludeLabels := expandSrcsForBazel(ctx, excludes, []string(nil))
+	excluded := make([]string, 0, len(excludeLabels.Includes))
+	for _, e := range excludeLabels.Includes {
+		excluded = append(excluded, e.Label)
+	}
+	labels := expandSrcsForBazel(ctx, paths, excluded)
+	labels.Excludes = excludeLabels.Includes
+	return labels
+}
+
+func expandSrcsForBazel(ctx BazelConversionPathContext, paths, expandedExcludes []string) bazel.LabelList {
+	labels := bazel.LabelList{
+		Includes: []bazel.Label{},
+	}
+	for _, p := range paths {
+		if m, tag := SrcIsModuleWithTag(p); m != "" {
+			l := getOtherModuleLabel(ctx, m, tag)
+			l.Bp_text = fmt.Sprintf(":%s", m)
+			labels.Includes = append(labels.Includes, l)
+		} else {
+			var expandedPaths []bazel.Label
+			if pathtools.IsGlob(p) {
+				globbedPaths := GlobFiles(ctx, pathForModuleSrc(ctx, p).String(), expandedExcludes)
+				globbedPaths = PathsWithModuleSrcSubDir(ctx, globbedPaths, "")
+				for _, path := range globbedPaths {
+					s := path.Rel()
+					expandedPaths = append(expandedPaths, bazel.Label{Label: s})
+				}
+			} else {
+				if !InList(p, expandedExcludes) {
+					expandedPaths = append(expandedPaths, bazel.Label{Label: p})
+				}
+			}
+			labels.Includes = append(labels.Includes, expandedPaths...)
+		}
+	}
+	return labels
+}
+
+func getOtherModuleLabel(ctx BazelConversionPathContext, module, tag string) bazel.Label {
+	m, _ := ctx.GetDirectDep(module)
+	// TODO(b/165114590): handle tags
+	otherModuleName := ctx.OtherModuleName(m)
+	var label bazel.Label
+	if otherDir, dir := ctx.OtherModuleDir(m), ctx.ModuleDir(); otherDir != dir {
+		label.Label = fmt.Sprintf("//%s:%s", otherDir, otherModuleName)
+	} else {
+		label.Label = fmt.Sprintf(":%s", otherModuleName)
+	}
+	return label
 }
 
 // OutputPaths is a slice of OutputPath objects, with helpers to operate on the collection.

@@ -85,9 +85,8 @@ func (ctx *TestContext) FinalDepsMutators(f RegisterMutatorFunc) {
 // RegisterBp2BuildMutator registers a BazelTargetModule mutator for converting a module
 // type to the equivalent Bazel target.
 func (ctx *TestContext) RegisterBp2BuildMutator(moduleType string, m func(TopDownMutatorContext)) {
-	mutatorName := moduleType + "_bp2build"
 	f := func(ctx RegisterMutatorsContext) {
-		ctx.TopDown(mutatorName, m)
+		ctx.TopDown(moduleType, m)
 	}
 	ctx.bp2buildMutators = append(ctx.bp2buildMutators, f)
 }
@@ -100,7 +99,13 @@ func (ctx *TestContext) Register() {
 
 // RegisterForBazelConversion prepares a test context for bp2build conversion.
 func (ctx *TestContext) RegisterForBazelConversion() {
-	RegisterMutatorsForBazelConversion(ctx.Context.Context, ctx.bp2buildMutators)
+	bp2buildDepsMutators := append([]RegisterMutatorFunc{
+		registerDepsMutator,
+		registerPathDepsMutator,
+	}, bp2buildDepsMutators...)
+
+	RegisterMutatorsForBazelConversion(ctx.Context.Context,
+		append(append([]RegisterMutatorFunc(nil), bp2buildDepsMutators...), ctx.bp2buildMutators...))
 }
 
 func (ctx *TestContext) ParseFileList(rootDir string, filePaths []string) (deps []string, errs []error) {

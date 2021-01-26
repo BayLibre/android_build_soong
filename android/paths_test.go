@@ -1336,3 +1336,21 @@ func BenchmarkFirstUniquePaths(b *testing.B) {
 		})
 	}
 }
+
+func TestBazelLabelForModuleSrc(t *testing.T) {
+	/*config := TestConfig("out", nil, "", map[string][]byte{
+		"Android.bp": nil,
+		"a.txt":      nil,
+		"a/txt":      nil,
+		"a/b/c":      nil,
+		"a/b/d":      nil,
+		"b":          nil,
+		"b/b.txt":    nil,
+		"a/a.txt":    nil,
+	})
+	*/
+
+	// ctx.baseModuleContext.config = config
+	// r := BazelLabelForModuleSrc(ctx, "**/*.txt")
+	// t.Errorf("got %s", r)
+}
