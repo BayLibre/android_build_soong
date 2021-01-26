@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "102b41f7_50dcb76c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-26T20:33:50Z",
+      "side": 1,
+      "message": "fyi: tools don\u0027t have to start with a \":\" (https://cs.android.com/android/platform/superproject/+/master:build/soong/genrule/genrule.go;l\u003d195-197;drc\u003d316e07c593ab66599c74725cf482dedbb32b2875). Can also handle this with other label-related issues.",
+      "range": {
+        "startLine": 810,
+        "startChar": 76,
+        "endLine": 810,
+        "endChar": 84
+      },
+      "revId": "885ee7ad86b9ae00d76e417475f02ed359498d97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
