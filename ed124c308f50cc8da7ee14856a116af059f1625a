@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ab1f8e09_4c44e565",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-26T04:23:46Z",
+      "side": 1,
+      "message": "+cc Anton. what do you think about Jiyong\u0027s concern?",
+      "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bb425794_61fe2e4c",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -85,6 +102,30 @@
       "side": 1,
       "message": "I was concerned that any new module author wouldn\u0027t get any error when they mistakenly omit min_sdk_version setting.",
       "parentUuid": "0ee95d40_6a84bb21",
+      "range": {
+        "startLine": 2124,
+        "startChar": 0,
+        "endLine": 2126,
+        "endChar": 2
+      },
+      "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "151db308_cf34e58a",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-26T04:23:46Z",
+      "side": 1,
+      "message": "\u0027updatable: true\u0027 requires min_sdk_version to be set, which is enforced by the build system. They\u0027ll get an error \"when min_sdk_version isn\u0027t set \u0026\u0026 the APEX is \u0027updatable: true\u0027\".\n\nWdyt, Anton?",
+      "parentUuid": "9e508609_10aa722d",
       "range": {
         "startLine": 2124,
         "startChar": 0,
