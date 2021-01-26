@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e956cc_614f0530",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2129,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-26T03:12:50Z",
+      "side": 0,
+      "message": "This is moved to L857.\nWe\u0027ll check min_sdk_version even when it is one of preview api levels.",
+      "range": {
+        "startLine": 2126,
+        "startChar": 0,
+        "endLine": 2129,
+        "endChar": 2
+      },
+      "revId": "700730e69ee8c64f53f7e7007e54eb1f7bbe3d00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb425794_61fe2e4c",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-26T03:12:50Z",
+      "side": 1,
+      "message": "We\u0027ll check min_sdk_version even when it is \"current\" or codename(e.g. \"S\")",
+      "range": {
+        "startLine": 833,
+        "startChar": 0,
+        "endLine": 836,
+        "endChar": 2
+      },
+      "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
