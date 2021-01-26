@@ -46,6 +46,29 @@
       },
       "revId": "81428a46c189e377ef5e4a7d637b1c054113b031",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6af838d_2c927876",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-26T13:57:05Z",
+      "side": 1,
+      "message": "why did we get rid of the panic here?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 69
+      },
+      "revId": "81428a46c189e377ef5e4a7d637b1c054113b031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
