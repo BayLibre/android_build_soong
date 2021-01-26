@@ -69,6 +69,30 @@
       },
       "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e508609_10aa722d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-26T04:12:56Z",
+      "side": 1,
+      "message": "I was concerned that any new module author wouldn\u0027t get any error when they mistakenly omit min_sdk_version setting.",
+      "parentUuid": "0ee95d40_6a84bb21",
+      "range": {
+        "startLine": 2124,
+        "startChar": 0,
+        "endLine": 2126,
+        "endChar": 2
+      },
+      "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
