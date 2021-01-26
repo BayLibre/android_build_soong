@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da455809_ea859dcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-26T12:52:53Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "bba60440_8b7ddfab",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12aec81b_136034ad",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-26T11:45:32Z",
       "side": 1,
       "message": "Why would you want to pass it by value? AFAIK this makes a copy of the stuct.",
+      "range": {
+        "startLine": 1597,
+        "startChar": 8,
+        "endLine": 1597,
+        "endChar": 25
+      },
+      "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d31f7a6_9ac068a7",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-26T12:52:53Z",
+      "side": 1,
+      "message": "Because without it this code fails:\n  actual :\u003d bootImageInfo.Modules().String()\n\nBut this code works:\n  modules :\u003d bootImageInfo.Modules()\n  actual :\u003d modules.String()\n\nHave just changed the code in tests to use the latter and reverted this change.",
+      "parentUuid": "12aec81b_136034ad",
       "range": {
         "startLine": 1597,
         "startChar": 8,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d4ccdc_53352a6a",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-26T12:52:53Z",
+      "side": 1,
+      "message": "I will do that as and when the functionality moves into boot_image.",
+      "parentUuid": "897d03d6_d9d2fe40",
+      "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ef77115_a9114763",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-01-26T11:45:32Z",
       "side": 1,
       "message": "Can a java_sdk_library be not installable?",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 21
+      },
+      "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f88a663_3d4309a8",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-26T12:52:53Z",
+      "side": 1,
+      "message": "Removed as it is not needed - I copied it from somewhere else. I presume that they don\u0027t have to be installed.",
+      "parentUuid": "2ef77115_a9114763",
       "range": {
         "startLine": 33,
         "startChar": 3,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "566e1778_153aaaf0",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-26T12:52:53Z",
+      "side": 1,
+      "message": "I just wanted to make sure that it worked with multiple libraries.\n\nWe don\u0027t yet support java_sdk_library as art boot jar modules, mainly because none of the existing ones are java_sdk_library modules.",
+      "parentUuid": "9b1148e7_40171a8f",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65e6e8b6_e5ba2a6f",
@@ -123,6 +237,24 @@
       "writtenOn": "2021-01-26T11:45:32Z",
       "side": 1,
       "message": "Remove blank line 33?",
+      "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb6ae9fa_27fe2a21",
+        "filename": "java/boot_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-26T12:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65e6e8b6_e5ba2a6f",
       "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -152,6 +284,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "03d66fe5_82267ec1",
+        "filename": "java/boot_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-26T12:52:53Z",
+      "side": 1,
+      "message": "No it isn\u0027t. It is needed for a follow up change and shouldn\u0027t be here at all. Will remove.",
+      "parentUuid": "1d519e72_e7513122",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 23
+      },
+      "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "438c675e_eae2f9d7",
         "filename": "java/boot_image_test.go",
         "patchSetId": 3
@@ -163,6 +319,24 @@
       "writtenOn": "2021-01-26T11:45:32Z",
       "side": 1,
       "message": "It\u0027d be good to consolidate this with the tests in java/dexpreopt_bootjars_test.go.",
+      "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32dbe730_d4dc0cae",
+        "filename": "java/boot_image_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-26T12:52:53Z",
+      "side": 1,
+      "message": "I will gradually move the tests from there to here as the relevant functionality moves into boot_image.",
+      "parentUuid": "438c675e_eae2f9d7",
       "revId": "e7b29f89c705f1e24a9bccebc2d6191a9a201ab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
