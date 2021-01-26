@@ -1,0 +1,11 @@
+Code-Review+2: Liz Kammer <eakammer@google.com>
+Code-Review+2: Rupert Shuttleworth <ruperts@google.com>
+Code-Review+2: Lukács T. Berki <lberki@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Jingwen Chen <jingwen@google.com>
+Submitted-at: Tue, 26 Jan 2021 22:30:46 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1560231
+Project: platform/build/soong
+Branch: refs/heads/master
