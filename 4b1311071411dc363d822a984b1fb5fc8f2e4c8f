@@ -22,6 +22,30 @@
       },
       "revId": "4b1311071411dc363d822a984b1fb5fc8f2e4c8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3471f5de_4fbbd52c",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-26T22:31:33Z",
+      "side": 1,
+      "message": "I wouldn\u0027t expect that to change, but I could put vendor_available: true or vendor_suffix: true in the generated snapshot Android.bp if you prefer.",
+      "parentUuid": "68276d93_930c0ba6",
+      "range": {
+        "startLine": 407,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 45
+      },
+      "revId": "4b1311071411dc363d822a984b1fb5fc8f2e4c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

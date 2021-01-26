@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b12b62fd_20392c8e",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-26T22:31:33Z",
+      "side": 0,
+      "message": "Would it be reasonable to expect vendors to update the suffix in the vendor snapshot if the source module was changed from vendor to vendor_available?",
+      "parentUuid": "97467cbc_d87a2ed6",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 76
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d924465a_f54d7d77",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 3
