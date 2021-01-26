@@ -46,6 +46,30 @@
       },
       "revId": "5cab3f6ed0fe6ef7866ee7ec69d0352ea9d9f05c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b2d9631_d5021e17",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-26T17:39:13Z",
+      "side": 1,
+      "message": "Mostly a mismatch between Blueprint and Soong.  Blueprint supports string and *string with different semantics, in Soong only the *string semantics make sense.",
+      "parentUuid": "aed81d9d_0aa6e77c",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "5cab3f6ed0fe6ef7866ee7ec69d0352ea9d9f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

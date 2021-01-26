@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7189d657_657f108b",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-26T17:39:13Z",
+      "side": 1,
+      "message": "Suggest:\n\n\tif nextApiDir :\u003d String(p.properties.Next_api_dir); nextApiDir !\u003d \"\" {\n\t\tfiles :\u003d getPrebuiltFilesInSubdir(mctx, nextApiDir, \"api/*incompatibilities.txt\")\n\nOtherwise next_api_dir: \"\" will have different behavior from unset next_api_adir.",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 99
+      },
+      "revId": "bead02e1f336f3d3d319ab060bcf1895abb1ae2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
