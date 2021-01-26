@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fd786e_23c36ca3",
+        "filename": "scripts/gen_ndk_backedby_apex.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-26T23:31:29Z",
+      "side": 1,
+      "message": "This is causing flaky builds, for example https://android-build.googleplex.com/builds/submitted/7104406/mainline_modules-userdebug/latest/view/logs/build_error.log.  Other rules may be modifying the module directory, so you can\u0027t do a find over the whole thing.\n\nThe build should already know the list of libraries in the apex, maybe you should pass that into the script for comparison with ndkLibList.txt?",
+      "revId": "6bde0b5f9dba13c9e02ffd8936bb93599f086526",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
