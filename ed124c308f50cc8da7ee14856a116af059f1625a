@@ -134,6 +134,30 @@
       },
       "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef0799b_76976f63",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-01-26T04:25:23Z",
+      "side": 1,
+      "message": "\u003e They\u0027ll get an error \"when min_sdk_version isn\u0027t set \u0026\u0026 the APEX is \u0027updatable: true\u0027\".\n\nIf this is the case, I don\u0027t worry. Thanks for letting me know that.",
+      "parentUuid": "151db308_cf34e58a",
+      "range": {
+        "startLine": 2124,
+        "startChar": 0,
+        "endLine": 2126,
+        "endChar": 2
+      },
+      "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
