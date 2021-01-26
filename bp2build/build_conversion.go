@@ -29,8 +29,10 @@ type BazelAttributes struct {
 }
 
 type BazelTarget struct {
-	name    string
-	content string
+	name      string
+	content   string
+	load      string
+	ruleClass string
 }
 
 type bpToBuildContext interface {
@@ -135,12 +137,17 @@ func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
 	// Delete it from being generated in the BUILD file.
 	delete(props.Attrs, "rule_class")
 
+	load := props.Attrs["load"]
+	delete(props.Attrs, "load")
+
 	// Return the Bazel target with rule class and attributes, ready to be
 	// code-generated.
 	attributes := propsToAttributes(props.Attrs)
 	targetName := targetNameForBp2Build(ctx, m)
 	return BazelTarget{
-		name: targetName,
+		name:      targetName,
+		load:      load,
+		ruleClass: ruleClass,
 		content: fmt.Sprintf(
 			bazelTarget,
 			ruleClass,
