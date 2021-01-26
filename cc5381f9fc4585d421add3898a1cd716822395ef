@@ -22,6 +22,30 @@
       },
       "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266b0bde_3c4f43d1",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-26T00:39:52Z",
+      "side": 0,
+      "message": "There is currently no connection between the source module and the vendor prebuilt, I would have to add that.\n\nWhat is the supported span between generating the vendor snapshot and using it?  We generally don\u0027t blanket support Android.bp files from R working in S.",
+      "parentUuid": "3594579b_5f330ed5",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 76
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
