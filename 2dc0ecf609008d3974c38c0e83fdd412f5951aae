@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1432f54_d9e736ff",
+        "filename": "android/paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-26T17:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b8c68f3_7c900602",
+      "range": {
+        "startLine": 1148,
+        "startChar": 34,
+        "endLine": 1148,
+        "endChar": 56
+      },
+      "revId": "2dc0ecf609008d3974c38c0e83fdd412f5951aae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72295a4c_f1bb327f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-26T00:23:54Z",
       "side": 1,
       "message": "Should the rest of these be changed too?",
+      "range": {
+        "startLine": 1160,
+        "startChar": 5,
+        "endLine": 1160,
+        "endChar": 28
+      },
+      "revId": "2dc0ecf609008d3974c38c0e83fdd412f5951aae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2672ec_eece5772",
+        "filename": "android/paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-01-26T17:52:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72295a4c_f1bb327f",
       "range": {
         "startLine": 1160,
         "startChar": 5,
