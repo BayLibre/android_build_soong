@@ -22,6 +22,30 @@
       },
       "revId": "5cab3f6ed0fe6ef7866ee7ec69d0352ea9d9f05c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed81d9d_0aa6e77c",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-26T17:08:19Z",
+      "side": 1,
+      "message": "done, I think. (just changed the one use of it to dereference it)\n\nWhy are both forms allowed?",
+      "parentUuid": "6d0a9d59_ba3e2eb7",
+      "range": {
+        "startLine": 44,
+        "startChar": 14,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "5cab3f6ed0fe6ef7866ee7ec69d0352ea9d9f05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
