@@ -47,6 +47,7 @@ var (
 		"-C debuginfo=2",
 		"-C opt-level=3",
 		"-C relocation-model=pic",
+		"-C panic=abort",
 	}
 
 	deviceGlobalRustFlags = []string{}
