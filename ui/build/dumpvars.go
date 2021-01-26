@@ -226,6 +226,9 @@ func runMakeProductConfig(ctx Context, config Config) {
 		// Extra environment variables to be exported to ninja
 		"BUILD_BROKEN_NINJA_USES_ENV_VARS",
 
+		//Extra sandbox dirs
+		"BUILD_BROKEN_SANDBOX_EXTRA_DIRS",
+
 		// Not used, but useful to be in the soong.log
 		"BOARD_VNDK_VERSION",
 
@@ -286,4 +289,5 @@ func runMakeProductConfig(ctx Context, config Config) {
 	config.SetBuildBrokenDupRules(makeVars["BUILD_BROKEN_DUP_RULES"] == "true")
 	config.SetBuildBrokenUsesNetwork(makeVars["BUILD_BROKEN_USES_NETWORK"] == "true")
 	config.SetBuildBrokenNinjaUsesEnvVars(strings.Fields(makeVars["BUILD_BROKEN_NINJA_USES_ENV_VARS"]))
+	config.SetBuildBrokenSandboxExtraDirs(strings.Fields(makeVars["BUILD_BROKEN_SANDBOX_EXTRA_DIRS"]))
 }

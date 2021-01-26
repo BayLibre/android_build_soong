@@ -64,6 +64,7 @@ type configImpl struct {
 	brokenDupRules     bool
 	brokenUsesNetwork  bool
 	brokenNinjaEnvVars []string
+	brokenSandboxExtraDirs []string
 
 	pathReplaced bool
 
@@ -1128,6 +1129,14 @@ func (c *configImpl) SetBuildBrokenNinjaUsesEnvVars(val []string) {
 
 func (c *configImpl) BuildBrokenNinjaUsesEnvVars() []string {
 	return c.brokenNinjaEnvVars
+}
+
+func (c *configImpl) SetBuildBrokenSandboxExtraDirs(vals []string){
+	c.brokenSandboxExtraDirs = vals
+}
+
+func (c *configImpl) BuildBrokenSandboxExtraDirs() []string {
+return	c.brokenSandboxExtraDirs
 }
 
 func (c *configImpl) SetTargetDeviceDir(dir string) {

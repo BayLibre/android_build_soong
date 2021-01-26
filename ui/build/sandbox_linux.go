@@ -213,6 +213,16 @@ func (c *Cmd) wrapSandbox() {
 		sandboxArgs = append(sandboxArgs, "-N")
 	}
 
+		//set for sandboxextradirs
+		if len(c.config.BuildBrokenSandboxExtraDirs()) > 0 {
+			c.ctx.Printf("BuildBrokenSandboxExtraDirs: %v", c.config.BuildBrokenSandboxExtraDirs())
+			for _, v := range c.config.BuildBrokenSandboxExtraDirs() {
+				if os.Getenv(v) != "" {
+					sandboxArgs = append(sandboxArgs, "-B", os.Getenv(v))
+				}
+			}
+		}
+
 	// Stop nsjail from parsing arguments
 	sandboxArgs = append(sandboxArgs, "--")
 
