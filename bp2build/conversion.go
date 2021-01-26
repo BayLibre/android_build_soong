@@ -2,6 +2,7 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"fmt"
 	"reflect"
 	"sort"
 	"strings"
@@ -46,16 +47,22 @@ func CreateBazelFiles(
 func createBuildFiles(buildToTargets map[string][]BazelTarget, mode CodegenMode) []BazelFile {
 	files := make([]BazelFile, 0, len(buildToTargets))
 	for _, dir := range android.SortedStringKeys(buildToTargets) {
-		content := soongModuleLoad
-		if mode == Bp2Build {
-			// No need to load soong_module for bp2build BUILD files.
-			content = ""
-		}
 		targets := buildToTargets[dir]
 		sort.Slice(targets, func(i, j int) bool { return targets[i].name < targets[j].name })
+
+		content := soongModuleLoad
+		if mode == Bp2Build {
+			content = ""
+			// No need to load soong_module for bp2build BUILD files.
+			for _, t := range targets {
+				if t.load != "" {
+					content += fmt.Sprintf("load(%s, \"%s\")\n", t.load, t.ruleClass)
+				}
+			}
+		}
 		for _, t := range targets {
-			content += "\n\n"
 			content += t.content
+			content += "\n\n"
 		}
 		files = append(files, newFile(dir, "BUILD.bazel", content))
 	}

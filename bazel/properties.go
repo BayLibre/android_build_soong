@@ -31,4 +31,6 @@ type Properties struct {
 type BazelTargetModuleProperties struct {
 	// The Bazel rule class for this target.
 	Rule_class string
+
+	Load string
 }
