@@ -93,6 +93,30 @@
       },
       "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b668e620_131f8af7",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-01-26T01:55:35Z",
+      "side": 0,
+      "message": "shouldBeAddedToSuffixModules operates on the properties of the source module, but this only runs on the prebuilt module.",
+      "parentUuid": "d924465a_f54d7d77",
+      "range": {
+        "startLine": 551,
+        "startChar": 20,
+        "endLine": 551,
+        "endChar": 73
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
