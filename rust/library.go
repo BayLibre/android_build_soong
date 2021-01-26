@@ -219,13 +219,15 @@ func (library *libraryDecorator) setSource() {
 	library.MutatedProperties.VariantIsSource = true
 }
 
-func (library *libraryDecorator) autoDep(ctx BaseModuleContext) autoDep {
+func (library *libraryDecorator) autoDep(ctx android.BottomUpMutatorContext) autoDep {
 	if library.preferRlib() {
 		return rlibAutoDep
 	} else if library.rlib() || library.static() {
 		return rlibAutoDep
 	} else if library.dylib() || library.shared() {
 		return dylibAutoDep
+	} else if ctx.BazelConversionMode() {
+		return rlibAutoDep
 	} else {
 		panic(fmt.Errorf("autoDep called on library %q that has no enabled variants.", ctx.ModuleName()))
 	}
