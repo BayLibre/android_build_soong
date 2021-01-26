@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023e5db1_e4a7644a",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-01-26T19:56:58Z",
+      "side": 1,
+      "message": "I do kinda wonder if we should make ctx.Fatalf prepend the `FAILED:` message (if there isn\u0027t one already) so that more of these errors get parsed correctly.\n\nThe abstraction here isn\u0027t great, as it would also be nice if failures also showed up in the error.log file, but that currently requires going through the status.ToolStatus which isn\u0027t as simple as I wish it was (`ctx.Status.StartTool().Error(fmt.Sprintf(...))`). Refactoring things so that Status is the provider of the log-like functionality to the majority of the users (you can\u0027t do it to the ones implementing Status without potentially causing loop issues) would probably be the best way to do that, but it\u0027s also a fairly invasive change.",
+      "range": {
+        "startLine": 109,
+        "startChar": 6,
+        "endLine": 109,
+        "endChar": 12
+      },
+      "revId": "1e4d5f3e674eeb8b1af235d56045c4dd4ad304e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
