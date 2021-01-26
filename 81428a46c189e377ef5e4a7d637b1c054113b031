@@ -69,6 +69,30 @@
       },
       "revId": "81428a46c189e377ef5e4a7d637b1c054113b031",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa80e53f_31bf7175",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-26T14:15:33Z",
+      "side": 1,
+      "message": "agh, it was in response to lberki\u0027s comment, but on a second look, it makes more sense to keep it there for as a defensive measure. reinstating.",
+      "parentUuid": "d6af838d_2c927876",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 69
+      },
+      "revId": "81428a46c189e377ef5e4a7d637b1c054113b031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
