@@ -1745,7 +1745,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 func (c *Module) toolchain(ctx android.BaseModuleContext) config.Toolchain {
 	if c.cachedToolchain == nil {
-		c.cachedToolchain = config.FindToolchain(ctx.Os(), ctx.Arch())
+		c.cachedToolchain = config.FindToolchainWithContext(ctx)
 	}
 	return c.cachedToolchain
 }
@@ -1837,27 +1837,29 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	deps.HeaderLibs = android.LastUniqueStrings(deps.HeaderLibs)
 	deps.RuntimeLibs = android.LastUniqueStrings(deps.RuntimeLibs)
 
-	for _, lib := range deps.ReexportSharedLibHeaders {
-		if !inList(lib, deps.SharedLibs) {
-			ctx.PropertyErrorf("export_shared_lib_headers", "Shared library not in shared_libs: '%s'", lib)
+	if !ctx.BazelConversionMode() {
+		for _, lib := range deps.ReexportSharedLibHeaders {
+			if !inList(lib, deps.SharedLibs) {
+				ctx.PropertyErrorf("export_shared_lib_headers", "Shared library not in shared_libs: '%s'", lib)
+			}
 		}
-	}
 
-	for _, lib := range deps.ReexportStaticLibHeaders {
-		if !inList(lib, deps.StaticLibs) {
-			ctx.PropertyErrorf("export_static_lib_headers", "Static library not in static_libs: '%s'", lib)
+		for _, lib := range deps.ReexportStaticLibHeaders {
+			if !inList(lib, deps.StaticLibs) {
+				ctx.PropertyErrorf("export_static_lib_headers", "Static library not in static_libs: '%s'", lib)
+			}
 		}
-	}
 
-	for _, lib := range deps.ReexportHeaderLibHeaders {
-		if !inList(lib, deps.HeaderLibs) {
-			ctx.PropertyErrorf("export_header_lib_headers", "Header library not in header_libs: '%s'", lib)
+		for _, lib := range deps.ReexportHeaderLibHeaders {
+			if !inList(lib, deps.HeaderLibs) {
+				ctx.PropertyErrorf("export_header_lib_headers", "Header library not in header_libs: '%s'", lib)
+			}
 		}
-	}
 
-	for _, gen := range deps.ReexportGeneratedHeaders {
-		if !inList(gen, deps.GeneratedHeaders) {
-			ctx.PropertyErrorf("export_generated_headers", "Generated header module not in generated_headers: '%s'", gen)
+		for _, gen := range deps.ReexportGeneratedHeaders {
+			if !inList(gen, deps.GeneratedHeaders) {
+				ctx.PropertyErrorf("export_generated_headers", "Generated header module not in generated_headers: '%s'", gen)
+			}
 		}
 	}
 
