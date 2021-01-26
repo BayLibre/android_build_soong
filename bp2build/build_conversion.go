@@ -67,6 +67,17 @@ const (
 	QueryView
 )
 
+func (mode CodegenMode) String() string {
+	switch mode {
+	case Bp2Build:
+		return "Bp2Build"
+	case QueryView:
+		return "QueryView"
+	default:
+		return fmt.Sprintf("%d", mode)
+	}
+}
+
 func (ctx CodegenContext) AddNinjaFileDeps(...string) {}
 func (ctx CodegenContext) Config() android.Config     { return ctx.config }
 func (ctx CodegenContext) Context() android.Context   { return ctx.context }
@@ -107,8 +118,6 @@ func GenerateSoongModuleTargets(ctx bpToBuildContext, codegenMode CodegenMode) m
 			t = generateBazelTarget(ctx, m)
 		case QueryView:
 			t = generateSoongModuleTarget(ctx, m)
-		default:
-			panic(fmt.Errorf("Unknown code-generation mode: %s", codegenMode))
 		}
 
 		buildFileToTargets[ctx.ModuleDir(m)] = append(buildFileToTargets[dir], t)
