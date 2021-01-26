@@ -42,7 +42,7 @@ import (
 )
 
 type Logger interface {
-	// Print* prints to both stderr and the file log.
+	// Print* prints to both logger and the file log.
 	// Arguments to Print are handled in the manner of fmt.Print.
 	Print(v ...interface{})
 	// Arguments to Printf are handled in the manner of fmt.Printf
@@ -50,25 +50,26 @@ type Logger interface {
 	// Arguments to Println are handled in the manner of fmt.Println
 	Println(v ...interface{})
 
-	// Verbose* is equivalent to Print*, but skips stderr unless the
+	// Verbose* is equivalent to Print*, but skips logger unless the
 	// logger has been configured in verbose mode.
 	Verbose(v ...interface{})
 	Verbosef(format string, v ...interface{})
 	Verboseln(v ...interface{})
 
-	// Fatal* is equivalent to Print* followed by a call to panic that
-	// can be converted to an error using Recover, or will be converted
-	// to a call to os.Exit(1) with a deferred call to Cleanup()
+	// Fatal* is equivalent to Print* that logs to stderr followed by
+	// a call to panic that can be converted to an error using Recover,
+	// or will be converted to a call to os.Exit(1) with a deferred call to Cleanup()
 	Fatal(v ...interface{})
 	Fatalf(format string, v ...interface{})
 	Fatalln(v ...interface{})
 
-	// Panic is equivalent to Print* followed by a call to panic.
+	// Panic is equivalent to Print* that logs to stderr followed by
+	// a call to panic.
 	Panic(v ...interface{})
 	Panicf(format string, v ...interface{})
 	Panicln(v ...interface{})
 
-	// Output writes the string to both stderr and the file log.
+	// Output writes the string to both logger and the file log.
 	Output(calldepth int, str string) error
 }
 
@@ -135,6 +136,7 @@ func Recover(fn func(err error)) {
 }
 
 type stdLogger struct {
+	logger  *log.Logger
 	stderr  *log.Logger
 	verbose bool
 
@@ -146,16 +148,17 @@ type stdLogger struct {
 var _ Logger = &stdLogger{}
 
 // New creates a new Logger. The out variable sets the destination, commonly
-// os.Stderr, but it may be a buffer for tests, or a separate log file if
+// os.stderr, but it may be a buffer for tests, or a separate log file if
 // the user doesn't need to see the output.
 func New(out io.Writer) *stdLogger {
 	return &stdLogger{
-		stderr:     log.New(out, "", log.Ltime),
+		logger:     log.New(out, "", log.Ltime),
+		stderr:     log.New(os.Stderr, "", log.Ltime),
 		fileLogger: log.New(ioutil.Discard, "", log.Ldate|log.Lmicroseconds|log.Llongfile),
 	}
 }
 
-// SetVerbose controls whether Verbose[f|ln] logs to stderr as well as the
+// SetVerbose controls whether Verbose[f|ln] logs to logger as well as the
 // file-backed log.
 func (s *stdLogger) SetVerbose(v bool) *stdLogger {
 	s.verbose = v
@@ -217,8 +220,14 @@ func (s *stdLogger) Cleanup() {
 	}
 }
 
-// Output writes string to both stderr and the file log.
+// Output writes string to both logger and the file log.
 func (s *stdLogger) Output(calldepth int, str string) error {
+	s.logger.Output(calldepth+1, str)
+	return s.fileLogger.Output(calldepth+1, str)
+}
+
+// Error writes string to both stderr and the file log.
+func (s *stdLogger) Error(calldepth int, str string) error {
 	s.stderr.Output(calldepth+1, str)
 	return s.fileLogger.Output(calldepth+1, str)
 }
@@ -227,26 +236,26 @@ func (s *stdLogger) Output(calldepth int, str string) error {
 // unless SetVerbose(true) has been called.
 func (s *stdLogger) VerboseOutput(calldepth int, str string) error {
 	if s.verbose {
-		s.stderr.Output(calldepth+1, str)
+		s.logger.Output(calldepth+1, str)
 	}
 	return s.fileLogger.Output(calldepth+1, str)
 }
 
-// Print prints to both stderr and the file log.
+// Print prints to both logger and the file log.
 // Arguments are handled in the manner of fmt.Print.
 func (s *stdLogger) Print(v ...interface{}) {
 	output := fmt.Sprint(v...)
 	s.Output(2, output)
 }
 
-// Printf prints to both stderr and the file log.
+// Printf prints to both logger and the file log.
 // Arguments are handled in the manner of fmt.Printf.
 func (s *stdLogger) Printf(format string, v ...interface{}) {
 	output := fmt.Sprintf(format, v...)
 	s.Output(2, output)
 }
 
-// Println prints to both stderr and the file log.
+// Println prints to both logger and the file log.
 // Arguments are handled in the manner of fmt.Println.
 func (s *stdLogger) Println(v ...interface{}) {
 	output := fmt.Sprintln(v...)
@@ -278,7 +287,7 @@ func (s *stdLogger) Verboseln(v ...interface{}) {
 // Cleanup will convert to a os.Exit(1).
 func (s *stdLogger) Fatal(v ...interface{}) {
 	output := fmt.Sprint(v...)
-	s.Output(2, output)
+	s.Error(2, output)
 	panic(fatalLog{errors.New(output)})
 }
 
@@ -286,7 +295,7 @@ func (s *stdLogger) Fatal(v ...interface{}) {
 // Cleanup will convert to a os.Exit(1).
 func (s *stdLogger) Fatalf(format string, v ...interface{}) {
 	output := fmt.Sprintf(format, v...)
-	s.Output(2, output)
+	s.Error(2, output)
 	panic(fatalLog{errors.New(output)})
 }
 
@@ -294,27 +303,27 @@ func (s *stdLogger) Fatalf(format string, v ...interface{}) {
 // Cleanup will convert to a os.Exit(1).
 func (s *stdLogger) Fatalln(v ...interface{}) {
 	output := fmt.Sprintln(v...)
-	s.Output(2, output)
+	s.Error(2, output)
 	panic(fatalLog{errors.New(output)})
 }
 
 // Panic is equivalent to Print() followed by a call to panic().
 func (s *stdLogger) Panic(v ...interface{}) {
 	output := fmt.Sprint(v...)
-	s.Output(2, output)
+	s.Error(2, output)
 	panic(output)
 }
 
 // Panicf is equivalent to Printf() followed by a call to panic().
 func (s *stdLogger) Panicf(format string, v ...interface{}) {
 	output := fmt.Sprintf(format, v...)
-	s.Output(2, output)
+	s.Error(2, output)
 	panic(output)
 }
 
 // Panicln is equivalent to Println() followed by a call to panic().
 func (s *stdLogger) Panicln(v ...interface{}) {
 	output := fmt.Sprintln(v...)
-	s.Output(2, output)
+	s.Error(2, output)
 	panic(output)
 }
