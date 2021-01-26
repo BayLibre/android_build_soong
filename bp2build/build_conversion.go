@@ -16,6 +16,7 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 	"fmt"
 	"reflect"
 	"strconv"
@@ -177,7 +178,7 @@ func GenerateSoongModuleTargets(ctx bpToBuildContext, codegenMode CodegenMode) m
 			panic(fmt.Errorf("Unknown code-generation mode: %s", codegenMode))
 		}
 
-		buildFileToTargets[ctx.ModuleDir(m)] = append(buildFileToTargets[dir], t)
+		buildFileToTargets[dir] = append(buildFileToTargets[dir], t)
 	})
 	return buildFileToTargets
 }
@@ -349,6 +350,12 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 		ret += makeIndent(indent)
 		ret += "]"
 	case reflect.Struct:
+		if labels, ok := propertyValue.Interface().(bazel.LabelList); ok {
+			return prettyPrint(reflect.ValueOf(labels.Includes), indent)
+		} else if label, ok := propertyValue.Interface().(bazel.Label); ok {
+			return fmt.Sprintf("%q", label.Label), nil
+		}
+
 		ret = "{\n"
 		// Sort and print the struct props by the key.
 		structProps := extractStructProperties(propertyValue, indent)
@@ -380,6 +387,26 @@ func extractStructProperties(structValue reflect.Value, indent int) map[string]s
 
 	ret := map[string]string{}
 	structType := structValue.Type()
+	// if structType.AssignableTo(reflect.ValueOf(bazel.Label{}).Type()) {
+	// var labels []string
+	// label := structValue.Interface().(bazel.Label)
+	// for _, m := range label.Modules {
+	// // TODO(eakammer): look these up
+	// labels = append(labels, fmt.Sprintf(":%s", m))
+	// }
+	// // TODO(eakammer): convert globs
+	// globs := append([]string(nil), label.Globs)
+	// var paths []string
+	// if len(label.Exclude_paths) > 0 {
+	// globs = append(globs, label.Paths)
+	// } else {
+	// paths = append(paths, label.Paths)
+	// }
+
+	// for _, path := range paths {
+	// labels = append(labels, path)
+	// }
+	// } else {
 	for i := 0; i < structValue.NumField(); i++ {
 		field := structType.Field(i)
 		if shouldSkipStructField(field) {
@@ -405,6 +432,7 @@ func extractStructProperties(structValue reflect.Value, indent int) map[string]s
 			ret[propertyName] = prettyPrintedValue
 		}
 	}
+	// }
 
 	return ret
 }
