@@ -17,7 +17,7 @@ type BazelFile struct {
 
 func CreateBazelFiles(
 	ruleShims map[string]RuleShim,
-	buildToTargets map[string][]BazelTarget,
+	buildToTargets map[string]BazelTargets,
 	mode CodegenMode) []BazelFile {
 	files := make([]BazelFile, 0, len(ruleShims)+len(buildToTargets)+numAdditionalFiles)
 
@@ -43,7 +43,7 @@ func CreateBazelFiles(
 	return files
 }
 
-func createBuildFiles(buildToTargets map[string][]BazelTarget, mode CodegenMode) []BazelFile {
+func createBuildFiles(buildToTargets map[string]BazelTargets, mode CodegenMode) []BazelFile {
 	files := make([]BazelFile, 0, len(buildToTargets))
 	for _, dir := range android.SortedStringKeys(buildToTargets) {
 		content := soongModuleLoad
