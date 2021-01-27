@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981e0aa0_53b809df",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 4333,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-27T23:59:06Z",
+      "side": 1,
+      "message": "PTAL. I don\u0027t think there\u0027s much benefit in trying to reuse the test fixtures, but I cleaned it up a bit to only test the dex_bootjars singleton.",
+      "revId": "d919325ee57b797136418a01486581bc39a6927c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
