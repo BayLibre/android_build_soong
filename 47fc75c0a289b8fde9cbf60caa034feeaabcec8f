@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0aebb6a_7b08b634",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-27T17:38:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0974352_649a202b",
+      "revId": "47fc75c0a289b8fde9cbf60caa034feeaabcec8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "297283f0_026f57d2",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-27T10:18:59Z",
       "side": 1,
       "message": "Why does test need to be checked here? Wouldn\u0027t requiring installable \u003d\u003d true suffice?",
+      "revId": "47fc75c0a289b8fde9cbf60caa034feeaabcec8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a63e203_9d56d444",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-27T17:38:39Z",
+      "side": 1,
+      "message": "In (now obsolete) PS10 it wouldn\u0027t, because dexpreopt.config was only generated for non-host non-test libraries (not all execution paths reach dexpreopt() in compile() for java.Module), and it has to be kept in sync with generation of LOCAL_SOONG_DEXPREOPT_CONFIG variable for Make, otherwise `m checkbuild` detects dangling build targets.\n\nIn PS11 I rewrote this to set the config path once at the time when the build rule for dexpreopt.config is generated, for it cannot get out of sync with LOCAL_SOONG_DEXPREOPT_CONFIG anymore. Some build rules for dexpreopt.config may be redundant, but this was the case anyway as it\u0027s impossible to know which Make modules will depend on it (if any). I think it\u0027s too much of a hassle to prune the redundant build rules.\n\nThat is all in the assumption that PS11 passes presubmit (checkbuild), which is slow for me today for some reason.",
+      "parentUuid": "297283f0_026f57d2",
       "revId": "47fc75c0a289b8fde9cbf60caa034feeaabcec8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
