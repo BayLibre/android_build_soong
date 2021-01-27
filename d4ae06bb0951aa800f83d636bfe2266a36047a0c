@@ -166,6 +166,30 @@
       },
       "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64784b41_fa26f6e9",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-01-27T22:43:32Z",
+      "side": 1,
+      "message": "I\u0027m guessing YAGNI. We already have the architecture variant (thanks again!), and if I\u0027ve understood correctly any module that for some reason does need to disable that feature can just do so in their cflags and the arch will do the right thing at runtime.\n\nAnyone disagree? Can we drop this patch, or is there a use case missing still?",
+      "parentUuid": "fbf406bb_a344c720",
+      "range": {
+        "startLine": 733,
+        "startChar": 38,
+        "endLine": 735,
+        "endChar": 46
+      },
+      "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
