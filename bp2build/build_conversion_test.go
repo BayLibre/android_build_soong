@@ -16,6 +16,7 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/genrule"
 	"testing"
 )
@@ -600,6 +601,33 @@ func TestModuleTypeBp2Build(t *testing.T) {
     srcs = [
         "foo.in",
     ],
+)`,
+		},
+		{
+			description:                        "cc_defaults with arch props",
+			moduleTypeUnderTest:                "cc_defaults",
+			moduleTypeUnderTestFactory:         func() android.Module { return cc.DefaultsFactory() },
+			moduleTypeUnderTestBp2BuildMutator: cc.DefaultsBp2Build,
+			bp: `cc_defaults {
+    name: "linux_bionic_supported",
+    host_supported: true,
+    target: {
+        host: {
+            enabled: false,
+        },
+        linux_bionic: {
+            enabled: true,
+        },
+    },
+}`,
+			expectedBazelTarget: `cc_defaults(
+    name = "linux_bionic_supported",
+    host_supported = True,
+    enabled = select({
+        "//build/bazel/conditions/target:host": False,
+        "//build/bazel/conditions/target:linux_bionic": True,
+        "//conditions:default": True,
+    }),
 )`,
 		},
 	}
