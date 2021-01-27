@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68348805_6e448506",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-01-27T07:59:56Z",
+      "side": 1,
+      "message": "I talked to Yi. This is limited to a very small part of simpleperf.",
+      "revId": "2c9b3e0e25d8fa3d9f452fc5dbf5fd452e6d83eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
