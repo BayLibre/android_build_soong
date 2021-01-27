@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23bcae19_73f3f16a",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-27T08:32:31Z",
+      "side": 1,
+      "message": "I didn\u0027t realize this method is a thing",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "40067de675ed2d68860dd528f2c55951c02366ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
