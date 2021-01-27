@@ -142,6 +142,30 @@
       },
       "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf406bb_a344c720",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-01-27T08:22:36Z",
+      "side": 1,
+      "message": "I think this switch is meant to be used by vendors.\nThe reason it became a sanitizer is that this way soong propagates the option to dependencies as well, provided my understanding is correct.",
+      "parentUuid": "15295219_b5ccbb30",
+      "range": {
+        "startLine": 733,
+        "startChar": 38,
+        "endLine": 735,
+        "endChar": 46
+      },
+      "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
