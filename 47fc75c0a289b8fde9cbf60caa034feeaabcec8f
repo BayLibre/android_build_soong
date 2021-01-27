@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0974352_649a202b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-27T10:18:59Z",
+      "side": 1,
+      "message": "Could you add some context here providing more detail on the purpose of this change and how it contributes to the aims of the bug?",
+      "revId": "47fc75c0a289b8fde9cbf60caa034feeaabcec8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297283f0_026f57d2",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-27T10:18:59Z",
+      "side": 1,
+      "message": "Why does test need to be checked here? Wouldn\u0027t requiring installable \u003d\u003d true suffice?",
+      "revId": "47fc75c0a289b8fde9cbf60caa034feeaabcec8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
