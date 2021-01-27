@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b388aeb9_ed7a9424",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-27T01:35:28Z",
+      "side": 0,
+      "message": "That will work. As we don\u0027t have any other choices, and it will be a rare case, we may let vendors to update the configurations.\nBut it will be difficult to know if the link is wrong from the Android.mk modules. Without the error message to guide the vendors, it will be not easy to debug the problem when it happens.",
+      "parentUuid": "b12b62fd_20392c8e",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 76
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d924465a_f54d7d77",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 3
