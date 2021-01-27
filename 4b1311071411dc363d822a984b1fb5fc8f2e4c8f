@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1332b62f_515e303c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-01-27T23:39:39Z",
+      "side": 1,
+      "message": "I\u0027ll update the script update.py and then +2 here.",
+      "revId": "4b1311071411dc363d822a984b1fb5fc8f2e4c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68276d93_930c0ba6",
