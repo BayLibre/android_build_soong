@@ -56,6 +56,30 @@
       },
       "revId": "20ce41d0b929b32daed83796ccbc3975f7d5fa33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5ab592a_c88e0b7c",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-28T16:47:46Z",
+      "side": 1,
+      "message": "I had it that way originally, but gofmt (enforced) reformatted it this way.",
+      "parentUuid": "ac283897_09660fcd",
+      "range": {
+        "startLine": 261,
+        "startChar": 52,
+        "endLine": 261,
+        "endChar": 53
+      },
+      "revId": "20ce41d0b929b32daed83796ccbc3975f7d5fa33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
