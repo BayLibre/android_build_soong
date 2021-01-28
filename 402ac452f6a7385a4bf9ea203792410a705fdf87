@@ -16,6 +16,23 @@
       "message": "LGTM. My only concern is that my boot image changes, which should hopefully be submitted soon, could affect this. I don\u0027t think that they will but it might be worth double checking once they have been submitted just to avoid build failures if they each get submitted separately.",
       "revId": "402ac452f6a7385a4bf9ea203792410a705fdf87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f1f5dd8_94cb89df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-28T18:45:30Z",
+      "side": 1,
+      "message": "The boot image changes are delayed due to presubmit failures so feel free to submit this first. I have checked and the boot image changes do work with this locally on my machine.",
+      "revId": "402ac452f6a7385a4bf9ea203792410a705fdf87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
