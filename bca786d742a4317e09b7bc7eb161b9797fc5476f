@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a86e290_8a91aac9",
+        "filename": "android/arch_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-01-28T12:57:17Z",
+      "side": 1,
+      "message": "Should \"branchprot\" be listed here as well?\n(and in the archFeatureMap below)",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "bca786d742a4317e09b7bc7eb161b9797fc5476f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
