@@ -36,6 +36,8 @@ func Codegen(ctx CodegenContext) {
 			fmt.Errorf("Failed to write %q (dir %q) due to %q", f.Basename, f.Dir, err)
 		}
 	}
+	if ctx.mode == Bp2Build {
+	}
 }
 
 func writeFile(outputDir android.OutputPath, ctx android.PathContext, f BazelFile) error {

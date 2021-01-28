@@ -21,6 +21,7 @@ import (
 	"path/filepath"
 
 	"github.com/google/blueprint/bootstrap"
+	"github.com/google/blueprint/deptools"
 
 	"android/soong/android"
 	"android/soong/bp2build"
@@ -100,7 +101,7 @@ func main() {
 		// Run the alternate pipeline of bp2build mutators and singleton to convert Blueprint to BUILD files
 		// before everything else.
 		runBp2Build(configuration, extraNinjaDeps)
-		// Short-circuit and return.
+		// Short circuit and return.
 		return
 	}
 
@@ -166,12 +167,33 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	// conversion for Bazel conversion.
 	bp2buildCtx := android.NewContext(configuration)
 	bp2buildCtx.RegisterForBazelConversion()
+
+	// No need to generate Ninja build rules/statements from Modules and Singletons.
 	configuration.SetStopBefore(bootstrap.StopBeforePrepareBuildActions)
 	bp2buildCtx.SetNameInterface(newNameResolver(configuration))
+
+	// Run the loading and analysis pipeline.
 	bootstrap.Main(bp2buildCtx.Context, configuration, extraNinjaDeps...)
 
+	// Run the code-generation phase to convert BazelTargetModules to BUILD files.
 	codegenContext := bp2build.NewCodegenContext(configuration, *bp2buildCtx, bp2build.Bp2Build)
 	bp2build.Codegen(codegenContext)
+
+	// Workarounds to support running bp2build in a clean AOSP checkout with no
+	// prior builds, and exiting early as soon as the BUILD files get generated,
+	// therefore not creating build.ninja files that soong_ui and callers of
+	// soong_build expects.
+	//
+	// These files are: build.ninja and build.ninja.d. Since Kati hasn't been
+	// ran as well, and `nothing` is defined in a .mk file, there isn't a ninja
+	// target called `nothing`, so we manually create it here.
+	ninjaFile := android.PathForOutput(codegenContext, "build.ninja")
+	ninjaFileD := android.PathForOutput(codegenContext, "build.ninja.d")
+	// A workaround to create the 'nothing' ninja target so `m nothing` works,
+	// since bp2build runs without Kati, and the 'nothing' target is declared in
+	// a Makefile.
+	android.WriteFileToOutputDir(ninjaFile, []byte("build nothing: phony\n  phony_output = true\n"), 0666)
+	deptools.WriteDepFile(ninjaFileD.String(), ninjaFile.String(), extraNinjaDeps)
 }
 
 // shouldPrepareBuildActions reads configuration and flags if build actions
