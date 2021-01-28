@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "10996760_cc76c16f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-01-28T13:04:34Z",
+      "side": 1,
+      "message": "\u003e IIUC min_sdk_version: \"S\" is also meant to work both before and after this change? \n\nYup. ;-)",
+      "parentUuid": "85b5373d_4b5fed9b",
+      "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bb425794_61fe2e4c",
         "filename": "android/apex.go",
         "patchSetId": 2
