@@ -1,0 +1,10 @@
+Open-Source-Licensing-1: Lint 🤖 <ayeaye-gerrit@google.com>
+Open-Source-Licensing+2: Bob Badour <bbadour@google.com>
+Open-Source-Licensing+2: Dashiell Renaud <rend@google.com>
+Code-Review+2: Bob Badour <bbadour@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Bob Badour <bbadour@google.com>
+Submitted-at: Thu, 28 Jan 2021 03:27:22 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1562556
+Project: platform/build/soong
+Branch: refs/heads/master
