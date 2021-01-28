@@ -39,6 +39,30 @@
       },
       "revId": "cebcfa357ee3701ae39f9db7fbe7825ec4184db4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e477f5_bbaa703c",
+        "filename": "java/rro.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2021-01-28T21:59:23Z",
+      "side": 1,
+      "message": "How\u0027s this? I don\u0027t really know the precise semantics of the possible values and I didn\u0027t want to duplicate the whole list of values here.",
+      "parentUuid": "e80fdf2b_69fd6350",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 40
+      },
+      "revId": "cebcfa357ee3701ae39f9db7fbe7825ec4184db4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
