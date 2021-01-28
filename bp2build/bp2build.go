@@ -36,6 +36,20 @@ func Codegen(ctx CodegenContext) {
 			fmt.Errorf("Failed to write %q (dir %q) due to %q", f.Basename, f.Dir, err)
 		}
 	}
+
+	// Workarounds to support running bp2build in a clean AOSP checkout with no
+	// prior builds, and exiting early as soon as the BUILD files get generated,
+	// therefore not creating build.ninja files that soong_ui and callers of
+	// soong_build expects.
+	//
+	// These files are: build.ninja and build.ninja.d. Since Kati hasn't been
+	// ran as well, and `nothing` is defined in a .mk file, there isn't a ninja
+	// target called `nothing`, so we manually create it here.
+	if ctx.mode == Bp2Build {
+		android.WriteFileToOutputDir(android.PathForOutput(ctx, "build.ninja"), []byte("build nothing: phony\n  phony_output = true\n"), 0666)
+		// No need to invalidate the ninja file if it doesn't need to be regenerated.
+		android.WriteFileToOutputDir(android.PathForOutput(ctx, "build.ninja.d"), []byte(""), 0666)
+	}
 }
 
 func writeFile(outputDir android.OutputPath, ctx android.PathContext, f BazelFile) error {
