@@ -69,6 +69,24 @@
       "parentUuid": "297283f0_026f57d2",
       "revId": "47fc75c0a289b8fde9cbf60caa034feeaabcec8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0741d1d7_2245d9c6",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-28T08:00:05Z",
+      "side": 1,
+      "message": "In PS12 I added the restriction to not generate config for apps.",
+      "parentUuid": "9a63e203_9d56d444",
+      "revId": "47fc75c0a289b8fde9cbf60caa034feeaabcec8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
