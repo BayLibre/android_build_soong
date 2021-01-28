@@ -20,10 +20,56 @@ import (
 	"fmt"
 
 	"android/soong/android"
+	"android/soong/bazel"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func init() {
 	android.RegisterModuleType("python_binary_host", PythonBinaryHostFactory)
+	android.RegisterBp2BuildMutator("python_binary_host", PythonBinaryBp2Build)
+}
+
+type bazelPythonBinaryAttributes struct {
+	Name *string
+	Srcs []string
+	Data []string
+	Deps []string
+}
+
+type bazelPythonBinary struct {
+	android.BazelTargetModuleBase
+	bazelPythonBinaryAttributes
+}
+
+func BazelPythonBinaryFactory() android.Module {
+	module := &bazelPythonBinary{}
+	module.AddProperties(&module.bazelPythonBinaryAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func (m *bazelPythonBinary) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelPythonBinary) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
+
+func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
+	if m, ok := ctx.Module().(*Module); ok {
+		name := "__bp2build__" + m.Name()
+		// Bazel only has the "tools" attribute.
+
+		// Create the BazelTargetModule.
+		ctx.CreateModule(BazelPythonBinaryFactory, &bazelPythonBinaryAttributes{
+			Name: proptools.StringPtr(name),
+			Srcs: m.properties.Srcs,
+			Data: m.properties.Data,
+			Deps: m.properties.Libs,
+		}, &bazel.BazelTargetModuleProperties{
+			Rule_class: "py_binary",
+		})
+	}
 }
 
 type BinaryProperties struct {

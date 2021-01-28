@@ -197,6 +197,23 @@ func trimQuotes(s string) string {
 	return ret
 }
 
+// FIXME: stop hardcoding namespace to package lookup
+var moduleLabelMap map[string]string = map[string]string{
+	"all_kernel_uapi_headers":          "//bionic/libc:all_kernel_uapi_headers",
+	"bionic-gensyscalls":               "//bionic/libc/tools:bionic-gensyscalls",
+	"android_filesystem_config_header": "//system/core/libcutils:android_filesystem_config_header",
+	"bionic-generate-version-script":   "//bionic/tools:bionic-generate-version-script",
+	"genseccomp":                       "//bionic/libc/tools:genseccomp",
+	"genfunctosyscallnrs":              "//bionic/libc/tools:genfunctosyscallnrs",
+}
+
+func replaceModuleNamesToTargetLabelHack(input string) string {
+	for k, v := range moduleLabelMap {
+		input = strings.Replace(input, ":"+k, v, -1)
+	}
+	return input
+}
+
 func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
 	// extract the bazel attributes from the module.
 	props := getBuildProperties(ctx, m)
@@ -214,7 +231,8 @@ func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
 
 	// Return the Bazel target with rule class and attributes, ready to be
 	// code-generated.
-	attributes := propsToAttributes(props.Attrs)
+	attributes := replaceModuleNamesToTargetLabelHack(propsToAttributes(props.Attrs))
+
 	targetName := targetNameForBp2Build(ctx, m)
 	return BazelTarget{
 		name:            targetName,
