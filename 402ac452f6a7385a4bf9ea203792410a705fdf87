@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc58bbe8_d5fbb68c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-28T14:20:41Z",
+      "side": 1,
+      "message": "LGTM. My only concern is that my boot image changes, which should hopefully be submitted soon, could affect this. I don\u0027t think that they will but it might be worth double checking once they have been submitted just to avoid build failures if they each get submitted separately.",
+      "revId": "402ac452f6a7385a4bf9ea203792410a705fdf87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
