@@ -17,6 +17,7 @@ package bp2build
 import (
 	"android/soong/android"
 	"android/soong/genrule"
+	"android/soong/python"
 	"testing"
 )
 
@@ -599,6 +600,46 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
     srcs = [
         "foo.in",
+    ],
+)`,
+		},
+		{
+			description:                        "python_binary_host",
+			moduleTypeUnderTest:                "python_binary_host",
+			moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
+			moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+			bp: `// Generate the C++ policy sources for app and system seccomp-bpf filters.
+python_binary_host {
+    name: "genseccomp",
+    main: "tools/genseccomp.py",
+    srcs: [
+        "tools/genseccomp.py",
+        "tools/gensyscalls.py",
+    ],
+    libs: ["bar"],
+    data: [
+        "kernel/uapi/**/*.h",
+    ],
+    version: {
+        py2: {
+            enabled: true,
+        },
+        py3: {
+            enabled: false,
+        },
+    },
+}`,
+			expectedBazelTarget: `py_binary(
+    name = "genseccomp",
+    data = [
+        "kernel/uapi/**/*.h",
+    ],
+    deps = [
+        "bar",
+    ],
+    srcs = [
+        "tools/genseccomp.py",
+        "tools/gensyscalls.py",
     ],
 )`,
 		},

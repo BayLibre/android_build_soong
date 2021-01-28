@@ -50,7 +50,8 @@ func createBuildFiles(buildToTargets map[string]BazelTargets, mode CodegenMode) 
 		sort.Slice(targets, func(i, j int) bool { return targets[i].name < targets[j].name })
 		content := soongModuleLoad
 		if mode == Bp2Build {
-			content = targets.LoadStatements()
+			content = "package(default_visibility = [\"//visibility:public\"])\n"
+			content += targets.LoadStatements()
 		}
 		if content != "" {
 			// If there are load statements, add a couple of newlines.
