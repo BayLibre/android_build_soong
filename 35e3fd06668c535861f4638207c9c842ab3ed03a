@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76ad95f9_452f53e1",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-28T23:54:17Z",
+      "side": 1,
+      "message": "Nit: This detail is an unrelated change, but I agree with it.",
+      "range": {
+        "startLine": 96,
+        "startChar": 30,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "35e3fd06668c535861f4638207c9c842ab3ed03a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

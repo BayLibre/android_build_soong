@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5289c45_569d4540",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-28T23:54:17Z",
+      "side": 0,
+      "message": "Very happy to see this go away. I knew this was a bit iffy when I added it, but I didn\u0027t properly realise how much broken it really was. Thanks.",
+      "revId": "b47dcf7f0d290f140e32460846aacb795a02b060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
