@@ -46,6 +46,30 @@
       },
       "revId": "c4e169ec34787ad3b515b64205ef06fab7083a0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a99a111c_11336a82",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-01-28T14:59:52Z",
+      "side": 1,
+      "message": "Use the same mechanism in both places then? (I don\u0027t mind which one, but it looks weird to hard-wire one file name but not the other)",
+      "parentUuid": "d9134df8_a593f3a1",
+      "range": {
+        "startLine": 191,
+        "startChar": 53,
+        "endLine": 191,
+        "endChar": 68
+      },
+      "revId": "c4e169ec34787ad3b515b64205ef06fab7083a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
