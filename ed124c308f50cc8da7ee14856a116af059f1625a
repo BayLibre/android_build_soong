@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "85b5373d_4b5fed9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-28T12:44:39Z",
+      "side": 1,
+      "message": "Thank you Jooyung!\n\nIIUC min_sdk_version: \"S\" is also meant to work both before and after this change? I thought \"current\" was the only acceptable value for new modules which makes it a bit of a pain as you have to modify all the build files twice (once for \"current\", then again for \"31\"). ",
+      "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bb425794_61fe2e4c",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -150,6 +167,30 @@
       "side": 1,
       "message": "\u003e They\u0027ll get an error \"when min_sdk_version isn\u0027t set \u0026\u0026 the APEX is \u0027updatable: true\u0027\".\n\nIf this is the case, I don\u0027t worry. Thanks for letting me know that.",
       "parentUuid": "151db308_cf34e58a",
+      "range": {
+        "startLine": 2124,
+        "startChar": 0,
+        "endLine": 2126,
+        "endChar": 2
+      },
+      "revId": "ed124c308f50cc8da7ee14856a116af059f1625a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13f9d44_64c92304",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-01-28T12:44:39Z",
+      "side": 1,
+      "message": "Sounds like we\u0027re in agreement! 😊",
+      "parentUuid": "3ef0799b_76976f63",
       "range": {
         "startLine": 2124,
         "startChar": 0,
