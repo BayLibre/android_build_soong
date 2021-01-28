@@ -16,6 +16,46 @@
       "message": "Ping.",
       "revId": "d02e43809ebe3edf2afd4fb4b8d1b7aa3cc82e21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f42a781d_9a73105e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-28T17:35:59Z",
+      "side": 1,
+      "message": "The code looks good, but I think there are still some relevant presubmit failures.",
+      "revId": "d02e43809ebe3edf2afd4fb4b8d1b7aa3cc82e21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afa013b_58ca9b0c",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-01-28T17:35:59Z",
+      "side": 1,
+      "message": "Nit: could also test the \"art\" boot image, the difference would be only in the missing stem for the files of the first component. Not necessary to fix.",
+      "range": {
+        "startLine": 200,
+        "startChar": 16,
+        "endLine": 200,
+        "endChar": 20
+      },
+      "revId": "d02e43809ebe3edf2afd4fb4b8d1b7aa3cc82e21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
