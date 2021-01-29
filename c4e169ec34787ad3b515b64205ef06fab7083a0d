@@ -70,6 +70,30 @@
       },
       "revId": "c4e169ec34787ad3b515b64205ef06fab7083a0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f16a76b_85018fb2",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-29T08:27:34Z",
+      "side": 1,
+      "message": "These values are passed into Blueprint/bootstrap, but as package-private variables. \n\nhttps://cs.android.com/android/platform/superproject/+/master:build/blueprint/bootstrap/command.go;l\u003d35;drc\u003dc8b9e552895468f2eb39b73c6f1ec918920c5d62\n\nI could make these accessible with a blueprint exported getter, but that would require changes to Blueprint itself. Other than using a different approach (e.g. env var) to pass it into soong_build, probably missing something super obvious here..",
+      "parentUuid": "a99a111c_11336a82",
+      "range": {
+        "startLine": 191,
+        "startChar": 53,
+        "endLine": 191,
+        "endChar": 68
+      },
+      "revId": "c4e169ec34787ad3b515b64205ef06fab7083a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
