@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f633b8e_f354867f",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-29T01:11:17Z",
+      "side": 0,
+      "message": "Anyway, as the wrong list of the snapshot will emit the error message of the missing dependency, it will not be that difficult to find the problem.",
+      "parentUuid": "b388aeb9_ed7a9424",
+      "range": {
+        "startLine": 129,
+        "startChar": 27,
+        "endLine": 129,
+        "endChar": 76
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d924465a_f54d7d77",
@@ -157,6 +181,30 @@
       "side": 0,
       "message": "shouldBeAddedToSuffixModules operates on the properties of the source module, but this only runs on the prebuilt module.",
       "parentUuid": "d924465a_f54d7d77",
+      "range": {
+        "startLine": 551,
+        "startChar": 20,
+        "endLine": 551,
+        "endChar": 73
+      },
+      "revId": "cc5381f9fc4585d421add3898a1cd716822395ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1ac022_437b87f3",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-01-29T01:11:17Z",
+      "side": 0,
+      "message": "Got it. Soong does not provide the \u0027*Module\u0027 from the module name.",
+      "parentUuid": "b668e620_131f8af7",
       "range": {
         "startLine": 551,
         "startChar": 20,
