@@ -1,0 +1,12 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Ready+1: Pete Bentley <prb@google.com>
+Code-Review+2: Martin Stjernholm <mast@google.com>
+Code-Review+2: Anton Hansson <hansson@google.com>
+Autosubmit+1: Pete Bentley <prb@google.com>
+Bypass-Presubmit+1: Pete Bentley <prb@google.com>
+Build-Cop-Override+1: Pete Bentley <prb@google.com>
+Submitted-by: Pete Bentley <prb@google.com>
+Submitted-at: Fri, 29 Jan 2021 16:19:56 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1564644
+Project: platform/build/soong
+Branch: refs/heads/master
