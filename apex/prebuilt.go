@@ -128,7 +128,7 @@ type ApexFileProperties struct {
 	}
 }
 
-func (p *ApexFileProperties) selectSource(ctx android.BottomUpMutatorContext) error {
+func (p *ApexFileProperties) selectSource(ctx android.BaseMutatorContext) error {
 	// This is called before prebuilt_select and prebuilt_postdeps mutators
 	// The mutators requires that src to be set correctly for each arch so that
 	// arch variants are disabled when src is not provided for the arch.
@@ -250,12 +250,17 @@ func prebuiltApexExportedModuleName(ctx android.BottomUpMutatorContext, name str
 	return name
 }
 
-func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
-	if err := p.properties.selectSource(ctx); err != nil {
-		ctx.ModuleErrorf("%s", err)
+func prebuiltSelectSourceMutator(ctx android.BottomUpMutatorContext) {
+	p, ok := ctx.Module().(*Prebuilt)
+	if !ok {
 		return
 	}
+	if err := p.properties.selectSource(ctx); err != nil {
+		ctx.ModuleErrorf("%s", err)
+	}
+}
 
+func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
 	// Add dependencies onto the java modules that represent the java libraries that are provided by
 	// and exported from this prebuilt apex.
 	for _, lib := range p.properties.Exported_java_libs {
