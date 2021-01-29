@@ -2852,3 +2852,79 @@ arm64/include/Arm64Test.h -> arm64/include/arm64/include/Arm64Test.h
 .intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so`),
 	)
 }
+
+func TestSnapshotWithPerArchLibraries(t *testing.T) {
+	result := testSdkWithCc(t, `
+		sdk {
+			name: "mysdk",
+                        arch: { arm64: {
+			  native_static_libs: ["mynativelib1"],
+                        },},
+		  native_static_libs: ["mynativelib2"],
+		}
+
+		cc_library_static {
+			name: "mynativelib1",
+			srcs: [
+				"Test.cpp",
+			],
+			export_include_dirs: ["include"],
+			stl: "none",
+		}
+
+		cc_library_static {
+			name: "mynativelib2",
+			srcs: [
+				"Test.cpp",
+			],
+			export_include_dirs: ["include"],
+			stl: "none",
+		}
+	`)
+
+	result.CheckSnapshot("mysdk", "",
+		checkAllCopyRules(`
+include/Test.h -> include/include/Test.h
+.intermediates/mynativelib1/android_arm64_armv8-a_static/mynativelib1.a -> arm64/lib/mynativelib1.a
+.intermediates/mynativelib2/android_arm64_armv8-a_static/mynativelib2.a -> arm64/lib/mynativelib2.a
+.intermediates/mynativelib2/android_arm_armv7-a-neon_static/mynativelib2.a -> arm/lib/mynativelib2.a
+`),
+	)
+}
+
+func TestSnapshotWithPerArchLibraries2(t *testing.T) {
+	result := testSdkWithCc(t, `
+		sdk {
+			name: "mysdk",
+		  native_static_libs: ["mynativelib1", "mynativelib2"],
+		}
+
+		cc_library_static {
+			name: "mynativelib1",
+			srcs: [
+				"Test.cpp",
+			],
+			export_include_dirs: ["include"],
+			stl: "none",
+                        arch: { arm64: { enabled: false, },},
+		}
+
+		cc_library_static {
+			name: "mynativelib2",
+			srcs: [
+				"Test.cpp",
+			],
+			export_include_dirs: ["include"],
+			stl: "none",
+		}
+	`)
+
+	result.CheckSnapshot("mysdk", "",
+		checkAllCopyRules(`
+include/Test.h -> include/include/Test.h
+.intermediates/mynativelib1/android_arm64_armv8-a_static/mynativelib1.a -> arm64/lib/mynativelib1.a
+.intermediates/mynativelib2/android_arm64_armv8-a_static/mynativelib2.a -> arm64/lib/mynativelib2.a
+.intermediates/mynativelib2/android_arm_armv7-a-neon_static/mynativelib2.a -> arm/lib/mynativelib2.a
+`),
+	)
+}
