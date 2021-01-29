@@ -50,6 +50,161 @@
       "message": "Martin, would you mind taking a look at this? Ulya gave it +2 but I had to make a minor change to fix some presubmit issues and lost it and Ulya is OOO today.",
       "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0507bb9b_8de3ceb9",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T15:08:23Z",
+      "side": 1,
+      "message": "Side note, but this is the only remaining use of this flag. It\u0027d be nice to clean it up entirely. Is the plan to move this conditional dependency into the boot_image module? (I also wonder if it really is ART boot image specific - wouldn\u0027t any instrumented boot image need it?)",
+      "range": {
+        "startLine": 733,
+        "startChar": 4,
+        "endLine": 733,
+        "endChar": 13
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b21efc_b2bd023b",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T15:08:23Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary any more.",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 741,
+        "endChar": 3
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76a94010_c8c3e2e4",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T15:08:23Z",
+      "side": 1,
+      "message": "androidMkModule is a more descriptive name. I had to look up in newApexFile what this does.",
+      "range": {
+        "startLine": 1666,
+        "startChar": 7,
+        "endLine": 1666,
+        "endChar": 18
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76eb8f44_172ca972",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T15:08:23Z",
+      "side": 1,
+      "message": "Why isn\u0027t the module passed in here?",
+      "range": {
+        "startLine": 1667,
+        "startChar": 62,
+        "endLine": 1667,
+        "endChar": 65
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01af63cd_156fd4ea",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T15:08:23Z",
+      "side": 1,
+      "message": "Please add a test for a host APEX.",
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0d64a8_6873d797",
+        "filename": "java/boot_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T15:08:23Z",
+      "side": 1,
+      "message": "Iiuc boot images is a device-only optimisation. So I suggest a) change this to variant.target.Os.OsClass \u003d\u003d android.Device, and b) extract it into a well documented predicate function, called e.g. IsBootImageTarget(android.Target), that can preferably be used in other places too to activate this logic. This is all to avoid encoding this logic into the implementation.",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696a501b_311a9b01",
+        "filename": "java/boot_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T15:08:23Z",
+      "side": 1,
+      "message": "When can this activate? I see no properties to register dependencies.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 124
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
