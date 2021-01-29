@@ -16,6 +16,23 @@
       "message": "Ping - the presubmit issues have been fixed.",
       "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b405c13_f49ab8be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-29T14:20:01Z",
+      "side": 1,
+      "message": "Self +2ing as presubmits are fixed now and Ulya is OOO.",
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
