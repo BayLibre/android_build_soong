@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eda8bb27_18197525",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-29T17:29:32Z",
+      "side": 1,
+      "message": "PTAL - fixed an issue with the test where it was sorting paths whose order mattered.",
+      "revId": "8fdfe33ef1f24b573123ca8ac9afe22aea2b3e9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
