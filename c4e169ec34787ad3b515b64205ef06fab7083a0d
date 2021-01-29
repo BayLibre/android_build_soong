@@ -118,6 +118,30 @@
       },
       "revId": "c4e169ec34787ad3b515b64205ef06fab7083a0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20a1f92_db73fdfd",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-01-29T09:25:24Z",
+      "side": 1,
+      "message": "Done, PTAL. I realized that deptools.WriteDepFile actually fails without an absolute path because of the sandbox soong_build runs in, and there\u0027s no quick way to get an absolute path from the buildNinjaD OutputPath object. Switched deptools.WriteDepFile to use android.WriteFileToOutputDir which works with the OutputPath and sandbox.",
+      "parentUuid": "3bcbe993_20350e36",
+      "range": {
+        "startLine": 191,
+        "startChar": 53,
+        "endLine": 191,
+        "endChar": 68
+      },
+      "revId": "c4e169ec34787ad3b515b64205ef06fab7083a0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
