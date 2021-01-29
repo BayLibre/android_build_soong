@@ -240,6 +240,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49075970_882a2be6",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T19:48:24Z",
+      "side": 1,
+      "message": "\u003e so there was no module to pass in\n\nYes, looks that way to me too. It looks unlikely that it would change anything right away, but it makes sense to pass on the require\u0027s etc as a general pattern, now that it is a module.",
+      "parentUuid": "22f6047c_93e2f7aa",
+      "range": {
+        "startLine": 1667,
+        "startChar": 62,
+        "endLine": 1667,
+        "endChar": 65
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01af63cd_156fd4ea",
@@ -271,6 +295,24 @@
       "side": 1,
       "message": "I tried but hit quite a lot of issues. I don\u0027t think host apexes are supported generally, they only seem to work for the art host test apexes and I can\u0027t use the art_apex_test_host in here.\n\nSome of the issues:\n1. Notice files break as they are expected to be relative to a device specific directory.\n2. Building a flattened apex also wants files to be relative to a device specific directory.\n\nAdded a TODO to add a test in future.",
       "parentUuid": "01af63cd_156fd4ea",
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "743efcfb_a97bef99",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T19:48:24Z",
+      "side": 1,
+      "message": "Ok, I see. Regarding #1, there\u0027s a difference in NOTICE file handling in tests then, considering that we do build host APEXes without them breaking?",
+      "parentUuid": "e8bc7ec5_a685c950",
       "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -359,6 +401,30 @@
       "side": 1,
       "message": "dexpreopt.RegisterToolDeps(ctx) called below at line 106 will register a dependency on dex2oatd.",
       "parentUuid": "696a501b_311a9b01",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 124
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efa308d6_00045119",
+        "filename": "java/boot_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-01-29T19:48:24Z",
+      "side": 1,
+      "message": "But that\u0027s filtered out in the Dex2oatDepTag test above. What I was getting at is that I don\u0027t understand when this error would be triggered.\n\nIf there cannot be any other dependencies and this is effectively an assertion, then maybe a panic is more apt? ModuleErrorf is for stuff a .bp writer would understand and be able to fix.",
+      "parentUuid": "b059854f_4b2612d8",
       "range": {
         "startLine": 91,
         "startChar": 0,
