@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a2b9cf_a0ccf64e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-01-29T17:23:56Z",
+      "side": 1,
+      "message": "Just to clarify, this makes NDK libs compiled with both PAuth and BTI.\nThere is only one set of libraries.\n",
+      "revId": "bca786d742a4317e09b7bc7eb161b9797fc5476f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a86e290_8a91aac9",
