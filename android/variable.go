@@ -367,6 +367,7 @@ type productVariables struct {
 	BoardMoveRecoveryResourcesToVendorBoot *bool `json:",omitempty"`
 
 	PrebuiltHiddenApiDir *string `json:",omitempty"`
+	AltBootImageProf     *string `json:",omitempty"`
 
 	ShippingApiLevel *string `json:",omitempty"`
 

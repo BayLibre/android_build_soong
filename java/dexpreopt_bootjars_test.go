@@ -132,3 +132,26 @@ func TestDexpreoptBootZip(t *testing.T) {
 
 	testDexpreoptBoot(t, ruleFile, expectedInputs, expectedOutputs)
 }
+
+func TestDefaultBootImageProfile(t *testing.T) {
+	config := testConfig(nil, "", nil)
+
+	expectedBootImageProf := "frameworks/base/config/boot-image-profile.txt"
+	actualBootImageProf := config.BootImageProf()
+
+	if actualBootImageProf != expectedBootImageProf {
+		t.Errorf("incorrect default value for BootImageProf: %q (expected %q)", actualBootImageProf, expectedBootImageProf)
+	}
+}
+
+func TestAltBootImageProfile(t *testing.T) {
+	config := testConfig(nil, "", nil)
+
+	expectedBootImageProf := "path/to/alternate/boot-image-profile.txt"
+	config.TestProductVariables.AltBootImageProf = &expectedBootImageProf
+	actualBootImageProf := config.BootImageProf()
+
+	if actualBootImageProf != expectedBootImageProf {
+		t.Errorf("incorrect alternate value for BootImageProf: %q (expected %q)", actualBootImageProf, expectedBootImageProf)
+	}
+}

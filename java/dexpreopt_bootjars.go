@@ -748,7 +748,7 @@ func bootImageProfileRule(ctx android.SingletonContext, image *bootImageConfig, 
 		return nil
 	}
 	profile := ctx.Config().Once(bootImageProfileRuleKey, func() interface{} {
-		defaultProfile := "frameworks/base/config/boot-image-profile.txt"
+		defaultProfile := ctx.Config().BootImageProf()
 
 		rule := android.NewRuleBuilder(pctx, ctx)
 		rule.MissingDeps(missingDeps)

@@ -1032,6 +1032,16 @@ func (c *config) PrebuiltHiddenApiDir(ctx PathContext) string {
 	return String(c.productVariables.PrebuiltHiddenApiDir)
 }
 
+func (c *config) BootImageProf() string {
+	bootImageProf := String(c.productVariables.AltBootImageProf)
+
+	if bootImageProf == "" {
+		return "frameworks/base/config/boot-image-profile.txt"
+	}
+
+	return bootImageProf
+}
+
 func (c *deviceConfig) Arches() []Arch {
 	var arches []Arch
 	for _, target := range c.config.Targets[Android] {
