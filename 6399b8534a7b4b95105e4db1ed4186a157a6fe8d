@@ -317,6 +317,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a5a63d_e711b1f1",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-30T12:51:43Z",
+      "side": 1,
+      "message": "There\u0027s definitely something different going on somewhere.",
+      "parentUuid": "743efcfb_a97bef99",
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b0d64a8_6873d797",
@@ -425,6 +443,30 @@
       "side": 1,
       "message": "But that\u0027s filtered out in the Dex2oatDepTag test above. What I was getting at is that I don\u0027t understand when this error would be triggered.\n\nIf there cannot be any other dependencies and this is effectively an assertion, then maybe a panic is more apt? ModuleErrorf is for stuff a .bp writer would understand and be able to fix.",
       "parentUuid": "b059854f_4b2612d8",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 124
+      },
+      "revId": "6399b8534a7b4b95105e4db1ed4186a157a6fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b07f719_5683e881",
+        "filename": "java/boot_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-01-30T12:51:43Z",
+      "side": 1,
+      "message": "Ah, I misunderstood what you were referring to. Done.",
+      "parentUuid": "efa308d6_00045119",
       "range": {
         "startLine": 91,
         "startChar": 0,
