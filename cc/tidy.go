@@ -80,6 +80,7 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 		headerFilter := "-header-filter=\"(" + ctx.ModuleDir() + "|${config.TidyDefaultHeaderDirs})\""
 		flags.TidyFlags = append(flags.TidyFlags, headerFilter)
 	}
+	// flags.TidyFlags = append(flags.TidyFlags, "--skip-headers")
 
 	// If clang-tidy is not enabled globally, add the -quiet flag.
 	if !ctx.Config().ClangTidy() {
