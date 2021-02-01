@@ -34,6 +34,24 @@
       "parentUuid": "4c864976_d147d20f",
       "revId": "ff774a04ad9208d91d483e6468e9d21cdb8f98aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87921d82_f139eaac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-02-01T10:19:48Z",
+      "side": 1,
+      "message": "It feels like we have multiple build artifacts with overlapping contents that were created without considering the whole (probably my fault).\n\nChanging them now will be hard fiddly however due to the downstream tooling them relies on them.",
+      "parentUuid": "29842ca4_1f120f8c",
+      "revId": "ff774a04ad9208d91d483e6468e9d21cdb8f98aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
