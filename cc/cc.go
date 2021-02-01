@@ -816,6 +816,8 @@ type Module struct {
 	// For apex variants, this is set as apex.min_sdk_version
 	apexSdkVersion android.ApiLevel
 
+	makeLibNames []string
+
 	hideApexVariantFromMake bool
 }
 
@@ -2800,6 +2802,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 
 			makeLibName := c.makeLibName(ctx, ccDep, depName) + libDepTag.makeSuffix
+			c.makeLibNames = append(c.makeLibNames, makeLibName)
 			switch {
 			case libDepTag.header():
 				c.Properties.AndroidMkHeaderLibs = append(
@@ -2837,8 +2840,10 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 			switch depTag {
 			case runtimeDepTag:
+				makeLibName := c.makeLibName(ctx, ccDep, depName) + libDepTag.makeSuffix
+				c.makeLibNames = append(c.makeLibNames, makeLibName)
 				c.Properties.AndroidMkRuntimeLibs = append(
-					c.Properties.AndroidMkRuntimeLibs, c.makeLibName(ctx, ccDep, depName)+libDepTag.makeSuffix)
+					c.Properties.AndroidMkRuntimeLibs, makeLibName)
 				// Record baseLibName for snapshots.
 				c.Properties.SnapshotRuntimeLibs = append(c.Properties.SnapshotRuntimeLibs, baseLibName(depName))
 			case objDepTag:

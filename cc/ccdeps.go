@@ -203,27 +203,28 @@ func generateCLionProjectData(ctx android.SingletonContext, compiledModule Compi
 
 	seenProjects[clionProjectLocation] = true
 
-	name := ccModule.ModuleBase.Name()
-	dpInfo := moduleInfos[name]
+	for _, name := range ccModule.makeLibNames {
+		dpInfo := moduleInfos[name]
 
-	dpInfo.Path = append(dpInfo.Path, path.Dir(ctx.BlueprintFile(ccModule)))
-	dpInfo.Srcs = append(dpInfo.Srcs, srcs.Strings()...)
-	dpInfo.Path = android.FirstUniqueStrings(dpInfo.Path)
-	dpInfo.Srcs = android.FirstUniqueStrings(dpInfo.Srcs)
+		dpInfo.Path = append(dpInfo.Path, path.Dir(ctx.BlueprintFile(ccModule)))
+		dpInfo.Srcs = append(dpInfo.Srcs, srcs.Strings()...)
+		dpInfo.Path = android.FirstUniqueStrings(dpInfo.Path)
+		dpInfo.Srcs = android.FirstUniqueStrings(dpInfo.Srcs)
 
-	dpInfo.Global_Common_Flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.CommonFlags)
-	dpInfo.Local_Common_Flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.CommonFlags)
-	dpInfo.Global_C_flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.CFlags)
-	dpInfo.Local_C_flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.CFlags)
-	dpInfo.Global_C_only_flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.ConlyFlags)
-	dpInfo.Local_C_only_flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.ConlyFlags)
-	dpInfo.Global_Cpp_flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.CppFlags)
-	dpInfo.Local_Cpp_flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.CppFlags)
-	dpInfo.System_include_flags = parseCompilerCCParameters(ctx, ccModule.flags.SystemIncludeFlags)
+		dpInfo.Global_Common_Flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.CommonFlags)
+		dpInfo.Local_Common_Flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.CommonFlags)
+		dpInfo.Global_C_flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.CFlags)
+		dpInfo.Local_C_flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.CFlags)
+		dpInfo.Global_C_only_flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.ConlyFlags)
+		dpInfo.Local_C_only_flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.ConlyFlags)
+		dpInfo.Global_Cpp_flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.CppFlags)
+		dpInfo.Local_Cpp_flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.CppFlags)
+		dpInfo.System_include_flags = parseCompilerCCParameters(ctx, ccModule.flags.SystemIncludeFlags)
 
-	dpInfo.Module_name = name
+		dpInfo.Module_name = name
 
-	moduleInfos[name] = dpInfo
+		moduleInfos[name] = dpInfo
+	}
 }
 
 type Deal struct {
