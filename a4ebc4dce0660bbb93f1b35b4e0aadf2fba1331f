@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba9487c0_05a8b8bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-01T17:58:10Z",
+      "side": 1,
+      "message": "Hey - probably I should not have taken this bug, because I\u0027m not familiar with soong here or aidegen (or have ever used it, or know how to test it), though I think this is at least similar to what is Colin described. Can you let me know how to better test it?\n\nBeyond the details, I\u0027m not sure:\n- how aidegen might interpret multiple targets building the same sources\n- why we don\u0027t see this problem for \u0027vendor:true\u0027 but we see it for product_specific",
+      "revId": "a4ebc4dce0660bbb93f1b35b4e0aadf2fba1331f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
