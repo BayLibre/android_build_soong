@@ -1,0 +1,27 @@
+genrule(
+    name = "host_bionic_linker_asm",
+    cmd = "$(location extract_linker) -s $(OUTS) $(SRCS)",
+    outs = [
+        "linker.s",
+    ],
+    srcs = [
+        ":linker",
+    ],
+    tools = [
+        "extract_linker",
+    ],
+)
+
+genrule(
+    name = "host_bionic_linker_flags",
+    cmd = "$(location extract_linker) -f $(OUTS) $(SRCS)",
+    outs = [
+        "linker.flags",
+    ],
+    srcs = [
+        ":linker",
+    ],
+    tools = [
+        "extract_linker",
+    ],
+)
