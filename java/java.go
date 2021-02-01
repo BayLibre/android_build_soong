@@ -2149,6 +2149,9 @@ func shouldUncompressDex(ctx android.ModuleContext, dexpreopter *dexpreopter) bo
 }
 
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Initialize the hiddenapi structure.
+	j.initHiddenAPI(ctx, j.ConfigurationName())
+
 	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 	if !apexInfo.IsForPlatform() {
 		j.hideApexVariantFromMake = true
@@ -2849,6 +2852,9 @@ func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Initialize the hiddenapi structure.
+	j.initHiddenAPI(ctx, j.BaseModuleName())
+
 	if !ctx.Provider(android.ApexInfoProvider).(android.ApexInfo).IsForPlatform() {
 		j.hideApexVariantFromMake = true
 	}
