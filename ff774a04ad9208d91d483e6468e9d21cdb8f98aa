@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c864976_d147d20f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-02-01T10:14:19Z",
+      "side": 1,
+      "message": "Thanks Paul.\n\nReading this makes it sound like the existing build artifacts have not been thought through very carefully...",
+      "revId": "ff774a04ad9208d91d483e6468e9d21cdb8f98aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
