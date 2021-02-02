@@ -58,7 +58,7 @@ type AndroidAppSet struct {
 	properties   AndroidAppSetProperties
 	packedOutput android.WritablePath
 	installFile  string
-	apkcertsFile android.ModuleOutPath
+	apkcertsFile android.OutputPath
 }
 
 func (as *AndroidAppSet) Name() string {

@@ -426,7 +426,7 @@ func (library *libraryDecorator) compilerFlags(ctx ModuleContext, flags Flags) F
 }
 
 func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
-	var outputFile android.ModuleOutPath
+	var outputFile android.OutputPath
 	var fileName string
 	var srcPath android.Path
 

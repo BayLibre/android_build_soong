@@ -304,7 +304,7 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) android.Output
 	}
 
 	rule.Build("file_contexts."+a.Name(), "Generate file_contexts")
-	return output.OutputPath
+	return output
 }
 
 // buildNoticeFiles creates a buile rule for aggregating notice files from the modules that
@@ -346,7 +346,7 @@ func (a *apexBundle) buildInstalledFilesFile(ctx android.ModuleContext, builtApe
 		Text(" | sort -nr > ").
 		Output(output)
 	rule.Build("installed-files."+a.Name(), "Installed files")
-	return output.OutputPath
+	return output
 }
 
 // buildBundleConfig creates a build rule for the bundle config file that will control the bundle
@@ -396,7 +396,7 @@ func (a *apexBundle) buildBundleConfig(ctx android.ModuleContext) android.Output
 
 	android.WriteFileRule(ctx, output, string(j))
 
-	return output.OutputPath
+	return output
 }
 
 // buildUnflattendApex creates build rules to build an APEX using apexer.

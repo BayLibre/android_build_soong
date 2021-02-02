@@ -30,7 +30,7 @@ type CSuiteConfig struct {
 }
 
 func (me *CSuiteConfig) GenerateAndroidBuildActions(ctx ModuleContext) {
-	me.OutputFilePath = PathForModuleOut(ctx, me.BaseModuleName()).OutputPath
+	me.OutputFilePath = PathForModuleOut(ctx, me.BaseModuleName())
 }
 
 func (me *CSuiteConfig) AndroidMkEntries() []AndroidMkEntries {

@@ -246,7 +246,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	} else {
 		filename = ctx.ModuleName()
 	}
-	p.outputFilePath = android.PathForModuleOut(ctx, filename).OutputPath
+	p.outputFilePath = android.PathForModuleOut(ctx, filename)
 
 	// Check that `sub_dir` and `relative_install_path` are not set at the same time.
 	if p.properties.Sub_dir != nil && p.properties.Relative_install_path != nil {

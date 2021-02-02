@@ -1196,17 +1196,6 @@ func (p SourcePath) resPathWithName(ctx ModuleOutPathContext, name string) Modul
 	return PathForModuleRes(ctx, p.path, name)
 }
 
-// ModuleOutPath is a Path representing a module's output directory.
-type ModuleOutPath struct {
-	OutputPath
-}
-
-var _ Path = ModuleOutPath{}
-
-func (p ModuleOutPath) objPathWithExt(ctx ModuleOutPathContext, subdir, ext string) ModuleObjPath {
-	return PathForModuleObj(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
-}
-
 // ModuleOutPathContext Subset of ModuleContext functions necessary for output path methods.
 type ModuleOutPathContext interface {
 	PathContext
@@ -1289,20 +1278,18 @@ func PathForBazelOut(ctx PathContext, paths ...string) BazelOutPath {
 
 // PathForModuleOut returns a Path representing the paths... under the module's
 // output directory.
-func PathForModuleOut(ctx ModuleOutPathContext, paths ...string) ModuleOutPath {
+func PathForModuleOut(ctx ModuleOutPathContext, paths ...string) OutputPath {
 	p, err := validatePath(paths...)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
-	return ModuleOutPath{
-		OutputPath: pathForModuleOut(ctx).withRel(p),
-	}
+	return pathForModuleOut(ctx).withRel(p)
 }
 
 // ModuleGenPath is a Path representing the 'gen' directory in a module's output
 // directory. Mainly used for generated sources.
 type ModuleGenPath struct {
-	ModuleOutPath
+	OutputPath
 }
 
 var _ Path = ModuleGenPath{}
@@ -1317,9 +1304,7 @@ func PathForModuleGen(ctx ModuleOutPathContext, paths ...string) ModuleGenPath {
 		reportPathError(ctx, err)
 	}
 	return ModuleGenPath{
-		ModuleOutPath: ModuleOutPath{
-			OutputPath: pathForModuleOut(ctx).withRel("gen").withRel(p),
-		},
+		pathForModuleOut(ctx).withRel("gen").withRel(p),
 	}
 }
 
@@ -1335,7 +1320,7 @@ func (p ModuleGenPath) objPathWithExt(ctx ModuleOutPathContext, subdir, ext stri
 // ModuleObjPath is a Path representing the 'obj' directory in a module's output
 // directory. Used for compiled objects.
 type ModuleObjPath struct {
-	ModuleOutPath
+	OutputPath
 }
 
 var _ Path = ModuleObjPath{}
@@ -1353,7 +1338,7 @@ func PathForModuleObj(ctx ModuleOutPathContext, pathComponents ...string) Module
 // ModuleResPath is a a Path representing the 'res' directory in a module's
 // output directory.
 type ModuleResPath struct {
-	ModuleOutPath
+	OutputPath
 }
 
 var _ Path = ModuleResPath{}

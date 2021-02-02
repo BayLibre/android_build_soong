@@ -97,7 +97,7 @@ var (
 )
 
 func stripDebugSymbols(ctx android.ModuleContext, modules android.Paths) android.OutputPaths {
-	dir := android.PathForModuleOut(ctx, "stripped").OutputPath
+	dir := android.PathForModuleOut(ctx, "stripped")
 	var outputs android.OutputPaths
 
 	for _, m := range modules {
@@ -124,7 +124,7 @@ type depmodOutputs struct {
 }
 
 func runDepmod(ctx android.ModuleContext, modules android.Paths) depmodOutputs {
-	baseDir := android.PathForModuleOut(ctx, "depmod").OutputPath
+	baseDir := android.PathForModuleOut(ctx, "depmod")
 	fakeVer := "0.0" // depmod demands this anyway
 	modulesDir := baseDir.Join(ctx, "lib", "modules", fakeVer)
 

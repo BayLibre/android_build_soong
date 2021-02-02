@@ -1699,10 +1699,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 		// Transform the single path to the jar into an OutputPath as that is required by the following
 		// code.
-		if moduleOutPath, ok := jars[0].(android.ModuleOutPath); ok {
-			// The path contains an embedded OutputPath so reuse that.
-			outputFile = moduleOutPath.OutputPath
-		} else if outputPath, ok := jars[0].(android.OutputPath); ok {
+		if outputPath, ok := jars[0].(android.OutputPath); ok {
 			// The path is an OutputPath so reuse it directly.
 			outputFile = outputPath
 		} else {
@@ -1714,19 +1711,19 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 				Input:  jars[0],
 				Output: combinedJar,
 			})
-			outputFile = combinedJar.OutputPath
+			outputFile = combinedJar
 		}
 	} else {
 		combinedJar := android.PathForModuleOut(ctx, "combined", jarName)
 		TransformJarsToJar(ctx, combinedJar, "for javac", jars, manifest,
 			false, nil, nil)
-		outputFile = combinedJar.OutputPath
+		outputFile = combinedJar
 	}
 
 	// jarjar implementation jar if necessary
 	if j.expandJarjarRules != nil {
 		// Transform classes.jar into classes-jarjar.jar
-		jarjarFile := android.PathForModuleOut(ctx, "jarjar", jarName).OutputPath
+		jarjarFile := android.PathForModuleOut(ctx, "jarjar", jarName)
 		TransformJarJar(ctx, jarjarFile, outputFile, j.expandJarjarRules)
 		outputFile = jarjarFile
 
@@ -1771,7 +1768,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	implementationAndResourcesJar := outputFile
 	if j.resourceJar != nil {
 		jars := android.Paths{j.resourceJar, implementationAndResourcesJar}
-		combinedJar := android.PathForModuleOut(ctx, "withres", jarName).OutputPath
+		combinedJar := android.PathForModuleOut(ctx, "withres", jarName)
 		TransformJarsToJar(ctx, combinedJar, "for resources", jars, manifest,
 			false, nil, nil)
 		implementationAndResourcesJar = combinedJar
@@ -1816,11 +1813,11 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		// merge dex jar with resources if necessary
 		if j.resourceJar != nil {
 			jars := android.Paths{dexOutputFile, j.resourceJar}
-			combinedJar := android.PathForModuleOut(ctx, "dex-withres", jarName).OutputPath
+			combinedJar := android.PathForModuleOut(ctx, "dex-withres", jarName)
 			TransformJarsToJar(ctx, combinedJar, "for dex resources", jars, android.OptionalPath{},
 				false, nil, nil)
 			if *j.dexProperties.Uncompress_dex {
-				combinedAlignedJar := android.PathForModuleOut(ctx, "dex-withres-aligned", jarName).OutputPath
+				combinedAlignedJar := android.PathForModuleOut(ctx, "dex-withres-aligned", jarName)
 				TransformZipAlign(ctx, combinedAlignedJar, combinedJar)
 				dexOutputFile = combinedAlignedJar
 			} else {
@@ -1884,7 +1881,7 @@ func (j *Module) compileJavaClasses(ctx android.ModuleContext, jarName string, i
 		jarName += strconv.Itoa(idx)
 	}
 
-	classes := android.PathForModuleOut(ctx, "javac", jarName).OutputPath
+	classes := android.PathForModuleOut(ctx, "javac", jarName)
 	TransformJavaToClasses(ctx, classes, idx, srcFiles, srcJars, flags, extraJarDeps)
 
 	if ctx.Config().EmitXrefRules() {
@@ -1969,7 +1966,7 @@ func (j *Module) instrument(ctx android.ModuleContext, flags javaBuilderFlags,
 	specs := j.jacocoModuleToZipCommand(ctx)
 
 	jacocoReportClassesFile := android.PathForModuleOut(ctx, "jacoco-report-classes", jarName)
-	instrumentedJar := android.PathForModuleOut(ctx, "jacoco", jarName).OutputPath
+	instrumentedJar := android.PathForModuleOut(ctx, "jacoco", jarName)
 
 	jacocoInstrumentJar(ctx, instrumentedJar, jacocoReportClassesFile, classesJar, specs)
 

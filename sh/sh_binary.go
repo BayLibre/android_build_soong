@@ -216,7 +216,7 @@ func (s *ShBinary) generateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.PropertyErrorf("filename_from_src", "filename is set. filename_from_src can't be true")
 		return
 	}
-	s.outputFilePath = android.PathForModuleOut(ctx, filename).OutputPath
+	s.outputFilePath = android.PathForModuleOut(ctx, filename)
 
 	// This ensures that outputFilePath has the correct name for others to
 	// use, as the source file may have a different name.

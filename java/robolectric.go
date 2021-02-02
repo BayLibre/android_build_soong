@@ -216,7 +216,7 @@ func generateRoboTestConfig(ctx android.ModuleContext, outputFile android.Writab
 	rule.Build("generate_test_config", "generate test_config.properties")
 }
 
-func generateSameDirRoboTestConfigJar(ctx android.ModuleContext, outputFile android.ModuleOutPath) {
+func generateSameDirRoboTestConfigJar(ctx android.ModuleContext, outputFile android.OutputPath) {
 	rule := android.NewRuleBuilder(pctx, ctx)
 
 	outputDir := outputFile.InSameDir(ctx)

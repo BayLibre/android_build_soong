@@ -682,7 +682,7 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 // Generate a rule for compiling multiple .o files to a static library (.a)
 func transformObjToStaticLib(ctx android.ModuleContext,
 	objFiles android.Paths, wholeStaticLibs android.Paths,
-	flags builderFlags, outputFile android.ModuleOutPath, deps android.Paths) {
+	flags builderFlags, outputFile android.OutputPath, deps android.Paths) {
 
 	arCmd := "${config.ClangBin}/llvm-ar"
 	arFlags := ""

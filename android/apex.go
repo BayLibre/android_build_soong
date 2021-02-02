@@ -734,10 +734,10 @@ func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion
 		fmt.Fprintf(&flatContent, "%s\n", toName)
 	}
 
-	d.fullListPath = PathForModuleOut(ctx, "depsinfo", "fulllist.txt").OutputPath
+	d.fullListPath = PathForModuleOut(ctx, "depsinfo", "fulllist.txt")
 	WriteFileRule(ctx, d.fullListPath, fullContent.String())
 
-	d.flatListPath = PathForModuleOut(ctx, "depsinfo", "flatlist.txt").OutputPath
+	d.flatListPath = PathForModuleOut(ctx, "depsinfo", "flatlist.txt")
 	WriteFileRule(ctx, d.flatListPath, flatContent.String())
 }
 

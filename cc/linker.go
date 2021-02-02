@@ -603,7 +603,7 @@ var (
 		"crossCompile")
 )
 
-func (linker *baseLinker) sortBssSymbolsBySize(ctx ModuleContext, in android.Path, symbolOrderingFile android.ModuleOutPath, flags builderFlags) string {
+func (linker *baseLinker) sortBssSymbolsBySize(ctx ModuleContext, in android.Path, symbolOrderingFile android.OutputPath, flags builderFlags) string {
 	crossCompile := gccCmd(flags.toolchain, "")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        genSortedBssSymbols,

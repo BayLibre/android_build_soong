@@ -1663,7 +1663,7 @@ func StubsDefaultsFactory() android.Module {
 }
 
 func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
-	srcJarDir android.ModuleOutPath, srcJars android.Paths) android.OutputPath {
+	srcJarDir android.OutputPath, srcJars android.Paths) android.OutputPath {
 
 	rule.Command().Text("rm -rf").Text(srcJarDir.String())
 	rule.Command().Text("mkdir -p").Text(srcJarDir.String())
@@ -1680,7 +1680,7 @@ func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 	return srcJarList
 }
 
-func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.ModuleOutPath) {
+func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.OutputPath) {
 	rule.Command().Text("rm -rf").Text(srcJarDir.String())
 }
 
@@ -1698,7 +1698,7 @@ type PrebuiltStubsSources struct {
 
 	properties PrebuiltStubsSourcesProperties
 
-	stubsSrcJar android.ModuleOutPath
+	stubsSrcJar android.OutputPath
 }
 
 func (p *PrebuiltStubsSources) OutputFiles(tag string) (android.Paths, error) {

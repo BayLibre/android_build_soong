@@ -66,7 +66,7 @@ func (l *linkerConfig) OutputFile() android.OutputPath {
 
 func (l *linkerConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	inputFile := android.PathForModuleSrc(ctx, android.String(l.properties.Src))
-	l.outputFilePath = android.PathForModuleOut(ctx, "linker.config.pb").OutputPath
+	l.outputFilePath = android.PathForModuleOut(ctx, "linker.config.pb")
 	l.installDirPath = android.PathForModuleInstall(ctx, "etc")
 	linkerConfigRule := android.NewRuleBuilder(pctx, ctx)
 	linkerConfigRule.Command().

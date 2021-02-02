@@ -123,7 +123,7 @@ func (b *bootimg) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 }
 
 func (b *bootimg) buildVendorBootImage(ctx android.ModuleContext) android.OutputPath {
-	output := android.PathForModuleOut(ctx, "unsigned.img").OutputPath
+	output := android.PathForModuleOut(ctx, "unsigned.img")
 	builder := android.NewRuleBuilder(pctx, ctx)
 	cmd := builder.Command().BuiltTool("mkbootimg")
 
@@ -182,7 +182,7 @@ func (b *bootimg) buildVendorBootImage(ctx android.ModuleContext) android.Output
 }
 
 func (b *bootimg) signImage(ctx android.ModuleContext, unsignedImage android.OutputPath) android.OutputPath {
-	signedImage := android.PathForModuleOut(ctx, "signed.img").OutputPath
+	signedImage := android.PathForModuleOut(ctx, "signed.img")
 	key := android.PathForModuleSrc(ctx, proptools.String(b.properties.Avb_private_key))
 
 	builder := android.NewRuleBuilder(pctx, ctx)

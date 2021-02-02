@@ -266,7 +266,7 @@ func (d *dexer) compileDex(ctx android.ModuleContext, flags javaBuilderFlags, mi
 	classesJar android.Path, jarName string) android.OutputPath {
 
 	// Compile classes.jar into classes.dex and then javalib.jar
-	javalibJar := android.PathForModuleOut(ctx, "dex", jarName).OutputPath
+	javalibJar := android.PathForModuleOut(ctx, "dex", jarName)
 	outDir := android.PathForModuleOut(ctx, "dex")
 
 	zipFlags := "--ignore_missing_files"
@@ -329,7 +329,7 @@ func (d *dexer) compileDex(ctx android.ModuleContext, flags javaBuilderFlags, mi
 		})
 	}
 	if proptools.Bool(d.dexProperties.Uncompress_dex) {
-		alignedJavalibJar := android.PathForModuleOut(ctx, "aligned", jarName).OutputPath
+		alignedJavalibJar := android.PathForModuleOut(ctx, "aligned", jarName)
 		TransformZipAlign(ctx, alignedJavalibJar, javalibJar)
 		javalibJar = alignedJavalibJar
 	}

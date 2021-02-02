@@ -1936,8 +1936,8 @@ func versionMutator(mctx android.BottomUpMutatorContext) {
 // inject_bssl_hash or if any static library dependencies have inject_bssl_hash set.  It returns the output path
 // that the linked output file should be written to.
 // TODO(b/137267623): Remove this in favor of a cc_genrule when they support operating on shared libraries.
-func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.ModuleOutPath,
-	inject *bool, fileName string) android.ModuleOutPath {
+func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.OutputPath,
+	inject *bool, fileName string) android.OutputPath {
 	// TODO(b/137267623): Remove this in favor of a cc_genrule when they support operating on shared libraries.
 	injectBoringSSLHash := Bool(inject)
 	ctx.VisitDirectDeps(func(dep android.Module) {
