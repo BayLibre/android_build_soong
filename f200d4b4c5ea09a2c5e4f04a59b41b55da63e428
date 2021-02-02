@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure what tests TreeHugger will run for this, so can you be sure to run some existing functionality tests if it doesn\u0027t to be safe?",
       "revId": "f200d4b4c5ea09a2c5e4f04a59b41b55da63e428",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff14c35_367ef43e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-02-02T00:23:50Z",
+      "side": 1,
+      "message": "Tested by running keystore2_test with the new mangling.",
+      "parentUuid": "6c716cab_6a48a3b5",
+      "revId": "f200d4b4c5ea09a2c5e4f04a59b41b55da63e428",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
