@@ -167,7 +167,11 @@ func GenerateBazelTargets(ctx bpToBuildContext, codegenMode CodegenMode) map[str
 
 		switch codegenMode {
 		case Bp2Build:
-			if _, ok := m.(android.BazelTargetModule); !ok {
+			if btm, ok := m.(android.BazelTargetModule); ok {
+				if !btm.Available() {
+					return
+				}
+			} else {
 				return
 			}
 			t = generateBazelTarget(ctx, m)
@@ -211,6 +215,8 @@ func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
 	bzlLoadLocation := trimQuotes(props.Attrs["bzl_load_location"])
 	// Delete it from being generated in the BUILD file.
 	delete(props.Attrs, "bzl_load_location")
+
+	delete(props.Attrs, "bp2build_available")
 
 	// Return the Bazel target with rule class and attributes, ready to be
 	// code-generated.

@@ -507,6 +507,7 @@ type Module interface {
 type BazelTargetModule interface {
 	Module
 
+	Available() bool
 	BazelTargetModuleProperties() *bazel.BazelTargetModuleProperties
 }
 
@@ -527,6 +528,10 @@ type BazelTargetModuleBase struct {
 // BazelTargetModuleProperties getter.
 func (btmb *BazelTargetModuleBase) BazelTargetModuleProperties() *bazel.BazelTargetModuleProperties {
 	return &btmb.Properties
+}
+
+func (btmb *BazelTargetModuleBase) Available() bool {
+	return (*btmb).Properties.Bp2build_available
 }
 
 // Qualified id for a module

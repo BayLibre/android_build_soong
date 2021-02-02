@@ -17,6 +17,9 @@ package bazel
 type bazelModuleProperties struct {
 	// The label of the Bazel target replacing this Soong module.
 	Label string
+
+	// If true, bp2build will generate the converted Bazel target for this module.
+	Bp2build_available bool
 }
 
 // Properties contains common module properties for Bazel migration purposes.
@@ -29,9 +32,14 @@ type Properties struct {
 // BazelTargetModuleProperties contain properties and metadata used for
 // Blueprint to BUILD file conversion.
 type BazelTargetModuleProperties struct {
+	Name *string
+
 	// The Bazel rule class for this target.
 	Rule_class string
 
 	// The target label for the bzl file containing the definition of the rule class.
 	Bzl_load_location string
+
+	// If true, bp2build will generate the converted Bazel target for this module.
+	Bp2build_available bool
 }
