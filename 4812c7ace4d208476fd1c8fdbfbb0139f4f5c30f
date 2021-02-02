@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c054d7_81767e84",
+        "filename": "cc/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-02T00:54:22Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "699bd1c2_4ec0ce56",
+      "revId": "4812c7ace4d208476fd1c8fdbfbb0139f4f5c30f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df9faef6_2a88a753",
