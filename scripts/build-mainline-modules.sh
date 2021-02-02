@@ -38,10 +38,10 @@ PLATFORM_LIBRARIES=(
 
 # We want to create apex modules for all supported architectures.
 PRODUCTS=(
-  aosp_arm
-  aosp_arm64
-  aosp_x86
-  aosp_x86_64
+  module_arm
+  module_arm64
+  module_x86
+  module_x86_64
 )
 
 if [ ! -e "build/make/core/Makefile" ]; then
@@ -56,8 +56,8 @@ echo_and_run() {
 
 lib_dir() {
   case $1 in
-    (aosp_arm|aosp_x86) echo "lib";;
-    (aosp_arm64|aosp_x86_64) echo "lib64";;
+    (module_arm|module_x86) echo "lib";;
+    (module_arm64|module_x86_64) echo "lib64";;
   esac
 }
 
