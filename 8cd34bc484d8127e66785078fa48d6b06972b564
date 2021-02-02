@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "b8324805_c2328c07",
         "filename": "cc/ndk_library.go",
@@ -20,10 +21,34 @@
         "endChar": 19
       },
       "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "960caec8_ac4856d0",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-02T09:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8324805_c2328c07",
+      "range": {
+        "startLine": 50,
+        "startChar": 14,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "dad67587_13efdffd",
         "filename": "cc/ndk_library.go",
@@ -43,10 +68,34 @@
         "endChar": 20
       },
       "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1d35c3_d0b9e6e3",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-02T09:06:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dad67587_13efdffd",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "97a4256a_e8f81049",
         "filename": "cc/ndkstubgen/__init__.py",
@@ -66,10 +115,34 @@
         "endChar": 34
       },
       "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "336dfd00_8a20caff",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-02T09:06:12Z",
+      "side": 1,
+      "message": "Thanks! I was planning on using whatever you folks decided on upstream so didn\u0027t put a ton of thought into what I used here. I agree it\u0027s not very descriptive :)",
+      "parentUuid": "97a4256a_e8f81049",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "ada3afd9_0368ba34",
         "filename": "cc/ndkstubgen/__init__.py",
@@ -89,8 +162,31 @@
         "endChar": 44
       },
       "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7299076_e89d53e6",
+        "filename": "cc/ndkstubgen/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-02T09:06:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ada3afd9_0368ba34",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 44
+      },
+      "revId": "8cd34bc484d8127e66785078fa48d6b06972b564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
