@@ -244,7 +244,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 
 	// Uncompress JNI libraries in the apk
 	jnisUncompressed := android.PathForModuleOut(ctx, "jnis-uncompressed", ctx.ModuleName()+".apk")
-	a.uncompressEmbeddedJniLibs(ctx, srcApk, jnisUncompressed.OutputPath)
+	a.uncompressEmbeddedJniLibs(ctx, srcApk, jnisUncompressed)
 
 	var installDir android.InstallPath
 	if Bool(a.properties.Privileged) {
@@ -266,7 +266,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	a.dexpreopter.dexpreopt(ctx, jnisUncompressed)
 	if a.dexpreopter.uncompressedDex {
 		dexUncompressed := android.PathForModuleOut(ctx, "dex-uncompressed", ctx.ModuleName()+".apk")
-		a.uncompressDex(ctx, jnisUncompressed, dexUncompressed.OutputPath)
+		a.uncompressDex(ctx, jnisUncompressed, dexUncompressed)
 		jnisUncompressed = dexUncompressed
 	}
 

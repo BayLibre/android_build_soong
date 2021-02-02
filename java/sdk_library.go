@@ -2216,7 +2216,7 @@ func (module *sdkLibraryXml) GenerateAndroidBuildActions(ctx android.ModuleConte
 	libName := proptools.String(module.properties.Lib_name)
 	xmlContent := fmt.Sprintf(permissionsTemplate, libName, module.implPath(ctx))
 
-	module.outputFilePath = android.PathForModuleOut(ctx, libName+".xml").OutputPath
+	module.outputFilePath = android.PathForModuleOut(ctx, libName+".xml")
 	rule := android.NewRuleBuilder(pctx, ctx)
 	rule.Command().
 		Text("/bin/bash -c \"echo -e '" + xmlContent + "'\" > ").

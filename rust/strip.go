@@ -27,7 +27,7 @@ type Stripper struct {
 
 // StripExecutableOrSharedLib strips a binary or shared library from its debug
 // symbols and other debug information.
-func (s *Stripper) StripExecutableOrSharedLib(ctx ModuleContext, in android.Path, out android.ModuleOutPath) {
+func (s *Stripper) StripExecutableOrSharedLib(ctx ModuleContext, in android.Path, out android.OutputPath) {
 	ccFlags := cc.StripFlags{Toolchain: ctx.RustModule().ccToolchain(ctx)}
 	s.Stripper.StripExecutableOrSharedLib(ctx, in, out, ccFlags)
 }

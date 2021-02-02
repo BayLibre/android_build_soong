@@ -545,7 +545,7 @@ func (txt *vndkLibrariesTxt) GenerateAndroidBuildActions(ctx android.ModuleConte
 		filename = txt.Name()
 	}
 
-	txt.outputFile = android.PathForModuleOut(ctx, filename).OutputPath
+	txt.outputFile = android.PathForModuleOut(ctx, filename)
 
 	installPath := android.PathForModuleInstall(ctx, "etc")
 	ctx.InstallFile(installPath, filename, txt.outputFile)

@@ -129,7 +129,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 
 	dexLocation := android.InstallPathToOnDevicePath(ctx, d.installPath)
 
-	buildPath := android.PathForModuleOut(ctx, "dexpreopt", ctx.ModuleName()+".jar").OutputPath
+	buildPath := android.PathForModuleOut(ctx, "dexpreopt", ctx.ModuleName()+".jar")
 
 	providesUsesLib := ctx.ModuleName()
 	if ulib, ok := ctx.Module().(ProvidesUsesLib); ok {

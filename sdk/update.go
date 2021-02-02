@@ -75,7 +75,7 @@ type generatedFile struct {
 
 func newGeneratedFile(ctx android.ModuleContext, path ...string) *generatedFile {
 	return &generatedFile{
-		path: android.PathForModuleOut(ctx, path...).OutputPath,
+		path: android.PathForModuleOut(ctx, path...),
 	}
 }
 
@@ -245,7 +245,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) andro
 		ctx:                   ctx,
 		sdk:                   s,
 		version:               "current",
-		snapshotDir:           snapshotDir.OutputPath,
+		snapshotDir:           snapshotDir,
 		copies:                make(map[string]string),
 		filesToZip:            []android.Path{bp.path},
 		bpFile:                bpFile,
@@ -403,7 +403,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) andro
 	filesToZip := builder.filesToZip
 
 	// zip them all
-	outputZipFile := android.PathForModuleOut(ctx, ctx.ModuleName()+"-current.zip").OutputPath
+	outputZipFile := android.PathForModuleOut(ctx, ctx.ModuleName()+"-current.zip")
 	outputDesc := "Building snapshot for " + ctx.ModuleName()
 
 	// If there are no zips to merge then generate the output zip directly.
@@ -415,7 +415,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) andro
 		zipFile = outputZipFile
 		desc = outputDesc
 	} else {
-		zipFile = android.PathForModuleOut(ctx, ctx.ModuleName()+"-current.unmerged.zip").OutputPath
+		zipFile = android.PathForModuleOut(ctx, ctx.ModuleName()+"-current.unmerged.zip")
 		desc = "Building intermediate snapshot for " + ctx.ModuleName()
 	}
 
@@ -690,7 +690,7 @@ func (s *snapshotBuilder) UnzipToSnapshot(zipPath android.Path, destDir string) 
 
 	// Repackage the zip file so that the entries are in the destDir directory.
 	// This will allow the zip file to be merged into the snapshot.
-	tmpZipPath := android.PathForModuleOut(ctx, "tmp", destDir+".zip").OutputPath
+	tmpZipPath := android.PathForModuleOut(ctx, "tmp", destDir+".zip")
 
 	ctx.Build(pctx, android.BuildParams{
 		Description: "Repackaging zip file " + destDir + " for snapshot " + ctx.ModuleName(),

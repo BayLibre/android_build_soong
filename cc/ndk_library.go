@@ -91,7 +91,7 @@ type stubDecorator struct {
 	properties libraryProperties
 
 	versionScriptPath     android.ModuleGenPath
-	parsedCoverageXmlPath android.ModuleOutPath
+	parsedCoverageXmlPath android.OutputPath
 	installPath           android.Path
 
 	apiLevel         android.ApiLevel
@@ -234,7 +234,7 @@ func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile, apiLevel, ge
 	return compileObjs(ctx, flagsToBuilderFlags(flags), subdir, srcs, nil, nil), versionScriptPath
 }
 
-func parseSymbolFileForCoverage(ctx ModuleContext, symbolFile string) android.ModuleOutPath {
+func parseSymbolFileForCoverage(ctx ModuleContext, symbolFile string) android.OutputPath {
 	apiLevelsJson := android.GetApiLevelsJson(ctx)
 	symbolFilePath := android.PathForModuleSrc(ctx, symbolFile)
 	outputFileName := strings.Split(symbolFilePath.Base(), ".")[0]

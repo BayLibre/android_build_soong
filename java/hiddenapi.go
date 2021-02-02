@@ -116,7 +116,7 @@ func (h *hiddenAPI) hiddenAPI(ctx android.ModuleContext, name string, primary bo
 			// hiddenapi information for a module on the boot jars list then encode
 			// the gathered information in the generated dex file.
 			if name == bootJarName {
-				hiddenAPIJar := android.PathForModuleOut(ctx, "hiddenapi", name+".jar").OutputPath
+				hiddenAPIJar := android.PathForModuleOut(ctx, "hiddenapi", name+".jar")
 
 				// More than one library with the same classes can be encoded but only one can
 				// be added to the global set of flags, otherwise it will result in duplicate

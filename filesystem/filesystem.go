@@ -78,10 +78,10 @@ func (f *filesystem) installFileName() string {
 var pctx = android.NewPackageContext("android/soong/filesystem")
 
 func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	zipFile := android.PathForModuleOut(ctx, "temp.zip").OutputPath
+	zipFile := android.PathForModuleOut(ctx, "temp.zip")
 	f.CopyDepsToZip(ctx, zipFile)
 
-	rootDir := android.PathForModuleOut(ctx, "root").OutputPath
+	rootDir := android.PathForModuleOut(ctx, "root")
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().
 		BuiltTool("zipsync").
@@ -89,7 +89,7 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		Input(zipFile)
 
 	propFile, toolDeps := f.buildPropFile(ctx)
-	f.output = android.PathForModuleOut(ctx, f.installFileName()).OutputPath
+	f.output = android.PathForModuleOut(ctx, f.installFileName())
 	builder.Command().BuiltTool("build_image").
 		Text(rootDir.String()). // input directory
 		Input(propFile).
@@ -141,7 +141,7 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.
 		addStr("partition_name", f.Name())
 	}
 
-	propFile = android.PathForModuleOut(ctx, "prop").OutputPath
+	propFile = android.PathForModuleOut(ctx, "prop")
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().Text("rm").Flag("-rf").Output(propFile)
 	for _, p := range props {

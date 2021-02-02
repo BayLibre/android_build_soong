@@ -70,7 +70,7 @@ func (p *makefileGoal) DepsMutator(ctx BottomUpMutatorContext) {
 
 func (p *makefileGoal) GenerateAndroidBuildActions(ctx ModuleContext) {
 	filename := filepath.Base(proptools.String(p.inputPath()))
-	p.outputFilePath = PathForModuleOut(ctx, filename).OutputPath
+	p.outputFilePath = PathForModuleOut(ctx, filename)
 
 	ctx.InstallFile(PathForModuleInstall(ctx, "etc"), ctx.ModuleName(), p.outputFilePath)
 }

@@ -110,8 +110,8 @@ func (p *platformCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleCon
 
 	configFileName := p.Name() + ".xml"
 	metadataFileName := p.Name() + "_meta.xml"
-	p.configFile = android.PathForModuleOut(ctx, configFileName).OutputPath
-	p.metadataFile = android.PathForModuleOut(ctx, metadataFileName).OutputPath
+	p.configFile = android.PathForModuleOut(ctx, configFileName)
+	p.metadataFile = android.PathForModuleOut(ctx, metadataFileName)
 	path := android.PathForModuleSrc(ctx, String(p.properties.Src))
 
 	rule.Command().
@@ -168,7 +168,7 @@ func (c *globalCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleConte
 	filename := String(c.properties.Filename)
 
 	inputPath := platformCompatConfigPath(ctx)
-	c.outputFilePath = android.PathForModuleOut(ctx, filename).OutputPath
+	c.outputFilePath = android.PathForModuleOut(ctx, filename)
 
 	// This ensures that outputFilePath has the correct name for others to
 	// use, as the source file may have a different name.

@@ -430,7 +430,7 @@ func (h *hiddenAPIFlags) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	filename := String(h.properties.Filename)
 
 	inputPath := hiddenAPISingletonPaths(ctx).flags
-	h.outputFilePath = android.PathForModuleOut(ctx, filename).OutputPath
+	h.outputFilePath = android.PathForModuleOut(ctx, filename)
 
 	// This ensures that outputFilePath has the correct name for others to
 	// use, as the source file may have a different name.
