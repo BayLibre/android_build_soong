@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3d83be_69be524c",
+        "filename": "cc/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2021-02-02T01:35:25Z",
+      "side": 1,
+      "message": "Thanks, updated the CL with the TODO.",
+      "parentUuid": "b7c054d7_81767e84",
+      "revId": "4812c7ace4d208476fd1c8fdbfbb0139f4f5c30f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df9faef6_2a88a753",
