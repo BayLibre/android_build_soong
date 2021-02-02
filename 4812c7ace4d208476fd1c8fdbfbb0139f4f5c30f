@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "699bd1c2_4ec0ce56",
+        "filename": "cc/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2021-02-02T00:49:11Z",
+      "side": 1,
+      "message": "I completely agree. I did this mostly to split the work in half as chasing and fixing existing failures is quite tedious.\n\nlooking at cc_test host_supported:true is right next on my list after this.\n\nIf you agree with it, is okay for me to let a TODO to clean this as part of onboarding cc_test host:true ? (based on how long it took me to chase cc_test_host it would remain a TODO for around 2 weeks).",
+      "parentUuid": "0b508da6_5e8a5d45",
+      "revId": "4812c7ace4d208476fd1c8fdbfbb0139f4f5c30f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df9faef6_2a88a753",
         "filename": "cc/test.go",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-02T00:40:27Z",
       "side": 1,
       "message": "This can be test.Properties.Test_options.Unit_test \u003d proptools.BoolPtr(true), or whatever reads Unit_test can use proptools.BoolDefault(...Unit_test, defaultToUnitTest)",
+      "revId": "4812c7ace4d208476fd1c8fdbfbb0139f4f5c30f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9657f12e_45f34e6e",
+        "filename": "cc/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2021-02-02T00:49:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df9faef6_2a88a753",
       "revId": "4812c7ace4d208476fd1c8fdbfbb0139f4f5c30f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
