@@ -46,6 +46,30 @@
       },
       "revId": "6446b62e9e78450121aca1ef0fe98e0952407a35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4493044_d6159104",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-02T02:28:13Z",
+      "side": 1,
+      "message": "force-removing the modulesDir directory. won\u0027t it cause any timestamp or build dependency problems? (I don\u0027t know exactly, just wondering)",
+      "parentUuid": "ac51619c_f5c3c2b6",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 69
+      },
+      "revId": "6446b62e9e78450121aca1ef0fe98e0952407a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
