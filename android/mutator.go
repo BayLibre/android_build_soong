@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"reflect"
 
 	"github.com/google/blueprint"
@@ -245,6 +246,12 @@ type TopDownMutatorContext interface {
 	// CreateModule creates a new module by calling the factory method for the specified moduleType, and applies
 	// the specified property structs to it as if the properties were set in a blueprint file.
 	CreateModule(ModuleFactory, ...interface{}) Module
+
+	// CreateBazelTargetModule creates a BazelTargetModule by calling the
+	// factory method, just like in CreateModule, but also requires
+	// BazelTargetModuleProperties containing additional metadata for the
+	// bp2build codegenerator.
+	CreateBazelTargetModule(ModuleFactory, bazel.BazelTargetModuleProperties, interface{}) BazelTargetModule
 }
 
 type topDownMutatorContext struct {
@@ -447,6 +454,13 @@ func depsMutator(ctx BottomUpMutatorContext) {
 	if m := ctx.Module(); m.Enabled() {
 		m.DepsMutator(ctx)
 	}
+}
+
+func (t *topDownMutatorContext) CreateBazelTargetModule(
+	factory ModuleFactory,
+	bazelProps bazel.BazelTargetModuleProperties,
+	attrs interface{}) BazelTargetModule {
+	return t.CreateModule(factory, &bazelProps, attrs).(BazelTargetModule)
 }
 
 func (t *topDownMutatorContext) AppendProperties(props ...interface{}) {
