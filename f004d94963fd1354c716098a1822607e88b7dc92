@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f33d2f0d_3cdd6e62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-02T20:24:05Z",
+      "side": 1,
+      "message": "Thanks, the number of places that were extracting the OutputPath from a ModuleOutPath make it clear that this is the right thing to do.",
+      "revId": "f004d94963fd1354c716098a1822607e88b7dc92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
