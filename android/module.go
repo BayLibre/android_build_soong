@@ -529,6 +529,17 @@ func (btmb *BazelTargetModuleBase) BazelTargetModuleProperties() *bazel.BazelTar
 	return &btmb.Properties
 }
 
+func CreateBazelTargetModule(ctx TopDownMutatorContext, available bool, moduleFactory ModuleFactory, name string, ruleClass string, bzlLoadLocation string, attrs interface{}) {
+	name = "__bp2build__" + name
+	if available {
+		ctx.CreateModule(moduleFactory, attrs, &bazel.BazelTargetModuleProperties{
+			Name:              proptools.StringPtr(name),
+			Rule_class:        ruleClass,
+			Bzl_load_location: bzlLoadLocation,
+		})
+	}
+}
+
 // Qualified id for a module
 type qualifiedModuleName struct {
 	// The package (i.e. directory) in which the module is defined, without trailing /
