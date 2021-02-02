@@ -16,6 +16,23 @@
       "message": "Ping?",
       "revId": "1b3e949d14d87684d56bbfda411048c605cab805",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80450612_cee08905",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-02T12:15:13Z",
+      "side": 1,
+      "message": "Just to be clear, this would only update the docs for runtime_resource_overlay module type, not other types with the same property. Is that what you\u0027re intending?\n\nPlease also get a review from either jungjw/ccross.",
+      "revId": "1b3e949d14d87684d56bbfda411048c605cab805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
