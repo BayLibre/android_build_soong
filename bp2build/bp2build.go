@@ -44,6 +44,7 @@ func writeFile(outputDir android.OutputPath, ctx android.PathContext, f BazelFil
 
 func getOutputPath(outputDir android.OutputPath, ctx android.PathContext, dir string) android.OutputPath {
 	return outputDir.Join(ctx, dir)
+
 }
 
 // The auto-conversion directory should be read-only, sufficient for bazel query. The files

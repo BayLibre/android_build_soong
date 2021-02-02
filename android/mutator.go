@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"reflect"
 
 	"github.com/google/blueprint"
@@ -608,4 +609,15 @@ func (b *bottomUpMutatorContext) CreateAliasVariation(fromVariationName, toVaria
 
 func (b *bottomUpMutatorContext) SetVariationProvider(module blueprint.Module, provider blueprint.ProviderKey, value interface{}) {
 	b.bp.SetVariationProvider(module, provider, value)
+}
+
+func CreateBazelTargetModule(ctx TopDownMutatorContext, available bool, moduleFactory ModuleFactory, name string, ruleClass string, bzlLoadLocation string, attrs interface{}) {
+	name = "__bp2build__" + name
+	if available {
+		ctx.CreateModule(moduleFactory, attrs, &bazel.BazelTargetModuleProperties{
+			Name:              proptools.StringPtr(name),
+			Rule_class:        ruleClass,
+			Bzl_load_location: bzlLoadLocation,
+		})
+	}
 }
