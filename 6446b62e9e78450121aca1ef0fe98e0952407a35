@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d4b1c14_947dca75",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-02T02:19:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is safe",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 69
+      },
+      "revId": "6446b62e9e78450121aca1ef0fe98e0952407a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
