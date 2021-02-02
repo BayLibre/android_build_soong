@@ -33,6 +33,41 @@
       "message": "Just to be clear, this would only update the docs for runtime_resource_overlay module type, not other types with the same property. Is that what you\u0027re intending?\n\nPlease also get a review from either jungjw/ccross.",
       "revId": "1b3e949d14d87684d56bbfda411048c605cab805",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db040e5a_c8a56953",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2021-02-02T13:06:42Z",
+      "side": 1,
+      "message": "Can one of you give +2 code review?",
+      "revId": "1b3e949d14d87684d56bbfda411048c605cab805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2577e7_cc4efa86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2021-02-02T13:06:42Z",
+      "side": 1,
+      "message": "I don\u0027t know what runtime_resource_overlay  is but I suspect so, yes. I don\u0027t remember where it was, but while browsing documentation, I came across the string \"if not blank, set to the version of the sdk to compile against.\" which was unhelpful at the time. The string doesn\u0027t appear to occur anywhere other than here. There are probably other pieces of documentation that can be improved, but the scope I care about is the particular piece of documentation that tripped me up, which seems to be this one.",
+      "parentUuid": "80450612_cee08905",
+      "revId": "1b3e949d14d87684d56bbfda411048c605cab805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
