@@ -70,6 +70,30 @@
       },
       "revId": "6446b62e9e78450121aca1ef0fe98e0952407a35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3fbf861_e96f3c95",
+        "filename": "kernel/prebuilt_kernel_modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-02T02:34:35Z",
+      "side": 1,
+      "message": "it\u0027s a temporary staging directory. the directory itself is not part of the dependency tree.",
+      "parentUuid": "b4493044_d6159104",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 69
+      },
+      "revId": "6446b62e9e78450121aca1ef0fe98e0952407a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
