@@ -51,6 +51,9 @@ type filesystemProperties struct {
 	// Type of the filesystem. Currently, ext4 and compressed_cpio are supported. Default is
 	// ext4.
 	Type *string
+
+	// file_contexts file to make image. Currently, only ext4 is supported.
+	File_contexts *string `android:"path"`
 }
 
 // android_filesystem packages a set of modules and their transitive dependencies into a filesystem
@@ -142,6 +145,16 @@ func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) androi
 	return output
 }
 
+func (f *filesystem) buildFileContexts(ctx android.ModuleContext) android.OutputPath {
+	fc_builder := android.NewRuleBuilder(pctx, ctx)
+	fc_bin := android.PathForModuleOut(ctx, "file_contexts.bin")
+	fc_builder.Command().BuiltTool("sefcontext_compile").
+		FlagWithOutput("-o ", fc_bin).
+		Input(android.PathForModuleSrc(ctx, *f.properties.File_contexts))
+	fc_builder.Build("build_filesystem_file_contexts", fmt.Sprintf("Creating filesystem file contexts for %s", f.BaseModuleName()))
+	return fc_bin.OutputPath
+}
+
 func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.OutputPath, toolDeps android.Paths) {
 	type prop struct {
 		name  string
@@ -188,6 +201,10 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.
 		addStr("partition_name", f.Name())
 	}
 
+	if f.properties.File_contexts != nil {
+		addPath("selinux_fc", f.buildFileContexts(ctx))
+	}
+
 	propFile = android.PathForModuleOut(ctx, "prop").OutputPath
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().Text("rm").Flag("-rf").Output(propFile)
@@ -205,6 +222,10 @@ func (f *filesystem) buildCompressedCpioImage(ctx android.ModuleContext) android
 	if proptools.Bool(f.properties.Use_avb) {
 		ctx.PropertyErrorf("use_avb", "signing compresed cpio image using avbtool is not supported."+
 			"Consider adding this to bootimg module and signing the entire boot image.")
+	}
+
+	if f.properties.File_contexts != nil {
+		ctx.PropertyErrorf("file_contexts", "file_contexts is not supported for compressed cpio image.")
 	}
 
 	zipFile := android.PathForModuleOut(ctx, "temp.zip").OutputPath
