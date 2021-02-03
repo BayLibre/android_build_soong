@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8fa6f97_51006ac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-03T09:43:27Z",
+      "side": 1,
+      "message": "One question: can we use BUILD_BROKEN variables like this?",
+      "revId": "db98c0ba5bedb2de7731df15c7eb2412e862d192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
