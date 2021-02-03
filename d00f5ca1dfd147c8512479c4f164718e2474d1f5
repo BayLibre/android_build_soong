@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "db82d78b_0544d8c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-03T19:33:43Z",
+      "side": 1,
+      "message": "I did also mention this possibility in the bug:\n\n\u003e I feel this is pretty reasonable. If Soong didn\u0027t do things this way, then if people requested builds of product variants of libraries via the raw/base name (w/o the \u0027.product\u0027) suffix, then creating a core variant of this library would have the undesirable effect of causing it to be built instead of the product variant.\n\nWDYT? I don\u0027t feel strongly",
+      "revId": "d00f5ca1dfd147c8512479c4f164718e2474d1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "580bbf26_6d9f8d05",
