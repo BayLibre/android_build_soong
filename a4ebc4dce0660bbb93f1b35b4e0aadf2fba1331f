@@ -50,6 +50,24 @@
       "message": "This is adding the name of the dependency to a list on the module, which doesn\u0027t make sense to me.  Shouldn\u0027t this be finding its own name?",
       "revId": "a4ebc4dce0660bbb93f1b35b4e0aadf2fba1331f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1d7d1f6_2b1d253c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2805,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-03T01:13:51Z",
+      "side": 1,
+      "message": "The two things that weren\u0027t clear to me after reading this code:\n- how to get the dep tags for a module to create the name (I could probably figure it out)\n- how to figure out when the name actually makes sense (it seems like the name is only relevant in these two cases, and not the other cases)",
+      "parentUuid": "fce639f6_96a4692b",
+      "revId": "a4ebc4dce0660bbb93f1b35b4e0aadf2fba1331f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
