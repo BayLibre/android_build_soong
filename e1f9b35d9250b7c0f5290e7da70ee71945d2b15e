@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a18fc6_d5aac947",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2894,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-02-03T10:56:56Z",
+      "side": 0,
+      "message": "It must cover product variants, too.",
+      "range": {
+        "startLine": 2894,
+        "startChar": 41,
+        "endLine": 2894,
+        "endChar": 57
+      },
+      "revId": "e1f9b35d9250b7c0f5290e7da70ee71945d2b15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e186c216_eb8be729",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2896,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-02-03T10:56:56Z",
+      "side": 0,
+      "message": "`c` is already used.",
+      "range": {
+        "startLine": 2896,
+        "startChar": 4,
+        "endLine": 2896,
+        "endChar": 5
+      },
+      "revId": "e1f9b35d9250b7c0f5290e7da70ee71945d2b15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71cb436_21c0a13a",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-02-03T10:56:56Z",
+      "side": 0,
+      "message": "It is already updated in Properties.SubName",
+      "range": {
+        "startLine": 2913,
+        "startChar": 20,
+        "endLine": 2913,
+        "endChar": 54
+      },
+      "revId": "e1f9b35d9250b7c0f5290e7da70ee71945d2b15e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
