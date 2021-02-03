@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbf9cfe_0a83ed70",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-03T05:24:41Z",
+      "side": 1,
+      "message": "Can we compile this in Soong?",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 12
+      },
+      "revId": "ac96cecf8527190d5dca11979c1ae082e75f0ae0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
