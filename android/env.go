@@ -35,6 +35,7 @@ var originalEnv map[string]string
 var soongDelveListen string
 var soongDelvePath string
 var soongDelveEnv []string
+var temp []string
 
 func init() {
 	// Delve support needs to read this environment variable very early, before NewConfig has created a way to
