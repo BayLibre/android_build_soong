@@ -16,6 +16,40 @@
       "message": "Hey - probably I should not have taken this bug, because I\u0027m not familiar with soong here or aidegen (or have ever used it, or know how to test it), though I think this is at least similar to what is Colin described. Can you let me know how to better test it?\n\nBeyond the details, I\u0027m not sure:\n- how aidegen might interpret multiple targets building the same sources\n- why we don\u0027t see this problem for \u0027vendor:true\u0027 but we see it for product_specific",
       "revId": "a4ebc4dce0660bbb93f1b35b4e0aadf2fba1331f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1662474_d2106587",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-03T01:09:43Z",
+      "side": 1,
+      "message": "What is this supposed to hold?  If it\u0027s the Make name for this variant of this module, it doesn\u0027t need to be a []string, a string would be fine.  The *Module is unique to a variant of a module.  A comment would help.",
+      "revId": "a4ebc4dce0660bbb93f1b35b4e0aadf2fba1331f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce639f6_96a4692b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2805,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-03T01:09:43Z",
+      "side": 1,
+      "message": "This is adding the name of the dependency to a list on the module, which doesn\u0027t make sense to me.  Shouldn\u0027t this be finding its own name?",
+      "revId": "a4ebc4dce0660bbb93f1b35b4e0aadf2fba1331f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
