@@ -51,6 +51,9 @@ type filesystemProperties struct {
 	// Type of the filesystem. Currently, ext4 and compressed_cpio are supported. Default is
 	// ext4.
 	Type *string
+
+	// Compiled file_contexts file to make image. Currently, only ext4 is supported.
+	File_contexts_bin *string `android:"path"`
 }
 
 // android_filesystem packages a set of modules and their transitive dependencies into a filesystem
@@ -188,6 +191,10 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.
 		addStr("partition_name", f.Name())
 	}
 
+	if f.properties.File_contexts_bin != nil {
+		addPath("selinux_fc", android.PathForModuleSrc(ctx, *f.properties.File_contexts_bin))
+	}
+
 	propFile = android.PathForModuleOut(ctx, "prop").OutputPath
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().Text("rm").Flag("-rf").Output(propFile)
@@ -205,6 +212,10 @@ func (f *filesystem) buildCompressedCpioImage(ctx android.ModuleContext) android
 	if proptools.Bool(f.properties.Use_avb) {
 		ctx.PropertyErrorf("use_avb", "signing compresed cpio image using avbtool is not supported."+
 			"Consider adding this to bootimg module and signing the entire boot image.")
+	}
+
+	if f.properties.File_contexts_bin != nil {
+		ctx.PropertyErrorf("file_contexts_bin", "file_contexts is not supported for compressed cpio image.")
 	}
 
 	zipFile := android.PathForModuleOut(ctx, "temp.zip").OutputPath
