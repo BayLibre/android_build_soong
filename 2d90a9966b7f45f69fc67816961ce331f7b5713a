@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c5936f_8e20bda6",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-03T06:28:30Z",
+      "side": 1,
+      "message": "Can you make this as a function?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 129
+      },
+      "revId": "2d90a9966b7f45f69fc67816961ce331f7b5713a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
