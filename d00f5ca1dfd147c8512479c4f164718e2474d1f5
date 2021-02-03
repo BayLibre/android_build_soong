@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "580bbf26_6d9f8d05",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2802,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-02-03T10:57:25Z",
+      "side": 1,
+      "message": "This is a \u0027product_specific\u0027 + \u0027vendor_available\u0027 module. It does not need to add a \u0027product\u0027 suffix for the base module which is \u0027product_specific\u0027.",
+      "range": {
+        "startLine": 2802,
+        "startChar": 74,
+        "endLine": 2802,
+        "endChar": 91
+      },
+      "revId": "d00f5ca1dfd147c8512479c4f164718e2474d1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
