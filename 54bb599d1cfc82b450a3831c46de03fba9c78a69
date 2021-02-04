@@ -22,6 +22,30 @@
       },
       "revId": "54bb599d1cfc82b450a3831c46de03fba9c78a69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f46702_3669e0ee",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-02-04T19:48:09Z",
+      "side": 1,
+      "message": "Thanks for the catch. It is now moved to ClangExtraCflags.",
+      "parentUuid": "4a4f027b_2fffc63b",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 28
+      },
+      "revId": "54bb599d1cfc82b450a3831c46de03fba9c78a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
