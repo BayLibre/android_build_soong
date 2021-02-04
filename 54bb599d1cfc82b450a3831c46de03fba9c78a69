@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a4f027b_2fffc63b",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-02-04T18:10:56Z",
+      "side": 1,
+      "message": "Curious why we\u0027d want this flag here as opposed to elsewhere.  Is it only needed when compiling for the target?",
+      "range": {
+        "startLine": 166,
+        "startChar": 3,
+        "endLine": 166,
+        "endChar": 28
+      },
+      "revId": "54bb599d1cfc82b450a3831c46de03fba9c78a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
