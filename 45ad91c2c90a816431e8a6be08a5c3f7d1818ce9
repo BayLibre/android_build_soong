@@ -51,6 +51,24 @@
       "parentUuid": "22e839d7_40c2ed84",
       "revId": "45ad91c2c90a816431e8a6be08a5c3f7d1818ce9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02427692_8304827a",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-02-04T21:23:13Z",
+      "side": 1,
+      "message": "We\u0027ll want to work with upstream to change this. For now, please document the behavior so that a user doesn\u0027t need to read Soong to figure this out.",
+      "parentUuid": "66be48e3_4377f2dd",
+      "revId": "45ad91c2c90a816431e8a6be08a5c3f7d1818ce9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
