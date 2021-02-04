@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8ac8e9_e35a3891",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-04T20:10:08Z",
+      "side": 1,
+      "message": "Hi Colin,\n\nI had to adjust this one from what the LSC produced. I changed most of the licenses to Android-Apache-2.0. I added the LICENSE files for the BSD licensed stuff copied from the golang team.\n\nPTAL",
+      "revId": "eb8f207a12ce93b286fb6f8545dcf84ca7ca718e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
