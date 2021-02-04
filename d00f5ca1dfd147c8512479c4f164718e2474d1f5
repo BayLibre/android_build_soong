@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b87f8fa_d59f78b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-04T00:43:11Z",
+      "side": 1,
+      "message": "Steven, I think this CL just follows the established practice (or expectation) that there always is a Make module name without any suffix regardless of how many image variants the module has. For example, when a module has core and vendor variants, the vendor variants get \".vendor\" suffix. However, when we have the vendor variant only (e.g. vendor: true), the vendor variants doesn\u0027t get the suffix. `m vendor_only_module` builds the vendor variant.",
+      "parentUuid": "dbd96058_94473ac0",
+      "revId": "d00f5ca1dfd147c8512479c4f164718e2474d1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "580bbf26_6d9f8d05",
