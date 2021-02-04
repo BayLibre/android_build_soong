@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82b7a932_964bf44b",
+        "filename": "android/mutator.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-04T22:39:00Z",
+      "side": 1,
+      "message": "Much clearer now!",
+      "parentUuid": "831123e1_ce697183",
+      "range": {
+        "startLine": 636,
+        "startChar": 42,
+        "endLine": 636,
+        "endChar": 45
+      },
+      "revId": "a9acccc479b1eb54e869b8f6f4277d3f7b8d259d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e21f6a6b_5764f646",
