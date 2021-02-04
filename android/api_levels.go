@@ -280,6 +280,18 @@ func getFinalCodenamesMap(config Config) map[string]int {
 
 var apiLevelsMapKey = NewOnceKey("ApiLevelsMap")
 
+// Maps a string value of API level to number.
+// This is valid only for native stubs, which uses "api-level.json" to create stubs.
+func MapNativeApiLevel(ctx PathContext, apiLevel string) (int, error) {
+	if apiLevel == "current" {
+		return FutureApiLevelInt, nil
+	}
+	if num, ok := getApiLevelsMap(ctx.Config())[apiLevel]; ok {
+		return num, nil
+	}
+	return strconv.Atoi(apiLevel)
+}
+
 func getApiLevelsMap(config Config) map[string]int {
 	return config.Once(apiLevelsMapKey, func() interface{} {
 		baseApiLevel := 9000

@@ -954,6 +954,13 @@ func TestApexWithStubsWithMinSdkVersion(t *testing.T) {
 			apex_available: [ "myapex" ],
 			min_sdk_version: "28",
 		}
+
+		// platform module depending on mylib3 from myapex should use the stub of latest version
+		cc_library {
+			name: "libplatform",
+			srcs: ["mylib.cpp"],
+			shared_libs: ["mylib3"],
+		}
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule")
@@ -992,6 +999,11 @@ func TestApexWithStubsWithMinSdkVersion(t *testing.T) {
 		"lib64/mylib3.so",
 		"lib64/mylib4.so",
 	})
+
+	// Ensure that libplatform is built against latest stub ("current") of mylib3 from the apex
+	// , which maps to "10000"
+	libplatformCflags := ctx.ModuleForTests("libplatform", "android_arm64_armv8-a_static").Rule("cc").Args["cFlags"]
+	ensureContains(t, libplatformCflags, "-D__MYLIB3_API__=10000 ")
 }
 
 func TestApexWithExplicitStubsDependency(t *testing.T) {
