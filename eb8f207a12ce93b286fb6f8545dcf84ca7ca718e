@@ -16,6 +16,23 @@
       "message": "Hi Colin,\n\nI had to adjust this one from what the LSC produced. I changed most of the licenses to Android-Apache-2.0. I added the LICENSE files for the BSD licensed stuff copied from the golang team.\n\nPTAL",
       "revId": "eb8f207a12ce93b286fb6f8545dcf84ca7ca718e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d37d505_916e7c71",
+        "filename": "finder/fs/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-04T22:30:27Z",
+      "side": 1,
+      "message": "This should have 4 space indents",
+      "revId": "eb8f207a12ce93b286fb6f8545dcf84ca7ca718e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
