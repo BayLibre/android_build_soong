@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e5d7ec4_4291c2f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-02-04T23:58:42Z",
+      "side": 1,
+      "message": "Ignore the constant failing apct/device_boot_health_check_extra test.",
+      "revId": "72e88767dc4038652478e0973576e6a8b24b16e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
