@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35977e52_e670025c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-02-04T16:30:08Z",
+      "side": 1,
+      "message": "Any suggestion of what would be a more thorough test?",
+      "parentUuid": "6a6a44f2_2ec3c13b",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "3ca2bdad128c27e3a3296bba27aa4447ce0b6844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b27a8549_d13d6a0b",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-04T02:30:30Z",
       "side": 1,
       "message": "nit; we don\u0027t have line limits for codes",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 0
+      },
+      "revId": "3ca2bdad128c27e3a3296bba27aa4447ce0b6844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20e2f0f_dc6c978f",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-02-04T16:30:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b27a8549_d13d6a0b",
       "range": {
         "startLine": 560,
         "startChar": 0,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-04T02:30:30Z",
       "side": 1,
       "message": "Can we verify the contents? e.g. libvendor and libfoo have to be real, and libvendor_available has to be fake.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 102
+      },
+      "revId": "3ca2bdad128c27e3a3296bba27aa4447ce0b6844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76e889d6_4be7ba70",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-02-04T16:30:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf6bf954_a2af46e2",
       "range": {
         "startLine": 250,
         "startChar": 0,
