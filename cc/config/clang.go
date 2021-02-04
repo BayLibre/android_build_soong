@@ -163,6 +163,7 @@ func init() {
 
 	pctx.StaticVariable("ClangExtraTargetCflags", strings.Join([]string{
 		"-nostdlibinc",
+		"-Wno-gnu-folding-constant",
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraNoOverrideCflags", strings.Join([]string{
