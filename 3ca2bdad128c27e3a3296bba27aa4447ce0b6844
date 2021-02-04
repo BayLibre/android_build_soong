@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57cad5e8_052e60e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-02-04T16:36:16Z",
+      "side": 1,
+      "message": "Note that https://r.android.com/1558812 only mentions test:vendor_snapshot_test.go and that \"m nothing\" runs the soong tests.",
+      "parentUuid": "35977e52_e670025c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "3ca2bdad128c27e3a3296bba27aa4447ce0b6844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b27a8549_d13d6a0b",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 2
