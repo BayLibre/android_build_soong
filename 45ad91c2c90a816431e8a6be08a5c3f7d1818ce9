@@ -69,6 +69,24 @@
       "parentUuid": "66be48e3_4377f2dd",
       "revId": "45ad91c2c90a816431e8a6be08a5c3f7d1818ce9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff18666_1f95c30a",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-02-04T21:29:45Z",
+      "side": 1,
+      "message": "SGTM, done!",
+      "parentUuid": "02427692_8304827a",
+      "revId": "45ad91c2c90a816431e8a6be08a5c3f7d1818ce9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
