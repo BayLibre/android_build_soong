@@ -280,6 +280,21 @@ func getFinalCodenamesMap(config Config) map[string]int {
 
 var apiLevelsMapKey = NewOnceKey("ApiLevelsMap")
 
+// Maps a string value of API level to number.
+// This should be in sync with ndkstubgen
+// - "current" -> future (10000)
+// - codenames -> look up api_level.json (see getApiLevelsMap())
+// - otherwise -> cast to int
+func MapNativeApiLevel(ctx PathContext, apiLevel string) (int, error) {
+	if apiLevel == "current" {
+		return FutureApiLevelInt, nil
+	}
+	if num, ok := getApiLevelsMap(ctx.Config())[apiLevel]; ok {
+		return num, nil
+	}
+	return strconv.Atoi(apiLevel)
+}
+
 func getApiLevelsMap(config Config) map[string]int {
 	return config.Once(apiLevelsMapKey, func() interface{} {
 		baseApiLevel := 9000
