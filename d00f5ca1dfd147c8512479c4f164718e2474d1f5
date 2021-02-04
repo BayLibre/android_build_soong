@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd96058_94473ac0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-02-04T00:36:56Z",
+      "side": 1,
+      "message": "It is a product variant that build with the base name.\nI borrowed the concept from the \u0027product_specific: true\u0027 or \u0027vendor: true\u0027 modules. They don\u0027t have the name suffix but create a single product or vendor variant module.\nEven though a module has both \u0027product_specific\u0027 and \u0027vendor_available\u0027 the base module is a product variant and the variant module is a vendor variant. So I think it is reasonable not to add the suffix for the base module and add the suffix only to the variant module.",
+      "parentUuid": "db82d78b_0544d8c0",
+      "revId": "d00f5ca1dfd147c8512479c4f164718e2474d1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "580bbf26_6d9f8d05",
