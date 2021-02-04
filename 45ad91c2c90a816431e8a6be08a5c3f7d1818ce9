@@ -16,6 +16,23 @@
       "message": "Test failures are unrelated.",
       "revId": "45ad91c2c90a816431e8a6be08a5c3f7d1818ce9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e839d7_40c2ed84",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-02-04T20:41:37Z",
+      "side": 1,
+      "message": "Should the error path here maybe emit a warning or something? I could definitely see the user being confused when changing a name from `libfoo` to `foo` silently causes a change in build.\n\nIn an ideal world, we\u0027d take it one step further and do this in blueprint validation, but if that\u0027s hard, we should at least print a warning (or hard error?)",
+      "revId": "45ad91c2c90a816431e8a6be08a5c3f7d1818ce9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
