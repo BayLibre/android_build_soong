@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6a44f2_2ec3c13b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-04T02:30:30Z",
+      "side": 1,
+      "message": "I think `m nothing` isn\u0027t enough.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "3ca2bdad128c27e3a3296bba27aa4447ce0b6844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b27a8549_d13d6a0b",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-04T02:30:30Z",
+      "side": 1,
+      "message": "nit; we don\u0027t have line limits for codes",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 0
+      },
+      "revId": "3ca2bdad128c27e3a3296bba27aa4447ce0b6844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6bf954_a2af46e2",
+        "filename": "cc/vendor_snapshot_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-04T02:30:30Z",
+      "side": 1,
+      "message": "Can we verify the contents? e.g. libvendor and libfoo have to be real, and libvendor_available has to be fake.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 102
+      },
+      "revId": "3ca2bdad128c27e3a3296bba27aa4447ce0b6844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

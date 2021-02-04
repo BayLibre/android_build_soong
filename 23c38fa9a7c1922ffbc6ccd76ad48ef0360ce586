@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abaa0842_8665075f",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-04T02:30:30Z",
+      "side": 0,
+      "message": "Can we leave this comment?",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 82
+      },
+      "revId": "23c38fa9a7c1922ffbc6ccd76ad48ef0360ce586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
