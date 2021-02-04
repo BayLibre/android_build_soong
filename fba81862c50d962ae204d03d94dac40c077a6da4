@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "786dd791_aac72af5",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-04T04:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49956ce1_f046b00b",
+      "range": {
+        "startLine": 149,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "fba81862c50d962ae204d03d94dac40c077a6da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c92929c8_f7ad5f0e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-03T21:34:26Z",
       "side": 1,
       "message": "prefer String(f.properties.File_contexts) !\u003d \"\", otherwise defaults can\u0027t override the value back to empty.",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 204,
+        "endChar": 37
+      },
+      "revId": "fba81862c50d962ae204d03d94dac40c077a6da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71739534_6b8a862b",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-04T04:38:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92929c8_f7ad5f0e",
       "range": {
         "startLine": 204,
         "startChar": 4,
