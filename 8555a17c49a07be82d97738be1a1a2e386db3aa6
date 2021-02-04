@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8d86b98d_7b4a9253",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-04T13:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b3f58a5_2074b4a9",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 19
+      },
+      "revId": "8555a17c49a07be82d97738be1a1a2e386db3aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e28dc2f6_7ea07789",
         "filename": "java/hiddenapi_singleton.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-04T12:00:46Z",
       "side": 1,
       "message": "I don\u0027t know how much VisitAllModules affects performance, but it generally feels like a bad replacement for dependencies (not here in particular, everywhere). I hope we\u0027ll get rid of them eventually.",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 20
+      },
+      "revId": "8555a17c49a07be82d97738be1a1a2e386db3aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a78b35c_e04c9d9a",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-04T13:16:32Z",
+      "side": 1,
+      "message": "Agreed. That is the plan. The hiddenapi processing will most likely move into apex (for updatable ones) and boot_image (for non-updatable ones).",
+      "parentUuid": "e28dc2f6_7ea07789",
       "range": {
         "startLine": 220,
         "startChar": 1,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-04T12:00:46Z",
       "side": 1,
       "message": "Maybe add a \"TODO(b/...)\" here, to mark it more explicitly? Also would be good to add a similar TODO before getBootImageJar() definition.",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 49
+      },
+      "revId": "8555a17c49a07be82d97738be1a1a2e386db3aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a41dba_e35a0964",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-04T13:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc4a7103_c142fbd2",
       "range": {
         "startLine": 286,
         "startChar": 0,
