@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212dbe94_1549f44d",
+        "filename": "android/api_levels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-04T21:52:28Z",
+      "side": 1,
+      "message": "The tests don\u0027t seem to cover this case. It\u0027s not clear to me if S -\u003e 9000 is what you want, or if that\u0027s an unintentional consequence of this change.\n\nIf you\u0027re looking for:\n\nFinalized -\u003e final int\nOther -\u003e 10000\n\nThat\u0027s android.ApiLevel.FinalOrFutureInt.",
+      "revId": "f4c7db9d56f9b2eafbeea8d841e2c270bac46bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
