@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "06092f54_165f60f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-04T00:46:10Z",
+      "side": 1,
+      "message": "I was wondering why this wasn\u0027t an error for vendor_specific, but hadn\u0027t looked yet. I\u0027m okay with then, yeah.",
+      "parentUuid": "3b87f8fa_d59f78b2",
+      "revId": "d00f5ca1dfd147c8512479c4f164718e2474d1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "580bbf26_6d9f8d05",
         "filename": "cc/cc_test.go",
         "patchSetId": 1
