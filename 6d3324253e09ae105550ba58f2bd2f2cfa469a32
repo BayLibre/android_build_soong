@@ -46,6 +46,30 @@
       },
       "revId": "6d3324253e09ae105550ba58f2bd2f2cfa469a32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b511367_ff4818f1",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-05T10:30:07Z",
+      "side": 1,
+      "message": "That is more ambiguous I think... available seems clear enough though.",
+      "parentUuid": "145a3c5a_c74e5a90",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "6d3324253e09ae105550ba58f2bd2f2cfa469a32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
