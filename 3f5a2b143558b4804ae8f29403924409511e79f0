@@ -33,6 +33,23 @@
       "message": "Looks reasonable, but I don\u0027t really know this code well enough to be confident reviewing. ",
       "revId": "3f5a2b143558b4804ae8f29403924409511e79f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e99d57e_672e98d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-05T12:11:44Z",
+      "side": 1,
+      "message": "Retrying after preceding change has been automerged.",
+      "revId": "3f5a2b143558b4804ae8f29403924409511e79f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
