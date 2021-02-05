@@ -52,6 +52,24 @@
       "parentUuid": "47741f61_d44dc47c",
       "revId": "f4c7db9d56f9b2eafbeea8d841e2c270bac46bb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c70b8f_2e897166",
+        "filename": "android/api_levels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-02-05T00:47:19Z",
+      "side": 1,
+      "message": "Thanks for suggestion. I considered it but couldn\u0027t come up with a good solution. \n- the client(library.go) still relies on \"string\" raw type for versions.\n- it\u0027s probably because android.ApiLevel has private fields while stub versions are handled reflectively by soong. IIUC private fields are not friendly with reflection?\n- I\u0027d like to avoid \"duplication\" with ndkstubgen\u0027s api-level handling as much as I can. (That\u0027s why I used getApiLevelsMap()). But yeah, there\u0027s still duplication between getApiLevelsMap and getFinalCodenamesMap with slight difference.\n\nPlease, let me think more.",
+      "parentUuid": "6614127f_a636f528",
+      "revId": "f4c7db9d56f9b2eafbeea8d841e2c270bac46bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
