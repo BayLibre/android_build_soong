@@ -16,6 +16,46 @@
       "message": "Thaaaanks! PTAL",
       "revId": "d6b0eb7c0338af9e338e1116b7717cd5c90c9091",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5031a82f_f3db0c74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-05T00:46:00Z",
+      "side": 1,
+      "message": "Thanks",
+      "revId": "d6b0eb7c0338af9e338e1116b7717cd5c90c9091",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4caaf2fb_972cfada",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-05T00:46:00Z",
+      "side": 1,
+      "message": "nit; oneline here too?",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 33
+      },
+      "revId": "d6b0eb7c0338af9e338e1116b7717cd5c90c9091",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
