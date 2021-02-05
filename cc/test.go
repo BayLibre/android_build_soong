@@ -436,6 +436,9 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	if test.testDecorator.hod == android.HostSupported && test.gtest() && test.Properties.Test_options.Unit_test == nil {
 		test.Properties.Test_options.Unit_test = proptools.BoolPtr(true)
 	}
+	if (Bool(test.Properties.Test_options.Unit_test)) {
+		test.testDecorator.Properties.Isolated = proptools.BoolPtr(true)
+	}
 	test.binaryDecorator.baseInstaller.install(ctx, file)
 }
 
