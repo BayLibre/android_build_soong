@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "747e52b4_405cfa51",
+        "filename": "android/filegroup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-05T15:12:35Z",
+      "side": 1,
+      "message": "Could possibly do something like the prebuilts mutator to rename? Or perhaps set this in CreateBazelTargetModule.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "1fd14691dd76a35f498f4077b664b698d2ee5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84c98d07_4420efd3",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-05T15:12:35Z",
+      "side": 1,
+      "message": "does this need to be a pointer or can we use a string?",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "1fd14691dd76a35f498f4077b664b698d2ee5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
