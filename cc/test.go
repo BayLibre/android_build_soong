@@ -239,6 +239,10 @@ func (test *testDecorator) gtest() bool {
 	return BoolDefault(test.Properties.Gtest, true)
 }
 
+func (test *testDecorator) isolated() bool {
+	return BoolDefault(test.Properties.Isolated, true)
+}
+
 func (test *testDecorator) testBinary() bool {
 	return true
 }
@@ -271,7 +275,7 @@ func (test *testDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 	if test.gtest() {
 		if ctx.useSdk() && ctx.Device() {
 			deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_c++", "libgtest_ndk_c++")
-		} else if BoolDefault(test.Properties.Isolated, false) {
+		} else if test.isolated() && ctx.Host() {
 			deps.StaticLibs = append(deps.StaticLibs, "libgtest_isolated_main")
 			// The isolated library requires liblog, but adding it
 			// as a static library means unit tests cannot override
