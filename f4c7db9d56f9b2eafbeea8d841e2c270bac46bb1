@@ -34,6 +34,24 @@
       "parentUuid": "212dbe94_1549f44d",
       "revId": "f4c7db9d56f9b2eafbeea8d841e2c270bac46bb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6614127f_a636f528",
+        "filename": "android/api_levels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-05T00:18:48Z",
+      "side": 1,
+      "message": "Thanks, that\u0027s much clearer 😊\n\nNow that I understand better, I\u0027m thinking this should probably be a method of android.ApiLevel (FinalOrNativePreviewInt to match the existing FinalOrFutureInt).\n\nIt looks like the caller isn\u0027t currently using android.ApiLevel. Should it be? Generally trying to discourage using the stringly-typed API levels since they hide a lot of bugs, such as the one you\u0027re fixing here 😊",
+      "parentUuid": "47741f61_d44dc47c",
+      "revId": "f4c7db9d56f9b2eafbeea8d841e2c270bac46bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
