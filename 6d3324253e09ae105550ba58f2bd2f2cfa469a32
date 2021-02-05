@@ -22,6 +22,30 @@
       },
       "revId": "6d3324253e09ae105550ba58f2bd2f2cfa469a32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145a3c5a_c74e5a90",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-05T08:38:33Z",
+      "side": 1,
+      "message": "Hmm, or just `bp2build`?",
+      "parentUuid": "9ea749ca_944bd09a",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "6d3324253e09ae105550ba58f2bd2f2cfa469a32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
