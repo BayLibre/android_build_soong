@@ -88,6 +88,24 @@
       "parentUuid": "e2c70b8f_2e897166",
       "revId": "f4c7db9d56f9b2eafbeea8d841e2c270bac46bb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19c82b9c_94450226",
+        "filename": "android/api_levels.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-02-05T01:21:01Z",
+      "side": 1,
+      "message": "Thanks for +2. But a new patchset uploaded, which is my attempt to follow part of your suggestion (making it a method of ApiLevel).",
+      "parentUuid": "ae60c079_178124ff",
+      "revId": "f4c7db9d56f9b2eafbeea8d841e2c270bac46bb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
