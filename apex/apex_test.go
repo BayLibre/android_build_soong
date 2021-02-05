@@ -4288,7 +4288,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		// Empty transformation.
 	}
 
-	checkDexJarBuildPath := func(ctx *android.TestContext, name string) {
+	checkDexJarBuildPath := func(t *testing.T, ctx *android.TestContext, name string) {
 		// Make sure the import has been given the correct path to the dex jar.
 		p := ctx.ModuleForTests(name, "android_common_myapex").Module().(java.Dependency)
 		dexJarBuildPath := p.DexJarBuildPath()
@@ -4297,7 +4297,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		}
 	}
 
-	ensureNoSourceVariant := func(ctx *android.TestContext) {
+	ensureNoSourceVariant := func(t *testing.T, ctx *android.TestContext) {
 		// Make sure that an apex variant is not created for the source module.
 		if expected, actual := []string{"android_common"}, ctx.ModuleVariantsForTests("libfoo"); !reflect.DeepEqual(expected, actual) {
 			t.Errorf("invalid set of variants for %q: expected %q, found %q", "libfoo", expected, actual)
@@ -4328,7 +4328,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
 		ctx := testDexpreoptWithApexes(t, bp, "", transform)
 
-		checkDexJarBuildPath(ctx, "libfoo")
+		checkDexJarBuildPath(t, ctx, "libfoo")
 	})
 
 	t.Run("prebuilt with source preferred", func(t *testing.T) {
@@ -4360,8 +4360,8 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
 		ctx := testDexpreoptWithApexes(t, bp, "", transform)
 
-		checkDexJarBuildPath(ctx, "prebuilt_libfoo")
-		ensureNoSourceVariant(ctx)
+		checkDexJarBuildPath(t, ctx, "prebuilt_libfoo")
+		ensureNoSourceVariant(t, ctx)
 	})
 
 	t.Run("prebuilt preferred with source", func(t *testing.T) {
@@ -4393,8 +4393,8 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		// Make sure that dexpreopt can access dex implementation files from the prebuilt.
 		ctx := testDexpreoptWithApexes(t, bp, "", transform)
 
-		checkDexJarBuildPath(ctx, "prebuilt_libfoo")
-		ensureNoSourceVariant(ctx)
+		checkDexJarBuildPath(t, ctx, "prebuilt_libfoo")
+		ensureNoSourceVariant(t, ctx)
 	})
 }
 
@@ -4403,7 +4403,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 		config.BootJars = android.CreateTestConfiguredJarList([]string{"myapex:libfoo"})
 	}
 
-	checkBootDexJarPath := func(ctx *android.TestContext, bootDexJarPath string) {
+	checkBootDexJarPath := func(t *testing.T, ctx *android.TestContext, bootDexJarPath string) {
 		s := ctx.SingletonForTests("dex_bootjars")
 		foundLibfooJar := false
 		for _, output := range s.AllOutputs() {
@@ -4444,7 +4444,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	`
 
 		ctx := testDexpreoptWithApexes(t, bp, "", transform)
-		checkBootDexJarPath(ctx, ".intermediates/myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
+		checkBootDexJarPath(t, ctx, ".intermediates/myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
 	})
 
 	t.Run("prebuilt with source library preferred", func(t *testing.T) {
@@ -4513,7 +4513,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	`
 
 		ctx := testDexpreoptWithApexes(t, bp, "", transform)
-		checkBootDexJarPath(ctx, ".intermediates/myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
+		checkBootDexJarPath(t, ctx, ".intermediates/myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
 	})
 
 	t.Run("prebuilt with source apex preferred", func(t *testing.T) {
@@ -4557,7 +4557,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	`
 
 		ctx := testDexpreoptWithApexes(t, bp, "", transform)
-		checkBootDexJarPath(ctx, ".intermediates/libfoo/android_common_apex10000/aligned/libfoo.jar")
+		checkBootDexJarPath(t, ctx, ".intermediates/libfoo/android_common_apex10000/aligned/libfoo.jar")
 	})
 
 	t.Run("prebuilt preferred with source apex disabled", func(t *testing.T) {
@@ -4603,7 +4603,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 	`
 
 		ctx := testDexpreoptWithApexes(t, bp, "", transform)
-		checkBootDexJarPath(ctx, ".intermediates/myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
+		checkBootDexJarPath(t, ctx, ".intermediates/myapex.deapexer/android_common/deapexer/javalib/libfoo.jar")
 	})
 }
 
