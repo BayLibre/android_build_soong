@@ -228,6 +228,7 @@ func TestGenerateBazelTargetModules(t *testing.T) {
 	name: "foo",
     string_list_prop: ["a", "b"],
     string_prop: "a",
+    bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTarget: `custom(
     name = "foo",
@@ -382,6 +383,7 @@ func TestGenerateBazelTargetModules_OneToMany_LoadedFromStarlark(t *testing.T) {
 		{
 			bp: `custom {
     name: "bar",
+    bazel_module: { bp2build_available: true  },
 }`,
 			expectedBazelTarget: `my_library(
     name = "bar",
@@ -472,8 +474,9 @@ genrule {
 			moduleTypeUnderTestFactory:         android.FileGroupFactory,
 			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
 			bp: `filegroup {
-    name: "fg_foo",
+    name: "foo",
     srcs: [],
+    bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
 				`filegroup(
@@ -489,8 +492,9 @@ genrule {
 			moduleTypeUnderTestFactory:         android.FileGroupFactory,
 			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
 			bp: `filegroup {
-    name: "fg_foo",
-    srcs: ["a", "b"],
+	name: "foo",
+	srcs: ["a", "b"],
+    bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{`filegroup(
     name = "fg_foo",
@@ -620,6 +624,7 @@ genrule {
     srcs: ["foo.in"],
     tools: [":foo.tool"],
     cmd: "$(location :foo.tool) --genDir=$(genDir) arg $(in) $(out)",
+    bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{
 				`genrule(
@@ -666,6 +671,7 @@ genrule {
     srcs: ["foo.in"],
     tools: [":foo.tools"],
     cmd: "$(locations :foo.tools) -s $(out) $(in)",
+    bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{`genrule(
     name = "foo",
@@ -763,6 +769,7 @@ genrule {
     srcs: ["foo.in"],
     tool_files: [":foo.tool", ":other.tool"],
     cmd: "$(location) -s $(out) $(in)",
+    bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{`genrule(
     name = "foo",
@@ -793,6 +800,7 @@ genrule {
     srcs: ["foo.in"],
     tools: [":foo.tool", ":other.tool"],
     cmd: "$(locations) -s $(out) $(in)",
+    bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{`genrule(
     name = "foo",
@@ -822,6 +830,7 @@ genrule {
     out: ["foo.out"],
     srcs: ["foo.in"],
     cmd: "cp $(in) $(out)",
+    bazel_module: { bp2build_available: true },
 }`,
 			expectedBazelTargets: []string{`genrule(
     name = "foo",
@@ -927,6 +936,7 @@ genrule {
     out: ["out"],
     srcs: ["in1"],
     defaults: ["gen_defaults"],
+    bazel_module: { bp2build_available: true },
 }
 `,
 			expectedBazelTarget: `genrule(
@@ -961,6 +971,7 @@ genrule {
     srcs: ["in1"],
     defaults: ["gen_defaults"],
     cmd: "do-something $(in) $(out)",
+    bazel_module: { bp2build_available: true },
 }
 `,
 			expectedBazelTarget: `genrule(
@@ -999,6 +1010,7 @@ genrule {
     name: "gen",
     out: ["out"],
     defaults: ["gen_defaults1", "gen_defaults2"],
+    bazel_module: { bp2build_available: true },
 }
 `,
 			expectedBazelTarget: `genrule(
@@ -1045,6 +1057,7 @@ genrule {
     name: "gen",
     out: ["out"],
     defaults: ["gen_defaults1"],
+    bazel_module: { bp2build_available: true },
 }
 `,
 			expectedBazelTarget: `genrule(
@@ -1094,6 +1107,83 @@ genrule {
 				testCase.expectedBazelTarget,
 				actualBazelTarget.content,
 			)
+		}
+	}
+}
+
+func TestAllowlistingBp2buildTargets(t *testing.T) {
+	testCases := []struct {
+		moduleTypeUnderTest                string
+		moduleTypeUnderTestFactory         android.ModuleFactory
+		moduleTypeUnderTestBp2BuildMutator bp2buildMutator
+		bp                                 string
+		expectedCount                      int
+		description                        string
+	}{
+		{
+			description:                        "explicitly unavailable",
+			moduleTypeUnderTest:                "filegroup",
+			moduleTypeUnderTestFactory:         android.FileGroupFactory,
+			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			bp: `filegroup {
+    name: "foo",
+    srcs: ["a", "b"],
+    bazel_module: { bp2build_available: false },
+}`,
+			expectedCount: 0,
+		},
+		{
+			description:                        "implicitly unavailable",
+			moduleTypeUnderTest:                "filegroup",
+			moduleTypeUnderTestFactory:         android.FileGroupFactory,
+			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			bp: `filegroup {
+    name: "foo",
+    srcs: ["a", "b"],
+}`,
+			expectedCount: 0,
+		},
+		{
+			description:                        "explicitly available",
+			moduleTypeUnderTest:                "filegroup",
+			moduleTypeUnderTestFactory:         android.FileGroupFactory,
+			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			bp: `filegroup {
+    name: "foo",
+    srcs: ["a", "b"],
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedCount: 1,
+		},
+		{
+			description:                        "generates more than 1 target if needed",
+			moduleTypeUnderTest:                "custom",
+			moduleTypeUnderTestFactory:         customModuleFactory,
+			moduleTypeUnderTestBp2BuildMutator: customBp2BuildMutatorFromStarlark,
+			bp: `custom {
+    name: "foo",
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedCount: 3,
+		},
+	}
+
+	dir := "."
+	for _, testCase := range testCases {
+		config := android.TestConfig(buildDir, nil, testCase.bp, nil)
+		ctx := android.NewTestContext(config)
+		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
+		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
+		ctx.RegisterForBazelConversion()
+
+		_, errs := ctx.ParseFileList(dir, []string{"Android.bp"})
+		android.FailIfErrored(t, errs)
+		_, errs = ctx.ResolveDependencies(config)
+		android.FailIfErrored(t, errs)
+
+		bazelTargets := GenerateBazelTargets(ctx.Context.Context, Bp2Build)[dir]
+		if actualCount := len(bazelTargets); actualCount != testCase.expectedCount {
+			t.Fatalf("%s: Expected %d bazel target, got %d", testCase.description, testCase.expectedCount, actualCount)
 		}
 	}
 }
