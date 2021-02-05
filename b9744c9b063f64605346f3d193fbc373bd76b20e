@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "b9744c9b063f64605346f3d193fbc373bd76b20e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b8335e3_a71cd985",
+        "filename": "android/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T02:26:01Z",
+      "side": 1,
+      "message": "This seems very verbose, would it be possible to elide this in subpackages of packages that have the same default_applicable_licenses?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "b9744c9b063f64605346f3d193fbc373bd76b20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
