@@ -39,6 +39,30 @@
       },
       "revId": "b9744c9b063f64605346f3d193fbc373bd76b20e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2d5c35e_a1843c22",
+        "filename": "android/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-05T08:58:28Z",
+      "side": 1,
+      "message": "Ack\n\nIn my experience, in bazel, package boundaries are hard boundaries defined by the existence of a BUILD file.",
+      "parentUuid": "9b8335e3_a71cd985",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "b9744c9b063f64605346f3d193fbc373bd76b20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
