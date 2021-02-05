@@ -43,6 +43,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d08d1987_e186189e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-02-05T17:46:04Z",
+      "side": 1,
+      "message": "That was only because I had not downloaded all the projects. I synced all of aosp and now the ALLOW_MISSING_DEPENDENCIES is not needed. I updated the commit message.",
+      "parentUuid": "3eaf0959_a57c640b",
+      "revId": "3749086635f30cc0f093172833e96068fd11699c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2896e1f5_18ebc675",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -54,6 +72,23 @@
       "writtenOn": "2021-02-05T05:15:10Z",
       "side": 1,
       "message": "Ping for owner approval.",
+      "revId": "3749086635f30cc0f093172833e96068fd11699c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f639f7ff_6990bf56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-02-05T17:46:04Z",
+      "side": 1,
+      "message": "Thanks!!",
       "revId": "3749086635f30cc0f093172833e96068fd11699c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
