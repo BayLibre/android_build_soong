@@ -3,6 +3,144 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "545212f6_e958672d",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2051,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T01:47:51Z",
+      "side": 1,
+      "message": "prefer c.BaseModuleName()",
+      "range": {
+        "startLine": 2051,
+        "startChar": 25,
+        "endLine": 2051,
+        "endChar": 44
+      },
+      "revId": "d540854f0bcf856acdbb6034b388e20237685778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d5542fc_e9ff54f2",
+        "filename": "cc/ndk_abi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T01:47:51Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d540854f0bcf856acdbb6034b388e20237685778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0a7621_59d1dd9b",
+        "filename": "cc/ndk_abi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T01:47:51Z",
+      "side": 1,
+      "message": "module is already an android.Module",
+      "range": {
+        "startLine": 43,
+        "startChar": 14,
+        "endLine": 43,
+        "endChar": 37
+      },
+      "revId": "d540854f0bcf856acdbb6034b388e20237685778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d747c150_e02b4d9e",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T01:47:51Z",
+      "side": 1,
+      "message": "I find Go\u0027s indentation hard to read when the argument list continues on the same indent depth as the first statement in the body, I suggest adding an extra blank line at the beginning the function body whenever the argument list wraps.",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 50
+      },
+      "revId": "d540854f0bcf856acdbb6034b388e20237685778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eac6c55_387e6981",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T01:47:51Z",
+      "side": 1,
+      "message": "Implicit: symbolList",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 41
+      },
+      "revId": "d540854f0bcf856acdbb6034b388e20237685778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49c7f3d_3920089f",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T01:47:51Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem long enough to need to wrap",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 47
+      },
+      "revId": "d540854f0bcf856acdbb6034b388e20237685778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30a1aff6_21ad3907",
         "filename": "cc/ndk_library.go",
         "patchSetId": 6
@@ -14,6 +152,29 @@
       "writtenOn": "2021-02-05T00:33:12Z",
       "side": 1,
       "message": "ccross: ended up going this route because with the environment variable approach all the soong tests were affected too (I\u0027m guessing it\u0027d affect other builds as well). There didn\u0027t seem to be any ways around that which weren\u0027t worse than just using ErrorRule.\n\nlmk if you\u0027d prefer I use the environment variable and set environment variable unconditionally in the tests.",
+      "revId": "d540854f0bcf856acdbb6034b388e20237685778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d15b02e_87a52a97",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T01:47:51Z",
+      "side": 1,
+      "message": "I usually use an Errorf in a panic, it gives something for the blueprint recover method to interpret and print usefully.",
+      "range": {
+        "startLine": 402,
+        "startChar": 13,
+        "endLine": 402,
+        "endChar": 20
+      },
       "revId": "d540854f0bcf856acdbb6034b388e20237685778",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
