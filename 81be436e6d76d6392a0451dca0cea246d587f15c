@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "886699a3_c25a17a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-02-05T22:40:02Z",
+      "side": 1,
+      "message": "As discussed offline, if another module depends on the source of framework-res, you\u0027ll get an error message like the following, which should lead the user to the source of the problem.\n\nmodule \"framework-non-updatable-sources\": path dependency \":framework-res{.aapt.srcjar}\" is not an output file producing module",
+      "parentUuid": "d573a19f_a526d262",
+      "revId": "81be436e6d76d6392a0451dca0cea246d587f15c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e9bc393_e29855a4",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-14T23:06:21Z",
       "side": 1,
       "message": "this name is somewhat inaccurate as it would also return true for the framework-res package itself.  If it being AndroidAppImport is important, perhaps pass in the AndroidAppImport, otherwise, could just omit it?",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 35
+      },
+      "revId": "81be436e6d76d6392a0451dca0cea246d587f15c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a838fee9_b8be1315",
+        "filename": "java/app_import.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-02-05T22:40:02Z",
+      "side": 1,
+      "message": "Liz, thanks for the suggestion. I reworked this a bit, and your suggestion makes it easier to follow.",
+      "parentUuid": "3e9bc393_e29855a4",
       "range": {
         "startLine": 149,
         "startChar": 5,

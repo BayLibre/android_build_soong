@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b05cc15b_3d509660",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-02-05T22:40:02Z",
+      "side": 1,
+      "message": "Done (for the lunch targets I can mention).",
+      "parentUuid": "42b13479_3203b52b",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "13d8830eafef04c82510da0760b017fa580cd853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dfe95403_fe07d74d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
