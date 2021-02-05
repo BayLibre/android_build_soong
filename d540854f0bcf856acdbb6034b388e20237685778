@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a1aff6_21ad3907",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-05T00:33:12Z",
+      "side": 1,
+      "message": "ccross: ended up going this route because with the environment variable approach all the soong tests were affected too (I\u0027m guessing it\u0027d affect other builds as well). There didn\u0027t seem to be any ways around that which weren\u0027t worse than just using ErrorRule.\n\nlmk if you\u0027d prefer I use the environment variable and set environment variable unconditionally in the tests.",
+      "revId": "d540854f0bcf856acdbb6034b388e20237685778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
