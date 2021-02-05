@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bcc919_805a9655",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-05T14:58:52Z",
+      "side": 1,
+      "message": "change?",
+      "range": {
+        "startLine": 13,
+        "startChar": 41,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "7d8c156f2469dfa5468d8f6df766970260b04996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "663a7b32_4c9d53c0",
+        "filename": "java/hiddenapi_singleton_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-05T14:58:52Z",
+      "side": 1,
+      "message": "This is strange error formatting, maybe start actual inputs on a new line?",
+      "range": {
+        "startLine": 83,
+        "startChar": 47,
+        "endLine": 83,
+        "endChar": 49
+      },
+      "revId": "7d8c156f2469dfa5468d8f6df766970260b04996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
