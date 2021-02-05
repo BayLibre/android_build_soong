@@ -795,6 +795,10 @@ func BazelGenruleFactory() android.Module {
 
 func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 	if m, ok := ctx.Module().(*Module); ok {
+		if !m.properties.Bazel_module.Bp2build_available {
+			return
+		}
+
 		// Bazel only has the "tools" attribute.
 		tools := append(m.properties.Tools, m.properties.Tool_files...)
 
