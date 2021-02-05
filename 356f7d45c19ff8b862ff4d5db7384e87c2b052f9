@@ -16,6 +16,24 @@
       "message": "My main comment here is that OtherModule is a weird and mysterious name.\n\nI tried to find out more about it, but the source code didn\u0027t really help\n\ne.g.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/blueprint/module_ctx.go\n\n// OtherModuleName returns the name of another Module.  See BaseModuleContext.ModuleName for more information.\nOtherModuleName(m Module) string\n\nBut BaseModuleContext.ModuleName does not seem to exist... \n\nThere is an EarlyModuleContext.ModuleName but that didn\u0027t explain what OtherModuleName is\n\n// ModuleName returns the name of the module.  This is generally the value that was returned by Module.Name() when\n// the module was created, but may have been modified by calls to BaseMutatorContext.Rename.\nModuleName() string",
       "revId": "356f7d45c19ff8b862ff4d5db7384e87c2b052f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06244561_830f4057",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-05T06:16:16Z",
+      "side": 1,
+      "message": "At the moment I am mentally rewriting OtherModuleName(...) as NameOfOtherModule(...)\n\nBecause OtherModuleName() makes it sound like the current module has several names",
+      "parentUuid": "b2f92e87_9898d3ed",
+      "revId": "356f7d45c19ff8b862ff4d5db7384e87c2b052f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
