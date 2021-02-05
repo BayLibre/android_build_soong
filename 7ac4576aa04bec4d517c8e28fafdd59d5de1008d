@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7f9b5b_4ecc6fec",
+        "filename": "android/api_levels.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-05T01:59:00Z",
+      "side": 1,
+      "message": "This name doesn\u0027t represent what it actually is for. previewApiLevelBase might be better.",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "7ac4576aa04bec4d517c8e28fafdd59d5de1008d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3233855_18f28bde",
+        "filename": "android/api_levels.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-05T01:59:00Z",
+      "side": 1,
+      "message": "why is \"native\" here?",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "7ac4576aa04bec4d517c8e28fafdd59d5de1008d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
