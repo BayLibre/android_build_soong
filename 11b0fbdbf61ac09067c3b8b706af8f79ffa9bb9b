@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd2332c_f50e7eba",
+        "filename": "android/api_levels.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-02-05T05:02:33Z",
+      "side": 1,
+      "message": "I was hoping this could just call through to getApiLevelsMap, but now I see that the config parameter is needed and that\u0027d be a big change 😞\n\nThis shares all the important bits though, so LGTM.",
+      "revId": "11b0fbdbf61ac09067c3b8b706af8f79ffa9bb9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
