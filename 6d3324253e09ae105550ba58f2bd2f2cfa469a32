@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea749ca_944bd09a",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-05T08:33:58Z",
+      "side": 1,
+      "message": "Maybe supported or supports would be clearer. Bp2build_supported? SupportsBp2Build? Not a big deal tho.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "6d3324253e09ae105550ba58f2bd2f2cfa469a32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
