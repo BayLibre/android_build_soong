@@ -16,6 +16,24 @@
       "message": "Worth a comment here about why we do this, together with a TODO about removing it when hiddenapi is modularised, pointing to the ticket about that?",
       "revId": "61599f3e314e336c5c848cca0c0190cd1914bd35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb5e4c5_a8f26fb8",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-05T13:56:43Z",
+      "side": 1,
+      "message": "Added it to the java_boot_libs structure below.",
+      "parentUuid": "7c7e5534_89ef7185",
+      "revId": "61599f3e314e336c5c848cca0c0190cd1914bd35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
