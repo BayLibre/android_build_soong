@@ -461,3 +461,32 @@ func ShTestHostFactory() android.Module {
 }
 
 var Bool = proptools.Bool
+
+func ShBinaryBp2Build(ctx android.TopDownMutatorContext) {
+	panic("TODO")
+}
+
+//
+// Defaults
+//
+type ShBinaryDefaults struct {
+	android.ModuleBase
+	android.DefaultsModuleBase
+}
+
+func shBinaryDefaultsFactory() android.Module {
+	return ShBinaryDefaultsFactory()
+}
+
+func ShBinaryDefaultsFactory(props ...interface{}) android.Module {
+	module := &ShBinaryDefaults{}
+
+	module.AddProperties(props...)
+	module.AddProperties(
+		&shBinaryProperties{},
+	)
+
+	android.InitDefaultsModule(module)
+
+	return module
+}

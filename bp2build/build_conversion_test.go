@@ -17,6 +17,7 @@ package bp2build
 import (
 	"android/soong/android"
 	"android/soong/genrule"
+	"android/soong/sh"
 	"testing"
 )
 
@@ -351,6 +352,12 @@ load("//build/bazel/rules:java.bzl", "java_binary")`,
 					ruleClass: "genrule",
 					// Note: no bzlLoadLocation for native rules
 				},
+				BazelTarget{
+					name:      "sh_binary_target",
+					ruleClass: "sh_binary",
+					// Note: no bzlLoadLocation for native rules
+					// TODO(ruperts): Open source the existing Starlark sh_ rules?
+				},
 			},
 			expectedLoadStatements: `load("//build/bazel/rules:cc.bzl", "cc_binary")
 load("//build/bazel/rules:java.bzl", "java_binary")`,
@@ -602,6 +609,20 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
 )`,
 		},
+		{
+			description:                        "sh_binary test",
+			moduleTypeUnderTest:                "sh_binary",
+			moduleTypeUnderTestFactory:         sh.ShBinaryFactory,
+			moduleTypeUnderTestBp2BuildMutator: sh.ShBinaryBp2Build,
+			bp: `sh_binary {
+				name: "foo",
+				src: "foo.sh",
+			}`,
+			expectedBazelTarget: `sh_binary(
+				name = "foo",
+				srcs = "foo.sh",
+			)`,
+		},
 	}
 
 	dir := "."
@@ -796,6 +817,26 @@ genrule {
 )`,
 			description: "genrule applies properties from genrule_defaults transitively",
 		},
+		/* TODO maybe add a test here as well?
+		{
+			description: "Another sh_binary test",
+			moduleTypesUnderTest: map[string]android.ModuleFactory{
+				"sh_binary":          sh.ShBinaryFactory,
+				"sh_binary_defaults": func() android.Module { return sh.ShBinaryDefaultsFactory() },
+			},
+			bp2buildMutatorsUnderTest: map[string]bp2buildMutator{
+				"sh_binary": sh.ShBinaryBp2Build,
+			},
+			bp: `sh_binary {
+				name: "foo",
+				src: "foo.sh",
+			}`,
+			expectedBazelTarget: `sh_binary(
+				name = "foo",
+				srcs = "foo.sh",
+			)`,
+		},
+		*/
 	}
 
 	dir := "."
