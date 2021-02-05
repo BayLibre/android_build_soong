@@ -24,6 +24,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eaf0959_a57c640b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-05T17:35:21Z",
+      "side": 1,
+      "message": "If you\u0027re building with ALLOW_MISSING_DEPENDENCIES\u003dtrue then I wouldn\u0027t expect this patch to be needed, Soong should allow missing modules as long as you don\u0027t try to build anything that depends on them.  What\u0027s the full error you\u0027re trying to fix with this patch?",
+      "revId": "3749086635f30cc0f093172833e96068fd11699c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2896e1f5_18ebc675",
