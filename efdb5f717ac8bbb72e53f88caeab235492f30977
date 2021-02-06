@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007965707",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1575543?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "27267668_86b65c71",
+        "filename": "finder/fs/LICENSE",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-06T04:22:34Z",
+      "side": 1,
+      "message": "Third-party license (BSD) disallowed in repository platform/build/soong:\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:...Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and or other materials provided with the distribution.\n",
+      "range": {
+        "startLine": 4,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "efdb5f717ac8bbb72e53f88caeab235492f30977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007965707",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1575543?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "395d909e_9748074c",
+        "filename": "third_party/zip/LICENSE",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-06T04:22:34Z",
+      "side": 1,
+      "message": "Third-party license (BSD) disallowed in repository platform/build/soong:\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:...Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and or other materials provided with the distribution.\n",
+      "range": {
+        "startLine": 4,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "efdb5f717ac8bbb72e53f88caeab235492f30977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
