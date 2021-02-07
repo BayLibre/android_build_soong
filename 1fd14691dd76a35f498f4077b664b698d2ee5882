@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e6e06f4_495a6f09",
+        "filename": "android/filegroup.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-07T15:13:15Z",
+      "side": 1,
+      "message": "PTAL: aosp/1580023\n\nI would rather not rename modules if possible, seems like it would introduce more complexity than just creating new names for Bazel modules.",
+      "parentUuid": "747e52b4_405cfa51",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "1fd14691dd76a35f498f4077b664b698d2ee5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84c98d07_4420efd3",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-05T15:12:35Z",
       "side": 1,
       "message": "does this need to be a pointer or can we use a string?",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 7
+      },
+      "revId": "1fd14691dd76a35f498f4077b664b698d2ee5882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8d4e0b_20150e2f",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-07T15:13:15Z",
+      "side": 1,
+      "message": "Yeah, the underlying nameProperties Name field is a string pointer, so it\u0027s more convenient to use the same type here.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d601-604;drc\u003d356f7d45c19ff8b862ff4d5db7384e87c2b052f9\nhttps://android-review.googlesource.com/c/platform/build/soong/+/530877",
+      "parentUuid": "84c98d07_4420efd3",
       "range": {
         "startLine": 32,
         "startChar": 6,
