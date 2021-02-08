@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be65444a_5872f447",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-02-08T21:49:09Z",
+      "side": 1,
+      "message": "LGTM, should get Colin\u0027s approval though for Soong intricacies.",
+      "revId": "e6d3098c1b95b94a9a7c03e9ade9b2cbf3ac10e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
