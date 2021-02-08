@@ -21,6 +21,7 @@ bootstrap_go_package {
     ],
     testSrcs: [
         "build_conversion_test.go",
+        "cc_conversion_test.go",
         "bzl_conversion_test.go",
         "cc_conversion_test.go",
         "conversion_test.go",

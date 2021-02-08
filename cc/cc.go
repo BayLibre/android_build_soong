@@ -28,6 +28,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/cc/config"
 	"android/soong/genrule"
 )
@@ -813,6 +814,8 @@ type Module struct {
 	apexSdkVersion android.ApiLevel
 
 	hideApexVariantFromMake bool
+
+	bazelProperties bazel.Properties
 }
 
 func (c *Module) SetPreventInstall() {
