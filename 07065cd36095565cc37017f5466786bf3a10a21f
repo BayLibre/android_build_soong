@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2002f19c_19f95810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-08T20:06:46Z",
+      "side": 1,
+      "message": "You need to be really careful if you are adding dependencies onto arbitrary modules as they could easily end up in apex files.",
+      "revId": "07065cd36095565cc37017f5466786bf3a10a21f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a628d57_50fa74a5",
