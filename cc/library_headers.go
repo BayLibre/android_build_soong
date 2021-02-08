@@ -96,7 +96,7 @@ func CcLibraryHeadersBp2Build(ctx android.TopDownMutatorContext) {
 		return
 	}
 
-	if !lib.Properties.Bazel_module.Bp2build_available {
+	if !module.Properties.Bazel_module.Bp2build_available {
 		return
 	}
 
