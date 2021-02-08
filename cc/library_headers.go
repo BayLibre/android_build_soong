@@ -14,7 +14,9 @@
 
 package cc
 
-import "android/soong/android"
+import (
+	"android/soong/android"
+)
 
 func init() {
 	RegisterLibraryHeadersBuildComponents(android.InitRegistrationContext)
