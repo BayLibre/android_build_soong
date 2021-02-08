@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eddfae1_cf34051e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-08T07:52:55Z",
+      "side": 1,
+      "message": "I think this is perfectly fine.\n\nNot that default public visibility is good practice, but that seems to be the default in Android so we\u0027ll have to emulate that. It would also be unwise to spend time on converting visibility while we have more risky areas to tackle.",
+      "revId": "1c2317315c7a4232a79cefa507b7d1a638b74d1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
