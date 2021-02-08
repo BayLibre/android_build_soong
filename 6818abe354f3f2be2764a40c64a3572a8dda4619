@@ -34,6 +34,24 @@
       "parentUuid": "c5c2b6b6_cce405ba",
       "revId": "6818abe354f3f2be2764a40c64a3572a8dda4619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8207da5c_83f2ad20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-08T14:32:20Z",
+      "side": 1,
+      "message": "THanks, I just added the extra visibilities I needed locally to move on.",
+      "parentUuid": "1ac2f607_49aefff4",
+      "revId": "6818abe354f3f2be2764a40c64a3572a8dda4619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
