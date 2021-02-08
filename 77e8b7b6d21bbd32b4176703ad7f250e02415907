@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb19e50_a036f275",
+        "filename": "bazel/properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-08T08:08:10Z",
+      "side": 1,
+      "message": "Why the somewhat cryptic \"bp2build_available\" name instead of something like\n\nbp2build: \"AUTO\"\n\nThis would also have the advantage that one can later add other values to signal that a module is specifically not to be converted / use some conversion hints / etc. (this mirrors the usual advice to use enums instead of Booleans if at all possible)",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "77e8b7b6d21bbd32b4176703ad7f250e02415907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
