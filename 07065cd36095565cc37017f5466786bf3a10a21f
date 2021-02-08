@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "07065cd36095565cc37017f5466786bf3a10a21f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a628d57_50fa74a5",
+        "filename": "java/boot_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-08T19:55:33Z",
+      "side": 1,
+      "message": "Why is this necessary? Presumably you are adding dependencies from a boot_image to a license. Where is the licence coming from?",
+      "revId": "07065cd36095565cc37017f5466786bf3a10a21f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
