@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005253a6_9853a4a6",
+        "filename": "java/hiddenapi_singleton_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-02-08T11:05:04Z",
+      "side": 1,
+      "message": "Maybe better to do:\n\n  strings.Join([]string{\n      \".intermediates/bar.impl/android_common/hiddenapi/index.csv\",\n      \"....\",\n  }, \"\\n\")\n\nkeep the indent looking as expected.",
+      "range": {
+        "startLine": 111,
+        "startChar": 20,
+        "endLine": 116,
+        "endChar": 1
+      },
+      "revId": "01289a24076289369e8eb6995d35d276f225d18e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
