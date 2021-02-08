@@ -22,6 +22,30 @@
       },
       "revId": "e83aa3e1dc8b25f79f66b02d0f082e335b123c58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d0538a_6c449a88",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-08T09:11:08Z",
+      "side": 1,
+      "message": "Not always, since we can\u0027t control the name the callers sends in (e.g. future bp2build mutators), so I\u0027d like to be defensive and validate inputs here.\n\nI switched it to fail fast, instead of gracefully handling it.",
+      "parentUuid": "f90fb705_2d85042c",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 57
+      },
+      "revId": "e83aa3e1dc8b25f79f66b02d0f082e335b123c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
