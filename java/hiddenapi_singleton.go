@@ -139,13 +139,8 @@ func (h *hiddenAPISingleton) GenerateBuildActions(ctx android.SingletonContext) 
 		return
 	}
 
-	// These rules depend on files located in frameworks/base, skip them if running in a tree that doesn't have them.
-	if ctx.Config().FrameworksBaseDirExists(ctx) {
-		h.flags = flagsRule(ctx)
-		h.metadata = metadataRule(ctx)
-	} else {
-		h.flags = emptyFlagsRule(ctx)
-	}
+	h.flags = flagsRule(ctx)
+	h.metadata = metadataRule(ctx)
 }
 
 // Export paths to Make.  INTERNAL_PLATFORM_HIDDENAPI_FLAGS is used by Make rules in art/ and cts/.
@@ -360,10 +355,6 @@ func flagsRule(ctx android.SingletonContext) android.Path {
 		}
 	})
 
-	if combinedRemovedApis == nil {
-		ctx.Errorf("Failed to find combined-removed-dex.")
-	}
-
 	rule := android.NewRuleBuilder(pctx, ctx)
 
 	outputPath := hiddenAPISingletonPaths(ctx).flags
@@ -371,26 +362,35 @@ func flagsRule(ctx android.SingletonContext) android.Path {
 
 	stubFlags := hiddenAPISingletonPaths(ctx).stubFlags
 
-	rule.Command().
+	commandBuilder := rule.Command().
 		BuiltTool("generate_hiddenapi_lists").
 		FlagWithInput("--csv ", stubFlags).
 		Inputs(flagsCSV).
-		FlagWithInput("--unsupported ",
-			android.PathForSource(ctx, "frameworks/base/config/hiddenapi-unsupported.txt")).
-		FlagWithInput("--unsupported ", combinedRemovedApis).Flag("--ignore-conflicts ").FlagWithArg("--tag ", "removed").
-		FlagWithInput("--max-target-r ",
-			android.PathForSource(ctx, "frameworks/base/config/hiddenapi-max-target-r-loprio.txt")).FlagWithArg("--tag ", "lo-prio").
-		FlagWithInput("--max-target-q ",
-			android.PathForSource(ctx, "frameworks/base/config/hiddenapi-max-target-q.txt")).
-		FlagWithInput("--max-target-p ",
-			android.PathForSource(ctx, "frameworks/base/config/hiddenapi-max-target-p.txt")).
-		FlagWithInput("--max-target-o ", android.PathForSource(
-			ctx, "frameworks/base/config/hiddenapi-max-target-o.txt")).Flag("--ignore-conflicts ").FlagWithArg("--tag ", "lo-prio").
-		FlagWithInput("--blocked ",
-			android.PathForSource(ctx, "frameworks/base/config/hiddenapi-force-blocked.txt")).
-		FlagWithInput("--unsupported ", android.PathForSource(
-			ctx, "frameworks/base/config/hiddenapi-unsupported-packages.txt")).Flag("--packages ").
 		FlagWithOutput("--output ", tempPath)
+
+	// Add references to the framework specific files.
+	if ctx.Config().FrameworksBaseDirExists(ctx) {
+		if combinedRemovedApis == nil {
+			ctx.Errorf("Failed to find combined-removed-dex.")
+		}
+
+		commandBuilder.
+			FlagWithInput("--unsupported ",
+				android.PathForSource(ctx, "frameworks/base/config/hiddenapi-unsupported.txt")).
+			FlagWithInput("--unsupported ", combinedRemovedApis).Flag("--ignore-conflicts ").FlagWithArg("--tag ", "removed").
+			FlagWithInput("--max-target-r ",
+				android.PathForSource(ctx, "frameworks/base/config/hiddenapi-max-target-r-loprio.txt")).FlagWithArg("--tag ", "lo-prio").
+			FlagWithInput("--max-target-q ",
+				android.PathForSource(ctx, "frameworks/base/config/hiddenapi-max-target-q.txt")).
+			FlagWithInput("--max-target-p ",
+				android.PathForSource(ctx, "frameworks/base/config/hiddenapi-max-target-p.txt")).
+			FlagWithInput("--max-target-o ", android.PathForSource(
+				ctx, "frameworks/base/config/hiddenapi-max-target-o.txt")).Flag("--ignore-conflicts ").FlagWithArg("--tag ", "lo-prio").
+			FlagWithInput("--blocked ",
+				android.PathForSource(ctx, "frameworks/base/config/hiddenapi-force-blocked.txt")).
+			FlagWithInput("--unsupported ", android.PathForSource(
+				ctx, "frameworks/base/config/hiddenapi-unsupported-packages.txt")).Flag("--packages ")
+	}
 
 	commitChangeForRestat(rule, tempPath, outputPath)
 
