@@ -35,6 +35,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79820dcd_e14a1c87",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-08T20:16:03Z",
+      "side": 1,
+      "message": "license{} modules are metadata. They do not have targets or physical artifacts. If you are concerned about anything sneaking in, I suppose you could use the IsMetaDependencyTag to filter out all metadata dependencies from what your module builds.",
+      "parentUuid": "2002f19c_19f95810",
+      "revId": "07065cd36095565cc37017f5466786bf3a10a21f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0866ca_74222485",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-08T20:16:03Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "07065cd36095565cc37017f5466786bf3a10a21f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a628d57_50fa74a5",
@@ -48,6 +83,24 @@
       "writtenOn": "2021-02-08T19:55:33Z",
       "side": 1,
       "message": "Why is this necessary? Presumably you are adding dependencies from a boot_image to a license. Where is the licence coming from?",
+      "revId": "07065cd36095565cc37017f5466786bf3a10a21f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72888518_af791898",
+        "filename": "java/boot_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-08T20:16:03Z",
+      "side": 1,
+      "message": "From everything used to create the boot_image.",
+      "parentUuid": "5a628d57_50fa74a5",
       "revId": "07065cd36095565cc37017f5466786bf3a10a21f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
