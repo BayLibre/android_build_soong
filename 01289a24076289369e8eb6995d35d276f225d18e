@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e61c445_1d3bfb75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-08T11:37:30Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "01289a24076289369e8eb6995d35d276f225d18e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "005253a6_9853a4a6",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-02-08T11:05:04Z",
       "side": 1,
       "message": "Maybe better to do:\n\n  strings.Join([]string{\n      \".intermediates/bar.impl/android_common/hiddenapi/index.csv\",\n      \"....\",\n  }, \"\\n\")\n\nkeep the indent looking as expected.",
+      "range": {
+        "startLine": 111,
+        "startChar": 20,
+        "endLine": 116,
+        "endChar": 1
+      },
+      "revId": "01289a24076289369e8eb6995d35d276f225d18e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9acf434_0884914f",
+        "filename": "java/hiddenapi_singleton_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-08T11:37:30Z",
+      "side": 1,
+      "message": "It is easier to update this as a single block of text as that is what is output when the test fails than it would be if it was split into separate lines as you suggested. We do this in lots of other places so I will leave it as it for now.",
+      "parentUuid": "005253a6_9853a4a6",
       "range": {
         "startLine": 111,
         "startChar": 20,
