@@ -46,6 +46,30 @@
       },
       "revId": "77e8b7b6d21bbd32b4176703ad7f250e02415907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d4bd5a5_19b8d5ea",
+        "filename": "bazel/properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-08T10:11:26Z",
+      "side": 1,
+      "message": "Okie, let\u0027s do this then",
+      "parentUuid": "05b05060_60d2c7f3",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "77e8b7b6d21bbd32b4176703ad7f250e02415907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
