@@ -46,6 +46,30 @@
       },
       "revId": "e83aa3e1dc8b25f79f66b02d0f082e335b123c58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736777e1_e6b31392",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-08T09:39:39Z",
+      "side": 1,
+      "message": "That sounds like a better idea. Let\u0027s not paper over known bugs.",
+      "parentUuid": "83d0538a_6c449a88",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 57
+      },
+      "revId": "e83aa3e1dc8b25f79f66b02d0f082e335b123c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
