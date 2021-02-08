@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db37ef6d_36b2e57d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-08T12:12:25Z",
+      "side": 1,
+      "message": "Is some word missing here?",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "2553bd3f00aae8e9b870b918e4da16f367c4c85f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e3f43a_1aa3a0db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-08T12:12:25Z",
+      "side": 1,
+      "message": "outside of?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "2553bd3f00aae8e9b870b918e4da16f367c4c85f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93406b48_d09016d1",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-08T12:12:25Z",
+      "side": 1,
+      "message": "\"Actively\" does not tell in what way it contributes compared to inactive ones, can you clarify it in the comment?",
+      "range": {
+        "startLine": 31,
+        "startChar": 49,
+        "endLine": 31,
+        "endChar": 57
+      },
+      "revId": "2553bd3f00aae8e9b870b918e4da16f367c4c85f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c5c4d4_2136b842",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-08T12:12:25Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 115,
+        "startChar": 81,
+        "endLine": 115,
+        "endChar": 83
+      },
+      "revId": "2553bd3f00aae8e9b870b918e4da16f367c4c85f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd690ae_dcf12b0a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-08T12:12:25Z",
+      "side": 1,
+      "message": "Why ConfigurationName here and not module name? Maybe worth adding a comment?",
+      "range": {
+        "startLine": 2153,
+        "startChar": 24,
+        "endLine": 2153,
+        "endChar": 41
+      },
+      "revId": "2553bd3f00aae8e9b870b918e4da16f367c4c85f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
