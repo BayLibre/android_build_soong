@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90fb705_2d85042c",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-08T08:05:00Z",
+      "side": 1,
+      "message": "In what case does the original name alredy have the __bp2build__ prefix? I thought this is method is only called on the Soong-\u003eBazel module boundary, so this would be always false.",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 57
+      },
+      "revId": "e83aa3e1dc8b25f79f66b02d0f082e335b123c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
