@@ -14,7 +14,10 @@
 
 package cc
 
-import "android/soong/android"
+import (
+	"android/soong/android"
+	"android/soong/bazel"
+)
 
 func init() {
 	RegisterLibraryHeadersBuildComponents(android.InitRegistrationContext)
@@ -54,4 +57,30 @@ func prebuiltLibraryHeaderFactory() android.Module {
 	module, library := NewPrebuiltLibrary(android.HostAndDeviceSupported)
 	library.HeaderOnly()
 	return module.Init()
+}
+
+// For bp2build conversion.
+type bazelHeaderLibraryAttributes struct {
+	Hdrs                 bazel.LabelList
+	Includes             []string
+	Include_prefix       string
+	Strip_include_prefix string
+}
+
+type bazelHeaderLibrary struct {
+	android.BazelTargetModuleBase
+	bazelHeaderLibraryAttributes
+}
+
+func (m *bazelHeaderLibrary) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelHeaderLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
+
+func BazelHeaderLibraryFactory() android.Module {
+	module := &bazelHeaderLibrary{}
+	module.AddProperties(&module.bazelHeaderLibraryAttributes)
+	android.InitBazelTargetModule(module)
+	return module
 }

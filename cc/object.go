@@ -18,6 +18,7 @@ import (
 	"fmt"
 
 	"android/soong/android"
+	"android/soong/bazel"
 )
 
 //
@@ -27,6 +28,8 @@ import (
 func init() {
 	android.RegisterModuleType("cc_object", ObjectFactory)
 	android.RegisterSdkMemberType(ccObjectSdkMemberType)
+
+	android.RegisterBp2BuildMutator("cc_object", ObjectBp2Build)
 }
 
 var ccObjectSdkMemberType = &librarySdkMemberType{
@@ -82,7 +85,98 @@ func ObjectFactory() android.Module {
 	module.compiler.appendCflags([]string{"-fno-addrsig"})
 
 	module.sdkMemberTypes = []android.SdkMemberType{ccObjectSdkMemberType}
+
+	module.AddProperties(&module.bazelProperties)
+
 	return module.Init()
+}
+
+// For bp2build conversion.
+type bazelObjectAttributes struct {
+	Hdrs  bazel.LabelList
+	Srcs  bazel.LabelList
+	Copts []string
+	Deps  []string
+}
+
+type bazelObject struct {
+	android.BazelTargetModuleBase
+	bazelObjectAttributes
+}
+
+func (m *bazelObject) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelObject) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
+
+func BazelObjectFactory() android.Module {
+	module := &bazelObject{}
+	module.AddProperties(&module.bazelObjectAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+// ObjectBp2Build is the bp2build converter from cc_object modules to the
+// Bazel equivalent target, plus any necessary include deps for the cc_object.
+func ObjectBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.bazelProperties.Bazel_module.Bp2build_available {
+		return
+	}
+
+	if m.compiler == nil {
+		// a cc_object must have access to the compiler decorator for its props.
+		return
+	}
+
+	var copts []string
+	var srcs []string
+	var localIncludeDirs []string
+	for _, props := range m.compiler.compilerProps() {
+		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
+			copts = baseCompilerProps.Cflags
+			srcs = baseCompilerProps.Srcs
+			localIncludeDirs = baseCompilerProps.Local_include_dirs
+			break
+		}
+	}
+
+	var deps []string
+	// Iterate over the local_include_dirs and generate an include header library for each dir.
+	// TODO: figure out how to deduplicate common local_include_dir libraries per package.
+	for _, include := range localIncludeDirs {
+		depName := m.Name() + "__" + include
+		deps = append(deps, depName)
+
+		props := bazel.NewBazelTargetModuleProperties(
+			depName,
+			"cc_library",
+			"//build/bazel/rules:cc_library.bzl",
+		)
+
+		attrs := &bazelHeaderLibraryAttributes{
+			Hdrs:                 android.BazelLabelForModuleSrc(ctx, []string{include + "/**/*.h"}),
+			Includes:             []string{include},
+			Strip_include_prefix: include,
+		}
+
+		ctx.CreateBazelTargetModule(BazelHeaderLibraryFactory, props, attrs)
+	}
+
+	attrs := &bazelObjectAttributes{
+		Srcs:  android.BazelLabelForModuleSrc(ctx, srcs),
+		Copts: copts,
+		Deps:  deps,
+	}
+
+	props := bazel.NewBazelTargetModuleProperties(
+		m.Name(),
+		"cc_object",
+		"//build/bazel/rules:cc_object.bzl",
+	)
+
+	ctx.CreateBazelTargetModule(BazelObjectFactory, props, attrs)
 }
 
 func (object *objectLinker) appendLdflags(flags []string) {
