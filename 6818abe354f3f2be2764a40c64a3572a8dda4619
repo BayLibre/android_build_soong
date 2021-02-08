@@ -16,6 +16,24 @@
       "message": "It\u0027s worth mentioning why we want to do this and why we think it\u0027s safe.",
       "revId": "6818abe354f3f2be2764a40c64a3572a8dda4619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac2f607_49aefff4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-08T13:13:45Z",
+      "side": 1,
+      "message": "I know I just wanted to upload it to unblock you if you needed it. Added a comment inline in the code.",
+      "parentUuid": "c5c2b6b6_cce405ba",
+      "revId": "6818abe354f3f2be2764a40c64a3572a8dda4619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
