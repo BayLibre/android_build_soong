@@ -16,6 +16,24 @@
       "message": "Should we leave a TODO with this explanation?",
       "revId": "96af35bec670f3b59d0f24a561ccfc622f349fd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93cf7e04_4c9bb8f0",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-08T15:15:49Z",
+      "side": 1,
+      "message": "No need. I don\u0027t expect to come back to change how this works anytime soon either.",
+      "parentUuid": "3f17cc26_7f859d29",
+      "revId": "96af35bec670f3b59d0f24a561ccfc622f349fd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
