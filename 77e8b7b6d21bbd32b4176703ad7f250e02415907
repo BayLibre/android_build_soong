@@ -22,6 +22,30 @@
       },
       "revId": "77e8b7b6d21bbd32b4176703ad7f250e02415907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b05060_60d2c7f3",
+        "filename": "bazel/properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-08T08:59:58Z",
+      "side": 1,
+      "message": "Re prop type: I\u0027m hesitant to overload/generalize this property with anything more than what it means currently: generate a bazel target, or not.\n\nIf we need more features, we can always add another property in the bazel_module {} struct. \n\nRe name: happy to rename it, I like the _available suffix because it\u0027s consistent with the other Android _available prop naming. I also don\u0027t mind renaming it to something like bp2build_generate, if it\u0027s less cryptic/ambiguous.",
+      "parentUuid": "7eb19e50_a036f275",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "77e8b7b6d21bbd32b4176703ad7f250e02415907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
