@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db28e1d5_954313ab",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-09T21:32:51Z",
+      "side": 1,
+      "message": "It\u0027s not really the configuration name (as you define it in hiddenAPI) that\u0027s passed in, is it? Imo \"name\" is less misleading.",
+      "range": {
+        "startLine": 118,
+        "startChar": 65,
+        "endLine": 118,
+        "endChar": 82
+      },
+      "revId": "db959ba68b216954aea738ee007e94aed8a626e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
