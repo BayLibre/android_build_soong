@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71627d24_00b4b689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-02-09T13:24:04Z",
+      "side": 1,
+      "message": "You could put it in tools/platform-compat/ instead but here seems fine too.",
+      "revId": "fdada68320dbfcff7aea5bbe64a328189be494b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
