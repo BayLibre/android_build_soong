@@ -16,6 +16,29 @@
       "message": "I think this change may break host-based fuzz targets because it prevents libc++.so from being included in the package.\n\nI\u0027m still looking into solutions, but I think we may want to allow non-installable shared libs for host, but not for target.",
       "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47359cb6_822c5fe1",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2021-02-09T19:32:44Z",
+      "side": 1,
+      "message": "Since we need libc++ for host-compiled fuzzers, we\u0027ll need to add\n\n\u0026\u0026 !linkable.Host()\n\nhere I think.",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 28
+      },
+      "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
