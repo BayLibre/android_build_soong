@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24727a93_fa1f4952",
+        "filename": "bp2build/cc_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-09T12:31:59Z",
+      "side": 1,
+      "message": "filesystem",
+      "parentUuid": "c9ef9425_bba33761",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "9a93fd01c65a51da039fd10f70986c650375d01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "795ec37d_61098f81",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-09T12:05:22Z",
       "side": 1,
       "message": "Can we put this double loop etc in a utility library so it can be shared between e.g.\n\nsh_conversion_test\ngenrule_conversion_test\ncc_conversion_test\nfilegroup_conversion_test\n\netc?\n\nOr is this too specialized for CC testing?",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 37
+      },
+      "revId": "9a93fd01c65a51da039fd10f70986c650375d01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "936485bd_f3589d64",
+        "filename": "bp2build/cc_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-09T12:31:59Z",
+      "side": 1,
+      "message": "Yeah, definitely an opportunity to reduce boilerplate here. Let\u0027s break up build_conversion_test in a follow up and introduce the utility library then, keeping this CL in scope.",
+      "parentUuid": "795ec37d_61098f81",
       "range": {
         "startLine": 147,
         "startChar": 1,
