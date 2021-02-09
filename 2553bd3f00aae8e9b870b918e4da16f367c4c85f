@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90adf656_3797876b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-09T13:57:30Z",
+      "side": 1,
+      "message": "No, maybe a comma but I\u0027m not sure. To clarify I meant:\n\n\"That is required because when a java_import retrieves its dex file from the apex the dex file has already been encoded with hidden api bits\".\n\nI\u0027ll leave this as is.",
+      "parentUuid": "db37ef6d_36b2e57d",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "2553bd3f00aae8e9b870b918e4da16f367c4c85f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28e3f43a_1aa3a0db",
