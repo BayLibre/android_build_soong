@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41ce18c_007c0341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2021-02-09T17:49:26Z",
+      "side": 1,
+      "message": "I think this change may break host-based fuzz targets because it prevents libc++.so from being included in the package.\n\nI\u0027m still looking into solutions, but I think we may want to allow non-installable shared libs for host, but not for target.",
+      "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
