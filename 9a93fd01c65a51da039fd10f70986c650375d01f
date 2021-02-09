@@ -176,6 +176,29 @@
       },
       "revId": "9a93fd01c65a51da039fd10f70986c650375d01f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94d113f6_588e205d",
+        "filename": "cc/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-09T13:28:21Z",
+      "side": 1,
+      "message": "Why isn\u0027t this an error?",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 74
+      },
+      "revId": "9a93fd01c65a51da039fd10f70986c650375d01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
