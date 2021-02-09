@@ -16,6 +16,29 @@
       "message": "You could put it in tools/platform-compat/ instead but here seems fine too.",
       "revId": "fdada68320dbfcff7aea5bbe64a328189be494b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "773ca50c_341fd52b",
+        "filename": "scripts/hiddenapi/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-09T13:28:09Z",
+      "side": 1,
+      "message": "Why do you need this? (Same goes for the one above, although that\u0027s copied.)",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 36
+      },
+      "revId": "fdada68320dbfcff7aea5bbe64a328189be494b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
