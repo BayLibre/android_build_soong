@@ -16,6 +16,8 @@ package filesystem
 
 import (
 	"fmt"
+	"path/filepath"
+	"regexp"
 
 	"android/soong/android"
 
@@ -58,6 +60,13 @@ type filesystemProperties struct {
 	// Base directory relative to root, to which deps are installed, e.g. "system". Default is "."
 	// (root).
 	Deps_base_dir *string
+
+	// Directories to be created under root. e.g. /dev, /proc, etc.
+	Dirs []string
+
+	// Symbolic links to be created under root with "ln -sf". The format is "dst -> src". e.g.
+	// "init -> system/bin/init"
+	Symlinks []string
 }
 
 // android_filesystem packages a set of modules and their transitive dependencies into a filesystem
@@ -89,6 +98,10 @@ const (
 	compressedCpioType
 	cpioType // uncompressed
 	unknown
+)
+
+var (
+	symlinkRegex = regexp.MustCompile(`^(\S+)\s*->\s*(\S+)$`)
 )
 
 func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
@@ -128,14 +141,14 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.InstallFile(f.installDir, f.installFileName(), f.output)
 }
 
-// root zip will contain deps. Deps will be placed under deps_base_dir.
+// root zip will contain symlinks, dirs, and deps. Deps will be under deps_base_dir.
 func (f *filesystem) buildRootZipWithDeps(ctx android.ModuleContext) android.OutputPath {
 	rootDir := android.PathForModuleGen(ctx, "root").OutputPath
 	builder := android.NewRuleBuilder(pctx, ctx)
 	builder.Command().Text("rm -rf").Text(rootDir.String())
 	builder.Command().Text("mkdir -p").Text(rootDir.String())
 
-	// install deps
+	// first of all, install deps
 	depsZipFile := android.PathForModuleOut(ctx, "temp.zip").OutputPath
 	f.CopyDepsToZip(ctx, depsZipFile)
 
@@ -144,6 +157,29 @@ func (f *filesystem) buildRootZipWithDeps(ctx android.ModuleContext) android.Out
 		BuiltTool("zipsync").
 		FlagWithArg("-d ", rootDir.Join(ctx, depsBase).String()). // OutputPath.Join verifies depsBase
 		Input(depsZipFile)
+
+	// ... and then create dirs and symlinks
+	for _, dir := range f.properties.Dirs {
+		// OutputPath.Join verifies dir
+		builder.Command().Text("mkdir -p").Text(rootDir.Join(ctx, dir).String())
+	}
+
+	for _, symlink := range f.properties.Symlinks {
+		match := symlinkRegex.FindStringSubmatch(symlink)
+		if match == nil {
+			ctx.PropertyErrorf("symlinks", `Didn't understand %q: format is "dst -> src"`, symlink)
+			continue
+		}
+
+		// OutputPath.Join verifies dst
+		dst := rootDir.Join(ctx, match[1])
+
+		// we don't verify src, but just escape for safety.
+		src := match[2]
+
+		builder.Command().Text("mkdir -p").Text(filepath.Dir(dst.String()))
+		builder.Command().Text("ln -sf").Text(proptools.ShellEscape(src)).Text(dst.String())
+	}
 
 	zipOut := android.PathForModuleGen(ctx, "root.zip").OutputPath
 
