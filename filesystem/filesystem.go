@@ -16,6 +16,8 @@ package filesystem
 
 import (
 	"fmt"
+	"path/filepath"
+	"strings"
 
 	"android/soong/android"
 
@@ -54,6 +56,13 @@ type filesystemProperties struct {
 
 	// file_contexts file to make image. Currently, only ext4 is supported.
 	File_contexts *string `android:"path"`
+
+	// Directories to be created under root. e.g. /dev, /proc, etc.
+	Dirs []string
+
+	// Symbolic links to be created under root with "ln -sf". The format is "dst->src". e.g.
+	// "init->system/bin/init"
+	Symlinks []string
 }
 
 // android_filesystem packages a set of modules and their transitive dependencies into a filesystem
@@ -87,6 +96,10 @@ const (
 	unknown
 )
 
+const (
+	symlinkSeparator = "->"
+)
+
 func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 	typeStr := proptools.StringDefault(f.properties.Type, "ext4")
 	switch typeStr {
@@ -104,6 +117,12 @@ func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 
 func (f *filesystem) installFileName() string {
 	return f.BaseModuleName() + ".img"
+}
+
+// Output intermediate directory for root. This will contain directories and symlinks, e.g. "/dev",
+// "/apex", "/init -> /system/bin/init", etc. build_image will include rootDir with "root_dir" prop.
+func (f *filesystem) rootDir(ctx android.ModuleContext) android.OutputPath {
+	return android.PathForModuleOut(ctx, "root").OutputPath
 }
 
 var pctx = android.NewPackageContext("android/soong/filesystem")
@@ -124,25 +143,69 @@ func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.InstallFile(f.installDir, f.installFileName(), f.output)
 }
 
+func (f *filesystem) parseSymlink(ctx android.ModuleContext, symlink string) (dst, src string, err error) {
+	separatorIdx := strings.Index(symlink, symlinkSeparator)
+	if separatorIdx == -1 {
+		return "", "", fmt.Errorf(`Didn't understand %q: the format is "dst%ssrc"`, symlink, symlinkSeparator)
+	}
+
+	dst = symlink[:separatorIdx]
+	if dst == "" {
+		return "", "", fmt.Errorf(`Didn't understand %q: dst is empty"`, symlink)
+	}
+
+	src = symlink[separatorIdx+len(symlinkSeparator):]
+	if src == "" {
+		return "", "", fmt.Errorf(`Didn't understand %q: src is empty"`, symlink)
+	}
+
+	return dst, src, nil
+}
+
+// root dir will contain directories and symlinks.
+func (f *filesystem) generateRootDirRule(ctx android.ModuleContext, builder *android.RuleBuilder) {
+	rootDir := f.rootDir(ctx)
+	builder.Command().Text("rm -rf").Text(rootDir.String())
+	builder.Command().Text("mkdir -p").Text(rootDir.String())
+	for _, dir := range f.properties.Dirs {
+		builder.Command().Text("mkdir -p").Text(filepath.Join(rootDir.String(), dir))
+	}
+
+	for _, symlink := range f.properties.Symlinks {
+		if dst, src, err := f.parseSymlink(ctx, symlink); err == nil {
+			// Move only dst under our intermediate root directory. Don't move src.
+			dst = filepath.Join(rootDir.String(), dst)
+			builder.Command().Text("mkdir -p").Text(filepath.Dir(dst))
+			builder.Command().Text("ln -sf").Text(src).Text(dst)
+		} else {
+			ctx.PropertyErrorf("symlinks", "%s", err.Error())
+		}
+	}
+}
+
 func (f *filesystem) buildImageUsingBuildImage(ctx android.ModuleContext) android.OutputPath {
 	zipFile := android.PathForModuleOut(ctx, "temp.zip").OutputPath
 	f.CopyDepsToZip(ctx, zipFile)
 
-	rootDir := android.PathForModuleOut(ctx, "root").OutputPath
 	builder := android.NewRuleBuilder(pctx, ctx)
+
+	f.generateRootDirRule(ctx, builder)
+
+	// mount point dir will contain microdroid system image contents.
+	mountPointDir := android.PathForModuleOut(ctx, "system").OutputPath
 	builder.Command().
 		BuiltTool("zipsync").
-		FlagWithArg("-d ", rootDir.String()). // zipsync wipes this. No need to clear.
+		FlagWithArg("-d ", mountPointDir.String()). // zipsync wipes this. No need to clear.
 		Input(zipFile)
 
 	propFile, toolDeps := f.buildPropFile(ctx)
 	output := android.PathForModuleOut(ctx, f.installFileName()).OutputPath
 	builder.Command().BuiltTool("build_image").
-		Text(rootDir.String()). // input directory
+		Text(mountPointDir.String()). // input directory
 		Input(propFile).
 		Implicits(toolDeps).
 		Output(output).
-		Text(rootDir.String()) // directory where to find fs_config_files|dirs
+		Text(mountPointDir.String()) // directory where to find fs_config_files|dirs
 
 	// rootDir is not deleted. Might be useful for quick inspection.
 	builder.Build("build_filesystem_image", fmt.Sprintf("Creating filesystem %s", f.BaseModuleName()))
@@ -209,6 +272,8 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.
 	if proptools.String(f.properties.File_contexts) != "" {
 		addPath("selinux_fc", f.buildFileContexts(ctx))
 	}
+
+	addPath("root_dir", f.rootDir(ctx))
 
 	propFile = android.PathForModuleOut(ctx, "prop").OutputPath
 	builder := android.NewRuleBuilder(pctx, ctx)
