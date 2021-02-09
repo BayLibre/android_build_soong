@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d2e424_1289648f",
+        "filename": "cc/object.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-09T14:33:19Z",
+      "side": 1,
+      "message": "This looks unused now.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 35
+      },
+      "revId": "8cab08fcd7d2fc198ce4569d2ba74193bcbe93bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

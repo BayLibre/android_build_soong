@@ -133,6 +133,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b5df26d_bd23baee",
+        "filename": "bp2build/cc_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-09T14:33:19Z",
+      "side": 1,
+      "message": "fs is a quite common shortening throughout Soong\u0027s tests. Idiomatic go tends toward shorter variable names (http://go/go-style/decisions#variable-names). It can feel a bit awkward at first, but it\u0027s surprisingly nice once you get used to it.",
+      "parentUuid": "e095361f_afcb1603",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "9a93fd01c65a51da039fd10f70986c650375d01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "795ec37d_61098f81",
         "filename": "bp2build/cc_conversion_test.go",
         "patchSetId": 3
