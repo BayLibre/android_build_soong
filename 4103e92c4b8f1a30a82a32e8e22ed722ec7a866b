@@ -73,6 +73,30 @@
       },
       "revId": "4103e92c4b8f1a30a82a32e8e22ed722ec7a866b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd3d1ffb_003fd20a",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-09T13:55:16Z",
+      "side": 1,
+      "message": "Well spotted. That is in my plan to clean up this code some more.",
+      "parentUuid": "1f5adaf9_04937799",
+      "range": {
+        "startLine": 138,
+        "startChar": 57,
+        "endLine": 138,
+        "endChar": 68
+      },
+      "revId": "4103e92c4b8f1a30a82a32e8e22ed722ec7a866b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
