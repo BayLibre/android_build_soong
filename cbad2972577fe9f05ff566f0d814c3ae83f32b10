@@ -63,6 +63,30 @@
       },
       "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a569b0f8_42b52f29",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2021-02-09T19:45:27Z",
+      "side": 1,
+      "message": "I don\u0027t actually know. I\u0027m still digging in to figure it out. Adding this check (linkable.IsSkipInstall()) here causes the library to not be built/included in the packaged fuzz targets, and when running the host-based ones without it I get a linker error.",
+      "parentUuid": "913d3502_e6eec9ca",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 28
+      },
+      "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
