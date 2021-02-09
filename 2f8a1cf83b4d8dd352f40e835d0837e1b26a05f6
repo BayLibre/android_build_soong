@@ -16,6 +16,24 @@
       "message": "Is the documentation of cc_object (\"cc_object runs the compiler without running the linker. It is rarely necessary, but sometimes used to generate .s files from .c files to use as input to a cc_genrule module\") out of date?\n\nI don\u0027t see how that maps to cc_library, but from the code, it appears that cc_object *is* the same as cc_library?\n\nhttp://cs/android/build/soong/cc/object.go?l\u003d85\u0026rcl\u003df347b0921489a473793f704eed4c1d63bf989130",
       "revId": "2f8a1cf83b4d8dd352f40e835d0837e1b26a05f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440f5375_2307dcd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-09T13:58:19Z",
+      "side": 1,
+      "message": "Yeah, it all boils down to a cc.Module [1]. cc_ module types are apparently differentiated by the kinds of \"decorator delegates\" it has, like compiler, linker, installer [2]. The cc_object implementation appears to run the linker for certain cases [3].\n\n[1]: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d746-760;drc\u003dmaster\n[2]: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d776-783;drc\u003dmaster\n[3]: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/object.go;l\u003d142;drc\u003dbf4f55f1803be9041c917bb1fba96403f0431725",
+      "parentUuid": "161db697_cb35768d",
+      "revId": "2f8a1cf83b4d8dd352f40e835d0837e1b26a05f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
