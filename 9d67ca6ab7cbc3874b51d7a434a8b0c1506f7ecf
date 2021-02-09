@@ -94,6 +94,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4d08a361_211034ae",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2920,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-09T13:58:07Z",
+      "side": 1,
+      "message": "Agreed. I moved it up originally because I needed it but subsequent refactorings removed that need.\n\nHowever, a follow up should remove this altogether so I\u0027ll leave this here for now.",
+      "parentUuid": "0dc355d9_46f33bc8",
+      "range": {
+        "startLine": 2920,
+        "startChar": 2,
+        "endLine": 2920,
+        "endChar": 41
+      },
+      "revId": "9d67ca6ab7cbc3874b51d7a434a8b0c1506f7ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "92261e43_35507c1a",
         "filename": "java/java.go",
         "patchSetId": 5
@@ -128,6 +152,54 @@
       "writtenOn": "2021-02-09T13:17:29Z",
       "side": 1,
       "message": "Please drop this for consistency with other calls.",
+      "range": {
+        "startLine": 2938,
+        "startChar": 6,
+        "endLine": 2938,
+        "endChar": 16
+      },
+      "revId": "9d67ca6ab7cbc3874b51d7a434a8b0c1506f7ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1417075_b5c4a2db",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2938,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-09T13:58:07Z",
+      "side": 1,
+      "message": "Agreed. I wanted to pass in the primary flag to force any callers to calculate it. However, I think it would be better if the primary flag was calculated consistently in the initHiddenAPI() method so I will do a follow up to clean it up.",
+      "parentUuid": "92261e43_35507c1a",
+      "range": {
+        "startLine": 2938,
+        "startChar": 76,
+        "endLine": 2938,
+        "endChar": 83
+      },
+      "revId": "9d67ca6ab7cbc3874b51d7a434a8b0c1506f7ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc3eeda_775219bb",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2938,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-09T13:58:07Z",
+      "side": 1,
+      "message": "Ack, will do in follow up.",
+      "parentUuid": "7eb9c0fb_7fb522da",
       "range": {
         "startLine": 2938,
         "startChar": 6,
