@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aff010d_372afbb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-09T12:46:15Z",
+      "side": 1,
+      "message": "resulting BUILD file for crt_beginso1: https://gist.github.com/jin/e4ccef4b3248e87a2b7ff0b2d6d4effc\n\nmaybe we could do the auto dep generation from within the cc_object macro itself.. looking.",
+      "revId": "9a93fd01c65a51da039fd10f70986c650375d01f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ef9425_bba33761",
