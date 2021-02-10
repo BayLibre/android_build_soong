@@ -1756,6 +1756,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	if j.shouldInstrumentInApex(ctx) {
 		j.properties.Instrument = true
+		fmt.Println("instrumenting", jarName)
 	}
 
 	if j.shouldInstrument(ctx) {

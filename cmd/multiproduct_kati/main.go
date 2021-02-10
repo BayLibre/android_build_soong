@@ -168,7 +168,7 @@ type mpContext struct {
 func main() {
 	stdio := terminal.StdioImpl{}
 
-	output := terminal.NewStatusOutput(stdio.Stdout(), "", false,
+	output := terminal.NewStatusOutput(stdio.Stdout(), "", terminal.StatusStyleAuto,
 		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD"))
 
 	log := logger.New(output)
@@ -425,7 +425,14 @@ func buildProduct(mpctx *mpContext, product string) {
 		Thread:  mpctx.Tracer.NewThread(product),
 		Status:  &status.Status{},
 	}}
-	ctx.Status.AddOutput(terminal.NewStatusOutput(ctx.Writer, "", false,
+
+	statusStyle := terminal.StatusStyleAuto
+	if build.OsEnvironment().IsEnvTrue("SOONG_UI_ANSI_OUTPUT") {
+		log.Print("SOONG_UI_ANSI_OUTPUT is set, using smart status")
+		statusStyle = terminal.StatusStyleSmart
+	}
+
+	ctx.Status.AddOutput(terminal.NewStatusOutput(ctx.Writer, "", statusStyle,
 		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD")))
 
 	args := append([]string(nil), flag.Args()...)
