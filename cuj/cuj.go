@@ -47,7 +47,7 @@ type TestResults struct {
 
 // Run runs a single build command.  It emulates the "m" command line by calling into Soong UI directly.
 func (t *Test) Run(logsDir string) {
-	output := terminal.NewStatusOutput(os.Stdout, "", false, false)
+	output := terminal.NewStatusOutput(os.Stdout, "", false, false, false)
 
 	log := logger.New(output)
 	defer log.Cleanup()
