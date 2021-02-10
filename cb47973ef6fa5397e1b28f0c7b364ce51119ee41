@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e05c1093_98f1fecf",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-10T04:13:32Z",
+      "side": 1,
+      "message": "Any ideas how to verify the path?",
+      "parentUuid": "44c8a4df_37ebed20",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 17
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13784016_63d42ec7",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2021-02-09T12:47:17Z",
       "side": 1,
       "message": "Make sure that this path is not outside of rootDir",
+      "range": {
+        "startLine": 171,
+        "startChar": 42,
+        "endLine": 171,
+        "endChar": 78
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "526a39bc_93007cc7",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-10T04:13:32Z",
+      "side": 1,
+      "message": "Oh, good catch. Any ideas how to verify the path?",
+      "parentUuid": "fb77b48c_c40eb7b4",
       "range": {
         "startLine": 171,
         "startChar": 42,
@@ -139,6 +187,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b2a937_a7b9d073",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-10T04:13:32Z",
+      "side": 1,
+      "message": "Contents for system and contents for root must be in different directories. I have to separate system directory and root directory, but then meaning of \"rootDir\" becomes ambiguous.",
+      "parentUuid": "1d2fb3d3_5bbc9a43",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 68
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abe93432_dd8b7cd5",
@@ -152,6 +224,30 @@
       "writtenOn": "2021-02-09T12:47:17Z",
       "side": 1,
       "message": "why is this needed?",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 36
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c50fe43_1ca38cb8",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-10T04:13:32Z",
+      "side": 1,
+      "message": "The input directory goes to \"/system\", while the contents of \"root_dir\" goes to root (\"/\").",
+      "parentUuid": "abe93432_dd8b7cd5",
       "range": {
         "startLine": 276,
         "startChar": 0,
