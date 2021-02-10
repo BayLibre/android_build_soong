@@ -285,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14224d8d_26b0a808",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-10T06:00:27Z",
+      "side": 1,
+      "message": "I\u0027ll create \"mount_point\" property.",
+      "parentUuid": "5b2b6b17_fd6223d3",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 68
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abe93432_dd8b7cd5",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
@@ -344,6 +368,30 @@
       "side": 1,
       "message": "Why can\u0027t we just give the root dir as the input of build_image.py?",
       "parentUuid": "5c50fe43_1ca38cb8",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 36
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad993072_b0c7ff9d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-10T06:00:27Z",
+      "side": 1,
+      "message": "Sorry but I don\u0027t understand. For example, if we give \"dir\" as the input, \"dir/foo\" goes to \"system/foo\", not \"foo\"",
+      "parentUuid": "66faf324_2ee1da07",
       "range": {
         "startLine": 276,
         "startChar": 0,
