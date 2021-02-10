@@ -126,8 +126,15 @@ func main() {
 		os.Exit(1)
 	}
 
+	statusStyle := terminal.StatusStyleAuto
+	if c.simpleOutput {
+		statusStyle = terminal.StatusStyleSimple
+	} else if build.OsEnvironment().IsEnvTrue("SOONG_UI_ANSI_OUTPUT") {
+		statusStyle = terminal.StatusStyleSmart
+	}
+
 	// Create a terminal output that mimics Ninja's.
-	output := terminal.NewStatusOutput(c.stdio().Stdout(), os.Getenv("NINJA_STATUS"), c.simpleOutput,
+	output := terminal.NewStatusOutput(c.stdio().Stdout(), os.Getenv("NINJA_STATUS"), statusStyle,
 		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD"))
 
 	// Attach a new logger instance to the terminal output.
