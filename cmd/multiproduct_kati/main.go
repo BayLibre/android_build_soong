@@ -169,7 +169,8 @@ func main() {
 	stdio := terminal.StdioImpl{}
 
 	output := terminal.NewStatusOutput(stdio.Stdout(), "", false,
-		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD"))
+		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD"),
+		build.OsEnvironment().IsEnvTrue("SOONG_UI_ANSI_OUTPUT"))
 
 	log := logger.New(output)
 	defer log.Cleanup()
@@ -425,8 +426,10 @@ func buildProduct(mpctx *mpContext, product string) {
 		Thread:  mpctx.Tracer.NewThread(product),
 		Status:  &status.Status{},
 	}}
+
 	ctx.Status.AddOutput(terminal.NewStatusOutput(ctx.Writer, "", false,
-		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD")))
+		build.OsEnvironment().IsEnvTrue("ANDROID_QUIET_BUILD"),
+		build.OsEnvironment().IsEnvTrue("SOONG_UI_ANSI_OUTPUT")))
 
 	args := append([]string(nil), flag.Args()...)
 	args = append(args, "--skip-soong-tests")
