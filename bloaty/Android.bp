@@ -1,0 +1,34 @@
+python_library_host {
+    name: "bloaty_merger_lib",
+    srcs: [
+        "bloaty_merger.py",
+        "file_sections.proto",
+    ],
+    proto: {
+        canonical_path_from_root: false,
+    },
+    libs: ["ninja_rsp"],
+}
+
+python_test_host {
+    name: "bloaty_merger_test",
+    srcs: [
+        "bloaty_merger_test.py",
+    ],
+    libs: [
+        "bloaty_merger_lib",
+        "pyfakefs",
+    ],
+}
+
+python_binary_host {
+    name: "bloaty_merger",
+    srcs: [
+        "bloaty_merger.py",
+        "file_sections.proto",
+    ],
+    proto: {
+        canonical_path_from_root: false,
+    },
+    libs: ["ninja_rsp"],
+}
