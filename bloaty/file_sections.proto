@@ -1,0 +1,26 @@
+syntax = "proto2";
+
+package file_sections;
+
+message SectionDescriptior {
+  // Name of the section (e.g. .rodata)
+  optional string name = 1;
+
+  // Size of that section as part of the file.
+  optional uint64 file_size = 2;
+
+  // Size of that section when loaded in memory.
+  optional uint64 vm_size = 3;
+}
+
+message File {
+  // Relative path from $OUT_DIR.
+  optional string path = 1;
+
+  // File sections.
+  repeated SectionDescriptior sections = 2;
+}
+
+message FileSizeMetrics {
+  repeated File files = 1;
+}

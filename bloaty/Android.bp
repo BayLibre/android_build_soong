@@ -1,0 +1,47 @@
+python_defaults {
+    name: "bloaty_merger_defaults",
+    version: {
+        py2: {
+            enabled: false,
+        },
+        py3: {
+            enabled: true,
+        },
+    },
+}
+
+python_test_host {
+    name: "bloaty_merger_test",
+    defaults: ["bloaty_merger_defaults"],
+    srcs: [
+        "bloaty_merger_test.py",
+    ],
+    libs: [
+        "bloaty_merger_lib",
+        "pyfakefs",
+    ],
+}
+
+python_library_host {
+    name: "bloaty_merger_lib",
+    defaults: ["bloaty_merger_defaults"],
+    srcs: [
+        "bloaty_merger.py",
+        "file_sections.proto",
+    ],
+    proto: {
+        canonical_path_from_root: false,
+    },
+}
+
+python_binary_host {
+    name: "bloaty_merger",
+    defaults: ["bloaty_merger_defaults"],
+    srcs: [
+        "bloaty_merger.py",
+        "file_sections.proto",
+    ],
+    proto: {
+        canonical_path_from_root: false,
+    },
+}
