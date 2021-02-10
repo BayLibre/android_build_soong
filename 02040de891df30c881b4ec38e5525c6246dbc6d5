@@ -16,6 +16,23 @@
       "message": "PTAL\n\nIt will be better if this change, which involves manual edits, is merged before running the LSC again.",
       "revId": "02040de891df30c881b4ec38e5525c6246dbc6d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ff0fc6_0cd22a3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-10T03:47:58Z",
+      "side": 1,
+      "message": "Sorry if this is spam, Colin.\n\nNot sure if you saw the prior PTAL since it didn\u0027t add you to the attention set.\n\nPTAL",
+      "revId": "02040de891df30c881b4ec38e5525c6246dbc6d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
