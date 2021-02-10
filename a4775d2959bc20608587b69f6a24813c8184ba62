@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9091d925_073ab1f3",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-02-10T21:34:53Z",
+      "side": 1,
+      "message": "please remove",
+      "revId": "a4775d2959bc20608587b69f6a24813c8184ba62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838d27e5_34834cd9",
+        "filename": "ui/terminal/status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-02-10T21:34:53Z",
+      "side": 1,
+      "message": "This implies more than just colors -- it includes overwriting the last line to provide status updates on action start/end. The buildbot log should be the same as the simple status, just without ansi stripping (of colors... I do wonder about our handling of other ansi escapes)",
+      "revId": "a4775d2959bc20608587b69f6a24813c8184ba62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
