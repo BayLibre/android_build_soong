@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecde65f4_e53a9975",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-10T03:46:12Z",
+      "side": 1,
+      "message": "PTAL\n\nIt will be better if this change, which involves manual edits, is merged before running the LSC again.",
+      "revId": "02040de891df30c881b4ec38e5525c6246dbc6d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
