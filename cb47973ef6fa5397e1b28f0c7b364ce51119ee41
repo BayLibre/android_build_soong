@@ -309,6 +309,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b279d2d5_47da9bac",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-10T06:21:27Z",
+      "side": 1,
+      "message": "mount_point is wrong because system is not a mount point. it\u0027s just a directory.",
+      "parentUuid": "14224d8d_26b0a808",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 68
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abe93432_dd8b7cd5",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
@@ -392,6 +416,30 @@
       "side": 1,
       "message": "Sorry but I don\u0027t understand. For example, if we give \"dir\" as the input, \"dir/foo\" goes to \"system/foo\", not \"foo\"",
       "parentUuid": "66faf324_2ee1da07",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 36
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eaf904e_696d2aee",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-10T06:21:27Z",
+      "side": 1,
+      "message": "I think that\u0027s due to `addStr(\"mount_point\", \"system\")`. We should build_image.py to make \"/\" a valid mount point.",
+      "parentUuid": "ad993072_b0c7ff9d",
       "range": {
         "startLine": 276,
         "startChar": 0,
