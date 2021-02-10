@@ -1,3 +1,16 @@
+bootstrap_go_package {
+    name: "soong-bloaty",
+    pkgPath: "android/soong/bloaty",
+    deps: [
+        "blueprint",
+        "soong-android",
+    ],
+    srcs: [
+        "bloaty.go",
+    ],
+    pluginFor: ["soong_build"],
+}
+
 python_library_host {
     name: "bloaty_merger_lib",
     srcs: [
