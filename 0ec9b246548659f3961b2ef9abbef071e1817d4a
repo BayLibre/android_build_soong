@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dae4090_7309c12a",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-10T18:07:27Z",
+      "side": 1,
+      "message": "This won\u0027t work in limited manifest builds. You could wrap it with:\n\"if ctx.Config().FrameworksBaseDirExists() {...}\"",
+      "revId": "0ec9b246548659f3961b2ef9abbef071e1817d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ac6ce3_bf4e9e5d",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-10T18:07:27Z",
+      "side": 1,
+      "message": "android.InList(...) would be simpler.",
+      "revId": "0ec9b246548659f3961b2ef9abbef071e1817d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
