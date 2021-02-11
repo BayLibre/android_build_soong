@@ -255,7 +255,7 @@ func (recoverySnapshotImage) imageVariantName(cfg android.DeviceConfig) string {
 }
 
 func (recoverySnapshotImage) moduleNameSuffix() string {
-	return recoverySuffix
+	return RecoverySuffix
 }
 
 var VendorSnapshotImageSingleton vendorSnapshotImage
