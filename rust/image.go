@@ -36,7 +36,7 @@ func (mod *Module) RamdiskVariantNeeded(android.BaseModuleContext) bool {
 }
 
 func (mod *Module) RecoveryVariantNeeded(android.BaseModuleContext) bool {
-	return mod.InRecovery()
+	return mod.Properties.RecoveryVariantNeeded
 }
 
 func (mod *Module) ExtraImageVariations(android.BaseModuleContext) []string {
@@ -48,8 +48,7 @@ func (ctx *moduleContext) ProductSpecific() bool {
 }
 
 func (mod *Module) InRecovery() bool {
-	// TODO(b/165791368)
-	return false
+	return mod.ModuleBase.InRecovery() || mod.ModuleBase.InstallInRecovery()
 }
 
 func (mod *Module) InVendorRamdisk() bool {
@@ -124,6 +123,7 @@ func (mod *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 
 	coreVariantNeeded := true
 	vendorRamdiskVariantNeeded := false
+	recoveryVariantNeeded := false
 
 	var vendorVariants []string
 
@@ -161,6 +161,14 @@ func (mod *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 		}
 	}
 
+	if Bool(mod.Properties.Recovery_available) {
+		if lib, ok := mod.compiler.(libraryInterface); !ok || (ok && lib.buildShared()) {
+			mctx.PropertyErrorf("recovery_available", "cannot be set for rust_ffi or rust_ffi_shared modules.")
+		} else {
+			recoveryVariantNeeded = true
+		}
+	}
+
 	if vendorSpecific {
 		if lib, ok := mod.compiler.(libraryInterface); !ok || (ok && (lib.buildShared() || lib.buildDylib() || lib.buildRlib())) {
 			mctx.ModuleErrorf("Rust vendor specific modules are currently only supported for rust_ffi_static modules.")
@@ -172,6 +180,7 @@ func (mod *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 
 	mod.Properties.CoreVariantNeeded = coreVariantNeeded
 	mod.Properties.VendorRamdiskVariantNeeded = vendorRamdiskVariantNeeded
+	mod.Properties.RecoveryVariantNeeded = recoveryVariantNeeded
 
 	for _, variant := range android.FirstUniqueStrings(vendorVariants) {
 		mod.Properties.ExtraVariants = append(mod.Properties.ExtraVariants, cc.VendorVariationPrefix+variant)

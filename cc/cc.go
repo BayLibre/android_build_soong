@@ -1597,7 +1597,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	} else if c.InVendorRamdisk() && !c.OnlyInVendorRamdisk() {
 		c.Properties.SubName += VendorRamdiskSuffix
 	} else if c.InRecovery() && !c.OnlyInRecovery() {
-		c.Properties.SubName += recoverySuffix
+		c.Properties.SubName += RecoverySuffix
 	} else if c.IsSdkVariant() && (c.Properties.SdkAndPlatformVariantVisibleToMake || c.SplitPerApiLevel()) {
 		c.Properties.SubName += sdkSuffix
 		if c.SplitPerApiLevel() {
@@ -2929,7 +2929,7 @@ func (c *Module) makeLibName(ctx android.ModuleContext, ccDep LinkableInterface,
 	} else if ccDep.InVendorRamdisk() && !ccDep.OnlyInVendorRamdisk() {
 		return libName + VendorRamdiskSuffix
 	} else if ccDep.InRecovery() && !ccDep.OnlyInRecovery() {
-		return libName + recoverySuffix
+		return libName + RecoverySuffix
 	} else if ccDep.Target().NativeBridge == android.NativeBridgeEnabled {
 		return libName + nativeBridgeSuffix
 	} else {

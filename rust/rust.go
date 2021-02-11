@@ -76,14 +76,18 @@ type BaseProperties struct {
 	// Set by imageMutator
 	CoreVariantNeeded          bool     `blueprint:"mutated"`
 	VendorRamdiskVariantNeeded bool     `blueprint:"mutated"`
+	RecoveryVariantNeeded      bool     `blueprint:"mutated"`
 	ExtraVariants              []string `blueprint:"mutated"`
 
 	// Make this module available when building for vendor ramdisk.
 	// On device without a dedicated recovery partition, the module is only
 	// available after switching root into
 	// /first_stage_ramdisk. To expose the module before switching root, install
-	// the recovery variant instead (TODO(b/165791368) recovery not yet supported)
+	// the recovery variant instead
 	Vendor_ramdisk_available *bool
+
+	// Make this module available when building for recovery
+	Recovery_available *bool
 
 	// Minimum sdk version that the artifact should support when it runs as part of mainline modules(APEX).
 	Min_sdk_version *string
@@ -669,6 +673,8 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		mod.Properties.SubName += cc.VendorSuffix
 	} else if mod.InVendorRamdisk() && !mod.OnlyInVendorRamdisk() {
 		mod.Properties.SubName += cc.VendorRamdiskSuffix
+	} else if mod.InRecovery() && !mod.OnlyInRecovery() {
+		mod.Properties.SubName += cc.RecoverySuffix
 	}
 
 	if !toolchain.Supported() {
