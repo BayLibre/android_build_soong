@@ -52,6 +52,15 @@ func (tidy *tidyFeature) deps(ctx DepsContext, deps Deps) Deps {
 	return deps
 }
 
+func containHeaderFilter(flags []string) bool {
+	for _, s := range flags {
+		if strings.Contains(s, "-header-filter=") {
+			return true
+		}
+	}
+	return false
+}
+
 func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	CheckBadTidyFlags(ctx, "tidy_flags", tidy.Properties.Tidy_flags)
 	CheckBadTidyChecks(ctx, "tidy_checks", tidy.Properties.Tidy_checks)
@@ -75,9 +84,12 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	}
 	esc := proptools.NinjaAndShellEscapeList
 	flags.TidyFlags = append(flags.TidyFlags, esc(tidy.Properties.Tidy_flags)...)
-	// If TidyFlags is empty, add default header filter.
-	if len(flags.TidyFlags) == 0 {
-		headerFilter := "-header-filter=\"(" + ctx.ModuleDir() + "|${config.TidyDefaultHeaderDirs})\""
+	// If TidyFlags does not contain -header-filter, add default header filter.
+	if !containHeaderFilter(flags.TidyFlags) {
+		headerFilter := "-header-filter=\"(" + ctx.ModuleDir() + "/|${config.TidyDefaultHeaderDirs})\""
+		if ctx.Config().Getenv("DEFAULT_TIDY_HEADER_DIRS") == "" {
+			headerFilter = "-header-filter=\"" + ctx.ModuleDir() + "/\""
+		}
 		flags.TidyFlags = append(flags.TidyFlags, headerFilter)
 	}
 
