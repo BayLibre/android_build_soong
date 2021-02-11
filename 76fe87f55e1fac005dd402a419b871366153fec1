@@ -22,6 +22,30 @@
       },
       "revId": "76fe87f55e1fac005dd402a419b871366153fec1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "544ad1e2_2272829a",
+        "filename": "rust/benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1812258
+      },
+      "writtenOn": "2021-02-11T12:59:06Z",
+      "side": 1,
+      "message": "Do you mean line 42 where I use NewBaseCompiler? Can you show me some example?  I was simply following the tests.go implementation which seems similar enough.",
+      "parentUuid": "496c28f5_51937989",
+      "range": {
+        "startLine": 80,
+        "startChar": 18,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "76fe87f55e1fac005dd402a419b871366153fec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
