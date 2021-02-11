@@ -16,6 +16,24 @@
       "message": "FTR what is this file used for? Do we need to create something like this for different modules?",
       "revId": "973d31c75711b36a9e5300a5daad3258f163a34b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b733c0ff_f4850873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-11T17:49:51Z",
+      "side": 1,
+      "message": "Not entirely sure. I think it\u0027s used for play targeting purposes before the SDK is finalized (so the sha here is the target). This is so we don\u0027t send modules to a device that isn\u0027t compatible with them.",
+      "parentUuid": "b24584c6_b411c1e0",
+      "revId": "973d31c75711b36a9e5300a5daad3258f163a34b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
