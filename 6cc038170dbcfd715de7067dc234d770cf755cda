@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "189ca2b5_a14a5067",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-11T03:47:18Z",
+      "side": 1,
+      "message": "This is just a small start at cleaning up build_conversion_test.go. We could write some utility functions to make testing simpler in a followup CL.",
+      "revId": "6cc038170dbcfd715de7067dc234d770cf755cda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
