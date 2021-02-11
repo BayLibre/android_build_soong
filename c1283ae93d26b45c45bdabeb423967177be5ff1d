@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2dbb375_2bb341f9",
+        "filename": "bloaty/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-11T22:42:58Z",
+      "side": 1,
+      "message": "I think these are the defaults and don\u0027t need to be specified.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff0898f5_1ba8a409",
+        "filename": "bloaty/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-11T22:42:58Z",
+      "side": 1,
+      "message": "Does this library serve any purpose since it\u0027s only used in one place?",
+      "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a1f28e_1c0461ed",
+        "filename": "bloaty/bloaty_merger.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-11T22:42:58Z",
+      "side": 1,
+      "message": "Add license headers",
+      "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
