@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa50f53b_ba00a258",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-11T05:15:50Z",
+      "side": 1,
+      "message": "This looks a little out of place here. Why not add bazelProperties to BaseProperties? Would that also let you avoid the AddProperties call later in object.go?",
+      "range": {
+        "startLine": 818,
+        "startChar": 1,
+        "endLine": 818,
+        "endChar": 33
+      },
+      "revId": "253a624f136553eee266c04039247ec9fbb6ba85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
