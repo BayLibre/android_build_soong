@@ -16,6 +16,24 @@
       "message": "The previous patch set broke Android by accidentally preventing the annotations from \u003cx\u003e-hiddenapi modules from being included in the hidden API flags. I added a test in https://r.android.com/c/1584964 to detect that and the corrected the mistake in here.\n\nPTAL.",
       "revId": "f75e527c2b65bf94252188f5d032eadae68a8492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97a230e3_def82a07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-11T16:21:28Z",
+      "side": 1,
+      "message": "Hmm, should have spotted that. But good to have a test now.",
+      "parentUuid": "2a58657c_15d1e5b5",
+      "revId": "f75e527c2b65bf94252188f5d032eadae68a8492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
