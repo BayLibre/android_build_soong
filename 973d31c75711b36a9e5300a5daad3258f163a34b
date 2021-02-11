@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b24584c6_b411c1e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-11T10:45:56Z",
+      "side": 1,
+      "message": "FTR what is this file used for? Do we need to create something like this for different modules?",
+      "revId": "973d31c75711b36a9e5300a5daad3258f163a34b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
