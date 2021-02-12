@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a151b4a_f3080623",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-12T17:31:01Z",
+      "side": 1,
+      "message": "This is unused now",
+      "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8349246c_9ec06288",
+        "filename": "cc/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-12T17:31:01Z",
+      "side": 1,
+      "message": "Same as the Make patch, this would be simpler if you always included the parentheses.",
+      "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
