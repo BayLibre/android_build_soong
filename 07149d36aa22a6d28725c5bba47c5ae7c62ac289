@@ -16,6 +16,24 @@
       "message": "\u003cclueless\u003e\nWhat\u0027s TEST_MAPPING?\n\u003c/clueless\u003e",
       "revId": "07149d36aa22a6d28725c5bba47c5ae7c62ac289",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c0aa166_c8f9002f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-12T10:24:12Z",
+      "side": 1,
+      "message": "It is a file that gives Gerrit/TreeHugger information about what tests to run based on which files have been changed.\n\nSee https://source.android.com/compatibility/tests/development/test-mapping",
+      "parentUuid": "145c50a5_b3bcbba2",
+      "revId": "07149d36aa22a6d28725c5bba47c5ae7c62ac289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
