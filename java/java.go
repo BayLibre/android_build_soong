@@ -1370,11 +1370,11 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 					jars = append(jars, classes)
 				}
 			}
-			if len(srcJars) > 0 {
-				classes := j.compileJavaClasses(ctx, jarName, len(shardSrcs),
-					nil, srcJars, flags, extraJarDeps)
-				jars = append(jars, classes)
-			}
+            for idx, srcJar := range srcJars {
+                classes := j.compileJavaClasses(ctx, jarName, idx + len(shardSrcs),
+                    nil, android.Paths{srcJar}, flags, extraJarDeps)
+                jars = append(jars, classes)
+            }
 		} else {
 			classes := j.compileJavaClasses(ctx, jarName, -1, uniqueSrcFiles, srcJars, flags, extraJarDeps)
 			jars = append(jars, classes)
