@@ -87,6 +87,30 @@
       },
       "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "925a3437_5ec987e6",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2021-02-12T19:08:39Z",
+      "side": 1,
+      "message": "Done.\n\nArbitrarily run 2 fuzzers successfully on device and host.",
+      "parentUuid": "a569b0f8_42b52f29",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 28
+      },
+      "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
