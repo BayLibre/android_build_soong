@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "518f42cd_af5ca2e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-02-12T16:43:06Z",
+      "side": 1,
+      "message": "LGTM, could you add some tests in a new benchmark_test.go? Some tests that pop to mind is ensuring the rustlib / stdlib linkage is as expected, and that libcriterion is added as a dependency.\n\nThanks!",
+      "revId": "e93cdd4b6b416ce862eb746ca3ce6a3e84795c39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

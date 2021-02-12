@@ -46,6 +46,30 @@
       },
       "revId": "76fe87f55e1fac005dd402a419b871366153fec1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1d8e27_fe574876",
+        "filename": "rust/benchmark.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-02-12T16:43:06Z",
+      "side": 1,
+      "message": "You got it in a subsequent patchset already, it was the line on compilerDeps (this comment displays correctly if you view patchset 1). Thanks!",
+      "parentUuid": "544ad1e2_2272829a",
+      "range": {
+        "startLine": 80,
+        "startChar": 18,
+        "endLine": 80,
+        "endChar": 30
+      },
+      "revId": "76fe87f55e1fac005dd402a419b871366153fec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
