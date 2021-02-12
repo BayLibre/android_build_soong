@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "487efad9_b8dbd1a9",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-12T01:15:30Z",
+      "side": 1,
+      "message": "This could be android.PrefixInList(flags.TidyFlags, \"-header-filter\u003d\")",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "ea450f4eef24e23ddba88341251fdbb04cd1ce4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb67894_8dffe8ee",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-12T01:15:30Z",
+      "side": 1,
+      "message": "This is a little strange, since is checking DEFAULT_TIDY_HEADER_DIRS to decide whether or not to use ${config.TidyDefaultHeaderDirs}.  I\u0027d suggest either getting rid of ${config.TidyDefaultHeaderDirs} and using DEFAULT_TIDY_HEADER_DIRS directly here, or putting this logic in a function in cc/config/tidy.go next to the ${config.TidyDefaultHeaderDirs} definition.",
+      "revId": "ea450f4eef24e23ddba88341251fdbb04cd1ce4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
