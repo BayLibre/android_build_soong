@@ -1842,6 +1842,10 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			}
 		}
 
+		if j.minSdkVersion() != j.sdkVersion() {
+			j.linter.properties.Lint.Error_checks = append(j.linter.properties.Lint.Error_checks, "NewApi")
+		}
+
 		j.linter.name = ctx.ModuleName()
 		j.linter.srcs = srcFiles
 		j.linter.srcJars = srcJars
