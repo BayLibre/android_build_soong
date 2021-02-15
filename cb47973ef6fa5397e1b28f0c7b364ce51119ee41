@@ -476,6 +476,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f30666ad_389d2acd",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-15T04:19:59Z",
+      "side": 1,
+      "message": "we need dirs, symlinks for cpio images as well.",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 100
+      },
+      "revId": "cb47973ef6fa5397e1b28f0c7b364ce51119ee41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "895f4590_8b947299",
         "filename": "filesystem/filesystem.go",
         "patchSetId": 1
