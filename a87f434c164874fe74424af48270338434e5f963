@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "268f675f_91842320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-15T20:18:24Z",
+      "side": 1,
+      "message": "Relies on https://github.com/google/blueprint/pull/345 for ReplaceExtension",
+      "revId": "a87f434c164874fe74424af48270338434e5f963",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

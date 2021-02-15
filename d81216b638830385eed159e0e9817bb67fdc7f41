@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d3c780_be217063",
+        "filename": "bloaty/bloaty.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-15T20:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86509d7c_7f552fd6",
+      "revId": "d81216b638830385eed159e0e9817bb67fdc7f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d30a0098_5949ff64",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-11T22:42:25Z",
       "side": 1,
       "message": "We\u0027re trying to avoid this pattern, as it creates untraceable dependencies between modules.  See go/soong-incremental-analysis for more info.\n\nI\u0027d suggest using ctx.Provider() to publish the path, then SingletonContext.VisitAllModules with SingletonContext.ModuleProvider to retrieve it.",
+      "revId": "d81216b638830385eed159e0e9817bb67fdc7f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f475db9_9f0197ed",
+        "filename": "bloaty/bloaty.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-15T20:18:24Z",
+      "side": 1,
+      "message": "Great, that simplifies the logic. Done.",
+      "parentUuid": "d30a0098_5949ff64",
       "revId": "d81216b638830385eed159e0e9817bb67fdc7f41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36f9715a_22166883",
+        "filename": "bloaty/bloaty.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-15T20:18:24Z",
+      "side": 1,
+      "message": "I believe this is now handled using the response file?",
+      "parentUuid": "1090ee13_566d22ee",
+      "revId": "d81216b638830385eed159e0e9817bb67fdc7f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42426058_ecea5610",
         "filename": "bloaty/bloaty.go",
         "patchSetId": 2
@@ -65,6 +119,24 @@
       "writtenOn": "2021-02-11T22:42:25Z",
       "side": 1,
       "message": "Ninja has support for writing a list of files to a file through RspFileContent and RspFile, although it needs unescaping.  See build/soong/zip/zip.go ReadRespFile.",
+      "revId": "d81216b638830385eed159e0e9817bb67fdc7f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d748b08_964c01a2",
+        "filename": "bloaty/bloaty.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-15T20:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42426058_ecea5610",
       "revId": "d81216b638830385eed159e0e9817bb67fdc7f41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
