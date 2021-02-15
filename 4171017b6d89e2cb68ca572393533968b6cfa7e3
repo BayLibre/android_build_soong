@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91603d4a_0ef51d86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-15T23:49:00Z",
+      "side": 1,
+      "message": "This CL is a bit rough around the edges: Besides the requisite tests, it still creates .deapexer modules for the disabled APEXes, which would be cleaner to avoid. Appreciate tips on how to do that.\n\nI\u0027d like input on the approach, but in the interest of time I\u0027d prefer to follow up with tests in a later CL.",
+      "revId": "4171017b6d89e2cb68ca572393533968b6cfa7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
