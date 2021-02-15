@@ -16,6 +16,69 @@
       "message": "Further instructions Re testing:\n\nI have made further changes (coming in another CL soon) that enable the NewApi check as error for modules that have min sdk !\u003d sdk version. This detects some errors in some modules and after adding the correct baseline they stop failing.",
       "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69c7faf_3a528139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-15T16:52:14Z",
+      "side": 1,
+      "message": "LGTM, +colin also",
+      "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46d8e41_e2a50d0c",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-15T16:52:14Z",
+      "side": 1,
+      "message": "didn\u0027t?",
+      "range": {
+        "startLine": 1250,
+        "startChar": 11,
+        "endLine": 1250,
+        "endChar": 14
+      },
+      "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42d4995_c465e254",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-15T16:52:14Z",
+      "side": 1,
+      "message": "maybe make it an error to specify it but the specified file not existing? the default not existing seems fine",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 45
+      },
+      "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
