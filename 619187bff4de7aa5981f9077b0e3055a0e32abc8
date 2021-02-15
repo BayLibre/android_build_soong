@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f34b7fd_4f103653",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-15T08:17:13Z",
+      "side": 1,
+      "message": "this seems to be too many unzip/zip, which will be problematic when the size of this becomes large.\n\ncan we have two zips: (1) from CopyDepsToZip, (2) for root dir (for dirs, symlinks etc.) instead?\n\nThen we will unzip them in separate temp directories and move them to rootDir.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 56
+      },
+      "revId": "619187bff4de7aa5981f9077b0e3055a0e32abc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
