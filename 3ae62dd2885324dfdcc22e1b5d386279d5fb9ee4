@@ -16,6 +16,46 @@
       "message": "Please also refer to aosp/1588295",
       "revId": "3ae62dd2885324dfdcc22e1b5d386279d5fb9ee4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32cdf32_855e5064",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-15T08:30:36Z",
+      "side": 1,
+      "message": "the change itself looks good to me, but should be rebased after the deps_base_dir change is modified.",
+      "revId": "3ae62dd2885324dfdcc22e1b5d386279d5fb9ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd869cf_4b7ae4c6",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-15T08:30:36Z",
+      "side": 1,
+      "message": "move this near to where it is referenced, or perhaps inside the function.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "3ae62dd2885324dfdcc22e1b5d386279d5fb9ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
