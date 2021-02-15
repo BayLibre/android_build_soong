@@ -56,6 +56,30 @@
       },
       "revId": "3ae62dd2885324dfdcc22e1b5d386279d5fb9ee4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb691c24_4feb18f5",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-15T08:34:53Z",
+      "side": 1,
+      "message": "I\u0027m worried about the regex compile cost. Will it be fine?",
+      "parentUuid": "afd869cf_4b7ae4c6",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "3ae62dd2885324dfdcc22e1b5d386279d5fb9ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
