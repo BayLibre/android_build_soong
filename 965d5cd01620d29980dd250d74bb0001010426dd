@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ff057b_05e667c1",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-02-15T11:05:36Z",
+      "side": 1,
+      "message": "better to leave as just \"name\" ?",
+      "range": {
+        "startLine": 115,
+        "startChar": 65,
+        "endLine": 115,
+        "endChar": 82
+      },
+      "revId": "965d5cd01620d29980dd250d74bb0001010426dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
