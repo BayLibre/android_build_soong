@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9eb091_f8f3592d",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-15T09:11:50Z",
+      "side": 1,
+      "message": "I think this is unnecessary and even dangerous because what\u0027s in dirs and symlinks can be silently ignored.",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 85
+      },
+      "revId": "f278323cc9f291562c0c897fb315811d5aeef12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bca2803_0b24e05a",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-15T09:11:50Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 288,
+        "startChar": 2,
+        "endLine": 288,
+        "endChar": 15
+      },
+      "revId": "f278323cc9f291562c0c897fb315811d5aeef12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
