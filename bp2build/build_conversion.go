@@ -358,10 +358,29 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 		ret += makeIndent(indent)
 		ret += "]"
 	case reflect.Struct:
+		if glob, ok := propertyValue.Interface().(android.BazelGlob); ok {
+			// Bazel Glob struct
+			ret = "glob([\n"
+			for i, pattern := range glob.Include {
+				ret += makeIndent(indent + 1)
+				// In globs, no comma after last element
+				if i == len(glob.Include)-1 {
+					ret += fmt.Sprintf("\"%s\"\n", pattern)
+				} else {
+					ret += fmt.Sprintf("\"%s\",\n", pattern)
+				}
+			}
+			ret += makeIndent(indent)
+			ret += "])"
+			return ret, nil
+		}
+
 		if labels, ok := propertyValue.Interface().(bazel.LabelList); ok {
 			// TODO(b/165114590): convert glob syntax
 			return prettyPrint(reflect.ValueOf(labels.Includes), indent)
-		} else if label, ok := propertyValue.Interface().(bazel.Label); ok {
+		}
+
+		if label, ok := propertyValue.Interface().(bazel.Label); ok {
 			return fmt.Sprintf("%q", label.Label), nil
 		}
 

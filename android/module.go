@@ -834,6 +834,11 @@ type commonProperties struct {
 	ImageVariation string `blueprint:"mutated"`
 }
 
+// TODO: Support full Bazel glob interface (https://docs.bazel.build/versions/master/be/functions.html#glob)
+type BazelGlob struct {
+	Include []string
+}
+
 type distProperties struct {
 	// configuration to distribute output files from this module to the distribution
 	// directory (default: $OUT/dist, configurable with $DIST_DIR)
