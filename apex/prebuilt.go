@@ -40,12 +40,49 @@ var (
 		"abis", "allow-prereleased", "sdk-version")
 )
 
+func init() {
+	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("override_prebuilt_apex_dep", overridePrebuiltApexDep).Parallel()
+		ctx.BottomUp("disable_overridden_prebuilt_apex", disableOverriddenPrebuiltApex).Parallel()
+	})
+}
+
+var overriddenPrebuiltApexDepTag overriddenPrebuiltApexDependencyTag
+
+// overridePrebuiltApexDep registers dependencies from overridden modules in the
+// `overrides` property to this module, to allow them to detect that they have
+// been overridden (see disableOverriddenPrebuiltApex).
+func overridePrebuiltApexDep(ctx android.BottomUpMutatorContext) {
+	if p, ok := ctx.Module().(prebuilt); ok {
+		for _, overridden := range p.getOverrides() {
+			prebuiltOverridden := "prebuilt_" + overridden
+			if ctx.OtherModuleExists(prebuiltOverridden) {
+				ctx.AddReverseDependency(ctx.Module(), overriddenPrebuiltApexDepTag, prebuiltOverridden)
+			}
+		}
+	}
+}
+
+// disableOverriddenPrebuiltApex disables prebuilt modules that have been
+// overridden by other prebuilt modules through their `overrides` properties.
+func disableOverriddenPrebuiltApex(ctx android.BottomUpMutatorContext) {
+	if p, ok := ctx.Module().(prebuilt); ok {
+		ctx.VisitDirectDepsWithTag(overriddenPrebuiltApexDepTag, func(m android.Module) {
+			p.setForceDisable(true)
+		})
+	}
+}
+
 type prebuilt interface {
+	android.Module
+	getOverrides() []string
 	isForceDisabled() bool
+	setForceDisable(bool)
 	InstallFilename() string
 }
 
 type prebuiltCommon struct {
+	android.ModuleBase
 	prebuilt   android.Prebuilt
 	properties prebuiltCommonProperties
 }
@@ -58,6 +95,10 @@ type prebuiltCommonProperties struct {
 	ForceDisable bool `blueprint:"mutated"`
 }
 
+type overriddenPrebuiltApexDependencyTag struct {
+	blueprint.BaseDependencyTag
+}
+
 func (p *prebuiltCommon) Prebuilt() *android.Prebuilt {
 	return &p.prebuilt
 }
@@ -66,7 +107,15 @@ func (p *prebuiltCommon) isForceDisabled() bool {
 	return p.properties.ForceDisable
 }
 
-func (p *prebuiltCommon) checkForceDisable(ctx android.ModuleContext) bool {
+func (p *prebuiltCommon) setForceDisable(disable bool) {
+	p.properties.ForceDisable = disable
+}
+
+func (p *prebuiltCommon) checkForceDisable(ctx android.BaseModuleContext) bool {
+	if p.properties.ForceDisable {
+		return true
+	}
+
 	// If the device is configured to use flattened APEX, force disable the prebuilt because
 	// the prebuilt is a non-flattened one.
 	forceDisable := ctx.Config().FlattenApex()
@@ -92,7 +141,6 @@ func (p *prebuiltCommon) checkForceDisable(ctx android.ModuleContext) bool {
 }
 
 type Prebuilt struct {
-	android.ModuleBase
 	prebuiltCommon
 
 	properties PrebuiltProperties
@@ -165,12 +213,17 @@ type PrebuiltProperties struct {
 	// module is used as the file name
 	Filename *string
 
-	// Names of modules to be overridden. Listed modules can only be other binaries
-	// (in Make or Soong).
-	// This does not completely prevent installation of the overridden binaries, but if both
-	// binaries would be installed by default (in PRODUCT_PACKAGES) the other binary will be removed
-	// from PRODUCT_PACKAGES.
+	// Names of modules to be overridden. Listed modules can only be other
+	// prebuilt_apex'es. This has two effects: 1) Members of the overridden APEXes
+	// are considered members of this one, including APEX associations done in
+	// PRODUCT_BOOT_JARS, PRODUCT_BOOT_JARS_EXTRA, and ART_APEX_JARS. 2) If both
+	// modules would be installed by default (in PRODUCT_PACKAGES) the other
+	// module will be removed from PRODUCT_PACKAGES.
 	Overrides []string
+}
+
+func (p *Prebuilt) getOverrides() []string {
+	return p.properties.Overrides
 }
 
 func (a *Prebuilt) hasSanitizedSource(sanitizer string) bool {
@@ -321,6 +374,9 @@ var _ ApexInfoMutator = (*Prebuilt)(nil)
 //   extra copying of files. Contrast that with source apex modules that has to build each variant
 //   from source.
 func (p *Prebuilt) ApexInfoMutator(mctx android.TopDownMutatorContext) {
+	if p.prebuiltCommon.checkForceDisable(mctx) {
+		return
+	}
 
 	// Collect direct dependencies into contents.
 	contents := make(map[string]android.ApexMembership)
@@ -362,10 +418,16 @@ func (p *Prebuilt) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 		Contents: apexContents,
 	})
 
+	// Seed ApexInfo.InApexes with both our own module and the APEXes we override.
+	// In particular this makes APEX lookups in boot_jars.go find the overriding
+	// APEX rather than the overridden one. The overridden APEXes are disabled
+	// through the disableOverriddenPrebuiltApex mutator and don't get here.
+	inApexes := append([]string{mctx.ModuleName()}, p.properties.Overrides...)
+
 	// Create an ApexInfo for the prebuilt_apex.
 	apexInfo := android.ApexInfo{
 		ApexVariationName: mctx.ModuleName(),
-		InApexes:          []string{mctx.ModuleName()},
+		InApexes:          inApexes,
 		ApexContents:      []*android.ApexContents{apexContents},
 		ForPrebuiltApex:   true,
 	}
@@ -428,7 +490,6 @@ func (p *Prebuilt) AndroidMkEntries() []android.AndroidMkEntries {
 }
 
 type ApexSet struct {
-	android.ModuleBase
 	prebuiltCommon
 
 	properties ApexSetProperties
@@ -501,6 +562,10 @@ func (a *ApexSet) prebuiltSrcs(ctx android.BaseModuleContext) []string {
 	}
 
 	return srcs
+}
+
+func (a *ApexSet) getOverrides() []string {
+	return a.properties.Overrides
 }
 
 func (a *ApexSet) hasSanitizedSource(sanitizer string) bool {
