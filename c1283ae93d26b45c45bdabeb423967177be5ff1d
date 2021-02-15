@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ecceeb_21109bbb",
+        "filename": "bloaty/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-15T20:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2dbb375_2bb341f9",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff0898f5_1ba8a409",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8d60b5c_1cbde7dc",
+        "filename": "bloaty/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-15T20:15:39Z",
+      "side": 1,
+      "message": "To be included for the unit tests. I don\u0027t think it is possible to add a python_binary_host as dependency for a python_test_host.",
+      "parentUuid": "ff0898f5_1ba8a409",
+      "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a1f28e_1c0461ed",
         "filename": "bloaty/bloaty_merger.py",
         "patchSetId": 1
@@ -54,6 +96,24 @@
       "writtenOn": "2021-02-11T22:42:58Z",
       "side": 1,
       "message": "Add license headers",
+      "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cdaea7e_d960e45b",
+        "filename": "bloaty/bloaty_merger.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-15T20:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3a1f28e_1c0461ed",
       "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
