@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d577daf2_134bf3bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1697666
+      },
+      "writtenOn": "2021-02-15T17:58:12Z",
+      "side": 1,
+      "message": "Tamas/Daniel can you confirm that you agree with Dan\u0027s suggestion and if so abandon the patch? Sorry for causing extra work at your end. ",
+      "revId": "d4ae06bb0951aa800f83d636bfe2266a36047a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f54c3e45_40b87762",
