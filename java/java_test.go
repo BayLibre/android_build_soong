@@ -1179,6 +1179,78 @@ func TestIncludeSrcs(t *testing.T) {
 	}
 }
 
+func TestJavaLint(t *testing.T) {
+	ctx, _ := testJavaWithFS(t, `
+		java_library {
+			name: "foo",
+			srcs: [
+				"a.java",
+				"b.java",
+				"c.java",
+			],
+			min_sdk_version: "29",
+			sdk_version: "system_current",
+		}
+       `, map[string][]byte{
+		"lint-baseline.xml": nil,
+	})
+
+	foo := ctx.ModuleForTests("foo", "android_common")
+	rule := foo.Rule("lint")
+
+	if !strings.Contains(rule.RuleParams.Command, "--baseline lint-baseline.xml") {
+		t.Error("did not pass --baseline flag")
+	}
+}
+func TestJavaLintWithoutBaseline(t *testing.T) {
+	ctx, _ := testJavaWithFS(t, `
+		java_library {
+			name: "foo",
+			srcs: [
+				"a.java",
+				"b.java",
+				"c.java",
+			],
+			min_sdk_version: "29",
+			sdk_version: "system_current",
+		}
+       `, map[string][]byte{})
+
+	foo := ctx.ModuleForTests("foo", "android_common")
+	rule := foo.Rule("lint")
+
+	if strings.Contains(rule.RuleParams.Command, "--baseline") {
+		t.Error("passed --baseline flag for non existent file")
+	}
+}
+func TestJavaLintUsesCorrectBpConfig(t *testing.T) {
+	ctx, _ := testJavaWithFS(t, `
+		java_library {
+			name: "foo",
+			srcs: [
+				"a.java",
+				"b.java",
+				"c.java",
+			],
+			min_sdk_version: "29",
+			sdk_version: "system_current",
+			lint: {
+				error_checks: ["SomeCheck"],
+				baseline_filename: "mybaseline.xml",
+			},
+		}
+       `, map[string][]byte{
+		"mybaseline.xml": nil,
+	})
+
+	foo := ctx.ModuleForTests("foo", "android_common")
+	rule := foo.Rule("lint")
+
+	if !strings.Contains(rule.RuleParams.Command, "--baseline mybaseline.xml") {
+		t.Error("did use the correct file for baseline")
+	}
+}
+
 func TestGeneratedSources(t *testing.T) {
 	ctx, _ := testJavaWithFS(t, `
 		java_library {

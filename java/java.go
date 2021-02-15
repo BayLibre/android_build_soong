@@ -1842,6 +1842,10 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			}
 		}
 
+		if len(j.linter.properties.Lint.Baseline_filename) == 0 {
+			j.linter.properties.Lint.Baseline_filename = "lint-baseline.xml"
+		}
+
 		j.linter.name = ctx.ModuleName()
 		j.linter.srcs = srcFiles
 		j.linter.srcJars = srcJars

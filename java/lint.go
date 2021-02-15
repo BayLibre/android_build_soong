@@ -46,6 +46,9 @@ type LintProperties struct {
 
 		// Modules that provide extra lint checks
 		Extra_check_modules []string
+
+		// If this file exists in the module folder, lint uses it as the baseline. Defaults to "lint-baseline.xml".
+		Baseline_filename string
 	}
 }
 
@@ -341,6 +344,13 @@ func (l *linter) lint(ctx android.ModuleContext) {
 
 	if checkOnly := ctx.Config().Getenv("ANDROID_LINT_CHECK"); checkOnly != "" {
 		cmd.FlagWithArg("--check ", checkOnly)
+	}
+
+	if len(l.properties.Lint.Baseline_filename) > 0 {
+		lintBaseline := android.ExistentPathForSource(ctx, ctx.ModuleDir(), l.properties.Lint.Baseline_filename)
+		if lintBaseline.Valid() {
+			cmd.FlagWithInput("--baseline ", lintBaseline.Path())
+		}
 	}
 
 	cmd.Text("|| (").Text("cat").Input(text).Text("; exit 7)").Text(")")
