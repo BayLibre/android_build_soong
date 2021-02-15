@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1222f6d_9b461408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-02-15T16:23:20Z",
+      "side": 1,
+      "message": "Further instructions Re testing:\n\nI have made further changes (coming in another CL soon) that enable the NewApi check as error for modules that have min sdk !\u003d sdk version. This detects some errors in some modules and after adding the correct baseline they stop failing.",
+      "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
