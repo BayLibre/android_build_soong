@@ -80,6 +80,30 @@
       },
       "revId": "3ae62dd2885324dfdcc22e1b5d386279d5fb9ee4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a36eda2_47206bdd",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-15T08:40:35Z",
+      "side": 1,
+      "message": "Well this could possibly be microoptimization. I\u0027ll move it",
+      "parentUuid": "cb691c24_4feb18f5",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 0
+      },
+      "revId": "3ae62dd2885324dfdcc22e1b5d386279d5fb9ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
