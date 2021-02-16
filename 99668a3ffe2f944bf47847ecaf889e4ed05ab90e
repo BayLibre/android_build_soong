@@ -16,6 +16,52 @@
       "message": "ping for owner-review-vote",
       "revId": "99668a3ffe2f944bf47847ecaf889e4ed05ab90e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2465c85f_7b5afbc9",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:10:50Z",
+      "side": 1,
+      "message": "The name \"deps\" doesn\u0027t seem meaningful to the user since they haven\u0027t set anything named \"deps\".  Maybe just \"base_dir\"?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "99668a3ffe2f944bf47847ecaf889e4ed05ab90e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f459aa5_5049e523",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:10:50Z",
+      "side": 1,
+      "message": "I think zip2zip could handle this without uncompressing and recompressing the data.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 132
+      },
+      "revId": "99668a3ffe2f944bf47847ecaf889e4ed05ab90e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
