@@ -123,6 +123,24 @@
       "parentUuid": "656c12f2_84c5b7fc",
       "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c12561f_95923cba",
+        "filename": "cc/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-02-16T21:49:32Z",
+      "side": 1,
+      "message": "Yes, i do plan to add dedicated property for header-filter after this change.\nWe will need to change several projects that have already used this in the tidy_flags property.\nSince tidy_flags contain also other flags, -header-filter or --header-filter were used and with sometimes different quotes. We will fix the inconsistent syntax when moving to its own property.",
+      "parentUuid": "00234ba3_718f17e1",
+      "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
