@@ -105,6 +105,24 @@
       "parentUuid": "6aaa928d_88bb78e9",
       "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00234ba3_718f17e1",
+        "filename": "cc/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-02-16T21:28:42Z",
+      "side": 1,
+      "message": "Moving into its own property might make maintenance easier in the future.",
+      "parentUuid": "656c12f2_84c5b7fc",
+      "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
