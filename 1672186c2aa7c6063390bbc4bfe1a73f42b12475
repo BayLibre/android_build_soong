@@ -93,6 +93,30 @@
       },
       "revId": "1672186c2aa7c6063390bbc4bfe1a73f42b12475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "323ce0c1_314e8dbe",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T23:24:32Z",
+      "side": 1,
+      "message": "I always prefer to do it in the source tree rather than the branch config, but up to you.",
+      "parentUuid": "a84f3578_dc846156",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 57
+      },
+      "revId": "1672186c2aa7c6063390bbc4bfe1a73f42b12475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
