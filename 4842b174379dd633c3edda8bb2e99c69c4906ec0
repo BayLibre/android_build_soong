@@ -117,6 +117,30 @@
       },
       "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef57bb54_59790461",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-16T23:30:50Z",
+      "side": 1,
+      "message": "I think jiyong\u0027s intention is to make the filename of b.output as installFileName(). If we directly assign unsignedOutput, it will become \"unsigned.img\" and APEX will pack the image as \"unsigned.img\", not installFileName().",
+      "parentUuid": "89f168f1_5b0f7757",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 1
+      },
+      "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
