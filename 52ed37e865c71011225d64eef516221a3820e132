@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24eefae3_f7d38ab9",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-16T07:12:50Z",
+      "side": 1,
+      "message": "(Chatted offline, updated to use BazelLabelForModuleSrc, which is indeed simpler)",
+      "parentUuid": "504fa523_12ec8585",
+      "range": {
+        "startLine": 836,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 1
+      },
+      "revId": "52ed37e865c71011225d64eef516221a3820e132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1c44a90_d703949b",
