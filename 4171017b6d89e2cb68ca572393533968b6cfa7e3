@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa3d2cd_e817c99b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-16T02:55:57Z",
+      "side": 1,
+      "message": "Does this mean that this applies only to the case of prebuilt APEX overriding another prebuilt APEX, and *not* to the case of prebuilt APEX overriding source APEX?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "4171017b6d89e2cb68ca572393533968b6cfa7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "91603d4a_0ef51d86",
@@ -14,6 +37,52 @@
       "writtenOn": "2021-02-15T23:49:00Z",
       "side": 1,
       "message": "This CL is a bit rough around the edges: Besides the requisite tests, it still creates .deapexer modules for the disabled APEXes, which would be cleaner to avoid. Appreciate tips on how to do that.\n\nI\u0027d like input on the approach, but in the interest of time I\u0027d prefer to follow up with tests in a later CL.",
+      "revId": "4171017b6d89e2cb68ca572393533968b6cfa7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b15bd2_dc24fa34",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-16T02:55:57Z",
+      "side": 1,
+      "message": "Just to check if my understanding is correct. This effectively hides the jars from the overridden APEX in boot_jars.go because apexInfo.InApexByBaseName will return false on those jars, right?\n\nIf so, could you add some comment here to compliment the comments at #421-423?",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 2
+      },
+      "revId": "4171017b6d89e2cb68ca572393533968b6cfa7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bcca8bd_348e051b",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-16T02:55:57Z",
+      "side": 1,
+      "message": "So, this \"adds\" the jars of the overriding APEX to the list, while #377-379 \"removes\" the jars of the overridden APEX from the list?",
+      "range": {
+        "startLine": 422,
+        "startChar": 29,
+        "endLine": 423,
+        "endChar": 39
+      },
       "revId": "4171017b6d89e2cb68ca572393533968b6cfa7e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
