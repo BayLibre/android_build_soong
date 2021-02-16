@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "494e5999_9e15c2de",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-16T13:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13558574_39c7a310",
+      "range": {
+        "startLine": 225,
+        "startChar": 5,
+        "endLine": 225,
+        "endChar": 20
+      },
+      "revId": "86166d653a5d557e0ec27b1d0a5817fbca061a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8f56826_bae97906",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3312b046_95c8ec02",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2235,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-16T13:30:04Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a8f56826_bae97906",
+      "revId": "86166d653a5d557e0ec27b1d0a5817fbca061a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f47435d0_adc86493",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-15T14:58:55Z",
       "side": 1,
       "message": "This looks like a half-finished comment.",
+      "range": {
+        "startLine": 2234,
+        "startChar": 0,
+        "endLine": 2237,
+        "endChar": 0
+      },
+      "revId": "86166d653a5d557e0ec27b1d0a5817fbca061a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c208efe_370f8251",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2237,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-16T13:30:04Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "f47435d0_adc86493",
       "range": {
         "startLine": 2234,
         "startChar": 0,
