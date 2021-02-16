@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13dc5aaa_c09589d4",
+        "filename": "bp2build/cc_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-16T14:20:34Z",
+      "side": 1,
+      "message": "commonly in tests, nil is used to designate that the contents are irrelevant -- would that work here?",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 45
+      },
+      "revId": "fb7cc039416328dd62fbb30ec2ae73863b36c6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4db9f1_2747c612",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-16T14:20:34Z",
+      "side": 1,
+      "message": "I would expect so -- does `BazelLabelForModuleDeps` out of the box? If not, we may need to do some deps mutator cleanup.",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "fb7cc039416328dd62fbb30ec2ae73863b36c6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e212ad_5822a253",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-16T14:20:34Z",
+      "side": 1,
+      "message": "optional: should we also comment here that this is not a cc module as the use of the Module is so overloaded?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 8
+      },
+      "revId": "fb7cc039416328dd62fbb30ec2ae73863b36c6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
