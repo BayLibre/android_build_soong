@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51fc8d2_fe31d067",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-16T01:07:28Z",
+      "side": 1,
+      "message": "We\u0027ve been using \"Stem\" as a base file name (excluding the extension), like http://cs/android/build/soong/cc/library.go?l\u003d754\u0026rcl\u003d46ceedab9bdcc065df9572a908cb313a7e61b351\n\nCan we make this proptools.StringDefault(b.properties.Stem, b.BaseModuleName()) + \".img\"?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 77
+      },
+      "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
