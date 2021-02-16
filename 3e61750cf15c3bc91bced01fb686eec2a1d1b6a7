@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c368a5b_56f40b23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-16T15:51:59Z",
+      "side": 1,
+      "message": "CC Eliott because of https://android-review.googlesource.com/c/platform/bionic/+/1590351\n\n(we can probably avoid this CL if we just rename ldd to e.g. ldd.sh)",
+      "revId": "3e61750cf15c3bc91bced01fb686eec2a1d1b6a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
