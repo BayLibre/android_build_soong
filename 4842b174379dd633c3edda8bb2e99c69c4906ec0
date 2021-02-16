@@ -22,6 +22,30 @@
       },
       "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919bfa8e_4bd01861",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-16T02:04:56Z",
+      "side": 1,
+      "message": "I don\u0027t want to lose the flexibility of changing the suffix here. Unlike .so, .img is just a convention. We have other module types where stem doesn\u0027t add any suffix: se_cil_compat_map and vintf_compatibility_matrix.",
+      "parentUuid": "f51fc8d2_fe31d067",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 77
+      },
+      "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
