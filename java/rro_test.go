@@ -15,6 +15,7 @@
 package java
 
 import (
+	"path"
 	"reflect"
 	"strings"
 	"testing"
@@ -97,26 +98,26 @@ func TestRuntimeResourceOverlay(t *testing.T) {
 		t.Errorf("Incorrect signing flags, expected: %q, got: %q", expected, signingFlag)
 	}
 	androidMkEntries := android.AndroidMkEntriesForTest(t, config, "", m.Module())[0]
-	path := androidMkEntries.EntryMap["LOCAL_CERTIFICATE"]
+	p := androidMkEntries.EntryMap["LOCAL_CERTIFICATE"]
 	expectedPath := []string{"build/make/target/product/security/platform.x509.pem"}
-	if !reflect.DeepEqual(path, expectedPath) {
-		t.Errorf("Unexpected LOCAL_CERTIFICATE value: %v, expected: %v", path, expectedPath)
+	if !reflect.DeepEqual(p, expectedPath) {
+		t.Errorf("Unexpected LOCAL_CERTIFICATE value: %v, expected: %v", p, expectedPath)
 	}
 
 	// Check device location.
-	path = androidMkEntries.EntryMap["LOCAL_MODULE_PATH"]
-	expectedPath = []string{"/tmp/target/product/test_device/product/overlay"}
-	if !reflect.DeepEqual(path, expectedPath) {
-		t.Errorf("Unexpected LOCAL_MODULE_PATH value: %v, expected: %v", path, expectedPath)
+	p = androidMkEntries.EntryMap["LOCAL_MODULE_PATH"]
+	expectedPath = []string{path.Join(buildDir, "../target/product/test_device/product/overlay")}
+	if !reflect.DeepEqual(p, expectedPath) {
+		t.Errorf("Unexpected LOCAL_MODULE_PATH value: %v, expected: %v", p, expectedPath)
 	}
 
 	// A themed module has a different device location
 	m = ctx.ModuleForTests("foo_themed", "android_common")
 	androidMkEntries = android.AndroidMkEntriesForTest(t, config, "", m.Module())[0]
-	path = androidMkEntries.EntryMap["LOCAL_MODULE_PATH"]
-	expectedPath = []string{"/tmp/target/product/test_device/product/overlay/faza"}
-	if !reflect.DeepEqual(path, expectedPath) {
-		t.Errorf("Unexpected LOCAL_MODULE_PATH value: %v, expected: %v", path, expectedPath)
+	p = androidMkEntries.EntryMap["LOCAL_MODULE_PATH"]
+	expectedPath = []string{path.Join(buildDir, "../target/product/test_device/product/overlay/faza")}
+	if !reflect.DeepEqual(p, expectedPath) {
+		t.Errorf("Unexpected LOCAL_MODULE_PATH value: %v, expected: %v", p, expectedPath)
 	}
 
 	overrides := androidMkEntries.EntryMap["LOCAL_OVERRIDES_PACKAGES"]
@@ -159,10 +160,10 @@ func TestRuntimeResourceOverlay_JavaDefaults(t *testing.T) {
 	}
 
 	// Check device location.
-	path := android.AndroidMkEntriesForTest(t, config, "", m.Module())[0].EntryMap["LOCAL_MODULE_PATH"]
-	expectedPath := []string{"/tmp/target/product/test_device/product/overlay/default_theme"}
-	if !reflect.DeepEqual(path, expectedPath) {
-		t.Errorf("Unexpected LOCAL_MODULE_PATH value: %q, expected: %q", path, expectedPath)
+	p := android.AndroidMkEntriesForTest(t, config, "", m.Module())[0].EntryMap["LOCAL_MODULE_PATH"]
+	expectedPath := []string{path.Join(buildDir, "../target/product/test_device/product/overlay/default_theme")}
+	if !reflect.DeepEqual(p, expectedPath) {
+		t.Errorf("Unexpected LOCAL_MODULE_PATH value: %q, expected: %q", p, expectedPath)
 	}
 
 	//
@@ -178,10 +179,10 @@ func TestRuntimeResourceOverlay_JavaDefaults(t *testing.T) {
 	}
 
 	// Check device location.
-	path = android.AndroidMkEntriesForTest(t, config, "", m.Module())[0].EntryMap["LOCAL_MODULE_PATH"]
-	expectedPath = []string{"/tmp/target/product/test_device/system/overlay"}
-	if !reflect.DeepEqual(path, expectedPath) {
-		t.Errorf("Unexpected LOCAL_MODULE_PATH value: %v, expected: %v", path, expectedPath)
+	p = android.AndroidMkEntriesForTest(t, config, "", m.Module())[0].EntryMap["LOCAL_MODULE_PATH"]
+	expectedPath = []string{path.Join(buildDir, "../target/product/test_device/system/overlay")}
+	if !reflect.DeepEqual(p, expectedPath) {
+		t.Errorf("Unexpected LOCAL_MODULE_PATH value: %v, expected: %v", p, expectedPath)
 	}
 }
 
