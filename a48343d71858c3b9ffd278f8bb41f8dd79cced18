@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07b48dfe_b87747c0",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1848,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:29:36Z",
+      "side": 1,
+      "message": "Instead of modifying the property use proptools.StringDefault(l.properties.Lint.Baseline_filename, \"lint-baseline.xml\") when reading it.\n\n\u003d\u003d \"\" instead of len() \u003d\u003d 0 seems more idiomatic to me for checking if a string is empty.",
+      "range": {
+        "startLine": 1845,
+        "startChar": 0,
+        "endLine": 1848,
+        "endChar": 0
+      },
+      "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c46d8e41_e2a50d0c",
         "filename": "java/java_test.go",
         "patchSetId": 1
@@ -77,6 +100,46 @@
         "endLine": 50,
         "endChar": 45
       },
+      "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c72aa2f_57bc6a52",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:29:36Z",
+      "side": 1,
+      "message": "Use a *string so this gets useful behavior w.r.t. defaults modules.  Use proptools.String() or proptools.StringDefault() to read it.  You should still use String(l.properties.Lint.Baseline_filename) \u003d\u003d \"\" to check for empty though, not l.properties.Lint.Baseline_filename \u003d\u003d nil, so that it can be overridden back to empty if set by a defaults module.",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e944ce_fca23bbc",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:29:36Z",
+      "side": 1,
+      "message": "This is going to silently ignore typos in the filename.  Can you be stricter if l.properties.Lint.Baseline_filename was set by the user?  Maybe use android.PathForModuleSrc if it is set by the user and android.ExistentPathForSource if it was  not.",
       "revId": "a48343d71858c3b9ffd278f8bb41f8dd79cced18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
