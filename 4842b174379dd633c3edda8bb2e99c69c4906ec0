@@ -93,6 +93,30 @@
       },
       "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f168f1_5b0f7757",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:03:28Z",
+      "side": 1,
+      "message": "Agreed, that\u0027s a little confusing, and also makes an unnecessary copy.  Could you skip calling this in the use_avb: false case, and then set b.output to unsignedOutput in that case?",
+      "parentUuid": "f50a767a_efa484ad",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 1
+      },
+      "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
