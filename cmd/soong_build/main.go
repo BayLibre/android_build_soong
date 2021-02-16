@@ -21,6 +21,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/shared"
 	"github.com/google/blueprint/bootstrap"
 
 	"android/soong/android"
@@ -80,7 +81,9 @@ func newConfig(srcDir string) android.Config {
 }
 
 func main() {
-	android.ReexecWithDelveMaybe()
+	shared.ReexecWithDelveMaybe()
+	android.InitSandbox()
+	android.InitEnvironment()
 	flag.Parse()
 
 	// The top-level Blueprints file is passed as the first argument.
@@ -88,7 +91,6 @@ func main() {
 	var ctx *android.Context
 	configuration := newConfig(srcDir)
 	extraNinjaDeps := []string{configuration.ProductVariablesFileName}
-
 	// Read the SOONG_DELVE again through configuration so that there is a dependency on the environment variable
 	// and soong_build will rerun when it is set for the first time.
 	if listen := configuration.Getenv("SOONG_DELVE"); listen != "" {

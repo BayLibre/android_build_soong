@@ -7,6 +7,7 @@ bootstrap_go_package {
     pkgPath: "android/soong/shared",
     srcs: [
         "paths.go",
+        "debug.go",
     ],
     deps: [
         "soong-bazel",

@@ -25,6 +25,8 @@ import (
 	"strings"
 	"time"
 
+	"android/soong/android"
+	"android/soong/shared"
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
 	"android/soong/ui/metrics"
@@ -118,6 +120,11 @@ func inList(s string, list []string) bool {
 // Command is the type of soong_ui execution. Only one type of
 // execution is specified. The args are specific to the command.
 func main() {
+	shared.ReexecWithDelveMaybe()
+
+	android.InitSandbox()
+	android.InitEnvironment()
+
 	buildStarted := time.Now()
 
 	c, args, err := getCommand(os.Args)

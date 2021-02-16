@@ -19,7 +19,7 @@ import (
 	"os"
 )
 
-func init() {
+func InitSandbox() {
 	// Stash the working directory in a private variable and then change the working directory
 	// to "/", which will prevent untracked accesses to files by Go Soong plugins. The
 	// SOONG_SANDBOX_SOONG_BUILD environment variable is set by soong_ui, and is not
