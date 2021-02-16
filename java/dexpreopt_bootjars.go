@@ -485,7 +485,19 @@ func getBootImageJar(ctx android.SingletonContext, image *bootImageConfig, modul
 
 	switch image.name {
 	case artBootImageName:
-		if apexInfo.InApexByBaseName("com.android.art") || apexInfo.InApexByBaseName("com.android.art.debug") || apexInfo.InApexByBaseName("com.android.art,testing") {
+		inArtApex := false
+		for _, artApexName := range []string{
+			"com.android.art",
+			"com.android.art.debug",
+			"com.android.art,testing",
+			"com.google.android.art",
+		} {
+			if apexInfo.InApexByBaseName(artApexName) {
+				inArtApex = true
+				break
+			}
+		}
+		if inArtApex {
 			// ok: found the jar in the ART apex
 		} else if name == "jacocoagent" && ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
 			// exception (skip and continue): Jacoco platform variant for a coverage build
