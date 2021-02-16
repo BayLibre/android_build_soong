@@ -97,6 +97,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "563dae6d_30b25126",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-16T14:56:14Z",
+      "side": 1,
+      "message": "👍 I\u0027ll look into the empty list in the bp2build code.",
+      "parentUuid": "b9cb379a_5869e41b",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 67,
+        "endChar": 9
+      },
+      "revId": "fb7cc039416328dd62fbb30ec2ae73863b36c6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "57e212ad_5822a253",
         "filename": "cc/library_headers.go",
         "patchSetId": 5
