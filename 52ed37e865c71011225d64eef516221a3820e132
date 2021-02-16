@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00ccab9f_5c0e814f",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-16T05:18:49Z",
+      "side": 1,
+      "message": "Liz was planning to look at this (b/179889976). Could you use the glob expansion approach instead, like in the filegroup bp2build conveter?",
+      "range": {
+        "startLine": 836,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 1
+      },
+      "revId": "52ed37e865c71011225d64eef516221a3820e132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1c44a90_d703949b",
         "filename": "bp2build/cc_conversion_test.go",
         "patchSetId": 3
