@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6372cc9_3ba191e5",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-02-16T23:16:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a1c276_9dd70fae",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "1672186c2aa7c6063390bbc4bfe1a73f42b12475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51e1dbbb_2ec2a22f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-16T22:18:36Z",
       "side": 1,
       "message": "Any reason not to hardcode 500 or 1000 here?  What\u0027s the value of plumbing it through an environment variable?",
+      "range": {
+        "startLine": 98,
+        "startChar": 34,
+        "endLine": 98,
+        "endChar": 57
+      },
+      "revId": "1672186c2aa7c6063390bbc4bfe1a73f42b12475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84f3578_dc846156",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-02-16T23:16:30Z",
+      "side": 1,
+      "message": "Kythe folks are not certain what\u0027s the right limit, and I am not thrilled by running Soong code review every time it needs fixing.",
+      "parentUuid": "51e1dbbb_2ec2a22f",
       "range": {
         "startLine": 98,
         "startChar": 34,
