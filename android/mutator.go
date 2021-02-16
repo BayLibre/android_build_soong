@@ -67,6 +67,7 @@ func RegisterMutatorsForBazelConversion(ctx *blueprint.Context, preArchMutators,
 	}
 
 	bp2buildDepsMutators = append([]RegisterMutatorFunc{
+		RegisterArchMutatorBp2Build,
 		registerDepsMutatorBp2Build,
 		registerPathDepsMutator,
 	}, depsMutators...)
@@ -509,6 +510,10 @@ func registerDepsMutatorBp2Build(ctx RegisterMutatorsContext) {
 	// TODO(b/179313531): Consider a separate mutator that only runs depsMutator for modules that are
 	// being converted to build targets.
 	ctx.BottomUp("deps", depsMutator).Parallel()
+}
+
+func RegisterArchMutatorBp2Build(ctx RegisterMutatorsContext) {
+	ctx.BottomUp("arch", bp2buildArchMutator).Parallel()
 }
 
 func (t *topDownMutatorContext) CreateBazelTargetModule(
