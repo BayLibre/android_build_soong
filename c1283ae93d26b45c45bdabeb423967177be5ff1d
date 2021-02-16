@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db560715_cf95187f",
+        "filename": "bloaty/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T18:56:03Z",
+      "side": 1,
+      "message": "It seems odd to have the library at all then.  Are there limitations that prevent the library being used in the binary, or the sources being used directly in the test?",
+      "parentUuid": "c8d60b5c_1cbde7dc",
+      "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a3a1f28e_1c0461ed",
         "filename": "bloaty/bloaty_merger.py",
         "patchSetId": 1
