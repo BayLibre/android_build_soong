@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "504fa523_12ec8585",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-16T06:47:32Z",
+      "side": 1,
+      "message": "Do you mean using BazelLabelForModuleSrc, or something else?\n\n(But using a glob for now doesn\u0027t preclude improvements later, unless I am missing something...?)",
+      "parentUuid": "00ccab9f_5c0e814f",
+      "range": {
+        "startLine": 836,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 1
+      },
+      "revId": "52ed37e865c71011225d64eef516221a3820e132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1c44a90_d703949b",
         "filename": "bp2build/cc_conversion_test.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-16T05:14:33Z",
       "side": 1,
       "message": "Why is this needed?",
+      "range": {
+        "startLine": 151,
+        "startChar": 26,
+        "endLine": 151,
+        "endChar": 72
+      },
+      "revId": "52ed37e865c71011225d64eef516221a3820e132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ca2120_ebb993e2",
+        "filename": "bp2build/cc_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-16T06:47:32Z",
+      "side": 1,
+      "message": "Because of the toolchain_library use in the soongCcLibraryPreamble (above)\n\nWhich itself was necessary to use cc_library_headers in the test",
+      "parentUuid": "e1c44a90_d703949b",
       "range": {
         "startLine": 151,
         "startChar": 26,
