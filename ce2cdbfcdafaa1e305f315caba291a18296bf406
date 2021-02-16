@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58313aef_dc8a462f",
+        "filename": "java/rro_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-16T15:00:26Z",
+      "side": 1,
+      "message": "Done. I guess it was the double slash?",
+      "parentUuid": "9050e6aa_a2c3d56f",
+      "range": {
+        "startLine": 183,
+        "startChar": 48,
+        "endLine": 183,
+        "endChar": 49
+      },
+      "revId": "ce2cdbfcdafaa1e305f315caba291a18296bf406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "037ab00a_142c302e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-16T14:14:09Z",
       "side": 1,
       "message": "Could also be SOONG_UI_DELVE.",
+      "range": {
+        "startLine": 57,
+        "startChar": 27,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "ce2cdbfcdafaa1e305f315caba291a18296bf406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bd3d5f_b92f9e73",
+        "filename": "shared/debug.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-16T15:00:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "037ab00a_142c302e",
       "range": {
         "startLine": 57,
         "startChar": 27,
