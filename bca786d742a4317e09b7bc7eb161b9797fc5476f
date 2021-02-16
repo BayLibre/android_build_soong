@@ -56,6 +56,30 @@
       },
       "revId": "bca786d742a4317e09b7bc7eb161b9797fc5476f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d730fd_9cbf1663",
+        "filename": "android/arch_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1470412
+      },
+      "writtenOn": "2021-02-16T09:42:54Z",
+      "side": 1,
+      "message": "as I understand no, because PAC and BTI works on all version of the v8 architecture in some way. These features needs explicit support.",
+      "parentUuid": "9a86e290_8a91aac9",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 3
+      },
+      "revId": "bca786d742a4317e09b7bc7eb161b9797fc5476f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
