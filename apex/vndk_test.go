@@ -13,6 +13,7 @@ func TestVndkApexForVndkLite(t *testing.T) {
 		apex_vndk {
 			name: "myapex",
 			key: "myapex.key",
+			updatable: false,
 		}
 
 		apex_key {
@@ -69,6 +70,7 @@ func TestVndkApexUsesVendorVariant(t *testing.T) {
 		apex_vndk {
 			name: "myapex",
 			key: "mykey",
+			updatable: false,
 		}
 		apex_key {
 			name: "mykey",
