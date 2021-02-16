@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de692e3b_2674de57",
+        "filename": "bloaty/bloaty.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T18:59:32Z",
+      "side": 1,
+      "message": "It still needs sorting, ninja considers the response file contents part of the command line and will rerun the rule if it changes.  Using VisitAllModules should be deterministic, but it\u0027s easy enough to use android.SortedUniquePaths or android.PathsToDirectorySortedPaths to get something that is guaranteed to be deterministic.",
+      "parentUuid": "36f9715a_22166883",
+      "revId": "d81216b638830385eed159e0e9817bb67fdc7f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42426058_ecea5610",
         "filename": "bloaty/bloaty.go",
         "patchSetId": 2
