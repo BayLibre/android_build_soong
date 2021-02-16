@@ -533,6 +533,18 @@ func GetOsSpecificVariantsOfCommonOSVariant(mctx BaseModuleContext) []Module {
 	return variants
 }
 
+func bp2buildArchMutator(ctx BottomUpMutatorContext) {
+	module := ctx.Module()
+	base := module.base()
+
+	if !base.ArchSpecific() {
+		fmt.Println("not arch specific: " + module.Name() + " " + ctx.ModuleType())
+		return
+	}
+
+	fmt.Println("arch specific: " + module.Name() + " " + ctx.ModuleType())
+}
+
 // archMutator splits a module into a variant for each Target requested by the module.  Target selection
 // for a module is in three levels, OsClass, multilib, and then Target.
 // OsClass selection is determined by:
