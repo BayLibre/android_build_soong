@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26dab08_27554463",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-16T14:08:20Z",
+      "side": 1,
+      "message": "nit: Context?",
+      "range": {
+        "startLine": 142,
+        "startChar": 9,
+        "endLine": 142,
+        "endChar": 16
+      },
+      "revId": "60097a378012c4e9eada8f15e62d1c4b69a61148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de3e29e1_f070c16b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 6970,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-16T14:08:20Z",
+      "side": 1,
+      "message": "is anything actually using the config now or can we clean up the function signature too? (doesn\u0027t need to be this cl)",
+      "range": {
+        "startLine": 6970,
+        "startChar": 5,
+        "endLine": 6970,
+        "endChar": 7
+      },
+      "revId": "60097a378012c4e9eada8f15e62d1c4b69a61148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a90647d_21d57ed5",
+        "filename": "java/lint_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-16T14:08:20Z",
+      "side": 1,
+      "message": "was this intended for this CL or another one? I\u0027m not seeing any extra entries changes in it.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 50
+      },
+      "revId": "60097a378012c4e9eada8f15e62d1c4b69a61148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
