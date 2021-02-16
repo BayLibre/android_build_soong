@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9242faf5_5145117d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-16T14:27:01Z",
+      "side": 1,
+      "message": "Okay, got it. Turns out, the Kati invocations get the full environment and not the empty one created in env.go/init() because soong_ui.go happens not to use anything from android/ (and adding such a dependency makes it break)\n\nIt\u0027s a mystery why \"m nothing\" didn\u0027t complain, but removing the InitSandbox() / InitEnvironment() calls from soong_ui/main.go fixed the problem.\n\nI feel vindicated in making this change.\n",
+      "revId": "ce2cdbfcdafaa1e305f315caba291a18296bf406",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9050e6aa_a2c3d56f",
