@@ -16,6 +16,29 @@
       "message": "ping for owner-review-vote",
       "revId": "313c6c51751c7acd81fbcdca181f0fc9899fd00b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87045e36_5fb89fa8",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:07:57Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of complicated formats in Android.bp strings, it spreads the logic for parsing correctness and useful error messages around the tree.  We support lists of structs in Android.bp files now, could this be:\n\n    type SymlinkDefinition struct {\n        From *string\n        To *string\n    }\n    \n    Symlinks []SymlinkDefinition\n\nThen the Android.bp file would look like:\n\n    symlinks: [\n        {\n            from: \"src1\",\n            to: \"dst1\",\n        },\n        {\n            from: \"src2\",\n            to: \"dst2\",\n        },\n    ],",
+      "range": {
+        "startLine": 67,
+        "startChar": 73,
+        "endLine": 67,
+        "endChar": 85
+      },
+      "revId": "313c6c51751c7acd81fbcdca181f0fc9899fd00b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
