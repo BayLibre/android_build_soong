@@ -141,6 +141,30 @@
       },
       "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7722d5a0_a794d06f",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-16T23:49:53Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "ef57bb54_59790461",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 1
+      },
+      "revId": "4842b174379dd633c3edda8bb2e99c69c4906ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
