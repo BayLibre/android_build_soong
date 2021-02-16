@@ -1230,7 +1230,7 @@ var _ android.ApexBundleDepsInfoIntf = (*apexBundle)(nil)
 
 // Implements android.ApexBudleDepsInfoIntf
 func (a *apexBundle) Updatable() bool {
-	return proptools.Bool(a.properties.Updatable)
+	return proptools.BoolDefault(a.properties.Updatable, true)
 }
 
 // getCertString returns the name of the cert that should be used to sign this APEX. This is
