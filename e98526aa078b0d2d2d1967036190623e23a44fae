@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e594bda0_89cbf0ec",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:32:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3dea6af2_d81f2d7a",
+      "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8349246c_9ec06288",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Same here to avoid the unnecessary quotation marks when defaultDirs is empty.\nI found that -header-filter\u003d flags are not always a prefix.\nSo I changed PrefixInList to SubstringInList.",
       "parentUuid": "8349246c_9ec06288",
+      "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "656c12f2_84c5b7fc",
+        "filename": "cc/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-16T19:32:13Z",
+      "side": 1,
+      "message": "What are the cases that it is not a prefix?  Should those be fixed?  Should \"--header-filter\" be moved out of tidyflags and into its own tidy_header_filter property, and then \"--header-filter\" forbidden in tidyflags?",
+      "parentUuid": "6aaa928d_88bb78e9",
       "revId": "e98526aa078b0d2d2d1967036190623e23a44fae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
