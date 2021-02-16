@@ -79,6 +79,23 @@ func TestShBinaryBp2Build(t *testing.T) {
     ],
 )`},
 		},
+		{
+			description:                        "sh_binary name test",
+			moduleTypeUnderTest:                "sh_binary",
+			moduleTypeUnderTestFactory:         sh.ShBinaryFactory,
+			moduleTypeUnderTestBp2BuildMutator: sh.ShBinaryBp2Build,
+			bp: `sh_binary {
+    name: "foo",
+    src: "foo",
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{`sh_binary(
+    name = "foo_sh_binary",
+    srcs = [
+        "foo",
+    ],
+)`},
+		},
 	}
 
 	dir := "."

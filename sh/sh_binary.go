@@ -508,13 +508,20 @@ func ShBinaryBp2Build(ctx android.TopDownMutatorContext) {
 		return
 	}
 
+	var targetName string
+	if m.Name() == *m.properties.Src {
+		targetName = m.Name() + "_sh_binary"
+	} else {
+		targetName = m.Name()
+	}
+
 	srcs := android.BazelLabelForModuleSrc(ctx, []string{*m.properties.Src})
 
 	attrs := &bazelShBinaryAttributes{
 		Srcs: srcs,
 	}
 
-	props := bazel.NewBazelTargetModuleProperties(m.Name(), "sh_binary", "")
+	props := bazel.NewBazelTargetModuleProperties(targetName, "sh_binary", "")
 
 	ctx.CreateBazelTargetModule(BazelShBinaryFactory, props, attrs)
 }
