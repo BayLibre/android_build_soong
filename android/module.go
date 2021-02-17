@@ -386,6 +386,15 @@ type ModuleContext interface {
 	// for which IsInstallDepNeeded returns true.
 	PackageFile(installPath InstallPath, name string, srcPath Path) PackagingSpec
 
+	// PackageSymlink creates a PackagingSpec as if InstallSymlink was called, but without creating
+	// the rule to copy the file.  This is useful to define how a module would be packaged
+	// without installing it into the global installation directories.
+	//
+	// The created PackagingSpec for the will be returned by PackagingSpecs() on this module or by
+	// TransitivePackagingSpecs() on modules that depend on this module through dependency tags
+	// for which IsInstallDepNeeded returns true.
+	PackageSymlink(installPath InstallPath, name string, srcPath InstallPath) PackagingSpec
+
 	CheckbuildFile(srcPath Path)
 
 	InstallInData() bool
@@ -2627,6 +2636,26 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 	return fullInstallPath
 }
 
+func (m *moduleContext) PackageSymlink(installPath InstallPath, name string, srcPath InstallPath) PackagingSpec {
+	fullInstallPath := installPath.Join(m, name)
+	relPath, err := filepath.Rel(path.Dir(fullInstallPath.String()), srcPath.String())
+	if err != nil {
+		panic(fmt.Sprintf("Unable to generate symlink between %q and %q: %s", fullInstallPath.Base(), srcPath.Base(), err))
+	}
+	return m.packageSymlink(fullInstallPath, relPath)
+}
+
+func (m *moduleContext) packageSymlink(fullInstallPath InstallPath, relPath string) PackagingSpec {
+	spec := PackagingSpec{
+		relPathInPackage: Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
+		srcPath:          nil,
+		symlinkTarget:    relPath,
+		executable:       false,
+	}
+	m.packagingSpecs = append(m.packagingSpecs, spec)
+	return spec
+}
+
 func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, srcPath InstallPath) InstallPath {
 	fullInstallPath := installPath.Join(m, name)
 	m.module.base().hooks.runInstallHooks(m, srcPath, fullInstallPath, true)
@@ -2652,12 +2681,7 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 		m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
 	}
 
-	m.packagingSpecs = append(m.packagingSpecs, PackagingSpec{
-		relPathInPackage: Rel(m, fullInstallPath.PartitionDir(), fullInstallPath.String()),
-		srcPath:          nil,
-		symlinkTarget:    relPath,
-		executable:       false,
-	})
+	m.packageSymlink(fullInstallPath, relPath)
 
 	return fullInstallPath
 }

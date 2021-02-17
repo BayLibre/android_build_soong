@@ -274,6 +274,13 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		for _, sl := range p.properties.Symlinks {
 			ctx.InstallSymlink(p.installDirPath, sl, installPath)
 		}
+	} else {
+		// even if not installable, allow the module to be included in the package
+		ctx.PackageFile(p.installDirPath, p.outputFilePath.Base(), p.outputFilePath)
+		installPath := p.installDirPath.Join(ctx, p.outputFilePath.Base())
+		for _, sl := range p.properties.Symlinks {
+			ctx.PackageSymlink(p.installDirPath, sl, installPath)
+		}
 	}
 }
 
