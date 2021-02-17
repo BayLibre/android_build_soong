@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9927945_667955ac",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-17T04:52:18Z",
+      "side": 1,
+      "message": "These names are confusing. \"to\" becomes a symlink that points to \"from\". How about calling it \u0027target\u0027 and \u0027name\u0027\n\nFrom ln(1)\n\nln [OPTION]... [-T] TARGET LINK_NAME",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "a7685769e6b886e4f6d937ce9c5f756704d15bbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
