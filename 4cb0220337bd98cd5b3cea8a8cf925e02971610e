@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fcf67a5_4da5ed31",
+        "filename": "android/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T18:16:02Z",
+      "side": 1,
+      "message": "Moving this out of init() has the same problem as the sandboxing, it allows vendor code to read environment variables without going through the APIs that let us add a dependency on them.",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca213faf_18fde288",
         "filename": "android/sandbox.go",
         "patchSetId": 5
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "You can\u0027t guarantee that this code runs after vendor plugin init functions this way, either, can you? My understanding is the only guarantee Golang gives is that if you import a package, its init() function is run before your init() function, which doesn\u0027t seem to be enough.\n\nIn that case, it would be better to set the cwd to \"/\" before running soong_build, wouldn\u0027t it? (it looks like it\u0027s easy to do, but the sandbox makes it non-trivial since it has its own ideas about what the cwd should be)",
       "parentUuid": "ca213faf_18fde288",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47578b82_aad05348",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T18:16:02Z",
+      "side": 1,
+      "message": "If you assume that vendor plugins have to interact with Soong and therefore must depend directly or transitively on the android package then the guarantee holds.  It is possible that vendors create a separate package with no dependencies and depend on both that package and the android package, in which case the ordering is not guaranteed at all by Go, but that is a relatively small hole that would take a very deliberate effort to bypass.\n\nChanging the directory before running soong_build is possible, but as you\u0027ve seen that gets tricky because Ninja is involved.  I think you could make that work though,  although it would still leave hiding environment variables as a problem that needs solving:\n- Set an environment variable in build/soong/ui/build/soong.go for the original build directory and the requested directory to cd to\n- Modify blueprint\u0027s rule to cd to that environment variable if it is set\n- Read the original build directory environment variable at the beginning of soong_build to save it, and clear it.  I think this still needs to happen in an init() function.",
+      "parentUuid": "fd351ac2_569b0928",
       "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
