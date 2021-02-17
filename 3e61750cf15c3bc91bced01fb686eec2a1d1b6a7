@@ -34,6 +34,24 @@
       "parentUuid": "0c368a5b_56f40b23",
       "revId": "3e61750cf15c3bc91bced01fb686eec2a1d1b6a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a630a3f4_55c20f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-17T01:56:18Z",
+      "side": 1,
+      "message": "If we take the route in \n\nhttps://android-review.googlesource.com/c/platform/bionic/+/1591571\n\nThen I think we can abandon this change...",
+      "parentUuid": "b45d1acb_11697f02",
+      "revId": "3e61750cf15c3bc91bced01fb686eec2a1d1b6a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
