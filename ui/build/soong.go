@@ -19,8 +19,9 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
-	"strings"
 
+	"android/soong/env"
+	"android/soong/shared"
 	soong_metrics_proto "android/soong/ui/metrics/metrics_proto"
 
 	"github.com/golang/protobuf/proto"
@@ -29,6 +30,19 @@ import (
 	"android/soong/ui/metrics"
 	"android/soong/ui/status"
 )
+
+func writeEnvironmentFileMaybe(ctx Context, envFile string, envDeps map[string]string) error {
+	if rewrite, _ := env.StaleEnvFile(envFile, envDeps); !rewrite {
+		return nil
+	}
+
+	data, err := env.EnvFileContents(envDeps)
+	if err != nil {
+		return err
+	}
+
+	return ioutil.WriteFile(envFile, data, 0644)
+}
 
 // This uses Android.bp files and various tools to generate <builddir>/build.ninja.
 //
@@ -47,6 +61,8 @@ func runSoong(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.RunSoong, "soong")
 	defer ctx.EndTrace()
 
+	envFile := filepath.Join(os.Getenv("TOP"), config.SoongOutDir(), "soong.environment")
+
 	// Use an anonymous inline function for tracing purposes (this pattern is used several times below).
 	func() {
 		ctx.BeginTrace(metrics.RunSoong, "blueprint bootstrap")
@@ -61,6 +77,13 @@ func runSoong(ctx Context, config Config) {
 		}
 
 		cmd := Command(ctx, config, "blueprint bootstrap", "build/blueprint/bootstrap.bash", args...)
+
+		if os.Getenv("SOONG_DELVE") != "" {
+			cmd.Environment.Set("PRIMARY_BUILDER_DELVE", os.Getenv("SOONG_DELVE"))
+			cmd.Environment.Set("PRIMARY_BUILDER_DELVE_PATH", shared.ResolveDelveBinary())
+		}
+
+		cmd.Environment.Set("PRIMARY_BUILDER_ENV", envFile)
 		cmd.Environment.Set("BLUEPRINTDIR", "./build/blueprint")
 		cmd.Environment.Set("BOOTSTRAP", "./build/blueprint/bootstrap.bash")
 		cmd.Environment.Set("BUILDDIR", config.SoongOutDir())
@@ -74,35 +97,21 @@ func runSoong(ctx Context, config Config) {
 		cmd.RunAndPrintOrFatal()
 	}()
 
+	soongBuildEnv := config.Environment().Copy()
+	soongBuildEnv.Set("TOP", os.Getenv("TOP"))
+	soongBuildEnv.Unset("TRACE_BEGIN_SOONG") // TODO: Why?
+	// For Bazel mixed builds.
+	soongBuildEnv.Set("BAZEL_PATH", "./tools/bazel")
+	soongBuildEnv.Set("BAZEL_HOME", filepath.Join(config.BazelOutDir(), "bazelhome"))
+	soongBuildEnv.Set("BAZEL_OUTPUT_BASE", filepath.Join(config.BazelOutDir(), "output"))
+	soongBuildEnv.Set("BAZEL_WORKSPACE", absPath(ctx, "."))
+	soongBuildEnv.Set("BAZEL_METRICS_DIR", config.BazelMetricsDir())
+
 	func() {
 		ctx.BeginTrace(metrics.RunSoong, "environment check")
 		defer ctx.EndTrace()
 
-		envFile := filepath.Join(config.SoongOutDir(), ".soong.environment")
-		envTool := filepath.Join(config.SoongOutDir(), ".bootstrap/bin/soong_env")
-		if _, err := os.Stat(envFile); err == nil {
-			if _, err := os.Stat(envTool); err == nil {
-				cmd := Command(ctx, config, "soong_env", envTool, envFile)
-				cmd.Sandbox = soongSandbox
-
-				var buf strings.Builder
-				cmd.Stdout = &buf
-				cmd.Stderr = &buf
-				if err := cmd.Run(); err != nil {
-					ctx.Verboseln("soong_env failed, forcing manifest regeneration")
-					os.Remove(envFile)
-				}
-
-				if buf.Len() > 0 {
-					ctx.Verboseln(buf.String())
-				}
-			} else {
-				ctx.Verboseln("Missing soong_env tool, forcing manifest regeneration")
-				os.Remove(envFile)
-			}
-		} else if !os.IsNotExist(err) {
-			ctx.Fatalf("Failed to stat %f: %v", envFile, err)
-		}
+		writeEnvironmentFileMaybe(ctx, envFile, soongBuildEnv.AsMap())
 	}()
 
 	var cfg microfactory.Config
@@ -151,14 +160,6 @@ func runSoong(ctx Context, config Config) {
 			"--frontend_file", fifo,
 			"-f", filepath.Join(config.SoongOutDir(), file))
 
-		// For Bazel mixed builds.
-		cmd.Environment.Set("BAZEL_PATH", "./tools/bazel")
-		cmd.Environment.Set("BAZEL_HOME", filepath.Join(config.BazelOutDir(), "bazelhome"))
-		cmd.Environment.Set("BAZEL_OUTPUT_BASE", filepath.Join(config.BazelOutDir(), "output"))
-		cmd.Environment.Set("BAZEL_WORKSPACE", absPath(ctx, "."))
-		cmd.Environment.Set("BAZEL_METRICS_DIR", config.BazelMetricsDir())
-
-		cmd.Environment.Set("SOONG_SANDBOX_SOONG_BUILD", "true")
 		cmd.Sandbox = soongSandbox
 		cmd.RunAndStreamOrFatal()
 	}

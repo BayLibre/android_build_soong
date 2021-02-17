@@ -31,9 +31,15 @@ import (
 var (
 	docFile           string
 	bazelQueryViewDir string
+	envFile           string
+	delveListen       string
+	delvePath         string
 )
 
 func init() {
+	flag.StringVar(&delveListen, "delve_listen", "", "Delve port to listen on for debugging")
+	flag.StringVar(&delvePath, "delve_path", "", "Path to Delve. Only used if --delve_listen is set")
+	flag.StringVar(&envFile, "env_file", "", "Path to the file containing configuration environment variables")
 	flag.StringVar(&docFile, "soong_docs", "", "build documentation file to output")
 	flag.StringVar(&bazelQueryViewDir, "bazel_queryview_dir", "", "path to the bazel queryview directory")
 }
@@ -81,19 +87,18 @@ func newConfig(srcDir string) android.Config {
 }
 
 func main() {
-	shared.ReexecWithDelveMaybe()
-	android.InitSandbox()
-	android.InitEnvironment()
 	flag.Parse()
+
+	shared.ReexecWithDelveMaybe(delveListen, delvePath, []string{})
+	android.InitSandbox()
+	android.InitEnvironment(envFile)
 
 	// The top-level Blueprints file is passed as the first argument.
 	srcDir := filepath.Dir(flag.Arg(0))
 	var ctx *android.Context
 	configuration := newConfig(srcDir)
 	extraNinjaDeps := []string{configuration.ProductVariablesFileName}
-	// Read the SOONG_DELVE again through configuration so that there is a dependency on the environment variable
-	// and soong_build will rerun when it is set for the first time.
-	if listen := configuration.Getenv("SOONG_DELVE"); listen != "" {
+	if shared.IsDebugging() {
 		// Add a non-existent file to the dependencies so that soong_build will rerun when the debugger is
 		// enabled even if it completed successfully.
 		extraNinjaDeps = append(extraNinjaDeps, filepath.Join(configuration.BuildDir(), "always_rerun_for_delve"))

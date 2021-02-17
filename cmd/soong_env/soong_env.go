@@ -23,6 +23,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"android/soong/env"
 )
@@ -43,7 +44,16 @@ func main() {
 		usage()
 	}
 
-	stale, err := env.StaleEnvFile(flag.Arg(0))
+	envVars := make(map[string]string)
+
+	for _, v := range os.Environ() {
+		idx := strings.IndexRune(v, '=')
+		if idx != -1 {
+			envVars[v[:idx]] = v[idx+1:]
+		}
+	}
+
+	stale, err := env.StaleEnvFile(flag.Arg(0), envVars)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error: %s\n", err.Error())
 		os.Exit(1)
