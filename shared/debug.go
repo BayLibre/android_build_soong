@@ -4,61 +4,75 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path"
 	"strings"
 	"syscall"
 )
 
-func ReexecWithDelveMaybe() {
-	var listenVarName string
-	binary := path.Base(os.Args[0])
+var (
+	isDebugging bool
+)
 
-	if binary == "soong_ui" {
-		listenVarName = "SOONG_UI_DELVE"
-	} else if binary == "soong_build" {
-		listenVarName = "SOONG_DELVE"
+func ResolveDelveBinary() string {
+	result := os.Getenv("SOONG_DELVE_PATH")
+	if result == "" {
+		result, _ = exec.LookPath("dlv")
 	}
 
-	if listenVarName == "" {
+	return result
+}
+
+func removeVar(varsToRemove []string, v string) bool {
+	for _, e := range varsToRemove {
+		if e == v {
+			return true
+		}
+	}
+
+	return false
+}
+
+func IsDebugging() bool {
+	return isDebugging
+}
+
+func ReexecWithDelveMaybe(delveListen, delvePath string, varsToRemove []string) {
+	//if len(varsToRemove) == 0 {
+	//	fmt.Printf("DL=%s, DP=%s\n", delveListen, delvePath)
+	//	os.Exit(1)
+	//}
+
+	isDebugging = os.Getenv("SOONG_DELVE_REEXECUTED") == "true"
+	if isDebugging || delveListen == "" {
 		return
 	}
 
-	soongDelveListen := os.Getenv(listenVarName)
-	if soongDelveListen == "" {
-		return
-	}
-
-	soongDelvePath := os.Getenv("SOONG_DELVE_PATH")
-
-	if soongDelvePath == "" {
-		soongDelvePath, _ = exec.LookPath("dlv")
+	if delvePath == "" {
+		fmt.Fprintln(os.Stderr, "Delve debugging requested but failed to find dlv")
+		os.Exit(1)
 	}
 
 	soongDelveEnv := []string{}
 	for _, env := range os.Environ() {
 		idx := strings.IndexRune(env, '=')
 		if idx != -1 {
-			if env[:idx] != listenVarName && env[:idx] != "SOONG_DELVE_PATH" {
-				soongDelveEnv = append(soongDelveEnv, env)
-			}
+			soongDelveEnv = append(soongDelveEnv, env)
 		}
 	}
 
-	if soongDelvePath == "" {
-		fmt.Fprintln(os.Stderr, listenVarName+" is set but failed to find dlv")
-		os.Exit(1)
-	}
+	soongDelveEnv = append(soongDelveEnv, "SOONG_DELVE_REEXECUTED=true")
+
 	dlvArgv := []string{
-		soongDelvePath,
-		"--listen=:" + soongDelveListen,
+		delvePath,
+		"--listen=:" + delveListen,
 		"--headless=true",
 		"--api-version=2",
 		"exec",
 		os.Args[0],
 		"--",
 	}
+
 	dlvArgv = append(dlvArgv, os.Args[1:]...)
-	syscall.Exec(soongDelvePath, dlvArgv, soongDelveEnv)
+	syscall.Exec(delvePath, dlvArgv, soongDelveEnv)
 	fmt.Fprintln(os.Stderr, "exec() failed while trying to reexec with Delve")
 	os.Exit(1)
 }

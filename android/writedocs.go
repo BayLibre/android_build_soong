@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/shared"
 	"github.com/google/blueprint"
 )
 
@@ -34,7 +35,8 @@ func DocsSingleton() Singleton {
 type docsSingleton struct{}
 
 func primaryBuilderPath(ctx SingletonContext) Path {
-	primaryBuilder, err := filepath.Rel(ctx.Config().BuildDir(), os.Args[0])
+	buildDir := shared.JoinPath(getenv("TOP"), ctx.Config().BuildDir())
+	primaryBuilder, err := filepath.Rel(buildDir, os.Args[0])
 	if err != nil {
 		ctx.Errorf("path to primary builder %q is not in build dir %q",
 			os.Args[0], ctx.Config().BuildDir())

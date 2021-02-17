@@ -43,7 +43,8 @@ func main() {
 		usage()
 	}
 
-	stale, err := env.StaleEnvFile(flag.Arg(0))
+	envVars := env.GetOsEnvironment()
+	stale, err := env.StaleEnvFile(flag.Arg(0), envVars)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error: %s\n", err.Error())
 		os.Exit(1)
