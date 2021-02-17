@@ -22,6 +22,30 @@
       },
       "revId": "253a624f136553eee266c04039247ec9fbb6ba85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b2c800_9a0f5fb0",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-17T15:07:08Z",
+      "side": 1,
+      "message": "This is cleaner! Made it such that there\u0027s no need to make the AddProperties call later either.",
+      "parentUuid": "fa50f53b_ba00a258",
+      "range": {
+        "startLine": 818,
+        "startChar": 1,
+        "endLine": 818,
+        "endChar": 33
+      },
+      "revId": "253a624f136553eee266c04039247ec9fbb6ba85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
