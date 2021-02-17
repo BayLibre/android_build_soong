@@ -30,6 +30,18 @@ type SharedPaths interface {
 	BazelMetricsDir() string
 }
 
+func JoinPath(base string, rest ...string) string {
+	result := base
+	for _, next := range rest {
+		if filepath.IsAbs(next) {
+			result = next
+		} else {
+			result = filepath.Join(result, next)
+		}
+	}
+	return result
+}
+
 // Given the out directory, returns the root of the temp directory (to be cleared at the start of each execution of Soong)
 func TempDirForOutDir(outDir string) (tempPath string) {
 	return filepath.Join(outDir, ".temp")
