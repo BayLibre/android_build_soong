@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2a1e6e0_45b861be",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-17T18:54:56Z",
+      "side": 1,
+      "message": "This is exactly what https://android-review.googlesource.com/q/topic:soong-early-sandbox does, modulo the cleaning the environment variable part.\n\nI have to ask, though, do we need to sandbox partner plugins in this exact way? It looks like there is ample room to bypass the current setup, even accidentally (all it takes is a simple \"utility\" package)\n\nIOW, it looks odd that init() functions get so much scrutiny while the sandbox is leaky in all sorts of other ways. Or maybe I\u0027m overestimating its leakiness?",
+      "parentUuid": "47578b82_aad05348",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e54fb8ba_d17ef76c",
         "filename": "shared/debug.go",
         "patchSetId": 5
