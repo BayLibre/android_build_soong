@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b075566_888968f7",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T18:43:34Z",
+      "side": 1,
+      "message": "You can avoid the duplication between InstallFile and PackageFile by using:\n\n if !p.Installable() {\n     p.SkipInstall()\n }\n ctx.InstallFile(...)",
+      "revId": "69ab4df1c8d4b803404521d9c1b594586fed1ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
