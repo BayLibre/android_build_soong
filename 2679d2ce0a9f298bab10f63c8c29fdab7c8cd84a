@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b07b94f0_d27058a7",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T18:23:10Z",
+      "side": 1,
+      "message": "I don\u0027t expect this to be necessary, it should be set already by android.TestConfig",
+      "revId": "2679d2ce0a9f298bab10f63c8c29fdab7c8cd84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9789054b_6a3189bd",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T18:23:10Z",
+      "side": 1,
+      "message": "put blueprint imports in a separate section, ideally between the stdlib imports and the android imports.",
+      "revId": "2679d2ce0a9f298bab10f63c8c29fdab7c8cd84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b043360a_186407d5",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T18:23:10Z",
+      "side": 1,
+      "message": "android.PathForModuleSrc(lintFilename)",
+      "range": {
+        "startLine": 354,
+        "startChar": 46,
+        "endLine": 354,
+        "endChar": 88
+      },
+      "revId": "2679d2ce0a9f298bab10f63c8c29fdab7c8cd84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
