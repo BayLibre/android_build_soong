@@ -15,9 +15,6 @@
 package android
 
 import (
-	"os"
-	"strings"
-
 	"android/soong/env"
 )
 
@@ -30,29 +27,16 @@ import (
 
 var originalEnv map[string]string
 
-func InitEnvironment() {
-	originalEnv = make(map[string]string)
-	for _, env := range os.Environ() {
-		idx := strings.IndexRune(env, '=')
-		if idx != -1 {
-			originalEnv[env[:idx]] = env[idx+1:]
-		}
+func InitEnvironment(envFile string) {
+	var err error
+	originalEnv, err = env.EnvFromFile(envFile)
+	if err != nil {
+		panic(err)
 	}
-
-	// Clear the environment to prevent use of os.Getenv(), which would not provide dependencies on environment
-	// variable values.  The environment is available through ctx.Config().Getenv, ctx.Config().IsEnvTrue, etc.
-	os.Clearenv()
 }
 
-// getenv checks either os.Getenv or originalEnv so that it works before or after the init()
-// function above.  It doesn't add any dependencies on the environment variable, so it should
-// only be used for values that won't change.  For values that might change use ctx.Config().Getenv.
 func getenv(key string) string {
-	if originalEnv == nil {
-		return os.Getenv(key)
-	} else {
-		return originalEnv[key]
-	}
+	return originalEnv[key]
 }
 
 func EnvSingleton() Singleton {
@@ -64,7 +48,7 @@ type envSingleton struct{}
 func (c *envSingleton) GenerateBuildActions(ctx SingletonContext) {
 	envDeps := ctx.Config().EnvDeps()
 
-	envFile := PathForOutput(ctx, ".soong.environment")
+	envFile := PathForOutput(ctx, "soong.environment.used")
 	if ctx.Failed() {
 		return
 	}

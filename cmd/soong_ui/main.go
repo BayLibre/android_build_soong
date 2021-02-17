@@ -119,7 +119,7 @@ func inList(s string, list []string) bool {
 // Command is the type of soong_ui execution. Only one type of
 // execution is specified. The args are specific to the command.
 func main() {
-	shared.ReexecWithDelveMaybe()
+	shared.ReexecWithDelveMaybe(os.Getenv("SOONG_UI_DELVE"), shared.ResolveDelveBinary())
 
 	buildStarted := time.Now()
 
