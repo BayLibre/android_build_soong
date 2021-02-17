@@ -89,7 +89,7 @@ func (targets BazelTargets) LoadStatements() string {
 	return strings.Join(android.SortedUniqueStrings(loadStatements), "\n")
 }
 
-type bpToBuildContext interface {
+type Bp2buildContext interface {
 	ModuleName(module blueprint.Module) string
 	ModuleDir(module blueprint.Module) string
 	ModuleSubDir(module blueprint.Module) string
@@ -100,9 +100,10 @@ type bpToBuildContext interface {
 }
 
 type CodegenContext struct {
-	config  android.Config
-	context android.Context
-	mode    CodegenMode
+	config         android.Config
+	context        android.Context
+	mode           CodegenMode
+	additionalDeps []string
 }
 
 func (c *CodegenContext) Mode() CodegenMode {
@@ -138,14 +139,28 @@ func (mode CodegenMode) String() string {
 	}
 }
 
-func (ctx CodegenContext) AddNinjaFileDeps(...string) {}
-func (ctx CodegenContext) Config() android.Config     { return ctx.config }
-func (ctx CodegenContext) Context() android.Context   { return ctx.context }
+func (ctx *CodegenContext) AddNinjaFileDeps(deps ...string) {
+	ctx.additionalDeps = append(ctx.additionalDeps, deps...)
+}
+
+func (ctx *CodegenContext) AdditionalNinjaDeps() []string {
+	return ctx.additionalDeps
+}
+
+func (ctx *CodegenContext) Config() android.Config   { return ctx.config }
+func (ctx *CodegenContext) Context() android.Context { return ctx.context }
+
+func (ctx *CodegenContext) ModuleName(module blueprint.Module) string {
+	return ctx.Context().ModuleName(module)
+}
+func (ctx *CodegenContext) ModuleDir(module blueprint.Module) string {
+	return ctx.Context().ModuleDir(module)
+}
 
 // NewCodegenContext creates a wrapper context that conforms to PathContext for
 // writing BUILD files in the output directory.
-func NewCodegenContext(config android.Config, context android.Context, mode CodegenMode) CodegenContext {
-	return CodegenContext{
+func NewCodegenContext(config android.Config, context android.Context, mode CodegenMode) *CodegenContext {
+	return &CodegenContext{
 		context: context,
 		config:  config,
 		mode:    mode,
@@ -164,8 +179,9 @@ func propsToAttributes(props map[string]string) string {
 	return attributes
 }
 
-func GenerateBazelTargets(ctx CodegenContext) (map[string]BazelTargets, CodegenMetrics) {
+func GenerateBazelTargets(ctx *CodegenContext) (map[string]BazelTargets, CodegenMetrics) {
 	buildFileToTargets := make(map[string]BazelTargets)
+	buildFileToAppend := make(map[string]android.Path)
 
 	// Simple metrics tracking for bp2build
 	totalModuleCount := 0
@@ -178,13 +194,31 @@ func GenerateBazelTargets(ctx CodegenContext) (map[string]BazelTargets, CodegenM
 
 		switch ctx.Mode() {
 		case Bp2Build:
-			if _, ok := m.(android.BazelTargetModule); !ok {
-				// Only include regular Soong modules (non-BazelTargetModules) into the total count.
-				totalModuleCount += 1
-				return
+			if b, ok := m.(android.Bazelable); ok && b.HasHandcraftedLabel() {
+				l := b.GetBazelLabel()
+				pathToBuildFile := strings.Split(l, ":")[0]
+				pathToBuildFile = pathToBuildFile[2:]
+				if _, exists := buildFileToAppend[pathToBuildFile]; exists {
+					return
+				}
+				p := android.ExistentPathForSource(ctx, pathToBuildFile, "BUILD.bazel")
+				if p.Valid() {
+					buildFileToAppend[pathToBuildFile] = p.Path()
+					c, _ := b.GetBazelBuildFileContents(ctx.Config(), pathToBuildFile, "BUILD.bazel")
+					t = BazelTarget{
+						content: c,
+					}
+				} else {
+					panic(fmt.Errorf("Could not find file %q for handcrafted target %q.", pathToBuildFile, ctx.ModuleName(m)))
+				}
+			} else {
+				if _, ok := m.(android.BazelTargetModule); !ok {
+					totalModuleCount += 1
+					return
+				}
+				t = generateBazelTarget(bpCtx, m)
+				ruleClassCount[t.ruleClass] += 1
 			}
-			t = generateBazelTarget(bpCtx, m)
-			ruleClassCount[t.ruleClass] += 1
 		case QueryView:
 			// Blocklist certain module types from being generated.
 			if canonicalizeModuleType(bpCtx.ModuleType(m)) == "package" {
@@ -223,7 +257,7 @@ func trimQuotes(s string) string {
 	return ret
 }
 
-func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
+func generateBazelTarget(ctx Bp2buildContext, m blueprint.Module) BazelTarget {
 	// extract the bazel attributes from the module.
 	props := getBuildProperties(ctx, m)
 
@@ -259,7 +293,7 @@ func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
 
 // Convert a module and its deps and props into a Bazel macro/rule
 // representation in the BUILD file.
-func generateSoongModuleTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
+func generateSoongModuleTarget(ctx Bp2buildContext, m blueprint.Module) BazelTarget {
 	props := getBuildProperties(ctx, m)
 
 	// TODO(b/163018919): DirectDeps can have duplicate (module, variant)
@@ -293,7 +327,7 @@ func generateSoongModuleTarget(ctx bpToBuildContext, m blueprint.Module) BazelTa
 	}
 }
 
-func getBuildProperties(ctx bpToBuildContext, m blueprint.Module) BazelAttributes {
+func getBuildProperties(ctx Bp2buildContext, m blueprint.Module) BazelAttributes {
 	var allProps map[string]string
 	// TODO: this omits properties for blueprint modules (blueprint_go_binary,
 	// bootstrap_go_binary, bootstrap_go_package), which will have to be handled separately.
@@ -487,11 +521,11 @@ func makeIndent(indent int) string {
 	return strings.Repeat("    ", indent)
 }
 
-func targetNameForBp2Build(c bpToBuildContext, logicModule blueprint.Module) string {
+func targetNameForBp2Build(c Bp2buildContext, logicModule blueprint.Module) string {
 	return strings.Replace(c.ModuleName(logicModule), bazel.BazelTargetModuleNamePrefix, "", 1)
 }
 
-func targetNameWithVariant(c bpToBuildContext, logicModule blueprint.Module) string {
+func targetNameWithVariant(c Bp2buildContext, logicModule blueprint.Module) string {
 	name := ""
 	if c.ModuleSubDir(logicModule) != "" {
 		// TODO(b/162720883): Figure out a way to drop the "--" variant suffixes.
@@ -503,6 +537,6 @@ func targetNameWithVariant(c bpToBuildContext, logicModule blueprint.Module) str
 	return strings.Replace(name, "//", "", 1)
 }
 
-func qualifiedTargetLabel(c bpToBuildContext, logicModule blueprint.Module) string {
+func qualifiedTargetLabel(c Bp2buildContext, logicModule blueprint.Module) string {
 	return fmt.Sprintf("//%s:%s", c.ModuleDir(logicModule), targetNameWithVariant(c, logicModule))
 }
