@@ -93,6 +93,30 @@
       },
       "revId": "3da4be108c20551f28c92bb3665996aec7861d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4248e8d3_7502e81e",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T00:51:34Z",
+      "side": 1,
+      "message": "You\u0027re right, aosp/1571203 was never merged.",
+      "parentUuid": "819dbf74_3af5bb27",
+      "range": {
+        "startLine": 132,
+        "startChar": 56,
+        "endLine": 132,
+        "endChar": 67
+      },
+      "revId": "3da4be108c20551f28c92bb3665996aec7861d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
