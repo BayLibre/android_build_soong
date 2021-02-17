@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca213faf_18fde288",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T00:17:01Z",
+      "side": 1,
+      "message": "This breaks the intent of the sandbox.  As an init() function it is guaranteed to run before any init() functions in vendor plugins, as a function called from Main() it will be called much later and vendor plugins could access absolute paths.",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e54fb8ba_d17ef76c",
+        "filename": "shared/debug.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T00:17:01Z",
+      "side": 1,
+      "message": "Needs license header",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75879000_05ba504d",
+        "filename": "shared/debug.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T00:17:01Z",
+      "side": 1,
+      "message": "Add godoc",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62772f4f_c94cb2e3",
+        "filename": "shared/debug.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T00:17:01Z",
+      "side": 1,
+      "message": "This seems more straightforward as an argument then trying to compute it from os.Args[0].  If you took the value of the variable instead of the name you wouldn\u0027t need the rest of the changes to the way the environment is initialized.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
