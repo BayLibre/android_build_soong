@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa57a3f2_d5b509db",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T22:52:21Z",
+      "side": 1,
+      "message": "Can you comment here or in the commit message what the expected use case for this flag is?",
+      "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8fe864_cccd334e",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T22:52:21Z",
+      "side": 1,
+      "message": "Unnecessary whitespace change.",
+      "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b578cd53_8c2fb2f6",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T22:52:21Z",
+      "side": 1,
+      "message": "Is this always guaranteed to be marked as an input to the rule?  Suggest Input(module.EnforceUsesLibrariesStatusFile) or leave it like this and append .Implicit(module.EnforceUsesLibrariesStatusFile)",
+      "range": {
+        "startLine": 375,
+        "startChar": 47,
+        "endLine": 375,
+        "endChar": 84
+      },
+      "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f05b0d1a_7d8e43c7",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T22:52:21Z",
+      "side": 1,
+      "message": "Unnecessary whitespace change",
+      "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
