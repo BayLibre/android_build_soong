@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94525cec_55e12903",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2021-02-17T16:41:28Z",
+      "side": 1,
+      "message": "Verified +1 for re-running the manual device on host and device.",
+      "revId": "00c144f930629dd2a14af74d68fc5c047ff74d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
