@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29f78985_ed0f119e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-17T11:04:06Z",
+      "side": 1,
+      "message": "So I managed to run soong_build with cwd \u003d\u003d \"/\" in aosp/1591313 and aosp/1592052, but I\u0027m not at all happy about that solution, either: it looks like there isn\u0027t a good way to transmit information between soong_ui and soong_build other than:\n\n1: environment variables (which then are made available to other processes in the same Ninja invocation, too)\n2: Hacking Blueprint to invoke soong_build with the correct cwd (this change)\n3: Implementing the cwd change with a proper design, which I\u0027m reluctant to do because it\u0027d probably be quite complex.\n",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca213faf_18fde288",
