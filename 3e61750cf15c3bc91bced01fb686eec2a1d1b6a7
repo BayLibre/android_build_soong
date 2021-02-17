@@ -52,6 +52,24 @@
       "parentUuid": "b45d1acb_11697f02",
       "revId": "3e61750cf15c3bc91bced01fb686eec2a1d1b6a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "447872c3_f77860d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-17T07:55:13Z",
+      "side": 1,
+      "message": "This change would cause issues down the road when other modules depend on a sh_binary, and they resolve to the wrong target label, since they don\u0027t know that it\u0027s been renamed. Let\u0027s try to take the route in aosp/1591571 and revisit this if that\u0027s a dead-end.",
+      "parentUuid": "a630a3f4_55c20f5d",
+      "revId": "3e61750cf15c3bc91bced01fb686eec2a1d1b6a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
