@@ -157,8 +157,7 @@ func runSoong(ctx Context, config Config) {
 		cmd.Environment.Set("BAZEL_OUTPUT_BASE", filepath.Join(config.BazelOutDir(), "output"))
 		cmd.Environment.Set("BAZEL_WORKSPACE", absPath(ctx, "."))
 		cmd.Environment.Set("BAZEL_METRICS_DIR", config.BazelMetricsDir())
-
-		cmd.Environment.Set("SOONG_SANDBOX_SOONG_BUILD", "true")
+		cmd.Environment.Set("TOP", os.Getenv("TOP"))
 		cmd.Sandbox = soongSandbox
 		cmd.RunAndStreamOrFatal()
 	}
