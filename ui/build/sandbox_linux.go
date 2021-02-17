@@ -19,6 +19,7 @@ import (
 	"os"
 	"os/exec"
 	"os/user"
+	"path"
 	"path/filepath"
 	"strings"
 	"sync"
@@ -144,16 +145,25 @@ func (c *Cmd) sandboxSupported() bool {
 
 func (c *Cmd) wrapSandbox() {
 	wd, _ := os.Getwd()
+	var realWd string
+
+	if c.Dir == "" {
+		realWd = wd
+	} else {
+		realWd = c.Dir
+	}
+
+	c.Dir = wd
 
 	sandboxArgs := []string{
 		// The executable to run
-		"-x", c.Path,
+		"-x", path.Join(wd, c.Path),
 
 		// Set the hostname to something consistent
 		"-H", "android-build",
 
-		// Use the current working dir
-		"--cwd", wd,
+		// Use the working directory requested by caller
+		"--cwd", realWd,
 
 		// No time limit
 		"-t", "0",

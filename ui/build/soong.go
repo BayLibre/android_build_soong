@@ -130,7 +130,7 @@ func runSoong(ctx Context, config Config) {
 		}
 	}()
 
-	ninja := func(name, file string) {
+	ninja := func(name, file string, cwdRoot bool) {
 		ctx.BeginTrace(metrics.RunSoong, name)
 		defer ctx.EndTrace()
 
@@ -157,17 +157,22 @@ func runSoong(ctx Context, config Config) {
 		cmd.Environment.Set("BAZEL_OUTPUT_BASE", filepath.Join(config.BazelOutDir(), "output"))
 		cmd.Environment.Set("BAZEL_WORKSPACE", absPath(ctx, "."))
 		cmd.Environment.Set("BAZEL_METRICS_DIR", config.BazelMetricsDir())
+		cmd.Environment.Set("TOP", os.Getenv("TOP"))
 
-		cmd.Environment.Set("SOONG_SANDBOX_SOONG_BUILD", "true")
+		if cwdRoot {
+			cmd.Environment.Set("SOONG_SANDBOX_SOONG_BUILD", "true")
+			cmd.Dir = "/"
+		}
+
 		cmd.Sandbox = soongSandbox
 		cmd.RunAndStreamOrFatal()
 	}
 
 	// This build generates .bootstrap/build.ninja, which is used in the next step.
-	ninja("minibootstrap", ".minibootstrap/build.ninja")
+	ninja("minibootstrap", ".minibootstrap/build.ninja", false)
 
 	// This build generates <builddir>/build.ninja, which is used later by build/soong/ui/build/build.go#Build().
-	ninja("bootstrap", ".bootstrap/build.ninja")
+	ninja("bootstrap", ".bootstrap/build.ninja", false)
 
 	var soongBuildMetrics *soong_metrics_proto.SoongBuildMetrics
 	if shouldCollectBuildSoongMetrics(config) {
