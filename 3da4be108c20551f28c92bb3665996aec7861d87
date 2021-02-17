@@ -45,6 +45,54 @@
       },
       "revId": "3da4be108c20551f28c92bb3665996aec7861d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d0e514c_fa656aa5",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-17T00:48:13Z",
+      "side": 1,
+      "message": "Ah ha! Why didn\u0027t I think in that way? Thanks!",
+      "parentUuid": "9d1d4314_8e5fad7d",
+      "range": {
+        "startLine": 132,
+        "startChar": 41,
+        "endLine": 132,
+        "endChar": 55
+      },
+      "revId": "3da4be108c20551f28c92bb3665996aec7861d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819dbf74_3af5bb27",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-17T00:48:13Z",
+      "side": 1,
+      "message": "Hmm, is it? When I removed .OutputPath, I saw these errors:\n\nbuild/soong/filesystem/bootimg.go:138:3: cannot use output (type android.ModuleOutPath) as type android.OutputPath in return argument\n\nI see that it\u0027s the private function pathForModuleOut which returns OutputPath. PathForModuleOut isn\u0027t. I will keep using .OutputPath for now.",
+      "parentUuid": "d37492eb_95fcd44d",
+      "range": {
+        "startLine": 132,
+        "startChar": 56,
+        "endLine": 132,
+        "endChar": 67
+      },
+      "revId": "3da4be108c20551f28c92bb3665996aec7861d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
