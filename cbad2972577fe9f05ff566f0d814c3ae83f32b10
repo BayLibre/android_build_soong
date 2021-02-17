@@ -111,6 +111,30 @@
       },
       "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22780b85_c8aef727",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T01:09:47Z",
+      "side": 1,
+      "message": "Fuzzer variants seem to be getting marked as PreventInstall at https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/sanitize.go;l\u003d1291;drc\u003de0edaf9d4904df94331de42cb780797f2eb2a024, which gets turned into SkipInstall later.  I\u0027m not sure why its specific to host modules, but it seems worth fixing properly, otherwise setting installable: false will never work on host modules.  Or at least leave a detailed comment explaining why the host check is necessary.",
+      "parentUuid": "925a3437_5ec987e6",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 28
+      },
+      "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
