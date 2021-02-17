@@ -1,6 +1,12 @@
 package android
 
-import "android/soong/bazel"
+import (
+	"android/soong/bazel"
+	"fmt"
+	"io/ioutil"
+	"path/filepath"
+	"strings"
+)
 
 // BazelModuleBase contains the property structs with metadata for modules which can be converted to
 // Bazel.
@@ -13,6 +19,7 @@ type Bazelable interface {
 	bazelProps() *bazel.Properties
 	GetBazelLabel() string
 	ConvertWithBp2build() bool
+	GetBazelBuildFileContents(c Config, path, name string) (string, error)
 }
 
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
@@ -39,5 +46,25 @@ func (b *BazelModuleBase) GetBazelLabel() string {
 
 // ConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
 func (b *BazelModuleBase) ConvertWithBp2build() bool {
-	return b.bazelProperties.Bazel_module.Bp2build_available
+	return b.bazelProperties.Bazel_module.Bp2build_available && b.GetBazelLabel() == ""
+}
+
+// GetBazelBuildFileContents returns the file contents of a hand-crafted BUILD file if available or
+// an error if there are errors reading the file.
+func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string) (string, error) {
+	if !strings.Contains(b.GetBazelLabel(), path) {
+		return "", fmt.Errorf("%q not found in bazel_module.label %q", path, b.GetBazelLabel())
+	}
+	name = filepath.Join(path, name)
+	f, err := c.fs.Open(name)
+	if err != nil {
+		return "", err
+	}
+	defer f.Close()
+
+	data, err := ioutil.ReadAll(f)
+	if err != nil {
+		return "", err
+	}
+	return string(data[:]), nil
 }
