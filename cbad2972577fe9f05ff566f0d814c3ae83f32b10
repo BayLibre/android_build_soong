@@ -135,6 +135,30 @@
       },
       "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f056f5c_b5aab290",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2021-02-17T16:39:46Z",
+      "side": 1,
+      "message": "Done by checking the ccLibrary.Properties.Installable and remove the host checking. Please take a look.",
+      "parentUuid": "22780b85_c8aef727",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 28
+      },
+      "revId": "cbad2972577fe9f05ff566f0d814c3ae83f32b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
