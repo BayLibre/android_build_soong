@@ -22,6 +22,30 @@
       },
       "revId": "3d404825162d3da0048a55ca385a0505c6a58859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e74729_4c651787",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-17T10:27:07Z",
+      "side": 1,
+      "message": "Given fmtlib is here already, a version of fmtlib that depends purely on the ndk at least seems no worse to me.",
+      "parentUuid": "006dd04a_f2ff42ec",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 10
+      },
+      "revId": "3d404825162d3da0048a55ca385a0505c6a58859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
