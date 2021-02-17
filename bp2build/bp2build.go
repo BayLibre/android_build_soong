@@ -22,13 +22,13 @@ import (
 
 // The Bazel bp2build code generator is responsible for writing .bzl files that are equivalent to
 // Android.bp files that are capable of being built with Bazel.
-func Codegen(ctx CodegenContext) {
+func Codegen(ctx *CodegenContext) {
 	outputDir := android.PathForOutput(ctx, "bp2build")
 	android.RemoveAllOutputDir(outputDir)
 
 	ruleShims := CreateRuleShims(android.ModuleTypeFactories())
 
-	buildToTargets := GenerateBazelTargets(ctx.Context(), ctx.mode)
+	buildToTargets := GenerateBazelTargets(ctx, ctx.mode)
 
 	filesToWrite := CreateBazelFiles(ruleShims, buildToTargets, ctx.mode)
 	for _, f := range filesToWrite {
