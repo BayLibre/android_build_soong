@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6147e6a_78756aed",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T19:23:57Z",
+      "side": 1,
+      "message": "An init() function in a utility package that does not import any Soong packages is the only leak I know of, and that seems pretty unlikely.  init() and global variable initializations are pretty common in Soong code to register module types and ninja variables, so making sure environment variables are properly hidden by then seems useful.\n\nStepping back a bit, what\u0027s your goal for refactoring this?  My suggestion in shared/debug.go to take the environment variable value as a parameter makes the refactoring unnecessary if all you want is to enable debugging soong_ui.\n\nAlso, unlike soong_build, soong_ui is not embedded in ninja.  You could implement delve support for soong_ui entirely within build/soong/soong_ui.bash, with no need to reexecute itself like soong_build does.",
+      "parentUuid": "e2a1e6e0_45b861be",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e54fb8ba_d17ef76c",
         "filename": "shared/debug.go",
         "patchSetId": 5
