@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c17d088e_17db6a8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-17T07:32:24Z",
+      "side": 1,
+      "message": "I won\u0027t address the remaining comments until the sandbox one is resolved because the rest look like much smaller issues.",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca213faf_18fde288",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-02-17T00:17:01Z",
       "side": 1,
       "message": "This breaks the intent of the sandbox.  As an init() function it is guaranteed to run before any init() functions in vendor plugins, as a function called from Main() it will be called much later and vendor plugins could access absolute paths.",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd351ac2_569b0928",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-17T07:32:24Z",
+      "side": 1,
+      "message": "You can\u0027t guarantee that this code runs after vendor plugin init functions this way, either, can you? My understanding is the only guarantee Golang gives is that if you import a package, its init() function is run before your init() function, which doesn\u0027t seem to be enough.\n\nIn that case, it would be better to set the cwd to \"/\" before running soong_build, wouldn\u0027t it? (it looks like it\u0027s easy to do, but the sandbox makes it non-trivial since it has its own ideas about what the cwd should be)",
+      "parentUuid": "ca213faf_18fde288",
       "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
