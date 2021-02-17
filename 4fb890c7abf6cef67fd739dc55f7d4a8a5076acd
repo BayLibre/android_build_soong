@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b7ed28_bd197d6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-17T10:52:27Z",
+      "side": 1,
+      "message": "com.android.art is specified multiple times in the build so I think you need to fix a couple more \nplaces. http://source/search?q\u003d%5C%22com.android.art%5C%22%20f:%5C.go$%20-f:_test.go$\u0026sq\u003dpackage:%5Eaosp-master$\n\nThe instrumentation one needs to be told the name of the ART APEX so it might make sense to pass that in as a configuration option and use the configured option everywhere.\n\nI suggest that the configuration be given a list of art APEX names with the first one being the default that is used for instrumentation.\n\nMy work to switch the boot image processing from configuration+singleton to modules would have avoided the need for that but that is on hold for the moment.",
+      "revId": "4fb890c7abf6cef67fd739dc55f7d4a8a5076acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0021a239_f1a7c847",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-17T10:52:27Z",
+      "side": 1,
+      "message": "Are there not debug and testing versions of the Google signed APEX?",
+      "revId": "4fb890c7abf6cef67fd739dc55f7d4a8a5076acd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
