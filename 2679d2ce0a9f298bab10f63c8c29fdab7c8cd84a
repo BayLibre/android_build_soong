@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ac9365_57c8d27a",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-17T19:04:30Z",
+      "side": 1,
+      "message": "Just saw the earlier discussion, I missed that this is setting it to false, not true.  LGTM.",
+      "parentUuid": "04177946_145c9d28",
+      "revId": "2679d2ce0a9f298bab10f63c8c29fdab7c8cd84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9789054b_6a3189bd",
