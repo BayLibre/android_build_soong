@@ -84,6 +84,10 @@ type GlobalConfig struct {
 	BootFlags         string        // extra flags to pass to dex2oat for the boot image
 	Dex2oatImageXmx   string        // max heap size for dex2oat for the boot image
 	Dex2oatImageXms   string        // initial heap size for dex2oat for the boot image
+
+	// If true, disable code compilation in dexpreopt when verify_uses_libraries check fails
+	// (instead of failing the build, which is what happens by default).
+	RelaxUsesLibraryCheck bool
 }
 
 // GlobalSoongConfig contains the global config that is generated from Soong,
@@ -113,9 +117,10 @@ type ModuleConfig struct {
 	ProfileIsTextListing bool
 	ProfileBootListing   android.OptionalPath
 
-	EnforceUsesLibraries bool
-	ProvidesUsesLibrary  string // the name of the <uses-library> (usually the same as its module)
-	ClassLoaderContexts  ClassLoaderContextMap
+	EnforceUsesLibrariesStatusFile android.Path
+	EnforceUsesLibraries           bool
+	ProvidesUsesLibrary            string // the name of the <uses-library> (usually the same as its module)
+	ClassLoaderContexts            ClassLoaderContextMap
 
 	Archs                   []android.ArchType
 	DexPreoptImages         []android.Path
@@ -258,14 +263,15 @@ func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, err
 
 		// Copies of entries in ModuleConfig that are not constructable without extra parameters.  They will be
 		// used to construct the real value manually below.
-		BuildPath                   string
-		DexPath                     string
-		ManifestPath                string
-		ProfileClassListing         string
-		ClassLoaderContexts         jsonClassLoaderContextMap
-		DexPreoptImages             []string
-		DexPreoptImageLocations     []string
-		PreoptBootClassPathDexFiles []string
+		BuildPath                      string
+		DexPath                        string
+		ManifestPath                   string
+		ProfileClassListing            string
+		EnforceUsesLibrariesStatusFile string
+		ClassLoaderContexts            jsonClassLoaderContextMap
+		DexPreoptImages                []string
+		DexPreoptImageLocations        []string
+		PreoptBootClassPathDexFiles    []string
 	}
 
 	config := ModuleJSONConfig{}
@@ -280,6 +286,7 @@ func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, err
 	config.ModuleConfig.DexPath = constructPath(ctx, config.DexPath)
 	config.ModuleConfig.ManifestPath = constructPath(ctx, config.ManifestPath)
 	config.ModuleConfig.ProfileClassListing = android.OptionalPathForPath(constructPath(ctx, config.ProfileClassListing))
+	config.ModuleConfig.EnforceUsesLibrariesStatusFile = constructPath(ctx, config.EnforceUsesLibrariesStatusFile)
 	config.ModuleConfig.ClassLoaderContexts = fromJsonClassLoaderContext(ctx, config.ClassLoaderContexts)
 	config.ModuleConfig.DexPreoptImages = constructPaths(ctx, config.DexPreoptImages)
 	config.ModuleConfig.DexPreoptImageLocations = config.DexPreoptImageLocations
