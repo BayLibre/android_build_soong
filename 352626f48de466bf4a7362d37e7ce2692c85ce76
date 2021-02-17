@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db553a9_2b8b7492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-02-17T22:06:24Z",
+      "side": 1,
+      "message": "Seems like this is already configurable via PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION",
+      "revId": "352626f48de466bf4a7362d37e7ce2692c85ce76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
