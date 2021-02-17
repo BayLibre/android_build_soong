@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "006dd04a_f2ff42ec",
+        "filename": "apex/allowed_deps.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2021-02-17T10:19:09Z",
+      "side": 1,
+      "message": "are the _ndk deps ok? We might be able to get away with the headers...",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 10
+      },
+      "revId": "3d404825162d3da0048a55ca385a0505c6a58859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
