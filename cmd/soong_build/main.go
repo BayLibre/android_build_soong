@@ -29,11 +29,19 @@ import (
 )
 
 var (
+	topDir            string
+	outDir            string
 	docFile           string
 	bazelQueryViewDir string
+	delveListen       string
+	delvePath         string
 )
 
 func init() {
+	flag.StringVar(&topDir, "top", "", "Top directory of the Android source tree")
+	flag.StringVar(&outDir, "out", "", "Soong output directory (usually $TOP/out/soong)")
+	flag.StringVar(&delveListen, "delve_listen", "", "Delve port to listen on for debugging")
+	flag.StringVar(&delvePath, "delve_path", "", "Path to Delve. Only used if --delve_listen is set")
 	flag.StringVar(&docFile, "soong_docs", "", "build documentation file to output")
 	flag.StringVar(&bazelQueryViewDir, "bazel_queryview_dir", "", "path to the bazel queryview directory")
 }
@@ -81,19 +89,23 @@ func newConfig(srcDir string) android.Config {
 }
 
 func main() {
-	shared.ReexecWithDelveMaybe()
-	android.InitSandbox()
-	android.InitEnvironment()
 	flag.Parse()
+
+	shared.ReexecWithDelveMaybe(delveListen, delvePath)
+	android.InitSandbox(topDir)
+	android.InitEnvironment(shared.JoinPath(topDir, outDir, "soong.environment.available"))
 
 	// The top-level Blueprints file is passed as the first argument.
 	srcDir := filepath.Dir(flag.Arg(0))
 	var ctx *android.Context
 	configuration := newConfig(srcDir)
 	extraNinjaDeps := []string{configuration.ProductVariablesFileName}
-	// Read the SOONG_DELVE again through configuration so that there is a dependency on the environment variable
-	// and soong_build will rerun when it is set for the first time.
-	if listen := configuration.Getenv("SOONG_DELVE"); listen != "" {
+
+	// These two are here so that we restart a non-debugged soong_build when the
+	// user sets SOONG_DELVE the first time.
+	configuration.Getenv("SOONG_DELVE")
+	configuration.Getenv("SOONG_DELVE_PATH")
+	if shared.IsDebugging() {
 		// Add a non-existent file to the dependencies so that soong_build will rerun when the debugger is
 		// enabled even if it completed successfully.
 		extraNinjaDeps = append(extraNinjaDeps, filepath.Join(configuration.BuildDir(), "always_rerun_for_delve"))

@@ -45,6 +45,7 @@ bootstrap_go_package {
     srcs: [
         "bazel.go",
         "build.go",
+        "buildsoong.go",
         "cleanbuild.go",
         "config.go",
         "context.go",
