@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df7ee280_f84744f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-02-17T03:57:50Z",
+      "side": 1,
+      "message": "This is a lot of churn (i.e. everyone has to rebuild every C/C++ source file) if this is only a single broken build configuration. Let us look at why this particular build is broken (unless it extends into multiple other targets).",
+      "revId": "0de511c5c003a631d5b0f5b44acd3daeae150686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
