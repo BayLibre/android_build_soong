@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db0330d_37daf80d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-17T10:27:30Z",
+      "side": 1,
+      "message": "wouldn\u0027t be entirely surprised if you get internal failures because of new deps :\\",
+      "revId": "3d404825162d3da0048a55ca385a0505c6a58859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "006dd04a_f2ff42ec",
