@@ -70,6 +70,30 @@
       },
       "revId": "5d190cc24e73913c5dd05b270317f31a32c4593a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc87a69_193a912d",
+        "filename": "java/lint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-02-18T12:47:36Z",
+      "side": 1,
+      "message": "My understanding is that you can have defaults defining a baseline but still can override it to \"\" in your specific module if you don\u0027t want baseline in that specific case.\n\nso (independently of defaults module) nil means use fallback (lint-baseline.xml) and \"\" means opt out.",
+      "parentUuid": "71028007_32958120",
+      "range": {
+        "startLine": 356,
+        "startChar": 4,
+        "endLine": 356,
+        "endChar": 10
+      },
+      "revId": "5d190cc24e73913c5dd05b270317f31a32c4593a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
