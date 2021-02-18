@@ -16,6 +16,29 @@
       "message": "Just realized this is missing the bug stanza, can you please reference 155309706? Thanks!",
       "revId": "281eeea9684b46993d6b72f65f9eb64582fcaab1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518b919c_517f0461",
+        "filename": "tradefed/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2021-02-18T20:51:05Z",
+      "side": 1,
+      "message": "are you missing a CL to add those two template files ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 63,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "281eeea9684b46993d6b72f65f9eb64582fcaab1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
