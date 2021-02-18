@@ -16,6 +16,24 @@
       "message": "Is it worth having an environment variable to bypass just this check, or is --no-verify to bypass all checks enough?",
       "revId": "e052f2d3e937934791174d1a7edd829a3051bf45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c99531_7d5820d6",
+        "filename": "scripts/check_do_not_merge.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-18T17:31:23Z",
+      "side": 1,
+      "message": "no-verify is what I had in mind, but open to either.\n\nAnother option is an explicit tag in the commit message, which is common in google3, something like:\n\nI_AM_AN_AUTOMERGER_EXPERT\u003dtrue\n\nLMK what you think ?\n\n(either way, I need to put the recommended way to bypass in the commit msg).",
+      "parentUuid": "c2527995_38054959",
+      "revId": "e052f2d3e937934791174d1a7edd829a3051bf45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
