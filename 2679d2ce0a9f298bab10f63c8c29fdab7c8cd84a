@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e40fe114_3e0180c4",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-02-18T11:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9789054b_6a3189bd",
+      "revId": "2679d2ce0a9f298bab10f63c8c29fdab7c8cd84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b043360a_186407d5",
@@ -84,6 +102,30 @@
       "writtenOn": "2021-02-17T18:23:10Z",
       "side": 1,
       "message": "android.PathForModuleSrc(lintFilename)",
+      "range": {
+        "startLine": 354,
+        "startChar": 46,
+        "endLine": 354,
+        "endChar": 88
+      },
+      "revId": "2679d2ce0a9f298bab10f63c8c29fdab7c8cd84a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e132267a_9df5bffb",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-02-18T11:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b043360a_186407d5",
       "range": {
         "startLine": 354,
         "startChar": 46,
