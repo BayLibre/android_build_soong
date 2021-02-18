@@ -101,6 +101,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb4829c_3a0aedae",
+        "filename": "bloaty/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-18T14:57:02Z",
+      "side": 1,
+      "message": "My bad, I wasn\u0027t aware this was an option. Fixed. Thanks.",
+      "parentUuid": "db560715_cf95187f",
+      "revId": "c1283ae93d26b45c45bdabeb423967177be5ff1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3a1f28e_1c0461ed",
