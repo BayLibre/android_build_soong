@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a35bd485_6ea8d985",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-18T03:28:27Z",
+      "side": 1,
+      "message": "Due to merge conflicts among internal branches, I can\u0027t submit this for now.",
+      "revId": "916901e36110c97dd5f8e7d52a4b6e9b1e7c2769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
