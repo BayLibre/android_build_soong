@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0361996_d936cda6",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-18T11:33:24Z",
+      "side": 1,
+      "message": "Commented here and in the commit message (and also in the accompanying CL in make, aosp/1592373).",
+      "parentUuid": "aa57a3f2_d5b509db",
+      "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd8fe864_cccd334e",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-02-17T22:52:21Z",
       "side": 1,
       "message": "Unnecessary whitespace change.",
+      "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90f3d800_777b910d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-18T11:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd8fe864_cccd334e",
       "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "345966e9_fb8adb09",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-18T11:33:24Z",
+      "side": 1,
+      "message": "The reason why I didn\u0027t use Input is because some modules do not have this status file (those which do not set EnforceUsesLibraries). For those that have it, it is guaranteed to be added to dependencies on line 284 above. But this connection to line 284 is unreliable, so I rewrote this bit to explicitly add a dependency on the status file in EnforceUsesLibraries\u003dtrue case.",
+      "parentUuid": "b578cd53_8c2fb2f6",
+      "range": {
+        "startLine": 375,
+        "startChar": 47,
+        "endLine": 375,
+        "endChar": 84
+      },
+      "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f05b0d1a_7d8e43c7",
@@ -71,6 +131,24 @@
       "writtenOn": "2021-02-17T22:52:21Z",
       "side": 1,
       "message": "Unnecessary whitespace change",
+      "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7799c2_7be2f4f9",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-18T11:33:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f05b0d1a_7d8e43c7",
       "revId": "178a72bdd28330c6b51b03218a55e568675bb913",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
