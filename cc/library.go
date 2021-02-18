@@ -1979,3 +1979,89 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 
 	return outputFile
 }
+
+type bazelCcLibraryStaticAttributes struct {
+	// TODO
+	//Hdrs     bazel.LabelList
+	//Includes bazel.LabelList
+	//Deps     bazel.LabelList
+}
+
+type bazelCcLibraryStatic struct {
+	android.BazelTargetModuleBase
+	bazelCcLibraryStaticAttributes
+}
+
+func BazelCcLibraryStaticFactory() android.Module {
+	module := &bazelCcLibraryStatic{}
+	module.AddProperties(&module.bazelCcLibraryStaticAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
+	module, ok := ctx.Module().(*Module)
+	if !ok {
+		// Not a cc module
+		return
+	}
+
+	lib, ok := module.linker.(*libraryDecorator)
+	if !ok {
+		// Not a cc_library module
+		return
+	}
+	// TODO
+	if !lib.header() {
+		// Not a cc_library_static module
+		return
+	}
+
+	if !lib.Properties.Bazel_module.Bp2build_available {
+		return
+	}
+
+	// list of directories that will be added to the include path (using -I) for this
+	// module and any module that links against this module.
+	//includeDirs := lib.flagExporter.Properties.Export_system_include_dirs
+	//includeDirs = append(includeDirs, lib.flagExporter.Properties.Export_include_dirs...)
+	//includeDirLabels := android.BazelLabelForModuleSrc(ctx, includeDirs)
+
+	//var includeDirGlobs []string
+	//for _, includeDir := range includeDirs {
+	//	includeDirGlobs = append(includeDirGlobs, includeDir+"/**/*.h")
+	//}
+
+	// headerLabels := android.BazelLabelForModuleSrc(ctx, includeDirGlobs)
+
+	// list of modules that should only provide headers for this module.
+	//var headerLibs []string
+	//for _, linkerProps := range lib.linkerProps() {
+	//	if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
+	//		headerLibs = baseLinkerProps.Export_header_lib_headers
+	//		break
+	//	}
+	//}
+	//headerLibLabels := android.BazelLabelForModuleDeps(ctx, headerLibs)
+
+	attrs := &bazelCcLibraryStaticAttributes{
+		// TODO
+		// Includes: includeDirLabels,
+		// Hdrs:     headerLabels,
+		// Deps:     headerLibLabels,
+	}
+
+	props := bazel.NewBazelTargetModuleProperties(
+		module.Name(),
+		"cc_library_static",
+		"//build/bazel/rules:cc_library_static.bzl",
+	)
+
+	ctx.CreateBazelTargetModule(BazelCcLibraryStaticFactory, props, attrs)
+}
+
+func (m *bazelCcLibraryStatic) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelCcLibraryStatic) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
