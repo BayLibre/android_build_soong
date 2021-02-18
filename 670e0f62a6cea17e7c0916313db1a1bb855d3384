@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6e3da6_ca6fc08f",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-18T11:15:09Z",
+      "side": 1,
+      "message": "would simplify to have a \"rank\" array for the APIs and compare indexof, but maybe the next person to add a new link type will do that :)",
+      "range": {
+        "startLine": 1105,
+        "startChar": 0,
+        "endLine": 1105,
+        "endChar": 20
+      },
+      "revId": "670e0f62a6cea17e7c0916313db1a1bb855d3384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
