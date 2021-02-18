@@ -22,6 +22,30 @@
       },
       "revId": "670e0f62a6cea17e7c0916313db1a1bb855d3384",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c045b989_227bb515",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-18T11:20:29Z",
+      "side": 1,
+      "message": "That\u0027s actually a good idea. Although I don\u0027t think we will ever need a new link type in a foreseeable future, I will do that in a follow-up CL.",
+      "parentUuid": "ea6e3da6_ca6fc08f",
+      "range": {
+        "startLine": 1105,
+        "startChar": 0,
+        "endLine": 1105,
+        "endChar": 20
+      },
+      "revId": "670e0f62a6cea17e7c0916313db1a1bb855d3384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
