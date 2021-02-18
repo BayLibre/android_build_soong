@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98c12038_b3f6adb7",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-18T16:24:05Z",
+      "side": 1,
+      "message": "TBH, my goal was just to make it possible to use Delve with soong_ui in a way that\u0027s mostly consistent with soong_build. Then I thought it makes sense to share the pertinent code, then init() skeleton fell out of the closet when I made soong_ui depend on the android package against which there were no guardrails. So I figured I could also fix that in one fell swoop.\n\nThe reason why I am suspicious about init() methods is my bad experiences with the corresponding concepts in Java (initializers of static class members) and C++ (static initialization order fiasco), then I looked at the semantics of init() and its semantics didn\u0027t convince me, either. But maybe I\u0027m just not familiar enough with Go idioms and that\u0027s how Gophers do it? (the Go style guide doesn\u0027t seem to say anything about the matter)\n\nI don\u0027t insist on this particular solution, but it looks like this and the soong-early-sandbox topic make life easier and remove a bit of magic, which is welcome *and* make the \"cd /\" sandbox more secure. \n\nWhat\u0027s the alternative?",
+      "parentUuid": "d6147e6a_78756aed",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e54fb8ba_d17ef76c",
         "filename": "shared/debug.go",
         "patchSetId": 5
