@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f4c76c8_7db7f2b3",
+        "filename": "bp2build/cc_conversion_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-18T07:45:19Z",
+      "side": 1,
+      "message": "IMO if we can\u0027t share CC testing infrastructure then we should put the cc_library_headers tests and the cc_object tests in different files, before we end up with an enormous cc_conversion_test.go file... ?",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 37
+      },
+      "revId": "f87fcdb1cfb7e7a63f65c5b9ec31d6b3c960236d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c492631a_b2c05052",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-18T07:45:19Z",
+      "side": 1,
+      "message": "Do we still need bazel.Properties in LibraryProperties then? (re: cc_library_headers)",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 17
+      },
+      "revId": "f87fcdb1cfb7e7a63f65c5b9ec31d6b3c960236d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
