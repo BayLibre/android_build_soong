@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae2e1bce_e47489ef",
+        "filename": "bp2build/cc_conversion_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-18T07:56:24Z",
+      "side": 1,
+      "message": "I think duplicating some code is fine for now, and I don\u0027t want to introduce a refactoring in this CL.",
+      "parentUuid": "0f4c76c8_7db7f2b3",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 37
+      },
+      "revId": "f87fcdb1cfb7e7a63f65c5b9ec31d6b3c960236d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c492631a_b2c05052",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-18T07:45:19Z",
       "side": 1,
       "message": "Do we still need bazel.Properties in LibraryProperties then? (re: cc_library_headers)",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 17
+      },
+      "revId": "f87fcdb1cfb7e7a63f65c5b9ec31d6b3c960236d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac0f114f_4d4f5f90",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-18T07:56:24Z",
+      "side": 1,
+      "message": "good catch, removed.",
+      "parentUuid": "c492631a_b2c05052",
       "range": {
         "startLine": 369,
         "startChar": 1,
