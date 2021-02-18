@@ -161,6 +161,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ddf1e8f_4c19fcee",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-18T22:02:03Z",
+      "side": 1,
+      "message": "Agreed on init() methods that do work generally being a bad idea, but we use them for plugin registraion, so they will be present.\n\nThe soong-early-sandbox topic is fine, but only solves half the problem, because you still have to do something about hiding environment variables before plugin init().  And if environment variables are hidden before init(), then ReexecWithDelveMaybe (and InitSandbox for that matter) can\u0027t read them directly, so you\u0027re back where you started.\n\nThe alternative is what I suggested in the comments in shared/debug.go.  With a few more details:\n* Leave android.ReexecWithDelveMaybe(), it\u0027s needed to get access to the sandbox environment variables.  Replace its implementation with a call to shared.ReexecWithDelveMaybe(soongDelveListen, soongDelvePath).\n* From soong_ui, call shared.ReexecWithDelveMaybe(os.Getenv(\"SOONG_UI_DELVE\"), os.Getenv(\"SOONG_DELVE_PATH\"))\n* In shared.ReexecWithDelveMaybe(), use the first argument for the listen address, and the second as the path to dlv, falling back to exec.LookPath(\"dlv\") if it is empty.",
+      "parentUuid": "98c12038_b3f6adb7",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e54fb8ba_d17ef76c",
         "filename": "shared/debug.go",
         "patchSetId": 5
