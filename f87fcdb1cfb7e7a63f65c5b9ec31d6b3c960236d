@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b55a5e3c_26a7dd51",
+        "filename": "bp2build/cc_conversion_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-18T08:00:15Z",
+      "side": 1,
+      "message": "I\u0027m not suggesting you refactor cc_conversion_test.go here, just that you put the new cc_object tests in e.g. cc_object_test.go instead of adding to this file (since it doesn\u0027t appear like there is any shared infrastructure, i.e. no reason to share a file?)\n\n(I also think duplicating code is fine, I mainly want to avoid a huge file and merge conflicts etc unless there is a good reason to have a single file)",
+      "parentUuid": "ae2e1bce_e47489ef",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 37
+      },
+      "revId": "f87fcdb1cfb7e7a63f65c5b9ec31d6b3c960236d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c492631a_b2c05052",
         "filename": "cc/cc.go",
         "patchSetId": 10
