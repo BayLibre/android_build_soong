@@ -46,6 +46,30 @@
       },
       "revId": "5d190cc24e73913c5dd05b270317f31a32c4593a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71028007_32958120",
+        "filename": "java/lint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-18T12:20:13Z",
+      "side": 1,
+      "message": "that makes sense, thanks, I didn\u0027t realize String(nil)\u003d\u003d\"\". baseline_filename !\u003d nil above would be clearer, but apparently that breaks defaults 😞",
+      "parentUuid": "c32bf988_d041e72f",
+      "range": {
+        "startLine": 356,
+        "startChar": 4,
+        "endLine": 356,
+        "endChar": 10
+      },
+      "revId": "5d190cc24e73913c5dd05b270317f31a32c4593a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
