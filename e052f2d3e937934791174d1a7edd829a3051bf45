@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2527995_38054959",
+        "filename": "scripts/check_do_not_merge.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-18T17:27:10Z",
+      "side": 1,
+      "message": "Is it worth having an environment variable to bypass just this check, or is --no-verify to bypass all checks enough?",
+      "revId": "e052f2d3e937934791174d1a7edd829a3051bf45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
