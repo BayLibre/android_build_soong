@@ -63,18 +63,35 @@ func NewBazelTargetModuleProperties(name string, ruleClass string, bzlLoadLocati
 	}
 }
 
+type AttributeValue interface {
+	isAttributeValue()
+}
+
+type BoolAttribute struct {
+	Value   bool
+	Selects map[string]bool
+}
+
+func (_ BoolAttribute) isAttributeValue() {}
+
 // Label is used to represent a Bazel compatible Label. Also stores the original bp text to support
 // string replacement.
 type Label struct {
 	Bp_text string
 	Label   string
+	Selects map[string]Label
 }
+
+func (_ Label) isAttributeValue() {}
 
 // LabelList is used to represent a list of Bazel labels.
 type LabelList struct {
 	Includes []Label
 	Excludes []Label
+	Selects  map[string][]Label
 }
+
+func (_ LabelList) isAttributeValue() {}
 
 // Append appends the fields of other labelList to the corresponding fields of ll.
 func (ll *LabelList) Append(other LabelList) {
