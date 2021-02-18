@@ -21,6 +21,8 @@ import (
 	"testing"
 )
 
+// Unit tests for converting cc rules with bp2build.
+
 const (
 	// See cc/testing.go for more context
 	soongCcLibraryPreamble = `
@@ -163,7 +165,6 @@ cc_library_headers {
 )`},
 		},
 	}
-
 	dir := "."
 	for _, testCase := range testCases {
 		filesystem := make(map[string][]byte)
@@ -176,6 +177,7 @@ cc_library_headers {
 			}
 			filesystem[f] = []byte(content)
 		}
+
 		config := android.TestConfig(buildDir, nil, testCase.bp, filesystem)
 		ctx := android.NewTestContext(config)
 
@@ -186,6 +188,7 @@ cc_library_headers {
 		for _, m := range testCase.depsMutators {
 			ctx.DepsBp2BuildMutators(m)
 		}
+
 		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
 		ctx.RegisterForBazelConversion()
 
