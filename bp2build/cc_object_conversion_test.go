@@ -124,7 +124,11 @@ cc_defaults {
         "-Wall",
         "-Werror",
         "-fno-addrsig",
-    ],
+    ] + select({
+        "@bazel_tools//platforms:x86_32": ["-fPIC"],
+        "@bazel_tools//platforms:x86_64": ["-fPIC"],
+        "//conditions:default": [],
+    }),
     local_include_dirs = [
         "include",
     ],
