@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b4a474e_7178a251",
+        "filename": "bloaty/bloaty.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-18T14:57:37Z",
+      "side": 1,
+      "message": "Ack, thanks. I added a call to SortedUniquePaths.",
+      "parentUuid": "de692e3b_2674de57",
+      "revId": "d81216b638830385eed159e0e9817bb67fdc7f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42426058_ecea5610",
