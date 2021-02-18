@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c5881ca_10e5f8c0",
+        "filename": "java/lint.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-18T11:42:52Z",
+      "side": 1,
+      "message": "I don\u0027t think this can happen atm? if Baseline_filename\u003d\u003d\"\", then lintFilename\u003d\u003d\"\" too, which the top conditional prevents",
+      "range": {
+        "startLine": 356,
+        "startChar": 4,
+        "endLine": 356,
+        "endChar": 10
+      },
+      "revId": "5d190cc24e73913c5dd05b270317f31a32c4593a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
