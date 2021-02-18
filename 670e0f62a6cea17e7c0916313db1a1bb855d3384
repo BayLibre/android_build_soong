@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2e58d2e1_2ee7ee6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-18T11:31:09Z",
+      "side": 1,
+      "message": "bypassing presubmit. \n\ngsi_avd/test-mapping-presubmit/vendor_img_rvc has been broken and is unrelated with this change.",
+      "revId": "670e0f62a6cea17e7c0916313db1a1bb855d3384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ea6e3da6_ca6fc08f",
         "filename": "java/java.go",
         "patchSetId": 1
