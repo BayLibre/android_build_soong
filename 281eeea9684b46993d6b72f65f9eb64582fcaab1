@@ -39,6 +39,30 @@
       },
       "revId": "281eeea9684b46993d6b72f65f9eb64582fcaab1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6527809_b403f3d1",
+        "filename": "tradefed/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1812258
+      },
+      "writtenOn": "2021-02-19T13:22:07Z",
+      "side": 1,
+      "message": "Shall I link it somehow to this CL?\n\nhttps://r.android.com/1566318",
+      "parentUuid": "518b919c_517f0461",
+      "range": {
+        "startLine": 37,
+        "startChar": 63,
+        "endLine": 37,
+        "endChar": 68
+      },
+      "revId": "281eeea9684b46993d6b72f65f9eb64582fcaab1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
