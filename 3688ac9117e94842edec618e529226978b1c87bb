@@ -93,6 +93,30 @@
       },
       "revId": "3688ac9117e94842edec618e529226978b1c87bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3974b922_ad5f7617",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-19T02:35:27Z",
+      "side": 1,
+      "message": "Looks better to me now.",
+      "parentUuid": "dd90a800_da72e2f7",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 33
+      },
+      "revId": "3688ac9117e94842edec618e529226978b1c87bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

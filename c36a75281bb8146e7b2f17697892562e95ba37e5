@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee52d3e0_a2d10e57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-19T02:35:27Z",
+      "side": 1,
+      "message": "building?",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "c36a75281bb8146e7b2f17697892562e95ba37e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79915ba6_be91995d",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-19T02:35:27Z",
+      "side": 1,
+      "message": "flag?",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "c36a75281bb8146e7b2f17697892562e95ba37e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
