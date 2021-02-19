@@ -2504,7 +2504,22 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
 }
 
+func contains(s []string, str string) bool {
+	for _, v := range s {
+		if v == str {
+			return true
+		}
+	}
+
+	return false
+}
+
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if j.testProperties.Test_options.Unit_test == nil && ctx.Host() {
+		if !contains(j.properties.Static_libs, "tradefed") || !contains(j.properties.Libs, "tradefed") {
+			j.testProperties.Test_options.Unit_test = proptools.BoolPtr(true)
+		}
+	}
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
 		j.testProperties.Test_suites, j.testProperties.Auto_gen_config, j.testProperties.Test_options.Unit_test)
 
@@ -2665,6 +2680,7 @@ func TestHostFactory() android.Module {
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 
 	InitJavaModuleMultiTargets(module, android.HostSupported)
+
 	return module
 }
 
