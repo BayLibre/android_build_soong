@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008297951",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1591532?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "b9ac6822_4866c1ca",
+          "description": "Change to \"android/bazel.go\"",
+          "replacements": [
+            {
+              "path": "android/bazel.go",
+              "range": {
+                "startLine": 18,
+                "startChar": 74,
+                "endLine": 18,
+                "endChar": 85
+              },
+              "replacement": "convertible"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "280916a9_53deeb40",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-19T14:28:35Z",
+      "side": 1,
+      "message": "Common typo found: \"convertable\" -- should it be \"convertible\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 18,
+        "startChar": 74,
+        "endLine": 18,
+        "endChar": 85
+      },
+      "revId": "ca3f00bd73c71e4aa48fdeb6956f156436e5ba70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
