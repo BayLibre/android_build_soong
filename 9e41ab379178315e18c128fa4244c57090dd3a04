@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abd4c09f_b238829a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-19T11:52:27Z",
+      "side": 1,
+      "message": "Argh, this pollutes the UI of every build because it\u0027s called from bp2build test code, and tests in run every build. Let me figure out another approach.",
+      "revId": "9e41ab379178315e18c128fa4244c57090dd3a04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
