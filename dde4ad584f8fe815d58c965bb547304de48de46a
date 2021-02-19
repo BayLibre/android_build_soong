@@ -22,6 +22,23 @@
       },
       "revId": "dde4ad584f8fe815d58c965bb547304de48de46a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd40ca5b_a9a5de4b",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-02-19T16:03:03Z",
+      "side": 1,
+      "message": "This should be moved below, in defaultClippyLints",
+      "revId": "dde4ad584f8fe815d58c965bb547304de48de46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
