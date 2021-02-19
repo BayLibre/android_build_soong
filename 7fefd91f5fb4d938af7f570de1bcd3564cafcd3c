@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f71cbe8_6ac6fd70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-02-19T04:18:31Z",
+      "side": 1,
+      "message": "Hi Nelson, could you give a review vote for the change on your cl (aosp/1123237)?",
+      "revId": "7fefd91f5fb4d938af7f570de1bcd3564cafcd3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
