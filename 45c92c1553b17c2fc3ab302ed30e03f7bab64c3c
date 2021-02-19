@@ -16,6 +16,23 @@
       "message": "As Paul pointed out on the ticket, this approach doesn\u0027t work with AOSP products in trees where the internal prebuilt_apex override is present. Another approach in https://r.android.com/1589981.",
       "revId": "45c92c1553b17c2fc3ab302ed30e03f7bab64c3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74659fe8_0707c18c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-19T13:42:26Z",
+      "side": 1,
+      "message": "I don\u0027t know enough about this part to know whether this is ok or not.",
+      "revId": "45c92c1553b17c2fc3ab302ed30e03f7bab64c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
