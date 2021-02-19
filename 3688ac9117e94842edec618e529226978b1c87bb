@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3513a9e4_bc92c33b",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-19T02:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd4f219_354db926",
+      "range": {
+        "startLine": 158,
+        "startChar": 29,
+        "endLine": 158,
+        "endChar": 36
+      },
+      "revId": "3688ac9117e94842edec618e529226978b1c87bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12fecc7f_12dfd58f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-19T00:57:42Z",
       "side": 1,
       "message": "nit; can\u0027t we dedup these if-else clauses?",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 33
+      },
+      "revId": "3688ac9117e94842edec618e529226978b1c87bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd90a800_da72e2f7",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-19T02:30:03Z",
+      "side": 1,
+      "message": "I am not sure what do you mean by deduping. If it means making it shorter, done.",
+      "parentUuid": "12fecc7f_12dfd58f",
       "range": {
         "startLine": 196,
         "startChar": 0,
