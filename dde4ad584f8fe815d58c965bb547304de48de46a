@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "491d31d6_6fd0af1d",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-02-19T16:02:38Z",
+      "side": 1,
+      "message": "If this is a clippy lint, this should go in defaultClippyLints below",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "dde4ad584f8fe815d58c965bb547304de48de46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
