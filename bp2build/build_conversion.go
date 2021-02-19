@@ -160,11 +160,27 @@ func propsToAttributes(props map[string]string) string {
 	return attributes
 }
 
+func reportBp2BuildMetrics(totalModuleCount int, ruleClassCount map[string]int) {
+	generatedTargetCount := 0
+	for _, ruleClass := range android.SortedStringKeys(ruleClassCount) {
+		count := ruleClassCount[ruleClass]
+		fmt.Printf("[bp2build] %s: %d targets\n", ruleClass, count)
+		generatedTargetCount += count
+	}
+	fmt.Printf("[bp2build] Generated %d total BUILD targets from %d Android.bp modules.\n", generatedTargetCount, totalModuleCount)
+}
+
 func GenerateBazelTargets(ctx bpToBuildContext, codegenMode CodegenMode) map[string]BazelTargets {
 	buildFileToTargets := make(map[string]BazelTargets)
+
+	// Simple metrics tracking for bp2build
+	totalModuleCount := 0
+	ruleClassCount := make(map[string]int)
+
 	ctx.VisitAllModules(func(m blueprint.Module) {
 		dir := ctx.ModuleDir(m)
 		var t BazelTarget
+		totalModuleCount += 1
 
 		switch codegenMode {
 		case Bp2Build:
@@ -172,6 +188,7 @@ func GenerateBazelTargets(ctx bpToBuildContext, codegenMode CodegenMode) map[str
 				return
 			}
 			t = generateBazelTarget(ctx, m)
+			ruleClassCount[t.ruleClass] += 1
 		case QueryView:
 			// Blocklist certain module types from being generated.
 			if canonicalizeModuleType(ctx.ModuleType(m)) == "package" {
@@ -186,6 +203,14 @@ func GenerateBazelTargets(ctx bpToBuildContext, codegenMode CodegenMode) map[str
 
 		buildFileToTargets[dir] = append(buildFileToTargets[dir], t)
 	})
+
+	// Only report metrics when in bp2build mode. The metrics aren't relevant
+	// for queryview, since that's a total repo-wide conversion and there's a
+	// 1:1 mapping for each module.
+	if codegenMode == Bp2Build {
+		reportBp2BuildMetrics(totalModuleCount, ruleClassCount)
+	}
+
 	return buildFileToTargets
 }
 
