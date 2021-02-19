@@ -16,6 +16,63 @@
       "message": "re-stamp",
       "revId": "ec08775cbf9578ba71effa914a8187438a396757",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f060cfd0_f7b8e433",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-02-19T11:48:44Z",
+      "side": 1,
+      "message": "I\u0027m just here for the nits. :)",
+      "revId": "ec08775cbf9578ba71effa914a8187438a396757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45a8cb0_e7d2aa9a",
+        "filename": "scripts/check_do_not_merge.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-02-19T11:48:44Z",
+      "side": 1,
+      "message": "Should there be a copyright header here?",
+      "revId": "ec08775cbf9578ba71effa914a8187438a396757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed25e103_a57bedfb",
+        "filename": "scripts/check_do_not_merge.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-02-19T11:48:44Z",
+      "side": 1,
+      "message": "Nit: It\u0027s nicer to use heredocs for long literal strings:\n\n  cat \u003e\u00262 \u003c\u003cEOF\n  DO NOT MERGE and RESTRICT AUTOMERGE very often lead to unintended results\n  and are not allowed to be used in this project.\n  Please use the Merged-In tag to be more explicit about where this change\n  should merge to. Google-internal documentation exists at go/merged-in\n  \n  If this check is mis-triggering or you know Merged-In is incorrect in this\n  situation you can bypass this check with \\`repo upload --no-verify\\`.\n  EOF\n\nIMO they are also less error-prone (see e.g. the missing redirection line 6).",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 82
+      },
+      "revId": "ec08775cbf9578ba71effa914a8187438a396757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
