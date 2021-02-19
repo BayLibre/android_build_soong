@@ -45,6 +45,30 @@
       },
       "revId": "c36a75281bb8146e7b2f17697892562e95ba37e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b09d3fdb_26779a35",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-19T02:40:31Z",
+      "side": 1,
+      "message": "thanks. wonder why I couldn\u0027t see an error at #194 when I compiled...",
+      "parentUuid": "79915ba6_be91995d",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "c36a75281bb8146e7b2f17697892562e95ba37e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
