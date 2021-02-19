@@ -33,6 +33,24 @@
       "message": "I don\u0027t know enough about this part to know whether this is ok or not.",
       "revId": "45c92c1553b17c2fc3ab302ed30e03f7bab64c3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6445f27_40e08eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-19T13:47:11Z",
+      "side": 1,
+      "message": "As you noted on b/180325915#comment2 this won\u0027t work for AOSP builds in the internal tree. I\u0027ll abandon it.",
+      "parentUuid": "74659fe8_0707c18c",
+      "revId": "45c92c1553b17c2fc3ab302ed30e03f7bab64c3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
