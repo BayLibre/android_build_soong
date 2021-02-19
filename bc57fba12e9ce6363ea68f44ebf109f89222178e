@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8e415a_edeeea95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-19T13:23:13Z",
+      "side": 1,
+      "message": "Ok, PTAL again: reworked this CL to ensure that the metrics don\u0027t get printed for tests.",
+      "revId": "bc57fba12e9ce6363ea68f44ebf109f89222178e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
