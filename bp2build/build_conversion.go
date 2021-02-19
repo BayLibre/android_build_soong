@@ -178,13 +178,14 @@ func GenerateBazelTargets(ctx CodegenContext) (map[string]BazelTargets, CodegenM
 
 		switch ctx.Mode() {
 		case Bp2Build:
-			if _, ok := m.(android.BazelTargetModule); !ok {
+			if b, ok := m.(android.BazelTargetModule); !ok {
 				// Only include regular Soong modules (non-BazelTargetModules) into the total count.
 				totalModuleCount += 1
 				return
+			} else {
+				t = generateBazelTarget(bpCtx, m, b)
+				ruleClassCount[t.ruleClass] += 1
 			}
-			t = generateBazelTarget(bpCtx, m)
-			ruleClassCount[t.ruleClass] += 1
 		case QueryView:
 			// Blocklist certain module types from being generated.
 			if canonicalizeModuleType(bpCtx.ModuleType(m)) == "package" {
@@ -229,20 +230,12 @@ func trimQuotes(s string) string {
 	return ret
 }
 
-func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module) BazelTarget {
+func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module, b android.BazelTargetModule) BazelTarget {
+	ruleClass := b.RuleClass()
+	bzlLoadLocation := b.BzlLoadLocation()
+
 	// extract the bazel attributes from the module.
 	props := getBuildProperties(ctx, m)
-
-	// extract the rule class name from the attributes. Since the string value
-	// will be string-quoted, remove the quotes here.
-	ruleClass := trimQuotes(props.Attrs["rule_class"])
-	// Delete it from being generated in the BUILD file.
-	delete(props.Attrs, "rule_class")
-
-	// extract the bzl_load_location, and also remove the quotes around it here.
-	bzlLoadLocation := trimQuotes(props.Attrs["bzl_load_location"])
-	// Delete it from being generated in the BUILD file.
-	delete(props.Attrs, "bzl_load_location")
 
 	delete(props.Attrs, "bp2build_available")
 
