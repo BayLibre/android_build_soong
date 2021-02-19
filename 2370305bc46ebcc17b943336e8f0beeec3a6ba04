@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a453eafe_33c5d4ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-19T16:54:32Z",
+      "side": 1,
+      "message": "Nice work!",
+      "revId": "2370305bc46ebcc17b943336e8f0beeec3a6ba04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac332152_3739925b",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-19T16:54:32Z",
+      "side": 1,
+      "message": "location of the rule class definition. \n\nalso: \"can be an empty string for native rules\"",
+      "range": {
+        "startLine": 546,
+        "startChar": 31,
+        "endLine": 546,
+        "endChar": 41
+      },
+      "revId": "2370305bc46ebcc17b943336e8f0beeec3a6ba04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f4c7a7_76fd471d",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-19T16:54:32Z",
+      "side": 1,
+      "message": "Nice, totally forgot these would hide the props!",
+      "range": {
+        "startLine": 36,
+        "startChar": 19,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "2370305bc46ebcc17b943336e8f0beeec3a6ba04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
