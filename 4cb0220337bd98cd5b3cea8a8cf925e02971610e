@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e837c68_d7fa31ac",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-19T09:01:10Z",
+      "side": 1,
+      "message": "So, I went all the way and cleared the environment by calling \"env -i\" around soong_build in bootstrap.go (where I do \"cd /\" on the soong-early-sandbox topic)\n\nHowever, it turned out that that doesn\u0027t work because ctx.Config().Getenv() calls are all over the place in soong_build and that gets its data from config.env, which is a copy of originalEnv (see config.go:360)\n\nBut then what is the point of hiding the environment variables from partner plugins? It\u0027s that access to environment variables is tracked? That\u0027s useful, I guess, but that can still be used to do all sorts of shenanigans.",
+      "parentUuid": "1ddf1e8f_4c19fcee",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e54fb8ba_d17ef76c",
         "filename": "shared/debug.go",
         "patchSetId": 5
