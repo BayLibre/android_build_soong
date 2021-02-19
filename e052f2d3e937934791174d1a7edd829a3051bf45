@@ -52,6 +52,24 @@
       "parentUuid": "c3c99531_7d5820d6",
       "revId": "e052f2d3e937934791174d1a7edd829a3051bf45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cff414c_ac31ef92",
+        "filename": "scripts/check_do_not_merge.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-19T11:15:03Z",
+      "side": 1,
+      "message": "added a --no-verify ref.",
+      "parentUuid": "69b75f92_19ce92dd",
+      "revId": "e052f2d3e937934791174d1a7edd829a3051bf45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
