@@ -39,6 +39,48 @@
       "message": "This should be moved below, in defaultClippyLints",
       "revId": "dde4ad584f8fe815d58c965bb547304de48de46a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d79df5_feee9d79",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-02-19T16:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "491d31d6_6fd0af1d",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 33
+      },
+      "revId": "dde4ad584f8fe815d58c965bb547304de48de46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0bc7d7d_31993dfd",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2021-02-19T16:20:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd40ca5b_a9a5de4b",
+      "revId": "dde4ad584f8fe815d58c965bb547304de48de46a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
