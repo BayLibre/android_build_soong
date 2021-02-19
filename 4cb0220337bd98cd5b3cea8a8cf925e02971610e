@@ -197,6 +197,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "750818d1_217ffb72",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-19T18:38:42Z",
+      "side": 1,
+      "message": "Yes, it ensures we can at least rerun soong_build whenever environment variables that affect the build are changed.  It\u0027s not ideal, but it is legacy that we have to deal with.",
+      "parentUuid": "0e837c68_d7fa31ac",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e54fb8ba_d17ef76c",
         "filename": "shared/debug.go",
         "patchSetId": 5
