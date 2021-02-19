@@ -508,6 +508,9 @@ type BazelTargetModule interface {
 	Module
 
 	BazelTargetModuleProperties() *bazel.BazelTargetModuleProperties
+	SetBazelTargetModuleProperties(props bazel.BazelTargetModuleProperties)
+	RuleClass() string
+	BzlLoadLocation() string
 }
 
 // InitBazelTargetModule is a wrapper function that decorates BazelTargetModule
@@ -527,6 +530,20 @@ type BazelTargetModuleBase struct {
 // BazelTargetModuleProperties getter.
 func (btmb *BazelTargetModuleBase) BazelTargetModuleProperties() *bazel.BazelTargetModuleProperties {
 	return &btmb.Properties
+}
+
+func (btmb *BazelTargetModuleBase) SetBazelTargetModuleProperties(props bazel.BazelTargetModuleProperties) {
+	btmb.Properties = props
+}
+
+// RuleClass returns the rule class for this Bazel target
+func (b *BazelTargetModuleBase) RuleClass() string {
+	return b.BazelTargetModuleProperties().Rule_class
+}
+
+// BzlLoadLocation returns the rule class for this Bazel target
+func (b *BazelTargetModuleBase) BzlLoadLocation() string {
+	return b.BazelTargetModuleProperties().Bzl_load_location
 }
 
 // Qualified id for a module
