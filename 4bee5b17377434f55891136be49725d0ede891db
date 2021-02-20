@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ed4f4e5_e813dce0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-20T00:49:26Z",
+      "side": 1,
+      "message": "Re: \n\nTest: go test *\n\nProbably one other thing we should do for bp2build related changes is write out the new build files with bp2build and check that bazel build ... still works e.g. for Bionic. Maybe we could write a manual test (.sh file?) to automate that?\n\n(I think Jin is planning to add a CI test as well, that could be enough, but it would be post-submit)",
+      "revId": "4bee5b17377434f55891136be49725d0ede891db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
