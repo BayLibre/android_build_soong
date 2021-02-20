@@ -16,6 +16,24 @@
       "message": "Re: \n\nTest: go test *\n\nProbably one other thing we should do for bp2build related changes is write out the new build files with bp2build and check that bazel build ... still works e.g. for Bionic. Maybe we could write a manual test (.sh file?) to automate that?\n\n(I think Jin is planning to add a CI test as well, that could be enough, but it would be post-submit)",
       "revId": "4bee5b17377434f55891136be49725d0ede891db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8772bbe1_2e06521c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-20T05:00:43Z",
+      "side": 1,
+      "message": "`build/bazel/scripts/milestone-2/demo.sh full` verifies that //bionic/... builds today, and with it doing the cleanup as well, it can turn into a Test: or CI script.",
+      "parentUuid": "5ed4f4e5_e813dce0",
+      "revId": "4bee5b17377434f55891136be49725d0ede891db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
