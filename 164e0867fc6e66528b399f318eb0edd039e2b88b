@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0c2e8a7_693cc115",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-20T00:44:34Z",
+      "side": 1,
+      "message": "Call this bazelTargetsMap to be consistent? (or vice versa)",
+      "range": {
+        "startLine": 208,
+        "startChar": 8,
+        "endLine": 208,
+        "endChar": 26
+      },
+      "revId": "164e0867fc6e66528b399f318eb0edd039e2b88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb0ba2f0_325c2d23",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 6
