@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8beae9c4_df394927",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-02-20T10:33:07Z",
+      "side": 1,
+      "message": "ART won\u0027t be using this, and since this script in practice only is used for prebuilts needed by ART, I suggest dropping it.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "f3259235092ba96cf5e40deabd0f1e05a6992765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
