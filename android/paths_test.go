@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"errors"
 	"fmt"
 	"reflect"
@@ -1334,5 +1335,74 @@ func BenchmarkFirstUniquePaths(b *testing.B) {
 				})
 			}
 		})
+	}
+}
+
+func TestUniqueBazelLabels(t *testing.T) {
+	testCases := []struct {
+		originalLabels       []bazel.Label
+		expectedUniqueLabels []bazel.Label
+	}{
+		{
+			originalLabels: []bazel.Label{
+				{Label: "a"},
+				{Label: "b"},
+				{Label: "a"},
+				{Label: "c"},
+			},
+			expectedUniqueLabels: []bazel.Label{
+				{Label: "a"},
+				{Label: "b"},
+				{Label: "c"},
+			},
+		},
+	}
+	for _, tc := range testCases {
+		actualUniqueLabels := UniqueBazelLabels(tc.originalLabels)
+		if !reflect.DeepEqual(tc.expectedUniqueLabels, actualUniqueLabels) {
+			t.Fatalf("%v != %v", tc.expectedUniqueLabels, actualUniqueLabels)
+		}
+	}
+}
+
+func TestUniqueBazelLabelList(t *testing.T) {
+	testCases := []struct {
+		originalLabelList       bazel.LabelList
+		expectedUniqueLabelList bazel.LabelList
+	}{
+		{
+			originalLabelList: bazel.LabelList{
+				Includes: []bazel.Label{
+					{Label: "a"},
+					{Label: "b"},
+					{Label: "a"},
+					{Label: "c"},
+				},
+				Excludes: []bazel.Label{
+					{Label: "x"},
+					{Label: "x"},
+					{Label: "y"},
+					{Label: "z"},
+				},
+			},
+			expectedUniqueLabelList: bazel.LabelList{
+				Includes: []bazel.Label{
+					{Label: "a"},
+					{Label: "b"},
+					{Label: "c"},
+				},
+				Excludes: []bazel.Label{
+					{Label: "x"},
+					{Label: "y"},
+					{Label: "z"},
+				},
+			},
+		},
+	}
+	for _, tc := range testCases {
+		actualUniqueLabelList := UniqueBazelLabelList(tc.originalLabelList)
+		if !reflect.DeepEqual(tc.expectedUniqueLabelList, actualUniqueLabelList) {
+			t.Fatalf("%v != %v", tc.expectedUniqueLabelList, actualUniqueLabelList)
+		}
 	}
 }

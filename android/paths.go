@@ -343,6 +343,28 @@ type BazelConversionPathContext interface {
 	OtherModuleDir(m blueprint.Module) string
 }
 
+func UniqueBazelLabels(originalLabels []bazel.Label) []bazel.Label {
+	uniqueLabelsSet := make(map[bazel.Label]bool)
+	for _, l := range originalLabels {
+		uniqueLabelsSet[l] = true
+	}
+	var uniqueLabels []bazel.Label
+	for l, _ := range uniqueLabelsSet {
+		uniqueLabels = append(uniqueLabels, l)
+	}
+	sort.SliceStable(uniqueLabels, func(i, j int) bool {
+		return uniqueLabels[i].Label < uniqueLabels[j].Label
+	})
+	return uniqueLabels
+}
+
+func UniqueBazelLabelList(originalLabelList bazel.LabelList) bazel.LabelList {
+	var uniqueLabelList bazel.LabelList
+	uniqueLabelList.Includes = UniqueBazelLabels(originalLabelList.Includes)
+	uniqueLabelList.Excludes = UniqueBazelLabels(originalLabelList.Excludes)
+	return uniqueLabelList
+}
+
 // BazelLabelForModuleDeps returns a Bazel-compatible label for the requested modules which
 // correspond to dependencies on the module within the given ctx.
 func BazelLabelForModuleDeps(ctx BazelConversionPathContext, modules []string) bazel.LabelList {
