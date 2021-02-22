@@ -22,6 +22,30 @@
       },
       "revId": "f3259235092ba96cf5e40deabd0f1e05a6992765",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94bbb3ee_767df73a",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-02-22T10:14:26Z",
+      "side": 1,
+      "message": "No real harm keeping it in either I think? It would IMO be good to keep it in (and ideally add others) for better coverage in the continuous build than we have currently.",
+      "parentUuid": "8beae9c4_df394927",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "f3259235092ba96cf5e40deabd0f1e05a6992765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
