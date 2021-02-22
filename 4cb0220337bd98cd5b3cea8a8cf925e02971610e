@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9e0ff48_6754216b",
+        "filename": "android/sandbox.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-22T17:10:41Z",
+      "side": 1,
+      "message": "Okie. I then went all the way to fixing this in a more principled way in aosp/1591313 and aosp/1592052 . PTAL! I\u0027ll comment on one of the review threads so that it\u0027s clearer what\u0027s going on.",
+      "parentUuid": "750818d1_217ffb72",
+      "revId": "4cb0220337bd98cd5b3cea8a8cf925e02971610e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e54fb8ba_d17ef76c",
         "filename": "shared/debug.go",
         "patchSetId": 5
