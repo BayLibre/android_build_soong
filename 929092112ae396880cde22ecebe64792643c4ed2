@@ -33,6 +33,29 @@
       "message": "LGTM for sysprop part.",
       "revId": "929092112ae396880cde22ecebe64792643c4ed2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f58b9a_f873c01a",
+        "filename": "cc/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-22T16:25:55Z",
+      "side": 1,
+      "message": "Nit: move above syspropOrderOnlyDeps to match other pairs of fields (proto and aidl).",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 29
+      },
+      "revId": "929092112ae396880cde22ecebe64792643c4ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
