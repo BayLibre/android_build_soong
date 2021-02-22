@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1df7767_b7be21c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-22T17:53:57Z",
+      "side": 1,
+      "message": "What are the ramifications of this?  Is it going to allow anything else through that previously would have been caught as an error?",
+      "revId": "e850737ee4769a91fdbd9d3ae094073b29500cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
