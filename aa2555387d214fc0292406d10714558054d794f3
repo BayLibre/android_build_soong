@@ -34,6 +34,24 @@
       "parentUuid": "2afd58cd_8b3de1f4",
       "revId": "aa2555387d214fc0292406d10714558054d794f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "992cc488_80a77859",
+        "filename": "android/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-02-22T19:09:30Z",
+      "side": 1,
+      "message": "I think function parameters are easier to read and track until we have a handful. I don\u0027t expect AndroidMkExtraEntriesFunc will have that many in the near future. Even if it happens, though the resulting CL will be big as you said, refactoring itself shouldn\u0027t be too difficult.",
+      "parentUuid": "e0bb7e2d_13b0ddee",
+      "revId": "aa2555387d214fc0292406d10714558054d794f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
