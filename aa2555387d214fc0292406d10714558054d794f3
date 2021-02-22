@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2afd58cd_8b3de1f4",
+        "filename": "android/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-02-22T16:46:33Z",
+      "side": 1,
+      "message": "Instead of adding a new context interface, what about making this a function parameter, like this:\n\ntype AndroidMkExtraEntriesFunc func(Provider func(blueprint.ProviderKey) interface{}, entries *AndroidMkEntries)\n\nIMHO, this is more reader-friendly. I often have to search for the definition of a context interface and then still forget it in 5 mins when reading Soong code because there are multiple \"context\" interface types involved in a logic chain in many cases.\n\nThis way, you won\u0027t probably have to change the function signatures of fillInEntries and fillInData or add fillInEntriesContext.",
+      "revId": "aa2555387d214fc0292406d10714558054d794f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
