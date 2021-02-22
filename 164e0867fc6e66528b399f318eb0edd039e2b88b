@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24eaf496_99090660",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-22T15:19:17Z",
+      "side": 1,
+      "message": "Sorry I forgot to address this! Will do.",
+      "parentUuid": "c0c2e8a7_693cc115",
+      "range": {
+        "startLine": 208,
+        "startChar": 8,
+        "endLine": 208,
+        "endChar": 26
+      },
+      "revId": "164e0867fc6e66528b399f318eb0edd039e2b88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb0ba2f0_325c2d23",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-19T19:50:30Z",
       "side": 1,
       "message": "We probably shouldn\u0027t export this -- should it instead be a helper in the testing file?",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "164e0867fc6e66528b399f318eb0edd039e2b88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ac7a90_e53ea022",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-22T15:19:17Z",
+      "side": 1,
+      "message": "Really sorry I missed this before submitting. Yes -- will move it.",
+      "parentUuid": "cb0ba2f0_325c2d23",
       "range": {
         "startLine": 212,
         "startChar": 5,
