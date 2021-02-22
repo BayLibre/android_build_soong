@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008360830",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1599675?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3fa869e3_53909473",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-22T22:21:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 380,
+        "startChar": 10,
+        "endLine": 380,
+        "endChar": 19
+      },
+      "revId": "e03d364e30bf338583b53d0b2a207d19fc1db9ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
