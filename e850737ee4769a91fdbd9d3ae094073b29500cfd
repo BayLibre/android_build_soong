@@ -52,6 +52,24 @@
       "parentUuid": "f4aaa6c0_34204c40",
       "revId": "e850737ee4769a91fdbd9d3ae094073b29500cfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eaf2b56_4053b6df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-22T19:46:57Z",
+      "side": 1,
+      "message": "The full list of missing classes in internal master is pretty long, but I think this might work:\n\n -dontwarn android.support.annotation.**\n -dontwarn androidx.annotation.**\n -dontwarn androidx.palette.graphics.**\n -dontwarn com.android.ims.**\n -dontwarn com.android.ims.internal.**\n -dontwarn com.google.auto.value.**\n -dontwarn com.google.common.util.concurrent.**\n -dontwarn com.google.errorprone.annotations.**\n -dontwarn com.google.errorprone.annotations.concurrent.**\n -dontwarn javax.annotation.**\n -dontwarn javax.annotation.concurrent.**\n -dontwarn kotlin.**\n -dontwarn org.jetbrains.annotations.**",
+      "parentUuid": "6d97f1d8_a6b0f806",
+      "revId": "e850737ee4769a91fdbd9d3ae094073b29500cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
