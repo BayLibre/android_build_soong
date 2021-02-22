@@ -16,6 +16,24 @@
       "message": "Just wrote the same thing on anther CL but could you also check that bp2build write; bazel build ... still works for Bionic?",
       "revId": "743d96d1d12612625bf420d3e8a09b20d55467a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e9c79d_f2291045",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-22T15:06:17Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "10897f3d_70e9fa8b",
+      "revId": "743d96d1d12612625bf420d3e8a09b20d55467a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
