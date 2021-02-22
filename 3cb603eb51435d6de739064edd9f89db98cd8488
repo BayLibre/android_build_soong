@@ -33,6 +33,75 @@
       "message": "LGTM for sysprop part",
       "revId": "3cb603eb51435d6de739064edd9f89db98cd8488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1423c530_cd5a985c",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3917,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-22T16:10:31Z",
+      "side": 1,
+      "message": "Nit: strictly speaking \u0027\\n\u0027 is not \"any\" newline characters, just one of them.",
+      "range": {
+        "startLine": 3917,
+        "startChar": 62,
+        "endLine": 3917,
+        "endChar": 84
+      },
+      "revId": "3cb603eb51435d6de739064edd9f89db98cd8488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3193108d_ef9e2c0b",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3920,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-22T16:10:31Z",
+      "side": 1,
+      "message": "Nit: move the regexp to a global variable to compile once and not every time the function is called?",
+      "range": {
+        "startLine": 3920,
+        "startChar": 27,
+        "endLine": 3920,
+        "endChar": 59
+      },
+      "revId": "3cb603eb51435d6de739064edd9f89db98cd8488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab1d562b_1a8a8274",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3949,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-22T16:10:31Z",
+      "side": 1,
+      "message": "Nit: this and the next three functions can be deduplicated and parameterized with a description string.",
+      "range": {
+        "startLine": 3944,
+        "startChar": 24,
+        "endLine": 3949,
+        "endChar": 2
+      },
+      "revId": "3cb603eb51435d6de739064edd9f89db98cd8488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
