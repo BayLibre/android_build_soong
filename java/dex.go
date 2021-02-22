@@ -260,6 +260,9 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 		r8Flags = append(r8Flags, "--debug")
 	}
 
+	// TODO(b/180878971): Errorprone annotations should be added to the relevant builds.
+	r8Flags = append(r8Flags, "-dontwarn com.google.errorprone.annotations.**")
+
 	return r8Flags, r8Deps
 }
 
