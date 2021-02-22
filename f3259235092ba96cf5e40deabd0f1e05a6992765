@@ -46,6 +46,30 @@
       },
       "revId": "f3259235092ba96cf5e40deabd0f1e05a6992765",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4582aba5_204b9fa5",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1335232
+      },
+      "writtenOn": "2021-02-22T21:46:44Z",
+      "side": 1,
+      "message": "Unless keeping it causes problems, I think we should leave it. The stats-log-api-gen-for-art thing is meant to be a temporary hack, so keeping statsd-module-sdk here makes it easier for us to remove the hack in the future.",
+      "parentUuid": "94bbb3ee_767df73a",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "f3259235092ba96cf5e40deabd0f1e05a6992765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
