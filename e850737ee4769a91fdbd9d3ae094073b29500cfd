@@ -16,6 +16,24 @@
       "message": "What are the ramifications of this?  Is it going to allow anything else through that previously would have been caught as an error?",
       "revId": "e850737ee4769a91fdbd9d3ae094073b29500cfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4aaa6c0_34204c40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327199
+      },
+      "writtenOn": "2021-02-22T19:19:10Z",
+      "side": 1,
+      "message": "The latest version of R8 contains a bug fix such that all references to missing classes will now be reported as an error. Previously, only a small subset of such references would be reported.\n\nThe -ignorewarnings directive lowers the diagnostic from an error to a warning. As a result of this, diagnostics that used to be an error will now be a warning, and errors that were not previously reported will now be a warning.\n\nApparently, several R8 builds in aosp refer to classes not part of the compilation unit. In order to avoid not being able to roll R8 into aosp for quite some time, we\u0027ve discussed to temporarily add -ignorewarnings to resolve the build errors, and then separately start working on removing the -ignorewarnings directive.\n\nIt seems that many builds use annotations from androidx.annotation.** and com.google.errorprone.annotations.**, but the actual annotations are not part of the compilation units. Since this is fairly harmless, a first goal would be to substitute -ignorewarnings by:\n\n  -dontwarn androidx.annotation.**\n  -dontwarn com.google.errorprone.annotations.**\n\nThis will require adding a config with -dontwarn rules to each project that has missing classes (along with a TODO assigned to the owners).",
+      "parentUuid": "e1df7767_b7be21c6",
+      "revId": "e850737ee4769a91fdbd9d3ae094073b29500cfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
