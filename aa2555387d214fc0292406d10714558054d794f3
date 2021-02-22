@@ -70,6 +70,24 @@
       "parentUuid": "992cc488_80a77859",
       "revId": "aa2555387d214fc0292406d10714558054d794f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04546b6a_04d1e246",
+        "filename": "android/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-02-22T22:15:20Z",
+      "side": 1,
+      "message": "I see. I\u0027ll try it myself starting from internal branches.",
+      "parentUuid": "2b7d22cb_a1f27139",
+      "revId": "aa2555387d214fc0292406d10714558054d794f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
