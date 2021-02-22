@@ -1,0 +1,39 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d436ee_63853b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1857270
+      },
+      "writtenOn": "2021-02-22T20:05:45Z",
+      "side": 1,
+      "message": "\u003e ✔️ All files and artifacts have passed presubmit lint checks\n\u003e For more details see (https://android-build.googleplex.com/builds/treetop/android-review/1597935?revision\u003d1)\n\u003e \n\u003e Have a question? Found a bug? http://go/presubmit-lint-bug\n\nPlease fix.",
+      "parentUuid": "8946b7cf_495d820e",
+      "revId": "9997ea73a3f1b3de2fd334c530da14c61dfee4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18a3acb_e056a191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1857270
+      },
+      "writtenOn": "2021-02-22T20:05:45Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by Ivan Lozano:\n\u003e * rust/builder.go\n\u003e \n\n",
+      "revId": "9997ea73a3f1b3de2fd334c530da14c61dfee4e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
