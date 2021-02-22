@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e84d79_07bc48fa",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-22T15:23:41Z",
+      "side": 1,
+      "message": "aosp/1596752",
+      "parentUuid": "24eaf496_99090660",
+      "range": {
+        "startLine": 208,
+        "startChar": 8,
+        "endLine": 208,
+        "endChar": 26
+      },
+      "revId": "164e0867fc6e66528b399f318eb0edd039e2b88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb0ba2f0_325c2d23",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Really sorry I missed this before submitting. Yes -- will move it.",
       "parentUuid": "cb0ba2f0_325c2d23",
+      "range": {
+        "startLine": 212,
+        "startChar": 5,
+        "endLine": 212,
+        "endChar": 31
+      },
+      "revId": "164e0867fc6e66528b399f318eb0edd039e2b88b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f18873c_48cf18c2",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-22T15:23:41Z",
+      "side": 1,
+      "message": "aosp/1596752",
+      "parentUuid": "09ac7a90_e53ea022",
       "range": {
         "startLine": 212,
         "startChar": 5,
