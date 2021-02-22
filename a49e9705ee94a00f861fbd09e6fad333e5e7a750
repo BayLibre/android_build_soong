@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eebe1e6_627fad7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-22T17:10:33Z",
+      "side": 1,
+      "message": "Now I also clean the environment of soong_build in the following way:\n\n1. I removed using soong_env and the environment singleton and instead write a soong.variables file (now without the dot prefix!) from soong_ui, which I add as a dependency of out/soong.build.ninja in the bootstrap Ninja file. This regenerates build.ninja exactly when it\u0027s necessary.\n\n2. I added a --env_file command line argument to soong_build and threaded it all the way through bootstrapping. This is, strictly speaking, not necessary, since I can also infer that from --top .\n\n3. I added an \"env -i\" invocation around the invocation of soong_build in the bootstrap Ninja file. It would have been nicer to clean the environment of the whole Ninja invocation, but that includes Blueprint itself and I didn\u0027t feel like changing Blueprint to that degree.\n\nQuestions:\n\n1. Why do I now have to clean TRACE_BEGIN_SOONG in the the environment of the Ninja invocation? I thought it\u0027s the same as the environment which gets written into .soong.variables at HEAD, but apparently not?\n2. Am I allowed to embed absolute paths in .bootstrap/build.ninja? It\u0027s necessary due to the way I pass --env_file (which in itself is not necessary, but for now, I\u0027m stuck with it)\n\nNotes:\n\nDebugging currently doesn\u0027t work due to (probably) some shell quoting issues. I\u0027ll fix that once you think this approach is sound, but it will probably involve removing the command line flags for Delve because changing that currently changes the bootstrap .ninja file so debugging roundtrip becomes longer. I\u0027ll probably move InitEnvironment() before ReexecWithDelveMaybe() in soong_build and will revert to relying on environment variables. This will make InitEnvironment() undebuggable, but oh well.\n\nThis will also make it possible to add the \"always reexecute soong_build\" dependency in the bootstrap Ninja file, thereby concentrating ugliness in bootstrap.go .",
+      "revId": "a49e9705ee94a00f861fbd09e6fad333e5e7a750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
