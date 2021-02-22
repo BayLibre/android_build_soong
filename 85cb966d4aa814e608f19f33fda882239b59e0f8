@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba32dc7_2f54a27c",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-22T15:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61edbd9b_18ca1c0a",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 50
+      },
+      "revId": "85cb966d4aa814e608f19f33fda882239b59e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72787be8_977dc722",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-18T15:58:05Z",
       "side": 1,
       "message": "nit: add comment.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "85cb966d4aa814e608f19f33fda882239b59e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5069bc30_669f17c3",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-22T15:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72787be8_977dc722",
       "range": {
         "startLine": 126,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad888d1a_62989e84",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-22T15:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77e9335b_e72c1228",
+      "range": {
+        "startLine": 372,
+        "startChar": 6,
+        "endLine": 372,
+        "endChar": 14
+      },
+      "revId": "85cb966d4aa814e608f19f33fda882239b59e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c046021_4c32e5d7",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-02-18T15:58:05Z",
       "side": 1,
       "message": "nit: add comments.",
+      "revId": "85cb966d4aa814e608f19f33fda882239b59e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08bd24c2_1973b0c8",
+        "filename": "scripts/manifest_check.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-22T15:42:50Z",
+      "side": 1,
+      "message": "Added (also restructuresd the code to scope enforce_uses_libraries_status under enforce_uses_libraries).",
+      "parentUuid": "0c046021_4c32e5d7",
       "revId": "85cb966d4aa814e608f19f33fda882239b59e0f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
