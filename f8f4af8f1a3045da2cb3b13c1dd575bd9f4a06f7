@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bb6d635_9a71dc06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-23T10:49:11Z",
+      "side": 1,
+      "message": "The test failures are unrelated to this change.",
+      "revId": "f8f4af8f1a3045da2cb3b13c1dd575bd9f4a06f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
