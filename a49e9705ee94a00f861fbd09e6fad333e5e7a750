@@ -180,6 +180,24 @@
       "parentUuid": "846e54ff_88f10554",
       "revId": "a49e9705ee94a00f861fbd09e6fad333e5e7a750",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76419f4_03187e85",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-23T18:32:51Z",
+      "side": 1,
+      "message": "Unhiding it is fine, I think I hid it because it\u0027s an implementation detail that is never relevant to the user.",
+      "parentUuid": "2a0a3b18_664b1826",
+      "revId": "a49e9705ee94a00f861fbd09e6fad333e5e7a750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
