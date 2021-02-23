@@ -16,6 +16,29 @@
       "message": "I would normally ask mast@ to review this but he is OOO.",
       "revId": "42dd4e6cd69026bf0537372772061d7bc2bc6f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fefdcf53_6cd3166e",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-23T01:56:21Z",
+      "side": 1,
+      "message": "why do we have to have this path?",
+      "range": {
+        "startLine": 1122,
+        "startChar": 64,
+        "endLine": 1122,
+        "endChar": 102
+      },
+      "revId": "42dd4e6cd69026bf0537372772061d7bc2bc6f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
