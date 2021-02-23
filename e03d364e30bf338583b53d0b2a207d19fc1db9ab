@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35546413_161203c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-23T08:13:18Z",
+      "side": 1,
+      "message": "My brain isn\u0027t working very well today due to lack of sleep, so I\u0027d like someone else to take a look before this gets submitted",
+      "revId": "e03d364e30bf338583b53d0b2a207d19fc1db9ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "024ff64a_3f40e52a",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-23T08:13:18Z",
+      "side": 1,
+      "message": "What\u0027s \"assessing Bazel?\"",
+      "range": {
+        "startLine": 1609,
+        "startChar": 64,
+        "endLine": 1609,
+        "endChar": 80
+      },
+      "revId": "e03d364e30bf338583b53d0b2a207d19fc1db9ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
