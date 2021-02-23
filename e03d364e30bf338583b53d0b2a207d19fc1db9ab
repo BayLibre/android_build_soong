@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b3cea2_2ccb9014",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-23T14:23:12Z",
+      "side": 1,
+      "message": "Curiousity: Do we suspect this will grow as the number of variants grows?",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "e03d364e30bf338583b53d0b2a207d19fc1db9ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f84f32d1_5f9eab9f",
@@ -67,6 +90,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5eadad2_cee5cbb6",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-23T14:23:12Z",
+      "side": 1,
+      "message": "nit: %q will quote it for you.",
+      "range": {
+        "startLine": 509,
+        "startChar": 33,
+        "endLine": 509,
+        "endChar": 39
+      },
+      "revId": "e03d364e30bf338583b53d0b2a207d19fc1db9ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "024ff64a_3f40e52a",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -101,6 +147,30 @@
       "writtenOn": "2021-02-23T14:08:31Z",
       "side": 1,
       "message": "extract into `useBazelMaybe` func call?\n\nStarting to think that we should make certain modules \"Bazelified\" as an interface, so we can reduce the boilerplate here and make it less invasive for GenerateAndroidBuildActions function bodies.\n\nAlternatively, creating a separate hook like GenerateAndroidBuildActions to keep these separate. e.g. a module would call \"GenerateAndroidBuildActions\" for normal usage, and calls \"HydrateBazelOutputPaths\" if BazelEnabled(), has a bazel handler, and has a label.",
+      "range": {
+        "startLine": 1628,
+        "startChar": 1,
+        "endLine": 1635,
+        "endChar": 2
+      },
+      "revId": "e03d364e30bf338583b53d0b2a207d19fc1db9ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba759c56_df5adde1",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-23T14:23:12Z",
+      "side": 1,
+      "message": "Some of the refactoring and changes I\u0027m working on is progressing toward something like this with https://r.android.com/1596752 and expanding on that with in progress https://r.android.com/1591533\n\nIt may be easier to extract some of this after at least the first one gets submitted.",
+      "parentUuid": "41d12882_7dfa8abf",
       "range": {
         "startLine": 1628,
         "startChar": 1,
