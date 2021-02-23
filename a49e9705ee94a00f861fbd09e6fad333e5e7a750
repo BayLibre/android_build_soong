@@ -96,6 +96,24 @@
       "message": "This is conflating your new environment file containing the entire user environment with the old .soong_environment file, which only has the subset of the environment that Soong accessed.  Using the full environment file will cause way to many reruns when unrelated environment variables are changed.",
       "revId": "a49e9705ee94a00f861fbd09e6fad333e5e7a750",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0a3b18_664b1826",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-23T08:35:20Z",
+      "side": 1,
+      "message": "Ah, I see. So .soong_environment contains only the environment variables that were actually used during the build and that\u0027s why it needs to be dumped after Soong runs; apparently, we don\u0027t know what environment variables can potentially be used?\n\nLet me see what I can do about this... it\u0027ll probably involve resurrecting .soong_environment (probably under a different name, because why does it need to be hidden?)",
+      "parentUuid": "846e54ff_88f10554",
+      "revId": "a49e9705ee94a00f861fbd09e6fad333e5e7a750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
