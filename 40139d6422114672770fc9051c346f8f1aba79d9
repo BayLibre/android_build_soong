@@ -16,6 +16,24 @@
       "message": "I am working on moving the boot image from being constructed by singleton+configuration to a boot_image module and have some questions about this code.\n\nThe UseArtImage is enabled for jitzygote builds. When set to true we seem to use a hybrid boot image with the dexfiles and dexlocations from the default boot image being passed through to dexpreopt PreoptBootClassPath... config but using the art boot image to do everything else.\n\nWhy do we do that?",
       "revId": "40139d6422114672770fc9051c346f8f1aba79d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b9326b4_9142dbac",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-02-23T20:33:13Z",
+      "side": 1,
+      "message": "The UseArtImage is intended to be used for preopting apps differently than the normal config, where we preopt with the entire boot image (art + framework).\n\nThis code can be deprecated though, and you can feel free to remove the entire UseArtImage logic on the build.",
+      "parentUuid": "cb80b6a4_1b352091",
+      "revId": "40139d6422114672770fc9051c346f8f1aba79d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
