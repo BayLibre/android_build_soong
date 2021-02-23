@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008390748",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "acf9b2b1_1e0cd004",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-23T19:22:52Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 541,
+        "startChar": 98,
+        "endLine": 541,
+        "endChar": 99
+      },
+      "revId": "62001b6027e2c17ff063724e05cdfe3679e09bac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008390748",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "093a1192_93cae84f",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-23T19:22:52Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 619,
+        "startChar": 18,
+        "endLine": 619,
+        "endChar": 19
+      },
+      "revId": "62001b6027e2c17ff063724e05cdfe3679e09bac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008390748",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "dba3e2f2_1bc9d820",
+        "filename": "mk2rbc/soong_variables.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-23T19:22:52Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027they\u0027, \u0027them\u0027, or \u0027person\u0027; see https://developers.google.com/style/word-list#gender for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "62001b6027e2c17ff063724e05cdfe3679e09bac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
