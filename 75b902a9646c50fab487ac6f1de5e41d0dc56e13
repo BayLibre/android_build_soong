@@ -16,6 +16,23 @@
       "message": "I would normally ask mast@ to review this but he is OOO.",
       "revId": "75b902a9646c50fab487ac6f1de5e41d0dc56e13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b626699_d58dbb9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-23T01:44:56Z",
+      "side": 1,
+      "message": "Note: I didn\u0027t read all the changes in the test.",
+      "revId": "75b902a9646c50fab487ac6f1de5e41d0dc56e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
