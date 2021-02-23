@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e69961_5255bbe3",
+        "filename": "android/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-23T18:49:48Z",
+      "side": 1,
+      "message": "InitEnvironment()",
+      "range": {
+        "startLine": 40,
+        "startChar": 86,
+        "endLine": 40,
+        "endChar": 92
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68faec36_286745eb",
+        "filename": "android/writedocs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-23T18:49:48Z",
+      "side": 1,
+      "message": "absolutePath(ctx.Config().BuildDir())",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdeb2154_c123268a",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-23T18:49:48Z",
+      "side": 1,
+      "message": "I don\u0027t think these are necessary since they go through the command line --delve_listen and --delve_path arguments now.  Ninja will always rerun rules whose command lines have been modified since they last ran.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f42a00b_f193c36f",
+        "filename": "shared/debug.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-23T18:49:48Z",
+      "side": 1,
+      "message": "Can you add godoc for new methods?",
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e2cf46_26fdcd48",
+        "filename": "shared/debug.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-23T18:49:48Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c74ea3_d0030355",
+        "filename": "shared/paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-23T18:49:48Z",
+      "side": 1,
+      "message": "Add godoc.\n\nThe semantics here are a little odd, JoinPath(\"foo\",\"bar\",\"/baz\", \"qux\") results in \"/baz/qux\".  Probably worth a test or an Example function (which will get run as a test).\n\nAlso, after my comment in android/writedocs.go there would only be a single user of this function in cmd/soong_build/main.go, so maybe better to make this less generic and put it there?",
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
