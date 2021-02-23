@@ -39,6 +39,30 @@
       },
       "revId": "42dd4e6cd69026bf0537372772061d7bc2bc6f57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15b5bec_791ea3e5",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-23T13:13:04Z",
+      "side": 1,
+      "message": "tl;dr; The changes in this test are a result of fixing the issues in TestSnapshotWithCcExportGeneratedHeaders\n\nPreviously, the code for copying the headers discarded the path structure above the include directory. That caused the problem that we can see in TestSnapshotWithCcExportGeneratedHeaders and described in more detail in the commit message.\n\nFixing that necessitates keeping more of the path structure. Minimizing the path structure that needs to be kept is a complex calculation that requires understanding the relationship between the include directories and the include headers across all the modules that contribute to the SDK. I did attempt to do that but ran into a number of issues within the build that greatly increased the cost of doing this.\n\nOne issue is that the build does not track include directories and the generated include headers correctly and consistently. e.g. Some places include headers in the deps, others separate them out.\n\nThose issues need fixing (and I have created bugs to track that work) but it is not a priority for me and this change was needed to unblock other people\u0027s work.\n\nSo, I took a step back and decided that the simplest way to fix this issue was to keep all of it. As it turned out I could easily discard the intermediates path prefix so I did but I kept the rest.\n\nIt\u0027s not pretty but it is correct.",
+      "parentUuid": "fefdcf53_6cd3166e",
+      "range": {
+        "startLine": 1122,
+        "startChar": 64,
+        "endLine": 1122,
+        "endChar": 102
+      },
+      "revId": "42dd4e6cd69026bf0537372772061d7bc2bc6f57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
