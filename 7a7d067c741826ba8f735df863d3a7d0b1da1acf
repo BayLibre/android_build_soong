@@ -33,6 +33,24 @@
       "message": "Is this to just reduce the size of the snapshot? Or is there any other reason?",
       "revId": "7a7d067c741826ba8f735df863d3a7d0b1da1acf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cded203_4e8f3b39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-23T11:35:01Z",
+      "side": 1,
+      "message": "Primarily I made this change because the previous behaviour was based on an incorrect assumption, i.e. that generated headers are always arch specific. That is true for AIDL (when built by cc_library but not aidl_interface) but not for protos or genrule.\n\nHowever, it will reduce the size of the snapshot as it will avoid copying files which are not arch specific into arch specific directories. It will also reduce the duplication in the generated Android.bp file a little.",
+      "parentUuid": "e8c7ec20_11d83762",
+      "revId": "7a7d067c741826ba8f735df863d3a7d0b1da1acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
