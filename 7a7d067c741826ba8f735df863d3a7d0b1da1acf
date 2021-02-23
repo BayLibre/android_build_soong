@@ -16,6 +16,23 @@
       "message": "I would normally ask mast@ to review this but he is OOO.",
       "revId": "7a7d067c741826ba8f735df863d3a7d0b1da1acf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c7ec20_11d83762",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-23T01:51:41Z",
+      "side": 1,
+      "message": "Is this to just reduce the size of the snapshot? Or is there any other reason?",
+      "revId": "7a7d067c741826ba8f735df863d3a7d0b1da1acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
