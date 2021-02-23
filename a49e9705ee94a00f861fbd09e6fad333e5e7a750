@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "279bbd2e_ba4125de",
+        "filename": "android/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-23T10:31:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "86ab52c9_50e609da",
+      "range": {
+        "startLine": 59,
+        "startChar": 40,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "a49e9705ee94a00f861fbd09e6fad333e5e7a750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1a55e0d_bd441097",
@@ -58,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6adb424a_ecfd1086",
+        "filename": "android/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-23T10:31:59Z",
+      "side": 1,
+      "message": "Not only this, the code in bootstrap.go was also wrong. Fixed both.",
+      "parentUuid": "a1a55e0d_bd441097",
+      "revId": "a49e9705ee94a00f861fbd09e6fad333e5e7a750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90ae8f99_eecdb5aa",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-02-22T17:50:19Z",
       "side": 1,
       "message": "env.GetOsEnvironment?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "a49e9705ee94a00f861fbd09e6fad333e5e7a750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db89f61_bdc5762a",
+        "filename": "cmd/soong_env/soong_env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-23T10:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90ae8f99_eecdb5aa",
       "range": {
         "startLine": 46,
         "startChar": 0,
