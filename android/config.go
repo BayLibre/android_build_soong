@@ -1411,6 +1411,84 @@ func (c *deviceConfig) RecoverySnapshotModules() map[string]bool {
 	return c.config.productVariables.RecoverySnapshotModules
 }
 
+func createDirsMap(previous map[string]bool, dirs []string) (map[string]bool, error) {
+	var ret = make(map[string]bool)
+	for _, dir := range dirs {
+		clean := filepath.Clean(dir)
+		if previous[clean] || ret[clean] {
+			return nil, fmt.Errorf("Duplicate entry %s", dir)
+		}
+		ret[clean] = true
+	}
+	return ret, nil
+}
+
+var vendorSnapshotDirsExcludedKey = NewOnceKey("VendorSnapshotDirsExcludedMap")
+
+func (c *deviceConfig) VendorSnapshotDirsExcludedMap() map[string]bool {
+	dirMap := c.Once(vendorSnapshotDirsExcludedKey, func() interface{} {
+		ret, err := createDirsMap(map[string]bool{}, c.config.productVariables.VendorSnapshotDirsExcluded)
+		if err != nil {
+			panic(fmt.Errorf("VendorSnapshotDirsExcludedMap: %s", err.Error()))
+		}
+		return ret
+	})
+	if dirMap == nil {
+		return nil
+	}
+	return dirMap.(map[string]bool)
+}
+
+var vendorSnapshotDirsIncludedKey = NewOnceKey("VendorSnapshotDirsIncludedMap")
+
+func (c *deviceConfig) VendorSnapshotDirsIncludedMap() map[string]bool {
+	excludedMap := c.VendorSnapshotDirsExcludedMap()
+	dirMap := c.Once(vendorSnapshotDirsIncludedKey, func() interface{} {
+		ret, err := createDirsMap(excludedMap, c.config.productVariables.VendorSnapshotDirsIncluded)
+		if err != nil {
+			panic(fmt.Errorf("VendorSnapshotDirsIncludedMap: %s", err.Error()))
+		}
+		return ret
+	})
+	if dirMap == nil {
+		return nil
+	}
+	return dirMap.(map[string]bool)
+}
+
+var recoverySnapshotDirsExcludedKey = NewOnceKey("RecoverySnapshotDirsExcludedMap")
+
+func (c *deviceConfig) RecoverySnapshotDirsExcludedMap() map[string]bool {
+	dirMap := c.Once(recoverySnapshotDirsExcludedKey, func() interface{} {
+		ret, err := createDirsMap(map[string]bool{}, c.config.productVariables.RecoverySnapshotDirsExcluded)
+		if err != nil {
+			panic(fmt.Errorf("RecoverySnapshotDirsExcludedMap: %s", err.Error()))
+		}
+		return ret
+	})
+	if dirMap == nil {
+		return nil
+	}
+	return dirMap.(map[string]bool)
+}
+
+var recoverySnapshotDirsIncludedKey = NewOnceKey("RecoverySnapshotDirsIncludedMap")
+
+func (c *deviceConfig) RecoverySnapshotDirsIncludedMap() map[string]bool {
+	excludedMap := c.RecoverySnapshotDirsExcludedMap()
+	dirMap := c.Once(recoverySnapshotDirsIncludedKey, func() interface{} {
+		ret, err := createDirsMap(excludedMap, c.config.productVariables.RecoverySnapshotDirsIncluded)
+		if err != nil {
+			panic(fmt.Errorf("RecoverySnapshotDirsIncludedMap: %s", err.Error()))
+		}
+		return ret
+	})
+	if dirMap == nil {
+		return nil
+	}
+	return dirMap.(map[string]bool)
+}
+
 func (c *deviceConfig) ShippingApiLevel() ApiLevel {
 	if c.config.productVariables.ShippingApiLevel == nil {
 		return NoneApiLevel
