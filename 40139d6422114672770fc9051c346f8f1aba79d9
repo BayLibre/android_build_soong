@@ -34,6 +34,24 @@
       "parentUuid": "cb80b6a4_1b352091",
       "revId": "40139d6422114672770fc9051c346f8f1aba79d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1c7533f_6f61eb0c",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-02-24T11:09:31Z",
+      "side": 1,
+      "message": "After a local discussion with Nicolas, I agree that UseArtImage can be dropped, as jitzygote will be used only as a fallback solution after an ART module update (when the ART boot image changes and there\u0027s a need to run dexopt anyway).\n\nAs a result of dropping UseArtImage, first boot in jitzygote builds will be slow (I\u0027d expect ~2x slower) due to discarding all dexpreopted code and running dexopt. This will affect our CI, but not any real-world scenario, so it\u0027s ok to have if it simplifies the code.\n\nWe will probably have to keep DEXPREOPT_USE_APEX_IMAGE though, as it is needed used in the makefiles to copy the ART image in the place expected by system property dalvik.vm.boot-image in jitzygote builds (see ag/7530804). This needs to be investigated, eg maybe we can set: \n\n  dalvik.vm.boot-image\u003d/apex/com.android.art/javalib/boot.art\n\n... in jitzygote builds and drop DEXPREOPT_USE_APEX_IMAGE altogether.",
+      "parentUuid": "8b9326b4_9142dbac",
+      "revId": "40139d6422114672770fc9051c346f8f1aba79d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
