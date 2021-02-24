@@ -29,10 +29,16 @@ import (
 	"github.com/google/blueprint"
 )
 
-func TestConfig(buildDir string, env map[string]string, bp string, fs map[string][]byte) android.Config {
-	bp += GatherRequiredDepsForTest()
+// Prepare a fixture to use java modules.
+var PrepareForJava = android.FixturePreparers(
+	android.PrepareForArchMutator,
+	android.PrepareForPrebuilts,
+	android.FixtureRegisterWithContext(RegisterRequiredBuildComponentsForTest),
+	android.FixtureAddTextFile("java/prebuilts/Android.bp", GatherRequiredDepsForTest()),
+)
 
-	mockFS := map[string][]byte{
+func javaMockFS() android.MockFS {
+	mockFS := android.MockFS{
 		"api/current.txt":        nil,
 		"api/removed.txt":        nil,
 		"api/system-current.txt": nil,
@@ -63,6 +69,14 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 	for k, v := range prebuiltApisFilesForLibs(levels, libs) {
 		mockFS[k] = v
 	}
+
+	return mockFS
+}
+
+func TestConfig(buildDir string, env map[string]string, bp string, fs map[string][]byte) android.Config {
+	bp += GatherRequiredDepsForTest()
+
+	mockFS := javaMockFS()
 
 	cc.GatherRequiredFilesForTest(mockFS)
 
