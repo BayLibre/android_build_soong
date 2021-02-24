@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a3b701_f1a4aafb",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-24T03:30:44Z",
+      "side": 1,
+      "message": "You\u0027re right, I read this as separate rules, but that won\u0027t work for commands that need to be earlier.",
+      "parentUuid": "2e901947_c7ef05c8",
+      "revId": "3c2e608ec13432f11a1c74e8d1055e1216cd7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "898930e1_764948b7",
