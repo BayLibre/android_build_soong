@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0cc2ca_22b3e408",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-24T17:40:29Z",
+      "side": 1,
+      "message": "I started reviewing, but this is a quite large cl -- can you split it up a bit?\n\nAlso, it looks like all the files are missing the copyright header",
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd06b7c7_65e4e513",
+        "filename": "mk2rbc/android_products.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-24T17:40:29Z",
+      "side": 1,
+      "message": "I think we generally sort \"android/soong/...\" after go libraries, but I also don\u0027t...feel strongly about it.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 42
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da208bf_a0d7da00",
+        "filename": "mk2rbc/android_products.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-24T17:40:29Z",
+      "side": 1,
+      "message": "Can you add godocs for the exported functions? And a perhaps note that we\u0027re fulfilling the mkparser.Scope interface?",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c798a344_0a06ccbb",
+        "filename": "mk2rbc/android_products.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-24T17:40:29Z",
+      "side": 1,
+      "message": "Can you comment why we skip non-assignment nodes?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e5003b_d2cdf26f",
+        "filename": "mk2rbc/android_products.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-24T17:40:29Z",
+      "side": 1,
+      "message": "these names are not very helpful and docs in the parser are ~nonexistent ... a more descriptive wrapper for this behavior on mkparser.Assignment would be nice, but not blocking",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5b0dede_523921a6",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-24T17:40:29Z",
+      "side": 1,
+      "message": "Single character flags are nice for typing on a cli, but when used in a script (which I assume we\u0027ll be doing) they\u0027re not self-documenting -- if we want short can we also add long flags?",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6bba10_6b9e392d",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-24T17:40:29Z",
+      "side": 1,
+      "message": "can we use t.Format() (https://golang.org/pkg/time/#Time.Format) instead?",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 55
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
