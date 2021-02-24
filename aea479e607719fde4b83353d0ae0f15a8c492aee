@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6703029_be3f6c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-24T20:11:41Z",
+      "side": 1,
+      "message": "Colin, would you mind taking a look at this and letting me know what you think? I think this mechanism is much cleaner than what we currently have and I am stacking up a number of changes on top in the assumption that you will agree and I\u0027d just like to make sure I am not wasting my time.",
+      "revId": "aea479e607719fde4b83353d0ae0f15a8c492aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
