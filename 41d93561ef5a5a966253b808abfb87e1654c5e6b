@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ba3c0c5_6a52a04f",
+        "filename": "android/arch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-24T12:49:52Z",
+      "side": 1,
+      "message": "Confession: mostly cargo-culted from the archMutator. Instead of mapping arch props into variant modules, the idea here is to map the arch props into an empty input prop struct, so the callers can decide what properties they want to extract from the module, reusing arch mutator infrastructure.",
+      "range": {
+        "startLine": 1627,
+        "startChar": 0,
+        "endLine": 1627,
+        "endChar": 1
+      },
+      "revId": "41d93561ef5a5a966253b808abfb87e1654c5e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
