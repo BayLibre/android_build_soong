@@ -40,58 +40,50 @@ var (
 		"aapt2/res/values_strings.arsc.flat",
 		"aapt2/res/values-en-rUS_strings.arsc.flat",
 	}
+
+	appFixtureFactory = javaFixtureFactory.Extend(appMockFS().AddToFixture())
 )
 
-func testAppConfig(env map[string]string, bp string, fs map[string][]byte) android.Config {
-	appFS := map[string][]byte{}
-	for k, v := range fs {
-		appFS[k] = v
-	}
-
+func appMockFS() android.MockFS {
+	appFS := android.MockFS{}
 	for _, file := range resourceFiles {
 		appFS[file] = nil
 	}
-
-	return testConfig(env, bp, appFS)
+	return appFS
 }
 
-func testApp(t *testing.T, bp string) *android.TestContext {
-	config := testAppConfig(nil, bp, nil)
-
-	ctx := testContext(config)
-
-	run(t, ctx, config)
-
-	return ctx
+func testAppConfig(env map[string]string, bp string, fs map[string][]byte) android.Config {
+	appFS := android.MockFS{}
+	appFS.Merge(fs)
+	appFS.Merge(appMockFS())
+	return testConfig(env, bp, appFS)
 }
 
 func TestApp(t *testing.T) {
 	for _, moduleType := range []string{"android_app", "android_library"} {
 		t.Run(moduleType, func(t *testing.T) {
-			ctx := testApp(t, moduleType+` {
+			result := appFixtureFactory.RunTestWithBp(t, moduleType+` {
 					name: "foo",
 					srcs: ["a.java"],
 					sdk_version: "current"
 				}
 			`)
 
-			foo := ctx.ModuleForTests("foo", "android_common")
+			foo := result.ModuleForTests("foo", "android_common")
 
 			var expectedLinkImplicits []string
 
 			manifestFixer := foo.Output("manifest_fixer/AndroidManifest.xml")
 			expectedLinkImplicits = append(expectedLinkImplicits, manifestFixer.Output.String())
 
-			frameworkRes := ctx.ModuleForTests("framework-res", "android_common")
+			frameworkRes := result.ModuleForTests("framework-res", "android_common")
 			expectedLinkImplicits = append(expectedLinkImplicits,
 				frameworkRes.Output("package-res.apk").Output.String())
 
 			// Test the mapping from input files to compiled output file names
 			compile := foo.Output(compiledResourceFiles[0])
-			if !reflect.DeepEqual(resourceFiles, compile.Inputs.Strings()) {
-				t.Errorf("expected aapt2 compile inputs expected:\n  %#v\n got:\n  %#v",
-					resourceFiles, compile.Inputs.Strings())
-			}
+			result.AssertDeepEquals("expected aapt2 compile inputs",
+				resourceFiles, compile.Inputs.Strings())
 
 			compiledResourceOutputs := compile.Outputs.Strings()
 			sort.Strings(compiledResourceOutputs)
@@ -102,17 +94,15 @@ func TestApp(t *testing.T) {
 			expectedLinkImplicits = append(expectedLinkImplicits, list.Output.String())
 
 			// Check that the link rule uses
-			res := ctx.ModuleForTests("foo", "android_common").Output("package-res.apk")
-			if !reflect.DeepEqual(expectedLinkImplicits, res.Implicits.Strings()) {
-				t.Errorf("expected aapt2 link implicits expected:\n  %#v\n got:\n  %#v",
-					expectedLinkImplicits, res.Implicits.Strings())
-			}
+			res := result.ModuleForTests("foo", "android_common").Output("package-res.apk")
+			result.AssertDeepEquals("expected aapt2 link implicits",
+				expectedLinkImplicits, res.Implicits.Strings())
 		})
 	}
 }
 
 func TestAppSplits(t *testing.T) {
-	ctx := testApp(t, `
+	result := appFixtureFactory.RunTestWithBp(t, `
 				android_app {
 					name: "foo",
 					srcs: ["a.java"],
@@ -120,7 +110,7 @@ func TestAppSplits(t *testing.T) {
 					sdk_version: "current"
 				}`)
 
-	foo := ctx.ModuleForTests("foo", "android_common")
+	foo := result.ModuleForTests("foo", "android_common")
 
 	expectedOutputs := []string{
 		filepath.Join(buildDir, ".intermediates/foo/android_common/foo.apk"),
@@ -135,9 +125,7 @@ func TestAppSplits(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if g, w := outputFiles.Strings(), expectedOutputs; !reflect.DeepEqual(g, w) {
-		t.Errorf(`want OutputFiles("") = %q, got %q`, w, g)
-	}
+	result.AssertDeepEquals(`OutputFiles("")`, expectedOutputs, outputFiles.Strings())
 }
 
 func TestPlatformAPIs(t *testing.T) {
@@ -548,7 +536,7 @@ func TestResourceDirs(t *testing.T) {
 		},
 	}
 
-	fs := map[string][]byte{
+	fs := android.MockFS{
 		"res/res/values/strings.xml": nil,
 	}
 
@@ -562,11 +550,12 @@ func TestResourceDirs(t *testing.T) {
 
 	for _, testCase := range testCases {
 		t.Run(testCase.name, func(t *testing.T) {
-			config := testConfig(nil, fmt.Sprintf(bp, testCase.prop), fs)
-			ctx := testContext(config)
-			run(t, ctx, config)
+			result := javaFixtureFactory.RunTest(t,
+				android.FixtureWithRootAndroidBp(fmt.Sprintf(bp, testCase.prop)),
+				android.FixtureMergeMockFs(fs),
+			)
 
-			module := ctx.ModuleForTests("foo", "android_common")
+			module := result.ModuleForTests("foo", "android_common")
 			resourceList := module.MaybeOutput("aapt2/res.list")
 
 			var resources []string
@@ -625,9 +614,9 @@ func TestLibraryAssets(t *testing.T) {
 			name: "foo",
 			// lib1 has its own asset. lib3 doesn't have any, but provides lib4's transitively.
 			assetPackages: []string{
-				buildDir + "/.intermediates/foo/android_common/aapt2/package-res.apk",
-				buildDir + "/.intermediates/lib1/android_common/assets.zip",
-				buildDir + "/.intermediates/lib3/android_common/assets.zip",
+				".intermediates/foo/android_common/aapt2/package-res.apk",
+				".intermediates/lib1/android_common/assets.zip",
+				".intermediates/lib3/android_common/assets.zip",
 			},
 		},
 		{
@@ -640,8 +629,8 @@ func TestLibraryAssets(t *testing.T) {
 		{
 			name: "lib3",
 			assetPackages: []string{
-				buildDir + "/.intermediates/lib3/android_common/aapt2/package-res.apk",
-				buildDir + "/.intermediates/lib4/android_common/assets.zip",
+				".intermediates/lib3/android_common/aapt2/package-res.apk",
+				".intermediates/lib4/android_common/assets.zip",
 			},
 		},
 		{
@@ -649,11 +638,12 @@ func TestLibraryAssets(t *testing.T) {
 			assetFlag: "-A assets_b",
 		},
 	}
-	ctx := testApp(t, bp)
+	result := appFixtureFactory.RunTestWithBp(t, bp)
 
 	for _, test := range testCases {
 		t.Run(test.name, func(t *testing.T) {
-			m := ctx.ModuleForTests(test.name, "android_common")
+			subTestResult := result.ResultForSubTest(t)
+			m := subTestResult.ModuleForTests(test.name, "android_common")
 
 			// Check asset flag in aapt2 link flags
 			var aapt2link android.TestingBuildParams
@@ -664,22 +654,15 @@ func TestLibraryAssets(t *testing.T) {
 			}
 			aapt2Flags := aapt2link.Args["flags"]
 			if test.assetFlag != "" {
-				if !strings.Contains(aapt2Flags, test.assetFlag) {
-					t.Errorf("Can't find asset flag %q in aapt2 link flags %q", test.assetFlag, aapt2Flags)
-				}
+				subTestResult.AssertStringDoesContain("asset flag", aapt2Flags, test.assetFlag)
 			} else {
-				if strings.Contains(aapt2Flags, " -A ") {
-					t.Errorf("aapt2 link flags %q contain unexpected asset flag", aapt2Flags)
-				}
+				subTestResult.AssertStringDoesNotContain("asset flag", aapt2Flags, " -A ")
 			}
 
 			// Check asset merge rule.
 			if len(test.assetPackages) > 0 {
-				mergeAssets := m.Output("package-res.apk")
-				if !reflect.DeepEqual(test.assetPackages, mergeAssets.Inputs.Strings()) {
-					t.Errorf("Unexpected mergeAssets inputs: %v, expected: %v",
-						mergeAssets.Inputs.Strings(), test.assetPackages)
-				}
+				mergeAssets := result.PathsRelativeToBuildDir(m.Output("package-res.apk").Inputs)
+				subTestResult.AssertDeepEquals("Unexpected mergeAssets", test.assetPackages, mergeAssets)
 			}
 		})
 	}
@@ -2427,9 +2410,9 @@ func TestCodelessApp(t *testing.T) {
 
 	for _, test := range testCases {
 		t.Run(test.name, func(t *testing.T) {
-			ctx := testApp(t, test.bp)
+			result := appFixtureFactory.RunTestWithBp(t, test.bp)
 
-			foo := ctx.ModuleForTests("foo", "android_common")
+			foo := result.ModuleForTests("foo", "android_common")
 			manifestFixerArgs := foo.Output("manifest_fixer/AndroidManifest.xml").Args["args"]
 			if strings.Contains(manifestFixerArgs, "--has-no-code") != test.noCode {
 				t.Errorf("unexpected manifest_fixer args: %q", manifestFixerArgs)
