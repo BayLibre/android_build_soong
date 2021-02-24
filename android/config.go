@@ -1431,6 +1431,38 @@ func (c *deviceConfig) RecoverySnapshotModules() map[string]bool {
 	return c.config.productVariables.RecoverySnapshotModules
 }
 
+func createDirsExcludedMap(excludedDirs []string, includedDirs []string) map[string]bool {
+	// TODO(b/181564692): Validate and normalize the list of directories to be scanned for VSDK candidates
+	var ret = make(map[string]bool)
+	for _, dir := range excludedDirs {
+		clean := filepath.Clean(dir)
+		ret[clean] = true
+	}
+	for _, dir := range includedDirs {
+		clean := filepath.Clean(dir)
+		ret[clean] = false
+	}
+	return ret
+}
+
+var vendorSnapshotDirsExcludedKey = NewOnceKey("VendorSnapshotDirsExcludedMap")
+
+func (c *deviceConfig) VendorSnapshotDirsExcludedMap() map[string]bool {
+	return c.Once(vendorSnapshotDirsExcludedKey, func() interface{} {
+		return createDirsExcludedMap(c.config.productVariables.VendorSnapshotDirsExcluded,
+			c.config.productVariables.VendorSnapshotDirsIncluded)
+	}).(map[string]bool)
+}
+
+var recoverySnapshotDirsExcludedKey = NewOnceKey("RecoverySnapshotDirsExcludedMap")
+
+func (c *deviceConfig) RecoverySnapshotDirsExcludedMap() map[string]bool {
+	return c.Once(recoverySnapshotDirsExcludedKey, func() interface{} {
+		return createDirsExcludedMap(c.config.productVariables.RecoverySnapshotDirsExcluded,
+			c.config.productVariables.RecoverySnapshotDirsIncluded)
+	}).(map[string]bool)
+}
+
 func (c *deviceConfig) ShippingApiLevel() ApiLevel {
 	if c.config.productVariables.ShippingApiLevel == nil {
 		return NoneApiLevel
