@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de6d2fd_edc64bf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-24T16:00:55Z",
+      "side": 1,
+      "message": "The only failures are sharedlibs_host_tests and ApexTestCases, which are both failing at HEAD due to b/178983355 being brought back by aosp/1601876.",
+      "revId": "97ca28e990ad365fd4b3ffc7f1a6496a81e69b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
