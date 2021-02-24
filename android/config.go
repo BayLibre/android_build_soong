@@ -1431,6 +1431,14 @@ func (c *deviceConfig) RecoverySnapshotModules() map[string]bool {
 	return c.config.productVariables.RecoverySnapshotModules
 }
 
+func (c *deviceConfig) VendorSnapshotDirsIncludedMap() map[string]int {
+	return c.config.productVariables.VendorSnapshotDirsIncludedMap
+}
+
+func (c *deviceConfig) RecoverySnapshotDirsIncludedMap() map[string]int {
+	return c.config.productVariables.RecoverySnapshotDirsIncludedMap
+}
+
 func (c *deviceConfig) ShippingApiLevel() ApiLevel {
 	if c.config.productVariables.ShippingApiLevel == nil {
 		return NoneApiLevel
