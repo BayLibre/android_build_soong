@@ -48,6 +48,15 @@ func NewTestContext(config Config) *TestContext {
 	return ctx
 }
 
+// Prepare a test fixture to use the arch mutator.
+var PrepareForArchMutator = newSimpleFixturePreparer(func(f *fixture) {
+	// Configure architecture targets in the fixture config.
+	modifyTestConfigToSupportArchMutator(f.config)
+
+	// Add the arch mutator to the context.
+	f.ctx.preDeps = append(f.ctx.preDeps, registerArchMutator)
+})
+
 func NewTestArchContext(config Config) *TestContext {
 	ctx := NewTestContext(config)
 	ctx.preDeps = append(ctx.preDeps, registerArchMutator)

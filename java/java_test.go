@@ -47,6 +47,25 @@ func tearDown() {
 	os.RemoveAll(buildDir)
 }
 
+// Factory to use to create fixtures for tests in this package.
+var javaFixtureFactory = android.NewFixtureFactory(
+	&buildDir,
+	PrepareForJava,
+	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("java_plugin", PluginFactory)
+		ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
+		ctx.RegisterModuleType("python_binary_host", python.PythonBinaryHostFactory)
+		ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+		ctx.PreArchMutators(android.RegisterComponentsMutator)
+
+		ctx.PreDepsMutators(python.RegisterPythonPreDepsMutators)
+		ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
+		ctx.RegisterPreSingletonType("overlay", OverlaySingletonFactory)
+		ctx.RegisterPreSingletonType("sdk_versions", sdkPreSingletonFactory)
+	}),
+	javaMockFS().AddToFixture(),
+)
+
 func TestMain(m *testing.M) {
 	run := func() int {
 		setUp()

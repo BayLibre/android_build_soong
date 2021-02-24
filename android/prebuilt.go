@@ -26,6 +26,9 @@ import (
 // This file implements common functionality for handling modules that may exist as prebuilts,
 // source, or both.
 
+// Prepare a text fixture to use prebuilt modules.
+var PrepareForPrebuilts = FixtureRegisterWithContext(RegisterPrebuiltMutators)
+
 func RegisterPrebuiltMutators(ctx RegistrationContext) {
 	ctx.PreArchMutators(RegisterPrebuiltsPreArchMutators)
 	ctx.PostDepsMutators(RegisterPrebuiltsPostDepsMutators)
