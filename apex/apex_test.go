@@ -250,9 +250,6 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 	rust.RegisterRequiredBuildComponentsForTest(ctx)
 	java.RegisterRequiredBuildComponentsForTest(ctx)
 
-	ctx.RegisterModuleType("cc_test", cc.TestFactory)
-	ctx.RegisterModuleType("vndk_prebuilt_shared", cc.VndkPrebuiltSharedFactory)
-	cc.RegisterVndkLibraryTxtTypes(ctx)
 	prebuilt_etc.RegisterPrebuiltEtcBuildComponents(ctx)
 	ctx.RegisterModuleType("platform_compat_config", java.PlatformCompatConfigFactory)
 	ctx.RegisterModuleType("sh_binary", sh.ShBinaryFactory)

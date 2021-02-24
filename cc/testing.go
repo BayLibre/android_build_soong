@@ -27,14 +27,31 @@ func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	RegisterLibraryHeadersBuildComponents(ctx)
 	genrule.RegisterGenruleBuildComponents(ctx)
 
-	ctx.RegisterModuleType("toolchain_library", ToolchainLibraryFactory)
-	ctx.RegisterModuleType("llndk_library", LlndkLibraryFactory)
 	ctx.RegisterModuleType("cc_benchmark", BenchmarkFactory)
 	ctx.RegisterModuleType("cc_object", ObjectFactory)
 	ctx.RegisterModuleType("cc_genrule", genRuleFactory)
+	ctx.RegisterModuleType("cc_fuzz", FuzzFactory)
+	ctx.RegisterModuleType("cc_test", TestFactory)
+	ctx.RegisterModuleType("cc_test_library", TestLibraryFactory)
+
+	ctx.RegisterModuleType("toolchain_library", ToolchainLibraryFactory)
+
+	ctx.RegisterModuleType("llndk_library", LlndkLibraryFactory)
+	ctx.RegisterModuleType("llndk_headers", llndkHeadersFactory)
+
 	ctx.RegisterModuleType("ndk_prebuilt_shared_stl", NdkPrebuiltSharedStlFactory)
 	ctx.RegisterModuleType("ndk_prebuilt_object", NdkPrebuiltObjectFactory)
 	ctx.RegisterModuleType("ndk_library", NdkLibraryFactory)
+
+	ctx.RegisterModuleType("vendor_public_library", vendorPublicLibraryFactory)
+
+	ctx.RegisterModuleType("vndk_prebuilt_shared", VndkPrebuiltSharedFactory)
+
+	RegisterVndkLibraryTxtTypes(ctx)
+
+	vendorSnapshotImageSingleton.init(ctx)
+	recoverySnapshotImageSingleton.init(ctx)
+	ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
 }
 
 func GatherRequiredDepsForTest(oses ...android.OsType) string {
@@ -591,20 +608,10 @@ func TestConfig(buildDir string, os android.OsType, env map[string]string,
 
 func CreateTestContext(config android.Config) *android.TestContext {
 	ctx := android.NewTestArchContext(config)
-	ctx.RegisterModuleType("cc_fuzz", FuzzFactory)
-	ctx.RegisterModuleType("cc_test", TestFactory)
-	ctx.RegisterModuleType("cc_test_library", TestLibraryFactory)
-	ctx.RegisterModuleType("llndk_headers", llndkHeadersFactory)
-	ctx.RegisterModuleType("vendor_public_library", vendorPublicLibraryFactory)
 	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
-	ctx.RegisterModuleType("vndk_prebuilt_shared", VndkPrebuiltSharedFactory)
-	vendorSnapshotImageSingleton.init(ctx)
-	recoverySnapshotImageSingleton.init(ctx)
-	RegisterVndkLibraryTxtTypes(ctx)
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	android.RegisterPrebuiltMutators(ctx)
 	RegisterRequiredBuildComponentsForTest(ctx)
-	ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
 
 	return ctx
 }
