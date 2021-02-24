@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e9c3423_88d37e04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-24T23:40:15Z",
+      "side": 1,
+      "message": "This approach looks good to me.",
+      "revId": "c0cdbd7d786a9d58649628e7a2a1bf61a6044732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c6c03d_ee6e98d5",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-02-24T23:40:15Z",
+      "side": 1,
+      "message": "Can we store boolean?",
+      "range": {
+        "startLine": 1434,
+        "startChar": 66,
+        "endLine": 1434,
+        "endChar": 69
+      },
+      "revId": "c0cdbd7d786a9d58649628e7a2a1bf61a6044732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
