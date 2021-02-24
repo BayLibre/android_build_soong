@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9bbf127_b4f8bbf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-02-24T22:01:19Z",
+      "side": 1,
+      "message": "Alas, it\u0027s a very large CL. Will it help if android_products.go and soong_variables.go are in separate CLs? This will knock ~200 lines from this CL.\n\nJudging by \"Open Source Licensing +1\", copyright header is not needed anymore?",
+      "parentUuid": "3c0cc2ca_22b3e408",
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd06b7c7_65e4e513",
         "filename": "mk2rbc/android_products.go",
         "patchSetId": 20
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-24T17:40:29Z",
       "side": 1,
       "message": "I think we generally sort \"android/soong/...\" after go libraries, but I also don\u0027t...feel strongly about it.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 42
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ae6915_12ee3764",
+        "filename": "mk2rbc/android_products.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-02-24T22:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd06b7c7_65e4e513",
       "range": {
         "startLine": 4,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1b4c5d_fd21159b",
+        "filename": "mk2rbc/android_products.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-02-24T22:01:19Z",
+      "side": 1,
+      "message": "The only exported function is UpdateProductConfigMap, and it is documented.",
+      "parentUuid": "8da208bf_a0d7da00",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c798a344_0a06ccbb",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-02-24T17:40:29Z",
       "side": 1,
       "message": "Can you comment why we skip non-assignment nodes?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d1f339_0c163a46",
+        "filename": "mk2rbc/android_products.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-02-24T22:01:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c798a344_0a06ccbb",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -133,6 +223,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2cef71_f96bc692",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-02-24T22:01:19Z",
+      "side": 1,
+      "message": "I have added poor man\u0027s aliasing.",
+      "parentUuid": "c5b0dede_523921a6",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6bba10_6b9e392d",
@@ -146,6 +260,30 @@
       "writtenOn": "2021-02-24T17:40:29Z",
       "side": 1,
       "message": "can we use t.Format() (https://golang.org/pkg/time/#Time.Format) instead?",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 55
+      },
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03474c86_a61a47f3",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-02-24T22:01:19Z",
+      "side": 1,
+      "message": "Didn\u0027t know, thanks.",
+      "parentUuid": "4f6bba10_6b9e392d",
       "range": {
         "startLine": 75,
         "startChar": 31,
