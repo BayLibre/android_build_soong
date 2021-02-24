@@ -1623,3 +1623,54 @@ func decodeMultilibTargets(multilib string, targets []Target, prefer32 bool) ([]
 
 	return buildTargets, nil
 }
+
+// GetArchProperty replaces matching properties, based on arch, to an input property struct.
+func (m *ModuleBase) GetArchProperty(dst interface{}, arch ArchType) interface{} {
+	if !m.ArchSpecific() {
+		return nil
+	}
+
+	for i := range m.archProperties {
+		if m.archProperties[i] == nil {
+			// Skip over nil arch props
+			continue
+		}
+		for _, archProperties := range m.archProperties[i] {
+			archPropValues := reflect.ValueOf(archProperties).Elem()
+			src := archPropValues.FieldByName("Arch").Elem()
+			field := arch.Field
+
+			// Step into non-nil pointers to structs in the src value.
+			if src.Kind() == reflect.Ptr {
+				if src.IsNil() {
+					// Ignore nil pointers.
+					continue
+				}
+				src = src.Elem()
+			}
+
+			// Find the requested field (e.g. x86, x86_64) in the src struct.
+			src = src.FieldByName(field)
+			if !src.IsValid() {
+				continue
+			}
+
+			// If the value of the field is a struct (as opposed to a pointer to a struct) then step
+			// into the BlueprintEmbed field.
+			if src.Kind() == reflect.Struct {
+				src = src.FieldByName("BlueprintEmbed")
+			}
+
+			// Replace the located property struct into the destination property struct.
+			err := proptools.ExtendMatchingProperties([]interface{}{dst}, src.Interface(), nil, proptools.OrderReplace)
+			if err != nil {
+				// This is fine, it just means the src struct doesn't match.
+				continue
+			}
+
+			return dst
+		}
+	}
+
+	return nil
+}

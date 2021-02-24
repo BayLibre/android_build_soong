@@ -14,6 +14,8 @@
 
 package bazel
 
+import "fmt"
+
 type bazelModuleProperties struct {
 	// The label of the Bazel target replacing this Soong module.
 	Label string
@@ -61,5 +63,64 @@ func (ll *LabelList) Append(other LabelList) {
 	}
 	if len(ll.Excludes) > 0 || len(other.Excludes) > 0 {
 		ll.Excludes = append(other.Excludes, other.Excludes...)
+	}
+}
+
+type StringListAttribute struct {
+	// The base value of the string list attribute.
+	Value []string
+
+	// Optional additive set of list values to the base value.
+	ArchSpecificValues stringListArchValues
+}
+
+type stringListArchValues struct {
+	X86     []string
+	X86_64  []string
+	Arm     []string
+	Arm64   []string
+	Default []string
+}
+
+func (attrs *StringListAttribute) HasArchSpecificValues() bool {
+	for _, arch := range []string{"x86", "x86_64", "arm", "arm64", "default"} {
+		if len(attrs.GetValueForArch(arch)) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+func (attrs *StringListAttribute) GetValueForArch(arch string) []string {
+	switch arch {
+	case "x86":
+		return attrs.ArchSpecificValues.X86
+	case "x86_64":
+		return attrs.ArchSpecificValues.X86_64
+	case "arm":
+		return attrs.ArchSpecificValues.Arm
+	case "arm64":
+		return attrs.ArchSpecificValues.Arm64
+	case "default":
+		return attrs.ArchSpecificValues.Default
+	default:
+		panic(fmt.Errorf("Unknown arch: %s", arch))
+	}
+}
+
+func (attrs *StringListAttribute) SetValueForArch(arch string, value []string) {
+	switch arch {
+	case "x86":
+		attrs.ArchSpecificValues.X86 = value
+	case "x86_64":
+		attrs.ArchSpecificValues.X86_64 = value
+	case "arm":
+		attrs.ArchSpecificValues.Arm = value
+	case "arm64":
+		attrs.ArchSpecificValues.Arm64 = value
+	case "default":
+		attrs.ArchSpecificValues.Default = value
+	default:
+		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
 }
