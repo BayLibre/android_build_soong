@@ -93,7 +93,7 @@ func ObjectFactory() android.Module {
 type bazelObjectAttributes struct {
 	Srcs               bazel.LabelList
 	Deps               bazel.LabelList
-	Copts              []string
+	Copts              bazel.StringListAttribute
 	Local_include_dirs []string
 }
 
@@ -143,6 +143,7 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 			srcs = baseCompilerProps.Srcs
 			excludeSrcs = baseCompilerProps.Exclude_srcs
 			localIncludeDirs = baseCompilerProps.Local_include_dirs
+
 			break
 		}
 	}
@@ -154,10 +155,29 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 		}
 	}
 
+	// If only we have generics ;)
+	getCompilerPropsForArch := func(arch android.ArchType) *BaseCompilerProperties {
+		if p := m.GetArchProperty(&BaseCompilerProperties{}, arch); p != nil {
+			if cProps, ok := p.(*BaseCompilerProperties); ok {
+				return cProps
+			}
+		}
+		return nil
+	}
+
+	// Set arch-specific configurable attributes
+	configurableCopts := bazel.StringListAttribute{Value: copts}
+	configurableCopts.SetValueForArch("default", []string{})
+	for _, arch := range []android.ArchType{android.X86, android.X86_64, android.Arm, android.Arm64} {
+		if p := getCompilerPropsForArch(arch); p != nil {
+			configurableCopts.SetValueForArch(arch.Name, p.Cflags)
+		}
+	}
+
 	attrs := &bazelObjectAttributes{
 		Srcs:               android.BazelLabelForModuleSrcExcludes(ctx, srcs, excludeSrcs),
 		Deps:               deps,
-		Copts:              copts,
+		Copts:              configurableCopts,
 		Local_include_dirs: localIncludeDirs,
 	}
 
