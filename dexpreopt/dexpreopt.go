@@ -259,7 +259,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 			Implicits(clcHost).
 			Text("stored_class_loader_context_arg=--stored-class-loader-context=PCL[" + strings.Join(clcTarget, ":") + "]")
 
-	} else if module.EnforceUsesLibraries {
+	} else {
 		// Generate command that saves target SDK version in a shell variable.
 		if module.ManifestPath != nil {
 			rule.Command().Text(`target_sdk_version="$(`).
@@ -286,15 +286,6 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 			Text(clc).Implicits(paths).
 			Text(`)" ; fi`)
 
-	} else {
-		// Other libraries or APKs for which the exact <uses-library> list is unknown.
-		// Pass special class loader context to skip the classpath and collision check.
-		// This will get removed once LOCAL_USES_LIBRARIES is enforced.
-		// Right now LOCAL_USES_LIBRARIES is opt in, for the case where it's not specified we still default
-		// to the &.
-		rule.Command().
-			Text(`class_loader_context_arg=--class-loader-context=\&`).
-			Text(`stored_class_loader_context_arg=""`)
 	}
 
 	// Devices that do not have a product partition use a symlink from /product to /system/product.
