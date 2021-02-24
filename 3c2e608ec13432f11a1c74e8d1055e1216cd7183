@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36c07841_fb1cfd92",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-24T00:53:53Z",
+      "side": 1,
+      "message": "Can you add a comment here that explains what a group is?",
+      "revId": "3c2e608ec13432f11a1c74e8d1055e1216cd7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "056848fe_ce960dae",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-24T00:53:53Z",
+      "side": 1,
+      "message": "Would it be simpler to call  sparseFilesystem() in here instead of precomputing them all?",
+      "revId": "3c2e608ec13432f11a1c74e8d1055e1216cd7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898930e1_764948b7",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-24T00:53:53Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "3c2e608ec13432f11a1c74e8d1055e1216cd7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
