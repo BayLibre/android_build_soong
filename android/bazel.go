@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -48,9 +49,11 @@ type BazelModuleBase struct {
 type Bazelable interface {
 	bazelProps() *properties
 	HasHandcraftedLabel() bool
-	GetBazelLabel() string
+	HandcraftedLabel() string
+	GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string
 	ConvertWithBp2build() bool
 	GetBazelBuildFileContents(c Config, path, name string) (string, error)
+	ConvertedToBazel() bool
 }
 
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
@@ -81,8 +84,18 @@ func (b *BazelModuleBase) HandcraftedLabel() string {
 }
 
 // GetBazelLabel returns the Bazel label for the given BazelModuleBase.
-func (b *BazelModuleBase) GetBazelLabel() string {
-	return proptools.String(b.bazelProperties.Bazel_module.Label)
+// TODO: should this be added to android.Module so that we don't need to pass android.Module in?
+// But that would require casting from blueprint.Module to android.Module for direct deps -- what is
+// more straightforward? oooooor do we kick the can until we've got more modules doing this in mixed
+// builds?
+func (b *BazelModuleBase) GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string {
+	if b.HasHandcraftedLabel() {
+		return b.HandcraftedLabel()
+	}
+	if !b.ConvertWithBp2build() {
+		return ""
+	}
+	return bp2buildModuleLabel(ctx, module)
 }
 
 // ConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
@@ -95,8 +108,8 @@ func (b *BazelModuleBase) ConvertWithBp2build() bool {
 // GetBazelBuildFileContents returns the file contents of a hand-crafted BUILD file if available or
 // an error if there are errors reading the file.
 func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string) (string, error) {
-	if !strings.Contains(b.GetBazelLabel(), path) {
-		return "", fmt.Errorf("%q not found in bazel_module.label %q", path, b.GetBazelLabel())
+	if !strings.Contains(b.HandcraftedLabel(), path) {
+		return "", fmt.Errorf("%q not found in bazel_module.label %q", path, b.HandcraftedLabel())
 	}
 	name = filepath.Join(path, name)
 	f, err := c.fs.Open(name)
@@ -110,4 +123,10 @@ func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string)
 		return "", err
 	}
 	return string(data[:]), nil
+}
+
+// ConvertedToBazel returns whether this module has been converted to Bazel, whether automatically
+// or manually
+func (b *BazelModuleBase) ConvertedToBazel() bool {
+	return b.ConvertWithBp2build() || b.HasHandcraftedLabel()
 }
