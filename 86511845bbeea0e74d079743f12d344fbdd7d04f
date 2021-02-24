@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61c53e9_561d58ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-24T14:04:09Z",
+      "side": 1,
+      "message": "Wow this change is a strong argument for merging Soong and Blueprint",
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf268ea2_79af9de0",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-24T14:04:09Z",
+      "side": 1,
+      "message": "Suggestion for better wording: \"Given an architecture, returns the values of the properties of the struct dst that are specific to that architecture.\" (maybe also add an example) As a data point, I didn\u0027t understand this before reading bazel/properties.go .",
+      "range": {
+        "startLine": 1627,
+        "startChar": 19,
+        "endLine": 1627,
+        "endChar": 27
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "059fed41_138351ce",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-24T14:04:09Z",
+      "side": 1,
+      "message": "What is the format of this field? [][]interface{} doesn\u0027t say too much.",
+      "range": {
+        "startLine": 1633,
+        "startChar": 18,
+        "endLine": 1633,
+        "endChar": 32
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "135cfb07_20235713",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1661,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-24T14:04:09Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "range": {
+        "startLine": 1661,
+        "startChar": 27,
+        "endLine": 1661,
+        "endChar": 41
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a112b502_3e8ab759",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-24T14:04:09Z",
+      "side": 1,
+      "message": "nit: s/Replace/Copy/?",
+      "range": {
+        "startLine": 1664,
+        "startChar": 6,
+        "endLine": 1664,
+        "endChar": 13
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e1a072_3bec2303",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-24T14:04:09Z",
+      "side": 1,
+      "message": "isn\u0027t this just an enum-\u003e[]string map? AFAIU enums aren\u0027t a very well supported concept in Golang, but it sounds like\n\ntype Arch int\nconst (\n  X86 \u003d iota\n  X86_64\n  ...\n)\n\ntype StringListAttribute struct {\n  Value []string\n  ArchValues map[arch][]string\n}\n\nlooks a bit simpler? (I don\u0027t think you can get by without the dumb string-to-member mapping functions...)",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a229f03f_0a5cddff",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-24T14:04:09Z",
+      "side": 1,
+      "message": "Why not move this to a top-level variable instead of being hidden in the middle of a random function?",
+      "range": {
+        "startLine": 376,
+        "startChar": 3,
+        "endLine": 376,
+        "endChar": 11
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e63a8bf_ddb00071",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-24T14:04:09Z",
+      "side": 1,
+      "message": "nit: had 😊 (but they are coming!)",
+      "range": {
+        "startLine": 158,
+        "startChar": 15,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
