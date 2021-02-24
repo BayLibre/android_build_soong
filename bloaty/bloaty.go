@@ -90,3 +90,7 @@ func (singleton *sizesSingleton) GenerateBuildActions(ctx android.SingletonConte
 		Output: android.PathForOutput(ctx, "binary_sizes.pb"),
 	})
 }
+
+func (singleton *sizesSingleton) MakeVars(ctx android.MakeVarsContext) {
+	ctx.DistForGoalWithFilename("checkbuild", android.PathForOutput(ctx, "binary_sizes.pb"), "binary_sizes.pb")
+}
