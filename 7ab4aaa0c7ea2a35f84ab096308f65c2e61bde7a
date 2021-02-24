@@ -16,6 +16,24 @@
       "message": "This adds way more than was removed from apex_test.go.  I see the value of simplifying this, but it also degrades the unit-testiness of tests that don\u0027t need these, especially the singletons.",
       "revId": "7ab4aaa0c7ea2a35f84ab096308f65c2e61bde7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b21d50_88b4a71b",
+        "filename": "cc/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-24T21:39:07Z",
+      "side": 1,
+      "message": "One problem with the current model is that the developer has to ensure the correctness of each of the different configurations. You either have a monolithic method like this that \"does the right thing\" or with finer grained control the developer has to manually ensure correctness in each test. Which is difficult to be consistent with. I have lost count of the number of times that I have had to fix a mutator ordering issue in a test that meant the test was not realistic. Having fine grained control also increases the cost of making changes as multiple places have to be checked.\n\nThe test fixture model that I created in a follow up change would allow more granular control over what is configured without requiring developers to ensure correctness every time they have to create a custom test.\n\ne.g. In that model the test setup that is performed by this method could be broken down into a number of self contained pieces that can be used separately or combined together to do everything that this method does. That would allow unit-testy tests to be written alongside integration tests.",
+      "parentUuid": "048e2f78_967ade70",
+      "revId": "7ab4aaa0c7ea2a35f84ab096308f65c2e61bde7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
