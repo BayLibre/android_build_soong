@@ -52,6 +52,16 @@ func TestMain(m *testing.M) {
 	os.Exit(run())
 }
 
+var ccFixtureFactory = android.NewFixtureFactory(
+	&buildDir,
+	PrepareForCC,
+	android.FixtureModifyConfig(func(config android.Config) {
+		config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+		config.TestProductVariables.ProductVndkVersion = StringPtr("current")
+		config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	}),
+)
+
 func testCcWithConfig(t *testing.T, config android.Config) *android.TestContext {
 	t.Helper()
 	ctx := CreateTestContext(config)
@@ -67,12 +77,10 @@ func testCcWithConfig(t *testing.T, config android.Config) *android.TestContext 
 
 func testCc(t *testing.T, bp string) *android.TestContext {
 	t.Helper()
-	config := TestConfig(buildDir, android.Android, nil, bp, nil)
-	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
-	config.TestProductVariables.ProductVndkVersion = StringPtr("current")
-	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
 
-	return testCcWithConfig(t, config)
+	result := ccFixtureFactory.RunTestWithBp(t, bp)
+
+	return result.TestContext
 }
 
 func testCcNoVndk(t *testing.T, bp string) *android.TestContext {

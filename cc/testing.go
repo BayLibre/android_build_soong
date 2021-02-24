@@ -55,7 +55,31 @@ func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 }
 
 func GatherRequiredDepsForTest(oses ...android.OsType) string {
-	ret := `
+	ret := commonDefaultModules()
+
+	supportLinuxBionic := false
+	for _, os := range oses {
+		if os == android.Fuchsia {
+			ret += withFuchsiaModules()
+		}
+		if os == android.Windows {
+			ret += withWindowsModules()
+		}
+		if os == android.LinuxBionic {
+			supportLinuxBionic = true
+			ret += withLinuxBionic()
+		}
+	}
+
+	if !supportLinuxBionic {
+		ret += withoutLinuxBionic()
+	}
+
+	return ret
+}
+
+func commonDefaultModules() string {
+	return `
 		toolchain_library {
 			name: "libatomic",
 			defaults: ["linux_bionic_supported"],
@@ -493,23 +517,10 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			name: "note_memtag_heap_sync",
 		}
 	`
+}
 
-	supportLinuxBionic := false
-	for _, os := range oses {
-		if os == android.Fuchsia {
-			ret += `
-		cc_library {
-			name: "libbioniccompat",
-			stl: "none",
-		}
-		cc_library {
-			name: "libcompiler_rt",
-			stl: "none",
-		}
-		`
-		}
-		if os == android.Windows {
-			ret += `
+func withWindowsModules() string {
+	return `
 		toolchain_library {
 			name: "libwinpthread",
 			host_supported: true,
@@ -522,10 +533,23 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 			src: "",
 		}
 		`
+}
+
+func withFuchsiaModules() string {
+	return `
+		cc_library {
+			name: "libbioniccompat",
+			stl: "none",
 		}
-		if os == android.LinuxBionic {
-			supportLinuxBionic = true
-			ret += `
+		cc_library {
+			name: "libcompiler_rt",
+			stl: "none",
+		}
+		`
+}
+
+func withLinuxBionic() string {
+	return `
 				cc_binary {
 					name: "linker",
 					defaults: ["linux_bionic_supported"],
@@ -565,22 +589,37 @@ func GatherRequiredDepsForTest(oses ...android.OsType) string {
 					},
 				}
 			`
-		}
-	}
+}
 
-	if !supportLinuxBionic {
-		ret += `
+func withoutLinuxBionic() string {
+	return `
 			cc_defaults {
 				name: "linux_bionic_supported",
 			}
 		`
-	}
-
-	return ret
 }
 
 func GatherRequiredFilesForTest(fs map[string][]byte) {
 }
+
+const linuxBionicDefaultsPath = "defaults/cc/linux-bionic/Android.bp"
+
+var PrepareForCC = android.FixturePreparers(
+	android.PrepareForAndroid,
+	android.FixtureRegisterWithContext(RegisterRequiredBuildComponentsForTest),
+	android.FixtureAddTextFile("defaults/cc/common/Android.bp", commonDefaultModules()),
+	// Disable linux bionic by default.
+	android.FixtureAddTextFile(linuxBionicDefaultsPath, withoutLinuxBionic()),
+)
+
+var PrepareForWindows = android.FixturePreparers(
+	android.FixtureAddTextFile("defaults/cc/windows/Android.bp", withWindowsModules()),
+)
+
+var PrepareForLinuxBionic = android.FixturePreparers(
+	// Enable linux bionic.
+	android.FixtureAddTextFile(linuxBionicDefaultsPath, withLinuxBionic()),
+)
 
 func TestConfig(buildDir string, os android.OsType, env map[string]string,
 	bp string, fs map[string][]byte) android.Config {
