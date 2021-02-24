@@ -18,6 +18,7 @@ package cc
 // snapshot mutators and snapshot information maps which are also defined in this file.
 
 import (
+	"path/filepath"
 	"strings"
 
 	"android/soong/android"
@@ -45,9 +46,9 @@ type snapshotImage interface {
 	// directory, such as device/, vendor/, etc.
 	//
 	// For a given snapshot (e.g., vendor, recovery, etc.) if
-	// isProprietaryPath(dir) returns true, then the module in dir will be
-	// built from sources.
-	isProprietaryPath(dir string) bool
+	// isProprietaryPath(dir, deviceConfig) returns true, then the module in dir
+	// will be built from sources.
+	isProprietaryPath(dir string, deviceConfig android.DeviceConfig) bool
 
 	// Whether to include VNDK in the snapshot for this image.
 	includeVndk() bool
@@ -82,6 +83,46 @@ type snapshotImage interface {
 type vendorSnapshotImage struct{}
 type recoverySnapshotImage struct{}
 
+type directoryExcludedMap map[string]bool
+
+var (
+	defaultVendorDirsExcludedMap = directoryExcludedMap{
+		// Modules under following directories are ignored. They are OEM's and vendor's
+		// proprietary modules(device/, kernel/, vendor/, and hardware/).
+		"device":   true,
+		"hardware": true,
+		"kernel":   true,
+		"vendor":   true,
+		// Modules under following directories are included as they are in AOSP,
+		// although hardware/ and kernel/ are normally for vendor's own.
+		"kernel/configs":              false,
+		"kernel/prebuilts":            false,
+		"kernel/tests":                false,
+		"hardware/interfaces":         false,
+		"hardware/libhardware":        false,
+		"hardware/libhardware_legacy": false,
+		"hardware/ril":                false,
+	}
+
+	defaultRecoveryDirsExcludedMap = directoryExcludedMap{
+		// Modules under following directories are ignored. They are OEM's and vendor's
+		// proprietary modules(device/, kernel/, vendor/, and hardware/).
+		"device":   true,
+		"hardware": true,
+		"kernel":   true,
+		"vendor":   true,
+		// Modules under following directories are included as they are in AOSP,
+		// although hardware/ and kernel/ are normally for vendor's own.
+		"kernel/configs":              false,
+		"kernel/prebuilts":            false,
+		"kernel/tests":                false,
+		"hardware/interfaces":         false,
+		"hardware/libhardware":        false,
+		"hardware/libhardware_legacy": false,
+		"hardware/ril":                false,
+	}
+)
+
 func (vendorSnapshotImage) init(ctx android.RegistrationContext) {
 	ctx.RegisterSingletonType("vendor-snapshot", VendorSnapshotSingleton)
 	ctx.RegisterModuleType("vendor_snapshot", vendorSnapshotFactory)
@@ -107,8 +148,19 @@ func (vendorSnapshotImage) private(m *Module) bool {
 	return m.IsVndkPrivate()
 }
 
-func (vendorSnapshotImage) isProprietaryPath(dir string) bool {
-	return isVendorProprietaryPath(dir)
+func (vendorSnapshotImage) isProprietaryPath(dir string, deviceConfig android.DeviceConfig) bool {
+	configMap := deviceConfig.VendorSnapshotDirsExcludedMap()
+
+	for dir != "." {
+		if opt, ok := configMap[dir]; ok {
+			return opt
+		}
+		if opt, ok := defaultVendorDirsExcludedMap[dir]; ok {
+			return opt
+		}
+		dir = filepath.Dir(dir)
+	}
+	return false
 }
 
 // vendor snapshot includes static/header libraries with vndk: {enabled: true}.
@@ -172,8 +224,19 @@ func (recoverySnapshotImage) private(m *Module) bool {
 	return false
 }
 
-func (recoverySnapshotImage) isProprietaryPath(dir string) bool {
-	return isRecoveryProprietaryPath(dir)
+func (recoverySnapshotImage) isProprietaryPath(dir string, deviceConfig android.DeviceConfig) bool {
+	configMap := deviceConfig.RecoverySnapshotDirsExcludedMap()
+
+	for dir != "." {
+		if opt, ok := configMap[dir]; ok {
+			return opt
+		}
+		if opt, ok := defaultRecoveryDirsExcludedMap[dir]; ok {
+			return opt
+		}
+		dir = filepath.Dir(dir)
+	}
+	return false
 }
 
 // recovery snapshot does NOT treat vndk specially.
