@@ -48,6 +48,26 @@ func NewTestContext(config Config) *TestContext {
 	return ctx
 }
 
+var PrepareForAndroid = FixturePreparers(
+	// Mutators, order matters. Must match order in mutator.go.
+	newSimpleFixturePreparer(func(f *fixture) {
+		// Configure architecture targets in the fixture config.
+		modifyTestConfigToSupportArchMutator(f.config)
+
+		// Add the arch mutator to the context.
+		f.ctx.preDeps = append(f.ctx.preDeps, registerArchMutator)
+	}),
+	FixtureRegisterWithContext(func(ctx RegistrationContext) {
+		ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
+		ctx.PreArchMutators(RegisterComponentsMutator)
+		RegisterPrebuiltMutators(ctx)
+		ctx.PostDepsMutators(RegisterOverridePostDepsMutators)
+	}),
+
+	// Modules
+	PrepareForFilegroup,
+)
+
 func NewTestArchContext(config Config) *TestContext {
 	ctx := NewTestContext(config)
 	ctx.preDeps = append(ctx.preDeps, registerArchMutator)

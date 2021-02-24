@@ -44,3 +44,7 @@ func TestMain(m *testing.M) {
 
 	os.Exit(run())
 }
+
+var androidFixtureFactory = NewFixtureFactory(&buildDir,
+	PrepareForAndroid,
+)
