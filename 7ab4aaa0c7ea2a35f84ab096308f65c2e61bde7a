@@ -34,6 +34,24 @@
       "parentUuid": "048e2f78_967ade70",
       "revId": "7ab4aaa0c7ea2a35f84ab096308f65c2e61bde7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47713bd6_4655dfec",
+        "filename": "cc/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-24T21:44:10Z",
+      "side": 1,
+      "message": "I wonder if it would be better to leave this change until after the test fixture change then.  Combining them all here will make it harder to determine what should be broken out into separate FixtureProviders later.",
+      "parentUuid": "37b21d50_88b4a71b",
+      "revId": "7ab4aaa0c7ea2a35f84ab096308f65c2e61bde7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
