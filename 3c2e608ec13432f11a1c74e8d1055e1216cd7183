@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37936111_f2e76f79",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-24T03:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36c07841_fb1cfd92",
+      "revId": "3c2e608ec13432f11a1c74e8d1055e1216cd7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "056848fe_ce960dae",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e901947_c7ef05c8",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-24T03:14:38Z",
+      "side": 1,
+      "message": "I called the function before, because here I am in the middle of creating a command.\n\nI could have embedded the commands for sparsing the image and measuring its size to a nested shell invocation, but that would look dirty.\n\nAm I missing something?",
+      "parentUuid": "056848fe_ce960dae",
+      "revId": "3c2e608ec13432f11a1c74e8d1055e1216cd7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "898930e1_764948b7",
         "filename": "filesystem/logical_partition.go",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2021-02-24T00:53:53Z",
       "side": 1,
       "message": "remove",
+      "revId": "3c2e608ec13432f11a1c74e8d1055e1216cd7183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce8a4004_3c6241e5",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-02-24T03:14:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898930e1_764948b7",
       "revId": "3c2e608ec13432f11a1c74e8d1055e1216cd7183",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
