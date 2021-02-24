@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008407959",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1605035?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "486b8b7c_cbb44866",
+          "description": "Change to \"android/fixture.go\"",
+          "replacements": [
+            {
+              "path": "android/fixture.go",
+              "range": {
+                "startLine": 412,
+                "startChar": 90,
+                "endLine": 412,
+                "endChar": 95
+              },
+              "replacement": "it"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "2db60c82_7f216290",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-24T03:09:53Z",
+      "side": 1,
+      "message": "Common typo found: \"it it\" -- should it be \"it\"?\nIf this is intentional you can comma separate to \u0027it, it\u0027 for better clarity.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 412,
+        "startChar": 90,
+        "endLine": 412,
+        "endChar": 95
+      },
+      "revId": "23875073e5614c8b60bbfe2c4d0c164707fd91dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
