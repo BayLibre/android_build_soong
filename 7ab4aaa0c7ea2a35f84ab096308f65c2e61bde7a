@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048e2f78_967ade70",
+        "filename": "cc/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-24T21:20:04Z",
+      "side": 1,
+      "message": "This adds way more than was removed from apex_test.go.  I see the value of simplifying this, but it also degrades the unit-testiness of tests that don\u0027t need these, especially the singletons.",
+      "revId": "7ab4aaa0c7ea2a35f84ab096308f65c2e61bde7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
