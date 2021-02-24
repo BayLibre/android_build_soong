@@ -57,6 +57,10 @@ type variableProperties struct {
 			Cflags []string `android:"arch_variant"`
 		} `android:"arch_variant"`
 
+		Slow_emulator struct {
+			Cflags []string `android:"arch_variant"`
+		} `android:"arch_variant"`
+
 		Safestack struct {
 			Cflags []string `android:"arch_variant"`
 		} `android:"arch_variant"`
@@ -221,6 +225,7 @@ type productVariables struct {
 	Malloc_not_svelte            *bool `json:",omitempty"`
 	Malloc_zero_contents         *bool `json:",omitempty"`
 	Malloc_pattern_fill_contents *bool `json:",omitempty"`
+	Slow_emulator                *bool `json:",omitempty"`
 	Safestack                    *bool `json:",omitempty"`
 	HostStaticBinaries           *bool `json:",omitempty"`
 	Binder32bit                  *bool `json:",omitempty"`
@@ -414,6 +419,7 @@ func (v *productVariables) SetDefaultConfig() {
 		Malloc_not_svelte:            boolPtr(true),
 		Malloc_zero_contents:         boolPtr(true),
 		Malloc_pattern_fill_contents: boolPtr(false),
+		Slow_emulator:                boolPtr(false),
 		Safestack:                    boolPtr(false),
 	}
 
