@@ -48,6 +48,22 @@ var invalidVariableStringToReplacement = map[string]string{
 	"-": "_dash_",
 }
 
+// Fix steps that should only run in the androidmk tool, i.e. should only be applied to
+// newly-converted Android.bp files.
+var fixSteps = bpfix.FixStepsExtension{
+	Name: "partner-include-dirs",
+	Steps: []bpfix.FixStep{
+		{
+			Name: "rewriteRuntimeResourceOverlay",
+			Fix:  bpfix.RewriteRuntimeResourceOverlay,
+		},
+	},
+}
+
+func init() {
+	bpfix.RegisterFixStepExtension(&fixSteps)
+}
+
 func (f *bpFile) insertComment(s string) {
 	f.comments = append(f.comments, &bpparser.CommentGroup{
 		Comments: []*bpparser.Comment{
