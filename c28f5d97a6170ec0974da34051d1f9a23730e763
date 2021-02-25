@@ -16,6 +16,24 @@
       "message": "Seems fine to me, but +yikong since he originally ordered it this way in aosp/693766.",
       "revId": "c28f5d97a6170ec0974da34051d1f9a23730e763",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "004b5423_41a8d083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-02-25T01:45:05Z",
+      "side": 1,
+      "message": "It was probably just a copy/paste of line 388, but I\u0027m sure he can confirm that.",
+      "parentUuid": "df7ace8c_02526425",
+      "revId": "c28f5d97a6170ec0974da34051d1f9a23730e763",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
