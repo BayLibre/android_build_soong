@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "469d23a3_0bfce5cb",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-25T12:18:39Z",
+      "side": 1,
+      "message": "Let me see if I understand this correctly: we have a [][]interface{}\n\n- The outer index chooses which property struct we are talking about\n- The inner index chooses which arch we are talking about (if I read createArchPropTypeDesc line 798 correctly)\n- and the interface{} is actually an archPropRoot (line 953)\n- each member (Arch/Multilib/Target) of archPropRoot is a dummy value of an unnamed struct type created at runtime (line 831) that has only the fields that are specific to each architecture / target / multilib, whatever the latter is\n\nMaybe this is worth adding a comment?\n\n(the code is fine, I just want to make sure that I understand this correctly)",
+      "parentUuid": "111f5b6b_0e12b1bd",
+      "range": {
+        "startLine": 1633,
+        "startChar": 18,
+        "endLine": 1633,
+        "endChar": 32
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "135cfb07_20235713",
