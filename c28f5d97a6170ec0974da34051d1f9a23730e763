@@ -34,6 +34,24 @@
       "parentUuid": "df7ace8c_02526425",
       "revId": "c28f5d97a6170ec0974da34051d1f9a23730e763",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d00d98_8e8e522f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2021-02-25T05:00:00Z",
+      "side": 1,
+      "message": "Yeah, there\u0027s no particular reason for the ordering.",
+      "parentUuid": "004b5423_41a8d083",
+      "revId": "c28f5d97a6170ec0974da34051d1f9a23730e763",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
