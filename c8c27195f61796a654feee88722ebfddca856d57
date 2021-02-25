@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a9f6f2_de1c33a7",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2515,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-25T17:22:10Z",
+      "side": 1,
+      "message": "This is the same as android.InList",
+      "range": {
+        "startLine": 2507,
+        "startChar": 0,
+        "endLine": 2515,
+        "endChar": 1
+      },
+      "revId": "c8c27195f61796a654feee88722ebfddca856d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1f1b071_b3c21849",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2518,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-25T17:22:10Z",
+      "side": 1,
+      "message": "You could do something like:\n\n defaultUnitTest :\u003d android.InList(j.properties.Static_libs, \"tradefed\") \u0026\u0026 ...\n unitTest :\u003d proptools.BoolDefault(j.testProperties.Test_options.Unit_test, defaultUnitTest)\n j.testConfig \u003d tradefed.AutoGenJavaTestConfig(ctx, ..., unitTest)",
+      "revId": "c8c27195f61796a654feee88722ebfddca856d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
