@@ -20,6 +20,8 @@ import (
 	"path"
 
 	"android/soong/android"
+
+	"github.com/google/blueprint"
 )
 
 // This singleton collects Rust crate definitions and generates a JSON file
@@ -36,6 +38,8 @@ const (
 	rustProjectJsonFileName    = "rust-project.json"
 )
 
+var outDirProviderKey blueprint.ProviderKey
+
 // The format of rust-project.json is not yet finalized. A current description is available at:
 // https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/manual.adoc#non-cargo-based-projects
 type rustProjectDep struct {
@@ -45,11 +49,12 @@ type rustProjectDep struct {
 }
 
 type rustProjectCrate struct {
-	DisplayName string           `json:"display_name"`
-	RootModule  string           `json:"root_module"`
-	Edition     string           `json:"edition,omitempty"`
-	Deps        []rustProjectDep `json:"deps"`
-	Cfgs        []string         `json:"cfgs"`
+	DisplayName string            `json:"display_name"`
+	RootModule  string            `json:"root_module"`
+	Edition     string            `json:"edition,omitempty"`
+	Deps        []rustProjectDep  `json:"deps"`
+	Cfgs        []string          `json:"cfgs"`
+	Env         map[string]string `json:"env"`
 }
 
 type rustProjectJson struct {
@@ -73,6 +78,7 @@ func rustProjectGeneratorSingleton() android.Singleton {
 }
 
 func init() {
+	outDirProviderKey = blueprint.NewProvider("")
 	android.RegisterSingletonType("rust_project_generator", rustProjectGeneratorSingleton)
 }
 
@@ -230,6 +236,11 @@ func (singleton *projectGeneratorSingleton) addCrate(ctx android.SingletonContex
 		Edition:     comp.edition(),
 		Deps:        make([]rustProjectDep, 0),
 		Cfgs:        make([]string, 0),
+		Env:         make(map[string]string),
+	}
+
+	if ctx.ModuleHasProvider(rModule, outDirProviderKey) {
+		crate.Env["OUT_DIR"] = ctx.ModuleProvider(rModule, outDirProviderKey).(string)
 	}
 
 	deps := make(map[string]int)

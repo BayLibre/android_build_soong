@@ -228,6 +228,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 			outDirPrefix = ""
 		}
 		envVars = append(envVars, "OUT_DIR="+filepath.Join(outDirPrefix, moduleGenDir.String()))
+		ctx.SetProvider(outDirProviderKey, moduleGenDir.String())
 	}
 
 	envVars = append(envVars, "ANDROID_RUST_VERSION="+config.RustDefaultVersion)
