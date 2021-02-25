@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "001f5f6a_280a9f95",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-25T02:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf268ea2_79af9de0",
+      "range": {
+        "startLine": 1627,
+        "startChar": 19,
+        "endLine": 1627,
+        "endChar": 27
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "059fed41_138351ce",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-24T14:04:09Z",
       "side": 1,
       "message": "What is the format of this field? [][]interface{} doesn\u0027t say too much.",
+      "range": {
+        "startLine": 1633,
+        "startChar": 18,
+        "endLine": 1633,
+        "endChar": 32
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "111f5b6b_0e12b1bd",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-25T02:51:18Z",
+      "side": 1,
+      "message": "Based on my understanding of initArchModule (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch.go;l\u003d923;drc\u003d9448e8fd56e11dc1444644e8e498be2ccccd5839):\n\nIt\u0027s a list of list of arch-specific props for each property struct (e.g. BaseCompilerProperties, BaseLinkerProperties) the module has. archProperties is constructed in the same order as m.GetProperties, so it\u0027s a way to access the arch-specific prop values of a specific struct.\n\npseudocode:\n\n  var archProperties [][]interface{}\n  for p in module.get_properties():\n     var arch_props []interface{}\n     for arch_prop in global_cached_arch_props(module, p)\n         arch_props +\u003d process(arch_prop)\n     archProperties +\u003d arch_props",
+      "parentUuid": "059fed41_138351ce",
       "range": {
         "startLine": 1633,
         "startChar": 18,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b40172_56746ab3",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1661,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-25T02:51:18Z",
+      "side": 1,
+      "message": "Added comments, and refactored it. tl;dr - the arch property is accessed by stepping in through this special field, set at android.Module init time.",
+      "parentUuid": "135cfb07_20235713",
+      "range": {
+        "startLine": 1661,
+        "startChar": 27,
+        "endLine": 1661,
+        "endChar": 41
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a112b502_3e8ab759",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-24T14:04:09Z",
       "side": 1,
       "message": "nit: s/Replace/Copy/?",
+      "range": {
+        "startLine": 1664,
+        "startChar": 6,
+        "endLine": 1664,
+        "endChar": 13
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b16e61_035815f9",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-25T02:51:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a112b502_3e8ab759",
       "range": {
         "startLine": 1664,
         "startChar": 6,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1476d5f_5145fca0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-25T02:51:18Z",
+      "side": 1,
+      "message": "I tried maps initially (and I agree it reads better), but Blueprint/proptools prop cloning and extensions do not work with reflect.Map. Structs are the next best supported type for this.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/blueprint/proptools/clone.go;l\u003d66-133;drc\u003d5d57b2d34751d7075f4968e7a512a70c82a49fcd",
+      "parentUuid": "a7e1a072_3bec2303",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a229f03f_0a5cddff",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-02-24T14:04:09Z",
       "side": 1,
       "message": "Why not move this to a top-level variable instead of being hidden in the middle of a random function?",
+      "range": {
+        "startLine": 376,
+        "startChar": 3,
+        "endLine": 376,
+        "endChar": 11
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ec6825_b3af2944",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-25T02:51:18Z",
+      "side": 1,
+      "message": "Done, moved to a new file.",
+      "parentUuid": "a229f03f_0a5cddff",
       "range": {
         "startLine": 376,
         "startChar": 3,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "731c6607_35080715",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-25T02:51:18Z",
+      "side": 1,
+      "message": "(Removed)",
+      "parentUuid": "1e63a8bf_ddb00071",
+      "range": {
+        "startLine": 158,
+        "startChar": 15,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14cb181c_40df4554",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-02-25T00:48:28Z",
       "side": 1,
       "message": "Why is this an inner function? Can we pull it out of here?\n\n(just trying to avoid long functions)",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25197901_c8f6241e",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-25T02:51:18Z",
+      "side": 1,
+      "message": "Inlined.",
+      "parentUuid": "14cb181c_40df4554",
       "range": {
         "startLine": 159,
         "startChar": 1,
