@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7ace8c_02526425",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-25T01:40:45Z",
+      "side": 1,
+      "message": "Seems fine to me, but +yikong since he originally ordered it this way in aosp/693766.",
+      "revId": "c28f5d97a6170ec0974da34051d1f9a23730e763",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
