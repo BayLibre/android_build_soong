@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37d7a87_3e2e5896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-25T04:39:31Z",
+      "side": 1,
+      "message": "When I left this I thought art/build/art.go called it, but apparently it sets compile_multilib instead.",
+      "revId": "003d808a41c43f58d44cd356fea3b7a935cce896",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
