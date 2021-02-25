@@ -177,6 +177,29 @@
       },
       "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14cb181c_40df4554",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-02-25T00:48:28Z",
+      "side": 1,
+      "message": "Why is this an inner function? Can we pull it out of here?\n\n(just trying to avoid long functions)",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
