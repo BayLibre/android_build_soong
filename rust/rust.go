@@ -320,12 +320,14 @@ type RustLibrary struct {
 }
 
 type compiler interface {
+	initialize(ctx ModuleContext)
 	compilerFlags(ctx ModuleContext, flags Flags) Flags
 	compilerProps() []interface{}
 	compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path
 	compilerDeps(ctx DepsContext, deps Deps) Deps
 	crateName() string
 
+	OutDir() android.ModuleOutPath
 	inData() bool
 	install(ctx ModuleContext)
 	relativeInstallPath() string
@@ -711,6 +713,7 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 
 	if mod.compiler != nil && !mod.compiler.Disabled() {
+		mod.compiler.initialize(ctx)
 		outputFile := mod.compiler.compile(ctx, flags, deps)
 
 		mod.outputFile = android.OptionalPathForPath(outputFile)
