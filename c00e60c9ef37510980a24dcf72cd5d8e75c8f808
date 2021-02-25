@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b8391c_f603448a",
+        "filename": "android/arch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-25T13:43:32Z",
+      "side": 1,
+      "message": "Rather than having to iterate over this for each architecture type, wdyt of returning a map[ArchType]interface{} ? That way each module type we\u0027re converting doesn\u0027t have to list architectures?",
+      "range": {
+        "startLine": 1637,
+        "startChar": 0,
+        "endLine": 1637,
+        "endChar": 34
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b0de56_436f6cd8",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-25T13:43:32Z",
+      "side": 1,
+      "message": "Can you add godocs throughout this file?",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd35ab6_ad8d10b8",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-25T13:43:32Z",
+      "side": 1,
+      "message": "We appear to be missing ArchType Common (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch.go;l\u003d152-154;drc\u003d9448e8fd56e11dc1444644e8e498be2ccccd5839), though I don\u0027t think it\u0027ll affect us until we get to Java.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "595d5ebd_a912aa27",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-25T13:43:32Z",
+      "side": 1,
+      "message": "It\u0027d be nice to use android.ArchType here rather than a string, but that would introduce a circular dependency...",
+      "range": {
+        "startLine": 94,
+        "startChar": 50,
+        "endLine": 94,
+        "endChar": 61
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6747aa99_0f34b230",
+        "filename": "cc/object.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-02-25T13:43:32Z",
+      "side": 1,
+      "message": "not something to solve right now, but do we expect to always set this if there are arch-specific values?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 45
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
