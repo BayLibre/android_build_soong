@@ -16,6 +16,24 @@
       "message": "Thanks! How did you spot it?",
       "revId": "8431282af4ba270d1f6836d061dcc43b3bf78e36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca488c41_ddcaa32a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-02-25T16:00:01Z",
+      "side": 1,
+      "message": "Np. :)\n\nI wanted to debug something, and IntelliJ complained about this. Don\u0027t know why it\u0027s not detected by regular builds, though. Colin, do you have ideas?",
+      "parentUuid": "d25ea93e_10b2b598",
+      "revId": "8431282af4ba270d1f6836d061dcc43b3bf78e36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
