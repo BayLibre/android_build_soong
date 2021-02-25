@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01c54b24_aa21cb47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-25T17:23:47Z",
+      "side": 1,
+      "message": "Seems a little more delicate than querying the modules for their names, but definitely simplifies the problem.",
+      "revId": "4813867ec3a17e9afd123220b985039c6e57a315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
