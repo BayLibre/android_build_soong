@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ca53cd4_1425995d",
+        "filename": "android/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-25T12:54:56Z",
+      "side": 1,
+      "message": "Actually, let\u0027s just remove Os.Getenv(). It\u0027s not necessary anymore, since the environment of soong_build is empty now.",
+      "parentUuid": "14e69961_5255bbe3",
+      "range": {
+        "startLine": 40,
+        "startChar": 86,
+        "endLine": 40,
+        "endChar": 92
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68faec36_286745eb",
         "filename": "android/writedocs.go",
         "patchSetId": 5
@@ -37,6 +61,54 @@
       "writtenOn": "2021-02-23T18:49:48Z",
       "side": 1,
       "message": "absolutePath(ctx.Config().BuildDir())",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1618d74_de434277",
+        "filename": "android/writedocs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-25T12:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68faec36_286745eb",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57db67a9_17dec811",
+        "filename": "android/writedocs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-25T12:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68faec36_286745eb",
       "range": {
         "startLine": 38,
         "startChar": 13,
@@ -72,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9c86b89_ad038d30",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-25T12:54:56Z",
+      "side": 1,
+      "message": "Yes, that\u0027s why I implemented the command line arguments :) But then I realized that I have two options:\n\n1. Add --delve_listen\u003d$SOONG_DELVE to the Ninja file, i.e. let the shell resolve the variables. In that case, there is still a dependency.\n2. Resolve $SOONG_DELVE when writing the build.ninja file, but then build.ninja changes every time SOONG_DELVE changes, which sounds dangerous?",
+      "parentUuid": "bdeb2154_c123268a",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f42a00b_f193c36f",
         "filename": "shared/debug.go",
         "patchSetId": 5
@@ -83,6 +179,24 @@
       "writtenOn": "2021-02-23T18:49:48Z",
       "side": 1,
       "message": "Can you add godoc for new methods?",
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3843888_2f4cba58",
+        "filename": "shared/debug.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-25T12:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f42a00b_f193c36f",
       "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -110,6 +224,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b79fffe_64c045c5",
+        "filename": "shared/debug.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-25T12:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76e2cf46_26fdcd48",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90c74ea3_d0030355",
@@ -123,6 +261,24 @@
       "writtenOn": "2021-02-23T18:49:48Z",
       "side": 1,
       "message": "Add godoc.\n\nThe semantics here are a little odd, JoinPath(\"foo\",\"bar\",\"/baz\", \"qux\") results in \"/baz/qux\".  Probably worth a test or an Example function (which will get run as a test).\n\nAlso, after my comment in android/writedocs.go there would only be a single user of this function in cmd/soong_build/main.go, so maybe better to make this less generic and put it there?",
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f6289e_c665bcd2",
+        "filename": "shared/paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-25T12:54:56Z",
+      "side": 1,
+      "message": "I thought it\u0027s a useful piece of functionality, but I don\u0027t insist. In the meantime, I added a unit test. PTAL.",
+      "parentUuid": "90c74ea3_d0030355",
       "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
