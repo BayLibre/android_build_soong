@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f366e32_eb78644c",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2021-02-25T04:48:13Z",
+      "side": 1,
+      "message": "I also renamed the variables to make the boolean values match the action. i.e. true \u003d\u003d excluded",
+      "parentUuid": "ef5f5a66_e14f10e3",
+      "range": {
+        "startLine": 1434,
+        "startChar": 66,
+        "endLine": 1434,
+        "endChar": 69
+      },
+      "revId": "c0cdbd7d786a9d58649628e7a2a1bf61a6044732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23939d7d_2bce1fd6",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-02-25T04:22:36Z",
       "side": 1,
       "message": "Where is this function used?",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 19
+      },
+      "revId": "c0cdbd7d786a9d58649628e7a2a1bf61a6044732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad60706b_c664715b",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2021-02-25T04:48:13Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "23939d7d_2bce1fd6",
       "range": {
         "startLine": 97,
         "startChar": 5,
