@@ -20,7 +20,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"sort"
 )
 
@@ -57,7 +56,7 @@ func EnvFileContents(envDeps map[string]string) ([]byte, error) {
 // Reads and deserializes a Soong environment file located at the given file path to determine its
 // staleness. If any environment variable values have changed, it prints them out and returns true.
 // Failing to read or parse the file also causes it to return true.
-func StaleEnvFile(filepath string) (bool, error) {
+func StaleEnvFile(filepath string, getenv func(string) string) (bool, error) {
 	data, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		return true, err
@@ -74,7 +73,7 @@ func StaleEnvFile(filepath string) (bool, error) {
 	for _, entry := range contents {
 		key := entry.Key
 		old := entry.Value
-		cur := os.Getenv(key)
+		cur := getenv(key)
 		if old != cur {
 			changed = append(changed, fmt.Sprintf("%s (%q -> %q)", key, old, cur))
 		}
