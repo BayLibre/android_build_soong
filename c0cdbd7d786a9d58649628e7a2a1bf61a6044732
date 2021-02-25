@@ -39,6 +39,30 @@
       },
       "revId": "c0cdbd7d786a9d58649628e7a2a1bf61a6044732",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef5f5a66_e14f10e3",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2021-02-25T01:28:52Z",
+      "side": 1,
+      "message": "Yeah I think so, initially I was going to have more enums, but in the end I only needed 2, so switching to bool makes sens.",
+      "parentUuid": "a8c6c03d_ee6e98d5",
+      "range": {
+        "startLine": 1434,
+        "startChar": 66,
+        "endLine": 1434,
+        "endChar": 69
+      },
+      "revId": "c0cdbd7d786a9d58649628e7a2a1bf61a6044732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
