@@ -75,6 +75,9 @@ type BaseCompilerProperties struct {
 	// errors). The default value is "default".
 	Lints *string
 
+	// compile time environment variables
+	Env []string `android:"arch_variant"`
+
 	// flags to pass to rustc
 	Flags []string `android:"path,arch_variant"`
 
@@ -215,6 +218,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, config.GlobalRustFlags...)
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, ctx.toolchain().ToolchainRustFlags())
 	flags.GlobalLinkFlags = append(flags.GlobalLinkFlags, ctx.toolchain().ToolchainLinkFlags())
+	flags.Env = append(flags.Env, compiler.Properties.Env...)
 
 	if ctx.Host() && !ctx.Windows() {
 		rpathPrefix := `\$$ORIGIN/`

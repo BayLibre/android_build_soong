@@ -57,6 +57,7 @@ type Flags struct {
 	RustFlags       []string // Flags that apply to rust
 	LinkFlags       []string // Flags that apply to linker
 	ClippyFlags     []string // Flags that apply to clippy-driver, during the linting
+	Env             []string // Build-time environment variables
 	Toolchain       config.Toolchain
 	Coverage        bool
 	Clippy          bool
