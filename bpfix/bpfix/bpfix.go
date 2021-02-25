@@ -132,6 +132,10 @@ var fixSteps = []FixStep{
 		Name: "removePdkProperty",
 		Fix:  runPatchListMod(removePdkProperty),
 	},
+	{
+		Name: "rewriteRuntimeResourceOverlay",
+		Fix:  rewriteRuntimeResourceOverlay,
+	},
 }
 
 func NewFixRequest() FixRequest {
@@ -665,6 +669,26 @@ func rewriteAndroidAppImport(f *Fixer) error {
 					mod.Properties = append(mod.Properties, prop)
 				}
 			}
+		}
+	}
+	return nil
+}
+
+func rewriteRuntimeResourceOverlay(f *Fixer) error {
+	for _, def := range f.tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !(ok && mod.Type == "runtime_resource_overlay") {
+			continue
+		}
+		// runtime_resource_overlays are always product specific in Make.
+		if _, ok := mod.GetProperty("product_specific"); !ok {
+			prop := &parser.Property{
+				Name: "product_specific",
+				Value: &parser.Bool{
+					Value: true,
+				},
+			}
+			mod.Properties = append(mod.Properties, prop)
 		}
 	}
 	return nil
