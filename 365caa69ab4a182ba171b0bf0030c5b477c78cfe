@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d699a451_17b945a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-26T15:55:33Z",
+      "side": 1,
+      "message": "This is ready for review now. The statement in the description that the Ninja files haven\u0027t changed is only mostly true: Go compile command lines got the new \"-N -l\" command line arguments; it\u0027s an artifact of the debugging I needed to do (comes from aosp/1609218) and if we don\u0027t want to keep it, it\u0027s pretty simple to remove.",
+      "revId": "365caa69ab4a182ba171b0bf0030c5b477c78cfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
