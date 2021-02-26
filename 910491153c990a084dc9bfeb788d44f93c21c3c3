@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035204b2_cfbd5dc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-02-26T02:07:22Z",
+      "side": 1,
+      "message": "\"and forbid\" or maybe just \"Forbid extra quotes ...\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "910491153c990a084dc9bfeb788d44f93c21c3c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
