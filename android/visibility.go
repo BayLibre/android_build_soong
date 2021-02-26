@@ -202,6 +202,13 @@ type ExcludeFromVisibilityEnforcementTag interface {
 	ExcludeFromVisibilityEnforcement()
 }
 
+// The visibility mutators must all be used together in the correct order.
+var PrepareForTestWithVisibility = LinkFixturePreparers(
+	PrepareForTestWithVisibilityRuleChecker,
+	PrepareForTestWithVisibilityRuleGatherer,
+	PrepareForTestWithVisibilityRuleEnforcer,
+)
+
 var PrepareForTestWithVisibilityRuleChecker = FixtureRegisterWithContext(registerVisibilityRuleChecker)
 
 func registerVisibilityRuleChecker(ctx RegistrationContext) {

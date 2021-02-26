@@ -84,9 +84,10 @@ func init() {
 	RegisterFixturePreparersForPackage(PrepareForIntegrationTestWithAndroid)
 }
 
-// Prepares an integration test with build components from the android package.
-var PrepareForIntegrationTestWithAndroid = GroupFixturePreparers(
-	// Mutators. Must match order in mutator.go.
+// Defines an explicit order for the mutators in this package.
+//
+// Must match order in mutator.go.
+var explicitMutatorOrder = OrderFixturePreparers(
 	PrepareForTestWithArchMutator,
 	PrepareForTestWithVisibilityRuleChecker,
 	PrepareForTestWithDefaults,
@@ -95,6 +96,11 @@ var PrepareForIntegrationTestWithAndroid = GroupFixturePreparers(
 	PrepareForTestWithVisibilityRuleGatherer,
 	PrepareForTestWithVisibilityRuleEnforcer,
 	PrepareForTestWithOverrides,
+)
+
+// Prepares an integration test with build components from the android package.
+var PrepareForIntegrationTestWithAndroid = GroupFixturePreparers(
+	explicitMutatorOrder,
 
 	// Modules
 	PrepareForTestWithFilegroup,
