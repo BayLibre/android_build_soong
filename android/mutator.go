@@ -125,11 +125,7 @@ var preArch = []RegisterMutatorFunc{
 
 	// Check the visibility rules are valid.
 	//
-	// This must run after the package renamer mutators so that any issues found during
-	// validation of the package's default_visibility property are reported using the
-	// correct package name and not the synthetic name.
-	//
-	// This must also be run before defaults mutators as the rules for validation are
+	// This must be run before defaults mutators as the rules for validation are
 	// different before checking the rules than they are afterwards. e.g.
 	//    visibility: ["//visibility:private", "//visibility:public"]
 	// would be invalid if specified in a module definition but is valid if it results
