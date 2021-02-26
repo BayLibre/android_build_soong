@@ -1227,7 +1227,11 @@ func (u *usesLibrary) classLoaderContextForUsesLibDeps(ctx android.ModuleContext
 			if tag, ok := ctx.OtherModuleDependencyTag(m).(usesLibraryDependencyTag); ok {
 				dep := ctx.OtherModuleName(m)
 				if lib, ok := m.(UsesLibraryDependency); ok {
-					clcMap.AddContext(ctx, tag.sdkVersion, dep,
+					libName := dep
+					if ulib, ok := m.(ProvidesUsesLib); ok && ulib.ProvidesUsesLib() != nil {
+						libName = *ulib.ProvidesUsesLib()
+					}
+					clcMap.AddContext(ctx, tag.sdkVersion, libName,
 						lib.DexJarBuildPath(), lib.DexJarInstallPath(), lib.ClassLoaderContexts())
 				} else if ctx.Config().AllowMissingDependencies() {
 					ctx.AddMissingDependencies([]string{dep})
