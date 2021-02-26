@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6480faa_1ecf1f90",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T04:30:13Z",
+      "side": 1,
+      "message": "This means we need to extend soong_ui/finder.go to also find BUILD files, right?",
+      "range": {
+        "startLine": 143,
+        "startChar": 37,
+        "endLine": 143,
+        "endChar": 81
+      },
+      "revId": "9ef6d57e27d4c88e5dd20212a6c7e65a0b130db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8795933_7b5c3b76",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T04:30:13Z",
+      "side": 1,
+      "message": "Could you add a comment here explaining that this is ensuring that this is done for at most 1 Bazelable module with handcrafted label per package?",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 65
+      },
+      "revId": "9ef6d57e27d4c88e5dd20212a6c7e65a0b130db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a82f579_231c8ace",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T04:30:13Z",
+      "side": 1,
+      "message": "nit: swap these two so that `btm, ok :\u003d m.(android.BazelTargetModule) ; ok {` comes first?",
+      "range": {
+        "startLine": 207,
+        "startChar": 5,
+        "endLine": 213,
+        "endChar": 4
+      },
+      "revId": "9ef6d57e27d4c88e5dd20212a6c7e65a0b130db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b3461f7_1061d702",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T04:30:13Z",
+      "side": 1,
+      "message": "Please fix indents.",
+      "range": {
+        "startLine": 1244,
+        "startChar": 0,
+        "endLine": 1245,
+        "endChar": 44
+      },
+      "revId": "9ef6d57e27d4c88e5dd20212a6c7e65a0b130db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3462e36c_779ccf11",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T04:30:13Z",
+      "side": 1,
+      "message": "Should we support package-less \":fg_foo\" labels to avoid repeating the package in the Android.bp file, if it refers to the same package?",
+      "range": {
+        "startLine": 1245,
+        "startChar": 26,
+        "endLine": 1245,
+        "endChar": 40
+      },
+      "revId": "9ef6d57e27d4c88e5dd20212a6c7e65a0b130db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21df89b5_b0a2e8f0",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T04:30:13Z",
+      "side": 1,
+      "message": "Is this on the assumption that the content of the handcrafted \"target\"/BUILD file is always lexicographically smaller than the bp2build-generated ones?",
+      "range": {
+        "startLine": 55,
+        "startChar": 13,
+        "endLine": 55,
+        "endChar": 65
+      },
+      "revId": "9ef6d57e27d4c88e5dd20212a6c7e65a0b130db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
