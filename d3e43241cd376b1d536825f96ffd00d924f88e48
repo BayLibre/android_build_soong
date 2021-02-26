@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ada849_e8f1d97c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-02-26T23:49:53Z",
+      "side": 1,
+      "message": "What about maybeStrippedDexJar in DexImport? Do you need to remove it too?",
+      "revId": "d3e43241cd376b1d536825f96ffd00d924f88e48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
