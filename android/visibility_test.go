@@ -1150,14 +1150,11 @@ func TestVisibility(t *testing.T) {
 				}),
 				prepareForTestWithFakePrebuiltModules,
 				PrepareForTestWithPackageModule,
-				// Order of the following method calls is significant as they register mutators.
 				PrepareForTestWithArchMutator,
 				PrepareForTestWithPrebuilts,
 				PrepareForTestWithOverrides,
-				PrepareForTestWithVisibilityRuleChecker,
 				PrepareForTestWithDefaults,
-				PrepareForTestWithVisibilityRuleGatherer,
-				PrepareForTestWithVisibilityRuleEnforcer,
+				PrepareForTestWithVisibility,
 				// Add additional files to the mock filesystem
 				test.fs.AddToFixture(),
 			).
