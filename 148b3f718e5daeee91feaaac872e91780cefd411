@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef774435_69b71869",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-26T01:03:00Z",
+      "side": 1,
+      "message": "You need to add this somewhere to make it run.  You could add it to fixSteps, but that would run it every time someone ran bpfix on an existing Android.bp file, and this sounds like it should only run during androidmk.  I think instead this should go in androidmk and it can add it manually to its fix steps.  That might require exporting some more from bpfix, so alternatively leave it here and give androidmk a way to register it.",
+      "revId": "148b3f718e5daeee91feaaac872e91780cefd411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
