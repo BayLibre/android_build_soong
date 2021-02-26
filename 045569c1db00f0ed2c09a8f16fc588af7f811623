@@ -16,6 +16,24 @@
       "message": "We would prefer not to add conditionals like this to the build, they make it really hard to keep everything working without testing every combination in presubmit.  Can you work with the testing team to see if there is a solution that affects the way we run the tests instead of compiling the tests differently?",
       "revId": "045569c1db00f0ed2c09a8f16fc588af7f811623",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9109b8_a28befb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-02-26T19:59:39Z",
+      "side": 1,
+      "message": "Unfortunately I don\u0027t see any way of changing this kind of behaviour for atest, treehugger, and build-test-and-adb-sync without having a build target discriminator. We also likely need a build-level discriminator to do things like aosp/1607305.\n\nLet me reach out to the test team and see if there\u0027s any other suggestions they may have.",
+      "parentUuid": "7e2710a0_7b66b53b",
+      "revId": "045569c1db00f0ed2c09a8f16fc588af7f811623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
