@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77761151_519e5c3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-26T13:29:59Z",
+      "side": 1,
+      "message": "I\u0027ll drop this in favor of aosp/1609473. This and aosp/1589973 got too entangled to submit separately.",
+      "revId": "762fc641e1db3e5eb3f280eb757752cc7e9bbbe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
