@@ -34,6 +34,24 @@
       "parentUuid": "7cb47eff_bc0fe50f",
       "revId": "7aaddb2a5fa701b039601e76abb2bcb69476fdef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10b5966_2fbec3d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-26T09:36:41Z",
+      "side": 1,
+      "message": "Nope, I was planning to do that once Colin\u0027s review is done.",
+      "parentUuid": "95de849d_cb67c474",
+      "revId": "7aaddb2a5fa701b039601e76abb2bcb69476fdef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
