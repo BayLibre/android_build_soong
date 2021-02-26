@@ -1,58 +1,323 @@
 #!/bin/bash -eu
-#
-# Copyright 2017 Google Inc. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 
-#
-# This file is used in our continous build infrastructure to run a variety of
-# tests related to the build system.
-#
-# Currently, it's used to build and run multiproduct_kati, so it'll attempt
-# to build ninja files for every product in the tree. I expect this to
-# evolve as we find interesting things to test or track performance for.
-#
+HARDWIRED_MOCK_TOP=
+# Uncomment this for to be able to view the source tree after a test is run
+# HARDWIRED_MOCK_TOP=/tmp/td
 
-# Products that are broken or otherwise don't work with multiproduct_kati
-SKIPPED_PRODUCTS=(
-    mainline_sdk
+REAL_TOP="$(readlink -f "$(dirname "$0")"/../..)"
+
+function fail {
+  echo ERROR: $1
+  exit 1
+}
+
+function copy_directory() {
+  local dir="$1"
+  local parent="$(dirname "$dir")"
+
+  mkdir -p "$MOCK_TOP/$parent"
+  cp -R "$REAL_TOP/$dir" "$MOCK_TOP/$parent"
+}
+
+function symlink_file() {
+  local file="$1"
+
+  mkdir -p "$MOCK_TOP/$(dirname "$file")"
+  ln -s "$REAL_TOP/$file" "$MOCK_TOP/$file"
+}
+
+function symlink_directory() {
+  local dir="$1"
+
+  mkdir -p "$MOCK_TOP/$dir"
+  # We need to symlink the contents of the directory individually instead of
+  # using one symlink for the whole directory because finder.go doesn't follow
+  # symlinks when looking for Android.bp files
+  for i in $(ls "$REAL_TOP/$dir"); do
+    local target="$MOCK_TOP/$dir/$i"
+    local source="$REAL_TOP/$dir/$i"
+
+    if [[ -e "$target" ]]; then
+      if [[ ! -d "$source" || ! -d "$target" ]]; then
+        fail "Trying to symlink $dir twice"
+      fi
+    else
+      ln -s "$REAL_TOP/$dir/$i" "$MOCK_TOP/$dir/$i";
+    fi
+  done
+}
+
+function setup_bazel() {
+  copy_directory build/bazel
+
+  symlink_directory prebuilts/bazel
+  symlink_directory prebuilts/jdk
+
+  symlink_file WORKSPACE
+  symlink_file tools/bazel
+}
+
+function setup() {
+  if [[ ! -z "$HARDWIRED_MOCK_TOP" ]]; then
+    MOCK_TOP="$HARDWIRED_MOCK_TOP"
+    rm -fr "$MOCK_TOP"
+    mkdir -p "$MOCK_TOP"
+  else
+    MOCK_TOP=$(mktemp -t -d st.XXXXX)
+    trap 'echo cd / && echo rm -fr "$MOCK_TOP"' EXIT
+  fi
+
+  echo "Test case: ${FUNCNAME[1]}, mock top path: $MOCK_TOP"
+  cd "$MOCK_TOP"
+
+  copy_directory build/blueprint
+  copy_directory build/soong
+
+  symlink_directory prebuilts/go
+  symlink_directory prebuilts/build-tools
+  symlink_directory external/golang-protobuf
+
+  touch "$MOCK_TOP/Android.bp"
+
+  export ALLOW_MISSING_DEPENDENCIES=true
+
+  mkdir -p out/soong
+  # This is necessary because the empty soong.variables file written to satisfy
+  # Ninja would contain "BootJars: {}" instead of "BootJars: []" which cannot
+  # be parsed back
+  cat > out/soong/soong.variables <<'EOF'
+{
+    "BuildNumberFile": "build_number.txt",
+    "Platform_version_name": "S",
+    "Platform_sdk_version": 30,
+    "Platform_sdk_codename": "S",
+    "Platform_sdk_final": false,
+    "Platform_version_active_codenames": [
+        "S"
+    ],
+    "Platform_vndk_version": "S",
+    "DeviceName": "generic_arm64",
+    "DeviceArch": "arm64",
+    "DeviceArchVariant": "armv8-a",
+    "DeviceCpuVariant": "generic",
+    "DeviceAbi": [
+        "arm64-v8a"
+    ],
+    "DeviceSecondaryArch": "arm",
+    "DeviceSecondaryArchVariant": "armv8-a",
+    "DeviceSecondaryCpuVariant": "generic",
+    "DeviceSecondaryAbi": [
+        "armeabi-v7a",
+        "armeabi"
+    ],
+    "HostArch": "x86_64",
+    "HostSecondaryArch": "x86",
+    "CrossHost": "windows",
+    "CrossHostArch": "x86",
+    "CrossHostSecondaryArch": "x86_64",
+    "AAPTCharacteristics": "nosdcard",
+    "AAPTConfig": [
+        "normal",
+        "large",
+        "xlarge",
+        "hdpi",
+        "xhdpi",
+        "xxhdpi"
+    ],
+    "AAPTPreferredConfig": "xhdpi",
+    "AAPTPrebuiltDPI": [
+        "xhdpi",
+        "xxhdpi"
+    ],
+    "Malloc_not_svelte": true,
+    "Malloc_zero_contents": true,
+    "Malloc_pattern_fill_contents": false,
+    "Safestack": false,
+    "BootJars": [],
+    "UpdatableBootJars": [],
+    "Native_coverage": null
+}
+EOF
+}
+
+function run_soong() {
+  build/soong/soong_ui.bash --make-mode --skip-ninja --skip-make --skip-soong-tests
+}
+
+function test_smoke {
+  setup
+  run_soong
+}
+
+function test_bazel_smoke {
+  setup
+  setup_bazel
+
+  tools/bazel info
+
+}
+function test_null_build() {
+  setup
+  run_soong
+  local bootstrap_mtime1=$(stat -c "%y" out/soong/.bootstrap/build.ninja)
+  local output_mtime1=$(stat -c "%y" out/soong/build.ninja)
+  run_soong
+  local bootstrap_mtime2=$(stat -c "%y" out/soong/.bootstrap/build.ninja)
+  local output_mtime2=$(stat -c "%y" out/soong/build.ninja)
+
+  if [[ "$bootstrap_mtime1" == "$bootstrap_mtime2" ]]; then
+    # Bootstrapping is always done. It doesn't take a measurable amount of time.
+    fail "Bootstrap Ninja file did not change on null build"
+  fi
+
+  if [[ "$output_mtime1" != "$output_mtime2" ]]; then
+    fail "Output Ninja file changed on null build"
+  fi
+}
+
+function test_soong_build_rebuilt_if_blueprint_changes() {
+  setup
+  run_soong
+  local mtime1=$(stat -c "%y" out/soong/.bootstrap/build.ninja)
+
+  sed -i 's/pluginGenSrcCmd/pluginGenSrcCmd2/g' build/blueprint/bootstrap/bootstrap.go
+
+  run_soong
+  local mtime2=$(stat -c "%y" out/soong/.bootstrap/build.ninja)
+
+  if [[ "$mtime1" == "$mtime2" ]]; then
+    fail "Bootstrap Ninja file did not change"
+  fi
+}
+
+function test_add_android_bp() {
+  setup
+  run_soong
+  local mtime1=$(stat -c "%y" out/soong/build.ninja)
+
+  mkdir -p a
+  cat > a/Android.bp <<'EOF'
+python_binary_host {
+  name: "my_little_binary_host",
+  srcs: ["my_little_binary_host.py"]
+}
+EOF
+  touch a/my_little_binary_host.py
+  run_soong
+
+  local mtime2=$(stat -c "%y" out/soong/build.ninja)
+  if [[ "$mtime1" == "$mtime2" ]]; then
+    fail "Output Ninja file did not change"
+  fi
+
+  grep -q "^# Module:.*my_little_binary_host$" out/soong/build.ninja || fail "New module not in output"
+
+  run_soong
+}
+
+function test_add_file_to_glob() {
+  setup
+
+  mkdir -p a
+  cat > a/Android.bp <<'EOF'
+python_binary_host {
+  name: "my_little_binary_host",
+  srcs: ["*.py"],
+}
+EOF
+  touch a/my_little_binary_host.py
+  run_soong
+  local mtime1=$(stat -c "%y" out/soong/build.ninja)
+
+  touch a/my_little_library.py
+  run_soong
+
+  local mtime2=$(stat -c "%y" out/soong/build.ninja)
+  if [[ "$mtime1" == "$mtime2" ]]; then
+    fail "Output Ninja file did not change"
+  fi
+
+  grep -q my_little_library.py out/soong/build.ninja || fail "new file is not in output"
+}
+
+function test_add_singleton() {
+  setup
+  run_soong
+  local mtime1=$(stat -c "%y" out/soong/build.ninja)
+
+  mkdir -p a
+  cat > a/Android.bp <<'EOF'
+bootstrap_go_package {
+  name: "picard-soong-rules",
+  pkgPath: "android/soong/picard",
+  deps: [
+    "blueprint",
+    "soong",
+    "soong-android",
+  ],
+  srcs: [
+    "picard.go",
+  ],
+  pluginFor: ["soong_build"],
+}
+EOF
+
+  cat > a/picard.go <<'EOF'
+package picard
+
+import (
+  "android/soong/android"
+  "github.com/google/blueprint"
 )
 
-# To track how long we took to startup. %N isn't supported on Darwin, but
-# that's detected in the Go code, which skips calculating the startup time.
-export TRACE_BEGIN_SOONG=$(date +%s%N)
+var (
+  pctx = android.NewPackageContext("picard")
+)
 
-# Remove BUILD_NUMBER so that incremental builds on build servers don't
-# re-read makefiles every time.
-unset BUILD_NUMBER
+func init() {
+  android.RegisterSingletonType("picard", PicardSingleton)
+}
 
-export TOP=$(cd $(dirname ${BASH_SOURCE[0]})/../..; PWD= /bin/pwd)
-cd "${TOP}"
-source "${TOP}/build/soong/scripts/microfactory.bash"
+func PicardSingleton() android.Singleton {
+  return &picardSingleton{}
+}
 
-case $(uname) in
-  Linux)
-    export LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
-    export SEGFAULT_USE_ALTSTACK=1
-    ulimit -a
-    ;;
-esac
+type picardSingleton struct{}
 
-echo
-echo "Running Bazel smoke test..."
-"${TOP}/tools/bazel" --batch --max_idle_secs=1 info
+func (p *picardSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+  picardRule := ctx.Rule(pctx, "picard",
+    blueprint.RuleParams{
+      Command: "echo Make it so. > ${out}",
+      CommandDeps: []string{},
+      Description: "Something quotable",
+    })
 
-echo
-echo "Running Soong test..."
-soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
-exec "$(getoutdir)/multiproduct_kati" --skip-products "$(echo "${SKIPPED_PRODUCTS[@]-}" | tr ' ' ',')" "$@"
+  outputFile := android.PathForOutput(ctx, "picard", "picard.txt")
+  var deps android.Paths
+
+  ctx.Build(pctx, android.BuildParams{
+    Rule: picardRule,
+    Output: outputFile,
+    Inputs: deps,
+  })
+}
+
+EOF
+
+  run_soong
+  local mtime2=$(stat -c "%y" out/soong/build.ninja)
+  if [[ "$mtime1" == "$mtime2" ]]; then
+    fail "Output Ninja file did not change"
+  fi
+
+  grep -q "Make it so" out/soong/build.ninja || fail "New action not present"
+}
+
+test_bazel_smoke
+exit 0
+test_smoke
+test_null_build
+test_soong_build_rebuilt_if_blueprint_changes
+test_add_file_to_glob
+test_add_android_bp
+test_add_singleton
