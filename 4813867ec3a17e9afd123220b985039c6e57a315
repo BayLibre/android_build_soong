@@ -16,6 +16,24 @@
       "message": "Seems a little more delicate than querying the modules for their names, but definitely simplifies the problem.",
       "revId": "4813867ec3a17e9afd123220b985039c6e57a315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794aeac1_5af222e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-02-26T01:52:07Z",
+      "side": 1,
+      "message": "I think I can define a function for generating module names that is used by both DepsMutator and the module name generations.\nLet me prepare a follow up CL.",
+      "parentUuid": "01c54b24_aa21cb47",
+      "revId": "4813867ec3a17e9afd123220b985039c6e57a315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
