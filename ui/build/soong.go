@@ -24,6 +24,8 @@ import (
 	"android/soong/env"
 	"android/soong/shared"
 	soong_metrics_proto "android/soong/ui/metrics/metrics_proto"
+	"github.com/google/blueprint"
+	"github.com/google/blueprint/bootstrap"
 
 	"github.com/golang/protobuf/proto"
 	"github.com/google/blueprint/microfactory"
@@ -54,6 +56,36 @@ func writeEnvironmentFile(ctx Context, envFile string, envDeps map[string]string
 // In reality, several build.ninja files are generated and/or used during the bootstrapping and build process.
 // See build/blueprint/bootstrap/doc.go for more information.
 //
+
+type blueprintConfig struct {
+	generatingPrimaryBuilder bool
+}
+
+func bootstrapBlueprint(ctx Context, config Config) {
+	ctx.BeginTrace(metrics.RunSoong, "blueprint bootstrap")
+	defer ctx.EndTrace()
+
+	var args bootstrap.Args
+
+	args.RunGoTests = !config.skipSoongTests
+	args.UseValidations = true
+	args.BuildDir = config.SoongOutDir()
+	args.NinjaBuildDir = config.OutDir()
+	args.SrcDir = "."
+	args.ModuleListFile = filepath.Join(config.FileListDir(), "Android.bp.list")
+	args.OutFile = shared.JoinPath(config.SoongOutDir(), ".bootstrap/build.ninja")
+	args.DepFile = shared.JoinPath(config.SoongOutDir(), ".bootstrap/build.ninja.d")
+	args.GlobFile = shared.JoinPath(config.SoongOutDir(), ".minibootstrap/build-globs.ninja")
+
+	blueprintCtx := blueprint.NewContext()
+	blueprintCtx.SetIgnoreUnknownModuleTypes(true)
+	blueprintConfig := blueprintConfig{
+		generatingPrimaryBuilder: true,
+	}
+
+	bootstrap.RunBlueprint(args, blueprintCtx, blueprintConfig)
+}
+
 func runSoong(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.RunSoong, "soong")
 	defer ctx.EndTrace()
@@ -64,33 +96,7 @@ func runSoong(ctx Context, config Config) {
 	// unused variables were changed?
 	envFile := filepath.Join(config.SoongOutDir(), "soong.environment.available")
 
-	// Use an anonymous inline function for tracing purposes (this pattern is used several times below).
-	func() {
-		ctx.BeginTrace(metrics.RunSoong, "blueprint bootstrap")
-		defer ctx.EndTrace()
-
-		// Use validations to depend on tests.
-		args := []string{"-n"}
-
-		if !config.skipSoongTests {
-			// Run tests.
-			args = append(args, "-t")
-		}
-
-		cmd := Command(ctx, config, "blueprint bootstrap", "build/blueprint/bootstrap.bash", args...)
-
-		cmd.Environment.Set("BLUEPRINTDIR", "./build/blueprint")
-		cmd.Environment.Set("BOOTSTRAP", "./build/blueprint/bootstrap.bash")
-		cmd.Environment.Set("BUILDDIR", config.SoongOutDir())
-		cmd.Environment.Set("GOROOT", "./"+filepath.Join("prebuilts/go", config.HostPrebuiltTag()))
-		cmd.Environment.Set("BLUEPRINT_LIST_FILE", filepath.Join(config.FileListDir(), "Android.bp.list"))
-		cmd.Environment.Set("NINJA_BUILDDIR", config.OutDir())
-		cmd.Environment.Set("SRCDIR", ".")
-		cmd.Environment.Set("TOPNAME", "Android.bp")
-		cmd.Sandbox = soongSandbox
-
-		cmd.RunAndPrintOrFatal()
-	}()
+	bootstrapBlueprint(ctx, config)
 
 	soongBuildEnv := config.Environment().Copy()
 	soongBuildEnv.Set("TOP", os.Getenv("TOP"))
@@ -143,16 +149,6 @@ func runSoong(ctx Context, config Config) {
 	cfg.Map("github.com/google/blueprint", "build/blueprint")
 
 	cfg.TrimPath = absPath(ctx, ".")
-
-	func() {
-		ctx.BeginTrace(metrics.RunSoong, "minibp")
-		defer ctx.EndTrace()
-
-		minibp := filepath.Join(config.SoongOutDir(), ".minibootstrap/minibp")
-		if _, err := microfactory.Build(&cfg, minibp, "github.com/google/blueprint/bootstrap/minibp"); err != nil {
-			ctx.Fatalln("Failed to build minibp:", err)
-		}
-	}()
 
 	func() {
 		ctx.BeginTrace(metrics.RunSoong, "bpglob")
