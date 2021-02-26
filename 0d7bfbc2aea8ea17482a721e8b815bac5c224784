@@ -33,6 +33,52 @@
       "message": "Ping.",
       "revId": "0d7bfbc2aea8ea17482a721e8b815bac5c224784",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b6dbc5_170d8595",
+        "filename": "android/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-26T03:49:18Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 541,
+        "startChar": 51,
+        "endLine": 541,
+        "endChar": 54
+      },
+      "revId": "0d7bfbc2aea8ea17482a721e8b815bac5c224784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92f7a2a_ef02a851",
+        "filename": "android/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-26T03:49:18Z",
+      "side": 1,
+      "message": "Optional: this could maybe be implemented in terms of MaybeRel(r.testContext, r.Config.BuildDir().String(), path.String())",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 67
+      },
+      "revId": "0d7bfbc2aea8ea17482a721e8b815bac5c224784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

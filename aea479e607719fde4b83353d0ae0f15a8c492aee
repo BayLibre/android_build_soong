@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00ff4d27_60dfd6c5",
+        "filename": "android/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-26T03:49:18Z",
+      "side": 1,
+      "message": "I think its useful to mention here too.  The docs at the top are useful for anyone digging deeper, but the docs on the interface are what is going to show up in godocs, for example when someone does ctrl-Q in intellij on an call to Extend.",
+      "parentUuid": "4aa07791_4ce3b38a",
+      "revId": "aea479e607719fde4b83353d0ae0f15a8c492aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88643014_d8a42c17",
         "filename": "android/fixture.go",
         "patchSetId": 4
