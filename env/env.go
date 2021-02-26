@@ -22,6 +22,7 @@ import (
 	"io/ioutil"
 	"os"
 	"sort"
+	"strings"
 )
 
 type envFileEntry struct{ Key, Value string }
@@ -54,27 +55,53 @@ func EnvFileContents(envDeps map[string]string) ([]byte, error) {
 	return data, nil
 }
 
-// Reads and deserializes a Soong environment file located at the given file path to determine its
-// staleness. If any environment variable values have changed, it prints them out and returns true.
-// Failing to read or parse the file also causes it to return true.
-func StaleEnvFile(filepath string) (bool, error) {
-	data, err := ioutil.ReadFile(filepath)
+func EnvFromFile(envFile string) (map[string]string, error) {
+	result := make(map[string]string)
+	data, err := ioutil.ReadFile(envFile)
 	if err != nil {
-		return true, err
+		return result, err
 	}
 
 	var contents envFileData
-
 	err = json.Unmarshal(data, &contents)
+	if err != nil {
+		return result, err
+	}
+
+	for _, entry := range contents {
+		result[entry.Key] = entry.Value
+	}
+
+	return result, nil
+}
+
+func GetOsEnvironment() map[string]string {
+	envVars := make(map[string]string)
+
+	for _, v := range os.Environ() {
+		idx := strings.IndexRune(v, '=')
+		if idx != -1 {
+			envVars[v[:idx]] = v[idx+1:]
+		}
+	}
+
+	return envVars
+}
+
+// Reads and deserializes a Soong environment file located at the given file path to determine its
+// staleness. If any environment variable values have changed, it prints them out and returns true.
+// Failing to read or parse the file also causes it to return true.
+func StaleEnvFile(filepath string, expected map[string]string) (bool, error) {
+	data, err := EnvFromFile(filepath)
 	if err != nil {
 		return true, err
 	}
-
 	var changed []string
-	for _, entry := range contents {
-		key := entry.Key
-		old := entry.Value
-		cur := os.Getenv(key)
+	for key, old := range data {
+		// We don't check whether any value was added because this check is used to
+		// verify whether those environment variables changed that were actually
+		// used
+		cur := expected[key]
 		if old != cur {
 			changed = append(changed, fmt.Sprintf("%s (%q -> %q)", key, old, cur))
 		}
