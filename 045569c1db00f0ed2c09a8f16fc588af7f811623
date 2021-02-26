@@ -34,6 +34,24 @@
       "parentUuid": "7e2710a0_7b66b53b",
       "revId": "045569c1db00f0ed2c09a8f16fc588af7f811623",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70be0e2a_9787836d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-02-26T20:00:49Z",
+      "side": 1,
+      "message": "(FWIW we\u0027re making these changes in order to allow us to have a QEMU+MTE buildbot. At this stage, we\u0027re targeting postsubmit but if it\u0027s good enough, it would be great to have it as presubmit on a few branches: bionic, scudo, etc.)",
+      "parentUuid": "fa9109b8_a28befb2",
+      "revId": "045569c1db00f0ed2c09a8f16fc588af7f811623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
