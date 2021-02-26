@@ -16,6 +16,24 @@
       "message": "I don\u0027t see this file added.",
       "revId": "43295d6da681eea8658e8c28dea5a116a6bfd880",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3deea4_96741457",
+        "filename": "ui/build/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-02-26T07:39:00Z",
+      "side": 1,
+      "message": "My bad. It was part of my experiments with merging soong_ui and minibp.",
+      "parentUuid": "a7f52a3e_aa76bb6b",
+      "revId": "43295d6da681eea8658e8c28dea5a116a6bfd880",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
