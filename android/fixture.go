@@ -286,7 +286,120 @@ func FixtureWithRootAndroidBp(contents string) FixturePreparer {
 //
 // Before preparing the fixture the list of preparers is flattened by replacing each
 // instance of GroupFixturePreparers with its contents.
+//
+// Although this defines an explicit order when this group is used as a whole it does not define
+// any explicit order between the individual preparers.
+//
+// e.g. given the following set of preparers
+//     A = ...
+//     B = ...
+//     C = ...
+//     Grouped = GroupFixturePreparers(A, B, C)
+//
+// Running the following (note A and C are in different order to the one defined above):
+//     emptyTestFixtureFactory.Extends(C, A).RunTest()
+//
+// Will invoke the preparers in the following order:
+//     C
+//     A
+//
+// Running the following:
+//     emptyTestFixtureFactory.Extends(C, A, Grouped).RunTest()
+//
+// Will invoke the preparers in the following order as the implicit ordering of C and A in the
+// call to Extends(...) overrides the implicit ordering in Grouped:
+//     C
+//     A
+//     B
+//
 func GroupFixturePreparers(preparers ...FixturePreparer) FixturePreparer {
+	return newCompositePreparer(preparers, nil)
+}
+
+// OrderFixturePreparers creates a composite FixturePreparer that is equivalent to applying each of
+// the supplied FixturePreparer instances in order.
+//
+// Before preparing the fixture the list of preparers is flattened by replacing each
+// instance of OrderFixturePreparers with its contents.
+//
+// This defines a PrecedesButDoesNotRequire dependency between each pair of preparers in the slice.
+//
+// e.g. given the following set of preparers
+//     A = ...
+//     B = ...
+//     C = ...
+//     Ordered = OrderFixturePreparers(A, B, C)
+//
+// Running the following (note A and C are in different order to the one defined above):
+//     emptyTestFixtureFactory.Extends(C, A).RunTest()
+//
+// Will invoke the preparers in the following order as the explicit ordering defined by this
+// overrides the implicit ordering in the call to Extends(...):
+//     A
+//     C
+//
+// Running the following:
+//     emptyTestFixtureFactory.Extends(C, A, Ordered).RunTest()
+//
+// Will invoke the preparers in the following order as the explicit ordering in Ordered overrides
+// the implicit ordering in the call to Extends(...):
+//     A
+//     C
+//
+func OrderFixturePreparers(preparers ...FixturePreparer) FixturePreparer {
+	return newCompositePreparer(preparers, func(p1, p2 FixturePreparer) {
+		p1.PrecedesButDoesNotRequire(p2)
+	})
+}
+
+// LinkFixturePreparers creates a composite FixturePreparer that is equivalent to applying each of
+// the supplied FixturePreparer instances in order.
+//
+// Before preparing the fixture the list of preparers is flattened by replacing each
+// instance of LinkFixturePreparers with its contents.
+//
+// This defines an AlwaysPrecedes dependency between each pair of preparers in the slice.
+//
+// e.g. given the following set of preparers
+//     A = ...
+//     B = ...
+//     C = ...
+//     Linked = LinkFixturePreparers(A, B, C)
+//
+// Running the following (note A and C are in different order to the one defined above):
+//     emptyTestFixtureFactory.Extends(C, A).RunTest()
+// Will invoke the preparers in the following order as the explicit ordering in Linked overrides the
+// implicit ordering in the call to Extends(...) and B is included because it must be used if either
+// A or C is used:
+//     A
+//     B
+//     C
+//
+// Running the following:
+//     emptyTestFixtureFactory.Extends(C, A, Linked).RunTest()
+//
+// Will invoke the preparers in the following order as the explicit ordering in Linked overrides
+// the implicit ordering in the call to Extends(...):
+//     A
+//     B
+//     C
+//
+func LinkFixturePreparers(preparers ...FixturePreparer) FixturePreparer {
+	return newCompositePreparer(preparers, func(p1, p2 FixturePreparer) {
+		p1.AlwaysPrecedes(p2)
+	})
+}
+
+func newCompositePreparer(preparers []FixturePreparer, linker func(p1, p2 FixturePreparer)) FixturePreparer {
+	if linker != nil {
+		var preceding FixturePreparer
+		for _, p := range preparers {
+			if preceding != nil {
+				linker(preceding, p)
+			}
+			preceding = p
+		}
+	}
 	p := &compositeFixturePreparer{
 		preparers: dedupAndFlattenPreparers(nil, preparers),
 	}
@@ -297,6 +410,22 @@ func GroupFixturePreparers(preparers ...FixturePreparer) FixturePreparer {
 
 type simpleFixturePreparerVisitor func(preparer *simpleFixturePreparer)
 
+// The order between two preparers.
+type preparerOrder int
+
+const (
+	precedes preparerOrder = iota
+	follows
+)
+
+// The coupling determines the strength of the coupling between two preparers.
+type preparerCoupling int
+
+const (
+	optional preparerCoupling = iota
+	required
+)
+
 // FixturePreparer is an opaque interface that can change a fixture.
 type FixturePreparer interface {
 	// SetName sets the name, used for debugging and error reporting.
@@ -305,11 +434,61 @@ type FixturePreparer interface {
 	// Name gets the name of the preparer.
 	Name() string
 
+	// FollowsButDoesNotRequire defines a uni-directional relationship between this preparer and the
+	// other.
+	//
+	// A.FollowsButDoesNotRequire(B) means that A and B can both be used separately but if they are
+	// both used together then A will run after B.
+	FollowsButDoesNotRequire(other FixturePreparer) FixturePreparer
+
+	// FollowsAndRequires defines a uni-directional relationship between this preparer and the other.
+	//
+	// A.FollowsAndRequires(B) means that B can be used on its own but if A is used then B will
+	// automatically be included and A will run after B.
+	FollowsAndRequires(other FixturePreparer) FixturePreparer
+
+	// PrecedesButDoesNotRequire defines a uni-directional relationship between this preparer and the
+	// other.
+	//
+	// A.PrecedesButDoesNotRequire(B) means that A and B can both be used separately but if they are
+	// both used together then A will run before B.
+	PrecedesButDoesNotRequire(other FixturePreparer) FixturePreparer
+
+	// PrecedesAndRequires defines a uni-directional relationship between this preparer and the other.
+	//
+	// A.PrecedesAndRequires(B) means that B can be used on its own but if A is used then B will
+	// automatically be included and A will run before B.
+	PrecedesAndRequires(other FixturePreparer) FixturePreparer
+
+	// AlwaysFollows defines a bi-directional relationship between this preparer and the other.
+	//
+	// A.AlwaysFollows(B) means that if either A or B are used then the other will automatically be
+	// included and A will run after B.
+	AlwaysFollows(other FixturePreparer) FixturePreparer
+
+	// AlwaysPrecedes defines a bi-directional relationship between this preparer and the other.
+	//
+	// A.AlwaysPrecedes(B) means that if either A or B are used then the other will automatically be
+	// included and A will run before B.
+	AlwaysPrecedes(other FixturePreparer) FixturePreparer
+
 	// visit calls the supplied visitor with each *simpleFixturePreparer instances in this preparer,
 	visit(simpleFixturePreparerVisitor)
 
 	// setNameFromFunc sets the name to the name of the function.
 	setNameFromFunc(function interface{}) FixturePreparer
+
+	// Define a dependency between this preparer and the other preparer.
+	//
+	// The other preparer may be a group of preparers, if so then this defines dependencies between
+	// this preparer and each of the preparers in that group.
+	//
+	// The order determines which of the preparers will be executed first when preparing a test
+	// fixture.
+	//
+	// The coupling determines whether the use of one preparer will automatically require the use
+	// of the other.
+	dependency(other FixturePreparer, order preparerOrder, coupling preparerCoupling) FixturePreparer
 }
 
 type fixturePreparers []FixturePreparer
@@ -318,6 +497,11 @@ func (f fixturePreparers) visit(visitor simpleFixturePreparerVisitor) {
 	for _, p := range f {
 		p.visit(visitor)
 	}
+}
+
+type partitionedPreparers struct {
+	unsorted []*simpleFixturePreparer
+	sorted   []*simpleFixturePreparer
 }
 
 // dedupAndFlattenPreparers removes any duplicates and flattens any composite FixturePreparer
@@ -405,6 +589,32 @@ func (b *baseFixturePreparer) String() string {
 	return fmt.Sprintf("%s (%s:%d)", name, b.creationFile, b.creationLine)
 }
 
+func (b *baseFixturePreparer) FollowsButDoesNotRequire(other FixturePreparer) FixturePreparer {
+	return b.self.dependency(other, follows, optional)
+}
+
+func (b *baseFixturePreparer) FollowsAndRequires(other FixturePreparer) FixturePreparer {
+	return b.self.dependency(other, follows, required)
+}
+
+func (b *baseFixturePreparer) PrecedesButDoesNotRequire(other FixturePreparer) FixturePreparer {
+	return b.self.dependency(other, precedes, optional)
+}
+
+func (b *baseFixturePreparer) PrecedesAndRequires(other FixturePreparer) FixturePreparer {
+	return b.self.dependency(other, precedes, required)
+}
+
+func (b *baseFixturePreparer) AlwaysFollows(other FixturePreparer) FixturePreparer {
+	other.PrecedesAndRequires(b.self)
+	return b.FollowsAndRequires(other)
+}
+
+func (b *baseFixturePreparer) AlwaysPrecedes(other FixturePreparer) FixturePreparer {
+	other.FollowsAndRequires(b.self)
+	return b.PrecedesAndRequires(other)
+}
+
 // compositeFixturePreparer is a FixturePreparer created from a list of fixture preparers.
 type compositeFixturePreparer struct {
 	baseFixturePreparer
@@ -417,14 +627,50 @@ func (c *compositeFixturePreparer) visit(visitor simpleFixturePreparerVisitor) {
 	}
 }
 
+func (c *compositeFixturePreparer) dependency(other FixturePreparer, order preparerOrder, coupling preparerCoupling) FixturePreparer {
+	for _, p := range c.preparers {
+		other.visit(func(o *simpleFixturePreparer) {
+			p.dependency(o, order, coupling)
+		})
+	}
+	return c
+}
+
+type preparerDependency struct {
+	other    *simpleFixturePreparer
+	order    preparerOrder
+	coupling preparerCoupling
+}
+
 // simpleFixturePreparer is a FixturePreparer that applies a function to a fixture.
 type simpleFixturePreparer struct {
 	baseFixturePreparer
-	function func(fixture *fixture)
+	function     func(fixture *fixture)
+	dependencies []preparerDependency
 }
 
 func (s *simpleFixturePreparer) visit(visitor simpleFixturePreparerVisitor) {
 	visitor(s)
+}
+
+func (s *simpleFixturePreparer) dependency(other FixturePreparer, order preparerOrder, coupling preparerCoupling) FixturePreparer {
+	other.visit(func(o *simpleFixturePreparer) {
+		// If a dependency already exists between the two preparers in the same direction then don't
+		// add another dependency, just strengthen the coupling (if necessary) and return.
+		for i, d := range s.dependencies {
+			if d.other == o && d.order == order && d.coupling == optional {
+				s.dependencies[i].coupling = coupling
+				return
+			}
+		}
+
+		s.dependencies = append(s.dependencies, preparerDependency{
+			other:    o,
+			order:    order,
+			coupling: coupling,
+		})
+	})
+	return s
 }
 
 func newSimpleFixturePreparer(preparer func(fixture *fixture)) FixturePreparer {
@@ -636,12 +882,14 @@ func (f *fixtureFactory) Fixture(t *testing.T, preparers ...FixturePreparer) Fix
 		errorHandler: f.errorHandler,
 	}
 
-	for _, preparer := range f.preparers {
-		preparer.function(fixture)
-	}
+	// Combine the preparers into a single list.
+	allPreparers := append(([]*simpleFixturePreparer)(nil), f.preparers...)
+	allPreparers = append(allPreparers, dedupAndFlattenPreparers(f.preparers, preparers)...)
 
-	for _, preparer := range dedupAndFlattenPreparers(f.preparers, preparers) {
-		preparer.function(fixture)
+	// Sort the preparers according to their topological order.
+	sortedPreparers := topologicalSort(allPreparers)
+	for _, p := range sortedPreparers {
+		p.function(fixture)
 	}
 
 	return fixture
@@ -807,4 +1055,181 @@ func RegisterFixturePreparersForPackage(preparers ...FixturePreparer) {
 // AllRegisteredFixturePreparers returns the list of all the registered fixture preparers.
 func AllRegisteredFixturePreparers() []FixturePreparer {
 	return registeredFixturePreparers
+}
+
+// fixtureVertex represents a preparer in the graph.
+type fixtureVertex struct {
+	// The preparer this represents.
+	preparer *simpleFixturePreparer
+
+	// True if it should be present in the sorted output.
+	//
+	// Initially set to true for any preparers in the initial list. Any preparer that can trace a
+	// required path to or from another preparer that is present is also marked as being present.
+	present bool
+
+	// The list of vertices that should follow this one.
+	followers []*fixtureEdge
+
+	// A count of the number of vertices which precede this one and which have not yet been added to
+	// the sorted output.
+	//
+	// This count is reduced as preceding vertices are added to the sorted output, once it has
+	// reached 0 then this can also be added to the sorted output.
+	precededBy int
+}
+
+type fixtureEdge struct {
+	from     *fixtureVertex
+	to       *fixtureVertex
+	required bool
+}
+
+type fixtureGraph struct {
+	preparerToVertex map[*simpleFixturePreparer]*fixtureVertex
+	rootVertex       *fixtureVertex
+	vertices         []*fixtureVertex
+	edges            []*fixtureEdge
+}
+
+func newGraph(rootPreparer *simpleFixturePreparer) *fixtureGraph {
+	graph := &fixtureGraph{preparerToVertex: make(map[*simpleFixturePreparer]*fixtureVertex)}
+	graph.rootVertex = &fixtureVertex{preparer: rootPreparer, present: true}
+
+	return graph
+}
+
+func (g *fixtureGraph) addEdge(from *fixtureVertex, to *fixtureVertex, required bool) {
+	edge := &fixtureEdge{
+		from:     from,
+		to:       to,
+		required: required,
+	}
+	g.edges = append(g.edges, edge)
+	from.followers = append(from.followers, edge)
+	to.precededBy += 1
+}
+
+func (g *fixtureGraph) getVertex(preparer *simpleFixturePreparer) (*fixtureVertex, bool) {
+	vertex, ok := g.preparerToVertex[preparer]
+	if !ok {
+		vertex = &fixtureVertex{preparer: preparer}
+		g.preparerToVertex[preparer] = vertex
+		g.vertices = append(g.vertices, vertex)
+
+		// Add an edge from the root vertex to this new vertex so that visiting the edges in the root
+		// vertex will visit all vertices in the graph.
+		g.addEdge(g.rootVertex, vertex, false)
+	}
+
+	return vertex, !ok
+}
+
+func topologicalSort(list []*simpleFixturePreparer) []*simpleFixturePreparer {
+
+	// Create a root preparer that requires all the preparers in the input list. This is used for the
+	// root vertex of the graph.
+	rootPreparer := &simpleFixturePreparer{}
+	rootPreparer.name = "<root>"
+	for _, p := range list {
+		rootPreparer.dependencies = append(rootPreparer.dependencies, preparerDependency{
+			other:    p,
+			order:    precedes,
+			coupling: required,
+		})
+	}
+
+	graph := newGraph(rootPreparer)
+
+	vertices := []*fixtureVertex{graph.rootVertex}
+	for len(vertices) > 0 {
+		vertex := vertices[0]
+		vertices = vertices[1:]
+
+		for _, dep := range vertex.preparer.dependencies {
+			otherVertex, newVertex := graph.getVertex(dep.other)
+			if newVertex {
+				vertices = append(vertices, otherVertex)
+			}
+
+			required := dep.coupling == required
+			if dep.order == precedes {
+				graph.addEdge(vertex, otherVertex, required)
+			} else {
+				graph.addEdge(otherVertex, vertex, required)
+			}
+		}
+	}
+
+	// Populate a list with all vertices that are present.
+	required := []*fixtureVertex{graph.rootVertex}
+	for _, vertex := range graph.vertices {
+		if vertex.present {
+			required = append(required, vertex)
+		}
+	}
+
+	// Create a map from vertex to the edges they form a part of.
+	vertexToEdges := make(map[*fixtureVertex][]*fixtureEdge)
+	for _, edge := range graph.edges {
+		vertexToEdges[edge.from] = append(vertexToEdges[edge.from], edge)
+		vertexToEdges[edge.to] = append(vertexToEdges[edge.to], edge)
+	}
+
+	// Mark every vertex present that can trace a line of required edges to a vertex that is already
+	// present.
+	for i := 0; i < len(required); i += 1 {
+		requiredVertex := required[i]
+		for _, edge := range vertexToEdges[requiredVertex] {
+			if edge.required {
+				var otherVertex *fixtureVertex
+				if requiredVertex == edge.from {
+					otherVertex = edge.to
+				} else {
+					otherVertex = edge.from
+				}
+				if !otherVertex.present {
+					otherVertex.present = true
+					required = append(required, otherVertex)
+				}
+			}
+		}
+	}
+
+	// Start from the root vertex (which should have an edge to every vertex in the graph). For each
+	// vertex
+	satisfiedVertices := []*fixtureVertex{graph.rootVertex}
+	result := []*simpleFixturePreparer{}
+	for i := 0; i < len(satisfiedVertices); i += 1 {
+		satisfiedVertex := satisfiedVertices[i]
+		if satisfiedVertex != graph.rootVertex && satisfiedVertex.present {
+			result = append(result, satisfiedVertex.preparer)
+		}
+
+		for _, follower := range satisfiedVertex.followers {
+			follower.to.precededBy = follower.to.precededBy - 1
+			if follower.to.precededBy == 0 {
+				satisfiedVertices = append(satisfiedVertices, follower.to)
+			}
+		}
+	}
+
+	// Check for cycles.
+	var cycles []*fixtureVertex
+	for _, v := range graph.vertices {
+		if v.precededBy != 0 {
+			cycles = append(cycles, v)
+		}
+	}
+
+	if len(cycles) != 0 {
+		buffer := &strings.Builder{}
+		fmt.Fprint(buffer, "Cycle(s) detected involving the following preparers:\n")
+		for _, v := range cycles {
+			fmt.Fprintf(buffer, "    %s\n", v.preparer)
+		}
+		panic(buffer.String())
+	}
+
+	return result
 }

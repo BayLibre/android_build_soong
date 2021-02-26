@@ -14,7 +14,10 @@
 
 package android
 
-import "testing"
+import (
+	"regexp"
+	"testing"
+)
 
 // Make sure that FixturePreparer instances are only called once per fixture and in the order in
 // which they were added.
@@ -122,3 +125,277 @@ func TestFixtureDebug(t *testing.T) {
 		checkName(t, preparer, "FilesForMe")
 	})
 }
+
+func TestFixturePartialOrdering(t *testing.T) {
+
+	mutator := func(name string) FixturePreparer {
+		return FixtureRegisterWithContext(func(ctx RegistrationContext) {
+			ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
+				ctx.BottomUp(name, func(ctx BottomUpMutatorContext) {
+					if order, ok := ctx.Module().(*orderModule); ok {
+						order.properties.List = append(order.properties.List, name)
+					}
+				})
+			})
+		}).SetName(name)
+	}
+
+	// In the following test descriptions the symbols have the following meanings:
+	// a>b - means `a` comes before and requires `b`.
+	// a>?b - means `a` comes before but does not require `b`.
+	// a?>b - means `b` comes after but does not require `a`.
+
+	t.Run("a?>b", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+
+		a.PrecedesAndRequires(b)
+
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a", "b"}, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b"}, b)
+		})
+		t.Run("b,a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a", "b"}, b, a)
+		})
+		t.Run("a,b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a", "b"}, a, b)
+		})
+	})
+
+	t.Run("a>?b", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+
+		a.PrecedesButDoesNotRequire(b)
+
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a"}, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b"}, b)
+		})
+		t.Run("b,a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a", "b"}, b, a)
+		})
+		t.Run("a,b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a", "b"}, a, b)
+		})
+	})
+
+	t.Run("a?<b", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+
+		a.FollowsAndRequires(b)
+
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b", "a"}, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b"}, b)
+		})
+		t.Run("b,a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b", "a"}, b, a)
+		})
+		t.Run("a,b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b", "a"}, a, b)
+		})
+	})
+
+	t.Run("a<?b", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+
+		a.FollowsButDoesNotRequire(b)
+
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a"}, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b"}, b)
+		})
+		t.Run("b,a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b", "a"}, b, a)
+		})
+		t.Run("a,b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b", "a"}, a, b)
+		})
+	})
+
+	t.Run("a<c,b<c", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+		c := mutator("c")
+
+		a.AlwaysFollows(c)
+		b.AlwaysFollows(c)
+
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"c", "a", "b"}, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"c", "b", "a"}, b)
+		})
+		t.Run("c", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"c", "a", "b"}, c)
+		})
+		t.Run("a,b,c", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"c", "a", "b"}, a, b, c)
+		})
+	})
+
+	t.Run("a<?c,b<c,c<?d,d<?e", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+		c := mutator("c")
+		d := mutator("d")
+		e := mutator("e")
+
+		a.FollowsButDoesNotRequire(c)
+		b.FollowsAndRequires(c)
+		c.FollowsButDoesNotRequire(d)
+		d.FollowsButDoesNotRequire(e)
+
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a"}, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"c", "b"}, b)
+		})
+		t.Run("e,b,a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"e", "c", "b", "a"}, e, b, a)
+		})
+	})
+
+	t.Run("GroupFixturePreparers(a,b,c)", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+		c := mutator("c")
+
+		GroupFixturePreparers(a, b, c)
+
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a"}, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b"}, b)
+		})
+		t.Run("c", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"c"}, c)
+		})
+		t.Run("c,b,a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"c", "b", "a"}, c, b, a)
+		})
+	})
+
+	t.Run("OrderFixturePreparers(a,b,c)", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+		c := mutator("c")
+
+		OrderFixturePreparers(a, b, c)
+
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a"}, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"b"}, b)
+		})
+		t.Run("c", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"c"}, c)
+		})
+		t.Run("c,b,a", func(t *testing.T) {
+			checkTopologicalSort(t, []string{"a", "b", "c"}, c, b, a)
+		})
+	})
+
+	t.Run("LinkFixturePreparers(a,b,c)", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+		c := mutator("c")
+
+		LinkFixturePreparers(a, b, c)
+
+		expectedOrder := []string{"a", "b", "c"}
+		t.Run("a", func(t *testing.T) {
+			checkTopologicalSort(t, expectedOrder, a)
+		})
+		t.Run("b", func(t *testing.T) {
+			checkTopologicalSort(t, expectedOrder, b)
+		})
+		t.Run("c", func(t *testing.T) {
+			checkTopologicalSort(t, expectedOrder, c)
+		})
+		t.Run("c,b,a", func(t *testing.T) {
+			checkTopologicalSort(t, expectedOrder, c, b, a)
+		})
+	})
+
+	t.Run("cycle - a>?b?>c?>a?", func(t *testing.T) {
+		a := mutator("a")
+		b := mutator("b")
+		c := mutator("c")
+
+		OrderFixturePreparers(a, b, c)
+		c.PrecedesButDoesNotRequire(a)
+
+		defer func() {
+			if r := recover(); r != nil {
+				if err, ok := r.(string); ok {
+					if regexp.MustCompile("(?s:Cycle\\(s\\) detected.* a \\(.* b \\(.* c \\(.*)").MatchString(err) {
+						return
+					}
+					t.Errorf("unexpected failure: %s", err)
+					return
+				}
+				t.Errorf("unexpected failure: %s", r)
+				return
+			}
+			t.Errorf("expected error but did not detect one")
+		}()
+
+		expectedOrder := []string{"a", "b", "c"}
+		checkTopologicalSort(t, expectedOrder, a)
+	})
+}
+
+func checkTopologicalSort(t *testing.T, expected []string, preparers ...FixturePreparer) {
+	result := emptyTestFixtureFactory.Extend(
+		prepareForOrderTest,
+		FixtureWithRootAndroidBp(`
+				order {
+					name: "order"
+				}
+		`),
+	).
+		RunTest(t, preparers...)
+
+	orderModule := result.Module("order", "").(*orderModule)
+	list := orderModule.properties.List
+
+	result.AssertArrayString("order mismatch", expected, list)
+}
+
+var prepareForOrderTest = FixtureRegisterWithContext(func(ctx RegistrationContext) {
+	ctx.RegisterModuleType("order", func() Module {
+		module := &orderModule{}
+		module.AddProperties(&module.properties)
+		InitAndroidModule(module)
+		return module
+	})
+})
+
+type orderProperties struct {
+	List []string `blueprint:"mutated"`
+}
+
+type orderModule struct {
+	ModuleBase
+
+	properties orderProperties
+}
+
+func (o *orderModule) GenerateAndroidBuildActions(_ ModuleContext) {}
