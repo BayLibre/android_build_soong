@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aa07791_4ce3b38a",
+        "filename": "android/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-26T00:34:38Z",
+      "side": 1,
+      "message": "Added something in the main comment at the start of the file.",
+      "parentUuid": "55ba6ede_ac8749f8",
+      "revId": "aea479e607719fde4b83353d0ae0f15a8c492aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88643014_d8a42c17",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe35b9bf_4e2059e9",
+        "filename": "android/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-26T00:34:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88643014_d8a42c17",
+      "revId": "aea479e607719fde4b83353d0ae0f15a8c492aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78fba4b0_6dd3b194",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-02-24T22:37:12Z",
       "side": 1,
       "message": "Is it worth adding Fatalf() variants?",
+      "revId": "aea479e607719fde4b83353d0ae0f15a8c492aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d8315b_6b5f3afc",
+        "filename": "android/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-26T00:34:38Z",
+      "side": 1,
+      "message": "Possibly, but I have not yet come across a need for them and we can easily add them later.",
+      "parentUuid": "78fba4b0_6dd3b194",
       "revId": "aea479e607719fde4b83353d0ae0f15a8c492aee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -92,6 +146,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e8fb5a_d9baf674",
+        "filename": "android/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-26T00:34:38Z",
+      "side": 1,
+      "message": "Because the path may not be relative to the build directory. Renamed and documented.",
+      "parentUuid": "f7056e9c_6c81f159",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 467,
+        "endChar": 67
+      },
+      "revId": "aea479e607719fde4b83353d0ae0f15a8c492aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bf8919c_879ecc50",
@@ -105,6 +183,30 @@
       "writtenOn": "2021-02-24T22:37:12Z",
       "side": 1,
       "message": "Can you mention tests in the name of all of these?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "aea479e607719fde4b83353d0ae0f15a8c492aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30321a9c_5b6436ac",
+        "filename": "android/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-26T00:34:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bf8919c_879ecc50",
       "range": {
         "startLine": 51,
         "startChar": 4,
