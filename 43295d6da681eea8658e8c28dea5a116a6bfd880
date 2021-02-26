@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7f52a3e_aa76bb6b",
+        "filename": "ui/build/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-26T02:30:34Z",
+      "side": 1,
+      "message": "I don\u0027t see this file added.",
+      "revId": "43295d6da681eea8658e8c28dea5a116a6bfd880",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

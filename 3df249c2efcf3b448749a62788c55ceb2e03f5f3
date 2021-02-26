@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c92fe71_bbfa2746",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-26T02:30:34Z",
+      "side": 1,
+      "message": "If the shell resolves the variables then Ninja won\u0027t see a command line change because it sees the unexpanded command line.\n\nbuild.ninja changing when SOONG_DELVE changes won\u0027t be a problem, as long as there is a dependency on rewriting build.ninja.\n\nIf you move shared.ReexecWithDelveMaybe(delveListen, delvePath) after InitEnvironment you could directly read the environment here with getenv instead of using the command line variables, which would keep the references to SOONG_DELVE all here instead of spread everywhere.",
+      "parentUuid": "f9c86b89_ad038d30",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f42a00b_f193c36f",
         "filename": "shared/debug.go",
         "patchSetId": 5
@@ -279,6 +303,24 @@
       "side": 1,
       "message": "I thought it\u0027s a useful piece of functionality, but I don\u0027t insist. In the meantime, I added a unit test. PTAL.",
       "parentUuid": "90c74ea3_d0030355",
+      "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9055e5_3ac85cd8",
+        "filename": "shared/paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-02-26T02:30:34Z",
+      "side": 1,
+      "message": "Should still have godoc (generally all exported functions should) to describe the semantics.",
+      "parentUuid": "55f6289e_c665bcd2",
       "revId": "3df249c2efcf3b448749a62788c55ceb2e03f5f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
