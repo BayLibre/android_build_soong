@@ -638,9 +638,6 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	// Process all building blocks, from AAPT to certificates.
 	a.aaptBuildActions(ctx)
 
-	// The decision to enforce <uses-library> checks is made before adding implicit SDK libraries.
-	a.usesLibrary.freezeEnforceUsesLibraries()
-
 	// Add implicit SDK libraries to <uses-library> list.
 	for _, usesLib := range a.classLoaderContexts.UsesLibs() {
 		a.usesLibrary.addLib(usesLib, inList(usesLib, dexpreopt.OptionalCompatUsesLibs))
@@ -1266,12 +1263,6 @@ func (u *usesLibrary) enforceUsesLibraries() bool {
 	defaultEnforceUsesLibs := len(u.usesLibraryProperties.Uses_libs) > 0 ||
 		len(u.usesLibraryProperties.Optional_uses_libs) > 0
 	return BoolDefault(u.usesLibraryProperties.Enforce_uses_libs, u.enforce || defaultEnforceUsesLibs)
-}
-
-// Freeze the value of `enforce_uses_libs` based on the current values of `uses_libs` and `optional_uses_libs`.
-func (u *usesLibrary) freezeEnforceUsesLibraries() {
-	enforce := u.enforceUsesLibraries()
-	u.usesLibraryProperties.Enforce_uses_libs = &enforce
 }
 
 // verifyUsesLibrariesManifest checks the <uses-library> tags in an AndroidManifest.xml against the ones specified
