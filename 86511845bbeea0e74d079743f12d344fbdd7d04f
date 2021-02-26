@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "387b26ac_db50abb4",
+        "filename": "android/arch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T09:25:26Z",
+      "side": 1,
+      "message": "Sounds right, and sure thing -- added a bunch of comments.",
+      "parentUuid": "469d23a3_0bfce5cb",
+      "range": {
+        "startLine": 1633,
+        "startChar": 18,
+        "endLine": 1633,
+        "endChar": 32
+      },
+      "revId": "86511845bbeea0e74d079743f12d344fbdd7d04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "135cfb07_20235713",

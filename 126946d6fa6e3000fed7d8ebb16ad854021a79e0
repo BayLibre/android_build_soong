@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05da3aac_9d13bc1f",
+        "filename": "bp2build/cc_object_conversion_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T09:25:26Z",
+      "side": 1,
+      "message": "Added a test.",
+      "range": {
+        "startLine": 239,
+        "startChar": 40,
+        "endLine": 239,
+        "endChar": 77
+      },
+      "revId": "126946d6fa6e3000fed7d8ebb16ad854021a79e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

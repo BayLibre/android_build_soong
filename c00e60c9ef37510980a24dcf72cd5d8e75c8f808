@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daac21c7_15396270",
+        "filename": "android/arch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T09:25:26Z",
+      "side": 1,
+      "message": "Good call, done.",
+      "parentUuid": "83b8391c_f603448a",
+      "range": {
+        "startLine": 1637,
+        "startChar": 0,
+        "endLine": 1637,
+        "endChar": 34
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51b0de56_436f6cd8",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aaf698bf_fea8dfef",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T09:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b0de56_436f6cd8",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1fd35ab6_ad8d10b8",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-25T13:43:32Z",
       "side": 1,
       "message": "We appear to be missing ArchType Common (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch.go;l\u003d152-154;drc\u003d9448e8fd56e11dc1444644e8e498be2ccccd5839), though I don\u0027t think it\u0027ll affect us until we get to Java.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 1
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "087cd214_1c9c0ee1",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T09:25:26Z",
+      "side": 1,
+      "message": "Created a bug and added a TODO. Since we don\u0027t have a platform definition for common yet, and don\u0027t need it for Bionic, let\u0027s leave it out for now.",
+      "parentUuid": "1fd35ab6_ad8d10b8",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -106,6 +178,30 @@
       "writtenOn": "2021-02-25T13:43:32Z",
       "side": 1,
       "message": "not something to solve right now, but do we expect to always set this if there are arch-specific values?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 45
+      },
+      "revId": "c00e60c9ef37510980a24dcf72cd5d8e75c8f808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ba2c79_ca03023c",
+        "filename": "cc/object.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-02-26T09:25:26Z",
+      "side": 1,
+      "message": "Yes, because the default condition may be a non-nil value when there are arch-specific values.",
+      "parentUuid": "6747aa99_0f34b230",
       "range": {
         "startLine": 165,
         "startChar": 0,
