@@ -21,7 +21,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"sort"
+	"strings"
 )
 
 type envFileEntry struct{ Key, Value string }
@@ -89,6 +91,38 @@ func StaleEnvFile(filepath string, getenv func(string) string) (bool, error) {
 	}
 
 	return false, nil
+}
+
+func EnvFromFile(envFile string) (map[string]string, error) {
+	result := make(map[string]string)
+	data, err := ioutil.ReadFile(envFile)
+	if err != nil {
+		return result, err
+	}
+
+	var contents envFileData
+	err = json.Unmarshal(data, &contents)
+	if err != nil {
+		return result, err
+	}
+
+	for _, entry := range contents {
+		result[entry.Key] = entry.Value
+	}
+
+	return result, nil
+}
+func GetOsEnvironment() map[string]string {
+	envVars := make(map[string]string)
+
+	for _, v := range os.Environ() {
+		idx := strings.IndexRune(v, '=')
+		if idx != -1 {
+			envVars[v[:idx]] = v[idx+1:]
+		}
+	}
+
+	return envVars
 }
 
 // Implements sort.Interface so that we can use sort.Sort on envFileData arrays.
