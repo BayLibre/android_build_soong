@@ -33,6 +33,23 @@
       "message": "cc others for greater visibility",
       "revId": "358161232cc80d6bd9daf6b0c9fb042d04f41502",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60cb0d0_00705f26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-02-27T10:33:04Z",
+      "side": 1,
+      "message": "The failing test was already failing and could not have been caused by this.",
+      "revId": "358161232cc80d6bd9daf6b0c9fb042d04f41502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
