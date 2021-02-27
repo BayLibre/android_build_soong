@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee54e8c_c6e6c9a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-02-27T08:45:28Z",
+      "side": 1,
+      "message": "failed device boot test is unrelated\n",
+      "revId": "217e09a784689c43236f36100a69ef0cf72ee341",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
