@@ -191,6 +191,11 @@ type FixtureFactory interface {
 	//
 	// Shorthand for RunTest(t, android.FixtureWithRootAndroidBp(bp))
 	RunTestWithBp(t *testing.T, bp string) *TestResult
+
+	// Run the test with the supplied error handler.
+	//
+	// Shorthand for Fixture(t).SetErrorHandler(errorHandler).RunTest()
+	RunTestWithErrorHandler(t *testing.T, errorHandler FixtureErrorHandler) *TestResult
 }
 
 // Create a new FixtureFactory that will apply the supplied preparers.
@@ -352,9 +357,90 @@ func newSimpleFixturePreparer(preparer func(fixture *fixture)) FixturePreparer {
 	return &simpleFixturePreparer{function: preparer}
 }
 
+// FixtureErrorHandler determines how to respond to errors reported by the code under test.
+//
+// Some possible responses:
+// * Fail the test if any errors are reported, see FixtureExpectsNoErrors.
+// * Fail the test if at least one error that matches a pattern is not reported see
+//   FixtureExpectsAtLeastOneErrorMatchingPattern
+// * Fail the test if any unexpected errors are reported.
+//
+// Although at the moment all the error handlers are implemented as simply a wrapper around a
+// function this is defined as an interface to allow future enhancements, e.g. provide different
+// ways other than patterns to match an error and to combine handlers together.
+type FixtureErrorHandler interface {
+	// CheckErrors checks the errors reported.
+	//
+	// The supplied result can be used to access the state of the code under test just as the main
+	// body of the test would but if any errors other than ones expected are reported the state may
+	// be indeterminate.
+	CheckErrors(result *TestResult, errs []error)
+}
+
+type simpleErrorHandler struct {
+	function func(result *TestResult, errs []error)
+}
+
+func (h simpleErrorHandler) CheckErrors(result *TestResult, errs []error) {
+	h.function(result, errs)
+}
+
+// The default fixture error handler.
+//
+// Will fail the test immediately if any errors are reported.
+var FixtureExpectsNoErrors = FixtureCustomErrorHandler(
+	func(result *TestResult, errs []error) {
+		FailIfErrored(result.T, errs)
+	},
+)
+
+// FixtureExpectsAtLeastOneMatchingError returns an error handler that will cause the test to fail
+// if at least one error that matches the regular expression is not found.
+//
+// The test will be failed if:
+// * No errors are reported.
+// * One or more errors are reported but none match the pattern.
+//
+// The test will not fail if:
+// * Multiple errors are reported that do not match the pattern as long as one does match.
+func FixtureExpectsAtLeastOneErrorMatchingPattern(pattern string) FixtureErrorHandler {
+	return FixtureCustomErrorHandler(func(result *TestResult, errs []error) {
+		FailIfNoMatchingErrors(result.T, pattern, errs)
+	})
+}
+
+// FixtureExpectsOneErrorToMatchPerPattern returns an error handler that will cause the test to fail
+// if there are any unexpected errors.
+//
+// The test will be failed if:
+// * The number of errors reported does not exactly match the patterns.
+// * One or more of the reported errors do not match a pattern.
+// * No patterns are provided and one or more errors are reported.
+//
+// The test will not fail if:
+// * One or more of the patterns does not match an error.
+func FixtureExpectsAllErrorsToMatchAPattern(patterns []string) FixtureErrorHandler {
+	return FixtureCustomErrorHandler(func(result *TestResult, errs []error) {
+		CheckErrorsAgainstExpectations(result.T, errs, patterns)
+	})
+}
+
+// FixtureCustomErrorHandler creates a custom error handler
+func FixtureCustomErrorHandler(function func(result *TestResult, errs []error)) FixtureErrorHandler {
+	return simpleErrorHandler{
+		function: function,
+	}
+}
+
 // Fixture defines the test environment.
 type Fixture interface {
-	// Run the test, expecting no errors, returning a TestResult instance.
+	// Set the error handler that will be used to check any errors reported by the test.
+	//
+	// The default handlers is FixtureExpectsNoErrors which will fail the go test immediately if any
+	// errors are reported.
+	SetErrorHandler(errorHandler FixtureErrorHandler) Fixture
+
+	// Run the test, checking any errors reported and returning a TestResult instance.
 	RunTest() *TestResult
 }
 
@@ -473,6 +559,9 @@ func (f *fixtureFactory) Fixture(t *testing.T, preparers ...FixturePreparer) Fix
 		config:  config,
 		ctx:     ctx,
 		mockFS:  make(MockFS),
+
+		// Set the default error handler.
+		errorHandler: FixtureExpectsNoErrors,
 	}
 
 	for _, preparer := range f.preparers {
@@ -497,12 +586,34 @@ func (f *fixtureFactory) RunTestWithBp(t *testing.T, bp string) *TestResult {
 	return f.RunTest(t, FixtureWithRootAndroidBp(bp))
 }
 
+func (f *fixtureFactory) RunTestWithErrorHandler(t *testing.T, errorHandler FixtureErrorHandler) *TestResult {
+	t.Helper()
+	return f.Fixture(t).SetErrorHandler(errorHandler).RunTest()
+}
+
 type fixture struct {
+	// The factory used to create this fixture.
 	factory *fixtureFactory
-	t       *testing.T
-	config  Config
-	ctx     *TestContext
-	mockFS  MockFS
+
+	// The gotest state of the go test within which this was created.
+	t *testing.T
+
+	// The configuration prepared for this fixture.
+	config Config
+
+	// The test context prepared for this fixture.
+	ctx *TestContext
+
+	// The mock filesystem prepared for this fixture.
+	mockFS MockFS
+
+	// The error handler used to check the
+	errorHandler FixtureErrorHandler
+}
+
+func (f *fixture) SetErrorHandler(errorHandler FixtureErrorHandler) Fixture {
+	f.errorHandler = errorHandler
+	return f
 }
 
 func (f *fixture) RunTest() *TestResult {
@@ -525,9 +636,9 @@ func (f *fixture) RunTest() *TestResult {
 
 	ctx.Register()
 	_, errs := ctx.ParseBlueprintsFiles("ignored")
-	FailIfErrored(f.t, errs)
-	_, errs = ctx.PrepareBuildActions(f.config)
-	FailIfErrored(f.t, errs)
+	if len(errs) == 0 {
+		_, errs = ctx.PrepareBuildActions(f.config)
+	}
 
 	result := &TestResult{
 		TestHelper:  TestHelper{T: f.t},
@@ -535,6 +646,9 @@ func (f *fixture) RunTest() *TestResult {
 		fixture:     f,
 		Config:      f.config,
 	}
+
+	f.errorHandler.CheckErrors(result, errs)
+
 	return result
 }
 
