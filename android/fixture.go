@@ -710,3 +710,28 @@ func (r *TestResult) ResultForSubTest(t *testing.T) *TestResult {
 	r.T = t
 	return &subTestResult
 }
+
+var registeredFixturePreparers = []FixturePreparer{}
+
+// RegisterFixturePreparersForPackage registers all the preparers provided by a package.
+//
+// The order in which preparers are registered at runtime depends on the order in which the packages
+// are initialized. By registering preparers for each package during package initialization this
+// ensures that the AllRegisteredFixturePreparers() contains the preparers in the correct package
+// order.
+//
+// The supplied preparers must only include:
+// * Registration of mutators, pre-singletons and singletons that are used by the runtime. No test
+//   specific instances of them. That is because the AllRegisteredFixturePreparers() is used to
+//   check the order in which they are registered and additional test specific instances will break
+//   assumptions made in the test.
+// * Any other preparers that are of general use to tests in other packages, that includes real and
+//   mock module types, files, Android.bp files containing builtin module definitions, etc.
+func RegisterFixturePreparersForPackage(preparers ...FixturePreparer) {
+	registeredFixturePreparers = append(registeredFixturePreparers, preparers...)
+}
+
+// AllRegisteredFixturePreparers returns the list of all the registered fixture preparers.
+func AllRegisteredFixturePreparers() []FixturePreparer {
+	return registeredFixturePreparers
+}
