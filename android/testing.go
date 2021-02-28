@@ -48,7 +48,7 @@ func NewTestContext(config Config) *TestContext {
 	return ctx
 }
 
-var PrepareForTestWithArchMutator = FixturePreparers(
+var PrepareForTestWithArchMutator = GroupFixturePreparers(
 	// Configure architecture targets in the fixture config.
 	FixtureModifyConfig(modifyTestConfigToSupportArchMutator),
 
@@ -77,7 +77,7 @@ func init() {
 }
 
 // Prepares an integration test with build components from the android package.
-var PrepareForIntegrationTestWithAndroid = FixturePreparers(
+var PrepareForIntegrationTestWithAndroid = GroupFixturePreparers(
 	// Mutators. Must match order in mutator.go.
 	PrepareForTestWithArchMutator,
 	PrepareForTestWithDefaults,
