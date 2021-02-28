@@ -72,6 +72,10 @@ var PrepareForTestWithOverrides = FixtureRegisterWithContext(func(ctx Registrati
 	ctx.PostDepsMutators(RegisterOverridePostDepsMutators)
 })
 
+func init() {
+	RegisterFixturePreparersForPackage(PrepareForIntegrationTestWithAndroid)
+}
+
 // Prepares an integration test with build components from the android package.
 var PrepareForIntegrationTestWithAndroid = FixturePreparers(
 	// Mutators. Must match order in mutator.go.
