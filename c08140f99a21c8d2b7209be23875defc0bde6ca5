@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0012fe8b_dd430574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-01T02:53:07Z",
+      "side": 1,
+      "message": "If  every \"(apex) stubs\" providing lib declares \"availability\", then can we deprecate \"versions\"? With this change, only the latest stubs are used. So there\u0027s no reason to keep the list of versions and create stubs for each versions.",
+      "revId": "c08140f99a21c8d2b7209be23875defc0bde6ca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
