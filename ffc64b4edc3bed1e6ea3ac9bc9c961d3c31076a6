@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c848115d_34965988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-01T22:45:53Z",
+      "side": 1,
+      "message": "You could pass in the whole environment, but this seems fine too.",
+      "parentUuid": "2a44835c_54edfb88",
+      "revId": "ffc64b4edc3bed1e6ea3ac9bc9c961d3c31076a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0a13c47_6efba2ef",
