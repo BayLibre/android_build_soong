@@ -67,6 +67,24 @@
       "message": "If you allow me to draw parallels with Blaze: we had a similar kind of setup for refactoring common code from test setups (we called them \"Apparatus\"), but it ended up being not very useful and nowadays we just use well-known methods that setUp functions call and that sometimes call each other, for example to add C++ / Java support to our test source tree.",
       "revId": "358161232cc80d6bd9daf6b0c9fb042d04f41502",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c1a1055_07915dad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-01T14:48:07Z",
+      "side": 1,
+      "message": "It is difficult to know how closely this parallels what you did in Blaze and whether the lessons you learned there are applicable here but this approach certainly has a lot of benefits for Soong tests.\n\nWe have custom methods that duplicate the test run and error handling code in order to provide different configuration options. e.g. in cc/cc_test.go there are the following methods (all of which duplicate some configuration provided by one of the other methods).\n* testCc\n* testCcNoVndk\n* testCcNoProductVndk\n* testCcErrorWithConfig\n* testCcError\n* testCcErrorProductVndk\n\nWe have a couple of local, adhoc solutions to this configuration problem.\n\ne.g. in apex/apex_test.go the testDexpreoptWithApexes provides a transform function that can be used to transform a small part of the configuration.\n\napex/apex_test.go also has a testCustomizer mechanism which does something similar to this but can only modify the configuration and file system (which is less than half the problem).\n\nApart from the inconsistency and duplication this will also help with correctness. I have lost count of the number of tests I had to fix that were not actually testing the same behavior as the runtime because the test environment was different in some way, e.g. mutators in the wrong order, incorrectly named module types, etc. This mechanism will help improve consistency.\n\nI have a couple of changes coming up that will help:\n1. Adds support for handling errors.\n2. Will ensure correct ordering of those build components where order of registration is important, e.g. mutators (and singletons) in tests.",
+      "parentUuid": "c96e0bed_dd4a8cbb",
+      "revId": "358161232cc80d6bd9daf6b0c9fb042d04f41502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
