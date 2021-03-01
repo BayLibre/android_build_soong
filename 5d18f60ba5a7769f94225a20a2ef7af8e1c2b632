@@ -16,6 +16,24 @@
       "message": "This adds the ability to configure the error handler in a fixture. I\u0027m not sure whether the setting up of the error handler should be handled as just another form of FixturePreparer or treated specially as I do here. What do you think?",
       "revId": "5d18f60ba5a7769f94225a20a2ef7af8e1c2b632",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bca7ac27_e851fe82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-01T23:07:37Z",
+      "side": 1,
+      "message": "I\u0027d suggest adding a SetErrorHandler to FixtureFactory.  It doesn\u0027t seem like it fits well with Extend(), since you can only have one and it doesn\u0027t prepare anything, but I like it more in the builder pattern of the FixtureFactory than as an extra argument.",
+      "parentUuid": "de2d37db_511ed2ef",
+      "revId": "5d18f60ba5a7769f94225a20a2ef7af8e1c2b632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
