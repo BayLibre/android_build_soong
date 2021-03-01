@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57546ae9_859fbc7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-01T22:41:03Z",
+      "side": 1,
+      "message": "This isn\u0027t quite correct, isn\u0027t this generating the ninja file that builds soong_build from within soong_ui?  Maybe \"Embed minibp into soong_ui\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f7e4ba1_c2c6c92a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-01T22:41:03Z",
+      "side": 1,
+      "message": "build/blueprint/.github/workflows/build.xml had some tests that verify correct incremental build behaviors in blueprint:\n    - run: ./tests/test.sh\n    - run: ./tests/test_tree_tests.sh\n    - run: ./tests/test_tree_tests.sh -t\n\nsoong_build never had tests on its own, we relied on the similarities between minibp and soong_build to assume that soong_build worked.  Since you\u0027re changing how this works I think the testing story needs to change too.",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05639020_84a493fb",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-01T22:41:03Z",
+      "side": 1,
+      "message": "truncated comment",
+      "range": {
+        "startLine": 59,
+        "startChar": 72,
+        "endLine": 59,
+        "endChar": 77
+      },
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd8c471_5fe3174b",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-01T22:41:03Z",
+      "side": 1,
+      "message": "I don\u0027t think anything is going to use these two files since you\u0027re not running ninja to build or run minibp",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 90
+      },
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda8c375_ba85844d",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-01T22:41:03Z",
+      "side": 1,
+      "message": "Before this CL minibp was built and run by ninja, which would use the dependencies in .bootstrap/build.ninja.d to determine if minibp needed to rerun.  After this CL minibp will effectively be run on every build.  What does that do to the incremental null build time?",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
