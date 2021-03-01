@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de2d37db_511ed2ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-01T21:48:43Z",
+      "side": 1,
+      "message": "This adds the ability to configure the error handler in a fixture. I\u0027m not sure whether the setting up of the error handler should be handled as just another form of FixturePreparer or treated specially as I do here. What do you think?",
+      "revId": "5d18f60ba5a7769f94225a20a2ef7af8e1c2b632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
