@@ -16,6 +16,23 @@
       "message": "The extra argument to StaleEnvFile is unfortunate, but I couldn\u0027t find a better way; build.Config is neither linked into soong_build nor should it be, so I couldn\u0027t pass it in.",
       "revId": "ffc64b4edc3bed1e6ea3ac9bc9c961d3c31076a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ca231e_06336567",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-01T08:01:28Z",
+      "side": 1,
+      "message": "friendly ping",
+      "revId": "ffc64b4edc3bed1e6ea3ac9bc9c961d3c31076a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
