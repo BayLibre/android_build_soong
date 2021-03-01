@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3b6087_ae0f4ed4",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-01T19:04:15Z",
+      "side": 0,
+      "message": "Leave a TODO for doing something more clever than appending, esp as this means that handcrafted build files with load statements will not work?",
+      "revId": "37bd24a1db23b6c6765d356a163fa26f02298820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

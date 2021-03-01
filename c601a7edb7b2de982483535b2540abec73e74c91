@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fab1dc6d_afa0e847",
+        "filename": "android/bazel.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-01T19:04:15Z",
+      "side": 1,
+      "message": "Perhaps highlight the current interaction (e.g. override) between these two properties in comments?",
+      "revId": "c601a7edb7b2de982483535b2540abec73e74c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
