@@ -16,6 +16,24 @@
       "message": "If  every \"(apex) stubs\" providing lib declares \"availability\", then can we deprecate \"versions\"? With this change, only the latest stubs are used. So there\u0027s no reason to keep the list of versions and create stubs for each versions.",
       "revId": "c08140f99a21c8d2b7209be23875defc0bde6ca5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c598f41f_e8828878",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-01T03:12:21Z",
+      "side": 1,
+      "message": "Right. I\u0027d like to remove the versions property, which should be a follow-up task. I made this change first because removing the property is expected to be much bigger in size as we will need to touch multiple Android.bp files across the repo.",
+      "parentUuid": "0012fe8b_dd430574",
+      "revId": "c08140f99a21c8d2b7209be23875defc0bde6ca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
