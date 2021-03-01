@@ -33,6 +33,29 @@
       "message": "friendly ping",
       "revId": "ffc64b4edc3bed1e6ea3ac9bc9c961d3c31076a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a13c47_6efba2ef",
+        "filename": "env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-01T22:45:06Z",
+      "side": 1,
+      "message": "Comment needs updating (and there are other references to soong_env in comments in build/soong).",
+      "range": {
+        "startLine": 15,
+        "startChar": 61,
+        "endLine": 15,
+        "endChar": 88
+      },
+      "revId": "ffc64b4edc3bed1e6ea3ac9bc9c961d3c31076a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
