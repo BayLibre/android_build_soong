@@ -50,6 +50,23 @@
       "message": "The failing test was already failing and could not have been caused by this.",
       "revId": "358161232cc80d6bd9daf6b0c9fb042d04f41502",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96e0bed_dd4a8cbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-01T10:29:13Z",
+      "side": 1,
+      "message": "If you allow me to draw parallels with Blaze: we had a similar kind of setup for refactoring common code from test setups (we called them \"Apparatus\"), but it ended up being not very useful and nowadays we just use well-known methods that setUp functions call and that sometimes call each other, for example to add C++ / Java support to our test source tree.",
+      "revId": "358161232cc80d6bd9daf6b0c9fb042d04f41502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
