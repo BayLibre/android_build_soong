@@ -16,6 +16,24 @@
       "message": "Perhaps highlight the current interaction (e.g. override) between these two properties in comments?",
       "revId": "c601a7edb7b2de982483535b2540abec73e74c91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fcba8e5_7a11eac4",
+        "filename": "android/bazel.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-01T20:14:23Z",
+      "side": 1,
+      "message": "Added a note that setting both may result in a conflict.",
+      "parentUuid": "fab1dc6d_afa0e847",
+      "revId": "c601a7edb7b2de982483535b2540abec73e74c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
