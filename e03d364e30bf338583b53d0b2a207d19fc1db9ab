@@ -346,6 +346,30 @@
       },
       "revId": "e03d364e30bf338583b53d0b2a207d19fc1db9ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a089c61_96cc7bb8",
+        "filename": "cc/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-02T16:44:51Z",
+      "side": 1,
+      "message": "Maybe a future refactoring? FWIW I think this is still appropriate, because it does result in bazel actions being added to the ninja file (via aquery).",
+      "parentUuid": "13072a9f_b362fdee",
+      "range": {
+        "startLine": 55,
+        "startChar": 35,
+        "endLine": 55,
+        "endChar": 60
+      },
+      "revId": "e03d364e30bf338583b53d0b2a207d19fc1db9ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
