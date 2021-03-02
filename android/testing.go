@@ -52,25 +52,33 @@ var PrepareForTestWithArchMutator = GroupFixturePreparers(
 	// Configure architecture targets in the fixture config.
 	FixtureModifyConfig(modifyTestConfigToSupportArchMutator),
 
-	// Add the arch mutator to the context.
-	FixtureRegisterWithContext(func(ctx RegistrationContext) {
-		ctx.PreDepsMutators(registerArchMutator)
-	}),
+	// Add the arch mutators (os, image, arch) to the context.
+	FixtureRegisterWithContext(registerArchMutators),
 )
 
-var PrepareForTestWithDefaults = FixtureRegisterWithContext(func(ctx RegistrationContext) {
-	ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
-})
+func registerArchMutators(ctx RegistrationContext) {
+	ctx.PreDepsMutators(registerArchMutator)
+}
 
-var PrepareForTestWithComponentsMutator = FixtureRegisterWithContext(func(ctx RegistrationContext) {
+var PrepareForTestWithDefaults = FixtureRegisterWithContext(registerDefaultsPreArchMutators)
+
+func registerDefaultsPreArchMutators(ctx RegistrationContext) {
+	ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
+}
+
+var PrepareForTestWithComponentsMutator = FixtureRegisterWithContext(registerComponentsMutator)
+
+func registerComponentsMutator(ctx RegistrationContext) {
 	ctx.PreArchMutators(RegisterComponentsMutator)
-})
+}
 
 var PrepareForTestWithPrebuilts = FixtureRegisterWithContext(RegisterPrebuiltMutators)
 
-var PrepareForTestWithOverrides = FixtureRegisterWithContext(func(ctx RegistrationContext) {
+var PrepareForTestWithOverrides = FixtureRegisterWithContext(registerOverrideMutators)
+
+func registerOverrideMutators(ctx RegistrationContext) {
 	ctx.PostDepsMutators(RegisterOverridePostDepsMutators)
-})
+}
 
 func init() {
 	RegisterFixturePreparersForPackage(PrepareForIntegrationTestWithAndroid)
@@ -80,9 +88,12 @@ func init() {
 var PrepareForIntegrationTestWithAndroid = GroupFixturePreparers(
 	// Mutators. Must match order in mutator.go.
 	PrepareForTestWithArchMutator,
+	PrepareForTestWithVisibilityRuleChecker,
 	PrepareForTestWithDefaults,
 	PrepareForTestWithComponentsMutator,
 	PrepareForTestWithPrebuilts,
+	PrepareForTestWithVisibilityRuleGatherer,
+	PrepareForTestWithVisibilityRuleEnforcer,
 	PrepareForTestWithOverrides,
 
 	// Modules
