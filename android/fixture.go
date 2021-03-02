@@ -15,7 +15,9 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
+	"runtime"
 	"strings"
 	"testing"
 )
@@ -231,32 +233,26 @@ func (fs MockFS) AddToFixture() FixturePreparer {
 func FixtureModifyConfig(mutator func(config Config)) FixturePreparer {
 	return newSimpleFixturePreparer(func(f *fixture) {
 		mutator(f.config)
-	})
-}
-
-// Modify the config and context
-func FixtureModifyConfigAndContext(mutator func(config Config, ctx *TestContext)) FixturePreparer {
-	return newSimpleFixturePreparer(func(f *fixture) {
-		mutator(f.config, f.ctx)
-	})
+	}).setNameFromFunc(mutator)
 }
 
 // Modify the context
 func FixtureModifyContext(mutator func(ctx *TestContext)) FixturePreparer {
 	return newSimpleFixturePreparer(func(f *fixture) {
 		mutator(f.ctx)
-	})
+	}).setNameFromFunc(mutator)
 }
 
 func FixtureRegisterWithContext(registeringFunc func(ctx RegistrationContext)) FixturePreparer {
-	return FixtureModifyContext(func(ctx *TestContext) { registeringFunc(ctx) })
+	return FixtureModifyContext(func(ctx *TestContext) { registeringFunc(ctx) }).
+		setNameFromFunc(registeringFunc)
 }
 
 // Modify the mock filesystem
 func FixtureModifyMockFS(mutator func(fs MockFS)) FixturePreparer {
 	return newSimpleFixturePreparer(func(f *fixture) {
 		mutator(f.mockFS)
-	})
+	}).setNameFromFunc(mutator)
 }
 
 // Merge the supplied file system into the mock filesystem.
@@ -265,14 +261,14 @@ func FixtureModifyMockFS(mutator func(fs MockFS)) FixturePreparer {
 func FixtureMergeMockFs(mockFS MockFS) FixturePreparer {
 	return FixtureModifyMockFS(func(fs MockFS) {
 		fs.Merge(mockFS)
-	})
+	}).SetName(fmt.Sprintf("MockFS{%s}", strings.Join(SortedStringKeys(mockFS), ",")))
 }
 
 // Add a file to the mock filesystem
 func FixtureAddFile(path string, contents []byte) FixturePreparer {
 	return FixtureModifyMockFS(func(fs MockFS) {
 		fs[path] = contents
-	})
+	}).SetName(fmt.Sprintf("MockFS{%s}", path))
 }
 
 // Add a text file to the mock filesystem
@@ -291,15 +287,29 @@ func FixtureWithRootAndroidBp(contents string) FixturePreparer {
 // Before preparing the fixture the list of preparers is flattened by replacing each
 // instance of GroupFixturePreparers with its contents.
 func GroupFixturePreparers(preparers ...FixturePreparer) FixturePreparer {
-	return &compositeFixturePreparer{dedupAndFlattenPreparers(nil, preparers)}
+	p := &compositeFixturePreparer{
+		preparers: dedupAndFlattenPreparers(nil, preparers),
+	}
+	p.self = p
+	p.debug()
+	return p
 }
 
 type simpleFixturePreparerVisitor func(preparer *simpleFixturePreparer)
 
 // FixturePreparer is an opaque interface that can change a fixture.
 type FixturePreparer interface {
+	// SetName sets the name, used for debugging and error reporting.
+	SetName(name string) FixturePreparer
+
+	// Name gets the name of the preparer.
+	Name() string
+
 	// visit calls the supplied visitor with each *simpleFixturePreparer instances in this preparer,
 	visit(simpleFixturePreparerVisitor)
+
+	// setNameFromFunc sets the name to the name of the function.
+	setNameFromFunc(function interface{}) FixturePreparer
 }
 
 type fixturePreparers []FixturePreparer
@@ -332,6 +342,7 @@ func dedupAndFlattenPreparers(base []*simpleFixturePreparer, preparers fixturePr
 	}
 
 	preparers.visit(func(preparer *simpleFixturePreparer) {
+		fmt.Printf("PAUL: %s\n", preparer.String())
 		if _, seen := visited[preparer]; !seen {
 			visited[preparer] = struct{}{}
 			list = append(list, preparer)
@@ -340,8 +351,64 @@ func dedupAndFlattenPreparers(base []*simpleFixturePreparer, preparers fixturePr
 	return list
 }
 
+type baseFixturePreparer struct {
+	// A reference to the FixturePreparer implementation that embeds this structure.
+	self         FixturePreparer
+	name         string
+	creationFile string
+	creationLine int
+}
+
+// The path to this file.
+//
+// Used to find the first stack frame for a function defined outside this file.
+var _, fixtureThisFile, _, _ = runtime.Caller(0)
+
+func (b *baseFixturePreparer) debug() {
+	// Scan back through the callers (start with the caller of this method) trying to find a method
+	// that is not in this file.
+	for i := 1; i < 10; i += 1 {
+		_, file, line, _ := runtime.Caller(i)
+		if file != fixtureThisFile {
+			b.creationFile = file
+			b.creationLine = line
+			return
+		}
+	}
+
+	panic("Could not find stack frame that was not within this file")
+}
+
+func (b *baseFixturePreparer) SetName(name string) FixturePreparer {
+	b.name = name
+	return b.self
+}
+
+func (b *baseFixturePreparer) Name() string {
+	return b.name
+}
+
+func (b *baseFixturePreparer) setNameFromFunc(function interface{}) FixturePreparer {
+	name := runtime.FuncForPC(reflect.ValueOf(function).Pointer()).Name()
+	// Discard the package path.
+	index := strings.LastIndex(name, "/")
+	if index != -1 {
+		name = name[index+1:]
+	}
+	return b.SetName(name)
+}
+
+func (b *baseFixturePreparer) String() string {
+	name := b.name
+	if name == "" {
+		name = "<unnamed>"
+	}
+	return fmt.Sprintf("%s (%s:%d)", name, b.creationFile, b.creationLine)
+}
+
 // compositeFixturePreparer is a FixturePreparer created from a list of fixture preparers.
 type compositeFixturePreparer struct {
+	baseFixturePreparer
 	preparers []*simpleFixturePreparer
 }
 
@@ -353,6 +420,7 @@ func (c *compositeFixturePreparer) visit(visitor simpleFixturePreparerVisitor) {
 
 // simpleFixturePreparer is a FixturePreparer that applies a function to a fixture.
 type simpleFixturePreparer struct {
+	baseFixturePreparer
 	function func(fixture *fixture)
 }
 
@@ -361,7 +429,10 @@ func (s *simpleFixturePreparer) visit(visitor simpleFixturePreparerVisitor) {
 }
 
 func newSimpleFixturePreparer(preparer func(fixture *fixture)) FixturePreparer {
-	return &simpleFixturePreparer{function: preparer}
+	p := &simpleFixturePreparer{function: preparer}
+	p.self = p
+	p.debug()
+	return p
 }
 
 // FixtureErrorHandler determines how to respond to errors reported by the code under test.
