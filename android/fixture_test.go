@@ -47,3 +47,78 @@ func TestFixtureDedup(t *testing.T) {
 	h.AssertDeepEquals("preparers called in wrong order",
 		[]string{"preparer1", "preparer2", "preparer4", "preparer3"}, list)
 }
+
+func TestFixtureDebug(t *testing.T) {
+	checkName := func(t *testing.T, preparer FixturePreparer, expectedName string) {
+		h := TestHelper{t}
+		h.Helper()
+
+		h.AssertStringEquals("debug name", expectedName, preparer.Name())
+	}
+
+	// Check that it correctly records a named function's name, with package but with path.
+	t.Run("FixtureRegisterWithContext - named", func(t *testing.T) {
+		preparer := FixtureRegisterWithContext(RegisterPackageBuildComponents).(*simpleFixturePreparer)
+		checkName(t, preparer, "android.RegisterPackageBuildComponents")
+	})
+
+	// The next set of  tests just check to make sure that the name has been set from the function so
+	// use an anonymous function as that is simplest.
+
+	// Check that the name of the preparer has been set to local anonymous.
+	ensureLocalAnonymous := func(t *testing.T, preparer FixturePreparer) {
+		h := TestHelper{t}
+		h.Helper()
+
+		h.AssertStringDoesContain("debug name", preparer.Name(), "android.TestFixtureDebug")
+	}
+
+	t.Run("FixtureRegisterWithContext", func(t *testing.T) {
+		preparer := FixtureRegisterWithContext(func(ctx RegistrationContext) {})
+		ensureLocalAnonymous(t, preparer)
+	})
+
+	t.Run("FixtureModifyConfig", func(t *testing.T) {
+		preparer := FixtureModifyConfig(func(Config) {})
+		ensureLocalAnonymous(t, preparer)
+	})
+
+	t.Run("FixtureModifyContext", func(t *testing.T) {
+		preparer := FixtureModifyContext(func(*TestContext) {})
+		ensureLocalAnonymous(t, preparer)
+	})
+
+	t.Run("FixtureModifyMockFS", func(t *testing.T) {
+		preparer := FixtureModifyMockFS(func(MockFS) {})
+		ensureLocalAnonymous(t, preparer)
+	})
+
+	// The next set of tests check that the name is set from the files being added to the mock file
+	// system.
+
+	t.Run("FixtureMergeMockFs", func(t *testing.T) {
+		preparer := FixtureMergeMockFs(MockFS{"path1": nil, "path2": nil, "other": nil})
+		checkName(t, preparer, "MockFS{other,path1,path2}")
+	})
+
+	t.Run("FixtureAddTextFile", func(t *testing.T) {
+		preparer := FixtureAddTextFile("path", "contents")
+		checkName(t, preparer, "MockFS{path}")
+	})
+
+	t.Run("FixtureAddFile", func(t *testing.T) {
+		preparer := FixtureAddFile("path", []byte("contents"))
+		checkName(t, preparer, "MockFS{path}")
+	})
+
+	t.Run("FixtureWithRootAndroidBp", func(t *testing.T) {
+		preparer := FixtureWithRootAndroidBp("contents")
+		checkName(t, preparer, "MockFS{Android.bp}")
+	})
+
+	// Check that the name can be overridden.
+	t.Run("Custom Name", func(t *testing.T) {
+		preparer := FixtureAddFile("path", []byte("contents")).SetName("FilesForMe")
+		checkName(t, preparer, "FilesForMe")
+	})
+}
