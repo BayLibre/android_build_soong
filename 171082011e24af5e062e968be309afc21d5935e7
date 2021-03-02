@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39bf70d1_2216d3c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-02T14:43:07Z",
+      "side": 1,
+      "message": "This CL was made much clearer after reading through b/146437378 and aosp/1204827 for the background on sandboxing soong_build.",
+      "revId": "171082011e24af5e062e968be309afc21d5935e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
