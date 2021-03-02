@@ -16,6 +16,23 @@
       "message": "+chh in case there\u0027s something I am missing, but I am pretty sure that we shouldn\u0027t be running the absl checks. Thanks for sending this CL.",
       "revId": "a3014f1c133fcfe017ae3879c1da8ea85a4d0e83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a00e62_ac300be9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-03-02T20:22:03Z",
+      "side": 1,
+      "message": "Thanks. It shouldn\u0027t be enabled globally. I found a few projects mentioned abseil. They can enable abseil checks locally if they want.\n",
+      "revId": "a3014f1c133fcfe017ae3879c1da8ea85a4d0e83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
