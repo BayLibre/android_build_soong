@@ -1128,12 +1128,7 @@ func (c *Module) IsLlndkPublic() bool {
 func (c *Module) isImplementationForLLNDKPublic() bool {
 	library, _ := c.library.(*libraryDecorator)
 	return library != nil && library.hasLLNDKStubs() &&
-		(!Bool(library.Properties.Llndk.Private) ||
-			// TODO(b/170784825): until the LLNDK properties are moved into the cc_library,
-			// the non-Vendor variants of the cc_library don't know if the corresponding
-			// llndk_library set private: true.  Since libft2 is the only private LLNDK
-			// library, hardcode it during the transition.
-			c.BaseModuleName() != "libft2")
+		!Bool(library.Properties.Llndk.Private)
 }
 
 // Returns true for LLNDK-private, VNDK-SP-private, and VNDK-core-private.
