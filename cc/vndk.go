@@ -423,13 +423,22 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 	lib, isLib := m.linker.(*libraryDecorator)
 	prebuiltLib, isPrebuiltLib := m.linker.(*prebuiltLibraryLinker)
 
-	if m.UseVndk() && isLib && lib.hasLLNDKStubs() {
+	if m.UseVndk() && isLib && lib.hasVestigialLLNDKLibrary() {
 		llndk := mctx.AddVariationDependencies(nil, llndkStubDepTag, String(lib.Properties.Llndk_stubs))
 		mergeLLNDKToLib(llndk[0].(*Module), &lib.Properties.Llndk, &lib.flagExporter)
 	}
-	if m.UseVndk() && isPrebuiltLib && prebuiltLib.hasLLNDKStubs() {
+	if m.UseVndk() && isPrebuiltLib && prebuiltLib.hasVestigialLLNDKLibrary() {
 		llndk := mctx.AddVariationDependencies(nil, llndkStubDepTag, String(prebuiltLib.Properties.Llndk_stubs))
 		mergeLLNDKToLib(llndk[0].(*Module), &prebuiltLib.Properties.Llndk, &prebuiltLib.flagExporter)
+	}
+
+	if m.UseVndk() && isLib && lib.hasLLNDKStubs() && !lib.hasVestigialLLNDKLibrary() {
+		m.VendorProperties.IsLLNDK = true
+		m.VendorProperties.IsVNDKPrivate = Bool(lib.Properties.Llndk.Private)
+	}
+	if m.UseVndk() && isPrebuiltLib && prebuiltLib.hasLLNDKStubs() && !prebuiltLib.hasVestigialLLNDKLibrary() {
+		m.VendorProperties.IsLLNDK = true
+		m.VendorProperties.IsVNDKPrivate = Bool(prebuiltLib.Properties.Llndk.Private)
 	}
 
 	if (isLib && lib.buildShared()) || (isPrebuiltLib && prebuiltLib.buildShared()) {
