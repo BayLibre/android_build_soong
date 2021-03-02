@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc6ac7b_fd3361f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-02T11:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57546ae9_859fbc7e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f7e4ba1_c2c6c92a",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "747f59ee_8cbdbb7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-02T11:55:37Z",
+      "side": 1,
+      "message": "So, I tried. I came up with these patches to make these tests work:\n\nhttps://paste.googleplex.com/5373575897808896\nhttps://paste.googleplex.com/6165098910449664\n\nbut they are excessively ugly and then after this, the tests will say\n\nFAILED: .bootstrap/blueprint-parser/test/test.a\nGOROOT\u003d\u0027/usr/lib/google-golang\u0027 /usr/lib/google-golang/pkg/tool/linux_amd64/compile -c 8 -o .bootstrap/blueprint-parser/test/test.a.tmp -p main -complete -I ./.bootstrap/blueprint-parser/test -pack .bootstrap/blueprint-parser/test/test.go \u0026\u0026 if cmp --quiet .bootstrap/blueprint-parser/test/test.a.tmp .bootstrap/blueprint-parser/test/test.a; then rm .bootstrap/blueprint-parser/test/test.a.tmp; else mv -f .bootstrap/blueprint-parser/test/test.a.tmp .bootstrap/blueprint-parser/test/test.a; fi\n.bootstrap/blueprint-parser/test/test.go:82:36: cannot use matchString{} (type matchString) as type testing.testDeps in argument to testing.MainStart:\n        matchString does not implement testing.testDeps (missing SetPanicOnExit0 method)\n[19/37] compile .bootstrap/blueprint-pathtools/test/test.a\n\nGiven that the shell magic will go away with aosp/1609218 anyway, I recommend not worrying about Blueprint\u0027s tests now and resurrect them once these refactorings are done.\n\nWDYT?",
+      "parentUuid": "6f7e4ba1_c2c6c92a",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05639020_84a493fb",
         "filename": "ui/build/soong.go",
         "patchSetId": 9
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-01T22:41:03Z",
       "side": 1,
       "message": "truncated comment",
+      "range": {
+        "startLine": 59,
+        "startChar": 72,
+        "endLine": 59,
+        "endChar": 77
+      },
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aab375e_9f43cf4c",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-02T11:55:37Z",
+      "side": 1,
+      "message": "Probably some sort of merge conflict? Done.",
+      "parentUuid": "05639020_84a493fb",
       "range": {
         "startLine": 59,
         "startChar": 72,
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9501538b_acf12111",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-02T11:55:37Z",
+      "side": 1,
+      "message": "I thought .bootstrap/build.ninja.d is also used in the Ninja invocation that builds and runs soong_build. Isn\u0027t that the case?\n\nAs for .minibootstrap/build-globs.ninja, honestly, I\u0027m not sure. I wanted to look at why there is globbing in the second build after a null build, but I wanted to put that off until after this is resolved. So if you don\u0027t mind, I\u0027ll leave this here.",
+      "parentUuid": "ccd8c471_5fe3174b",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 90
+      },
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eda8c375_ba85844d",
         "filename": "ui/build/soong.go",
         "patchSetId": 9
@@ -100,6 +190,24 @@
       "writtenOn": "2021-03-01T22:41:03Z",
       "side": 1,
       "message": "Before this CL minibp was built and run by ninja, which would use the dependencies in .bootstrap/build.ninja.d to determine if minibp needed to rerun.  After this CL minibp will effectively be run on every build.  What does that do to the incremental null build time?",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90676371_1a16a134",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-02T11:55:37Z",
+      "side": 1,
+      "message": "There is no perceptible change: it was 4 seconds before and it\u0027s 4 seconds after.",
+      "parentUuid": "eda8c375_ba85844d",
       "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
