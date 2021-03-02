@@ -105,11 +105,6 @@ func runSoong(ctx Context, config Config) {
 	soongBuildEnv.Set("BAZEL_WORKSPACE", absPath(ctx, "."))
 	soongBuildEnv.Set("BAZEL_METRICS_DIR", config.BazelMetricsDir())
 
-	if os.Getenv("SOONG_DELVE") != "" {
-		// SOONG_DELVE is already in cmd.Environment
-		soongBuildEnv.Set("SOONG_DELVE_PATH", shared.ResolveDelveBinary())
-	}
-
 	writeEnvironmentFile(ctx, envFile, soongBuildEnv.AsMap())
 
 	func() {
@@ -173,6 +168,11 @@ func runSoong(ctx Context, config Config) {
 			"-f", filepath.Join(config.SoongOutDir(), file))
 
 		cmd.Environment.Set("SOONG_OUTDIR", config.SoongOutDir())
+		if os.Getenv("SOONG_DELVE") != "" {
+			// SOONG_DELVE is already in cmd.Environment
+			cmd.Environment.Set("SOONG_DELVE_PATH", shared.ResolveDelveBinary())
+		}
+
 		cmd.Sandbox = soongSandbox
 		cmd.RunAndStreamOrFatal()
 	}
