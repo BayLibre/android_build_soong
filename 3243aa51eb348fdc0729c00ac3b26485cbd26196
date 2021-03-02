@@ -16,6 +16,41 @@
       "message": "Got it. So it appears that \"m dist\" (but not m) builds soong_ui with Ninja, which choked on the extra android/soong/env dependency, which Microfactory was fine with.\n\nMoved env.go to shared/ (because it\u0027s shared) \n\nJin, can you take a look so that I don\u0027t have to wait another day until Colin wakes up?",
       "revId": "3243aa51eb348fdc0729c00ac3b26485cbd26196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bead098d_64978757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-02T08:51:22Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "08972b26_2dd5d36a",
+      "revId": "3243aa51eb348fdc0729c00ac3b26485cbd26196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91b5ffb_0d419ecc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-02T08:51:22Z",
+      "side": 1,
+      "message": "\\o/ for simplification.",
+      "revId": "3243aa51eb348fdc0729c00ac3b26485cbd26196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
