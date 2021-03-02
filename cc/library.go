@@ -1668,6 +1668,13 @@ func (library *libraryDecorator) HeaderOnly() {
 
 // hasLLNDKStubs returns true if this cc_library module has a variant that will build LLNDK stubs.
 func (library *libraryDecorator) hasLLNDKStubs() bool {
+	return library.hasVestigialLLNDKLibrary() || String(library.Properties.Llndk.Symbol_file) != ""
+}
+
+// hasVestigialLLNDKLibrary returns true if this cc_library module has a corresponding llndk_library
+// module containing properties describing the LLNDK variant.
+// TODO(b/170784825): remove this once there are no more llndk_library modules.
+func (library *libraryDecorator) hasVestigialLLNDKLibrary() bool {
 	return String(library.Properties.Llndk_stubs) != ""
 }
 

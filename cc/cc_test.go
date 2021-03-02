@@ -2824,6 +2824,66 @@ func TestLlndkLibrary(t *testing.T) {
 	checkEquals(t, "override apiLevel for versioned stubs", "1", params.Args["apiLevel"])
 }
 
+func TestEmbeddedLlndkLibrary(t *testing.T) {
+	ctx := testCc(t, `
+	cc_library {
+		name: "libllndk",
+		stubs: { versions: ["1", "2"] },
+		llndk: {
+			symbol_file: "libllndk.map.txt",
+		},
+	}
+
+	cc_prebuilt_library_shared {
+		name: "libllndkprebuilt",
+		stubs: { versions: ["1", "2"] },
+		llndk: {
+			symbol_file: "libllndkprebuilt.map.txt",
+		},
+	}
+
+	cc_library {
+		name: "libllndk_with_external_headers",
+		stubs: { versions: ["1", "2"] },
+		llndk_stubs: "libllndk_with_external_headers.llndk",
+		header_libs: ["libexternal_headers"],
+		export_header_lib_headers: ["libexternal_headers"],
+	}
+	llndk_library {
+		name: "libllndk_with_external_headers.llndk",
+	}
+	cc_library_headers {
+		name: "libexternal_headers",
+		export_include_dirs: ["include"],
+		vendor_available: true,
+	}
+	`)
+	actual := ctx.ModuleVariantsForTests("libllndk")
+	for i := 0; i < len(actual); i++ {
+		if !strings.HasPrefix(actual[i], "android_vendor.29_") {
+			actual = append(actual[:i], actual[i+1:]...)
+			i--
+		}
+	}
+	expected := []string{
+		"android_vendor.29_arm64_armv8-a_shared_1",
+		"android_vendor.29_arm64_armv8-a_shared_2",
+		"android_vendor.29_arm64_armv8-a_shared_current",
+		"android_vendor.29_arm64_armv8-a_shared",
+		"android_vendor.29_arm_armv7-a-neon_shared_1",
+		"android_vendor.29_arm_armv7-a-neon_shared_2",
+		"android_vendor.29_arm_armv7-a-neon_shared_current",
+		"android_vendor.29_arm_armv7-a-neon_shared",
+	}
+	checkEquals(t, "variants for llndk stubs", expected, actual)
+
+	params := ctx.ModuleForTests("libllndk", "android_vendor.29_arm_armv7-a-neon_shared").Description("generate stub")
+	checkEquals(t, "use VNDK version for default stubs", "current", params.Args["apiLevel"])
+
+	params = ctx.ModuleForTests("libllndk", "android_vendor.29_arm_armv7-a-neon_shared_1").Description("generate stub")
+	checkEquals(t, "override apiLevel for versioned stubs", "1", params.Args["apiLevel"])
+}
+
 func TestLlndkHeaders(t *testing.T) {
 	ctx := testCc(t, `
 	llndk_headers {
