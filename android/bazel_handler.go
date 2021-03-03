@@ -145,13 +145,7 @@ func (bazelCtx *bazelContext) GetAllFiles(label string, archType ArchType) ([]st
 }
 
 func (bazelCtx *bazelContext) GetCcObjectFiles(label string, archType ArchType) ([]string, bool) {
-	result, ok := bazelCtx.cquery(label, getCcObjectFiles, archType)
-	if ok {
-		bazelOutput := strings.TrimSpace(result)
-		return strings.Split(bazelOutput, ", "), true
-	} else {
-		return nil, false
-	}
+	return bazelCtx.GetAllFiles(label, archType)
 }
 
 func (n noopBazelContext) GetAllFiles(label string, archType ArchType) ([]string, bool) {
