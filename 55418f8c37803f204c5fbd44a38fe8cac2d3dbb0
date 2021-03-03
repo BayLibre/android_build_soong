@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0f17fe_5cc1aded",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2021-03-03T16:23:29Z",
+      "side": 1,
+      "message": "@Anton PTAL? Somehow people keep sending me changes on this file, which I have no idea about...",
+      "revId": "55418f8c37803f204c5fbd44a38fe8cac2d3dbb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
