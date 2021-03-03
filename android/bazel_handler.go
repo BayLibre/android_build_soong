@@ -36,7 +36,6 @@ type CqueryRequestType int
 
 const (
 	getAllFiles CqueryRequestType = iota
-	getCcObjectFiles
 	getAllFilesAndCcObjectFiles
 )
 
@@ -54,10 +53,6 @@ type BazelContext interface {
 
 	// Returns result files built by building the given bazel target label.
 	GetAllFiles(label string, archType ArchType) ([]string, bool)
-
-	// Returns object files produced by compiling the given cc-related target.
-	// Retrieves these files from Bazel's CcInfo provider.
-	GetCcObjectFiles(label string, archType ArchType) ([]string, bool)
 
 	// Returns the results of GetAllFiles and GetCcObjectFiles in a single query (in that order).
 	GetAllFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool)
@@ -114,11 +109,6 @@ func (m MockBazelContext) GetAllFiles(label string, archType ArchType) ([]string
 	return result, ok
 }
 
-func (m MockBazelContext) GetCcObjectFiles(label string, archType ArchType) ([]string, bool) {
-	result, ok := m.AllFiles[label]
-	return result, ok
-}
-
 func (m MockBazelContext) GetAllFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool) {
 	result, ok := m.AllFiles[label]
 	return result, result, ok
@@ -152,16 +142,6 @@ func (bazelCtx *bazelContext) GetAllFiles(label string, archType ArchType) ([]st
 	}
 }
 
-func (bazelCtx *bazelContext) GetCcObjectFiles(label string, archType ArchType) ([]string, bool) {
-	result, ok := bazelCtx.cquery(label, getCcObjectFiles, archType)
-	if ok {
-		bazelOutput := strings.TrimSpace(result)
-		return strings.Split(bazelOutput, ", "), true
-	} else {
-		return nil, false
-	}
-}
-
 func (bazelCtx *bazelContext) GetAllFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool) {
 	var allFiles []string
 	var ccObjects []string
@@ -179,10 +159,6 @@ func (bazelCtx *bazelContext) GetAllFilesAndCcObjectFiles(label string, archType
 }
 
 func (n noopBazelContext) GetAllFiles(label string, archType ArchType) ([]string, bool) {
-	panic("unimplemented")
-}
-
-func (n noopBazelContext) GetCcObjectFiles(label string, archType ArchType) ([]string, bool) {
 	panic("unimplemented")
 }
 
@@ -331,8 +307,13 @@ local_repository(
     name = "sourceroot",
     path = "%s",
 )
+
+local_repository(
+    name = "rules_cc",
+    path = "%s/build/bazel/rules_cc",
+)
 `
-	return []byte(fmt.Sprintf(formatString, context.workspaceDir))
+	return []byte(fmt.Sprintf(formatString, context.workspaceDir, context.workspaceDir))
 }
 
 func (context *bazelContext) mainBzlFileContents() []byte {
@@ -497,10 +478,6 @@ getAllFilesLabels = {
   %s
 }
 
-getCcObjectFilesLabels = {
-  %s
-}
-
 getAllFilesAndCcObjectFilesLabels = {
   %s
 }
@@ -538,8 +515,6 @@ def format(target):
   id_string = str(target.label) + "|" + get_arch(target)
   if id_string in getAllFilesLabels:
     return id_string + ">>" + ', '.join(get_all_files(target))
-  elif id_string in getCcObjectFilesLabels:
-    return id_string + ">>" + ', '.join(get_cc_object_files(target))
   elif id_string in getAllFilesAndCcObjectFilesLabels:
     return id_string + ">>" + ', '.join(get_all_files(target)) + "|" + ', '.join(get_cc_object_files(target))
   else:
@@ -548,7 +523,6 @@ def format(target):
     return id_string + ">>NONE"
 `
 	var getAllFilesDeps []string = nil
-	var getCcObjectFilesDeps []string = nil
 	var getAllFilesAndCcObjectFilesDeps []string = nil
 
 	for val, _ := range context.requests {
@@ -557,17 +531,14 @@ def format(target):
 		switch val.requestType {
 		case getAllFiles:
 			getAllFilesDeps = append(getAllFilesDeps, mapEntryString)
-		case getCcObjectFiles:
-			getCcObjectFilesDeps = append(getCcObjectFilesDeps, mapEntryString)
 		case getAllFilesAndCcObjectFiles:
 			getAllFilesAndCcObjectFilesDeps = append(getAllFilesAndCcObjectFilesDeps, mapEntryString)
 		}
 	}
 	getAllFilesDepsString := strings.Join(getAllFilesDeps, ",\n  ")
-	getCcObjectFilesDepsString := strings.Join(getCcObjectFilesDeps, ",\n  ")
 	getAllFilesAndCcObjectFilesDepsString := strings.Join(getAllFilesAndCcObjectFilesDeps, ",\n  ")
 
-	return []byte(fmt.Sprintf(formatString, getAllFilesDepsString, getCcObjectFilesDepsString,
+	return []byte(fmt.Sprintf(formatString, getAllFilesDepsString,
 		getAllFilesAndCcObjectFilesDepsString))
 }
 

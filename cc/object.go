@@ -54,7 +54,7 @@ type objectBazelHandler struct {
 
 func (handler *objectBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
 	bazelCtx := ctx.Config().BazelContext
-	objPaths, ok := bazelCtx.GetCcObjectFiles(label, ctx.Arch().ArchType)
+	objPaths, ok := bazelCtx.GetAllFiles(label, ctx.Arch().ArchType)
 	if ok {
 		if len(objPaths) != 1 {
 			ctx.ModuleErrorf("expected exactly one object file for '%s', but got %s", label, objPaths)
