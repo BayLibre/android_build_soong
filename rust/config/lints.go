@@ -46,6 +46,7 @@ var (
 		"-A deprecated",
 		"-D missing-docs",
 		"-D warnings",
+		"-A non-snake-case",
 	}
 	// Default Clippy lints. These are applied on top of defaultRustcLints.
 	// It should be assumed that any warning lint will be promoted to a
