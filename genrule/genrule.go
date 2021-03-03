@@ -35,7 +35,12 @@ import (
 
 func init() {
 	RegisterGenruleBuildComponents(android.InitRegistrationContext)
+	android.RegisterFixturePreparersForPackage(PrepareForIntegrationTestWithGenrule)
 }
+
+var PrepareForIntegrationTestWithGenrule = android.GroupFixturePreparers(
+	android.FixtureRegisterWithContext(RegisterGenruleBuildComponents),
+)
 
 func RegisterGenruleBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("genrule_defaults", defaultsFactory)
