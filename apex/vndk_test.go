@@ -31,7 +31,6 @@ func TestVndkApexForVndkLite(t *testing.T) {
 			},
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: [ "com.android.vndk.current" ],
 		}
 
 		cc_library {
@@ -45,7 +44,6 @@ func TestVndkApexForVndkLite(t *testing.T) {
 			},
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: [ "com.android.vndk.current" ],
 		}
 	`+vndkLibrariesTxtFiles("current"), func(fs map[string][]byte, config android.Config) {
 		config.TestProductVariables.DeviceVndkVersion = proptools.StringPtr("")

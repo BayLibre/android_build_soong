@@ -154,7 +154,6 @@ func testApexContext(_ *testing.T, bp string, handlers ...testCustomizer) (*andr
 		"system/sepolicy/apex/myapex.updatable-file_contexts":         nil,
 		"system/sepolicy/apex/myapex2-file_contexts":                  nil,
 		"system/sepolicy/apex/otherapex-file_contexts":                nil,
-		"system/sepolicy/apex/com.android.vndk-file_contexts":         nil,
 		"system/sepolicy/apex/com.android.vndk.current-file_contexts": nil,
 		"mylib.cpp":                                  nil,
 		"mytest.cpp":                                 nil,
@@ -3225,7 +3224,6 @@ func TestVndkApexCurrent(t *testing.T) {
 			},
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: [ "com.android.vndk.current" ],
 		}
 
 		cc_library {
@@ -3239,7 +3237,6 @@ func TestVndkApexCurrent(t *testing.T) {
 			},
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: [ "com.android.vndk.current" ],
 		}
 	`+vndkLibrariesTxtFiles("current"))
 
@@ -3281,7 +3278,6 @@ func TestVndkApexWithPrebuilt(t *testing.T) {
 			},
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: [ "com.android.vndk.current" ],
 		}
 
 		cc_prebuilt_library_shared {
@@ -3300,7 +3296,6 @@ func TestVndkApexWithPrebuilt(t *testing.T) {
 			},
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: [ "com.android.vndk.current" ],
 		}
 		`+vndkLibrariesTxtFiles("current"),
 		withFiles(map[string][]byte{
@@ -3373,7 +3368,6 @@ func TestVndkApexVersion(t *testing.T) {
 					srcs: ["libvndk27_arm64.so"],
 				},
 			},
-			apex_available: [ "com.android.vndk.v27" ],
 		}
 
 		vndk_prebuilt_shared {
@@ -3414,7 +3408,6 @@ func TestVndkApexNameRule(t *testing.T) {
 		apex_vndk {
 			name: "com.android.vndk.current",
 			key: "myapex.key",
-			file_contexts: ":myapex-file_contexts",
 		}
 		apex_vndk {
 			name: "com.android.vndk.v28",
@@ -3445,7 +3438,6 @@ func TestVndkApexSkipsNativeBridgeSupportedModules(t *testing.T) {
 		apex_vndk {
 			name: "com.android.vndk.current",
 			key: "com.android.vndk.current.key",
-			file_contexts: ":myapex-file_contexts",
 		}
 
 		apex_key {
@@ -3466,7 +3458,6 @@ func TestVndkApexSkipsNativeBridgeSupportedModules(t *testing.T) {
 			},
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: [ "com.android.vndk.current" ],
 		}
 		`+vndkLibrariesTxtFiles("current"),
 		withNativeBridgeEnabled)
@@ -3485,7 +3476,6 @@ func TestVndkApexDoesntSupportNativeBridgeSupported(t *testing.T) {
 		apex_vndk {
 			name: "com.android.vndk.current",
 			key: "com.android.vndk.current.key",
-			file_contexts: ":myapex-file_contexts",
 			native_bridge_supported: true,
 		}
 
@@ -3557,7 +3547,6 @@ func TestVndkApexWithBinder32(t *testing.T) {
 					srcs: ["libvndk27binder32.so"],
 				}
 			},
-			apex_available: [ "com.android.vndk.v27" ],
 		}
 		`+vndkLibrariesTxtFiles("27"),
 		withFiles(map[string][]byte{
@@ -3584,7 +3573,6 @@ func TestVndkApexShouldNotProvideNativeLibs(t *testing.T) {
 		apex_vndk {
 			name: "com.android.vndk.current",
 			key: "com.android.vndk.current.key",
-			file_contexts: ":myapex-file_contexts",
 		}
 
 		apex_key {
