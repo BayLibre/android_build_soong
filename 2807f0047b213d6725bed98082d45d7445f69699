@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48824884_51520bc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "LGTM. A few nits are just about clean-ups. I\u0027m fine to clean these up in a separate change.",
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc06aa05_003295e3",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "nit: this file is not necessary. (not used anywhere)",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 69
+      },
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "773339ca_e903280b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "nit: I see you renamed many apex_vndk modules to \"com.android.vndk.current\", then this is used as default, so we don\u0027t have to set file_contexts property explicitly for those modules.",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 63
+      },
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f94107d_f09ab405",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "nit: We don\u0027t check \"apex_available\" for VNDK APEXes. Well, I should\u0027ve cleaned this up.",
+      "range": {
+        "startLine": 3261,
+        "startChar": 0,
+        "endLine": 3261,
+        "endChar": 50
+      },
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "848815c4_3a454924",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3275,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 3275,
+        "startChar": 0,
+        "endLine": 3275,
+        "endChar": 50
+      },
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca7534b_c5cce558",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3317,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 3317,
+        "startChar": 0,
+        "endLine": 3317,
+        "endChar": 50
+      },
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf656a03_293560dd",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3336,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 3336,
+        "startChar": 0,
+        "endLine": 3336,
+        "endChar": 50
+      },
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4927abfa_47e4c397",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3409,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 3409,
+        "startChar": 0,
+        "endLine": 3409,
+        "endChar": 46
+      },
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ca21de_e1841c43",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3502,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-03T00:38:47Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 3502,
+        "startChar": 0,
+        "endLine": 3502,
+        "endChar": 50
+      },
+      "revId": "2807f0047b213d6725bed98082d45d7445f69699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
