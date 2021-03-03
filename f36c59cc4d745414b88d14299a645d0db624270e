@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0ad64bd_201d9134",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-03T18:20:43Z",
+      "side": 1,
+      "message": "yeah, i think if we can split out android_products.go, soong_variables.go, and perhaps cmd/mk2rbc.go as it looks like it\u0027s primarily making use of `mk2rbc-lib`, that\u0027d be a big help. I\u0027ll review the remaining files.",
+      "parentUuid": "e9bbf127_b4f8bbf6",
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd06b7c7_65e4e513",
         "filename": "mk2rbc/android_products.go",
         "patchSetId": 20
