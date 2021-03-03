@@ -36,7 +36,6 @@ type CqueryRequestType int
 
 const (
 	getAllFiles CqueryRequestType = iota
-	getCcObjectFiles
 )
 
 // Map key to describe bazel cquery requests.
@@ -53,10 +52,6 @@ type BazelContext interface {
 
 	// Returns result files built by building the given bazel target label.
 	GetAllFiles(label string, archType ArchType) ([]string, bool)
-
-	// Returns object files produced by compiling the given cc-related target.
-	// Retrieves these files from Bazel's CcInfo provider.
-	GetCcObjectFiles(label string, archType ArchType) ([]string, bool)
 
 	// TODO(cparsons): Other cquery-related methods should be added here.
 	// ** End cquery methods
@@ -111,11 +106,6 @@ func (m MockBazelContext) GetAllFiles(label string, archType ArchType) ([]string
 	return result, ok
 }
 
-func (m MockBazelContext) GetCcObjectFiles(label string, archType ArchType) ([]string, bool) {
-	result, ok := m.AllFiles[label]
-	return result, ok
-}
-
 func (m MockBazelContext) InvokeBazel() error {
 	panic("unimplemented")
 }
@@ -144,21 +134,7 @@ func (bazelCtx *bazelContext) GetAllFiles(label string, archType ArchType) ([]st
 	}
 }
 
-func (bazelCtx *bazelContext) GetCcObjectFiles(label string, archType ArchType) ([]string, bool) {
-	result, ok := bazelCtx.cquery(label, getCcObjectFiles, archType)
-	if ok {
-		bazelOutput := strings.TrimSpace(result)
-		return strings.Split(bazelOutput, ", "), true
-	} else {
-		return nil, false
-	}
-}
-
 func (n noopBazelContext) GetAllFiles(label string, archType ArchType) ([]string, bool) {
-	panic("unimplemented")
-}
-
-func (n noopBazelContext) GetCcObjectFiles(label string, archType ArchType) ([]string, bool) {
 	panic("unimplemented")
 }
 
@@ -441,7 +417,7 @@ phony_root(name = "phonyroot",
 		case "arm":
 			deps_arm = append(deps_arm, labelString)
 		default:
-			panic(fmt.Sprintf("unhandled architecture %s for %s", getArchString(val), val))
+			panic(fmt.Sprintf("unhandled architecture %s for %v", getArchString(val), val))
 		}
 	}
 
@@ -458,20 +434,6 @@ func (context *bazelContext) cqueryStarlarkFileContents() []byte {
 getAllFilesLabels = {
   %s
 }
-
-getCcObjectFilesLabels = {
-  %s
-}
-
-def get_cc_object_files(target):
-  result = []
-  linker_inputs = providers(target)["CcInfo"].linking_context.linker_inputs.to_list()
-
-  for linker_input in linker_inputs:
-    for library in linker_input.libraries:
-      for object in library.objects:
-        result += [object.path]
-  return result
 
 def get_arch(target):
   buildoptions = build_options(target)
@@ -493,15 +455,12 @@ def format(target):
   id_string = str(target.label) + "|" + get_arch(target)
   if id_string in getAllFilesLabels:
     return id_string + ">>" + ', '.join([f.path for f in target.files.to_list()])
-  elif id_string in getCcObjectFilesLabels:
-    return id_string + ">>" + ', '.join(get_cc_object_files(target))
   else:
     # This target was not requested via cquery, and thus must be a dependency
     # of a requested target.
     return id_string + ">>NONE"
 `
 	var getAllFilesDeps []string = nil
-	var getCcObjectFilesDeps []string = nil
 
 	for val, _ := range context.requests {
 		labelWithArch := getCqueryId(val)
@@ -509,14 +468,11 @@ def format(target):
 		switch val.requestType {
 		case getAllFiles:
 			getAllFilesDeps = append(getAllFilesDeps, mapEntryString)
-		case getCcObjectFiles:
-			getCcObjectFilesDeps = append(getCcObjectFilesDeps, mapEntryString)
 		}
 	}
 	getAllFilesDepsString := strings.Join(getAllFilesDeps, ",\n  ")
-	getCcObjectFilesDepsString := strings.Join(getCcObjectFilesDeps, ",\n  ")
 
-	return []byte(fmt.Sprintf(formatString, getAllFilesDepsString, getCcObjectFilesDepsString))
+	return []byte(fmt.Sprintf(formatString, getAllFilesDepsString))
 }
 
 // Returns a workspace-relative path containing build-related metadata required
