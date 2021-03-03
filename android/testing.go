@@ -90,11 +90,14 @@ func init() {
 var explicitMutatorOrder = OrderFixturePreparers(
 	PrepareForTestWithArchMutator,
 	PrepareForTestWithVisibilityRuleChecker,
+	PrepareForTestWithLicensesPackageMapper,
 	PrepareForTestWithDefaults,
 	PrepareForTestWithComponentsMutator,
 	PrepareForTestWithPrebuilts,
+	PrepareForTestWithLicensesPropertyGatherer,
 	PrepareForTestWithVisibilityRuleGatherer,
 	PrepareForTestWithVisibilityRuleEnforcer,
+	PrepareForTestWithLicensesDependencyChecker,
 	PrepareForTestWithOverrides,
 )
 
