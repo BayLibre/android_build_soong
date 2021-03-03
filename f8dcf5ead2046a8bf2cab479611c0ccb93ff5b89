@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d42e0f_576c1ed2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-03-03T10:29:48Z",
+      "side": 1,
+      "message": "Rebased \u0026 resolved conflicts",
+      "revId": "f8dcf5ead2046a8bf2cab479611c0ccb93ff5b89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
