@@ -96,6 +96,11 @@ func TestFixtureDebug(t *testing.T) {
 		ensureLocalAnonymous(t, preparer)
 	})
 
+	t.Run("FixtureModifyEnv", func(t *testing.T) {
+		preparer := FixtureModifyEnv(func(map[string]string) {})
+		ensureLocalAnonymous(t, preparer)
+	})
+
 	// The next set of tests check that the name is set from the files being added to the mock file
 	// system.
 
@@ -117,6 +122,12 @@ func TestFixtureDebug(t *testing.T) {
 	t.Run("FixtureWithRootAndroidBp", func(t *testing.T) {
 		preparer := FixtureWithRootAndroidBp("contents")
 		checkName(t, preparer, "MockFS{Android.bp}")
+	})
+
+	// The next set of tests check that the name is set from the env variables being added.
+	t.Run("FixtureMergeEnv", func(t *testing.T) {
+		preparer := FixtureMergeEnv(map[string]string{"VAR": "value", "ALPHA": "two"})
+		checkName(t, preparer, "Env{ALPHA,VAR}")
 	})
 
 	// Check that the name can be overridden.

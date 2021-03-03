@@ -282,6 +282,32 @@ func FixtureWithRootAndroidBp(contents string) FixturePreparer {
 	return FixtureAddTextFile("Android.bp", contents)
 }
 
+// Merge some environment variables into the fixture.
+func FixtureMergeEnv(env map[string]string) FixturePreparer {
+	return FixtureModifyConfig(func(config Config) {
+		for k, v := range env {
+			if k == "PATH" {
+				panic("Cannot set PATH environment variable")
+			}
+			config.env[k] = v
+		}
+	}).SetName(fmt.Sprintf("Env{%s}", strings.Join(SortedStringKeys(env), ",")))
+}
+
+// Modify the env.
+//
+// Will panic if the mutator changes the PATH environment variable.
+func FixtureModifyEnv(mutator func(env map[string]string)) FixturePreparer {
+	return FixtureModifyConfig(func(config Config) {
+		oldPath := config.env["PATH"]
+		mutator(config.env)
+		newPath := config.env["PATH"]
+		if newPath != oldPath {
+			panic(fmt.Errorf("Cannot change PATH environment variable from %q to %q", oldPath, newPath))
+		}
+	}).setNameFromFunc(mutator)
+}
+
 // GroupFixturePreparers creates a composite FixturePreparer that is equivalent to applying each of
 // the supplied FixturePreparer instances in order.
 //
