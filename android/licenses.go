@@ -87,6 +87,22 @@ func moduleToPackageDefaultLicensesMap(config Config) *sync.Map {
 	}).(*sync.Map)
 }
 
+var PrepareForTestWithLicenses = GroupFixturePreparers(
+	PrepareForTestWithLicenseKindModule,
+	PrepareForTestWithLicenseModule,
+	FixtureRegisterWithContext(registerLicenseMutators),
+)
+
+var PrepareForTestWithLicenseModule = FixtureRegisterWithContext(RegisterLicenseBuildComponents)
+
+var PrepareForTestWithLicenseKindModule = FixtureRegisterWithContext(RegisterLicenseKindBuildComponents)
+
+func registerLicenseMutators(ctx RegistrationContext) {
+	ctx.PreArchMutators(RegisterLicensesPackageMapper)
+	ctx.PreArchMutators(RegisterLicensesPropertyGatherer)
+	ctx.PostDepsMutators(RegisterLicensesDependencyChecker)
+}
+
 // Registers the function that maps each package to its default_applicable_licenses.
 //
 // This goes before defaults expansion so the defaults can pick up the package default.
