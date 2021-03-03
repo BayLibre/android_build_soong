@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccf167a5_361ce976",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-03T11:30:14Z",
+      "side": 1,
+      "message": "Trying again. I think the conflict was due to the automerger not having merged a preceding change into master when the conflicting build was run.",
+      "revId": "95fe201ac7b90201d44f74e0ce2bf924aeb55ee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
