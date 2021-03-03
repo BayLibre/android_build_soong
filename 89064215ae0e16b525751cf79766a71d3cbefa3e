@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05bef405_9894e183",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-03-03T12:51:29Z",
+      "side": 1,
+      "message": "non-snake-case is not a clippy lint but a lint from rustc: https://doc.rust-lang.org/rustc/lints/groups.html\n\nThis should be moved above (in defaultRustcLints), and the \"unknown-clippy-lints\" removed.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 30
+      },
+      "revId": "89064215ae0e16b525751cf79766a71d3cbefa3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
