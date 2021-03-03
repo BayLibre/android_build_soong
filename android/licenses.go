@@ -51,7 +51,7 @@ type applicableLicensesPropertyImpl struct {
 
 func newApplicableLicensesProperty(name string, licensesProperty *[]string) applicableLicensesProperty {
 	return applicableLicensesPropertyImpl{
-		name: name,
+		name:             name,
 		licensesProperty: licensesProperty,
 	}
 }
@@ -85,6 +85,39 @@ func moduleToPackageDefaultLicensesMap(config Config) *sync.Map {
 	return config.Once(packageDefaultLicensesMap, func() interface{} {
 		return &sync.Map{}
 	}).(*sync.Map)
+}
+
+var PrepareForTestWithLicenses = GroupFixturePreparers(
+	PrepareForTestWithLicenseModule,
+	PrepareForTestWithLicenseKindModule,
+	// The license mutators must all be used together in the correct order.
+	LinkFixturePreparers(
+		PrepareForTestWithLicensesPackageMapper,
+		PrepareForTestWithLicensesPropertyGatherer,
+		PrepareForTestWithLicensesDependencyChecker,
+	),
+)
+
+var PrepareForTestWithLicenseModule = FixtureRegisterWithContext(RegisterLicenseBuildComponents)
+
+var PrepareForTestWithLicenseKindModule = FixtureRegisterWithContext(RegisterLicenseKindBuildComponents)
+
+var PrepareForTestWithLicensesPackageMapper = FixtureRegisterWithContext(registerLicensesPackageMapper)
+
+func registerLicensesPackageMapper(ctx RegistrationContext) {
+	ctx.PreArchMutators(RegisterLicensesPackageMapper)
+}
+
+var PrepareForTestWithLicensesPropertyGatherer = FixtureRegisterWithContext(registerLicensesPropertyGatherer)
+
+func registerLicensesPropertyGatherer(ctx RegistrationContext) {
+	ctx.PreArchMutators(RegisterLicensesPropertyGatherer)
+}
+
+var PrepareForTestWithLicensesDependencyChecker = FixtureRegisterWithContext(registerLicensesDependencyChecker)
+
+func registerLicensesDependencyChecker(ctx RegistrationContext) {
+	ctx.PostDepsMutators(RegisterLicensesDependencyChecker)
 }
 
 // Registers the function that maps each package to its default_applicable_licenses.
