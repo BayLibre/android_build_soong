@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8eb090_d6f4d66f",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-03-03T12:46:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72ff36d3_b07cef37",
+      "revId": "2c14640e40c4b4231d95a5054728ba5c98bf57ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4f9f9a3_b515c29a",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41af76ec_6546b192",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-03-03T12:46:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4f9f9a3_b515c29a",
+      "range": {
+        "startLine": 81,
+        "startChar": 43,
+        "endLine": 81,
+        "endChar": 45
+      },
+      "revId": "2c14640e40c4b4231d95a5054728ba5c98bf57ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fa8a5aa_409434bf",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-02-25T23:50:40Z",
       "side": 1,
       "message": "You already have the rModule here, I\u0027d suggest either getting the value directly from the rModule, or if you want to switch to providers, create a provider struct that has all the the info you need from the rModule, for example comp.properties.Srcs.",
+      "range": {
+        "startLine": 243,
+        "startChar": 44,
+        "endLine": 243,
+        "endChar": 51
+      },
+      "revId": "2c14640e40c4b4231d95a5054728ba5c98bf57ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9493e117_63300424",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-03-03T12:46:21Z",
+      "side": 1,
+      "message": "So I moved to adding a method to compiler (and baseCompiler) to set and consume that OutDir variable. PTAL.",
+      "parentUuid": "6fa8a5aa_409434bf",
       "range": {
         "startLine": 243,
         "startChar": 44,
