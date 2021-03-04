@@ -2429,3 +2429,81 @@ func TestDataNativeBinaries(t *testing.T) {
 		t.Errorf("Unexpected test data - expected: %q, actual: %q", expected, actual)
 	}
 }
+
+func TestSetInstallable(t *testing.T) {
+	ctx1, _ := testJava(t, `
+    java_test_host {
+      name: "foo",
+      installable: true
+    }
+  `)
+	ctx2, _ := testJava(t, `
+    java_test_host {
+      name: "foo",
+      installable: false
+    }
+  `)
+
+	buildOS := android.BuildOs.String()
+	module1 := ctx1.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
+	module2 := ctx2.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
+	assertDeepEquals(t, "Failed to set installable true", proptools.BoolPtr(true),
+		module1.properties.Installable)
+	assertDeepEquals(t, "Failed to set installable false", proptools.BoolPtr(false),
+		module2.properties.Installable)
+}
+
+func TestSetAutoGenConfig(t *testing.T) {
+	ctx1, _ := testJava(t, `
+    java_test_host {
+      name: "foo",
+      auto_gen_config: true
+    }
+  `)
+	ctx2, _ := testJava(t, `
+    java_test_host {
+      name: "foo",
+      auto_gen_config: false
+    }
+  `)
+
+	buildOS := android.BuildOs.String()
+	module1 := ctx1.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
+	module2 := ctx2.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
+	assertDeepEquals(t, "Failed to set installable true", proptools.BoolPtr(true),
+		module1.testProperties.Auto_gen_config)
+	assertDeepEquals(t, "Failed to set installable false", proptools.BoolPtr(false),
+		module2.testProperties.Auto_gen_config)
+}
+
+func TestAddExtraResource(t *testing.T) {
+	ctx, _ := testJava(t, `
+    java_test_host {
+      name: "foo"
+    }
+  `)
+	buildOS := android.BuildOs.String()
+	module := ctx.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
+	pathName := "path_name"
+	testPath := android.PathForTesting(pathName)
+	expected := android.PathsForTesting(pathName)
+
+	module.AddExtraResource(testPath)
+
+	assertDeepEquals(t, "Failed to add extra resource", expected, module.extraResources)
+}
+
+func TestSetTestSuites(t *testing.T) {
+	ctx, _ := testJava(t, `
+    java_test_host {
+      name: "foo",
+      test_suites: ["name1", "name2"]
+    }
+  `)
+
+	buildOS := android.BuildOs.String()
+	module := ctx.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
+	suiteName := []string{"name1", "name2"}
+	assertDeepEquals(t, "Failed to add extra resource",
+		suiteName, module.testProperties.Test_suites)
+}
