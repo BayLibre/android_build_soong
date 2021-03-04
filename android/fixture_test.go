@@ -101,6 +101,11 @@ func TestFixtureDebug(t *testing.T) {
 		ensureLocalAnonymous(t, preparer)
 	})
 
+	t.Run("FixtureModifyProductVariables", func(t *testing.T) {
+		preparer := FixtureModifyProductVariables(func(FixtureProductVariables) {})
+		ensureLocalAnonymous(t, preparer)
+	})
+
 	// The next set of tests check that the name is set from the files being added to the mock file
 	// system.
 
