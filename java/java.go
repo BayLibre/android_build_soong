@@ -2451,6 +2451,22 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
 }
 
+func (j *TestHost) SetInstallable(value bool) {
+	j.properties.Installable = proptools.BoolPtr(value)
+}
+
+func (j *TestHost) AddExtraResource(p android.Path) {
+	j.extraResources = append(j.extraResources, p)
+}
+
+func (j *TestHost) SetTestSuites(suites []string) {
+	j.testProperties.Test_suites = suites
+}
+
+func (j *TestHost) SetAutoGenConfig(value bool) {
+	j.testProperties.Auto_gen_config = proptools.BoolPtr(value)
+}
+
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
 		j.testProperties.Test_suites, j.testProperties.Auto_gen_config, j.testProperties.Test_options.Unit_test)
