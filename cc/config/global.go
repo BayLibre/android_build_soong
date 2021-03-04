@@ -45,7 +45,7 @@ var (
 		"-Wno-multichar",
 
 		"-O2",
-		"-g",
+		"-gdwarf-5",
 		"-fdebug-info-for-profiling",
 
 		"-fno-strict-aliasing",
