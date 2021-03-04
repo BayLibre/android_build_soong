@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b852fc94_791f80b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-04T12:31:14Z",
+      "side": 1,
+      "message": "The test failures seem to be unrelated and this fixes a genuine breakage, so I\u0027ll bypass presubmit.",
+      "revId": "deba72161ca1573a9236b966be0492c81c509b09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
