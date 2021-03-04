@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62ad261_1487bb09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-04T19:40:10Z",
+      "side": 1,
+      "message": "Hi Bob, would you mind reviewing this. It is just a reformat (using gofmt -w) no functional change. It is in the middle of a large stack of changes but it is standalone so I will rebase and submit it once I have your +2.",
+      "revId": "972d7c7ffb1af684817a1999da8592755a440471",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
