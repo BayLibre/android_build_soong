@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68166603_ed5c9662",
+        "filename": "android/bazel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-04T13:59:20Z",
+      "side": 1,
+      "message": "With the blurring of lines between Blueprint and Soong, I expect this problem to be solved by merging the two Modules eventually. Not a big deal here IMO.",
+      "range": {
+        "startLine": 91,
+        "startChar": 39,
+        "endLine": 91,
+        "endChar": 73
+      },
+      "revId": "4d2cfb4209390cc2537c08aef33d43950148c83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ddce85_032c89d6",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-04T13:59:20Z",
+      "side": 1,
+      "message": "It\u0027s quite hard to understand what\u0027s going on here. Could you refactor into shorter statements (e.g. if samePackage(label, otherLabel)..)?",
+      "range": {
+        "startLine": 440,
+        "startChar": 1,
+        "endLine": 440,
+        "endChar": 155
+      },
+      "revId": "4d2cfb4209390cc2537c08aef33d43950148c83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
