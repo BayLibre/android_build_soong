@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0eb113_237a5e02",
+        "filename": "android/bazel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-04T14:49:37Z",
+      "side": 1,
+      "message": "yeah, though we could still consider adding GetBazelLabel to the module interface, but...that interface is already pretty darn large...so I\u0027m just going to delete this comment.",
+      "parentUuid": "68166603_ed5c9662",
+      "range": {
+        "startLine": 91,
+        "startChar": 39,
+        "endLine": 91,
+        "endChar": 73
+      },
+      "revId": "4d2cfb4209390cc2537c08aef33d43950148c83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ddce85_032c89d6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-04T13:59:20Z",
       "side": 1,
       "message": "It\u0027s quite hard to understand what\u0027s going on here. Could you refactor into shorter statements (e.g. if samePackage(label, otherLabel)..)?",
+      "range": {
+        "startLine": 440,
+        "startChar": 1,
+        "endLine": 440,
+        "endChar": 155
+      },
+      "revId": "4d2cfb4209390cc2537c08aef33d43950148c83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38765bd7_ff61b92e",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-04T14:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ddce85_032c89d6",
       "range": {
         "startLine": 440,
         "startChar": 1,

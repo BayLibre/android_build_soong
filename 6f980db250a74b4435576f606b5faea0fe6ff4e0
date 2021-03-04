@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68967ce5_2612bfc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-04T14:49:37Z",
+      "side": 1,
+      "message": "Note, this is blocked on resolving the bug for cc_objects in mixed builds for the cc_objects that are being converted by bp2build",
+      "revId": "6f980db250a74b4435576f606b5faea0fe6ff4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
