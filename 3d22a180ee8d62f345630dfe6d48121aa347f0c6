@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1772aff3_3c05ea75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-04T17:22:37Z",
+      "side": 1,
+      "message": "Little shame I did excess work for nothing, if this is correct :) This LGTM provided we can resolve my minor concerns in the Starlark CL (aosp/1615759)\n\n",
+      "revId": "3d22a180ee8d62f345630dfe6d48121aa347f0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
