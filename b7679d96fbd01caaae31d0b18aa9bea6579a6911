@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f073f58_2a12edd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-05T22:52:56Z",
+      "side": 1,
+      "message": "The tests in build/blueprint/.github/workflows/build.xml are not Go tests, they are scripts that exercise bootstrapping after making changes to ensure bootstrapping has proper dependencies.  None of those tests apply any more, and I think we need real testing before checking this in.  Remember, this immediately becomes live for all Android engineers, and incorrect behavior during bootstrap could lead to incorrect incremental builds for developers and on the build servers.",
+      "parentUuid": "747f59ee_8cbdbb7b",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05639020_84a493fb",
         "filename": "ui/build/soong.go",
         "patchSetId": 9
@@ -167,6 +185,30 @@
       "side": 1,
       "message": "I thought .bootstrap/build.ninja.d is also used in the Ninja invocation that builds and runs soong_build. Isn\u0027t that the case?\n\nAs for .minibootstrap/build-globs.ninja, honestly, I\u0027m not sure. I wanted to look at why there is globbing in the second build after a null build, but I wanted to put that off until after this is resolved. So if you don\u0027t mind, I\u0027ll leave this here.",
       "parentUuid": "ccd8c471_5fe3174b",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 90
+      },
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c82754_94de2647",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-05T22:52:56Z",
+      "side": 1,
+      "message": ".bootstrap/build.ninja.d is the dependencies needed to rebuild .bootstrap/build.ninja.  In the previous design ninja would run minibp to generate .bootstrap/build.ninja, and .bootstrap/build.ninja.d would tell ninja when to rerun minibp.  You aren\u0027t using dependencies to run minibp, you are always running it.\n\n.minibootstrap/build-globs.ninja may never have been used.",
+      "parentUuid": "9501538b_acf12111",
       "range": {
         "startLine": 83,
         "startChar": 1,

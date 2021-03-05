@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7797e9ab_fab40680",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-05T22:52:56Z",
+      "side": 1,
+      "message": "This covers the case where bootstrapping shouldn\u0027t rerun, but not the cases where it should.",
+      "revId": "657fb7fd181f51887cae72336fcb4f45d71caaac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "67c968c5_cae06c17",
