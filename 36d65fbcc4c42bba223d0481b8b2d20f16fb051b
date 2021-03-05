@@ -16,6 +16,24 @@
       "message": "Let\u0027s rollback to PS1 as PS2 has issues (see presubmit)?",
       "revId": "36d65fbcc4c42bba223d0481b8b2d20f16fb051b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddde9bdb_75e636d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-05T18:02:47Z",
+      "side": 1,
+      "message": "To clarify why it fails: the problem is a missing intermediate status file which is created by the verify_uses_libraries check. Since we skip the check, file is not created, and dexpreopt assumes that if it runs with class loader context generation, then the check was done.",
+      "parentUuid": "4fafa482_bd930eca",
+      "revId": "36d65fbcc4c42bba223d0481b8b2d20f16fb051b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
