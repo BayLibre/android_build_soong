@@ -16,6 +16,24 @@
       "message": "cferris@: Are there any other specific tests that we should consider here? Does the usual TH presubmit run enough of the crash dumping and unwinding tests or are those more manual (or something we can/should make Forrest do)?",
       "revId": "155fe3bd4c24eede98814de5cd49f4527170bf54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6abef159_789d0451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-03-05T23:08:03Z",
+      "side": 1,
+      "message": "I don\u0027t think we usually run the C++ tests and they might be good if they execute the exception handling code. I don\u0027t know if we have any exception handling tests in other places.\n\nI believe a normal run should include all of the unwinding tests. but at least the 137-cfi test should be run because it verifies the art unwinding interface is still working properly. I don\u0027t think that test should be affected, but you never know.\n\nIt would probably be a good idea to force a crash and then run it through the development/script/stack. You can force a crash by builder debuggerd and then running the crasher program (there is a 32 bit and 64 bit version so you can test both). Best to run with crasher abort so you get more frames in the crash.\n\nIf you need any help to do this, let me know and I can run some of these myself.",
+      "parentUuid": "b5691649_e7e60e39",
+      "revId": "155fe3bd4c24eede98814de5cd49f4527170bf54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
