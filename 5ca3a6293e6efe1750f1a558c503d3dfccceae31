@@ -34,6 +34,41 @@
       "parentUuid": "0b3e849b_61167404",
       "revId": "5ca3a6293e6efe1750f1a558c503d3dfccceae31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020d398a_a9db1856",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1608334
+      },
+      "writtenOn": "2021-03-05T08:04:19Z",
+      "side": 1,
+      "message": "You said: There are a few outstanding (duplicate) bugs open on this at the moment we are working on it. If you are not using the VNDK then you can probably revert it temporarily. If you cannot see any of the publicly visible bugs then I suggest that you open your own that way we know that you are affected by it and can keep you updated.\n------------------------------------------------\nCould you help to find the changes that can fix the bugs you said above.\nThanks a lot.",
+      "revId": "5ca3a6293e6efe1750f1a558c503d3dfccceae31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba2518e_25084a99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1608334
+      },
+      "writtenOn": "2021-03-05T08:04:19Z",
+      "side": 1,
+      "message": "\u003e A question about this change: should this change be merged to Android 11 branch?\n\u003e Qcom got this change to Android 11, I got a check error.\nA mainline module build error was triggered by this check.",
+      "parentUuid": "0b3e849b_61167404",
+      "revId": "5ca3a6293e6efe1750f1a558c503d3dfccceae31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
