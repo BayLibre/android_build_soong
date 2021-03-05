@@ -110,7 +110,10 @@ func runSoong(ctx Context, config Config) {
 		soongBuildEnv.Set("SOONG_DELVE_PATH", shared.ResolveDelveBinary())
 	}
 
-	writeEnvironmentFile(ctx, envFile, soongBuildEnv.AsMap())
+	err := writeEnvironmentFile(ctx, envFile, soongBuildEnv.AsMap())
+	if err != nil {
+		panic(err)
+	}
 
 	func() {
 		ctx.BeginTrace(metrics.RunSoong, "environment check")
