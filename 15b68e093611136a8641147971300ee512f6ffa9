@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9a40e4_af772e7e",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-05T13:43:45Z",
+      "side": 1,
+      "message": "Use one of the ctx.Fatal* instead?",
+      "revId": "15b68e093611136a8641147971300ee512f6ffa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
