@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e2d9082_35a6d9e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-05T21:46:42Z",
+      "side": 1,
+      "message": "There is no linter, but we do still need the copyright header",
+      "parentUuid": "e0ad64bd_201d9134",
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd06b7c7_65e4e513",
         "filename": "mk2rbc/android_products.go",
         "patchSetId": 20
