@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fafa482_bd930eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-05T17:58:28Z",
+      "side": 1,
+      "message": "Let\u0027s rollback to PS1 as PS2 has issues (see presubmit)?",
+      "revId": "36d65fbcc4c42bba223d0481b8b2d20f16fb051b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
