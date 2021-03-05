@@ -16,6 +16,29 @@
       "message": "Ping.",
       "revId": "a560d5a91dd09292dfa30acd88507880de0d5459",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "723b6e3e_84c1ac58",
+        "filename": "android/fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-05T23:23:33Z",
+      "side": 1,
+      "message": "Optional: CompositeFixturePreparers?",
+      "range": {
+        "startLine": 293,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 10
+      },
+      "revId": "a560d5a91dd09292dfa30acd88507880de0d5459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
