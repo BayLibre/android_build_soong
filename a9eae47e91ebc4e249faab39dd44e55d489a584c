@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dad5183_f9cdc4f9",
+        "filename": "scripts/manifest_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-05T23:08:22Z",
+      "side": 1,
+      "message": "Can you add tests for this to manifest_check_test.py?",
+      "revId": "a9eae47e91ebc4e249faab39dd44e55d489a584c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
