@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef0908f_878dbda4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-05T12:04:09Z",
+      "side": 1,
+      "message": "I haven\u0027t followed this closely, but judging from the discussions on go/android-future-symbols it\u0027s only implemented for platform APIs, while I believe this CL changes the logic for stubs in APEXes too. Does this hold for APEX-to-APEX dependencies?",
+      "range": {
+        "startLine": 26,
+        "startChar": 58,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "55549df051e822d71bfdb793742c1377098baaea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d72050bf_8f856e6f",
