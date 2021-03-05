@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c35d581_21975bca",
+        "filename": "android/writedocs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-05T23:04:18Z",
+      "side": 1,
+      "message": "FYI you can avoid some awkward escaping in Go strings by using raw strings: `\"`.",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 8
+      },
+      "revId": "ddb8bd252f6ff1523c02485c9163d4a2cddef023",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
