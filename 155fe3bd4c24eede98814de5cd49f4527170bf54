@@ -34,6 +34,24 @@
       "parentUuid": "b5691649_e7e60e39",
       "revId": "155fe3bd4c24eede98814de5cd49f4527170bf54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4f4bf34_d6e9fb08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1080300
+      },
+      "writtenOn": "2021-03-05T23:33:25Z",
+      "side": 1,
+      "message": "I\u0027m happy to try to do all the testing you suggest, but I am a complete novice at Android development/testing (I generally work in Chrome OS, with a little Google3 experience), so I need fairly complete documentation/instructions?",
+      "parentUuid": "6abef159_789d0451",
+      "revId": "155fe3bd4c24eede98814de5cd49f4527170bf54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
