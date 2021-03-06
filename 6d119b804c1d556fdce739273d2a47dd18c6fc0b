@@ -22,6 +22,30 @@
       },
       "revId": "6d119b804c1d556fdce739273d2a47dd18c6fc0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2737318c_62ddf3fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-06T08:37:32Z",
+      "side": 1,
+      "message": "That is how I found this. I was working on a change that would automatically force the tests to use the same order as is used at runtime, no effort on our part and it triggered this build failure.",
+      "parentUuid": "f2338138_23376d2c",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "6d119b804c1d556fdce739273d2a47dd18c6fc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
