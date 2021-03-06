@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2338138_23376d2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-06T01:56:02Z",
+      "side": 1,
+      "message": "Didn\u0027t know this. It\u0027s quite painful to keep them in sync though. I wish we have a mechanism to specify the partial ordering among the mutators. For example, \"this mutator has to run after that mutator\".",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "6d119b804c1d556fdce739273d2a47dd18c6fc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
