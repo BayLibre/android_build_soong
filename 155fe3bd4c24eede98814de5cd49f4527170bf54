@@ -70,6 +70,24 @@
       "parentUuid": "b4f4bf34_d6e9fb08",
       "revId": "155fe3bd4c24eede98814de5cd49f4527170bf54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20c81f9d_feb8b679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1080300
+      },
+      "writtenOn": "2021-03-06T00:55:00Z",
+      "side": 1,
+      "message": "I\u0027ve created the bug and updated this commit message to point to it.",
+      "parentUuid": "c2bb6e66_ebc2e260",
+      "revId": "155fe3bd4c24eede98814de5cd49f4527170bf54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
