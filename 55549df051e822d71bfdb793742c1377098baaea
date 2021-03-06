@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d79617e0_124da438",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-06T02:02:08Z",
+      "side": 1,
+      "message": "The mechanism is applied to wherever a link is made. So, yes, it applies to APEX-to-APEX linkages as well.\n\nBy the way, as we have discussed in the meeting, the mechanism uses the \"platform sdk version\" as the only marker. This means that, module A won\u0027t be able to call a new API defined in module B when running on an old platform, even when the module B is the up-to-date one having the new API.\n\nThis is what I called as \"conservative\". If calling the new API is really needed, module A could use dlopen/dlsym technique instead.",
+      "parentUuid": "cef0908f_878dbda4",
+      "range": {
+        "startLine": 26,
+        "startChar": 58,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "55549df051e822d71bfdb793742c1377098baaea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d72050bf_8f856e6f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
