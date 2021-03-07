@@ -97,6 +97,9 @@ type TestContext struct {
 	preArch, preDeps, postDeps, finalDeps           []RegisterMutatorFunc
 	bp2buildPreArch, bp2buildDeps, bp2buildMutators []RegisterMutatorFunc
 	NameResolver                                    *NameResolver
+
+	// The list of singletons and pre-singletons registered for the test.
+	singletons, preSingletons sortableComponents
 }
 
 func (ctx *TestContext) PreArchMutators(f RegisterMutatorFunc) {
@@ -335,12 +338,17 @@ func globallyRegisteredComponentsOrder() *registrationSorter {
 func (ctx *TestContext) Register() {
 	globalOrder := globallyRegisteredComponentsOrder()
 
+	ctx.preSingletons.registerAll(ctx.Context)
+
 	mutators := collateRegisteredMutators(ctx.preArch, ctx.preDeps, ctx.postDeps, ctx.finalDeps)
 	// Ensure that the mutators used in the test are in the same order as they are used at runtime.
 	globalOrder.mutatorOrder.enforceOrdering(mutators)
 	mutators.registerAll(ctx.Context)
 
+	// Register the env singleton with this context before sorting.
 	ctx.RegisterSingletonType("env", EnvSingleton)
+
+	ctx.singletons.registerAll(ctx.Context)
 }
 
 // RegisterForBazelConversion prepares a test context for bp2build conversion.
@@ -371,11 +379,11 @@ func (ctx *TestContext) RegisterSingletonModuleType(name string, factory Singlet
 }
 
 func (ctx *TestContext) RegisterSingletonType(name string, factory SingletonFactory) {
-	ctx.Context.RegisterSingletonType(name, SingletonFactoryAdaptor(ctx.Context, factory))
+	ctx.singletons = append(ctx.singletons, newSingleton(name, factory))
 }
 
 func (ctx *TestContext) RegisterPreSingletonType(name string, factory SingletonFactory) {
-	ctx.Context.RegisterPreSingletonType(name, SingletonFactoryAdaptor(ctx.Context, factory))
+	ctx.preSingletons = append(ctx.preSingletons, newPreSingleton(name, factory))
 }
 
 func (ctx *TestContext) ModuleForTests(name, variant string) TestingModule {
