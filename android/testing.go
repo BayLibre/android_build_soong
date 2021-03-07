@@ -307,8 +307,14 @@ type registrationSorter struct {
 	// Used to ensure that this is only created once.
 	once sync.Once
 
+	// The order of pre-singletons
+	preSingletonOrder registeredComponentOrder
+
 	// The order of mutators
 	mutatorOrder registeredComponentOrder
+
+	// The order of singletons
+	singletonOrder registeredComponentOrder
 }
 
 // populate initializes this structure from globally registered build components.
@@ -316,9 +322,16 @@ type registrationSorter struct {
 // Only the first call has any effect.
 func (s *registrationSorter) populate() {
 	s.once.Do(func() {
+		// Create an ordering from the globally registered pre-singletons.
+		s.preSingletonOrder.initFromExistingOrder("pre-singleton", preSingletons)
+
 		// Created an ordering from the globally registered mutators.
 		globallyRegisteredMutators := collateGloballyRegisteredMutators()
 		s.mutatorOrder.initFromExistingOrder("mutator", globallyRegisteredMutators)
+
+		// Create an ordering from the globally registered singletons.
+		globallyRegisteredSingletons := collateGloballyRegisteredSingletons()
+		s.singletonOrder.initFromExistingOrder("singleton", globallyRegisteredSingletons)
 	})
 }
 
@@ -338,6 +351,9 @@ func globallyRegisteredComponentsOrder() *registrationSorter {
 func (ctx *TestContext) Register() {
 	globalOrder := globallyRegisteredComponentsOrder()
 
+	// Ensure that the pre-singletons used in the test are in the same order as they are used at
+	// runtime.
+	globalOrder.preSingletonOrder.enforceOrdering(ctx.preSingletons)
 	ctx.preSingletons.registerAll(ctx.Context)
 
 	mutators := collateRegisteredMutators(ctx.preArch, ctx.preDeps, ctx.postDeps, ctx.finalDeps)
@@ -348,6 +364,8 @@ func (ctx *TestContext) Register() {
 	// Register the env singleton with this context before sorting.
 	ctx.RegisterSingletonType("env", EnvSingleton)
 
+	// Ensure that the singletons used in the test are in the same order as they are used at runtime.
+	globalOrder.singletonOrder.enforceOrdering(ctx.singletons)
 	ctx.singletons.registerAll(ctx.Context)
 }
 
