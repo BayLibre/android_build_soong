@@ -27,10 +27,9 @@ import (
 // testProjectJson run the generation of rust-project.json. It returns the raw
 // content of the generated file.
 func testProjectJson(t *testing.T, bp string) []byte {
-	tctx := newTestRustCtx(t, bp)
-	tctx.env = map[string]string{"SOONG_GEN_RUST_PROJECT": "1"}
-	tctx.generateConfig()
-	tctx.parse(t)
+	rustFixtureFactory.
+		Extend(android.FixtureMergeEnv(map[string]string{"SOONG_GEN_RUST_PROJECT": "1"})).
+		RunTestWithBp(t, bp)
 
 	// The JSON file is generated via WriteFileToOutputDir. Therefore, it
 	// won't appear in the Output of the TestingSingleton. Manually verify
