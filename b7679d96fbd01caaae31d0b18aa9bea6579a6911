@@ -139,6 +139,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "069a4f23_f122874b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-08T19:19:26Z",
+      "side": 1,
+      "message": "The tests that I\u0027m concerned about are in https://cs.android.com/android/platform/superproject/+/master:build/blueprint/tests/test_tree_tests.sh;drc\u003d4fc22f66c2fb8db2a8b727b0f24c53b24bc919c0.  They verify that various changes to the filesystem either do or do not regenerate build.ninja as expected.\n\nThe new implementation is certainly simpler, but has no test coverage.  That\u0027s not obviously better than complicated with at least minimal test coverage.",
+      "parentUuid": "fc229322_215261a3",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05639020_84a493fb",
         "filename": "ui/build/soong.go",
         "patchSetId": 9
