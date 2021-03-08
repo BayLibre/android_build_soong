@@ -73,12 +73,12 @@ func testContext(config android.Config) *android.TestContext {
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	ctx.PreArchMutators(android.RegisterComponentsMutator)
 
+	android.RegisterPrebuiltMutators(ctx)
+
 	ctx.PreDepsMutators(python.RegisterPythonPreDepsMutators)
 	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 	ctx.RegisterPreSingletonType("overlay", OverlaySingletonFactory)
 	ctx.RegisterPreSingletonType("sdk_versions", sdkPreSingletonFactory)
-
-	android.RegisterPrebuiltMutators(ctx)
 
 	genrule.RegisterGenruleBuildComponents(ctx)
 
