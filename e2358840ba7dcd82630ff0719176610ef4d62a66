@@ -16,6 +16,24 @@
       "message": "I have a set of changes (see https://r.android.com/1622501) that enforce that all tests use mutators in the correct order which would make this sort of change unnecessary.",
       "revId": "e2358840ba7dcd82630ff0719176610ef4d62a66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc8ac8e5_42f6161c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-08T10:02:27Z",
+      "side": 1,
+      "message": "Yeah, I know that. Kind of race? ;-) aosp/1620647 requires this and I thought your changes would take some time to get merged. I uploaded this to avoid waiting, and even if your changes get merged before this one, this would be still valid (no differences at all), right?\n\nI\u0027m fine if I need to wait for your changes and rebase aosp/1620647 upon your changes.",
+      "parentUuid": "ee45528a_d4a3f3ad",
+      "revId": "e2358840ba7dcd82630ff0719176610ef4d62a66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
