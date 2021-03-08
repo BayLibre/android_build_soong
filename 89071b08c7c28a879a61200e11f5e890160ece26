@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "13e4f307_58534c9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-08T15:23:41Z",
+      "side": 1,
+      "message": "Looking at it closer, I\u0027ll leave soong_docs as it is: it\u0027s not a leak since all that invocation does is write documentation and not generate build actions.",
+      "parentUuid": "d31e81a4_bf91892c",
+      "revId": "89071b08c7c28a879a61200e11f5e890160ece26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cf4b7917_e6517f2d",
         "filename": "android/queryview.go",
         "patchSetId": 2
