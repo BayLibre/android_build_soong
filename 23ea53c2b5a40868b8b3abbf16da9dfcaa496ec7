@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be247e5b_3b04b817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-08T02:13:43Z",
+      "side": 1,
+      "message": "The topic looks good to me. It will prevent the kind of pain I had when writing tests having many mutators. Thanks! \n\nI however didn\u0027t give +2 since this is a rather fundamental change and Colin should definitely look into it.",
+      "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eacd78c9_77fed69e",
