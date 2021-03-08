@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ee57a9_0e5e8f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-08T14:33:07Z",
+      "side": 1,
+      "message": "Good catch, but see below -- let\u0027s unbreak the build first!",
+      "parentUuid": "3d5b185a_94c982b6",
+      "revId": "89071b08c7c28a879a61200e11f5e890160ece26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cf4b7917_e6517f2d",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-08T14:14:46Z",
       "side": 1,
       "message": "fyi: you can use %q and it will quote things for you.\n\nWith how many quotes there are here, could use ` for raw string literals strings",
+      "range": {
+        "startLine": 70,
+        "startChar": 14,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "89071b08c7c28a879a61200e11f5e890160ece26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c208d6_e186229c",
+        "filename": "android/queryview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-08T14:33:07Z",
+      "side": 1,
+      "message": "%q doesn\u0027t exactly match shell quoting rules, does it?\n\nre: backtick, I Jin just recently made me aware of this but since presubmits take an amount of time measured in hours, I\u0027d prefer to submit this then add backticks without time pressure if you don\u0027t mind (or",
+      "parentUuid": "cf4b7917_e6517f2d",
       "range": {
         "startLine": 70,
         "startChar": 14,
