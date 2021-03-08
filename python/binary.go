@@ -20,10 +20,88 @@ import (
 	"fmt"
 
 	"android/soong/android"
+	"android/soong/bazel"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func init() {
 	android.RegisterModuleType("python_binary_host", PythonBinaryHostFactory)
+	android.RegisterBp2BuildMutator("python_binary_host", PythonBinaryBp2Build)
+}
+
+type bazelPythonBinaryAttributes struct {
+	Main           string
+	Srcs           bazel.LabelList
+	Data           bazel.LabelList
+	Python_version string
+}
+
+type bazelPythonBinary struct {
+	android.BazelTargetModuleBase
+	bazelPythonBinaryAttributes
+}
+
+func BazelPythonBinaryFactory() android.Module {
+	module := &bazelPythonBinary{}
+	module.AddProperties(&module.bazelPythonBinaryAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func (m *bazelPythonBinary) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelPythonBinary) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
+
+func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build() {
+		return
+	}
+
+	// a Module can be something other than a python_binary_host
+	if ctx.ModuleType() != "python_binary_host" {
+		return
+	}
+
+	var main string
+	for _, propIntf := range m.GetProperties() {
+		if props, ok := propIntf.(*BinaryProperties); ok {
+			// main is optional.
+			if props.Main != nil {
+				main = *props.Main
+				break
+			}
+		}
+	}
+	py3Enabled := proptools.BoolDefault(m.properties.Version.Py3.Enabled, false)
+	py2Enabled := proptools.BoolDefault(m.properties.Version.Py2.Enabled, false)
+	var python_version string
+	if py3Enabled && py2Enabled {
+		panic(fmt.Errorf(
+			"error for '%s' module: bp2build's python_binary_host converter does not support "+
+				" converting a module that builds for both Python 2 and 3.", m.Name()))
+	} else if py2Enabled {
+		python_version = "PY2"
+	} else {
+		// do nothing, since python_version defaults to PY3.
+	}
+
+	attrs := &bazelPythonBinaryAttributes{
+		Main:           main,
+		Srcs:           android.BazelLabelForModuleSrc(ctx, m.properties.Srcs),
+		Data:           android.BazelLabelForModuleSrc(ctx, m.properties.Data),
+		Python_version: python_version,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		// Use the native py_binary rule.
+		Rule_class: "py_binary",
+	}
+
+	ctx.CreateBazelTargetModule(BazelPythonBinaryFactory, m.Name(), props, attrs)
 }
 
 type BinaryProperties struct {
@@ -80,6 +158,8 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 
 func PythonBinaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
+
+	android.InitBazelModule(module)
 
 	return module.init()
 }
