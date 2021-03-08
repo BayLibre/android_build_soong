@@ -121,6 +121,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc229322_215261a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-08T17:18:56Z",
+      "side": 1,
+      "message": "If the performance is deemed inadequate, I could do two things:\n\n1. Hand-roll a way to rebuild .bootstrap/build.ninja iff a Blueprint file was changed/added/removed or a glob file changed. This is extra hand-rolled logic and is certainly more error-prone than no logic.\n\n2. Invoke soong_ui itself using a tiny Ninja file. This would make it harder to debug the generation of .bootstrap/build.ninja and would be an extra step.\n\nI would lean towards (1) if I had to choose one because I hope it results in a simpler overall code flow. We don\u0027t even need to add a Go .d file parser (if we don\u0027t have one already, I don\u0027t know) because we can tell the Blueprint invocation generating .bootstrap/build.ninja to emit the contents of the .d file in some even simpler \"one file name per line\" format that\u0027s trivial to parse.",
+      "parentUuid": "0f3874de_3bfb8d83",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05639020_84a493fb",
         "filename": "ui/build/soong.go",
         "patchSetId": 9
