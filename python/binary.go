@@ -20,10 +20,73 @@ import (
 	"fmt"
 
 	"android/soong/android"
+	"android/soong/bazel"
 )
 
 func init() {
 	android.RegisterModuleType("python_binary_host", PythonBinaryHostFactory)
+	android.RegisterBp2BuildMutator("python_binary_host", PythonBinaryBp2Build)
+}
+
+type bazelPythonBinaryAttributes struct {
+	Main string
+	Srcs bazel.LabelList
+	Data bazel.LabelList
+	Deps bazel.LabelList
+}
+
+type bazelPythonBinary struct {
+	android.BazelTargetModuleBase
+	bazelPythonBinaryAttributes
+}
+
+func BazelPythonBinaryFactory() android.Module {
+	module := &bazelPythonBinary{}
+	module.AddProperties(&module.bazelPythonBinaryAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func (m *bazelPythonBinary) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelPythonBinary) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
+
+func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build() {
+		return
+	}
+
+	// a Module can be something other than a python_binary_host
+	if ctx.ModuleType() != "python_binary_host" {
+		return
+	}
+
+	var main string
+	for _, propIntf := range m.GetProperties() {
+		if props, ok := propIntf.(*BinaryProperties); ok {
+			if props.Main != nil {
+				main = *props.Main
+				break
+			}
+		}
+	}
+
+	attrs := &bazelPythonBinaryAttributes{
+		Main: main,
+		Srcs: android.BazelLabelForModuleSrc(ctx, m.properties.Srcs),
+		Data: android.BazelLabelForModuleDeps(ctx, m.properties.Data),
+		Deps: android.BazelLabelForModuleDeps(ctx, m.properties.Libs),
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class: "py_binary",
+	}
+
+	// Create the BazelTargetModule.
+	ctx.CreateBazelTargetModule(BazelPythonBinaryFactory, m.Name(), props, attrs)
 }
 
 type BinaryProperties struct {
@@ -80,6 +143,8 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 
 func PythonBinaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
+
+	android.InitBazelModule(module)
 
 	return module.init()
 }
