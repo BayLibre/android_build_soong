@@ -104,6 +104,30 @@
       },
       "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8230f576_ccd93731",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-08T12:04:01Z",
+      "side": 1,
+      "message": "I actually had a change https://r.android.com/1612945 that would do this for the new test fixture model I have been working on but when I tried to convert existing tests to use it I realized that it was very difficult to work with as order of initialization of packages, as well as order of initialization of each of the files within the package, play a large role in defining the order.\n\nThat is when I realized that the simplest way to ensure consistent ordering was to make tests use the same order as the runtime.\n\nI have given it some thought and it should be possible, although I have no plans at the moment, to modify the fixture graph that I used to do the topological sort to do something similar with mutators. I think that the mutators would need to be identified by name (which would require their names to be defined as constants for reference from elsewhere. Also, I am not sure if the topological sort as currently implemented is stable enough.\n\nThat sorting would only need to be applied to the mutators (and singletons) used at runtime as this change will enforce the same ordering on most tests. The exceptions are a couple of namespace tests that add a custom \"rename\" mutator.",
+      "parentUuid": "662a7b1f_d2d42035",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 25
+      },
+      "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
