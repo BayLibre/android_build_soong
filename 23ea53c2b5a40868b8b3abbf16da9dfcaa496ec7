@@ -128,6 +128,30 @@
       },
       "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd4769cb_df7586b0",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-08T13:24:49Z",
+      "side": 1,
+      "message": "\u003e order of initialization of packages, as well as order of initialization of each of the files within the package, play a large role in defining the order\n\nYes, that\u0027s what I thought makes the ordering inflexible or difficult to play with. It\u0027s sometimes impossible (or very tricky) to insert a specific mutator at a certain point, especially when the initialization order does not match with the data dependency among mutators.\n\nSo, when a pair of mutators don\u0027t have dependencies specified among them, we could by default use the initialization order to order them as we do today. But if dependencies are specified, it shall override the initialization order.",
+      "parentUuid": "8230f576_ccd93731",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 25
+      },
+      "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
