@@ -56,6 +56,30 @@
       },
       "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d131223_ccf77c46",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-08T09:31:43Z",
+      "side": 1,
+      "message": "I initially just checked the test order but there were lots of tests that failed. So I tried reordering them and only got one failure. So, checking the order seemed like a worse solution because it not only places the burden of ensuring the correct order on the developer but also causes tests that are insensitive to the differences in the order to fail.\n\nDebugging might be a little more confusing if the developer does not know that they are being reordered or what the runtime ordering is supposed to be but I think on the whole it is better to be debugging a test that accurately represents the runtime behavior than one that does not.\n\nI have been thinking that one way to address the debugging issue is to allow easier introspection of the state of the system, e.g. maybe add a Dump() method that just prints the state (including mutator/singleton/pre-singleton order). So, someone who has been debugging a weird test failure can simply add a call to the method which will dump the state out.\n\nOr maybe create a structure that gathers all the information into one place for inspection via the debugger.",
+      "parentUuid": "eacd78c9_77fed69e",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 25
+      },
+      "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
