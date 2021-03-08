@@ -65,17 +65,21 @@ func generateBuildActionsForBazelConversion(ctx SingletonContext, converterMode 
 	primaryBuilder := primaryBuilderPath(ctx)
 	bazelQueryView := ctx.Rule(pctx, "bazelQueryView",
 		blueprint.RuleParams{
-			Command: fmt.Sprintf(
-				"rm -rf ${outDir}/* && "+
-					"BUILDER=\"%s\" && "+
-					"cd $$(dirname \"$$BUILDER\") && "+
-					"ABSBUILDER=\"$$PWD/$$(basename \"$$BUILDER\")\" && "+
-					"cd / && "+
-					"env -i \"$$ABSBUILDER\" --bazel_queryview_dir ${outDir} \"%s\" && "+
-					"echo WORKSPACE: `cat %s` > ${outDir}/.queryview-depfile.d",
+			Command: fmt.Sprintf(`
+rm -rf "${outDir}/"* &&
+mkdir -p "${outDir}" &&
+echo WORKSPACE: cat "%s" > "${outDir}/.queryview-depfile.d" &&
+BUILDER="%s" &&
+echo BUILDER=$$BUILDER &&
+cd "$$(dirname "$$BUILDER")" &&
+echo PWD=$$PWD &&
+ABSBUILDER="$$PWD/$$(basename "$$BUILDER")" &&
+echo ABSBUILDER=$$ABSBUILDER &&
+cd / &&
+env -i "$$ABSBUILDER" --bazel_queryview_dir "${outDir}" "%s"`,
+				moduleListFilePath.String(), // Use the contents of Android.bp.list as the depfile.
 				primaryBuilder.String(),
 				strings.Join(os.Args[1:], "\" \""),
-				moduleListFilePath.String(), // Use the contents of Android.bp.list as the depfile.
 			),
 			CommandDeps: []string{primaryBuilder.String()},
 			Description: fmt.Sprintf(
