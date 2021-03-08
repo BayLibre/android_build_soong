@@ -152,6 +152,30 @@
       },
       "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c35ec92_caf2698d",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-08T14:12:42Z",
+      "side": 1,
+      "message": "Agreed. We already do half the job with the Pre\"deps\"Mutator and Pre\"arch\"Mutator. Generalizing that to allow the constraints described in the comments in preArch in build/soong/android/mutator.go to be explicitly defined would give us a lot of control.\n\nHowever, until someone needs that level of control it will probably not happen.",
+      "parentUuid": "dd4769cb_df7586b0",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 25
+      },
+      "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
