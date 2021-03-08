@@ -22,6 +22,30 @@
       },
       "revId": "2669e7edf00ccce9a264381140d51cd4f22b429e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29fdb278_5224776b",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-08T19:12:07Z",
+      "side": 1,
+      "message": "Soong doesn\u0027t currently get the value of TARGET_BUILD_APPS, Make converts it to a true/false value to pass to Soong.",
+      "parentUuid": "86df68e7_7e0390d5",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 67
+      },
+      "revId": "2669e7edf00ccce9a264381140d51cd4f22b429e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
