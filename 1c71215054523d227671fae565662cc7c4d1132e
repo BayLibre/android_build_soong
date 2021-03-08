@@ -33,6 +33,23 @@
       "message": "FYI here is a list of the mutators that are run at runtime. I think it is all.\n\n            namespace_deps\n            visibilityRuleChecker\n            licensesPackageMapper\n            defaults_deps\n            defaults\n            component-deps\n            prebuilt_rename\n            licensesPropertyGatherer\n            visibilityRuleGatherer\n            os\n            image\n            arch\n            variable\n            sdk\n            vndk\n            link\n            test_per_src\n            version_selector\n            version\n            begin\n            sysprop_cc\n            python_version\n            rust_libraries\n            rust_stdlinkage\n            rust_begin\n            apex_vndk\n            apex_vndk_deps\n            SdkMember\n            SdkMember_deps\n            SdkMemberInterVersion\n            deps\n            pathdeps\n            prebuilt_source\n            prebuilt_select\n            prebuilt_postdeps\n            visibilityRuleEnforcer\n            licensesPropertyChecker\n            neverallow\n            override_deps\n            register_override\n            perform_override\n            overridable_deps\n            replace_deps_on_override\n\n    \u003e\u003e\u003e\u003e prebuilt_postdeps will run again here. \u003c\u003c\u003c\u003c\n\n            asan_deps\n            asan\n            hwasan_deps\n            hwasan\n            fuzzer_deps\n            fuzzer\n            cfi_deps\n            cfi\n            scs_deps\n            scs\n            tsan_deps\n            tsan\n            sanitize_runtime_deps\n            sanitize_runtime\n            coverage\n            lto_deps\n            lto\n            check_linktype\n            double_loadable\n            propagate_rro_enforcement\n            rust_sanitizers\n            apex_info\n            apex_unique\n            apex_test_for_deps\n            apex_test_for\n            apex\n            apex_directly_in_any\n            apex_flattened\n            mark_platform_availability\n            SdkDepsMutator\n            SdkDepsReplaceMutator\n            SdkRequirementCheck\n            genrule_tool_deps\n            sabi_deps\n            dexpreopt_tool_deps\n\nThe only deps that the second run of the prebuilt_postdeps should affect are those added by the override mutators. The other mutators between the two runs don\u0027t appear to add any deps.",
       "revId": "1c71215054523d227671fae565662cc7c4d1132e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4095262d_bdc7f553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-08T19:44:08Z",
+      "side": 1,
+      "message": "Jaewoong is the expert here.",
+      "revId": "1c71215054523d227671fae565662cc7c4d1132e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
