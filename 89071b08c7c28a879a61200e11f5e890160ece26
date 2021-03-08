@@ -117,6 +117,30 @@
       },
       "revId": "89071b08c7c28a879a61200e11f5e890160ece26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce577fc_bd0b52cf",
+        "filename": "android/queryview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-08T14:41:00Z",
+      "side": 1,
+      "message": "Yeah, agreed, let\u0027s unbreak the build, was more of an fyi for the future.",
+      "parentUuid": "c7c208d6_e186229c",
+      "range": {
+        "startLine": 70,
+        "startChar": 14,
+        "endLine": 70,
+        "endChar": 20
+      },
+      "revId": "89071b08c7c28a879a61200e11f5e890160ece26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
