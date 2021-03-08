@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "be2cb979_0612dad9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-08T21:04:34Z",
+      "side": 1,
+      "message": "Isn\u0027t that \"conservative\" approach what we get when using the oldest stubs, before this CL? With the newest stubs I reckon we instead end up with potentially superfluous __builtin_available guards in APEX-to-APEX calls? (Of course, those guards may still be traded for dlopen/dlsym-style access.)",
+      "parentUuid": "d79617e0_124da438",
+      "range": {
+        "startLine": 26,
+        "startChar": 58,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "55549df051e822d71bfdb793742c1377098baaea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d72050bf_8f856e6f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
