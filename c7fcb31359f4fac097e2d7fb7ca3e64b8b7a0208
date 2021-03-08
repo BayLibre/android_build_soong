@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c5637d_a5c40662",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2021-03-08T01:36:13Z",
+      "side": 1,
+      "message": "\u003e Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.\n\nPlease fix.",
+      "parentUuid": "d6202837_0d1f8092",
+      "range": {
+        "startLine": 319,
+        "startChar": 45,
+        "endLine": 319,
+        "endChar": 54
+      },
+      "revId": "c7fcb31359f4fac097e2d7fb7ca3e64b8b7a0208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
