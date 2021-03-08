@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac6e78ac_a7e9f5df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-08T02:07:32Z",
+      "side": 1,
+      "message": "This change is great.",
+      "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacd78c9_77fed69e",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-08T02:07:32Z",
+      "side": 1,
+      "message": "I think this is convenient, but at the same time makes the debugging difficult because the test components are reordered behind the scene. Can\u0027t we just checkTestOrder even in that case?",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 25
+      },
+      "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
