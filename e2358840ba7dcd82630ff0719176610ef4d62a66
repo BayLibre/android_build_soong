@@ -34,6 +34,24 @@
       "parentUuid": "ee45528a_d4a3f3ad",
       "revId": "e2358840ba7dcd82630ff0719176610ef4d62a66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f13c85_472f990a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-08T10:21:52Z",
+      "side": 1,
+      "message": "This is fine as is, I just wanted to make sure you were aware of the changes which hopefully should be submitted soon.",
+      "parentUuid": "fc8ac8e5_42f6161c",
+      "revId": "e2358840ba7dcd82630ff0719176610ef4d62a66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
