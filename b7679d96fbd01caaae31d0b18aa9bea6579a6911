@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f3874de_3bfb8d83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-08T16:43:25Z",
+      "side": 1,
+      "message": "Are there any particular scenarios you are concerned about? My line of reasoning that I\u0027m making the bootstrapping process much simpler (see: re-running Android.bp parsing on null builds), so the incrementality story is much simpler.",
+      "parentUuid": "1f073f58_2a12edd0",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05639020_84a493fb",
         "filename": "ui/build/soong.go",
         "patchSetId": 9
@@ -209,6 +227,30 @@
       "side": 1,
       "message": ".bootstrap/build.ninja.d is the dependencies needed to rebuild .bootstrap/build.ninja.  In the previous design ninja would run minibp to generate .bootstrap/build.ninja, and .bootstrap/build.ninja.d would tell ninja when to rerun minibp.  You aren\u0027t using dependencies to run minibp, you are always running it.\n\n.minibootstrap/build-globs.ninja may never have been used.",
       "parentUuid": "9501538b_acf12111",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 90
+      },
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43797f35_4dcf5cfe",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-08T16:43:25Z",
+      "side": 1,
+      "message": "Well, then it\u0027s a relief that I couldn\u0027t find the use for .minibootstrap/build-globs.ninja :) Removed these two lines. \n\nI don\u0027t know what I was thinking when I wrote my comment about build.ninja.d. Of course you\u0027re right.",
+      "parentUuid": "60c82754_94de2647",
       "range": {
         "startLine": 83,
         "startChar": 1,
