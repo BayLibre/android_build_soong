@@ -216,6 +216,7 @@ func RegisterOverridePostDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.TopDown("register_override", registerOverrideMutator).Parallel()
 	ctx.BottomUp("perform_override", performOverrideMutator).Parallel()
 	ctx.BottomUp("overridable_deps", overridableModuleDepsMutator).Parallel()
+	ctx.BottomUp("replace_deps_on_prebuilts_for_overridable_deps_again", PrebuiltPostDepsMutator).Parallel()
 	ctx.BottomUp("replace_deps_on_override", replaceDepsOnOverridingModuleMutator).Parallel()
 }
 
