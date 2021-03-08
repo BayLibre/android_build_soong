@@ -316,7 +316,7 @@ func categorizeParameter(parameter string) parameterType {
 	if strings.HasPrefix(parameter, "--sysroot") {
 		return systemRoot
 	}
-	if strings.HasPrefix(parameter, "-fsanitize-blacklist") {
+	if strings.HasPrefix(parameter, "-fsanitize-blacklist") || strings.HasPrefix(parameter, "-fprofile-sample-use") {
 		return relativeFilePathFlag
 	}
 	return flag
