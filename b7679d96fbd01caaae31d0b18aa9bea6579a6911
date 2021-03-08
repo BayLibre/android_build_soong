@@ -175,6 +175,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28b6d4f4_d0190190",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-08T22:11:31Z",
+      "side": 1,
+      "message": "No, those are at a much higher level in the stack, you would have to have something that the build recognizes as a module to use those.  I\u0027d suggest just adding something to build/soong/build_test.bash, which will get run during presubmit in the build_test targets.",
+      "parentUuid": "35d3b208_865a7046",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05639020_84a493fb",
         "filename": "ui/build/soong.go",
         "patchSetId": 9
