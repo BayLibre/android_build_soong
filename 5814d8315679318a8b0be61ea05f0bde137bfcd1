@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e5eaa2_99bd6b66",
+        "filename": "android/queryview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-08T16:16:44Z",
+      "side": 1,
+      "message": "queryview builds based on the current target/config, and there are some deps that that are added dependent on whether environment variables have been set -- would resetting the environment here change that behavior?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "5814d8315679318a8b0be61ea05f0bde137bfcd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
