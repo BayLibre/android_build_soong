@@ -80,6 +80,30 @@
       },
       "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "662a7b1f_d2d42035",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-08T11:39:14Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t disagree what you said.\n\nActually, what I really wanted to have is the ability to specify dependencies among the mutators. (e.g. this mutator should execute before X and after Y and Z) Then, regardless of the registration order, soong will decide the total order of the mutators according to the dependencies. Of course the tie-breaking rule should be consistent and deterministic.\n\nIf we think such an automatic ordering is the way to go (eventually), I would feel more comfortable about reordering the test mutators which this CL does.",
+      "parentUuid": "5d131223_ccf77c46",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 25
+      },
+      "revId": "23ea53c2b5a40868b8b3abbf16da9dfcaa496ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
