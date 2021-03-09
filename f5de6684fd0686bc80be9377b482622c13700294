@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "421ef447_74ac9537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-09T02:03:11Z",
+      "side": 1,
+      "message": "After fixing this issue the fields I found them useful for debugging.",
+      "revId": "f5de6684fd0686bc80be9377b482622c13700294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
