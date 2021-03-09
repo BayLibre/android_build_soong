@@ -104,6 +104,30 @@
       },
       "revId": "98649d8d6d71b8e315af3cad015075ecba7e3914",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a17c8a_c2cd3a5e",
+        "filename": "android/licenses.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-03-09T21:09:55Z",
+      "side": 1,
+      "message": "YAGNI\n\nThere is currently no need to write tests in other packages. The tests here guarantee that failures elsewhere will cause build breakages, which is already a clearer, stronger signal than a test failure.\n\nThe whole point of the license and license_kind feature is to make it cross-cutting and unavoidable so that OSPO can have confidence that the results are complete and accurate.",
+      "parentUuid": "61144825_c1edcc0a",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "98649d8d6d71b8e315af3cad015075ecba7e3914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
