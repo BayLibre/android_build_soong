@@ -22,6 +22,30 @@
       },
       "revId": "5814d8315679318a8b0be61ea05f0bde137bfcd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18864db_d5a47fe1",
+        "filename": "android/queryview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-09T05:20:30Z",
+      "side": 1,
+      "message": "While this clears the variables, soong_build initializes the actual set of available variables at the beginning of its main function from out/soong/soong.environment.available, so it should be good here.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/soong_build/main.go;l\u003d96;drc\u003d7d613bfe2cf0a864ce8b676212958dcb62bd2894",
+      "parentUuid": "84e5eaa2_99bd6b66",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "5814d8315679318a8b0be61ea05f0bde137bfcd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
