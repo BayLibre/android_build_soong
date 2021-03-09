@@ -128,6 +128,30 @@
       },
       "revId": "2c14640e40c4b4231d95a5054728ba5c98bf57ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2123c1e6_fff29014",
+        "filename": "rust/project_json.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-09T20:45:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9493e117_63300424",
+      "range": {
+        "startLine": 243,
+        "startChar": 44,
+        "endLine": 243,
+        "endChar": 51
+      },
+      "revId": "2c14640e40c4b4231d95a5054728ba5c98bf57ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

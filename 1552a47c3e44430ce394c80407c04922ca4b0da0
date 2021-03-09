@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f946a56_5e5c9a41",
+        "filename": "rust/project_json.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-09T20:45:48Z",
+      "side": 1,
+      "message": "This will panic if CargoOutDir() is nil, either check for nil or make it an android.OptionalPath and check for Valid().",
+      "range": {
+        "startLine": 237,
+        "startChar": 22,
+        "endLine": 237,
+        "endChar": 31
+      },
+      "revId": "1552a47c3e44430ce394c80407c04922ca4b0da0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
