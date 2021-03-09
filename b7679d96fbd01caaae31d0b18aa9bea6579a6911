@@ -193,6 +193,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1955b62_5a0134ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-09T16:16:06Z",
+      "side": 1,
+      "message": "Okay. How about this? Changes:\n\n- I added a trick with a \"canary\" Ninja file to detect when the bootstrap Ninja file needs to be rebuilt (and re-added writing a .d + glob file for the bootstrap Blueprint invocation)\n\n- I added tests. Observations:\n1. They output \"Build sandboxing disabled due to nsjail error\", which I didn\u0027t investigate\n2. I had to plumb a way to set Allow_missing_dependencies from the command line so that the mock source tree is not completely awful\n3. I had to write a soong.variables file because the \"re-write an empty soong.variables file\" trick doesn\u0027t actually work \n4. I added a --skip_ninja flag to soong_ui for two reasons: A. the final Ninja invocation failed for some complicated reason related to documentation writing I didn\u0027t investigate B. the tests are faster that way\n\nIf you think (3) is feasible, (2) is not actually necessary, I think, because Allow_missing_dependencies can be set from there, too.",
+      "parentUuid": "28b6d4f4_d0190190",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05639020_84a493fb",
         "filename": "ui/build/soong.go",
         "patchSetId": 9
