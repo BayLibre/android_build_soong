@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc51d39e_8e1fc673",
+        "filename": "python/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-09T22:51:51Z",
+      "side": 1,
+      "message": "Added a TODO and a bug to track that. I\u0027ll also start a doc.",
+      "parentUuid": "6500ce54_191b4625",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "584f8090077a43640b05838da4cb662d1bf1cdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e552056_43a68620",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-09T14:07:18Z",
       "side": 1,
       "message": "Should we go ahead and add Exclude_srcs?",
+      "range": {
+        "startLine": 94,
+        "startChar": 71,
+        "endLine": 94,
+        "endChar": 73
+      },
+      "revId": "584f8090077a43640b05838da4cb662d1bf1cdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffec7bbe_e3309668",
+        "filename": "python/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-09T22:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e552056_43a68620",
       "range": {
         "startLine": 94,
         "startChar": 71,
