@@ -80,6 +80,30 @@
       },
       "revId": "98649d8d6d71b8e315af3cad015075ecba7e3914",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61144825_c1edcc0a",
+        "filename": "android/licenses.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-09T19:40:02Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if there was any need for having license tests in other packages to make sure that it plays nicely with them? If there is then it needs to stay in the source.\n\nIf it is only going to be used here then it is fine to move it, any test file will do.\n\nIf we don\u0027t know then I can move it know and we can always move it back later.",
+      "parentUuid": "f573031b_a529b40a",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "98649d8d6d71b8e315af3cad015075ecba7e3914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
