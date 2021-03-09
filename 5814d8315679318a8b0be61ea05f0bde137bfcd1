@@ -46,6 +46,30 @@
       },
       "revId": "5814d8315679318a8b0be61ea05f0bde137bfcd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "851480f4_a7ca9254",
+        "filename": "android/queryview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-09T08:38:45Z",
+      "side": 1,
+      "message": "indeed! Submitting so as to unbreak queryview.",
+      "parentUuid": "c18864db_d5a47fe1",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "5814d8315679318a8b0be61ea05f0bde137bfcd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
