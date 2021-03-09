@@ -16,6 +16,24 @@
       "message": "This is likely to cause problems, as we don\u0027t know what use cases involve tools running inside ninja that read unknown environment variables.  Running Ninja in an empty environment would be nice, but I think it is going to take a lot of work before it can land and not get reverted.\n\nIn addition, the tests are also run outside of ninja, for example with `go test .` or inside intellij, and those runs need to have a clean environment too.  Before your changes tests ignored the environment completely, I think we need to restore that behavior.",
       "revId": "b14ad7b5dcd3a6ef575a6379d8f81f551faa90fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8798b60_1648152c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-09T16:41:36Z",
+      "side": 1,
+      "message": "...the presubmits pass? \n\nWhat would be a sufficient criterion to convince ourselves that this change is safe? \n\nWhat tools are you worried about? This change only affects the Ninja invocation that generates out/soong/build.ninja, not the one that actually builds Android (that one will probably be much more hairy make independent from the shell environment). I mean, I\u0027m interested in sufficient criteria for that change, too, but that would indeed be a much bigger change.",
+      "parentUuid": "43ed4e3c_e2241eeb",
+      "revId": "b14ad7b5dcd3a6ef575a6379d8f81f551faa90fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
