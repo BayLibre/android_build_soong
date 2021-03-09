@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6500ce54_191b4625",
+        "filename": "python/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-09T14:07:18Z",
+      "side": 1,
+      "message": "We also need to account for other Version properties as in the version split mutator.\n\nIf we\u0027re going for a minimal converter to handle the ones in bionic, can we add a TODO? Alternatively, do we have a place where we\u0027re tracking properties that are not handled yet?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "584f8090077a43640b05838da4cb662d1bf1cdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e552056_43a68620",
+        "filename": "python/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-09T14:07:18Z",
+      "side": 1,
+      "message": "Should we go ahead and add Exclude_srcs?",
+      "range": {
+        "startLine": 94,
+        "startChar": 71,
+        "endLine": 94,
+        "endChar": 73
+      },
+      "revId": "584f8090077a43640b05838da4cb662d1bf1cdeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
