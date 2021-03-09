@@ -51,6 +51,24 @@
       "parentUuid": "43be1b8a_ca2de41e",
       "revId": "c5723e3af79c0e167e2c4c0437f392397a54e1fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c4ba15_c9db55ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-09T10:05:30Z",
+      "side": 1,
+      "message": "No worries! Just try to be more careful next time!\n\n(I\u0027d not ordinarily call this out but very few people have the confidence to just clear these things up like I did now and thus quirks like this tend to accumulate over time, thereby accumulating \"scar tissue\")\n\nI assume I can count this change as reviewed by you then?",
+      "parentUuid": "2e01fc22_3ace11d1",
+      "revId": "c5723e3af79c0e167e2c4c0437f392397a54e1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
