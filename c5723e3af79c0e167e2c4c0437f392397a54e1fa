@@ -16,6 +16,41 @@
       "message": "The motivation is b/182201593: this special-casing broke the case where the source tree is under /dev.\n\nI haven\u0027t been able to figure out why this special-casing was added: I removed it and all tests still pass. Paul, can you explain\u003e",
       "revId": "c5723e3af79c0e167e2c4c0437f392397a54e1fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e01fc22_3ace11d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-09T09:58:59Z",
+      "side": 1,
+      "message": "Thanks for cleaning this up.",
+      "revId": "c5723e3af79c0e167e2c4c0437f392397a54e1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "504b3064_b1a2107e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-09T09:58:59Z",
+      "side": 1,
+      "message": "I think that change was needed in an earlier patch that used a copy from /dev/null to create an empty file but subsequent revisions switched to handle that explicitly but that change was accidentally left in.\n\nHaving a source tree under /dev/ seems ... weird.",
+      "parentUuid": "43be1b8a_ca2de41e",
+      "revId": "c5723e3af79c0e167e2c4c0437f392397a54e1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
