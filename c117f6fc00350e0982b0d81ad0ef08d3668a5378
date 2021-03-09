@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "277cbb34_5e23ecfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1315724
+      },
+      "writtenOn": "2021-03-09T15:44:17Z",
+      "side": 1,
+      "message": "Leave +2 to Colin",
+      "revId": "c117f6fc00350e0982b0d81ad0ef08d3668a5378",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
