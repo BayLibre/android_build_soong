@@ -76,12 +76,15 @@ func packageTestModuleFactory() Module {
 }
 
 func (m *packageTestModule) DepsMutator(ctx BottomUpMutatorContext) {
-	m.AddDeps(ctx, installDepTag{})
+	m.AddDeps(ctx)
 }
 
 func (m *packageTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
-	zipFile := PathForModuleOut(ctx, "myzip.zip")
+	filename := m.Name() + ".zip"
+	installDir := PathForModuleInstall(ctx, "etc")
+	zipFile := PathForModuleOut(ctx, filename)
 	m.entries = m.CopyDepsToZip(ctx, zipFile)
+	ctx.InstallFile(installDir, filename, zipFile)
 }
 
 func runPackagingTest(t *testing.T, multitarget bool, bp string, expected []string) {
@@ -341,4 +344,21 @@ func TestPackagingBaseSingleTarget(t *testing.T) {
 			},
 		}
 		`, []string{"lib64/foo", "lib64/bar"})
+
+	runPackagingTest(t, multiTarget,
+		`
+		component {
+			name: "foo",
+		}
+
+		package_module {
+			name: "nested",
+			deps: ["foo"],
+		}
+
+		package_module {
+			name: "package",
+			deps: ["nested"],
+		}
+		`, []string{"etc/nested.zip"})
 }

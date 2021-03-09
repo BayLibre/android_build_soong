@@ -59,8 +59,7 @@ type PackageModule interface {
 	packagingBase() *PackagingBase
 
 	// AddDeps adds dependencies to the `deps` modules. This should be called in DepsMutator.
-	// When adding the dependencies, depTag is used as the tag.
-	AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag)
+	AddDeps(ctx BottomUpMutatorContext)
 
 	// CopyDepsToZip zips the built artifacts of the dependencies into the given zip file and
 	// returns zip entries in it. This is expected to be called in GenerateAndroidBuildActions,
@@ -167,14 +166,33 @@ func (p *PackagingBase) getSupportedTargets(ctx BaseModuleContext) []Target {
 	return ret
 }
 
+// PackagingDepTag represents dependencies on modules to package, which are typically from
+// "deps" property and added by calling AddDeps(). PackagingBase-derived module can add
+// other modules with this tag so that CopyDepsToZip() can handle them.
+//
+// Note that this tag doesn't implement InstallAlwaysNeededDependencyTag
+// because PackageBase is typically used to package "deps" modules, not to be packaged with
+// them. For example, if we have a package-in-package, we don't want to
+// package inner deps in an outer package.
+//
+//   package(foo)
+//    deps: [bar]
+//   package(bar)
+//    deps: [baz]
+//
+// In the above, foo should package bar alone while bar packages baz.
+var PackagingDepTag = struct {
+	blueprint.BaseDependencyTag
+}{}
+
 // See PackageModule.AddDeps
-func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag) {
+func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext) {
 	for _, t := range p.getSupportedTargets(ctx) {
 		for _, dep := range p.getDepsForArch(ctx, t.Arch.ArchType) {
 			if p.IgnoreMissingDependencies && !ctx.OtherModuleExists(dep) {
 				continue
 			}
-			ctx.AddFarVariationDependencies(t.Variations(), depTag, dep)
+			ctx.AddFarVariationDependencies(t.Variations(), PackagingDepTag, dep)
 		}
 	}
 }
@@ -182,16 +200,12 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 // See PackageModule.CopyDepsToZip
 func (p *PackagingBase) CopyDepsToZip(ctx ModuleContext, zipOut WritablePath) (entries []string) {
 	m := make(map[string]PackagingSpec)
-	ctx.WalkDeps(func(child Module, parent Module) bool {
-		if !IsInstallDepNeeded(ctx.OtherModuleDependencyTag(child)) {
-			return false
-		}
-		for _, ps := range child.PackagingSpecs() {
+	ctx.VisitDirectDepsWithTag(PackagingDepTag, func(child Module) {
+		for _, ps := range child.TransitivePackagingSpecs() {
 			if _, ok := m[ps.relPathInPackage]; !ok {
 				m[ps.relPathInPackage] = ps
 			}
 		}
-		return true
 	})
 
 	builder := NewRuleBuilder(pctx, ctx)

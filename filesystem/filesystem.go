@@ -21,7 +21,6 @@ import (
 
 	"android/soong/android"
 
-	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -86,13 +85,8 @@ func filesystemFactory() android.Module {
 	return module
 }
 
-var dependencyTag = struct {
-	blueprint.BaseDependencyTag
-	android.InstallAlwaysNeededDependencyTag
-}{}
-
 func (f *filesystem) DepsMutator(ctx android.BottomUpMutatorContext) {
-	f.AddDeps(ctx, dependencyTag)
+	f.AddDeps(ctx)
 }
 
 type fsType int
