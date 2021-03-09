@@ -56,6 +56,30 @@
       },
       "revId": "98649d8d6d71b8e315af3cad015075ecba7e3914",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f573031b_a529b40a",
+        "filename": "android/licenses.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-03-09T18:51:36Z",
+      "side": 1,
+      "message": "I think they belong in licenses_test.go instead.",
+      "parentUuid": "62752637_ee35da3b",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "98649d8d6d71b8e315af3cad015075ecba7e3914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
