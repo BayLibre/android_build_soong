@@ -22,6 +22,30 @@
       },
       "revId": "355be8fcda24433b33784e6e5a5924e59a7a42f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "226fdfbf_e0b3db14",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-09T18:04:00Z",
+      "side": 1,
+      "message": "I don\u0027t think that would be necessary. AFAICT this is the only test that DOESN\u0027T treat the error as a pattern. The rest use one of the following methods (all of which have a corresponding error handler function):\n* FailIfErrored\n* FailIfNoMatchingErrors\n* CheckErrorsAgainstExpectations\n\nObviously, if we do encounter other common patterns (no pun intended) than we can easily add more error handler implementations.",
+      "parentUuid": "b8171b8f_aea5789a",
+      "range": {
+        "startLine": 606,
+        "startChar": 44,
+        "endLine": 606,
+        "endChar": 60
+      },
+      "revId": "355be8fcda24433b33784e6e5a5924e59a7a42f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
