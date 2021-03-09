@@ -46,6 +46,30 @@
       },
       "revId": "355be8fcda24433b33784e6e5a5924e59a7a42f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a733d5_294473a1",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-09T18:06:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "226fdfbf_e0b3db14",
+      "range": {
+        "startLine": 606,
+        "startChar": 44,
+        "endLine": 606,
+        "endChar": 60
+      },
+      "revId": "355be8fcda24433b33784e6e5a5924e59a7a42f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
