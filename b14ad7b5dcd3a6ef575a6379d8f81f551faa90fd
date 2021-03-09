@@ -34,6 +34,24 @@
       "parentUuid": "43ed4e3c_e2241eeb",
       "revId": "b14ad7b5dcd3a6ef575a6379d8f81f551faa90fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16fa3657_828689de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-09T17:23:59Z",
+      "side": 1,
+      "message": "Ah, I was thinking of the ninja invocation that runs the build, the ninja invocation that runs soong_build is a much more constrained problem, and soong_build is already getting it\u0027s environment from the environment file.  That means this CL is fine, but we still need a patch to fix the tests when invoked manually too.",
+      "parentUuid": "a8798b60_1648152c",
+      "revId": "b14ad7b5dcd3a6ef575a6379d8f81f551faa90fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
