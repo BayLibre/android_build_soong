@@ -41,7 +41,7 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		"api/test-removed.txt":   nil,
 
 		"prebuilts/sdk/tools/core-lambda-stubs.jar": nil,
-		"prebuilts/sdk/Android.bp":                  []byte(`prebuilt_apis { name: "sdk", api_dirs: ["14", "28", "30", "current"], imports_sdk_version: "none", imports_compile_dex:true,}`),
+		"prebuilts/sdk/Android.bp":                  []byte(`prebuilt_apis { name: "sdk", api_dirs: ["14", "28", "30", "current"], next_api_dir: "31", imports_sdk_version: "none", imports_compile_dex:true,}`),
 
 		"bin.py": nil,
 		python.StubTemplateHost: []byte(`PYTHON_BINARY = '%interpreter%'
@@ -54,7 +54,7 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		"api/system-server-removed.txt": nil,
 	}
 
-	levels := []string{"14", "28", "29", "30", "current"}
+	levels := []string{"14", "28", "29", "30", "31", "current"}
 	libs := []string{
 		"android", "foo", "bar", "sdklib", "barney", "betty", "foo-shared_library",
 		"foo-no_shared_library", "core-for-system-modules", "quuz", "qux", "fred",
