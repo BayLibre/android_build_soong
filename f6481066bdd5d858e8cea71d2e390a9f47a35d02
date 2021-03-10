@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c5298b_800f9d32",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-10T03:32:59Z",
+      "side": 1,
+      "message": "style nit:\n\nvar allFiles []string\nvar ccObjects []string\n\nif ok {\n  ..\n  allFiles \u003d strings.Split(splitString[0], \", \")\n  ccObjects \u003d strings.Split(splitString[1], \", \")\n}\n\n\nreturn allFiles, ccObjects, ok",
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5f3023_2b0f8d84",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-10T03:32:59Z",
+      "side": 1,
+      "message": "This is quite opaque. Could you document this function?",
+      "range": {
+        "startLine": 282,
+        "startChar": 24,
+        "endLine": 282,
+        "endChar": 45
+      },
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a6faa85_caa34dd9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-10T03:32:59Z",
+      "side": 1,
+      "message": "Please document this function.",
+      "range": {
+        "startLine": 481,
+        "startChar": 29,
+        "endLine": 481,
+        "endChar": 55
+      },
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6090abf6_ea142996",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-10T03:32:59Z",
+      "side": 1,
+      "message": "I wonder if this and the functions it calls could be parameterizable at the cc_library_static module\u0027s bazel handler level, instead of being so central in the bazel_handler.go?\n\nMoving forward, we probably want to co-locate these cquery logic closer to the bazel handler that\u0027s requesting for them.",
+      "range": {
+        "startLine": 532,
+        "startChar": 4,
+        "endLine": 532,
+        "endChar": 109
+      },
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c497eb9_76e02e04",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-10T03:32:59Z",
+      "side": 1,
+      "message": "return early if !ok to unindent the whole block.",
+      "range": {
+        "startLine": 419,
+        "startChar": 1,
+        "endLine": 419,
+        "endChar": 8
+      },
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
