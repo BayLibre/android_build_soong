@@ -450,7 +450,7 @@ func bazelModuleLabel(ctx BazelConversionPathContext, module blueprint.Module, t
 	// TODO(b/165114590): Convert tag (":name{.tag}") to corresponding Bazel implicit output targets.
 	b, ok := module.(Bazelable)
 	// TODO(b/181155349): perhaps return an error here if the module can't be/isn't being converted
-	if !ok || !b.ConvertedToBazel() {
+	if !ok || !b.ConvertedToBazel(ctx) {
 		return bp2buildModuleLabel(ctx, module)
 	}
 	return b.GetBazelLabel(ctx, module)
