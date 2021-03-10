@@ -45,6 +45,30 @@
       },
       "revId": "6f2670d0d25403fc119b068d6098030680ccc995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a93d41_96520717",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-10T03:57:15Z",
+      "side": 1,
+      "message": "Oh, I missed it. Thanks. Then CopyDepsToZip might need to be parameterized with dependencyTag as well. What I want to fix with these changes is that CopyDepsToZip relies on \"InstallDepNeeded\" of direct deps of PackagingBase to decide which to include. I thought that \"deps\" of \"filesystem\" modules are not meant to be installed together with filesystem module. I missed that \"cvd_host_package\" is different and requires install \"deps\" as well.",
+      "parentUuid": "697725c6_b21a9a00",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 72
+      },
+      "revId": "6f2670d0d25403fc119b068d6098030680ccc995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
