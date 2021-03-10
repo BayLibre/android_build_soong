@@ -140,6 +140,8 @@ type config struct {
 	fs         pathtools.FileSystem
 	mockBpList string
 
+	bp2buildConfig Bp2BuildConfig
+
 	// If testAllowNonExistentPaths is true then PathForSource and PathForModuleSrc won't error
 	// in tests when a path doesn't exist.
 	TestAllowNonExistentPaths bool
@@ -452,6 +454,7 @@ func NewConfig(srcDir, buildDir string, moduleListFile string) (Config, error) {
 			Bool(config.productVariables.ClangCoverage))
 
 	config.BazelContext, err = NewBazelContext(config)
+	config.bp2buildConfig = bp2buildDefaultConfig
 
 	return Config{config}, err
 }
