@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee39f003_499886af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T20:31:15Z",
+      "side": 1,
+      "message": "Does this need to be resurrected or abandoned?\n\nFTR I wrote this comment ages ago but might still be worth recording.",
+      "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "f6a0d8f1_7e198087",
         "filename": "java/robolectric.go",
@@ -20,10 +38,10 @@
         "endChar": 69
       },
       "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "31fbc567_f5a357f2",
         "filename": "java/robolectric.go",
@@ -44,10 +62,10 @@
         "endChar": 69
       },
       "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "861f2801_53f609c7",
         "filename": "java/robolectric.go",
@@ -68,10 +86,10 @@
         "endChar": 69
       },
       "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1b57a358_325a0dba",
         "filename": "java/robolectric.go",
@@ -92,8 +110,31 @@
         "endChar": 69
       },
       "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f573cf0_32167cc3",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T20:31:15Z",
+      "side": 1,
+      "message": "No, that won\u0027t work. SdkImplementationJars() can still return stubs (it just won\u0027t return the turbine generated version of the stubs). I did look at removing SdkImplementationJars() but there are cases where that is needed.\n\nI am happy to take a look at this bug this week if it is urgent.",
+      "parentUuid": "1b57a358_325a0dba",
+      "range": {
+        "startLine": 160,
+        "startChar": 48,
+        "endLine": 160,
+        "endChar": 69
+      },
+      "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
