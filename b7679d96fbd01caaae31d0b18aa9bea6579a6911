@@ -227,6 +227,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87210d2f_d67d9800",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-10T08:18:29Z",
+      "side": 1,
+      "message": "It is! I was vacillating between adding that and doing it with soong.variables . Thinking again, the fact that one needs to mock a soong.variables here is really a bug due to the BootJars issue, so let\u0027s go with the ALLOW_MISSING_DEPENDENCIES\u003dtrue approach.\n\nI\u0027ll put \"figure out why writing an empty soong.variables file does not work\" on my infinite TODO list.",
+      "parentUuid": "dcf0265e_f9734f05",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05639020_84a493fb",
