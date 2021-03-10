@@ -95,10 +95,6 @@ func TestCreateBazelFiles_Bp2Build_AddsTopLevelFiles(t *testing.T) {
 			dir:      "",
 			basename: "WORKSPACE",
 		},
-		{
-			dir:      bazelRulesSubDir,
-			basename: "BUILD",
-		},
 	}
 
 	assertFilecountsAreEqual(t, files, expectedFilePaths)
