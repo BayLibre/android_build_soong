@@ -1607,6 +1607,10 @@ func (c *Module) setSubnameProperty(actx android.ModuleContext) {
 func (c *Module) maybeGenerateBazelActions(actx android.ModuleContext) bool {
 	bazelModuleLabel := c.GetBazelLabel(actx, c)
 	bazelActionsUsed := false
+	if actx.ModuleType() != "cc_object" || actx.ModuleType() != "cc_library_static" {
+		// Only cc_object and cc_library_static are integrated now. Other cc_* types are WIP.
+		return false
+	}
 	if c.bazelHandler != nil && actx.Config().BazelContext.BazelEnabled() && len(bazelModuleLabel) > 0 {
 		bazelActionsUsed = c.bazelHandler.generateBazelBuildActions(actx, bazelModuleLabel)
 	}

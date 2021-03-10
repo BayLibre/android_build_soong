@@ -226,17 +226,22 @@ func toolDepsMutator(ctx android.BottomUpMutatorContext) {
 
 // Returns true if information was available from Bazel, false if bazel invocation still needs to occur.
 func (c *Module) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	// genrules only for now. cc_genrule and java_genrule are not integrated yet.
+	if ctx.ModuleType() != "genrule" {
+		return false
+	}
 	bazelCtx := ctx.Config().BazelContext
 	filePaths, ok := bazelCtx.GetOutputFiles(label, ctx.Arch().ArchType)
-	if ok {
-		var bazelOutputFiles android.Paths
-		for _, bazelOutputFile := range filePaths {
-			bazelOutputFiles = append(bazelOutputFiles, android.PathForBazelOut(ctx, bazelOutputFile))
-		}
-		c.outputFiles = bazelOutputFiles
-		c.outputDeps = bazelOutputFiles
+	if !ok {
+		return false
 	}
-	return ok
+	var bazelOutputFiles android.Paths
+	for _, bazelOutputFile := range filePaths {
+		bazelOutputFiles = append(bazelOutputFiles, android.PathForBazelOut(ctx, bazelOutputFile))
+	}
+	c.outputFiles = bazelOutputFiles
+	c.outputDeps = bazelOutputFiles
+	return true
 }
 
 func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -820,7 +825,7 @@ func BazelGenruleFactory() android.Module {
 
 func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 	m, ok := ctx.Module().(*Module)
-	if !ok || !m.ConvertWithBp2build() {
+	if !ok || !m.ConvertWithBp2build(ctx) {
 		return
 	}
 
