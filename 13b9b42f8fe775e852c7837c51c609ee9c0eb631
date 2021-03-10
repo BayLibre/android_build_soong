@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c2e5ec3_5433ae93",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-10T21:55:43Z",
+      "side": 1,
+      "message": "I think when we\u0027ve had another Android.bp file in there it has been non-empty (e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion_test.go;l\u003d451;drc\u003dba369adff16658c37ce248c309c091fb0d702903) But you\u0027re right, these are often empty and could probably base whether it is a map or slice on the test.",
+      "parentUuid": "49ba9815_5bd989f0",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "13b9b42f8fe775e852c7837c51c609ee9c0eb631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2165cc6e_74aa86da",
         "filename": "python/binary.go",
         "patchSetId": 9
