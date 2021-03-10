@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf3fdff_ba6aaa81",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T13:54:23Z",
+      "side": 0,
+      "message": "Developer Note: Generalizing the handling of tagged dist files means that this is no longer ignored.",
+      "revId": "74f05598eb55fcfd06afd4acae8045e2c13f82fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b635ced9_5262dc25",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T13:54:23Z",
+      "side": 0,
+      "message": "Developer Note: Generalizing the handling of tagged dist files means that this is no longer ignored.",
+      "revId": "74f05598eb55fcfd06afd4acae8045e2c13f82fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "665d7eaf_57371167",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T13:54:23Z",
+      "side": 0,
+      "message": "Developer Note: Generalizing the handling of tagged dist files means that this is no longer ignored.",
+      "revId": "74f05598eb55fcfd06afd4acae8045e2c13f82fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0d0d45_8bcf7f4f",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T13:54:23Z",
+      "side": 0,
+      "message": "Developer Note: Generalizing the handling of tagged dist files means that this is no longer ignored.",
+      "revId": "74f05598eb55fcfd06afd4acae8045e2c13f82fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
