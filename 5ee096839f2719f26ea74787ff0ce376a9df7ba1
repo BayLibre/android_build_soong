@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3d88f7_e76d5c1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-10T17:16:01Z",
+      "side": 1,
+      "message": "This fix is quite ugly (the actual fix would be to always invoke soong_build in the same way), but this will unbreak people and reduce pressure.",
+      "revId": "5ee096839f2719f26ea74787ff0ce376a9df7ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
