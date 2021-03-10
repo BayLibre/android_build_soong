@@ -158,6 +158,10 @@ func (ctx *TestContext) FinalDepsMutators(f RegisterMutatorFunc) {
 	ctx.finalDeps = append(ctx.finalDeps, f)
 }
 
+func (ctx *TestContext) RegisterBp2BuildConfig(config Bp2BuildConfig) {
+	ctx.config.bp2buildConfig = config
+}
+
 // RegisterBp2BuildMutator registers a BazelTargetModule mutator for converting a module
 // type to the equivalent Bazel target.
 func (ctx *TestContext) RegisterBp2BuildMutator(moduleType string, m func(TopDownMutatorContext)) {
