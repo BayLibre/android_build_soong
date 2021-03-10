@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1958dd9_72ad5ce4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2021-03-10T02:05:29Z",
+      "side": 1,
+      "message": "Patched the CL locally and APK signing works fine. Thanks!",
+      "revId": "1c1b6e6d9555e4323e80ad0c48fed988c6cef411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
