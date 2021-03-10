@@ -16,6 +16,24 @@
       "message": "keep the android imports together",
       "revId": "25a4aae94debdd92c62aa95d67f9aa06939bd29c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b3df25_63fa2c0b",
+        "filename": "rust/rust_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T13:55:32Z",
+      "side": 1,
+      "message": "Done. I wasn\u0027t sure which order was correct so I\u0027ve moved this one down to where the previous cc one was.",
+      "parentUuid": "da23b37b_709504d3",
+      "revId": "25a4aae94debdd92c62aa95d67f9aa06939bd29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
