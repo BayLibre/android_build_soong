@@ -211,6 +211,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcf0265e_f9734f05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-10T01:24:06Z",
+      "side": 1,
+      "message": "You previously said the performance difference was undetectable, which makes the complexity of the canary ninja file seem unnecessary.\n\nIs setting ALLOW_MISSING_DEPENDENCIES\u003dtrue in the environment not sufficient to enable it from the command line?",
+      "parentUuid": "f1955b62_5a0134ec",
+      "revId": "b7679d96fbd01caaae31d0b18aa9bea6579a6911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05639020_84a493fb",
         "filename": "ui/build/soong.go",
         "patchSetId": 9

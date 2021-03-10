@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ce635f_42bba69e",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-10T01:24:06Z",
+      "side": 1,
+      "message": "This seems like more complexity than warranted by the performance difference, but if it is necessary it needs lots of comments.",
+      "revId": "2026d542e2a2782dcfa60fb0629f197a5952be67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
