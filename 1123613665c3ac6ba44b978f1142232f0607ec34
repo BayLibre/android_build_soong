@@ -16,6 +16,24 @@
       "message": "There are other changes in this CL. Is this intended?",
       "revId": "1123613665c3ac6ba44b978f1142232f0607ec34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ca20e6_8077ace9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-10T18:11:35Z",
+      "side": 1,
+      "message": "No, fixed.",
+      "parentUuid": "a0ec40d7_f9099ec8",
+      "revId": "1123613665c3ac6ba44b978f1142232f0607ec34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
