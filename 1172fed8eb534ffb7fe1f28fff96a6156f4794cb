@@ -16,6 +16,24 @@
       "message": "What prevents converting the rest of the tests that use this and removing it?",
       "revId": "1172fed8eb534ffb7fe1f28fff96a6156f4794cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87fc1883_90d16349",
+        "filename": "etc/prebuilt_etc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T08:35:26Z",
+      "side": 1,
+      "message": "Nothing, I just didn\u0027t want to contaminate this change whose primary purpose was to enable enable other packages to be converted to test fixtures to get too big. I converted the one test that used testPrebuiltEtcError as that was simpler than trying to keep that method but there were more usages of testPrebuiltEtc.\n\nI will convert the tests in a follow up change.",
+      "parentUuid": "4e796697_8ec14374",
+      "revId": "1172fed8eb534ffb7fe1f28fff96a6156f4794cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
