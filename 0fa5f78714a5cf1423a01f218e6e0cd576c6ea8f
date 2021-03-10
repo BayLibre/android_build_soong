@@ -88,6 +88,24 @@
       "parentUuid": "fbdde5de_9c2ce8f8",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f4d2214_531d5b25",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-10T13:43:05Z",
+      "side": 0,
+      "message": "\u003e Then what you want is to have Y and Z in the package X. Y1 and Y2 shouldn\u0027t be there because they are already inside Y. Right?\n\nThat\u0027s what I thought with PS1, but now I think the answer depends on what tag is used. If X depends on Y with PackagingTargetDepTag, then X\u0027s CopyDepsToZip() will include Y. That\u0027s the same for Y and Y1/Y2. If Y depends on Y1 with PTD tag, then Y will include Y1. Regarding transitive deps (X -\u003e Y -\u003e Y1), X\u0027s CopyDepsToZip() will include Y1 only if X-\u003eY is PTD and Y-\u003eY1 is IAND.\n\n\u003e  What if Y is a module that is similar to cvd_host_package?\n\nWell, PS2 is to support the case of cvd_host_package. cvd_host_package adds dependencies with IAND \u0026 PTD.\n\n\u003e What we want is to have only B and C inside A. D is already part of C.\n\nA\u0027s CopyDepsToZip() will include B(direct), C(as B\u0027s IAND), and D(as C\u0027s IAND).",
+      "parentUuid": "a8d7b304_a423a9e6",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
