@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795311ab_e5a4e4a3",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-10T08:28:14Z",
+      "side": 0,
+      "message": "I though we just need to replace this return statement with this block:\n\n```\nif _, ok :\u003d child.(PackageModule); ok {\n  return false\n} else {\n  return true\n}\n```",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
