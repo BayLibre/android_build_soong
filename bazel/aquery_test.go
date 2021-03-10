@@ -606,7 +606,7 @@ func TestTransitiveInputDepsets(t *testing.T) {
 	}
 	expectedBuildStatements := []BuildStatement{
 		BuildStatement{
-			Command:     "/bin/bash -c touch bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out",
+			Command:     "/bin/bash -c 'touch bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out'",
 			OutputPaths: []string{"bazel-out/sourceroot/k8-fastbuild/bin/testpkg/test_out"},
 			InputPaths:  inputPaths,
 			Mnemonic:    "Action",
@@ -626,6 +626,7 @@ func assertError(t *testing.T, err error, expected string) {
 // Asserts that the given actual build statements match the given expected build statements.
 // Build statement equivalence is determined using buildStatementEquals.
 func assertBuildStatements(t *testing.T, expected []BuildStatement, actual []BuildStatement) {
+	t.Helper()
 	if len(expected) != len(actual) {
 		t.Errorf("expected %d build statements, but got %d,\n expected: %s,\n actual: %s",
 			len(expected), len(actual), expected, actual)

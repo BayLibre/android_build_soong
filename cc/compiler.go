@@ -307,7 +307,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	CheckBadCompilerFlags(ctx, "recovery.cflags", compiler.Properties.Target.Recovery.Cflags)
 	CheckBadCompilerFlags(ctx, "vendor_ramdisk.cflags", compiler.Properties.Target.Vendor_ramdisk.Cflags)
 
-	esc := proptools.NinjaAndShellEscapeList
+	esc := proptools.NinjaAndShellEscapeArgsList
 
 	flags.Local.CFlags = append(flags.Local.CFlags, esc(compiler.Properties.Cflags)...)
 	flags.Local.CppFlags = append(flags.Local.CppFlags, esc(compiler.Properties.Cppflags)...)

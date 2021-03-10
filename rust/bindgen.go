@@ -155,7 +155,7 @@ func (b *bindgenDecorator) GenerateSource(ctx ModuleContext, deps PathDeps) andr
 		cflags = append(cflags, "-isystem "+include.String())
 	}
 
-	esc := proptools.NinjaAndShellEscapeList
+	esc := proptools.NinjaAndShellEscapeArgsList
 
 	// Filter out invalid cflags
 	for _, flag := range b.ClangProperties.Cflags {
