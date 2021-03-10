@@ -46,6 +46,30 @@
       },
       "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17757bc0_6dc977ba",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-03-10T10:55:29Z",
+      "side": 1,
+      "message": "Ah, I see.\n\n\u003e Does xcrun have a well-known location one could hard-wire instead?\n\nThe default path would be /usr/bin/xcrun, so 99%+ of the time it\u0027ll be there, but I\u0027m not sure that should be relied upon 100%. (I also didn\u0027t check back on older Mac/xcode versions, but I don\u0027t think that\u0027s changed over the duration we support)",
+      "parentUuid": "156e1f9a_409bfb8a",
+      "range": {
+        "startLine": 180,
+        "startChar": 54,
+        "endLine": 180,
+        "endChar": 67
+      },
+      "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
