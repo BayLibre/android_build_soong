@@ -52,6 +52,24 @@
       "parentUuid": "1a750fa9_d74d8b75",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbdde5de_9c2ce8f8",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-10T10:40:49Z",
+      "side": 0,
+      "message": "Hmm, I\u0027m probably missing something, but iiuc, WalkDeps was to collect all transitive deps\u0027 PackagingSpecs() which are tagged as InstallDepNeeded starting from the PackagingBase (not including itself). And that\u0027s what Module.TransitivePackagingSpecs() is (collecting PackagingSpecs() transitively in bottom-up way)",
+      "parentUuid": "21a2f822_315c0124",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
