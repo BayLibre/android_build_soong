@@ -22,6 +22,30 @@
       },
       "revId": "8158356421092e9e6edc2c856dd2eee7339e7e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ddc590_9adb7317",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-10T10:51:21Z",
+      "side": 1,
+      "message": "My understanding is that this error message is emitted when Soong looks for a non-hermetic tool but it can\u0027t find it, which is different from finding it and it being disallowed (which the message says)\n\nThe way this works, at least in production, is that $PATH points to the directory created for path_interposer ($OUT_DIR/.path) and which contains every binary on the user\u0027s $PATH, not just the allowlisted ones. So this code finds xcrun under $OUT_DIR/.path .",
+      "parentUuid": "9a9a7fb9_341a7bd2",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "8158356421092e9e6edc2c856dd2eee7339e7e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
