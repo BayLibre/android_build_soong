@@ -26,9 +26,9 @@ func CreateBazelFiles(
 	// Used to denote that the top level directory is a package.
 	files = append(files, newFile("", GeneratedBuildFileName, ""))
 
-	files = append(files, newFile(bazelRulesSubDir, GeneratedBuildFileName, ""))
-
 	if mode == QueryView {
+		files = append(files, newFile(bazelRulesSubDir, GeneratedBuildFileName, ""))
+
 		// These files are only used for queryview.
 		files = append(files, newFile(bazelRulesSubDir, "providers.bzl", providersBzl))
 
