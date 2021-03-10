@@ -60,25 +60,8 @@ var prebuiltEtcFixtureFactory = android.NewFixtureFactory(
 	}),
 )
 
-// testPrebuiltEtc runs tests using the prebuiltEtcFixtureFactory
-//
-// Do not add any new usages of this, instead use the prebuiltEtcFixtureFactory directly as it
-// makes it much easier to customize the test behavior.
-//
-// If it is necessary to customize the behavior of an existing test that uses this then please first
-// convert the test to using prebuiltEtcFixtureFactory first and then in a following change add the
-// appropriate fixture preparers. Keeping the conversion change separate makes it easy to verify
-// that it did not change the test behavior unexpectedly.
-//
-// deprecated
-func testPrebuiltEtc(t *testing.T, bp string) (*android.TestContext, android.Config) {
-	t.Helper()
-	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, bp)
-	return result.TestContext, result.Config
-}
-
 func TestPrebuiltEtcVariants(t *testing.T) {
-	ctx, _ := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_etc {
 			name: "foo.conf",
 			src: "foo.conf",
@@ -95,24 +78,24 @@ func TestPrebuiltEtcVariants(t *testing.T) {
 		}
 	`)
 
-	foo_variants := ctx.ModuleVariantsForTests("foo.conf")
+	foo_variants := result.ModuleVariantsForTests("foo.conf")
 	if len(foo_variants) != 1 {
 		t.Errorf("expected 1, got %#v", foo_variants)
 	}
 
-	bar_variants := ctx.ModuleVariantsForTests("bar.conf")
+	bar_variants := result.ModuleVariantsForTests("bar.conf")
 	if len(bar_variants) != 2 {
 		t.Errorf("expected 2, got %#v", bar_variants)
 	}
 
-	baz_variants := ctx.ModuleVariantsForTests("baz.conf")
+	baz_variants := result.ModuleVariantsForTests("baz.conf")
 	if len(baz_variants) != 1 {
 		t.Errorf("expected 1, got %#v", bar_variants)
 	}
 }
 
 func TestPrebuiltEtcOutputPath(t *testing.T) {
-	ctx, _ := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_etc {
 			name: "foo.conf",
 			src: "foo.conf",
@@ -120,14 +103,14 @@ func TestPrebuiltEtcOutputPath(t *testing.T) {
 		}
 	`)
 
-	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := result.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
 	if p.outputFilePath.Base() != "foo.installed.conf" {
 		t.Errorf("expected foo.installed.conf, got %q", p.outputFilePath.Base())
 	}
 }
 
 func TestPrebuiltEtcGlob(t *testing.T) {
-	ctx, _ := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_etc {
 			name: "my_foo",
 			src: "foo.*",
@@ -139,19 +122,19 @@ func TestPrebuiltEtcGlob(t *testing.T) {
 		}
 	`)
 
-	p := ctx.ModuleForTests("my_foo", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := result.ModuleForTests("my_foo", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
 	if p.outputFilePath.Base() != "my_foo" {
 		t.Errorf("expected my_foo, got %q", p.outputFilePath.Base())
 	}
 
-	p = ctx.ModuleForTests("my_bar", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p = result.ModuleForTests("my_bar", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
 	if p.outputFilePath.Base() != "bar.conf" {
 		t.Errorf("expected bar.conf, got %q", p.outputFilePath.Base())
 	}
 }
 
 func TestPrebuiltEtcAndroidMk(t *testing.T) {
-	ctx, _ := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_etc {
 			name: "foo",
 			src: "foo.conf",
@@ -173,8 +156,8 @@ func TestPrebuiltEtcAndroidMk(t *testing.T) {
 		"LOCAL_TARGET_REQUIRED_MODULES": {"targetModA"},
 	}
 
-	mod := ctx.ModuleForTests("foo", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
-	entries := android.AndroidMkEntriesForTest(t, ctx, mod)[0]
+	mod := result.ModuleForTests("foo", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	entries := android.AndroidMkEntriesForTest(t, result.TestContext, mod)[0]
 	for k, expectedValue := range expected {
 		if value, ok := entries.EntryMap[k]; ok {
 			if !reflect.DeepEqual(value, expectedValue) {
@@ -187,7 +170,7 @@ func TestPrebuiltEtcAndroidMk(t *testing.T) {
 }
 
 func TestPrebuiltEtcRelativeInstallPathInstallDirPath(t *testing.T) {
-	ctx, _ := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_etc {
 			name: "foo.conf",
 			src: "foo.conf",
@@ -195,7 +178,7 @@ func TestPrebuiltEtcRelativeInstallPathInstallDirPath(t *testing.T) {
 		}
 	`)
 
-	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := result.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
 	expected := buildDir + "/target/product/test_device/system/etc/bar"
 	if p.installDirPath.String() != expected {
 		t.Errorf("expected %q, got %q", expected, p.installDirPath.String())
@@ -216,7 +199,7 @@ func TestPrebuiltEtcCannotSetRelativeInstallPathAndSubDir(t *testing.T) {
 }
 
 func TestPrebuiltEtcHost(t *testing.T) {
-	ctx, _ := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_etc_host {
 			name: "foo.conf",
 			src: "foo.conf",
@@ -224,14 +207,14 @@ func TestPrebuiltEtcHost(t *testing.T) {
 	`)
 
 	buildOS := android.BuildOs.String()
-	p := ctx.ModuleForTests("foo.conf", buildOS+"_common").Module().(*PrebuiltEtc)
+	p := result.ModuleForTests("foo.conf", buildOS+"_common").Module().(*PrebuiltEtc)
 	if !p.Host() {
 		t.Errorf("host bit is not set for a prebuilt_etc_host module.")
 	}
 }
 
 func TestPrebuiltUserShareInstallDirPath(t *testing.T) {
-	ctx, _ := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_usr_share {
 			name: "foo.conf",
 			src: "foo.conf",
@@ -239,7 +222,7 @@ func TestPrebuiltUserShareInstallDirPath(t *testing.T) {
 		}
 	`)
 
-	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := result.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
 	expected := buildDir + "/target/product/test_device/system/usr/share/bar"
 	if p.installDirPath.String() != expected {
 		t.Errorf("expected %q, got %q", expected, p.installDirPath.String())
@@ -247,7 +230,7 @@ func TestPrebuiltUserShareInstallDirPath(t *testing.T) {
 }
 
 func TestPrebuiltUserShareHostInstallDirPath(t *testing.T) {
-	ctx, config := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_usr_share_host {
 			name: "foo.conf",
 			src: "foo.conf",
@@ -256,22 +239,22 @@ func TestPrebuiltUserShareHostInstallDirPath(t *testing.T) {
 	`)
 
 	buildOS := android.BuildOs.String()
-	p := ctx.ModuleForTests("foo.conf", buildOS+"_common").Module().(*PrebuiltEtc)
-	expected := filepath.Join(buildDir, "host", config.PrebuiltOS(), "usr", "share", "bar")
+	p := result.ModuleForTests("foo.conf", buildOS+"_common").Module().(*PrebuiltEtc)
+	expected := filepath.Join(buildDir, "host", result.Config.PrebuiltOS(), "usr", "share", "bar")
 	if p.installDirPath.String() != expected {
 		t.Errorf("expected %q, got %q", expected, p.installDirPath.String())
 	}
 }
 
 func TestPrebuiltFontInstallDirPath(t *testing.T) {
-	ctx, _ := testPrebuiltEtc(t, `
+	result := prebuiltEtcFixtureFactory.RunTestWithBp(t, `
 		prebuilt_font {
 			name: "foo.conf",
 			src: "foo.conf",
 		}
 	`)
 
-	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := result.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
 	expected := buildDir + "/target/product/test_device/system/fonts"
 	if p.installDirPath.String() != expected {
 		t.Errorf("expected %q, got %q", expected, p.installDirPath.String())
@@ -305,8 +288,8 @@ func TestPrebuiltFirmwareDirPath(t *testing.T) {
 	}}
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
-			ctx, _ := testPrebuiltEtc(t, tt.config)
-			p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+			result := prebuiltEtcFixtureFactory.RunTestWithBp(t, tt.config)
+			p := result.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
 			if p.installDirPath.String() != tt.expectedPath {
 				t.Errorf("expected %q, got %q", tt.expectedPath, p.installDirPath)
 			}
@@ -341,8 +324,8 @@ func TestPrebuiltDSPDirPath(t *testing.T) {
 	}}
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
-			ctx, _ := testPrebuiltEtc(t, tt.config)
-			p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+			result := prebuiltEtcFixtureFactory.RunTestWithBp(t, tt.config)
+			p := result.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
 			if p.installDirPath.String() != tt.expectedPath {
 				t.Errorf("expected %q, got %q", tt.expectedPath, p.installDirPath)
 			}
