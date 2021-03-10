@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b3987a_3a52c603",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-10T02:43:04Z",
+      "side": 1,
+      "message": "What is the problem here?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 72
+      },
+      "revId": "6f2670d0d25403fc119b068d6098030680ccc995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697725c6_b21a9a00",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-10T02:43:04Z",
+      "side": 1,
+      "message": "No. This is a revert of aosp/1509690.",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 72
+      },
+      "revId": "6f2670d0d25403fc119b068d6098030680ccc995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
