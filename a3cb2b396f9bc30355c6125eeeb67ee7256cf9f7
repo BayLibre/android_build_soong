@@ -16,6 +16,110 @@
       "message": "Ping.",
       "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc5b04af_10e02808",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T14:34:39Z",
+      "side": 1,
+      "message": "You may be waiting longer for treehugger than for reviews today anyway. 😞",
+      "parentUuid": "a40e6988_10a59295",
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb0cefa_9cbad7ab",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T14:34:39Z",
+      "side": 1,
+      "message": "I\u0027m glad to see something that starts to look like a decent testing framework. Nice work!",
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f87f8fd_733e3a4e",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T14:34:39Z",
+      "side": 1,
+      "message": "Doesn\u0027t this rather belong in testing.go? Things like the assertion tests below don\u0027t have that much to do with fixtures after all. There are also a few functions of that sort in there already, e.g. FailIfNoMatchingErrors.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 33
+      },
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d564636a_1d67be33",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T14:34:39Z",
+      "side": 1,
+      "message": "Isn\u0027t it more useful to check for a substring? Error messages often contain details like exact paths etc that usually aren\u0027t significant to test; having to include them in the expected string can make the check unnecessarily brittle (and verbose).",
+      "range": {
+        "startLine": 490,
+        "startChar": 39,
+        "endLine": 490,
+        "endChar": 45
+      },
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f68f70d5_1d8b15bf",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T14:34:39Z",
+      "side": 1,
+      "message": "I think it\u0027d be good to incorporate a (substring) check of the panic message here. There are many panics in the codebase, and it isn\u0027t that hard to get a failure with a different panic than the intended one, which would mean the test can be entirely broken and still pass. The caller should be more specific on which panic they expect.",
+      "range": {
+        "startLine": 554,
+        "startChar": 21,
+        "endLine": 554,
+        "endChar": 32
+      },
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
