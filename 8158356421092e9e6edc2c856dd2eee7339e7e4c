@@ -70,6 +70,30 @@
       },
       "revId": "8158356421092e9e6edc2c856dd2eee7339e7e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f5142d_79021e65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-03-10T11:03:05Z",
+      "side": 1,
+      "message": "(There are still some tools we don\u0027t set up symlinks for -- gcc/binutils/etc, but those are the minority)",
+      "parentUuid": "95bb1624_fee80e92",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "8158356421092e9e6edc2c856dd2eee7339e7e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
