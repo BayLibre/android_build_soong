@@ -2788,6 +2788,7 @@ func makeApexAvailableBaseline() map[string][]string {
 	m["com.android.tethering"] = []string{
 		"android.hardware.tetheroffload.config-V1.0-java",
 		"android.hardware.tetheroffload.control-V1.0-java",
+		"android.hardware.tetheroffload.control-V1.1-java",
 		"android.hidl.base-V1.0-java",
 		"libcgrouprc",
 		"libcgrouprc_format",
