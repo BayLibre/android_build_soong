@@ -34,6 +34,24 @@
       "parentUuid": "795311ab_e5a4e4a3",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a2f822_315c0124",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-10T09:54:20Z",
+      "side": 0,
+      "message": "But the semantic of the function is not what we want. It doesn\u0027t know whether a dependency is PackagingBase or not.",
+      "parentUuid": "1a750fa9_d74d8b75",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
