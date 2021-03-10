@@ -70,6 +70,24 @@
       "parentUuid": "21a2f822_315c0124",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8d7b304_a423a9e6",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-10T11:34:11Z",
+      "side": 0,
+      "message": "Let\u0027s assume that a package X depends on another package Y and a non-package module Z. Package Y depends on modules Y1 and Y2.\n\nThen what you want is to have Y and Z in the package X. Y1 and Y2 shouldn\u0027t be there because they are already inside Y. Right?\n\nTo do so, we shouldn\u0027t traverse into Y. How can we do that? Two ways:\n\n(1) When Y adds Y1 and Y2 as its dependencies, it does not use InstallAlwaysNeededDependencyTag. Then TransitivePackagingSpecs on X will not include Y1 and Y2.\n\n(2) Alternatively (my suggestion), we just stop traversing when PackagingModule instance is reached.\n\n(1) is not ideal because, as a side effect of not using InstallAlwaysNeededDependencyTag, `m Y` doesn\u0027t install Y1 and Y2 to the out directory. What if Y is a module that is similar to cvd_host_package?\n\n(2) doesn\u0027t have such a problem.\n\nThis CL however doesn\u0027t look like either of the two, and it doesn\u0027t seem right. An example:\n\npackage A --(IAND \u0026\u0026 PTD)--\u003e \n   non-package B --(IAND)--\u003e \n       package C --(IAND \u0026\u0026 PTD)--\u003e \n          non-package D\n\nIAND: InstallAlwaysNeedDependencyTag\nPTD: PackagingTargetDepTag\n\nWhat we want is to have only B and C inside A. D is already part of C.\n\nBut this can\u0027t be achieved with this CL, because C is not direct dep of A and therefore TransitivePackagingSpecs will traverse into it. TransitivePackagingSpecs doesn\u0027t respect the PTD tag. It will include D anyway because of the IAND tag.",
+      "parentUuid": "fbdde5de_9c2ce8f8",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
