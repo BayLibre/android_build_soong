@@ -171,8 +171,18 @@ func runSoong(ctx Context, config Config) {
 			"-f", filepath.Join(config.SoongOutDir(), file))
 
 		var ninjaEnv Environment
+
+		// This is currently how the command line to invoke soong_build finds the
+		// root of the source tree and the output root
 		ninjaEnv.Set("TOP", os.Getenv("TOP"))
 		ninjaEnv.Set("SOONG_OUTDIR", config.SoongOutDir())
+
+		// Needed for NonHermeticHostSystemTool() and that, only in tests. We should
+		// probably find a better way of running tests other than making $PATH
+		// available also to production builds.
+		ninjaEnv.Set("PATH", os.Getenv("PATH"))
+
+		// For debugging
 		if os.Getenv("SOONG_DELVE") != "" {
 			// SOONG_DELVE is already in cmd.Environment
 			ninjaEnv.Set("SOONG_DELVE_PATH", shared.ResolveDelveBinary())
