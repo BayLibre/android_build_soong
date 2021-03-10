@@ -14,7 +14,10 @@
 
 package android
 
-import "android/soong/bazel"
+import (
+	"android/soong/bazel"
+	"strings"
+)
 
 // BazelModuleBase contains the property structs with metadata for modules which can be converted to
 // Bazel.
@@ -26,7 +29,7 @@ type BazelModuleBase struct {
 type Bazelable interface {
 	bazelProps() *bazel.Properties
 	GetBazelLabel() string
-	ConvertWithBp2build() bool
+	ConvertWithBp2build(string) bool
 }
 
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
@@ -51,7 +54,69 @@ func (b *BazelModuleBase) GetBazelLabel() string {
 	return b.bazelProperties.Bazel_module.Label
 }
 
+type Bp2BuildPackageConversionConfigEntry int
+type Bp2BuildPackageConversionConfig map[string]Bp2BuildPackageConversionConfigEntry
+
+const (
+	// iota + 1 ensures that the int value is not 0 when used in the Bp2buildAllowlist map,
+	// which can also mean that the key doesn't exist in a lookup.
+	AllModules  Bp2BuildPackageConversionConfigEntry = iota + 1 // convert all modules in this package
+	ModuleOptIn                                                 // rely on the bp2build_available property on the module.
+)
+
+var (
+	// Incremental migration of modules in packages for supported module types. If using ModuleOptIn,
+	// ensure that there's a bug TODO.
+	packagePrefixes = Bp2BuildPackageConversionConfig{
+		"bionic":                AllModules,
+		"bionic/libc":           ModuleOptIn, // TODO(b/182339414)
+		"bionic/linker":         ModuleOptIn, // TODO(b/182338959)
+		"system/core/libcutils": AllModules,
+		"system/logging/liblog": AllModules,
+	}
+)
+
 // ConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
-func (b *BazelModuleBase) ConvertWithBp2build() bool {
+func (b *BazelModuleBase) ConvertWithBp2build(packagePath string) bool {
+	// |             | available | not available |
+	// | all modules | convert   | convert       |
+	// | opt-in      | convert   | don't convert |
+	if convertAllModulesInPackage(packagePath, packagePrefixes) {
+		// allowlisted by package.
+		return true
+	}
+
+	// decide at the module level.
 	return b.bazelProperties.Bazel_module.Bp2build_available
+}
+
+// convertAllModulesInPackage checks that the package is convertAllModulesInPackage in in the set of
+// prefixes. That is, if the package is x/y/z, and the list allows x, x/y, or
+// x/y/z, this function will return true.
+//
+// However, if the package is x/y, and the set contains just x/y/z, this
+// function returns false since x/y/z is _not_ a prefix of x/y.
+func convertAllModulesInPackage(packagePath string, prefixes Bp2BuildPackageConversionConfig) bool {
+	ret := false
+
+	packagePrefix := ""
+	// e.g. for x/y/z, iterate over x, x/y, then x/y/z, taking the final value from the allowlist.
+	for _, part := range strings.Split(packagePath, "/") {
+		packagePrefix += part
+		switch prefixes[packagePrefix] {
+		case AllModules:
+			// package contains this prefix and this prefix is explicitly allowed.
+			ret = true
+		case ModuleOptIn:
+			// package contains this prefix but this package defers to modules to opt-in.
+			ret = false
+		default:
+			// Not actually needed, but useful for readability that if the value of prefixes[packagePrefix] is 0,
+			// don't change the previous value.
+		}
+		// Continue to the next part of the package dir.
+		packagePrefix += "/"
+	}
+
+	return ret
 }

@@ -503,7 +503,7 @@ func BazelShBinaryFactory() android.Module {
 
 func ShBinaryBp2Build(ctx android.TopDownMutatorContext) {
 	m, ok := ctx.Module().(*ShBinary)
-	if !ok || !m.ConvertWithBp2build() {
+	if !ok || !m.ConvertWithBp2build(ctx.ModuleDir()) {
 		return
 	}
 
