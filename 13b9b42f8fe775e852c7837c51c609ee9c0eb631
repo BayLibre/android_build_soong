@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ba9815_5bd989f0",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-10T12:23:07Z",
+      "side": 1,
+      "message": "Has there ever been a _conversion_test.go where the contents of these files wasn\u0027t empty? Maybe we could have filesystem accept either a map or a list of filenames?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "13b9b42f8fe775e852c7837c51c609ee9c0eb631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2165cc6e_74aa86da",
+        "filename": "python/binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-10T12:23:07Z",
+      "side": 1,
+      "message": "It seems to default to an empty string? Should we explicitly set it to PY3 to be clearer?",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 54
+      },
+      "revId": "13b9b42f8fe775e852c7837c51c609ee9c0eb631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
