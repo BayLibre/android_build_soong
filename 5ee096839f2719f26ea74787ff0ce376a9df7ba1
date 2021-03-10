@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "902737e3_f63c0689",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-10T17:28:08Z",
+      "side": 1,
+      "message": "This works fine in a normal AOSP build (you can test with `m soong_docs`), how is it invoked differently in a mixed build?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "5ee096839f2719f26ea74787ff0ce376a9df7ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7f3d88f7_e76d5c1d",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-03-10T17:16:01Z",
       "side": 1,
       "message": "This fix is quite ugly (the actual fix would be to always invoke soong_build in the same way), but this will unbreak people and reduce pressure.",
+      "revId": "5ee096839f2719f26ea74787ff0ce376a9df7ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e5910b7_f27bf767",
+        "filename": "android/writedocs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-10T17:28:08Z",
+      "side": 1,
+      "message": "filepath.Rel doesn\u0027t return an error if the target directory is not a subdirectory of the base directory, it returns a path that starts with ../../.. (https://play.golang.org/p/D8ROkVNS6d-)\n\nCan you modify the error printing to print what the actual error is?",
       "revId": "5ee096839f2719f26ea74787ff0ce376a9df7ba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
