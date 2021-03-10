@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "014a3e49_0fa09e9b",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-10T18:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69c5298b_800f9d32",
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f5f3023_2b0f8d84",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-10T03:32:59Z",
       "side": 1,
       "message": "This is quite opaque. Could you document this function?",
+      "range": {
+        "startLine": 282,
+        "startChar": 24,
+        "endLine": 282,
+        "endChar": 45
+      },
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c605069b_c20fa590",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-10T18:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f5f3023_2b0f8d84",
       "range": {
         "startLine": 282,
         "startChar": 24,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b54d95_d472e629",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-10T18:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a6faa85_caa34dd9",
+      "range": {
+        "startLine": 481,
+        "startChar": 29,
+        "endLine": 481,
+        "endChar": 55
+      },
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6090abf6_ea142996",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-03-10T03:32:59Z",
       "side": 1,
       "message": "I wonder if this and the functions it calls could be parameterizable at the cc_library_static module\u0027s bazel handler level, instead of being so central in the bazel_handler.go?\n\nMoving forward, we probably want to co-locate these cquery logic closer to the bazel handler that\u0027s requesting for them.",
+      "range": {
+        "startLine": 532,
+        "startChar": 4,
+        "endLine": 532,
+        "endChar": 109
+      },
+      "revId": "f6481066bdd5d858e8cea71d2e390a9f47a35d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436bacf0_4fee1ef9",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-10T18:25:34Z",
+      "side": 1,
+      "message": "To be frank, I\u0027m not sure if that\u0027s an improvement. It\u0027s going to be unfortunate to have all query strings in a centralized location (when we have dozens of request types), but I don\u0027t think having these scattered for each module type is less confusing, either.\n\nMaybe we could typing each request type, instead. For example,\n\"getAllFiles\" is a request type, and \"getCcObjectFiles\" is a request type.\n\nEach request type thus needs to have the following defined:\n   - Function to encode useful information into a string, written in Starlark\n   - Function to extract information from string into go types, written in Go.\n\nI\u0027ll take an AI to deal with this. It\u0027s plain to see that the approach I\u0027ve taken here so far is not going to scale well, so this is definitely some tech debt I\u0027ll address soon 😊\n\nI\u0027ve created b/182383483 to track this.",
+      "parentUuid": "6090abf6_ea142996",
       "range": {
         "startLine": 532,
         "startChar": 4,
