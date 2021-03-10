@@ -52,6 +52,24 @@
       "parentUuid": "a8798b60_1648152c",
       "revId": "b14ad7b5dcd3a6ef575a6379d8f81f551faa90fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff165a51_db86dcc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-10T07:03:23Z",
+      "side": 1,
+      "message": "I slept over this and now I don\u0027t understand why the tests need to be fixed when invoked manually. They are run without environment variables before builds so they are guaranteed to be safe if the presubmit pass, so all that can happen is that they inconvenience people who develop Soong itself.\n\nI\u0027ll take a look, but a somewhat unenthusiastic one.",
+      "parentUuid": "16fa3657_828689de",
+      "revId": "b14ad7b5dcd3a6ef575a6379d8f81f551faa90fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
