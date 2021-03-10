@@ -88,7 +88,7 @@ func filesystemFactory() android.Module {
 
 var dependencyTag = struct {
 	blueprint.BaseDependencyTag
-	android.InstallAlwaysNeededDependencyTag
+	android.PackagingTargetDepTag
 }{}
 
 func (f *filesystem) DepsMutator(ctx android.BottomUpMutatorContext) {
