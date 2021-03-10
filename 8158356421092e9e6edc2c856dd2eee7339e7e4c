@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9a7fb9_341a7bd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-03-10T10:26:56Z",
+      "side": 1,
+      "message": "Isn\u0027t it right when paths/config.go has removed it from your $PATH? (It\u0027s not right if it wasn\u0027t on your path to begin with, but this code can\u0027t tell the difference)",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "8158356421092e9e6edc2c856dd2eee7339e7e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
