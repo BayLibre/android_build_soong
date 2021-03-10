@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "aa26d2f0_90ead9e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T14:42:07Z",
+      "side": 1,
+      "message": "I thought that after I sent the ping.",
+      "parentUuid": "bc5b04af_10e02808",
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "eeb0cefa_9cbad7ab",
         "filename": "android/fixture.go",
         "patchSetId": 2
@@ -55,6 +73,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b4baf59e_8ae14f81",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T14:42:07Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "eeb0cefa_9cbad7ab",
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4f87f8fd_733e3a4e",
         "filename": "android/fixture.go",
         "patchSetId": 2
@@ -66,6 +102,30 @@
       "writtenOn": "2021-03-10T14:34:39Z",
       "side": 1,
       "message": "Doesn\u0027t this rather belong in testing.go? Things like the assertion tests below don\u0027t have that much to do with fixtures after all. There are also a few functions of that sort in there already, e.g. FailIfNoMatchingErrors.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 33
+      },
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc41cc6_7d12b077",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T14:42:07Z",
+      "side": 1,
+      "message": "Agreed. Or maybe in a separate file altogether.\n\nFYI The FailIfNoMatchingErrors and related methods will be replaced for most usages at least by error handlers in the test fixtures (which use those methods under the covers).",
+      "parentUuid": "4f87f8fd_733e3a4e",
       "range": {
         "startLine": 464,
         "startChar": 0,
@@ -99,6 +159,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc50a636_6654d39a",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T14:42:07Z",
+      "side": 1,
+      "message": "I just backported this as is from sdk. Most errors are checked using patterns. Definitely room for improvement but not today!",
+      "parentUuid": "d564636a_1d67be33",
+      "range": {
+        "startLine": 490,
+        "startChar": 39,
+        "endLine": 490,
+        "endChar": 45
+      },
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f68f70d5_1d8b15bf",
@@ -112,6 +196,30 @@
       "writtenOn": "2021-03-10T14:34:39Z",
       "side": 1,
       "message": "I think it\u0027d be good to incorporate a (substring) check of the panic message here. There are many panics in the codebase, and it isn\u0027t that hard to get a failure with a different panic than the intended one, which would mean the test can be entirely broken and still pass. The caller should be more specific on which panic they expect.",
+      "range": {
+        "startLine": 554,
+        "startChar": 21,
+        "endLine": 554,
+        "endChar": 32
+      },
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee76a17_c961b8cf",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T14:42:07Z",
+      "side": 1,
+      "message": "Agreed. I just backported this as is from sdk. Definitely room for improvement but not today!",
+      "parentUuid": "f68f70d5_1d8b15bf",
       "range": {
         "startLine": 554,
         "startChar": 21,
