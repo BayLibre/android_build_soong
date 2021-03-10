@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"android/soong/shared"
+
 	"github.com/google/blueprint/bootstrap"
 
 	"android/soong/android"
@@ -198,6 +199,8 @@ func runBp2Build(srcDir string, configuration android.Config) {
 	if err != nil {
 		panic(err)
 	}
+
+	extraNinjaDeps = append(extraNinjaDeps, configuration.ProductVariablesFileName)
 
 	// Run the loading and analysis pipeline to prepare the graph of regular
 	// Modules parsed from Android.bp files, and the BazelTargetModules mapped

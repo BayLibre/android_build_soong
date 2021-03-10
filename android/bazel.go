@@ -53,10 +53,10 @@ type Bazelable interface {
 	bazelProps() *properties
 	HasHandcraftedLabel() bool
 	HandcraftedLabel() string
-	GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string
-	ConvertWithBp2build() bool
+	GetBazelLabel(ctx BaseModuleContext, module blueprint.Module) string
+	ConvertWithBp2build(ctx EarlyModuleContext) bool
 	GetBazelBuildFileContents(c Config, path, name string) (string, error)
-	ConvertedToBazel() bool
+	ConvertedToBazel(ctx EarlyModuleContext) bool
 }
 
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
@@ -87,19 +87,93 @@ func (b *BazelModuleBase) HandcraftedLabel() string {
 }
 
 // GetBazelLabel returns the Bazel label for the given BazelModuleBase.
-func (b *BazelModuleBase) GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string {
+func (b *BazelModuleBase) GetBazelLabel(ctx BaseModuleContext, module blueprint.Module) string {
 	if b.HasHandcraftedLabel() {
 		return b.HandcraftedLabel()
 	}
-	if b.ConvertWithBp2build() {
+	if b.ConvertWithBp2build(ctx) {
 		return bp2buildModuleLabel(ctx, module)
 	}
 	return "" // no label for unconverted module
 }
 
+// Configuration to decide if a package should be converted.
+// Make changes in build/make/core/bp2build_config.mk. These variables are
+// written in out/build/soong.variables.
+type BazelConversionConfig map[string]BazelConversionConfigEntry
+type BazelConversionConfigEntry int
+
+const (
+	// iota + 1 ensures that the int value is not 0 when used in the Bp2buildAllowlist map,
+	// which can also mean that the key doesn't exist in a lookup.
+	ConvertSubtree     BazelConversionConfigEntry = iota + 1 // convert all modules in this package
+	ConvertModuleOptIn                                       // rely on the bp2build_available property on the module.
+)
+
+func makePackageConversionConfig(config Config) BazelConversionConfig {
+	packageConversionConfig := BazelConversionConfig{}
+
+	for _, p := range config.productVariables.Bp2BuildConvertSubtree {
+		packageConversionConfig[p] = ConvertSubtree
+	}
+
+	for _, p := range config.productVariables.Bp2BuildConvertOptInModules {
+		packageConversionConfig[p] = ConvertModuleOptIn
+	}
+
+	return packageConversionConfig
+}
+
 // ConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
-func (b *BazelModuleBase) ConvertWithBp2build() bool {
+func (b *BazelModuleBase) ConvertWithBp2build(ctx EarlyModuleContext) bool {
+	// Quick table guide:
+	//
+	// |             | bp2build_available: true | bp2build_available: false |
+	// | AllModules  | convert                  | convert                   |
+	// | ModuleOptIn | convert                  | don't convert             |
+	//
+	// Note that AllModules would override the module-level bp2build_available, so we can enforce
+	// every module in a package to be converted wholesale.
+	packagePath := ctx.ModuleDir()
+	if convertAllModulesInPackage(packagePath, makePackageConversionConfig(ctx.Config())) {
+		// convert this module, regardless of bp2build_available.
+		return true
+	}
+
+	// decide at the module level.
 	return b.bazelProperties.Bazel_module.Bp2build_available
+}
+
+// convertAllModulesInPackage checks that the package contains a prefix from the
+// set of package prefixes where all modules must be converted. That is, if the
+// package is x/y/z, and the list contains either x, x/y, or x/y/z, this function will
+// return true.
+//
+// However, if the package is x/y, and it matches a ModuleOptIn "x/y" entry
+// exactly, this module will return false early.
+//
+// This function will also return false if the package doesn't match anything in
+// the config.
+func convertAllModulesInPackage(packagePath string, packageConversionConfig BazelConversionConfig) bool {
+	ret := false
+
+	if packageConversionConfig[packagePath] == ConvertModuleOptIn {
+		return false
+	}
+
+	packagePrefix := ""
+	// e.g. for x/y/z, iterate over x, x/y, then x/y/z, taking the final value from the allowlist.
+	for _, part := range strings.Split(packagePath, "/") {
+		packagePrefix += part
+		if packageConversionConfig[packagePrefix] == ConvertSubtree {
+			// package contains this prefix and this prefix should convert all modules
+			return true
+		}
+		// Continue to the next part of the package dir.
+		packagePrefix += "/"
+	}
+
+	return ret
 }
 
 // GetBazelBuildFileContents returns the file contents of a hand-crafted BUILD file if available or
@@ -126,6 +200,6 @@ func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string)
 
 // ConvertedToBazel returns whether this module has been converted to Bazel, whether automatically
 // or manually
-func (b *BazelModuleBase) ConvertedToBazel() bool {
-	return b.ConvertWithBp2build() || b.HasHandcraftedLabel()
+func (b *BazelModuleBase) ConvertedToBazel(ctx EarlyModuleContext) bool {
+	return b.ConvertWithBp2build(ctx) || b.HasHandcraftedLabel()
 }
