@@ -199,6 +199,8 @@ func runBp2Build(srcDir string, configuration android.Config) {
 		panic(err)
 	}
 
+	extraNinjaDeps = append(extraNinjaDeps, configuration.ProductVariablesFileName)
+
 	// Run the loading and analysis pipeline to prepare the graph of regular
 	// Modules parsed from Android.bp files, and the BazelTargetModules mapped
 	// from the regular Modules.
