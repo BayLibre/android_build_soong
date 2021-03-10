@@ -46,6 +46,30 @@
       },
       "revId": "8158356421092e9e6edc2c856dd2eee7339e7e4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bb1624_fee80e92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-03-10T11:01:34Z",
+      "side": 1,
+      "message": "\u003e which contains every binary on the user\u0027s $PATH, not just the allowlisted ones\n\nAh, the intent was to switch that over to only contain the allowlisted ones once a transition period was over. At that point, in theory, we\u0027d benefit more from any performance benefit from not having to set up the symlinks (and not having to search as many files in $PATH) over the benefit given by nicer error messages.\n\nIn practice a lot of people don\u0027t check error codes, and don\u0027t understand why their host tools aren\u0027t available, so the logs and stderr output tended to be more useful than expected. And apparently we never flipped the switch.",
+      "parentUuid": "35ddc590_9adb7317",
+      "range": {
+        "startLine": 9,
+        "startChar": 22,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "8158356421092e9e6edc2c856dd2eee7339e7e4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
