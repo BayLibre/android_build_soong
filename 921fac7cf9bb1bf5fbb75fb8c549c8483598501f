@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c34282_5f4d3fd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T10:09:18Z",
+      "side": 1,
+      "message": "I intend to use this as a simple example of how to convert tests to use test fixtures so I have added some developer comments to explain the differences.",
+      "revId": "921fac7cf9bb1bf5fbb75fb8c549c8483598501f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6d5d1e_f721490f",
+        "filename": "etc/prebuilt_etc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T10:09:18Z",
+      "side": 1,
+      "message": "Developer Comment: The TestResult structure which is returned by the RunTest..() methods embeds a *TestContext to make it easy to convert a test by simply replacing ctx with result.",
+      "revId": "921fac7cf9bb1bf5fbb75fb8c549c8483598501f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2289d7b9_97040735",
+        "filename": "etc/prebuilt_etc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T10:09:18Z",
+      "side": 1,
+      "message": "Developer Comment: The TestResult structure which is returned by the RunTest..() methods provides an additional Module(name, variant) method to access the module directly instead of going through ModuleForTests.",
+      "revId": "921fac7cf9bb1bf5fbb75fb8c549c8483598501f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af3e9680_59fcaf73",
+        "filename": "etc/prebuilt_etc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T10:09:18Z",
+      "side": 1,
+      "message": "Developer Comment: The TestResult structure which is returned by the RunTest..() methods embeds a TestHelper to make it easy to use its Assert... methods.",
+      "revId": "921fac7cf9bb1bf5fbb75fb8c549c8483598501f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7d24c5_3a61ecad",
+        "filename": "etc/prebuilt_etc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T10:09:18Z",
+      "side": 1,
+      "message": "Developer Comment: If the *TestContext embedded in TestResult structure is needed then it is easy to access.",
+      "range": {
+        "startLine": 153,
+        "startChar": 47,
+        "endLine": 153,
+        "endChar": 65
+      },
+      "revId": "921fac7cf9bb1bf5fbb75fb8c549c8483598501f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffcd6276_7d77adf7",
+        "filename": "etc/prebuilt_etc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-10T10:09:18Z",
+      "side": 1,
+      "message": "Developer Comment: If the Config field in TestResult structure is needed then it is easy to access.",
+      "range": {
+        "startLine": 230,
+        "startChar": 45,
+        "endLine": 230,
+        "endChar": 71
+      },
+      "revId": "921fac7cf9bb1bf5fbb75fb8c549c8483598501f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
