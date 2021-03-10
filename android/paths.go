@@ -342,6 +342,8 @@ type BazelConversionPathContext interface {
 	Module() Module
 	OtherModuleName(m blueprint.Module) string
 	OtherModuleDir(m blueprint.Module) string
+
+	TopDownMutatorContext
 }
 
 // BazelLabelForModuleDeps returns a Bazel-compatible label for the requested modules which
@@ -450,7 +452,7 @@ func bazelModuleLabel(ctx BazelConversionPathContext, module blueprint.Module, t
 	// TODO(b/165114590): Convert tag (":name{.tag}") to corresponding Bazel implicit output targets.
 	b, ok := module.(Bazelable)
 	// TODO(b/181155349): perhaps return an error here if the module can't be/isn't being converted
-	if !ok || !b.ConvertedToBazel() {
+	if !ok || !b.ConvertedToBazel(ctx) {
 		return bp2buildModuleLabel(ctx, module)
 	}
 	return b.GetBazelLabel(ctx, module)
@@ -470,7 +472,7 @@ func samePackage(label1, label2 string) bool {
 	return bazelPackage(label1) == bazelPackage(label2)
 }
 
-func bp2buildModuleLabel(ctx BazelConversionPathContext, module blueprint.Module) string {
+func bp2buildModuleLabel(ctx BaseModuleContext, module blueprint.Module) string {
 	moduleName := ctx.OtherModuleName(module)
 	moduleDir := ctx.OtherModuleDir(module)
 	return fmt.Sprintf("//%s:%s", moduleDir, moduleName)
