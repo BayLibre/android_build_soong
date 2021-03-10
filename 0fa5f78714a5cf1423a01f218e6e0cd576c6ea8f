@@ -16,6 +16,24 @@
       "message": "I though we just need to replace this return statement with this block:\n\n```\nif _, ok :\u003d child.(PackageModule); ok {\n  return false\n} else {\n  return true\n}\n```",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a750fa9_d74d8b75",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-10T09:05:05Z",
+      "side": 0,
+      "message": "I want to avoid calling WalkDeps() here because we already have TransitivePackagingSpecs(). It\u0027s redundant (no need to walk deps again) and also duplicated with computeInstallDeps() : https://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d1500;bpv\u003d1;bpt\u003d1?q\u003dmodule.go",
+      "parentUuid": "795311ab_e5a4e4a3",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
