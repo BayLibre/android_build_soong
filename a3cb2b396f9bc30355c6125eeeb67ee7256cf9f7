@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "924c70b1_e613ed45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T14:55:06Z",
+      "side": 1,
+      "message": "No, TH has been more or less hosed all day (like yesterday evening, but it worked for a while in between).",
+      "parentUuid": "aa26d2f0_90ead9e7",
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "eeb0cefa_9cbad7ab",
         "filename": "android/fixture.go",
         "patchSetId": 2
@@ -220,6 +238,30 @@
       "side": 1,
       "message": "Agreed. I just backported this as is from sdk. Definitely room for improvement but not today!",
       "parentUuid": "f68f70d5_1d8b15bf",
+      "range": {
+        "startLine": 554,
+        "startChar": 21,
+        "endLine": 554,
+        "endChar": 32
+      },
+      "revId": "a3cb2b396f9bc30355c6125eeeb67ee7256cf9f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "447d8578_24013425",
+        "filename": "android/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-10T14:55:06Z",
+      "side": 1,
+      "message": "Fair enough, I hope someone finds a little bit of time to fix this before it becomes too much of an antipattern.",
+      "parentUuid": "1ee76a17_c961b8cf",
       "range": {
         "startLine": 554,
         "startChar": 21,
