@@ -16,6 +16,24 @@
       "message": "Please add a short comment.",
       "revId": "31972dc48723c6cfdf5b41a0165b9c81cbe76b88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62080a41_053a2e62",
+        "filename": "java/lint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-10T17:48:05Z",
+      "side": 1,
+      "message": "Done in a followup in aosp/1624661 to avoid invalidating the completed presubmit run in aosp/1621780.",
+      "parentUuid": "281909b6_402de196",
+      "revId": "31972dc48723c6cfdf5b41a0165b9c81cbe76b88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
