@@ -69,6 +69,30 @@
       },
       "revId": "6f2670d0d25403fc119b068d6098030680ccc995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342454a6_353489c7",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-10T05:37:41Z",
+      "side": 1,
+      "message": "No. I don\u0027t understand why we need to parameterize CopyDepsToZip. The CL I mentioned above was to support this legacy use case:\n\n`m cvd-host_package; acloud create --local-instance ...`\n\n`m cvd-host_package` shouldn\u0027t just install the zip archive only. It should also install its transitive dependencies into the out directory (as well as inside the archive).\n\nPackage-in-package in your example is actually a problem and this CL fixes that. But I don\u0027t think we will ever have such a configuration. So, a better approach would be not supporting it at all, or specialcasing it. e.g. if a dep implements PackageModule, we either stop traversing further, or query it to see if we can go further or not.",
+      "parentUuid": "85a93d41_96520717",
+      "range": {
+        "startLine": 173,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 72
+      },
+      "revId": "6f2670d0d25403fc119b068d6098030680ccc995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
