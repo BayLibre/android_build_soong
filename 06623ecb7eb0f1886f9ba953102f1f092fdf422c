@@ -16,6 +16,24 @@
       "message": "Another unrelated comment. but this empty line makes no sense to me.",
       "revId": "06623ecb7eb0f1886f9ba953102f1f092fdf422c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb6610fe_be85e3dc",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T15:05:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a49079d_1bd7c8de",
+      "revId": "06623ecb7eb0f1886f9ba953102f1f092fdf422c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
