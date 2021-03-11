@@ -94,6 +94,30 @@
       },
       "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c777ad4_8db4ccfb",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-11T07:44:29Z",
+      "side": 1,
+      "message": "Can we just hard-wire \"/usr/bin/xcrun\" instead?\n\nThat\u0027s what Bazel does:\n\nhttps://github.com/bazelbuild/bazel/blob/master/src/main/java/com/google/devtools/build/lib/exec/local/XcodeLocalEnvProvider.java#L139\n\nand it seems to be working reasonably well.",
+      "parentUuid": "eae6c477_a5889ed6",
+      "range": {
+        "startLine": 180,
+        "startChar": 54,
+        "endLine": 180,
+        "endChar": 67
+      },
+      "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
