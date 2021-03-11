@@ -16,6 +16,24 @@
       "message": "Another side point, but while you\u0027re here, can you either delete this line or change it to \"//\", please? Makes it more clear what the comment above applies to.",
       "revId": "981b94b4609b34b880bc8b85fc51fed4daf94d17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "152fda90_c5921c1a",
+        "filename": "sdk/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T17:18:00Z",
+      "side": 1,
+      "message": "Will do in a follow up.",
+      "parentUuid": "b8a3b20f_9afec143",
+      "revId": "981b94b4609b34b880bc8b85fc51fed4daf94d17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
