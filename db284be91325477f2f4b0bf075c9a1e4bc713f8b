@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d76db13_2f47927b",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T15:27:34Z",
+      "side": 1,
+      "message": "I thought so and initially moved it into the other file but decided that it was not testing the system_modules itself but rather how the droidstubs interacts with it which is more a droidstubs issue. The thing that clinched it for me was that the test checks the ninja rules created by the droidstubs module not the system_modules module.",
+      "parentUuid": "969ed6ec_d0cf5018",
+      "range": {
+        "startLine": 1655,
+        "startChar": 5,
+        "endLine": 1655,
+        "endChar": 36
+      },
+      "revId": "db284be91325477f2f4b0bf075c9a1e4bc713f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cad9767f_df86475f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-11T15:07:26Z",
       "side": 1,
       "message": "Dito.",
+      "range": {
+        "startLine": 2437,
+        "startChar": 5,
+        "endLine": 2437,
+        "endChar": 37
+      },
+      "revId": "db284be91325477f2f4b0bf075c9a1e4bc713f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1fde72_0fa79e4c",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T15:27:34Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "cad9767f_df86475f",
       "range": {
         "startLine": 2437,
         "startChar": 5,
