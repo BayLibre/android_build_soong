@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a49079d_1bd7c8de",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T14:49:26Z",
+      "side": 1,
+      "message": "Another unrelated comment. but this empty line makes no sense to me.",
+      "revId": "06623ecb7eb0f1886f9ba953102f1f092fdf422c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

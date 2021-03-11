@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce2a4ea_8f82e632",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3651,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T14:49:26Z",
+      "side": 1,
+      "message": "For global variables like this it may be a better pattern to use GroupFixturePreparers, so that each test can choose the factory freely.",
+      "range": {
+        "startLine": 3651,
+        "startChar": 27,
+        "endLine": 3651,
+        "endChar": 50
+      },
+      "revId": "514fe86c526191408e3f4da867fcb7b4c6fd5431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851d1d0b_64fc251d",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3660,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T14:49:26Z",
+      "side": 1,
+      "message": "I\u0027d consider inlining this function in the preparer list above, to group it more tightly with the MemtagHeap*Paths settings.",
+      "range": {
+        "startLine": 3660,
+        "startChar": 5,
+        "endLine": 3660,
+        "endChar": 23
+      },
+      "revId": "514fe86c526191408e3f4da867fcb7b4c6fd5431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
