@@ -46,6 +46,30 @@
       },
       "revId": "2e5208a97d4b1b64b41a7d178adfdea5615a730d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ec74e76_7550a8c3",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T14:21:58Z",
+      "side": 1,
+      "message": "My first suggestion was \"PrepareForTestWithMissingModuleDependencies\".\n\nAnother option is \"PrepareForTestWithAllowMissingDependenies\", to repeat the spelling of the setting elsewhere. I think I\u0027d prefer that.",
+      "parentUuid": "d996cb63_485eabd0",
+      "range": {
+        "startLine": 111,
+        "startChar": 22,
+        "endLine": 111,
+        "endChar": 41
+      },
+      "revId": "2e5208a97d4b1b64b41a7d178adfdea5615a730d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
