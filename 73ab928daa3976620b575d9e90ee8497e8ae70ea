@@ -118,6 +118,30 @@
       },
       "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8854cd_207044ec",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-11T07:49:54Z",
+      "side": 1,
+      "message": "(argh, now I see that I asked this just right before. Not my best day.)\n\nIt looks like what Paul is suggesting is a lot of work for that 1%. I\u0027ll ask our resident mac OS expert.",
+      "parentUuid": "5c777ad4_8db4ccfb",
+      "range": {
+        "startLine": 180,
+        "startChar": 54,
+        "endLine": 180,
+        "endChar": 67
+      },
+      "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
