@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93d79eae_c2036828",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3709,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T15:21:15Z",
+      "side": 1,
+      "message": "Just add these one by one directly to fs? But then again, if you implement collision detection in fs.Merge that\u0027s a reason to keep using it.",
+      "range": {
+        "startLine": 3706,
+        "startChar": 0,
+        "endLine": 3709,
+        "endChar": 51
+      },
+      "revId": "7d8a8ad0d17a2cd94b47c47631ca8fa7f9dc2f3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
