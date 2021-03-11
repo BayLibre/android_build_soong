@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "68538f06_9d667452",
+        "filename": "java/system_modules_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T15:49:59Z",
+      "side": 1,
+      "message": "Will do that in a follow up as I would like to get this up.",
+      "parentUuid": "51953e66_f1fa3400",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "c52bea9555086692a7afc0dc5cf36b60ca430057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ba90fe42_248db5ac",
         "filename": "java/system_modules_test.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-11T15:43:52Z",
       "side": 1,
       "message": "Side point, but weird capitalization here.",
+      "range": {
+        "startLine": 57,
+        "startChar": 49,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "c52bea9555086692a7afc0dc5cf36b60ca430057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f833294b_c222f7ec",
+        "filename": "java/system_modules_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T15:49:59Z",
+      "side": 1,
+      "message": "Agreed. Not my doing though.",
+      "parentUuid": "ba90fe42_248db5ac",
       "range": {
         "startLine": 57,
         "startChar": 49,
