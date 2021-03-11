@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "969ed6ec_d0cf5018",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1655,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T15:07:26Z",
+      "side": 1,
+      "message": "Isn\u0027t this conceptually a system_modules test too?",
+      "range": {
+        "startLine": 1655,
+        "startChar": 5,
+        "endLine": 1655,
+        "endChar": 36
+      },
+      "revId": "db284be91325477f2f4b0bf075c9a1e4bc713f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad9767f_df86475f",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T15:07:26Z",
+      "side": 1,
+      "message": "Dito.",
+      "range": {
+        "startLine": 2437,
+        "startChar": 5,
+        "endLine": 2437,
+        "endChar": 37
+      },
+      "revId": "db284be91325477f2f4b0bf075c9a1e4bc713f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
