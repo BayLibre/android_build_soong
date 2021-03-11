@@ -169,7 +169,7 @@ func (system *SystemModules) GenerateAndroidBuildActions(ctx android.ModuleConte
 	system.outputDir, system.outputDeps = TransformJarsToSystemModules(ctx, jars)
 }
 
-func (system *SystemModules) DepsMutator(ctx android.BottomUpMutatorContext) {
+func (system *SystemModules) ComponentDepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, systemModulesLibsTag, system.properties.Libs...)
 }
 
@@ -223,6 +223,12 @@ func (system *systemModulesImport) Name() string {
 
 func (system *systemModulesImport) Prebuilt() *android.Prebuilt {
 	return &system.prebuilt
+}
+
+func (system *systemModulesImport) ComponentDepsMutator(ctx android.BottomUpMutatorContext) {
+	for _, lib := range system.properties.Libs {
+		ctx.AddVariationDependencies(nil, systemModulesLibsTag, "prebuilt_"+lib)
+	}
 }
 
 type systemModulesSdkMemberType struct {
