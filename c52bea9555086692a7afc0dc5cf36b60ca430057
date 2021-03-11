@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51953e66_f1fa3400",
+        "filename": "java/system_modules_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T15:43:52Z",
+      "side": 1,
+      "message": "Nit: Suggest getNormalizedPathsToHeaderJars since it extracts them from the result rather than just transforms the input arguments.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "c52bea9555086692a7afc0dc5cf36b60ca430057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba90fe42_248db5ac",
+        "filename": "java/system_modules_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T15:43:52Z",
+      "side": 1,
+      "message": "Side point, but weird capitalization here.",
+      "range": {
+        "startLine": 57,
+        "startChar": 49,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "c52bea9555086692a7afc0dc5cf36b60ca430057",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
