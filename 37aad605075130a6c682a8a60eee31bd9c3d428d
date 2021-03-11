@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this needs to be in testing.go (which puts it in the non-testing apex.a), nor to be exported.  cc/testing.go and java/testing.go exist because the apex and/or rust tests need to depend on them, but it\u0027s not a pattern that is necessary everywhere.",
       "revId": "37aad605075130a6c682a8a60eee31bd9c3d428d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c695d53_a6c8ed6b",
+        "filename": "apex/testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T21:54:41Z",
+      "side": 1,
+      "message": "Understood. However, these need to be here as they are depended on by the sdk package.",
+      "parentUuid": "a7d2d4e4_eae87913",
+      "revId": "37aad605075130a6c682a8a60eee31bd9c3d428d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
