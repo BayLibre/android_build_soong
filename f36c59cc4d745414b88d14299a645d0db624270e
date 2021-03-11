@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "994253d8_976607a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-11T07:03:57Z",
+      "side": 1,
+      "message": "During the makefile to blueprint conversion I was told that per-file copyright headers need not be added. Who might give the decisive answer?",
+      "parentUuid": "2e2d9082_35a6d9e7",
+      "revId": "f36c59cc4d745414b88d14299a645d0db624270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd06b7c7_65e4e513",
         "filename": "mk2rbc/android_products.go",
         "patchSetId": 20
