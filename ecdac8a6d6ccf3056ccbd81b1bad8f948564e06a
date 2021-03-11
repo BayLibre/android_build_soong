@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34c12dd_431eec6b",
+        "filename": "cc/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-11T13:56:48Z",
+      "side": 1,
+      "message": "Side issue here, but I saw in FixtureAddFile that it just sets the file contents in the MockFS instance. Oughtn\u0027t it check that it doesn\u0027t overwrite something? With the mockfs setup getting spread out like this that\u0027s becoming a risk.",
+      "revId": "ecdac8a6d6ccf3056ccbd81b1bad8f948564e06a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
