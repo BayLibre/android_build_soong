@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1b4961_881158e1",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-11T04:20:44Z",
+      "side": 1,
+      "message": "Yeah. The tests could use some refactoring and consolidation, let\u0027s follow up on that after this CL.",
+      "parentUuid": "1c2e5ec3_5433ae93",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "13b9b42f8fe775e852c7837c51c609ee9c0eb631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2165cc6e_74aa86da",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-03-10T12:23:07Z",
       "side": 1,
       "message": "It seems to default to an empty string? Should we explicitly set it to PY3 to be clearer?",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 54
+      },
+      "revId": "13b9b42f8fe775e852c7837c51c609ee9c0eb631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb0934e2_522d032c",
+        "filename": "python/binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-11T04:20:44Z",
+      "side": 1,
+      "message": "Soong defaults to python3 too, so no reason to explicitly set it for Bazel which has the same behavior.",
+      "parentUuid": "2165cc6e_74aa86da",
       "range": {
         "startLine": 93,
         "startChar": 17,
