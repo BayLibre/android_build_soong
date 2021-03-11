@@ -16,6 +16,23 @@
       "message": "LGTM but someone else with more Mac knowledge will need to +2 it.",
       "revId": "21d5c7aaa9e36ad80efbbbd573d627435984817c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e20736_cfc00687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-11T08:28:30Z",
+      "side": 1,
+      "message": "Can confirm that `m nothing` works before and with this change on a repo synced Mac.",
+      "revId": "21d5c7aaa9e36ad80efbbbd573d627435984817c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
