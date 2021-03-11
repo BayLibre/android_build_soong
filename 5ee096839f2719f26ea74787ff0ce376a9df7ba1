@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2097e159_1e6ec582",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-11T07:38:03Z",
+      "side": 1,
+      "message": "I checked and I officially have no clue 😞: the Ninja command lines are the same and the pwd must be $TOP in both cases, too, since otherwise the top-relative path of --soong_docs won\u0027t work\n\nI\u0027ll submit this anyway to unbreak mixed mode builds, then investigate as time allows.",
+      "parentUuid": "902737e3_f63c0689",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "5ee096839f2719f26ea74787ff0ce376a9df7ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7f3d88f7_e76d5c1d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,24 @@
       "writtenOn": "2021-03-10T17:28:08Z",
       "side": 1,
       "message": "filepath.Rel doesn\u0027t return an error if the target directory is not a subdirectory of the base directory, it returns a path that starts with ../../.. (https://play.golang.org/p/D8ROkVNS6d-)\n\nCan you modify the error printing to print what the actual error is?",
+      "revId": "5ee096839f2719f26ea74787ff0ce376a9df7ba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c435fa51_6ddd226e",
+        "filename": "android/writedocs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-11T07:38:03Z",
+      "side": 1,
+      "message": "It\u0027s because buildDir is an absolute path and os.Args[0] is a relative path. You can\u0027t relativize in that case without knowing cwd, which Rel() apparently can\u0027t do.",
+      "parentUuid": "0e5910b7_f27bf767",
       "revId": "5ee096839f2719f26ea74787ff0ce376a9df7ba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

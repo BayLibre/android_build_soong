@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "237dbbfa_e996204e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-11T07:38:03Z",
+      "side": 1,
+      "message": "I\u0027ll bypass presubmits because things are broken and I don\u0027t know when I\u0027ll be able to look at code again today ",
+      "revId": "81a6983dc20c885772001510e29b3a6e717ada5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
