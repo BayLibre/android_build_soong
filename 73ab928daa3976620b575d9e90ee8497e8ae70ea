@@ -142,6 +142,30 @@
       },
       "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "418aa0ce_5c7ac501",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T07:52:46Z",
+      "side": 1,
+      "message": "I don\u0027t know enough about the Mac environments on which Android is expected to build to make a judgement in that regard.\n\nI do know that we have limited Mac build capability, neither forrest or presubmits did mac builds the last time I was affected by Macs. So, pretty much the only way to find out whether this works is to submit the change and see if anything breaks.",
+      "parentUuid": "bc8854cd_207044ec",
+      "range": {
+        "startLine": 180,
+        "startChar": 54,
+        "endLine": 180,
+        "endChar": 67
+      },
+      "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
