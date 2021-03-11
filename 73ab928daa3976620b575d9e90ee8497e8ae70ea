@@ -70,6 +70,30 @@
       },
       "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae6c477_a5889ed6",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T07:21:11Z",
+      "side": 1,
+      "message": "One way to handle this is to insulate the test from the environment altogether by doing the following:\n\n1. The code that checks for the presence of those tools (e.g. NonHermeticHostSystemTool) needs to go through the config.fs pathtools.FileSystem which is mocked out by tests.\n2. The test configuration setup needs to set the PATH environment to a known and fixed value.\n3. And provide mock files that recreate some of the environment.\n\nAt least part of that setup would be host platform specific.\n\nI am not sure how feasible this is but that is probably not a small piece of work.",
+      "parentUuid": "17757bc0_6dc977ba",
+      "range": {
+        "startLine": 180,
+        "startChar": 54,
+        "endLine": 180,
+        "endChar": 67
+      },
+      "revId": "73ab928daa3976620b575d9e90ee8497e8ae70ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
