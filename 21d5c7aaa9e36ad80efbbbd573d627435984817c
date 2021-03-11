@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f386b87f_55d91dee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-11T07:56:03Z",
+      "side": 1,
+      "message": "LGTM but someone else with more Mac knowledge will need to +2 it.",
+      "revId": "21d5c7aaa9e36ad80efbbbd573d627435984817c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
