@@ -101,8 +101,7 @@ func TestSdkCompileMultilibOverride(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -126,8 +125,7 @@ cc_prebuilt_library_shared {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -168,8 +166,7 @@ sdk_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/sdkmember/android_arm64_armv8-a_shared/sdkmember.so -> android/arm64/lib/sdkmember.so
 .intermediates/sdkmember/linux_glibc_x86_64_shared/sdkmember.so -> linux_glibc/x86_64/lib/sdkmember.so
 `))
@@ -353,8 +350,7 @@ func TestSnapshotWithObject(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_object {
@@ -376,9 +372,7 @@ cc_prebuilt_object {
         },
     },
 }
-`),
-		// Make sure that the generated sdk_snapshot uses the native_objects property.
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_object {
@@ -406,12 +400,10 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     native_objects: ["mysdk_crtobj@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/crtobj/android_arm64_armv8-a/crtobj.o -> arm64/lib/crtobj.o
 .intermediates/crtobj/android_arm_armv7-a-neon/crtobj.o -> arm/lib/crtobj.o
-`),
-	)
+`))
 }
 
 func TestSnapshotWithCcDuplicateHeaders(t *testing.T) {
@@ -440,15 +432,13 @@ func TestSnapshotWithCcDuplicateHeaders(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAllCopyRules(`
+	CheckSnapshot(t, result, "mysdk", "", checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
 .intermediates/mynativelib1/android_arm64_armv8-a_shared/mynativelib1.so -> arm64/lib/mynativelib1.so
 .intermediates/mynativelib1/android_arm_armv7-a-neon_shared/mynativelib1.so -> arm/lib/mynativelib1.so
 .intermediates/mynativelib2/android_arm64_armv8-a_shared/mynativelib2.so -> arm64/lib/mynativelib2.so
 .intermediates/mynativelib2/android_arm_armv7-a-neon_shared/mynativelib2.so -> arm/lib/mynativelib2.so
-`),
-	)
+`))
 }
 
 func TestSnapshotWithCcExportGeneratedHeaders(t *testing.T) {
@@ -486,7 +476,7 @@ func TestSnapshotWithCcExportGeneratedHeaders(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -556,7 +546,7 @@ func TestSnapshotWithCcSharedLibraryCommonProperties(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -615,8 +605,7 @@ func TestSnapshotWithCcBinary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mymodule_exports", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mymodule_exports", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_binary {
@@ -634,9 +623,7 @@ cc_prebuilt_binary {
         },
     },
 }
-`),
-		// Make sure that the generated sdk_snapshot uses the native_binaries property.
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_binary {
@@ -661,12 +648,10 @@ module_exports_snapshot {
     visibility: ["//visibility:public"],
     native_binaries: ["mymodule_exports_mynativebinary@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/mynativebinary/android_arm64_armv8-a/mynativebinary -> arm64/bin/mynativebinary
 .intermediates/mynativebinary/android_arm_armv7-a-neon/mynativebinary -> arm/bin/mynativebinary
-`),
-	)
+`))
 }
 
 func TestMultipleHostOsTypesSnapshotWithCcBinary(t *testing.T) {
@@ -700,8 +685,7 @@ func TestMultipleHostOsTypesSnapshotWithCcBinary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "myexports", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_binary {
@@ -736,8 +720,7 @@ cc_prebuilt_binary {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_binary {
@@ -798,13 +781,11 @@ module_exports_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/mynativebinary/linux_glibc_x86_64/mynativebinary -> linux_glibc/x86_64/bin/mynativebinary
 .intermediates/mynativebinary/linux_glibc_x86/mynativebinary -> linux_glibc/x86/bin/mynativebinary
 .intermediates/mynativebinary/windows_x86_64/mynativebinary.exe -> windows/x86_64/bin/mynativebinary.exe
-`),
-	)
+`))
 }
 
 func TestSnapshotWithSingleHostOsType(t *testing.T) {
@@ -859,8 +840,7 @@ func TestSnapshotWithSingleHostOsType(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "myexports", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_binary {
@@ -902,8 +882,7 @@ cc_prebuilt_library_shared {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_binary {
@@ -965,12 +944,10 @@ module_exports_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/mynativebinary/linux_bionic_x86_64/mynativebinary -> x86_64/bin/mynativebinary
 .intermediates/mynativelib/linux_bionic_x86_64_shared/mynativelib.so -> x86_64/lib/mynativelib.so
-`),
-	)
+`))
 }
 
 // Test that we support the necessary flags for the linker binary, which is
@@ -997,8 +974,7 @@ func TestSnapshotWithCcStaticNocrtBinary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mymodule_exports", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mymodule_exports", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_binary {
@@ -1026,8 +1002,7 @@ cc_prebuilt_binary {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_binary {
@@ -1075,12 +1050,10 @@ module_exports_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/linker/linux_glibc_x86_64/linker -> x86_64/bin/linker
 .intermediates/linker/linux_glibc_x86/linker -> x86/bin/linker
-`),
-	)
+`))
 }
 
 func TestSnapshotWithCcSharedLibrary(t *testing.T) {
@@ -1105,7 +1078,7 @@ func TestSnapshotWithCcSharedLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1206,7 +1179,7 @@ func TestSnapshotWithCcSharedLibrarySharedLibs(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1303,8 +1276,7 @@ func TestHostSnapshotWithCcSharedLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -1334,8 +1306,7 @@ cc_prebuilt_library_shared {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -1385,8 +1356,7 @@ sdk_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
 .intermediates/mynativelib/linux_glibc_x86_64_shared/mynativelib.so -> x86_64/lib/mynativelib.so
 .intermediates/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/Test.h -> x86_64/include_gen/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/Test.h
@@ -1396,8 +1366,7 @@ myinclude/Test.h -> include/myinclude/Test.h
 .intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/Test.h -> x86/include_gen/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/Test.h
 .intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BnTest.h -> x86/include_gen/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BnTest.h
 .intermediates/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BpTest.h -> x86/include_gen/mynativelib/linux_glibc_x86_shared/gen/aidl/aidl/foo/bar/BpTest.h
-`),
-	)
+`))
 }
 
 func TestMultipleHostOsTypesSnapshotWithCcSharedLibrary(t *testing.T) {
@@ -1430,8 +1399,7 @@ func TestMultipleHostOsTypesSnapshotWithCcSharedLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -1466,8 +1434,7 @@ cc_prebuilt_library_shared {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -1528,13 +1495,11 @@ sdk_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/mynativelib/linux_glibc_x86_64_shared/mynativelib.so -> linux_glibc/x86_64/lib/mynativelib.so
 .intermediates/mynativelib/linux_glibc_x86_shared/mynativelib.so -> linux_glibc/x86/lib/mynativelib.so
 .intermediates/mynativelib/windows_x86_64_shared/mynativelib.dll -> windows/x86_64/lib/mynativelib.dll
-`),
-	)
+`))
 }
 
 func TestSnapshotWithCcStaticLibrary(t *testing.T) {
@@ -1558,7 +1523,7 @@ func TestSnapshotWithCcStaticLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
+	CheckSnapshot(t, result, "myexports", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1621,8 +1586,7 @@ func TestHostSnapshotWithCcStaticLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "myexports", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_static {
@@ -1651,8 +1615,7 @@ cc_prebuilt_library_static {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_static {
@@ -1701,8 +1664,7 @@ module_exports_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
 .intermediates/mynativelib/linux_glibc_x86_64_static/mynativelib.a -> x86_64/lib/mynativelib.a
 .intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/Test.h -> x86_64/include_gen/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/Test.h
@@ -1712,8 +1674,7 @@ myinclude/Test.h -> include/myinclude/Test.h
 .intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/Test.h -> x86/include_gen/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/Test.h
 .intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BnTest.h -> x86/include_gen/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BnTest.h
 .intermediates/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BpTest.h -> x86/include_gen/mynativelib/linux_glibc_x86_static/gen/aidl/aidl/foo/bar/BpTest.h
-`),
-	)
+`))
 }
 
 func TestSnapshotWithCcLibrary(t *testing.T) {
@@ -1735,8 +1696,7 @@ func TestSnapshotWithCcLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "myexports", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library {
@@ -1768,9 +1728,7 @@ cc_prebuilt_library {
         },
     },
 }
-`),
-		// Make sure that the generated sdk_snapshot uses the native_libs property.
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library {
@@ -1809,14 +1767,12 @@ module_exports_snapshot {
     visibility: ["//visibility:public"],
     native_libs: ["myexports_mynativelib@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
 .intermediates/mynativelib/android_arm64_armv8-a_static/mynativelib.a -> arm64/lib/mynativelib.a
 .intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so -> arm64/lib/mynativelib.so
 .intermediates/mynativelib/android_arm_armv7-a-neon_static/mynativelib.a -> arm/lib/mynativelib.a
-.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so`),
-	)
+.intermediates/mynativelib/android_arm_armv7-a-neon_shared/mynativelib.so -> arm/lib/mynativelib.so`))
 }
 
 func TestHostSnapshotWithMultiLib64(t *testing.T) {
@@ -1849,8 +1805,7 @@ func TestHostSnapshotWithMultiLib64(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "myexports", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_static {
@@ -1876,8 +1831,7 @@ cc_prebuilt_library_static {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_static {
@@ -1921,15 +1875,13 @@ module_exports_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
 .intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/Test.h -> include_gen/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/Test.h
 .intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BnTest.h -> include_gen/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BnTest.h
 .intermediates/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BpTest.h -> include_gen/mynativelib/linux_glibc_x86_64_static/gen/aidl/aidl/foo/bar/BpTest.h
 .intermediates/mynativelib/linux_glibc_x86_64_static/mynativelib.a -> x86_64/lib/mynativelib.a
-`),
-	)
+`))
 }
 
 func TestSnapshotWithCcHeadersLibrary(t *testing.T) {
@@ -1946,7 +1898,7 @@ func TestSnapshotWithCcHeadersLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1984,8 +1936,7 @@ func TestHostSnapshotWithCcHeadersLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_headers {
@@ -2010,8 +1961,7 @@ cc_prebuilt_library_headers {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_headers {
@@ -2055,11 +2005,9 @@ sdk_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 myinclude/Test.h -> include/myinclude/Test.h
-`),
-	)
+`))
 }
 
 func TestDeviceAndHostSnapshotWithCcHeadersLibrary(t *testing.T) {
@@ -2086,8 +2034,7 @@ func TestDeviceAndHostSnapshotWithCcHeadersLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_headers {
@@ -2117,9 +2064,7 @@ cc_prebuilt_library_headers {
         },
     },
 }
-`),
-		// Verifi
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_headers {
@@ -2167,13 +2112,11 @@ sdk_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 myinclude/Test.h -> common_os/include/myinclude/Test.h
 myinclude-android/AndroidTest.h -> android/include/myinclude-android/AndroidTest.h
 myinclude-host/HostTest.h -> linux_glibc/include/myinclude-host/HostTest.h
-`),
-	)
+`))
 }
 
 func TestSystemSharedLibPropagation(t *testing.T) {
@@ -2199,8 +2142,7 @@ func TestSystemSharedLibPropagation(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -2272,7 +2214,7 @@ cc_prebuilt_library_shared {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -2383,8 +2325,7 @@ func TestStubsLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -2436,7 +2377,7 @@ func TestDeviceAndHostSnapshotWithStubsLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -2549,8 +2490,7 @@ func TestUniqueHostSoname(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -2581,8 +2521,7 @@ cc_prebuilt_library_shared {
         },
     },
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 cc_prebuilt_library_shared {
@@ -2632,14 +2571,12 @@ sdk_snapshot {
         },
     },
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/mylib/android_arm64_armv8-a_shared/mylib.so -> android/arm64/lib/mylib.so
 .intermediates/mylib/android_arm_armv7-a-neon_shared/mylib.so -> android/arm/lib/mylib.so
 .intermediates/mylib/linux_glibc_x86_64_shared/mylib-host.so -> linux_glibc/x86_64/lib/mylib-host.so
 .intermediates/mylib/linux_glibc_x86_shared/mylib-host.so -> linux_glibc/x86/lib/mylib-host.so
-`),
-	)
+`))
 }
 
 func TestNoSanitizerMembers(t *testing.T) {
@@ -2664,7 +2601,7 @@ func TestNoSanitizerMembers(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
