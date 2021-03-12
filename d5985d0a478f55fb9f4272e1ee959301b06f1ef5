@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da149f67_14369443",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-12T02:18:05Z",
+      "side": 1,
+      "message": "If this was ever given an absolute path it would infinite loop.  It shouldn\u0027t ever happen but to be safe you should also check for dir !\u003d \"/\" here.",
+      "revId": "d5985d0a478f55fb9f4272e1ee959301b06f1ef5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f454ad3_80a63a2b",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 13
