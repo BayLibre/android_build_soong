@@ -197,7 +197,7 @@ func CheckSnapshot(result *android.TestResult, name string, dir string, checkers
 	if dir != "" {
 		dir = filepath.Clean(dir) + "/"
 	}
-	result.AssertStringEquals("Snapshot zip file in wrong place",
+	android.AssertStringEquals(result.T, "Snapshot zip file in wrong place",
 		fmt.Sprintf(".intermediates/%s%s/%s/%s-current.zip", dir, name, variant, name), actual)
 
 	// Populate a mock filesystem with the files that would have been copied by

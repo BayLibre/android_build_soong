@@ -1176,7 +1176,7 @@ func checkEffectiveVisibility(result *TestResult, effectiveVisibility map[qualif
 	for moduleName, expectedRules := range effectiveVisibility {
 		rule := effectiveVisibilityRules(result.Config, moduleName)
 		stringRules := rule.Strings()
-		result.AssertDeepEquals("effective rules mismatch", expectedRules, stringRules)
+		AssertDeepEquals(result.T, "effective rules mismatch", expectedRules, stringRules)
 	}
 }
 
