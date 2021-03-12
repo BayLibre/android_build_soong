@@ -33,6 +33,29 @@
       "message": "Stopping this from being submitted for now as a downstream change this relies on has been temporarily reverted.",
       "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "180cf4ce_70fa8e84",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-12T12:46:46Z",
+      "side": 1,
+      "message": "Let me see if I understand this correctly: this method runs for Java modules in APEXes and verifies that they build against some sort of stable API.\n\nJava rules tagged by sdk_version: \"core_platform\" are apparently exempt from this check, except those that are in legacyCorePlatformApiModules and that\u0027s presumably because \"legacy\" in this case means \"haven\u0027t been put behind a stable interface yet\"?\n\nMind adding a test case for this new condition?",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
