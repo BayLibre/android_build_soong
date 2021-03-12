@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a63acf0_439fb819",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-12T16:24:06Z",
+      "side": 1,
+      "message": "Nice work!\n\nBTW I like when expected and actual appear on a new line and indented, like:\n\n  error: BOOM!\n    expect: foo\n    actual: bar",
+      "revId": "9dcf253197886a9c5976fd00e719a9e314f04703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf28558_793b3e28",
+        "filename": "android/test_asserts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-12T16:24:06Z",
+      "side": 1,
+      "message": "Just a side note, I didn\u0027t know modifiers apply recursively. From https://golang.org/pkg/fmt:\n\n\"For compound operands such as slices and structs, the format applies to the elements of each operand, recursively, not to the operand as a whole. Thus %q will quote each element of a slice of strings, and %6.2f will control formatting for each element of a floating-point array.\"",
+      "range": {
+        "startLine": 88,
+        "startChar": 42,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "9dcf253197886a9c5976fd00e719a9e314f04703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
