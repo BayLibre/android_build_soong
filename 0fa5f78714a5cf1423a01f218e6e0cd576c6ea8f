@@ -124,6 +124,24 @@
       "parentUuid": "7f4d2214_531d5b25",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb967851_b0f3b124",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-12T04:54:18Z",
+      "side": 0,
+      "message": "I\u0027m trying to be consistent about how PackagingBase collects its deps into the package.(CopyDepsToZip). Without this change, IIUC, it gathers all transitive deps which are linked with \"InstallDepNeeded\". I don\u0027t want to change that behavior. I think it\u0027s very reasonable.\n\nWhat I think seems wrong is that, in general, PackagingBase\u0027s deps are not supposed to be installed with PackagingBase itself. But using InstallDepNeeded between PackagingBase and its \"deps\" leads to unintended \"install\" dependencies from PackagingBase. That\u0027s why I\u0027m adding a new dependency tag which distinguishes from InstallDepNeeded between PackagingBase and its deps.\n\nBTW, some PackagingBase-derived module (like cvd_host_package) may want to install its deps along with itself. So, in your example, if C depends on D with \"InstallDepNeeded\" tag (for some reason, idk) and A has C as its contents, then D should be in A\u0027s package as well.",
+      "parentUuid": "c2ab1c41_833bb86e",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
