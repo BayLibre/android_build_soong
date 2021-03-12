@@ -34,6 +34,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android/soongconfig"
+	"android/soong/remoteexec"
 )
 
 // Bool re-exports proptools.Bool for the android package.
@@ -1683,4 +1684,8 @@ func (c *config) NonUpdatableBootJars() ConfiguredJarList {
 
 func (c *config) UpdatableBootJars() ConfiguredJarList {
 	return c.productVariables.UpdatableBootJars
+}
+
+func (c *config) RBEWrapper() string {
+	return c.GetenvWithDefault("RBE_WRAPPER", remoteexec.DefaultWrapperPath)
 }
