@@ -16,6 +16,24 @@
       "message": "Dario, Mathew, thoughts ?",
       "revId": "533b98cde31684fc5eeaef647ade0c018860c302",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "118e9c85_c9806985",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2021-03-12T13:27:36Z",
+      "side": 1,
+      "message": "yes overall OK by me. I can\u0027t think of any drawbacks.",
+      "parentUuid": "e919d324_89564ff0",
+      "revId": "533b98cde31684fc5eeaef647ade0c018860c302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
