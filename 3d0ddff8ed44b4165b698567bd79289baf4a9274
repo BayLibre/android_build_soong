@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ceacc8f_f240a6f0",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-12T21:47:52Z",
+      "side": 0,
+      "message": "Why delete this?",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34873ff6_ac984b8b",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-12T21:47:52Z",
+      "side": 0,
+      "message": "Same here.",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff3d42ca_d5979d34",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-12T21:47:52Z",
+      "side": 0,
+      "message": "Ditto.",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8764d1fe_8be32e9f",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2121,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-12T21:47:52Z",
+      "side": 0,
+      "message": "Someone forgot to fi",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
