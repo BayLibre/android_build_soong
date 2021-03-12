@@ -56,6 +56,30 @@
       },
       "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21cd58d4_1ecdb9d1",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T13:05:51Z",
+      "side": 1,
+      "message": "Java rules tagged by sdk_version: \"core_platform\" aren\u0027t exempt from the check but they do generally pass the check as they will use the stable core platform by default. The exceptions are those modules that are in legacyCorePlatformApiModules because then they are using a legacy API.\n\nThe change in behavior is already covered by the existing tests. The tests were simply checking the wrong thing and this change corrects that.",
+      "parentUuid": "180cf4ce_70fa8e84",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
