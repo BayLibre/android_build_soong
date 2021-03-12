@@ -169,8 +169,7 @@ func TestSnapshotVisibility(t *testing.T) {
 			"package/Android.bp": []byte(packageBp),
 		})
 
-	CheckSnapshot(result, "mysdk", "package",
-		checkAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "package", checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_import {
@@ -317,9 +316,7 @@ func TestSdkInstall(t *testing.T) {
 	`
 	result := testSdkWithFs(t, sdk, nil)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAllOtherCopyRules(`.intermediates/mysdk/common_os/mysdk-current.zip -> mysdk-current.zip`),
-	)
+	CheckSnapshot(t, result, "mysdk", "", checkAllOtherCopyRules(`.intermediates/mysdk/common_os/mysdk-current.zip -> mysdk-current.zip`))
 }
 
 type EmbeddedPropertiesStruct struct {
@@ -387,12 +384,10 @@ func TestCommonValueOptimization(t *testing.T) {
 
 	extractor := newCommonValueExtractor(common)
 
-	h := android.TestHelper{t}
-
 	err := extractor.extractCommonProperties(common, structs)
-	h.AssertDeepEquals("unexpected error", nil, err)
+	android.AssertDeepEquals(t, "unexpected error", nil, err)
 
-	h.AssertDeepEquals("common properties not correct",
+	android.AssertDeepEquals(t, "common properties not correct",
 		&testPropertiesStruct{
 			name:        "common",
 			private:     "",
@@ -410,7 +405,7 @@ func TestCommonValueOptimization(t *testing.T) {
 		},
 		common)
 
-	h.AssertDeepEquals("updated properties[0] not correct",
+	android.AssertDeepEquals(t, "updated properties[0] not correct",
 		&testPropertiesStruct{
 			name:        "struct-0",
 			private:     "common",
@@ -428,7 +423,7 @@ func TestCommonValueOptimization(t *testing.T) {
 		},
 		structs[0])
 
-	h.AssertDeepEquals("updated properties[1] not correct",
+	android.AssertDeepEquals(t, "updated properties[1] not correct",
 		&testPropertiesStruct{
 			name:        "struct-1",
 			private:     "common",
@@ -462,10 +457,8 @@ func TestCommonValueOptimization_InvalidArchSpecificVariants(t *testing.T) {
 
 	extractor := newCommonValueExtractor(common)
 
-	h := android.TestHelper{t}
-
 	err := extractor.extractCommonProperties(common, structs)
-	h.AssertErrorMessageEquals("unexpected error", `field "S_Common" is not tagged as "arch_variant" but has arch specific properties:
+	android.AssertErrorMessageEquals(t, "unexpected error", `field "S_Common" is not tagged as "arch_variant" but has arch specific properties:
     "struct-0" has value "should-be-but-is-not-common0"
     "struct-1" has value "should-be-but-is-not-common1"`, err)
 }

@@ -128,8 +128,7 @@ func TestSdkDependsOnSourceEvenWhenPrebuiltPreferred(t *testing.T) {
 	// Make sure that the mysdk module depends on "sdkmember" and not "prebuilt_sdkmember".
 	java.CheckModuleDependencies(t, result.TestContext, "mysdk", "android_common", []string{"sdkmember"})
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAndroidBpContents(`// This is auto-generated. DO NOT EDIT.
+	CheckSnapshot(t, result, "mysdk", "", checkAndroidBpContents(`// This is auto-generated. DO NOT EDIT.
 
 java_import {
     name: "mysdk_sdkmember@current",
@@ -256,7 +255,7 @@ func TestSnapshotWithJavaHeaderLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -313,7 +312,7 @@ func TestHostSnapshotWithJavaHeaderLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -370,7 +369,7 @@ func TestDeviceAndHostSnapshotWithJavaHeaderLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -441,7 +440,7 @@ func TestSnapshotWithJavaImplLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
+	CheckSnapshot(t, result, "myexports", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -497,7 +496,7 @@ func TestSnapshotWithJavaBootLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
+	CheckSnapshot(t, result, "myexports", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -552,7 +551,7 @@ func TestHostSnapshotWithJavaImplLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
+	CheckSnapshot(t, result, "myexports", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -608,7 +607,7 @@ func TestSnapshotWithJavaTest(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
+	CheckSnapshot(t, result, "myexports", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -663,7 +662,7 @@ func TestHostSnapshotWithJavaTest(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
+	CheckSnapshot(t, result, "myexports", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -732,7 +731,7 @@ func TestSnapshotWithJavaSystemModules(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -828,7 +827,7 @@ func TestHostSnapshotWithJavaSystemModules(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -919,7 +918,7 @@ func TestDeviceAndHostSnapshotWithOsSpecificMembers(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "myexports", "",
+	CheckSnapshot(t, result, "myexports", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -1033,8 +1032,7 @@ func TestSnapshotWithJavaSdkLibrary(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_sdk_library_import {
@@ -1100,8 +1098,7 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     java_sdk_libs: ["mysdk_myjavalib@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
@@ -1111,12 +1108,10 @@ sdk_snapshot {
 .intermediates/myjavalib.stubs.test/android_common/javac/myjavalib.stubs.test.jar -> sdk_library/test/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.test/android_common/myjavalib.stubs.source.test_api.txt -> sdk_library/test/myjavalib.txt
 .intermediates/myjavalib.stubs.source.test/android_common/myjavalib.stubs.source.test_removed.txt -> sdk_library/test/myjavalib-removed.txt
-`),
-		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/test/myjavalib_stub_sources.zip"),
-	)
+`), checkMergeZips(
+		".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+		".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
+		".intermediates/mysdk/common_os/tmp/sdk_library/test/myjavalib_stub_sources.zip"))
 }
 
 func TestSnapshotWithJavaSdkLibrary_SdkVersion_None(t *testing.T) {
@@ -1134,8 +1129,7 @@ func TestSnapshotWithJavaSdkLibrary_SdkVersion_None(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_sdk_library_import {
@@ -1173,16 +1167,13 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     java_sdk_libs: ["mysdk_myjavalib@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
-`),
-		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-		),
-	)
+`), checkMergeZips(
+		".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+	))
 }
 
 func TestSnapshotWithJavaSdkLibrary_SdkVersion_ForScope(t *testing.T) {
@@ -1203,8 +1194,7 @@ func TestSnapshotWithJavaSdkLibrary_SdkVersion_ForScope(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_sdk_library_import {
@@ -1242,16 +1232,13 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     java_sdk_libs: ["mysdk_myjavalib@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
-`),
-		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-		),
-	)
+`), checkMergeZips(
+		".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+	))
 }
 
 func TestSnapshotWithJavaSdkLibrary_ApiScopes(t *testing.T) {
@@ -1275,8 +1262,7 @@ func TestSnapshotWithJavaSdkLibrary_ApiScopes(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_sdk_library_import {
@@ -1328,20 +1314,17 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     java_sdk_libs: ["mysdk_myjavalib@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.system/android_common/javac/myjavalib.stubs.system.jar -> sdk_library/system/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_api.txt -> sdk_library/system/myjavalib.txt
 .intermediates/myjavalib.stubs.source.system/android_common/myjavalib.stubs.source.system_removed.txt -> sdk_library/system/myjavalib-removed.txt
-`),
-		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
-		),
-	)
+`), checkMergeZips(
+		".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+		".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
+	))
 }
 
 func TestSnapshotWithJavaSdkLibrary_ModuleLib(t *testing.T) {
@@ -1368,8 +1351,7 @@ func TestSnapshotWithJavaSdkLibrary_ModuleLib(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_sdk_library_import {
@@ -1435,8 +1417,7 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     java_sdk_libs: ["mysdk_myjavalib@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
@@ -1446,13 +1427,11 @@ sdk_snapshot {
 .intermediates/myjavalib.stubs.module_lib/android_common/javac/myjavalib.stubs.module_lib.jar -> sdk_library/module-lib/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.module_lib/android_common/myjavalib.stubs.source.module_lib_api.txt -> sdk_library/module-lib/myjavalib.txt
 .intermediates/myjavalib.stubs.source.module_lib/android_common/myjavalib.stubs.source.module_lib_removed.txt -> sdk_library/module-lib/myjavalib-removed.txt
-`),
-		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/module-lib/myjavalib_stub_sources.zip",
-		),
-	)
+`), checkMergeZips(
+		".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+		".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
+		".intermediates/mysdk/common_os/tmp/sdk_library/module-lib/myjavalib_stub_sources.zip",
+	))
 }
 
 func TestSnapshotWithJavaSdkLibrary_SystemServer(t *testing.T) {
@@ -1476,8 +1455,7 @@ func TestSnapshotWithJavaSdkLibrary_SystemServer(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_sdk_library_import {
@@ -1529,20 +1507,17 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     java_sdk_libs: ["mysdk_myjavalib@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
 .intermediates/myjavalib.stubs.system_server/android_common/javac/myjavalib.stubs.system_server.jar -> sdk_library/system-server/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source.system_server/android_common/myjavalib.stubs.source.system_server_api.txt -> sdk_library/system-server/myjavalib.txt
 .intermediates/myjavalib.stubs.source.system_server/android_common/myjavalib.stubs.source.system_server_removed.txt -> sdk_library/system-server/myjavalib-removed.txt
-`),
-		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/system-server/myjavalib_stub_sources.zip",
-		),
-	)
+`), checkMergeZips(
+		".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+		".intermediates/mysdk/common_os/tmp/sdk_library/system-server/myjavalib_stub_sources.zip",
+	))
 }
 
 func TestSnapshotWithJavaSdkLibrary_NamingScheme(t *testing.T) {
@@ -1564,8 +1539,7 @@ func TestSnapshotWithJavaSdkLibrary_NamingScheme(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 java_sdk_library_import {
@@ -1605,16 +1579,13 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     java_sdk_libs: ["mysdk_myjavalib@current"],
 }
-`),
-		checkAllCopyRules(`
+`), checkAllCopyRules(`
 .intermediates/myjavalib.stubs/android_common/javac/myjavalib.stubs.jar -> sdk_library/public/myjavalib-stubs.jar
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_api.txt -> sdk_library/public/myjavalib.txt
 .intermediates/myjavalib.stubs.source/android_common/myjavalib.stubs.source_removed.txt -> sdk_library/public/myjavalib-removed.txt
-`),
-		checkMergeZips(
-			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
-		),
-	)
+`), checkMergeZips(
+		".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+	))
 }
 
 func TestSnapshotWithJavaSdkLibrary_DoctagFiles(t *testing.T) {
@@ -1640,7 +1611,7 @@ func TestSnapshotWithJavaSdkLibrary_DoctagFiles(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
+	CheckSnapshot(t, result, "mysdk", "",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
