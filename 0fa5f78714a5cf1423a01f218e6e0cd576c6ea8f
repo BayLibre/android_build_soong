@@ -106,6 +106,24 @@
       "parentUuid": "a8d7b304_a423a9e6",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ab1c41_833bb86e",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-12T04:09:18Z",
+      "side": 0,
+      "message": "We don\u0027t want D to be in A, because D is already inside C. Dropping IAND from C could do that, but that prevents `m C` from installing D.",
+      "parentUuid": "7f4d2214_531d5b25",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
