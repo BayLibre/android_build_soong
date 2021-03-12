@@ -34,6 +34,24 @@
       "parentUuid": "94f34104_2bc30f2e",
       "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6062bc70_521c9f93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-12T07:16:59Z",
+      "side": 1,
+      "message": "How does that work? multiproduct_kati is not referenced from anywhere outside the build/soong directory and presubmits on this change (which hopelessly broke it) only reported three broken projects.\n\nAt any rate, this only requires that I submit another change slightly earlier than I intended to, but I\u0027m curious how exactly the widespread breakage happens.",
+      "parentUuid": "e96c5d78_1d900b57",
+      "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
