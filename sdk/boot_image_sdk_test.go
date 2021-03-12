@@ -29,8 +29,7 @@ func TestSnapshotWithBootImage(t *testing.T) {
 		}
 	`)
 
-	CheckSnapshot(result, "mysdk", "",
-		checkUnversionedAndroidBpContents(`
+	CheckSnapshot(t, result, "mysdk", "", checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 prebuilt_boot_image {
@@ -40,8 +39,7 @@ prebuilt_boot_image {
     apex_available: ["//apex_available:platform"],
     image_name: "art",
 }
-`),
-		checkVersionedAndroidBpContents(`
+`), checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
 prebuilt_boot_image {
@@ -57,7 +55,5 @@ sdk_snapshot {
     visibility: ["//visibility:public"],
     boot_images: ["mysdk_mybootimage@current"],
 }
-`),
-		checkAllCopyRules(""),
-	)
+`), checkAllCopyRules(""))
 }
