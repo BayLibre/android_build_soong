@@ -52,6 +52,24 @@
       "parentUuid": "e96c5d78_1d900b57",
       "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5d650e_3865eea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-12T08:05:56Z",
+      "side": 1,
+      "message": "Please take another look! I plumbed all global variables through the Blueprint configuration which made multiproduct_kati work *and* make Blueprint better by making it invokable multiple times from a single process (arguably, having less global state is also better, but that\u0027s what a Java programmer would say and this is Go)\n\nThe exception is absSrcDir; I also put in the plumbing to access that from the configuration, too, but that would have given access to the absolute sourced dir to all modules and singletons, which is something we\u0027d like to avoid.\n\nSince this change is becoming too big, I split these changes out to aosp/1633339 and aosp/1629620 (although submitting it separately would require a bit of manual merging, which I\u0027d prefer to avoid because this change has been going on for too long already :( )",
+      "parentUuid": "6062bc70_521c9f93",
+      "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
