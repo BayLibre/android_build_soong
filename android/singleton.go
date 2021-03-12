@@ -100,7 +100,7 @@ type singletonAdaptor struct {
 
 var _ testBuildProvider = (*singletonAdaptor)(nil)
 
-func (s *singletonAdaptor) GenerateBuildActions(ctx blueprint.SingletonContext) {
+func (s *singletonAdaptor) GenerateBuildActions(ctx blueprint.SingletonContext, config interface{}) {
 	sctx := &singletonContextAdaptor{SingletonContext: ctx}
 	if sctx.Config().captureBuild {
 		sctx.ruleParams = make(map[blueprint.Rule]blueprint.RuleParams)

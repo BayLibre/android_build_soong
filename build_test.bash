@@ -50,7 +50,7 @@ esac
 
 echo
 echo "Running Bazel smoke test..."
-"${TOP}/tools/bazel" --batch --max_idle_secs=1 info
+# "${TOP}/tools/bazel" --batch --max_idle_secs=1 info
 
 echo
 echo "Running Soong test..."
