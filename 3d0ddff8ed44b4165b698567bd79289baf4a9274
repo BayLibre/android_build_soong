@@ -139,6 +139,24 @@
       "parentUuid": "8764d1fe_8be32e9f",
       "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21bbb0b_f7fac432",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2121,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T22:50:35Z",
+      "side": 0,
+      "message": "Actually. I fixed it here as I couldn\u0027t work out what I meant to say then.",
+      "parentUuid": "5346bc6d_b2eb024c",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
