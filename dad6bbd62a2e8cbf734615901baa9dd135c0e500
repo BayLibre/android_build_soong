@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4adefb_937cc645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T13:00:00Z",
+      "side": 1,
+      "message": "Jiyong, after playing around with your suggestion I realized that I could remove the TestHelper structure altogether along with its methods which makes things a lot cleaner.\n",
+      "revId": "dad6bbd62a2e8cbf734615901baa9dd135c0e500",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
