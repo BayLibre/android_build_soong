@@ -169,7 +169,7 @@ func TestSnapshotVisibility(t *testing.T) {
 			"package/Android.bp": []byte(packageBp),
 		})
 
-	result.CheckSnapshot("mysdk", "package",
+	CheckSnapshot(result, "mysdk", "package",
 		checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
@@ -309,18 +309,15 @@ func TestPrebuiltVisibilityProperty_AddPrivate(t *testing.T) {
 `)
 }
 
-func TestSDkInstall(t *testing.T) {
+func TestSdkInstall(t *testing.T) {
 	sdk := `
 		sdk {
 			name: "mysdk",
 		}
 	`
-	result := testSdkWithFs(t, ``,
-		map[string][]byte{
-			"Android.bp": []byte(sdk),
-		})
+	result := testSdkWithFs(t, sdk, nil)
 
-	result.CheckSnapshot("mysdk", "",
+	CheckSnapshot(result, "mysdk", "",
 		checkAllOtherCopyRules(`.intermediates/mysdk/common_os/mysdk-current.zip -> mysdk-current.zip`),
 	)
 }
@@ -390,7 +387,7 @@ func TestCommonValueOptimization(t *testing.T) {
 
 	extractor := newCommonValueExtractor(common)
 
-	h := TestHelper{t}
+	h := android.TestHelper{t}
 
 	err := extractor.extractCommonProperties(common, structs)
 	h.AssertDeepEquals("unexpected error", nil, err)
@@ -465,7 +462,7 @@ func TestCommonValueOptimization_InvalidArchSpecificVariants(t *testing.T) {
 
 	extractor := newCommonValueExtractor(common)
 
-	h := TestHelper{t}
+	h := android.TestHelper{t}
 
 	err := extractor.extractCommonProperties(common, structs)
 	h.AssertErrorMessageEquals("unexpected error", `field "S_Common" is not tagged as "arch_variant" but has arch specific properties:
