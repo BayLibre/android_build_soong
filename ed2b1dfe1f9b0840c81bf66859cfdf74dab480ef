@@ -16,6 +16,23 @@
       "message": "Nicolas: this is the follow-up for removal of \u0026-classpath, essentially what you wanted to do with PS2 in aosp/1606853 (and it failed presubmit due to a missing dependency on status file).",
       "revId": "ed2b1dfe1f9b0840c81bf66859cfdf74dab480ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4924f3b7_4342041c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-12T15:52:29Z",
+      "side": 1,
+      "message": "Thanks for following-up on this!",
+      "revId": "ed2b1dfe1f9b0840c81bf66859cfdf74dab480ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
