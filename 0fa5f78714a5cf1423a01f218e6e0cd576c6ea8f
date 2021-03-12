@@ -160,6 +160,24 @@
       "parentUuid": "cb967851_b0f3b124",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0094ce9_4eccaefd",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-12T05:55:20Z",
+      "side": 0,
+      "message": "\u003e I still don\u0027t understand why the simple change I suggested in the beginning of this thread doesn\u0027t work\n\nSee the test. I thought the added test demonstrate the need for the change, but probably not. A PackagingBase module might want to have a \"install\" dependency which is not meant to be packaged in it.\n\n\u003e That\u0027s not what I want.\n\nThat\u0027s what I want. Kiddin\u0027:-). Well, if you don\u0027t like the behavioral change of this topic, then, it\u0027s okay. This is no big deal. Let\u0027s abandon this. This is probably too speculatively.",
+      "parentUuid": "092e54ac_71233919",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
