@@ -142,6 +142,24 @@
       "parentUuid": "c2ab1c41_833bb86e",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "092e54ac_71233919",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-12T05:34:34Z",
+      "side": 0,
+      "message": "I still don\u0027t understand why the simple change I suggested in the beginning of this thread doesn\u0027t work. If it\u0027s just to avoid using WalkDeps, I don\u0027t see that as a critical reason.\n\nI also don\u0027t understand why D has to be in A. That\u0027s not what I want.",
+      "parentUuid": "cb967851_b0f3b124",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
