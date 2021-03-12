@@ -553,7 +553,6 @@ type testContext struct {
 
 // The result of running a test.
 type TestResult struct {
-	TestHelper
 	testContext
 
 	fixture *fixture
