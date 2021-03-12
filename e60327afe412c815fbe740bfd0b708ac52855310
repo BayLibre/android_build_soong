@@ -16,6 +16,24 @@
       "message": "So, this is somewhat unfortunate: I just discovered multiproduct_kati, which seems to want to run multiple Soong bootstraps in parallel, which Blueprint is not equipped to do.\n\nBefore I let this particular code suck more life out of me, is multiproduct_kati still used for anything? There aren\u0027t any references to it outside of build/soong and it doesn\u0027t seem to have seen much life since 2017, although Colin did change it at the end of 2020.",
       "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e96c5d78_1d900b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-12T02:19:25Z",
+      "side": 1,
+      "message": "multiproduct_kati is very important, it\u0027s what powers the build_test* targets that ensure that Soong and Make don\u0027t error on any of the 300+ different product configurations in the tree.",
+      "parentUuid": "94f34104_2bc30f2e",
+      "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
