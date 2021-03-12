@@ -22,6 +22,30 @@
       },
       "revId": "9ae2776fc98b94751a4ce5d1219c30f8f17d7510",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b212c27d_338fac72",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T18:28:34Z",
+      "side": 1,
+      "message": "I could but I would rather not as this is a hack and I would rather not support hacking. The proper solution is to avoid adding those files in the first place. I\u0027ll upload a change to do that.\n\nAs for test performance that is definitely on my radar. Specifically the java tests. They are always the last ones to finish. I think that is because the default java modules are auto generated and there are dozens, if not a hundred of them that are processed for every test, some created explicitly, some created implicitly, e.g. via prebuilt_apis. One goal of this mechanism is to allow tests much finer control over what they process without requiring them to duplicate lots of functionality.",
+      "parentUuid": "1c798151_808bd44c",
+      "range": {
+        "startLine": 1323,
+        "startChar": 0,
+        "endLine": 1327,
+        "endChar": 3
+      },
+      "revId": "9ae2776fc98b94751a4ce5d1219c30f8f17d7510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
