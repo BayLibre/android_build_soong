@@ -16,6 +16,24 @@
       "message": "Can you add tests for this to manifest_check_test.py?",
       "revId": "a9eae47e91ebc4e249faab39dd44e55d489a584c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11e193b7_96a6be93",
+        "filename": "scripts/manifest_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-12T15:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dad5183_f9cdc4f9",
+      "revId": "a9eae47e91ebc4e249faab39dd44e55d489a584c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
