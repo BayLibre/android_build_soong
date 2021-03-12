@@ -178,6 +178,24 @@
       "parentUuid": "092e54ac_71233919",
       "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c6f6809_e0562f3a",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-12T06:00:07Z",
+      "side": 0,
+      "message": "I now see where the differences came from. I didn\u0027t pay much attention to the test.\nWhat you said is right. Sorry for causing trouble. This LGTM.",
+      "parentUuid": "d0094ce9_4eccaefd",
+      "revId": "0fa5f78714a5cf1423a01f218e6e0cd576c6ea8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
