@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74435590_a134cf26",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T22:46:57Z",
+      "side": 0,
+      "message": "I didn\u0027t. Not on purpose. Looks like the insert parameter refactoring messed up the formatting.",
+      "parentUuid": "6ceacc8f_f240a6f0",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34873ff6_ac984b8b",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-03-12T21:47:52Z",
       "side": 0,
       "message": "Same here.",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f48ded_1b3cd2db",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T22:46:57Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "34873ff6_ac984b8b",
       "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d9ce5646_daecb74e",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T22:46:57Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "ff3d42ca_d5979d34",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8764d1fe_8be32e9f",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 2
@@ -65,6 +119,24 @@
       "writtenOn": "2021-03-12T21:47:52Z",
       "side": 0,
       "message": "Someone forgot to fi",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5346bc6d_b2eb024c",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2121,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T22:46:57Z",
+      "side": 0,
+      "message": "Nice! Will fix that in a follow up.",
+      "parentUuid": "8764d1fe_8be32e9f",
       "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
