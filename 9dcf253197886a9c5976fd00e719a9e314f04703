@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58d85d8f_797509cb",
+        "filename": "android/test_asserts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T18:25:22Z",
+      "side": 1,
+      "message": "I didn\u0027t know that either.",
+      "parentUuid": "adf28558_793b3e28",
+      "range": {
+        "startLine": 88,
+        "startChar": 42,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "9dcf253197886a9c5976fd00e719a9e314f04703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b549062_5a3498e8",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-12T18:19:09Z",
       "side": 1,
       "message": "There\u0027s a choice between easily accessible and duplicated docs. I think from a maintenance perspective it\u0027d be better to drop the docs here - it\u0027s obvious that these wrappers are just that anyway.\n\nOf course, it\u0027d be even better if all tests could adapted to TestHelper so the standalone assert functions you just split off can be folded back into these.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 96
+      },
+      "revId": "9dcf253197886a9c5976fd00e719a9e314f04703",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a885ed7_8f30bc1b",
+        "filename": "android/test_helpers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T18:25:22Z",
+      "side": 1,
+      "message": "These are being deleted completely. See https://r.android.com/1629631. Having these as functions rather than methods make them easier to use (no need to create a TestHelper wrapper around testing.T anymore). They were only ever in TestResult as a convenience and I agree with Jiyong that they look wrong.",
+      "parentUuid": "9b549062_5a3498e8",
       "range": {
         "startLine": 26,
         "startChar": 0,
