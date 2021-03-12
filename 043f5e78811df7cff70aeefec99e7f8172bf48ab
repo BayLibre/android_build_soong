@@ -16,6 +16,23 @@
       "message": "Retry.",
       "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04799a6_5b4432d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-12T12:44:03Z",
+      "side": 1,
+      "message": "Stopping this from being submitted for now as a downstream change this relies on has been temporarily reverted.",
+      "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
