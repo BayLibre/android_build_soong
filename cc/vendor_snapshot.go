@@ -577,10 +577,11 @@ func (c *snapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 		ctx,
 		snapshotDir,
 		c.name+"-"+ctx.Config().DeviceName()+"_list")
+	rspFile := snapshotOutputList.ReplaceExtension(ctx, "rsp")
 	zipRule.Command().
 		Text("tr").
 		FlagWithArg("-d ", "\\'").
-		FlagWithRspFileInputList("< ", snapshotOutputs).
+		FlagWithRspFileInputList("< ", rspFile, snapshotOutputs).
 		FlagWithOutput("> ", snapshotOutputList)
 
 	zipRule.Temporary(snapshotOutputList)
