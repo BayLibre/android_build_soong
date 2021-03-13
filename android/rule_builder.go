@@ -27,6 +27,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/cmd/sbox/sbox_proto"
+	"android/soong/remoteexec"
 	"android/soong/shared"
 )
 
@@ -48,6 +49,7 @@ type RuleBuilder struct {
 	sbox             bool
 	highmem          bool
 	remoteable       RemoteRuleSupports
+	rbeParams        *remoteexec.REParams
 	outDir           WritablePath
 	sboxTools        bool
 	sboxInputs       bool
@@ -117,6 +119,14 @@ func (r *RuleBuilder) HighMem() *RuleBuilder {
 // Remoteable marks the rule as supporting remote execution.
 func (r *RuleBuilder) Remoteable(supports RemoteRuleSupports) *RuleBuilder {
 	r.remoteable = supports
+	return r
+}
+
+func (r *RuleBuilder) Rewrapper(params *remoteexec.REParams) *RuleBuilder {
+	if !r.sboxInputs {
+		panic(fmt.Errorf("RuleBuilder.Rewrapper must be called after RuleBuilder.SandboxInputs"))
+	}
+	r.rbeParams = params
 	return r
 }
 
@@ -616,6 +626,25 @@ func (r *RuleBuilder) Build(name string, desc string) {
 		commandString = sboxCmd.buf.String()
 		tools = append(tools, sboxCmd.tools...)
 		inputs = append(inputs, sboxCmd.inputs...)
+
+		if r.rbeParams != nil {
+			var remoteInputs []string
+			remoteInputs = append(remoteInputs, inputs.Strings()...)
+			remoteInputs = append(remoteInputs, tools.Strings()...)
+			remoteInputs = append(remoteInputs, rspFileInputs.Strings()...)
+			if rspFilePath != nil {
+				remoteInputs = append(remoteInputs, rspFilePath.String())
+			}
+			inputsListFile := r.sboxManifestPath.ReplaceExtension(r.ctx, "rbe_inputs.list")
+			inputsListContents := rspFileForInputs(remoteInputs)
+			WriteFileRule(r.ctx, inputsListFile, inputsListContents)
+			inputs = append(inputs, inputsListFile)
+
+			r.rbeParams.OutputFiles = outputs.Strings()
+			r.rbeParams.RSPFile = inputsListFile.String()
+			rewrapperCommand := r.rbeParams.NoVarTemplate(r.ctx.Config().RBEWrapper())
+			commandString = rewrapperCommand + " bash -c '" + strings.ReplaceAll(commandString, `'`, `'\''`) + "'"
+		}
 	} else {
 		// If not using sbox the rule will run the command directly, put the hash of the
 		// list of input files in a comment at the end of the command line to ensure ninja
@@ -1221,3 +1250,14 @@ func (builderContextForTests) Rule(PackageContext, string, blueprint.RuleParams,
 	return nil
 }
 func (builderContextForTests) Build(PackageContext, BuildParams) {}
+
+func rspFileForInputs(paths []string) string {
+	s := strings.Builder{}
+	for i, path := range paths {
+		if i != 0 {
+			s.WriteByte(' ')
+		}
+		s.WriteString(proptools.ShellEscape(path))
+	}
+	return s.String()
+}
