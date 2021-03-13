@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86209a6_4c2dd1ca",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-13T16:58:29Z",
+      "side": 0,
+      "message": "I used the Intellij IDEA \"insert parameter\" refactoring for go. I should have just used a regexp.",
+      "parentUuid": "cc2f70f6_a567e7f8",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34873ff6_ac984b8b",
