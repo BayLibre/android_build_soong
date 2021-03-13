@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2f70f6_a567e7f8",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-13T09:20:36Z",
+      "side": 0,
+      "message": "Ok, I thought the reformattings were intentional. Do you use some kind of refactoring tool to do this?",
+      "parentUuid": "74435590_a134cf26",
+      "revId": "3d0ddff8ed44b4165b698567bd79289baf4a9274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34873ff6_ac984b8b",
