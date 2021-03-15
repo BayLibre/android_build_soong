@@ -87,6 +87,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71212e9_dde19c5b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-15T09:28:01Z",
+      "side": 1,
+      "message": "Resolving.",
+      "parentUuid": "a0cf9013_8be0eb06",
+      "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "180cf4ce_70fa8e84",
@@ -268,6 +286,30 @@
       "side": 1,
       "message": "Yeah, what you mean by \"fragility\" is the better kind :)",
       "parentUuid": "652300b7_0c62eb3b",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5f1e01_1a215d30",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-15T09:28:01Z",
+      "side": 1,
+      "message": "Resolving.",
+      "parentUuid": "0d9e326f_da1a1a4c",
       "range": {
         "startLine": 126,
         "startChar": 5,
