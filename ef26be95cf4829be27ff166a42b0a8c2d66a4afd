@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "123c7dc0_f75b225a",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2061,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-03-15T22:31:09Z",
+      "side": 1,
+      "message": "ccross: is there a straightforward way to depend on the implementation from a different architecture here? For the NdkAbis config (building the stubs and static libraries that get included in the NDK) we can\u0027t use neon because we still support non-neon apps, but the implementation requires Neon.\n\nDoing that sounds messy though, since I\u0027d need to add all the handling to make sure that the non-Neon artifacts get shipped and that the Neon artifacts are used only for dumping the ABI.\n\nAny chance this is easier than it appears?",
+      "revId": "ef26be95cf4829be27ff166a42b0a8c2d66a4afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
