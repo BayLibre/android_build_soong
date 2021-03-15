@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24be2c27_6d9fad4f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-15T23:06:07Z",
+      "side": 1,
+      "message": "nit: This doesn\u0027t need to outstand. Please have this together with other tags.",
+      "revId": "f359a0c4cdd3cfac305e8ea922d477b592f7ce87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
