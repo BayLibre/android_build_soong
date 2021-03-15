@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41531030_47f7eb20",
+        "filename": "ui/build/paths/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-03-15T18:54:46Z",
+      "side": 1,
+      "message": "avbtool is not guaranteed to be in $PATH -- you need to be referencing it by path (with a dependency) in the rules that use it.",
+      "revId": "0da9ba6f03c430ed915a4e91b79031b863a28012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
