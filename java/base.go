@@ -372,21 +372,21 @@ type Module struct {
 	hideApexVariantFromMake bool
 }
 
-func (j *Module) CheckStableSdkVersion() error {
-	sdkVersion := j.sdkVersion()
-	if sdkVersion.stable() {
-		return nil
-	}
-	if sdkVersion.kind == sdkCorePlatform {
-		if useLegacyCorePlatformApiByName(j.BaseModuleName()) {
-			return fmt.Errorf("non stable SDK %v - uses legacy core platform", sdkVersion)
-		} else {
-			// Treat stable core platform as stable.
-			return nil
-		}
-	} else {
-		return fmt.Errorf("non stable SDK %v", sdkVersion)
-	}
+func (j *Module) CheckStableSdkVersion(ctx android.EarlyModuleContext) error {
+ 	sdkVersion := j.sdkVersion()
+ 	if sdkVersion.stable() {
+ 		return nil
+ 	}
+ 	if sdkVersion.kind == sdkCorePlatform {
+		if useLegacyCorePlatformApi(ctx, j.BaseModuleName()) {
+ 			return fmt.Errorf("non stable SDK %v - uses legacy core platform", sdkVersion)
+ 		} else {
+ 			// Treat stable core platform as stable.
+ 			return nil
+ 		}
+ 	} else {
+ 		return fmt.Errorf("non stable SDK %v", sdkVersion)
+ 	}
 }
 
 // checkSdkVersions enforces restrictions around SDK dependencies.
