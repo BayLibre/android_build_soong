@@ -28,6 +28,12 @@ func init() {
 	pctx.SourcePathVariable("logtagsCmd", "build/make/tools/java-event-log-tags.py")
 	pctx.SourcePathVariable("mergeLogtagsCmd", "build/make/tools/merge-event-log-tags.py")
 	pctx.SourcePathVariable("logtagsLib", "build/make/tools/event_log_tags.py")
+
+	RegisterGenBuildComponents(android.InitRegistrationContext)
+}
+
+func RegisterGenBuildComponents(ctx android.RegistrationContext) {
+	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
 }
 
 var (

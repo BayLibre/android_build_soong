@@ -19,6 +19,12 @@ import (
 	"android/soong/dexpreopt"
 )
 
+func init() {
+	android.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("dexpreopt_tool_deps", dexpreoptToolDepsMutator).Parallel()
+	})
+}
+
 type dexpreopterInterface interface {
 	IsInstallable() bool // Structs that embed dexpreopter must implement this.
 	dexpreoptDisabled(ctx android.BaseModuleContext) bool

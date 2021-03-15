@@ -22,6 +22,17 @@ import (
 	"android/soong/dexpreopt"
 )
 
+// This file contains the module implementations for java_device_for_host and java_host_for_device.
+
+func init() {
+	RegisterConverterBuildComponents(android.InitRegistrationContext)
+}
+
+func RegisterConverterBuildComponents(ctx android.RegistrationContext) {
+	ctx.RegisterModuleType("java_device_for_host", DeviceForHostFactory)
+	ctx.RegisterModuleType("java_host_for_device", HostForDeviceFactory)
+}
+
 type DeviceHostConverter struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
