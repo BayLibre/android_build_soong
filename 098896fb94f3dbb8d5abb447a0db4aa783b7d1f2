@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb75493_fadd0466",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-15T23:17:33Z",
+      "side": 1,
+      "message": "Can we check and enforce this?",
+      "range": {
+        "startLine": 1040,
+        "startChar": 61,
+        "endLine": 1041,
+        "endChar": 33
+      },
+      "revId": "098896fb94f3dbb8d5abb447a0db4aa783b7d1f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
