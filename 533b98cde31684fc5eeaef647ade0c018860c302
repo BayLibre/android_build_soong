@@ -51,6 +51,24 @@
       "message": "- btw isn\u0027t the apex-allowed-deps-check for APK deps as well (where apex_available doesn\u0027t apply?) what happens to them now?\n\n- couldn\u0027t contain myself, had to check: aosp/1629637",
       "revId": "533b98cde31684fc5eeaef647ade0c018860c302",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e16ed9d_ee72dbc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-15T10:41:36Z",
+      "side": 1,
+      "message": "the check is for apps and apexes that are updatable:true. For example, NetworkStackApiStableLib is still there regardless.\n\nNote that Tethering deps are removed, but that\u0027s due to tethering not setting updatable:true. However, if you locally make it updatable it would still be removed, becase android_app(name:\"Tethering\") specifies apex_available. (Apex_available works for ApexModules which JavaLibrary is)",
+      "parentUuid": "1e6d572c_03ee3330",
+      "revId": "533b98cde31684fc5eeaef647ade0c018860c302",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
