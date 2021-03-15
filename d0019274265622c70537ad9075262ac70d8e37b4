@@ -33,6 +33,24 @@
       "message": "The idea is good. It does conflict with some of the changes in the relation chain of https://r.android.com/1634638 but they are manageable.\n\nI think it would be better if this was not done as a single change but a series of changes, maybe one for each new file. As it is it is really hard to review. I tried cherry-picking it and using \"git diff --color-moved\" but there was just too much going on.",
       "revId": "d0019274265622c70537ad9075262ac70d8e37b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c339945_8acdb172",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-15T23:05:18Z",
+      "side": 1,
+      "message": "Good idea! Will work on it.",
+      "parentUuid": "794723e1_e44439ba",
+      "revId": "d0019274265622c70537ad9075262ac70d8e37b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
