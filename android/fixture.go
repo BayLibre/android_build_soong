@@ -588,6 +588,28 @@ type TestResult struct {
 	NinjaDeps []string
 }
 
+func appendPreparers(base []*simpleFixturePreparer, extra []FixturePreparer) []*simpleFixturePreparer {
+	// Dedup the additional preparers against the base to avoid adding any duplicates.
+	extraPreparers := dedupAndFlattenPreparers(base, extra)
+
+	// Construct an array of all preparers.
+	var allPreparers []*simpleFixturePreparer
+	if len(extraPreparers) == 0 {
+		// No extra preparers are added so just return the base slice. This is safe as the underlying
+		// storage was not modified.
+		allPreparers = base
+	} else {
+		// Create a separate slice to ensure that append doesn't simply modify the underlying storage of
+		// the base slice and return a new slice of that storage as that could lead to this method
+		// overriding the result of a previous call to this method with the same base slice.
+		allPreparers = make([]*simpleFixturePreparer, 0, len(base)+len(extraPreparers))
+		allPreparers = append(allPreparers, base...)
+		allPreparers = append(allPreparers, extraPreparers...)
+	}
+
+	return allPreparers
+}
+
 var _ FixtureFactory = (*fixtureFactory)(nil)
 
 type fixtureFactory struct {
@@ -597,11 +619,8 @@ type fixtureFactory struct {
 }
 
 func (f *fixtureFactory) Extend(preparers ...FixturePreparer) FixtureFactory {
-	// Create a new slice to avoid accidentally sharing the preparers slice from this factory with
-	// the extending factories.
-	var all []*simpleFixturePreparer
-	all = append(all, f.preparers...)
-	all = append(all, dedupAndFlattenPreparers(f.preparers, preparers)...)
+	all := appendPreparers(f.preparers, preparers)
+
 	// Copy the existing factory.
 	extendedFactory := &fixtureFactory{}
 	*extendedFactory = *f
@@ -620,10 +639,15 @@ func (f *fixtureFactory) Fixture(t *testing.T, preparers ...FixturePreparer) Fix
 		// Retrieve the buildDir from the supplier.
 		buildDir = *f.buildDirSupplier
 	}
+
+	// Construct an array of all preparers, those from this factory and the additional ones passed to
+	// this method.
+	all := appendPreparers(f.preparers, preparers)
+
 	config := TestConfig(buildDir, nil, "", nil)
 	ctx := NewTestContext(config)
 	fixture := &fixture{
-		factory:      f,
+		preparers:    all,
 		t:            t,
 		config:       config,
 		ctx:          ctx,
@@ -631,11 +655,7 @@ func (f *fixtureFactory) Fixture(t *testing.T, preparers ...FixturePreparer) Fix
 		errorHandler: f.errorHandler,
 	}
 
-	for _, preparer := range f.preparers {
-		preparer.function(fixture)
-	}
-
-	for _, preparer := range dedupAndFlattenPreparers(f.preparers, preparers) {
+	for _, preparer := range all {
 		preparer.function(fixture)
 	}
 
@@ -683,8 +703,8 @@ func (f *fixtureFactory) RunTestWithConfig(t *testing.T, config Config) *TestRes
 }
 
 type fixture struct {
-	// The factory used to create this fixture.
-	factory *fixtureFactory
+	// The preparers used to create this fixture.
+	preparers []*simpleFixturePreparer
 
 	// The gotest state of the go test within which this was created.
 	t *testing.T
@@ -778,6 +798,30 @@ func (r *TestResult) NormalizePathsForTesting(paths Paths) []string {
 		result = append(result, r.NormalizePathForTesting(path))
 	}
 	return result
+}
+
+// RunTest will run a test using the same preparers as were used to create this result.
+//
+// e.g. assuming that this result was created by running:
+//     factory.Extend(preparer1, preparer2).RunTest(t, preparer3, preparer4)
+//
+// Then this method will be equivalent to running:
+//     factory.Extend(preparer1, preparer2, preparer3, preparer4).RunTest(t, preparers)
+//
+// This is intended for use by tests whose output is Android.bp files to verify that those files
+// are valid, e.g. tests of the snapshots produced by the sdk module type.
+func (r *TestResult) RunTest(t *testing.T, preparers ...FixturePreparer) *TestResult {
+	t.Helper()
+
+	// Create a temporary factory that will reproduce the fixture that created this test result.
+	factory := &fixtureFactory{
+		preparers: r.fixture.preparers,
+
+		// Set the default error handler.
+		errorHandler: FixtureExpectsNoErrors,
+	}
+
+	return factory.RunTest(t, preparers...)
 }
 
 // Module returns the module with the specific name and of the specified variant.
