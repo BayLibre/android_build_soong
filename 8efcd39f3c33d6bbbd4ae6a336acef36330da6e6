@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d6dc8d_1060cf27",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-15T02:37:36Z",
+      "side": 1,
+      "message": "Put these next to the LabelList/Label definitions in the bazel package, likewise for the tests? \n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go?q\u003dLabelList",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 0
+      },
+      "revId": "8efcd39f3c33d6bbbd4ae6a336acef36330da6e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5caa4f9_440bd10a",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-15T02:37:36Z",
+      "side": 1,
+      "message": "\"Expected %v, but got %v\"",
+      "range": {
+        "startLine": 1363,
+        "startChar": 13,
+        "endLine": 1363,
+        "endChar": 21
+      },
+      "revId": "8efcd39f3c33d6bbbd4ae6a336acef36330da6e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ab134b_7235bc35",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-15T02:37:36Z",
+      "side": 1,
+      "message": "\"Expected %v, but got %v\"",
+      "range": {
+        "startLine": 1405,
+        "startChar": 13,
+        "endLine": 1405,
+        "endChar": 21
+      },
+      "revId": "8efcd39f3c33d6bbbd4ae6a336acef36330da6e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
