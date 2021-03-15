@@ -33,6 +33,24 @@
       "message": "It\u0027s not obvious to me why this function only applies to handcrafted labels. Can you explain?",
       "revId": "6f980db250a74b4435576f606b5faea0fe6ff4e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d96f84_1bca3920",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-15T20:02:56Z",
+      "side": 1,
+      "message": "I think was due to renaming everything that was calling GetBazelLabel prior to this change. This function is only being called for hand-crafted targets, since GetBazelLabel now has more arguments, I changed the function name to be more specific.",
+      "parentUuid": "d1c5567e_6a2c02e7",
+      "revId": "6f980db250a74b4435576f606b5faea0fe6ff4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
