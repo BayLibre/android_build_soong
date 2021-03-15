@@ -477,6 +477,9 @@ func expandSrcsForBazel(ctx BazelConversionPathContext, paths, expandedExcludes 
 // already be resolved by either deps mutator or path deps mutator.
 func getOtherModuleLabel(ctx BazelConversionPathContext, dep, tag string) bazel.Label {
 	m, _ := ctx.GetDirectDep(dep)
+	if m == nil {
+		panic("cannot get direct dep of m")
+	}
 	otherLabel := bazelModuleLabel(ctx, m, tag)
 	label := bazelModuleLabel(ctx, ctx.Module(), "")
 	if samePackage(label, otherLabel) {
