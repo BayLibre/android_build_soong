@@ -16,6 +16,23 @@
       "message": "I refrained from making any additional changes than splitting it up in order to make sure we agree on the direction first. I\u0027d like to refactor java.go and base.go a bit more, but I expect it\u0027ll require some more plannings.",
       "revId": "d0019274265622c70537ad9075262ac70d8e37b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794723e1_e44439ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-15T22:45:04Z",
+      "side": 1,
+      "message": "The idea is good. It does conflict with some of the changes in the relation chain of https://r.android.com/1634638 but they are manageable.\n\nI think it would be better if this was not done as a single change but a series of changes, maybe one for each new file. As it is it is really hard to review. I tried cherry-picking it and using \"git diff --color-moved\" but there was just too much going on.",
+      "revId": "d0019274265622c70537ad9075262ac70d8e37b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
