@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3314f6e5_b4a8d36b",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-15T23:45:23Z",
+      "side": 1,
+      "message": "Just do \u0027if command.GetChdir() {\u0027 if you\u0027re not gonna reuse chdirToTempDir below? Also, what about s/pathToSboxDir/pathToTempDir/?",
+      "revId": "e5ff516ed54b5bf63848b1cc755951e579ae2871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
