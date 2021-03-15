@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34278553_e687a77b",
+        "filename": "android/config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2021-03-15T23:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "154f976e_1bc347b8",
+      "range": {
+        "startLine": 1430,
+        "startChar": 28,
+        "endLine": 1430,
+        "endChar": 45
+      },
+      "revId": "3f5bc75a4a157f03246a44d3d7b6380b43085ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6156b8da_67e64dba",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00316a8_ceb8a343",
+        "filename": "android/config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1432,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2021-03-15T23:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6156b8da_67e64dba",
+      "range": {
+        "startLine": 1432,
+        "startChar": 52,
+        "endLine": 1432,
+        "endChar": 68
+      },
+      "revId": "3f5bc75a4a157f03246a44d3d7b6380b43085ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cdc0e1d_d1e34514",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-15T22:47:33Z",
       "side": 1,
       "message": "There\u0027s enough repeated 4 times here that it\u0027s probably worth a helper function that takes the key, previous map, product variable and name.",
+      "range": {
+        "startLine": 1429,
+        "startChar": 1,
+        "endLine": 1439,
+        "endChar": 32
+      },
+      "revId": "3f5bc75a4a157f03246a44d3d7b6380b43085ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fd0fac2_48d4b69b",
+        "filename": "android/config.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2021-03-15T23:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cdc0e1d_d1e34514",
       "range": {
         "startLine": 1429,
         "startChar": 1,
