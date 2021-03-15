@@ -27,14 +27,12 @@ import (
 	"android/soong/java"
 )
 
-var sdkFixtureFactory = android.NewFixtureFactory(
-	nil,
-	apex.PrepareForTestWithApexBuildComponents,
-	cc.PrepareForTestWithCcDefaultModules,
-	genrule.PrepareForTestWithGenRuleBuildComponents,
-	java.PrepareForTestWithJavaBuildComponents,
-	PrepareForTestWithSdkBuildComponents,
+// Base fixture factory to use for running tests in the sdk package.
+var emptyFixtureFactory = android.NewFixtureFactory(nil)
 
+// Prepare for running an sdk test with an apex.
+var prepareForSdkTestWithApex = android.GroupFixturePreparers(
+	apex.PrepareForTestWithApexBuildComponents,
 	android.FixtureAddTextFile("sdk/tests/Android.bp", `
 		apex_key {
 			name: "myapex.key",
@@ -59,6 +57,21 @@ var sdkFixtureFactory = android.NewFixtureFactory(
 		"myapex.x509.pem":                              nil,
 		"myapex.pk8":                                   nil,
 	}),
+)
+
+// Legacy factory used for running tests within the sdk package.
+//
+// This includes everything that was needed to run any test in the sdk package prior to the
+// introduction of the test fixtures. Tests that are being converted to use fixtures directly
+// rather than through the testSdkError() and testSdkWithFs() methods should avoid using this and
+// instead should use emptyFixtureFactory and the various preparers directly.
+var sdkFixtureFactory = emptyFixtureFactory.Extend(
+	cc.PrepareForTestWithCcDefaultModules,
+	genrule.PrepareForTestWithGenRuleBuildComponents,
+	java.PrepareForTestWithJavaBuildComponents,
+	PrepareForTestWithSdkBuildComponents,
+
+	prepareForSdkTestWithApex,
 
 	cc.PrepareForTestOnWindows,
 	android.FixtureModifyConfig(func(config android.Config) {
