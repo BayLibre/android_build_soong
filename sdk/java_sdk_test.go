@@ -26,6 +26,13 @@ var prepareForSdkTestWithJava = android.GroupFixturePreparers(
 	PrepareForTestWithSdkBuildComponents,
 )
 
+var prepareForSdkTestWithJavaSdkLibrary = android.GroupFixturePreparers(
+	prepareForSdkTestWithJava,
+	java.PrepareForTestWithJavaDefaultModules,
+	java.PrepareForTestWithJavaSdkLibraryFiles,
+	java.FixtureWithLastReleaseApis("myjavalib"),
+)
+
 func testSdkWithJava(t *testing.T, bp string) *android.TestResult {
 	t.Helper()
 
