@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd53b48_1149ad8f",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-15T08:04:13Z",
+      "side": 1,
+      "message": "nit: I\u0027ve seen `ret` used more commonly. https://cs.android.com/search?q\u003d%22ret%20%22%20lang:go%20f:build%2Fsoong",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 17
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7befb3_aebb9853",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-15T08:04:13Z",
+      "side": 1,
+      "message": "Duplicate line.",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 499,
+        "endChar": 82
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ec4972_857d8755",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-15T08:04:13Z",
+      "side": 1,
+      "message": "nit: use\n\n  var (\n   ..\n  )",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 86
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d355c58_4acc0254",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-15T08:04:13Z",
+      "side": 1,
+      "message": "nit: line breaks",
+      "range": {
+        "startLine": 16,
+        "startChar": 47,
+        "endLine": 16,
+        "endChar": 61
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d300acaf_83f75aa1",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-15T08:04:13Z",
+      "side": 1,
+      "message": "Please add godocs for all exported functions in this file.",
+      "range": {
+        "startLine": 43,
+        "startChar": 35,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
