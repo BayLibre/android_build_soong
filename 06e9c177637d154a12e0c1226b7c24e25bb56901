@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6254d4dd_b17e8f6a",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-15T21:06:29Z",
+      "side": 1,
+      "message": "Why Ninja?  Isn\u0027t this the build directory for the whole build?",
+      "range": {
+        "startLine": 71,
+        "startChar": 16,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "06e9c177637d154a12e0c1226b7c24e25bb56901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091fb0bb_82513fb2",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-15T21:06:29Z",
+      "side": 1,
+      "message": "Is it necessary for android.Config to implement BootstrapConfig?  If so, BootstrapConfig is an odd name, since we\u0027re not bootstrapping here.\n\nIf it is necessary, could GeneratingPrimaryBuilder() be moved out of BootstrapConfig, and then the caller can type assert to just that method and assume false if it is not present?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "06e9c177637d154a12e0c1226b7c24e25bb56901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
