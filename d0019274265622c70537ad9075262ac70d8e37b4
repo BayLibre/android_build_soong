@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c086ffe_8b2b1297",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-15T22:29:42Z",
+      "side": 1,
+      "message": "I refrained from making any additional changes than splitting it up in order to make sure we agree on the direction first. I\u0027d like to refactor java.go and base.go a bit more, but I expect it\u0027ll require some more plannings.",
+      "revId": "d0019274265622c70537ad9075262ac70d8e37b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
