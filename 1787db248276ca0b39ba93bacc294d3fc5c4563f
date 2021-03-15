@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "71219064_bef1a60c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-15T17:18:58Z",
+      "side": 1,
+      "message": "It should be:\n    rm -fr out/soong/.bootstrap/soong-java/test/\n\nDone.",
+      "parentUuid": "8eedd98c_a4aa21ad",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "1787db248276ca0b39ba93bacc294d3fc5c4563f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "af2b9dec_c1234d77",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
