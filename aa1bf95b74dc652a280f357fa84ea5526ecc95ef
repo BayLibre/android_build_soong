@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e14dbd6_295f8ac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-15T19:25:21Z",
+      "side": 1,
+      "message": "Needed for platform_compat_config changes.",
+      "revId": "aa1bf95b74dc652a280f357fa84ea5526ecc95ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
