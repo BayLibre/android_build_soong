@@ -150,11 +150,15 @@ func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	RegisterAppBuildComponents(ctx)
 	RegisterAppImportBuildComponents(ctx)
 	RegisterAppSetBuildComponents(ctx)
+	RegisterBinaryBuildComponents(ctx)
 	RegisterBootImageBuildComponents(ctx)
+	RegisterConverterBuildComponents(ctx)
+	RegisterDefaultsBuildComponents(ctx)
 	RegisterDexpreoptBootJarsComponents(ctx)
 	RegisterDocsBuildComponents(ctx)
 	RegisterGenRuleBuildComponents(ctx)
-	RegisterJavaBuildComponents(ctx)
+	RegisterImportBuildComponents(ctx)
+	RegisterLibraryBuildComponents(ctx)
 	RegisterPrebuiltApisBuildComponents(ctx)
 	RegisterRuntimeResourceOverlayBuildComponents(ctx)
 	RegisterSdkLibraryBuildComponents(ctx)
@@ -163,6 +167,10 @@ func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 
 	// Make sure that any tool related module types needed by dexpreopt have been registered.
 	dexpreopt.RegisterToolModulesForTest(ctx)
+
+	ctx.FinalDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("dexpreopt_tool_deps", dexpreoptToolDepsMutator).Parallel()
+	})
 }
 
 // Gather the module definitions needed by tests that depend upon code from this package.
