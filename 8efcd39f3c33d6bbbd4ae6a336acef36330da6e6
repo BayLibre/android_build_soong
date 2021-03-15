@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f035329e_dc28e22b",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-15T11:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d6dc8d_1060cf27",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 0
+      },
+      "revId": "8efcd39f3c33d6bbbd4ae6a336acef36330da6e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5caa4f9_440bd10a",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f370ba31_34c3fb58",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-15T11:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5caa4f9_440bd10a",
+      "range": {
+        "startLine": 1363,
+        "startChar": 13,
+        "endLine": 1363,
+        "endChar": 21
+      },
+      "revId": "8efcd39f3c33d6bbbd4ae6a336acef36330da6e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00ab134b_7235bc35",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-15T02:37:36Z",
       "side": 1,
       "message": "\"Expected %v, but got %v\"",
+      "range": {
+        "startLine": 1405,
+        "startChar": 13,
+        "endLine": 1405,
+        "endChar": 21
+      },
+      "revId": "8efcd39f3c33d6bbbd4ae6a336acef36330da6e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb1f7fd_61c471b6",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-15T11:52:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00ab134b_7235bc35",
       "range": {
         "startLine": 1405,
         "startChar": 13,
