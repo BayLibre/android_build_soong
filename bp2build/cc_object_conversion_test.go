@@ -242,9 +242,13 @@ func TestCcObjectConfigurableAttributesBp2Build(t *testing.T) {
 			moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
 			blueprint: `cc_object {
     name: "foo",
+    srcs: [], // FIXME
     arch: {
         x86: {
             cflags: ["-fPIC"],
+        },
+        arm: {
+            srcs: ["arch/arm/file.S"], // FIXME: add more tests
         },
     },
     bazel_module: { bp2build_available: true },
@@ -258,6 +262,14 @@ func TestCcObjectConfigurableAttributesBp2Build(t *testing.T) {
     ] + select({
         "@bazel_tools//platforms:x86_32": [
             "-fPIC",
+        ],
+        "//conditions:default": [
+        ],
+    }),
+    srcs = [
+    ] + select({
+        "@bazel_tools//platforms:arm": [
+            "arch/arm/file.S",
         ],
         "//conditions:default": [
         ],

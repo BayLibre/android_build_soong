@@ -55,7 +55,7 @@ func writeReadOnlyFile(ctx android.PathContext, dir android.OutputPath, baseName
 	pathToFile := dir.Join(ctx, baseName)
 
 	// 0444 is read-only
-	err := android.WriteFileToOutputDir(pathToFile, []byte(content), 0444)
+	err := android.WriteFileToOutputDir(pathToFile, []byte(content), 0644)
 
 	return err
 }
