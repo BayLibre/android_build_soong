@@ -34,6 +34,24 @@
       "parentUuid": "24be2c27_6d9fad4f",
       "revId": "f359a0c4cdd3cfac305e8ea922d477b592f7ce87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da654eb_b8565a2e",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-15T23:12:36Z",
+      "side": 1,
+      "message": "That\u0027s fine :)",
+      "parentUuid": "eff7c28d_316a0be7",
+      "revId": "f359a0c4cdd3cfac305e8ea922d477b592f7ce87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
