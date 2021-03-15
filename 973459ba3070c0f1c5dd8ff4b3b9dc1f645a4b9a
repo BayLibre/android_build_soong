@@ -16,6 +16,24 @@
       "message": "FWIW, Nicolas, I am merging https://r.android.com/1628693 which should help reduce additions in this change; if you want to wait before submitting and re-generating.",
       "revId": "973459ba3070c0f1c5dd8ff4b3b9dc1f645a4b9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66cc08d4_8203ade7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-15T12:13:15Z",
+      "side": 1,
+      "message": "Thanks for the heads-up. Looks like your CL will land today? I\u0027ll wait as I need to wait for ndk-review anyway.",
+      "parentUuid": "505bc334_9cf65832",
+      "revId": "973459ba3070c0f1c5dd8ff4b3b9dc1f645a4b9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
