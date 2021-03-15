@@ -228,6 +228,30 @@
       },
       "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "652300b7_0c62eb3b",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-15T08:56:46Z",
+      "side": 1,
+      "message": "By fragile I meant in the sense that an unrelated change (e.g. switching a module from legacy to stable) would cause a failure of the test. The co-locality of the test and code being tested doesn\u0027t stop it from being fragile in that sense.\n\nYou\u0027re right also that the person who triggered the failure would most likely not be someone who was familiar with Soong. I will look into creating a test for it.",
+      "parentUuid": "1cc6a0ff_35d7dcae",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
