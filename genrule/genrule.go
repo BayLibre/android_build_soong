@@ -800,9 +800,9 @@ type genRuleProperties struct {
 }
 
 type bazelGenruleAttributes struct {
-	Srcs  bazel.LabelList
+	Srcs  bazel.LabelListAttribute
 	Outs  []string
-	Tools bazel.LabelList
+	Tools bazel.LabelListAttribute
 	Cmd   string
 }
 
@@ -825,15 +825,17 @@ func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 	}
 
 	// Bazel only has the "tools" attribute.
-	tools := android.BazelLabelForModuleDeps(ctx, m.properties.Tools)
+	var tools bazel.LabelListAttribute
+	tools.Value = android.BazelLabelForModuleDeps(ctx, m.properties.Tools)
 	tool_files := android.BazelLabelForModuleSrc(ctx, m.properties.Tool_files)
-	tools.Append(tool_files)
+	tools.Value.Append(tool_files)
 
-	srcs := android.BazelLabelForModuleSrc(ctx, m.properties.Srcs)
+	var srcs bazel.LabelListAttribute
+	srcs.Value = android.BazelLabelForModuleSrc(ctx, m.properties.Srcs)
 
 	var allReplacements bazel.LabelList
-	allReplacements.Append(tools)
-	allReplacements.Append(srcs)
+	allReplacements.Append(tools.Value)
+	allReplacements.Append(srcs.Value)
 
 	// Replace in and out variables with $< and $@
 	var cmd string
@@ -841,9 +843,9 @@ func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 		cmd = strings.Replace(*m.properties.Cmd, "$(in)", "$(SRCS)", -1)
 		cmd = strings.Replace(cmd, "$(out)", "$(OUTS)", -1)
 		cmd = strings.Replace(cmd, "$(genDir)", "$(GENDIR)", -1)
-		if len(tools.Includes) > 0 {
-			cmd = strings.Replace(cmd, "$(location)", fmt.Sprintf("$(location %s)", tools.Includes[0].Label), -1)
-			cmd = strings.Replace(cmd, "$(locations)", fmt.Sprintf("$(locations %s)", tools.Includes[0].Label), -1)
+		if len(tools.Value.Includes) > 0 {
+			cmd = strings.Replace(cmd, "$(location)", fmt.Sprintf("$(location %s)", tools.Value.Includes[0].Label), -1)
+			cmd = strings.Replace(cmd, "$(locations)", fmt.Sprintf("$(locations %s)", tools.Value.Includes[0].Label), -1)
 		}
 		for _, l := range allReplacements.Includes {
 			bpLoc := fmt.Sprintf("$(location %s)", l.Bp_text)

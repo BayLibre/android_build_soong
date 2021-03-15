@@ -51,9 +51,36 @@ type Label struct {
 }
 
 // LabelList is used to represent a list of Bazel labels.
+type LabelListAttribute struct {
+	Value LabelList
+
+	ArchValues labelListArchValues
+}
+
+// LabelList is a basic data structure for label lists.
 type LabelList struct {
 	Includes []Label
 	Excludes []Label
+}
+
+// Arch-specific label_list typed Bazel attribute values. This should correspond
+// to the types of architectures supported for compilation in arch.go.
+type labelListArchValues struct {
+	X86     LabelList
+	X86_64  LabelList
+	Arm     LabelList
+	Arm64   LabelList
+	Default LabelList
+}
+
+// Append appends the fields of other labelList to the corresponding fields of ll.
+func (ll *LabelListAttribute) Append(other LabelListAttribute) {
+	if len(ll.Value.Includes) > 0 || len(other.Value.Includes) > 0 {
+		ll.Value.Includes = append(ll.Value.Includes, other.Value.Includes...)
+	}
+	if len(ll.Value.Excludes) > 0 || len(other.Value.Excludes) > 0 {
+		ll.Value.Excludes = append(other.Value.Excludes, other.Value.Excludes...)
+	}
 }
 
 // Append appends the fields of other labelList to the corresponding fields of ll.
@@ -63,6 +90,53 @@ func (ll *LabelList) Append(other LabelList) {
 	}
 	if len(ll.Excludes) > 0 || len(other.Excludes) > 0 {
 		ll.Excludes = append(other.Excludes, other.Excludes...)
+	}
+}
+
+// HasArchSpecificValues returns true if the attribute contains
+// architecture-specific string_list values.
+func (attrs *LabelListAttribute) HasArchSpecificValues() bool {
+	for _, arch := range []string{"x86", "x86_64", "arm", "arm64", "default"} {
+		if len(attrs.GetValueForArch(arch).Includes) > 0 || len(attrs.GetValueForArch(arch).Excludes) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+// GetValueForArch returns the string_list attribute value for an architecture.
+func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
+	switch arch {
+	case "x86":
+		return attrs.ArchValues.X86
+	case "x86_64":
+		return attrs.ArchValues.X86_64
+	case "arm":
+		return attrs.ArchValues.Arm
+	case "arm64":
+		return attrs.ArchValues.Arm64
+	case "default":
+		return attrs.ArchValues.Default
+	default:
+		panic(fmt.Errorf("Unknown arch: %s", arch))
+	}
+}
+
+// SetValueForArch sets the string_list attribute value for an architecture.
+func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
+	switch arch {
+	case "x86":
+		attrs.ArchValues.X86 = value
+	case "x86_64":
+		attrs.ArchValues.X86_64 = value
+	case "arm":
+		attrs.ArchValues.Arm = value
+	case "arm64":
+		attrs.ArchValues.Arm64 = value
+	case "default":
+		attrs.ArchValues.Default = value
+	default:
+		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
 }
 
