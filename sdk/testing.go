@@ -176,7 +176,9 @@ func getSdkSnapshotBuildInfo(t *testing.T, result *android.TestResult, sdk *sdk)
 // Takes a list of functions which check different facets of the snapshot build rules.
 // Allows each test to customize what is checked without duplicating lots of code
 // or proliferating check methods of different flavors.
-func CheckSnapshot(t *testing.T, result *android.TestResult, name string, dir string, checkers ...snapshotBuildInfoChecker) {
+//
+// Returns the result of processing the generated snapshot.
+func CheckSnapshot(t *testing.T, result *android.TestResult, name string, dir string, checkers ...snapshotBuildInfoChecker) *android.TestResult {
 	t.Helper()
 
 	// The sdk CommonOS variant is always responsible for generating the snapshot.
@@ -201,13 +203,34 @@ func CheckSnapshot(t *testing.T, result *android.TestResult, name string, dir st
 
 	// Populate a mock filesystem with the files that would have been copied by
 	// the rules.
-	fs := make(map[string][]byte)
+	fs := android.MockFS{}
+	snapshotSubDir := "snapshot"
 	for _, dest := range snapshotBuildInfo.snapshotContents {
-		fs[dest] = nil
+		fs[filepath.Join(snapshotSubDir, dest)] = nil
 	}
+	fs[filepath.Join(snapshotSubDir, "Android.bp")] = []byte(snapshotBuildInfo.androidBpContents)
 
-	// Process the generated bp file to make sure it is valid.
-	testSdkWithFs(t, snapshotBuildInfo.androidBpContents, fs)
+	// Process the generated bp file to make sure it is valid. Use the same factory as was used to
+	// produce this result.
+	var snapshotResult *android.TestResult
+
+	t.Run("snapshot without source", func(t *testing.T) {
+		snapshotResult = result.RunTest(t,
+			// TODO(b/183184375): Set Config.TestAllowNonExistentPaths = false to verify that all the
+			//  files the snapshot needs are actually copied into the snapshot.
+
+			// Add the files (including bp) created for this snapshot to the test fixture.
+			fs.AddToFixture(),
+
+			// Remove the source Android.bp file to make sure it works without.
+			// TODO(b/183184375): Add a test with the source.
+			android.FixtureModifyMockFS(func(fs android.MockFS) {
+				delete(fs, "Android.bp")
+			}),
+		)
+	})
+
+	return snapshotResult
 }
 
 type snapshotBuildInfoChecker func(info *snapshotBuildInfo)
