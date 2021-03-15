@@ -180,6 +180,30 @@
       },
       "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1867cad2_d4d8935c",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-15T07:17:00Z",
+      "side": 1,
+      "message": "Okie. FWIW, since the list is part of the source code of Soong itself, I don\u0027t think relying on that list is fragile: the failure mode is that someone changes the list, breaks the test and then they will immediately see what\u0027s up and will fix the test.\n\nThe failure mode of not having a test, isn\u0027t too bad, either (dependencies on the stable core platform will be flagged as in error), but that will be found by someone who\u0027s not working on Soong and would therefore have a harder time to understand what\u0027s going on.",
+      "parentUuid": "0d9e326f_da1a1a4c",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 54
+      },
+      "revId": "043f5e78811df7cff70aeefec99e7f8172bf48ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
