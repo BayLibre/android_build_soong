@@ -102,6 +102,9 @@ type apexBundleProperties struct {
 	// List of prebuilt files that are embedded inside this APEX bundle.
 	Prebuilts []string
 
+	// List of platform_compat_config files that are embedded inside this APEX bundle.
+	Compat_configs []string
+
 	// List of BPF programs inside this APEX bundle.
 	Bpfs []string
 
@@ -563,6 +566,9 @@ var (
 	sharedLibTag   = dependencyTag{name: "sharedLib", payload: true}
 	testForTag     = dependencyTag{name: "test for"}
 	testTag        = dependencyTag{name: "test", payload: true}
+
+	// Tag for platform_compat_configs
+	compatConfigsTag = dependencyTag{name: "compatConfig", payload: true}
 )
 
 // TODO(jiyong): shorten this function signature
@@ -730,6 +736,13 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		{Mutator: "os", Variation: ctx.Os().String()},
 		{Mutator: "arch", Variation: archForPrebuiltEtc.String()},
 	}, prebuiltTag, a.properties.Prebuilts...)
+
+	// Add dependency on platform_compat_configs.
+	// TODO(b/182816033) - make this common-arch once all usages have been migrated.
+	ctx.AddFarVariationDependencies([]blueprint.Variation{
+		{Mutator: "os", Variation: ctx.Os().String()},
+		{Mutator: "arch", Variation: archForPrebuiltEtc.String()},
+	}, compatConfigsTag, a.properties.Compat_configs...)
 
 	// Common-arch dependencies come next
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
@@ -1739,6 +1752,12 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					filesInfo = append(filesInfo, apexFileForCompatConfig(ctx, prebuilt, depName))
 				} else {
 					ctx.PropertyErrorf("prebuilts", "%q is not a prebuilt_etc and not a platform_compat_config module", depName)
+				}
+			case compatConfigsTag:
+				if compatConfig, ok := child.(java.PlatformCompatConfigIntf); ok {
+					filesInfo = append(filesInfo, apexFileForCompatConfig(ctx, compatConfig, depName))
+				} else {
+					ctx.PropertyErrorf("compat_configs", "%q is not a platform_compat_config module", depName)
 				}
 			case testTag:
 				if ccTest, ok := child.(*cc.Module); ok {
