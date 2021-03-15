@@ -74,6 +74,7 @@ func GetConfig(name string) PathConfig {
 }
 
 var Configuration = map[string]PathConfig{
+	"avbtool": Allowed,
 	"bash":    Allowed,
 	"dd":      Allowed,
 	"diff":    Allowed,
