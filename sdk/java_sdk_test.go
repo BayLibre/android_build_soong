@@ -117,7 +117,7 @@ prebuilt_apis {
 // Contains tests for SDK members provided by the java package.
 
 func TestSdkDependsOnSourceEvenWhenPrebuiltPreferred(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJava).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_header_libs: ["sdkmember"],
@@ -168,7 +168,10 @@ sdk_snapshot {
 }
 
 func TestBasicSdkWithJavaLibrary(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(
+		prepareForSdkTestWithJava,
+		prepareForSdkTestWithApex,
+	).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_header_libs: ["sdkmember"],
@@ -249,7 +252,10 @@ func TestBasicSdkWithJavaLibrary(t *testing.T) {
 }
 
 func TestSnapshotWithJavaHeaderLibrary(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(
+		prepareForSdkTestWithJava,
+		android.FixtureAddFile("aidl/foo/bar/Test.aidl", nil),
+	).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_header_libs: ["myjavalib"],
@@ -303,7 +309,10 @@ aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
 }
 
 func TestHostSnapshotWithJavaHeaderLibrary(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(
+		prepareForSdkTestWithJava,
+		android.FixtureAddFile("aidl/foo/bar/Test.aidl", nil),
+	).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			device_supported: false,
@@ -365,7 +374,7 @@ aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
 }
 
 func TestDeviceAndHostSnapshotWithJavaHeaderLibrary(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJava).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			host_supported: true,
@@ -433,7 +442,10 @@ sdk_snapshot {
 }
 
 func TestSnapshotWithJavaImplLibrary(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(
+		prepareForSdkTestWithJava,
+		android.FixtureAddFile("aidl/foo/bar/Test.aidl", nil),
+	).RunTestWithBp(t, `
 		module_exports {
 			name: "myexports",
 			java_libs: ["myjavalib"],
@@ -488,7 +500,7 @@ aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
 }
 
 func TestSnapshotWithJavaBootLibrary(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJava).RunTestWithBp(t, `
 		module_exports {
 			name: "myexports",
 			java_boot_libs: ["myjavalib"],
@@ -542,7 +554,10 @@ module_exports_snapshot {
 }
 
 func TestHostSnapshotWithJavaImplLibrary(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(
+		prepareForSdkTestWithJava,
+		android.FixtureAddFile("aidl/foo/bar/Test.aidl", nil),
+	).RunTestWithBp(t, `
 		module_exports {
 			name: "myexports",
 			device_supported: false,
@@ -604,7 +619,7 @@ aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
 }
 
 func TestSnapshotWithJavaTest(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJava).RunTestWithBp(t, `
 		module_exports {
 			name: "myexports",
 			java_tests: ["myjavatests"],
@@ -656,7 +671,7 @@ module_exports_snapshot {
 }
 
 func TestHostSnapshotWithJavaTest(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJava).RunTestWithBp(t, `
 		module_exports {
 			name: "myexports",
 			device_supported: false,
@@ -717,7 +732,7 @@ module_exports_snapshot {
 }
 
 func TestSnapshotWithJavaSystemModules(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJava).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_header_libs: ["exported-system-module"],
@@ -815,7 +830,7 @@ sdk_snapshot {
 }
 
 func TestHostSnapshotWithJavaSystemModules(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJava).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			device_supported: false,
@@ -895,7 +910,7 @@ sdk_snapshot {
 }
 
 func TestDeviceAndHostSnapshotWithOsSpecificMembers(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJava).RunTestWithBp(t, `
 		module_exports {
 			name: "myexports",
 			host_supported: true,
@@ -1028,7 +1043,7 @@ module_exports_snapshot {
 }
 
 func TestSnapshotWithJavaSdkLibrary(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
@@ -1132,7 +1147,7 @@ sdk_snapshot {
 }
 
 func TestSnapshotWithJavaSdkLibrary_SdkVersion_None(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
@@ -1198,7 +1213,7 @@ sdk_snapshot {
 }
 
 func TestSnapshotWithJavaSdkLibrary_SdkVersion_ForScope(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
@@ -1267,7 +1282,7 @@ sdk_snapshot {
 }
 
 func TestSnapshotWithJavaSdkLibrary_ApiScopes(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
@@ -1357,7 +1372,7 @@ sdk_snapshot {
 }
 
 func TestSnapshotWithJavaSdkLibrary_ModuleLib(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
@@ -1468,7 +1483,7 @@ sdk_snapshot {
 }
 
 func TestSnapshotWithJavaSdkLibrary_SystemServer(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
@@ -1558,7 +1573,7 @@ sdk_snapshot {
 }
 
 func TestSnapshotWithJavaSdkLibrary_NamingScheme(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
@@ -1630,7 +1645,7 @@ sdk_snapshot {
 }
 
 func TestSnapshotWithJavaSdkLibrary_DoctagFiles(t *testing.T) {
-	result := testSdkWithJava(t, `
+	result := android.GroupFixturePreparers(prepareForSdkTestWithJavaSdkLibrary).RunTestWithBp(t, `
 		sdk {
 			name: "mysdk",
 			java_sdk_libs: ["myjavalib"],
