@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f674ba86_036a2675",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-03-15T09:21:45Z",
+      "side": 1,
+      "message": "__ANDROID_{PARTITION}__ is already used for other partitions. No problem on using it.",
+      "parentUuid": "857d6b82_68927086",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "1b27f16ae52a24438e048ef92a89fd577fe983b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bb6471e0_f394877b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2021-03-08T11:23:34Z",
       "side": 1,
       "message": "Can you add a cc_test to exercise the change? which would be more helpful to narrow down the scope of the change.",
+      "revId": "1b27f16ae52a24438e048ef92a89fd577fe983b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f8830a_1a11cdf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-03-15T09:21:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb6471e0_f394877b",
       "revId": "1b27f16ae52a24438e048ef92a89fd577fe983b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2021-03-09T00:39:37Z",
       "side": 1,
       "message": "As aosp/1590978 merged, we need to remove this before submitting.\nLet me update another PS.",
+      "range": {
+        "startLine": 2604,
+        "startChar": 6,
+        "endLine": 2604,
+        "endChar": 8
+      },
+      "revId": "1b27f16ae52a24438e048ef92a89fd577fe983b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0785976d_7e90aed0",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2604,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-03-15T09:21:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a74caf55_41763616",
       "range": {
         "startLine": 2604,
         "startChar": 6,
