@@ -70,6 +70,24 @@
       "parentUuid": "6062bc70_521c9f93",
       "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf99ffec_8c25ee1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-15T21:20:51Z",
+      "side": 1,
+      "message": "It broke the build_test* targets, which are the ones that execute multiproduct_kati.  It is executed though build/soong/build_test.bash.",
+      "parentUuid": "8d5d650e_3865eea3",
+      "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
