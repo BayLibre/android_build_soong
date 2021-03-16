@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "a5b1a4cccc0efe548f41da7916dbe35ed2760883",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d92a673b_d5e8f7f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T15:56:09Z",
+      "side": 1,
+      "message": "Retrying looks like the build servers have an inconsistent set of changes.",
+      "revId": "a5b1a4cccc0efe548f41da7916dbe35ed2760883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
