@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec2c0df_e3afee4b",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T08:00:08Z",
+      "side": 1,
+      "message": "I wanted to keep the naming consistent with that of the global variables. Mind if I do the renaming after this constellation of changes is submitted?",
+      "parentUuid": "6254d4dd_b17e8f6a",
+      "range": {
+        "startLine": 71,
+        "startChar": 16,
+        "endLine": 71,
+        "endChar": 21
+      },
+      "revId": "06e9c177637d154a12e0c1226b7c24e25bb56901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "091fb0bb_82513fb2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-15T21:06:29Z",
       "side": 1,
       "message": "Is it necessary for android.Config to implement BootstrapConfig?  If so, BootstrapConfig is an odd name, since we\u0027re not bootstrapping here.\n\nIf it is necessary, could GeneratingPrimaryBuilder() be moved out of BootstrapConfig, and then the caller can type assert to just that method and assume false if it is not present?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "06e9c177637d154a12e0c1226b7c24e25bb56901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f1dd8b_c427b94d",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T08:00:08Z",
+      "side": 1,
+      "message": "Turns out, it\u0027s not anymore! Some test broke on \"m nothing\" when I wrote this change but maybe Paul Duffin\u0027s recent improvements resolved that.\n\nI would still like to leave it in because this is what makes bootstrap_go_package work and I suppose one can depend on those rules in the main Ninja file. I\u0027ll rename GeneratingPrimaryBuilder() and will replace it with field in bootstrap.ARgs once the merging of minibp and soong_ui gets submitted.",
+      "parentUuid": "091fb0bb_82513fb2",
       "range": {
         "startLine": 75,
         "startChar": 0,
