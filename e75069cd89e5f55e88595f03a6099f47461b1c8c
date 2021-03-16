@@ -16,6 +16,29 @@
       "message": "Martin, you suggested that AssertPanic needed some way to check the recovered value so would you mind reviewing this and the follow up change?",
       "revId": "e75069cd89e5f55e88595f03a6099f47461b1c8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13631203_40ec4f31",
+        "filename": "android/test_asserts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-16T15:42:07Z",
+      "side": 1,
+      "message": "Checking this return value will require some effort, and can easily be missed. Isn\u0027t it better to require a (sub)string that is checked against the panic message, to put some pressure on callers to not skip it? It could use %v formatting to deal with non-string panics, in case any of those occur.",
+      "range": {
+        "startLine": 123,
+        "startChar": 75,
+        "endLine": 123,
+        "endChar": 86
+      },
+      "revId": "e75069cd89e5f55e88595f03a6099f47461b1c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
