@@ -234,6 +234,30 @@
       },
       "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac97dec_d3a127dd",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-16T19:06:02Z",
+      "side": 1,
+      "message": "In go style (go/go-style/decisions#interfaces), interfaces should be defined where you use it, not where it is implemented, so typically, yes, you would put godocs with the exported functions.\n\nSoong doesn\u0027t commonly follow this style, but it can be quite handy for mocking things.\n\nThat said, I\u0027m fine with deferring adding godocs here.",
+      "parentUuid": "ec68f2f5_d14cd1f7",
+      "range": {
+        "startLine": 43,
+        "startChar": 35,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

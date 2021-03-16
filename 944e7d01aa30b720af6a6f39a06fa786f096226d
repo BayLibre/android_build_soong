@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab15faa_f8196b29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-16T19:06:02Z",
+      "side": 1,
+      "message": "nice! I like being able to define the request body \u0026 parsing separately",
+      "revId": "944e7d01aa30b720af6a6f39a06fa786f096226d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
