@@ -282,6 +282,30 @@
       },
       "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c20bd80_2f35132b",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-16T22:17:53Z",
+      "side": 1,
+      "message": "Yes, godoc for each exported function would help, given that the return type needs to be type-asserted by the caller.",
+      "parentUuid": "44c74547_5c8ce0aa",
+      "range": {
+        "startLine": 43,
+        "startChar": 35,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
