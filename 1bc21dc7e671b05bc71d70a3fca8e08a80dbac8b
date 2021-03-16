@@ -16,6 +16,24 @@
       "message": "apex_test.go needs an update too?",
       "revId": "1bc21dc7e671b05bc71d70a3fca8e08a80dbac8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c1974b_17dee86b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T09:10:34Z",
+      "side": 1,
+      "message": "That test was updated in the previous commit which has been submitted and not yet been automerged down but despite TreeHugger knowing these were submitted together it isn\u0027t making sure that it is present when it tests this one. Annoying.\n\nOnce the automerger has pushed the changes down to the breaking branches I\u0027ll retry this.",
+      "parentUuid": "5bed65de_29216379",
+      "revId": "1bc21dc7e671b05bc71d70a3fca8e08a80dbac8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
