@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb35d93e_83cd0567",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2618,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-16T22:34:24Z",
+      "side": 1,
+      "message": "This needs to be BoolPtr(true), Installable is still nil here so you\u0027ve dropped setting it to true.",
+      "range": {
+        "startLine": 2618,
+        "startChar": 2,
+        "endLine": 2618,
+        "endChar": 31
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab82928_7ac94e7d",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2619,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-16T22:34:24Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 2619,
+        "startChar": 2,
+        "endLine": 2619,
+        "endChar": 35
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2474965c_3fd8b1cb",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-16T22:34:24Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 2620,
+        "startChar": 2,
+        "endLine": 2620,
+        "endChar": 39
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3598d22c_e2e75e91",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2629,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-16T22:34:24Z",
+      "side": 1,
+      "message": "th.properties.Installable \u003d installable, etc.",
+      "range": {
+        "startLine": 2627,
+        "startChar": 1,
+        "endLine": 2629,
+        "endChar": 2
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e078a6_f3720a78",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2510,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-16T22:34:24Z",
+      "side": 1,
+      "message": "These aren\u0027t really testing anything useful, we have plenty of tests that verify that reading properties into modules works.  The only thing that might be worth testing here is the default value of installable when it is not set in the Android.bp file.",
+      "range": {
+        "startLine": 2433,
+        "startChar": 0,
+        "endLine": 2510,
+        "endChar": 0
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
