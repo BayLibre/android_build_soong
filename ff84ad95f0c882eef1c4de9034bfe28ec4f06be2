@@ -16,6 +16,24 @@
       "message": "This one will conflict with my changes in aosp/1614807 (which is about to be submitted). What do you prefer, to rebase your CL on top of mine, or to let me rebase but then you will add +2 on my CL? :)",
       "revId": "ff84ad95f0c882eef1c4de9034bfe28ec4f06be2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0731431c_c2549f41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-16T12:58:24Z",
+      "side": 1,
+      "message": "Actually, on second thought it\u0027s better to get yours in first, as mine has more potential for breaking things and being reverted. So I will ask you for +2 after rebasing.",
+      "parentUuid": "99666df6_314686dd",
+      "revId": "ff84ad95f0c882eef1c4de9034bfe28ec4f06be2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
