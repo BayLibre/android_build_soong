@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ae18b3_1d773f95",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2618,
+      "author": {
+        "id": 1132849
+      },
+      "writtenOn": "2021-03-16T22:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb35d93e_83cd0567",
+      "range": {
+        "startLine": 2618,
+        "startChar": 2,
+        "endLine": 2618,
+        "endChar": 31
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ab82928_7ac94e7d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-16T22:34:24Z",
       "side": 1,
       "message": "nil",
+      "range": {
+        "startLine": 2619,
+        "startChar": 2,
+        "endLine": 2619,
+        "endChar": 35
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f36df9ee_b96f1ef2",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2619,
+      "author": {
+        "id": 1132849
+      },
+      "writtenOn": "2021-03-16T22:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ab82928_7ac94e7d",
       "range": {
         "startLine": 2619,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1ffab3_6794daa1",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1132849
+      },
+      "writtenOn": "2021-03-16T22:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2474965c_3fd8b1cb",
+      "range": {
+        "startLine": 2620,
+        "startChar": 2,
+        "endLine": 2620,
+        "endChar": 39
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3598d22c_e2e75e91",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-16T22:34:24Z",
       "side": 1,
       "message": "th.properties.Installable \u003d installable, etc.",
+      "range": {
+        "startLine": 2627,
+        "startChar": 1,
+        "endLine": 2629,
+        "endChar": 2
+      },
+      "revId": "d2a4275685840aa0ad7b144dbe3bdd47cdc294e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb9d713_cfb6ec46",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2629,
+      "author": {
+        "id": 1132849
+      },
+      "writtenOn": "2021-03-16T22:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3598d22c_e2e75e91",
       "range": {
         "startLine": 2627,
         "startChar": 1,
