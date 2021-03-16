@@ -258,6 +258,30 @@
       },
       "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44c74547_5c8ce0aa",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-16T21:11:54Z",
+      "side": 1,
+      "message": "Ick. That\u0027s a frustrating style decision (maybe golang is just a frustrating language as far as my expectations are concerned ;))\n\nThanks, I\u0027d prefer to defer this to another CL!",
+      "parentUuid": "1ac97dec_d3a127dd",
+      "range": {
+        "startLine": 43,
+        "startChar": 35,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
