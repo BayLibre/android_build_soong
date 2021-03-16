@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "961ef8cb_1b547c19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-16T17:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05b26ea6_ed7a98d5",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 36
+      },
+      "revId": "625aea49227fb7f58d202ae512ed6461d19c449d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e61654b0_1760ba61",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-03-16T02:01:33Z",
       "side": 1,
       "message": "Can you rename this func? Without context, it reads like it would read the file inputs and returns their contents. Maybe composeRspFileContent?",
+      "revId": "625aea49227fb7f58d202ae512ed6461d19c449d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e2cdec_585ef38b",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-16T17:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e61654b0_1760ba61",
       "revId": "625aea49227fb7f58d202ae512ed6461d19c449d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
