@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61ea4407_d60fd618",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T14:56:07Z",
+      "side": 1,
+      "message": "Martin, you suggested that AssertPanic needed some way to check the recovered value so would you mind reviewing this and the follow up change?",
+      "revId": "e75069cd89e5f55e88595f03a6099f47461b1c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
