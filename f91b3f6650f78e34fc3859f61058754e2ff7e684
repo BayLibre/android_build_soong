@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c29e723_96a94e74",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1980,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-16T12:35:34Z",
+      "side": 1,
+      "message": "These things are not yet expressible in the android.Assert* way, right? Do you plan to convert them as well?",
+      "range": {
+        "startLine": 1980,
+        "startChar": 2,
+        "endLine": 1980,
+        "endChar": 93
+      },
+      "revId": "f91b3f6650f78e34fc3859f61058754e2ff7e684",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a999f2_65d5c93e",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2230,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-16T12:35:34Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "49510474_df14f865",
+      "range": {
+        "startLine": 2230,
+        "startChar": 0,
+        "endLine": 2230,
+        "endChar": 1
+      },
+      "revId": "f91b3f6650f78e34fc3859f61058754e2ff7e684",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
