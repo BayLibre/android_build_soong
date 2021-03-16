@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93bd9c4c_375d86c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T13:03:27Z",
+      "side": 1,
+      "message": "Modulo the cleanup issue on aosp/1636429",
+      "revId": "5f9f771dab20bce53e78414e8f4b95b286ab0249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
