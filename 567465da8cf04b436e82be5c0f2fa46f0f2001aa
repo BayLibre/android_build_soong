@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ed0712_d363b17e",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T13:37:53Z",
+      "side": 1,
+      "message": "Touché! I confused out/soong and out/soong/.bootstrap for a second.",
+      "parentUuid": "180e0385_1a4647e4",
+      "range": {
+        "startLine": 883,
+        "startChar": 12,
+        "endLine": 883,
+        "endChar": 21
+      },
+      "revId": "567465da8cf04b436e82be5c0f2fa46f0f2001aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5980f074_beee178f",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "No. soongOutDir is \"out/soong\".\n\nThe nomenclature is not consistent and is confusing. e.g. I didn\u0027t realise until I started this that buildDir was \"out/soong\" (I always assumed it was just out/).\n\nI chose to use soongOutDir as it is more meaningful than \"buildDir\" and the soong/ui/build/config.go uses SoongOutDir() and OutDir() to refer to \"out/soong\" and \"out\" respectively.",
       "parentUuid": "ec147ea9_74dd7da8",
+      "range": {
+        "startLine": 904,
+        "startChar": 32,
+        "endLine": 904,
+        "endChar": 43
+      },
+      "revId": "567465da8cf04b436e82be5c0f2fa46f0f2001aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a71f263_dae9b6ca",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T13:37:53Z",
+      "side": 1,
+      "message": "I do have another thread with Colin arguing against renaming two other identifiers exactly due to this confusion. \n\nIf I had my way, I\u0027d call them outDir and outSoongDir, but before going in that direction, I\u0027d really like to submit my somewhat rickety tower of changes so that I have to do less merging.",
+      "parentUuid": "d6f87078_f6f5023a",
       "range": {
         "startLine": 904,
         "startChar": 32,
