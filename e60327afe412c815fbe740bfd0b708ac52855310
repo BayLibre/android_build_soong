@@ -88,6 +88,24 @@
       "parentUuid": "8d5d650e_3865eea3",
       "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95decb1b_7a66d164",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T07:06:09Z",
+      "side": 1,
+      "message": "...but now they are all green with the removal of the global variables (except absSrcDir anyway)",
+      "parentUuid": "cf99ffec_8c25ee1d",
+      "revId": "e60327afe412c815fbe740bfd0b708ac52855310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
