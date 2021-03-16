@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "181dcf25_67263cfe",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-16T18:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd53b48_1149ad8f",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 17
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e7befb3_aebb9853",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-15T08:04:13Z",
       "side": 1,
       "message": "Duplicate line.",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 499,
+        "endChar": 82
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a492bf_55071ab0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-16T18:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e7befb3_aebb9853",
       "range": {
         "startLine": 499,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04d438a_a41f3187",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-16T18:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ec4972_857d8755",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 86
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d355c58_4acc0254",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12f99f2d_d63a69c4",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-16T18:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d355c58_4acc0254",
+      "range": {
+        "startLine": 16,
+        "startChar": 47,
+        "endLine": 16,
+        "endChar": 61
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d300acaf_83f75aa1",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-15T08:04:13Z",
       "side": 1,
       "message": "Please add godocs for all exported functions in this file.",
+      "range": {
+        "startLine": 43,
+        "startChar": 35,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "b64d28eafb2f9249acbf68024a54f7059cae5571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec68f2f5_d14cd1f7",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-16T18:42:04Z",
+      "side": 1,
+      "message": "I had in the RequestType interface. Should I also be adding docs for each imlementation?",
+      "parentUuid": "d300acaf_83f75aa1",
       "range": {
         "startLine": 43,
         "startChar": 35,
