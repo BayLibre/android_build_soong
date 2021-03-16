@@ -39,6 +39,30 @@
       },
       "revId": "e75069cd89e5f55e88595f03a6099f47461b1c8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b70f4a1_75083323",
+        "filename": "android/test_asserts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T15:51:38Z",
+      "side": 1,
+      "message": "Checking substrings means that this will only work when you want to handle substrings. What about when you want to check the whole thing, or cast to a structure, or use a pattern, ....?\n\nThis allows any checks you want to be used on the returned type. If we find patterns of use then we can use this to build more specialized versions.\n\nI did try passing in a function to check the recovered value but it was clunky.",
+      "parentUuid": "13631203_40ec4f31",
+      "range": {
+        "startLine": 123,
+        "startChar": 75,
+        "endLine": 123,
+        "endChar": 86
+      },
+      "revId": "e75069cd89e5f55e88595f03a6099f47461b1c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
