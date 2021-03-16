@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e5d9ca_8bea9215",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-16T23:43:45Z",
+      "side": 1,
+      "message": "(removing Liz and Rupert from the attention set - rebasing changed some function signatures, will fix)",
+      "revId": "ea2464774d3b3d01e14ef452111603c04a14acd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
