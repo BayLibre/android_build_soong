@@ -93,6 +93,30 @@
       },
       "revId": "06e9c177637d154a12e0c1226b7c24e25bb56901",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b49c514_edf49ab8",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T14:56:02Z",
+      "side": 1,
+      "message": "As for the naming: it affects bootstrap_go_* rules, so I thought BootstrapConfig is a reasonable name for that, isn\u0027t it?",
+      "parentUuid": "d9f1dd8b_c427b94d",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "06e9c177637d154a12e0c1226b7c24e25bb56901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
