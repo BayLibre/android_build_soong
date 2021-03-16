@@ -116,13 +116,17 @@ func AssertDeepEquals(t *testing.T, message string, expected interface{}, actual
 	}
 }
 
-// AssertPanic checks that the supplied function panics as expected.
-func AssertPanic(t *testing.T, message string, funcThatShouldPanic func()) {
+// AssertPanic checks that the supplied function panics as expected and returns the recovered value.
+//
+// If the function does not panic then this fails with the specified message and returns nil. If it
+// does panic then the recovered value is returned.
+func AssertPanic(t *testing.T, message string, funcThatShouldPanic func()) interface{} {
 	t.Helper()
 	panicked := false
+	var recovered interface{}
 	func() {
 		defer func() {
-			if x := recover(); x != nil {
+			if recovered = recover(); recovered != nil {
 				panicked = true
 			}
 		}()
@@ -131,4 +135,6 @@ func AssertPanic(t *testing.T, message string, funcThatShouldPanic func()) {
 	if !panicked {
 		t.Error(message)
 	}
+
+	return recovered
 }
