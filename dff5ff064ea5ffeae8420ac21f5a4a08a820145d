@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79d05c63_11b2d2da",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T13:02:06Z",
+      "side": 1,
+      "message": "I assume this gets deleted at the end of the test? Documentations says that T.Cleanup() does so, but it doesn\u0027t seem like we call that anywhere, do we?",
+      "range": {
+        "startLine": 593,
+        "startChar": 12,
+        "endLine": 593,
+        "endChar": 14
+      },
+      "revId": "dff5ff064ea5ffeae8420ac21f5a4a08a820145d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
