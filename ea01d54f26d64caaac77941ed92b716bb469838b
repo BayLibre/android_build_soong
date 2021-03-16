@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99563caa_b49d380a",
+        "filename": "filesystem/vbmeta.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-03-16T01:13:31Z",
+      "side": 1,
+      "message": "`android:\"path\"`?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 28
+      },
+      "revId": "ea01d54f26d64caaac77941ed92b716bb469838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72ebf8a_a5ba1ee5",
+        "filename": "filesystem/vbmeta.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-03-16T01:13:31Z",
+      "side": 1,
+      "message": "int?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "ea01d54f26d64caaac77941ed92b716bb469838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5cc91cd_6efb0c78",
+        "filename": "filesystem/vbmeta.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-03-16T01:13:31Z",
+      "side": 1,
+      "message": "int?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 32
+      },
+      "revId": "ea01d54f26d64caaac77941ed92b716bb469838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83939a1_ec587cae",
+        "filename": "filesystem/vbmeta.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-03-16T01:13:31Z",
+      "side": 1,
+      "message": "don\u0027t need if we use int?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 71
+      },
+      "revId": "ea01d54f26d64caaac77941ed92b716bb469838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
