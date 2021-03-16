@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3a13d16_72028391",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T13:18:07Z",
+      "side": 1,
+      "message": "When is this case relevant in tests? I thought that these files are mostly used in bootstrapping Soong itself and the modules of soong_build don\u0027t have too much to do with them.",
+      "range": {
+        "startLine": 883,
+        "startChar": 12,
+        "endLine": 883,
+        "endChar": 21
+      },
+      "revId": "567465da8cf04b436e82be5c0f2fa46f0f2001aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5980f074_beee178f",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T13:18:07Z",
+      "side": 1,
+      "message": "AFAICT this method uses in-band signaling to tell whether a path is:\n\n- A Soong output path (if it starts with out/soong)\n- An output path (if it starts with out/)\n- A source path (anything else)\n\nAn alternative would be to use out-of-band signaling and have assertion methods like\n\nAssertSourcePath(...)\nAssertOutPath(...)\nAssertSoongOutPath(...)\n\nIt would look a bit nicer (in-band signaling is icky because what if e.g. you have out/Android.bp), but:\n\n- You\u0027d need a 3x more assertion methods\n- The cases where you currently pass a []string as a set of expected paths would become complicated if you want to pass in a mixture of source and output paths.\n\nIs this similar to your reasons for choosing in-band signaling here?",
+      "range": {
+        "startLine": 896,
+        "startChar": 5,
+        "endLine": 896,
+        "endChar": 28
+      },
+      "revId": "567465da8cf04b436e82be5c0f2fa46f0f2001aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec147ea9_74dd7da8",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T13:18:07Z",
+      "side": 1,
+      "message": "Do I understand correctly that \"soongOutDir\" means out/ and not out/soong? Is that the standard nomenclature? (it\u0027s a little confusing, but if it\u0027s the well-known pattern, it\u0027s the well-known pattern)\n\nHow is \"out/soong\" called then?",
+      "range": {
+        "startLine": 904,
+        "startChar": 32,
+        "endLine": 904,
+        "endChar": 43
+      },
+      "revId": "567465da8cf04b436e82be5c0f2fa46f0f2001aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
