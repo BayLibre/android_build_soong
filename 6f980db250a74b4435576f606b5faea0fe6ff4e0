@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cbcbfac_3dd716e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-16T21:39:55Z",
+      "side": 1,
+      "message": "disabled cc_object mixed builds until we get it working",
+      "parentUuid": "68967ce5_2612bfc1",
+      "revId": "6f980db250a74b4435576f606b5faea0fe6ff4e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1c5567e_6a2c02e7",
