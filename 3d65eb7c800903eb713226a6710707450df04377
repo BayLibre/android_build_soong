@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6678447_d91da9d7",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-16T04:24:40Z",
+      "side": 1,
+      "message": "nit:\n\n  if b.HasHandcraftedLabel() { .. }\n\n  if b.ConvertWithBp2build() { return bp2buildmoduleLabel(ctx, module) }\n\n  return \"\" // no label for unconverted module",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 40
+      },
+      "revId": "3d65eb7c800903eb713226a6710707450df04377",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
