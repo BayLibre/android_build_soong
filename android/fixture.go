@@ -393,6 +393,11 @@ type fixturePreparers []FixturePreparer
 
 func (f fixturePreparers) visit(visitor simpleFixturePreparerVisitor) {
 	for _, p := range f {
+		// Just ignore a preparer if it is nil. This makes it easy to add optional preparers.
+		if p == nil {
+			// Skip
+			continue
+		}
 		p.visit(visitor)
 	}
 }

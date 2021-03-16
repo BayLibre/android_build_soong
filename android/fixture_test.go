@@ -31,8 +31,9 @@ func TestFixtureDedup(t *testing.T) {
 	preparer2 := appendToList("preparer2")
 	preparer3 := appendToList("preparer3")
 	preparer4 := appendToList("preparer4")
+	var nilPreparer FixturePreparer
 
-	preparer1Then2 := GroupFixturePreparers(preparer1, preparer2)
+	preparer1Then2 := GroupFixturePreparers(preparer1, preparer2, nilPreparer)
 
 	preparer2Then1 := GroupFixturePreparers(preparer2, preparer1)
 
