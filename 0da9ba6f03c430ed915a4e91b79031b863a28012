@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87036684_0936b9f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-03-16T04:32:57Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1:\n\u003e \n\u003e You could add an option to mkbootimg that specifies the tool path for binaries it invokes.\n\nRight, that\u0027s my plan, too!",
+      "revId": "0da9ba6f03c430ed915a4e91b79031b863a28012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41531030_47f7eb20",
