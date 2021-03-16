@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316eadda_8c8eb9e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T18:00:52Z",
+      "side": 1,
+      "message": "This change cannot have broken the build. This change only affects the Soong tests and if they fail they fail early.\n\nThere is an identical failure that precedes those changes being added to the build. Build 7212263 fails in the same way, then the next build passes, then the next build (which includes these changes) fails again. It seems flaky to me.",
+      "revId": "b4f98474b4db8a8d869884436b512671cb46fbb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
