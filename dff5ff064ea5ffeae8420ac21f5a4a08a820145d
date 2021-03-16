@@ -22,6 +22,30 @@
       },
       "revId": "dff5ff064ea5ffeae8420ac21f5a4a08a820145d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213d8e72_b1c50dd9",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T13:04:16Z",
+      "side": 1,
+      "message": "T.TempDir() calls T.Cleanup() itself.",
+      "parentUuid": "79d05c63_11b2d2da",
+      "range": {
+        "startLine": 593,
+        "startChar": 12,
+        "endLine": 593,
+        "endChar": 14
+      },
+      "revId": "dff5ff064ea5ffeae8420ac21f5a4a08a820145d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
