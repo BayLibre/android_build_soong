@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6002ccc2_d5e49d23",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-16T23:45:07Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be processed by PathForOutput as well?",
+      "range": {
+        "startLine": 1692,
+        "startChar": 24,
+        "endLine": 1692,
+        "endChar": 34
+      },
+      "revId": "02c7b5c6b7d6d16450417c7fd9c381626847430d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
