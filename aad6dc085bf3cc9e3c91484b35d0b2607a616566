@@ -16,6 +16,23 @@
       "message": "(ping)",
       "revId": "aad6dc085bf3cc9e3c91484b35d0b2607a616566",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c3d3dfa_d465e8a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-16T07:59:31Z",
+      "side": 1,
+      "message": "Rebased on top of the \"no global variables\" change: aosp/1636426",
+      "revId": "aad6dc085bf3cc9e3c91484b35d0b2607a616566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
