@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5659b95c_e5cf8055",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-16T00:13:55Z",
+      "side": 1,
+      "message": "I\u0027ll abandon this for now and we can revisit on the bug.",
+      "parentUuid": "ee39f003_499886af",
+      "revId": "568ecfb64046515fcbafe0d28729d8ad4475e29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6a0d8f1_7e198087",
