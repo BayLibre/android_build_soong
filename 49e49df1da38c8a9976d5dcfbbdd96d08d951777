@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38aaab18_844c00d6",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-16T23:37:14Z",
+      "side": 1,
+      "message": "Please add a function comment.",
+      "revId": "49e49df1da38c8a9976d5dcfbbdd96d08d951777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
