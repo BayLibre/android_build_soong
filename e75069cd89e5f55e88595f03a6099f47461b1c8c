@@ -63,6 +63,30 @@
       },
       "revId": "e75069cd89e5f55e88595f03a6099f47461b1c8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10bab66f_58cd5661",
+        "filename": "android/test_asserts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-16T16:06:51Z",
+      "side": 1,
+      "message": "In my experience substrings would be a common enough special case to motivate it - iow I can\u0027t think of any case where I wouldn\u0027t want it (same goes for AssertErrorMessageEquals btw). Do you have any concrete examples where it wouldn\u0027t do?\n\nThe child CL is a good example of the kind of boilerplate that can be cut out by including a message check here, and I think it\u0027s worth tailoring these functions to handle the common cases conveniently (and - in this case - encourage good error checking hygiene).\n\nIf we run across a case when it doesn\u0027t suffice it\u0027s always possible to add another assert function (or possibly still return the panic object here and let the caller pass \"\" for the substring to effectively disable that check, although I think I\u0027d prefer a separate function).",
+      "parentUuid": "5b70f4a1_75083323",
+      "range": {
+        "startLine": 123,
+        "startChar": 75,
+        "endLine": 123,
+        "endChar": 86
+      },
+      "revId": "e75069cd89e5f55e88595f03a6099f47461b1c8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
