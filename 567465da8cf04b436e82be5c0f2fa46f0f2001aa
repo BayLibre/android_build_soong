@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "180e0385_1a4647e4",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T13:33:47Z",
+      "side": 1,
+      "message": "out/soong is where 99.9% of the files that Soong modules create end up. e.g. PathForOutput() returns a path relative to \"out/soong\".\n\nI don\u0027t know the bootstrapping process very well at all but I think those files are created in the out/soong/.bootstrap and out/soong/.minibootstrap directories.",
+      "parentUuid": "a3a13d16_72028391",
+      "range": {
+        "startLine": 883,
+        "startChar": 12,
+        "endLine": 883,
+        "endChar": 21
+      },
+      "revId": "567465da8cf04b436e82be5c0f2fa46f0f2001aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5980f074_beee178f",
         "filename": "android/testing.go",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d75ba158_7934657a",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T13:33:47Z",
+      "side": 1,
+      "message": "I can\u0027t say that I thought of all those issues with \"out-of-band\" signalling but definitely some of them were a factor, e.g. number of assertion methods, mixture of path types, etc.\n\nOne reason that is missing is that a lot of tests are data driven and provide a list of expected paths, some of those are mixtures. Handling them this way would be complicated.\n\nAnother reason was to keep the size of the changes down.\n\n\"out/Android.bp\" should not be a problem because it is impossible to create such a file in the real build because it ensures that source and output directories do not overlap.\n\nIn tests the sources are in the mock file system and outputs are in the real file system so they can never overlap. However, it would be possible to add \"out/Android.bp\" to a test fixture and so I will add a check in the fixture to prevent anyone adding anything to \"out/\".",
+      "parentUuid": "5980f074_beee178f",
+      "range": {
+        "startLine": 896,
+        "startChar": 5,
+        "endLine": 896,
+        "endChar": 28
+      },
+      "revId": "567465da8cf04b436e82be5c0f2fa46f0f2001aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec147ea9_74dd7da8",
         "filename": "android/testing.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-16T13:18:07Z",
       "side": 1,
       "message": "Do I understand correctly that \"soongOutDir\" means out/ and not out/soong? Is that the standard nomenclature? (it\u0027s a little confusing, but if it\u0027s the well-known pattern, it\u0027s the well-known pattern)\n\nHow is \"out/soong\" called then?",
+      "range": {
+        "startLine": 904,
+        "startChar": 32,
+        "endLine": 904,
+        "endChar": 43
+      },
+      "revId": "567465da8cf04b436e82be5c0f2fa46f0f2001aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f87078_f6f5023a",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-16T13:33:47Z",
+      "side": 1,
+      "message": "No. soongOutDir is \"out/soong\".\n\nThe nomenclature is not consistent and is confusing. e.g. I didn\u0027t realise until I started this that buildDir was \"out/soong\" (I always assumed it was just out/).\n\nI chose to use soongOutDir as it is more meaningful than \"buildDir\" and the soong/ui/build/config.go uses SoongOutDir() and OutDir() to refer to \"out/soong\" and \"out\" respectively.",
+      "parentUuid": "ec147ea9_74dd7da8",
       "range": {
         "startLine": 904,
         "startChar": 32,
