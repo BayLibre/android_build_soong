@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4239f26_2d4290b9",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-17T13:54:01Z",
+      "side": 1,
+      "message": "Can we define a narrower context here? As noted below, it\u0027s more idiomatic to define interface for it\u0027s use and make it far simpler if we need to mock as the module interfaces are quite large.",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "5f5f4ece824293455caf3262b30f1fed3623bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c41b751e_61c4dc49",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-17T13:54:01Z",
+      "side": 1,
+      "message": "It is more idiomatically go to define our own interface here at the consumer with only the functions we need (go/go-style/decisions#interfaces).",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "5f5f4ece824293455caf3262b30f1fed3623bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ee9e0d0_f6ccc9d2",
         "filename": "android/bazel.go",
         "patchSetId": 12
@@ -14,6 +60,30 @@
       "writtenOn": "2021-03-17T10:40:52Z",
       "side": 1,
       "message": "Might be useful to still have a way to disable this\n\nCan we distinguish between bp2build_available not being set at all (in which case, convert)\n\nvs bp2build_available being explicitly set to false?\n\nE.g. I can imagine a scenario where we might want to convert 50 targets in some module, except for 1 or 2 bad targets. It would be annoying to have to opt in those good 50 targets. Easier to convert everything except 1 or 2 that were explicitly disabled\n\nIf you don\u0027t want to keep bp2build_available in the Blueprint files, maybe we could have a 3rd list, something like\n\nAllModules (ie subtree)\nvs\nModuleOptIn \nvs\nModuleOptOut (can overrule AllModules)",
+      "range": {
+        "startLine": 131,
+        "startChar": 47,
+        "endLine": 131,
+        "endChar": 72
+      },
+      "revId": "5f5f4ece824293455caf3262b30f1fed3623bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c52be31_a8da8931",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-17T13:54:01Z",
+      "side": 1,
+      "message": "Agreed, something like this would be good.\n\nIn reading the design I was concerned that we may still have a couple modules in a package that are more difficult to convert. If we change `bp2build_available` to be a pointer to a bool should allow us to distinguish between not set and explicitly set to false.\n\nThis could also be a good way to think about the naming of the lists:\n\nBP2BUILD_DEFAULTS_TRUE_RECURSIVE\n\nBP2BUILD_DEFAULTS_FALSE",
+      "parentUuid": "5ee9e0d0_f6ccc9d2",
       "range": {
         "startLine": 131,
         "startChar": 47,
