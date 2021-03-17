@@ -70,6 +70,24 @@
       "parentUuid": "87d4b2f3_2e8daed4",
       "revId": "5574cc2492e7b40fcd9a29ec03472e3d378881b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121a2cd4_e2ed48fb",
+        "filename": "java/boot_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-17T09:57:02Z",
+      "side": 1,
+      "message": "You can produce the error in AOSP with this new prebuilt drop: https://r.android.com/q/topic:art-module-update-7214475",
+      "parentUuid": "87d4b2f3_2e8daed4",
+      "revId": "5574cc2492e7b40fcd9a29ec03472e3d378881b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
