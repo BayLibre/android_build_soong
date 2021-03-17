@@ -22,6 +22,30 @@
       },
       "revId": "39734a3ba70c533e64bd76c2b1ac5b7a0405dceb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a9c8f1_a48c23e7",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-17T14:41:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7efa95_7141d15a",
+      "range": {
+        "startLine": 506,
+        "startChar": 15,
+        "endLine": 506,
+        "endChar": 20
+      },
+      "revId": "39734a3ba70c533e64bd76c2b1ac5b7a0405dceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
