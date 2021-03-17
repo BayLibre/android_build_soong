@@ -104,6 +104,10 @@ func (b *BootImageModule) DepIsInSameApex(ctx android.BaseModuleContext, dep and
 		// Cross-cutting metadata dependencies are metadata.
 		return false
 	}
+	if _, ok := tag.(android.ExcludeFromApexContentsTag); ok {
+		// Matches sdk.sdkMemberVersionedDepTag.
+		return false
+	}
 	panic(fmt.Errorf("boot_image module %q should not have a dependency on %q via tag %s", b, dep, android.PrettyPrintTag(tag)))
 }
 
