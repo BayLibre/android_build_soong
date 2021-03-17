@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand this one. How does ignoring a nil FixturePreparer result in the ability to have conditional preparers?",
       "revId": "a10c620de2db4145f6f537ec770c9a9945d2e6f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5093d94a_5263d553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-17T14:41:02Z",
+      "side": 1,
+      "message": "Sorry, I meant optional. While updating the comment I came up with a better solution.",
+      "parentUuid": "5c331c9f_d6c910cb",
+      "revId": "a10c620de2db4145f6f537ec770c9a9945d2e6f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
