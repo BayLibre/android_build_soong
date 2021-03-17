@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee9e0d0_f6ccc9d2",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-17T10:40:52Z",
+      "side": 1,
+      "message": "Might be useful to still have a way to disable this\n\nCan we distinguish between bp2build_available not being set at all (in which case, convert)\n\nvs bp2build_available being explicitly set to false?\n\nE.g. I can imagine a scenario where we might want to convert 50 targets in some module, except for 1 or 2 bad targets. It would be annoying to have to opt in those good 50 targets. Easier to convert everything except 1 or 2 that were explicitly disabled\n\nIf you don\u0027t want to keep bp2build_available in the Blueprint files, maybe we could have a 3rd list, something like\n\nAllModules (ie subtree)\nvs\nModuleOptIn \nvs\nModuleOptOut (can overrule AllModules)",
+      "range": {
+        "startLine": 131,
+        "startChar": 47,
+        "endLine": 131,
+        "endChar": 72
+      },
+      "revId": "5f5f4ece824293455caf3262b30f1fed3623bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
