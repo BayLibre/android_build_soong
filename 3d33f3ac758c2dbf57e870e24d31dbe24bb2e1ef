@@ -33,6 +33,75 @@
       "message": "Ping? Colin, please take a look.",
       "revId": "3d33f3ac758c2dbf57e870e24d31dbe24bb2e1ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652dedc9_53ccbc2a",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-17T02:29:52Z",
+      "side": 1,
+      "message": "What does Target mean in this context?  We usually use Target to mean the os and architecture.",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "3d33f3ac758c2dbf57e870e24d31dbe24bb2e1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dba8ce8_9c9e1623",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-17T02:29:52Z",
+      "side": 1,
+      "message": "If you expect this to always be implemented through PackagingTargetDepTag you can make the interface and the method unexported.",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 20
+      },
+      "revId": "3d33f3ac758c2dbf57e870e24d31dbe24bb2e1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9f6c3b_0ed44a6b",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-17T02:29:52Z",
+      "side": 1,
+      "message": "Will it be necessary to make this return a bool?  Sometimes the same dependency tag can be used in different ways, for example the cc.libraryDependencyTag, in which case it might want to sometimes be considered a packaging dependency and sometimes not.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 20
+      },
+      "revId": "3d33f3ac758c2dbf57e870e24d31dbe24bb2e1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
