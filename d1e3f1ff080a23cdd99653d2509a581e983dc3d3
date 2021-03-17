@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3012a99e_4d3144dd",
+        "filename": "bootstrap_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-17T10:51:45Z",
+      "side": 1,
+      "message": "This list looks like a maintenance problem to me. It\u0027s not rare to add new required flags here, and having to update this test is guaranteed to require another round in presubmit. Can you use the logic that generates this config instead? Either invoke soong with --skip-kati below instead of --skip-make (need build/make) or lunch in the android tree to get a reasonable config and copy that over. See relevant r.android.com/1535006",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "d1e3f1ff080a23cdd99653d2509a581e983dc3d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
