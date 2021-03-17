@@ -182,6 +182,30 @@
       },
       "revId": "c5b2e5d07c1415ea1e20fcaa2b015871539d74b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "206afd75_39aa73e2",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-17T15:23:31Z",
+      "side": 1,
+      "message": "Ok. :)",
+      "parentUuid": "84724f67_ff9db65d",
+      "range": {
+        "startLine": 1644,
+        "startChar": 1,
+        "endLine": 1644,
+        "endChar": 38
+      },
+      "revId": "c5b2e5d07c1415ea1e20fcaa2b015871539d74b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
