@@ -46,6 +46,30 @@
       },
       "revId": "d1e3f1ff080a23cdd99653d2509a581e983dc3d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21e2c8ff_c07a590a",
+        "filename": "bootstrap_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-17T12:07:33Z",
+      "side": 1,
+      "message": "Ok, not just lunch, but `m` with ctrl-c after 2 seconds? :) Maybe if you added a --skip-soong option to soong_ui you could do something like `soong_ui.bash --make-mode --skip-make --skip-soong` to just run config.",
+      "parentUuid": "4970bce9_cee983a2",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "d1e3f1ff080a23cdd99653d2509a581e983dc3d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
