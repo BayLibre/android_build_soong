@@ -170,10 +170,6 @@ func LogtagsSingleton() android.Singleton {
 	return &logtagsSingleton{}
 }
 
-type logtagsProducer interface {
-	logtags() android.Paths
-}
-
 type logtagsSingleton struct{}
 
 func (l *logtagsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
