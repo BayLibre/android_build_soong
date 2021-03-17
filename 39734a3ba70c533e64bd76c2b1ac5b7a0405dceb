@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7efa95_7141d15a",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-17T07:53:37Z",
+      "side": 1,
+      "message": "nit: you mean \"ignore the errors\"?",
+      "range": {
+        "startLine": 506,
+        "startChar": 15,
+        "endLine": 506,
+        "endChar": 20
+      },
+      "revId": "39734a3ba70c533e64bd76c2b1ac5b7a0405dceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
