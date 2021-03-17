@@ -34,6 +34,24 @@
       "parentUuid": "bd04f6b7_95068c9b",
       "revId": "5574cc2492e7b40fcd9a29ec03472e3d378881b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d4b2f3_2e8daed4",
+        "filename": "java/boot_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-17T09:25:36Z",
+      "side": 1,
+      "message": "If DepIsInSameApex should be able to assume it\u0027s not called for some deps it\u0027d be best to have a common function filtering the calls to it.\n\nHere it\u0027s getting called from ApexInfoMutator: http://go/paste/6468379469676544\n\nI tried adding a check before like in your CL, but that caused issues with both tests and the real Soong run, so it\u0027s probably better you take a look at it directly instead.",
+      "parentUuid": "89fdce4a_e135b870",
+      "revId": "5574cc2492e7b40fcd9a29ec03472e3d378881b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
