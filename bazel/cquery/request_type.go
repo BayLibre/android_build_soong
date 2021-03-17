@@ -5,13 +5,21 @@ import (
 )
 
 var (
-	GetOutputFiles                 RequestType = &getOutputFilesRequestType{}
-	GetCcObjectFiles               RequestType = &getCcObjectFilesRequestType{}
+	// GetOutputFiles request type: Request all primary output files produced by a target.
+	GetOutputFiles RequestType = &getOutputFilesRequestType{}
+	// GetCcObjectFiles request type: Request all cc compilation output files produced by a target.
+	GetCcObjectFiles RequestType = &getCcObjectFilesRequestType{}
+	// GetOutputFilesAndCcObjectFiles request type: Request all primary output files and all cc
+	// compilation output files produced by a target (as separate lists).
 	GetOutputFilesAndCcObjectFiles RequestType = &getOutputFilesAndCcObjectFilesType{}
 )
 
+// GetOutputFilesAndCcObjectFiles_Result contains the full results of invoking
+// a GetOutputFilesAndCcObjectFiles query.
 type GetOutputFilesAndCcObjectFiles_Result struct {
-	OutputFiles   []string
+	// OutputFiles are the paths of all primary output files of the queried target
+	OutputFiles []string
+	// CcObjectFiles are the paths of all cc compilation output files produced by the queried target.
 	CcObjectFiles []string
 }
 
@@ -23,7 +31,7 @@ type RequestType interface {
 	// and must only consist of alphanumeric characters.
 	Name() string
 
-	// StarlarkFunctionBody returns a straark function body to process this request type.
+	// StarlarkFunctionBody returns a starlark function body to process this request type.
 	// The returned string is the body of a Starlark function which obtains
 	// all request-relevant information about a target and returns a string containing
 	// this information.
@@ -43,24 +51,35 @@ type RequestType interface {
 
 type getOutputFilesRequestType struct{}
 
+// Name returns a string name for this request type.
 func (g getOutputFilesRequestType) Name() string {
 	return "getOutputFiles"
 }
 
+// StarlarkFunctionBody returns a starlark function body to process this request type.
+// The returned string is the body of a Starlark function which obtains
+// all main output files of a target and returns a string containing their paths.
 func (g getOutputFilesRequestType) StarlarkFunctionBody() string {
 	return "return ', '.join([f.path for f in target.files.to_list()])"
 }
 
+// ParseResult returns a []string containing output file paths of the queried target
+// from the raw string output by invoking the Starlark function with body StarlarkFunctionBody.
 func (g getOutputFilesRequestType) ParseResult(rawString string) interface{} {
 	return strings.Split(rawString, ", ")
 }
 
 type getCcObjectFilesRequestType struct{}
 
+// Name returns a string name for this request type.
 func (g getCcObjectFilesRequestType) Name() string {
 	return "getCcObjectFiles"
 }
 
+// StarlarkFunctionBody returns a starlark function body to process this request type.
+// The returned string is the body of a Starlark function which obtains the paths of
+// all cc compilation output object files produced by this target, and returns them
+// as a joined string.
 func (g getCcObjectFilesRequestType) StarlarkFunctionBody() string {
 	return `
 result = []
@@ -73,16 +92,24 @@ for linker_input in linker_inputs:
 return ', '.join(result)`
 }
 
+// ParseResult returns a []string containing cc compilation output object files of the queried
+// target from the raw string output by invoking the Starlark function with body
+// StarlarkFunctionBody.
 func (g getCcObjectFilesRequestType) ParseResult(rawString string) interface{} {
 	return strings.Split(rawString, ", ")
 }
 
 type getOutputFilesAndCcObjectFilesType struct{}
 
+// Name returns a string name for this request type.
 func (g getOutputFilesAndCcObjectFilesType) Name() string {
 	return "getOutputFilesAndCcObjectFiles"
 }
 
+// StarlarkFunctionBody returns a starlark function body to process this request type.
+// The returned string is the body of a Starlark function which obtains two separate
+// lists of file paths: the main output files of the target, and the cc compilation output
+// object files produced by this target, and returns them as two delimited joined strings.
 func (g getOutputFilesAndCcObjectFilesType) StarlarkFunctionBody() string {
 	return `
 outputFiles = [f.path for f in target.files.to_list()]
@@ -97,6 +124,8 @@ for linker_input in linker_inputs:
 return ', '.join(outputFiles) + "|" + ', '.join(ccObjectFiles)`
 }
 
+// ParseResult returns a GetOutputFilesAndCcObjectFiles_Result struct corresponding to
+// the parsed raw value of invoking the Starlark function with body StarlarkFunctionBody.
 func (g getOutputFilesAndCcObjectFilesType) ParseResult(rawString string) interface{} {
 	var outputFiles []string
 	var ccObjects []string
