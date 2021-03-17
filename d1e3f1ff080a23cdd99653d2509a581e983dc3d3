@@ -70,6 +70,30 @@
       },
       "revId": "d1e3f1ff080a23cdd99653d2509a581e983dc3d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0737a9_838e8ccb",
+        "filename": "bootstrap_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-17T12:36:09Z",
+      "side": 1,
+      "message": "That would be just papering over the actual problem. aosp/1641405 is the proper fix (as far as writing soong.variables from soong_build can be considered \"proper\" anyway)",
+      "parentUuid": "21e2c8ff_c07a590a",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "d1e3f1ff080a23cdd99653d2509a581e983dc3d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
