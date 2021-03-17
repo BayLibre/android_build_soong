@@ -22,6 +22,30 @@
       },
       "revId": "02c7b5c6b7d6d16450417c7fd9c381626847430d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad50b035_b2dc3c95",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-17T00:30:09Z",
+      "side": 1,
+      "message": "No, FlagWithOutput already knows it is getting an output path and applies PathForOutput to it.  It\u0027s only when passing paths as text input that the manual conversion is necessary.  The path is passed as a text input because it is a directory that shouldn\u0027t be treated as a dependency.",
+      "parentUuid": "6002ccc2_d5e49d23",
+      "range": {
+        "startLine": 1692,
+        "startChar": 24,
+        "endLine": 1692,
+        "endChar": 34
+      },
+      "revId": "02c7b5c6b7d6d16450417c7fd9c381626847430d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
