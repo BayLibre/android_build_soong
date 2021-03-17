@@ -22,6 +22,30 @@
       },
       "revId": "d1e3f1ff080a23cdd99653d2509a581e983dc3d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4970bce9_cee983a2",
+        "filename": "bootstrap_test.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-17T11:57:30Z",
+      "side": 1,
+      "message": "I\u0027d rather just fix b/182965747.\n\nMy understanding is that lunch is not enough because that alone doesn\u0027t generate soong.variables and the product configuration Makefiles are not present in the mock source tree, so one can\u0027t generate them with Soong.",
+      "parentUuid": "3012a99e_4d3144dd",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 144,
+        "endChar": 3
+      },
+      "revId": "d1e3f1ff080a23cdd99653d2509a581e983dc3d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
