@@ -174,6 +174,10 @@ type logtagsProducer interface {
 	logtags() android.Paths
 }
 
+func (j *Module) logtags() android.Paths {
+	return j.logtagsSrcs
+}
+
 type logtagsSingleton struct{}
 
 func (l *logtagsSingleton) GenerateBuildActions(ctx android.SingletonContext) {
