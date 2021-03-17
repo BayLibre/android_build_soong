@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "248cd8ed_e3f9277d",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1641,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-17T15:08:20Z",
+      "side": 1,
+      "message": "Actually, ConfiguredJarList does have a String() method, so reverted to your suggestion",
+      "parentUuid": "f046ca71_74613206",
+      "range": {
+        "startLine": 1641,
+        "startChar": 25,
+        "endLine": 1641,
+        "endChar": 57
+      },
+      "revId": "c5b2e5d07c1415ea1e20fcaa2b015871539d74b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da1da129_24909aba",
