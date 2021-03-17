@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ad30e3d_8a274324",
+        "filename": "android/test_asserts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-17T23:47:19Z",
+      "side": 1,
+      "message": "I think it\u0027s customary to shorten the types in these cases: \"expected, actual int\". But since it isn\u0027t done for the other assert functions better keep it this way.",
+      "range": {
+        "startLine": 36,
+        "startChar": 51,
+        "endLine": 36,
+        "endChar": 75
+      },
+      "revId": "64d371896e8615428481e00b4827c746a3733a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
