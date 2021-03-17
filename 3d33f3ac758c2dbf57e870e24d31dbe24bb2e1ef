@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05366ca1_7a407708",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-17T03:01:01Z",
+      "side": 1,
+      "message": "Renamed to \"PackagingItem\". I\u0027d be happy for suggestions.",
+      "parentUuid": "652dedc9_53ccbc2a",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "3d33f3ac758c2dbf57e870e24d31dbe24bb2e1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dba8ce8_9c9e1623",
@@ -81,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b51837dc_4daf3ee0",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-17T03:01:01Z",
+      "side": 1,
+      "message": "Good point. But as you pointed out below, I changed the function signature to return \"bool\" so that tags implementing this interface can determine. So, exporting the interface \u0026 function.",
+      "parentUuid": "3dba8ce8_9c9e1623",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 20
+      },
+      "revId": "3d33f3ac758c2dbf57e870e24d31dbe24bb2e1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b9f6c3b_0ed44a6b",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-03-17T02:29:52Z",
       "side": 1,
       "message": "Will it be necessary to make this return a bool?  Sometimes the same dependency tag can be used in different ways, for example the cc.libraryDependencyTag, in which case it might want to sometimes be considered a packaging dependency and sometimes not.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 20
+      },
+      "revId": "3d33f3ac758c2dbf57e870e24d31dbe24bb2e1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fbf894b_1391b95b",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-03-17T03:01:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9b9f6c3b_0ed44a6b",
       "range": {
         "startLine": 175,
         "startChar": 1,
