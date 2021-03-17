@@ -88,6 +88,24 @@
       "parentUuid": "87d4b2f3_2e8daed4",
       "revId": "5574cc2492e7b40fcd9a29ec03472e3d378881b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716e1d98_060168ef",
+        "filename": "java/boot_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-17T10:40:52Z",
+      "side": 1,
+      "message": "Ok, so I know why the test is failing with the change. That is because the test is broken. We have \"sdkmember\" and \"sdkmember_mysdk_1\" with different apex_availability. The second is available for myapex. The first is not.\n\nSomehow, and I don\u0027t yet understand why, ATM, the apex only checks \"sdkmember_mysdk_1\" to see if it is a member of \"myapex\".\n\nAdding in the logic to filter out the tags stops it from checking availability for \"sdkmember_mysdk_1\" (which is correct) but starts checking availability for \"sdkmember\" which then breaks.",
+      "parentUuid": "121a2cd4_e2ed48fb",
+      "revId": "5574cc2492e7b40fcd9a29ec03472e3d378881b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
