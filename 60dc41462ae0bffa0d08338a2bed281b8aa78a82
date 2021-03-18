@@ -46,6 +46,30 @@
       },
       "revId": "60dc41462ae0bffa0d08338a2bed281b8aa78a82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cac6378_e5cc0d34",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-18T22:37:00Z",
+      "side": 1,
+      "message": "Ah :) do you mind if we submit this first? I\u0027m seeing issues caused by this locally while working on bp2build for cc_library_shared.",
+      "parentUuid": "2ff1d03e_113dafc4",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "60dc41462ae0bffa0d08338a2bed281b8aa78a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
