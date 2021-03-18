@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545f8794_c2c3677c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T07:59:34Z",
+      "side": 1,
+      "message": "This change only affects the build tests, failures of which are reported as build errors not test failures so this change cannot be responsible for the presubmit test failure(s).",
+      "revId": "cdb88a996ac9589e5c9ad14f21ab41268a64ea09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
