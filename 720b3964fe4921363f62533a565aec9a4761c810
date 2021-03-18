@@ -16,6 +16,23 @@
       "message": "Any ideas about the presubmit failures? There are too many so I can\u0027t dismiss is as flakiness but at the same time, I can\u0027t reproduce it locally and it appears that the presubmit pages don\u0027t tell me an error message I can start with:\n\nhttps://android-build.googleplex.com/builds/pending/P20799517/build_test/latest/view/logs/build_error.log",
       "revId": "720b3964fe4921363f62533a565aec9a4761c810",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4c11a8_b87f2fab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-18T07:36:20Z",
+      "side": 1,
+      "message": "Jin kindly pointed me to this:\n\nhttps://android-build.googleplex.com/builds/pending/P20799517/build_test/latest/view/logs/build.log\n\nwhich means that it\u0027s simply a synchronization issue between build/blueprint and build/soong. Submitting.",
+      "revId": "720b3964fe4921363f62533a565aec9a4761c810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
