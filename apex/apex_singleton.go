@@ -69,6 +69,21 @@ var (
 )
 
 func (s *apexDepsInfoSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+	newAllowedDeps := android.PathForOutput(ctx, "apex", "depsinfo", "new-allowed-deps.txt")
+
+	s.allowedApexDepsInfoCheckResult = android.PathForOutput(ctx, newAllowedDeps.Rel()+".check")
+	ctx.Phony("apex-allowed-deps-check", s.allowedApexDepsInfoCheckResult)
+
+	allowedDepsSource := android.ExistentPathForSource(ctx, "packages/modules/common/build/allowed_deps.txt")
+	if !allowedDepsSource.Valid() {
+		// Unbundled projects may not have packages/modules/common/ checked out; ignore those.
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Touch,
+			Output: s.allowedApexDepsInfoCheckResult,
+		})
+		return
+	}
+
 	updatableFlatLists := android.Paths{}
 	ctx.VisitAllModules(func(module android.Module) {
 		if binaryInfo, ok := module.(android.ApexBundleDepsInfoIntf); ok {
@@ -81,16 +96,14 @@ func (s *apexDepsInfoSingleton) GenerateBuildActions(ctx android.SingletonContex
 		}
 	})
 
-	allowedDeps := android.ExistentPathForSource(ctx, "packages/modules/common/build/allowed_deps.txt").Path()
+	allowedDeps := allowedDepsSource.Path()
 
-	newAllowedDeps := android.PathForOutput(ctx, "apex", "depsinfo", "new-allowed-deps.txt")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   generateApexDepsInfoFilesRule,
 		Inputs: append(updatableFlatLists, allowedDeps),
 		Output: newAllowedDeps,
 	})
 
-	s.allowedApexDepsInfoCheckResult = android.PathForOutput(ctx, newAllowedDeps.Rel()+".check")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   diffAllowedApexDepsInfoRule,
 		Input:  newAllowedDeps,
@@ -100,8 +113,6 @@ func (s *apexDepsInfoSingleton) GenerateBuildActions(ctx android.SingletonContex
 			"new_allowed_deps": newAllowedDeps.String(),
 		},
 	})
-
-	ctx.Phony("apex-allowed-deps-check", s.allowedApexDepsInfoCheckResult)
 }
 
 func (s *apexDepsInfoSingleton) MakeVars(ctx android.MakeVarsContext) {
