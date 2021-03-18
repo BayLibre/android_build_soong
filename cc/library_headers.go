@@ -90,6 +90,10 @@ func CcLibraryHeadersBp2Build(ctx android.TopDownMutatorContext) {
 		return
 	}
 
+	if ctx.ModuleType() != "cc_library_headers" {
+		return
+	}
+
 	lib, ok := module.linker.(*libraryDecorator)
 	if !ok {
 		// Not a cc_library module
