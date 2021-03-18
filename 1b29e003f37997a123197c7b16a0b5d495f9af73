@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e126fd8_797db9c4",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T11:18:50Z",
+      "side": 1,
+      "message": "This change adds a use of this to TestCompatConfig (which has already been converted to use fixtures)",
+      "parentUuid": "5dbb8487_c56c2f96",
+      "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b0fc6c8_42a021ca",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-03-18T10:25:05Z",
       "side": 1,
       "message": "This happens late and is not really a build action. It means we depend on the order between module and singleton GenerateAndroidBuildActions. There\u0027s no better place to put it?",
+      "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "798d31d3_3e3c76d1",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T11:18:50Z",
+      "side": 1,
+      "message": "The singleton rules always run after modules, by design so it is not a problem. The GenerateAndroidBuildActions() is the correct place to resolve paths. It\u0027s basically the same place that the `platform_compat_config` uses to construct the metadata path.",
+      "parentUuid": "2b0fc6c8_42a021ca",
       "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
