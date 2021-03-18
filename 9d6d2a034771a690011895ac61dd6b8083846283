@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f93109_56abe394",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T01:15:27Z",
+      "side": 1,
+      "message": "Could you test that this fixes the issue in the bug?",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79c66eee_12833799",
@@ -18,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb90305_bb1e5187",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T01:15:27Z",
+      "side": 1,
+      "message": "There is already a test that relies on this behavior. It is TestBasicSdkWithCc. However, it works just as well without this code.\n\nWhat we don\u0027t have is a test that will ensure that unnecessary tags are not passed through to the DepIsInSameApex(), which is basically what BootImageModule did that triggered the failure described in the bug.\n\nI\u0027ll look into it.",
+      "parentUuid": "79c66eee_12833799",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a50c4d26_77f643d9",
@@ -31,6 +66,24 @@
       "writtenOn": "2021-03-18T00:08:01Z",
       "side": 1,
       "message": "Is this saying that APEX variants drive SDK member variants? If so, that seems wrong to me - when things are unbundled the APEX module definitions may not be around when the SDK members are created. Imo SDK member variants must be driven only by properties in the SDK module definition. (I also think that having APEX-specific variants of SDK members at all would be a big antipattern.)\n\n[Larger issue that this CL addresses, so not blocking it either way.]",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1004fa0c_bfc593a4",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T01:15:27Z",
+      "side": 1,
+      "message": "I don\u0027t think unbundling is an issue. An APEX that sets `uses_sdks: [\"foo@7\"]` requires that all its contents which compile against members of sdk \"foo\" must use the corresponding members of sdk version \"foo@7\" instead. So, it is a source level issue only so prebuilts wouldn\u0027t have that issue.\n\nBy variant I simply mean a Soong module variant. It doesn\u0027t change the sdk member it simply creates a variant that \"could\" be used in an apex if needed. It is no different to how the APEX creates variants for all of its contents. It is needed to allow one module reference to be replaced with a different variant depending on the apex.\n\ne,g, Say we have:\n1. the \"foo\" sdk which includes the \"bar\" library.\n2. versions 2 and 4 of the \"foo\" sdk.\n3. apex1 which has uses_sdks: [\"foo@2\"] and depends on library baz.\n4. apex2 which has uses_sdks: [\"foo@4\"] and depends on library baz.\n5. baz depends on bar from the \"foo\" sdk.\n\nWhen building apex1 we want the reference to bar to be replaced with bar@2, so baz -\u003e bar would become baz -\u003e bar@2.\n\nSimilarly, when building apex2 we want the reference to bar to be replaced with bar@4, so baz -\u003e bar would become baz -\u003e bar@4.\n\nIn order to do that we need baz to have variants for both apex1 and apex2 (which it will do because it belongs in both). We also need bar@2 and bar@4 to have variants for apex1 and apex2 respectively. In fact due to the fact that at the time we create the apex variants we don\u0027t know which apexes bar@2 and bar@4 will end up in we need to create variants for both apex1 and apex2.\n\nSo, we end up with:\n  apex1 -\u003e baz (apex1) -\u003e bar@2 (apex1)\n  apex2 -\u003e baz (apex2) -\u003e bar@4 (apex2)",
+      "parentUuid": "a50c4d26_77f643d9",
       "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
