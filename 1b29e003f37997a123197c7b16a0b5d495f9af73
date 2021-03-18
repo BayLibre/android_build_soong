@@ -104,6 +104,24 @@
       "parentUuid": "2b0fc6c8_42a021ca",
       "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a136b077_c1c5624c",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T12:27:08Z",
+      "side": 1,
+      "message": "Marking as resolved so I can submit this change.",
+      "parentUuid": "798d31d3_3e3c76d1",
+      "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
