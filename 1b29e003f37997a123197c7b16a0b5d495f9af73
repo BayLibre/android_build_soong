@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c247d6_4373ba13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T00:38:34Z",
+      "side": 1,
+      "message": "I\u0027ll wait with this until I hear your response on my comment on a parent CL. In any case, since I\u0027m familiar with this module type I\u0027m hesitant to give more than a +1 - you may want to add a reviewer that knows it better.",
+      "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
