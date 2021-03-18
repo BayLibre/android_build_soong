@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13319e2_d3f7ba09",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-18T09:18:25Z",
+      "side": 1,
+      "message": "We should figure out a way to generalize these checks. Filed b/183079158",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "60dc41462ae0bffa0d08338a2bed281b8aa78a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
