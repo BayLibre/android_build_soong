@@ -22,6 +22,30 @@
       },
       "revId": "051176b6b5fe689adce4d54af1dacec85b52db3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd04e93_47c08d97",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-18T22:05:18Z",
+      "side": 1,
+      "message": "Hrm, you\u0027re right. I was thinking of the use case where I rm\u0027d out/soong/bp2build and it didn\u0027t regenerate, but I totally forgot that it\u0027s not something Ninja does anyway. Thanks for pointing this out! Abandoning this CL..",
+      "parentUuid": "da20ff1a_35f04ef3",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 15
+      },
+      "revId": "051176b6b5fe689adce4d54af1dacec85b52db3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
