@@ -20,9 +20,10 @@ import (
 	"os"
 )
 
-// The Bazel bp2build code generator is responsible for writing .bzl files that are equivalent to
-// Android.bp files that are capable of being built with Bazel.
-func Codegen(ctx *CodegenContext) CodegenMetrics {
+// Codegen is the backend of bp2build. The code generator is responsible for
+// writing .bzl files that are equivalent to Android.bp files that are capable
+// of being built with Bazel.
+func Codegen(ctx *CodegenContext) (CodegenMetrics, []string) {
 	outputDir := android.PathForOutput(ctx, "bp2build")
 	android.RemoveAllOutputDir(outputDir)
 
@@ -31,31 +32,29 @@ func Codegen(ctx *CodegenContext) CodegenMetrics {
 	buildToTargets, metrics := GenerateBazelTargets(ctx)
 
 	filesToWrite := CreateBazelFiles(ruleShims, buildToTargets, ctx.mode)
+	extraNinjaDeps := []string{}
+
 	for _, f := range filesToWrite {
-		if err := writeFile(outputDir, ctx, f); err != nil {
+		p := getOrCreateOutputDir(outputDir, ctx, f.Dir).Join(ctx, f.Basename)
+		if err := writeReadOnlyFile(ctx, p, f.Contents); err != nil {
 			fmt.Errorf("Failed to write %q (dir %q) due to %q", f.Basename, f.Dir, err)
 		}
+		// if these generated files are modified, regenerate on next run.
+		extraNinjaDeps = append(extraNinjaDeps, p.String())
 	}
 
-	return metrics
+	return metrics, extraNinjaDeps
 }
 
-func writeFile(outputDir android.OutputPath, ctx android.PathContext, f BazelFile) error {
-	return writeReadOnlyFile(ctx, getOutputPath(outputDir, ctx, f.Dir), f.Basename, f.Contents)
+// Get the output directory and create it if it doesn't exist.
+func getOrCreateOutputDir(outputDir android.OutputPath, ctx android.PathContext, dir string) android.OutputPath {
+	dirPath := outputDir.Join(ctx, dir)
+	android.CreateOutputDirIfNonexistent(dirPath, os.ModePerm)
+	return dirPath
 }
 
-func getOutputPath(outputDir android.OutputPath, ctx android.PathContext, dir string) android.OutputPath {
-	return outputDir.Join(ctx, dir)
-}
-
-// The auto-conversion directory should be read-only, sufficient for bazel query. The files
-// are not intended to be edited by end users.
-func writeReadOnlyFile(ctx android.PathContext, dir android.OutputPath, baseName, content string) error {
-	android.CreateOutputDirIfNonexistent(dir, os.ModePerm)
-	pathToFile := dir.Join(ctx, baseName)
-
-	// 0444 is read-only
-	err := android.WriteFileToOutputDir(pathToFile, []byte(content), 0444)
-
-	return err
+// The auto-conversion directory should be read-only. The files are not intended
+// to be edited by end users.
+func writeReadOnlyFile(ctx android.PathContext, pathToFile android.OutputPath, content string) error {
+	return android.WriteFileToOutputDir(pathToFile, []byte(content), 0444) // 0444 is read-only
 }
