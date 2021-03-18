@@ -234,6 +234,24 @@
       "parentUuid": "1004fa0c_bfc593a4",
       "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63b88dd5_7540418c",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T11:21:30Z",
+      "side": 1,
+      "message": "That is the correct interpretation. That is what I meant by \"a Soong module variant\".",
+      "parentUuid": "58bcf713_f854ec64",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
