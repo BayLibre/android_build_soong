@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14eb6fa_d70a2d3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T09:06:57Z",
+      "side": 1,
+      "message": "PTAL. Intellij\u0027s Go Rename interface method refactoring is not very good and missed the implementation and I didn\u0027t rebuild before uploading so didn\u0027t pick it up straight away.",
+      "revId": "573989d8214c2268017ca2b6a608a2ef22b659d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
