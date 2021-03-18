@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d207f24e_034fb102",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T12:19:39Z",
+      "side": 1,
+      "message": "Thanks for all the reviews you have been doing it has been very helpful. Unfortunately, there are LOTS more to come. This batch will allow buildDir to be removed from the android package.",
+      "revId": "485079130d9b269b1a6a9a9766791fd3e845618b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
