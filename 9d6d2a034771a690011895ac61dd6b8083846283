@@ -288,6 +288,24 @@
       "parentUuid": "12b5985b_5e7f3178",
       "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e42b3a_c11f5548",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T14:13:18Z",
+      "side": 1,
+      "message": "No problem, thanks. If you\u0027re in a hurry I go slightly out on a limb and +2 in place of Jiyong.",
+      "parentUuid": "cf043c7e_5e3c03aa",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
