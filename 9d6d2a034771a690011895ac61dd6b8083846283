@@ -270,6 +270,24 @@
       "parentUuid": "63b88dd5_7540418c",
       "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf043c7e_5e3c03aa",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T13:53:37Z",
+      "side": 1,
+      "message": "I\u0027ll look at adding a comment in a follow up change. This is blocking other follow up changes that fix other related issues.",
+      "parentUuid": "12b5985b_5e7f3178",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
