@@ -51,6 +51,24 @@
       "parentUuid": "af8a02e0_339d256c",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c76ebf9d_3e066130",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-18T20:08:01Z",
+      "side": 1,
+      "message": "I believe we should avoid putting all methods with the same receiver type in a single file just because the receiver type is the same. No other code except logtagsSingleton cares about the logtagsProducer interface and the logtags method. Putting the interface and the method definition on the consumer side increases readability in both files.",
+      "parentUuid": "6561b4f1_7b1d3d34",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
