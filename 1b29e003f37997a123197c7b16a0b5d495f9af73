@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d443d07_2219b4db",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T12:37:59Z",
+      "side": 1,
+      "message": "I meant a test when prebuilt_platform_compat_config is active, in particular that it works for adding paths to global_compat_config.",
+      "parentUuid": "6e126fd8_797db9c4",
+      "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b0fc6c8_42a021ca",
         "filename": "java/platform_compat_config.go",
         "patchSetId": 2
