@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79c66eee_12833799",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T00:08:01Z",
+      "side": 1,
+      "message": "Is it possible to have a test for this, e.g. in cc_sdk_test.go?",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a50c4d26_77f643d9",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T00:08:01Z",
+      "side": 1,
+      "message": "Is this saying that APEX variants drive SDK member variants? If so, that seems wrong to me - when things are unbundled the APEX module definitions may not be around when the SDK members are created. Imo SDK member variants must be driven only by properties in the SDK module definition. (I also think that having APEX-specific variants of SDK members at all would be a big antipattern.)\n\n[Larger issue that this CL addresses, so not blocking it either way.]",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
