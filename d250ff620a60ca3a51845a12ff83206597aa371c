@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a31d88c_e2c7f144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T09:00:29Z",
+      "side": 1,
+      "message": "PTAL I had to resolve a merge conflict due to some code that I had changed being removed.",
+      "revId": "d250ff620a60ca3a51845a12ff83206597aa371c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
