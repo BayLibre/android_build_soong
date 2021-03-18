@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a4c48c_b7e0deb8",
+        "filename": "mk2rbc/soong_variables.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T13:55:21Z",
+      "side": 1,
+      "message": "The need for name.Strings \u003d\u003d 2 and name.String[1] \u003d\u003d 1 rely a lot on the internals of the mkparser, please create an abstraction there",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 29
+      },
+      "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3253f3de_2fc5cd62",
+        "filename": "mk2rbc/soong_variables.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T13:55:21Z",
+      "side": 1,
+      "message": "Since we\u0027re only using the first match, should we use FindStringSubmatch instead?",
+      "range": {
+        "startLine": 118,
+        "startChar": 28,
+        "endLine": 118,
+        "endChar": 39
+      },
+      "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fd9bf7e_7860ec08",
+        "filename": "mk2rbc/test/soong_included.mk.test",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T13:55:21Z",
+      "side": 1,
+      "message": "Are we dropping the soong.variables name or will that be handled elsewhere?",
+      "range": {
+        "startLine": 1,
+        "startChar": 24,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
