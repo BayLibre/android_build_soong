@@ -16,6 +16,24 @@
       "message": "Do you want to make this an android.ErrorRule instead so that it is an error to try to check this on an unbundled branch?",
       "revId": "b77b0c5e05a1e16fd959bc9be5a89d238924ac53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b6d8d3d_6a63fa00",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-18T16:47:30Z",
+      "side": 1,
+      "message": "This is called from droidcore, would that be triggered on those branches? If not, happy to change this to ErrorRule.",
+      "parentUuid": "bfc78119_8b9723d5",
+      "revId": "b77b0c5e05a1e16fd959bc9be5a89d238924ac53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
