@@ -207,7 +207,7 @@ func runBp2Build(srcDir string, configuration android.Config) {
 	// Run the code-generation phase to convert BazelTargetModules to BUILD files
 	// and print conversion metrics to the user.
 	codegenContext := bp2build.NewCodegenContext(configuration, *bp2buildCtx, bp2build.Bp2Build)
-	metrics := bp2build.Codegen(codegenContext)
+	metrics, generatedBazelFiles := bp2build.Codegen(codegenContext)
 
 	// Only report metrics when in bp2build mode. The metrics aren't relevant
 	// for queryview, since that's a total repo-wide conversion and there's a
@@ -215,6 +215,7 @@ func runBp2Build(srcDir string, configuration android.Config) {
 	metrics.Print()
 
 	extraNinjaDeps = append(extraNinjaDeps, codegenContext.AdditionalNinjaDeps()...)
+	extraNinjaDeps = append(extraNinjaDeps, generatedBazelFiles...)
 	extraNinjaDepsString := strings.Join(extraNinjaDeps, " \\\n ")
 
 	// Workarounds to support running bp2build in a clean AOSP checkout with no
