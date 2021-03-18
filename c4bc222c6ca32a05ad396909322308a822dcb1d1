@@ -22,6 +22,30 @@
       },
       "revId": "c4bc222c6ca32a05ad396909322308a822dcb1d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bfbd96a_d83a1e0a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-18T00:45:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8aeef0a_5b172579",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 32
+      },
+      "revId": "c4bc222c6ca32a05ad396909322308a822dcb1d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
