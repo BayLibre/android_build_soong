@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a37f719f_7c46ab33",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-18T06:20:39Z",
+      "side": 1,
+      "message": "Sure! Now that we don\u0027t need config, we can restore the original context.",
+      "parentUuid": "b4239f26_2d4290b9",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 36
+      },
+      "revId": "5f5f4ece824293455caf3262b30f1fed3623bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c41b751e_61c4dc49",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-17T13:54:01Z",
       "side": 1,
       "message": "It is more idiomatically go to define our own interface here at the consumer with only the functions we need (go/go-style/decisions#interfaces).",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "5f5f4ece824293455caf3262b30f1fed3623bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f531f868_15fe29d0",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-18T06:20:39Z",
+      "side": 1,
+      "message": "thanks for the pointer, done.",
+      "parentUuid": "c41b751e_61c4dc49",
       "range": {
         "startLine": 57,
         "startChar": 25,
@@ -84,6 +132,30 @@
       "side": 1,
       "message": "Agreed, something like this would be good.\n\nIn reading the design I was concerned that we may still have a couple modules in a package that are more difficult to convert. If we change `bp2build_available` to be a pointer to a bool should allow us to distinguish between not set and explicitly set to false.\n\nThis could also be a good way to think about the naming of the lists:\n\nBP2BUILD_DEFAULTS_TRUE_RECURSIVE\n\nBP2BUILD_DEFAULTS_FALSE",
       "parentUuid": "5ee9e0d0_f6ccc9d2",
+      "range": {
+        "startLine": 131,
+        "startChar": 47,
+        "endLine": 131,
+        "endChar": 72
+      },
+      "revId": "5f5f4ece824293455caf3262b30f1fed3623bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b579a97_3727285e",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-18T06:20:39Z",
+      "side": 1,
+      "message": "Great idea, both! I made bp2build_available into a tristate bool pointer, so now we can have the defaults approach and allow individual modules to opt-in or out, regardless of the allowlist configuration. PTAL.\n\nI also made some other changes in this CL in response to your comments. PTAL at the other comments.",
+      "parentUuid": "8c52be31_a8da8931",
       "range": {
         "startLine": 131,
         "startChar": 47,
