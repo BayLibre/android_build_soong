@@ -52,6 +52,24 @@
       "parentUuid": "b9954e3d_6752e868",
       "revId": "8c535dad36b991f43f54972dbf8c936e0ec7fa04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc75527b_15de8e41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T10:41:34Z",
+      "side": 1,
+      "message": "There isn\u0027t a similar mechanism for java_sdk_library because it uses the same property and so same tag as normal java libraries which makes that impossible. Instead there is some hacky wiring that allows the java_sdk_library_import to access the impl library of the java_sdk_library. YEUCH!\n\nI\u0027ve created http://b/183082332 to track that cleanup.",
+      "parentUuid": "5d840cb5_70b58a2f",
+      "revId": "8c535dad36b991f43f54972dbf8c936e0ec7fa04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
