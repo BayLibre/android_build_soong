@@ -252,6 +252,24 @@
       "parentUuid": "58bcf713_f854ec64",
       "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b5985b_5e7f3178",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T13:50:25Z",
+      "side": 1,
+      "message": "The sticking point here was the path from apex variant to version number, i.e. that the SDK member uses the \"apex\" mutator dimension only to map to versions and not to make them APEX-specific. This could be explained more clearly somewhere around here, but it may be a bit out of scope for this particular comment.",
+      "parentUuid": "63b88dd5_7540418c",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
