@@ -34,6 +34,24 @@
       "parentUuid": "66398268_2cfff665",
       "revId": "8c535dad36b991f43f54972dbf8c936e0ec7fa04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d840cb5_70b58a2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T09:54:24Z",
+      "side": 1,
+      "message": "Ok, so there\u0027s similar logic that depend on java_sdk_library sources regardless of prebuilts with prefer:true?\n\nBut my idea would actually be worse - the separate module type would need different names and conditional overrides to avoid dups if the source is present.",
+      "parentUuid": "b9954e3d_6752e868",
+      "revId": "8c535dad36b991f43f54972dbf8c936e0ec7fa04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
