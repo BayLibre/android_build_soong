@@ -33,6 +33,24 @@
       "message": "This looks weird here.",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6561b4f1_7b1d3d34",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-18T17:04:55Z",
+      "side": 1,
+      "message": "That, certainly, but what is it for?",
+      "parentUuid": "af8a02e0_339d256c",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
