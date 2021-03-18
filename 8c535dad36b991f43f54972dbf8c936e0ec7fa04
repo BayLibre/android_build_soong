@@ -16,6 +16,24 @@
       "message": "Sorry, I don\u0027t really understand this module type. Given that this will break if only the prebuilt is available I assume compatConfigsTag is used only between modules in the same APEX source, and hence the prebuilts of these things are used for something else. Is that global_compat_config?\n\nDoesn\u0027t this difference mean that the prebuilt actually isn\u0027t the same thing as the source? I.e. we should rather have the platform_compat_config members become prebuilt_global_compat_config_contributor or somesuch.",
       "revId": "8c535dad36b991f43f54972dbf8c936e0ec7fa04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9954e3d_6752e868",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T01:03:41Z",
+      "side": 1,
+      "message": "The compatConfigTag is only used between the apex and a platform_compat_config that it owns. The source apex and the source platform_compat_config module need to be in the same set of git repositories and it would be invalid for the source platform_compat_config module to not be present when referenced from a source apex.\n\nWhile some prebuilts are a slot in replacement for the source some are not. e.g. java_sdk_library_import cannot be used in all situations that java_sdk_library can because the former does not provide impl libraries but the latter does.",
+      "parentUuid": "66398268_2cfff665",
+      "revId": "8c535dad36b991f43f54972dbf8c936e0ec7fa04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
