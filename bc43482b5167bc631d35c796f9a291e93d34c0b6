@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7318bec3_2a079e72",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "Right, but that means you have to either remember that true indicates same or scroll to the top -- if the return was\n\n(expr starlarkExpr, same bool) instead, it\u0027s clear what the returns are for\n\nAlternatively, if the function were named more descriptively, that would prevent the need. e.g.\n\ntryVariableSubstitution(valueMap map[string]starlarkExpr) (expr starlarkExpr, substituted bool)\n\nor\n\nmaybeSubstituteVariable(valueMap map[string]starlarkExpr) (expr starlarkExpr, substituted bool)\n\nYou\u0027d have to invert the boolean throughout, but it\u0027s much more clear throughout what the function and returns mean.",
+      "parentUuid": "18a37408_a7b0ac8c",
+      "range": {
+        "startLine": 44,
+        "startChar": 61,
+        "endLine": 44,
+        "endChar": 79
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fdb26c9_50e54dce",
         "filename": "mk2rbc/expr.go",
         "patchSetId": 21
@@ -255,6 +279,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b6d0da5_1a4b42a0",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "Because someone who is less familiar with the code may run into the issue and not understand it.",
+      "parentUuid": "1ccd6397_ae75db0e",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d72f1202_3683af74",
         "filename": "mk2rbc/expr.go",
         "patchSetId": 21
@@ -290,6 +338,30 @@
       "side": 1,
       "message": "So it will become:\n  var tmp []string\n  for _, chunk :\u003d range xi.chunks {\n    tmp \u003d append(tmp, strings.ReplaceAll(chunk, .., ..)\n  }\n  format :\u003d \"%\".join(tmp)\nIMHO it\u0027s not much better.",
       "parentUuid": "d72f1202_3683af74",
+      "range": {
+        "startLine": 81,
+        "startChar": 23,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d9e914c_7c8dd5ec",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "it doesn\u0027t require handling the first chunk separately from other chunks. And it  becomes much more obvious what join string you\u0027re using -- currently in the code it\u0027s \"%s\" -- is that correct or is what you have here \"%\" correct?\n\nplease update to the more idiomatic use of join",
+      "parentUuid": "43e998cb_18d13f38",
       "range": {
         "startLine": 81,
         "startChar": 23,
@@ -443,6 +515,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e57fe4a_decbb7b1",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "does it stand for something? if not can please make it something that stands for something, e.g. apc for android product config",
+      "parentUuid": "10ad5f9a_f64b8c91",
+      "range": {
+        "startLine": 29,
+        "startChar": 46,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7814124a_62b5ae1d",
         "filename": "mk2rbc/mk2rbc.go",
         "patchSetId": 21
@@ -478,6 +574,30 @@
       "side": 1,
       "message": "Ditto.",
       "parentUuid": "7814124a_62b5ae1d",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0722a1_092c497f",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "Please give this a meaningful name instead, e.g. product_config, android_product_config, etc?",
+      "parentUuid": "e8b948a9_cc97aa91",
       "range": {
         "startLine": 30,
         "startChar": 13,
@@ -537,6 +657,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec51f1a3_815b7dc5",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "cfn seems to be a prefix for variables only in our code -- please use a descriptive name instead.\n\nAlternatively, if we need to prefix a bunch of things with the same thing, that\u0027s likely a sign we should split this package into a multiple packages",
+      "parentUuid": "17c3d2de_c553bd74",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b318ac02_423f33b8",
         "filename": "mk2rbc/mk2rbc.go",
         "patchSetId": 21
@@ -572,6 +716,30 @@
       "side": 1,
       "message": "rt stands for runtime.",
       "parentUuid": "b318ac02_423f33b8",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9ec079_62412846",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "please use the name runtime? rt is not an obvious abbreviation",
+      "parentUuid": "d248d8e6_592fa5f1",
       "range": {
         "startLine": 45,
         "startChar": 1,
@@ -678,6 +846,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1114daf9_277f1502",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "the source of truth for blueprint is already in AOSP -- additionally MakeString is part of Soong, not blueprint (https://cs.android.com/android/platform/superproject/+/master:build/soong/androidmk/parser/make_strings.go)",
+      "parentUuid": "96d9d625_85671e54",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 107
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c77106cd_b86ec7f8",
         "filename": "mk2rbc/mk2rbc.go",
         "patchSetId": 21
@@ -725,6 +917,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7275f641_afef3751",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "please document that",
+      "parentUuid": "e64e6f41_81123bb6",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 32
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a7ff9b3_bff3fe27",
         "filename": "mk2rbc/mk2rbc.go",
         "patchSetId": 21
@@ -760,6 +976,30 @@
       "side": 1,
       "message": "I didn\u0027t know about repeat, but what\u0027s wrong with this one?",
       "parentUuid": "4a7ff9b3_bff3fe27",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 99
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14bcb8c1_87c12732",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "This is less readable and can break if there is ever a very large indent level",
+      "parentUuid": "7c12637a_adaefc15",
       "range": {
         "startLine": 244,
         "startChar": 1,
@@ -866,6 +1106,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77ad37a2_42fafd3f",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "not done",
+      "parentUuid": "6344cc55_8a14a831",
+      "range": {
+        "startLine": 282,
+        "startChar": 3,
+        "endLine": 282,
+        "endChar": 9
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "891389c2_c82b2c8f",
         "filename": "mk2rbc/mk2rbc.go",
         "patchSetId": 21
@@ -901,6 +1165,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "891389c2_c82b2c8f",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c594b197_612da37f",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "not done",
+      "parentUuid": "a403fbce_9607605b",
       "range": {
         "startLine": 257,
         "startChar": 2,
@@ -1054,6 +1342,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d44dbf8_0151e091",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "What about varAssignmentScope?",
+      "parentUuid": "151ce274_0d7014ec",
+      "range": {
+        "startLine": 327,
+        "startChar": 5,
+        "endLine": 327,
+        "endChar": 19
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06ea3e69_a71749f3",
         "filename": "mk2rbc/mk2rbc.go",
         "patchSetId": 21
@@ -1183,6 +1495,30 @@
       "side": 1,
       "message": "I thought so too until I read sort.SearchStrings() description :-)",
       "parentUuid": "fe2f7a75_c6e93430",
+      "range": {
+        "startLine": 484,
+        "startChar": 13,
+        "endLine": 484,
+        "endChar": 43
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b6c495_bb329417",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "since tracedVariables is only used here to detect presence, it is idiomatic in go to use a map[string]bool instead.  That removes the need to sort and perform a binary search anytime we\u0027re determining whether a variable is traced.",
+      "parentUuid": "9e69ef87_42b93e76",
       "range": {
         "startLine": 484,
         "startChar": 13,
@@ -1476,6 +1812,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "897051f0_188b58ce",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "If the init function has a message, seems reasonable to me.\n\nPlease add a comment about the behavior here",
+      "parentUuid": "b168e1fe_d4add90f",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 33
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d8eb951_05f36dd7",
         "filename": "mk2rbc/variable.go",
         "patchSetId": 21
@@ -1523,6 +1883,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9aea67d_043fa982",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "This is a premature optimization at the cost of being less readable and more errorprone. Please use the idiomatic map.",
+      "parentUuid": "420b008d_c9fa6528",
+      "range": {
+        "startLine": 45,
+        "startChar": 26,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f7fc485_b41d3415",
         "filename": "mk2rbc/variable.go",
         "patchSetId": 21
@@ -1558,6 +1942,30 @@
       "side": 1,
       "message": "It installs a variable with given name into the context. I thought it\u0027s a conventional terminology -- lookup returns a symbol only when present, install returns existing symbol or creates a new one and returns it. \nIf there is more modern term,s I can change it.",
       "parentUuid": "2f7fc485_b41d3415",
+      "range": {
+        "startLine": 260,
+        "startChar": 25,
+        "endLine": 260,
+        "endChar": 32
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b31d982_8eae07ea",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "I\u0027m familiar with lookup but had not heard of install -- can we name it addOrFetchVariable or addOrGetVariable",
+      "parentUuid": "ef6619ca_66ce523f",
       "range": {
         "startLine": 260,
         "startChar": 25,

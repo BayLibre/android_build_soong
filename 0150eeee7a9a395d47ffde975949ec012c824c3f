@@ -1,0 +1,464 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d470d5_0434c9f5",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "this is confusing, please add another flag rather than varying the use of a non-flag argument if launcher is specified",
+      "range": {
+        "startLine": 51,
+        "startChar": 78,
+        "endLine": 51,
+        "endChar": 126
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926b0567_cc4e5d24",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "Does this need to be a cli option, shouldn\u0027t all product config files have the same suffix?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2095dc0b_e7e7ccc2",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "Why are --all and --launcher mutually exclusive? When would someone need a launcher vs not?",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 53
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "449ba87f_c1118725",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "This use is undocumented, please add a flag for specifying which files to convert or a help message which indicates the use of non-flagged arguments",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b54f9475_34e4dea2",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "This can be dropped if you invert the check, go with exit with 0 if Exit() is not called.",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 12
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bea984f4_bbf51a72",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "We can get here and already know that targetAndroidProductsFile doesn\u0027t exist, should we should attempt to update the map in that case? if we do need to update the map regardless, please add a comment as to why",
+      "range": {
+        "startLine": 190,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 2
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f7b553_4377d929",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "why are we not returning the error here?",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 199,
+        "endChar": 4
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b395442_d181a92e",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "Please add godocs for all the structs in this file",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 31
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349f759f_0d823e8d",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "should this be \"find\" instead? I would have expected the same function name here and in parseCheckFindstringFuncResult",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "248b4e14_eedeabd7",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "please add a TODO with a bug number about whether we will convert shell uses",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 82
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f3018b_fe3f560a",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "topic we should discuss in the context of the converter and bp2build: should we consider buildifier to format starlark files rather than pretty-printing ourselves?",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 19
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa375e77_c634eaf1",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "nit: please be more verbose with this naming, e.g. emitLoadStatements, emitLoadInits, or similar to distinguish from the init function emitted above.",
+      "range": {
+        "startLine": 215,
+        "startChar": 35,
+        "endLine": 215,
+        "endChar": 39
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38c2a1d_7843c87e",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "it appears that there is a return missing in this block, unless the intent was to change the behavior and perform conflict resolution when the variable did not exist.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 2
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d0ff3a2_47be246f",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "nit: Starlark",
+      "range": {
+        "startLine": 325,
+        "startChar": 5,
+        "endLine": 325,
+        "endChar": 9
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4695dce1_e8e19969",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "why do we only trim spaces for the second argument?",
+      "range": {
+        "startLine": 783,
+        "startChar": 9,
+        "endLine": 783,
+        "endChar": 23
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2088556c_0aec7951",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "right operand or should we be dumping args[0] here?",
+      "range": {
+        "startLine": 809,
+        "startChar": 31,
+        "endLine": 809,
+        "endChar": 80
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e28db52_2e767470",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "please use the actual function name here",
+      "range": {
+        "startLine": 829,
+        "startChar": 51,
+        "endLine": 829,
+        "endChar": 63
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425dc9a7_5627b747",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "s/has/requires",
+      "range": {
+        "startLine": 832,
+        "startChar": 40,
+        "endLine": 832,
+        "endChar": 43
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a85a81_d974ee7b",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "these names are somewhat confusing, is xCall the filterFuncCall? and xValue the comparisonValue? please update the naming for clarity.",
+      "range": {
+        "startLine": 898,
+        "startChar": 1,
+        "endLine": 898,
+        "endChar": 24
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa835a15_eb741c81",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-18T15:31:46Z",
+      "side": 1,
+      "message": "please add a comment as to why we invert negate here",
+      "range": {
+        "startLine": 925,
+        "startChar": 13,
+        "endLine": 925,
+        "endChar": 20
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
