@@ -34,6 +34,40 @@
       "parentUuid": "a8c247d6_4373ba13",
       "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbb8487_c56c2f96",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T10:25:05Z",
+      "side": 1,
+      "message": "I suppose a test for this too will come later after the refactoring?",
+      "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b0fc6c8_42a021ca",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-18T10:25:05Z",
+      "side": 1,
+      "message": "This happens late and is not really a build action. It means we depend on the order between module and singleton GenerateAndroidBuildActions. There\u0027s no better place to put it?",
+      "revId": "1b29e003f37997a123197c7b16a0b5d495f9af73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
