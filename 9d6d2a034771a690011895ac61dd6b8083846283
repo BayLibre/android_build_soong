@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4acbe1f_43588206",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T08:25:26Z",
+      "side": 1,
+      "message": "The location is correct, it is intended for RequireApexVariant() to return false (usual) but for something else to decide that a variant is required.\n\nI did try to make it clear but obviously it is still confusing so I will update it.",
+      "parentUuid": "e49fe6ab_44cc032f",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 3
+      },
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79c66eee_12833799",
@@ -78,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6bd111e7_7d29a1e3",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T08:25:26Z",
+      "side": 1,
+      "message": "The best way to test this is by adding a test similar to TestBasicSdkWithCc for boot image. I have some changes elsewhere that migrate the boot_image_sdk_test.go file to use test fixtures so I would prefer to wait until those have been submitted to avoid conflicts.\n\nIt\u0027s up to you whether this is delayed until those are reviewed or we submit this and add the test as a follow up.",
+      "parentUuid": "eeb90305_bb1e5187",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7019cd8d_a2980f1d",
         "filename": "sdk/sdk.go",
         "patchSetId": 2
@@ -89,6 +131,30 @@
       "writtenOn": "2021-03-18T04:49:44Z",
       "side": 1,
       "message": "nit: an",
+      "range": {
+        "startLine": 363,
+        "startChar": 97,
+        "endLine": 363,
+        "endChar": 99
+      },
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79437964_7239b5a8",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T08:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7019cd8d_a2980f1d",
       "range": {
         "startLine": 363,
         "startChar": 97,
