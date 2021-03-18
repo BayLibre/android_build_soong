@@ -306,6 +306,24 @@
       "parentUuid": "cf043c7e_5e3c03aa",
       "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fee7fb2_aeac7d45",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-18T14:56:50Z",
+      "side": 1,
+      "message": "Thanks. He\u0027d already +2\u0027d it but I lost that after I renamed a method that was missed by Intellij IDEA\u0027s rename refactoring.",
+      "parentUuid": "c4e42b3a_c11f5548",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
