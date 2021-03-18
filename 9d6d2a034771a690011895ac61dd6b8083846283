@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e49fe6ab_44cc032f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-18T04:49:44Z",
+      "side": 1,
+      "message": "I wonder if this is the right place to have this check. A module can create an apex variant even when RequireApexVariant() returns false. See #859.\n\nPerhaps you might just want to rename this to \u0027AlwaysRequireApexVariant()\u0027.",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 3
+      },
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79c66eee_12833799",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -49,6 +72,29 @@
       "side": 1,
       "message": "There is already a test that relies on this behavior. It is TestBasicSdkWithCc. However, it works just as well without this code.\n\nWhat we don\u0027t have is a test that will ensure that unnecessary tags are not passed through to the DepIsInSameApex(), which is basically what BootImageModule did that triggered the failure described in the bug.\n\nI\u0027ll look into it.",
       "parentUuid": "79c66eee_12833799",
+      "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7019cd8d_a2980f1d",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-18T04:49:44Z",
+      "side": 1,
+      "message": "nit: an",
+      "range": {
+        "startLine": 363,
+        "startChar": 97,
+        "endLine": 363,
+        "endChar": 99
+      },
       "revId": "9d6d2a034771a690011895ac61dd6b8083846283",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
