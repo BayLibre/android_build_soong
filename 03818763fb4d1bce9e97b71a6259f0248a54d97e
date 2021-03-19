@@ -213,6 +213,24 @@
       "parentUuid": "d68c45ca_d19ef4a9",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ae67a6_7d3bbdce",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-19T22:48:18Z",
+      "side": 1,
+      "message": "Added the logtagsProducer type check to gen.go.",
+      "parentUuid": "4a2f5985_b5dc4235",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
