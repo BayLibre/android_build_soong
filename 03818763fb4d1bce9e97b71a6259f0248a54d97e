@@ -87,6 +87,24 @@
       "parentUuid": "c76ebf9d_3e066130",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e13e4e5_4f3bc068",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-19T11:00:48Z",
+      "side": 1,
+      "message": "FWIW, I didn\u0027t even realize that this method is called from java/gen.go before this thread, so that\u0027s additional support for Paul\u0027s point of view.\n\nI think even though there is only one caller for this method, it\u0027s important for anyone who reads the code to know that this way of getting data out of java.Module exists.\n\nIn other words, when I read unknown the code, the question I always ask myself is \"what can this object do\" and if the methods whose receiver is that object are scattered around in multiple files, it\u0027s hard to tell.",
+      "parentUuid": "c5e42c8e_e6f2c582",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
