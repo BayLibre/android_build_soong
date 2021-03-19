@@ -231,6 +231,24 @@
       "parentUuid": "4a2f5985_b5dc4235",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9502e44_1bafaf0e",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-19T23:04:31Z",
+      "side": 1,
+      "message": "FTR When I first started working on Soong I found the separation of the AndroidMk work in the androidmk.go files to be very confusing. I would often get caught out because I would miss the usages of fields and methods in the androidmk.go file.\n\nI understand that having the logic separately in androidmk.go file would have made it very easy to remove when we had migrated completely to Soong but I am not sure that potential saving was worth the confusion. It is also a pattern that is NOT adhered to consistently with some types having it separate and others having it mixed in with the other methods.",
+      "parentUuid": "10ae67a6_7d3bbdce",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
