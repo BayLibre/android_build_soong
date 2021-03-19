@@ -87,6 +87,24 @@
       "parentUuid": "54d32851_58945aa5",
       "revId": "ad50ce83497c7d25a5167ea6bdef1f0290b99f58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc81561_4234dafc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-03-19T17:42:53Z",
+      "side": 1,
+      "message": "That was my thought (and he already has his own workaround).",
+      "parentUuid": "b10c39a7_3efe7aff",
+      "revId": "ad50ce83497c7d25a5167ea6bdef1f0290b99f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
