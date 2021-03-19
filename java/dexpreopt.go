@@ -160,13 +160,13 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 
 	globalSoong := dexpreopt.GetGlobalSoongConfig(ctx)
 	global := dexpreopt.GetGlobalConfig(ctx)
+
 	bootImage := defaultBootImageConfig(ctx)
-	dexFiles := bootImage.dexPathsDeps.Paths()
-	// The dex locations for all Android variants are identical.
-	dexLocations := bootImage.getAnyAndroidVariant().dexLocationsDeps
 	if global.UseArtImage {
 		bootImage = artBootImageConfig(ctx)
 	}
+
+	dexFiles, dexLocations := bcpForDexpreopt(ctx)
 
 	targets := ctx.MultiTargets()
 	if len(targets) == 0 {
@@ -237,7 +237,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 		DexPreoptImagesDeps:     imagesDeps,
 		DexPreoptImageLocations: imageLocations,
 
-		PreoptBootClassPathDexFiles:     dexFiles,
+		PreoptBootClassPathDexFiles:     dexFiles.Paths(),
 		PreoptBootClassPathDexLocations: dexLocations,
 
 		PreoptExtractedApk: false,
