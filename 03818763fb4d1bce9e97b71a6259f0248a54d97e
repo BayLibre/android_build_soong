@@ -141,6 +141,24 @@
       "parentUuid": "d0413cad_6e7db553",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e65d6a_d73687d1",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-19T14:36:34Z",
+      "side": 1,
+      "message": "I would strongly recommend that you separate this move out for a couple of reasons:\n1) It is controversial and it is delaying the move (which is generally good) and the longer that takes the more likely you will suffer conflicts.\n\n2) It is easy to make mistakes when trying to do multiple things at once, e.g. the fact the following is missing:\n    var _ logtagsProducer \u003d (*Module)(nil)",
+      "parentUuid": "e4b2561d_0c901c88",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
