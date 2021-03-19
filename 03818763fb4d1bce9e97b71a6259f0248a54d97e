@@ -195,6 +195,24 @@
       "parentUuid": "84d3249a_17791638",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2f5985_b5dc4235",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-19T21:17:47Z",
+      "side": 1,
+      "message": "I\u0027m fine with having the implementation next to the interface, and we have precedent with in the androidmk.go files.  It needs to be done carefully, as it can be confusing to have parts of the implementation in unexpected places, but this case seems fine.\n\nThis interface should get replaced with a Provider, and then the implementation goes away completely, so its location doesn\u0027t really matter.",
+      "parentUuid": "d68c45ca_d19ef4a9",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
