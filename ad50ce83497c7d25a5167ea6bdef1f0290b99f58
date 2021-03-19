@@ -33,6 +33,24 @@
       "message": "Won\u0027t this break gdbclient? (c.f. b/175820770)",
       "revId": "ad50ce83497c7d25a5167ea6bdef1f0290b99f58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "285087e5_8b5d492d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-03-19T17:33:15Z",
+      "side": 1,
+      "message": "i thought lldb (which is the default now unless you pass --gdb) works?",
+      "parentUuid": "14f4b432_5055e4ac",
+      "revId": "ad50ce83497c7d25a5167ea6bdef1f0290b99f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
