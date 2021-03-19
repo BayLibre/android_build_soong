@@ -69,6 +69,24 @@
       "parentUuid": "6561b4f1_7b1d3d34",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e42c8e_e6f2c582",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-19T10:20:15Z",
+      "side": 1,
+      "message": "\u003e I believe we should avoid putting all methods with the same receiver type in a single file just because the receiver type is the same.\n\nWhile \"go\" allows us to do that I don\u0027t think it is advisable to do so. I don\u0027t think you can find another instance in the current code of that being done so this is confusing.\n\nI think you definitely need Colin and Jiyong\u0027s input before going down that route.\n\n\u003e No other code except logtagsSingleton cares about the logtagsProducer interface and the logtags method.\n\nCertainly logtagsSingleton cares about the logtagsProducer interface but I disagree that it is the only one that cares about it or that it cares about the Module.logtags() implementation at all.\n\nJust because there is currently only one implementation of logtags() method doesn\u0027t mean that will always be the case. The point of using an interface is that the user of that interface doesn\u0027t care what specific implementations there are.\n\nThe Module type is the one that cares that it implements logtagsProducer interface. That is why it has the following:\n    var _ logtagsProducer \u003d (*Module)(nil)\n\nWhich I just noticed has been removed by this change.",
+      "parentUuid": "c76ebf9d_3e066130",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
