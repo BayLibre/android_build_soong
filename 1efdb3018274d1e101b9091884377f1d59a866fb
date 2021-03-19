@@ -52,6 +52,23 @@
       "parentUuid": "1eb9942d_2c5956f6",
       "revId": "1efdb3018274d1e101b9091884377f1d59a866fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b203112_8664af53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-19T11:40:33Z",
+      "side": 1,
+      "message": "Looks like presubmit is fixed.",
+      "revId": "1efdb3018274d1e101b9091884377f1d59a866fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
