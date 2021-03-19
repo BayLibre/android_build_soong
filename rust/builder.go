@@ -45,6 +45,16 @@ var (
 		},
 		"rustcFlags", "linkFlags", "libFlags", "crtBegin", "crtEnd", "envVars")
 
+	_       = pctx.SourcePathVariable("rustdocCmd", "${config.RustBin}/rustdoc")
+	rustdoc = pctx.AndroidStaticRule("rustdoc",
+		blueprint.RuleParams{
+			Command: "rm -rf $outDir && " +
+				"$rustdocCmd $rustdocFlags $in -o $outDir && " +
+				"touch $out",
+			CommandDeps: []string{"$rustdocCmd"},
+		},
+		"rustdocFlags", "outDir")
+
 	_            = pctx.SourcePathVariable("clippyCmd", "${config.RustBin}/clippy-driver")
 	clippyDriver = pctx.AndroidStaticRule("clippy",
 		blueprint.RuleParams{
@@ -131,7 +141,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	var implicits android.Paths
 	var envVars []string
 	var output buildOutput
-	var libFlags, rustcFlags, linkFlags []string
+	var libFlags, rustcFlags, rustdocFlags, linkFlags []string
 	var implicitOutputs android.WritablePaths
 
 	output.outputFile = outputFile
@@ -156,6 +166,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	}
 	if targetTriple != "" {
 		rustcFlags = append(rustcFlags, "--target="+targetTriple)
+		rustdocFlags = append(rustdocFlags, "--target="+targetTriple)
 		linkFlags = append(linkFlags, "-target "+targetTriple)
 	}
 
@@ -266,6 +277,22 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 			"crtBegin":   deps.CrtBegin.String(),
 			"crtEnd":     deps.CrtEnd.String(),
 			"envVars":    strings.Join(envVars, " "),
+		},
+	})
+
+	rustdocFlags = append(rustdocFlags, flags.RustdocFlags...)
+	rustdocFlags = append(rustdocFlags, "--crate-name "+crateName)
+	rustdocFlags = append(rustdocFlags, libFlags...)
+	docTimestampFile := android.PathForModuleOut(ctx, "doc.timestamp")
+	docDir := android.PathForModuleOut(ctx, "doc")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        rustdoc,
+		Description: "rustdoc " + main.Rel(),
+		Output:      docTimestampFile,
+		Inputs:      inputs,
+		Args: map[string]string{
+			"rustdocFlags": strings.Join(rustdocFlags, " "),
+			"outDir":       docDir.String(),
 		},
 	})
 
