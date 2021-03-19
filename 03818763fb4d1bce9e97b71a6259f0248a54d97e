@@ -159,6 +159,24 @@
       "parentUuid": "e4b2561d_0c901c88",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d3249a_17791638",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-19T14:42:37Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think the code structure should depend on the number of consumers of a particular interface. That is a recipe for lots of code churn if the number of consumers goes from 0 \u003c-\u003e 1 \u003c-\u003e many.\n\nThat\u0027s a good point. But, the reality is we have to deal with these type-check interfaces somehow. There are only few places they can live in, and none of them are ideal.\n\n\u003e Longer term we are going to move away from using interfaces on modules and instead have modules use the Provider method to provide the data. That would see those interfaces replaced by simple structures. Colin is actively working on migrating the code to use that.\n\nSure, I also thought to myself if I should rather spend my time on converting these to Providers instead. I\u0027ll discuss it with Colin.",
+      "parentUuid": "e4b2561d_0c901c88",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
