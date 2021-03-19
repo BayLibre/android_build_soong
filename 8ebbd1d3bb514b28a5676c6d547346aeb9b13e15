@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3eaad604_b1c7d890",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-19T11:39:16Z",
+      "side": 1,
+      "message": "This adds support for platform_compat_config in the SDK. I will be uploading some changes to remove the framework dependency and add it to the ART apex later today.",
+      "revId": "8ebbd1d3bb514b28a5676c6d547346aeb9b13e15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
