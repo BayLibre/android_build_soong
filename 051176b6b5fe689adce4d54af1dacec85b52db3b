@@ -46,6 +46,30 @@
       },
       "revId": "051176b6b5fe689adce4d54af1dacec85b52db3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50240659_ed916545",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-19T11:03:59Z",
+      "side": 1,
+      "message": "My job :)",
+      "parentUuid": "abd04e93_47c08d97",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 15
+      },
+      "revId": "051176b6b5fe689adce4d54af1dacec85b52db3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
