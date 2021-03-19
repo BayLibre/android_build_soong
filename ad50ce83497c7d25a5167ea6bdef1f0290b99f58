@@ -16,6 +16,23 @@
       "message": "Awesome!",
       "revId": "ad50ce83497c7d25a5167ea6bdef1f0290b99f58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f4b432_5055e4ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2021-03-19T17:26:50Z",
+      "side": 1,
+      "message": "Won\u0027t this break gdbclient? (c.f. b/175820770)",
+      "revId": "ad50ce83497c7d25a5167ea6bdef1f0290b99f58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
