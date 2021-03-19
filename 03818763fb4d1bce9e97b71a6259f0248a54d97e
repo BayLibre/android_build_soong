@@ -105,6 +105,24 @@
       "parentUuid": "c5e42c8e_e6f2c582",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0413cad_6e7db553",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-19T14:17:10Z",
+      "side": 1,
+      "message": "\u003e While \"go\" allows us to do that I don\u0027t think it is advisable to do so. I don\u0027t think you can find another instance in the current code of that being done so this is confusing.\n\nWell, I was going to make this pattern a convention in the Soong codebase, so it won\u0027t be a problem if we go this route.\n\n\u003e I think you definitely need Colin and Jiyong\u0027s input before going down that route.\n\nSure, I was going to ask for Colin\u0027s input if you don\u0027t agree. He knows Go better than we do, after all.\n\n\u003e Certainly logtagsSingleton cares about the logtagsProducer interface but I disagree that it is the only one that cares about it\n\nWhat else module cares about logtagsProducer at the moment then? We may add more consumer in the future, in which case I have another pattern in mind.\n\n\u003e or that it cares about the Module.logtags() implementation at all.\n\nThat\u0027s the problem. No modules care about Module.logtags() implementation at all. And, it\u0027s just polluting the space.\n\nThe interface and the method are there just because we need a way to tell Java modules apart from other modules. If we could cast an interface to an embedded struct without using a reflect hack, we wouldn\u0027t need these cumbersome mediums. There are multiple instances of using an interface as a mean to check types. For example, the xref interface and its XrefJavaFiles method in java.go that I added a TODO on. No other code than the sole consumer cares about these. They\u0027re sitting in java.go, making it very hard to understand why they have to exist. Some comments may help, but putting them right next to the consumer is the ideal way to make them read naturally.\n\nI expected this would be controversial and am okay with placing the method implementation near the struct definition if Colin opposesthe idea. I feel very strong about at least moving all single-usage interfaces to the consumer side, though, e.g. xref.\n\n\u003e I think even though there is only one caller for this method, it\u0027s important for anyone who reads the code to know that this way of getting data out of java.Module exists.\n\nAny code that has access to this method can access the data without this method. It doesn\u0027t expand the visibility.\n\n\u003e In other words, when I read unknown the code, the question I always ask myself is \"what can this object do\" and if the methods whose receiver is that object are scattered around in multiple files, it\u0027s hard to tell.\n\nThis method doesn\u0027t add any functionality to Module.",
+      "parentUuid": "6e13e4e5_4f3bc068",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
