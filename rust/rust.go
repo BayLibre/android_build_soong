@@ -57,6 +57,7 @@ type Flags struct {
 	RustFlags       []string // Flags that apply to rust
 	LinkFlags       []string // Flags that apply to linker
 	ClippyFlags     []string // Flags that apply to clippy-driver, during the linting
+	RustdocFlags    []string // Flags that apply to rustdoc
 	Toolchain       config.Toolchain
 	Coverage        bool
 	Clippy          bool
@@ -118,6 +119,7 @@ type Module struct {
 	// as a library. The stripped output which is used for installation can be found via
 	// compiler.strippedOutputFile if it exists.
 	unstrippedOutputFile android.OptionalPath
+	docTimestampFile     android.OptionalPath
 
 	hideApexVariantFromMake bool
 }
@@ -334,10 +336,12 @@ type compiler interface {
 	compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path
 	compilerDeps(ctx DepsContext, deps Deps) Deps
 	crateName() string
+	rustdoc(ctx ModuleContext, flags Flags, deps PathDeps) android.OptionalPath
 
 	// Output directory in which source-generated code from dependencies is
 	// copied. This is equivalent to Cargo's OUT_DIR variable.
 	CargoOutDir() android.OptionalPath
+
 	inData() bool
 	install(ctx ModuleContext)
 	relativeInstallPath() string
@@ -732,6 +736,8 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		unstrippedOutputFile := mod.compiler.compile(ctx, flags, deps)
 
 		mod.unstrippedOutputFile = android.OptionalPathForPath(unstrippedOutputFile)
+
+		mod.docTimestampFile = mod.compiler.rustdoc(ctx, flags, deps)
 
 		apexInfo := actx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 		if mod.installable(apexInfo) {
