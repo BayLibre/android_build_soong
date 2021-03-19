@@ -489,8 +489,9 @@ type testRuleBuilderModule struct {
 	properties struct {
 		Srcs []string
 
-		Restat bool
-		Sbox   bool
+		Restat      bool
+		Sbox        bool
+		Sbox_inputs bool
 	}
 }
 
@@ -499,9 +500,15 @@ func (t *testRuleBuilderModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	out := PathForModuleOut(ctx, "gen", ctx.ModuleName())
 	outDep := PathForModuleOut(ctx, "gen", ctx.ModuleName()+".d")
 	outDir := PathForModuleOut(ctx, "gen")
+	rspFile := PathForModuleOut(ctx, "rsp")
+	rspFile2 := PathForModuleOut(ctx, "rsp2")
+	rspFileContents := PathsForSource(ctx, []string{"rsp_in"})
+	rspFileContents2 := PathsForSource(ctx, []string{"rsp_in2"})
 	manifestPath := PathForModuleOut(ctx, "sbox.textproto")
 
-	testRuleBuilder_Build(ctx, in, out, outDep, outDir, manifestPath, t.properties.Restat, t.properties.Sbox)
+	testRuleBuilder_Build(ctx, in, out, outDep, outDir, manifestPath, t.properties.Restat,
+		t.properties.Sbox, t.properties.Sbox_inputs, rspFile, rspFileContents,
+		rspFile2, rspFileContents2)
 }
 
 type testRuleBuilderSingleton struct{}
@@ -515,18 +522,35 @@ func (t *testRuleBuilderSingleton) GenerateBuildActions(ctx SingletonContext) {
 	out := PathForOutput(ctx, "singleton/gen/baz")
 	outDep := PathForOutput(ctx, "singleton/gen/baz.d")
 	outDir := PathForOutput(ctx, "singleton/gen")
+	rspFile := PathForOutput(ctx, "singleton/rsp")
+	rspFile2 := PathForOutput(ctx, "singleton/rsp2")
+	rspFileContents := PathsForSource(ctx, []string{"rsp_in"})
+	rspFileContents2 := PathsForSource(ctx, []string{"rsp_in2"})
 	manifestPath := PathForOutput(ctx, "singleton/sbox.textproto")
-	testRuleBuilder_Build(ctx, Paths{in}, out, outDep, outDir, manifestPath, true, false)
+	testRuleBuilder_Build(ctx, Paths{in}, out, outDep, outDir, manifestPath, true, false, false,
+		rspFile, rspFileContents, rspFile2, rspFileContents2)
 }
 
-func testRuleBuilder_Build(ctx BuilderContext, in Paths, out, outDep, outDir, manifestPath WritablePath, restat, sbox bool) {
+func testRuleBuilder_Build(ctx BuilderContext, in Paths, out, outDep, outDir, manifestPath WritablePath,
+	restat, sbox, sboxInputs bool,
+	rspFile WritablePath, rspFileContents Paths, rspFile2 WritablePath, rspFileContents2 Paths) {
+
 	rule := NewRuleBuilder(pctx, ctx)
 
 	if sbox {
 		rule.Sbox(outDir, manifestPath)
+		if sboxInputs {
+			rule.SandboxInputs()
+		}
 	}
 
-	rule.Command().Tool(PathForSource(ctx, "cp")).Inputs(in).Output(out).ImplicitDepFile(outDep)
+	rule.Command().
+		Tool(PathForSource(ctx, "cp")).
+		Inputs(in).
+		Output(out).
+		ImplicitDepFile(outDep).
+		FlagWithRspFileInputList("@", rspFile, rspFileContents).
+		FlagWithRspFileInputList("@", rspFile2, rspFileContents2)
 
 	if restat {
 		rule.Restat()
@@ -557,6 +581,12 @@ func TestRuleBuilder_Build(t *testing.T) {
 			srcs: ["bar"],
 			sbox: true,
 		}
+		rule_builder_test {
+			name: "foo_sbox_inputs",
+			srcs: ["bar"],
+			sbox: true,
+			sbox_inputs: true,
+		}
 	`
 
 	result := emptyTestFixtureFactory.RunTest(t,
@@ -565,7 +595,10 @@ func TestRuleBuilder_Build(t *testing.T) {
 		fs.AddToFixture(),
 	)
 
-	check := func(t *testing.T, params TestingBuildParams, wantCommand, wantOutput, wantDepfile string, wantRestat bool, extraImplicits, extraCmdDeps []string) {
+	check := func(t *testing.T, params TestingBuildParams, rspFile2Params TestingBuildParams,
+		wantCommand, wantOutput, wantDepfile, wantRspFile, wantRspFile2 string,
+		wantRestat bool, extraImplicits, extraCmdDeps []string) {
+
 		t.Helper()
 		command := params.RuleParams.Command
 		re := regexp.MustCompile(" # hash of input list: [a-z0-9]*$")
@@ -578,8 +611,18 @@ func TestRuleBuilder_Build(t *testing.T) {
 
 		AssertBoolEquals(t, "RuleParams.Restat", wantRestat, params.RuleParams.Restat)
 
+		wantInputs := []string{"rsp_in"}
+		AssertArrayString(t, "Inputs", wantInputs, params.Inputs.Strings())
+
 		wantImplicits := append([]string{"bar"}, extraImplicits...)
+		// The second rsp file and the files listed in it should be in implicits
+		wantImplicits = append(wantImplicits, "rsp_in2", wantRspFile2)
 		AssertArrayString(t, "Implicits", wantImplicits, params.Implicits.Strings())
+
+		wantRspFileContent := "$in"
+		AssertStringEquals(t, "RspfileContent", wantRspFileContent, params.RuleParams.RspfileContent)
+
+		AssertStringEquals(t, "Rspfile", wantRspFile, params.RuleParams.Rspfile)
 
 		AssertStringEquals(t, "Output", wantOutput, params.Output.String())
 
@@ -592,20 +635,44 @@ func TestRuleBuilder_Build(t *testing.T) {
 		if params.Deps != blueprint.DepsGCC {
 			t.Errorf("want Deps = %q, got %q", blueprint.DepsGCC, params.Deps)
 		}
+
+		rspFile2Content := ContentFromFileRuleForTests(t, rspFile2Params)
+		AssertStringEquals(t, "rspFile2 content", "rsp_in2\n", rspFile2Content)
 	}
 
 	buildDir := result.Config.BuildDir()
 
 	t.Run("module", func(t *testing.T) {
 		outFile := filepath.Join(buildDir, ".intermediates", "foo", "gen", "foo")
-		check(t, result.ModuleForTests("foo", "").Rule("rule"),
-			"cp bar "+outFile,
-			outFile, outFile+".d", true, nil, nil)
+		rspFile := filepath.Join(buildDir, ".intermediates", "foo", "rsp")
+		rspFile2 := filepath.Join(buildDir, ".intermediates", "foo", "rsp2")
+		module := result.ModuleForTests("foo", "")
+		check(t, module.Rule("rule"), module.Output(rspFile2),
+			"cp bar "+outFile+" @"+rspFile+" @"+rspFile2,
+			outFile, outFile+".d", rspFile, rspFile2, true, nil, nil)
 	})
 	t.Run("sbox", func(t *testing.T) {
 		outDir := filepath.Join(buildDir, ".intermediates", "foo_sbox")
 		outFile := filepath.Join(outDir, "gen/foo_sbox")
 		depFile := filepath.Join(outDir, "gen/foo_sbox.d")
+		rspFile := filepath.Join(buildDir, ".intermediates", "foo_sbox", "rsp")
+		rspFile2 := filepath.Join(buildDir, ".intermediates", "foo_sbox", "rsp2")
+		manifest := filepath.Join(outDir, "sbox.textproto")
+		sbox := filepath.Join(buildDir, "host", result.Config.PrebuiltOS(), "bin/sbox")
+		sandboxPath := shared.TempDirForOutDir(buildDir)
+
+		cmd := `rm -rf ` + outDir + `/gen && ` +
+			sbox + ` --sandbox-path ` + sandboxPath + ` --manifest ` + manifest
+		module := result.ModuleForTests("foo_sbox", "")
+		check(t, module.Output("gen/foo_sbox"), module.Output(rspFile2),
+			cmd, outFile, depFile, rspFile, rspFile2, false, []string{manifest}, []string{sbox})
+	})
+	t.Run("sbox_inputs", func(t *testing.T) {
+		outDir := filepath.Join(buildDir, ".intermediates", "foo_sbox_inputs")
+		outFile := filepath.Join(outDir, "gen/foo_sbox_inputs")
+		depFile := filepath.Join(outDir, "gen/foo_sbox_inputs.d")
+		rspFile := filepath.Join(buildDir, ".intermediates", "foo_sbox_inputs", "rsp")
+		rspFile2 := filepath.Join(buildDir, ".intermediates", "foo_sbox_inputs", "rsp2")
 		manifest := filepath.Join(outDir, "sbox.textproto")
 		sbox := filepath.Join(buildDir, "host", result.Config.PrebuiltOS(), "bin/sbox")
 		sandboxPath := shared.TempDirForOutDir(buildDir)
@@ -613,13 +680,18 @@ func TestRuleBuilder_Build(t *testing.T) {
 		cmd := `rm -rf ` + outDir + `/gen && ` +
 			sbox + ` --sandbox-path ` + sandboxPath + ` --manifest ` + manifest
 
-		check(t, result.ModuleForTests("foo_sbox", "").Output("gen/foo_sbox"),
-			cmd, outFile, depFile, false, []string{manifest}, []string{sbox})
+		module := result.ModuleForTests("foo_sbox_inputs", "")
+		check(t, module.Output("gen/foo_sbox_inputs"), module.Output(rspFile2),
+			cmd, outFile, depFile, rspFile, rspFile2, false, []string{manifest}, []string{sbox})
 	})
 	t.Run("singleton", func(t *testing.T) {
 		outFile := filepath.Join(buildDir, "singleton/gen/baz")
-		check(t, result.SingletonForTests("rule_builder_test").Rule("rule"),
-			"cp bar "+outFile, outFile, outFile+".d", true, nil, nil)
+		rspFile := filepath.Join(buildDir, "singleton/rsp")
+		rspFile2 := filepath.Join(buildDir, "singleton/rsp2")
+		singleton := result.SingletonForTests("rule_builder_test")
+		check(t, singleton.Rule("rule"), singleton.Output(rspFile2),
+			"cp bar "+outFile+" @"+rspFile+" @"+rspFile2,
+			outFile, outFile+".d", rspFile, rspFile2, true, nil, nil)
 	})
 }
 
