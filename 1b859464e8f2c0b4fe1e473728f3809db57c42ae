@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "156e8aa4_38aac430",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-19T19:37:26Z",
+      "side": 1,
+      "message": "I extracted the appendPreparers method to reuse it.",
+      "revId": "1b859464e8f2c0b4fe1e473728f3809db57c42ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
