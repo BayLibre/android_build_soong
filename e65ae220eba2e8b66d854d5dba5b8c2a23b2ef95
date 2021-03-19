@@ -140,6 +140,30 @@
       },
       "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482ce3a0_fb71e0bb",
+        "filename": "mk2rbc/test/soong_included.mk.test",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:10:31Z",
+      "side": 1,
+      "message": "DisablePreopt is the name used within soong.variables -- I don\u0027t see any evidence of it in this code, are we dropping this entirely?\n\nIf we are dropping this, do we have a plan for how we are recovering this information to feed into Soong?",
+      "parentUuid": "a836ad11_bdc0082a",
+      "range": {
+        "startLine": 1,
+        "startChar": 24,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
