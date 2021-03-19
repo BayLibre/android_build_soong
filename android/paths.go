@@ -1633,6 +1633,15 @@ func PathForMainlineSdksInstall(ctx PathContext, paths ...string) InstallPath {
 	return pathForNdkOrSdkInstall(ctx, "mainline-sdks", paths)
 }
 
+func PathForRustdocInstall(ctx PathContext, paths ...string) InstallPath {
+	base := InstallPath{
+		basePath:     basePath{"rustdoc", ctx.Config(), ""},
+		partitionDir: "rustdoc",
+		makePath:     false,
+	}
+	return base.Join(ctx, paths...)
+}
+
 func InstallPathToOnDevicePath(ctx PathContext, path InstallPath) string {
 	rel := Rel(ctx, PathForOutput(ctx, "target", "product", ctx.Config().DeviceName()).String(), path.String())
 
