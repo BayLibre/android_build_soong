@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39114b09_39135ab2",
+        "filename": "android/bazel.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-19T01:47:19Z",
+      "side": 1,
+      "message": "I might have missed it, but can you add a comment with some examples somewhere (here or elsewhere)\n\ne.g. an example of converting a subtree but opting out some modules",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 70
+      },
+      "revId": "847a50579fb082436487579d81f5cad85d8fdcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
