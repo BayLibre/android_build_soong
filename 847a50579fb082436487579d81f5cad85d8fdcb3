@@ -22,6 +22,30 @@
       },
       "revId": "847a50579fb082436487579d81f5cad85d8fdcb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84970be_4867d688",
+        "filename": "android/bazel.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-19T09:23:41Z",
+      "side": 1,
+      "message": "Done, and I also added tests that evaluate against a mock set of Blueprint files and a custom configuration.",
+      "parentUuid": "39114b09_39135ab2",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 70
+      },
+      "revId": "847a50579fb082436487579d81f5cad85d8fdcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
