@@ -227,9 +227,6 @@ func NewFixtureFactory(buildDirSupplier *string, preparers ...FixturePreparer) F
 	return &fixtureFactory{
 		buildDirSupplier: buildDirSupplier,
 		preparers:        dedupAndFlattenPreparers(nil, preparers),
-
-		// Set the default error handler.
-		errorHandler: FixtureExpectsNoErrors,
 	}
 }
 
@@ -618,7 +615,6 @@ var _ FixtureFactory = (*fixtureFactory)(nil)
 type fixtureFactory struct {
 	buildDirSupplier *string
 	preparers        []*simpleFixturePreparer
-	errorHandler     FixtureErrorHandler
 }
 
 func (f *fixtureFactory) Extend(preparers ...FixturePreparer) FixtureFactory {
@@ -650,12 +646,13 @@ func (f *fixtureFactory) Fixture(t *testing.T, preparers ...FixturePreparer) Fix
 	config := TestConfig(buildDir, nil, "", nil)
 	ctx := NewTestContext(config)
 	fixture := &fixture{
-		preparers:    all,
-		t:            t,
-		config:       config,
-		ctx:          ctx,
-		mockFS:       make(MockFS),
-		errorHandler: f.errorHandler,
+		preparers: all,
+		t:         t,
+		config:    config,
+		ctx:       ctx,
+		mockFS:    make(MockFS),
+		// Set the default error handler.
+		errorHandler: FixtureExpectsNoErrors,
 	}
 
 	for _, preparer := range all {
@@ -666,10 +663,9 @@ func (f *fixtureFactory) Fixture(t *testing.T, preparers ...FixturePreparer) Fix
 }
 
 func (f *fixtureFactory) ExtendWithErrorHandler(errorHandler FixtureErrorHandler) FixtureFactory {
-	newFactory := &fixtureFactory{}
-	*newFactory = *f
-	newFactory.errorHandler = errorHandler
-	return newFactory
+	return f.Extend(newSimpleFixturePreparer(func(fixture *fixture) {
+		fixture.errorHandler = errorHandler
+	}))
 }
 
 func (f *fixtureFactory) RunTest(t *testing.T, preparers ...FixturePreparer) *TestResult {
