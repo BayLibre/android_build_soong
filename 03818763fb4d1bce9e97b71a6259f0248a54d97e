@@ -123,6 +123,24 @@
       "parentUuid": "6e13e4e5_4f3bc068",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b2561d_0c901c88",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-19T14:33:31Z",
+      "side": 1,
+      "message": "\u003e We may add more consumer in the future, in which case I have another pattern in mind.\n\nI don\u0027t think the code structure should depend on the number of consumers of a particular interface. That is a recipe for lots of code churn if the number of consumers goes from 0 \u003c-\u003e 1 \u003c-\u003e many.\n\n\u003e The interface and the method are there just because we need a way to tell Java modules apart from other modules.\n\nLonger term we are going to move away from using interfaces on modules and instead have modules use the Provider method to provide the data. That would see those interfaces replaced by simple structures. Colin is actively working on migrating the code to use that.",
+      "parentUuid": "d0413cad_6e7db553",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
