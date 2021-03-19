@@ -34,6 +34,24 @@
       "parentUuid": "bfc78119_8b9723d5",
       "revId": "b77b0c5e05a1e16fd959bc9be5a89d238924ac53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f047da6_58e72524",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-19T11:07:10Z",
+      "side": 1,
+      "message": "I think it\u0027s fine as is for now:\n- it wouldn\u0027t fail droidcore targets accidentally;\n- it works on mainline-prod as expected;\n\nhappy to change to ErrorRule in a follow up if you prefer.",
+      "parentUuid": "4b6d8d3d_6a63fa00",
+      "revId": "b77b0c5e05a1e16fd959bc9be5a89d238924ac53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
