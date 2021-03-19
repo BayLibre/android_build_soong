@@ -45,6 +45,16 @@ var (
 		},
 		"rustcFlags", "linkFlags", "libFlags", "crtBegin", "crtEnd", "envVars")
 
+	_       = pctx.SourcePathVariable("rustdocCmd", "${config.RustBin}/rustdoc")
+	rustdoc = pctx.AndroidStaticRule("rustdoc",
+		blueprint.RuleParams{
+			Command: "rm -rf $outDir && " +
+				"$rustdocCmd $rustdocFlags $in -o $outDir && " +
+				"touch $out",
+			CommandDeps: []string{"$rustdocCmd"},
+		},
+		"rustdocFlags", "outDir")
+
 	_            = pctx.SourcePathVariable("clippyCmd", "${config.RustBin}/clippy-driver")
 	clippyDriver = pctx.AndroidStaticRule("clippy",
 		blueprint.RuleParams{
@@ -83,37 +93,37 @@ func init() {
 }
 
 func TransformSrcToBinary(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, linkDirs []string) buildOutput {
+	outputFile android.WritablePath) buildOutput {
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto")
 
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "bin", linkDirs)
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "bin")
 }
 
 func TransformSrctoRlib(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, linkDirs []string) buildOutput {
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "rlib", linkDirs)
+	outputFile android.WritablePath) buildOutput {
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "rlib")
 }
 
 func TransformSrctoDylib(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, linkDirs []string) buildOutput {
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "dylib", linkDirs)
+	outputFile android.WritablePath) buildOutput {
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "dylib")
 }
 
 func TransformSrctoStatic(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, linkDirs []string) buildOutput {
+	outputFile android.WritablePath) buildOutput {
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto")
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "staticlib", linkDirs)
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "staticlib")
 }
 
 func TransformSrctoShared(ctx ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, linkDirs []string) buildOutput {
+	outputFile android.WritablePath) buildOutput {
 	flags.GlobalRustFlags = append(flags.GlobalRustFlags, "-C lto")
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "cdylib", linkDirs)
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "cdylib")
 }
 
 func TransformSrctoProcMacro(ctx ModuleContext, mainSrc android.Path, deps PathDeps,
-	flags Flags, outputFile android.WritablePath, linkDirs []string) buildOutput {
-	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "proc-macro", linkDirs)
+	flags Flags, outputFile android.WritablePath) buildOutput {
+	return transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "proc-macro")
 }
 
 func rustLibsToPaths(libs RustLibraries) android.Paths {
@@ -124,14 +134,35 @@ func rustLibsToPaths(libs RustLibraries) android.Paths {
 	return paths
 }
 
+func makeLibFlags(deps PathDeps) []string {
+	var libFlags []string
+
+	// Collect library/crate flags
+	for _, lib := range deps.RLibs {
+		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+lib.Path.String())
+	}
+	for _, lib := range deps.DyLibs {
+		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+lib.Path.String())
+	}
+	for _, proc_macro := range deps.ProcMacros {
+		libFlags = append(libFlags, "--extern "+proc_macro.CrateName+"="+proc_macro.Path.String())
+	}
+
+	for _, path := range deps.linkDirs {
+		libFlags = append(libFlags, "-L "+path)
+	}
+
+	return libFlags
+}
+
 func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, flags Flags,
-	outputFile android.WritablePath, crate_type string, linkDirs []string) buildOutput {
+	outputFile android.WritablePath, crate_type string) buildOutput {
 
 	var inputs android.Paths
 	var implicits android.Paths
 	var envVars []string
 	var output buildOutput
-	var libFlags, rustcFlags, linkFlags []string
+	var rustcFlags, linkFlags []string
 	var implicitOutputs android.WritablePaths
 
 	output.outputFile = outputFile
@@ -166,20 +197,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
 	linkFlags = append(linkFlags, flags.LinkFlags...)
 
-	// Collect library/crate flags
-	for _, lib := range deps.RLibs {
-		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+lib.Path.String())
-	}
-	for _, lib := range deps.DyLibs {
-		libFlags = append(libFlags, "--extern "+lib.CrateName+"="+lib.Path.String())
-	}
-	for _, proc_macro := range deps.ProcMacros {
-		libFlags = append(libFlags, "--extern "+proc_macro.CrateName+"="+proc_macro.Path.String())
-	}
-
-	for _, path := range linkDirs {
-		libFlags = append(libFlags, "-L "+path)
-	}
+	libFlags := makeLibFlags(deps)
 
 	// Collect dependencies
 	implicits = append(implicits, rustLibsToPaths(deps.RLibs)...)
@@ -270,4 +288,40 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	})
 
 	return output
+}
+
+func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps,
+	flags Flags) android.InstallPath {
+
+	rustdocFlags := append([]string{}, flags.RustdocFlags...)
+
+	targetTriple := ctx.toolchain().RustTriple()
+
+	// Collect rustc flags
+	if targetTriple != "" {
+		rustdocFlags = append(rustdocFlags, "--target="+targetTriple)
+	}
+
+	crateName := ctx.RustModule().CrateName()
+	if crateName != "" {
+		rustdocFlags = append(rustdocFlags, "--crate-name "+crateName)
+	}
+
+	rustdocFlags = append(rustdocFlags, makeLibFlags(deps)...)
+	docTimestampFile := android.PathForRustdocInstall(
+		ctx, ctx.ModuleName()+".timestamp")
+	docDir := android.PathForRustdocInstall(ctx, ctx.ModuleName())
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        rustdoc,
+		Description: "rustdoc " + main.Rel(),
+		Output:      docTimestampFile,
+		Input:       main,
+		Args: map[string]string{
+			"rustdocFlags": strings.Join(rustdocFlags, " "),
+			"outDir":       docDir.String(),
+		},
+	})
+
+	return docTimestampFile
 }

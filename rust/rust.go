@@ -57,6 +57,7 @@ type Flags struct {
 	RustFlags       []string // Flags that apply to rust
 	LinkFlags       []string // Flags that apply to linker
 	ClippyFlags     []string // Flags that apply to clippy-driver, during the linting
+	RustdocFlags    []string // Flags that apply to rustdoc
 	Toolchain       config.Toolchain
 	Coverage        bool
 	Clippy          bool
@@ -114,7 +115,8 @@ type Module struct {
 	sourceProvider   SourceProvider
 	subAndroidMkOnce map[SubAndroidMkProvider]bool
 
-	outputFile android.OptionalPath
+	outputFile       android.OptionalPath
+	docTimestampFile android.OptionalPath
 
 	hideApexVariantFromMake bool
 }
@@ -325,6 +327,8 @@ type compiler interface {
 	compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path
 	compilerDeps(ctx DepsContext, deps Deps) Deps
 	crateName() string
+
+	rustdoc(ctx ModuleContext, flags Flags, deps PathDeps) android.OptionalPath
 
 	inData() bool
 	install(ctx ModuleContext)
@@ -714,6 +718,8 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		outputFile := mod.compiler.compile(ctx, flags, deps)
 
 		mod.outputFile = android.OptionalPathForPath(outputFile)
+
+		mod.docTimestampFile = mod.compiler.rustdoc(ctx, flags, deps)
 
 		apexInfo := actx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 		if mod.installable(apexInfo) {
