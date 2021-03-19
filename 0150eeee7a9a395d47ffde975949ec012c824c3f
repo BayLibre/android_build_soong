@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bebeade_53733665",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "That\u0027s helpful to know, it\u0027s unclear from reading the code what the intended user journeys are and that converting multiple files at once is primarily a developer journey.",
+      "parentUuid": "d0bf7dda_1942b424",
+      "range": {
+        "startLine": 51,
+        "startChar": 78,
+        "endLine": 51,
+        "endChar": 126
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "926b0567_cc4e5d24",
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45fd0ed4_1f6c6e61",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "But once we settle, there will be just one suffix for all product config files, correct?",
+      "parentUuid": "551e061e_045073d6",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2095dc0b_e7e7ccc2",
         "filename": "mk2rbc/cmd/mk2rbc.go",
         "patchSetId": 27
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "During the testing I use --all option in order to convert all the product configuration makefiles and see what fails (this is also why there is somewhat baroque statistics gathering inteface). Once the dust settles, this option can go away.",
       "parentUuid": "2095dc0b_e7e7ccc2",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 53
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c476fb18_cb5e03c5",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "Can we add some TODOs as to which behaviors are for debugging and will be removed, to help indicate which are the intended user workflows?",
+      "parentUuid": "106805a1_dbc0b4d6",
       "range": {
         "startLine": 102,
         "startChar": 2,
@@ -414,6 +486,30 @@
       "side": 1,
       "message": "This name should never be output, hence \u0027!\u0027 (it is checked in callExr.emit()",
       "parentUuid": "349f759f_0d823e8d",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66271087_be03e2ae",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "It requires a few steps to know that what it is in knownFunctions could eventually become a callExpr, and then to also know that that \"!\" should never be output, which are both indicated in a separate file -- please add a comment here that anything starting with ! is an unsupported function",
+      "parentUuid": "27148e6d_872fccb5",
       "range": {
         "startLine": 74,
         "startChar": 42,

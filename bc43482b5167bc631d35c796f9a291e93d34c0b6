@@ -349,6 +349,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88055e1a_0c0d09d1",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "The person not familiar with the code could be a Noogler on our team, not an external user, it is useful for them to understand the issue also",
+      "parentUuid": "d7677a12_f653f208",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d72f1202_3683af74",
@@ -730,6 +754,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81d383e6_aa29748a",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "Anyone writing a product configuration file will be using this, making it part of our user interface, a meaningful name will be easier to remember and use. We can defer renaming at this point, but before we begin checking in product configuration files and have users, we should evaluate the user interface and consider the impact on users.",
+      "parentUuid": "5414841e_185ff9ae",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8056c362_17f5d3ef",
         "filename": "mk2rbc/mk2rbc.go",
         "patchSetId": 21
@@ -825,6 +873,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68ad76a1_dfc17e25",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "go/code-review#look_for explicitly calls out clarity of naming as a goal of code review. The prefix here is unclear, and it would be fairly simple to increase the clarity, e.g. using converted or rblf instead of cfn, would make to the reader that these are these are for post-conversion.",
+      "parentUuid": "7a3510ba_af6780ff",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b318ac02_423f33b8",
         "filename": "mk2rbc/mk2rbc.go",
         "patchSetId": 21
@@ -908,6 +980,30 @@
       "side": 1,
       "message": "Please see above.",
       "parentUuid": "9f9ec079_62412846",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c9935d_ed4845e9",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "As noted above, one aspect of code review is about making sure that the code is clear to someone other than the author. Updating the naming here helps ensure someone doesn\u0027t need to go back to this code review to understand the naming.",
+      "parentUuid": "cd23c8c4_f460525f",
       "range": {
         "startLine": 45,
         "startChar": 1,

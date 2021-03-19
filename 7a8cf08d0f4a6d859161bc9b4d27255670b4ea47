@@ -516,6 +516,30 @@
       },
       "revId": "7a8cf08d0f4a6d859161bc9b4d27255670b4ea47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d987bbab_b9b6af61",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-19T15:29:21Z",
+      "side": 1,
+      "message": "All other variables are stored in ctx.variables[name] and then returned, this one is not. Is that intentional, if so, please add a comment as to why.",
+      "parentUuid": "95fd1394_2184a23d",
+      "range": {
+        "startLine": 295,
+        "startChar": 3,
+        "endLine": 295,
+        "endChar": 9
+      },
+      "revId": "7a8cf08d0f4a6d859161bc9b4d27255670b4ea47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
