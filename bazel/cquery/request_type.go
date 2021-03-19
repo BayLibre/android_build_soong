@@ -5,18 +5,20 @@ import (
 )
 
 var (
-	GetOutputFiles                 RequestType = &getOutputFilesRequestType{}
-	GetCcObjectFiles               RequestType = &getCcObjectFilesRequestType{}
-	GetOutputFilesAndCcObjectFiles RequestType = &getOutputFilesAndCcObjectFilesType{}
+	GetOutputFiles   RequestType = &getOutputFilesRequestType{}
+	GetCcObjectFiles RequestType = &getCcObjectFilesRequestType{}
+	GetCcLibraryInfo RequestType = &getCcLibraryInfoType{}
 )
 
-type GetOutputFilesAndCcObjectFiles_Result struct {
-	OutputFiles   []string
-	CcObjectFiles []string
+type GetCcLibraryInfo_Result struct {
+	OutputFiles    []string
+	CcObjectFiles  []string
+	Includes       []string
+	SystemIncludes []string
 }
 
 var RequestTypes []RequestType = []RequestType{
-	GetOutputFiles, GetCcObjectFiles, GetOutputFilesAndCcObjectFiles}
+	GetOutputFiles, GetCcObjectFiles, GetCcLibraryInfo}
 
 type RequestType interface {
 	// Name returns a string name for this request type. Such request type names must be unique,
@@ -77,34 +79,43 @@ func (g getCcObjectFilesRequestType) ParseResult(rawString string) interface{} {
 	return strings.Split(rawString, ", ")
 }
 
-type getOutputFilesAndCcObjectFilesType struct{}
+type getCcLibraryInfoType struct{}
 
-func (g getOutputFilesAndCcObjectFilesType) Name() string {
+func (g getCcLibraryInfoType) Name() string {
 	return "getOutputFilesAndCcObjectFiles"
 }
 
-func (g getOutputFilesAndCcObjectFilesType) StarlarkFunctionBody() string {
+func (g getCcLibraryInfoType) StarlarkFunctionBody() string {
 	return `
 outputFiles = [f.path for f in target.files.to_list()]
 
 ccObjectFiles = []
 linker_inputs = providers(target)["CcInfo"].linking_context.linker_inputs.to_list()
 
+includes = providers(target)["CcInfo"].compilation_context.includes.to_list()
+system_includes = providers(target)["CcInfo"].compilation_context.system_includes.to_list()
+
 for linker_input in linker_inputs:
   for library in linker_input.libraries:
     for object in library.objects:
       ccObjectFiles += [object.path]
-return ', '.join(outputFiles) + "|" + ', '.join(ccObjectFiles)`
+
+ret = ', '.join(outputFiles)
+ret += "|" + ', '.join(ccObjectFiles)
+ret += "|" + ', '.join(includes)
+ret += "|" + ', '.join(system_includes)
+
+return ret`
 }
 
-func (g getOutputFilesAndCcObjectFilesType) ParseResult(rawString string) interface{} {
-	var outputFiles []string
-	var ccObjects []string
-
+func (g getCcLibraryInfoType) ParseResult(rawString string) interface{} {
 	splitString := strings.Split(rawString, "|")
-	outputFilesString := splitString[0]
-	ccObjectsString := splitString[1]
-	outputFiles = strings.Split(outputFilesString, ", ")
-	ccObjects = strings.Split(ccObjectsString, ", ")
-	return GetOutputFilesAndCcObjectFiles_Result{outputFiles, ccObjects}
+	outputFiles := strings.Split(splitString[0], ", ")
+	ccObjects := strings.Split(splitString[1], ", ")
+	includes := strings.Split(splitString[2], ", ")
+	systemIncludes := strings.Split(splitString[3], ", ")
+
+	return GetCcLibraryInfo_Result{
+		outputFiles, ccObjects,
+		includes, systemIncludes}
 }

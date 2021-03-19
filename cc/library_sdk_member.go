@@ -164,7 +164,10 @@ func (mt *librarySdkMemberType) CreateVariantPropertiesStruct() android.SdkMembe
 
 func isGeneratedHeaderDirectory(p android.Path) bool {
 	_, gen := p.(android.WritablePath)
-	return gen
+	// TODO(b/183213331): Here we assume that bazel-based headers are not generated; we need
+	// to support generated headers in mixed builds.
+	_, bazel := p.(android.BazelOutPath)
+	return gen && !bazel
 }
 
 type includeDirsProperty struct {

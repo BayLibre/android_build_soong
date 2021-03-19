@@ -60,9 +60,8 @@ type BazelContext interface {
 	// Retrieves these files from Bazel's CcInfo provider.
 	GetCcObjectFiles(label string, archType ArchType) ([]string, bool)
 
-	// TODO(cparsons): Other cquery-related methods should be added here.
 	// Returns the results of GetOutputFiles and GetCcObjectFiles in a single query (in that order).
-	GetOutputFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool)
+	GetCcLibraryInfo(label string, archType ArchType) (cquery.GetCcLibraryInfo_Result, bool)
 
 	// ** End cquery methods
 
@@ -121,9 +120,8 @@ func (m MockBazelContext) GetCcObjectFiles(label string, archType ArchType) ([]s
 	return result, ok
 }
 
-func (m MockBazelContext) GetOutputFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool) {
-	result, ok := m.AllFiles[label]
-	return result, result, ok
+func (m MockBazelContext) GetCcLibraryInfo(label string, archType ArchType) (cquery.GetCcLibraryInfo_Result, bool) {
+	return cquery.GetCcLibraryInfo_Result{}, false
 }
 
 func (m MockBazelContext) InvokeBazel() error {
@@ -164,19 +162,16 @@ func (bazelCtx *bazelContext) GetCcObjectFiles(label string, archType ArchType) 
 	return returnResult, ok
 }
 
-func (bazelCtx *bazelContext) GetOutputFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool) {
-	var outputFiles []string
-	var ccObjects []string
+func (bazelCtx *bazelContext) GetCcLibraryInfo(label string, archType ArchType) (cquery.GetCcLibraryInfo_Result, bool) {
+	var returnResult cquery.GetCcLibraryInfo_Result
 
-	result, ok := bazelCtx.cquery(label, cquery.GetOutputFilesAndCcObjectFiles, archType)
+	result, ok := bazelCtx.cquery(label, cquery.GetCcLibraryInfo, archType)
 	if ok {
 		bazelOutput := strings.TrimSpace(result)
-		returnResult := cquery.GetOutputFilesAndCcObjectFiles.ParseResult(bazelOutput).(cquery.GetOutputFilesAndCcObjectFiles_Result)
-		outputFiles = returnResult.OutputFiles
-		ccObjects = returnResult.CcObjectFiles
+		returnResult = cquery.GetCcLibraryInfo.ParseResult(bazelOutput).(cquery.GetCcLibraryInfo_Result)
 	}
 
-	return outputFiles, ccObjects, ok
+	return returnResult, ok
 }
 
 func (n noopBazelContext) GetOutputFiles(label string, archType ArchType) ([]string, bool) {
@@ -187,7 +182,7 @@ func (n noopBazelContext) GetCcObjectFiles(label string, archType ArchType) ([]s
 	panic("unimplemented")
 }
 
-func (n noopBazelContext) GetOutputFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool) {
+func (n noopBazelContext) GetCcLibraryInfo(label string, archType ArchType) (cquery.GetCcLibraryInfo_Result, bool) {
 	panic("unimplemented")
 }
 

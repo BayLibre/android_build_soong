@@ -335,11 +335,18 @@ func (f *flagExporter) addExportedGeneratedHeaders(headers ...android.Path) {
 
 func (f *flagExporter) setProvider(ctx android.ModuleContext) {
 	ctx.SetProvider(FlagExporterInfoProvider, FlagExporterInfo{
-		IncludeDirs:       f.dirs,
+		// Comes from Export_include_dirs property, and those of transitive deps
+		IncludeDirs: f.dirs,
+		// Comes from Export_system_include_dirs property, and those of transitive deps
 		SystemIncludeDirs: f.systemDirs,
-		Flags:             f.flags,
-		Deps:              f.deps,
-		GeneratedHeaders:  f.headers,
+		// Used in very few places as a one-off way of adding extra defines.
+		Flags: f.flags,
+		// Used sparingly, for extra files that need to be explicitly exported to dependers,
+		// or for phony files to minimize ninja.
+		Deps: f.deps,
+		// For exported generated headers, such as exported aidl headers, proto headers, or
+		// sysprop headers.
+		GeneratedHeaders: f.headers,
 	})
 }
 
@@ -415,10 +422,12 @@ type staticLibraryBazelHandler struct {
 
 func (handler *staticLibraryBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
 	bazelCtx := ctx.Config().BazelContext
-	outputPaths, objPaths, ok := bazelCtx.GetOutputFilesAndCcObjectFiles(label, ctx.Arch().ArchType)
+	queryResult, ok := bazelCtx.GetCcLibraryInfo(label, ctx.Arch().ArchType)
 	if !ok {
 		return ok
 	}
+	outputPaths := queryResult.OutputFiles
+	objPaths := queryResult.CcObjectFiles
 	if len(outputPaths) != 1 {
 		// TODO(cparsons): This is actually expected behavior for static libraries with no srcs.
 		// We should support this.
@@ -436,16 +445,31 @@ func (handler *staticLibraryBazelHandler) generateBazelBuildActions(ctx android.
 		objFiles: objFiles,
 	}
 
+	includes := make(android.Paths, len(queryResult.Includes))
+	for i, includePath := range queryResult.Includes {
+		includes[i] = android.PathForBazelOut(ctx, includePath)
+	}
+
+	systemIncludes := make(android.Paths, len(queryResult.SystemIncludes))
+	for i, includePath := range queryResult.SystemIncludes {
+		systemIncludes[i] = android.PathForBazelOut(ctx, includePath)
+	}
+
 	ctx.SetProvider(StaticLibraryInfoProvider, StaticLibraryInfo{
 		StaticLibrary: outputFilePath,
 		ReuseObjects:  objects,
 		Objects:       objects,
 
 		// TODO(cparsons): Include transitive static libraries in this provider to support
-		// static libraries with deps.
+		// static libraries with deps. (whole-static-libs deps are handled via propagated
+		// objects, though.)
 		TransitiveStaticLibrariesForOrdering: android.NewDepSetBuilder(android.TOPOLOGICAL).
 			Direct(outputFilePath).
 			Build(),
+	})
+	ctx.SetProvider(FlagExporterInfoProvider, FlagExporterInfo{
+		IncludeDirs:       includes,
+		SystemIncludeDirs: systemIncludes,
 	})
 	handler.module.outputFile = android.OptionalPathForPath(android.PathForBazelOut(ctx, objPaths[0]))
 	return ok
