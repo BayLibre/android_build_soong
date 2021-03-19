@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce883925_5ffdb229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-19T11:29:45Z",
+      "side": 1,
+      "message": "Martin, this stack of changes migrated enough of the sdk package to use test fixtures to allow me to adds the test for boot_image that you requested. Would you mind reviewing them? If you want I can go through and add you as a reviewer but I find that just generates lots of email noise.",
+      "revId": "ed5155793e8f3eb68e8d4aee16bbc4eee09aec1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
