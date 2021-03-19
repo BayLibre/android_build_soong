@@ -70,6 +70,30 @@
       },
       "revId": "60dc41462ae0bffa0d08338a2bed281b8aa78a82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5cf1c2a_02745c82",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-19T01:49:29Z",
+      "side": 1,
+      "message": "Sure I just meant that we could also delete the bit below",
+      "parentUuid": "6cac6378_e5cc0d34",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "60dc41462ae0bffa0d08338a2bed281b8aa78a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
