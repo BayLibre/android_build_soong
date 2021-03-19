@@ -183,6 +183,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af9008fb_72fca213",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7318bec3_2a079e72",
+      "range": {
+        "startLine": 44,
+        "startChar": 61,
+        "endLine": 44,
+        "endChar": 79
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fdb26c9_50e54dce",
@@ -301,6 +325,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7677a12_f653f208",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "This is an internal error, i.e., a bug in a program. A person not familiar with the code reports a bug in such case.",
+      "parentUuid": "7b6d0da5_1a4b42a0",
+      "range": {
+        "startLine": 79,
+        "startChar": 20,
+        "endLine": 79,
+        "endChar": 46
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d72f1202_3683af74",
@@ -362,6 +410,30 @@
       "side": 1,
       "message": "it doesn\u0027t require handling the first chunk separately from other chunks. And it  becomes much more obvious what join string you\u0027re using -- currently in the code it\u0027s \"%s\" -- is that correct or is what you have here \"%\" correct?\n\nplease update to the more idiomatic use of join",
       "parentUuid": "43e998cb_18d13f38",
+      "range": {
+        "startLine": 81,
+        "startChar": 23,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cf1d94b_763461e6",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "The code is correct.\nWhat is idiomatic is a judgement call. I am not changing this.",
+      "parentUuid": "5d9e914c_7c8dd5ec",
       "range": {
         "startLine": 81,
         "startChar": 23,
@@ -537,6 +609,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab391cd8_9aa251ab",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Sorry, no. A suffix is a suffix.\nThere are 579 3-letter suffixes in the AOSP source code at the moment, and I suspect quite a few of them were chosen to stand for something, but as the time passes it becomes just an indication of a type. .rbc was unused, which is important, and now it will be used.",
+      "parentUuid": "2e57fe4a_decbb7b1",
+      "range": {
+        "startLine": 29,
+        "startChar": 46,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7814124a_62b5ae1d",
@@ -598,6 +694,30 @@
       "side": 1,
       "message": "Please give this a meaningful name instead, e.g. product_config, android_product_config, etc?",
       "parentUuid": "e8b948a9_cc97aa91",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 17
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5414841e_185ff9ae",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Please see above.",
+      "parentUuid": "fc0722a1_092c497f",
       "range": {
         "startLine": 30,
         "startChar": 13,
@@ -679,6 +799,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3510ba_af6780ff",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "We are talking about a small number of local constants. I do not understand why this deserves so much attention. IMHO code review should be about more important issues.",
+      "parentUuid": "ec51f1a3_815b7dc5",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b318ac02_423f33b8",
@@ -740,6 +884,30 @@
       "side": 1,
       "message": "please use the name runtime? rt is not an obvious abbreviation",
       "parentUuid": "d248d8e6_592fa5f1",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd23c8c4_f460525f",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Please see above.",
+      "parentUuid": "9f9ec079_62412846",
       "range": {
         "startLine": 45,
         "startChar": 1,
@@ -868,6 +1036,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d2aeaa7_cce9217e",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Sorry, got confused.",
+      "parentUuid": "1114daf9_277f1502",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 107
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c77106cd_b86ec7f8",
@@ -939,6 +1131,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a659c3f9_ec93e915",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7275f641_afef3751",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 32
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a7ff9b3_bff3fe27",
@@ -1000,6 +1216,30 @@
       "side": 1,
       "message": "This is less readable and can break if there is ever a very large indent level",
       "parentUuid": "7c12637a_adaefc15",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 99
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40a2bb2_2705d9cd",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14bcb8c1_87c12732",
       "range": {
         "startLine": 244,
         "startChar": 1,
@@ -1128,6 +1368,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b874fe_f8cab511",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77ad37a2_42fafd3f",
+      "range": {
+        "startLine": 282,
+        "startChar": 3,
+        "endLine": 282,
+        "endChar": 9
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "891389c2_c82b2c8f",
@@ -1189,6 +1453,30 @@
       "side": 1,
       "message": "not done",
       "parentUuid": "a403fbce_9607605b",
+      "range": {
+        "startLine": 257,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eae48bb_30f0745a",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "With the code rearrangement, almost all of the code it resolving conflict and adjusting.",
+      "parentUuid": "c594b197_612da37f",
       "range": {
         "startLine": 257,
         "startChar": 2,
@@ -1364,6 +1652,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bf10087_19ebac9a",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d44dbf8_0151e091",
+      "range": {
+        "startLine": 327,
+        "startChar": 5,
+        "endLine": 327,
+        "endChar": 19
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ea3e69_a71749f3",
@@ -1529,6 +1841,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7ea1bbe_96d70d55",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56b6c495_bb329417",
+      "range": {
+        "startLine": 484,
+        "startChar": 13,
+        "endLine": 484,
+        "endChar": 43
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d0a66ea_ca22b496",
@@ -1552,6 +1888,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b198d0ee_511b1d7f",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d0a66ea_ca22b496",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 37
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5974cc15_9fd9032e",
@@ -1565,6 +1925,30 @@
       "writtenOn": "2021-03-05T21:46:42Z",
       "side": 1,
       "message": "can you move this comment to be with the appropriate pieces in the switch statement? it\u0027s a bit far from the logic it\u0027s describing.",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 490,
+        "endChar": 25
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2faeb11a_678d9581",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5974cc15_9fd9032e",
       "range": {
         "startLine": 489,
         "startChar": 0,
@@ -1834,6 +2218,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b139f742_0e0989d5",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "897051f0_188b58ce",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 33
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d8eb951_05f36dd7",
@@ -1905,6 +2313,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20535f2_2ce5650a",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9aea67d_043fa982",
+      "range": {
+        "startLine": 45,
+        "startChar": 26,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f7fc485_b41d3415",
@@ -1966,6 +2398,30 @@
       "side": 1,
       "message": "I\u0027m familiar with lookup but had not heard of install -- can we name it addOrFetchVariable or addOrGetVariable",
       "parentUuid": "ef6619ca_66ce523f",
+      "range": {
+        "startLine": 260,
+        "startChar": 25,
+        "endLine": 260,
+        "endChar": 32
+      },
+      "revId": "bc43482b5167bc631d35c796f9a291e93d34c0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c15ff10_4dee4978",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-19T06:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b31d982_8eae07ea",
       "range": {
         "startLine": 260,
         "startChar": 25,
