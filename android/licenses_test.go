@@ -470,7 +470,7 @@ func TestLicenses(t *testing.T) {
 	for _, test := range licensesTests {
 		t.Run(test.name, func(t *testing.T) {
 			// Customize the common license text fixture factory.
-			result := licenseTestFixtureFactory.Extend(
+			result := prepareForLicenseTest.Extend(
 				FixtureRegisterWithContext(func(ctx RegistrationContext) {
 					ctx.RegisterModuleType("mock_bad_module", newMockLicensesBadModule)
 					ctx.RegisterModuleType("mock_library", newMockLicensesLibraryModule)

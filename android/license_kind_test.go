@@ -97,7 +97,7 @@ var licenseKindTests = []struct {
 func TestLicenseKind(t *testing.T) {
 	for _, test := range licenseKindTests {
 		t.Run(test.name, func(t *testing.T) {
-			licenseTestFixtureFactory.
+			prepareForLicenseTest.
 				Extend(
 					FixtureRegisterWithContext(func(ctx RegistrationContext) {
 						ctx.RegisterModuleType("mock_license", newMockLicenseModule)
