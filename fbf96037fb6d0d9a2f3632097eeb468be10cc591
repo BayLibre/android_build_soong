@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39486e7d_6be26c9a",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T22:16:33Z",
+      "side": 0,
+      "message": "Ok so that got dropped here. Nevertheless...",
+      "range": {
+        "startLine": 805,
+        "startChar": 0,
+        "endLine": 806,
+        "endChar": 39
+      },
+      "revId": "fbf96037fb6d0d9a2f3632097eeb468be10cc591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
