@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd566741_84b15726",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T22:52:01Z",
+      "side": 1,
+      "message": "Please uses spaces consistently in the comment (also see some cases on unchanged lines).",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f2b2404_45aaa7d7",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T22:52:01Z",
+      "side": 1,
+      "message": "Can we put the structs that extend this base struct below its definition in the file? I expect to find this higher up and go look in the wrong direction.",
+      "range": {
+        "startLine": 495,
+        "startChar": 1,
+        "endLine": 495,
+        "endChar": 20
+      },
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
