@@ -391,20 +391,10 @@ func OptionalFixturePreparer(preparer FixturePreparer) FixturePreparer {
 	}
 }
 
-type simpleFixturePreparerVisitor func(preparer *simpleFixturePreparer)
-
 // FixturePreparer is an opaque interface that can change a fixture.
 type FixturePreparer interface {
-	// visit calls the supplied visitor with each *simpleFixturePreparer instances in this preparer,
-	visit(simpleFixturePreparerVisitor)
-}
-
-type fixturePreparers []FixturePreparer
-
-func (f fixturePreparers) visit(visitor simpleFixturePreparerVisitor) {
-	for _, p := range f {
-		p.visit(visitor)
-	}
+	// Return the flattened and deduped list of simpleFixturePreparer instances.
+	list() []*simpleFixturePreparer
 }
 
 // dedupAndFlattenPreparers removes any duplicates and flattens any composite FixturePreparer
@@ -419,7 +409,7 @@ func (f fixturePreparers) visit(visitor simpleFixturePreparerVisitor) {
 //
 // Returns a deduped and flattened list of the preparers starting with the ones in base with any
 // additional ones from the preparers list added afterwards.
-func dedupAndFlattenPreparers(base []*simpleFixturePreparer, preparers fixturePreparers) []*simpleFixturePreparer {
+func dedupAndFlattenPreparers(base []*simpleFixturePreparer, preparers []FixturePreparer) []*simpleFixturePreparer {
 	if len(preparers) == 0 {
 		return base
 	}
@@ -435,12 +425,15 @@ func dedupAndFlattenPreparers(base []*simpleFixturePreparer, preparers fixturePr
 		list[i] = s
 	}
 
-	preparers.visit(func(preparer *simpleFixturePreparer) {
-		if _, seen := visited[preparer]; !seen {
-			visited[preparer] = struct{}{}
-			list = append(list, preparer)
+	for _, p := range preparers {
+		for _, s := range p.list() {
+			if _, seen := visited[s]; !seen {
+				visited[s] = struct{}{}
+				list = append(list, s)
+			}
 		}
-	})
+	}
+
 	return list
 }
 
@@ -449,10 +442,8 @@ type compositeFixturePreparer struct {
 	preparers []*simpleFixturePreparer
 }
 
-func (c *compositeFixturePreparer) visit(visitor simpleFixturePreparerVisitor) {
-	for _, p := range c.preparers {
-		p.visit(visitor)
-	}
+func (c *compositeFixturePreparer) list() []*simpleFixturePreparer {
+	return c.preparers
 }
 
 // simpleFixturePreparer is a FixturePreparer that applies a function to a fixture.
@@ -460,8 +451,8 @@ type simpleFixturePreparer struct {
 	function func(fixture *fixture)
 }
 
-func (s *simpleFixturePreparer) visit(visitor simpleFixturePreparerVisitor) {
-	visitor(s)
+func (s *simpleFixturePreparer) list() []*simpleFixturePreparer {
+	return []*simpleFixturePreparer{s}
 }
 
 func newSimpleFixturePreparer(preparer func(fixture *fixture)) FixturePreparer {
