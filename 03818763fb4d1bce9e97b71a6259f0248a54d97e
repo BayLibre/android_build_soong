@@ -249,6 +249,24 @@
       "parentUuid": "10ae67a6_7d3bbdce",
       "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc1b7070_b667d735",
+        "filename": "java/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-20T00:13:21Z",
+      "side": 1,
+      "message": "I did some research on Golang\u0027s best practices to figure out the best structure to support our use cases, but failed. Maybe it\u0027s just me trying to understand Go code from a Java engineer\u0027s point of view, but I still think we can do better structure it. I hope we continue this kind of conversations over CLs and in the discussion group to come up with a convention that suits our needs. Thanks for your feedback!",
+      "parentUuid": "f9502e44_1bafaf0e",
+      "revId": "03818763fb4d1bce9e97b71a6259f0248a54d97e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
