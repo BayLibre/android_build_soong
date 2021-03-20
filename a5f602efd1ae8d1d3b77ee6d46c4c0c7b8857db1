@@ -24,6 +24,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08300ffb_ee174649",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T23:35:53Z",
+      "side": 1,
+      "message": "Side note for this CL, but I think it\u0027d be better to drop this list. Seems like unnecessary flexibility that can result in things like this:\n\n  prepareForQuux.Extend(\n    aaa,\n    bbb,\n    ccc\n  ).RunTest(t,\n    ddd,\n    eee,\n    fff\n  )\n\nIow one can always precede the RunTest with an Extend instead, and that also gives a more natural order (the preparers always come before RunTest).\n\nSame goes for Fixture above, but when it comes to that I wonder if it needs to be user accessible at all.",
+      "range": {
+        "startLine": 427,
+        "startChar": 23,
+        "endLine": 427,
+        "endChar": 51
+      },
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f2b2404_45aaa7d7",
