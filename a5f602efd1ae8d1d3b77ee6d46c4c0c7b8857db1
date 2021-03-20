@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dcb045_f2663fcd",
+        "filename": "android/rule_builder_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T23:12:52Z",
+      "side": 0,
+      "message": "It\u0027s not at all obvious that all the changes in this test are equivalent and keep the same testing coverage. Please move to a separate CL and motivate it.",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 316,
+        "endChar": 7
+      },
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
