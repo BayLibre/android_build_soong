@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00f5719_ccf60b58",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T22:27:45Z",
+      "side": 1,
+      "message": "Here too it\u0027s worth a comment that this list is assumed to be deduped.",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 10
+      },
+      "revId": "eae02d830554c0919ad6e99c3e88e5cec016599e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
