@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "597bc623_d3983ecd",
+        "filename": "sdk/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T23:45:03Z",
+      "side": 1,
+      "message": "Given https://r.android.com/1647196 this CL looks stale. I\u0027ll review after that has been resolved.",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "767ddb6a5004e11b89b051dc5c206f4ce544a13b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
