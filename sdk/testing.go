@@ -27,8 +27,7 @@ import (
 	"android/soong/java"
 )
 
-var sdkFixtureFactory = android.NewFixtureFactory(
-	nil,
+var sdkFixtureFactory = android.GroupFixturePreparers(
 	apex.PrepareForTestWithApexBuildComponents,
 	cc.PrepareForTestWithCcDefaultModules,
 	genrule.PrepareForTestWithGenRuleBuildComponents,
