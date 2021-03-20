@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf8cc54_701ca80f",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T23:50:28Z",
+      "side": 1,
+      "message": "This may be going a bit too far with small atomic CLs - I prefer reviewing something like this together with at least one case where it\u0027s being used. Makes it easier to assess if it\u0027s the right thing to do.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "5b47b9b3ca26f1b315920baa5bd220a4eb142f55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
