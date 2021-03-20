@@ -16,6 +16,23 @@
       "message": "I extracted this from the preceding change as other change.",
       "revId": "904d67262f3aac9b748b21750703d5b721206228",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d7595e_040c4882",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T23:39:44Z",
+      "side": 1,
+      "message": "I\u0027ll review later when the issue I raised in the parent CL has been resolved.",
+      "revId": "904d67262f3aac9b748b21750703d5b721206228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
