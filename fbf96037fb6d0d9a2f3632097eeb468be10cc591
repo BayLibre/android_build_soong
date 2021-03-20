@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c80d9a4_d39b8b4a",
+        "filename": "android/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T22:07:00Z",
+      "side": 1,
+      "message": "Spello: \"instance\" (but don\u0027t bother if it needs its own CL)",
+      "range": {
+        "startLine": 401,
+        "startChar": 70,
+        "endLine": 401,
+        "endChar": 79
+      },
+      "revId": "fbf96037fb6d0d9a2f3632097eeb468be10cc591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e8d47b_8dd4a6c0",
+        "filename": "android/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T22:07:00Z",
+      "side": 1,
+      "message": "Another aside: Given how dedupAndFlattenPreparers works, this is assumed to always be deduped. That\u0027s worth a comment.",
+      "range": {
+        "startLine": 602,
+        "startChar": 1,
+        "endLine": 602,
+        "endChar": 10
+      },
+      "revId": "fbf96037fb6d0d9a2f3632097eeb468be10cc591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7448ab8_a1bd6847",
+        "filename": "android/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T22:07:00Z",
+      "side": 1,
+      "message": "Should this be here? If so, what does it mean?",
+      "range": {
+        "startLine": 794,
+        "startChar": 77,
+        "endLine": 794,
+        "endChar": 86
+      },
+      "revId": "fbf96037fb6d0d9a2f3632097eeb468be10cc591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb2a2c9_ffbd06bb",
+        "filename": "android/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-20T22:07:00Z",
+      "side": 1,
+      "message": "I don\u0027t understand the connection - why would the fixture to run on the generated Android.bp necessarily have the same preparers as the one that produced it? If that\u0027s the case it seems a bit incidental. Also, with this I\u0027d expect some sort of transfer of the output Android.bp into the new fixture.\n\nOverall calling RunTest on a result can feel ambiguous and users would need to look up these docs. It\u0027s more clear if there\u0027s a method to extract the preparers from the result and do this in CheckSnapshot instead. That would also avoid the somewhat arbitrary choice of error handler below.",
+      "range": {
+        "startLine": 796,
+        "startChar": 3,
+        "endLine": 797,
+        "endChar": 74
+      },
+      "revId": "fbf96037fb6d0d9a2f3632097eeb468be10cc591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
