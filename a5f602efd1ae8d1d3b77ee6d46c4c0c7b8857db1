@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "827e91af_ff2e79df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T08:24:08Z",
+      "side": 1,
+      "message": "While going through your review comments I realised that fixtureFactory is basically a compositeFixturePreparer plus buildDirSupplier so I switched to that.",
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd566741_84b15726",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-03-20T22:52:01Z",
       "side": 1,
       "message": "Please uses spaces consistently in the comment (also see some cases on unchanged lines).",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5197b11_81b2351e",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T08:24:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "dd566741_84b15726",
       "range": {
         "startLine": 150,
         "startChar": 2,
@@ -47,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f488501_aa5347ac",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T08:24:08Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "08300ffb_ee174649",
+      "range": {
+        "startLine": 427,
+        "startChar": 23,
+        "endLine": 427,
+        "endChar": 51
+      },
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f2b2404_45aaa7d7",
@@ -60,6 +125,30 @@
       "writtenOn": "2021-03-20T22:52:01Z",
       "side": 1,
       "message": "Can we put the structs that extend this base struct below its definition in the file? I expect to find this higher up and go look in the wrong direction.",
+      "range": {
+        "startLine": 495,
+        "startChar": 1,
+        "endLine": 495,
+        "endChar": 20
+      },
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ee6103_0f0bddf1",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T08:24:08Z",
+      "side": 1,
+      "message": "I left it in place to minimize the diff. I will move it as a follow up change. I don\u0027t do code moves and code changes in the same commit.",
+      "parentUuid": "3f2b2404_45aaa7d7",
       "range": {
         "startLine": 495,
         "startChar": 1,
