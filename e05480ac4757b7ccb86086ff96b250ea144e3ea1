@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d241fd7_ab8a8bbb",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T23:57:34Z",
+      "side": 1,
+      "message": "Here.",
+      "revId": "e05480ac4757b7ccb86086ff96b250ea144e3ea1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba950ea3_8360b27e",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-03-21T23:49:51Z",
       "side": 1,
       "message": "Can you tell me why this change is needed?",
+      "range": {
+        "startLine": 2521,
+        "startChar": 55,
+        "endLine": 2521,
+        "endChar": 91
+      },
+      "revId": "e05480ac4757b7ccb86086ff96b250ea144e3ea1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4699b392_9e6b8a39",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2521,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T23:57:34Z",
+      "side": 1,
+      "message": "Previously the cc default modules were added to the root Android.bp file. In test fixtures they are in their own separate Android.bp file in a different location in the tree as adding it to the root Android.bp file is more complicated and also unrealistic.\n\nThis test depends on the location of the default module and so because that has change the test needs to change. This variable is simply the default location.",
+      "parentUuid": "ba950ea3_8360b27e",
       "range": {
         "startLine": 2521,
         "startChar": 55,
