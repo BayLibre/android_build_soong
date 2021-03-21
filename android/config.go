@@ -140,9 +140,8 @@ type config struct {
 	fs         pathtools.FileSystem
 	mockBpList string
 
-	// If testAllowNonExistentPaths is true then PathForSource and PathForModuleSrc won't error
-	// in tests when a path doesn't exist.
-	TestAllowNonExistentPaths bool
+	// See testAllowNonExistentPath() for an explanation as to how this is used.
+	testDisallowNonExistentPathsWithPrefixes []string
 
 	// The list of files that when changed, must invalidate soong_build to
 	// regenerate build.ninja.
@@ -268,9 +267,10 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		captureBuild: true,
 		env:          envCopy,
 
-		// Set testAllowNonExistentPaths so that test contexts don't need to specify every path
-		// passed to PathForSource or PathForModuleSrc.
-		TestAllowNonExistentPaths: true,
+		// Set testDisallowNonExistentPathsWithPrefixes to an empty list of path prefixes which are
+		// disallowed when non-existent. That means that unless tests are configured otherwise it will
+		// not be an error is a path passed to PathForSource or PathForModuleSrc does not exist.
+		testDisallowNonExistentPathsWithPrefixes: []string{},
 
 		BazelContext: noopBazelContext{},
 	}
@@ -497,6 +497,28 @@ func (c *config) SetStopBefore(stopBefore bootstrap.StopBefore) {
 
 func (c *config) SetAllowMissingDependencies() {
 	c.productVariables.Allow_missing_dependencies = proptools.BoolPtr(true)
+}
+
+// testAllowNonExistentPath determines whether the non-existent supplied path should be allowed
+// (return true) or treated as an error (return false).
+//
+// By default it will always return false and disallow every path, unless
+// config.testDisallowNonExistentPathsWithPrefixes is not nil in which case it will allow some
+// paths. Exactly which paths are allowed is determined by the
+// config.testDisallowNonExistentPathsWithPrefixes. Any non-existent path which starts with a prefix
+// in that list is disallowed, otherwise it is allowed.
+func (c *config) testAllowNonExistentPath(path string) bool {
+	if c.testDisallowNonExistentPathsWithPrefixes == nil {
+		return false
+	}
+
+	for _, prefix := range c.testDisallowNonExistentPathsWithPrefixes {
+		if strings.HasPrefix(path, prefix) {
+			return false
+		}
+	}
+
+	return true
 }
 
 var _ bootstrap.ConfigStopBefore = (*config)(nil)
