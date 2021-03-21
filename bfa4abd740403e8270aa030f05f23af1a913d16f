@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbebcbf1_5396740a",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-21T00:21:44Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to keep this last?",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "bfa4abd740403e8270aa030f05f23af1a913d16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b25666ba_8db308d5",
+        "filename": "sdk/compat_config_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-21T00:21:44Z",
+      "side": 1,
+      "message": "Is this related to the platform_compat_config in some way?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "bfa4abd740403e8270aa030f05f23af1a913d16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
