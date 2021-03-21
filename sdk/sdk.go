@@ -486,6 +486,13 @@ func sdkDepsReplaceMutator(mctx android.BottomUpMutatorContext) {
 			// sdk containing sdkmember.
 			memberName := versionedSdkMember.MemberName()
 
+			// Convert a panic into a normal error to allow it to be more easily tested for.
+			defer func() {
+				if r := recover(); r != nil {
+					mctx.ModuleErrorf("%s", r)
+				}
+			}()
+
 			// Replace dependencies on sdkmember with a dependency on the current module which
 			// is a versioned prebuilt of the sdkmember if required.
 			mctx.ReplaceDependenciesIf(memberName, func(from blueprint.Module, tag blueprint.DependencyTag, to blueprint.Module) bool {
