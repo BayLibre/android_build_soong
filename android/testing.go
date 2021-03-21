@@ -119,8 +119,25 @@ var PrepareForTestWithAllowMissingDependencies = GroupFixturePreparers(
 
 // Prepares a test that disallows non-existent paths.
 var PrepareForTestDisallowNonExistentPaths = FixtureModifyConfig(func(config Config) {
-	config.TestAllowNonExistentPaths = false
+	// Disallow any non-existent path.
+	config.testDisallowNonExistentPathsWithPrefixes = nil
 })
+
+func PrepareForTestDisallowNonExistentPathsUnderDir(dir string) FixturePreparer {
+	dir = filepath.Clean(dir)
+	if !strings.HasSuffix(dir, "/") {
+		dir = dir + "/"
+	}
+	return FixtureModifyConfig(func(config Config) {
+		for _, existing := range config.testDisallowNonExistentPathsWithPrefixes {
+			if strings.HasPrefix(existing, dir) {
+				// No point adding the directory as it is already covered by a shorter prefix.
+				return
+			}
+		}
+		config.testDisallowNonExistentPathsWithPrefixes = append(config.testDisallowNonExistentPathsWithPrefixes, dir)
+	})
+}
 
 func NewTestArchContext(config Config) *TestContext {
 	ctx := NewTestContext(config)
