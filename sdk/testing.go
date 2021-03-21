@@ -292,8 +292,8 @@ func CheckSnapshot(t *testing.T, result *android.TestResult, name string, dir st
 
 			// Process the snapshot.
 			snapshotResult := android.GroupFixturePreparers(
-				// TODO(b/183184375): Set Config.TestAllowNonExistentPaths = false to verify that all the
-				//  files the snapshot needs are actually copied into the snapshot.
+				// Verify that all the files the snapshot needs are actually copied into the snapshot.
+				android.PrepareForTestDisallowNonExistantPathsUnderDir(snapshotSubDir),
 
 				// Add the preparer for the original source.
 				sourcePreparers,

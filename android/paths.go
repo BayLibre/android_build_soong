@@ -615,13 +615,14 @@ func expandOneSrcPath(ctx ModuleWithDepsPathContext, sPath string, expandedExclu
 		return PathsWithModuleSrcSubDir(ctx, paths, ""), nil
 	} else {
 		p := pathForModuleSrc(ctx, sPath)
-		if exists, _, err := ctx.Config().fs.Exists(p.String()); err != nil {
+		pathAsString := p.String()
+		if exists, _, err := ctx.Config().fs.Exists(pathAsString); err != nil {
 			ReportPathErrorf(ctx, "%s: %s", p, err.Error())
-		} else if !exists && !ctx.Config().TestAllowNonExistentPaths {
+		} else if !exists && !ctx.Config().testAllowNonExistentPath(pathAsString) {
 			ReportPathErrorf(ctx, "module source path %q does not exist", p)
 		}
 
-		if InList(p.String(), expandedExcludes) {
+		if InList(pathAsString, expandedExcludes) {
 			return nil, nil
 		}
 		return Paths{p}, nil
@@ -1039,8 +1040,9 @@ func PathForSource(ctx PathContext, pathComponents ...string) SourcePath {
 		reportPathError(ctx, err)
 	}
 
-	if pathtools.IsGlob(path.String()) {
-		ReportPathErrorf(ctx, "path may not contain a glob: %s", path.String())
+	pathAsString := path.String()
+	if pathtools.IsGlob(pathAsString) {
+		ReportPathErrorf(ctx, "path may not contain a glob: %s", pathAsString)
 	}
 
 	if modCtx, ok := ctx.(ModuleMissingDepsPathContext); ok && ctx.Config().AllowMissingDependencies() {
@@ -1049,11 +1051,11 @@ func PathForSource(ctx PathContext, pathComponents ...string) SourcePath {
 			reportPathError(ctx, err)
 		}
 		if !exists {
-			modCtx.AddMissingDependencies([]string{path.String()})
+			modCtx.AddMissingDependencies([]string{pathAsString})
 		}
-	} else if exists, _, err := ctx.Config().fs.Exists(path.String()); err != nil {
+	} else if exists, _, err := ctx.Config().fs.Exists(pathAsString); err != nil {
 		ReportPathErrorf(ctx, "%s: %s", path, err.Error())
-	} else if !exists && !ctx.Config().TestAllowNonExistentPaths {
+	} else if !exists && !ctx.Config().testAllowNonExistentPath(pathAsString) {
 		ReportPathErrorf(ctx, "source path %q does not exist", path)
 	}
 	return path
