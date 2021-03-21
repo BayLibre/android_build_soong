@@ -22,6 +22,30 @@
       },
       "revId": "767ddb6a5004e11b89b051dc5c206f4ce544a13b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4000d21d_bf9a90d7",
+        "filename": "sdk/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T08:50:24Z",
+      "side": 1,
+      "message": "It\u0027s not so much that it is stale as that they are two separate stacks that conflict with each other (Gerrit doesn\u0027t do a good job of visualizing their relationship). I created these first and then the other. Depending on which stack got approved first the other would need refactoring. Ideally, the other stack (FixtureFactory work) should be approved first, then this stack reworked to use that. That will avoid having to redo some of the work on this stack later.\n\nAs you haven\u0027t found any major issues with the other stack I will rebase this one on top and fix it up.",
+      "parentUuid": "597bc623_d3983ecd",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "767ddb6a5004e11b89b051dc5c206f4ce544a13b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
