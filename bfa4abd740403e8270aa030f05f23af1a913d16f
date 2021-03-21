@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0de4dd9d_3485b787",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T10:21:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbebcbf1_5396740a",
+      "range": {
+        "startLine": 128,
+        "startChar": 9,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "bfa4abd740403e8270aa030f05f23af1a913d16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b25666ba_8db308d5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-21T00:21:44Z",
       "side": 1,
       "message": "Is this related to the platform_compat_config in some way?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "bfa4abd740403e8270aa030f05f23af1a913d16f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24a6a9e7_3f65d3b3",
+        "filename": "sdk/compat_config_sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T10:21:26Z",
+      "side": 1,
+      "message": "I forgot to wire this into the platform_compat_config \u0027s src property but as the test works without I will remove it.",
+      "parentUuid": "b25666ba_8db308d5",
       "range": {
         "startLine": 37,
         "startChar": 0,
