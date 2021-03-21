@@ -120,11 +120,12 @@ func pathsToStrings(paths android.Paths) []string {
 // generated, etc.
 func getSdkSnapshotBuildInfo(t *testing.T, result *android.TestResult, sdk *sdk) *snapshotBuildInfo {
 	info := &snapshotBuildInfo{
-		t:                            t,
-		r:                            result,
-		androidBpContents:            sdk.GetAndroidBpContentsForTests(),
-		androidUnversionedBpContents: sdk.GetUnversionedAndroidBpContentsForTests(),
-		androidVersionedBpContents:   sdk.GetVersionedAndroidBpContentsForTests(),
+		t:                               t,
+		r:                               result,
+		androidBpContents:               sdk.GetAndroidBpContentsForTests(),
+		androidUnversionedBpContents:    sdk.GetUnversionedAndroidBpContentsForTests(),
+		androidVersionedBpContents:      sdk.GetVersionedAndroidBpContentsForTests(),
+		testConfigurationCustomizations: map[checkSnapshotTestConfiguration]*testConfigurationCustomization{},
 	}
 
 	buildParams := sdk.BuildParamsForTests()
@@ -183,6 +184,67 @@ func getSdkSnapshotBuildInfo(t *testing.T, result *android.TestResult, sdk *sdk)
 	return info
 }
 
+// The enum of different sdk snapshot test configurations performed by CheckSnapshot.
+type checkSnapshotTestConfiguration int
+
+const (
+	// The enumeration of the different test configurations.
+	checkSnapshotWithoutSource = iota
+	checkSnapshotWithSourcePreferred
+	checkSnapshotPreferredWithSource
+
+	snapshotSubDir = "snapshot"
+)
+
+// The list of all test configurations supported by CheckSnapshot.
+var allCheckSnapshotTestConfigurations = []checkSnapshotTestConfiguration{
+	checkSnapshotWithoutSource,
+	checkSnapshotWithSourcePreferred,
+	checkSnapshotPreferredWithSource,
+}
+
+// checkSnapshotTestConfigurationInfo encapsulates the information for a test configuration
+// supported by CheckSnapshot.
+type checkSnapshotTestConfigurationInfo struct {
+	// The name of the test configuration.
+	name string
+
+	// The test configuration preparer.
+	preparer android.FixturePreparer
+}
+
+// checkSnapshotTestConfigurations contains information for all the different test configurations
+// supported by CheckSnapshot.
+var checkSnapshotTestConfigurations = map[checkSnapshotTestConfiguration]checkSnapshotTestConfigurationInfo{
+	checkSnapshotWithoutSource: {
+		name: "snapshot without source",
+
+		// Remove the source Android.bp file to make sure it works without.
+		preparer: android.FixtureModifyMockFS(func(fs android.MockFS) {
+			delete(fs, "Android.bp")
+		}),
+	},
+
+	checkSnapshotWithSourcePreferred: {
+		name: "snapshot with source preferred",
+
+		// Nothing to do to have snapshot and source together with source prepared.
+		preparer: android.NullFixturePreparer,
+	},
+
+	checkSnapshotPreferredWithSource: {
+		name: "snapshot preferred with source",
+
+		// Replace the snapshot/Android.bp file with one where "prefer: false," has been replaced with
+		// "prefer: true,"
+		preparer: android.FixtureModifyMockFS(func(fs android.MockFS) {
+			snapshotBpFile := filepath.Join(snapshotSubDir, "Android.bp")
+			unpreferred := string(fs[snapshotBpFile])
+			fs[snapshotBpFile] = []byte(strings.ReplaceAll(unpreferred, "prefer: false,", "prefer: true,"))
+		}),
+	},
+}
+
 // Check the snapshot build rules.
 //
 // Takes a list of functions which check different facets of the snapshot build rules.
@@ -214,32 +276,43 @@ func CheckSnapshot(t *testing.T, result *android.TestResult, name string, dir st
 	// Populate a mock filesystem with the files that would have been copied by
 	// the rules.
 	fs := android.MockFS{}
-	snapshotSubDir := "snapshot"
 	for _, dest := range snapshotBuildInfo.snapshotContents {
 		fs[filepath.Join(snapshotSubDir, dest)] = nil
 	}
 	fs[filepath.Join(snapshotSubDir, "Android.bp")] = []byte(snapshotBuildInfo.androidBpContents)
 
-	preparer := result.Preparer()
+	// The preparers from the original source fixture.
+	sourcePreparers := result.Preparer()
 
-	// Process the generated bp file to make sure it is valid. Use the same preparer as was used to
-	// produce this result.
-	t.Run("snapshot without source", func(t *testing.T) {
-		android.GroupFixturePreparers(
-			preparer,
-			// TODO(b/183184375): Set Config.TestAllowNonExistentPaths = false to verify that all the
-			//  files the snapshot needs are actually copied into the snapshot.
+	// Iterate over the different test cases that need to be tested.
+	for _, testConfiguration := range allCheckSnapshotTestConfigurations {
+		info := checkSnapshotTestConfigurations[testConfiguration]
+		t.Run(info.name, func(t *testing.T) {
+			customization := snapshotBuildInfo.testConfigurationCustomization(testConfiguration)
 
-			// Add the files (including bp) created for this snapshot to the test fixture.
-			fs.AddToFixture(),
+			// Process the snapshot.
+			snapshotResult := android.GroupFixturePreparers(
+				// TODO(b/183184375): Set Config.TestAllowNonExistentPaths = false to verify that all the
+				//  files the snapshot needs are actually copied into the snapshot.
 
-			// Remove the source Android.bp file to make sure it works without.
-			// TODO(b/183184375): Add a test with the source.
-			android.FixtureModifyMockFS(func(fs android.MockFS) {
-				delete(fs, "Android.bp")
-			}),
-		).RunTest(t)
-	})
+				// Add the preparer for the original source.
+				sourcePreparers,
+
+				// Add the files (including bp) created for this snapshot to the test fixture.
+				fs.AddToFixture(),
+
+				// Now apply the test case specific preparer which may need to modify the snapshot file.
+				info.preparer,
+			).
+				ExtendWithErrorHandler(customization.errorHandler).
+				RunTest(t)
+
+			// Perform any additional checks the test need on the result of processing the snapshot.
+			for _, checker := range customization.checkers {
+				checker(t, snapshotResult)
+			}
+		})
+	}
 }
 
 type snapshotBuildInfoChecker func(info *snapshotBuildInfo)
@@ -312,6 +385,45 @@ func checkMergeZips(expected ...string) snapshotBuildInfoChecker {
 	}
 }
 
+type resultChecker func(t *testing.T, result *android.TestResult)
+
+// snapshotTestConfigurationChecker registers a checker that will be run against the result of
+// processing the generated snapshot for the specified testConfiguration.
+func snapshotTestConfigurationChecker(testConfiguration checkSnapshotTestConfiguration, checker resultChecker) snapshotBuildInfoChecker {
+	return func(info *snapshotBuildInfo) {
+		customization := info.testConfigurationCustomization(testConfiguration)
+		customization.checkers = append(customization.checkers, checker)
+	}
+}
+
+// snapshotTestConfigurationErrorHandler registers an error handler to use when processing the snapshot
+// in the specific test case.
+//
+// Generally, the snapshot should work with all the test cases but some do not and just in case
+// there are a lot of issues to resolve, or it will take a lot of time this is a
+// get-out-of-jail-free card that allows progress to be made.
+//
+// deprecated: should only be used as a temporary workaround with an attached to do and bug.
+func snapshotTestConfigurationErrorHandler(testConfiguration checkSnapshotTestConfiguration, handler android.FixtureErrorHandler) snapshotBuildInfoChecker {
+	return func(info *snapshotBuildInfo) {
+		customization := info.testConfigurationCustomization(testConfiguration)
+		customization.errorHandler = handler
+	}
+}
+
+type testConfigurationCustomization struct {
+	// Checkers that are run on the result of processing the preferred snapshot in a specific test
+	// case.
+	checkers []resultChecker
+
+	// Specify an error handler for when processing a specific test case.
+	//
+	// In some cases the generated snapshot cannot be used in a test configuration. Those cases are
+	// invariably bugs that need to be resolved but sometimes that can take a while. This provides a
+	// mechanism to temporarily ignore that error.
+	errorHandler android.FixtureErrorHandler
+}
+
 // Encapsulates information about the snapshot build structure in order to insulate tests from
 // knowing too much about internal structures.
 //
@@ -355,4 +467,17 @@ type snapshotBuildInfo struct {
 
 	// The final output zip.
 	outputZip string
+
+	testConfigurationCustomizations map[checkSnapshotTestConfiguration]*testConfigurationCustomization
+}
+
+func (i *snapshotBuildInfo) testConfigurationCustomization(testConfigurations checkSnapshotTestConfiguration) *testConfigurationCustomization {
+	customization := i.testConfigurationCustomizations[testConfigurations]
+	if customization == nil {
+		customization = &testConfigurationCustomization{
+			errorHandler: android.FixtureExpectsNoErrors,
+		}
+		i.testConfigurationCustomizations[testConfigurations] = customization
+	}
+	return customization
 }
