@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009202724",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1647171?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "170d5f48_3d90dad2",
+          "description": "Change to \"android/testing.go\"",
+          "replacements": [
+            {
+              "path": "android/testing.go",
+              "range": {
+                "startLine": 126,
+                "startChar": 30,
+                "endLine": 126,
+                "endChar": 38
+              },
+              "replacement": "Existent"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "1c5df17c_ff1ab9b8",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-21T23:20:30Z",
+      "side": 1,
+      "message": "Common typo found: \"Existant\" -- should it be \"Existent\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 126,
+        "startChar": 30,
+        "endLine": 126,
+        "endChar": 38
+      },
+      "revId": "145a6ed0b196bade9aa44d0fa017ae46fd91b38b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
