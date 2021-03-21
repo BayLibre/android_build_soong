@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b806c4_01598b12",
+        "filename": "android/neverallow_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T10:02:08Z",
+      "side": 1,
+      "message": "It looks bad here because the Exten.. and RunTest.. are misaligned but when tabs are replaced with 2 spaces they line up. 2 spaces is the default in Intellij.",
+      "parentUuid": "843b6942_09b2646f",
+      "range": {
+        "startLine": 311,
+        "startChar": 4,
+        "endLine": 311,
+        "endChar": 5
+      },
+      "revId": "1b3c5048c382a81bda1c0c061e95a497a8b685dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33664fd8_69469cbb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-20T23:12:52Z",
       "side": 1,
       "message": "Same here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "1b3c5048c382a81bda1c0c061e95a497a8b685dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da652c26_db2fb84e",
+        "filename": "android/package_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T10:02:08Z",
+      "side": 1,
+      "message": "It looks bad here because the Exten.. and RunTest.. are misaligned but when tabs are replaced with 2 spaces they line up. 2 spaces is the default in Intellij.",
+      "parentUuid": "33664fd8_69469cbb",
       "range": {
         "startLine": 68,
         "startChar": 4,

@@ -22,6 +22,30 @@
       },
       "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f52430e9_a05ee6a7",
+        "filename": "android/rule_builder_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T10:02:08Z",
+      "side": 0,
+      "message": "Good catch. These are not my changes. Somehow I managed to revert some of Colin\u0027s changes. I must have done a checkout of an older file.",
+      "parentUuid": "d3dcb045_f2663fcd",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 316,
+        "endChar": 7
+      },
+      "revId": "a5f602efd1ae8d1d3b77ee6d46c4c0c7b8857db1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
