@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7705c0ec_a3ab0285",
+        "filename": "sdk/boot_image_sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-21T00:36:16Z",
+      "side": 1,
+      "message": "I assume refactoring this will come later.",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 30
+      },
+      "revId": "68be26d0cc1013ba76f7e3c4a1df3d6b95b60a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
