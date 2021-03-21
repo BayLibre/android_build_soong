@@ -45,6 +45,30 @@
       },
       "revId": "5e77848457a88be0baa9c3d7062f67592f8a234b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa88c6e_b42c4a9d",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-21T11:00:25Z",
+      "side": 1,
+      "message": "I tried removing the method but tests failed. I also tried passing in the child and parent properly and tests still failed.",
+      "parentUuid": "a0985dea_2b2f9496",
+      "range": {
+        "startLine": 1867,
+        "startChar": 10,
+        "endLine": 1867,
+        "endChar": 46
+      },
+      "revId": "5e77848457a88be0baa9c3d7062f67592f8a234b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
