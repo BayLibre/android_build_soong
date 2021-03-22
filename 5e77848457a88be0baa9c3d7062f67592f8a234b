@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc7a5cd2_bb0018c5",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-22T08:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95c21eef_b456e285",
+      "range": {
+        "startLine": 145,
+        "startChar": 53,
+        "endLine": 145,
+        "endChar": 57
+      },
+      "revId": "5e77848457a88be0baa9c3d7062f67592f8a234b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0985dea_2b2f9496",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I admit that this is not ideal and looks very odd, but was inevitable at the moment. The role of the first parameter here is not to act as a \"from\" parameter, but just to execute the function defined for the cc.Module. Perhaps we\u0027d better rename the implementation in the cc package as `func CheckDepForInclusionInApex(dep *cc.Module) bool`. Anyway, that\u0027s out of scope of this change.",
       "parentUuid": "5aa88c6e_b42c4a9d",
+      "range": {
+        "startLine": 1867,
+        "startChar": 10,
+        "endLine": 1867,
+        "endChar": 46
+      },
+      "revId": "5e77848457a88be0baa9c3d7062f67592f8a234b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "519fba4c_b537ff77",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-22T08:48:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25b2ef8f_2e0e966a",
       "range": {
         "startLine": 1867,
         "startChar": 10,
