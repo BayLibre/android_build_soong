@@ -90,44 +90,43 @@ func TestVendorRamdiskLinkage(t *testing.T) {
 // Test that shared libraries cannot be made vendor available until proper support is added.
 func TestForbiddenVendorLinkage(t *testing.T) {
 	testRustError(t, "cannot be set for rust_ffi or rust_ffi_shared modules.", `
-		rust_ffi_shared {
-			name: "libfoo_vendor",
-			crate_name: "foo",
-			srcs: ["foo.rs"],
-			vendor_available: true,
-		}
-	`)
+               rust_ffi_shared {
+                       name: "libfoo_vendor",
+                       crate_name: "foo",
+                       srcs: ["foo.rs"],
+                       vendor_available: true,
+               }
+       `)
 	testRustError(t, "cannot be set for rust_ffi or rust_ffi_shared modules.", `
-		rust_ffi_shared {
-			name: "libfoo_vendor",
-			crate_name: "foo",
-			srcs: ["foo.rs"],
-			vendor_ramdisk_available: true,
-		}
-	`)
+               rust_ffi_shared {
+                       name: "libfoo_vendor",
+                       crate_name: "foo",
+                       srcs: ["foo.rs"],
+                       vendor_ramdisk_available: true,
+               }
+       `)
 	testRustError(t, "Rust vendor specific modules are currently only supported for rust_ffi_static modules.", `
-		rust_ffi {
-			name: "libfoo_vendor",
-			crate_name: "foo",
-			srcs: ["foo.rs"],
-			vendor: true,
-		}
-	`)
+               rust_ffi {
+                       name: "libfoo_vendor",
+                       crate_name: "foo",
+                       srcs: ["foo.rs"],
+                       vendor: true,
+               }
+       `)
 	testRustError(t, "Rust vendor specific modules are currently only supported for rust_ffi_static modules.", `
-		rust_library {
-			name: "libfoo_vendor",
-			crate_name: "foo",
-			srcs: ["foo.rs"],
-			vendor: true,
-		}
-	`)
+               rust_library {
+                       name: "libfoo_vendor",
+                       crate_name: "foo",
+                       srcs: ["foo.rs"],
+                       vendor: true,
+               }
+       `)
 	testRustError(t, "Rust vendor specific modules are currently only supported for rust_ffi_static modules.", `
-		rust_binary {
-			name: "foo_vendor",
-			crate_name: "foo",
-			srcs: ["foo.rs"],
-			vendor: true,
-		}
-	`)
-
+               rust_binary {
+                       name: "foo_vendor",
+                       crate_name: "foo",
+                       srcs: ["foo.rs"],
+                       vendor: true,
+               }
+       `)
 }
