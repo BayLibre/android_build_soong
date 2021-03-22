@@ -206,6 +206,8 @@ func writeScripts(ctx android.BuilderContext, globalSoong *dexpreopt.GlobalSoong
 
 const scriptHeader = `#!/bin/bash
 
+set -x
+
 err() {
   errno=$?
   echo "error: $0:$1 exited with status $errno" >&2
