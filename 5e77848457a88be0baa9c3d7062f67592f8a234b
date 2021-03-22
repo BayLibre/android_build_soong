@@ -141,6 +141,30 @@
       },
       "revId": "5e77848457a88be0baa9c3d7062f67592f8a234b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8efc8b8d_8d0dc5c1",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-22T10:29:33Z",
+      "side": 1,
+      "message": "Even so I wouldn\u0027t expect that the module gets a call to that function for itself - it\u0027s not a dependency of itself after all. It should rather be CheckModuleForInclusionInApex then, or maybe a separate CheckSelfForInclusionInApex.",
+      "parentUuid": "519fba4c_b537ff77",
+      "range": {
+        "startLine": 1867,
+        "startChar": 10,
+        "endLine": 1867,
+        "endChar": 46
+      },
+      "revId": "5e77848457a88be0baa9c3d7062f67592f8a234b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
