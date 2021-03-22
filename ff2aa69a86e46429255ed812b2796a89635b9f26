@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "ff2aa69a86e46429255ed812b2796a89635b9f26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770eee95_3b41f6c8",
+        "filename": "android/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-22T19:16:19Z",
+      "side": 1,
+      "message": "Drop. But feel free to address later if you want to avoid rerunning lots of presubmits.",
+      "range": {
+        "startLine": 141,
+        "startChar": 45,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "ff2aa69a86e46429255ed812b2796a89635b9f26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
