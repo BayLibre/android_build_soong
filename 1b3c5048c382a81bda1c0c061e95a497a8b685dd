@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1eb8284_f6d2bbb0",
+        "filename": "android/neverallow_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-22T18:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8651053_3bc395be",
+      "range": {
+        "startLine": 311,
+        "startChar": 4,
+        "endLine": 311,
+        "endChar": 5
+      },
+      "revId": "1b3c5048c382a81bda1c0c061e95a497a8b685dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33664fd8_69469cbb",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Ditto.",
       "parentUuid": "da652c26_db2fb84e",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "1b3c5048c382a81bda1c0c061e95a497a8b685dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a29396_8cf4a16d",
+        "filename": "android/package_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-22T18:33:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c51dac_6f4616a8",
       "range": {
         "startLine": 68,
         "startChar": 4,
