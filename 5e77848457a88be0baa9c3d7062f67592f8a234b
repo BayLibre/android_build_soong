@@ -69,6 +69,30 @@
       },
       "revId": "5e77848457a88be0baa9c3d7062f67592f8a234b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b2ef8f_2e0e966a",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-22T01:15:41Z",
+      "side": 1,
+      "message": "I admit that this is not ideal and looks very odd, but was inevitable at the moment. The role of the first parameter here is not to act as a \"from\" parameter, but just to execute the function defined for the cc.Module. Perhaps we\u0027d better rename the implementation in the cc package as `func CheckDepForInclusionInApex(dep *cc.Module) bool`. Anyway, that\u0027s out of scope of this change.",
+      "parentUuid": "5aa88c6e_b42c4a9d",
+      "range": {
+        "startLine": 1867,
+        "startChar": 10,
+        "endLine": 1867,
+        "endChar": 46
+      },
+      "revId": "5e77848457a88be0baa9c3d7062f67592f8a234b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
