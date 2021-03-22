@@ -70,6 +70,30 @@
       },
       "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a5089b_cda64171",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-22T18:24:34Z",
+      "side": 1,
+      "message": "Currently the code works as follows:\n  - system server is dexpreopted without updatable jars (if isSystemServer is true, its inversion is passed to bcpForDexpreopt, meaning to not add updatable jars)\n  - other libs/apps are dexpreopted with updatable jars\n\n(See commit message for examples, e.g. \"ethernet-service\".)",
+      "parentUuid": "6e60ffac_04a62625",
+      "range": {
+        "startLine": 172,
+        "startChar": 49,
+        "endLine": 172,
+        "endChar": 66
+      },
+      "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
