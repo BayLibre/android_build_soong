@@ -46,6 +46,30 @@
       },
       "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e60ffac_04a62625",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-22T18:18:50Z",
+      "side": 1,
+      "message": "No, I want \"withUpdatable \u003d false\" (which is how I understood your code to work?)",
+      "parentUuid": "30baa587_4bde5f81",
+      "range": {
+        "startLine": 172,
+        "startChar": 49,
+        "endLine": 172,
+        "endChar": 66
+      },
+      "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
