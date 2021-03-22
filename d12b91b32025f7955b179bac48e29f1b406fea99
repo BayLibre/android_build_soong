@@ -22,6 +22,30 @@
       },
       "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30baa587_4bde5f81",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-22T18:17:19Z",
+      "side": 1,
+      "message": "So you want to dexpreopt system server *with* updatable boot jars for now, like the rest of the libs/apps? I got the impression that you wanted to make an exception for them.",
+      "parentUuid": "cd962900_7ccdb8a8",
+      "range": {
+        "startLine": 172,
+        "startChar": 49,
+        "endLine": 172,
+        "endChar": 66
+      },
+      "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
