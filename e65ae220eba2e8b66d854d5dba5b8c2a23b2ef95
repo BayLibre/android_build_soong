@@ -164,6 +164,30 @@
       },
       "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8341701d_0e420eca",
+        "filename": "mk2rbc/test/soong_included.mk.test",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-22T15:47:55Z",
+      "side": 1,
+      "message": "There is no plan at the moment. Inferred variable types turned to be not as useful as I thought and at the moment the generator just distinguishes between lists and items.",
+      "parentUuid": "482ce3a0_fb71e0bb",
+      "range": {
+        "startLine": 1,
+        "startChar": 24,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
