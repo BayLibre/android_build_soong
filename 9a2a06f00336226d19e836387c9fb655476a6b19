@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bf7219_5d5ba507",
+        "filename": "android/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-22T09:32:45Z",
+      "side": 1,
+      "message": "Still tabs left on this line and the next.",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 5
+      },
+      "revId": "9a2a06f00336226d19e836387c9fb655476a6b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518d3199_bfd01104",
+        "filename": "android/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-22T09:32:45Z",
+      "side": 1,
+      "message": "Following on the comment that these should be dropped, it\u0027s better if it isn\u0027t documented. Suggest replacing with a GroupFixturePreparers call.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "9a2a06f00336226d19e836387c9fb655476a6b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7c4ac2_54d1e5f5",
+        "filename": "android/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-22T09:32:45Z",
+      "side": 1,
+      "message": "newFixturePreparer is a better name since this doesn\u0027t always return a compositeFixturePreparer.",
+      "range": {
+        "startLine": 518,
+        "startChar": 5,
+        "endLine": 518,
+        "endChar": 32
+      },
+      "revId": "9a2a06f00336226d19e836387c9fb655476a6b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7cef69_04a72066",
+        "filename": "android/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-22T09:32:45Z",
+      "side": 1,
+      "message": "Having a separate code path for this doesn\u0027t seem worth it, but since this function is presumably short lived no change required.",
+      "range": {
+        "startLine": 766,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 2
+      },
+      "revId": "9a2a06f00336226d19e836387c9fb655476a6b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
