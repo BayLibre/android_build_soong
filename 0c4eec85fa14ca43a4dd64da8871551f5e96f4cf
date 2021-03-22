@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777b6754_b309d92d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-22T16:55:51Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we fix this as well? Setting BOARD_* variable in Android.mk seems to be quite wrong.",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "0c4eec85fa14ca43a4dd64da8871551f5e96f4cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
