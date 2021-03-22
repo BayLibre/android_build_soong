@@ -293,10 +293,6 @@ func bionicDeps(deps Deps, static bool) Deps {
 	} else {
 		deps.SharedLibs = append(deps.SharedLibs, bionicLibs...)
 	}
-
-	//TODO(b/141331117) libstd requires libgcc on Android
-	deps.StaticLibs = append(deps.StaticLibs, "libgcc")
-
 	return deps
 }
 
