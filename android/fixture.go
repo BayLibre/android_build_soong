@@ -16,6 +16,7 @@ package android
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 )
 
@@ -241,6 +242,7 @@ type MockFS map[string][]byte
 // Fails if the supplied map files with the same paths are present in both of them.
 func (fs MockFS) Merge(extra map[string][]byte) {
 	for p, c := range extra {
+		validateFixtureMockFSPath(p)
 		if _, ok := fs[p]; ok {
 			panic(fmt.Errorf("attempted to add file %s to the mock filesystem but it already exists", p))
 		}
@@ -248,8 +250,38 @@ func (fs MockFS) Merge(extra map[string][]byte) {
 	}
 }
 
+// Ensure that tests cannot add paths into the mock file system which would not be allowed in the
+// runtime, e.g. absolute paths, paths relative to the 'out/' directory.
+func validateFixtureMockFSPath(path string) {
+	// This uses validateSafePath rather than validatePath because the latter prevents adding files
+	// that include a $ but there are tests that allow files with a $ to be used, albeit only by
+	// globbing.
+	validatedPath, err := validateSafePath(path)
+	if err != nil {
+		panic(err)
+	}
+
+	// Make sure that the path is canonical.
+	if validatedPath != path {
+		panic(fmt.Errorf("path %q is not a canonical path, use %q instead", path, validatedPath))
+	}
+
+	if path == "out" || strings.HasPrefix(path, "out/") {
+		panic(fmt.Errorf("cannot add output path %q to the mock file system", path))
+	}
+}
+
 func (fs MockFS) AddToFixture() FixturePreparer {
 	return FixtureMergeMockFs(fs)
+}
+
+// FixtureCustomPreparer allows for the modification of any aspect of the fixture.
+//
+// This should only be used if one of the other more specific preparers are not suitable.
+func FixtureCustomPreparer(mutator func(fixture Fixture)) FixturePreparer {
+	return newSimpleFixturePreparer(func(f *fixture) {
+		mutator(f)
+	})
 }
 
 // Modify the config
@@ -281,6 +313,11 @@ func FixtureRegisterWithContext(registeringFunc func(ctx RegistrationContext)) F
 func FixtureModifyMockFS(mutator func(fs MockFS)) FixturePreparer {
 	return newSimpleFixturePreparer(func(f *fixture) {
 		mutator(f.mockFS)
+
+		// Make sure that invalid paths were not added to the mock filesystem.
+		for p, _ := range f.mockFS {
+			validateFixtureMockFSPath(p)
+		}
 	})
 }
 
@@ -298,6 +335,7 @@ func FixtureMergeMockFs(mockFS MockFS) FixturePreparer {
 // Fail if the filesystem already contains a file with that path, use FixtureOverrideFile instead.
 func FixtureAddFile(path string, contents []byte) FixturePreparer {
 	return FixtureModifyMockFS(func(fs MockFS) {
+		validateFixtureMockFSPath(path)
 		if _, ok := fs[path]; ok {
 			panic(fmt.Errorf("attempted to add file %s to the mock filesystem but it already exists, use FixtureOverride*File instead", path))
 		}
@@ -564,6 +602,15 @@ func FixtureCustomErrorHandler(function func(t *testing.T, result *TestResult)) 
 
 // Fixture defines the test environment.
 type Fixture interface {
+	// Config returns the fixture's configuration.
+	Config() Config
+
+	// Context returns the fixture's test context.
+	Context() *TestContext
+
+	// MockFS returns the fixture's mock filesystem.
+	MockFS() MockFS
+
 	// Run the test, checking any errors reported and returning a TestResult instance.
 	RunTest() *TestResult
 }
@@ -700,6 +747,18 @@ type fixture struct {
 
 	// The error handler used to check the errors, if any, that are reported.
 	errorHandler FixtureErrorHandler
+}
+
+func (f *fixture) Config() Config {
+	return f.config
+}
+
+func (f *fixture) Context() *TestContext {
+	return f.ctx
+}
+
+func (f *fixture) MockFS() MockFS {
+	return f.mockFS
 }
 
 func (f *fixture) RunTest() *TestResult {
