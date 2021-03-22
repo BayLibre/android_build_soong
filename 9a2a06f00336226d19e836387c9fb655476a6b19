@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd559257_7fcd669b",
+        "filename": "android/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-22T18:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2bf7219_5d5ba507",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 5
+      },
+      "revId": "9a2a06f00336226d19e836387c9fb655476a6b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "518d3199_bfd01104",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-22T09:32:45Z",
       "side": 1,
       "message": "Following on the comment that these should be dropped, it\u0027s better if it isn\u0027t documented. Suggest replacing with a GroupFixturePreparers call.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "9a2a06f00336226d19e836387c9fb655476a6b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88fe1c08_e74f2e18",
+        "filename": "android/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-22T18:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518d3199_bfd01104",
       "range": {
         "startLine": 141,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "196f7ebe_3ecfa2e8",
+        "filename": "android/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-22T18:33:39Z",
+      "side": 1,
+      "message": "Done. It doesn\u0027t really create a new one either but this will do.",
+      "parentUuid": "2e7c4ac2_54d1e5f5",
+      "range": {
+        "startLine": 518,
+        "startChar": 5,
+        "endLine": 518,
+        "endChar": 32
+      },
+      "revId": "9a2a06f00336226d19e836387c9fb655476a6b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6a7cef69_04a72066",
         "filename": "android/fixture.go",
         "patchSetId": 8
@@ -83,6 +155,30 @@
       "writtenOn": "2021-03-22T09:32:45Z",
       "side": 1,
       "message": "Having a separate code path for this doesn\u0027t seem worth it, but since this function is presumably short lived no change required.",
+      "range": {
+        "startLine": 766,
+        "startChar": 0,
+        "endLine": 769,
+        "endChar": 2
+      },
+      "revId": "9a2a06f00336226d19e836387c9fb655476a6b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a223d7_c5c6ab3a",
+        "filename": "android/fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-22T18:33:39Z",
+      "side": 1,
+      "message": "The point isn\u0027t to optimize it is to ensure that as much code as possible uses FixturePreparer to make sure that it doesn\u0027t accidentally rely on some FixtureFactory capability.",
+      "parentUuid": "6a7cef69_04a72066",
       "range": {
         "startLine": 766,
         "startChar": 0,
