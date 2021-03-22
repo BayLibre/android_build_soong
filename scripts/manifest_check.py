@@ -251,8 +251,8 @@ def translate_libnames(modules, module_to_libname):
 
 
 def main():
-  """Program entry point."""
-  try:
+#  """Program entry point."""
+#  try:
     args = parse_args()
 
     # The input can be either an XML manifest or an APK, they are parsed and
@@ -300,10 +300,10 @@ def main():
       with open(args.output, 'wb') as f:
         write_xml(f, manifest)
 
-  # pylint: disable=broad-except
-  except Exception as err:
-    print('error: ' + str(err), file=sys.stderr)
-    sys.exit(-1)
+#  # pylint: disable=broad-except
+#  except Exception as err:
+#    print('error: ' + str(err), file=sys.stderr)
+#    sys.exit(-1)
 
 if __name__ == '__main__':
   main()
