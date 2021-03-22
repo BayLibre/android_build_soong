@@ -143,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aebb084_9951833d",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-22T22:40:14Z",
+      "side": 1,
+      "message": "Certainly.",
+      "parentUuid": "45fd0ed4_1f6c6e61",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2095dc0b_e7e7ccc2",
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "Can we add some TODOs as to which behaviors are for debugging and will be removed, to help indicate which are the intended user workflows?",
       "parentUuid": "106805a1_dbc0b4d6",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 53
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72aa3437_afcedc0e",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-22T22:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c476fb18_cb5e03c5",
       "range": {
         "startLine": 102,
         "startChar": 2,
@@ -510,6 +558,30 @@
       "side": 1,
       "message": "It requires a few steps to know that what it is in knownFunctions could eventually become a callExpr, and then to also know that that \"!\" should never be output, which are both indicated in a separate file -- please add a comment here that anything starting with ! is an unsupported function",
       "parentUuid": "27148e6d_872fccb5",
+      "range": {
+        "startLine": 74,
+        "startChar": 42,
+        "endLine": 74,
+        "endChar": 53
+      },
+      "revId": "0150eeee7a9a395d47ffde975949ec012c824c3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a32b997_2cb60688",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-22T22:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66271087_be03e2ae",
       "range": {
         "startLine": 74,
         "startChar": 42,

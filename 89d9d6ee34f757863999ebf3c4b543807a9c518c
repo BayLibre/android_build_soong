@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3214bc1_175a3b53",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-22T22:40:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1842a9b6_63ac5515",
+      "range": {
+        "startLine": 219,
+        "startChar": 55,
+        "endLine": 219,
+        "endChar": 56
+      },
+      "revId": "89d9d6ee34f757863999ebf3c4b543807a9c518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38fa2110_dc906360",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-03-19T15:29:21Z",
       "side": 1,
       "message": "These converted files will be the new product configuration files that people will create/edit, correct? A more verbose name than \"g\" would be helpful for our users. We can defer, but we before we start checking in files, we need to review the user interface we\u0027re creating for folks to write product configuration.",
+      "range": {
+        "startLine": 182,
+        "startChar": 22,
+        "endLine": 182,
+        "endChar": 23
+      },
+      "revId": "89d9d6ee34f757863999ebf3c4b543807a9c518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f306c6_45ed2cb3",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-03-22T22:40:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38fa2110_dc906360",
       "range": {
         "startLine": 182,
         "startChar": 22,
