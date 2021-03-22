@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fd2eee_c1e3baad",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-22T23:48:43Z",
+      "side": 1,
+      "message": "Do you plan to (even if you don\u0027t intend to work on it yourself) make TestingBuildParams relative to TOP by default and remove config? If so, actually even if not, could you add comments to encourage using this function and testing relative paths to the public functions that return TestingBuildParams?",
+      "revId": "709e0e32c2a828194bf8211b84fbed7ff102667e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
