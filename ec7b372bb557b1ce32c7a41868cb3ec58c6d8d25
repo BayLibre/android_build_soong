@@ -16,6 +16,24 @@
       "message": "Want to make this\n  if {}\n  else if {}\n  else {}\n\ninstead of \n\n  if {}\n  else { \n    if {}\n    else {}\n  }\n\n?",
       "revId": "ec7b372bb557b1ce32c7a41868cb3ec58c6d8d25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a72627_15b677e0",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-23T14:19:16Z",
+      "side": 1,
+      "message": "Done. I specifically decided against that because I thought it\u0027s not equivalent. I should probably stop coding for the day.\n\nAlso threw in a null build test, ptal!",
+      "parentUuid": "f39d255c_f19b6e74",
+      "revId": "ec7b372bb557b1ce32c7a41868cb3ec58c6d8d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
