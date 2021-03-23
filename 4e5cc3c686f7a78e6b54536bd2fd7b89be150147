@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8071d142_9ddf45ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-23T15:27:43Z",
+      "side": 1,
+      "message": "Note that I think we should use textproto format instead:\n- native support with protoc to encode/decode any messages\n- Intellij does dynamic verification of textproto files\n- Comments are allowed in textproto (not in JSON)\n\nbut I went with json for now, to stay consistent with manifest.json",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "4e5cc3c686f7a78e6b54536bd2fd7b89be150147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
