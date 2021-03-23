@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131bf67a_138b994f",
+        "filename": "android/bazel.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-23T16:16:31Z",
+      "side": 1,
+      "message": "I\u0027m a little unclear on what this has to do with mixed builds; it just seems like an escape hatch to ensure we don\u0027t start getting into conversion logic for module types which can\u0027t be converted. Can you elaborate on how this saves us from mixed build bugs?",
+      "revId": "75ea02d17fbb7612ed7545c44c1f9c5dc8d22bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08debe8_7b11004f",
+        "filename": "android/bazel.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-23T16:16:31Z",
+      "side": 1,
+      "message": "Would it perhaps be more complete to be a bit more consistent about recursive allowlisting/denylisting behavior?\n\nThat is, suppose we have:\n  x is True\n  x/y is False\n\nWhat is x/y/z? I would say, it should be False. Under this implementation, it would be True.",
+      "revId": "75ea02d17fbb7612ed7545c44c1f9c5dc8d22bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16cfcbb8_37d05b00",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-23T16:16:31Z",
+      "side": 1,
+      "message": "maybe tangential to this change, but do we have concerns that removal of out/ (`rm -rf out/`) wipes away these manifests?",
+      "revId": "75ea02d17fbb7612ed7545c44c1f9c5dc8d22bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
