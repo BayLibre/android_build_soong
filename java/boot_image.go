@@ -90,14 +90,19 @@ type BootImageModule struct {
 	android.ModuleBase
 	android.ApexModuleBase
 	android.SdkBase
+	classpathFragment
+
 	properties bootImageProperties
 }
 
 func bootImageFactory() android.Module {
 	m := &BootImageModule{}
 	m.AddProperties(&m.properties)
+	m.AddProperties(&m.classpathFragment.properties)
 	android.InitApexModule(m)
 	android.InitSdkAwareModule(m)
+	initClasspathFragment(&m.classpathFragment, BOOTCLASSPATH)
+
 	android.InitAndroidArchModule(m, android.HostAndDeviceSupported, android.MultilibCommon)
 
 	// Perform some consistency checking to ensure that the configuration is correct.
@@ -149,6 +154,8 @@ func bootImageConsistencyCheck(ctx android.EarlyModuleContext, m *BootImageModul
 
 		// Store the jars in the Contents property so that they can be used to add dependencies.
 		m.properties.Contents = jars
+
+		m.classpathFragment.properties.Include_apexes = []string{"com.android.art"}
 	}
 }
 
@@ -213,6 +220,8 @@ func (b *BootImageModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (b *BootImageModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	b.classpathFragment.GenerateAndroidBuildActions(ctx)
+
 	// Nothing to do if skipping the dexpreopt of boot image jars.
 	if SkipDexpreoptBootJars(ctx) {
 		return
@@ -232,6 +241,10 @@ func (b *BootImageModule) GenerateAndroidBuildActions(ctx android.ModuleContext)
 
 	// Make it available for other modules.
 	ctx.SetProvider(BootImageInfoProvider, info)
+}
+
+func (b *BootImageModule) AndroidMkEntries() []android.AndroidMkEntries {
+	return b.classpathFragment.AndroidMkEntries()
 }
 
 func (b *BootImageModule) getImageConfig(ctx android.EarlyModuleContext) *bootImageConfig {
