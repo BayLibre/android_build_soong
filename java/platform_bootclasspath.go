@@ -29,10 +29,13 @@ func registerPlatformBootclasspathBuildComponents(ctx android.RegistrationContex
 
 type platformBootclasspathModule struct {
 	android.ModuleBase
+	classpathFragment
 }
 
 func platformBootclasspathFactory() android.Module {
 	m := &platformBootclasspathModule{}
+	m.AddProperties(&m.classpathFragment.properties)
+	initClasspathFragment(&m.classpathFragment, BOOTCLASSPATH)
 	android.InitAndroidArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	return m
 }
@@ -48,6 +51,9 @@ func (b *platformBootclasspathModule) DepsMutator(ctx android.BottomUpMutatorCon
 }
 
 func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	b.classpathFragment.properties.Exclude_apexes = []string{"com.android.art"}
+	b.classpathFragment.GenerateAndroidBuildActions(ctx)
+
 	// Nothing to do if skipping the dexpreopt of boot image jars.
 	if SkipDexpreoptBootJars(ctx) {
 		return
@@ -71,4 +77,8 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 
 func (b *platformBootclasspathModule) getImageConfig(ctx android.EarlyModuleContext) *bootImageConfig {
 	return defaultBootImageConfig(ctx)
+}
+
+func (b *platformBootclasspathModule) AndroidMkEntries() []android.AndroidMkEntries {
+	return b.classpathFragment.AndroidMkEntries()
 }

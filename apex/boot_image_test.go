@@ -230,6 +230,7 @@ func TestBootImageInArtApex(t *testing.T) {
 	`)
 
 	ensureExactContents(t, result.TestContext, "com.android.art", "android_common_com.android.art_image", []string{
+		"etc/classpaths/bootclasspath",
 		"javalib/arm/boot.art",
 		"javalib/arm/boot.oat",
 		"javalib/arm/boot.vdex",
@@ -367,6 +368,7 @@ func TestBootImageContentsNoName(t *testing.T) {
 	`)
 
 	ensureExactContents(t, result.TestContext, "myapex", "android_common_myapex_image", []string{
+		"etc/classpaths/bootclasspath",
 		// This does not include art, oat or vdex files as they are only included for the art boot
 		// image.
 		"javalib/bar.jar",

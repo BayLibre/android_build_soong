@@ -755,6 +755,9 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
 	ctx.AddFarVariationDependencies(commonVariation, bootImageTag, a.properties.Boot_images...)
 	ctx.AddFarVariationDependencies(commonVariation, bootImageTag, a.properties.Bootclasspath_fragments...)
+	// classpath fragments generate classpaths.proto to be put into etc/
+	ctx.AddFarVariationDependencies(commonVariation, prebuiltTag, a.properties.Boot_images...)
+	ctx.AddFarVariationDependencies(commonVariation, prebuiltTag, a.properties.Bootclasspath_fragments...)
 	ctx.AddFarVariationDependencies(commonVariation, javaLibTag, a.properties.Java_libs...)
 	ctx.AddFarVariationDependencies(commonVariation, bpfTag, a.properties.Bpfs...)
 	ctx.AddFarVariationDependencies(commonVariation, fsTag, a.properties.Filesystems...)
