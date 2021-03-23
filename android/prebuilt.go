@@ -281,17 +281,31 @@ func PrebuiltPostDepsMutator(ctx BottomUpMutatorContext) {
 	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
 		p := m.Prebuilt()
 		name := m.base().BaseModuleName()
-		if p.properties.UsePrebuilt {
-			if p.properties.SourceExists {
-				ctx.ReplaceDependenciesIf(name, func(from blueprint.Module, tag blueprint.DependencyTag, to blueprint.Module) bool {
-					if t, ok := tag.(ReplaceSourceWithPrebuilt); ok {
-						return t.ReplaceSourceWithPrebuilt()
-					}
 
-					return true
-				})
-			}
-		} else {
+		// If the source exists then some dependencies on the source may need replacing with
+		// dependencies on the prebuilt.
+		usePrebuilt := p.properties.UsePrebuilt
+		if p.properties.SourceExists {
+			ctx.ReplaceDependenciesIf(name, func(from blueprint.Module, tag blueprint.DependencyTag, to blueprint.Module) bool {
+				// Do not replace the dependency on the source if the prebuilt is not preferred.
+				if !usePrebuilt {
+					return false
+				}
+
+				// If the dependency is via a tag that requires the target remain a source module then
+				// do not replace the dependency even if the prebuilt is preferred.
+				if t, ok := tag.(ReplaceSourceWithPrebuilt); ok {
+					return t.ReplaceSourceWithPrebuilt()
+				}
+
+				// Otherwise, the prebuilt is preferred and the dependency tag allows it so it is safe to
+				// replace the dependency.
+				return true
+			})
+		}
+
+		// If the prebuilt should not be used then don't export it to make.
+		if !usePrebuilt {
 			m.HideFromMake()
 		}
 	}
