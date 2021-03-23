@@ -78,7 +78,7 @@ var prepareForJavaTest = android.GroupFixturePreparers(
 
 		ctx.RegisterPreSingletonType("sdk_versions", sdkPreSingletonFactory)
 	}),
-	dexpreopt.PrepareForTestWithDexpreopt,
+	PrepareForTestWithDexpreopt,
 )
 
 func TestMain(m *testing.M) {
@@ -159,7 +159,6 @@ func run(t *testing.T, ctx *android.TestContext, config android.Config) {
 func testJavaError(t *testing.T, pattern string, bp string) (*android.TestContext, android.Config) {
 	t.Helper()
 	result := javaFixtureFactory.
-		Extend(dexpreopt.PrepareForTestWithDexpreopt).
 		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(pattern)).
 		RunTestWithBp(t, bp)
 	return result.TestContext, result.Config
