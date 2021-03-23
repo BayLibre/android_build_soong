@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51833d71_e8a1ceb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-23T09:25:31Z",
+      "side": 1,
+      "message": "The distinction between updatable and non-updatable seems pretty arbitrary. After all ART is updatable and it is always used to dexpreopt so why should we care? If it is simply an optimization because system server is guaranteed not to use the \"updatable\" parts of the bootclasspath then could we not just make dexpreopt/runtime a little cleverer rather than add more special cases into the build?\n\nPresumably dexpreopt encodes all the information it is given about the classpath into the output so that any change to any of the items on the classpath will cause the runtime to discard it, even changes in parts not used by an App.\n\nI don\u0027t know if it is possible but could the dexpreopt only encode information about the parts of the classpath that is actually used. e.g. if the classpath was A:B:C:D and an App only used classes from A and C then could dexpreopt not just encode information about A, B (because changes to it could affect search order) and C but not D?\n\nI know the classpath is actually a tree (DAG?) not a list which does complicate matters but you could consider the tree as a set of lists formed by following every path from the root to a leaf. Dexpreropt would just need to encode the partial tree (DAG?) such that every path from the root is a prefix of a similar path from the full tree.",
+      "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd962900_7ccdb8a8",
