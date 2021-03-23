@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6931e208_04a3b2d0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-23T13:12:18Z",
+      "side": 1,
+      "message": "not needed as part of this cl, but do we have the queuing behavior documented more thoroughly somewhere?",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 36
+      },
+      "revId": "74c25539912e3afb2b15b986ae057fce47a427b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd94ecc_1161b753",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-23T13:12:18Z",
+      "side": 1,
+      "message": "optional: would it make sense to store all the returns in a list and join on \"|\" at the end? i know it tends to be more performant in python, but not sure about starlark.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 3
+      },
+      "revId": "74c25539912e3afb2b15b986ae057fce47a427b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc296a31_0e415ba7",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-23T13:12:18Z",
+      "side": 1,
+      "message": "should we assert on the length of this string to give a more helpful error if these get out of sync?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 45
+      },
+      "revId": "74c25539912e3afb2b15b986ae057fce47a427b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafb3864_43b54a0e",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-23T13:12:18Z",
+      "side": 1,
+      "message": "Unsure whether this is a question of bp2build or mixed builds, but we should ensure we are not exporting local includes.",
+      "range": {
+        "startLine": 471,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 36
+      },
+      "revId": "74c25539912e3afb2b15b986ae057fce47a427b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
