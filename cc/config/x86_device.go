@@ -36,6 +36,7 @@ var (
 
 	x86Ldflags = []string{
 		"-Wl,--hash-style=gnu",
+		"-Wl,--icf=safe",
 	}
 
 	x86Lldflags = ClangFilterUnknownLldflags(x86Ldflags)
