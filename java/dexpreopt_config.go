@@ -21,12 +21,13 @@ import (
 
 	"android/soong/android"
 	"android/soong/dexpreopt"
+	"android/soong/etc"
 )
 
 // systemServerClasspath returns the on-device locations of the modules in the system server classpath.  It is computed
 // once the first time it is called for any ctx.Config(), and returns the same slice for all future calls with the same
 // ctx.Config().
-func systemServerClasspath(ctx android.MakeVarsContext) []string {
+func systemServerClasspath(ctx android.PathContext) []string {
 	return ctx.Config().OnceStringSlice(systemServerClasspathKey, func() []string {
 		global := dexpreopt.GetGlobalConfig(ctx)
 		var systemServerClasspathLocations []string
@@ -182,12 +183,128 @@ var copyOf = android.CopyOf
 
 func init() {
 	android.RegisterMakeVarsProvider(pctx, dexpreoptConfigMakevars)
+	android.RegisterModuleType("classpaths_config", classpathsConfigFactory)
+	android.RegisterModuleType("classpaths_system_config", classpathsSystemConfigFactory)
 }
 
 func dexpreoptConfigMakevars(ctx android.MakeVarsContext) {
-	ctx.Strict("PRODUCT_BOOTCLASSPATH", strings.Join(defaultBootclasspath(ctx), ":"))
-	ctx.Strict("PRODUCT_DEX2OAT_BOOTCLASSPATH", strings.Join(defaultBootImageConfig(ctx).getAnyAndroidVariant().dexLocationsDeps, ":"))
-	ctx.Strict("PRODUCT_SYSTEM_SERVER_CLASSPATH", strings.Join(systemServerClasspath(ctx), ":"))
-
 	ctx.Strict("DEXPREOPT_BOOT_JARS_MODULES", strings.Join(defaultBootImageConfig(ctx).modules.CopyOfApexJarPairs(), ":"))
+}
+
+type classpathsConfigProperties struct {
+	// Source file of this prebuilt. Can reference a genrule type module with the ":module" syntax.
+	Src *string `android:"path,arch_variant"`
+}
+
+type classpathsSystemConfigProperties struct {
+	// APEXes that have their own classpaths config defined, thus they don't need to be in the system one.
+	Excludes []string
+}
+
+type classpathsConfig struct {
+	android.ModuleBase
+
+	properties classpathsConfigProperties
+
+	sourceFilepath android.Path
+	outputFilepath android.OutputPath
+	installDirPath android.InstallPath
+}
+
+type classpathsSystemConfig struct {
+	classpathsConfig
+
+	systemProperties classpathsSystemConfigProperties
+}
+
+var _ etc.PrebuiltEtcModule = (*classpathsConfig)(nil)
+var _ etc.PrebuiltEtcModule = (*classpathsSystemConfig)(nil)
+
+func (*classpathsConfig) BaseDir() string {
+	return "etc"
+}
+
+func (*classpathsConfig) SubDir() string {
+	return ""
+}
+
+func (c *classpathsConfig) OutputFile() android.OutputPath {
+	return c.outputFilepath
+}
+
+func (c *classpathsSystemConfig) BaseDir() string {
+	return c.classpathsConfig.BaseDir()
+}
+
+func (c *classpathsSystemConfig) SubDir() string {
+	return c.classpathsConfig.SubDir()
+}
+
+func (c *classpathsSystemConfig) OutputFile() android.OutputPath {
+	return c.classpathsConfig.OutputFile()
+}
+
+func classpathsConfigFactory() android.Module {
+	module := &classpathsConfig{}
+	module.AddProperties(&module.properties)
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	return module
+}
+
+func classpathsSystemConfigFactory() android.Module {
+	module := &classpathsSystemConfig{}
+	module.AddProperties(&module.properties)
+	module.AddProperties(&module.systemProperties)
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	return module
+}
+
+// Generates classpaths.proto configs from a given configuration files for APEXes to bundle.
+// Classpaths config is to be read by `dervie_classpath` service at runtime to set *CLASSPATH variables.
+func (c *classpathsConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	c.sourceFilepath = android.PathForModuleSrc(ctx, android.String(c.properties.Src))
+	c.outputFilepath = android.PathForModuleOut(ctx, "classpath").OutputPath
+	c.installDirPath = android.PathForModuleInstall(ctx, "etc")
+
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.Command().
+		BuiltTool("conv_classpaths_config").
+		Flag("proto").
+		Input(c.sourceFilepath).
+		Output(c.outputFilepath)
+
+	rule.Build("classpaths_config", "Compiling "+c.outputFilepath.String())
+}
+
+// Generates /system/etc/classpath that define *CLASSPATH entries without APEX jars.
+// Classpaths config is to be read by `dervie_classpath` service at runtime to set *CLASSPATH variables.
+// TODO(satayev): actually split apexes into their own configs
+func (c *classpathsSystemConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	c.outputFilepath = android.PathForModuleOut(ctx, "classpath").OutputPath
+	c.installDirPath = android.PathForModuleInstall(ctx, "etc")
+
+	var content strings.Builder
+	// TODO(satayev): generate classpaths.proto entry instead
+	fmt.Fprintf(&content, "export BOOTCLASSPATH %v\n", strings.Join(defaultBootclasspath(ctx), ":"))
+	fmt.Fprintf(&content, "export DEX2OATBOOTCLASSPATH %v\n", strings.Join(defaultBootImageConfig(ctx).getAnyAndroidVariant().dexLocationsDeps, ":"))
+	fmt.Fprintf(&content, "export SYSTEMSERVERCLASSPATH %v\n", strings.Join(systemServerClasspath(ctx), ":"))
+
+	android.WriteFileRule(ctx, c.outputFilepath, content.String())
+
+	ctx.InstallFile(c.installDirPath, c.outputFilepath.Base(), c.outputFilepath)
+}
+
+func (c *classpathsSystemConfig) AndroidMkEntries() []android.AndroidMkEntries {
+	return []android.AndroidMkEntries{android.AndroidMkEntries{
+		Class:      "ETC",
+		OutputFile: android.OptionalPathForPath(c.outputFilepath),
+		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
+			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+				entries.SetString("LOCAL_MODULE_PATH", c.installDirPath.ToMakePath().String())
+				entries.SetString("LOCAL_INSTALLED_MODULE_STEM", c.outputFilepath.Base())
+			},
+		},
+	}}
 }
