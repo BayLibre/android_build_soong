@@ -34,6 +34,29 @@
       "parentUuid": "3da6479d_5fdb7b5d",
       "revId": "d7a36b40021788dff2171d9cbec1eeac0599ff77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29cf04b_7e90046b",
+        "filename": "android/bazel.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-23T09:11:32Z",
+      "side": 1,
+      "message": "This is a new change: I added an early check here to validate that the module has a registered bp2build converter so that mixed builds can easily determine if a module has been auto-converted.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "d7a36b40021788dff2171d9cbec1eeac0599ff77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
