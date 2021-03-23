@@ -1703,6 +1703,13 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						}
 					}
 
+					// BootImageModule generates classpaths.proto to be included in apex's etc/ directory
+					if prebuilt, ok := child.(prebuilt_etc.PrebuiltEtcModule); ok {
+						filesInfo = append(filesInfo, apexFileForPrebuiltEtc(ctx, prebuilt, depName))
+					} else {
+						ctx.ModuleErrorf("%q is BootImageModule, but it does not implement PrebuiltEtcModule", depName)
+					}
+
 					// Track transitive dependencies.
 					return true
 				}
