@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1517907_da631b02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-23T17:12:36Z",
+      "side": 1,
+      "message": "ART_APEX_JARS have always been a special case wrt. updatability, because they are in the primary boot image, on which every other image depends (lib/app images or the framework boot image extension).\n\nI also wondered at some point if we can somehow know what has changed after an update (like, look at the DEX diff and figure out if recompilation is needed), but that is not something we do (and I think that any such check would not be cheap).",
+      "parentUuid": "80f699c1_177bb95a",
+      "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd962900_7ccdb8a8",
@@ -145,6 +163,30 @@
       "side": 1,
       "message": "Yes, my comment is to pass \"false\" here always so we currently don\u0027t change the behavior, and do a follow-up CL that does what you\u0027re doing (\"!isSystemServerJar\") once we have consensus on the bug.",
       "parentUuid": "02a5089b_cda64171",
+      "range": {
+        "startLine": 172,
+        "startChar": 49,
+        "endLine": 172,
+        "endChar": 66
+      },
+      "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c0cb49e_a51c2e8b",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-23T17:12:36Z",
+      "side": 1,
+      "message": "Ok, see aosp/1650448: changing behaviour should be as easy as flipping DEX_PREOPT_WITH_UPDATABLE_BCP default.\n\nAlso added a Soong tests to check both behaviours.",
+      "parentUuid": "b450fa90_001ec0b7",
       "range": {
         "startLine": 172,
         "startChar": 49,
