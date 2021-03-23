@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f699c1_177bb95a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-23T09:34:09Z",
+      "side": 1,
+      "message": "dexpreopt should really take the entire boot classpath. It\u0027s a limitation of the platform and SH consequences that we pass just a subset. I know we\u0027re special casing the build system again, but it has all the information here (are we compiling a system server jar? where are the dex files? etc).",
+      "parentUuid": "51833d71_e8a1ceb6",
+      "revId": "d12b91b32025f7955b179bac48e29f1b406fea99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd962900_7ccdb8a8",
