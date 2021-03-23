@@ -64,3 +64,22 @@ func TestUnknownPrebuiltBootImage(t *testing.T) {
 			}
 		`)
 }
+
+func TestBootImageInconsistentConfiguration(t *testing.T) {
+	android.GroupFixturePreparers(
+		prepareForTestWithBootImage,
+		dexpreopt.FixtureSetArtBootJars("platform:foo", "apex:bar"),
+	).
+		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			`\QArtApexJars configuration is inconsistent, expected all jars to be in the same apex but it specifies apex "apex" and "platform"\E`)).
+		RunTestWithBp(t, `
+			boot_image {
+				name: "boot-image",
+				image_name: "art",
+				apex_available: [
+					"//apex_available:platform",
+					"apex",
+				],
+			}
+		`)
+}
