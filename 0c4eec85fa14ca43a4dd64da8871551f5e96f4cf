@@ -22,6 +22,30 @@
       },
       "revId": "0c4eec85fa14ca43a4dd64da8871551f5e96f4cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b2c399_e112d9cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-03-23T00:03:06Z",
+      "side": 1,
+      "message": "That\u0027d be great. I\u0027ll do in a followup change.",
+      "parentUuid": "777b6754_b309d92d",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 71
+      },
+      "revId": "0c4eec85fa14ca43a4dd64da8871551f5e96f4cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
