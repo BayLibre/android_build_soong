@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e865324_b8104dd9",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-23T16:27:33Z",
+      "side": 1,
+      "message": "I am planning on adding a boot_image module for every apex that contributes to the BCP so I think it would be worth you waiting for that. I\u0027ll send you some CLs tomorrow.",
+      "parentUuid": "3f502f1f_5896d342",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49207428_4029946a",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
