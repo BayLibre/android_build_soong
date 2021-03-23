@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39a970d_61b2a7c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-23T19:29:30Z",
+      "side": 1,
+      "message": "I think that this change and the following one will detect a lot of the issues that you have been finding when generating the prebuilts, i.e. source and prebuilts not working together, much earlier.",
+      "revId": "9faf87e024f9dd6c24e57076ce6856fd8a51c2a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
