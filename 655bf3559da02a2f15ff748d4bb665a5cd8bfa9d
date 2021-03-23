@@ -16,6 +16,80 @@
       "message": "Paul, WDYT?",
       "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f4fc35b_d928e985",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-23T15:59:26Z",
+      "side": 1,
+      "message": "I could not find a use of classpaths_config in the topic how is this used? How does this differ from classpaths_system_config?\n\nThis looks as though it could be replaced by the boot_image module once I have got that into a better state.",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65211a72_dec99c52",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-23T15:59:26Z",
+      "side": 1,
+      "message": "This looks as though it could be replaced by the boot_image module once I have got that into a better state.",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49207428_4029946a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-23T15:59:26Z",
+      "side": 1,
+      "message": "It is better to group each type and method together, so put all classpathsConfig first and then all classpathsSystemConfig stuff second, or vice versa.",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dfe703c_08f1e51d",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-23T15:59:26Z",
+      "side": 1,
+      "message": "spelling?",
+      "range": {
+        "startLine": 282,
+        "startChar": 39,
+        "endLine": 282,
+        "endChar": 45
+      },
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
