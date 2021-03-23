@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c488ac92_60dccf60",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-03-23T17:56:45Z",
+      "side": 1,
+      "message": "could you add the system server check here?",
+      "range": {
+        "startLine": 1019,
+        "startChar": 48,
+        "endLine": 1019,
+        "endChar": 49
+      },
+      "revId": "ed4ad01cc785713dc7f71c510dc5ab541ec6d314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
