@@ -69,3 +69,44 @@ func ReadRspFile(r io.Reader) ([]string, error) {
 
 	return files, nil
 }
+
+func shellUnsafeChar(r rune) bool {
+	switch {
+	case 'A' <= r && r <= 'Z',
+		'a' <= r && r <= 'z',
+		'0' <= r && r <= '9',
+		r == '_',
+		r == '+',
+		r == '-',
+		r == '.',
+		r == '/':
+		return false
+	default:
+		return true
+	}
+}
+
+var shellEscaper = strings.NewReplacer(`'`, `'\''`)
+
+// WriteRspFile writes a list of files to a file in Ninja's response file format.
+func WriteRspFile(w io.Writer, files []string) error {
+	for i, f := range files {
+		if i != 0 {
+			_, err := io.WriteString(w, " ")
+			if err != nil {
+				return err
+			}
+		}
+
+		if strings.IndexFunc(f, shellUnsafeChar) != -1 {
+			f = `'` + shellEscaper.Replace(f) + `'`
+		}
+
+		_, err := io.WriteString(w, f)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
