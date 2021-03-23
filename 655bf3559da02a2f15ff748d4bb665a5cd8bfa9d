@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f502f1f_5896d342",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-23T16:10:08Z",
+      "side": 1,
+      "message": "Note that ideally in long-term we would also hide this from module devs, and auto-generate the config based on java_sdk_library for example. But it\u0027s out of scope for now.",
+      "parentUuid": "d5063dc8_37b1b816",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49207428_4029946a",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
