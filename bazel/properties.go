@@ -227,6 +227,10 @@ func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
 	}
 }
 
+func MakeStringListAttribute(value []string) StringListAttribute {
+	return StringListAttribute{Value: value}
+}
+
 // StringListAttribute corresponds to the string_list Bazel attribute type with
 // support for additional metadata, like configurations.
 type StringListAttribute struct {
