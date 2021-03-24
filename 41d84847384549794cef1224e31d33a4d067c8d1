@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd9c22b_d0b390e0",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T15:40:22Z",
+      "side": 1,
+      "message": "I suppose this is for b/183204176 and only intended to catch the particular panic in ReplaceDependenciesIf. If we don\u0027t want that to be a panic then it should be returned as an error instead.\n\nOtoh, if this is only temporary for that bug then please add a TODO(b/183204176) here to clean it up again.",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 6
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "163c87d0_fdab0465",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T15:40:22Z",
+      "side": 1,
+      "message": "There\u0027s probably a guideline somewhere saying not to abbreviate, but this is getting repeated a lot and adds to the bulk of many lines. I must say I find it much easier to read \"Config\" rather than \"Configuration\". It\u0027s still very hard to misinterpret that.",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66fae74_bce3a189",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T15:40:22Z",
+      "side": 1,
+      "message": "Isn\u0027t it overall simpler to just have the code for these three tests one after another in checkSnapshot? It\u0027d avoid this map, checkSnapshotTestConfigurationInfo and allCheckSnapshotTestConfigurations altogether. You could instead use a local function there to reduce the duplication between the tests.",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53d7833_bae50237",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T15:40:22Z",
+      "side": 1,
+      "message": "If the input bp doesn\u0027t contain this then the test may miss errors, even though it _should_ always be present in every module in the generated bp. Can we safeguard against that somehow? Is it hard to instead parse the bp, set the attribute programmatically and format it again?",
+      "range": {
+        "startLine": 243,
+        "startChar": 64,
+        "endLine": 243,
+        "endChar": 77
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1d0120_d674a7b2",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T15:40:22Z",
+      "side": 1,
+      "message": "Long name that still isn\u0027t very descriptive. What about snapshotCheckConfig?",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
