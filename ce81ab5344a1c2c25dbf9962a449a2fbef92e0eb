@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f48e9dd_252748cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T15:45:47Z",
+      "side": 1,
+      "message": "There\u0027s still a discussion on the ticket whether we should do this. I\u0027ll review later when that\u0027s resolved.",
+      "revId": "ce81ab5344a1c2c25dbf9962a449a2fbef92e0eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
