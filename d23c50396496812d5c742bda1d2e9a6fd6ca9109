@@ -22,6 +22,30 @@
       },
       "revId": "d23c50396496812d5c742bda1d2e9a6fd6ca9109",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ccb060a_5048ef10",
+        "filename": "java/java_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T17:44:27Z",
+      "side": 0,
+      "message": "Yes, they were removed by https://r.android.com/1619572.",
+      "parentUuid": "9d7443da_a6b094aa",
+      "range": {
+        "startLine": 1238,
+        "startChar": 0,
+        "endLine": 1239,
+        "endChar": 63
+      },
+      "revId": "d23c50396496812d5c742bda1d2e9a6fd6ca9109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

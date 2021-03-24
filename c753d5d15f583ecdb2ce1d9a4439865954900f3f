@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86741c9c_34c21831",
+        "filename": "android/testing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T17:44:27Z",
+      "side": 1,
+      "message": "I was surprised too, and disabling it lost us some important consistency checks in the snapshots which is what this is intended to fix.\n\nI think it may be something that we can revisit now that we have test fixtures as I think they make it much more tractable to provide every file. It is easier to add files to a test and also easier to make sure that shared code is self contained.\n\nSo, I have not purposely removed files that I know are needed.",
+      "parentUuid": "a3217891_8ef91631",
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38eb120f_05c78f7a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-24T16:26:29Z",
       "side": 1,
       "message": "Just \"Test\"?\n\nAlso, I don\u0027t see this getting used anywhere - can you please move it to the CL where it is?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c0436c_03d6d3a5",
+        "filename": "java/java_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T17:44:27Z",
+      "side": 1,
+      "message": "It looks confusing but it is a test. It is verifying that the PrepareForTestWithJavaDefaultModules preparer provides all the files that it needs even when non-existent source paths are disallowed.",
+      "parentUuid": "38eb120f_05c78f7a",
       "range": {
         "startLine": 136,
         "startChar": 5,
@@ -77,6 +119,54 @@
       "writtenOn": "2021-03-24T16:26:29Z",
       "side": 1,
       "message": "Spello: \"type\".",
+      "range": {
+        "startLine": 49,
+        "startChar": 83,
+        "endLine": 49,
+        "endChar": 86
+      },
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3011ce2_c5a62a66",
+        "filename": "java/testing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T17:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5c0a41_a7acd73b",
+      "range": {
+        "startLine": 49,
+        "startChar": 55,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d551c90_03a0cffc",
+        "filename": "java/testing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T17:44:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "436d0211_14d3f52e",
       "range": {
         "startLine": 49,
         "startChar": 83,
