@@ -16,6 +16,23 @@
       "message": "Well, this was a bit embarrassing.",
       "revId": "c99c947c88a5050ed54ea19e80912adeec155738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5ece94_f1290f97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-24T10:05:21Z",
+      "side": 1,
+      "message": "Nice catch.",
+      "revId": "c99c947c88a5050ed54ea19e80912adeec155738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
