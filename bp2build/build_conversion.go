@@ -411,7 +411,7 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 				return ret, err
 			}
 
-			if !labels.HasArchSpecificValues() {
+			if !labels.HasArchSpecificValues() && !labels.HasTargetSpecificValues() {
 				// Select statement not needed.
 				return ret, nil
 			}
