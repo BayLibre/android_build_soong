@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bdbc81b_a72ec994",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T15:50:39Z",
+      "side": 0,
+      "message": "Have to say it was much easier to see what the fixture looks like with this old code. I\u0027m not saying we should go back to it, but I\u0027m pretty sure I sooner or later will want to print out the actual fixture (at least the bp and the MockFS) before the test when I debug something. I hope that will be easy.",
+      "revId": "b97df67d8260a11944901556d4bd90e06cc6e475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
