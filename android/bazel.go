@@ -131,6 +131,7 @@ var (
 		"bionic":                Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out.
@@ -177,6 +178,8 @@ var (
 		"generated_android_ids",         // cparsons@, genrule
 		"note_memtag_heap_async",        // cparsons@, cc_library_static
 		"note_memtag_heap_sync",         // cparsons@, cc_library_static
+		"libc",                          // jingwen@, cc_library
+		"libseccomp_policy",             // jingwen@, cc_library
 	}
 
 	// Used for quicker lookups
