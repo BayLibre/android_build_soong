@@ -163,6 +163,64 @@ cc_library_headers {
     ],
 )`},
 		},
+		{
+			description:                        "cc_library_headers test with target/os props",
+			moduleTypeUnderTest:                "cc_library_headers",
+			moduleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
+			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
+			filesystem:                         map[string]string{},
+			bp: soongCcLibraryPreamble + `
+cc_library_headers { name: "base-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "android-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "linux_bionic-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "linux-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "windows-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "darwin-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers {
+    name: "foo_headers",
+    header_libs: ["base-lib"],
+    target: {
+        android: { header_libs: ["android-lib"] },
+        linux_bionic: { header_libs: ["linux_bionic-lib"] },
+        linux: { header_libs: ["linux-lib"] },
+        windows: { header_libs: ["windows-lib"] },
+        darwin: { header_libs: ["darwin-lib"] },
+    },
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{`cc_library_headers(
+    name = "android-lib",
+)`, `cc_library_headers(
+    name = "base-lib",
+)`, `cc_library_headers(
+    name = "darwin-lib",
+)`, `cc_library_headers(
+    name = "foo_headers",
+    deps = [
+        ":base-lib",
+    ] + select({
+        "@bazel_tools//platforms:android": [
+            "android-lib",
+        ],
+        "@bazel_tools//platforms:linux": [
+            "linux_bionic-lib",
+        ],
+        "@bazel_tools//platforms:osx": [
+            "darwin-lib",
+        ],
+        "@bazel_tools//platforms:windows": [
+            "windows-lib",
+        ],
+        "//conditions:default": [],
+    }),
+)`, `cc_library_headers(
+    name = "linux-lib",
+)`, `cc_library_headers(
+    name = "linux_bionic-lib",
+)`, `cc_library_headers(
+    name = "windows-lib",
+)`},
+		},
 	}
 
 	dir := "."
