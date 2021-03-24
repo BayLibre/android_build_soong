@@ -126,6 +126,7 @@ var (
 		"bionic":                Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out.
@@ -172,6 +173,8 @@ var (
 		"libc_dns",
 		"note_memtag_heap_async",
 		"note_memtag_heap_sync",
+		"libc",
+		"libseccomp_policy",
 	}
 
 	// Used for quicker lookups
