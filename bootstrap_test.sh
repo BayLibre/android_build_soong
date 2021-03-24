@@ -3,75 +3,17 @@
 # This test exercises the bootstrapping process of the build system
 # in a source tree that only contains enough files for Bazel and Soong to work.
 
+source build/soong/test_framework.sh
+
 HARDWIRED_MOCK_TOP=
 # Uncomment this to be able to view the source tree after a test is run
 # HARDWIRED_MOCK_TOP=/tmp/td
 
-REAL_TOP="$(readlink -f "$(dirname "$0")"/../..)"
-
-function fail {
-  echo ERROR: $1
-  exit 1
-}
-
-function copy_directory() {
-  local dir="$1"
-  local parent="$(dirname "$dir")"
-
-  mkdir -p "$MOCK_TOP/$parent"
-  cp -R "$REAL_TOP/$dir" "$MOCK_TOP/$parent"
-}
-
-function symlink_file() {
-  local file="$1"
-
-  mkdir -p "$MOCK_TOP/$(dirname "$file")"
-  ln -s "$REAL_TOP/$file" "$MOCK_TOP/$file"
-}
-
-function symlink_directory() {
-  local dir="$1"
-
-  mkdir -p "$MOCK_TOP/$dir"
-  # We need to symlink the contents of the directory individually instead of
-  # using one symlink for the whole directory because finder.go doesn't follow
-  # symlinks when looking for Android.bp files
-  for i in $(ls "$REAL_TOP/$dir"); do
-    local target="$MOCK_TOP/$dir/$i"
-    local source="$REAL_TOP/$dir/$i"
-
-    if [[ -e "$target" ]]; then
-      if [[ ! -d "$source" || ! -d "$target" ]]; then
-        fail "Trying to symlink $dir twice"
-      fi
-    else
-      ln -s "$REAL_TOP/$dir/$i" "$MOCK_TOP/$dir/$i";
-    fi
-  done
-}
-
-function setup_bazel() {
-  copy_directory build/bazel
-
-  symlink_directory prebuilts/bazel
-  symlink_directory prebuilts/jdk
-
-  symlink_file WORKSPACE
-  symlink_file tools/bazel
-}
+export GOCACHE=$(mktemp -t -d gc.XXXXXX)
+trap 'cd / && rm -fr "$GOCACHE"' EXIT
 
 function setup() {
-  if [[ ! -z "$HARDWIRED_MOCK_TOP" ]]; then
-    MOCK_TOP="$HARDWIRED_MOCK_TOP"
-    rm -fr "$MOCK_TOP"
-    mkdir -p "$MOCK_TOP"
-  else
-    MOCK_TOP=$(mktemp -t -d st.XXXXX)
-    trap 'echo cd / && echo rm -fr "$MOCK_TOP"' EXIT
-  fi
-
-  echo "Test case: ${FUNCNAME[1]}, mock top path: $MOCK_TOP"
-  cd "$MOCK_TOP"
+  create_mock_top
 
   copy_directory build/blueprint
   copy_directory build/soong
@@ -96,13 +38,6 @@ function test_smoke {
   run_soong
 }
 
-function test_bazel_smoke {
-  setup
-  setup_bazel
-
-  tools/bazel info
-
-}
 function test_null_build() {
   setup
   run_soong
@@ -208,6 +143,7 @@ EOF
   run_soong
 
   grep -q "^# Module:.*my_little_binary_host$" out/soong/build.ninja && fail "Old module in output"
+  return 0
 }
 
 function test_add_file_to_glob() {
@@ -402,14 +338,4 @@ function test_null_build_after_docs {
   fi
 }
 
-test_bazel_smoke
-test_smoke
-test_null_build
-test_null_build_after_docs
-test_soong_build_rebuilt_if_blueprint_changes
-test_add_file_to_glob
-test_add_android_bp
-test_change_android_bp
-test_delete_android_bp
-test_add_file_to_soong_build
-test_soong_build_rerun_iff_environment_changes
+run_test_suite
