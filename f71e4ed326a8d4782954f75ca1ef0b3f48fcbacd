@@ -16,6 +16,24 @@
       "message": "Incorrect commit message? I don\u0027t think this CL has anything to do with buildDir.",
       "revId": "f71e4ed326a8d4782954f75ca1ef0b3f48fcbacd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fde5e6e6_08f20302",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T00:57:36Z",
+      "side": 1,
+      "message": "This uses testAppConfig, which uses testJavaConfig which uses buildDir.",
+      "parentUuid": "61f0f67f_ab7487b6",
+      "revId": "f71e4ed326a8d4782954f75ca1ef0b3f48fcbacd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
