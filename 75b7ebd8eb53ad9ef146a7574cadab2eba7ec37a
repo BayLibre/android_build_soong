@@ -63,6 +63,30 @@
       },
       "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f55f2c1_b5417075",
+        "filename": "bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-24T10:42:35Z",
+      "side": 1,
+      "message": "Yep, those docs. \n\nhttps://github.com/bazelbuild/bazel/commit/d72eb8deabe6be6a1f7ec39269ec0c9d3ff9f0f8 removed the deprecation warnings on usage, so I suppose it\u0027s deprecated by obscurity now.",
+      "parentUuid": "f58a2858_1ff9f4cc",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
