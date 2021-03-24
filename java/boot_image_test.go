@@ -83,3 +83,27 @@ func TestBootImageInconsistentConfiguration(t *testing.T) {
 			}
 		`)
 }
+
+func TestBootImageWithoutImageNameOrContents(t *testing.T) {
+	prepareForTestWithBootImage.
+		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			`\Qneither of the "image_name" and "contents" properties\E`)).
+		RunTestWithBp(t, `
+			boot_image {
+				name: "boot-image",
+			}
+		`)
+}
+
+func TestBootImageWithImageNameAndContents(t *testing.T) {
+	prepareForTestWithBootImage.
+		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			`\Qboth of the "image_name" and "contents" properties\E`)).
+		RunTestWithBp(t, `
+			boot_image {
+				name: "boot-image",
+				image_name: "boot",
+				contents: ["other"],
+			}
+		`)
+}
