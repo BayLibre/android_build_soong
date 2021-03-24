@@ -97,7 +97,7 @@ func CcLibraryHeadersBp2Build(ctx android.TopDownMutatorContext) {
 	lib, _ := module.linker.(*libraryDecorator)
 	var includeDirLabels bazel.LabelListAttribute
 	var headerLabels bazel.LabelListAttribute
-	var headerLibLabels bazel.LabelListAttribute
+	var deps bazel.LabelListAttribute
 
 	// list of directories that will be added to the include path (using -I) for this
 	// module and any module that links against this module.
@@ -120,12 +120,25 @@ func CcLibraryHeadersBp2Build(ctx android.TopDownMutatorContext) {
 			break
 		}
 	}
-	headerLibLabels.Value = android.BazelLabelForModuleDeps(ctx, headerLibs)
+	deps.Value = android.BazelLabelForModuleDeps(ctx, headerLibs)
+
+	// FIXME: hack
+	if deps.Value.Includes == nil {
+		deps.Value.Includes = []bazel.Label{}
+	}
+
+	for os, p := range module.GetTargetProperties(&BaseLinkerProperties{}) {
+		if lProps, ok := p.(*BaseLinkerProperties); ok {
+			// FIXME: this should be BazelLabelForModuleDeps to properly resolve dep labels, but it's crashing.
+			deps.SetValueForTarget(os.Name, android.BazelLabelForModuleSrc(ctx, lProps.Header_libs))
+		}
+	}
+	deps.SetValueForTarget("default", bazel.LabelList{Includes: []bazel.Label{}})
 
 	attrs := &bazelCcLibraryHeadersAttributes{
 		Includes: includeDirLabels,
 		Hdrs:     headerLabels,
-		Deps:     headerLibLabels,
+		Deps:     deps,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
