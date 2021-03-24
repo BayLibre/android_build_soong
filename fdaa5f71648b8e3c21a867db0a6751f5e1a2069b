@@ -51,6 +51,24 @@
       "parentUuid": "24c8d38c_16ac1265",
       "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e059f6db_351f7d9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-24T00:53:40Z",
+      "side": 1,
+      "message": "I see, I think you\u0027d have to call createPerApiVersionVariations with sdk_version instead of min_sdk_version, and replace min_sdk_version with sdk_version with cc_object.  I don\u0027t know whether that is better though.",
+      "parentUuid": "ba529e35_ceb1df47",
+      "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
