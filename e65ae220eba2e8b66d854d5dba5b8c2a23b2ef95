@@ -188,6 +188,30 @@
       },
       "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691e2ec4_2494f824",
+        "filename": "mk2rbc/test/soong_included.mk.test",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T17:03:23Z",
+      "side": 1,
+      "message": "Please file a bug or add a TODO for handling communication of soong.variables",
+      "parentUuid": "8341701d_0e420eca",
+      "range": {
+        "startLine": 1,
+        "startChar": 24,
+        "endLine": 1,
+        "endChar": 37
+      },
+      "revId": "e65ae220eba2e8b66d854d5dba5b8c2a23b2ef95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
