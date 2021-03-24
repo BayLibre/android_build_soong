@@ -227,6 +227,10 @@ func (attrs *LabelListAttribute) SetValueForTarget(target string, value LabelLis
 	}
 }
 
+func MakeStringListAttribute(value []string) StringListAttribute {
+	return StringListAttribute{Value: value}
+}
+
 // StringListAttribute corresponds to the string_list Bazel attribute type with
 // support for additional metadata, like configurations.
 type StringListAttribute struct {
