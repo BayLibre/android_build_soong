@@ -33,6 +33,24 @@
       "message": "Is this different than just not setting min_sdk_version on the crt cc_object definitions?",
       "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba529e35_ceb1df47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-24T00:44:19Z",
+      "side": 1,
+      "message": "Different. If min_sdk_version is not set, the build system will create just a single stub for the current version. https://source.corp.google.com/android/build/soong/cc/library.go;rcl\u003d5cadddcc75c10a4f928e33768cd511bca8398265;l\u003d1905\n\nSo, we have to keep setting min_sdk_version on the crt cc_objects to have multiple stubs for the range of versions [min_sdk_version, current]. What this change does is to build each stub with correct `--target \u003carch\u003e-linux-android\u003cver\u003e` flag. Previously, they were all built with the same flag even though they are targeted for different sdk versions.",
+      "parentUuid": "24c8d38c_16ac1265",
+      "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
