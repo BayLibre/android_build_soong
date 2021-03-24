@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "559f0882_cae120f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T20:48:05Z",
+      "side": 1,
+      "message": "Ok. With a preparer I\u0027d hope we could have a set of exceptions that can be whittled down rather than this. But then I don\u0027t have good insight on it, so I won\u0027t block.",
+      "parentUuid": "08bc5eda_c17ddf12",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 51
+      },
+      "revId": "3a87495d7eb69572bcb1987ab017c6417aaab9e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5cc96213_e69c3a26",
         "filename": "android/config.go",
         "patchSetId": 9
