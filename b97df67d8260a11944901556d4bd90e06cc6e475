@@ -34,6 +34,24 @@
       "parentUuid": "5bdbc81b_a72ec994",
       "revId": "b97df67d8260a11944901556d4bd90e06cc6e475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b89c64_a880f109",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T21:18:43Z",
+      "side": 0,
+      "message": "Yes, I wouldn\u0027t want the full fixture printed before every test, I was rather thinking of inserting something like\n\n  log.Printf(\"%s\", myPreparer.Fixture(t))\n\nwhen and where I need it.",
+      "parentUuid": "b9355d59_509b5e42",
+      "revId": "b97df67d8260a11944901556d4bd90e06cc6e475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
