@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c2122f5_6e0e443b",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-24T09:59:40Z",
+      "side": 1,
+      "message": "Are your plans W.R.T boot_image documented anywhere Paul?\n\nWhen it comes to generic build constructs for mainline modules, the modularization team would like to stay in the loop, so it would be good if you could either circulate docs or join our meetings to discuss stuff like that",
+      "parentUuid": "4e865324_b8104dd9",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49207428_4029946a",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
