@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89740fb2_5d72e687",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-24T21:36:47Z",
+      "side": 1,
+      "message": "cts/framework/gce-presubmit-global-cloud-tf is flaky.",
+      "revId": "12b4c2706de31a61ae1c935fd4865aec822d1595",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
