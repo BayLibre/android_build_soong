@@ -16,6 +16,7 @@ package bazel
 
 import (
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"sort"
 )
@@ -45,6 +46,33 @@ type Label struct {
 type LabelList struct {
 	Includes []Label
 	Excludes []Label
+}
+
+func (ll *LabelList) LooseHdrsGlobs() []string {
+	parentDirs := ll.uniqueParentDirectories()
+
+	globs := []string{}
+	for _, dir := range parentDirs {
+		if dir == "." {
+			globs = append(globs, "*.h")
+		} else {
+			globs = append(globs, dir+"/*.h")
+		}
+	}
+	return globs
+}
+
+func (ll *LabelList) uniqueParentDirectories() []string {
+	dirMap := map[string]bool{}
+	for _, label := range ll.Includes {
+		dirMap[filepath.Dir(label.Label)] = true
+	}
+
+	dirs := []string{}
+	for dir := range dirMap {
+		dirs = append(dirs, dir)
+	}
+	return dirs
 }
 
 // Append appends the fields of other labelList to the corresponding fields of ll.
@@ -77,6 +105,65 @@ func UniqueBazelLabelList(originalLabelList LabelList) LabelList {
 	uniqueLabelList.Includes = UniqueBazelLabels(originalLabelList.Includes)
 	uniqueLabelList.Excludes = UniqueBazelLabels(originalLabelList.Excludes)
 	return uniqueLabelList
+}
+
+// TODO: Remove. These functions are from https://android-review.googlesource.com/c/platform/build/soong/+/1665920
+
+// Subtract needle from haystack
+func SubtractStrings(haystack []string, needle []string) []string {
+	// This is really a set
+	remainder := make(map[string]bool)
+
+	for _, s := range haystack {
+		remainder[s] = true
+	}
+	for _, s := range needle {
+		delete(remainder, s)
+	}
+
+	var strings []string
+	for s, _ := range remainder {
+		strings = append(strings, s)
+	}
+
+	sort.SliceStable(strings, func(i, j int) bool {
+		return strings[i] < strings[j]
+	})
+
+	return strings
+}
+
+// Subtract needle from haystack
+func SubtractBazelLabels(haystack []Label, needle []Label) []Label {
+	// This is really a set
+	remainder := make(map[Label]bool)
+
+	for _, label := range haystack {
+		remainder[label] = true
+	}
+	for _, label := range needle {
+		delete(remainder, label)
+	}
+
+	var labels []Label
+	for label, _ := range remainder {
+		labels = append(labels, label)
+	}
+
+	sort.SliceStable(labels, func(i, j int) bool {
+		return labels[i].Label < labels[j].Label
+	})
+
+	return labels
+}
+
+// Subtract needle from haystack
+func SubtractBazelLabelList(haystack LabelList, needle LabelList) LabelList {
+	var result LabelList
+	result.Includes = SubtractBazelLabels(haystack.Includes, needle.Includes)
+	// NOTE: Excludes are intentionally not subtracted
+	result.Excludes = haystack.Excludes
+	return result
 }
 
 const (
@@ -167,6 +254,24 @@ func MakeLabelListAttribute(value LabelList) LabelListAttribute {
 	return LabelListAttribute{Value: UniqueBazelLabelList(value)}
 }
 
+func (attrs *LabelListAttribute) Append(other LabelListAttribute) {
+	for arch := range PlatformArchMap {
+		this := attrs.GetValueForArch(arch)
+		that := other.GetValueForArch(arch)
+		this.Append(that)
+		attrs.SetValueForArch(arch, this)
+	}
+
+	for os := range PlatformOsMap {
+		this := attrs.GetValueForOS(os)
+		that := other.GetValueForOS(os)
+		this.Append(that)
+		attrs.SetValueForOS(os, this)
+	}
+
+	attrs.Value.Append(other.Value)
+}
+
 // HasArchSpecificValues returns true if the attribute contains
 // architecture-specific label_list values.
 func (attrs LabelListAttribute) HasConfigurableValues() bool {
@@ -238,6 +343,10 @@ func (attrs *LabelListAttribute) SetValueForOS(os string, value LabelList) {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	*v = value
+}
+
+func MakeStringListAttribute(value []string) StringListAttribute {
+	return StringListAttribute{Value: value}
 }
 
 // StringListAttribute corresponds to the string_list Bazel attribute type with
