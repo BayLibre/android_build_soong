@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d24d4857_4a77b7a8",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-24T09:45:47Z",
+      "side": 1,
+      "message": "to me, this CL seems more complicated than just adding a genrule_defaults that modules can reuse to convert a textproto into proto. Do we need to customize the build system for this?",
+      "parentUuid": "a7f003e9_1a565496",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65211a72_dec99c52",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
