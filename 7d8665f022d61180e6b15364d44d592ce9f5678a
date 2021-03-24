@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "425b9de2_26ba411d",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T19:17:03Z",
+      "side": 1,
+      "message": "should we update this in REParams to take a slice instead and do the join there? It\u0027s non-obvious here that RSPFile can support a comma-separated list but is moreso in REParams",
+      "range": {
+        "startLine": 658,
+        "startChar": 15,
+        "endLine": 658,
+        "endChar": 22
+      },
+      "revId": "7d8665f022d61180e6b15364d44d592ce9f5678a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3317c9_366f38a2",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T19:17:03Z",
+      "side": 1,
+      "message": "the portion of the description of the CL as to why we\u0027re changing to \"$in\" would also be helpful as a comment here",
+      "range": {
+        "startLine": 678,
+        "startChar": 2,
+        "endLine": 678,
+        "endChar": 24
+      },
+      "revId": "7d8665f022d61180e6b15364d44d592ce9f5678a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
