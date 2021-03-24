@@ -350,10 +350,10 @@ func TestCcObjectConfigurableAttributesBp2Build(t *testing.T) {
     copts = [
         "-fno-addrsig",
     ] + select({
-        "@bazel_tools//platforms:arm": [
+        "@bazel_tools//platforms:aarch64": [
             "-Wall",
         ],
-        "@bazel_tools//platforms:aarch64": [
+        "@bazel_tools//platforms:arm": [
             "-Wall",
         ],
         "@bazel_tools//platforms:x86_32": [
@@ -370,11 +370,11 @@ func TestCcObjectConfigurableAttributesBp2Build(t *testing.T) {
     srcs = [
         "base.cpp",
     ] + select({
-        "@bazel_tools//platforms:arm": [
-            "arm.cpp",
-        ],
         "@bazel_tools//platforms:aarch64": [
             "arm64.cpp",
+        ],
+        "@bazel_tools//platforms:arm": [
+            "arm.cpp",
         ],
         "@bazel_tools//platforms:x86_32": [
             "x86.cpp",
