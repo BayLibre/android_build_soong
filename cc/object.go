@@ -156,16 +156,11 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 	}
 
 	// Set arch-specific configurable attributes
-	var srcs bazel.LabelListAttribute
+	copts, srcs := bp2BuildParseCompilerProps(ctx, m)
 	var localIncludeDirs []string
 	var asFlags []string
 	for _, props := range m.compiler.compilerProps() {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			srcs = bazel.MakeLabelListAttribute(
-				android.BazelLabelForModuleSrcExcludes(
-					ctx,
-					baseCompilerProps.Srcs,
-					baseCompilerProps.Exclude_srcs))
 			localIncludeDirs = baseCompilerProps.Local_include_dirs
 			break
 		}
@@ -209,7 +204,7 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 	attrs := &bazelObjectAttributes{
 		Srcs:               srcs,
 		Deps:               deps,
-		Copts:              bp2BuildParseCflags(ctx, m),
+		Copts:              copts,
 		Asflags:            asFlags,
 		Local_include_dirs: localIncludeDirs,
 	}
