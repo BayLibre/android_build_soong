@@ -16,6 +16,46 @@
       "message": "This should fix your duplicate ids issue. As you can see it fixes the TODOs in the test. I stacked it on top here because it makes it easier to test. If you need it faster I am happy to push it to the bottom of the stack.",
       "revId": "1d0e9dbed0c265bb8eca50e9d69079d01842201f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4696c73_c56d6925",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T17:23:59Z",
+      "side": 1,
+      "message": "I suggest merging this with isActiveModule - it\u0027s in the same package after all.",
+      "revId": "1d0e9dbed0c265bb8eca50e9d69079d01842201f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14846bed_f44488a9",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T17:23:59Z",
+      "side": 1,
+      "message": "Isn\u0027t it actually more complicated than this? A versioned snapshot can be in use, and then it\u0027s that specific version that should be used. I believe we have work to do in many places to support versioned snapshots properly, so I don\u0027t mean it should be fixed fully here (and hopefully all these dep-less singletons would be gone by then).\n\nHowever, with this it looks like it could silently pick the wrong prebuilt when we start using versioned snapshots. Do you need this to make things pass now? I\u0027m comparing to bootJarsSingleton.GenerateBuildActions which doesn\u0027t check the version but apparently works anyway.",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 12
+      },
+      "revId": "1d0e9dbed0c265bb8eca50e9d69079d01842201f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
