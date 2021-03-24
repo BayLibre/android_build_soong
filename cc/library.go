@@ -2029,7 +2029,9 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 	return outputFile
 }
 
-func Bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) bazel.LabelList {
+func Bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) bazel.LabelListAttribute {
+	var ret bazel.LabelListAttribute
+
 	var headerLibs []string
 	for _, linkerProps := range module.linker.linkerProps() {
 		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
@@ -2039,8 +2041,23 @@ func Bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) 
 		}
 	}
 
-	headerLibsLabels := android.BazelLabelForModuleDeps(ctx, headerLibs)
-	return headerLibsLabels
+	ret.Value = android.BazelLabelForModuleDeps(ctx, headerLibs)
+
+	// FIXME: remove hack
+	if ret.Value.Includes == nil {
+		ret.Value.Includes = []bazel.Label{}
+	}
+
+	// Move to Bp2BuildParseHeaderLibs
+	for os, p := range module.GetTargetProperties(&BaseLinkerProperties{}) {
+		if lProps, ok := p.(*BaseLinkerProperties); ok {
+			// FIXME: this should be BazelLabelForModuleDeps to properly resolve dep labels, but it's crashing.
+			ret.SetValueForTarget(os.Name, android.BazelLabelForModuleSrc(ctx, lProps.Header_libs))
+		}
+	}
+	ret.SetValueForTarget("default", bazel.LabelList{Includes: []bazel.Label{}})
+
+	return ret
 }
 
 func Bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) (bazel.LabelList, bazel.LabelList) {
@@ -2138,7 +2155,7 @@ func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
 	includesLabels.Append(exportedIncludesLabels)
 
 	headerLibsLabels := Bp2BuildParseHeaderLibs(ctx, module)
-	depsLabels.Append(headerLibsLabels)
+	depsLabels.Append(headerLibsLabels.Value) // FIXME: configurable attributes
 
 	attrs := &bazelCcLibraryStaticAttributes{
 		Copts:      copts,

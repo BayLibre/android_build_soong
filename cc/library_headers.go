@@ -94,17 +94,17 @@ func CcLibraryHeadersBp2Build(ctx android.TopDownMutatorContext) {
 		return
 	}
 
+	var deps bazel.LabelListAttribute
 	var exportedIncludesLabels bazel.LabelListAttribute
 	var exportedIncludesHeadersLabels bazel.LabelListAttribute
 	exportedIncludesLabels.Value, exportedIncludesHeadersLabels.Value = Bp2BuildParseExportedIncludes(ctx, module)
 
-	var headerLibsLabels bazel.LabelListAttribute
-	headerLibsLabels.Value = Bp2BuildParseHeaderLibs(ctx, module)
+	deps = Bp2BuildParseHeaderLibs(ctx, module)
 
 	attrs := &bazelCcLibraryHeadersAttributes{
 		Includes: exportedIncludesLabels,
 		Hdrs:     exportedIncludesHeadersLabels,
-		Deps:     headerLibsLabels,
+		Deps:     deps,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
