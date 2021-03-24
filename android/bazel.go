@@ -177,6 +177,17 @@ var (
 		"generated_android_ids",         // cparsons@, genrule
 		"note_memtag_heap_async",        // cparsons@, cc_library_static
 		"note_memtag_heap_sync",         // cparsons@, cc_library_static
+
+		// List of all full_cc_libraries in //bionic
+		"libc",              // jingwen@, full_cc_library
+		"libc_malloc_debug", // jingwen@, full_cc_library
+		"libc_malloc_hooks", // jingwen@, full_cc_library
+		"libdl",             // jingwen@, full_cc_library
+		"libdl_android",     // jingwen@, full_cc_library
+		"libm",              // jingwen@, full_cc_library
+		"libseccomp_policy", // jingwen@, full_cc_library
+		"libstdc++",         // jingwen@, full_cc_library
+		// "ld-android": jingwen@ full_cc_library - done.
 	}
 
 	// Used for quicker lookups

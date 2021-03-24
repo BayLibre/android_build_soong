@@ -59,41 +59,68 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 }
 
 // bp2buildParseCflags creates a label list attribute containing the cflags of a module, including
-func bp2BuildParseCflags(ctx android.TopDownMutatorContext, module *Module) bazel.StringListAttribute {
-	var ret bazel.StringListAttribute
+func bp2BuildParseCompilerProps(
+	ctx android.TopDownMutatorContext, module *Module) (bazel.StringListAttribute, bazel.LabelListAttribute) {
+	var copts bazel.StringListAttribute
+	var srcs bazel.LabelListAttribute
 	for _, props := range module.compiler.compilerProps() {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			ret.Value = baseCompilerProps.Cflags
+			copts.Value = baseCompilerProps.Cflags
+			srcs.Value = android.BazelLabelForModuleSrcExcludes(
+				ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
 			break
 		}
 	}
 
 	for arch, props := range module.GetArchProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			ret.SetValueForArch(arch.Name, baseCompilerProps.Cflags)
+			copts.SetValueForArch(arch.Name, baseCompilerProps.Cflags)
+			srcs.SetValueForArch(
+				arch.Name,
+				android.BazelLabelForModuleSrcExcludes(
+					ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs))
 		}
 	}
 
 	for os, props := range module.GetTargetProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			ret.SetValueForOS(os.Name, baseCompilerProps.Cflags)
+			copts.SetValueForOS(os.Name, baseCompilerProps.Cflags)
+			srcs.SetValueForOS(
+				os.Name,
+				android.BazelLabelForModuleSrcExcludes(
+					ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs))
 		}
 	}
 
-	return ret
+	return copts, srcs
 }
 
-// bp2BuildParseHeaderLibs creates a label list attribute containing the header library deps of a module, including
+// bp2BuildParseLinkerProps creates a label list attribute containing the header library deps of a module, including
 // configurable attribute values.
-func bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) bazel.LabelListAttribute {
-	var ret bazel.LabelListAttribute
+func bp2BuildParseLinkerProps(
+	ctx android.TopDownMutatorContext, module *Module) (bazel.LabelListAttribute, bazel.StringListAttribute) {
+
+	var deps bazel.LabelListAttribute
+	var linkopts bazel.StringListAttribute
+
 	for _, linkerProps := range module.linker.linkerProps() {
 		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
-			ret = bazel.MakeLabelListAttribute(
+			deps = bazel.MakeLabelListAttribute(
 				android.BazelLabelForModuleDeps(ctx, android.SortedUniqueStrings(libs)))
+			linkopts.Value = baseLinkerProps.Ldflags
 			break
+		}
+	}
+
+	for arch, p := range module.GetArchProperties(&BaseLinkerProperties{}) {
+		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
+			libs := baseLinkerProps.Header_libs
+			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			libs = android.SortedUniqueStrings(libs)
+			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
+			linkopts.SetValueForArch(arch.Name, baseLinkerProps.Ldflags)
 		}
 	}
 
@@ -102,16 +129,18 @@ func bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) 
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
 			libs = android.SortedUniqueStrings(libs)
-			ret.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
+			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
+			linkopts.SetValueForOS(os.Name, baseLinkerProps.Ldflags)
 		}
 	}
 
-	return ret
+	return deps, linkopts
 }
 
 // bp2BuildParseExportedIncludes creates a label list attribute contains the
 // exported included directories of a module.
-func bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) (bazel.LabelListAttribute, bazel.LabelListAttribute) {
+func bp2BuildParseExportedIncludes(
+	ctx android.TopDownMutatorContext, module *Module) (bazel.LabelListAttribute, bazel.LabelListAttribute) {
 	libraryDecorator := module.linker.(*libraryDecorator)
 
 	includeDirs := libraryDecorator.flagExporter.Properties.Export_system_include_dirs
