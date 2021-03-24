@@ -372,7 +372,12 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 		//
 		// In Bazel-parlance, we would use "attr.<type>(default = <default value>)" to set the default
 		// value of unset attributes.
-		return "", nil
+		switch propertyValue.Kind() {
+		case reflect.Slice:
+			return "[]", nil
+		default:
+			return "", nil
+		}
 	}
 
 	var ret string
@@ -411,12 +416,12 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 				return ret, err
 			}
 
-			if !labels.HasArchSpecificValues() {
+			if !labels.HasArchSpecificValues() && !labels.HasTargetSpecificValues() {
 				// Select statement not needed.
 				return ret, nil
 			}
 
-			ret += " + " + "select({\n"
+			ret += " + select({\n"
 			for _, arch := range android.ArchTypeList() {
 				value := labels.GetValueForArch(arch.Name)
 				if len(value.Includes) > 0 {
@@ -431,7 +436,7 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 
 			ret += makeIndent(indent)
 			ret += "})"
-			return ret, err
+			return ret, nil
 		} else if label, ok := propertyValue.Interface().(bazel.Label); ok {
 			return fmt.Sprintf("%q", label.Label), nil
 		} else if stringList, ok := propertyValue.Interface().(bazel.StringListAttribute); ok {
@@ -461,7 +466,7 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 
 			ret += makeIndent(indent)
 			ret += "})"
-			return ret, err
+			return ret, nil
 		}
 
 		ret = "{\n"
