@@ -211,24 +211,28 @@ cc_library_static {
     ],
 )`, `cc_library_static(
     name = "static_lib_1",
+    hdrs = [],
     linkstatic = True,
     srcs = [
         "static_lib_1.cc",
     ],
 )`, `cc_library_static(
     name = "static_lib_2",
+    hdrs = [],
     linkstatic = True,
     srcs = [
         "static_lib_2.cc",
     ],
 )`, `cc_library_static(
     name = "whole_static_lib_1",
+    hdrs = [],
     linkstatic = True,
     srcs = [
         "whole_static_lib_1.cc",
     ],
 )`, `cc_library_static(
     name = "whole_static_lib_2",
+    hdrs = [],
     linkstatic = True,
     srcs = [
         "whole_static_lib_2.cc",
