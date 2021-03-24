@@ -69,6 +69,24 @@
       "parentUuid": "ba529e35_ceb1df47",
       "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d969603_e6e0bab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-24T01:20:00Z",
+      "side": 1,
+      "message": "That will work too and is actually a lot simpler fix. However, that would be against the intention to separate min_sdk_version and sdk_version. The former determines how the module will be compiled (e.g. the __ANDROID_API__ macro which is derived from the clang triple, etc), and the latter determines which the module will link to. In this crt objects case, we are not talking about the latter, but the former; these cc_objects are not linked to anything.",
+      "parentUuid": "e059f6db_351f7d9a",
+      "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
