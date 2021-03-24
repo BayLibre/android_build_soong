@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d89fd966_f8d82dce",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T17:44:02Z",
+      "side": 1,
+      "message": "Was just thinking that a bazel-specific mutator here may be worth considering as a more scalable solution.",
+      "parentUuid": "bcee537b_6140f5c9",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 113
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9d5d61d_b4bac05d",
