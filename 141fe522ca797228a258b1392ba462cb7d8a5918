@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afcc7b13_5c187d10",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T10:51:47Z",
+      "side": 1,
+      "message": "This looks unused - I prefer if it\u0027s rolled together with a CL where it gets used.",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "141fe522ca797228a258b1392ba462cb7d8a5918",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
