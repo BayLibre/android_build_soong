@@ -564,6 +564,20 @@ func (p TestingBuildParams) RelativeToTop() TestingBuildParams {
 	// Take a copy of the build params and replace any args that contains test specific temporary
 	// paths with paths relative to the top.
 	bparams := p.BuildParams
+	bparams.Depfile = normalizeWritablePathRelativeToTop(bparams.Depfile)
+	bparams.Output = normalizeWritablePathRelativeToTop(bparams.Output)
+	bparams.Outputs = bparams.Outputs.RelativeToTop()
+	bparams.SymlinkOutput = normalizeWritablePathRelativeToTop(bparams.SymlinkOutput)
+	bparams.SymlinkOutputs = bparams.SymlinkOutputs.RelativeToTop()
+	bparams.ImplicitOutput = normalizeWritablePathRelativeToTop(bparams.ImplicitOutput)
+	bparams.ImplicitOutputs = bparams.ImplicitOutputs.RelativeToTop()
+	bparams.Input = normalizePathRelativeToTop(bparams.Input)
+	bparams.Inputs = bparams.Inputs.RelativeToTop()
+	bparams.Implicit = normalizePathRelativeToTop(bparams.Implicit)
+	bparams.Implicits = bparams.Implicits.RelativeToTop()
+	bparams.OrderOnly = bparams.OrderOnly.RelativeToTop()
+	bparams.Validation = normalizePathRelativeToTop(bparams.Validation)
+	bparams.Validations = bparams.Validations.RelativeToTop()
 	bparams.Args = normalizeStringMapRelativeToTop(p.config, bparams.Args)
 
 	// Ditto for any fields in the RuleParams.
@@ -580,6 +594,20 @@ func (p TestingBuildParams) RelativeToTop() TestingBuildParams {
 		BuildParams: bparams,
 		RuleParams:  rparams,
 	}
+}
+
+func normalizeWritablePathRelativeToTop(path WritablePath) WritablePath {
+	if path == nil {
+		return nil
+	}
+	return path.RelativeToTop().(WritablePath)
+}
+
+func normalizePathRelativeToTop(path Path) Path {
+	if path == nil {
+		return nil
+	}
+	return path.RelativeToTop()
 }
 
 // baseTestingComponent provides functionality common to both TestingModule and TestingSingleton.
