@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c8e8f6d_9a436254",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1069219
+      },
+      "writtenOn": "2021-03-24T04:02:10Z",
+      "side": 1,
+      "message": "PTAL\nMoved the flag to global.go.",
+      "revId": "5818b9344f948381377e7edf85dca9a9f8869326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

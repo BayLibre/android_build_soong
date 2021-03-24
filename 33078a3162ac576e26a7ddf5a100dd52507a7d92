@@ -16,6 +16,24 @@
       "message": "Should the flag be moved to deviceGlobalLdflags instead of being on the individual architectures now?",
       "revId": "33078a3162ac576e26a7ddf5a100dd52507a7d92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "442a9d07_06bb90a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1069219
+      },
+      "writtenOn": "2021-03-24T04:02:10Z",
+      "side": 1,
+      "message": "Makes sense.\nDone.",
+      "parentUuid": "b07942a8_0d020d45",
+      "revId": "33078a3162ac576e26a7ddf5a100dd52507a7d92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
