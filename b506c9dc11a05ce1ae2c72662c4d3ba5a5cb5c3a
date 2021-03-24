@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3678c918_96015ce8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-24T15:12:51Z",
+      "side": 1,
+      "message": "Ah, I was propbably wrong in suspecting that this might break mainline_modules build (which is special in that it has no dexpreopt but still builds the boot image). The checks were needed because of the ART apex dependency on dex2oat. Now you have probably removed that with your boot image refactoring work (I can\u0027t find it in the code), so those checks should not be needeed as well.",
+      "revId": "b506c9dc11a05ce1ae2c72662c4d3ba5a5cb5c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
