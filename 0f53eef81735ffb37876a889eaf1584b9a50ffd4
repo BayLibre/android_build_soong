@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367893ea_fdb9e4ea",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T13:45:17Z",
+      "side": 1,
+      "message": "there\u0027s a lot of repetition between this and StringListAttribute -- could we use a map potentially to simplify? perhaps checking that it is a valid architecture when setting?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcee537b_6140f5c9",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T13:45:17Z",
+      "side": 1,
+      "message": "in the long run, it\u0027d be nice if we could also take advantage of the fact that the property is tagged with arch_variant to reduce having to manually handle each arch variant property -- perhaps all attrs should default to being a type that can handle selects to support that",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 113
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d5d61d_b4bac05d",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T13:45:17Z",
+      "side": 1,
+      "message": "it looks like we\u0027re always appending a default with empty for both -- could that be the default behavior?",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 45
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

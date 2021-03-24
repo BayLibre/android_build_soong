@@ -68,6 +68,30 @@
       },
       "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c42caca0_fffb3b14",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T13:45:17Z",
+      "side": 1,
+      "message": "or have the functions exposed return LabelListAttributes instead? may require collecting arch-specific details before turning them into BazelLabels, but may be easier to wrangle",
+      "parentUuid": "db9813ad_95da8cf2",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 74
+      },
+      "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
