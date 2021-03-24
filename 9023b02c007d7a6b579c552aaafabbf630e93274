@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5eb0f20_2208dad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-24T11:18:29Z",
+      "side": 1,
+      "message": "Incorrect rebase in PS6 (now fixed in PS7), PTAL.",
+      "revId": "9023b02c007d7a6b579c552aaafabbf630e93274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
