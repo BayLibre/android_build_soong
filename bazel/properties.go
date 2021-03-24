@@ -77,10 +77,19 @@ func UniqueBazelLabelList(originalLabelList LabelList) LabelList {
 }
 
 const (
+	// ArchType names in arch.go
 	ARCH_X86    = "x86"
 	ARCH_X86_64 = "x86_64"
 	ARCH_ARM    = "arm"
 	ARCH_ARM64  = "arm64"
+
+	// OsType names in arch.go
+	OS_LINUX        = "linux_glibc"
+	OS_LINUX_BIONIC = "linux_bionic"
+	OS_DARWIN       = "darwin"
+	OS_WINDOWS      = "windows"
+	OS_ANDROID      = "android"
+	OS_COMMON       = "common_os"
 )
 
 var (
@@ -89,6 +98,9 @@ var (
 	// android package depends on the bazel package, so a cyclic dependency
 	// prevents using that here.
 	selectableArchs = []string{ARCH_X86, ARCH_X86_64, ARCH_ARM, ARCH_ARM64}
+
+	// Likewise, this is the list of target operating systems.
+	selectableTargetOs = []string{OS_LINUX, OS_LINUX_BIONIC, OS_DARWIN, OS_WINDOWS, OS_ANDROID, OS_COMMON}
 )
 
 // Arch-specific label_list typed Bazel attribute values. This should correspond
@@ -98,8 +110,15 @@ type labelListArchValues struct {
 	X86_64 LabelList
 	Arm    LabelList
 	Arm64  LabelList
-	// TODO(b/181299724): this is currently missing the "common" arch, which
-	// doesn't have an equivalent platform() definition yet.
+}
+
+type labelListOsValues struct {
+	Linux       LabelList
+	Darwin      LabelList
+	Windows     LabelList
+	LinuxBionic LabelList
+	Android     LabelList
+	Common_os   LabelList
 }
 
 // LabelListAttribute is used to represent a list of Bazel labels as an
@@ -112,6 +131,11 @@ type LabelListAttribute struct {
 	// are generated in a select statement and appended to the non-arch specific
 	// label list Value.
 	ArchValues labelListArchValues
+
+	// The arch-specific attribute label list values. Optional. If used, these
+	// are generated in a select statement and appended to the non-arch specific
+	// label list Value.
+	OsValues labelListOsValues
 }
 
 // MakeLabelListAttribute initializes a LabelListAttribute with the non-arch specific value.
@@ -149,16 +173,65 @@ func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
 // SetValueForArch sets the label_list attribute value for an architecture.
 func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
 	switch arch {
-	case "x86":
+	case ARCH_X86:
 		attrs.ArchValues.X86 = value
-	case "x86_64":
+	case ARCH_X86_64:
 		attrs.ArchValues.X86_64 = value
-	case "arm":
+	case ARCH_ARM:
 		attrs.ArchValues.Arm = value
-	case "arm64":
+	case ARCH_ARM64:
 		attrs.ArchValues.Arm64 = value
 	default:
 		panic(fmt.Errorf("Unknown arch: %s", arch))
+	}
+}
+
+func (attrs *LabelListAttribute) HasTargetSpecificValues() bool {
+	for _, os := range selectableTargetOs {
+		if len(attrs.GetValueForTarget(os).Includes) > 0 || len(attrs.GetValueForTarget(os).Excludes) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+// SetValueForArch sets the label_list attribute value for an OS target.
+func (attrs *LabelListAttribute) GetValueForTarget(target string) LabelList {
+	switch target {
+	case OS_LINUX:
+		return attrs.OsValues.Linux
+	case OS_DARWIN:
+		return attrs.OsValues.Darwin
+	case OS_LINUX_BIONIC:
+		return attrs.OsValues.LinuxBionic
+	case OS_WINDOWS:
+		return attrs.OsValues.Windows
+	case OS_ANDROID:
+		return attrs.OsValues.Android
+	case OS_COMMON:
+		return attrs.OsValues.Common_os
+	default:
+		panic(fmt.Errorf("Unknown target: %s", target))
+	}
+}
+
+// SetValueForArch sets the label_list attribute value for an OS target.
+func (attrs *LabelListAttribute) SetValueForTarget(target string, value LabelList) {
+	switch target {
+	case OS_LINUX:
+		attrs.OsValues.Linux = value
+	case OS_DARWIN:
+		attrs.OsValues.Darwin = value
+	case OS_LINUX_BIONIC:
+		attrs.OsValues.LinuxBionic = value
+	case OS_WINDOWS:
+		attrs.OsValues.Windows = value
+	case OS_ANDROID:
+		attrs.OsValues.Android = value
+	case OS_COMMON:
+		attrs.OsValues.Common_os = value
+	default:
+		panic(fmt.Errorf("Unknown target: %s", target))
 	}
 }
 
@@ -175,12 +248,11 @@ type StringListAttribute struct {
 // Arch-specific string_list typed Bazel attribute values. This should correspond
 // to the types of architectures supported for compilation in arch.go.
 type stringListArchValues struct {
-	X86    []string
-	X86_64 []string
-	Arm    []string
-	Arm64  []string
-	// TODO(b/181299724): this is currently missing the "common" arch, which
-	// doesn't have an equivalent platform() definition yet.
+	X86       []string
+	X86_64    []string
+	Arm       []string
+	Arm64     []string
+	Common_os []string
 }
 
 // HasArchSpecificValues returns true if the attribute contains

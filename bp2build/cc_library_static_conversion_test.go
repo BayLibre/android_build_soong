@@ -85,7 +85,6 @@ func TestCcLibraryStaticBp2Build(t *testing.T) {
 		moduleTypeUnderTestFactory         android.ModuleFactory
 		moduleTypeUnderTestBp2BuildMutator func(android.TopDownMutatorContext)
 		preArchMutators                    []android.RegisterMutatorFunc
-		depsMutators                       []android.RegisterMutatorFunc
 		bp                                 string
 		expectedBazelTargets               []string
 		filesystem                         map[string]string
@@ -268,9 +267,6 @@ cc_library_static {
 		ctx.RegisterModuleType("cc_library_headers", cc.LibraryHeaderFactory)
 
 		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
-		for _, m := range testCase.depsMutators {
-			ctx.DepsBp2BuildMutators(m)
-		}
 		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
 		ctx.RegisterForBazelConversion()
 
