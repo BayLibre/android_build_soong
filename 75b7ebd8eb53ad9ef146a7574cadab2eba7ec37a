@@ -87,6 +87,30 @@
       },
       "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbfa429_44308660",
+        "filename": "bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-24T10:59:57Z",
+      "side": 1,
+      "message": "Gaah. Let\u0027s then keep --batch because it\u0027s simpler?",
+      "parentUuid": "9f55f2c1_b5417075",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
