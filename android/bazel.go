@@ -174,6 +174,16 @@ var (
 		"liblinker_debuggerd_stub",      // ruperts@, cc_library_static, depends on //system/libbase
 		"libbionic_tests_headers_posix", // ruperts@, cc_library_static
 		"libc_dns",                      // ruperts@, cc_library_static
+
+		// List of all full_cc_libraries in //bionic
+		"libc",              // jingwen@, full_cc_library
+		"libc_malloc_debug", // jingwen@, full_cc_library
+		"libc_malloc_hooks", // jingwen@, full_cc_library
+		"libdl",             // jingwen@, full_cc_library
+		"libdl_android",     // jingwen@, full_cc_library
+		"libm",              // jingwen@, full_cc_library
+		"libseccomp_policy", // jingwen@, full_cc_library
+		"libstdc++",         // jingwen@, full_cc_library
 	}
 
 	// Used for quicker lookups
