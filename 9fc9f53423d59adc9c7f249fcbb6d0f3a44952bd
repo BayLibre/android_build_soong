@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbfb9cf4_858e7979",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T10:43:35Z",
+      "side": 1,
+      "message": "Ping. Would you mind reviewing this stack? It is blocking my work on boot image.",
+      "revId": "9fc9f53423d59adc9c7f249fcbb6d0f3a44952bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
