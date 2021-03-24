@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0830fa3c_6278b1f7",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T22:51:15Z",
+      "side": 1,
+      "message": "Ok, resolving.",
+      "parentUuid": "4e05be97_3aafcd28",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 6
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "163c87d0_fdab0465",
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "Ah ok, I misunderstood. I originally had three separate calls and then I needed three separate methods to add error handlers and three separate methods to add checkers and it just got very repetitive.",
       "parentUuid": "fea25ff4_35b4beef",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c412446_f238bae6",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T22:51:15Z",
+      "side": 1,
+      "message": "Right, I\u0027ve got nothing against the enum to address them.\n\nSo where do we stand on the suggestions at the top of this thread? Shouldn\u0027t affect the 55 usages of CheckSnapshot.",
+      "parentUuid": "1116cffc_11d46358",
       "range": {
         "startLine": 218,
         "startChar": 4,
