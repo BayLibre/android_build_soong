@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4acc79_ceaf061a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-24T10:11:28Z",
+      "side": 1,
+      "message": "Note that this runs bootstrap_test on every shard, but it looked like a reasonable tradeoff for not having to parse the shard command line arguments in shell.",
+      "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
