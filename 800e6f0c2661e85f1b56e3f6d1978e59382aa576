@@ -22,6 +22,30 @@
       },
       "revId": "800e6f0c2661e85f1b56e3f6d1978e59382aa576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "968a32b5_b6292ee7",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T22:31:05Z",
+      "side": 1,
+      "message": "It can\u0027t go in there as it only starts failing when disallowing non-existent files.",
+      "parentUuid": "f8758935_c1f6ca61",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 88
+      },
+      "revId": "800e6f0c2661e85f1b56e3f6d1978e59382aa576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
