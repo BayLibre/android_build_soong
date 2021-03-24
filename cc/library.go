@@ -2025,16 +2025,28 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 }
 
 func Bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) bazel.LabelListAttribute {
-	var headerLibs []string
+	var ret bazel.LabelListAttribute
 	for _, linkerProps := range module.linker.linkerProps() {
 		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
-			headerLibs = baseLinkerProps.Header_libs
-			// FIXME: re-export include dirs from baseLinkerProps.Export_header_lib_headers?
+			libs := baseLinkerProps.Header_libs
+			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			ret = bazel.MakeLabelListAttribute(
+				android.BazelLabelForModuleDeps(ctx, android.SortedUniqueStrings(libs)))
 			break
 		}
 	}
-	headerLibsLabels := bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, headerLibs))
-	return headerLibsLabels
+
+	for os, p := range module.GetTargetProperties(&BaseLinkerProperties{}) {
+		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
+			libs := baseLinkerProps.Header_libs
+			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			// FIXME: this should be BazelLabelForModuleDeps to properly resolve dep labels, but it's crashing.
+			ret.SetValueForOS(os.Name,
+				android.BazelLabelForModuleSrc(ctx, android.SortedUniqueStrings(libs)))
+		}
+	}
+
+	return ret
 }
 
 func Bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) (bazel.LabelListAttribute, bazel.LabelListAttribute) {
