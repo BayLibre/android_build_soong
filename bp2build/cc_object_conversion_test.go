@@ -68,14 +68,18 @@ func TestCcObjectBp2Build(t *testing.T) {
         "-Wall",
         "-Werror",
     ],
+    hdrs = [
+        "a/b/bar.h",
+        "a/b/foo.h",
+    ],
     local_include_dirs = [
         "include",
         ".",
     ],
     srcs = [
         "a/b/bar.h",
-        "a/b/c.c",
         "a/b/foo.h",
+        "a/b/c.c",
     ],
 )`,
 			},
@@ -119,6 +123,7 @@ cc_defaults {
         "-Werror",
         "-fno-addrsig",
     ],
+    hdrs = [],
     local_include_dirs = [
         "include",
         ".",
@@ -158,6 +163,7 @@ cc_object {
     copts = [
         "-fno-addrsig",
     ],
+    hdrs = [],
     local_include_dirs = [
         ".",
     ],
@@ -172,6 +178,7 @@ cc_object {
     deps = [
         ":bar",
     ],
+    hdrs = [],
     local_include_dirs = [
         ".",
     ],
@@ -203,6 +210,7 @@ cc_object {
     copts = [
         "-fno-addrsig",
     ],
+    hdrs = [],
     srcs = [
         "a/b/c.c",
     ],
@@ -234,6 +242,7 @@ cc_object {
     copts = [
         "-fno-addrsig",
     ],
+    hdrs = [],
 )`,
 			},
 		},
@@ -329,6 +338,7 @@ func TestCcObjectConfigurableAttributesBp2Build(t *testing.T) {
         ],
         "//conditions:default": [],
     }),
+    hdrs = [],
     local_include_dirs = [
         ".",
     ],
@@ -392,6 +402,7 @@ func TestCcObjectConfigurableAttributesBp2Build(t *testing.T) {
         ],
         "//conditions:default": [],
     }),
+    hdrs = [],
     local_include_dirs = [
         ".",
     ],
@@ -454,6 +465,7 @@ func TestCcObjectConfigurableAttributesBp2Build(t *testing.T) {
         ],
         "//conditions:default": [],
     }),
+    hdrs = [],
     local_include_dirs = [
         ".",
     ],
