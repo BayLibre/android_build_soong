@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8541831_5c0e1400",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T21:33:17Z",
+      "side": 1,
+      "message": "My concern isn\u0027t that something will break undetected but that there will be some subtle behavioral difference which will break (either a test or the build) and I\u0027ll then spend hours trying to fix it. Having it as a separate change means that I can drop it if it starts leading me down a rabbit hole.",
+      "parentUuid": "16ceb3fa_73435f0a",
+      "revId": "1d0e9dbed0c265bb8eca50e9d69079d01842201f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14846bed_f44488a9",
