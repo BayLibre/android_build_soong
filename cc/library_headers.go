@@ -98,9 +98,10 @@ func CcLibraryHeadersBp2Build(ctx android.TopDownMutatorContext) {
 	exportedIncludesLabels, exportedIncludesHeadersLabels := bp2BuildParseExportedIncludes(ctx, module)
 
 	headerLibsLabels := bp2BuildParseHeaderLibs(ctx, module)
+	copts, _ := bp2BuildParseCompilerProps(ctx, module)
 
 	attrs := &bazelCcLibraryHeadersAttributes{
-		Copts:    bp2BuildParseCflags(ctx, module),
+		Copts:    copts,
 		Includes: exportedIncludesLabels,
 		Hdrs:     exportedIncludesHeadersLabels,
 		Deps:     headerLibsLabels,

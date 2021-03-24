@@ -59,28 +59,40 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 }
 
 // bp2buildParseCflags creates a label list attribute containing the cflags of a module, including
-func bp2BuildParseCflags(ctx android.TopDownMutatorContext, module *Module) bazel.StringListAttribute {
-	var ret bazel.StringListAttribute
+func bp2BuildParseCompilerProps(
+	ctx android.TopDownMutatorContext, module *Module) (bazel.StringListAttribute, bazel.LabelListAttribute) {
+	var copts bazel.StringListAttribute
+	var srcs bazel.LabelListAttribute
 	for _, props := range module.compiler.compilerProps() {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			ret.Value = baseCompilerProps.Cflags
+			copts.Value = baseCompilerProps.Cflags
+			srcs.Value = android.BazelLabelForModuleSrcExcludes(
+				ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
 			break
 		}
 	}
 
 	for arch, props := range module.GetArchProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			ret.SetValueForArch(arch.Name, baseCompilerProps.Cflags)
+			copts.SetValueForArch(arch.Name, baseCompilerProps.Cflags)
+			srcs.SetValueForArch(
+				arch.Name,
+				android.BazelLabelForModuleSrcExcludes(
+					ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs))
 		}
 	}
 
 	for os, props := range module.GetTargetProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			ret.SetValueForOS(os.Name, baseCompilerProps.Cflags)
+			copts.SetValueForOS(os.Name, baseCompilerProps.Cflags)
+			srcs.SetValueForOS(
+				os.Name,
+				android.BazelLabelForModuleSrcExcludes(
+					ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs))
 		}
 	}
 
-	return ret
+	return copts, srcs
 }
 
 // bp2BuildParseHeaderLibs creates a label list attribute containing the header library deps of a module, including

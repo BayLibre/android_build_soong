@@ -74,8 +74,8 @@ func TestCcObjectBp2Build(t *testing.T) {
     ],
     srcs = [
         "a/b/bar.h",
-        "a/b/c.c",
         "a/b/foo.h",
+        "a/b/c.c",
     ],
 )`,
 			},
