@@ -539,6 +539,8 @@ func (t *topDownMutatorContext) CreateBazelTargetModule(
 		Name: &name,
 	}
 
+	// empty variable properties so they don't get appended to the Bazel target
+	t.Module().base().variableProperties = nil
 	b := t.CreateModule(factory, &nameProp, attrs).(BazelTargetModule)
 	b.SetBazelTargetModuleProperties(bazelProps)
 	return b
