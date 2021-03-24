@@ -22,6 +22,30 @@
       },
       "revId": "c106829cea0326c092665d3d274994a6d341976e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5b8aac_31fa4b7c",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T11:41:18Z",
+      "side": 1,
+      "message": "Ok, the core-lambda-stubs, ext, framework are all registered as part of PrepareForTestWithJavaDefaultModules.\n\nThe prebuilt_apis is registered by FixtureWithLastReleaseApis(\"myjavalib\").\n\n\u003e Is the assumption that the tests will fail precisely when there\u0027s a significant difference in this setup?\n\nBasically yes. Generally, the parts that are here are here because without them one or more tests fail.\n\n\u003e There\u0027s no worry that they will become ineffective instead?\n\nThere is always a slight concern. e.g. Missing a RunTest(t) will mean the test does nothing. However, I have tried to be very diligent and rigorous and most of the affected tests have failed at some point during the migration when I missed something out.",
+      "parentUuid": "f872fbbe_6bf833be",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "c106829cea0326c092665d3d274994a6d341976e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
