@@ -122,6 +122,12 @@ func CcLibraryHeadersBp2Build(ctx android.TopDownMutatorContext) {
 	}
 	headerLibLabels.Value = android.BazelLabelForModuleDeps(ctx, headerLibs)
 
+	for os, p := range module.GetTargetProperties(&BaseLinkerProperties{}) {
+		if lProps, ok := p.(*BaseLinkerProperties); ok {
+			headerLibLabels.SetValueForTarget(os.Name, android.BazelLabelForModuleDeps(ctx, lProps.Header_libs))
+		}
+	}
+
 	attrs := &bazelCcLibraryHeadersAttributes{
 		Includes: includeDirLabels,
 		Hdrs:     headerLabels,
