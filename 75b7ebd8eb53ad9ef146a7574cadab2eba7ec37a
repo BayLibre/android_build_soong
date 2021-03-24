@@ -39,6 +39,30 @@
       },
       "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58a2858_1ff9f4cc",
+        "filename": "bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-24T10:37:35Z",
+      "side": 1,
+      "message": "/citation needed\n\nI see go/blaze-batch but that\u0027s from 2008 and if something is deprecated for 3 years, it won\u0027t get removed anytime soon.",
+      "parentUuid": "147a5f68_ca480872",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
