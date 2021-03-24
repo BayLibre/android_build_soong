@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a4d939_48f24267",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-24T11:25:16Z",
+      "side": 1,
+      "message": "There is still a couple of places in the comments that mention the removed javaFixtureFactory (the examples in java/fixture.go need updating).",
+      "revId": "71ae59412b6667210e11d3fb21971153ecbf3183",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
