@@ -83,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13de75aa_a3212e7a",
+        "filename": "java/java_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T20:41:44Z",
+      "side": 1,
+      "message": "Ah, now I noticed it doesn\u0027t return anything. Pattern matching bug on my side.",
+      "parentUuid": "29c0436c_03d6d3a5",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae5c0a41_a7acd73b",
