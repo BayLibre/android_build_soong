@@ -22,6 +22,30 @@
       },
       "revId": "141fe522ca797228a258b1392ba462cb7d8a5918",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1053c4e_cfc72108",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T11:23:38Z",
+      "side": 1,
+      "message": "Annoying. Somewhere along the lines in one of the many rebases I seem to have merged most of the changes from this change into the following one.\n\nI can bring them back into this or merge this in with them and drop this change. What would you prefer?",
+      "parentUuid": "afcc7b13_5c187d10",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "141fe522ca797228a258b1392ba462cb7d8a5918",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
