@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e05be97_3aafcd28",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T22:37:10Z",
+      "side": 1,
+      "message": "Probably not hard, just time consuming, I would have to modify blueprint in github, and then blueprint in AOSP and then Soong. It just gets tedious.\n\nAdded a TODO.",
+      "parentUuid": "ccec7cc5_c714e5f0",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 6
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "163c87d0_fdab0465",
         "filename": "sdk/testing.go",
         "patchSetId": 8
@@ -192,6 +216,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1116cffc_11d46358",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T22:37:10Z",
+      "side": 1,
+      "message": "Ah ok, I misunderstood. I originally had three separate calls and then I needed three separate methods to add error handlers and three separate methods to add checkers and it just got very repetitive.",
+      "parentUuid": "fea25ff4_35b4beef",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d53d7833_bae50237",
         "filename": "sdk/testing.go",
         "patchSetId": 8
@@ -251,6 +299,30 @@
       "side": 1,
       "message": "\u003e then there would be about 100 test failures\n\nSince prefer:false is the default I take it you mean test failures due to this replace failing and prefer not being true. Ok, maybe. In any case I don\u0027t have any good ideas how to make this more robust without parsing and reformatting.",
       "parentUuid": "a1755f83_4c5636ca",
+      "range": {
+        "startLine": 243,
+        "startChar": 64,
+        "endLine": 243,
+        "endChar": 77
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935ba6ab_84ae2b96",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T22:37:10Z",
+      "side": 1,
+      "message": "Me neither.",
+      "parentUuid": "e4f7179c_77763077",
       "range": {
         "startLine": 243,
         "startChar": 64,
