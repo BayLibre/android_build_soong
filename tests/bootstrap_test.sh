@@ -3,7 +3,24 @@
 # This test exercises the bootstrapping process of the build system
 # in a source tree that only contains enough files for Bazel and Soong to work.
 
-source "$(dirname "$0")/lib.sh"
+if [[ ! -z "$TEST_SRCDIR" ]]; then
+   REAL_TOP="$PWD"
+else
+   REAL_TOP="$(readlink -f "$(dirname "$0")"/../../..)"
+fi
+
+set
+
+#echo "$TEST_SRCDIR"
+#cd "$TEST_SRCDIR"
+#find . -print
+#exit 1
+
+source "$REAL_TOP/build/soong/tests/test_framework.sh"
+source "$REAL_TOP/build/soong/tests/lib.sh"
+
+export GOCACHE=$(mktemp -t -d gc.XXXXXX)
+trap 'cd / && rm -fr "$GOCACHE"' EXIT
 
 function test_smoke {
   setup
@@ -115,6 +132,7 @@ EOF
   run_soong
 
   grep -q "^# Module:.*my_little_binary_host$" out/soong/build.ninja && fail "Old module in output"
+  return 0
 }
 
 function test_add_file_to_glob() {
@@ -405,6 +423,9 @@ EOF
   grep -q "Engage" out/soong/build.ninja || fail "New action not present"
 
   grep -q "Make it so" out/soong/build.ninja && fail "Original action still present"
+
+  :
+  
 }
 
 function test_null_build_after_docs {
@@ -427,17 +448,10 @@ function test_dump_json_module_graph() {
   if [[ ! -r "$MOCK_TOP/modules.json" ]]; then
     fail "JSON file was not created"
   fi
+
+  if [[ $(($RANDOM % 3)) == 0 ]]; then
+    fail "Test failure"
+  fi
 }
 
-test_smoke
-test_null_build
-test_null_build_after_docs
-test_soong_build_rebuilt_if_blueprint_changes
-test_add_file_to_glob
-test_add_android_bp
-test_change_android_bp
-test_delete_android_bp
-test_add_file_to_soong_build
-test_glob_during_bootstrapping
-test_soong_build_rerun_iff_environment_changes
-test_dump_json_module_graph
+run_test_suite
