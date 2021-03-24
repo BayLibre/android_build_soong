@@ -16,6 +16,7 @@ package bazel
 
 import (
 	"fmt"
+	"regexp"
 	"sort"
 )
 
@@ -30,6 +31,8 @@ type BazelTargetModuleProperties struct {
 }
 
 const BazelTargetModuleNamePrefix = "__bp2build__"
+
+var productVariableSubstitutionPattern = regexp.MustCompile("%(d|s)")
 
 // Label is used to represent a Bazel compatible Label. Also stores the original bp text to support
 // string replacement.
@@ -143,4 +146,20 @@ func (attrs *StringListAttribute) SetValueForArch(arch string, value []string) {
 	default:
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
+}
+
+func TryVariableSubstitutions(slice []string, productVariable string) ([]string, bool) {
+	ret := make([]string, 0, len(slice))
+	substitution := false
+	for _, s := range slice {
+		newS, subbed := TryVariableSubstitution(s, productVariable)
+		ret = append(ret, newS)
+		substitution = substitution || subbed
+	}
+	return ret, substitution
+}
+
+func TryVariableSubstitution(s string, productVariable string) (string, bool) {
+	sub := productVariableSubstitutionPattern.ReplaceAllString(s, "{"+productVariable+"}")
+	return sub, s != sub
 }

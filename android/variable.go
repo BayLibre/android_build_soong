@@ -446,6 +446,53 @@ func (v *productVariables) SetDefaultConfig() {
 	}
 }
 
+type productConfigContext interface {
+	Module() Module
+	Config() Config
+}
+
+type ProductConfigProperty struct {
+	ProductConfigVariable string
+	Property              interface{}
+}
+
+type ProductConfigProperties map[string][]ProductConfigProperty
+
+func ProductVariableProperties(ctx productConfigContext) ProductConfigProperties {
+	module := ctx.Module()
+	moduleBase := module.base()
+
+	productConfigProperties := ProductConfigProperties{}
+
+	if moduleBase.variableProperties == nil {
+		return productConfigProperties
+	}
+
+	variableValues := reflect.ValueOf(moduleBase.variableProperties).Elem().FieldByName("Product_variables")
+	for i := 0; i < variableValues.NumField(); i++ {
+		variableValue := variableValues.Field(i)
+		// Check if any properties were set for the module
+		if variableValue.IsZero() {
+			continue
+		}
+		productVariableName := variableValues.Type().Field(i).Name
+		for j := 0; j < variableValue.NumField(); j++ {
+			property := variableValue.Field(j)
+			if property.IsZero() {
+				continue
+			}
+
+			propertyName := variableValue.Type().Field(j).Name
+			productConfigProperties[propertyName] = append(productConfigProperties[propertyName], ProductConfigProperty{
+				ProductConfigVariable: productVariableName,
+				Property:              property.Interface(),
+			})
+		}
+	}
+
+	return productConfigProperties
+}
+
 func VariableMutator(mctx BottomUpMutatorContext) {
 	var module Module
 	var ok bool
