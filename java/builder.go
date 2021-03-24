@@ -33,6 +33,36 @@ import (
 var (
 	pctx = android.NewPackageContext("android/soong/java")
 
+	javacRuleParams = blueprint.RuleParams{
+		Command: `rm -rf "$outDir" "$annoDir" "$srcJarDir" "$out" && mkdir -p "$outDir" "$annoDir" "$srcJarDir" && ` +
+			`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
+			`(if [ -s $srcJarDir/list ] || [ -s $out.rsp ] ; then ` +
+			`${config.SoongJavacWrapper} $javaTemplate${config.JavacCmd} ` +
+			`${config.JavacHeapFlags} ${config.JavacVmFlags} ${config.CommonJdkFlags} ` +
+			`$processorpath $processor $javacFlags $bootClasspath $classpath ` +
+			`-source $javaVersion -target $javaVersion ` +
+			`-d $outDir -s $annoDir @$out.rsp @$srcJarDir/list ; fi ) && ` +
+			`$zipTemplate${config.SoongZipCmd} -jar -o $out -C $outDir -D $outDir && ` +
+			`rm -rf "$srcJarDir"`,
+		CommandDeps: []string{
+			"${config.JavacCmd}",
+			"${config.SoongZipCmd}",
+			"${config.ZipSyncCmd}",
+		},
+		CommandOrderOnly: []string{"${config.SoongJavacWrapper}"},
+		Rspfile:          "$out.rsp",
+		RspfileContent:   "$in",
+	}
+	zipREParams = &remoteexec.REParams{
+		Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
+		Inputs:       []string{"${config.SoongZipCmd}", "$outDir"},
+		OutputFiles:  []string{"$out"},
+		ExecStrategy: "${config.REJavacExecStrategy}",
+		Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+	}
+	javacRuleVars = []string{"javacFlags", "bootClasspath", "classpath", "processorpath", "processor", "srcJars", "srcJarDir",
+		"outDir", "annoDir", "javaVersion"}
+
 	// Compiling java is not conducive to proper dependency tracking.  The path-matches-class-name
 	// requirement leads to unpredictable generated source file names, and a single .java file
 	// will get compiled into multiple .class files if it contains inner classes.  To work around
@@ -40,41 +70,23 @@ var (
 	// (if the rule produces .class files) or a .srcjar file (if the rule produces .java files).
 	// .srcjar files are unzipped into a temporary directory when compiled with javac.
 	// TODO(b/143658984): goma can't handle the --system argument to javac.
-	javac, javacRE = pctx.MultiCommandRemoteStaticRules("javac",
-		blueprint.RuleParams{
-			Command: `rm -rf "$outDir" "$annoDir" "$srcJarDir" "$out" && mkdir -p "$outDir" "$annoDir" "$srcJarDir" && ` +
-				`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
-				`(if [ -s $srcJarDir/list ] || [ -s $out.rsp ] ; then ` +
-				`${config.SoongJavacWrapper} $javaTemplate${config.JavacCmd} ` +
-				`${config.JavacHeapFlags} ${config.JavacVmFlags} ${config.CommonJdkFlags} ` +
-				`$processorpath $processor $javacFlags $bootClasspath $classpath ` +
-				`-source $javaVersion -target $javaVersion ` +
-				`-d $outDir -s $annoDir @$out.rsp @$srcJarDir/list ; fi ) && ` +
-				`$zipTemplate${config.SoongZipCmd} -jar -o $out -C $outDir -D $outDir && ` +
-				`rm -rf "$srcJarDir"`,
-			CommandDeps: []string{
-				"${config.JavacCmd}",
-				"${config.SoongZipCmd}",
-				"${config.ZipSyncCmd}",
-			},
-			CommandOrderOnly: []string{"${config.SoongJavacWrapper}"},
-			Rspfile:          "$out.rsp",
-			RspfileContent:   "$in",
-		}, map[string]*remoteexec.REParams{
-			"$javaTemplate": &remoteexec.REParams{
-				Labels:       map[string]string{"type": "compile", "lang": "java", "compiler": "javac"},
-				ExecStrategy: "${config.REJavacExecStrategy}",
-				Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
-			},
-			"$zipTemplate": &remoteexec.REParams{
-				Labels:       map[string]string{"type": "tool", "name": "soong_zip"},
-				Inputs:       []string{"${config.SoongZipCmd}", "$outDir"},
-				OutputFiles:  []string{"$out"},
-				ExecStrategy: "${config.REJavacExecStrategy}",
-				Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
-			},
-		}, []string{"javacFlags", "bootClasspath", "classpath", "processorpath", "processor", "srcJars", "srcJarDir",
-			"outDir", "annoDir", "javaVersion"}, nil)
+	javac, javacRE = pctx.MultiCommandRemoteStaticRules("javac", javacRuleParams, map[string]*remoteexec.REParams{
+		"$javaTemplate": &remoteexec.REParams{
+			Labels:       map[string]string{"type": "compile", "lang": "java", "compiler": "javac"},
+			ExecStrategy: "${config.REJavacExecStrategy}",
+			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+		},
+		"$zipTemplate": zipREParams,
+	}, javacRuleVars, nil)
+
+	_, errorproneRE = pctx.MultiCommandRemoteStaticRules("javac-errorprone", javacRuleParams, map[string]*remoteexec.REParams{
+		"$javaTemplate": &remoteexec.REParams{
+			Labels:       map[string]string{"type": "compile", "lang": "java", "compiler": "javac", "iserrorprone": "true"},
+			ExecStrategy: "${config.REJavacExecStrategy}",
+			Platform:     map[string]string{remoteexec.PoolKey: "${config.REJavaPool}"},
+		},
+		"$zipTemplate": zipREParams,
+	}, javacRuleVars, nil)
 
 	_ = pctx.VariableFunc("kytheCorpus",
 		func(ctx android.PackageVarContext) string { return ctx.Config().XrefCorpusName() })
@@ -463,6 +475,9 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 	rule := javac
 	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_JAVAC") {
 		rule = javacRE
+		if len(flags.errorProneExtraJavacFlags) > 0 {
+			rule = errorproneRE
+		}
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rule,

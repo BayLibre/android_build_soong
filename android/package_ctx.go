@@ -276,7 +276,7 @@ func (p PackageContext) RemoteStaticRules(name string, ruleParams blueprint.Rule
 		p.AndroidRemoteStaticRule(name+"RE", RemoteRuleSupports{RBE: true}, ruleParamsRE, append(commonArgs, reArgs...)...)
 }
 
-// MultiCommandStaticRules returns a pair of rules based on the given RuleParams, where the first
+// MultiCommandRemoteStaticRules returns a pair of rules based on the given RuleParams, where the first
 // rule is a locally executable rule and the second rule is a remotely executable rule. This
 // function supports multiple remote execution wrappers placed in the template when commands are
 // chained together with &&. commonArgs are args used for both the local and remotely executable
