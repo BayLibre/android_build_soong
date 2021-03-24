@@ -126,6 +126,7 @@ var (
 		"bionic":                Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out.
@@ -170,6 +171,9 @@ var (
 		"liblinker_debuggerd_stub",
 		"libbionic_tests_headers_posix",
 		"libc_dns",
+
+		"libc",
+		"libseccomp_policy",
 	}
 
 	// Used for quicker lookups
