@@ -83,6 +83,7 @@ function setup() {
   touch "$MOCK_TOP/Android.bp"
 
   export ALLOW_MISSING_DEPENDENCIES=true
+  export TOP="$MOCK_TOP"
 
   mkdir -p out/soong
 }
@@ -100,9 +101,9 @@ function test_bazel_smoke {
   setup
   setup_bazel
 
-  tools/bazel info
-
+  tools/bazel info workspace
 }
+
 function test_null_build() {
   setup
   run_soong

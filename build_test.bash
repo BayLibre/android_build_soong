@@ -48,9 +48,7 @@ case $(uname) in
     ;;
 esac
 
-echo
-echo "Running Bazel smoke test..."
-"${TOP}/tools/bazel" --batch --max_idle_secs=1 info
+build/soong/bootstrap_test.sh
 
 echo
 echo "Running Soong test..."
