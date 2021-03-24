@@ -122,6 +122,81 @@ func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
 	}
 }
 
+func (attrs *LabelListAttribute) HasTargetSpecificValues() bool {
+	for _, os := range []string{"android", "linux_bionic"} {
+		if len(attrs.GetValueForTarget(os).Includes) > 0 || len(attrs.GetValueForTarget(os).Excludes) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+// SetValueForArch sets the label_list attribute value for an OS target.
+func (attrs *LabelListAttribute) GetValueForTarget(target string) LabelList {
+	ret := LabelList{}
+	switch target {
+	case "linux_glibc":
+		ret.Append(attrs.ArchValues.X86)
+		ret.Append(attrs.ArchValues.X86_64)
+	case "darwin":
+		ret.Append(attrs.ArchValues.X86)
+		ret.Append(attrs.ArchValues.X86_64)
+	case "linux_bionic":
+		ret.Append(attrs.ArchValues.Arm64)
+		ret.Append(attrs.ArchValues.X86_64)
+	case "windows":
+		ret.Append(attrs.ArchValues.X86)
+		ret.Append(attrs.ArchValues.X86_64)
+	case "android":
+		ret.Append(attrs.ArchValues.X86)
+		ret.Append(attrs.ArchValues.X86_64)
+		ret.Append(attrs.ArchValues.Arm)
+		ret.Append(attrs.ArchValues.Arm64)
+	case "fuchsia":
+		ret.Append(attrs.ArchValues.Arm64)
+		ret.Append(attrs.ArchValues.X86_64)
+	case "common_os":
+		ret.Append(attrs.ArchValues.Default)
+	case "default":
+		ret.Append(attrs.ArchValues.Default)
+	default:
+		panic(fmt.Errorf("Unknown target: %s", target))
+	}
+	return ret
+}
+
+// SetValueForArch sets the label_list attribute value for an OS target.
+func (attrs *LabelListAttribute) SetValueForTarget(target string, value LabelList) {
+	switch target {
+	case "linux_glibc":
+		attrs.ArchValues.X86 = value
+		attrs.ArchValues.X86_64 = value
+	case "darwin":
+		attrs.ArchValues.X86 = value
+		attrs.ArchValues.X86_64 = value
+	case "linux_bionic":
+		attrs.ArchValues.Arm64 = value
+		attrs.ArchValues.X86_64 = value
+	case "windows":
+		attrs.ArchValues.X86 = value
+		attrs.ArchValues.X86_64 = value
+	case "android":
+		attrs.ArchValues.X86 = value
+		attrs.ArchValues.X86_64 = value
+		attrs.ArchValues.Arm = value
+		attrs.ArchValues.Arm64 = value
+	case "fuchsia":
+		attrs.ArchValues.Arm64 = value
+		attrs.ArchValues.X86_64 = value
+	case "common_os":
+		attrs.ArchValues.Default = value
+	case "default":
+		attrs.ArchValues.Default = value
+	default:
+		panic(fmt.Errorf("Unknown target: %s", target))
+	}
+}
+
 // SetValueForArch sets the label_list attribute value for an architecture.
 func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
 	switch arch {

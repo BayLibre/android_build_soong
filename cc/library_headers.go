@@ -94,17 +94,26 @@ func CcLibraryHeadersBp2Build(ctx android.TopDownMutatorContext) {
 		return
 	}
 
+	var deps bazel.LabelListAttribute
 	var exportedIncludesLabels bazel.LabelListAttribute
 	var exportedIncludesHeadersLabels bazel.LabelListAttribute
 	exportedIncludesLabels.Value, exportedIncludesHeadersLabels.Value = Bp2BuildParseExportedIncludes(ctx, module)
 
-	var headerLibsLabels bazel.LabelListAttribute
-	headerLibsLabels.Value = Bp2BuildParseHeaderLibs(ctx, module)
+	deps.Value = Bp2BuildParseHeaderLibs(ctx, module)
+
+	// Move to Bp2BuildParseHeaderLibs
+	for os, p := range module.GetTargetProperties(&BaseLinkerProperties{}) {
+		if lProps, ok := p.(*BaseLinkerProperties); ok {
+			// FIXME: this should be BazelLabelForModuleDeps to properly resolve dep labels, but it's crashing.
+			deps.SetValueForTarget(os.Name, android.BazelLabelForModuleSrc(ctx, lProps.Header_libs))
+		}
+	}
+	deps.SetValueForTarget("default", bazel.LabelList{Includes: []bazel.Label{}})
 
 	attrs := &bazelCcLibraryHeadersAttributes{
 		Includes: exportedIncludesLabels,
 		Hdrs:     exportedIncludesHeadersLabels,
-		Deps:     headerLibsLabels,
+		Deps:     deps,
 	}
 
 	props := bazel.BazelTargetModuleProperties{

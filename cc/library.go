@@ -2040,6 +2040,12 @@ func Bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) 
 	}
 
 	headerLibsLabels := android.BazelLabelForModuleDeps(ctx, headerLibs)
+
+	// FIXME: remove hack
+	if headerLibsLabels.Includes == nil {
+		headerLibsLabels.Includes = []bazel.Label{}
+	}
+
 	return headerLibsLabels
 }
 
