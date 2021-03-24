@@ -1,0 +1,35 @@
+filegroup(
+    name = "everything",
+    srcs = glob(["**"]),
+)    
+
+sh_library(
+    name = "test_framework",
+    srcs = ["test_framework.sh"],
+)
+
+sh_test(
+    name = "bazel_test",
+    srcs = ["bazel_test.sh"],
+    deps = [":test_framework"],
+    data = [
+        "//build/bazel:everything",
+        "//build/bazel/rules:everything",
+        "//:prebuilts_bazel",
+        "//:prebuilts_jdk",
+        "//:bazel-test-deps",
+    ],
+)
+    
+sh_test(
+    name = "bootstrap_test",
+    srcs = ["bootstrap_test.sh"],
+    deps = [":test_framework"],
+    data = [
+        ":everything",
+        "//build/blueprint:everything",
+        "//:prebuilts_go",
+        "//:external_golang-protobuf",
+        "//:prebuilts_build-tools",
+    ],
+)    
