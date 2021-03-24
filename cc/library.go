@@ -2038,8 +2038,18 @@ func Bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) 
 			break
 		}
 	}
-	headerLibsLabels := bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, headerLibs))
-	return headerLibsLabels
+
+	ret := bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, headerLibs))
+
+	// Move to Bp2BuildParseHeaderLibs
+	for os, p := range module.GetTargetProperties(&BaseLinkerProperties{}) {
+		if lProps, ok := p.(*BaseLinkerProperties); ok {
+			// FIXME: this should be BazelLabelForModuleDeps to properly resolve dep labels, but it's crashing.
+			ret.SetValueForTarget(os.Name, android.BazelLabelForModuleSrc(ctx, lProps.Header_libs))
+		}
+	}
+
+	return ret
 }
 
 func Bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) (bazel.LabelListAttribute, bazel.LabelListAttribute) {
