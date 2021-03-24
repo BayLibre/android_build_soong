@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8758935_c1f6ca61",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T22:10:13Z",
+      "side": 1,
+      "message": "This belongs in the parent CL (https://r.android.com/1647170)? (Optional as far as I\u0027m concerned.)",
+      "range": {
+        "startLine": 524,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 88
+      },
+      "revId": "800e6f0c2661e85f1b56e3f6d1978e59382aa576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
