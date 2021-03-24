@@ -904,7 +904,7 @@ func NormalizePathForTesting(path Path) string {
 	}
 	p := path.String()
 	if w, ok := path.(WritablePath); ok {
-		rel, err := filepath.Rel(w.buildDir(), p)
+		rel, err := filepath.Rel(w.getBuildDir(), p)
 		if err != nil {
 			panic(err)
 		}
@@ -939,7 +939,7 @@ func PathRelativeToTop(path Path) string {
 	}
 	p := path.String()
 	if w, ok := path.(WritablePath); ok {
-		buildDir := w.buildDir()
+		buildDir := w.getBuildDir()
 		return StringPathRelativeToTop(buildDir, p)
 	}
 	return p
