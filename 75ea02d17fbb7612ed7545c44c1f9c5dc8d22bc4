@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "555f7ba4_a6d7773d",
+        "filename": "android/bazel.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-24T03:54:25Z",
+      "side": 1,
+      "message": "If the module doesn\u0027t have a bazel_module.label prop, an earlier change made it such that ConvertedToBazel, which is eventually called from GetBazelLabel right before generateBazelBuildActions here [1] and here [2], would return the label as seen by bp2build. \n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/genrule/genrule.go;l\u003d541;drc\u003d6648045f00180435e2e9d7cffd18aabe9133e1e2\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d1608;drc\u003dmaster\n\nThis check prevents these labels from being generated if they don\u0027t have a bp2build converter. In the cc case, it was actually generating labels for cc_library_static and other cc_* rules since the GenerateAndroidBuildActions codepath is shared between cc.Module types.",
+      "parentUuid": "131bf67a_138b994f",
+      "revId": "75ea02d17fbb7612ed7545c44c1f9c5dc8d22bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c08debe8_7b11004f",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "230a0a6d_074a9539",
+        "filename": "android/bazel.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-24T03:54:25Z",
+      "side": 1,
+      "message": "I went with this to avoid having to specify subpackages of x/y in the allowlist, which can be many and therefore tedious to allowlist, if we denylist x/y.",
+      "parentUuid": "c08debe8_7b11004f",
+      "revId": "75ea02d17fbb7612ed7545c44c1f9c5dc8d22bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16cfcbb8_37d05b00",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-03-23T16:16:31Z",
       "side": 1,
       "message": "maybe tangential to this change, but do we have concerns that removal of out/ (`rm -rf out/`) wipes away these manifests?",
+      "revId": "75ea02d17fbb7612ed7545c44c1f9c5dc8d22bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1145695b_4817eb91",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 30
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-24T03:54:25Z",
+      "side": 1,
+      "message": "Yeah, removing out/ means that there may be stale BUILD files remaining in the tree on the next bp2build-sync write run.\n\nThis is ultimately a temporary solution, I think we should go for a more robust solution that lberki outlined in his latest doc, like teaching Bazel to read from a different BUILD file.",
+      "parentUuid": "16cfcbb8_37d05b00",
       "revId": "75ea02d17fbb7612ed7545c44c1f9c5dc8d22bc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
