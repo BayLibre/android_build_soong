@@ -46,6 +46,30 @@
       },
       "revId": "c106829cea0326c092665d3d274994a6d341976e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3fe219_563c0fe1",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T17:22:47Z",
+      "side": 1,
+      "message": "Ok, I can semi-rubber stamp this under that assumption, because I\u0027m not able to verify it, in particular not for java tests that I\u0027m not very familiar with.",
+      "parentUuid": "7a5b8aac_31fa4b7c",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "c106829cea0326c092665d3d274994a6d341976e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
