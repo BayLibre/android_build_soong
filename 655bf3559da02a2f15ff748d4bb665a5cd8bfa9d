@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7e6632df_dcc2648a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-24T10:57:35Z",
+      "side": 1,
+      "message": "There is precedence for this with linkerconfig, and thought I\u0027d follow a similar example. Having a genrule and prebuilt_etc is not \"minimalistic\" and slightly error-prone, but we could make it work, yes.\n\nAnother couple of ideas:\n- generate configs based on defaultBootclasspath(ctx) logic used here already, and include/exclude jars;\n- parse java_sdk_library deps; but I thought we are not yet 100% migrated to java_sdk_libraries?\n\nI\u0027ll wait for Pauls boot_image changes before proceeding here.",
+      "parentUuid": "d24d4857_4a77b7a8",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "65211a72_dec99c52",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
