@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "478000e9_fa9d2b9b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T16:26:29Z",
+      "side": 0,
+      "message": "These alignment changes add noise, and this one seems odd - why would the removed line above be a reason to break alignment? However if this is what gofmt has decided to do then we should stick to it. So is it?",
+      "range": {
+        "startLine": 150,
+        "startChar": 53,
+        "endLine": 150,
+        "endChar": 65
+      },
+      "revId": "89699ac58f05dae1e9d056df233767ef826e859b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

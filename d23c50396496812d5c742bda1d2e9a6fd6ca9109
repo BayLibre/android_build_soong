@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d7443da_a6b094aa",
+        "filename": "java/java_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T16:26:29Z",
+      "side": 0,
+      "message": "So these were superfluous.",
+      "range": {
+        "startLine": 1238,
+        "startChar": 0,
+        "endLine": 1239,
+        "endChar": 63
+      },
+      "revId": "d23c50396496812d5c742bda1d2e9a6fd6ca9109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

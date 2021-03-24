@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3217891_8ef91631",
+        "filename": "android/testing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T16:26:29Z",
+      "side": 1,
+      "message": "I\u0027m surprised this isn\u0027t the default. Just curious, are there so many files used in tests that listing them in MockFS would be tedious? Also, almost all the files in MockFS have nil content, so considering this, couldn\u0027t they just as well be removed?",
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38eb120f_05c78f7a",
+        "filename": "java/java_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T16:26:29Z",
+      "side": 1,
+      "message": "Just \"Test\"?\n\nAlso, I don\u0027t see this getting used anywhere - can you please move it to the CL where it is?",
+      "range": {
+        "startLine": 136,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 23
+      },
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae5c0a41_a7acd73b",
+        "filename": "java/testing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T16:26:29Z",
+      "side": 1,
+      "message": "Spello: \",\" missing.",
+      "range": {
+        "startLine": 49,
+        "startChar": 55,
+        "endLine": 49,
+        "endChar": 56
+      },
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "436d0211_14d3f52e",
+        "filename": "java/testing.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T16:26:29Z",
+      "side": 1,
+      "message": "Spello: \"type\".",
+      "range": {
+        "startLine": 49,
+        "startChar": 83,
+        "endLine": 49,
+        "endChar": 86
+      },
+      "revId": "c753d5d15f583ecdb2ce1d9a4439865954900f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
