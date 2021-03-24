@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14e7f8eb_e340a7ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-24T11:01:27Z",
+      "side": 1,
+      "message": "Just to not have multiple config languages while developing apexes. I feel like individually these are minor / insignificant, but when zoomed out all of these little things affect \"product excellence\" / dev ex?\n\nMaybe if we are not tied to have manifest being in json, I could migrate everything to textproto instead.",
+      "parentUuid": "55076ae9_34861538",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "4e5cc3c686f7a78e6b54536bd2fd7b89be150147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eead19f0_6c61b495",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
