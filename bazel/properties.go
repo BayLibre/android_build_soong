@@ -44,6 +44,7 @@ type LabelList struct {
 	Excludes []Label
 }
 
+// Append appends the fields of other labelList to the corresponding fields of ll.
 func (ll *LabelList) Append(other LabelList) {
 	if len(ll.Includes) > 0 || len(other.Includes) > 0 {
 		ll.Includes = append(ll.Includes, other.Includes...)
@@ -78,10 +79,11 @@ func UniqueBazelLabelList(originalLabelList LabelList) LabelList {
 // Arch-specific label_list typed Bazel attribute values. This should correspond
 // to the types of architectures supported for compilation in arch.go.
 type labelListArchValues struct {
-	X86    LabelList
-	X86_64 LabelList
-	Arm    LabelList
-	Arm64  LabelList
+	X86       LabelList
+	X86_64    LabelList
+	Arm       LabelList
+	Arm64     LabelList
+	Common_os LabelList
 }
 
 // LabelListAttribute is used to represent a list of Bazel labels as an
@@ -131,6 +133,8 @@ func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
 		return attrs.ArchValues.Arm
 	case "arm64":
 		return attrs.ArchValues.Arm64
+	case "common":
+		return attrs.ArchValues.Common_os
 	default:
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
