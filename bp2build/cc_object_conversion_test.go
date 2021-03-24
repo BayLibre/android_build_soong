@@ -68,14 +68,18 @@ func TestCcObjectBp2Build(t *testing.T) {
         "-Wall",
         "-Werror",
     ],
+    hdrs = [
+        "a/b/bar.h",
+        "a/b/foo.h",
+    ],
     local_include_dirs = [
         "include",
         ".",
     ],
     srcs = [
         "a/b/bar.h",
-        "a/b/c.c",
         "a/b/foo.h",
+        "a/b/c.c",
     ],
 )`,
 			},

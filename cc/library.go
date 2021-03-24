@@ -206,6 +206,7 @@ func init() {
 	RegisterLibraryBuildComponents(android.InitRegistrationContext)
 
 	android.RegisterBp2BuildMutator("cc_library_static", CcLibraryStaticBp2Build)
+	android.RegisterBp2BuildMutator("cc_library", CcLibraryBp2Build)
 }
 
 func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
@@ -214,6 +215,63 @@ func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library", LibraryFactory)
 	ctx.RegisterModuleType("cc_library_host_static", LibraryHostStaticFactory)
 	ctx.RegisterModuleType("cc_library_host_shared", LibraryHostSharedFactory)
+}
+
+// For bp2build conversion.
+type bazelCcLibraryAttributes struct {
+	Srcs            bazel.LabelListAttribute
+	Hdrs            bazel.LabelListAttribute
+	Copts           bazel.StringListAttribute
+	Linkopts        bazel.StringListAttribute
+	Deps            bazel.LabelListAttribute
+	User_link_flags bazel.StringListAttribute
+}
+
+type bazelCcLibrary struct {
+	android.BazelTargetModuleBase
+	bazelCcLibraryAttributes
+}
+
+func (m *bazelCcLibrary) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelCcLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
+
+func BazelCcLibraryFactory() android.Module {
+	module := &bazelCcLibrary{}
+	module.AddProperties(&module.bazelCcLibraryAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	if ctx.ModuleType() != "cc_library" {
+		return
+	}
+
+	copts, srcs, hdrs := bp2BuildParseCompilerProps(ctx, m)
+	deps, linkopts := bp2BuildParseLinkerProps(ctx, m)
+
+	attrs := &bazelCcLibraryAttributes{
+		Srcs:     srcs,
+		Hdrs:     hdrs,
+		Copts:    copts,
+		Linkopts: linkopts,
+		Deps:     deps,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_library",
+		Bzl_load_location: "//build/bazel/rules:full_cc_library.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(BazelCcLibraryFactory, m.Name(), props, attrs)
 }
 
 // cc_library creates both static and/or shared libraries for a device and/or
@@ -2058,9 +2116,10 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 }
 
 type bazelCcLibraryStaticAttributes struct {
-	Copts      []string
+	Copts      bazel.StringListAttribute
 	Srcs       bazel.LabelListAttribute
 	Deps       bazel.LabelListAttribute
+	Linkopts   bazel.StringListAttribute
 	Linkstatic bool
 	Includes   bazel.StringListAttribute
 	Hdrs       bazel.LabelListAttribute
@@ -2091,20 +2150,17 @@ func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
 		return
 	}
 
-	var copts []string
-	var srcs []string
+	copts, srcs, hdrs := bp2BuildParseCompilerProps(ctx, module)
+
 	var includeDirs []string
 	var localIncludeDirs []string
 	for _, props := range module.compiler.compilerProps() {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			copts = baseCompilerProps.Cflags
-			srcs = baseCompilerProps.Srcs
 			includeDirs = bp2BuildMakePathsRelativeToModule(ctx, baseCompilerProps.Include_dirs)
 			localIncludeDirs = bp2BuildMakePathsRelativeToModule(ctx, baseCompilerProps.Local_include_dirs)
 			break
 		}
 	}
-	srcsLabels := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, srcs))
 
 	var staticLibs []string
 	var wholeStaticLibs []string
@@ -2130,16 +2186,18 @@ func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
 	allIncludes.Value = append(allIncludes.Value, includeDirs...)
 	allIncludes.Value = append(allIncludes.Value, localIncludeDirs...)
 
-	headerLibsLabels := bp2BuildParseHeaderLibs(ctx, module)
+	hdrs.Append(exportedIncludesHeaders)
+
+	headerLibsLabels, _ := bp2BuildParseLinkerProps(ctx, module)
 	depsLabels.Append(headerLibsLabels.Value)
 
 	attrs := &bazelCcLibraryStaticAttributes{
 		Copts:      copts,
-		Srcs:       srcsLabels,
+		Srcs:       srcs,
 		Deps:       bazel.MakeLabelListAttribute(depsLabels),
 		Linkstatic: true,
 		Includes:   allIncludes,
-		Hdrs:       exportedIncludesHeaders,
+		Hdrs:       hdrs,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
