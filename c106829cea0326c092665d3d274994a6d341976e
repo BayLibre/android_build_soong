@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f872fbbe_6bf833be",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T11:14:08Z",
+      "side": 1,
+      "message": "I have a hard time seeing the equivalence between this and the prepareForSdkTestWithJavaSdkLibrary setup. In particular I haven\u0027t found that the java_import\u0027s are getting added anywhere. Are they superfluous?\n\nIs the assumption that the tests will fail precisely when there\u0027s a significant difference in this setup? There\u0027s no worry that they will become ineffective instead?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 1
+      },
+      "revId": "c106829cea0326c092665d3d274994a6d341976e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
