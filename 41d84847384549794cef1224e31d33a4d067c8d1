@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ac3fa74_61da9aa9",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T16:03:03Z",
+      "side": 1,
+      "message": "I\u0027ll add a TODO. Returning an error from that deep within Blueprint would be nasty.",
+      "parentUuid": "bbd9c22b_d0b390e0",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 6
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "163c87d0_fdab0465",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-24T15:40:22Z",
       "side": 1,
       "message": "There\u0027s probably a guideline somewhere saying not to abbreviate, but this is getting repeated a lot and adds to the bulk of many lines. I must say I find it much easier to read \"Config\" rather than \"Configuration\". It\u0027s still very hard to misinterpret that.",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21abb47c_a7e4fbf6",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T16:03:03Z",
+      "side": 1,
+      "message": "If you\u0027re happy with my proposal (below) to clean this up as a follow up I\u0027ll leave this. Otherwise, your suggestion is good.",
+      "parentUuid": "163c87d0_fdab0465",
       "range": {
         "startLine": 188,
         "startChar": 22,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "899cfcf5_735af1a2",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T16:03:03Z",
+      "side": 1,
+      "message": "Yes. I don\u0027t like this approach but there are 55 usages of CheckSnapshot and this change covers them all.\n\nWhat I was thinking of doing was extracting the part of CheckSnapshot that runs the basic test, e.g. CheckBasicSnapshot(), and returning the FixturePreparer that can be used to create the snapshot. The CheckSnapshot method can run all the tests as it does but without the customization.\n\nAny test that needs to customize can just use CheckBasicSnapshot() and then roll their own custom test.\n\nI\u0027d rather do that as a followup and remove all this code as I have other work that would benefit from these tests.",
+      "parentUuid": "c66fae74_bce3a189",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d53d7833_bae50237",
         "filename": "sdk/testing.go",
         "patchSetId": 8
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1755f83_4c5636ca",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T16:03:03Z",
+      "side": 1,
+      "message": "It\u0027s certainly possible to parse the structures (I did something similar for CheckBlueprintSyntax), however I had to do that in blueprint itself. It may be possible to do so from outside blueprint but there would be a lot of duplication.\n\nIf a change is made that removed \"prefer: false,\" from the generated snapshots then there would be about 100 test failures. So, I think that it should be ok.",
+      "parentUuid": "d53d7833_bae50237",
+      "range": {
+        "startLine": 243,
+        "startChar": 64,
+        "endLine": 243,
+        "endChar": 77
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a1d0120_d674a7b2",
         "filename": "sdk/testing.go",
         "patchSetId": 8
@@ -106,6 +202,30 @@
       "writtenOn": "2021-03-24T15:40:22Z",
       "side": 1,
       "message": "Long name that still isn\u0027t very descriptive. What about snapshotCheckConfig?",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dfe3831_93120bce",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T16:03:03Z",
+      "side": 1,
+      "message": "If you\u0027re happy for me to clean this up as a follow up as described above which will delete this I\u0027ll leave this for now. Otherwise, your suggestion sounds much better.",
+      "parentUuid": "4a1d0120_d674a7b2",
       "range": {
         "startLine": 414,
         "startChar": 5,
