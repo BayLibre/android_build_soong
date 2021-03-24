@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0459f655_0f16f632",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-24T06:33:32Z",
+      "side": 1,
+      "message": "Would be useful to have more info here\n\nE.g. Value and ArchValues are both optional ?\n\nE.g. The effective value becomes Value ++ ArchValue[arch] ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99a7cea1_2dcc6798",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-24T06:33:32Z",
+      "side": 1,
+      "message": "How is default used in practice? (the tests don\u0027t seem to use it)",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 33
+      },
+      "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9813ad_95da8cf2",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-24T06:33:32Z",
+      "side": 1,
+      "message": "Maybe we should have a makeLabelListAttribute() function instead of directly changing the .Value field so many times?",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 74
+      },
+      "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
