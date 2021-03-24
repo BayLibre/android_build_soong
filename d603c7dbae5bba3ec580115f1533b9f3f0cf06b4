@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d6443b2_214c7e6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-24T15:52:29Z",
+      "side": 1,
+      "message": "Oops, thanks. I guess I need to find a font with more difference between . and ,.",
+      "revId": "d603c7dbae5bba3ec580115f1533b9f3f0cf06b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
