@@ -16,6 +16,7 @@ package bazel
 
 import (
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"sort"
 )
@@ -45,6 +46,33 @@ type Label struct {
 type LabelList struct {
 	Includes []Label
 	Excludes []Label
+}
+
+func (ll *LabelList) LooseHdrsGlobs() []string {
+	parentDirs := ll.uniqueParentDirectories()
+
+	globs := []string{}
+	for _, dir := range parentDirs {
+		if dir == "." {
+			globs = append(globs, "*.h")
+		} else {
+			globs = append(globs, dir+"/*.h")
+		}
+	}
+	return globs
+}
+
+func (ll *LabelList) uniqueParentDirectories() []string {
+	dirMap := map[string]bool{}
+	for _, label := range ll.Includes {
+		dirMap[filepath.Dir(label.Label)] = true
+	}
+
+	dirs := []string{}
+	for dir := range dirMap {
+		dirs = append(dirs, dir)
+	}
+	return dirs
 }
 
 // Append appends the fields of other labelList to the corresponding fields of ll.
@@ -222,6 +250,24 @@ type LabelListAttribute struct {
 // MakeLabelListAttribute initializes a LabelListAttribute with the non-arch specific value.
 func MakeLabelListAttribute(value LabelList) LabelListAttribute {
 	return LabelListAttribute{Value: UniqueBazelLabelList(value)}
+}
+
+func (attrs *LabelListAttribute) Append(other LabelListAttribute) {
+	for arch := range PlatformArchMap {
+		this := attrs.GetValueForArch(arch)
+		that := other.GetValueForArch(arch)
+		this.Append(that)
+		attrs.SetValueForArch(arch, this)
+	}
+
+	for os := range PlatformOsMap {
+		this := attrs.GetValueForOS(os)
+		that := other.GetValueForOS(os)
+		this.Append(that)
+		attrs.SetValueForOS(os, this)
+	}
+
+	attrs.Value.Append(other.Value)
 }
 
 // HasArchSpecificValues returns true if the attribute contains

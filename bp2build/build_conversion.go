@@ -378,7 +378,7 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 		// generated BUILD files are syntactically correct.
 		switch propertyValue.Kind() {
 		case reflect.Slice:
-			return "[]", nil
+			return "", nil
 		case reflect.Map:
 			return "{}", nil
 		default:
@@ -397,6 +397,10 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 	case reflect.Ptr:
 		return prettyPrint(propertyValue.Elem(), indent)
 	case reflect.Slice:
+		if propertyValue.Len() == 0 {
+			return "", nil
+		}
+
 		ret = "[\n"
 		for i := 0; i < propertyValue.Len(); i++ {
 			indexedValue, err := prettyPrint(propertyValue.Index(i), indent+1)

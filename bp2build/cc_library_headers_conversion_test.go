@@ -278,7 +278,7 @@ cc_library_headers {
     name = "exported-lib",
 )`, `cc_library_headers(
     name = "foo_headers",
-    deps = [] + select({
+    deps = select({
         "//build/bazel/platforms/os:android": [
             ":android-lib",
             ":exported-lib",
