@@ -211,6 +211,98 @@ func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library", LibraryFactory)
 	ctx.RegisterModuleType("cc_library_host_static", LibraryHostStaticFactory)
 	ctx.RegisterModuleType("cc_library_host_shared", LibraryHostSharedFactory)
+
+	android.RegisterBp2BuildMutator("cc_library", CcLibrarySharedBp2Build)
+}
+
+// For bp2build conversion.
+type bazelCcLibraryAttributes struct {
+	Srcs                   bazel.LabelListAttribute
+	Deps                   bazel.LabelListAttribute
+	Copts                  bazel.StringListAttribute
+	Linkopts               bazel.StringListAttribute
+	Export_deps            bazel.LabelListAttribute
+	Transitive_export_deps bazel.StringListAttribute // should be LabelListAttribute
+	User_link_flags        bazel.StringListAttribute
+}
+
+type bazelCcLibrary struct {
+	android.BazelTargetModuleBase
+	bazelCcLibraryAttributes
+}
+
+func (m *bazelCcLibrary) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelCcLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
+
+func BazelCcLibraryFactory() android.Module {
+	module := &bazelCcLibrary{}
+	module.AddProperties(&module.bazelCcLibraryAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func CcLibrarySharedBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	if ctx.ModuleType() != "cc_library" {
+		return
+	}
+
+	var copts bazel.StringListAttribute
+	var srcs bazel.LabelListAttribute
+	for _, props := range m.compiler.compilerProps() {
+		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
+			copts.Value = baseCompilerProps.Cflags
+			srcs.Value = android.BazelLabelForModuleSrcExcludes(ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
+			break
+		}
+	}
+
+	var deps bazel.LabelListAttribute
+	var linkopts bazel.StringListAttribute
+	for _, props := range m.linker.linkerProps() {
+		if linkerProps, ok := props.(*BaseLinkerProperties); ok {
+			deps.Value = bazel.UniqueBazelLabelList(android.BazelLabelForModuleDeps(ctx, linkerProps.Header_libs))
+			linkopts.Value = linkerProps.Ldflags
+		}
+	}
+
+	for arch, p := range m.GetArchProperties(&BaseLinkerProperties{}) {
+		if props, ok := p.(*BaseLinkerProperties); ok {
+			linkopts.SetValueForArch(arch.Name, props.Ldflags)
+		}
+	}
+	linkopts.SetValueForArch("default", []string{})
+
+	attrs := &bazelCcLibraryAttributes{
+		Srcs:     srcs,
+		Deps:     deps,
+		Copts:    copts,
+		Linkopts: linkopts,
+		// TODO
+		Export_deps:            deps,
+		Transitive_export_deps: bazel.MakeStringListAttribute([]string{"//bionic/libc:libc_headers_arch"}),
+		User_link_flags:        bazel.MakeStringListAttribute([]string{}),
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "full_cc_library",
+		Bzl_load_location: "//build/bazel/rules:full_cc_library.bzl",
+	}
+
+	// sharedLibProps := bazel.BazelTargetModuleProperties{
+	// 	Rule_class:        "cc_shared_library",
+	// 	Bzl_load_location: "//build/bazel/rules:cc_shared_library.bzl",
+	// }
+
+	ctx.CreateBazelTargetModule(BazelCcLibraryFactory, m.Name(), props, attrs)
+	// ctx.CreateBazelTargetModule(BazelCcLibraryFactory, m.Name()+"_shared", sharedLibProps, attrs)
 }
 
 // cc_library creates both static and/or shared libraries for a device and/or
