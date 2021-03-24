@@ -16,6 +16,24 @@
       "message": "Wrong import statement position",
       "revId": "df9694ac375b4b8eafca51ee69778063d9f0f0ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f1d813_bde25e60",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-24T01:08:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2322120f_0898874c",
+      "revId": "df9694ac375b4b8eafca51ee69778063d9f0f0ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
