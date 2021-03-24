@@ -79,19 +79,38 @@ func UniqueBazelLabelList(originalLabelList LabelList) LabelList {
 	return uniqueLabelList
 }
 
-const (
-	ARCH_X86    = "x86"
-	ARCH_X86_64 = "x86_64"
-	ARCH_ARM    = "arm"
-	ARCH_ARM64  = "arm64"
-)
-
 var (
 	// This is the list of architectures with a Bazel config_setting and
 	// constraint value equivalent. is actually android.ArchTypeList, but the
 	// android package depends on the bazel package, so a cyclic dependency
 	// prevents using that here.
 	selectableArchs = []string{ARCH_X86, ARCH_X86_64, ARCH_ARM, ARCH_ARM64}
+
+	// Likewise, this is the list of target operating systems.
+	selectableTargetOs = []string{
+		OS_ANDROID,
+		OS_DARWIN,
+		OS_FUCHSIA,
+		OS_LINUX,
+		OS_LINUX_BIONIC,
+		OS_WINDOWS,
+	}
+)
+
+const (
+	// ArchType names in arch.go
+	ARCH_X86    = "x86"
+	ARCH_X86_64 = "x86_64"
+	ARCH_ARM    = "arm"
+	ARCH_ARM64  = "arm64"
+
+	// OsType names in arch.go
+	OS_ANDROID      = "android"
+	OS_DARWIN       = "darwin"
+	OS_FUCHSIA      = "fuchsia"
+	OS_LINUX        = "linux_glibc"
+	OS_LINUX_BIONIC = "linux_bionic"
+	OS_WINDOWS      = "windows"
 )
 
 // Arch-specific label_list typed Bazel attribute values. This should correspond
@@ -101,8 +120,16 @@ type labelListArchValues struct {
 	X86_64 LabelList
 	Arm    LabelList
 	Arm64  LabelList
-	// TODO(b/181299724): this is currently missing the "common" arch, which
-	// doesn't have an equivalent platform() definition yet.
+	Common LabelList
+}
+
+type labelListOsValues struct {
+	Android     LabelList
+	Darwin      LabelList
+	Fuchsia     LabelList
+	Linux       LabelList
+	LinuxBionic LabelList
+	Windows     LabelList
 }
 
 // LabelListAttribute is used to represent a list of Bazel labels as an
@@ -115,6 +142,11 @@ type LabelListAttribute struct {
 	// are generated in a select statement and appended to the non-arch specific
 	// label list Value.
 	ArchValues labelListArchValues
+
+	// The os-specific attribute label list values. Optional. If used, these
+	// are generated in a select statement and appended to the non-os specific
+	// label list Value.
+	OsValues labelListOsValues
 }
 
 // MakeLabelListAttribute initializes a LabelListAttribute with the non-arch specific value.
@@ -126,43 +158,76 @@ func MakeLabelListAttribute(value LabelList) LabelListAttribute {
 // architecture-specific label_list values.
 func (attrs *LabelListAttribute) HasArchSpecificValues() bool {
 	for _, arch := range selectableArchs {
-		if len(attrs.GetValueForArch(arch).Includes) > 0 || len(attrs.GetValueForArch(arch).Excludes) > 0 {
+		if len(attrs.GetValueForArch(arch).Includes) > 0 {
 			return true
 		}
 	}
 	return false
 }
 
+func (attrs *LabelListAttribute) archValuePtrs() map[string]*LabelList {
+	return map[string]*LabelList{
+		ARCH_X86:    &attrs.ArchValues.X86,
+		ARCH_X86_64: &attrs.ArchValues.X86_64,
+		ARCH_ARM:    &attrs.ArchValues.Arm,
+		ARCH_ARM64:  &attrs.ArchValues.Arm64,
+	}
+}
+
 // GetValueForArch returns the label_list attribute value for an architecture.
 func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
-	switch arch {
-	case ARCH_X86:
-		return attrs.ArchValues.X86
-	case ARCH_X86_64:
-		return attrs.ArchValues.X86_64
-	case ARCH_ARM:
-		return attrs.ArchValues.Arm
-	case ARCH_ARM64:
-		return attrs.ArchValues.Arm64
-	default:
+	var v *LabelList
+	if v = attrs.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
+	return *v
 }
 
 // SetValueForArch sets the label_list attribute value for an architecture.
 func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
-	switch arch {
-	case "x86":
-		attrs.ArchValues.X86 = value
-	case "x86_64":
-		attrs.ArchValues.X86_64 = value
-	case "arm":
-		attrs.ArchValues.Arm = value
-	case "arm64":
-		attrs.ArchValues.Arm64 = value
-	default:
+	var v *LabelList
+	if v = attrs.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
+	*v = value
+}
+
+func (attrs *LabelListAttribute) osValuePtrs() map[string]*LabelList {
+	return map[string]*LabelList{
+		OS_ANDROID:      &attrs.OsValues.Android,
+		OS_DARWIN:       &attrs.OsValues.Darwin,
+		OS_FUCHSIA:      &attrs.OsValues.Fuchsia,
+		OS_LINUX:        &attrs.OsValues.Linux,
+		OS_LINUX_BIONIC: &attrs.OsValues.LinuxBionic,
+		OS_WINDOWS:      &attrs.OsValues.Windows,
+	}
+}
+
+func (attrs *LabelListAttribute) HasTargetSpecificValues() bool {
+	for _, os := range selectableTargetOs {
+		if len(attrs.GetValueForOS(os).Includes) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
+// GetValueForOS returns the label_list attribute value for an OS target.
+func (attrs *LabelListAttribute) GetValueForOS(os string) LabelList {
+	var v *LabelList
+	if v = attrs.osValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	return *v
+}
+
+// SetValueForArch sets the label_list attribute value for an OS target.
+func (attrs *LabelListAttribute) SetValueForOS(os string, value LabelList) {
+	var v *LabelList
+	if v = attrs.osValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	*v = value
 }
 
 // StringListAttribute corresponds to the string_list Bazel attribute type with
@@ -182,8 +247,7 @@ type stringListArchValues struct {
 	X86_64 []string
 	Arm    []string
 	Arm64  []string
-	// TODO(b/181299724): this is currently missing the "common" arch, which
-	// doesn't have an equivalent platform() definition yet.
+	Common []string
 }
 
 // HasArchSpecificValues returns true if the attribute contains
@@ -197,36 +261,31 @@ func (attrs *StringListAttribute) HasArchSpecificValues() bool {
 	return false
 }
 
+func (attrs *StringListAttribute) archValuePtrs() map[string]*[]string {
+	return map[string]*[]string{
+		ARCH_X86:    &attrs.ArchValues.X86,
+		ARCH_X86_64: &attrs.ArchValues.X86_64,
+		ARCH_ARM:    &attrs.ArchValues.Arm,
+		ARCH_ARM64:  &attrs.ArchValues.Arm64,
+	}
+}
+
 // GetValueForArch returns the string_list attribute value for an architecture.
 func (attrs *StringListAttribute) GetValueForArch(arch string) []string {
-	switch arch {
-	case ARCH_X86:
-		return attrs.ArchValues.X86
-	case ARCH_X86_64:
-		return attrs.ArchValues.X86_64
-	case ARCH_ARM:
-		return attrs.ArchValues.Arm
-	case ARCH_ARM64:
-		return attrs.ArchValues.Arm64
-	default:
+	var v *[]string
+	if v = attrs.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
+	return *v
 }
 
 // SetValueForArch sets the string_list attribute value for an architecture.
 func (attrs *StringListAttribute) SetValueForArch(arch string, value []string) {
-	switch arch {
-	case ARCH_X86:
-		attrs.ArchValues.X86 = value
-	case ARCH_X86_64:
-		attrs.ArchValues.X86_64 = value
-	case ARCH_ARM:
-		attrs.ArchValues.Arm = value
-	case ARCH_ARM64:
-		attrs.ArchValues.Arm64 = value
-	default:
+	var v *[]string
+	if v = attrs.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
+	*v = value
 }
 
 // TryVariableSubstitution, replace string substitution formatting within each string in slice with
