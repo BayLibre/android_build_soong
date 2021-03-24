@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9307500_29320a4b",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-24T19:25:10Z",
+      "side": 1,
+      "message": "should we add a test for additional rsp files being written as extra rules?",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 676,
+        "endChar": 55
+      },
+      "revId": "79450c85ff07c521ee4a4cf6d79ae6095f0292d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
