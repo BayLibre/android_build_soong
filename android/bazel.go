@@ -126,10 +126,12 @@ var (
 		"bionic":                Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out.
 	bp2buildModuleDoNotConvert = map[string]bool{
+		// cc_library_static
 		"libBionicBenchmarksUtils":      true,
 		"libbionic_spawn_benchmark":     true,
 		"libc_jemalloc_wrapper":         true,
@@ -169,6 +171,10 @@ var (
 		"liblinker_debuggerd_stub":      true,
 		"libbionic_tests_headers_posix": true,
 		"libc_dns":                      true,
+
+		// cc_library
+		"libc":              true,
+		"libseccomp_policy": true,
 	}
 )
 
