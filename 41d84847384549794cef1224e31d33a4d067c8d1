@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6998589d_4973be24",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T00:11:49Z",
+      "side": 1,
+      "message": "I don\u0027t think it is a good idea.\n\nThe reason why I added the map, enum and list was not to dedup the code inside CheckSnapshot but to avoid having to create separate methods to provide error handlers and checkers and track them separately.",
+      "parentUuid": "7c412446_f238bae6",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d53d7833_bae50237",
         "filename": "sdk/testing.go",
         "patchSetId": 8
