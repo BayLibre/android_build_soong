@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e11db7_2b9ba003",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1151,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T10:54:44Z",
+      "side": 1,
+      "message": "Grump, I was about to say that I hope it\u0027s not necessary because String() is hopefully only for the user\u0027s eyes, but it aqppears that that\u0027s not the case 😞",
+      "range": {
+        "startLine": 1151,
+        "startChar": 1,
+        "endLine": 1151,
+        "endChar": 16
+      },
+      "revId": "e5a49b6dd3fb51a78eec3d974de0aecd650de2a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
