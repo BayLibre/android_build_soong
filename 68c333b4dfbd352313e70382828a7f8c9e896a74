@@ -94,6 +94,30 @@
       },
       "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a8ce62_c560afcb",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T14:37:00Z",
+      "side": 1,
+      "message": "The best documentation about the bootstrap process is at go/simplifying-soong-bootstrap, although I haven\u0027t updated it since I cut out a big chunk of it.\n\nOh well, I guess I\u0027ll just remove srcDir after I have cut Soong even more loose of the GitHub Blueprint than repository than it already is.",
+      "parentUuid": "66dbda13_d0c2b1c2",
+      "range": {
+        "startLine": 973,
+        "startChar": 1,
+        "endLine": 973,
+        "endChar": 14
+      },
+      "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
