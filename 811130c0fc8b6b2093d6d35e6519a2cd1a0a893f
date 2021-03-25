@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca2e1b1b_9d401974",
+        "filename": "java/droidstubs_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-25T17:34:10Z",
+      "side": 1,
+      "message": "This ↓",
+      "revId": "811130c0fc8b6b2093d6d35e6519a2cd1a0a893f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
