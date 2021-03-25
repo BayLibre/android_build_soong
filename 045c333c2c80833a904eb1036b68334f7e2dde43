@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cce743_0f71072f",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T10:58:38Z",
+      "side": 1,
+      "message": "My crystal ball says that no one ever will obey this restriction unless it\u0027s enforced somehow.",
+      "range": {
+        "startLine": 178,
+        "startChar": 64,
+        "endLine": 178,
+        "endChar": 96
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7d1268_1d761466",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T10:58:38Z",
+      "side": 1,
+      "message": "You mean specifically \"out/\" string?\n\nIn this case, it\u0027s dangerous because it works well in the default case when $OUT_DIR is not set but fail miserably when one does set $OUT_DIR. \n\nHow about adding a helper method instead that is called, dunno, CanonicalPathForTesting() whose receiver is one of the objects that only tests have access to?",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 32
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
