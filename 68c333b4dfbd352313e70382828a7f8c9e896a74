@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c3a0618_889057a0",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T10:50:29Z",
+      "side": 1,
+      "message": "What is this for? On the surface, srcDir should be propagated to as few places as possible since Soong\u0027s inner workings are in principle independent of what it is.\n\n(it\u0027s also always \".\" in production IIRC)",
+      "range": {
+        "startLine": 973,
+        "startChar": 1,
+        "endLine": 973,
+        "endChar": 14
+      },
+      "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
