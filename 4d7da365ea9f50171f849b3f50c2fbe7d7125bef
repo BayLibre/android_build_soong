@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "285cd02a_20af4331",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-03-25T00:54:30Z",
+      "side": 1,
+      "message": "we shouldn\u0027t add this to the VNDK (and we shouldn\u0027t allow it to be used by vendor either)\n\nBtw - I\u0027m curious - could the system service use and register the same exact type as the AIDL HAL uses?\n\nNote https://android-review.googlesource.com/c/platform/frameworks/native/+/1649815\n\nIt isn\u0027t supported in the NDK yet, but you could add and register the same exact interface",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "4d7da365ea9f50171f849b3f50c2fbe7d7125bef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
