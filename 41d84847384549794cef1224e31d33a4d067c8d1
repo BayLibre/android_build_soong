@@ -406,6 +406,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d01ba8e3_db00be43",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T12:54:04Z",
+      "side": 1,
+      "message": "I was too quick with the Done button.\n\nOk, so I think I understand where you are coming from. Data driven tests, at least ones that are driven by structs like this are not very nice because errors just link to the common code and not the specific test. They also don\u0027t work well with Intellij IDE (do you use that for go work) as the sub tests can\u0027t be individually rerun as they don\u0027t link back to a specific t.Run call.\n\nReally done now.",
+      "parentUuid": "8c7e3440_d2fd5890",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d53d7833_bae50237",
