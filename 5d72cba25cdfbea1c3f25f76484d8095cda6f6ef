@@ -52,6 +52,23 @@
       "parentUuid": "ab25b55d_7ac2d9a9",
       "revId": "5d72cba25cdfbea1c3f25f76484d8095cda6f6ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719e6ed1_3236f17a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-25T15:02:43Z",
+      "side": 1,
+      "message": "Bypassing presubmits for flaky/already failing tests.",
+      "revId": "5d72cba25cdfbea1c3f25f76484d8095cda6f6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
