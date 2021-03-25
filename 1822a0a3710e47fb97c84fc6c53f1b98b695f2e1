@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74516dbf_03a65979",
+        "filename": "sdk/testing.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T15:58:59Z",
+      "side": 1,
+      "message": "One thing we could do here is check that ReplaceAll did replace something, i.e. that the result isn\u0027t equal to the input. It\u0027s weak but better than nothing.\n\nAt this point though I think that\u0027s better done in a follow-up.",
+      "revId": "1822a0a3710e47fb97c84fc6c53f1b98b695f2e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
