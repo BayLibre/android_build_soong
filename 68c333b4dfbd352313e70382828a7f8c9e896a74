@@ -70,6 +70,30 @@
       },
       "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66dbda13_d0c2b1c2",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T14:33:23Z",
+      "side": 1,
+      "message": "Wow, I stopped at the command line arg. Is there any documentation of that bootstrap flow?\n\nWhile it is effectively constant I don\u0027t think there is any point in treating it as a constant here while leaving all the rest of the code in as it opens up the possibility that someone could try and use a different srcDir in future which would cause all sorts of problems.\n\nIt seems unlikely (as the chances are that something somewhere will break if it is set to something other than \".\") but it is possible that some customer somewhere has modified the build in some way to use a different srcDir.\n\nRemoving the srcDir everywhere has the potential to cause problems so I don\u0027t think this change should be delayed until that is fixed. Adding this here won\u0027t make removing the srcDir everywhere harder.\n\nFTR I don\u0027t have the time to cleanup the srcDir references in the rest of the code. Although that certainly sounds like a worthy cause.",
+      "parentUuid": "e07cf321_03494500",
+      "range": {
+        "startLine": 973,
+        "startChar": 1,
+        "endLine": 973,
+        "endChar": 14
+      },
+      "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
