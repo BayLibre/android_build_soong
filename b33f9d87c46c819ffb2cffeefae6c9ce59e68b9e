@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06db377_9b07f1b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-25T22:25:08Z",
+      "side": 1,
+      "message": "This was fixed in https://android-review.googlesource.com/c/platform/build/soong/+/1652836, but only just spotted the typo.",
+      "revId": "b33f9d87c46c819ffb2cffeefae6c9ce59e68b9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
