@@ -111,6 +111,30 @@
       },
       "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b859ee_5ee05588",
+        "filename": "bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-25T10:00:10Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "bdbfa429_44308660",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "75b7ebd8eb53ad9ef146a7574cadab2eba7ec37a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
