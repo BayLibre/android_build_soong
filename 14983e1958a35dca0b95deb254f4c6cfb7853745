@@ -34,6 +34,24 @@
       "parentUuid": "aed5bbc1_c46317bc",
       "revId": "14983e1958a35dca0b95deb254f4c6cfb7853745",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ee1e89_28138062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T13:34:34Z",
+      "side": 1,
+      "message": "Just like the public API has old versions available in prebuilts/sdk/\u003cversion\u003e each sdk can have a snapshot containing versioned modules, e.g. `name: \"....@\u003cversion\u003e\"`. Those will be maintained alongside the current development so modules can build against earlier APIs. There is a lot of work to do yet but this is the plan. ATM we can only create an \"@current\" version.",
+      "parentUuid": "ccc92059_4df08ef8",
+      "revId": "14983e1958a35dca0b95deb254f4c6cfb7853745",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
