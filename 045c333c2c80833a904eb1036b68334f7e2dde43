@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "585aa0e8_1ca5ebb0",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T12:19:15Z",
+      "side": 1,
+      "message": "I suspect that you might be right. There are a few ways we can enforce this:\n\n1. Add a PREUPLOAD.cfg check which restricts the files this can be used to tests, testing.go files and a limited number of others. ATM that list is just:\n* android/test_asserts.go\n\nThe disadvantage of this approach is that it won\u0027t detect indirect call.\n\n2. Add some way to identify \"in a test\" and have it fail if that is not set. This would most likely need to modify the boilerplate to call a common function to run the tests that sets a global variable.\n\n3. Rename it to \"RelativeToTopForTestsOnlyPleaseDontUseElsewhere\" which might just work ;)",
+      "parentUuid": "d7cce743_0f71072f",
+      "range": {
+        "startLine": 178,
+        "startChar": 64,
+        "endLine": 178,
+        "endChar": 96
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd7d1268_1d761466",
         "filename": "android/paths.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-25T10:58:38Z",
       "side": 1,
       "message": "You mean specifically \"out/\" string?\n\nIn this case, it\u0027s dangerous because it works well in the default case when $OUT_DIR is not set but fail miserably when one does set $OUT_DIR. \n\nHow about adding a helper method instead that is called, dunno, CanonicalPathForTesting() whose receiver is one of the objects that only tests have access to?",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 32
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f6f630_06af063a",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T12:19:15Z",
+      "side": 1,
+      "message": "I\u0027ve done that in a couple of places, NormalizePathForTesting, AssertPathRelativeToTopEquals, .... and it always results in a lot of noise in tests.\n\nAll this work on paths is to allow me to fix TestingBuildParams (which is a test only class) so that it always uses relative paths which would eliminate 90% of the noise in tests (there are other places they can get an absolute Path).\n\nBy dangerous you mean in the case when someone accidentally uses this in production code it will work in normal builds but break when OUT_DIR is set? I think that will be detected in presubmit. However, preventing its use outside tests would avoid that.",
+      "parentUuid": "cd7d1268_1d761466",
       "range": {
         "startLine": 191,
         "startChar": 6,
