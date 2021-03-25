@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7beeba3_512dea92",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-25T14:58:56Z",
+      "side": 1,
+      "message": "Good point! Let me take a step back and think about this. It\u0027s definitely starting to get tedious with the manual property to attr mapping.",
+      "parentUuid": "d89fd966_f8d82dce",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 113
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9d5d61d_b4bac05d",
         "filename": "cc/object.go",
         "patchSetId": 6
