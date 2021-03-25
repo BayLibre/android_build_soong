@@ -34,6 +34,24 @@
       "parentUuid": "3331501c_3e29f096",
       "revId": "5d72cba25cdfbea1c3f25f76484d8095cda6f6ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5edb88ae_5f8eadbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-25T10:59:30Z",
+      "side": 1,
+      "message": "Update:\n\nbazel build //bionic/...\n...\nNFO: Analyzed 62 targets (46 packages loaded, 1933 targets configured).\nINFO: Found 62 targets...\nINFO: Elapsed time: 9.168s, Critical Path: 0.32s\nINFO: 53 processes: 11 internal, 42 linux-sandbox.\nINFO: Build completed successfully, 53 total actions\n\nI think the issue is that I regularly run m clean, but that deletes the bp2build manifest, so bp2build-sync.py doesn\u0027t know which BUILD files to remove",
+      "parentUuid": "ab25b55d_7ac2d9a9",
+      "revId": "5d72cba25cdfbea1c3f25f76484d8095cda6f6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
