@@ -52,6 +52,24 @@
       "parentUuid": "707c9c20_a9c06ff2",
       "revId": "f56d5c4c4a339192b3711859b54bfd52240ebfab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02b15c21_90f0573c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T14:39:27Z",
+      "side": 1,
+      "message": "Ok. I know the Provider model was created to be more similar to Bazel and I know the structs stored in there, e.g. ApexInfo, contain a lot of Paths and are also supposed to be persisted. A pointer to a massive Config structure is a bit harder to persist than a simple string. So, I was wondering if that would benefit the migration to Bazel or maybe it would just Colin\u0027s work to improve incremental builds.",
+      "parentUuid": "6f3d586c_43586cdf",
+      "revId": "f56d5c4c4a339192b3711859b54bfd52240ebfab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
