@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c024bb23_e208d2d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T02:28:51Z",
+      "side": 1,
+      "message": "Tests TBD, but can you PTAL if the approach is ok?\n\n(I still have problems adding test_for where they\u0027re needed, because the AddFarVariationDependencies calls to register the test_for dependencies often don\u0027t succeed, e.g. in host builds it tries to depend on com.android.art{os:linux_glibc,arch:common} which we don\u0027t have. Maybe test_for should be arch_variant?)",
+      "revId": "0098d24b4df3e1bea2f4ec49b77c84953261b3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
