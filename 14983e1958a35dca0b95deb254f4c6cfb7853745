@@ -16,6 +16,24 @@
       "message": "Mathew, can you confirm that the platform_compat_config_singleton does not need access to the historical versions of platform_compat_config.",
       "revId": "14983e1958a35dca0b95deb254f4c6cfb7853745",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccc92059_4df08ef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-03-25T12:57:25Z",
+      "side": 1,
+      "message": "What are the historical versions? I\u0027m not aware of such a thing",
+      "parentUuid": "aed5bbc1_c46317bc",
+      "revId": "14983e1958a35dca0b95deb254f4c6cfb7853745",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
