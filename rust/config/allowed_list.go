@@ -23,6 +23,7 @@ var (
 		"system/extras/simpleperf",
 		"system/hardware/interfaces/keystore2",
 		"system/security",
+		"system/logging/rust",
 		"system/tools/aidl",
 	}
 
