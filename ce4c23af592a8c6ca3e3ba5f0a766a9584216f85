@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ae626a_d5c2f64a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-25T09:26:42Z",
+      "side": 1,
+      "message": "Can\u0027t submit this yet - need a module name allowlist first",
+      "revId": "ce4c23af592a8c6ca3e3ba5f0a766a9584216f85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
