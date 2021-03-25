@@ -16,6 +16,24 @@
       "message": "This loses the dependency on the runtime library.  Maybe that\u0027s OK, since the runtime library isn\u0027t going to change for most people without the compiler path changing.  The dependency file feature tracked in b/137961579 would recover it.",
       "revId": "c5993b2c9d45aaef7df6c369c2443a868afe696a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b733513f_660c2c32",
+        "filename": "cc/pgo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-03-25T17:57:43Z",
+      "side": 0,
+      "message": "Ack.  Yes, b/137961579 should recover this behavior.",
+      "parentUuid": "5e72370f_9d947686",
+      "revId": "c5993b2c9d45aaef7df6c369c2443a868afe696a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
