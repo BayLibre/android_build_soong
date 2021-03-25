@@ -22,6 +22,30 @@
       },
       "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25798407_9af2f3b3",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T12:23:39Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what you\u0027re asking.\n\nIf you\u0027re asking why SourcePath depends on Config.srcDir at all I don\u0027t know. I traced it back and it is the first argument passed to cmd.soong_build.main. So, it is possible this could be something other than \".\"\n\nIf you\u0027re asking why I have added the field to SourcePath it is simply to maintain functionality.",
+      "parentUuid": "0c3a0618_889057a0",
+      "range": {
+        "startLine": 973,
+        "startChar": 1,
+        "endLine": 973,
+        "endChar": 14
+      },
+      "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
