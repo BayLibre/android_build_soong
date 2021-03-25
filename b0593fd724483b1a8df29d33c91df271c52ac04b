@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "04d17de5_072c29b0",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-25T21:06:23Z",
+      "side": 1,
+      "message": "It could use inputLocation{srcFiles}.Paths(cmd), but it can\u0027t use locationLabels because there is no entry for \"in\".  I could insert a placeholder entry, making sure it didn\u0027t conflict with any possible real entries, but I don\u0027t think that adds much value.",
+      "parentUuid": "6d38537c_e0215a1a",
+      "range": {
+        "startLine": 434,
+        "startChar": 43,
+        "endLine": 434,
+        "endChar": 51
+      },
+      "revId": "b0593fd724483b1a8df29d33c91df271c52ac04b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "97f97cfe_c4bfc9c2",
         "filename": "genrule/genrule.go",
         "patchSetId": 2
