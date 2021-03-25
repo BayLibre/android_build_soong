@@ -167,6 +167,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac7173a_c3c2f133",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T10:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21abb47c_a7e4fbf6",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c66fae74_bce3a189",
@@ -334,6 +358,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6dc3758_c29db605",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T10:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "781e659d_29f6bf10",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d53d7833_bae50237",
@@ -490,6 +538,54 @@
       "side": 1,
       "message": "As discussed above I think this approach is fine and this struct should stay, and hence a name change would be welcome.",
       "parentUuid": "4dfe3831_93120bce",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db475615_d7bdbc82",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T10:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a212242_c3a13c22",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea385b1_92712cd4",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T10:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a212242_c3a13c22",
       "range": {
         "startLine": 414,
         "startChar": 5,

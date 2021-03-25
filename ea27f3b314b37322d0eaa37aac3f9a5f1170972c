@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b407512b_639ca00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T10:31:59Z",
+      "side": 1,
+      "message": "I think I\u0027ve done everything you asked, not quite what you suggested but hopefully a lot clearer (and less verbose).",
+      "revId": "ea27f3b314b37322d0eaa37aac3f9a5f1170972c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
