@@ -104,6 +104,24 @@
       "message": "Did my last comment answer your question?",
       "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3dce76_7892e907",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-25T17:10:51Z",
+      "side": 1,
+      "message": "I\u0027m ambivalent, I don\u0027t really see the difference between sdk_version and min_sdk_version for a module like the crt objects.  They don\u0027t link against anything, and it\u0027s normal to default min_sdk_version to sdk_version.",
+      "parentUuid": "8d969603_e6e0bab9",
+      "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
