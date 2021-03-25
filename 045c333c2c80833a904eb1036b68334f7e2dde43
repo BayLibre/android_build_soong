@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b274b96c_0c067e05",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T13:29:36Z",
+      "side": 1,
+      "message": "Testing objects that are shared typically live in testing.go files and they are still visible to runtime code.\n\nI have updated this with a proof of concept check that detects when run outside the test environment. A bit hacky as it checks command line args but it seems as though this is a `standard` way of detecting the test environment.",
+      "parentUuid": "1122ac4f_e8249ede",
+      "range": {
+        "startLine": 178,
+        "startChar": 64,
+        "endLine": 178,
+        "endChar": 96
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd7d1268_1d761466",
         "filename": "android/paths.go",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "Yep, that\u0027s the exact scenario I\u0027m worried about: that Soong works differently when OUT_DIR is set than when it\u0027s not. Presubmits are not enough, because they can only show the presence of a bug, but not an absence of them and I\u0027d rather we not open ourselves up to subtle behavior differences depending on whether $OUT_DIR is set or not.\n\nIt would be nice if there was an object testing code (but only testing code) had access to which could house this method. I\u0027m afraid I\u0027m not familiar enough with the testing framework to suggest how that could be achieved 😞",
       "parentUuid": "c9f6f630_06af063a",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 32
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4fef210_f5028784",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T13:29:36Z",
+      "side": 1,
+      "message": "The TestContext (TestResult) objects are the best place for those. They return TestingModule/TestingSingleton objects (amongst others), which in turn can return TestingBuildParams objects. A follow up change uses the functionality added in this to fix those objects up so they always return \u0027relative to top\u0027 paths.",
+      "parentUuid": "1b58529d_ed7524ae",
       "range": {
         "startLine": 191,
         "startChar": 6,
