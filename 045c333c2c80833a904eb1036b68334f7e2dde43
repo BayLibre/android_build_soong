@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1877167_0cabc8cc",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T13:31:16Z",
+      "side": 1,
+      "message": "AFAIK there is no \"place that all tests execute before they run\". However, it would not be too difficult to create one. e.g. just find every call to \"m.Run()\" and replace with \"runTestWrapper(m)\" that calls \"m.Run()\".",
+      "parentUuid": "b274b96c_0c067e05",
+      "range": {
+        "startLine": 178,
+        "startChar": 64,
+        "endLine": 178,
+        "endChar": 96
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd7d1268_1d761466",
         "filename": "android/paths.go",
         "patchSetId": 1
