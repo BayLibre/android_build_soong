@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6ccc05_bea3106b",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-25T04:47:21Z",
+      "side": 1,
+      "message": "Added a patch to the stack that converts to a slice.",
+      "parentUuid": "425b9de2_26ba411d",
+      "range": {
+        "startLine": 658,
+        "startChar": 15,
+        "endLine": 658,
+        "endChar": 22
+      },
+      "revId": "7d8665f022d61180e6b15364d44d592ce9f5678a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e3317c9_366f38a2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-24T19:17:03Z",
       "side": 1,
       "message": "the portion of the description of the CL as to why we\u0027re changing to \"$in\" would also be helpful as a comment here",
+      "range": {
+        "startLine": 678,
+        "startChar": 2,
+        "endLine": 678,
+        "endChar": 24
+      },
+      "revId": "7d8665f022d61180e6b15364d44d592ce9f5678a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "180a2cca_b725ef69",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-25T04:47:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e3317c9_366f38a2",
       "range": {
         "startLine": 678,
         "startChar": 2,
