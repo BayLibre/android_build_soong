@@ -46,6 +46,30 @@
       },
       "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e07cf321_03494500",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T14:24:35Z",
+      "side": 1,
+      "message": "I traced it back, too! The way this works is that the command line of soong_build is synthesized here:\n\nhttp://cs/android/build/blueprint/bootstrap/bootstrap.go?l\u003d147\u0026rcl\u003d21ed91031a83188ca958d491f030759490b0bbf7\n\n${in} is Args[0], which comes from here:\n\nhttp://cs/android/build/blueprint/bootstrap/bootstrap.go?l\u003d771\u0026rcl\u003d21ed91031a83188ca958d491f030759490b0bbf7\n\nwhich comes from $srcDir and Config.topLevelBlueprintsFile:\n\nhttp://cs/android/build/blueprint/bootstrap/bootstrap.go?l\u003d748\u0026rcl\u003debdebb4fb3cc52561bf687b92d5115b3a9cc74ac\n\nConfig.topLevelBlueprintsFile is itself set here:\n\nhttp://cs/android/build/blueprint/bootstrap/command.go?l\u003d159\u0026rcl\u003d21ed91031a83188ca958d491f030759490b0bbf7\n\nThen here:\n\nhttp://cs/android/build/soong/ui/build/soong.go?l\u003d100\u0026rcl\u003d21ed91031a83188ca958d491f030759490b0bbf7\n\nto a constant \"Android.bp\"\n\n$srcDir comes from here:\n\nhttp://cs/android/build/blueprint/bootstrap/config.go?l\u003d42\u0026rcl\u003debdebb4fb3cc52561bf687b92d5115b3a9cc74ac\n\nand c.srcDir is set here:\n\nhttp://cs/android/build/soong/ui/build/soong.go?l\u003d75\u0026rcl\u003debdebb4fb3cc52561bf687b92d5115b3a9cc74ac\n\nto \".\"\n\nso Args[0] will be \"./Android.bp\" and Dir(Args[0]) will just be \".\" .\n\nIn the light of this, it doesn\u0027t look very useful to plumb a constant value even further, so just remove it?",
+      "parentUuid": "25798407_9af2f3b3",
+      "range": {
+        "startLine": 973,
+        "startChar": 1,
+        "endLine": 973,
+        "endChar": 14
+      },
+      "revId": "68c333b4dfbd352313e70382828a7f8c9e896a74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
