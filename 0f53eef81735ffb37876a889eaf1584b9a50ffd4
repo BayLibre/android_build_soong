@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c30851_e85abaeb",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T16:35:17Z",
+      "side": 1,
+      "message": "I personally file this under \"Go requires repetition, grump\". The list of architectures could be factored out, though.",
+      "parentUuid": "367893ea_fdb9e4ea",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bcee537b_6140f5c9",

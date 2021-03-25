@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0787ee8f_a6164303",
+        "filename": "bazel/properties.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T16:35:17Z",
+      "side": 1,
+      "message": "Drive-by non-blocker comment: what is this used for? IntelliJ is telling me that this is only ever used for computing other Excludes fields (in properties.go:{52,53,75}).",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "32b2f9eb0cddee9c93d3071b9db79e86198ee0a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

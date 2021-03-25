@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "857c8628_66626b23",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-25T16:35:17Z",
+      "side": 1,
+      "message": "I assume so (it\u0027s quite reasonable), but it certainly deserves a comment",
+      "parentUuid": "0459f655_0f16f632",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99a7cea1_2dcc6798",
         "filename": "bazel/properties.go",
         "patchSetId": 5
