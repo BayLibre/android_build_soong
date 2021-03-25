@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93dfbc97_438ccdbc",
+        "filename": "sdk/testing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T01:05:49Z",
+      "side": 1,
+      "message": "If you decide to keep checkSnapshotTestConfigurations then you can still get rid of allCheckSnapshotTestConfigurations by using android.SortedIntKeys(checkSnapshotTestConfigurations) here.",
+      "range": {
+        "startLine": 288,
+        "startChar": 35,
+        "endLine": 288,
+        "endChar": 69
+      },
+      "revId": "5a4923334c6a8705bc640252bd40ec813a470048",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

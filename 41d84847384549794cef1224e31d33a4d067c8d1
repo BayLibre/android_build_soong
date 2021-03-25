@@ -312,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "781e659d_29f6bf10",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T01:05:49Z",
+      "side": 1,
+      "message": "One doesn\u0027t imply the other: Do keep the testConfigurationCustomizations map in snapshotBuildInfo (but maybe rename it) and continue to look up the entries in it using the enum values. That doesn\u0027t require this being in a map as well.\n\nThe change would collect the logic for the three snapshot tests into the CheckSnapshot function, avoid the checkSnapshotTestConfigurationInfo struct which is confusingly similar to testConfigurationCustomization, and remove allCheckSnapshotTestConfigurations and checkSnapshotTestConfigurations from the global level where they really don\u0027t need to exist since their only use is inside CheckSnapshot.\n\nI hope I managed to explain my thought better now, but this isn\u0027t worth more back and forth so I\u0027ll leave it at this.",
+      "parentUuid": "6998589d_4973be24",
+      "range": {
+        "startLine": 218,
+        "startChar": 4,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d53d7833_bae50237",
         "filename": "sdk/testing.go",
         "patchSetId": 8
@@ -442,6 +466,30 @@
       "side": 1,
       "message": "If you\u0027re happy for me to clean this up as a follow up as described above which will delete this I\u0027ll leave this for now. Otherwise, your suggestion sounds much better.",
       "parentUuid": "4a1d0120_d674a7b2",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 35
+      },
+      "revId": "41d84847384549794cef1224e31d33a4d067c8d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a212242_c3a13c22",
+        "filename": "sdk/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-25T01:05:49Z",
+      "side": 1,
+      "message": "As discussed above I think this approach is fine and this struct should stay, and hence a name change would be welcome.",
+      "parentUuid": "4dfe3831_93120bce",
       "range": {
         "startLine": 414,
         "startChar": 5,
