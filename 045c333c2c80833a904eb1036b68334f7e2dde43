@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0128c47e_d7ccb361",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T18:07:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b7355658_0aa4c286",
+      "range": {
+        "startLine": 178,
+        "startChar": 64,
+        "endLine": 178,
+        "endChar": 96
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd7d1268_1d761466",
@@ -229,6 +253,30 @@
       "side": 1,
       "message": "The TestContext (TestResult) objects are the best place for those. They return TestingModule/TestingSingleton objects (amongst others), which in turn can return TestingBuildParams objects. A follow up change uses the functionality added in this to fix those objects up so they always return \u0027relative to top\u0027 paths.",
       "parentUuid": "1b58529d_ed7524ae",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 32
+      },
+      "revId": "045c333c2c80833a904eb1036b68334f7e2dde43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555050bb_edfc4bc2",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T18:07:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4fef210_f5028784",
       "range": {
         "startLine": 191,
         "startChar": 6,

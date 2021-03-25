@@ -16,6 +16,23 @@
       "message": "With ensureTestOnly(), I think this is good enough. I could imagine creative people working around that, but at that point, it\u0027s very deliberate and we can\u0027t defend against intentional sabotage.",
       "revId": "85d8f0dcd9c18922dca9d57070dd14e66cef34cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85285ea3_fb1389a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-25T18:07:09Z",
+      "side": 1,
+      "message": "Resolving comments.",
+      "revId": "85d8f0dcd9c18922dca9d57070dd14e66cef34cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
