@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d38537c_e0215a1a",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-25T17:18:34Z",
+      "side": 1,
+      "message": "nit: should in also be taking advantage of locationLabels? doesn\u0027t look like it\u0027ll have any impact,but would be more consistent with other replacements.",
+      "range": {
+        "startLine": 434,
+        "startChar": 43,
+        "endLine": 434,
+        "endChar": 51
+      },
+      "revId": "b0593fd724483b1a8df29d33c91df271c52ac04b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f97cfe_c4bfc9c2",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-25T17:18:34Z",
+      "side": 1,
+      "message": "nit: similarly here, should outs also be taking advantage of locationLabels?",
+      "range": {
+        "startLine": 438,
+        "startChar": 39,
+        "endLine": 438,
+        "endChar": 61
+      },
+      "revId": "b0593fd724483b1a8df29d33c91df271c52ac04b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
