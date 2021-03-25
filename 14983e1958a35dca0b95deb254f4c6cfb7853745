@@ -52,6 +52,24 @@
       "parentUuid": "ccc92059_4df08ef8",
       "revId": "14983e1958a35dca0b95deb254f4c6cfb7853745",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ae0310_ff3f8573",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-03-25T16:34:51Z",
+      "side": 1,
+      "message": "I see. I don\u0027t think they would be useful for compat config, we\u0027re only interesting the latest one. Thanks for clarifying!",
+      "parentUuid": "93ee1e89_28138062",
+      "revId": "14983e1958a35dca0b95deb254f4c6cfb7853745",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
