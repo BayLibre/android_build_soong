@@ -28,17 +28,29 @@ import (
 func init() {
 	RegisterBootImageBuildComponents(android.InitRegistrationContext)
 
+	// TODO(b/177892522): Remove after has been replaced by bootclasspath_fragments
 	android.RegisterSdkMemberType(&bootImageMemberType{
 		SdkMemberTypeBase: android.SdkMemberTypeBase{
 			PropertyName: "boot_images",
 			SupportsSdk:  true,
 		},
 	})
+
+	android.RegisterSdkMemberType(&bootImageMemberType{
+		SdkMemberTypeBase: android.SdkMemberTypeBase{
+			PropertyName: "bootclasspath_fragments",
+			SupportsSdk:  true,
+		},
+	})
 }
 
 func RegisterBootImageBuildComponents(ctx android.RegistrationContext) {
+	// TODO(b/177892522): Remove after has been replaced by bootclasspath_fragment
 	ctx.RegisterModuleType("boot_image", bootImageFactory)
 	ctx.RegisterModuleType("prebuilt_boot_image", prebuiltBootImageFactory)
+
+	ctx.RegisterModuleType("bootclasspath_fragment", bootImageFactory)
+	ctx.RegisterModuleType("prebuilt_bootclasspath_fragment", prebuiltBootImageFactory)
 }
 
 type bootImageContentDependencyTag struct {
@@ -252,7 +264,7 @@ func (b *bootImageMemberType) IsInstance(module android.Module) bool {
 }
 
 func (b *bootImageMemberType) AddPrebuiltModule(ctx android.SdkMemberContext, member android.SdkMember) android.BpModule {
-	return ctx.SnapshotBuilder().AddPrebuiltModule(member, "prebuilt_boot_image")
+	return ctx.SnapshotBuilder().AddPrebuiltModule(member, "prebuilt_bootclasspath_fragment")
 }
 
 func (b *bootImageMemberType) CreateVariantPropertiesStruct() android.SdkMemberProperties {

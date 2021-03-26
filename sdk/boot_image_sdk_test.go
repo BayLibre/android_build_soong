@@ -40,7 +40,7 @@ func TestSnapshotWithBootImage(t *testing.T) {
 		checkUnversionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
-prebuilt_boot_image {
+prebuilt_bootclasspath_fragment {
     name: "mybootimage",
     prefer: false,
     visibility: ["//visibility:public"],
@@ -51,7 +51,7 @@ prebuilt_boot_image {
 		checkVersionedAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
 
-prebuilt_boot_image {
+prebuilt_bootclasspath_fragment {
     name: "mysdk_mybootimage@current",
     sdk_member_name: "mybootimage",
     visibility: ["//visibility:public"],
@@ -90,7 +90,7 @@ func TestBasicSdkWithBootImage(t *testing.T) {
 			boot_images: ["mybootimage_mysdk_1"],
 		}
 
-		prebuilt_boot_image {
+		prebuilt_bootclasspath_fragment {
 			name: "mybootimage_mysdk_1",
 			sdk_member_name: "mybootimage",
 			prefer: false,

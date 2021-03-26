@@ -163,7 +163,7 @@ func checkBootImage(t *testing.T, result *android.TestResult, moduleName string,
 	android.AssertTrimmedStringEquals(t, "invalid paths for "+moduleName, expectedBootImageFiles, strings.Join(allPaths, "\n"))
 }
 
-func TestBootImageInArtApex(t *testing.T) {
+func TestBootclasspathFragmentInArtApex(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithBootImage,
 		prepareForTestWithArtApex,
@@ -174,11 +174,11 @@ func TestBootImageInArtApex(t *testing.T) {
 		apex {
 			name: "com.android.art",
 			key: "com.android.art.key",
-			boot_images: [
-				"mybootimage",
+			bootclasspath_fragments: [
+				"mybootclasspath_fragment",
 			],
 			// bar (like foo) should be transitively included in this apex because it is part of the
-			// mybootimage boot_image. However, it is kept here to ensure that the apex dedups the files
+			// mybootclasspath_fragment boot_image. However, it is kept here to ensure that the apex dedups the files
 			// correctly.
 			java_libs: [
 				"bar",
@@ -211,7 +211,7 @@ func TestBootImageInArtApex(t *testing.T) {
 		}
 
 		boot_image {
-			name: "mybootimage",
+			name: "mybootclasspath_fragment",
 			image_name: "art",
 			apex_available: [
 				"com.android.art",
@@ -220,7 +220,7 @@ func TestBootImageInArtApex(t *testing.T) {
 
 		// Make sure that a preferred prebuilt doesn't affect the apex.
 		prebuilt_boot_image {
-			name: "mybootimage",
+			name: "mybootclasspath_fragment",
 			image_name: "art",
 			prefer: true,
 			apex_available: [
@@ -249,7 +249,7 @@ func TestBootImageInArtApex(t *testing.T) {
 	java.CheckModuleDependencies(t, result.TestContext, "com.android.art", "android_common_com.android.art_image", []string{
 		`bar`,
 		`com.android.art.key`,
-		`mybootimage`,
+		`mybootclasspath_fragment`,
 	})
 }
 
