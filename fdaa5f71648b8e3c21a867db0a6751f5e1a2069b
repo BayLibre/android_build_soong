@@ -122,6 +122,24 @@
       "parentUuid": "8d969603_e6e0bab9",
       "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccaaec23_01f2498b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-26T08:07:12Z",
+      "side": 1,
+      "message": "Yes, you are right. But clearly distinguishing min_sdk_version and sdk_version throughout Soong is one of my goals in b/175678607. Like Android Studio, I\u0027d like to make min_sdk_version mandatory, while making sdk_version an optional one which defaults to \"current\". In that situation, min_sdk_version defaulting to sdk_version would be undesirable.",
+      "parentUuid": "9a3dce76_7892e907",
+      "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
