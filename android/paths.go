@@ -1646,12 +1646,16 @@ func ensureTestOnly() {
 	if InList("-test.short", os.Args) {
 		return
 	}
+	// "go test" command line
+	if PrefixInList(os.Args, "-test.testlogfile=") {
+		return
+	}
 	// IntelliJ test environment
 	if InList("-test.v", os.Args) {
 		return
 	}
 
-	panic(fmt.Errorf("Not in test\n%s", strings.Join(os.Args, "\n")))
+	panic(fmt.Errorf("Not in test. Command line:\n  %s", strings.Join(os.Args, "\n  ")))
 }
 
 func (p InstallPath) RelativeToTop() Path {
