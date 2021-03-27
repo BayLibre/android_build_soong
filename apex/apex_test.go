@@ -6932,6 +6932,51 @@ func TestIndirectTestFor(t *testing.T) {
 	ensureLinkedLibIs("myprivlib", "android_arm64_armv8-a_shared", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared/mylib.so")
 }
 
+func TestTestForForLibInOtherApex(t *testing.T) {
+	_ = testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["mylib"],
+			updatable: false,
+		}
+
+		apex {
+			name: "otherapex",
+			key: "myapex.key",
+			native_shared_libs: ["mylib", "mytestlib"],
+			updatable: false,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "mylib",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+			stubs: {
+				versions: ["1"],
+			},
+			apex_available: ["myapex", "otherapex"],
+		}
+
+		cc_library {
+			name: "mytestlib",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			shared_libs: ["mylib"],
+			stl: "none",
+			apex_available: ["otherapex"],
+			test_for: ["myapex"],
+		}
+	`)
+}
+
 // TODO(jungjw): Move this to proptools
 func intPtr(i int) *int {
 	return &i
