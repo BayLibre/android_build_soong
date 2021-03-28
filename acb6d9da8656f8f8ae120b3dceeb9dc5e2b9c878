@@ -16,6 +16,24 @@
       "message": "Can you remove the others and just replace this with \"-test.\"? That will cover all of them.",
       "revId": "acb6d9da8656f8f8ae120b3dceeb9dc5e2b9c878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9ff084_69ba80cb",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-28T21:07:49Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "a9904ada_40862f81",
+      "revId": "acb6d9da8656f8f8ae120b3dceeb9dc5e2b9c878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
