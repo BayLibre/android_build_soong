@@ -22,6 +22,30 @@
       },
       "revId": "f83eb2367f5a9420b11e2518ca319dea2cd20e5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9d8b36_7069674e",
+        "filename": "android/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-28T21:05:34Z",
+      "side": 1,
+      "message": "It doesn\u0027t take a predicate. (The return value is also a bit weird for a generic utils function imo.)",
+      "parentUuid": "14778dde_2e190cba",
+      "range": {
+        "startLine": 198,
+        "startChar": 10,
+        "endLine": 198,
+        "endChar": 11
+      },
+      "revId": "f83eb2367f5a9420b11e2518ca319dea2cd20e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
