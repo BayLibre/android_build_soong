@@ -558,7 +558,7 @@ func (p TestingBuildParams) RelativeToTop() TestingBuildParams {
 		return p
 	}
 	if p.config.config == nil {
-		return p
+		panic("cannot call RelativeToTop() on a TestingBuildParams previously returned by RelativeToTop()")
 	}
 	// Take a copy of the build params and replace any args that contains test specific temporary
 	// paths with paths relative to the top.
