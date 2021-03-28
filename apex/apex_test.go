@@ -16,7 +16,6 @@ package apex
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path"
 	"path/filepath"
@@ -37,8 +36,6 @@ import (
 	"android/soong/rust"
 	"android/soong/sh"
 )
-
-var buildDir string
 
 // names returns name list from white space separated string
 func names(s string) (ns []string) {
@@ -118,7 +115,7 @@ var withUnbundledBuild = android.FixtureModifyProductVariables(
 )
 
 var apexFixtureFactory = android.NewFixtureFactory(
-	&buildDir,
+	nil,
 	// General preparers in alphabetical order as test infrastructure will enforce correct
 	// registration order.
 	android.PrepareForTestWithAndroidBuildComponents,
@@ -203,18 +200,6 @@ var apexFixtureFactory = android.NewFixtureFactory(
 		variables.Platform_vndk_version = proptools.StringPtr("VER")
 	}),
 )
-
-func setUp() {
-	var err error
-	buildDir, err = ioutil.TempDir("", "soong_apex_test")
-	if err != nil {
-		panic(err)
-	}
-}
-
-func tearDown() {
-	_ = os.RemoveAll(buildDir)
-}
 
 // ensure that 'result' equals 'expected'
 func ensureEquals(t *testing.T, result string, expected string) {
@@ -496,7 +481,7 @@ func TestBasicApex(t *testing.T) {
 		}
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule")
+	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule").RelativeToTop()
 
 	// Make sure that Android.mk is created
 	ab := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
@@ -511,7 +496,7 @@ func TestBasicApex(t *testing.T) {
 	optFlags := apexRule.Args["opt_flags"]
 	ensureContains(t, optFlags, "--pubkey vendor/foo/devkeys/testkey.avbpubkey")
 	// Ensure that the NOTICE output is being packaged as an asset.
-	ensureContains(t, optFlags, "--assets_dir "+buildDir+"/.intermediates/myapex/android_common_myapex_image/NOTICE")
+	ensureContains(t, optFlags, "--assets_dir out/soong/.intermediates/myapex/android_common_myapex_image/NOTICE")
 
 	copyCmds := apexRule.Args["copy_commands"]
 
@@ -2464,8 +2449,8 @@ func TestVendorApex(t *testing.T) {
 	prefix := "TARGET_"
 	var builder strings.Builder
 	data.Custom(&builder, name, prefix, "", data)
-	androidMk := builder.String()
-	installPath := path.Join(buildDir, "../target/product/test_device/vendor/apex")
+	androidMk := android.StringRelativeToTop(ctx.Config(), builder.String())
+	installPath := "out/target/product/test_device/vendor/apex"
 	ensureContains(t, androidMk, "LOCAL_MODULE_PATH := "+installPath)
 
 	apexManifestRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
@@ -2509,13 +2494,13 @@ func TestVendorApex_use_vndk_as_stable(t *testing.T) {
 
 	vendorVariant := "android_vendor.VER_arm64_armv8-a"
 
-	ldRule := ctx.ModuleForTests("mybin", vendorVariant+"_apex10000").Rule("ld")
+	ldRule := ctx.ModuleForTests("mybin", vendorVariant+"_apex10000").Rule("ld").RelativeToTop()
 	libs := names(ldRule.Args["libFlags"])
 	// VNDK libs(libvndk/libc++) as they are
-	ensureListContains(t, libs, buildDir+"/.intermediates/libvndk/"+vendorVariant+"_shared/libvndk.so")
-	ensureListContains(t, libs, buildDir+"/.intermediates/"+cc.DefaultCcCommonTestModulesDir+"libc++/"+vendorVariant+"_shared/libc++.so")
+	ensureListContains(t, libs, "out/soong/.intermediates/libvndk/"+vendorVariant+"_shared/libvndk.so")
+	ensureListContains(t, libs, "out/soong/.intermediates/"+cc.DefaultCcCommonTestModulesDir+"libc++/"+vendorVariant+"_shared/libc++.so")
 	// non-stable Vendor libs as APEX variants
-	ensureListContains(t, libs, buildDir+"/.intermediates/libvendor/"+vendorVariant+"_shared_apex10000/libvendor.so")
+	ensureListContains(t, libs, "out/soong/.intermediates/libvendor/"+vendorVariant+"_shared_apex10000/libvendor.so")
 
 	// VNDK libs are not included when use_vndk_as_stable: true
 	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
@@ -4088,15 +4073,15 @@ func TestApexInVariousPartition(t *testing.T) {
 			`)
 
 			apex := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-			expected := buildDir + "/target/product/test_device/" + tc.parition + "/apex"
-			actual := apex.installDir.String()
+			expected := "out/soong/target/product/test_device/" + tc.parition + "/apex"
+			actual := apex.installDir.RelativeToTop().String()
 			if actual != expected {
 				t.Errorf("wrong install path. expected %q. actual %q", expected, actual)
 			}
 
 			flattened := ctx.ModuleForTests("myapex", "android_common_myapex_flattened").Module().(*apexBundle)
-			expected = buildDir + "/target/product/test_device/" + tc.flattenedPartition + "/apex"
-			actual = flattened.installDir.String()
+			expected = "out/soong/target/product/test_device/" + tc.flattenedPartition + "/apex"
+			actual = flattened.installDir.RelativeToTop().String()
 			if actual != expected {
 				t.Errorf("wrong install path. expected %q. actual %q", expected, actual)
 			}
@@ -6327,7 +6312,7 @@ func TestAppSetBundlePrebuilt(t *testing.T) {
 	)
 
 	m := ctx.ModuleForTests("myapex", "android_common")
-	extractedApex := m.Output(buildDir + "/.intermediates/myapex/android_common/foo_v2.apex")
+	extractedApex := m.Output("out/soong/.intermediates/myapex/android_common/foo_v2.apex")
 
 	actual := extractedApex.Inputs
 	if len(actual) != 1 {
@@ -6454,7 +6439,7 @@ func testDexpreoptWithApexes(t *testing.T, bp, errmsg string, transformDexpreopt
 	for k, v := range filesForSdkLibrary {
 		fs[k] = v
 	}
-	config := android.TestArchConfig(buildDir, nil, bp, fs)
+	config := android.TestArchConfig(t.TempDir(), nil, bp, fs)
 
 	ctx := android.NewTestArchContext(config)
 	ctx.RegisterModuleType("apex", BundleFactory)
@@ -6675,7 +6660,7 @@ func testApexPermittedPackagesRules(t *testing.T, errmsg, bp string, apexBootJar
 		"system/sepolicy/apex/myapex-file_contexts": nil,
 	}
 
-	config := android.TestArchConfig(buildDir, nil, bp, fs)
+	config := android.TestArchConfig(t.TempDir(), nil, bp, fs)
 	android.SetTestNeverallowRules(config, rules)
 	updatableBootJars := make([]string, 0, len(apexBootJars))
 	for _, apexBootJar := range apexBootJars {
@@ -6904,7 +6889,7 @@ func TestApexSet(t *testing.T) {
 	m := ctx.ModuleForTests("myapex", "android_common")
 
 	// Check extract_apks tool parameters.
-	extractedApex := m.Output(buildDir + "/.intermediates/myapex/android_common/foo_v2.apex")
+	extractedApex := m.Output("out/soong/.intermediates/myapex/android_common/foo_v2.apex")
 	actual := extractedApex.Args["abis"]
 	expected := "ARMEABI_V7A,ARM64_V8A"
 	if actual != expected {
@@ -7395,12 +7380,5 @@ func TestPrebuiltStubLibDep(t *testing.T) {
 }
 
 func TestMain(m *testing.M) {
-	run := func() int {
-		setUp()
-		defer tearDown()
-
-		return m.Run()
-	}
-
-	os.Exit(run())
+	os.Exit(m.Run())
 }
