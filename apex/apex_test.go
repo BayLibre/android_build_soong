@@ -485,7 +485,7 @@ func TestBasicApex(t *testing.T) {
 		}
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule").RelativeToTop()
+	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule")
 
 	// Make sure that Android.mk is created
 	ab := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
@@ -2498,7 +2498,7 @@ func TestVendorApex_use_vndk_as_stable(t *testing.T) {
 
 	vendorVariant := "android_vendor.VER_arm64_armv8-a"
 
-	ldRule := ctx.ModuleForTests("mybin", vendorVariant+"_apex10000").Rule("ld").RelativeToTop()
+	ldRule := ctx.ModuleForTests("mybin", vendorVariant+"_apex10000").Rule("ld")
 	libs := names(ldRule.Args["libFlags"])
 	// VNDK libs(libvndk/libc++) as they are
 	ensureListContains(t, libs, "out/soong/.intermediates/libvndk/"+vendorVariant+"_shared/libvndk.so")
