@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f85cb3bd_c879d94a",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-29T11:48:02Z",
+      "side": 1,
+      "message": "for my understanding (sorry for silly questions), but do you expect to have systemserverclasspaths_fragments here? For the edge cases where there are no BCP entries for an APEX but only SSCP for example?",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "4b64ba05b69761f8df40301ab4a56ea46d1b5834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0b5b73_c2c206a2",
+        "filename": "java/boot_image_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-29T11:48:02Z",
+      "side": 1,
+      "message": "do you want to have one for prebuilt fragment?",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "4b64ba05b69761f8df40301ab4a56ea46d1b5834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
