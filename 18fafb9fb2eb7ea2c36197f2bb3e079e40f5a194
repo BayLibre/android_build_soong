@@ -70,6 +70,30 @@
       },
       "revId": "18fafb9fb2eb7ea2c36197f2bb3e079e40f5a194",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa1b839b_8fadfd15",
+        "filename": "java/boot_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-29T16:18:30Z",
+      "side": 1,
+      "message": "The apex (I presume you meant that not module) can (or at least should) only be platform for the framework module and this code is specific to the art module so it should never be platform. I\u0027ve made that a separate error message which did allow me to inline available as you previously requested.",
+      "parentUuid": "dfb56428_06dd892c",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "18fafb9fb2eb7ea2c36197f2bb3e079e40f5a194",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
