@@ -51,6 +51,10 @@ func RegisterBootImageBuildComponents(ctx android.RegistrationContext) {
 
 	ctx.RegisterModuleType("bootclasspath_fragment", bootImageFactory)
 	ctx.RegisterModuleType("prebuilt_bootclasspath_fragment", prebuiltBootImageFactory)
+
+	// Currently, this is just an alias for the existing bootclasspath_fragment but it will change
+	// in future.
+	ctx.RegisterModuleType("platform_bootclasspath", bootImageFactory)
 }
 
 type bootImageContentDependencyTag struct {
