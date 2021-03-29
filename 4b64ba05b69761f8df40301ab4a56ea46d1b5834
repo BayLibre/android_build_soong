@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "738cb84f_02cf2fb7",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-29T12:15:20Z",
+      "side": 1,
+      "message": "I don\u0027t know what is involved with SSCP but BCPF entries have special requirements when used in an APEX so I think having them separate is good. e.g. the art apex needs to include .art,.oat and .vdex files for the BCPF contents.\n\nUnless SSCPF has special requirements I think that maybe a general classpath_fragments property will suffice for that.",
+      "parentUuid": "f85cb3bd_c879d94a",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "4b64ba05b69761f8df40301ab4a56ea46d1b5834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c0b5b73_c2c206a2",
         "filename": "java/boot_image_test.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-29T11:48:02Z",
       "side": 1,
       "message": "do you want to have one for prebuilt fragment?",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "4b64ba05b69761f8df40301ab4a56ea46d1b5834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a486fb3_2a510d26",
+        "filename": "java/boot_image_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-29T12:15:20Z",
+      "side": 1,
+      "message": "I will migrate the tests later. I wanted to avoid migrating the tests here just in case it messed up your changes and because I wanted to start migrating the existing boot_image modules ASAP.",
+      "parentUuid": "5c0b5b73_c2c206a2",
       "range": {
         "startLine": 49,
         "startChar": 3,
