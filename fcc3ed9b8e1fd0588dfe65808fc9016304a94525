@@ -16,6 +16,24 @@
       "message": "maybe skip if blank or provide a default value for DefaultMinSdkVersion?",
       "revId": "fcc3ed9b8e1fd0588dfe65808fc9016304a94525",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed25560b_d020d35a",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-29T15:46:26Z",
+      "side": 1,
+      "message": "I set the default-default to 24 ;o",
+      "parentUuid": "0598db20_d1f12c72",
+      "revId": "fcc3ed9b8e1fd0588dfe65808fc9016304a94525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
