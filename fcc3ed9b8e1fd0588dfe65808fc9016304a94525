@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0598db20_d1f12c72",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2021-03-29T15:42:23Z",
+      "side": 1,
+      "message": "maybe skip if blank or provide a default value for DefaultMinSdkVersion?",
+      "revId": "fcc3ed9b8e1fd0588dfe65808fc9016304a94525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
