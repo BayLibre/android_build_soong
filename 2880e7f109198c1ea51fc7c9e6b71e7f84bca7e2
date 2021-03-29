@@ -16,6 +16,24 @@
       "message": "Nit: Alphabetize",
       "revId": "2880e7f109198c1ea51fc7c9e6b71e7f84bca7e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16136bff_bb97f23e",
+        "filename": "rust/config/allowed_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1363994
+      },
+      "writtenOn": "2021-03-29T14:05:32Z",
+      "side": 1,
+      "message": "I\u0027m embarassed to say that that\u0027s what I tried to do. I ran through the ABC-song in my head to confirm it should be correct now.",
+      "parentUuid": "b86cd45c_9ac26dad",
+      "revId": "2880e7f109198c1ea51fc7c9e6b71e7f84bca7e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
