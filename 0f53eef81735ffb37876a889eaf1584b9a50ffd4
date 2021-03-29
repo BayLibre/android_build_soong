@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c742c4dc_86f17108",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T13:27:03Z",
+      "side": 1,
+      "message": "I\u0027d definitely want to refactor these into something less boilerplatey, do you mind we add this to the list of tech debt for now and deal with later?\n\nFactored out the list of architectures.",
+      "parentUuid": "09c30851_e85abaeb",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bcee537b_6140f5c9",
         "filename": "cc/object.go",
         "patchSetId": 6
@@ -119,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70805ce_49f66cb4",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T13:27:03Z",
+      "side": 1,
+      "message": "I suggest that we go with this for now, and I\u0027ll take a bit more time outside of this CL to think about a mutator. Thanks for the ideas!",
+      "parentUuid": "e7beeba3_512dea92",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 113
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9d5d61d_b4bac05d",
@@ -132,6 +180,30 @@
       "writtenOn": "2021-03-24T13:45:17Z",
       "side": 1,
       "message": "it looks like we\u0027re always appending a default with empty for both -- could that be the default behavior?",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 45
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb3c0ea_f4d042fc",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T13:27:03Z",
+      "side": 1,
+      "message": "Yes- removed and made it such that the code generator always generate the empty list of the default condition.",
+      "parentUuid": "f9d5d61d_b4bac05d",
       "range": {
         "startLine": 181,
         "startChar": 1,

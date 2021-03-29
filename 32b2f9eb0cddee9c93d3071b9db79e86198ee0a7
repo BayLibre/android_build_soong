@@ -22,6 +22,30 @@
       },
       "revId": "32b2f9eb0cddee9c93d3071b9db79e86198ee0a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7347e49_6a09eed0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T13:27:03Z",
+      "side": 1,
+      "message": "Yeah -- I think we don\u0027t actually need these for codegen, so it may be worth to remove this in a follow up.",
+      "parentUuid": "0787ee8f_a6164303",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "32b2f9eb0cddee9c93d3071b9db79e86198ee0a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

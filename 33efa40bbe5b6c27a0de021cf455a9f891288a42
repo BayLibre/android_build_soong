@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80a06e2_ca1652bc",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T13:27:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "857c8628_66626b23",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99a7cea1_2dcc6798",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-03-24T06:33:32Z",
       "side": 1,
       "message": "How is default used in practice? (the tests don\u0027t seem to use it)",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 33
+      },
+      "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e023153_1522671b",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T13:27:03Z",
+      "side": 1,
+      "message": "Removed, and switched the code generator always generate an empty list to be simple.",
+      "parentUuid": "99a7cea1_2dcc6798",
       "range": {
         "startLine": 118,
         "startChar": 0,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "or have the functions exposed return LabelListAttributes instead? may require collecting arch-specific details before turning them into BazelLabels, but may be easier to wrangle",
       "parentUuid": "db9813ad_95da8cf2",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 74
+      },
+      "revId": "33efa40bbe5b6c27a0de021cf455a9f891288a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3041237b_b44376b1",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T13:27:03Z",
+      "side": 1,
+      "message": "Implemented both suggestions, PTAL.",
+      "parentUuid": "c42caca0_fffb3b14",
       "range": {
         "startLine": 106,
         "startChar": 1,
