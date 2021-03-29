@@ -16,6 +16,24 @@
       "message": "OOC, any reason to have a separate property for this? Can we determine it from module name for example? Or make this more consistent for apexes, e.g. by having it be com.android.art, instead of \"art\"?",
       "revId": "64be7bb32f01d5f050218b5064d2b6ed1268d9f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cddf5a2_30673b30",
+        "filename": "java/boot_image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-29T12:10:33Z",
+      "side": 1,
+      "message": "The name matches what is used internally in Soong. For art it is only intended to be a temporary measure, eventually all configuration of the \"art\" boot image will move into the module at which point it can be removed. For the framework boot image I will be creating a separate module type as it is very different at which point this will no longer be needed.",
+      "parentUuid": "c9bb75b8_c4f43fe7",
+      "revId": "64be7bb32f01d5f050218b5064d2b6ed1268d9f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
