@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe858be_bd786ec0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T09:43:21Z",
+      "side": 1,
+      "message": "But it needs to be - see the other thread. Did that answer your question?",
+      "parentUuid": "1ce7ae82_896f5907",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f35e3932_ce090d8b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-29T00:04:31Z",
       "side": 1,
       "message": "A stub-providing library `mylib` is \"directly\" in multiple APEXes. This shouldn\u0027t be allowed. Otherwise, when the lib is requested from outside of the APEXes, it would be ambiguous which lib among the two should be linked at runtime. It\u0027s unfortunate that we haven\u0027t prohibited this (out of scope of this CL though). If this test reflects what\u0027s happening in ART, we need to fix that.",
+      "range": {
+        "startLine": 6937,
+        "startChar": 0,
+        "endLine": 6949,
+        "endChar": 3
+      },
+      "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5cf0f22_5039c84e",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6949,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T09:43:21Z",
+      "side": 1,
+      "message": "This happens between com.android.art.testing and the other two ART APEXes. None of them can be mounted together (and the testing APEX is never installed at all I believe, it should go away but that is still a bit of work: b/162834439).",
+      "parentUuid": "f35e3932_ce090d8b",
       "range": {
         "startLine": 6937,
         "startChar": 0,
