@@ -1142,7 +1142,7 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			// Note that by adding dependency with {static|shared}DepTag, the lib is
 			// added to libFlags and LOCAL_SHARED_LIBRARIES by cc.Module
 			if c.staticBinary() {
-				deps := append(extraStaticDeps, runtimeLibrary)
+				deps := append(extraStaticDeps, runtimeLibrary+".static")
 				// If we're using snapshots, redirect to snapshot whenever possible
 				snapshot := mctx.Provider(SnapshotInfoProvider).(SnapshotInfo)
 				for idx, dep := range deps {
