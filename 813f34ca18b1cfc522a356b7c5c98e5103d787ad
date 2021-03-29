@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23963e47_fb5c4ec7",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-29T09:41:59Z",
+      "side": 1,
+      "message": "Is it okay to mutate the module here? (I don\u0027t know, but from a Bazelian perspective, it looks weird because you can\u0027t know if another mutator needs these later)",
+      "range": {
+        "startLine": 543,
+        "startChar": 1,
+        "endLine": 543,
+        "endChar": 43
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0db0515_beadea7a",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-29T09:41:59Z",
+      "side": 1,
+      "message": "nit: use a single dot",
+      "range": {
+        "startLine": 466,
+        "startChar": 53,
+        "endLine": 466,
+        "endChar": 54
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e46f0add_27fb5a7d",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-29T09:41:59Z",
+      "side": 1,
+      "message": "Do I understand correctly that this is needed becuse moduleBase.variableProperties is an interface{}? This code assumes that whatever that field is set to has a Product_variables field, but then why not just declare that field to be of the right type instead of interface{} ?",
+      "range": {
+        "startLine": 477,
+        "startChar": 19,
+        "endLine": 477,
+        "endChar": 105
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab1a94d_f40332de",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-29T09:41:59Z",
+      "side": 1,
+      "message": "nit: call this \"changesMade\" instead? (\"substitution\" sounds like \"the substitution one wants to make)",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
