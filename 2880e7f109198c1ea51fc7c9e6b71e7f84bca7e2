@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86cd45c_9ac26dad",
+        "filename": "rust/config/allowed_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-03-29T14:00:50Z",
+      "side": 1,
+      "message": "Nit: Alphabetize",
+      "revId": "2880e7f109198c1ea51fc7c9e6b71e7f84bca7e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
