@@ -93,6 +93,30 @@
       },
       "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c857e4_18fa1281",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6949,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-29T12:41:48Z",
+      "side": 1,
+      "message": "Ok. Does the ART team has a plan to remove the testing APEX? If so, could you file a bug (b/162834439 doesn\u0027t seem to directly deal with the issue), make the change in apex.go to have an effect only to the ART APEXes, and add a TODO to revert it later?",
+      "parentUuid": "c5cf0f22_5039c84e",
+      "range": {
+        "startLine": 6937,
+        "startChar": 0,
+        "endLine": 6949,
+        "endChar": 3
+      },
+      "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
