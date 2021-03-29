@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009411591",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1654682?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "1866a03c_2a46e992",
+          "description": "Change to \"apex/apex_test.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex_test.go",
+              "range": {
+                "startLine": 4080,
+                "startChar": 60,
+                "endLine": 4080,
+                "endChar": 68
+              },
+              "replacement": "partition"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "4c451671_cb76cbae",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4080,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-29T09:09:33Z",
+      "side": 1,
+      "message": "Common typo found: \"parition\" -- should it be \"partition\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 4080,
+        "startChar": 60,
+        "endLine": 4080,
+        "endChar": 68
+      },
+      "revId": "6265b53c4d73239bb7bdb2ba48356ef37e9012c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
