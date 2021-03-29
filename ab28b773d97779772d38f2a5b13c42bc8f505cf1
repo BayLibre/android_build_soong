@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "144d6647_0e1e7797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-29T14:46:20Z",
+      "side": 1,
+      "message": "PTAL. Am trying to work around a weird issue in the aosp-build-tools that I can\u0027t reproduce locally, either in tests or normal build.",
+      "revId": "ab28b773d97779772d38f2a5b13c42bc8f505cf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
