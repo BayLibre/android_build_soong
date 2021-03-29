@@ -1,0 +1,14 @@
+{
+  "presubmit": [
+    {
+      "name": "soong_bootstrap_test",
+      "host": true
+    }
+  ],
+  "postsubmit": [
+    {
+      "name": "soong_bootstrap_test",
+      "host": true
+    }
+  ]
+}

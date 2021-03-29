@@ -231,3 +231,13 @@ cc_genrule {
 dex_bootjars {
     name: "dex_bootjars",
 }
+
+sh_test_host {
+    name: "soong_bootstrap_test",
+    src: "bootstrap_test.sh",
+    filename: "soong_bootstrap_test.sh",
+    data: [
+        "**/*",
+        ":blueprint-everything",
+    ],
+}
