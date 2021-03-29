@@ -16,6 +16,24 @@
       "message": "What was the nature of the build failure? Why could it not extract the information from the manifest?",
       "revId": "1cff9f468862de03ec59993722828730883a4f93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a24e37_3d0ac461",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-29T13:27:21Z",
+      "side": 1,
+      "message": "The version just isn\u0027t there in the APK.",
+      "parentUuid": "a90efa1e_f0c45989",
+      "revId": "1cff9f468862de03ec59993722828730883a4f93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
