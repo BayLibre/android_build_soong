@@ -26,6 +26,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "328b933a_c8172431",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T11:00:45Z",
+      "side": 1,
+      "message": "Yeah, I have the same question.",
+      "parentUuid": "23963e47_fb5c4ec7",
+      "range": {
+        "startLine": 543,
+        "startChar": 1,
+        "endLine": 543,
+        "endChar": 43
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2ffcfa_d9a06214",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T11:00:45Z",
+      "side": 1,
+      "message": "Missing a word?",
+      "range": {
+        "startLine": 449,
+        "startChar": 3,
+        "endLine": 449,
+        "endChar": 48
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0db0515_beadea7a",
         "filename": "android/variable.go",
         "patchSetId": 2
@@ -72,6 +119,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "684208c0_4487f2a0",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T11:00:45Z",
+      "side": 1,
+      "message": "Do you mind adding concrete examples of these variables (productVariableName, propertyName) so it makes reading easier?",
+      "range": {
+        "startLine": 484,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 21
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ab1a94d_f40332de",
         "filename": "bazel/properties.go",
         "patchSetId": 2
@@ -88,6 +158,29 @@
         "startChar": 1,
         "endLine": 155,
         "endChar": 13
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "082ef405_d3663906",
+        "filename": "cc/object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-29T11:00:45Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 41
       },
       "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
