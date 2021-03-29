@@ -117,6 +117,30 @@
       },
       "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cac7805_afecf46c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6949,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-29T14:01:17Z",
+      "side": 1,
+      "message": "I think this may very well happen between the ART debug and release APEXes as well, it\u0027s just that the particular case I ran into was with the testing APEX. So it may not be safe to remove this with that APEX.\n\nAren\u0027t you assuming all built APEXes are disjunct? That\u0027s evidently not true in practice and it\u0027d be a restriction by policy - it would mean ART team also needs to get rid of the debug APEX.",
+      "parentUuid": "99c857e4_18fa1281",
+      "range": {
+        "startLine": 6937,
+        "startChar": 0,
+        "endLine": 6949,
+        "endChar": 3
+      },
+      "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
