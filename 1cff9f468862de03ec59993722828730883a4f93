@@ -34,6 +34,23 @@
       "parentUuid": "a90efa1e_f0c45989",
       "revId": "1cff9f468862de03ec59993722828730883a4f93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3976d05f_097fdc6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-29T15:32:58Z",
+      "side": 1,
+      "message": "Forrest build for the previously failed target is green: https://android-build.googleplex.com/builds/forrest/run/L84500000846437517",
+      "revId": "1cff9f468862de03ec59993722828730883a4f93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
