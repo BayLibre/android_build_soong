@@ -256,10 +256,6 @@ func (mod *Module) SdkVersion() string {
 	return ""
 }
 
-func (mod *Module) MinSdkVersion() string {
-	return ""
-}
-
 func (mod *Module) AlwaysSdk() bool {
 	return false
 }
