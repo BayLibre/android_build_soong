@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d663708c_61ca4e74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-30T19:09:51Z",
+      "side": 1,
+      "message": "PTAL. Other uses of RelativeToTop have been added since I created this which breaks the build. I have cleaned them up here but have only deprecated the method for now. Once other Soong developers have been notified that this should no longer be called I will stop exporting it, for now it is just a noop on the second and subsequent calls.",
+      "revId": "a71a67a4f5b6e5cdaa1dea65465770412fd9e25d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
