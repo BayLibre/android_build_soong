@@ -22,6 +22,30 @@
       },
       "revId": "11cf4f4c08f5500539f95574947d928d8c4c980c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "415773b2_9f8cd11a",
+        "filename": "java/boot_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-30T16:41:13Z",
+      "side": 1,
+      "message": "I\u0027m going to rename them from bootimage to bootclasspath fragment so will resolve it then.",
+      "parentUuid": "6fa2d533_446f2b71",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "11cf4f4c08f5500539f95574947d928d8c4c980c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
