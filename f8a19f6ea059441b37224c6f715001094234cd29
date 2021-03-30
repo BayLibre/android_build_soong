@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd4ee59_a5d4d100",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-30T18:06:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether it\u0027s a good idea to make the module behave differently depending on the name. Wouldn\u0027t a more explicit approach be more error-proof?",
+      "revId": "f8a19f6ea059441b37224c6f715001094234cd29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
