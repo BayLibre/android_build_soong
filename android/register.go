@@ -192,6 +192,13 @@ func (ctx *Context) Register() {
 		t.register(ctx)
 	}
 
+	// Register bp2build-enabled modules, even outside of bp2build generate mode,
+	// as this is required as a signal to identify which modules should be
+	// deferred to Bazel in mixed builds, if it is enabled.
+	for t, _ := range bp2buildMutators {
+		ctx.config.bp2buildModuleTypeConfig[t] = true
+	}
+
 	mutators := collateGloballyRegisteredMutators()
 	mutators.registerAll(ctx)
 

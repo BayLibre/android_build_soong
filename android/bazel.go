@@ -169,6 +169,8 @@ var (
 		"liblinker_debuggerd_stub":      true,
 		"libbionic_tests_headers_posix": true,
 		"libc_dns":                      true,
+		"note_memtag_heap_async":        true,
+		"note_memtag_heap_sync":         true,
 	}
 )
 
