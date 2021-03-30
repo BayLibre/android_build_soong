@@ -163,6 +163,114 @@ cc_library_headers {
     ],
 )`},
 		},
+		{
+			description:                        "cc_library_headers test with os-specific header_libs props",
+			moduleTypeUnderTest:                "cc_library_headers",
+			moduleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
+			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
+			depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterCcBp2BuildDeps},
+			filesystem:                         map[string]string{},
+			bp: soongCcLibraryPreamble + `
+cc_library_headers { name: "android-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "base-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "common-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "darwin-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "fuchsia-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "linux-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "linux_bionic-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "windows-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers {
+    name: "foo_headers",
+    header_libs: ["base-lib"],
+    target: {
+        android: { header_libs: ["android-lib"] },
+        common_os: { header_libs: ["common-lib"] },
+        darwin: { header_libs: ["darwin-lib"] },
+        fuchsia: { header_libs: ["fuchsia-lib"] },
+        linux_bionic: { header_libs: ["linux_bionic-lib"] },
+        linux_glibc: { header_libs: ["linux-lib"] },
+        windows: { header_libs: ["windows-lib"] },
+    },
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{`cc_library_headers(
+    name = "android-lib",
+)`, `cc_library_headers(
+    name = "base-lib",
+)`, `cc_library_headers(
+    name = "common-lib",
+)`, `cc_library_headers(
+    name = "darwin-lib",
+)`, `cc_library_headers(
+    name = "foo_headers",
+    deps = [
+        ":base-lib",
+    ] + select({
+        "//build/bazel/platforms/os:android": [
+            ":android-lib",
+        ],
+        "//build/bazel/platforms/os:common": [
+            ":common-lib",
+        ],
+        "//build/bazel/platforms/os:darwin": [
+            ":darwin-lib",
+        ],
+        "//build/bazel/platforms/os:fuchsia": [
+            ":fuchsia-lib",
+        ],
+        "//build/bazel/platforms/os:linux": [
+            ":linux-lib",
+        ],
+        "//build/bazel/platforms/os:linux_bionic": [
+            ":linux_bionic-lib",
+        ],
+        "//build/bazel/platforms/os:windows": [
+            ":windows-lib",
+        ],
+        "//conditions:default": [],
+    }),
+)`, `cc_library_headers(
+    name = "fuchsia-lib",
+)`, `cc_library_headers(
+    name = "linux-lib",
+)`, `cc_library_headers(
+    name = "linux_bionic-lib",
+)`, `cc_library_headers(
+    name = "windows-lib",
+)`},
+		},
+		{
+			description:                        "cc_library_headers test with os-specific header_libs and export_header_lib_headers props",
+			moduleTypeUnderTest:                "cc_library_headers",
+			moduleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
+			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
+			depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterCcBp2BuildDeps},
+			filesystem:                         map[string]string{},
+			bp: soongCcLibraryPreamble + `
+cc_library_headers { name: "android-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers { name: "exported-lib", bazel_module: { bp2build_available: true }}
+cc_library_headers {
+    name: "foo_headers",
+    target: {
+        android: { header_libs: ["android-lib"], export_header_lib_headers: ["exported-lib"] },
+    },
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{`cc_library_headers(
+    name = "android-lib",
+)`, `cc_library_headers(
+    name = "exported-lib",
+)`, `cc_library_headers(
+    name = "foo_headers",
+    deps = [] + select({
+        "//build/bazel/platforms/os:android": [
+            ":android-lib",
+            ":exported-lib",
+        ],
+        "//conditions:default": [],
+    }),
+)`},
+		},
 	}
 
 	dir := "."

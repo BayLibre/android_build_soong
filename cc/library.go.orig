@@ -504,11 +504,12 @@ func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) 
 			return
 		}
 		isLibcxx := strings.HasPrefix(dir, "external/libcxx/include")
-		for _, header := range glob {
+		j := 0
+		for i, header := range glob {
 			if isLibcxx {
 				// Glob all files under this special directory, because of C++ headers with no
 				// extension.
-				if strings.HasSuffix(header, "/") {
+				if !strings.HasSuffix(header, "/") {
 					continue
 				}
 			} else {
@@ -524,8 +525,12 @@ func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) 
 					continue
 				}
 			}
-			ret = append(ret, android.PathForSource(ctx, header))
+			if i != j {
+				glob[j] = glob[i]
+			}
+			j++
 		}
+		glob = glob[:j]
 	}
 
 	// Collect generated headers
@@ -2022,6 +2027,38 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 	}
 
 	return outputFile
+}
+
+func Bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) bazel.LabelListAttribute {
+	var headerLibs []string
+	for _, linkerProps := range module.linker.linkerProps() {
+		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
+			headerLibs = baseLinkerProps.Header_libs
+			// FIXME: re-export include dirs from baseLinkerProps.Export_header_lib_headers?
+			break
+		}
+	}
+	headerLibsLabels := bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, headerLibs))
+	return headerLibsLabels
+}
+
+func Bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) (bazel.LabelListAttribute, bazel.LabelListAttribute) {
+	libraryDecorator := module.linker.(*libraryDecorator)
+
+	includeDirs := libraryDecorator.flagExporter.Properties.Export_system_include_dirs
+	includeDirs = append(includeDirs, libraryDecorator.flagExporter.Properties.Export_include_dirs...)
+
+	includeDirsLabels := android.BazelLabelForModuleSrc(ctx, includeDirs)
+
+	var includeDirGlobs []string
+	for _, includeDir := range includeDirs {
+		includeDirGlobs = append(includeDirGlobs, includeDir+"/**/*.h")
+		includeDirGlobs = append(includeDirGlobs, includeDir+"/**/*.inc")
+		includeDirGlobs = append(includeDirGlobs, includeDir+"/**/*.hpp")
+	}
+
+	headersLabels := android.BazelLabelForModuleSrc(ctx, includeDirGlobs)
+	return bazel.MakeLabelListAttribute(includeDirsLabels), bazel.MakeLabelListAttribute(headersLabels)
 }
 
 type bazelCcLibraryStaticAttributes struct {
