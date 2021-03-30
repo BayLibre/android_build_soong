@@ -141,6 +141,30 @@
       },
       "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd4feb0_a469f755",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6949,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-30T10:23:01Z",
+      "side": 1,
+      "message": "debug/release APEXes are also unique to ART. I honestly don\u0027t fully understand the need to have three (debug/release/test) variants of ART APEX, but that\u0027s out of scope of this change. Anyway, since this is unique to ART, I would like to put this change under \"com.android.art.*\".\n\n\u003e Aren\u0027t you assuming all built APEXes are disjunct?\n\nI think all APEXes should be disjunct \"on the device\". However, because Soong doesn\u0027t know whether two APEXes which have duplicated libs will actually be installed to the device together, it should take the conservative approach that all APEXes can be installed together. In case of ART, if one can guarantee that only a variant of the three is installed, then that should better be considered as an exception.",
+      "parentUuid": "2cac7805_afecf46c",
+      "range": {
+        "startLine": 6937,
+        "startChar": 0,
+        "endLine": 6949,
+        "endChar": 3
+      },
+      "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
