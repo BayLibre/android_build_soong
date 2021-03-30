@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e758adbc_933f2d0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-03-30T02:51:46Z",
+      "side": 1,
+      "message": "Ugh, no gerrit notification for the new patch. 😞 Luckily I did get a notification for the PV+2. Thanks, Colin, for fixing this up.",
+      "revId": "32f1de3327f81725063e59596f63f15a30196c68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
