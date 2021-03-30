@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a95d5e04_46381a71",
+        "filename": "android/paths.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-30T10:52:23Z",
+      "side": 1,
+      "message": "oops, good catch - done.",
+      "parentUuid": "57e58007_1ae2bfe2",
+      "range": {
+        "startLine": 481,
+        "startChar": 31,
+        "endLine": 481,
+        "endChar": 35
+      },
+      "revId": "e75e73a13a6ab7d470d3975b61591f5a3164c589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49457d78_9581b4eb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-30T10:21:39Z",
       "side": 1,
       "message": "Since we use these strings several times (I count at least 5 times?), maybe we should use some consts? ARCH_X86, ARCH_X86_64, ... ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 27,
+        "endLine": 110,
+        "endChar": 60
+      },
+      "revId": "e75e73a13a6ab7d470d3975b61591f5a3164c589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44df128_28d3217a",
+        "filename": "bazel/properties.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-30T10:52:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49457d78_9581b4eb",
       "range": {
         "startLine": 110,
         "startChar": 27,
