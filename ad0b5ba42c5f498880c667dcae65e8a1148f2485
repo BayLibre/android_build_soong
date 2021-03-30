@@ -16,6 +16,23 @@
       "message": "FYI,\n\nWith this change, the buildroot build file looks like: https://paste.googleplex.com/5745294177206272\n",
       "revId": "ad0b5ba42c5f498880c667dcae65e8a1148f2485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dfcfeb6_cf729439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-30T08:35:34Z",
+      "side": 1,
+      "message": "Well this is exactly my \"transitor\" rule idea, so I feel compelled to +2 this 😊",
+      "revId": "ad0b5ba42c5f498880c667dcae65e8a1148f2485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
