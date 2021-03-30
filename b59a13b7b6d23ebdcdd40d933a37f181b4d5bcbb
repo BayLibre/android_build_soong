@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68f70b9e_f5dd8c62",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-30T22:32:20Z",
+      "side": 1,
+      "message": "Is this necessary, isn\u0027t it handled by line 512?",
+      "revId": "b59a13b7b6d23ebdcdd40d933a37f181b4d5bcbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
