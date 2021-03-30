@@ -132,7 +132,11 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 
 	instrumentedApp, ok := instrumented[0].(*AndroidApp)
 	if !ok {
-		ctx.PropertyErrorf("instrumentation_for", "dependency must be an android_app")
+		androidTestHelperApp, ok := instrumented[0].(*AndroidTestHelperApp)
+		if !ok {
+			ctx.PropertyErrorf("instrumentation_for", "dependency must be an android_app or android_test_helper_app")
+		}
+		instrumentedApp = &androidTestHelperApp.AndroidApp
 	}
 
 	r.manifest = instrumentedApp.mergedManifestFile
