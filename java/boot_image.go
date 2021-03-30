@@ -128,6 +128,10 @@ func bootImageConsistencyCheck(ctx android.EarlyModuleContext, m *BootImageModul
 		commonApex := ""
 		for i := 0; i < modules.Len(); i++ {
 			apex := modules.Apex(i)
+			// TODO(b/177892522): Remove once workarounds added in b/180325915 have been removed.
+			if android.InList(apex, artApexNames) {
+				apex = "com.android.art"
+			}
 			jar := modules.Jar(i)
 			if apex == "platform" {
 				ctx.ModuleErrorf("ArtApexJars is invalid as it requests a platform variant of %q", jar)
