@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898817d2_ec707c57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-30T10:09:42Z",
+      "side": 1,
+      "message": "PTAL. This doesn\u0027t change any behavior. I just moved java.sdkSpec to the android package and made fields, methods, types there public.\n\nFollow-ups will be:\n\n1) Replacing SdkSpec.Version (whose type is int) with the ApiLevel struct.\n2) Making the cc package to use SdkSpec instead of ApiLevel\n3) Removing the places where (min/target/compile) sdk versions are read as strings\n4) Clearly distinguishing \u0027current\u0027 and \u0027future\u0027\n5) Supporting \"\u003cscope\u003e_\u003cver\u003e\" (e.g. system_30, modules_current, etc.) also for cc modules (b/183090215)\n6) Documenting the correct use of the properties min_sdk_version, sdk_version.\n",
+      "revId": "607b5e1dd58b9dc2fcb421ecf01362cecbdc9ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
