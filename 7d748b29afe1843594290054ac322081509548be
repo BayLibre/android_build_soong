@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "7d748b29afe1843594290054ac322081509548be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7c7221_756165c1",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-03-30T23:45:25Z",
+      "side": 1,
+      "message": "Can you move the append here?  I don\u0027t know what I was thinking when I wrote it to modify the glob list in place, but it doesn\u0027t serve any purpose.",
+      "revId": "7d748b29afe1843594290054ac322081509548be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
