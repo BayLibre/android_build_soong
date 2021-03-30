@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fa2d533_446f2b71",
+        "filename": "java/boot_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-03-30T15:42:02Z",
+      "side": 1,
+      "message": "B",
+      "range": {
+        "startLine": 73,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "11cf4f4c08f5500539f95574947d928d8c4c980c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
