@@ -22,6 +22,30 @@
       },
       "revId": "a8c3680207910eaeb4778d612bd53b9b96520987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8942db4_7a4010f9",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-30T21:44:37Z",
+      "side": 1,
+      "message": "The latter :\\ To be investigated next...",
+      "parentUuid": "58279317_64bd9ccb",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 40
+      },
+      "revId": "a8c3680207910eaeb4778d612bd53b9b96520987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
