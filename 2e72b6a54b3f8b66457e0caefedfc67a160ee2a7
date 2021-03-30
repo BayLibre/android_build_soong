@@ -46,6 +46,30 @@
       },
       "revId": "2e72b6a54b3f8b66457e0caefedfc67a160ee2a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2da0dd88_59c36cd9",
+        "filename": "android/register.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-30T07:06:52Z",
+      "side": 1,
+      "message": "I think the cleanest way to do this is to only do this in mixed builds mode:\n\n    if ctx.config.BazelContext.BazelEnabled() {\n         // Hydrate the configuration of bp2build-enabled module types as this is\n         // required as a signal to identify which modules should be deferred to\n         // Bazel in mixed builds, if it is enabled.\n         for t, _ :\u003d range bp2buildMutators {\n             ctx.config.bp2buildModuleTypeConfig[t] \u003d true\n         }\n     }",
+      "parentUuid": "9b921566_9f61fb42",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 0
+      },
+      "revId": "2e72b6a54b3f8b66457e0caefedfc67a160ee2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
