@@ -124,6 +124,7 @@ var (
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"bionic":                Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
 	}
@@ -131,45 +132,45 @@ var (
 	// Per-module denylist to always opt modules out.
 
 	bp2buildModuleDoNotConvertList = []string{
-		"libBionicBenchmarksUtils",
-		"libbionic_spawn_benchmark",
-		"libc_jemalloc_wrapper",
-		"libc_bootstrap",
-		"libc_init_static",
-		"libc_init_dynamic",
-		"libc_tzcode",
-		"libc_freebsd",
-		"libc_freebsd_large_stack",
-		"libc_netbsd",
-		"libc_openbsd_ndk",
-		"libc_openbsd_large_stack",
-		"libc_openbsd",
-		"libc_gdtoa",
-		"libc_fortify",
-		"libc_bionic",
-		"libc_bionic_ndk",
-		"libc_bionic_systrace",
-		"libc_pthread",
-		"libc_syscalls",
-		"libc_aeabi",
-		"libc_ndk",
-		"libc_nopthread",
-		"libc_common",
-		"libc_static_dispatch",
-		"libc_dynamic_dispatch",
-		"libc_common_static",
-		"libc_common_shared",
-		"libc_unwind_static",
-		"libc_nomalloc",
-		"libasync_safe",
-		"libc_malloc_debug_backtrace",
-		"libsystemproperties",
-		"libdl_static",
-		"liblinker_main",
-		"liblinker_malloc",
-		"liblinker_debuggerd_stub",
-		"libbionic_tests_headers_posix",
-		"libc_dns",
+		// "libBionicBenchmarksUtils",
+		"libbionic_spawn_benchmark", // cc_library_static, depends on //system/libbase
+		"libc_jemalloc_wrapper",     // cc_library_static, depends on //external/jemalloc_new
+		// "libc_bootstrap",
+		// "libc_init_static",
+		// "libc_init_dynamic",
+		// "libc_tzcode",
+		// "libc_freebsd",
+		// "libc_freebsd_large_stack",
+		// "libc_netbsd",
+		// "libc_openbsd_ndk",
+		// "libc_openbsd_large_stack",
+		// "libc_openbsd",
+		// "libc_gdtoa",
+		// "libc_fortify",
+		// "libc_bionic",
+		"libc_bionic_ndk", // cc_library_static, depends on //bionic/libc/system_properties
+		// "libc_bionic_systrace",
+		// "libc_pthread",
+		// "libc_syscalls",
+		// "libc_aeabi",
+		"libc_ndk",       // cc_library_static, depends on //bionic/libm:libm
+		"libc_nopthread", // cc_library_static, depends on //external/arm-optimized-routines
+		"libc_common",    // cc_library_static, depends on //bionic/libc:libc_nopthread
+		// "libc_static_dispatch",
+		// "libc_dynamic_dispatch",
+		"libc_common_static", // cc_library_static, depends on //bionic/libc:libc_common
+		"libc_common_shared", // cc_library_static, depends on //bionic/libc:libc_common
+		// "libc_unwind_static",
+		"libc_nomalloc", // cc_library_static, depends on //bionic/libc:libc_common
+		// "libasync_safe",
+		"libc_malloc_debug_backtrace", // cc_library_static, depends on //system/libbase
+		"libsystemproperties",         // cc_library_static, depends on //system/core/property_service/libpropertyinfoparser
+		// "libdl_static",
+		"liblinker_main",           // cc_library_static, depends on //system/libbase
+		"liblinker_malloc",         // cc_library_static, depends on //system/logging/liblog:liblog
+		"liblinker_debuggerd_stub", // cc_library_static, depends on //system/libbase
+		// "libbionic_tests_headers_posix",
+		// "libc_dns",
 	}
 
 	// Used for quicker lookups
