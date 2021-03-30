@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d13eed_3b7f3899",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T15:23:31Z",
+      "side": 0,
+      "message": "it looks like this was dropped -- is it no longer necessary?",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 2
+      },
+      "revId": "6aa5c40393d03ca697d41f15d2051f03a37ee6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
