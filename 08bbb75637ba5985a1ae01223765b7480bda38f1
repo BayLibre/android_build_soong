@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96926e84_625c4fb3",
+        "filename": "cc/library.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 2106,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T13:24:04Z",
+      "side": 1,
+      "message": "in a follow-up, we should make sure to also handle the `Include_build_directory` property",
+      "range": {
+        "startLine": 2106,
+        "startChar": 0,
+        "endLine": 2106,
+        "endChar": 47
+      },
+      "revId": "08bbb75637ba5985a1ae01223765b7480bda38f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

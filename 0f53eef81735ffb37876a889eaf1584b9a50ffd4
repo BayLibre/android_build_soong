@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dad83234_fe5b2a93",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T13:24:04Z",
+      "side": 1,
+      "message": "👍 yep, didn\u0027t intend this comment to be blocking, just keeping an eye out for potential improvements as we\u0027re growing the capabilities",
+      "parentUuid": "c742c4dc_86f17108",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bcee537b_6140f5c9",
         "filename": "cc/object.go",
         "patchSetId": 6
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "I suggest that we go with this for now, and I\u0027ll take a bit more time outside of this CL to think about a mutator. Thanks for the ideas!",
       "parentUuid": "e7beeba3_512dea92",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 113
+      },
+      "revId": "0f53eef81735ffb37876a889eaf1584b9a50ffd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72444c6_cfd03954",
+        "filename": "cc/object.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T13:24:04Z",
+      "side": 1,
+      "message": "👍 yep, didn\u0027t intend this to be blocking either, just throwing out ideas for the future",
+      "parentUuid": "a70805ce_49f66cb4",
       "range": {
         "startLine": 177,
         "startChar": 3,
