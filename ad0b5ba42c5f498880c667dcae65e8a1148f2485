@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df2284e9_421d1304",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-30T01:16:36Z",
+      "side": 1,
+      "message": "FYI,\n\nWith this change, the buildroot build file looks like: https://paste.googleplex.com/5745294177206272\n",
+      "revId": "ad0b5ba42c5f498880c667dcae65e8a1148f2485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
