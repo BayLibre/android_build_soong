@@ -165,6 +165,30 @@
       },
       "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df9fd505_5e03d1e0",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 6949,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-30T11:30:03Z",
+      "side": 1,
+      "message": "Indeed out of scope, but the reason for the release vs debug variants is essentially the same as for user(debug) vs eng - there\u0027s just no story for how to extend that scheme to modules. I\u0027d like to see debug variants being just that - variants of the same module, no different name.\n\nI\u0027ve done as you like, but I think it\u0027s quite incidental that this problem surfaced in this location, so it\u0027s brittle to encode a special case for it there.",
+      "parentUuid": "0bd4feb0_a469f755",
+      "range": {
+        "startLine": 6937,
+        "startChar": 0,
+        "endLine": 6949,
+        "endChar": 3
+      },
+      "revId": "5c50f6d6d952a1fa42f48d0880042025e071f026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
