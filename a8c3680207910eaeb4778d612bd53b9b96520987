@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5f8e669_1c638b91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-30T23:50:30Z",
+      "side": 1,
+      "message": "Feel free to self stamp CR+2 after rebasing.",
+      "revId": "a8c3680207910eaeb4778d612bd53b9b96520987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58279317_64bd9ccb",
