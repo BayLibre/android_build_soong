@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58279317_64bd9ccb",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T21:40:11Z",
+      "side": 1,
+      "message": "were these intended for another CL or are they needed to keep mixed builds working?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 40
+      },
+      "revId": "a8c3680207910eaeb4778d612bd53b9b96520987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
