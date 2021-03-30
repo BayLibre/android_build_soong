@@ -372,7 +372,14 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 		//
 		// In Bazel-parlance, we would use "attr.<type>(default = <default value>)" to set the default
 		// value of unset attributes.
-		return "", nil
+		switch propertyValue.Kind() {
+		case reflect.Slice:
+			return "[]", nil
+		case reflect.Bool:
+			return "False", nil
+		default:
+			return "", nil
+		}
 	}
 
 	var ret string
