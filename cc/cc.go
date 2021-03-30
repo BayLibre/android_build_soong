@@ -1246,7 +1246,7 @@ func (c *Module) nativeCoverage() bool {
 	return c.linker != nil && c.linker.nativeCoverage()
 }
 
-func (c *Module) isSnapshotPrebuilt() bool {
+func (c *Module) IsSnapshotPrebuilt() bool {
 	if p, ok := c.linker.(snapshotInterface); ok {
 		return p.isSnapshotPrebuilt()
 	}
