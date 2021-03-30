@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bd9d8d2_e486d450",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-30T15:27:12Z",
+      "side": 1,
+      "message": "FYI - the current blocker is \u0027target\u0027 syntax not working (http://b/183597786)\n\ni.e. build errors like\n\nbionic/tests/headers/posix/sys_types_h.c:29:10: fatal error: \u0027sys/types.h\u0027 file not found\n",
+      "revId": "1273c6f8e83868fe0143dcf638f44c67577424d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
