@@ -55,7 +55,7 @@ type groupProperties struct {
 	// Name of the partition group
 	Name *string
 
-	// Size of the partition group
+	// Size of the partition group. Required if group name is not "default".
 	Size *string
 
 	// List of logical partitions in this group
@@ -134,13 +134,19 @@ func (l *logicalPartition) GenerateAndroidBuildActions(ctx android.ModuleContext
 			groupNames[gName] = true
 		}
 		gSize := proptools.String(group.Size)
-		if gSize == "" {
-			ctx.PropertyErrorf("groups.size", "must be set")
+		if gName == "default" {
+			if gSize != "" {
+				ctx.PropertyErrorf("groups.size", "must not be set for default group")
+			}
+		} else {
+			if gSize == "" {
+				ctx.PropertyErrorf("groups.size", "must be set")
+			}
+			if _, err := strconv.Atoi(gSize); err != nil {
+				ctx.PropertyErrorf("groups.size", "must be a number")
+			}
+			cmd.FlagWithArg("--group=", gName+":"+gSize)
 		}
-		if _, err := strconv.Atoi(gSize); err != nil {
-			ctx.PropertyErrorf("groups.size", "must be a number")
-		}
-		cmd.FlagWithArg("--group=", gName+":"+gSize)
 
 		for _, part := range group.Partitions {
 			pName := proptools.String(part.Name)
