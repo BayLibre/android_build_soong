@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24f5c5dd_e46ab753",
+        "filename": "android/register.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-03-30T03:37:26Z",
+      "side": 1,
+      "message": "It would be preferred if bp2build or its configuration to be a dependency of regular Soong operation. Let me take a look and see if we can refactor this to not be needed.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 0
+      },
+      "revId": "2e72b6a54b3f8b66457e0caefedfc67a160ee2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
